@@ -1,0 +1,237 @@
+Abstract
+    AB
+    Abstract
+Accession_Number
+    UT
+Acknowledgements
+    Acknowledgements
+Affiliations
+    Affiliations
+Anthology_title
+    Anthology title
+Author_Address
+    AF
+    Author_Full_Name
+    C1
+Author_Keywords
+    Author Keywords
+    DE
+Authors
+    AU
+    Authors
+Authors_Affiliations
+    Authors Affiliations
+Authors_Raw_Affiliation
+    Authors (Raw Affiliation)
+Authors_with_affiliations
+    Authors with affiliations
+Book_Authors
+    BA
+Book_Authors_Full_Name
+    BF
+Book_Series_Subtitle
+    BS
+CODEN
+    CODEN
+Chemicals_CAS
+    Chemicals/CAS
+Cited_Reference_Count
+    NR
+Cited_References
+    CR
+Cited_by
+    Cited by
+    Times cited
+    Z9
+Conference_Code
+    Conference code
+Conference_Date
+    CY
+    Conference date
+    Conference_Host
+    HO
+Conference_Location
+    CL
+    Conference location
+Conference_Name
+    CT
+    Conference name
+Conference_Sponsors
+    SP
+Correspondence_Address
+    Correspondence Address
+Corresponding_Author
+    Corresponding Author
+DOI
+    D2
+    DI
+    DOI
+Dimensions_Publication_ID
+    Publication ID
+Dimensions_Rank
+    Rank
+Dimensions_URL
+    Dimensions URL
+Document_Delivery_Number
+    DA
+Document_Title
+    TI
+    Title
+Document_Type
+    DT
+    Document Type
+EID
+    EID
+ESI_Highly_Cited_Paper
+    HC
+ESI_Hot_Paper
+    HP
+Editors
+    Editors
+Email_Address
+    EM
+FCR
+    FCR
+FOR_ANZSRC_Categories
+    FOR (ANZSRC) Categories
+Funding_Agency_and_Grant_Number
+    FU
+Funding_Details
+    Funding Details
+Funding_Text_1
+    FX
+    Funding Text 1
+Funding_Text_2
+    Funding Text 2
+Funding_Text_3
+    Funding Text 3
+Funding_Text_4
+    Funding Text 4
+Funding_Text_5
+    Funding Text 5
+Funding_Text_6
+    Funding Text 6
+Group_Authors
+    CA
+ISBN
+    BN
+    ISBN
+ISO_Source_Abbreviation
+    Abbreviated Source Title
+ISSN
+    ISSN
+    SN
+Index_Keywords
+    ID
+    Index Keywords
+Issue
+    IS
+    Issue
+Language
+    LA
+    Language of Original Document
+Link
+    Link
+Manufacturers
+    Manufacturers
+MeSH_terms
+    MeSH terms
+Meeting_Abstract
+    MA
+Molecular_Sequence_Numbers
+    Molecular Sequence Numbers
+ORCID_Identifier
+    OI
+Open_Access
+    OA
+    Open Access
+PMCID
+    PMCID
+PMID
+    PMID
+Page_count
+    Page count
+Page_end
+    EP
+    Page end
+Page_start
+    BP
+    Page start
+Part_Number
+    PN
+Pagination
+    Pagination
+PubMed_ID
+    PM
+    PubMed ID
+Publication_Date_print
+    PD
+    Publication Date (print)
+Publication_Date_online
+    Publication Date (online)
+Publication_Name
+    Publication Name
+    SO
+    Source title
+Publication_Stage
+    Publication Stage
+Publication_Type
+    Publication Type
+Publisher
+    PI
+    PU
+    Publisher
+    Publisher_City
+Publisher_Address
+    PA
+RCR
+    RCR
+Recent_citations
+    Recent citations
+References
+    References
+Reprint_Address
+    RP
+ResearcherID
+    RI
+Scopus_Art_No
+    Art. No.
+Scopus_Author_ID
+    Author(s) ID
+Source
+    Source
+Source_Linkout
+    Source Linkout
+Special_Issue
+    SI
+Sponsors
+    Sponsors
+Supplement
+    SU
+Sustainable_Development_Goals
+    Sustainable Development Goals
+Tradenames
+    Tradenames
+Usage_Count_180_Days
+    U1
+Usage_Count_2013
+    U2
+Version_Number
+    VR
+Volume
+    VL
+    Volume
+WoS_Article_Number
+    AR
+    WC
+    WoS_Categories
+WoS_Times_Cited
+    TC
+Year_Published
+    PY
+    PubYear
+    Year
+_29_Character_Source_Abbreviation
+    J9
+eISSN
+    EI
