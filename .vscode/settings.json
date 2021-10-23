@@ -1,0 +1,3 @@
+{
+    "python.sortImports.path": "/usr/local/bin/isort"
+}
