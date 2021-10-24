@@ -1,3 +1,11 @@
 {
-    "python.sortImports.path": "/usr/local/bin/isort"
+    "python.sortImports.path": "/usr/local/bin/isort",
+    "python.sortImports.args": [
+        "--profile=black",
+    ],
+    "[python]": {
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        }
+    }
 }
