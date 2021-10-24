@@ -4,7 +4,7 @@ Affiliations
 Art. No.
 Author Keywords
 Author(s) ID
-Authors,AU
+Authors,authors
 Authors with affiliations
 Chemicals/CAS
 Cited by
@@ -15,7 +15,7 @@ Conference location
 Conference name
 Correspondence Address
 Document Type
-DOI,DI
+DOI,doi
 Editors
 EID
 Funding Details
@@ -26,8 +26,8 @@ Funding Text 4
 Funding Text 5
 Funding Text 6
 Index Keywords
-ISBN,BN
-ISSN,SN
+ISBN,isbn
+ISSN,issn
 Issue
 Language of Original Document
 Link
@@ -39,12 +39,12 @@ Page end
 Page start
 Publication Stage
 Publisher
-PubMed ID,PM
+PubMed ID,pubmed_id
 References
 Source
-Source title,SO
+Source title,publication_name
 Sponsors
-Title,TI
+Title,document_title
 Tradenames
 Volume
-Year
+Year,pub_year

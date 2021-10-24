@@ -3,10 +3,10 @@ Acknowledgements
 Anthology title
 Authors (Raw Affiliation)
 Authors Affiliations
-Authors,AU
+Authors,authors
 Corresponding Author
 Dimensions URL
-DOI,DI
+DOI,doi
 FCR
 FOR (ANZSRC) Categories
 Issue
@@ -19,13 +19,13 @@ Publication Date (online)
 Publication Date (print)
 Publication ID
 Publication Type
-PubYear
+PubYear,pub_year
 Rank
 RCR
 Recent citations
 Source Linkout
-Source title,SO
+Source title,publication_name
 Sustainable Development Goals
 Times cited
-Title,TI
+Title,document_title
 Volume
