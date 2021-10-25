@@ -16,7 +16,7 @@ CT
 CY
 D2
 DA
-DE
+DE,author_keywords
 DI,doi
 DT
 EA
@@ -34,7 +34,7 @@ GP
 HC
 HO
 HP
-ID
+ID,index_keywords
 IS
 J9
 JI
@@ -70,4 +70,4 @@ UT
 VL
 VR
 WC
-Z9
+Z9,global_citations
