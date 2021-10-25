@@ -4,6 +4,7 @@ Data Importers
 
 """
 import logging
+import unicodedata
 from os.path import dirname, isfile, join
 
 import pandas as pd
@@ -16,6 +17,22 @@ logging.basicConfig(format="%(levelname)s - %(message)s", level=logging.DEBUG)
 #    Transforms data into a common format
 #    Loads data into a common format
 #
+
+
+def _strip_accents(text):
+    try:
+        text = unicode(text, "utf-8")
+    except NameError:  # unicode is a default on python 3
+        pass
+
+    if isinstance(text, str):
+        text = (
+            unicodedata.normalize("NFD", text).encode("ascii", "ignore").decode("utf-8")
+        )
+        return str(text)
+
+    return text
+
 
 # ----< Generic Importer >-----------------------------------------------------
 
@@ -44,17 +61,17 @@ class _ETLpipeline:
         Imports data from a raw data source.
 
         """
-        logging.info("Extractig data from %s", self.filepath)
+        logging.info("----------< Extractig data from %s >-----------", self.filepath)
 
     def load_tags(self):
         """
         Loads tags from a tags file.
 
         """
-
+        #
         module_path = dirname(__file__)
         filepath = join(module_path, "../data/" + self.tagsfile)
-
+        #
         columns2tags = {}
         columns2delete = []
         with open(filepath, "r", encoding="utf-8") as file:
@@ -75,6 +92,7 @@ class _ETLpipeline:
         Renames columns.
 
         """
+        logging.info("Renaming columns")
         for name, tag in self.columns2tags.items():
             self.raw_data.rename(columns={name: tag}, inplace=True)
 
@@ -83,7 +101,16 @@ class _ETLpipeline:
         Deletes columns.
 
         """
+        logging.info("Deleting innecesary columns")
         self.raw_data.drop(columns=self.columns2delete, inplace=True, errors="ignore")
+
+    def format_strip_accents(self):
+        """
+        Strips accents from the dataframe.
+
+        """
+        logging.info("Replacing accents")
+        self.raw_data.applymap(_strip_accents, na_action="ignore")
 
     def format_publication_name(self):
         """
@@ -91,6 +118,7 @@ class _ETLpipeline:
 
         """
         if "publication_name" in self.raw_data.columns:
+            logging.info("Formating publication_name")
             self.raw_data.publication_name = self.raw_data.publication_name.str.upper()
             self.raw_data.publication_name = self.raw_data.publication_name.str.replace(
                 r"[^\w\s]", "", regex=True
@@ -102,6 +130,7 @@ class _ETLpipeline:
 
         """
         if "issn" in self.raw_data.columns:
+            logging.info("Formating ISSN")
             self.raw_data.issn = self.raw_data.issn.str.replace("-", "", regex=True)
             self.raw_data.issn = self.raw_data.issn.str.upper()
 
@@ -111,6 +140,7 @@ class _ETLpipeline:
 
         """
         if "eissn" in self.raw_data.columns:
+            logging.info("Formating eISSN")
             self.raw_data.eissn = self.raw_data.eissn.str.replace("-", "", regex=True)
             self.raw_data.eissn = self.raw_data.eissn.str.upper()
 
@@ -120,8 +150,205 @@ class _ETLpipeline:
 
         """
         if "doi" in self.raw_data.columns:
+            logging.info("Formatting DOI to upper case")
             self.raw_data.doi = self.raw_data.doi.str.upper()
 
+    def format_keywords(self):
+        """
+        Formats keywords.
+
+        """
+        for column in ["author_keywords", "index_keywords"]:
+            if column in self.raw_data.columns:
+                logging.info("Formatting %s", column)
+                self.raw_data[column] = self.raw_data[column].str.replace(
+                    "[^\w\s]", "", regex=True
+                )
+                self.raw_data[column] = self.raw_data[column].map(
+                    lambda x: x.replace("; ", "; ") if not pd.isna(x) else x
+                )
+                self.raw_data[column] = self.raw_data[column].str.lower()
+
+    def replace_invalid_author_name(self):
+        """
+        Replaces no author name with "Unknown"
+
+        """
+        logging.info("Removing [No author name available]")
+        self.raw_data.replace(
+            to_replace="[No author name available]", value=None, inplace=True
+        )
+        logging.info("Removing [Anonymous]")
+        self.raw_data.replace(to_replace="[Anonymous]", value=None, inplace=True)
+
+    def remove_copyright(self):
+        """
+        Removes copyright text from abstracts.
+
+        """
+        if "abstract" in self.raw_data.columns:
+            logging.info("Removing copyright")
+            self.raw_data.abstract = self.raw_data.abstract.map(
+                lambda x: x[0 : x.find("\u00a9")] if not pd.isna(x) else x
+            )
+
+    def clean_document_title(self):
+        """
+        Cleans document title.
+
+        """
+        logging.info("Cleaning document title")
+        self.raw_data.document_title = self.raw_data.document_title.map(
+            lambda x: x[0 : x.find("[")] if pd.isna(x) is False and x[-1] == "]" else x
+        )
+
+    def fill_na_with_zero_in_global_citations(self):
+        """
+        Fills na with zero in global citations.
+
+        """
+        if "global_citations" in self.raw_data.columns:
+            logging.info("Filling na with zero in global citations")
+            self.raw_data.global_citations = self.raw_data.global_citations.fillna(0)
+            self.raw_data.global_citations = self.raw_data.global_citations.astype(int)
+
+    def count_num_authors_per_document(self):
+        """
+        Counts the number of authors per document
+
+        """
+        logging.info("Counting number of authors per document")
+        self.raw_data["num_authors"] = self.raw_data.authors.apply(
+            lambda x: len(x.split(";")) if not pd.isna(x) else 0
+        )
+
+    def compute_frac_number_of_documents(self):
+        """
+        Computes the fraction of documents per author.
+
+        """
+        logging.info("Computing fraction of documents")
+        self.raw_data["frac_num_documents"] = self.raw_data.authors.map(
+            lambda x: 1.0 / len(x.split("; ")) if not pd.isna(x) else 0
+        )
+
+    def format_iso_source_abbreviation(self):
+        """
+        Formats ISO Source Abbreviation into a common format.
+
+        """
+        if "iso_source_abbreviation" in self.raw_data.columns:
+            logging.info("Formating ISO source abbreviation")
+            self.raw_data.iso_source_abbreviation = (
+                self.raw_data.iso_source_abbreviation.str.upper()
+            )
+            self.raw_data.iso_source_abbreviation = (
+                self.raw_data.iso_source_abbreviation.map(
+                    lambda x: x.replace(".", "") if not pd.isna(x) else x
+                )
+            )
+
+    def fillna_iso_source_abbreviation(self):
+        """
+        Completes ISO Source Abbreviation.
+
+        """
+
+        def load_global_abbreviations():
+            """
+            Loads global abbreviations.
+
+            """
+            module_path = dirname(__file__)
+            filename = join(module_path, "../data/iso_sources.csv")
+            iso_sources = pd.read_csv(filename, sep=",", encoding="utf-8")
+            name2abb_global = {
+                publication_name: iso_abbreviation
+                for publication_name, iso_abbreviation in zip(
+                    iso_sources.publication_name, iso_sources.iso_source_abbreviation
+                )
+            }
+            return name2abb_global
+
+        def load_local_abbreviations():
+            """
+            Loads local abbreviations.
+
+            """
+            name2abb_local = {
+                publication_name: iso_abbreviation
+                for publication_name, iso_abbreviation in zip(
+                    self.raw_data.publication_name,
+                    self.raw_data.iso_source_abbreviation,
+                )
+            }
+            return name2abb_local
+
+        def fillna_iso_source_abbreviation(name2abb):
+            """
+            Fills na with global abbreviation.
+
+            """
+            self.raw_data.iso_source_abbreviation = self.raw_data.publication_name.map(
+                lambda x: name2abb[x] if not pd.isna(x) else x
+            )
+
+        def save_new_iso_source_abbreviations(name2abb_local, name2abb_global):
+            """
+            Saves new abbreviations.
+
+            """
+            #
+            # Extracs abbreviations from global and local abbreviations
+            #
+            new_abbreviations = set(name2abb_local.keys()) - set(name2abb_global.keys())
+            new_abbreviations = {key: name2abb_local[key] for key in new_abbreviations}
+
+            #
+            #
+            #
+            filename = self.datastorepath + "iso_sources.csv"
+            if isfile(filename):
+                iso_sources = pd.read_csv(filename, sep=",", encoding="utf-8")
+                iso_sources = {
+                    publication_name: iso_abbreviation
+                    for publication_name, iso_abbreviation in zip(
+                        iso_sources.publication_name,
+                        iso_sources.iso_source_abbreviation,
+                    )
+                }
+            else:
+                iso_sources = {}
+
+            #
+            # Updates current new abbreviations
+            #
+            new_abbreviations = {**new_abbreviations, **iso_sources}
+            publication_name = [key for key in new_abbreviations.keys()]
+            iso_source_abbreviation = [value for value in new_abbreviations.values()]
+
+            new_df = pd.DataFrame(
+                {
+                    "publication_name": publication_name,
+                    "iso_source_abbreviation": iso_source_abbreviation,
+                }
+            )
+            new_df.to_csv(filename, sep=",", encoding="utf-8", index=False)
+
+        if "iso_source_abbreviation" in self.raw_data.columns:
+
+            logging.info("Filling na with global abbreviation")
+            name2abb_global = load_global_abbreviations()
+            name2abb_local = load_local_abbreviations()
+            name2abb = {**name2abb_global, **name2abb_local}
+            fillna_iso_source_abbreviation(name2abb)
+            save_new_iso_source_abbreviations(name2abb_local, name2abb_global)
+
+    #
+    #
+    # ---< Procedures to merge data > ------------------------------------------
+    #
+    #
     def load_datastore(self):
         """
         Loads datastore.
@@ -382,11 +609,20 @@ def load_file(filepath, filetype, datastorepath):
     dataset.extract_data()
     dataset.rename_columns()
     dataset.delete_columns()
+    dataset.format_strip_accents()
     dataset.format_publication_name()
     dataset.format_issn()
     dataset.format_eissn()
     dataset.format_authors()
     dataset.format_doi()
+    dataset.format_iso_source_abbreviation()
+    dataset.fillna_iso_source_abbreviation()
+    dataset.format_keywords()
+    dataset.remove_copyright()
+    dataset.clean_document_title()
+    dataset.replace_invalid_author_name()
+    dataset.count_num_authors_per_document()
+    dataset.compute_frac_number_of_documents()
     dataset.load_datastore()
     dataset.concat()
     dataset.drop_doi_duplicates()
