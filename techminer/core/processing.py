@@ -97,6 +97,18 @@ class DatastoreTransformations:
                 lambda x: x[0 : x.find("\u00a9")] if not pd.isna(x) else x
             )
 
+    def format_keywords(self):
+        """
+        Formats keywords.
+
+        """
+        logging.info("Formatting keywords")
+        for keywords in ["author_keywords", "index_keywords"]:
+            self.datastore[keywords] = self.datastore[keywords].map(
+                lambda x: x.replace("; ", "; ") if not pd.isna(x) else x
+            )
+            self.datastore[keywords] = self.datastore[keywords].str.lower()
+
 
 def process_datastore(datastorepath="./"):
     """
@@ -111,4 +123,5 @@ def process_datastore(datastorepath="./"):
     datastore.replace_invalid_author_name()
     datastore.count_num_authors_per_document()
     datastore.remove_copyright()
+    datastore.format_keywords()
     datastore.save_datastore()
