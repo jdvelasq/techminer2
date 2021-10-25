@@ -1,6 +1,6 @@
 .DS_Store
 
-..datastore/
+datastore/
 
 
 # Byte-compiled / optimized / DLL files
