@@ -131,6 +131,16 @@ class DatastoreTransformations:
                 int
             )
 
+    def compute_frac_number_of_documents(self):
+        """
+        Computes the fraction of documents per author.
+
+        """
+        logging.info("Computing fraction of documents")
+        self.datastore["frac_num_documents"] = self.datastore.authors.map(
+            lambda x: 1.0 / len(x.split("; ")) if not pd.isna(x) else 0
+        )
+
 
 def process_datastore(datastorepath="./"):
     """
@@ -148,4 +158,5 @@ def process_datastore(datastorepath="./"):
     datastore.format_keywords()
     datastore.clean_document_title()
     datastore.fill_na_with_zero_in_global_citations()
+    datastore.compute_frac_number_of_documents()
     datastore.save_datastore()
