@@ -8,6 +8,8 @@ import unicodedata
 from os.path import dirname, isfile, join
 
 import pandas as pd
+from techminer.utils.extract_country_name import extract_country_name
+from techminer.utils.map import map_
 
 logging.basicConfig(format="%(levelname)s - %(message)s", level=logging.DEBUG)
 
@@ -344,6 +346,14 @@ class _ETLpipeline:
             fillna_iso_source_abbreviation(name2abb)
             save_new_iso_source_abbreviations(name2abb_local, name2abb_global)
 
+    def extract_country_names(self):
+
+        if "affiliations" in self.raw_data.columns:
+            logging.info("Extracting country names ...")
+            self.raw_data["countries"] = map_(
+                self.raw_data, "affiliations", extract_country_name
+            )
+
     #
     #
     # ---< Procedures to merge data > ------------------------------------------
@@ -623,6 +633,7 @@ def load_file(filepath, filetype, datastorepath):
     dataset.replace_invalid_author_name()
     dataset.count_num_authors_per_document()
     dataset.compute_frac_number_of_documents()
+    dataset.extract_country_names()
     dataset.load_datastore()
     dataset.concat()
     dataset.drop_doi_duplicates()

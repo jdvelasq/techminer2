@@ -3,8 +3,7 @@ import re
 from os.path import dirname, join
 
 import pandas as pd
-
-from techminer.core.text import (
+from techminer.utils.text import (
     find_string,
     fingerprint,
     one_gram,
@@ -34,51 +33,51 @@ def text_clustering(x, name_strategy="mostfrequent", key="porter", transformer=N
         z = [bg2am_[z][0] if z in bg2am_.keys() else z for z in x.split()]
         return " ".join(z)
 
-    ##
-    ## Preprocessing
-    ##
+    #
+    # Preprocessing
+    #
     x = x.dropna()
     x = x.map(lambda w: w.split(";"))
     x = x.explode()
     x = x.map(lambda w: w.strip())
     x = x.unique()
 
-    ##
-    ## Creates a dataframe
-    ##
+    #
+    # Creates a dataframe
+    #
     x = pd.DataFrame({"word": x.tolist()})
 
-    ##
-    ## Delete terms between '(' and ')' or '[' and ']'
-    ## Repace & by and
-    ## Delete 'of'
-    ##
+    #
+    # Delete terms between '(' and ')' or '[' and ']'
+    # Repace & by and
+    # Delete 'of'
+    #
     x["word_alt"] = x["word"].copy()
     x["word_alt"] = x["word_alt"].map(lambda w: remove_brackets(w))
     x["word_alt"] = x["word_alt"].map(lambda w: remove_parenthesis(w))
     x["word_alt"] = x["word_alt"].map(lambda w: w.replace("&", "and"))
     x["word_alt"] = x["word_alt"].map(lambda w: w.replace(" of ", ""))
 
-    ##
-    ## Search for joined terms
-    ##
+    #
+    # Search for joined terms
+    #
     keywords_with_2_words = x.word_alt[x.word_alt.map(lambda w: len(w) == 2)]
     keywords_with_1_word = keywords_with_2_words.map(lambda w: w.replace(" ", ""))
     for w1, w2 in zip(keywords_with_1_word, keywords_with_2_words):
         if w1 in x.word_alt.tolist():
             x["word_alt"] = x["word_alt"].map(lambda w: w.replace(w1, w2))
 
-    ##
-    ## British to american english
-    ##
+    #
+    # British to american english
+    #
     module_path = dirname(__file__)
     filename = join(module_path, "../data/bg2am.data")
     bg2am_ = load_file_as_dict(filename)
     x["word_alt"] = x["word_alt"].map(lambda w: translate(w))
 
-    ##
-    ## key computation
-    ##
+    #
+    # key computation
+    #
     if key == "fingerprint":
         f = fingerprint
     elif key == "1-gram":
@@ -91,14 +90,14 @@ def text_clustering(x, name_strategy="mostfrequent", key="porter", transformer=N
         f = stemmer_snowball
     x["key"] = x.word_alt.map(f)
 
-    ##
-    ## groupsby key
-    ##
+    #
+    # groupsby key
+    #
     grp = x.groupby(by="key").agg({"word": list})
 
-    ##
-    ## group name selection
-    ##
+    #
+    # group name selection
+    #
     grp["listlen"] = grp.word.map(len)
     grp_isolated = grp[grp.listlen.map(lambda w: w == 1)]
     grp = grp[grp.listlen.map(lambda w: w > 1)]
@@ -121,9 +120,9 @@ def text_clustering(x, name_strategy="mostfrequent", key="porter", transformer=N
             lambda w: sorted(w.tolist(), key=len, reverse=False)[0]
         )
 
-    ##
-    ## Preffer names with '-'
-    ##
+    #
+    # Preffer names with '-'
+    #
     names_with_hyphen = grp.word.map(lambda w: [i for i in w if "-" in i])
     names_with_hyphen = names_with_hyphen.map(lambda w: w[0] if len(w) > 0 else None)
     grp["groupname"] = [
@@ -131,15 +130,15 @@ def text_clustering(x, name_strategy="mostfrequent", key="porter", transformer=N
         for original_name, hyphen_name in zip(grp["groupname"], names_with_hyphen)
     ]
 
-    ##
-    ## Transformer
-    ##
+    #
+    # Transformer
+    #
     if transformer is not None:
         grp["groupname"] = grp.groupname.map(transformer)
 
-    ##
-    ## Thesaurus building
-    ##
+    #
+    # Thesaurus building
+    #
     result = {
         key: sorted(value.tolist()) for key, value in zip(grp.groupname, grp.word)
     }
