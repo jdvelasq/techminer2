@@ -211,7 +211,7 @@ class _ScopusETL(_ETLpipeline):
         """
         if "authors" in self.raw_data.columns:
             self.raw_data.authors = self.raw_data.authors.str.replace(
-                r", ", ";", regex=True
+                r", ", "; ", regex=True
             )
             self.raw_data.authors = self.raw_data.authors.str.replace(
                 r".", "", regex=True
@@ -335,7 +335,7 @@ class _DimensionsETL(_ETLpipeline):
             authorslist = [
                 surname + " " + name for surname, name in zip(surnames, names)
             ]
-            authorslist = ";".join(authorslist)
+            authorslist = "; ".join(authorslist)
             return authorslist
 
         if "authors" in self.raw_data.columns:
