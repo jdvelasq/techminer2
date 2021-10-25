@@ -2,12 +2,12 @@ Abbreviated Source Title
 Abstract,abstract
 Affiliations
 Art. No.
-Author Keywords
+Author Keywords,author_keywords
 Author(s) ID
 Authors,authors
 Authors with affiliations
 Chemicals/CAS
-Cited by
+Cited by,global_citations
 CODEN
 Conference code
 Conference date
@@ -25,7 +25,7 @@ Funding Text 3
 Funding Text 4
 Funding Text 5
 Funding Text 6
-Index Keywords
+Index Keywords,index_keywords
 ISBN,isbn
 ISSN,issn
 Issue
