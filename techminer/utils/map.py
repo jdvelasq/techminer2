@@ -11,12 +11,12 @@ def map_(x, column, f):
         and column != "abstract"
         and column != "document_title"
     ):
-        z = x[column].map(lambda w: w.split(";") if not pd.isna(w) else w)
+        z = x[column].map(lambda w: w.split("; ") if not pd.isna(w) else w)
         z = z.map(lambda w: [f(z.strip()) for z in w] if isinstance(w, list) else w)
         z = z.map(
             lambda w: [z for z in w if not pd.isna(z)] if isinstance(w, list) else w
         )
-        z = z.map(lambda w: ";".join(w) if isinstance(w, list) else w)
+        z = z.map(lambda w: "; ".join(w) if isinstance(w, list) else w)
         return z
 
     # if column in [

@@ -354,6 +354,15 @@ class _ETLpipeline:
                 self.raw_data, "affiliations", extract_country_name
             )
 
+    def extract_country_first_author(self):
+
+        if "countries" in self.raw_data.columns:
+
+            logging.info("Extracting country of first author ...")
+            self.raw_data["country_1st_author"] = self.raw_data.countries.map(
+                lambda w: w.split("; ")[0] if isinstance(w, str) else w
+            )
+
     #
     #
     # ---< Procedures to merge data > ------------------------------------------
@@ -634,6 +643,9 @@ def load_file(filepath, filetype, datastorepath):
     dataset.count_num_authors_per_document()
     dataset.compute_frac_number_of_documents()
     dataset.extract_country_names()
+    dataset.extract_country_first_author()
+
+    #
     dataset.load_datastore()
     dataset.concat()
     dataset.drop_doi_duplicates()
