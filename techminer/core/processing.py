@@ -109,6 +109,28 @@ class DatastoreTransformations:
             )
             self.datastore[keywords] = self.datastore[keywords].str.lower()
 
+    def clean_document_title(self):
+        """
+        Cleans document title.
+
+        """
+        logging.info("Cleaning document title")
+        self.datastore.document_title = self.datastore.document_title.map(
+            lambda x: x[0 : x.find("[")] if pd.isna(x) is False and x[-1] == "]" else x
+        )
+
+    def fill_na_with_zero_in_global_citations(self):
+        """
+        Fills na with zero in global citations.
+
+        """
+        if "global_citations" in self.datastore.columns:
+            logging.info("Filling na with zero in global citations")
+            self.datastore.global_citations = self.datastore.global_citations.fillna(0)
+            self.datastore.global_citations = self.datastore.global_citations.astype(
+                int
+            )
+
 
 def process_datastore(datastorepath="./"):
     """
@@ -124,4 +146,6 @@ def process_datastore(datastorepath="./"):
     datastore.count_num_authors_per_document()
     datastore.remove_copyright()
     datastore.format_keywords()
+    datastore.clean_document_title()
+    datastore.fill_na_with_zero_in_global_citations()
     datastore.save_datastore()
