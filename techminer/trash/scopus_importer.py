@@ -1,33 +1,28 @@
-import re
-from techminer.core.logging_info import logging_info
-import warnings
-from os.path import dirname, join, exists
-from os import makedirs
-
+import glob
 import json
+import re
+import warnings
+from os import makedirs
+from os.path import dirname, exists, join
+
+import ipywidgets as widgets
 import numpy as np
 import pandas as pd
-
+import techminer.core.dashboard as dash
 from IPython.display import display
 from ipywidgets import GridspecLayout, Layout
-import ipywidgets as widgets
-import techminer.core.dashboard as dash
-
-from techminer.core import explode
+from techminer.core import Dashboard, explode
+from techminer.core.apply_institutions_thesaurus import apply_institutions_thesaurus
+from techminer.core.apply_keywords_thesaurus import apply_keywords_thesaurus
+from techminer.core.create_institutions_thesaurus import create_institutions_thesaurus
+from techminer.core.create_keywords_thesaurus import create_keywords_thesaurus
 from techminer.core.extract_country_name import extract_country_name
+from techminer.core.logging_info import logging_info
 
 # from techminer.core.extract_words import extract_words
 from techminer.core.map import map_
 from techminer.core.text import remove_accents
-
 from techminer.core.thesaurus import load_file_as_dict
-from techminer.core import Dashboard
-from techminer.core.create_institutions_thesaurus import create_institutions_thesaurus
-from techminer.core.apply_institutions_thesaurus import apply_institutions_thesaurus
-from techminer.core.create_keywords_thesaurus import create_keywords_thesaurus
-from techminer.core.apply_keywords_thesaurus import apply_keywords_thesaurus
-
-import glob
 
 warnings.filterwarnings("ignore")
 
@@ -87,10 +82,10 @@ class App(Dashboard):
         #  self.create_working_dirs()
         self.rename_columns()
         self.create_filters()
-        self.remove_accents()
-        self.remove_no_author_name_available()
-        self.format_author_names()
-        self.count_number_of_authors_per_document()
+        # self.remove_accents() # <--
+        # self.remove_no_author_name_available() # <--
+        # self.format_author_names() # <--
+        # self.count_number_of_authors_per_document() # <--
         self.calculate_frac_number_of_documents_per_author()
         self.remove_no_author_id_available()
         self.disambiguate_author_names()
@@ -100,7 +95,7 @@ class App(Dashboard):
         self.reduce_list_of_countries()
         self.transform_author_keywords_to_lower_case()
         self.transform_index_keywords_to_lower_case()
-        self.remove_copyright_mark_from_abstracts()
+        # self.remove_copyright_mark_from_abstracts()
         self.transform_global_citations_NA_to_zero()
         self.format_abb_source_title()
         self.create_historiograph_id()
