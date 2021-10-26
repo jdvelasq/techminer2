@@ -1,15 +1,12 @@
+import ipywidgets as widgets
 import matplotlib
 import matplotlib.pyplot as plt
-from techminer.core import explode
-import pandas as pd
 import numpy as np
-
-import ipywidgets as widgets
-from ipywidgets import GridspecLayout, Layout
-from IPython.display import display
-from techminer.core import Dashboard
+import pandas as pd
 import techminer.core.dashboard as dash
-
+from IPython.display import display
+from ipywidgets import GridspecLayout, Layout
+from techminer.core import Dashboard, explode
 from techminer.core.filter_records import filter_records
 
 ###############################################################################
@@ -65,6 +62,7 @@ class Model:
             linewidth=3,
             color="k",
         )
+
         ax.fill_between(
             list(range(1, len(result) + 1)),
             result.Num_Documents.tolist(),
@@ -107,7 +105,7 @@ class Model:
 
         fig.set_tight_layout(True)
 
-        return fig
+        return ax
 
 
 class App(Dashboard, Model):
