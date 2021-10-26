@@ -4,6 +4,7 @@ from os.path import exists, isfile
 import numpy as np
 import pandas as pd
 from techminer.utils.apply_institutions_thesaurus import apply_institutions_thesaurus
+from techminer.utils.apply_keywords_thesaurus import apply_keywords_thesaurus
 from techminer.utils.create_institutions_thesaurus import create_institutions_thesaurus
 from techminer.utils.create_keywords_thesaurus import create_keywords_thesaurus
 from techminer.utils.explode import explode
@@ -56,11 +57,9 @@ class DatastoreTransformations:
         Deletes local references.
 
         """
-        if "local_references" in self.datastore.columns:
-            logging.info("Deleting existent local references")
-            self.datastore["local_references"] = [
-                [] for _ in range(len(self.datastore))
-            ]
+        # if  "local_references" in self.datastore.columns:
+        logging.info("Deleting existent local references")
+        self.datastore["local_references"] = [[] for _ in range(len(self.datastore))]
 
     def create_local_references_using_doi(self):
         """
@@ -119,6 +118,13 @@ class DatastoreTransformations:
 
         """
         logging.info("Computing local citations")
+
+        self.datastore = self.datastore.assign(
+            local_references=[
+                pd.NA if len(local_reference) == 0 else local_reference
+                for local_reference in self.datastore.local_references
+            ]
+        )
 
         local_references = self.datastore[["local_references"]]
         local_references = local_references.rename(
@@ -256,11 +262,11 @@ def process_datastore(datastorepath="./"):
     datastore = DatastoreTransformations(datastorepath)
     datastore.load_datastore()
     datastore.create_historiograph_id()
-    # datastore.delete_existent_local_references()
-    # datastore.create_local_references_using_doi()
-    # datastore.create_local_references_using_title()
-    # datastore.consolidate_local_references()
-    # datastore.compute_local_citations()
+    datastore.delete_existent_local_references()
+    datastore.create_local_references_using_doi()
+    datastore.create_local_references_using_title()
+    datastore.consolidate_local_references()
+    datastore.compute_local_citations()
     datastore.compute_bradford_law_zones()
     datastore.create_KW_exclude()
     #
