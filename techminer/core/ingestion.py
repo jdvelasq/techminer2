@@ -783,6 +783,7 @@ def load_file(filepath, filetype, datastorepath):
     dataset.format_doi()
     dataset.format_iso_source_abbreviation()
     dataset.fillna_iso_source_abbreviation()
+    dataset.fill_na_with_zero_in_global_citations()
     dataset.format_keywords()
     dataset.remove_copyright()
     dataset.clean_document_title()
