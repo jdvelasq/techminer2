@@ -4,10 +4,12 @@ Data Importers
 
 """
 import logging
+import re
 import unicodedata
 from os.path import dirname, isfile, join
 
 import pandas as pd
+from techminer.core.thesaurus import load_file_as_dict
 from techminer.utils.extract_country_name import extract_country_name
 from techminer.utils.map import map_
 
@@ -23,7 +25,7 @@ logging.basicConfig(format="%(levelname)s - %(message)s", level=logging.DEBUG)
 
 def _strip_accents(text):
     try:
-        text = unicode(text, "utf-8")
+        text = str(text, "utf-8")
     except NameError:  # unicode is a default on python 3
         pass
 
@@ -96,7 +98,7 @@ class _ETLpipeline:
         """
         logging.info("Renaming columns")
         for name, tag in self.columns2tags.items():
-            self.raw_data.rename(columns={name: tag}, inplace=True)
+            self.raw_data = self.raw_data.rename(columns={name: tag})
 
     def delete_columns(self):
         """
@@ -104,7 +106,7 @@ class _ETLpipeline:
 
         """
         logging.info("Deleting innecesary columns")
-        self.raw_data.drop(columns=self.columns2delete, inplace=True, errors="ignore")
+        self.raw_data = self.raw_data.drop(columns=self.columns2delete, errors="ignore")
 
     def format_strip_accents(self):
         """
@@ -163,25 +165,33 @@ class _ETLpipeline:
         for column in ["author_keywords", "index_keywords"]:
             if column in self.raw_data.columns:
                 logging.info("Formatting %s", column)
-                self.raw_data[column] = self.raw_data[column].str.replace(
-                    "[^\w\s]", "", regex=True
-                )
-                self.raw_data[column] = self.raw_data[column].map(
-                    lambda x: x.replace("; ", "; ") if not pd.isna(x) else x
-                )
                 self.raw_data[column] = self.raw_data[column].str.lower()
 
     def replace_invalid_author_name(self):
         """
-        Replaces no author name with "Unknown"
+        Replaces "[No author name available]" and "[Anonymous]"
 
         """
         logging.info("Removing [No author name available]")
-        self.raw_data.replace(
-            to_replace="[No author name available]", value=None, inplace=True
+        self.raw_data.authors = self.raw_data.authors.map(
+            lambda x: pd.NA if x == "[No author name available]" else x
         )
+
         logging.info("Removing [Anonymous]")
-        self.raw_data.replace(to_replace="[Anonymous]", value=None, inplace=True)
+        self.raw_data.authors = self.raw_data.authors.map(
+            lambda x: pd.NA if not pd.isna(x) and x == "[Anonymous]" else x
+        )
+
+    def remove_no_author_id_available(self):
+        """
+        Remove "[No author id available]"
+
+        """
+        if "authors_id" in self.raw_data.columns:
+            logging.info("Removing [No author id available]")
+            self.raw_data["authors_id"] = self.raw_data.authors_id.map(
+                lambda w: pd.NA if w == "[No author id available]" else w
+            )
 
     def remove_copyright(self):
         """
@@ -267,7 +277,7 @@ class _ETLpipeline:
             name2abb_global = {
                 publication_name: iso_abbreviation
                 for publication_name, iso_abbreviation in zip(
-                    iso_sources.publication_name, iso_sources.iso_source_abbreviation
+                    iso_sources.publication_name, iso_sources["iso_source_abbreviation"]
                 )
             }
             return name2abb_global
@@ -347,7 +357,10 @@ class _ETLpipeline:
             save_new_iso_source_abbreviations(name2abb_local, name2abb_global)
 
     def extract_country_names(self):
+        """
+        Extracst country names from affiliations.
 
+        """
         if "affiliations" in self.raw_data.columns:
             logging.info("Extracting country names ...")
             self.raw_data["countries"] = map_(
@@ -355,12 +368,145 @@ class _ETLpipeline:
             )
 
     def extract_country_first_author(self):
+        """
+        Extracts country of first author.
 
+        """
         if "countries" in self.raw_data.columns:
 
             logging.info("Extracting country of first author ...")
             self.raw_data["country_1st_author"] = self.raw_data.countries.map(
                 lambda w: w.split("; ")[0] if isinstance(w, str) else w
+            )
+
+    def reduce_list_of_countries(self):
+        """
+        List of unique names in countries.
+
+        """
+        if "countries" in self.raw_data.columns:
+            logging.info("Reducing list of countries ...")
+            self.raw_data["countries"] = self.raw_data.countries.map(
+                lambda w: "; ".join(set(w.split("; "))) if isinstance(w, str) else w
+            )
+
+    def count_global_references(self):
+        """
+        Counts cited references.
+
+        """
+        if "global_references" in self.raw_data.columns:
+            logging.info("Counting global references ...")
+            self.raw_data[
+                "global_references_count"
+            ] = self.raw_data.global_references.map(
+                lambda x: len(x.split("; ")) if not pd.isna(x) else 0
+            )
+
+    def format_global_references(self):
+        """
+        Formats cited references.
+
+        """
+        if "global_references" in self.raw_data.columns:
+            logging.info("Formatting global references ...")
+
+            self.raw_data["global_references"] = self.raw_data.global_references.map(
+                lambda w: w.replace("https://doi.org/", "") if isinstance(w, str) else w
+            )
+
+            self.raw_data["global_references"] = self.raw_data.global_references.map(
+                lambda w: w.replace("http://dx.doi.org/", "")
+                if isinstance(w, str)
+                else w
+            )
+
+    def transform_abstract_to_lower_case(self):
+        if "abstract" in self.raw_data.columns:
+            logging.info("Transforming abstract to lower case ...")
+            self.raw_data["abstract"] = self.raw_data.abstract.map(
+                lambda x: x.lower() if isinstance(x, str) else x
+            )
+
+    def british_to_amerian(self):
+        """
+        Translate british spelling to american spelling.
+
+        """
+        if "abstract" in self.raw_data.columns:
+            logging.info("Transforming British to American ...")
+            module_path = dirname(__file__)
+            filename = join(module_path, "../data/bg2am.data")
+            bg2am = load_file_as_dict(filename)
+            for british_word in bg2am:
+                self.raw_data = self.raw_data.applymap(
+                    lambda w: re.sub(
+                        r"\b%s\b" % british_word, bg2am[british_word][0], w
+                    )
+                    if isinstance(w, str)
+                    else w
+                )
+
+    def disambiguate_author_names(self):
+        """
+        Disambiguate Author Names
+
+        """
+
+        if "authors" in self.raw_data.columns and "authors_id" in self.raw_data.columns:
+
+            logging.info("Disambiguate author names ...")
+
+            self.raw_data["authors"] = self.raw_data.authors.map(
+                lambda x: x[:-1] if not pd.isna(x) and x[-1] == ";" else x
+            )
+
+            self.raw_data["authors_id"] = self.raw_data.authors_id.map(
+                lambda x: x[:-1] if not pd.isna(x) and x[-1] == ";" else x
+            )
+
+            data = self.raw_data[["authors", "authors_id"]]
+            data = data.dropna()
+
+            data["*info*"] = [(a, b) for (a, b) in zip(data.authors, data.authors_id)]
+
+            data["*info*"] = data["*info*"].map(
+                lambda w: [
+                    (u.strip(), v.strip())
+                    for u, v in zip(w[0].split(";"), w[1].split(";"))
+                ]
+            )
+
+            data = data[["*info*"]].explode("*info*")
+            data = data.reset_index(drop=True)
+
+            names_ids = {}
+            for idx in range(len(data)):
+
+                author_name = data.at[idx, "*info*"][0]
+                author_id = data.at[idx, "*info*"][1]
+
+                if author_name in names_ids.keys():
+
+                    if author_id not in names_ids[author_name]:
+                        names_ids[author_name] = names_ids[author_name] + [author_id]
+                else:
+                    names_ids[author_name] = [author_id]
+
+            ids_names = {}
+            for author_name in names_ids.keys():
+                suffix = 0
+                for author_id in names_ids[author_name]:
+                    if suffix > 0:
+                        ids_names[author_id] = author_name + "(" + str(suffix) + ")"
+                    else:
+                        ids_names[author_id] = author_name
+                    suffix += 1
+
+            self.raw_data["authors"] = self.raw_data.authors_id.map(
+                lambda z: ";".join([ids_names[w.strip()] for w in z.split(";")])
+                if not pd.isna(z)
+                else z
             )
 
     #
@@ -402,7 +548,7 @@ class _ETLpipeline:
 
         """
         subset = ("authors", "document_title", "pub_year", "publication_name")
-        self.datastore.drop_duplicates(subset=subset, inplace=True)
+        self.datastore = self.datastore.drop_duplicates(subset=subset)
 
     def save_duplicates(self):
         """
@@ -416,7 +562,7 @@ class _ETLpipeline:
         if duplicates.any():
             filename = self.datastorepath + "duplicates.csv"
             duplicates = self.datastore[duplicates].copy()
-            duplicates.sort_values(by=["document_title"], inplace=True)
+            duplicates = duplicates.sort_values(by=["document_title"])
             duplicates.to_csv(filename, sep=",", encoding="utf-8", index=False)
             logging.warning(
                 "Duplicate rows found in %s - Records saved to %s",
@@ -503,7 +649,7 @@ class _WoSETL(_ETLpipeline):
                         and line[:2] not in ["FN", "VR"]
                     ):
                         if key is not None:
-                            record[key] = ";".join(value)
+                            record[key] = "; ".join(value)
                         key = line[:2].strip()
                         value = [line[2:].strip()]
 
@@ -633,6 +779,7 @@ def load_file(filepath, filetype, datastorepath):
     dataset.format_issn()
     dataset.format_eissn()
     dataset.format_authors()
+    dataset.remove_no_author_id_available()
     dataset.format_doi()
     dataset.format_iso_source_abbreviation()
     dataset.fillna_iso_source_abbreviation()
@@ -644,7 +791,12 @@ def load_file(filepath, filetype, datastorepath):
     dataset.compute_frac_number_of_documents()
     dataset.extract_country_names()
     dataset.extract_country_first_author()
-
+    dataset.reduce_list_of_countries()
+    dataset.count_global_references()
+    dataset.format_global_references()
+    dataset.disambiguate_author_names()
+    dataset.transform_abstract_to_lower_case()
+    # dataset.british_to_amerian()
     #
     dataset.load_datastore()
     dataset.concat()

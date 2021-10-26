@@ -3,7 +3,7 @@ Abstract,abstract
 Affiliations,affiliations
 Art. No.
 Author Keywords,author_keywords
-Author(s) ID
+Author(s) ID,authors_id
 Authors,authors
 Authors with affiliations
 Chemicals/CAS
@@ -40,7 +40,7 @@ Page start
 Publication Stage
 Publisher
 PubMed ID,pubmed_id
-References
+References,global_references
 Source
 Source title,publication_name
 Sponsors

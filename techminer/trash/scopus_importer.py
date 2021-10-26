@@ -1,5 +1,6 @@
 import glob
 import json
+import logging
 import re
 import warnings
 from os import makedirs
@@ -16,7 +17,8 @@ from techminer.core.apply_institutions_thesaurus import apply_institutions_thesa
 from techminer.core.apply_keywords_thesaurus import apply_keywords_thesaurus
 from techminer.core.create_institutions_thesaurus import create_institutions_thesaurus
 from techminer.core.create_keywords_thesaurus import create_keywords_thesaurus
-from techminer.core.extract_country_name import extract_country_name
+
+# from techminer.core.extract_country_name import extract_country_name
 from techminer.core.logging_info import logging_info
 
 # from techminer.core.extract_words import extract_words
@@ -80,36 +82,36 @@ class App(Dashboard):
         ## Steps
         ##
         #  self.create_working_dirs()
-        self.rename_columns()
+        ## self.rename_columns()
         self.create_filters()
-        # self.remove_accents() # <--
-        # self.remove_no_author_name_available() # <--
-        # self.format_author_names() # <--
-        # self.count_number_of_authors_per_document() # <--
-        self.calculate_frac_number_of_documents_per_author()
-        self.remove_no_author_id_available()
-        self.disambiguate_author_names()
-        # self.remove_text_in_foreing_languages()
-        self.extract_country_names()
-        self.extract_country_first_author()
-        self.reduce_list_of_countries()
-        # self.transform_author_keywords_to_lower_case()
-        # self.transform_index_keywords_to_lower_case()
-        # self.remove_copyright_mark_from_abstracts()
-        self.transform_global_citations_NA_to_zero()
-        self.format_abb_source_title()
-        self.create_historiograph_id()
-        self.create_local_references()
-        self.transform_abstract_to_lower_case()
-        self.british_to_amerian()
-        self.keywords_in_abstract()
+        ## self.remove_accents() # <--
+        ## self.remove_no_author_name_available() # <--
+        ## self.format_author_names() # <--
+        ## self.count_number_of_authors_per_document() # <--
+        ## self.calculate_frac_number_of_documents_per_author()
+        ## self.remove_no_author_id_available()
+        ## self.disambiguate_author_names()
+        ## self.remove_text_in_foreing_languages()
+        # self.extract_country_names()
+        # self.extract_country_first_author()
+        # self.reduce_list_of_countries()
+        ## self.transform_author_keywords_to_lower_case()
+        ## self.transform_index_keywords_to_lower_case()
+        ## self.remove_copyright_mark_from_abstracts()
+        ## self.transform_global_citations_NA_to_zero()
+        ## self.format_abb_source_title()
+        ## self.create_historiograph_id()
+        ## self.create_local_references()
+        ## self.transform_abstract_to_lower_case()
+        ## self.british_to_amerian()
+        ## self.keywords_in_abstract()  <---- no definido como procesar
 
         #  self.extract_title_keywords()
         #  self.extract_title_words()
         #  self.extract_abstract_phrases_and_words()
         #  self.highlight_author_keywords_in_titles()
         #  self.highlight_author_keywords_in_abstracts()
-        self.compute_bradford_law_zones()
+        ## self.compute_bradford_law_zones()
 
         ##
         ## Replace blanks by pd.NA
@@ -131,12 +133,12 @@ class App(Dashboard):
         ##
         ## Thesaurus
         ##
-        self.create_institutions_thesaurus()
-        self.apply_institutions_thesaurus()
-        self.create_keywords_thesaurus()
-        self.apply_keywords_thesaurus()
+        # self.create_institutions_thesaurus()
+        # self.apply_institutions_thesaurus()
+        ## self.create_keywords_thesaurus()
+        ## self.apply_keywords_thesaurus()
         #
-        self.create_KW_exclude()
+        ## self.create_KW_exclude()
         #
         self.logging_info("Finished!!!")
 
