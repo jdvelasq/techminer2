@@ -25,7 +25,7 @@ logging.basicConfig(format="%(levelname)s - %(message)s", level=logging.DEBUG)
 
 def _strip_accents(text):
     try:
-        text = str(text, "utf-8")
+        text = decode(text, "utf-8")
     except NameError:  # unicode is a default on python 3
         pass
 
