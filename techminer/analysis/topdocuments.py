@@ -63,18 +63,7 @@ class TopDocuments:
                 "publication_name",
                 citations_column,
             ]
-        ]
-
-        reference = [
-            str(authors) + ". " + str(pub_year) + ". " + str(document_title) + ". "
-            for authors, pub_year, document_title, in zip(
-                data.authors, data.pub_year, data.document_title
-            )
-        ]
-
-        self._resumed = pd.DataFrame(
-            {"reference": reference, citations_column: data[citations_column]}
-        )
+        ].head(50)
 
     @property
     def detailed_(self):
@@ -86,12 +75,24 @@ class TopDocuments:
             self._get_top_documents()
         return self._detailed
 
-    @property
-    def resumed_(self):
+    def print(self):
         """
         Get the top documents.
 
         """
-        if self._resumed is None:
+        if self._detailed is None:
             self._get_top_documents()
-        return self._resumed
+
+        citations_column = self._detailed.columns[-1]
+
+        for i in range(len(self._detailed)):
+
+            print(
+                self._detailed.authors[i].replace("; ", ", ")
+                + ". "
+                + str(self._detailed.pub_year[i])
+                + ". "
+                + self._detailed.document_title[i]
+                + ".\t"
+                + str(self._detailed[citations_column][i])
+            )

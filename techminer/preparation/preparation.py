@@ -7,7 +7,10 @@ import re
 from os.path import dirname, isfile, join
 
 import pandas as pd
-from techminer.core.thesaurus import load_file_as_dict
+from techminer.preparation.apply_institutions_thesaurus import (
+    apply_institutions_thesaurus,
+)
+from techminer.preparation.apply_keywords_thesaurus import apply_keywords_thesaurus
 from techminer.preparation.create_institutions_thesaurus import (
     create_institutions_thesaurus,
 )
@@ -16,6 +19,7 @@ from techminer.utils.extract_country_name import extract_country_name
 from techminer.utils.logging_info import logging_info
 from techminer.utils.map import map_
 from techminer.utils.text import remove_accents
+from techminer.utils.thesaurus import load_file_as_dict
 from tqdm import tqdm
 
 
@@ -324,6 +328,12 @@ class _BaseImporter:
                     )
                     pbar.update(1)
 
+    def enumerate_records(self):
+        """
+        Enumerate records
+        """
+        self.raw_data["record_id"] = range(len(self.raw_data))
+
     def save_datastore(self):
         """
         Save datastore to csv.
@@ -348,6 +358,7 @@ class _BaseImporter:
         self.drop_duplicates()
         self.report_duplicate_titles()
         # self.translate_british_to_amerian()
+        self.enumerate_records()
         self.save_datastore()
 
     # --- Computed columns ----------------------------------------------------
@@ -670,8 +681,6 @@ def import_raw_datafile(filepath, filetype, datastorepath):
     """
     if isfile(filepath):
         create_import_object(filepath, filetype, datastorepath).run()
-        create_keywords_thesaurus(datastorepath=datastorepath)
-        create_institutions_thesaurus(datastorepath=datastorepath)
         logging_info("File " + filepath + " imported.")
     else:
         raise FileNotFoundError

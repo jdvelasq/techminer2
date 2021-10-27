@@ -2,9 +2,9 @@ import io
 from os.path import dirname, isfile, join
 
 import pandas as pd
-from techminer.core.thesaurus import Thesaurus, load_file_as_dict
 from techminer.utils.extract_country_name import extract_country_name
 from techminer.utils.logging_info import logging_info
+from techminer.utils.thesaurus import Thesaurus, load_file_as_dict
 
 #
 # The algorithm searches in order until

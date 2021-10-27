@@ -34,7 +34,7 @@ class Bradford:
                     "publication_name",
                     "num_documents",
                     "global_citations",
-                    "id",
+                    "record_id",
                 ]
             ],
             "publication_name",

@@ -1,8 +1,9 @@
 from os.path import isfile
 
 import pandas as pd
-from techminer.core.thesaurus import read_textfile
+from techminer.utils.logging_info import logging_info
 from techminer.utils.map import map_
+from techminer.utils.thesaurus import read_textfile
 
 
 def apply_keywords_thesaurus(datastorepath="./"):
@@ -109,3 +110,5 @@ def apply_keywords_thesaurus(datastorepath="./"):
     ## Saves!
     ##
     datastore.to_csv(datastorefile, index=False)
+
+    logging_info("The thesaurus was applied to keywords.")

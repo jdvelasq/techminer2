@@ -3,11 +3,16 @@ from os.path import exists, isfile
 
 import numpy as np
 import pandas as pd
-from techminer.utils.apply_institutions_thesaurus import apply_institutions_thesaurus
-from techminer.utils.apply_keywords_thesaurus import apply_keywords_thesaurus
-from techminer.utils.create_institutions_thesaurus import create_institutions_thesaurus
-from techminer.utils.create_keywords_thesaurus import create_keywords_thesaurus
+from techminer.preparation.apply_institutions_thesaurus import (
+    apply_institutions_thesaurus,
+)
+from techminer.preparation.apply_keywords_thesaurus import apply_keywords_thesaurus
+from techminer.preparation.create_institutions_thesaurus import (
+    create_institutions_thesaurus,
+)
+from techminer.preparation.create_keywords_thesaurus import create_keywords_thesaurus
 from techminer.utils.explode import explode
+from techminer.utils.logging_info import logging_info
 
 
 class DatastoreTransformations:
@@ -32,18 +37,19 @@ class DatastoreTransformations:
 
         """
         filename = self.datastorepath + "datastore.csv"
-        logging.info("Loading datastore from %s", filename)
         if isfile(filename):
             self.datastore = pd.read_csv(filename, sep=",", encoding="utf-8")
         else:
             self.datastore = pd.DataFrame()
+
+        logging_info("Datastore " + filename + " loaded.")
 
     def create_historiograph_id(self):
         """
         Creates a new historiograph id.
 
         """
-        logging.info("Generating historiograph ID")
+        logging_info("Generating historiograph ID ...")
         self.datastore = self.datastore.assign(
             historiograph_id=self.datastore.pub_year.map(str)
             + "-"
@@ -58,7 +64,7 @@ class DatastoreTransformations:
 
         """
         # if  "local_references" in self.datastore.columns:
-        logging.info("Deleting existent local references")
+        logging_info("Deleting existent local references ...")
         self.datastore["local_references"] = [[] for _ in range(len(self.datastore))]
 
     def create_local_references_using_doi(self):
@@ -67,7 +73,7 @@ class DatastoreTransformations:
 
         """
 
-        logging.info("Searching local references using DOI")
+        logging_info("Searching local references using DOI ...")
 
         for i_index, doi in enumerate(self.datastore.doi):
             if not pd.isna(doi):
@@ -85,7 +91,7 @@ class DatastoreTransformations:
         Creates local references.
 
         """
-        logging.info("Searching local references using title")
+        logging_info("Searching local references using document titles ...")
 
         for i_index, _ in enumerate(self.datastore.document_title):
 
@@ -117,7 +123,7 @@ class DatastoreTransformations:
         Computes local citations.
 
         """
-        logging.info("Computing local citations")
+        logging_info("Computing local citations ...")
 
         self.datastore = self.datastore.assign(
             local_references=[
@@ -149,7 +155,7 @@ class DatastoreTransformations:
         Consolidates local references.
 
         """
-        logging.info("Consolidating local references")
+        logging_info("Consolidating local references ...")
         self.datastore["local_references"] = self.datastore.local_references.apply(
             lambda x: sorted(set(x))
         )
@@ -162,7 +168,7 @@ class DatastoreTransformations:
         Computes bradford law zones.
 
         """
-        logging.info("Computing Bradford Law Zones ...")
+        logging_info("Computing Bradford Law Zones ...")
 
         self.datastore["id"] = range(len(self.datastore))
 
@@ -248,8 +254,8 @@ class DatastoreTransformations:
 
         """
         filename = self.datastorepath + "datastore.csv"
-        logging.info("Saving datastore to %s", filename)
         self.datastore.to_csv(filename, sep=",", encoding="utf-8", index=False)
+        logging_info("Datastore saved to " + filename)
 
 
 def process_datastore(datastorepath="./"):

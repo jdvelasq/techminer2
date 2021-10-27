@@ -1,10 +1,8 @@
-import json
 import re
 from os.path import dirname, join
 
 import pandas as pd
-
-from techminer.core.thesaurus import load_file_as_dict
+from techminer.utils.thesaurus import load_file_as_dict
 
 NAMES = [
     ("universidad del norte", "colombia"),

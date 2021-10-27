@@ -2,8 +2,8 @@ import os.path
 from os.path import isfile
 
 import pandas as pd
-from techminer.core.thesaurus import Thesaurus, load_file_as_dict, text_clustering
 from techminer.utils.logging_info import logging_info
+from techminer.utils.thesaurus import Thesaurus, load_file_as_dict, text_clustering
 
 
 def create_keywords_thesaurus(datastorepath="./"):
