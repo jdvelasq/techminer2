@@ -1,0 +1,45 @@
+Pendientes
+---------------
+
+Apply thesaurus
+Bigraph analysis
+Citation Analysis
+Co-word Analysis
+Collaboration Analysis
+Column Explorer
+Comparative Analysis
+Conceptual Structure
+Core Authors Analysis
+Core Sources Analysis
+Correlation Analysis
+Coverage
+Descriptive Statistics
+Extract User Keywords
+Factor Analysis
+Graph Analysis
+Growth Indicators
+Impact Analysis
+Keywords Associations
+Keywords comparison
+Latent Semantic Analysis
+Main Path Analysis
+Manage Columns
+Matrix Explorer
+Record Filtering
+Scopus Importer
+Term Analysis
+Term per year Analysis
+Text Clustering
+TF*IDF Analysis
+Thematic Analysis
+Time analysis
+Worldmap
+
+
+
+Migradas 
+---------------
+
+Bradford Law
+
+Top Documents
