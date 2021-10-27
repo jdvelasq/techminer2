@@ -660,27 +660,27 @@ class DimensionsImporter(_BaseImporter):
 # ----< Generic >-------------------------------------------------
 
 
-def create_import_object(filepath, filetype, datastorepath):
+def create_import_object(source, filetype, target):
     """
     Creates an import object based on the filetype.
 
     """
     if filetype == "scopus":
-        return ScopusImporter(filepath, filetype, datastorepath)
+        return ScopusImporter(source, filetype, target)
     if filetype == "wos":
-        return WoSImporter(filepath, filetype, datastorepath)
+        return WoSImporter(source, filetype, target)
     if filetype == "dimensions":
-        return DimensionsImporter(filepath, filetype, datastorepath)
+        return DimensionsImporter(source, filetype, target)
     raise NotImplementedError
 
 
-def import_raw_datafile(filepath, filetype, datastorepath):
+def import_raw(source, filetype, target):
     """
     Imports a dataset file.
 
     """
-    if isfile(filepath):
-        create_import_object(filepath, filetype, datastorepath).run()
-        logging_info("File " + filepath + " imported.")
+    if isfile(source):
+        create_import_object(source, filetype, target).run()
+        logging_info("File " + source + " imported.")
     else:
         raise FileNotFoundError

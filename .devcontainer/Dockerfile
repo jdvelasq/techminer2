@@ -27,7 +27,7 @@ RUN pip3 --disable-pip-version-check --no-cache-dir install \
     prospector \
     pycodestyle \
     pylama \
-    pylint \
+    pylint==2.6.0 \
     pytest \
     rope \
     yapf
@@ -43,17 +43,16 @@ RUN pip3 --disable-pip-version-check --no-cache-dir install \
     nbsphinx \
     sphinx-rtd-theme \ 
     sphinx_copybutton \    
-    pygments 
+    pygments==2.6.1
 
 RUN pip3 --disable-pip-version-check --no-cache-dir install \
-    numpy \
-    matplotlib \
-    graphviz \
-    ipykernel \
-    sklearn \
-    nltk \
-    pandas \
-    unidecode
+    numpy==1.19.5 \
+    matplotlib==3.2.2 \
+    graphviz==0.10.1 \
+    ipykernel==4.10.1 \
+    sklearn==0.22.2.post1 \
+    nltk==3.2.5 \
+    pandas==1.1.5 
 
 RUN apt update \
     && apt -yq --no-install-recommends install  graphviz \
