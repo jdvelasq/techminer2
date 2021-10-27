@@ -1,7 +1,7 @@
 Pendientes
 ---------------
 
-Apply thesaurus
+
 Bigraph analysis
 Citation Analysis
 Co-word Analysis
@@ -40,6 +40,7 @@ Worldmap
 Migradas 
 ---------------
 
+Apply thesaurus
 Bradford Law
 
 Top Documents

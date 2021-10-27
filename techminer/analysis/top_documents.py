@@ -5,7 +5,6 @@ Top Documents
 
 """
 
-import pandas as pd
 from techminer.utils.datastore import load_datastore
 
 

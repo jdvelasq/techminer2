@@ -1,8 +1,8 @@
-import pandas as pd
 import ipywidgets as widgets
-from ipywidgets import GridspecLayout, Layout
-from IPython.display import display
+import pandas as pd
 import techminer.core.dashboard as dash
+from IPython.display import display
+from ipywidgets import GridspecLayout, Layout
 from techminer.core.filter_records import filter_records
 
 
