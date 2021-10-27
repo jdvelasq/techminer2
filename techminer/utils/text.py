@@ -17,8 +17,13 @@ from os.path import dirname, join
 
 import pandas as pd
 from nltk.stem import PorterStemmer, SnowballStemmer
+from unidecode import unidecode
 
 # ---< R E V I S E D >-------------------------------------------------------------------------
+# def remove_accents(x):
+#     if isinstance(x, str):
+#         return unidecode(x)
+#     return x
 
 
 # ---<  E X T E R N A L   F U N C T I O N S   >-----------------------------------------------
@@ -393,354 +398,354 @@ def fingerprint(x):
     return " ".join(x)
 
 
-# def __remove_accents(text):
-#     """Translate non-ascii charaters to ascii equivalent. Based on Google Open Refine.
+def remove_accents(text):
+    """Translate non-ascii charaters to ascii equivalent. Based on Google Open Refine.
 
-#     Examples
-#     ----------------------------------------------------------------------------------------------
+    Examples
+    ----------------------------------------------------------------------------------------------
 
-#     >>> remove_accents('áéíóúñÁÉÍÓÚÑ')
-#     'aeiounAEIOUN'
+    >>> remove_accents('áéíóúñÁÉÍÓÚÑ')
+    'aeiounAEIOUN'
 
-#     """
+    """
 
-#     def translate(c):
+    def translate(c):
 
-#         if c in [
-#             "\u0100",
-#             "\u0102",
-#             "\u00C5",
-#             "\u0104",
-#             "\u00C0",
-#             "\u00C1",
-#             "\u00C2",
-#             "\u00C3",
-#             "\u00C4",
-#         ]:
-#             return "A"
+        if c in [
+            "\u0100",
+            "\u0102",
+            "\u00C5",
+            "\u0104",
+            "\u00C0",
+            "\u00C1",
+            "\u00C2",
+            "\u00C3",
+            "\u00C4",
+        ]:
+            return "A"
 
-#         if c in [
-#             "\u00E0",
-#             "\u00E1",
-#             "\u00E2",
-#             "\u00E3",
-#             "\u00E4",
-#             "\u0103",
-#             "\u0105",
-#             "\u00E5",
-#             "\u0101",
-#         ]:
-#             return "a"
+        if c in [
+            "\u00E0",
+            "\u00E1",
+            "\u00E2",
+            "\u00E3",
+            "\u00E4",
+            "\u0103",
+            "\u0105",
+            "\u00E5",
+            "\u0101",
+        ]:
+            return "a"
 
-#         if c in [
-#             "\u00C7",
-#             "\u0106",
-#             "\u0108",
-#             "\u010A",
-#             "\u010C",
-#         ]:
-#             return "C"
+        if c in [
+            "\u00C7",
+            "\u0106",
+            "\u0108",
+            "\u010A",
+            "\u010C",
+        ]:
+            return "C"
 
-#         if c in [
-#             "\u010D",
-#             "\u00E7",
-#             "\u0107",
-#             "\u010B",
-#             "\u0109",
-#         ]:
-#             return "c"
+        if c in [
+            "\u010D",
+            "\u00E7",
+            "\u0107",
+            "\u010B",
+            "\u0109",
+        ]:
+            return "c"
 
-#         if c in [
-#             "\u00D0",
-#             "\u010E",
-#             "\u0110",
-#         ]:
-#             return "D"
+        if c in [
+            "\u00D0",
+            "\u010E",
+            "\u0110",
+        ]:
+            return "D"
 
-#         if c in [
-#             "\u0111",
-#             "\u00F0",
-#             "\u010F",
-#         ]:
-#             return "d"
+        if c in [
+            "\u0111",
+            "\u00F0",
+            "\u010F",
+        ]:
+            return "d"
 
-#         if c in [
-#             "\u00C8",
-#             "\u00C9",
-#             "\u00CA",
-#             "\u00CB",
-#             "\u0112",
-#             "\u0114",
-#             "\u0116",
-#             "\u0118",
-#             "\u011A",
-#         ]:
-#             return "E"
+        if c in [
+            "\u00C8",
+            "\u00C9",
+            "\u00CA",
+            "\u00CB",
+            "\u0112",
+            "\u0114",
+            "\u0116",
+            "\u0118",
+            "\u011A",
+        ]:
+            return "E"
 
-#         if c in [
-#             "\u011B",
-#             "\u0119",
-#             "\u00E8",
-#             "\u00E9",
-#             "\u00EA",
-#             "\u00EB",
-#             "\u0113",
-#             "\u0115",
-#             "\u0117",
-#         ]:
-#             return "e"
+        if c in [
+            "\u011B",
+            "\u0119",
+            "\u00E8",
+            "\u00E9",
+            "\u00EA",
+            "\u00EB",
+            "\u0113",
+            "\u0115",
+            "\u0117",
+        ]:
+            return "e"
 
-#         if c in [
-#             "\u011C",
-#             "\u011E",
-#             "\u0120",
-#             "\u0122",
-#         ]:
-#             return "G"
+        if c in [
+            "\u011C",
+            "\u011E",
+            "\u0120",
+            "\u0122",
+        ]:
+            return "G"
 
-#         if c in [
-#             "\u0123",
-#             "\u011D",
-#             "\u011F",
-#             "\u0121",
-#         ]:
-#             return "g"
+        if c in [
+            "\u0123",
+            "\u011D",
+            "\u011F",
+            "\u0121",
+        ]:
+            return "g"
 
-#         if c in [
-#             "\u0124",
-#             "\u0126",
-#         ]:
-#             return "H"
+        if c in [
+            "\u0124",
+            "\u0126",
+        ]:
+            return "H"
 
-#         if c in [
-#             "\u0127",
-#             "\u0125",
-#         ]:
-#             return "h"
+        if c in [
+            "\u0127",
+            "\u0125",
+        ]:
+            return "h"
 
-#         if c in [
-#             "\u00CC",
-#             "\u00CD",
-#             "\u00CE",
-#             "\u00CF",
-#             "\u0128",
-#             "\u012A",
-#             "\u012C",
-#             "\u012E",
-#             "\u0130",
-#         ]:
-#             return "I"
+        if c in [
+            "\u00CC",
+            "\u00CD",
+            "\u00CE",
+            "\u00CF",
+            "\u0128",
+            "\u012A",
+            "\u012C",
+            "\u012E",
+            "\u0130",
+        ]:
+            return "I"
 
-#         if c in [
-#             "\u0131",
-#             "\u012F",
-#             "\u012D",
-#             "\u00EC",
-#             "\u012B",
-#             "\u0129",
-#             "\u00EF",
-#             "\u00EE",
-#             "\u00ED",
-#             "\u017F",
-#         ]:
-#             return "i"
+        if c in [
+            "\u0131",
+            "\u012F",
+            "\u012D",
+            "\u00EC",
+            "\u012B",
+            "\u0129",
+            "\u00EF",
+            "\u00EE",
+            "\u00ED",
+            "\u017F",
+        ]:
+            return "i"
 
-#         if c in [
-#             "\u0134",
-#         ]:
-#             return "J"
-#         if c in [
-#             "\u0135",
-#         ]:
-#             return "j"
+        if c in [
+            "\u0134",
+        ]:
+            return "J"
+        if c in [
+            "\u0135",
+        ]:
+            return "j"
 
-#         if c in [
-#             "\u0136",
-#         ]:
-#             return "K"
+        if c in [
+            "\u0136",
+        ]:
+            return "K"
 
-#         if c in [
-#             "\u0137",
-#             "\u0138",
-#         ]:
-#             return "k"
+        if c in [
+            "\u0137",
+            "\u0138",
+        ]:
+            return "k"
 
-#         if c in [
-#             "\u0139",
-#             "\u013B",
-#             "\u013D",
-#             "\u013F",
-#             "\u0141",
-#         ]:
-#             return "L"
+        if c in [
+            "\u0139",
+            "\u013B",
+            "\u013D",
+            "\u013F",
+            "\u0141",
+        ]:
+            return "L"
 
-#         if c in [
-#             "\u0142",
-#             "\u013A",
-#             "\u013C",
-#             "\u013E",
-#             "\u0140",
-#         ]:
-#             return "l"
+        if c in [
+            "\u0142",
+            "\u013A",
+            "\u013C",
+            "\u013E",
+            "\u0140",
+        ]:
+            return "l"
 
-#         if c in [
-#             "\u00D1",
-#             "\u0143",
-#             "\u0145",
-#             "\u0147",
-#         ]:
-#             return "N"
+        if c in [
+            "\u00D1",
+            "\u0143",
+            "\u0145",
+            "\u0147",
+        ]:
+            return "N"
 
-#         if c in [
-#             "\u014B",
-#             "\u014A",
-#             "\u0149",
-#             "\u0148",
-#             "\u0146",
-#             "\u0144",
-#             "\u00F1",
-#         ]:
-#             return "n"
+        if c in [
+            "\u014B",
+            "\u014A",
+            "\u0149",
+            "\u0148",
+            "\u0146",
+            "\u0144",
+            "\u00F1",
+        ]:
+            return "n"
 
-#         if c in [
-#             "\u00D2",
-#             "\u00D3",
-#             "\u00D4",
-#             "\u00D5",
-#             "\u00D6",
-#             "\u00D8",
-#             "\u014C",
-#             "\u014E",
-#             "\u0150",
-#         ]:
-#             return "O"
+        if c in [
+            "\u00D2",
+            "\u00D3",
+            "\u00D4",
+            "\u00D5",
+            "\u00D6",
+            "\u00D8",
+            "\u014C",
+            "\u014E",
+            "\u0150",
+        ]:
+            return "O"
 
-#         if c in [
-#             "\u0151",
-#             "\u00F2",
-#             "\u00F3",
-#             "\u00F4",
-#             "\u00F5",
-#             "\u00F6",
-#             "\u00F8",
-#             "\u014F",
-#             "\u014D",
-#         ]:
-#             return "o"
+        if c in [
+            "\u0151",
+            "\u00F2",
+            "\u00F3",
+            "\u00F4",
+            "\u00F5",
+            "\u00F6",
+            "\u00F8",
+            "\u014F",
+            "\u014D",
+        ]:
+            return "o"
 
-#         if c in [
-#             "\u0154",
-#             "\u0156",
-#             "\u0158",
-#         ]:
-#             return "R"
+        if c in [
+            "\u0154",
+            "\u0156",
+            "\u0158",
+        ]:
+            return "R"
 
-#         if c in [
-#             "\u0159",
-#             "\u0155",
-#             "\u0157",
-#         ]:
-#             return "r"
+        if c in [
+            "\u0159",
+            "\u0155",
+            "\u0157",
+        ]:
+            return "r"
 
-#         if c in [
-#             "\u015A",
-#             "\u015C",
-#             "\u015E",
-#             "\u0160",
-#         ]:
-#             return "S"
+        if c in [
+            "\u015A",
+            "\u015C",
+            "\u015E",
+            "\u0160",
+        ]:
+            return "S"
 
-#         if c in [
-#             "\u0161",
-#             "\u015B",
-#             "\u015F",
-#             "\u015D",
-#         ]:
-#             return "s"
+        if c in [
+            "\u0161",
+            "\u015B",
+            "\u015F",
+            "\u015D",
+        ]:
+            return "s"
 
-#         if c in [
-#             "\u0162",
-#             "\u0164",
-#             "\u0166",
-#         ]:
-#             return "T"
+        if c in [
+            "\u0162",
+            "\u0164",
+            "\u0166",
+        ]:
+            return "T"
 
-#         if c in [
-#             "\u0167",
-#             "\u0163",
-#             "\u0165",
-#         ]:
-#             return "t"
+        if c in [
+            "\u0167",
+            "\u0163",
+            "\u0165",
+        ]:
+            return "t"
 
-#         if c in [
-#             "\u00D9",
-#             "\u00DA",
-#             "\u00DB",
-#             "\u00DC",
-#             "\u0168",
-#             "\u016A",
-#             "\u016E",
-#             "\u0170",
-#             "\u0172",
-#             "\u016C",
-#         ]:
-#             return "U"
+        if c in [
+            "\u00D9",
+            "\u00DA",
+            "\u00DB",
+            "\u00DC",
+            "\u0168",
+            "\u016A",
+            "\u016E",
+            "\u0170",
+            "\u0172",
+            "\u016C",
+        ]:
+            return "U"
 
-#         if c in [
-#             "\u0173",
-#             "\u00F9",
-#             "\u00FA",
-#             "\u00FB",
-#             "\u00FC",
-#             "\u0169",
-#             "\u016B",
-#             "\u016D",
-#             "\u0171",
-#             "\u016F",
-#         ]:
-#             return "u"
+        if c in [
+            "\u0173",
+            "\u00F9",
+            "\u00FA",
+            "\u00FB",
+            "\u00FC",
+            "\u0169",
+            "\u016B",
+            "\u016D",
+            "\u0171",
+            "\u016F",
+        ]:
+            return "u"
 
-#         if c in [
-#             "\u0174",
-#         ]:
-#             return "W"
+        if c in [
+            "\u0174",
+        ]:
+            return "W"
 
-#         if c in [
-#             "\u0175",
-#         ]:
-#             return "w"
+        if c in [
+            "\u0175",
+        ]:
+            return "w"
 
-#         if c in [
-#             "\u0178",
-#             "\u00DD",
-#             "\u0176",
-#         ]:
-#             return "Y"
+        if c in [
+            "\u0178",
+            "\u00DD",
+            "\u0176",
+        ]:
+            return "Y"
 
-#         if c in [
-#             "\u0177",
-#             "\u00FD",
-#             "\u00FF",
-#         ]:
-#             return "y"
+        if c in [
+            "\u0177",
+            "\u00FD",
+            "\u00FF",
+        ]:
+            return "y"
 
-#         if c in [
-#             "\u0179",
-#             "\u017B",
-#             "\u017D",
-#         ]:
-#             return "Z"
+        if c in [
+            "\u0179",
+            "\u017B",
+            "\u017D",
+        ]:
+            return "Z"
 
-#         if c in [
-#             "\u017E",
-#             "\u017A",
-#             "\u017C",
-#         ]:
-#             return "z"
+        if c in [
+            "\u017E",
+            "\u017A",
+            "\u017C",
+        ]:
+            return "z"
 
-#         return c
+        return c
 
-#     return "".join([translate(c) for c in text])
+    return "".join([translate(c) for c in text])
 
 
 if __name__ == "__main__":
