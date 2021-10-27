@@ -2,15 +2,21 @@
 Datastore preparation module.
 
 """
+
 import re
 from os.path import dirname, isfile, join
 
 import pandas as pd
 from techminer.core.thesaurus import load_file_as_dict
+from techminer.preparation.create_institutions_thesaurus import (
+    create_institutions_thesaurus,
+)
+from techminer.preparation.create_keywords_thesaurus import create_keywords_thesaurus
 from techminer.utils.extract_country_name import extract_country_name
 from techminer.utils.logging_info import logging_info
 from techminer.utils.map import map_
-from unidecode import unidecode
+from techminer.utils.text import remove_accents
+from tqdm import tqdm
 
 
 class _BaseImporter:
@@ -68,9 +74,13 @@ class _BaseImporter:
         Formats dataset.
 
         """
+        logging_info("Formatting dataset ...")
         self.raw_data = self.raw_data.rename(columns=self.columns2tags)
         self.raw_data = self.raw_data.drop(columns=self.columns2delete, errors="ignore")
-        self.raw_data.applymap(unidecode, na_action="ignore")
+        self.raw_data.applymap(
+            lambda x: remove_accents(x) if isinstance(x, str) else x,
+            na_action="ignore",
+        )
 
     def load_iso_source_abbreviations(self):
         """
@@ -84,11 +94,19 @@ class _BaseImporter:
             zip(pdf.publication_name, pdf.iso_source_abbreviation)
         )
 
+    def format_authors(self):
+        """
+        Imports data from a raw data source.
+
+        """
+        raise NotImplementedError
+
     def format_columns(self):
         """
         Formats imported columns.
 
         """
+        logging_info("Formatting columns ...")
 
         if "abstract" in self.raw_data.columns:
             self.raw_data.abstract = self.raw_data.abstract.str.lower()
@@ -173,6 +191,13 @@ class _BaseImporter:
             new_abbreviations = set(iso_abbreviations.values()) - set(
                 self.iso_source_abbreviations.values()
             )
+            new_abbreviations = {
+                key: iso_abbreviations[key] for key in new_abbreviations
+            }
+            self.iso_source_abbreviations = {
+                **self.iso_source_abbreviations,
+                **new_abbreviations,
+            }
             if len(new_abbreviations):
                 filename = self.datastorepath + "new_iso_source_abbreviations.csv"
                 if isfile(filename):
@@ -187,8 +212,11 @@ class _BaseImporter:
                 else:
                     iso_sources = {}
                 new_abbreviations = {**new_abbreviations, **iso_sources}
-                new_abbreviations = pd.DataFrame.from_dict(
-                    new_abbreviations, orient="columns"
+                new_abbreviations = pd.DataFrame(
+                    {
+                        "publication_name": list(new_abbreviations.keys()),
+                        "iso_source_abbreviation": list(new_abbreviations.values()),
+                    }
                 )
                 new_abbreviations.to_csv(
                     filename, sep=",", encoding="utf-8", index=False
@@ -199,6 +227,7 @@ class _BaseImporter:
         Calculate computed columns.
 
         """
+        logging_info("Computing new columns ...")
 
         if "authors" in self.raw_data:
 
@@ -236,6 +265,8 @@ class _BaseImporter:
         Drops duplicates based on DOI and document title and authors.
 
         """
+        logging_info("Dropping duplicates ...")
+
         if "doi" in self.raw_data.columns:
             duplicated_doi = (self.raw_data.doi.duplicated()) & (
                 ~self.raw_data.doi.isna()
@@ -281,14 +312,17 @@ class _BaseImporter:
             module_path = dirname(__file__)
             filename = join(module_path, "../data/bg2am.data")
             bg2am = load_file_as_dict(filename)
-            for british_word in bg2am:
-                self.raw_data = self.raw_data.applymap(
-                    lambda w: re.sub(
-                        r"\b%s\b" % british_word, bg2am[british_word][0], w
+            with tqdm(total=len(bg2am.keys())) as pbar:
+
+                for british_word in bg2am:
+                    self.raw_data = self.raw_data.applymap(
+                        lambda w: re.sub(
+                            r"\b%s\b" % british_word, bg2am[british_word][0], w
+                        )
+                        if isinstance(w, str)
+                        else w
                     )
-                    if isinstance(w, str)
-                    else w
-                )
+                    pbar.update(1)
 
     def save_datastore(self):
         """
@@ -297,15 +331,18 @@ class _BaseImporter:
         """
         filename = self.datastorepath + "datastore.csv"
         self.raw_data.to_csv(filename, sep=",", encoding="utf-8", index=False)
+        logging_info("Datastore saved to %s" % filename)
 
     def run(self):
         """
         Runs the importer.
 
         """
+        self.extract_data()
         self.load_tags()
         self.format_dataset()
         self.load_iso_source_abbreviations()
+        self.format_authors()
         self.format_columns()
         self.compute_new_columns()
         self.drop_duplicates()
@@ -396,6 +433,7 @@ class ScopusImporter(_BaseImporter):
         Imports data from a Scopus CSV file.
 
         """
+        logging_info("Reading file " + self.filepath + " ...")
         self.raw_data = pd.read_csv(
             self.filepath, encoding="utf-8", on_bad_lines="skip"
         )
@@ -406,7 +444,7 @@ class ScopusImporter(_BaseImporter):
         """
 
         if "authors" in self.raw_data.columns:
-
+            logging_info("Formating authors ...")
             self.raw_data.authors = self.raw_data.authors.map(
                 lambda x: pd.NA if x == "[No author name available]" else x
             )
@@ -611,5 +649,8 @@ def import_raw_datafile(filepath, filetype, datastorepath):
     """
     if isfile(filepath):
         create_import_object(filepath, filetype, datastorepath).run()
+        create_keywords_thesaurus(datastorepath=datastorepath)
+        create_institutions_thesaurus(datastorepath=datastorepath)
+        logging_info("File " + filepath + " imported.")
     else:
         raise FileNotFoundError
