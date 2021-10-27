@@ -9,9 +9,7 @@ Collaboration Analysis
 Column Explorer
 Comparative Analysis
 Conceptual Structure
-
 Correlation Analysis
-
 Descriptive Statistics
 Extract User Keywords
 Factor Analysis
@@ -32,7 +30,7 @@ Text Clustering
 TF*IDF Analysis
 Thematic Analysis
 Time analysis
-Worldmap
+
 
 
 
@@ -46,3 +44,4 @@ Core Sources Analysis
 Coverage
 
 Top Documents
+Worldmap
