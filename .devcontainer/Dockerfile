@@ -52,7 +52,8 @@ RUN pip3 --disable-pip-version-check --no-cache-dir install \
     ipykernel \
     sklearn \
     nltk \
-    pandas
+    pandas \
+    unidecode
 
 RUN apt update \
     && apt -yq --no-install-recommends install  graphviz \
