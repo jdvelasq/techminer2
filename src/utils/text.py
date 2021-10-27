@@ -10,14 +10,13 @@ Functions in this module
 
 """
 
-import json
+
 import re
 import string
 from os.path import dirname, join
 
 import pandas as pd
 from nltk.stem import PorterStemmer, SnowballStemmer
-from unidecode import unidecode
 
 # ---< R E V I S E D >-------------------------------------------------------------------------
 # def remove_accents(x):

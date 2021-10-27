@@ -2,27 +2,27 @@ import os.path
 from os.path import isfile
 
 import pandas as pd
-from techminer.utils.logging_info import logging_info
-from techminer.utils.thesaurus import Thesaurus, load_file_as_dict, text_clustering
+from src.utils.logging_info import logging_info
+from src.utils.thesaurus import Thesaurus, load_file_as_dict, text_clustering
 
 
-def create_keywords_thesaurus(datastorepath="./"):
+def create_keywords_thesaurus(datastoredir="./"):
     """
     Createa a keywords thesaurus from the keywords in the articles.
 
     """
     logging_info("Creating keywords thesaurus ...")
 
-    if datastorepath[-1] != "/":
-        datastorepath = datastorepath + "/"
+    if datastoredir[-1] != "/":
+        datastoredir = datastoredir + "/"
 
-    datastorefile = datastorepath + "datastore.csv"
+    datastorefile = datastoredir + "datastore.csv"
     if isfile(datastorefile):
         data = pd.read_csv(datastorefile)
     else:
         raise FileNotFoundError("The file {} does not exist.".format(datastorefile))
 
-    thesaurus_file = datastorepath + "TH_keywords.txt"
+    thesaurus_file = datastoredir + "TH_keywords.txt"
 
     words_list = []
 

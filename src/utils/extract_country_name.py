@@ -1,8 +1,12 @@
+"""
+Utility for extracting country names form a column in a pandas dataframe
+"""
+
 import re
 from os.path import dirname, join
 
 import pandas as pd
-from techminer.utils.thesaurus import load_file_as_dict
+from src.utils.thesaurus import load_file_as_dict
 
 NAMES = [
     ("universidad del norte", "colombia"),
@@ -23,7 +27,7 @@ def extract_country_name(x):
     ## List of standardized country names
     ##
     module_path = dirname(__file__)
-    filename = join(module_path, "../data/country_codes.data")
+    filename = join(module_path, "../config_data/country_codes.data")
     country_codes = load_file_as_dict(filename)
     country_names = list(country_codes.values())
     country_names = [name.lower() for w in country_names for name in w]
@@ -70,9 +74,9 @@ def extract_country_name(x):
         if z in country_names:
             return z.lower()
 
-    ##
-    ## Repair country name from institution name
-    ##
+    #
+    # Repair country name from institution name
+    #
     for institution, country in NAMES:
         if institution in x:
             return country
@@ -81,7 +85,7 @@ def extract_country_name(x):
         if country_name in x:
             return country_name
 
-    ##
-    ## Country not found
-    ##
-    return pd.NA
+    #
+    # Country not found
+    #
+    return None

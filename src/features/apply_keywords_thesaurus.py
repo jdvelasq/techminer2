@@ -1,23 +1,23 @@
 from os.path import isfile
 
 import pandas as pd
-from techminer.utils.logging_info import logging_info
-from techminer.utils.map import map_
-from techminer.utils.thesaurus import read_textfile
+from src.utils.logging_info import logging_info
+from src.utils.map import map_
+from src.utils.thesaurus import read_textfile
 
 
-def apply_keywords_thesaurus(datastorepath="./"):
+def apply_keywords_thesaurus(datastoredir="./"):
 
-    if datastorepath[-1] != "/":
-        datastorepath += "/"
+    if datastoredir[-1] != "/":
+        datastoredir += "/"
 
-    datastorefile = datastorepath + "datastore.csv"
+    datastorefile = datastoredir + "datastore.csv"
     if isfile(datastorefile):
         datastore = pd.read_csv(datastorefile)
     else:
         raise FileNotFoundError("The file {} does not exist.".format(datastorefile))
 
-    thesaurus_file = datastorepath + "TH_keywords.txt"
+    thesaurus_file = datastoredir + "TH_keywords.txt"
     if isfile(thesaurus_file):
         th = read_textfile(thesaurus_file)
         th = th.compile_as_dict()
@@ -50,7 +50,7 @@ def apply_keywords_thesaurus(datastorepath="./"):
             + datastore.index_keywords.map(lambda w: "" if pd.isna(w) else w)
         )
         datastore["keywords"] = datastore.keywords.map(
-            lambda w: pd.NA if w[0] == ";" and len(w) == 1 else w
+            lambda w: None if w[0] == ";" and len(w) == 1 else w
         )
         datastore["keywords"] = datastore.keywords.map(
             lambda w: w[1:] if w[0] == ";" else w, na_action="ignore"

@@ -7,19 +7,11 @@ import re
 from os.path import dirname, isfile, join
 
 import pandas as pd
-from techminer.preparation.apply_institutions_thesaurus import (
-    apply_institutions_thesaurus,
-)
-from techminer.preparation.apply_keywords_thesaurus import apply_keywords_thesaurus
-from techminer.preparation.create_institutions_thesaurus import (
-    create_institutions_thesaurus,
-)
-from techminer.preparation.create_keywords_thesaurus import create_keywords_thesaurus
-from techminer.utils.extract_country_name import extract_country_name
-from techminer.utils.logging_info import logging_info
-from techminer.utils.map import map_
-from techminer.utils.text import remove_accents
-from techminer.utils.thesaurus import load_file_as_dict
+from src.utils.extract_country_name import extract_country_name
+from src.utils.logging_info import logging_info
+from src.utils.map import map_
+from src.utils.text import remove_accents
+from src.utils.thesaurus import load_file_as_dict
 from tqdm import tqdm
 
 
@@ -29,12 +21,12 @@ class _BaseImporter:
 
     """
 
-    def __init__(self, filepath, filetype, datastorepath="./"):
-        self.filepath = filepath
+    def __init__(self, source, filetype, targetdir):
+        self.source = source
         self.filetype = filetype
-        self.datastorepath = datastorepath
-        if self.datastorepath[-1] != "/":
-            self.datastorepath += "/"
+        self.targetdir = targetdir
+        if self.targetdir[-1] != "/":
+            self.targetdir += "/"
         #
         self.raw_data = None
         self.tagsfile = None
@@ -56,7 +48,7 @@ class _BaseImporter:
         """
         #
         module_path = dirname(__file__)
-        filepath = join(module_path, "../data/" + self.tagsfile)
+        filepath = join(module_path, "../config_data/" + self.tagsfile)
         #
         columns2tags = {}
         columns2delete = []
@@ -81,10 +73,7 @@ class _BaseImporter:
         logging_info("Formatting dataset ...")
         self.raw_data = self.raw_data.rename(columns=self.columns2tags)
         self.raw_data = self.raw_data.drop(columns=self.columns2delete, errors="ignore")
-        self.raw_data.applymap(
-            lambda x: remove_accents(x) if isinstance(x, str) else x,
-            na_action="ignore",
-        )
+        self.raw_data.applymap(lambda x: remove_accents(x) if isinstance(x, str) else x)
 
     def load_iso_source_abbreviations(self):
         """
@@ -92,7 +81,7 @@ class _BaseImporter:
 
         """
         module_path = dirname(__file__)
-        filepath = join(module_path, "../data/iso_source_abbreviations.csv")
+        filepath = join(module_path, "../config_data/iso_source_abbreviations.csv")
         pdf = pd.read_csv(filepath, sep=",")
         self.iso_source_abbreviations = dict(
             zip(pdf.publication_name, pdf.iso_source_abbreviation)
@@ -203,7 +192,7 @@ class _BaseImporter:
                 **new_abbreviations,
             }
             if len(new_abbreviations):
-                filename = self.datastorepath + "new_iso_source_abbreviations.csv"
+                filename = self.targetdir + "new_iso_source_abbreviations.csv"
                 if isfile(filename):
                     iso_sources = pd.read_csv(filename, sep=",", encoding="utf-8")
                     iso_sources = {
@@ -296,14 +285,15 @@ class _BaseImporter:
             & ~self.raw_data.document_title.isna()
         )
         if duplicates.any():
-            filename = self.datastorepath + "duplicates.csv"
+            filename = self.targetdir + "duplicates.csv"
             duplicates = self.raw_data[duplicates].copy()
             duplicates = duplicates.sort_values(by=["document_title"])
             duplicates.to_csv(filename, sep=",", encoding="utf-8", index=False)
             logging_info(
-                "Duplicate rows found in %s - Records saved to %s",
-                self.datastorepath + "datastore.csv",
-                filename,
+                "Duplicate rows found in {:s} - Records saved to {:s}".format(
+                    self.targetdir + "datastore.csv",
+                    filename,
+                )
             )
 
     def translate_british_to_amerian(self):
@@ -314,34 +304,39 @@ class _BaseImporter:
         if "abstract" in self.raw_data.columns:
             logging_info("Transforming British to American ...")
             module_path = dirname(__file__)
-            filename = join(module_path, "../data/bg2am.data")
+            filename = join(module_path, "../config_data/bg2am.data")
             bg2am = load_file_as_dict(filename)
             with tqdm(total=len(bg2am.keys())) as pbar:
 
-                for british_word in bg2am:
+                for british_word, american_word in bg2am.items():
+                    match = re.compile(f"\\b{british_word}\\b")
                     self.raw_data = self.raw_data.applymap(
-                        lambda w: re.sub(
-                            r"\b%s\b" % british_word, bg2am[british_word][0], w
-                        )
-                        if isinstance(w, str)
-                        else w
+                        lambda x: match.sub(american_word[0], x)
+                        if isinstance(x, str)
+                        else x
                     )
                     pbar.update(1)
-
-    def enumerate_records(self):
-        """
-        Enumerate records
-        """
-        self.raw_data["record_id"] = range(len(self.raw_data))
 
     def save_datastore(self):
         """
         Save datastore to csv.
 
         """
-        filename = self.datastorepath + "datastore.csv"
+        filename = self.targetdir + "datastore.csv"
+
+        #
+        # merges the current dataframe with the existing dataframe
+        #
+        if isfile(filename):
+            current_datastore = pd.read_csv(filename, encoding="utf-8")
+            if "record_id" in current_datastore.columns:
+                current_datastore.pop("record_id")
+            self.raw_data = pd.concat([current_datastore, self.raw_data])
+            self.raw_data = self.raw_data.drop_duplicates()
+
+        self.raw_data["record_id"] = range(len(self.raw_data))
         self.raw_data.to_csv(filename, sep=",", encoding="utf-8", index=False)
-        logging_info("Datastore saved to %s" % filename)
+        logging_info("Datastore saved/merged to " + filename)
 
     def run(self):
         """
@@ -357,8 +352,7 @@ class _BaseImporter:
         self.compute_new_columns()
         self.drop_duplicates()
         self.report_duplicate_titles()
-        # self.translate_british_to_amerian()
-        self.enumerate_records()
+        self.translate_british_to_amerian()
         self.save_datastore()
 
     # --- Computed columns ----------------------------------------------------
@@ -435,8 +429,8 @@ class ScopusImporter(_BaseImporter):
 
     """
 
-    def __init__(self, filepath, filetype, datastorepath):
-        super().__init__(filepath, filetype, datastorepath)
+    def __init__(self, source, filetype, targetdir):
+        super().__init__(source, filetype, targetdir)
         self.tagsfile = "scopus2tags.csv"
 
     def extract_data(self):
@@ -444,10 +438,11 @@ class ScopusImporter(_BaseImporter):
         Imports data from a Scopus CSV file.
 
         """
-        logging_info("Reading file " + self.filepath + " ...")
+        logging_info("Reading file " + self.source + " ...")
         self.raw_data = pd.read_csv(
-            self.filepath, encoding="utf-8", on_bad_lines="skip"
+            self.source, encoding="utf-8", error_bad_lines=False
         )
+        # on_bad_lines="skip")
 
     def format_authors(self):
         """
@@ -494,12 +489,12 @@ class ScopusImporter(_BaseImporter):
                 lambda x: authors_ids[x] if x in authors_ids.keys() else x
             )
 
-    def run(self):
-        """
-        Runs the importer.
+    # def run(self):
+    #     """
+    #     Runs the importer.
 
-        """
-        super().run()
+    #     """
+    #     super().run()
 
 
 # ----< WoS >-----------------------------------------------------
@@ -511,8 +506,8 @@ class WoSImporter(_BaseImporter):
 
     """
 
-    def __init__(self, filepath, filetype, datastorepath):
-        super().__init__(filepath, filetype, datastorepath)
+    def __init__(self, source, filetype, targetdir):
+        super().__init__(source, filetype, targetdir)
         self.tagsfile = "wos2tags.csv"
 
     def extract_data(self):
@@ -526,7 +521,7 @@ class WoSImporter(_BaseImporter):
             record = {}
             key = None
             value = []
-            with open(self.filepath, "rt", encoding="utf-8") as file:
+            with open(self.source, "rt", encoding="utf-8") as file:
                 for line in file:
                     line = line.replace("\n", "")
                     if line.strip() == "ER":
@@ -577,12 +572,12 @@ class WoSImporter(_BaseImporter):
                 ",", "", regex=True
             )
 
-    def run(self):
-        """
-        Runs the importer.
+    # def run(self):
+    #     """
+    #     Runs the importer.
 
-        """
-        super().run()
+    #     """
+    #     super().run()
 
 
 # ----< Dimensions >-------------------------------------------------
@@ -595,8 +590,8 @@ class DimensionsImporter(_BaseImporter):
 
     """
 
-    def __init__(self, filepath, filetype, datastorepath):
-        super().__init__(filepath, filetype, datastorepath)
+    def __init__(self, source, filetype, targetdir):
+        super().__init__(source, filetype, targetdir)
         self.tagsfile = "dimensions2tags.csv"
 
     def extract_data(self):
@@ -604,7 +599,7 @@ class DimensionsImporter(_BaseImporter):
         Imports data from a Dimensions CSV file.
 
         """
-        self.raw_data = pd.read_csv(self.filepath, skiprows=1)
+        self.raw_data = pd.read_csv(self.source, skiprows=1)
 
     def format_authors(self):
         """
@@ -649,38 +644,38 @@ class DimensionsImporter(_BaseImporter):
                 lambda x: pd.NA if not pd.isna(x) and x == "[Anonymous]" else x
             )
 
-    def run(self):
-        """
-        Runs the importer.
+    # def run(self):
+    #     """
+    #     Runs the importer.
 
-        """
-        super().run()
+    #     """
+    #     super().run()
 
 
 # ----< Generic >-------------------------------------------------
 
 
-def create_import_object(source, filetype, target):
+def create_import_object(source, filetype, targetdir):
     """
     Creates an import object based on the filetype.
 
     """
     if filetype == "scopus":
-        return ScopusImporter(source, filetype, target)
+        return ScopusImporter(source, filetype, targetdir)
     if filetype == "wos":
-        return WoSImporter(source, filetype, target)
+        return WoSImporter(source, filetype, targetdir)
     if filetype == "dimensions":
-        return DimensionsImporter(source, filetype, target)
+        return DimensionsImporter(source, filetype, targetdir)
     raise NotImplementedError
 
 
-def import_raw(source, filetype, target):
+def import_raw(source, filetype, targetdir):
     """
     Imports a dataset file.
 
     """
     if isfile(source):
-        create_import_object(source, filetype, target).run()
+        create_import_object(source, filetype, targetdir).run()
         logging_info("File " + source + " imported.")
     else:
         raise FileNotFoundError

@@ -1,18 +1,13 @@
-import logging
-from os.path import exists, isfile
+from os.path import isfile
 
 import numpy as np
 import pandas as pd
-from techminer.preparation.apply_institutions_thesaurus import (
-    apply_institutions_thesaurus,
-)
-from techminer.preparation.apply_keywords_thesaurus import apply_keywords_thesaurus
-from techminer.preparation.create_institutions_thesaurus import (
-    create_institutions_thesaurus,
-)
-from techminer.preparation.create_keywords_thesaurus import create_keywords_thesaurus
-from techminer.utils.explode import explode
-from techminer.utils.logging_info import logging_info
+from src.data.create_institutions_thesaurus import create_institutions_thesaurus
+from src.data.create_keywords_thesaurus import create_keywords_thesaurus
+from src.features.apply_institutions_thesaurus import apply_institutions_thesaurus
+from src.features.apply_keywords_thesaurus import apply_keywords_thesaurus
+from src.utils.explode import explode
+from src.utils.logging_info import logging_info
 
 
 class DatastoreTransformations:
@@ -20,23 +15,23 @@ class DatastoreTransformations:
     This class is used to transform the data from the datastore
     """
 
-    def __init__(self, datastorepath="./"):
+    def __init__(self, datastoredir="./"):
         """
         This method is used to initialize the class
-        :param datastorepath:
+        :param datastoredir:
         :return:
         """
         self.datastore = None
-        self.datastorepath = datastorepath
-        if self.datastorepath[-1] != "/":
-            self.datastorepath += "/"
+        self.datastoredir = datastoredir
+        if self.datastoredir[-1] != "/":
+            self.datastoredir += "/"
 
     def load_datastore(self):
         """
         Loads datastore.
 
         """
-        filename = self.datastorepath + "datastore.csv"
+        filename = self.datastoredir + "datastore.csv"
         if isfile(filename):
             self.datastore = pd.read_csv(filename, sep=",", encoding="utf-8")
         else:
@@ -127,7 +122,7 @@ class DatastoreTransformations:
 
         self.datastore = self.datastore.assign(
             local_references=[
-                pd.NA if len(local_reference) == 0 else local_reference
+                None if len(local_reference) == 0 else local_reference
                 for local_reference in self.datastore.local_references
             ]
         )
@@ -244,7 +239,7 @@ class DatastoreTransformations:
         )
 
     def create_KW_exclude(self):
-        filename = self.datastorepath + "KW_ignore.txt"
+        filename = self.datastoredir + "KW_ignore.txt"
         if isfile(filename):
             open(filename, "a").close()
 
@@ -253,19 +248,19 @@ class DatastoreTransformations:
         Saves datastore.
 
         """
-        filename = self.datastorepath + "datastore.csv"
+        filename = self.datastoredir + "datastore.csv"
         self.datastore.to_csv(filename, sep=",", encoding="utf-8", index=False)
         logging_info("Datastore saved to " + filename)
 
 
-def process_datastore(datastorepath="./"):
+def process_datastore(datastoredir):
     """
     This method is used to process the datastore
 
-    :param datastorepath:
+    :param datastoredir:
     :return:
     """
-    datastore = DatastoreTransformations(datastorepath)
+    datastore = DatastoreTransformations(datastoredir)
     datastore.load_datastore()
     datastore.create_historiograph_id()
     datastore.delete_existent_local_references()
@@ -278,7 +273,7 @@ def process_datastore(datastorepath="./"):
     #
     datastore.save_datastore()
     #
-    create_institutions_thesaurus(datastorepath=datastorepath)
-    apply_institutions_thesaurus(datastorepath=datastorepath)
-    create_keywords_thesaurus(datastorepath=datastorepath)
-    apply_keywords_thesaurus(datastorepath=datastorepath)
+    create_institutions_thesaurus(datastoredir=datastoredir)
+    apply_institutions_thesaurus(datastoredir=datastoredir)
+    create_keywords_thesaurus(datastoredir=datastoredir)
+    apply_keywords_thesaurus(datastoredir=datastoredir)

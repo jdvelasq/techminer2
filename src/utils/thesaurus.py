@@ -2,8 +2,9 @@ import json
 import re
 from os.path import dirname, join
 
+import numpy as np
 import pandas as pd
-from techminer.utils.text import (
+from src.utils.text import (
     find_string,
     fingerprint,
     one_gram,
@@ -53,8 +54,8 @@ def text_clustering(x, name_strategy="mostfrequent", key="porter", transformer=N
     # Delete 'of'
     #
     x["word_alt"] = x["word"].copy()
-    x["word_alt"] = x["word_alt"].map(lambda w: remove_brackets(w))
-    x["word_alt"] = x["word_alt"].map(lambda w: remove_parenthesis(w))
+    x["word_alt"] = x["word_alt"].map(remove_brackets)
+    x["word_alt"] = x["word_alt"].map(remove_parenthesis)
     x["word_alt"] = x["word_alt"].map(lambda w: w.replace("&", "and"))
     x["word_alt"] = x["word_alt"].map(lambda w: w.replace(" of ", ""))
 
@@ -71,9 +72,9 @@ def text_clustering(x, name_strategy="mostfrequent", key="porter", transformer=N
     # British to american english
     #
     module_path = dirname(__file__)
-    filename = join(module_path, "../data/bg2am.data")
+    filename = join(module_path, "../config_data/bg2am.data")
     bg2am_ = load_file_as_dict(filename)
-    x["word_alt"] = x["word_alt"].map(lambda w: translate(w))
+    x["word_alt"] = x["word_alt"].map(translate)
 
     #
     # key computation
@@ -190,7 +191,9 @@ def read_textfile(filename):
 
 
 class Thesaurus:
-    def __init__(self, x={}, ignore_case=True, full_match=False, use_re=False):
+    def __init__(self, x=None, ignore_case=True, full_match=False, use_re=False):
+        if x == None:
+            x = {}
         self._thesaurus = x
         self._ignore_case = ignore_case
         self._full_match = full_match
@@ -438,10 +441,10 @@ class Thesaurus:
 
     def apply_as_dict(self, x, strict=False):
 
-        if x is pd.NA:
-            return pd.NA
+        if pd.isna(x):
+            return None
         if strict is True and x not in self._dict.keys():
-            return pd.NA
+            return None
         return self._dict[x] if x in self._dict.keys() else x
 
 

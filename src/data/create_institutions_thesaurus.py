@@ -2,9 +2,9 @@ import io
 from os.path import dirname, isfile, join
 
 import pandas as pd
-from techminer.utils.extract_country_name import extract_country_name
-from techminer.utils.logging_info import logging_info
-from techminer.utils.thesaurus import Thesaurus, load_file_as_dict
+from src.utils.extract_country_name import extract_country_name
+from src.utils.logging_info import logging_info
+from src.utils.thesaurus import Thesaurus, load_file_as_dict
 
 #
 # The algorithm searches in order until
@@ -106,7 +106,7 @@ SPANISH = [
 PORTUGUES = ["BRA", "PRT"]
 
 
-def create_institutions_thesaurus(datastorepath="./"):
+def create_institutions_thesaurus(datastoredir):
     #
     def clean_name(w):
         w = w.replace(".", "").lower().strip()
@@ -167,21 +167,21 @@ def create_institutions_thesaurus(datastorepath="./"):
 
                     return selected_name.lower()
 
-        return pd.NA
+        return None
 
     logging_info("Creating institutions thesaurus ...")
 
-    if datastorepath[-1] != "/":
-        datastorepath = datastorepath + "/"
+    if datastoredir[-1] != "/":
+        datastoredir = datastoredir + "/"
 
-    thesaurus_file = datastorepath + "TH_institutions.txt"
+    thesaurus_file = datastoredir + "TH_institutions.txt"
 
     #
     # Valid names of institutions
     #
     module_path = dirname(__file__)
     with io.open(
-        join(module_path, "../data/institutions.data"), "r", encoding="utf-8"
+        join(module_path, "../config_data/institutions.data"), "r", encoding="utf-8"
     ) as f:
         VALID_NAMES = f.readlines()
     VALID_NAMES = [w.replace("\n", "").lower() for w in VALID_NAMES]
@@ -191,7 +191,7 @@ def create_institutions_thesaurus(datastorepath="./"):
     # List of standardized country names
     #
     module_path = dirname(__file__)
-    filename = join(module_path, "../data/country_codes.data")
+    filename = join(module_path, "../config_data/country_codes.data")
     country_codes = load_file_as_dict(filename)
     country_names = list(country_codes.values())
     country_names = [w[0].lower() for w in country_names]
@@ -203,7 +203,7 @@ def create_institutions_thesaurus(datastorepath="./"):
     # Loads datastore.csv
     #
 
-    filename = datastorepath + "datastore.csv"
+    filename = datastoredir + "datastore.csv"
     if isfile(filename):
         data = pd.read_csv(filename)
     else:
@@ -251,7 +251,7 @@ def create_institutions_thesaurus(datastorepath="./"):
     if any(x.country.isna()):
         logging_info(
             "Affiliations without country detected - check file "
-            + datastorepath
+            + datastoredir
             + "ignored_affiliations.txt"
         )
 
@@ -275,7 +275,7 @@ def create_institutions_thesaurus(datastorepath="./"):
     if any(x.key.isna()):
         logging_info(
             "Affiliations without country detected - check file "
-            + datastorepath
+            + datastoredir
             + "ignored_affiliations.txt"
         )
     ignored_affiliations += x[x.key.isna()]["affiliation"].tolist()
@@ -283,7 +283,7 @@ def create_institutions_thesaurus(datastorepath="./"):
     #
     # list of ignored affiliations for manual review
     #
-    ignored_affiliations = datastorepath + "ignored_affiliations.txt"
+    ignored_affiliations = datastoredir + "ignored_affiliations.txt"
     with io.open(ignored_affiliations, "w", encoding="utf-8") as f:
         for aff in ignored_affiliations:
             print(aff, file=f)

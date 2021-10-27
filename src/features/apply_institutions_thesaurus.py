@@ -2,17 +2,17 @@ import logging
 from os.path import isfile
 
 import pandas as pd
-from techminer.utils.logging_info import logging_info
-from techminer.utils.map import map_
-from techminer.utils.thesaurus import read_textfile
+from src.utils.logging_info import logging_info
+from src.utils.map import map_
+from src.utils.thesaurus import read_textfile
 
 
-def apply_institutions_thesaurus(datastorepath="./"):
+def apply_institutions_thesaurus(datastoredir="./"):
 
-    if datastorepath[-1] != "/":
-        datastorepath = datastorepath + "/"
+    if datastoredir[-1] != "/":
+        datastoredir = datastoredir + "/"
 
-    datastorefile = datastorepath + "datastore.csv"
+    datastorefile = datastoredir + "datastore.csv"
     if isfile(datastorefile):
         data = pd.read_csv(datastorefile)
     else:
@@ -23,7 +23,7 @@ def apply_institutions_thesaurus(datastorepath="./"):
     ##
     ## Loads the thesaurus
     ##
-    thesaurus_file = datastorepath + "TH_institutions.txt"
+    thesaurus_file = datastoredir + "TH_institutions.txt"
     th = read_textfile(thesaurus_file)
     th = th.compile_as_dict()
 
