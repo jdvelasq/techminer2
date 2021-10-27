@@ -9,8 +9,7 @@ Collaboration Analysis
 Column Explorer
 Comparative Analysis
 Conceptual Structure
-Core Authors Analysis
-Core Sources Analysis
+
 Correlation Analysis
 Coverage
 Descriptive Statistics
@@ -42,5 +41,7 @@ Migradas
 
 Apply thesaurus
 Bradford Law
+Core Authors Analysis
+Core Sources Analysis
 
 Top Documents
