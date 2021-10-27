@@ -11,7 +11,7 @@ Comparative Analysis
 Conceptual Structure
 
 Correlation Analysis
-Coverage
+
 Descriptive Statistics
 Extract User Keywords
 Factor Analysis
@@ -43,5 +43,6 @@ Apply thesaurus
 Bradford Law
 Core Authors Analysis
 Core Sources Analysis
+Coverage
 
 Top Documents
