@@ -347,7 +347,7 @@ class _BaseImporter:
         self.compute_new_columns()
         self.drop_duplicates()
         self.report_duplicate_titles()
-        self.translate_british_to_amerian()
+        # self.translate_british_to_amerian()
         self.save_datastore()
 
     # --- Computed columns ----------------------------------------------------
@@ -457,9 +457,30 @@ class ScopusImporter(_BaseImporter):
             )
 
         if "authors_id" in self.raw_data.columns:
-            logging_info("Removing [No author id available]")
+            logging_info("Formating authors_id ...")
             self.raw_data["authors_id"] = self.raw_data.authors_id.map(
                 lambda w: pd.NA if w == "[No author id available]" else w
+            )
+            self.raw_data["authors_id"] = self.raw_data.authors_id.map(
+                lambda x: x[:-1] if isinstance(x, str) and x[-1] == ";" else x
+            )
+
+            authors_ids = self.raw_data[["authors", "authors_id"]].dropna()
+            authors_ids = {
+                b: a for a, b in zip(authors_ids.authors, authors_ids.authors_id)
+            }
+
+            authors_ids = {
+                k: list(zip(k.split(";"), v.split("; ")))
+                for k, v in authors_ids.items()
+            }
+            authors_ids = {
+                k: ["/".join([b, a]) for a, b in v] for k, v in authors_ids.items()
+            }
+            authors_ids = {k: "; ".join(v) for k, v in authors_ids.items()}
+
+            self.raw_data["authors_id"] = self.raw_data.authors_id.map(
+                lambda x: authors_ids[x] if x in authors_ids.keys() else x
             )
 
     def run(self):
