@@ -47,7 +47,7 @@ RUN pip3 --disable-pip-version-check --no-cache-dir install \
 
 RUN pip3 --disable-pip-version-check --no-cache-dir install \
     numpy==1.19.5 \
-    matplotlib==3.2.2 \
+    matplotlib==3.1.0 \
     graphviz==0.10.1 \
     ipykernel==4.10.1 \
     scikit-learn==0.22.2.post1 \
