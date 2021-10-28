@@ -1,2 +1,1 @@
-from .bradford import Bradford
-from .core import core_sources
+from .core import core_authors, core_sources

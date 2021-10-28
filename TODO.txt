@@ -30,9 +30,7 @@ Text Clustering
 TF*IDF Analysis
 Thematic Analysis
 Apply thesaurus
-Bradford Law
-Core Authors Analysis
-Core Sources Analysis
+
 
 
 
@@ -40,6 +38,9 @@ Core Sources Analysis
 Migradas 
 -------------------------------
 
+Bradford Law
+Core Authors Analysis
+Core Sources Analysis
 Coverage
 Term Analysis
 Time analysis
