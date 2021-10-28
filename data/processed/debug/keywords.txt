@@ -18,8 +18,6 @@
 3d solution
     3d solution
     3d solutions
-3d solutions
-    3d solutions
 3d surface imaging
     3d surface imaging
 3d vegetation structure
@@ -105,8 +103,6 @@ active tectonics
 activity space
     activity space
     activity spaces
-activity spaces
-    activity spaces
 actuators
     actuators
 adaptive comfort
@@ -169,8 +165,6 @@ aedes albopictus
     aedes albopictus
 aes
     aes
-agent based simulation
-    agent based simulation
 agent-based model
     agent-based model
     agent-based modeling
@@ -281,8 +275,6 @@ analytic continuation
 analytic signal
     analytic signal
     analytic signals
-analytic signals
-    analytic signals
 analytical model
     analytical model
     analytical models
@@ -309,8 +301,6 @@ animal communication
     animal communication
 animals
     animals
-    animation
-animation
     animation
 anisotropy
     anisotropy
@@ -442,8 +432,6 @@ atomistic simulations
     atomistic simulations
 atomization
     atomization
-    atoms
-atoms
     atoms
 atp
     atp
@@ -602,8 +590,6 @@ bayesian optimization
 bayesian optimization algorithm
     bayesian optimization algorithm
     bayesian optimization algorithms
-bayesian optimization algorithms
-    bayesian optimization algorithms
 bayesian paradigm
     bayesian paradigm
 bayesian sampling
@@ -640,12 +626,8 @@ benchmark datasets
     benchmark datasets
 benchmark functions
     benchmark functions
-benchmarking
-    benchmarking
 bending moment
     bending moment
-    bending moments
-bending moments
     bending moments
 benford's law
     benford's law
@@ -661,8 +643,6 @@ bias correction
     bias correction
 bibliometrics
     bibliometrics
-big data
-    big data
 big volume image data
     big volume image data
 big-data
@@ -828,8 +808,6 @@ c (programming language)
     c (programming language)
     c++
     c++ (programming language)
-c language
-    c language
 c++ amp
     c++ amp
 c++ libraries
@@ -857,8 +835,6 @@ calibration process
     calibration process
 caloric effect
     caloric effect
-    caloric effects
-caloric effects
     caloric effects
 calorimetry
     calorimetry
@@ -947,8 +923,6 @@ cell proliferation
 cell shape
     cell shape
     cell shapes
-cell shapes
-    cell shapes
 cell testing
     cell testing
 cell tracking
@@ -1018,8 +992,6 @@ classical problems
 classification
     classification
     classification (of information)
-classification (of information)
-    classification (of information)
 classification algorithm
     classification algorithm
 classification codes
@@ -1083,8 +1055,6 @@ clustering accuracy
     clustering accuracy
 clustering algorithms
     clustering algorithms
-clustering analysis
-    clustering analysis
 clustering problems
     clustering problems
 clutter (information theory)
@@ -1154,8 +1124,6 @@ cohesive zone
 cohesive zone model
     cohesive zone model
     cohesive zone models
-cohesive zones
-    cohesive zones
 cold neutron
     cold neutron
 collaborative development
@@ -1286,8 +1254,6 @@ comprehensive documentation
 compressed sensing
     compressed sensing
     compressive sensing
-compressive sensing
-    compressive sensing
 computation
     computation
 computation theory
@@ -1350,8 +1316,6 @@ computational performance
     computational performance
 computational platform
     computational platform
-    computational platforms
-computational platforms
     computational platforms
 computational power
     computational power
@@ -1483,8 +1447,6 @@ configuration entropy
     configuration entropy
 configuration file
     configuration file
-    configuration files
-configuration files
     configuration files
 configuration management
     configuration management
@@ -1647,8 +1609,6 @@ cost functions
 cost surface
     cost surface
     cost surfaces
-cost surfaces
-    cost surfaces
 costs
     costs
 cost–benefit optimization
@@ -1688,14 +1648,10 @@ crop simulation
     crop simulations
 crop simulation model
     crop simulation model
-crop simulations
-    crop simulations
 crops
     crops
 cross correlation
     cross correlation
-    cross correlations
-cross correlations
     cross correlations
 cross-channel causality analysis
     cross-channel causality analysis
@@ -1794,8 +1750,6 @@ dark matter
     dark matter
 data acquisition
     data acquisition
-data analysis
-    data analysis
 data analytics
     data analytics
 data and metadata
@@ -1906,8 +1860,6 @@ database
     databases
 database systems
     database systems
-databases
-    databases
 dataflow
     dataflow
 dataset
@@ -1935,8 +1887,6 @@ decision support systems
     decision support systems
 decision support tool
     decision support tool
-    decision support tools
-decision support tools
     decision support tools
 decision theory
     decision theory
@@ -1966,8 +1916,6 @@ deformable particles
     deformable particles
 deformation
     deformation
-deformation induced anisotropy
-    deformation induced anisotropy
 deformation-induced anisotropy
     deformation induced anisotropy
     deformation-induced anisotropy
@@ -2064,8 +2012,6 @@ differential diffusion
     differential diffusion
 differential equation solver
     differential equation solver
-    differential equation solvers
-differential equation solvers
     differential equation solvers
 differential equations
     differential equations
@@ -2209,8 +2155,6 @@ displacement field
 disruption tolerant network
     disruption tolerant network
     disruption tolerant networks
-disruption tolerant networks
-    disruption tolerant networks
 dissipative effects
     dissipative effects
 distance matrices
@@ -2282,8 +2226,6 @@ domain specific
     domain specific
 domain specific language
     domain specific language
-    domain specific languages
-domain specific languages
     domain specific languages
 doping (additives)
     doping (additives)
@@ -2635,8 +2577,6 @@ energy balance
 energy balance model
     energy balance model
     energy balance models
-energy balance models
-    energy balance models
 energy conservation
     energy conservation
 energy consumption
@@ -2719,8 +2659,6 @@ epitaxial films
     epitaxial films
 equation solver
     equation solver
-    equation solvers
-equation solvers
     equation solvers
 equilibrium approaches
     equilibrium approaches
@@ -2988,8 +2926,6 @@ fiber bragg grating sensors
 fictive temperature
     fictive temperature
     fictive temperatures
-fictive temperatures
-    fictive temperatures
 fiducial marker
     fiducial marker
     fiducial markers
@@ -3007,8 +2943,6 @@ field of views
     field of views
 field programmable gate array
     field programmable gate array
-    field programmable gate arrays (fpga)
-field programmable gate arrays (fpga)
     field programmable gate arrays (fpga)
 field research
     field research
@@ -3051,10 +2985,6 @@ finite element analysis model
     finite element analysis model
 finite element library
     finite element library
-finite element method
-    finite element method
-    finite element method (fem)
-    finite element methods
 finite element method models
     finite element method models
 finite element modeling
@@ -3155,8 +3085,6 @@ fluorescence imaging
     fluorescent images
 fluorescence microscopy
     fluorescence microscopy
-fluorescent images
-    fluorescent images
 flux analysis
     flux analysis
 fmi
@@ -3708,8 +3636,6 @@ handling time
     handling time
 hands-on training
     hands-on training
-    hands-on-trainings
-hands-on-trainings
     hands-on-trainings
 hardening
     hardening
@@ -4571,8 +4497,6 @@ landscape evolution
     landscape evolutions
 landscape evolution model
     landscape evolution model
-landscape evolutions
-    landscape evolutions
 landscape scale
     landscape scale
 landscape visualization
@@ -4695,8 +4619,6 @@ liggghts
     liggghts
 light
     light
-light fields
-    light fields
 light radiation
     light radiation
 light radiation coincidence
@@ -5003,9 +4925,6 @@ material characteristics
     material characteristics
 material characterization
     material characterization
-    material characterizations
-    materials characterization
-material characterizations
     material characterizations
     materials characterization
 material laws
@@ -6041,8 +5960,6 @@ on-line communities
     on-line communities
 on-line service
     on-line service
-one dimensional turbulence
-    one dimensional turbulence
 one-dimensional turbulence
     one dimensional turbulence
     one-dimensional turbulence
@@ -6278,8 +6195,6 @@ parafac
 paraffin
     paraffin
     paraffins
-paraffins
-    paraffins
 parallel
     parallel
     parallelism
@@ -6353,8 +6268,6 @@ part2track
     part2track
 partial differential equations
     partial differential equations
-    partial differential equations (pdes)
-partial differential equations (pdes)
     partial differential equations (pdes)
 partial-wave method
     partial-wave method

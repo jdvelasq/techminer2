@@ -5,7 +5,7 @@ Datastore preparation module.
 
 import re
 from os import mkdir
-from os.path import dirname, isfile, join
+from os.path import dirname, isdir, isfile, join
 
 import pandas as pd
 from techminer.utils.extract_country_name import extract_country_name
@@ -40,7 +40,7 @@ class _BaseImporter:
         Checks if directory exists.
 
         """
-        if not isfile(self.directory):
+        if not isdir(self.directory):
             mkdir(self.directory)
 
     def extract_data(self):
