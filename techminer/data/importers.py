@@ -336,9 +336,14 @@ class _BaseImporter:
         if isfile(filename):
             current_datastore = pd.read_csv(filename, encoding="utf-8")
             if "record_id" in current_datastore.columns:
-                current_datastore.pop("record_id")
-            self.raw_data = pd.concat([current_datastore, self.raw_data])
-            self.raw_data = self.raw_data.drop_duplicates()
+                print("-----------------------------------------------------")
+                current_datastore.drop("record_id", inplace=True, axis=1)
+            # current_columns = set(current_datastore.columns)
+            # raw_columns = set(self.raw_data.columns)
+            # common_columns = current_columns & raw_columns
+            main_columns = {"pub_year", "document_title", "authors", "publication_name"}
+            self.raw_data = pd.concat([current_datastore, self.raw_data], sort=False)
+            self.raw_data.drop_duplicates(subset=main_columns, inplace=True)
 
         self.raw_data["record_id"] = range(len(self.raw_data))
         self.raw_data.to_csv(filename, sep=",", encoding="utf-8", index=False)
@@ -359,7 +364,7 @@ class _BaseImporter:
         self.compute_new_columns()
         self.drop_duplicates()
         self.report_duplicate_titles()
-        self.translate_british_to_amerian()
+        # self.translate_british_to_amerian()
         self.save_records()
 
     # --- Computed columns ----------------------------------------------------
