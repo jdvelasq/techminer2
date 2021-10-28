@@ -338,9 +338,6 @@ class _BaseImporter:
             if "record_id" in current_datastore.columns:
                 print("-----------------------------------------------------")
                 current_datastore.drop("record_id", inplace=True, axis=1)
-            # current_columns = set(current_datastore.columns)
-            # raw_columns = set(self.raw_data.columns)
-            # common_columns = current_columns & raw_columns
             main_columns = {"pub_year", "document_title", "authors", "publication_name"}
             self.raw_data = pd.concat([current_datastore, self.raw_data], sort=False)
             self.raw_data.drop_duplicates(subset=main_columns, inplace=True)
@@ -364,7 +361,7 @@ class _BaseImporter:
         self.compute_new_columns()
         self.drop_duplicates()
         self.report_duplicate_titles()
-        # self.translate_british_to_amerian()
+        self.translate_british_to_amerian()
         self.save_records()
 
     # --- Computed columns ----------------------------------------------------

@@ -1,5 +1,6 @@
+-------------------------------
 Pendientes
----------------
+-------------------------------
 
 
 Bigraph analysis
@@ -24,24 +25,24 @@ Manage Columns
 Matrix Explorer
 Record Filtering
 Scopus Importer
-Term Analysis
+
 Term per year Analysis
 Text Clustering
 TF*IDF Analysis
 Thematic Analysis
-Time analysis
-
-
-
-
-Migradas 
----------------
-
 Apply thesaurus
 Bradford Law
 Core Authors Analysis
 Core Sources Analysis
 Coverage
 
+
+-------------------------------
+Migradas 
+-------------------------------
+
+
+Term Analysis
+Time analysis
 Top Documents
 Worldmap

@@ -19,7 +19,7 @@ def top_documents(
     Parameters
     ----------
     directory_or_records: str
-        Directory or records to be analyzed.
+        path to the directory or the records object.
     global_citations: bool
         Whether to use global citations or not.
     normalized_citations: bool

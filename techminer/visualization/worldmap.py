@@ -10,7 +10,13 @@ TEXTLEN = 40
 
 
 def worldmap(
-    x, cmap="Pastel2", figsize=(6, 6), legend=True, fontsize=11, *args, **kwargs,
+    x,
+    cmap="Pastel2",
+    figsize=(6, 6),
+    legend=True,
+    fontsize=11,
+    *args,
+    **kwargs,
 ):
 
     """Worldmap plot with the number of documents per country.
@@ -51,18 +57,10 @@ def worldmap(
     df["color"] = x.map(lambda w: 0.1 + 0.9 * (w - x.min()) / (x.max() - x.min()))
 
     module_path = dirname(__file__)
-    with open(join(module_path, "../data/worldmap.data"), "r") as f:
-        countries = json.load(f)
-
-    #
-    #  country_names_in_table = df.index.tolist()
-    # country_names_in_map = [c.lower() for c in countries.keys()]
-
-    #  for country in country_names_in_table:
-    #      if country not in country_names_in_map:
-    #          print(country)
-    # print(sorted(country_names))
-    #
+    with open(
+        join(module_path, "../config_data/worldmap.data"), "r", encoding="utf-8"
+    ) as file:
+        countries = json.load(file)
 
     for country in countries.keys():
         data = countries[country]
@@ -119,4 +117,3 @@ def worldmap(
     fig.set_tight_layout(True)
 
     return fig
-
