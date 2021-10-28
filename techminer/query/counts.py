@@ -4,7 +4,7 @@ Documents by term
 
 """
 
-from numpy.core.records import record
+
 from techminer.data.records import load_records
 
 

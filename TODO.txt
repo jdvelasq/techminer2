@@ -25,7 +25,6 @@ Manage Columns
 Matrix Explorer
 Record Filtering
 Scopus Importer
-
 Term per year Analysis
 Text Clustering
 TF*IDF Analysis
@@ -34,14 +33,14 @@ Apply thesaurus
 Bradford Law
 Core Authors Analysis
 Core Sources Analysis
-Coverage
+
 
 
 -------------------------------
 Migradas 
 -------------------------------
 
-
+Coverage
 Term Analysis
 Time analysis
 Top Documents
