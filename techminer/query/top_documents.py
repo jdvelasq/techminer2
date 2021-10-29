@@ -66,7 +66,10 @@ def most_cited_documents(
             "record_id",
             citations_column,
         ]
-    ].head(n_top)
+    ]
+
+    if n_top is not None:
+        records = records.head(n_top)
 
     records = records.sort_values(by=citations_column, ascending=False)
 
