@@ -26,7 +26,12 @@ def count_documents_by_term(directory_or_records, column, sep="; "):
     if sep is not None:
         records[column] = records[column].str.split(sep)
         records = records.explode(column)
-    return records.groupby(column, as_index=True).size().sort_values(ascending=False)
+    return (
+        records.groupby(column, as_index=True)
+        .size()
+        .sort_values(ascending=False)
+        .rename("num_documents")
+    )
 
 
 def _count_citations_by_term(directory_or_records, column, sep, citations_column):
@@ -45,7 +50,7 @@ def _count_citations_by_term(directory_or_records, column, sep, citations_column
 
     records = records[[column, citations_column]]
     if sep is not None:
-        records[column] = records[column].str.split(sep)
+        records.loc[:, column] = records[column].str.split(sep)
         records = records.explode(column)
     records = (
         records.groupby(column, as_index=True)
