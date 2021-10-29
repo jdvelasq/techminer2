@@ -20,7 +20,7 @@ def count_documents_by_term(directory_or_records, column, sep="; "):
     if isinstance(directory_or_records, str):
         records = load_records(directory_or_records)
     else:
-        records = directory_or_records
+        records = directory_or_records.copy()
 
     records = records[[column]]
     if sep is not None:

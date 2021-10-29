@@ -11,7 +11,6 @@ Column Explorer
 Comparative Analysis
 Conceptual Structure
 Correlation Analysis
-Descriptive Statistics
 Extract User Keywords
 Factor Analysis
 Graph Analysis
@@ -42,6 +41,8 @@ Bradford Law
 Core Authors Analysis
 Core Sources Analysis
 Coverage
+Descriptive Statistics
+Lotka plot
 Term Analysis
 Time analysis
 Top Documents
