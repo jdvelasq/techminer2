@@ -7,14 +7,14 @@ Top Documents
 from techminer.data.records import load_records
 
 
-def top_documents(
+def most_cited_documents(
     directory_or_records,
     global_citations=True,
     normalized_citations=False,
     n_top=50,
 ):
     """
-    Returns the top documents of the given directory or records.
+    Returns the most cited documents of the given directory or records.
 
     Parameters
     ----------
@@ -27,8 +27,8 @@ def top_documents(
 
     Returns
     -------
-    top_documents: pandas.DataFrame
-        Top documents.
+    most_cited_documents: pandas.DataFrame
+        Most cited documents.
     """
     if isinstance(directory_or_records, str):
         records = load_records(directory_or_records)

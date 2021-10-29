@@ -142,3 +142,26 @@ def mean_local_citations_by_year(directory_or_records):
     return count_local_citations_by_year(directory_or_records).sort_index(
         ascending=True
     ) / count_documents_by_year(directory_or_records).sort_index(ascending=True)
+
+
+def count_terms_by_column(directory_or_records, column, sep="; "):
+    """
+    Counts the number of terms by record.
+
+    :param directory_or_records: path to the directory or the records object
+    :param column: column to be used to count the terms
+    :param sep: separator to be used to split the column
+    :return: a pandas.Series with the number of terms by record.
+    """
+    if isinstance(directory_or_records, str):
+        records = load_records(directory_or_records)
+    else:
+        records = directory_or_records.copy()
+
+    if sep is not None:
+        records[column] = records[column].str.split(sep)
+        records[column] = records[column].map(len)
+    else:
+        records[column] = records[column].map(len)
+
+    return records[column]
