@@ -8,8 +8,8 @@ from os import mkdir
 from os.path import dirname, isdir, isfile, join
 
 import pandas as pd
+from techminer.utils import logging
 from techminer.utils.extract_country_name import extract_country_name
-from techminer.utils.logging_info import logging_info
 from techminer.utils.map import map_
 from techminer.utils.text import remove_accents
 from techminer.utils.thesaurus import load_file_as_dict
@@ -79,7 +79,7 @@ class _BaseImporter:
         Formats dataset.
 
         """
-        logging_info("Formatting dataset ...")
+        logging.info("Formatting dataset ...")
         self.raw_data = self.raw_data.rename(columns=self.columns2tags)
         self.raw_data = self.raw_data.drop(columns=self.columns2delete, errors="ignore")
         self.raw_data.applymap(lambda x: remove_accents(x) if isinstance(x, str) else x)
@@ -108,7 +108,7 @@ class _BaseImporter:
         Formats imported columns.
 
         """
-        logging_info("Formatting columns ...")
+        logging.info("Formatting columns ...")
 
         if "abstract" in self.raw_data.columns:
             self.raw_data.abstract = self.raw_data.abstract.str.lower()
@@ -229,7 +229,7 @@ class _BaseImporter:
         Calculate computed columns.
 
         """
-        logging_info("Computing new columns ...")
+        logging.info("Computing new columns ...")
 
         if "authors" in self.raw_data:
 
@@ -267,7 +267,7 @@ class _BaseImporter:
         Drops duplicates based on DOI and document title and authors.
 
         """
-        logging_info("Dropping duplicates ...")
+        logging.info("Dropping duplicates ...")
 
         if "doi" in self.raw_data.columns:
             duplicated_doi = (self.raw_data.doi.duplicated()) & (
@@ -298,7 +298,7 @@ class _BaseImporter:
             duplicates = self.raw_data[duplicates].copy()
             duplicates = duplicates.sort_values(by=["document_title"])
             duplicates.to_csv(filename, sep=",", encoding="utf-8", index=False)
-            logging_info(
+            logging.info(
                 f"Duplicate rows found in {self.directory}records.csv - Records saved to {filename}"
             )
 
@@ -308,7 +308,7 @@ class _BaseImporter:
 
         """
         if "abstract" in self.raw_data.columns:
-            logging_info("Transforming British to American ...")
+            logging.info("Transforming British to American ...")
             module_path = dirname(__file__)
             filename = join(module_path, "../config_data/bg2am.data")
             bg2am = load_file_as_dict(filename)
@@ -336,7 +336,6 @@ class _BaseImporter:
         if isfile(filename):
             current_datastore = pd.read_csv(filename, encoding="utf-8")
             if "record_id" in current_datastore.columns:
-                print("-----------------------------------------------------")
                 current_datastore.drop("record_id", inplace=True, axis=1)
             main_columns = {"pub_year", "document_title", "authors", "publication_name"}
             self.raw_data = pd.concat([current_datastore, self.raw_data], sort=False)
@@ -344,7 +343,7 @@ class _BaseImporter:
 
         self.raw_data["record_id"] = range(len(self.raw_data))
         self.raw_data.to_csv(filename, sep=",", encoding="utf-8", index=False)
-        logging_info(f"Records saved/merged to '{filename}'")
+        logging.info(f"Records saved/merged to '{filename}'")
 
     def run(self):
         """
@@ -374,7 +373,7 @@ class _BaseImporter:
 
     #     if "authors" in self.raw_data.columns and "authors_id" in self.raw_data.columns:
 
-    #         logging_info("Disambiguate author names ...")
+    #         logging.info("Disambiguate author names ...")
 
     #         self.raw_data["authors"] = self.raw_data.authors.map(
     #             lambda x: x[:-1] if not pd.isna(x) and x[-1] == ";" else x
@@ -447,7 +446,7 @@ class ScopusImporter(_BaseImporter):
         Imports data from a Scopus CSV file.
 
         """
-        logging_info(f"Reading file '{self.source}' ...")
+        logging.info(f"Reading file '{self.source}' ...")
         self.raw_data = pd.read_csv(
             self.source, encoding="utf-8", error_bad_lines=False
         )
@@ -459,7 +458,7 @@ class ScopusImporter(_BaseImporter):
         """
 
         if "authors" in self.raw_data.columns:
-            logging_info("Formating authors ...")
+            logging.info("Formating authors ...")
             self.raw_data.authors = self.raw_data.authors.map(
                 lambda x: pd.NA if x == "[No author name available]" else x
             )
@@ -472,7 +471,7 @@ class ScopusImporter(_BaseImporter):
             )
 
         if "authors_id" in self.raw_data.columns:
-            logging_info("Formating authors_id ...")
+            logging.info("Formating authors_id ...")
             self.raw_data["authors_id"] = self.raw_data.authors_id.map(
                 lambda w: pd.NA if w == "[No author id available]" else w
             )
@@ -634,7 +633,7 @@ class DimensionsImporter(_BaseImporter):
                 lambda x: format_authorslits(x) if not pd.isnull(x) else None,
             )
 
-            logging_info("Removing [Anonymous]")
+            logging.info("Removing [Anonymous]")
             self.raw_data.authors = self.raw_data.authors.map(
                 lambda x: pd.NA if not pd.isna(x) and x == "[Anonymous]" else x
             )
@@ -664,6 +663,6 @@ def import_records(source, filetype, directory):
     """
     if isfile(source):
         create_import_object(source, filetype, directory).run()
-        logging_info(f"The file '{source}' was successfully imported.")
+        logging.info(f"The file '{source}' was successfully imported.")
     else:
         raise FileNotFoundError
