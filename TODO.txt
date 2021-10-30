@@ -6,7 +6,7 @@ Utilidades por migrar
 -------------------------------
 Apply thesaurus
 Bigraph analysis
-Bradford Law
+    Bradford Law
 Citation Analysis
 Co-word Analysis
 Collaboration Analysis
@@ -15,7 +15,7 @@ Comparative Analysis
 Conceptual Structure
     Core Authors Analysis
     Lotka law plot
-Core Sources Analysis
+    Core Sources Analysis
 Correlation Analysis
     Coverage
     Descriptive Statistics
@@ -23,22 +23,21 @@ Extract User Keywords
 Factor Analysis
 Graph Analysis
 Growth Indicators
-Impact Analysis
+    Impact Analysis
 Keywords Associations
 Keywords comparison
 Latent Semantic Analysis
-Lotka plot
 Main Path Analysis
-Manage Columns
+    Manage Columns
 Matrix Explorer
 Record Filtering
-Scopus Importer
-Term Analysis
+    Scopus Importer
+    Term Analysis
 Term per year Analysis
 Text Clustering
 TF*IDF Analysis
 Thematic Analysis
-Time analysis
-Top Documents
-Worldmap
+    Time analysis
+    Top Documents --> most_cited_documents
+    Worldmap
 -------------------------------

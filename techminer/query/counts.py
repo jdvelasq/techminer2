@@ -132,9 +132,12 @@ def mean_global_citations_by_year(directory_or_records):
     :param directory_or_records: path to the directory or the records object
     :return: a pandas.Series with the mean number of global citations by year.
     """
-    return count_global_citations_by_year(directory_or_records).sort_index(
+    mgcy = count_global_citations_by_year(directory_or_records).sort_index(
         ascending=True
     ) / count_documents_by_year(directory_or_records).sort_index(ascending=True)
+    mgcy = mgcy.rename("mean_global_citations")
+    mgcy = mgcy.round(2)
+    return mgcy
 
 
 def mean_local_citations_by_year(directory_or_records):
@@ -144,9 +147,12 @@ def mean_local_citations_by_year(directory_or_records):
     :param directory_or_records: path to the directory or the records object
     :return: a pandas.Series with the mean number of local citations by year.
     """
-    return count_local_citations_by_year(directory_or_records).sort_index(
+    mlcy = count_local_citations_by_year(directory_or_records).sort_index(
         ascending=True
     ) / count_documents_by_year(directory_or_records).sort_index(ascending=True)
+    mlcy = mlcy.rename("mean_local_citations")
+    mlcy = mlcy.round(2)
+    return mlcy
 
 
 def count_terms_by_column(directory_or_records, column, sep="; "):
@@ -181,10 +187,6 @@ def term_analysis(directory_or_records, column, sep="; "):
     :param sep: separator to be used to split the column
     :return: a pandas.Series with the number of terms by record.
     """
-    if isinstance(directory_or_records, str):
-        records = load_records(directory_or_records)
-    else:
-        records = directory_or_records.copy()
 
     num_documents = count_documents_by_term(
         directory_or_records, column, sep
@@ -197,5 +199,33 @@ def term_analysis(directory_or_records, column, sep="; "):
     ).to_frame()
 
     analysis = pd.concat([num_documents, global_citations, local_citations], axis=1)
+
+    return analysis
+
+
+def time_analysis(directory_or_records):
+    """
+    Counts the number of terms by record.
+
+    :param directory_or_records: path to the directory or the records object
+    :return: a pandas.DataFrame with the analysis.
+    """
+
+    num_documents = count_documents_by_year(directory_or_records).to_frame()
+    global_citations = count_global_citations_by_year(directory_or_records).to_frame()
+    local_citations = count_local_citations_by_year(directory_or_records).to_frame()
+    mean_global_citations = mean_global_citations_by_year(directory_or_records)
+    mean_local_citations = mean_local_citations_by_year(directory_or_records)
+
+    analysis = pd.concat(
+        [
+            num_documents,
+            global_citations,
+            local_citations,
+            mean_global_citations,
+            mean_local_citations,
+        ],
+        axis=1,
+    )
 
     return analysis
