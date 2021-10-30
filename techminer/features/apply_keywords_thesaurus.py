@@ -7,28 +7,26 @@ Apply a  thesaurus to keywords.
 from os.path import isfile
 
 import pandas as pd
-from techminer.utils import logging
+from techminer.utils import load_records, logging
 from techminer.utils.map import map_
 from techminer.utils.thesaurus import read_textfile
 
 
 def apply_keywords_thesaurus(directory="./"):
 
+    logging.info("Applying thesaurus to keywords ...")
+
     if directory[-1] != "/":
         directory += "/"
 
-    datastorefile = directory + "records.csv"
-    if isfile(datastorefile):
-        datastore = pd.read_csv(datastorefile)
-    else:
-        raise FileNotFoundError("The file {} does not exist.".format(datastorefile))
+    datastore = load_records(directory)
 
     thesaurus_file = directory + "keywords.txt"
     if isfile(thesaurus_file):
         th = read_textfile(thesaurus_file)
         th = th.compile_as_dict()
     else:
-        raise FileNotFoundError("The file {} does not exist.".format(datastorefile))
+        raise FileNotFoundError("The file {} does not exist.".format(thesaurus_file))
 
     #
     # Author keywords cleaning
@@ -115,6 +113,6 @@ def apply_keywords_thesaurus(directory="./"):
     ##
     ## Saves!
     ##
-    datastore.to_csv(datastorefile, index=False)
-
+    # datastore.to_csv(datastorefile, index=False)
     logging.info("The thesaurus was applied to keywords.")
+    return datastore

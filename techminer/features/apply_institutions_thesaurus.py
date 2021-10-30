@@ -1,35 +1,35 @@
-from os.path import isfile
-
-import pandas as pd
-from techminer.utils import logging
+from techminer.utils import load_records, logging, save_records
+from techminer.utils.io import save_records
 from techminer.utils.map import map_
 from techminer.utils.thesaurus import read_textfile
 
 
-def apply_institutions_thesaurus(records, directory="./"):
+def apply_institutions_thesaurus(directory):
 
-    data = records
+    logging.info("Applying thesaurus to institutions ...")
+
+    data = load_records(directory)
 
     if directory[-1] != "/":
         directory = directory + "/"
 
-    ##
-    ## Loads the thesaurus
-    ##
+    #
+    # Loads the thesaurus
+    #
     thesaurus_file = directory + "institutions.txt"
     th = read_textfile(thesaurus_file)
     th = th.compile_as_dict()
 
-    ##
-    ## Copy affiliations to institutions
-    ##
+    #
+    # Copy affiliations to institutions
+    #
     data["institutions"] = data.affiliations.map(
         lambda w: w.lower().strip(), na_action="ignore"
     )
 
-    ##
-    ## Cleaning
-    ##
+    #
+    # Cleaning
+    #
     logging.info("Extract and cleaning institutions.")
     data["institutions"] = map_(
         data, "institutions", lambda w: th.apply_as_dict(w, strict=True)
@@ -40,6 +40,6 @@ def apply_institutions_thesaurus(records, directory="./"):
         lambda w: w.split(";")[0] if isinstance(w, str) else w
     )
 
-    logging.info("The thesaurus was applied to institutions.")
+    save_records(records=data, directory=directory)
 
-    return data
+    logging.info("The thesaurus was applied to institutions.")

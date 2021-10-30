@@ -39,3 +39,19 @@ def save_records(records, directory):
         logging.info(f"The file '{filename}' was rewrited.")
 
     records.to_csv(filename, sep=",", encoding="utf-8", index=False)
+
+
+def load_stopwords(directory):
+    """
+    Loads stopwords from project directory.
+
+    """
+    if directory[-1] != "/":
+        directory += "/"
+
+    filename = directory + "stopwords.txt"
+
+    if not os.path.isfile(filename):
+        raise FileNotFoundError(f"The file '{filename}' does not exist.")
+
+    return [line.strip() for line in open(filename, "r", encoding="utf-8").readlines()]

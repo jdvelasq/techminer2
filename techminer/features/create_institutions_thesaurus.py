@@ -2,7 +2,7 @@ import io
 from os.path import dirname, isfile, join
 
 import pandas as pd
-from techminer.utils import logging
+from techminer.utils import load_records, logging
 from techminer.utils.extract_country import extract_country as extract_country_name
 from techminer.utils.thesaurus import Thesaurus, load_file_as_dict
 
@@ -108,7 +108,7 @@ PORTUGUES = [
 ]
 
 
-def create_institutions_thesaurus(records):
+def create_institutions_thesaurus(directory):
     #
     def clean_name(w):
         w = w.replace(".", "").lower().strip()
@@ -205,7 +205,7 @@ def create_institutions_thesaurus(records):
     # Loads datastore.csv
     #
 
-    data = records
+    data = load_records(directory)
 
     #
     # Transform affiliations to lower case

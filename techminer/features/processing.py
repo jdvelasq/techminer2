@@ -2,35 +2,15 @@ from os.path import isfile
 
 import numpy as np
 import pandas as pd
+from techminer.utils import explode, load_records, logging
+from techminer.utils.io import save_records
 
-# from techminer.data.create_institutions_thesaurus import create_institutions_thesaurus
-# from techminer.data.create_keywords_thesaurus import create_keywords_thesaurus
-# from techminer.features.apply_institutions_thesaurus import apply_institutions_thesaurus
-# from techminer.features.apply_keywords_thesaurus import apply_keywords_thesaurus
-from techminer.utils import explode, logging
-
-from ._apply_institutions_thesaurus import apply_institutions_thesaurus
-from ._apply_keywords_thesaurus import apply_keywords_thesaurus
-from ._create_institutions_thesaurus import create_institutions_thesaurus
-from ._create_keywords_thesaurus import create_keywords_thesaurus
+from .apply_institutions_thesaurus import apply_institutions_thesaurus
+from .apply_keywords_thesaurus import apply_keywords_thesaurus
+from .create_institutions_thesaurus import create_institutions_thesaurus
+from .create_keywords_thesaurus import create_keywords_thesaurus
 
 # from techminer.utils.explode import explode
-
-
-def _load_records(directory):
-    """
-    Loads records.
-
-    """
-    filename = directory + "records.csv"
-    if isfile(filename):
-        records = pd.read_csv(filename, sep=",", encoding="utf-8")
-        logging.info("Datastore " + filename + " loaded.")
-    else:
-        records = pd.DataFrame()
-        logging.info("Datastore " + filename + " created.")
-
-    return records
 
 
 def _create_record_id(records):
@@ -104,7 +84,7 @@ def _consolidate_local_references(records):
 
     """
     logging.info("Consolidating local references ...")
-    records = records.assign(local_references=[])
+    records = records.assign(local_references=[[] for _ in range(len(records))])
     records["local_references"] = records.local_references.apply(
         lambda x: sorted(set(x))
     )
@@ -256,16 +236,16 @@ def process_records(directory):
         open(filename, "a", encoding="utf-8").close()
 
     logging.info("Processing records ...")
-    records = _load_records(directory)
+
+    create_institutions_thesaurus(directory=directory)
+    create_keywords_thesaurus(directory=directory)
+
+    records = load_records(directory)
     records = _create_record_id(records)
+    records = records.assign(local_references=[[] for _ in range(len(records))])
     records = _create_local_references_using_doi(records)
     records = _create_local_references_using_title(records)
     records = _consolidate_local_references(records)
     records = _compute_local_citations(records)
     records = _compute_bradford_law_zones(records)
-    create_institutions_thesaurus(records=records, directory=directory)
-    records = apply_institutions_thesaurus(records=records, directory=directory)
-    create_keywords_thesaurus(records=records, directory=directory)
-    records = apply_keywords_thesaurus(records=records, directory=directory)
-
-    logging.info("Processing records finished!")
+    save_records(records, directory=directory)

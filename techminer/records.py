@@ -7,8 +7,13 @@ from os.path import isfile
 
 import pandas as pd
 
+from .features import (
+    apply_institutions_thesaurus,
+    apply_keywords_thesaurus,
+    process_records,
+)
 from .importers import DimensionsImporter, ScopusImporter, WoSImporter
-from .utils import *
+from .utils import load_records, logging
 
 
 def create_import_object(source, filetype, directory):
@@ -57,6 +62,18 @@ class Records:
         else:
             raise FileNotFoundError
 
+    def process_records(self):
+        """
+        Consolidate records for analysis.
+
+
+        """
+        process_records(self.directory)
+        logging.info("Applying thesaurus ...")
+        apply_institutions_thesaurus(self.directory)
+        apply_keywords_thesaurus(self.directory)
+        logging.info("Processing records finished!")
+
     def coverage(self):
         """
         Coverage report.
@@ -82,3 +99,19 @@ class Records:
         )
 
         return coverage_
+
+    def clean_institutions(self):
+        """
+        Clean institutions.
+
+        :return:
+        """
+        apply_keywords_thesaurus(directory=self.directory)
+
+    def clean_keywords(self):
+        """
+        Clean leywords.
+
+        :return:
+        """
+        apply_institutions_thesaurus(directory=self.directory)
