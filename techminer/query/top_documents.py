@@ -4,11 +4,11 @@ Top Documents
 
 
 """
-from techminer.data.records import load_records
+from techminer.utils.io import load_records
 
 
 def most_cited_documents(
-    directory_or_records,
+    directory,
     global_citations=True,
     normalized_citations=False,
     n_top=50,
@@ -30,10 +30,7 @@ def most_cited_documents(
     most_cited_documents: pandas.DataFrame
         Most cited documents.
     """
-    if isinstance(directory_or_records, str):
-        records = load_records(directory_or_records)
-    else:
-        records = directory_or_records
+    records = load_records(directory)
 
     max_pub_year = records.pub_year.dropna().max()
 

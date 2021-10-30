@@ -5,7 +5,7 @@ Documents by term
 """
 
 import pandas as pd
-from techminer.data.records import load_records
+from techminer.utils.io import load_records
 
 
 def count_documents_by_term(directory_or_records, column, sep="; "):
@@ -20,9 +20,9 @@ def count_documents_by_term(directory_or_records, column, sep="; "):
     if isinstance(directory_or_records, str):
         records = load_records(directory_or_records)
     else:
-        records = directory_or_records.copy()
+        records = directory_or_records
 
-    records = records[[column]]
+    records = records[[column]].copy()
     if sep is not None:
         records[column] = records[column].str.split(sep)
         records = records.explode(column)
@@ -167,7 +167,7 @@ def count_terms_by_column(directory_or_records, column, sep="; "):
     if isinstance(directory_or_records, str):
         records = load_records(directory_or_records)
     else:
-        records = directory_or_records.copy()
+        records = directory_or_records
 
     if sep is not None:
         records[column] = records[column].str.split(sep)

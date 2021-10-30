@@ -6,9 +6,8 @@ Impact analysis
 
 import numpy as np
 import pandas as pd
-from techminer.data import load_records, load_stopwords
 from techminer.query import count_documents_by_term, count_global_citations_by_term
-from techminer.utils import explode
+from techminer.utils import explode, load_records, load_stopwords
 
 
 def compute_impact_index(directory_or_records, column, stopwords=None):
