@@ -15,7 +15,6 @@ Extract User Keywords
 Factor Analysis
 Graph Analysis
 Growth Indicators
-Impact Analysis
 Keywords Associations
 Keywords comparison
 Latent Semantic Analysis
@@ -42,6 +41,7 @@ Core Authors Analysis
 Core Sources Analysis
 Coverage
 Descriptive Statistics
+Impact Analysis
 Lotka plot
 Term Analysis
 Time analysis

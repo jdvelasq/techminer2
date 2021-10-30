@@ -11,33 +11,6 @@ from techminer.query import count_documents_by_term, count_global_citations_by_t
 from techminer.utils import explode
 
 
-def compute_h_and_g_index(records, column):
-    """
-    Compute the h-index of a column
-
-    """
-    citations = records[[column, "global_citations", "record_id"]].copy()
-    citations = (
-        records.assign(
-            rn=records.sort_values("global_citations", ascending=False)
-            .groupby(column)
-            .cumcount()
-            + 1
-        )
-    ).sort_values([column, "global_citations", "rn"], ascending=[False, False, True])
-    citations["rn2"] = citations.rn.map(lambda w: w * w)
-
-    h_values = citations.query("global_citations >= rn")
-    h_values = h_values.groupby(column, as_index=False).agg({"rn": np.max})
-    h_dict = {key: value for key, value in zip(h_values[column], h_values.rn)}
-
-    g_values = citations.query("global_citations >= rn2")
-    g_values = g_values.groupby(column, as_index=False).agg({"rn": np.max})
-    g_dict = {key: value for key, value in zip(g_values[column], g_values.rn)}
-
-    return h_dict, g_dict
-
-
 def compute_impact_index(directory_or_records, column, stopwords=None):
     """
     Impact analysis

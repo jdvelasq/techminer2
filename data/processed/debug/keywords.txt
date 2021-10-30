@@ -3363,6 +3363,9 @@ game theory
     game theory
 gas-surface interaction
     gas-surface interaction
+gases
+    gases
+    gasses
 gasses
     gasses
 gaussian basis sets
@@ -3640,6 +3643,8 @@ gravitational effects
     gravitational effects
 gravitational wave detector modeling
     gravitational wave detector modeling
+gravitational wave detector modelling
+    gravitational wave detector modelling
 gravitational wave detectors
     gravitational wave detectors
 gravitational wave interferometers
@@ -4394,6 +4399,8 @@ ionic liquids
     ionic liquids
 ionization
     ionization
+ionization of gases
+    ionization of gases
 ionization of gasses
     ionization of gasses
 ionized state
@@ -6358,6 +6365,9 @@ partial differential equations (pdes)
     partial differential equations (pdes)
 partial-wave method
     partial-wave method
+partially ionized gases
+    partially ionized gases
+    partially ionized gasses
 partially ionized gasses
     partially ionized gasses
 participant
@@ -7248,6 +7258,9 @@ realistic simulation
     realistic simulation
 recent researches
     recent researches
+reciprocal and real space visualisation
+    reciprocal and real space visualisation
+    reciprocal and real space visualization
 reciprocal and real space visualization
     reciprocal and real space visualization
 recombination centers
@@ -8500,6 +8513,8 @@ subdomain quadrature
     subdomain quadrature
 subscale modeling
     subscale modeling
+subscale modelling
+    subscale modelling
 subsidence
     subsidence
 substrate composition

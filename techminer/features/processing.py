@@ -260,6 +260,7 @@ def process_records(directory):
     :param directory:
     :return:
     """
+    logging.info("Processing records ...")
     records = DatastoreTransformations(directory)
     records.load_records()
     records.create_historiograph_id()
@@ -277,3 +278,4 @@ def process_records(directory):
     apply_institutions_thesaurus(directory=directory)
     create_keywords_thesaurus(directory=directory)
     apply_keywords_thesaurus(directory=directory)
+    logging

@@ -2,7 +2,7 @@ import os.path
 from os.path import isfile
 
 import pandas as pd
-from techminer.utils.logging_info import logging_info
+from techminer.utils import logging
 from techminer.utils.thesaurus import Thesaurus, load_file_as_dict, text_clustering
 
 
@@ -11,7 +11,7 @@ def create_keywords_thesaurus(directory="./"):
     Createa a keywords thesaurus from the keywords in the articles.
 
     """
-    logging_info("Creating keywords thesaurus ...")
+    logging.info("Creating keywords thesaurus ...")
 
     if directory[-1] != "/":
         directory = directory + "/"
@@ -81,4 +81,4 @@ def create_keywords_thesaurus(directory="./"):
         #
         text_clustering(pd.Series(words_list)).to_textfile(thesaurus_file)
 
-    logging_info(f"Thesaurus file '{thesaurus_file}' created.")
+    logging.info(f"Thesaurus file '{thesaurus_file}' created.")
