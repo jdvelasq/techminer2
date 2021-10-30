@@ -13,7 +13,7 @@ from .features import (
     process_records,
 )
 from .importers import DimensionsImporter, ScopusImporter, WoSImporter
-from .utils import load_records, logging
+from .utils import describe_records, load_records, logging
 
 
 def create_import_object(source, filetype, directory):
@@ -99,6 +99,14 @@ class Records:
         )
 
         return coverage_
+
+    def describe(self):
+        """
+        Describe records.
+
+        :return:
+        """
+        return describe_records(self.directory)
 
     def clean_institutions(self):
         """

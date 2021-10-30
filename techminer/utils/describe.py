@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
-from techminer.data.records import load_records
+
+from .io import load_records
 
 
 def _extract_terms(x, column):
