@@ -4,39 +4,39 @@ Utilidades por migrar
     import_records
     process_records
 -------------------------------
-Apply thesaurus
-Bigraph analysis
+    Apply thesaurus
+    Bigraph analysis
     Bradford Law
-Citation Analysis
-Co-word Analysis
-Collaboration Analysis
-Column Explorer
-Comparative Analysis
-Conceptual Structure
+    Citation Analysis
+    Co-word Analysis
+    Collaboration Analysis
+    Column Explorer
+    Comparative Analysis
+    Conceptual Structure
     Core Authors Analysis
     Lotka law plot
     Core Sources Analysis
-Correlation Analysis
+    Correlation Analysis
     Coverage
     Descriptive Statistics
-Extract User Keywords
-Factor Analysis
-Graph Analysis
-Growth Indicators
+    Extract User Keywords
+    Factor Analysis
+    Graph Analysis
+    Growth Indicators
     Impact Analysis
-Keywords Associations
-Keywords comparison
-Latent Semantic Analysis
-Main Path Analysis
+    Keywords Associations
+    Keywords comparison
+    Latent Semantic Analysis
+    Main Path Analysis
     Manage Columns
-Matrix Explorer
-Record Filtering
-    Scopus Importer
+    Matrix Explorer
+    Record Filtering
+sScopus Importer
     Term Analysis
-Term per year Analysis
-Text Clustering
-TF*IDF Analysis
-Thematic Analysis
+    Term per year Analysis
+    Text Clustering
+    TF*IDF Analysis
+    Thematic Analysis
     Time analysis
     Top Documents --> most_cited_documents
     Worldmap

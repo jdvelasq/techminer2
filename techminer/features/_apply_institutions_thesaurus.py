@@ -6,18 +6,12 @@ from techminer.utils.map import map_
 from techminer.utils.thesaurus import read_textfile
 
 
-def apply_institutions_thesaurus(directory="./"):
+def apply_institutions_thesaurus(records, directory="./"):
+
+    data = records
 
     if directory[-1] != "/":
         directory = directory + "/"
-
-    datastorefile = directory + "records.csv"
-    if isfile(datastorefile):
-        data = pd.read_csv(datastorefile)
-    else:
-        raise FileNotFoundError("The file {} does not exist.".format(datastorefile))
-
-    data = pd.read_csv(datastorefile)
 
     ##
     ## Loads the thesaurus
@@ -46,9 +40,6 @@ def apply_institutions_thesaurus(directory="./"):
         lambda w: w.split(";")[0] if isinstance(w, str) else w
     )
 
-    ##
-    ## Finish!
-    ##
-    data.to_csv(datastorefile, index=False)
-
     logging.info("The thesaurus was applied to institutions.")
+
+    return data

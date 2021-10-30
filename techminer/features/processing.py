@@ -2,253 +2,242 @@ from os.path import isfile
 
 import numpy as np
 import pandas as pd
-from techminer.data.create_institutions_thesaurus import create_institutions_thesaurus
-from techminer.data.create_keywords_thesaurus import create_keywords_thesaurus
-from techminer.features.apply_institutions_thesaurus import apply_institutions_thesaurus
-from techminer.features.apply_keywords_thesaurus import apply_keywords_thesaurus
-from techminer.utils import logging
-from techminer.utils.explode import explode
+
+# from techminer.data.create_institutions_thesaurus import create_institutions_thesaurus
+# from techminer.data.create_keywords_thesaurus import create_keywords_thesaurus
+# from techminer.features.apply_institutions_thesaurus import apply_institutions_thesaurus
+# from techminer.features.apply_keywords_thesaurus import apply_keywords_thesaurus
+from techminer.utils import explode, logging
+
+from ._apply_institutions_thesaurus import apply_institutions_thesaurus
+from ._apply_keywords_thesaurus import apply_keywords_thesaurus
+from ._create_institutions_thesaurus import create_institutions_thesaurus
+from ._create_keywords_thesaurus import create_keywords_thesaurus
+
+# from techminer.utils.explode import explode
 
 
-class DatastoreTransformations:
+def _load_records(directory):
     """
-    This class is used to transform the data from the records
+    Loads records.
+
     """
-
-    def __init__(self, directory="./"):
-        """
-        This method is used to initialize the class
-        :param directory:
-        :return:
-        """
-        self.records = None
-        self.directory = directory
-        if self.directory[-1] != "/":
-            self.directory += "/"
-
-    def load_records(self):
-        """
-        Loads records.
-
-        """
-        filename = self.directory + "records.csv"
-        if isfile(filename):
-            self.records = pd.read_csv(filename, sep=",", encoding="utf-8")
-        else:
-            self.records = pd.DataFrame()
-
+    filename = directory + "records.csv"
+    if isfile(filename):
+        records = pd.read_csv(filename, sep=",", encoding="utf-8")
         logging.info("Datastore " + filename + " loaded.")
+    else:
+        records = pd.DataFrame()
+        logging.info("Datastore " + filename + " created.")
 
-    def create_historiograph_id(self):
-        """
-        Creates a new historiograph id.
+    return records
 
-        """
-        logging.info("Generating historiograph ID ...")
-        self.records = self.records.assign(
-            historiograph_id=self.records.pub_year.map(str)
-            + "-"
-            + self.records.groupby(["pub_year"], as_index=False)["authors"]
-            .cumcount()
-            .map(str)
-        )
 
-    def delete_existent_local_references(self):
-        """
-        Deletes local references.
+def _create_record_id(records):
+    """
+    Creates record id.
 
-        """
-        # if  "local_references" in self.records.columns:
-        logging.info("Deleting existent local references ...")
-        self.records["local_references"] = [[] for _ in range(len(self.records))]
+    """
+    records = records.assign(
+        record_id=records.sort_values("global_citations", ascending=False)
+        .groupby("pub_year")
+        .cumcount()
+        + 1
+    )
+    records = records.assign(record_id=records.record_id.map(lambda x: str(x).zfill(4)))
+    records = records.assign(
+        record_id=records.pub_year.astype(str) + "-" + records.record_id
+    )
+    return records
 
-    def create_local_references_using_doi(self):
-        """
-        Creates local references.
 
-        """
+def _create_local_references_using_doi(records):
+    """
+    Creates local references using DOI.
 
-        logging.info("Searching local references using DOI ...")
+    """
+    logging.info("Searching local references using DOI ...")
 
-        for i_index, doi in enumerate(self.records.doi):
-            if not pd.isna(doi):
-                doi = doi.upper()
-                for j_index, references in enumerate(
-                    self.records.global_references.tolist()
-                ):
-                    if pd.isna(references) is False and doi in references.upper():
-                        self.records.at[j_index, "local_references"].append(
-                            self.records.historiograph_id[i_index]
-                        )
+    for i_index, doi in enumerate(records.doi):
+        if not pd.isna(doi):
+            doi = doi.upper()
+            for j_index, references in enumerate(records.global_references.tolist()):
+                if pd.isna(references) is False and doi in references.upper():
+                    records.at[j_index, "local_references"].append(
+                        records.historiograph_id[i_index]
+                    )
+    return records
 
-    def create_local_references_using_title(self):
-        """
-        Creates local references.
 
-        """
-        logging.info("Searching local references using document titles ...")
+def _create_local_references_using_title(records):
+    """
+    Creates local references.
 
-        for i_index, _ in enumerate(self.records.document_title):
+    """
+    logging.info("Searching local references using document titles ...")
 
-            document_title = self.records.document_title[i_index].lower()
-            pub_year = self.records.pub_year[i_index]
+    for i_index, _ in enumerate(records.document_title):
 
-            for j_index, references in enumerate(
-                self.records.global_references.tolist()
-            ):
+        document_title = records.document_title[i_index].lower()
+        pub_year = records.pub_year[i_index]
 
-                if (
-                    pd.isna(references) is False
-                    and document_title in references.lower()
-                ):
+        for j_index, references in enumerate(records.global_references.tolist()):
 
-                    for reference in references.split(";"):
+            if pd.isna(references) is False and document_title in references.lower():
 
-                        if (
-                            document_title in reference.lower()
-                            and str(pub_year) in reference
-                        ):
+                for reference in references.split(";"):
 
-                            self.records.at[j_index, "local_references"] += [
-                                self.records.historiograph_id[i_index]
-                            ]
+                    if (
+                        document_title in reference.lower()
+                        and str(pub_year) in reference
+                    ):
 
-    def compute_local_citations(self):
-        """
-        Computes local citations.
+                        records.at[j_index, "local_references"] += [
+                            records.historiograph_id[i_index]
+                        ]
+    return records
 
-        """
-        logging.info("Computing local citations ...")
 
-        self.records = self.records.assign(
-            local_references=[
-                None if len(local_reference) == 0 else local_reference
-                for local_reference in self.records.local_references
+def _consolidate_local_references(records):
+    """
+    Consolidates local references.
+
+    """
+    logging.info("Consolidating local references ...")
+    records = records.assign(local_references=[])
+    records["local_references"] = records.local_references.apply(
+        lambda x: sorted(set(x))
+    )
+    records["local_references"] = records.local_references.apply(
+        lambda x: "; ".join(x) if isinstance(x, list) else x
+    )
+    return records
+
+
+def _compute_local_citations(records):
+    """
+    Computes local citations.
+
+    """
+    logging.info("Computing local citations ...")
+
+    records = records.assign(
+        local_references=[
+            None if len(local_reference) == 0 else local_reference
+            for local_reference in records.local_references
+        ]
+    )
+
+    local_references = records[["local_references"]]
+    local_references = local_references.rename(
+        columns={"local_references": "local_citations"}
+    )
+    local_references = local_references.dropna()
+
+    local_references["local_citations"] = local_references.local_citations.map(
+        lambda w: w.split("; ")
+    )
+    local_references = local_references.explode("local_citations")
+    local_references = local_references.groupby(
+        by="local_citations", as_index=True
+    ).size()
+    records["local_citations"] = 0
+    records.index = records.historiograph_id
+    records.loc[local_references.index, "local_citations"] = local_references
+    records.index = list(range(len(records)))
+
+    return records
+
+
+def _compute_bradford_law_zones(records):
+    """
+    Computes bradford law zones.
+
+    """
+    logging.info("Computing Bradford Law Zones ...")
+
+    x = records.copy()
+
+    #
+    # Counts number of documents per publication_name
+    #
+    x["num_documents"] = 1
+    x = explode(
+        x[
+            [
+                "publication_name",
+                "num_documents",
+                "record_id",
             ]
-        )
-
-        local_references = self.records[["local_references"]]
-        local_references = local_references.rename(
-            columns={"local_references": "local_citations"}
-        )
-        local_references = local_references.dropna()
-
-        local_references["local_citations"] = local_references.local_citations.map(
-            lambda w: w.split("; ")
-        )
-        local_references = local_references.explode("local_citations")
-        local_references = local_references.groupby(
-            by="local_citations", as_index=True
-        ).size()
-        self.records["local_citations"] = 0
-        self.records.index = self.records.historiograph_id
-        self.records.loc[local_references.index, "local_citations"] = local_references
-        self.records.index = list(range(len(self.records)))
-
-    def consolidate_local_references(self):
-        """
-        Consolidates local references.
-
-        """
-        logging.info("Consolidating local references ...")
-        self.records["local_references"] = self.records.local_references.apply(
-            lambda x: sorted(set(x))
-        )
-        self.records["local_references"] = self.records.local_references.apply(
-            lambda x: "; ".join(x) if isinstance(x, list) else x
-        )
-
-    def compute_bradford_law_zones(self):
-        """
-        Computes bradford law zones.
-
-        """
-        logging.info("Computing Bradford Law Zones ...")
-
-        x = self.records.copy()
-
-        #
-        # Counts number of documents per publication_name
-        #
-        x["num_documents"] = 1
-        x = explode(
-            x[
-                [
-                    "publication_name",
-                    "num_documents",
-                    "record_id",
-                ]
-            ],
-            "publication_name",
-        )
-        m = x.groupby("publication_name", as_index=False).agg(
-            {
-                "num_documents": np.sum,
-            }
-        )
-        m = m[["publication_name", "num_documents"]]
-        m = m.sort_values(["num_documents"], ascending=False)
-        m["cum_num_documents"] = m.num_documents.cumsum()
-        dict_ = {
-            source_title: num_documents
-            for source_title, num_documents in zip(m.publication_name, m.num_documents)
+        ],
+        "publication_name",
+    )
+    m = x.groupby("publication_name", as_index=False).agg(
+        {
+            "num_documents": np.sum,
         }
+    )
+    m = m[["publication_name", "num_documents"]]
+    m = m.sort_values(["num_documents"], ascending=False)
+    m["cum_num_documents"] = m.num_documents.cumsum()
+    dict_ = {
+        source_title: num_documents
+        for source_title, num_documents in zip(m.publication_name, m.num_documents)
+    }
 
-        #
-        # Number of source titles by number of documents
-        #
-        g = m[["num_documents"]]
-        g = g.assign(num_publications=1)
-        g = g.groupby(["num_documents"], as_index=False).agg(
-            {
-                "num_publications": np.sum,
-            }
-        )
-        g["total_num_documents"] = g["num_documents"] * g["num_publications"]
-        g = g.sort_values(["num_documents"], ascending=False)
-        g["cum_num_documents"] = g["total_num_documents"].cumsum()
-
-        #
-        # Bradford law zones
-        #
-        bradford_core_sources = int(len(self.records) / 3)
-        g["bradford_law_zone"] = g["cum_num_documents"]
-        g["bradford_law_zone"] = g.bradford_law_zone.map(
-            lambda w: 3
-            if w > 2 * bradford_core_sources
-            else (2 if w > bradford_core_sources else 1)
-        )
-
-        bradford_dict = {
-            num_documents: zone
-            for num_documents, zone in zip(g.num_documents, g.bradford_law_zone)
+    #
+    # Number of source titles by number of documents
+    #
+    g = m[["num_documents"]]
+    g = g.assign(num_publications=1)
+    g = g.groupby(["num_documents"], as_index=False).agg(
+        {
+            "num_publications": np.sum,
         }
+    )
+    g["total_num_documents"] = g["num_documents"] * g["num_publications"]
+    g = g.sort_values(["num_documents"], ascending=False)
+    g["cum_num_documents"] = g["total_num_documents"].cumsum()
 
-        #
-        # Computes bradford zone for each document
-        #
-        self.records["bradford_law_zone"] = self.records.publication_name
+    #
+    # Bradford law zones
+    #
+    bradford_core_sources = int(len(records) / 3)
+    g["bradford_law_zone"] = g["cum_num_documents"]
+    g["bradford_law_zone"] = g.bradford_law_zone.map(
+        lambda w: 3
+        if w > 2 * bradford_core_sources
+        else (2 if w > bradford_core_sources else 1)
+    )
 
-        self.records["bradford_law_zone"] = self.records.bradford_law_zone.map(
-            lambda w: dict_[w.strip()], na_action="ignore"
-        )
-        self.records["bradford_law_zone"] = self.records.bradford_law_zone.map(
-            lambda w: bradford_dict[w], na_action="ignore"
-        )
+    bradford_dict = {
+        num_documents: zone
+        for num_documents, zone in zip(g.num_documents, g.bradford_law_zone)
+    }
 
-    def create_KW_exclude(self):
-        filename = self.directory + "stopwords.txt"
-        if not isfile(filename):
-            open(filename, "a", encoding="utf-8").close()
+    #
+    # Computes bradford zone for each document
+    #
+    records["bradford_law_zone"] = records.publication_name
 
-    def save_records(self):
-        """
-        Saves records.
+    records["bradford_law_zone"] = records.bradford_law_zone.map(
+        lambda x: dict_[x.strip()], na_action="ignore"
+    )
+    records["bradford_law_zone"] = records.bradford_law_zone.map(
+        lambda x: bradford_dict[x], na_action="ignore"
+    )
 
-        """
-        filename = self.directory + "records.csv"
-        self.records.to_csv(filename, sep=",", encoding="utf-8", index=False)
-        logging.info("Datastore saved to " + filename)
+    return records
+
+
+def _save_records(records, directory):
+    """
+    Saves records.
+
+    """
+    filename = directory + "records.csv"
+    records.to_csv(filename, sep=",", encoding="utf-8", index=False)
+    logging.info("Datastore saved to " + filename)
 
 
 def process_records(directory):
@@ -257,23 +246,26 @@ def process_records(directory):
 
     :param directory:
     :return:
+        None
     """
+    if directory[-1] != "/":
+        directory += "/"
+
+    filename = directory + "stopwords.txt"
+    if not isfile(filename):
+        open(filename, "a", encoding="utf-8").close()
+
     logging.info("Processing records ...")
-    records = DatastoreTransformations(directory)
-    records.load_records()
-    records.create_historiograph_id()
-    records.delete_existent_local_references()
-    records.create_local_references_using_doi()
-    records.create_local_references_using_title()
-    records.consolidate_local_references()
-    records.compute_local_citations()
-    records.compute_bradford_law_zones()
-    records.create_KW_exclude()
-    #
-    records.save_records()
-    #
-    create_institutions_thesaurus(directory=directory)
-    apply_institutions_thesaurus(directory=directory)
-    create_keywords_thesaurus(directory=directory)
-    apply_keywords_thesaurus(directory=directory)
+    records = _load_records(directory)
+    records = _create_record_id(records)
+    records = _create_local_references_using_doi(records)
+    records = _create_local_references_using_title(records)
+    records = _consolidate_local_references(records)
+    records = _compute_local_citations(records)
+    records = _compute_bradford_law_zones(records)
+    create_institutions_thesaurus(records=records, directory=directory)
+    records = apply_institutions_thesaurus(records=records, directory=directory)
+    create_keywords_thesaurus(records=records, directory=directory)
+    records = apply_keywords_thesaurus(records=records, directory=directory)
+
     logging.info("Processing records finished!")

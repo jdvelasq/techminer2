@@ -53,7 +53,7 @@ class BaseImporter:
         """
         #
         module_path = dirname(__file__)
-        filepath = join(module_path, "../config_data/" + self.tagsfile)
+        filepath = join(module_path, "../config/" + self.tagsfile)
         #
         columns2tags = {}
         columns2delete = []
@@ -86,7 +86,7 @@ class BaseImporter:
 
         """
         module_path = dirname(__file__)
-        filepath = join(module_path, "../config_data/iso_source_abbreviations.csv")
+        filepath = join(module_path, "../config/iso_source_abbreviations.csv")
         pdf = pd.read_csv(filepath, sep=",")
         self.iso_source_abbreviations = dict(
             zip(pdf.publication_name, pdf.iso_source_abbreviation)
@@ -306,7 +306,7 @@ class BaseImporter:
         if "abstract" in self.raw_data.columns:
             logging.info("Transforming British to American ...")
             module_path = dirname(__file__)
-            filename = join(module_path, "../config_data/bg2am.data")
+            filename = join(module_path, "../config/bg2am.data")
             bg2am = load_file_as_dict(filename)
             with tqdm(total=len(bg2am.keys())) as pbar:
 

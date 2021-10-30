@@ -5,8 +5,10 @@ Record management
 
 from os.path import isfile
 
+import pandas as pd
+
 from .importers import DimensionsImporter, ScopusImporter, WoSImporter
-from .utils import logging
+from .utils import *
 
 
 def create_import_object(source, filetype, directory):
@@ -24,12 +26,19 @@ def create_import_object(source, filetype, directory):
 
 
 class Records:
+    """
+    Manage records directory.
+
+    """
+
     def __init__(self, directory) -> None:
         """
         Manage records directory.
 
         :param directory:
         """
+        if directory[-1] != "/":
+            directory += "/"
         self.directory = directory
 
     def import_records(self, source, filetype):
@@ -42,6 +51,34 @@ class Records:
         """
         if isfile(source):
             create_import_object(source, filetype, self.directory).run()
-            logging.info(f"The file '{source}' was successfully imported.")
+            logging.info(
+                f"The file '{source}' was successfully imported. Process finished!"
+            )
         else:
             raise FileNotFoundError
+
+    def coverage(self):
+        """
+        Coverage report.
+
+        :return:
+        """
+        records = load_records(self.directory)
+        columns = sorted(records.columns)
+        n_records = len(records)
+        coverage_ = pd.DataFrame(
+            {
+                "column": columns,
+                "number of items": [
+                    n_records - records[col].isnull().sum() for col in columns
+                ],
+                "coverage (%)": [
+                    "{:5.2%}".format(
+                        (n_records - records[col].isnull().sum()) / n_records
+                    )
+                    for col in columns
+                ],
+            }
+        )
+
+        return coverage_

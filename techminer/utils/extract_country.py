@@ -27,7 +27,7 @@ def extract_country(x):
     # List of standardized country names
     #
     module_path = dirname(__file__)
-    filename = join(module_path, "../config_data/country_codes.data")
+    filename = join(module_path, "../config/country_codes.data")
     country_codes = load_file_as_dict(filename)
     country_names = list(country_codes.values())
     country_names = [name.lower() for w in country_names for name in w]

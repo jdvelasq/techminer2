@@ -108,7 +108,7 @@ PORTUGUES = [
 ]
 
 
-def create_institutions_thesaurus(directory):
+def create_institutions_thesaurus(records):
     #
     def clean_name(w):
         w = w.replace(".", "").lower().strip()
@@ -183,7 +183,7 @@ def create_institutions_thesaurus(directory):
     #
     module_path = dirname(__file__)
     with io.open(
-        join(module_path, "../config_data/institutions.data"), "r", encoding="utf-8"
+        join(module_path, "../config/institutions.data"), "r", encoding="utf-8"
     ) as f:
         VALID_NAMES = f.readlines()
     VALID_NAMES = [w.replace("\n", "").lower() for w in VALID_NAMES]
@@ -193,7 +193,7 @@ def create_institutions_thesaurus(directory):
     # List of standardized country names
     #
     module_path = dirname(__file__)
-    filename = join(module_path, "../config_data/country_codes.data")
+    filename = join(module_path, "../config/country_codes.data")
     country_codes = load_file_as_dict(filename)
     country_names = list(country_codes.values())
     country_names = [w[0].lower() for w in country_names]
@@ -205,11 +205,7 @@ def create_institutions_thesaurus(directory):
     # Loads datastore.csv
     #
 
-    filename = directory + "records.csv"
-    if isfile(filename):
-        data = pd.read_csv(filename)
-    else:
-        raise FileNotFoundError("The file {} does not exist.".format(filename))
+    data = records
 
     #
     # Transform affiliations to lower case

@@ -72,7 +72,7 @@ def text_clustering(x, name_strategy="mostfrequent", key="porter", transformer=N
     # British to american english
     #
     module_path = dirname(__file__)
-    filename = join(module_path, "../config_data/bg2am.data")
+    filename = join(module_path, "../config/bg2am.data")
     bg2am_ = load_file_as_dict(filename)
     x["word_alt"] = x["word_alt"].map(translate)
 

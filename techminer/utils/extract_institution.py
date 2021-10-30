@@ -112,7 +112,7 @@ def extract_institution(text):
         return pd.NA
 
     module_path = dirname(__file__)
-    filename = join(module_path, "../config_data/institutions.data")
+    filename = join(module_path, "../config/institutions.data")
     with open(filename, "r", encoding="utf-8") as file:
         known_institution_names = file.read().splitlines()
 
@@ -120,7 +120,7 @@ def extract_institution(text):
     # List of standardized country names
     #
     module_path = dirname(__file__)
-    filename = join(module_path, "../config_data/country_codes.data")
+    filename = join(module_path, "../config/country_codes.data")
     country_codes = load_file_as_dict(filename)
     country_names = list(country_codes.values())
     country_names = [w[0].lower() for w in country_names]
