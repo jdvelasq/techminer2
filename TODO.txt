@@ -13,7 +13,8 @@ Collaboration Analysis
 Column Explorer
 Comparative Analysis
 Conceptual Structure
-Core Authors Analysis
+    Core Authors Analysis
+    Lotka law plot
 Core Sources Analysis
 Correlation Analysis
     Coverage

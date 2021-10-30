@@ -4,7 +4,7 @@ Documents by term
 
 """
 
-
+import pandas as pd
 from techminer.data.records import load_records
 
 
@@ -170,3 +170,32 @@ def count_terms_by_column(directory_or_records, column, sep="; "):
         records[column] = records[column].map(len)
 
     return records[column]
+
+
+def term_analysis(directory_or_records, column, sep="; "):
+    """
+    Counts the number of terms by record.
+
+    :param directory_or_records: path to the directory or the records object
+    :param column: column to be used to count the terms
+    :param sep: separator to be used to split the column
+    :return: a pandas.Series with the number of terms by record.
+    """
+    if isinstance(directory_or_records, str):
+        records = load_records(directory_or_records)
+    else:
+        records = directory_or_records.copy()
+
+    num_documents = count_documents_by_term(
+        directory_or_records, column, sep
+    ).to_frame()
+    global_citations = count_global_citations_by_term(
+        directory_or_records, column, sep
+    ).to_frame()
+    local_citations = count_local_citations_by_term(
+        directory_or_records, column, sep
+    ).to_frame()
+
+    analysis = pd.concat([num_documents, global_citations, local_citations], axis=1)
+
+    return analysis
