@@ -7,6 +7,7 @@ from os.path import isfile
 
 import pandas as pd
 
+from .analysis import core_sources
 from .features import (
     apply_institutions_thesaurus,
     apply_keywords_thesaurus,
@@ -123,3 +124,11 @@ class Records:
         :return:
         """
         apply_institutions_thesaurus(directory=self.directory)
+
+    def core_sources(self):
+        """
+        Core sources analysis.
+
+        :return:
+        """
+        return core_sources(directory=self.directory)

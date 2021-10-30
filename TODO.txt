@@ -15,10 +15,10 @@ Utilidades por migrar
     Conceptual Structure
     Core Authors Analysis
     Lotka law plot
-    Core Sources Analysis
+Core Sources Analysis
     Correlation Analysis
-    Coverage
-    Descriptive Statistics
+Coverage
+Descriptive Statistics
     Extract User Keywords
     Factor Analysis
     Graph Analysis
@@ -31,7 +31,7 @@ Utilidades por migrar
     Manage Columns
     Matrix Explorer
     Record Filtering
-sScopus Importer
+Scopus Importer
     Term Analysis
     Term per year Analysis
     Text Clustering

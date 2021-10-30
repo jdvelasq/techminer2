@@ -5,12 +5,13 @@ Analysis of core sources and core authors
 
 import numpy as np
 import pandas as pd
-from techminer.data.records import load_records
-from techminer.query import count_documents_by_term
+
+# from techminer.query import count_documents_by_term
+from techminer.utils import load_records
 from techminer.utils.explode import explode
 
 
-def core_sources(directory_or_records):
+def core_sources(directory):
     """
     Returns a dataframe with the core analysis.
 
@@ -24,10 +25,7 @@ def core_sources(directory_or_records):
     pandas.DataFrame
         Dataframe with the core sources of the records
     """
-    if isinstance(directory_or_records, str):
-        records = load_records(directory_or_records)
-    else:
-        records = directory_or_records.copy()
+    records = load_records(directory)
 
     records["num_documents"] = 1
     records = explode(
