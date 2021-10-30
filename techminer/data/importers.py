@@ -9,7 +9,7 @@ from os.path import dirname, isdir, isfile, join
 
 import pandas as pd
 from techminer.utils import logging
-from techminer.utils.extract_country_name import extract_country_name
+from techminer.utils.extract_country import extract_country as extract_country_name
 from techminer.utils.map import map_
 from techminer.utils.text import remove_accents
 from techminer.utils.thesaurus import load_file_as_dict

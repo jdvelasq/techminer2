@@ -1,6 +1,6 @@
 import pandas as pd
 from techminer.data import load_records
-from techminer.utils import extract_country_name
+from techminer.utils import extract_country as extract_country_name
 from techminer.utils.map import map_
 
 

@@ -165,8 +165,6 @@ class DatastoreTransformations:
         """
         logging.info("Computing Bradford Law Zones ...")
 
-        self.records["id"] = range(len(self.records))
-
         x = self.records.copy()
 
         #
@@ -178,7 +176,7 @@ class DatastoreTransformations:
                 [
                     "publication_name",
                     "num_documents",
-                    "id",
+                    "record_id",
                 ]
             ],
             "publication_name",
@@ -278,4 +276,4 @@ def process_records(directory):
     apply_institutions_thesaurus(directory=directory)
     create_keywords_thesaurus(directory=directory)
     apply_keywords_thesaurus(directory=directory)
-    logging
+    logging.info("Processing records finished!")

@@ -247,25 +247,27 @@ def describe_records(directory_or_records):
     for column in sorted(records.columns):
 
         if column + ":" in d or column in [
-            "abstract",
-            "abstract_author_keywords",
             "abstract_author_keywords_cl",
-            "abstract_index_keywords",
+            "abstract_author_keywords",
             "abstract_index_keywords_cl",
-            "abstract_keywords",
+            "abstract_index_keywords",
             "abstract_keywords_cl",
+            "abstract_keywords",
+            "abstract",
+            "affiliations",
+            "authors",
             "authors_id",
             "bradford_law_zone",
+            "document_title",
             "global_citations",
             "global_references",
-            "record_id",
+            "global_references_count",
             "keywords",
             "local_citations",
             "local_references",
             "num_authors",
-            "document_title",
-            "pub_Year",
-            "affiliations",
+            "pub_year",
+            "record_id",
         ]:
             continue
 

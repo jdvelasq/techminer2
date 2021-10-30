@@ -19,13 +19,13 @@ NAMES = [
 ]
 
 
-def extract_country_name(x):
+def extract_country(x):
     #
     if pd.isna(x) or x is None:
         return pd.NA
-    ##
-    ## List of standardized country names
-    ##
+
+    # List of standardized country names
+    #
     module_path = dirname(__file__)
     filename = join(module_path, "../config_data/country_codes.data")
     country_codes = load_file_as_dict(filename)

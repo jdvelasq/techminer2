@@ -3,12 +3,11 @@ from os.path import dirname, isfile, join
 
 import pandas as pd
 from techminer.utils import logging
-from techminer.utils.extract_country_name import extract_country_name
+from techminer.utils.extract_country import extract_country as extract_country_name
 from techminer.utils.thesaurus import Thesaurus, load_file_as_dict
 
 #
-# The algorithm searches in order until
-# detect a match
+# The algorithm searches in order until detect a match
 #
 NAMES = [
     "ministry",
@@ -103,7 +102,10 @@ SPANISH = [
     "VEN",
 ]
 
-PORTUGUES = ["BRA", "PRT"]
+PORTUGUES = [
+    "BRA",
+    "PRT",
+]
 
 
 def create_institutions_thesaurus(directory):
