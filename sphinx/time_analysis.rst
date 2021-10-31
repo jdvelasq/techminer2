@@ -1,4 +1,4 @@
-.. automodule:: techminer.query.top_documents
+.. automodule:: techminer.time_analysis
     :members:
     :undoc-members:
     :show-inheritance:

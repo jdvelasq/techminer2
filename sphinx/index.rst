@@ -61,13 +61,25 @@ in a cell of Jupiter Lab or Google Colaboratory.
 
 **List of analysis tools**:
 
-.. toctree::
-   :maxdepth: 2
-
-   counts
 
 
-..   top-documents
+..  toctree::
+    :maxdepth: 1
+
+    core_sources
+    time_analysis
+    term_analysis
+
+
+**List of auxiliary tools**:
+
+..  toctree::
+    :maxdepth: 1
+
+
+
+.. counts
+.. top-documents
 
 
 ..   apply-thesaurus

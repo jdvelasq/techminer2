@@ -7,7 +7,8 @@ from os.path import isfile
 
 import pandas as pd
 
-from .analysis import core_authors, core_sources
+from .analysis import core_authors
+from .core_sources import core_sources
 from .features import (
     apply_institutions_thesaurus,
     apply_keywords_thesaurus,

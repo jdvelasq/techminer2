@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Top Documents &mdash; TechMiner - A Package for Bibliographical Analysis using Python 0.0.0 documentation</title>
+  <title>Core Sources &mdash; TechMiner - A Package for Bibliographical Analysis using Python 0.0.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -19,6 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Time Analysis" href="time_analysis.html" />
     <link rel="prev" title="Analysis of bibliographic datasets using Python" href="index.html" /> 
 </head>
 
@@ -41,7 +42,9 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Top Documents</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Core Sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="time_analysis.html">Time Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="term_analysis.html">Term Analysis</a></li>
 </ul>
 
         </div>
@@ -58,9 +61,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Top Documents</li>
+      <li>Core Sources</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/top-documents.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/core_sources.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -92,22 +95,18 @@
     text-align: unset;
 }
 </style>
-<span class="target" id="module-techminer.query.top_documents"></span><section id="top-documents">
-<h1>Top Documents<a class="headerlink" href="#top-documents" title="Permalink to this headline"></a></h1>
+<span class="target" id="module-techminer.core_sources"></span><section id="core-sources">
+<h1>Core Sources<a class="headerlink" href="#core-sources" title="Permalink to this headline"></a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="techminer.query.top_documents.most_cited_documents">
-<span class="sig-prename descclassname"><span class="pre">techminer.query.top_documents.</span></span><span class="sig-name descname"><span class="pre">most_cited_documents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">global_citations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalized_citations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_top</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer/query/top_documents.html#most_cited_documents"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer.query.top_documents.most_cited_documents" title="Permalink to this definition"></a></dt>
-<dd><p>Returns the most cited documents of the given directory or records.</p>
+<dt class="sig sig-object py" id="techminer.core_sources.core_sources">
+<span class="sig-prename descclassname"><span class="pre">techminer.core_sources.</span></span><span class="sig-name descname"><span class="pre">core_sources</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory_or_records</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer/core_sources.html#core_sources"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer.core_sources.core_sources" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a dataframe with the core analysis.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>directory_or_records</strong> (<em>str</em>) – path to the directory or the records object.</p></li>
-<li><p><strong>global_citations</strong> (<em>bool</em>) – Whether to use global citations or not.</p></li>
-<li><p><strong>normalized_citations</strong> (<em>bool</em>) – Whether to use normalized citations or not.</p></li>
-</ul>
+<dd class="field-odd"><p><strong>directory_or_records</strong> (<em>str</em><em> or </em><em>list</em>) – path to the directory or the records object.</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>most_cited_documents</strong> – Most cited documents.</p>
+<dd class="field-even"><p>Dataframe with the core sources of the records</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>pandas.DataFrame</p>
@@ -122,6 +121,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="index.html" class="btn btn-neutral float-left" title="Analysis of bibliographic datasets using Python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="time_analysis.html" class="btn btn-neutral float-right" title="Time Analysis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

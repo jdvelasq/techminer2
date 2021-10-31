@@ -32,12 +32,12 @@ Descriptive Statistics
     Matrix Explorer
     Record Filtering
 Scopus Importer
-    Term Analysis
+Term Analysis
     Term per year Analysis
     Text Clustering
     TF*IDF Analysis
     Thematic Analysis
-    Time analysis
+Time analysis
     Top Documents --> most_cited_documents
     Worldmap
 -------------------------------
