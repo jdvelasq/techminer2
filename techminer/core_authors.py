@@ -1,16 +1,17 @@
 """
-Analysis of core sources and core authors
-
+Core Authors
+===============================================================================
 """
 
 import numpy as np
 import pandas as pd
+
 from techminer.term_analysis import count_documents_by_term
 from techminer.utils import load_records
 from techminer.utils.explode import explode
 
 
-def core_authors(directory):
+def _core_authors_from_records(records):
     """
     Returns a dataframe with the core analysis.
 
@@ -24,7 +25,7 @@ def core_authors(directory):
     pandas.DataFrame
         Dataframe with the core authors of the records
     """
-    records = load_records(directory)
+    records = records.copy()
 
     z = count_documents_by_term(records, "authors", sep="; ")
 
@@ -83,3 +84,42 @@ def core_authors(directory):
     ]
 
     return z.reset_index(drop=True)
+
+
+def _core_authors_from_directory(directory):
+    """
+    Returns a dataframe with the core analysis.
+
+    Parameters
+    ----------
+    directory: str
+        :param directory: path to the directory with the records
+
+    Returns
+    -------
+    pandas.DataFrame
+        Dataframe with the core sources of the records
+    """
+    return _core_authors_from_records(load_records(directory))
+
+
+def core_authors(directory_or_records):
+    """
+    Returns a dataframe with the core analysis.
+
+    Parameters
+    ----------
+    directory_or_records: str or list
+        path to the directory or the records object.
+
+    Returns
+    -------
+    pandas.DataFrame
+        Dataframe with the core authors of the records
+    """
+    if isinstance(directory_or_records, str):
+        return _core_authors_from_directory(directory_or_records)
+    elif isinstance(directory_or_records, pd.DataFrame):
+        return _core_authors_from_records(directory_or_records)
+    else:
+        raise TypeError("directory_or_records must be a string or a pandas.DataFrame")

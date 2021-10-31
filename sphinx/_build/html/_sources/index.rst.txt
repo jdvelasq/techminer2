@@ -66,6 +66,7 @@ in a cell of Jupiter Lab or Google Colaboratory.
 ..  toctree::
     :maxdepth: 1
 
+    core_authors
     core_sources
     time_analysis
     term_analysis
