@@ -74,7 +74,12 @@ def _create_thesaurus_from_directory(
 # ---< PUBLIC FUNCTIONS >---------------------------------------------------#
 
 
-def create_thesaurus(thesaurus_filepath, directory_or_records, column, sep="; "):
+def create_thesaurus(
+    thesaurus_filepath,
+    directory_or_records,
+    column,
+    sep="; ",
+):
     """
     Createa a keywords thesaurus from the specified column.
 

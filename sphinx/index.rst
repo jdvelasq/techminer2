@@ -72,9 +72,11 @@ in a cell of Jupiter Lab or Google Colaboratory.
     core_sources
     create_thesaurus
     coverage
+    extract_user_keywords
     impact_analysis
     lotka_plot
     most_cited_documents
+    tf_matrix
     time_analysis
     term_analysis
     summary

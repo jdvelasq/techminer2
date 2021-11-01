@@ -4,7 +4,7 @@ Explode a column into multiple columns.
 """
 
 
-def explode(x, column):
+def explode(x, column, sep):
     """
     explode
     """
@@ -12,7 +12,7 @@ def explode(x, column):
     if x[column].dtype != "int64":
         x = x.copy()
         x[column] = x[column].map(
-            lambda w: sorted(list(set(w.strip().split(";"))))
+            lambda w: sorted(list(set(w.strip().split(sep))))
             if isinstance(w, str)
             else w
         )
