@@ -69,8 +69,10 @@ in a cell of Jupiter Lab or Google Colaboratory.
     core_authors
     core_sources
     coverage
+    most_cited_documents
     time_analysis
     term_analysis
+    summary
     worldmap
 
 

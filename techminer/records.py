@@ -76,22 +76,6 @@ class Records:
         apply_keywords_thesaurus(self.directory)
         logging.info("Processing records finished!")
 
-    def coverage(self):
-        """
-        Coverage report.
-
-        :return:
-        """
-        pass
-
-    def describe(self):
-        """
-        Describe records.
-
-        :return:
-        """
-        return describe_records(self.directory)
-
     def clean_institutions(self):
         """
         Clean institutions.
@@ -107,14 +91,6 @@ class Records:
         :return:
         """
         apply_institutions_thesaurus(directory=self.directory)
-
-    def core_sources(self):
-        """
-        Core sources analysis.
-
-        :return:
-        """
-        return core_sources(directory=self.directory)
 
     def core_authors(self):
         """
