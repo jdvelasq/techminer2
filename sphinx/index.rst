@@ -70,6 +70,7 @@ in a cell of Jupiter Lab or Google Colaboratory.
     bradford_plot
     core_authors
     core_sources
+    create_thesaurus
     coverage
     impact_analysis
     lotka_plot
@@ -91,25 +92,20 @@ in a cell of Jupiter Lab or Google Colaboratory.
 .. top-documents
 
 
-..   apply-thesaurus
+
 ..   bigraph-analysis
-..   bradford-law
+
 ..   citation-analysis
 ..   co-word-analysis
 ..   collaboration-analysis
 ..   column-explorer
 ..   comparative-analysis
 ..   conceptual-structure
-..   core-authors-analysis
-..   core-sources-analysis
 ..   correlation-analysis
-..   coverage
-..   descriptive-statistics
 ..   extract-user-keywords
 ..   factor-analysis
 ..   graph-analysis
 ..   growth-indicators
-..   impact-analysis
 ..   keywords-association
 ..   keywords-comparison
 ..   latent-semantic-analysis
@@ -118,13 +114,12 @@ in a cell of Jupiter Lab or Google Colaboratory.
 ..   matrix-explorer
 ..   record-filtering
 ..   scopus-importer
-..   term-analysis
 ..   term-per-year-analysis
 ..   text-clustering
 ..   tfidf-analysis
 ..   thematic-analysis
-..   time-analysis
-..   worldmap
+
+
    
 
 
