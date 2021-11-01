@@ -5,7 +5,7 @@ Most Cited Documents
 
 import pandas as pd
 
-from techminer.utils.io import load_records
+from techminer.utils import load_records
 
 
 def _most_cited_documents_from_records(

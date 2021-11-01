@@ -2,6 +2,7 @@
 Main functions
 
 """
+from .bradford_plot import bradford_plot
 from .core_authors import core_authors
 from .core_sources import core_sources
 from .coverage import coverage
