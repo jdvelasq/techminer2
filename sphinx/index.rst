@@ -66,6 +66,7 @@ in a cell of Jupiter Lab or Google Colaboratory.
 ..  toctree::
     :maxdepth: 1
 
+    apply_thesaurus
     bradford_plot
     core_authors
     core_sources
