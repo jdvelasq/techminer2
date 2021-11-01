@@ -46,6 +46,9 @@ def load_stopwords(directory):
     Loads stopwords from project directory.
 
     """
+    if directory is None:
+        return []
+
     if directory[-1] != "/":
         directory += "/"
 
