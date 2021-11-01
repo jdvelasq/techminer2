@@ -8,7 +8,8 @@ import pandas as pd
 
 from techminer.term_analysis import count_documents_by_term
 from techminer.utils import load_records
-from techminer.utils.explode import explode
+
+from .utils import explode
 
 
 def _core_authors_from_records(records):

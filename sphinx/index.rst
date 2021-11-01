@@ -70,16 +70,17 @@ in a cell of Jupiter Lab or Google Colaboratory.
     bradford_plot
     core_authors
     core_sources
-    create_thesaurus
     coverage
+    create_thesaurus
     extract_user_keywords
     impact_analysis
     lotka_plot
     most_cited_documents
+    summary
+    term_analysis
+    tf_idfmatrix
     tf_matrix
     time_analysis
-    term_analysis
-    summary
     worldmap
 
 
