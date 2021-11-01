@@ -7,7 +7,7 @@ from os.path import isfile
 
 import pandas as pd
 
-from .analysis import core_authors
+from .core_authors import core_authors
 from .core_sources import core_sources
 from .features import (
     apply_institutions_thesaurus,
@@ -82,25 +82,7 @@ class Records:
 
         :return:
         """
-        records = load_records(self.directory)
-        columns = sorted(records.columns)
-        n_records = len(records)
-        coverage_ = pd.DataFrame(
-            {
-                "column": columns,
-                "number of items": [
-                    n_records - records[col].isnull().sum() for col in columns
-                ],
-                "coverage (%)": [
-                    "{:5.2%}".format(
-                        (n_records - records[col].isnull().sum()) / n_records
-                    )
-                    for col in columns
-                ],
-            }
-        )
-
-        return coverage_
+        pass
 
     def describe(self):
         """

@@ -68,8 +68,10 @@ in a cell of Jupiter Lab or Google Colaboratory.
 
     core_authors
     core_sources
+    coverage
     time_analysis
     term_analysis
+    worldmap
 
 
 **List of auxiliary tools**:
