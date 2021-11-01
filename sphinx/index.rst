@@ -78,8 +78,8 @@ in a cell of Jupiter Lab or Google Colaboratory.
     most_cited_documents
     summary
     term_analysis
-    tf_idfmatrix
     tf_matrix
+    tfidf_matrix
     time_analysis
     worldmap
 
