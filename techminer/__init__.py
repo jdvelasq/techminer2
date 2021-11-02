@@ -4,6 +4,7 @@ Main functions
 """
 from .apply_thesaurus import apply_thesaurus
 from .bradford_plot import bradford_plot
+from .co_occurrence_matrix import co_occurrence_matrix
 from .core_authors import core_authors
 from .core_sources import core_sources
 from .coverage import coverage

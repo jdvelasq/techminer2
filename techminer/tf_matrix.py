@@ -41,12 +41,11 @@ def _tf_matrix_from_records(
     terms = terms[terms >= min_occurrence]
     terms = terms[terms <= max_occurrence]
     terms = terms.drop(labels=load_stopwords(stopwords), errors="ignore")
-
     result = result.loc[:, terms.index]
 
-    rows = result.sum(axis=1)
-    rows = rows[rows > 0]
-    result = result.loc[rows.index, :]
+    # rows = result.sum(axis=1)
+    # rows = rows[rows > 0]
+    # result = result.loc[rows.index, :]
 
     if scheme is None or scheme == "raw":
         result = result.astype(int)

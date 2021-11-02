@@ -68,6 +68,7 @@ in a cell of Jupiter Lab or Google Colaboratory.
 
     apply_thesaurus
     bradford_plot
+    co_occurrence_matrix
     core_authors
     core_sources
     coverage
