@@ -9,7 +9,7 @@ import pandas as pd
 from techminer.utils import logging
 
 
-def load_records(directory, fileerror=True):
+def load_records_from_directory(directory, fileerror=True):
     """
     Loads records from project directory.
 
@@ -26,7 +26,7 @@ def load_records(directory, fileerror=True):
     return pd.read_csv(filename, sep=",", encoding="utf-8")
 
 
-def save_records(records, directory):
+def save_records_to_directory(records, directory):
     """
     Saves records to project directory.
 
@@ -41,7 +41,7 @@ def save_records(records, directory):
     records.to_csv(filename, sep=",", encoding="utf-8", index=False)
 
 
-def load_stopwords(directory):
+def load_stopwords_from_directory(directory):
     """
     Loads stopwords from project directory.
 

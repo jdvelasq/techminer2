@@ -2,8 +2,12 @@ from os.path import isfile
 
 import numpy as np
 import pandas as pd
-from techminer.utils import explode, load_records, logging
-from techminer.utils.io import save_records
+from techminer.utils import (
+    explode,
+    load_records_from_directory,
+    logging,
+    save_records_to_directory,
+)
 
 from .apply_institutions_thesaurus import apply_institutions_thesaurus
 from .apply_keywords_thesaurus import apply_keywords_thesaurus

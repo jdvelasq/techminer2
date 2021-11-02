@@ -66,27 +66,28 @@ in a cell of Jupiter Lab or Google Colaboratory.
 ..  toctree::
     :maxdepth: 1
 
-
+    apply_thesaurus
+    bradford_plot
+    core_authors
+    core_sources
+    coverage    
+    create_thesaurus
+    lotka_plot
+    most_cited_documents   
+    summary     
     term_analysis
+    time_analysis    
     worldmap
+    extract_user_keywords
 
-..    apply_thesaurus
+
 ..    association_index
-..    bradford_plot
 ..    co_occurrence_matrix
-..    core_authors
-..    core_sources
-..    coverage
-..    create_thesaurus
-..    extract_user_keywords
+
 ..    impact_analysis
-..    lotka_plot
-..    most_cited_documents
-..    summary
-..    term_analysis
 ..    tf_matrix
 ..    tfidf_matrix
-..    time_analysis
+
 
 
 

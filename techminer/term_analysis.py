@@ -9,9 +9,8 @@ Term Analysis
 
 import pandas as pd
 
-from techminer.utils.io import load_records
-
 from .plots import *
+from .utils import load_records_from_directory
 
 
 def _count_records_by_term_from_records(records, column, sep):
@@ -225,7 +224,7 @@ class TermAnalyzer:
     def bar(
         self,
         column,
-        colormap="Greys",
+        cmap="Greys",
         figsize=(6, 5),
         darkness=None,
         fontsize=9,
@@ -240,7 +239,7 @@ class TermAnalyzer:
 
         return bar_plot(
             height=self._table[column],
-            colormap=colormap,
+            cmap=cmap,
             figsize=figsize,
             darkness=darkness,
             fontsize=fontsize,
@@ -254,7 +253,7 @@ class TermAnalyzer:
     def barh(
         self,
         column,
-        colormap="Greys",
+        cmap="Greys",
         figsize=(6, 5),
         darkness=None,
         fontsize=9,
@@ -270,7 +269,7 @@ class TermAnalyzer:
 
         return barh_plot(
             width=self._table[column],
-            colormap=colormap,
+            cmap=cmap,
             figsize=figsize,
             darkness=darkness,
             fontsize=fontsize,
@@ -285,7 +284,7 @@ class TermAnalyzer:
         self,
         column,
         darkness=None,
-        colormap="Greys",
+        cmap="Greys",
         figsize=(6, 6),
         fontsize=9,
         wedgeprops={
@@ -299,7 +298,7 @@ class TermAnalyzer:
         return pie_plot(
             x=self._table[column],
             darkness=darkness,
-            colormap=colormap,
+            cmap=cmap,
             figsize=figsize,
             fontsize=fontsize,
             wedgeprops=wedgeprops,
@@ -329,7 +328,7 @@ class TermAnalyzer:
         relative_scaling="auto",
         regexp=None,
         collocations=True,
-        colormap="Blues",
+        cmap="Blues",
         normalize_plurals=True,
         contour_width=0,
         contour_color="black",
@@ -358,7 +357,7 @@ class TermAnalyzer:
             relative_scaling=relative_scaling,
             regexp=regexp,
             collocations=collocations,
-            cmap=colormap,
+            cmap=cmap,
             normalize_plurals=normalize_plurals,
             contour_width=contour_width,
             contour_color=contour_color,
@@ -369,7 +368,7 @@ class TermAnalyzer:
         self,
         column,
         darkness=None,
-        colormap="Greys",
+        cmap="Greys",
         fontsize=9,
         alpha=0.8,
         figsize=(6, 5),
@@ -377,7 +376,7 @@ class TermAnalyzer:
         return treemap(
             x=self.table_[column],
             darkness=darkness,
-            colormap=colormap,
+            cmap=cmap,
             figsize=figsize,
             fontsize=fontsize,
             alpha=alpha,

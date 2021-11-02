@@ -7,7 +7,7 @@ Apply a  thesaurus to keywords.
 from os.path import isfile
 
 import pandas as pd
-from techminer.utils import load_records, logging
+from techminer.utils import load_records_from_directory, logging
 from techminer.utils.map import map_
 from techminer.utils.thesaurus import read_textfile
 
@@ -19,7 +19,7 @@ def apply_keywords_thesaurus(directory="./"):
     if directory[-1] != "/":
         directory += "/"
 
-    datastore = load_records(directory)
+    datastore = load_records_from_directory(directory)
 
     thesaurus_file = directory + "keywords.txt"
     if isfile(thesaurus_file):

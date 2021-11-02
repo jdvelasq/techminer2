@@ -12,7 +12,7 @@ TEXTLEN = 40
 def treemap(
     x,
     darkness=None,
-    colormap="Greys",
+    cmap="Greys",
     figsize=(6, 6),
     fontsize=11,
     alpha=0.9,
@@ -47,7 +47,7 @@ def treemap(
     matplotlib.rc("font", size=fontsize)
     fig = plt.Figure(figsize=figsize)
     ax = fig.subplots()
-    cmap = plt.cm.get_cmap(colormap)
+    cmap = plt.cm.get_cmap(cmap)
 
     labels = x.index
     labels = [textwrap.shorten(text=text, width=TEXTLEN) for text in labels]

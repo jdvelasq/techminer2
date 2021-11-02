@@ -5,7 +5,7 @@ Summary Report
 import numpy as np
 import pandas as pd
 
-from techminer.utils.io import load_records
+from techminer.utils.io import load_records_from_directory
 
 
 def _extract_terms(x, column):
@@ -298,7 +298,7 @@ def _summary_from_records(records):
 
 
 def _summary_from_directory(directory):
-    return _summary_from_records(load_records(directory))
+    return _summary_from_records(load_records_from_directory(directory))
 
 
 def summary(directory_or_records):

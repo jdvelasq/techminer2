@@ -5,7 +5,8 @@ Time Analysis
 
 import pandas as pd
 
-from techminer.utils.io import load_records
+from .plots import *
+from .utils import load_records_from_directory
 
 
 def _count_documents_by_year_from_records(records):
@@ -30,7 +31,7 @@ def _count_documents_by_year_from_directory(directory):
     :param directory: path to the directory
     :return: a pandas.Series with the number of documents by year.
     """
-    return _count_documents_by_year_from_records(load_records(directory))
+    return _count_documents_by_year_from_records(load_records_from_directory(directory))
 
 
 def _count_local_citations_by_year_from_records(records):
@@ -55,7 +56,9 @@ def _count_local_citations_by_year_from_directory(directory):
     :param directory: path to the directory
     :return: a pandas.Series with the number of local citations by year.
     """
-    return _count_local_citations_by_year_from_records(load_records(directory))
+    return _count_local_citations_by_year_from_records(
+        load_records_from_directory(directory)
+    )
 
 
 def _count_global_citations_by_year_from_records(records):
@@ -80,7 +83,9 @@ def _count_global_citations_by_year_from_directory(directory):
     :param directory: path to the directory
     :return: a pandas.Series with the number of global citations by year.
     """
-    return _count_global_citations_by_year_from_records(load_records(directory))
+    return _count_global_citations_by_year_from_records(
+        load_records_from_directory(directory)
+    )
 
 
 # ---< PUBLIC FUNCTIONS >---------------------------------------------------#
@@ -124,9 +129,11 @@ def count_local_citations_by_year(directory_or_records):
     :return: a pandas.Series with the number of local citations by year.
     """
     if isinstance(directory_or_records, str):
-        return _count_local_citations_by_year_from_directory(directory_or_records)
+        return _count_local_citations_by_year_from_directory(
+            directory=directory_or_records
+        )
     elif isinstance(directory_or_records, pd.DataFrame):
-        return _count_local_citations_by_year_from_records(directory_or_records)
+        return _count_local_citations_by_year_from_records(records=directory_or_records)
     else:
         raise TypeError("directory_or_records must be a string or a pandas.DataFrame")
 
@@ -185,5 +192,167 @@ def time_analysis(directory_or_records):
         ],
         axis=1,
     )
+    analysis = analysis.sort_index(ascending=True, axis="index")
+    analysis = analysis.assign(
+        cum_num_documents=num_documents.sort_index(ascending=True).cumsum()
+    )
+    analysis = analysis.assign(
+        cum_global_citations=global_citations.sort_index(ascending=True).cumsum()
+    )
+    analysis = analysis.assign(
+        cum_local_citations=local_citations.sort_index(ascending=True).cumsum()
+    )
 
     return analysis
+
+
+class TimeAnalyzer:
+    def __init__(
+        self,
+        directory_or_records,
+    ):
+        _table = time_analysis(
+            directory_or_records=directory_or_records,
+        )
+
+        self._table = _table
+
+    @property
+    def table_(self):
+        return self._table
+
+    def bar(
+        self,
+        column,
+        cmap="Greys",
+        figsize=(6, 5),
+        darkness=None,
+        fontsize=9,
+        edgecolor="k",
+        linewidth=0.5,
+        zorder=10,
+        ylabel=None,
+        xlabel=None,
+    ):
+
+        if column == "num_documents":
+            darkness = self._table["global_citations"]
+            if ylabel is None:
+                ylabel = "Num Documents by Year"
+        elif column == "global_citations":
+            darkness = self._table["num_docum]ents"]
+            if ylabel is None:
+                ylabel = "Global Citations by Year"
+        elif column == "local_citations":
+            darkness = self._table["num_documents"]
+            if ylabel is None:
+                ylabel = "Local Citations by Year"
+        elif column == "cum_num_documents":
+            darkness = self._table["cum_global_citations"]
+            if ylabel is None:
+                ylabel = "Cumulative Num Documents by Year"
+        elif column == "cum_global_citations":
+            darkness = self._table["cum_num_documents"]
+            if ylabel is None:
+                ylabel = "Cumulative Global Citations by Year"
+        elif column == "cum_local_citations":
+            darkness = self._table["cum_num_documents"]
+            if ylabel is None:
+                ylabel = "Cumulative Local Citations by Year"
+        else:
+            darkness = None
+            if ylabel is None:
+                ylabel = column.replace("_", " ").title()
+
+        return bar_plot(
+            height=self._table[column],
+            cmap=cmap,
+            figsize=figsize,
+            darkness=darkness,
+            fontsize=fontsize,
+            edgecolor=edgecolor,
+            linewidth=linewidth,
+            zorder=zorder,
+            ylabel=ylabel,
+            xlabel=xlabel,
+        )
+
+    def barh(
+        self,
+        column,
+        cmap="Greys",
+        figsize=(6, 5),
+        darkness=None,
+        fontsize=9,
+        edgecolor="k",
+        linewidth=0.5,
+        zorder=10,
+        ylabel=None,
+        xlabel=None,
+    ):
+
+        if column == "num_documents":
+            darkness = self._table["global_citations"]
+            if xlabel is None:
+                xlabel = "Num Documents by Year"
+        elif column == "global_citations":
+            darkness = self._table["num_documents"]
+            if xlabel is None:
+                xlabel = "G]lobal Citations by Year"
+        elif column == "local_citations":
+            darkness = self._table["num_documents"]
+            if xlabel is None:
+                xlabel = "Local Citations by Year"
+        elif column == "cum_num_documents":
+            darkness = self._table["cum_global_citations"]
+            if xlabel is None:
+                xlabel = "Cumulative Num Documents by Year"
+        elif column == "cum_global_citations":
+            darkness = self._table["cum_num_documents"]
+            if xlabel is None:
+                xlabel = "Cumulative Global Citations by Year"
+        elif column == "cum_local_citations":
+            darkness = self._table["cum_num_documents"]
+            if xlabel is None:
+                xlabel = "Cumulative Local Citations by Year"
+        else:
+            darkness = None
+            if xlabel is None:
+                xlabel = column.replace("_", " ").title()
+
+        return barh_plot(
+            width=self._table[column],
+            cmap=cmap,
+            figsize=figsize,
+            darkness=darkness,
+            fontsize=fontsize,
+            edgecolor=edgecolor,
+            linewidth=linewidth,
+            zorder=zorder,
+            ylabel=ylabel,
+            xlabel=xlabel,
+        )
+
+    def pie(
+        self,
+        column,
+        darkness=None,
+        cmap="Greys",
+        figsize=(6, 6),
+        fontsize=9,
+        wedgeprops={
+            "width": 0.6,
+            "edgecolor": "k",
+            "linewidth": 0.5,
+            "linestyle": "-",
+            "antialiased": True,
+        },
+    ):
+        return pie_plot(
+            x=self._table[column],
+            darkness=darkness,
+            cmap=cmap,
+            figsize=figsize,
+            fontsize=fontsize,
+            wedgeprops=wedgeprops,
+        )

@@ -6,7 +6,12 @@ TF (term-frecuency) Matrix
 import numpy as np
 import pandas as pd
 
-from .utils import explode, load_records, load_stopwords, map_
+from .utils import (
+    explode,
+    load_records_from_directory,
+    load_stopwords_from_directory,
+    map_,
+)
 
 
 def _tf_matrix_from_records(

@@ -1,5 +1,9 @@
-from techminer.utils import load_records, logging, save_records
-from techminer.utils.io import save_records
+from techminer.utils import (
+    load_records_from_directory,
+    logging,
+    save_records_to_directory,
+)
+from techminer.utils.io import save_records_to_directory
 from techminer.utils.map import map_
 from techminer.utils.thesaurus import read_textfile
 
@@ -8,7 +12,7 @@ def apply_institutions_thesaurus(directory):
 
     logging.info("Applying thesaurus to institutions ...")
 
-    data = load_records(directory)
+    data = load_records_from_directory(directory)
 
     if directory[-1] != "/":
         directory = directory + "/"

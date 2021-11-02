@@ -110,7 +110,7 @@ def wordcloud_(
         relative_scaling=relative_scaling,
         regexp=regexp,
         collocations=collocations,
-        colormap=cmap,
+        cmap=cmap,
         normalize_plurals=normalize_plurals,
         contour_width=contour_width,
         contour_color=contour_color,

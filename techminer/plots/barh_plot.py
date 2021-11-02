@@ -11,7 +11,7 @@ TEXTLEN = 40
 def barh_plot(
     width,
     darkness=None,
-    colormap="Greys",
+    cmap="Greys",
     figsize=(6, 6),
     fontsize=9,
     edgecolor="k",
@@ -63,7 +63,7 @@ def barh_plot(
 
     """
     darkness = width if darkness is None else darkness
-    cmap = plt.cm.get_cmap(colormap)
+    cmap = plt.cm.get_cmap(cmap)
     if max(darkness) == min(darkness):
         color = [cmap(0.1) for _ in darkness]
     else:

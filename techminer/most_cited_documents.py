@@ -5,7 +5,7 @@ Most Cited Documents
 
 import pandas as pd
 
-from techminer.utils import load_records
+from techminer.utils import load_records_from_directory
 
 
 def _most_cited_documents_from_records(
@@ -65,7 +65,7 @@ def _most_cited_documents_from_directory(
     n_top,
 ):
     return _most_cited_documents_from_records(
-        records=load_records(directory),
+        records=load_records_from_directory(directory),
         global_citations=global_citations,
         normalized_citations=normalized_citations,
         n_top=n_top,

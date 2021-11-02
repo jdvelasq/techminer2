@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 from .core_authors import core_authors
-from .utils import load_records
+from .utils import load_records_from_directory
 
 
 def _lotka_plot_from_records(

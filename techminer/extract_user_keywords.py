@@ -6,7 +6,7 @@ Extract user keywords
 
 import pandas as pd
 
-from .utils import Keywords, load_records, logging
+from .utils import Keywords, load_records_from_directory, logging
 
 
 def _extract_user_keywords_from_records(

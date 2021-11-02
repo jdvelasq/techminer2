@@ -11,7 +11,7 @@ import numpy as np
 import pandas as pd
 
 from .utils.explode import explode
-from .utils.io import load_records
+from .utils.io import load_records_from_directory
 
 
 def _core_sources_from_records(records):
@@ -40,6 +40,7 @@ def _core_sources_from_records(records):
             ]
         ],
         "publication_name",
+        sep="; ",
     )
 
     sources = records.groupby("publication_name", as_index=True).agg(
@@ -109,7 +110,7 @@ def _core_sources_from_directory(directory):
     pandas.DataFrame
         Dataframe with the core sources of the records
     """
-    return _core_sources_from_records(load_records(directory))
+    return _core_sources_from_records(load_records_from_directory(directory))
 
 
 def core_sources(directory_or_records):

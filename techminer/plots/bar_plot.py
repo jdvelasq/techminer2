@@ -10,7 +10,7 @@ TEXTLEN = 40
 def bar_plot(
     height,
     darkness=None,
-    colormap="Greys",
+    cmap="Greys",
     figsize=(6, 6),
     fontsize=9,
     edgecolor="k",
@@ -26,7 +26,7 @@ def bar_plot(
     Args:
         height (pandas.Series): The height(s) of the bars.
         darkness (pandas.Series, optional): The color darkness of the bars. Defaults to None.
-        colormap (str, optional): Colormap name. Defaults to "Greys".
+        cmap (str, optional): Colormap name. Defaults to "Greys".
         figsize (tuple, optional): Figure size passed to matplotlib. Defaults to (6, 6).
         fontsize (int, optional): Font size. Defaults to 11.
         edgecolor (str, optional): The colors of the bar edges. Defaults to "k".
@@ -63,9 +63,9 @@ def bar_plot(
     """
     darkness = height if darkness is None else darkness
 
-    colormap = plt.cm.get_cmap(colormap)
+    cmap = plt.cm.get_cmap(cmap)
     color = [
-        colormap(0.1 + 0.90 * (d - min(darkness)) / (max(darkness) - min(darkness)))
+        cmap(0.1 + 0.90 * (d - min(darkness)) / (max(darkness) - min(darkness)))
         for d in darkness
     ]
 

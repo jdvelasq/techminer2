@@ -2,7 +2,7 @@ import io
 from os.path import dirname, isfile, join
 
 import pandas as pd
-from techminer.utils import load_records, logging
+from techminer.utils import load_records_from_directory, logging
 from techminer.utils.extract_country import extract_country as extract_country_name
 from techminer.utils.thesaurus import Thesaurus, load_file_as_dict
 

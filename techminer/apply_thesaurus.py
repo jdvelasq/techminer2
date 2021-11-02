@@ -5,7 +5,7 @@ Apply Thesaurus
 """
 import pandas as pd
 
-from techminer.utils import load_records, map_, save_records
+from techminer.utils import load_records_from_directory, map_, save_records_to_directory
 from techminer.utils.thesaurus import read_textfile
 
 
@@ -41,7 +41,7 @@ def _apply_thesaurus_from_directory(
     strict,
 ):
     return _apply_thesaurus_from_records(
-        records=load_records(directory),
+        records=load_records_from_directory(directory),
         thesaurus_filepath=thesaurus_filepath,
         input_column=input_column,
         output_column=output_column,
@@ -70,7 +70,7 @@ def apply_thesaurus(
             output_column=output_column,
             strict=strict,
         )
-        save_records(records, directory_or_records)
+        save_records_to_directory(records, directory_or_records)
     elif isinstance(directory_or_records, pd.DataFrame):
         return _apply_thesaurus_from_records(
             records=directory_or_records,

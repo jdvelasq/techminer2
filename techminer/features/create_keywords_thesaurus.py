@@ -2,7 +2,7 @@ import os.path
 from os.path import isfile
 
 import pandas as pd
-from techminer.utils import load_records, logging
+from techminer.utils import load_records_from_directory, logging
 from techminer.utils.thesaurus import Thesaurus, load_file_as_dict, text_clustering
 
 

@@ -6,7 +6,7 @@ Co-occurrence Matrix
 import numpy as np
 import pandas as pd
 
-from techminer.utils.io import load_records
+from techminer.utils.io import load_records_from_directory
 
 from .tf_matrix import tf_matrix
 

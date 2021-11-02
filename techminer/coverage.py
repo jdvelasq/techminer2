@@ -5,7 +5,7 @@ Coverage Report
 
 import pandas as pd
 
-from techminer.utils.io import load_records
+from techminer.utils.io import load_records_from_directory
 
 
 def _coverage_from_records(records):
@@ -29,7 +29,7 @@ def _coverage_from_records(records):
 
 
 def _coverage_from_directory(directory):
-    return _coverage_from_records(load_records(directory))
+    return _coverage_from_records(load_records_from_directory(directory))
 
 
 def coverage(directory_or_records):

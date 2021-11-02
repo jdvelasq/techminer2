@@ -11,7 +11,7 @@ TEXTLEN = 40
 def pie_plot(
     x,
     darkness=None,
-    colormap="Greys",
+    cmap="Greys",
     figsize=(6, 6),
     fontsize=11,
     wedgeprops={
@@ -52,7 +52,7 @@ def pie_plot(
     """
     darkness = x if darkness is None else darkness
 
-    cmap = plt.cm.get_cmap(colormap)
+    cmap = plt.cm.get_cmap(cmap)
     colors = [
         cmap(0.1 + 0.90 * (d - min(darkness)) / (max(darkness) - min(darkness)))
         for d in darkness

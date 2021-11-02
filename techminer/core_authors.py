@@ -7,7 +7,7 @@ import numpy as np
 import pandas as pd
 
 from techminer.term_analysis import count_records_by_term
-from techminer.utils import load_records
+from techminer.utils import load_records_from_directory
 
 from .utils import explode
 
@@ -50,7 +50,7 @@ def _core_authors_from_records(records):
         str(round(100 * a / sum(z["Num Authors"]), 2)) + " %"
         for a in z["Acum Num Authors"]
     ]
-    m = explode(records[["authors", "record_id"]], "authors")
+    m = explode(records[["authors", "record_id"]], "authors", sep="; ")
     m = m.dropna()
     m["Documents_written"] = m.authors.map(lambda w: authors_dict[w])
 
@@ -101,7 +101,7 @@ def _core_authors_from_directory(directory):
     pandas.DataFrame
         Dataframe with the core sources of the records
     """
-    return _core_authors_from_records(load_records(directory))
+    return _core_authors_from_records(load_records_from_directory(directory))
 
 
 def core_authors(directory_or_records):

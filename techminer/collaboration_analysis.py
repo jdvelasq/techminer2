@@ -8,7 +8,7 @@ Colaboration Analysis
 import numpy as np
 import pandas as pd
 
-from .utils import explode, load_records
+from .utils import explode, load_records_from_directory
 
 
 def _collaboration_analysis_from_records(

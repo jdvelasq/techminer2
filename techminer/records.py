@@ -15,7 +15,7 @@ from .features import (
     process_records,
 )
 from .importers import DimensionsImporter, ScopusImporter, WoSImporter
-from .utils import load_records, logging
+from .utils import load_records_from_directory, logging
 
 
 def create_import_object(source, filetype, directory):
