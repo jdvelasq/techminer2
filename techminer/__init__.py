@@ -3,6 +3,7 @@ Main functions
 
 """
 from .apply_thesaurus import apply_thesaurus
+from .association_index import association_index
 from .bradford_plot import bradford_plot
 from .co_occurrence_matrix import co_occurrence_matrix
 from .core_authors import core_authors

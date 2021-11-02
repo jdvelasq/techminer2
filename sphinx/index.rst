@@ -67,6 +67,7 @@ in a cell of Jupiter Lab or Google Colaboratory.
     :maxdepth: 1
 
     apply_thesaurus
+    association_index
     bradford_plot
     co_occurrence_matrix
     core_authors
