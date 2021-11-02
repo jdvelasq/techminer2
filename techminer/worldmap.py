@@ -2,14 +2,14 @@
 Worldmap
 ===============================================================================
 """
-
-
 import json
 from os.path import dirname, join
 
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
+
+from .term_analysis import term_analysis
 
 TEXTLEN = 40
 
@@ -125,3 +125,48 @@ def worldmap(
     fig.set_tight_layout(True)
 
     return fig
+
+
+class Worldmap:
+    def __init__(self, directory_or_records):
+        self._table = term_analysis(
+            directory_or_records=directory_or_records,
+            column="countries",
+            sep="; ",
+        )
+
+    def sort_values(self, by, ascending=True, key=None):
+        return self._table.sort_values(
+            by=by,
+            ascending=ascending,
+            key=key,
+            inplace=True,
+        )
+
+    def sort_index(self, ascending=True, key=None):
+        return self._table.sort_index(
+            ascending=ascending,
+            axis="columns",
+            key=key,
+            inplace=True,
+        )
+
+    @property
+    def table_(self):
+        return self._table
+
+    def plot(
+        self,
+        column="num_records",
+        cmap="Pastel2",
+        figsize=(6, 6),
+        legend=True,
+        fontsize=11,
+    ):
+        return worldmap(
+            series=self._table[column],
+            cmap="Pastel2",
+            figsize=(6, 6),
+            legend=True,
+            fontsize=11,
+        )

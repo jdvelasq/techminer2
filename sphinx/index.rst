@@ -68,7 +68,7 @@ in a cell of Jupiter Lab or Google Colaboratory.
 
 
     term_analysis
-
+    worldmap
 
 ..    apply_thesaurus
 ..    association_index
@@ -87,7 +87,7 @@ in a cell of Jupiter Lab or Google Colaboratory.
 ..    tf_matrix
 ..    tfidf_matrix
 ..    time_analysis
-..    worldmap
+
 
 
 **List of auxiliary tools**:

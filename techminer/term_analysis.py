@@ -193,13 +193,30 @@ class TermAnalyzer:
         _table = _table.head(max_terms)
         self._table = _table
 
-    def sort_values(self, by, ascending=True, key=None):
+    def sort_values(
+        self,
+        by,
+        ascending=True,
+        key=None,
+    ):
         return self._table.sort_values(
-            by=by, ascending=ascending, key=key, inplace=True
+            by=by,
+            ascending=ascending,
+            key=key,
+            inplace=True,
         )
 
-    def sort_index(self, ascending=True, key=None):
-        return self._table.sort_index(ascending=ascending, key=key, inplace=True)
+    def sort_index(
+        self,
+        ascending=True,
+        axis="columns",
+        key=None,
+    ):
+        return self._table.sort_index(
+            ascending=ascending,
+            key=key,
+            inplace=True,
+        )
 
     @property
     def table_(self):
