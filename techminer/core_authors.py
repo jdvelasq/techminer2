@@ -6,7 +6,7 @@ Core Authors
 import numpy as np
 import pandas as pd
 
-from techminer.term_analysis import count_documents_by_term
+from techminer.term_analysis import count_records_by_term
 from techminer.utils import load_records
 
 from .utils import explode
@@ -28,7 +28,7 @@ def _core_authors_from_records(records):
     """
     records = records.copy()
 
-    z = count_documents_by_term(records, "authors", sep="; ")
+    z = count_records_by_term(records, "authors", sep="; ")
 
     authors_dict = {
         author: num_docs for author, num_docs in zip(z.index, z) if not pd.isna(author)

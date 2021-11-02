@@ -79,9 +79,6 @@ def _co_occurrence_matrix_from_records(
             sep=sep,
         )
 
-    print(matrix_in_columns.shape)
-    print(matrix_in_rows.shape)
-
     matrix = np.matmul(matrix_in_rows.transpose().values, matrix_in_columns.values)
 
     pdf = pd.DataFrame(

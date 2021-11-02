@@ -38,15 +38,13 @@ class Records:
 
     """
 
-    def __init__(self, directory) -> None:
+    def __init__(self, directory_or_records) -> None:
         """
         Manage records directory.
 
         :param directory:
         """
-        if directory[-1] != "/":
-            directory += "/"
-        self.directory = directory
+        self.directory_or_records = directory_or_records
 
     def import_records(self, source, filetype):
         """
@@ -67,7 +65,6 @@ class Records:
     def process_records(self):
         """
         Consolidate records for analysis.
-
 
         """
         process_records(self.directory)

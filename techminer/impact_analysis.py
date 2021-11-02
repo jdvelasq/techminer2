@@ -7,7 +7,7 @@ Impact Analysis
 import numpy as np
 import pandas as pd
 
-from .term_analysis import count_documents_by_term, count_global_citations_by_term
+from .term_analysis import count_global_citations_by_term, count_records_by_term
 from .utils import explode, load_records, load_stopwords
 
 
@@ -67,7 +67,7 @@ def _impact_analysis_from_records(records, column, stopwords=None):
     )
     age = records.pub_year.max() - age.age + 1
 
-    num_documents = count_documents_by_term(records, column)
+    num_documents = count_records_by_term(records, column)
     num_global_citations = count_global_citations_by_term(records, column)
 
     impact = pd.concat(
