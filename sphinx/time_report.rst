@@ -1,4 +1,4 @@
-.. automodule:: techminer.time_analysis
+.. automodule:: techminer.time_report
     :members:
     :undoc-members:
     :show-inheritance:

@@ -23,13 +23,11 @@ from .import_raw_data import *
 from .lotka_plot import lotka_plot
 from .most_cited_documents import *
 from .process_records_file import process_records_file
-
-# from .records import Records
 from .summary import summary
 from .term_report import *
 
 # from .term_per_year_analysis import *
 # from .tf_matrix import tf_matrix
 # from .tfidf_matrix import tfidf_matrix
-# from .time_analysis import *
+from .time_report import *
 from .worldmap import *

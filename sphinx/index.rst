@@ -36,13 +36,12 @@ Analysis of bibliographic datasets using Python
     most_cited_documents      
     summary     
     term_report
+    time_report
     worldmap
+
 
 ..    bigraph_analysis
  
-..    term_analysis
-..    time_analysis    
-..    worldmap
 ..    extract_user_keywords
 
 ..    association_index
