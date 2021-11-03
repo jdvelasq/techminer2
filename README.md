@@ -1,2 +1,3 @@
-# techminer-sklearn
-techminer migration to sklearn compatibility
+# TechMiner API
+
+Low level based tools for bibliographical analysis. 
