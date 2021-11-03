@@ -27,7 +27,7 @@ RUN pip3 --disable-pip-version-check --no-cache-dir install \
     prospector \
     pycodestyle \
     pylama \
-    pylint==2.6.0 \
+    pylint==2.11.1 \
     pytest \
     rope \
     yapf

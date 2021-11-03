@@ -1,18 +1,23 @@
+"""
+Records file processing.
+===============================================================================
+"""
+
 from os.path import isfile
 
 import numpy as np
 import pandas as pd
-from techminer.utils import (
+
+from .clean_institution_fields import clean_institution_fields
+from .clean_keywords_fields import clean_keywords_fields
+from .create_institutions_thesaurus import create_institutions_thesaurus
+from .create_keywords_thesaurus import create_keywords_thesaurus
+from .utils import (
     explode,
     load_records_from_directory,
     logging,
     save_records_to_directory,
 )
-
-from .apply_institutions_thesaurus import apply_institutions_thesaurus
-from .apply_keywords_thesaurus import apply_keywords_thesaurus
-from .create_institutions_thesaurus import create_institutions_thesaurus
-from .create_keywords_thesaurus import create_keywords_thesaurus
 
 # from techminer.utils.explode import explode
 
@@ -155,6 +160,7 @@ def _compute_bradford_law_zones(records):
             ]
         ],
         "publication_name",
+        sep=None,
     )
     m = x.groupby("publication_name", as_index=False).agg(
         {
@@ -214,17 +220,7 @@ def _compute_bradford_law_zones(records):
     return records
 
 
-def _save_records(records, directory):
-    """
-    Saves records.
-
-    """
-    filename = directory + "records.csv"
-    records.to_csv(filename, sep=",", encoding="utf-8", index=False)
-    logging.info("Datastore saved to " + filename)
-
-
-def process_records(directory):
+def process_records_file(dirpath):
     """
     This method is used to process the records
 
@@ -232,19 +228,19 @@ def process_records(directory):
     :return:
         None
     """
-    if directory[-1] != "/":
-        directory += "/"
+    if dirpath[-1] != "/":
+        dirpath += "/"
 
-    filename = directory + "stopwords.txt"
+    filename = dirpath + "stopwords.txt"
     if not isfile(filename):
         open(filename, "a", encoding="utf-8").close()
 
     logging.info("Processing records ...")
 
-    create_institutions_thesaurus(directory=directory)
-    create_keywords_thesaurus(directory=directory)
+    create_institutions_thesaurus(dirpath=dirpath)
+    create_keywords_thesaurus(dirpath=dirpath)
 
-    records = load_records(directory)
+    records = load_records_from_directory(dirpath)
     records = _create_record_id(records)
     records = records.assign(local_references=[[] for _ in range(len(records))])
     records = _create_local_references_using_doi(records)
@@ -252,4 +248,7 @@ def process_records(directory):
     records = _consolidate_local_references(records)
     records = _compute_local_citations(records)
     records = _compute_bradford_law_zones(records)
-    save_records(records, directory=directory)
+    save_records_to_directory(records, directory=dirpath)
+
+    clean_institution_fields(dirpath=dirpath)
+    clean_keywords_fields(dirpath=dirpath)

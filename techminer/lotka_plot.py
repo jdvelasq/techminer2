@@ -76,7 +76,7 @@ def _lotka_plot_from_directory(
     fontsize,
 ):
     return _lotka_plot_from_records(
-        records=load_records(directory),
+        records=load_records_from_directory(directory),
         cmap=cmap,
         figsize=figsize,
         fontsize=fontsize,
@@ -84,7 +84,7 @@ def _lotka_plot_from_directory(
 
 
 def lotka_plot(
-    directory_or_records,
+    dirpath_or_records,
     cmap="Greys",
     figsize=(8, 6),
     fontsize=11,
@@ -94,7 +94,7 @@ def lotka_plot(
 
     Parameters
     ----------
-    directory_or_records: str or list
+    dirpath_or_records: str or list
         path to the directory or the records object.
 
     Returns
@@ -102,19 +102,19 @@ def lotka_plot(
     pandas.DataFrame
         Dataframe with the core sources of the records
     """
-    if isinstance(directory_or_records, str):
+    if isinstance(dirpath_or_records, str):
         return _lotka_plot_from_directory(
-            directory=directory_or_records,
+            directory=dirpath_or_records,
             cmap=cmap,
             figsize=figsize,
             fontsize=fontsize,
         )
-    elif isinstance(directory_or_records, pd.DataFrame):
+    elif isinstance(dirpath_or_records, pd.DataFrame):
         return _lotka_plot_from_records(
-            records=directory_or_records,
+            records=dirpath_or_records,
             cmap=cmap,
             figsize=figsize,
             fontsize=fontsize,
         )
     else:
-        raise TypeError("directory_or_records must be a string or a pandas.DataFrame")
+        raise TypeError("dirpath_or_records must be a string or a pandas.DataFrame")

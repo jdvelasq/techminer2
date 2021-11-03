@@ -7,7 +7,7 @@ Impact Analysis
 import numpy as np
 import pandas as pd
 
-from .term_analysis import count_global_citations_by_term, count_records_by_term
+from .term_report import count_global_citations_by_term, count_records_by_term
 from .utils import explode, load_records_from_directory, load_stopwords_from_directory
 
 

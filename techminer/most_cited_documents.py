@@ -73,7 +73,7 @@ def _most_cited_documents_from_directory(
 
 
 def most_cited_documents(
-    directory_or_records,
+    dirpath_or_records,
     global_citations=True,
     normalized_citations=False,
     n_top=50,
@@ -83,7 +83,7 @@ def most_cited_documents(
 
     Parameters
     ----------
-    directory_or_records: str
+    dirpath_or_records: str
         path to the directory or the records object.
     global_citations: bool
         Whether to use global citations or not.
@@ -95,19 +95,19 @@ def most_cited_documents(
     most_cited_documents: pandas.DataFrame
         Most cited documents.
     """
-    if isinstance(directory_or_records, str):
+    if isinstance(dirpath_or_records, str):
         return _most_cited_documents_from_directory(
-            directory=directory_or_records,
+            directory=dirpath_or_records,
             global_citations=global_citations,
             normalized_citations=normalized_citations,
             n_top=n_top,
         )
-    elif isinstance(directory_or_records, pd.DataFrame):
+    elif isinstance(dirpath_or_records, pd.DataFrame):
         return _most_cited_documents_from_records(
-            records=directory_or_records,
+            records=dirpath_or_records,
             global_citations=global_citations,
             normalized_citations=normalized_citations,
             n_top=n_top,
         )
     else:
-        raise TypeError("directory_or_records must be a string or a pandas.DataFrame")
+        raise TypeError("dirpath_or_records must be a string or a pandas.DataFrame")

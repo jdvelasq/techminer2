@@ -6,13 +6,14 @@ Co-occurrence Matrix
 import numpy as np
 import pandas as pd
 
-from techminer.utils.io import load_records_from_directory
-
 from .tf_matrix import tf_matrix
-
+from .utils.io import load_records_from_directory
 
 # pyltin: disable=c0103
 # pylint: disable=too-many-arguments
+# pylint: disable=invalid-name
+
+
 def _co_occurrence_matrix_from_records(
     records,
     column,
@@ -133,6 +134,10 @@ def co_occurrence_matrix(
     scheme=None,
     sep="; ",
 ):
+    """
+    Computes a  co-occurrence matrix.
+
+    """
     if isinstance(directory_or_records, str):
         return _co_occurrence_matrix_from_directory(
             directory=directory_or_records,
@@ -146,7 +151,8 @@ def co_occurrence_matrix(
             scheme=scheme,
             sep=sep,
         )
-    elif isinstance(directory_or_records, pd.DataFrame):
+
+    if isinstance(directory_or_records, pd.DataFrame):
         return _co_occurrence_matrix_from_records(
             records=directory_or_records,
             column=column,
@@ -159,5 +165,5 @@ def co_occurrence_matrix(
             scheme=scheme,
             sep=sep,
         )
-    else:
-        raise TypeError("directory_or_records must be a string or a pandas.DataFrame")
+
+    raise TypeError("directory_or_records must be a string or a pandas.DataFrame")

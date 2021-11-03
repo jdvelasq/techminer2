@@ -20,6 +20,9 @@ NAMES = [
 
 
 def extract_country(x):
+    """
+    Extracts a country name from a string.
+    """
     #
     if pd.isna(x) or x is None:
         return pd.NA
@@ -27,7 +30,7 @@ def extract_country(x):
     # List of standardized country names
     #
     module_path = dirname(__file__)
-    filename = join(module_path, "../config/country_codes.data")
+    filename = join(module_path, "../config/country_codes.txt")
     country_codes = load_file_as_dict(filename)
     country_names = list(country_codes.values())
     country_names = [name.lower() for w in country_names for name in w]

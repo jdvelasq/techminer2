@@ -32,13 +32,13 @@ def _coverage_from_directory(directory):
     return _coverage_from_records(load_records_from_directory(directory))
 
 
-def coverage(directory_or_records):
+def coverage(dirpath_or_records):
     """
     Returns an coverage report of the dataset.
 
     Parameters
     ----------
-    directory_or_records: str or list
+    dirpath_or_records: str or list
         path to the directory or the records object.
 
     Returns
@@ -46,9 +46,9 @@ def coverage(directory_or_records):
     pandas.DataFrame
         Coverage statistcs
     """
-    if isinstance(directory_or_records, str):
-        return _coverage_from_directory(directory_or_records)
-    elif isinstance(directory_or_records, pd.DataFrame):
-        return _coverage_from_records(directory_or_records)
+    if isinstance(dirpath_or_records, str):
+        return _coverage_from_directory(dirpath_or_records)
+    elif isinstance(dirpath_or_records, pd.DataFrame):
+        return _coverage_from_records(dirpath_or_records)
     else:
-        raise TypeError("directory_or_records must be a string or a pandas.DataFrame")
+        raise TypeError("dirpath_or_records must be a string or a pandas.DataFrame")

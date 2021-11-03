@@ -76,7 +76,7 @@ def _create_thesaurus_from_directory(
 
 def create_thesaurus(
     thesaurus_filepath,
-    directory_or_records,
+    dirpath_or_records,
     column,
     sep="; ",
 ):
@@ -86,19 +86,19 @@ def create_thesaurus(
 
 
     """
-    if isinstance(directory_or_records, str):
+    if isinstance(dirpath_or_records, str):
         return _create_thesaurus_from_directory(
             thesaurus_filepath=thesaurus_filepath,
-            directory=directory_or_records,
+            directory=dirpath_or_records,
             column=column,
             sep=sep,
         )
-    elif isinstance(directory_or_records, pd.DataFrame):
+    elif isinstance(dirpath_or_records, pd.DataFrame):
         return _create_thesaurus_from_records(
             thesaurus_filepath=thesaurus_filepath,
-            records=directory_or_records,
+            records=dirpath_or_records,
             column=column,
             sep=sep,
         )
     else:
-        raise TypeError("directory_or_records must be a string or a pandas.DataFrame")
+        raise TypeError("dirpath_or_records must be a string or a pandas.DataFrame")

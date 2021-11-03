@@ -1,18 +1,27 @@
 """
-Base module for all importers.
+Import raw data files.
+===============================================================================
 """
+
+# pyltin: disable=e1101
+# pylint: disable=no-member
+# pylint: disable=unsupported-assignment-operation
+# pylint: disable=unsubscriptable-object
+
+
 import re
 from os import mkdir
 from os.path import dirname, isdir, isfile, join
 
 import pandas as pd
-from techminer.utils import logging, map_, remove_accents
-from techminer.utils.extract_country import extract_country as extract_country_name
-from techminer.utils.thesaurus import load_file_as_dict
 from tqdm import tqdm
 
+from .utils import logging, map_, remove_accents
+from .utils.extract_country import extract_country as extract_country_name
+from .utils.thesaurus import load_file_as_dict
 
-class BaseImporter:
+
+class _BaseImporter:
     """
     Base class for ETL pipelines.
 
@@ -53,7 +62,7 @@ class BaseImporter:
         """
         #
         module_path = dirname(__file__)
-        filepath = join(module_path, "../config/" + self.tagsfile)
+        filepath = join(module_path, "config/" + self.tagsfile)
         #
         columns2tags = {}
         columns2delete = []
@@ -86,16 +95,15 @@ class BaseImporter:
 
         """
         module_path = dirname(__file__)
-        filepath = join(module_path, "../config/iso_source_abbreviations.csv")
+        filepath = join(module_path, "config/iso_source_abbreviations.csv")
         pdf = pd.read_csv(filepath, sep=",")
         self.iso_source_abbreviations = dict(
-            zip(pdf.publication_name, pdf.iso_source_abbreviation)
+            zip(pdf.publication_name, pdf["iso_source_abbreviation"])
         )
 
     def format_authors(self):
         """
         Imports data from a raw data source.
-
         """
         raise NotImplementedError
 
@@ -298,26 +306,26 @@ class BaseImporter:
                 f"Duplicate rows found in {self.directory}records.csv - Records saved to {filename}"
             )
 
-    def translate_british_to_amerian(self):
-        """
-        Translate british spelling to american spelling.
+    # def translate_british_to_amerian(self):
+    #     """
+    #     Translate british spelling to american spelling.
 
-        """
-        if "abstract" in self.raw_data.columns:
-            logging.info("Transforming British to American ...")
-            module_path = dirname(__file__)
-            filename = join(module_path, "../config/bg2am.data")
-            bg2am = load_file_as_dict(filename)
-            with tqdm(total=len(bg2am.keys())) as pbar:
+    #     """
+    #     if "abstract" in self.raw_data.columns:
+    #         logging.info("Transforming British to American ...")
+    #         module_path = dirname(__file__)
+    #         filename = join(module_path, "config/bg2am.txt")
+    #         bg2am = load_file_as_dict(filename)
+    #         with tqdm(total=len(bg2am.keys())) as pbar:
 
-                for british_word, american_word in bg2am.items():
-                    match = re.compile(f"\\b{british_word}\\b")
-                    self.raw_data = self.raw_data.applymap(
-                        lambda x: match.sub(american_word[0], x)
-                        if isinstance(x, str)
-                        else x
-                    )
-                    pbar.update(1)
+    #             for british_word, american_word in bg2am.items():
+    #                 match = re.compile(f"\\b{british_word}\\b")
+    #                 self.raw_data = self.raw_data.applymap(
+    #                     lambda x: match.sub(american_word[0], x)
+    #                     if isinstance(x, str)
+    #                     else x
+    #                 )
+    #                 pbar.update(1)
 
     def save_records(self):
         """
@@ -356,7 +364,7 @@ class BaseImporter:
         self.compute_new_columns()
         self.drop_duplicates()
         self.report_duplicate_titles()
-        self.translate_british_to_amerian()
+        ## self.translate_british_to_amerian()
         self.save_records()
 
     # --- Computed columns ----------------------------------------------------
@@ -422,3 +430,224 @@ class BaseImporter:
     #             if not pd.isna(z)
     #             else z
     #         )
+
+
+class _ScopusImporter(_BaseImporter):
+    """
+    Importer for Scopus CSV files.
+
+    """
+
+    def __init__(self, source, filetype, directory):
+        super().__init__(source, filetype, directory)
+        self.tagsfile = "scopus2tags.csv"
+
+    def extract_data(self):
+        """
+        Imports data from a Scopus CSV file.
+
+        """
+        logging.info(f"Reading file '{self.source}' ...")
+        self.raw_data = pd.read_csv(
+            self.source, encoding="utf-8", error_bad_lines=False
+        )
+        # on_bad_lines="skip")
+
+    def format_authors(self):
+        """
+        Formats Authors into a common format.
+        """
+
+        if "authors" in self.raw_data.columns:
+            logging.info("Formating authors ...")
+            self.raw_data.authors = self.raw_data.authors.map(
+                lambda x: pd.NA if x == "[No author name available]" else x
+            )
+
+            self.raw_data.authors = self.raw_data.authors.str.replace(
+                ", ", "; ", regex=False
+            )
+            self.raw_data.authors = self.raw_data.authors.str.replace(
+                ".", "", regex=False
+            )
+
+        if "authors_id" in self.raw_data.columns:
+            logging.info("Formating authors_id ...")
+            self.raw_data["authors_id"] = self.raw_data.authors_id.map(
+                lambda w: pd.NA if w == "[No author id available]" else w
+            )
+            self.raw_data["authors_id"] = self.raw_data.authors_id.map(
+                lambda x: x[:-1] if isinstance(x, str) and x[-1] == ";" else x
+            )
+            # pylint: disable=unsubscriptable-object
+            authors_ids = self.raw_data[["authors", "authors_id"]]
+            authors_ids = authors_ids.dropna()
+            authors_ids = {
+                b: a for a, b in zip(authors_ids.authors, authors_ids.authors_id)
+            }
+
+            authors_ids = {
+                k: list(zip(k.split(";"), v.split("; ")))
+                for k, v in authors_ids.items()
+            }
+            authors_ids = {
+                k: ["/".join([b, a]) for a, b in v] for k, v in authors_ids.items()
+            }
+            authors_ids = {k: "; ".join(v) for k, v in authors_ids.items()}
+
+            self.raw_data["authors_id"] = self.raw_data.authors_id.map(
+                lambda x: authors_ids[x] if x in authors_ids.keys() else x
+            )
+
+
+class _WoSImporter(_BaseImporter):
+    """
+    Web of Science importer.
+
+    """
+
+    def __init__(self, source, filetype, directory):
+        super().__init__(source, filetype, directory)
+        self.tagsfile = "wos2tags.csv"
+
+    def extract_data(self):
+        """
+        Imports data from a WoS text file.
+
+        """
+
+        def load_wosrecords():
+            records = []
+            record = {}
+            key = None
+            value = []
+            with open(self.source, "rt", encoding="utf-8") as file:
+                for line in file:
+                    line = line.replace("\n", "")
+                    if line.strip() == "ER":
+                        if len(record) > 0:
+                            records.append(record)
+                        record = {}
+                        key = None
+                        value = []
+                    elif len(line) >= 2 and line[:2] == "  ":
+                        line = line[2:]
+                        line = line.strip()
+                        value.append(line)
+
+                    elif (
+                        len(line) >= 2
+                        and line[:2] != "  "
+                        and line[:2] not in ["FN", "VR"]
+                    ):
+                        if key is not None:
+                            record[key] = "; ".join(value)
+                        key = line[:2].strip()
+                        value = [line[2:].strip()]
+
+            return records
+
+        def wosrecords2df(wosrecords):
+            pdf = pd.DataFrame()
+            for record in wosrecords:
+                record = {key: [value] for key, value in record.items()}
+                row = pd.DataFrame(record)
+                pdf = pd.concat(
+                    [pdf, row],
+                    ignore_index=True,
+                )
+            return pdf
+
+        super().extract_data()
+        self.raw_data = wosrecords2df(wosrecords=load_wosrecords())
+
+    def format_authors(self):
+        """
+
+        Formats Authors into a common format.
+
+        """
+        if "authors" in self.raw_data.columns:
+            self.raw_data.authors = self.raw_data.authors.str.replace(
+                ",", "", regex=True
+            )
+
+
+class _DimensionsImporter(_BaseImporter):
+    def __init__(self, source, filetype, directory):
+        super().__init__(source, filetype, directory)
+        self.tagsfile = "dimensions2tags.csv"
+
+    def extract_data(self):
+        """
+        Imports data from a Dimensions CSV file.
+
+        """
+        self.raw_data = pd.read_csv(self.source, skiprows=1)
+
+    def format_authors(self):
+        """
+        Formats Authors into a common format.
+
+        """
+
+        def format_authorslits(authorslist):
+
+            authorslist = authorslist.split(";")
+            authorslist = [author.strip() for author in authorslist]
+
+            surnames = [
+                author.split(",")[0] if "," in author else author.split(" ")[0]
+                for author in authorslist
+            ]
+            names = [
+                author.split(",")[1] if "," in author else author.split(" ")[0]
+                for author in authorslist
+            ]
+
+            names = [name.strip() for name in names]
+            names = [name.split() for name in names]
+            names = [
+                [name_part[0] for name_part in name] for name in names if len(name) > 0
+            ]
+            names = ["".join(part_name) for name in names for part_name in name]
+
+            authorslist = [
+                surname + " " + name for surname, name in zip(surnames, names)
+            ]
+            authorslist = "; ".join(authorslist)
+            return authorslist
+
+        if "authors" in self.raw_data.columns:
+            self.raw_data.authors = self.raw_data.authors.apply(
+                lambda x: format_authorslits(x) if not pd.isnull(x) else None,
+            )
+
+            logging.info("Removing [Anonymous]")
+            self.raw_data.authors = self.raw_data.authors.map(
+                lambda x: pd.NA if not pd.isna(x) and x == "[Anonymous]" else x
+            )
+
+
+def _create_import_object(source, filetype, directory):
+    if filetype == "scopus":
+        return _ScopusImporter(source, filetype, directory)
+    if filetype == "wos":
+        return _WoSImporter(source, filetype, directory)
+    if filetype == "dimensions":
+        return _DimensionsImporter(source, filetype, directory)
+    raise NotImplementedError
+
+
+# ----< Public Functions >-----------------------------------------------------
+
+
+def import_raw_data_from_file(rawfilepath, rawfiletype, dirpath):
+    """
+    Imports a dataset file.
+    """
+    if isfile(rawfilepath):
+        _create_import_object(rawfilepath, rawfiletype, dirpath).run()
+        logging.info(f"The file '{rawfilepath}' was successfully imported.")
+    else:
+        raise FileNotFoundError

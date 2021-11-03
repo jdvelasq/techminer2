@@ -50,7 +50,7 @@ def _apply_thesaurus_from_directory(
 
 
 def apply_thesaurus(
-    directory_or_records,
+    dirpath_or_records,
     thesaurus_filepath,
     input_column,
     output_column,
@@ -62,22 +62,23 @@ def apply_thesaurus(
 
 
     """
-    if isinstance(directory_or_records, str):
+    if isinstance(dirpath_or_records, str):
         records = _apply_thesaurus_from_directory(
-            directory=directory_or_records,
+            directory=dirpath_or_records,
             thesaurus_filepath=thesaurus_filepath,
             input_column=input_column,
             output_column=output_column,
             strict=strict,
         )
-        save_records_to_directory(records, directory_or_records)
-    elif isinstance(directory_or_records, pd.DataFrame):
+        save_records_to_directory(records, dirpath_or_records)
+        return
+    elif isinstance(dirpath_or_records, pd.DataFrame):
         return _apply_thesaurus_from_records(
-            records=directory_or_records,
+            records=dirpath_or_records,
             thesaurus_filepath=thesaurus_filepath,
             input_column=input_column,
             output_column=output_column,
             strict=strict,
         )
     else:
-        raise TypeError("directory_or_records must be a string or a pandas.DataFrame")
+        raise TypeError("dirpath_or_records must be a string or a pandas.DataFrame")

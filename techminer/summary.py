@@ -5,7 +5,7 @@ Summary Report
 import numpy as np
 import pandas as pd
 
-from techminer.utils.io import load_records_from_directory
+from .utils.io import load_records_from_directory
 
 
 def _extract_terms(x, column):
@@ -297,17 +297,17 @@ def _summary_from_records(records):
     )
 
 
-def _summary_from_directory(directory):
-    return _summary_from_records(load_records_from_directory(directory))
+def _summary_from_directory(dirpath):
+    return _summary_from_records(load_records_from_directory(dirpath))
 
 
-def summary(directory_or_records):
+def summary(dirpath_or_records):
     """
     Returns an overview of the dataset.
 
     Parameters
     ----------
-    directory_or_records: str or list
+    dirpath_or_records: str or list
         path to the directory or the records object.
 
     Returns
@@ -315,9 +315,9 @@ def summary(directory_or_records):
     pandas.DataFrame
         Summary statistcs
     """
-    if isinstance(directory_or_records, str):
-        return _summary_from_directory(directory_or_records)
-    elif isinstance(directory_or_records, pd.DataFrame):
-        return _summary_from_records(directory_or_records)
+    if isinstance(dirpath_or_records, str):
+        return _summary_from_directory(dirpath_or_records)
+    elif isinstance(dirpath_or_records, pd.DataFrame):
+        return _summary_from_records(dirpath_or_records)
     else:
-        raise TypeError("directory_or_records must be a string or a pandas.DataFrame")
+        raise TypeError("dirpath_or_records must be a string or a pandas.DataFrame")

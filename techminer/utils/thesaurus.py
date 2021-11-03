@@ -30,9 +30,12 @@ def text_clustering(x, name_strategy="mostfrequent", key="porter", transformer=N
             x = " ".join([w.strip() for w in x.split()])
         return x
 
-    def translate(x):
-        z = [bg2am_[z][0] if z in bg2am_.keys() else z for z in x.split()]
-        return " ".join(z)
+    def translate(american_words):
+        british = [
+            bg2am_[american][0] if american in bg2am_.keys() else american
+            for american in american_words.split()
+        ]
+        return " ".join(british)
 
     #
     # Preprocessing
@@ -72,7 +75,7 @@ def text_clustering(x, name_strategy="mostfrequent", key="porter", transformer=N
     # British to american english
     #
     module_path = dirname(__file__)
-    filename = join(module_path, "../config/bg2am.data")
+    filename = join(module_path, "../config/bg2am.txt")
     bg2am_ = load_file_as_dict(filename)
     x["word_alt"] = x["word_alt"].map(translate)
 

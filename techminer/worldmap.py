@@ -8,20 +8,19 @@ from os.path import dirname, join
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 
-from .term_analysis import term_analysis
+from .term_report import term_report
+from .utils import load_records_from_directory
 
 TEXTLEN = 40
 
 
-def worldmap(
+def _worldmap_plot(
     series,
     cmap="Pastel2",
     figsize=(6, 6),
-    legend=True,
-    fontsize=11,
-    *args,
-    **kwargs,
+    fontsize=9,
 ):
 
     """Worldmap plot with the number of documents per country.
@@ -127,46 +126,88 @@ def worldmap(
     return fig
 
 
-class Worldmap:
-    def __init__(self, directory_or_records):
-        self._table = term_analysis(
-            directory_or_records=directory_or_records,
-            column="countries",
-            sep="; ",
-        )
+def _worldmap_from_records(
+    records,
+    metric,
+    cmap,
+    figsize,
+    fontsize,
+):
+    table = term_report(records, column="countries", sep="; ")
+    return _worldmap_plot(
+        series=table[metric],
+        cmap=cmap,
+        figsize=figsize,
+        fontsize=fontsize,
+    )
 
-    def sort_values(self, by, ascending=True, key=None):
-        return self._table.sort_values(
-            by=by,
-            ascending=ascending,
-            key=key,
-            inplace=True,
-        )
 
-    def sort_index(self, ascending=True, key=None):
-        return self._table.sort_index(
-            ascending=ascending,
-            axis="columns",
-            key=key,
-            inplace=True,
-        )
+def _worldmap_from_directory(
+    dirpath,
+    metric,
+    cmap,
+    figsize,
+    fontsize,
+):
+    return _worldmap_from_records(
+        records=load_records_from_directory(dirpath),
+        metric=metric,
+        cmap=cmap,
+        figsize=figsize,
+        fontsize=fontsize,
+    )
 
-    @property
-    def table_(self):
-        return self._table
 
-    def plot(
-        self,
-        column="num_records",
-        cmap="Pastel2",
-        figsize=(6, 6),
-        legend=True,
-        fontsize=11,
-    ):
-        return worldmap(
-            series=self._table[column],
-            cmap="Pastel2",
-            figsize=(6, 6),
-            legend=True,
-            fontsize=11,
+def worldmap(
+    dirpath_or_records,
+    metric="num_documents",
+    cmap="Pastel2",
+    figsize=(6, 6),
+    fontsize=9,
+):
+    """Worldmap plot with the number of documents per country.
+
+    Examples
+    ----------------------------------------------------------------------------------------------
+
+    >>> import pandas as pd
+    >>> x = pd.Series(
+    ...    data = [1000, 900, 800, 700, 600, 1000],
+    ...    index = ["China", "Taiwan", "United States", "United Kingdom", "India", "Colombia"],
+    ... )
+    >>> x
+    China             1000
+    Taiwan             900
+    United States      800
+    United Kingdom     700
+    India              600
+    Colombia          1000
+    dtype: int64
+
+    >>> fig = worldmap(x, figsize=(15, 6))
+    >>> fig.savefig('/workspaces/techminer/sphinx/images/worldmap.png')
+
+    .. image:: images/worldmap.png
+        :width: 2000px
+        :align: center
+
+
+    """
+    if isinstance(dirpath_or_records, str):
+        return _worldmap_from_directory(
+            dirpath=dirpath_or_records,
+            metric=metric,
+            cmap=cmap,
+            figsize=figsize,
+            fontsize=fontsize,
         )
+    elif isinstance(dirpath_or_records, pd.DataFrame):
+        return _worldmap_from_records(
+            records=dirpath_or_records,
+            metric=metric,
+            cmap=cmap,
+            figsize=figsize,
+            fontsize=fontsize,
+        )
+    else:
+        raise TypeError("dirpath_or_records must be a string or a pandas.DataFrame")

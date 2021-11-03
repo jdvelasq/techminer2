@@ -1,7 +1,15 @@
+"""
+Cleaning institutions fields.
+===============================================================================
+
+Creates a institutions thesaurus from the data in the database.
+"""
+
 import io
 from os.path import dirname, isfile, join
 
 import pandas as pd
+
 from techminer.utils import load_records_from_directory, logging
 from techminer.utils.extract_country import extract_country as extract_country_name
 from techminer.utils.thesaurus import Thesaurus, load_file_as_dict
@@ -108,7 +116,10 @@ PORTUGUES = [
 ]
 
 
-def create_institutions_thesaurus(directory):
+def create_institutions_thesaurus(dirpath):
+    """
+    Creates an insitutions thesaurus from the data in the database.
+    """
     #
     def clean_name(w):
         w = w.replace(".", "").lower().strip()
@@ -173,17 +184,17 @@ def create_institutions_thesaurus(directory):
 
     logging.info("Creating institutions thesaurus ...")
 
-    if directory[-1] != "/":
-        directory = directory + "/"
+    if dirpath[-1] != "/":
+        dirpath = dirpath + "/"
 
-    thesaurus_file = directory + "institutions.txt"
+    thesaurus_file = dirpath + "institutions.txt"
 
     #
     # Valid names of institutions
     #
     module_path = dirname(__file__)
     with io.open(
-        join(module_path, "../config/institutions.data"), "r", encoding="utf-8"
+        join(module_path, "config/institutions.txt"), "r", encoding="utf-8"
     ) as f:
         VALID_NAMES = f.readlines()
     VALID_NAMES = [w.replace("\n", "").lower() for w in VALID_NAMES]
@@ -193,7 +204,7 @@ def create_institutions_thesaurus(directory):
     # List of standardized country names
     #
     module_path = dirname(__file__)
-    filename = join(module_path, "../config/country_codes.data")
+    filename = join(module_path, "config/country_codes.txt")
     country_codes = load_file_as_dict(filename)
     country_names = list(country_codes.values())
     country_names = [w[0].lower() for w in country_names]
@@ -205,7 +216,7 @@ def create_institutions_thesaurus(directory):
     # Loads datastore.csv
     #
 
-    data = load_records(directory)
+    data = load_records_from_directory(dirpath)
 
     #
     # Transform affiliations to lower case
@@ -249,7 +260,7 @@ def create_institutions_thesaurus(directory):
     if any(x.country.isna()):
         logging.info(
             "Affiliations without country detected - check file "
-            + directory
+            + dirpath
             + "ignored_affiliations.txt"
         )
 
@@ -273,7 +284,7 @@ def create_institutions_thesaurus(directory):
     if any(x.key.isna()):
         logging.info(
             "Affiliations without country detected - check file "
-            + directory
+            + dirpath
             + "ignored_affiliations.txt"
         )
     ignored_affiliations += x[x.key.isna()]["affiliation"].tolist()
@@ -281,7 +292,7 @@ def create_institutions_thesaurus(directory):
     #
     # list of ignored affiliations for manual review
     #
-    ignored_affiliations = directory + "ignored_affiliations.txt"
+    ignored_affiliations = dirpath + "ignored_affiliations.txt"
     with io.open(ignored_affiliations, "w", encoding="utf-8") as f:
         for aff in ignored_affiliations:
             print(aff, file=f)

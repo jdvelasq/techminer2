@@ -1,6 +1,6 @@
 # from .ax_text_node_labels import ax_text_node_labels
-from .bar_plot import bar_plot
-from .barh_plot import barh_plot
+# from .bar_plot import bar_plot
+# from .barh_plot import barh_plot
 
 # from .bubble_plot import bubble_plot
 # from .chord_diagram import ChordDiagram
@@ -12,16 +12,16 @@ from .barh_plot import barh_plot
 # from .gant0_plot import gant0_plot
 # from .gant_plot import gant_plot
 # from .heatmap import heatmap
-from .pie_plot import pie_plot
+# from .pie_plot import pie_plot
 
 # from .scatter_plot import scatter_plot
 # from .set_spines_invisible import set_spines_invisible
-from .shorten_ticklabels import shorten_ticklabels
+# from .shorten_ticklabels import shorten_ticklabels
 
 # from .stacked_bar import stacked_bar
 # from .stacked_barh import stacked_barh
-from .treemap import treemap
-from .wordcloud_ import wordcloud_
+# from .treemap import treemap
+# from .wordcloud_ import wordcloud_
 
 # from .worldmap import worldmap
 # from .xy_clusters_plot import xy_clusters_plot

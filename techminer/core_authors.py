@@ -6,7 +6,7 @@ Core Authors
 import numpy as np
 import pandas as pd
 
-from techminer.term_analysis import count_records_by_term
+from techminer.term_report import count_records_by_term
 from techminer.utils import load_records_from_directory
 
 from .utils import explode
@@ -18,7 +18,7 @@ def _core_authors_from_records(records):
 
     Parameters
     ----------
-    directory_or_records: str or list
+    dirpath_or_records: str or list
         path to the directory or the records object.
 
     Returns
@@ -104,13 +104,13 @@ def _core_authors_from_directory(directory):
     return _core_authors_from_records(load_records_from_directory(directory))
 
 
-def core_authors(directory_or_records):
+def core_authors(dirpath_or_records):
     """
     Returns a dataframe with the core analysis.
 
     Parameters
     ----------
-    directory_or_records: str or list
+    dirpath_or_records: str or list
         path to the directory or the records object.
 
     Returns
@@ -118,9 +118,9 @@ def core_authors(directory_or_records):
     pandas.DataFrame
         Dataframe with the core authors of the records
     """
-    if isinstance(directory_or_records, str):
-        return _core_authors_from_directory(directory_or_records)
-    elif isinstance(directory_or_records, pd.DataFrame):
-        return _core_authors_from_records(directory_or_records)
+    if isinstance(dirpath_or_records, str):
+        return _core_authors_from_directory(dirpath_or_records)
+    elif isinstance(dirpath_or_records, pd.DataFrame):
+        return _core_authors_from_records(dirpath_or_records)
     else:
-        raise TypeError("directory_or_records must be a string or a pandas.DataFrame")
+        raise TypeError("dirpath_or_records must be a string or a pandas.DataFrame")

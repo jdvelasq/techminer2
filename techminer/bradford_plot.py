@@ -137,7 +137,7 @@ def _bradford_plot_from_directory(
     fontsize,
 ):
     return _bradford_plot_from_records(
-        records=load_records(directory),
+        records=load_records_from_directory(directory),
         max_items=max_items,
         cmap=cmap,
         figsize=figsize,
@@ -146,7 +146,7 @@ def _bradford_plot_from_directory(
 
 
 def bradford_plot(
-    directory_or_records,
+    dirpath_or_records,
     max_items=5,
     cmap="Greys",
     figsize=(8, 6),
@@ -158,21 +158,21 @@ def bradford_plot(
 
 
     """
-    if isinstance(directory_or_records, str):
+    if isinstance(dirpath_or_records, str):
         return _bradford_plot_from_directory(
-            directory=directory_or_records,
+            directory=dirpath_or_records,
             max_items=max_items,
             cmap=cmap,
             figsize=figsize,
             fontsize=fontsize,
         )
-    elif isinstance(directory_or_records, pd.DataFrame):
+    elif isinstance(dirpath_or_records, pd.DataFrame):
         return _bradford_plot_from_records(
-            records=directory_or_records,
+            records=dirpath_or_records,
             max_items=max_items,
             cmap=cmap,
             figsize=figsize,
             fontsize=fontsize,
         )
     else:
-        raise TypeError("directory_or_records must be a string or a pandas.DataFrame")
+        raise TypeError("dirpath_or_records must be a string or a pandas.DataFrame")
