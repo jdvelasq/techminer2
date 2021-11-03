@@ -12,7 +12,7 @@ Analysis of bibliographic datasets using Python
 
 
 
-.. toctree::
+.. toctree::kk 
     :caption: Data cleaning
     :hidden:
     :maxdepth: 1
@@ -37,8 +37,15 @@ Analysis of bibliographic datasets using Python
     summary     
     term_report
     time_report
-    worldmap
 
+
+
+.. toctree::
+    :caption: Plots
+    :hidden:
+    :maxdepth: 1
+
+    worldmap
 
 ..    bigraph_analysis
  
