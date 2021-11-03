@@ -67,6 +67,7 @@ in a cell of Jupiter Lab or Google Colaboratory.
     :maxdepth: 1
 
     apply_thesaurus
+    bigraph_analysis
     bradford_plot
     core_authors
     core_sources

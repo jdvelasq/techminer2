@@ -44,7 +44,7 @@ def _count_records_by_term_from_directory(directory, column, sep):
     :return: a pandas.Series with the number of documents containing a given term.
     """
     return _count_records_by_term_from_records(
-        load_records(directory),
+        load_records_from_directory(directory),
         column,
         sep,
     )
@@ -80,7 +80,7 @@ def _count_citations_by_term_from_directory(directory, column, sep, citations_co
     :return: a pandas.Series with the number of local citations of a given term.
     """
     return _count_citations_by_term_from_records(
-        load_records(directory),
+        load_records_from_directory(directory),
         column,
         sep,
         citations_column,

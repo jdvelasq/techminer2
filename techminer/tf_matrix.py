@@ -6,12 +6,9 @@ TF (term-frecuency) Matrix
 import numpy as np
 import pandas as pd
 
-from .utils import (
-    explode,
-    load_records_from_directory,
-    load_stopwords_from_directory,
-    map_,
-)
+from .utils import explode, load_records_from_directory, load_stopwords_from_directory
+
+# pylint: disable=too-many-arguments
 
 
 def _tf_matrix_from_records(
@@ -45,7 +42,7 @@ def _tf_matrix_from_records(
     terms = terms.sort_values(ascending=False)
     terms = terms[terms >= min_occurrence]
     terms = terms[terms <= max_occurrence]
-    terms = terms.drop(labels=load_stopwords(stopwords), errors="ignore")
+    terms = terms.drop(labels=load_stopwords_from_directory(stopwords), errors="ignore")
     result = result.loc[:, terms.index]
 
     # rows = result.sum(axis=1)
@@ -76,7 +73,7 @@ def _tf_matrix_from_directory(
     sep,
 ):
     return _tf_matrix_from_records(
-        records=load_records(directory),
+        records=load_records_from_directory(directory),
         column=column,
         min_occurrence=min_occurrence,
         max_occurrence=max_occurrence,

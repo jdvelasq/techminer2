@@ -4,6 +4,7 @@ Main functions
 """
 from .apply_thesaurus import apply_thesaurus
 from .association_index import association_index
+from .bigraph_analysis import *
 from .bradford_plot import bradford_plot
 from .co_occurrence_matrix import co_occurrence_matrix
 from .collaboration_analysis import collaboration_analysis
