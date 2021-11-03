@@ -1,5 +1,5 @@
 """
-Time Report
+Time Table
 ===============================================================================
 """
 
@@ -168,7 +168,7 @@ def mean_local_citations_by_year(dirpath_or_records):
     return mlcy
 
 
-def time_report(dirpath_or_records):
+def time_table(dirpath_or_records):
     """
     Counts the number of terms by record.
 

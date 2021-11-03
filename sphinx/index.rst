@@ -36,7 +36,7 @@ Analysis of bibliographic datasets using Python
     most_cited_documents      
     summary     
     term_report
-    time_report
+    time_table
 
 
 

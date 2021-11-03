@@ -29,5 +29,5 @@ from .term_report import *
 # from .term_per_year_analysis import *
 # from .tf_matrix import tf_matrix
 # from .tfidf_matrix import tfidf_matrix
-from .time_report import *
+from .time_table import *
 from .worldmap import *
