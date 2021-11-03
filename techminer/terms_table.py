@@ -1,5 +1,5 @@
 """
-Term Report
+Terms Table
 ===============================================================================
 
 
@@ -149,7 +149,7 @@ def count_local_citations_by_term(dirpath_or_records, column, sep="; "):
         raise TypeError("dirpath_or_records must be a string or a pandas.DataFrame")
 
 
-def term_report(dirpath_or_records, column, sep="; "):
+def terms_table(dirpath_or_records, column, sep="; "):
     """
     Counts the number of terms by record.
 

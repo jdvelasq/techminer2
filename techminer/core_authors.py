@@ -6,7 +6,7 @@ Core Authors
 import numpy as np
 import pandas as pd
 
-from techminer.term_report import count_records_by_term
+from techminer.terms_table import count_records_by_term
 from techminer.utils import load_records_from_directory
 
 from .utils import explode

@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-from .term_report import term_report
+from .terms_table import terms_table
 from .utils import load_records_from_directory
 
 TEXTLEN = 40
@@ -133,7 +133,7 @@ def _worldmap_from_records(
     figsize,
     fontsize,
 ):
-    table = term_report(records, column="countries", sep="; ")
+    table = terms_table(records, column="countries", sep="; ")
     return _worldmap_plot(
         series=table[metric],
         cmap=cmap,

@@ -24,7 +24,7 @@ from .lotka_plot import lotka_plot
 from .most_cited_documents import *
 from .process_records_file import process_records_file
 from .summary import summary
-from .term_report import *
+from .terms_table import *
 
 # from .term_per_year_analysis import *
 # from .tf_matrix import tf_matrix

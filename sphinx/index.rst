@@ -35,7 +35,7 @@ Analysis of bibliographic datasets using Python
     lotka_plot
     most_cited_documents      
     summary     
-    term_report
+    terms_table
     time_table
 
 
