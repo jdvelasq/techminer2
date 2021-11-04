@@ -8,7 +8,7 @@ Analysis of bibliographic datasets using Python
     :maxdepth: 1
 
     import_raw_data
-    process_records_file
+..    process_records_file
 
 
 
@@ -17,10 +17,10 @@ Analysis of bibliographic datasets using Python
     :hidden:
     :maxdepth: 1
 
-    apply_thesaurus
-    clean_institution_fields
-    clean_keywords_fields
-    create_thesaurus
+..    apply_thesaurus
+..    clean_institution_fields
+..    clean_keywords_fields
+..    create_thesaurus
 
 
 .. toctree::
@@ -28,15 +28,16 @@ Analysis of bibliographic datasets using Python
     :hidden:
     :maxdepth: 1
 
-    bradford_plot
-    core_authors
-    core_sources
-    coverage    
-    lotka_plot
-    most_cited_documents      
-    summary     
-    terms_table
-    time_table
+..    bradford_plot
+..    core_authors
+..    core_sources
+..    coverage    
+..    lotka_plot
+..    most_cited_documents      
+..    summary     
+..    terms_per_year_table
+..    terms_table
+..    time_table
 
 
 
@@ -45,7 +46,7 @@ Analysis of bibliographic datasets using Python
     :hidden:
     :maxdepth: 1
 
-    worldmap
+..    worldmap
 
 ..    bigraph_analysis
  

@@ -11,9 +11,7 @@ from os.path import isfile
 
 import pandas as pd
 
-from .utils import load_records_from_directory, logging
-from .utils.io import save_records_to_directory
-from .utils.map import map_
+from .utils import *
 from .utils.thesaurus import read_textfile
 
 
@@ -123,5 +121,5 @@ def clean_keywords_fields(dirpath):
     # Saves!
     #
     # datastore.to_csv(datastorefile, index=False)
-    save_records_to_directory(records=datastore, directory=dirpath)
+    save_records_to_project_directory(records=datastore, directory=dirpath)
     logging.info("The thesaurus was applied to keywords.")

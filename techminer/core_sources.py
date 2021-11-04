@@ -11,7 +11,7 @@ import numpy as np
 import pandas as pd
 
 from .utils.explode import explode
-from .utils.io import load_records_from_directory
+from .utils.io import *
 
 
 def _core_sources_from_records(records):

@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 from .core_authors import core_authors
-from .utils import load_records_from_directory
+from .utils import *
 
 
 def _lotka_plot_from_records(
@@ -76,7 +76,7 @@ def _lotka_plot_from_directory(
     fontsize,
 ):
     return _lotka_plot_from_records(
-        records=load_records_from_directory(directory),
+        records=load_records_from_project_directory(directory),
         cmap=cmap,
         figsize=figsize,
         fontsize=fontsize,

@@ -7,8 +7,9 @@ from os.path import isfile
 
 import pandas as pd
 
-from .utils import load_records_from_directory, logging
-from .utils.thesaurus import Thesaurus, load_file_as_dict, text_clustering
+from .utils import *
+
+# from .utils.thesaurus import Thesaurus, load_file_as_dict, text_clustering
 
 
 def _create_thesaurus_from_records(

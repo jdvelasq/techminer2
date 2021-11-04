@@ -11,7 +11,7 @@ BS
 C1,affiliations
 CA
 CL
-CR,global_references
+CR,total_references
 CT
 CY
 D2
@@ -59,7 +59,7 @@ SC
 SE
 SI
 SN,issn
-SO,publication_name
+SO,source_name
 SP
 SU
 TC
@@ -70,4 +70,4 @@ UT
 VL
 VR
 WC
-Z9,global_citations
+Z9,gotal_citations

@@ -4,7 +4,7 @@ Affiliations,affiliations
 Art. No.
 Author Keywords,author_keywords
 Author(s) ID,authors_id
-Authors,authors
+Authors,authors_raw
 Authors with affiliations
 Chemicals/CAS
 Cited by,global_citations
@@ -14,7 +14,7 @@ Conference date
 Conference location
 Conference name
 Correspondence Address
-Document Type
+Document Type,document_type
 DOI,doi
 Editors
 EID
@@ -42,7 +42,7 @@ Publisher
 PubMed ID,pubmed_id
 References,global_references
 Source
-Source title,publication_name
+Source title,source_name
 Sponsors
 Title,document_title
 Tradenames

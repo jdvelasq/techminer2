@@ -3,41 +3,40 @@ Records file processing.
 ===============================================================================
 """
 
+import os
 from os.path import isfile
 
 import numpy as np
 import pandas as pd
+import yaml
 
 from .clean_institution_fields import clean_institution_fields
 from .clean_keywords_fields import clean_keywords_fields
 from .create_institutions_thesaurus import create_institutions_thesaurus
 from .create_keywords_thesaurus import create_keywords_thesaurus
-from .utils import (
-    explode,
-    load_records_from_directory,
-    logging,
-    save_records_to_directory,
-)
+from .utils import explode, load_documents, logging, save_records_to_project_directory
 
 # from techminer.utils.explode import explode
 
 
-def _create_record_id(records):
+def _create_document_id(documents):
     """
     Creates record id.
 
     """
-    records = records.assign(
-        record_id=records.sort_values("global_citations", ascending=False)
+    documents = documents.assign(
+        document_id=documents.sort_values("global_citations", ascending=False)
         .groupby("pub_year")
         .cumcount()
         + 1
     )
-    records = records.assign(record_id=records.record_id.map(lambda x: str(x).zfill(4)))
-    records = records.assign(
-        record_id=records.pub_year.astype(str) + "-" + records.record_id
+    documents = documents.assign(
+        document_id=documents.record_id.map(lambda x: str(x).zfill(4))
     )
-    return records
+    documents = documents.assign(
+        document_id=documents.pub_year.astype(str) + "-" + documents.record_id
+    )
+    return documents
 
 
 def _create_local_references_using_doi(records):
@@ -53,7 +52,7 @@ def _create_local_references_using_doi(records):
             for j_index, references in enumerate(records.global_references.tolist()):
                 if pd.isna(references) is False and doi in references.upper():
                     records.at[j_index, "local_references"].append(
-                        records.historiograph_id[i_index]
+                        records.record_id[i_index]
                     )
     return records
 
@@ -82,7 +81,7 @@ def _create_local_references_using_title(records):
                     ):
 
                         records.at[j_index, "local_references"] += [
-                            records.historiograph_id[i_index]
+                            records.record_id[i_index]
                         ]
     return records
 
@@ -131,7 +130,7 @@ def _compute_local_citations(records):
         by="local_citations", as_index=True
     ).size()
     records["local_citations"] = 0
-    records.index = records.historiograph_id
+    records.index = records.record_id
     records.loc[local_references.index, "local_citations"] = local_references
     records.index = list(range(len(records)))
 
@@ -217,10 +216,36 @@ def _compute_bradford_law_zones(records):
         lambda x: bradford_dict[x], na_action="ignore"
     )
 
+    records["bradford_law_zone"] = records.bradford_law_zone.fillna(3)
+
     return records
 
 
-def process_records_file(dirpath):
+def _update_filter_file(documents, directory):
+
+    yaml_filename = os.path.join(directory, "filter.yaml")
+
+    if isfile(yaml_filename):
+        with open(yaml_filename, "r", encoding="utf-8") as yaml_file:
+            filter_ = yaml.load(yaml_file, Loader=yaml.FullLoader)
+    else:
+        filter_ = {}
+
+    filter_["years"] = [0, documents.year.max()]
+    filter_["citations"] = [0, documents.global_citations.max()]
+    filter_["bradford"] = [1, documents.bradford_law_zone.max()]
+
+    document_types = documents.document_type.unique()
+    for document_type in document_types:
+        document_type = document_type.lower()
+        document_type = document_type.replace(" ", "_")
+        filter_[document_type] = True
+
+    with open(yaml_filename, "wt", encoding="utf-8") as yaml_file:
+        yaml.dump(filter_, yaml_file, sort_keys=True)
+
+
+def process_records(directory):
     """
     This method is used to process the records
 
@@ -228,27 +253,28 @@ def process_records_file(dirpath):
     :return:
         None
     """
-    if dirpath[-1] != "/":
-        dirpath += "/"
+    if directory[-1] != "/":
+        directory += "/"
 
-    filename = dirpath + "stopwords.txt"
-    if not isfile(filename):
-        open(filename, "a", encoding="utf-8").close()
+    stopwords_file = directory + "stopwords.txt"
+
+    # pylint: disable=consider-using-with
+    open(stopwords_file, "a", encoding="utf-8").close()
 
     logging.info("Processing records ...")
 
-    create_institutions_thesaurus(dirpath=dirpath)
-    create_keywords_thesaurus(dirpath=dirpath)
+    create_institutions_thesaurus(records_path=directory)
+    create_keywords_thesaurus(records_path=directory)
 
-    records = load_records_from_directory(dirpath)
-    records = _create_record_id(records)
+    records = load_documents(documents_directory=directory)
+    records = _create_document_id(records)
     records = records.assign(local_references=[[] for _ in range(len(records))])
     records = _create_local_references_using_doi(records)
     records = _create_local_references_using_title(records)
     records = _consolidate_local_references(records)
     records = _compute_local_citations(records)
     records = _compute_bradford_law_zones(records)
-    save_records_to_directory(records, directory=dirpath)
+    save_records_to_directory(records, records_path=records_path)
 
-    clean_institution_fields(dirpath=dirpath)
-    clean_keywords_fields(dirpath=dirpath)
+    clean_institution_fields(records_path=records_path)
+    clean_keywords_fields(records_path=records_path)

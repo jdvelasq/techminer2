@@ -10,9 +10,9 @@ from os.path import dirname, isfile, join
 
 import pandas as pd
 
-from techminer.utils import load_records_from_directory, logging
-from techminer.utils.extract_country import extract_country as extract_country_name
-from techminer.utils.thesaurus import Thesaurus, load_file_as_dict
+from .utils import *
+from .utils.extract_country import extract_country as extract_country_name
+from .utils.thesaurus import Thesaurus, load_file_as_dict
 
 #
 # The algorithm searches in order until detect a match
@@ -116,7 +116,7 @@ PORTUGUES = [
 ]
 
 
-def create_institutions_thesaurus(dirpath):
+def create_institutions_thesaurus(records_path):
     """
     Creates an insitutions thesaurus from the data in the database.
     """
@@ -184,10 +184,10 @@ def create_institutions_thesaurus(dirpath):
 
     logging.info("Creating institutions thesaurus ...")
 
-    if dirpath[-1] != "/":
-        dirpath = dirpath + "/"
+    if records_path[-1] != "/":
+        records_path = records_path + "/"
 
-    thesaurus_file = dirpath + "institutions.txt"
+    thesaurus_file = records_path + "institutions.txt"
 
     #
     # Valid names of institutions
@@ -216,7 +216,7 @@ def create_institutions_thesaurus(dirpath):
     # Loads datastore.csv
     #
 
-    data = load_records_from_directory(dirpath)
+    data = load_records_from_directory(records_path)
 
     #
     # Transform affiliations to lower case
@@ -260,7 +260,7 @@ def create_institutions_thesaurus(dirpath):
     if any(x.country.isna()):
         logging.info(
             "Affiliations without country detected - check file "
-            + dirpath
+            + records_path
             + "ignored_affiliations.txt"
         )
 
@@ -284,7 +284,7 @@ def create_institutions_thesaurus(dirpath):
     if any(x.key.isna()):
         logging.info(
             "Affiliations without country detected - check file "
-            + dirpath
+            + records_path
             + "ignored_affiliations.txt"
         )
     ignored_affiliations += x[x.key.isna()]["affiliation"].tolist()
@@ -292,7 +292,7 @@ def create_institutions_thesaurus(dirpath):
     #
     # list of ignored affiliations for manual review
     #
-    ignored_affiliations = dirpath + "ignored_affiliations.txt"
+    ignored_affiliations = records_path + "ignored_affiliations.txt"
     with io.open(ignored_affiliations, "w", encoding="utf-8") as f:
         for aff in ignored_affiliations:
             print(aff, file=f)

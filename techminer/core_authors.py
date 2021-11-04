@@ -3,13 +3,11 @@ Core Authors
 ===============================================================================
 """
 
-import numpy as np
 import pandas as pd
 
 from techminer.terms_table import count_records_by_term
-from techminer.utils import load_records_from_directory
 
-from .utils import explode
+from .utils import *
 
 
 def _core_authors_from_records(records):

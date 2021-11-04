@@ -6,7 +6,7 @@ Time Table
 import pandas as pd
 
 from .plots import *
-from .utils import load_records_from_directory
+from .utils import load_records_from_project_directory
 
 
 def _count_documents_by_year_from_records(records):

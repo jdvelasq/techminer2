@@ -9,16 +9,15 @@ Import raw data files.
 # pylint: disable=unsubscriptable-object
 
 
-import re
 from os import mkdir
 from os.path import dirname, isdir, isfile, join
 
 import pandas as pd
-from tqdm import tqdm
 
 from .utils import logging, map_, remove_accents
 from .utils.extract_country import extract_country as extract_country_name
-from .utils.thesaurus import load_file_as_dict
+
+# from tqdm import tqdm
 
 
 class _BaseImporter:
@@ -27,9 +26,9 @@ class _BaseImporter:
 
     """
 
-    def __init__(self, source, filetype, directory):
-        self.source = source
-        self.filetype = filetype
+    def __init__(self, file_path, file_type, directory):
+        self.source = file_path
+        self.filetype = file_type
         self.directory = directory
         if self.directory[-1] != "/":
             self.directory += "/"
@@ -40,7 +39,7 @@ class _BaseImporter:
         self.columns2delete = None
         self.iso_source_abbreviations = None
 
-    def check_directory(self):
+    def check_directory_path(self):
         """
         Checks if directory exists.
 
@@ -98,7 +97,7 @@ class _BaseImporter:
         filepath = join(module_path, "config/iso_source_abbreviations.csv")
         pdf = pd.read_csv(filepath, sep=",")
         self.iso_source_abbreviations = dict(
-            zip(pdf.publication_name, pdf["iso_source_abbreviation"])
+            zip(pdf.source_name, pdf["iso_source_abbreviation"])
         )
 
     def format_authors(self):
@@ -158,9 +157,9 @@ class _BaseImporter:
         if "index_keywords" in self.raw_data.columns:
             self.raw_data.index_keywords = self.raw_data.index_keywords.str.lower()
 
-        if "publication_name" in self.raw_data.columns:
-            self.raw_data.publication_name = self.raw_data.publication_name.str.upper()
-            self.raw_data.publication_name = self.raw_data.publication_name.str.replace(
+        if "source_name" in self.raw_data.columns:
+            self.raw_data.source_name = self.raw_data.source_name.str.upper()
+            self.raw_data.source_name = self.raw_data.source_name.str.replace(
                 r"[^\w\s]", "", regex=True
             )
 
@@ -174,14 +173,14 @@ class _BaseImporter:
                 )
             )
             iso_abbreviations = self.raw_data[
-                ["publication_name", "iso_source_abbreviation"]
+                ["source_name", "iso_source_abbreviation"]
             ]
             iso_abbreviations = iso_abbreviations.drop_duplicates()
             iso_abbreviations = iso_abbreviations.dropna()
             iso_abbreviations = {
                 name: abb
                 for name, abb in zip(
-                    iso_abbreviations.publication_name,
+                    iso_abbreviations.source_name,
                     iso_abbreviations.iso_source_abbreviation,
                 )
             }
@@ -209,9 +208,9 @@ class _BaseImporter:
                 if isfile(filename):
                     iso_sources = pd.read_csv(filename, sep=",", encoding="utf-8")
                     iso_sources = {
-                        publication_name: iso_abbreviation
-                        for publication_name, iso_abbreviation in zip(
-                            iso_sources.publication_name,
+                        source_name: iso_abbreviation
+                        for source_name, iso_abbreviation in zip(
+                            iso_sources.source_name,
                             iso_sources.iso_source_abbreviation,
                         )
                     }
@@ -220,7 +219,7 @@ class _BaseImporter:
                 new_abbreviations = {**new_abbreviations, **iso_sources}
                 new_abbreviations = pd.DataFrame(
                     {
-                        "publication_name": list(new_abbreviations.keys()),
+                        "source_name": list(new_abbreviations.keys()),
                         "iso_source_abbreviation": list(new_abbreviations.values()),
                     }
                 )
@@ -283,9 +282,9 @@ class _BaseImporter:
             "authors" in self.raw_data.columns
             and "document_title" in self.raw_data.columns
             and "pub_year" in self.raw_data.columns
-            and "publication_name" in self.raw_data.columns
+            and "source_name" in self.raw_data.columns
         ):
-            subset = ("authors", "document_title", "pub_year", "publication_name")
+            subset = ("authors", "document_title", "pub_year", "source_name")
             self.raw_data = self.raw_data.drop_duplicates(subset=subset)
 
     def report_duplicate_titles(self):
@@ -303,7 +302,8 @@ class _BaseImporter:
             duplicates = duplicates.sort_values(by=["document_title"])
             duplicates.to_csv(filename, sep=",", encoding="utf-8", index=False)
             logging.info(
-                f"Duplicate rows found in {self.directory}records.csv - Records saved to {filename}"
+                f"Duplicate rows found in {self.directory}documents.csv -"
+                " Records saved to {filename}"
             )
 
     # def translate_british_to_amerian(self):
@@ -327,12 +327,12 @@ class _BaseImporter:
     #                 )
     #                 pbar.update(1)
 
-    def save_records(self):
+    def save_documents(self):
         """
         Save processed records to csv.
 
         """
-        filename = self.directory + "records.csv"
+        filename = self.directory + "documents.csv"
 
         #
         # merges the current dataframe with the existing dataframe
@@ -341,7 +341,7 @@ class _BaseImporter:
             current_datastore = pd.read_csv(filename, encoding="utf-8")
             if "record_id" in current_datastore.columns:
                 current_datastore.drop("record_id", inplace=True, axis=1)
-            main_columns = {"pub_year", "document_title", "authors", "publication_name"}
+            main_columns = {"pub_year", "document_title", "authors", "source_name"}
             self.raw_data = pd.concat([current_datastore, self.raw_data], sort=False)
             self.raw_data.drop_duplicates(subset=main_columns, inplace=True)
 
@@ -354,7 +354,7 @@ class _BaseImporter:
         Runs the importer.
 
         """
-        self.check_directory()
+        self.check_directory_path()
         self.extract_data()
         self.load_tags()
         self.format_dataset()
@@ -365,7 +365,7 @@ class _BaseImporter:
         self.drop_duplicates()
         self.report_duplicate_titles()
         ## self.translate_british_to_amerian()
-        self.save_records()
+        self.save_documents()
 
     # --- Computed columns ----------------------------------------------------
 
@@ -438,8 +438,8 @@ class _ScopusImporter(_BaseImporter):
 
     """
 
-    def __init__(self, source, filetype, directory):
-        super().__init__(source, filetype, directory)
+    def __init__(self, file_path, file_type, directory):
+        super().__init__(file_path, file_type, directory)
         self.tagsfile = "scopus2tags.csv"
 
     def extract_data(self):
@@ -458,46 +458,71 @@ class _ScopusImporter(_BaseImporter):
         Formats Authors into a common format.
         """
 
-        if "authors" in self.raw_data.columns:
+        if "authors_raw" in self.raw_data.columns:
             logging.info("Formating authors ...")
-            self.raw_data.authors = self.raw_data.authors.map(
+
+            # self.raw_data["authors"] = self.raw_data.authors_raw.copy()
+
+            self.raw_data.authors_raw = self.raw_data.authors_raw.map(
                 lambda x: pd.NA if x == "[No author name available]" else x
             )
 
-            self.raw_data.authors = self.raw_data.authors.str.replace(
+            self.raw_data.authors_raw = self.raw_data.authors_raw.str.replace(
                 ", ", "; ", regex=False
             )
-            self.raw_data.authors = self.raw_data.authors.str.replace(
+            self.raw_data.authors_raw = self.raw_data.authors_raw.str.replace(
                 ".", "", regex=False
             )
 
         if "authors_id" in self.raw_data.columns:
+
             logging.info("Formating authors_id ...")
+
             self.raw_data["authors_id"] = self.raw_data.authors_id.map(
                 lambda w: pd.NA if w == "[No author id available]" else w
             )
+
             self.raw_data["authors_id"] = self.raw_data.authors_id.map(
                 lambda x: x[:-1] if isinstance(x, str) and x[-1] == ";" else x
             )
+
             # pylint: disable=unsubscriptable-object
-            authors_ids = self.raw_data[["authors", "authors_id"]]
+            authors_ids = self.raw_data[["authors_raw", "authors_id"]]
             authors_ids = authors_ids.dropna()
+
             authors_ids = {
-                b: a for a, b in zip(authors_ids.authors, authors_ids.authors_id)
+                b: a for a, b in zip(authors_ids.authors_raw, authors_ids.authors_id)
             }
 
             authors_ids = {
                 k: list(zip(k.split(";"), v.split("; ")))
                 for k, v in authors_ids.items()
             }
-            authors_ids = {
-                k: ["/".join([b, a]) for a, b in v] for k, v in authors_ids.items()
-            }
-            authors_ids = {k: "; ".join(v) for k, v in authors_ids.items()}
 
-            self.raw_data["authors_id"] = self.raw_data.authors_id.map(
-                lambda x: authors_ids[x] if x in authors_ids.keys() else x
+            pdf = pd.DataFrame(
+                {
+                    "authors_full": list(authors_ids.values()),
+                }
             )
+            pdf = pdf.explode("authors_full")
+            pdf = pdf.drop_duplicates()
+            pdf = pdf.assign(name=pdf.authors_full.map(lambda x: x[1]))
+            pdf = pdf.assign(id=pdf.authors_full.map(lambda x: x[0]))
+            pdf = pdf.reset_index()
+
+            pdf = pdf.assign(
+                counter=pdf.sort_values("id", ascending=True)
+                .groupby(["name"])
+                .cumcount()
+            )
+
+            pdf = pdf.assign(name=pdf.name + "/" + pdf.counter.astype(str))
+            new_names = {id: name for name, id in zip(pdf.name, pdf.id)}
+            doc_names = self.raw_data.authors_id.copy()
+            doc_names = doc_names.map(lambda x: x.split(";"))
+            doc_names = doc_names.map(lambda x: "; ".join([new_names[y] for y in x]))
+
+            self.raw_data["authors"] = doc_names.copy()
 
 
 class _WoSImporter(_BaseImporter):
@@ -506,8 +531,8 @@ class _WoSImporter(_BaseImporter):
 
     """
 
-    def __init__(self, source, filetype, directory):
-        super().__init__(source, filetype, directory)
+    def __init__(self, file_path, file_type, directory):
+        super().__init__(file_path, file_type, directory)
         self.tagsfile = "wos2tags.csv"
 
     def extract_data(self):
@@ -629,25 +654,25 @@ class _DimensionsImporter(_BaseImporter):
             )
 
 
-def _create_import_object(source, filetype, directory):
-    if filetype == "scopus":
-        return _ScopusImporter(source, filetype, directory)
-    if filetype == "wos":
-        return _WoSImporter(source, filetype, directory)
-    if filetype == "dimensions":
-        return _DimensionsImporter(source, filetype, directory)
+def _create_import_object(file_path, file_type, directory):
+    if file_type == "scopus":
+        return _ScopusImporter(file_path, file_type, directory)
+    if file_type == "wos":
+        return _WoSImporter(file_path, file_type, directory)
+    if file_type == "dimensions":
+        return _DimensionsImporter(file_path, file_type, directory)
     raise NotImplementedError
 
 
 # ----< Public Functions >-----------------------------------------------------
 
 
-def import_raw_data_from_file(rawfilepath, rawfiletype, dirpath):
+def import_raw_data(file_path, file_type, directory):
     """
     Imports a dataset file.
     """
-    if isfile(rawfilepath):
-        _create_import_object(rawfilepath, rawfiletype, dirpath).run()
-        logging.info(f"The file '{rawfilepath}' was successfully imported.")
+    if isfile(file_path):
+        _create_import_object(file_path, file_type, directory).run()
+        logging.info(f"The file '{file_path}' was successfully imported.")
     else:
         raise FileNotFoundError

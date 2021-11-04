@@ -3,20 +3,21 @@ from os.path import isfile
 
 import pandas as pd
 
-from techminer.utils import load_records_from_directory, logging
 from techminer.utils.thesaurus import Thesaurus, load_file_as_dict, text_clustering
 
+from .utils import *
 
-def create_keywords_thesaurus(dirpath):
+
+def create_keywords_thesaurus(records_path):
     """
     Createa a keywords thesaurus from the keywords in the articles.
 
     """
     logging.info("Creating keywords thesaurus ...")
 
-    data = load_records_from_directory(dirpath)
+    data = load_records_from_directory(records_path)
 
-    thesaurus_file = dirpath + "keywords.txt"
+    thesaurus_file = records_path + "keywords.txt"
 
     words_list = []
 

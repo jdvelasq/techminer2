@@ -11,7 +11,7 @@ import numpy as np
 import pandas as pd
 
 from .terms_table import terms_table
-from .utils import load_records_from_directory
+from .utils import load_records_from_project_directory
 
 TEXTLEN = 40
 

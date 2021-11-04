@@ -5,7 +5,7 @@ Summary Report
 import numpy as np
 import pandas as pd
 
-from .utils.io import load_records_from_directory
+from .utils.io import load_records_from_project_directory
 
 
 def _extract_terms(x, column):

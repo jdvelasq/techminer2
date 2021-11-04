@@ -10,7 +10,7 @@ Terms Table
 import pandas as pd
 
 from .plots import *
-from .utils import load_records_from_directory
+from .utils import *
 
 
 def _count_records_by_term_from_records(records, column, sep):

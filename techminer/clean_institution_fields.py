@@ -4,14 +4,15 @@ Cleaning institutions fields
 """
 # pylint: disable=no-member
 
-from techminer.utils.io import save_records_to_directory
-from techminer.utils.map import map_
-from techminer.utils.thesaurus import read_textfile
+from .utils import (
+    load_records_from_project_directory,
+    logging,
+    save_records_to_project_directory,
+)
+from .utils.map import map_
 
-from .utils import load_records_from_directory, logging, save_records_to_directory
 
-
-def clean_institution_fields(dirpath):
+def clean_institution_fields(project_directory):
     """
     Cleans all the institution fields in the records in the given directory using the
     institutions thesaurus (institutions.txt file).
@@ -20,15 +21,18 @@ def clean_institution_fields(dirpath):
 
     logging.info("Applying thesaurus to institutions ...")
 
-    data = load_records_from_directory(dirpath)
+    data = load_records_from_project_directory(project_directory)
 
-    if dirpath[-1] != "/":
-        dirpath = dirpath + "/"
+    if project_directory[-1] != "/":
+        project_directory = project_directory + "/"
 
     #
     # Loads the thesaurus
     #
-    thesaurus_file = dirpath + "institutions.txt"
+    thesaurus_file = load_thesaurus_from_textfile(
+        project_directory, textfile="institutions.txt"
+    )
+
     th = read_textfile(thesaurus_file)
     th = th.compile_as_dict()
 
@@ -52,6 +56,6 @@ def clean_institution_fields(dirpath):
         lambda w: w.split(";")[0] if isinstance(w, str) else w
     )
 
-    save_records_to_directory(records=data, directory=dirpath)
+    save_records_to_project_directory(records=data, project_directory=project_directory)
 
     logging.info("The thesaurus was applied to institutions.")
