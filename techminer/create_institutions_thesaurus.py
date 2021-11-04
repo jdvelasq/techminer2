@@ -116,7 +116,7 @@ PORTUGUES = [
 ]
 
 
-def create_institutions_thesaurus(records_path):
+def create_institutions_thesaurus(directory):
     """
     Creates an insitutions thesaurus from the data in the database.
     """

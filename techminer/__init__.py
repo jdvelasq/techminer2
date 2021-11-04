@@ -16,12 +16,13 @@ Main functions
 # from .core_sources import core_sources
 # from .coverage import coverage
 # from .create_thesaurus import create_thesaurus
-from .import_raw_data import *
+from .import_scopus_file_to_directory import *
 
 # from .impact_analysis import impact_analysis
 # from .lotka_plot import lotka_plot
 # from .most_cited_documents import *
 # from .process_records import process_records
+
 # from .summary import summary
 # from .terms_per_year_table import *
 # from .terms_table import *
