@@ -17,12 +17,13 @@ from os.path import dirname, isdir, isfile, join
 import numpy as np
 import pandas as pd
 import yaml
+from tqdm import tqdm
 
 # from .clean_institution_fields import clean_institution_fields
 # from .clean_keywords_fields import clean_keywords_fields
 # from .create_institutions_thesaurus import create_institutions_thesaurus
 # from .create_keywords_thesaurus import create_keywords_thesaurus
-from .utils import explode, logging, map_, remove_accents
+from .utils import logging, map_, remove_accents
 from .utils.extract_country import extract_country as extract_country_name
 
 # -----< Dataset Trasformations >----------------------------------------------
@@ -54,6 +55,7 @@ def _delete_and_renamce_columns(documents):
 
 
 def _remove_accents(documents):
+    logging.info("Removing accents ...")
     documents = documents.copy()
     documents = documents.applymap(
         lambda x: remove_accents(x) if isinstance(x, str) else x
@@ -77,6 +79,7 @@ def _process_abstract_column(documents):
 
 def _process_affiliations_column(documents):
     if "affiliations" in documents.columns:
+        logging.info("Processing affiliations ...")
         documents = documents.copy()
         documents["countries"] = map_(documents, "affiliations", extract_country_name)
         documents["country_1st_author"] = documents.countries.map(
@@ -90,6 +93,7 @@ def _process_affiliations_column(documents):
 
 def _process_author_keywords_column(documents):
     if "author_keywords" in documents.columns:
+        logging.info("Processing author keywords ...")
         documents = documents.copy()
         documents.author_keywords = documents.author_keywords.str.lower()
     return documents
@@ -160,58 +164,69 @@ def _process_index_keywords_column(documents):
     return documents
 
 
-def _process_iso_source_name_column(documents, directory):
-    documents = documents.copy()
+def _process_iso_source_name_column(documents):
     if "iso_source_name" in documents.columns:
+        documents = documents.copy()
         documents.iso_source_name = documents.iso_source_name.str.upper()
         documents.iso_source_name = documents.iso_source_name.map(
             lambda x: x.replace(".", "") if not pd.isna(x) else x
         )
-        iso_names = documents[["source_name", "iso_source_name"]]
-        iso_names = iso_names.drop_duplicates()
-        iso_names = iso_names.dropna()
-        iso_names = {
-            name: abb
-            for name, abb in zip(
-                iso_names.source_name,
-                iso_names.iso_source_name,
-            )
-        }
-        iso_names = {
-            **documents.iso_source_names,
-            **iso_names,
-        }
-        iso_source_names = documents.iso_source_names.map(
-            lambda x: iso_names[x] if pd.isna(x) else x
-        )
-        new_iso_names = set(iso_names.values()) - set(iso_source_names.values())
-        new_iso_names = {key: iso_names[key] for key in new_iso_names}
-        iso_source_names = {
-            **iso_source_names,
-            **new_iso_names,
-        }
-        if len(new_iso_names):
-            file_name = directory + "new_iso_source_names.csv"
-            if isfile(file_name):
-                iso_sources = pd.read_csv(file_name, sep=",", encoding="utf-8")
-                iso_sources = {
-                    source_name: iso_name
-                    for source_name, iso_name in zip(
-                        iso_sources.source_name,
-                        iso_sources.iso_source_name,
-                    )
-                }
-            else:
-                iso_sources = {}
-            new_iso_names = {**new_iso_names, **iso_sources}
-            new_iso_names = pd.DataFrame(
-                {
-                    "source_name": list(new_iso_names.keys()),
-                    "iso_source_name": list(new_iso_names.values()),
-                }
-            )
-            new_iso_names.to_csv(file_name, sep=",", encoding="utf-8", index=False)
+    return documents
 
+
+def _search_for_new_iso_source_name(documents):
+    # search new iso source names not included in config/iso_source_names.csv
+    if "iso_source_name" in documents.columns:
+
+        # iso souce names in the current file
+        documents = documents.copy()
+        documents.iso_source_name = documents.iso_source_name.str.upper()
+        documents.iso_source_name = documents.iso_source_name.map(
+            lambda x: x.replace(".", "") if not pd.isna(x) else x
+        )
+        current_iso_names = documents[["source_name", "iso_source_name"]]
+        current_iso_names = current_iso_names.drop_duplicates()
+        current_iso_names = current_iso_names.dropna()
+
+        # adds the abbreviations the the current file
+        module_path = dirname(__file__)
+        file_path = join(module_path, "config/iso_source_names.csv")
+        pdf = pd.read_csv(file_path, sep=",")
+        pdf = pd.concat([pdf, current_iso_names])
+        pdf = pdf.drop_duplicates()
+        pdf = pdf.sort_values(by=["source_name"])
+        pdf.to_csv(file_path, index=False)
+    return documents
+
+
+def _complete_iso_source_name_colum(documents):
+    if "iso_source_name" in documents.columns:
+        # existent iso source names
+        module_path = dirname(__file__)
+        file_path = join(module_path, "config/iso_source_names.csv")
+        pdf = pd.read_csv(file_path, sep=",")
+        existent_names = {
+            name: abb for name, abb in zip(pdf.source_name, pdf.iso_source_name)
+        }
+
+        # complete iso source names
+        documents = documents.copy()
+        documents.iso_source_name = [
+            abb
+            if not pd.isna(abb)
+            else (existent_names[name] if name in existent_names.keys() else abb)
+            for name, abb in zip(documents.source_name, documents.iso_source_name)
+        ]
+    return documents
+
+
+def _repair_iso_source_names_column(documents):
+    if "iso_source_name" in documents.columns:
+        documents = documents.copy()
+        documents.iso_source_name = [
+            name[:29] if pd.isna(abb) else abb
+            for name, abb in zip(documents.source_name, documents.iso_source_name)
+        ]
     return documents
 
 
@@ -315,40 +330,54 @@ def _create_document_id(documents):
 
 
 def _create_local_references_using_doi(documents):
+
     logging.info("Searching local references using DOI ...")
-    for i_index, doi in enumerate(documents.doi):
-        if not pd.isna(doi):
-            doi = doi.upper()
-            for j_index, references in enumerate(documents.global_references.tolist()):
-                if pd.isna(references) is False and doi in references.upper():
-                    documents.at[j_index, "local_references"].append(
-                        documents.document_id[i_index]
-                    )
+
+    with tqdm(total=len(documents.doi)) as pbar:
+        for i_index, doi in enumerate(documents.doi):
+            if not pd.isna(doi):
+                doi = doi.upper()
+                for j_index, references in enumerate(
+                    documents.global_references.tolist()
+                ):
+                    if pd.isna(references) is False and doi in references.upper():
+                        documents.at[j_index, "local_references"].append(
+                            documents.document_id[i_index]
+                        )
+            pbar.update(1)
     return documents
 
 
 def _create_local_references_using_title(documents):
+
     logging.info("Searching local references using document titles ...")
 
-    for i_index, _ in enumerate(documents.document_title):
+    with tqdm(total=len(documents.document_title)) as pbar:
 
-        document_title = documents.document_title[i_index].lower()
-        pub_year = documents.pub_year[i_index]
+        for i_index, _ in enumerate(documents.document_title):
 
-        for j_index, references in enumerate(documents.global_references.tolist()):
+            document_title = documents.document_title[i_index].lower()
+            pub_year = documents.pub_year[i_index]
 
-            if pd.isna(references) is False and document_title in references.lower():
+            for j_index, references in enumerate(documents.global_references.tolist()):
 
-                for reference in references.split(";"):
+                if (
+                    pd.isna(references) is False
+                    and document_title in references.lower()
+                ):
 
-                    if (
-                        document_title in reference.lower()
-                        and str(pub_year) in reference
-                    ):
+                    for reference in references.split(";"):
 
-                        documents.at[j_index, "local_references"] += [
-                            documents.document_id[i_index]
-                        ]
+                        if (
+                            document_title in reference.lower()
+                            and str(pub_year) in reference
+                        ):
+
+                            documents.at[j_index, "local_references"] += [
+                                documents.document_id[i_index]
+                            ]
+            pbar.update(1)
+
     return documents
 
 
@@ -404,80 +433,45 @@ def _compute_bradford_law_zones(documents):
 
     """
     logging.info("Computing Bradford Law Zones ...")
+    documents = documents.copy()
 
-    x = documents.copy()
-
-    #
     # Counts number of documents per source_name
-    #
-    x["num_documents"] = 1
-    x = explode(
-        x[
-            [
-                "source_name",
-                "num_documents",
-                "document_id",
-            ]
-        ],
-        "source_name",
-        sep=None,
+    documents_per_source = documents[
+        [
+            "source_name",
+            "document_id",
+        ]
+    ].copy()
+    documents_per_source = documents_per_source.assign(num_documents=1)
+    documents_per_source = documents_per_source.groupby(
+        "source_name", as_index=False
+    ).agg({"num_documents": np.sum})
+    documents_per_source = documents_per_source[["source_name", "num_documents"]]
+    documents_per_source = documents_per_source.sort_values(
+        ["num_documents"], ascending=False
     )
-    m = x.groupby("source_name", as_index=False).agg(
-        {
-            "num_documents": np.sum,
-        }
-    )
-    m = m[["source_name", "num_documents"]]
-    m = m.sort_values(["num_documents"], ascending=False)
-    m["cum_num_documents"] = m.num_documents.cumsum()
-    dict_ = {
-        source_title: num_documents
-        for source_title, num_documents in zip(m.source_name, m.num_documents)
-    }
+    documents_per_source[
+        "cum_num_documents"
+    ] = documents_per_source.num_documents.cumsum()
 
-    #
-    # Number of source titles by number of documents
-    #
-    g = m[["num_documents"]]
-    g = g.assign(num_publications=1)
-    g = g.groupby(["num_documents"], as_index=False).agg(
-        {
-            "num_publications": np.sum,
-        }
+    dict_ = dict(
+        zip(documents_per_source.source_name, documents_per_source.num_documents)
     )
-    g["total_num_documents"] = g["num_documents"] * g["num_publications"]
-    g = g.sort_values(["num_documents"], ascending=False)
-    g["cum_num_documents"] = g["total_num_documents"].cumsum()
 
-    #
     # Bradford law zones
-    #
     bradford_core_sources = int(len(documents) / 3)
-    g["bradford_law_zone"] = g["cum_num_documents"]
-    g["bradford_law_zone"] = g.bradford_law_zone.map(
-        lambda w: 3
-        if w > 2 * bradford_core_sources
-        else (2 if w > bradford_core_sources else 1)
+    documents_per_source["zone"] = documents_per_source.cum_num_documents.map(
+        lambda x: 3
+        if x > 2 * bradford_core_sources
+        else (2 if x > bradford_core_sources else 1)
     )
 
-    bradford_dict = {
-        num_documents: zone
-        for num_documents, zone in zip(g.num_documents, g.bradford_law_zone)
-    }
+    # Assigns zone to each document
+    dict_ = dict(zip(documents_per_source.source_name, documents_per_source.zone))
 
-    #
-    # Computes bradford zone for each document
-    #
-    documents["bradford_law_zone"] = documents.source_name
-
-    documents["bradford_law_zone"] = documents.bradford_law_zone.map(
-        lambda x: dict_[x.strip()], na_action="ignore"
+    documents["bradford_law_zone"] = documents.source_name.map(
+        lambda x: dict_[x], na_action="ignore"
     )
-    documents["bradford_law_zone"] = documents.bradford_law_zone.map(
-        lambda x: bradford_dict[x], na_action="ignore"
-    )
-
-    documents["bradford_law_zone"] = documents.bradford_law_zone.fillna(3)
 
     return documents
 
@@ -514,8 +508,10 @@ def _disambiguate_authors(documents):
     pdf = pdf.assign(name=pdf.name + "/" + pdf.counter.astype(str))
     new_names = {id: name for name, id in zip(pdf.name, pdf.id)}
     doc_names = documents.authors_id.copy()
-    doc_names = doc_names.map(lambda x: x.split(";"))
-    doc_names = doc_names.map(lambda x: "; ".join([new_names[y] for y in x]))
+    doc_names = doc_names.map(lambda x: x.split(";") if not pd.isna(x) else x)
+    doc_names = doc_names.map(
+        lambda x: "; ".join([new_names[y] for y in x]) if isinstance(x, list) else x
+    )
 
     documents["authors"] = doc_names.copy()
     return documents
@@ -525,21 +521,16 @@ def _update_filter_file(documents, directory):
 
     yaml_filename = join(directory, "filter.yaml")
 
-    if isfile(yaml_filename):
-        with open(yaml_filename, "r", encoding="utf-8") as yaml_file:
-            filter_ = yaml.load(yaml_file, Loader=yaml.FullLoader)
-    else:
-        filter_ = {}
+    filter_ = {}
+    filter_["years"] = [int(documents.pub_year.min()), int(documents.pub_year.max())]
+    filter_["citations"] = [0, int(documents.global_citations.max())]
+    filter_["bradford"] = [1, int(documents.bradford_law_zone.max())]
 
-    filter_["years"] = [0, documents.pub_year.max()]
-    filter_["citations"] = [0, documents.global_citations.max()]
-    filter_["bradford"] = [1, documents.bradford_law_zone.max()]
-
-    document_types = documents.document_type.unique()
+    document_types = documents.document_type.dropna().unique()
     for document_type in document_types:
         document_type = document_type.lower()
         document_type = document_type.replace(" ", "_")
-        filter_[document_type] = True
+        filter_[str(document_type)] = True
 
     with open(yaml_filename, "wt", encoding="utf-8") as yaml_file:
         yaml.dump(filter_, yaml_file, sort_keys=True)
@@ -569,9 +560,14 @@ def import_scopus_file_to_directory(file_name, directory):
 
     #
     logging.info(f"Reading file '{file_name}' ...")
-    documents = pd.read_csv(file_name, encoding="utf-8", error_bad_lines=False)
+    documents = pd.read_csv(
+        file_name,
+        encoding="utf-8",
+        error_bad_lines=False,
+        warn_bad_lines=True,
+    )
     n_records = documents.shape[0]
-    logging.info(f"Loaded {n_records} raw records.")
+    logging.info(f"{n_records} raw records found.")
 
     #
     documents = _delete_and_renamce_columns(documents)
@@ -587,7 +583,12 @@ def import_scopus_file_to_directory(file_name, directory):
     documents = _process_global_citations_column(documents)
     documents = _process_global_references_column(documents)
     documents = _process_index_keywords_column(documents)
-    documents = _process_iso_source_name_column(documents, directory)
+
+    documents = _process_iso_source_name_column(documents)
+    documents = _search_for_new_iso_source_name(documents)
+    documents = _complete_iso_source_name_colum(documents)
+    documents = _repair_iso_source_names_column(documents)
+
     documents = _process_issn_column(documents)
     documents = _process_raw_authors_names_column(documents)
     documents = _process_source_name_column(documents)
@@ -611,11 +612,6 @@ def import_scopus_file_to_directory(file_name, directory):
     filename = directory + "documents.csv"
     documents.to_csv(filename, sep=",", encoding="utf-8", index=False)
     logging.info(f"Documents saved/merged to '{filename}'")
-
-    # module_path = dirname(__file__)
-    # file_path = join(module_path, "config/iso_source_names.csv")
-    # pdf = pd.read_csv(file_path, sep=",")
-    # self.iso_source_names = dict(zip(pdf.source_name, pdf["iso_source_name"]))
 
     logging.info("Post-processing docuemnts ...")
 
