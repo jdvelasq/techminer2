@@ -1,5 +1,5 @@
 """
-Impact Report
+Impact report
 ===============================================================================
 
 """
@@ -7,11 +7,30 @@ Impact Report
 import numpy as np
 import pandas as pd
 
-from .items_report import count_documents_by_item, count_global_citations_by_term
+from .items_report import count_documents_by_item, count_global_citations_by_item
 from .utils import explode, load_filtered_documents, load_stopwords
 
 
-def _impact_analysis_from_records(records, column, stopwords=None):
+def impact_report(directory, column, sep="; "):
+    """
+    Impact index analysis
+
+    Parameters
+    ----------
+    directory_or_records: str
+        Directory or pandas dataframe with records.
+    column: str
+        Name of the column to analyze
+    stopwords: list
+        List of stopwords to remove from the analysis.
+
+    Returns
+    -------
+    impact_analysis: pandas.DataFrame
+        Impact analysis of the column
+    """
+
+    documents = load_filtered_documents(directory)
 
     if column not in [
         "authors",
@@ -23,15 +42,14 @@ def _impact_analysis_from_records(records, column, stopwords=None):
             "Impact analysis only works with 'authors', 'authors_id', 'countries' or 'institutions'."
         )
 
-    records = records.copy()
-    stopwords = load_stopwords(stopwords)
+    stopwords = load_stopwords(directory)
 
     columns_to_explode = [
         column,
         "global_citations",
     ]
-    detailed_citations = records[columns_to_explode]
-    detailed_citations = explode(detailed_citations[columns_to_explode], column)
+    detailed_citations = documents[columns_to_explode]
+    detailed_citations = explode(detailed_citations[columns_to_explode], column, sep)
     detailed_citations = detailed_citations.assign(
         cumcount_=detailed_citations.sort_values("global_citations", ascending=False)
         .groupby(column)
@@ -53,22 +71,22 @@ def _impact_analysis_from_records(records, column, stopwords=None):
     g_indexes = g_indexes.groupby(column, as_index=True).agg({"cumcount_": np.max})
     g_indexes = g_indexes.rename(columns={"cumcount_": "g_index"})
 
-    age = records[
+    age = documents[
         [
             column,
             "pub_year",
         ]
     ]
-    age = explode(age, column)
+    age = explode(age, column, sep)
     age = (
         age.groupby(column, as_index=True)
         .agg({"pub_year": np.min})
         .rename(columns={"pub_year": "age"})
     )
-    age = records.pub_year.max() - age.age + 1
+    age = documents.pub_year.max() - age.age + 1
 
-    num_documents = count_documents_by_item(records, column)
-    num_global_citations = count_global_citations_by_term(records, column)
+    num_documents = count_documents_by_item(directory, column, sep)
+    num_global_citations = count_global_citations_by_item(directory, column)
 
     impact = pd.concat(
         [h_indexes, g_indexes, age, num_documents, num_global_citations],
@@ -98,47 +116,3 @@ def _impact_analysis_from_records(records, column, stopwords=None):
     impact["g_index"] = impact["g_index"].astype(int)
 
     return impact
-
-
-def _impact_analysis_from_directory(directory, column, stopwords):
-    return _impact_analysis_from_records(
-        records=load_records(directory),
-        column=column,
-        stopwords=stopwords,
-    )
-
-
-def impact_analysis(directory_or_records, column, stopwords=None):
-    """
-    Impact index analysis
-
-    Parameters
-    ----------
-    directory_or_records: str
-        Directory or pandas dataframe with records.
-    column: str
-        Name of the column to analyze
-    stopwords: list
-        List of stopwords to remove from the analysis.
-
-    Returns
-    -------
-    impact_analysis: pandas.DataFrame
-        Impact analysis of the column
-    """
-    if isinstance(directory_or_records, str):
-        return _impact_analysis_from_directory(
-            directory=directory_or_records,
-            column=column,
-            stopwords=stopwords,
-        )
-
-    elif isinstance(directory_or_records, pd.DataFrame):
-        return _impact_analysis_from_records(
-            records=directory_or_records,
-            column=column,
-            stopwords=stopwords,
-        )
-
-    else:
-        raise TypeError("directory_or_records must be a string or a pandas.DataFrame")

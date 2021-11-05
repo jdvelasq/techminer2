@@ -10,14 +10,15 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-from .items_report import terms_table
+from .items_report import items_report
 from .utils import load_filtered_documents
 
 TEXTLEN = 40
 
 
-def _worldmap_plot(
-    series,
+def worldmap(
+    directory,
+    metric="num_documents",
     cmap="Pastel2",
     figsize=(6, 6),
     fontsize=9,
@@ -55,6 +56,9 @@ def _worldmap_plot(
     fig = plt.Figure(figsize=figsize)
     ax = fig.subplots()
     cmap = plt.cm.get_cmap(cmap)
+
+    table = terms_table(directory, column="countries", sep="; ")
+    series = table[metric]
 
     df = series.to_frame()
 
@@ -124,90 +128,3 @@ def _worldmap_plot(
     fig.set_tight_layout(True)
 
     return fig
-
-
-def _worldmap_from_records(
-    records,
-    metric,
-    cmap,
-    figsize,
-    fontsize,
-):
-    table = terms_table(records, column="countries", sep="; ")
-    return _worldmap_plot(
-        series=table[metric],
-        cmap=cmap,
-        figsize=figsize,
-        fontsize=fontsize,
-    )
-
-
-def _worldmap_from_directory(
-    dirpath,
-    metric,
-    cmap,
-    figsize,
-    fontsize,
-):
-    return _worldmap_from_records(
-        records=load_filtered_documents(dirpath),
-        metric=metric,
-        cmap=cmap,
-        figsize=figsize,
-        fontsize=fontsize,
-    )
-
-
-def worldmap(
-    dirpath_or_records,
-    metric="num_documents",
-    cmap="Pastel2",
-    figsize=(6, 6),
-    fontsize=9,
-):
-    """Worldmap plot with the number of documents per country.
-
-    Examples
-    ----------------------------------------------------------------------------------------------
-
-    >>> import pandas as pd
-    >>> x = pd.Series(
-    ...    data = [1000, 900, 800, 700, 600, 1000],
-    ...    index = ["China", "Taiwan", "United States", "United Kingdom", "India", "Colombia"],
-    ... )
-    >>> x
-    China             1000
-    Taiwan             900
-    United States      800
-    United Kingdom     700
-    India              600
-    Colombia          1000
-    dtype: int64
-
-    >>> fig = worldmap(x, figsize=(15, 6))
-    >>> fig.savefig('/workspaces/techminer/sphinx/images/worldmap.png')
-
-    .. image:: images/worldmap.png
-        :width: 2000px
-        :align: center
-
-
-    """
-    if isinstance(dirpath_or_records, str):
-        return _worldmap_from_directory(
-            dirpath=dirpath_or_records,
-            metric=metric,
-            cmap=cmap,
-            figsize=figsize,
-            fontsize=fontsize,
-        )
-    elif isinstance(dirpath_or_records, pd.DataFrame):
-        return _worldmap_from_records(
-            records=dirpath_or_records,
-            metric=metric,
-            cmap=cmap,
-            figsize=figsize,
-            fontsize=fontsize,
-        )
-    else:
-        raise TypeError("dirpath_or_records must be a string or a pandas.DataFrame")

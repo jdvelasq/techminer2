@@ -22,8 +22,6 @@ Analysis of bibliographic datasets using Python
     
 
     
-
-
 .. toctree::
     :caption: Basic analysis
     :hidden:
@@ -32,15 +30,15 @@ Analysis of bibliographic datasets using Python
     core_authors
     core_sources
     coverage
-    summary     
+    items_report
     most_cited_documents
-    
+    summary     
+    time_report
+    impact_report
 
-   
 
 ..    terms_per_year_table
-..    terms_table
-..    time_table
+
 
 
 
@@ -51,17 +49,12 @@ Analysis of bibliographic datasets using Python
 
     bradford_plot
     lotka_plot
-
-..    worldmap
+    worldmap
 
 ..    bigraph_analysis
- 
 ..    extract_user_keywords
-
 ..    association_index
 ..    co_occurrence_matrix
-
-..    impact_analysis
 ..    tf_matrix
 ..    tfidf_matrix
 
@@ -72,7 +65,6 @@ Analysis of bibliographic datasets using Python
 
 ..  toctree::
     :maxdepth: 1
-
 
 
 .. counts
