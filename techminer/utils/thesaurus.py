@@ -2,7 +2,6 @@ import json
 import re
 from os.path import dirname, join
 
-import numpy as np
 import pandas as pd
 from techminer.utils.text import (
     find_string,

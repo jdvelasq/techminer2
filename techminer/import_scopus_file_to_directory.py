@@ -19,10 +19,10 @@ import pandas as pd
 import yaml
 from tqdm import tqdm
 
-# from .clean_institution_fields import clean_institution_fields
-# from .clean_keywords_fields import clean_keywords_fields
-# from .create_institutions_thesaurus import create_institutions_thesaurus
-# from .create_keywords_thesaurus import create_keywords_thesaurus
+from .clean_institution_columns import clean_institution_columns
+from .clean_keywords_columns import clean_keywords_columns
+from .create_institutions_thesaurus import create_institutions_thesaurus
+from .create_keywords_thesaurus import create_keywords_thesaurus
 from .utils import logging, map_
 from .utils.extract_country import extract_country as extract_country_name
 
@@ -623,10 +623,10 @@ def import_scopus_file_to_directory(file_name, directory):
 
     logging.info("Post-processing docuemnts ...")
 
-    #    create_institutions_thesaurus(records_path=directory)
-    #    create_keywords_thesaurus(records_path=directory)
-    #    clean_institution_fields(records_path=directory)
-    #    clean_keywords_fields(records_path=directory)
+    create_institutions_thesaurus(directory=directory)
+    create_keywords_thesaurus(directory=directory)
+    clean_institution_columns(directory=directory)
+    clean_keywords_columns(directory=directory)
     logging.info("Process finished!!!")
 
 

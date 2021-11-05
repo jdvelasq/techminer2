@@ -1,5 +1,4 @@
 import os.path
-from os.path import isfile
 
 import pandas as pd
 
@@ -8,16 +7,25 @@ from techminer.utils.thesaurus import Thesaurus, load_file_as_dict, text_cluster
 from .utils import *
 
 
-def create_keywords_thesaurus(records_path):
+def create_keywords_thesaurus(directory):
     """
     Createa a keywords thesaurus from the keywords in the articles.
 
     """
     logging.info("Creating keywords thesaurus ...")
 
-    data = load_records_from_directory(records_path)
+    if directory[-1] != "/":
+        directory = directory + "/"
 
-    thesaurus_file = records_path + "keywords.txt"
+    # --------------------------------------------------------------------------
+    # Loads documents.csv
+    filename = directory + "documents.csv"
+    if not os.path.isfile(filename):
+        raise FileNotFoundError(f"The file '{filename}' does not exist.")
+    data = pd.read_csv(filename, sep=",", encoding="utf-8")
+    # --------------------------------------------------------------------------
+
+    thesaurus_file = directory + "keywords.txt"
 
     words_list = []
 

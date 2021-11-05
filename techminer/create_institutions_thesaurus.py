@@ -12,7 +12,7 @@ import pandas as pd
 
 from .utils import *
 from .utils.extract_country import extract_country as extract_country_name
-from .utils.thesaurus import Thesaurus, load_file_as_dict
+from .utils.thesaurus import Thesaurus, load_file_as_dict, read_textfile
 
 #
 # The algorithm searches in order until detect a match
@@ -184,17 +184,17 @@ def create_institutions_thesaurus(directory):
 
     logging.info("Creating institutions thesaurus ...")
 
-    if records_path[-1] != "/":
-        records_path = records_path + "/"
+    if directory[-1] != "/":
+        directory = directory + "/"
 
-    thesaurus_file = records_path + "institutions.txt"
+    thesaurus_file = directory + "institutions.txt"
 
     #
     # Valid names of institutions
     #
     module_path = dirname(__file__)
-    with io.open(
-        join(module_path, "config/institutions.txt"), "r", encoding="utf-8"
+    with open(
+        join(module_path, "config/institutions.txt"), "rt", encoding="utf-8"
     ) as f:
         VALID_NAMES = f.readlines()
     VALID_NAMES = [w.replace("\n", "").lower() for w in VALID_NAMES]
@@ -212,11 +212,13 @@ def create_institutions_thesaurus(directory):
         item: code for code in country_codes.keys() for item in country_codes[code]
     }
 
-    #
-    # Loads datastore.csv
-    #
-
-    data = load_records_from_directory(records_path)
+    # --------------------------------------------------------------------------
+    # Loads documents.csv
+    filename = directory + "documents.csv"
+    if not os.path.isfile(filename):
+        raise FileNotFoundError(f"The file '{filename}' does not exist.")
+    data = pd.read_csv(filename, sep=",", encoding="utf-8")
+    # --------------------------------------------------------------------------
 
     #
     # Transform affiliations to lower case
@@ -260,7 +262,7 @@ def create_institutions_thesaurus(directory):
     if any(x.country.isna()):
         logging.info(
             "Affiliations without country detected - check file "
-            + records_path
+            + directory
             + "ignored_affiliations.txt"
         )
 
@@ -284,7 +286,7 @@ def create_institutions_thesaurus(directory):
     if any(x.key.isna()):
         logging.info(
             "Affiliations without country detected - check file "
-            + records_path
+            + directory
             + "ignored_affiliations.txt"
         )
     ignored_affiliations += x[x.key.isna()]["affiliation"].tolist()
@@ -292,10 +294,10 @@ def create_institutions_thesaurus(directory):
     #
     # list of ignored affiliations for manual review
     #
-    ignored_affiliations = records_path + "ignored_affiliations.txt"
-    with io.open(ignored_affiliations, "w", encoding="utf-8") as f:
+    ignored_affiliations_file = directory + "ignored_affiliations.txt"
+    with open(ignored_affiliations_file, "wt", encoding="utf-8") as text_file:
         for aff in ignored_affiliations:
-            print(aff, file=f)
+            print(aff, file=text_file)
 
     #
     # Search keys in foreign languages
