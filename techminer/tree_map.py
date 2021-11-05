@@ -1,3 +1,8 @@
+"""
+Tree map
+===============================================================================
+"""
+
 import textwrap
 
 import matplotlib
@@ -9,8 +14,8 @@ import squarify
 TEXTLEN = 40
 
 
-def treemap(
-    x,
+def tree_map(
+    series,
     darkness=None,
     cmap="Greys",
     figsize=(6, 6),
@@ -42,14 +47,14 @@ def treemap(
 
 
     """
-    darkness = x if darkness is None else darkness
+    darkness = series if darkness is None else darkness
 
     matplotlib.rc("font", size=fontsize)
     fig = plt.Figure(figsize=figsize)
     ax = fig.subplots()
     cmap = plt.cm.get_cmap(cmap)
 
-    labels = x.index
+    labels = series.index
     labels = [textwrap.shorten(text=text, width=TEXTLEN) for text in labels]
     labels = [textwrap.wrap(text=text, width=15) for text in labels]
     labels = ["\n".join(text) for text in labels]
@@ -60,7 +65,7 @@ def treemap(
     ]
 
     squarify.plot(
-        sizes=x,
+        sizes=series,
         label=labels,
         color=colors,
         alpha=alpha,

@@ -44,9 +44,20 @@ Analysis of bibliographic datasets using Python
     :maxdepth: 1
 
     bar_chart
+    column_chart
+    pie_chart
+    tree_map
+    word_cloud
+
+
+.. toctree::
+    :caption: Basic analytic charts
+    :hidden:
+    :maxdepth: 1
+
     bradford_plot
     lotka_plot
-    worldmap
+    world_map
 
 ..    bigraph_analysis
 ..    extract_user_keywords

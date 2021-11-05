@@ -5,12 +5,12 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-from .multiindex2text import multindex2text
+from .plots.multiindex2text import multindex2text
 
 TEXTLEN = 40
 
 
-def heatmap(
+def heat_map(
     X,
     cmap="Greys",
     figsize=(6, 6),

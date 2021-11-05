@@ -1,4 +1,4 @@
-.. automodule:: techminer.worldmap
+.. automodule:: techminer.world_map
     :members:
     :undoc-members:
     :show-inheritance:

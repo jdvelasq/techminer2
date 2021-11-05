@@ -1,4 +1,8 @@
-import textwrap
+"""
+Pie chart
+===============================================================================
+"""
+
 
 import matplotlib
 import matplotlib.pyplot as plt
@@ -8,12 +12,12 @@ import pandas as pd
 TEXTLEN = 40
 
 
-def pie_plot(
-    x,
+def pie_chart(
+    series,
     darkness=None,
     cmap="Greys",
     figsize=(6, 6),
-    fontsize=11,
+    fontsize=9,
     wedgeprops={
         "width": 0.6,
         "edgecolor": "k",
@@ -50,7 +54,7 @@ def pie_plot(
 
 
     """
-    darkness = x if darkness is None else darkness
+    darkness = series if darkness is None else darkness
 
     cmap = plt.cm.get_cmap(cmap)
     colors = [
@@ -63,8 +67,8 @@ def pie_plot(
     ax = fig.subplots()
 
     ax.pie(
-        x=x,
-        labels=x.index,
+        x=series,
+        labels=series.index,
         colors=colors,
         wedgeprops=wedgeprops,
     )

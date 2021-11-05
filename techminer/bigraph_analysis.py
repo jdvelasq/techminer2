@@ -5,7 +5,7 @@ Bigraph analyzer
 """
 
 from .co_occurrence_matrix import co_occurrence_matrix
-from .plots.heatmap import heatmap
+from .heat_map import heat_map
 from .utils import adds_counters_to_axis
 
 # pylint: disable=too-many-arguments

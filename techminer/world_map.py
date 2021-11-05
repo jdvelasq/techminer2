@@ -1,5 +1,5 @@
 """
-Worldmap
+World map
 ===============================================================================
 """
 import json
@@ -16,7 +16,7 @@ from .utils import load_filtered_documents
 TEXTLEN = 40
 
 
-def worldmap(
+def world_map(
     directory,
     metric="num_documents",
     cmap="Pastel2",

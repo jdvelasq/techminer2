@@ -1,3 +1,9 @@
+"""
+Word cloud
+===============================================================================
+"""
+
+
 import matplotlib.pyplot as plt
 import numpy as np
 from wordcloud import WordCloud
@@ -5,8 +11,8 @@ from wordcloud import WordCloud
 TEXTLEN = 40
 
 
-def wordcloud_(
-    x,
+def word_cloud(
+    series,
     darkness=None,
     figsize=(6, 6),
     font_path=None,
@@ -65,13 +71,13 @@ def wordcloud_(
     def color_func(word, font_size, position, orientation, font_path, random_state):
         return color_dic[word]
 
-    darkness = x if darkness is None else darkness
+    darkness = series if darkness is None else darkness
 
     fig = plt.Figure(figsize=figsize)
     ax = fig.subplots()
     cmap = plt.cm.get_cmap(cmap)
 
-    words = {key: value for key, value in zip(x.index, x)}
+    words = {key: value for key, value in zip(series.index, series)}
 
     color_dic = {
         key: cmap(
@@ -110,7 +116,7 @@ def wordcloud_(
         relative_scaling=relative_scaling,
         regexp=regexp,
         collocations=collocations,
-        cmap=cmap,
+        # cmap=cmap,
         normalize_plurals=normalize_plurals,
         contour_width=contour_width,
         contour_color=contour_color,

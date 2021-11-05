@@ -1,31 +1,35 @@
+"""
+Column chart
+===============================================================================
+"""
+
 import textwrap
 
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
-from techminer.plots.shorten_ticklabels import shorten_ticklabels
 
 TEXTLEN = 40
 
 
-def barh_plot(
-    width,
+def column_chart(
+    series,
     darkness=None,
     cmap="Greys",
     figsize=(6, 6),
     fontsize=9,
     edgecolor="k",
     linewidth=0.5,
-    xlabel=None,
-    ylabel=None,
     zorder=10,
+    ylabel=None,
+    xlabel=None,
 ):
-    """Make a horizontal bar plot.
+    """Make a vertical bar chart.
 
-    See https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.axes.Axes.barh.html
+    See https://matplotlib.org/3.2.2/api/_as_gen/matplotlib.axes.Axes.bar.html.
 
     Args:
-        width (pandas.Series): The widths of the bars.
+        height (pandas.Series): The height(s) of the bars.
         darkness (pandas.Series, optional): The color darkness of the bars. Defaults to None.
         cmap (str, optional): Colormap name. Defaults to "Greys".
         figsize (tuple, optional): Figure size passed to matplotlib. Defaults to (6, 6).
@@ -54,55 +58,55 @@ def barh_plot(
     author 1              2            2
     author 0              2            3
     author 2              1            4
-    >>> fig = barh(width=df['Num_Documents'], darkness=df['Global_Citations'])
-    >>> fig.savefig('/workspaces/techminer/sphinx/images/barhplot.png')
+    >>> fig = bar(height=df['Num_Documents'], darkness=df['Global_Citations'])
+    >>> fig.savefig('/workspaces/techminer/sphinx/images/barplot1.png')
 
-    .. image:: images/barhplot.png
+    .. image:: images/barplot1.png
         :width: 400px
         :align: center
 
     """
-    darkness = width if darkness is None else darkness
+    darkness = series if darkness is None else darkness
+
     cmap = plt.cm.get_cmap(cmap)
-    if max(darkness) == min(darkness):
-        color = [cmap(0.1) for _ in darkness]
-    else:
-        color = [
-            cmap(0.1 + 0.90 * (d - min(darkness)) / (max(darkness) - min(darkness)))
-            for d in darkness
-        ]
+    color = [
+        cmap(0.1 + 0.90 * (d - min(darkness)) / (max(darkness) - min(darkness)))
+        for d in darkness
+    ]
 
     matplotlib.rc("font", size=fontsize)
     fig = plt.Figure(figsize=figsize)
-    ax = fig.subplots()
+    ax_ = fig.subplots()
 
-    ax.barh(
-        y=range(len(width)),
-        width=width,
+    ax_.bar(
+        x=range(len(series)),
+        height=series,
         edgecolor=edgecolor,
         linewidth=linewidth,
         zorder=zorder,
         color=color,
     )
 
-    if xlabel is not None:
-        ax.set_xlabel(xlabel)
     if ylabel is not None:
-        ax.set_xlabel(ylabel)
+        ax_.set_ylabel(ylabel)
 
-    yticklabels = width.index
-    if yticklabels.dtype != "int64":
+    if xlabel is not None:
+        ax_.set_xlabel(xlabel)
 
-        yticklabels = shorten_ticklabels(yticklabels)
+    xticklabels = series.index
+    if xticklabels.dtype != "int64":
+        xticklabels = [
+            textwrap.shorten(text=text, width=TEXTLEN) for text in xticklabels
+        ]
 
-    ax.invert_yaxis()
-    ax.set_yticks(np.arange(len(width)))
-    ax.set_yticklabels(yticklabels)
+    ax_.set_xticks(np.arange(len(series)))
+    ax_.set_xticklabels(xticklabels)
+    ax_.tick_params(axis="x", labelrotation=90)
 
-    for x in ["top", "right", "bottom"]:
-        ax.spines[x].set_visible(False)
+    for x in ["top", "right", "left"]:
+        ax_.spines[x].set_visible(False)
 
-    ax.grid(axis="x", color="gray", linestyle=":")
+    ax_.grid(axis="y", color="gray", linestyle=":")
 
     fig.set_tight_layout(True)
 
