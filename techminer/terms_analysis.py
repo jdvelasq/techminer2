@@ -13,7 +13,7 @@ from .plots import *
 from .utils import *
 
 
-def _count_citations_by_term(directory, column, sep, citations_column):
+def _count_citations_by_term(directory, column, sep, citations_column, min_occ=1):
     """
     Counts the number of citations of a given term.
 
@@ -22,22 +22,31 @@ def _count_citations_by_term(directory, column, sep, citations_column):
     :param sep: separator to be used to split the column
     :return: a pandas.Series with the number of citations of a given term.
     """
+
     documents = load_filtered_documents(directory)
     documents = documents[[column, citations_column]].copy()
+
     if sep is not None:
         documents[column] = documents[column].str.split(sep)
         documents = documents.explode(column)
-    return (
+
+    citations_by_term = (
         documents.groupby(column, as_index=True)
         .sum()
         .sort_values(by=citations_column, ascending=False)
     ).astype(int)[citations_column]
 
+    if min_occ is not None:
+        documents_by_term = count_documents_by_term(directory, column, sep, min_occ)
+        citations_by_term = citations_by_term[documents_by_term.index]
+
+    return citations_by_term
+
 
 # ---< PUBLIC FUNCTIONS >---------------------------------------------------#
 
 
-def count_documents_by_term(directory, column, sep):
+def count_documents_by_term(directory, column, sep="; ", min_occ=1):
     """
     Counts the number of documents containing a given term.
 
@@ -48,18 +57,25 @@ def count_documents_by_term(directory, column, sep):
     """
     documents = load_filtered_documents(directory)
     documents = documents[[column]].copy()
+
     if sep is not None:
         documents[column] = documents[column].str.split(sep)
         documents = documents.explode(column)
-    return (
+
+    documents_by_term = (
         documents.groupby(column, as_index=True)
         .size()
         .sort_values(ascending=False)
         .rename("num_documents")
     )
 
+    if min_occ is not None:
+        documents_by_term = documents_by_term[documents_by_term >= min_occ]
 
-def count_global_citations_by_term(directory, column, sep="; "):
+    return documents_by_term
+
+
+def count_global_citations_by_term(directory, column, sep="; ", min_occ=None):
     """
     Counts the number of global citations of a given term.
 
@@ -69,10 +85,10 @@ def count_global_citations_by_term(directory, column, sep="; "):
     :return: a pandas.Series with the number of global citations of a given term.
     """
 
-    return _count_citations_by_term(directory, column, sep, "global_citations")
+    return _count_citations_by_term(directory, column, sep, "global_citations", min_occ)
 
 
-def count_local_citations_by_term(directory, column, sep="; "):
+def count_local_citations_by_term(directory, column, sep="; ", min_occ=None):
     """
     Counts the number of local citations of a given term.
 
@@ -81,10 +97,10 @@ def count_local_citations_by_term(directory, column, sep="; "):
     :param sep: separator to be used to split the column
     :return: a pandas.Series with the number of local citations of a given term.
     """
-    return _count_citations_by_term(directory, column, sep, "local_citations")
+    return _count_citations_by_term(directory, column, sep, "local_citations", min_occ)
 
 
-def terms_analysis(directory, column, sep="; "):
+def terms_analysis(directory, column, sep="; ", min_occ=1):
     """
     Counts the number of terms by record.
 
@@ -94,9 +110,9 @@ def terms_analysis(directory, column, sep="; "):
     :return: a pandas.Series with the number of terms by record.
     """
 
-    num_documents = count_documents_by_term(directory, column, sep).to_frame()
-    global_citations = count_global_citations_by_term(directory, column, sep).to_frame()
-    local_citations = count_local_citations_by_term(directory, column, sep).to_frame()
+    num_documents = count_documents_by_term(directory, column, sep, min_occ)
+    global_citations = count_global_citations_by_term(directory, column, sep, min_occ)
+    local_citations = count_local_citations_by_term(directory, column, sep, min_occ)
 
     report = pd.concat(
         [
@@ -106,5 +122,7 @@ def terms_analysis(directory, column, sep="; "):
         ],
         axis=1,
     )
+
+    report.sort_values(by="num_documents", ascending=False, inplace=True)
 
     return report
