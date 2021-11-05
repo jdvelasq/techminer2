@@ -6,7 +6,7 @@ Time Table
 import pandas as pd
 
 from .plots import *
-from .utils import load_records_from_project_directory
+from .utils import load_filtered_documents
 
 
 def _count_documents_by_year_from_records(records):
@@ -31,7 +31,7 @@ def _count_documents_by_year_from_directory(directory):
     :param directory: path to the directory
     :return: a pandas.Series with the number of documents by year.
     """
-    return _count_documents_by_year_from_records(load_records_from_directory(directory))
+    return _count_documents_by_year_from_records(load_filtered_documents(directory))
 
 
 def _count_local_citations_by_year_from_records(records):
@@ -57,7 +57,7 @@ def _count_local_citations_by_year_from_directory(directory):
     :return: a pandas.Series with the number of local citations by year.
     """
     return _count_local_citations_by_year_from_records(
-        load_records_from_directory(directory)
+        load_filtered_documents(directory)
     )
 
 
@@ -84,7 +84,7 @@ def _count_global_citations_by_year_from_directory(directory):
     :return: a pandas.Series with the number of global citations by year.
     """
     return _count_global_citations_by_year_from_records(
-        load_records_from_directory(directory)
+        load_filtered_documents(directory)
     )
 
 

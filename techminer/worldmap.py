@@ -10,8 +10,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-from .terms_table import terms_table
-from .utils import load_records_from_project_directory
+from .items_report import terms_table
+from .utils import load_filtered_documents
 
 TEXTLEN = 40
 
@@ -150,7 +150,7 @@ def _worldmap_from_directory(
     fontsize,
 ):
     return _worldmap_from_records(
-        records=load_records_from_directory(dirpath),
+        records=load_filtered_documents(dirpath),
         metric=metric,
         cmap=cmap,
         figsize=figsize,

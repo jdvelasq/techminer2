@@ -5,7 +5,7 @@ Core Authors
 
 import pandas as pd
 
-from techminer.terms_table import count_records_by_term
+from techminer.items_report import count_documents_by_item
 
 from .utils import *
 
@@ -26,7 +26,7 @@ def _core_authors_from_records(records):
     """
     records = records.copy()
 
-    z = count_records_by_term(records, "authors", sep="; ")
+    z = count_documents_by_item(records, "authors", sep="; ")
 
     authors_dict = {
         author: num_docs for author, num_docs in zip(z.index, z) if not pd.isna(author)
@@ -99,7 +99,7 @@ def _core_authors_from_directory(directory):
     pandas.DataFrame
         Dataframe with the core sources of the records
     """
-    return _core_authors_from_records(load_records_from_directory(directory))
+    return _core_authors_from_records(load_filtered_documents(directory))
 
 
 def core_authors(dirpath_or_records):

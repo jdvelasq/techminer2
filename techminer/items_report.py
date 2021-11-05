@@ -1,5 +1,5 @@
 """
-Terms Table
+Items report
 ===============================================================================
 
 
@@ -13,7 +13,7 @@ from .plots import *
 from .utils import *
 
 
-def _count_records_by_term_from_records(records, column, sep):
+def _count_documents_by_item_from_records(records, column, sep):
     """
     Counts the number of documents containing a given term.
 
@@ -34,7 +34,7 @@ def _count_records_by_term_from_records(records, column, sep):
     )
 
 
-def _count_records_by_term_from_directory(directory, column, sep):
+def _count_documents_by_item_from_directory(directory, column, sep):
     """
     Counts the number of documents containing a given term.
 
@@ -43,14 +43,14 @@ def _count_records_by_term_from_directory(directory, column, sep):
     :param sep: separator to be used to split the column
     :return: a pandas.Series with the number of documents containing a given term.
     """
-    return _count_records_by_term_from_records(
-        load_records_from_directory(directory),
+    return _count_documents_by_item_from_records(
+        load_filtered_documents(directory),
         column,
         sep,
     )
 
 
-def _count_citations_by_term_from_records(records, column, sep, citations_column):
+def _count_citations_by_item_from_records(records, column, sep, citations_column):
     """
     Counts the number of citations of a given term.
 
@@ -70,7 +70,7 @@ def _count_citations_by_term_from_records(records, column, sep, citations_column
     ).astype(int)[citations_column]
 
 
-def _count_citations_by_term_from_directory(directory, column, sep, citations_column):
+def _count_citations_by_item_from_directory(directory, column, sep, citations_column):
     """
     Counts the number of local citations of a given term.
 
@@ -79,8 +79,8 @@ def _count_citations_by_term_from_directory(directory, column, sep, citations_co
     :param sep: separator to be used to split the column
     :return: a pandas.Series with the number of local citations of a given term.
     """
-    return _count_citations_by_term_from_records(
-        load_records_from_directory(directory),
+    return _count_citations_by_item_from_records(
+        load_filtered_documents(directory),
         column,
         sep,
         citations_column,
@@ -90,7 +90,7 @@ def _count_citations_by_term_from_directory(directory, column, sep, citations_co
 # ---< PUBLIC FUNCTIONS >---------------------------------------------------#
 
 
-def count_records_by_term(dirpath_or_records, column, sep="; "):
+def count_documents_by_item(dirpath_or_records, column, sep="; "):
     """
     Counts the number of documents containing a given term.
 
@@ -100,9 +100,9 @@ def count_records_by_term(dirpath_or_records, column, sep="; "):
     :return: a pandas.Series with the number of documents containing a given term.
     """
     if isinstance(dirpath_or_records, str):
-        return _count_records_by_term_from_directory(dirpath_or_records, column, sep)
+        return _count_documents_by_item_from_directory(dirpath_or_records, column, sep)
     elif isinstance(dirpath_or_records, pd.DataFrame):
-        return _count_records_by_term_from_records(dirpath_or_records, column, sep)
+        return _count_documents_by_item_from_records(dirpath_or_records, column, sep)
     else:
         raise TypeError("dirpath_or_records must be a string or a pandas.DataFrame")
 
@@ -117,11 +117,11 @@ def count_global_citations_by_term(dirpath_or_records, column, sep="; "):
     :return: a pandas.Series with the number of global citations of a given term.
     """
     if isinstance(dirpath_or_records, str):
-        return _count_citations_by_term_from_directory(
+        return _count_citations_by_item_from_directory(
             dirpath_or_records, column, sep, "global_citations"
         )
     elif isinstance(dirpath_or_records, pd.DataFrame):
-        return _count_citations_by_term_from_records(
+        return _count_citations_by_item_from_records(
             dirpath_or_records, column, sep, "global_citations"
         )
     else:
@@ -138,11 +138,11 @@ def count_local_citations_by_term(dirpath_or_records, column, sep="; "):
     :return: a pandas.Series with the number of local citations of a given term.
     """
     if isinstance(dirpath_or_records, str):
-        return _count_citations_by_term_from_directory(
+        return _count_citations_by_item_from_directory(
             dirpath_or_records, column, sep, "local_citations"
         )
     elif isinstance(dirpath_or_records, pd.DataFrame):
-        return _count_citations_by_term_from_records(
+        return _count_citations_by_item_from_records(
             dirpath_or_records, column, sep, "local_citations"
         )
     else:
@@ -159,7 +159,7 @@ def terms_table(dirpath_or_records, column, sep="; "):
     :return: a pandas.Series with the number of terms by record.
     """
 
-    num_records = count_records_by_term(dirpath_or_records, column, sep).to_frame()
+    num_records = count_documents_by_term(dirpath_or_records, column, sep).to_frame()
     global_citations = count_global_citations_by_term(
         dirpath_or_records, column, sep
     ).to_frame()

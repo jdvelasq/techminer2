@@ -110,7 +110,7 @@ def _core_sources_from_directory(directory):
     pandas.DataFrame
         Dataframe with the core sources of the records
     """
-    return _core_sources_from_records(load_records_from_directory(directory))
+    return _core_sources_from_records(load_filtered_documents(directory))
 
 
 def core_sources(dirpath_or_records):

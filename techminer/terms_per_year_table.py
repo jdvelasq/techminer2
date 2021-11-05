@@ -5,7 +5,7 @@ Terms per Year Table
 import numpy as np
 import pandas as pd
 
-from .utils import adds_counters_to_axis, explode, load_records_from_project_directory
+from .utils import adds_counters_to_axis, explode, load_filtered_documents
 
 
 def _terms_per_year_from_records(
@@ -168,7 +168,7 @@ def _terms_per_year_from_dirpath(
     sep,
 ):
     return _terms_per_year_from_records(
-        records=load_records_from_directory(dirpath),
+        records=load_filtered_documents(dirpath),
         column=column,
         metric=metric,
         sep=sep,

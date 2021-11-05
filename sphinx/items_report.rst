@@ -1,4 +1,6 @@
-.. automodule:: techminer.clean_keywords_fields
+.. automodule:: techminer.items_report
     :members:
     :undoc-members:
     :show-inheritance:
+
+

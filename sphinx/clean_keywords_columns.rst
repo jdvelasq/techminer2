@@ -1,4 +1,4 @@
-.. automodule:: techminer.clean_institution_fields
+.. automodule:: techminer.clean_keywords_columns
     :members:
     :undoc-members:
     :show-inheritance:

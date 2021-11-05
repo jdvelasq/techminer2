@@ -65,7 +65,7 @@ def _most_cited_documents_from_directory(
     n_top,
 ):
     return _most_cited_documents_from_records(
-        records=load_records_from_directory(directory),
+        records=load_filtered_documents(directory),
         global_citations=global_citations,
         normalized_citations=normalized_citations,
         n_top=n_top,

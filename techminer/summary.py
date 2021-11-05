@@ -5,7 +5,7 @@ Summary Report
 import numpy as np
 import pandas as pd
 
-from .utils.io import load_records_from_project_directory
+from .utils.io import load_filtered_documents
 
 
 def _extract_terms(x, column):
@@ -298,7 +298,7 @@ def _summary_from_records(records):
 
 
 def _summary_from_directory(dirpath):
-    return _summary_from_records(load_records_from_directory(dirpath))
+    return _summary_from_records(load_filtered_documents(dirpath))
 
 
 def summary(dirpath_or_records):

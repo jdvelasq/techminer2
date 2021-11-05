@@ -1,5 +1,5 @@
 """
-Create Thesaurus
+Create thesaurus
 ===============================================================================
 
 """
@@ -66,7 +66,7 @@ def _create_thesaurus_from_directory(
     """
     return _create_thesaurus_from_records(
         thesaurus_filepath=thesaurus_filepath,
-        records=load_records_from_directory(directory),
+        records=load_filtered_documents(directory),
         column=column,
         sep=sep,
     )

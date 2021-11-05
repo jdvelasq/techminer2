@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 
 from .explode import explode
-from .io import load_documents
+from .io import load_filtered_documents
 
 
 def _adds_counters_to_axis_from_records(
@@ -64,7 +64,7 @@ def _adds_counters_to_axis_from_directory(
     sep,
 ):
     return _adds_counters_to_axis_from_records(
-        records=load_documents(directory),
+        records=load_filtered_documents(directory),
         table=table,
         axis=axis,
         column=column,
@@ -84,7 +84,7 @@ def adds_counters_to_axis(
     """
     if isinstance(directory_or_records, str):
         return _adds_counters_to_axis_from_directory(
-            directory=load_records_from_project_directory(directory_or_records),
+            directory=load_filtered_documents(directory_or_records),
             table=table,
             axis=axis,
             column=column,

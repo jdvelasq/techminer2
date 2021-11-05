@@ -7,20 +7,21 @@ Analysis of bibliographic datasets using Python
     :hidden:
     :maxdepth: 1
 
-    import_raw_data
-..    process_records_file
+    import_scopus_file_to_directory
+    
 
-
-
-.. toctree::kk 
-    :caption: Data cleaning
+.. toctree::
+    :caption: Thesaurus
     :hidden:
     :maxdepth: 1
 
-..    apply_thesaurus
-..    clean_institution_fields
-..    clean_keywords_fields
-..    create_thesaurus
+    clean_institution_columns
+    clean_keywords_columns
+    apply_thesaurus    
+    create_thesaurus
+    
+
+    
 
 
 .. toctree::
@@ -28,13 +29,16 @@ Analysis of bibliographic datasets using Python
     :hidden:
     :maxdepth: 1
 
+    coverage_report  
+    summary     
+
 ..    bradford_plot
 ..    core_authors
 ..    core_sources
-..    coverage    
+  
 ..    lotka_plot
 ..    most_cited_documents      
-..    summary     
+
 ..    terms_per_year_table
 ..    terms_table
 ..    time_table

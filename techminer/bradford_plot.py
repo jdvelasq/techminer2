@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-from techminer.utils import explode, load_records_from_project_directory
+from techminer.utils import explode, load_filtered_documents
 
 
 def _plot(
@@ -137,7 +137,7 @@ def _bradford_plot_from_directory(
     fontsize,
 ):
     return _bradford_plot_from_records(
-        records=load_records_from_project_directory(directory),
+        records=load_filtered_documents(directory),
         max_items=max_items,
         cmap=cmap,
         figsize=figsize,

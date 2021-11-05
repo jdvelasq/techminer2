@@ -1,4 +1,4 @@
-.. automodule:: techminer.import_raw_data
+.. automodule:: techminer.core_authors_report
     :members:
     :undoc-members:
     :show-inheritance:

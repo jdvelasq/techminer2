@@ -1,5 +1,5 @@
 """
-Impact Analysis
+Impact Report
 ===============================================================================
 
 """
@@ -7,8 +7,8 @@ Impact Analysis
 import numpy as np
 import pandas as pd
 
-from .term_report import count_global_citations_by_term, count_records_by_term
-from .utils import explode, load_records_from_directory, load_stopwords_from_directory
+from .items_report import count_documents_by_item, count_global_citations_by_term
+from .utils import explode, load_filtered_documents, load_stopwords
 
 
 def _impact_analysis_from_records(records, column, stopwords=None):
@@ -67,7 +67,7 @@ def _impact_analysis_from_records(records, column, stopwords=None):
     )
     age = records.pub_year.max() - age.age + 1
 
-    num_documents = count_records_by_term(records, column)
+    num_documents = count_documents_by_item(records, column)
     num_global_citations = count_global_citations_by_term(records, column)
 
     impact = pd.concat(

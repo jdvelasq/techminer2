@@ -7,7 +7,7 @@ import numpy as np
 import pandas as pd
 
 from .tf_matrix import tf_matrix
-from .utils.io import load_records_from_directory
+from .utils.io import load_filtered_documents
 
 # pyltin: disable=c0103
 # pylint: disable=too-many-arguments
@@ -109,7 +109,7 @@ def _co_occurrence_matrix_from_directory(
 ):
 
     return _co_occurrence_matrix_from_records(
-        records=load_records_from_directory(directory),
+        records=load_filtered_documents(directory),
         column=column,
         by=by,
         min_occurrence_column=min_occurrence_column,
