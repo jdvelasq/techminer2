@@ -1,5 +1,5 @@
 """
-Terms per Year Table
+Terms per Year analysis
 ===============================================================================
 """
 import numpy as np
@@ -8,24 +8,23 @@ import pandas as pd
 from .utils import adds_counters_to_axis, explode, load_filtered_documents
 
 
-def _terms_per_year_from_records(
-    records,
+def terms_per_year_analysis(
+    directory,
     column,
-    metric,
-    sep,
+    metric="num_documents",
+    sep="; ",
 ):
-
-    records = records.copy()
-    records = records.assign(n_records=1)
+    documents = load_filtered_documents(directory)
+    documents = documents.assign(num_documents=1)
     exploded = explode(
-        records[
+        documents[
             [
                 "pub_year",
                 column,
-                "n_records",
+                "num_documents",
                 "local_citations",
                 "global_citations",
-                "record_id",
+                "document_id",
             ]
         ],
         column,
@@ -33,7 +32,7 @@ def _terms_per_year_from_records(
     )
     table = exploded.groupby([column, "pub_year"], as_index=False).agg(
         {
-            "n_records": np.sum,
+            "num_documents": np.sum,
             "local_citations": np.sum,
             "global_citations": np.sum,
         }
@@ -50,11 +49,11 @@ def _terms_per_year_from_records(
     table = table.fillna(0)
 
     table = adds_counters_to_axis(
-        records, table, axis="columns", column=column, sep="; "
+        documents, table, axis="columns", column=column, sep="; "
     )
 
     table = adds_counters_to_axis(
-        records, table, axis="index", column="pub_year", sep=None
+        documents, table, axis="index", column="pub_year", sep=None
     )
 
     table = table.sort_index(level=1, axis="columns", ascending=False)
@@ -161,48 +160,48 @@ def _terms_per_year_from_records(
     # return result
 
 
-def _terms_per_year_from_dirpath(
-    dirpath,
-    column,
-    metric,
-    sep,
-):
-    return _terms_per_year_from_records(
-        records=load_filtered_documents(dirpath),
-        column=column,
-        metric=metric,
-        sep=sep,
-    )
+# def _terms_per_year_from_dirpath(
+#     dirpath,
+#     column,
+#     metric,
+#     sep,
+# ):
+#     return _terms_per_year_from_records(
+#         documents=load_filtered_documents(dirpath),
+#         column=column,
+#         metric=metric,
+#         sep=sep,
+#     )
 
 
-def terms_per_year_table(
-    dirpath_or_records,
-    column,
-    metric="n_records",
-    sep="; ",
-):
-    """
-    Counts the number of terms by record.
+# def terms_per_year_table(
+#     dirpath_or_records,
+#     column,
+#     metric="n_records",
+#     sep="; ",
+# ):
+#     """
+#     Counts the number of terms by record.
 
-    :param dirpath_or_records: path to the directory or the records object
-    :param column: column to be used to count the terms
-    :param sep: separator to be used to split the column
-    :return: a pandas.Series with the number of terms by record.
-    """
+#     :param dirpath_or_records: path to the directory or the records object
+#     :param column: column to be used to count the terms
+#     :param sep: separator to be used to split the column
+#     :return: a pandas.Series with the number of terms by record.
+#     """
 
-    if isinstance(dirpath_or_records, str):
-        return _terms_per_year_from_dirpath(
-            dirpath=dirpath_or_records,
-            column=column,
-            metric=metric,
-            sep=sep,
-        )
-    elif isinstance(dirpath_or_records, pd.DataFrame):
-        return _terms_per_year_from_records(
-            records=dirpath_or_records,
-            column=column,
-            metric=metric,
-            sep=sep,
-        )
-    else:
-        raise TypeError("dirpath_or_records must be a string or a pandas.DataFrame")
+#     if isinstance(dirpath_or_records, str):
+#         return _terms_per_year_from_dirpath(
+#             dirpath=dirpath_or_records,
+#             column=column,
+#             metric=metric,
+#             sep=sep,
+#         )
+#     elif isinstance(dirpath_or_records, pd.DataFrame):
+#         return _terms_per_year_from_records(
+#             documents=dirpath_or_records,
+#             column=column,
+#             metric=metric,
+#             sep=sep,
+#         )
+#     else:
+#         raise TypeError("dirpath_or_records must be a string or a pandas.DataFrame")

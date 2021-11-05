@@ -21,11 +21,11 @@ from .import_scopus_file import *
 from .lotka_plot import lotka_plot
 from .summary import summary
 from .terms_analysis import *
+from .terms_per_year_analysis import *
 from .time_analysis import *
 from .top_documents import *
 from .worldmap import *
 
-# from .term_per_year_analysis import *
 # from .tf_matrix import tf_matrix
 # from .tfidf_matrix import tfidf_matrix
 

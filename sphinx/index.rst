@@ -33,11 +33,9 @@ Analysis of bibliographic datasets using Python
     impact_analysis
     summary     
     terms_analysis
+    terms_per_year_analysis
     time_analysis
     top_documents
-
-
-..    terms_per_year_table
 
 
 

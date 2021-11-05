@@ -21,7 +21,9 @@ def _adds_counters_to_axis_from_records(
     records = records.copy()
 
     records = records.assign(num_documents=1)
-    records = records[[column, "num_documents", "global_citations", "record_id"]].copy()
+    records = records[
+        [column, "num_documents", "global_citations", "document_id"]
+    ].copy()
 
     exploded = explode(records, column, sep)
     exploded = exploded.groupby(column, as_index=False).agg(
