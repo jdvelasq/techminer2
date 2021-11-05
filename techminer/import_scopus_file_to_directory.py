@@ -57,9 +57,17 @@ def _delete_and_renamce_columns(documents):
 def _remove_accents(documents):
     logging.info("Removing accents ...")
     documents = documents.copy()
-    documents = documents.applymap(
-        lambda x: remove_accents(x) if isinstance(x, str) else x
+    # documents = documents.applymap(
+    #     lambda x: remove_accents(x) if isinstance(x, str) else x
+    # )
+
+    cols = documents.select_dtypes(include=[np.object]).columns
+    documents[cols] = documents[cols].apply(
+        lambda x: x.str.normalize("NFKD")
+        .str.encode("ascii", errors="ignore")
+        .str.decode("utf-8")
     )
+
     return documents
 
 
