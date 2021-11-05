@@ -3,6 +3,7 @@ Main functions
 
 """
 from .apply_thesaurus import apply_thesaurus
+from .bar_chart import bar_chart
 
 # from .association_index import association_index
 # from .bigraph_analysis import *

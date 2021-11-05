@@ -1,3 +1,8 @@
+"""
+Bar chart
+===============================================================================
+"""
+
 import textwrap
 
 import matplotlib
@@ -7,8 +12,8 @@ import numpy as np
 TEXTLEN = 40
 
 
-def bar_plot(
-    height,
+def bar_chart(
+    series,
     darkness=None,
     cmap="Greys",
     figsize=(6, 6),
@@ -19,7 +24,7 @@ def bar_plot(
     ylabel=None,
     xlabel=None,
 ):
-    """Make a bar plot.
+    """Make a bar chart.
 
     See https://matplotlib.org/3.2.2/api/_as_gen/matplotlib.axes.Axes.bar.html.
 
@@ -61,7 +66,7 @@ def bar_plot(
         :align: center
 
     """
-    darkness = height if darkness is None else darkness
+    darkness = series if darkness is None else darkness
 
     cmap = plt.cm.get_cmap(cmap)
     color = [
@@ -71,11 +76,11 @@ def bar_plot(
 
     matplotlib.rc("font", size=fontsize)
     fig = plt.Figure(figsize=figsize)
-    ax = fig.subplots()
+    ax_ = fig.subplots()
 
-    ax.bar(
-        x=range(len(height)),
-        height=height,
+    ax_.bar(
+        x=range(len(series)),
+        height=series,
         edgecolor=edgecolor,
         linewidth=linewidth,
         zorder=zorder,
@@ -83,25 +88,25 @@ def bar_plot(
     )
 
     if ylabel is not None:
-        ax.set_ylabel(ylabel)
+        ax_.set_ylabel(ylabel)
 
     if xlabel is not None:
-        ax.set_xlabel(xlabel)
+        ax_.set_xlabel(xlabel)
 
-    xticklabels = height.index
+    xticklabels = series.index
     if xticklabels.dtype != "int64":
         xticklabels = [
             textwrap.shorten(text=text, width=TEXTLEN) for text in xticklabels
         ]
 
-    ax.set_xticks(np.arange(len(height)))
-    ax.set_xticklabels(xticklabels)
-    ax.tick_params(axis="x", labelrotation=90)
+    ax_.set_xticks(np.arange(len(series)))
+    ax_.set_xticklabels(xticklabels)
+    ax_.tick_params(axis="x", labelrotation=90)
 
     for x in ["top", "right", "left"]:
-        ax.spines[x].set_visible(False)
+        ax_.spines[x].set_visible(False)
 
-    ax.grid(axis="y", color="gray", linestyle=":")
+    ax_.grid(axis="y", color="gray", linestyle=":")
 
     fig.set_tight_layout(True)
 

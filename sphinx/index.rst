@@ -38,13 +38,12 @@ Analysis of bibliographic datasets using Python
     top_documents
 
 
-
-
 .. toctree::
-    :caption: Plots
+    :caption: Basic charts
     :hidden:
     :maxdepth: 1
 
+    bar_chart
     bradford_plot
     lotka_plot
     worldmap

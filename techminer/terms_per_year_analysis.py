@@ -1,5 +1,5 @@
 """
-Terms per Year analysis
+Terms per year analysis
 ===============================================================================
 """
 import numpy as np
