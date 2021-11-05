@@ -23,7 +23,7 @@ from tqdm import tqdm
 # from .clean_keywords_fields import clean_keywords_fields
 # from .create_institutions_thesaurus import create_institutions_thesaurus
 # from .create_keywords_thesaurus import create_keywords_thesaurus
-from .utils import logging, map_, remove_accents
+from .utils import logging, map_
 from .utils.extract_country import extract_country as extract_country_name
 
 # -----< Dataset Trasformations >----------------------------------------------
