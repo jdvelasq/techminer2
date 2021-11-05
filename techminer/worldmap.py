@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-from .items_report import items_report
+from .terms_analysis import terms_analysis
 from .utils import load_filtered_documents
 
 TEXTLEN = 40
@@ -57,7 +57,7 @@ def worldmap(
     ax = fig.subplots()
     cmap = plt.cm.get_cmap(cmap)
 
-    table = terms_table(directory, column="countries", sep="; ")
+    table = terms_analysis(directory, column="countries", sep="; ")
     series = table[metric]
 
     df = series.to_frame()

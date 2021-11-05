@@ -28,7 +28,7 @@ def coverage(directory):
     report = pd.DataFrame(
         {
             "column": columns,
-            "number of items": [
+            "number of terms": [
                 n_documents - documents[col].isnull().sum() for col in columns
             ],
             "coverage (%)": [

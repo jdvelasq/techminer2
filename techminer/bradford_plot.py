@@ -8,9 +8,8 @@ Bradford Law's plot
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
-import pandas as pd
 
-from techminer.utils import explode, load_filtered_documents
+from .utils import explode, load_filtered_documents
 
 
 def _plot(

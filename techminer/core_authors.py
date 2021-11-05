@@ -5,7 +5,7 @@ Core authors report
 
 import pandas as pd
 
-from techminer.items_report import count_documents_by_item
+from techminer.terms_analysis import count_documents_by_term
 
 from .utils import *
 
@@ -27,7 +27,7 @@ def core_authors(directory):
     documents = load_filtered_documents(directory)
     documents = documents.copy()
 
-    z = count_documents_by_item(documents, "authors", sep="; ")
+    z = count_documents_by_term(directory, "authors", sep="; ")
 
     authors_dict = {
         author: num_docs for author, num_docs in zip(z.index, z) if not pd.isna(author)

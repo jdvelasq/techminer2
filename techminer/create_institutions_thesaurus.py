@@ -5,7 +5,6 @@ Cleaning institutions fields.
 Creates a institutions thesaurus from the data in the database.
 """
 
-import io
 from os.path import dirname, isfile, join
 
 import pandas as pd

@@ -7,7 +7,7 @@ Analysis of bibliographic datasets using Python
     :hidden:
     :maxdepth: 1
 
-    import_scopus_file_to_directory
+    import_scopus_file
     
 
 .. toctree::
@@ -15,8 +15,8 @@ Analysis of bibliographic datasets using Python
     :hidden:
     :maxdepth: 1
 
-    clean_institution_columns
-    clean_keywords_columns
+    clean_institutions
+    clean_keywords
     apply_thesaurus    
     create_thesaurus
     
@@ -30,11 +30,11 @@ Analysis of bibliographic datasets using Python
     core_authors
     core_sources
     coverage
-    items_report
-    most_cited_documents
+    impact_analysis
     summary     
-    time_report
-    impact_report
+    terms_analysis
+    time_analysis
+    top_documents
 
 
 ..    terms_per_year_table
