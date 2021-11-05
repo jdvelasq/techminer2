@@ -1,5 +1,5 @@
 """
-Lotka Law's Plot
+Lotka Law's plot
 ===============================================================================
 
 """
@@ -8,23 +8,38 @@ import matplotlib
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from .core_authors_report import core_authors
+from .core_authors import core_authors
 from .utils import *
 
 
-def _lotka_plot_from_records(
-    records,
-    cmap,
-    figsize,
-    fontsize,
+def lotka_plot(
+    directory,
+    cmap="Greys",
+    figsize=(6, 6),
+    fontsize=9,
 ):
+    """
+    Returns a dataframe with the core analysis.
+
+    Parameters
+    ----------
+    dirpath_or_records: str or list
+        path to the directory or the records object.
+
+    Returns
+    -------
+    pandas.DataFrame
+        Dataframe with the core sources of the records
+    """
+
+    # documents = load_filtered_documents(directory)
 
     matplotlib.rc("font", size=fontsize)
     fig, ax_ = plt.subplots(figsize=figsize)
     cmap = plt.cm.get_cmap(cmap)
     color = cmap(0.6)
 
-    data = core_authors(records)
+    data = core_authors(directory)
     percentage_authors = data["%"].map(lambda w: float(w[:-2])).tolist()
     percentage_authors.reverse()
     documents_written = data["Documents written per Author"].tolist()
@@ -67,54 +82,3 @@ def _lotka_plot_from_records(
     fig.set_tight_layout(True)
 
     return fig
-
-
-def _lotka_plot_from_directory(
-    directory,
-    cmap,
-    figsize,
-    fontsize,
-):
-    return _lotka_plot_from_records(
-        records=load_filtered_documents(directory),
-        cmap=cmap,
-        figsize=figsize,
-        fontsize=fontsize,
-    )
-
-
-def lotka_plot(
-    dirpath_or_records,
-    cmap="Greys",
-    figsize=(8, 6),
-    fontsize=11,
-):
-    """
-    Returns a dataframe with the core analysis.
-
-    Parameters
-    ----------
-    dirpath_or_records: str or list
-        path to the directory or the records object.
-
-    Returns
-    -------
-    pandas.DataFrame
-        Dataframe with the core sources of the records
-    """
-    if isinstance(dirpath_or_records, str):
-        return _lotka_plot_from_directory(
-            directory=dirpath_or_records,
-            cmap=cmap,
-            figsize=figsize,
-            fontsize=fontsize,
-        )
-    elif isinstance(dirpath_or_records, pd.DataFrame):
-        return _lotka_plot_from_records(
-            records=dirpath_or_records,
-            cmap=cmap,
-            figsize=figsize,
-            fontsize=fontsize,
-        )
-    else:
-        raise TypeError("dirpath_or_records must be a string or a pandas.DataFrame")

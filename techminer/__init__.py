@@ -20,7 +20,7 @@ from .coverage import coverage
 from .import_scopus_file_to_directory import *
 
 # from .impact_analysis import impact_analysis
-# from .lotka_plot import lotka_plot
+from .lotka_plot import lotka_plot
 from .most_cited_documents import *
 from .summary import summary
 

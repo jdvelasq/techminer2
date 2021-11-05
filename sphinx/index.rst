@@ -34,10 +34,10 @@ Analysis of bibliographic datasets using Python
     coverage
     summary     
     most_cited_documents
-
+    
 
    
-..    lotka_plot
+
 ..    terms_per_year_table
 ..    terms_table
 ..    time_table
@@ -50,7 +50,7 @@ Analysis of bibliographic datasets using Python
     :maxdepth: 1
 
     bradford_plot
-
+    lotka_plot
 
 ..    worldmap
 
