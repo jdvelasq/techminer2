@@ -1,4 +1,4 @@
-.. automodule:: techminer.core_authors_report
+.. automodule:: techminer.coverage
     :members:
     :undoc-members:
     :show-inheritance:

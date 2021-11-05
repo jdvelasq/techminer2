@@ -8,7 +8,7 @@ import pandas as pd
 from .utils.io import *
 
 
-def coverage_report(directory):
+def coverage(directory):
     """
     Returns an coverage report of the dataset.
 

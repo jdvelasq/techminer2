@@ -10,7 +10,7 @@ from techminer.items_report import count_documents_by_item
 from .utils import *
 
 
-def core_authors_report(directory):
+def core_authors(directory):
     """
     Returns a dataframe with the core analysis.
 

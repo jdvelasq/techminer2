@@ -1,5 +1,5 @@
 """
-Bradford Law's Plot
+Bradford Law's plot
 ===============================================================================
 
 """
@@ -72,53 +72,56 @@ def _plot(
     return fig
 
 
-def _prepare_table(records):
+def _prepare_table(documents):
 
-    records = records.copy()
+    documents = documents.copy()
 
-    records = records.assign(num_records=1)
+    documents = documents.assign(num_documents=1)
     exploded_records = explode(
-        records[
+        documents[
             [
-                "publication_name",
-                "num_records",
+                "source_name",
+                "num_documents",
                 "global_citations",
-                "record_id",
+                "document_id",
+                "iso_source_name",
             ]
         ],
-        "publication_name",
+        "source_name",
         sep="; ",
     )
-    sources = exploded_records.groupby("publication_name", as_index=False).agg(
+    sources = exploded_records.groupby("iso_source_name", as_index=False).agg(
         {
-            "num_records": np.sum,
+            "num_documents": np.sum,
             "global_citations": np.sum,
         }
     )
     sources["global_citations"] = sources["global_citations"].map(int)
     sources = sources.sort_values(
-        by=["num_records", "global_citations"], ascending=False
+        by=["num_documents", "global_citations"], ascending=False
     )
     sources = sources.reset_index()
-    sources = sources.assign(cum_num_records=sources.num_records.cumsum())
-    core_documents = int(len(records) / 3)
-    core_sources = sources[sources.cum_num_records <= core_documents]
+    sources = sources.assign(cum_num_documents=sources.num_documents.cumsum())
+    core_documents = int(len(documents) / 3)
+    core_sources = sources[sources.cum_num_documents <= core_documents]
 
-    num_records_by_source = core_sources.num_records.copy()
-    core_sources_names = core_sources.publication_name.copy()
+    num_documents_by_source = core_sources.num_documents.copy()
+    core_sources_names = core_sources.iso_source_name.copy()
 
-    return num_records_by_source, core_sources_names
+    return num_documents_by_source, core_sources_names
 
 
-def _bradford_plot_from_records(
-    records,
+def bradford_plot(
+    directory,
     max_items=5,
     cmap="Greys",
     figsize=(8, 6),
     fontsize=11,
 ):
+    documents = load_filtered_documents(directory)
 
-    num_records_by_source, core_sources_names = _prepare_table(records)
+    num_records_by_source, core_sources_names = _prepare_table(documents)
+    core_sources_names = core_sources_names.head(max_items)
     fig = _plot(
         num_records_by_source=num_records_by_source,
         core_sources_names=core_sources_names,
@@ -127,52 +130,3 @@ def _bradford_plot_from_records(
         fontsize=fontsize,
     )
     return fig
-
-
-def _bradford_plot_from_directory(
-    directory,
-    max_items,
-    cmap,
-    figsize,
-    fontsize,
-):
-    return _bradford_plot_from_records(
-        records=load_filtered_documents(directory),
-        max_items=max_items,
-        cmap=cmap,
-        figsize=figsize,
-        fontsize=fontsize,
-    )
-
-
-def bradford_plot(
-    dirpath_or_records,
-    max_items=5,
-    cmap="Greys",
-    figsize=(8, 6),
-    fontsize=11,
-):
-    """
-    Plots the Bradford's law core source  distribution.
-
-
-
-    """
-    if isinstance(dirpath_or_records, str):
-        return _bradford_plot_from_directory(
-            directory=dirpath_or_records,
-            max_items=max_items,
-            cmap=cmap,
-            figsize=figsize,
-            fontsize=fontsize,
-        )
-    elif isinstance(dirpath_or_records, pd.DataFrame):
-        return _bradford_plot_from_records(
-            records=dirpath_or_records,
-            max_items=max_items,
-            cmap=cmap,
-            figsize=figsize,
-            fontsize=fontsize,
-        )
-    else:
-        raise TypeError("dirpath_or_records must be a string or a pandas.DataFrame")

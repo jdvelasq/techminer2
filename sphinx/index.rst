@@ -29,18 +29,15 @@ Analysis of bibliographic datasets using Python
     :hidden:
     :maxdepth: 1
 
-    core_authors_report
+    core_authors
     core_sources
-    coverage_report  
+    coverage
     summary     
+    most_cited_documents
 
-..    bradford_plot
-..    
-..    
-  
+
+   
 ..    lotka_plot
-..    most_cited_documents      
-
 ..    terms_per_year_table
 ..    terms_table
 ..    time_table
@@ -51,6 +48,9 @@ Analysis of bibliographic datasets using Python
     :caption: Plots
     :hidden:
     :maxdepth: 1
+
+    bradford_plot
+
 
 ..    worldmap
 
