@@ -29,12 +29,14 @@ Analysis of bibliographic datasets using Python
     :hidden:
     :maxdepth: 1
 
+    core_authors_report
+    core_sources
     coverage_report  
     summary     
 
 ..    bradford_plot
-..    core_authors
-..    core_sources
+..    
+..    
   
 ..    lotka_plot
 ..    most_cited_documents      

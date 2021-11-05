@@ -1,9 +1,6 @@
 """
-Core Sources
+Core sources report
 ===============================================================================
-
-
-
 
 """
 
@@ -14,7 +11,7 @@ from .utils.explode import explode
 from .utils.io import *
 
 
-def _core_sources_from_records(records):
+def core_sources(directory):
     """
     Returns a dataframe with the core analysis.
 
@@ -28,22 +25,21 @@ def _core_sources_from_records(records):
     pandas.DataFrame
         Dataframe with the core sources of the records
     """
-    records = records.copy()
-
-    records["num_documents"] = 1
-    records = explode(
-        records[
+    documents = load_filtered_documents(directory)
+    documents["num_documents"] = 1
+    documents = explode(
+        documents[
             [
-                "publication_name",
+                "source_name",
                 "num_documents",
-                "record_id",
+                "document_id",
             ]
         ],
-        "publication_name",
+        "source_name",
         sep="; ",
     )
 
-    sources = records.groupby("publication_name", as_index=True).agg(
+    sources = documents.groupby("source_name", as_index=True).agg(
         {
             "num_documents": np.sum,
         }
@@ -70,7 +66,7 @@ def _core_sources_from_records(records):
         lambda w: str(round(w / sources["Num Documents"].max() * 100, 2)) + " %"
     )
 
-    bradford1 = int(len(records) / 3)
+    bradford1 = int(len(documents) / 3)
     bradford2 = 2 * bradford1
 
     sources["Bradford's Group"] = sources["Num Documents"].map(
@@ -94,42 +90,3 @@ def _core_sources_from_records(records):
     sources = sources.reset_index(drop=True)
 
     return sources
-
-
-def _core_sources_from_directory(directory):
-    """
-    Returns a dataframe with the core analysis.
-
-    Parameters
-    ----------
-    directory: str
-        :param directory: path to the directory with the records
-
-    Returns
-    -------
-    pandas.DataFrame
-        Dataframe with the core sources of the records
-    """
-    return _core_sources_from_records(load_filtered_documents(directory))
-
-
-def core_sources(dirpath_or_records):
-    """
-    Returns a dataframe with the core analysis.
-
-    Parameters
-    ----------
-    dirpath_or_records: str or list
-        path to the directory or the records object.
-
-    Returns
-    -------
-    pandas.DataFrame
-        Dataframe with the core sources of the records
-    """
-    if isinstance(dirpath_or_records, str):
-        return _core_sources_from_directory(dirpath_or_records)
-    elif isinstance(dirpath_or_records, pd.DataFrame):
-        return _core_sources_from_records(dirpath_or_records)
-    else:
-        raise TypeError("dirpath_or_records must be a string or a pandas.DataFrame")

@@ -12,8 +12,8 @@ from .clean_keywords_columns import clean_keywords_columns
 
 # from .co_occurrence_matrix import co_occurrence_matrix
 # from .collaboration_analysis import collaboration_analysis
-# from .core_authors import core_authors
-# from .core_sources import core_sources
+from .core_authors_report import core_authors_report
+from .core_sources import core_sources
 from .coverage_report import coverage_report
 
 # from .create_thesaurus import create_thesaurus

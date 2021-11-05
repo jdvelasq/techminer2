@@ -1,5 +1,5 @@
 """
-Core Authors
+Core authors report
 ===============================================================================
 """
 
@@ -10,7 +10,7 @@ from techminer.items_report import count_documents_by_item
 from .utils import *
 
 
-def _core_authors_from_records(records):
+def core_authors_report(directory):
     """
     Returns a dataframe with the core analysis.
 
@@ -24,9 +24,10 @@ def _core_authors_from_records(records):
     pandas.DataFrame
         Dataframe with the core authors of the records
     """
-    records = records.copy()
+    documents = load_filtered_documents(directory)
+    documents = documents.copy()
 
-    z = count_documents_by_item(records, "authors", sep="; ")
+    z = count_documents_by_item(documents, "authors", sep="; ")
 
     authors_dict = {
         author: num_docs for author, num_docs in zip(z.index, z) if not pd.isna(author)
@@ -48,14 +49,14 @@ def _core_authors_from_records(records):
         str(round(100 * a / sum(z["Num Authors"]), 2)) + " %"
         for a in z["Acum Num Authors"]
     ]
-    m = explode(records[["authors", "record_id"]], "authors", sep="; ")
+    m = explode(documents[["authors", "document_id"]], "authors", sep="; ")
     m = m.dropna()
     m["Documents_written"] = m.authors.map(lambda w: authors_dict[w])
 
     n = []
     for k in z["Documents written per Author"]:
         s = m.query("Documents_written >= " + str(k))
-        s = s[["record_id"]]
+        s = s[["document_id"]]
         s = s.drop_duplicates()
         n.append(len(s))
 
@@ -83,42 +84,3 @@ def _core_authors_from_records(records):
     ]
 
     return z.reset_index(drop=True)
-
-
-def _core_authors_from_directory(directory):
-    """
-    Returns a dataframe with the core analysis.
-
-    Parameters
-    ----------
-    directory: str
-        :param directory: path to the directory with the records
-
-    Returns
-    -------
-    pandas.DataFrame
-        Dataframe with the core sources of the records
-    """
-    return _core_authors_from_records(load_filtered_documents(directory))
-
-
-def core_authors(dirpath_or_records):
-    """
-    Returns a dataframe with the core analysis.
-
-    Parameters
-    ----------
-    dirpath_or_records: str or list
-        path to the directory or the records object.
-
-    Returns
-    -------
-    pandas.DataFrame
-        Dataframe with the core authors of the records
-    """
-    if isinstance(dirpath_or_records, str):
-        return _core_authors_from_directory(dirpath_or_records)
-    elif isinstance(dirpath_or_records, pd.DataFrame):
-        return _core_authors_from_records(dirpath_or_records)
-    else:
-        raise TypeError("dirpath_or_records must be a string or a pandas.DataFrame")
