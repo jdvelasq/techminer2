@@ -11,26 +11,27 @@ from .utils import explode, load_filtered_documents, load_stopwords
 # pylint: disable=too-many-arguments
 
 
-def _tf_matrix_from_records(
-    records,
+def tf_matrix(
+    directory,
     column,
-    min_occurrence,
-    max_occurrence,
-    stopwords,
-    scheme,
-    sep,
+    min_occ=None,
+    max_occ=None,
+    scheme=None,
+    sep="; ",
 ):
 
-    records = records[[column, "record_id"]].copy()
-    records["value"] = 1.0
-    records = explode(records, column, sep)
+    documents = load_filtered_documents(directory)
 
-    grouped_records = records.groupby([column, "record_id"], as_index=False).agg(
+    documents = documents[[column, "document_id"]].copy()
+    documents["value"] = 1.0
+    documents = explode(documents, column, sep)
+
+    grouped_records = documents.groupby([column, "document_id"], as_index=False).agg(
         {"value": np.sum}
     )
     result = pd.pivot_table(
         data=grouped_records,
-        index="record_id",
+        index="document_id",
         columns=column,
         margins=False,
         fill_value=0.0,
@@ -40,14 +41,12 @@ def _tf_matrix_from_records(
 
     terms = result.sum(axis=0)
     terms = terms.sort_values(ascending=False)
-    terms = terms[terms >= min_occurrence]
-    terms = terms[terms <= max_occurrence]
-    terms = terms.drop(labels=load_stopwords(stopwords), errors="ignore")
+    if min_occ is not None:
+        terms = terms[terms >= min_occ]
+    if max_occ is not None:
+        terms = terms[terms <= max_occ]
+    terms = terms.drop(labels=load_stopwords(directory), errors="ignore")
     result = result.loc[:, terms.index]
-
-    # rows = result.sum(axis=1)
-    # rows = rows[rows > 0]
-    # result = result.loc[rows.index, :]
 
     if scheme is None or scheme == "raw":
         result = result.astype(int)
@@ -61,56 +60,3 @@ def _tf_matrix_from_records(
         raise ValueError("scheme must be 'raw', 'binary', 'log' or 'sqrt'")
 
     return result
-
-
-def _tf_matrix_from_directory(
-    directory,
-    column,
-    min_occurrence,
-    max_occurrence,
-    stopwords,
-    scheme,
-    sep,
-):
-    return _tf_matrix_from_records(
-        records=load_filtered_documents(directory),
-        column=column,
-        min_occurrence=min_occurrence,
-        max_occurrence=max_occurrence,
-        stopwords=stopwords,
-        scheme=scheme,
-        sep=sep,
-    )
-
-
-def tf_matrix(
-    directory_or_records,
-    column,
-    min_occurrence=1,
-    max_occurrence=99999,
-    stopwords=None,
-    scheme=None,
-    sep="; ",
-):
-    if isinstance(directory_or_records, str):
-        return _tf_matrix_from_directory(
-            directory=directory_or_records,
-            column=column,
-            min_occurrence=min_occurrence,
-            max_occurrence=max_occurrence,
-            stopwords=stopwords,
-            scheme=scheme,
-            sep=sep,
-        )
-    elif isinstance(directory_or_records, pd.DataFrame):
-        return _tf_matrix_from_records(
-            records=directory_or_records,
-            column=column,
-            min_occurrence=min_occurrence,
-            max_occurrence=max_occurrence,
-            stopwords=stopwords,
-            scheme=scheme,
-            sep=sep,
-        )
-    else:
-        raise TypeError("directory_or_records must be a string or a pandas.DataFrame")

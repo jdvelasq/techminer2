@@ -119,8 +119,10 @@ def heat_map(
     )
 
     X = X.copy()
+
     if isinstance(X.columns, pd.MultiIndex):
         X.columns = multindex2text(X.columns)
+
     if isinstance(X.index, pd.MultiIndex):
         X.index = multindex2text(X.index)
 

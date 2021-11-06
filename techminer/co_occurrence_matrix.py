@@ -1,5 +1,5 @@
 """
-Co-occurrence Matrix
+Co-occurrence matrix
 ===============================================================================
 
 """
@@ -7,6 +7,7 @@ import numpy as np
 import pandas as pd
 
 from .tf_matrix import tf_matrix
+from .utils import adds_counters_to_axis
 from .utils.io import load_filtered_documents
 
 # pyltin: disable=c0103
@@ -14,17 +15,16 @@ from .utils.io import load_filtered_documents
 # pylint: disable=invalid-name
 
 
-def _co_occurrence_matrix_from_records(
-    records,
+def co_occurrence_matrix(
+    directory,
     column,
-    by,
-    min_occurrence_column,
-    max_occurrence_column,
-    min_occurrence_by,
-    max_occurrence_by,
-    stopwords,
-    scheme,
-    sep,
+    by=None,
+    min_occ=1,
+    max_occ=None,
+    min_occ_by=1,
+    max_occ_by=None,
+    scheme=None,
+    sep="; ",
 ):
     """
     Returns a co-occurrence matrix.
@@ -50,39 +50,42 @@ def _co_occurrence_matrix_from_records(
     """
 
     if by is None or column == by:
-        records = records[[column, "record_id"]].dropna()
+        by = column
         matrix_in_columns = tf_matrix(
-            directory_or_records=records,
+            directory=directory,
             column=column,
-            min_occurrence=min_occurrence_column,
-            max_occurrence=max_occurrence_column,
-            stopwords=stopwords,
+            min_occ=min_occ,
+            max_occ=max_occ,
             scheme=scheme,
             sep=sep,
         )
+        matrix_in_columns = matrix_in_columns.dropna()
         matrix_in_rows = matrix_in_columns.copy()
     else:
-        records = records[[column, by, "record_id"]].dropna()
 
         matrix_in_columns = tf_matrix(
-            directory_or_records=records,
+            directory=directory,
             column=column,
-            min_occurrence=min_occurrence_column,
-            max_occurrence=max_occurrence_column,
-            stopwords=stopwords,
+            min_occ=min_occ,
+            max_occ=max_occ,
             scheme=scheme,
             sep=sep,
         )
 
+        matrix_in_columns = matrix_in_columns.dropna()
+
         matrix_in_rows = tf_matrix(
-            directory_or_records=records,
+            directory_or_records=directory,
             column=by,
-            min_occurrence=min_occurrence_by,
-            max_occurrence=max_occurrence_by,
-            stopwords=stopwords,
+            min_occ=min_occ_by,
+            max_occ=max_occ_by,
             scheme=scheme,
             sep=sep,
         )
+
+        matrix_in_rows = matrix_in_rows.loc[matrix_in_columns.index, :]
+        matrix_in_rows = matrix_in_rows.dropna()
+        matrix_in_columns = matrix_in_columns.loc[matrix_in_rows.index, :]
 
     matrix = np.matmul(matrix_in_rows.transpose().values, matrix_in_columns.values)
 
@@ -92,78 +95,8 @@ def _co_occurrence_matrix_from_records(
         index=matrix_in_rows.columns,
     )
 
+    documents = load_filtered_documents(directory)
+    pdf = adds_counters_to_axis(documents, pdf, axis="columns", column=column, sep=sep)
+    pdf = adds_counters_to_axis(documents, pdf, axis="index", column=by, sep=sep)
+
     return pdf
-
-
-def _co_occurrence_matrix_from_directory(
-    directory,
-    column,
-    by,
-    min_occurrence_column,
-    max_occurrence_column,
-    min_occurrence_by,
-    max_occurrence_by,
-    stopwords,
-    scheme,
-    sep,
-):
-
-    return _co_occurrence_matrix_from_records(
-        records=load_filtered_documents(directory),
-        column=column,
-        by=by,
-        min_occurrence_column=min_occurrence_column,
-        max_occurrence_column=max_occurrence_column,
-        min_occurrence_by=min_occurrence_by,
-        max_occurrence_by=max_occurrence_by,
-        stopwords=stopwords,
-        scheme=scheme,
-        sep=sep,
-    )
-
-
-def co_occurrence_matrix(
-    directory_or_records,
-    column,
-    by=None,
-    min_occurrence_column=1,
-    max_occurrence_column=99999,
-    min_occurrence_by=1,
-    max_occurrence_by=99999,
-    stopwords=None,
-    scheme=None,
-    sep="; ",
-):
-    """
-    Computes a  co-occurrence matrix.
-
-    """
-    if isinstance(directory_or_records, str):
-        return _co_occurrence_matrix_from_directory(
-            directory=directory_or_records,
-            column=column,
-            by=by,
-            min_occurrence_column=min_occurrence_column,
-            max_occurrence_column=max_occurrence_column,
-            min_occurrence_by=min_occurrence_by,
-            max_occurrence_by=max_occurrence_by,
-            stopwords=stopwords,
-            scheme=scheme,
-            sep=sep,
-        )
-
-    if isinstance(directory_or_records, pd.DataFrame):
-        return _co_occurrence_matrix_from_records(
-            records=directory_or_records,
-            column=column,
-            by=by,
-            min_occurrence_column=min_occurrence_column,
-            max_occurrence_column=max_occurrence_column,
-            min_occurrence_by=min_occurrence_by,
-            max_occurrence_by=max_occurrence_by,
-            stopwords=stopwords,
-            scheme=scheme,
-            sep=sep,
-        )
-
-    raise TypeError("directory_or_records must be a string or a pandas.DataFrame")

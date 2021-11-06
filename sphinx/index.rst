@@ -49,6 +49,14 @@ Analysis of bibliographic datasets using Python
     tree_map
     word_cloud
 
+.. toctree::
+    :caption: Advanced analysis
+    :hidden:
+    :maxdepth: 1
+
+    auto_corr_matrix
+    co_occurrence_matrix
+
 
 .. toctree::
     :caption: Basic analytic charts
@@ -62,7 +70,6 @@ Analysis of bibliographic datasets using Python
 ..    bigraph_analysis
 ..    extract_user_keywords
 ..    association_index
-..    co_occurrence_matrix
 ..    tf_matrix
 ..    tfidf_matrix
 
