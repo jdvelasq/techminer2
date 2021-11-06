@@ -9,6 +9,7 @@ from .bar_chart import bar_chart
 # from .association_index import association_index
 # from .bigraph_analysis import *
 from .bradford_plot import bradford_plot
+from .bubble_chart import bubble_chart
 from .clean_institutions import clean_institutions
 from .clean_keywords import clean_keywords
 from .co_occurrence_matrix import co_occurrence_matrix
@@ -19,6 +20,7 @@ from .core_authors import core_authors
 from .core_sources import core_sources
 from .coverage import coverage
 from .create_thesaurus import create_thesaurus
+from .cross_corr_matrix import cross_corr_matrix
 from .heat_map import heat_map
 from .impact_analysis import impact_analysis
 from .import_scopus_file import *

@@ -75,7 +75,7 @@ def co_occurrence_matrix(
         matrix_in_columns = matrix_in_columns.dropna()
 
         matrix_in_rows = tf_matrix(
-            directory_or_records=directory,
+            directory=directory,
             column=by,
             min_occ=min_occ_by,
             max_occ=max_occ_by,
@@ -83,9 +83,11 @@ def co_occurrence_matrix(
             sep=sep,
         )
 
-        matrix_in_rows = matrix_in_rows.loc[matrix_in_columns.index, :]
         matrix_in_rows = matrix_in_rows.dropna()
-        matrix_in_columns = matrix_in_columns.loc[matrix_in_rows.index, :]
+
+        common_documents = matrix_in_columns.index.intersection(matrix_in_rows.index)
+        matrix_in_columns = matrix_in_columns.loc[common_documents, :]
+        matrix_in_rows = matrix_in_rows.loc[common_documents, :]
 
     matrix = np.matmul(matrix_in_rows.transpose().values, matrix_in_columns.values)
 

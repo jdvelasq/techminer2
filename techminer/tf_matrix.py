@@ -36,8 +36,8 @@ def tf_matrix(
         margins=False,
         fill_value=0.0,
     )
+
     result.columns = [b for _, b in result.columns]
-    result = result.reset_index(drop=True)
 
     terms = result.sum(axis=0)
     terms = terms.sort_values(ascending=False)
