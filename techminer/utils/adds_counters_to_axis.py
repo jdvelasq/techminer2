@@ -10,7 +10,7 @@ from .io import load_filtered_documents
 
 
 def _adds_counters_to_axis_from_records(
-    records,
+    documents,
     table,
     axis,
     column,
@@ -18,14 +18,14 @@ def _adds_counters_to_axis_from_records(
 ):
 
     table = table.copy()
-    records = records.copy()
+    documents = documents.copy()
 
-    records = records.assign(num_documents=1)
-    records = records[
+    documents = documents.assign(num_documents=1)
+    documents = documents[
         [column, "num_documents", "global_citations", "document_id"]
     ].copy()
 
-    exploded = explode(records, column, sep)
+    exploded = explode(documents, column, sep)
     exploded = exploded.groupby(column, as_index=False).agg(
         {
             "num_documents": np.sum,
@@ -33,10 +33,17 @@ def _adds_counters_to_axis_from_records(
         }
     )
 
+    exploded["clean_name"] = exploded[column].copy()
+    exploded["clean_name"] = exploded["clean_name"].astype(str)
+    exploded["clean_name"] = exploded["clean_name"].str.replace(r"/\d+", "")
+
     names = {
-        name: (name, ndocs, citations)
-        for name, ndocs, citations in zip(
-            exploded[column], exploded["num_documents"], exploded["global_citations"]
+        name: (clean_name, ndocs, citations)
+        for name, ndocs, citations, clean_name in zip(
+            exploded[column],
+            exploded["num_documents"],
+            exploded["global_citations"],
+            exploded["clean_name"],
         )
     }
 
@@ -46,9 +53,7 @@ def _adds_counters_to_axis_from_records(
         old_names = table.columns.tolist()
 
     new_names = [names[current_name] for current_name in old_names]
-    new_names = pd.MultiIndex.from_tuples(
-        new_names, names=[column, "num_docs", "cited_by"]
-    )
+    new_names = pd.MultiIndex.from_tuples(new_names, names=[column, "#nd", "#tc"])
 
     if axis in (0, "index"):
         table.index = new_names
@@ -66,7 +71,7 @@ def _adds_counters_to_axis_from_directory(
     sep,
 ):
     return _adds_counters_to_axis_from_records(
-        records=load_filtered_documents(directory),
+        documents=load_filtered_documents(directory),
         table=table,
         axis=axis,
         column=column,
@@ -94,7 +99,7 @@ def adds_counters_to_axis(
         )
     if isinstance(directory_or_records, pd.DataFrame):
         return _adds_counters_to_axis_from_records(
-            records=directory_or_records,
+            documents=directory_or_records,
             table=table,
             axis=axis,
             column=column,

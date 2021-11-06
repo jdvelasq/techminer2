@@ -18,6 +18,7 @@ from .core_authors import core_authors
 from .core_sources import core_sources
 from .coverage import coverage
 from .create_thesaurus import create_thesaurus
+from .heat_map import heat_map
 from .impact_analysis import impact_analysis
 from .import_scopus_file import *
 from .lotka_plot import lotka_plot

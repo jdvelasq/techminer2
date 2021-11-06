@@ -18,7 +18,7 @@ def multindex2text(index):
 
     """
 
-    names = [tuple_[0].title() for tuple_ in index]
+    names = [str(tuple_[0]).title() for tuple_ in index]
     num_docs = [tuple_[1] for tuple_ in index]
     cited_by = [tuple_[2] for tuple_ in index]
     n_zeros_docs = int(np.log10(max(num_docs))) + 1
