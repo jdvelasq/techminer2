@@ -3,6 +3,7 @@ Main functions
 
 """
 from .apply_thesaurus import apply_thesaurus
+from .auto_corr_map import auto_corr_map
 from .auto_corr_matrix import auto_corr_matrix
 from .bar_chart import bar_chart
 

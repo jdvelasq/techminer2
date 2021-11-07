@@ -54,7 +54,8 @@ RUN pip3 --disable-pip-version-check --no-cache-dir install \
     nltk==3.2.5 \
     pandas==1.1.5 \
     wordcloud==1.5.0 \
-    squarify==0.4.3
+    squarify==0.4.3 \
+    networkx==2.6.3
 
 RUN apt update \
     && apt -yq --no-install-recommends install  graphviz \

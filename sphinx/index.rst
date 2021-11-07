@@ -27,8 +27,8 @@ Analysis of bibliographic datasets using Python
     :hidden:
     :maxdepth: 1
 
-    auto_corr_matrix
     auto_corr_map
+    auto_corr_matrix
     bradford_plot
     co_occurrence_matrix
     core_authors
