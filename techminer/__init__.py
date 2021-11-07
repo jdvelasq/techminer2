@@ -26,6 +26,7 @@ from .impact_analysis import impact_analysis
 from .import_scopus_file import *
 from .lotka_plot import lotka_plot
 from .pie_chart import pie_chart
+from .slope_chart import slope_chart
 from .summary import summary
 from .terms_analysis import *
 from .terms_per_year_analysis import *

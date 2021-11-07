@@ -27,16 +27,22 @@ Analysis of bibliographic datasets using Python
     :hidden:
     :maxdepth: 1
 
+    auto_corr_matrix
+    auto_corr_map
+    bradford_plot
+    co_occurrence_matrix
     core_authors
     core_sources
     coverage
+    cross_corr_matrix
     impact_analysis
+    lotka_plot
     summary     
     terms_analysis
     terms_per_year_analysis
     time_analysis
     top_documents
-
+    world_map
 
 .. toctree::
     :caption: Basic charts
@@ -48,6 +54,7 @@ Analysis of bibliographic datasets using Python
     column_chart
     heat_map
     pie_chart
+    slope_chart
     tree_map
     word_cloud
 
@@ -56,9 +63,6 @@ Analysis of bibliographic datasets using Python
     :hidden:
     :maxdepth: 1
 
-    auto_corr_matrix
-    co_occurrence_matrix
-    cross_corr_matrix
 
 
 .. toctree::
@@ -66,9 +70,7 @@ Analysis of bibliographic datasets using Python
     :hidden:
     :maxdepth: 1
 
-    bradford_plot
-    lotka_plot
-    world_map
+    
 
 ..    bigraph_analysis
 ..    extract_user_keywords
@@ -79,18 +81,10 @@ Analysis of bibliographic datasets using Python
 
 
 
-**List of auxiliary tools**:
-
-..  toctree::
-    :maxdepth: 1
 
 
 .. counts
 .. top-documents
-
-
-
-..   bigraph-analysis
 
 ..   citation-analysis
 ..   co-word-analysis
