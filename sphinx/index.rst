@@ -3,46 +3,44 @@ Analysis of bibliographic datasets using Python
 
 
 .. toctree::
-    :caption: Records db file
+    :caption: Records processing
     :hidden:
     :maxdepth: 1
 
-    import_scopus_file
-    
-
-.. toctree::
-    :caption: Thesaurus
-    :hidden:
-    :maxdepth: 1
-
+    apply_thesaurus    
     clean_institutions
     clean_keywords
-    apply_thesaurus    
+    coverage
     create_thesaurus
-    
+    import_scopus_file
+    summary    
 
-    
+
 .. toctree::
-    :caption: Basic analysis
+    :caption: Tech Mining
     :hidden:
     :maxdepth: 1
 
     auto_corr_map
     auto_corr_matrix
-    bradford_plot
     co_occurrence_matrix
-    core_authors
-    core_sources
-    coverage
     cross_corr_matrix
-    impact_analysis
-    lotka_plot
-    summary     
     terms_analysis
     terms_per_year_analysis
     time_analysis
-    top_documents
     world_map
+
+.. toctree::
+    :caption: Bibliometrics
+    :hidden:
+    :maxdepth: 1
+
+    bradford_plot
+    core_authors
+    core_sources
+    impact_analysis
+    lotka_plot
+    top_documents
 
 .. toctree::
     :caption: Basic charts
@@ -57,19 +55,6 @@ Analysis of bibliographic datasets using Python
     slope_chart
     tree_map
     word_cloud
-
-.. toctree::
-    :caption: Advanced analysis
-    :hidden:
-    :maxdepth: 1
-
-
-
-.. toctree::
-    :caption: Basic analytic charts
-    :hidden:
-    :maxdepth: 1
-
     
 
 ..    bigraph_analysis
