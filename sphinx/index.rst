@@ -38,9 +38,11 @@ Analysis of bibliographic datasets using Python
     :hidden:
     :maxdepth: 1
 
-    auto_corr_map
     auto_corr_matrix    
+    auto_corr_map
+    auto_corr_heat_map
     co_occurrence_matrix
+    co_occurrence_heat_map
     similarity_matrix_clustering
     similarity_matrix_bubble_map
     similarity_network_clusters

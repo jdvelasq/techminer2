@@ -1,6 +1,130 @@
 """
-Co-occurrence matrix
+Co-occurrence -- matrix
 ===============================================================================
+
+>>> from techminer import *
+>>> directory = "/workspaces/techminer-api/tests/data/"
+>>> co_occurrence_matrix(directory, column='authors', min_occ=5)
+authors                  Rabbani MR Arner DW Wojcik D Buckley RP  \
+#nd                              10        9        7          7    
+#tc                              69      135       49        132   
+authors          #nd #tc                                           
+Rabbani MR       10  69          10        0        0          0   
+Arner DW         9   135          0        9        0          7   
+Wojcik D         7   49           0        0        7          0   
+Buckley RP       7   132          0        7        0          7   
+Reyes-Mercado P  7   0            0        0        0          0   
+Wonglimpiyarat J 6   52           0        0        0          0   
+Gozman DP        6   26           0        0        0          0   
+Serrano W        6   15           0        0        0          0   
+Khan S           6   49           6        0        0          0   
+Schwienbacher A  6   50           0        0        0          0   
+Ozili PK         6   151          0        0        0          0   
+Tan B            5   105          0        0        0          0   
+Zetzsche DA      5   44           0        5        0          5   
+Hamdan A         5   18           0        0        0          0   
+Nieves EH        5   15           0        0        0          0   
+Baber H          5   12           0        0        0          0   
+Mention A-L      5   35           0        0        0          0   
+Faccia A         5   27           0        0        0          0   
+Ashta A          5   9            0        0        0          0   
+-
+authors                  Reyes-Mercado P Wonglimpiyarat J Gozman DP Serrano W  \
+#nd                                    7                6         6         6    
+#tc                                    0               52        26        15    
+authors          #nd #tc                                                        
+Rabbani MR       10  69                0                0         0         0   
+Arner DW         9   135               0                0         0         0   
+Wojcik D         7   49                0                0         0         0   
+Buckley RP       7   132               0                0         0         0   
+Reyes-Mercado P  7   0                 7                0         0         0   
+Wonglimpiyarat J 6   52                0                6         0         0   
+Gozman DP        6   26                0                0         6         0   
+Serrano W        6   15                0                0         0         6   
+Khan S           6   49                0                0         0         0   
+Schwienbacher A  6   50                0                0         0         0   
+Ozili PK         6   151               0                0         0         0   
+Tan B            5   105               0                0         1         0   
+Zetzsche DA      5   44                0                0         0         0   
+Hamdan A         5   18                0                0         0         0   
+Nieves EH        5   15                0                0         0         0   
+Baber H          5   12                0                0         0         0   
+Mention A-L      5   35                0                0         0         0   
+Faccia A         5   27                0                0         0         0   
+Ashta A          5   9                 0                0         0         0   
+-
+authors                  Khan S Schwienbacher A Ozili PK Tan B Zetzsche DA  \
+#nd                           6               6        6     5           5    
+#tc                          49              50      151   105          44    
+authors          #nd #tc                                                     
+Rabbani MR       10  69       6               0        0     0           0   
+Arner DW         9   135      0               0        0     0           5   
+Wojcik D         7   49       0               0        0     0           0   
+Buckley RP       7   132      0               0        0     0           5   
+Reyes-Mercado P  7   0        0               0        0     0           0   
+Wonglimpiyarat J 6   52       0               0        0     0           0   
+Gozman DP        6   26       0               0        0     1           0   
+Serrano W        6   15       0               0        0     0           0   
+Khan S           6   49       6               0        0     0           0   
+Schwienbacher A  6   50       0               6        0     0           0   
+Ozili PK         6   151      0               0        6     0           0   
+Tan B            5   105      0               0        0     5           0   
+Zetzsche DA      5   44       0               0        0     0           5   
+Hamdan A         5   18       0               0        0     0           0   
+Nieves EH        5   15       0               0        0     0           0   
+Baber H          5   12       0               0        0     0           0   
+Mention A-L      5   35       0               0        0     0           0   
+Faccia A         5   27       0               0        0     0           0   
+Ashta A          5   9        0               0        0     0           0   
+-
+authors                  Hamdan A Nieves EH Baber H Mention A-L Faccia A  \
+#nd                             5         5       5           5        5    
+#tc                            18        15      12          35       27    
+authors          #nd #tc                                                   
+Rabbani MR       10  69         0         0       0           0        0   
+Arner DW         9   135        0         0       0           0        0   
+Wojcik D         7   49         0         0       0           0        0   
+Buckley RP       7   132        0         0       0           0        0   
+Reyes-Mercado P  7   0          0         0       0           0        0   
+Wonglimpiyarat J 6   52         0         0       0           0        0   
+Gozman DP        6   26         0         0       0           0        0   
+Serrano W        6   15         0         0       0           0        0   
+Khan S           6   49         0         0       0           0        0   
+Schwienbacher A  6   50         0         0       0           0        0   
+Ozili PK         6   151        0         0       0           0        0   
+Tan B            5   105        0         0       0           0        0   
+Zetzsche DA      5   44         0         0       0           0        0   
+Hamdan A         5   18         5         0       0           0        0   
+Nieves EH        5   15         0         5       0           0        0   
+Baber H          5   12         0         0       5           0        0   
+Mention A-L      5   35         0         0       0           5        0   
+Faccia A         5   27         0         0       0           0        5   
+Ashta A          5   9          0         0       0           0        0   
+-
+authors                  Ashta A  
+#nd                            5   
+#tc                            9    
+authors          #nd #tc          
+Rabbani MR       10  69        0  
+Arner DW         9   135       0  
+Wojcik D         7   49        0  
+Buckley RP       7   132       0  
+Reyes-Mercado P  7   0         0  
+Wonglimpiyarat J 6   52        0  
+Gozman DP        6   26        0  
+Serrano W        6   15        0  
+Khan S           6   49        0  
+Schwienbacher A  6   50        0  
+Ozili PK         6   151       0  
+Tan B            5   105       0  
+Zetzsche DA      5   44        0  
+Hamdan A         5   18        0  
+Nieves EH        5   15        0  
+Baber H          5   12        0  
+Mention A-L      5   35        0  
+Faccia A         5   27        0  
+Ashta A          5   9         5  
+
 
 """
 import numpy as np

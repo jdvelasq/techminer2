@@ -2,6 +2,15 @@
 Auto-correlation --- map
 ===============================================================================
 
+>>> from techminer import *
+>>> directory = "/workspaces/techminer-api/tests/data/"
+>>> matrix = auto_corr_matrix(directory, column='authors', min_occ=4)
+>>> auto_corr_map(matrix, num_terms=10)
+
+.. image:: images/auto_corr_map.png
+    :width: 400px
+    :align: center
+
 """
 import matplotlib
 import matplotlib.pyplot as plt

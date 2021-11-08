@@ -2,6 +2,23 @@
 Thesaurus --- create
 ===============================================================================
 
+
+
+>>> from techminer import *
+>>> directory = "/workspaces/techminer-api/tests/data/"
+>>> create_thesaurus(directory, 
+... column="keywords", 
+... thesaurus_file="test_thesaurus.txt", 
+... sep="; ")
+2021-11-08 18:50:25 - INFO - Creating thesaurus ...
+2021-11-08 18:50:26 - INFO - Thesaurus file '/workspaces/techminer-api/tests/data/test_thesaurus.txt' created.
+>>> apply_thesaurus(directory, 
+... thesaurus_file="keywords.txt", 
+... input_column="author_keywords",
+... output_column="author_keywords_thesaurus", 
+... strict=False)
+2021-11-08 18:51:19 - INFO - The thesaurus file 'keywords.txt' was applied to column 'author_keywords'.
+
 """
 import os
 from os.path import isfile
