@@ -11,6 +11,7 @@ from .bar_chart import bar_chart
 # from .bigraph_analysis import *
 from .bradford_plot import bradford_plot
 from .bubble_chart import bubble_chart
+from .build_similarity_matrix_from_clusters import build_similarity_matrix_from_clusters
 from .clean_institutions import clean_institutions
 from .clean_keywords import clean_keywords
 from .co_occurrence_matrix import co_occurrence_matrix
@@ -27,6 +28,9 @@ from .impact_analysis import impact_analysis
 from .import_scopus_file import *
 from .lotka_plot import lotka_plot
 from .pie_chart import pie_chart
+from .similarity_matrix_bubble_map import similarity_matrix_bubble_map
+from .similarity_matrix_clustering import similarity_matrix_clustering
+from .similarity_network_clusters import similarity_network_clusters
 from .slope_chart import slope_chart
 from .summary import summary
 from .terms_analysis import *

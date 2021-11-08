@@ -33,13 +33,4 @@ def tfidf_matrix(
 
     result = pd.DataFrame(result, columns=tfmatrix.columns, index=tfmatrix.index)
 
-    # if len(result.columns) > max_items:
-    #     terms = result.sum(axis=0)
-    #     terms = terms.sort_values(ascending=False)
-    #     terms = terms.head(max_items)
-    #     result = result.loc[:, terms.index]
-    #     rows = result.sum(axis=1)
-    #     rows = rows[rows > 0]
-    #     result = result.loc[rows.index, :]
-
     return result

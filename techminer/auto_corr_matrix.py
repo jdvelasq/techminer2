@@ -1,6 +1,12 @@
 """
-Auto-correlation matrix
+Auto-correlation --- matrix
 ===============================================================================
+
+Returns an auto-correlation matrix.
+
+>>> from techminer import *
+>>> directory = "/workspaces/techminer-api/tests/data/"
+>>> matrix = auto_corr_matrix(
 
 """
 import numpy as np

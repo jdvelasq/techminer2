@@ -1,0 +1,19 @@
+article: true
+book: true
+book_chapter: true
+bradford:
+- 1
+- 3
+citations:
+- 0
+- 201
+conference_paper: true
+editorial: true
+erratum: true
+letter: true
+note: true
+review: true
+short_survey: true
+years:
+- 2015
+- 2022

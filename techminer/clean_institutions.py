@@ -1,7 +1,16 @@
 """
-Cleaning institutions fields
+Clean --- institutions
 ===============================================================================
 """
+
+
+import os
+import sys
+
+currentdir = os.getcwd()
+parentdir = os.path.dirname(currentdir)
+sys.path.append(parentdir)
+
 # pylint: disable=no-member
 
 import os

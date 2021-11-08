@@ -6,6 +6,7 @@ Co-occurrence matrix
 import numpy as np
 import pandas as pd
 
+from ._association_index import association_index
 from .tf_matrix import tf_matrix
 from .utils import adds_counters_to_axis
 from .utils.io import load_filtered_documents
@@ -23,6 +24,7 @@ def co_occurrence_matrix(
     max_occ=None,
     min_occ_by=1,
     max_occ_by=None,
+    association=None,
     scheme=None,
     sep="; ",
 ):
@@ -89,16 +91,27 @@ def co_occurrence_matrix(
         matrix_in_columns = matrix_in_columns.loc[common_documents, :]
         matrix_in_rows = matrix_in_rows.loc[common_documents, :]
 
-    matrix = np.matmul(matrix_in_rows.transpose().values, matrix_in_columns.values)
+    matrix_values = np.matmul(
+        matrix_in_rows.transpose().values, matrix_in_columns.values
+    )
 
-    pdf = pd.DataFrame(
-        matrix,
+    co_occ_matrix = pd.DataFrame(
+        matrix_values,
         columns=matrix_in_columns.columns,
         index=matrix_in_rows.columns,
     )
 
     documents = load_filtered_documents(directory)
-    pdf = adds_counters_to_axis(documents, pdf, axis="columns", column=column, sep=sep)
-    pdf = adds_counters_to_axis(documents, pdf, axis="index", column=by, sep=sep)
+    co_occ_matrix = adds_counters_to_axis(
+        documents, co_occ_matrix, axis="columns", column=column, sep=sep
+    )
+    co_occ_matrix = adds_counters_to_axis(
+        documents, co_occ_matrix, axis="index", column=by, sep=sep
+    )
 
-    return pdf
+    co_occ_matrix = association_index(
+        matrix=co_occ_matrix,
+        association=association,
+    )
+
+    return co_occ_matrix

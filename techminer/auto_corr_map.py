@@ -1,5 +1,5 @@
 """
-Auto-correlation map
+Auto-correlation --- map
 ===============================================================================
 
 """
@@ -10,7 +10,6 @@ import numpy as np
 import pandas as pd
 
 from ._corr_map import corr_map
-from .auto_corr_matrix import auto_corr_matrix
 from .tf_matrix import tf_matrix
 from .utils import adds_counters_to_axis
 from .utils.io import load_filtered_documents
@@ -21,13 +20,7 @@ from .utils.io import load_filtered_documents
 
 
 def auto_corr_map(
-    directory,
-    column,
-    method="pearson",
-    min_occ=1,
-    max_occ=None,
-    scheme=None,
-    sep="; ",
+    auto_corr_matrix,
     threshold=0.5,
     cmap="Greys",
     n_links=None,
@@ -38,24 +31,15 @@ def auto_corr_map(
     figsize=(6, 6),
     num_terms=None,
 ):
+    # computos
+    matrix = auto_corr_matrix.copy()
 
-    ## Networkx
+    # Networkx
     fig = plt.Figure(figsize=figsize)
     cmap = plt.cm.get_cmap(cmap)
     ax = fig.subplots()
     G = nx.Graph(ax=ax)
     G.clear()
-
-    ## computos
-    matrix = auto_corr_matrix(
-        directory=directory,
-        column=column,
-        method=method,
-        min_occ=min_occ,
-        max_occ=max_occ,
-        scheme=scheme,
-        sep=sep,
-    )
 
     np.fill_diagonal(matrix.values, 0.0)
     matrix = pd.melt(
@@ -172,153 +156,5 @@ def auto_corr_map(
             verticalalignment=va,
         )
 
-    # for label, size in zip(terms, column_node_sizes + index_node_sizes):
-    #     x_point, y_point = pos[label]
-    #     delta_x = 0.05 * (xlim[1] - xlim[0]) + 0.001 * size / 300 * (
-    #         xlim[1] - xlim[0]
-    #     )
-    #     delta_y = 0.05 * (ylim[1] - ylim[0]) + 0.001 * size / 300 * (
-    #         ylim[1] - ylim[0]
-    #     )
-
-    #     delta_x = delta_x if x_point > x_mean else -delta_x
-    #     delta_y = delta_y if y_point > y_mean else -delta_y
-
-    #     ax.text(
-
-    #
-    #
     ax.axis("off")
     return fig
-
-    # X = self.X_
-
-    # ## Data preparation
-    # terms = X.columns.tolist() + X.index.tolist()
-
-    # node_sizes = counters_to_node_sizes(x=terms)
-    # column_node_sizes = node_sizes[: len(X.index)]
-    # index_node_sizes = node_sizes[len(X.index) :]
-
-    # node_colors = counters_to_node_colors(x=terms, cmap=lambda w: w)
-    # column_node_colors = node_colors[: len(X.index)]
-    # index_node_colors = node_colors[len(X.index) :]
-
-    # cmap = pyplot.cm.get_cmap(self.colormap_col)
-    # cmap_by = pyplot.cm.get_cmap(self.colormap_by)
-
-    # index_node_colors = [cmap_by(t) for t in index_node_colors]
-    # column_node_colors = [cmap(t) for t in column_node_colors]
-
-    # # if self.layout == "Spring":
-    # #     pos = nx.spring_layout(G, iterations=self.nx_iterations)
-    # # else:
-    # #     pos = {
-    # #         "Circular": nx.circular_layout,
-    # #         "Kamada Kawai": nx.kamada_kawai_layout,
-    # #         "Planar": nx.planar_layout,
-    # #         "Random": nx.random_layout,
-    # #         "Spectral": nx.spectral_layout,
-    # #         "Spring": nx.spring_layout,
-    # #         "Shell": nx.shell_layout,
-    # #     }[self.layout](G)
-
-    # ## links
-    # m = X.stack().to_frame().reset_index()
-    # m.columns = ["from_", "to_", "link_"]
-    # m = m[m.link_ > 0.0]
-    # m = m.reset_index(drop=True)
-
-    # max_width = m.link_.max()
-
-    # for idx in range(len(m)):
-
-    #     edge = [(m.from_[idx], m.to_[idx])]
-    #     width = 0.1 + 2.9 * m.link_[idx] / max_width
-    #     nx.draw_networkx_edges(
-    #         G,
-    #         pos=pos,
-    #         ax=ax,
-    #         node_size=1,
-    #         #  with_labels=False,
-    #         edge_color="k",
-    #         edgelist=edge,
-    #         width=width,
-    #     )
-
-    # #
-    # # Draw column nodes
-    # #
-    # nx.draw_networkx_nodes(
-    #     G,
-    #     pos,
-    #     ax=ax,
-    #     #  edge_color="k",
-    #     nodelist=X.columns.tolist(),
-    #     node_size=column_node_sizes,
-    #     node_color=column_node_colors,
-    #     node_shape="o",
-    #     edgecolors="k",
-    #     linewidths=1,
-    # )
-
-    # #
-    # # Draw index nodes
-    # #
-    # nx.draw_networkx_nodes(
-    #     G,
-    #     pos,
-    #     ax=ax,
-    #     #  edge_color="k",
-    #     nodelist=X.index.tolist(),
-    #     node_size=index_node_sizes,
-    #     node_color=index_node_colors,
-    #     node_shape="o",
-    #     edgecolors="k",
-    #     linewidths=1,
-    # )
-
-    # node_sizes = column_node_sizes + index_node_sizes
-
-    # xlim = ax.get_xlim()
-    # ylim = ax.get_ylim()
-
-    # x_points = [pos[label][0] for label in terms]
-    # y_points = [pos[label][1] for label in terms]
-    # x_mean = sum(x_points) / len(x_points)
-    # y_mean = sum(y_points) / len(y_points)
-
-    # for label, size in zip(terms, column_node_sizes + index_node_sizes):
-    #     x_point, y_point = pos[label]
-    #     delta_x = 0.05 * (xlim[1] - xlim[0]) + 0.001 * size / 300 * (
-    #         xlim[1] - xlim[0]
-    #     )
-    #     delta_y = 0.05 * (ylim[1] - ylim[0]) + 0.001 * size / 300 * (
-    #         ylim[1] - ylim[0]
-    #     )
-    #     ha = "left" if x_point > x_mean else "right"
-    #     va = "top" if y_point > y_mean else "bottom"
-    #     delta_x = delta_x if x_point > x_mean else -delta_x
-    #     delta_y = delta_y if y_point > y_mean else -delta_y
-
-    #     ax.text(
-    #         x_point + delta_x,
-    #         y_point + delta_y,
-    #         s=label,
-    #         fontsize=10,
-    #         bbox=dict(
-    #             facecolor="w",
-    #             alpha=1.0,
-    #             edgecolor="gray",
-    #             boxstyle="round,pad=0.5",
-    #         ),
-    #         horizontalalignment=ha,
-    #         verticalalignment=va,
-    #     )
-
-    # #  ax_text_node_labels(ax=ax, labels=terms, dict_pos=pos, node_sizes=node_sizes)
-    # expand_ax_limits(ax)
-    # #  ax.set_aspect("equal")
-    # ax.axis("off")
-    # set_spines_invisible(ax)
-    # return fig
