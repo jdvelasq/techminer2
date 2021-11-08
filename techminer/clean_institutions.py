@@ -2,6 +2,9 @@
 Clean --- institutions
 ===============================================================================
 
+Cleans the institutions columns using the file institutions.txt, located in 
+the same directory as the documents.csv file.
+
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/tests/data/"
 >>> clean_institutions(directory)

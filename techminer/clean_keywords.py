@@ -2,6 +2,18 @@
 Clean --- keywords
 ===============================================================================
 
+Cleans the keywords columns using the file keywords.txt, located in 
+the same directory as the documents.csv file.
+
+>>> from techminer import *
+>>> directory = "/workspaces/techminer-api/tests/data/"
+>>> clean_keywords(directory)
+2021-11-08 18:48:08 - INFO - Applying thesaurus to 'author_keywords' column ...
+2021-11-08 18:48:08 - INFO - Applying thesaurus to 'index_keywords' column...
+2021-11-08 18:48:08 - INFO - Applying thesaurus to 'keywords' column...
+2021-11-08 18:48:10 - INFO - The thesaurus was applied to keywords.
+
+
 """
 # pylint: disable=no-member
 # pylint: disable=invalid-name
