@@ -29,9 +29,8 @@ import os
 
 import pandas as pd
 
-from .utils import logging
-from .utils.map import map_
-from .utils.thesaurus import read_textfile
+from .lib import logging, map_
+from .lib.thesaurus import read_textfile
 
 
 def clean_institutions(directory):

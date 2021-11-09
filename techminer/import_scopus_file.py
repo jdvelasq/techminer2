@@ -65,7 +65,16 @@ import pandas as pd
 import yaml
 from tqdm import tqdm
 
-# from .clean_institutions import clean_institutions
+from .clean_institutions import clean_institutions
+from .clean_keywords import clean_keywords
+from .lib import (
+    create_institutions_thesaurus,
+    create_keywords_thesaurus,
+    extract_country,
+    logging,
+    map_,
+)
+
 # from .clean_keywords import clean_keywords
 # from .create_institutions_thesaurus import create_institutions_thesaurus
 # from .create_keywords_thesaurus import create_keywords_thesaurus
@@ -79,7 +88,7 @@ def _delete_and_renamce_columns(documents):
     logging.info("Deleting/renaming columns ...")
     documents = documents.copy()
     module_path = dirname(__file__)
-    file_path = join(module_path, "config/scopus2tags.csv")
+    file_path = join(module_path, "files/scopus2tags.csv")
 
     columns_to_tags = {}
     columns_to_delete = []
@@ -135,7 +144,7 @@ def _process_affiliations_column(documents):
     if "affiliations" in documents.columns:
         logging.info("Processing affiliations ...")
         documents = documents.copy()
-        documents["countries"] = map_(documents, "affiliations", extract_country_name)
+        documents["countries"] = map_(documents, "affiliations", extract_country)
         documents["country_1st_author"] = documents.countries.map(
             lambda w: w.split("; ")[0] if isinstance(w, str) else w
         )
@@ -257,7 +266,7 @@ def _search_for_new_iso_source_name(documents):
 
         # adds the abbreviations the the current file
         module_path = dirname(__file__)
-        file_path = join(module_path, "config/iso_source_names.csv")
+        file_path = join(module_path, "files/iso_source_names.csv")
         pdf = pd.read_csv(file_path, sep=",")
         pdf = pd.concat([pdf, current_iso_names])
         pdf = pdf.drop_duplicates()
@@ -270,7 +279,7 @@ def _complete_iso_source_name_colum(documents):
     if "iso_source_name" in documents.columns:
         # existent iso source names
         module_path = dirname(__file__)
-        file_path = join(module_path, "config/iso_source_names.csv")
+        file_path = join(module_path, "files/iso_source_names.csv")
         pdf = pd.read_csv(file_path, sep=",")
         existent_names = {
             name: abb for name, abb in zip(pdf.source_name, pdf.iso_source_name)

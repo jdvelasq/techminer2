@@ -8,7 +8,11 @@ Analysis of bibliographic datasets using Python
     :maxdepth: 1
 
     import_scopus_file
-    
+    clean_institutions
+    clean_keywords
+    create_thesaurus
+    apply_thesaurus
+    coverage
     
 .. toctree::
     :caption: Basic Analysis

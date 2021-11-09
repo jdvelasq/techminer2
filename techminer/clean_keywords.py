@@ -18,12 +18,12 @@ the same directory as the documents.csv file.
 # pylint: disable=no-member
 # pylint: disable=invalid-name
 
-from os.path import isfile
+from os.path import isfile, join
 
 import pandas as pd
 
-from .utils import *
-from .utils.thesaurus import read_textfile
+from .lib import logging, map_
+from .lib.thesaurus import read_textfile
 
 
 def clean_keywords(directory):
@@ -34,13 +34,13 @@ def clean_keywords(directory):
 
     # --------------------------------------------------------------------------
     # Loads documents.csv
-    filename = os.path.join(directory, "documents.csv")
-    if not os.path.isfile(filename):
+    filename = join(directory, "documents.csv")
+    if not isfile(filename):
         raise FileNotFoundError(f"The file '{filename}' does not exist.")
     documents = pd.read_csv(filename, sep=",", encoding="utf-8")
     # --------------------------------------------------------------------------
 
-    thesaurus_file = os.path.join(directory, "keywords.txt")
+    thesaurus_file = join(directory, "keywords.txt")
     if isfile(thesaurus_file):
         th = read_textfile(thesaurus_file)
         th = th.compile_as_dict()
@@ -94,7 +94,7 @@ def clean_keywords(directory):
     # datastore.to_csv(datastorefile, index=False)
     # --------------------------------------------------------------------------
     documents.to_csv(
-        os.path.join(directory, "documents.csv"),
+        join(directory, "documents.csv"),
         sep=",",
         encoding="utf-8",
         index=False,

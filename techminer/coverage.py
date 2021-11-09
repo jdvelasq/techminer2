@@ -43,7 +43,7 @@ Coverage report
 
 import pandas as pd
 
-from .utils.io import *
+from .lib import load_filtered_documents
 
 
 def coverage(directory):
