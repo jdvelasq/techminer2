@@ -588,6 +588,7 @@ def _disambiguate_authors(documents):
     doc_names = doc_names.map(
         lambda x: "; ".join([new_names[y] for y in x]) if isinstance(x, list) else x
     )
+    doc_names = doc_names.str.replace("/0", "")
 
     documents["authors"] = doc_names.copy()
     return documents
@@ -610,6 +611,26 @@ def _update_filter_file(documents, directory):
 
     with open(yaml_filename, "wt", encoding="utf-8") as yaml_file:
         yaml.dump(filter_, yaml_file, sort_keys=True)
+
+
+def _create_wos_style_id(documents):
+
+    wos_ref = documents.authors.map(
+        lambda x: x.split("; ")[0].strip() if not pd.isna(x) else "[anonymous]"
+    )
+    wos_ref = wos_ref + ", " + documents.pub_year.map(str)
+    wos_ref = wos_ref + ", " + documents.iso_source_name
+    wos_ref = wos_ref + documents.volume.map(
+        lambda x: ", V" + str(x) if not pd.isna(x) else ""
+    )
+    wos_ref = wos_ref + documents.page_start.map(
+        lambda x: ", P" + str(x) if not pd.isna(x) else ""
+    )
+    wos_ref = wos_ref + documents.doi.map(
+        lambda x: ", DOI " + str(x) if not pd.isna(x) else ""
+    )
+    documents["wos_id"] = wos_ref.copy()
+    return documents
 
 
 #
@@ -683,6 +704,7 @@ def import_scopus_file(file_name, directory):
     #
     documents = _compute_bradford_law_zones(documents)
     documents = _disambiguate_authors(documents)
+    documents = _create_wos_style_id(documents)
     _update_filter_file(documents, directory)
 
     #

@@ -15,19 +15,30 @@ Analysis of bibliographic datasets using Python
     coverage
     
 .. toctree::
-    :caption: Basic Analysis
+    :caption: Analyze
     :hidden:
     :maxdepth: 1
     
+    
+.. toctree::
+    :caption: Reports
+    :hidden:
+    :maxdepth: 1
+    
+    summary    
+    terms_report
+    time_report
 
 
 .. toctree::
-    :caption: Advanced Analysis
+    :caption: Charts for reports
     :hidden:
     :maxdepth: 1
 
 
-
+    bar_chart
+    word_cloud
+    world_map
     
 
 

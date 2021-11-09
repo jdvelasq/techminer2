@@ -36,7 +36,7 @@ Molecular Sequence Numbers
 Open Access
 Page count
 Page end
-Page start
+Page start,page_start
 Publication Stage
 Publisher
 PubMed ID,pubmed_id
@@ -46,5 +46,5 @@ Source title,source_name
 Sponsors
 Title,document_title
 Tradenames
-Volume
+Volume,volume
 Year,pub_year
