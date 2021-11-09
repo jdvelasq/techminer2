@@ -8,12 +8,6 @@ Analysis of bibliographic datasets using Python
     :maxdepth: 1
 
     import_scopus_file
-    coverage
-    summary    
-    clean_institutions
-    clean_keywords
-    create_thesaurus
-    apply_thesaurus    
     
     
 .. toctree::
@@ -21,16 +15,6 @@ Analysis of bibliographic datasets using Python
     :hidden:
     :maxdepth: 1
     
-    bradford_plot    
-    core_authors
-    core_sources
-    impact_analysis
-    lotka_plot
-    terms_analysis
-    terms_per_year_analysis
-    time_analysis
-    top_documents
-    world_map
 
 
 .. toctree::
@@ -38,68 +22,9 @@ Analysis of bibliographic datasets using Python
     :hidden:
     :maxdepth: 1
 
-    auto_corr_matrix    
-    auto_corr_map
-    auto_corr_heat_map
-    co_occurrence_matrix
-    co_occurrence_heat_map
-    similarity_matrix_clustering
-    similarity_matrix_bubble_map
-    similarity_network_clusters
-    cross_corr_matrix
 
-.. toctree::
-    :caption: Charts
-    :hidden:
-    :maxdepth: 1
 
-    bar_chart
-    bubble_chart
-    column_chart
-    heat_map
-    pie_chart
-    slope_chart
-    tree_map
-    word_cloud
     
-
-..    bigraph_analysis
-..    extract_user_keywords
-..    association_index
-..    tf_matrix
-..    tfidf_matrix
-
-
-
-
-
-
-.. counts
-.. top-documents
-
-..   citation-analysis
-..   co-word-analysis
-..   collaboration-analysis
-..   column-explorer
-..   comparative-analysis
-..   conceptual-structure
-..   correlation-analysis
-..   extract-user-keywords
-..   factor-analysis
-..   graph-analysis
-..   growth-indicators
-..   keywords-association
-..   keywords-comparison
-..   latent-semantic-analysis
-..   main-path-analysis
-..   manage-columns
-..   matrix-explorer
-..   record-filtering
-..   scopus-importer
-..   term-per-year-analysis
-..   text-clustering
-..   tfidf-analysis
-..   thematic-analysis
 
 
    

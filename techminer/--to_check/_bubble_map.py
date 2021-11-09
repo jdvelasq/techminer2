@@ -1,6 +1,5 @@
 import math
 
-# from matplotlib.transforms import Bbox
 import matplotlib.pyplot as plt
 
 # from techminer.plots import expand_ax_limits
@@ -67,6 +66,7 @@ def bubble_map(
     xlabel,
     ylabel,
     figsize,
+    fontsize,
 ):
 
     fig = plt.Figure(figsize=figsize)
@@ -156,8 +156,9 @@ def bubble_map(
         ax.text(
             x_label,
             y_label,
-            s=" ".join(keyword.split(" ")[:-1]),
-            fontsize=9,
+            # s=" ".join(keyword.split(" ")[:-1]),
+            s=keyword,
+            fontsize=fontsize,
             bbox=dict(
                 facecolor="w",
                 alpha=0.7,
@@ -186,7 +187,7 @@ def bubble_map(
         ax.get_xlim()[1],
         y_axis_at,
         s=xlabel,
-        fontsize=9,
+        fontsize=fontsize,
         horizontalalignment="right",
         verticalalignment="bottom",
     )
@@ -194,7 +195,7 @@ def bubble_map(
         0.02 + y_axis_at,
         ax.get_ylim()[1],
         s=ylabel,
-        fontsize=9,
+        fontsize=fontsize,
         horizontalalignment="left",
         verticalalignment="bottom",
     )
