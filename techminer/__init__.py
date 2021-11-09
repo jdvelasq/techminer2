@@ -7,6 +7,8 @@ from .create_thesaurus import create_thesaurus
 from .import_scopus_file import import_scopus_file
 from .summary import summary
 from .terms_report import terms_report
+from .tf_matrix import tf_matrix
+from .tfidf_matrix import tfidf_matrix
 from .time_report import time_report
 from .word_cloud import word_cloud
 from .world_map import world_map

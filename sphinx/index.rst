@@ -18,6 +18,9 @@ Analysis of bibliographic datasets using Python
     :caption: Analyze
     :hidden:
     :maxdepth: 1
+
+    tf_matrix
+    tfidf_matrix
     
     
 .. toctree::

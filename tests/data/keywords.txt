@@ -56,6 +56,8 @@ access to credit
     access to credit
 access to finance
     access to finance
+accessibility
+    accessibility
 accident prevention
     accident prevention
 account ownership
@@ -70,6 +72,8 @@ accurate prediction
     accurate prediction
 acp approach
     acp approach
+    acp approaches
+acp approaches
     acp approaches
 acquisition
     acquisition
@@ -165,12 +169,16 @@ agglomeration
 agile architecture
     agile architecture
     agile architectures
+agile architectures
+    agile architectures
 agile development
     agile development
 agile manufacturing systems
     agile manufacturing systems
 agile model
     agile model
+    agile modeling
+agile modeling
     agile modeling
 agile practices
     agile practices
@@ -211,6 +219,8 @@ agricultural waste
     agricultural waste
 agricultural worker
     agricultural worker
+agriculture
+    agriculture
 agriculture 4.0
     agriculture 4.0
 agriculture sector
@@ -258,6 +268,8 @@ algorithmic trading
     algorithmic trading
 algorithmic underwriting
     algorithmic underwriting
+algorithms
+    algorithms
 alibaba
     alibaba
 alipay
@@ -479,6 +491,8 @@ auto encoders
 autoencoder
     autoencoder
     autoencoders
+autoencoders
+    autoencoders
 automated detection
     automated detection
 automated investment management
@@ -490,8 +504,12 @@ automated response
 automated teller machine
     automated teller machine
     automated teller machines
+automated teller machines
+    automated teller machines
 automated test generation
     automated test generation
+    automated test generations
+automated test generations
     automated test generations
 automatic feature extraction
     automatic feature extraction
@@ -596,6 +614,8 @@ banking business model
     banking business model
 banking collection
     banking collection
+banking competition
+    banking competition
 banking customers
     banking customers
 banking digital transformation
@@ -615,13 +635,19 @@ banking products
     banking products
 banking products and services
     banking products and services
+banking regulations
+    banking regulations
 banking sector
     banking sector
+    banking sectors
+banking sectors
     banking sectors
 banking service channel choice
     banking service channel choice
 banking services
     banking services
+banking stability
+    banking stability
 banking system
     banking system
     banking systems
@@ -658,6 +684,8 @@ bayesian
     bayesian
 bayesian estimation
     bayesian estimation
+    bayesian estimations
+bayesian estimations
     bayesian estimations
 bayesian networks
     bayesian networks
@@ -768,6 +796,8 @@ biometric informations
     biometric informations
 biometric security
     biometric security
+biometrics
+    biometrics
 biometrics technology
     biometrics technology
 bitcoin
@@ -941,6 +971,8 @@ business service
 business strategies
     business strategies
     business strategy
+business strategy
+    business strategy
 business success
     business success
 business sustainability
@@ -967,6 +999,8 @@ capabilities development
     capability development
 capability approach
     capability approach
+capability development
+    capability development
 capability model
     capability model
 capacity building
@@ -1195,6 +1229,8 @@ cluster analysis
     cluster analysis
 cluster structure
     cluster structure
+clustering
+    clustering
 clustering algorithms
     clustering algorithms
 co-occurrence
@@ -1456,6 +1492,8 @@ consumer credit
 consumer credit risk
     consumer credit risk
     consumer credit risks
+consumer credit risks
+    consumer credit risks
 consumer demand
     consumer demand
     consumer demands
@@ -1473,6 +1511,8 @@ consumer protection
     consumer protection
 consumers
     consumers
+consumers adoption
+    consumers adoption
 consumers attitude
     consumers attitude
 consumers' satisfaction
@@ -1489,6 +1529,8 @@ content analysis method
     content analysis method
 content based filtering
     content based filtering
+context- awareness
+    context- awareness
 context-awareness
     context- awareness
     context-awareness
@@ -1534,6 +1576,8 @@ controllers
     controllers
 controversies
     controversies
+    controversy
+controversy
     controversy
 convenience
     convenience
@@ -1662,6 +1706,8 @@ cost saving
     cost saving
 cost to income
     cost to income
+costs
+    costs
 costs and cost analysis
     costs and cost analysis
 counter-terrorist finance
@@ -2122,6 +2168,8 @@ deep learning neural network
 deep neural network
     deep neural network
     deep neural networks
+deep neural networks
+    deep neural networks
 default probabilities
     default probabilities
 default rates
@@ -2289,6 +2337,9 @@ digital asset business act 2018
     digital asset business act 2018
 digital assets
     digital assets
+digital banking
+    digital banking
+    digitization banking
 digital banking adoption
     digital banking adoption
 digital business
@@ -2400,6 +2451,8 @@ digital platform
     digital platforms
 digital platform economy
     digital platform economy
+digital platforms
+    digital platforms
 digital press
     digital press
 digital products
@@ -2915,6 +2968,8 @@ emerging financial market
 emerging market
     emerging market
     emerging markets
+emerging markets
+    emerging markets
 emerging technologies
     emerging technologies
 emerging topics
@@ -3038,6 +3093,8 @@ environmental governance
     environmental governance
 environmental issue
     environmental issue
+    environmental issues
+environmental issues
     environmental issues
 environmental legislation
     environmental legislation
@@ -3240,6 +3297,8 @@ extraction
     extraction
 extreme value theory
     extreme value theory
+eye tracking
+    eye tracking
 eye-tracking
     eye tracking
     eye-tracking
@@ -3677,6 +3736,8 @@ fintech application
     fintech applications
 fintech application index
     fintech application index
+fintech banking
+    fintech banking
 fintech business model
     fintech business model
     fintech business models
@@ -3765,6 +3826,8 @@ fintech perspectives
     fintech perspectives
 fintech platform
     fintech platform
+    fintech platforms
+fintech platforms
     fintech platforms
 fintech regression
     fintech regression
@@ -3880,6 +3943,8 @@ formal finance
     formal finance
 formal language
     formal language
+    formal languages
+formal languages
     formal languages
 formation mechanism
     formation mechanism

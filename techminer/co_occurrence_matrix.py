@@ -5,7 +5,7 @@ Co-occurrence -- matrix
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/tests/data/"
 >>> co_occurrence_matrix(directory, column='authors', min_occ=5)
-authors                  Rabbani MR Arner DW Wojcik D Buckley RP  \
+authors                  Rabbani MR Arner DW Wojcik D Buckley RP  \\
 #nd                              10        9        7          7    
 #tc                              69      135       49        132   
 authors          #nd #tc                                           
@@ -29,7 +29,7 @@ Mention A-L      5   35           0        0        0          0
 Faccia A         5   27           0        0        0          0   
 Ashta A          5   9            0        0        0          0   
 -
-authors                  Reyes-Mercado P Wonglimpiyarat J Gozman DP Serrano W  \
+authors                  Reyes-Mercado P Wonglimpiyarat J Gozman DP Serrano W  \\
 #nd                                    7                6         6         6    
 #tc                                    0               52        26        15    
 authors          #nd #tc                                                        
@@ -41,7 +41,7 @@ Reyes-Mercado P  7   0                 7                0         0         0
 Wonglimpiyarat J 6   52                0                6         0         0   
 Gozman DP        6   26                0                0         6         0   
 Serrano W        6   15                0                0         0         6   
-Khan S           6   49                0                0         0         0   
+Khan S           6   49                0                0         0         0 
 Schwienbacher A  6   50                0                0         0         0   
 Ozili PK         6   151               0                0         0         0   
 Tan B            5   105               0                0         1         0   
@@ -81,14 +81,14 @@ authors                  Hamdan A Nieves EH Baber H Mention A-L Faccia A  \
 #nd                             5         5       5           5        5    
 #tc                            18        15      12          35       27    
 authors          #nd #tc                                                   
-Rabbani MR       10  69         0         0       0           0        0   
-Arner DW         9   135        0         0       0           0        0   
-Wojcik D         7   49         0         0       0           0        0   
-Buckley RP       7   132        0         0       0           0        0   
-Reyes-Mercado P  7   0          0         0       0           0        0   
+Rabbani MR       10  69         0         0       0           0        0
+Arner DW         9   135        0         0       0           0        0
+Wojcik D         7   49         0         0       0           0        0
+Buckley RP       7   132        0         0       0           0        0
+Reyes-Mercado P  7   0          0         0       0           0        0
 Wonglimpiyarat J 6   52         0         0       0           0        0   
 Gozman DP        6   26         0         0       0           0        0   
-Serrano W        6   15         0         0       0           0        0   
+Serrano W        6   15         0         0       0           0        0
 Khan S           6   49         0         0       0           0        0   
 Schwienbacher A  6   50         0         0       0           0        0   
 Ozili PK         6   151        0         0       0           0        0   
@@ -130,10 +130,9 @@ Ashta A          5   9         5
 import numpy as np
 import pandas as pd
 
-from ._association_index import association_index
+from .lib import *
 from .tf_matrix import tf_matrix
 from .utils import adds_counters_to_axis
-from .utils.io import load_filtered_documents
 
 # pyltin: disable=c0103
 # pylint: disable=too-many-arguments
