@@ -7,9 +7,9 @@ Returns an auto-correlation matrix.
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/tests/data/"
 >>> auto_corr_matrix(directory, column='authors', min_occ=6)
-authors                  Rabbani MR  Arner DW  Wojcik D Buckley RP  \
-#nd                              10         9         7          7    
-#tc                              69       135        49        132   
+authors                  Rabbani MR  Arner DW  Wojcik D Buckley RP  \\
+#d                               10         9         7          7    
+#c                               69       135        49        132   
 authors          #nd #tc                                             
 Rabbani MR       10  69    1.000000 -0.007449 -0.006565  -0.006565   
 Arner DW         9   135  -0.007449  1.000000 -0.006225   0.881226   
@@ -59,9 +59,8 @@ Ozili PK         6   151 -0.004699       -0.004699  1.000000
 import numpy as np
 import pandas as pd
 
+from .lib import index_terms2counters, load_filtered_documents
 from .tf_matrix import tf_matrix
-from .utils import adds_counters_to_axis
-from .utils.io import load_filtered_documents
 
 # pyltin: disable=c0103
 # pylint: disable=too-many-arguments
@@ -110,12 +109,11 @@ def auto_corr_matrix(
     )
     matrix = doc_term_matrix.corr(method=method)
 
-    documents = load_filtered_documents(directory)
-    matrix = adds_counters_to_axis(
-        documents, matrix, axis="columns", column=column, sep=sep
-    )
-    matrix = adds_counters_to_axis(
-        documents, matrix, axis="index", column=column, sep=sep
-    )
+    # matrix = index_terms2counters(
+    #     directory, matrix, axis="columns", column=column, sep=sep
+    # )
+    # matrix = index_terms2counters(
+    #     directory, matrix, axis="index", column=column, sep=sep
+    # )
 
     return matrix

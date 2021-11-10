@@ -2,6 +2,15 @@
 Bradford Law's plot
 ===============================================================================
 
+
+>>> from techminer import *
+>>> directory = "/workspaces/techminer-api/tests/data/"
+>>> bradford_plot(directory)
+
+.. image:: images/bradford.png
+    :width: 400px
+    :align: center
+
 """
 
 
@@ -9,7 +18,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 
-from .utils import explode, load_filtered_documents
+from .lib import explode, load_filtered_documents
 
 
 def _plot(

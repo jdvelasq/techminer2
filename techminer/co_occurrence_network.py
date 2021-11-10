@@ -101,6 +101,9 @@ class Co_occurrence_network:
 
         self.matrix = self.matrix.astype(float)
 
+        # ---< for auto-correlation matrix >---
+        self.matrix = self.matrix.applymap(np.abs)
+
         # checks if matris is ordered
         self.matrix.sort_index(axis="columns", level=[0, 1, 2], inplace=True)
         self.matrix.sort_index(axis="index", level=[0, 1, 2], inplace=True)

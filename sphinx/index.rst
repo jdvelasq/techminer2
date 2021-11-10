@@ -30,6 +30,7 @@ Analysis of bibliographic datasets using Python
     :hidden:
     :maxdepth: 1
     
+    bradford_plot
     summary    
     terms_report
     time_report

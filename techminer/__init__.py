@@ -1,5 +1,7 @@
 from .apply_thesaurus import apply_thesaurus
+from .auto_corr_matrix import auto_corr_matrix
 from .bar_chart import bar_chart
+from .bradford_plot import bradford_plot
 from .clean_institutions import clean_institutions
 from .clean_keywords import clean_keywords
 from .co_occurrence_matrix import co_occurrence_matrix
