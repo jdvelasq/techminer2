@@ -636,10 +636,17 @@ def _create_wos_style_id(documents):
 #
 #
 #
-def import_scopus_file(file_name, directory):
+def import_scopus_file(file_name=None, directory=None):
     """
     Imports a Scopus CSV file.
     """
+
+    # ----< debug data >-------------------------------------------------------
+    if file_name is None:
+        file_name = "/workspaces/techminer-api/tests/data/scopus.csv"
+    if directory is None:
+        directory = "/workspaces/techminer-api/tests/data/"
+    # -------------------------------------------------------------------------
 
     if not isfile(file_name):
         raise FileNotFoundError
