@@ -59,7 +59,7 @@ Ozili PK         6   151 -0.004699       -0.004699  1.000000
 import numpy as np
 import pandas as pd
 
-from .lib import index_terms2counters, load_filtered_documents
+from .utils import index_terms2counters, load_filtered_documents
 from .tf_matrix import tf_matrix
 
 # pyltin: disable=c0103

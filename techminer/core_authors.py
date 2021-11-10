@@ -41,7 +41,7 @@ Core authors report
 
 import pandas as pd
 
-from .lib import *
+from .utils import *
 from .terms_report import terms_report
 
 

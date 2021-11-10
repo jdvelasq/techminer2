@@ -31,7 +31,7 @@ document_id
 import numpy as np
 import pandas as pd
 
-from .lib import *
+from .utils import *
 
 # pylint: disable=too-many-arguments
 

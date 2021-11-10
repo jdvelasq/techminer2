@@ -67,7 +67,7 @@ from tqdm import tqdm
 
 from .clean_institutions import clean_institutions
 from .clean_keywords import clean_keywords
-from .lib import (
+from .utils import (
     create_institutions_thesaurus,
     create_keywords_thesaurus,
     extract_country,

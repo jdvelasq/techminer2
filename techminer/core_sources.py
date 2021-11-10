@@ -50,7 +50,7 @@ Core sources report
 import numpy as np
 import pandas as pd
 
-from .lib import explode, load_filtered_documents
+from .utils import explode, load_filtered_documents
 
 
 def core_sources(directory):

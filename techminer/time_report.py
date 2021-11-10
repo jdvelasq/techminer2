@@ -40,7 +40,7 @@ pub_year
 
 
 """
-from .lib import load_filtered_documents
+from .utils import load_filtered_documents
 
 
 def time_report(directory):

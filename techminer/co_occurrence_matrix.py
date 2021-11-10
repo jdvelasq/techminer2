@@ -130,8 +130,8 @@ Ashta A          5   9         5
 import numpy as np
 import pandas as pd
 
-from .lib import *
-from .lib import index_terms2counters
+from .utils import *
+from .utils import index_terms2counters
 from .tf_matrix import tf_matrix
 
 # pyltin: disable=c0103

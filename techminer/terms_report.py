@@ -29,7 +29,7 @@ Baber H                       5                12                5
 
 """
 
-from .lib import load_filtered_documents
+from .utils import load_filtered_documents
 
 
 def terms_report(directory, column, sep="; ", min_occ=1):

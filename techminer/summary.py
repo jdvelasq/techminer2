@@ -54,7 +54,7 @@ OTHERS         document_id                                    1301
 import numpy as np
 import pandas as pd
 
-from .lib import load_filtered_documents
+from .utils import load_filtered_documents
 
 
 def _extract_terms(x, column):

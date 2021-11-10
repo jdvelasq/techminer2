@@ -18,7 +18,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 
-from .lib import explode, load_filtered_documents
+from .utils import explode, load_filtered_documents
 
 
 def _plot(

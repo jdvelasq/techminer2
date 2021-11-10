@@ -18,7 +18,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-from .lib import load_filtered_documents
+from .utils import load_filtered_documents
 from .terms_report import terms_report
 
 TEXTLEN = 40

@@ -28,7 +28,7 @@ Top documents (most cited documents)
 """
 
 
-from .lib import load_filtered_documents
+from .utils import load_filtered_documents
 
 
 def top_documents(

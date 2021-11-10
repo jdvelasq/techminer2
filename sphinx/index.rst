@@ -3,7 +3,7 @@ Analysis of bibliographic datasets using Python
 
 
 .. toctree::
-    :caption: Data preparation
+    :caption: Data importation and cleaning
     :hidden:
     :maxdepth: 1
 
@@ -14,32 +14,88 @@ Analysis of bibliographic datasets using Python
     apply_thesaurus
     coverage
     
+bar_chart
+
+terms_report
+
 .. toctree::
-    :caption: Analyze
+    :caption: Dataset
+    :hidden:
+    :maxdepth: 1
+
+    summary    
+    time_report
+
+.. toctree::
+    :caption: Sources
+    :hidden:
+    :maxdepth: 1
+
+    bradford_plot
+    core_sources
+
+
+.. toctree::
+    :caption: Authors
+    :hidden:
+    :maxdepth: 1
+
+    core_authors
+    lotka_plot
+    world_map
+
+.. toctree::
+    :caption: Documents
+    :hidden:
+    :maxdepth: 1
+
+    tf_matrix
+    tfidf_matrix
+    word_cloud
+
+    top_documents
+
+.. toctree::
+    :caption: Conceptual structure
     :hidden:
     :maxdepth: 1
 
     auto_corr_matrix
     co_occurrence_matrix
     co_occurrence_network
-    tf_matrix
-    tfidf_matrix
     mainfold_factor_analysis
+
+
+.. toctree::
+    :caption: Intelectual structure
+    :hidden:
+    :maxdepth: 1
+
+
+
+.. toctree::
+    :caption: Social structure
+    :hidden:
+    :maxdepth: 1
+
+
+
+
+
+
+    
+
     
 .. toctree::
     :caption: Reports
     :hidden:
     :maxdepth: 1
     
-    bradford_plot
-    core_authors
-    core_sources
-    lotka_plot
-    summary    
-    terms_report
-    time_report
-    top_documents
-    world_map
+    
+    
+
+
+    
 
 .. toctree::
     :caption: Charts for reports
@@ -47,8 +103,8 @@ Analysis of bibliographic datasets using Python
     :maxdepth: 1
 
 
-    bar_chart
-    word_cloud
+    
+    
 
     
 
