@@ -31,6 +31,7 @@ Analysis of bibliographic datasets using Python
     :maxdepth: 1
     
     bradford_plot
+    core_authors
     summary    
     terms_report
     time_report
