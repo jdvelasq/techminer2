@@ -1,14 +1,14 @@
 """
-Co-occurrence -- matrix
+Co-occurrence matrix
 ===============================================================================
 
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/tests/data/"
 >>> co_occurrence_matrix(directory, column='authors', min_occ=5)
 authors                  Rabbani MR Arner DW Wojcik D Buckley RP  \\
-#nd                              10        9        7          7    
-#tc                              69      135       49        132   
-authors          #nd #tc                                           
+#d                               10        9        7          7    
+#c                               69      135       49        132   
+authors          #d  #c                                           
 Rabbani MR       10  69          10        0        0          0   
 Arner DW         9   135          0        9        0          7   
 Wojcik D         7   49           0        0        7          0   
@@ -30,9 +30,9 @@ Faccia A         5   27           0        0        0          0
 Ashta A          5   9            0        0        0          0   
 -
 authors                  Reyes-Mercado P Wonglimpiyarat J Gozman DP Serrano W  \\
-#nd                                    7                6         6         6    
-#tc                                    0               52        26        15    
-authors          #nd #tc                                                        
+#d                                     7                6         6         6    
+#c                                     0               52        26        15    
+authors          #d  #c                                                         
 Rabbani MR       10  69                0                0         0         0   
 Arner DW         9   135               0                0         0         0   
 Wojcik D         7   49                0                0         0         0   
@@ -54,9 +54,9 @@ Faccia A         5   27                0                0         0         0
 Ashta A          5   9                 0                0         0         0   
 -
 authors                  Khan S Schwienbacher A Ozili PK Tan B Zetzsche DA  \
-#nd                           6               6        6     5           5    
-#tc                          49              50      151   105          44    
-authors          #nd #tc                                                     
+#d                            6               6        6     5           5    
+#c                           49              50      151   105          44    
+authors          #d  #c                                                      
 Rabbani MR       10  69       6               0        0     0           0   
 Arner DW         9   135      0               0        0     0           5   
 Wojcik D         7   49       0               0        0     0           0   
@@ -78,9 +78,9 @@ Faccia A         5   27       0               0        0     0           0
 Ashta A          5   9        0               0        0     0           0   
 -
 authors                  Hamdan A Nieves EH Baber H Mention A-L Faccia A  \
-#nd                             5         5       5           5        5    
-#tc                            18        15      12          35       27    
-authors          #nd #tc                                                   
+#d                              5         5       5           5        5    
+#c                             18        15      12          35       27    
+authors          #d  #c
 Rabbani MR       10  69         0         0       0           0        0
 Arner DW         9   135        0         0       0           0        0
 Wojcik D         7   49         0         0       0           0        0
@@ -102,9 +102,9 @@ Faccia A         5   27         0         0       0           0        5
 Ashta A          5   9          0         0       0           0        0   
 -
 authors                  Ashta A  
-#nd                            5   
-#tc                            9    
-authors          #nd #tc          
+#d                             5   
+#c                             9    
+authors          #d  #c          
 Rabbani MR       10  69        0  
 Arner DW         9   135       0  
 Wojcik D         7   49        0  
@@ -131,8 +131,8 @@ import numpy as np
 import pandas as pd
 
 from .lib import *
+from .lib import index_terms2counters
 from .tf_matrix import tf_matrix
-from .utils import adds_counters_to_axis
 
 # pyltin: disable=c0103
 # pylint: disable=too-many-arguments
@@ -222,14 +222,6 @@ def co_occurrence_matrix(
         matrix_values,
         columns=matrix_in_columns.columns,
         index=matrix_in_rows.columns,
-    )
-
-    documents = load_filtered_documents(directory)
-    co_occ_matrix = adds_counters_to_axis(
-        documents, co_occ_matrix, axis="columns", column=column, sep=sep
-    )
-    co_occ_matrix = adds_counters_to_axis(
-        documents, co_occ_matrix, axis="index", column=by, sep=sep
     )
 
     co_occ_matrix = association_index(

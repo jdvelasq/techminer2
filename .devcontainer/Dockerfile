@@ -56,7 +56,8 @@ RUN pip3 --disable-pip-version-check --no-cache-dir install \
     wordcloud==1.5.0 \
     squarify==0.4.3 \
     networkx==2.6.3 \
-    cdlib==0.2.5
+    cdlib==0.2.5 \
+    seaborn==0.11.2
 
 RUN apt update \
     && apt -yq --no-install-recommends install  graphviz \

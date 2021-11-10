@@ -2,6 +2,8 @@ from .apply_thesaurus import apply_thesaurus
 from .bar_chart import bar_chart
 from .clean_institutions import clean_institutions
 from .clean_keywords import clean_keywords
+from .co_occurrence_matrix import co_occurrence_matrix
+from .co_occurrence_network import co_occurrence_network
 from .coverage import coverage
 from .create_thesaurus import create_thesaurus
 from .import_scopus_file import import_scopus_file

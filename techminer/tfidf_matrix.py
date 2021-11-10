@@ -15,7 +15,7 @@ document_id
 2015-0003          0.0      0.0             0.0      0.0        0.0    0.0   
 2015-0004          0.0      0.0             0.0      0.0        0.0    0.0   
 2015-0006          0.0      0.0             0.0      0.0        0.0    0.0   
-
+-
 authors     Ozili PK Gozman DP Serrano W Wonglimpiyarat J Schwienbacher A  
 #d                6         6         6                6               6   
 #c               151       26        15               52              50   
