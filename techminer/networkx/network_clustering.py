@@ -1,4 +1,4 @@
-import pandas as pd
+# import pandas as pd
 from cdlib import algorithms
 
 import networkx as nx

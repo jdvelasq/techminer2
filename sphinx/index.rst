@@ -20,6 +20,7 @@ Analysis of bibliographic datasets using Python
     :maxdepth: 1
 
     co_occurrence_matrix
+    co_occurrence_network
     tf_matrix
     tfidf_matrix
     
