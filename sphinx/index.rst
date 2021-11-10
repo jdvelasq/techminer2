@@ -32,6 +32,8 @@ Analysis of bibliographic datasets using Python
     
     bradford_plot
     core_authors
+    core_sources
+    lotka_plot
     summary    
     terms_report
     time_report

@@ -2,6 +2,15 @@
 Lotka Law's plot
 ===============================================================================
 
+
+>>> from techminer import *
+>>> directory = "/workspaces/techminer-api/tests/data/"
+>>> lotka_plot(directory)
+
+.. image:: images/lotka.png
+    :width: 400px
+    :align: center
+
 """
 
 import matplotlib
@@ -9,7 +18,6 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 from .core_authors import core_authors
-from .utils import *
 
 
 def lotka_plot(

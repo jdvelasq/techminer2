@@ -7,9 +7,11 @@ from .clean_keywords import clean_keywords
 from .co_occurrence_matrix import co_occurrence_matrix
 from .co_occurrence_network import co_occurrence_network
 from .core_authors import core_authors
+from .core_sources import core_sources
 from .coverage import coverage
 from .create_thesaurus import create_thesaurus
 from .import_scopus_file import import_scopus_file
+from .lotka_plot import lotka_plot
 from .summary import summary
 from .terms_report import terms_report
 from .tf_matrix import tf_matrix
