@@ -46,7 +46,7 @@ import pandas as pd
 from .lib import load_filtered_documents
 
 
-def coverage(directory):
+def coverage(directory=None):
     """
     Returns an coverage report of the dataset.
 

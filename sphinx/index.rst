@@ -19,6 +19,7 @@ Analysis of bibliographic datasets using Python
     :hidden:
     :maxdepth: 1
 
+    auto_corr_matrix
     co_occurrence_matrix
     co_occurrence_network
     tf_matrix
@@ -37,7 +38,8 @@ Analysis of bibliographic datasets using Python
     summary    
     terms_report
     time_report
-
+    top_documents
+    world_map
 
 .. toctree::
     :caption: Charts for reports
@@ -47,7 +49,7 @@ Analysis of bibliographic datasets using Python
 
     bar_chart
     word_cloud
-    world_map
+
     
 
 

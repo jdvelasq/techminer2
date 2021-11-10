@@ -17,5 +17,6 @@ from .terms_report import terms_report
 from .tf_matrix import tf_matrix
 from .tfidf_matrix import tfidf_matrix
 from .time_report import time_report
+from .top_documents import top_documents
 from .word_cloud import word_cloud
 from .world_map import world_map

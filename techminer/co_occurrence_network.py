@@ -1,5 +1,5 @@
 """
-Co-occurrence netowrk analysis
+Co-occurrence network analysis
 ===============================================================================
 
 TODO: pagerank
