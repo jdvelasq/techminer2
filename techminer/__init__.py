@@ -12,6 +12,7 @@ from .coverage import coverage
 from .create_thesaurus import create_thesaurus
 from .import_scopus_file import import_scopus_file
 from .lotka_plot import lotka_plot
+from .mainfold_factor_analysis import mainfold_factor_analysis
 from .summary import summary
 from .terms_report import terms_report
 from .tf_matrix import tf_matrix

@@ -24,7 +24,7 @@ Analysis of bibliographic datasets using Python
     co_occurrence_network
     tf_matrix
     tfidf_matrix
-    
+    mainfold_factor_analysis
     
 .. toctree::
     :caption: Reports
