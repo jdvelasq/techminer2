@@ -18,6 +18,7 @@ from .core_sources import core_sources
 from .coverage import coverage
 from .create_thesaurus import create_thesaurus
 from .cross_corr_matrix import cross_corr_matrix
+from .factor_matrix import factor_matrix
 from .heat_map import heat_map
 from .impact_indicators import impact_indicators
 from .import_scopus_file import import_scopus_file

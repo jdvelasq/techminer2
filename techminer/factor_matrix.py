@@ -1,8 +1,8 @@
 """
-Factor Analysis --- matrix
+Factor matrix
 ===============================================================================
 
-Factor matrix obtained by appliying PCA to the similarity (co-occurrence) 
+Factor matrix obtained by appliying PCA to the co-occurrence matrix. 
 matrix.
 
 >>> from techminer import *

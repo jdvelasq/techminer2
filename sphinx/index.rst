@@ -51,6 +51,7 @@ Analysis of bibliographic datasets using Python
     auto_corr_matrix
     co_occurrence_matrix
     cross_corr_matrix
+    factor_matrix
     tf_matrix
     tfidf_matrix
 
