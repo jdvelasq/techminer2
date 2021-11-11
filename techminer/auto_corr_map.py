@@ -1,5 +1,5 @@
 """
-Auto-correlation --- map
+Auto-correlation map
 ===============================================================================
 
 >>> from techminer import *
@@ -12,16 +12,15 @@ Auto-correlation --- map
     :align: center
 
 """
-import matplotlib
+
 import matplotlib.pyplot as plt
-import networkx as nx
 import numpy as np
 import pandas as pd
 
-from ._corr_map import corr_map
+import networkx as nx
+
 from .tf_matrix import tf_matrix
-from .utils import adds_counters_to_axis
-from .utils.io import load_filtered_documents
+from .utils import load_filtered_documents
 
 # pyltin: disable=c0103
 # pylint: disable=too-many-arguments
@@ -68,27 +67,27 @@ def auto_corr_map(
     )
 
     ## node sizes
-    node_props = matrix[["from", "#nd", "#tc"]]
+    node_props = matrix[["from", "#d", "#c"]]
     node_props = node_props.drop_duplicates()
-    min_size, max_size = float(node_props["#nd"].min()), float(node_props["#nd"].max())
+    min_size, max_size = float(node_props["#d"].min()), float(node_props["#d"].max())
 
     if min_size == max_size:
         node_props = node_props.assign(node_size=1000)
     else:
         node_props = node_props.assign(
-            node_size=node_props["#nd"].map(
+            node_size=node_props["#d"].map(
                 lambda x: 100 + int(800 * (x - min_size) / (max_size - min_size))
             )
         )
 
     ## node colors
-    min_tc, max_tc = float(node_props["#tc"].min()), float(node_props["#tc"].max())
+    min_tc, max_tc = float(node_props["#c"].min()), float(node_props["#c"].max())
 
     if min_tc == max_tc:
         node_props = node_props.assign(node_color=0.5)
     else:
         node_props = node_props.assign(
-            node_color=node_props["#tc"].map(
+            node_color=node_props["#c"].map(
                 lambda x: cmap(0.2 + 0.60 * (x - min_tc) / (max_tc - min_tc))
             )
         )
