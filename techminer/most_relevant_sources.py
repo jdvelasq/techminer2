@@ -24,7 +24,7 @@ Name: num_documents, dtype: int64
 """
 import matplotlib.pyplot as plt
 
-from .terms_report import terms_report
+from .column_indicators import column_indicators
 
 
 class Most_relevant_sources:

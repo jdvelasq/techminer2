@@ -22,12 +22,13 @@ Analysis of bibliographic datasets using Python
 
     
 .. toctree::
-    :caption: Refine
+    :caption: Indicators
     :hidden:
     :maxdepth: 1
 
     summary   
-    time_report
+    annual_indicators
+    column_indicators
 
 .. toctree::
     :caption: Documents

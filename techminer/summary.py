@@ -73,7 +73,7 @@ def _count_terms(records, column):
     return len(_extract_terms(records, column))
 
 
-def _summary_from_records(records):
+def summary(directory=None):
     """
     Returns an overview of the dataset.
 
@@ -87,6 +87,8 @@ def _summary_from_records(records):
     pandas.DataFrame
         Summary statistcs
     """
+
+    records = load_filtered_documents(directory)
 
     records = records.copy()
     general = {}
@@ -344,29 +346,3 @@ def _summary_from_records(records):
             names=["Category", "Item"],
         ),
     )
-
-
-def _summary_from_directory(dirpath):
-    return _summary_from_records(load_filtered_documents(dirpath))
-
-
-def summary(dirpath_or_records):
-    """
-    Returns an overview of the dataset.
-
-    Parameters
-    ----------
-    dirpath_or_records: str or list
-        path to the directory or the records object.
-
-    Returns
-    -------
-    pandas.DataFrame
-        Summary statistcs
-    """
-    if isinstance(dirpath_or_records, str):
-        return _summary_from_directory(dirpath_or_records)
-    elif isinstance(dirpath_or_records, pd.DataFrame):
-        return _summary_from_records(dirpath_or_records)
-    else:
-        raise TypeError("dirpath_or_records must be a string or a pandas.DataFrame")

@@ -19,7 +19,7 @@ import numpy as np
 import pandas as pd
 
 from .utils import load_filtered_documents
-from .terms_report import terms_report
+from .column_indicators import column_indicators
 
 TEXTLEN = 40
 

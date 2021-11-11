@@ -41,8 +41,8 @@ Core authors report
 
 import pandas as pd
 
+from .column_indicators import column_indicators
 from .utils import *
-from .terms_report import terms_report
 
 
 def core_authors(directory):
