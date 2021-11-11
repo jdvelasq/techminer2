@@ -2,8 +2,6 @@ import math
 
 import matplotlib.pyplot as plt
 
-# from techminer.plots import expand_ax_limits
-
 COLORS = [
     "tab:blue",
     "tab:orange",

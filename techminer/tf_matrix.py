@@ -43,6 +43,7 @@ def tf_matrix(
     max_occ=None,
     scheme=None,
     sep="; ",
+    remove_with_zeros=True,
 ):
 
     documents = load_filtered_documents(directory)
@@ -85,5 +86,9 @@ def tf_matrix(
         result = result.applymap(lambda x: np.sqrt(x) if x > 0 else 0)
     else:
         raise ValueError("scheme must be 'raw', 'binary', 'log' or 'sqrt'")
+
+    # ---< rows with only zeros detected --------------------------------------
+    if remove_with_zeros:
+        result = result.loc[(result != 0).any(axis=1)]
 
     return result

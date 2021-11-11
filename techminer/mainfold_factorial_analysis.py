@@ -1,10 +1,10 @@
 """
-Mainfold Factor Analysis
+Mainfold Factorial Analysis
 ===============================================================================
 
 
-Factor analysis based on the clustering applyed to the dimensionality reduction 
-of the co-occurrence matri.
+Factorial analysis based on the clustering applyed to the dimensionality reduction 
+of the co-occurrence matrix.
 
 Based on the bibliometrix/R/conceptualStructure.R code.
 
@@ -21,14 +21,14 @@ Based on the bibliometrix/R/conceptualStructure.R code.
 >>> from sklearn.manifold import MDS
 >>> directory = "/workspaces/techminer-api/tests/data/"
 >>> coc_matrix = co_occurrence_matrix(directory, 'author_keywords', min_occ=15)
->>> mainfold_factor_analysis(coc_matrix, mainfold_method=MDS(), clustering_method=KMeans(n_clusters=4)).silhouette_scores_plot()
+>>> mainfold_factorial_analysis(coc_matrix, mainfold_method=MDS(), clustering_method=KMeans(n_clusters=4)).silhouette_scores_plot()
 
-.. image:: images/mainfold_factor_analysis_silhouette.png
+.. image:: images/mainfold_factorial_analysis_silhouette.png
     :width: 400px
     :align: center
 
 
->>> mainfold_factor_analysis(coc_matrix, mainfold_method=MDS(), clustering_method=KMeans(n_clusters=4)).words_by_cluster().head()
+>>> mainfold_factorial_analysis(coc_matrix, mainfold_method=MDS(), clustering_method=KMeans(n_clusters=4)).words_by_cluster().head()
                                     Dim-1       Dim-2  Cluster
 author_keywords      #d  #c                                   
 fintech              882 5181 -746.525234  398.589319        1
@@ -37,7 +37,7 @@ financial inclusion  72  742   -54.229554  -24.433846        0
 financial technology 72  372    59.166004   47.983897        2
 crowdfunding         50  492    -9.401640   19.159085        0
 
->>> mainfold_factor_analysis(coc_matrix, mainfold_method=MDS(), clustering_method=KMeans(n_clusters=4)).map()
+>>> mainfold_factorial_analysis(coc_matrix, mainfold_method=MDS(), clustering_method=KMeans(n_clusters=4)).map()
 
 .. image:: images/mainfold_factor_analysis_map.png
     :width: 800px
@@ -114,7 +114,7 @@ class Mainfold_factorial_analysis:
         )
 
 
-def mainfold_factor_analysis(matrix, mainfold_method, clustering_method):
+def mainfold_factorial_analysis(matrix, mainfold_method, clustering_method):
     """
     Mainfold Factor Analysis
     """

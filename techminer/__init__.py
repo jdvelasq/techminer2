@@ -2,6 +2,7 @@ from .apply_thesaurus import apply_thesaurus
 from .auto_corr_matrix import auto_corr_matrix
 from .bar_chart import bar_chart
 from .bradford_plot import bradford_plot
+from .ca_factorial_analysis import ca_factorial_analysis
 from .clean_institutions import clean_institutions
 from .clean_keywords import clean_keywords
 from .co_occurrence_matrix import co_occurrence_matrix
@@ -12,11 +13,12 @@ from .coverage import coverage
 from .create_thesaurus import create_thesaurus
 from .import_scopus_file import import_scopus_file
 from .lotka_plot import lotka_plot
-from .mainfold_factor_analysis import mainfold_factor_analysis
+from .mainfold_factorial_analysis import mainfold_factorial_analysis
 from .summary import summary
 from .terms_report import terms_report
 from .tf_matrix import tf_matrix
 from .tfidf_matrix import tfidf_matrix
+from .thematic_map import thematic_map
 from .time_report import time_report
 from .top_documents import top_documents
 from .word_cloud import word_cloud
