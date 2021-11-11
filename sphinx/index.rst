@@ -29,6 +29,7 @@ Analysis of bibliographic datasets using Python
     annual_indicators
     collaboration_indicators
     column_indicators
+    impact_indicators
     summary   
 
 .. toctree::
@@ -49,6 +50,7 @@ Analysis of bibliographic datasets using Python
 
     auto_corr_matrix
     co_occurrence_matrix
+    cross_corr_matrix
     tf_matrix
     tfidf_matrix
 

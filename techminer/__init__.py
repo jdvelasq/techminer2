@@ -16,7 +16,9 @@ from .core_authors import core_authors
 from .core_sources import core_sources
 from .coverage import coverage
 from .create_thesaurus import create_thesaurus
+from .cross_corr_matrix import cross_corr_matrix
 from .heat_map import heat_map
+from .impact_indicators import impact_indicators
 from .import_scopus_file import import_scopus_file
 from .lotka_plot import lotka_plot
 from .manifold_factorial_analysis import manifold_factorial_analysis
