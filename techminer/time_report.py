@@ -43,7 +43,10 @@ pub_year
 from .utils import load_filtered_documents
 
 
-def time_report(directory):
+def time_report(directory=None):
+    if directory is None:
+        directory = "/workspaces/techminer-api/tests/data/"
+
     report = load_filtered_documents(directory)
     report = report.assign(num_documents=1)
     report = report[

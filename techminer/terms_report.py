@@ -32,7 +32,7 @@ Baber H                       5                12                5
 from .utils import load_filtered_documents
 
 
-def terms_report(directory, column, sep="; ", min_occ=1):
+def terms_report(directory=None, column="authors", sep="; ", min_occ=1):
     """
     Counts the number of terms by record.
 

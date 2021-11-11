@@ -52,7 +52,7 @@ source_suffix = [".rst", ".md"]
 master_doc = "index"
 
 # General information about the project.
-project = "TechMiner - A Package for Bibliographical Analysis using Python"
+project = "TechMiner --- API"
 copyright = "2021, Juan D. Velasquez"
 author = "Juan D. Velasquez"
 
