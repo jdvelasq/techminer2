@@ -5,7 +5,7 @@ TF-IDF matrix
 
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/tests/data/"
->>> tfidf_matrix(directory, 'authors', min_occ=6).head()
+>>> tf_idf_matrix(directory, 'authors', min_occ=6).head()
 authors     Rabbani MR Arner DW Reyes-Mercado P Wojcik D Buckley RP Khan S  \\
 #d                  10       9               7        7          7      6    
 #c                 69       135             0        49         132    49    
@@ -32,7 +32,7 @@ from sklearn.feature_extraction.text import TfidfTransformer
 from .tf_matrix import tf_matrix
 
 
-def tfidf_matrix(
+def tf_idf_matrix(
     directory,
     column,
     min_occ=None,

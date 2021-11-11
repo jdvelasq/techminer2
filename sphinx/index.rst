@@ -53,7 +53,7 @@ Analysis of bibliographic datasets using Python
     cross_corr_matrix
     factor_matrix
     tf_matrix
-    tfidf_matrix
+    tf_idf_matrix
 
 .. toctree::
     :caption: Analyze

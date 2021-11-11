@@ -49,7 +49,7 @@ from .word_cloud import word_cloud
 from .world_map import world_map
 
 # from .tf_matrix import tf_matrix
-# from .tfidf_matrix import tfidf_matrix
+# from .tf_idf_matrix import tf_idf_matrix
 
 
 # from .process_records import process_records

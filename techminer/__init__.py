@@ -29,7 +29,7 @@ from .manifold_factorial_analysis import manifold_factorial_analysis
 from .most_relevant_sources import most_relevant_sources
 from .summary import summary
 from .tf_matrix import tf_matrix
-from .tfidf_matrix import tfidf_matrix
+from .tf_idf_matrix import tf_idf_matrix
 from .thematic_map import thematic_map
 from .top_documents import top_documents
 from .word_cloud import word_cloud
