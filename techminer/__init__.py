@@ -10,6 +10,7 @@ from .clean_institutions import clean_institutions
 from .clean_keywords import clean_keywords
 from .co_occurrence_matrix import co_occurrence_matrix
 from .co_occurrence_network import co_occurrence_network
+from .collaboration_indicators import collaboration_indicators
 from .column_indicators import column_indicators
 from .core_authors import core_authors
 from .core_sources import core_sources

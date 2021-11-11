@@ -26,9 +26,10 @@ Analysis of bibliographic datasets using Python
     :hidden:
     :maxdepth: 1
 
-    summary   
     annual_indicators
+    collaboration_indicators
     column_indicators
+    summary   
 
 .. toctree::
     :caption: Documents
