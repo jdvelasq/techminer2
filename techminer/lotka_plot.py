@@ -15,13 +15,12 @@ Lotka Law's plot
 
 import matplotlib
 import matplotlib.pyplot as plt
-import pandas as pd
 
 from .core_authors import core_authors
 
 
 def lotka_plot(
-    directory,
+    directory=None,
     cmap="Greys",
     figsize=(6, 6),
     fontsize=9,

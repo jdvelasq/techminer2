@@ -120,7 +120,7 @@ def _prepare_table(documents):
 
 
 def bradford_plot(
-    directory,
+    directory=None,
     max_items=5,
     cmap="Greys",
     figsize=(8, 6),

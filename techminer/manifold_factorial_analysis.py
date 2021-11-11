@@ -1,5 +1,5 @@
 """
-Mainfold Factorial Analysis
+Manifold factorial analysis
 ===============================================================================
 
 
@@ -51,7 +51,7 @@ from sklearn.metrics import silhouette_score
 from .plots import conceptual_structure_map
 
 
-class Mainfold_factorial_analysis:
+class Manifold_factorial_analysis:
     def __init__(self, matrix, mainfold_method, clustering_method):
         self.matrix = matrix
         self.mainfold_method = mainfold_method
@@ -114,8 +114,8 @@ class Mainfold_factorial_analysis:
         )
 
 
-def mainfold_factorial_analysis(matrix, mainfold_method, clustering_method):
+def manifold_factorial_analysis(matrix, mainfold_method, clustering_method):
     """
     Mainfold Factor Analysis
     """
-    return Mainfold_factorial_analysis(matrix, mainfold_method, clustering_method)
+    return Manifold_factorial_analysis(matrix, mainfold_method, clustering_method)

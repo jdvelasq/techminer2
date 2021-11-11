@@ -15,9 +15,10 @@ from .core_authors import core_authors
 from .core_sources import core_sources
 from .coverage import coverage
 from .create_thesaurus import create_thesaurus
+from .heat_map import heat_map
 from .import_scopus_file import import_scopus_file
 from .lotka_plot import lotka_plot
-from .mainfold_factorial_analysis import mainfold_factorial_analysis
+from .manifold_factorial_analysis import manifold_factorial_analysis
 
 # from .mean_global_citations import mean_global_citations
 from .most_relevant_sources import most_relevant_sources

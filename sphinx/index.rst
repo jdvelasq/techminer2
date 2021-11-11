@@ -35,12 +35,11 @@ Analysis of bibliographic datasets using Python
     :hidden:
     :maxdepth: 1
 
-    most_relevant_sources
     bradford_plot
-    core_sources
     core_authors
-    top_documents
+    core_sources
     lotka_plot
+    top_documents
 
 .. toctree::
     :caption: Matrix / Tables Generators
@@ -58,7 +57,7 @@ Analysis of bibliographic datasets using Python
     :maxdepth: 1
 
     co_occurrence_network
-    mainfold_factor_analysis
+    manifold_factorial_analysis
 
 
 .. toctree::
@@ -66,7 +65,7 @@ Analysis of bibliographic datasets using Python
     :hidden:
     :maxdepth: 1
 
-
+    heat_map
     word_cloud
     world_map
 

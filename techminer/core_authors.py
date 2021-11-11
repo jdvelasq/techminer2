@@ -1,5 +1,5 @@
 """
-Core authors report
+Core authors
 ===============================================================================
 
 >>> from techminer import *
@@ -62,7 +62,7 @@ def core_authors(directory):
     documents = load_filtered_documents(directory)
     documents = documents.copy()
 
-    z = terms_report(directory, "authors", sep="; ")["num_documents"]
+    z = column_indicators(directory, "authors", sep="; ")["num_documents"]
 
     authors_dict = {
         author: num_docs for author, num_docs in zip(z.index, z) if not pd.isna(author)

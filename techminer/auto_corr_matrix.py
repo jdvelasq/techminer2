@@ -59,8 +59,8 @@ Ozili PK         6   151 -0.004699       -0.004699  1.000000
 import numpy as np
 import pandas as pd
 
-from .utils import index_terms2counters, load_filtered_documents
 from .tf_matrix import tf_matrix
+from .utils import index_terms2counters, load_filtered_documents
 
 # pyltin: disable=c0103
 # pylint: disable=too-many-arguments
@@ -108,12 +108,5 @@ def auto_corr_matrix(
         sep=sep,
     )
     matrix = doc_term_matrix.corr(method=method)
-
-    # matrix = index_terms2counters(
-    #     directory, matrix, axis="columns", column=column, sep=sep
-    # )
-    # matrix = index_terms2counters(
-    #     directory, matrix, axis="index", column=column, sep=sep
-    # )
 
     return matrix

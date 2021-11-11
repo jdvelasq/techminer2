@@ -87,7 +87,9 @@ def top_documents(
             "pub_year",
             "document_title",
             "source_name",
+            "iso_source_name",
             "document_id",
+            "wos_id",
             citations_column,
         ]
     ]

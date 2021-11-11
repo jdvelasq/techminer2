@@ -190,30 +190,6 @@ class Co_occurrence_network:
 
         return table_
 
-    def heat_map(self, cmap="Reds", figsize=(6, 6)):
-
-        matrix = self.matrix.copy()
-
-        matrix.columns = matrix.columns.get_level_values(0)
-        matrix.index = matrix.index.get_level_values(0)
-
-        fig = plt.figure(figsize=figsize)
-        ax = fig.subplots()
-
-        ax = sns.heatmap(
-            matrix,
-            ax=ax,
-            cmap=cmap,
-            square=True,
-            linewidths=0.5,
-            cbar=False,
-            linecolor="gray",
-        )
-
-        fig.set_tight_layout(True)
-
-        return fig
-
 
 def co_occurrence_network(matrix, algorithm="louvain"):
 
