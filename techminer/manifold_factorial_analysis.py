@@ -21,14 +21,14 @@ Based on the bibliometrix/R/conceptualStructure.R code.
 >>> from sklearn.manifold import MDS
 >>> directory = "/workspaces/techminer-api/tests/data/"
 >>> coc_matrix = co_occurrence_matrix(directory, 'author_keywords', min_occ=15)
->>> mainfold_factorial_analysis(coc_matrix, mainfold_method=MDS(), clustering_method=KMeans(n_clusters=4)).silhouette_scores_plot()
+>>> mainfold_factorial_analysis(coc_matrix, manifold_method=MDS(), clustering_method=KMeans(n_clusters=4)).silhouette_scores_plot()
 
 .. image:: images/manifold_factorial_analysis_silhouette.png
     :width: 400px
     :align: center
 
 
->>> mainfold_factorial_analysis(coc_matrix, mainfold_method=MDS(), clustering_method=KMeans(n_clusters=4)).words_by_cluster().head()
+>>> mainfold_factorial_analysis(coc_matrix, manifold_method=MDS(), clustering_method=KMeans(n_clusters=4)).words_by_cluster().head()
                                     Dim-1       Dim-2  Cluster
 author_keywords      #d  #c                                   
 fintech              882 5181 -746.525234  398.589319        1
@@ -37,7 +37,7 @@ financial inclusion  72  742   -54.229554  -24.433846        0
 financial technology 72  372    59.166004   47.983897        2
 crowdfunding         50  492    -9.401640   19.159085        0
 
->>> mainfold_factorial_analysis(coc_matrix, mainfold_method=MDS(), clustering_method=KMeans(n_clusters=4)).map()
+>>> mainfold_factorial_analysis(coc_matrix, manifold_method=MDS(), clustering_method=KMeans(n_clusters=4)).map()
 
 .. image:: images/manifold_factor_analysis_map.png
     :width: 800px
@@ -52,9 +52,9 @@ from .plots import conceptual_structure_map
 
 
 class Manifold_factorial_analysis:
-    def __init__(self, matrix, mainfold_method, clustering_method):
+    def __init__(self, matrix, manifold_method, clustering_method):
         self.matrix = matrix
-        self.mainfold_method = mainfold_method
+        self.manifold_method = manifold_method
         self.clustering_method = clustering_method
         self.words_by_cluster_ = None
         self.run()
@@ -62,7 +62,7 @@ class Manifold_factorial_analysis:
     def run(self):
 
         matrix = self.matrix.copy()
-        matrix = self.mainfold_method.fit_transform(matrix)
+        matrix = self.manifold_method.fit_transform(matrix)
         self.clustering_method.fit(matrix)
 
         words_by_cluster = pd.DataFrame(
@@ -78,7 +78,7 @@ class Manifold_factorial_analysis:
     def silhouette_scores_plot(self, max_n_clusters=8, figsize=(5, 5)):
 
         matrix = self.matrix.copy()
-        matrix = self.mainfold_method.fit_transform(matrix)
+        matrix = self.manifold_method.fit_transform(matrix)
 
         silhouette_scores = []
         n_clusters = []
@@ -114,8 +114,8 @@ class Manifold_factorial_analysis:
         )
 
 
-def manifold_factorial_analysis(matrix, mainfold_method, clustering_method):
+def manifold_factorial_analysis(matrix, manifold_method, clustering_method):
     """
     Mainfold Factor Analysis
     """
-    return Manifold_factorial_analysis(matrix, mainfold_method, clustering_method)
+    return Manifold_factorial_analysis(matrix, manifold_method, clustering_method)

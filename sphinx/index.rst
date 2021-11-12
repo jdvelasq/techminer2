@@ -63,6 +63,7 @@ Analysis of bibliographic datasets using Python
     :maxdepth: 1
 
     co_word_association_mds_map
+    concept_mapping
     manifold_factorial_analysis
     svd_co_occurrence_matrix_map
     svd_tf_idf_matrix_map

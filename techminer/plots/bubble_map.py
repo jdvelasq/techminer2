@@ -1,6 +1,7 @@
 import math
 
 import matplotlib.pyplot as plt
+from matplotlib.ticker import AutoMinorLocator
 
 COLORS = [
     "tab:blue",
@@ -70,6 +71,15 @@ def bubble_map(
     fig = plt.Figure(figsize=figsize)
     ax = fig.subplots()
 
+    ax.tick_params(axis="x", labelsize=7)
+    ax.tick_params(axis="y", labelsize=7)
+
+    ax.xaxis.set_minor_locator(AutoMinorLocator())
+    ax.yaxis.set_minor_locator(AutoMinorLocator())
+
+    ax.tick_params(which="mayor", color="k", length=5)
+    ax.tick_params(which="minor", color="k", length=2)
+
     # quadrants
     quadrants = [
         _get_quadrant(x_, y_, x_axis_at, y_axis_at) for x_, y_ in zip(node_x, node_y)
@@ -114,7 +124,7 @@ def bubble_map(
         node_x,
         node_y,
         marker="o",
-        s=40,
+        s=20,
         c="k",
         alpha=1.0,
     )
@@ -215,7 +225,10 @@ def bubble_map(
         zorder=-1,
     )
 
-    ax.axis("off")
+    for side in ["top", "right", "bottom", "left"]:
+        ax.spines[side].set_visible(False)
+
+    # ax.axis("off")
 
     #  ax.spines["top"].set_visible(False)
     #  ax.spines["right"].set_visible(False)
