@@ -63,8 +63,11 @@ Analysis of bibliographic datasets using Python
     auto_corr_map
     co_citation_network
     co_occurrence_network
+    co_word_association_mds_map
     manifold_factorial_analysis
-
+    svd_co_occurrence_matrix_map
+    svd_tf_idf_matrix_map
+    
 
 .. toctree::
     :caption: Reports

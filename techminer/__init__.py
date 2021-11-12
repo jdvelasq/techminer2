@@ -12,6 +12,7 @@ from .clean_keywords import clean_keywords
 from .co_citation_network import co_citation_network
 from .co_occurrence_matrix import co_occurrence_matrix
 from .co_occurrence_network import co_occurrence_network
+from .co_word_association_mds_map import co_word_association_mds_map
 from .collaboration_indicators import collaboration_indicators
 from .column_chart import column_chart
 from .column_indicators import column_indicators
@@ -31,6 +32,8 @@ from .manifold_factorial_analysis import manifold_factorial_analysis
 from .most_relevant_sources import most_relevant_sources
 from .pie_chart import pie_chart
 from .summary import summary
+from .svd_co_occurrence_matrix_map import svd_co_occurrence_matrix_map
+from .svd_tf_idf_matrix_map import svd_tf_idf_matrix_map
 from .tf_idf_matrix import tf_idf_matrix
 from .tf_matrix import tf_matrix
 from .thematic_map import thematic_map
