@@ -13,6 +13,7 @@ from .co_citation_network import co_citation_network
 from .co_occurrence_matrix import co_occurrence_matrix
 from .co_occurrence_network import co_occurrence_network
 from .collaboration_indicators import collaboration_indicators
+from .column_chart import column_chart
 from .column_indicators import column_indicators
 from .core_authors import core_authors
 from .core_sources import core_sources
@@ -28,10 +29,12 @@ from .manifold_factorial_analysis import manifold_factorial_analysis
 
 # from .mean_global_citations import mean_global_citations
 from .most_relevant_sources import most_relevant_sources
+from .pie_chart import pie_chart
 from .summary import summary
 from .tf_idf_matrix import tf_idf_matrix
 from .tf_matrix import tf_matrix
 from .thematic_map import thematic_map
 from .top_documents import top_documents
+from .tree_map import tree_map
 from .word_cloud import word_cloud
 from .world_map import world_map

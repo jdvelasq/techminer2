@@ -72,7 +72,10 @@ Analysis of bibliographic datasets using Python
     :maxdepth: 1
 
     bar_chart
+    column_chart
     heat_map
+    pie_chart
+    tree_map
     word_cloud
     world_map
 

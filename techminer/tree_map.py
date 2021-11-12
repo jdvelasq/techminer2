@@ -1,6 +1,16 @@
 """
 Tree map
 ===============================================================================
+
+
+>>> from techminer import *
+>>> directory = "/workspaces/techminer-api/tests/data/"
+>>> tree_map(series=annual_indicators(directory)['num_documents'], darkness=annual_indicators(directory)['global_citations'])
+
+.. image:: images/tree_map.png
+    :width: 500px
+    :align: center
+
 """
 
 import textwrap
@@ -20,31 +30,7 @@ def tree_map(
     fontsize=11,
     alpha=0.9,
 ):
-    """Creates a classification plot..
-
-    Examples
-    ----------------------------------------------------------------------------------------------
-
-    >>> import pandas as pd
-    >>> x = pd.Series(
-    ...     [10, 5, 2, 1],
-    ...     index = "author 3,author 1,author 0,author 2".split(","),
-    ... )
-    >>> x
-    author 3    10
-    author 1     5
-    author 0     2
-    author 2     1
-    dtype: int64
-    >>> fig = treemap(x)
-    >>> fig.savefig('/workspaces/techminer/sphinx/images/treeplot.png')
-
-    .. image:: images/treeplot.png
-        :width: 400px
-        :align: center
-
-
-    """
+    """Creates a classification plot.."""
     darkness = series if darkness is None else darkness
 
     matplotlib.rc("font", size=fontsize)
@@ -52,7 +38,7 @@ def tree_map(
     ax = fig.subplots()
     cmap = plt.cm.get_cmap(cmap)
 
-    labels = series.index
+    labels = series.index.astype(str)
     labels = [textwrap.shorten(text=text, width=TEXTLEN) for text in labels]
     labels = [textwrap.wrap(text=text, width=15) for text in labels]
     labels = ["\n".join(text) for text in labels]

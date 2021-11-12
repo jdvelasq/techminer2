@@ -1,6 +1,18 @@
 """
 Pie chart
 ===============================================================================
+
+
+
+>>> from techminer import *
+>>> directory = "/workspaces/techminer-api/tests/data/"
+>>> pie_chart(series=annual_indicators(directory)['num_documents'], darkness=annual_indicators(directory)['global_citations'])
+
+.. image:: images/pie_chart.png
+    :width: 500px
+    :align: center
+
+
 """
 
 
@@ -26,34 +38,7 @@ def pie_chart(
         "antialiased": True,
     },
 ):
-    """Plot a pie chart.
-
-    Examples
-    ----------------------------------------------------------------------------------------------
-
-    >>> import pandas as pd
-    >>> df = pd.DataFrame(
-    ...     {
-    ...         "Num_Documents": [3, 2, 2, 1],
-    ...         "Global_Citations": [1, 2, 3, 4],
-    ...     },
-    ...     index="author 3,author 1,author 0,author 2".split(","),
-    ... )
-    >>> df
-              Num_Documents  Global_Citations
-    author 3              3            1
-    author 1              2            2
-    author 0              2            3
-    author 2              1            4
-    >>> fig = pie(x=df['num_records'], darkness=df['global_citations'], cmap="Blues")
-    >>> fig.savefig('/workspaces/techminer/sphinx/images/pieplot.png')
-
-    .. image:: images/pieplot.png
-        :width: 400px
-        :align: center
-
-
-    """
+    """Plot a pie chart."""
     darkness = series if darkness is None else darkness
 
     cmap = plt.cm.get_cmap(cmap)

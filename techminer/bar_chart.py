@@ -54,29 +54,6 @@ def bar_chart(
     Returns:
         container: Container with all the bars and optionally errorbars.
 
-    Examples
-    ----------------------------------------------------------------------------------------------
-
-    >>> import pandas as pd
-    >>> df = pd.DataFrame(
-    ...     {
-    ...         "Num_Documents": [3, 2, 2, 1],
-    ...         "Global_Citations": [1, 2, 3, 4],
-    ...     },
-    ...     index="author 3,author 1,author 0,author 2".split(","),
-    ... )
-    >>> df
-              Num_Documents  Global_Citations
-    author 3              3            1
-    author 1              2            2
-    author 0              2            3
-    author 2              1            4
-    >>> fig = barh(width=df['Num_Documents'], darkness=df['Global_Citations'])
-    >>> fig.savefig('/workspaces/techminer/sphinx/images/barhplot.png')
-
-    .. image:: images/barhplot.png
-        :width: 400px
-        :align: center
 
     """
     darkness = series if darkness is None else darkness
