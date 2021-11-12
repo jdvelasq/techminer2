@@ -71,6 +71,7 @@ Analysis of bibliographic datasets using Python
     :hidden:
     :maxdepth: 1
 
+    bar_chart
     heat_map
     word_cloud
     world_map

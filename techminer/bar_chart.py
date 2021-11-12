@@ -4,11 +4,9 @@ Bar chart
 
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/tests/data/"
->>> report = terms_report(directory, 'authors', min_occ=5)
->>> report = report.sort_values(by=['global_citations'], ascending=False)
->>> bar_chart(report.global_citations)
+>>> bar_chart(series=annual_indicators(directory)['num_documents'], darkness=annual_indicators(directory)['global_citations'])
 
-.. image:: images/bar_chart_authors.png
+.. image:: images/bar_chart.png
     :width: 400px
     :align: center
 
@@ -104,10 +102,18 @@ def bar_chart(
         color=color,
     )
 
-    if xlabel is not None:
-        ax.set_xlabel(xlabel)
-    if ylabel is not None:
-        ax.set_xlabel(ylabel)
+    if xlabel is None:
+        xlabel = series.name
+        xlabel = xlabel.replace("_", " ")
+        xlabel = xlabel.title()
+
+    if ylabel is None:
+        ylabel = series.index.name
+        ylabel = ylabel.replace("_", " ")
+        ylabel = ylabel.title()
+
+    ax.set_xlabel(xlabel)
+    ax.set_ylabel(ylabel)
 
     yticklabels = series.index
     if yticklabels.dtype != "int64":

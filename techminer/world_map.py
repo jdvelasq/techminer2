@@ -18,8 +18,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-from .utils import load_filtered_documents
 from .column_indicators import column_indicators
+from .utils import load_filtered_documents
 
 TEXTLEN = 40
 
@@ -32,40 +32,13 @@ def world_map(
     fontsize=9,
 ):
 
-    """Worldmap plot with the number of documents per country.
-
-    Examples
-    ----------------------------------------------------------------------------------------------
-
-    >>> import pandas as pd
-    >>> x = pd.Series(
-    ...    data = [1000, 900, 800, 700, 600, 1000],
-    ...    index = ["China", "Taiwan", "United States", "United Kingdom", "India", "Colombia"],
-    ... )
-    >>> x
-    China             1000
-    Taiwan             900
-    United States      800
-    United Kingdom     700
-    India              600
-    Colombia          1000
-    dtype: int64
-
-    >>> fig = worldmap(x, figsize=(15, 6))
-    >>> fig.savefig('/workspaces/techminer/sphinx/images/worldmap.png')
-
-    .. image:: images/worldmap.png
-        :width: 2000px
-        :align: center
-
-
-    """
+    """Worldmap plot with the number of documents per country."""
     matplotlib.rc("font", size=fontsize)
     fig = plt.Figure(figsize=figsize)
     ax = fig.subplots()
     cmap = plt.cm.get_cmap(cmap)
 
-    table = terms_report(directory, column="countries", sep="; ")
+    table = column_indicators(directory, column="countries", sep="; ")
     series = table[metric]
 
     df = series.to_frame()
