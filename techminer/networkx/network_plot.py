@@ -40,6 +40,7 @@ def network_plot(
     figsize=(7, 7),
     k=0.20,
     iterations=50,
+    max_labels=50,
 ):
     """
 
@@ -84,7 +85,7 @@ def network_plot(
         "with_labels": False,
         "font_size": 7,
         "font_weight": "regular",
-        "alpha": 0.95,
+        "alpha": 0.7,
     }
 
     colors = [group_colors[node[1]["group"]] for node in G.nodes.data()]
@@ -110,11 +111,21 @@ def network_plot(
     # plot centers as black dots
     x_points = [value[0] for value in pos.values()]
     y_points = [value[1] for value in pos.values()]
+
+    x_points_marked = [
+        pos[label][0]
+        for label in nodes.sort_values("size", ascending=False).name.head(max_labels)
+    ]
+    y_points_marked = [
+        pos[label][1]
+        for label in nodes.sort_values("size", ascending=False).name.head(max_labels)
+    ]
+
     ax.scatter(
-        x_points,
-        y_points,
+        x_points_marked,
+        y_points_marked,
         marker="o",
-        s=30,
+        s=20,
         c="k",
         alpha=1.0,
         zorder=10,
@@ -132,7 +143,7 @@ def network_plot(
     ry = factor * (ylim[1] - ylim[0])
     radious = np.sqrt(rx ** 2 + ry ** 2)
 
-    for label in nodes.name:
+    for label in nodes.sort_values("size", ascending=False).name.head(max_labels):
 
         x_point, y_point = pos[label]
 

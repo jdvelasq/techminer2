@@ -61,6 +61,7 @@ Analysis of bibliographic datasets using Python
     :maxdepth: 1
 
     auto_corr_map
+    co_citation_network
     co_occurrence_network
     manifold_factorial_analysis
 

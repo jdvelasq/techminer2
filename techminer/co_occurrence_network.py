@@ -1,5 +1,5 @@
 """
-Co-occurrence network analysis
+Co-occurrence network
 ===============================================================================
 
 TODO: pagerank
@@ -55,12 +55,8 @@ This module is eqivalent to:
 
 
 """
-import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import seaborn as sns
-
-import networkx as nx
 
 from .networkx import (
     betweenness_centrality,
