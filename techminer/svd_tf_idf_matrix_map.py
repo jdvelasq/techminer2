@@ -9,15 +9,17 @@ The plot is based on the SVD technique used in T-LAB's comparative analysis.
 **Algorithm**
 
 1. Transpose the TF-IDF matrix
-1. Apply SVD to the transposed matrix with `n_components=20`.
-4. Plot the decomposed matrix.
+
+2. Apply SVD to the transposed matrix with `n_components=20`.
+
+3. Plot the decomposed matrix.
 
 
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/tests/data/"
 >>> svd_tf_idf_matrix_map()
 
-.. image:: images/tf_idf_matrix_mds_map.png
+.. image:: images/svd_tf_idf_matrix_map.png
     :width: 700px
     :align: center
 

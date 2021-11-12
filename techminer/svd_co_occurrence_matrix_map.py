@@ -9,7 +9,8 @@ The plot is based on the SVD technique used in T-LAB's comparative analysis.
 **Algorithm**
 
 1. Apply SVD to the co-occurrence matrix with `n_components=20`.
-4. Plot the decomposed matrix.
+
+2. Plot the decomposed matrix.
 
 
 >>> from techminer import *

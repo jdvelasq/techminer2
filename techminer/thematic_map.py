@@ -37,7 +37,7 @@ class ThematicMap:
 
     def run(self):
 
-        # ---< co-occurrence matris >------------------------------------------
+        # ---< co-occurrence matrix >------------------------------------------
         self.co_occurrence_matrix = co_occurrence_matrix(
             directory=self.directory,
             column=self.column,

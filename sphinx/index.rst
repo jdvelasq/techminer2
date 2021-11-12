@@ -55,19 +55,26 @@ Analysis of bibliographic datasets using Python
     tf_matrix
     tf_idf_matrix
 
+
+
 .. toctree::
-    :caption: Analyze
+    :caption: Matrix-based Analysis
+    :hidden:
+    :maxdepth: 1
+
+    co_word_association_mds_map
+    manifold_factorial_analysis
+    svd_co_occurrence_matrix_map
+    svd_tf_idf_matrix_map
+    
+.. toctree::
+    :caption: Network-based analysis
     :hidden:
     :maxdepth: 1
 
     auto_corr_map
     co_citation_network
     co_occurrence_network
-    co_word_association_mds_map
-    manifold_factorial_analysis
-    svd_co_occurrence_matrix_map
-    svd_tf_idf_matrix_map
-    
 
 .. toctree::
     :caption: Reports
