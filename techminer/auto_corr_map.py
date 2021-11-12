@@ -18,6 +18,7 @@ import numpy as np
 import pandas as pd
 
 import networkx as nx
+from networkx.generators.geometric import thresholded_random_geometric_graph
 
 from .tf_matrix import tf_matrix
 from .utils import load_filtered_documents
@@ -27,20 +28,72 @@ from .utils import load_filtered_documents
 # pylint: disable=invalid-name
 
 
+def _get_edges(matrix):
+
+    # build network matrices for plotting with networkx
+    matrix = matrix.copy()
+
+    # diag sup = 0
+    n_cols = len(matrix.columns)
+    for i in range(n_cols):
+        for j in range(i, n_cols):
+            matrix.iloc[i, j] = 0.0
+
+    # selects lower diagonal of the matrix
+    edges = pd.melt(
+        matrix,
+        var_name="target",
+        value_name="value",
+        ignore_index=False,
+    )
+    edges = edges.reset_index()
+    edges = edges.rename(columns={edges.columns[0]: "source"})
+    edges = edges[edges.value > 0]
+
+    # line width
+    edges = edges.assign(weight=edges.value.map(lambda x: 2 if x > 0.75 else 1))
+
+    # line style
+    edges = edges.assign(
+        style=edges.value.map(
+            lambda x: "-" if x >= 0.50 else ("--" if x > 0.25 else ":")
+        )
+    )
+
+    return edges
+
+
+def _get_nodes(matrix):
+
+    nodes = [(a, b, c) for a, b, c in matrix.columns]
+    nodes = pd.DataFrame(nodes, columns=["name", "num_documents", "global_citations"])
+
+    # node sizes
+    nodes = nodes.assign(node_size=nodes.num_documents / nodes.num_documents.max())
+    nodes = nodes.assign(node_size=100 + 900 * nodes.node_size)
+
+    # node colors
+    nodes = nodes.assign(alpha=nodes.global_citations / nodes.global_citations.max())
+    nodes = nodes.assign(alpha=0.2 + 0.6 * nodes.alpha)
+
+    return nodes
+
+
 def auto_corr_map(
     auto_corr_matrix,
-    threshold=0.5,
     cmap="Greys",
-    n_links=None,
     nx_iterations=200,
     nx_k=1e-3,
     nx_scale=1.0,
     nx_random_state=None,
     figsize=(6, 6),
-    num_terms=None,
 ):
+
     # computos
     matrix = auto_corr_matrix.copy()
+
+    nodes = _get_nodes(matrix)
+    edges = _get_edges(matrix)
 
     # Networkx
     fig = plt.Figure(figsize=figsize)
@@ -49,60 +102,28 @@ def auto_corr_map(
     G = nx.Graph(ax=ax)
     G.clear()
 
-    np.fill_diagonal(matrix.values, 0.0)
-    matrix = pd.melt(
-        matrix,
-        var_name="to",
-        value_name="value",
-        ignore_index=False,
-    )
-    matrix = matrix.reset_index()
-    matrix = matrix.rename(columns={matrix.columns[0]: "from"})
-
-    matrix = matrix.assign(width=matrix.value.map(lambda x: 2 if x > 0.75 else 1))
-    matrix = matrix.assign(
-        style=matrix.value.map(
-            lambda x: "-" if x > 0.50 else ("--" if x > 0.5 else ":")
-        )
-    )
-
-    ## node sizes
-    node_props = matrix[["from", "#d", "#c"]]
-    node_props = node_props.drop_duplicates()
-    min_size, max_size = float(node_props["#d"].min()), float(node_props["#d"].max())
-
-    if min_size == max_size:
-        node_props = node_props.assign(node_size=1000)
-    else:
-        node_props = node_props.assign(
-            node_size=node_props["#d"].map(
-                lambda x: 100 + int(800 * (x - min_size) / (max_size - min_size))
-            )
+    # add nodes
+    for _, row in nodes.iterrows():
+        G.add_node(
+            row["name"],
+            node_size=row["node_size"],
         )
 
-    ## node colors
-    min_tc, max_tc = float(node_props["#c"].min()), float(node_props["#c"].max())
-
-    if min_tc == max_tc:
-        node_props = node_props.assign(node_color=0.5)
-    else:
-        node_props = node_props.assign(
-            node_color=node_props["#c"].map(
-                lambda x: cmap(0.2 + 0.60 * (x - min_tc) / (max_tc - min_tc))
-            )
+    # add edges
+    for _, row in edges.iterrows():
+        G.add_edge(
+            row["source"],
+            row["target"],
+            weight=row["weight"],
+            style=row["style"],
         )
 
-    ## edges
-    edges = matrix.copy()
-    edges = edges[edges.value >= threshold]
-    if n_links is not None:
-        edges = edges.head(n_links)
-    edgelist = [(a, b) for a, b in zip(edges["from"], edges.to)]
+    # plot ---------------
 
-    ## Add nodes
-    terms = matrix.to.copy()
-    terms = terms.drop_duplicates()
-    G.add_nodes_from(terms.tolist())
+    node_sizes = list(nx.get_node_attributes(G, "node_size").values())
+
+    edge_styles = nx.get_edge_attributes(G, "style").values()
+    edge_weights = list(nx.get_edge_attributes(G, "weight").values())
 
     ## node positions
     pos = nx.spring_layout(
@@ -113,47 +134,68 @@ def auto_corr_map(
         seed=nx_random_state,
     )
 
-    ## node edges
-    nx.draw_networkx_edges(
+    # draws the network
+    nx.draw(
         G,
+        with_labels=False,
+        font_size=7,
+        font_weight="regular",
+        node_color="k",
+        width=edge_weights,
+        # node_color=colors,
+        node_size=node_sizes,
+        edge_color="grey",
+        style=edge_styles,
+        alpha=0.6,
         pos=pos,
         ax=ax,
-        node_size=1,
-        edge_color="k",
-        edgelist=edgelist,
-        width=matrix.width,
     )
 
-    ## Draw nodes
-    nx.draw_networkx_nodes(
-        G,
-        pos,
-        ax=ax,
-        nodelist=node_props["from"].tolist(),
-        node_size=node_props["node_size"].tolist(),
-        node_color=node_props["node_color"].tolist(),
-        node_shape="o",
-        edgecolors="k",
-        linewidths=1,
+    ax.collections[0].set_edgecolor("k")
+
+    # plot centers as black dots
+    x_points = [value[0] for value in pos.values()]
+    y_points = [value[1] for value in pos.values()]
+    ax.scatter(
+        x_points,
+        y_points,
+        marker="o",
+        s=30,
+        c="k",
+        alpha=1.0,
+        zorder=10,
     )
 
-    ## Node labels
-    x_mean = sum([pos[label][0] for label in terms]) / len(terms)
-    y_mean = sum([pos[label][1] for label in terms]) / len(terms)
+    #  Center of the plot
+    x_mean = sum(x_points) / len(x_points)
+    y_mean = sum(y_points) / len(y_points)
 
-    if num_terms is not None:
-        terms = terms.head(num_terms)
+    xlim = ax.get_xlim()
+    ylim = ax.get_ylim()
 
-    for term in terms:
-        x_point, y_point = pos[term]
+    factor = 0.05
+    rx = factor * (xlim[1] - xlim[0])
+    ry = factor * (ylim[1] - ylim[0])
+    radious = np.sqrt(rx ** 2 + ry ** 2)
+
+    for label in nodes.name:
+
+        x_point, y_point = pos[label]
+
+        x_c = x_point - x_mean
+        y_c = y_point - y_mean
+        angle = np.arctan(np.abs(y_c / x_c))
+        x_label = x_point + np.copysign(radious * np.cos(angle), x_c)
+        y_label = y_point + np.copysign(radious * np.sin(angle), y_c)
+
         ha = "left" if x_point > x_mean else "right"
-        va = "top" if y_point > y_mean else "bottom"
+        va = "center"
 
         ax.text(
-            x_point,
-            y_point,
-            s=term,
-            fontsize=6,
+            x_label,
+            y_label,
+            s=label,
+            fontsize=7,
             bbox=dict(
                 facecolor="w",
                 alpha=1.0,
@@ -162,7 +204,19 @@ def auto_corr_map(
             ),
             horizontalalignment=ha,
             verticalalignment=va,
+            alpha=0.9,
+            zorder=13,
         )
 
-    ax.axis("off")
+        ax.plot(
+            [x_point, x_label],
+            [y_point, y_label],
+            lw=1,
+            ls="-",
+            c="k",
+            zorder=13,
+        )
+
+    fig.set_tight_layout(True)
+
     return fig
