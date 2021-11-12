@@ -23,7 +23,7 @@ Based on the bibliometrix/R/conceptualStructure.R code.
 >>> coc_matrix = co_occurrence_matrix(directory, 'author_keywords', min_occ=15)
 >>> mainfold_factorial_analysis(coc_matrix, mainfold_method=MDS(), clustering_method=KMeans(n_clusters=4)).silhouette_scores_plot()
 
-.. image:: images/mainfold_factorial_analysis_silhouette.png
+.. image:: images/manifold_factorial_analysis_silhouette.png
     :width: 400px
     :align: center
 
@@ -39,7 +39,7 @@ crowdfunding         50  492    -9.401640   19.159085        0
 
 >>> mainfold_factorial_analysis(coc_matrix, mainfold_method=MDS(), clustering_method=KMeans(n_clusters=4)).map()
 
-.. image:: images/mainfold_factor_analysis_map.png
+.. image:: images/manifold_factor_analysis_map.png
     :width: 800px
     :align: center
 
