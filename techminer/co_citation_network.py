@@ -12,6 +12,31 @@ Co-citation network
     :width: 700px
     :align: center
 
+>>> co_citation_network(directory, min_edges=4).communities().head()
+group              CLUST_0                  CLUST_1             CLUST_2  \\
+rn                                                                        
+0              Lee I, 2018        Di Pietro R, 2021   Puschmann T, 2017   
+1           Haddad C, 2019           Buchak G, 2018    Rabbani MR, 2020   
+2      Dorfleitner G, 2017  Anagnostopoulos I, 2018       Zalan T, 2017   
+3          Meiling L, 2021         Jagtiani J, 2018    Rabbani MR, 2021   
+4        Mention A-L, 2019       Patwardhan A, 2018  Dospinescu O, 2021   
+.
+group            CLUST_3             CLUST_4                    CLUST_5  \\
+rn                                                                        
+0          Leong C, 2017     Milian EZ, 2019            Sangwan V, 2020   
+1            Alt R, 2018      Takeda A, 2021              Tasca P, 2016   
+2      Mackenzie A, 2015        Iman N, 2020             Adhami S, 2018   
+3             Hu Z, 2019      Hasan MM, 2020               Cai CW, 2018   
+4         Barbu CM, 2021  Zavolokina L, 2016  Fernandez-Vazquez S, 2019   
+.
+group         CLUST_6           CLUST_7            CLUST_8            CLUST_9  
+rn                                                                             
+0      Gomber P, 2017  Suryono RR, 2020  Schueffel P, 2016      Chen MA, 2019  
+1      Wojcik D, 2021  Suryono RR, 2021        Kim Y, 2016  Goldstein I, 2019  
+2       Gabor D, 2017      Li B/1, 2021     Junger M, 2020      Cheng M, 2020  
+3      Ozili PK, 2018      Iman N, 2018      Baber H, 2020    Wexler MN, 2020  
+4      Knight E, 2020     Najib M, 2021      Maier E, 2016    Chishti S, 2016
+
 """
 
 import numpy as np
@@ -170,6 +195,18 @@ class Co_citation_network_documents:
         table_["closeness"] = table_.node.map(closeness)
 
         return table_
+
+    def communities(self):
+        groups = self.nodes_.copy()
+
+        groups = groups[["name", "node_size", "group"]]
+        groups = groups.sort_values(by=["group", "node_size"], ascending=False)
+        groups["rn"] = groups.groupby("group")["node_size"].cumcount()
+        groups["group"] = groups.group.map(lambda x: f"CLUST_{x}")
+        groups = groups.pivot(index="rn", columns="group", values="name")
+        groups = groups.fillna("")
+
+        return groups
 
 
 def co_citation_network(directory, column=None, algorithm="louvain", min_edges=2):

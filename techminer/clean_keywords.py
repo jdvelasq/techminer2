@@ -52,7 +52,7 @@ def clean_keywords(directory):
     #
     if "author_keywords" in documents.columns:
         logging.info("Applying thesaurus to 'author_keywords' column ...")
-        documents["author_keywords_cl"] = map_(
+        documents["author_keywords_cleaned"] = map_(
             documents, "author_keywords", th.apply_as_dict
         )
 
@@ -61,19 +61,19 @@ def clean_keywords(directory):
     #
     if "index_keywords" in documents.columns:
         logging.info("Applying thesaurus to 'index_keywords' column...")
-        documents["index_keywords_cl"] = map_(
+        documents["index_keywords_cleaned"] = map_(
             documents, "index_keywords", th.apply_as_dict
         )
 
     if "keywords" in documents.columns:
         logging.info("Applying thesaurus to 'keywords' column...")
-        documents["keywords_cl"] = map_(documents, "keywords", th.apply_as_dict)
+        documents["keywords_cleaned"] = map_(documents, "keywords", th.apply_as_dict)
 
     #
     # Title keywords
     #
     if "title_keywords" in documents.columns:
-        documents["title_keywords_cl"] = map_(
+        documents["title_keywords_cleaned"] = map_(
             documents, "title_keywords", th.apply_as_dict
         )
 
