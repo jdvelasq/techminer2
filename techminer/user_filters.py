@@ -100,9 +100,9 @@ class _UserFilters:
 
     def user_report(self):
         first_year, last_year = self.filter["first_year"], self.filter["last_year"]
-        citations_min, citations_max = (
-            self.filter["citations_min"],
-            self.filter["citations_max"],
+        min_citations, max_citations = (
+            self.filter["min_citations"],
+            self.filter["max_citations"],
         )
         bradford = self.filter["bradford"]
         selected_document_types = [
@@ -119,8 +119,8 @@ class _UserFilters:
         print("---< User Filters >---------------------------------------------")
         print("               First year : " + str(first_year))
         print("                Last year : " + str(last_year))
-        print("            Min citations : " + str(citations_min))
-        print("            Max citations : " + str(citations_max))
+        print("            Min citations : " + str(min_citations))
+        print("            Max citations : " + str(max_citations))
         print("           Bradford zones : " + str(bradford))
         if len(selected_document_types) > 0:
             print("  Selected document types : " + selected_document_types[0])

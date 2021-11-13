@@ -126,6 +126,15 @@ def _remove_accents(documents):
 # -----< Isolated Column Processing >------------------------------------------
 
 
+def _process_document_type_columns(documents):
+    if "document_type" in documents.columns:
+        logging.info("Processing abstracts ...")
+        documents = documents.copy()
+        documents["document_type"] = documents.document_type.str.replace(" ", "_")
+        documents["document_type"] = documents.document_type.str.lower()
+    return documents
+
+
 def _process_abstract_column(documents):
     if "abstract" in documents.columns:
         logging.info("Processing abstracts ...")
@@ -598,8 +607,8 @@ def _update_filter_file(documents, directory):
     filter_ = {}
     filter_["first_year"] = int(documents.pub_year.min())
     filter_["last_year"] = int(documents.pub_year.max())
-    filter_["citations_min"] = 0
-    filter_["citations_max"] = int(documents.global_citations.max())
+    filter_["min_citations"] = 0
+    filter_["max_citations"] = int(documents.global_citations.max())
     filter_["bradford"] = 3
 
     document_types = documents.document_type.dropna().unique()
@@ -676,6 +685,7 @@ def import_scopus_file(file_name=None, directory=None):
     documents = _delete_and_renamce_columns(documents)
     documents = _remove_accents(documents)
     #
+    documents = _process_document_type_columns(documents)
     documents = _process_abstract_column(documents)
     documents = _process_affiliations_column(documents)
     documents = _process_author_keywords_column(documents)

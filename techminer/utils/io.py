@@ -40,9 +40,9 @@ def load_filtered_documents(directory):
     documents = documents.query(f"pub_year >= {year_min}")
     documents = documents.query(f"pub_year <= {year_max}")
 
-    citations_min, citations_max = filter_["citations_min"], filter_["citations_max"]
-    documents = documents.query(f"global_citations >= {citations_min}")
-    documents = documents.query(f"global_citations <= {citations_max}")
+    min_citations, max_citations = filter_["min_citations"], filter_["max_citations"]
+    documents = documents.query(f"global_citations >= {min_citations}")
+    documents = documents.query(f"global_citations <= {max_citations}")
 
     bradford = filter_["bradford"]
     documents = documents.query(f"bradford_law_zone <= {bradford}")
@@ -57,6 +57,7 @@ def load_filtered_documents(directory):
         ]:
             continue
         if value is False:
+
             documents = documents.query(f"document_type != '{key}'")
 
     return documents
