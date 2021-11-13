@@ -112,9 +112,6 @@ def _delete_and_renamce_columns(documents):
 def _remove_accents(documents):
     logging.info("Removing accents ...")
     documents = documents.copy()
-    # documents = documents.applymap(
-    #     lambda x: remove_accents(x) if isinstance(x, str) else x
-    # )
 
     cols = documents.select_dtypes(include=[np.object]).columns
     documents[cols] = documents[cols].apply(
@@ -534,7 +531,7 @@ def _compute_bradford_law_zones(documents):
         zip(documents_per_source.source_name, documents_per_source.num_documents)
     )
 
-    # Bradford law zones
+    # Bradford law zones (1, 2, 3)
     bradford_core_sources = int(len(documents) / 3)
     documents_per_source["zone"] = documents_per_source.cum_num_documents.map(
         lambda x: 3
@@ -599,9 +596,11 @@ def _update_filter_file(documents, directory):
     yaml_filename = join(directory, "filter.yaml")
 
     filter_ = {}
-    filter_["years"] = [int(documents.pub_year.min()), int(documents.pub_year.max())]
-    filter_["citations"] = [0, int(documents.global_citations.max())]
-    filter_["bradford"] = [1, int(documents.bradford_law_zone.max())]
+    filter_["first_year"] = int(documents.pub_year.min())
+    filter_["last_year"] = int(documents.pub_year.max())
+    filter_["citations_min"] = 0
+    filter_["citations_max"] = int(documents.global_citations.max())
+    filter_["bradford"] = 3
 
     document_types = documents.document_type.dropna().unique()
     for document_type in document_types:
@@ -642,10 +641,10 @@ def import_scopus_file(file_name=None, directory=None):
     """
 
     # ----< debug data >-------------------------------------------------------
-    if file_name is None:
+    if file_name is None and directory is None:
         file_name = "/workspaces/techminer-api/tests/data/scopus.csv"
-    if directory is None:
         directory = "/workspaces/techminer-api/tests/data/"
+        logging.info(" **** USING SAMPLE DATA ****")
     # -------------------------------------------------------------------------
 
     if not isfile(file_name):

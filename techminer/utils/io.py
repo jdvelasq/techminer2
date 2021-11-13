@@ -36,20 +36,25 @@ def load_filtered_documents(directory):
     with open(yaml_filename, "r", encoding="utf-8") as yaml_file:
         filter_ = yaml.load(yaml_file, Loader=yaml.FullLoader)
 
-    year_min, year_max = filter_["years"]
+    year_min, year_max = filter_["first_year"], filter_["last_year"]
     documents = documents.query(f"pub_year >= {year_min}")
     documents = documents.query(f"pub_year <= {year_max}")
 
-    citations_min, citations_max = filter_["citations"]
+    citations_min, citations_max = filter_["citations_min"], filter_["citations_max"]
     documents = documents.query(f"global_citations >= {citations_min}")
     documents = documents.query(f"global_citations <= {citations_max}")
 
-    bradford_min, bradford_max = filter_["bradford"]
-    documents = documents.query(f"bradford_law_zone >= {bradford_min}")
-    documents = documents.query(f"bradford_law_zone <= {bradford_max}")
+    bradford = filter_["bradford"]
+    documents = documents.query(f"bradford_law_zone <= {bradford}")
 
     for key, value in filter_.items():
-        if key == "year" or key == "citations" or key == "bradford":
+        if key in [
+            "first_year",
+            "last_year",
+            "citations_min",
+            "citations_max",
+            "bradford",
+        ]:
             continue
         if value is False:
             documents = documents.query(f"document_type != '{key}'")

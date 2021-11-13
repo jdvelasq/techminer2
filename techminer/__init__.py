@@ -41,5 +41,6 @@ from .thematic_analysis import thematic_analysis
 from .thematic_map import thematic_map
 from .top_documents import top_documents
 from .tree_map import tree_map
+from .user_filters import user_filters
 from .word_cloud import word_cloud
 from .world_map import world_map
