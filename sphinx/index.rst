@@ -67,6 +67,7 @@ Analysis of bibliographic datasets using Python
     manifold_factorial_analysis
     svd_co_occurrence_matrix_map
     svd_tf_idf_matrix_map
+    thematic_analysis
     
 .. toctree::
     :caption: Network-based analysis
