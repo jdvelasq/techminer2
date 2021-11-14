@@ -33,6 +33,7 @@ Analysis of bibliographic datasets using Python
     annual_indicators
     collaboration_indicators
     column_indicators
+    column_indicators_by_year
     impact_indicators
     summary_view
 

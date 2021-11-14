@@ -15,6 +15,7 @@ from .co_word_association_mds_map import co_word_association_mds_map
 from .collaboration_indicators import collaboration_indicators
 from .column_chart import column_chart
 from .column_indicators import column_indicators
+from .column_indicators_by_year import column_indicators_by_year
 from .concept_mapping import concept_mapping
 from .core_authors import core_authors
 from .core_sources import core_sources
