@@ -7,60 +7,58 @@ Returns an auto-correlation matrix.
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/tests/data/"
 >>> auto_corr_matrix(directory, column='authors', min_occ=6)
-authors                  Rabbani MR  Arner DW  Wojcik D Buckley RP  \\
-#d                               10         9         7          7    
-#c                               69       135        49        132   
-authors          #nd #tc                                             
-Rabbani MR       10  69    1.000000 -0.007449 -0.006565  -0.006565   
-Arner DW         9   135  -0.007449  1.000000 -0.006225   0.881226   
-Wojcik D         7   49   -0.006565 -0.006225  1.000000  -0.005486   
-Buckley RP       7   132  -0.006565  0.881226 -0.005486   1.000000   
-Reyes-Mercado P  7   0    -0.006565 -0.006225 -0.005486  -0.005486   
-Wonglimpiyarat J 6   52   -0.006075 -0.005761 -0.005077  -0.005077   
-Gozman DP        6   26   -0.006075 -0.005761 -0.005077  -0.005077   
-Serrano W        6   15   -0.006075 -0.005761 -0.005077  -0.005077   
-Khan S           6   49    0.773383 -0.005761 -0.005077  -0.005077   
-Schwienbacher A  6   50   -0.006075 -0.005761 -0.005077  -0.005077   
-Ozili PK         6   151  -0.006075 -0.005761 -0.005077  -0.005077   
--
-authors                  Reyes-Mercado P Wonglimpiyarat J Gozman DP Serrano W  \
-#nd                                    7                6         6         6    
-#tc                                    0               52        26        15    
-authors          #nd #tc                                                        
-Rabbani MR       10  69        -0.006565        -0.006075 -0.006075 -0.006075   
-Arner DW         9   135       -0.006225        -0.005761 -0.005761 -0.005761   
-Wojcik D         7   49        -0.005486        -0.005077 -0.005077 -0.005077   
-Buckley RP       7   132       -0.005486        -0.005077 -0.005077 -0.005077   
-Reyes-Mercado P  7   0          1.000000        -0.005077 -0.005077 -0.005077   
-Wonglimpiyarat J 6   52        -0.005077         1.000000 -0.004699 -0.004699   
-Gozman DP        6   26        -0.005077        -0.004699  1.000000 -0.004699   
-Serrano W        6   15        -0.005077        -0.004699 -0.004699  1.000000   
-Khan S           6   49        -0.005077        -0.004699 -0.004699 -0.004699   
-Schwienbacher A  6   50        -0.005077        -0.004699 -0.004699 -0.004699   
-Ozili PK         6   151       -0.005077        -0.004699 -0.004699 -0.004699   
--
-authors                     Khan S Schwienbacher A  Ozili PK  
-#nd                              6               6         6   
-#tc                             49              50       151  
-authors          #nd #tc                                      
-Rabbani MR       10  69   0.773383       -0.006075 -0.006075  
-Arner DW         9   135 -0.005761       -0.005761 -0.005761  
-Wojcik D         7   49  -0.005077       -0.005077 -0.005077  
-Buckley RP       7   132 -0.005077       -0.005077 -0.005077  
-Reyes-Mercado P  7   0   -0.005077       -0.005077 -0.005077  
-Wonglimpiyarat J 6   52  -0.004699       -0.004699 -0.004699  
-Gozman DP        6   26  -0.004699       -0.004699 -0.004699  
-Serrano W        6   15  -0.004699       -0.004699 -0.004699  
-Khan S           6   49   1.000000       -0.004699 -0.004699  
-Schwienbacher A  6   50  -0.004699        1.000000 -0.004699  
-Ozili PK         6   151 -0.004699       -0.004699  1.000000  
+authors                 Rabbani MR  Arner DW Reyes-Mercado P  Wojcik D  \\
+#d                              10        9               7         7    
+#c                             69        135             0         49    
+authors          #d #c                                                   
+Rabbani MR       10 69    1.000000 -0.177332       -0.153574 -0.153574   
+Arner DW         9  135  -0.177332  1.000000       -0.144338 -0.144338   
+Reyes-Mercado P  7  0    -0.153574 -0.144338        1.000000 -0.125000   
+Wojcik D         7  49   -0.153574 -0.144338       -0.125000  1.000000   
+Buckley RP       7  132  -0.153574  0.866025       -0.125000 -0.125000   
+Khan S           6  49    0.746924 -0.132453       -0.114708 -0.114708   
+Ozili PK         6  151  -0.140929 -0.132453       -0.114708 -0.114708   
+Gozman DP        6  26   -0.140929 -0.132453       -0.114708 -0.114708   
+Serrano W        6  15   -0.140929 -0.132453       -0.114708 -0.114708   
+Wonglimpiyarat J 6  52   -0.140929 -0.132453       -0.114708 -0.114708   
+Schwienbacher A  6  50   -0.140929 -0.132453       -0.114708 -0.114708   
+.
+authors                 Buckley RP    Khan S  Ozili PK Gozman DP Serrano W  \\
+#d                              7         6         6         6         6    
+#c                             132       49        151       26        15    
+authors          #d #c                                                       
+Rabbani MR       10 69   -0.153574  0.746924 -0.140929 -0.140929 -0.140929   
+Arner DW         9  135   0.866025 -0.132453 -0.132453 -0.132453 -0.132453   
+Reyes-Mercado P  7  0    -0.125000 -0.114708 -0.114708 -0.114708 -0.114708   
+Wojcik D         7  49   -0.125000 -0.114708 -0.114708 -0.114708 -0.114708   
+Buckley RP       7  132   1.000000 -0.114708 -0.114708 -0.114708 -0.114708   
+Khan S           6  49   -0.114708  1.000000 -0.105263 -0.105263 -0.105263   
+Ozili PK         6  151  -0.114708 -0.105263  1.000000 -0.105263 -0.105263   
+Gozman DP        6  26   -0.114708 -0.105263 -0.105263  1.000000 -0.105263   
+Serrano W        6  15   -0.114708 -0.105263 -0.105263 -0.105263  1.000000   
+Wonglimpiyarat J 6  52   -0.114708 -0.105263 -0.105263 -0.105263 -0.105263   
+Schwienbacher A  6  50   -0.114708 -0.105263 -0.105263 -0.105263 -0.105263   
+.
+authors                 Wonglimpiyarat J Schwienbacher A  
+#d                                    6               6   
+#c                                   52              50   
+authors          #d #c                                    
+Rabbani MR       10 69         -0.140929       -0.140929  
+Arner DW         9  135        -0.132453       -0.132453  
+Reyes-Mercado P  7  0          -0.114708       -0.114708  
+Wojcik D         7  49         -0.114708       -0.114708  
+Buckley RP       7  132        -0.114708       -0.114708  
+Khan S           6  49         -0.105263       -0.105263  
+Ozili PK         6  151        -0.105263       -0.105263  
+Gozman DP        6  26         -0.105263       -0.105263  
+Serrano W        6  15         -0.105263       -0.105263  
+Wonglimpiyarat J 6  52          1.000000       -0.105263  
+Schwienbacher A  6  50         -0.105263        1.000000  
 
 """
-import numpy as np
-import pandas as pd
+
 
 from .tf_matrix import tf_matrix
-from .utils import index_terms2counters, load_filtered_documents
 
 # pyltin: disable=c0103
 # pylint: disable=too-many-arguments
