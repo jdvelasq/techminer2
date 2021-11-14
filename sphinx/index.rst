@@ -91,6 +91,8 @@ Analysis of bibliographic datasets using Python
 
     bar_chart
     column_chart
+    gantt_chart
+    gantt_points_chart
     heat_map
     pie_chart
     tree_map

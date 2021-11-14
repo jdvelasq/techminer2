@@ -27,6 +27,8 @@ from .cross_corr_matrix import cross_corr_matrix
 from .document_viewer import document_viewer
 from .extract_user_keywords import extract_user_keywords
 from .factor_matrix import factor_matrix
+from .gantt_chart import gantt_chart
+from .gantt_points_chart import gantt_points_chart
 from .heat_map import heat_map
 from .impact_indicators import impact_indicators
 from .import_scopus_file import import_scopus_file
