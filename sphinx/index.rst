@@ -70,7 +70,7 @@ Analysis of bibliographic datasets using Python
 
     co_word_association_mds_map
     concept_mapping
-    manifold_factorial_analysis
+    factorial_analysis_manifold
     svd_co_occurrence_matrix_map
     svd_tf_idf_matrix_map
     thematic_analysis

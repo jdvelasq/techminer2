@@ -1,5 +1,5 @@
 """
-Manifold factorial analysis
+Factorial analysis (manifold)
 ===============================================================================
 
 
@@ -51,7 +51,7 @@ from sklearn.metrics import silhouette_score
 from .plots import conceptual_structure_map
 
 
-class Manifold_factorial_analysis:
+class Factorial_analysis_manifold:
     def __init__(self, matrix, manifold_method, clustering_method):
         self.matrix = matrix
         self.manifold_method = manifold_method
@@ -114,8 +114,8 @@ class Manifold_factorial_analysis:
         )
 
 
-def manifold_factorial_analysis(matrix, manifold_method, clustering_method):
+def factorial_analysis_manifold(matrix, manifold_method, clustering_method):
     """
     Mainfold Factor Analysis
     """
-    return Manifold_factorial_analysis(matrix, manifold_method, clustering_method)
+    return Factorial_analysis_manifold(matrix, manifold_method, clustering_method)

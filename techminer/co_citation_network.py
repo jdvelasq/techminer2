@@ -83,24 +83,45 @@ class Co_citation_network_documents:
         self.min_edges = min_edges
 
         # ---< processings >-----------------------------------------------------
+        self._make_node_id()
         self._make_edges()
         self._make_nodes()
         self._remove_edges()
         self._clustering()
 
-    def _make_edges(self):
+    def _make_node_id(self):
 
         self.documents["authors"] = self.documents.authors.apply(
             lambda x: "[Anonymous]" if pd.isna(x) else x
         )
+
         self.documents = self.documents.assign(
             author_year=self.documents.authors.apply(lambda x: x.split("; ")[0])
             + ", "
             + self.documents.pub_year.astype(str)
         )
-        document_id2author_year = dict(
-            zip(self.documents.document_id, self.documents.author_year)
+
+        author_year = self.documents[["author_year", "document_id"]]
+        author_year = author_year.groupby("author_year", as_index=False).agg(
+            {"document_id": list}
         )
+        author_year = author_year.assign(length=author_year.document_id.apply(len))
+        author_year = author_year[author_year.length > 1]
+        author_year = author_year.assign(
+            document_id=author_year.document_id.apply(lambda x: x[1:])
+        )
+        author_year = author_year.explode("document_id")
+        author_year = author_year.assign(
+            rn=author_year.groupby("document_id").cumcount() + 1
+        )
+        author_year = author_year.assign(
+            author_year=author_year.author_year + "/" + author_year.rn.astype(str)
+        )
+        author_year = author_year.set_index("document_id")
+        self.documents.index = self.documents.document_id
+        self.documents.loc[author_year.index, "author_year"] = author_year.author_year
+
+    def _make_edges(self):
 
         # remove documents without co-citations
         self.edges_ = self.documents[["author_year", "local_references"]]
@@ -109,6 +130,11 @@ class Co_citation_network_documents:
             lambda x: x.split("; ")
         )
         self.edges_ = self.edges_.explode("local_references")
+
+        document_id2author_year = dict(
+            zip(self.documents.document_id, self.documents.author_year)
+        )
+
         self.edges_["local_references"] = self.edges_.local_references.map(
             document_id2author_year
         )
