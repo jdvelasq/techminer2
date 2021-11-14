@@ -75,9 +75,9 @@ Analysis of bibliographic datasets using Python
     :hidden:
     :maxdepth: 1
 
-    auto_corr_map
     co_citation_network
     co_occurrence_network
+    correlation_map
 
 .. toctree::
     :caption: Reports
