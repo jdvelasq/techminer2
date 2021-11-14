@@ -31,7 +31,7 @@ Analysis of bibliographic datasets using Python
     collaboration_indicators
     column_indicators
     impact_indicators
-    summary   
+    summary_view
 
 .. toctree::
     :caption: Documents

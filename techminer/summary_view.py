@@ -1,5 +1,5 @@
 """
-Summary report
+Summary view
 ===============================================================================
 
 >>> from techminer import *
@@ -73,7 +73,7 @@ def _count_terms(records, column):
     return len(_extract_terms(records, column))
 
 
-def summary(directory=None):
+def summary_view(directory=None):
     """
     Returns an overview of the dataset.
 

@@ -32,7 +32,7 @@ from .manifold_factorial_analysis import manifold_factorial_analysis
 # from .mean_global_citations import mean_global_citations
 from .most_relevant_sources import most_relevant_sources
 from .pie_chart import pie_chart
-from .summary import summary
+from .summary_view import summary_view
 from .svd_co_occurrence_matrix_map import svd_co_occurrence_matrix_map
 from .svd_tf_idf_matrix_map import svd_tf_idf_matrix_map
 from .tf_idf_matrix import tf_idf_matrix
