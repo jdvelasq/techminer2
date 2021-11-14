@@ -6,7 +6,7 @@ TF matrix
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/tests/data/"
 >>> tf_matrix(directory, 'authors', min_occ=6).head()
-authors     Rabbani MR Arner DW Reyes-Mercado P Wojcik D Buckley RP Khan S  \
+authors     Rabbani MR Arner DW Reyes-Mercado P Wojcik D Buckley RP Khan S  \\
 #d                  10        9               7        7          7      6    
 #c                  69      135               0       49        132     49    
 document_id                                                                  
@@ -15,7 +15,7 @@ document_id
 2017-0016            0        0               0        0          0      0   
 2017-0057            0        0               0        0          0      0   
 2018-0003            0        0               0        0          0      0   
-
+.
 authors     Ozili PK Gozman DP Serrano W Wonglimpiyarat J Schwienbacher A  
 #d                 6         6         6                6               6   
 #c               151        26        15               52              50   
