@@ -4,5 +4,10 @@ from .create_keywords_thesaurus import create_keywords_thesaurus
 from .explode import explode
 from .extract_country import extract_country
 from .index_terms2counters import index_terms2counters
-from .io import load_filtered_documents, load_stopwords
+from .io import (
+    load_all_documents,
+    load_filtered_documents,
+    load_stopwords,
+    save_documents,
+)
 from .map import map_

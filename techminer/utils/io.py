@@ -8,8 +8,35 @@ import os
 import pandas as pd
 import yaml
 
-from . import logging
-from .thesaurus import read_textfile
+
+def save_documents(documents, directory):
+
+    if directory is None:
+        directory = "/workspaces/techminer-api/tests/data/"
+
+    filename = os.path.join(directory, "documents.csv")
+    documents.to_csv(
+        filename,
+        sep=",",
+        encoding="utf-8",
+        index=False,
+    )
+
+
+def load_all_documents(directory):
+
+    if directory is None:
+        directory = "/workspaces/techminer-api/tests/data/"
+
+    if directory[-1] != "/":
+        directory += "/"
+
+    filename = directory + "documents.csv"
+    if not os.path.isfile(filename):
+        raise FileNotFoundError(f"The file '{filename}' does not exist.")
+    documents = pd.read_csv(filename, sep=",", encoding="utf-8")
+
+    return documents
 
 
 def load_filtered_documents(directory):
@@ -17,19 +44,7 @@ def load_filtered_documents(directory):
     Loads documents from project directory.
 
     """
-
-    if directory is None:
-        # debug data
-        directory = "/workspaces/techminer-api/tests/data/"
-
-    if directory[-1] != "/":
-        directory += "/"
-
-    # Load documents
-    filename = directory + "documents.csv"
-    if not os.path.isfile(filename):
-        raise FileNotFoundError(f"The file '{filename}' does not exist.")
-    documents = pd.read_csv(filename, sep=",", encoding="utf-8")
+    documents = load_all_documents(directory)
 
     # Filter documents
     yaml_filename = directory + "filter.yaml"
@@ -56,26 +71,11 @@ def load_filtered_documents(directory):
             "bradford",
         ]:
             continue
-        if value is False:
 
+        if value is False:
             documents = documents.query(f"document_type != '{key}'")
 
     return documents
-
-
-# def save_documents(records, directory):
-#     """
-#     Saves records to project directory.
-
-#     """
-#     if directory[-1] != "/":
-#         directory += "/"
-
-#     filename = directory + "documents.csv"
-#     if os.path.isfile(filename):
-#         logging.info(f"The file '{filename}' was rewrited.")
-
-#     records.to_csv(filename, sep=",", encoding="utf-8", index=False)
 
 
 def load_stopwords(directory):
@@ -96,15 +96,3 @@ def load_stopwords(directory):
             encoding="utf-8",
         ).readlines()
     ]
-
-
-# def load_thesaurus_from_textfile(project_directory, textfile):
-#     """
-#     Loads thesaurus from textfile.
-
-#     """
-#     if project_directory[-1] != "/":
-#         project_directory += "/"
-
-#     filename = project_directory + textfile
-#     return read_textfile(filename)

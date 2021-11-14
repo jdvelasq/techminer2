@@ -22,6 +22,7 @@ from .correlation_map import correlation_map
 from .coverage import coverage
 from .create_thesaurus import create_thesaurus
 from .cross_corr_matrix import cross_corr_matrix
+from .extract_user_keywords import extract_user_keywords
 from .factor_matrix import factor_matrix
 from .heat_map import heat_map
 from .impact_indicators import impact_indicators
