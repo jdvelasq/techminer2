@@ -4,7 +4,7 @@ Column indicators
 
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/tests/data/"
->>> column_indicators(directory, 'authors', min_occ=5)
+>>> column_indicators(directory, 'authors').head(20)
                   num_documents  global_citations  local_citations
 authors                                                           
 Rabbani MR                   10                69               32
@@ -32,7 +32,8 @@ Baber H                       5                12                5
 from .utils import load_filtered_documents
 
 
-def column_indicators(directory=None, column="authors", sep="; ", min_occ=1):
+### def column_indicators(directory=None, column="authors", sep="; ", min_occ=1):
+def column_indicators(directory=None, column="authors", sep="; "):
     """
     Counts the number of terms by record.
 
@@ -60,7 +61,7 @@ def column_indicators(directory=None, column="authors", sep="; ", min_occ=1):
 
     report = report.astype(int)
     report.sort_values(by="num_documents", ascending=False, inplace=True)
-    report = report[report["num_documents"] >= min_occ]
+    ### report = report[report["num_documents"] >= min_occ]
     ### report.index = report.index.str.replace("/\d+", "", regex=True)
 
     return report
