@@ -24,6 +24,23 @@ This module is eqivalent to:
     :align: center
 
 
+>>> co_occurrence_network(co_occurrence_matrix(directory, 'author_keywords', min_occ=15), 'louvain').communities()
+cluster                  CLUST_0                        CLUST_1  \\
+rn                                                                
+0               fintech 882:5181  financial technology 072:0372   
+1            blockchain 131:1031   financial inclusion 072:0742   
+2          crowdfunding 050:0492                 china 028:0115   
+3            innovation 044:0527  financial innovation 024:0058   
+4        cryptocurrency 039:0267  financial regulation 021:0103   
+.
+cluster                                  CLUST_2  
+rn                                                
+0               artificial intelligence 048:0238  
+1                      machine learning 039:0135  
+2                               regtech 033:0237  
+3                              big data 030:0163  
+4        financial technology (fintech) 026:0137
+
 >>> co_occurrence_network(co_occurrence_matrix(directory, 'author_keywords', min_occ=15), 'louvain').table().head()
                       node  num_documents  global_citations  cluster  \\
 0  artificial intelligence             48               238        2   
@@ -185,6 +202,36 @@ class Co_occurrence_network:
         table_["closeness"] = table_.node.map(closeness)
 
         return table_
+
+    def communities(self):
+
+        cluster_members = self.table().copy()
+        cluster_members = cluster_members.sort_values(by=["cluster", "num_documents"])
+        cluster_members = cluster_members.assign(
+            rn=cluster_members.groupby("cluster").cumcount(())
+        )
+
+        num_docs = cluster_members.num_documents.values
+        cited_by = cluster_members.global_citations.values
+        n_zeros_docs = int(np.log10(max(num_docs))) + 1
+        n_zeros_cited_by = int(np.log10(max(cited_by))) + 1
+
+        fmt = "{} {:0" + str(n_zeros_docs) + "d}:{:0" + str(n_zeros_cited_by) + "d}"
+        text = [
+            fmt.format(name, int(nd), int(tc))
+            for name, nd, tc in zip(cluster_members.node, num_docs, cited_by)
+        ]
+
+        cluster_members = cluster_members.assign(node=text)
+        cluster_members = cluster_members.assign(
+            cluster=cluster_members.cluster.map(lambda x: "CLUST_{:0d}".format(x))
+        )
+        cluster_members = cluster_members[["rn", "node", "cluster"]]
+        cluster_members = cluster_members.pivot(
+            index="rn", columns="cluster", values="node"
+        )
+        cluster_members = cluster_members.fillna("")
+        return cluster_members
 
 
 def co_occurrence_network(matrix, algorithm="louvain"):
