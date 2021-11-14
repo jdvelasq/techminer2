@@ -21,6 +21,7 @@ Analysis of bibliographic datasets using Python
     apply_thesaurus
     clean_institutions
     clean_keywords
+    column_coverage
     create_thesaurus
     extract_user_keywords
     find_string
@@ -35,6 +36,7 @@ Analysis of bibliographic datasets using Python
     collaboration_indicators
     column_indicators
     column_indicators_by_year
+    growth_indicators
     impact_indicators
     summary_view
 
@@ -84,6 +86,7 @@ Analysis of bibliographic datasets using Python
     co_citation_network
     co_occurrence_network
     correlation_map
+    main_path_network
 
 .. toctree::
     :caption: Reports
