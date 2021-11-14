@@ -1,4 +1,5 @@
 from .annual_indicators import annual_indicators
+from .annual_occurrence_matrix import annual_occurrence_matrix
 
 # from .annual_scientific_production import annual_scientific_production
 from .apply_thesaurus import apply_thesaurus

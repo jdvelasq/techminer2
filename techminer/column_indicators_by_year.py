@@ -3,6 +3,19 @@ Column indicators by year
 ===============================================================================
 
 
+>>> column_indicators_by_year(directory, 'authors').head(10)
+                 pub_year  num_documents  global_citations  local_citations
+authors                                                                    
+Aleksandrov AV       2015              1                 0                0
+Hong S/1             2015              1                 1                1
+Kantimirova EYu      2015              1                 0                0
+Kauffman RJ          2015              1                 9                4
+Kim JJ               2015              1                 1                1
+Klimenko AE          2015              1                 0                0
+Koike Y              2015              1                 0                0
+Ma D                 2015              1                 9                4
+Mackenzie A          2015              1                41               37
+Tabakov KV           2015              1                 0                0
 
 """
 from .utils import load_filtered_documents
@@ -37,6 +50,6 @@ def column_indicators_by_year(directory=None, column="authors", sep="; "):
     report["global_citations"] = report.global_citations.astype(int)
     report["local_citations"] = report.local_citations.astype(int)
     report = report.dropna()
-    report = report.reset_index(drop=True)
+    report = report.set_index(column)
 
     return report

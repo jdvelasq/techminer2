@@ -53,12 +53,13 @@ Analysis of bibliographic datasets using Python
     :hidden:
     :maxdepth: 1
 
+    annual_occurrence_matrix
     auto_corr_matrix
     co_occurrence_matrix
     cross_corr_matrix
     factor_matrix
-    tf_matrix
     tf_idf_matrix
+    tf_matrix
 
 
 
