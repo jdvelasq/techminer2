@@ -9,7 +9,9 @@ Analysis of bibliographic datasets using Python
 
     import_scopus_file
     coverage
+    document_viewer
     user_filters
+    
     
 .. toctree::
     :caption: Refine
