@@ -2,7 +2,6 @@ from .annual_indicators import annual_indicators
 
 # from .annual_scientific_production import annual_scientific_production
 from .apply_thesaurus import apply_thesaurus
-from .auto_corr_map import auto_corr_map
 from .auto_corr_matrix import auto_corr_matrix
 from .bar_chart import bar_chart
 from .bradford_plot import bradford_plot
@@ -19,6 +18,7 @@ from .column_indicators import column_indicators
 from .concept_mapping import concept_mapping
 from .core_authors import core_authors
 from .core_sources import core_sources
+from .correlation_map import correlation_map
 from .coverage import coverage
 from .create_thesaurus import create_thesaurus
 from .cross_corr_matrix import cross_corr_matrix
