@@ -130,9 +130,9 @@ Ashta A          5   9         5
 import numpy as np
 import pandas as pd
 
+from .tf_matrix import tf_matrix
 from .utils import *
 from .utils import index_terms2counters
-from .tf_matrix import tf_matrix
 
 # pyltin: disable=c0103
 # pylint: disable=too-many-arguments
@@ -151,28 +151,6 @@ def co_occurrence_matrix(
     scheme=None,
     sep="; ",
 ):
-    """
-    Returns a co-occurrence matrix.
-
-    :param directory_or_records:
-        A directory or a list of records.
-    :param column:
-        The column to be used.
-    :param by:
-        The column to be used to group the records.
-    :param min_occurrence:
-        The minimum occurrence of a word.
-    :param max_occurrence:
-        The maximum occurrence of a word.
-    :param stopwords:
-        A list of stopwords.
-    :param scheme:
-        The scheme to be used.
-    :param sep:
-        The separator to be used.
-    :return:
-        A co-occurrence matrix.
-    """
 
     if by is None or column == by:
         by = column
@@ -184,7 +162,6 @@ def co_occurrence_matrix(
             scheme=scheme,
             sep=sep,
         )
-        matrix_in_columns = matrix_in_columns.dropna()
         matrix_in_rows = matrix_in_columns.copy()
     else:
 
@@ -196,8 +173,6 @@ def co_occurrence_matrix(
             scheme=scheme,
             sep=sep,
         )
-
-        matrix_in_columns = matrix_in_columns.dropna()
 
         matrix_in_rows = tf_matrix(
             directory=directory,
@@ -228,5 +203,9 @@ def co_occurrence_matrix(
         matrix=co_occ_matrix,
         association=association,
     )
+
+    # ---< remove rows and columns with no associations >---------------------------------
+    co_occ_matrix = co_occ_matrix.loc[:, (co_occ_matrix != 0).any(axis=0)]
+    co_occ_matrix = co_occ_matrix.loc[(co_occ_matrix != 0).any(axis=1), :]
 
     return co_occ_matrix
