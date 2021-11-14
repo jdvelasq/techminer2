@@ -18,11 +18,12 @@ Analysis of bibliographic datasets using Python
     :hidden:
     :maxdepth: 1
 
+    apply_thesaurus
     clean_institutions
     clean_keywords
     create_thesaurus
-    apply_thesaurus
     extract_user_keywords
+    find_string
 
     
 .. toctree::

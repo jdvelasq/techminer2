@@ -28,6 +28,7 @@ from .document_viewer import document_viewer
 from .extract_user_keywords import extract_user_keywords
 from .factor_matrix import factor_matrix
 from .factorial_analysis_manifold import factorial_analysis_manifold
+from .find_string import find_string
 from .gantt_chart import gantt_chart
 from .gantt_points_chart import gantt_points_chart
 from .heat_map import heat_map
