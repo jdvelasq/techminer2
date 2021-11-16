@@ -57,7 +57,8 @@ RUN pip3 --disable-pip-version-check --no-cache-dir install \
     squarify==0.4.3 \
     networkx==2.6.3 \
     cdlib==0.2.5 \
-    seaborn==0.11.2
+    seaborn==0.11.2 \
+    ipywidgets==7.6.5 
 
 RUN apt update \
     && apt -yq --no-install-recommends install  graphviz \

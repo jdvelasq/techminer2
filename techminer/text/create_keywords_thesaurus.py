@@ -2,7 +2,7 @@ import os.path
 
 import pandas as pd
 
-from . import logging
+from ..utils import logging
 from .thesaurus import Thesaurus, load_file_as_dict, text_clustering
 
 

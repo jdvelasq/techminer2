@@ -25,8 +25,8 @@ from os.path import isfile
 
 import pandas as pd
 
+from .text.thesaurus import Thesaurus, load_file_as_dict, text_clustering
 from .utils import load_filtered_documents, logging
-from .utils.thesaurus import Thesaurus, load_file_as_dict, text_clustering
 
 
 def create_thesaurus(

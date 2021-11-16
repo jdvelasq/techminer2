@@ -11,7 +11,7 @@ import pandas as pd
 from .utils import load_filtered_documents
 
 
-def document_viewer(directory, column, text, case=False, flags=0, regex=True):
+def document_viewer(directory, column, text, case=False, flags=0, regex=True, top_n=10):
 
     documents = load_filtered_documents(directory)
     contains = documents[column].str.contains(text, case=case, flags=flags, regex=regex)
@@ -39,6 +39,8 @@ def document_viewer(directory, column, text, case=False, flags=0, regex=True):
     documents = documents[column_list]
     if "global_citations" in documents.columns:
         documents = documents.sort_values(by="global_citations", ascending=False)
+
+    documents = documents.head(top_n)
 
     for index, row in documents.iterrows():
 

@@ -4,14 +4,9 @@ from os.path import dirname, join
 
 import pandas as pd
 
-from .text import (
-    find_string,
-    fingerprint,
-    one_gram,
-    stemmer_porter,
-    stemmer_snowball,
-    two_gram,
-)
+from .porter_stemmer import porter_stemmer
+from .snowball_stemmer import snowball_stemmer
+from .text import find_string, fingerprint, one_gram, two_gram
 
 
 def text_clustering(x, name_strategy="mostfrequent", key="porter", transformer=None):
@@ -89,7 +84,7 @@ def text_clustering(x, name_strategy="mostfrequent", key="porter", transformer=N
     elif key == "2-gram":
         f = two_gram
     elif key == "porter":
-        f = stemmer_porter
+        f = porter_stemmer
     else:
         f = stemmer_snowball
     x["key"] = x.word_alt.map(f)

@@ -16,6 +16,7 @@ from .co_word_association_mds_map import co_word_association_mds_map
 from .collaboration_indicators import collaboration_indicators
 from .column_chart import column_chart
 from .column_coverage import column_coverage
+from .column_explorer import column_explorer
 from .column_indicators import column_indicators
 from .column_indicators_by_year import column_indicators_by_year
 from .concept_mapping import concept_mapping
@@ -42,6 +43,7 @@ from .main_path_network import main_path_network
 # from .mean_global_citations import mean_global_citations
 from .most_relevant_sources import most_relevant_sources
 from .pie_chart import pie_chart
+from .stemming import stemming_and, stemming_or
 from .summary_view import summary_view
 from .svd_co_occurrence_matrix_map import svd_co_occurrence_matrix_map
 from .svd_tf_idf_matrix_map import svd_tf_idf_matrix_map

@@ -24,8 +24,8 @@ import os
 
 import pandas as pd
 
+from .text.thesaurus import read_textfile
 from .utils import load_filtered_documents, logging, map_
-from .utils.thesaurus import read_textfile
 
 
 def apply_thesaurus(

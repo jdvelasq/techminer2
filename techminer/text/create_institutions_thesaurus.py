@@ -10,7 +10,7 @@ from os.path import dirname, isfile, join
 
 import pandas as pd
 
-from . import logging
+from ..utils import logging
 from .extract_country import extract_country
 from .thesaurus import Thesaurus, load_file_as_dict, read_textfile
 

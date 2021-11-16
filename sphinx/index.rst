@@ -25,6 +25,7 @@ Analysis of bibliographic datasets using Python
     create_thesaurus
     extract_user_keywords
     find_string
+    stemming
 
     
 .. toctree::

@@ -67,13 +67,12 @@ from tqdm import tqdm
 
 from .clean_institutions import clean_institutions
 from .clean_keywords import clean_keywords
-from .utils import (
+from .text import (
     create_institutions_thesaurus,
     create_keywords_thesaurus,
     extract_country,
-    logging,
-    map_,
 )
+from .utils import logging, map_
 
 # from .clean_keywords import clean_keywords
 # from .create_institutions_thesaurus import create_institutions_thesaurus

@@ -27,7 +27,7 @@ Name: num_documents, dtype: int64
 """
 import matplotlib.pyplot as plt
 
-from .time_report import time_report
+from .annual_indicators import annual_indicators
 
 
 class Annual_scientific_production:

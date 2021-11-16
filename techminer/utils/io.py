@@ -36,6 +36,8 @@ def load_all_documents(directory):
         raise FileNotFoundError(f"The file '{filename}' does not exist.")
     documents = pd.read_csv(filename, sep=",", encoding="utf-8")
 
+    documents.index = documents.document_id
+
     return documents
 
 
@@ -74,6 +76,8 @@ def load_filtered_documents(directory):
 
         if value is False:
             documents = documents.query(f"document_type != '{key}'")
+
+    documents.index = documents.document_id
 
     return documents
 

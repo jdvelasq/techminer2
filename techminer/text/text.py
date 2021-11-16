@@ -69,56 +69,6 @@ def find_string(
     return sorted(set(results))
 
 
-def stemming_AND(patterns, x, stemmer="porter", explode=True):
-    """
-
-    >>> x = [
-    ...    'Computer vision',
-    ...    'Computer simulation',
-    ...    'computer theory',
-    ...    'control systems',
-    ...    'Computer control systems',
-    ...    'hardware',
-    ... ]
-    >>> stemming_AND('control systems', x)
-    ['Computer control systems', 'control systems']
-
-    """
-
-    def prepare(term):
-        term = remove_accents(term)
-        term = term.lower()
-        term = term.split()
-        term = [w.strip() for w in term]
-        term = [stemmer(w) for w in term]
-        term = sorted(set(term))
-        term = " ".join(term)
-        return term
-
-    if stemmer == "porter":
-        stemmer = stemmer_porter
-    else:
-        stemmer = stemmer_snowball
-
-    if explode is True:
-        x = [z for e in x if isinstance(e, str) for z in e.split(";")]
-
-    x = {prepare(t): t for t in x}
-
-    if not isinstance(patterns, list):
-        patterns = [patterns]
-    patterns = [prepare(pattern) for pattern in patterns]
-
-    results = []
-    for key in x.keys():
-        for pattern in patterns:
-            if pattern in key:
-                results.append(x[key])
-                continue
-
-    return sorted(set(results))
-
-
 def stemming_OR(patterns, x, stemmer="porter", explode=True):
     """
 
@@ -316,48 +266,7 @@ def two_gram(x):
     return "".join(x)
 
 
-def stemmer_porter(x):
-    """Computes the stemmer transformation of string x.
 
-    Examples
-    ----------------------------------------------------------------------------------------------
-
-    >>> stemmer_porter('neural net')
-    'net neural'
-
-
-    """
-    if x is None:
-        return None
-    x = x.strip().lower()
-    x = re.sub("-", " ", x)
-    x = re.sub("[" + string.punctuation + "]", "", x)
-    x = remove_accents(x)
-    s = PorterStemmer()
-    x = sorted(set([s.stem(w) for w in x.split()]))
-    return " ".join(x)
-
-
-def stemmer_snowball(x):
-    """Computes the stemmer transformation of string x.
-
-    Examples
-    ----------------------------------------------------------------------------------------------
-
-    >>> stemmer_snowball('neural net')
-    'net neural'
-
-
-    """
-    if x is None:
-        return None
-    x = x.strip().lower()
-    x = re.sub("-", " ", x)
-    x = re.sub("[" + string.punctuation + "]", "", x)
-    x = remove_accents(x)
-    s = SnowballStemmer("english")
-    x = sorted(set([s.stem(w) for w in x.split()]))
-    return " ".join(x)
 
 
 def fingerprint(x):
