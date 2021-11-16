@@ -4,20 +4,7 @@ Annual scientific production
 
 
 >>> from techminer import *
->>> annual_scientific_production().table_
-pub_year
-2015      9
-2016     28
-2017     73
-2018    132
-2019    226
-2020    411
-2021    415
-2022      7
-Name: num_documents, dtype: int64
-
-
->>> annual_scientific_production().plot()
+>>> annual_scientific_production()
 
 .. image:: images/annual_scientific_production.png
     :width: 400px
@@ -26,57 +13,64 @@ Name: num_documents, dtype: int64
 
 """
 import matplotlib.pyplot as plt
+import matplotlib.ticker as tick
 
 from .annual_indicators import annual_indicators
 
 
-class Annual_scientific_production:
-    def __init__(self, directory):
-        self.directory = directory
-        self._run()
-
-    def _run(self):
-        self.annual_scientific_production = time_report(self.directory).num_documents
-
-    @property
-    def table_(self):
-        return self.annual_scientific_production
-
-    def plot(self, figsize=(6, 6), color="tab:blue"):
-
-        fig = plt.Figure(figsize=figsize)
-        ax = fig.subplots()
-
-        ax.plot(
-            self.annual_scientific_production.index.astype(str),
-            self.annual_scientific_production.values,
-            "o-",
-            color=color,
-            alpha=0.7,
-        )
-        ax.set_title("Annual scientific production", fontsize=9)
-        ax.set_ylabel("Number of publications")
-        ax.set_xlabel("Year")
-        ax.set_xticklabels(
-            self.annual_scientific_production.index.astype(str),
-            rotation=90,
-            horizontalalignment="center",
-            fontsize=7,
-        )
-        ax.set_yticklabels(
-            ax.get_yticks(),
-            fontsize=7,
-        )
-
-        ax.spines["left"].set_color("gray")
-        ax.spines["bottom"].set_color("gray")
-        ax.spines["top"].set_visible(False)
-        ax.spines["right"].set_visible(False)
-        ax.grid(alpha=0.5)
-        return fig
+def _yaxis_format(y_value, y_position):
+    y_formated = "{:1.0f}".format(y_value)
+    return y_formated
 
 
-def annual_scientific_production(directory=None):
+def annual_scientific_production(
+    directory=None,
+    figsize=(6, 6),
+    color="k",
+):
+
     if directory is None:
         directory = "/workspaces/techminer-api/tests/data/"
-    return Annual_scientific_production(directory)
+
+    production = annual_indicators(directory)["num_documents"]
+
+    fig = plt.Figure(figsize=figsize)
+    ax = fig.subplots()
+
+    ax.plot(
+        production.index.astype(str),
+        production.values,
+        "o-",
+        markersize=8,
+        color=color,
+        alpha=1.0,
+    )
+
+    ax.set_title(
+        "Annual scientific production", fontsize=10, color="dimgray", loc="left"
+    )
+    ax.set_ylabel("Number of publications", color="dimgray")
+    ax.set_xlabel("Year", color="dimgray")
+    ax.set_xticklabels(
+        production.index.astype(str),
+        rotation=90,
+        horizontalalignment="center",
+        fontsize=7,
+        color="dimgray",
+    )
+    ax.set_yticklabels(
+        ax.get_yticks(),
+        fontsize=7,
+        color="dimgray",
+    )
+
+    ax.yaxis.set_major_formatter(
+        tick.FuncFormatter(_yaxis_format),
+    )
+
+    ax.spines["left"].set_color("dimgray")
+    ax.spines["bottom"].set_color("dimgray")
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
+    ax.grid(alpha=0.5)
+    return fig

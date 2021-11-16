@@ -34,6 +34,7 @@ Analysis of bibliographic datasets using Python
     :maxdepth: 1
 
     annual_indicators
+    annual_scientific_production
     collaboration_indicators
     column_indicators
     column_indicators_by_year
@@ -104,14 +105,7 @@ Analysis of bibliographic datasets using Python
     tree_map
     word_cloud
     world_map
-
-
------------
-
-bar_chart
-
-terms_report
-
+    line_chart
 
 
 

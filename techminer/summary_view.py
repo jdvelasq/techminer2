@@ -51,6 +51,8 @@ OTHERS         document_id                                    1301
                raw_authors_names                              2816
                source_name                                     649
 """
+import datetime
+
 import numpy as np
 import pandas as pd
 
@@ -120,6 +122,16 @@ def summary_view(directory=None):
         cagr = str(round(100 * (np.power(n_records / Po, 1 / n_years) - 1), 2)) + " %"
         general["Compound annual growth rate:"] = cagr
 
+        #
+        # average years from publication
+        #
+        mean_years = records.pub_year.copy()
+        mean_years = mean_years.dropna()
+        mean_years = mean_years.mean()
+        current_year = datetime.datetime.now().year
+        agrp = round(int(current_year) - mean_years, 2)
+        general["Current years from publication:"] = agrp
+
     if "global_citations" in records.columns:
         #
         # average citations per document
@@ -140,12 +152,12 @@ def summary_view(directory=None):
             _count_terms(records, "global_references") / n_records
         )
 
-    if "publication_name" in records.columns:
-        general["Source titles:"] = round(_count_terms(records, "publication_name"))
-        general["Average documents per publication_name:"] = round(
-            n_records / _count_terms(records, "publication_name")
+    if "source_name" in records.columns:
+        general["Source names:"] = round(_count_terms(records, "source_name"))
+        general["Average documents per source_name:"] = round(
+            n_records / _count_terms(records, "source_name")
         )
-        records.pop("publication_name")
+        records.pop("source_name")
 
     if "iso_source_abbreviation" in records.columns:
         general["Abbreviated Source titles:"] = round(

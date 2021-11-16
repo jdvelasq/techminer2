@@ -1,7 +1,6 @@
 from .annual_indicators import annual_indicators
 from .annual_occurrence_matrix import annual_occurrence_matrix
-
-# from .annual_scientific_production import annual_scientific_production
+from .annual_scientific_production import annual_scientific_production
 from .apply_thesaurus import apply_thesaurus
 from .auto_corr_matrix import auto_corr_matrix
 from .bar_chart import bar_chart
@@ -37,6 +36,7 @@ from .growth_indicators import growth_indicators
 from .heat_map import heat_map
 from .impact_indicators import impact_indicators
 from .import_scopus_file import import_scopus_file
+from .line_chart import line_chart
 from .lotka_plot import lotka_plot
 from .main_path_network import main_path_network
 
