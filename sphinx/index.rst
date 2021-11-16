@@ -35,6 +35,7 @@ Analysis of bibliographic datasets using Python
 
     annual_indicators
     annual_scientific_production
+    average_citations_per_year
     collaboration_indicators
     column_indicators
     column_indicators_by_year

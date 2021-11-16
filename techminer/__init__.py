@@ -3,6 +3,7 @@ from .annual_occurrence_matrix import annual_occurrence_matrix
 from .annual_scientific_production import annual_scientific_production
 from .apply_thesaurus import apply_thesaurus
 from .auto_corr_matrix import auto_corr_matrix
+from .average_citations_per_year import average_citations_per_year
 from .bar_chart import bar_chart
 from .bradford_plot import bradford_plot
 from .ca_factorial_analysis import ca_factorial_analysis
