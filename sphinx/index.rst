@@ -7,9 +7,9 @@ Analysis of bibliographic datasets using Python
     :hidden:
     :maxdepth: 1
 
-    import_scopus_file
     coverage
     document_viewer
+    import_scopus_file
     user_filters
     
     
@@ -78,6 +78,7 @@ Analysis of bibliographic datasets using Python
     svd_co_occurrence_matrix_map
     svd_tf_idf_matrix_map
     thematic_analysis
+    thematic_map
     
 .. toctree::
     :caption: Network-based analysis

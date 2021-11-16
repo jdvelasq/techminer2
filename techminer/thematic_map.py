@@ -42,7 +42,8 @@ class ThematicMap:
             directory=self.directory,
             column=self.column,
             min_occ=self.min_occ,
-            association="equivalence",
+            association="association",
+            # association="equivalence",
             sep=self.sep,
         )
 
@@ -61,7 +62,7 @@ class ThematicMap:
         # ---< number of terms by node >---------------------------------------
         # table with (name, group)
         clusters = self.co_occurrence_network.nodes_.copy()
-        clusters.pop("size")
+        # clusters.pop("size")
 
         # ---< compute links >-------------------------------------------------
         links = self.co_occurrence_matrix.copy()
@@ -97,7 +98,9 @@ class ThematicMap:
 
         # -----< collect results >---------------------------------------------
         data = pd.concat([data, density], axis=1)
-        data["density"] = 100 * data.density / data.num_documents
+        data["density"] = (
+            100 * data.density / len(links.cluster_source.drop_duplicates())
+        )
 
         # -----< callon's centrality >-----------------------------------------
         centrality_links = links.cluster_source != links.cluster_target
@@ -117,14 +120,17 @@ class ThematicMap:
         centrality = centrality.rename(columns={"cluster_source": "cluster"})
         centrality = centrality.groupby("cluster").agg(np.sum)[["value"]]
         centrality = centrality.rename(columns={"value": "centrality"})
-        centrality = 10 * centrality.centrality
+        centrality = centrality.centrality
 
         # -----< collect results >---------------------------------------------
         data = pd.concat([data, centrality], axis=1)
 
+        communities = self.co_occurrence_network.communities().loc[0, :].tolist()
+        data["name"] = communities
+
         self.clusters_ = data
 
-    def map(self, color_scheme="clusters", figsize=(7, 7)):
+    def map(self, color_scheme="clusters", figsize=(8, 8)):
 
         median_density = self.clusters_.density.median()
         median_centrality = self.clusters_.centrality.median()
@@ -133,7 +139,8 @@ class ThematicMap:
             node_x=self.clusters_["centrality"],
             node_y=self.clusters_["density"],
             node_clusters=range(len(self.clusters_)),
-            node_texts=[f"CLTR_{i}" for i in self.clusters_.index],
+            # node_texts=[f"CLTR_{i}" for i in self.clusters_.index],
+            node_texts=self.clusters_.name,
             node_sizes=self.clusters_["num_documents"],
             x_axis_at=median_centrality,
             y_axis_at=median_density,

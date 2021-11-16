@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 
 from .explode import explode
-from .io import load_filtered_documents
+from .load_filtered_documents import load_filtered_documents
 
 
 def index_terms2counters(
@@ -21,9 +21,11 @@ def index_terms2counters(
     table = table.copy()
 
     documents = documents.assign(num_documents=1)
-    documents = documents[
-        [column, "num_documents", "global_citations", "document_id"]
-    ].copy()
+    # documents = documents[
+    #     [column, "num_documents", "global_citations", "document_id"]
+    # ].copy()
+
+    documents = documents[[column, "num_documents", "global_citations"]].copy()
 
     exploded = explode(documents, column, sep)
     exploded = exploded.groupby(column, as_index=False).agg(
@@ -35,7 +37,7 @@ def index_terms2counters(
 
     exploded["clean_name"] = exploded[column].copy()
     exploded["clean_name"] = exploded["clean_name"].astype(str)
-    exploded["clean_name"] = exploded["clean_name"].str.replace(r"/\d+", "")
+    # exploded["clean_name"] = exploded["clean_name"].str.replace(r"/\d+", "")
 
     names = {
         name: (clean_name, ndocs, citations)

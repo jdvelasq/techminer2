@@ -191,22 +191,23 @@ def bubble_map(
     #  ax.axis("equal")
 
     ## labels
-    ax.text(
-        ax.get_xlim()[1],
-        y_axis_at,
-        s=xlabel,
-        fontsize=fontsize,
-        horizontalalignment="right",
-        verticalalignment="bottom",
-    )
-    ax.text(
-        0.02 + y_axis_at,
-        ax.get_ylim()[1],
-        s=ylabel,
-        fontsize=fontsize,
-        horizontalalignment="left",
-        verticalalignment="bottom",
-    )
+    # ax.text(
+    #     # ax.get_xlim()[1],
+    #     x_axis_at,
+    #     y_axis_at,
+    #     s=xlabel,
+    #     fontsize=fontsize,
+    #     horizontalalignment="right",
+    #     verticalalignment="bottom",
+    # )
+    # ax.text(
+    #     0.02 + y_axis_at,
+    #     ax.get_ylim()[1],
+    #     s=ylabel,
+    #     fontsize=fontsize,
+    #     horizontalalignment="left",
+    #     verticalalignment="bottom",
+    # )
 
     ## generic
 
@@ -236,6 +237,7 @@ def bubble_map(
     # ax.spines["bottom"].set_visible(False)
 
     ## adjust figure size
-    # fig.set_tight_layout(True)
+    ax.set_aspect("auto")
+    fig.set_tight_layout(True)
 
     return fig

@@ -1,11 +1,9 @@
 from .association_index import association_index
 from .explode import explode
 from .index_terms2counters import index_terms2counters
-from .io import (
-    load_all_documents,
-    load_filtered_documents,
-    load_stopwords,
-    save_documents,
-)
+from .load_all_documents import load_all_documents
+from .load_filtered_documents import load_filtered_documents
+from .load_stopwords import load_stopwords
 from .main_path import MainPath
 from .map import map_
+from .save_documents import save_documents

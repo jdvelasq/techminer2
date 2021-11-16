@@ -12,9 +12,7 @@ import os
 import numpy as np
 import pandas as pd
 
-from techminer.utils.io import save_documents
-
-from .utils import load_all_documents, load_filtered_documents, logging
+from .utils import load_all_documents, load_filtered_documents, logging, save_documents
 
 
 def extract_user_keywords(

@@ -47,6 +47,7 @@ def tf_matrix(
 
     documents = load_filtered_documents(directory)
 
+    documents = documents.reset_index()
     documents = documents[[column, "document_id"]].copy()
     documents["value"] = 1
     documents[column] = documents[column].str.split(sep)

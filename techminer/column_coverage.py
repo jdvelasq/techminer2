@@ -32,6 +32,7 @@ def column_coverage(directory, column, sep="; "):
     stopwords = load_stopwords(directory)
 
     documents = load_filtered_documents(directory)
+    documents = documents.reset_index()
     documents = documents[[column, "document_id"]]
 
     n_documents = len(documents)
@@ -52,8 +53,10 @@ def column_coverage(directory, column, sep="; "):
     )
     documents = documents.sort_values(by=["num_documents"], ascending=False)
 
+    documents = documents.reset_index()
+
     documents = documents.groupby(by="num_documents", as_index=False).agg(
-        {"document_id": list}
+        {"document_id": list, column: list}
     )
 
     documents = documents.sort_values(by=["num_documents"], ascending=False)
@@ -61,19 +64,29 @@ def column_coverage(directory, column, sep="; "):
         lambda x: [term for sublist in x for term in sublist]
     )
 
-    documents = documents.assign(cum_sum=documents.document_id.cumsum())
-    documents = documents.assign(cum_sum=documents.cum_sum.map(set))
-    documents = documents.assign(cum_sum=documents.cum_sum.map(len))
+    documents = documents.assign(cum_sum_documents=documents.document_id.cumsum())
+    documents = documents.assign(cum_sum_documents=documents.cum_sum_documents.map(set))
+    documents = documents.assign(cum_sum_documents=documents.cum_sum_documents.map(len))
 
     documents = documents.assign(
-        coverage=documents.cum_sum.map(
+        coverage=documents.cum_sum_documents.map(
             lambda x: "{:5.2f} %".format(100 * x / n_documents)
         )
     )
 
+    documents = documents.assign(cum_sum_items=documents[column].cumsum())
+    documents = documents.assign(cum_sum_items=documents.cum_sum_items.map(set))
+    documents = documents.assign(cum_sum_items=documents.cum_sum_items.map(len))
+
     documents.drop("document_id", axis=1, inplace=True)
+    documents.drop(column, axis=1, inplace=True)
+
     documents = documents.rename(
-        columns={"num_documents": "min_occ", "cum_sum": "total num documents"}
+        columns={
+            "num_documents": "min_occ",
+            "cum_sum": "cum num documents",
+            "cum_sum_items": "cum num items",
+        }
     )
     documents = documents.reset_index(drop=True)
 

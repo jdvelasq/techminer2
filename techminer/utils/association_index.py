@@ -37,58 +37,50 @@ def association_index(matrix, association):
     normalized_matrix = matrix.copy()
 
     if association == "jaccard":
-        for col in normalized_matrix.columns:
-            for row in normalized_matrix.index:
-                matrix.at[row, col] = normalized_matrix.at[row, col] / (
-                    normalized_matrix.loc[row, row]
-                    + normalized_matrix.at[col, col]
-                    - normalized_matrix.at[row, col]
+        for col in matrix.columns:
+            for row in matrix.index:
+                normalized_matrix.at[row, col] = matrix.at[row, col] / (
+                    matrix.loc[row, row] + matrix.at[col, col] - matrix.at[row, col]
                 )
     elif association == "dice":
-        for col in normalized_matrix.columns:
-            for row in normalized_matrix.index:
-                matrix.at[row, col] = normalized_matrix.at[row, col] / (
-                    normalized_matrix.loc[row, row]
-                    + normalized_matrix.at[col, col]
-                    + 2 * normalized_matrix.at[row, col]
+        for col in matrix.columns:
+            for row in matrix.index:
+                normalized_matrix.at[row, col] = matrix.at[row, col] / (
+                    matrix.loc[row, row] + matrix.at[col, col] + 2 * matrix.at[row, col]
                 )
     elif association == "salton":  # cosine
-        for col in normalized_matrix.columns:
-            for row in normalized_matrix.index:
-                matrix.at[row, col] = normalized_matrix.at[row, col] / np.sqrt(
-                    (normalized_matrix.loc[row, row] * normalized_matrix.at[col, col])
+        for col in matrix.columns:
+            for row in matrix.index:
+                normalized_matrix.at[row, col] = matrix.at[row, col] / np.sqrt(
+                    (matrix.loc[row, row] * matrix.at[col, col])
                 )
 
     elif association == "equivalence":
-        for col in normalized_matrix.columns:
-            for row in normalized_matrix.index:
-                matrix.at[row, col] = normalized_matrix.at[row, col] ** 2 / (
-                    normalized_matrix.loc[row, row] * normalized_matrix.at[col, col]
+        for col in matrix.columns:
+            for row in matrix.index:
+                normalized_matrix.at[row, col] = matrix.at[row, col] ** 2 / (
+                    matrix.loc[row, row] * matrix.at[col, col]
                 )
     elif association == "inclusion":
-        for col in normalized_matrix.columns:
-            for row in normalized_matrix.index:
-                matrix.at[row, col] = normalized_matrix.at[row, col] / min(
-                    normalized_matrix.loc[row, row], normalized_matrix.at[col, col]
+        for col in matrix.columns:
+            for row in matrix.index:
+                normalized_matrix.at[row, col] = matrix.at[row, col] / min(
+                    matrix.loc[row, row], matrix.at[col, col]
                 )
 
     elif association == "mutualinfo":
-        n_columns = len(normalized_matrix.columns)
-        for col in normalized_matrix.columns:
-            for row in normalized_matrix.index:
-                matrix.at[row, col] = np.log(
-                    normalized_matrix.at[row, col]
-                    / (
-                        n_columns
-                        * normalized_matrix.loc[row, row]
-                        * normalized_matrix.at[col, col]
-                    )
+        n_columns = len(matrix.columns)
+        for col in matrix.columns:
+            for row in matrix.index:
+                normalized_matrix.at[row, col] = np.log(
+                    matrix.at[row, col]
+                    / (n_columns * matrix.loc[row, row] * matrix.at[col, col])
                 )
     elif association == "association":
-        for col in normalized_matrix.columns:
-            for row in normalized_matrix.index:
-                matrix.at[row, col] = normalized_matrix.at[row, col] / (
-                    normalized_matrix.loc[row, row] * normalized_matrix.at[col, col]
+        for col in matrix.columns:
+            for row in matrix.index:
+                normalized_matrix.at[row, col] = matrix.at[row, col] / (
+                    matrix.loc[row, row] * matrix.at[col, col]
                 )
     else:
         raise ValueError("Unknown normalization method.")
