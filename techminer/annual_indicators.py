@@ -39,6 +39,12 @@ pub_year
 2022                      7019                 3054 
 
 
+>>> line_chart(annual_indicators()['num_documents'], title="Annual Scientific Production", y_axis_int=True)
+
+.. image:: images/annual_scientific_production.png
+    :width: 600px
+    :align: center
+
 """
 from .utils import load_filtered_documents
 
