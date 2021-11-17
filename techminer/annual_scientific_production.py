@@ -7,7 +7,7 @@ Annual scientific production
 >>> annual_scientific_production()
 
 .. image:: images/annual_scientific_production.png
-    :width: 400px
+    :width: 600px
     :align: center
 
 

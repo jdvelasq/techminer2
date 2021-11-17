@@ -1,4 +1,4 @@
-.. automodule:: techminer.auto_corr_matrix
+.. automodule:: techminer.line_chart
     :members:
     :undoc-members:
     :show-inheritance:

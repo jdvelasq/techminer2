@@ -41,6 +41,7 @@ Analysis of bibliographic datasets using Python
     column_indicators_by_year
     growth_indicators
     impact_indicators
+    most_relevant_sources
     summary_view
 
 .. toctree::
