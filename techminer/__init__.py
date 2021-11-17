@@ -40,6 +40,7 @@ from .import_scopus_file import import_scopus_file
 from .line_chart import line_chart
 from .lotka_plot import lotka_plot
 from .main_path_network import main_path_network
+from .most_local_cited_sources import most_local_cited_sources
 
 # from .mean_global_citations import mean_global_citations
 from .most_relevant_sources import most_relevant_sources

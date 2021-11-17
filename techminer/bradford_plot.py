@@ -40,7 +40,7 @@ def _plot(
     color = cmap(0.6)
 
     ax_.plot(
-        list(range(1, n_sources + 1)),
+        list(range(0, n_sources)),
         num_records_by_source,
         linestyle="-",
         linewidth=3,
@@ -48,14 +48,14 @@ def _plot(
     )
 
     ax_.fill_between(
-        list(range(1, n_sources + 1)),
+        list(range(0, n_sources + 0)),
         num_records_by_source,
         color=color,
         alpha=0.6,
     )
 
     ax_.fill_between(
-        [1, n_core_sources + 1],
+        [0, n_core_sources + 0],
         [ax_.get_ylim()[1], ax_.get_ylim()[1]],
         color=color,
         alpha=0.2,
@@ -66,16 +66,20 @@ def _plot(
 
     ax_.set_xscale("log")
 
-    ax_.grid(axis="y", color="gray", linestyle=":")
-    ax_.grid(axis="x", color="gray", linestyle=":")
-    ax_.set_ylabel("Num Documents")
+    ax_.grid(axis="y", color="lightgray", linestyle=":")
+    ax_.grid(axis="x", color="lightgray", linestyle=":")
+    ax_.set_ylabel("Num Documents", fontsize=7)
 
     ax_.tick_params(axis="x", labelrotation=90)
 
-    ax_.set_xticks(list(range(1, n_core_sources + 1)))
+    ax_.set_xticks(list(range(1, n_sources + 1)))
     ax_.get_xaxis().set_major_formatter(matplotlib.ticker.ScalarFormatter())
-    ax_.set_xticklabels(core_sources_names.tolist())
+    ax_.set_xticklabels(core_sources_names.tolist(), fontsize=7)
 
+    for item in ax_.get_yticklabels():
+        item.set_fontsize(7)
+
+    ax_.set_title("Bradford's Law", fontsize=10, loc="left", color="k")
     fig.set_tight_layout(True)
     return fig
 
@@ -85,20 +89,20 @@ def _prepare_table(documents):
     documents = documents.copy()
 
     documents = documents.assign(num_documents=1)
-    exploded_records = explode(
-        documents[
-            [
-                "source_name",
-                "num_documents",
-                "global_citations",
-                "document_id",
-                "iso_source_name",
-            ]
-        ],
-        "source_name",
-        sep="; ",
-    )
-    sources = exploded_records.groupby("iso_source_name", as_index=False).agg(
+    # exploded_records = explode(
+    #     documents[
+    #         [
+    #             "source_name",
+    #             "num_documents",
+    #             "global_citations",
+    #             "document_id",
+    #             "iso_source_name",
+    #         ]
+    #     ],
+    #     "source_name",
+    #     sep="; ",
+    # )
+    sources = documents.groupby("iso_source_name", as_index=False).agg(
         {
             "num_documents": np.sum,
             "global_citations": np.sum,
@@ -113,7 +117,7 @@ def _prepare_table(documents):
     core_documents = int(len(documents) / 3)
     core_sources = sources[sources.cum_num_documents <= core_documents]
 
-    num_documents_by_source = core_sources.num_documents.copy()
+    num_documents_by_source = sources.num_documents.copy()
     core_sources_names = core_sources.iso_source_name.copy()
 
     return num_documents_by_source, core_sources_names
