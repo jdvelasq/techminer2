@@ -80,7 +80,6 @@ Analysis of bibliographic datasets using Python
     svd_co_occurrence_matrix_map
     svd_tf_idf_matrix_map
     thematic_analysis
-    thematic_map
     
 .. toctree::
     :caption: Network-based analysis

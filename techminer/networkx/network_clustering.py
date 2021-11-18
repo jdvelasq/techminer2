@@ -12,15 +12,44 @@ def network_clustering(
     """
     Network clustering.
 
+    Parameters:
+    -----------
     nodes: pandas.DataFrame
-    - name
-    - ...
+        Nodes dataframe, with the following columns:
+            - name
+            - size
+            - ...
 
     edges: pandas.DataFrame
-    - source
-    - target
-    - value
-    - ....
+        Edges dataframe, with the following columns:
+            - source
+            - target
+            - value
+            - ...
+
+    algorithm: str
+        Clustering algorithm. Valid options are the following:
+            - 'louvain'
+            - 'label_propagation'
+            - 'walktrap'
+            - 'leiden'
+
+    Returns:
+    --------
+    pandas.DataFrame
+        Nodes dataframe, with the following columns:
+        - name
+        - size
+        - group: int. Indicates the cluster assigned to the node.
+        - ...
+
+    pandas.DataFrame
+        Edges dataframe, with the following columns:
+        - source
+        - target
+        - value
+        - group: int. Indicates the cluster assigned to the edge.
+        - ...
 
     """
     nodes = nodes.copy()
@@ -52,17 +81,18 @@ def network_clustering(
     }[algorithm](G).communities
 
     communities = dict(
-        [
-            (member, i_community)
-            for i_community, community in enumerate(communities)
-            for member in community
-        ]
+        (member, i_community)
+        for i_community, community in enumerate(communities)
+        for member in community
     )
 
     nodes["group"] = nodes.name.map(communities)
 
-    # color for edges
+    # group of the each edge
     node_sizes = dict(zip(nodes.name, nodes["size"]))
+    edges["cluster_source"] = edges.source.map(communities)
+    edges["cluster_target"] = edges.target.map(communities)
+
     edges["group"] = [
         source if node_sizes[source] > node_sizes[target] else target
         for source, target in zip(edges.source, edges.target)

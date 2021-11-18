@@ -4,7 +4,6 @@ import pandas as pd
 from ..networkx import (
     betweenness_centrality,
     closeness_centrality,
-    network_clustering,
     network_plot,
     node_degrees_plot,
 )
@@ -35,7 +34,7 @@ class Co_occurrence_analysis:
         nodes = pd.DataFrame(
             {"name": self.co_occurrence_matrix.columns.get_level_values(0)}
         )
-        nodes["size"] = self.co_occurrence_matrix.values.diagonal()
+        nodes["size"] = self.co_occurrence_matrix.index.get_level_values(1)
         max_size = nodes["size"].max()
         nodes["size"] = nodes["size"] / max_size
         max_size = 1.0
@@ -81,7 +80,7 @@ class Co_occurrence_analysis:
             columns=["Dim-0", "Dim-1"],
             index=self.co_occurrence_matrix.index,
         )
-        words_by_cluster["Cluster"] = self.labels_
+        words_by_cluster["Cluster"] = self.labels_.tolist()
 
         self.words_by_cluster_ = words_by_cluster
 
@@ -152,12 +151,13 @@ class Co_occurrence_analysis:
     def words_by_cluster(self):
         return self.words_by_cluster_.copy()
 
-    def map(
+    def manifold_map(
         self,
         color_scheme="clusters",
         figsize=(7, 7),
         fontsize=7,
     ):
+
         return bubble_map(
             node_x=self.words_by_cluster_["Dim-0"],
             node_y=self.words_by_cluster_["Dim-1"],
@@ -171,4 +171,93 @@ class Co_occurrence_analysis:
             ylabel="Y-Axis",
             figsize=figsize,
             fontsize=fontsize,
+        )
+
+    def _compute_centrality_density(self):
+
+        # ---< data >----------------------------------------------------------
+        data = self.table()
+        data = data[["num_documents", "cluster"]]
+        data = data.groupby("cluster").agg(np.sum)  # data is a pd.DataFrame
+
+        # ---< network structure >---------------------------------------------
+        clusters = self.nodes_.copy()
+        links = self.edges_.copy()
+
+        # -----< callon's density >-------------------------------------------
+        density_links = links.cluster_source == links.cluster_target
+        density = links[density_links].copy()
+        density = density[["cluster_source", "value"]]
+        density = density.groupby("cluster_source").value.sum()
+        density.index = density.index.rename("cluster")
+        density = density.to_frame(name="density")
+
+        # -----< collect results >---------------------------------------------
+        data = pd.concat([data, density], axis=1)
+        data["density"] = (
+            100 * data.density / len(links.cluster_source.drop_duplicates())
+        )
+
+        # -----< callon's centrality >-----------------------------------------
+        centrality_links = links.cluster_source != links.cluster_target
+        centrality = links[centrality_links].copy()
+        centrality = centrality[["cluster_source", "cluster_target", "value"]]
+        centrality = centrality.reset_index(drop=True)
+
+        dup = centrality.copy()
+        dup = dup.rename(
+            columns={
+                "cluster_source": "cluster_target",
+                "cluster_target": "cluster_source",
+            }
+        )
+        centrality = centrality.append(dup)
+        centrality.reset_index(inplace=True, drop=True)
+        centrality = centrality.rename(columns={"cluster_source": "cluster"})
+        centrality = centrality.groupby("cluster").agg(np.sum)[["value"]]
+        centrality = centrality.rename(columns={"value": "centrality"})
+        centrality = centrality.centrality
+
+        # -----< collect results >---------------------------------------------
+        data = pd.concat([data, centrality], axis=1)
+
+        communities = self.communities().loc[0, :].tolist()
+        data["name"] = communities
+
+        self.centrality_density_ = data
+
+    def centrality_density_table(self):
+        return self.centrality_density_.copy()
+
+    def centrality_density_map(self, color_scheme="clusters", figsize=(8, 8)):
+        """
+
+        Implements a thematic map based on bibliometrix/conceptual structure/thematic map.
+        Source code: thematicMap.R in bibliometrix/R/
+
+
+        Cobo, M. J., Lopez-Herrera, A. G., Herrera-Viedma, E., & Herrera, F. (2011).
+        An approach for detecting, quantifying,  and visualizing the evolution of a
+        research field: A practical application to the fuzzy sets theory field.
+        Journal of Informetrics, 5(1), 146-166.
+
+        """
+
+        median_density = self.centrality_density_.density.median()
+        median_centrality = self.centrality_density_.centrality.median()
+
+        return bubble_map(
+            node_x=self.centrality_density_["centrality"],
+            node_y=self.centrality_density_["density"],
+            node_clusters=range(len(self.centrality_density_)),
+            # node_texts=[f"CLTR_{i}" for i in self.clusters_.index],
+            node_texts=self.centrality_density_.name,
+            node_sizes=self.centrality_density_["num_documents"],
+            x_axis_at=median_centrality,
+            y_axis_at=median_density,
+            color_scheme=color_scheme,
+            xlabel="centrality",
+            ylabel="density",
+            figsize=figsize,
+            fontsize=7,
         )

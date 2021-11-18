@@ -52,7 +52,6 @@ from .svd_tf_idf_matrix_map import svd_tf_idf_matrix_map
 from .tf_idf_matrix import tf_idf_matrix
 from .tf_matrix import tf_matrix
 from .thematic_analysis import thematic_analysis
-from .thematic_map import thematic_map
 from .top_documents import top_documents
 from .tree_map import tree_map
 from .user_filters import user_filters

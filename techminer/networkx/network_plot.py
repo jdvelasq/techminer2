@@ -43,16 +43,36 @@ def network_plot(
     max_labels=50,
 ):
     """
+    Plots the network.
 
+    Parameters
+    ----------
     nodes: pandas.DataFrame
-    - name
-    - group
-    - size
+        Nodes dataframe, with the following columns:
+            - name
+            - size
+            - group
+            - ...
 
     edges: pandas.DataFrame
-    - source
-    - target
-    - value
+        Edges dataframe, with the following columns:
+            - source
+            - target
+            - value
+            - group
+            - ...
+
+    figsize: tuple
+        Figure size.
+
+    k: float
+        Networkx parameter for the spring layout.
+
+    iterations: int
+        Networkx parameter for the spring layout.
+
+    max_labels: int
+        Maximum number of labels to show.
 
     """
 
