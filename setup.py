@@ -33,7 +33,7 @@ setup(
         "ipykernel==4.10.1",
         "ipywidgets==7.6.5",
         "matplotlib==3.1.0",
-        "networkx==2.6.3",
+        "networkx==2.5.1",
         "nltk==3.2.5",
         "numpy==1.19.5",
         "pandas==1.1.5",
