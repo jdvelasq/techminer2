@@ -1,4 +1,4 @@
-import os.path
+import os
 
 import pandas as pd
 
@@ -13,30 +13,27 @@ def create_keywords_thesaurus(directory):
     """
     logging.info("Creating keywords thesaurus ...")
 
-    if directory[-1] != "/":
-        directory = directory + "/"
-
     # --------------------------------------------------------------------------
     # Loads documents.csv
-    filename = directory + "documents.csv"
+    filename = os.path.join(directory, "documents.csv")
     if not os.path.isfile(filename):
         raise FileNotFoundError(f"The file '{filename}' does not exist.")
     data = pd.read_csv(filename, sep=",", encoding="utf-8")
     # --------------------------------------------------------------------------
 
-    thesaurus_file = directory + "keywords.txt"
+    thesaurus_file = os.path.join(directory, "keywords.txt")
 
     words_list = []
 
-    if "author_keywords" in data.columns:
-        words_list += data.author_keywords.tolist()
+    if "raw_author_keywords" in data.columns:
+        words_list += data.raw_author_keywords.tolist()
 
-    if "index_keywords" in data.columns:
-        words_list += data.index_keywords.tolist()
+    if "raw_index_keywords" in data.columns:
+        words_list += data.raw_index_keywords.tolist()
 
-    ##
-    ## Rules for keywords
-    ##
+    #
+    # Rules for keywords
+    #
     words_list = [words for words in words_list if not pd.isna(words)]
     words_list = [word for words in words_list for word in words.split(";")]
     words_list = [word for word in words_list if len(word.strip()) > 2]

@@ -1,4 +1,5 @@
 from .association_index import association_index
+from .co_occurrence_analysis import Co_occurrence_analysis
 from .explode import explode
 from .index_terms2counters import index_terms2counters
 from .load_all_documents import load_all_documents

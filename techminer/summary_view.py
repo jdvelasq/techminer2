@@ -146,15 +146,15 @@ def summary_view(directory=None):
             / (len(records) * (records.pub_year.max() - records.pub_year.min() + 1))
         )
 
-    if "global_references" in records.columns:
-        general["Total references:"] = round(_count_terms(records, "global_references"))
-        general["Average global references per document:"] = round(
-            _count_terms(records, "global_references") / n_records
+    if "cited_references" in records.columns:
+        general["Cited references:"] = round(_count_terms(records, "global_references"))
+        general["Average cited references per document:"] = round(
+            _count_terms(records, "cited_references") / n_records
         )
 
     if "source_name" in records.columns:
-        general["Source names:"] = round(_count_terms(records, "source_name"))
-        general["Average documents per source_name:"] = round(
+        general["Sources:"] = round(_count_terms(records, "source_name"))
+        general["Average documents per source:"] = round(
             n_records / _count_terms(records, "source_name")
         )
         records.pop("source_name")
@@ -233,36 +233,36 @@ def summary_view(directory=None):
     #
     keywords = {}
 
+    if "raw_author_keywords" in records.columns:
+        keywords["Raw author keywords:"] = round(
+            _count_terms(records, "raw_author_keywords")
+        )
+        records.pop("raw_author_keywords")
+
     if "author_keywords" in records.columns:
-        keywords["Author Keywords (raw):"] = round(
+        keywords["Cleaned author keywords:"] = round(
             _count_terms(records, "author_keywords")
         )
         records.pop("author_keywords")
 
-    if "author_keywords_cl" in records.columns:
-        keywords["Author Keywords (cleaned):"] = round(
-            _count_terms(records, "author_keywords_cl")
+    if "raw_index_keywords" in records.columns:
+        keywords["Raw index keywords:"] = round(
+            _count_terms(records, "raw_index_keywords")
         )
-        records.pop("author_keywords_cl")
+        records.pop("raw_index_keywords")
 
     if "index_keywords" in records.columns:
-        keywords["Index Keywords (raw):"] = round(
+        keywords["Cleaned index keywords:"] = round(
             _count_terms(records, "index_keywords")
         )
         records.pop("index_keywords")
-
-    if "index_keywords_cl" in records.columns:
-        keywords["Index Keywords (cleaned):"] = round(
-            _count_terms(records, "index_keywords_cl")
-        )
-        records.pop("index_keywords_cl")
 
     if "keywords_cl" in records.columns:
         keywords["Keywords (cleaned):"] = round(_count_terms(records, "keywords_cl"))
         records.pop("keywords_cl")
 
     if "title_words" in records.columns:
-        keywords["Title words (raw):"] = round(_count_terms(records, "title_words"))
+        keywords["Raw title words:"] = round(_count_terms(records, "title_words"))
         records.pop("title_words")
 
     if "title_words_CL" in records.columns:
@@ -290,8 +290,8 @@ def summary_view(directory=None):
     if "frac_num_documents" in records.columns:
         records.pop("frac_num_documents")
 
-    if "historiograph_id" in records.columns:
-        records.pop("historiograph_id")
+    if "document_id" in records.columns:
+        records.pop("document_id")
 
     d = []
     d += [key for key in general.keys()]
@@ -321,19 +321,24 @@ def summary_view(directory=None):
             "abstract_keywords",
             "abstract",
             "affiliations",
-            "authors",
             "authors_id",
+            "authors",
             "bradford_law_zone",
             "document_title",
             "global_citations",
-            "global_references",
             "global_references_count",
+            "global_references",
+            "isbn",
+            "issn",
+            "doi",
             "keywords",
             "local_citations",
             "local_references",
             "num_authors",
             "pub_year",
+            "raw_keywords",
             "record_id",
+            "wos_id",
         ]:
             continue
 

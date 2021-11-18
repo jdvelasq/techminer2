@@ -1,3 +1,58 @@
+technology acceptance model
+    technology acceptance model
+    technology acceptance model (tam)
+    technology acceptance model tam
+    tam
+    tam model    
+small and medium enterprise
+    small and medium enter-prises
+    small and medium enterprise
+    small and medium enterprises
+    small and medium enterprises (smes)
+    small and medium sized enterprise
+    small and medium-sized enterprise
+    small and medium-sized enterprises
+    small and medium-sized enterprises (smes)
+    small- and medium-sized enterprise
+    small- and medium-sized enterprises
+    msme
+    msmes
+    sme
+    smes
+peer-to-peer lending
+    peer to peer lending
+    peer-to-peer (p2p) lending
+    peer-to-peer lending
+    p2p lending
+internet of thing (iot)
+    internet of thing (iot)
+    internet of things
+    internet of things (iot)
+    iot
+p2p
+    p2p
+    peer to peer - p2p
+regtech
+    regtech
+    regulatory technologies (regtech)
+    regulatory technology
+    regulatory technology (regtech)
+blockchain
+    block chain technology
+    block chain
+    block-chain
+    blockchain
+    blockchains
+    blockchain technology
+    blockchain-technologies
+    the blockchain
+    and blockchain
+fintech innovation
+    fintech innovation
+    fintech innovations
+    fintech-innovations
+    financial technology innovation
+    innovative financial technologies
 *d14
     *d14
     d14
@@ -308,8 +363,6 @@ analytical strategy
     analytical strategy
 analytics
     analytics
-and blockchain
-    and blockchain
 android (operating system)
     android (operating system)
 anomaly detection
@@ -794,14 +847,6 @@ blackrock
     blackrock
 blending
     blending
-block chain technology
-    block chain technology
-block-chain
-    block chain
-    block-chain
-blockchain
-    blockchain
-    blockchains
 blockchain accounting
     blockchain accounting
 blockchain cost evaluation
@@ -820,9 +865,6 @@ blockchain task force
     blockchain task force
 blockchain-insurance
     blockchain-insurance
-blockchain-technologies
-    blockchain technology
-    blockchain-technologies
 boolean functions
     boolean functions
 boosted decision trees
@@ -3346,8 +3388,6 @@ finance literatures
     finance literatures
 finance news providers
     finance news providers
-finance technology
-    finance technology
 finance technology news
     finance technology news
 financial
@@ -3610,9 +3650,6 @@ financial system stability
     financial system stability
 financial technology (fintech) lending
     financial technology (fintech) lending
-financial technology innovation
-    financial technology innovation
-    innovative financial technologies
 financial technology law
     financial technology law
 financial text mining
@@ -3628,13 +3665,19 @@ financial trust
     financial trust
 financial values
     financial values
-financial-technology
+fintech
+    fintech
+    fintech (finance technology)
+    fintech (financial technology)
+    fintechs
+    fintech 3.0    
     financial technologies
     financial technologies (fintech)
     financial technology
     financial technology (fintech)
     financial technology financial technology
     financial-technology
+    finance technology
 financialisation
     financialisation
 financialisation of natural disasters
@@ -3657,13 +3700,6 @@ finsec 3.0
     finsec 3.0
 finserv
     finserv
-fintech
-    fintech
-    fintech (finance technology)
-    fintech (financial technology)
-    fintechs
-fintech 3.0
-    fintech 3.0
 fintech accelerators
     fintech accelerators
 fintech and banking
@@ -3807,10 +3843,6 @@ fintech-based financial inclusion
     fintech-based financial inclusion
 fintech-branch
     fintech-branch
-fintech-innovations
-    fintech innovation
-    fintech innovations
-    fintech-innovations
 fiqih knowledge
     fiqih knowledge
 firm efficiencies
@@ -4873,11 +4905,10 @@ insurance sector
     insurance sectors
 insurance supervision
     insurance supervision
-insurance technology
-    insurance technology
 insurtech
     insurtech
     insurtech)
+    insurance technology
 integer linear programming
     integer linear programming
 integer programming
@@ -5006,10 +5037,6 @@ internet of everything (ioe)
     internet of everything (ioe)
 internet of services
     internet of services
-internet of thing (iot)
-    internet of thing (iot)
-    internet of things
-    internet of things (iot)
 internet of things (iot) payment devices
     internet of things (iot) payment devices
 internet of things technologies
@@ -5105,8 +5132,6 @@ investors' preferences
     investors' preferences
 invoice trading
     invoice trading
-iot
-    iot
 iot perspectives in banks
     iot perspectives in banks
 iota
@@ -5972,9 +5997,6 @@ motion sensors
     motion sensors
 motivation
     motivation
-msme
-    msme
-    msmes
 multi agent systems
     multi agent systems
 multi criteria group decision making
@@ -6495,14 +6517,10 @@ ownership structure
     ownership structure
 p2b lending
     p2b lending
-p2p
-    p2p
 p2p currency exchange
     p2p currency exchange
 p2p finance - peer to peer finance
     p2p finance - peer to peer finance
-p2p lending
-    p2p lending
 p2p lending apps
     p2p lending apps
 p2p lending platform
@@ -6644,8 +6662,6 @@ paytech
     paytech
 pd forecast
     pd forecast
-peer to peer - p2p
-    peer to peer - p2p
 peer to peer lending financial technology corporation
     peer to peer lending financial technology corporation
 peer to peer networks
@@ -6657,10 +6673,6 @@ peer-to-peer (p2p) lending risk evaluation
     peer-to-peer (p2p) lending risk evaluation
 peer-to-peer investment
     peer-to-peer investment
-peer-to-peer lending
-    peer to peer lending
-    peer-to-peer (p2p) lending
-    peer-to-peer lending
 peer-to-peer lending platforms
     peer-to-peer lending platforms
 penetration level
@@ -7350,8 +7362,6 @@ regression metamodel
     regression metamodels
 regression testing
     regression testing
-regtech
-    regtech
 regulation
     regulation
     regulations
@@ -7399,10 +7409,6 @@ regulatory sandbox
     regulatory sandboxes
 regulatory standards
     regulatory standards
-regulatory technologies (regtech)
-    regulatory technologies (regtech)
-    regulatory technology
-    regulatory technology (regtech)
 regulatory-instrumentalism
     regulatory-instrumentalism
 reinforcement learning
@@ -8066,19 +8072,6 @@ slow growth
     slow growth
 slr
     slr
-small and medium enter-prises
-    small and medium enter-prises
-small and medium enterprise
-    small and medium enterprise
-    small and medium enterprises
-    small and medium enterprises (smes)
-small and medium-sized enterprises (smes)
-    small and medium sized enterprise
-    small and medium-sized enterprise
-    small and medium-sized enterprises
-    small and medium-sized enterprises (smes)
-    small- and medium-sized enterprise
-    small- and medium-sized enterprises
 small business credit
     small business credit
 small business finance
@@ -8146,9 +8139,6 @@ smart-contract
 smartphone
     smartphone
     smartphones
-sme
-    sme
-    smes
 sme finance
     sme finance
 sme financing availability
@@ -8755,10 +8745,6 @@ talent mapping
 talent training
     talent training
     talent trainings
-tam
-    tam
-tam model
-    tam model
 tam trust
     tam trust
 task analysis
@@ -8856,11 +8842,6 @@ technologies for modeling
     technologies for modeling
 technology acceptance
     technology acceptance
-technology acceptance model
-    technology acceptance model
-    technology acceptance model (tam)
-technology acceptance model tam
-    technology acceptance model tam
 technology adoption
     technology adoption
 technology adoption theories
@@ -8974,8 +8955,6 @@ thai natural language processing
     thai natural language processing
 thailand
     thailand
-the blockchain
-    the blockchain
 the future of banking
     the future of banking
 the smart marketplace

@@ -74,8 +74,8 @@ Analysis of bibliographic datasets using Python
     :hidden:
     :maxdepth: 1
 
+    co_occurrence_matrix_analysis
     co_word_association_mds_map
-    concept_mapping
     factorial_analysis_manifold
     svd_co_occurrence_matrix_map
     svd_tf_idf_matrix_map
@@ -88,7 +88,7 @@ Analysis of bibliographic datasets using Python
     :maxdepth: 1
 
     co_citation_network
-    co_occurrence_network
+    co_occurrence_network_analysis
     correlation_map
     main_path_network
 

@@ -8,9 +8,9 @@ the same directory as the documents.csv file.
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/tests/data/"
 >>> clean_keywords(directory)
-2021-11-08 18:48:08 - INFO - Applying thesaurus to 'author_keywords' column ...
-2021-11-08 18:48:08 - INFO - Applying thesaurus to 'index_keywords' column...
-2021-11-08 18:48:08 - INFO - Applying thesaurus to 'keywords' column...
+2021-11-08 18:48:08 - INFO - Applying thesaurus to 'raw_author_keywords' column ...
+2021-11-08 18:48:08 - INFO - Applying thesaurus to 'raw_index_keywords' column...
+2021-11-08 18:48:08 - INFO - Applying thesaurus to 'raw_keywords' column...
 2021-11-08 18:48:10 - INFO - The thesaurus was applied to keywords.
 
 
@@ -50,24 +50,24 @@ def clean_keywords(directory):
     #
     # Author keywords cleaning
     #
-    if "author_keywords" in documents.columns:
-        logging.info("Applying thesaurus to 'author_keywords' column ...")
-        documents["author_keywords_cleaned"] = map_(
-            documents, "author_keywords", th.apply_as_dict
+    if "raw_author_keywords" in documents.columns:
+        logging.info("Applying thesaurus to 'raw_author_keywords' column ...")
+        documents["author_keywords"] = map_(
+            documents, "raw_author_keywords", th.apply_as_dict
         )
 
     #
     # Index keywords cleaning
     #
-    if "index_keywords" in documents.columns:
-        logging.info("Applying thesaurus to 'index_keywords' column...")
-        documents["index_keywords_cleaned"] = map_(
-            documents, "index_keywords", th.apply_as_dict
+    if "raw_index_keywords" in documents.columns:
+        logging.info("Applying thesaurus to 'raw_index_keywords' column...")
+        documents["index_keywords"] = map_(
+            documents, "raw_index_keywords", th.apply_as_dict
         )
 
     if "keywords" in documents.columns:
-        logging.info("Applying thesaurus to 'keywords' column...")
-        documents["keywords_cleaned"] = map_(documents, "keywords", th.apply_as_dict)
+        logging.info("Applying thesaurus to 'raw_keywords' column...")
+        documents["keywords"] = map_(documents, "raw_keywords", th.apply_as_dict)
 
     #
     # Title keywords
@@ -100,4 +100,4 @@ def clean_keywords(directory):
         index=False,
     )
     # --------------------------------------------------------------------------
-    logging.info("The thesaurus was applied to keywords.")
+    logging.info("The thesaurus was applied to all keywords.")

@@ -160,10 +160,10 @@ def _process_affiliations_column(documents):
 
 
 def _process_author_keywords_column(documents):
-    if "author_keywords" in documents.columns:
+    if "raw_author_keywords" in documents.columns:
         logging.info("Processing author keywords ...")
         documents = documents.copy()
-        documents.author_keywords = documents.author_keywords.str.lower()
+        documents.raw_author_keywords = documents.raw_author_keywords.str.lower()
     return documents
 
 
@@ -226,20 +226,25 @@ def _process_global_references_column(documents):
 
 
 def _process_index_keywords_column(documents):
-    if "index_keywords" in documents.columns:
+    if "raw_index_keywords" in documents.columns:
         documents = documents.copy()
-        documents.index_keywords = documents.index_keywords.str.lower()
+        documents.raw_index_keywords = documents.raw_index_keywords.str.lower()
     return documents
 
 
 def _create_keywords_column(documents):
-    if "index_keywords" in documents.columns and "author_keywords" in documents.columns:
-        author_keywords = documents.author_keywords.copy()
-        author_keywords = author_keywords.str.split("; ")
-        index_keywords = documents.index_keywords.copy()
-        index_keywords = index_keywords.str.split("; ")
-        documents = documents.assign(keywords=author_keywords + index_keywords)
-        documents.keywords = documents.keywords.map(
+    if (
+        "raw_index_keywords" in documents.columns
+        and "raw_author_keywords" in documents.columns
+    ):
+        raw_author_keywords = documents.raw_author_keywords.copy()
+        raw_author_keywords = raw_author_keywords.str.split("; ")
+        raw_index_keywords = documents.raw_index_keywords.copy()
+        raw_index_keywords = raw_index_keywords.str.split("; ")
+        documents = documents.assign(
+            raw_keywords=raw_author_keywords + raw_index_keywords
+        )
+        documents.raw_keywords = documents.raw_keywords.map(
             lambda x: "; ".join(x) if isinstance(x, list) else x
         )
     return documents

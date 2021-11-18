@@ -44,6 +44,4 @@ def load_filtered_documents(directory):
         if value is False:
             documents = documents.query(f"document_type != '{key}'")
 
-    # documents = documents.set_index("document_id")
-
     return documents
