@@ -55,7 +55,7 @@ RUN pip3 --disable-pip-version-check --no-cache-dir install \
     pandas==1.1.5 \
     wordcloud==1.5.0 \
     squarify==0.4.3 \
-    networkx==2.6.3 \
+    networkx==2.5.1 \
     cdlib==0.2.5 \
     seaborn==0.11.2 \
     ipywidgets==7.6.5 
