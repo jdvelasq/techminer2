@@ -420,11 +420,11 @@ def _create_local_references_using_doi(documents):
     logging.info("Searching local references using DOI ...")
 
     with tqdm(total=len(documents.doi)) as pbar:
-        for i_index, doi in enumerate(documents.doi):
+        for i_index, doi in zip(documents.index, documents.doi):
             if not pd.isna(doi):
                 doi = doi.upper()
-                for j_index, references in enumerate(
-                    documents.global_references.tolist()
+                for j_index, references in zip(
+                    documents.index, documents.global_references.tolist()
                 ):
                     if pd.isna(references) is False and doi in references.upper():
                         documents.at[j_index, "local_references"].append(
@@ -440,12 +440,14 @@ def _create_local_references_using_title(documents):
 
     with tqdm(total=len(documents.document_title)) as pbar:
 
-        for i_index, _ in enumerate(documents.document_title):
+        for i_index in documents.index:
 
             document_title = documents.document_title[i_index].lower()
             pub_year = documents.pub_year[i_index]
 
-            for j_index, references in enumerate(documents.global_references.tolist()):
+            for j_index, references in zip(
+                documents.index, documents.global_references.tolist()
+            ):
 
                 if (
                     pd.isna(references) is False

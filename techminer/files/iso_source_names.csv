@@ -1,16 +1,30 @@
 source_name,iso_source_name
+"12th Latin American Conference on Learning Objects and Technologies, LACLO 2017","LAT AM CONF LEARN OBJECTS TECHNOL, LACLO"
 13TH CMI CONFERENCE ON CYBERSECURITY AND PRIVACY  DIGITAL TRANSFORMATION  POTENTIALS AND CHALLENGES CMI 2020,"CMI CONF CYBERSECUR PRIV - DIGIT TRANSFORM - POTENTIALS CHALLENGES, CMI"
 13TH INTERNATIONAL CONFERENCE ON COMPUTER SCIENCE AND EDUCATION ICCSE 2018,"INT CONF COMPUT SCI EDUC, ICCSE"
 "13th CMI Conference on Cybersecurity and Privacy - Digital Transformation - Potentials and Challenges, CMI 2020","CMI CONF CYBERSECUR PRIV - DIGIT TRANSFORM - POTENTIALS CHALLENGES, CMI"
 "13th International Conference on Computer Science and Education, ICCSE 2018","INT CONF COMPUT SCI EDUC, ICCSE"
 1ST 2018 INDONESIAN ASSOCIATION FOR PATTERN RECOGNITION INTERNATIONAL CONFERENCE INAPR 2018  PROCEEDINGS,"INDONES ASSOC PATTERN RECOGNIT INT CONF, INAPR - PROC"
 "1st 2018 Indonesian Association for Pattern Recognition International Conference, INAPR 2018 - Proceedings","INDONES ASSOC PATTERN RECOGNIT INT CONF, INAPR - PROC"
+"2010 2nd International Congress on Engineering Education: Transforming Engineering Education to Produce Quality Engineers, ICEED2010","INT CONGR ENG EDUC: TRANSFORMING ENG EDUC PROD QUAL ENG, ICEED"
+"2010 IEEE Education Engineering Conference, EDUCON 2010","IEEE EDUC ENG CONF, EDUCON"
+2010 IEEE Transforming Engineering Education: Creating Interdisciplinary Skills for Complex Global Environments,IEEE TRANSFORMING ENG EDUC: CREATING INTERDISCIP SKILLS COMPLEX GLOBAL ENVIRON
+"2013 IEEE 5th International Conference on Engineering Education: Aligning Engineering Education with Industrial Needs for Nation Development, ICEED 2013","IEEE INT CONF ENG EDUC: ALIGNING ENG EDUC IND NEEDS NATION DEV, ICEED"
+"2015 12th Learning and Technology Conference, L and T 2015","LEARN TECHNOL CONF, L T"
+"2015 IEEE 7th International Conference on Engineering Education, ICEED 2015","IEEE INT CONF ENG EDUC, ICEED"
+"2016 IEEE 5th Forum Strategic Partnership of Universities and Enterprises of Hi-Tech Branches, Science. Education. Innovations 2016","IEEE FORUM STRATEGIC PARTNERSH UNIV ENTERP HI-TECH BRANCHES, SCI EDUC INNOV"
+"2016 IEEE 8th International Conference on Engineering Education: Enhancing Engineering Education Through Academia-Industry Collaboration, ICEED 2016","IEEE INT CONF ENG EDUC: ENHANC ENG EDUC THROUGH ACAD-IND COLLAB, ICEED"
 2016 INTERNATIONAL CONFERENCE ON INFORMATION SYSTEMS ICIS 2016,"INT CONF INF SYST, ICIS"
 "2016 International Conference on Information Systems, ICIS 2016","INT CONF INF SYST, ICIS"
+"2017 Research in Engineering Education Symposium, REES 2017","RES ENG EDUC SYMP, REES"
+"2018 4th International Conference on Information Technologies in Engineering Education, Inforino 2018 - Proceedings","INT CONF INF TECHNOL ENG EDUC, INFORINO - PROC"
 2018 IEEE INTERNATIONAL CONFERENCE ON ENGINEERING TECHNOLOGY AND INNOVATION ICEITMC 2018  PROCEEDINGS,"IEEE INT CONF ENG, TECHNOL INNOV, ICE/ITMC - PROC"
 "2018 IEEE International Conference on Engineering, Technology and Innovation, ICE/ITMC 2018 - Proceedings","IEEE INT CONF ENG, TECHNOL INNOV, ICE/ITMC - PROC"
 2018 INTERNATIONAL SCIENTIFICPRACTICAL CONFERENCE ON PROBLEMS OF INFOCOMMUNICATIONS SCIENCE AND TECHNOLOGY PIC S AND T 2018  PROCEEDINGS,"INT SCI-PRACT CONF PROBL INFOCOMMUNICATIONS SCI TECHNOL, PIC S T - PROC"
 "2018 International Scientific-Practical Conference on Problems of Infocommunications Science and Technology, PIC S and T 2018 - Proceedings","INT SCI-PRACT CONF PROBL INFOCOMMUNICATIONS SCI TECHNOL, PIC S T - PROC"
+"2018 World Engineering Education Forum - Global Engineering Deans Council, WEEF-GEDC 2018","WORLD ENG EDUC FORUM - GLOB ENG DEANS COUNC, WEEF-GEDC"
+"2019 5th International Conference on Education and Technology, ICET 2019","INT CONF EDUC TECHNOL, ICET"
+"2019 6th International Conference on Technical Education, ICTechEd6 2019","INT CONF TECH EDUC, ICTECHED6"
 2019 7TH INTERNATIONAL CONFERENCE ON CYBER AND IT SERVICE MANAGEMENT CITSM 2019,"INT CONF CYBER IT SERV MANAG, CITSM"
 "2019 7th International Conference on Cyber and IT Service Management, CITSM 2019","INT CONF CYBER IT SERV MANAG, CITSM"
 2019 IEEE GLOBAL COMMUNICATIONS CONFERENCE GLOBECOM 2019  PROCEEDINGS,"IEEE GLOB COMMUN CONF, GLOBECOM - PROC"
@@ -29,6 +43,7 @@ source_name,iso_source_name
 "2020 3rd International Seminar on Research of Information Technology and Intelligent Systems, ISRITI 2020","INT SEMIN RES INF TECHNOL INTELL SYST, ISRITI"
 2020 6TH INTERNATIONAL CONFERENCE ON SIGNAL PROCESSING AND COMMUNICATION ICSC 2020,"INT CONF SIGNAL PROCESS COMMUN, ICSC"
 "2020 6th International Conference on Signal Processing and Communication, ICSC 2020","INT CONF SIGNAL PROCESS COMMUN, ICSC"
+"2020 7th International Conference on Technical Education: The Challenge of Disruptive Innovation in Engineering and Technical Education, ICTechEd7 2020","INT CONF TECH EDUC: CHALL DISRUPTIVE INNOV ENG TECH EDUC, ICTECHED7"
 2020 8TH INTERNATIONAL CONFERENCE ON INFORMATION AND COMMUNICATION TECHNOLOGY ICOICT 2020,"INT CONF INF COMMUN TECHNOL, ICOICT"
 2020 8TH INTERNATIONAL CONFERENCE ON ORANGE TECHNOLOGY ICOT 2020,"INT CONF ORANGE TECHNOL, ICOT"
 "2020 8th International Conference on Information and Communication Technology, ICoICT 2020","INT CONF INF COMMUN TECHNOL, ICOICT"
@@ -39,6 +54,7 @@ source_name,iso_source_name
 "2020 Advances in Science and Engineering Technology International Conferences, ASET 2020","ADV SCI ENG TECHNOL INT CONF, ASET"
 2020 IEEE 3RD INTERNATIONAL CONFERENCE ON ELECTRONICS TECHNOLOGY ICET 2020,"IEEE INT CONF ELECTRON TECHNOL, ICET"
 "2020 IEEE 3rd International Conference on Electronics Technology, ICET 2020","IEEE INT CONF ELECTRON TECHNOL, ICET"
+"2020 IFEES World Engineering Education Forum - Global Engineering Deans Council, WEEF-GEDC 2020","IFEES WORLD ENG EDUC FORUM - GLOB ENG DEANS COUNC, WEEF-GEDC"
 2020 INTERNATIONAL CONFERENCE ON DATA ANALYTICS FOR BUSINESS AND INDUSTRY WAY TOWARDS A SUSTAINABLE ECONOMY ICDABI 2020,"INT CONF DATA ANAL BUS IND: WAY TOWARDS SUSTAIN ECON, ICDABI"
 2020 INTERNATIONAL CONFERENCE ON DECISION AID SCIENCES AND APPLICATION DASA 2020,"INT CONF DECIS AID SCI APPL, DASA"
 2020 INTERNATIONAL CONFERENCE ON INNOVATION AND INTELLIGENCE FOR INFORMATICS COMPUTING AND TECHNOLOGIES 3ICT 2020,"INT CONF INNOV INTELL INFORMATICS, COMPUT TECHNOL, 3ICT"
@@ -47,24 +63,31 @@ source_name,iso_source_name
 "2020 International Conference on Decision Aid Sciences and Application, DASA 2020","INT CONF DECIS AID SCI APPL, DASA"
 "2020 International Conference on Innovation and Intelligence for Informatics, Computing and Technologies, 3ICT 2020","INT CONF INNOV INTELL INFORMATICS, COMPUT TECHNOL, 3ICT"
 "2020 International Symposium on Networks, Computers and Communications, ISNCC 2020","INT SYMP NETWORKS, COMPUT COMMUN, ISNCC"
+"2020 Transnational Engineering Education using Technology, TREET 2020","TRANSNATL ENG EDUC USING TECHNOL, TREET"
+"2021 10th International Conference on Educational and Information Technology, ICEIT 2021","INT CONF EDUC INF TECHNOL, ICEIT"
 2021 11TH INTERNATIONAL CONFERENCE ON ADVANCED COMPUTER INFORMATION TECHNOLOGIES ACIT 2021  PROCEEDINGS,"INT CONF ADV COMPUT INF TECHNOL, ACIT - PROC"
 "2021 11th International Conference on Advanced Computer Information Technologies, ACIT 2021 - Proceedings","INT CONF ADV COMPUT INF TECHNOL, ACIT - PROC"
 2021 IEEE 6TH INTERNATIONAL CONFERENCE ON CLOUD COMPUTING AND BIG DATA ANALYTICS ICCCBDA 2021,"IEEE INT CONF CLOUD COMPUT BIG DATA ANAL, ICCCBDA"
 "2021 IEEE 6th International Conference on Cloud Computing and Big Data Analytics, ICCCBDA 2021","IEEE INT CONF CLOUD COMPUT BIG DATA ANAL, ICCCBDA"
 2021 IEEE INTERNATIONAL IOT ELECTRONICS AND MECHATRONICS CONFERENCE IEMTRONICS 2021  PROCEEDINGS,"IEEE INT IOT, ELECTRON MECHATRONICS CONF, IEMTRONICS - PROC"
 "2021 IEEE International IOT, Electronics and Mechatronics Conference, IEMTRONICS 2021 - Proceedings","IEEE INT IOT, ELECTRON MECHATRONICS CONF, IEMTRONICS - PROC"
+"2021 Innovation and New Trends in Engineering, Technology and Science Education Conference, IETSEC 2021","INNOV NEW TRENDS ENG, TECHNOL SCI EDUC CONF, IETSEC"
 25TH AMERICAS CONFERENCE ON INFORMATION SYSTEMS AMCIS 2019,"AM CONF INF SYST, AMCIS"
 "25th Americas Conference on Information Systems, AMCIS 2019","AM CONF INF SYST, AMCIS"
 26TH AMERICAS CONFERENCE ON INFORMATION SYSTEMS AMCIS 2020,"AM CONF INF SYST, AMCIS"
 26TH EUROPEAN CONFERENCE ON INFORMATION SYSTEMS BEYOND DIGITIZATION  FACETS OF SOCIOTECHNICAL CHANGE ECIS 2018,"EUR CONF INF SYST: BEYOND DIGITIZATION - FACETS SOCIO-TECH CHANGE, ECIS"
 "26th Americas Conference on Information Systems, AMCIS 2020","AM CONF INF SYST, AMCIS"
 "26th European Conference on Information Systems: Beyond Digitization - Facets of Socio-Technical Change, ECIS 2018","EUR CONF INF SYST: BEYOND DIGITIZATION - FACETS SOCIO-TECH CHANGE, ECIS"
+"29th Annual Conference of the European Association for Education in Electrical and Information Engineering, EAEEIE 2019 - Proceedings","ANNU CONF EUR ASSOC EDUC ELECTR INF ENG, EAEEIE - PROC"
+"3rd International Conference of the Portuguese Society for Engineering Education, CISPEE 2018","INT CONF PORT SOC ENG EDUC, CISPEE"
 40TH INTERNATIONAL CONFERENCE ON INFORMATION SYSTEMS ICIS 2019,"INT CONF INF SYST, ICIS"
 "40th International Conference on Information Systems, ICIS 2019","INT CONF INF SYST, ICIS"
+"44th Annual Conference of the European Society for Engineering Education - Engineering Education on Top of the World: Industry-University Cooperation, SEFI 2016","ANNU CONF EUR SOC ENG EDUC - ENG EDUC TOP WORLD: IND-UNIV COOP, SEFI"
 50 YEARS OF CENTRAL BANKING IN KENYA,50 YEARS OF CENTRAL BANK IN KENYA
 50 Years of Central Banking in Kenya,50 YEARS OF CENTRAL BANK IN KENYA
 6TH INTERNATIONAL CONFERENCE ON COMPUTING ENGINEERING AND DESIGN ICCED 2020,"INT CONF COMPUT, ENG, DES, ICCED"
 "6th International Conference on Computing, Engineering, and Design, ICCED 2020","INT CONF COMPUT, ENG, DES, ICCED"
+"6th Research in Engineering Education Symposium: Translating Research into Practice, REES 2015","RES ENG EDUC SYMP: TRANSL RES PRACT, REES"
 ABAC JOURNAL,ABAC J
 ABAC Journal,ABAC J
 ACADEMY OF ACCOUNTING AND FINANCIAL STUDIES JOURNAL,ACAD ACCOUNT FINANC STUD J
@@ -100,6 +123,10 @@ APPLIED ECONOMICS LETTERS,APPL ECON LETT
 APPLIED GEOGRAPHY,APPL GEOGR
 APPLIED SCIENCES SWITZERLAND,APPL SCI
 AREA,AREA
+"ASCILITE 2016 - Conference Proceedings - 33rd International Conference of Innovation, Practice and Research in the Use of Educational Technologies in Tertiary Education: Show Me the Learning","ASCILITE - CONF PROC - INT CONF INNOV, PRACT RES USE EDUC TECHNOL TERT EDUC: SHOW ME LEARN"
+"ASCILITE 2017 - Conference Proceedings - 34th International Conference of Innovation, Practice and Research in the Use of Educational Technologies in Tertiary Education","ASCILITE - CONF PROC - INT CONF INNOV, PRACT RES USE EDUC TECHNOL TERT EDUC"
+"ASCILITE 2018 - Conference Proceedings - 35th International Conference of Innovation, Practice and Research in the use of Educational Technologies in Tertiary Education: Open Oceans: Learning Without Borders","ASCILITE - CONF PROC - INT CONF INNOV, PRACT RES USE EDUC TECHNOL TERT EDUC: OPEN OCEANS: LEARN WITHOUT BORDERS"
+"ASCILITE 2019 - Conference Proceedings - 36th International Conference of Innovation, Practice and Research in the Use of Educational Technologies in Tertiary Education: Personalised Learning. Diverse Goals. One Heart.","ASCILITE - CONF PROC - INT CONF INNOV, PRACT RES USE EDUC TECHNOL TERT EDUC: PERS LEARN DIVERSE GOALS ONE HEART"
 ASIA LIFE SCIENCES,ASIA LIFE SCI
 ASIA PACIFIC BUSINESS REVIEW,ASIA PAC BUS REV
 ASIA PACIFIC JOURNAL OF INFORMATION SYSTEMS,ASIA PAC J INF SYST
@@ -118,6 +145,7 @@ Accounting and Finance,ACCOUNT FINANC
 Addiction,ADDICTION
 Advanced Science Letters,ADV SCI LETT
 "Advances in African Economic, Social and Political Development",ADV AFR ECON SOC POLIT DEV
+Advances in Engineering Education,ADV ENG EDUC
 Advances in Information Security,ADVANCES IN INFORMATION SECURITY
 Advances in Intelligent Systems and Computing,ADV INTELL SYS COMPUT
 "Advances in Science, Technology and Innovation",ADV SCI TECH INNO
@@ -125,6 +153,7 @@ Africa Journal of Management,AFRICA J MANAG
 African Journal of Business and Economic Research,AFRICAN J BUS ECON RES
 African Journal of Economic and Management Studies,AFR J ECON MANAG STUD
 "African Journal of Hospitality, Tourism and Leisure",AFR J HOSP TOUR LEIS
+"African Journal of Research in Mathematics, Science and Technology Education",AF J RES MATH TECHNOL EDUC
 "African Journal of Science, Technology, Innovation and Development",AFR J SCI TECHNOL INNOV DEV
 Agroalimentaria,AGROALIMENTARIA
 Al-Shajarah,AL-SHAJARAH
@@ -145,6 +174,7 @@ Asia Policy,ASIA POLICY
 Asia-Pacific Journal of Financial Studies,ASIA-PAC J FINANC STUD
 Asian Academy of Management Journal of Accounting and Finance,ASIAN ACAD MANAGE J ACCOUNT FINANC
 Asian Journal of Law and Society,ASIAN J LAW SOC
+Australasian Journal of Engineering Education,AUSTRALASIAN JOURNAL OF ENGINEERING EDUCATION
 Australian Educational Researcher,AUST EDUC RES
 Australian Journal of Management,AUST J MANAGE
 BALKAN SOCIAL SCIENCE REVIEW,BALKAN SOC SCI REV
@@ -196,6 +226,7 @@ CHINA ECONOMIC JOURNAL,CHINA ECON J
 CHINA FINANCE REVIEW INTERNATIONAL,CHINA FINANCE REV INT
 CHINA QUARTERLY,CHINA Q
 CHINESE MANAGEMENT STUDIES,CHIN MANAGE STUD
+"CISPEE 2016 - 2nd International Conference of the Portuguese Society for Engineering Education, Proceedings","CISPEE - INT CONF PORT SOC ENG EDUC, PROC"
 COGENT BUSINESS AND MANAGEMENT,COGENT BUS MANAG
 COGENT ECONOMICS AND FINANCE,COGENT ECON FINANCE
 COMMUNICATIONS IN COMPUTER AND INFORMATION SCIENCE,COMMUN COMPUT INFO SCI
@@ -221,7 +252,9 @@ CRYPTO UNCOVERED THE EVOLUTION OF BITCOIN AND THE CRYPTO CURRENCY MARKETPLACE,CR
 CRYPTOCURRENCY IN ALL ASPECTS,CRYPTOCURRENCY IN ALL ASP
 CURRENT OPINION IN ENVIRONMENTAL SUSTAINABILITY,CURR OPIN ENVIRON SUSTAINABILITY
 CUTTER BUSINESS TECHNOLOGY JOURNAL,CUTTER BUSINESS TECHNOLOGY JOURNAL
+Cambridge Handbook of Engineering Education Research,CAMB HANDB OF ENGINEERING EDUCATION RESEARCH
 Capital Markets Law Journal,CAP MARK LAW J
+"Cases on Educational Technology Planning, Design, and Implementation: A Project Management Perspective","CASES ON EDUC TECHNOL PLAN, DES, AND IMPLEMENT: A PROJ MANAG PERSPECT"
 Cato Journal,CATO J
 Chaos,CHAOS
 China Economic Journal,CHINA ECON J
@@ -229,6 +262,7 @@ China Finance Review International,CHINA FINANCE REV INT
 China Quarterly,CHINA Q
 China and World Economy,CHINA WORLD ECON
 Chinese Management Studies,CHIN MANAGE STUD
+Civil Engineering Education Summit: Mapping the Future of Civil Engineering Education,CIV ENG EDUC SUMMIT: MAPP FUTURE CIV ENG EDUC
 Cogent Business and Management,COGENT BUS MANAG
 Cogent Economics and Finance,COGENT ECON FINANCE
 Communications in Computer and Information Science,COMMUN COMPUT INFO SCI
@@ -236,6 +270,7 @@ Communications of the ACM,COMMUN ACM
 Competition Law Journal,COMPET LAW J
 Complexity,COMPLEXITY
 Computational Economics,COMPUT ECON
+Computer Applications in Engineering Education,COMPUT APPL ENG EDUC
 Computer Networks,COMPUT NETWORKS
 Computer Science and Information Systems,COMP SCI INFO SYS
 Computer Standards and Interfaces,COMPUT STAND INTERFACES
@@ -257,6 +292,7 @@ DIGITAL MARKETPLACES UNLEASHED,DIGIT MARKETPLACES UNLEASHED
 DIGITAL POLICY REGULATION AND GOVERNANCE ,DIGIT POLI REGUL GOVERN
 DIS 2020 COMPANION  COMPANION PUBLICATION OF THE 2020 ACM DESIGNING INTERACTIVE SYSTEMS CONFERENCE,DIS COMPANION - COMPANION PUBL ACM DES INTERACT SYST CONF
 DIS 2020 Companion - Companion Publication of the 2020 ACM Designing Interactive Systems Conference,DIS COMPANION - COMPANION PUBL ACM DES INTERACT SYST CONF
+"DS 62: Proceedings of E and PDE 2010, the 12th International Conference on Engineering and Product Design Education - When Design Education and Design Research Meet","DS: PROC E PDE, INT CONF ENG PROD DES EDUC - WHEN DES EDUC DES RES MEET "
 DYNAMICS OF ASYMMETRIC CONFLICT PATHWAYS TOWARD TERRORISM AND GENOCIDE,DYN ASYMMETRIC CONFL PATHWAYS TOWARD TERRORISM AND GENOCIDE
 Dark Side of Digital Organization,DARK SIDE OF DIGIT ORGAN
 Dialogues in Human Geography,DIALOGUES HUM GEOGR
@@ -280,6 +316,10 @@ ECONOMICS LETTERS,ECON LETT
 ECONOMICS OF INNOVATION AND NEW TECHNOLOGY,ECON INNOV NEW TECHNOL
 ECONOMIST UNITED KINGDOM,ECONOMIST
 ECONOMY AND SOCIETY,ECON SOC
+"EDUNINE 2018 - 2nd IEEE World Engineering Education Conference: The Role of Professional Associations in Contemporaneous Engineer Careers, Proceedings","EDUNINE - IEEE WORLD ENG EDUC CONF: ROLE PROF ASSOC CONTEMP ENG CAREERS, PROC"
+"EDUNINE 2019 - 3rd IEEE World Engineering Education Conference: Modern Educational Paradigms for Computer and Engineering Career, Proceedings","EDUNINE - IEEE WORLD ENG EDUC CONF: MODERN EDUC PARADIG COMPUT ENG CAREER, PROC"
+"EDUNINE 2020 - 4th IEEE World Engineering Education Conference: The Challenges of Education in Engineering, Computing and Technology without Exclusions: Innovation in the Era of the Industrial Revolution 4.0, Proceedings","EDUNINE - IEEE WORLD ENG EDUC CONF: CHALLENGES EDUC ENG, COMPUT TECHNOL EXCLUSIONS: INNOV ERA IND REVOLUT 40, PROC"
+"EDUNINE 2021 - 5th IEEE World Engineering Education Conference: The Future of Engineering Education: Current Challenges and Opportunities, Proceedings","EDUNINE - IEEE WORLD ENG EDUC CONF: FUTURE ENG EDUC: CURRENT CHALLENGES OPPOR, PROC"
 EJOURNAL OF TAX RESEARCH,EJOURNAL TAX RES
 ELECTRONIC COMMERCE RESEARCH,ELECTRON COMMER RES
 ELECTRONIC COMMERCE RESEARCH AND APPLICATIONS,ELECT COMMER RES APPL
@@ -309,6 +349,7 @@ ESECFSE 2018  PROCEEDINGS OF THE 2018 26TH ACM JOINT MEETING ON EUROPEAN SOFTWAR
 ESECFSE 2019  PROCEEDINGS OF THE 2019 27TH ACM JOINT MEETING EUROPEAN SOFTWARE ENGINEERING CONFERENCE AND SYMPOSIUM ON THE FOUNDATIONS OF SOFTWARE ENGINEERING,ESEC/FSE - PROC ACM JT MEET EUR SOFTW ENG CONF SYMP FOUND SOFTW ENG
 ESECFSE 2020  PROCEEDINGS OF THE 28TH ACM JOINT MEETING EUROPEAN SOFTWARE ENGINEERING CONFERENCE AND SYMPOSIUM ON THE FOUNDATIONS OF SOFTWARE ENGINEERING,ESEC/FSE - PROC ACM JT MEET EUR SOFTW ENG CONF SYMP FOUND SOFTW ENG
 ESTUDIOS DE ECONOMIA APLICADA,ESTUD ECON APL
+EUCEET 2018 - 4th International Conference on Civil Engineering Education: Challenges for the Third Millennium,EUCEET - INT CONF CIV ENG EDUC: CHALLENGES THIRD MILLENN
 EUROPEAN BUSINESS LAW REVIEW,EUR BUS LAW REV
 EUROPEAN BUSINESS ORGANIZATION LAW REVIEW,EUR BUS ORG LAW REV
 EUROPEAN COMPETITION JOURNAL,EUR COMPET J
@@ -331,6 +372,8 @@ Economics Letters,ECON LETT
 Economics of Innovation and New Technology,ECON INNOV NEW TECHNOL
 Economist (United Kingdom),ECONOMIST
 Economy and Society,ECON SOC
+Education Division 2013 - Core Programming Area at the 2013 AIChE Annual Meeting: Global Challenges for Engineering a Sustainable Future,EDUC DIV - CORE PROGRAM AREA AICHE ANNU MEET: GLOBAL CHALLENGES ENG SUSTAINABLE FUTURE
+Educational Technology and Society,EDUCATIONAL TECHNOLOGY AND SOCIETY
 Electronic Commerce Research,ELECTRON COMMER RES
 Electronic Commerce Research and Applications,ELECT COMMER RES APPL
 Electronic Markets,ELECTRON MARK
@@ -342,6 +385,10 @@ Energy Policy,ENERGY POLICY
 Energy Procedia,ENERGY PROCEDIA
 Energy Research and Social Science,ENERGY RES SOC SCI
 Engineering Applications of Artificial Intelligence,ENG APPL ARTIF INTELL
+Engineering Education,ENG EDUC
+"Engineering Education 2010: Inspiring the Next Generation of Engineers, EE 2010","ENG EDUC: INSPIRING NEXT GENER ENG, EE"
+"Engineering Technology, Engineering Education and Engineering Management - International Conference on Engineering Technology, Engineering Education and Engineering Management, ETEEEM 2014",ENG TECHNOL ENG EDUC ENG MANAG - INT CONF ENG TECHNOL ENG EDUC ENG MANAG
+Enhancing Learning and Teaching Through Student Feedback in Engineering,ENHANC LEARN AND TEACH THROUGH STUD FEEDBACK IN ENG
 Enterprise Information Systems,ENTERP INF SYST
 Entrepreneurship and Regional Development,ENTREP REG DEV
 Entrepreneurship and Sustainability Issues,ENTREP SUSTAIN ISSUES
@@ -354,6 +401,7 @@ Estudios de Economia Aplicada,ESTUD ECON APL
 European Business Law Review,EUR BUS LAW REV
 European Business Organization Law Review,EUR BUS ORG LAW REV
 European Competition Journal,EUR COMPET J
+European Journal of Engineering Education,EUR J ENG EDUC
 European Journal of Finance,EUR J FINANC
 European Journal of Information Systems,EUR J INF SYST
 European Journal of Risk Regulation,EUR J RISK REGUL
@@ -437,6 +485,7 @@ HOUSING POLICY DEBATE,HOUS POLICY DEBATE
 HUMANCENTRIC COMPUTING AND INFORMATION SCIENCES,HUM-CENTRIC COMPUT INF SCI
 "Handbook of Blockchain, Digital Finance, and Inclusion","HANDB OF BLOCKCHAIN, DIGIT FINANC, AND INCL"
 "Handbook of Blockchain, Digital Finance, and Inclusion, Volume 1: Cryptocurrency, FinTech, InsurTech, and Regulation","HANDB OF BLOCKCHAIN, DIGIT FINANC, AND INCL, VOL 1: CRYPTOCURR, FINTECH, INSURTECH, AND REGUL"
+Handbook of Research on Recent Developments in Materials Science and Corrosion Engineering Education,HANDB OF RES ON RECENT DEV IN MATER SC AND CORROS ENG EDUC
 Handbook of Research on Strategic Fit and Design in Business Ecosystems,HANDB OF RES ON STRATEG FIT AND DES IN BUS ECOSYST
 Harvard Business Review,HARV BUS REV
 Heliyon,HELIYON
@@ -452,6 +501,8 @@ ICAICST 2021  2021 INTERNATIONAL CONFERENCE ON ARTIFICIAL INTELLIGENCE AND COMPU
 ICAICST 2021 - 2021 International Conference on Artificial Intelligence and Computer Science Technology,ICAICST - INT CONF ARTIF INTELL COMPUT SCI TECHNOL
 ICASSP IEEE INTERNATIONAL CONFERENCE ON ACOUSTICS SPEECH AND SIGNAL PROCESSING  PROCEEDINGS,ICASSP IEEE INT CONF ACOUST SPEECH SIGNAL PROCESS PROC
 "ICASSP, IEEE International Conference on Acoustics, Speech and Signal Processing - Proceedings",ICASSP IEEE INT CONF ACOUST SPEECH SIGNAL PROCESS PROC
+ICEED 2012 - 2012 4th International Congress on Engineering Education - Improving Engineering Education: Towards Sustainable Development,ICEED - INT CONGR ENG EDUC - IMPROV ENG EDUC: TOWARDS SUSTAINABLE DEV
+ICEED 2014 - 2014 IEEE 6th Conference on Engineering Education,ICEED - IEEE CONF ENG EDUC
 ICETA 2020  18TH IEEE INTERNATIONAL CONFERENCE ON EMERGING ELEARNING TECHNOLOGIES AND APPLICATIONS PROCEEDINGS,"ICETA - IEEE INT CONF EMERG ELEARNING TECHNOL APPL, PROC"
 "ICETA 2020 - 18th IEEE International Conference on Emerging eLearning Technologies and Applications, Proceedings","ICETA - IEEE INT CONF EMERG ELEARNING TECHNOL APPL, PROC"
 ICIC EXPRESS LETTERS PART B APPLICATIONS,ICIC EXPRESS LETT PART B APPL
@@ -462,6 +513,7 @@ ICRITO 2020  IEEE 8TH INTERNATIONAL CONFERENCE ON RELIABILITY INFOCOM TECHNOLOGI
 "ICRITO 2020 - IEEE 8th International Conference on Reliability, Infocom Technologies and Optimization (Trends and Future Directions)","ICRITO - IEEE INT CONF RELIAB, INFOCOM TECHNOL OPTIM (TRENDS FUTURE DIRECTIONS)"
 IEEE ACCESS,IEEE ACCESS
 IEEE Access,IEEE ACCESS
+"IEEE Global Engineering Education Conference, EDUCON","IEEE GLOBAL ENG EDU CONF, EDUCON"
 IEEE INTELLIGENT SYSTEMS,IEEE INTELL SYST
 IEEE INTERNATIONAL CONFERENCE ON ELECTRO INFORMATION TECHNOLOGY,IEEE INT CONF ELECTRO INFORM TECHNOL
 IEEE INTERNET OF THINGS JOURNAL,IEEE INTERNET THINGS J
@@ -473,6 +525,7 @@ IEEE Potentials,IEEE POTENTIALS
 IEEE TRANSACTIONS ON ENGINEERING MANAGEMENT,IEEE TRANS ENG MANAGE
 IEEE TRANSACTIONS ON VISUALIZATION AND COMPUTER GRAPHICS,IEEE TRANS VISUAL COMPUT GRAPHICS
 IEEE Transactions on Engineering Management,IEEE TRANS ENG MANAGE
+IEEE Transactions on Learning Technologies,IEEE TRANS LEARN TECHNOL
 IEEE Transactions on Visualization and Computer Graphics,IEEE TRANS VISUAL COMPUT GRAPHICS
 IEICE TRANSACTIONS ON FUNDAMENTALS OF ELECTRONICS COMMUNICATIONS AND COMPUTER SCIENCES,IEICE TRANS FUND ELECTRON COMMUN COMPUT SCI
 "IEICE Transactions on Fundamentals of Electronics, Communications and Computer Sciences",IEICE TRANS FUND ELECTRON COMMUN COMPUT SCI
@@ -599,6 +652,7 @@ ISLAMIC FINTECH,ISLAMIC FINTECH
 ISLAMIC LAW AND SOCIETY,ISLAMIC LAW SOC
 IT PROFESSIONAL,IT PROF
 IT Professional,IT PROF
+ITHET 2014 - 13th International Conference on Information Technology Based Higher Education and Training,ITHET - INT CONF INF TECHNOL BASED HIGH EDUC TRAIN
 "Iberian Conference on Information Systems and Technologies, CISTI","IBERIAN CONF INF SYST TECHNOL, CISTI"
 Impact of Financial Technology (FinTech) on Islamic Finance and Financial Stability,IMPACT OF FINANC TECHNOL (FINTECH) ON ISLAM FINANC AND FINANC STAB
 "Inclusive Fintech: Blockchain, Cryptocurrency and Ico","INCLUSIVE FINTECH: BLOCKCHAIN, CRYPTOCURRENCY AND ICO"
@@ -627,6 +681,7 @@ InterEULawEast,INTEREULAWEAST
 International Conference on ICT and Knowledge Engineering,INT CONF ICT KNOWL ENG
 "International Conference on Information Systems 2018, ICIS 2018","INT CONF INF SYST, ICIS"
 "International Conference on Information Systems, ICIS 2020 - Making Digital Inclusive: Blending the Local and the Global","INT CONF INF SYST, ICIS - MAK DIGIT INCL: BLENDING LOCAL GLOB"
+"International Conference on Transforming Engineering Education, ICTEE 2017","INT CONF TRANSFORM ENG EDUC, ICTEE"
 International Data Privacy Law,INT DATA PRIVACY LAW
 International Entrepreneurship and Management Journal,INT ENTREP MANAGE J
 International Finance Review,INT FINANC REV
@@ -643,12 +698,17 @@ International Journal of Business Intelligence Research,INT J BUS INTELL RES
 International Journal of Business Performance Management,INT J BUS PERFORM MANAGE
 International Journal of Business and Systems Research,INT J BUS SYST RES
 International Journal of Central Banking,INT J CENT BANK
+International Journal of Continuing Engineering Education and Life-Long Learning,INT J CONTIN ENG EDUC LIFE LONG LEARN
 International Journal of Criminology and Sociology,INT J CRIMINOL SOCIOL
 International Journal of Data Science and Analytics,INT J DATA SCI ANAL
 International Journal of Disclosure and Governance,INT J DISCL GOV
 International Journal of Economics and Business Administration,INT J ECON BUS ADM
 International Journal of Economics and Business Research,INT J ECONOMICS BUSINESS RESEARCH
+International Journal of Electrical Engineering Education,INT J ELECTR ENG EDUC
+International Journal of Electrical Engineering and Education,INT J ELECTR ENG EDUC
 International Journal of Electronic Finance,INT J ELECTRON FINANCE
+International Journal of Emerging Technologies in Learning,INT J EMERG TECHNOL LEARN
+International Journal of Engineering Education,INT J ENG EDUC
 International Journal of Engineering and Advanced Technology,INT J ENG ADV TECHNOL
 International Journal of Engineering and Technology(UAE),INT J ENG TECHNOL
 International Journal of Environmental Research and Public Health,INT J ENVIRON RES PUBLIC HEALTH
@@ -673,6 +733,7 @@ International Journal of Management,INT J MANAG
 International Journal of Management Practice,INT J MANAGE PRACT
 International Journal of Managerial Finance,INT J MANAGE FINAN
 International Journal of Manpower,INT J MANPOW
+International Journal of Mechanical Engineering Education,INT J MECH ENG EDUC
 International Journal of Mechanical Engineering and Technology,INT J MECH ENG TECHNOL
 International Journal of Organizational Analysis,INT J ORGAN ANAL
 International Journal of Production Economics,INT J PROD ECON
@@ -685,6 +746,7 @@ International Journal of Security and its Applications,INT J SECUR APPL
 "International Journal of Services, Economics and Management",INT J SERV ECON MANAG
 International Journal of Technology,INT J TECHNOL
 International Journal of Technology Management,INT J TECHNOL MANAGE
+International Journal of Technology and Design Education,INT J TECHNOL DES EDUC
 "International Journal of Technology, Policy and Management",INT J TECHNOL POLICY MANAGE
 International Journal of Wireless and Mobile Computing,INT J WIRELESS MOBILE COMPUT
 International Journal of e-Business Research,INT J E-BUS RES
@@ -699,6 +761,7 @@ International Review of Economics and Finance,INT REV ECON FINANC
 International Review of Financial Analysis,INT REV FINANC ANAL
 "International Review of Law, Computers and Technology",INT REV LAW COMPUT TECHNOL
 International Symposia in Economic Theory and Econometrics,INT SYMP ECON ECONOM THEORY ECONOM
+International Symposium on Project Approaches in Engineering Education,INT SYMPOSIUM PROJECT APPROACHES ENG EDUC
 "International Symposium on Technology and Society, Proceedings",INT SYMP TECHNOL SOC
 Internet Research,INTERNET RES
 Investment Analysts Journal,INVESTM ANALYSTS J
@@ -830,6 +893,7 @@ Journal of Business Research,J BUS RES
 Journal of Business Venturing Insights,J BUS VENTUR INSIGHTS
 Journal of Business-to-Business Marketing,J BUS BUS MARK
 Journal of Central Banking Theory and Practice,J CENT BANK THEORY PRACT
+Journal of Civil Engineering Education,J CIVIL ENG EDUC
 Journal of Cleaner Production,J CLEAN PROD
 Journal of Computational and Applied Mathematics,J COMPUT APPL MATH
 Journal of Computer Information Systems,J COMPUT INF SYST
@@ -851,6 +915,8 @@ Journal of Economic Dynamics and Control,J ECON DYN CONTROL
 Journal of Economic Studies,J ECON STUD
 Journal of Economics and Business,J ECON BUS
 Journal of Empirical Finance,J EMPIR FINANC
+Journal of Engineering Education,J ENG EDUC
+Journal of Engineering Education Transformations,J ENG EDU TRANSFORM
 Journal of Engineering and Applied Sciences,J ENG APPL SCI
 Journal of Enterprise Information Management,J ENTERP INF MANAGE
 Journal of Enterprising Communities,J ENTERPRISING COMMUNITIES
@@ -887,13 +953,16 @@ Journal of Operations Management,J OPER MANAGE
 Journal of Payments Strategy and Systems,J PAYM STRATEG SYST
 Journal of Physics: Conference Series,J PHYS CONF SER
 Journal of Poverty,J POVER
+Journal of Pre-College Engineering Education Research,J PRE-COLL ENG EDUC RES
 Journal of Private Equity,J PRIV EQUITY
+Journal of Professional Issues in Engineering Education and Practice,J PROF ISSUES ENG EDUC PRACT
 Journal of Promotion Management,J PROMOT MANAGE
 Journal of Property Investment and Finance,J PROP INVEST FINAN
 Journal of Retailing and Consumer Services,J RETAIL CONSUM SERV
 Journal of Reviews on Global Economics,J REV GLOB ECON
 Journal of Risk Finance,J RISK FINANC
 Journal of Risk Management in Financial Institutions,J RISK MANG FINANCIAL INST
+Journal of Science Education and Technology,J SCI EDUC TECHNOL
 Journal of Science and Technology Policy Management,J SCI TECHNOL POLICY MANAGE
 Journal of Scientific and Industrial Research,J SCI IND RES
 Journal of Service Management,J SERV MANAGE
@@ -906,6 +975,7 @@ Journal of Strategic Information Systems,J STRATEGIC INFORM SYST
 Journal of Sustainable Finance and Investment,JOURNAL OF SUSTAIN FINANCE INVEST
 Journal of System and Management Sciences,J SYST MANAG SCI
 Journal of Systems Science and Information,J SYST SCI INF
+Journal of Technology Education,J TECHNOL EDUC
 Journal of Theoretical and Applied Electronic Commerce Research,J THEOR APPL ELECTRON COMMER RES
 Journal of the Association for Information Systems,J ASSOC INF SYST
 Jusletter IT,JUSLETTER IT
@@ -966,6 +1036,7 @@ MKWI 2018  MULTIKONFERENZ WIRTSCHAFTSINFORMATIK,MKWI - MULTIKONFERENZ WIRTSCHAFT
 MKWI 2018 - Multikonferenz Wirtschaftsinformatik,MKWI - MULTIKONFERENZ WIRTSCHAFTSINFORMATIK
 MOVING FROM THE MILLENNIUM TO THE SUSTAINABLE DEVELOPMENT GOALS LESSONS AND RECOMMENDATIONS,MOV FROM THE MILLENNIUM TO THE SUSTAINABLE DEVELOPMENT GOALS: LESSONS AND RECOMMENDATIONS
 MULTIDISCIPLINARY SCIENCE AND ADVANCED TECHNOLOGIES,MULTIDISCIPLINARY SCIENCE AND ADVANCED TECHNOLOGIES
+"MaLTeSQuE 2020 - Proceedings of the 4th ACM SIGSOFT International Workshop on Machine-Learning Techniques for Software-Quality Evaluation, Co-located with ESEC/FSE 2020","MALTESQUE - PROC ACM SIGSOFT INT WORKSHOP MACH-LEARN TECH SOFTW-QUAL EVAL, CO-LOCATED ESEC/FSE"
 Maastricht Journal of European and Comparative Law,MAASTRICHT J EURCOMP LAW
 Macroeconomics and Finance in Emerging Market Economies,MACROECONOMICS FINANC EMERG MARK ECON
 Making Money: The History and Future of Society's Most Important Technology,MAKING MONEY: THE HISTORY AND FUTURE OF SOCIETY'S MOST IMPORTANT TECHNOLOGY
@@ -1003,6 +1074,9 @@ North American Journal of Economics and Finance,NORTH AM J ECON FINANC
 Northwestern Journal of International Law and Business,NORTHWEST J INTL LAW BUS
 ONLINE JOURNAL MODELLING THE NEW EUROPE,ONLINE J MODEL NEW EUR
 Online Journal Modelling the New Europe,ONLINE J MODEL NEW EUR
+Online Learning for STEM Subjects: International Examples of Technologies and Pedagogies in Use,ONLINE LEARN FOR STEM SUBJ: INT EX OF TECHNOL AND PEDAGOG IN USE
+Open Ended Problems: A Future Chemical Engineering Education Approach,OPEN END PROBL: A FUTUR CHEM ENG EDUC APPROACH
+Overcoming Challenges in Software Engineering Education: Delivering Non-Technical Knowledge and Skills,OVERCOMING CHALL IN SOFTW ENG EDUC: DELIV NON-TECH KNOWL AND SKILLS
 PACIFIC BASIN FINANCE JOURNAL,PAC BASIN FINANC J
 PACIFIC ECONOMIC REVIEW,PAC ECON REV
 PALGRAVE STUDIES IN DEMOCRACY INNOVATION AND ENTREPRENEURSHIP FOR GROWTH,PALGRAVE STUD DEM INNOV ENTREP
@@ -1084,57 +1158,120 @@ Politics and Society,POLIT SOC
 Potchefstroom Electronic Law Journal,POTCHEFSTROOM ELECTRON LAW J
 Procedia Computer Science,PROCEDIA COMPUT SCI
 "Proceeding - 1st International Conference on Information Technology, Advanced Mechanical and Electrical Engineering, ICITAMEE 2020","PROCEEDING - INT CONF INF TECHNOL, ADV MECH ELECTR ENG, ICITAMEE"
+"Proceeding - 2017 3rd International Conference on Science in Information Technology: Theory and Application of IT for Education, Industry and Society in Big Data Era, ICSITech 2017","PROC - INT CONF SCI INF TECHNOL: THEORY APPL IT EDUC, IND SOC BIG DATA ERA, ICSITECH"
 "Proceeding - 2018 20th IEEE International Conference on Business Informatics, CBI 2018","PROCEEDING - IEEE INT CONF BUS INFORMATICS, CBI"
+"Proceeding - 2020 3rd International Conference on Vocational Education and Electrical Engineering: Strengthening the framework of Society 5.0 through Innovations in Education, Electrical, Engineering and Informatics Engineering, ICVEE 2020","PROCEEDING - INT CONF VOCAT EDUC ELECTR ENG: STRENGTH FRAMEW SOC 50 INNOV EDUC, ELECTR, ENG INFORMATICS ENG, ICVEE"
 "Proceeding of 2019 International Conference on Digitization: Landscaping Artificial Intelligence, ICD 2019","PROCEEDING INT CONF DIGIT: LANDSCAPING ARTIF INTELL, ICD"
 "Proceeding of the 2021 9th International Electrical Engineering Congress, iEECON 2021","PROCEEDING INT ELECTR ENG CONGR, IEECON"
+"Proceedings - 10th International Workshop on Requirements Engineering Education and Training, REET 2020","PROC - INT WORKSHOP REQUIR ENG EDUC TRAIN, REET"
 "Proceedings - 18th IEEE International Conference on Machine Learning and Applications, ICMLA 2019","PROC - IEEE INT CONF MACH LEARN APPL, ICMLA"
+"Proceedings - 2012 Technologies Applied to Electronics Teaching, TAEE 2012","PROC - TECHNOL APPL ELECTRON TEACH, TAEE"
+"Proceedings - 2015 International Conference on Learning and Teaching in Computing and Engineering, LaTiCE 2015","PROC - INT CONF LEARN TEACH COMPUT ENG, LATICE"
+"Proceedings - 2016 International Conference on Learning and Teaching in Computing and Engineering, LaTiCE 2016","PROC - INT CONF LEARN TEACH COMPUT ENG, LATICE"
+"Proceedings - 2016 International Symposium on Educational Technology, ISET 2016","PROC - INT SYMP EDUC TECHNOL, ISET"
 "Proceedings - 2017 4th International Conference on Information Technology, Computer, and Electrical Engineering, ICITACEE 2017","PROC - INT CONF INF TECHNOL, COMPUT, ELECTR ENG, ICITACEE"
+"Proceedings - 2017 7th World Engineering Education Forum, WEEF 2017- In Conjunction with: 7th Regional Conference on Engineering Education and Research in Higher Education 2017, RCEE and RHEd 2017, 1st International STEAM Education Conference, STEAMEC 2017 and 4th Innovative Practices in Higher Education Expo 2017, I-PHEX 2017","PROC - WORLD ENG EDUC FORUM, WEEF - IN CONJUNCTION: REGIONAL CONF ENG EDUC RES HIGH EDUC, RCEE RHED, INT STEAM EDUC CONF, STEAMEC INNOV PRACTICES IN HIGH EDUC EXPO , I-PHEX"
+"Proceedings - 2018 1st International Workshop on Learning from other Disciplines for Requirements Engineering, D4RE 2018","PROC - INT WORKSHOP LEARN OTHER DISCIP REQUIR ENG, D4RE"
+"Proceedings - 2018 6th International Conference on Learning and Teaching in Computing and Engineering, LaTiCE 2018","PROC - INT CONF LEARN TEACH COMPUT ENG, LATICE"
+"Proceedings - 2018 8th International Workshop on Requirements Engineering Education and Training, REET 2018","PROC - INT WORKSHOP REQUIR ENGEDUC TRAIN, REET"
 "Proceedings - 2018 International Conference on Computing, Electronics and Communications Engineering, iCCECE 2018","PROC - INT CONF COMPUT, ELECTRON COMMUN ENG, ICCECE"
+"Proceedings - 2019 8th International Conference of Educational Innovation through Technology, EITT 2019","PROC - INT CONF EDUC INNOV THROUGH TECHNOL, EITT"
 "Proceedings - 2019 8th International Congress on Advanced Applied Informatics, IIAI-AAI 2019","PROC - INT CONGR ADV APPL INF, IIAI-AAI"
 "Proceedings - 2019 ACM/IEEE 22nd International Conference on Model Driven Engineering Languages and Systems, MODELS 2019","PROC - ACM/IEEE INT CONF MODEL DRIVEN ENG LANG SYST, MODELS"
 "Proceedings - 2019 IEEE International Conference on Artificial Intelligence Testing, AITest 2019","PROC - IEEE INT CONF ARTIF INTELL TEST, AITEST"
 "Proceedings - 2019 IEEE SmartWorld, Ubiquitous Intelligence and Computing, Advanced and Trusted Computing, Scalable Computing and Communications, Internet of People and Smart City Innovation, SmartWorld/UIC/ATC/SCALCOM/IOP/SCI 2019","PROC - IEEE SMARTWORLD, UBIQUITOUS INTELL COMPUT, ADV TRUSTED COMPUT, SCALABLE COMPUT COMMUN, INTERNET PEOPLE SMART CITY INNOV, SMARTWORLD/UIC/ATC/SCALCOM/IOP/SCI"
 "Proceedings - 2019 IEEE World Congress on Services, SERVICES 2019","PROC - IEEE WORLD CONGR SERV, SERVICES"
+"Proceedings - 2019 International Symposium on Educational Technology, ISET 2019","PROC - INT SYMP EDUC TECHNOL, ISET"
+"Proceedings - 2020 14th Technologies Applied to Electronics Teaching Conference, TAEE 2020","PROC - TECHNOL APPL ELECTRON TEACH CONF, TAEE"
 "Proceedings - 2020 15th International Joint Symposium on Artificial Intelligence and Natural Language Processing, iSAI-NLP 2020","PROC - INT JT SYMP ARTIF INTELL NAT LANG PROCESS, ISAI-NLP"
+"Proceedings - 2020 3rd International Conference of Inclusive Technology and Education, CONTIE 2020","PROC - INT CONF INCL TECHNOL EDUC, CONTIE"
+"Proceedings - 2020 6th International Conference on Education and Technology, ICET 2020","PROC - INT CONF EDUC TECHNOL, ICET"
 "Proceedings - 2020 IEEE 11th International Conference on Dependable Systems, Services and Technologies, DESSERT 2020","PROC - IEEE INT CONF DEPENDABLE SYST, SERV TECHNOL, DESSERT"
 "Proceedings - 2020 IEEE 13th International Conference on Services Computing, SCC 2020","PROC - IEEE INT CONF SERV COMPUT, SCC"
 "Proceedings - 2020 IEEE 6th Intl Conference on Big Data Security on Cloud, BigDataSecurity 2020, 2020 IEEE Intl Conference on High Performance and Smart Computing, HPSC 2020 and 2020 IEEE Intl Conference on Intelligent Data and Security, IDS 2020","PROC - IEEE INTL CONF BIG DATA SECUR CLOUD, BIGDATASECURITY, IEEE INTL CONF HIGH PERFORM SMART COMPUT, HPSC IEEE INTL CONF INTELL DATA SECUR, IDS"
 "Proceedings - 2020 IEEE 7th International Conference on Data Science and Advanced Analytics, DSAA 2020","PROC - IEEE INT CONF DATA SCI ADV ANAL, DSAA"
 "Proceedings - 2020 IEEE International Conference on Big Data, Big Data 2020","PROC - IEEE INT CONF BIG DATA, BIG DATA"
 "Proceedings - 2020 International Conference on Big Data and Social Sciences, ICBDSS 2020","PROC - INT CONF BIG DATA SOC SCI, ICBDSS"
+"Proceedings - IEEE 10th International Conference on Technology for Education, T4E 2019","PROC - IEEE INT CONF TECHNOL EDUC, T4E"
+"Proceedings - IEEE 19th International Conference on Advanced Learning Technologies, ICALT 2019","PROC - IEEE INT CONF ADV LEARN TECHNOL, ICALT"
+"Proceedings - IEEE 20th International Conference on Advanced Learning Technologies, ICALT 2020","PROC - IEEE INT CONF ADV LEARN TECHNOL, ICALT"
+"Proceedings - IEEE 8th International Conference on Technology for Education, T4E 2016","PROC - IEEE INT CONF TECHNOL EDUC, T4E"
+"Proceedings - IEEE 9th International Conference on Technology for Education, T4E 2018","PROC - IEEE INT CONF TECHNOL EDUC, T4E"
+"Proceedings - International Conference on Machine Learning and Data Engineering, iCMLDE 2018","PROC - INT CONF MACH LEARN DATA ENG, ICMLDE"
 "Proceedings - International Conference on Tools with Artificial Intelligence, ICTAI",PROC INT CONF TOOLS ARTIF INTELL ICTAI
+"Proceedings of 2012 International Symposium on Information Technologies in Medicine and Education, ITME 2012","PROC INT SYMP INF TECHNOL MED EDUC, ITME"
+"Proceedings of 2014 International Conference on Interactive Mobile Communication Technologies and Learning, IMCL 2014","PROC INT CONF INTERACT MOB COMMUN TECHNOL LEARN, IMCL"
+"Proceedings of 2015 IEEE International Conference on Teaching, Assessment and Learning for Engineering, TALE 2015","PROC IEEE INT CONF TEACH, ASSESS LEARN ENG, TALE"
 "Proceedings of 2016 IEEE Advanced Information Management, Communicates, Electronic and Automation Control Conference, IMCEC 2016","PROC IEEE ADV INF MANAG, COMMUN, ELECTRON AUTOM CONTROL CONF, IMCEC"
+"Proceedings of 2016 IEEE International Conference on Teaching, Assessment and Learning for Engineering, TALE 2016","PROC IEEE INT CONF TEACH, ASSESS LEARN ENG, TALE"
+"Proceedings of 2016 Technologies Applied to Electronics Teaching, TAEE 2016","PROC TECHNOL APPL ELECTRON TEACH, TAEE"
+"Proceedings of 2017 IEEE 6th Forum Strategic Partnership of Universities and Enterprises of Hi-Tech Branches (Science. Education. Innovations), SPUE 2017","PROC IEEE FORUM STRATEGIC PARTNERSH UNIVERSITIES ENTERPRISES HI-TECH BRANCHES (SCI EDUC INNOV), SPUE"
+"Proceedings of 2017 IEEE International Conference on Teaching, Assessment and Learning for Engineering, TALE 2017","PROC IEEE INT CONF TEACH, ASSESS LEARN ENG, TALE"
 "Proceedings of 2018 11th International Conference &quot;Management of Large-Scale System Development&quot;, MLSD 2018","PROC INT CONF ""MANAG LARGE-SCALE SYST DEV"", MLSD"
+"Proceedings of 2018 IEEE International Conference on Teaching, Assessment, and Learning for Engineering, TALE 2018","PROC IEEE INT CONF TEACH, ASSESS, LEARN ENG, TALE"
 "Proceedings of 2018 International Conference on Information Management and Technology, ICIMTech 2018","PROC INT CONF INF MANAG TECHNOL, ICIMTECH"
+"Proceedings of 2018 Technologies Applied to Electronics Teaching, TAEE 2018","PROC TECHNOL APPL ELECTRON TEACH, TAEE"
 "Proceedings of 2019 International Conference on Information Management and Technology, ICIMTech 2019","PROC INT CONF INF MANAG TECHNOL, ICIMTECH"
+"Proceedings of 2020 IEEE International Conference on Teaching, Assessment, and Learning for Engineering, TALE 2020","PROC IEEE INT CONF TEACH, ASSESS, LEARN ENG, TALE"
 "Proceedings of 2020 International Conference on Information Management and Technology, ICIMTech 2020","PROC INT CONF INF MANAG TECHNOL, ICIMTECH"
 "Proceedings of 2021 International Conference on Information Management and Technology, ICIMTech 2021","PROC INT CONF INF MANAG TECHNOL, ICIMTECH"
 "Proceedings of 2nd IEEE International Conference on Computational Intelligence and Knowledge Economy, ICCIKE 2021","PROC IEEE INT CONF COMPUT INTELL KNOWL ECON, ICCIKE"
 "Proceedings of 2nd International Conference on Computation, Automation and Knowledge Management, ICCAKM 2021","PROC INT CONF COMPUT, AUTOM KNOWL MANAG, ICCAKM"
 Proceedings of B-HTC 2020 - 1st IEEE Bangalore Humanitarian Technology Conference,PROC B-HTC - IEEE BANGALORE HUMANIT TECHNOL CONF
 "Proceedings of IEEE International Conference on Signal Processing,Computing and Control","PROC IEEE INT CONF SIGNAL PROCESS, COMPUT CONTROL, ISPCC"
+"Proceedings of IEEE International Conference on Teaching, Assessment and Learning for Engineering: Learning for the Future Now, TALE 2014","PROC IEEE INT CONF TEACH, ASSESS LEARN ENG: LEARN FUTURE NOW, TALE"
 "Proceedings of International Conference on Computation, Automation and Knowledge Management, ICCAKM 2020","PROC INT CONF COMPUT, AUTOM KNOWL MANAG, ICCAKM"
 "Proceedings of International Conference on Innovative Practices in Technology and Management, ICIPTM 2021","PROC INT CONF INNOV PRACT TECHNOL MANAG, ICIPTM"
+"Proceedings of XI Tecnologias Aplicadas a la Ensenanza de la Electronica (Technologies Applied to Electronics Teaching), TAEE 2014","PROC TECNOL APL ENSEN ELECTR (TECHNOL APPL ELECTR TEACH), TAEE"
+"Proceedings of the 14th International Conference on Engineering and Product Design Education: Design Education for Future Wellbeing, EPDE 2012","PROC INT CONF ENG PROD DES EDUC: DES EDUC FUTURE WELLBEING, EPDE"
 "Proceedings of the 15th IEEE Conference on Industrial Electronics and Applications, ICIEA 2020","PROC IEEE CONF IND ELECTRON APPL, ICIEA"
 "Proceedings of the 15th International Conference on Business Information Systems 2020 ""Developments, Opportunities and Challenges of Digitization"", WIRTSCHAFTSINFORMATIK 2020","PROC INT CONF BUS INF SYST ""DEV, OPPOR CHALLENGES DIGIT"", WIRTSCHAFTSINFORMATIK"
+"Proceedings of the 15th International Conference on Engineering and Product Design Education: Design Education - Growing Our Future, EPDE 2013","PROC INT CONF ENG PROD DES EDUC: DES EDUC - GROW OUR FUTURE, EPDE"
+"Proceedings of the 15th Latin American Conference on Learning Technologies, LACLO 2020","PROC LAT AM CONF LEARN TECHNOL, LACLO"
+"Proceedings of the 16th International Conference on Engineering and Product Design Education: Design Education and Human Technology Relations, E and PDE 2014","PROC INT CONF ENG PRODUCT DES EDUC: DES EDUC HUM TECHNOL RELATIONS, E AND PDE"
+"Proceedings of the 17th International Conference on Engineering and Product Design Education: Great Expectations: Design Teaching, Research and Enterprise, E and PDE 2015","PROC INT CONF ENG PRODUCT DES EDUC: GT EXPECT: DES TEACH, RES ENTERP, E AND PDE"
+"Proceedings of the 18th International Conference on Engineering and Product Design Education: Design Education: Collaboration and Cross-Disciplinarity, E and PDE 2016","PROC INT CONF ENG PRODUCT DES EDUC: DES EDUC: COLLAB CROSS-DISCIP, E AND PDE"
+"Proceedings of the 19th International Conference on Engineering and Product Design Education: Building Community: Design Education for a Sustainable Future, E and PDE 2017","PROC INT CONF ENG PROD DE EDUC: BUILD COMMUNITY: DES EDUC SUSTAIN FUTURE, E AND PDE"
+"Proceedings of the 2014 IEEE International Conference on MOOCs, Innovation and Technology in Education, IEEE MITE 2014","PROC IEEE INT CONF MOOCS, INNOV TECHNOL EDUC, IEEE MITE"
+"Proceedings of the 2014 Zone 1 Conference of the American Society for Engineering Education - ""Engineering Education: Industry Involvement and Interdisciplinary Trends"", ASEE Zone 1 2014","PROC ZONE CONF AM SOC ENG EDUC - ""ENG EDUC: IND INVOLVEMENT INTERDISCIP TRENDS"", ASEE ZONE"
 "Proceedings of the 2015 7th International Conference of Soft Computing and Pattern Recognition, SoCPaR 2015","PROC INT CONF SOFT COMPUT PATTERN RECOGNIT, SOCPAR"
 "Proceedings of the 2016 IEEE/ACM International Conference on Advances in Social Networks Analysis and Mining, ASONAM 2016","PROC IEEE/ACM INT CONF ADV SOC NETW ANAL MIN, ASONAM"
+"Proceedings of the 2017 IEEE 9th International Conference on Engineering Education, IEEE ICEED 2017","PROC IEEE INT CONF ENG EDUC, IEEE ICEED"
+"Proceedings of the 2018 IEEE 10th International Conference on Engineering Education, ICEED 2018","PROC IEEE INT CONF ENG EDUC, ICEED"
 "Proceedings of the 2018 IEEE/ACM International Conference on Advances in Social Networks Analysis and Mining, ASONAM 2018","PROC IEEE/ACM INT CONF ADV SOC NETWORKS ANAL MINING, ASONAM"
+"Proceedings of the 2019 IEEE 11th International Conference on Engineering Education, ICEED 2019","PROC IEEE INT CONF ENG EDUC, ICEED"
+"Proceedings of the 2019 International Symposium on Engineering Accreditation and Education, ICACIT  2019","PROC INT SYMP ENG ACCREDIT EDUC, ICACIT"
+"Proceedings of the 2020 IEEE International Symposium on Accreditation of Engineering and Computing Education, ICACIT 2020","PROC IEEE INT SYMP ACCREDIT ENG COMPUT EDUC, ICACIT"
 "Proceedings of the 2021 IEEE 24th International Conference on Computer Supported Cooperative Work in Design, CSCWD 2021","PROC IEEE INT CONF COMPUT SUPPORT COOP WORK DES, CSCWD"
+"Proceedings of the 20th International Conference on Engineering and Product Design Education, E and PDE 2018","PROC INT CONF ENG PROD DES EDUC, E PDE"
+"Proceedings of the 21st International Conference on Engineering and Product Design Education: Towards a New Innovation Landscape, E and PDE 2019","PROC INT CONF ENG PROD DES EDUC: TOWARDS NEW INNOV LANDSC, E PDE"
+"Proceedings of the 22nd International Conference on Engineering and Product Design Education, E and PDE 2020","PROC INT CONF ENG PROD DES EDUC, E PDE"
 "Proceedings of the 23rd Pacific Asia Conference on Information Systems: Secure ICT Platform for the 4th Industrial Revolution, PACIS 2019","PROC PAC ASIA CONF INF SYST: SECUR ICT PLATF IND REVOL, PACIS"
+"Proceedings of the 24th International Conference on European Association for Education in Electrical and Information Engineering, EAEEIE 2013","PROC INT CONF EUR ASSOC EDUC ELECTR INF ENG, EAEEIE"
 "Proceedings of the 24th Pacific Asia Conference on Information Systems: Information Systems (IS) for the Future, PACIS 2020","PROC PAC ASIA CONF INF SYST: INF SYST (IS) FUTURE, PACIS"
+"Proceedings of the 25th International Conference on European Association for Education in Electrical and Information Engineering, EAEEIE 2014","PROC INT CONF EUR ASSOC EDUC ELECTR INF ENG, EAEEIE"
 "Proceedings of the 28th Australasian Conference on Information Systems, ACIS 2017","PROC AUSTRALAS CONF INF SYST, ACIS"
 "Proceedings of the 31st International Business Information Management Association Conference, IBIMA 2018: Innovation Management and Education Excellence through Vision 2020","PROC INT BUS INF MANAG ASSOC CONF, IBIMA: INNOV MANAG EDUC EXCELL VIS"
 "Proceedings of the 32nd International Business Information Management Association Conference, IBIMA 2018 - Vision 2020: Sustainable Economic Development and Application of Innovation Management from Regional expansion to Global Growth","PROC INT BUS INF MANAG ASSOC CONF, IBIMA - VIS: SUSTAIN ECON DEV APPL INNOV MANAG REG EXPANS GLOB GROWTH"
 "Proceedings of the 33rd International Business Information Management Association Conference, IBIMA 2019: Education Excellence and Innovation Management through Vision 2020","PROC INT BUS INF MANAG ASSOC CONF, IBIMA: EDUC EXCELL INNOV MANAG VIS"
+"Proceedings of the 3rd Interdisciplinary Engineering Design Education Conference, IEDEC 2013","PROC INTERDISCIP ENG DES EDUC CONF, IEDEC"
+Proceedings of the 40th SEFI Annual Conference 2012 - Engineering Education 2020: Meet the Future,PROC SEFI ANNU CONF - ENG EDUC: MEET FUTURE
+"Proceedings of the 43rd SEFI Annual Conference 2015 - Diversity in Engineering Education: An Opportunity to Face the New Trends of Engineering, SEFI 2015","PROC SEFI ANNU CONF - DIVERS ENG EDUC: OPPOR FACE NEW TRENDS ENG, SEFI"
+"Proceedings of the 46th SEFI Annual Conference 2018: Creativity, Innovation and Entrepreneurship for Engineering Education Excellence","PROC SEFI ANNU CONF: CREATIVITY, INNOV ENTREP ENG EDUC EXCELL"
+"Proceedings of the 4th Interdisciplinary Engineering Design Education Conference, IEDEC 2014","PROC INTERDISCIP ENG DES EDUC CONF, IEDEC"
+"Proceedings of the 6th IEEE International Conference on MOOCS Innovation and Technology In Education, MITE 2018","PROC IEEE INT CONF MOOCS INNOV TECHNOL EDUC, MITE"
 "Proceedings of the 7th International Conference on Computing for Sustainable Global Development, INDIACom 2020","PROC INT CONF COMPUT SUSTAIN GLOB DEV, INDIACOM"
+"Proceedings of the 8th Research in Engineering Education Symposium, REES 2019 - Making Connections","PROC RES ENG EDUC SYMP, REES - MAK CONNECTIONS"
 Proceedings of the ACM/IEEE Joint Conference on Digital Libraries,PROC ACM IEEE JOINT CONF DIGIT LIBR
 Proceedings of the Annual Hawaii International Conference on System Sciences,PROC ANNU HAWAII INT CONF SYST SCI
+"Proceedings of the Conference on Integrating Technology into Computer Science Education, ITiCSE",PROC CONF INTEGR TECHNOL COMPUT SCI EDUC ITICSE
 "Proceedings of the European Conference on Innovation and Entrepreneurship, ECIE","PROC EUR CONF INNOV ENTREPREN, ECIE"
 "Proceedings of the International Astronautical Congress, IAC","PROC INT ASTRONAUT CONGR, IAC"
 Proceedings of the International Conference on Electronic Business (ICEB),PROC INT CONF ELECTRON BUS (ICEB)
 "Proceedings of the International Conference on IT, Communication and Technology for Better Life, ICT4BL 2019","PROC INT CONF IT, COMMUN TECHNOL BETTER LIFE, ICT4BL"
 Proceedings of the International Conference on Industrial Engineering and Operations Management,PROC INT CONF IND ENG OPER MANAGE
+"Proceedings of the International Conference on Management, Information and Educational Engineering, MIEE 2014",PROC INTERN CONF MANAG INF EDUC ENG MIEE
+"Proceedings of the LACCEI international Multi-conference for Engineering, Education and Technology",PROC LACCEI INT MULTI-CONF ENG EDUC TECHNOL
 Production Planning and Control,PROD PLANN CONTROL
 Progress in Human Geography,PROG HUM GEOGR
 Public Administration,PUBLIC ADM
@@ -1165,6 +1302,10 @@ REVIEW OF MANAGERIAL SCIENCE,REV MANAGE SCI
 REVISTA BRASILEIRA DE MARKETING,REV BRAS MARK
 REVISTA CHILENA DE DERECHO Y TECNOLOGIA,REV CHIL DERECHO TECNOL
 REVISTA ESPANOLA DE LA TRANSPARENCIA,REV ESP TRANS
+"RINA, Royal Institution of Naval Architects - 2nd International Conference on the Education and Professional Development of Engineers in the Maritime Industry","RINA, R INST NAV ARCHIT - INT CONF EDUC PROF DEV ENG MARIT IND"
+"RINA, Royal Institution of Naval Architects - Education and Professional Development of Engineers in the Maritime Industry 2015, Papers","RINA, R INST NAV ARCHIT - EDUC PROF DEV ENG MARIT IND, PAP"
+"RINA, Royal Institution of Naval Architects - Education and Professional Development of Engineers in the Maritime Industry, Papers","RINA, ROYAL INST NAV ARCHIT - EDUC PROF DEV ENG MARIT IND, PAP"
+"RINA, Royal Institution of Naval Architects - International Conference on Education and Professional Development of Engineers in the Maritime Industry","RINA, R INST NAV ARCHIT - INT CONF EDUC PROF DEV ENG MARIT IND"
 RISK MANAGEMENT,RISK MANAGE
 RISKS,RISKS
 RISTI  REVISTA IBERICA DE SISTEMAS E TECNOLOGIAS DE INFORMACAO,REV IBERICA SIST TECNOL INF
@@ -1176,6 +1317,7 @@ Renewable Energy,RENEW ENERGY
 Research Technology Management,RES TECHNOL MANAGE
 Research for Rural Development,RES RURAL DEV
 Research in International Business and Finance,RES INT BUS FINANC
+"Rethinking Engineering Education: The CDIO Approach, Second Edition","RETHINKING ENGINEERING EDUCATION: THE CDIO APPROACH, SECOND EDITION"
 Review of Contemporary Philosophy,REV CONTEMP PHILOS
 Review of Finance,REV FINANC
 Review of Financial Studies,REV FINANC STUD
@@ -1184,6 +1326,7 @@ Review of Managerial Science,REV MANAGE SCI
 Revista Brasileira de Marketing,REV BRAS MARK
 Revista Chilena de Derecho y Tecnologia,REV CHIL DERECHO TECNOL
 Revista Espanola de la Transparencia,REV ESP TRANS
+Revista Iberoamericana de Tecnologias del Aprendizaje,REV IBEROAM TECHNOL APRENDIZAJE
 Risk Management,RISK MANAGE
 Risks,RISKS
 Routledge Handbook of Financial Technology and Law,ROUTLEDGE HANDB OF FINANCIAL TECHNOLOGY AND LAW
@@ -1192,6 +1335,7 @@ SAGE OPEN,SAGE OPEN
 SAGE Open,SAGE OPEN
 SCIENCE AND INNOVATION,SCI INNO
 SCIENTIFIC PAPERS OF THE UNIVERSITY OF PARDUBICE SERIES D FACULTY OF ECONOMICS AND ADMINISTRATION,SCI PAP UNIV PARDUBICE SER D FAC ECON ADM
+"SEFI 48th Annual Conference Engaging Engineering Education, Proceedings","SEFI ANNU CONF ENGAG ENG EDUC, PROC"
 SENSORS,SENSORS
 SERVICE SCIENCE,SERV SCI
 SEVERAL DIMENSIONS OF INNOVATION TECHNOLOGY AND INDUSTRY 40,"SEVERAL DIMENSIONS OF INNOVATION, TECHNOLOGY AND INDUSTRY 40"
@@ -1242,6 +1386,7 @@ Studies in Economics and Finance,STUD ECON FINANC
 "Studies in Systems, Decision and Control",STUD SYST DECIS CONTROL
 Sustainability (Switzerland),SUSTAINABILITY
 Symmetry,SYMMETRY
+"TALE 2019 - 2019 IEEE International Conference on Engineering, Technology and Education","TALE - IEEE INT CONF ENG, TECHNOL EDUC"
 TECHNOLOGICAL FORECASTING AND SOCIAL CHANGE,TECHNOL FORECAST SOC CHANGE
 TECHNOLOGY ANALYSIS AND STRATEGIC MANAGEMENT,TECHNOL ANAL STRATEG MANAGE
 TECHNOLOGY INNOVATION MANAGEMENT REVIEW,TECHNOLOG INNOV MANAG REV
@@ -1258,6 +1403,9 @@ TOWARDS THE DIGITAL WORLD AND INDUSTRY X0  PROCEEDINGS OF THE 29TH INTERNATIONAL
 TRANSITION STUDIES REVIEW,TRANSIT STUD REV
 TRANSNATIONAL MARKETING JOURNAL,TRANSNATL MARK J
 TURKISH ONLINE JOURNAL OF EDUCATIONAL TECHNOLOGY,TURK ONL J EDU TECH
+Teaching Learning Based Optimization Algorithm: And its Engineering Applications,TEACH LEARNING BASED OPTIMIZATION ALGORITHM: AND ITS ENGINEERING APPLICATIONS
+Technological Developments in Education and Automation,TECHNOL DEV EDUC AUTOM
+"Technological Developments in Networking, Education and Automation","TECHNOL DEV NETWORKING, EDUC AUTOM"
 Technological Forecasting and Social Change,TECHNOL FORECAST SOC CHANGE
 Technology Analysis and Strategic Management,TECHNOL ANAL STRATEG MANAGE
 Technology Innovation Management Review,TECHNOLOG INNOV MANAG REV
@@ -1265,6 +1413,8 @@ Technovation,TECHNOVATION
 Telecommunications Policy,TELECOMMUN POLICY
 Telematics and Informatics,TELEMATICS INF
 Thailand and the World Economy,THAIL WORLD ECON
+The Assessment of Learning in Engineering Education: Practice and Policy,THE ASSESS OF LEARNING IN ENGINEERING EDUCATION: PRACTICE AND POLICY
+The Challenge of Reframing Engineering Education,THE CHALL OF REFRAMING ENGINEERING EDUCATION
 The Digital Banking Revolution: How Fintech Companies are Transforming the Retail Banking Industry Through Disruptive Financial Innovation,THE DIGITAL BANK REVOLUTION: HOW FINTECH CO ARE TRANSFORMING THE RETAIL BANK INDUSTRY THROUGH DISRUPTIVE FINANCIAL INNOVATION
 The Routledge Handbook of FinTech,THE ROUT HANDB OF FINTECH
 "The Technological Revolution in Financial Services: How Banks, FinTechs, and Customers Win Together","THE TECHNOLOGICAL REVOLUTION IN FINANCIAL SERVICES: HOW BANKS, FINTECHS, AND CUSTOMERS WIN TOGETHER"
@@ -1284,6 +1434,7 @@ Uniform Law Review,UNIF LAW REV
 University of Illinois Law Review,UNIV ILL LAW REV
 University of New South Wales Law Journal,UNIV NEW SOUTH WALES LAW J
 University of Pennsylvania Law Review,UNIV PA LAW REV
+"Using Technology Tools to Innovate Assessment, Reporting, and Teaching Practices in Engineering Education","USING TECHNOL TOOLS TO INNOV ASSESS, REPORT, AND TEACH PRACT IN ENG EDUCA"
 VANDERBILT LAW REVIEW,VANDERBILT LAW REV
 VENTURE CAPITAL,VENTURE CAP
 VIDE TEHNOLOGIJA RESURSI  ENVIRONMENT TECHNOLOGY RESOURCES,"VIDE TEHNOLOGIJA RESURSI - ENVIRON, TECHNOL RSRC"
@@ -1305,6 +1456,7 @@ Wireless Personal Communications,WIRELESS PERS COMMUN
 World Economy and International Relations,WORLD ECONOMY INT RELAT
 "World Review of Entrepreneurship, Management and Sustainable Development",WORLD REV ENTREP MANAGE SUSTAINABLE DEV
 World Scientific Series in Finance,WORLD SCI SER FINANC
+World Transactions on Engineering and Technology Education,WORLD TRANS ENG TECHNOL EDU
 XITONG GONGCHENG LILUN YU SHIJIANSYSTEM ENGINEERING THEORY AND PRACTICE,XITONG GONGCHENG LILUM YU SHIJIAN
 Xitong Gongcheng Lilun yu Shijian/System Engineering Theory and Practice,XITONG GONGCHENG LILUM YU SHIJIAN
 YALE JOURNAL ON REGULATION,YALE J REGUL
