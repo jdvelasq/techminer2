@@ -27,6 +27,9 @@ Top documents (most cited documents)
 4              BORSA ISTANBUL REVIEW   2018-0003               124
 """
 
+import os
+
+from techminer.utils import print_documents
 
 from .utils import load_filtered_documents
 
@@ -89,7 +92,8 @@ def top_documents(
             "source_name",
             "iso_source_name",
             "document_id",
-            "wos_id",
+            "wos_document_id",
+            "abstract",
             citations_column,
         ]
     ]
@@ -98,5 +102,10 @@ def top_documents(
         documents = documents.head(n_top)
 
     documents = documents.sort_values(by=citations_column, ascending=False)
+
+    with open(os.path.join(directory, "top_documents.txt"), "wt") as file:
+        print_documents(documents, file=file)
+
+    documents.pop("abstract")
 
     return documents
