@@ -661,11 +661,16 @@ def _create_abstracts_csv(documents, directory):
         abstracts = documents[["document_id", "abstract"]].copy()
         abstracts = abstracts.rename(columns={"abstract": "text"})
         abstracts = abstracts.dropna()
-        abstracts = abstracts.assign(text=abstracts.text.str.split(". "))
-        abstracts = abstracts.explode("text")
-        abstracts = abstracts.assign(text=abstracts.text.str.split("; "))
+        abstracts = abstracts.assign(
+            text=abstracts.text.str.replace(". ", "|", regex=False)
+        )
+        abstracts = abstracts.assign(
+            text=abstracts.text.str.replace("; ", "|", regex=False)
+        )
+        abstracts = abstracts.assign(text=abstracts.text.str.split("|"))
         abstracts = abstracts.explode("text")
         abstracts = abstracts.assign(text=abstracts.text.str.strip())
+        abstracts = abstracts[abstracts.text.str.len() > 0]
         abstracts = abstracts.assign(
             line_no=abstracts.groupby(["document_id"]).cumcount()
         )
