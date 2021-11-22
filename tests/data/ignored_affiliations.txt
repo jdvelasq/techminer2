@@ -1,1115 +1,278 @@
-kle technological univeristy, school of computer science and engineering
-school of pedagogical and technological education, aspete
-copec, science and education research
-isistan, unicen-conicet, research institute
-department of exact sciences, federal district university center
-quantumblack, mckinsey & company
-intel corporation
-smkn 1 donorojo paitan, fashion design program, smkn 1 turen malang
-instituto de ingenieria electrica, facultad de lngenieria
-polytechnic of porto isep/cieti/laboris
-biointerface science group, biomedical engineering department, tue
-department of electric, kaisome phomvihanh distric, savannakhet technical vocation college, savannkhet, laos
-horst gort
-igip, international society of engineering pedagogy
-vdi, society division
-international centre for engineering education of unesco
-international affairs aalto university, student union
-board aalto university, student union
-dtu
-la trobe university
-school of aerospace and mechanical engineering, university of oklahoma, norman campus, rm. 212
-business management department, al zawia university, zawia, libyan arab jamahiriya
-university of science and technology liaoning, anshan, liaoning
-welten institute
-civil engineering
-mary lou fulton teacher's college at arizona state university, p.o. box 3701, tempe, az  85287-5706
-the pennsylvania state university, 400 rackley building, university park, pa  16802
-dept. of civil and environmental engineering, colorado state univ., campus delivery 1372, fort collins, co  80523, united states
-dept. of civil and environmental engineering, virginia tech, blacksburg, va  24061, united states
-dept. of engineering education, virginia tech, blacksburg, va  24061, united states
-dept. of engineering education, purdue univ., west lafayette, in  47907, united states
-labella associates, 300 state st., rochester, ny  14614, united states
-engineering at opinion dynamics, 1000 winter st., waltham, ma  02451, united states
-fundacion 3m, 3m espana s.l., juan ignacio luca de tena 19 - 25, madrid, 28027, spain
-dept. of civil, environmental, and geodetic engineering, ohio state univ., 244 hitchcock hall, 2070 neil ave., columbus, oh  43210, united states
-dept. of engineering education, ohio state univ., 244 hitchcock hall, 2070 neil ave., columbus, oh  43210, united states
-eolas s.l., badajoz, spain
-politeknik metro tasek gelugor, tasek gelugor, penang, malaysia
-staatliche fos munchen-west, munich, germany
-dieectqai, uned, madrid, spain
-languages and computer systems and software engineering, upm, madrid, spain
-isec-ipc, coimbra, portugal
-fpceup, porto, portugal
-lc cyprus, limassol, cyprus
-special educator, chania, crete, greece
-independent researcher, fort payne, al, united states
-labsland, bilbao, spain
-labsland, san francisco, united states
-co-creation hub, lagos, nigeria
-stemres learning initiative, allen avenue, lagos, ikeja, nigeria
-infinitivity design labs, laussonne, france
-fh joanneum, information management, graz, austria
-kai kompetenzzentrum automobil- und industrieelektronik gmbh, villach, 9500, austria
-vicerrectoria de investigacion y transferencia de tecnologia, writing lab, teclabs, monterrey, mexico
-valparaiso, chile
-da/sec - biometrics and internet security research group hochschule, darmstadt, germany
-greekcodersk12, codingclub, athens, greece
-uniovi, oviedo, spain
-ste[a]m and st[r]eam teacher, greece
-msc stem, greece
-msc telecommunications, greece
-msc ict, greece
-codib cefet/rj, rio de janeiro, brazil
-tecnalia innovation, bizkaia, spain
-consultant teacher, united states
-eua, belgium
-nyu shanghai, shanghai, china
-dept iit bombay, cse, powai, india
-innovation and entrepreneurship, upc, barcelona, spain
-education uned, madrid, spain
-ltcs, uned, madrid, spain
-kosen, hachioji, japan
-layton data display, terre haute, in, united states
-fachhochschule des mittelstands, bielefeld, germany
-hochschule fur technik (hft), stuttgart, germany
-innovation in education, itesm, hermosillo, mexico
-pq, malvern, pa, united states
-uenf, lcmat, rj, brazil
-cefet/rj, codib, rj, brazil
-zhb, tu dortmund, dortmund, germany
-fundacion i+d del software libre, granada, spain
-ufpb, campus rio tinto, dcx, rio tinto, brazil
-ifrj, campus paracambi, dm, paracambi, brazil
-ifpb, campus monteiro, ccads-mt, monteiro, brazil
-ufpe, ppge, de, recife, brazil
-cefet-rj, codib, rio de janeiro, brazil
-staatliche fachober- und berufsoberschule technik munchen, munich, germany
-nxp semiconductors, gratkorn, austria
-intel technology india pvt. ltd, bengaluru, india
-computer science teacher in secondary education, chania, greece
-rit croatia, zagreb, croatia
-bonn-rhein-sieg university of applied sciences, dept. of electrical engineering, mechanical engineering, and technical journalism, sankt augustin, germany
-engineering education, virginia tech, blacksburg, va, united states
-mackenzie architecture, engineering, designing, and planning, 1515 se water ave., portland, or  97214, united states
-shreyas quality management system, nagpur, india
-independent scientist guatemala, guatemala
-appc research, australia
-psychologist, coimbra, portugal
-estiem, groene loper 3, eindhoven, 5612 ae, netherlands
-bosch car multimedia, braga, portugal
-science engineering and technology group, ku leuven, leuven, belgium
-ku leuven science engineering and technology group, leuven, belgium
-hunan haicheng yuxin information technology co., ltd., hunan province, changsha, 410141, china
-inacap, talca, chile
-digsilent iberica, madrid, spain
-virginia tech, blacksburg, va, united states
-hunan aerospace yuanwang science & technology co., ltd., changsha, china
-drop-design for innovation, plaza tirant lo blanc 4, local 7, barcelona, 08005, spain
-iupui, indianapolis, in, united states
-mcgraw-hill, new york, ny  10019, united states
-foresight strategy solutions, california, 9459, united states
-212 hancock hall (0275) 490 old turner st., blacksburg, va  24061, united states
-355 goodwin hall (mc 0218), virginia tech, 635 prices fork rd, blacksburg, va  24061, united states
-kaznpu named after abai, almaty, kazakhstan
-cultural keys, llc, troy, mi, united states
-lineact cesi, innovent-e, arras, france
-spm consulting, perth, australia
-cerebry singapore, singapore, singapore
-microsoft ireland, dublin, ireland
-in4obe, naperville, il, united states
-imt atlantique, lab-sticc, umr cnrs 6285, brest, france
-consultant in project evaluation, lyon, france
-stipro, dar es salaam, tanzania
-umr cnrs 6285 imt atlantique, lab-sticc, brest, france
-imt atlantique, brest, france
-jetbrains, russian federation
-jads, netherlands
-icacit, lima, peru
-laboratorio maxwell de micro-ondas e eletromagnetismo aplicado ifsp, susano, brazil
-program studi d3 manajemen informatika politeknik pos indonesia, bandung, indonesia
-industrial electrical engineering politeknik negeri madura (poltera) jl, raya taddan km. 4, sampang, indonesia
-industrial electrical engineering politeknik negeri madura (poltera), indonesia
-univesitas negeri jakarta, electrical engineering education program, jakarta, indonesia
-eon reality pte ltd, director of research and technology development, nucleus, singapore
-independent researcher bandar putra bertam, kepala batas, pulau pinang, malaysia
-iexplore taman klang utama, klang selangor, malaysia
-e4s, llc, abingdon, va, united states
-cys structural engineers inc., 2495 natomas park dr., sacramento, ca  95833, united states
-faculty of engineering technology, ku leuven, leuven, belgium
-faculty of engineering science, ku leuven, leuven, belgium
-faculty of psychology and educational sciences, ku leuven, leuven, belgium
-faculty of science, ku leuven, leuven, belgium
-eim technology, delta, bc, canada
-terc, cambridge, ma, united states
-coenp cefet/rj, rio de janeiro, brazil
-teclabs vicerrectoria de investigacion y transferencia de tecnologia, writing lab, monterrey, mexico
-ludwig-maximilians-universitat, munchen, germany
-alpe adria universtiy of klagenfurt, klagenfurt, austria
-inst. superior de engenharia do porto, gilt rd, porto, portugal
-hesplora s.r.l., don luigi sturzo 36, lecce, 73100, italy
-dipf, frankfurt, germany
-utad, engineering dept. (ect), vila real, portugal
-utad inesc-tec, engineering dept. (ect), vila real, portugal
-ipp, isep, cieti, laboris, porto, portugal
-lti esp-ucad, dakar, senegal
-uned madrid, dep. lenguajes y sistemas informaticos, spain
-ifsul - inst. fed. sul-rio-grandense, engenharia eletrica, pelotas, rs, brazil
-ifsul - inst. fed. sul-rio-grandense, eletromecanica, pelotas, rs, brazil
-faculty of education uned, madrid, spain
-sinhao consulting co. ltd., taichung, taiwan
-biochemical and chemical engineering, tu dortmund, dortmund, germany
-ostbayerische technische hochschule regensburg, regensburg, germany
-polyteclmic of porto lema-isep, systeec-isr, dep. of mathematics, porto, portugal
-cfis-um, systec-isr, dep. of mathematics, porto, portugal
-polyteclmic of porto cieit-isep, dep. of planning and management, porto, portugal
-ku leuven innovation manager and entrepreneur coach, barcelona, spain
-ostbayerische technische hochschule regensburg (oth), regensburg, germany
-servico social da industria - sesi, departamento de educacao, criciuma, sc, brazil
-dieectqai, uned madrid, spain
-codib, cefet/rj, brazil
-plaza robotica, spain
-head of engineering cae bahsys gmbh, overath, germany
-cedri ipb, braganca, portugal
-comtrade digital services, comtrade group, dublin, ireland
-cefet/rj, codib, rio de janeiro, brazil
-gilt rd ins. superior de engenharia do porto, porto, portugal
-hochschule fur technik stuttgart information logistics, stuttgart, germany
-departamento de estadistica, informatica y matematicas, spain
-departamento de ingenieria, spain
-berufsbildungsiverk der deutschen versicherungswintschaft (bwv)e.v., munchen, germany
-diario la republica lima, peru
-uninova-cts, caparica, portugal
-e-competence education scientific lmt, wuhan, china
-requimte/laqv, porto, portugal
+harvard business school and nber
+the faculty of business administration and accountancy (major in finance), khon kaen university
+university of siena
+idp european consultants
+wolverhampton cyber research institute, school of mathematics and computer science, university of wolverhampton, wolverhampton, wv1 1ly, uk. (e-mail: ali.sadiq@wlv.ac.uk)
+wolverhampton cyber research institute, school of mathematics and computer science, university of wolverhampton, wolverhampton, wv1 1ly, uk.
+mahasarakham business school, mahasarakham university
+plug and play analyst
+u.c. berkeley school of law, 225 bancroft way, berkeley 94720
+haas school of business, u.c. berkeley, department of the treasury, 545 student services #1900, berkeley, ca 94720
+haas school of business, u.c. berkeley, 545 student services #1900, berkeley, ca 94720
+mobile &#x0026
+school of automation science and engineering, xi&#x2019
+an jiaotong university, xi&#x2019
+higher colleges of technology
+council on european crowdfunding service providers for business, european union
+universite cote d' azur
+washington university in st. louis
+university of technology sydney
+soochow university, sun yat-sen university
+university of washington
+tianjin university
+tu wien, university of oxford
+beijing normal university
+aalto university
+tampere university of technology
+business & financial law, tilburg law and economics center
+golaxy data technology, inc., beijing, china
+london, united kingdom
+em normandie, metis lab, campus de caen, 9 rue claude bloch14052 caen cedex4, france
+ernst & young gmbh wirtschaftsprufungsgesellschaft, arnulfstr. 59, munich, 80636, germany
+iscte-iul, lisbon, portugal
+dinamiacet, lisbon, portugal
+cesifo, munich, germany
+unsw, sydney, australia
+ai for fintech research, ing, amsterdam, netherlands
+iot digital innovation hub, salamanca, spain
+ibm research, beijing, 100101, china
+development and innovation, worldline, lyon, france
+fintech start-up, mymy payments malaysia, malaysia
+lhv uk, as lhv group, tallinn, estonia
+beijing fantaike technology co. ltd., beijing, china
+lumesis, inc., stamford, ct, united states
+islamic finance bait al-mashura finance consultations, gulf cooperation countries, qatar
+http://corporatedigitalresponsibility.net (cdr), alchemmy, 52-54 high holborn, london, wc1v 6rl, united kingdom
+beyond reach consulting ltd, 139 furlong road, bolton-upon-dearne, rotherham, s63 8hd, united kingdom
+bairong financial information service co., ltd, china
+backbase b.v. amsterdam, netherlands
+touco london, united kingdom
+research and analysis, financial and monetary systems, world economic forum, new york, ny, united states
+inesc tec, portugal
+zeb. consulting, head office - hammer str. 165, 48153 munster, germany, warsaw office - ul. krolewska 18, warsaw, 00-103, poland
+rappi, cl.93 #19-58, bogota, colombia
+j-pal, united states
+bread, cepr, united kingdom
+estimeo, 28 rue du chemin vert, paris, 75011, france
+pryor cashman llp, united states
+provoke insights, 1460 broadway, new york, ny  10036, united states
+qahe nu london campus, united kingdom
+ecgi, brussels, belgium
+octo consulting group, washington, d.c, united states
+finteqc cofounder, uqar, canada
+silimare, poland
+borsa istanbul, emirgan 34467, istanbul, turkey
+yapu solutions, berlin, germany
+korea credit guarantee fund, south korea
+cpc analytics, berlin, germany
+california-based left coast, united states
+singapores ferrell group, singapore
+blockasset, luxembourg
+hochschule fur technik und wirtschaft (htw), berlin, germany
+ensea, abidjan, cote d'ivoire
+precision computer (m) sdn bhd, malaysia
+founding partner, geradin partners, brussels, belgium
+esg-uqam, 315 rue sainte-catherine e, montreal, qc  h2x 3x2, canada
+rmit europe, barcelona, spain
 inesc tec, porto, portugal
-ineb, porto, portugal
-vancouver, canada
-lcmat uenf, campos dos goytacazes, rj, brazil
-dieectqai uned, madrid, spain
-faculty of electrical engineering oth regensburg, regensburg, germany
-ens rennes, cnrs, satie, bruz, france
-escola estadual de ensino medio joao pilati, caxias do sul, brazil
-escola estadual de ensino fundamental tancredo neves, flores da cunha, brazil
-liaad - inesc tec, porto, portugal
-academic engineers and architects in finland tek, helsinki, finland
-arts et metiers paristech, lcpi, paris, france
-ei.cesi, irise, nanterre, france
-shero, brazil
-copec, brazil
-hofstra universit, engineering applied science, hempstead, ny, united states
-alcaf construction and engineering sac, peru
-curso de automacao industrial, fatec sao bernardo do campo, sao bernardo do campo, brazil
-pres. emeritus of ieee educ. soc. president of copec - science and education research organization, santos, brazil
-venturewell, hadley, ma, united states
-imt atlantique, lab-sticc, ubl, brest, france
-polytechnantesubl, nantes, france
-iscap/p.porto, porto, portugal
-hrplus, espoo, finland
-metropolia uas, helsinki, finland
-tu dublin, dublin, ireland
-human kind psychology pty. ltd., sydney, australia
-ansys granta, cambridge, united kingdom
-tu dublin, ireland
-espoo, finland
-board of european students of technology, brussels, belgium
-lut support services, lappeenranta, finland
-m5 industries inc, san francisco, united states
-faculty of engineering, ucl, london, united kingdom
-techno-anthropology4u i/s, copenhagen, denmark
-beta-steunpunt zuidholland, tu-delft, delft, netherlands
-ku leuven, leuven, belgium
-trondheim, norway
-the play house, birmingham, united kingdom
-stichting nhl, leeuwarden, netherlands
-nutcratives, barcelona, catalonia, spain
-ceci n'est pas une holding b.v, roterdaam, netherlands
-uned, madrid, spain
-academic engineers and architects, tek, helsinki, finland
-het stedelijk lyceum, enschede, netherlands
-ensta bretagne, brest, france
-ethics and philosophy of technology section, tu delft, delft, netherlands
-ansys, inc., cambridge, united kingdom
-aalborg centre for problem-based learning in engineering, science and sustainability, aalborg, denmark
-mathworks italia, turin, italy
-ku leuven, lesec (leuven engineering science and education centre), leuven, belgium
-ku leuven, diepenbeek, belgium
-dtu, denmark
-ministery of education and culture, north cyprus, turkey
-riasec inc, tokyo, japan
-educational science, vubbrussels, belgium
-jaguar land rover, banbury road gaydon, lighthorne heath, warwick, cv35 0rr, united kingdom
-123 n wright brothers dr, salt lake city, ut  84116, united states
-cortex business solutions, calgary, canada
-mechanical engineering, citadel, charleston, sc, united states
-virginia tech., 357 goodwin hall, 635 prices fork road, blacksburg, va  24061, united states
-virginia tech., 118 randolph hall, 460 old turner street, blacksburg, va  24061, united states
-cultural keys llc, 3587 salem rd., troy, mi  48084, united states
-higher education planning, supervision, accreditation and coordination board, nicosia, north cyprus, turkey
-formation et apprentissages professionnels, ea 7529/ensta bretagne, brest, france
-cread, alger, algeria
-north american lighting, farmington hills, mi, united states
-aidenki llc, saitama, japan
-cgcommunications co. ltd., saitama, japan
-stie insan pembangunan, management departement, tangerang, 15810, indonesia
-sangensha llc., chitose, japan
-kibi inc, human resources division, tokyo, japan
-seebo networks lanka (pvt) ltd., sri lanka
-smk telok kerang, pontian, johor, malaysia
-three space lab, mit materials research lab, cambridge, ma, united states
-smk pgri of serang, city serang, 42117, indonesia
-sman 2 of bekasi, city bekasi, 17144, indonesia
-sjk(c) pei chih ulu tiram, johor, malaysia
-unsw sydney, pro-vice chancellor education portfolio, sydney, australia
-iiit hyderabad, hyderabad, india
-ammachi labs, amrita vishwa vidyapeetham, amritapuri, india
-computer science and engineering, tiet, patiala, india
-chemical engineering, iit ropar, rupnagar, 140001, india
-mechanical engineering, iit ropar, rupnagar, 140001, india
-cys structural engineers, sacramento, ca, united states
-gabi education limited, hong kong, hong kong
-bohn mexico, bosques de alisos no. 47. col, bosques de las lomas, ciudad de mexico, mexico
-bohn mexico, ampliacion ciudad industrial 97930, uman yucatan, mexico
-info screw inc., 13-6 sakae-cho, itabashi, tokyo, 173-0015, japan
-strategic alliances, siemens plm mesoamerica, ciudad de mexico, mexico
-caf signalling, alcobendas, spain
-cultural keys llc, troy, united states
-tecsup, trujillo, peru
-grenoble-inp, lig, grenoble, france
-natural sciences and maritime sciences, univ of south-eastern norway, faculty of technology, porsgrunn, norway
-gip-cnfm, grenoble, france
-earnin, palo alto, ca, united states
-dept. of economics, jinan univ., guangzhou, 510632, china
-civil, environmental and geomatic engineering, ucl, london, united kingdom
-mgarr, malta
-tulum, mexico
-friedrich-alexander-universitat erlangen-nurnberg, erlangen, germany
-bonn-rhein-sieg university of applied sciences, sankt augustin, germany
-coimbra polytecnic - isec, grupoede, ceis20, uc, coimbra, portugal
-caspae, coimbra, portugal
-writing lab, vicerrectoria de investigacion y transferencia de tecnologia, monterrey, mexico
-dhbw karlsruhe, karlsruhe, germany
-eit digital, italy
-ostbayerische technische hochschule amberg-weiden (oth-aw), faculty of electrical engineering, media and computer science, amberg, germany
-computer science, 1and1 telecommunication se, montabaur, germany
-computer science, fiducia gad it ag, karlsruhe, germany
-uc3m, madrid, spain
-ciencias de la computacion y electronica, univesidad tecnica particular de loja, loja, ecuador
-satc, brazil
-ufsc, brazil
-etrilabs, cotonou, benin
-nuclio - nucleo interativo de astronomia, s. domingos de rana, portugal
-elimu elearning, nairobi, kenya
-mito technology, milan, italy
-thomson reuters, russian federation
-education, uned, madrid, spain
-codib, cefet/rj, nova-iguacu, brazil
-coenp, cefet/rj, nova-iguacu, brazil
-intangent intelectual property, monterrey, mexico
-hochschule bonn-rhein-sieg, germany
-inoma renovables sl, cadiz, spain
-lakvijaya power plant, ceylon electricity board (ceb), narakkalliya, norochcholai, sri lanka
-innoenergy scandinavia, stockholm, sweden
-eit innoenergy, eindhoven, netherlands
-stemres learning initiative, lagos, nigeria
-mathematics and physics, rupprecht-gymnasium munchen, munich, germany
-deustotech-labsland, bilbao, spain
-bth, karlskrona, sweden
-ipp, oporto, portugal
-deusto, bilbao, spain
-cuas, villach, austria
-iaoe, wien, austria
-evm, grand canary, spain
-omnia, espoo, finland
-innoenergy, barcelona, spain
-nitra, slovakia
-innovation manager and entrepreneur coach, barcelona, spain
-pontificia univeridad catolica del peru, lima, peru
-institucio n educativa nro.1283 'okinawa', lima, peru
-direccio n de redes integradas de salud lima sur-ministerio de salud, lima, peru
-main research, excedesa s.a.c., lima, peru
-departamento de ingenieria, pontificia univeridad catolica del peru, lima, peru
-uned/ni, depro, cefet/rj, rio de janeiro, brazil
-uned/ni, codib, cefet/rj, rio de janeiro, brazil
-direccion de redes integradas de salud lima sur-ministerio de salud, lima, peru
-aecom, pittsburgh, pa, united states
-iiap-udaff, iquitos, peru
-iiap, peru
-fisi-unap, iquitos, peru
-udaf3, ayacucho, peru
-i.e.p.s.m, bilingue, iquitos, 60839, peru
-atel-advanced tools for e-learning, swampscott mass, united states
-ibmec sao paulo, sao paulo, brazil
-senac, sao jose do rio preto - sp, brazil
-ime untels, lima, peru
-pucrs, porto alegre, brazil
-enova solutions, albuquerque, nm, united states
-space systems survivability, cosmiac inc, afrl, albuquerque, nm  87117, united states
-space systems survivability, afrl space vehicles direct., kirtland afb, nm  87117, united states
-dept. of e and c, dsatm, bangalore, karnataka, india
-iste, new delhi, india
-engineering education and research consultant, united states
-complex systems education network, istec, sced-istec, united states
-ibero-american science and technology education consortium (istec), united states
-isee trust, united states
-quanser inc., markham, on, canada
-naspers limited, johnnesburg, south africa
-altus assessments, toronto, canada
-quanser consuling, markham, canada
-chemplex solvay group, united states
-innovahied, mayaguez, puerto rico
-area de desarrollo estudiantil, de la salle cuenca, cuenca, ecuador
-departamento de ingenieria en sistemas de informacion, frba, utn, buenos aires, argentina
-departamento de ciencias basicas, frba, utn, buenos aires, argentina
-dept. of psychological sciences, united states
-academic partner program, siemens plm software inc., detroit, united states
-faculty of technology management and business, uthm, malaysia
-bahagian pendidikan teknik dan vokasional, kementerian pelajaran malaysia, putrajaya, malaysia
-faculty of technical and vocational education uthm, johor, batu pahat, 86400, malaysia
-wsp, sydney, australia
-change vision inc., fukui, japan
-total sinochem oil co. ltd., shanghai, china
-sinochem oil guangdong co. ltd., guangzhou, china
-stratus consulting group, cave creek, united states
-hochschule niederrhein, faculty of textile and clothing technology, germany
-schneider electric, united states
-concord consortium, emeryville, ca, united states
-dewberry engineers inc., united states
-telefonica moviles, navarra, spain
-dept. of civil engineering, middle east technical univ., turkey
-dept. of civil engineering, harran univ., turkey
-2735 briarwood place, bethlehem, pa, united states
-258 pfister avenue, charlottesville, va, united states
-braziline, petropolis, brazil
-binzel do brasil, petropolis, brazil
-systems engineer, first robotics, manchester, nh, united states
-penn state berks, reading, pa  19609, united states
-penn state brandywine, media, pa  19063, united states
-virginia tech, 635 prices fork rd, blacksburg, va  24061, united states
-industrial and manufacturing engineering, cal poly, san luis obispo, ca  93407, united states
-faculty of aerospace engineering, tu delft, delft, netherlands
-4tu.cee tu-d, delft, netherlands
-4tu.cee utwente, enschede, netherlands
-4tu cee - tu/e, eindhoven, netherlands
-research and higher education service, etablissement public territorial plaine commune, saint-denis, france
-lisbon, portugal
-munich, germany
-ljubljana, slovenia
-board of european students of technology (best), brussels, belgium
+fmr llc, boston, ma  02110, united states
+turkish mercantile exchange, ankara, turkey
+fgv/eaesp, av. 9 de julho, 2029, sp, brazil
+hec montreal and fgv/eaesp, 3000, chemin de la cote-st-catherine, montreal, canada
+an, shaanxi 710049, p.r. china.
+unir - la rioja, avenida de la paz, 137, logrono, la rioja, 26006, spain
+fintechnews.org, calle falcia, 8/2, betera valencia, 46117, spain
+bits pilani, dubai campus, dubai, united arab emirates
+sri lanka insitute of information technology, colombo, sri lanka
+china finance 40 forum, beijing, china
+the storewpps global retail practice, 233 n michigan ave, 16th floor, chicago, il  60601, united states
+kantar, 501 boylston street, boston, ma  02116, united states
+fraedom visa europe limited, 1 sheldon square, paddington, london, w2 6tt, united kingdom
+taiping financial technology service (shanghai)co. ltd., pudong, shanghai, 201201, china
+rand europe, cambridge, united kingdom
+stellar consulting group, singapore
+bgl bnp paribas, luxembourg, luxembourg
+fusion$360, taipei, taiwan
+united financial intelligence, taipei, taiwan
+cunef, calle de leonardo prieto castro 2, madrid, 28040, spain
+s/hana cloud foundation, sap labs india pvt. ltd., bangalore, karnataka, india
+pe ecs mcd productization, sap labs india pvt. ltd., bangalore, karnataka, india
+research, development and innovation worldline, lyon, france
+iitu, kazakhstan
+sr. customer insight manager, amazon, tokyo, japan
+finance it and fintech practice group, kim and chang, seoul, 03170, south korea
+hopson group co. ltd, china
+quid, san francisco, ca  94111, united states
+complexity science hub vienna, vienna, 1080, austria
+banque et caisse d'epargne de l'etat, luxembourg, luxembourg
+clyde and co llp, london, united kingdom
+economist, shanghai stock exchange, china
+triari consulting, united kingdom
+mercy malaysia malaysia, malaysia
+c group limited, hong kong, hong kong
+data engineering at amazon.com, 33 rives de clausen 312165, luxembourg
+firamis, frankfurt, germany
+canela consulting, united states
+facebookny  10003, united states
+telecom org, jeddah, saudi arabia
+kpmg law-king and wood mallesons professor of disruptive innovation, and scientia professor, unsw sydney, sydney, australia
+digital marketing consultant, punemh, india
+unsw sydney, kensington, australia
+heinrich-heine-university, dusseldorf, germany
+banasthali vidyapith, india
+innovalogy capital management, tampere, finland
+otoritas jasa keuangan (ojk), jakarta, indonesia
+china unionpay post-doctoral research station, shanghai, co 200135, china
+harmoney, tech lane science park 122, ghent, b-9052, belgium
+socio-economic research applications and projects (serap llc), washington, dc, united states
+trade, economics and agribusiness division, sscg consulting, birmingham, united kingdom
+politeknik piksi ganesha bandung jalan jend, gatot subroto no. 301, bandung, 40274, indonesia
+szkola glowna handlowa, kolegium zarzadzania i finansow, poland
+financial services authority of indonesia, central jakarta, indonesia
+checkout.com, united kingdom
+wenlocks works, shepherdess walk, london, n1 7lh, united kingdom
+payments advisory group, papendorpseweg 99, utrecht, 3528 bj, netherlands
+united nations capital development fund (uncdf), dakar, senegal
+banca ditalia, italy
+financial intelligence unit for italy, italy
+eu innovation policy, italy
+borrowell, canada
+brane capital, ottawa, canada
+senior legal counsel corporate structure, signify (formerly known as philips lighting), eindhoven, netherlands
+liechtenstein financial market authority, liechtenstein
+qaglobal, 9/82 chua lang street, dong da district, hanoi, 100000, viet nam
+hec montreal, montreal, h3t 2a7, canada
+mouvement desjardins, montreal, h5b 1b4, canada
+real t s.r.l., verona, vr  37131, italy
+bmnp strategies llc, united states
+walter de gruyter, inc, germany
+reggio calabria, italy
+no.600, sec. 3, taijiang blvd., annan district, tainan, taiwan
+ecgi, belgium
+vjti, mumbai, india
+investment analyst vestigo ventures, cambridge, ma, united states
+fintech startup, macau, china
+firamis gmbh, frankfurt, germany
+study program of information system, stmik nusa mandiri, jakarta, indonesia
+christ (deemed to be university), bangalore, india
+lseg technology, colombo, sri lanka
+rm applications, kuala lumpur, malaysia
+infotech, frankfurt am main, germany
+clearstream services sa, luxembourg
+bain capital ventures, 632 broadway, new york, ny  10012, united states
+kae, 256260 waterloo rd, london, se1 8rf, united kingdom
+eth zurich, zurich, switzerland
+cfets information technology co. ltd., china
+klbs, klef, guntur, vaddeswaram, a.p, india
+financial market authority liechtenstein (insurance and pension funds division), vaduz, liechtenstein
+global business innovation enabling capability platform at rmit, melbourne, australia
+ibm industry research, financial services, ibm research, yorktown heights, ny, united states
+director of future ventures, legal & general group, london, united kingdom
+business development, neuron advisers, london, united kingdom
+niederer kraft frey ltd., bahnhofstrasse 53, zurich, 8001, switzerland
+cesifo, poschingerstr. 5, munich, 81679, germany
+exactpro systems, st clements house, 27 clements lane, london, ec4n 7ae, united kingdom
+exactpro systems, 2nd yuzhnoportovy projezd 20a str. 4, moscow, 115088, russian federation
+exactpro systems, 71 vazha pshavela avenue, tbilisi, 0186, georgia
+finsight ai lab, qingdao fantaike technology co. ltd, qingdao, china
+china merchants fund management co., ltd, shenzhen, china
+tetra pak, sweden
+community group, italian alliance for sustainable development (asvis), via martiri della liberta 67, cadimarco - fiesse (brescia), 25020, italy
+inceif, malaysia
+conexcap, luxembourg city, luxembourg
+bbd technology co., ltd. (bbd), no. 966, tianfu avenue, chengdu, 610093, china
+golubic and partners gp, zagreb, croatia
+alpha phi alpha fraternity and incorporated, united states
+state street global market, llc, new york, ny, united states
+inurture education solutions, pvt ltd, chennai, india
+chennai, india
+planning and industrial development, 38 ali mubarkst, egypt
+consortium for the technology transfer (c2t), via nuova valassina, carate brianza, mb, italy
+ping an technology inc., shenzhen, 518000, china
+financial economics practice, charles river associates, washington, dc, united states
+consorzio cbi, 4 via delle botteghe oscure, roma, 00186, italy
+deloitte llp, 1 little new street, london, ec4a 3tr, united kingdom
+schulte research, hong kong, hong kong
+horizon financial, united states
+ant financial, zhejiang, china
+ping an technology (shenzhen) co., ltd., shenzhen, china
+hec, paris and cepr, 1 rue de la liberation, jouy en josas, 78351, france
+big ben law, london, united kingdom
+brussels, belgium
+johns hopkins sais, washington, dc, united states
+nber, 1050 massachusetts avenue, cambridge, ma  02138-5398, united states
+trier, germany
+global mobility service inc., japan
+eu federation for the factoring and commercial finance industry, netherlands
+roundwindow consultancy services, netherlands
+hiveonline copenhagen, denmark
+ibm research, united states
+auka, tordenskioldsgate 8-10, oslo, 0160, norway
+meda, canada
+imf, united states
+trainee-in-law, gasser partner, vaduz, liechtenstein
+bnp paribas, 10 harewood avenue, london, nw1 6aa, united kingdom
+mcglinchey stafford pllc's new orleans, louisiana, united states
+m-cril, gurgaon, india
 ku leuven, belgium
-uts, sydney, australia
-educational innovation and research, sydney, australia
-integrated engineering programme ucl, faculty of engineering sciences, london, united kingdom
-via uc, horsens, denmark
-caspoc simulation simulation research, alphen aan de rijn, netherlands
-science education and communication, tu delft, delft, netherlands
-realizeit learning ltd., dublin, ireland
-cys structural engineers, sacramento, united states
-virginia tech, blacksburg, vi, united states
-whymaker.cony, united states
-virginia tech, blacksburg, united states
-engineers without borders uk, london, united kingdom
-strategic partnerships, brisbane, australia
-4 tu-cee-technical university delft, netherlands
-cape town, south africa
-cultural keys llc, troy, mi, united states
-stadio multiversity, south africa
-research triangle educational consultants, raleigh, nc  27612, united states
-city of scientific research and technological applications, alexandria, egypt
-cys structural engineers, inc., 2495 natomas park dr., sacramento, ca  95833, united states
-bits, pilani, goa, india
-stem education innovation and research initiative, iupui, indianapolis, united states
-faculty of business, law and social sciences, birmingham city univ., birmingham, b4 7bd, united kingdom
-division of engineering, math and information science and technology, penn state brandywine, media, pa  19063, united states
-information science and technology, division of engineering, business and computing, penn state berks, reading, pa  19610, united states
-management information systems, division of engineering, business and computing, penn state berks, reading, pa  19610, united states
-dept. of industrial engineering, iowa state univ., ames, ia  50011, united states
-glenn dept. of civil engineering, clemson univ., clemson, sc  29634, united states
-john e. walker dept. of economics, clemson univ., clemson, sc  29634, united states
-engineering leadership and program management, citadel, charleston, sc  29409, united states
-master in product and industrial design feup, porto, portugal
-design studio feup feup, porto, portugal
-automation and systems dept., ufsc, florianopolis, santa catarina, brazil
-cts - uninova, lisboa, portugal
-idmec-laeta-ist-ul, lisboa, portugal
-insa lyon, france
-department of electro-technical engineering, fct-nova, caparica, portugal
-escola secundaria de oliveira do bairro, oliveira do bairro, portugal
-caspae, ipss, coimbra, portugal
-formation et professionnalisation desingenieurs (fpi), ensta bretagne, cnam crf ea 1410, brest, brittany, france
-nptel, iit madras, chennai, india
-mit aoe, dept. of etc engg, alandi, pune, india
-jsc sbertech, moscow, russian federation
-drive constructor, trondheim, norway
-rtf, mpei: ire, moscow, russian federation
-interactive laboratories, llc-xlab. cloud, moscow, russian federation
-facultad de informatica av. de las ciencias campus juriquilla s/n, division de estudios de posgrado, queretaro, mexico
-infotec, av. san fernando 37, tlalpan, mexico city, 14050, mexico
-albert-ludwigs-universit at freiburg, germany
-virginia tech, united states
-dept. of civil engineering, colorado state univ., fort collins, co  80523, united states
-dept. of engineering education, virginia tech, apo 369 goodwin hall, 635 prices fork rd., blacksburg, va  24061, united states
-ied, istituto europeo di design, barcelona, spain
-new model in technology engineering, hereford, united kingdom
-jabatan teknologi kejuruteraan mekanikal dan pembuatan, kolej vokasional lebih cator, perak, malaysia
-direct consulting and services sdn. bhd., kuala lumpur, bukit jalil, malaysia
-faculty of comnuting, malaysia
-faculty of civil engineering, malaysia
-faculty of computer science, depok, indonesia
-best-board of european stud. of technology, vienna, austria
-faculty of computer science, uiversitas indonesia, depok, indonesia
-kementerian pendidikan malaysia, malaysia
-universitc lumiere lyon 2, lyon, france
-projects coordinator iste, new delhi, india
-unesco, united states
-usc, sunshine, coast, australia
-faculty of education, malaysia
-departamento de ciencias basicas, frba- utn, buenos aires, argentina
-departamento de ingenieria en sistemas de informacion, frba- utn, buenos aires, argentina
-quanser inc., markham, on  l3r 5h6, canada
-jabatan pendidikan negeri johor, jalan tun abd razak, johor bahru, johor, 80604, malaysia
-uai facultad de tecnologia informatica, caeti, buenos aires, argentina
-faculty of engineering technology, lesec, ku leuven, leuven, belgium
-faculty of engineering science, lesec, ku leuven, leuven, belgium
-faculty of psychology and educational sciences, lesec, ku leuven, leuven, belgium
-faculty of science, lesec, ku leuven, leuven, belgium
-inesc-tec, porto, portugal
-t.y. lin taiwan consulting engineers, inc., taipei, taiwan
-skogmursvagen 16 f, gavle, 802 64, sweden
-research group education and labour market, parkstraat 47, box 5300, louvain, 3000, belgium
-irice, conicet, rosario, argentina
-consultant business, lima, peru
-departamento de sistemas, utn-frt, san miguel de tucuman, argentina
-cultural keys, llc, detroit, mi, united states
-dept. of engineering and science education, glenn dept. of civil engineering, clemson univ., clemson, sc  29634, united states
-opinion dynamics, waltham, ma  02451, united states
-dept. of philosophy, stellenbosch univ., stellenbosch, 7602, south africa
-obss bilisim bilgisayar hiz.dan.san. ve tic.ltd.sti, istanbul, turkey
-dept. of civil and environmental engineering, bucknell univ., 1 dent dr., lewisburg, pa  17837, united states
-manuel firmino & associados, lda, praca da republica 13 5oesq., porto, 4050-495, portugal
-virginia tech, 317 war memorial hall (0313), blacksburg, va  24060, united states
-cyber services plc, 1 elnok u., budapest, hungary
-solidq global sa, alicante, spain
-fakultat ingenieurwissenschaften, hochschule aschaffenburg, aschaffenburg, germany
-xisio gmbh darmstadt, germany
-tecsup, lima, peru
-utn, san carlos, costa rica
-mohammadian fachhochschule des mittelstands, berlin, germany
-innoenergy, innovation manager and entrepreneur coach, barcelona, spain
-markaplassen ungdomsskole, trondheim, norway
-universite nice-sophia antipolis, nice, france
-cedel cooperativa sociale elis, rome, italy
-kaunas science and technology park, kaunas, lithuania
-evm project management experts, santa cruz de tenerife, spain
-associacao parque de ciencia e tecnologia de almada/setubal-madan parque, caparica, portugal
-depro, uned/ni, cefet/rj, rio de janeiro, brazil
-codib, uned/ni cefet/rj, rio de janeiro, brazil
-dieectqai, etsii, uned, madrid, spain
-uned, spain
-co-funder and organizer, tech and ladies, new york, united states
-microsoft sr account executive microsoft, madrid, spain
-ai challenges and quantum experiences, ibm research, new york, united states
-physics dept.-icex, brazil
-ostbayerische technische hochschule regensburg, prufeninger strae 58, regensburg, 93049, germany
-staatliche fachober-und berufsoberschule, technik munchen, munich, germany
-sjk(t) jalan haji manan, kluang, johor, malaysia
-departamento de lenguajes y sistemas informaticos, euskal herriko unibersitatea upv/ehu, spain
-lightware ltd., budapest, hungary
-cetti, politehnika bucharest, bucharest, romania
-ismep-supmeca, 3 rue fernand hainaut, saint-ouen, 93400, france
-gazi universistesi, ankara, turkey
-hastily assembled games, germany
-eworks gmbh, frankfurt, germany
-departamento de posgrados, facultad de ciencias humanas y de la educacion-universidad tecnica de ambato, ambato, ecuador
-oth regensburg, seybothstr. 2, regensburg, d-93053, germany
-bonn-rhine-sieg university of applied sciences, sankt augustin, germany
-bonn-rhine-sieg univ. of applied sciences, sankt augustin, germany
-evm., tenerife, spain
-omnia, helsinki, finland
-friedrich-alexander-universitat erlangen-nurnberg, germany
-plaza robotica, torrejon de ardoz, spain
-business development, kaspersky labs japan, chiyoda-ku, tokyo, japan
-tech and ladies, spain women techmakers, united states
-higher education consultant, castle rock, co, united states
-ostbayerische technische hochschule, regensburg, d-93025, germany
-cortex business solutions, calgary, ab, canada
-microsoft mobile oy, finland
-iit, interdisciplinary program in education technology, bombay, india
-tech futures lab, auckland, new zealand
-angelo state univ., asu station no. 11056, san angelo, tx  76909, united states
-dept. of construction management, california state univ., fresno, ms/ee 94, 2320 e san ramon ave., fresno, ca  93740, united states
-pennoni, 1900 market st., philadelphia, pa  19103, united states
-dept. of english, virginia tech, 202 major williams hall (0192), blacksburg, va  24061, united states
-swan mesh networks ltd, research and development, london, united kingdom
-educational testing service, ets, princeton, nj, united states
-idea square, cern, geneva, switzerland
-ovisa san martin de guillar, outeiro de rei, lugo, 27154, spain
-cype ingenieros s.a., eusebio sempere avenue, alicante, 5 - 03003, spain
-ensa marseille, france
-th koln (university of applied sciences), betzdorfer strae 2, cologne, 50679, germany
-tu darmstadt, franziska-braun-strae 3, darmstadt, 64287, germany
-copcisa, navas de tolosa 161, terrassa, 08224, spain
-cype ingenieros, s.a., avda. eusebio sempere, 5, alicante, 03003, spain
-format engineers ltd, walcot street 146, bath, ba1 5bl, united kingdom
-venture well, amherst, ma, united states
-save the children, sec-44, gurugram, india
-research triangle educational consultants, 3504 corin court, raleigh, nc  27612, united states
-division of instrumentation and control engineering, nsit, dwarka, new delhi, india
-ied, united states
-faculty of industrial design engineering, tu delft, netherlands
-rolls-royce plc, derby and raeng vp in engineering supply chain innovation, united kingdom
-inspire ag, leonhardstrasse 21, zurich, 8092, switzerland
-eth zurich, leonhardstrasse 21, zurich, 8092, switzerland
-580 tallassee rd., athens, ga  30606, united states
-350 east south water street, chicago, il  60601, united states
-arts et metiers paristech, lcpi, 151 boulevard de l'hopital, paris, 75013, france
-technical curriculum developer, amazon web services, herndon, va, united states
-faculdades idaam, manaus, brazil
-engenharia da computacao  insper, sao paulo, brazil
-insper, sao paulo, brazil
-ge avio do brazil, ge aviation, petropolis, brazil
-fatec sp-itaquera prof. miguel reale, sao paulo, brazil
-general electric aviation - ge celma and its subsidiary avio do brazil, petropolis, rio de janeiro, brazil
-faro  faculdade de roseirasp, brazil
-tartu ulikool, estonia
-southern taiwan business group, chunghwa telecom co., ltd, kaohsiung, taiwan
-array furniture slides, esenyurt, istanbul, 34513, turkey
-alarm.com, tysons, va  22102, united states
-865 asp ave, norman, ok  73019, united states
-digital youth network, chicago, il, united states
-rcc product design, llc, menomonee falls, wi, united states
-information science, cornell tech, new york, ny  10044, united states
-manuel firmino and associados, lda. - consulting, research, intervention - porto, portugal
-inesc tec, technology and science, portugal
-vilniaus kolegija, faculty of electronics and informatics, vilnius, lithuania
-strand associates, inc., 325 west main st., louisville, ky  40202, united states
-dept. of engineering and science education, clemson univ., clemson, sc  29634, united states
-sales, product, and remarketing analyst, toyota financial services, dallas, tx, united states
-univerzitet singidunum, beograd, serbia
-computer and information technology and engineering education, purdue univ., 401 n. grant st., west lafayette, in  47906, united states
-iupui, united states
-ceo, roger ward engineering, inc., 7474 noel rd., indianapolis, in  46278, united states
-fuji television kids entertainment inc, tokyo, japan
-faculty of mechanical engineering, uitm johor, pasir gudang campus, johor, malaysia
-faculty of technical and vocational education, uthm, batu pahat, johor, 86400, malaysia
-uitm cawangan terengganu kampus dungun, dungun terengganu, 23000, malaysia
-kampus kuala pilah, uitm, negeri sembilan, malaysia
-jakarta, indonesia
-brainstorm worldwide, inc., tokyo, japan
-creare llc, united states
-dept. of civil and environmental engineering, bucknell univ., lewisburg, pa  17837, united states
-dept. of civil and environmental engineering, syracuse univ., syracuse, ny  13244, united states
-227 w. jefferson blvd., south bend, in  46601, united states
-glenn dept. of civil engineering, clemson online, clemson univ., clemson, sc  29634, united states
-hellenic electricity distribution network operator s.a., 20 perraivou and 5, kallirois str., athens, greece
-dept. of electrical engineering, mechanical engineering and technical journalism, bonn-rhein-sieg university of applied sciences, sankt augustin, germany
-appacdm, v.n. famalicao, portugal
-training and certification division ctiandp, athens, greece
-dep. ing. electrica, electronica y de control, uned, madrid (madrid), 28040, spain
-nec solution innovators ltd, tokyo, japan
-bluspecs, madrid, spain
-seat volkswagen group martorell, barcelona, spain
-tallinna tehnikaulikool, estonia
-ee limited, united kingdom
-limetools ltd, bournemouth, united kingdom
-professional lyceum of eleftherios venizelos, chania, greece
-transmission system operator of cyprus, cyprus
-associacao parque de ciencia e tecnologia de almada/setubal - madan parque, caparica, portugal
-weichenstellen - systemische personal-and organisationsentwicklung, coaching training, consulting, vienna, austria
-dpt. physics and chemistry, dpt. informatics, ies xixona, xixona, spain
-eit innoenergy scandinavia ab, stockholm, sweden
-fakultat ingenieurwissenschaften, hochschule aschaffenburg, germany
-fachbereich elektrotechnik und informationstechnik, hochschule darmstadt, germany
-est-ipca, barcelos, portugal
-francisco requena alcaraz, seat volkswagen group, martorell, barcelona, spain
-staatliche fachober- und berufsoberschule, technik munchen, munich, germany
-energy technology engineering dept, t.e.i. of athens, aegaleo, 12210, greece
-bonn-rhein-sieg university, sankt augustin, germany
-hs-kempten, germany
-oth-regensburg, germany
-faculty of electrical engineering and information technology, ostbayerische technische hochschule regensburg, regensburg, 93025, germany
-irece-conicet, argentina
-ipp, portugal
-global professional skills assessment, baltimore, united states
-lirosa, faculty of science (fs), uae, tetouan, morocco
-youth radio oaklandca, united states
-research triangle educational consultants, raleigh, nc, united states
-engineering course, uergs/liberato/ftec, porto alegre, brazil
-information management, fh joanneum, graz, austria
-hellenic air force, athens, greece
-uninova-cts, monte de caparica, portugal
-u-tad (centro universitario de tecnologia y arte digital), las rozas, 28290, spain
-vestel electronics, manisa, 45030, turkey
-dept. of civil and environmental engineering, jackson state univ., jackson, ms  39217, united states
-dept. of elementary and early childhood education, jackson state univ., jackson, ms  39217, united states
-dept. of technology, jackson state univ., jackson, ms  39217, united states
-dept. of computer engineering, jackson state univ., jackson, ms  39217, united states
-adobe, 801 n 34th street, seattle, wa  98103, united states
-google australia, sydney, australia
-csnyc, new york, ny, united states
-faculty de psycology & educational sciencesup, porto, portugal
-cread alger, cread, bouzareah, algeria
-tu dortmund, dortmund, germany
-dept of electronic technology, uniminuto, bogota, colombia
-uniminuto, dept of electronic technology, bogota, colombia
-facuty of business and management, uitm, malaysia
-faculty of engineering and built environment ukm, bangi, 43600, malaysia
-faculty of mechanical engineering utm, skudai, 81310, malaysia
-faculty of electrical engineering uitm, shah alam, 40450, malaysia
-faculty of mechanical engineering ump, pekan, 26600, malaysia
-faculty of engineering upm, serdang, 43400, malaysia
-politeknik kuala terengganu jabatan pengajian politeknik, kpt kuala terengganu, terengganu, malaysia
-infosys ltd., pune, india
-dept. of mechanical engg., adcet, ashta, sangli, india
-tu eindhoven, eindhoven, netherlands
-tucker innovations incorporated, charlotte, nc, united states
-utfpr, londrina, brazil
-aalborg univeristy, aalborg, denmark
-social innovation science park, uniminuto, bogota, colombia
-secretaria de educacion del distrito capital, bogota, colombia
-344 goodwin hall, 635 prices fork road, blacksburg, va  24061, united states
-imagars llc, hillsboro, or  97124, united states
-kaist, building e2, 291 daehak-ro, yuseong-gu, daejeon, 34141, south korea
-mechanical engineering dept., technion, haifa, 32000, israel
-big beacon, douglas, mi  49406, united states
-iron range engineering, 1001 west chestnut street, virginia, mn, united states
-313 bavaro hall, po box 400273, charlottesville, va  22904, united states
-bledsoe telephone cooperative, 338 cumberland avenue, pikeville, tn  37367, united states
-museum of science, 1 science park, boston, ma  02114, united states
-jinhua polytechinc, jinhua, 321007, china
-departamento de matematica da escola de ciencias e tecnologia da utad, vila real, portugal
-lab-dct do cidtff, aveiro, portugal
-cmat-utad, polo do cmat, vila real, portugal
-esad, mindshake, matosinhos, porto, portugal
-departamento de matematica da escola de ciencias e tecnologia da utad, portugal
-departamento de educacao e psicologia da escola de ciencias humanas e sociais da utad, portugal
-departamento de zootecnia da escola de ciencias agrarias e veterinarias da utad, portugal
-labdct-utad/cidtff, didactics and technology in education of trainers, uaveiro, portugal
-inesc tec, rua dr. roberto frias, porto, portugal
-ineb, rua do campo alegre, 823, porto, portugal
-cieti and lepabe, rua dr. antonio bernardino de almeida, 431, porto, portugal
-chemical engineering, iit bombay, mumbai, 400076, india
-educational technology, iit bombay, mumbai, 400076, india
-abhijat research and software, c3/701, kumar parisar, near gandhi bhavan, kothrud, pune  411038, india
-cdac bombay, mumbai, india
-cdac, mumbai, india
-#2 cocoa village, james smart, lower manzanilla, trinidad and tobago
-iiit, hyderabad, india
-samsung bengaluru, india
-hvm consult, saltsjobaden, sweden
-stem edu project, ecase, luxor, egypt
-dept. of engineering and technology, southern utah univ., cedar city, ut  84720, united states
-dept. of civil, construction, and environmental engineering, san diego state univ., 5500 campanile dr., san diego, ca  92182-1324, united states
-oregon state univ., 101 kearney hall, corvallis, or  97331, united states
-sws engineering, 261 autumn dr. #115, san marcos, ca  92069, united states
-graduate research assistant, oregon state univ., 101 kearney hall, corvallis, or  97331, united states
-parallelplanes, lda., braga, 4715-288, portugal
-gonzaga univ., herak 212, spokane, wa  99203, united states
-epics, purdue univ., 701 w. stadium ave., west lafayette, in  47907-2045, united states
-nitttr, kolkata, block-fc, sector-ii, salt lake city, 700106, india
-vp, academic and stud. affairs, rit dubai, dubai, united arab emirates
-viotech solutions inc., 1111 route 110, farmingdale, ny, united states
-education technical marketing, mathworks france, france
-iminds, belgium
-data61-csiro, australia
-ibm, via shangai 53, roma, italy
-global professional skills assessment, llc, baltimore, united states
-dept. computer science, uam, spain
-ies narcis oller, valls, spain
-gredos san diego cooperativa, madrid, spain
-stem+ solutions - edutech middle east, edutech middle east, dubai, united arab emirates
-bonn-rhein-sieg university of applied science, germany
-oth regensburg, regensburg, germany
-dep. ing. electrica, electronica y de control, uned, madrid, 28040, spain
-hewlett packard enterprise, malaysia
-programamos.es, sevilla, spain
-cefet, rj rio de janeiro, brazil
-numerica investigacion, innovacion y desarrollo, quito, ecuador
-cedia, cuenca, ecuador
-engineering faculty, uninettuno, rome, italy
-aselsan, ankara, turkey
-global markets software design, bnp paribas, london, united kingdom
-british telecom, spanish branch, edificio licasa, isabel colbrand, 6-8, madrid, 28050, spain
-bp plc, sunbury on thames, middlesex, tw16 7bp, united kingdom
-upv/ehu, mechanical engineeering, spain
-koding kingdom, hong kong, hong kong
-pv lighthouse, coledale, nsw, australia
-unsw australia, sydney, australia
-cieti & lepabe, rua dr. antonio bernardino de almeida, 431, porto, portugal
-requimte/laqv, rua dr. antonio bernardino de almeida, 431, porto, portugal
-virginia tech., united states
-hennisnl, amsterdam, netherlands
-ipenz, new zealand
-faculdade de psicologia e de ciencias da educacao  up, porto, portugal
-faculty of ethnology and sciences of education in cieszyn, bielska 62, cieszyn, 43-400, poland
-ied, united kingdom
-alto design, montreal, canada
-cognistreamer, engelse wandeling, kortrijk, belgium
-krabbesholm hjskole, denmark
-ied barcelona, designit, spain
-tatoma group, spain
-snhetta oslo as, norway
-bluspecs innovation, madrid, spain
-venturewell, 100 venture way, hadley, ma  01035, united states
-apple, 5 infinite loop ms 305-4dt, cupertino, ca  95014, united states
-bw field pty ltd, australia
-dpto. tecnologias de la informacion y las comunicaciones, upct, cartagena, murcia, spain
-viktoria swedish ict, gothenburg, sweden
-penn state, united states
-nutmeg saving and investment ltd, london, united kingdom
-venturewell, amherst, ma, united states
-dept. of architecture, zirve univ., gaziantep, 27260, turkey
-ostbayerische technische hochschule regensburg, faculty of electrical engineering and information technology, seybothstr. 2, regensburg, 93053, germany
-lifia, faculty of informatics, unlp, cic, la plata, argentina
-faculty of education, uitm, shah alam, malaysia
-learning strategist, content capital sdn bhd, kuala lumpur, malaysia
-collaborative research in engineering, science and technology (crest), penang, malaysia
-dept. of english, illinois state univ., campus box 4240, normal, il  61790, united states
-decision sciences, dept. of accounting, southeast missouri state univ., quantitative methods, cape girardeau, mo  63701, united states
-dept. of civil and environmental engineering, michigan technological univ., 1400 townsend dr., houghton, mi  49931-1295, united states
-aviation and federal group, burns and mcdonnell, p.o. box 419173, kansas city, mo  64141-6173, united states
-alvi associates inc., 110 west rd., towson, md  21204, united states
-structures workshop inc., 1 richmond square, providence, ri  02906, united states
-tu delft, applied sciences, science education and communication, lorentzweg 1, delft, 2628 cj, netherlands
-tu delft, industrial design engineering, design conceptualization and communication, landbergstraat 15, delft, 2628 ce, netherlands
-science, technology, engineering, and mathematics (stem) education, tufts univ., medford, ma  02155, united states
-dept. head, engineering, james madison univ., msc 4116, 701 carrier dr., harrisonburg, va  22807, united states
-dept. of civil and environmental engineering, washington state univ., pullman, wa  99164, united states
-safe air, blenheim, new zealand
-cpit - new zealand, christchurch, new zealand
-ibm japan, tokyo, japan
-teradyne malaysia ltd., heitech village, usj1 uep subang jaya, selangor, 47600, malaysia
-texas instruments engineering malaysia, batu berendam ftz, melaka, 75350, malaysia
-texas instruments malaysia, ulu klang ftz, kuala lumpur, 54200, malaysia
-basic scopes product line, tektronix, bangalore, india
-desarrollo de entornos virtuales de ensenanza y aprendizaje, utn-facultad regional delta, campana, buenos aires, argentina
-ku leuven, gent-aalst, belgium
-engineering eduacation, industrial design, technology in education, netherlands
-faculty of engineering science and lesec, ku leuven, leuven, belgium
-kuleuven, lesec, leuven, belgium
-ku leuven, faculty of engineering technology, leuven, belgium
-faculty of engineering technology, ku leuven, lesec(leuven engineering science and education centre), leuven, belgium
-faculty of science, ku leuven, lesec, leuven, belgium
-faculty of engineering technology, ku leuven, lesec, leuven, belgium
-9 iroon polytechneiou str, athens, 15780, greece
-polytech orleans, orleans, france
-developer and economist shell, london, united kingdom
-knowledge group leader, tata steel, ijmuiden, netherlands
-kerneos, neuilly, france
-i.t.e.s.r.c. dr. rogelio montemayor seguy sabinas, coahuila, mexico
-i.t.e.s.r.c. sabinas, coahuila, mexico
-ku leuven, technologiecampus oostende zeedijk 101, oostende, 8400, belgium
-learninglab dtu, lyngby, denmark
-learning lab dtu, lyngby, denmark
-ensta bretagnecnam crf, brest, france
-voaa, veendendaal, netherlands
-int. industrial consult iic ag, frankfurt, germany
-ael oy, finland
-kth, stockholm, sweden
-education technical specialist, mathworks gmbh, ismaning, germany
-mathworks gmbh, ismaning, germany
-innovahied, mayagoez, pr  00682, united states
-tu kaiserslautern, kaiserslautern, germany
-tu-d 3tu.cee, delft, netherlands
-tu/e 3tu.cee, eindhoven, netherlands
-didier baux communication, 1 rue du chanoine moreau, quimper, france
-faculty of engineering technology, ku leuven, campus group t, leuven, belgium
-educational development unit, ku leuven, leuven, belgium
-vice dean faculty of engineering science, ku leuven, leuven, belgium
-engineering education of russia, tomsk, russian federation
-built form, llc, wilmington, de, united states
-prometeo project researcher (senescyt), ecuador
-upc-barcelonatech, barcelona, spain
-perth, wa  6014, australia
-concord consortium, concord, ma, united states
-mit, cambridge, united states
+ieee fellow, united states
+reale group, italy
+suny at oneonta, united states
+stemcorp, brazil
+stellar consulting group pte ltd, singapore
+effectas gmbh, bundesstrasse 6, zug, 6300, switzerland
+goldman sachs, london, united kingdom
+noah holdings group, shanghai, china
+euricse, trento, italy
+ngo, armenia
+european parliamentary research service (eprs), united kingdom
+ericsson ab, karlskrona, sweden
+workday, inc., pleasonton, united states
 unsw, australia
-liaoning petrocchemical vocational and technology, jinzhou, liaoning, china
-shandong entry-exit inspection and quarantine bureau, qingdao, shandong province, china
-qingdao branch of naei, qingdao, china
-johor port berhad, malaysia
-zhoukou zhiye jishu xueyuan, zhoukou, henan, china
-xian research inst of hi-tech, xian, shanxi, china
-pla 95970 troops, beijing, china
-verity design learning, mascoutah, il  62258, united states
-engineers without borders, united kingdom
-tu delft, netherlands
-tessel supply, united states
-eth zurich, switzerland
-kuleuven, belgium
-intellectual property awareness network (ipan), london, united kingdom
-isd (institut superieur de design) rubika, valenciennes, france
-mechanical dept., technion, haifa, 32000, israel
-outotec oyj, espoo, finland
-board of european stud. of technology, spain
-bmw ag, germany
-bth, sweden
-imcs ul, latvia
-deustotech learning, deusto foundation, bilbao, spain
-ellinogermaniki agogi, athens, greece
-mathworks france, paris, france
-lycee les eucalyptus, nice, france
-hohere technische bundeslehranstalt mossingerstrae, klagenfurt, austria
-hohere technische bundeslehr- und versuchsanstalt, villach, austria
-hohere technische bundeslehranstalt, wolfsberg, austria
-ctr. for continuing education and knowledge management, ostbayerische technische hochschule regensburg, regensburg, germany
-dept. social and health care sciences, ostbayerische technische hochschule regensburg, regensburg, germany
-faculty of electrical engineering and information technology, oth regensburg, seybothstrasse 2, regensburg, 93053, germany
-idp in educational technology, iit bombay, mumbai, india
-dept. of electrical engineering, iit bombay, mumbai, india
-lean project consulting, boston, ma  02145, united states
-cidtff (didatics and technology in education of trainers, ua), aveiro, portugal
-seattle univ., engr 521, 901 12th ave., seattle, wa  98122-1090, united states
-municipal art gallery of corinth, corinth, greece
-inesc technology and science, inesc tec, porto, portugal
-a glimmer of hope, 3600 n. capital of texas hwy., building b, austin, tx  78746, united states
-escola superior de tecnologia e gestao de agueda-universidade de aveiro, apartado 473, agueda, 3754-909, portugal
-taipei municipal zhong-lun high school, taipei, taiwan
-iber-oleff  componentes tecnicos em plastico, sa, r&d, parque industrial manuel da mota, lt 10/18, pombal, 3100-354, portugal
-dept. of civil and environmental engineering, mississippi state univ., 235c walker hall, 501 hardy rd., mississippi state, ms  39762, united states
-dept. of civil and architectural engineering, tennessee state univ., marietta, ga  30068, united states
-alaska dotandpf., united states
-gray and asso., llc., united states
-mead and hunt, inc., united states
-asce continuing education., united states
-dept. of business administration, embry riddle aeronautical univ., worldwide campus, 600 s. clyde morris blvd., daytona beach, fl  32114, united states
-dept. of construction management, western carolina univ., 211 belk building, 389 centennial dr., cullowhee, nc  28723, united states
-virginia tech, 614 mcbryde hall, 225 stanger street, blacksburg, va  24061, united states
-oregon state univ., 101 kearney hall, corvallis, or 97331, united states
-washington state univ., pullman, wa 99164, united states
-utah state univ., 233 engineering, logan, ut 97331, united states
-concord consortium, concord, ma 01742, united states
-48 pat drive, clarkesville, ga 30523, united states
-b2 d.o.o., ljubljana, slovenia
-react, epfl, station 9, lausanne, ch-1015, switzerland
-technical learning services, tech mahindra, hyderabad, india
-dcu, dublin, ireland
-international centre for e-innovation and workplace learning, dublin, ireland
-product development group, eth zurich, switzerland
-sintef raufoss manufacturing, norway
-tu eindhoven, netherlands
-eth, zurich, switzerland
-faculty of architecture - university of lisbon, ciaud, portugal
-pdz product development group zurich, eth, zurich, switzerland
-daams ergonomie, netherlands
-teknologian tutkimuskeskus vtt, finland
-tdesignlab(edg designlab epe), greece
-virtual product engineering - vpe network association, germany
-epfl, lausanne, switzerland
-cime-nanotech, grenoble, france
-leed ap, civil engineering, lawrence technological univ., 21000 w. ten mild rd., southfield, mi  48075, united states
-departamento de ingenieria de sistemas y automatica, euiti de bilbao, upv/ehu, paseo rafael moreno 'pitxitxi' 3, bilbao, 48013, spain
-departamento de ingenieria de sistemas y automatica, etsi de bilbao, upv/ehu, alameda de urquijo s/n, bilbao, 48013, spain
-departamento de ingenieria electronica y automatica, eps de jaen, campus las lagunillas, jaen, 23071, spain
-thomson reuters r and d, new york, ny, united states
-alvstranden bildningscentrum, 683 80 hagfors, sweden
-independent scholar, montreal, qc, canada
-cooper union for the advancement of science and art, new york, ny 10003, united states
-best we can be, inc., united states
-3m co., st paul, mn, united states
-new york state industries for the disabled, albany, ny 12203, united states
-proton onsite, 10 technology drive, wallingford, ct 06492, united states
-kzn e-skills colab, durban, south africa
-mmi foundation, cape town, south africa
-hm electronics, inc., 14110 stowe dr, poway, ca 92064, united states
-microsoft corp, microsoft, 555 110th ave ne, bellevue, wa, 98004, united states
-mimos malaysia berhad, technology park malaysia, malaysia
-ostbayerische technische hochschule regensburg, seybothstrae 2, 93053 regensburg, germany
-ifz - inter-university research centre for technology, work and culture, austria
-civil engr dept., kau, jeddah, saudi arabia
-concept technology innovations, san diego, ca, united states
-freeit, stuttgart, germany
-telekom srbija, belgrade, serbia
-bonn-rhine-sieg university, sankt augustin, germany
-european projects, ecepie, paris, france
-uniwersytet przyrodniczo-humanistyczny w siedlcach, siedlce, poland
-instytut maszyn matematycznych, warsaw, poland
-langproving langproving, santa cruz de tenerife, spain
-technische hochschule deggendorf, th deggendorf, deggendorf, germany
-munich re, special financial risks - cyberrisks, munich, germany
-uispa, idmec - feup, porto, portugal
-innovation, 1000 skopje, north macedonia
-dept. of electrical engineering, mechanical engineering and technical journalism, bonn-rhine-sieg university of applied sciences, sankt augustin, germany
-mathworks ltd., cambridge, united kingdom
-mathworks, inc., natick, ma, united states
-crc for infrastructure and engineering asset management, brisbane, australia
-virginia tech, 610 mcbryde hall, 225 stanger st., blacksburg, va 24061, united states
-independent program evaluation consultant, sudbury, ma, united states
-ipca, est, barcelos portugal, portugal
-sustainable engineering for developing communities, israel
-wp consulting, newcastle upon tyne, united kingdom
-embraer, ave. brigadeiro faria lima. 2.170 1227-901, s. j. dos campos, sp, brazil
-schaeffler brasil ltda, sorocaba, sao paulo, brazil
-john deere gmbh and co. kg, intelligent solutions group, strassburger allee 3, 67657 kaiserslautern, germany
-apesa, technopole izarbel, bidart, france
-keybernetes, s.r.o., omska 14, kosice, 04001, slovakia
-gip-cnfm, minatec grenoble-inp, france
-ietr umr 6164, dept. telecom, insa rennes, f-35708 rennes, france
-inst. sup. de engenharia do porto, depart. de eng. informatica, r. antonio bernardino de almeida, 431, 4200-072 porto, portugal
-am, dcte, inesc id, lisboa, portugal
-ipc/isec, inesc, coimbra, portugal
-cnrs, gipsa-lab., f-38420 grenoble, france
-gymnasium st. christophorus of werne, germany
-regionales berufsbildungszentrum, technik der landeshauptstadt kiel, kiel, germany
-knrtu, kazan, russian federation
-kfu, kazan, russian federation
-bergmans mechatronics llc, newport beach, united states
-fatec santo andre, sao paulo, brazil
-ieeta/utad, portugal
-portugal telecom inovac ao, rua eng. jose ferreira pinto basto, 3810 - 106 aveiro, portugal
-inesc-tec/utad, portugal
-dep. electronica e telecomunicacoes, ieeta, portugal
-tecnun, ceit (university of navarra), manuel de lardizabal, 15 san sebastian 20018, spain
-portugal telecom inovacao, rua eng. jose ferreira pinto basto, aveiro, portugal
-ieeta, ua campus, 3810-193 aveiro, portugal
-facultad de cienrias exactas, ingeneria y agrimensura, universiad nacional de rosario, rosario, argentina
-isar148 theater and training, zenettistr. 47, d-80337 munchen, germany
-ellinogermaniki agogi, vathens, greece
-faculdade de tecnologia (fatec), santo andre, brazil
-escola de engenharia de sao carlos, usp, sao carlos, brazil
-faculdade de economia administracao e contabilidade, usp, ribeirao preto, brazil
-aassaan educare private limited, chennai, india
-sol ideas technology development, p.o. box 5729, san jose ca 95150, united states
-cadence design systems inc., 2665 seely ave, san jose, ca, united states
-virginia tech, 660 mcbryde hall (0218), blacksburg, va 24061, united states
-civil and environmental engineering, washington state univ., pullman, wa 99164-2910, united states
-dept. of construction management, tianjin univ., tianjin 300072, china
-dept. of civil engineering, northwestern univ., evanston, il 60208, united states
-loughborough univ., ashby rd., loughborough, united kingdom
-faculty of engineering, arak univ., arak, iran
-engcetl, loughborough univ., ashby rd., loughborough, united kingdom
-broad-based knowledge, llc, richmond, ca, united states
-biostatistics division, inventiv clinical solutions llc., 224 schilling circle, hunt valley, md 21031, united states
-research and evaluation, boston museum of science, 1 science park, boston, ma, 02114, united states
-observatoire des sciences et des techniques, paris, france
-pricewaterhousecooper, brisbane, australia
-dhitech s.c.a.r.l.-high-tech technological district, via s. trinchese, n. 61, 73100 lecce, italy
-campus monterrey, av. garza sada 2501, 64849 monterrey, n.l., mexico
-sacmi imola s.c., via selice provinciale, 17/a, i-40026 imola bo, italy
-enginsoft spa, via della stazione 27, mattarello, i-38123 trento, italy
-dept. of environmental studies, san jose state univ., one washington square, san jose, ca 95192-0115, united states
-martin pennington consulting, united kingdom
-lloyd's register group ltd., united kingdom
-e.t.s. de nautica c gamazo 1, santander, cantabria 39004, spain
-information satellite systems joint-stock company, zheleznogorsk, russian federation
-dept. electronics, ies escolas proval, nigran, spain
-index-6 ltd., bulgaria
-technology-enhanced, performance-oriented learning software solutions (tepolsofts ltd.), bulgaria
-adaptive predictive expert control (adex), madrid, spain
-portugal telecom inovaco, aveiro, portugal
-alpen-adria-universitat klagenfurt, austria
-it tallaght, dublin, ireland
-electrical and computer engineering dep., uned, languages and systems dep., spain
-dsi, estsetubal, ips, setubal, portugal
-dmat, estsetubal, ips, setubal, portugal
-engineering faculty, fundacion de educacion superior san jose, bogota, colombia
-austriatech, vienna, austria
-i.e.s jose planes, carm, murcia, spain
-dep. electrical and computer engineering, uned, 28040 madrid, spain
-mission numerique pour l'enseignement, ministre de l'enseignement, superieur et de la recherche, 75005 paris, france
-warndt-gymnasium, 66333 voelklingen, germany
-max-planck-gymnasium, 66740 saarlouis, germany
-acc1o, barcelona, spain
-lisa, faculte des sciences et techniques de fs, fez, morocco
-ineco, madrid, spain
-facultad de informatica, spain
-imaxdi.real innovation, vigo, spain
-integrated advance, planning sdn. bhd., 53100 kl., malaysia
-civil and environmental engineering dept., villanova univ., 800 lancaster ave., villanova, pa 19085, united states
-dept. of construction management, east carolina univ., greenville, nc 27858, united states
-dept. of building construction, virginia tech., blacksburg, va 24061, united states
-technical faculty mihajlo pupin, zrenjanin, serbia
-dpto. de tecnologias especiales aplicadas a la telecomunicacion (teat), etsi telecomunicacion, avda. complutense, 30, 28040 madrid, spain
-dpto. de ingenieria civil: hidraulica y energetica, etsi de caminos, canales y puertos, c/profesor aranguren s/n, 28040 madrid, spain
-free it, stuttgart, germany
-orleans technopole developpement and orleans pepinieres, orleans val de loire technopole, orleans, france
-tutorial services, faculty of engineering science, ku leuven, leuven, belgium
-dean of the faculty of engineering science, faculty of engineering science, ku leuven, leuven, belgium
-board of european studnts. of technology, ljubljana, slovenia
-board of european studnts. of technology, bucharest, romania
-board of european studnts. of technology, delft, netherlands
-ensta bretagne, cnam crf, brest, france
-telecom-bretagne, brest, france
-education and employment policy, academic engineers and architects in finland tek, helsinki, finland
-ku leuven, faculty of bioscience engineering, heverlee, belgium
-gender studies in science and engineering, tu munchen, munich, germany
-ceg-ist and ist, utl, lisbon, portugal
-dept. of informatics and telecommunications, epirus educational inst. of technology, arta, greece
-tu hamburg, germany
-civil engineering a.u.th., athens, greece
-mit-sutd collaboration, united states
-politeknik port dickson, km 14, jalan pantai 71050, si rusa, negeri sembilan, malaysia
-strategic advanced research cluster, mimos berhad, malaysia
-jaster quintanilla, san antonio 78209, united states
-mcabee construction inc., 5724 21st st., tuscaloosa, al 35401-2555, united states
-research triangle educational consultants, 3504 corin court, raleigh, nc 27612-4100, united states
-engineers against poverty, united kingdom
-construction skills, united kingdom
-ukrc for women in set, united kingdom
-sheffield cypd, united kingdom
-faculty of information technology, monash unversity, caulfield east, melbourne, australia
-queen's univ., dept. of civil engineering, kingston, on, canada
-california dept. of transportation, sacramento, ca 95816, united states
-tennessee technological univ., dept. of civil and environmental engineering, cookeville, tn 38505-0001, united states
-technical coordination engineer, dar-handasah consultants, 15 amr st., cairo 11511, egypt
-ibm systems and technology group, tucson, az 85744-0002, united states
-ibm systems and technology group, poughkeepsie, ny 12601-5400, united states
-ibm systems and technology group, austin, tx 78758-2493, united states
-ibm, campinas, brazil
-puc-campinas, campinas, brazil
-indelmatec engineering, campinas, brazil
-computer engineering dept., shoubra faculty of engineering, cairo, egypt
-business and management consultation, megacom, cairo, egypt
-faculty of technology, policy and management, delft, netherlands
-ibm (uk) ltd., greenock, united kingdom
-wilcox group, 12 s. mahoe dr, palm coast, fl 32137, united states
-computer engineering dept., shoubra faculty of engineering, sfe, cairo, egypt
-faculty of education, canada
-estsetubal, inst. pol. setubal cieee, setubal, portugal
-estsetubal, inst. pol. setubal ceset, inesc-id, setubal, portugal
-cts, faculdade de ciencias e tecnologia, unl, lisboa, portugal
-eduqtech, eupt, teruel, spain
-eduqtech, euetit, upc, terrassa, spain
-telefonica i+d boecillo, valladolid, spain
-telefonica randd, boecillo (valladolid), spain
-gesellschaft fur wissenschaftliche, datenverarbeitung (gwdg), gottingen, germany
-scc dept, uned, madrid, spain
-modern languages dept, uned, madrid, spain
-dept. of manufacturing engineering, uned, madrid, spain
-dept. artificial intelligence, e.t.s.i.i. - uned, madrid, spain
-ceg-ist, lisbon, portugal
-facultat de ciencics de l'educacio y escola, tecnica superior d'enginyeria, uab, bellaterra, spain
-opencourseware consortium, mit opencourseware, cambridge, ma, united states
-faculty fessj, bogota d.c., colombia
-fessj systems engineering dept., bogota d.c., colombia
-fessj principal, bogota d.c., colombia
-enginycat, fundac. catalana recerca e innovacio, barcelona, spain
-cnrs, laas, 7 av. du colonel roche, f-31077 toulouse, france
-tag4m, austin, tx, united states
-cies-iscte lisbon, portugal
-isep, cieti, laboris, united states
-fctuc, cisuc, portugal
-cee manuel lopez navalon, conselleria de educacion e o.u., santiago de compostela, spain
-la fresquera producciones audiovisuales, burgos, spain
-netmove - comunicacaeo global, porto, portugal
-fazion sistemas, brazil
-bloomfield-college, bloomfield, united states
-departement des langues et sciences humains, telecom and management sudparis, evry - val - d'essonne, france
-cmcl innovations, cambridge, united kingdom
-mide-i, madrid, spain
-ieecd-uned, madrid, spain
-tus, sofia, bulgaria
-student platform for engineering education development, via del tiro a segno, 5, spoleto, pg 06049, italy
-dept. of civil engineering, istanbul technical univ., istanbul 34469, turkey
-demeter house, station rd., cambridge cb1 2rs, united kingdom
-mwh, prism house, scottish enterprise technology park, rankine ave., east kilbride g75 0of, united kingdom
-young set ambassadors ltd., john muir building, king's buildings, mayfield rd., edinburgh eh9 3jl, united kingdom
-chalmers st., edinburgh eh3 9es, united kingdom
-middle east and india, ws atkins and partners overseas, p.o. box 5620, dubai, united arab emirates
-departamento de engenharia informatica, universidade de coimbra - dei e investigador do cisuc, portugal
-cisuc, portugal
-not available, ebereschenallee 11, 14050 berlin, germany
-technology for development and cooperation (tedeco) group, facultad de informatica, campus de montegancedo, 28660, boadilla del monte (madrid), spain
-engineering education 0218, blacksburg, va 24061, united states
-222 lane hall (0247), virginia tech, blacksburg, va 24061, united states
-rm b303c bessemer building, south kensington campus, london sw7 2az, united kingdom
+eurex, singapore
+ibm, singapore
+left coast, united states
+grab, singapore
+schulte research, hong kong, china
+washington, dc, united states
+eaesp/fgv, brazil
+fea/usp, brazil
+uned, madrid, spain
+information technology, univeril, germany
+ariadne business analytics, naenikon, switzerland
+actus financial research foundation, rockville, md, united states
+tu berlin, germany
+smk negeri 1 bukateja, indonesia
+letterhend studio, indonesia
+rs pku muhammadiyah sukoharjo, indonesia
+iain sheridan, london, united kingdom
+altenhain unternehmensberatung gbr, starnberg, germany
+christoph heinemann vermogensverwaltung gmbh, munich, germany
+cocono gmbh, hamburg, germany
+consult hyperion, united kingdom
+financial systems development division, united states
+security research laboratories, united states
+cyber security strategy division, united states
+geneura team, spain
+zhongan technology, 130, east beijing rd, shanghai, 20002, china
+zhongan tech., 130, east beijing rd, shanghai, 200002, china
+aditya birla group, mumbai, india
+attorney, new york, ny, united states
+moonraft innovation labs, seattle, united states
+r3, united states
+r3, united kingdom
+blockseer, united kingdom
+kwori, united kingdom
+fintech hk, hong kong
+bussmann advisory, hofstrasse 52, zug, 6300, switzerland
+nanjing isanco information science & technology limited, nanjing, 210003, china
+bnu-hkbu uic, 28 jinfeng rd. tangjiawan, zhuahai, guangdong, china
+sk telecom, seoul, south korea
+hochschule fur wirtschaft fribourg, switzerland
+ecurex research, zurich, switzerland
+fintech hk, pok fu lam, hong kong
+fintech circle, london, united kingdom
+global products and services development division, global retail solutions division, japan
+pervomaiskaya str., no. 5, moscow oblast, dolgoprudny, 141700, russian federation
+walton design and consulting engineering co,ltd, xizhimennei nanxiao street 135, china
+inst for financial management & research, madras, india.
