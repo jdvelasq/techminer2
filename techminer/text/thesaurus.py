@@ -56,6 +56,9 @@ def text_clustering(x, name_strategy="mostfrequent", key="porter", transformer=N
     x["word_alt"] = x["word_alt"].map(remove_parenthesis)
     x["word_alt"] = x["word_alt"].map(lambda w: w.replace("&", "and"))
     x["word_alt"] = x["word_alt"].map(lambda w: w.replace(" of ", ""))
+    x["word_alt"] = x["word_alt"].map(
+        lambda w: w[4:].strip() if w.startswith("and ") else w
+    )
 
     #
     # Search for joined terms
