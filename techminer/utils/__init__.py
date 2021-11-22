@@ -7,4 +7,5 @@ from .load_filtered_documents import load_filtered_documents
 from .load_stopwords import load_stopwords
 from .main_path import MainPath
 from .map import map_
+from .print_documents import print_documents
 from .save_documents import save_documents
