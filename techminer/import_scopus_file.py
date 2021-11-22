@@ -83,8 +83,7 @@ from .utils import logging, map_
 # -----< Dataset Trasformations >----------------------------------------------
 
 
-def _delete_and_renamce_columns(documents):
-    logging.info("Deleting/renaming columns ...")
+def _delete_and_rename_columns(documents):
     documents = documents.copy()
     module_path = dirname(__file__)
     file_path = join(module_path, "files/scopus2tags.csv")
@@ -109,10 +108,17 @@ def _delete_and_renamce_columns(documents):
 
 
 def _remove_accents(documents):
-    logging.info("Removing accents ...")
     documents = documents.copy()
-
     cols = documents.select_dtypes(include=[np.object]).columns
+    # for col in cols:
+    #     documents[col] = (
+    #         documents[col]
+    #         .astype(str)
+    #         .str.normalize("NFKD")
+    #         .str.encode("ascii", errors="ignore")
+    #         .str.decode("utf-8")
+    #     )
+
     documents[cols] = documents[cols].apply(
         lambda x: x.str.normalize("NFKD")
         .str.encode("ascii", errors="ignore")
@@ -127,7 +133,6 @@ def _remove_accents(documents):
 
 def _process_document_type_columns(documents):
     if "document_type" in documents.columns:
-        logging.info("Processing abstracts ...")
         documents = documents.copy()
         documents["document_type"] = documents.document_type.str.replace(" ", "_")
         documents["document_type"] = documents.document_type.str.lower()
@@ -136,7 +141,6 @@ def _process_document_type_columns(documents):
 
 def _process_abstract_column(documents):
     if "abstract" in documents.columns:
-        logging.info("Processing abstracts ...")
         documents = documents.copy()
         documents.abstract = documents.abstract.str.lower()
         documents.abstract = documents.abstract.map(
@@ -147,7 +151,6 @@ def _process_abstract_column(documents):
 
 def _process_affiliations_column(documents):
     if "affiliations" in documents.columns:
-        logging.info("Processing affiliations ...")
         documents = documents.copy()
         documents["countries"] = map_(documents, "affiliations", extract_country)
         documents["country_1st_author"] = documents.countries.map(
@@ -161,15 +164,12 @@ def _process_affiliations_column(documents):
 
 def _process_author_keywords_column(documents):
     if "raw_author_keywords" in documents.columns:
-        logging.info("Processing author keywords ...")
         documents = documents.copy()
         documents.raw_author_keywords = documents.raw_author_keywords.str.lower()
     return documents
 
 
 def _process_authors_id_column(documents):
-
-    logging.info("Processing authors_id ...")
     documents = documents.copy()
     documents["authors_id"] = documents.authors_id.map(
         lambda w: pd.NA if w == "[No author id available]" else w
@@ -211,8 +211,8 @@ def _process_global_citations_column(documents):
 
 
 def _process_global_references_column(documents):
-    documents = documents.copy()
     if "global_references" in documents.columns:
+        documents = documents.copy()
         documents["global_references"] = documents.global_references.map(
             lambda w: w.replace("https://doi.org/", "") if isinstance(w, str) else w
         )
@@ -261,7 +261,7 @@ def _process_iso_source_name_column(documents):
 
 
 def _search_for_new_iso_source_name(documents):
-    # search new iso source names not included in config/iso_source_names.csv
+    # search new iso source names not included in files/iso_source_names.csv
     if "iso_source_name" in documents.columns:
 
         # iso souce names in the current file
@@ -270,7 +270,7 @@ def _search_for_new_iso_source_name(documents):
         documents.iso_source_name = documents.iso_source_name.map(
             lambda x: x.replace(".", "") if not pd.isna(x) else x
         )
-        current_iso_names = documents[["source_name", "iso_source_name"]]
+        current_iso_names = documents[["source_name", "iso_source_name"]].copy()
         current_iso_names = current_iso_names.drop_duplicates()
         current_iso_names = current_iso_names.dropna()
 
@@ -286,14 +286,16 @@ def _search_for_new_iso_source_name(documents):
 
 
 def _complete_iso_source_name_colum(documents):
+
     if "iso_source_name" in documents.columns:
-        # existent iso source names
+        #
+        # Loads existent iso source names and make a dictionary
+        # to translate source names to iso source names
+        #
         module_path = dirname(__file__)
         file_path = join(module_path, "files/iso_source_names.csv")
         pdf = pd.read_csv(file_path, sep=",")
-        existent_names = {
-            name: abb for name, abb in zip(pdf.source_name, pdf.iso_source_name)
-        }
+        existent_names = dict(zip(pdf.source_name, pdf.iso_source_name))
 
         # complete iso source names
         documents = documents.copy()
@@ -310,7 +312,7 @@ def _repair_iso_source_names_column(documents):
     if "iso_source_name" in documents.columns:
         documents = documents.copy()
         documents.iso_source_name = [
-            name[:29] if pd.isna(abb) else abb
+            "--- " + name[:25] if pd.isna(abb) and not pd.isna(name) else abb
             for name, abb in zip(documents.source_name, documents.iso_source_name)
         ]
     return documents
@@ -327,7 +329,6 @@ def _process_issn_column(documents):
 def _process_raw_authors_names_column(documents):
     documents = documents.copy()
     if "raw_authors_names" in documents.columns:
-        logging.info("Formating raw authors names ...")
         documents.raw_authors_names = documents.raw_authors_names.map(
             lambda x: pd.NA if x == "[No author name available]" else x
         )
@@ -364,7 +365,6 @@ def _process_source_name_column(documents):
 
 def _drop_duplicates(documents):
     documents = documents.copy()
-    logging.info("Dropping duplicates ...")
     if "doi" in documents.columns:
         duplicated_doi = (documents.doi.duplicated()) & (~documents.doi.isna())
         documents = documents[~duplicated_doi]
@@ -390,12 +390,8 @@ def _report_duplicate_titles(raw_data, directory):
         duplicates = duplicates.sort_values(by=["document_title"])
         duplicates.to_csv(file_name, sep=",", encoding="utf-8", index=False)
         logging.info(
-            f"Duplicate rows found in {directory}documents.csv -"
-            " Records saved to {filename}"
+            f"Duplicate rows found in {directory}documents.csv - Records saved to {file_name}"
         )
-
-
-# ----< Local references >-----------------------------------------------------
 
 
 def _create_document_id(documents):
@@ -412,59 +408,64 @@ def _create_document_id(documents):
     documents = documents.assign(
         document_id=documents.pub_year.astype(str) + "-" + documents.document_id
     )
+
     return documents
 
 
+# ----< Local references >-----------------------------------------------------
 def _create_local_references_using_doi(documents):
 
-    logging.info("Searching local references using DOI ...")
-
-    with tqdm(total=len(documents.doi)) as pbar:
-        for i_index, doi in zip(documents.index, documents.doi):
-            if not pd.isna(doi):
-                doi = doi.upper()
-                for j_index, references in zip(
-                    documents.index, documents.global_references.tolist()
-                ):
-                    if pd.isna(references) is False and doi in references.upper():
-                        documents.at[j_index, "local_references"].append(
-                            documents.document_id[i_index]
-                        )
-            pbar.update(1)
+    if "global_references" in documents.columns:
+        logging.info("Searching local references using DOI ...")
+        documents = documents.copy()
+        with tqdm(total=len(documents.doi)) as pbar:
+            for i_index, doi in zip(documents.index, documents.doi):
+                if not pd.isna(doi):
+                    doi = doi.upper()
+                    for j_index, references in zip(
+                        documents.index, documents.global_references.tolist()
+                    ):
+                        if pd.isna(references) is False and doi in references.upper():
+                            documents.at[j_index, "local_references"].append(
+                                documents.document_id[i_index]
+                            )
+                pbar.update(1)
     return documents
 
 
 def _create_local_references_using_title(documents):
 
-    logging.info("Searching local references using document titles ...")
+    if "global_references" in documents.columns:
+        logging.info("Searching local references using document titles ...")
+        documents = documents.copy()
 
-    with tqdm(total=len(documents.document_title)) as pbar:
+        with tqdm(total=len(documents.document_title)) as pbar:
 
-        for i_index in documents.index:
+            for i_index in documents.index:
 
-            document_title = documents.document_title[i_index].lower()
-            pub_year = documents.pub_year[i_index]
+                document_title = documents.document_title[i_index].lower()
+                pub_year = documents.pub_year[i_index]
 
-            for j_index, references in zip(
-                documents.index, documents.global_references.tolist()
-            ):
-
-                if (
-                    pd.isna(references) is False
-                    and document_title in references.lower()
+                for j_index, references in zip(
+                    documents.index, documents.global_references.tolist()
                 ):
 
-                    for reference in references.split(";"):
+                    if (
+                        pd.isna(references) is False
+                        and document_title in references.lower()
+                    ):
 
-                        if (
-                            document_title in reference.lower()
-                            and str(pub_year) in reference
-                        ):
+                        for reference in references.split(";"):
 
-                            documents.at[j_index, "local_references"] += [
-                                documents.document_id[i_index]
-                            ]
-            pbar.update(1)
+                            if (
+                                document_title in reference.lower()
+                                and str(pub_year) in reference
+                            ):
+
+                                documents.at[j_index, "local_references"] += [
+                                    documents.document_id[i_index]
+                                ]
+                pbar.update(1)
 
     return documents
 
@@ -567,17 +568,14 @@ def _compute_bradford_law_zones(documents):
 def _disambiguate_authors(documents):
 
     # pylint: disable=unsubscriptable-object
-    authors_ids = documents[["raw_authors_names", "authors_id"]]
+    authors_ids = documents[["raw_authors_names", "authors_id"]].copy()
     authors_ids = authors_ids.dropna()
-
     authors_ids = {
         b: a for a, b in zip(authors_ids.raw_authors_names, authors_ids.authors_id)
     }
-
     authors_ids = {
         k: list(zip(k.split(";"), v.split("; "))) for k, v in authors_ids.items()
     }
-
     pdf = pd.DataFrame(
         {
             "authors_full": list(authors_ids.values()),
@@ -588,21 +586,24 @@ def _disambiguate_authors(documents):
     pdf = pdf.assign(name=pdf.authors_full.map(lambda x: x[1]))
     pdf = pdf.assign(id=pdf.authors_full.map(lambda x: x[0]))
     pdf = pdf.reset_index()
-
     pdf = pdf.assign(
         counter=pdf.sort_values("id", ascending=True).groupby(["name"]).cumcount()
     )
 
     pdf = pdf.assign(name=pdf.name + "/" + pdf.counter.astype(str))
-    new_names = {id: name for name, id in zip(pdf.name, pdf.id)}
-    doc_names = documents.authors_id.copy()
-    doc_names = doc_names.map(lambda x: x.split(";") if not pd.isna(x) else x)
-    doc_names = doc_names.map(
+    new_names = dict(zip(pdf.id, pdf.name))
+
+    #
+    documents_names = documents.authors_id.copy()
+    documents_names = documents_names.map(
+        lambda x: x.split(";") if not pd.isna(x) else x
+    )
+    documents_names = documents_names.map(
         lambda x: "; ".join([new_names[y] for y in x]) if isinstance(x, list) else x
     )
-    doc_names = doc_names.str.replace("/0", "")
+    documents_names = documents_names.str.replace("/0", "")
+    documents["authors"] = documents_names.copy()
 
-    documents["authors"] = doc_names.copy()
     return documents
 
 
@@ -627,11 +628,16 @@ def _update_filter_file(documents, directory):
         yaml.dump(filter_, yaml_file, sort_keys=True)
 
 
-def _create_wos_style_id(documents):
+def _create_wos_document_id(documents):
 
     wos_ref = documents.authors.map(
         lambda x: x.split("; ")[0].strip() if not pd.isna(x) else "[anonymous]"
     )
+
+    wos_ref = wos_ref + documents.authors.map(
+        lambda x: (" et al" if len(x.split("; ")) > 0 else "") if not pd.isna(x) else ""
+    )
+
     wos_ref = wos_ref + ", " + documents.pub_year.map(str)
     wos_ref = wos_ref + ", " + documents.iso_source_name
     wos_ref = wos_ref + documents.volume.map(
@@ -643,103 +649,275 @@ def _create_wos_style_id(documents):
     wos_ref = wos_ref + documents.doi.map(
         lambda x: ", DOI " + str(x) if not pd.isna(x) else ""
     )
-    documents["wos_id"] = wos_ref.copy()
+    documents["wos_document_id"] = wos_ref.copy()
+    return documents
+
+
+def _create_abstracts_csv(documents, directory):
+
+    if "abstract" in documents.columns:
+
+        # split phrases
+        abstracts = documents[["document_id", "abstract"]].copy()
+        abstracts = abstracts.rename(columns={"abstract": "text"})
+        abstracts = abstracts.dropna()
+        abstracts = abstracts.assign(text=abstracts.text.str.split(". "))
+        abstracts = abstracts.explode("text")
+        abstracts = abstracts.assign(text=abstracts.text.str.split("; "))
+        abstracts = abstracts.explode("text")
+        abstracts = abstracts.assign(text=abstracts.text.str.strip())
+        abstracts = abstracts.assign(
+            line_no=abstracts.groupby(["document_id"]).cumcount()
+        )
+
+        abstracts = abstracts[
+            [
+                "document_id",
+                "line_no",
+                "text",
+            ]
+        ]
+        # save to disk
+        file_name = join(directory, "abstracts.csv")
+        abstracts.to_csv(file_name, index=False)
+        logging.info(f"Main abstract texts saved to {file_name}")
+
+
+def _create_references_file(documents, directory):
+
+    logging.info("Creating references file")
+
+    # builds a table with:
+    #   document_id  raw_reference
+    #   ------------------------------------------------
+    references = documents[["document_id", "global_references"]].copy()
+    references = references.rename(columns={"global_references": "raw_reference"})
+    references = references.dropna()
+    references = references.assign(
+        raw_reference=references.raw_reference.str.split(";")
+    )
+    references = references.explode("raw_reference")
+    references = references.assign(raw_reference=references.raw_reference.str.strip())
+    references = references.assign(raw_reference=references.raw_reference.str.lower())
+
+    # -------------------------------------------------------------------------
+    # optimized for speed
+    # raw references and list of citting documents:
+    references = references.groupby(["raw_reference"], as_index=False).agg(list)
+    references = references.assign(reference_wos_id=np.nan)
+
+    # only it is of interest the main collection
+    main_documents = documents[documents["main_group"]].copy()
+
+    with tqdm(total=len(main_documents)) as pbar:
+        for index, row in main_documents.iterrows():
+            references.loc[
+                references.raw_reference.str.contains(
+                    row["document_title"].lower(), regex=False
+                )
+                & references.raw_reference.str.contains(str(row["pub_year"]))
+                & references.raw_reference.str.contains(
+                    row["wos_document_id"].split()[0].lower()
+                ),
+                "cited_id",
+            ] = row["document_id"]
+            pbar.update(1)
+
+            if index > 50:
+                break
+
+    references = references.dropna()
+    # -------------------------------------------------------------------------
+    with open(join(directory, "debug_references.txt"), "wt") as out_file:
+        for _, row in references.iterrows():
+            print(row["raw_reference"], file=out_file)
+            print(
+                "   ",
+                main_documents[
+                    main_documents.document_id == row["cited_id"]
+                ].wos_document_id,
+                file=out_file,
+            )
+
+    # -------------------------------------------------------------------------
+    references = references.explode("document_id")
+    references = references[["document_id", "cited_id"]].copy()
+    references = references.rename(columns={"document_id": "citing_id"})
+    references = references.reset_index(drop=True)
+    references = references.dropna()
+    references_file = join(directory, "references.csv")
+    references.to_csv(references_file, index=False)
+    logging.info(f"References saved to {references_file}")
+
+
+def _create_cited_references_csv(documents, directory):
+
+    if "global_references" in documents.columns:
+
+        # split references
+        cited_references = documents[["fdocument_id", "global_references"]].copy()
+        cited_references = cited_references.rename(
+            columns={"global_references": "raw_reference"}
+        )
+        cited_references = cited_references.dropna()
+        cited_references = cited_references.assign(
+            raw_reference=cited_references.raw_reference.str.split(";")
+        )
+        cited_references = cited_references.explode("raw_reference")
+        cited_references = cited_references.assign(
+            raw_reference=cited_references.raw_reference.str.strip()
+        )
+        cited_references = cited_references.assign(
+            ref_no=cited_references.groupby(["document_id"]).cumcount()
+        )
+
+        cited_references = cited_references[["document_id", "ref_no", "raw_reference"]]
+
+        # save to disk
+        file_name = join(directory, "cited_references.csv")
+        cited_references.to_csv(file_name, index=False)
+
+        logging.info(f"Cited references saved to {file_name}")
+
+
+def load_raw_data_file(file_name):
+    if not isfile(file_name):
+        raise FileNotFoundError(f"File {file_name} not found")
+    pdf = pd.read_csv(
+        file_name,
+        encoding="utf-8",
+        error_bad_lines=False,
+        warn_bad_lines=True,
+    )
+    logging.info(f"{pdf.shape[0]} raw records found in {file_name}.")
+    return pdf
+
+
+def make_documents(scopus, cited_by, references):
+
+    links_scopus = scopus.Link.copy()
+    links_cited_by = cited_by.Link.copy()
+    links_references = references.Link.copy()
+
+    links_cited_by_unique = set(links_cited_by) - set(links_scopus)
+    links_references_unique = set(links_references) - set(links_scopus)
+    links_cited_by_common = set(links_scopus) & set(links_cited_by)
+    links_references_common = set(links_scopus) & set(links_references)
+
+    # citing documents not in the main collection
+    cited_by.index = cited_by.Link
+    cited_by = cited_by.loc[links_cited_by_unique, :]
+    cited_by["main_group"] = False
+    cited_by["citing_group"] = True
+    cited_by["references_group"] = False
+
+    # references not in the main collection
+    references.index = references.Link
+    references = references.loc[links_references_unique, :]
+    references["main_group"] = False
+    references["citing_group"] = False
+    references["references_group"] = True
+    references.loc[:, "References"] = np.nan
+
+    scopus.index = scopus.Link
+    scopus["main_group"] = True
+    scopus["citing_group"] = False
+    scopus["references_group"] = False
+    scopus.loc[links_cited_by_common, "citing_group"] = True
+    scopus.loc[links_references_common, "references_group"] = True
+
+    documents = pd.concat(
+        [
+            scopus,
+            cited_by,
+            references,
+        ],
+        ignore_index=True,
+    )
+
+    documents = documents.reset_index(drop=True)
+
+    documents["main_group"] = documents.main_group.astype(bool)
+    documents["citing_group"] = documents.citing_group.astype(bool)
+    documents["references_group"] = documents.references_group.astype(bool)
+
     return documents
 
 
 #
 #
 #
-def import_scopus_file(file_name=None, directory=None):
-    """
-    Imports a Scopus CSV file.
-    """
-
-    # ----< debug data >-------------------------------------------------------
-    if file_name is None and directory is None:
-        file_name = "/workspaces/techminer-api/tests/data/scopus.csv"
+def import_scopus_file(
+    directory=None,
+    scopus_file=None,
+):
+    # -----------------------------------------------------------------------------------
+    if directory is None and scopus_file is None:
         directory = "/workspaces/techminer-api/tests/data/"
-        logging.info(" **** USING SAMPLE DATA ****")
-    # -------------------------------------------------------------------------
+        scopus_file = "scopus.csv"
+        logging.info(" **** USING SAMPLE COLLECTION ****")
 
-    if not isfile(file_name):
-        raise FileNotFoundError
-
-    if directory[-1] != "/":
-        directory += "/"
-
-    if not isdir(directory):
-        mkdir(directory)
-
-    # ----< stopwords >--------------------------------------------------------
-    stopwords_file = directory + "stopwords.txt"
-
+    # ---< only scopus >-----------------------------------------------------------------
+    # cited_by = load_raw_data_file(join(directory, "raw_cited_by.csv"))
+    # references = load_raw_data_file(join(directory, "raw_references.csv"))
+    # documents = make_documents(scopus, cited_by, references)
+    # -----------------------------------------------------------------------------------
+    stopwords_file = join(directory, "stopwords.txt")
     open(stopwords_file, "a", encoding="utf-8").close()
-
-    #
-    logging.info(f"Reading file '{file_name}' ...")
-    documents = pd.read_csv(
-        file_name,
-        encoding="utf-8",
-        error_bad_lines=False,
-        warn_bad_lines=True,
-    )
-    n_records = documents.shape[0]
-    logging.info(f"{n_records} raw records found.")
-
-    #
-    documents = _delete_and_renamce_columns(documents)
-    documents = _remove_accents(documents)
-    #
-    documents = _process_document_type_columns(documents)
+    # -----------------------------------------------------------------------------------
+    documents = load_raw_data_file(join(directory, scopus_file))
+    # -----------------------------------------------------------------------------------
+    documents = _delete_and_rename_columns(documents)
     documents = _process_abstract_column(documents)
-    documents = _process_affiliations_column(documents)
-    documents = _process_author_keywords_column(documents)
+    documents = _remove_accents(documents)
     documents = _process_authors_id_column(documents)
-    documents = _process_document_title_column(documents)
+    documents = _process_raw_authors_names_column(documents)
+    documents = _disambiguate_authors(documents)
     documents = _process_doi_column(documents)
-    documents = _process_eissn_column(documents)
-    documents = _process_global_citations_column(documents)
-    documents = _process_global_references_column(documents)
-    documents = _process_index_keywords_column(documents)
-    documents = _create_keywords_column(documents)
-
+    documents = _process_source_name_column(documents)
     documents = _process_iso_source_name_column(documents)
     documents = _search_for_new_iso_source_name(documents)
     documents = _complete_iso_source_name_colum(documents)
     documents = _repair_iso_source_names_column(documents)
-
-    documents = _process_issn_column(documents)
-    documents = _process_raw_authors_names_column(documents)
-    documents = _process_source_name_column(documents)
-    #
-    #
-    documents = _drop_duplicates(documents)
-    _report_duplicate_titles(documents, directory)
-    #
     documents = _create_document_id(documents)
+    documents = _create_wos_document_id(documents)
+    # -----------------------------------------------------------------------------------
+    _create_abstracts_csv(documents, directory)
+    # ----< only scopus >----------------------------------------------------------------
+    # _create_references_file(documents, directory)
+    # -----------------------------------------------------------------------------------
+    documents = _process_document_type_columns(documents)
+    documents = _process_affiliations_column(documents)
+    documents = _process_author_keywords_column(documents)
+    documents = _process_index_keywords_column(documents)
+    documents = _create_keywords_column(documents)
+    documents = _process_document_title_column(documents)
+    documents = _process_global_citations_column(documents)
+    documents = _process_global_references_column(documents)
+    documents = _process_eissn_column(documents)
+    documents = _process_issn_column(documents)
+    documents = _compute_bradford_law_zones(documents)
+    # -----------------------------------------------------------------------------------
+    # documents = _drop_duplicates(documents)
+    # _report_duplicate_titles(documents, directory)
     documents = documents.assign(local_references=[[] for _ in range(len(documents))])
     documents = _create_local_references_using_doi(documents)
     documents = _create_local_references_using_title(documents)
     documents = _consolidate_local_references(documents)
     documents = _compute_local_citations(documents)
-    #
-    documents = _compute_bradford_law_zones(documents)
-    documents = _disambiguate_authors(documents)
-    documents = _create_wos_style_id(documents)
+    # -----------------------------------------------------------------------------------
     _update_filter_file(documents, directory)
-
-    #
-    filename = directory + "documents.csv"
+    documents = _compute_bradford_law_zones(documents)
+    filename = join(directory, "documents.csv")
     documents.to_csv(filename, sep=",", encoding="utf-8", index=False)
     logging.info(f"Documents saved/merged to '{filename}'")
-
+    # -----------------------------------------------------------------------------------
     logging.info("Post-processing docuemnts ...")
-
     create_institutions_thesaurus(directory=directory)
     create_keywords_thesaurus(directory=directory)
     clean_institutions(directory=directory)
     clean_keywords(directory=directory)
+    # -----------------------------------------------------------------------------------
     logging.info("Process finished!!!")
 
 
