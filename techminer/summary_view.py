@@ -4,7 +4,7 @@ Summary view
 
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/tests/data/"
->>> summary(directory)
+>>> summary_view(directory)
                                                              value
 Category       Item                                               
 GENERAL        Documents:                                     1301
