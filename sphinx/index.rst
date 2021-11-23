@@ -18,6 +18,8 @@ Analysis of bibliographic datasets using Python
     :hidden:
     :maxdepth: 1
 
+    abstract_concordances
+    abstract_screening
     apply_thesaurus
     clean_institutions
     clean_keywords
