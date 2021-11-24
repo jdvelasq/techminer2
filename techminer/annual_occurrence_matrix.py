@@ -2,20 +2,21 @@
 Annual occurrence matrix
 ===============================================================================
 
-
+>>> from techminer import *
+>>> directory = "/workspaces/techminer-api/tests/data/"
 >>> annual_occurrence_matrix(directory, 'authors',  min_occ=3).head(10)
-pub_year       2015  2016  2017  2018  2019  2020  2021  2022
-authors                                                      
-Aas TH            0     0     0     0     0     1     2     0
-Abdeldayem MM     0     0     0     0     0     2     2     0
-Al Dulaimi SH     0     0     0     0     0     2     1     0
-Al-Dmour A        0     0     0     0     0     1     2     0
-Al-Dmour H        0     0     0     0     0     1     2     0
-Al-Dmour R        0     0     0     0     0     1     2     0
-Alaassar A        0     0     0     0     0     1     2     0
-Ali MAM           0     0     0     0     0     0     3     0
-Anshari M         0     0     0     0     1     1     1     0
-Arner DW          0     1     1     1     2     3     1     0
+pub_year       2008  2015  2016  2017  2018  2019  2020  2021  2022
+authors                                                            
+Aas TH            0     0     0     0     0     0     1     2     0
+Abdeldayem MM     0     0     0     0     0     0     2     2     0
+Al Dulaimi SH     0     0     0     0     0     0     2     1     0
+Al-Dmour A        0     0     0     0     0     0     1     2     0
+Al-Dmour H        0     0     0     0     0     0     1     2     0
+Al-Dmour R        0     0     0     0     0     0     1     2     0
+Alaassar A        0     0     0     0     0     0     1     2     0
+Ali MAM           0     0     0     0     0     0     0     3     0
+Almunawar MN      0     0     0     0     0     1     1     1     0
+Anshari M         0     0     0     0     0     1     1     2     0
 
 
 """
