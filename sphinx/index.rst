@@ -43,6 +43,8 @@ Analysis of bibliographic datasets using Python
     impact_indicators
     most_local_cited_sources
     most_relevant_sources
+    source_growth_plot
+    source_growth_table
     summary_view
 
 .. toctree::
