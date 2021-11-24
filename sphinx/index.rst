@@ -51,6 +51,7 @@ Analysis of bibliographic datasets using Python
     :maxdepth: 1
 
     bradford_plot
+    bradford_zones
     core_authors
     core_sources
     lotka_plot
