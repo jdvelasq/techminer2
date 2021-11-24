@@ -103,14 +103,14 @@ Analysis of bibliographic datasets using Python
 
     bar_chart
     column_chart
-    gantt_chart
     gantt_points_chart
     heat_map
+    line_chart
     pie_chart
+    timeline_chart
     tree_map
     word_cloud
     world_map
-    line_chart
 
 
 
