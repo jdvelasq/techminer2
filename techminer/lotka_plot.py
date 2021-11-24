@@ -5,10 +5,11 @@ Lotka Law's plot
 
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/tests/data/"
->>> lotka_plot(directory)
+>>> file_name = "/workspaces/techminer-api/sphinx/images/lotka.png"
+>>> lotka_plot(directory).savefig(file_name)
 
 .. image:: images/lotka.png
-    :width: 400px
+    :width: 600px
     :align: center
 
 """
@@ -23,7 +24,6 @@ def lotka_plot(
     directory=None,
     cmap="Greys",
     figsize=(6, 6),
-    fontsize=9,
 ):
     """
     Returns a dataframe with the core analysis.
@@ -39,9 +39,6 @@ def lotka_plot(
         Dataframe with the core sources of the records
     """
 
-    # documents = load_filtered_documents(directory)
-
-    matplotlib.rc("font", size=fontsize)
     fig, ax_ = plt.subplots(figsize=figsize)
     cmap = plt.cm.get_cmap(cmap)
     color = cmap(0.6)
@@ -83,8 +80,17 @@ def lotka_plot(
 
     ax_.grid(axis="y", color="gray", linestyle=":")
     ax_.grid(axis="x", color="gray", linestyle=":")
-    ax_.set_ylabel("% of Authors")
-    ax_.set_xlabel("Documets written per Author")
+    ax_.tick_params(axis="x", labelsize=7)
+    ax_.tick_params(axis="y", labelsize=7)
+    ax_.set_ylabel("% of Authors", fontsize=9)
+    ax_.set_xlabel("Documets written per Author", fontsize=9)
+
+    ax_.set_title(
+        "Frequency distribution of scientific productivity",
+        fontsize=10,
+        color="dimgray",
+        loc="left",
+    )
 
     fig.set_tight_layout(True)
 
