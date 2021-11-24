@@ -5,7 +5,10 @@ Tree map
 
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/tests/data/"
->>> tree_map(series=annual_indicators(directory)['num_documents'], darkness=annual_indicators(directory)['global_citations'])
+>>> file_name = "/workspaces/techminer-api/sphinx/images/tree_map.png"
+>>> series = annual_indicators(directory).num_documents
+>>> darkness = annual_indicators(directory).global_citations
+>>> tree_map(series=series, darkness=darkness).savefig(file_name)
 
 .. image:: images/tree_map.png
     :width: 500px
@@ -27,13 +30,9 @@ def tree_map(
     darkness=None,
     cmap="Greys",
     figsize=(6, 6),
-    fontsize=11,
-    alpha=0.9,
 ):
     """Creates a classification plot.."""
-    darkness = series if darkness is None else darkness
 
-    matplotlib.rc("font", size=fontsize)
     fig = plt.Figure(figsize=figsize)
     ax = fig.subplots()
     cmap = plt.cm.get_cmap(cmap)
@@ -52,11 +51,11 @@ def tree_map(
         sizes=series,
         label=labels,
         color=colors,
-        alpha=alpha,
+        alpha=0.9,
         ax=ax,
         pad=True,
         bar_kwargs={"edgecolor": "k", "linewidth": 0.5},
-        text_kwargs={"color": "w", "fontsize": fontsize},
+        text_kwargs={"color": "w", "fontsize": 9},
     )
     ax.axis("off")
 
