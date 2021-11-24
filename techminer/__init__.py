@@ -9,6 +9,7 @@ from .auto_corr_matrix import auto_corr_matrix
 from .average_citations_per_year import average_citations_per_year
 from .bar_chart import bar_chart
 from .bradford_plot import bradford_plot
+from .bradford_zones import bradford_zones
 from .ca_factorial_analysis import ca_factorial_analysis
 from .clean_institutions import clean_institutions
 from .clean_keywords import clean_keywords
