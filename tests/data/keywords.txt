@@ -1,5 +1,101 @@
+technology acceptance model
+    technology acceptance model
+    technology acceptance model (tam)
+    technology acceptance model tam
+    tam
+    tam model
+tam trust
+    tam trust
+payment services directive
+    payment services directive
+payment services directive 2 (psd 2)
+    payment services directive 2 (psd 2)
+    psd2
+initial coin offering
+    initial coin offering
+    initial coin offering (ico)
+    initial coin offerings
+    initial coin offerings (ico)
+    ico
+    icos
+    ico whitepaper    
+convolutional networks
+    convolutional networks
+    convolutional neural network
+    convolutional neural networks
+    convolutional neural networks (cnn)
+internet of thing (iot)
+    internet of thing (iot)
+    internet of things
+    internet of things (iot)
+    iot    
+insurance technology
+    insurance technology
+    insurtech
+    insurtech)
+blockchain
+    block chain technology
+    block chain
+    block-chain
+    blockchain
+    blockchains        
+    blockchain technology
+    blockchain-technologies
+    and blockchain
+small and medium businesses
+    sme
+    smes
+    small and medium businesses
+    small and medium enter-prises
+    small and medium enterprise
+    small and medium enterprises
+    small and medium enterprises (smes)
+    small and medium sized enterprise
+    small and medium-sized enterprise
+    small and medium-sized enterprises
+    small and medium-sized enterprises (smes)
+    small- and medium-sized enterprise
+    small- and medium-sized enterprises
+analytic hierarchy process
+    analytic hierarchy process
+    analytic hierarchy process (ahp)
+    ahp
+artificial intelligence
+    artificial intelligence
+    artificial intelligence (ai)
+    ai
+regulatory technologies
+    regulatory technologies (regtech)
+    regulatory technology
+    regulatory technology (regtech)
+    regtech
+peer-to-peer lending
+    peer to peer lending
+    peer-to peer lending (p2p lending)
+    peer-to-peer (p2p) lending
+    peer-to-peer lending
+    p2p lending
+    p2p-lending
+fintech
+    fin tech
+    fin- tech
+    fintech
+    fintech (finance technology)
+    fintech (financial technology)
+    fintechs
+    fintech 3.0
+    financial technologies
+    financial technologies (fintech)
+    financial technology
+    financial technology (fin-tech)
+    financial technology (fintech)
+    financial technology financial technology
+    financial-technology
+    fintech technology
+    technology fintech
+    finance technology
 'current
-    'current
+    current
 , inhibitor
     , inhibitor
 0-encoding
@@ -68,6 +164,8 @@ access to finance
     access to finance
 access to information
     access to information
+accessibility
+    accessibility
 accident prevention
     accident prevention
 account management
@@ -84,6 +182,8 @@ accurate prediction
     accurate prediction
 acp approach
     acp approach
+    acp approaches
+acp approaches
     acp approaches
 acquisition
     acquisition
@@ -200,12 +300,16 @@ aggregation
 agile architecture
     agile architecture
     agile architectures
+agile architectures
+    agile architectures
 agile development
     agile development
 agile manufacturing systems
     agile manufacturing systems
 agile model
     agile model
+    agile modeling
+agile modeling
     agile modeling
 agile practices
     agile practices
@@ -248,6 +352,8 @@ agricultural waste
     agricultural waste
 agricultural worker
     agricultural worker
+agriculture
+    agriculture
 agriculture 4.0
     agriculture 4.0
 agriculture sector
@@ -260,8 +366,6 @@ agropay
     agropay
 agtech
     agtech
-ahp
-    ahp
 ai & law
     ai & law
 ai engineering
@@ -298,8 +402,12 @@ algorithmic process
     algorithmic process
 algorithmic regulation
     algorithmic regulation
+algorithmic trading
+    algorithmic trading
 algorithmic underwriting
     algorithmic underwriting
+algorithms
+    algorithms
 alibaba
     alibaba
 alipay
@@ -342,9 +450,6 @@ analysis and evaluation
     analysis and evaluation
 analysis of regression
     analysis of regression
-analytic hierarchy process
-    analytic hierarchy process
-    analytic hierarchy process (ahp)
 analytical framework
     analytical framework
 analytical model
@@ -355,8 +460,6 @@ analytical strategy
     analytical strategy
 analytics
     analytics
-and blockchain
-    and blockchain
 and peer to peer lending
     and peer to peer lending
 android (operating system)
@@ -383,9 +486,7 @@ anti-misconduct
     anti-misconduct
 anti-money laundering
     anti-money laundering
-api
-    api
-    apis
+
 api economy
     api economy
 apic-ist 2016
@@ -405,6 +506,8 @@ application implementation
 application of information technologies
     application of information technologies
 application programming interface
+    api
+    apis
     application programming interface
     application programming interfaces
     application programming interfaces (api)
@@ -451,9 +554,6 @@ artificial immune networks
     artificial immune networks
 artificial immune system
     artificial immune system
-artificial intelligence
-    artificial intelligence
-    artificial intelligence (ai)
 artificial intelligence & law
     artificial intelligence & law
 artificial intelligence (ai) governance
@@ -563,6 +663,8 @@ auto-regressive
 autoencoder
     autoencoder
     autoencoders
+autoencoders
+    autoencoders
 automated algorithms
     automated algorithms
 automated detection
@@ -576,8 +678,12 @@ automated response
 automated teller machine
     automated teller machine
     automated teller machines
+automated teller machines
+    automated teller machines
 automated test generation
     automated test generation
+    automated test generations
+automated test generations
     automated test generations
 automatic classification
     automatic classification
@@ -718,6 +824,10 @@ banking architecture
     banking architecture
 banking collection
     banking collection
+banking competition
+    banking competition
+banking customers
+    banking customers
 banking digital transformation
     banking digital transformation
 banking industry
@@ -736,15 +846,22 @@ banking products
     banking products
 banking products and services
     banking products and services
+banking regulation
+    banking regulation
+    banking regulations
 banking regulation and supervision
     banking regulation and supervision
 banking sector
     banking sector
     banking sectors
+banking sectors
+    banking sectors
 banking service channel choice
     banking service channel choice
 banking services
     banking services
+banking stability
+    banking stability
 banking system
     banking system
     banking systems
@@ -765,6 +882,8 @@ banks and financial institutions
 banks risk-taking
     bank risk-taking
     banks risk-taking
+banks' innovativeness
+    banks' innovativeness
 banktech
     banktech
 bargaining power
@@ -787,6 +906,8 @@ bayesian
     bayesian
 bayesian estimation
     bayesian estimation
+    bayesian estimations
+bayesian estimations
     bayesian estimations
 bayesian networks
     bayesian networks
@@ -812,6 +933,8 @@ behavioral data
 behavioral economics
     behavioral economics
     behavioural economics
+behavioral finance
+    behavioral finance
 behavioral intention
     behavioral intention
     behavioral intentions
@@ -822,6 +945,8 @@ behavioral research
     behavioral research
 behavioral specification
     behavioral specification
+behavioural economics
+    behavioural economics
 beijing-tianjin-hebei regions
     beijing-tianjin-hebei regions
 belgium
@@ -877,15 +1002,15 @@ big data technologies
     big data technology
 big tech
     big tech
-big-data
+big data
     big data
     big-data
-big-data lending
-    big-data lending
-bigdata
     bigdata
+    big data
 bigtech
     bigtech
+big-data lending
+    big-data lending
 bigtech companies
     bigtech companies
 bill of exchange
@@ -924,6 +1049,8 @@ biometric security
 biometric technology
     biometric technology
     biometrics technology
+biometrics
+    biometrics
 biometry
     biometry
 bitcoin
@@ -959,20 +1086,8 @@ blackrock
     blackrock
 blending
     blending
-block chain finance
-    block chain finance
-block chain technology
-    block chain technology
-block-chain
-    block chain
-    block-chain
-blockchain
-    blockchain
-    blockchains
 blockchain accounting
     blockchain accounting
-blockchain and insurance
-    blockchain and insurance
 blockchain cost evaluation
     blockchain cost evaluation
 blockchain economy
@@ -981,6 +1096,7 @@ blockchain ecosystem
     blockchain ecosystem
 blockchain finance
     blockchain finance
+    block chain finance    
 blockchain in africa
     blockchain in africa
 blockchain protocol
@@ -991,9 +1107,8 @@ blockchain task force
     blockchain task force
 blockchain-insurance
     blockchain-insurance
-blockchain-technologies
-    blockchain technology
-    blockchain-technologies
+blockchain and insurance
+    blockchain and insurance
 boolean functions
     boolean functions
 boosted decision trees
@@ -1012,6 +1127,8 @@ brain structure
     brain structure
 branchless banking
     branchless banking
+    branchless bankings
+branchless bankings
     branchless bankings
 brand equity
     brand equity
@@ -1079,6 +1196,8 @@ business environment
     business environments
 business ethics
     business ethics
+business financing
+    business financing
 business functions
     business functions
 business incubators
@@ -1143,6 +1262,8 @@ business situations
 business strategies
     business strategies
     business strategy
+business strategy
+    business strategy
 business success
     business success
 business sustainability
@@ -1186,6 +1307,8 @@ capabilities development
     capability development
 capability approach
     capability approach
+capability development
+    capability development
 capability model
     capability model
     modelling capabilities
@@ -1473,6 +1596,8 @@ cluster analysis
     cluster analysis
 cluster structure
     cluster structure
+clustering
+    clustering
 clustering algorithms
     clustering algorithms
 clustering effect model
@@ -1799,6 +1924,8 @@ consumer credit
 consumer credit risk
     consumer credit risk
     consumer credit risks
+consumer credit risks
+    consumer credit risks
 consumer demand
     consumer demand
     consumer demands
@@ -1818,6 +1945,8 @@ consumer saving
     consumer saving
 consumerism
     consumerism
+consumers adoption
+    consumers adoption
 consumers and legal protection
     consumers and legal protection
 consumers attitude
@@ -1837,6 +1966,8 @@ content analysis method
     content analysis method
 content based filtering
     content based filtering
+context- awareness
+    context- awareness
 context-awareness
     context- awareness
     context-awareness
@@ -1860,6 +1991,8 @@ continuous development
     continuous development
 continuous usage intention
     continuous usage intention
+continuous use
+    continuous use
 contract
     contract
     contracts
@@ -1931,12 +2064,6 @@ convolution
     convolution
 convolutional codes
     convolutional codes
-convolutional networks
-    convolutional networks
-convolutional neural network
-    convolutional neural network
-    convolutional neural networks
-    convolutional neural networks (cnn)
 cooperation
     cooperation
     cooperative
@@ -2041,6 +2168,8 @@ cost to income
 cost-effectiveness
     cost effectiveness
     cost-effectiveness
+costs
+    costs
 costs and cost analysis
     costs and cost analysis
 counter-terrorist finance
@@ -2061,6 +2190,8 @@ covar
     covar
 covariate shift
     covariate shift
+    covariate shifts
+covariate shifts
     covariate shifts
 covid-19
     covid 19
@@ -2105,6 +2236,8 @@ credit composition
 credit constraint
     credit constraint
     credit constraints
+credit constraints
+    credit constraints
 credit data & big data
     credit data & big data
 credit default
@@ -2124,6 +2257,8 @@ credit provision
     credit provision
 credit rating
     credit rating
+    credit ratings
+credit ratings
     credit ratings
 credit reports
     credit reports
@@ -2146,6 +2281,8 @@ credit sscoring
     credit sscoring
 credit union
     credit union
+    credit unions
+credit unions
     credit unions
 credit-based system
     credit-based system
@@ -2830,6 +2967,9 @@ digital asset business act 2018
     digital asset business act 2018
 digital assets
     digital assets
+digital banking
+    digital banking
+    digitization banking
 digital banking adoption
     digital banking adoption
 digital business
@@ -2961,6 +3101,8 @@ digital platform
     digital platforms
 digital platform economy
     digital platform economy
+digital platforms
+    digital platforms
 digital press
     digital press
 digital products
@@ -3559,6 +3701,8 @@ emerging financial market
 emerging market
     emerging market
     emerging markets
+emerging markets
+    emerging markets
 emerging technologies
     emerging technologies
 emerging topics
@@ -3710,6 +3854,8 @@ environmental improvements
     environmental improvements
 environmental issue
     environmental issue
+    environmental issues
+environmental issues
     environmental issues
 environmental legislation
     environmental legislation
@@ -3954,6 +4100,8 @@ extraction
     extraction
 extreme value theory
     extreme value theory
+eye tracking
+    eye tracking
 eye-tracking
     eye tracking
     eye-tracking
@@ -4047,9 +4195,6 @@ filtering technique
     filtering technique
 filtration
     filtration
-fin- tech
-    fin tech
-    fin- tech
 fin-tech companies
     fin-tech companies
 fin-tech- legal challenges- financial industry
@@ -4083,8 +4228,6 @@ finance news providers
     finance news providers
 finance science and technology
     finance science and technology
-finance technology
-    finance technology
 finance technology news
     finance technology news
 financial
@@ -4123,6 +4266,8 @@ financial awareness
     financial awareness
 financial behavior
     financial behavior
+    financial behaviour
+financial behaviour
     financial behaviour
 financial big data
     financial big data
@@ -4440,14 +4585,6 @@ financial values
     financial values
 financial vulnerability
     financial vulnerability
-financial-technology
-    financial technologies
-    financial technologies (fintech)
-    financial technology
-    financial technology (fin-tech)
-    financial technology (fintech)
-    financial technology financial technology
-    financial-technology
 financialisation
     financialisation
 financialisation of natural disasters
@@ -4474,13 +4611,6 @@ finserv
     finserv
 fintec
     fintec
-fintech
-    fintech
-    fintech (finance technology)
-    fintech (financial technology)
-    fintechs
-fintech 3.0
-    fintech 3.0
 fintech accelerators
     fintech accelerators
 fintech adoption
@@ -4496,6 +4626,8 @@ fintech application
     fintech applications
 fintech application index
     fintech application index
+fintech banking
+    fintech banking
 fintech business model
     fintech business model
     fintech business models
@@ -4587,6 +4719,8 @@ fintech perspectives
 fintech platform
     fintech platform
     fintech platforms
+fintech platforms
+    fintech platforms
 fintech regression
     fintech regression
 fintech regtech
@@ -4611,9 +4745,6 @@ fintech startup
     fintech startups
 fintech talents
     fintech talents
-fintech technology
-    fintech technology
-    technology fintech
 fintech threat attribution
     fintech threat attribution
 fintech threats
@@ -4714,6 +4845,8 @@ formal finance
     formal finance
 formal language
     formal language
+    formal languages
+formal languages
     formal languages
 formal models
     formal models
@@ -5137,6 +5270,8 @@ green products
 green transport
     green transport
     green transports
+green transports
+    green transports
 greenhouse gas
     greenhouse gas
 greenhouse gas emissions
@@ -5394,11 +5529,6 @@ iban
     iban
 ic card
     ic card
-ico
-    ico
-    icos
-ico whitepaper
-    ico whitepaper
 ict
     ict
 ict development
@@ -5773,11 +5903,6 @@ infrastructure planning
     infrastructure planning
 inherent technolgy risk
     inherent technolgy risk
-initial coin offering
-    initial coin offering
-    initial coin offering (ico)
-    initial coin offerings
-    initial coin offerings (ico)
 initial coin offering legislation
     initial coin offering legislation
 initial public offering
@@ -5907,11 +6032,6 @@ insurance sector
     insurance sectors
 insurance supervision
     insurance supervision
-insurance technology
-    insurance technology
-insurtech
-    insurtech
-    insurtech)
 integer linear programming
     integer linear programming
 integer programming
@@ -6068,10 +6188,6 @@ internet of everything (ioe)
     internet of everything (ioe)
 internet of services
     internet of services
-internet of thing (iot)
-    internet of thing (iot)
-    internet of things
-    internet of things (iot)
 internet of things (iot) payment devices
     internet of things (iot) payment devices
 internet of things technologies
@@ -6194,8 +6310,6 @@ investors' preferences
     investors' preferences
 invoice trading
     invoice trading
-iot
-    iot
 iot perspectives in banks
     iot perspectives in banks
 iota
@@ -7950,9 +8064,6 @@ p2p social lending
     p2p social lending
 p2p transaction
     p2p transaction
-p2p-lending
-    p2p lending
-    p2p-lending
 p2p/marketplace lending
     p2p/marketplace lending
 packet networks
@@ -8101,10 +8212,6 @@ payment service passport-ing
     payment service passport-ing
 payment services
     payment services
-payment services directive
-    payment services directive
-payment services directive 2 (psd 2)
-    payment services directive 2 (psd 2)
 payment system
     payment system
     payment systems
@@ -8136,11 +8243,6 @@ peer-to-peer (p2p) lending risk evaluation
     peer-to-peer (p2p) lending risk evaluation
 peer-to-peer investment
     peer-to-peer investment
-peer-to-peer lending
-    peer to peer lending
-    peer-to peer lending (p2p lending)
-    peer-to-peer (p2p) lending
-    peer-to-peer lending
 peer-to-peer lending platforms
     peer-to-peer lending platforms
 penetration level
@@ -8698,8 +8800,6 @@ prudential regulation
     prudential regulation
 prudential supervisory disclosure
     prudential supervisory disclosure
-psd2
-    psd2
 pso
     pso
 psychological distance
@@ -8978,8 +9078,6 @@ regression metamodel
     regression metamodels
 regression testing
     regression testing
-regtech
-    regtech
 regulation
     regulation
     regulations
@@ -9033,10 +9131,6 @@ regulatory services
     regulatory services
 regulatory standards
     regulatory standards
-regulatory technologies (regtech)
-    regulatory technologies (regtech)
-    regulatory technology
-    regulatory technology (regtech)
 regulatory-instrumentalism
     regulatory-instrumentalism
 reinforcement learning
@@ -9822,21 +9916,6 @@ slow growth
     slow growth
 slr
     slr
-small and medium businesses
-    small and medium businesses
-small and medium enter-prises
-    small and medium enter-prises
-small and medium enterprise
-    small and medium enterprise
-    small and medium enterprises
-    small and medium enterprises (smes)
-small and medium-sized enterprises (smes)
-    small and medium sized enterprise
-    small and medium-sized enterprise
-    small and medium-sized enterprises
-    small and medium-sized enterprises (smes)
-    small- and medium-sized enterprise
-    small- and medium-sized enterprises
 small and micro enterprises
     small and micro enterprises
 small and micro-sized enterprises
@@ -9918,9 +9997,6 @@ smart-contract
 smartphone
     smartphone
     smartphones
-sme
-    sme
-    smes
 sme finance
     sme finance
 sme financing availability
@@ -10625,12 +10701,6 @@ talent mapping
 talent training
     talent training
     talent trainings
-tam
-    tam
-tam model
-    tam model
-tam trust
-    tam trust
 task analysis
     task analysis
 taxation
@@ -10748,11 +10818,6 @@ technologies for modeling
     technologies for modeling
 technology acceptance
     technology acceptance
-technology acceptance model
-    technology acceptance model
-    technology acceptance model (tam)
-technology acceptance model tam
-    technology acceptance model tam
 technology adoption
     technology adoption
 technology adoption theories
