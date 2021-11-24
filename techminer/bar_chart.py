@@ -4,10 +4,14 @@ Bar chart
 
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/tests/data/"
->>> bar_chart(series=annual_indicators(directory)['num_documents'], darkness=annual_indicators(directory)['global_citations'])
+>>> file_name = "/workspaces/techminer-api/sphinx/images/bar_chart.png"
+>>> series = column_indicators(directory, "countries").num_documents.head(20)
+>>> darkness = column_indicators(directory, "countries").global_citations.head(20)
+>>> title = "Country scientific productivity"
+>>> bar_chart(series, darkness, title=title).savefig(file_name)
 
 .. image:: images/bar_chart.png
-    :width: 400px
+    :width: 600px
     :align: center
 
 
@@ -30,32 +34,14 @@ def bar_chart(
     darkness=None,
     cmap="Greys",
     figsize=(6, 6),
-    fontsize=9,
     edgecolor="k",
     linewidth=0.5,
+    title=None,
     xlabel=None,
     ylabel=None,
     zorder=10,
 ):
-    """Make a horizontal bar plot.
-
-    See https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.axes.Axes.barh.html
-
-    Args:
-        width (pandas.Series): The widths of the bars.
-        darkness (pandas.Series, optional): The color darkness of the bars. Defaults to None.
-        cmap (str, optional): Colormap name. Defaults to "Greys".
-        figsize (tuple, optional): Figure size passed to matplotlib. Defaults to (6, 6).
-        fontsize (int, optional): Font size. Defaults to 11.
-        edgecolor (str, optional): The colors of the bar edges. Defaults to "k".
-        linewidth (float, optional): Width of the bar edges. If 0, don't draw edges. Defaults to 0.5.
-        zorder (int, optional): order of drawing. Defaults to 10.
-
-    Returns:
-        container: Container with all the bars and optionally errorbars.
-
-
-    """
+    """Make a horizontal bar plot."""
     darkness = series if darkness is None else darkness
     cmap = plt.cm.get_cmap(cmap)
     if max(darkness) == min(darkness):
@@ -66,7 +52,6 @@ def bar_chart(
             for d in darkness
         ]
 
-    matplotlib.rc("font", size=fontsize)
     fig = plt.Figure(figsize=figsize)
     ax = fig.subplots()
 
@@ -89,8 +74,8 @@ def bar_chart(
         ylabel = ylabel.replace("_", " ")
         ylabel = ylabel.title()
 
-    ax.set_xlabel(xlabel)
-    ax.set_ylabel(ylabel)
+    ax.set_xlabel(xlabel, fontsize=9)
+    ax.set_ylabel(ylabel, fontsize=9)
 
     yticklabels = series.index
     if yticklabels.dtype != "int64":
@@ -112,6 +97,16 @@ def bar_chart(
         ax.spines[x].set_visible(False)
 
     ax.grid(axis="x", color="gray", linestyle=":")
+    ax.tick_params(axis="x", labelsize=7)
+    ax.tick_params(axis="y", labelsize=7)
+
+    if title is not None:
+        ax.set_title(
+            title,
+            fontsize=10,
+            color="dimgray",
+            loc="left",
+        )
 
     fig.set_tight_layout(True)
 
