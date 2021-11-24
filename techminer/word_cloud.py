@@ -4,10 +4,12 @@ World cloud
 
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/tests/data/"
->>> word_cloud(terms_report(directory, 'authors', min_occ=5).num_documents)
+>>> file_name = "/workspaces/techminer-api/sphinx/images/word_cloud.png"
+>>> data = column_indicators(directory, 'authors').num_documents.head(50)
+>>> word_cloud(data).savefig(file_name)
 
 .. image:: images/word_cloud_authors.png
-    :width: 400px
+    :width: 600px
     :align: center
 
 """
