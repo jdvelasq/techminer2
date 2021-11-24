@@ -36,7 +36,6 @@ from .extract_user_keywords import extract_user_keywords
 from .factor_matrix import factor_matrix
 from .factorial_analysis_manifold import factorial_analysis_manifold
 from .find_string import find_string
-from .gantt_chart import gantt_chart
 from .gantt_points_chart import gantt_points_chart
 from .growth_indicators import growth_indicators
 from .heat_map import heat_map
@@ -59,6 +58,7 @@ from .svd_tf_idf_matrix_map import svd_tf_idf_matrix_map
 from .tf_idf_matrix import tf_idf_matrix
 from .tf_matrix import tf_matrix
 from .thematic_analysis import thematic_analysis
+from .timeline_chart import timeline_chart
 from .top_documents import top_documents
 from .tree_map import tree_map
 from .user_filters import user_filters
