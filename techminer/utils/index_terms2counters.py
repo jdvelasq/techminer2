@@ -22,7 +22,7 @@ def index_terms2counters(
 
     documents = documents.assign(num_documents=1)
     # documents = documents[
-    #     [column, "num_documents", "global_citations", "document_id"]
+    #     [column, "num_documents", "global_citations", "record_no"]
     # ].copy()
 
     documents = documents[[column, "num_documents", "global_citations"]].copy()

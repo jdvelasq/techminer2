@@ -65,14 +65,14 @@ def core_authors(directory):
         str(round(100 * a / sum(z["Num Authors"]), 2)) + " %"
         for a in z["Acum Num Authors"]
     ]
-    m = explode(documents[["authors", "document_id"]], "authors", sep="; ")
+    m = explode(documents[["authors", "record_no"]], "authors", sep="; ")
     m = m.dropna()
     m["Documents_written"] = m.authors.map(lambda w: authors_dict[w])
 
     n = []
     for k in z["Documents written per Author"]:
         s = m.query("Documents_written >= " + str(k))
-        s = s[["document_id"]]
+        s = s[["record_no"]]
         s = s.drop_duplicates()
         n.append(len(s))
 

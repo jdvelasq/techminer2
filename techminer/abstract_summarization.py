@@ -20,7 +20,7 @@ def abstract_summarization(directory, texts, n_phrases=10, sufix=""):
     regex = r"\b(" + "|".join(texts) + r")\b"
 
     abstracts = abstracts[abstracts.text.str.contains(regex, regex=True)]
-    abstracts = abstracts[["document_id", "text"]]
+    abstracts = abstracts[["record_no", "text"]]
 
     #
     abstracts["formatted_text"] = abstracts.text.copy()
@@ -78,11 +78,9 @@ def abstract_summarization(directory, texts, n_phrases=10, sufix=""):
                 row["text"],
                 width=90,
             )
-            wos_document_id = documents[
-                documents.document_id == row["document_id"]
-            ].wos_document_id
-            wos_document_id = wos_document_id.iloc[0]
-            print("*** " + wos_document_id, file=out_file)
+            document_id = documents[documents.record_no == row["record_no"]].document_id
+            document_id = document_id.iloc[0]
+            print("*** " + document_id, file=out_file)
             print(paragraph, file=out_file)
             print("\n", file=out_file)
 

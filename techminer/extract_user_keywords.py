@@ -39,19 +39,19 @@ def extract_user_keywords(
     keywords_regex = "(" + keywords_regex + ")"
 
     # ---< extract keywords from documents >-----------------------------------
-    documents.index = documents.document_id
+    documents.index = documents.record_no
     result = documents[input_column].str.extractall(keywords_regex, flags)
     result = result.reset_index()
     result = pd.melt(
         result,
-        id_vars=["document_id", "match"],
+        id_vars=["record_no", "match"],
         var_name="keyword_index",
         value_name="captured_keyword",
     )
 
     result = result.dropna()
-    result = result[["document_id", "captured_keyword"]]
-    result = result.groupby("document_id").agg(list)
+    result = result[["record_no", "captured_keyword"]]
+    result = result.groupby("record_no").agg(list)
     result["captured_keyword"] = result["captured_keyword"].apply(
         lambda x: "; ".join(x)
     )
@@ -59,7 +59,7 @@ def extract_user_keywords(
     # ---< save results >-----------------------------------------------------
     result_dict = dict(zip(result.index, result.captured_keyword))
 
-    documents[output_column] = documents["document_id"].map(
+    documents[output_column] = documents["record_no"].map(
         lambda x: np.NaN if x not in result_dict else result_dict[x]
     )
 

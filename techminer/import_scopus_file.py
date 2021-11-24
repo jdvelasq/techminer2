@@ -394,19 +394,18 @@ def _report_duplicate_titles(raw_data, directory):
         )
 
 
-def _create_document_id(documents):
+def _create_record_no(documents):
     documents = documents.copy()
     documents = documents.assign(
-        document_id=documents.sort_values("global_citations", ascending=False)
+        record_no=documents.sort_values("global_citations", ascending=False)
         .groupby("pub_year")
         .cumcount()
-        + 1
     )
     documents = documents.assign(
-        document_id=documents.document_id.map(lambda x: str(x).zfill(4))
+        record_no=documents.record_no.map(lambda x: str(x).zfill(4))
     )
     documents = documents.assign(
-        document_id=documents.pub_year.astype(str) + "-" + documents.document_id
+        record_no=documents.pub_year.astype(str) + "-" + documents.record_no
     )
 
     return documents
@@ -427,7 +426,7 @@ def _create_local_references_using_doi(documents):
                     ):
                         if pd.isna(references) is False and doi in references.upper():
                             documents.at[j_index, "local_references"].append(
-                                documents.document_id[i_index]
+                                documents.record_no[i_index]
                             )
                 pbar.update(1)
     return documents
@@ -463,7 +462,7 @@ def _create_local_references_using_title(documents):
                             ):
 
                                 documents.at[j_index, "local_references"] += [
-                                    documents.document_id[i_index]
+                                    documents.record_no[i_index]
                                 ]
                 pbar.update(1)
 
@@ -509,7 +508,7 @@ def _compute_local_citations(documents):
         by="local_citations", as_index=True
     ).size()
     documents["local_citations"] = 0
-    documents.index = documents.document_id
+    documents.index = documents.record_no
     documents.loc[local_references.index, "local_citations"] = local_references
     documents.index = list(range(len(documents)))
 
@@ -528,7 +527,7 @@ def _compute_bradford_law_zones(documents):
     documents_per_source = documents[
         [
             "source_name",
-            "document_id",
+            "record_no",
         ]
     ].copy()
     documents_per_source = documents_per_source.assign(num_documents=1)
@@ -628,7 +627,7 @@ def _update_filter_file(documents, directory):
         yaml.dump(filter_, yaml_file, sort_keys=True)
 
 
-def _create_wos_document_id(documents):
+def _create_document_id(documents):
 
     wos_ref = documents.authors.map(
         lambda x: x.split("; ")[0].strip() if not pd.isna(x) else "[anonymous]"
@@ -649,7 +648,7 @@ def _create_wos_document_id(documents):
     # wos_ref = wos_ref + documents.doi.map(
     #     lambda x: ", DOI " + str(x) if not pd.isna(x) else ""
     # )
-    documents["wos_document_id"] = wos_ref.copy()
+    documents["document_id"] = wos_ref.copy()
     return documents
 
 
@@ -658,7 +657,7 @@ def _create_abstracts_csv(documents, directory):
     if "abstract" in documents.columns:
 
         # split phrases
-        abstracts = documents[["document_id", "abstract"]].copy()
+        abstracts = documents[["record_no", "abstract"]].copy()
         abstracts = abstracts.rename(columns={"abstract": "text"})
         abstracts = abstracts.dropna()
         abstracts = abstracts.assign(
@@ -672,12 +671,12 @@ def _create_abstracts_csv(documents, directory):
         abstracts = abstracts.assign(text=abstracts.text.str.strip())
         abstracts = abstracts[abstracts.text.str.len() > 0]
         abstracts = abstracts.assign(
-            line_no=abstracts.groupby(["document_id"]).cumcount()
+            line_no=abstracts.groupby(["record_no"]).cumcount()
         )
 
         abstracts = abstracts[
             [
-                "document_id",
+                "record_no",
                 "line_no",
                 "text",
             ]
@@ -693,9 +692,9 @@ def _create_references_file(documents, directory):
     logging.info("Creating references file")
 
     # builds a table with:
-    #   document_id  raw_reference
+    #   record_no  raw_reference
     #   ------------------------------------------------
-    references = documents[["document_id", "global_references"]].copy()
+    references = documents[["record_no", "global_references"]].copy()
     references = references.rename(columns={"global_references": "raw_reference"})
     references = references.dropna()
     references = references.assign(
@@ -722,10 +721,10 @@ def _create_references_file(documents, directory):
                 )
                 & references.raw_reference.str.contains(str(row["pub_year"]))
                 & references.raw_reference.str.contains(
-                    row["wos_document_id"].split()[0].lower()
+                    row["document_id"].split()[0].lower()
                 ),
                 "cited_id",
-            ] = row["document_id"]
+            ] = row["record_no"]
             pbar.update(1)
 
             if index > 50:
@@ -740,16 +739,14 @@ def _create_references_file(documents, directory):
             print(row["raw_reference"], file=out_file)
             print(
                 "   ",
-                main_documents[
-                    main_documents.document_id == row["cited_id"]
-                ].wos_document_id,
+                main_documents[main_documents.record_no == row["cited_id"]].document_id,
                 file=out_file,
             )
 
     # -------------------------------------------------------------------------
-    references = references.explode("document_id")
-    references = references[["document_id", "cited_id"]].copy()
-    references = references.rename(columns={"document_id": "citing_id"})
+    references = references.explode("record_no")
+    references = references[["record_no", "cited_id"]].copy()
+    references = references.rename(columns={"record_no": "citing_id"})
     references = references.reset_index(drop=True)
     references = references.dropna()
     references_file = join(directory, "references.csv")
@@ -775,10 +772,10 @@ def _create_cited_references_csv(documents, directory):
             raw_reference=cited_references.raw_reference.str.strip()
         )
         cited_references = cited_references.assign(
-            ref_no=cited_references.groupby(["document_id"]).cumcount()
+            ref_no=cited_references.groupby(["record_no"]).cumcount()
         )
 
-        cited_references = cited_references[["document_id", "ref_no", "raw_reference"]]
+        cited_references = cited_references[["record_no", "ref_no", "raw_reference"]]
 
         # save to disk
         file_name = join(directory, "cited_references.csv")
@@ -886,8 +883,8 @@ def import_scopus_file(
     documents = _search_for_new_iso_source_name(documents)
     documents = _complete_iso_source_name_colum(documents)
     documents = _repair_iso_source_names_column(documents)
+    documents = _create_record_no(documents)
     documents = _create_document_id(documents)
-    documents = _create_wos_document_id(documents)
     # -----------------------------------------------------------------------------------
     _create_abstracts_csv(documents, directory)
     # ----< only scopus >----------------------------------------------------------------

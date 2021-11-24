@@ -46,7 +46,7 @@ def abstract_screening(directory, text, left=4, right=4):
     )
     abstracts["text"] = abstracts["text"].str.extract(regex)
     abstracts["text"] = abstracts["text"].str.replace(text, text.upper())
-    abstracts.index = abstracts.document_id + "-" + abstracts.line_no.astype(str)
+    abstracts.index = abstracts.record_no + "-" + abstracts.line_no.astype(str)
     abstracts = abstracts[["text"]]
     abstracts = abstracts.dropna()
 

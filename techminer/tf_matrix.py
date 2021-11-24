@@ -48,18 +48,18 @@ def tf_matrix(
     documents = load_filtered_documents(directory)
 
     documents = documents.reset_index()
-    documents = documents[[column, "document_id"]].copy()
+    documents = documents[[column, "record_no"]].copy()
     documents["value"] = 1
     documents[column] = documents[column].str.split(sep)
     documents = documents.explode(column)
     # documents = explode(documents, column, sep)
 
-    grouped_records = documents.groupby(["document_id", column], as_index=False).agg(
+    grouped_records = documents.groupby(["record_no", column], as_index=False).agg(
         {"value": np.sum}
     )
 
     result = pd.pivot(
-        index="document_id",
+        index="record_no",
         data=grouped_records,
         columns=column,
     )

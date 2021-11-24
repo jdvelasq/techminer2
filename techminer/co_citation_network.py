@@ -101,24 +101,24 @@ class Co_citation_network_documents:
             + self.documents.pub_year.astype(str)
         )
 
-        author_year = self.documents[["author_year", "document_id"]]
+        author_year = self.documents[["author_year", "record_no"]]
         author_year = author_year.groupby("author_year", as_index=False).agg(
-            {"document_id": list}
+            {"record_no": list}
         )
-        author_year = author_year.assign(length=author_year.document_id.apply(len))
+        author_year = author_year.assign(length=author_year.record_no.apply(len))
         author_year = author_year[author_year.length > 1]
         author_year = author_year.assign(
-            document_id=author_year.document_id.apply(lambda x: x[1:])
+            record_no=author_year.record_no.apply(lambda x: x[1:])
         )
-        author_year = author_year.explode("document_id")
+        author_year = author_year.explode("record_no")
         author_year = author_year.assign(
-            rn=author_year.groupby("document_id").cumcount() + 1
+            rn=author_year.groupby("record_no").cumcount() + 1
         )
         author_year = author_year.assign(
             author_year=author_year.author_year + "/" + author_year.rn.astype(str)
         )
-        author_year = author_year.set_index("document_id")
-        self.documents.index = self.documents.document_id
+        author_year = author_year.set_index("record_no")
+        self.documents.index = self.documents.record_no
         self.documents.loc[author_year.index, "author_year"] = author_year.author_year
 
     def _make_edges(self):
@@ -132,7 +132,7 @@ class Co_citation_network_documents:
         self.edges_ = self.edges_.explode("local_references")
 
         document_id2author_year = dict(
-            zip(self.documents.document_id, self.documents.author_year)
+            zip(self.documents.record_no, self.documents.author_year)
         )
 
         self.edges_["local_references"] = self.edges_.local_references.map(

@@ -34,7 +34,7 @@ def _num_documents_per_period(documents, column, time_window=2, sep="; "):
         raise ValueError("Time window must be greater than 1")
     year_limit = documents.pub_year.max() - time_window + 1
     result = documents.copy()
-    result.index = result.document_id
+    result.index = result.record_no
     result = result[[column, "pub_year"]].copy()
     result[column] = result[column].str.split(sep)
     result = result.explode(column)
@@ -69,7 +69,7 @@ def _average_growth_rate(documents, column, time_window, sep="; "):
 
     # generates a table of term and year.
     result = documents.copy()
-    result.index = result.document_id
+    result.index = result.record_no
     result = result[[column, "pub_year"]].copy()
     result[column] = result[column].str.split(sep)
     result = result.explode(column)

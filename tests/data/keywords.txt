@@ -1,5 +1,5 @@
 'current
-    current
+    'current
 , inhibitor
     , inhibitor
 0-encoding
@@ -270,6 +270,8 @@ agropay
     agropay
 agtech
     agtech
+ahp
+    ahp
 ai & law
     ai & law
 ai engineering
@@ -357,7 +359,6 @@ analysis of regression
 analytic hierarchy process
     analytic hierarchy process
     analytic hierarchy process (ahp)
-    ahp
 analytic hierarchy process (ahp)
     analytic hierarchy process (ahp)
 analytical framework
@@ -370,8 +371,10 @@ analytical strategy
     analytical strategy
 analytics
     analytics
-and peer to peer lending
-    and peer to peer lending
+and blockchain
+    and blockchain
+    blockchain
+    blockchains
 android (operating system)
     android (operating system)
 anomaly detection
@@ -418,8 +421,6 @@ application implementation
 application of information technologies
     application of information technologies
 application programming interface
-    api
-    apis
     application programming interface
     application programming interfaces
     application programming interfaces (api)
@@ -469,7 +470,6 @@ artificial immune system
 artificial intelligence
     artificial intelligence
     artificial intelligence (ai)
-    ai
 artificial intelligence & law
     artificial intelligence & law
 artificial intelligence (ai) governance
@@ -905,9 +905,6 @@ big changes
     big changes
 big data
     big data
-    big-data
-    bigdata
-    big data
 big data analysis
     big data analysis
 big data analytic capabilities
@@ -923,6 +920,9 @@ big data technologies
     big data technology
 big tech
     big tech
+big-data
+    big data
+    big-data
 big-data lending
     big-data lending
 bigdata
@@ -1012,14 +1012,8 @@ block-chain
     block chain
     block-chain
 blockchain
-    block chain technology
-    block chain
-    block-chain
     blockchain
     blockchains
-    blockchain technology
-    blockchain-technologies
-    and blockchain
 blockchain accounting
     blockchain accounting
 blockchain and insurance
@@ -1032,7 +1026,6 @@ blockchain ecosystem
     blockchain ecosystem
 blockchain finance
     blockchain finance
-    block chain finance
 blockchain in africa
     blockchain in africa
 blockchain protocol
@@ -2003,9 +1996,6 @@ convolutional codes
     convolutional codes
 convolutional networks
     convolutional networks
-    convolutional neural network
-    convolutional neural networks
-    convolutional neural networks (cnn)
 convolutional neural network
     convolutional neural network
     convolutional neural networks
@@ -4573,23 +4563,10 @@ finserv
 fintec
     fintec
 fintech
-    fin tech
-    fin- tech
     fintech
     fintech (finance technology)
     fintech (financial technology)
     fintechs
-    fintech 3.0
-    financial technologies
-    financial technologies (fintech)
-    financial technology
-    financial technology (fin-tech)
-    financial technology (fintech)
-    financial technology financial technology
-    financial-technology
-    fintech technology
-    technology fintech
-    finance technology
 fintech 3.0
     fintech 3.0
 fintech accelerators
@@ -5897,9 +5874,6 @@ initial coin offering
     initial coin offering (ico)
     initial coin offerings
     initial coin offerings (ico)
-    ico
-    icos
-    ico whitepaper
 initial coin offering legislation
     initial coin offering legislation
 initial public offering
@@ -6031,8 +6005,6 @@ insurance supervision
     insurance supervision
 insurance technology
     insurance technology
-    insurtech
-    insurtech)
 insurtech
     insurtech
     insurtech)
@@ -6196,7 +6168,6 @@ internet of thing (iot)
     internet of thing (iot)
     internet of things
     internet of things (iot)
-    iot
 internet of things (iot) payment devices
     internet of things (iot) payment devices
 internet of things technologies
@@ -8230,7 +8201,6 @@ payment services directive
     payment services directive
 payment services directive 2 (psd 2)
     payment services directive 2 (psd 2)
-    psd2
 payment system
     payment system
     payment systems
@@ -8263,12 +8233,11 @@ peer-to-peer (p2p) lending risk evaluation
 peer-to-peer investment
     peer-to-peer investment
 peer-to-peer lending
+    and peer to peer lending
     peer to peer lending
     peer-to peer lending (p2p lending)
     peer-to-peer (p2p) lending
     peer-to-peer lending
-    p2p lending
-    p2p-lending
 peer-to-peer lending platforms
     peer-to-peer lending platforms
 penetration level
@@ -9161,11 +9130,6 @@ regulatory services
     regulatory services
 regulatory standards
     regulatory standards
-regulatory technologies
-    regulatory technologies (regtech)
-    regulatory technology
-    regulatory technology (regtech)
-    regtech
 regulatory technologies (regtech)
     regulatory technologies (regtech)
     regulatory technology
@@ -9956,19 +9920,7 @@ slow growth
 slr
     slr
 small and medium businesses
-    sme
-    smes
     small and medium businesses
-    small and medium enter-prises
-    small and medium enterprise
-    small and medium enterprises
-    small and medium enterprises (smes)
-    small and medium sized enterprise
-    small and medium-sized enterprise
-    small and medium-sized enterprises
-    small and medium-sized enterprises (smes)
-    small- and medium-sized enterprise
-    small- and medium-sized enterprises
 small and medium enter-prises
     small and medium enter-prises
 small and medium enterprise
@@ -10896,9 +10848,6 @@ technology acceptance
 technology acceptance model
     technology acceptance model
     technology acceptance model (tam)
-    technology acceptance model tam
-    tam
-    tam model
 technology acceptance model tam
     technology acceptance model tam
 technology adoption

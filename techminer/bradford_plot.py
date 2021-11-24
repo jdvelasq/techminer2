@@ -95,7 +95,7 @@ def _prepare_table(documents):
     #             "source_name",
     #             "num_documents",
     #             "global_citations",
-    #             "document_id",
+    #             "record_no",
     #             "iso_source_name",
     #         ]
     #     ],

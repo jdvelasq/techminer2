@@ -33,7 +33,7 @@ def column_coverage(directory, column, sep="; "):
 
     documents = load_filtered_documents(directory)
     documents = documents.reset_index()
-    documents = documents[[column, "document_id"]]
+    documents = documents[[column, "record_no"]]
 
     n_documents = len(documents)
     logging.info("Number of documents : {}".format(n_documents))
@@ -49,22 +49,22 @@ def column_coverage(directory, column, sep="; "):
     documents = documents[~documents[column].isin(stopwords)]
 
     documents = documents.groupby(by=[column]).agg(
-        {"num_documents": "count", "document_id": list}
+        {"num_documents": "count", "record_no": list}
     )
     documents = documents.sort_values(by=["num_documents"], ascending=False)
 
     documents = documents.reset_index()
 
     documents = documents.groupby(by="num_documents", as_index=False).agg(
-        {"document_id": list, column: list}
+        {"record_no": list, column: list}
     )
 
     documents = documents.sort_values(by=["num_documents"], ascending=False)
-    documents["document_id"] = documents.document_id.map(
+    documents["record_no"] = documents.record_no.map(
         lambda x: [term for sublist in x for term in sublist]
     )
 
-    documents = documents.assign(cum_sum_documents=documents.document_id.cumsum())
+    documents = documents.assign(cum_sum_documents=documents.record_no.cumsum())
     documents = documents.assign(cum_sum_documents=documents.cum_sum_documents.map(set))
     documents = documents.assign(cum_sum_documents=documents.cum_sum_documents.map(len))
 
@@ -78,7 +78,7 @@ def column_coverage(directory, column, sep="; "):
     documents = documents.assign(cum_sum_items=documents.cum_sum_items.map(set))
     documents = documents.assign(cum_sum_items=documents.cum_sum_items.map(len))
 
-    documents.drop("document_id", axis=1, inplace=True)
+    documents.drop("record_no", axis=1, inplace=True)
     documents.drop(column, axis=1, inplace=True)
 
     documents = documents.rename(

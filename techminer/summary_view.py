@@ -41,7 +41,7 @@ KEYWORDS       Author Keywords (raw):                         2954
                Index Keywords (raw):                          2738
                Index Keywords (cleaned):                      2642
                Keywords (cleaned):                            3214
-OTHERS         document_id                                    1301
+OTHERS         record_no                                    1301
                doi                                            1094
                isbn                                            280
                iso_source_name                                 639
@@ -290,8 +290,8 @@ def summary_view(directory=None):
     if "frac_num_documents" in records.columns:
         records.pop("frac_num_documents")
 
-    if "document_id" in records.columns:
-        records.pop("document_id")
+    if "record_no" in records.columns:
+        records.pop("record_no")
 
     d = []
     d += [key for key in general.keys()]
@@ -337,7 +337,7 @@ def summary_view(directory=None):
             "num_authors",
             "pub_year",
             "raw_keywords",
-            "record_id",
+            "record_no",
             "wos_id",
         ]:
             continue

@@ -38,9 +38,10 @@ Coverage report
 29       raw_authors_names             1628       98.73%
 30      raw_index_keywords              646       39.18%
 31            raw_keywords              591       35.84%
-32             source_name             1649      100.00%
-33                  volume             1190       72.16%
-34         wos_document_id             1649      100.00%
+32               record_no             1649      100.00%
+33             source_name             1649      100.00%
+34                  volume             1190       72.16%
+
 
 """
 

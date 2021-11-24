@@ -51,7 +51,7 @@ def collaboration_indicators(
                 "num_documents",
                 "single_publication",
                 "multiple_publication",
-                "document_id",
+                "record_no",
             ]
         ],
         column=column,

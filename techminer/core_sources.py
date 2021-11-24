@@ -62,7 +62,7 @@ def core_sources(directory):
             [
                 "source_name",
                 "num_documents",
-                "document_id",
+                "record_no",
             ]
         ],
         "source_name",

@@ -25,11 +25,11 @@ def abstract_concordances(directory, text):
 
     regex = r"\b" + text + r"\b"
     abstracts = abstracts[abstracts.text.str.contains(regex, regex=True)]
-    abstracts = abstracts[["document_id", "text"]]
+    abstracts = abstracts[["record_no", "text"]]
     abstracts["text"] = abstracts["text"].str.capitalize()
     abstracts["text"] = abstracts["text"].str.replace(text, text.upper())
     abstracts["text"] = abstracts["text"].str.replace(text.capitalize(), text.upper())
-    abstracts = abstracts.groupby("document_id").agg(lambda x: ". ".join(x))
+    abstracts = abstracts.groupby("record_no").agg(lambda x: ". ".join(x))
     abstracts["text"] = abstracts["text"] + "."
 
     with open(os.path.join(directory, "abstract_concordantes.txt"), "w") as f:
@@ -38,9 +38,9 @@ def abstract_concordances(directory, text):
                 row["text"],
                 width=90,
             )
-            wos_document_id = documents[documents.document_id == i].wos_document_id
-            wos_document_id = wos_document_id.iloc[0]
-            print("*** " + wos_document_id, file=f)
+            document_id = documents[documents.record_no == i].document_id
+            document_id = document_id.iloc[0]
+            print("*** " + document_id, file=f)
             print(paragraph, file=f)
             print("\n", file=f)
 

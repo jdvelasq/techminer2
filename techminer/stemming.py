@@ -24,7 +24,7 @@ Searchs in the terms of a column using stemming
 Name: author_keywords, dtype: object
 
 >>> stemming_or(directory, "author_keywords", "intelligence business").head(10)
-document_id
+record_no
 2022-0001                      business intelligence
 2022-0004                    artificial intelligence
 2022-0005                    artificial intelligence

@@ -19,7 +19,7 @@ Top documents (most cited documents)
 3  The digital revolution in financial inclusion:...   
 4  Impact of digital finance on financial inclusi...   
 .
-                         source_name document_id  global_citations  
+                         source_name record_no  global_citations  
 0                  BUSINESS HORIZONS   2018-0001               201  
 1      JOURNAL OF BUSINESS ECONOMICS   2017-0001               171  
 2  JOURNAL OF ECONOMICS AND BUSINESS   2018-0002               167  
@@ -91,8 +91,8 @@ def top_documents(
             "document_title",
             "source_name",
             "iso_source_name",
+            "record_no",
             "document_id",
-            "wos_document_id",
             "abstract",
             citations_column,
         ]

@@ -45,7 +45,7 @@ def find_string(
     :return: list of strings
     """
     documents = load_filtered_documents(directory)
-    documents.index = documents.document_id
+    documents.index = documents.record_no
     documents = documents[column]
     documents = documents.dropna()
     documents = documents.str.split(sep)

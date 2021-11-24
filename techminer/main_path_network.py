@@ -15,10 +15,10 @@ class _MainPathNetwork:
         self.run()
 
     def create_sequence(self):
-        data = self.documents[["document_id", "local_references"]].dropna()
+        data = self.documents[["record_no", "local_references"]].dropna()
         data = {
             key: value.split("; ")
-            for key, value in zip(data.document_id, data.local_references)
+            for key, value in zip(data.record_no, data.local_references)
         }
         return data
 
@@ -47,10 +47,8 @@ class _MainPathNetwork:
                 + [b for _, b in self.global_key_route_paths]
             )
         )
-        documents = self.documents[
-            ["document_title", "document_id", "local_references"]
-        ]
-        # documents = documents[documents.document_id.isin(nodes)]
+        documents = self.documents[["document_title", "record_no", "local_references"]]
+        # documents = documents[documents.record_no.isin(nodes)]
 
         return documents.head()
 
