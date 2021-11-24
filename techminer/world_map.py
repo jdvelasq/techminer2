@@ -5,7 +5,8 @@ World map
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/tests/data/"
 >>> world_map(directory)
-
+ <Figure size 600x600 with 1 Axes>
+ 
 .. image:: images/world_map.png
     :width: 700px
     :align: center

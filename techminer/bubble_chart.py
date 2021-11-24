@@ -10,8 +10,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-from .plots.multiindex2text import multindex2text
-
 TEXTLEN = 35
 
 

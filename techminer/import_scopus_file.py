@@ -646,9 +646,9 @@ def _create_wos_document_id(documents):
     wos_ref = wos_ref + documents.page_start.map(
         lambda x: ", P" + str(x) if not pd.isna(x) else ""
     )
-    wos_ref = wos_ref + documents.doi.map(
-        lambda x: ", DOI " + str(x) if not pd.isna(x) else ""
-    )
+    # wos_ref = wos_ref + documents.doi.map(
+    #     lambda x: ", DOI " + str(x) if not pd.isna(x) else ""
+    # )
     documents["wos_document_id"] = wos_ref.copy()
     return documents
 
@@ -733,7 +733,9 @@ def _create_references_file(documents, directory):
 
     references = references.dropna()
     # -------------------------------------------------------------------------
-    with open(join(directory, "debug_references.txt"), "wt") as out_file:
+    with open(
+        join(directory, "debug_references.txt"), "wt", encoding="utf-8"
+    ) as out_file:
         for _, row in references.iterrows():
             print(row["raw_reference"], file=out_file)
             print(

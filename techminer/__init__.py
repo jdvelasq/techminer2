@@ -20,7 +20,8 @@ from .co_word_association_mds_map import co_word_association_mds_map
 from .collaboration_indicators import collaboration_indicators
 from .column_chart import column_chart
 from .column_coverage import column_coverage
-from .column_explorer import column_explorer
+
+# from .column_explorer import column_explorer
 from .column_indicators import column_indicators
 from .column_indicators_by_year import column_indicators_by_year
 from .core_authors import core_authors

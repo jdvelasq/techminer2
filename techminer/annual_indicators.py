@@ -2,7 +2,7 @@
 Annual indicators
 ===============================================================================
 
->>> from techminer import *
+>>> from . import annual_indicators
 >>> directory = "/workspaces/techminer-api/tests/data/"
 >>> annual_indicators(directory)
           num_documents  local_citations  global_citations  \\
@@ -15,7 +15,7 @@ pub_year
 2020                411              381              1349   
 2021                415              117               325   
 2022                  7                0                 0   
--
++BLANKLINE
           mean_global_citations  mean_local_citations  cum_num_documents  \\
 pub_year                                                                   
 2015                   9.222222              5.777778                  9   
@@ -26,7 +26,7 @@ pub_year
 2020                   3.282238              0.927007                879   
 2021                   0.783133              0.281928               1294   
 2022                   0.000000              0.000000               1301   
--
++BLANKLINE
           cum_global_citations  cum_local_citations  
 pub_year                                             
 2015                        83                   52  
@@ -39,13 +39,15 @@ pub_year
 2022                      7019                 3054 
 
 
->>> line_chart(annual_indicators()['num_documents'], title="Annual Scientific Production", y_axis_int=True)
+>>> line_chart(annual_indicators()['num_documents'], title="Annual Scientific Production")
 
 .. image:: images/annual_scientific_production.png
     :width: 600px
     :align: center
 
 """
+
+
 from .utils import load_filtered_documents
 
 
@@ -80,3 +82,9 @@ def annual_indicators(directory=None):
     )
 
     return indicators
+
+
+if __name__ == "__main__":
+    import doctest
+
+    doctest.testmod()

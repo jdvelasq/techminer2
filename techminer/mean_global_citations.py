@@ -26,7 +26,7 @@ Name: mean_global_citations, dtype: float64
 """
 import matplotlib.pyplot as plt
 
-from .time_report import time_report
+from .annual_indicators import annual_indicators
 
 
 class Mean_global_citations:
@@ -35,7 +35,9 @@ class Mean_global_citations:
         self._run()
 
     def _run(self):
-        self.mean_global_citations = time_report(self.directory).mean_global_citations
+        self.mean_global_citations = annual_indicators()(
+            self.directory
+        ).mean_global_citations
 
     @property
     def table_(self):

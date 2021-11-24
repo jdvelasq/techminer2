@@ -27,7 +27,7 @@ RUN pip3 --disable-pip-version-check --no-cache-dir install \
     prospector \
     pycodestyle \
     pylama \
-    pylint==2.11.1 \
+    pylint \
     pytest \
     rope \
     yapf
@@ -47,18 +47,17 @@ RUN pip3 --disable-pip-version-check --no-cache-dir install \
 
 RUN pip3 --disable-pip-version-check --no-cache-dir install \
     numpy==1.19.5 \
-    matplotlib==3.1.0 \
+    matplotlib==3.2.2 \
     graphviz==0.10.1 \
     ipykernel==4.10.1 \
-    scikit-learn==0.22.2.post1 \
+    scikit-learn==1.0.1 \
     nltk==3.2.5 \
     pandas==1.1.5 \
     wordcloud==1.5.0 \
     squarify==0.4.3 \
-    networkx==2.5.1 \
+    networkx==2.6.3 \
     cdlib==0.2.5 \
-    seaborn==0.11.2 \
-    ipywidgets==7.6.5 
+    seaborn==0.11.2 
 
 RUN apt update \
     && apt -yq --no-install-recommends install  graphviz \

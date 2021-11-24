@@ -2,41 +2,22 @@
 Core authors
 ===============================================================================
 
->>> from techminer import *
+>>> from techminer import core_authors
 >>> directory = "/workspaces/techminer-api/tests/data/"
 >>> core_authors(directory)
-   Num Authors        %  Acum Num Authors   % Acum  \\
-0            1   0.03 %                 1   0.03 %   
-1            1   0.03 %                 2   0.07 %   
-2            3    0.1 %                 5   0.17 %   
-3            6    0.2 %                11   0.37 %   
-4            8   0.27 %                19   0.65 %   
-5           14   0.48 %                33   1.12 %   
-6           58   1.97 %                91    3.1 %   
-7          246   8.38 %               337  11.47 %   
-8         2600  88.53 %              2937  100.0 %   
--
-   Documents written per Author  Num Documents % Num Documents  \\
-0                            10             10           0.78%   
-1                             9              9            0.7%   
-2                             7             14           1.09%   
-3                             6             30           2.34%   
-4                             5             34           2.65%   
-5                             4             35           2.73%   
-6                             3            103           8.03%   
-7                             2            233          18.16%   
-8                             1            815          63.52%   
--
-   Acum Num Documents % Acum Num Documents  
-0                  10                0.78%  
-1                  19                1.48%  
-2                  33                2.57%  
-3                  63                4.91%  
-4                  97                7.56%  
-5                 132               10.29%  
-6                 235               18.32%  
-7                 468               36.48%  
-8                1283               100.0% 
+   Num Authors        %  ...  Acum Num Documents % Acum Num Documents
+0            1   0.03 %  ...                  10                0.61%
+1            1   0.03 %  ...                  19                1.17%
+2            5   0.13 %  ...                  46                2.83%
+3           10   0.27 %  ...                  89                5.47%
+4           12   0.32 %  ...                 143                8.79%
+5           23   0.62 %  ...                 194               11.92%
+6           79   2.12 %  ...                 337               20.71%
+7          304   8.17 %  ...                 623               38.29%
+8         3288  88.32 %  ...                1627               100.0%
+<BLANKLINE>
+[9 rows x 9 columns]
+
 """
 
 import pandas as pd
