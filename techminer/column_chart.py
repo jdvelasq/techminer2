@@ -4,7 +4,12 @@ Column chart
 
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/tests/data/"
->>> column_chart(series=annual_indicators(directory)['num_documents'], darkness=annual_indicators(directory)['global_citations'])
+>>> file_name = "/workspaces/techminer-api/sphinx/images/column_chart.png"
+>>> series = column_indicators(directory, "countries").num_documents.head(20)
+>>> darkness = column_indicators(directory, "countries").global_citations.head(20)
+>>> title = "Country scientific productivity"
+>>> column_chart(series, darkness, title=title).savefig(file_name)
+
 
 .. image:: images/column_chart.png
     :width: 500px
@@ -27,10 +32,10 @@ def column_chart(
     darkness=None,
     cmap="Greys",
     figsize=(6, 6),
-    fontsize=9,
     edgecolor="k",
     linewidth=0.5,
     zorder=10,
+    title=None,
     ylabel=None,
     xlabel=None,
 ):
@@ -49,7 +54,6 @@ def column_chart(
         for d in darkness
     ]
 
-    matplotlib.rc("font", size=fontsize)
     fig = plt.Figure(figsize=figsize)
     ax_ = fig.subplots()
 
@@ -72,8 +76,8 @@ def column_chart(
         xlabel = xlabel.replace("_", " ")
         xlabel = xlabel.title()
 
-    ax_.set_xlabel(xlabel)
-    ax_.set_ylabel(ylabel)
+    ax_.set_xlabel(xlabel, fontsize=9)
+    ax_.set_ylabel(ylabel, fontsize=9)
 
     xticklabels = series.index
     if xticklabels.dtype != "int64":
@@ -89,6 +93,14 @@ def column_chart(
         ax_.spines[x].set_visible(False)
 
     ax_.grid(axis="y", color="gray", linestyle=":")
+
+    if title is not None:
+        ax_.set_title(
+            title,
+            fontsize=10,
+            color="dimgray",
+            loc="left",
+        )
 
     fig.set_tight_layout(True)
 
