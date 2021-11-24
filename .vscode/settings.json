@@ -9,5 +9,6 @@
         }
     },
     "editor.formatOnSave": true,
-    "debug.console.fontSize": 11
+    "debug.console.fontSize": 11,
+    "python.testing.unittestEnabled": false
 }
