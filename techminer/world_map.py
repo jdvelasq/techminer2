@@ -5,7 +5,8 @@ World map
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/tests/data/"
 >>> file_name = "/workspaces/techminer-api/sphinx/images/world_map.png"
->>> world_map(directory).savefig(file_name)
+>>> series = column_indicators(directory, "countries").num_documents
+>>> world_map(series).savefig(file_name)
  
 .. image:: images/world_map.png
     :width: 700px
@@ -27,20 +28,17 @@ TEXTLEN = 40
 
 
 def world_map(
-    directory,
-    metric="num_documents",
+    series,
     cmap="Pastel2",
     figsize=(9, 6),
+    title="Country scientific production",
 ):
 
     """Worldmap plot with the number of documents per country."""
-    matplotlib.rc("font")
+
     fig = plt.Figure(figsize=figsize)
     ax = fig.subplots()
     cmap = plt.cm.get_cmap(cmap)
-
-    table = column_indicators(directory, column="countries", sep="; ")
-    series = table[metric]
 
     df = series.to_frame()
 
@@ -107,22 +105,12 @@ def world_map(
     ax.spines["right"].set_color("gray")
     ax.spines["left"].set_color("gray")
 
-    if metric == "num_documents":
-        ax.set_title(
-            "Number of documents per country",
-            fontsize=10,
-            color="dimgray",
-            loc="left",
-        )
-    else:
-        ax.set_title(
-            "Number of citations per country",
-            fontsize=10,
-            color="dimgray",
-            loc="left",
-        )
-
-    return fig
+    ax.set_title(
+        title,
+        fontsize=10,
+        color="dimgray",
+        loc="left",
+    )
 
     fig.set_tight_layout(True)
 
