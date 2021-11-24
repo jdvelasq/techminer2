@@ -50,6 +50,8 @@ from .most_local_cited_sources import most_local_cited_sources
 # from .mean_global_citations import mean_global_citations
 from .most_relevant_sources import most_relevant_sources
 from .pie_chart import pie_chart
+from .source_growth_plot import source_growth_plot
+from .source_growth_table import source_growth_table
 from .stemming import stemming_and, stemming_or
 from .summary_view import summary_view
 from .svd_co_occurrence_matrix_map import svd_co_occurrence_matrix_map
