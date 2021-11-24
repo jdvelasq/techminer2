@@ -4,12 +4,13 @@ World map
 
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/tests/data/"
->>> world_map(directory)
- <Figure size 600x600 with 1 Axes>
+>>> file_name = "/workspaces/techminer-api/sphinx/images/world_map.png"
+>>> world_map(directory).savefig(file_name)
  
 .. image:: images/world_map.png
     :width: 700px
     :align: center
+
 """
 import json
 from os.path import dirname, join
@@ -29,12 +30,11 @@ def world_map(
     directory,
     metric="num_documents",
     cmap="Pastel2",
-    figsize=(6, 6),
-    fontsize=9,
+    figsize=(9, 6),
 ):
 
     """Worldmap plot with the number of documents per country."""
-    matplotlib.rc("font", size=fontsize)
+    matplotlib.rc("font")
     fig = plt.Figure(figsize=figsize)
     ax = fig.subplots()
     cmap = plt.cm.get_cmap(cmap)
@@ -106,6 +106,23 @@ def world_map(
     ax.spines["top"].set_color("gray")
     ax.spines["right"].set_color("gray")
     ax.spines["left"].set_color("gray")
+
+    if metric == "num_documents":
+        ax.set_title(
+            "Number of documents per country",
+            fontsize=10,
+            color="dimgray",
+            loc="left",
+        )
+    else:
+        ax.set_title(
+            "Number of citations per country",
+            fontsize=10,
+            color="dimgray",
+            loc="left",
+        )
+
+    return fig
 
     fig.set_tight_layout(True)
 
