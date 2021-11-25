@@ -103,7 +103,7 @@ Analysis of bibliographic datasets using Python
 
     bar_chart
     column_chart
-    gantt_points_chart
+    dotted_timeline_chart
     heat_map
     line_chart
     pie_chart
