@@ -2,20 +2,21 @@
 Column indicators by year
 ===============================================================================
 
-
+>>> from techminer import *
+>>> directory = "/workspaces/techminer-api/tests/data/"
 >>> column_indicators_by_year(directory, 'authors').head(10)
-                 pub_year  num_documents  global_citations  local_citations
-authors                                                                    
-Aleksandrov AV       2015              1                 0                0
-Hong S/1             2015              1                 1                1
-Kantimirova EYu      2015              1                 0                0
-Kauffman RJ          2015              1                 9                4
-Kim JJ               2015              1                 1                1
-Klimenko AE          2015              1                 0                0
-Koike Y              2015              1                 0                0
-Ma D                 2015              1                 9                4
-Mackenzie A          2015              1                41               37
-Tabakov KV           2015              1                 0                0
+             pub_year  num_documents  global_citations  local_citations
+authors                                                                
+Nayer CPS        1986              1                 8                0
+Covick O         1998              1                 0                0
+Khadka S         2002              1                 2                0
+Seibel HD        2002              1                 2                0
+Fan JPH          2003              1                 0                0
+Hanazaki M       2003              1                 0                0
+Teranishi J      2003              1                 0                0
+Au YA            2008              1               250               12
+Kauffman RJ      2008              1               250               12
+Englund P        2010              1                 4                0
 
 """
 from .utils import load_filtered_documents

@@ -3,7 +3,10 @@ Heat map
 ===============================================================================
 
 >>> from techminer import *
->>> heat_map(co_occurrence_matrix(directory, 'authors', by='countries', min_occ=5, min_occ_by=8), cmap='Blues')
+>>> directory = "/workspaces/techminer-api/tests/data/"
+>>> coc_matrix = co_occurrence_matrix(directory, 'authors', min_occ=5)
+>>> file_name = "/workspaces/techminer-api/sphinx/images/co_occurrence_heat_map.png"
+>>> heat_map(coc_matrix, cmap='Blues').savefig(file_name)
 
 .. image:: images/co_occurrence_heat_map.png
     :width: 500px
@@ -40,10 +43,11 @@ def heat_map(
         matrix,
         ax=ax,
         cmap=cmap,
+        vmax=0.3,
         square=True,
         linewidths=0.5,
         cbar=False,
-        linecolor="gray",
+        # linecolor="gray",
     )
 
     fig.set_tight_layout(True)

@@ -1,15 +1,19 @@
 """
-Bar chart
+Line chart
 ===============================================================================
 
-Horizontal bar chart.
+>>> from techminer import *
+>>> directory = "/workspaces/techminer-api/tests/data/"
+>>> file_name = "/workspaces/techminer-api/sphinx/images/line_chart.png"
+>>> series = annual_indicators().global_citations
+>>> line_chart(series, title="Citations per year").savefig(file_name)
 
+
+.. image:: images/line_chart.png
+    :width: 600px
+    :align: center
 """
 
-
-import textwrap
-
-import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 

@@ -269,90 +269,90 @@ class Thesaurus:
         Examples
         ----------------------------------------------------------------------------------------------
 
-        >>> x = pd.Series(
-        ...   [
-        ...     'aaa', 'bbb', 'ccc aaa', 'ccc bbb', 'ddd eee', 'ddd fff',  None, 'zzz'
-        ...   ]
-        ... )
-        >>> x # doctest: +NORMALIZE_WHITESPACE
-        0        aaa
-        1        bbb
-        2    ccc aaa
-        3    ccc bbb
-        4    ddd eee
-        5    ddd fff
-        6       None
-        7        zzz
-        dtype: object
+        # >>> x = pd.Series(
+        # ...   [
+        # ...     'aaa', 'bbb', 'ccc aaa', 'ccc bbb', 'ddd eee', 'ddd fff',  None, 'zzz'
+        # ...   ]
+        # ... )
+        # >>> x # doctest: +NORMALIZE_WHITESPACE
+        # 0        aaa
+        # 1        bbb
+        # 2    ccc aaa
+        # 3    ccc bbb
+        # 4    ddd eee
+        # 5    ddd fff
+        # 6       None
+        # 7        zzz
+        # dtype: object
 
-        >>> patterns = {'aaa':['aaa', 'bbb', 'eee', 'fff'],  '1':['000']}
-        >>> thesaurus = Thesaurus(patterns)
-        >>> thesaurus = thesaurus.compile()
-        >>> thesaurus
-        {
-          "1": [
-            "000"
-          ],
-          "aaa": [
-            "aaa",
-            "bbb",
-            "eee",
-            "fff"
-          ]
-        }
-        ignore_case=True, full_match=False, use_re=False, compiled=True
+        # >>> patterns = {'aaa':['aaa', 'bbb', 'eee', 'fff'],  '1':['000']}
+        # >>> thesaurus = Thesaurus(patterns)
+        # >>> thesaurus = thesaurus.compile()
+        # >>> thesaurus
+        # {
+        #   "1": [
+        #     "000"
+        #   ],
+        #   "aaa": [
+        #     "aaa",
+        #     "bbb",
+        #     "eee",
+        #     "fff"
+        #   ]
+        # }
+        # ignore_case=True, full_match=False, use_re=False, compiled=True
 
-        >>> x.map(lambda w: thesaurus.apply(w))
-        0     aaa
-        1     aaa
-        2     aaa
-        3     aaa
-        4     aaa
-        5     aaa
-        6    <NA>
-        7     zzz
-        dtype: object
+        # >>> x.map(lambda w: thesaurus.apply(w))
+        # 0     aaa
+        # 1     aaa
+        # 2     aaa
+        # 3     aaa
+        # 4     aaa
+        # 5     aaa
+        # 6    <NA>
+        # 7     zzz
+        # dtype: object
 
-        >>> import pandas as pd
-        >>> x = pd.Series(
-        ...   [
-        ...     '0', '1', '2', '3', None, '4', '5', '6', '7', '8', '9'
-        ...   ]
-        ... )
-        >>> x # doctest: +NORMALIZE_WHITESPACE
-        0        0
-        1        1
-        2        2
-        3        3
-        4     None
-        5        4
-        6        5
-        7        6
-        8        7
-        9        8
-        10       9
-        dtype: object
+        # >>> import pandas as pd
+        # >>> x = pd.Series(
+        # ...   [
+        # ...     '0', '1', '2', '3', None, '4', '5', '6', '7', '8', '9'
+        # ...   ]
+        # ... )
+        # >>> x # doctest: +NORMALIZE_WHITESPACE
+        # 0        0
+        # 1        1
+        # 2        2
+        # 3        3
+        # 4     None
+        # 5        4
+        # 6        5
+        # 7        6
+        # 8        7
+        # 9        8
+        # 10       9
+        # dtype: object
 
-        >>> patterns = {
-        ...     'a':['0', '1', '2'],
-        ...     'b':['4', '5', '6'],
-        ...     'c':['7', '8', '9']
-        ... }
-        >>> thesaurus = Thesaurus(patterns, ignore_case=False, full_match=True)
-        >>> thesaurus = thesaurus.compile()
-        >>> x.map(lambda w: thesaurus.apply(w)) # doctest: +NORMALIZE_WHITESPACE
-        0        a
-        1        a
-        2        a
-        3        3
-        4     <NA>
-        5        b
-        6        b
-        7        b
-        8        c
-        9        c
-        10       c
-        dtype: object
+        # >>> patterns = {
+        # ...     'a':['0', '1', '2'],
+        # ...     'b':['4', '5', '6'],
+        # ...     'c':['7', '8', '9']
+        # ... }
+        # >>> thesaurus = Thesaurus(patterns, ignore_case=False, full_match=True)
+        # >>> thesaurus = thesaurus.compile()
+        # >>> x.map(lambda w: thesaurus.apply(w)) # doctest: +NORMALIZE_WHITESPACE
+        # 0        a
+        # 1        a
+        # 2        a
+        # 3        3
+        # 4     <NA>
+        # 5        b
+        # 6        b
+        # 7        b
+        # 8        c
+        # 9        c
+        # 10       c
+        # dtype: object
 
         """
         if pd.isna(x):
@@ -371,33 +371,33 @@ class Thesaurus:
         Examples
         ----------------------------------------------------------------------------------------------
 
-        >>> import pandas as pd
-        >>> df = pd.DataFrame({
-        ...    'f': ['AAA', 'BBB', 'ccc AAA', 'ccc BBB', 'ddd EEE', 'ddd FFF',  None, 'zzz'],
-        ... })
-        >>> df # doctest: +NORMALIZE_WHITESPACE
-                 f
-        0      AAA
-        1      BBB
-        2  ccc AAA
-        3  ccc BBB
-        4  ddd EEE
-        5  ddd FFF
-        6     None
-        7      zzz
-        >>> patterns = {'aaa':['AAA', 'BBB', 'EEE', 'FFF'],  '1':['000']}
-        >>> thesaurus = Thesaurus(patterns)
-        >>> thesaurus = thesaurus.compile()
-        >>> df.f.map(lambda x: thesaurus.find_and_replace(x))
-        0        aaa
-        1        aaa
-        2    ccc aaa
-        3    ccc aaa
-        4    ddd aaa
-        5    ddd aaa
-        6       <NA>
-        7        zzz
-        Name: f, dtype: object
+        # >>> import pandas as pd
+        # >>> df = pd.DataFrame({
+        # ...    'f': ['AAA', 'BBB', 'ccc AAA', 'ccc BBB', 'ddd EEE', 'ddd FFF',  None, 'zzz'],
+        # ... })
+        # >>> df # doctest: +NORMALIZE_WHITESPACE
+        #          f
+        # 0      AAA
+        # 1      BBB
+        # 2  ccc AAA
+        # 3  ccc BBB
+        # 4  ddd EEE
+        # 5  ddd FFF
+        # 6     None
+        # 7      zzz
+        # >>> patterns = {'aaa':['AAA', 'BBB', 'EEE', 'FFF'],  '1':['000']}
+        # >>> thesaurus = Thesaurus(patterns)
+        # >>> thesaurus = thesaurus.compile()
+        # >>> df.f.map(lambda x: thesaurus.find_and_replace(x))
+        # 0        aaa
+        # 1        aaa
+        # 2    ccc aaa
+        # 3    ccc aaa
+        # 4    ddd aaa
+        # 5    ddd aaa
+        # 6       <NA>
+        # 7        zzz
+        # Name: f, dtype: object
 
         """
         if pd.isna(x):

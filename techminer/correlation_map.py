@@ -4,8 +4,9 @@ Correlation map
 
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/tests/data/"
+>>> file_name = "/workspaces/techminer-api/sphinx/images/auto_corr_map.png"
 >>> matrix = auto_corr_matrix(directory, column='authors', min_occ=4)
->>> correlation_map(matrix, num_terms=10)
+>>> correlation_map(matrix).savefig(file_name)
 
 .. image:: images/auto_corr_map.png
     :width: 400px

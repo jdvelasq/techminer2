@@ -7,49 +7,50 @@ Summary view
 >>> summary_view(directory)
                                                              value
 Category       Item                                               
-GENERAL        Documents:                                     1301
-               Years:                                    2015-2022
-               Compound annual growth rate:                86.21 %
-               Average citations per document:                5.40
-               Average citations per document per year:       0.67
-               Total references:                             57797
-               Average global references per document:          44
-DOCUMENT TYPES Article:                                        780
-               Book:                                            19
-               Book Chapter:                                   101
-               Conference Paper:                               312
-               Editorial:                                       20
-               Erratum:                                          2
-               Letter:                                           1
-               Note:                                             6
-               Review:                                          58
-               Short Survey:                                     2
-AUTHORS        Authors:                                       2937
-               Author appearances:                            3438
+GENERAL        Documents:                                     1649
+               Years:                                    1986-2022
+               Compound annual growth rate:                22.17 %
+               Current years from publication:                1.48
+               Average citations per document:                6.12
+               Average citations per document per year:       0.17
+               Sources:                                        778
+               Average documents per source:                     2
+DOCUMENT TYPES article:                                        977
+               book:                                            24
+               book_chapter:                                   126
+               conference_paper:                               406
+               editorial:                                       28
+               erratum:                                          4
+               letter:                                           1
+               note:                                             9
+               review:                                          72
+               short_survey:                                     2
+AUTHORS        Authors:                                       3723
+               Author appearances:                            4399
                Documents per author:                          0.44
                Authors per document:                          2.26
-               Single-authored documents:                      315
-               Multi-authored documents:                       969
-               Co-authors per document:                       2.64
-               Collaboration index:                           2.79
-               Institutions:                                  1349
-               Institutions (1st author):                      803
-               Countries:                                       95
-               Countries (1st author):                          84
-KEYWORDS       Author Keywords (raw):                         2954
-               Author Keywords (cleaned):                     2705
-               Index Keywords (raw):                          2738
-               Index Keywords (cleaned):                      2642
-               Keywords (cleaned):                            3214
-OTHERS         record_no                                    1301
-               doi                                            1094
-               isbn                                            280
-               iso_source_name                                 639
-               issn                                            513
-               num_global_references                           155
-               pubmed_id                                         7
-               raw_authors_names                              2816
-               source_name                                     649
+               Single-authored documents:                      394
+               Multi-authored documents:                      1234
+               Co-authors per document:                       2.67
+               Collaboration index:                           2.78
+               Institutions:                                  1611
+               Institutions (1st author):                      964
+               Countries:                                       96
+               Countries (1st author):                          86
+KEYWORDS       Raw author keywords:                           3623
+               Cleaned author keywords:                       3329
+               Raw index keywords:                            3406
+               Cleaned index keywords:                        3271
+OTHERS         document_id                                    1637
+               iso_source_name                                 764
+               num_global_references                           165
+               page_start                                      650
+               pubmed_id                                        11
+               raw_authors_names                              3552
+               volume                                          298
+
+
+
 """
 import datetime
 

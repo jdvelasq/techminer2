@@ -5,16 +5,7 @@ from nltk.stem import SnowballStemmer
 
 
 def snowball_stemmer(x):
-    """Computes the stemmer transformation of string x.
-
-    Examples
-    ----------------------------------------------------------------------------------------------
-
-    >>> stemmer_snowball('neural net')
-    'net neural'
-
-
-    """
+    """Computes the stemmer transformation of string x."""
     if x is None:
         return None
     x = x.strip().lower()

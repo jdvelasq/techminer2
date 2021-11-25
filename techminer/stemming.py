@@ -17,24 +17,23 @@ Searchs in the terms of a column using stemming
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/tests/data/"
 >>> stemming_and(directory, "author_keywords", "intelligence business").head(10)
-2022-0001           business intelligence
-2020-0361    business intelligence and ai
-2020-0065           business intelligence
-2019-0163           business intelligence
+6              business intelligence
+648     business intelligence and ai
+1002           business intelligence
+1038           business intelligence
 Name: author_keywords, dtype: object
 
 >>> stemming_or(directory, "author_keywords", "intelligence business").head(10)
-record_no
-2022-0001                      business intelligence
-2022-0004                    artificial intelligence
-2022-0005                    artificial intelligence
-2022-0006                 intelligent transportation
-2021-0247                    artificial intelligence
-2021-0109               artificial intelligence (ai)
-2021-0109                        intelligent systems
-2021-0257                         e-business systems
-2021-0090    artificial intelligence (ai) governance
-2021-0322                    artificial intelligence
+6                   business intelligence
+11                artificial intelligence
+12                artificial intelligence
+13             intelligent transportation
+41                artificial intelligence
+52    explainable artificial intelligence
+78                artificial intelligence
+96                artificial intelligence
+96                    intelligent systems
+98                     e-business systems
 Name: author_keywords, dtype: object
 
 """

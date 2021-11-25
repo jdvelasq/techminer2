@@ -5,19 +5,14 @@ Growth indicators
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/tests/data/"
 >>> growth_indicators(directory, "author_keywords").head()
-                         before 2021  between 2021-2022  \\
-blockchain                        99                 33   
-financial inclusion               44                 28   
-innovation                        36                  8   
-crowdfunding                      35                 15   
-artificial intelligence           30                 18   
-.
-                         average_documents_per_year  average_growth_rate  
-blockchain                                     16.5                -14.5  
-financial inclusion                            14.0                -14.0  
-innovation                                      4.0                 -4.0  
-crowdfunding                                    7.5                 -6.5  
-artificial intelligence                         9.0                 -7.0
+                      before 2021  ...  average_growth_rate
+fintech                       656  ...               -148.0
+financial-technology          184  ...                -46.0
+blockchain                    123  ...                -24.0
+cryptocurrencies               52  ...                -11.5
+bank                           52  ...                -12.5
+<BLANKLINE>
+[5 rows x 4 columns]
 
 """
 import numpy as np

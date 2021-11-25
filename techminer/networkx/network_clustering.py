@@ -8,6 +8,7 @@ def network_clustering(
     nodes,
     edges,
     algorithm,
+    random_state=12345,
 ):
     """
     Network clustering.
@@ -78,7 +79,7 @@ def network_clustering(
         "leiden": algorithms.leiden,
         "louvain": algorithms.louvain,
         "walktrap": algorithms.walktrap,
-    }[algorithm](G).communities
+    }[algorithm](G, randomize=random_state).communities
 
     communities = dict(
         (member, i_community)

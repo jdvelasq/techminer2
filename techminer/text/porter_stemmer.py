@@ -5,16 +5,7 @@ from nltk.stem import PorterStemmer
 
 
 def porter_stemmer(text):
-    """Returns the stemmer transformation of the string.
-
-    Examples
-    ----------------------------------------------------------------------------------------------
-
-    >>> stemmer_porter('neural net')
-    'net neural'
-
-
-    """
+    """Returns the stemmer transformation of the string."""
     if text is None:
         return None
     text = text.strip().lower()

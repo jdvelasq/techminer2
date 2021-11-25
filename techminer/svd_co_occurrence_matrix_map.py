@@ -15,8 +15,10 @@ The plot is based on the SVD technique used in T-LAB's comparative analysis.
 
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/tests/data/"
->>> svd_co_occurrence_matrix_map(co_occurrence_matrix(directory, 'author_keywords', min_occ=15))
-<Figure size 700x700 with 1 Axes>
+>>> file_name = "/workspaces/techminer-api/sphinx/images/co_word_association_mds_map.png"
+>>> matrix = co_occurrence_matrix(directory, 'author_keywords', min_occ=15)
+>>> svd_co_occurrence_matrix_map(matrix).savefig(file_name)
+
 
 .. image:: images/co_word_association_mds_map.png
     :width: 700px

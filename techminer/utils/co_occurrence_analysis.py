@@ -16,11 +16,13 @@ class Co_occurrence_analysis:
         co_occurrence_matrix,
         clustering_method,
         manifold_method,
+        random_state=0,
     ):
         self.co_occurrence_matrix = co_occurrence_matrix.copy()
         self.co_occurrence_matrix = self.co_occurrence_matrix.astype(float)
         self.clustering_method = clustering_method
         self.manifold_method = manifold_method
+        self.random_state = random_state
 
     def _sort_co_occurrence_matrix(self):
         self.co_occurrence_matrix.sort_index(

@@ -28,26 +28,6 @@ Visualization with n-1 clusters
 >>> directory = "/workspaces/techminer-api/tests/data/"
 >>> tfidf_matrix = TfIdfMatrix(directory, 'author_keywords', min_occ=13)
 >>> thematic_analysis(tfidf_matrix, clustering_method=KMeans(n_clusters=6), manifold_method=MDS()).themes_by_words_
-author_keywords     fintech blockchain financial inclusion  \\
-#d                      882        131                 72    
-#c                     5181       1031                742    
-THEME_0           68.084530   2.034130            0.000000   
-THEME_1          334.000000   0.000000            0.000000   
-THEME_2            8.019709   2.418918            4.570119   
-THEME_3           23.158876  70.478395            0.000000   
-THEME_4           11.314807   1.552039           41.276159   
-THEME_5            8.505424   4.494321            1.506909   
-...
-author_keywords financial institutions smart contracts financial literacy  
-#d                                  13              13                 13   
-#c                                 274              19                 24    
-THEME_0                       7.968039        2.653674           7.329968  
-THEME_1                       0.000000        0.000000           0.000000  
-THEME_2                       1.339041        0.000000           0.823928  
-THEME_3                       0.000000        7.683336           0.000000  
-THEME_4                       0.550843        0.000000           3.092813  
-THEME_5                       0.000000        0.000000           0.000000  
-
 >>> thematic_analysis(tfidf_matrix, clustering_method=KMeans(n_clusters=6), manifold_method=MDS()).map()
 
 .. image:: images/thematic_analysis_map.png

@@ -6,21 +6,21 @@ Computes coverage of terms in a column discarding stopwords.
 
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/tests/data/"
->>> column_coverage(directory, column="author_keywords").head(10)
-2021-11-14 14:48:34 - INFO - Number of documents : 1301
-2021-11-14 14:48:34 - INFO - Documents with NA: 1122
-2021-11-14 14:48:34 - INFO - Efective documents : 1301
-   min_occ  total num documents coverage
-0      132                  131  10.07 %
-1       72                  256  19.68 %
-2       50                  289  22.21 %
-3       48                  324  24.90 %
-4       44                  353  27.13 %
-5       40                  367  28.21 %
-6       39                  400  30.75 %
-7       38                  425  32.67 %
-8       33                  451  34.67 %
-9       30                  485  37.28 %
+>>> column_coverage(directory, column="author_keywords").head(10) # doctest: +ELLIPSIS
+20...
+20...
+20...
+   min_occ  cum_sum_documents coverage  cum num items
+0      977                977  59.25 %              1
+1      279               1192  72.29 %              2
+2      164               1206  73.14 %              3
+3       87               1213  73.56 %              4
+4       77               1224  74.23 %              5
+5       72               1230  74.59 %              6
+6       61               1233  74.77 %              7
+7       60               1240  75.20 %              8
+8       57               1244  75.44 %              9
+9       56               1251  75.86 %             10
 
 """
 

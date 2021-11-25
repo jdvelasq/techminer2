@@ -9,14 +9,9 @@ Finds a string in the terms of a column of a document collection.
 >>> find_string(directory, column="author_keywords", contains='fintech').head()
 0                     ai in fintech
 1                       b2b fintech
-2                      bank fintech
-3          bank fintech partnership
-4                   banking-fintech
-5    bermuda fintech innovation hub
-6             bermuda fintech story
-7        characteristics of fintech
-8              cross-sector fintech
-9             definition of fintech
+2          bank fintech partnership
+3                   banking-fintech
+4    bermuda fintech innovation hub
 Name: author_keywords, dtype: object
 
 """

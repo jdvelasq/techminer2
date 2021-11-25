@@ -4,29 +4,14 @@ Column indicators
 
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/tests/data/"
->>> column_indicators(directory, 'authors').head(20)
-                  num_documents  global_citations  local_citations
-authors                                                           
-Rabbani MR                   10                69               32
-Arner DW                      9               135               47
-Buckley RP                    7               132               45
-Reyes-Mercado P               7                 0                0
-Wojcik D                      7                49               14
-Gozman DP                     6                26                8
-Ozili PK                      6               151               33
-Wonglimpiyarat J              6                52               36
-Serrano W                     6                15                3
-Schwienbacher A               6                50               19
-Khan S                        6                49               22
-Faccia A                      5                27                5
-Nieves EH                     5                15                3
-Mention A-L                   5                35               31
-Tan B                         5               105               56
-Zetzsche DA                   5                44               25
-Hamdan A                      5                18                7
-Ashta A                       5                 9                7
-Baber H                       5                12                5
-
+>>> column_indicators(directory, 'authors').head()
+                 num_documents  global_citations  local_citations
+authors                                                          
+Rabbani MR                  10                72               33
+Arner DW                     9               154               56
+Tan B                        7               113               63
+Reyes-Mercado P              7                 0                0
+Gozman DP                    7                91               23
 
 
 

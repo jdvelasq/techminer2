@@ -31,19 +31,7 @@ from nltk.stem import PorterStemmer, SnowballStemmer
 def find_string(
     patterns, x, ignore_case=True, full_match=False, use_re=False, explode=True
 ):
-    r"""Find patterns in the elements of a list.
-
-    >>> x = ['aa;b', 'c;d', 'A', 'e', None]
-    >>> find_string('a', x)
-    ['A', 'aa']
-
-    >>> find_string('a', x, ignore_case=False)
-    ['aa']
-
-    >>> find_string('a', x, full_match=True)
-    ['A']
-
-    """
+    r"""Find patterns in the elements of a list."""
     #
     if explode is True:
         x = [z for e in x if isinstance(e, str) for z in e.split(";")]
@@ -70,20 +58,7 @@ def find_string(
 
 
 def stemming_OR(patterns, x, stemmer="porter", explode=True):
-    """
-
-    >>> x = [
-    ...    'Computer vision',
-    ...    'Computer simulation',
-    ...    'computer theory',
-    ...    'control systems',
-    ...    'Computer control systems',
-    ...    'hardware',
-    ... ]
-    >>> stemming_OR('computer software', x)
-    ['Computer control systems', 'Computer simulation', 'Computer vision', 'computer theory']
-
-    """
+    """ """
 
     def prepare(term):
         term = remove_accents(term)
@@ -148,18 +123,7 @@ def steamming(pattern, text, stemmer=""):
 
 
 def steamming_all(pattern, text):
-    """
-
-    Examples
-    ----------------------------------------------------------------------------------------------
-
-    >>> steamming_all('computers cars', 'car computing')
-    True
-
-    >>> steamming_all('computers cars', 'car houses')
-    False
-
-    """
+    """ """
     return all(steamming(pattern, text))
 
 
@@ -169,14 +133,6 @@ def steamming_any(pattern, text):
     Examples
     ----------------------------------------------------------------------------------------------
 
-    >>> steamming_any('computers cars', 'car computing')
-    True
-
-    >>> steamming_any('computers cars', 'computing house')
-    True
-
-    >>> steamming_all('computers cars', 'tree houses')
-    False
 
     """
     return any(steamming(pattern, text))
@@ -226,8 +182,7 @@ def one_gram(x):
     Examples
     ----------------------------------------------------------------------------------------------
 
-    >>> one_gram('neural net')
-    'aelnrtu'
+
 
 
     """
@@ -248,8 +203,6 @@ def two_gram(x):
     Examples
     ----------------------------------------------------------------------------------------------
 
-    >>> two_gram('neural net')
-    'aleteulnneraur'
 
 
     """
@@ -266,9 +219,6 @@ def two_gram(x):
     return "".join(x)
 
 
-
-
-
 def fingerprint(x):
     """Computes 'fingerprint' representation of string x.
 
@@ -283,16 +233,7 @@ def fingerprint(x):
     Examples
     ----------------------------------------------------------------------------------------------
 
-    >>> fingerprint('a A b')
-    'a b'
-    >>> fingerprint('b a a')
-    'a b'
-    >>> fingerprint(None) is None
-    True
-    >>> fingerprint('b c')
-    'b c'
-    >>> fingerprint(' c b ')
-    'b c'
+
 
 
     """
@@ -312,8 +253,7 @@ def remove_accents(text):
     Examples
     ----------------------------------------------------------------------------------------------
 
-    >>> remove_accents('áéíóúñÁÉÍÓÚÑ')
-    'aeiounAEIOUN'
+
 
     """
 

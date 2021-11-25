@@ -5,21 +5,15 @@ Collaboration indicators
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/tests/data/"
 >>> collaboration_indicators(directory, "countries").head()
-                num_documents  single_publication  multiple_publication  \\
-countries                                                                 
-united states             187                 105                    82   
-china                     186                  95                    91   
-united kingdom            148                  68                    80   
-indonesia                  85                  77                     8   
-india                      78                  53                    25   
-.
-                mp_ratio  
-countries                 
-united states       0.44  
-china               0.49  
-united kingdom      0.54  
-indonesia           0.09  
-india               0.32
+                num_documents  ...  mp_ratio
+countries                      ...          
+china                     240  ...      0.47
+united states             239  ...      0.44
+united kingdom            182  ...      0.54
+indonesia                 151  ...      0.07
+india                      88  ...      0.30
+<BLANKLINE>
+[5 rows x 4 columns]
 
 """
 
