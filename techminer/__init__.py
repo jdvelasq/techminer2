@@ -32,11 +32,11 @@ from .coverage import coverage
 from .create_thesaurus import create_thesaurus
 from .cross_corr_matrix import cross_corr_matrix
 from .document_viewer import document_viewer
+from .dotted_timeline_chart import dotted_timeline_chart
 from .extract_user_keywords import extract_user_keywords
 from .factor_matrix import factor_matrix
 from .factorial_analysis_manifold import factorial_analysis_manifold
 from .find_string import find_string
-from .gantt_points_chart import gantt_points_chart
 from .growth_indicators import growth_indicators
 from .heat_map import heat_map
 from .impact_indicators import impact_indicators
