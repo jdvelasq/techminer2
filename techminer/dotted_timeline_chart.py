@@ -77,4 +77,6 @@ def dotted_timeline_chart(annual_occurrence_matrix, color="grey", figsize=(8, 6)
 
     ax.grid(axis="x", color="gray", linestyle=":")
 
+    fig.set_tight_layout(True)
+
     return fig

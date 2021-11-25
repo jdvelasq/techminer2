@@ -6,7 +6,7 @@ Timeline chart
 >>> directory = "/workspaces/techminer-api/tests/data/"
 >>> file_name = "/workspaces/techminer-api/sphinx/images/timeline_chart.png"
 >>> data = annual_occurrence_matrix(directory, 'iso_source_name',  min_occ=10)
->>> timeline_chart(data, color='grey', figsize=(8, 6)).savefig(file_name)
+>>> timeline_chart(data, color='tab:blue', figsize=(8, 6)).savefig(file_name)
 
 .. image:: images/timeline_chart.png
     :width: 700px
@@ -22,7 +22,7 @@ import pandas as pd
 TEXTLEN = 40
 
 
-def timeline_chart(annual_occurrence_matrix, color="grey", figsize=(8, 6)):
+def timeline_chart(annual_occurrence_matrix, color="tab:blue", figsize=(8, 6)):
 
     data = annual_occurrence_matrix.copy()
     column = data.index.name
