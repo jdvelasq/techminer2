@@ -46,6 +46,7 @@ def timeline_chart(annual_occurrence_matrix, color="grey", figsize=(8, 6)):
         y=data.index,
         width=data.width,
         left=data.start,
+        color=color,
         edgecolor="k",
         linewidth=0.5,
         zorder=10,
@@ -53,6 +54,12 @@ def timeline_chart(annual_occurrence_matrix, color="grey", figsize=(8, 6)):
 
     for x in ["top", "right", "bottom"]:
         ax.spines[x].set_visible(False)
+
+    years_range = np.arange(
+        annual_occurrence_matrix.columns.values.min(),
+        annual_occurrence_matrix.columns.values.max() + 1,
+    )
+    ax.set_xticks(years_range)
 
     # ax.tick_params(axis="x", labelrotation=90)
     xticks = [str(int(x)) for x in ax.get_xticks()]
