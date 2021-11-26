@@ -5,7 +5,7 @@ Impact indicators
 
 
 >>> from techminer import *
->>> directory = "/workspaces/techminer-api/tests/data/"
+>>> directory = "/workspaces/techminer-api/data/"
 >>> impact_indicators(directory, "countries").head()
             num_documents  ...  avg_global_citations
 armenia                 1  ...                  1.00
