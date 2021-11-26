@@ -4,7 +4,7 @@ Bradford Law's zones
 
 
 >>> from techminer import *
->>> directory = "/workspaces/techminer-api/tests/data/"
+>>> directory = "/workspaces/techminer-api/data/"
 >>> bradford_zones(directory).head()
                                      iso_source_name  ...    zone
 0                                     SUSTAINABILITY  ...  zone 1
