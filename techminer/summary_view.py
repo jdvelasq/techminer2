@@ -3,7 +3,7 @@ Summary view
 ===============================================================================
 
 >>> from techminer import *
->>> directory = "/workspaces/techminer-api/tests/data/"
+>>> directory = "/workspaces/techminer-api/data/"
 >>> summary_view(directory)
                                                              value
 Category       Item                                               
