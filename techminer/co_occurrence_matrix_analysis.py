@@ -26,7 +26,7 @@ The following capabilities are available:
 >>> from techminer import *
 >>> from sklearn.cluster import KMeans
 >>> from sklearn.manifold import MDS
->>> directory = "/workspaces/techminer-api/tests/data/"
+>>> directory = "/workspaces/techminer-api/data/"
 >>> coc_matrix = co_occurrence_matrix(
 ...     directory, 
 ...     'author_keywords', 
