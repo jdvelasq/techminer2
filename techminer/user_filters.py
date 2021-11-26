@@ -5,7 +5,7 @@ User filters
 Allow users to select docuemnts to be mined.
 
 >>> from techminer import *
->>> directory = "/workspaces/techminer-api/tests/data/"
+>>> directory = "/workspaces/techminer-api/data/"
 >>> user_filters(directory)
 ---< Document >-------------------------------------------------
                First year : 2022
