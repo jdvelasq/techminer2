@@ -3,7 +3,7 @@ Co-occurrence matrix
 ===============================================================================
 
 >>> from techminer import *
->>> directory = "/workspaces/techminer-api/tests/data/"
+>>> directory = "/workspaces/techminer-api/data/"
 >>> co_occurrence_matrix(directory, column='authors', min_occ=6)
 authors                 Rabbani MR Arner DW  ... Surjandy Schwienbacher A
 #d                              10       9   ...       6               6 
