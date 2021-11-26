@@ -5,7 +5,7 @@ Pie chart
 
 
 >>> from techminer import *
->>> directory = "/workspaces/techminer-api/tests/data/"
+>>> directory = "/workspaces/techminer-api/data/"
 >>> pie_chart(series=annual_indicators(directory)['num_documents'], darkness=annual_indicators(directory)['global_citations'])
 
 .. image:: images/pie_chart.png
