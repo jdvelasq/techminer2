@@ -3,7 +3,7 @@ Source growth plot
 ===============================================================================
 
 >>> from techminer import *
->>> directory = "/workspaces/techminer-api/tests/data/"
+>>> directory = "/workspaces/techminer-api/data/"
 >>> source_growth_plot(directory, n_sources=10).savefig("/workspaces/techminer-api/sphinx/images/source_growth_plot.png")
 
 .. image:: images/source_growth_plot.png
