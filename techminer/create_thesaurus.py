@@ -5,7 +5,7 @@ Thesaurus --- create
 
 
 >>> from techminer import *
->>> directory = "/workspaces/techminer-api/tests/data/"
+>>> directory = "/workspaces/techminer-api/data/"
 >>> create_thesaurus(directory, 
 ... column="keywords", 
 ... thesaurus_file="test_thesaurus.txt", 
