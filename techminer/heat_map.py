@@ -3,7 +3,7 @@ Heat map
 ===============================================================================
 
 >>> from techminer import *
->>> directory = "/workspaces/techminer-api/tests/data/"
+>>> directory = "/workspaces/techminer-api/data/"
 >>> coc_matrix = co_occurrence_matrix(directory, 'authors', min_occ=5)
 >>> file_name = "/workspaces/techminer-api/sphinx/images/co_occurrence_heat_map.png"
 >>> heat_map(coc_matrix, cmap='Blues').savefig(file_name)
