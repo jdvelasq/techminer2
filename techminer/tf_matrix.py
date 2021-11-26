@@ -4,7 +4,7 @@ TF matrix
 
 
 >>> from techminer import *
->>> directory = "/workspaces/techminer-api/tests/data/"
+>>> directory = "/workspaces/techminer-api/data/"
 >>> tf_matrix(directory, 'authors', min_occ=6).head()
 authors   Rabbani MR Arner DW Buckley RP  ... Zetzsche D Surjandy Schwienbacher A
 #d                10       9          7   ...         6        6               6 
