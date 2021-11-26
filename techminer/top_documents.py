@@ -3,7 +3,7 @@ Top documents (most cited documents)
 ===============================================================================
 
 >>> from techminer import *
->>> directory = "/workspaces/techminer-api/tests/data/"
+>>> directory = "/workspaces/techminer-api/data/"
 >>> top_documents(directory, n_top=5)
                                      authors  ...  global_citations
 0                         Au YA; Kauffman RJ  ...               250
