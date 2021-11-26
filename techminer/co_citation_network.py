@@ -4,7 +4,7 @@ Co-citation network
 
 
 >>> from techminer import *
->>> directory = "/workspaces/techminer-api/tests/data/"
+>>> directory = "/workspaces/techminer-api/data/"
 >>> co_citation_network(directory)
 
 
