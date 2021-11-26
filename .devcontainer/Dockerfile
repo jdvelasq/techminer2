@@ -60,6 +60,11 @@ RUN pip3 --disable-pip-version-check --no-cache-dir install \
     seaborn==0.11.2 \
     plotly.express 
 
+RUN pip3 --disable-pip-version-check --no-cache-dir install \
+    flask \
+    flask-wtf
+
+
 RUN apt update \
     && apt -yq --no-install-recommends install  graphviz \
     && apt clean \
