@@ -4,7 +4,7 @@ Cross-correlation matrix
 
 
 >>> from techminer import *
->>> directory = "/workspaces/techminer-api/tests/data/"
+>>> directory = "/workspaces/techminer-api/data/"
 >>> cross_corr_matrix(directory, column='authors', min_occ=5, by='countries', min_occ_by=6)
 authors                 Rabbani MR  Arner DW  ... Muthukannan P   Baber H
 #d                              10        9   ...            5         5 
