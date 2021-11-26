@@ -3,7 +3,7 @@ Column indicators by year
 ===============================================================================
 
 >>> from techminer import *
->>> directory = "/workspaces/techminer-api/tests/data/"
+>>> directory = "/workspaces/techminer-api/data/"
 >>> column_indicators_by_year(directory, 'authors').head(10)
              pub_year  num_documents  global_citations  local_citations
 authors                                                                
