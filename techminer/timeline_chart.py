@@ -3,7 +3,7 @@ Timeline chart
 ===============================================================================
 
 >>> from techminer import *
->>> directory = "/workspaces/techminer-api/tests/data/"
+>>> directory = "/workspaces/techminer-api/data/"
 >>> file_name = "/workspaces/techminer-api/sphinx/images/timeline_chart.png"
 >>> data = annual_occurrence_matrix(directory, 'iso_source_name',  min_occ=10)
 >>> timeline_chart(data, color='tab:blue', figsize=(8, 6)).savefig(file_name)
