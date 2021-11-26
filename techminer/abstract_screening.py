@@ -8,7 +8,7 @@ Captures n-words around the keyword.
 
 
 >>> from techminer import *
->>> directory = "/workspaces/techminer-api/tests/data/"
+>>> directory = "/workspaces/techminer-api/data/"
 >>> abstract_screening(directory, text='fintech').head(10)
                                                           text
 2022-0002-3  for the project gamified FINTECH project for e...
