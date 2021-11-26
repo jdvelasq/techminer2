@@ -3,7 +3,7 @@ Annual indicators
 ===============================================================================
 
 >>> from . import annual_indicators
->>> directory = "/workspaces/techminer-api/tests/data/"
+>>> directory = "/workspaces/techminer-api/data/"
 >>> annual_indicators(directory)
           num_documents  ...  cum_local_citations
 pub_year                 ...                     
