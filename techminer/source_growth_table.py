@@ -3,7 +3,7 @@ Source growth table
 ===============================================================================
 
 >>> from techminer import *
->>> directory = "/workspaces/techminer-api/tests/data/"
+>>> directory = "/workspaces/techminer-api/data/"
 >>> source_growth_table(directory, n_sources=5).tail(10)
 iso_source_name  SUSTAINABILITY  ...  LECT NOTES COMPUT SCI
 2013                          0  ...                      0
