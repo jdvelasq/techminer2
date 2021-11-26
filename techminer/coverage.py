@@ -3,7 +3,7 @@ Coverage report
 ===============================================================================
 
 >>> from techminer import *
->>> directory = "/workspaces/techminer-api/tests/data/"
+>>> directory = "/workspaces/techminer-api/data/"
 >>> coverage(directory)
                     column  number of terms coverage (%)
 0                 abstract             1649      100.00%
