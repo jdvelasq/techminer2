@@ -3,7 +3,7 @@ Growth indicators
 ===============================================================================
 
 >>> from techminer import *
->>> directory = "/workspaces/techminer-api/tests/data/"
+>>> directory = "/workspaces/techminer-api/data/"
 >>> growth_indicators(directory, "author_keywords").head()
                       before 2021  ...  average_growth_rate
 fintech                       656  ...               -148.0
