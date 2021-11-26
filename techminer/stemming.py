@@ -15,7 +15,7 @@ Searchs in the terms of a column using stemming
 
 
 >>> from techminer import *
->>> directory = "/workspaces/techminer-api/tests/data/"
+>>> directory = "/workspaces/techminer-api/data/"
 >>> stemming_and(directory, "author_keywords", "intelligence business").head(10)
 6              business intelligence
 648     business intelligence and ai
