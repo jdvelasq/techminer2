@@ -4,7 +4,7 @@ Bradford Law's plot
 
 
 >>> from techminer import *
->>> directory = "/workspaces/techminer-api/tests/data/"
+>>> directory = "/workspaces/techminer-api/data/"
 >>> bradford_plot(directory)
 
 .. image:: images/bradford.png
