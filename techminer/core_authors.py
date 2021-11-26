@@ -3,7 +3,7 @@ Core authors
 ===============================================================================
 
 >>> from techminer import core_authors
->>> directory = "/workspaces/techminer-api/tests/data/"
+>>> directory = "/workspaces/techminer-api/data/"
 >>> core_authors(directory)
    Num Authors        %  ...  Acum Num Documents % Acum Num Documents
 0            1   0.03 %  ...                  10                0.61%
