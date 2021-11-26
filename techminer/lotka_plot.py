@@ -4,7 +4,7 @@ Lotka Law's plot
 
 
 >>> from techminer import *
->>> directory = "/workspaces/techminer-api/tests/data/"
+>>> directory = "/workspaces/techminer-api/data/"
 >>> file_name = "/workspaces/techminer-api/sphinx/images/lotka.png"
 >>> lotka_plot(directory).savefig(file_name)
 
