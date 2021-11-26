@@ -6,7 +6,7 @@ Abstract concordances exploration tool.
 
 
 >>> from techminer import *
->>> directory = "/workspaces/techminer-api/tests/data/"
+>>> directory = "/workspaces/techminer-api/data/"
 >>> abstract_concordances(directory, text='fintech').head(5)
                                                         text
 record_no                                                   
