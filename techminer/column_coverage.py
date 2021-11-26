@@ -5,7 +5,7 @@ Column coverage
 Computes coverage of terms in a column discarding stopwords.
 
 >>> from techminer import *
->>> directory = "/workspaces/techminer-api/tests/data/"
+>>> directory = "/workspaces/techminer-api/data/"
 >>> column_coverage(directory, column="author_keywords").head(10) # doctest: +ELLIPSIS
 20...
 20...
