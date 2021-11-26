@@ -16,7 +16,7 @@ The plot is based on the MDS map for word associations in T-LAB.
 Note: any association index can be used.
 
 >>> from techminer import *
->>> directory = "/workspaces/techminer-api/tests/data/"
+>>> directory = "/workspaces/techminer-api/data/"
 >>> file_name = "/workspaces/techminer-api/sphinx/images/co_word_association_mds_map.png"
 >>> matrix = co_occurrence_matrix(directory, 'author_keywords', min_occ=9)
 >>> co_word_association_mds_map(matrix).savefig(file_name)
