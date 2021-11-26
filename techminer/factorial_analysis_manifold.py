@@ -19,7 +19,7 @@ Based on the bibliometrix/R/conceptualStructure.R code.
 >>> from techminer import *
 >>> from sklearn.cluster import KMeans
 >>> from sklearn.manifold import MDS
->>> directory = "/workspaces/techminer-api/tests/data/"
+>>> directory = "/workspaces/techminer-api/data/"
 >>> coc_matrix = co_occurrence_matrix(directory, 'author_keywords', min_occ=15)
 >>> mainfold_factorial_analysis(coc_matrix, manifold_method=MDS(), clustering_method=KMeans(n_clusters=4)).silhouette_scores_plot()
 
