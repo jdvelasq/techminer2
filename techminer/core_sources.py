@@ -4,7 +4,7 @@ Core sources
 
 
 >>> from techminer import *
->>> directory = "/workspaces/techminer-api/tests/data/"
+>>> directory = "/workspaces/techminer-api/data/"
 >>> core_sources(directory)
     Num Sources        %  ...  Tot Documents Bradford's Group
 0             1   0.13 %  ...          1.7 %                1
