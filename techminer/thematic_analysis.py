@@ -25,7 +25,7 @@ Visualization with n-1 clusters
 
 
 >>> from techminer import *
->>> directory = "/workspaces/techminer-api/tests/data/"
+>>> directory = "/workspaces/techminer-api/data/"
 >>> tfidf_matrix = TfIdfMatrix(directory, 'author_keywords', min_occ=13)
 >>> thematic_analysis(tfidf_matrix, clustering_method=KMeans(n_clusters=6), manifold_method=MDS()).themes_by_words_
 >>> thematic_analysis(tfidf_matrix, clustering_method=KMeans(n_clusters=6), manifold_method=MDS()).map()
