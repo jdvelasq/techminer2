@@ -5,7 +5,7 @@ Find string
 Finds a string in the terms of a column of a document collection.
 
 >>> from techminer import *
->>> directory = "/workspaces/techminer-api/tests/data/"
+>>> directory = "/workspaces/techminer-api/data/"
 >>> find_string(directory, column="author_keywords", contains='fintech').head()
 0                     ai in fintech
 1                       b2b fintech
