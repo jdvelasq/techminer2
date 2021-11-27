@@ -4,22 +4,22 @@ Top documents (most cited documents)
 
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/data/"
->>> top_documents(directory, n_top=5)
+>>> top_documents(n_top=5, directory=directory)
                                      authors  ...  global_citations
-0                         Au YA; Kauffman RJ  ...               250
-1               Aste T; Tasca P; Di Matteo T  ...               233
-2  Gomber P; Kauffman RJ; Parker C; Weber BW  ...               219
-3                           Lee I; Shin YJ/1  ...               210
-4              Gomber P; Koch J-A; Siering M  ...               179
+0  Gomber P; Kauffman RJ; Parker C; Weber BW  ...               220
+1                           Lee I; Shin YJ/1  ...               212
+2              Gomber P; Koch J-A; Siering M  ...               179
+3                          Gabor D; Brooks S  ...               146
+4    Buchak G; Matvos G; Piskorski T; Seru A  ...               125
 <BLANKLINE>
 [5 rows x 8 columns]
 
->>> top_documents(directory, n_top=5).document_id
-0    Au YA et al, 2008, ELECT COMMER RES APPL, V7, ...
-1               Aste T et al, 2017, COMPUTER, V50, P18
-2    Gomber P et al, 2018, J MANAGE INF SYST, V35, ...
-3               Lee I et al, 2018, BUS HORIZ, V61, P35
-4          Gomber P et al, 2017, J BUS ECON, V87, P537
+>>> top_documents(n_top=5, directory=directory).document_id
+0    Gomber P et al, 2018, J MANAGE INF SYST, V35, ...
+1             Lee I et al, 2018, BUS HORIZ, V61, P35.0
+2        Gomber P et al, 2017, J BUS ECON, V87, P537.0
+3     Gabor D et al, 2017, NEW POLIT ECON, V22, P423.0
+4    Buchak G et al, 2018, J FINANC ECON, V130, P453.0
 Name: document_id, dtype: object
 
 """
@@ -32,10 +32,10 @@ from .utils import load_filtered_documents
 
 
 def top_documents(
-    directory,
     global_citations=True,
     normalized_citations=False,
     n_top=50,
+    directory="./",
 ):
     """
     Returns the most cited documents of the given directory or records.
