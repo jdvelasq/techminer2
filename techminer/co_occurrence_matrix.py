@@ -4,30 +4,17 @@ Co-occurrence matrix
 
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/data/"
->>> co_occurrence_matrix(directory, column='authors', min_occ=6)
-authors                 Rabbani MR Arner DW  ... Surjandy Schwienbacher A
-#d                              10       9   ...       6               6 
-#c                             72       154  ...      19              56 
-authors          #d #c                       ...                         
-Rabbani MR       10 72          10        0  ...        0               0
-Arner DW         9  154          0        9  ...        0               0
-Buckley RP       7  151          0        7  ...        0               0
-Tan B            7  113          0        0  ...        0               0
-Reyes-Mercado P  7  0            0        0  ...        0               0
-Gozman DP        7  91           0        0  ...        0               0
-Wojcik D         7  51           0        0  ...        0               0
-Khan S           6  50           6        0  ...        0               0
-Serrano W        6  15           0        0  ...        0               0
-Fernando E       6  19           0        0  ...        6               0
-Wonglimpiyarat J 6  55           0        0  ...        0               0
-Ashta A          6  41           0        0  ...        0               0
-Ozili PK         6  143          0        0  ...        0               0
-Giudici P        6  35           0        0  ...        0               0
-Zetzsche D       6  67           0        5  ...        0               0
-Surjandy         6  19           0        0  ...        6               0
-Schwienbacher A  6  56           0        0  ...        0               6
-<BLANKLINE>
-[17 rows x 17 columns]
+>>> co_occurrence_matrix(column='authors', min_occ=6,directory=directory)
+authors                Rabbani MR Reyes-Mercado P Khan S Arner DW
+#d                              8               7      6        6
+#c                            65              0      52       125
+authors         #d #c                                            
+Rabbani MR      8  65           8               0      6        0
+Reyes-Mercado P 7  0            0               7      0        0
+Khan S          6  52           6               0      6        0
+Arner DW        6  125          0               0      0        6
+
+
 
 """
 import numpy as np
@@ -43,7 +30,6 @@ from .utils import index_terms2counters
 
 
 def co_occurrence_matrix(
-    directory,
     column,
     by=None,
     min_occ=1,
@@ -53,6 +39,7 @@ def co_occurrence_matrix(
     association=None,
     scheme=None,
     sep="; ",
+    directory="./",
 ):
 
     if by is None or column == by:
