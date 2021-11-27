@@ -5,8 +5,8 @@ Bar chart
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/data/"
 >>> file_name = "/workspaces/techminer-api/sphinx/images/bar_chart.png"
->>> series = column_indicators(directory, "countries").num_documents.head(20)
->>> darkness = column_indicators(directory, "countries").global_citations.head(20)
+>>> series = column_indicators("countries", directory=directory).num_documents.head(20)
+>>> darkness = column_indicators("countries",directory=directory).global_citations.head(20)
 >>> title = "Country scientific productivity"
 >>> bar_chart(series, darkness, title=title).savefig(file_name)
 
