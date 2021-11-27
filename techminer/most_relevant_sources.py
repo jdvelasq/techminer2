@@ -4,7 +4,9 @@ Most relevant sources
 
 
 >>> from techminer import *
->>> most_relevant_sources()
+>>> directory = "/workspaces/techminer-api/data/"
+>>> file_name = "/workspaces/techminer-api/sphinx/images/most_relevant_sources.png"
+>>> most_relevant_sources(directory=directory).savefig(file_name)
 
 .. image:: images/most_relevant_sources.png
     :width: 500px
@@ -18,10 +20,10 @@ from .column_indicators import column_indicators
 
 
 def most_relevant_sources(
-    directory=None,
     num_sources=20,
     cmap="Greys",
     figsize=(6, 6),
+    directory="./",
 ):
     sources = column_indicators(directory=directory, column="iso_source_name")[
         "num_documents"
