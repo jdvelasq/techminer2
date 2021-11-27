@@ -7,28 +7,20 @@ Annual indicators
 >>> annual_indicators(directory)
           num_documents  ...  cum_local_citations
 pub_year                 ...                     
-1986                  1  ...                    0
-1998                  1  ...                    0
-2002                  1  ...                    0
-2003                  1  ...                    0
-2008                  1  ...                   12
-2010                  2  ...                   12
-2011                  2  ...                   12
-2013                  2  ...                   12
-2014                  1  ...                   12
-2015                 10  ...                   75
-2016                 33  ...                  367
-2017                 89  ...                 1618
-2018                227  ...                 2830
-2019                272  ...                 3426
-2020                473  ...                 3922
-2021                519  ...                 4104
-2022                 14  ...                 4105
+2015                  6  ...                   39
+2016                 20  ...                  190
+2017                 55  ...                  920
+2018                124  ...                 1549
+2019                122  ...                 1866
+2020                223  ...                 2123
+2021                269  ...                 2233
+2022                  7  ...                 2234
 <BLANKLINE>
-[17 rows x 8 columns]
+[8 rows x 8 columns]
+
 
 >>> from . import line_chart
->>> line_chart(annual_indicators()['num_documents'], title="Annual Scientific Production")
+>>> line_chart(annual_indicators(directory).num_documents, title="Annual Scientific Production")
 <Figure size 600x600 with 1 Axes>
 
 .. image:: images/annual_scientific_production.png
@@ -41,9 +33,7 @@ pub_year                 ...
 from .utils import load_filtered_documents
 
 
-def annual_indicators(directory=None):
-    if directory is None:
-        directory = "/workspaces/techminer-api/tests/data/"
+def annual_indicators(directory="./"):
 
     indicators = load_filtered_documents(directory)
     indicators = indicators.assign(num_documents=1)
@@ -72,9 +62,3 @@ def annual_indicators(directory=None):
     )
 
     return indicators
-
-
-if __name__ == "__main__":
-    import doctest
-
-    doctest.testmod()
