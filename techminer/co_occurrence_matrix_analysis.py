@@ -28,10 +28,10 @@ The following capabilities are available:
 >>> from sklearn.manifold import MDS
 >>> directory = "/workspaces/techminer-api/data/"
 >>> coc_matrix = co_occurrence_matrix(
-...     directory, 
 ...     'author_keywords', 
 ...     min_occ=15, 
 ...     association="equivalence",
+...     directory=directory, 
 ... )
 >>> kmeans=KMeans(n_clusters=5, random_state=1234)
 >>> mds = MDS(random_state=12345)
@@ -43,80 +43,6 @@ The following capabilities are available:
 
 
 >>> analyzer.communities()
-cluster                                   CLUST_0  \
-rn                                                  
-0                   peer-to-peer lending 054:0378   
-1                           crowdfunding 050:0492   
-2                                regtech 037:0241   
-3                               big data 030:0163   
-4                   financial innovation 028:0067   
-5            small and medium enterprise 026:0088   
-6            technology acceptance model 021:0163   
-7                  initial coin offering 020:0244   
-8                        digital finance 019:0362   
-9                     regulatory sandbox 017:0064   
-10                      entrepreneurship 014:0141   
-11               entrepreneurial finance 013:0080   
-12                          credit score 012:0065   
-13                       venture capital 011:0054   
-14                       commercial bank 011:0044   
-15                                   ico 010:0055   
-16       distributed ledger technologies 010:0030   
-17                        sustainability 009:0059   
-18                               lending 009:0141   
-19              financial intermediation 009:0073   
-.
-cluster                          CLUST_1                CLUST_2  \
-rn                                                                
-0                       digital 035:0284  open banking 011:0019   
-1                smart-contract 025:0063          psd2 009:0018   
-2               digital economy 021:0079                          
-3                mobile payment 015:0128                          
-4        digital transformation 014:0055                          
-5                         trust 011:0039                          
-6                    e-commerce 011:0051                          
-7               digital payment 010:0004                          
-8         disruptive innovation 009:0251                          
-.
-cluster                           CLUST_3                    CLUST_4  
-rn                                                                    
-0            financial inclusion 072:0742        blockchain 152:1087  
-1                           bank 065:0363  cryptocurrencies 062:0576  
-2        artificial intelligence 052:0248           bitcoin 039:0236  
-3                     innovation 049:0543          ethereum 010:0024  
-4               machine-learning 040:0138                             
-5              financial service 038:0355                             
-6                     regulation 032:0117                             
-7                        finance 028:0200                             
-8                   technologies 026:0195                             
-9           financial regulation 023:0105                             
-10                  robo-advisor 021:0124                             
-11           financial stability 018:0197                             
-12                  mobile money 017:0065                             
-13                business model 017:0343                             
-14                    securities 016:0072                             
-15         financial institution 016:0376                             
-16                       startup 015:0107                             
-17       internet of thing (iot) 015:0050                             
-18                     insurtech 015:0063                             
-19                 deep learning 015:0116                             
-20                      covid-19 015:0054                             
-21                          risk 014:0063                             
-22                     investing 014:0042                             
-23                       payment 013:0038                             
-24            fintech innovation 013:0054                             
-25            financial literacy 013:0024                             
-26               islamic finance 012:0044                             
-27             bank digitization 012:0067                             
-28                   competition 011:0040                             
-29                  case-studies 011:0183                             
-30                  islamic bank 010:0015                             
-31               emerging market 010:0037                             
-32           technology adoption 009:0078                             
-33                     financial 009:0034                             
-34                     ecosystem 009:0054                             
-35          digital technologies 009:0164                             
-36                      platform 008:0038                             
 
 
 >>> analyzer.network()
