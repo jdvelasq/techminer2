@@ -4,7 +4,8 @@ Source growth plot
 
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/data/"
->>> source_growth_plot(directory, n_sources=10).savefig("/workspaces/techminer-api/sphinx/images/source_growth_plot.png")
+>>> file_name = "/workspaces/techminer-api/sphinx/images/source_growth_plot.png"
+>>> source_growth_plot(10, directory=directory).savefig(file_name)
 
 .. image:: images/source_growth_plot.png
     :width: 700px
@@ -19,9 +20,9 @@ from matplotlib.ticker import AutoMinorLocator
 from .source_growth_table import source_growth_table
 
 
-def source_growth_plot(directory, n_sources=10, figsize=(8, 6)):
+def source_growth_plot(n_sources=10, figsize=(8, 6), directory="./"):
 
-    source_growth = source_growth_table(directory, n_sources=n_sources)
+    source_growth = source_growth_table(n_sources=n_sources, directory=directory)
 
     fig = plt.Figure(figsize=figsize)
     ax = fig.subplots()
