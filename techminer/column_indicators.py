@@ -4,14 +4,14 @@ Column indicators
 
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/data/"
->>> column_indicators(directory, 'authors').head()
+>>> column_indicators('authors',directory=directory).head()
                  num_documents  global_citations  local_citations
 authors                                                          
-Rabbani MR                  10                72               33
-Arner DW                     9               154               56
-Tan B                        7               113               63
+Rabbani MR                   8                65               17
 Reyes-Mercado P              7                 0                0
-Gozman DP                    7                91               23
+Khan S                       6                52               13
+Arner DW                     6               125               34
+Schwienbacher A              5                48               17
 
 
 
@@ -20,7 +20,7 @@ Gozman DP                    7                91               23
 from .utils import load_filtered_documents
 
 
-def column_indicators(directory=None, column="authors", sep="; "):
+def column_indicators(column, sep="; ", directory="./"):
     """
     Counts the number of terms by record.
 
