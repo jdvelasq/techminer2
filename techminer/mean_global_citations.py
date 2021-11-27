@@ -5,16 +5,7 @@ Mean global citations
 
 >>> from techminer import *
 >>> mean_global_citations().table_
-pub_year
-2015     9.222222
-2016    21.357143
-2017    18.767123
-2018    13.643939
-2019     6.606195
-2020     3.282238
-2021     0.783133
-2022     0.000000
-Name: mean_global_citations, dtype: float64
+
 
 >>> mean_global_citations().plot()
 
@@ -77,7 +68,6 @@ class Mean_global_citations:
         return fig
 
 
-def mean_global_citations(directory=None):
-    if directory is None:
-        directory = "/workspaces/techminer-api/tests/data/"
+def mean_global_citations(directory="./"):
+
     return Mean_global_citations(directory)
