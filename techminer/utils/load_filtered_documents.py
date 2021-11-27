@@ -12,9 +12,6 @@ def load_filtered_documents(directory):
     """
     documents = load_all_documents(directory)
 
-    if directory is None:
-        directory = "/workspaces/techminer-api/tests/data/"
-
     # Filter documents
     yaml_filename = os.path.join(directory, "filter.yaml")
     with open(yaml_filename, "r", encoding="utf-8") as yaml_file:
