@@ -18,7 +18,7 @@ Note: any association index can be used.
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/data/"
 >>> file_name = "/workspaces/techminer-api/sphinx/images/co_word_association_mds_map.png"
->>> matrix = co_occurrence_matrix(directory, 'author_keywords', min_occ=9)
+>>> matrix = co_occurrence_matrix('author_keywords', min_occ=9, directory=directory)
 >>> co_word_association_mds_map(matrix).savefig(file_name)
 
 .. image:: images/co_word_association_mds_map.png
