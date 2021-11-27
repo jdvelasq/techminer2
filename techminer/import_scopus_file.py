@@ -5,8 +5,9 @@ Importing Scopus files
 Import a scopus file to a working directory.
 
 >>> from techminer import *
->>> import_scopus_file()
-- INFO - 826 raw records found in ./scopus.csv.
+>>> directory = "/workspaces/techminer-api/data/"
+>>> import_scopus_file(directory)
+- INFO - 826 raw records found in /workspaces/techminer-api/data/scopus.csv.
 - INFO - Main abstract texts saved to ./abstracts.csv
 - INFO - Computing Bradford Law Zones ...
 - INFO - Searching local references using DOI ...
@@ -833,8 +834,8 @@ def _make_documents(scopus, cited_by, references):
 #
 #
 def import_scopus_file(
-    scopus_file="scopus.csv",
     directory="./",
+    scopus_file="scopus.csv",
 ):
     # ---< only scopus >-----------------------------------------------------------------
     # cited_by = _load_raw_data_file(join(directory, "raw_cited_by.csv"))
