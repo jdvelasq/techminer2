@@ -4,7 +4,9 @@ Average citations per year
 
 
 >>> from techminer import *
->>> average_citations_per_year()
+>>> directory = "/workspaces/techminer-api/data/"
+>>> file_name = "/workspaces/techminer-api/sphinx/images/average_citations_per_year.png"
+>>> average_citations_per_year(directory=directory).savefig(file_name)
 
 .. image:: images/average_citations_per_year.png
     :width: 600px
@@ -24,9 +26,9 @@ def _yaxis_format(y_value, y_position):
 
 
 def average_citations_per_year(
-    directory=None,
     figsize=(6, 6),
     color="k",
+    directory="./",
 ):
 
     if directory is None:
