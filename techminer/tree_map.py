@@ -18,7 +18,6 @@ Tree map
 
 import textwrap
 
-import matplotlib
 import matplotlib.pyplot as plt
 import squarify
 
