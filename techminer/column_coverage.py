@@ -6,28 +6,28 @@ Computes coverage of terms in a column discarding stopwords.
 
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/data/"
->>> column_coverage(directory, column="author_keywords").head(10) # doctest: +ELLIPSIS
-20...
-20...
-20...
+>>> column_coverage("author_keywords", directory=directory).head(10)
+- INFO - Number of documents : 826
+- INFO - Documents with NA: 620
+- INFO - Efective documents : 826
    min_occ  cum_sum_documents coverage  cum num items
-0      977                977  59.25 %              1
-1      279               1192  72.29 %              2
-2      164               1206  73.14 %              3
-3       87               1213  73.56 %              4
-4       77               1224  74.23 %              5
-5       72               1230  74.59 %              6
-6       61               1233  74.77 %              7
-7       60               1240  75.20 %              8
-8       57               1244  75.44 %              9
-9       56               1251  75.86 %             10
+0      428                428  51.82 %              1
+1       70                468  56.66 %              2
+2       44                477  57.75 %              3
+3       41                485  58.72 %              4
+4       39                488  59.08 %              5
+5       37                493  59.69 %              6
+6       26                497  60.17 %              7
+7       24                499  60.41 %              8
+8       23                503  60.90 %              9
+9       22                513  62.11 %             11
 
 """
 
 from .utils import load_filtered_documents, load_stopwords, logging
 
 
-def column_coverage(directory, column, sep="; "):
+def column_coverage(column, sep="; ", directory="./"):
 
     stopwords = load_stopwords(directory)
 
