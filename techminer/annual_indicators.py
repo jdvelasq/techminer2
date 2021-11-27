@@ -20,7 +20,7 @@ pub_year                 ...
 
 
 >>> from . import line_chart
->>> line_chart(annual_indicators(directory).num_documents, title="Annual Scientific Production")
+>>> line_chart(annual_indicators(directory=directory).num_documents, title="Annual Scientific Production")
 <Figure size 600x600 with 1 Axes>
 
 .. image:: images/annual_scientific_production.png
