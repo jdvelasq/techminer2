@@ -138,3 +138,5 @@ tests/data/abstracts.csv
 tests/data/documents.csv
 tests/data/---raw_cited_by.csv
 tests/data/---raw_references.csv
+data/abstract_concordantes.txt
+data/abstract_screening.txt
