@@ -4,19 +4,19 @@ Annual occurrence matrix
 
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/data/"
->>> annual_occurrence_matrix(directory, 'authors',  min_occ=3).head(10)
-pub_year       2008  2015  2016  2017  2018  2019  2020  2021  2022
-authors                                                            
-Aas TH            0     0     0     0     0     0     1     2     0
-Abdeldayem MM     0     0     0     0     0     0     2     2     0
-Al Dulaimi SH     0     0     0     0     0     0     2     1     0
-Al-Dmour A        0     0     0     0     0     0     1     2     0
-Al-Dmour H        0     0     0     0     0     0     1     2     0
-Al-Dmour R        0     0     0     0     0     0     1     2     0
-Alaassar A        0     0     0     0     0     0     1     2     0
-Ali MAM           0     0     0     0     0     0     0     3     0
-Almunawar MN      0     0     0     0     0     1     1     1     0
-Anshari M         0     0     0     0     0     1     1     2     0
+>>> annual_occurrence_matrix('authors',  min_occ=3, directory=directory).head(10)
+pub_year    2015  2016  2017  2018  2019  2020  2021
+authors                                             
+Al-Dmour A     0     0     0     0     0     1     2
+Al-Dmour H     0     0     0     0     0     1     2
+Al-Dmour R     0     0     0     0     0     1     2
+Arner DW       0     1     1     1     1     1     1
+Ashta A        0     0     0     2     0     0     2
+Baber H        0     0     0     0     1     3     0
+Barberis J     0     1     1     0     1     0     0
+Buckley RP     0     0     1     1     0     1     1
+Cao L          0     0     0     0     0     2     1
+Cumming DJ     0     0     0     2     0     0     1
 
 
 """
@@ -26,7 +26,7 @@ from .column_indicators import column_indicators
 from .column_indicators_by_year import column_indicators_by_year
 
 
-def annual_occurrence_matrix(directory, column, sep="; ", min_occ=1):
+def annual_occurrence_matrix(column, sep="; ", min_occ=1, directory="./"):
 
     indicators_by_year = column_indicators_by_year(directory, column, sep=sep)
     indicators = column_indicators(directory, column, sep=sep)
