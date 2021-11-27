@@ -5,18 +5,22 @@ Thesaurus --- apply
 
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/data/"
->>> create_thesaurus(directory, 
-... column="keywords", 
-... thesaurus_file="test_thesaurus.txt", 
-... sep="; ")
-2021-11-08 18:50:25 - INFO - Creating thesaurus ...
-2021-11-08 18:50:26 - INFO - Thesaurus file '/workspaces/techminer-api/tests/data/test_thesaurus.txt' created.
->>> apply_thesaurus(directory, 
-... thesaurus_file="keywords.txt", 
-... input_column="author_keywords",
-... output_column="author_keywords_thesaurus", 
-... strict=False)
-2021-11-08 18:51:19 - INFO - The thesaurus file 'keywords.txt' was applied to column 'author_keywords'.
+>>> create_thesaurus( 
+...     column="author_keywords", 
+...     thesaurus_file="test_thesaurus.txt", 
+...     sep="; ",
+...     directory=directory,
+... )
+- INFO - Creating thesaurus ...
+- INFO - Thesaurus file '/workspaces/techminer-api/tests/data/test_thesaurus.txt' created.
+>>> apply_thesaurus(
+...     thesaurus_file="keywords.txt", 
+...     input_column="author_keywords",
+...     output_column="author_keywords_thesaurus", 
+...     strict=False,
+...     directory=directory,
+... )
+- INFO - The thesaurus file 'keywords.txt' was applied to column 'author_keywords'.
 
 
 """
@@ -29,11 +33,11 @@ from .utils import load_filtered_documents, logging, map_
 
 
 def apply_thesaurus(
-    directory,
     thesaurus_file,
     input_column,
     output_column,
     strict,
+    directory="./",
 ):
     def apply_strict(x):
         return thesaurus.apply_as_dict(x, strict=True)
