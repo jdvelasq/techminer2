@@ -6,12 +6,12 @@ Finds a string in the terms of a column of a document collection.
 
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/data/"
->>> find_string(directory, column="author_keywords", contains='fintech').head()
-0                     ai in fintech
-1                       b2b fintech
-2          bank fintech partnership
-3                   banking-fintech
-4    bermuda fintech innovation hub
+>>> find_string("author_keywords", contains='fintech',directory=directory).head()
+0                       b2b fintech
+1          bank fintech partnership
+2                   banking-fintech
+3    bermuda fintech innovation hub
+4             bermuda fintech story
 Name: author_keywords, dtype: object
 
 """
@@ -21,12 +21,12 @@ from .utils import load_filtered_documents
 
 
 def find_string(
-    directory,
     column,
     sep="; ",
     contains=None,
     startswith=None,
     endswith=None,
+    directory="./",
 ):
     """
     Find string in documents
