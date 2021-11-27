@@ -20,6 +20,13 @@ Analysis of bibliographic datasets using Python
     create_thesaurus
     
 
+.. toctree::
+    :caption: Filter
+    :hidden:
+    :maxdepth: 1
+
+    user_filters
+
 
 .. toctree::
     :caption: view and search
@@ -27,57 +34,25 @@ Analysis of bibliographic datasets using Python
     :maxdepth: 1
 
     abstract_screening
+    document_viewer
     extract_user_keywords
-    user_filters
     find_string
     stemming
     abstract_concordances
 
 
 .. toctree::
-    :caption: Data representation
+    :caption: Indicators
     :hidden:
     :maxdepth: 1
 
-    auto_corr_matrix
-    co_occurrence_matrix
-    cross_corr_matrix
-    factor_matrix
-    tf_idf_matrix
-    tf_matrix 
-
-
-
-.. toctree::
-    :caption: Exploratory tools
-    :hidden:
-    :maxdepth: 1
-
-
-    annual_indicators
+    annual_indicators    
     annual_occurrence_matrix
-    annual_scientific_production
-    average_citations_per_year
-    bradford_plot
-    bradford_zones
     collaboration_indicators
-    column_coverage
     column_indicators
     column_indicators_by_year
-    core_authors
-    core_sources
-    coverage
-    document_viewer
-    growth_indicators
     impact_indicators
-    lotka_plot
-    mean_global_citations
-    most_local_cited_sources
-    most_relevant_sources
-    source_growth_plot
-    source_growth_table      
-    summary_view
-    top_documents
+
 
 .. toctree::
     :caption: Basic visualization
@@ -91,27 +66,134 @@ Analysis of bibliographic datasets using Python
     line_chart
     pie_chart
     timeline_chart
-    tree_map
+    tree_map    
     word_cloud
-    world_map
+
 
 .. toctree::
-    :caption: Analytical tools
+    :caption: Co-occurrence Matrix
+    :hidden:
+    :maxdepth: 1
+
+    co_occurrence_matrix
+    co_occurrence_matrix_analysis
+    co_word_association_mds_map
+    svd_co_occurrence_matrix_map
+
+
+.. toctree::
+    :caption: Analysis of the TF Matrix
+    :hidden:
+    :maxdepth: 1
+
+    tf_idf_matrix
+    tf_matrix 
+    svd_tf_idf_matrix_map
+    thematic_analysis
+
+
+.. toctree::
+    :caption: Correlation analysis
+    :hidden:
+    :maxdepth: 1
+
+    auto_corr_matrix
+    cross_corr_matrix
+    correlation_map
+    
+    
+
+.. toctree::
+    :caption: Factor Matrix
+    :hidden:
+    :maxdepth: 1
+
+
+    factor_matrix
+
+
+
+
+.. toctree::
+    :caption: Dataset
+    :hidden:
+    :maxdepth: 1
+
+
+    annual_scientific_production
+    average_citations_per_year
+    column_coverage
+    coverage
+    
+    summary_view
+
+.. toctree::
+    :caption: Documents
     :hidden:
     :maxdepth: 1
 
     
-    co_citation_network
-    co_occurrence_analysis
-    co_occurrence_matrix_analysis
+    mean_global_citations
+    top_documents
+
+    
+
+.. toctree::
+    :caption: Sources
+    :hidden:
+    :maxdepth: 1
+
+    most_relevant_sources    
+    most_local_cited_sources
+    core_sources    
+    bradford_plot
+    bradford_zones
+    source_growth_plot
+    source_growth_table      
+
+
+.. toctree::
+    :caption: Authors
+    :hidden:
+    :maxdepth: 1
+
+    core_authors
+    lotka_plot
+    world_map
+
+
+
+.. toctree::
+    :caption: Conceptual Structure
+    :hidden:
+    :maxdepth: 1
+
     co_occurrence_network_analysis
-    co_word_association_mds_map
-    correlation_map
-    factorial_analysis_manifold.rst
+    factorial_analysis_manifold
+    growth_indicators
+
+
+.. toctree::
+    :caption: Intellectual Structure
+    :hidden:
+    :maxdepth: 1
+
+    co_citation_network
     main_path_network
-    svd_co_occurrence_matrix_map
-    svd_tf_idf_matrix_map
-    thematic_analysis
+
+
+
+.. toctree::
+    :caption: Social Structure
+    :hidden:
+    :maxdepth: 1
+
+
+
+
+
+
+
 
 
 
