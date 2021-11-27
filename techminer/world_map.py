@@ -5,7 +5,7 @@ World map
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/data/"
 >>> file_name = "/workspaces/techminer-api/sphinx/images/world_map.png"
->>> series = column_indicators(directory, "countries").num_documents
+>>> series = column_indicators("countries", directory=directory).num_documents
 >>> world_map(series).savefig(file_name)
  
 .. image:: images/world_map.png
