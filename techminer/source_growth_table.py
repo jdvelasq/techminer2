@@ -4,20 +4,18 @@ Source growth table
 
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/data/"
->>> source_growth_table(directory, n_sources=5).tail(10)
+>>> source_growth_table(5, directory).tail(10)
 iso_source_name  SUSTAINABILITY  ...  LECT NOTES COMPUT SCI
-2013                          0  ...                      0
-2014                          0  ...                      0
 2015                          0  ...                      0
 2016                          0  ...                      0
-2017                          0  ...                      3
-2018                          1  ...                      7
-2019                          7  ...                     10
-2020                         15  ...                     16
-2021                         28  ...                     20
-2022                         28  ...                     20
+2017                          0  ...                      1
+2018                          0  ...                      3
+2019                          4  ...                      5
+2020                         10  ...                      8
+2021                         15  ...                     10
+2022                         15  ...                     10
 <BLANKLINE>
-[10 rows x 5 columns]
+[8 rows x 5 columns]
 
 """
 import numpy as np
@@ -26,11 +24,11 @@ import pandas as pd
 from .column_indicators_by_year import column_indicators_by_year
 
 
-def source_growth_table(directory, n_sources=10):
+def source_growth_table(n_sources=10, directory="./"):
 
-    source_growth = column_indicators_by_year(directory, column="iso_source_name")[
-        ["pub_year", "num_documents"]
-    ]
+    source_growth = column_indicators_by_year(
+        directory=directory, column="iso_source_name"
+    )[["pub_year", "num_documents"]]
     source_growth = source_growth.pivot(columns="pub_year")
     source_growth = source_growth.transpose()
     source_growth.index = source_growth.index.get_level_values(1)
