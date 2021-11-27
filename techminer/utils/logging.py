@@ -14,7 +14,8 @@ def debug(msg):
     :param msg: Warning message.
 
     """
-    print(f"{datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')} - DEBUG - {msg}")
+    # print(f"{datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')} - DEBUG - {msg}")
+    print(f"- DEBUG - {msg}")
 
 
 def info(msg):
@@ -24,7 +25,8 @@ def info(msg):
     :param msg: Info message.
 
     """
-    print(f"{datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')} - INFO - {msg}")
+    # print(f"{datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')} - INFO - {msg}")
+    print(f"- INFO - {msg}")
 
 
 def warning(msg):
@@ -34,6 +36,7 @@ def warning(msg):
     :param msg: Warning message.
 
     """
-    print(
-        f"{datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')} - WARNING - {msg}"
-    )
+    # print(
+    #     f"{datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')} - WARNING - {msg}"
+    # )
+    print(f"- WARNING - {msg}")
