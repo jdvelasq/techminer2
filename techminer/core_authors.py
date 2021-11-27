@@ -5,18 +5,17 @@ Core authors
 >>> from techminer import core_authors
 >>> directory = "/workspaces/techminer-api/data/"
 >>> core_authors(directory)
-   Num Authors        %  ...  Acum Num Documents % Acum Num Documents
-0            1   0.03 %  ...                  10                0.61%
-1            1   0.03 %  ...                  19                1.17%
-2            5   0.13 %  ...                  46                2.83%
-3           10   0.27 %  ...                  89                5.47%
-4           12   0.32 %  ...                 143                8.79%
-5           23   0.62 %  ...                 194               11.92%
-6           79   2.12 %  ...                 337               20.71%
-7          304   8.17 %  ...                 623               38.29%
-8         3288  88.32 %  ...                1627               100.0%
+   Num Authors       %  ...  Acum Num Documents % Acum Num Documents
+0            1  0.05 %  ...                   8                0.99%
+1            1  0.05 %  ...                  15                1.86%
+2            2  0.11 %  ...                  21                 2.6%
+3            6  0.32 %  ...                  46                 5.7%
+4            9  0.49 %  ...                  72                8.92%
+5           36  1.95 %  ...                 133               16.48%
+6          128  6.92 %  ...                 265               32.84%
+7         1666  90.1 %  ...                 807               100.0%
 <BLANKLINE>
-[9 rows x 9 columns]
+[8 rows x 9 columns]
 
 """
 
@@ -26,7 +25,7 @@ from .column_indicators import column_indicators
 from .utils import *
 
 
-def core_authors(directory):
+def core_authors(directory="./"):
     """
     Returns a dataframe with the core analysis.
 
