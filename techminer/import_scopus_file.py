@@ -5,46 +5,33 @@ Importing Scopus files
 Import a scopus file to a working directory.
 
 >>> from techminer import *
->>> directory = "/workspaces/techminer-api/data/"
->>> file_name = directory + "scopus.csv"
->>> import_scopus_file(file_name, directory)
-2021-11-08 18:19:55 - INFO - Reading file '/workspaces/techminer-api/tests/data/scopus.csv' ...
-b'Skipping line 1122: expected 50 fields, saw 51\nSkipping line 1123: expected 50 fields, saw 51\nSkipping line 1124: expected 50 fields, saw 51\nSkipping line 1125: expected 50 fields, saw 51\nSkipping line 1126: expected 50 fields, saw 51\nSkipping line 1127: expected 50 fields, saw 51\nSkipping line 1128: expected 50 fields, saw 51\nSkipping line 1129: expected 50 fields, saw 51\nSkipping line 1130: expected 50 fields, saw 51\nSkipping line 1131: expected 50 fields, saw 51\nSkipping line 1132: expected 50 fields, saw 51\nSkipping line 1133: expected 50 fields, saw 51\nSkipping line 1134: expected 50 fields, saw 51\nSkipping line 1135: expected 50 fields, saw 51\nSkipping line 1136: expected 50 fields, saw 51\nSkipping line 1137: expected 50 fields, saw 51\nSkipping line 1138: expected 50 fields, saw 51\nSkipping line 1139: expected 50 fields, saw 51\nSkipping line 1140: expected 50 fields, saw 51\nSkipping line 1141: expected 50 fields, saw 51\nSkipping line 1142: expected 50 fields, saw 51\nSkipping line 1143: expected 50 fields, saw 51\nSkipping line 1144: expected 50 fields, saw 51\nSkipping line 1145: expected 50 fields, saw 51\nSkipping line 1146: expected 50 fields, saw 51\nSkipping line 1147: expected 50 fields, saw 51\nSkipping line 1148: expected 50 fields, saw 51\nSkipping line 1149: expected 50 fields, saw 51\nSkipping line 1150: expected 50 fields, saw 51\nSkipping line 1151: expected 50 fields, saw 51\nSkipping line 1152: expected 50 fields, saw 51\nSkipping line 1153: expected 50 fields, saw 51\nSkipping line 1154: expected 50 fields, saw 51\nSkipping line 1155: expected 50 fields, saw 51\nSkipping line 1156: expected 50 fields, saw 51\nSkipping line 1157: expected 50 fields, saw 51\nSkipping line 1158: expected 50 fields, saw 51\nSkipping line 1159: expected 50 fields, saw 51\nSkipping line 1160: expected 50 fields, saw 51\nSkipping line 1161: expected 50 fields, saw 51\nSkipping line 1162: expected 50 fields, saw 51\nSkipping line 1163: expected 50 fields, saw 51\nSkipping line 1164: expected 50 fields, saw 51\nSkipping line 1165: expected 50 fields, saw 51\nSkipping line 1166: expected 50 fields, saw 51\nSkipping line 1167: expected 50 fields, saw 51\nSkipping line 1168: expected 50 fields, saw 51\nSkipping line 1169: expected 50 fields, saw 51\nSkipping line 1170: expected 50 fields, saw 51\nSkipping line 1171: expected 50 fields, saw 51\nSkipping line 1172: expected 50 fields, saw 51\nSkipping line 1173: expected 50 fields, saw 51\nSkipping line 1174: expected 50 fields, saw 51\nSkipping line 1175: expected 50 fields, saw 51\nSkipping line 1176: expected 50 fields, saw 51\nSkipping line 1177: expected 50 fields, saw 51\nSkipping line 1178: expected 50 fields, saw 51\nSkipping line 1179: expected 50 fields, saw 51\nSkipping line 1180: expected 50 fields, saw 51\nSkipping line 1181: expected 50 fields, saw 51\nSkipping line 1182: expected 50 fields, saw 51\nSkipping line 1183: expected 50 fields, saw 51\nSkipping line 1184: expected 50 fields, saw 51\nSkipping line 1185: expected 50 fields, saw 51\nSkipping line 1186: expected 50 fields, saw 51\nSkipping line 1187: expected 50 fields, saw 51\nSkipping line 1188: expected 50 fields, saw 51\nSkipping line 1189: expected 50 fields, saw 51\nSkipping line 1190: expected 50 fields, saw 51\nSkipping line 1191: expected 50 fields, saw 51\nSkipping line 1192: expected 50 fields, saw 51\nSkipping line 1193: expected 50 fields, saw 51\nSkipping line 1194: expected 50 fields, saw 51\nSkipping line 1195: expected 50 fields, saw 51\nSkipping line 1196: expected 50 fields, saw 51\nSkipping line 1197: expected 50 fields, saw 51\nSkipping line 1198: expected 50 fields, saw 51\nSkipping line 1199: expected 50 fields, saw 51\nSkipping line 1200: expected 50 fields, saw 51\nSkipping line 1201: expected 50 fields, saw 51\n'
-2021-11-08 18:19:55 - INFO - 1301 raw records found.
-2021-11-08 18:19:55 - INFO - Deleting/renaming columns ...
-2021-11-08 18:19:55 - INFO - Removing accents ...
-2021-11-08 18:19:55 - INFO - Processing abstracts ...
-2021-11-08 18:19:55 - INFO - Processing affiliations ...
-2021-11-08 18:19:59 - INFO - Processing author keywords ...
-2021-11-08 18:19:59 - INFO - Processing authors_id ...
-2021-11-08 18:19:59 - INFO - Formating raw authors names ...
-2021-11-08 18:19:59 - INFO - Dropping duplicates ...
-2021-11-08 18:19:59 - INFO - Duplicate rows found in /workspaces/techminer-api/tests/data/documents.csv - Records saved to {filename}
-2021-11-08 18:19:59 - INFO - Searching local references using DOI ...
-100%|██████████| 1301/1301 [00:16<00:00, 78.98it/s] 
-2021-11-08 18:20:15 - INFO - Searching local references using document titles ...
-100%|██████████| 1301/1301 [00:17<00:00, 75.66it/s]
-2021-11-08 18:20:33 - INFO - Consolidating local references ...
-2021-11-08 18:20:33 - INFO - Computing local citations ...
-2021-11-08 18:20:33 - INFO - Computing Bradford Law Zones ...
-2021-11-08 18:20:34 - INFO - Documents saved/merged to '/workspaces/techminer-api/tests/data/documents.csv'
-2021-11-08 18:20:34 - INFO - Post-processing docuemnts ...
-2021-11-08 18:20:34 - INFO - Creating institutions thesaurus ...
-2021-11-08 18:20:37 - INFO - Affiliations without country detected - check file /workspaces/techminer-api/tests/data/ignored_affiliations.txt
-2021-11-08 18:20:38 - INFO - Affiliations without country detected - check file /workspaces/techminer-api/tests/data/ignored_affiliations.txt
-2021-11-08 18:20:38 - INFO - Thesaurus file '/workspaces/techminer-api/tests/data/institutions.txt' created.
-2021-11-08 18:20:38 - INFO - Creating keywords thesaurus ...
-2021-11-08 18:20:40 - INFO - Thesaurus file '/workspaces/techminer-api/tests/data/keywords.txt' created.
-2021-11-08 18:20:40 - INFO - Applying thesaurus to institutions ...
-2021-11-08 18:20:40 - INFO - Extract and cleaning institutions.
-2021-11-08 18:20:40 - INFO - Extracting institution of first author ...
-2021-11-08 18:20:41 - INFO - The thesaurus was applied to institutions.
-2021-11-08 18:20:42 - INFO - Applying thesaurus to 'author_keywords' column ...
-2021-11-08 18:20:42 - INFO - Applying thesaurus to 'index_keywords' column...
-2021-11-08 18:20:42 - INFO - Applying thesaurus to 'keywords' column...
-2021-11-08 18:20:43 - INFO - The thesaurus was applied to keywords.
-2021-11-08 18:20:43 - INFO - Process finished!!!
-
+>>> import_scopus_file()
+- INFO - 826 raw records found in ./scopus.csv.
+- INFO - Main abstract texts saved to ./abstracts.csv
+- INFO - Computing Bradford Law Zones ...
+- INFO - Searching local references using DOI ...
+100%|██████████| 826/826 [00:04<00:00, 172.23it/s]
+- INFO - Searching local references using document titles ...
+100%|██████████| 826/826 [00:05<00:00, 153.72it/s]
+- INFO - Consolidating local references ...
+- INFO - Computing local citations ...
+- INFO - Computing Bradford Law Zones ...
+- INFO - Documents saved/merged to './documents.csv'
+- INFO - Post-processing docuemnts ...
+- INFO - Creating institutions thesaurus ...
+- INFO - Affiliations without country detected - check file ./ignored_affiliations.txt
+- INFO - Affiliations without country detected - check file ./ignored_affiliations.txt
+- INFO - Thesaurus file './institutions.txt' created.
+- INFO - Creating keywords thesaurus ...
+- INFO - Thesaurus file './keywords.txt' created.
+- INFO - Applying thesaurus to institutions ...
+- INFO - Extract and cleaning institutions.
+- INFO - Extracting institution of first author ...
+- INFO - The thesaurus was applied to institutions.
+- INFO - Applying thesaurus to 'raw_author_keywords' column ...
+- INFO - Applying thesaurus to 'raw_index_keywords' column...
+- INFO - The thesaurus was applied to all keywords.
+- INFO - Process finished!!!
 
 """
 
@@ -57,8 +44,8 @@ b'Skipping line 1122: expected 50 fields, saw 51\nSkipping line 1123: expected 5
 # pylint: disable=missing-function-docstring
 # pylint: disable=consider-using-with
 
-from os import mkdir
-from os.path import dirname, isdir, isfile, join
+
+from os.path import dirname, isfile, join
 
 import numpy as np
 import pandas as pd
@@ -73,12 +60,6 @@ from .text import (
     extract_country,
 )
 from .utils import logging, map_
-
-# from .clean_keywords import clean_keywords
-# from .create_institutions_thesaurus import create_institutions_thesaurus
-# from .create_keywords_thesaurus import create_keywords_thesaurus
-# from .utils import logging, map_
-# from .utils.extract_country import extract_country as extract_country_name
 
 # -----< Dataset Trasformations >----------------------------------------------
 
@@ -784,7 +765,7 @@ def _create_cited_references_csv(documents, directory):
         logging.info(f"Cited references saved to {file_name}")
 
 
-def load_raw_data_file(file_name):
+def _load_raw_data_file(file_name):
     if not isfile(file_name):
         raise FileNotFoundError(f"File {file_name} not found")
     pdf = pd.read_csv(
@@ -797,7 +778,7 @@ def load_raw_data_file(file_name):
     return pdf
 
 
-def make_documents(scopus, cited_by, references):
+def _make_documents(scopus, cited_by, references):
 
     links_scopus = scopus.Link.copy()
     links_cited_by = cited_by.Link.copy()
@@ -852,24 +833,17 @@ def make_documents(scopus, cited_by, references):
 #
 #
 def import_scopus_file(
-    directory=None,
-    scopus_file=None,
+    scopus_file="scopus.csv",
+    directory="./",
 ):
-    # -----------------------------------------------------------------------------------
-    if directory is None and scopus_file is None:
-        directory = "/workspaces/techminer-api/tests/data/"
-        scopus_file = "scopus.csv"
-        logging.info(" **** USING SAMPLE COLLECTION ****")
-
     # ---< only scopus >-----------------------------------------------------------------
-    # cited_by = load_raw_data_file(join(directory, "raw_cited_by.csv"))
-    # references = load_raw_data_file(join(directory, "raw_references.csv"))
-    # documents = make_documents(scopus, cited_by, references)
+    # cited_by = _load_raw_data_file(join(directory, "raw_cited_by.csv"))
+    # references = _load_raw_data_file(join(directory, "raw_references.csv"))
+    # documents = _make_documents(scopus, cited_by, references)
     # -----------------------------------------------------------------------------------
+    documents = _load_raw_data_file(join(directory, scopus_file))
     stopwords_file = join(directory, "stopwords.txt")
     open(stopwords_file, "a", encoding="utf-8").close()
-    # -----------------------------------------------------------------------------------
-    documents = load_raw_data_file(join(directory, scopus_file))
     # -----------------------------------------------------------------------------------
     documents = _delete_and_rename_columns(documents)
     documents = _process_abstract_column(documents)
