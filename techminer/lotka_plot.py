@@ -6,7 +6,7 @@ Lotka Law's plot
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/data/"
 >>> file_name = "/workspaces/techminer-api/sphinx/images/lotka.png"
->>> lotka_plot(directory).savefig(file_name)
+>>> lotka_plot(directory=directory).savefig(file_name)
 
 .. image:: images/lotka.png
     :width: 600px
@@ -14,16 +14,16 @@ Lotka Law's plot
 
 """
 
-import matplotlib
+
 import matplotlib.pyplot as plt
 
 from .core_authors import core_authors
 
 
 def lotka_plot(
-    directory=None,
     cmap="Greys",
     figsize=(6, 6),
+    directory="./",
 ):
     """
     Returns a dataframe with the core analysis.
