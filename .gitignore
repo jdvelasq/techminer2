@@ -140,3 +140,10 @@ tests/data/---raw_cited_by.csv
 tests/data/---raw_references.csv
 data/abstract_concordantes.txt
 data/abstract_screening.txt
+data/abstracts.csv
+data/documents.csv
+data/filter.yaml
+data/ignored_affiliations.txt
+data/institutions.txt
+data/keywords.txt
+data/stopwords.txt
