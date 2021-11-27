@@ -2,23 +2,8 @@ import os
 
 import pandas as pd
 
-from . import logging
-
 
 def load_all_documents(directory):
-
-    if directory is None:
-        logging.info(
-            "*  --------------------------------------------------------------------------------"
-        )
-        logging.info("*  Argument `directory` is **None**. ")
-        logging.info(
-            "*  Loading test data from DEBUG directory /workspaces/techminer-api/tests/data/"
-        )
-        logging.info(
-            "*  --------------------------------------------------------------------------------"
-        )
-        directory = "/workspaces/techminer-api/tests/data/"
 
     filename = os.path.join(directory, "documents.csv")
     if not os.path.isfile(filename):
