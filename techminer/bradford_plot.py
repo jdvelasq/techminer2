@@ -5,10 +5,10 @@ Bradford Law's plot
 
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/data/"
->>> bradford_plot(directory)
+>>> bradford_plot(directory=directory).savefig("/workspaces/techminer-api/sphinx/images/bradford_plot.png")
 
 .. image:: images/bradford.png
-    :width: 400px
+    :width: 600px
     :align: center
 
 """
@@ -124,11 +124,11 @@ def _prepare_table(documents):
 
 
 def bradford_plot(
-    directory=None,
     max_items=5,
     cmap="Greys",
     figsize=(8, 6),
     fontsize=11,
+    directory="./",
 ):
     documents = load_filtered_documents(directory)
 
