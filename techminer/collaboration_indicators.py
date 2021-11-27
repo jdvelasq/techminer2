@@ -4,14 +4,14 @@ Collaboration indicators
 
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/data/"
->>> collaboration_indicators(directory, "countries").head()
+>>> collaboration_indicators("countries", directory=directory).head()
                 num_documents  ...  mp_ratio
 countries                      ...          
-china                     240  ...      0.47
-united states             239  ...      0.44
-united kingdom            182  ...      0.54
-indonesia                 151  ...      0.07
-india                      88  ...      0.30
+china                     123  ...      0.49
+united states             119  ...      0.46
+united kingdom             91  ...      0.56
+indonesia                  54  ...      0.09
+australia                  52  ...      0.62
 <BLANKLINE>
 [5 rows x 4 columns]
 
@@ -25,9 +25,9 @@ from .utils import explode, load_filtered_documents
 
 
 def collaboration_indicators(
-    directory,
     column,
     sep="; ",
+    directory="./",
 ):
     documents = load_filtered_documents(directory)
     documents = documents.assign(num_documents=1)
