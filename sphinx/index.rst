@@ -108,7 +108,6 @@ Analysis of bibliographic datasets using Python
     :hidden:
     :maxdepth: 1
 
-
     factor_matrix
 
 
@@ -119,12 +118,10 @@ Analysis of bibliographic datasets using Python
     :hidden:
     :maxdepth: 1
 
-
     annual_scientific_production
     average_citations_per_year
     column_coverage
     coverage
-    
     summary_view
 
 .. toctree::
@@ -132,7 +129,6 @@ Analysis of bibliographic datasets using Python
     :hidden:
     :maxdepth: 1
 
-    
     mean_global_citations
     top_documents
 
