@@ -40,6 +40,7 @@ from .find_string import find_string
 from .growth_indicators import growth_indicators
 from .heat_map import heat_map
 from .impact_indicators import impact_indicators
+from .import_references import import_references
 from .import_scopus_file import import_scopus_file
 from .line_chart import line_chart
 from .lotka_plot import lotka_plot
