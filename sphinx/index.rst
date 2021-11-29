@@ -42,6 +42,19 @@ Analysis of bibliographic datasets using Python
 
 
 .. toctree::
+    :caption: Dataset
+    :hidden:
+    :maxdepth: 1
+
+    annual_scientific_production
+    average_citations_per_year
+    column_coverage
+    coverage
+    summary_view
+
+    
+
+.. toctree::
     :caption: Indicators
     :hidden:
     :maxdepth: 1
@@ -113,16 +126,7 @@ Analysis of bibliographic datasets using Python
 
 
 
-.. toctree::
-    :caption: Dataset
-    :hidden:
-    :maxdepth: 1
 
-    annual_scientific_production
-    average_citations_per_year
-    column_coverage
-    coverage
-    summary_view
 
 .. toctree::
     :caption: Documents
