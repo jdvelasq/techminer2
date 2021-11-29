@@ -7,13 +7,13 @@ Import a scopus file to a working directory.
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/data/"
 >>> import_scopus_file(directory)
-- INFO - 826 raw records found in /workspaces/techminer-api/data/scopus.csv.
+- INFO - 248 raw records found in ./raw-documents.csv.
 - INFO - Main abstract texts saved to ./abstracts.csv
 - INFO - Computing Bradford Law Zones ...
 - INFO - Searching local references using DOI ...
-100%|██████████| 826/826 [00:04<00:00, 172.23it/s]
+100%|██████████| 248/248 [00:00<00:00, 381.57it/s]
 - INFO - Searching local references using document titles ...
-100%|██████████| 826/826 [00:05<00:00, 153.72it/s]
+100%|██████████| 248/248 [00:00<00:00, 411.94it/s]
 - INFO - Consolidating local references ...
 - INFO - Computing local citations ...
 - INFO - Computing Bradford Law Zones ...
@@ -51,6 +51,7 @@ from os.path import dirname, isfile, join
 import numpy as np
 import pandas as pd
 import yaml
+from nltk.tokenize import sent_tokenize
 from tqdm import tqdm
 
 from .clean_institutions import clean_institutions
@@ -253,16 +254,25 @@ def _search_for_new_iso_source_name(documents):
             lambda x: x.replace(".", "") if not pd.isna(x) else x
         )
         current_iso_names = documents[["source_name", "iso_source_name"]].copy()
-        current_iso_names = current_iso_names.drop_duplicates()
+        current_iso_names = current_iso_names.assign(
+            source_name=current_iso_names.source_name.str.strip()
+        )
+        current_iso_names = current_iso_names.assign(
+            iso_source_name=current_iso_names.iso_source_name.str.strip()
+        )
         current_iso_names = current_iso_names.dropna()
+        currnet_iso_names = current_iso_names.sort_values(
+            by=["source_name", "iso_source_name"]
+        )
+        current_iso_names = current_iso_names.drop_duplicates("source_name")
 
         # adds the abbreviations the the current file
         module_path = dirname(__file__)
         file_path = join(module_path, "files/iso_source_names.csv")
         pdf = pd.read_csv(file_path, sep=",")
         pdf = pd.concat([pdf, current_iso_names])
-        pdf = pdf.drop_duplicates()
-        pdf = pdf.sort_values(by=["source_name"])
+        pdf = pdf.sort_values(by=["source_name", "iso_source_name"])
+        pdf = pdf.drop_duplicates("source_name")
         pdf.to_csv(file_path, index=False)
     return documents
 
@@ -642,13 +652,14 @@ def _create_abstracts_csv(documents, directory):
         abstracts = documents[["record_no", "abstract"]].copy()
         abstracts = abstracts.rename(columns={"abstract": "text"})
         abstracts = abstracts.dropna()
-        abstracts = abstracts.assign(
-            text=abstracts.text.str.replace(". ", "|", regex=False)
-        )
-        abstracts = abstracts.assign(
-            text=abstracts.text.str.replace("; ", "|", regex=False)
-        )
-        abstracts = abstracts.assign(text=abstracts.text.str.split("|"))
+        abstracts = abstracts.assign(text=abstracts.text.map(sent_tokenize))
+        # abstracts = abstracts.assign(
+        #     text=abstracts.text.str.replace(". ", "|", regex=False)
+        # )
+        # abstracts = abstracts.assign(
+        #     text=abstracts.text.str.replace("; ", "|", regex=False)
+        # )
+        # abstracts = abstracts.assign(text=abstracts.text.str.split("|"))
         abstracts = abstracts.explode("text")
         abstracts = abstracts.assign(text=abstracts.text.str.strip())
         abstracts = abstracts[abstracts.text.str.len() > 0]
