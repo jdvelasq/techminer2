@@ -4,7 +4,9 @@ Most local cited sources
 
 
 >>> from techminer import *
->>> most_relevant_sources()
+>>> directory = "/workspaces/techminer-api/data/"
+>>> file_name = "/workspaces/techminer-api/sphinx/images/most_local_cited_sources.png"
+>>> most_local_cited_sources(directory=directory).savefig(file_name)
 
 .. image:: images/most_local_cited_sources.png
     :width: 500px
@@ -12,21 +14,28 @@ Most local cited sources
 
 
 """
+from os.path import join
+
 import matplotlib.pyplot as plt
+import pandas as pd
 
 from .column_indicators import column_indicators
 
 
 def most_local_cited_sources(
-    directory=None,
     num_sources=20,
     cmap="Greys",
     figsize=(6, 6),
+    directory="./",
 ):
-    sources = column_indicators(directory=directory, column="iso_source_name")[
-        "local_citations"
-    ]
-    sources = sources.sort_values(ascending=False).head(num_sources)
+
+    references = pd.read_csv(
+        join(directory, "references.csv"), sep=",", encoding="utf-8"
+    )
+    references = references[["iso_source_name", "local_citations"]]
+    references = references.groupby("iso_source_name").sum()
+    references = references.sort_values(by="local_citations", ascending=False)
+    sources = references.local_citations.head(num_sources)
 
     cmap = plt.cm.get_cmap(cmap)
     color = [
