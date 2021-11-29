@@ -7,47 +7,46 @@ Summary view
 >>> summary_view(directory)
                                                              value
 Category       Item                                               
-GENERAL        Documents:                                      826
-               Years:                                    2015-2022
-               Compound annual growth rate:                85.08 %
-               Current years from publication:                1.44
-               Average citations per document:                6.98
-               Average citations per document per year:       0.87
-               Sources:                                        465
+GENERAL        Documents:                                      248
+               Years:                                    2016-2021
+               Compound annual growth rate:                91.68 %
+               Current years from publication:                1.23
+               Average citations per document:                9.36
+               Average citations per document per year:       1.56
+               Sources:                                        145
                Average documents per source:                     2
-DOCUMENT TYPES article:                                        469
-               book:                                            19
-               book_chapter:                                    81
-               conference_paper:                               177
-               editorial:                                       22
+DOCUMENT TYPES article:                                        178
+               book:                                             1
+               book_chapter:                                     4
+               conference_paper:                                31
+               editorial:                                       10
                erratum:                                          3
-               letter:                                           1
-               note:                                             4
-               review:                                          48
-               short_survey:                                     2
-AUTHORS        Authors:                                       1849
-               Author appearances:                            2123
-               Documents per author:                          0.45
-               Authors per document:                          2.24
-               Single-authored documents:                      215
-               Multi-authored documents:                       593
-               Co-authors per document:                       2.57
-               Collaboration index:                           2.84
-               Institutions:                                   924
-               Institutions (1st author):                      539
-               Countries:                                       83
-               Countries (1st author):                          73
-KEYWORDS       Raw author keywords:                           1736
-               Cleaned author keywords:                       1607
-               Raw index keywords:                            1796
-               Cleaned index keywords:                        1743
-OTHERS         document_id                                     817
-               iso_source_name                                 457
-               num_global_references                           148
-               page_start                                      397
-               pubmed_id                                         5
-               raw_authors_names                              1792
-               volume                                          184
+               note:                                             1
+               review:                                          19
+               short_survey:                                     1
+AUTHORS        Authors:                                        639
+               Author appearances:                             682
+               Documents per author:                          0.39
+               Authors per document:                          2.58
+               Single-authored documents:                       54
+               Multi-authored documents:                       192
+               Co-authors per document:                       2.75
+               Collaboration index:                            3.1
+               Institutions:                                   382
+               Institutions (1st author):                      200
+               Countries:                                       70
+               Countries (1st author):                          53
+KEYWORDS       Raw author keywords:                            709
+               Cleaned author keywords:                        666
+               Raw index keywords:                             607
+               Cleaned index keywords:                         594
+OTHERS         document_id                                     248
+               iso_source_name                                 145
+               num_global_references                           108
+               page_start                                      123
+               pubmed_id                                         4
+               raw_authors_names                               635
+               volume                                           80
 
 
 """
