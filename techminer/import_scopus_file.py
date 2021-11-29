@@ -669,103 +669,6 @@ def _create_abstracts_csv(documents, directory):
         logging.info(f"Main abstract texts saved to {file_name}")
 
 
-def _create_references_file(documents, directory):
-
-    logging.info("Creating references file")
-
-    # builds a table with:
-    #   record_no  raw_reference
-    #   ------------------------------------------------
-    references = documents[["record_no", "global_references"]].copy()
-    references = references.rename(columns={"global_references": "raw_reference"})
-    references = references.dropna()
-    references = references.assign(
-        raw_reference=references.raw_reference.str.split(";")
-    )
-    references = references.explode("raw_reference")
-    references = references.assign(raw_reference=references.raw_reference.str.strip())
-    references = references.assign(raw_reference=references.raw_reference.str.lower())
-
-    # -------------------------------------------------------------------------
-    # optimized for speed
-    # raw references and list of citting documents:
-    references = references.groupby(["raw_reference"], as_index=False).agg(list)
-    references = references.assign(reference_wos_id=np.nan)
-
-    # only it is of interest the main collection
-    main_documents = documents[documents["main_group"]].copy()
-
-    with tqdm(total=len(main_documents)) as pbar:
-        for index, row in main_documents.iterrows():
-            references.loc[
-                references.raw_reference.str.contains(
-                    row["document_title"].lower(), regex=False
-                )
-                & references.raw_reference.str.contains(str(row["pub_year"]))
-                & references.raw_reference.str.contains(
-                    row["document_id"].split()[0].lower()
-                ),
-                "cited_id",
-            ] = row["record_no"]
-            pbar.update(1)
-
-            if index > 50:
-                break
-
-    references = references.dropna()
-    # -------------------------------------------------------------------------
-    with open(
-        join(directory, "debug_references.txt"), "wt", encoding="utf-8"
-    ) as out_file:
-        for _, row in references.iterrows():
-            print(row["raw_reference"], file=out_file)
-            print(
-                "   ",
-                main_documents[main_documents.record_no == row["cited_id"]].document_id,
-                file=out_file,
-            )
-
-    # -------------------------------------------------------------------------
-    references = references.explode("record_no")
-    references = references[["record_no", "cited_id"]].copy()
-    references = references.rename(columns={"record_no": "citing_id"})
-    references = references.reset_index(drop=True)
-    references = references.dropna()
-    references_file = join(directory, "references.csv")
-    references.to_csv(references_file, index=False)
-    logging.info(f"References saved to {references_file}")
-
-
-def _create_cited_references_csv(documents, directory):
-
-    if "global_references" in documents.columns:
-
-        # split references
-        cited_references = documents[["fdocument_id", "global_references"]].copy()
-        cited_references = cited_references.rename(
-            columns={"global_references": "raw_reference"}
-        )
-        cited_references = cited_references.dropna()
-        cited_references = cited_references.assign(
-            raw_reference=cited_references.raw_reference.str.split(";")
-        )
-        cited_references = cited_references.explode("raw_reference")
-        cited_references = cited_references.assign(
-            raw_reference=cited_references.raw_reference.str.strip()
-        )
-        cited_references = cited_references.assign(
-            ref_no=cited_references.groupby(["record_no"]).cumcount()
-        )
-
-        cited_references = cited_references[["record_no", "ref_no", "raw_reference"]]
-
-        # save to disk
-        file_name = join(directory, "cited_references.csv")
-        cited_references.to_csv(file_name, index=False)
-
-        logging.info(f"Cited references saved to {file_name}")
-
-
 def _load_raw_data_file(file_name):
     if not isfile(file_name):
         raise FileNotFoundError(f"File {file_name} not found")
@@ -835,7 +738,7 @@ def _make_documents(scopus, cited_by, references):
 #
 def import_scopus_file(
     directory="./",
-    scopus_file="scopus.csv",
+    scopus_file="raw-documents.csv",
 ):
     # ---< only scopus >-----------------------------------------------------------------
     # cited_by = _load_raw_data_file(join(directory, "raw_cited_by.csv"))
