@@ -1,0 +1,207 @@
+"""
+Import references file
+===============================================================================
+
+Import a 'cited by' scopus file with references.
+
+
+
+"""
+from os.path import dirname, isfile, join
+
+import numpy as np
+import pandas as pd
+from tqdm import tqdm
+
+from .import_scopus_file import (
+    _complete_iso_source_name_colum,
+    _create_document_id,
+    _create_record_no,
+    _delete_and_rename_columns,
+    _disambiguate_authors,
+    _load_raw_data_file,
+    _process_authors_id_column,
+    _process_doi_column,
+    _process_iso_source_name_column,
+    _process_raw_authors_names_column,
+    _process_source_name_column,
+    _repair_iso_source_names_column,
+    _search_for_new_iso_source_name,
+)
+from .utils import logging
+
+
+def _create_references_file(documents, references, directory):
+
+    logging.info("Creating references file")
+    references = references.copy()
+    references = references.assign(authors=references.authors.str.lower())
+
+    # builds a table with:
+    #   record_no  raw_reference
+    #   ------------------------------------------------
+    cited_references = documents[["record_no", "global_references"]].copy()
+
+    cited_references = cited_references.rename(
+        columns={"global_references": "raw_reference"}
+    )
+    cited_references = cited_references.dropna()
+    cited_references = cited_references.assign(
+        raw_reference=cited_references.raw_reference.str.split(";")
+    )
+    cited_references = cited_references.explode("raw_reference")
+    cited_references = cited_references.assign(
+        raw_reference=cited_references.raw_reference.str.strip()
+    )
+    cited_references = cited_references.assign(
+        raw_reference=cited_references.raw_reference.str.lower()
+    )
+
+    cited_references = cited_references.sort_values("raw_reference")
+
+    # -------------------------------------------------------------------------
+    # optimized for speed
+    # raw references and list of citting documents:
+    cited_references = cited_references.groupby(["raw_reference"], as_index=False).agg(
+        list
+    )
+    cited_references = cited_references.assign(cited_id=np.nan)
+    #
+    references = references.assign(document_title=references.document_title.str.lower())
+    references = references[~references.authors.isna()]
+
+    with tqdm(total=len(references)) as pbar:
+        for index, row in references.iterrows():
+            cited_references.loc[
+                cited_references.raw_reference.str.contains(
+                    row["document_title"], regex=False
+                )
+                & cited_references.raw_reference.str.contains(str(row["pub_year"]))
+                & cited_references.raw_reference.str.contains(
+                    row["authors"].split(" ")[0].strip()
+                ),
+                "cited_id",
+            ] = row["record_no"]
+            pbar.update(1)
+
+    cited_references = cited_references.dropna()
+    # -------------------------------------------------------------------------
+    # with open(
+    #     join(directory, "debug_references.txt"), "wt", encoding="utf-8"
+    # ) as out_file:
+    #     for index, row in references.iterrows():
+
+    #         _cited_references = cited_references.loc[
+    #             cited_references.raw_reference.str.contains(
+    #                 row["document_title"], regex=False
+    #             )
+    #             & cited_references.raw_reference.str.contains(str(row["pub_year"]))
+    #             & cited_references.raw_reference.str.contains(
+    #                 row["authors"].split(" ")[0].strip()
+    #             ),
+    #             "raw_reference",
+    #         ]
+
+    #         if len(_cited_references) > 0:
+    #             print(row["pub_year"], row["document_title"], file=out_file)
+    #             for m in _cited_references:
+    #                 print("    ", m[:200], file=out_file)
+
+    #         else:
+    #             print("**** ", row["pub_year"], row["document_title"], file=out_file)
+
+    # -------------------------------------------------------------------------
+    cited_references = cited_references.explode("record_no")
+    cited_references = cited_references[["record_no", "cited_id"]].copy()
+    cited_references = cited_references.rename(columns={"record_no": "citing_id"})
+    cited_references = cited_references.reset_index(drop=True)
+    cited_references = cited_references.dropna()
+    cited_references = cited_references.sort_values(["citing_id", "cited_id"])
+    references_file = join(directory, "cited_references_table.csv")
+    cited_references.to_csv(references_file, index=False)
+    logging.info(f"References table saved to {references_file}")
+
+    return cited_references
+
+
+# def _create_cited_references_csv(documents, directory):
+
+#     if "global_references" in documents.columns:
+
+#         # split references
+#         cited_references = documents[["fdocument_id", "global_references"]].copy()
+#         cited_references = cited_references.rename(
+#             columns={"global_references": "raw_reference"}
+#         )
+#         cited_references = cited_references.dropna()
+#         cited_references = cited_references.assign(
+#             raw_reference=cited_references.raw_reference.str.split(";")
+#         )
+#         cited_references = cited_references.explode("raw_reference")
+#         cited_references = cited_references.assign(
+#             raw_reference=cited_references.raw_reference.str.strip()
+#         )
+#         cited_references = cited_references.assign(
+#             ref_no=cited_references.groupby(["record_no"]).cumcount()
+#         )
+
+#         cited_references = cited_references[["record_no", "ref_no", "raw_reference"]]
+
+#         # save to disk
+#         file_name = join(directory, "cited_references.csv")
+#         cited_references.to_csv(file_name, index=False)
+
+#         logging.info(f"Cited references saved to {file_name}")
+
+
+def import_references(directory="./", scopus_file="raw-references.csv"):
+    """
+    Import references file.
+
+    Args:
+        directory (str): Directory where the file is located.
+        scopus_file (str): Name of the file.
+
+    Returns:
+        None
+
+    """
+
+    documents = _load_raw_data_file(join(directory, "documents.csv"))
+    #
+    references = _load_raw_data_file(join(directory, scopus_file))
+    references = _delete_and_rename_columns(references)
+    references = _process_authors_id_column(references)
+    references = _process_raw_authors_names_column(references)
+    references = _disambiguate_authors(references)
+    references = _process_doi_column(references)
+    references = _process_source_name_column(references)
+    references = _process_iso_source_name_column(references)
+    references = _search_for_new_iso_source_name(references)
+    references = _complete_iso_source_name_colum(references)
+    references = _repair_iso_source_names_column(references)
+    references = _create_record_no(references)
+    references = _create_document_id(references)
+    #
+    cited_references_table = _create_references_file(
+        documents=documents,
+        references=references,
+        directory=directory,
+    )
+    #
+    cited_references_frequency = cited_references_table.groupby(
+        "cited_id", as_index=True
+    ).count()
+
+    references = references.assign(local_citations=0)
+    references.index = references.record_no
+    references.loc[
+        cited_references_frequency.index, "local_citations"
+    ] = cited_references_frequency.citing_id
+    references = references.reset_index(drop=True)
+    references["local_citations"].fillna(1, inplace=True)
+    references["local_citations"] = references["local_citations"].astype(int)
+
+    file_name = join(directory, "references.csv")
+    references.to_csv(file_name, index=False)
+    logging.info(f"References table saved to {file_name}")
