@@ -35,6 +35,7 @@ from .correlation_map import correlation_map
 from .corresponding_authors_country_plot import corresponding_authors_country_plot
 from .coupling_by_column_matrix import coupling_by_column_matrix
 from .coupling_by_references_matrix import coupling_by_references_matrix
+from .coupling_network import coupling_network
 from .coverage import coverage
 from .create_thesaurus import create_thesaurus
 from .cross_corr_matrix import cross_corr_matrix
