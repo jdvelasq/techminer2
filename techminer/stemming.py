@@ -12,29 +12,13 @@ Searchs in the terms of a column using stemming
     4. searches the list for matches of the stems using AND or OR operator.
 
 
-
-
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/data/"
->>> stemming_and(directory, "author_keywords", "intelligence business").head(10)
-6              business intelligence
-648     business intelligence and ai
-1002           business intelligence
-1038           business intelligence
-Name: author_keywords, dtype: object
+>>> stemming_and(directory, "author_keywords", "finance technology").head(10)
+
 
 >>> stemming_or(directory, "author_keywords", "intelligence business").head(10)
-6                   business intelligence
-11                artificial intelligence
-12                artificial intelligence
-13             intelligent transportation
-41                artificial intelligence
-52    explainable artificial intelligence
-78                artificial intelligence
-96                artificial intelligence
-96                    intelligent systems
-98                     e-business systems
-Name: author_keywords, dtype: object
+
 
 """
 import string
