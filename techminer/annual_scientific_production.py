@@ -15,6 +15,7 @@ Annual scientific production
 """
 import matplotlib.pyplot as plt
 import matplotlib.ticker as tick
+from matplotlib.ticker import MaxNLocator
 
 from .annual_indicators import annual_indicators
 
@@ -34,6 +35,7 @@ def annual_scientific_production(
         directory = "/workspaces/techminer-api/tests/data/"
 
     production = annual_indicators(directory)["num_documents"]
+    production = production.astype(int)
 
     fig = plt.Figure(figsize=figsize)
     ax = fig.subplots()
@@ -48,7 +50,7 @@ def annual_scientific_production(
     )
 
     ax.set_title(
-        "Annual scientific production", fontsize=10, color="dimgray", loc="left"
+        "Annual scientific production", fontsize=12, color="dimgray", loc="left"
     )
     ax.set_ylabel("Number of publications", color="dimgray")
     ax.set_xlabel("Year", color="dimgray")
@@ -64,6 +66,8 @@ def annual_scientific_production(
         fontsize=7,
         color="dimgray",
     )
+
+    ax.yaxis.set_major_locator(MaxNLocator(integer=True))
 
     ax.yaxis.set_major_formatter(
         tick.FuncFormatter(_yaxis_format),
