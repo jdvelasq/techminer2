@@ -5,6 +5,8 @@ from .annual_indicators import annual_indicators
 from .annual_occurrence_matrix import annual_occurrence_matrix
 from .annual_scientific_production import annual_scientific_production
 from .apply_thesaurus import apply_thesaurus
+from .authors_local_impact_plot import authors_local_impact_plot
+from .authors_production_over_time_plot import authors_production_over_time_plot
 from .auto_corr_matrix import auto_corr_matrix
 from .average_citations_per_year import average_citations_per_year
 from .bar_chart import bar_chart
@@ -13,11 +15,14 @@ from .bradford_zones import bradford_zones
 from .ca_factorial_analysis import ca_factorial_analysis
 from .clean_institutions import clean_institutions
 from .clean_keywords import clean_keywords
+from .cleveland_dot_chart import cleveland_dot_chart
 from .co_citation_network import co_citation_network
 from .co_occurrence_matrix import co_occurrence_matrix
-from .co_occurrence_matrix_analysis import co_occurrence_matrix_analysis
+from .co_occurrence_mds_map import co_occurrence_mds_map
+from .co_occurrence_network import co_occurrence_network
+
+### from .co_occurrence_matrix_analysis import co_occurrence_matrix_analysis
 from .co_occurrence_network_analysis import co_occurrence_network_analysis
-from .co_word_association_mds_map import co_word_association_mds_map
 from .collaboration_indicators import collaboration_indicators
 from .column_chart import column_chart
 from .column_coverage import column_coverage
@@ -25,12 +30,15 @@ from .column_coverage import column_coverage
 # from .column_explorer import column_explorer
 from .column_indicators import column_indicators
 from .column_indicators_by_year import column_indicators_by_year
-from .core_authors import core_authors
 from .core_sources import core_sources
 from .correlation_map import correlation_map
+from .corresponding_authors_country_plot import corresponding_authors_country_plot
+from .coupling_by_column_matrix import coupling_by_column_matrix
+from .coupling_by_references_matrix import coupling_by_references_matrix
 from .coverage import coverage
 from .create_thesaurus import create_thesaurus
 from .cross_corr_matrix import cross_corr_matrix
+from .document_indicators import document_indicators
 from .document_viewer import document_viewer
 from .dotted_timeline_chart import dotted_timeline_chart
 from .extract_user_keywords import extract_user_keywords
@@ -43,15 +51,35 @@ from .impact_indicators import impact_indicators
 from .import_references import import_references
 from .import_scopus_file import import_scopus_file
 from .line_chart import line_chart
+from .lotka_core_authors import lotka_core_authors
 from .lotka_plot import lotka_plot
 from .main_path_network import main_path_network
-from .most_local_cited_sources import most_local_cited_sources
+from .most_cited_countries_plot import most_cited_countries_plot
+from .most_global_cited_documents_plot import most_global_cited_documents_plot
+from .most_local_cited_authors_plot import most_local_cited_authors_plot
+from .most_local_cited_authors_table import most_local_cited_authors_table
+from .most_local_cited_documents_plot import most_local_cited_documents_plot
+from .most_local_cited_references_plot import most_local_cited_references_plot
+from .most_local_cited_sources_plot import most_local_cited_sources_plot
+from .most_local_cited_sources_table import most_local_cited_sources_table
+from .most_relevant_authors_plot import most_relevant_authors_plot
+from .most_relevant_authors_table import most_relevant_authors_table
+from .most_relevant_institutions_plot import most_relevant_institutions_plot
 
 # from .mean_global_citations import mean_global_citations
-from .most_relevant_sources import most_relevant_sources
+from .most_relevant_sources_plot import most_relevant_sources_plot
+from .most_relevant_sources_table import most_relevant_sources_table
+from .network_communities import network_communities
+from .network_degree_plot import network_degree_plot
+from .network_indicators import network_indicators
+from .network_map import network_map
+from .network_plot import network_plot
 from .pie_chart import pie_chart
 from .source_growth_plot import source_growth_plot
 from .source_growth_table import source_growth_table
+from .source_impact_plot import source_impact_plot
+from .source_impact_table import source_impact_table
+from .stacked_bar_chart import stacked_bar_chart
 from .stemming import stemming_and, stemming_or
 from .summary_view import summary_view
 from .svd_co_occurrence_matrix_map import svd_co_occurrence_matrix_map
@@ -60,7 +88,6 @@ from .tf_idf_matrix import tf_idf_matrix
 from .tf_matrix import tf_matrix
 from .thematic_analysis import thematic_analysis
 from .timeline_chart import timeline_chart
-from .top_documents import top_documents
 from .tree_map import tree_map
 from .user_filters import user_filters
 from .word_cloud import word_cloud
