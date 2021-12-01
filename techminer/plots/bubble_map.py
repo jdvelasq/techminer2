@@ -71,6 +71,9 @@ def bubble_map(
     fig = plt.Figure(figsize=figsize)
     ax = fig.subplots()
 
+    ax.yaxis.set_ticks_position("both")
+    ax.xaxis.set_ticks_position("both")
+
     ax.tick_params(axis="x", labelsize=7)
     ax.tick_params(axis="y", labelsize=7)
 
