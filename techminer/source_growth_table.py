@@ -5,17 +5,15 @@ Source growth table
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/data/"
 >>> source_growth_table(5, directory).tail(10)
-iso_source_name  SUSTAINABILITY  ...  LECT NOTES COMPUT SCI
-2015                          0  ...                      0
+iso_source_name  SUSTAINABILITY  ...  FRONTIER ARTIF INTELL
 2016                          0  ...                      0
-2017                          0  ...                      1
-2018                          0  ...                      3
-2019                          4  ...                      5
-2020                         10  ...                      8
-2021                         15  ...                     10
-2022                         15  ...                     10
+2017                          0  ...                      0
+2018                          0  ...                      1
+2019                          4  ...                      1
+2020                         10  ...                      4
+2021                         15  ...                      5
 <BLANKLINE>
-[8 rows x 5 columns]
+[6 rows x 5 columns]
 
 """
 import numpy as np
