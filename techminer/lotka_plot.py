@@ -43,7 +43,7 @@ def lotka_plot(
     cmap = plt.cm.get_cmap(cmap)
     color = cmap(0.6)
 
-    data = core_authors(directory)
+    data = lotka_core_authors(directory)
     percentage_authors = data["%"].map(lambda w: float(w[:-2])).tolist()
     percentage_authors.reverse()
     documents_written = data["Documents written per Author"].tolist()
