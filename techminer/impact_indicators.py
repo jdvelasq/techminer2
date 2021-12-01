@@ -31,7 +31,7 @@ from .column_indicators import column_indicators
 from .utils import explode, load_filtered_documents
 
 
-def impact_indicators(directory, column, sep="; "):
+def impact_indicators(column, sep="; ", directory="./"):
     """
     Impact index analysis
 
@@ -57,9 +57,11 @@ def impact_indicators(directory, column, sep="; "):
         "authors_id",
         "countries",
         "institutions",
+        "source_name",
+        "iso_source_name",
     ]:
         raise ValueError(
-            "Impact indicators only works with 'authors', 'authors_id', 'countries' or 'institutions'."
+            "Impact indicators only works with 'authors', 'authors_id', 'countries', 'institutions', 'source_name' or 'iso_source_name'."
         )
 
     columns_to_explode = [
