@@ -68,6 +68,7 @@ Analysis of bibliographic datasets using Python
 
     coupling_by_column_matrix
     coupling_by_references_matrix
+    coupling_network
 
 .. toctree::
     :caption: Data 
