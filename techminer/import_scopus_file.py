@@ -631,12 +631,12 @@ def _create_document_id(documents):
 
     wos_ref = wos_ref + ", " + documents.pub_year.map(str)
     wos_ref = wos_ref + ", " + documents.iso_source_name
-    wos_ref = wos_ref + documents.volume.map(
-        lambda x: ", V" + str(x) if not pd.isna(x) else ""
-    )
-    wos_ref = wos_ref + documents.page_start.map(
-        lambda x: ", P" + str(x) if not pd.isna(x) else ""
-    )
+    # wos_ref = wos_ref + documents.volume.map(
+    #     lambda x: ", V" + str(x) if not pd.isna(x) else ""
+    # )
+    # wos_ref = wos_ref + documents.page_start.map(
+    #     lambda x: ", P" + str(x) if not pd.isna(x) else ""
+    # )
     # wos_ref = wos_ref + documents.doi.map(
     #     lambda x: ", DOI " + str(x) if not pd.isna(x) else ""
     # )
