@@ -2,20 +2,16 @@
 Lotka core authors
 ===============================================================================
 
->>> from techminer import core_authors
+>>> from techminer import lotka_core_authors
 >>> directory = "/workspaces/techminer-api/data/"
 >>> lotka_core_authors(directory)
-   Num Authors       %  ...  Acum Num Documents % Acum Num Documents
-0            1  0.05 %  ...                   8                0.99%
-1            1  0.05 %  ...                  15                1.86%
-2            2  0.11 %  ...                  21                 2.6%
-3            6  0.32 %  ...                  46                 5.7%
-4            9  0.49 %  ...                  72                8.92%
-5           36  1.95 %  ...                 133               16.48%
-6          128  6.92 %  ...                 265               32.84%
-7         1666  90.1 %  ...                 807               100.0%
+   Num Authors        %  ...  Acum Num Documents % Acum Num Documents
+0            1   0.16 %  ...                   5                2.04%
+1            2   0.31 %  ...                  11                4.49%
+2           35   5.48 %  ...                  49                20.0%
+3          601  94.05 %  ...                 245               100.0%
 <BLANKLINE>
-[8 rows x 9 columns]
+[4 rows x 9 columns]
 
 """
 
@@ -42,7 +38,9 @@ def lotka_core_authors(directory="./"):
     documents = load_filtered_documents(directory)
     documents = documents.copy()
 
-    z = column_indicators(directory, "authors", sep="; ")["num_documents"]
+    z = column_indicators(column="authors", sep="; ", directory=directory)[
+        "num_documents"
+    ]
 
     authors_dict = {
         author: num_docs for author, num_docs in zip(z.index, z) if not pd.isna(author)
