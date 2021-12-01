@@ -1,5 +1,5 @@
 """
-Lotka Law's plot
+Lotka plot
 ===============================================================================
 
 
@@ -17,7 +17,7 @@ Lotka Law's plot
 
 import matplotlib.pyplot as plt
 
-from .core_authors import core_authors
+from .lotka_core_authors import lotka_core_authors
 
 
 def lotka_plot(
