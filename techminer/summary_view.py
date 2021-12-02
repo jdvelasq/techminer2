@@ -40,7 +40,7 @@ KEYWORDS       Raw author keywords:                            709
                Cleaned author keywords:                        666
                Raw index keywords:                             607
                Cleaned index keywords:                         594
-OTHERS         document_id                                     248
+OTHERS         document_id                                     246
                iso_source_name                                 145
                num_global_references                           108
                page_start                                      123
