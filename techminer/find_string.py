@@ -7,11 +7,11 @@ Finds a string in the terms of a column of a document collection.
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/data/"
 >>> find_string("author_keywords", contains='fintech',directory=directory).head()
-0                       b2b fintech
-1          bank fintech partnership
-2                   banking-fintech
-3    bermuda fintech innovation hub
-4             bermuda fintech story
+0                characteristics of fintech
+1                      cross-sector fintech
+2                     definition of fintech
+3    determinants of using fintech services
+4                                   fintech
 Name: author_keywords, dtype: object
 
 """
