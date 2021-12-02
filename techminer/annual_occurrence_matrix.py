@@ -5,18 +5,11 @@ Annual occurrence matrix
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/data/"
 >>> annual_occurrence_matrix('authors',  min_occ=3, directory=directory).head(10)
-pub_year    2015  2016  2017  2018  2019  2020  2021
-authors                                             
-Al-Dmour A     0     0     0     0     0     1     2
-Al-Dmour H     0     0     0     0     0     1     2
-Al-Dmour R     0     0     0     0     0     1     2
-Arner DW       0     1     1     1     1     1     1
-Ashta A        0     0     0     2     0     0     2
-Baber H        0     0     0     0     1     3     0
-Barberis J     0     1     1     0     1     0     0
-Buckley RP     0     0     1     1     0     1     1
-Cao L          0     0     0     0     0     2     1
-Cumming DJ     0     0     0     2     0     0     1
+pub_year    2019  2020  2021
+authors                     
+Hornuf L       1     1     1
+Rabbani MR     0     2     1
+Wojcik D       0     3     2
 
 
 """
