@@ -15,11 +15,11 @@ Document indicators
 [5 rows x 8 columns]
 
 >>> document_indicators(n_top=5, directory=directory).document_id
-0    Gomber P et al, 2018, J MANAGE INF SYST, V35, ...
-1     Gabor D et al, 2017, NEW POLIT ECON, V22, P423.0
-2    Schueffel P et al, 2016, J INNOV MANAG, V4, P32.0
-3    Leong C et al, 2017, INT J INF MANAGE, V37, P92.0
-4     Haddad C et al, 2019, SMALL BUS ECON, V53, P81.0
+0    Gomber P et al, 2018, J MANAGE INF SYST
+1        Gabor D et al, 2017, NEW POLIT ECON
+2     Schueffel P et al, 2016, J INNOV MANAG
+3      Leong C et al, 2017, INT J INF MANAGE
+4       Haddad C et al, 2019, SMALL BUS ECON
 Name: document_id, dtype: object
 
 """
