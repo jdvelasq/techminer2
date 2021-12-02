@@ -2,6 +2,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+from matplotlib.ticker import AutoMinorLocator
 from scipy.spatial import ConvexHull
 
 # from techminer.core.sort_axis import sort_axis
@@ -65,6 +66,9 @@ def conceptual_structure_map(words_by_cluster, top_n, figsize):
     matplotlib.rc("font", size=9)
     fig = plt.Figure(figsize=figsize)
     ax = fig.subplots()
+
+    ax.yaxis.set_ticks_position("both")
+    ax.xaxis.set_ticks_position("both")
 
     # Plot the points of each cluster
     factor = 0.005
@@ -144,28 +148,30 @@ def conceptual_structure_map(words_by_cluster, top_n, figsize):
     # 3.-- Generic
     #
     ax.axhline(
-        y=words_by_cluster[words_by_cluster.columns[1]].mean(),
+        y=words_by_cluster[words_by_cluster.columns[0]].mean(),
         color="gray",
         linestyle="--",
-        linewidth=0.5,
+        linewidth=1,
         zorder=-1,
     )
     ax.axvline(
         x=words_by_cluster[words_by_cluster.columns[1]].mean(),
         color="gray",
         linestyle="--",
-        linewidth=0.5,
+        linewidth=1,
         zorder=-1,
     )
-    # ax.axis("off")
-    ax.set_xticks([])
-    ax.set_yticks([])
+
+    ax.xaxis.set_minor_locator(AutoMinorLocator())
+    ax.yaxis.set_minor_locator(AutoMinorLocator())
+    ax.tick_params(which="mayor", color="k", length=5)
+    ax.tick_params(which="minor", color="k", length=2)
 
     for spine in ["top", "right", "bottom", "left"]:
         ax.spines[spine].set_color("gray")
 
-    ax.set_aspect("equal")
-    ax.grid(axis="both", color="gray", linestyle="--", linewidth=0.5)
+    # ax.set_aspect("equal")
+    # ax.grid(axis="both", color="gray", linestyle="--", linewidth=0.5)
 
     xlim = ax.get_xlim()
     ylim = ax.get_ylim()
@@ -187,6 +193,9 @@ def conceptual_structure_map(words_by_cluster, top_n, figsize):
         horizontalalignment="left",
         verticalalignment="top",
     )
+
+    for side in ["top", "right", "bottom", "left"]:
+        ax.spines[side].set_visible(False)
 
     fig.set_tight_layout(True)
 
