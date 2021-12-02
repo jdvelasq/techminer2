@@ -7,20 +7,20 @@ Computes coverage of terms in a column discarding stopwords.
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/data/"
 >>> column_coverage("author_keywords", directory=directory).head(10)
-- INFO - Number of documents : 826
-- INFO - Documents with NA: 620
-- INFO - Efective documents : 826
+- INFO - Number of documents : 248
+- INFO - Documents with NA: 202
+- INFO - Efective documents : 248
    min_occ  cum_sum_documents coverage  cum num items
-0      428                428  51.82 %              1
-1       70                468  56.66 %              2
-2       44                477  57.75 %              3
-3       41                485  58.72 %              4
-4       39                488  59.08 %              5
-5       37                493  59.69 %              6
-6       26                497  60.17 %              7
-7       24                499  60.41 %              8
-8       23                503  60.90 %              9
-9       22                513  62.11 %             11
+0      139                139  56.05 %              1
+1       28                153  61.69 %              2
+2       17                158  63.71 %              4
+3       13                162  65.32 %              6
+4       12                164  66.13 %              7
+5       11                166  66.94 %              8
+6        8                174  70.16 %             13
+7        7                174  70.16 %             16
+8        6                177  71.37 %             23
+9        5                179  72.18 %             28
 
 """
 
