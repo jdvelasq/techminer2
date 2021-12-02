@@ -7,17 +7,14 @@ Annual indicators
 >>> annual_indicators(directory)
           num_documents  ...  cum_local_citations
 pub_year                 ...                     
-2015                  6  ...                   39
-2016                 20  ...                  190
-2017                 55  ...                  920
-2018                124  ...                 1549
-2019                122  ...                 1866
-2020                223  ...                 2123
-2021                269  ...                 2233
-2022                  7  ...                 2234
+2016                  5  ...                   29
+2017                 10  ...                   77
+2018                 34  ...                  204
+2019                 38  ...                  315
+2020                 62  ...                  377
+2021                 99  ...                  397
 <BLANKLINE>
-[8 rows x 8 columns]
-
+[6 rows x 8 columns]
 
 >>> from . import line_chart
 >>> line_chart(annual_indicators(directory=directory).num_documents, title="Annual Scientific Production")
@@ -28,7 +25,6 @@ pub_year                 ...
     :align: center
 
 """
-
 
 from .utils import load_filtered_documents
 
