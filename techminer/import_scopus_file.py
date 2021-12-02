@@ -308,7 +308,9 @@ def _repair_iso_source_names_column(documents):
             for name, abb in zip(documents.source_name, documents.iso_source_name)
         ]
         documents = documents.assign(
-            iso_source_name=documents.iso_source_name.map(lambda x: x[:29])
+            iso_source_name=documents.iso_source_name.map(
+                lambda x: x[:29] if isinstance(x, str) else x
+            )
         )
     return documents
 
