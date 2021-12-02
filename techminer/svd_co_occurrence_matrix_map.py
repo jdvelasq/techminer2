@@ -16,7 +16,7 @@ The plot is based on the SVD technique used in T-LAB's comparative analysis.
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/data/"
 >>> file_name = "/workspaces/techminer-api/sphinx/images/co_word_association_mds_map.png"
->>> matrix = co_occurrence_matrix(directory, 'author_keywords', min_occ=15)
+>>> matrix = co_occurrence_matrix('author_keywords', min_occ=15, directory=directory)
 >>> svd_co_occurrence_matrix_map(matrix).savefig(file_name)
 
 
@@ -45,8 +45,10 @@ def svd_co_occurrence_matrix_map(
     random_state=0,
 ):
 
+    max_dimensions = min(20, len(matrix.columns) - 1)
+
     decomposed_matrix = TruncatedSVD(
-        n_components=20, n_iter=n_iter, random_state=random_state
+        n_components=max_dimensions, n_iter=n_iter, random_state=random_state
     ).fit_transform(matrix)
 
     if decomposed_matrix.shape[0] > max_terms:
@@ -57,7 +59,9 @@ def svd_co_occurrence_matrix_map(
         labels = matrix.index
 
     decomposed_matrix = pd.DataFrame(
-        decomposed_matrix, columns=[f"dim{dim}" for dim in range(20)], index=labels
+        decomposed_matrix,
+        columns=[f"dim{dim}" for dim in range(max_dimensions)],
+        index=labels,
     )
 
     fig = plt.Figure(figsize=figsize)
