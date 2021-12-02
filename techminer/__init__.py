@@ -19,8 +19,6 @@ from .co_citation_matrix import co_citation_matrix
 from .co_occurrence_matrix import co_occurrence_matrix
 from .co_occurrence_mds_map import co_occurrence_mds_map
 from .co_occurrence_network import co_occurrence_network
-
-### from .co_occurrence_matrix_analysis import co_occurrence_matrix_analysis
 from .co_occurrence_network_analysis import co_occurrence_network_analysis
 from .collaboration_indicators import collaboration_indicators
 from .column_chart import column_chart
