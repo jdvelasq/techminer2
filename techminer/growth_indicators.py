@@ -5,12 +5,12 @@ Growth indicators
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/data/"
 >>> growth_indicators(directory, "author_keywords").head()
-                      before 2021  ...  average_growth_rate
-fintech                       656  ...               -148.0
-financial-technology          184  ...                -46.0
-blockchain                    123  ...                -24.0
-cryptocurrencies               52  ...                -11.5
-bank                           52  ...                -12.5
+                        before 2020  ...  average_growth_rate
+fintech                          42  ...                 21.5
+financial technologies           11  ...                  4.0
+blockchain                        9  ...                  1.0
+innovation                        9  ...                 -1.0
+financial service                 7  ...                  1.0
 <BLANKLINE>
 [5 rows x 4 columns]
 
