@@ -102,19 +102,15 @@ Analysis of bibliographic datasets using Python
     mean_global_citations
     most_cited_countries_plot
     most_global_cited_documents_plot
-    most_local_cited_authors_plot
-    most_local_cited_authors_table
+    most_local_cited_authors
     most_local_cited_documents_plot
     most_local_cited_references_plot
     most_local_cited_sources
-    most_relevant_authors_plot
-    most_relevant_authors_table
+    most_relevant_authors
     most_relevant_institutions_plot
     most_relevant_sources_plot
-    source_growth_plot
-    source_growth_table      
-    source_impact_plot
-    source_impact_table
+    source_growth     
+    source_impact
     svd_co_occurrence_matrix_map
     svd_tf_idf_matrix_map
     thematic_analysis
