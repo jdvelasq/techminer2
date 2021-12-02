@@ -160,11 +160,11 @@ Analysis of bibliographic datasets using Python
     :hidden:
     :maxdepth: 1
 
-    network_degree_plot
-    network_plot
     network_communities
+    network_degree_plot
     network_indicators
     network_map
+    network_plot
 
 
 
