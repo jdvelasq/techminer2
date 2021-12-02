@@ -2,7 +2,16 @@
 Import references file
 ===============================================================================
 
-Import a 'cited by' scopus file with references.
+Import a 'cited by' scopus file with references. 
+
+* The references file is called 'raw-references.csv' and it is obtained from 
+  references option in Scopus.
+
+* This function must be called after the import of the documents.
+
+>>> from techminer import *
+>>> directory = "/workspaces/techminer-api/data/"
+>>> import_references(directory=directory)
 
 
 
