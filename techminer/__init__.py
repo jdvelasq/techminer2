@@ -56,13 +56,11 @@ from .lotka_plot import lotka_plot
 from .main_path_network import main_path_network
 from .most_cited_countries_plot import most_cited_countries_plot
 from .most_global_cited_documents_plot import most_global_cited_documents_plot
-from .most_local_cited_authors_plot import most_local_cited_authors_plot
-from .most_local_cited_authors_table import most_local_cited_authors_table
+from .most_local_cited_authors import most_local_cited_authors
 from .most_local_cited_documents_plot import most_local_cited_documents_plot
 from .most_local_cited_references_plot import most_local_cited_references_plot
 from .most_local_cited_sources import most_local_cited_sources
-from .most_relevant_authors_plot import most_relevant_authors_plot
-from .most_relevant_authors_table import most_relevant_authors_table
+from .most_relevant_authors import most_relevant_authors
 from .most_relevant_institutions_plot import most_relevant_institutions_plot
 
 # from .mean_global_citations import mean_global_citations
@@ -73,10 +71,8 @@ from .network_indicators import network_indicators
 from .network_map import network_map
 from .network_plot import network_plot
 from .pie_chart import pie_chart
-from .source_growth_plot import source_growth_plot
-from .source_growth_table import source_growth_table
-from .source_impact_plot import source_impact_plot
-from .source_impact_table import source_impact_table
+from .source_growth import source_growth
+from .source_impact import source_impact
 from .stacked_bar_chart import stacked_bar_chart
 from .stacked_column_chart import stacked_column_chart
 from .stemming import stemming_and, stemming_or
