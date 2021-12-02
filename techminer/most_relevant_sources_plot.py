@@ -2,6 +2,8 @@
 Most relevant sources plot
 ===============================================================================
 
+Plots the most relevant sources in the main collection.
+
 
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/data/"
@@ -23,7 +25,7 @@ from .column_indicators import column_indicators
 def most_relevant_sources_plot(
     top_n=20,
     color="k",
-    figsize=(6, 6),
+    figsize=(8, 6),
     directory="./",
 ):
     indicators = column_indicators(
