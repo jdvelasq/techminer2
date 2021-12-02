@@ -58,18 +58,19 @@ Analysis of bibliographic datasets using Python
     :maxdepth: 1
 
     auto_corr_matrix
-    cross_corr_matrix
-    factor_matrix
+    co_citation_network
     co_occurrence_matrix
     co_occurrence_network
     coupling_by_column_matrix
     coupling_by_references_matrix
     coupling_network
+    cross_corr_matrix
+    factor_matrix
     tf_idf_matrix
     tf_matrix     
 
 .. toctree::
-    :caption: Generic network analysis
+    :caption: Network analysis primitives
     :hidden:
     :maxdepth: 1
 
@@ -90,13 +91,13 @@ Analysis of bibliographic datasets using Python
     authors_production_over_time_plot
     average_citations_per_year
     bradford_law
-    co_citation_network
     co_occurrence_mds_map
     core_sources    
     correlation_map
     corresponding_authors_country
     country_scientific_production
     factorial_analysis_manifold
+    keywords_co_occurrence
     lotka_law
     main_path_network
     mean_global_citations
