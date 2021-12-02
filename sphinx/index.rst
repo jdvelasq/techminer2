@@ -86,7 +86,7 @@ Analysis of bibliographic datasets using Python
     :maxdepth: 1
 
     annual_scientific_production
-    authors_local_impact_plot
+    author_local_impact
     authors_production_over_time_plot
     average_citations_per_year
     bradford_law
@@ -94,21 +94,21 @@ Analysis of bibliographic datasets using Python
     co_occurrence_mds_map
     core_sources    
     correlation_map
-    corresponding_authors_country_plot
+    corresponding_authors_country
+    country_scientific_production
     factorial_analysis_manifold
-    lotka_core_authors
-    lotka_plot
+    lotka_law
     main_path_network
     mean_global_citations
-    most_cited_countries_plot
-    most_global_cited_documents_plot
+    most_cited_countries
+    most_global_cited_documents
     most_local_cited_authors
-    most_local_cited_documents_plot
-    most_local_cited_references_plot
+    most_local_cited_documents
+    most_local_cited_references
     most_local_cited_sources
     most_relevant_authors
-    most_relevant_institutions_plot
-    most_relevant_sources_plot
+    most_relevant_institutions
+    most_relevant_sources
     source_growth     
     source_impact
     svd_co_occurrence_matrix_map
