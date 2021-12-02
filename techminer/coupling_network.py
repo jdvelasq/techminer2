@@ -8,8 +8,8 @@ Builds a coupling network from a coupling matrix.
 >>> directory = "/workspaces/techminer-api/data/"
 >>> matrix = coupling_by_column_matrix(
 ...     column='author_keywords',
-...     min_occ=6, 
-...     top_n=15,
+...     min_occ=4, 
+...     top_n=20,
 ...     directory=directory,
 ... )
 >>> coupling_network(matrix, directory=directory).keys()
