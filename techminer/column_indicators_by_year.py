@@ -5,18 +5,18 @@ Column indicators by year
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/data/"
 >>> column_indicators_by_year(directory, 'authors').head(10)
-             pub_year  num_documents  global_citations  local_citations
-authors                                                                
-Nayer CPS        1986              1                 8                0
-Covick O         1998              1                 0                0
-Khadka S         2002              1                 2                0
-Seibel HD        2002              1                 2                0
-Fan JPH          2003              1                 0                0
-Hanazaki M       2003              1                 0                0
-Teranishi J      2003              1                 0                0
-Au YA            2008              1               250               12
-Kauffman RJ      2008              1               250               12
-Englund P        2010              1                 4                0
+              pub_year  num_documents  global_citations  local_citations
+authors                                                                 
+Dolata M          2016              1                43                7
+Hong S            2016              1                 2                1
+Hung J-L          2016              1                24                4
+Kim K             2016              1                 2                1
+Kotarba M         2016              1                16                3
+Luo B             2016              1                24                4
+Schueffel P       2016              1               106               14
+Schwabe G         2016              1                43                7
+Zavolokina L      2016              1                43                7
+Brooks S          2017              1               146               15
 
 """
 from .utils import load_filtered_documents
