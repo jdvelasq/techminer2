@@ -4,15 +4,14 @@ Co-occurrence matrix
 
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/data/"
->>> co_occurrence_matrix(column='authors', min_occ=6,directory=directory)
-authors                Rabbani MR Reyes-Mercado P Khan S Arner DW
-#d                              8               7      6        6
-#c                            65              0      52       125
-authors         #d #c                                            
-Rabbani MR      8  65           8               0      6        0
-Reyes-Mercado P 7  0            0               7      0        0
-Khan S          6  52           6               0      6        0
-Arner DW        6  125          0               0      0        6
+>>> co_occurrence_matrix(column='authors', min_occ=3,directory=directory)
+authors           Wojcik D Rabbani MR Hornuf L
+#d                       5          3        3
+#c                     19         39       110
+authors    #d #c                              
+Wojcik D   5  19         5          0        0
+Rabbani MR 3  39         0          3        0
+Hornuf L   3  110        0          0        3
 
 
 
