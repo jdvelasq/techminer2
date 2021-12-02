@@ -5,7 +5,7 @@ from .annual_indicators import annual_indicators
 from .annual_occurrence_matrix import annual_occurrence_matrix
 from .annual_scientific_production import annual_scientific_production
 from .apply_thesaurus import apply_thesaurus
-from .authors_local_impact_plot import authors_local_impact_plot
+from .author_local_impact import author_local_impact
 from .authors_production_over_time_plot import authors_production_over_time_plot
 from .auto_corr_matrix import auto_corr_matrix
 from .average_citations_per_year import average_citations_per_year
@@ -31,7 +31,8 @@ from .column_indicators import column_indicators
 from .column_indicators_by_year import column_indicators_by_year
 from .core_sources import core_sources
 from .correlation_map import correlation_map
-from .corresponding_authors_country_plot import corresponding_authors_country_plot
+from .corresponding_authors_country import corresponding_authors_country
+from .country_scientific_production import country_scientific_production
 from .coupling_by_column_matrix import coupling_by_column_matrix
 from .coupling_by_references_matrix import coupling_by_references_matrix
 from .coupling_network import coupling_network
@@ -51,20 +52,17 @@ from .impact_indicators import impact_indicators
 from .import_references import import_references
 from .import_scopus_file import import_scopus_file
 from .line_chart import line_chart
-from .lotka_core_authors import lotka_core_authors
-from .lotka_plot import lotka_plot
+from .lotka_law import lotka_law
 from .main_path_network import main_path_network
-from .most_cited_countries_plot import most_cited_countries_plot
-from .most_global_cited_documents_plot import most_global_cited_documents_plot
+from .most_cited_countries import most_cited_countries
+from .most_global_cited_documents import most_global_cited_documents
 from .most_local_cited_authors import most_local_cited_authors
-from .most_local_cited_documents_plot import most_local_cited_documents_plot
-from .most_local_cited_references_plot import most_local_cited_references_plot
+from .most_local_cited_documents import most_local_cited_documents
+from .most_local_cited_references import most_local_cited_references
 from .most_local_cited_sources import most_local_cited_sources
 from .most_relevant_authors import most_relevant_authors
-from .most_relevant_institutions_plot import most_relevant_institutions_plot
-
-# from .mean_global_citations import mean_global_citations
-from .most_relevant_sources_plot import most_relevant_sources_plot
+from .most_relevant_institutions import most_relevant_institutions
+from .most_relevant_sources import most_relevant_sources
 from .network_communities import network_communities
 from .network_degree_plot import network_degree_plot
 from .network_indicators import network_indicators
