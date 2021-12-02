@@ -10,8 +10,7 @@ from .authors_production_over_time_plot import authors_production_over_time_plot
 from .auto_corr_matrix import auto_corr_matrix
 from .average_citations_per_year import average_citations_per_year
 from .bar_chart import bar_chart
-from .bradford_plot import bradford_plot
-from .bradford_zones import bradford_zones
+from .bradford_law import bradford_law
 from .ca_factorial_analysis import ca_factorial_analysis
 from .clean_institutions import clean_institutions
 from .clean_keywords import clean_keywords
@@ -61,15 +60,13 @@ from .most_local_cited_authors_plot import most_local_cited_authors_plot
 from .most_local_cited_authors_table import most_local_cited_authors_table
 from .most_local_cited_documents_plot import most_local_cited_documents_plot
 from .most_local_cited_references_plot import most_local_cited_references_plot
-from .most_local_cited_sources_plot import most_local_cited_sources_plot
-from .most_local_cited_sources_table import most_local_cited_sources_table
+from .most_local_cited_sources import most_local_cited_sources
 from .most_relevant_authors_plot import most_relevant_authors_plot
 from .most_relevant_authors_table import most_relevant_authors_table
 from .most_relevant_institutions_plot import most_relevant_institutions_plot
 
 # from .mean_global_citations import mean_global_citations
 from .most_relevant_sources_plot import most_relevant_sources_plot
-from .most_relevant_sources_table import most_relevant_sources_table
 from .network_communities import network_communities
 from .network_degree_plot import network_degree_plot
 from .network_indicators import network_indicators
@@ -81,6 +78,7 @@ from .source_growth_table import source_growth_table
 from .source_impact_plot import source_impact_plot
 from .source_impact_table import source_impact_table
 from .stacked_bar_chart import stacked_bar_chart
+from .stacked_column_chart import stacked_column_chart
 from .stemming import stemming_and, stemming_or
 from .summary_view import summary_view
 from .svd_co_occurrence_matrix_map import svd_co_occurrence_matrix_map
