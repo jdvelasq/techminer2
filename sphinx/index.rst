@@ -58,7 +58,7 @@ Analysis of bibliographic datasets using Python
     :maxdepth: 1
 
     auto_corr_matrix
-    co_citation_network
+    co_citation_matrix
     co_occurrence_matrix
     co_occurrence_network
     coupling_by_column_matrix
