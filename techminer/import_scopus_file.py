@@ -261,7 +261,7 @@ def _search_for_new_iso_source_name(documents):
             iso_source_name=current_iso_names.iso_source_name.str.strip()
         )
         current_iso_names = current_iso_names.dropna()
-        currnet_iso_names = current_iso_names.sort_values(
+        current_iso_names = current_iso_names.sort_values(
             by=["source_name", "iso_source_name"]
         )
         current_iso_names = current_iso_names.drop_duplicates("source_name")
@@ -307,6 +307,9 @@ def _repair_iso_source_names_column(documents):
             "--- " + name[:25] if pd.isna(abb) and not pd.isna(name) else abb
             for name, abb in zip(documents.source_name, documents.iso_source_name)
         ]
+        documents = documents.assign(
+            iso_source_name=documents.iso_source_name.map(lambda x: x[:29])
+        )
     return documents
 
 
