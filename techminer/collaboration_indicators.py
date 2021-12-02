@@ -7,11 +7,11 @@ Collaboration indicators
 >>> collaboration_indicators("countries", directory=directory).head()
                 num_documents  ...  mp_ratio
 countries                      ...          
-china                     123  ...      0.49
-united states             119  ...      0.46
-united kingdom             91  ...      0.56
-indonesia                  54  ...      0.09
-australia                  52  ...      0.62
+china                      43  ...      0.53
+united kingdom             41  ...      0.54
+indonesia                  22  ...      0.05
+united states              22  ...      0.68
+australia                  18  ...      0.78
 <BLANKLINE>
 [5 rows x 4 columns]
 
