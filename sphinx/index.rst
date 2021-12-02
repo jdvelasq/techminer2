@@ -92,6 +92,7 @@ Analysis of bibliographic datasets using Python
     average_citations_per_year
     bradford_law
     co_occurrence_mds_map
+    collaboration_network
     core_sources    
     correlation_map
     corresponding_authors_country
