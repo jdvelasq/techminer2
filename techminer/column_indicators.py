@@ -5,13 +5,13 @@ Column indicators
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/data/"
 >>> column_indicators('authors',directory=directory).head()
-                 num_documents  global_citations  local_citations
-authors                                                          
-Rabbani MR                   8                65               17
-Reyes-Mercado P              7                 0                0
-Khan S                       6                52               13
-Arner DW                     6               125               34
-Schwienbacher A              5                48               17
+                num_documents  global_citations  local_citations
+authors                                                         
+Wojcik D                    5                19                4
+Hornuf L                    3               110               24
+Rabbani MR                  3                39                3
+Gomber P                    2               228               34
+Worthington AC              2                 7                1
 
 
 
