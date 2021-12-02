@@ -14,11 +14,29 @@ Searchs in the terms of a column using stemming
 
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/data/"
->>> stemming_and(directory, "author_keywords", "finance technology").head(10)
-
-
->>> stemming_or(directory, "author_keywords", "intelligence business").head(10)
-
+>>> stemming_and(directory, "author_keywords", "business model").head(10)
+51             business model
+107    fintech business model
+111       bank business model
+154            business model
+202            business model
+211            business model
+213            business model
+242            business model
+Name: author_keywords, dtype: object
+ 
+>>> stemming_or(directory, "author_keywords", "business model").head(10)
+3      structural equation model (sem)
+23     structural equation model (sem)
+24                            modeling
+48             business sustainability
+48               small food businesses
+51                business environment
+51                      business model
+58         fintech predictive modeling
+66     structural equation model (sem)
+107             fintech business model
+Name: author_keywords, dtype: object
 
 """
 import string
