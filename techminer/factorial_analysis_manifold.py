@@ -20,27 +20,34 @@ Based on the bibliometrix/R/conceptualStructure.R code.
 >>> from sklearn.cluster import KMeans
 >>> from sklearn.manifold import MDS
 >>> directory = "/workspaces/techminer-api/data/"
->>> coc_matrix = co_occurrence_matrix(directory, 'author_keywords', min_occ=15)
->>> mainfold_factorial_analysis(coc_matrix, manifold_method=MDS(), clustering_method=KMeans(n_clusters=4)).silhouette_scores_plot()
+>>> coc_matrix = co_occurrence_matrix('author_keywords', min_occ=4, directory=directory)
+>>> file_name = "/workspaces/techminer-api/sphinx/images/factorial_analysis_manifold_silhouette.png"
+>>> factorial_analyzer = factorial_analysis_manifold(
+...     coc_matrix, 
+...     manifold_method=MDS(random_state=0), 
+...     clustering_method=KMeans(n_clusters=4, random_state=0)
+... )
+>>> factorial_analyzer.silhouette_scores_plot(max_n_clusters=8).savefig(file_name)
 
 .. image:: images/manifold_factorial_analysis_silhouette.png
-    :width: 400px
+    :width: 5500px
     :align: center
 
 
->>> mainfold_factorial_analysis(coc_matrix, manifold_method=MDS(), clustering_method=KMeans(n_clusters=4)).words_by_cluster().head()
-                                    Dim-1       Dim-2  Cluster
-author_keywords      #d  #c                                   
-fintech              882 5181 -746.525234  398.589319        1
-blockchain           131 1031  -39.415114  129.117394        3
-financial inclusion  72  742   -54.229554  -24.433846        0
-financial technology 72  372    59.166004   47.983897        2
-crowdfunding         50  492    -9.401640   19.159085        0
+>>> factorial_analyzer.words_by_cluster().head()
+                                     Dim-1       Dim-2  Cluster
+author_keywords        #d  #c                                  
+fintech                139 1285  21.789293  133.502844        1
+financial technologies 28  225   23.214658   13.359314        3
+financial inclusion    17  339  -14.080205   11.401536        2
+blockchain             17  149   -4.997082   15.544741        2
+innovation             13  249   13.538624   -4.960027        3
 
->>> mainfold_factorial_analysis(coc_matrix, manifold_method=MDS(), clustering_method=KMeans(n_clusters=4)).map()
+>>> file_name = "/workspaces/techminer-api/sphinx/images/factorial_analysis_manifold_map.png"
+>>> factorial_analyzer.map().savefig(file_name)
 
-.. image:: images/manifold_factor_analysis_map.png
-    :width: 800px
+.. image:: images/factorial_analysis_manifold_map.png
+    :width: 5500px
     :align: center
 
 """
@@ -75,7 +82,7 @@ class Factorial_analysis_manifold:
     def words_by_cluster(self):
         return self.words_by_cluster_.copy()
 
-    def silhouette_scores_plot(self, max_n_clusters=8, figsize=(5, 5)):
+    def silhouette_scores_plot(self, max_n_clusters=8, figsize=(7, 7)):
 
         matrix = self.matrix.copy()
         matrix = self.manifold_method.fit_transform(matrix)
@@ -95,9 +102,9 @@ class Factorial_analysis_manifold:
         ax = fig.subplots()
 
         ax.plot(n_clusters, silhouette_scores, "o-k")
-        ax.set_xlabel("Number of clusters")
-        ax.set_ylabel("Silhouette score")
-        ax.grid(True, linestyle="--", alpha=0.5)
+        ax.set_xlabel("Number of clusters", fontsize=7)
+        ax.set_ylabel("Silhouette score", fontsize=7)
+        ax.grid(True, linestyle=":", alpha=0.5)
 
         return fig
 
