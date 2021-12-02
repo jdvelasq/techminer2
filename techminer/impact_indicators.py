@@ -6,17 +6,17 @@ Impact indicators
 
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/data/"
->>> impact_indicators(directory, "countries").head()
+>>> impact_indicators("countries", directory=directory).head()
             num_documents  ...  avg_global_citations
 armenia                 1  ...                  1.00
-australia              81  ...                  8.70
-austria                 9  ...                  3.00
-bahrain                31  ...                  3.42
+australia              18  ...                 17.67
+austria                 4  ...                  0.75
+bahrain                 3  ...                 13.00
 bangladesh              1  ...                  0.00
 <BLANKLINE>
 [5 rows x 9 columns]
 
->>> impact_indicators(directory, "countries").columns
+>>> impact_indicators("countries", directory=directory).columns
 Index(['num_documents', 'global_citations', 'first_pb_year', 'age', 'h_index',
        'g_index', 'm_index', 'global_citations_per_year',
        'avg_global_citations'],
