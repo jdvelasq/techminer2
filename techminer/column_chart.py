@@ -5,8 +5,8 @@ Column chart
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/data/"
 >>> file_name = "/workspaces/techminer-api/sphinx/images/column_chart.png"
->>> series = column_indicators(directory, "countries").num_documents.head(20)
->>> darkness = column_indicators(directory, "countries").global_citations.head(20)
+>>> series = column_indicators("countries", directory=directory).num_documents.head(20)
+>>> darkness = column_indicators("countries", directory=directory).global_citations.head(20)
 >>> title = "Country scientific productivity"
 >>> column_chart(series, darkness, title=title).savefig(file_name)
 
@@ -20,7 +20,6 @@ Column chart
 
 import textwrap
 
-import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 
