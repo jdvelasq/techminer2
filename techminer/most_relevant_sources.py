@@ -11,7 +11,7 @@ Plots the most relevant sources in the main collection.
 >>> most_relevant_sources(directory=directory).savefig(file_name)
 
 .. image:: images/most_relevant_sources.png
-    :width: 500px
+    :width: 650px
     :align: center
 
 
