@@ -15,7 +15,7 @@ from .ca_factorial_analysis import ca_factorial_analysis
 from .clean_institutions import clean_institutions
 from .clean_keywords import clean_keywords
 from .cleveland_dot_chart import cleveland_dot_chart
-from .co_citation_network import co_citation_network
+from .co_citation_matrix import co_citation_matrix
 from .co_occurrence_matrix import co_occurrence_matrix
 from .co_occurrence_mds_map import co_occurrence_mds_map
 from .co_occurrence_network import co_occurrence_network
