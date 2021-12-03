@@ -89,12 +89,6 @@ def co_occurrence_mds_map(
             y=values[1],
             s=label,
             fontsize=8,
-            # bbox=dict(
-            #     facecolor="w",
-            #     alpha=1.0,
-            #     # edgecolor="gray",
-            #     # boxstyle="round,pad=0.5",
-            # ),
             horizontalalignment="center",
             verticalalignment="center",
             alpha=0.9,
