@@ -2,7 +2,7 @@
 Annual indicators
 ===============================================================================
 
->>> from . import annual_indicators
+>>> from techminer import *
 >>> directory = "/workspaces/techminer-api/data/"
 >>> annual_indicators(directory)
           num_documents  ...  cum_local_citations
@@ -16,7 +16,6 @@ pub_year                 ...
 <BLANKLINE>
 [6 rows x 8 columns]
 
->>> from . import line_chart
 >>> line_chart(annual_indicators(directory=directory).num_documents, title="Annual Scientific Production")
 <Figure size 600x600 with 1 Axes>
 
