@@ -11,7 +11,7 @@ class BuildPyCommand(build_py):
         # nltk.download("stopwords")
         # nltk.download("wordnet")
         # nltk.download("averaged_perceptron_tagger")
-        # nltk.download("punkt")
+        nltk.download("punkt")
         #
         build_py.run(self)
 
@@ -41,6 +41,7 @@ setup(
         "seaborn==0.11.2",
         "textblob==0.15.3",
         "python-Levenshtein==0.12.2",
+        "PyYAML==5.4.1",
         "wordcloud==1.5.0",
         # not in colab:
         "cdlib==0.2.5",
