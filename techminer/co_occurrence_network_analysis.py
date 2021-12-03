@@ -2,8 +2,6 @@
 Co-occurrence network analysis
 ===============================================================================
 
-TODO: pagerank
-
 This module is eqivalent to Bibliometrix' Conceptual Structure/Co-occurrence Network.
 The following capabilities are available:
 
