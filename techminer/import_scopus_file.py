@@ -7,24 +7,22 @@ Import a scopus file to a working directory.
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/data/"
 >>> import_scopus_file(directory)
-- INFO - 248 raw records found in ./raw-documents.csv.
-- INFO - Main abstract texts saved to ./abstracts.csv
+- INFO - 248 raw records found in /workspaces/techminer-api/data/raw-documents.csv.
+- INFO - Main abstract texts saved to /workspaces/techminer-api/data/abstracts.csv
 - INFO - Computing Bradford Law Zones ...
 - INFO - Searching local references using DOI ...
-100%|██████████| 248/248 [00:00<00:00, 381.57it/s]
 - INFO - Searching local references using document titles ...
-100%|██████████| 248/248 [00:00<00:00, 411.94it/s]
 - INFO - Consolidating local references ...
 - INFO - Computing local citations ...
 - INFO - Computing Bradford Law Zones ...
-- INFO - Documents saved/merged to './documents.csv'
+- INFO - Documents saved/merged to '/workspaces/techminer-api/data/documents.csv'
 - INFO - Post-processing docuemnts ...
 - INFO - Creating institutions thesaurus ...
-- INFO - Affiliations without country detected - check file ./ignored_affiliations.txt
-- INFO - Affiliations without country detected - check file ./ignored_affiliations.txt
-- INFO - Thesaurus file './institutions.txt' created.
+- INFO - Affiliations without country detected - check file /workspaces/techminer-api/data/ignored_affiliations.txt
+- INFO - Affiliations without country detected - check file /workspaces/techminer-api/data/ignored_affiliations.txt
+- INFO - Thesaurus file '/workspaces/techminer-api/data/institutions.txt' created.
 - INFO - Creating keywords thesaurus ...
-- INFO - Thesaurus file './keywords.txt' created.
+- INFO - Thesaurus file '/workspaces/techminer-api/data/keywords.txt' created.
 - INFO - Applying thesaurus to institutions ...
 - INFO - Extract and cleaning institutions.
 - INFO - Extracting institution of first author ...
@@ -33,6 +31,7 @@ Import a scopus file to a working directory.
 - INFO - Applying thesaurus to 'raw_index_keywords' column...
 - INFO - The thesaurus was applied to all keywords.
 - INFO - Process finished!!!
+
 
 """
 
@@ -657,14 +656,8 @@ def _create_abstracts_csv(documents, directory):
         abstracts = documents[["record_no", "abstract"]].copy()
         abstracts = abstracts.rename(columns={"abstract": "text"})
         abstracts = abstracts.dropna()
+        abstracts = abstracts.assign(text=abstracts.text.str.replace(";", "."))
         abstracts = abstracts.assign(text=abstracts.text.map(sent_tokenize))
-        # abstracts = abstracts.assign(
-        #     text=abstracts.text.str.replace(". ", "|", regex=False)
-        # )
-        # abstracts = abstracts.assign(
-        #     text=abstracts.text.str.replace("; ", "|", regex=False)
-        # )
-        # abstracts = abstracts.assign(text=abstracts.text.str.split("|"))
         abstracts = abstracts.explode("text")
         abstracts = abstracts.assign(text=abstracts.text.str.strip())
         abstracts = abstracts[abstracts.text.str.len() > 0]
