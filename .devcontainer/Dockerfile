@@ -54,11 +54,13 @@ RUN pip3 --disable-pip-version-check --no-cache-dir install \
     nltk==3.2.5 \
     numpy==1.19.5 \
     pandas==1.1.5 \
+    PyYAML==3.13 \
     scikit-learn==1.0.1 \
     seaborn==0.11.2 \
     textblob==0.15.3 \
     wordcloud==1.5.0 
 
+RUN python3 -c "import nltk; nltk.download('punkt')"
 # RUN python3 -c "import nltk; nltk.download('stopwords')"
 
 # packages not installed in colab
