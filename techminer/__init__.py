@@ -5,6 +5,7 @@ from .annual_indicators import annual_indicators
 from .annual_occurrence_matrix import annual_occurrence_matrix
 from .annual_scientific_production import annual_scientific_production
 from .apply_thesaurus import apply_thesaurus
+from .associations import associations
 from .author_local_impact import author_local_impact
 from .authors_production_over_time_plot import authors_production_over_time_plot
 from .auto_corr_matrix import auto_corr_matrix
