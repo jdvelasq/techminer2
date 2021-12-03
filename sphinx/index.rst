@@ -86,6 +86,7 @@ Analysis of bibliographic datasets using Python
     :hidden:
     :maxdepth: 1
 
+    associations
     annual_scientific_production
     author_local_impact
     authors_production_over_time_plot
