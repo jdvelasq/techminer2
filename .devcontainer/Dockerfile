@@ -46,24 +46,28 @@ RUN pip3 --disable-pip-version-check --no-cache-dir install \
     pygments==2.6.1
 
 RUN pip3 --disable-pip-version-check --no-cache-dir install \
-    numpy==1.19.5 \
-    matplotlib==3.2.2 \
     graphviz==0.10.1 \
     ipykernel==4.10.1 \
-    scikit-learn==1.0.1 \
-    nltk==3.2.5 \
-    pandas==1.1.5 \
-    wordcloud==1.5.0 \
-    squarify==0.4.3 \
+    matplotlib==3.2.2 \
     networkx==2.6.3 \
-    cdlib==0.2.5 \
-    seaborn==0.11.2 \
-    plotly.express 
+    nltk==3.2.5 \
+    numpy==1.19.5 \
+    pandas==1.1.5 \
+    scikit-learn==1.0.1 \
+    seaborn==0.11.2
+    textblob==0.15.3 \
+    wordcloud==1.5.0 
 
+# RUN python3 -c "import nltk; nltk.download('stopwords')"
+
+# not in colab
 RUN pip3 --disable-pip-version-check --no-cache-dir install \
-    flask \
-    flask-wtf
-
+    cdlib==0.2.5 \    
+    squarify==0.4.3 \
+    
+# RUN pip3 --disable-pip-version-check --no-cache-dir install \
+#     flask \
+#     flask-wtf
 
 RUN apt update \
     && apt -yq --no-install-recommends install  graphviz \
