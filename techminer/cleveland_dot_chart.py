@@ -6,9 +6,10 @@ Cleveland dot chart
 
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/data/"
->>> cleveland_chart(
+>>> file_name = "/workspaces/techminer-api/sphinx/images/cleveland_dot_chart.png" 
+>>> cleveland_dot_chart(
 ...     series=annual_indicators(directory).num_documents, 
-... ).savefig("/workspaces/techminer-api/sphinx/images/cleveland_dot_chart.png")
+... ).savefig(file_name)
 
 
 .. image:: images/cleveland_dot_chart.png
