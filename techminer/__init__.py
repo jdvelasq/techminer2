@@ -7,7 +7,8 @@ from .annual_scientific_production import annual_scientific_production
 from .apply_thesaurus import apply_thesaurus
 from .associations import associations
 from .author_local_impact import author_local_impact
-from .authors_production_over_time_plot import authors_production_over_time_plot
+from .authors_production_over_time import authors_production_over_time
+from .authors_production_per_year import authors_production_per_year
 from .auto_corr_matrix import auto_corr_matrix
 from .average_citations_per_year import average_citations_per_year
 from .bar_chart import bar_chart
@@ -65,7 +66,7 @@ from .network_indicators import network_indicators
 from .network_map import network_map
 from .network_plot import network_plot
 from .pie_chart import pie_chart
-from .source_growth import source_growth
+from .source_dynamics import source_dynamics
 from .source_local_impact import source_local_impact
 from .stacked_bar_chart import stacked_bar_chart
 from .stacked_column_chart import stacked_column_chart
