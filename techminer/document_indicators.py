@@ -4,106 +4,68 @@ Document indicators
 
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/data/"
->>> document_indicators(n_top=5, directory=directory)
-                                     authors  ...  global_citations
-0  Gomber P; Kauffman RJ; Parker C; Weber BW  ...               220
-1                          Gabor D; Brooks S  ...               146
-2                                Schueffel P  ...               106
-3     Leong C; Tan B; Xiao X; Tan FTC; Sun Y  ...               101
-4                         Haddad C; Hornuf L  ...                97
+>>> document_indicators(directory=directory).head()
+                                                    global_citations  ...                          doi
+document_id                                                           ...                             
+Abdullah EME et al, 2018, INT J ENG TECHNOL                        8  ...  10.14419/IJET.V7I2.29.13140
+Abu Daqar MAM et al, 2020, BANKS BANK SYST                         2  ...   10.21511/BBS.15(3).2020.03
+Acar O et al, 2019, PROCEDIA COMPUT SCI                           10  ...  10.1016/J.PROCS.2019.09.138
+Ahern D et al, 2021, EUR BUS ORG LAW REV                           0  ...   10.1007/S40804-021-00217-Z
+Al Nawayseh MK et al, 2020, J OPEN INNOV: TECHN...                10  ...        10.3390/JOITMC6040153
 <BLANKLINE>
-[5 rows x 8 columns]
+[5 rows x 5 columns]
 
->>> document_indicators(n_top=5, directory=directory).document_id
-0    Gomber P et al, 2018, J MANAGE INF SYST
-1        Gabor D et al, 2017, NEW POLIT ECON
-2     Schueffel P et al, 2016, J INNOV MANAG
-3      Leong C et al, 2017, INT J INF MANAGE
-4       Haddad C et al, 2019, SMALL BUS ECON
-Name: document_id, dtype: object
+
 
 """
 
 import os
 
-from techminer.utils import print_documents
-
 from .utils import load_filtered_documents
 
 
-def document_indicators(
-    global_citations=True,
-    normalized_citations=False,
-    top_n=50,
-    directory="./",
-):
-    """
-    Returns the most cited documents of the given directory or records.
-
-    Parameters
-    ----------
-    dirpath_or_records: str
-        path to the directory or the records object.
-    global_citations: bool
-        Whether to use global citations or not.
-    normalized_citations: bool
-        Whether to use normalized citations or not.
-
-    Returns
-    -------
-    most_cited_documents: pandas.DataFrame
-        Most cited documents.
-    """
+def document_indicators(directory="./"):
 
     documents = load_filtered_documents(directory)
 
     max_pub_year = documents.pub_year.dropna().max()
 
-    documents["global_normalized_citations"] = documents.global_citations.map(
-        lambda w: round(w / max_pub_year, 3), na_action="ignore"
+    # -----------------------------------------------------------------------------------
+    documents = documents.assign(
+        global_citations_per_year=documents.global_citations
+        / (max_pub_year - documents.pub_year + 1)
+    )
+    documents = documents.assign(
+        global_citations_per_year=documents.global_citations_per_year.round(3)
     )
 
-    documents["local_normalized_citations"] = documents.local_citations.map(
-        lambda w: round(w / max_pub_year, 3), na_action="ignore"
+    # -----------------------------------------------------------------------------------
+    documents = documents.assign(
+        local_citations_per_year=documents.local_citations
+        / (max_pub_year - documents.pub_year + 1)
+    )
+    documents = documents.assign(
+        local_citations_per_year=documents.local_citations_per_year.round(3)
     )
 
+    # -----------------------------------------------------------------------------------
     documents["global_citations"] = documents.global_citations.map(
         int, na_action="ignore"
     )
 
-    citations_column = {
-        (True, True): "global_normalized_citations",
-        (True, False): "global_citations",
-        (False, True): "local_normalized_citations",
-        (False, False): "local_citations",
-    }[(global_citations, normalized_citations)]
+    # -----------------------------------------------------------------------------------
+    documents = documents.set_index("document_id")
+    documents = documents.sort_index(axis="index", ascending=True)
 
-    documents = documents.sort_values(citations_column, ascending=False)
-    documents = documents.reset_index(drop=True)
-
+    # -----------------------------------------------------------------------------------
     documents = documents[
         [
-            "authors",
-            "pub_year",
-            "document_title",
-            "source_name",
-            "iso_source_name",
-            "record_no",
-            "document_id",
-            "abstract",
+            "global_citations",
+            "local_citations",
+            "global_citations_per_year",
+            "local_citations_per_year",
             "doi",
-            citations_column,
         ]
     ]
-
-    if top_n is not None:
-        documents = documents.head(top_n)
-
-    documents = documents.sort_values(by=citations_column, ascending=False)
-
-    with open(os.path.join(directory, "top_documents.txt"), "wt") as file:
-        print_documents(documents, file=file)
-
-    documents.pop("abstract")
 
     return documents
