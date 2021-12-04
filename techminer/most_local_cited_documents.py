@@ -28,7 +28,7 @@ def most_local_cited_documents(
     indicators = document_indicators(
         global_citations=False,
         normalized_citations=False,
-        n_top=n_top,
+        top_n=n_top,
         directory=directory,
     )
     indicators.index = indicators.document_id
