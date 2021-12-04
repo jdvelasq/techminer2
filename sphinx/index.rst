@@ -45,7 +45,7 @@ Analysis of bibliographic datasets using Python
     most_local_cited_sources
     bradford_law
     core_sources 
-    source_impact
+    source_local_impact
     source_growth     
 
 .. --------------------------------------------------------------------------------------
