@@ -70,8 +70,9 @@ def impact_indicators(column, sep="; ", directory="./"):
         "pub_year",
     ]
     detailed_citations = documents[columns_to_explode]
-    detailed_citations[column] = detailed_citations[column].str.split(sep)
+    detailed_citations[column] = detailed_citations[column].str.split(";")
     detailed_citations = detailed_citations.explode(column)
+    detailed_citations[column] = detailed_citations[column].str.strip()
     detailed_citations = detailed_citations.reset_index(drop=True)
     detailed_citations = detailed_citations.assign(
         cumcount_=detailed_citations.sort_values("global_citations", ascending=False)
