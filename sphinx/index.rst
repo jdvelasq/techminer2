@@ -2,75 +2,200 @@ Analysis of bibliographic datasets using Python
 ============================================================================================
 
 .. toctree::
-    :caption: Data importation
+    :caption: Data
     :hidden:
     :maxdepth: 1
 
     import_scopus_file
     import_references
     coverage
+    column_coverage
+
+.. --------------------------------------------------------------------------------------
 
 .. toctree::
-    :caption: Data preparation
+    :caption: Filter and search
     :hidden:
     :maxdepth: 1
 
-    apply_thesaurus
-    clean_institutions
-    clean_keywords
-    column_coverage
-    create_thesaurus
-    extract_user_keywords
     user_filters
+    find_string
+    stemming
+    extract_user_keywords
+
+.. --------------------------------------------------------------------------------------
+
+.. toctree::
+    :caption: By Year analysis
+    :hidden:
+    :maxdepth: 1
+
+    annual_scientific_production
+    average_citations_per_year
+    annual_indicators 
+
+.. --------------------------------------------------------------------------------------
+
+.. toctree::
+    :caption: By sources analysis
+    :hidden:
+    :maxdepth: 1
+
+    most_relevant_sources
+    most_local_cited_sources
+    bradford_law
+    core_sources 
+    source_impact
+    source_growth     
+
+.. --------------------------------------------------------------------------------------
+
+
+.. toctree::
+    :caption: Documents
+    :hidden:
+    :maxdepth: 1
+
+    document_indicators
+
+    most_global_cited_documents
+    most_local_cited_documents  
+    document_viewer
+    coupling_by_column_matrix
+    coupling_by_references_matrix
+    coupling_network
     summary_view
 
 
+       
+
+
+    
+
 .. toctree::
-    :caption: View and search
+    :caption: By author analysis
     :hidden:
     :maxdepth: 1
 
+    most_relevant_authors
+    most_local_cited_authors
+    authors_production_over_time_plot
+    lotka_law
+    author_local_impact
+
+
+.. toctree::
+    :caption: By institutions analysis
+    :hidden:
+    :maxdepth: 1
+
+    clean_institutions
+    most_relevant_institutions
+
+
+.. toctree::
+    :caption: By country analysis
+    :hidden:
+    :maxdepth: 1
+
+    corresponding_authors_country
+    country_scientific_production
+    most_cited_countries
+    
+
+.. toctree::
+    :caption: By author keywords analysis
+    :hidden:
+    :maxdepth: 1
+
+    clean_keywords
+    keywords_co_occurrence
+    thematic_analysis
+    thematic_map
+
+
+.. toctree::
+    :caption: By index keywords analysis
+    :hidden:
+    :maxdepth: 1
+
+
+.. toctree::
+    :caption: Abstract
+    :hidden:
+    :maxdepth: 1
+
+    
     abstract_concordances
     abstract_screening
-    document_viewer
-    find_string
-    stemming
 
 
 .. toctree::
-    :caption: Data indicators
+    :caption: References Analysis
     :hidden:
     :maxdepth: 1
 
-    annual_indicators    
+    most_local_cited_references
+    co_citation_matrix
+    main_path_network
+
+
+
+
+
+.. toctree::
+    :caption: Indicators API
+    :hidden:
+    :maxdepth: 1
+
     annual_occurrence_matrix
     collaboration_indicators
     column_indicators
-    column_indicators_by_year
-    document_indicators
-    impact_indicators
+    column_indicators_by_year 
     growth_indicators
-
+    impact_indicators
+    associations
 
 .. toctree::
-    :caption: Data representation
+    :caption: Correlation API
     :hidden:
     :maxdepth: 1
 
     auto_corr_matrix
-    co_citation_matrix
-    co_occurrence_matrix
-    co_occurrence_network
-    coupling_by_column_matrix
-    coupling_by_references_matrix
-    coupling_network
+    correlation_map
     cross_corr_matrix
     factor_matrix
-    tf_idf_matrix
-    tf_matrix     
+
 
 .. toctree::
-    :caption: Network analysis primitives
+    :caption: Co-ocurrence API
+    :hidden:
+    :maxdepth: 1
+
+    co_occurrence_matrix
+    co_occurrence_mds_map
+    co_occurrence_network
+
+
+.. toctree::
+    :caption: Document-term API
+    :hidden:
+    :maxdepth: 1
+
+    tf_idf_matrix
+    tf_matrix 
+
+.. toctree::
+    :caption: Thesaurus API
+    :hidden:
+    :maxdepth: 1
+
+    apply_thesaurus
+    create_thesaurus
+
+
+.. toctree::
+    :caption: Network API
     :hidden:
     :maxdepth: 1
 
@@ -85,42 +210,17 @@ Analysis of bibliographic datasets using Python
     :caption: Analysis tools
     :hidden:
     :maxdepth: 1
-
-    associations
-    annual_scientific_production
-    author_local_impact
-    authors_production_over_time_plot
-    average_citations_per_year
-    bradford_law
-    co_occurrence_mds_map
+ 
+    
     collaboration_network
-    core_sources    
-    correlation_map
-    corresponding_authors_country
-    country_scientific_production
     factorial_analysis_manifold
-    keywords_co_occurrence
-    lotka_law
-    main_path_network
-    mean_global_citations
-    most_cited_countries
-    most_global_cited_documents
-    most_local_cited_authors
-    most_local_cited_documents
-    most_local_cited_references
-    most_local_cited_sources
-    most_relevant_authors
-    most_relevant_institutions
-    most_relevant_sources
-    source_growth     
-    source_impact
     svd_co_occurrence_matrix_map
     svd_tf_idf_matrix_map
-    thematic_analysis
-    thematic_map
+    
+    
 
 .. toctree::
-    :caption: Visualization primitives
+    :caption: API visualization primitives
     :hidden:
     :maxdepth: 1
 
