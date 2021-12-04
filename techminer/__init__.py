@@ -20,13 +20,9 @@ from .co_citation_matrix import co_citation_matrix
 from .co_occurrence_matrix import co_occurrence_matrix
 from .co_occurrence_mds_map import co_occurrence_mds_map
 from .co_occurrence_network import co_occurrence_network
-
-# from .co_occurrence_network_analysis import co_occurrence_network_analysis
 from .collaboration_indicators import collaboration_indicators
 from .column_chart import column_chart
 from .column_coverage import column_coverage
-
-# from .column_explorer import column_explorer
 from .column_indicators import column_indicators
 from .column_indicators_by_year import column_indicators_by_year
 from .core_sources import core_sources
@@ -70,7 +66,7 @@ from .network_map import network_map
 from .network_plot import network_plot
 from .pie_chart import pie_chart
 from .source_growth import source_growth
-from .source_impact import source_impact
+from .source_local_impact import source_local_impact
 from .stacked_bar_chart import stacked_bar_chart
 from .stacked_column_chart import stacked_column_chart
 from .stemming import stemming_and, stemming_or
