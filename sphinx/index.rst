@@ -46,7 +46,21 @@ Analysis of bibliographic datasets using Python
     bradford_law
     core_sources 
     source_local_impact
-    source_growth     
+    source_dynamics     
+
+.. --------------------------------------------------------------------------------------
+
+.. toctree::
+    :caption: By author analysis
+    :hidden:
+    :maxdepth: 1
+
+    most_relevant_authors
+    most_local_cited_authors
+    authors_production_over_time
+    authors_production_per_year
+    lotka_law
+    author_local_impact
 
 .. --------------------------------------------------------------------------------------
 
@@ -72,16 +86,6 @@ Analysis of bibliographic datasets using Python
 
     
 
-.. toctree::
-    :caption: By author analysis
-    :hidden:
-    :maxdepth: 1
-
-    most_relevant_authors
-    most_local_cited_authors
-    authors_production_over_time_plot
-    lotka_law
-    author_local_impact
 
 
 .. toctree::
