@@ -6,7 +6,7 @@ Builds a co-occurrence network from a co-occurrence matrix.
 
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/data/"
->>> coc_matrix = co_occurrence_matrix(column='author_keywords', min_occ=8,directory=directory)
+>>> coc_matrix = co_occurrence_matrix(column='author_keywords', min_occ=8, directory=directory)
 >>> co_occurrence_network(coc_matrix).keys()
 dict_keys(['nodes', 'edges', 'G', 'indicators', 'communities', 'manifold_data'])
 
