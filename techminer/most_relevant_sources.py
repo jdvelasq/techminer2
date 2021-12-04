@@ -14,6 +14,14 @@ Plots the most relevant sources in the main collection.
     :width: 650px
     :align: center
 
+>>> most_relevant_sources(directory=directory, plot=False).head()
+iso_source_name
+SUSTAINABILITY                   15
+FINANCIAL INNOV                  11
+J OPEN INNOV: TECHNOL MARK CO     8
+E3S WEB CONF                      7
+FRONTIER ARTIF INTELL             5
+Name: num_documents, dtype: int64
 
 """
 
@@ -27,12 +35,17 @@ def most_relevant_sources(
     color="k",
     figsize=(8, 6),
     directory="./",
+    plot=True,
 ):
     indicators = column_indicators(
         directory=directory, column="iso_source_name"
     ).num_documents
-    indicators = indicators.sort_values(ascending=False).head(top_n)
     indicators = indicators.astype(int)
+
+    if plot is False:
+        return indicators
+
+    indicators = indicators.sort_values(ascending=False).head(top_n)
 
     return cleveland_dot_chart(
         indicators,
