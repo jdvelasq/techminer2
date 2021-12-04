@@ -34,7 +34,7 @@ from .utils import load_filtered_documents
 def document_indicators(
     global_citations=True,
     normalized_citations=False,
-    n_top=50,
+    top_n=50,
     directory="./",
 ):
     """
@@ -91,12 +91,13 @@ def document_indicators(
             "record_no",
             "document_id",
             "abstract",
+            "doi",
             citations_column,
         ]
     ]
 
-    if n_top is not None:
-        documents = documents.head(n_top)
+    if top_n is not None:
+        documents = documents.head(top_n)
 
     documents = documents.sort_values(by=citations_column, ascending=False)
 
