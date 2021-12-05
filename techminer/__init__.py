@@ -6,6 +6,7 @@ from .annual_occurrence_matrix import annual_occurrence_matrix
 from .annual_scientific_production import annual_scientific_production
 from .apply_thesaurus import apply_thesaurus
 from .associations import associations
+from .author_keywords_dynamics import author_keywords_dynamics
 from .author_local_impact import author_local_impact
 from .authors_production_over_time import authors_production_over_time
 from .authors_production_per_year import authors_production_per_year
@@ -24,6 +25,7 @@ from .co_occurrence_network import co_occurrence_network
 from .collaboration_indicators import collaboration_indicators
 from .column_chart import column_chart
 from .column_coverage import column_coverage
+from .column_dynamics import column_dynamics
 from .column_indicators import column_indicators
 from .column_indicators_by_year import column_indicators_by_year
 from .core_sources import core_sources
@@ -48,16 +50,19 @@ from .heat_map import heat_map
 from .impact_indicators import impact_indicators
 from .import_references import import_references
 from .import_scopus_file import import_scopus_file
+from .index_keywords_dynamics import index_keywords_dynamics
 from .line_chart import line_chart
 from .lotka_law import lotka_law
 from .main_path_network import main_path_network
 from .most_cited_countries import most_cited_countries
+from .most_frequent_author_keywords import most_frequent_author_keywords
+from .most_frequent_authors import most_frequent_authors
+from .most_frequent_index_keywords import most_frequent_index_keywords
 from .most_global_cited_documents import most_global_cited_documents
 from .most_local_cited_authors import most_local_cited_authors
 from .most_local_cited_documents import most_local_cited_documents
 from .most_local_cited_references import most_local_cited_references
 from .most_local_cited_sources import most_local_cited_sources
-from .most_relevant_authors import most_relevant_authors
 from .most_relevant_institutions import most_relevant_institutions
 from .most_relevant_sources import most_relevant_sources
 from .network_communities import network_communities
