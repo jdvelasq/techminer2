@@ -35,7 +35,7 @@ def institutions_collaboration_network(
         column="institutions",
         min_occ=min_occ,
         max_occ=max_occ,
-        association=normalization,
+        normalization=normalization,
         directory=directory,
     )
 
