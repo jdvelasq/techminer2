@@ -35,7 +35,7 @@ def authors_collaboration_network(
         column="authors",
         min_occ=min_occ,
         max_occ=max_occ,
-        association=normalization,
+        normalization=normalization,
         directory=directory,
     )
 
