@@ -14,6 +14,10 @@ from .author_keywords_co_occurrence_degree_plot import (
 )
 from .author_keywords_co_occurrence_network import author_keywords_co_occurrence_network
 from .author_keywords_dynamics import author_keywords_dynamics
+from .author_keywords_factorial_mds_map import author_keywords_factorial_mds_map
+from .author_keywords_svd_map import author_keywords_svd_map
+from .author_keywords_thematic_communities import author_keywords_thematic_communities
+from .author_keywords_thematic_network import author_keywords_thematic_network
 from .author_keywords_wordcloud import author_keywords_wordcloud
 from .author_local_impact import author_local_impact
 from .authors_collaboration_network import authors_collaboration_network
@@ -32,6 +36,7 @@ from .co_citation_network import co_citation_network
 from .co_occurrence_matrix import co_occurrence_matrix
 from .co_occurrence_mds_map import co_occurrence_mds_map
 from .co_occurrence_network import co_occurrence_network
+from .co_occurrence_svd_map import co_occurrence_svd_map
 from .collaboration_indicators import collaboration_indicators
 from .column_chart import column_chart
 from .column_coverage import column_coverage
@@ -54,7 +59,7 @@ from .document_viewer import document_viewer
 from .dotted_timeline_chart import dotted_timeline_chart
 from .extract_user_keywords import extract_user_keywords
 from .factor_matrix import factor_matrix
-from .factorial_analysis_manifold import factorial_analysis_manifold
+from .factorial_analysis_manifold import Factorial_analysis_manifold
 from .find_string import find_string
 from .growth_indicators import growth_indicators
 from .heat_map import heat_map
@@ -69,6 +74,10 @@ from .index_keywords_co_occurrence_degree_plot import (
 )
 from .index_keywords_co_occurrence_network import index_keywords_co_occurrence_network
 from .index_keywords_dynamics import index_keywords_dynamics
+from .index_keywords_factorial_mds_map import index_keywords_factorial_mds_map
+from .index_keywords_svd_map import index_keywords_svd_map
+from .index_keywords_thematic_communities import index_keywords_thematic_communities
+from .index_keywords_thematic_network import index_keywords_thematic_network
 from .index_keywords_wordcloud import index_keywords_wordcloud
 from .institutions_collaboration_network import institutions_collaboration_network
 from .line_chart import line_chart
@@ -97,7 +106,6 @@ from .stacked_bar_chart import stacked_bar_chart
 from .stacked_column_chart import stacked_column_chart
 from .stemming import stemming_and, stemming_or
 from .summary_view import summary_view
-from .svd_co_occurrence_matrix_map import svd_co_occurrence_matrix_map
 from .svd_tf_idf_matrix_map import svd_tf_idf_matrix_map
 from .tf_idf_matrix import tf_idf_matrix
 from .tf_matrix import tf_matrix
