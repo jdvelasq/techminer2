@@ -7,7 +7,9 @@ from .annual_scientific_production import annual_scientific_production
 from .apply_thesaurus import apply_thesaurus
 from .associations import associations
 from .author_keywords_dynamics import author_keywords_dynamics
+from .author_keywords_wordcloud import author_keywords_wordcloud
 from .author_local_impact import author_local_impact
+from .authors_collaboration_network import authors_collaboration_network
 from .authors_production_over_time import authors_production_over_time
 from .authors_production_per_year import authors_production_per_year
 from .auto_corr_matrix import auto_corr_matrix
@@ -31,6 +33,7 @@ from .column_indicators_by_year import column_indicators_by_year
 from .core_sources import core_sources
 from .correlation_map import correlation_map
 from .corresponding_authors_country import corresponding_authors_country
+from .countries_collaboration_network import countries_collaboration_network
 from .country_scientific_production import country_scientific_production
 from .coupling_by_column_matrix import coupling_by_column_matrix
 from .coupling_by_references_matrix import coupling_by_references_matrix
@@ -51,6 +54,8 @@ from .impact_indicators import impact_indicators
 from .import_references import import_references
 from .import_scopus_file import import_scopus_file
 from .index_keywords_dynamics import index_keywords_dynamics
+from .index_keywords_wordcloud import index_keywords_wordcloud
+from .institutions_collaboration_network import institutions_collaboration_network
 from .line_chart import line_chart
 from .lotka_law import lotka_law
 from .main_path_network import main_path_network
