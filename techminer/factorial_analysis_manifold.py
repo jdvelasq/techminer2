@@ -22,7 +22,7 @@ Based on the bibliometrix/R/conceptualStructure.R code.
 >>> directory = "/workspaces/techminer-api/data/"
 >>> coc_matrix = co_occurrence_matrix('author_keywords', min_occ=4, directory=directory)
 >>> file_name = "/workspaces/techminer-api/sphinx/images/factorial_analysis_manifold_silhouette.png"
->>> factorial_analyzer = factorial_analysis_manifold(
+>>> factorial_analyzer = Factorial_analysis_manifold(
 ...     coc_matrix, 
 ...     manifold_method=MDS(random_state=0), 
 ...     clustering_method=KMeans(n_clusters=4, random_state=0)
@@ -34,7 +34,7 @@ Based on the bibliometrix/R/conceptualStructure.R code.
     :align: center
 
 
->>> factorial_analyzer.words_by_cluster().head()
+>>> factorial_analyzer.items_by_cluster().head()
                                      Dim-1       Dim-2  Cluster
 author_keywords        #d  #c                                  
 fintech                139 1285  21.789293  133.502844        1
@@ -59,11 +59,16 @@ from .plots import conceptual_structure_map
 
 
 class Factorial_analysis_manifold:
-    def __init__(self, matrix, manifold_method, clustering_method):
+    def __init__(
+        self,
+        matrix,
+        manifold_method,
+        clustering_method,
+    ):
         self.matrix = matrix
         self.manifold_method = manifold_method
         self.clustering_method = clustering_method
-        self.words_by_cluster_ = None
+        self.table_ = None
         self.run()
 
     def run(self):
@@ -72,15 +77,15 @@ class Factorial_analysis_manifold:
         matrix = self.manifold_method.fit_transform(matrix)
         self.clustering_method.fit(matrix)
 
-        words_by_cluster = pd.DataFrame(
+        table = pd.DataFrame(
             matrix, columns=["Dim-1", "Dim-2"], index=self.matrix.index
         )
-        words_by_cluster["Cluster"] = self.clustering_method.labels_
+        table["Cluster"] = self.clustering_method.labels_
 
-        self.words_by_cluster_ = words_by_cluster
+        self.table_ = table
 
-    def words_by_cluster(self):
-        return self.words_by_cluster_.copy()
+    def data(self):
+        return self.table_.copy()
 
     def silhouette_scores_plot(self, max_n_clusters=8, figsize=(7, 7)):
 
@@ -115,14 +120,7 @@ class Factorial_analysis_manifold:
     ):
 
         return conceptual_structure_map(
-            words_by_cluster=self.words_by_cluster_,
+            words_by_cluster=self.table_,
             top_n=top_n,
             figsize=figsize,
         )
-
-
-def factorial_analysis_manifold(matrix, manifold_method, clustering_method):
-    """
-    Mainfold Factor Analysis
-    """
-    return Factorial_analysis_manifold(matrix, manifold_method, clustering_method)
