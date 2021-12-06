@@ -5,6 +5,7 @@ By author keywords
     :maxdepth: 1
 
     author_keywords_co_occurrence_communities
+    author_keywords_co_occurrence_degree_plot
     author_keywords_co_occurrence_network
     author_keywords_dynamics
     author_keywords_wordcloud
