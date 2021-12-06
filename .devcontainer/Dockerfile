@@ -54,7 +54,7 @@ RUN pip3 --disable-pip-version-check --no-cache-dir install \
     nltk==3.2.5 \
     numpy==1.19.5 \
     pandas==1.1.5 \
-    PyYAML==3.13 \
+    PyYAML==5.4.1 \
     scikit-learn==1.0.1 \
     seaborn==0.11.2 \
     textblob==0.15.3 \

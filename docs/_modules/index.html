@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Overview: module code &mdash; TechMiner --- API 0.0.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> TechMiner --- API
+          </a>
+              <div class="version">
+                0.0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Data</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../import_scopus_file.html">Importing Scopus files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../import_references.html">Import references file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../coverage.html">Coverage report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../column_coverage.html">Column coverage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Filter and search</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user_filters.html">User filters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../find_string.html">Find string</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../stemming.html">Stemming  AND &amp; OR operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../extract_user_keywords.html">Extract user keywords</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../by_abstract_analysis.html">By abstract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../by_author_analysis.html">By author</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../by_author_keywords_analysis.html">By author keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../by_country_analysis.html">By country</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../by_document_analysis.html">By document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../by_index_keywords_analysis.html">By index keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../by_institution_analysis.html">By institution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../by_references_analysis.html">By references</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../by_source_analysis.html">By source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../by_year_analysis.html">By year</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../_api_co_occurrence.html">Co-occurrence API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_api_correlation.html">Correlation API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_api_document_term.html">Document-Term API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_api_indicators.html">Indicators API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_api_network.html">Network API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_api_thesaurus.html">Thesaurus API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../_api_visualization.html">Visualization API</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Analysis tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../factorial_analysis_manifold.html">Factorial analysis (manifold)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../svd_tf_idf_matrix_map.html">SVD of the TF-IDF matrix</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">TechMiner --- API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Overview: module code</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>All modules for which code is available</h1>
+<ul><li><a href="techminer/abstract_concordances.html">techminer.abstract_concordances</a></li>
+<li><a href="techminer/abstract_screening.html">techminer.abstract_screening</a></li>
+<li><a href="techminer/annual_indicators.html">techminer.annual_indicators</a></li>
+<li><a href="techminer/annual_occurrence_matrix.html">techminer.annual_occurrence_matrix</a></li>
+<li><a href="techminer/annual_scientific_production.html">techminer.annual_scientific_production</a></li>
+<li><a href="techminer/apply_thesaurus.html">techminer.apply_thesaurus</a></li>
+<li><a href="techminer/associations.html">techminer.associations</a></li>
+<li><a href="techminer/author_keywords_co_occurrence_communities.html">techminer.author_keywords_co_occurrence_communities</a></li>
+<li><a href="techminer/author_keywords_co_occurrence_degree_plot.html">techminer.author_keywords_co_occurrence_degree_plot</a></li>
+<li><a href="techminer/author_keywords_co_occurrence_network.html">techminer.author_keywords_co_occurrence_network</a></li>
+<li><a href="techminer/author_keywords_dynamics.html">techminer.author_keywords_dynamics</a></li>
+<li><a href="techminer/author_keywords_factorial_mds_map.html">techminer.author_keywords_factorial_mds_map</a></li>
+<li><a href="techminer/author_keywords_svd_map.html">techminer.author_keywords_svd_map</a></li>
+<li><a href="techminer/author_keywords_thematic_communities.html">techminer.author_keywords_thematic_communities</a></li>
+<li><a href="techminer/author_keywords_thematic_network.html">techminer.author_keywords_thematic_network</a></li>
+<li><a href="techminer/author_keywords_wordcloud.html">techminer.author_keywords_wordcloud</a></li>
+<li><a href="techminer/author_local_impact.html">techminer.author_local_impact</a></li>
+<li><a href="techminer/authors_collaboration_network.html">techminer.authors_collaboration_network</a></li>
+<li><a href="techminer/authors_production_over_time.html">techminer.authors_production_over_time</a></li>
+<li><a href="techminer/authors_production_per_year.html">techminer.authors_production_per_year</a></li>
+<li><a href="techminer/auto_corr_matrix.html">techminer.auto_corr_matrix</a></li>
+<li><a href="techminer/average_citations_per_year.html">techminer.average_citations_per_year</a></li>
+<li><a href="techminer/bar_chart.html">techminer.bar_chart</a></li>
+<li><a href="techminer/bradford_law.html">techminer.bradford_law</a></li>
+<li><a href="techminer/bubble_chart.html">techminer.bubble_chart</a></li>
+<li><a href="techminer/clean_institutions.html">techminer.clean_institutions</a></li>
+<li><a href="techminer/clean_keywords.html">techminer.clean_keywords</a></li>
+<li><a href="techminer/co_citation_matrix.html">techminer.co_citation_matrix</a></li>
+<li><a href="techminer/co_citation_network.html">techminer.co_citation_network</a></li>
+<li><a href="techminer/co_occurrence_matrix.html">techminer.co_occurrence_matrix</a></li>
+<li><a href="techminer/co_occurrence_mds_map.html">techminer.co_occurrence_mds_map</a></li>
+<li><a href="techminer/co_occurrence_network.html">techminer.co_occurrence_network</a></li>
+<li><a href="techminer/co_occurrence_svd_map.html">techminer.co_occurrence_svd_map</a></li>
+<li><a href="techminer/collaboration_indicators.html">techminer.collaboration_indicators</a></li>
+<li><a href="techminer/column_chart.html">techminer.column_chart</a></li>
+<li><a href="techminer/column_coverage.html">techminer.column_coverage</a></li>
+<li><a href="techminer/column_indicators.html">techminer.column_indicators</a></li>
+<li><a href="techminer/column_indicators_by_year.html">techminer.column_indicators_by_year</a></li>
+<li><a href="techminer/core_sources.html">techminer.core_sources</a></li>
+<li><a href="techminer/correlation_map.html">techminer.correlation_map</a></li>
+<li><a href="techminer/corresponding_authors_country.html">techminer.corresponding_authors_country</a></li>
+<li><a href="techminer/countries_collaboration_network.html">techminer.countries_collaboration_network</a></li>
+<li><a href="techminer/country_scientific_production.html">techminer.country_scientific_production</a></li>
+<li><a href="techminer/coupling_by_column_matrix.html">techminer.coupling_by_column_matrix</a></li>
+<li><a href="techminer/coupling_by_references_matrix.html">techminer.coupling_by_references_matrix</a></li>
+<li><a href="techminer/coupling_network.html">techminer.coupling_network</a></li>
+<li><a href="techminer/coverage.html">techminer.coverage</a></li>
+<li><a href="techminer/create_thesaurus.html">techminer.create_thesaurus</a></li>
+<li><a href="techminer/cross_corr_matrix.html">techminer.cross_corr_matrix</a></li>
+<li><a href="techminer/document_indicators.html">techminer.document_indicators</a></li>
+<li><a href="techminer/document_viewer.html">techminer.document_viewer</a></li>
+<li><a href="techminer/dotted_timeline_chart.html">techminer.dotted_timeline_chart</a></li>
+<li><a href="techminer/extract_user_keywords.html">techminer.extract_user_keywords</a></li>
+<li><a href="techminer/factor_matrix.html">techminer.factor_matrix</a></li>
+<li><a href="techminer/factorial_analysis_manifold.html">techminer.factorial_analysis_manifold</a></li>
+<li><a href="techminer/find_string.html">techminer.find_string</a></li>
+<li><a href="techminer/growth_indicators.html">techminer.growth_indicators</a></li>
+<li><a href="techminer/heat_map.html">techminer.heat_map</a></li>
+<li><a href="techminer/impact_indicators.html">techminer.impact_indicators</a></li>
+<li><a href="techminer/import_references.html">techminer.import_references</a></li>
+<li><a href="techminer/import_scopus_file.html">techminer.import_scopus_file</a></li>
+<li><a href="techminer/index_keywords_co_occurrence_communities.html">techminer.index_keywords_co_occurrence_communities</a></li>
+<li><a href="techminer/index_keywords_co_occurrence_degree_plot.html">techminer.index_keywords_co_occurrence_degree_plot</a></li>
+<li><a href="techminer/index_keywords_co_occurrence_network.html">techminer.index_keywords_co_occurrence_network</a></li>
+<li><a href="techminer/index_keywords_dynamics.html">techminer.index_keywords_dynamics</a></li>
+<li><a href="techminer/index_keywords_factorial_mds_map.html">techminer.index_keywords_factorial_mds_map</a></li>
+<li><a href="techminer/index_keywords_svd_map.html">techminer.index_keywords_svd_map</a></li>
+<li><a href="techminer/index_keywords_thematic_communities.html">techminer.index_keywords_thematic_communities</a></li>
+<li><a href="techminer/index_keywords_thematic_network.html">techminer.index_keywords_thematic_network</a></li>
+<li><a href="techminer/index_keywords_wordcloud.html">techminer.index_keywords_wordcloud</a></li>
+<li><a href="techminer/institutions_collaboration_network.html">techminer.institutions_collaboration_network</a></li>
+<li><a href="techminer/line_chart.html">techminer.line_chart</a></li>
+<li><a href="techminer/lotka_law.html">techminer.lotka_law</a></li>
+<li><a href="techminer/main_path_network.html">techminer.main_path_network</a></li>
+<li><a href="techminer/most_cited_countries.html">techminer.most_cited_countries</a></li>
+<li><a href="techminer/most_frequent_author_keywords.html">techminer.most_frequent_author_keywords</a></li>
+<li><a href="techminer/most_frequent_authors.html">techminer.most_frequent_authors</a></li>
+<li><a href="techminer/most_frequent_index_keywords.html">techminer.most_frequent_index_keywords</a></li>
+<li><a href="techminer/most_global_cited_documents.html">techminer.most_global_cited_documents</a></li>
+<li><a href="techminer/most_local_cited_authors.html">techminer.most_local_cited_authors</a></li>
+<li><a href="techminer/most_local_cited_documents.html">techminer.most_local_cited_documents</a></li>
+<li><a href="techminer/most_local_cited_references.html">techminer.most_local_cited_references</a></li>
+<li><a href="techminer/most_local_cited_sources.html">techminer.most_local_cited_sources</a></li>
+<li><a href="techminer/most_relevant_institutions.html">techminer.most_relevant_institutions</a></li>
+<li><a href="techminer/most_relevant_sources.html">techminer.most_relevant_sources</a></li>
+<li><a href="techminer/network_communities.html">techminer.network_communities</a></li>
+<li><a href="techminer/network_degree_plot.html">techminer.network_degree_plot</a></li>
+<li><a href="techminer/network_indicators.html">techminer.network_indicators</a></li>
+<li><a href="techminer/network_map.html">techminer.network_map</a></li>
+<li><a href="techminer/network_plot.html">techminer.network_plot</a></li>
+<li><a href="techminer/pie_chart.html">techminer.pie_chart</a></li>
+<li><a href="techminer/source_dynamics.html">techminer.source_dynamics</a></li>
+<li><a href="techminer/source_local_impact.html">techminer.source_local_impact</a></li>
+<li><a href="techminer/stacked_bar_chart.html">techminer.stacked_bar_chart</a></li>
+<li><a href="techminer/stacked_column_chart.html">techminer.stacked_column_chart</a></li>
+<li><a href="techminer/stemming.html">techminer.stemming</a></li>
+<li><a href="techminer/summary_view.html">techminer.summary_view</a></li>
+<li><a href="techminer/svd_tf_idf_matrix_map.html">techminer.svd_tf_idf_matrix_map</a></li>
+<li><a href="techminer/tf_idf_matrix.html">techminer.tf_idf_matrix</a></li>
+<li><a href="techminer/tf_matrix.html">techminer.tf_matrix</a></li>
+<li><a href="techminer/thematic_analysis.html">techminer.thematic_analysis</a></li>
+<li><a href="techminer/timeline_chart.html">techminer.timeline_chart</a></li>
+<li><a href="techminer/tree_map.html">techminer.tree_map</a></li>
+<li><a href="techminer/user_filters.html">techminer.user_filters</a></li>
+<li><a href="techminer/word_cloud.html">techminer.word_cloud</a></li>
+<li><a href="techminer/world_map.html">techminer.world_map</a></li>
+</ul>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -9,7 +9,7 @@ Most frequent authors
 >>> most_frequent_authors(directory=directory).savefig(file_name)
 
 .. image:: images/most_frequent_authors.png
-    :width: 500px
+    :width: 650px
     :align: center
 
 
@@ -66,7 +66,7 @@ def most_frequent_authors(
     indicators = indicators.set_index("authors")
 
     if plot is False:
-        return indicators[["num_documents", "frac_num_documents"]].head(top_n)
+        return indicators[["num_documents", "frac_num_documents"]]
 
     if use_frac_num_documents:
         indicators = indicators.frac_num_documents

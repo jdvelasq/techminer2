@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>techminer.create_thesaurus &mdash; TechMiner --- API 0.0.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> TechMiner --- API
+          </a>
+              <div class="version">
+                0.0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Data</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../import_scopus_file.html">Importing Scopus files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../import_references.html">Import references file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../coverage.html">Coverage report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../column_coverage.html">Column coverage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Filter and search</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user_filters.html">User filters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../find_string.html">Find string</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stemming.html">Stemming  AND &amp; OR operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../extract_user_keywords.html">Extract user keywords</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../by_abstract_analysis.html">By abstract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../by_author_analysis.html">By author</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../by_author_keywords_analysis.html">By author keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../by_country_analysis.html">By country</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../by_document_analysis.html">By document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../by_index_keywords_analysis.html">By index keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../by_institution_analysis.html">By institution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../by_references_analysis.html">By references</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../by_source_analysis.html">By source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../by_year_analysis.html">By year</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_api_co_occurrence.html">Co-occurrence API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_api_correlation.html">Correlation API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_api_document_term.html">Document-Term API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_api_indicators.html">Indicators API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_api_network.html">Network API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_api_thesaurus.html">Thesaurus API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_api_visualization.html">Visualization API</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Analysis tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../factorial_analysis_manifold.html">Factorial analysis (manifold)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../svd_tf_idf_matrix_map.html">SVD of the TF-IDF matrix</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">TechMiner --- API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      <li>techminer.create_thesaurus</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for techminer.create_thesaurus</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Thesaurus --- create</span>
+<span class="sd">===============================================================================</span>
+
+
+
+<span class="sd">&gt;&gt;&gt; from techminer import *</span>
+<span class="sd">&gt;&gt;&gt; directory = &quot;/workspaces/techminer-api/data/&quot;</span>
+<span class="sd">&gt;&gt;&gt; create_thesaurus(</span>
+<span class="sd">...     column=&quot;author_keywords&quot;, </span>
+<span class="sd">...     thesaurus_file=&quot;test_thesaurus.txt&quot;, </span>
+<span class="sd">...     sep=&quot;; &quot;,</span>
+<span class="sd">...     directory=directory, </span>
+<span class="sd">... )</span>
+<span class="sd">- INFO - Creating thesaurus ...</span>
+<span class="sd">- INFO - Thesaurus file &#39;/workspaces/techminer-api/data/test_thesaurus.txt&#39; created.</span>
+<span class="sd">&gt;&gt;&gt; apply_thesaurus(</span>
+<span class="sd">...     thesaurus_file=&quot;keywords.txt&quot;, </span>
+<span class="sd">...     input_column=&quot;author_keywords&quot;,</span>
+<span class="sd">...     output_column=&quot;author_keywords_thesaurus&quot;, </span>
+<span class="sd">...     strict=False,</span>
+<span class="sd">...     directory=directory, </span>
+<span class="sd">... )</span>
+<span class="sd">- INFO - The thesaurus file &#39;keywords.txt&#39; was applied to column &#39;author_keywords&#39;.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">isfile</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">.text.thesaurus</span> <span class="kn">import</span> <span class="n">Thesaurus</span><span class="p">,</span> <span class="n">load_file_as_dict</span><span class="p">,</span> <span class="n">text_clustering</span>
+<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">load_filtered_documents</span><span class="p">,</span> <span class="n">logging</span>
+
+
+<div class="viewcode-block" id="create_thesaurus"><a class="viewcode-back" href="../../create_thesaurus.html#techminer.create_thesaurus.create_thesaurus">[docs]</a><span class="k">def</span> <span class="nf">create_thesaurus</span><span class="p">(</span>
+    <span class="n">thesaurus_file</span><span class="p">,</span>
+    <span class="n">column</span><span class="p">,</span>
+    <span class="n">sep</span><span class="p">,</span>
+    <span class="n">directory</span><span class="o">=</span><span class="s2">&quot;./&quot;</span><span class="p">,</span>
+<span class="p">):</span>
+
+    <span class="n">documents</span> <span class="o">=</span> <span class="n">load_filtered_documents</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
+    <span class="n">thesaurus_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="n">thesaurus_file</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">column</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">documents</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Column &#39;</span><span class="si">{}</span><span class="s2">&#39; not in documents&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">column</span><span class="p">))</span>
+
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Creating thesaurus ...&quot;</span><span class="p">)</span>
+    <span class="n">words_list</span> <span class="o">=</span> <span class="n">documents</span><span class="p">[</span><span class="n">column</span><span class="p">]</span>
+    <span class="n">words_list</span> <span class="o">=</span> <span class="n">words_list</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">sep</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">words_list</span> <span class="o">=</span> <span class="n">words_list</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">sep</span><span class="p">)</span>
+        <span class="n">words_list</span> <span class="o">=</span> <span class="n">words_list</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">isfile</span><span class="p">(</span><span class="n">thesaurus_file</span><span class="p">):</span>
+        <span class="c1">#</span>
+        <span class="c1"># Loads existent thesaurus</span>
+        <span class="c1">#</span>
+        <span class="n">dict_</span> <span class="o">=</span> <span class="n">load_file_as_dict</span><span class="p">(</span><span class="n">thesaurus_file</span><span class="p">)</span>
+        <span class="n">clustered_words</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">dict_</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">dict_</span><span class="p">[</span><span class="n">key</span><span class="p">]]</span>
+        <span class="n">words_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words_list</span> <span class="k">if</span> <span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">clustered_words</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">words_list</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+
+            <span class="n">th_</span> <span class="o">=</span> <span class="n">text_clustering</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">words_list</span><span class="p">))</span>
+
+            <span class="n">th_</span> <span class="o">=</span> <span class="n">Thesaurus</span><span class="p">(</span>
+                <span class="n">x</span><span class="o">=</span><span class="p">{</span><span class="o">**</span><span class="n">th_</span><span class="o">.</span><span class="n">_thesaurus</span><span class="p">,</span> <span class="o">**</span><span class="n">dict_</span><span class="p">},</span>
+                <span class="n">ignore_case</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="n">full_match</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                <span class="n">use_re</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">th_</span><span class="o">.</span><span class="n">to_textfile</span><span class="p">(</span><span class="n">thesaurus_file</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1">#</span>
+        <span class="c1"># Creates a new thesaurus</span>
+        <span class="c1">#</span>
+        <span class="n">text_clustering</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">words_list</span><span class="p">))</span><span class="o">.</span><span class="n">to_textfile</span><span class="p">(</span><span class="n">thesaurus_file</span><span class="p">)</span>
+
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Thesaurus file &#39;</span><span class="si">{</span><span class="n">thesaurus_file</span><span class="si">}</span><span class="s2">&#39; created.&quot;</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>techminer.thematic_analysis &mdash; TechMiner --- API 0.0.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> TechMiner --- API
+          </a>
+              <div class="version">
+                0.0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Data</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../import_scopus_file.html">Importing Scopus files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../import_references.html">Import references file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../coverage.html">Coverage report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../column_coverage.html">Column coverage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Filter and search</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user_filters.html">User filters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../find_string.html">Find string</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stemming.html">Stemming  AND &amp; OR operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../extract_user_keywords.html">Extract user keywords</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Analysis</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../by_abstract_analysis.html">By abstract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../by_author_analysis.html">By author</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../by_author_keywords_analysis.html">By author keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../by_country_analysis.html">By country</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../by_document_analysis.html">By document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../by_index_keywords_analysis.html">By index keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../by_institution_analysis.html">By institution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../by_references_analysis.html">By references</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../by_source_analysis.html">By source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../by_year_analysis.html">By year</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_api_co_occurrence.html">Co-occurrence API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_api_correlation.html">Correlation API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_api_document_term.html">Document-Term API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_api_indicators.html">Indicators API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_api_network.html">Network API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_api_thesaurus.html">Thesaurus API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_api_visualization.html">Visualization API</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Analysis tools</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../factorial_analysis_manifold.html">Factorial analysis (manifold)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../svd_tf_idf_matrix_map.html">SVD of the TF-IDF matrix</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">TechMiner --- API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      <li>techminer.thematic_analysis</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for techminer.thematic_analysis</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Thematic analysis</span>
+<span class="sd">===============================================================================</span>
+
+<span class="sd">This analysis is used to obtain and explore a representation of the documents</span>
+<span class="sd">throught thematic clusters.</span>
+
+<span class="sd">The implemented methodology is based on the Thematic Analysis of Elementary</span>
+<span class="sd">Contexts implemented in T-LAB.</span>
+
+<span class="sd">**Algorithm**</span>
+
+<span class="sd">    1. Obtain the TF-IDF normalized matrix with rows scaled to unit length </span>
+<span class="sd">       using the Euclidean norm. Rows represent documents and columns represent</span>
+<span class="sd">       keywords.</span>
+
+<span class="sd">    2. Clustering the rows (cosine similarity).</span>
+
+<span class="sd">    3. Build a table of keywords by clusters.</span>
+
+<span class="sd">    4. Analyze the keywords by clusters.</span>
+
+
+<span class="sd">Visualization with n-1 clusters    </span>
+
+
+<span class="sd">&gt;&gt;&gt; from techminer import *</span>
+<span class="sd">&gt;&gt;&gt; from sklearn.cluster import KMeans</span>
+<span class="sd">&gt;&gt;&gt; from sklearn.manifold import MDS</span>
+<span class="sd">&gt;&gt;&gt; directory = &quot;/workspaces/techminer-api/data/&quot;</span>
+<span class="sd">&gt;&gt;&gt; tfidf_matrix = tf_idf_matrix(&#39;author_keywords&#39;, min_occ=3, directory=directory)</span>
+<span class="sd">&gt;&gt;&gt; thematic_analysis(</span>
+<span class="sd">...     tfidf_matrix, </span>
+<span class="sd">...     clustering_method=KMeans(n_clusters=6, random_state=0), </span>
+<span class="sd">...     manifold_method=MDS(random_state=0)</span>
+<span class="sd">... ).themes_by_words_</span>
+<span class="sd">author_keywords    fintech  ... open innovation</span>
+<span class="sd">#d                     139  ...             3  </span>
+<span class="sd">#c                    1285  ...            12  </span>
+<span class="sd">THEME_0           3.531425  ...        0.000000</span>
+<span class="sd">THEME_1           4.109095  ...        0.000000</span>
+<span class="sd">THEME_2          15.040339  ...        1.521395</span>
+<span class="sd">THEME_3          21.000000  ...        0.000000</span>
+<span class="sd">THEME_4           2.715340  ...        0.000000</span>
+<span class="sd">THEME_5           2.014328  ...        0.628626</span>
+<span class="sd">&lt;BLANKLINE&gt;</span>
+<span class="sd">[6 rows x 59 columns]</span>
+
+<span class="sd">&gt;&gt;&gt; file_name = &quot;/workspaces/techminer-api/sphinx/images/thematic_analysis_map.png&quot;</span>
+<span class="sd">&gt;&gt;&gt; thematic_analysis(</span>
+<span class="sd">...     tfidf_matrix, </span>
+<span class="sd">...     clustering_method=KMeans(n_clusters=6), </span>
+<span class="sd">...     manifold_method=MDS()</span>
+<span class="sd">... ).map().savefig(file_name)</span>
+
+<span class="sd">.. image:: images/thematic_analysis_map.png</span>
+<span class="sd">    :width: 650px</span>
+<span class="sd">    :align: center</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">.co_occurrence_matrix</span> <span class="kn">import</span> <span class="n">co_occurrence_matrix</span>
+
+<span class="c1"># from .co_occurrence_network_analysis import co_occurrence_network_analysis</span>
+<span class="kn">from</span> <span class="nn">.plots</span> <span class="kn">import</span> <span class="n">bubble_map</span>
+
+
+<div class="viewcode-block" id="ThematicAnalysis"><a class="viewcode-back" href="../../thematic_analysis.html#techminer.thematic_analysis.ThematicAnalysis">[docs]</a><span class="k">class</span> <span class="nc">ThematicAnalysis</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tf_idf_matrix</span><span class="p">,</span> <span class="n">manifold_method</span><span class="p">,</span> <span class="n">clustering_method</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tf_idf_matrix</span> <span class="o">=</span> <span class="n">tf_idf_matrix</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clustering_method</span> <span class="o">=</span> <span class="n">clustering_method</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">manifold_method</span> <span class="o">=</span> <span class="n">manifold_method</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">themes_by_words_</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+<div class="viewcode-block" id="ThematicAnalysis.run"><a class="viewcode-back" href="../../thematic_analysis.html#techminer.thematic_analysis.ThematicAnalysis.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">clustering_method</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tf_idf_matrix</span><span class="p">)</span>
+        <span class="n">clustered_tf_idf_matrix</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tf_idf_matrix</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">clustered_tf_idf_matrix</span><span class="p">[</span><span class="s2">&quot;CLUSTER&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">clustering_method</span><span class="o">.</span><span class="n">labels_</span>
+        <span class="n">themes_by_words</span> <span class="o">=</span> <span class="n">clustered_tf_idf_matrix</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;CLUSTER&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        <span class="n">themes_by_words</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s2">&quot;THEME_</span><span class="si">{:d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">themes_by_words</span><span class="p">))</span>
+        <span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">themes_by_words_</span> <span class="o">=</span> <span class="n">themes_by_words</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+        <span class="n">new_n_components</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">clustering_method</span><span class="o">.</span><span class="n">get_params</span><span class="p">()[</span><span class="s2">&quot;n_clusters&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">manifold_method</span><span class="o">.</span><span class="n">set_params</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">new_n_components</span><span class="p">)</span>
+        <span class="n">decomposed_themes_by_words_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">manifold_method</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span>
+            <span class="n">themes_by_words</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">decomposed_themes_by_words_</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+            <span class="n">decomposed_themes_by_words_</span><span class="p">,</span>
+            <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;DIM-</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">new_n_components</span><span class="p">)],</span>
+            <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;THEME_</span><span class="si">{:d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">themes_by_words</span><span class="p">))],</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_documents_by_theme_</span> <span class="o">=</span> <span class="n">clustered_tf_idf_matrix</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;CLUSTER&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">cluster_centers_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">clustering_method</span><span class="o">.</span><span class="n">cluster_centers_</span></div>
+
+<div class="viewcode-block" id="ThematicAnalysis.map"><a class="viewcode-back" href="../../thematic_analysis.html#techminer.thematic_analysis.ThematicAnalysis.map">[docs]</a>    <span class="k">def</span> <span class="nf">map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dim_x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dim_y</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color_scheme</span><span class="o">=</span><span class="s2">&quot;clusters&quot;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">)):</span>
+
+        <span class="k">return</span> <span class="n">bubble_map</span><span class="p">(</span>
+            <span class="n">node_x</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">decomposed_themes_by_words_</span><span class="p">[</span><span class="s2">&quot;DIM-</span><span class="si">{:d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dim_x</span><span class="p">)],</span>
+            <span class="n">node_y</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">decomposed_themes_by_words_</span><span class="p">[</span><span class="s2">&quot;DIM-</span><span class="si">{:d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dim_y</span><span class="p">)],</span>
+            <span class="n">node_clusters</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">decomposed_themes_by_words_</span><span class="p">)),</span>
+            <span class="n">node_texts</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">decomposed_themes_by_words_</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span>
+            <span class="n">node_sizes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">num_documents_by_theme_</span><span class="p">,</span>
+            <span class="n">x_axis_at</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">y_axis_at</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">color_scheme</span><span class="o">=</span><span class="n">color_scheme</span><span class="p">,</span>
+            <span class="n">xlabel</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;X-Axis (Dim-</span><span class="si">{</span><span class="n">dim_x</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">,</span>
+            <span class="n">ylabel</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Y-Axis (Dim-</span><span class="si">{</span><span class="n">dim_y</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">,</span>
+            <span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">,</span>
+            <span class="n">fontsize</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
+        <span class="p">)</span></div></div>
+
+    <span class="c1"># def table(self):</span>
+    <span class="c1">#     return self.co_occurrence_network.table()</span>
+
+    <span class="c1"># def network(self):</span>
+    <span class="c1">#     return self.co_occurrence_network.plot()</span>
+
+    <span class="c1"># def clusters(self):</span>
+    <span class="c1">#     return self.clusters_</span>
+
+
+<div class="viewcode-block" id="thematic_analysis"><a class="viewcode-back" href="../../thematic_analysis.html#techminer.thematic_analysis.thematic_analysis">[docs]</a><span class="k">def</span> <span class="nf">thematic_analysis</span><span class="p">(</span>
+    <span class="n">tf_idf_matrix</span><span class="p">,</span>
+    <span class="n">manifold_method</span><span class="p">,</span>
+    <span class="n">clustering_method</span><span class="p">,</span>
+<span class="p">):</span>
+
+    <span class="k">return</span> <span class="n">ThematicAnalysis</span><span class="p">(</span>
+        <span class="n">tf_idf_matrix</span><span class="o">=</span><span class="n">tf_idf_matrix</span><span class="p">,</span>
+        <span class="n">manifold_method</span><span class="o">=</span><span class="n">manifold_method</span><span class="p">,</span>
+        <span class="n">clustering_method</span><span class="o">=</span><span class="n">clustering_method</span><span class="p">,</span>
+    <span class="p">)</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -80,6 +80,7 @@ from .index_keywords_thematic_communities import index_keywords_thematic_communi
 from .index_keywords_thematic_network import index_keywords_thematic_network
 from .index_keywords_wordcloud import index_keywords_wordcloud
 from .institutions_collaboration_network import institutions_collaboration_network
+from .keywords_trend_topics import keywords_trend_topics
 from .line_chart import line_chart
 from .lotka_law import lotka_law
 from .main_path_network import main_path_network
