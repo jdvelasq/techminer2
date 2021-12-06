@@ -52,7 +52,7 @@ def associations(
 ):
 
     coc_matrix = co_occurrence_matrix(
-        column, min_occ=1, association=association, directory=directory
+        column, min_occ=1, normalization=association, directory=directory
     )
     coc_matrix.columns = coc_matrix.columns.get_level_values(0)
     coc_matrix.index = coc_matrix.index.get_level_values(0)
