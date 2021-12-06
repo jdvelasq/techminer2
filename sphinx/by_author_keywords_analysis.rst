@@ -5,6 +5,7 @@ By author keywords
     :maxdepth: 1
 
     author_keywords_dynamics
+    author_keywords_wordcloud
     clean_keywords
     keywords_co_occurrence
     most_frequent_author_keywords
