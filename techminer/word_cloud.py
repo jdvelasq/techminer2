@@ -33,7 +33,7 @@ def word_cloud(
     prefer_horizontal=0.9,
     mask=None,
     scale=1,
-    max_words=200,
+    max_words=10000,
     min_font_size=4,
     stopwords=None,
     random_state=None,
