@@ -4,6 +4,7 @@ By author
 .. toctree::
     :maxdepth: 1
 
+    authors_collaboration_network
     most_frequent_authors
     most_local_cited_authors
     authors_production_over_time
