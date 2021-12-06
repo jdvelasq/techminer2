@@ -32,7 +32,7 @@ def index_keywords_co_occurrence_degree_plot(
         column="index_keywords",
         min_occ=min_occ,
         max_occ=max_occ,
-        association=normalization,
+        normalization=normalization,
         directory=directory,
     )
 
