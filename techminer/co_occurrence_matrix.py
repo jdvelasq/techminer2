@@ -35,7 +35,7 @@ def co_occurrence_matrix(
     max_occ=None,
     min_occ_by=1,
     max_occ_by=None,
-    association=None,
+    normalization=None,
     scheme=None,
     sep="; ",
     directory="./",
@@ -90,7 +90,7 @@ def co_occurrence_matrix(
 
     co_occ_matrix = association_index(
         matrix=co_occ_matrix,
-        association=association,
+        association=normalization,
     )
 
     # ---< remove rows and columns with no associations >---------------------------------
