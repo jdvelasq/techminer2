@@ -30,7 +30,7 @@ The plot is based on the SVD technique used in T-LAB's comparative analysis.
 
 """
 
-from .svd_co_occurrence_matrix_map import svd_co_occurrence_matrix_map
+from .co_occurrence_svd_map import co_occurrence_svd_map
 
 
 def svd_tf_idf_matrix_map(
@@ -45,7 +45,7 @@ def svd_tf_idf_matrix_map(
 
     tf_idf_matrix = tf_idf_matrix.transpose()
 
-    return svd_co_occurrence_matrix_map(
+    return co_occurrence_svd_map(
         tf_idf_matrix,
         max_terms=max_terms,
         dim_x=dim_x,
