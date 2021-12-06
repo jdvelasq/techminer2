@@ -7,3 +7,4 @@ Co-occurrence API
     co_occurrence_matrix
     co_occurrence_mds_map
     co_occurrence_network
+    co_occurrence_svd_map
