@@ -58,7 +58,6 @@ Analysis of bibliographic datasets using Python
     :maxdepth: 1
  
     factorial_analysis_manifold
-    svd_co_occurrence_matrix_map
     svd_tf_idf_matrix_map
     
     
