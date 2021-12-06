@@ -57,8 +57,6 @@ Analysis of bibliographic datasets using Python
     :hidden:
     :maxdepth: 1
  
-    
-    collaboration_network
     factorial_analysis_manifold
     svd_co_occurrence_matrix_map
     svd_tf_idf_matrix_map
