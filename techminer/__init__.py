@@ -9,6 +9,9 @@ from .associations import associations
 from .author_keywords_co_occurrence_communities import (
     author_keywords_co_occurrence_communities,
 )
+from .author_keywords_co_occurrence_degree_plot import (
+    author_keywords_co_occurrence_degree_plot,
+)
 from .author_keywords_co_occurrence_network import author_keywords_co_occurrence_network
 from .author_keywords_dynamics import author_keywords_dynamics
 from .author_keywords_wordcloud import author_keywords_wordcloud
@@ -60,6 +63,9 @@ from .import_references import import_references
 from .import_scopus_file import import_scopus_file
 from .index_keywords_co_occurrence_communities import (
     index_keywords_co_occurrence_communities,
+)
+from .index_keywords_co_occurrence_degree_plot import (
+    index_keywords_co_occurrence_degree_plot,
 )
 from .index_keywords_co_occurrence_network import index_keywords_co_occurrence_network
 from .index_keywords_dynamics import index_keywords_dynamics
