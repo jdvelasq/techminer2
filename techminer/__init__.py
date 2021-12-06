@@ -6,6 +6,9 @@ from .annual_occurrence_matrix import annual_occurrence_matrix
 from .annual_scientific_production import annual_scientific_production
 from .apply_thesaurus import apply_thesaurus
 from .associations import associations
+from .author_keywords_co_occurrence_communities import (
+    author_keywords_co_occurrence_communities,
+)
 from .author_keywords_co_occurrence_network import author_keywords_co_occurrence_network
 from .author_keywords_dynamics import author_keywords_dynamics
 from .author_keywords_wordcloud import author_keywords_wordcloud
@@ -55,6 +58,9 @@ from .heat_map import heat_map
 from .impact_indicators import impact_indicators
 from .import_references import import_references
 from .import_scopus_file import import_scopus_file
+from .index_keywords_co_occurrence_communities import (
+    index_keywords_co_occurrence_communities,
+)
 from .index_keywords_co_occurrence_network import index_keywords_co_occurrence_network
 from .index_keywords_dynamics import index_keywords_dynamics
 from .index_keywords_wordcloud import index_keywords_wordcloud
