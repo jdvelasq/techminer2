@@ -33,7 +33,7 @@ rn                                                 ...
 """
 
 from .co_occurrence_matrix import co_occurrence_matrix
-from .co_occurrence_network import co_occurrence_network
+from .network import network
 from .network_communities import network_communities
 
 
@@ -47,7 +47,7 @@ def co_occurrence_communities(
     directory="./",
 ):
 
-    coc_matrix = co_occurrence_matrix(
+    matrix = co_occurrence_matrix(
         column=column,
         min_occ=min_occ,
         max_occ=max_occ,
@@ -55,10 +55,10 @@ def co_occurrence_communities(
         directory=directory,
     )
 
-    network = co_occurrence_network(
-        co_occurrence_matrix=coc_matrix,
+    network_ = network(
+        matrix,
         clustering_method=clustering_method,
         manifold_method=manifold_method,
     )
 
-    return network_communities(network)
+    return network_communities(network_)
