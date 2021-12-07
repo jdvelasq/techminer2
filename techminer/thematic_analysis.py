@@ -62,8 +62,6 @@ import numpy as np
 import pandas as pd
 
 from .co_occurrence_matrix import co_occurrence_matrix
-
-# from .co_occurrence_network_analysis import co_occurrence_network_analysis
 from .plots import bubble_map
 
 
