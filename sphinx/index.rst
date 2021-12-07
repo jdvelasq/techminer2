@@ -9,7 +9,7 @@ Analysis of bibliographic datasets using Python
     import_scopus_file
     import_references
     coverage
-    column_coverage
+    
 
 .. toctree::
     :caption: Filter and search
@@ -21,17 +21,22 @@ Analysis of bibliographic datasets using Python
     stemming
     extract_user_keywords
 
+
+
 .. toctree::
     :caption: Analysis
     :maxdepth: 1
 
     by_abstract_analysis
+    by_columns
+    by_co_occurrence
+
+
     by_author_analysis
     by_author_keywords_analysis
     by_country_analysis
     by_document_analysis
     by_index_keywords_analysis
-    by_institution_analysis    
     by_references_analysis
     by_source_analysis
     by_year_analysis
@@ -41,7 +46,7 @@ Analysis of bibliographic datasets using Python
     :caption: API Reference
     :maxdepth: 1
 
-    _api_co_occurrence
+    
     _api_correlation
     _api_document_term
     _api_indicators
