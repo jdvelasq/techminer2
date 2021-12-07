@@ -7,9 +7,6 @@ from .annual_scientific_production import annual_scientific_production
 from .apply_thesaurus import apply_thesaurus
 from .associations import associations
 from .author_keywords_factorial_mds_map import author_keywords_factorial_mds_map
-from .author_keywords_thematic_communities import author_keywords_thematic_communities
-from .author_keywords_thematic_network import author_keywords_thematic_network
-from .author_local_impact import author_local_impact
 from .authors_production_per_year import authors_production_per_year
 from .auto_corr_matrix import auto_corr_matrix
 from .average_citations_per_year import average_citations_per_year
@@ -25,7 +22,6 @@ from .co_occurrence_communities import co_occurrence_communities
 from .co_occurrence_degree_plot import co_occurrence_degree_plot
 from .co_occurrence_matrix import co_occurrence_matrix
 from .co_occurrence_mds_map import co_occurrence_mds_map
-from .co_occurrence_network import co_occurrence_network
 from .co_occurrence_svd_map import co_occurrence_svd_map
 from .collaboration_indicators import collaboration_indicators
 from .column_chart import column_chart
@@ -34,6 +30,7 @@ from .column_dynamics import column_dynamics
 from .column_frequency import column_frequency
 from .column_frequency_over_time import column_frequency_over_time
 from .column_global_citations import column_global_citations
+from .column_h_index import column_h_index
 from .column_indicators import column_indicators
 from .column_indicators_by_year import column_indicators_by_year
 from .column_trends import column_trends
@@ -61,8 +58,6 @@ from .impact_indicators import impact_indicators
 from .import_references import import_references
 from .import_scopus_file import import_scopus_file
 from .index_keywords_factorial_mds_map import index_keywords_factorial_mds_map
-from .index_keywords_thematic_communities import index_keywords_thematic_communities
-from .index_keywords_thematic_network import index_keywords_thematic_network
 from .line_chart import line_chart
 from .lotka_law import lotka_law
 from .main_path_network import main_path_network
@@ -71,6 +66,7 @@ from .most_local_cited_authors import most_local_cited_authors
 from .most_local_cited_documents import most_local_cited_documents
 from .most_local_cited_references import most_local_cited_references
 from .most_local_cited_sources import most_local_cited_sources
+from .network import network
 from .network_communities import network_communities
 from .network_degree_plot import network_degree_plot
 from .network_indicators import network_indicators
@@ -78,7 +74,6 @@ from .network_map import network_map
 from .network_plot import network_plot
 from .occurrence_matrix import occurrence_matrix
 from .pie_chart import pie_chart
-from .source_local_impact import source_local_impact
 from .stacked_bar_chart import stacked_bar_chart
 from .stacked_column_chart import stacked_column_chart
 from .stemming import stemming_and, stemming_or
@@ -86,7 +81,9 @@ from .summary_view import summary_view
 from .svd_tf_idf_matrix_map import svd_tf_idf_matrix_map
 from .tf_idf_matrix import tf_idf_matrix
 from .tf_matrix import tf_matrix
-from .thematic_analysis import thematic_analysis
+from .thematic_analysis import ThematicAnalysis
+from .thematic_map_communities import thematic_map_communities
+from .thematic_map_network import thematic_map_network
 from .timeline_chart import timeline_chart
 from .tree_map import tree_map
 from .user_filters import user_filters
