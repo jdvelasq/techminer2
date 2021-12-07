@@ -34,11 +34,9 @@ Analysis of bibliographic datasets using Python
 
     by_author_analysis
     by_author_keywords_analysis
-    by_country_analysis
     by_document_analysis
     by_index_keywords_analysis
     by_references_analysis
-    by_source_analysis
     by_year_analysis
 
 
@@ -46,7 +44,7 @@ Analysis of bibliographic datasets using Python
     :caption: API Reference
     :maxdepth: 1
 
-    
+
     _api_correlation
     _api_document_term
     _api_indicators
