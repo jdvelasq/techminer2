@@ -35,15 +35,30 @@ from matplotlib.ticker import AutoMinorLocator, MultipleLocator
 from sklearn.decomposition import TruncatedSVD
 from sklearn.manifold import MDS
 
+from .co_occurrence_matrix import co_occurrence_matrix
+
 
 def co_occurrence_mds_map(
-    matrix,
+    column,
+    min_occ=1,
+    max_occ=None,
+    normalization=None,
+    scheme=None,
+    directory="./",
     figsize=(7, 7),
     svd__n_iter=5,
     mds__n_init=4,
     mds__max_iter=300,
     random_state=0,
 ):
+    matrix = co_occurrence_matrix(
+        column=column,
+        min_occ=min_occ,
+        max_occ=max_occ,
+        normalization=normalization,
+        scheme=scheme,
+        directory=directory,
+    )
 
     decomposed_matrix = TruncatedSVD(
         n_components=20, n_iter=svd__n_iter, random_state=random_state
