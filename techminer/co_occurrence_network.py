@@ -2,7 +2,7 @@
 Co-occurrence network
 ===============================================================================
 
-Builds a co-occurrence network from a co-occurrence matrix.
+Builds a co-occurrence network
 
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/data/"
@@ -19,13 +19,27 @@ from sklearn.manifold import MDS
 
 import networkx as nx
 
+from .co_occurrence_matrix import co_occurrence_matrix
+
 
 def co_occurrence_network(
-    co_occurrence_matrix,
+    column,
+    min_occ=1,
+    max_occ=None,
+    normalization=None,
     clustering_method="louvain",
     manifold_method=None,
+    scheme=None,
+    directory="./",
 ):
-    matrix = co_occurrence_matrix.copy()
+    matrix = co_occurrence_matrix(
+        column=column,
+        min_occ=min_occ,
+        max_occ=max_occ,
+        normalization=normalization,
+        scheme=scheme,
+        directory=directory,
+    )
 
     # -------------------------------------------------------------------------
     matrix.sort_index(axis="columns", level=[0, 1, 2], inplace=True)
