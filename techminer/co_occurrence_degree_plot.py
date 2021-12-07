@@ -14,7 +14,7 @@ Co-occurrence degree plot
 """
 
 from .co_occurrence_matrix import co_occurrence_matrix
-from .co_occurrence_network import co_occurrence_network
+from .network import network
 from .network_degree_plot import network_degree_plot
 
 
@@ -37,13 +37,13 @@ def co_occurrence_degree_plot(
         directory=directory,
     )
 
-    network = co_occurrence_network(
+    network_ = network(
         co_occurrence_matrix=coc_matrix,
         clustering_method=clustering_method,
         manifold_method=manifold_method,
     )
 
     return network_degree_plot(
-        network,
+        network_,
         figsize=figsize,
     )
