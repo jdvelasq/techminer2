@@ -6,27 +6,10 @@ from .annual_occurrence_matrix import annual_occurrence_matrix
 from .annual_scientific_production import annual_scientific_production
 from .apply_thesaurus import apply_thesaurus
 from .associations import associations
-from .author_keywords_co_occurrence_communities import (
-    author_keywords_co_occurrence_communities,
-)
-from .author_keywords_co_occurrence_degree_plot import (
-    author_keywords_co_occurrence_degree_plot,
-)
-from .author_keywords_co_occurrence_network import author_keywords_co_occurrence_network
-from .author_keywords_co_occurrence_svd_map import author_keywords_co_occurrence_svd_map
-from .author_keywords_dynamics import author_keywords_dynamics
 from .author_keywords_factorial_mds_map import author_keywords_factorial_mds_map
-from .author_keywords_frequency import author_keywords_frequency
 from .author_keywords_thematic_communities import author_keywords_thematic_communities
 from .author_keywords_thematic_network import author_keywords_thematic_network
-from .author_keywords_trend_topics import author_keywords_trend_topics
-from .author_keywords_wordcloud import author_keywords_wordcloud
 from .author_local_impact import author_local_impact
-from .authors_co_occurrence_communities import authors_co_occurrence_communities
-from .authors_co_occurrence_degree_plot import authors_co_occurrence_degree_plot
-from .authors_co_occurrence_network import authors_co_occurrence_network
-from .authors_frequency import authors_frequency
-from .authors_frequency_over_time import authors_frequency_over_time
 from .authors_production_per_year import authors_production_per_year
 from .auto_corr_matrix import auto_corr_matrix
 from .average_citations_per_year import average_citations_per_year
@@ -38,6 +21,8 @@ from .clean_keywords import clean_keywords
 from .cleveland_dot_chart import cleveland_dot_chart
 from .co_citation_matrix import co_citation_matrix
 from .co_citation_network import co_citation_network
+from .co_occurrence_communities import co_occurrence_communities
+from .co_occurrence_degree_plot import co_occurrence_degree_plot
 from .co_occurrence_matrix import co_occurrence_matrix
 from .co_occurrence_mds_map import co_occurrence_mds_map
 from .co_occurrence_network import co_occurrence_network
@@ -46,14 +31,16 @@ from .collaboration_indicators import collaboration_indicators
 from .column_chart import column_chart
 from .column_coverage import column_coverage
 from .column_dynamics import column_dynamics
+from .column_frequency import column_frequency
+from .column_frequency_over_time import column_frequency_over_time
+from .column_global_citations import column_global_citations
 from .column_indicators import column_indicators
 from .column_indicators_by_year import column_indicators_by_year
+from .column_trends import column_trends
+from .column_wordcloud import column_wordcloud
 from .core_sources import core_sources
 from .correlation_map import correlation_map
 from .corresponding_authors_country import corresponding_authors_country
-from .countries_co_occurrence_communities import countries_co_occurrence_communities
-from .countries_co_occurrence_degree_plot import countries_co_occurrence_degree_plot
-from .countries_co_occurrence_network import countries_co_occurrence_network
 from .countries_frequency import countries_frequency
 from .coupling_by_column_matrix import coupling_by_column_matrix
 from .coupling_by_references_matrix import coupling_by_references_matrix
@@ -73,34 +60,12 @@ from .heat_map import heat_map
 from .impact_indicators import impact_indicators
 from .import_references import import_references
 from .import_scopus_file import import_scopus_file
-from .index_keywords_co_occurrence_communities import (
-    index_keywords_co_occurrence_communities,
-)
-from .index_keywords_co_occurrence_degree_plot import (
-    index_keywords_co_occurrence_degree_plot,
-)
-from .index_keywords_co_occurrence_network import index_keywords_co_occurrence_network
-from .index_keywords_co_occurrence_svd_map import index_keywords_co_occurrence_svd_map
-from .index_keywords_dynamics import index_keywords_dynamics
 from .index_keywords_factorial_mds_map import index_keywords_factorial_mds_map
-from .index_keywords_frequency import index_keywords_frequency
 from .index_keywords_thematic_communities import index_keywords_thematic_communities
 from .index_keywords_thematic_network import index_keywords_thematic_network
-from .index_keywords_trend_topics import index_keywords_trend_topics
-from .index_keywords_wordcloud import index_keywords_wordcloud
-from .institutions_co_occurrence_communities import (
-    institutions_co_occurrence_communities,
-)
-from .institutions_co_occurrence_degree_plot import (
-    institutions_co_occurrence_degree_plot,
-)
-from .institutions_co_occurrence_network import institutions_co_occurrence_network
-from .institutions_frequency import institutions_frequency
-from .keywords_trend_topics import keywords_trend_topics
 from .line_chart import line_chart
 from .lotka_law import lotka_law
 from .main_path_network import main_path_network
-from .most_cited_countries import most_cited_countries
 from .most_global_cited_documents import most_global_cited_documents
 from .most_local_cited_authors import most_local_cited_authors
 from .most_local_cited_documents import most_local_cited_documents
@@ -111,10 +76,9 @@ from .network_degree_plot import network_degree_plot
 from .network_indicators import network_indicators
 from .network_map import network_map
 from .network_plot import network_plot
+from .occurrence_matrix import occurrence_matrix
 from .pie_chart import pie_chart
-from .source_dynamics import source_dynamics
 from .source_local_impact import source_local_impact
-from .sources_frequency import sources_frequency
 from .stacked_bar_chart import stacked_bar_chart
 from .stacked_column_chart import stacked_column_chart
 from .stemming import stemming_and, stemming_or
