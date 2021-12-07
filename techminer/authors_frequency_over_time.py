@@ -1,0 +1,43 @@
+"""
+Authors frequency over time
+===============================================================================
+
+>>> from techminer import *
+>>> directory = "/workspaces/techminer-api/data/"
+>>> file_name = "/workspaces/techminer-api/sphinx/images/authors_frequency_over_time.png"
+>>> authors_frequency_over_time(min_occ=2, directory=directory).savefig(file_name)
+
+.. image:: images/authors_frequency_over_time.png
+    :width: 650px
+    :align: center
+
+>>> authors_frequency_over_time(min_occ=2, directory=directory, plot=False).head()
+pub_year    2016  2017  2018  2019  2020  2021
+authors                                       
+Arqawi S       0     0     0     0     1     1
+Bernards N     0     0     0     2     0     0
+Budi I         0     0     0     0     1     1
+Daragmeh A     0     0     0     0     0     2
+Dincer H       0     0     0     0     0     2
+
+
+"""
+
+
+from .annual_occurrence_matrix import annual_occurrence_matrix
+from .dotted_timeline_chart import dotted_timeline_chart
+
+
+def authors_frequency_over_time(
+    min_occ=2,
+    figsize=(6, 6),
+    directory="./",
+    plot=True,
+):
+    production = annual_occurrence_matrix(
+        "authors", min_occ=min_occ, directory=directory
+    )
+    if plot is False:
+        return production
+
+    return dotted_timeline_chart(production, figsize=figsize)
