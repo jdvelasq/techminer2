@@ -36,7 +36,6 @@ def tf_idf_matrix(
     use_idf=True,
     smooth_idf=True,
     sublinear_tf=False,
-    max_items=3000,
     directory="./",
 ):
     """
