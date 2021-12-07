@@ -7,7 +7,6 @@ from .annual_scientific_production import annual_scientific_production
 from .apply_thesaurus import apply_thesaurus
 from .associations import associations
 from .author_keywords_factorial_mds_map import author_keywords_factorial_mds_map
-from .authors_production_per_year import authors_production_per_year
 from .auto_corr_matrix import auto_corr_matrix
 from .average_citations_per_year import average_citations_per_year
 from .bar_chart import bar_chart
