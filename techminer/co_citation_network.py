@@ -17,7 +17,7 @@ Co-citation network
 """
 
 from .co_citation_matrix import co_citation_matrix
-from .co_occurrence_network import co_occurrence_network
+from .network import network
 from .network_plot import network_plot
 
 
@@ -35,13 +35,13 @@ def co_citation_network(
         directory=directory,
     )
 
-    network = co_occurrence_network(
+    network_ = network(
         co_occurrence_matrix=matrix,
         clustering_method=clustering_method,
     )
 
     return network_plot(
-        network,
+        network_,
         figsize=figsize,
         k=k,
         iterations=iterations,
