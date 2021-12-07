@@ -19,7 +19,7 @@ financial technologies             28     2016  ...               225   1
 innovation                         13     2016  ...               249   2
 bank                               13     2016  ...               193   3
 financial service                  11     2016  ...               300   4
-<BLANKLINE>
+<BLANKLINE>º
 [5 rows x 6 columns]
 
 """
