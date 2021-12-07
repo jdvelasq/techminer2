@@ -2,26 +2,9 @@
 Thematic analysis
 ===============================================================================
 
-This analysis is used to obtain and explore a representation of the documents
-throught thematic clusters.
-
 The implemented methodology is based on the Thematic Analysis of Elementary
 Contexts implemented in T-LAB.
 
-**Algorithm**
-
-    1. Obtain the TF-IDF normalized matrix with rows scaled to unit length 
-       using the Euclidean norm. Rows represent documents and columns represent
-       keywords.
-
-    2. Clustering the rows (cosine similarity).
-
-    3. Build a table of keywords by clusters.
-
-    4. Analyze the keywords by clusters.
-
-
-Visualization with n-1 clusters    
 
 
 >>> from techminer import *
@@ -60,14 +43,19 @@ THEME_5           2.014328  ...        0.628626
 """
 import numpy as np
 import pandas as pd
+from sklearn.cluster import KMeans
+from sklearn.manifold import MDS
 
-from .co_occurrence_matrix import co_occurrence_matrix
 from .plots import bubble_map
 
 
 class ThematicAnalysis:
-    def __init__(self, tf_idf_matrix, manifold_method, clustering_method):
+    def __init__(self, tf_idf_matrix, manifold_method=None, clustering_method=None):
         self.tf_idf_matrix = tf_idf_matrix.copy()
+        if clustering_method is None:
+            clustering_method = KMeans(n_clusters=6)
+        if manifold_method is None:
+            manifold_method = MDS(n_components=20, random_state=0)
         self.clustering_method = clustering_method
         self.manifold_method = manifold_method
         self.themes_by_words_ = None
@@ -125,16 +113,3 @@ class ThematicAnalysis:
 
     # def clusters(self):
     #     return self.clusters_
-
-
-def thematic_analysis(
-    tf_idf_matrix,
-    manifold_method,
-    clustering_method,
-):
-
-    return ThematicAnalysis(
-        tf_idf_matrix=tf_idf_matrix,
-        manifold_method=manifold_method,
-        clustering_method=clustering_method,
-    )
