@@ -43,31 +43,36 @@
 <li class="toctree-l1"><a class="reference internal" href="../../import_scopus_file.html">Importing Scopus files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../import_references.html">Import references file</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../coverage.html">Coverage report</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../column_coverage.html">Column coverage</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Filter and search</span></p>
+<p class="caption"><span class="caption-text">Filter</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../user_filters.html">User filters</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Search</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../find_string.html">Find string</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../stemming.html">Stemming  AND &amp; OR operators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../extract_user_keywords.html">Extract user keywords</a></li>
 </ul>
+<p class="caption"><span class="caption-text">Cleaning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../clean_institutions.html">Clean — institutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../clean_keywords.html">Clean — keywords</a></li>
+</ul>
 <p class="caption"><span class="caption-text">Analysis</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../by_abstract_analysis.html">By abstract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../by_columns.html">By columns</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../by_co_occurrence.html">By co-occurrence</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../by_author_analysis.html">By author</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../by_author_keywords_analysis.html">By author keywords</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../by_country_analysis.html">By country</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../by_document_analysis.html">By document</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../by_index_keywords_analysis.html">By index keywords</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../by_institution_analysis.html">By institution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../by_references_analysis.html">By references</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../by_source_analysis.html">By source</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../by_year_analysis.html">By year</a></li>
 </ul>
 <p class="caption"><span class="caption-text">API Reference</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_co_occurrence.html">Co-occurrence API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_api_correlation.html">Correlation API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_api_document_term.html">Document-Term API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_api_indicators.html">Indicators API</a></li>
@@ -143,15 +148,30 @@
 <span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">TruncatedSVD</span>
 <span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="kn">import</span> <span class="n">MDS</span>
 
+<span class="kn">from</span> <span class="nn">.co_occurrence_matrix</span> <span class="kn">import</span> <span class="n">co_occurrence_matrix</span>
+
 
 <div class="viewcode-block" id="co_occurrence_mds_map"><a class="viewcode-back" href="../../co_occurrence_mds_map.html#techminer.co_occurrence_mds_map.co_occurrence_mds_map">[docs]</a><span class="k">def</span> <span class="nf">co_occurrence_mds_map</span><span class="p">(</span>
-    <span class="n">matrix</span><span class="p">,</span>
+    <span class="n">column</span><span class="p">,</span>
+    <span class="n">min_occ</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">max_occ</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">normalization</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">scheme</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">directory</span><span class="o">=</span><span class="s2">&quot;./&quot;</span><span class="p">,</span>
     <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span>
     <span class="n">svd__n_iter</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
     <span class="n">mds__n_init</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
     <span class="n">mds__max_iter</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
     <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
 <span class="p">):</span>
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">co_occurrence_matrix</span><span class="p">(</span>
+        <span class="n">column</span><span class="o">=</span><span class="n">column</span><span class="p">,</span>
+        <span class="n">min_occ</span><span class="o">=</span><span class="n">min_occ</span><span class="p">,</span>
+        <span class="n">max_occ</span><span class="o">=</span><span class="n">max_occ</span><span class="p">,</span>
+        <span class="n">normalization</span><span class="o">=</span><span class="n">normalization</span><span class="p">,</span>
+        <span class="n">scheme</span><span class="o">=</span><span class="n">scheme</span><span class="p">,</span>
+        <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
+    <span class="p">)</span>
 
     <span class="n">decomposed_matrix</span> <span class="o">=</span> <span class="n">TruncatedSVD</span><span class="p">(</span>
         <span class="n">n_components</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="n">svd__n_iter</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">random_state</span>

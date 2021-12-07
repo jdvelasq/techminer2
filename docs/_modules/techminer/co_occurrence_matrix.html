@@ -43,31 +43,36 @@
 <li class="toctree-l1"><a class="reference internal" href="../../import_scopus_file.html">Importing Scopus files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../import_references.html">Import references file</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../coverage.html">Coverage report</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../column_coverage.html">Column coverage</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Filter and search</span></p>
+<p class="caption"><span class="caption-text">Filter</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../user_filters.html">User filters</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Search</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../find_string.html">Find string</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../stemming.html">Stemming  AND &amp; OR operators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../extract_user_keywords.html">Extract user keywords</a></li>
 </ul>
+<p class="caption"><span class="caption-text">Cleaning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../clean_institutions.html">Clean — institutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../clean_keywords.html">Clean — keywords</a></li>
+</ul>
 <p class="caption"><span class="caption-text">Analysis</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../by_abstract_analysis.html">By abstract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../by_columns.html">By columns</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../by_co_occurrence.html">By co-occurrence</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../by_author_analysis.html">By author</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../by_author_keywords_analysis.html">By author keywords</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../by_country_analysis.html">By country</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../by_document_analysis.html">By document</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../by_index_keywords_analysis.html">By index keywords</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../by_institution_analysis.html">By institution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../by_references_analysis.html">By references</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../by_source_analysis.html">By source</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../by_year_analysis.html">By year</a></li>
 </ul>
 <p class="caption"><span class="caption-text">API Reference</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_co_occurrence.html">Co-occurrence API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_api_correlation.html">Correlation API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_api_document_term.html">Document-Term API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_api_indicators.html">Indicators API</a></li>
@@ -124,12 +129,7 @@
 
 
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-
-<span class="kn">from</span> <span class="nn">.tf_matrix</span> <span class="kn">import</span> <span class="n">tf_matrix</span>
-<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">index_terms2counters</span>
+<span class="kn">from</span> <span class="nn">.occurrence_matrix</span> <span class="kn">import</span> <span class="n">occurrence_matrix</span>
 
 <span class="c1"># pyltin: disable=c0103</span>
 <span class="c1"># pylint: disable=too-many-arguments</span>
@@ -138,74 +138,21 @@
 
 <div class="viewcode-block" id="co_occurrence_matrix"><a class="viewcode-back" href="../../co_occurrence_matrix.html#techminer.co_occurrence_matrix.co_occurrence_matrix">[docs]</a><span class="k">def</span> <span class="nf">co_occurrence_matrix</span><span class="p">(</span>
     <span class="n">column</span><span class="p">,</span>
-    <span class="n">by</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">min_occ</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
     <span class="n">max_occ</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">min_occ_by</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-    <span class="n">max_occ_by</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">normalization</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">scheme</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;; &quot;</span><span class="p">,</span>
     <span class="n">directory</span><span class="o">=</span><span class="s2">&quot;./&quot;</span><span class="p">,</span>
 <span class="p">):</span>
 
-    <span class="k">if</span> <span class="n">by</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">column</span> <span class="o">==</span> <span class="n">by</span><span class="p">:</span>
-        <span class="n">by</span> <span class="o">=</span> <span class="n">column</span>
-        <span class="n">matrix_in_columns</span> <span class="o">=</span> <span class="n">tf_matrix</span><span class="p">(</span>
-            <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
-            <span class="n">column</span><span class="o">=</span><span class="n">column</span><span class="p">,</span>
-            <span class="n">min_occ</span><span class="o">=</span><span class="n">min_occ</span><span class="p">,</span>
-            <span class="n">max_occ</span><span class="o">=</span><span class="n">max_occ</span><span class="p">,</span>
-            <span class="n">scheme</span><span class="o">=</span><span class="n">scheme</span><span class="p">,</span>
-            <span class="n">sep</span><span class="o">=</span><span class="n">sep</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="n">matrix_in_rows</span> <span class="o">=</span> <span class="n">matrix_in_columns</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-    <span class="k">else</span><span class="p">:</span>
-
-        <span class="n">matrix_in_columns</span> <span class="o">=</span> <span class="n">tf_matrix</span><span class="p">(</span>
-            <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
-            <span class="n">column</span><span class="o">=</span><span class="n">column</span><span class="p">,</span>
-            <span class="n">min_occ</span><span class="o">=</span><span class="n">min_occ</span><span class="p">,</span>
-            <span class="n">max_occ</span><span class="o">=</span><span class="n">max_occ</span><span class="p">,</span>
-            <span class="n">scheme</span><span class="o">=</span><span class="n">scheme</span><span class="p">,</span>
-            <span class="n">sep</span><span class="o">=</span><span class="n">sep</span><span class="p">,</span>
-        <span class="p">)</span>
-
-        <span class="n">matrix_in_rows</span> <span class="o">=</span> <span class="n">tf_matrix</span><span class="p">(</span>
-            <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
-            <span class="n">column</span><span class="o">=</span><span class="n">by</span><span class="p">,</span>
-            <span class="n">min_occ</span><span class="o">=</span><span class="n">min_occ_by</span><span class="p">,</span>
-            <span class="n">max_occ</span><span class="o">=</span><span class="n">max_occ_by</span><span class="p">,</span>
-            <span class="n">scheme</span><span class="o">=</span><span class="n">scheme</span><span class="p">,</span>
-            <span class="n">sep</span><span class="o">=</span><span class="n">sep</span><span class="p">,</span>
-        <span class="p">)</span>
-
-        <span class="n">matrix_in_rows</span> <span class="o">=</span> <span class="n">matrix_in_rows</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
-
-        <span class="n">common_documents</span> <span class="o">=</span> <span class="n">matrix_in_columns</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">matrix_in_rows</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
-        <span class="n">matrix_in_columns</span> <span class="o">=</span> <span class="n">matrix_in_columns</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">common_documents</span><span class="p">,</span> <span class="p">:]</span>
-        <span class="n">matrix_in_rows</span> <span class="o">=</span> <span class="n">matrix_in_rows</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">common_documents</span><span class="p">,</span> <span class="p">:]</span>
-
-    <span class="n">matrix_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span>
-        <span class="n">matrix_in_rows</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">matrix_in_columns</span><span class="o">.</span><span class="n">values</span>
-    <span class="p">)</span>
-
-    <span class="n">co_occ_matrix</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-        <span class="n">matrix_values</span><span class="p">,</span>
-        <span class="n">columns</span><span class="o">=</span><span class="n">matrix_in_columns</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span>
-        <span class="n">index</span><span class="o">=</span><span class="n">matrix_in_rows</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span>
-    <span class="p">)</span>
-
-    <span class="n">co_occ_matrix</span> <span class="o">=</span> <span class="n">association_index</span><span class="p">(</span>
-        <span class="n">matrix</span><span class="o">=</span><span class="n">co_occ_matrix</span><span class="p">,</span>
-        <span class="n">association</span><span class="o">=</span><span class="n">normalization</span><span class="p">,</span>
-    <span class="p">)</span>
-
-    <span class="c1"># ---&lt; remove rows and columns with no associations &gt;---------------------------------</span>
-    <span class="n">co_occ_matrix</span> <span class="o">=</span> <span class="n">co_occ_matrix</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">(</span><span class="n">co_occ_matrix</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)]</span>
-    <span class="n">co_occ_matrix</span> <span class="o">=</span> <span class="n">co_occ_matrix</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">co_occ_matrix</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="p">:]</span>
-
-    <span class="k">return</span> <span class="n">co_occ_matrix</span></div>
+    <span class="k">return</span> <span class="n">occurrence_matrix</span><span class="p">(</span>
+        <span class="n">column</span><span class="p">,</span>
+        <span class="n">min_occ</span><span class="o">=</span><span class="n">min_occ</span><span class="p">,</span>
+        <span class="n">max_occ</span><span class="o">=</span><span class="n">max_occ</span><span class="p">,</span>
+        <span class="n">normalization</span><span class="o">=</span><span class="n">normalization</span><span class="p">,</span>
+        <span class="n">scheme</span><span class="o">=</span><span class="n">scheme</span><span class="p">,</span>
+        <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
+    <span class="p">)</span></div>
 </pre></div>
 
            </div>

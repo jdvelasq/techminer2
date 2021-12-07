@@ -9,3 +9,5 @@ By references
     main_path_network
     most_local_cited_references
 
+    most_local_cited_sources
+    most_local_cited_authors

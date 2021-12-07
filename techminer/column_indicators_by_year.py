@@ -22,7 +22,7 @@ Brooks S          2017              1               146               15
 from .utils import load_filtered_documents
 
 
-def column_indicators_by_year(directory=None, column="authors", sep="; "):
+def column_indicators_by_year(directory=None, column="authors"):
     """
     Counts the number of terms by record per year.
 

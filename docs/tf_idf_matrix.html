@@ -46,31 +46,36 @@
 <li class="toctree-l1"><a class="reference internal" href="import_scopus_file.html">Importing Scopus files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="import_references.html">Import references file</a></li>
 <li class="toctree-l1"><a class="reference internal" href="coverage.html">Coverage report</a></li>
-<li class="toctree-l1"><a class="reference internal" href="column_coverage.html">Column coverage</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Filter and search</span></p>
+<p class="caption"><span class="caption-text">Filter</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="user_filters.html">User filters</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Search</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="find_string.html">Find string</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stemming.html">Stemming  AND &amp; OR operators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="extract_user_keywords.html">Extract user keywords</a></li>
 </ul>
+<p class="caption"><span class="caption-text">Cleaning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="clean_institutions.html">Clean — institutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clean_keywords.html">Clean — keywords</a></li>
+</ul>
 <p class="caption"><span class="caption-text">Analysis</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="by_abstract_analysis.html">By abstract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="by_columns.html">By columns</a></li>
+<li class="toctree-l1"><a class="reference internal" href="by_co_occurrence.html">By co-occurrence</a></li>
 <li class="toctree-l1"><a class="reference internal" href="by_author_analysis.html">By author</a></li>
 <li class="toctree-l1"><a class="reference internal" href="by_author_keywords_analysis.html">By author keywords</a></li>
-<li class="toctree-l1"><a class="reference internal" href="by_country_analysis.html">By country</a></li>
 <li class="toctree-l1"><a class="reference internal" href="by_document_analysis.html">By document</a></li>
 <li class="toctree-l1"><a class="reference internal" href="by_index_keywords_analysis.html">By index keywords</a></li>
-<li class="toctree-l1"><a class="reference internal" href="by_institution_analysis.html">By institution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="by_references_analysis.html">By references</a></li>
-<li class="toctree-l1"><a class="reference internal" href="by_source_analysis.html">By source</a></li>
 <li class="toctree-l1"><a class="reference internal" href="by_year_analysis.html">By year</a></li>
 </ul>
 <p class="caption"><span class="caption-text">API Reference</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="_api_co_occurrence.html">Co-occurrence API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_api_correlation.html">Correlation API</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="_api_document_term.html">Document-Term API</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">TF-IDF matrix</a></li>
@@ -157,7 +162,7 @@
 </div>
 <dl class="py function">
 <dt class="sig sig-object py" id="techminer.tf_idf_matrix.tf_idf_matrix">
-<span class="sig-prename descclassname"><span class="pre">techminer.tf_idf_matrix.</span></span><span class="sig-name descname"><span class="pre">tf_idf_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_occ</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_occ</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scheme</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">';</span> <span class="pre">'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'l2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_idf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth_idf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sublinear_tf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_items</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer/tf_idf_matrix.html#tf_idf_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer.tf_idf_matrix.tf_idf_matrix" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">techminer.tf_idf_matrix.</span></span><span class="sig-name descname"><span class="pre">tf_idf_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_occ</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_occ</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scheme</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">';</span> <span class="pre">'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'l2'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_idf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth_idf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sublinear_tf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer/tf_idf_matrix.html#tf_idf_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer.tf_idf_matrix.tf_idf_matrix" title="Permalink to this definition"></a></dt>
 <dd><p>Compute TF-IDF matrix.</p>
 </dd></dl>
 

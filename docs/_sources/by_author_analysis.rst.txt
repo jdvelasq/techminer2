@@ -1,13 +1,18 @@
 By author
 -----------------------------------------------------------------------------------------
 
+
+
 .. toctree::
     :maxdepth: 1
 
-    author_local_impact
-    authors_collaboration_network
-    authors_production_over_time
+    authors_frequency_over_time
+
+
+
+.. toctree::
+    :maxdepth: 1
+
     authors_production_per_year
-    lotka_law
-    most_frequent_authors
-    most_local_cited_authors
+
+

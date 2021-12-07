@@ -1,5 +1,5 @@
 Analysis of bibliographic datasets using Python
-============================================================================================
+=========================================================================================
 
 .. toctree::
     :caption: Data
@@ -10,18 +10,35 @@ Analysis of bibliographic datasets using Python
     import_references
     coverage
     
+.. --------------------------------------------------------------------------------------
 
 .. toctree::
-    :caption: Filter and search
+    :caption: Filter
     :hidden:
     :maxdepth: 1
 
     user_filters
+
+.. --------------------------------------------------------------------------------------
+
+.. toctree::
+    :caption: Search
+    :hidden:
+    :maxdepth: 1
+
     find_string
     stemming
     extract_user_keywords
 
+.. --------------------------------------------------------------------------------------
 
+.. toctree::
+    :caption: Cleaning
+    :maxdepth: 1
+
+    clean_institutions
+    clean_keywords
+    
 
 .. toctree::
     :caption: Analysis

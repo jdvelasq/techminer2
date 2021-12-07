@@ -20,7 +20,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Document indicators" href="document_indicators.html" />
-    <link rel="prev" title="Most cited countries" href="most_cited_countries.html" /> 
+    <link rel="prev" title="Factorial analysis of author keywords using MDS" href="author_keywords_factorial_mds_map.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -46,21 +46,29 @@
 <li class="toctree-l1"><a class="reference internal" href="import_scopus_file.html">Importing Scopus files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="import_references.html">Import references file</a></li>
 <li class="toctree-l1"><a class="reference internal" href="coverage.html">Coverage report</a></li>
-<li class="toctree-l1"><a class="reference internal" href="column_coverage.html">Column coverage</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Filter and search</span></p>
+<p class="caption"><span class="caption-text">Filter</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="user_filters.html">User filters</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Search</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="find_string.html">Find string</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stemming.html">Stemming  AND &amp; OR operators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="extract_user_keywords.html">Extract user keywords</a></li>
 </ul>
+<p class="caption"><span class="caption-text">Cleaning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="clean_institutions.html">Clean — institutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clean_keywords.html">Clean — keywords</a></li>
+</ul>
 <p class="caption"><span class="caption-text">Analysis</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="by_abstract_analysis.html">By abstract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="by_columns.html">By columns</a></li>
+<li class="toctree-l1"><a class="reference internal" href="by_co_occurrence.html">By co-occurrence</a></li>
 <li class="toctree-l1"><a class="reference internal" href="by_author_analysis.html">By author</a></li>
 <li class="toctree-l1"><a class="reference internal" href="by_author_keywords_analysis.html">By author keywords</a></li>
-<li class="toctree-l1"><a class="reference internal" href="by_country_analysis.html">By country</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">By document</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="document_indicators.html">Document indicators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="coupling_by_column_matrix.html">Coupling by column matrix</a></li>
@@ -73,14 +81,11 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="by_index_keywords_analysis.html">By index keywords</a></li>
-<li class="toctree-l1"><a class="reference internal" href="by_institution_analysis.html">By institution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="by_references_analysis.html">By references</a></li>
-<li class="toctree-l1"><a class="reference internal" href="by_source_analysis.html">By source</a></li>
 <li class="toctree-l1"><a class="reference internal" href="by_year_analysis.html">By year</a></li>
 </ul>
 <p class="caption"><span class="caption-text">API Reference</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="_api_co_occurrence.html">Co-occurrence API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_api_correlation.html">Correlation API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_api_document_term.html">Document-Term API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
@@ -145,6 +150,16 @@
 <section id="by-document">
 <h1>By document<a class="headerlink" href="#by-document" title="Permalink to this headline"></a></h1>
 <div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="document_indicators.html">Document indicators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coupling_by_column_matrix.html">Coupling by column matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coupling_by_references_matrix.html">Coupling by references matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coupling_network.html">Coupling network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="document_viewer.html">Document viewer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="most_global_cited_documents.html">Most global cited documents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="most_local_cited_documents.html">Most local cited documents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summary_view.html">Summary view</a></li>
+</ul>
 </div>
 </section>
 
@@ -152,7 +167,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="most_cited_countries.html" class="btn btn-neutral float-left" title="Most cited countries" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="author_keywords_factorial_mds_map.html" class="btn btn-neutral float-left" title="Factorial analysis of author keywords using MDS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="document_indicators.html" class="btn btn-neutral float-right" title="Document indicators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

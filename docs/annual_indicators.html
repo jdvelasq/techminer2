@@ -19,8 +19,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Annual scientific production" href="annual_scientific_production.html" />
-    <link rel="prev" title="By year" href="by_year_analysis.html" /> 
+    <link rel="next" title="Annual occurrence matrix" href="annual_occurrence_matrix.html" />
+    <link rel="prev" title="Indicators API" href="_api_indicators.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -46,39 +46,49 @@
 <li class="toctree-l1"><a class="reference internal" href="import_scopus_file.html">Importing Scopus files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="import_references.html">Import references file</a></li>
 <li class="toctree-l1"><a class="reference internal" href="coverage.html">Coverage report</a></li>
-<li class="toctree-l1"><a class="reference internal" href="column_coverage.html">Column coverage</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Filter and search</span></p>
+<p class="caption"><span class="caption-text">Filter</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="user_filters.html">User filters</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Search</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="find_string.html">Find string</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stemming.html">Stemming  AND &amp; OR operators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="extract_user_keywords.html">Extract user keywords</a></li>
 </ul>
+<p class="caption"><span class="caption-text">Cleaning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="clean_institutions.html">Clean — institutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clean_keywords.html">Clean — keywords</a></li>
+</ul>
 <p class="caption"><span class="caption-text">Analysis</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="by_abstract_analysis.html">By abstract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="by_columns.html">By columns</a></li>
+<li class="toctree-l1"><a class="reference internal" href="by_co_occurrence.html">By co-occurrence</a></li>
 <li class="toctree-l1"><a class="reference internal" href="by_author_analysis.html">By author</a></li>
 <li class="toctree-l1"><a class="reference internal" href="by_author_keywords_analysis.html">By author keywords</a></li>
-<li class="toctree-l1"><a class="reference internal" href="by_country_analysis.html">By country</a></li>
 <li class="toctree-l1"><a class="reference internal" href="by_document_analysis.html">By document</a></li>
 <li class="toctree-l1"><a class="reference internal" href="by_index_keywords_analysis.html">By index keywords</a></li>
-<li class="toctree-l1"><a class="reference internal" href="by_institution_analysis.html">By institution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="by_references_analysis.html">By references</a></li>
-<li class="toctree-l1"><a class="reference internal" href="by_source_analysis.html">By source</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="by_year_analysis.html">By year</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Annual indicators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="annual_scientific_production.html">Annual scientific production</a></li>
-<li class="toctree-l2"><a class="reference internal" href="average_citations_per_year.html">Average citations per year</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="by_year_analysis.html">By year</a></li>
 </ul>
 <p class="caption"><span class="caption-text">API Reference</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="_api_co_occurrence.html">Co-occurrence API</a></li>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="_api_correlation.html">Correlation API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_api_document_term.html">Document-Term API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_api_indicators.html">Indicators API</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Annual indicators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="annual_occurrence_matrix.html">Annual occurrence matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="associations.html">Associations (co-occurrence analysis)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="collaboration_indicators.html">Collaboration indicators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="column_indicators.html">Column indicators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="column_indicators_by_year.html">Column indicators by year</a></li>
+<li class="toctree-l2"><a class="reference internal" href="growth_indicators.html">Growth indicators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="impact_indicators.html">Impact indicators</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_api_thesaurus.html">Thesaurus API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_api_visualization.html">Visualization API</a></li>
@@ -103,7 +113,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="by_year_analysis.html">By year</a> &raquo;</li>
+          <li><a href="_api_indicators.html">Indicators API</a> &raquo;</li>
       <li>Annual indicators</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/annual_indicators.rst.txt" rel="nofollow"> View page source</a>
@@ -171,8 +181,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="by_year_analysis.html" class="btn btn-neutral float-left" title="By year" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="annual_scientific_production.html" class="btn btn-neutral float-right" title="Annual scientific production" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="_api_indicators.html" class="btn btn-neutral float-left" title="Indicators API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="annual_occurrence_matrix.html" class="btn btn-neutral float-right" title="Annual occurrence matrix" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

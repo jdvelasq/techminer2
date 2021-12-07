@@ -19,8 +19,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Co-occurrence network" href="co_occurrence_network.html" />
-    <link rel="prev" title="Co-occurrence matrix" href="co_occurrence_matrix.html" /> 
+    <link rel="next" title="Thematic map — communities" href="thematic_map_communities.html" />
+    <link rel="prev" title="Co-occurrence SVD map" href="co_occurrence_svd_map.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -46,37 +46,46 @@
 <li class="toctree-l1"><a class="reference internal" href="import_scopus_file.html">Importing Scopus files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="import_references.html">Import references file</a></li>
 <li class="toctree-l1"><a class="reference internal" href="coverage.html">Coverage report</a></li>
-<li class="toctree-l1"><a class="reference internal" href="column_coverage.html">Column coverage</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Filter and search</span></p>
+<p class="caption"><span class="caption-text">Filter</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="user_filters.html">User filters</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Search</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="find_string.html">Find string</a></li>
 <li class="toctree-l1"><a class="reference internal" href="stemming.html">Stemming  AND &amp; OR operators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="extract_user_keywords.html">Extract user keywords</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Analysis</span></p>
+<p class="caption"><span class="caption-text">Cleaning</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="clean_institutions.html">Clean — institutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="clean_keywords.html">Clean — keywords</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Analysis</span></p>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="by_abstract_analysis.html">By abstract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="by_columns.html">By columns</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="by_co_occurrence.html">By co-occurrence</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="co_occurrence_communities.html">Co-occurrence communities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="co_occurrence_degree_plot.html">Co-occurrence degree plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="co_occurrence_matrix.html">Co-occurrence matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="co_occurrence_network.html">Co-occurrence network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="co_occurrence_svd_map.html">Co-occurrence SVD map</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Co-occurrence MDS map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="thematic_map_communities.html">Thematic map — communities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="thematic_map_network.html">Thematic map — network</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="by_author_analysis.html">By author</a></li>
 <li class="toctree-l1"><a class="reference internal" href="by_author_keywords_analysis.html">By author keywords</a></li>
-<li class="toctree-l1"><a class="reference internal" href="by_country_analysis.html">By country</a></li>
 <li class="toctree-l1"><a class="reference internal" href="by_document_analysis.html">By document</a></li>
 <li class="toctree-l1"><a class="reference internal" href="by_index_keywords_analysis.html">By index keywords</a></li>
-<li class="toctree-l1"><a class="reference internal" href="by_institution_analysis.html">By institution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="by_references_analysis.html">By references</a></li>
-<li class="toctree-l1"><a class="reference internal" href="by_source_analysis.html">By source</a></li>
 <li class="toctree-l1"><a class="reference internal" href="by_year_analysis.html">By year</a></li>
 </ul>
 <p class="caption"><span class="caption-text">API Reference</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="_api_co_occurrence.html">Co-occurrence API</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="co_occurrence_matrix.html">Co-occurrence matrix</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Co-occurrence MDS map</a></li>
-<li class="toctree-l2"><a class="reference internal" href="co_occurrence_network.html">Co-occurrence network</a></li>
-<li class="toctree-l2"><a class="reference internal" href="co_occurrence_svd_map.html">Co-occurrence SVD map</a></li>
-</ul>
-</li>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="_api_correlation.html">Correlation API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_api_document_term.html">Document-Term API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
@@ -104,7 +113,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="_api_co_occurrence.html">Co-occurrence API</a> &raquo;</li>
+          <li><a href="by_co_occurrence.html">By co-occurrence</a> &raquo;</li>
       <li>Co-occurrence MDS map</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/co_occurrence_mds_map.rst.txt" rel="nofollow"> View page source</a>
@@ -161,7 +170,7 @@
 <a class="reference internal image-reference" href="_images/co_occurrence_mds_map.png"><img alt="_images/co_occurrence_mds_map.png" class="align-center" src="_images/co_occurrence_mds_map.png" style="width: 700px;" /></a>
 <dl class="py function">
 <dt class="sig sig-object py" id="techminer.co_occurrence_mds_map.co_occurrence_mds_map">
-<span class="sig-prename descclassname"><span class="pre">techminer.co_occurrence_mds_map.</span></span><span class="sig-name descname"><span class="pre">co_occurrence_mds_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(7,</span> <span class="pre">7)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">svd__n_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mds__n_init</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mds__max_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">300</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer/co_occurrence_mds_map.html#co_occurrence_mds_map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer.co_occurrence_mds_map.co_occurrence_mds_map" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">techminer.co_occurrence_mds_map.</span></span><span class="sig-name descname"><span class="pre">co_occurrence_mds_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_occ</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_occ</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scheme</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(7,</span> <span class="pre">7)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">svd__n_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mds__n_init</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mds__max_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">300</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer/co_occurrence_mds_map.html#co_occurrence_mds_map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer.co_occurrence_mds_map.co_occurrence_mds_map" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </section>
@@ -170,8 +179,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="co_occurrence_matrix.html" class="btn btn-neutral float-left" title="Co-occurrence matrix" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="co_occurrence_network.html" class="btn btn-neutral float-right" title="Co-occurrence network" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="co_occurrence_svd_map.html" class="btn btn-neutral float-left" title="Co-occurrence SVD map" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="thematic_map_communities.html" class="btn btn-neutral float-right" title="Thematic map — communities" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

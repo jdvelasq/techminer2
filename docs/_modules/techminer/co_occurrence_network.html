@@ -43,31 +43,36 @@
 <li class="toctree-l1"><a class="reference internal" href="../../import_scopus_file.html">Importing Scopus files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../import_references.html">Import references file</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../coverage.html">Coverage report</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../column_coverage.html">Column coverage</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Filter and search</span></p>
+<p class="caption"><span class="caption-text">Filter</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../user_filters.html">User filters</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Search</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../find_string.html">Find string</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../stemming.html">Stemming  AND &amp; OR operators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../extract_user_keywords.html">Extract user keywords</a></li>
 </ul>
+<p class="caption"><span class="caption-text">Cleaning</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../clean_institutions.html">Clean — institutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../clean_keywords.html">Clean — keywords</a></li>
+</ul>
 <p class="caption"><span class="caption-text">Analysis</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../by_abstract_analysis.html">By abstract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../by_columns.html">By columns</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../by_co_occurrence.html">By co-occurrence</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../by_author_analysis.html">By author</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../by_author_keywords_analysis.html">By author keywords</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../by_country_analysis.html">By country</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../by_document_analysis.html">By document</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../by_index_keywords_analysis.html">By index keywords</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../by_institution_analysis.html">By institution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../by_references_analysis.html">By references</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../by_source_analysis.html">By source</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../by_year_analysis.html">By year</a></li>
 </ul>
 <p class="caption"><span class="caption-text">API Reference</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_co_occurrence.html">Co-occurrence API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_api_correlation.html">Correlation API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_api_document_term.html">Document-Term API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_api_indicators.html">Indicators API</a></li>
@@ -110,174 +115,61 @@
 <span class="sd">Co-occurrence network</span>
 <span class="sd">===============================================================================</span>
 
-<span class="sd">Builds a co-occurrence network from a co-occurrence matrix.</span>
-
 <span class="sd">&gt;&gt;&gt; from techminer import *</span>
 <span class="sd">&gt;&gt;&gt; directory = &quot;/workspaces/techminer-api/data/&quot;</span>
-<span class="sd">&gt;&gt;&gt; coc_matrix = co_occurrence_matrix(column=&#39;author_keywords&#39;, min_occ=8, directory=directory)</span>
-<span class="sd">&gt;&gt;&gt; co_occurrence_network(coc_matrix).keys()</span>
-<span class="sd">dict_keys([&#39;nodes&#39;, &#39;edges&#39;, &#39;G&#39;, &#39;indicators&#39;, &#39;communities&#39;, &#39;manifold_data&#39;])</span>
+<span class="sd">&gt;&gt;&gt; file_name = &quot;/workspaces/techminer-api/sphinx/images/co_occurrence_network.png&quot;</span>
+<span class="sd">&gt;&gt;&gt; co_occurrence_network(matrix).savefig(file_name)</span>
+
+<span class="sd">.. image:: images/co_occurrence_network.png</span>
+<span class="sd">    :width: 700px</span>
+<span class="sd">    :align: center</span>
+
 
 
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">cdlib</span> <span class="kn">import</span> <span class="n">algorithms</span>
-<span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="kn">import</span> <span class="n">MDS</span>
 
-<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">from</span> <span class="nn">.co_occurrence_matrix</span> <span class="kn">import</span> <span class="n">co_occurrence_matrix</span>
+<span class="kn">from</span> <span class="nn">.network</span> <span class="kn">import</span> <span class="n">network</span>
+<span class="kn">from</span> <span class="nn">.network_plot</span> <span class="kn">import</span> <span class="n">network_plot</span>
 
 
 <div class="viewcode-block" id="co_occurrence_network"><a class="viewcode-back" href="../../co_occurrence_network.html#techminer.co_occurrence_network.co_occurrence_network">[docs]</a><span class="k">def</span> <span class="nf">co_occurrence_network</span><span class="p">(</span>
-    <span class="n">co_occurrence_matrix</span><span class="p">,</span>
+    <span class="n">column</span><span class="p">,</span>
+    <span class="n">min_occ</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">max_occ</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">normalization</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">scheme</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">clustering_method</span><span class="o">=</span><span class="s2">&quot;louvain&quot;</span><span class="p">,</span>
     <span class="n">manifold_method</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">directory</span><span class="o">=</span><span class="s2">&quot;./&quot;</span><span class="p">,</span>
+    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span>
+    <span class="n">k</span><span class="o">=</span><span class="mf">0.20</span><span class="p">,</span>
+    <span class="n">iterations</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+    <span class="n">max_labels</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
 <span class="p">):</span>
-    <span class="n">matrix</span> <span class="o">=</span> <span class="n">co_occurrence_matrix</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
-    <span class="c1"># -------------------------------------------------------------------------</span>
-    <span class="n">matrix</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;columns&quot;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">matrix</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;index&quot;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-    <span class="c1"># -------------------------------------------------------------------------</span>
-    <span class="n">names</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">n_cols</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">edges</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">i_row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_cols</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">i_col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">i_row</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">matrix</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i_row</span><span class="p">,</span> <span class="n">i_col</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">edges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-                    <span class="p">{</span>
-                        <span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="n">names</span><span class="p">[</span><span class="n">i_row</span><span class="p">],</span>
-                        <span class="s2">&quot;target&quot;</span><span class="p">:</span> <span class="n">names</span><span class="p">[</span><span class="n">i_col</span><span class="p">],</span>
-                        <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="n">matrix</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i_row</span><span class="p">,</span> <span class="n">i_col</span><span class="p">],</span>
-                    <span class="p">}</span>
-                <span class="p">)</span>
-
-    <span class="c1"># -------------------------------------------------------------------------</span>
-    <span class="n">size</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">}</span>
-    <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">edges</span><span class="p">:</span>
-        <span class="n">size</span><span class="p">[</span><span class="n">edge</span><span class="p">[</span><span class="s2">&quot;source&quot;</span><span class="p">]]</span> <span class="o">+=</span> <span class="n">edge</span><span class="p">[</span><span class="s2">&quot;weight&quot;</span><span class="p">]</span>
-        <span class="n">size</span><span class="p">[</span><span class="n">edge</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]]</span> <span class="o">+=</span> <span class="n">edge</span><span class="p">[</span><span class="s2">&quot;weight&quot;</span><span class="p">]</span>
-    <span class="n">nodes</span> <span class="o">=</span> <span class="p">[(</span><span class="n">name</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">[</span><span class="n">name</span><span class="p">],</span> <span class="n">group</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">size</span><span class="o">.</span><span class="n">keys</span><span class="p">()]</span>
-
-    <span class="c1"># -------------------------------------------------------------------------</span>
-    <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
-    <span class="n">G</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
-    <span class="n">G</span><span class="o">.</span><span class="n">add_weighted_edges_from</span><span class="p">(</span>
-        <span class="p">[(</span><span class="n">edge</span><span class="p">[</span><span class="s2">&quot;source&quot;</span><span class="p">],</span> <span class="n">edge</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">],</span> <span class="n">edge</span><span class="p">[</span><span class="s2">&quot;weight&quot;</span><span class="p">])</span> <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">edges</span><span class="p">]</span>
+    <span class="n">coc_matrix</span> <span class="o">=</span> <span class="n">co_occurrence_matrix</span><span class="p">(</span>
+        <span class="n">column</span><span class="p">,</span>
+        <span class="n">min_occ</span><span class="o">=</span><span class="n">min_occ</span><span class="p">,</span>
+        <span class="n">max_occ</span><span class="o">=</span><span class="n">max_occ</span><span class="p">,</span>
+        <span class="n">normalization</span><span class="o">=</span><span class="n">normalization</span><span class="p">,</span>
+        <span class="n">scheme</span><span class="o">=</span><span class="n">scheme</span><span class="p">,</span>
+        <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
     <span class="p">)</span>
 
-    <span class="c1"># -------------------------------------------------------------------------</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">clustering_method</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="c1">#</span>
-        <span class="c1"># network clustering</span>
-        <span class="c1">#</span>
-        <span class="n">communities</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s2">&quot;label_propagation&quot;</span><span class="p">:</span> <span class="n">algorithms</span><span class="o">.</span><span class="n">label_propagation</span><span class="p">,</span>
-            <span class="s2">&quot;leiden&quot;</span><span class="p">:</span> <span class="n">algorithms</span><span class="o">.</span><span class="n">leiden</span><span class="p">,</span>
-            <span class="s2">&quot;louvain&quot;</span><span class="p">:</span> <span class="n">algorithms</span><span class="o">.</span><span class="n">louvain</span><span class="p">,</span>
-            <span class="s2">&quot;walktrap&quot;</span><span class="p">:</span> <span class="n">algorithms</span><span class="o">.</span><span class="n">walktrap</span><span class="p">,</span>
-        <span class="p">}[</span><span class="n">clustering_method</span><span class="p">](</span><span class="n">G</span><span class="p">,</span> <span class="n">randomize</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">communities</span>
-
-        <span class="n">communities</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-            <span class="p">(</span><span class="n">member</span><span class="p">,</span> <span class="n">i_community</span><span class="p">)</span>
-            <span class="k">for</span> <span class="n">i_community</span><span class="p">,</span> <span class="n">community</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">communities</span><span class="p">)</span>
-            <span class="k">for</span> <span class="n">member</span> <span class="ow">in</span> <span class="n">community</span>
-        <span class="p">)</span>
-
-        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
-            <span class="n">node</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;group&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">communities</span><span class="p">[</span><span class="n">node</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
-
-    <span class="k">else</span><span class="p">:</span>
-        <span class="c1">#</span>
-        <span class="c1"># sklearn matrix clustering</span>
-        <span class="c1">#</span>
-        <span class="n">clustering_method</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
-        <span class="n">communities</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">matrix</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">clustering_method</span><span class="o">.</span><span class="n">labels_</span><span class="p">))</span>
-
-        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">:</span>
-            <span class="n">node</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;group&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">communities</span><span class="p">[</span><span class="n">node</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
-
-    <span class="c1"># -------------------------------------------------------------------------</span>
-    <span class="k">if</span> <span class="n">manifold_method</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">manifold_method</span> <span class="o">=</span> <span class="n">MDS</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-
-    <span class="n">transformed_matrix</span> <span class="o">=</span> <span class="n">manifold_method</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
-
-    <span class="n">manifold_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;node&quot;</span><span class="p">:</span> <span class="n">matrix</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
-            <span class="s2">&quot;num_documents&quot;</span><span class="p">:</span> <span class="n">matrix</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-            <span class="s2">&quot;global_citations&quot;</span><span class="p">:</span> <span class="n">matrix</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
-        <span class="p">}</span>
+    <span class="n">network_</span> <span class="o">=</span> <span class="n">network</span><span class="p">(</span>
+        <span class="n">coc_matrix</span><span class="p">,</span>
+        <span class="n">clustering_method</span><span class="o">=</span><span class="n">clustering_method</span><span class="p">,</span>
+        <span class="n">manifold_method</span><span class="o">=</span><span class="n">manifold_method</span><span class="p">,</span>
     <span class="p">)</span>
 
-    <span class="n">manifold_data</span><span class="p">[</span><span class="s2">&quot;Dim-0&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">transformed_matrix</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
-    <span class="n">manifold_data</span><span class="p">[</span><span class="s2">&quot;Dim-1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">transformed_matrix</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
-    <span class="n">node2cluster</span> <span class="o">=</span> <span class="p">{</span><span class="n">node</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span> <span class="n">node</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;group&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">}</span>
-    <span class="n">manifold_data</span><span class="p">[</span><span class="s2">&quot;cluster&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">manifold_data</span><span class="o">.</span><span class="n">node</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">node2cluster</span><span class="p">)</span>
-    <span class="n">name2degree</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">val</span> <span class="k">for</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">degree</span><span class="p">()}</span>
-    <span class="n">manifold_data</span><span class="p">[</span><span class="s2">&quot;degree&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">manifold_data</span><span class="o">.</span><span class="n">node</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">name2degree</span><span class="p">)</span>
-
-    <span class="c1"># -------------------------------------------------------------------------</span>
-    <span class="n">indicators_table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;node&quot;</span><span class="p">:</span> <span class="n">matrix</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
-            <span class="s2">&quot;num_documents&quot;</span><span class="p">:</span> <span class="n">matrix</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-            <span class="s2">&quot;global_citations&quot;</span><span class="p">:</span> <span class="n">matrix</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
-        <span class="p">}</span>
-    <span class="p">)</span>
-
-    <span class="c1">## node2cluster = {node[0]: node[1][&quot;group&quot;] for node in nodes}</span>
-    <span class="n">indicators_table</span><span class="p">[</span><span class="s2">&quot;cluster&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">indicators_table</span><span class="o">.</span><span class="n">node</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">node2cluster</span><span class="p">)</span>
-
-    <span class="n">betweenness</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">betweenness_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
-    <span class="n">closeness</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">closeness_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
-    <span class="n">pagerank</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">pagerank</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
-
-    <span class="n">indicators_table</span><span class="p">[</span><span class="s2">&quot;betweenness&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">indicators_table</span><span class="o">.</span><span class="n">node</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">betweenness</span><span class="p">)</span>
-    <span class="n">indicators_table</span><span class="p">[</span><span class="s2">&quot;closeness&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">indicators_table</span><span class="o">.</span><span class="n">node</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">closeness</span><span class="p">)</span>
-    <span class="n">indicators_table</span><span class="p">[</span><span class="s2">&quot;pagerank&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">indicators_table</span><span class="o">.</span><span class="n">node</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">pagerank</span><span class="p">)</span>
-
-    <span class="c1"># -------------------------------------------------------------------------</span>
-    <span class="n">cluster_members</span> <span class="o">=</span> <span class="n">indicators_table</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-    <span class="n">cluster_members</span> <span class="o">=</span> <span class="n">cluster_members</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;cluster&quot;</span><span class="p">,</span> <span class="s2">&quot;num_documents&quot;</span><span class="p">])</span>
-    <span class="n">cluster_members</span> <span class="o">=</span> <span class="n">cluster_members</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span>
-        <span class="n">rn</span><span class="o">=</span><span class="n">cluster_members</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;cluster&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">cumcount</span><span class="p">(())</span>
-    <span class="p">)</span>
-
-    <span class="n">num_docs</span> <span class="o">=</span> <span class="n">cluster_members</span><span class="o">.</span><span class="n">num_documents</span><span class="o">.</span><span class="n">values</span>
-    <span class="n">cited_by</span> <span class="o">=</span> <span class="n">cluster_members</span><span class="o">.</span><span class="n">global_citations</span><span class="o">.</span><span class="n">values</span>
-    <span class="n">n_zeros_docs</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">num_docs</span><span class="p">)))</span> <span class="o">+</span> <span class="mi">1</span>
-    <span class="n">n_zeros_cited_by</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">cited_by</span><span class="p">)))</span> <span class="o">+</span> <span class="mi">1</span>
-
-    <span class="n">fmt</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> {:0&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">n_zeros_docs</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;d}:{:0&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">n_zeros_cited_by</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;d}&quot;</span>
-    <span class="n">text</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="n">fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">nd</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">tc</span><span class="p">))</span>
-        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">nd</span><span class="p">,</span> <span class="n">tc</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">cluster_members</span><span class="o">.</span><span class="n">node</span><span class="p">,</span> <span class="n">num_docs</span><span class="p">,</span> <span class="n">cited_by</span><span class="p">)</span>
-    <span class="p">]</span>
-
-    <span class="n">cluster_members</span> <span class="o">=</span> <span class="n">cluster_members</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">node</span><span class="o">=</span><span class="n">text</span><span class="p">)</span>
-    <span class="n">cluster_members</span> <span class="o">=</span> <span class="n">cluster_members</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span>
-        <span class="n">cluster</span><span class="o">=</span><span class="n">cluster_members</span><span class="o">.</span><span class="n">cluster</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s2">&quot;CLUST_</span><span class="si">{:0d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-    <span class="p">)</span>
-    <span class="n">cluster_members</span> <span class="o">=</span> <span class="n">cluster_members</span><span class="p">[[</span><span class="s2">&quot;rn&quot;</span><span class="p">,</span> <span class="s2">&quot;node&quot;</span><span class="p">,</span> <span class="s2">&quot;cluster&quot;</span><span class="p">]]</span>
-    <span class="n">cluster_members</span> <span class="o">=</span> <span class="n">cluster_members</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span>
-        <span class="n">index</span><span class="o">=</span><span class="s2">&quot;rn&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;cluster&quot;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s2">&quot;node&quot;</span>
-    <span class="p">)</span>
-    <span class="n">cluster_members</span> <span class="o">=</span> <span class="n">cluster_members</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-
-    <span class="c1"># -------------------------------------------------------------------------</span>
-
-    <span class="k">return</span> <span class="p">{</span>
-        <span class="s2">&quot;nodes&quot;</span><span class="p">:</span> <span class="n">nodes</span><span class="p">,</span>
-        <span class="s2">&quot;edges&quot;</span><span class="p">:</span> <span class="n">edges</span><span class="p">,</span>
-        <span class="s2">&quot;G&quot;</span><span class="p">:</span> <span class="n">G</span><span class="p">,</span>
-        <span class="s2">&quot;indicators&quot;</span><span class="p">:</span> <span class="n">indicators_table</span><span class="p">,</span>
-        <span class="s2">&quot;communities&quot;</span><span class="p">:</span> <span class="n">cluster_members</span><span class="p">,</span>
-        <span class="s2">&quot;manifold_data&quot;</span><span class="p">:</span> <span class="n">manifold_data</span><span class="p">,</span>
-    <span class="p">}</span></div>
+    <span class="k">return</span> <span class="n">network_plot</span><span class="p">(</span>
+        <span class="n">network_</span><span class="p">,</span>
+        <span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">,</span>
+        <span class="n">k</span><span class="o">=</span><span class="n">k</span><span class="p">,</span>
+        <span class="n">iterations</span><span class="o">=</span><span class="n">iterations</span><span class="p">,</span>
+        <span class="n">max_labels</span><span class="o">=</span><span class="n">max_labels</span><span class="p">,</span>
+    <span class="p">)</span></div>
 </pre></div>
 
            </div>

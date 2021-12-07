@@ -2,8 +2,6 @@ By document
 -----------------------------------------------------------------------------------------
 
 .. toctree::
-    :caption: Documents
-    :hidden:
     :maxdepth: 1
 
     document_indicators
