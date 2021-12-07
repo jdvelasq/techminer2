@@ -10,5 +10,6 @@ Indicators API
     collaboration_indicators
     column_indicators
     column_indicators_by_year 
+    document_indicators
     growth_indicators
     impact_indicators
