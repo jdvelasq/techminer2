@@ -19,7 +19,7 @@ dict_keys(['nodes', 'edges', 'G', 'indicators', 'communities', 'manifold_data'])
 """
 import pandas as pd
 
-from .co_occurrence_network import co_occurrence_network
+from .network import network
 from .utils import load_all_documents
 
 
