@@ -19,7 +19,7 @@ Hornuf L   3  110 -0.332182  -0.316228  1.000000
 import numpy as np
 import pandas as pd
 
-from .co_occurrence_matrix import co_occurrence_matrix
+from .occurrence_matrix import occurrence_matrix
 from .tf_matrix import tf_matrix
 from .utils import index_terms2counters, load_filtered_documents
 
@@ -41,7 +41,7 @@ def cross_corr_matrix(
     directory="./",
 ):
 
-    co_occ_matrix = co_occurrence_matrix(
+    co_occ_matrix = occurrence_matrix(
         directory=directory,
         column=column,
         by=by,
