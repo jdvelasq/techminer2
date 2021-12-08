@@ -1,16 +1,24 @@
 Documents
 -----------------------------------------------------------------------------------------
 
-.. toctree::
-    :maxdepth: 1
+**Documents**
 
-    
-    
-    most_global_cited_documents
-    most_local_cited_documents     
+    .. toctree::
+        :maxdepth: 1
+
+        most_global_cited_documents
+        most_local_cited_documents     
 
 
-.. toctree::
-    :maxdepth: 1
+**Cited References**
 
-    most_local_cited_references
+    .. toctree::
+        :maxdepth: 1
+
+        most_local_cited_references
+
+
+**Words**
+
+    .. toctree::
+        :maxdepth: 1
