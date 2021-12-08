@@ -59,19 +59,15 @@ package developed and tested in Python version 3.6.
     :maxdepth: 1
 
     _user_column
-    _user_co_occurrence
-    _user_co_occurrence_thematic_analysis
     by_author_keywords_analysis
     by_index_keywords_analysis
-    _user_coupling
-    _user_co_citation
+
 
 
 
 .. toctree::
     :caption: API Reference
     :maxdepth: 1
-
 
     _api_document_term
     _api_indicators
