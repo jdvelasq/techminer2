@@ -21,9 +21,7 @@ from .column_indicators_by_year import column_indicators_by_year
 
 def annual_occurrence_matrix(column, sep="; ", min_occ=1, directory="./"):
 
-    indicators_by_year = column_indicators_by_year(
-        directory=directory, column=column, sep=sep
-    )
+    indicators_by_year = column_indicators_by_year(directory=directory, column=column)
     indicators = column_indicators(column=column, sep=sep, directory=directory)
     indicators = indicators.sort_values("num_documents", ascending=False)
     indicators = indicators[indicators["num_documents"] >= min_occ]
@@ -31,6 +29,11 @@ def annual_occurrence_matrix(column, sep="; ", min_occ=1, directory="./"):
     indicators_by_year = indicators_by_year.loc[
         indicators.index,
     ]
+
+    indicators_by_year = indicators_by_year.assign(
+        pub_year=indicators_by_year.index.get_level_values("pub_year")
+    )
+    indicators_by_year.index = indicators_by_year.index.get_level_values(0)
 
     indicators_by_year = indicators_by_year[["pub_year", "num_documents"]]
     indicators_by_year = indicators_by_year.pivot(columns="pub_year")
