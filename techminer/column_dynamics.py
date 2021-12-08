@@ -34,9 +34,13 @@ from .column_indicators_by_year import column_indicators_by_year
 
 def column_dynamics(column, top_n=10, figsize=(8, 6), directory="./", plot=True):
 
-    column_dynamics = column_indicators_by_year(directory=directory, column=column)[
-        ["pub_year", "num_documents"]
-    ]
+    column_dynamics = column_indicators_by_year(directory=directory, column=column)
+    column_dynamics = column_dynamics.assign(
+        pub_year=column_dynamics.index.get_level_values(1)
+    )
+    column_dynamics.index = column_dynamics.index.get_level_values(0)
+
+    column_dynamics = column_dynamics[["pub_year", "num_documents"]].copy()
     column_dynamics = column_dynamics.pivot(columns="pub_year")
     column_dynamics = column_dynamics.transpose()
     column_dynamics.index = column_dynamics.index.get_level_values(1)
