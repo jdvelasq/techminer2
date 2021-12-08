@@ -7,6 +7,8 @@ from .annual_scientific_production import annual_scientific_production
 from .apply_thesaurus import apply_thesaurus
 from .associations import associations
 from .author_keywords_factorial_mds_map import author_keywords_factorial_mds_map
+from .author_local_impact import author_local_impact
+from .authors_production_over_time import authors_production_over_time
 from .auto_corr_matrix import auto_corr_matrix
 from .average_citations_per_year import average_citations_per_year
 from .bar_chart import bar_chart
@@ -41,7 +43,7 @@ from .column_wordcloud import column_wordcloud
 from .core_sources import core_sources
 from .correlation_map import correlation_map
 from .corresponding_authors_country import corresponding_authors_country
-from .countries_frequency import countries_frequency
+from .country_scientific_production import country_scientific_production
 from .coupling_by_column_matrix import coupling_by_column_matrix
 from .coupling_by_references_matrix import coupling_by_references_matrix
 from .coupling_network import coupling_network
@@ -65,12 +67,15 @@ from .line_chart import line_chart
 from .lotka_law import lotka_law
 from .main_information import main_information
 from .main_path_network import main_path_network
+from .most_global_cited_countries import most_global_cited_countries
 from .most_global_cited_documents import most_global_cited_documents
 from .most_local_cited_authors import most_local_cited_authors
 from .most_local_cited_documents import most_local_cited_documents
 from .most_local_cited_references import most_local_cited_references
 from .most_local_cited_sources import most_local_cited_sources
 from .most_relevant_authors import most_relevant_authors
+from .most_relevant_institutions import most_relevant_institutions
+from .most_relevant_sources import most_relevant_sources
 from .network import network
 from .network_communities import network_communities
 from .network_degree_plot import network_degree_plot
@@ -79,6 +84,8 @@ from .network_map import network_map
 from .network_plot import network_plot
 from .occurrence_matrix import occurrence_matrix
 from .pie_chart import pie_chart
+from .source_dynamics import source_dynamics
+from .source_local_impact import source_local_impact
 from .stacked_bar_chart import stacked_bar_chart
 from .stacked_column_chart import stacked_column_chart
 from .stemming import stemming_and, stemming_or
