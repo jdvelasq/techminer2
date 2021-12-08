@@ -40,28 +40,32 @@ package developed and tested in Python version 3.6.
     :maxdepth: 1
 
     _user_data
-    _user_filter
     _user_cleaning
     _user_search
     _user_view
 
 .. toctree::
-    :caption: Data analysis
+    :caption: Software comparison
     :hidden:
+    :maxdepth: 1
+
+    _bibliometrix
+    _tlab
+    _vantagepoint
+
+
+.. toctree::
+    :caption: Primitives
     :maxdepth: 1
 
     _user_column
     _user_co_occurrence
     _user_co_occurrence_thematic_analysis
-
     by_author_keywords_analysis
-    by_document_analysis
     by_index_keywords_analysis
-
     _user_coupling
     _user_co_citation
-    _user_references
-    _user_papers
+
 
 
 .. toctree::
@@ -69,7 +73,6 @@ package developed and tested in Python version 3.6.
     :maxdepth: 1
 
 
-    _api_correlation
     _api_document_term
     _api_indicators
     _api_network
