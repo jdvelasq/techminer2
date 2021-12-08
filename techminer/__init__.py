@@ -70,6 +70,7 @@ from .most_local_cited_authors import most_local_cited_authors
 from .most_local_cited_documents import most_local_cited_documents
 from .most_local_cited_references import most_local_cited_references
 from .most_local_cited_sources import most_local_cited_sources
+from .most_relevant_authors import most_relevant_authors
 from .network import network
 from .network_communities import network_communities
 from .network_degree_plot import network_degree_plot
