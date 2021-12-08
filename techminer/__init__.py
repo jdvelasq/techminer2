@@ -67,6 +67,7 @@ from .line_chart import line_chart
 from .lotka_law import lotka_law
 from .main_information import main_information
 from .main_path_network import main_path_network
+from .most_frequent_words import most_frequent_words
 from .most_global_cited_countries import most_global_cited_countries
 from .most_global_cited_documents import most_global_cited_documents
 from .most_local_cited_authors import most_local_cited_authors
@@ -97,6 +98,8 @@ from .thematic_map_communities import thematic_map_communities
 from .thematic_map_network import thematic_map_network
 from .timeline_chart import timeline_chart
 from .tree_map import tree_map
+from .trend_topics import trend_topics
 from .user_filters import user_filters
 from .word_cloud import word_cloud
+from .word_dynamics import word_dynamics
 from .world_map import world_map
