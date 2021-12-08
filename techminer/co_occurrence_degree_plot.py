@@ -38,7 +38,7 @@ def co_occurrence_degree_plot(
     )
 
     network_ = network(
-        co_occurrence_matrix=coc_matrix,
+        matrix=coc_matrix,
         clustering_method=clustering_method,
         manifold_method=manifold_method,
     )
