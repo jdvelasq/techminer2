@@ -56,6 +56,7 @@ package developed and tested in Python version 3.6.
 
 .. toctree::
     :caption: Primitives
+    :hidden:
     :maxdepth: 1
 
     _user_column
@@ -67,6 +68,7 @@ package developed and tested in Python version 3.6.
 
 .. toctree::
     :caption: API Reference
+    :hidden:
     :maxdepth: 1
 
     _api_document_term
