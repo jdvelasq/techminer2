@@ -9,7 +9,7 @@ Corresponding author's country
 >>> corresponding_authors_country(directory=directory).savefig(file_name)
 
 .. image:: images/corresponding_authors_country.png
-    :width: 650px
+    :width: 700px
     :align: center
 
 
