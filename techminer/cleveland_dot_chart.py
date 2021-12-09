@@ -13,7 +13,7 @@ Cleveland dot chart
 
 
 .. image:: images/cleveland_dot_chart.png
-    :width: 500px
+    :width: 700px
     :align: center
 
 
