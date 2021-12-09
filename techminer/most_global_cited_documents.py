@@ -9,7 +9,7 @@ Most global cited documents
 >>> most_global_cited_documents(directory=directory).savefig(file_name)
 
 .. image:: images/most_global_cited_documents.png
-    :width: 650px
+    :width: 700px
     :align: center
 
 >>> most_global_cited_documents(directory=directory, plot=False).head()
