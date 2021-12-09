@@ -28,7 +28,7 @@
 #     >>> pyplot.savefig('sphinx/images/chord_demo_1.png')
 
 #     .. image:: images/chord_demo_1.png
-#         :width: 400px
+#         :width: 700px
 #         :align: center
 
 #     >>> chord = ChordDiagram()
@@ -41,7 +41,7 @@
 #     >>> pyplot.savefig('sphinx/images/chord_demo_2.png')
 
 #     .. image:: images/chord_demo_2.png
-#         :width: 400px
+#         :width: 700px
 #         :align: center
 
 
