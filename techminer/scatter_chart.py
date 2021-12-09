@@ -35,7 +35,7 @@
 #     >>> fig.savefig('/workspaces/techminer/sphinx/images/plotplot.png')
 
 #     .. image:: images/plotplot.png
-#         :width: 400px
+#         :width: 700px
 #         :align: center
 
 
