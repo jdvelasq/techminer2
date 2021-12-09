@@ -4,13 +4,13 @@ Network plot
 
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/data/"
->>> file_name = "/workspaces/techminer-api/sphinx/images/co_occurrence_network_plot.png"
+>>> file_name = "/workspaces/techminer-api/sphinx/images/network_plot.png"
 >>> coc_matrix = co_occurrence_matrix(column='author_keywords', min_occ=7,directory=directory)
->>> network = co_occurrence_network(coc_matrix)
->>> network_plot(network).savefig(file_name)
+>>> network_ = network(coc_matrix)
+>>> network_plot(network_).savefig(file_name)
 
-.. image:: images/co_occurrence_network_plot.png
-    :width: 650px
+.. image:: images/network_plot.png
+    :width: 700px
     :align: center
 
 """
