@@ -9,7 +9,7 @@ Correlation map
 >>> correlation_map(matrix).savefig(file_name)
 
 .. image:: images/auto_corr_map.png
-    :width: 400px
+    :width: 700px
     :align: center
 
 """
