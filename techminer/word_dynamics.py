@@ -8,7 +8,7 @@ Word dynamics
 >>> word_dynamics('author_keywords', 10, directory=directory).savefig(file_name)
 
 .. image:: images/word_dynamics.png
-    :width: 650px
+    :width: 700px
     :align: center
 
 
