@@ -1,3 +1,44 @@
+"""
+Abstract Summarization
+===============================================================================
+
+>>> from techminer import *
+>>> directory = "/workspaces/techminer-api/data/"
+>>> abstract_summarization(
+...     texts=["fintech", "blockchain"],
+...     n_phrases=5,    
+...     directory=directory,
+... )
+The research on data science and ai in FINTECH involves many latest progress made in smart
+FINTECH for bankingtech, tradetech, lendtech, insurtech, wealthtech, paytech, risktech,
+cryptocurrencies, and BLOCKCHAIN, and the dsai techniques including complex system
+methods, quantitative methods, intelligent interactions, recognition and responses, data
+analytics, deep learning, federated learning, privacy-preserving processing, augmentation,
+optimization, and system intelligence enhancement... From the theoretical point of view,
+our research indicates, that besides key growth driving factors, outlined in existing
+literature, such as strategy, prerequisites for rapid growth, business model choice,
+international business networks, entrepreneur's characteristics, product development or
+theoretical frameworks for development, especially within the international market, the
+quality of digital logistics performance of FINTECH companies seem to matter... Internet
+banking, mobile banking, atm,cash deposit machines, instant payment services, online
+trading in stock markets, online funds transfers, e-wallets,wealth management, peer to
+peer lending, BLOCKCHAIN technology are various FINTECH products and services... The most
+important factors that influence the level of satisfaction when using FINTECH services
+were considered: comfort and ease of use, legal regulations, ease of account opening,
+mobile payments features, crowdfunding options, international money transfers features,
+reduced costs associated with transactions, peer-to-peer lending, insurances options,
+online brokerage, cryptocoins options and exchange options... Fourth, the traditional
+assets, gold and oil, as well as modern assets, green bonds, are useful as good hedgers
+compared with other assets because shock transmissions from them to FINTECH, kftx are
+below 0.1% and, more importantly, the total volatility spill-over of all assets in the
+sample is moderately average, accounting for 44.39%.
+
+
+
+
+"""
+
+
 import os
 import textwrap
 
@@ -6,12 +47,15 @@ import pandas as pd
 from nltk.stem import PorterStemmer
 
 
-def abstract_summarization(directory, texts, n_phrases=10, sufix=""):
+def abstract_summarization(
+    texts=None,
+    n_phrases=10,
+    sufix="",
+    directory="./",
+):
 
     if isinstance(texts, str):
         texts = [texts]
-
-    porter_stemmer = PorterStemmer()
 
     file_name = os.path.join(directory, "abstracts.csv")
     abstracts = pd.read_csv(file_name)
@@ -22,7 +66,9 @@ def abstract_summarization(directory, texts, n_phrases=10, sufix=""):
     abstracts = abstracts[abstracts.text.str.contains(regex, regex=True)]
     abstracts = abstracts[["record_no", "text"]]
 
-    #
+    # -----------------------------------------------------------------------------------
+    porter_stemmer = PorterStemmer()
+
     abstracts["formatted_text"] = abstracts.text.copy()
     abstracts["formatted_text"] = abstracts["formatted_text"].str.replace(
         r"[[0-9]]*", " "
@@ -49,6 +95,7 @@ def abstract_summarization(directory, texts, n_phrases=10, sufix=""):
         word_frequencies[word] = word_frequencies[word] / maximum_frequncy
 
     #
+
     abstracts["sentence_scores"] = 0
     for index, row in abstracts.iterrows():
         for word in nltk.word_tokenize(row["formatted_text"]):
@@ -84,7 +131,8 @@ def abstract_summarization(directory, texts, n_phrases=10, sufix=""):
             print(paragraph, file=out_file)
             print("\n", file=out_file)
 
-    summary = ". ".join(abstracts.text.values)
-    return summary
+    summary = ".. ".join(abstracts.text.values)
+
+    print(textwrap.fill(summary, width=90))
 
     # return abstracts
