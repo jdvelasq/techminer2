@@ -8,7 +8,7 @@ Column trends
 >>> column_trends('author_keywords', directory=directory).savefig(file_name)
 
 .. image:: images/column_trends.png
-    :width: 650px
+    :width: 700px
     :align: center
 
 >>> column_trends('author_keywords', directory=directory, plot=False).head()
