@@ -10,7 +10,7 @@ Plots global citations by item in the selected column
 >>> column_global_citations('countries', directory=directory).savefig(file_name)
 
 .. image:: images/column_global_citations.png
-    :width: 500px
+    :width: 700px
     :align: center
 
 >>> column_global_citations('countries', directory=directory, plot=False).head()
