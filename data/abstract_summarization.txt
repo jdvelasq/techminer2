@@ -1,0 +1,39 @@
+*** Cao L et al, 2021, INT J DATA SCI ANAL
+The research on data science and ai in FINTECH involves many latest progress made in smart
+FINTECH for bankingtech, tradetech, lendtech, insurtech, wealthtech, paytech, risktech,
+cryptocurrencies, and BLOCKCHAIN, and the dsai techniques including complex system
+methods, quantitative methods, intelligent interactions, recognition and responses, data
+analytics, deep learning, federated learning, privacy-preserving processing, augmentation,
+optimization, and system intelligence enhancement.
+
+
+*** Svirina A et al, 2021, E3S WEB CONF
+From the theoretical point of view, our research indicates, that besides key growth
+driving factors, outlined in existing literature, such as strategy, prerequisites for
+rapid growth, business model choice, international business networks, entrepreneur's
+characteristics, product development or theoretical frameworks for development, especially
+within the international market, the quality of digital logistics performance of FINTECH
+companies seem to matter.
+
+
+*** Katyayani J et al, 2019, INT J INNOV TECHNOL EXPLOR EN
+Internet banking, mobile banking, atm,cash deposit machines, instant payment services,
+online trading in stock markets, online funds transfers, e-wallets,wealth management, peer
+to peer lending, BLOCKCHAIN technology are various FINTECH products and services.
+
+
+*** Dospinescu O et al, 2021, E M EKON MANAGE
+The most important factors that influence the level of satisfaction when using FINTECH
+services were considered: comfort and ease of use, legal regulations, ease of account
+opening, mobile payments features, crowdfunding options, international money transfers
+features, reduced costs associated with transactions, peer-to-peer lending, insurances
+options, online brokerage, cryptocoins options and exchange options.
+
+
+*** Le TN-L et al, 2021, TECHNOL FORECAST SOC CHANGE
+Fourth, the traditional assets, gold and oil, as well as modern assets, green bonds, are
+useful as good hedgers compared with other assets because shock transmissions from them to
+FINTECH, kftx are below 0.1% and, more importantly, the total volatility spill-over of all
+assets in the sample is moderately average, accounting for 44.39%.
+
+
