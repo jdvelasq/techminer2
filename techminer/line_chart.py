@@ -10,7 +10,7 @@ Line chart
 
 
 .. image:: images/line_chart.png
-    :width: 600px
+    :width: 700px
     :align: center
 """
 
