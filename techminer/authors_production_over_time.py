@@ -8,7 +8,7 @@ Authors Production over Time
 >>> authors_production_over_time(min_occ=2, directory=directory).savefig(file_name)
 
 .. image:: images/authors_production_over_time.png
-    :width: 650px
+    :width: 700px
     :align: center
 
 >>> authors_production_over_time(min_occ=2, directory=directory, plot=False).head()
