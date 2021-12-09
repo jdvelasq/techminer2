@@ -11,7 +11,7 @@ Plots the number of documents per item in the selected column
 >>> column_frequency(column="authors", directory=directory).savefig(file_name)
 
 .. image:: images/column_frequency.png
-    :width: 650px
+    :width: 700px
     :align: center
 
 
