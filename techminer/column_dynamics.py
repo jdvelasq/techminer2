@@ -8,7 +8,7 @@ Column dynamics
 >>> column_dynamics('iso_source_name', 10, directory=directory).savefig(file_name)
 
 .. image:: images/column_dynamics.png
-    :width: 650px
+    :width: 700px
     :align: center
 
 
