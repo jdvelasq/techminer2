@@ -9,7 +9,7 @@ Bradford's law
 >>> bradford_law(directory=directory).savefig(file_name)
 
 .. image:: images/bradford.png
-    :width: 650px
+    :width: 700px
     :align: center
 
 
