@@ -8,7 +8,7 @@ Most Relevant Authors
 >>> most_relevant_authors(directory=directory).savefig(file_name)
 
 .. image:: images/most_relevant_authors.png
-    :width: 650px
+    :width: 700px
     :align: center
 
 
