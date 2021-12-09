@@ -8,7 +8,7 @@ Trend Topics
 >>> trend_topics('author_keywords', directory=directory).savefig(file_name)
 
 .. image:: images/trend_topics.png
-    :width: 650px
+    :width: 700px
     :align: center
 
 >>> trend_topics('author_keywords', directory=directory, plot=False).head()
