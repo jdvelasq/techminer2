@@ -9,7 +9,7 @@ Most local cited references
 >>> most_local_cited_references(directory=directory).savefig(file_name)
 
 .. image:: images/most_local_cited_references.png
-    :width: 650px
+    :width: 700px
     :align: center
 
 >>> most_local_cited_references(directory=directory, plot=False).head()
