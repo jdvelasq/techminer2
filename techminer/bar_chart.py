@@ -11,7 +11,7 @@ Bar chart
 >>> bar_chart(series, darkness, title=title).savefig(file_name)
 
 .. image:: images/bar_chart.png
-    :width: 600px
+    :width: 700px
     :align: center
 
 
