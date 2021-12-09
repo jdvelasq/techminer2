@@ -8,7 +8,7 @@ Most Relevant Sources
 >>> most_relevant_sources(directory=directory).savefig(file_name)
 
 .. image:: images/most_relevant_sources.png
-    :width: 650px
+    :width: 700px
     :align: center
 
 
