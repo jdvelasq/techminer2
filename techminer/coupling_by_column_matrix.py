@@ -48,7 +48,7 @@ rn                                           ...
 >>> network_plot(coupling_network).savefig(file_name)
 
 .. image:: images/coupling_column_network.png
-    :width: 600px
+    :width: 700px
     :align: center
 
 """
