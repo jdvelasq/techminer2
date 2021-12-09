@@ -9,7 +9,7 @@ Average citations per year
 >>> average_citations_per_year(directory=directory).savefig(file_name)
 
 .. image:: images/average_citations_per_year.png
-    :width: 600px
+    :width: 700px
     :align: center
 
 
