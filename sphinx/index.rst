@@ -40,9 +40,6 @@ package developed and tested in Python version 3.6.
     :maxdepth: 1
 
     _user_data
-    _user_cleaning
-    _user_search
-    _user_view
 
 .. toctree::
     :caption: Software comparison
@@ -54,17 +51,6 @@ package developed and tested in Python version 3.6.
     _vantagepoint
 
 
-.. toctree::
-    :caption: Primitives
-    :hidden:
-    :maxdepth: 1
-
-    _user_column
-    by_author_keywords_analysis
-    by_index_keywords_analysis
-
-
-
 
 .. toctree::
     :caption: API Reference
@@ -74,7 +60,6 @@ package developed and tested in Python version 3.6.
     _api_document_term
     _api_indicators
     _api_network
-    _api_thesaurus
     _api_visualization
 
 
