@@ -10,7 +10,7 @@ Column H-index
 >>> column_h_index(column='iso_source_name', top_n=20, directory=directory).savefig(file_name)
 
 .. image:: images/column_h_index.png
-    :width: 650px
+    :width: 700px
     :align: center
 
 
