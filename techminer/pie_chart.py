@@ -13,7 +13,7 @@ Pie chart
 
 
 .. image:: images/pie_chart.png
-    :width: 500px
+    :width: 700px
     :align: center
 
 
