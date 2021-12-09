@@ -8,7 +8,7 @@ Column wordcolud
 >>> column_wordcloud('author_keywords', 10, directory=directory).savefig(file_name)
 
 .. image:: images/column_wordcloud.png
-    :width: 650px
+    :width: 700px
     :align: center
 
 
