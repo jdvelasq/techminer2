@@ -8,7 +8,7 @@ Column frequency over time
 >>> column_frequency_over_time('authors', min_occ=2, directory=directory).savefig(file_name)
 
 .. image:: images/column_frequency_over_time.png
-    :width: 650px
+    :width: 700px
     :align: center
 
 >>> column_frequency_over_time('authors', min_occ=2, directory=directory, plot=False).head()
