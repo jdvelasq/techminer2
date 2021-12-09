@@ -30,11 +30,11 @@ Based on the bibliometrix/R/conceptualStructure.R code.
 >>> factorial_analyzer.silhouette_scores_plot(max_n_clusters=8).savefig(file_name)
 
 .. image:: images/manifold_factorial_analysis_silhouette.png
-    :width: 5500px
+    :width: 700px
     :align: center
 
 
->>> factorial_analyzer.items_by_cluster().head()
+>>> factorial_analyzer.data().head()
                                      Dim-1       Dim-2  Cluster
 author_keywords        #d  #c                                  
 fintech                139 1285  21.789293  133.502844        1
@@ -43,15 +43,30 @@ financial inclusion    17  339  -14.080205   11.401536        2
 blockchain             17  149   -4.997082   15.544741        2
 innovation             13  249   13.538624   -4.960027        3
 
+
+>>> factorial_analyzer.cluster_members().head()
+                           CLTR_0  ...                           CLTR_3
+rn                                 ...                                 
+0      financial service 011:0300  ...  financial technologies 028:0225
+1           crowdfunding 008:0116  ...              innovation 013:0249
+2   peer-to-peer lending 008:0073  ...                    bank 012:0185
+3   financial innovation 008:0044  ...                                 
+4               covid-19 008:0036  ...                                 
+<BLANKLINE>
+[5 rows x 4 columns]
+
+
+
 >>> file_name = "/workspaces/techminer-api/sphinx/images/factorial_analysis_manifold_map.png"
 >>> factorial_analyzer.map().savefig(file_name)
 
 .. image:: images/factorial_analysis_manifold_map.png
-    :width: 5500px
+    :width: 7000px
     :align: center
 
 """
 import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
 from sklearn.metrics import silhouette_score
 
@@ -83,6 +98,44 @@ class Factorial_analysis_manifold:
         table["Cluster"] = self.clustering_method.labels_
 
         self.table_ = table
+
+        names = self.table_.index.get_level_values(0)
+        num_docs = self.table_.index.get_level_values(1)
+        cited_by = self.table_.index.get_level_values(2)
+
+        n_zeros_docs = int(np.log10(max(num_docs))) + 1
+        n_zeros_cited_by = int(np.log10(max(cited_by))) + 1
+
+        fmt = "{} {:0" + str(n_zeros_docs) + "d}:{:0" + str(n_zeros_cited_by) + "d}"
+        text = [
+            fmt.format(name, int(nd), int(tc))
+            for name, nd, tc in zip(names, num_docs, cited_by)
+        ]
+
+        cluster_members = self.table_.copy()
+        #
+        cluster_members["num_documents"] = num_docs
+        cluster_members["cited_by"] = cited_by
+        cluster_members["item"] = text
+        cluster_members.pop("Dim-1")
+        cluster_members.pop("Dim-2")
+        #
+        cluster_members = cluster_members.sort_values(
+            by=["Cluster", "num_documents", "cited_by"], ascending=[True, True, True]
+        )
+
+        cluster_members = cluster_members.assign(
+            rn=cluster_members.groupby("Cluster").cumcount(())
+        )
+        cluster_members = cluster_members.pivot(
+            index="rn", columns="Cluster", values="item"
+        )
+        cluster_members = cluster_members.fillna("")
+        cluster_members.columns = [f"CLTR_{i}" for i in cluster_members.columns]
+        self.cluster_members_ = cluster_members
+
+    def cluster_members(self):
+        return self.cluster_members_.copy()
 
     def data(self):
         return self.table_.copy()
