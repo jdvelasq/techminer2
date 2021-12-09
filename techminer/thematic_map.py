@@ -45,7 +45,7 @@ rn                                   ...
 >>> network_plot(network).savefig(file_name)
 
 .. image:: images/thematic_map_network.png
-    :width: 600px
+    :width: 700px
     :align: center
 
 
