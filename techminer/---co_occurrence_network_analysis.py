@@ -35,14 +35,14 @@ The following capabilities are available:
 >>> analyzer.network().savefig(file_name)
 
 .. image:: images/co_occurrence_network_analysis_network_map.png
-    :width: 500px
+    :width: 700px
     :align: center
 
 >>> file_name = "/workspaces/techminer-api/sphinx/images/co_occurrence_network_analysis_manifold_map.png"
 >>> analyzer.manifold_map().savefig(file_name)
 
 .. image:: images/co_occurrence_network_analysis_manifold_map.png
-    :width: 500px
+    :width: 700px
     :align: center
 
 >>> # analyzer.centrality_density_table()
@@ -52,7 +52,7 @@ The following capabilities are available:
 >>> analyzer.centrality_density_map().savefig(file_name)
 
 .. image:: images/co_occurrence_network_analysis_cen_den_map.png
-    :width: 500px
+    :width: 700px
     :align: center
 
 
