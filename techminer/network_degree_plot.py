@@ -10,7 +10,7 @@ Network degree plot
 >>> network_degree_plot(network).savefig(file_name)
 
 .. image:: images/co_occurrence_network_degree_plot.png
-    :width: 650px
+    :width: 700px
     :align: center
 
 
