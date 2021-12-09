@@ -5,8 +5,6 @@ from .annual_indicators import annual_indicators
 from .annual_occurrence_matrix import annual_occurrence_matrix
 from .annual_scientific_production import annual_scientific_production
 from .apply_thesaurus import apply_thesaurus
-from .associations import associations
-from .author_keywords_factorial_mds_map import author_keywords_factorial_mds_map
 from .author_local_impact import author_local_impact
 from .authors_production_over_time import authors_production_over_time
 from .auto_corr_matrix import auto_corr_matrix
@@ -19,8 +17,12 @@ from .clean_keywords import clean_keywords
 from .cleveland_dot_chart import cleveland_dot_chart
 from .co_citation_matrix import co_citation_matrix
 from .co_citation_network import co_citation_network
+from .co_occurrence_associations import co_occurrence_associations
 from .co_occurrence_communities import co_occurrence_communities
 from .co_occurrence_degree_plot import co_occurrence_degree_plot
+from .co_occurrence_heatmap import co_occurrence_heatmap
+from .co_occurrence_item_associations import co_occurrence_item_associations
+from .co_occurrence_manifold import co_occurrence_manifold
 from .co_occurrence_matrix import co_occurrence_matrix
 from .co_occurrence_mds_map import co_occurrence_mds_map
 from .co_occurrence_network import co_occurrence_network
@@ -56,13 +58,18 @@ from .dotted_timeline_chart import dotted_timeline_chart
 from .extract_user_keywords import extract_user_keywords
 from .factor_matrix import factor_matrix
 from .factorial_analysis_manifold import Factorial_analysis_manifold
+from .factorial_analysis_mds_communities import factorial_analysis_mds_communities
+from .factorial_analysis_mds_data import factorial_analysis_mds_data
+from .factorial_analysis_mds_map import factorial_analysis_mds_map
+from .factorial_analysis_mds_silhouette_scores import (
+    factorial_analysis_mds_silhouette_scores,
+)
 from .find_string import find_string
 from .growth_indicators import growth_indicators
 from .heat_map import heat_map
 from .impact_indicators import impact_indicators
 from .import_references import import_references
 from .import_scopus_file import import_scopus_file
-from .index_keywords_factorial_mds_map import index_keywords_factorial_mds_map
 from .line_chart import line_chart
 from .lotka_law import lotka_law
 from .main_information import main_information
