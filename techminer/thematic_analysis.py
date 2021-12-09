@@ -37,7 +37,7 @@ THEME_5           2.014328  ...        0.628626
 ... ).map().savefig(file_name)
 
 .. image:: images/thematic_analysis_map.png
-    :width: 650px
+    :width: 700px
     :align: center
 
 """
