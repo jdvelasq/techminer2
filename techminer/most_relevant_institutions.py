@@ -8,7 +8,7 @@ Most Relevant Institutions
 >>> most_relevant_institutions(directory=directory).savefig(file_name)
 
 .. image:: images/most_relevant_institutions.png
-    :width: 650px
+    :width: 700px
     :align: center
 
 
