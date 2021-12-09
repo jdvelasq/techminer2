@@ -38,46 +38,27 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Data</span></p>
+              <p class="caption"><span class="caption-text">Introduction</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../import_scopus_file.html">Importing Scopus files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../import_references.html">Import references file</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../coverage.html">Coverage report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../release_info.html">Release Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Filter</span></p>
+<p class="caption"><span class="caption-text">Data preparation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../user_filters.html">User filters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_user_data.html">Data</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Search</span></p>
+<p class="caption"><span class="caption-text">Software comparison</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../find_string.html">Find string</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../stemming.html">Stemming  AND &amp; OR operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../extract_user_keywords.html">Extract user keywords</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Cleaning</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../clean_institutions.html">Clean — institutions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../clean_keywords.html">Clean — keywords</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Analysis</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../by_abstract_analysis.html">By abstract</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../by_columns.html">By columns</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../by_co_occurrence.html">By co-occurrence</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../by_author_analysis.html">By author</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../by_author_keywords_analysis.html">By author keywords</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../by_document_analysis.html">By document</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../by_index_keywords_analysis.html">By index keywords</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../by_references_analysis.html">By references</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../by_year_analysis.html">By year</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_bibliometrix.html">Bibliometrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_tlab.html">T-Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_vantagepoint.html">VantagePoint</a></li>
 </ul>
 <p class="caption"><span class="caption-text">API Reference</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_correlation.html">Correlation API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_api_document_term.html">Document-Term API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_api_indicators.html">Indicators API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_api_network.html">Network API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_thesaurus.html">Thesaurus API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_api_visualization.html">Visualization API</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Analysis tools</span></p>
@@ -112,8 +93,42 @@
              
   <h1>Source code for techminer.document_viewer</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">Document viewer</span>
+<span class="sd">Document Viewer</span>
 <span class="sd">===============================================================================</span>
+
+
+<span class="sd">&gt;&gt;&gt; from techminer import *</span>
+<span class="sd">&gt;&gt;&gt; directory = &quot;/workspaces/techminer-api/data/&quot;</span>
+<span class="sd">&gt;&gt;&gt; document_viewer(&#39;author_keywords&#39;, &#39;fintech&#39;, top_n=1, directory=directory)</span>
+<span class="sd">      document_title : The digital revolution in financial inclusion: international development in the fintech era</span>
+<span class="sd">             authors : Gabor D; Brooks S</span>
+<span class="sd">    global_citations : 146</span>
+<span class="sd">            pub_year : 2017</span>
+<span class="sd">            abstract : this paper examines the growing importance of digital-based financial inclusion as a form of</span>
+<span class="sd">                       organising development interventions through networks of state institutions, international</span>
+<span class="sd">                       development organisations, philanthropic investment and fintech companies.  the</span>
+<span class="sd">                       fintechphilanthropydevelopment complex generates digital ecosystems that map, expand and</span>
+<span class="sd">                       monetise digital footprints.  its know thy (irrational) customer vision combines behavioural</span>
+<span class="sd">                       economics with predictive algorithms to accelerate access to, and monitor engagement with,</span>
+<span class="sd">                       finance.  the digital revolution adds new layers to the material cultures of financial(ised)</span>
+<span class="sd">                       inclusion, offering the state new ways of expanding the inclusion of the legible, and global</span>
+<span class="sd">                       finance new forms of profiling poor households into generators of financial assets.</span>
+<span class="sd"> raw_author_keywords : behavioural economics</span>
+<span class="sd">                       digital technologies</span>
+<span class="sd">                       financial inclusion</span>
+<span class="sd">                       financialisation</span>
+<span class="sd">                       fintech</span>
+<span class="sd">                       governmentality</span>
+<span class="sd">                       international development</span>
+<span class="sd">  raw_index_keywords : economic development</span>
+<span class="sd">                       financial system</span>
+<span class="sd">                       globalization</span>
+<span class="sd">                       government</span>
+<span class="sd">                       institutional framework</span>
+<span class="sd">                       international organization</span>
+<span class="sd">                       investment</span>
+<span class="sd">                       material culture</span>
+
 
 
 <span class="sd">&quot;&quot;&quot;</span>
@@ -124,7 +139,15 @@
 <span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">load_filtered_documents</span>
 
 
-<div class="viewcode-block" id="document_viewer"><a class="viewcode-back" href="../../document_viewer.html#techminer.document_viewer.document_viewer">[docs]</a><span class="k">def</span> <span class="nf">document_viewer</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="n">column</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">case</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">top_n</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+<div class="viewcode-block" id="document_viewer"><a class="viewcode-back" href="../../document_viewer.html#techminer.document_viewer.document_viewer">[docs]</a><span class="k">def</span> <span class="nf">document_viewer</span><span class="p">(</span>
+    <span class="n">column</span><span class="p">,</span>
+    <span class="n">text</span><span class="p">,</span>
+    <span class="n">case</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">flags</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">top_n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">directory</span><span class="o">=</span><span class="s2">&quot;./&quot;</span><span class="p">,</span>
+<span class="p">):</span>
 
     <span class="n">documents</span> <span class="o">=</span> <span class="n">load_filtered_documents</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
     <span class="n">contains</span> <span class="o">=</span> <span class="n">documents</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">case</span><span class="o">=</span><span class="n">case</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="n">flags</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="n">regex</span><span class="p">)</span>
@@ -141,8 +164,8 @@
         <span class="s2">&quot;source_title&quot;</span><span class="p">,</span>
         <span class="s2">&quot;pub_year&quot;</span><span class="p">,</span>
         <span class="s2">&quot;abstract&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;author_keywords&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;index_keywords&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;raw_author_keywords&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;raw_index_keywords&quot;</span><span class="p">,</span>
     <span class="p">]</span>
 
     <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">reported_columns</span><span class="p">:</span>
@@ -163,50 +186,50 @@
                 <span class="k">continue</span>
 
             <span class="k">if</span> <span class="n">column</span> <span class="o">==</span> <span class="s2">&quot;document_title&quot;</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;           document_title :&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;      document_title :&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
                 <span class="nb">print</span><span class="p">(</span>
                     <span class="n">textwrap</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span>
                         <span class="n">row</span><span class="p">[</span><span class="n">column</span><span class="p">],</span>
-                        <span class="n">width</span><span class="o">=</span><span class="mi">120</span><span class="p">,</span>
-                        <span class="n">initial_indent</span><span class="o">=</span><span class="s2">&quot; &quot;</span> <span class="o">*</span> <span class="mi">28</span><span class="p">,</span>
-                        <span class="n">subsequent_indent</span><span class="o">=</span><span class="s2">&quot; &quot;</span> <span class="o">*</span> <span class="mi">28</span><span class="p">,</span>
+                        <span class="n">width</span><span class="o">=</span><span class="mi">115</span><span class="p">,</span>
+                        <span class="n">initial_indent</span><span class="o">=</span><span class="s2">&quot; &quot;</span> <span class="o">*</span> <span class="mi">23</span><span class="p">,</span>
+                        <span class="n">subsequent_indent</span><span class="o">=</span><span class="s2">&quot; &quot;</span> <span class="o">*</span> <span class="mi">23</span><span class="p">,</span>
                         <span class="n">fix_sentence_endings</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                    <span class="p">)[</span><span class="mi">27</span><span class="p">:]</span>
+                    <span class="p">)[</span><span class="mi">22</span><span class="p">:]</span>
                 <span class="p">)</span>
                 <span class="k">continue</span>
 
             <span class="k">if</span> <span class="n">column</span> <span class="o">==</span> <span class="s2">&quot;abstract&quot;</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;                 abstract :&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;            abstract :&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
                 <span class="nb">print</span><span class="p">(</span>
                     <span class="n">textwrap</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span>
                         <span class="n">row</span><span class="p">[</span><span class="n">column</span><span class="p">],</span>
-                        <span class="n">width</span><span class="o">=</span><span class="mi">120</span><span class="p">,</span>
-                        <span class="n">initial_indent</span><span class="o">=</span><span class="s2">&quot; &quot;</span> <span class="o">*</span> <span class="mi">28</span><span class="p">,</span>
-                        <span class="n">subsequent_indent</span><span class="o">=</span><span class="s2">&quot; &quot;</span> <span class="o">*</span> <span class="mi">28</span><span class="p">,</span>
+                        <span class="n">width</span><span class="o">=</span><span class="mi">115</span><span class="p">,</span>
+                        <span class="n">initial_indent</span><span class="o">=</span><span class="s2">&quot; &quot;</span> <span class="o">*</span> <span class="mi">23</span><span class="p">,</span>
+                        <span class="n">subsequent_indent</span><span class="o">=</span><span class="s2">&quot; &quot;</span> <span class="o">*</span> <span class="mi">23</span><span class="p">,</span>
                         <span class="n">fix_sentence_endings</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                    <span class="p">)[</span><span class="mi">27</span><span class="p">:]</span>
+                    <span class="p">)[</span><span class="mi">22</span><span class="p">:]</span>
                 <span class="p">)</span>
                 <span class="k">continue</span>
 
             <span class="k">if</span> <span class="n">column</span> <span class="ow">in</span> <span class="p">[</span>
+                <span class="s2">&quot;raw_author_keywords&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;author_keywords&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;author_keywords_cleaned&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;raw_index_keywords&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;index_keywords&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;index_keywords_cleaned&quot;</span><span class="p">,</span>
             <span class="p">]:</span>
                 <span class="n">keywords</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="n">column</span><span class="p">]</span>
                 <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">keywords</span><span class="p">):</span>
                     <span class="k">continue</span>
                 <span class="n">keywords</span> <span class="o">=</span> <span class="n">keywords</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;; &quot;</span><span class="p">)</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; </span><span class="si">{:&gt;24}</span><span class="s2"> : </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">column</span><span class="p">,</span> <span class="n">keywords</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; </span><span class="si">{:&gt;19}</span><span class="s2"> : </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">column</span><span class="p">,</span> <span class="n">keywords</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
                 <span class="k">for</span> <span class="n">keyword</span> <span class="ow">in</span> <span class="n">keywords</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
-                    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; &quot;</span> <span class="o">*</span> <span class="mi">28</span> <span class="o">+</span> <span class="n">keyword</span><span class="p">)</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; &quot;</span> <span class="o">*</span> <span class="mi">23</span> <span class="o">+</span> <span class="n">keyword</span><span class="p">)</span>
                 <span class="k">continue</span>
 
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; </span><span class="si">{:&gt;24}</span><span class="s2"> : </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">column</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="n">column</span><span class="p">]))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; </span><span class="si">{:&gt;19}</span><span class="s2"> : </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">column</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="n">column</span><span class="p">]))</span>
 
         <span class="k">if</span> <span class="n">index</span> <span class="o">!=</span> <span class="n">documents</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">125</span><span class="p">)</span></div>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">120</span><span class="p">)</span></div>
 </pre></div>
 
            </div>

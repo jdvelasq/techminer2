@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Analysis of bibliographic datasets using Python &mdash; TechMiner --- API 0.0.0 documentation</title>
+  <title>Techminer API for the analysis of bibliographic datasets using Python &mdash; TechMiner --- API 0.0.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -19,7 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Importing Scopus files" href="import_scopus_file.html" /> 
+    <link rel="next" title="Getting Started" href="getting_started.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -40,46 +40,27 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Data</span></p>
+              <p class="caption"><span class="caption-text">Introduction</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="import_scopus_file.html">Importing Scopus files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="import_references.html">Import references file</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coverage.html">Coverage report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_info.html">Release Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Filter</span></p>
+<p class="caption"><span class="caption-text">Data preparation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="user_filters.html">User filters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_user_data.html">Data</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Search</span></p>
+<p class="caption"><span class="caption-text">Software comparison</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="find_string.html">Find string</a></li>
-<li class="toctree-l1"><a class="reference internal" href="stemming.html">Stemming  AND &amp; OR operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="extract_user_keywords.html">Extract user keywords</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Cleaning</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="clean_institutions.html">Clean — institutions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="clean_keywords.html">Clean — keywords</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Analysis</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="by_abstract_analysis.html">By abstract</a></li>
-<li class="toctree-l1"><a class="reference internal" href="by_columns.html">By columns</a></li>
-<li class="toctree-l1"><a class="reference internal" href="by_co_occurrence.html">By co-occurrence</a></li>
-<li class="toctree-l1"><a class="reference internal" href="by_author_analysis.html">By author</a></li>
-<li class="toctree-l1"><a class="reference internal" href="by_author_keywords_analysis.html">By author keywords</a></li>
-<li class="toctree-l1"><a class="reference internal" href="by_document_analysis.html">By document</a></li>
-<li class="toctree-l1"><a class="reference internal" href="by_index_keywords_analysis.html">By index keywords</a></li>
-<li class="toctree-l1"><a class="reference internal" href="by_references_analysis.html">By references</a></li>
-<li class="toctree-l1"><a class="reference internal" href="by_year_analysis.html">By year</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_bibliometrix.html">Bibliometrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_tlab.html">T-Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_vantagepoint.html">VantagePoint</a></li>
 </ul>
 <p class="caption"><span class="caption-text">API Reference</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="_api_correlation.html">Correlation API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_api_document_term.html">Document-Term API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_thesaurus.html">Thesaurus API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_api_visualization.html">Visualization API</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Analysis tools</span></p>
@@ -102,7 +83,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="#" class="icon icon-home"></a> &raquo;</li>
-      <li>Analysis of bibliographic datasets using Python</li>
+      <li>Techminer API for the analysis of bibliographic datasets using Python</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -136,50 +117,34 @@
     text-align: unset;
 }
 </style>
-<section id="analysis-of-bibliographic-datasets-using-python">
-<h1>Analysis of bibliographic datasets using Python<a class="headerlink" href="#analysis-of-bibliographic-datasets-using-python" title="Permalink to this headline"></a></h1>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Cleaning</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="clean_institutions.html">Clean — institutions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="clean_keywords.html">Clean — keywords</a></li>
+<section id="techminer-api-for-the-analysis-of-bibliographic-datasets-using-python">
+<h1>Techminer API for the analysis of bibliographic datasets using Python<a class="headerlink" href="#techminer-api-for-the-analysis-of-bibliographic-datasets-using-python" title="Permalink to this headline"></a></h1>
+<p><strong>TechMiner-API</strong> is a package for mining relevant information about topics related to Research and
+Development (R&amp;D) literature extracted from bibliographical databases as Scopus. <strong>TechMiner-API</strong>
+facilitates studies of systematic mapping of literature and Tech mining studies. The package can
+be used by users with basic knowledge of Python programming. However, users with advanced
+knowledge in programming and text mining can easily incorporate their codes to maximize the power
+of the library and develop advanced analysis. The package can be used to:</p>
+<ul class="simple">
+<li><p>Realize analyzes based on document-by-term pattern, for example, number of documents by author, by source or by keyword.</p></li>
+<li><p>Calculate and plot the number of documents or citations by year.</p></li>
+<li><p>Realize analyzes based on term-by-term pattern, for example, number of documents by keywords and by author, by keyword and by year and so on.</p></li>
+<li><p>Compute and plot co-ocurrence, correlation and autocorrelation matrices.</p></li>
+<li><p>Realize Principal Component Analysis to detect and analyze clusters of data.</p></li>
+<li><p>Plot heatmaps, networks and many other types of plots for analyzing data.</p></li>
 </ul>
-</div>
+<p><em>TechMiner</em> is an open source (distributed under the MIT license) and friendly-user
+package developed and tested in Python version 3.6.</p>
 <div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Analysis</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="by_abstract_analysis.html">By abstract</a></li>
-<li class="toctree-l1"><a class="reference internal" href="by_columns.html">By columns</a></li>
-<li class="toctree-l1"><a class="reference internal" href="by_co_occurrence.html">By co-occurrence</a></li>
-<li class="toctree-l1"><a class="reference internal" href="by_author_analysis.html">By author</a></li>
-<li class="toctree-l1"><a class="reference internal" href="by_author_keywords_analysis.html">By author keywords</a></li>
-<li class="toctree-l1"><a class="reference internal" href="by_document_analysis.html">By document</a></li>
-<li class="toctree-l1"><a class="reference internal" href="by_index_keywords_analysis.html">By index keywords</a></li>
-<li class="toctree-l1"><a class="reference internal" href="by_references_analysis.html">By references</a></li>
-<li class="toctree-l1"><a class="reference internal" href="by_year_analysis.html">By year</a></li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">API Reference</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="_api_correlation.html">Correlation API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_document_term.html">Document-Term API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_thesaurus.html">Thesaurus API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_visualization.html">Visualization API</a></li>
-</ul>
 </div>
 <div class="toctree-wrapper compound">
 </div>
-<section id="release-information">
-<h2>Release Information<a class="headerlink" href="#release-information" title="Permalink to this headline"></a></h2>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
 <ul>
 <li><p><strong>Author</strong>:</p>
 <blockquote>
@@ -192,13 +157,12 @@
 </li>
 </ul>
 </section>
-</section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="import_scopus_file.html" class="btn btn-neutral float-right" title="Importing Scopus files" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="getting_started.html" class="btn btn-neutral float-right" title="Getting Started" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

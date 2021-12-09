@@ -19,7 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Growth indicators" href="growth_indicators.html" />
+    <link rel="next" title="Document indicators" href="document_indicators.html" />
     <link rel="prev" title="Column indicators" href="column_indicators.html" /> 
 </head>
 
@@ -41,56 +41,37 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Data</span></p>
+              <p class="caption"><span class="caption-text">Introduction</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="import_scopus_file.html">Importing Scopus files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="import_references.html">Import references file</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coverage.html">Coverage report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_info.html">Release Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Filter</span></p>
+<p class="caption"><span class="caption-text">Data preparation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="user_filters.html">User filters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_user_data.html">Data</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Search</span></p>
+<p class="caption"><span class="caption-text">Software comparison</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="find_string.html">Find string</a></li>
-<li class="toctree-l1"><a class="reference internal" href="stemming.html">Stemming  AND &amp; OR operators</a></li>
-<li class="toctree-l1"><a class="reference internal" href="extract_user_keywords.html">Extract user keywords</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Cleaning</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="clean_institutions.html">Clean — institutions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="clean_keywords.html">Clean — keywords</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Analysis</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="by_abstract_analysis.html">By abstract</a></li>
-<li class="toctree-l1"><a class="reference internal" href="by_columns.html">By columns</a></li>
-<li class="toctree-l1"><a class="reference internal" href="by_co_occurrence.html">By co-occurrence</a></li>
-<li class="toctree-l1"><a class="reference internal" href="by_author_analysis.html">By author</a></li>
-<li class="toctree-l1"><a class="reference internal" href="by_author_keywords_analysis.html">By author keywords</a></li>
-<li class="toctree-l1"><a class="reference internal" href="by_document_analysis.html">By document</a></li>
-<li class="toctree-l1"><a class="reference internal" href="by_index_keywords_analysis.html">By index keywords</a></li>
-<li class="toctree-l1"><a class="reference internal" href="by_references_analysis.html">By references</a></li>
-<li class="toctree-l1"><a class="reference internal" href="by_year_analysis.html">By year</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_bibliometrix.html">Bibliometrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_tlab.html">T-Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_vantagepoint.html">VantagePoint</a></li>
 </ul>
 <p class="caption"><span class="caption-text">API Reference</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="_api_correlation.html">Correlation API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_api_document_term.html">Document-Term API</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="_api_indicators.html">Indicators API</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="annual_indicators.html">Annual indicators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="annual_occurrence_matrix.html">Annual occurrence matrix</a></li>
-<li class="toctree-l2"><a class="reference internal" href="associations.html">Associations (co-occurrence analysis)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="collaboration_indicators.html">Collaboration indicators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="column_indicators.html">Column indicators</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Column indicators by year</a></li>
+<li class="toctree-l2"><a class="reference internal" href="document_indicators.html">Document indicators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="growth_indicators.html">Growth indicators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="impact_indicators.html">Impact indicators</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_thesaurus.html">Thesaurus API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_api_visualization.html">Visualization API</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Analysis tools</span></p>
@@ -153,37 +134,26 @@
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer-api/data/&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">column_indicators_by_year</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="s1">&#39;authors&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="go">              pub_year  num_documents  global_citations  local_citations</span>
-<span class="go">authors</span>
-<span class="go">Dolata M          2016              1                43                7</span>
-<span class="go">Hong S            2016              1                 2                1</span>
-<span class="go">Hung J-L          2016              1                24                4</span>
-<span class="go">Kim K             2016              1                 2                1</span>
-<span class="go">Kotarba M         2016              1                16                3</span>
-<span class="go">Luo B             2016              1                24                4</span>
-<span class="go">Schueffel P       2016              1               106               14</span>
-<span class="go">Schwabe G         2016              1                43                7</span>
-<span class="go">Zavolokina L      2016              1                43                7</span>
-<span class="go">Brooks S          2017              1               146               15</span>
+<span class="go">                       num_documents  ...  local_citations_per_year</span>
+<span class="go">authors      pub_year                 ...</span>
+<span class="go">Dolata M     2016                  1  ...                     1.167</span>
+<span class="go">Hong S       2016                  1  ...                     0.167</span>
+<span class="go">Hung J-L     2016                  1  ...                     0.667</span>
+<span class="go">Kim K        2016                  1  ...                     0.167</span>
+<span class="go">Kotarba M    2016                  1  ...                     0.500</span>
+<span class="go">Luo B        2016                  1  ...                     0.667</span>
+<span class="go">Schueffel P  2016                  1  ...                     2.333</span>
+<span class="go">Schwabe G    2016                  1  ...                     1.167</span>
+<span class="go">Zavolokina L 2016                  1  ...                     1.167</span>
+<span class="go">Brooks S     2017                  1  ...                     3.000</span>
+
+<span class="go">[10 rows x 6 columns]</span>
 </pre></div>
 </div>
 <dl class="py function">
 <dt class="sig sig-object py" id="techminer.column_indicators_by_year.column_indicators_by_year">
-<span class="sig-prename descclassname"><span class="pre">techminer.column_indicators_by_year.</span></span><span class="sig-name descname"><span class="pre">column_indicators_by_year</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'authors'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">';</span> <span class="pre">'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer/column_indicators_by_year.html#column_indicators_by_year"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer.column_indicators_by_year.column_indicators_by_year" title="Permalink to this definition"></a></dt>
-<dd><p>Counts the number of terms by record per year.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>dirpath_or_records</strong> – path to the directory or the records object</p></li>
-<li><p><strong>column</strong> – column to be used to count the terms</p></li>
-<li><p><strong>sep</strong> – separator to be used to split the column</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>a pandas.Series with the number of terms by record.</p>
-</dd>
-</dl>
-</dd></dl>
+<span class="sig-prename descclassname"><span class="pre">techminer.column_indicators_by_year.</span></span><span class="sig-name descname"><span class="pre">column_indicators_by_year</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'authors'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer/column_indicators_by_year.html#column_indicators_by_year"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer.column_indicators_by_year.column_indicators_by_year" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
 
 </section>
 
@@ -192,7 +162,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="column_indicators.html" class="btn btn-neutral float-left" title="Column indicators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="growth_indicators.html" class="btn btn-neutral float-right" title="Growth indicators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="document_indicators.html" class="btn btn-neutral float-right" title="Document indicators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
