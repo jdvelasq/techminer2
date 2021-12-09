@@ -8,7 +8,7 @@ Country Scientific Production
 >>> country_scientific_production(directory=directory).savefig(file_name)
  
 .. image:: images/country_scientific_production.png
-    :width: 650px
+    :width: 700px
     :align: center
 
 """
