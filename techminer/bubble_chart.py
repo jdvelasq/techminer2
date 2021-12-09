@@ -63,14 +63,14 @@ def bubble_chart(
     >>> fig.savefig('/workspaces/techminer/sphinx/images/bubbleplot0.png')
 
     .. image:: images/bubbleplot0.png
-        :width: 400px
+        :width: 700px
         :align: center
 
     >>> fig = bubble(df, axis=1, alpha=0.5, rmax=150)
     >>> fig.savefig('/workspaces/techminer/sphinx/images/bubbleplot1.png')
 
     .. image:: images/bubbleplot1.png
-        :width: 400px
+        :width: 700px
         :align: center
 
 
