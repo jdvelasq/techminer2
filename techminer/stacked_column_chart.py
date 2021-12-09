@@ -12,7 +12,7 @@ Stacked column chart
 >>> stacked_column_chart(data, title=title).savefig(file_name)
 
 .. image:: images/stacked_column_chart.png
-    :width: 650px
+    :width: 700px
     :align: center
 
 
