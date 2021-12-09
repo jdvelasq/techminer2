@@ -10,7 +10,7 @@ Author Local Impact
 >>> author_local_impact(impact_measure='h_index', top_n=20, directory=directory).savefig(file_name)
 
 .. image:: images/author_local_impact.png
-    :width: 650px
+    :width: 700px
     :align: center
 
 
