@@ -9,7 +9,7 @@ World cloud
 >>> word_cloud(data).savefig(file_name)
 
 .. image:: images/word_cloud_authors.png
-    :width: 600px
+    :width: 700px
     :align: center
 
 """
