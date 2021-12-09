@@ -8,7 +8,7 @@ Co-occurrence degree plot
 >>> co_occurrence_degree_plot('author_keywords', directory=directory).savefig(file_name)
 
 .. image:: images/co_occurrence_degree_plot.png
-    :width: 550px
+    :width: 700px
     :align: center
 
 """
