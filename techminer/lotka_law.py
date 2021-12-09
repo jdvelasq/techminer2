@@ -9,7 +9,7 @@ Lotka's law
 >>> lotka_law(directory=directory).savefig(file_name)
 
 .. image:: images/lotka.png
-    :width: 600px
+    :width: 700px
     :align: center
 
 
