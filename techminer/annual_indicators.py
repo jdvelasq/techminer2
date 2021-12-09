@@ -20,7 +20,7 @@ pub_year                 ...
 <Figure size 600x600 with 1 Axes>
 
 .. image:: images/annual_scientific_production.png
-    :width: 600px
+    :width: 700px
     :align: center
 
 """
