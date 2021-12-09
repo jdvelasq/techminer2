@@ -8,7 +8,7 @@ Source dynamics
 >>> source_dynamics(10, directory=directory).savefig(file_name)
 
 .. image:: images/source_dynamics.png
-    :width: 650px
+    :width: 700px
     :align: center
 
 
