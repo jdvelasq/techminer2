@@ -11,7 +11,7 @@ Tree map
 >>> tree_map(series=series, darkness=darkness).savefig(file_name)
 
 .. image:: images/tree_map.png
-    :width: 500px
+    :width: 700px
     :align: center
 
 """
