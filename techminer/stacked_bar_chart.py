@@ -12,7 +12,7 @@ Stacked bar chart
 >>> stacked_bar_chart(data, title=title).savefig(file_name)
 
 .. image:: images/stacked_bar_chart.png
-    :width: 600px
+    :width: 700px
     :align: center
 
 
