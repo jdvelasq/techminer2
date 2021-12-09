@@ -8,7 +8,7 @@ Thematic map --- network
 >>> thematic_map_network('author_keywords', directory=directory).savefig(file_name)
 
 .. image:: images/thematic_map_network.png
-    :width: 650px
+    :width: 700px
     :align: center
 
 """
