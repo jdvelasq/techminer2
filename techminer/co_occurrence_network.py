@@ -5,7 +5,11 @@ Co-occurrence network
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/data/"
 >>> file_name = "/workspaces/techminer-api/sphinx/images/co_occurrence_network.png"
->>> co_occurrence_network(matrix).savefig(file_name)
+>>> co_occurrence_network(
+...     'author_keywords', 
+...      min_occ=5,
+...      directory=directory,
+... ).savefig(file_name)
 
 .. image:: images/co_occurrence_network.png
     :width: 700px
