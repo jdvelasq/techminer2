@@ -9,7 +9,7 @@ Heat map
 >>> heat_map(coc_matrix, cmap='Blues').savefig(file_name)
 
 .. image:: images/co_occurrence_heat_map.png
-    :width: 500px
+    :width: 700px
     :align: center
 
 """
