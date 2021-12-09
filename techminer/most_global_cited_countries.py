@@ -8,7 +8,7 @@ Most Global Cited Countries
 >>> most_global_cited_countries(directory=directory).savefig(file_name)
 
 .. image:: images/most_global_cited_countries.png
-    :width: 650px
+    :width: 700px
     :align: center
 
 
