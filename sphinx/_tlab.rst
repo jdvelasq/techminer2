@@ -9,25 +9,16 @@ T-Lab
 Co-occurrence Analysis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Word Associations
+Word Associations 
 ***************************************
 
-.. toctree::
-    :maxdepth: 1
-
-    co_occurrence_item_associations
-    co_occurrence_associations
-    co_occurrence_mds_map
+See `Co-occurrence API <_api_co_occurrence.html>`__
 
 
 Co-Word Analysis
 ***************************************
 
-.. toctree::
-    :maxdepth: 1
-
-    co_occurrence_manifold
-    co_occurrence_matrix
+See `Co-occurrence API <_api_co_occurrence.html>`__
 
 
 Comparison between word pairs
@@ -35,7 +26,6 @@ Comparison between word pairs
 
 .. toctree::
     :maxdepth: 1
-
 
 
 
