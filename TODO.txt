@@ -1,4 +1,184 @@
-VantagePoint
-----------------
-NLP:
-   
+INTRODUCTION
+  Getting Started
+  Release main_information
+  MIT License
+
+DATA PREPARATION
+    Data
+        Importing scopus files
+        Import reference files
+        Coverage Report
+    Search
+        find_string
+        stemming
+        extract_user_keywords
+    Filter
+        user_filters  
+    Thesaurus
+        clean_institutions
+        clean_keywords
+        apply_thesaurus
+        create_thesaurus
+    
+TECH-MINING ANALYSIS
+    Item analysis
+        column_coverage
+        column_dynamics
+        column_frequency
+        column_frequency_over_time 
+        column_global_citations
+        column_trends
+        column_wordcloud
+        column_h_index
+    Co-occurrence Analysis
+        co_occurrence_associations
+        co_occurrence_heatmap
+        co_occurrence_item_associations
+        co_occurrence_manifold
+        co_occurrence_matrix
+        co_occurrence_mds_map
+        co_occurrence_svd_map
+    Correlation Analysis
+        auto_corr_matrix
+        correlation_map
+        cross_corr_matrix  
+
+BIBLIOMETRIC INDICATORS
+    Data
+        main_information
+        annual_scientific_production
+        average_citations_per_year
+    Documents
+        most_global_cited_documents
+        most_local_cited_documents     
+    Coupling
+        coupling_by_column_matrix
+        coupling_by_references_matrix
+        coupling_network  
+    Abstract
+        abstract_concordances
+        abstract_screening
+        abstract_summarization
+    Sources
+        most_relevant_sources
+        most_local_cited_sources
+        bradford_law
+        core_sources 
+        source_local_impact
+        source_dynamics
+    Authors
+        most_relevant_authors
+        most_local_cited_authors
+        authors_production_over_time
+        lotka_law    
+        author_local_impact
+    Affiliations
+        most_relevant_institutions
+    Countries
+        corresponding_authors_country
+        country_scientific_production
+        most_global_cited_countries
+    Cited References
+        most_local_cited_references
+    Words
+        most_frequent_words
+        word_dynamics
+        trend_topics
+
+
+
+Conceptual Structure
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Network Approach
+**************************
+
+    .. toctree::
+        :maxdepth: 1
+
+        co_occurrence_communities
+        co_occurrence_degree_plot
+        co_occurrence_network
+
+    .. toctree::
+        :maxdepth: 1
+
+        thematic_map_communities
+        thematic_map_network
+
+
+    .. toctree::
+        :maxdepth: 1
+
+
+Factorial Approach
+**************************
+
+    .. toctree::
+        :maxdepth: 1
+
+        factorial_analysis_mds_communities
+        factorial_analysis_mds_data
+        factorial_analysis_mds_map
+        factorial_analysis_mds_silhouette_scores
+
+
+Intellectual Structure
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    .. toctree::
+        :maxdepth: 1
+
+        co_citation_matrix
+        co_citation_network    
+        main_path_network
+
+
+Social Structure
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    .. toctree::
+        :maxdepth: 1
+
+        collaboration_communities
+        collaboration_degree_plot
+        collaboration_network
+
+
+
+
+
+
+
+
+
+#########################################################################################
+Vantage Point
+#########################################################################################
+
+
+View
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. toctree::
+    :maxdepth: 1
+
+    document_viewer
+
+
+
+
+ 
+Factor Analysis
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. toctree::
+    :maxdepth: 1
+
+    factor_matrix 
+
+
+
+
+
+

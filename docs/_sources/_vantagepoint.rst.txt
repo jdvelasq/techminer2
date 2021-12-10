@@ -75,6 +75,10 @@ Co-occurrence Analysis
     co_occurrence_heatmap
     co_occurrence_matrix 
 
+See:
+
+* `co_occurrence_network <co_occurrence_network.html>`__
+
 .. raw:: html
 
    <hr style="height:2px;border-width:0;color:gray;background-color:gray">

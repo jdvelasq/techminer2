@@ -99,7 +99,7 @@ def _average_documents_per_year(documents, column, time_window, sep="; "):
     return result
 
 
-def growth_indicators(directory, column, sep="; ", time_window=2):
+def growth_indicators(column, sep="; ", time_window=2, directory="./"):
 
     documents = load_filtered_documents(directory)
 

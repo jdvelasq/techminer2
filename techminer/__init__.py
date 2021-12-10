@@ -55,6 +55,9 @@ from .cross_corr_matrix import cross_corr_matrix
 from .document_indicators import document_indicators
 from .document_viewer import document_viewer
 from .dotted_timeline_chart import dotted_timeline_chart
+from .extract_custom_topics import extract_custom_topics
+from .extract_top_topics import extract_top_topics
+from .extract_top_trending_topics import extract_top_trending_topics
 from .extract_user_keywords import extract_user_keywords
 from .factor_matrix import factor_matrix
 from .factorial_analysis_manifold import Factorial_analysis_manifold
