@@ -30,14 +30,44 @@ TECH-MINING ANALYSIS
         column_trends
         column_wordcloud
         column_h_index
+    
+    
+    
     Co-occurrence Analysis
+
+
+.. note::
+    See:
+                
+        * `co_occurrence_associations <co_occurrence_associations.html>`__
+        
+        * `co_occurrence_communities <co_occurrence_communities.html>`__
+        
+        * `co_occurrence_degree_plot <co_occurrence_degree_plot.html>`__
+        
+        * `co_occurrence_heatmap <co_occurrence_heatmap.html>`__
+        
+        * `co_occurrence_manifold <co_occurrence_manifold.html>`__
+        
+        * `co_occurrence_matrix <co_occurrence_matrix.html>`__
+        
+        * `co_occurrence_mds_map <co_occurrence_mds_map.html>`__
+
+        * `co_occurrence_network <co_occurrence_network.html>`__
+        
+        * `co_occurrence_svd_map <co_occurrence_svd_map.html>`__
+        
+
+
         co_occurrence_associations
         co_occurrence_heatmap
-        co_occurrence_item_associations
         co_occurrence_manifold
         co_occurrence_matrix
         co_occurrence_mds_map
         co_occurrence_svd_map
+    
+    
+    
     Correlation Analysis
         auto_corr_matrix
         correlation_map
