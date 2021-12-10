@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Clean — keywords &mdash; TechMiner --- API 0.0.0 documentation</title>
+  <title>Co-occurrence API &mdash; TechMiner --- API 0.0.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -19,8 +19,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Thesaurus — apply" href="apply_thesaurus.html" />
-    <link rel="prev" title="Clean — institutions" href="clean_institutions.html" /> 
+    <link rel="next" title="Co-occurrence associations" href="co_occurrence_associations.html" />
+    <link rel="prev" title="TF matrix" href="tf_matrix.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -52,34 +52,27 @@
 <li class="toctree-l1"><a class="reference internal" href="_user_data.html">Data</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Software comparison</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="_vantagepoint.html">VantagePoint</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#view">View</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="_vantagepoint.html#columns">Columns</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="_vantagepoint.html#search">Search</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="_vantagepoint.html#thesaurus">Thesaurus</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="clean_institutions.html">Clean — institutions</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">Clean — keywords</a></li>
-<li class="toctree-l4"><a class="reference internal" href="apply_thesaurus.html">Thesaurus — apply</a></li>
-<li class="toctree-l4"><a class="reference internal" href="create_thesaurus.html">Thesaurus — create</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="_vantagepoint.html#id1">Columns</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#co-occurrence-analysis">Co-occurrence Analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#correlation-analysis">Correlation Analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#factor-analysis">Factor Analysis</a></li>
-</ul>
-</li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_vantagepoint.html">VantagePoint</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_bibliometrix.html">Bibliometrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_scientopy.html">ScientoPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_tlab.html">T-Lab</a></li>
 </ul>
 <p class="caption"><span class="caption-text">API Reference</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="_api_document_term.html">Document-Term API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_co_occurrence.html">Co-occurrence API</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Co-occurrence API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="co_occurrence_associations.html">Co-occurrence associations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="co_occurrence_communities.html">Co-occurrence communities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="co_occurrence_degree_plot.html">Co-occurrence degree plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="co_occurrence_heatmap.html">Co-occurrence heatmap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="co_occurrence_item_associations.html">Co-occurrence Item Associations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="co_occurrence_manifold.html">Co-occurrence manifold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="co_occurrence_matrix.html">Co-occurrence matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="co_occurrence_mds_map.html">Co-occurrence MDS map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="co_occurrence_network.html">Co-occurrence network</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_api_visualization.html">Visualization API</a></li>
@@ -104,10 +97,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="_vantagepoint.html">VantagePoint</a> &raquo;</li>
-      <li>Clean — keywords</li>
+      <li>Co-occurrence API</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/clean_keywords.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/_api_co_occurrence.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -139,33 +131,29 @@
     text-align: unset;
 }
 </style>
-<span class="target" id="module-techminer.clean_keywords"></span><section id="clean-keywords">
-<h1>Clean — keywords<a class="headerlink" href="#clean-keywords" title="Permalink to this headline"></a></h1>
-<p>Cleans the keywords columns using the file keywords.txt, located in
-the same directory as the documents.csv file.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer-api/data/&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">clean_keywords</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
-<span class="go">2021-11-08 18:48:08 - INFO - Applying thesaurus to &#39;raw_author_keywords&#39; column ...</span>
-<span class="go">2021-11-08 18:48:08 - INFO - Applying thesaurus to &#39;raw_index_keywords&#39; column...</span>
-<span class="go">2021-11-08 18:48:08 - INFO - Applying thesaurus to &#39;raw_keywords&#39; column...</span>
-<span class="go">2021-11-08 18:48:10 - INFO - The thesaurus was applied to keywords.</span>
-</pre></div>
+<section id="co-occurrence-api">
+<h1>Co-occurrence API<a class="headerlink" href="#co-occurrence-api" title="Permalink to this headline"></a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="co_occurrence_associations.html">Co-occurrence associations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="co_occurrence_communities.html">Co-occurrence communities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="co_occurrence_degree_plot.html">Co-occurrence degree plot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="co_occurrence_heatmap.html">Co-occurrence heatmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="co_occurrence_item_associations.html">Co-occurrence Item Associations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="co_occurrence_manifold.html">Co-occurrence manifold</a></li>
+<li class="toctree-l1"><a class="reference internal" href="co_occurrence_matrix.html">Co-occurrence matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="co_occurrence_mds_map.html">Co-occurrence MDS map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="co_occurrence_network.html">Co-occurrence network</a></li>
+</ul>
 </div>
-<dl class="py function">
-<dt class="sig sig-object py" id="techminer.clean_keywords.clean_keywords">
-<span class="sig-prename descclassname"><span class="pre">techminer.clean_keywords.</span></span><span class="sig-name descname"><span class="pre">clean_keywords</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer/clean_keywords.html#clean_keywords"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer.clean_keywords.clean_keywords" title="Permalink to this definition"></a></dt>
-<dd><p>Clean all keywords columns in the records using a thesaurus (keywrords.txt).</p>
-</dd></dl>
-
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="clean_institutions.html" class="btn btn-neutral float-left" title="Clean — institutions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="apply_thesaurus.html" class="btn btn-neutral float-right" title="Thesaurus — apply" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="tf_matrix.html" class="btn btn-neutral float-left" title="TF matrix" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="co_occurrence_associations.html" class="btn btn-neutral float-right" title="Co-occurrence associations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

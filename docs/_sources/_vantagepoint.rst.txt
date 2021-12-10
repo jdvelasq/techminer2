@@ -69,15 +69,8 @@ Columns
 Co-occurrence Analysis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. toctree::
-    :maxdepth: 1
+See `Co-occurrence API <_api_co_occurrence.html>`__
 
-    co_occurrence_heatmap
-    co_occurrence_matrix 
-
-See:
-
-* `co_occurrence_network <co_occurrence_network.html>`__
 
 .. raw:: html
 
