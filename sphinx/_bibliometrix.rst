@@ -144,12 +144,8 @@ Conceptual Structure
 Network Approach
 **************************
 
-    .. toctree::
-        :maxdepth: 1
+    See `Co-occurrence API <_api_co_occurrence.html>`__
 
-        co_occurrence_communities
-        co_occurrence_degree_plot
-        co_occurrence_network
 
     .. toctree::
         :maxdepth: 1
