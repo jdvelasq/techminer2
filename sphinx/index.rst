@@ -60,22 +60,13 @@ package developed and tested in Python version 3.6.
     :hidden:
     :maxdepth: 1
 
-    _api_document_term
     _api_co_occurrence
+    _api_document_term
     _api_indicators
     _api_network
     _api_visualization
 
 
-
-
-.. toctree::
-    :caption: Analysis tools
-    :hidden:
-    :maxdepth: 1
- 
-    factorial_analysis_manifold
-    svd_tf_idf_matrix_map
     
     
 
