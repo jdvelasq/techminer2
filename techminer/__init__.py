@@ -77,6 +77,7 @@ from .line_chart import line_chart
 from .lotka_law import lotka_law
 from .main_information import main_information
 from .main_path_network import main_path_network
+from .map_chart import map_chart
 from .most_frequent_words import most_frequent_words
 from .most_global_cited_countries import most_global_cited_countries
 from .most_global_cited_documents import most_global_cited_documents
@@ -100,8 +101,8 @@ from .source_local_impact import source_local_impact
 from .stacked_bar_chart import stacked_bar_chart
 from .stacked_column_chart import stacked_column_chart
 from .stemming import stemming_and, stemming_or
-from .svd_tf_idf_matrix_map import svd_tf_idf_matrix_map
 from .tf_idf_matrix import tf_idf_matrix
+from .tf_idf_svd_map import tf_idf_svd_map
 from .tf_matrix import tf_matrix
 from .thematic_analysis import ThematicAnalysis
 from .thematic_map_communities import thematic_map_communities
