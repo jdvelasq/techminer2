@@ -39,6 +39,7 @@ from sklearn.decomposition import TruncatedSVD
 from sklearn.manifold import MDS
 
 from .co_occurrence_matrix import co_occurrence_matrix
+from .map_chart import map_chart
 
 
 def co_occurrence_mds_map(
@@ -81,42 +82,51 @@ def co_occurrence_mds_map(
 
     mds = pd.DataFrame(mds_matrix, columns=["dim0", "dim1"], index=labels)
 
-    fig = plt.Figure(figsize=figsize)
-    ax = fig.subplots()
+    return map_chart(
+        data=mds,
+        dim_x=0,
+        dim_y=1,
+        max_items=1000,
+        figsize=figsize,
+        color="k",
+    )
 
-    ax.yaxis.set_ticks_position("both")
-    ax.xaxis.set_ticks_position("both")
+    # fig = plt.Figure(figsize=figsize)
+    # ax = fig.subplots()
 
-    ax.tick_params(axis="x", labelsize=7)
-    ax.tick_params(axis="y", labelsize=7)
+    # ax.yaxis.set_ticks_position("both")
+    # ax.xaxis.set_ticks_position("both")
 
-    ax.xaxis.set_minor_locator(AutoMinorLocator())
-    ax.yaxis.set_minor_locator(AutoMinorLocator())
+    # ax.tick_params(axis="x", labelsize=7)
+    # ax.tick_params(axis="y", labelsize=7)
 
-    ax.tick_params(which="mayor", color="k", length=5)
-    ax.tick_params(which="minor", color="k", length=2)
+    # ax.xaxis.set_minor_locator(AutoMinorLocator())
+    # ax.yaxis.set_minor_locator(AutoMinorLocator())
 
-    ax.axis([mds.dim0.min(), mds.dim0.max(), mds.dim1.min(), mds.dim1.max()])
-    ax.axhline(0, color="gray", linestyle="--")
-    ax.axvline(0, color="gray", linestyle="--")
+    # ax.tick_params(which="mayor", color="k", length=5)
+    # ax.tick_params(which="minor", color="k", length=2)
 
-    for label, values in mds.iterrows():
+    # ax.axis([mds.dim0.min(), mds.dim0.max(), mds.dim1.min(), mds.dim1.max()])
+    # ax.axhline(0, color="gray", linestyle="--")
+    # ax.axvline(0, color="gray", linestyle="--")
 
-        ax.text(
-            x=values[0],
-            y=values[1],
-            s=label,
-            fontsize=8,
-            horizontalalignment="center",
-            verticalalignment="center",
-            alpha=0.9,
-            weight="bold",
-            # zorder=13,
-        )
+    # for label, values in mds.iterrows():
 
-    for x in ["top", "right", "bottom", "left"]:
-        ax.spines[x].set_visible(False)
+    #     ax.text(
+    #         x=values[0],
+    #         y=values[1],
+    #         s=label,
+    #         fontsize=8,
+    #         horizontalalignment="center",
+    #         verticalalignment="center",
+    #         alpha=0.9,
+    #         weight="bold",
+    #         # zorder=13,
+    #     )
 
-    fig.set_tight_layout(True)
+    # for x in ["top", "right", "bottom", "left"]:
+    #     ax.spines[x].set_visible(False)
 
-    return fig
+    # fig.set_tight_layout(True)
+
+    # return fig
