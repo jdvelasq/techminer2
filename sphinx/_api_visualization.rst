@@ -10,6 +10,7 @@ Visualization API
     dotted_timeline_chart
     heat_map
     line_chart
+    map_chart
     pie_chart
     stacked_bar_chart
     stacked_column_chart
