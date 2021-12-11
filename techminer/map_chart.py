@@ -77,6 +77,7 @@ def map_chart(
         "o",
         markersize=2,
         color=color,
+        alpha=0.5,
     )
 
     for index, row in data.head(max_items).iterrows():
@@ -105,7 +106,7 @@ def map_chart(
             fontsize=8,
             horizontalalignment=ha,
             verticalalignment=va,
-            alpha=0.8,
+            alpha=0.9,
             # weight="bold",
         )
 
