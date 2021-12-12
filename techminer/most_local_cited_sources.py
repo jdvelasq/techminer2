@@ -1,5 +1,5 @@
 """
-Most local cited sources
+Most Local Cited Sources
 ===============================================================================
 
 Plot the most local cited sources in the references.
