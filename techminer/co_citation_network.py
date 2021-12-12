@@ -1,5 +1,5 @@
 """
-Co-citation network
+Co-citation Network / Network Map
 ===============================================================================
 
 
