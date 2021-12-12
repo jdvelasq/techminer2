@@ -1,5 +1,5 @@
 """
-Co-occurrence Item Associations
+Co-occurrence Matrix / Item Associations
 ===============================================================================
 
 
