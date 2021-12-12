@@ -1,5 +1,5 @@
 """
-Co-occurrence matrix
+Co-occurrence Matrix
 ===============================================================================
 
 >>> from techminer import *
