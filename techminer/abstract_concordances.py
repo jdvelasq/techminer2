@@ -1,5 +1,5 @@
 """
-Abstract concordances
+Abstract Concordances
 ===============================================================================
 
 Abstract concordances exploration tool.
