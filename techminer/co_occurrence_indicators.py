@@ -1,5 +1,5 @@
 """
-Co-occurrence Matrix / Indicators
+Co-occurrence Network / Indicators
 ===============================================================================
 
 >>> from techminer import *
