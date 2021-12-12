@@ -9,7 +9,6 @@ from .author_local_impact import author_local_impact
 from .authors_production_over_time import authors_production_over_time
 from .auto_corr_matrix import auto_corr_matrix
 from .average_citations_per_year import average_citations_per_year
-from .bar_chart import bar_chart
 from .bradford_law import bradford_law
 from .ca_factorial_analysis import ca_factorial_analysis
 from .clean_institutions import clean_institutions
@@ -36,19 +35,19 @@ from .collaboration_network_communities import collaboration_network_communities
 from .collaboration_network_degree_plot import collaboration_network_degree_plot
 from .collaboration_network_graph import collaboration_network_graph
 from .collaboration_network_indicators import collaboration_network_indicators
-from .column_bar_chart import column_bar_chart
-from .column_chart import column_chart
 from .column_coverage import column_coverage
 from .column_dynamics import column_dynamics
 from .column_frequency import column_frequency
 from .column_frequency_over_time import column_frequency_over_time
 from .column_global_citations import column_global_citations
 from .column_h_index import column_h_index
+from .column_horizontal_bar_chart import column_horizontal_bar_chart
 from .column_indicators import column_indicators
 from .column_indicators_by_year import column_indicators_by_year
 from .column_line_chart import column_line_chart
 from .column_pie_chart import column_pie_chart
 from .column_trends import column_trends
+from .column_vertical_bar_chart import column_vertical_bar_chart
 from .column_word_cloud import column_word_cloud
 from .core_sources import core_sources
 from .correlation_map import correlation_map
@@ -77,6 +76,7 @@ from .factorial_analysis_mds_silhouette_scores import (
 from .find_string import find_string
 from .growth_indicators import growth_indicators
 from .heat_map import heat_map
+from .horizontal_bar_chart import horizontal_bar_chart
 from .impact_indicators import impact_indicators
 from .import_references import import_references
 from .import_scopus_file import import_scopus_file
@@ -119,6 +119,7 @@ from .timeline_chart import timeline_chart
 from .tree_map import tree_map
 from .trend_topics import trend_topics
 from .user_filters import user_filters
+from .vertical_bar_chart import vertical_bar_chart
 from .word_cloud import word_cloud
 from .word_dynamics import word_dynamics
 from .world_map import world_map
