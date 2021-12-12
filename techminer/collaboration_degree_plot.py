@@ -1,5 +1,5 @@
 """
-Collaboration degree plot
+Collaboration Network / Degree Plot
 ===============================================================================
 
 >>> from techminer import *
