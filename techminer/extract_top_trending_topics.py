@@ -34,8 +34,8 @@ Name: average_growth_rate, dtype: float64
 
 """
 
-from .bar_chart import bar_chart
 from .growth_indicators import growth_indicators
+from .horizontal_bar_chart import horizontal_bar_chart
 
 
 def extract_top_trending_topics(
@@ -56,7 +56,7 @@ def extract_top_trending_topics(
 
     indicators = indicators.head(top_n)
 
-    return bar_chart(
+    return horizontal_bar_chart(
         indicators,
         title="Top Trending Topics",
         xlabel="Average Growth Rate",
