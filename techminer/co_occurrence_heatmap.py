@@ -1,5 +1,5 @@
 """
-Co-occurrence heatmap
+Co-occurrence Matrix / Heatmap
 ===============================================================================
 
 >>> from techminer import *
