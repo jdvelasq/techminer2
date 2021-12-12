@@ -1,5 +1,5 @@
 """
-Annual occurrence matrix
+Annual Occurrence Matrix
 ===============================================================================
 
 >>> from techminer import *
