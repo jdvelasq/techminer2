@@ -36,6 +36,7 @@ from .collaboration_network_communities import collaboration_network_communities
 from .collaboration_network_degree_plot import collaboration_network_degree_plot
 from .collaboration_network_graph import collaboration_network_graph
 from .collaboration_network_indicators import collaboration_network_indicators
+from .column_bar_chart import column_bar_chart
 from .column_chart import column_chart
 from .column_coverage import column_coverage
 from .column_dynamics import column_dynamics
@@ -45,8 +46,10 @@ from .column_global_citations import column_global_citations
 from .column_h_index import column_h_index
 from .column_indicators import column_indicators
 from .column_indicators_by_year import column_indicators_by_year
+from .column_line_chart import column_line_chart
+from .column_pie_chart import column_pie_chart
 from .column_trends import column_trends
-from .column_wordcloud import column_wordcloud
+from .column_word_cloud import column_word_cloud
 from .core_sources import core_sources
 from .correlation_map import correlation_map
 from .corresponding_authors_country import corresponding_authors_country
@@ -54,7 +57,6 @@ from .country_scientific_production import country_scientific_production
 from .coupling_by_column_matrix import coupling_by_column_matrix
 from .coupling_by_references_matrix import coupling_by_references_matrix
 from .coupling_network import coupling_network
-from .coverage import coverage
 from .create_thesaurus import create_thesaurus
 from .cross_corr_matrix import cross_corr_matrix
 from .document_indicators import document_indicators
@@ -106,6 +108,7 @@ from .source_local_impact import source_local_impact
 from .stacked_bar_chart import stacked_bar_chart
 from .stacked_column_chart import stacked_column_chart
 from .stemming import stemming_and, stemming_or
+from .summary_view import summary_view
 from .tf_idf_matrix import tf_idf_matrix
 from .tf_idf_svd_map import tf_idf_svd_map
 from .tf_matrix import tf_matrix
