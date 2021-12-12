@@ -1,5 +1,5 @@
 """
-Source dynamics
+Source Dynamics
 ===============================================================================
 
 >>> from techminer import *
