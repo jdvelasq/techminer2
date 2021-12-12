@@ -1,5 +1,5 @@
 """
-Co-occurrence Network
+Co-occurrence Network / Graph
 ===============================================================================
 
 >>> from techminer import *
