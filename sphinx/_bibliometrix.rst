@@ -11,7 +11,8 @@ In this section, the library's functionalities are presented in the structure us
 internally in Bibliometrix, in order to facilitate comparison. Likewise, functions have
 been created with the same names as the Bibliometrix menus to facilitate the use of the
 tool by users. It should be noted that the functions presented in this section cover only
-a part of TechMiner's capabilities.
+a part of TechMiner's capabilities, and in this sense, Bibliometrix contains only a 
+subset of the analytical capabilities of TechMiner.
 
 
 
@@ -53,6 +54,7 @@ Dataset
     annual_scientific_production
     average_citations_per_year
 
+* ``TODO: Three-Fields Plot``
 
 Sources
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -254,10 +256,10 @@ Social Structure
 .. toctree::
     :maxdepth: 1
 
-    collaboration_network
-    collaboration_table
-    collaboration_degree_plot
-    collaboration_communities
+    collaboration_network_graph
+    collaboration_network_indicators
+    collaboration_network_degree_plot
+    collaboration_network_communities
     
 
 * ``TODO: Collaboration WorldMap``
