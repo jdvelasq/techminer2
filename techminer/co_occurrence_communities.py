@@ -1,5 +1,5 @@
 """
-Co-occurrence communities
+Co-occurrence Network / Communities
 ===============================================================================
 
 >>> from techminer import *
