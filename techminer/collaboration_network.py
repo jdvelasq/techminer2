@@ -1,5 +1,5 @@
 """
-Collaboration network
+Collaboration Network / Network Map
 ===============================================================================
 
 >>> from techminer import *
