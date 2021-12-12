@@ -224,13 +224,10 @@ Intellectual Structure
 .. toctree::
     :maxdepth: 1
 
-    co_citation_network    
-    co_citation_indicators
-    co_citation_degree_plot
-    co_citation_communities
-    
-    
-    
+    co_citation_network_graph    
+    co_citation_network_indicators
+    co_citation_network_degree_plot
+    co_citation_network_communities
 
 
 .. Note::
