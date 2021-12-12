@@ -1,5 +1,5 @@
 """
-Collaboration indicators
+Collaboration Indicators
 ===============================================================================
 
 >>> from techminer import *
