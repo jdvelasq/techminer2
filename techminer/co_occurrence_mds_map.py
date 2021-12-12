@@ -1,5 +1,5 @@
 """
-Co-occurrence MDS map
+Co-occurrence Matrix / MDS Map
 ===============================================================================
 
 Plots the co-word association MDS map.
