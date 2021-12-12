@@ -22,7 +22,6 @@ Data
 
 .. raw:: html
 
-
     <hr style="width:70%;height:2px;border-width:0;color:gray;background-color:black">
 
 See ``Import Scopus Files`` in `Data <_user_data.html>`__. 
