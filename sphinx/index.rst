@@ -1,5 +1,5 @@
 Techminer API for the analysis of bibliographic datasets using Python
-=========================================================================================
+#########################################################################################
 
 **TechMiner-API** is a package for mining relevant information about topics related to Research and 
 Development (R&D) literature extracted from bibliographical databases as Scopus. **TechMiner-API**
