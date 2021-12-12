@@ -1,5 +1,5 @@
 """
-Abstract screening
+Abstract Screening
 ===============================================================================
 
 Abstract text exploration tool.
