@@ -177,11 +177,14 @@ Conceptual Structure
 
     <hr style="width:70%;height:2px;border-width:0;color:gray;background-color:black">
 
-.. raw:: html
+.. toctree::
+    :maxdepth: 1
 
-    <p style="color:gray">Network Approach:</p>
+    co_occurrence_network
+    co_occurrence_indicators
+    co_occurrence_degree_plot
+    co_occurrence_communities
 
-See `Co-occurrence API <_api_co_occurrence.html>`__
 
 
 .. toctree::
@@ -207,7 +210,7 @@ See `Co-occurrence API <_api_co_occurrence.html>`__
     factorial_analysis_mds_map
     factorial_analysis_mds_silhouette_scores
 
-
+* ``TODO: Factorial Approach / CA``
 
 Intellectual Structure
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -219,10 +222,13 @@ Intellectual Structure
 .. toctree::
     :maxdepth: 1
 
-    co_citation_communities
-    co_citation_degree_plot
-    co_citation_indicators
     co_citation_network    
+    co_citation_indicators
+    co_citation_degree_plot
+    co_citation_communities
+    
+    
+    
 
 
 .. Note::
@@ -248,8 +254,10 @@ Social Structure
 .. toctree::
     :maxdepth: 1
 
-    collaboration_communities
-    collaboration_degree_plot
     collaboration_network
+    collaboration_table
+    collaboration_degree_plot
+    collaboration_communities
+    
 
 * ``TODO: Collaboration WorldMap``
