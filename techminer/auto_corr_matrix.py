@@ -1,5 +1,5 @@
 """
-Auto-correlation matrix
+Auto-correlation Matrix
 ===============================================================================
 
 Returns an auto-correlation matrix.
