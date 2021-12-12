@@ -4,11 +4,10 @@ Visualization API
 .. toctree::
     :maxdepth: 1
 
-    bar_chart
     bubble_chart
-    column_chart
     dotted_timeline_chart
     heat_map
+    horizontal_bar_chart
     line_chart
     map_chart
     pie_chart
@@ -16,5 +15,6 @@ Visualization API
     stacked_column_chart
     timeline_chart
     tree_map    
+    vertical_bar_chart
     word_cloud
     world_map
