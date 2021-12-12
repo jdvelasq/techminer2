@@ -93,7 +93,7 @@ def line_chart(
     ax.spines["bottom"].set_color("dimgray")
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
-    ax.grid(alpha=0.5)
+    ax.grid(alpha=0.5, linestyle=":")
 
     fig.set_tight_layout(True)
 
