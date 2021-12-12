@@ -31,11 +31,11 @@ from .co_occurrence_matrix import co_occurrence_matrix
 from .co_occurrence_mds_map import co_occurrence_mds_map
 from .co_occurrence_network import co_occurrence_network
 from .co_occurrence_svd_map import co_occurrence_svd_map
-from .collaboration_communities import collaboration_communities
-from .collaboration_degree_plot import collaboration_degree_plot
 from .collaboration_indicators import collaboration_indicators
-from .collaboration_network import collaboration_network
-from .collaboration_table import collaboration_table
+from .collaboration_network_communities import collaboration_network_communities
+from .collaboration_network_degree_plot import collaboration_network_degree_plot
+from .collaboration_network_graph import collaboration_network_graph
+from .collaboration_network_indicators import collaboration_network_indicators
 from .column_chart import column_chart
 from .column_coverage import column_coverage
 from .column_dynamics import column_dynamics
