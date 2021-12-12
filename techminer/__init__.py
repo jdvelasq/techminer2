@@ -15,12 +15,16 @@ from .ca_factorial_analysis import ca_factorial_analysis
 from .clean_institutions import clean_institutions
 from .clean_keywords import clean_keywords
 from .cleveland_dot_chart import cleveland_dot_chart
+from .co_citation_communities import co_citation_communities
+from .co_citation_degree_plot import co_citation_degree_plot
+from .co_citation_indicators import co_citation_indicators
 from .co_citation_matrix import co_citation_matrix
 from .co_citation_network import co_citation_network
 from .co_occurrence_associations import co_occurrence_associations
 from .co_occurrence_communities import co_occurrence_communities
 from .co_occurrence_degree_plot import co_occurrence_degree_plot
 from .co_occurrence_heatmap import co_occurrence_heatmap
+from .co_occurrence_indicators import co_occurrence_indicators
 from .co_occurrence_item_associations import co_occurrence_item_associations
 from .co_occurrence_manifold import co_occurrence_manifold
 from .co_occurrence_matrix import co_occurrence_matrix
