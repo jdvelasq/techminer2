@@ -1,5 +1,5 @@
 """
-Collaboration communities
+Collaboration Network / Communities
 ===============================================================================
 
 >>> from techminer import *
