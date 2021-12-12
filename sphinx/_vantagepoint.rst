@@ -112,7 +112,8 @@ Report Column Charts
 .. toctree::
     :maxdepth: 1
 
-    column_bar_chart
+    column_horizontal_bar_chart
+    column_vertical_bar_chart
     column_line_chart
     column_pie_chart
     column_word_cloud
@@ -123,9 +124,6 @@ Report Column Charts
 
 
 FROM VANTAGE POINT TOOLBAR
-
-
-* Column Chart from selection in List View
 
 * Company Activity Gantt
 
@@ -141,12 +139,20 @@ FROM VANTAGE POINT TOOLBAR
 
 
 
-Co-occurrence Analysis
+Co-occurrence Matrix
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. raw:: html
 
     <hr style="width:70%;height:2px;border-width:0;color:gray;background-color:black">
+
+.. toctree::
+    :maxdepth: 1
+
+    co_occurrence_matrix 
+    co_occurrence_associations
+    co_occurrence_heatmap
+    
 
 
 See `Co-occurrence API <_api_co_occurrence.html>`__
