@@ -1,5 +1,5 @@
 """
-Co-occurrence Degree Plot
+Co-occurrence Network / Degree Plot
 ===============================================================================
 
 >>> from techminer import *
