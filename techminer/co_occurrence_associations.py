@@ -1,5 +1,5 @@
 """
-Co-occurrence Associations
+Co-occurrence Matrix / Associations
 ===============================================================================
 
 >>> from techminer import *
