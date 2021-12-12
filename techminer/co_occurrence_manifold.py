@@ -1,5 +1,5 @@
 """
-Co-occurrence manifold
+Co-occurrence Matrix / Manifold Map
 ===============================================================================
 
 >>> from techminer import *
