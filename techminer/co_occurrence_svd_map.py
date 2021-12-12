@@ -1,5 +1,5 @@
 """
-Co-occurrence SVD map
+Co-occurrence Matrix / SVD Map
 ===============================================================================
 
 Plots the SVD of the co-occurrence matrix normalized with the **cosine** measure.
