@@ -35,6 +35,7 @@ from .collaboration_communities import collaboration_communities
 from .collaboration_degree_plot import collaboration_degree_plot
 from .collaboration_indicators import collaboration_indicators
 from .collaboration_network import collaboration_network
+from .collaboration_table import collaboration_table
 from .column_chart import column_chart
 from .column_coverage import column_coverage
 from .column_dynamics import column_dynamics
