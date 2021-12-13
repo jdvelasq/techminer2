@@ -1,5 +1,5 @@
 """
-Occurrence matrix
+Occurrence Matrix
 ===============================================================================
 
 >>> from techminer import *
