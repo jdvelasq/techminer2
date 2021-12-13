@@ -1,5 +1,5 @@
 """
-Cross-correlation matrix
+Cross-correlation Matrix
 ===============================================================================
 
 
