@@ -1,5 +1,5 @@
 """
-User filters
+User Filters
 ===============================================================================
 
 Allow users to select docuemnts to be mined.
