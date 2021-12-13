@@ -10,6 +10,7 @@ from .authors_production_over_time import authors_production_over_time
 from .auto_corr_matrix import auto_corr_matrix
 from .average_citations_per_year import average_citations_per_year
 from .bradford_law import bradford_law
+from .bubble_chart import bubble_chart
 from .ca_factorial_analysis import ca_factorial_analysis
 from .clean_institutions import clean_institutions
 from .clean_keywords import clean_keywords
@@ -20,6 +21,7 @@ from .co_citation_network_degree_plot import co_citation_network_degree_plot
 from .co_citation_network_graph import co_citation_network_graph
 from .co_citation_network_indicators import co_citation_network_indicators
 from .co_occurrence_associations import co_occurrence_associations
+from .co_occurrence_bubble_chart import co_occurrence_bubble_chart
 from .co_occurrence_communities import co_occurrence_communities
 from .co_occurrence_degree_plot import co_occurrence_degree_plot
 from .co_occurrence_heatmap import co_occurrence_heatmap
@@ -46,6 +48,7 @@ from .column_indicators import column_indicators
 from .column_indicators_by_year import column_indicators_by_year
 from .column_line_chart import column_line_chart
 from .column_pie_chart import column_pie_chart
+from .column_tree_map import column_tree_map
 from .column_trends import column_trends
 from .column_vertical_bar_chart import column_vertical_bar_chart
 from .column_word_cloud import column_word_cloud
