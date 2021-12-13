@@ -143,7 +143,12 @@ Co-occurrence Matrix
     co_occurrence_associations
     co_occurrence_bubble_chart
     co_occurrence_heatmap
-    
+  
+
+.. toctree::
+    :maxdepth: 1  
+
+    occurrence_matrix
 
 
 See `Co-occurrence API <_api_co_occurrence.html>`__
