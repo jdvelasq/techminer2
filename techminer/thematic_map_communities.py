@@ -1,5 +1,5 @@
 """
-Thematic map --- communities
+Thematic Map / Communities
 ===============================================================================
 
 >>> from techminer import *
