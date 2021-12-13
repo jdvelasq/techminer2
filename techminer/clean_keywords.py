@@ -1,5 +1,5 @@
 """
-Clean --- keywords
+Clean Keywords
 ===============================================================================
 
 Cleans the keywords columns using the file keywords.txt, located in 
