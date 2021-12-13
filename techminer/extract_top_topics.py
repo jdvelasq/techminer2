@@ -1,5 +1,5 @@
 """
-Extract top topics
+Extract Top Topics
 ===============================================================================
 
 Extract and plot the top topics of the selected column.
