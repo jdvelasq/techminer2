@@ -1,5 +1,5 @@
 """
-Document indicators
+Document Indicators
 ===============================================================================
 
 >>> from techminer import *
