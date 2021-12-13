@@ -1,5 +1,5 @@
 """
-Column indicators by year
+Column Indicators by Year
 ===============================================================================
 
 >>> from techminer import *
