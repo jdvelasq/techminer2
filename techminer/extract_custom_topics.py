@@ -1,5 +1,5 @@
 """
-Extract custom topics
+Extract Custom Topics
 ===============================================================================
 
 Extract and plot the user custom topics of the selected column.
