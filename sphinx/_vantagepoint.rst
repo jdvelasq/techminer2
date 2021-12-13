@@ -102,7 +102,7 @@ Column
     column_h_index
 
 
-Report Column Charts
+Column (Report) Charts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. raw:: html
@@ -116,6 +116,7 @@ Report Column Charts
     column_vertical_bar_chart
     column_line_chart
     column_pie_chart
+    column_tree_map
     column_word_cloud
 
 .. note::
@@ -131,11 +132,7 @@ FROM VANTAGE POINT TOOLBAR
 
 * Cluster Map
 
-* Bubble Chart
-
 * Matrix Viewer
-
-* Plot Classification (TreeMap)
 
 
 
@@ -151,6 +148,7 @@ Co-occurrence Matrix
 
     co_occurrence_matrix 
     co_occurrence_associations
+    co_occurrence_bubble_chart
     co_occurrence_heatmap
     
 
