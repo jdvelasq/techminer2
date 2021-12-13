@@ -1,5 +1,5 @@
 """
-Growth indicators
+Growth Indicators
 ===============================================================================
 
 >>> from techminer import *
