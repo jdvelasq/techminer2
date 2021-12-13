@@ -1,5 +1,5 @@
 """
-Thematic map (conceptual structure)
+Thematic Map (conceptual structure)
 ===============================================================================
 
 >>> from techminer import *
