@@ -1,5 +1,5 @@
 """
-Thematic map --- network
+Thematic Map / Network
 ===============================================================================
 
 >>> from techminer import *
