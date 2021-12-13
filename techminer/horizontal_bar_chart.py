@@ -1,5 +1,5 @@
 """
-Horizontal Bar chart
+Horizontal Bar Chart
 ===============================================================================
 
 >>> from techminer import *
