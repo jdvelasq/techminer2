@@ -1,6 +1,17 @@
 """
 Bubble chart
 ===============================================================================
+
+>>> from techminer import *
+>>> directory = "/workspaces/techminer-api/data/"
+>>> file_name = "/workspaces/techminer-api/sphinx/images/bubble_chart.png"
+>>> matrix = co_occurrence_matrix(column='authors', min_occ=2, directory=directory)
+>>> bubble_chart(matrix).savefig(file_name)
+
+.. image:: images/bubble_chart.png
+    :width: 700px
+    :align: center
+
 """
 
 import textwrap
@@ -24,75 +35,31 @@ def collapse_text(w, width=TEXTLEN):
 def bubble_chart(
     matrix,
     darkness=None,
-    figsize=(6, 6),
+    figsize=(11, 11),
     cmap="Greys",
     grid_lw=1.0,
     grid_c="gray",
     grid_ls=":",
-    fontsize=11,
     **kwargs,
 ):
-
-    """Creates a gant activity plot from a dataframe.
-
-    Examples
-    ----------------------------------------------------------------------------------------------
-
-    >>> import pandas as pd
-    >>> df = pd.DataFrame(
-    ...     {
-    ...         "author 0": [ 1, 2, 3, 4, 5, 6, 7],
-    ...         "author 1": [14, 13, 12, 11, 10, 9, 8],
-    ...         "author 2": [1, 5, 8, 9, 0, 0, 0],
-    ...         "author 3": [0, 0, 1, 1, 1, 0, 0],
-    ...         "author 4": [0, 10, 0, 4, 2, 0, 1],
-    ...     },
-    ...     index =[2010, 2011, 2012, 2013, 2014, 2015, 2016]
-    ... )
-    >>> df
-          author 0  author 1  author 2  author 3  author 4
-    2010         1        14         1         0         0
-    2011         2        13         5         0        10
-    2012         3        12         8         1         0
-    2013         4        11         9         1         4
-    2014         5        10         0         1         2
-    2015         6         9         0         0         0
-    2016         7         8         0         0         1
-
-    >>> fig = bubble(df, axis=0, alpha=0.5, rmax=150)
-    >>> fig.savefig('/workspaces/techminer/sphinx/images/bubbleplot0.png')
-
-    .. image:: images/bubbleplot0.png
-        :width: 700px
-        :align: center
-
-    >>> fig = bubble(df, axis=1, alpha=0.5, rmax=150)
-    >>> fig.savefig('/workspaces/techminer/sphinx/images/bubbleplot1.png')
-
-    .. image:: images/bubbleplot1.png
-        :width: 700px
-        :align: center
-
-
-    """
-    matplotlib.rc("font", size=fontsize)
-    fig = plt.Figure(figsize=figsize)
-    ax = fig.subplots()
-    cmap = plt.cm.get_cmap(cmap)
-
     matrix = matrix.copy()
 
+    # -----------------------------------------------------------------------------------
     if isinstance(matrix.columns, pd.MultiIndex):
-        matrix.columns = multindex2text(matrix.columns)
+        column_labels = collapse_text(matrix.columns.get_level_values(0))
+    else:
+        column_labels = collapse_text(matrix.columns)
 
     if isinstance(matrix.index, pd.MultiIndex):
-        matrix.index = multindex2text(matrix.index)
+        index_labels = collapse_text(matrix.index.get_level_values(0))
+    else:
+        index_labels = collapse_text(matrix.index)
 
-    #
-    # Text wrap
-    #
-    matrix.columns = [collapse_text(w) for w in matrix.columns.tolist()]
-    matrix.index = [collapse_text(w) for w in matrix.index.tolist()]
+    # -----------------------------------------------------------------------------------
+    fig = plt.Figure(figsize=figsize)
+    ax = fig.subplots()
+
+    cmap = plt.cm.get_cmap(cmap)
 
     size_max = matrix.max().max()
     size_min = matrix.min().min()
@@ -116,55 +83,52 @@ def bubble_chart(
             for w in darkness.iloc[idx, :]
         ]
 
-        #  return range(len(x.columns)), [idx] * len(x.columns)
-
         ax.scatter(
             list(range(len(matrix.columns))),
             [idx] * len(matrix.columns),
             marker="o",
             s=sizes,
-            alpha=1.0,
+            alpha=0.75,
             c=colors,
             edgecolors="k",
             zorder=11,
         )
 
     for idx in range(matrix.shape[0]):
-        ax.hlines(
+        ax.axhline(
             idx,
-            -1,
-            len(matrix.columns),
             linewidth=grid_lw,
             color=grid_c,
             linestyle=grid_ls,
         )
 
     for idx in range(matrix.shape[1]):
-        ax.vlines(
+        ax.axvline(
             idx,
-            -1,
-            len(matrix.index),
             linewidth=grid_lw,
             color=grid_c,
             linestyle=grid_ls,
         )
 
     mean_color = 0.5 * (color_min + color_max)
-    for idx_col, col in enumerate(matrix.columns):
-        for idx_row, row in enumerate(matrix.index):
+    for idx_column_label, column_label in enumerate(column_labels):
+        for idx_index_label, row in enumerate(index_labels):
 
-            if matrix[col][row] != 0:
-                if darkness[col][row] >= 0.8 * mean_color:
+            if matrix.iloc[idx_column_label][idx_index_label] != 0:
+
+                if darkness.iloc[idx_column_label][idx_index_label] >= 0.8 * mean_color:
                     text_color = "w"
                 else:
                     text_color = "k"
 
                 ax.text(
-                    idx_col,
-                    idx_row,
-                    "{}".format(matrix[col][row])
-                    if matrix[col][row].dtype == "int64"
-                    else "{:.2f}".format(matrix[col][row]),
+                    idx_column_label,
+                    idx_index_label,
+                    "{}".format(matrix.iloc[idx_column_label][idx_index_label])
+                    if matrix.iloc[idx_column_label][idx_index_label].dtype == "int64"
+                    else "{:.2f}".format(
+                        matrix.iloc[idx_column_label][idx_index_label]
+                    ),
                     va="center",
                     ha="center",
                     zorder=12,
@@ -176,14 +140,14 @@ def bubble_chart(
     ax.set_xlim(-1, len(matrix.columns))
     ax.set_ylim(-1, len(matrix.index) + 1)
 
-    ax.set_xticks(np.arange(len(matrix.columns)))
-    ax.set_xticklabels(matrix.columns)
+    ax.set_xticks(np.arange(len(column_labels)))
+    ax.set_xticklabels(column_labels)
     ax.tick_params(axis="x", labelrotation=90)
     ax.xaxis.tick_top()
 
     ax.invert_yaxis()
-    ax.set_yticks(np.arange(len(matrix.index)))
-    ax.set_yticklabels(matrix.index)
+    ax.set_yticks(np.arange(len(index_labels)))
+    ax.set_yticklabels(index_labels)
 
     for side in [
         "top",
