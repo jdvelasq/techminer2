@@ -1,5 +1,5 @@
 """
-Factorial analysis (manifold)
+Factorial Analysis (manifold)
 ===============================================================================
 
 
