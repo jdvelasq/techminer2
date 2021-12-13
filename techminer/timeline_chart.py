@@ -1,5 +1,5 @@
 """
-Timeline chart
+Timeline Chart
 ===============================================================================
 
 >>> from techminer import *
