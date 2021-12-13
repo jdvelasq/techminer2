@@ -1,5 +1,5 @@
 """
-Correlation map
+Correlation Map
 ===============================================================================
 
 >>> from techminer import *
