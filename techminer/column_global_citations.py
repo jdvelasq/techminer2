@@ -1,5 +1,5 @@
 """
-Column global citations
+Column Global Citations
 ===============================================================================
 
 Plots global citations by item in the selected column
