@@ -1,5 +1,5 @@
 """
-Clean --- institutions
+Clean Institutions
 ===============================================================================
 
 Cleans the institutions columns using the file institutions.txt, located in 
