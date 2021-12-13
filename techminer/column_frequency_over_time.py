@@ -1,5 +1,5 @@
 """
-Column frequency over time
+Column Frequency over Time
 ===============================================================================
 
 >>> from techminer import *
