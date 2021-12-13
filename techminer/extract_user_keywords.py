@@ -1,5 +1,5 @@
 """
-Extract user keywords
+Extract User Keywords
 ===============================================================================
 
 Funcionality similar to My Keywords in VantagePoint.
