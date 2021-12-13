@@ -1,5 +1,5 @@
 """
-Network degree plot
+Network Degree Plot
 ===============================================================================
 
 >>> from techminer import *
