@@ -1,5 +1,5 @@
 """
-Importing Scopus files
+Importing Scopus Files
 ===============================================================================
 
 Import a scopus file to a working directory.
