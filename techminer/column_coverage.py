@@ -1,5 +1,5 @@
 """
-Column coverage
+Column Coverage
 ===============================================================================
 
 Computes coverage of terms in a column discarding stopwords.
