@@ -1,5 +1,5 @@
 """
-Factor matrix
+Factor Matrix
 ===============================================================================
 
 Factor matrix obtained by appliying PCA to the co-occurrence matrix. 
