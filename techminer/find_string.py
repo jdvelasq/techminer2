@@ -1,5 +1,5 @@
 """
-Find string
+Find String
 ===============================================================================
 
 Finds a string in the terms of a column of a document collection.
