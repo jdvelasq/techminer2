@@ -1,5 +1,5 @@
 """
-Main path network
+Main Path Network
 ===============================================================================
 
 >>> from techminer import *
