@@ -1,5 +1,5 @@
 """
-Network indicators
+Network Indicators
 ===============================================================================
 
 >>> from techminer import *
