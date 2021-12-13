@@ -1,5 +1,5 @@
 """
-Column indicators
+Column Indicators
 ===============================================================================
 
 >>> from techminer import *
