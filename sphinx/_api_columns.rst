@@ -5,16 +5,33 @@ Columns API
     :maxdepth: 1
 
     column_coverage
+
+
+.. toctree::
+    :maxdepth: 1
+
+    column_horizontal_bar_chart
+    column_line_chart
+    column_pie_chart
+    column_tree_map
+    column_vertical_bar_chart
+    column_word_cloud    
+
+
+.. toctree::
+    :maxdepth: 1
+
     column_dynamics
     column_frequency_over_time
     column_frequency
     column_global_citations
     column_h_index
-    column_horizontal_bar_chart
-    column_line_chart
-    column_pie_chart
-    column_tree_map
+
+    
+.. toctree::
+    :maxdepth: 1
+
     column_trends
-    column_vertical_bar_chart
-    column_word_cloud    
+    
+    
 
