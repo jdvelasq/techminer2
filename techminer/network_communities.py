@@ -1,5 +1,5 @@
 """
-Network communities
+Network Communities
 ===============================================================================
 
 >>> from techminer import *
