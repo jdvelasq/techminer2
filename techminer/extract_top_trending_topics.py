@@ -1,5 +1,5 @@
 """
-Extract top trending topics
+Extract Top Trending Topics
 ===============================================================================
 
 Extract and plot the top trending topics for the selected column using the 
