@@ -41,19 +41,6 @@ package developed and tested in Python version 3.6.
 
     _user_data
 
-.. toctree::
-    :caption: Software comparison
-    :hidden:
-    :maxdepth: 1
-
-    _vantagepoint
-    _bibliometrix
-    _scientopy
-    _tlab
-    
-    
-
-
 
 .. toctree::
     :caption: API Reference
@@ -68,12 +55,20 @@ package developed and tested in Python version 3.6.
     _api_visualization
 
 
+.. toctree::
+    :caption: Software comparison
+    :hidden:
+    :maxdepth: 1
+
+    _vantagepoint
+    _bibliometrix
+    _scientopy
+    _tlab
     
     
 
 
-
-* **Author**:
+**Author**:
 
     | Prof. Juan David Velásquez-Henao, MSc, PhD
     | Universidad Nacional de Colombia, Sede Medellín.
