@@ -93,13 +93,9 @@ Column
 .. toctree::
     :maxdepth: 1
 
-    column_coverage
-    column_dynamics
     column_frequency
     column_frequency_over_time 
-    column_global_citations
-    column_trends
-    column_h_index
+
 
 
 Column (Report) Charts
@@ -126,9 +122,6 @@ Column (Report) Charts
 
 FROM VANTAGE POINT TOOLBAR
 
-* Company Activity Gantt
-
-* Terms by Year Report
 
 * Cluster Map
 
@@ -168,10 +161,13 @@ Correlation Analysis
     :maxdepth: 1
 
     auto_corr_matrix
-    correlation_map
     cross_corr_matrix   
 
 
+.. toctree::
+    :maxdepth: 1
+
+    correlation_map
 
 Factor Analysis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
