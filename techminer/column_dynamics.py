@@ -1,5 +1,5 @@
 """
-Column dynamics
+Column Dynamics
 ===============================================================================
 
 >>> from techminer import *
