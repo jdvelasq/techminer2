@@ -1,5 +1,5 @@
 """
-Column frequency
+Column Frequency
 ===============================================================================
 
 Plots the number of documents per item in the selected column
