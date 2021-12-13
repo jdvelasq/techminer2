@@ -1,5 +1,5 @@
 """
-Stemming  AND & OR operators 
+Stemming  AND & OR Operators 
 ===============================================================================
 
 Searchs in the terms of a column using stemming
