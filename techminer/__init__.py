@@ -37,9 +37,9 @@ from .collaboration_network_communities import collaboration_network_communities
 from .collaboration_network_degree_plot import collaboration_network_degree_plot
 from .collaboration_network_graph import collaboration_network_graph
 from .collaboration_network_indicators import collaboration_network_indicators
+from .column_cleveland_dot_chart import column_cleveland_dot_chart
 from .column_coverage import column_coverage
 from .column_dynamics import column_dynamics
-from .column_frequency import column_frequency
 from .column_frequency_over_time import column_frequency_over_time
 from .column_global_citations import column_global_citations
 from .column_h_index import column_h_index
