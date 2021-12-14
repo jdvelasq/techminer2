@@ -7,7 +7,7 @@ Column Tree Map
 >>> file_name = "/workspaces/techminer-api/sphinx/images/column_tree_map.png"
 >>> column_tree_map('author_keywords', 15, directory=directory).savefig(file_name)
 
-.. image:: images/column_pie_chart.png
+.. image:: images/column_tree_map.png
     :width: 700px
     :align: center
 
