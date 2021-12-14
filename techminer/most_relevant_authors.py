@@ -24,7 +24,7 @@ Worthington AC              2                 7                1
 
 
 """
-from .column_frequency import column_frequency
+from .column_cleveland_dot_chart import column_cleveland_dot_chart
 
 
 def most_relevant_authors(
@@ -34,7 +34,7 @@ def most_relevant_authors(
     directory="./",
     plot=True,
 ):
-    return column_frequency(
+    return column_cleveland_dot_chart(
         column="authors",
         top_n=top_n,
         color=color,
