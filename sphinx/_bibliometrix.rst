@@ -179,6 +179,10 @@ Conceptual Structure
     <hr style="width:70%;height:2px;border-width:0;color:gray;background-color:black">
 
 
+.. raw:: html
+
+    <p style="color:gray">Network Approach:</p>
+
 
 .. toctree::
     :maxdepth: 1
@@ -194,6 +198,8 @@ Conceptual Structure
     :maxdepth: 1
 
     thematic_map_communities
+    thematic_map_degree_plot
+    thematic_map_indicators
     thematic_map_network
 
 
@@ -225,10 +231,10 @@ Intellectual Structure
 .. toctree::
     :maxdepth: 1
 
+    co_citation_network_communities
+    co_citation_network_degree_plot
     co_citation_network_graph    
     co_citation_network_indicators
-    co_citation_network_degree_plot
-    co_citation_network_communities
 
 
 .. Note::
@@ -267,10 +273,10 @@ Social Structure
 .. toctree::
     :maxdepth: 1
 
+    collaboration_network_communities
+    collaboration_network_degree_plot
     collaboration_network_graph
     collaboration_network_indicators
-    collaboration_network_degree_plot
-    collaboration_network_communities
     
 
 * ``TODO: Collaboration WorldMap``
