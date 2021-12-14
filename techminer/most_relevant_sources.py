@@ -24,7 +24,7 @@ FRONTIER ARTIF INTELL                      5                23                4
 
 
 """
-from .column_frequency import column_frequency
+from .column_cleveland_dot_chart import column_cleveland_dot_chart
 
 
 def most_relevant_sources(
@@ -34,7 +34,7 @@ def most_relevant_sources(
     directory="./",
     plot=True,
 ):
-    return column_frequency(
+    return column_cleveland_dot_chart(
         column="iso_source_name",
         top_n=top_n,
         color=color,
