@@ -16,5 +16,9 @@
         "--doctest-modules"
     ],
     "python.testing.pytestEnabled": true,
-    "restructuredtext.syntaxHighlighting.disabled": true
+    "restructuredtext.syntaxHighlighting.disabled": true,
+    "search.exclude": {
+        "**./*.js": true,
+        "**/*.html": true
+    }
 }
