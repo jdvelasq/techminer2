@@ -93,7 +93,7 @@ Column
 .. toctree::
     :maxdepth: 1
 
-    column_frequency
+    
     column_frequency_over_time 
 
 
@@ -108,11 +108,12 @@ Column (Report) Charts
 .. toctree::
     :maxdepth: 1
 
+    column_cleveland_dot_chart
     column_horizontal_bar_chart
-    column_vertical_bar_chart
     column_line_chart
     column_pie_chart
     column_tree_map
+    column_vertical_bar_chart
     column_word_cloud
 
 .. note::
