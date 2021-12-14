@@ -26,7 +26,7 @@ Poznan University of Economic and Business POL              4  ...              
 
 
 """
-from .column_frequency import column_frequency
+from .column_cleveland_dot_chart import column_cleveland_dot_chart
 
 
 def most_relevant_institutions(
@@ -36,7 +36,7 @@ def most_relevant_institutions(
     directory="./",
     plot=True,
 ):
-    return column_frequency(
+    return column_cleveland_dot_chart(
         column="institutions",
         top_n=top_n,
         color=color,
