@@ -3,26 +3,31 @@ T-Lab
 
 .. raw:: html
 
-   <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+   <hr style="height:4px;border-width:0;color:gray;background-color:black">
 
 
 Co-occurrence Analysis
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Word Associations 
-***************************************
+.. raw:: html
+
+    <p style="color:gray">Word Associations</p>
+
 
 See `Co-occurrence API <_api_co_occurrence.html>`__
 
 
-Co-Word Analysis
-***************************************
+.. raw:: html
+
+    <p style="color:gray">Co-word Analysis</p>
+
 
 See `Co-occurrence API <_api_co_occurrence.html>`__
 
 
-Comparison between word pairs
-***************************************
+.. raw:: html
+
+    <p style="color:gray">Comparison between word pairs</p>
 
 .. toctree::
     :maxdepth: 1
@@ -43,7 +48,7 @@ Concordances
    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
 
 Thematic Analysis
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This analysis is used to obtain and explore a representation of the documents
 throught thematic clusters.
@@ -74,7 +79,7 @@ Contexts implemented in T-LAB.
    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
 
 Comparative Analysis
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
     :maxdepth: 1
@@ -87,7 +92,7 @@ Comparative Analysis
    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
 
 Lexical and other tools
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
     :maxdepth: 1
