@@ -10,4 +10,4 @@ ScientoPy
 
     column_top_topics_chart
     extract_custom_topics
-    extract_top_trending_topics
+    column_top_trending_topics
