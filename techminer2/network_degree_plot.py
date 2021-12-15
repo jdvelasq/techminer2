@@ -4,7 +4,7 @@ Network Degree Plot
 
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
->>> file_name = "/workspaces/techminer-api/sphinx/images/co_occurrence_network_degree_plot.png"
+>>> file_name = "/workspaces/techminer2/sphinx/images/co_occurrence_network_degree_plot.png"
 >>> coc_matrix = co_occurrence_matrix(column='author_keywords', min_occ=7,directory=directory)
 >>> network = co_occurrence_network(coc_matrix)
 >>> network_degree_plot(network).savefig(file_name)
