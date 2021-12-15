@@ -4,7 +4,7 @@ Authors' Production over Time
 
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
->>> file_name = "/workspaces/techminer-api/sphinx/images/authors_production_over_time.png"
+>>> file_name = "/workspaces/techminer2/sphinx/images/authors_production_over_time.png"
 >>> authors_production_over_time(min_occ=2, directory=directory).savefig(file_name)
 
 .. image:: images/authors_production_over_time.png
