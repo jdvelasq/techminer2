@@ -23,7 +23,7 @@ Dincer H       0     0     0     0     0     2
 
 """
 
-from .column_frequency_over_time import column_frequency_over_time
+from .column_timeline_chart import column_timeline_chart
 
 
 def authors_production_over_time(
@@ -33,7 +33,7 @@ def authors_production_over_time(
     plot=True,
 ):
 
-    return column_frequency_over_time(
+    return column_timeline_chart(
         column="authors",
         min_occ=min_occ,
         figsize=figsize,
