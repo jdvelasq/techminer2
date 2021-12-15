@@ -43,7 +43,8 @@ RUN pip3 --disable-pip-version-check --no-cache-dir install \
     sphinx-intl \
     nbsphinx \
     sphinx-rtd-theme \ 
-    sphinx_copybutton \    
+    sphinx_copybutton \
+    sphinx-toggleprompt \
     pygments
 
 RUN pip3 --disable-pip-version-check --no-cache-dir install \
