@@ -50,6 +50,7 @@ from .column_line_chart import column_line_chart
 from .column_pie_chart import column_pie_chart
 from .column_timeline_chart import column_timeline_chart
 from .column_top_topics_chart import column_top_topics_chart
+from .column_top_trending_topics import column_top_trending_topics
 from .column_tree_map import column_tree_map
 from .column_trends import column_trends
 from .column_vertical_bar_chart import column_vertical_bar_chart
@@ -67,7 +68,6 @@ from .document_indicators import document_indicators
 from .document_viewer import document_viewer
 from .dotted_gantt_chart import dotted_gantt_chart
 from .extract_custom_topics import extract_custom_topics
-from .extract_top_trending_topics import extract_top_trending_topics
 from .extract_user_keywords import extract_user_keywords
 from .factor_matrix import factor_matrix
 from .factorial_analysis_manifold import Factorial_analysis_manifold
