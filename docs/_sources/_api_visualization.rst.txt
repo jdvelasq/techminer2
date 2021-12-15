@@ -7,13 +7,13 @@ Visualization API
     bar_chart
     bubble_chart
     column_chart
-    dotted_timeline_chart
+    dotted_gantt_chart
     heat_map
     line_chart
     pie_chart
     stacked_bar_chart
     stacked_column_chart
-    timeline_chart
+    gantt_chart
     tree_map    
     word_cloud
     world_map
