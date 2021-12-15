@@ -4,7 +4,7 @@ Column Word Cloud
 
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
->>> file_name = "/workspaces/techminer-api/sphinx/images/column_word_cloud.png"
+>>> file_name = "/workspaces/techminer2/sphinx/images/column_word_cloud.png"
 >>> column_word_cloud('author_keywords', 50, directory=directory).savefig(file_name)
 
 .. image:: images/column_wordcloud.png
