@@ -4,7 +4,7 @@ Column Tree Map
 
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
->>> file_name = "/workspaces/techminer-api/sphinx/images/column_tree_map.png"
+>>> file_name = "/workspaces/techminer2/sphinx/images/column_tree_map.png"
 >>> column_tree_map('author_keywords', 15, directory=directory).savefig(file_name)
 
 .. image:: images/column_tree_map.png
