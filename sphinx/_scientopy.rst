@@ -16,3 +16,7 @@ based on the type of plots.
     extract_top_topics
     extract_custom_topics
     extract_top_trending_topics
+
+*  `Column Timeline Chart <column_timeline_chart.html>`__.     
+
+*  `Column Word Cloud <column_word_cloud.html>`__.     
