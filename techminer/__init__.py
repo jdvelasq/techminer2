@@ -25,6 +25,7 @@ from .co_occurrence_bubble_chart import co_occurrence_bubble_chart
 from .co_occurrence_communities import co_occurrence_communities
 from .co_occurrence_degree_plot import co_occurrence_degree_plot
 from .co_occurrence_heatmap import co_occurrence_heatmap
+from .co_occurrence_html import co_occurrence_html
 from .co_occurrence_indicators import co_occurrence_indicators
 from .co_occurrence_item_associations import co_occurrence_item_associations
 from .co_occurrence_manifold import co_occurrence_manifold
