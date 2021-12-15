@@ -41,7 +41,7 @@ rn                                   ...
 <BLANKLINE>
 [8 rows x 3 columns]
 
->>> file_name = "/workspaces/techminer-api/sphinx/images/thematic_map_network.png"
+>>> file_name = "/workspaces/techminer2/sphinx/images/thematic_map_network.png"
 >>> network_plot(network).savefig(file_name)
 
 .. image:: images/thematic_map_network.png
