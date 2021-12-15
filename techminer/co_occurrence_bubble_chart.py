@@ -10,6 +10,7 @@ Co-occurrence Matrix / Bubble Chart
 ...     column='authors',
 ...     min_occ=2, 
 ...     cmap='Greys',
+...     figsize=(10, 10),
 ... ).savefig(file_name)
 
 .. image:: images/co_occurrence_bubble_chart.png
