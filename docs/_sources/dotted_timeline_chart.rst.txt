@@ -1,4 +1,4 @@
-.. automodule:: techminer.dotted_timeline_chart
+.. automodule:: techminer.dotted_gantt_chart
     :members:
     :undoc-members:
     :show-inheritance:
