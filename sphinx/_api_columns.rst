@@ -14,6 +14,7 @@ Columns API
     column_horizontal_bar_chart
     column_line_chart
     column_pie_chart
+    column_timeline_chart
     column_tree_map
     column_vertical_bar_chart
     column_word_cloud    
