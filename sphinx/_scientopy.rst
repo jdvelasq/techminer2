@@ -5,6 +5,11 @@ ScientoPy
 
    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
 
+ScientoPy is specialized in the analysis of dataset columns. Allows analysis for the ``n`` 
+most relevant topics or for a group of user-defined topics. The presented comparison is
+based on the type of plots.
+
+
 .. toctree::
     :maxdepth: 1
 
