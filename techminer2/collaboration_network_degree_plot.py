@@ -4,7 +4,7 @@ Collaboration Network / Degree Plot
 
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
->>> file_name = "/workspaces/techminer-api/sphinx/images/collaboration_network_degree_plot.png"
+>>> file_name = "/workspaces/techminer2/sphinx/images/collaboration_network_degree_plot.png"
 >>> collaboration_network_degree_plot('authors', min_occ=2, directory=directory).savefig(file_name)
 
 .. image:: images/collaboration_network_degree_plot.png
