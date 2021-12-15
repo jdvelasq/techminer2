@@ -4,7 +4,7 @@ Network Indicators
 
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
->>> file_name = "/workspaces/techminer-api/sphinx/images/co_occurrence_network_map.png"
+>>> file_name = "/workspaces/techminer2/sphinx/images/co_occurrence_network_map.png"
 >>> coc_matrix = co_occurrence_matrix(column='author_keywords', min_occ=7,directory=directory)
 >>> network = co_occurrence_network(coc_matrix)
 >>> network_indicators(network)
