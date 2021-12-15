@@ -1,4 +1,4 @@
-.. automodule:: techminer.column_frequency_over_time
+.. automodule:: techminer.column_timeline_chart
     :members:
     :undoc-members:
     :show-inheritance:
