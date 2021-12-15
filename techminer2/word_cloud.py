@@ -4,7 +4,7 @@ World cloud
 
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
->>> file_name = "/workspaces/techminer-api/sphinx/images/word_cloud.png"
+>>> file_name = "/workspaces/techminer2/sphinx/images/word_cloud.png"
 >>> data = column_indicators('authors', directory=directory).num_documents.head(50)
 >>> word_cloud(data).savefig(file_name)
 
