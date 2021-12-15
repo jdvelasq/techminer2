@@ -17,7 +17,7 @@ The plot is based on the SVD technique used in T-LAB's comparative analysis.
 
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
->>> file_name = "/workspaces/techminer-api/sphinx/images/svd_tf_idf_matrix_map.png"
+>>> file_name = "/workspaces/techminer2/sphinx/images/svd_tf_idf_matrix_map.png"
 >>> tf_idf_matrix = tf_idf_matrix('author_keywords', min_occ=6, directory=directory)
 >>> svd_tf_idf_matrix_map(tf_idf_matrix).savefig(file_name)
 
