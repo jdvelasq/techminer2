@@ -4,8 +4,8 @@ Bradford's Law
 
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer-api/data/"
->>> file_name = "/workspaces/techminer-api/sphinx/images/bradford.png"
+>>> directory = "/workspaces/techminer2/data/"
+>>> file_name = "/workspaces/techminer2/sphinx/images/bradford.png"
 >>> bradford_law(directory=directory).savefig(file_name)
 
 .. image:: images/bradford.png
