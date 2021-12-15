@@ -8,6 +8,6 @@ ScientoPy
 .. toctree::
     :maxdepth: 1
 
-    extract_top_topics
+    column_top_topics_chart
     extract_custom_topics
     extract_top_trending_topics
