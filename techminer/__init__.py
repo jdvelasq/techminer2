@@ -40,6 +40,7 @@ from .collaboration_network_indicators import collaboration_network_indicators
 from .column_cleveland_dot_chart import column_cleveland_dot_chart
 from .column_coverage import column_coverage
 from .column_dynamics import column_dynamics
+from .column_gantt_chart import column_gantt_chart
 from .column_global_citations import column_global_citations
 from .column_h_index import column_h_index
 from .column_horizontal_bar_chart import column_horizontal_bar_chart
@@ -47,7 +48,7 @@ from .column_indicators import column_indicators
 from .column_indicators_by_year import column_indicators_by_year
 from .column_line_chart import column_line_chart
 from .column_pie_chart import column_pie_chart
-from .column_gantt_chart import column_gantt_chart
+from .column_timeline_chart import column_timeline_chart
 from .column_tree_map import column_tree_map
 from .column_trends import column_trends
 from .column_vertical_bar_chart import column_vertical_bar_chart
@@ -77,6 +78,7 @@ from .factorial_analysis_mds_silhouette_scores import (
     factorial_analysis_mds_silhouette_scores,
 )
 from .find_string import find_string
+from .gantt_chart import gantt_chart
 from .growth_indicators import growth_indicators
 from .heat_map import heat_map
 from .horizontal_bar_chart import horizontal_bar_chart
@@ -120,7 +122,6 @@ from .thematic_map_communities import thematic_map_communities
 from .thematic_map_degree_plot import thematic_map_degree_plot
 from .thematic_map_indicators import thematic_map_indicators
 from .thematic_map_network import thematic_map_network
-from .gantt_chart import gantt_chart
 from .tree_map import tree_map
 from .trend_topics import trend_topics
 from .user_filters import user_filters
