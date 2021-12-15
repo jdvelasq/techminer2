@@ -4,7 +4,7 @@ Thematic Map / Degree Plot
 
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
->>> file_name = "/workspaces/techminer-api/sphinx/images/thematic_map_degree_plot.png"
+>>> file_name = "/workspaces/techminer2/sphinx/images/thematic_map_degree_plot.png"
 >>> thematic_map_degree_plot('author_keywords', min_occ=4, directory=directory).savefig(file_name)
 
 .. image:: images/thematic_map_degree_plot.png
