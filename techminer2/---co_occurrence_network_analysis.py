@@ -31,14 +31,14 @@ The following capabilities are available:
 # >>> analyzer.communities().head(5)
 
 
->>> file_name = "/workspaces/techminer-api/sphinx/images/co_occurrence_network_analysis_network_map.png"
+>>> file_name = "/workspaces/techminer2/sphinx/images/co_occurrence_network_analysis_network_map.png"
 >>> analyzer.network().savefig(file_name)
 
 .. image:: images/co_occurrence_network_analysis_network_map.png
     :width: 700px
     :align: center
 
->>> file_name = "/workspaces/techminer-api/sphinx/images/co_occurrence_network_analysis_manifold_map.png"
+>>> file_name = "/workspaces/techminer2/sphinx/images/co_occurrence_network_analysis_manifold_map.png"
 >>> analyzer.manifold_map().savefig(file_name)
 
 .. image:: images/co_occurrence_network_analysis_manifold_map.png
@@ -48,7 +48,7 @@ The following capabilities are available:
 >>> # analyzer.centrality_density_table()
 
 
->>> file_name = "/workspaces/techminer-api/sphinx/images/co_occurrence_network_analysis_cen_den_map.png"
+>>> file_name = "/workspaces/techminer2/sphinx/images/co_occurrence_network_analysis_cen_den_map.png"
 >>> analyzer.centrality_density_map().savefig(file_name)
 
 .. image:: images/co_occurrence_network_analysis_cen_den_map.png
