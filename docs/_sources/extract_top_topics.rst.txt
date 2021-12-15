@@ -1,4 +1,4 @@
-.. automodule:: techminer.extract_top_topics
+.. automodule:: techminer.column_top_topics_chart
     :members:
     :undoc-members:
     :show-inheritance:
