@@ -44,7 +44,7 @@ rn                                           ...
 <BLANKLINE>
 [15 rows x 5 columns]
 
->>> file_name = "/workspaces/techminer-api/sphinx/images/coupling_column_network.png"
+>>> file_name = "/workspaces/techminer2/sphinx/images/coupling_column_network.png"
 >>> network_plot(coupling_network).savefig(file_name)
 
 .. image:: images/coupling_column_network.png
