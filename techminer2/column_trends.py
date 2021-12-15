@@ -4,7 +4,7 @@ Column Trends
 
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
->>> file_name = "/workspaces/techminer-api/sphinx/images/column_trends.png"
+>>> file_name = "/workspaces/techminer2/sphinx/images/column_trends.png"
 >>> column_trends('author_keywords', directory=directory).savefig(file_name)
 
 .. image:: images/column_trends.png
