@@ -5,7 +5,7 @@ Corresponding Author's Country
 
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
->>> file_name = "/workspaces/techminer-api/sphinx/images/corresponding_authors_country.png"
+>>> file_name = "/workspaces/techminer2/sphinx/images/corresponding_authors_country.png"
 >>> corresponding_authors_country(directory=directory).savefig(file_name)
 
 .. image:: images/corresponding_authors_country.png
