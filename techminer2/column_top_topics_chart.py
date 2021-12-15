@@ -7,7 +7,7 @@ Extract and plot the top topics of the selected column.
 
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
->>> file_name = "/workspaces/techminer-api/sphinx/images/column_top_topics_chart.png"
+>>> file_name = "/workspaces/techminer2/sphinx/images/column_top_topics_chart.png"
 >>> column_top_topics_chart(column="author_keywords", directory=directory).savefig(file_name)
 
 .. image:: images/column_top_topics_chart.png
