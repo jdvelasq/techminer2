@@ -45,10 +45,16 @@ def heat_map(
         cmap=cmap,
         vmax=0.3,
         square=True,
-        linewidths=0.5,
+        linewidths=0.2,
         cbar=False,
-        # linecolor="gray",
+        linecolor="gainsboro",
     )
+    ax.xaxis.set_ticks_position("top")
+    ax.xaxis.set_label_position("top")
+    ax.tick_params(axis="x", labelrotation=90)
+
+    ax.set_xlabel("")
+    ax.set_ylabel("")
 
     fig.set_tight_layout(True)
 
