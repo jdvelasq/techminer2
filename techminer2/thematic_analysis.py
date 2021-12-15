@@ -29,7 +29,7 @@ THEME_5           2.014328  ...        0.628626
 <BLANKLINE>
 [6 rows x 59 columns]
 
->>> file_name = "/workspaces/techminer-api/sphinx/images/thematic_analysis_map.png"
+>>> file_name = "/workspaces/techminer2/sphinx/images/thematic_analysis_map.png"
 >>> thematic_analysis(
 ...     tfidf_matrix, 
 ...     clustering_method=KMeans(n_clusters=6), 
