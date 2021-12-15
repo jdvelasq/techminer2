@@ -47,7 +47,7 @@ from .column_indicators import column_indicators
 from .column_indicators_by_year import column_indicators_by_year
 from .column_line_chart import column_line_chart
 from .column_pie_chart import column_pie_chart
-from .column_timeline_chart import column_timeline_chart
+from .column_gantt_chart import column_gantt_chart
 from .column_tree_map import column_tree_map
 from .column_trends import column_trends
 from .column_vertical_bar_chart import column_vertical_bar_chart
@@ -63,7 +63,7 @@ from .create_thesaurus import create_thesaurus
 from .cross_corr_matrix import cross_corr_matrix
 from .document_indicators import document_indicators
 from .document_viewer import document_viewer
-from .dotted_timeline_chart import dotted_timeline_chart
+from .dotted_gantt_chart import dotted_gantt_chart
 from .extract_custom_topics import extract_custom_topics
 from .extract_top_topics import extract_top_topics
 from .extract_top_trending_topics import extract_top_trending_topics
@@ -120,7 +120,7 @@ from .thematic_map_communities import thematic_map_communities
 from .thematic_map_degree_plot import thematic_map_degree_plot
 from .thematic_map_indicators import thematic_map_indicators
 from .thematic_map_network import thematic_map_network
-from .timeline_chart import timeline_chart
+from .gantt_chart import gantt_chart
 from .tree_map import tree_map
 from .trend_topics import trend_topics
 from .user_filters import user_filters
