@@ -4,7 +4,7 @@ Network Plot
 
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
->>> file_name = "/workspaces/techminer-api/sphinx/images/network_plot.png"
+>>> file_name = "/workspaces/techminer2/sphinx/images/network_plot.png"
 >>> coc_matrix = co_occurrence_matrix(column='author_keywords', min_occ=7,directory=directory)
 >>> network_ = network(coc_matrix)
 >>> network_plot(network_).savefig(file_name)
