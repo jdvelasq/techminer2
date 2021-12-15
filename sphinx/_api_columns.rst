@@ -23,7 +23,7 @@ Columns API
     :maxdepth: 1
 
     column_dynamics
-    column_frequency_over_time
+    column_timeline_chart
     column_global_citations
     column_h_index
 
