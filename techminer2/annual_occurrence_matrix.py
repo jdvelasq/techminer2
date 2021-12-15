@@ -3,7 +3,7 @@ Annual Occurrence Matrix
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer-api/data/"
+>>> directory = "/workspaces/techminer2/data/"
 >>> annual_occurrence_matrix('authors',  min_occ=3, directory=directory).head(10)
 pub_year    2019  2020  2021
 authors                     

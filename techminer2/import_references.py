@@ -10,7 +10,7 @@ Import a 'cited by' scopus file with references.
 * This function must be called after the import of the documents.
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer-api/data/"
+>>> directory = "/workspaces/techminer2/data/"
 >>> import_references(directory=directory)
 
 

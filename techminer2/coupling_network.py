@@ -5,7 +5,7 @@ Coupling network
 Builds a coupling network from a coupling matrix.
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer-api/data/"
+>>> directory = "/workspaces/techminer2/data/"
 >>> matrix = coupling_by_column_matrix(
 ...     column='author_keywords',
 ...     min_occ=4, 

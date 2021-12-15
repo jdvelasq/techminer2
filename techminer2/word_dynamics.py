@@ -3,7 +3,7 @@ Word Dynamics
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer-api/data/"
+>>> directory = "/workspaces/techminer2/data/"
 >>> file_name = "/workspaces/techminer-api/sphinx/images/word_dynamics.png"
 >>> word_dynamics('author_keywords', 10, directory=directory).savefig(file_name)
 

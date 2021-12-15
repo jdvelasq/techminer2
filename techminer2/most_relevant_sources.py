@@ -3,7 +3,7 @@ Most Relevant Sources
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer-api/data/"
+>>> directory = "/workspaces/techminer2/data/"
 >>> file_name = "/workspaces/techminer-api/sphinx/images/most_relevant_sources.png"
 >>> most_relevant_sources(directory=directory).savefig(file_name)
 

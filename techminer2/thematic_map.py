@@ -3,7 +3,7 @@ Thematic Map (conceptual structure)
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer-api/data/"
+>>> directory = "/workspaces/techminer2/data/"
 >>> coc_matrix = co_occurrence_matrix(
 ...     column='author_keywords', 
 ...     association="association",

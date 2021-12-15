@@ -3,7 +3,7 @@ Horizontal Bar Chart
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer-api/data/"
+>>> directory = "/workspaces/techminer2/data/"
 >>> file_name = "/workspaces/techminer-api/sphinx/images/horizontal_bar_chart.png"
 >>> series = column_indicators("countries", directory=directory).num_documents.head(20)
 >>> darkness = column_indicators("countries",directory=directory).global_citations.head(20)

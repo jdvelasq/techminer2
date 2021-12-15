@@ -5,7 +5,7 @@ Cleveland Dot Chart
 
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer-api/data/"
+>>> directory = "/workspaces/techminer2/data/"
 >>> file_name = "/workspaces/techminer-api/sphinx/images/cleveland_dot_chart.png" 
 >>> cleveland_dot_chart(
 ...     series=annual_indicators(directory).num_documents, 

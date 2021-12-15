@@ -6,7 +6,7 @@ Cleans the keywords columns using the file keywords.txt, located in
 the same directory as the documents.csv file.
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer-api/data/"
+>>> directory = "/workspaces/techminer2/data/"
 >>> clean_keywords(directory)
 2021-11-08 18:48:08 - INFO - Applying thesaurus to 'raw_author_keywords' column ...
 2021-11-08 18:48:08 - INFO - Applying thesaurus to 'raw_index_keywords' column...

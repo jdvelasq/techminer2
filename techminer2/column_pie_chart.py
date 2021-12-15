@@ -3,7 +3,7 @@ Column Pie Chart
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer-api/data/"
+>>> directory = "/workspaces/techminer2/data/"
 >>> file_name = "/workspaces/techminer-api/sphinx/images/column_pie_chart.png"
 >>> column_pie_chart('author_keywords', 15, directory=directory).savefig(file_name)
 

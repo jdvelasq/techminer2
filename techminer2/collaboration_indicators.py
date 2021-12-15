@@ -3,7 +3,7 @@ Collaboration Indicators
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer-api/data/"
+>>> directory = "/workspaces/techminer2/data/"
 >>> collaboration_indicators("countries", directory=directory).head()
                 num_documents  ...  mp_ratio
 countries                      ...          

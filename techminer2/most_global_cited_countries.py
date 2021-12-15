@@ -3,7 +3,7 @@ Most Global Cited Countries
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer-api/data/"
+>>> directory = "/workspaces/techminer2/data/"
 >>> file_name = "/workspaces/techminer-api/sphinx/images/most_global_cited_countries.png"
 >>> most_global_cited_countries(directory=directory).savefig(file_name)
 

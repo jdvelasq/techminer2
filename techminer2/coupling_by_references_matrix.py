@@ -3,7 +3,7 @@ Coupling by references matrix
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer-api/data/"
+>>> directory = "/workspaces/techminer2/data/"
 >>> coupling_matrix = coupling_by_references_matrix(
 ...     top_n=15,
 ...     directory=directory,

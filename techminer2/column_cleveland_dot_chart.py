@@ -6,7 +6,7 @@ Plots the number of documents per item in the selected column
 
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer-api/data/"
+>>> directory = "/workspaces/techminer2/data/"
 >>> file_name = "/workspaces/techminer-api/sphinx/images/column_cleveland_dot_chart.png"
 >>> column_cleveland_dot_chart(column="authors", directory=directory).savefig(file_name)
 

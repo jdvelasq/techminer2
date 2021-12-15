@@ -3,7 +3,7 @@ Column Gantt Chart
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer-api/data/"
+>>> directory = "/workspaces/techminer2/data/"
 >>> file_name = "/workspaces/techminer-api/sphinx/images/column_gantt_chart.png"
 >>> column_gantt_chart('authors', min_occ=2, directory=directory).savefig(file_name)
 

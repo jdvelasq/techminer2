@@ -4,7 +4,7 @@ Document Viewer
 
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer-api/data/"
+>>> directory = "/workspaces/techminer2/data/"
 >>> document_viewer('author_keywords', 'fintech', top_n=1, directory=directory)
       document_title : The digital revolution in financial inclusion: international development in the fintech era
              authors : Gabor D; Brooks S

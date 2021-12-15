@@ -5,7 +5,7 @@ Column Global Citations
 Plots global citations by item in the selected column
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer-api/data/"
+>>> directory = "/workspaces/techminer2/data/"
 >>> file_name = "/workspaces/techminer-api/sphinx/images/column_global_citations.png"
 >>> column_global_citations('countries', directory=directory).savefig(file_name)
 

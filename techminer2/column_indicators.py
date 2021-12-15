@@ -3,7 +3,7 @@ Column Indicators
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer-api/data/"
+>>> directory = "/workspaces/techminer2/data/"
 >>> column_indicators('authors',directory=directory).head()
                 num_documents  global_citations  local_citations
 authors                                                         

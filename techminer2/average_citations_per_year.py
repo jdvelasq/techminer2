@@ -4,7 +4,7 @@ Average Citations per Year
 
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer-api/data/"
+>>> directory = "/workspaces/techminer2/data/"
 >>> file_name = "/workspaces/techminer-api/sphinx/images/average_citations_per_year.png"
 >>> average_citations_per_year(directory=directory).savefig(file_name)
 

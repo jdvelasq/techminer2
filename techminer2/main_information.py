@@ -3,7 +3,7 @@ Main Information
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer-api/data/"
+>>> directory = "/workspaces/techminer2/data/"
 >>> main_information(directory)
                                                              value
 Category       Item                                               

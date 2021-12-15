@@ -3,7 +3,7 @@ Bubble Chart
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer-api/data/"
+>>> directory = "/workspaces/techminer2/data/"
 >>> file_name = "/workspaces/techminer-api/sphinx/images/bubble_chart.png"
 >>> matrix = co_occurrence_matrix(column='authors', min_occ=2, directory=directory)
 >>> bubble_chart(matrix).savefig(file_name)

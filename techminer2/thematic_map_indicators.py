@@ -3,7 +3,7 @@ Thematic Map / Indicators
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer-api/data/"
+>>> directory = "/workspaces/techminer2/data/"
 >>> thematic_map_indicators(
 ...     'author_keywords', min_occ=4, directory=directory
 ... ).head()

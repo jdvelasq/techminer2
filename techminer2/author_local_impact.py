@@ -5,7 +5,7 @@ Author Local Impact
 
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer-api/data/"
+>>> directory = "/workspaces/techminer2/data/"
 >>> file_name = "/workspaces/techminer-api/sphinx/images/author_local_impact.png"
 >>> author_local_impact(impact_measure='h_index', top_n=20, directory=directory).savefig(file_name)
 

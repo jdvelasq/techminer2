@@ -5,7 +5,7 @@ Most Local Cited Sources
 Plot the most local cited sources in the references.
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer-api/data/"
+>>> directory = "/workspaces/techminer2/data/"
 >>> file_name = "/workspaces/techminer-api/sphinx/images/most_local_cited_sources.png"
 >>> most_local_cited_sources(directory=directory).savefig(file_name)
 

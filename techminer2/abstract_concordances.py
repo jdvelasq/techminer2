@@ -6,7 +6,7 @@ Abstract concordances exploration tool.
 
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer-api/data/"
+>>> directory = "/workspaces/techminer2/data/"
 >>> abstract_concordances('fintech', top_n=10, directory=directory)
 - INFO - Abstract concordances report generated.
                              The industry overall, and many  FINTECH  start-ups are looking for new pathways to successful bu ...

@@ -3,7 +3,7 @@ Country Scientific Production
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer-api/data/"
+>>> directory = "/workspaces/techminer2/data/"
 >>> file_name = "/workspaces/techminer-api/sphinx/images/country_scientific_production.png"
 >>> country_scientific_production(directory=directory).savefig(file_name)
  

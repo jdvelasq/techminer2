@@ -3,7 +3,7 @@ Column Dynamics
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer-api/data/"
+>>> directory = "/workspaces/techminer2/data/"
 >>> file_name = "/workspaces/techminer-api/sphinx/images/column_dynamics.png"
 >>> column_dynamics('iso_source_name', 10, directory=directory).savefig(file_name)
 

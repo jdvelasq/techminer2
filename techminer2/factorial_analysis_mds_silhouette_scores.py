@@ -4,7 +4,7 @@ Factorial analysis using MDS and agglomerative clustering --- silhouette scores
 
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer-api/data/"
+>>> directory = "/workspaces/techminer2/data/"
 >>> file_name = "/workspaces/techminer-api/sphinx/images/factorial_analysis_mds_silhouette_scores.png"
 >>> factorial_analysis_mds_silhouette_scores(
 ...     'author_keywords', 

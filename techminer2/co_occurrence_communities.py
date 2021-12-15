@@ -3,7 +3,7 @@ Co-occurrence Network / Communities
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer-api/data/"
+>>> directory = "/workspaces/techminer2/data/"
 >>> co_occurrence_communities('author_keywords', min_occ=4, directory=directory)
 cluster                                   CLUST_0  ...                  CLUST_3
 rn                                                 ...                         

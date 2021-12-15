@@ -3,7 +3,7 @@ Co-occurrence Matrix / Associations
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer-api/data/"
+>>> directory = "/workspaces/techminer2/data/"
 >>> co_occurrence_associations(column='author_keywords', min_occ=3, directory=directory).head()
                    word_A   word_B  co_occ
 0     financial inclusion  fintech      15

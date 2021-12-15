@@ -6,7 +6,7 @@ Factor matrix obtained by appliying PCA to the co-occurrence matrix.
 matrix.
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer-api/data/"
+>>> directory = "/workspaces/techminer2/data/"
 >>> factor_matrix(co_occurrence_matrix(directory, column='authors', min_occ=6))
 component                 Factor 0  Factor 1      Factor 2  Factor 3  \
 explained_variance       21.725331 15.188322      4.900000  4.517707    

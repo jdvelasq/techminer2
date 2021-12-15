@@ -6,7 +6,7 @@ Thematic analysis --- map
 >>> from techminer2 import *
 >>> from sklearn.cluster import KMeans
 >>> from sklearn.manifold import MDS
->>> directory = "/workspaces/techminer-api/data/"
+>>> directory = "/workspaces/techminer2/data/"
 >>> tfidf_matrix = tf_idf_matrix('author_keywords', min_occ=3, directory=directory)
 >>> thematic_analysis(
 ...     tfidf_matrix, 

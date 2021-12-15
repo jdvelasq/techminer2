@@ -3,7 +3,7 @@ Main Path Network
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer-api/data/"
+>>> directory = "/workspaces/techminer2/data/"
 
 """
 from .utils import MainPath, load_filtered_documents

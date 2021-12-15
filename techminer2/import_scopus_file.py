@@ -5,7 +5,7 @@ Importing Scopus Files
 Import a scopus file to a working directory.
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer-api/data/"
+>>> directory = "/workspaces/techminer2/data/"
 >>> import_scopus_file(directory)
 - INFO - 248 raw records found in /workspaces/techminer-api/data/raw-documents.csv.
 - INFO - Main abstract texts saved to /workspaces/techminer-api/data/abstracts.csv

@@ -3,7 +3,7 @@ Coupling by column matrix
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer-api/data/"
+>>> directory = "/workspaces/techminer2/data/"
 >>> coupling_matrix = coupling_by_column_matrix(
 ...     column='author_keywords',
 ...     min_occ=3, 

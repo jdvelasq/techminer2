@@ -4,7 +4,7 @@ Co-citation Matrix
 
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer-api/data/"
+>>> directory = "/workspaces/techminer2/data/"
 >>> matrix = co_citation_matrix(directory=directory)
 >>> matrix.head()
                    1989-0000 2000-0000 2003-0002  ... 2020-0031 2020-0131 2020-0225

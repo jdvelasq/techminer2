@@ -4,7 +4,7 @@ Co-citation Network / Graph
 
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer-api/data/"
+>>> directory = "/workspaces/techminer2/data/"
 >>> file_name = "/workspaces/techminer-api/sphinx/images/co_citation_network_graph.png"
 >>> co_citation_network_graph(directory=directory).savefig(file_name)
 

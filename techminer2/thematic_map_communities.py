@@ -3,7 +3,7 @@ Thematic Map / Communities
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer-api/data/"
+>>> directory = "/workspaces/techminer2/data/"
 >>> thematic_map_communities('author_keywords', min_occ=4, directory=directory)
 cluster                     CLUST_0  ...                  CLUST_4
 rn                                   ...                         

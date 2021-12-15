@@ -19,7 +19,7 @@ The following capabilities are available:
 
 >>> from techminer2 import *
 >>> from sklearn.manifold import MDS
->>> directory = "/workspaces/techminer-api/data/"
+>>> directory = "/workspaces/techminer2/data/"
 >>> mds = MDS(random_state=12345)
 >>> coc_matrix = co_occurrence_matrix(directory, column='author_keywords', min_occ=12)
 >>> analyzer = co_occurrence_network_analysis(

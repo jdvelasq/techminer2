@@ -3,7 +3,7 @@ Most Relevant Institutions
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer-api/data/"
+>>> directory = "/workspaces/techminer2/data/"
 >>> file_name = "/workspaces/techminer-api/sphinx/images/most_relevant_institutions.png"
 >>> most_relevant_institutions(directory=directory).savefig(file_name)
 

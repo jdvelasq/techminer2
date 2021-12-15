@@ -4,7 +4,7 @@ Dotted Gantt Chart
 
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer-api/data/"
+>>> directory = "/workspaces/techminer2/data/"
 >>> file_name = "/workspaces/techminer-api/sphinx/images/dotted_gantt_chart.png"
 >>> data = annual_occurrence_matrix('iso_source_name',  min_occ=8, directory=directory)
 >>> dotted_gantt_chart(data, color='grey', figsize=(8, 6)).savefig(file_name)

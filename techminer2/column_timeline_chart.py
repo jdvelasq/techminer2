@@ -3,7 +3,7 @@ Column Timeline Chart
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer-api/data/"
+>>> directory = "/workspaces/techminer2/data/"
 >>> file_name = "/workspaces/techminer-api/sphinx/images/column_timeline_chart.png"
 >>> column_timeline_chart('author_keywords', min_occ=8, directory=directory).savefig(file_name)
 

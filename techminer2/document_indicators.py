@@ -3,7 +3,7 @@ Document Indicators
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer-api/data/"
+>>> directory = "/workspaces/techminer2/data/"
 >>> document_indicators(directory=directory).head()
                                                     global_citations  ...                          doi
 document_id                                                           ...                             
