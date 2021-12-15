@@ -1,4 +1,4 @@
-.. automodule:: techminer.column_tree_map
+.. automodule:: techminer2.column_tree_map
     :members:
     :undoc-members:
     :show-inheritance:

@@ -1,4 +1,4 @@
-.. automodule:: techminer.collaboration_network_graph
+.. automodule:: techminer2.collaboration_network_graph
     :members:
     :undoc-members:
     :show-inheritance:

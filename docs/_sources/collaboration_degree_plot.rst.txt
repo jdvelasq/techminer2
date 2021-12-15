@@ -1,4 +1,4 @@
-.. automodule:: techminer.collaboration_degree_plot
+.. automodule:: techminer2.collaboration_degree_plot
     :members:
     :undoc-members:
     :show-inheritance:

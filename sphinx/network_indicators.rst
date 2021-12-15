@@ -1,4 +1,4 @@
-.. automodule:: techminer.network_indicators
+.. automodule:: techminer2.network_indicators
     :members:
     :undoc-members:
     :show-inheritance:

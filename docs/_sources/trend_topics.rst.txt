@@ -1,4 +1,4 @@
-.. automodule:: techminer.trend_topics
+.. automodule:: techminer2.trend_topics
     :members:
     :undoc-members:
     :show-inheritance:

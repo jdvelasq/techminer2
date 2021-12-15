@@ -1,4 +1,4 @@
-.. automodule:: techminer.impact_indicators
+.. automodule:: techminer2.impact_indicators
     :members:
     :undoc-members:
     :show-inheritance:

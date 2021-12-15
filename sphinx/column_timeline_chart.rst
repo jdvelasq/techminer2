@@ -1,4 +1,4 @@
-.. automodule:: techminer.column_timeline_chart
+.. automodule:: techminer2.column_timeline_chart
     :members:
     :undoc-members:
     :show-inheritance:

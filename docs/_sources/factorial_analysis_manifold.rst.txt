@@ -1,4 +1,4 @@
-.. automodule:: techminer.factorial_analysis_manifold
+.. automodule:: techminer2.factorial_analysis_manifold
     :members:
     :undoc-members:
     :show-inheritance:

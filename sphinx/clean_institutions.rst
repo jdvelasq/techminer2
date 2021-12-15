@@ -1,4 +1,4 @@
-.. automodule:: techminer.clean_institutions
+.. automodule:: techminer2.clean_institutions
     :members:
     :undoc-members:
     :show-inheritance:

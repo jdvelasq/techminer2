@@ -1,4 +1,4 @@
-.. automodule:: techminer.thematic_map_network
+.. automodule:: techminer2.thematic_map_network
     :members:
     :undoc-members:
     :show-inheritance:

@@ -1,4 +1,4 @@
-.. automodule:: techminer.column_frequency
+.. automodule:: techminer2.column_frequency
     :members:
     :undoc-members:
     :show-inheritance:

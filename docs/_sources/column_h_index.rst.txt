@@ -1,4 +1,4 @@
-.. automodule:: techminer.column_h_index
+.. automodule:: techminer2.column_h_index
     :members:
     :undoc-members:
     :show-inheritance:

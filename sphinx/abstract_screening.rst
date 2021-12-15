@@ -1,4 +1,4 @@
-.. automodule:: techminer.abstract_screening
+.. automodule:: techminer2.abstract_screening
     :members:
     :undoc-members:
     :show-inheritance:

@@ -1,4 +1,4 @@
-.. automodule:: techminer.most_relevant_institutions
+.. automodule:: techminer2.most_relevant_institutions
     :members:
     :undoc-members:
     :show-inheritance:

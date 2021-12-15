@@ -1,4 +1,4 @@
-.. automodule:: techminer.stacked_column_chart
+.. automodule:: techminer2.stacked_column_chart
     :members:
     :undoc-members:
     :show-inheritance:

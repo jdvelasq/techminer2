@@ -1,4 +1,4 @@
-.. automodule:: techminer.column_gantt_chart
+.. automodule:: techminer2.column_gantt_chart
     :members:
     :undoc-members:
     :show-inheritance:

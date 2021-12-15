@@ -1,4 +1,4 @@
-.. automodule:: techminer.lotka_law
+.. automodule:: techminer2.lotka_law
     :members:
     :undoc-members:
     :show-inheritance:
