@@ -4,7 +4,7 @@ Co-occurrence Matrix / HTML visualization
 
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
->>> file_name = "/workspaces/techminer-api/sphinx/images/co_occurrence_heatmap.png"
+>>> file_name = "/workspaces/techminer2/sphinx/images/co_occurrence_heatmap.png"
 >>> co_occurrence_html(
 ...     directory=directory, 
 ...     column='authors', 
