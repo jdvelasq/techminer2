@@ -5,7 +5,13 @@ Co-occurrence Matrix / Heatmap
 >>> from techminer import *
 >>> directory = "/workspaces/techminer-api/data/"
 >>> file_name = "/workspaces/techminer-api/sphinx/images/co_occurrence_heatmap.png"
->>> co_occurrence_heatmap(directory=directory, column='authors', min_occ=2, cmap='Greys').savefig(file_name)
+>>> co_occurrence_heatmap(
+...     directory=directory, 
+...     column='authors', 
+...     min_occ=2, 
+...     cmap='Greys',
+...     figsize=(10, 10),
+... ).savefig(file_name)
 
 .. image:: images/co_occurrence_heatmap.png
     :width: 700px
