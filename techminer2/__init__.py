@@ -22,6 +22,7 @@ from .co_citation_network_graph import co_citation_network_graph
 from .co_citation_network_indicators import co_citation_network_indicators
 from .co_occurrence_associations import co_occurrence_associations
 from .co_occurrence_bubble_chart import co_occurrence_bubble_chart
+from .co_occurrence_chord_diagram import co_occurrence_chord_diagram
 from .co_occurrence_communities import co_occurrence_communities
 from .co_occurrence_degree_plot import co_occurrence_degree_plot
 from .co_occurrence_heatmap import co_occurrence_heatmap
