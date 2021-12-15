@@ -55,7 +55,7 @@ Columns
         column_coverage
         column_dynamics
         column_frequency
-        column_timeline_chart 
+        column_gantt_chart 
         column_global_citations
         column_trends
         column_wordcloud
