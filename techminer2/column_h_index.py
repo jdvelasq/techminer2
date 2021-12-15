@@ -6,7 +6,7 @@ Column H-index
 
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
->>> file_name = "/workspaces/techminer-api/sphinx/images/column_h_index.png"
+>>> file_name = "/workspaces/techminer2/sphinx/images/column_h_index.png"
 >>> column_h_index(column='iso_source_name', top_n=20, directory=directory).savefig(file_name)
 
 .. image:: images/column_h_index.png
