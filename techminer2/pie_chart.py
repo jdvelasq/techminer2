@@ -9,7 +9,7 @@ Pie Chart
 >>> pie_chart(
 ...     series=annual_indicators(directory).num_documents, 
 ...     darkness=annual_indicators(directory).global_citations,
-... ).savefig("/workspaces/techminer-api/sphinx/images/pie_chart.png")
+... ).savefig("/workspaces/techminer2/sphinx/images/pie_chart.png")
 
 
 .. image:: images/pie_chart.png
