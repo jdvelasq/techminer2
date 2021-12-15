@@ -13,10 +13,15 @@ based on the type of plots.
 .. toctree::
     :maxdepth: 1
 
-    extract_top_topics
-    extract_custom_topics
     extract_top_trending_topics
 
-*  `Column Timeline Chart <column_timeline_chart.html>`__.     
+
+
+*  `Column Timeline Chart <column_timeline_chart.html>`__.
+
+
+*  `Column Top Topics Chart <column_top_topics_chart.html>`__.
+
+*  `Column Horizontal Bar Chart <column_horizontal_bar_chart.html>`__.     
 
 *  `Column Word Cloud <column_word_cloud.html>`__.     
