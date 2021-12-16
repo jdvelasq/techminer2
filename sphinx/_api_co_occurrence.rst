@@ -33,3 +33,4 @@ Co-occurrence API
     :maxdepth: 1
 
     occurrence_matrix
+    occurrence_html
