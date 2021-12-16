@@ -140,6 +140,7 @@ Co-occurrence Matrix
     occurrence_bubble_chart
     occurrence_html
     occurrence_associations
+    occurrence_heatmap
 
 
 See `Co-occurrence API <_api_co_occurrence.html>`__
