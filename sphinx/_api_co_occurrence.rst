@@ -40,3 +40,4 @@ Co-occurrence API
     occurrence_html
     occurrence_bubble_chart
     occurrence_associations
+    occurrence_heatmap
