@@ -168,6 +168,7 @@ Clustering
 
     coupling_matrix
     coupling_network_graph  
+    coupling_network_degree_plot
 
 
 Conceptual Structure
