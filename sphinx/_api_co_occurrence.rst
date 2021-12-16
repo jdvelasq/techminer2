@@ -29,8 +29,13 @@ Co-occurrence API
     co_occurrence_indicators
 
 
+.. raw:: html
+
+   <hr style="height:2px;border-width:0;color:gray;background-color:black">
+
 .. toctree::
     :maxdepth: 1
 
     occurrence_matrix
     occurrence_html
+    occurrence_bubble_chart
