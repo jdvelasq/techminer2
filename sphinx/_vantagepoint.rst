@@ -137,6 +137,7 @@ Co-occurrence Matrix
     :maxdepth: 1  
 
     occurrence_matrix
+    occurrence_bubble_chart
     occurrence_html
 
 
