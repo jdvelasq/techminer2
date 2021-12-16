@@ -108,6 +108,7 @@ from .network_degree_plot import network_degree_plot
 from .network_indicators import network_indicators
 from .network_map import network_map
 from .network_plot import network_plot
+from .occurrence_html import occurrence_html
 from .occurrence_matrix import occurrence_matrix
 from .pie_chart import pie_chart
 from .source_dynamics import source_dynamics
