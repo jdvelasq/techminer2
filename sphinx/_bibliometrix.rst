@@ -167,7 +167,7 @@ Clustering
     :maxdepth: 1
 
     coupling_matrix
-    coupling_network  
+    coupling_network_graph  
 
 
 Conceptual Structure
