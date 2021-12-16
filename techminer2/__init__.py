@@ -62,6 +62,7 @@ from .correlation_map import correlation_map
 from .corresponding_authors_country import corresponding_authors_country
 from .country_scientific_production import country_scientific_production
 from .coupling_matrix import coupling_matrix
+from .coupling_network_degree_plot import coupling_network_degree_plot
 from .coupling_network_graph import coupling_network_graph
 from .create_thesaurus import create_thesaurus
 from .cross_corr_matrix import cross_corr_matrix
