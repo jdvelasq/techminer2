@@ -108,6 +108,7 @@ from .network_degree_plot import network_degree_plot
 from .network_indicators import network_indicators
 from .network_map import network_map
 from .network_plot import network_plot
+from .occurrence_associations import occurrence_associations
 from .occurrence_bubble_chart import occurrence_bubble_chart
 from .occurrence_html import occurrence_html
 from .occurrence_matrix import occurrence_matrix
