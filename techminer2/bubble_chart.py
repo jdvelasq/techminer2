@@ -113,9 +113,9 @@ def bubble_chart(
     for idx_column_label, column_label in enumerate(column_labels):
         for idx_index_label, row in enumerate(index_labels):
 
-            if matrix.iloc[idx_column_label][idx_index_label] != 0:
+            if matrix.iloc[idx_index_label][idx_column_label] != 0:
 
-                if darkness.iloc[idx_column_label][idx_index_label] >= 0.8 * mean_color:
+                if darkness.iloc[idx_index_label][idx_column_label] >= 0.8 * mean_color:
                     text_color = "w"
                 else:
                     text_color = "k"
@@ -123,10 +123,10 @@ def bubble_chart(
                 ax.text(
                     idx_column_label,
                     idx_index_label,
-                    "{}".format(matrix.iloc[idx_column_label][idx_index_label])
-                    if matrix.iloc[idx_column_label][idx_index_label].dtype == "int64"
+                    "{}".format(matrix.iloc[idx_index_label][idx_column_label])
+                    if matrix.iloc[idx_index_label][idx_column_label].dtype == "int64"
                     else "{:.2f}".format(
-                        matrix.iloc[idx_column_label][idx_index_label]
+                        matrix.iloc[idx_index_label][idx_column_label]
                     ),
                     va="center",
                     ha="center",
