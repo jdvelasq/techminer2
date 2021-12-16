@@ -137,6 +137,7 @@ Co-occurrence Matrix
     :maxdepth: 1  
 
     occurrence_matrix
+    occurrence_html
 
 
 See `Co-occurrence API <_api_co_occurrence.html>`__
