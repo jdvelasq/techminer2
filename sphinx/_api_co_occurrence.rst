@@ -39,3 +39,4 @@ Co-occurrence API
     occurrence_matrix
     occurrence_html
     occurrence_bubble_chart
+    occurrence_associations
