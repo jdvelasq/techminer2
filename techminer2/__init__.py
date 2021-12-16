@@ -61,8 +61,7 @@ from .core_sources import core_sources
 from .correlation_map import correlation_map
 from .corresponding_authors_country import corresponding_authors_country
 from .country_scientific_production import country_scientific_production
-from .coupling_by_column_matrix import coupling_by_column_matrix
-from .coupling_by_references_matrix import coupling_by_references_matrix
+from .coupling_matrix import coupling_matrix
 from .coupling_network import coupling_network
 from .create_thesaurus import create_thesaurus
 from .cross_corr_matrix import cross_corr_matrix
@@ -110,6 +109,7 @@ from .network_map import network_map
 from .network_plot import network_plot
 from .occurrence_associations import occurrence_associations
 from .occurrence_bubble_chart import occurrence_bubble_chart
+from .occurrence_heatmap import occurrence_heatmap
 from .occurrence_html import occurrence_html
 from .occurrence_matrix import occurrence_matrix
 from .pie_chart import pie_chart
