@@ -128,9 +128,9 @@ Co-occurrence Matrix
 
     co_occurrence_associations
     co_occurrence_bubble_chart
-    co_occurrence_heatmap
     co_occurrence_matrix 
     co_occurrence_matrix_chord_diagram
+    co_occurrence_matrix_heatmap
     co_occurrence_matrix_html
 
 
