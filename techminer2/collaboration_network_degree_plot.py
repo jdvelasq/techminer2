@@ -13,7 +13,7 @@ Collaboration Network / Degree Plot
 
 """
 
-from .co_occurrence_degree_plot import co_occurrence_degree_plot
+from .co_occurrence_network_degree_plot import co_occurrence_network_degree_plot
 
 
 def collaboration_network_degree_plot(
@@ -27,7 +27,7 @@ def collaboration_network_degree_plot(
     if column not in ["authors", "institutions", "countries"]:
         raise ValueError("The column must be 'authors', 'institutions' or 'countries'")
 
-    return co_occurrence_degree_plot(
+    return co_occurrence_network_degree_plot(
         column=column,
         min_occ=min_occ,
         normalization=normalization,
