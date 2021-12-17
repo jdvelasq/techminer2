@@ -14,7 +14,7 @@ Thematic Map / Degree Plot
 """
 
 
-from .co_occurrence_degree_plot import co_occurrence_degree_plot
+from .co_occurrence_network_degree_plot import co_occurrence_network_degree_plot
 
 
 def thematic_map_degree_plot(
@@ -24,7 +24,7 @@ def thematic_map_degree_plot(
     directory="./",
 ):
 
-    return co_occurrence_degree_plot(
+    return co_occurrence_network_degree_plot(
         column,
         min_occ=min_occ,
         normalization="association",
