@@ -1,5 +1,5 @@
 """
-Factorial analysis using MDS and agglomerative clustering --- data
+Factorial analysis using MDS and agglomerative clustering / Data
 ===============================================================================
 
 
