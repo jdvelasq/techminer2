@@ -4,9 +4,10 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Co-citation matrix &mdash; TechMiner --- API 0.0.0 documentation</title>
+  <title>Co-citation Matrix &mdash; TechMiner2 0.1.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -15,12 +16,14 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Co-citation network" href="co_citation_network.html" />
-    <link rel="prev" title="Factorial analysis using MDS and agglomerative clustering — silhouette scores" href="factorial_analysis_mds_silhouette_scores.html" /> 
+    <link rel="next" title="Main Path Network" href="main_path_network.html" />
+    <link rel="prev" title="Co-citation Network / Indicators" href="co_citation_network_indicators.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -28,10 +31,10 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> TechMiner --- API
+            <a href="index.html" class="icon icon-home"> TechMiner2
           </a>
               <div class="version">
-                0.0.0
+                0.1.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -51,21 +54,34 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="_user_data.html">Data</a></li>
 </ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_api_co_occurrence.html">Co-occurrence API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_api_columns.html">Columns API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_api_document_term.html">Document-Term API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_api_visualization.html">Visualization API</a></li>
+</ul>
 <p class="caption"><span class="caption-text">Software comparison</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="_vantagepoint.html">VantagePoint</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="_bibliometrix.html">Bibliometrix</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#data">Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#filter">Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#dataset">Dataset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#sources">Sources</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#authors">Authors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#documents">Documents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#clustering">Clustering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#conceptual-structure">Conceptual Structure</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="_bibliometrix.html#intellectual-structure">Intellectual Structure</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Co-citation matrix</a></li>
-<li class="toctree-l3"><a class="reference internal" href="co_citation_network.html">Co-citation network</a></li>
-<li class="toctree-l3"><a class="reference internal" href="main_path_network.html">Main path network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="co_citation_network_communities.html">Co-citation Network / Communities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="co_citation_network_degree_plot.html">Co-citation Network / Degree Plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="co_citation_network_graph.html">Co-citation Network / Graph</a></li>
+<li class="toctree-l3"><a class="reference internal" href="co_citation_network_indicators.html">Co-citation Network / Indicators</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Co-citation Matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="main_path_network.html">Main Path Network</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#social-structure">Social Structure</a></li>
@@ -74,19 +90,6 @@
 <li class="toctree-l1"><a class="reference internal" href="_scientopy.html">ScientoPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_tlab.html">T-Lab</a></li>
 </ul>
-<p class="caption"><span class="caption-text">API Reference</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="_api_document_term.html">Document-Term API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_co_occurrence.html">Co-occurrence API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_visualization.html">Visualization API</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Analysis tools</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="factorial_analysis_manifold.html">Factorial analysis (manifold)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="svd_tf_idf_matrix_map.html">SVD of the TF-IDF matrix</a></li>
-</ul>
 
         </div>
       </div>
@@ -94,7 +97,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">TechMiner --- API</a>
+          <a href="index.html">TechMiner2</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -103,7 +106,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="_bibliometrix.html">Bibliometrix</a> &raquo;</li>
-      <li>Co-citation matrix</li>
+      <li>Co-citation Matrix</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/co_citation_matrix.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -137,43 +140,28 @@
     text-align: unset;
 }
 </style>
-<span class="target" id="module-techminer.co_citation_matrix"></span><section id="co-citation-matrix">
-<h1>Co-citation matrix<a class="headerlink" href="#co-citation-matrix" title="Permalink to this headline"></a></h1>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer-api/data/&quot;</span>
+<span class="target" id="module-techminer2.co_citation_matrix"></span><section id="co-citation-matrix">
+<h1>Co-citation Matrix<a class="headerlink" href="#co-citation-matrix" title="Permalink to this headline"></a></h1>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer2/data/&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span> <span class="o">=</span> <span class="n">co_citation_matrix</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-<span class="go">                   1989-0000 2000-0000 2003-0002  ... 2020-0031 2020-0131 2020-0225</span>
-<span class="go">                       25830     9760      16860  ...     76        26        15</span>
-<span class="go">                          14        7         9   ...        11        11        6</span>
-<span class="go">1989-0000 25830 14      14.0       4.0       5.0  ...       1.0       0.0       0.0</span>
-<span class="go">2000-0000 9760  7        4.0       7.0       3.0  ...       1.0       0.0       1.0</span>
-<span class="go">2003-0002 16860 9        5.0       3.0       9.0  ...       2.0       1.0       1.0</span>
-<span class="go">2009-0013 876   9        4.0       1.0       4.0  ...       0.0       0.0       0.0</span>
-<span class="go">2013-0009 553   6        0.0       0.0       0.0  ...       1.0       0.0       0.0</span>
+<span class="go">document                                                                            Davis FD et al, 1989, MIS QUART MANAGE INF SYST  ... Goo JJ et al, 2020, J OPEN INNOV: TECHNOL MARK CO</span>
+<span class="go">global_citations                                                                                                              25830  ...                                             15</span>
+<span class="go">local_citations                                                                                                                  14  ...                                                6</span>
+<span class="go">document                                           global_citations local_citations                                                  ...</span>
+<span class="go">Davis FD et al, 1989, MIS QUART MANAGE INF SYST    25830            14                                                         14.0  ...                                               0.0</span>
+<span class="go">Venkatesh V et al, 2000, MANAGE SCI                9760             7                                                           4.0  ...                                               1.0</span>
+<span class="go">Venkatesh V et al, 2003, MIS QUART MANAGE INF SYST 16860            9                                                           5.0  ...                                               1.0</span>
+<span class="go">Lee M-C et al, 2009, ELECT COMMER RES APPL         876              9                                                           4.0  ...                                               0.0</span>
+<span class="go">Lin M et al, 2013, MANAGE SCI                      553              6                                                           0.0  ...                                               0.0</span>
 
 <span class="go">[5 rows x 50 columns]</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">co_citation_network</span> <span class="o">=</span> <span class="n">co_occurrence_network</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">network_communities</span><span class="p">(</span><span class="n">co_citation_network</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-<span class="go">cluster             CLUST_0             CLUST_1             CLUST_2</span>
-<span class="go">rn</span>
-<span class="go">0        2014-0003 01606:06  1989-0000 25830:14  2016-0044 00172:07</span>
-<span class="go">1        2013-0009 00553:06  2003-0002 16860:09  2017-0046 00146:15</span>
-<span class="go">2        2018-0020 00220:31  2000-0000 09760:07  2018-0054 00126:14</span>
-<span class="go">3        2018-0022 00213:38  2009-0013 00876:09  2018-0123 00067:08</span>
-<span class="go">4        2017-0038 00181:21  2013-0015 00452:06  2018-0134 00062:08</span>
-</pre></div>
-</div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer-api/sphinx/images/co_citation_network.png&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">network_plot</span><span class="p">(</span><span class="n">co_citation_network</span><span class="p">)</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
-</pre></div>
-</div>
-<a class="reference internal image-reference" href="_images/co_citation_network.png"><img alt="_images/co_citation_network.png" class="align-center" src="_images/co_citation_network.png" style="width: 700px;" /></a>
 <dl class="py function">
-<dt class="sig sig-object py" id="techminer.co_citation_matrix.co_citation_matrix">
-<span class="sig-prename descclassname"><span class="pre">techminer.co_citation_matrix.</span></span><span class="sig-name descname"><span class="pre">co_citation_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">top_n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer/co_citation_matrix.html#co_citation_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer.co_citation_matrix.co_citation_matrix" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="techminer2.co_citation_matrix.co_citation_matrix">
+<span class="sig-prename descclassname"><span class="pre">techminer2.co_citation_matrix.</span></span><span class="sig-name descname"><span class="pre">co_citation_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">top_n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer2/co_citation_matrix.html#co_citation_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer2.co_citation_matrix.co_citation_matrix" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </section>
@@ -182,8 +170,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="factorial_analysis_mds_silhouette_scores.html" class="btn btn-neutral float-left" title="Factorial analysis using MDS and agglomerative clustering — silhouette scores" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="co_citation_network.html" class="btn btn-neutral float-right" title="Co-citation network" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="co_citation_network_indicators.html" class="btn btn-neutral float-left" title="Co-citation Network / Indicators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="main_path_network.html" class="btn btn-neutral float-right" title="Main Path Network" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

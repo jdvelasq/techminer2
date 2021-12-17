@@ -4,9 +4,10 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>T-Lab &mdash; TechMiner --- API 0.0.0 documentation</title>
+  <title>T-Lab &mdash; TechMiner2 0.1.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -15,12 +16,14 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Abstract concordances" href="abstract_concordances.html" />
-    <link rel="prev" title="Extract top trending topics" href="extract_top_trending_topics.html" /> 
+    <link rel="next" title="Abstract Concordances" href="abstract_concordances.html" />
+    <link rel="prev" title="ScientoPy" href="_scientopy.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -28,10 +31,10 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> TechMiner --- API
+            <a href="index.html" class="icon icon-home"> TechMiner2
           </a>
               <div class="version">
-                0.0.0
+                0.1.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -51,6 +54,15 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="_user_data.html">Data</a></li>
 </ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_api_co_occurrence.html">Co-occurrence API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_api_columns.html">Columns API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_api_document_term.html">Document-Term API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_api_visualization.html">Visualization API</a></li>
+</ul>
 <p class="caption"><span class="caption-text">Software comparison</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="_vantagepoint.html">VantagePoint</a></li>
@@ -58,13 +70,8 @@
 <li class="toctree-l1"><a class="reference internal" href="_scientopy.html">ScientoPy</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">T-Lab</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#co-occurrence-analysis">Co-occurrence Analysis</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#word-associations">Word Associations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#co-word-analysis">Co-Word Analysis</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#comparison-between-word-pairs">Comparison between word pairs</a><ul class="simple">
-</ul>
-</li>
 <li class="toctree-l3"><a class="reference internal" href="#concordances">Concordances</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="abstract_concordances.html">Abstract concordances</a></li>
+<li class="toctree-l4"><a class="reference internal" href="abstract_concordances.html">Abstract Concordances</a></li>
 </ul>
 </li>
 </ul>
@@ -73,29 +80,17 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#comparative-analysis">Comparative Analysis</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="co_occurrence_svd_map.html">Co-occurrence SVD map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="co_occurrence_matrix_svd_map.html">Co-occurrence Matrix / SVD Map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tf_idf_svd_map.html">TF-IDF SVD Map</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#lexical-and-other-tools">Lexical and other tools</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="abstract_screening.html">Abstract screening</a></li>
+<li class="toctree-l3"><a class="reference internal" href="abstract_screening.html">Abstract Screening</a></li>
 <li class="toctree-l3"><a class="reference internal" href="abstract_summarization.html">Abstract Summarization</a></li>
 </ul>
 </li>
 </ul>
 </li>
-</ul>
-<p class="caption"><span class="caption-text">API Reference</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="_api_document_term.html">Document-Term API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_co_occurrence.html">Co-occurrence API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_visualization.html">Visualization API</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Analysis tools</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="factorial_analysis_manifold.html">Factorial analysis (manifold)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="svd_tf_idf_matrix_map.html">SVD of the TF-IDF matrix</a></li>
 </ul>
 
         </div>
@@ -104,7 +99,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">TechMiner --- API</a>
+          <a href="index.html">TechMiner2</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -148,26 +143,17 @@
 </style>
 <section id="t-lab">
 <h1>T-Lab<a class="headerlink" href="#t-lab" title="Permalink to this headline"></a></h1>
-<hr style="height:2px;border-width:0;color:gray;background-color:gray"><section id="co-occurrence-analysis">
+<hr style="height:4px;border-width:0;color:gray;background-color:black"><section id="co-occurrence-analysis">
 <h2>Co-occurrence Analysis<a class="headerlink" href="#co-occurrence-analysis" title="Permalink to this headline"></a></h2>
-<section id="word-associations">
-<h3>Word Associations<a class="headerlink" href="#word-associations" title="Permalink to this headline"></a></h3>
-<p>See <a class="reference external" href="_api_co_occurrence.html">Co-occurrence API</a></p>
-</section>
-<section id="co-word-analysis">
-<h3>Co-Word Analysis<a class="headerlink" href="#co-word-analysis" title="Permalink to this headline"></a></h3>
-<p>See <a class="reference external" href="_api_co_occurrence.html">Co-occurrence API</a></p>
-</section>
-<section id="comparison-between-word-pairs">
-<h3>Comparison between word pairs<a class="headerlink" href="#comparison-between-word-pairs" title="Permalink to this headline"></a></h3>
-<div class="toctree-wrapper compound">
+<p style="color:gray">Word Associations</p><p>See <a class="reference external" href="_api_co_occurrence.html">Co-occurrence API</a></p>
+<p style="color:gray">Co-word Analysis</p><p>See <a class="reference external" href="_api_co_occurrence.html">Co-occurrence API</a></p>
+<p style="color:gray">Comparison between word pairs</p><div class="toctree-wrapper compound">
 </div>
-</section>
 <section id="concordances">
 <h3>Concordances<a class="headerlink" href="#concordances" title="Permalink to this headline"></a></h3>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="abstract_concordances.html">Abstract concordances</a></li>
+<li class="toctree-l1"><a class="reference internal" href="abstract_concordances.html">Abstract Concordances</a></li>
 </ul>
 </div>
 <hr style="height:2px;border-width:0;color:gray;background-color:gray"></section>
@@ -197,7 +183,8 @@ keywords.</p></li>
 <h2>Comparative Analysis<a class="headerlink" href="#comparative-analysis" title="Permalink to this headline"></a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="co_occurrence_svd_map.html">Co-occurrence SVD map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="co_occurrence_matrix_svd_map.html">Co-occurrence Matrix / SVD Map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tf_idf_svd_map.html">TF-IDF SVD Map</a></li>
 </ul>
 </div>
 <hr style="height:2px;border-width:0;color:gray;background-color:gray"></section>
@@ -205,7 +192,7 @@ keywords.</p></li>
 <h2>Lexical and other tools<a class="headerlink" href="#lexical-and-other-tools" title="Permalink to this headline"></a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="abstract_screening.html">Abstract screening</a></li>
+<li class="toctree-l1"><a class="reference internal" href="abstract_screening.html">Abstract Screening</a></li>
 <li class="toctree-l1"><a class="reference internal" href="abstract_summarization.html">Abstract Summarization</a></li>
 </ul>
 </div>
@@ -216,8 +203,8 @@ keywords.</p></li>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="extract_top_trending_topics.html" class="btn btn-neutral float-left" title="Extract top trending topics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="abstract_concordances.html" class="btn btn-neutral float-right" title="Abstract concordances" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="_scientopy.html" class="btn btn-neutral float-left" title="ScientoPy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="abstract_concordances.html" class="btn btn-neutral float-right" title="Abstract Concordances" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

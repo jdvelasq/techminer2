@@ -4,9 +4,10 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bubble chart &mdash; TechMiner --- API 0.0.0 documentation</title>
+  <title>Bubble Chart &mdash; TechMiner2 0.1.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -15,12 +16,14 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Column chart" href="column_chart.html" />
-    <link rel="prev" title="Bar chart" href="bar_chart.html" /> 
+    <link rel="next" title="Dotted Gantt Chart" href="dotted_gantt_chart.html" />
+    <link rel="prev" title="Visualization API" href="_api_visualization.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -28,10 +31,10 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> TechMiner --- API
+            <a href="index.html" class="icon icon-home"> TechMiner2
           </a>
               <div class="version">
-                0.0.0
+                0.1.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -51,40 +54,37 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="_user_data.html">Data</a></li>
 </ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="_api_co_occurrence.html">Co-occurrence API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_api_columns.html">Columns API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_api_document_term.html">Document-Term API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_api_visualization.html">Visualization API</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Bubble Chart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dotted_gantt_chart.html">Dotted Gantt Chart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gantt_chart.html">Gantt Chart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="heat_map.html">Heat Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="horizontal_bar_chart.html">Horizontal Bar Chart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="line_chart.html">Line Chart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="map_chart.html">Map Chart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pie_chart.html">Pie Chart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stacked_bar_chart.html">Stacked bar chart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stacked_column_chart.html">Stacked column chart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tree_map.html">Tree Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vertical_bar_chart.html">Vertical Bar Chart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="word_cloud.html">World cloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="world_map.html">World Map</a></li>
+</ul>
+</li>
+</ul>
 <p class="caption"><span class="caption-text">Software comparison</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="_vantagepoint.html">VantagePoint</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_bibliometrix.html">Bibliometrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_scientopy.html">ScientoPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_tlab.html">T-Lab</a></li>
-</ul>
-<p class="caption"><span class="caption-text">API Reference</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="_api_document_term.html">Document-Term API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_co_occurrence.html">Co-occurrence API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="_api_visualization.html">Visualization API</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="bar_chart.html">Bar chart</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Bubble chart</a></li>
-<li class="toctree-l2"><a class="reference internal" href="column_chart.html">Column chart</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dotted_timeline_chart.html">Dotted timeline chart</a></li>
-<li class="toctree-l2"><a class="reference internal" href="heat_map.html">Heat map</a></li>
-<li class="toctree-l2"><a class="reference internal" href="line_chart.html">Line chart</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pie_chart.html">Pie chart</a></li>
-<li class="toctree-l2"><a class="reference internal" href="stacked_bar_chart.html">Stacked bar chart</a></li>
-<li class="toctree-l2"><a class="reference internal" href="stacked_column_chart.html">Stacked column chart</a></li>
-<li class="toctree-l2"><a class="reference internal" href="timeline_chart.html">Timeline chart</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tree_map.html">Tree map</a></li>
-<li class="toctree-l2"><a class="reference internal" href="word_cloud.html">World cloud</a></li>
-<li class="toctree-l2"><a class="reference internal" href="world_map.html">World map</a></li>
-</ul>
-</li>
-</ul>
-<p class="caption"><span class="caption-text">Analysis tools</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="factorial_analysis_manifold.html">Factorial analysis (manifold)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="svd_tf_idf_matrix_map.html">SVD of the TF-IDF matrix</a></li>
 </ul>
 
         </div>
@@ -93,7 +93,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">TechMiner --- API</a>
+          <a href="index.html">TechMiner2</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -102,7 +102,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="_api_visualization.html">Visualization API</a> &raquo;</li>
-      <li>Bubble chart</li>
+      <li>Bubble Chart</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/bubble_chart.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -136,50 +136,24 @@
     text-align: unset;
 }
 </style>
-<span class="target" id="module-techminer.bubble_chart"></span><section id="bubble-chart">
-<h1>Bubble chart<a class="headerlink" href="#bubble-chart" title="Permalink to this headline"></a></h1>
+<span class="target" id="module-techminer2.bubble_chart"></span><section id="bubble-chart">
+<h1>Bubble Chart<a class="headerlink" href="#bubble-chart" title="Permalink to this headline"></a></h1>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer2/data/&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer2/sphinx/images/bubble_chart.png&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span> <span class="o">=</span> <span class="n">co_occurrence_matrix</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s1">&#39;authors&#39;</span><span class="p">,</span> <span class="n">min_occ</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bubble_chart</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/bubble_chart.png"><img alt="_images/bubble_chart.png" class="align-center" src="_images/bubble_chart.png" style="width: 700px;" /></a>
 <dl class="py function">
-<dt class="sig sig-object py" id="techminer.bubble_chart.bubble_chart">
-<span class="sig-prename descclassname"><span class="pre">techminer.bubble_chart.</span></span><span class="sig-name descname"><span class="pre">bubble_chart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">darkness</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(6,</span> <span class="pre">6)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Greys'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid_lw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid_c</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gray'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid_ls</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">':'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">11</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer/bubble_chart.html#bubble_chart"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer.bubble_chart.bubble_chart" title="Permalink to this definition"></a></dt>
-<dd><p>Creates a gant activity plot from a dataframe.</p>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="p">{</span>
-<span class="gp">... </span>        <span class="s2">&quot;author 0&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
-<span class="gp">... </span>        <span class="s2">&quot;author 1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">14</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
-<span class="gp">... </span>        <span class="s2">&quot;author 2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-<span class="gp">... </span>        <span class="s2">&quot;author 3&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-<span class="gp">... </span>        <span class="s2">&quot;author 4&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-<span class="gp">... </span>    <span class="p">},</span>
-<span class="gp">... </span>    <span class="n">index</span> <span class="o">=</span><span class="p">[</span><span class="mi">2010</span><span class="p">,</span> <span class="mi">2011</span><span class="p">,</span> <span class="mi">2012</span><span class="p">,</span> <span class="mi">2013</span><span class="p">,</span> <span class="mi">2014</span><span class="p">,</span> <span class="mi">2015</span><span class="p">,</span> <span class="mi">2016</span><span class="p">]</span>
-<span class="gp">... </span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span>
-<span class="go">      author 0  author 1  author 2  author 3  author 4</span>
-<span class="go">2010         1        14         1         0         0</span>
-<span class="go">2011         2        13         5         0        10</span>
-<span class="go">2012         3        12         8         1         0</span>
-<span class="go">2013         4        11         9         1         4</span>
-<span class="go">2014         5        10         0         1         2</span>
-<span class="go">2015         6         9         0         0         0</span>
-<span class="go">2016         7         8         0         0         1</span>
-</pre></div>
-</div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="n">bubble</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">rmax</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;/workspaces/techminer/sphinx/images/bubbleplot0.png&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<a class="reference internal image-reference" href="images/bubbleplot0.png"><img alt="images/bubbleplot0.png" class="align-center" src="images/bubbleplot0.png" style="width: 700px;" /></a>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="n">bubble</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">rmax</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;/workspaces/techminer/sphinx/images/bubbleplot1.png&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<a class="reference internal image-reference" href="images/bubbleplot1.png"><img alt="images/bubbleplot1.png" class="align-center" src="images/bubbleplot1.png" style="width: 700px;" /></a>
-</dd></dl>
+<dt class="sig sig-object py" id="techminer2.bubble_chart.bubble_chart">
+<span class="sig-prename descclassname"><span class="pre">techminer2.bubble_chart.</span></span><span class="sig-name descname"><span class="pre">bubble_chart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">darkness</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(11,</span> <span class="pre">11)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Greys'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid_lw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid_c</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'gray'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid_ls</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">':'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer2/bubble_chart.html#bubble_chart"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer2.bubble_chart.bubble_chart" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="techminer.bubble_chart.collapse_text">
-<span class="sig-prename descclassname"><span class="pre">techminer.bubble_chart.</span></span><span class="sig-name descname"><span class="pre">collapse_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">w</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">35</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer/bubble_chart.html#collapse_text"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer.bubble_chart.collapse_text" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="techminer2.bubble_chart.collapse_text">
+<span class="sig-prename descclassname"><span class="pre">techminer2.bubble_chart.</span></span><span class="sig-name descname"><span class="pre">collapse_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">w</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">35</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer2/bubble_chart.html#collapse_text"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer2.bubble_chart.collapse_text" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </section>
@@ -188,8 +162,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="bar_chart.html" class="btn btn-neutral float-left" title="Bar chart" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="column_chart.html" class="btn btn-neutral float-right" title="Column chart" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="_api_visualization.html" class="btn btn-neutral float-left" title="Visualization API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="dotted_gantt_chart.html" class="btn btn-neutral float-right" title="Dotted Gantt Chart" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

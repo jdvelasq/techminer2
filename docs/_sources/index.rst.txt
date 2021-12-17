@@ -1,5 +1,5 @@
 Techminer API for the analysis of bibliographic datasets using Python
-=========================================================================================
+#########################################################################################
 
 **TechMiner-API** is a package for mining relevant information about topics related to Research and 
 Development (R&D) literature extracted from bibliographical databases as Scopus. **TechMiner-API**
@@ -41,6 +41,20 @@ package developed and tested in Python version 3.6.
 
     _user_data
 
+
+.. toctree::
+    :caption: API Reference
+    :hidden:
+    :maxdepth: 1
+
+    _api_co_occurrence
+    _api_columns
+    _api_document_term
+    _api_indicators
+    _api_network
+    _api_visualization
+
+
 .. toctree::
     :caption: Software comparison
     :hidden:
@@ -54,38 +68,14 @@ package developed and tested in Python version 3.6.
     
 
 
-
-.. toctree::
-    :caption: API Reference
-    :hidden:
-    :maxdepth: 1
-
-    _api_document_term
-    _api_co_occurrence
-    _api_indicators
-    _api_network
-    _api_visualization
-
-
-
-
-.. toctree::
-    :caption: Analysis tools
-    :hidden:
-    :maxdepth: 1
- 
-    factorial_analysis_manifold
-    svd_tf_idf_matrix_map
-    
-    
-
-
-
-* **Author**:
+**Author**:
 
     | Prof. Juan David Velásquez-Henao, MSc, PhD
     | Universidad Nacional de Colombia, Sede Medellín.
     | jdvelasq@unal.edu.co
 
 
+**Indices and Tables**
+
+* :ref:`modindex`
 

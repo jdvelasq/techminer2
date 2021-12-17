@@ -1,5 +1,8 @@
 Data
 -----------------------------------------------------------------------------------------
+.. raw:: html
+
+   <hr style="height:4px;border-width:0;color:gray;background-color:black">
 
 
 .. toctree::
@@ -7,4 +10,4 @@ Data
 
     import_scopus_file
     import_references
-    coverage
+    summary_view

@@ -4,9 +4,10 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Factorial analysis using MDS and agglomerative clustering — map &mdash; TechMiner --- API 0.0.0 documentation</title>
+  <title>Factorial analysis using MDS and agglomerative clustering / Map &mdash; TechMiner2 0.1.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -15,12 +16,14 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Factorial analysis using MDS and agglomerative clustering — silhouette scores" href="factorial_analysis_mds_silhouette_scores.html" />
-    <link rel="prev" title="Factorial analysis using MDS and agglomerative clustering — data" href="factorial_analysis_mds_data.html" /> 
+    <link rel="next" title="Factorial analysis using MDS and agglomerative clustering / Silhouette scores" href="factorial_analysis_mds_silhouette_scores.html" />
+    <link rel="prev" title="Factorial analysis using MDS and agglomerative clustering / Data" href="factorial_analysis_mds_data.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -28,10 +31,10 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> TechMiner --- API
+            <a href="index.html" class="icon icon-home"> TechMiner2
           </a>
               <div class="version">
-                0.0.0
+                0.1.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -51,25 +54,39 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="_user_data.html">Data</a></li>
 </ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_api_co_occurrence.html">Co-occurrence API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_api_columns.html">Columns API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_api_document_term.html">Document-Term API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_api_visualization.html">Visualization API</a></li>
+</ul>
 <p class="caption"><span class="caption-text">Software comparison</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="_vantagepoint.html">VantagePoint</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="_bibliometrix.html">Bibliometrix</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#data">Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#filter">Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#dataset">Dataset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#sources">Sources</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#authors">Authors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#documents">Documents</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#clustering">Clustering</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="_bibliometrix.html#conceptual-structure">Conceptual Structure</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="_bibliometrix.html#network-approach">Network Approach</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="_bibliometrix.html#factorial-approach">Factorial Approach</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="factorial_analysis_mds_communities.html">Factorial analysis using MDS and agglomerative clustering — communities</a></li>
-<li class="toctree-l4"><a class="reference internal" href="factorial_analysis_mds_data.html">Factorial analysis using MDS and agglomerative clustering — data</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">Factorial analysis using MDS and agglomerative clustering — map</a></li>
-<li class="toctree-l4"><a class="reference internal" href="factorial_analysis_mds_silhouette_scores.html">Factorial analysis using MDS and agglomerative clustering — silhouette scores</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="co_occurrence_network_communities.html">Co-occurrence Network / Communities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="co_occurrence_network_degree_plot.html">Co-occurrence Network / Degree Plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="co_occurrence_network_graph.html">Co-occurrence Network / Graph</a></li>
+<li class="toctree-l3"><a class="reference internal" href="co_occurrence_network_indicators.html">Co-occurrence Network / Indicators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="thematic_map_communities.html">Thematic Map / Communities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="thematic_map_degree_plot.html">Thematic Map / Degree Plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="thematic_map_indicators.html">Thematic Map / Indicators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="thematic_map_network.html">Thematic Map / Graph</a></li>
+<li class="toctree-l3"><a class="reference internal" href="factorial_analysis_mds_communities.html">Factorial analysis using MDS and agglomerative clustering / Communities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="factorial_analysis_mds_data.html">Factorial analysis using MDS and agglomerative clustering / Data</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Factorial analysis using MDS and agglomerative clustering / Map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="factorial_analysis_mds_silhouette_scores.html">Factorial analysis using MDS and agglomerative clustering / Silhouette scores</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#intellectual-structure">Intellectual Structure</a></li>
@@ -79,19 +96,6 @@
 <li class="toctree-l1"><a class="reference internal" href="_scientopy.html">ScientoPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_tlab.html">T-Lab</a></li>
 </ul>
-<p class="caption"><span class="caption-text">API Reference</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="_api_document_term.html">Document-Term API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_co_occurrence.html">Co-occurrence API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_visualization.html">Visualization API</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Analysis tools</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="factorial_analysis_manifold.html">Factorial analysis (manifold)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="svd_tf_idf_matrix_map.html">SVD of the TF-IDF matrix</a></li>
-</ul>
 
         </div>
       </div>
@@ -99,7 +103,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">TechMiner --- API</a>
+          <a href="index.html">TechMiner2</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -108,7 +112,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="_bibliometrix.html">Bibliometrix</a> &raquo;</li>
-      <li>Factorial analysis using MDS and agglomerative clustering — map</li>
+      <li>Factorial analysis using MDS and agglomerative clustering / Map</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/factorial_analysis_mds_map.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -142,8 +146,8 @@
     text-align: unset;
 }
 </style>
-<span class="target" id="module-techminer.factorial_analysis_mds_map"></span><section id="factorial-analysis-using-mds-and-agglomerative-clustering-map">
-<h1>Factorial analysis using MDS and agglomerative clustering — map<a class="headerlink" href="#factorial-analysis-using-mds-and-agglomerative-clustering-map" title="Permalink to this headline"></a></h1>
+<span class="target" id="module-techminer2.factorial_analysis_mds_map"></span><section id="factorial-analysis-using-mds-and-agglomerative-clustering-map">
+<h1>Factorial analysis using MDS and agglomerative clustering / Map<a class="headerlink" href="#factorial-analysis-using-mds-and-agglomerative-clustering-map" title="Permalink to this headline"></a></h1>
 <p>Factorial analysis based on the clustering applyed to the dimensionality reduction
 of the co-occurrence matrix.</p>
 <p>Based on the bibliometrix/R/conceptualStructure.R code.</p>
@@ -154,9 +158,9 @@ of the co-occurrence matrix.</p>
 <li><p>Apply the clustering algorithm.</p></li>
 <li><p>Visualize the results.</p></li>
 </ol>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer-api/data/&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer-api/sphinx/images/factorial_analysis_mds_map.png&quot;</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer2/data/&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer2/sphinx/images/factorial_analysis_mds_map.png&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">factorial_analysis_mds_map</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="s1">&#39;author_keywords&#39;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">min_occ</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
@@ -167,8 +171,8 @@ of the co-occurrence matrix.</p>
 </div>
 <a class="reference internal image-reference" href="_images/factorial_analysis_mds_map.png"><img alt="_images/factorial_analysis_mds_map.png" class="align-center" src="_images/factorial_analysis_mds_map.png" style="width: 700px;" /></a>
 <dl class="py function">
-<dt class="sig sig-object py" id="techminer.factorial_analysis_mds_map.factorial_analysis_mds_map">
-<span class="sig-prename descclassname"><span class="pre">techminer.factorial_analysis_mds_map.</span></span><span class="sig-name descname"><span class="pre">factorial_analysis_mds_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_occ</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_occ</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_clusters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(8,</span> <span class="pre">8)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer/factorial_analysis_mds_map.html#factorial_analysis_mds_map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer.factorial_analysis_mds_map.factorial_analysis_mds_map" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="techminer2.factorial_analysis_mds_map.factorial_analysis_mds_map">
+<span class="sig-prename descclassname"><span class="pre">techminer2.factorial_analysis_mds_map.</span></span><span class="sig-name descname"><span class="pre">factorial_analysis_mds_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_occ</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_occ</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_clusters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(8,</span> <span class="pre">8)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer2/factorial_analysis_mds_map.html#factorial_analysis_mds_map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer2.factorial_analysis_mds_map.factorial_analysis_mds_map" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </section>
@@ -177,8 +181,8 @@ of the co-occurrence matrix.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="factorial_analysis_mds_data.html" class="btn btn-neutral float-left" title="Factorial analysis using MDS and agglomerative clustering — data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="factorial_analysis_mds_silhouette_scores.html" class="btn btn-neutral float-right" title="Factorial analysis using MDS and agglomerative clustering — silhouette scores" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="factorial_analysis_mds_data.html" class="btn btn-neutral float-left" title="Factorial analysis using MDS and agglomerative clustering / Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="factorial_analysis_mds_silhouette_scores.html" class="btn btn-neutral float-right" title="Factorial analysis using MDS and agglomerative clustering / Silhouette scores" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

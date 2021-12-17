@@ -3,6 +3,7 @@ import os
 import pandas as pd
 
 from ..utils import logging
+from .porter_stemmer import porter_stemmer
 from .thesaurus import Thesaurus, load_file_as_dict, text_clustering
 
 
@@ -65,8 +66,27 @@ def create_keywords_thesaurus(directory):
         ##
         ##  Selects words to cluster
         ##
-        clustered_words = [word for key in dict_.keys() for word in dict_[key]]
+        clustered_words = [word for word in dict_.values()]
         words_list = [word for word in words_list if word not in clustered_words]
+
+        # if len(words_list) > 0:
+        #     dict_copy = dict_.copy()
+        #     dict_copy = {
+        #         key: [porter_stemmer(value) for value in dict_copy.keys()]
+        #         for key in dict_copy.keys()
+        #     }
+
+        #     words_to_remove = []
+
+        #     for word in words_list:
+        #         stemred_word = porter_stemmer(word)
+        #         for key in dict_copy.keys():
+        #             if stemred_word in dict_copy[key]:
+        #                 dict_[key].append(word)
+        #                 words_to_remove.append(word)
+        #                 break
+
+        #     words_list = [word for word in words_list if word not in words_to_remove]
 
         if len(words_list) > 0:
 

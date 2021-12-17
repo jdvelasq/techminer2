@@ -1,4 +1,0 @@
-.. automodule:: techminer2.column_wordcloud
-    :members:
-    :undoc-members:
-    :show-inheritance:

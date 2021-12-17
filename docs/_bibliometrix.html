@@ -4,9 +4,10 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bibliometrix &mdash; TechMiner --- API 0.0.0 documentation</title>
+  <title>Bibliometrix &mdash; TechMiner2 0.1.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -15,12 +16,14 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Main information" href="main_information.html" />
-    <link rel="prev" title="Factor matrix" href="factor_matrix.html" /> 
+    <link rel="next" title="User Filters" href="user_filters.html" />
+    <link rel="prev" title="Factor Matrix" href="factor_matrix.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -28,10 +31,10 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> TechMiner --- API
+            <a href="index.html" class="icon icon-home"> TechMiner2
           </a>
               <div class="version">
-                0.0.0
+                0.1.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -51,118 +54,102 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="_user_data.html">Data</a></li>
 </ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_api_co_occurrence.html">Co-occurrence API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_api_columns.html">Columns API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_api_document_term.html">Document-Term API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_api_visualization.html">Visualization API</a></li>
+</ul>
 <p class="caption"><span class="caption-text">Software comparison</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="_vantagepoint.html">VantagePoint</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Bibliometrix</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#data">Data</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="main_information.html">Main information</a></li>
-<li class="toctree-l3"><a class="reference internal" href="annual_scientific_production.html">Annual scientific production</a></li>
-<li class="toctree-l3"><a class="reference internal" href="average_citations_per_year.html">Average citations per year</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data">Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#filter">Filter</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user_filters.html">User Filters</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#filter">Filter</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="user_filters.html">User filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dataset">Dataset</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="main_information.html">Main Information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="annual_scientific_production.html">Annual Scientific Production</a></li>
+<li class="toctree-l3"><a class="reference internal" href="average_citations_per_year.html">Average Citations per Year</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#sources">Sources</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="most_relevant_sources.html">Most Relevant Sources</a></li>
-<li class="toctree-l3"><a class="reference internal" href="most_local_cited_sources.html">Most local cited sources</a></li>
-<li class="toctree-l3"><a class="reference internal" href="bradford_law.html">Bradford’s law</a></li>
-<li class="toctree-l3"><a class="reference internal" href="core_sources.html">Core sources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="most_local_cited_sources.html">Most Local Cited Sources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bradford_law.html">Bradford’s Law</a></li>
+<li class="toctree-l3"><a class="reference internal" href="core_sources.html">Core Sources</a></li>
 <li class="toctree-l3"><a class="reference internal" href="source_local_impact.html">Source Local Impact</a></li>
-<li class="toctree-l3"><a class="reference internal" href="source_dynamics.html">Source dynamics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source_dynamics.html">Source Dynamics</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#authors">Authors</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">Authors</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="most_relevant_authors.html">Most Relevant Authors</a></li>
-<li class="toctree-l4"><a class="reference internal" href="most_local_cited_authors.html">Most local cited authors</a></li>
-<li class="toctree-l4"><a class="reference internal" href="authors_production_over_time.html">Authors Production over Time</a></li>
-<li class="toctree-l4"><a class="reference internal" href="lotka_law.html">Lotka’s law</a></li>
-<li class="toctree-l4"><a class="reference internal" href="author_local_impact.html">Author Local Impact</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#affiliations">Affiliations</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="most_relevant_institutions.html">Most Relevant Institutions</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#countries">Countries</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="corresponding_authors_country.html">Corresponding author’s country</a></li>
-<li class="toctree-l4"><a class="reference internal" href="country_scientific_production.html">Country Scientific Production</a></li>
-<li class="toctree-l4"><a class="reference internal" href="most_global_cited_countries.html">Most Global Cited Countries</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="most_relevant_authors.html">Most Relevant Authors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="most_local_cited_authors.html">Most Local Cited Authors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="authors_production_over_time.html">Authors’ Production over Time</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lotka_law.html">Lotka’s Law</a></li>
+<li class="toctree-l3"><a class="reference internal" href="author_local_impact.html">Author Local Impact</a></li>
+<li class="toctree-l3"><a class="reference internal" href="most_relevant_institutions.html">Most Relevant Institutions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="corresponding_authors_country.html">Corresponding Author’s Country</a></li>
+<li class="toctree-l3"><a class="reference internal" href="country_scientific_production.html">Country Scientific Production</a></li>
+<li class="toctree-l3"><a class="reference internal" href="most_global_cited_countries.html">Most Global Cited Countries</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#documents">Documents</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id2">Documents</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="most_global_cited_documents.html">Most global cited documents</a></li>
-<li class="toctree-l4"><a class="reference internal" href="most_local_cited_documents.html">Most local cited documents</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#cited-references">Cited References</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="most_local_cited_references.html">Most local cited references</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#words">Words</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="most_frequent_words.html">Most Frequent Words</a></li>
-<li class="toctree-l4"><a class="reference internal" href="word_dynamics.html">Word dynamics</a></li>
-<li class="toctree-l4"><a class="reference internal" href="trend_topics.html">Trend Topics</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="most_global_cited_documents.html">Most Global Cited Documents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="most_local_cited_documents.html">Most Local Cited Documents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="most_local_cited_references.html">Most Local Cited References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="most_frequent_words.html">Most Frequent Words</a></li>
+<li class="toctree-l3"><a class="reference internal" href="word_dynamics.html">Word Dynamics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trend_topics.html">Trend Topics</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#clustering">Clustering</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="coupling_by_column_matrix.html">Coupling by column matrix</a></li>
-<li class="toctree-l3"><a class="reference internal" href="coupling_by_references_matrix.html">Coupling by references matrix</a></li>
-<li class="toctree-l3"><a class="reference internal" href="coupling_network.html">Coupling network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="coupling_matrix.html">Coupling Matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="coupling_network_communities.html">Coupling Network / Communities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="coupling_network_degree_plot.html">Coupling Network / Degree Plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="coupling_network_graph.html">Coupling Network / Graph</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#conceptual-structure">Conceptual Structure</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#network-approach">Network Approach</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="thematic_map_communities.html">Thematic map — communities</a></li>
-<li class="toctree-l4"><a class="reference internal" href="thematic_map_network.html">Thematic map — network</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#factorial-approach">Factorial Approach</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="factorial_analysis_mds_communities.html">Factorial analysis using MDS and agglomerative clustering — communities</a></li>
-<li class="toctree-l4"><a class="reference internal" href="factorial_analysis_mds_data.html">Factorial analysis using MDS and agglomerative clustering — data</a></li>
-<li class="toctree-l4"><a class="reference internal" href="factorial_analysis_mds_map.html">Factorial analysis using MDS and agglomerative clustering — map</a></li>
-<li class="toctree-l4"><a class="reference internal" href="factorial_analysis_mds_silhouette_scores.html">Factorial analysis using MDS and agglomerative clustering — silhouette scores</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="co_occurrence_network_communities.html">Co-occurrence Network / Communities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="co_occurrence_network_degree_plot.html">Co-occurrence Network / Degree Plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="co_occurrence_network_graph.html">Co-occurrence Network / Graph</a></li>
+<li class="toctree-l3"><a class="reference internal" href="co_occurrence_network_indicators.html">Co-occurrence Network / Indicators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="thematic_map_communities.html">Thematic Map / Communities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="thematic_map_degree_plot.html">Thematic Map / Degree Plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="thematic_map_indicators.html">Thematic Map / Indicators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="thematic_map_network.html">Thematic Map / Graph</a></li>
+<li class="toctree-l3"><a class="reference internal" href="factorial_analysis_mds_communities.html">Factorial analysis using MDS and agglomerative clustering / Communities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="factorial_analysis_mds_data.html">Factorial analysis using MDS and agglomerative clustering / Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="factorial_analysis_mds_map.html">Factorial analysis using MDS and agglomerative clustering / Map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="factorial_analysis_mds_silhouette_scores.html">Factorial analysis using MDS and agglomerative clustering / Silhouette scores</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#intellectual-structure">Intellectual Structure</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="co_citation_matrix.html">Co-citation matrix</a></li>
-<li class="toctree-l3"><a class="reference internal" href="co_citation_network.html">Co-citation network</a></li>
-<li class="toctree-l3"><a class="reference internal" href="main_path_network.html">Main path network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="co_citation_network_communities.html">Co-citation Network / Communities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="co_citation_network_degree_plot.html">Co-citation Network / Degree Plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="co_citation_network_graph.html">Co-citation Network / Graph</a></li>
+<li class="toctree-l3"><a class="reference internal" href="co_citation_network_indicators.html">Co-citation Network / Indicators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="co_citation_matrix.html">Co-citation Matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="main_path_network.html">Main Path Network</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#social-structure">Social Structure</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="collaboration_communities.html">Collaboration communities</a></li>
-<li class="toctree-l3"><a class="reference internal" href="collaboration_degree_plot.html">Collaboration degree plot</a></li>
-<li class="toctree-l3"><a class="reference internal" href="collaboration_network.html">Collaboration network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="collaboration_network_communities.html">Collaboration Network / Communities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="collaboration_network_degree_plot.html">Collaboration Network / Degree Plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="collaboration_network_graph.html">Collaboration Network / Graph</a></li>
+<li class="toctree-l3"><a class="reference internal" href="collaboration_network_indicators.html">Collaboration Network / Indicators</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="_scientopy.html">ScientoPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_tlab.html">T-Lab</a></li>
-</ul>
-<p class="caption"><span class="caption-text">API Reference</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="_api_document_term.html">Document-Term API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_co_occurrence.html">Co-occurrence API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_visualization.html">Visualization API</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Analysis tools</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="factorial_analysis_manifold.html">Factorial analysis (manifold)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="svd_tf_idf_matrix_map.html">SVD of the TF-IDF matrix</a></li>
 </ul>
 
         </div>
@@ -171,7 +158,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">TechMiner --- API</a>
+          <a href="index.html">TechMiner2</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -215,183 +202,189 @@
 </style>
 <section id="bibliometrix">
 <h1>Bibliometrix<a class="headerlink" href="#bibliometrix" title="Permalink to this headline"></a></h1>
-<hr style="height:2px;border-width:0;color:gray;background-color:gray"><section id="data">
+<hr style="height:4px;border-width:0;color:gray;background-color:black"><p>In this section, the library’s functionalities are presented in the structure used
+internally in Bibliometrix, in order to facilitate comparison. Likewise, functions have
+been created with the same names as the Bibliometrix menus to facilitate the use of the
+tool by users. It should be noted that the functions presented in this section cover only
+a part of TechMiner’s capabilities, and in this sense, Bibliometrix contains only a
+subset of the analytical capabilities of TechMiner.</p>
+<section id="data">
 <h2>Data<a class="headerlink" href="#data" title="Permalink to this headline"></a></h2>
-<blockquote>
-<div><div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="main_information.html">Main information</a></li>
-<li class="toctree-l1"><a class="reference internal" href="annual_scientific_production.html">Annual scientific production</a></li>
-<li class="toctree-l1"><a class="reference internal" href="average_citations_per_year.html">Average citations per year</a></li>
-</ul>
-</div>
-</div></blockquote>
-<hr style="height:2px;border-width:0;color:gray;background-color:gray"></section>
+<hr style="width:70%;height:2px;border-width:0;color:gray;background-color:black"><p>See <code class="docutils literal notranslate"><span class="pre">Import</span> <span class="pre">Scopus</span> <span class="pre">Files</span></code> in <a class="reference external" href="_user_data.html">Data</a>.</p>
+</section>
 <section id="filter">
 <h2>Filter<a class="headerlink" href="#filter" title="Permalink to this headline"></a></h2>
-<blockquote>
-<div><div class="toctree-wrapper compound">
+<hr style="width:70%;height:2px;border-width:0;color:gray;background-color:black"><div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="user_filters.html">User filters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_filters.html">User Filters</a></li>
 </ul>
 </div>
-</div></blockquote>
-<hr style="height:2px;border-width:0;color:gray;background-color:gray"></section>
+</section>
+<section id="dataset">
+<h2>Dataset<a class="headerlink" href="#dataset" title="Permalink to this headline"></a></h2>
+<hr style="width:70%;height:2px;border-width:0;color:gray;background-color:black"><div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="main_information.html">Main Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="annual_scientific_production.html">Annual Scientific Production</a></li>
+<li class="toctree-l1"><a class="reference internal" href="average_citations_per_year.html">Average Citations per Year</a></li>
+</ul>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TODO:</span> <span class="pre">Three-Fields</span> <span class="pre">Plot</span></code></p></li>
+</ul>
+</section>
 <section id="sources">
 <h2>Sources<a class="headerlink" href="#sources" title="Permalink to this headline"></a></h2>
-<blockquote>
-<div><div class="toctree-wrapper compound">
+<hr style="width:70%;height:2px;border-width:0;color:gray;background-color:black"><div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="most_relevant_sources.html">Most Relevant Sources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="most_local_cited_sources.html">Most local cited sources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="bradford_law.html">Bradford’s law</a></li>
-<li class="toctree-l1"><a class="reference internal" href="core_sources.html">Core sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="most_local_cited_sources.html">Most Local Cited Sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bradford_law.html">Bradford’s Law</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core_sources.html">Core Sources</a></li>
 <li class="toctree-l1"><a class="reference internal" href="source_local_impact.html">Source Local Impact</a></li>
-<li class="toctree-l1"><a class="reference internal" href="source_dynamics.html">Source dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source_dynamics.html">Source Dynamics</a></li>
 </ul>
 </div>
-</div></blockquote>
-<hr style="height:2px;border-width:0;color:gray;background-color:gray"></section>
+</section>
 <section id="authors">
 <h2>Authors<a class="headerlink" href="#authors" title="Permalink to this headline"></a></h2>
-<section id="id1">
-<h3>Authors<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
-<blockquote>
-<div><div class="toctree-wrapper compound">
+<hr style="width:70%;height:2px;border-width:0;color:gray;background-color:black"><p style="color:gray">Authors:</p><div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="most_relevant_authors.html">Most Relevant Authors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="most_local_cited_authors.html">Most local cited authors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="authors_production_over_time.html">Authors Production over Time</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lotka_law.html">Lotka’s law</a></li>
+<li class="toctree-l1"><a class="reference internal" href="most_local_cited_authors.html">Most Local Cited Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors_production_over_time.html">Authors’ Production over Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lotka_law.html">Lotka’s Law</a></li>
 <li class="toctree-l1"><a class="reference internal" href="author_local_impact.html">Author Local Impact</a></li>
 </ul>
 </div>
-</div></blockquote>
-</section>
-<section id="affiliations">
-<h3>Affiliations<a class="headerlink" href="#affiliations" title="Permalink to this headline"></a></h3>
-<blockquote>
-<div><div class="toctree-wrapper compound">
+<p style="color:gray">Affiliations:</p><div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="most_relevant_institutions.html">Most Relevant Institutions</a></li>
 </ul>
 </div>
-</div></blockquote>
-</section>
-<section id="countries">
-<h3>Countries<a class="headerlink" href="#countries" title="Permalink to this headline"></a></h3>
-<blockquote>
-<div><div class="toctree-wrapper compound">
+<p style="color:gray">Countries:</p><div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="corresponding_authors_country.html">Corresponding author’s country</a></li>
+<li class="toctree-l1"><a class="reference internal" href="corresponding_authors_country.html">Corresponding Author’s Country</a></li>
 <li class="toctree-l1"><a class="reference internal" href="country_scientific_production.html">Country Scientific Production</a></li>
 <li class="toctree-l1"><a class="reference internal" href="most_global_cited_countries.html">Most Global Cited Countries</a></li>
 </ul>
 </div>
-</div></blockquote>
-<hr style="height:2px;border-width:0;color:gray;background-color:gray"></section>
 </section>
 <section id="documents">
 <h2>Documents<a class="headerlink" href="#documents" title="Permalink to this headline"></a></h2>
-<section id="id2">
-<h3>Documents<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h3>
-<blockquote>
-<div><div class="toctree-wrapper compound">
+<hr style="width:70%;height:2px;border-width:0;color:gray;background-color:black"><p style="color:gray">Documents:</p><div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="most_global_cited_documents.html">Most global cited documents</a></li>
-<li class="toctree-l1"><a class="reference internal" href="most_local_cited_documents.html">Most local cited documents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="most_global_cited_documents.html">Most Global Cited Documents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="most_local_cited_documents.html">Most Local Cited Documents</a></li>
 </ul>
 </div>
-</div></blockquote>
-</section>
-<section id="cited-references">
-<h3>Cited References<a class="headerlink" href="#cited-references" title="Permalink to this headline"></a></h3>
-<blockquote>
-<div><div class="toctree-wrapper compound">
+<p style="color:gray">Cited References:</p><div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="most_local_cited_references.html">Most local cited references</a></li>
+<li class="toctree-l1"><a class="reference internal" href="most_local_cited_references.html">Most Local Cited References</a></li>
 </ul>
 </div>
-</div></blockquote>
-</section>
-<section id="words">
-<h3>Words<a class="headerlink" href="#words" title="Permalink to this headline"></a></h3>
-<blockquote>
-<div><div class="toctree-wrapper compound">
+<p style="color:gray">Words:</p><div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="most_frequent_words.html">Most Frequent Words</a></li>
-<li class="toctree-l1"><a class="reference internal" href="word_dynamics.html">Word dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="word_dynamics.html">Word Dynamics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trend_topics.html">Trend Topics</a></li>
 </ul>
 </div>
-</div></blockquote>
-<hr style="height:2px;border-width:0;color:gray;background-color:gray"></section>
 </section>
 <section id="clustering">
 <h2>Clustering<a class="headerlink" href="#clustering" title="Permalink to this headline"></a></h2>
-<blockquote>
-<div><div class="toctree-wrapper compound">
+<hr style="width:70%;height:2px;border-width:0;color:gray;background-color:black"><div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="coupling_by_column_matrix.html">Coupling by column matrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coupling_by_references_matrix.html">Coupling by references matrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coupling_network.html">Coupling network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coupling_matrix.html">Coupling Matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coupling_network_communities.html">Coupling Network / Communities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coupling_network_degree_plot.html">Coupling Network / Degree Plot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coupling_network_graph.html">Coupling Network / Graph</a></li>
 </ul>
 </div>
-</div></blockquote>
-<hr style="height:2px;border-width:0;color:gray;background-color:gray"></section>
+</section>
 <section id="conceptual-structure">
 <h2>Conceptual Structure<a class="headerlink" href="#conceptual-structure" title="Permalink to this headline"></a></h2>
-<section id="network-approach">
-<h3>Network Approach<a class="headerlink" href="#network-approach" title="Permalink to this headline"></a></h3>
-<blockquote>
-<div><p>See <a class="reference external" href="_api_co_occurrence.html">Co-occurrence API</a></p>
+<hr style="width:70%;height:2px;border-width:0;color:gray;background-color:black"><p style="color:gray">Network Approach:</p><div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="co_occurrence_network_communities.html">Co-occurrence Network / Communities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="co_occurrence_network_degree_plot.html">Co-occurrence Network / Degree Plot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="co_occurrence_network_graph.html">Co-occurrence Network / Graph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="co_occurrence_network_indicators.html">Co-occurrence Network / Indicators</a></li>
+</ul>
+</div>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="thematic_map_communities.html">Thematic map — communities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="thematic_map_network.html">Thematic map — network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thematic_map_communities.html">Thematic Map / Communities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thematic_map_degree_plot.html">Thematic Map / Degree Plot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thematic_map_indicators.html">Thematic Map / Indicators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thematic_map_network.html">Thematic Map / Graph</a></li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">
 </div>
-</div></blockquote>
-</section>
-<section id="factorial-approach">
-<h3>Factorial Approach<a class="headerlink" href="#factorial-approach" title="Permalink to this headline"></a></h3>
-<blockquote>
-<div><div class="toctree-wrapper compound">
+<p style="color:gray">Factorial Approach:</p><div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="factorial_analysis_mds_communities.html">Factorial analysis using MDS and agglomerative clustering — communities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="factorial_analysis_mds_data.html">Factorial analysis using MDS and agglomerative clustering — data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="factorial_analysis_mds_map.html">Factorial analysis using MDS and agglomerative clustering — map</a></li>
-<li class="toctree-l1"><a class="reference internal" href="factorial_analysis_mds_silhouette_scores.html">Factorial analysis using MDS and agglomerative clustering — silhouette scores</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_analysis_mds_communities.html">Factorial analysis using MDS and agglomerative clustering / Communities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_analysis_mds_data.html">Factorial analysis using MDS and agglomerative clustering / Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_analysis_mds_map.html">Factorial analysis using MDS and agglomerative clustering / Map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="factorial_analysis_mds_silhouette_scores.html">Factorial analysis using MDS and agglomerative clustering / Silhouette scores</a></li>
 </ul>
 </div>
-</div></blockquote>
-<hr style="height:2px;border-width:0;color:gray;background-color:gray"></section>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TODO:</span> <span class="pre">Factorial</span> <span class="pre">Approach</span> <span class="pre">/</span> <span class="pre">CA</span></code></p></li>
+</ul>
 </section>
 <section id="intellectual-structure">
 <h2>Intellectual Structure<a class="headerlink" href="#intellectual-structure" title="Permalink to this headline"></a></h2>
+<hr style="width:70%;height:2px;border-width:0;color:gray;background-color:black"><div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="co_citation_network_communities.html">Co-citation Network / Communities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="co_citation_network_degree_plot.html">Co-citation Network / Degree Plot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="co_citation_network_graph.html">Co-citation Network / Graph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="co_citation_network_indicators.html">Co-citation Network / Indicators</a></li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In addition, <strong>TechMiner</strong> implements the following functions:</p>
 <blockquote>
 <div><div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="co_citation_matrix.html">Co-citation matrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="co_citation_network.html">Co-citation network</a></li>
-<li class="toctree-l1"><a class="reference internal" href="main_path_network.html">Main path network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="co_citation_matrix.html">Co-citation Matrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main_path_network.html">Main Path Network</a></li>
 </ul>
 </div>
 </div></blockquote>
-<hr style="height:2px;border-width:0;color:gray;background-color:gray"></section>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TODO:</span> <span class="pre">Historiograph</span></code></p></li>
+</ul>
+</section>
 <section id="social-structure">
 <h2>Social Structure<a class="headerlink" href="#social-structure" title="Permalink to this headline"></a></h2>
-<blockquote>
-<div><div class="toctree-wrapper compound">
+<hr style="width:70%;height:2px;border-width:0;color:gray;background-color:black"><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A collaboration network is a generic co-occurrence network where the analized column
+is restricted to the following columns in the dataset:</p>
+<ul class="simple">
+<li><p>Authors.</p></li>
+<li><p>Institutions.</p></li>
+<li><p>Countries.</p></li>
+</ul>
+<p>As a consequence, many implemented plots and analysis are valid for analyzing a
+co-occurrence network, including heat maps and other plot types.</p>
+</div>
+<div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="collaboration_communities.html">Collaboration communities</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collaboration_degree_plot.html">Collaboration degree plot</a></li>
-<li class="toctree-l1"><a class="reference internal" href="collaboration_network.html">Collaboration network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collaboration_network_communities.html">Collaboration Network / Communities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collaboration_network_degree_plot.html">Collaboration Network / Degree Plot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collaboration_network_graph.html">Collaboration Network / Graph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collaboration_network_indicators.html">Collaboration Network / Indicators</a></li>
 </ul>
 </div>
-</div></blockquote>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TODO:</span> <span class="pre">Collaboration</span> <span class="pre">WorldMap</span></code></p></li>
+</ul>
 </section>
 </section>
 
@@ -399,8 +392,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="factor_matrix.html" class="btn btn-neutral float-left" title="Factor matrix" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="main_information.html" class="btn btn-neutral float-right" title="Main information" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="factor_matrix.html" class="btn btn-neutral float-left" title="Factor Matrix" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="user_filters.html" class="btn btn-neutral float-right" title="User Filters" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

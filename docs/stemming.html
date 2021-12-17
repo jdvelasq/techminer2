@@ -4,9 +4,10 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Stemming AND &amp; OR operators &mdash; TechMiner --- API 0.0.0 documentation</title>
+  <title>Stemming AND &amp; OR Operators &mdash; TechMiner2 0.1.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -15,12 +16,14 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Extract user keywords" href="extract_user_keywords.html" />
-    <link rel="prev" title="Find string" href="find_string.html" /> 
+    <link rel="next" title="Clean Institutions" href="clean_institutions.html" />
+    <link rel="prev" title="Find String" href="find_string.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -28,10 +31,10 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> TechMiner --- API
+            <a href="index.html" class="icon icon-home"> TechMiner2
           </a>
               <div class="version">
-                0.0.0
+                0.1.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -51,22 +54,29 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="_user_data.html">Data</a></li>
 </ul>
+<p class="caption"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_api_co_occurrence.html">Co-occurrence API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_api_columns.html">Columns API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_api_document_term.html">Document-Term API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_api_visualization.html">Visualization API</a></li>
+</ul>
 <p class="caption"><span class="caption-text">Software comparison</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="_vantagepoint.html">VantagePoint</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#view">View</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="_vantagepoint.html#columns">Columns</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="_vantagepoint.html#search">Search</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="find_string.html">Find string</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">Stemming  AND &amp; OR operators</a></li>
-<li class="toctree-l4"><a class="reference internal" href="extract_user_keywords.html">Extract user keywords</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#dataset">Dataset</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="_vantagepoint.html#search">Search</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="find_string.html">Find String</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Stemming  AND &amp; OR Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="extract_user_keywords.html">Extract User Keywords</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="_vantagepoint.html#thesaurus">Thesaurus</a></li>
-<li class="toctree-l3"><a class="reference internal" href="_vantagepoint.html#id1">Columns</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#co-occurrence-analysis">Co-occurrence Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#thesaurus">Thesaurus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#column-report-charts">Column (Report) Charts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#co-occurrence-matrix">Co-occurrence Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#occurrence-matrix">Occurrence Matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#correlation-analysis">Correlation Analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#factor-analysis">Factor Analysis</a></li>
 </ul>
@@ -75,19 +85,6 @@
 <li class="toctree-l1"><a class="reference internal" href="_scientopy.html">ScientoPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_tlab.html">T-Lab</a></li>
 </ul>
-<p class="caption"><span class="caption-text">API Reference</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="_api_document_term.html">Document-Term API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_co_occurrence.html">Co-occurrence API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_visualization.html">Visualization API</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Analysis tools</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="factorial_analysis_manifold.html">Factorial analysis (manifold)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="svd_tf_idf_matrix_map.html">SVD of the TF-IDF matrix</a></li>
-</ul>
 
         </div>
       </div>
@@ -95,7 +92,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">TechMiner --- API</a>
+          <a href="index.html">TechMiner2</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -104,7 +101,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="_vantagepoint.html">VantagePoint</a> &raquo;</li>
-      <li>Stemming  AND &amp; OR operators</li>
+      <li>Stemming  AND &amp; OR Operators</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/stemming.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -138,8 +135,8 @@
     text-align: unset;
 }
 </style>
-<span class="target" id="module-techminer.stemming"></span><section id="stemming-and-or-operators">
-<h1>Stemming  AND &amp; OR operators<a class="headerlink" href="#stemming-and-or-operators" title="Permalink to this headline"></a></h1>
+<span class="target" id="module-techminer2.stemming"></span><section id="stemming-and-or-operators">
+<h1>Stemming  AND &amp; OR Operators<a class="headerlink" href="#stemming-and-or-operators" title="Permalink to this headline"></a></h1>
 <p>Searchs in the terms of a column using stemming</p>
 <p><strong>Algorithm</strong>:</p>
 <blockquote>
@@ -150,8 +147,8 @@
 <li><p>searches the list for matches of the stems using AND or OR operator.</p></li>
 </ol>
 </div></blockquote>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer-api/data/&quot;</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer2/data/&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">stemming_and</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="s2">&quot;author_keywords&quot;</span><span class="p">,</span> <span class="s2">&quot;business model&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 <span class="go">51             business model</span>
 <span class="go">107    fintech business model</span>
@@ -179,13 +176,13 @@
 </pre></div>
 </div>
 <dl class="py function">
-<dt class="sig sig-object py" id="techminer.stemming.stemming_and">
-<span class="sig-prename descclassname"><span class="pre">techminer.stemming.</span></span><span class="sig-name descname"><span class="pre">stemming_and</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stemmer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'porter'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">';</span> <span class="pre">'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer/stemming.html#stemming_and"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer.stemming.stemming_and" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="techminer2.stemming.stemming_and">
+<span class="sig-prename descclassname"><span class="pre">techminer2.stemming.</span></span><span class="sig-name descname"><span class="pre">stemming_and</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stemmer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'porter'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">';</span> <span class="pre">'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer2/stemming.html#stemming_and"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer2.stemming.stemming_and" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="techminer.stemming.stemming_or">
-<span class="sig-prename descclassname"><span class="pre">techminer.stemming.</span></span><span class="sig-name descname"><span class="pre">stemming_or</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stemmer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'porter'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">';</span> <span class="pre">'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer/stemming.html#stemming_or"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer.stemming.stemming_or" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="techminer2.stemming.stemming_or">
+<span class="sig-prename descclassname"><span class="pre">techminer2.stemming.</span></span><span class="sig-name descname"><span class="pre">stemming_or</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stemmer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'porter'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">';</span> <span class="pre">'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer2/stemming.html#stemming_or"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer2.stemming.stemming_or" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </section>
@@ -194,8 +191,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="find_string.html" class="btn btn-neutral float-left" title="Find string" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="extract_user_keywords.html" class="btn btn-neutral float-right" title="Extract user keywords" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="find_string.html" class="btn btn-neutral float-left" title="Find String" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="clean_institutions.html" class="btn btn-neutral float-right" title="Clean Institutions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
