@@ -8,4 +8,5 @@ from .load_stopwords import load_stopwords
 from .main_path import MainPath
 from .map import map_
 from .print_documents import print_documents
+from .records2documents import records2documents
 from .save_documents import save_documents
