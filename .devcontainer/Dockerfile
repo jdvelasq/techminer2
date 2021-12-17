@@ -61,8 +61,8 @@ RUN pip3 --disable-pip-version-check --no-cache-dir install \
     textblob==0.15.3 \
     wordcloud==1.5.0 
 
-RUN python3 -c "import nltk; nltk.download('punkt')"
-# RUN python3 -c "import nltk; nltk.download('stopwords')"
+RUN python3 -c "import nltk; nltk.download('punkt'); nltk.download('brown'); nltk.download('averaged_perceptron_tagger'); nltk.download('stopwords')"
+
 
 # packages not installed in colab
 RUN pip3 --disable-pip-version-check --no-cache-dir install \
