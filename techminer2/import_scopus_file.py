@@ -51,6 +51,7 @@ import numpy as np
 import pandas as pd
 import yaml
 from nltk.tokenize import sent_tokenize
+from textblob import TextBlob
 from tqdm import tqdm
 
 from .clean_institutions import clean_institutions
@@ -128,6 +129,13 @@ def _process_abstract_column(documents):
         documents.abstract = documents.abstract.map(
             lambda x: x[0 : x.find("\u00a9")] if not pd.isna(x) else x
         )
+        documents = documents.assign(
+            raw_nlp_abstract=documents.abstract.map(
+                lambda x: "; ".join(TextBlob(x).noun_phrases)
+                if pd.isna(x) is False
+                else x
+            )
+        )
     return documents
 
 
@@ -166,6 +174,11 @@ def _process_document_title_column(documents):
     documents = documents.copy()
     documents.document_title = documents.document_title.map(
         lambda x: x[0 : x.find("[")] if pd.isna(x) is False and x[-1] == "]" else x
+    )
+    documents = documents.assign(
+        raw_nlp_document_title=documents.document_title.map(
+            lambda x: "; ".join(TextBlob(x).noun_phrases) if pd.isna(x) is False else x
+        )
     )
     return documents
 
@@ -215,20 +228,88 @@ def _process_index_keywords_column(documents):
 
 
 def _create_keywords_column(documents):
-    if (
-        "raw_index_keywords" in documents.columns
-        and "raw_author_keywords" in documents.columns
-    ):
-        raw_author_keywords = documents.raw_author_keywords.copy()
-        raw_author_keywords = raw_author_keywords.str.split("; ")
-        raw_index_keywords = documents.raw_index_keywords.copy()
-        raw_index_keywords = raw_index_keywords.str.split("; ")
+    # -----------------------------------------------------------------------------------
+    def augment_list(documents, topics):
+        documents = documents.copy()
+        topics = topics.str.split(";")
+        topics = topics.map(
+            lambda x: [w.strip() for w in x] if isinstance(x, list) else x
+        )
         documents = documents.assign(
-            raw_keywords=raw_author_keywords + raw_index_keywords
+            raw_keywords=documents.raw_keywords
+            + topics.map(lambda x: x if isinstance(x, list) else [])
         )
-        documents.raw_keywords = documents.raw_keywords.map(
-            lambda x: "; ".join(x) if isinstance(x, list) else x
+        return documents
+
+    # -----------------------------------------------------------------------------------
+    documents = documents.assign(raw_keywords=[[] for _ in range(len(documents))])
+
+    if "raw_index_keywords" in documents.columns:
+        documents = augment_list(
+            documents=documents, topics=documents.raw_index_keywords.copy()
         )
+
+    if "raw_author_keywords" in documents.columns:
+        documents = augment_list(
+            documents=documents, topics=documents.raw_author_keywords.copy()
+        )
+
+    documents.raw_keywords = documents.raw_keywords.map(
+        lambda x: "; ".join(sorted(set(x))) if isinstance(x, list) else x
+    )
+
+    documents.raw_keywords = documents.raw_keywords.map(
+        lambda x: pd.NA if len(x) == 0 else x
+    )
+
+    return documents
+
+
+def _create_nlp_phrases_column(documents):
+    # -----------------------------------------------------------------------------------
+    def augment_list(documents, topics):
+        documents = documents.copy()
+        topics = topics.str.split(";")
+        topics = topics.map(
+            lambda x: [w.strip() for w in x] if isinstance(x, list) else x
+        )
+        documents = documents.assign(
+            raw_nlp_phrases=documents.raw_nlp_phrases
+            + topics.map(lambda x: x if isinstance(x, list) else [])
+        )
+        return documents
+
+    # -----------------------------------------------------------------------------------
+    documents = documents.assign(raw_nlp_phrases=[[] for _ in range(len(documents))])
+
+    if "raw_index_keywords" in documents.columns:
+        documents = augment_list(
+            documents=documents, topics=documents.raw_index_keywords.copy()
+        )
+
+    if "raw_author_keywords" in documents.columns:
+        documents = augment_list(
+            documents=documents, topics=documents.raw_author_keywords.copy()
+        )
+
+    if "raw_nlp_document_title" in documents.columns:
+        documents = augment_list(
+            documents=documents, topics=documents.raw_nlp_document_title.copy()
+        )
+
+    if "raw_nlp_abstract" in documents.columns:
+        documents = augment_list(
+            documents=documents, topics=documents.raw_nlp_abstract.copy()
+        )
+
+    documents.raw_nlp_phrases = documents.raw_nlp_phrases.map(
+        lambda x: "; ".join(sorted(set(x))) if isinstance(x, list) else x
+    )
+
+    documents.raw_nlp_phrases = documents.raw_nlp_phrases.map(
+        lambda x: pd.NA if len(x) == 0 else x
+    )
+
     return documents
 
 
@@ -760,6 +841,7 @@ def import_scopus_file(
     # -----------------------------------------------------------------------------------
     documents = _delete_and_rename_columns(documents)
     documents = _process_abstract_column(documents)
+    documents = _process_document_title_column(documents)
     documents = _remove_accents(documents)
     documents = _process_authors_id_column(documents)
     documents = _process_raw_authors_names_column(documents)
@@ -782,7 +864,7 @@ def import_scopus_file(
     documents = _process_author_keywords_column(documents)
     documents = _process_index_keywords_column(documents)
     documents = _create_keywords_column(documents)
-    documents = _process_document_title_column(documents)
+    documents = _create_nlp_phrases_column(documents)
     documents = _process_global_citations_column(documents)
     documents = _process_global_references_column(documents)
     documents = _process_eissn_column(documents)
