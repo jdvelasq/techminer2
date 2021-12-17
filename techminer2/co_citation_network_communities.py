@@ -5,13 +5,15 @@ Co-citation Network / Communities
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
 >>> co_citation_network_communities(directory=directory).head()
-cluster             CLUST_0             CLUST_1             CLUST_2
-rn                                                                 
-0        2014-0003 01606:06  1989-0000 25830:14  2016-0044 00172:07
-1        2013-0009 00553:06  2003-0002 16860:09  2017-0046 00146:15
-2        2018-0020 00220:31  2000-0000 09760:07  2018-0054 00126:14
-3        2018-0022 00213:38  2009-0013 00876:09  2018-0123 00067:08
-4        2017-0038 00181:21  2013-0015 00452:06  2018-0134 00062:08
+cluster                                          CLUST_0  ...                                            CLUST_2
+rn                                                        ...                                                   
+0        Mollick E et al, 2014, J BUS VENTURING 01606:06  ...  Davis FD et al, 1989, MIS QUART MANAGE INF SYS...
+1                  Lee I et al, 2018, BUS HORIZ 00213:38  ...  Venkatesh V et al, 2003, MIS QUART MANAGE INF ...
+2              Gomber P et al, 2017, J BUS ECON 00181:21  ...       Venkatesh V et al, 2000, MANAGE SCI 09760:07
+3        Schueffel P et al, 2016, J INNOV MANAG 00106:13  ...  Lee M-C et al, 2009, ELECT COMMER RES APPL 008...
+4         Leong C et al, 2017, INT J INF MANAGE 00101:16  ...             Lin M et al, 2013, MANAGE SCI 00553:06
+<BLANKLINE>
+[5 rows x 3 columns]
 
 """
 
