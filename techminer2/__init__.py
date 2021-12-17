@@ -93,6 +93,7 @@ from .lotka_law import lotka_law
 from .main_information import main_information
 from .main_path_network import main_path_network
 from .map_chart import map_chart
+from .matrix_associations import matrix_associations
 from .most_frequent_words import most_frequent_words
 from .most_global_cited_countries import most_global_cited_countries
 from .most_global_cited_documents import most_global_cited_documents
@@ -109,11 +110,11 @@ from .network_degree_plot import network_degree_plot
 from .network_indicators import network_indicators
 from .network_map import network_map
 from .network_plot import network_plot
-from .occurrence_associations import occurrence_associations
 from .occurrence_bubble_chart import occurrence_bubble_chart
-from .occurrence_heatmap import occurrence_heatmap
-from .occurrence_html import occurrence_html
 from .occurrence_matrix import occurrence_matrix
+from .occurrence_matrix_associations import occurrence_matrix_associations
+from .occurrence_matrix_heatmap import occurrence_matrix_heatmap
+from .occurrence_matrix_html import occurrence_matrix_html
 from .pie_chart import pie_chart
 from .source_dynamics import source_dynamics
 from .source_local_impact import source_local_impact
