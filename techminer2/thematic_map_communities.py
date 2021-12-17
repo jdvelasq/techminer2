@@ -25,7 +25,7 @@ rn                                   ...
 """
 
 
-from .co_occurrence_communities import co_occurrence_communities
+from .co_occurrence_network_communities import co_occurrence_network_communities
 
 
 def thematic_map_communities(
@@ -34,7 +34,7 @@ def thematic_map_communities(
     directory="./",
 ):
 
-    return co_occurrence_communities(
+    return co_occurrence_network_communities(
         column=column,
         min_occ=min_occ,
         max_occ=None,
