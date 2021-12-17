@@ -21,7 +21,7 @@ blockchain                          17               149  ...   0.621212  0.0310
 """
 
 
-from .co_occurrence_indicators import co_occurrence_indicators
+from .co_occurrence_network_indicators import co_occurrence_network_indicators
 
 
 def thematic_map_indicators(
@@ -30,7 +30,7 @@ def thematic_map_indicators(
     directory="./",
 ):
 
-    return co_occurrence_indicators(
+    return co_occurrence_network_indicators(
         column,
         min_occ=min_occ,
         normalization="association",
