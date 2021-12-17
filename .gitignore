@@ -151,3 +151,6 @@ data/stopwords.txt
 data/test_thesaurus.txt
 data/top_documents.txt
 data/keywords copy.txt
+data/---natalia-prins---raw-documents.csv
+data/--raw-documents.csv
+data/--raw-references.csv
