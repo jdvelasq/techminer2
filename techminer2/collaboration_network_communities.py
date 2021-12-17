@@ -15,7 +15,7 @@ rn                          ...
 [4 rows x 20 columns]
 
 """
-from .co_occurrence_communities import co_occurrence_communities
+from .co_occurrence_network_communities import co_occurrence_network_communities
 
 
 def collaboration_network_communities(
@@ -29,7 +29,7 @@ def collaboration_network_communities(
     if column not in ["authors", "institutions", "countries"]:
         raise ValueError("The column must be 'authors', 'institutions' or 'countries'")
 
-    return co_occurrence_communities(
+    return co_occurrence_network_communities(
         column=column,
         min_occ=min_occ,
         normalization=normalization,
