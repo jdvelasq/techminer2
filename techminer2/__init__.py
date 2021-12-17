@@ -20,7 +20,6 @@ from .co_citation_network_communities import co_citation_network_communities
 from .co_citation_network_degree_plot import co_citation_network_degree_plot
 from .co_citation_network_graph import co_citation_network_graph
 from .co_citation_network_indicators import co_citation_network_indicators
-from .co_occurrence_associations import co_occurrence_associations
 from .co_occurrence_bubble_chart import co_occurrence_bubble_chart
 from .co_occurrence_chord_diagram import co_occurrence_chord_diagram
 from .co_occurrence_communities import co_occurrence_communities
@@ -31,6 +30,7 @@ from .co_occurrence_indicators import co_occurrence_indicators
 from .co_occurrence_item_associations import co_occurrence_item_associations
 from .co_occurrence_manifold import co_occurrence_manifold
 from .co_occurrence_matrix import co_occurrence_matrix
+from .co_occurrence_matrix_associations import co_occurrence_matrix_associations
 from .co_occurrence_matrix_svd_map import co_occurrence_matrix_svd_map
 from .co_occurrence_mds_map import co_occurrence_mds_map
 from .co_occurrence_network import co_occurrence_network
