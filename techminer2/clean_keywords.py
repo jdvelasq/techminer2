@@ -8,10 +8,12 @@ the same directory as the documents.csv file.
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
 >>> clean_keywords(directory)
-2021-11-08 18:48:08 - INFO - Applying thesaurus to 'raw_author_keywords' column ...
-2021-11-08 18:48:08 - INFO - Applying thesaurus to 'raw_index_keywords' column...
-2021-11-08 18:48:08 - INFO - Applying thesaurus to 'raw_keywords' column...
-2021-11-08 18:48:10 - INFO - The thesaurus was applied to keywords.
+- INFO - Applying thesaurus to 'raw_author_keywords' column ...
+- INFO - Applying thesaurus to 'raw_index_keywords' column...
+- INFO - Applying thesaurus to 'raw_nlp_document_title' column...
+- INFO - Applying thesaurus to 'raw_nlp_abstract' column...
+- INFO - Applying thesaurus to 'raw_nlp_phrases' column...
+- INFO - The thesaurus was applied to all keywords.
 
 
 """
@@ -69,24 +71,21 @@ def clean_keywords(directory):
         logging.info("Applying thesaurus to 'raw_keywords' column...")
         documents["keywords"] = map_(documents, "raw_keywords", th.apply_as_dict)
 
-    #
-    # Title keywords
-    #
-    if "title_keywords" in documents.columns:
-        documents["title_keywords_cleaned"] = map_(
-            documents, "title_keywords", th.apply_as_dict
+    if "raw_nlp_document_title" in documents.columns:
+        logging.info("Applying thesaurus to 'raw_nlp_document_title' column...")
+        documents["nlp_document_title"] = map_(
+            documents, "raw_nlp_document_title", th.apply_as_dict
         )
 
-    #
-    # Abstract
-    #
-    for column in [
-        "abstract_author_keywords",
-        "abstract_index_keywords",
-        "abstract_keywords",
-    ]:
-        if column in documents.columns:
-            documents[column + "_cl"] = map_(documents, column, th.apply_as_dict)
+    if "raw_nlp_abstract" in documents.columns:
+        logging.info("Applying thesaurus to 'raw_nlp_abstract' column...")
+        documents["nlp_abstract"] = map_(
+            documents, "raw_nlp_abstract", th.apply_as_dict
+        )
+
+    if "raw_nlp_phrases" in documents.columns:
+        logging.info("Applying thesaurus to 'raw_nlp_phrases' column...")
+        documents["nlp_phrases"] = map_(documents, "raw_nlp_phrases", th.apply_as_dict)
 
     #
     # Saves!
