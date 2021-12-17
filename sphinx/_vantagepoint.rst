@@ -127,7 +127,7 @@ Co-occurrence Matrix
     :maxdepth: 1
 
     co_occurrence_matrix 
-    co_occurrence_html
+    co_occurrence_matrix_html
     co_occurrence_associations
     co_occurrence_bubble_chart
     co_occurrence_heatmap
