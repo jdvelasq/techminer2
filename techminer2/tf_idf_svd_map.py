@@ -45,7 +45,7 @@ def tf_idf_svd_map(
 
     tf_idf_matrix = tf_idf_matrix.transpose()
 
-    return co_occurrence_svd_map(
+    return co_occurrence_matrix_svd_map(
         tf_idf_matrix,
         max_terms=max_terms,
         dim_x=dim_x,
