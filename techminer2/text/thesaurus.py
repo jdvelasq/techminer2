@@ -70,6 +70,15 @@ def text_clustering(x, name_strategy="mostfrequent", key="porter", transformer=N
             x["word_alt"] = x["word_alt"].map(lambda w: w.replace(w1, w2))
 
     #
+    # words with hyphen
+    #
+    keywords_with_hypen = x.word_alt[x.word_alt.map(lambda w: "-" in w)]
+    keywords_without_hypen = keywords_with_hypen.map(lambda w: w.replace("-", ""))
+    for w1, w2 in zip(keywords_without_hypen, keywords_with_hypen):
+        if w1 in x.word.tolist():
+            x["word_alt"] = x["word_alt"].map(lambda w: w.replace(w1, w2))
+
+    #
     # British to american english
     #
     module_path = dirname(__file__)
@@ -89,7 +98,7 @@ def text_clustering(x, name_strategy="mostfrequent", key="porter", transformer=N
     elif key == "porter":
         f = porter_stemmer
     else:
-        f = stemmer_snowball
+        f = snowball_stemmer
     x["key"] = x.word_alt.map(f)
 
     #
