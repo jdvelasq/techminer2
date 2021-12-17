@@ -58,39 +58,26 @@ def create_keywords_thesaurus(directory):
 
     if os.path.isfile(thesaurus_file):
 
-        ##
-        ##  Loads existent thesaurus
-        ##
+        #  Loads existent thesaurus
         dict_ = load_file_as_dict(thesaurus_file)
 
-        ##
-        ##  Selects words to cluster
-        ##
+        #  Selects the new words to cluster
         clustered_words = [word for word in dict_.values()]
         words_list = [word for word in words_list if word not in clustered_words]
-
-        # if len(words_list) > 0:
-        #     dict_copy = dict_.copy()
-        #     dict_copy = {
-        #         key: [porter_stemmer(value) for value in dict_copy.keys()]
-        #         for key in dict_copy.keys()
-        #     }
-
-        #     words_to_remove = []
-
-        #     for word in words_list:
-        #         stemred_word = porter_stemmer(word)
-        #         for key in dict_copy.keys():
-        #             if stemred_word in dict_copy[key]:
-        #                 dict_[key].append(word)
-        #                 words_to_remove.append(word)
-        #                 break
-
-        #     words_list = [word for word in words_list if word not in words_to_remove]
 
         if len(words_list) > 0:
 
             th = text_clustering(pd.Series(words_list))
+
+            old_values = list([value for values in dict_.values() for value in values])
+
+            for key, values in th._thesaurus.items():
+                if key in old_values:
+                    print(key, values)
+                    old_key = {k: v for k, v in dict_.items() if key in v}
+                    old_key = list(old_key.keys())[0]
+                    dict_[old_key].extend(values)
+                    dict_[old_key] = list(set(dict_[old_key]))
 
             th = Thesaurus(
                 x={**th._thesaurus, **dict_},
