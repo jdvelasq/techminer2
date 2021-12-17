@@ -16,7 +16,7 @@ Dincer H                2                15  ...   0.054054  0.038757
 [5 rows x 6 columns]
 
 """
-from .co_occurrence_indicators import co_occurrence_indicators
+from .co_occurrence_network_indicators import co_occurrence_network_indicators
 
 
 def collaboration_network_indicators(
@@ -30,7 +30,7 @@ def collaboration_network_indicators(
     if column not in ["authors", "institutions", "countries"]:
         raise ValueError("The column must be 'authors', 'institutions' or 'countries'")
 
-    return co_occurrence_indicators(
+    return co_occurrence_network_indicators(
         column=column,
         min_occ=min_occ,
         normalization=normalization,
