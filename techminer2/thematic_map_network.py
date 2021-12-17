@@ -13,7 +13,7 @@ Thematic Map / Graph
 
 """
 
-from .co_occurrence_network import co_occurrence_network
+from .co_occurrence_network_graph import co_occurrence_network_graph
 
 
 def thematic_map_network(
@@ -26,7 +26,7 @@ def thematic_map_network(
     directory="./",
 ):
 
-    return co_occurrence_network(
+    return co_occurrence_network_graph(
         column=column,
         min_occ=min_occ,
         max_occ=None,
