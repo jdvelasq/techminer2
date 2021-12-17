@@ -16,14 +16,14 @@ Co-occurrence API
     co_occurrence_item_associations
     co_occurrence_manifold        
     co_occurrence_matrix 
+    co_occurrence_matrix_svd_map
     co_occurrence_mds_map
-    co_occurrence_svd_map
 
     
 .. toctree::
     :maxdepth: 1
 
-    co_occurrence_network    
+
     co_occurrence_communities
     co_occurrence_degree_plot
     co_occurrence_indicators
@@ -37,7 +37,7 @@ Co-occurrence API
     :maxdepth: 1
 
     occurrence_matrix
-    occurrence_html
-    occurrence_bubble_chart
-    occurrence_associations
-    occurrence_heatmap
+    occurrence_matrix_associations
+    occurrence_matrix_bubble_chart
+    occurrence_matrix_heatmap
+    occurrence_matrix_html
