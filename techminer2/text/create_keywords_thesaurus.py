@@ -31,6 +31,12 @@ def create_keywords_thesaurus(directory):
     if "raw_index_keywords" in data.columns:
         words_list += data.raw_index_keywords.tolist()
 
+    if "raw_nlp_document_title" in data.columns:
+        words_list += data.raw_nlp_document_title.tolist()
+
+    if "raw_nlp_abstract" in data.columns:
+        words_list += data.raw_nlp_abstract.tolist()
+
     #
     # Rules for keywords
     #
