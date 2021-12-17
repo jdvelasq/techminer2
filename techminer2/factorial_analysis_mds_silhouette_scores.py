@@ -1,5 +1,5 @@
 """
-Factorial analysis using MDS and agglomerative clustering --- silhouette scores
+Factorial analysis using MDS and agglomerative clustering / Silhouette scores
 ===============================================================================
 
 
