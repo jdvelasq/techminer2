@@ -17,8 +17,8 @@ Co-occurrence API
     co_occurrence_matrix_heatmap
     co_occurrence_matrix_html
     co_occurrence_matrix_manifold        
+    co_occurrence_matrix_mds_map
     co_occurrence_matrix_svd_map
-    co_occurrence_mds_map
 
     
 .. toctree::
