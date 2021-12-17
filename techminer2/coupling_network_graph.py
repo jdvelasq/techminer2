@@ -12,6 +12,7 @@ Builds a coupling network from a coupling matrix.
 ...     min_occ=4, 
 ...     top_n=20,
 ...     directory=directory,
+...     k=1.0,
 ... ).savefig(file_name)
 
 .. image:: images/coupling__network_graph.png
@@ -19,12 +20,12 @@ Builds a coupling network from a coupling matrix.
     :align: center
 
 """
-import pandas as pd
+
 
 from .coupling_matrix import coupling_matrix
 from .network import network
 from .network_plot import network_plot
-from .utils import load_all_documents
+from .utils import load_all_documents, records2documents
 
 
 def coupling_network_graph(
@@ -49,31 +50,6 @@ def coupling_network_graph(
         metric=metric,
         directory=directory,
     )
-
-    # -------------------------------------------------------------------------
-    # Rename axis of the matrix
-    documents = load_all_documents(directory)
-    records2ids = dict(zip(documents.record_no, documents.document_id))
-    records2global_citations = dict(
-        zip(documents.record_no, documents.global_citations)
-    )
-    records2local_citations = dict(zip(documents.record_no, documents.local_citations))
-
-    new_indexes = matrix.columns.get_level_values(0)
-    new_indexes = [
-        (
-            records2ids[index],
-            records2global_citations[index],
-            records2local_citations[index],
-        )
-        for index in new_indexes
-    ]
-    new_indexes = pd.MultiIndex.from_tuples(
-        new_indexes, names=["document", "global_citations", "local_citations"]
-    )
-
-    matrix.columns = new_indexes.copy()
-    matrix.index = new_indexes.copy()
 
     network_ = network(
         matrix,
