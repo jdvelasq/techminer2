@@ -13,7 +13,7 @@ Collaboration Network / Graph
 
 """
 
-from .co_occurrence_network import co_occurrence_network
+from .co_occurrence_network_graph import co_occurrence_network_graph
 
 
 def collaboration_network_graph(
@@ -30,7 +30,7 @@ def collaboration_network_graph(
     if column not in ["authors", "institutions", "countries"]:
         raise ValueError("The column must be 'authors', 'institutions' or 'countries'")
 
-    return co_occurrence_network(
+    return co_occurrence_network_graph(
         column=column,
         min_occ=min_occ,
         normalization=normalization,
