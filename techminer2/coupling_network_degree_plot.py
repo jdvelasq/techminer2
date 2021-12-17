@@ -36,9 +36,6 @@ def coupling_network_degree_plot(
     clustering_method="louvain",
     manifold_method=None,
     figsize=(7, 7),
-    k=0.20,
-    iterations=50,
-    max_labels=50,
 ):
     # -------------------------------------------------------------------------
     # Documents
