@@ -189,10 +189,10 @@ Conceptual Structure
 .. toctree::
     :maxdepth: 1
 
-    co_occurrence_network
-    co_occurrence_indicators
-    co_occurrence_degree_plot
-    co_occurrence_communities
+    co_occurrence_network_communities
+    co_occurrence_network_degree_plot
+    co_occurrence_network_graph
+    co_occurrence_network_indicators
 
 
 
