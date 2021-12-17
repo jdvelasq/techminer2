@@ -12,7 +12,7 @@ Co-occurrence API
     co_occurrence_associations
     co_occurrence_chord_diagram
     co_occurrence_heatmap
-    co_occurrence_html
+    co_occurrence_matrix_html
     co_occurrence_item_associations
     co_occurrence_manifold        
     co_occurrence_matrix 
