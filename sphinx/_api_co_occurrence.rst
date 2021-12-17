@@ -9,7 +9,6 @@ Co-occurrence API
 .. toctree::
     :maxdepth: 1
 
-    co_occurrence_item_associations
     co_occurrence_matrix 
     co_occurrence_matrix_associations
     co_occurrence_matrix_bubble_chart
@@ -19,8 +18,14 @@ Co-occurrence API
     co_occurrence_matrix_manifold        
     co_occurrence_matrix_mds_map
     co_occurrence_matrix_svd_map
+    co_occurrence_matrix_topic_associations
 
-    
+
+.. raw:: html
+
+   <hr style="height:2px;border-width:0;color:gray;background-color:black">
+
+
 .. toctree::
     :maxdepth: 1
 
