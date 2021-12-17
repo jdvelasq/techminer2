@@ -1,5 +1,5 @@
 """
-Factorial analysis using MDS and agglomerative clustering --- communities
+Factorial analysis using MDS and agglomerative clustering / Communities
 ===============================================================================
 
 
