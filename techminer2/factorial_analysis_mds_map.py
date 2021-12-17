@@ -1,5 +1,5 @@
 """
-Factorial analysis using MDS and agglomerative clustering --- map
+Factorial analysis using MDS and agglomerative clustering / Map
 ===============================================================================
 
 Factorial analysis based on the clustering applyed to the dimensionality reduction 
