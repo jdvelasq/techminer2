@@ -145,9 +145,9 @@ Occurrence Matrix
 .. toctree::
     :maxdepth: 1  
 
-    occurrence_bubble_chart
     occurrence_matrix
     occurrence_matrix_associations
+    occurrence_matrix_bubble_chart
     occurrence_matrix_heatmap
     occurrence_matrix_html
 
