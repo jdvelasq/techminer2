@@ -63,7 +63,6 @@ def create_keywords_thesaurus(directory):
 
         #  Selects the new words to cluster
         clustered_words = [word for word in dict_.values()]
-        print(clustered_words[:5])
         words_list = [word for word in words_list if word not in clustered_words]
 
         if len(words_list) > 0:
