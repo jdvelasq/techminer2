@@ -131,16 +131,25 @@ Co-occurrence Matrix
     co_occurrence_associations
     co_occurrence_bubble_chart
     co_occurrence_heatmap
-  
+
+
+
+Occurrence Matrix
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <hr style="width:70%;height:2px;border-width:0;color:gray;background-color:black">
+
 
 .. toctree::
     :maxdepth: 1  
 
-    occurrence_matrix
     occurrence_bubble_chart
-    occurrence_html
-    occurrence_associations
-    occurrence_heatmap
+    occurrence_matrix
+    occurrence_matrix_associations
+    occurrence_matrix_heatmap
+    occurrence_matrix_html
 
 
 See `Co-occurrence API <_api_co_occurrence.html>`__
