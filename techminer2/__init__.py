@@ -25,12 +25,12 @@ from .co_occurrence_chord_diagram import co_occurrence_chord_diagram
 from .co_occurrence_communities import co_occurrence_communities
 from .co_occurrence_degree_plot import co_occurrence_degree_plot
 from .co_occurrence_heatmap import co_occurrence_heatmap
-from .co_occurrence_html import co_occurrence_html
 from .co_occurrence_indicators import co_occurrence_indicators
 from .co_occurrence_item_associations import co_occurrence_item_associations
 from .co_occurrence_manifold import co_occurrence_manifold
 from .co_occurrence_matrix import co_occurrence_matrix
 from .co_occurrence_matrix_associations import co_occurrence_matrix_associations
+from .co_occurrence_matrix_html import co_occurrence_matrix_html
 from .co_occurrence_matrix_svd_map import co_occurrence_matrix_svd_map
 from .co_occurrence_mds_map import co_occurrence_mds_map
 from .co_occurrence_network import co_occurrence_network
