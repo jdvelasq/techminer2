@@ -1,5 +1,5 @@
 """
-Coupling matrix
+Coupling Matrix
 ===============================================================================
 
 >>> from techminer2 import *
