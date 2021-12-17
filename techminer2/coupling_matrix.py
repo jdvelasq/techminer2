@@ -9,16 +9,18 @@ Coupling Matrix
 ...     column='references',
 ...     directory=directory,
 ... ).head()
-                 2016-0000 2016-0001 2017-0000  ... 2019-0001 2019-0002 2019-0003
-                       106       43        146  ...       75        60        44 
-                        14        7         15  ...        14        7         14
-2016-0000 106 14        13         0         0  ...         0         0         0
-2016-0001 43  7          0         6         0  ...         0         0         0
-2017-0000 146 15         0         0        31  ...         0         0         0
-2017-0001 101 16         0         0         0  ...         0         0         0
-2018-0000 220 32         0         0         0  ...         0         0         0
+document                                                                            Chen T et al, 2016, PROC ACM SIGKDD INT CONF KNOW  ... Saberi S et al, 2019, INT J PROD RES
+global_citations                                                                                                                 8178  ...                                 592 
+local_citations                                                                                                                     1  ...                                    0
+document                                           global_citations local_citations                                                    ...                                     
+Chen T et al, 2016, PROC ACM SIGKDD INT CONF KNOW  8178             1                                                              13  ...                                    0
+Silver D et al, 2016, NATURE                       6359             1                                                               0  ...                                    0
+Lundberg SM et al, 2017, ADV NEURAL INF PROCES ... 1949             2                                                               0  ...                                    0
+Geissdoerfer M et al, 2017, J CLEAN PROD           1600             0                                                               0  ...                                    0
+Young T et al, 2018, IEEE COMPUT INTELL MAG        1071             1                                                               0  ...                                    0
 <BLANKLINE>
 [5 rows x 15 columns]
+
 
 >>> coupling_matrix(
 ...     column='author_keywords',
@@ -26,14 +28,15 @@ Coupling Matrix
 ...     top_n=50,
 ...     directory=directory,
 ... ).head()
-                 2016-0000 2016-0001 2016-0002  ... 2021-0000 2021-0001 2021-0002
-                       106       43        24   ...       17        15        14 
-                        14        7         4   ...        1         2         0 
-2016-0000 106 14         4         1         0  ...         0         0         0
-2016-0001 43  7          1         3         1  ...         1         1         0
-2016-0002 24  4          0         1         1  ...         1         1         0
-2016-0003 16  3          0         1         1  ...         1         1         0
-2017-0000 146 15         0         1         1  ...         1         1         0
+document                                                                   Schueffel P et al, 2016, J INNOV MANAG  ... Kou G et al, 2021, FINANCIAL INNOV
+global_citations                                                                                              106  ...                                14 
+local_citations                                                                                                14  ...                                 0 
+document                                  global_citations local_citations                                         ...                                   
+Schueffel P et al, 2016, J INNOV MANAG    106              14                                                   4  ...                                  0
+Zavolokina L et al, 2016, FINANCIAL INNOV 43               7                                                    1  ...                                  0
+Hung J-L et al, 2016, FINANCIAL INNOV     24               4                                                    0  ...                                  0
+Kotarba M et al, 2016, FOUND MANAG        16               3                                                    0  ...                                  0
+Gabor D et al, 2017, NEW POLIT ECON       146              15                                                   0  ...                                  0
 <BLANKLINE>
 [5 rows x 39 columns]
 
@@ -46,7 +49,12 @@ import pandas as pd
 
 from .tf_matrix import tf_matrix
 from .utils import *
-from .utils import index_terms2counters, load_filtered_documents
+from .utils import (
+    index_terms2counters,
+    load_all_documents,
+    load_filtered_documents,
+    records2documents,
+)
 
 # pyltin: disable=c0103
 # pylint: disable=too-many-arguments
@@ -61,19 +69,25 @@ def coupling_matrix(
     directory="./",
 ):
     if column == "references":
-        return coupling_by_references_matrix_(
+        matrix = coupling_by_references_matrix_(
             top_n=top_n,
             metric=metric,
             directory=directory,
         )
+        documents = pd.read_csv(join(directory, "references.csv"))
 
-    return coupling_by_column_matrix_(
-        column=column,
-        min_occ=min_occ,
-        top_n=top_n,
-        metric=metric,
-        directory=directory,
-    )
+    else:
+        matrix = coupling_by_column_matrix_(
+            column=column,
+            min_occ=min_occ,
+            top_n=top_n,
+            metric=metric,
+            directory=directory,
+        )
+        documents = load_all_documents(directory=directory)
+
+    matrix = records2documents(matrix=matrix, documents=documents)
+    return matrix
 
 
 # ---------------------------------------------------------------------------------------
