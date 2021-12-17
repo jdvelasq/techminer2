@@ -7,14 +7,15 @@ Co-citation Matrix
 >>> directory = "/workspaces/techminer2/data/"
 >>> matrix = co_citation_matrix(directory=directory)
 >>> matrix.head()
-                   1989-0000 2000-0000 2003-0002  ... 2020-0031 2020-0131 2020-0225
-                       25830     9760      16860  ...     76        26        15   
-                          14        7         9   ...        11        11        6 
-1989-0000 25830 14      14.0       4.0       5.0  ...       1.0       0.0       0.0
-2000-0000 9760  7        4.0       7.0       3.0  ...       1.0       0.0       1.0
-2003-0002 16860 9        5.0       3.0       9.0  ...       2.0       1.0       1.0
-2009-0013 876   9        4.0       1.0       4.0  ...       0.0       0.0       0.0
-2013-0009 553   6        0.0       0.0       0.0  ...       1.0       0.0       0.0
+document                                                                            Davis FD et al, 1989, MIS QUART MANAGE INF SYST  ... Goo JJ et al, 2020, J OPEN INNOV: TECHNOL MARK CO
+global_citations                                                                                                              25830  ...                                             15   
+local_citations                                                                                                                  14  ...                                                6 
+document                                           global_citations local_citations                                                  ...                                                  
+Davis FD et al, 1989, MIS QUART MANAGE INF SYST    25830            14                                                         14.0  ...                                               0.0
+Venkatesh V et al, 2000, MANAGE SCI                9760             7                                                           4.0  ...                                               1.0
+Venkatesh V et al, 2003, MIS QUART MANAGE INF SYST 16860            9                                                           5.0  ...                                               1.0
+Lee M-C et al, 2009, ELECT COMMER RES APPL         876              9                                                           4.0  ...                                               0.0
+Lin M et al, 2013, MANAGE SCI                      553              6                                                           0.0  ...                                               0.0
 <BLANKLINE>
 [5 rows x 50 columns]
 
@@ -24,6 +25,8 @@ from os.path import join
 
 import numpy as np
 import pandas as pd
+
+from .utils import records2documents
 
 
 def co_citation_matrix(top_n=50, directory="./"):
@@ -87,6 +90,10 @@ def co_citation_matrix(top_n=50, directory="./"):
     # ---< remove rows and columns with no associations >---------------------------------
     co_occ_matrix = co_occ_matrix.loc[:, (co_occ_matrix != 0).any(axis=0)]
     co_occ_matrix = co_occ_matrix.loc[(co_occ_matrix != 0).any(axis=1), :]
+
+    # ---< author, year refereces >------------------------------------------------------
+    documents = pd.read_csv(join(directory, "references.csv"))
+    co_occ_matrix = records2documents(matrix=co_occ_matrix, documents=documents)
 
     return co_occ_matrix
 
