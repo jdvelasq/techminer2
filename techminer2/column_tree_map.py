@@ -48,7 +48,7 @@ def column_tree_map(
 
     return tree_map(
         series=series,
-        darkness=series,
+        darkness=darkness,
         cmap=cmap,
         figsize=figsize,
     )
