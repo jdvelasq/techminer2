@@ -1,5 +1,5 @@
 """
-Most Frequent Words
+Words / Most Frequent
 ===============================================================================
 
 >>> from techminer2 import *
