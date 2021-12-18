@@ -73,6 +73,11 @@ Thesaurus
     
     clean_institutions
     clean_keywords
+
+
+.. toctree::
+    :maxdepth: 1
+
     apply_thesaurus
     create_thesaurus
 
@@ -168,6 +173,13 @@ Correlation Analysis
     :maxdepth: 1
 
     auto_corr_matrix
+    auto_corr_matrix_html
+    auto_corr_matrix_heatmap
+
+
+.. toctree::
+    :maxdepth: 1
+
     cross_corr_matrix   
 
 
