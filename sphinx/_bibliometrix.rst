@@ -154,7 +154,7 @@ Documents
     words_word_cloud
     words_tree_map
     words_word_dynamics
-    trend_topics
+    words_trend_topics
 
 
 
