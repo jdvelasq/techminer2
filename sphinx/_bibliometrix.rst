@@ -152,7 +152,8 @@ Documents
 
     words_most_frequent
     words_word_cloud
-    word_dynamics
+    words_tree_map
+    words_word_dynamics
     trend_topics
 
 
