@@ -132,12 +132,12 @@ from .thematic_map_degree_plot import thematic_map_degree_plot
 from .thematic_map_indicators import thematic_map_indicators
 from .thematic_map_network import thematic_map_network
 from .tree_map import tree_map
-from .trend_topics import trend_topics
 from .user_filters import user_filters
 from .vertical_bar_chart import vertical_bar_chart
 from .word_cloud import word_cloud
 from .words_most_frequent import words_most_frequent
 from .words_tree_map import words_tree_map
+from .words_trend_topics import words_trend_topics
 from .words_word_cloud import words_word_cloud
 from .words_word_dynamics import words_word_dynamics
 from .world_map import world_map
