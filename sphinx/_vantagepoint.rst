@@ -180,7 +180,9 @@ Correlation Analysis
 .. toctree::
     :maxdepth: 1
 
-    cross_corr_matrix   
+    cross_corr_matrix
+    cross_corr_matrix_html
+    cross_corr_matrix_heatmap
 
 
 .. toctree::
