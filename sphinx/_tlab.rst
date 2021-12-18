@@ -6,8 +6,16 @@ T-Lab
    <hr style="height:4px;border-width:0;color:gray;background-color:black">
 
 
+
 Co-occurrence Analysis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <hr style="width:70%;height:2px;border-width:0;color:gray;background-color:black">
+
+
+
 
 .. raw:: html
 
@@ -37,18 +45,21 @@ See `Co-occurrence API <_api_co_occurrence.html>`__
 Concordances
 ***************************************
 
+
 .. toctree::
     :maxdepth: 1
 
     abstract_concordances
 
 
-.. raw:: html
-
-   <hr style="height:2px;border-width:0;color:gray;background-color:gray">
 
 Thematic Analysis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <hr style="width:70%;height:2px;border-width:0;color:gray;background-color:black">
+
 
 This analysis is used to obtain and explore a representation of the documents
 throught thematic clusters.
@@ -74,12 +85,14 @@ Contexts implemented in T-LAB.
     :maxdepth: 1
 
 
-.. raw:: html
-
-   <hr style="height:2px;border-width:0;color:gray;background-color:gray">
 
 Comparative Analysis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <hr style="width:70%;height:2px;border-width:0;color:gray;background-color:black">
+
 
 .. toctree::
     :maxdepth: 1
@@ -87,12 +100,14 @@ Comparative Analysis
     co_occurrence_matrix_svd_map
     tf_idf_svd_map
 
-.. raw:: html
-
-   <hr style="height:2px;border-width:0;color:gray;background-color:gray">
 
 Lexical and other tools
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <hr style="width:70%;height:2px;border-width:0;color:gray;background-color:black">
+
 
 .. toctree::
     :maxdepth: 1
