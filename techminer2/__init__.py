@@ -138,4 +138,5 @@ from .vertical_bar_chart import vertical_bar_chart
 from .word_cloud import word_cloud
 from .word_dynamics import word_dynamics
 from .words_most_frequent import words_most_frequent
+from .words_word_cloud import words_word_cloud
 from .world_map import world_map
