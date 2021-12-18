@@ -151,10 +151,10 @@ Documents
     :maxdepth: 1
 
     words_most_frequent
-    words_word_cloud
     words_tree_map
-    words_word_dynamics
     words_trend_topics
+    words_word_cloud
+    words_word_dynamics
 
 
 
