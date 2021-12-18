@@ -6,7 +6,6 @@ T-Lab
    <hr style="height:4px;border-width:0;color:gray;background-color:black">
 
 
-
 Co-occurrence Analysis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -15,14 +14,16 @@ Co-occurrence Analysis
     <hr style="width:70%;height:2px;border-width:0;color:gray;background-color:black">
 
 
-
-
 .. raw:: html
 
     <p style="color:gray">Word Associations</p>
 
+.. toctree::
+    :maxdepth: 1
 
-See `Co-occurrence API <_api_co_occurrence.html>`__
+    co_occurrence_matrix_topic_associations
+    co_occurrence_matrix_mds_map
+
 
 
 .. raw:: html
@@ -30,8 +31,12 @@ See `Co-occurrence API <_api_co_occurrence.html>`__
     <p style="color:gray">Co-word Analysis</p>
 
 
-See `Co-occurrence API <_api_co_occurrence.html>`__
+.. toctree::
+    :maxdepth: 1
 
+    co_occurrence_matrix_manifold
+    column_cleveland_dot_chart
+    
 
 .. raw:: html
 
@@ -42,8 +47,21 @@ See `Co-occurrence API <_api_co_occurrence.html>`__
 
 
 
-Concordances
-***************************************
+.. raw:: html
+
+    <p style="color:gray">Sequence and Network Analysis</p>
+
+.. toctree::
+    :maxdepth: 1
+
+
+
+.. raw:: html
+
+    <p style="color:gray">Concordances</p>
+
+.. toctree::
+    :maxdepth: 1
 
 
 .. toctree::
@@ -94,11 +112,18 @@ Comparative Analysis
     <hr style="width:70%;height:2px;border-width:0;color:gray;background-color:black">
 
 
+
+
+.. raw:: html
+
+    <p style="color:gray">Singunlar Value Decomposition:</p>
+
+
 .. toctree::
     :maxdepth: 1
 
-    co_occurrence_matrix_svd_map
-    tf_idf_svd_map
+    svd_map_of_co_occurrence_matrix
+    svd_map_of_tf_matrix
 
 
 Lexical and other tools
