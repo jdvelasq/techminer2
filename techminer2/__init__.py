@@ -8,6 +8,8 @@ from .apply_thesaurus import apply_thesaurus
 from .author_local_impact import author_local_impact
 from .authors_production_over_time import authors_production_over_time
 from .auto_corr_matrix import auto_corr_matrix
+from .auto_corr_matrix_heatmap import auto_corr_matrix_heatmap
+from .auto_corr_matrix_html import auto_corr_matrix_html
 from .average_citations_per_year import average_citations_per_year
 from .bradford_law import bradford_law
 from .bubble_chart import bubble_chart
