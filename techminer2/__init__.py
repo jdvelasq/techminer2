@@ -136,7 +136,8 @@ from .trend_topics import trend_topics
 from .user_filters import user_filters
 from .vertical_bar_chart import vertical_bar_chart
 from .word_cloud import word_cloud
-from .word_dynamics import word_dynamics
 from .words_most_frequent import words_most_frequent
+from .words_tree_map import words_tree_map
 from .words_word_cloud import words_word_cloud
+from .words_word_dynamics import words_word_dynamics
 from .world_map import world_map
