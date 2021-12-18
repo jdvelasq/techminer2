@@ -151,6 +151,7 @@ Documents
     :maxdepth: 1
 
     words_most_frequent
+    words_word_cloud
     word_dynamics
     trend_topics
 
