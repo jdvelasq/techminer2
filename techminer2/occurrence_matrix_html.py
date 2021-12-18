@@ -1,5 +1,5 @@
 """
-Occurrence Matrix / HTML visualization
+Occurrence Matrix / HTML
 ===============================================================================
 
 >>> from techminer2 import *
