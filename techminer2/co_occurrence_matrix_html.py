@@ -1,5 +1,5 @@
 """
-Co-occurrence Matrix / HTML visualization
+Co-occurrence Matrix / HTML
 ===============================================================================
 
 >>> from techminer2 import *
