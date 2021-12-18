@@ -150,7 +150,7 @@ Documents
 .. toctree::
     :maxdepth: 1
 
-    most_frequent_words
+    words_most_frequent
     word_dynamics
     trend_topics
 
