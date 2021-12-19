@@ -127,8 +127,8 @@ from .stacked_bar_chart import stacked_bar_chart
 from .stacked_column_chart import stacked_column_chart
 from .stemming import stemming_and, stemming_or
 from .summary_view import summary_view
-from .svd_map_of_tf_matrix import svd_map_of_tf_matrix
 from .tf_idf_matrix import tf_idf_matrix
+from .tf_idf_matrix_svd_map import tf_idf_matrix_svd_map
 from .tf_matrix import tf_matrix
 from .thematic_analysis import ThematicAnalysis
 from .thematic_map_communities import thematic_map_communities
