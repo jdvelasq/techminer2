@@ -123,7 +123,7 @@ Comparative Analysis
     :maxdepth: 1
 
     co_occurrence_matrix_svd_map
-    svd_map_of_tf_matrix
+    tf_idf_matrix_svd_map
 
 
 Lexical and other tools
