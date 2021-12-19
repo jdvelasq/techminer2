@@ -122,7 +122,7 @@ Comparative Analysis
 .. toctree::
     :maxdepth: 1
 
-    svd_map_of_co_occurrence_matrix
+    co_occurrence_matrix_svd_map
     svd_map_of_tf_matrix
 
 
