@@ -1,5 +1,5 @@
 """
-Co-occurrence Network / Topics Comparison Network
+Co-occurrence Matrix / Topics Comparison Network
 ===============================================================================
 
 >>> from techminer2 import *
