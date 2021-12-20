@@ -85,7 +85,10 @@ def co_occurrence_matrix_ego_network(
     for edge in edges:
         size[edge["source"]] += edge["weight"]
         size[edge["target"]] += edge["weight"]
-    nodes = [(name, dict(size=size[name], group=0)) for name in size.keys()]
+    nodes = [
+        (name, dict(size=size[name], group=(1 if name == topic else 0)))
+        for name in size.keys()
+    ]
 
     # -------------------------------------------------------------------------
     G = nx.Graph()
