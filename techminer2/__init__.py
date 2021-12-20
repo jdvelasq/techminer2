@@ -36,6 +36,9 @@ from .co_occurrence_matrix_svd_map import co_occurrence_matrix_svd_map
 from .co_occurrence_matrix_topic_associations import (
     co_occurrence_matrix_topic_associations,
 )
+from .co_occurrence_matrix_topics_comparison import (
+    co_occurrence_matrix_topics_comparison,
+)
 from .co_occurrence_network_communities import co_occurrence_network_communities
 from .co_occurrence_network_degree_plot import co_occurrence_network_degree_plot
 from .co_occurrence_network_graph import co_occurrence_network_graph
