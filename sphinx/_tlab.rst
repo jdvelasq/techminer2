@@ -14,9 +14,12 @@ Co-occurrence Analysis
     <hr style="width:70%;height:2px;border-width:0;color:gray;background-color:black">
 
 
+Word Associations
+.......................................
+
 .. raw:: html
 
-    <p style="color:gray">Word Associations</p>
+    <hr style="width:50%;height:1px;border-width:0;color:gray;background-color:black">
 
 .. toctree::
     :maxdepth: 1
@@ -25,11 +28,12 @@ Co-occurrence Analysis
     co_occurrence_matrix_mds_map
 
 
+Co-Word Analysis
+.......................................
 
 .. raw:: html
 
-    <p style="color:gray">Co-word Analysis</p>
-
+    <hr style="width:50%;height:1px;border-width:0;color:gray;background-color:black">
 
 .. toctree::
     :maxdepth: 1
@@ -40,9 +44,12 @@ Co-occurrence Analysis
     column_cleveland_dot_chart
     
 
+Comparison between word pairs
+.......................................
+
 .. raw:: html
 
-    <p style="color:gray">Comparison between word pairs</p>
+    <hr style="width:50%;height:1px;border-width:0;color:gray;background-color:black">
 
 .. toctree::
     :maxdepth: 1
@@ -50,24 +57,26 @@ Co-occurrence Analysis
     co_occurrence_matrix_topics_comparison
 
 
+Sequence and Network Analysis
+.......................................
 
 .. raw:: html
 
-    <p style="color:gray">Sequence and Network Analysis</p>
+    <hr style="width:50%;height:1px;border-width:0;color:gray;background-color:black">
 
 .. toctree::
     :maxdepth: 1
 
+    co_occurrence_matrix_ego_graph
     co_occurrence_matrix_ego_network
 
 
+Concordances
+.......................................
+
 .. raw:: html
 
-    <p style="color:gray">Concordances</p>
-
-.. toctree::
-    :maxdepth: 1
-
+    <hr style="width:50%;height:1px;border-width:0;color:gray;background-color:black">
 
 .. toctree::
     :maxdepth: 1
@@ -117,12 +126,12 @@ Comparative Analysis
     <hr style="width:70%;height:2px;border-width:0;color:gray;background-color:black">
 
 
-
+Singunlar Value Decomposition
+.......................................
 
 .. raw:: html
 
-    <p style="color:gray">Singunlar Value Decomposition:</p>
-
+    <hr style="width:50%;height:1px;border-width:0;color:gray;background-color:black">
 
 .. toctree::
     :maxdepth: 1
