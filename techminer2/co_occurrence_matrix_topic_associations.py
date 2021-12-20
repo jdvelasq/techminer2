@@ -44,6 +44,7 @@ def co_occurrence_matrix_topic_associations(
     column,
     top_n=10,
     min_occ=1,
+    normalization=None,
     directory="./",
     plot=True,
     color="k",
@@ -53,7 +54,7 @@ def co_occurrence_matrix_topic_associations(
     coc_matrix = co_occurrence_matrix(
         column,
         min_occ=min_occ,
-        normalization=None,
+        normalization=normalization,
         directory=directory,
     )
 
@@ -78,11 +79,16 @@ def co_occurrence_matrix_topic_associations(
 
     series = series.head(top_n)
 
+    if normalization is None:
+        xlabel = "Occurrences"
+    else:
+        xlabel = normalization.capitalize()
+
     return cleveland_dot_chart(
         series,
         figsize=figsize,
         color=color,
         title="'" + item + "' associations",
-        xlabel="Occurrences",
+        xlabel=xlabel,
         ylabel="Words",
     )
