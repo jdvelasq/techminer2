@@ -54,7 +54,8 @@ Comparison between word pairs
 .. toctree::
     :maxdepth: 1
 
-    co_occurrence_matrix_topics_comparison
+    co_occurrence_matrix_topics_comparison_chart
+    co_occurrence_matrix_topics_comparison_network
 
 
 Sequence and Network Analysis
