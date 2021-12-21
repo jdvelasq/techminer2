@@ -14,7 +14,7 @@ Dataset
 
 .. raw:: html
 
-    <hr style="width:70%;height:2px;border-width:0;color:gray;background-color:black">
+    <hr style="width:80%;height:2px;border-width:0;color:gray;background-color:black">
 
 
 * ``TODO: The Title View``
@@ -50,7 +50,7 @@ Search
 
 .. raw:: html
 
-    <hr style="width:70%;height:2px;border-width:0;color:gray;background-color:black">
+    <hr style="width:80%;height:2px;border-width:0;color:gray;background-color:black">
 
 
 .. toctree::
@@ -66,7 +66,7 @@ Thesaurus
 
 .. raw:: html
 
-    <hr style="width:70%;height:2px;border-width:0;color:gray;background-color:black">
+    <hr style="width:80%;height:2px;border-width:0;color:gray;background-color:black">
 
 .. toctree::
     :maxdepth: 1
@@ -93,7 +93,7 @@ Column (Report) Charts
 
 .. raw:: html
 
-    <hr style="width:70%;height:2px;border-width:0;color:gray;background-color:black">
+    <hr style="width:80%;height:2px;border-width:0;color:gray;background-color:black">
 
 .. toctree::
     :maxdepth: 1
@@ -126,7 +126,7 @@ Co-occurrence Matrix
 
 .. raw:: html
 
-    <hr style="width:70%;height:2px;border-width:0;color:gray;background-color:black">
+    <hr style="width:80%;height:2px;border-width:0;color:gray;background-color:black">
 
 .. toctree::
     :maxdepth: 1
@@ -145,7 +145,7 @@ Occurrence Matrix
 
 .. raw:: html
 
-    <hr style="width:70%;height:2px;border-width:0;color:gray;background-color:black">
+    <hr style="width:80%;height:2px;border-width:0;color:gray;background-color:black">
 
 
 .. toctree::
@@ -167,7 +167,7 @@ Correlation Analysis
 
 .. raw:: html
 
-    <hr style="width:70%;height:2px;border-width:0;color:gray;background-color:black">
+    <hr style="width:80%;height:2px;border-width:0;color:gray;background-color:black">
 
 .. toctree::
     :maxdepth: 1
@@ -195,7 +195,7 @@ Factor Analysis
 
 .. raw:: html
 
-    <hr style="width:70%;height:2px;border-width:0;color:gray;background-color:black">
+    <hr style="width:80%;height:2px;border-width:0;color:gray;background-color:black">
 
 
 .. toctree::
