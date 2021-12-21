@@ -86,6 +86,9 @@ from .cross_corr_matrix_html import cross_corr_matrix_html
 from .document_indicators import document_indicators
 from .document_viewer import document_viewer
 from .dotted_gantt_chart import dotted_gantt_chart
+from .emergent_themes_lda import Emergent_Themes_LDA
+from .emergent_themes_lda_map import emergent_themes_lda_map
+from .emergent_themes_lda_themes import emergent_themes_lda_themes
 from .extract_custom_topics import extract_custom_topics
 from .extract_user_keywords import extract_user_keywords
 from .factor_matrix import factor_matrix
