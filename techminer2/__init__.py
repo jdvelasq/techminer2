@@ -141,6 +141,9 @@ from .tf_idf_matrix import tf_idf_matrix
 from .tf_idf_matrix_svd_map import tf_idf_matrix_svd_map
 from .tf_matrix import tf_matrix
 from .thematic_analysis import ThematicAnalysis
+from .thematic_analysis_map import thematic_analysis_map
+from .thematic_analysis_partitions import thematic_analysis_partitions
+from .thematic_analysis_themes import thematic_analysis_themes
 from .thematic_map_communities import thematic_map_communities
 from .thematic_map_degree_plot import thematic_map_degree_plot
 from .thematic_map_indicators import thematic_map_indicators
