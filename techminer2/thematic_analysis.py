@@ -1,101 +1,181 @@
 """
-Thematic analysis
+Thematic analysis of documents
 ===============================================================================
 
 The implemented methodology is based on the Thematic Analysis of Elementary
 Contexts implemented in T-LAB.
 
-
-
 >>> from techminer2 import *
->>> from sklearn.cluster import KMeans
->>> from sklearn.manifold import MDS
 >>> directory = "/workspaces/techminer2/data/"
->>> tfidf_matrix = tf_idf_matrix('author_keywords', min_occ=3, directory=directory)
->>> thematic_analysis(
-...     tfidf_matrix, 
-...     clustering_method=KMeans(n_clusters=6, random_state=0), 
-...     manifold_method=MDS(random_state=0)
-... ).themes_by_words_
-author_keywords    fintech  ... open innovation
-#d                     139  ...             3  
-#c                    1285  ...            12  
-THEME_0           3.531425  ...        0.000000
-THEME_1           4.109095  ...        0.000000
-THEME_2          15.040339  ...        1.521395
-THEME_3          21.000000  ...        0.000000
-THEME_4           2.715340  ...        0.000000
-THEME_5           2.014328  ...        0.628626
+>>> analysis = ThematicAnalysis(
+...     column="author_keywords",
+...     min_occ=4,
+...     norm="l2",
+...     use_idf=True,
+...     smooth_idf=True,
+...     sublinear_tf=False,
+...     n_clusters=6,
+...     linkage="ward",
+...     affinity="euclidean",
+...     directory=directory,
+...     random_state=0, 
+... )
+>>> analysis.themes.head()
+                     CL_0  ...            CL_5
+0                 fintech  ...  perceived risk
+1  financial technologies  ...           trust
+2                    bank  ...         fintech
+3              innovating  ...                
+4       financial service  ...                
 <BLANKLINE>
-[6 rows x 59 columns]
+[5 rows x 6 columns]
 
->>> file_name = "/workspaces/techminer2/sphinx/images/thematic_analysis_map.png"
->>> thematic_analysis(
-...     tfidf_matrix, 
-...     clustering_method=KMeans(n_clusters=6), 
-...     manifold_method=MDS()
-... ).map().savefig(file_name)
+>>> analysis.partitions
+CLUSTER
+0    120
+1      7
+2     12
+3     32
+4      6
+5      6
+Name: num_documents, dtype: int64
 
-.. image:: images/thematic_analysis_map.png
+
+>>> file_name = "/workspaces/techminer2/sphinx/images/thematic_analysis__mds_map.png"
+>>> analysis.map().savefig(file_name)
+
+.. image:: images/thematic_analysis__mds_map.png
     :width: 700px
     :align: center
 
 """
-import numpy as np
+
 import pandas as pd
-from sklearn.cluster import KMeans
+from sklearn.cluster import AgglomerativeClustering
 from sklearn.manifold import MDS
 
 from .plots import bubble_map
+from .tf_idf_matrix import tf_idf_matrix
 
 
 class ThematicAnalysis:
-    def __init__(self, tf_idf_matrix, manifold_method=None, clustering_method=None):
-        self.tf_idf_matrix = tf_idf_matrix.copy()
-        if clustering_method is None:
-            clustering_method = KMeans(n_clusters=6)
-        if manifold_method is None:
-            manifold_method = MDS(n_components=20, random_state=0)
-        self.clustering_method = clustering_method
-        self.manifold_method = manifold_method
-        self.themes_by_words_ = None
-        self.run()
-
-    def run(self):
-
-        self.clustering_method.fit(self.tf_idf_matrix)
-        clustered_tf_idf_matrix = self.tf_idf_matrix.copy()
-        clustered_tf_idf_matrix["CLUSTER"] = self.clustering_method.labels_
-        themes_by_words = clustered_tf_idf_matrix.groupby("CLUSTER").sum()
-        themes_by_words.index = [
-            "THEME_{:d}".format(i) for i in range(len(themes_by_words))
-        ]
-        self.themes_by_words_ = themes_by_words.copy()
-
-        new_n_components = self.clustering_method.get_params()["n_clusters"] - 1
-        self.manifold_method.set_params(n_components=new_n_components)
-        decomposed_themes_by_words_ = self.manifold_method.fit_transform(
-            themes_by_words
+    def __init__(
+        self,
+        column,
+        min_occ=None,
+        norm="l2",
+        use_idf=True,
+        smooth_idf=True,
+        sublinear_tf=False,
+        n_clusters=6,
+        linkage="ward",
+        affinity="euclidean",
+        directory="./",
+        random_state=0,
+    ):
+        # -------------------------------------------------------------------------------
+        tfidf = tf_idf_matrix(
+            column=column,
+            min_occ=min_occ,
+            scheme="binary",
+            norm=norm,
+            use_idf=use_idf,
+            smooth_idf=smooth_idf,
+            sublinear_tf=sublinear_tf,
+            directory=directory,
+        )
+        # -------------------------------------------------------------------------------
+        mds = MDS(random_state=random_state)
+        mds.fit(tfidf.transpose())
+        self.mds_map = pd.DataFrame(
+            mds.embedding_,
+            columns=["DIM-0", "DIM-1"],
+            index=tfidf.columns.tolist(),
         )
 
-        self.decomposed_themes_by_words_ = pd.DataFrame(
-            decomposed_themes_by_words_,
-            columns=[f"DIM-{i}" for i in range(new_n_components)],
-            index=["THEME_{:d}".format(i) for i in range(len(themes_by_words))],
+        # -------------------------------------------------------------------------------
+        clustering = AgglomerativeClustering(
+            n_clusters=n_clusters,
+            linkage=linkage,
+            affinity=affinity,
         )
+        clustering.fit(tfidf)
+        tfidf = tfidf.assign(CLUSTER=clustering.labels_)
+        clusters = tfidf.groupby("CLUSTER").sum()
+        format_str = "CL_{:02d}" if n_clusters > 9 else "CL_{:d}"
+        clusters.index = [format_str.format(i) for i in range(n_clusters)]
+        self.clusters = clusters.transpose()
 
-        self.num_documents_by_theme_ = clustered_tf_idf_matrix.groupby("CLUSTER").size()
+        # -------------------------------------------------------------------------------
+        themes = self.clusters.copy()
+        themes.index = themes.index.get_level_values(0)
+        max_len = 0
+        for i_cluster in range(n_clusters):
+            themes_members = themes.iloc[:, i_cluster].copy()
+            themes_members = themes_members.sort_values(ascending=False)
+            themes_members = [
+                index if value > 0 else ""
+                for index, value in zip(themes_members.index, themes_members.values)
+            ]
+            max_len = max(
+                max_len, len([member for member in themes_members if member != ""])
+            )
+            themes.iloc[:, i_cluster] = themes_members
+        themes = themes.reset_index(drop=True)
+        themes = themes.head(max_len)
+        self._themes = themes
 
-        self.cluster_centers_ = self.clustering_method.cluster_centers_
+        # -------------------------------------------------------------------------------
+        documents = tfidf[["CLUSTER"]].copy()
+        documents = documents.reset_index(drop=False)
+        documents = documents.groupby("CLUSTER").agg(list)
+        documents.columns = ["record_no"]
+        self._documents = documents
 
-    def map(self, dim_x=0, dim_y=1, color_scheme="clusters", figsize=(7, 7)):
+        # -------------------------------------------------------------------------------
+        partitions = documents.copy()
+        partitions = partitions.assign(num_documents=partitions.record_no.apply(len))
+        partitions = partitions["num_documents"]
+        self._partitions = partitions
+
+        # -------------------------------------------------------------------------------
+        clusters = self.clusters.copy()
+        clusters = clusters.transpose()
+        mds = MDS(n_components=n_clusters - 1, random_state=random_state)
+        mds_data = mds.fit_transform(clusters)
+        mds_data = pd.DataFrame(
+            mds_data,
+            columns=[f"DIM-{i}" for i in range(n_clusters - 1)],
+            index=clusters.index,
+        )
+        self.mds_data = mds_data
+
+    @property
+    def themes(self):
+        return self._themes
+
+    @property
+    def documents(self):
+        return self._documents
+
+    @property
+    def partitions(self):
+        return self._partitions
+
+    def map(
+        self,
+        dim_x=0,
+        dim_y=1,
+        color_scheme="clusters",
+        figsize=(9, 9),
+    ):
 
         return bubble_map(
-            node_x=self.decomposed_themes_by_words_["DIM-{:d}".format(dim_x)],
-            node_y=self.decomposed_themes_by_words_["DIM-{:d}".format(dim_y)],
-            node_clusters=range(len(self.decomposed_themes_by_words_)),
-            node_texts=self.decomposed_themes_by_words_.index.tolist(),
-            node_sizes=self.num_documents_by_theme_,
+            node_x=self.mds_data.loc[:, f"DIM-{dim_x}"],
+            node_y=self.mds_data.loc[:, f"DIM-{dim_y}"],
+            node_clusters=range(len(self.mds_data)),
+            node_texts=self.mds_data.index.tolist(),
+            node_sizes=self._partitions.tolist(),
             x_axis_at=0,
             y_axis_at=0,
             color_scheme=color_scheme,
@@ -104,12 +184,3 @@ class ThematicAnalysis:
             figsize=figsize,
             fontsize=7,
         )
-
-    # def table(self):
-    #     return self.co_occurrence_network.table()
-
-    # def network(self):
-    #     return self.co_occurrence_network.plot()
-
-    # def clusters(self):
-    #     return self.clusters_
