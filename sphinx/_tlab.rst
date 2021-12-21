@@ -15,7 +15,7 @@ Co-occurrence Analysis
 
 
 Word Associations
-.......................................
+............................................
 
 .. raw:: html
 
@@ -29,7 +29,7 @@ Word Associations
 
 
 Co-Word Analysis
-.......................................
+............................................
 
 .. raw:: html
 
@@ -45,7 +45,7 @@ Co-Word Analysis
     
 
 Comparison between word pairs
-.......................................
+............................................
 
 .. raw:: html
 
@@ -59,7 +59,7 @@ Comparison between word pairs
 
 
 Sequence and Network Analysis
-.......................................
+............................................
 
 .. raw:: html
 
@@ -73,7 +73,7 @@ Sequence and Network Analysis
 
 
 Concordances
-.......................................
+............................................
 
 .. raw:: html
 
@@ -94,12 +94,49 @@ Thematic Analysis
     <hr style="width:70%;height:2px;border-width:0;color:gray;background-color:black">
 
 
+Thematic Analysis of Elementary Contexts
+............................................
+
+.. raw:: html
+
+    <hr style="width:50%;height:1px;border-width:0;color:gray;background-color:black">
+
+
 .. toctree::
     :maxdepth: 1
 
     thematic_analysis_map
     thematic_analysis_partitions
     thematic_analysis_themes
+
+
+Modeling of Emergent Themes with LDA
+............................................
+
+.. raw:: html
+
+    <hr style="width:50%;height:1px;border-width:0;color:gray;background-color:black">
+
+
+.. toctree::
+    :maxdepth: 1
+
+    emergent_themes_lda_map
+    emergent_themes_lda_themes
+
+
+
+Modeling of Emergent Themes with NFM
+............................................
+
+.. raw:: html
+
+    <hr style="width:50%;height:1px;border-width:0;color:gray;background-color:black">
+
+
+.. toctree::
+    :maxdepth: 1
+
 
 
 Comparative Analysis
@@ -111,7 +148,7 @@ Comparative Analysis
 
 
 Singunlar Value Decomposition
-.......................................
+............................................
 
 .. raw:: html
 
