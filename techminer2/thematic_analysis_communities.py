@@ -1,14 +1,11 @@
 """
-Thematic analysis --- communities
+Thematic Analysis / Communities
 ===============================================================================
 
 
 >>> from techminer2 import *
->>> from sklearn.cluster import KMeans
->>> from sklearn.manifold import MDS
 >>> directory = "/workspaces/techminer2/data/"
->>> tfidf_matrix = tf_idf_matrix('author_keywords', min_occ=3, directory=directory)
->>> thematic_analysis(
+>>> thematic_analysis_communities(
 ...     tfidf_matrix, 
 ...     clustering_method=KMeans(n_clusters=6, random_state=0), 
 ...     manifold_method=MDS(random_state=0)
@@ -25,16 +22,6 @@ THEME_5           2.014328  ...        0.628626
 <BLANKLINE>
 [6 rows x 59 columns]
 
->>> file_name = "/workspaces/techminer2/sphinx/images/thematic_analysis_map.png"
->>> thematic_analysis(
-...     tfidf_matrix, 
-...     clustering_method=KMeans(n_clusters=6), 
-...     manifold_method=MDS()
-... ).map().savefig(file_name)
-
-.. image:: images/thematic_analysis_map.png
-    :width: 700px
-    :align: center
 
 """
 
