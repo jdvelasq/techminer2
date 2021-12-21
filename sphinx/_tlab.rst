@@ -11,7 +11,7 @@ Co-occurrence Analysis
 
 .. raw:: html
 
-    <hr style="width:70%;height:2px;border-width:0;color:gray;background-color:black">
+    <hr style="width:80%;height:2px;border-width:0;color:gray;background-color:black">
 
 
 Word Associations
@@ -19,7 +19,7 @@ Word Associations
 
 .. raw:: html
 
-    <hr style="width:50%;height:1px;border-width:0;color:gray;background-color:black">
+    <hr style="width:70%;height:1px;border-width:0;color:gray;background-color:black">
 
 .. toctree::
     :maxdepth: 1
@@ -33,7 +33,7 @@ Co-Word Analysis
 
 .. raw:: html
 
-    <hr style="width:50%;height:1px;border-width:0;color:gray;background-color:black">
+    <hr style="width:70%;height:1px;border-width:0;color:gray;background-color:black">
 
 .. toctree::
     :maxdepth: 1
@@ -49,7 +49,7 @@ Comparison between word pairs
 
 .. raw:: html
 
-    <hr style="width:50%;height:1px;border-width:0;color:gray;background-color:black">
+    <hr style="width:70%;height:1px;border-width:0;color:gray;background-color:black">
 
 .. toctree::
     :maxdepth: 1
@@ -63,7 +63,7 @@ Sequence and Network Analysis
 
 .. raw:: html
 
-    <hr style="width:50%;height:1px;border-width:0;color:gray;background-color:black">
+    <hr style="width:70%;height:1px;border-width:0;color:gray;background-color:black">
 
 .. toctree::
     :maxdepth: 1
@@ -77,7 +77,7 @@ Concordances
 
 .. raw:: html
 
-    <hr style="width:50%;height:1px;border-width:0;color:gray;background-color:black">
+    <hr style="width:70%;height:1px;border-width:0;color:gray;background-color:black">
 
 .. toctree::
     :maxdepth: 1
@@ -91,7 +91,7 @@ Thematic Analysis
 
 .. raw:: html
 
-    <hr style="width:70%;height:2px;border-width:0;color:gray;background-color:black">
+    <hr style="width:80%;height:2px;border-width:0;color:gray;background-color:black">
 
 
 Thematic Analysis of Elementary Contexts
@@ -99,7 +99,7 @@ Thematic Analysis of Elementary Contexts
 
 .. raw:: html
 
-    <hr style="width:50%;height:1px;border-width:0;color:gray;background-color:black">
+    <hr style="width:70%;height:1px;border-width:0;color:gray;background-color:black">
 
 
 .. toctree::
@@ -115,7 +115,7 @@ Modeling of Emergent Themes with LDA
 
 .. raw:: html
 
-    <hr style="width:50%;height:1px;border-width:0;color:gray;background-color:black">
+    <hr style="width:70%;height:1px;border-width:0;color:gray;background-color:black">
 
 
 .. toctree::
@@ -131,7 +131,7 @@ Modeling of Emergent Themes with NFM
 
 .. raw:: html
 
-    <hr style="width:50%;height:1px;border-width:0;color:gray;background-color:black">
+    <hr style="width:70%;height:1px;border-width:0;color:gray;background-color:black">
 
 
 .. toctree::
@@ -144,7 +144,7 @@ Comparative Analysis
 
 .. raw:: html
 
-    <hr style="width:70%;height:2px;border-width:0;color:gray;background-color:black">
+    <hr style="width:80%;height:2px;border-width:0;color:gray;background-color:black">
 
 
 Singunlar Value Decomposition
@@ -152,7 +152,7 @@ Singunlar Value Decomposition
 
 .. raw:: html
 
-    <hr style="width:50%;height:1px;border-width:0;color:gray;background-color:black">
+    <hr style="width:70%;height:1px;border-width:0;color:gray;background-color:black">
 
 .. toctree::
     :maxdepth: 1
@@ -166,7 +166,7 @@ Lexical and other tools
 
 .. raw:: html
 
-    <hr style="width:70%;height:2px;border-width:0;color:gray;background-color:black">
+    <hr style="width:80%;height:2px;border-width:0;color:gray;background-color:black">
 
 
 .. toctree::
