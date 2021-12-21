@@ -137,6 +137,9 @@ Modeling of Emergent Themes with NFM
 .. toctree::
     :maxdepth: 1
 
+    emergent_themes_nmf_map
+    emergent_themes_nmf_themes
+
 
 
 Comparative Analysis
