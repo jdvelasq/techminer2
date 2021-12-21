@@ -2,10 +2,15 @@
 Co-occurrence Analysis
 
     Word Associations
+        --------------------------------
+        . topic normalization chart
+        . topic co-occurrence chart
+        . co-occurrence matrix mds map
+        --------------------------------
         . radial diagram
         . cosine index bar chart
         . co-occurrence bar chart
-        . maatrix mds map (text)
+        . matrix mds map (text)
 
     Co-word Analysis
         . clusters mds map
@@ -51,3 +56,6 @@ Comparative Analysis
     Cluster analysis
 
     Singular value decomposition
+
+       . svd of co-occurrence matrix
+       . svd of tf matrix
