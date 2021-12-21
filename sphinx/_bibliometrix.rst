@@ -22,7 +22,7 @@ Data
 
 .. raw:: html
 
-    <hr style="width:70%;height:2px;border-width:0;color:gray;background-color:black">
+    <hr style="width:80%;height:2px;border-width:0;color:gray;background-color:black">
 
 See ``Import Scopus Files`` in `Data <_user_data.html>`__. 
 
@@ -33,7 +33,7 @@ Filter
 
 .. raw:: html
 
-    <hr style="width:70%;height:2px;border-width:0;color:gray;background-color:black">
+    <hr style="width:80%;height:2px;border-width:0;color:gray;background-color:black">
 
 .. toctree::
 
@@ -45,7 +45,7 @@ Dataset
 
 .. raw:: html
 
-    <hr style="width:70%;height:2px;border-width:0;color:gray;background-color:black">
+    <hr style="width:80%;height:2px;border-width:0;color:gray;background-color:black">
 
 .. toctree::
 
@@ -60,7 +60,7 @@ Sources
 
 .. raw:: html
 
-    <hr style="width:70%;height:2px;border-width:0;color:gray;background-color:black">
+    <hr style="width:80%;height:2px;border-width:0;color:gray;background-color:black">
 
 .. toctree::
 
@@ -78,7 +78,7 @@ Authors
 
 .. raw:: html
 
-    <hr style="width:70%;height:2px;border-width:0;color:gray;background-color:black">
+    <hr style="width:80%;height:2px;border-width:0;color:gray;background-color:black">
 
 .. raw:: html
 
@@ -120,7 +120,7 @@ Documents
 
 .. raw:: html
 
-    <hr style="width:70%;height:2px;border-width:0;color:gray;background-color:black">
+    <hr style="width:80%;height:2px;border-width:0;color:gray;background-color:black">
 
 
 .. raw:: html
@@ -163,7 +163,7 @@ Clustering
 
 .. raw:: html
 
-    <hr style="width:70%;height:2px;border-width:0;color:gray;background-color:black">
+    <hr style="width:80%;height:2px;border-width:0;color:gray;background-color:black">
 
 .. toctree::
     :maxdepth: 1
@@ -180,7 +180,7 @@ Conceptual Structure
 
 .. raw:: html
 
-    <hr style="width:70%;height:2px;border-width:0;color:gray;background-color:black">
+    <hr style="width:80%;height:2px;border-width:0;color:gray;background-color:black">
 
 
 .. raw:: html
@@ -230,7 +230,7 @@ Intellectual Structure
 
 .. raw:: html
 
-    <hr style="width:70%;height:2px;border-width:0;color:gray;background-color:black">
+    <hr style="width:80%;height:2px;border-width:0;color:gray;background-color:black">
 
 .. toctree::
     :maxdepth: 1
@@ -259,7 +259,7 @@ Social Structure
 
 .. raw:: html
 
-    <hr style="width:70%;height:2px;border-width:0;color:gray;background-color:black">
+    <hr style="width:80%;height:2px;border-width:0;color:gray;background-color:black">
 
 .. note:: 
     A collaboration network is a generic co-occurrence network where the analized column
