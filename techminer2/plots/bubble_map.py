@@ -91,10 +91,13 @@ def bubble_map(
     # Size of node proportional to number of documents
     max_node_size = max(node_sizes)
     min_node_size = min(node_sizes)
-    node_sizes = [
-        400 + 5000 * (i - min_node_size) / (max_node_size - min_node_size)
-        for i in node_sizes
-    ]
+    if max_node_size == min_node_size:
+        node_sizes = [1000 for _ in node_sizes]
+    else:
+        node_sizes = [
+            400 + 5000 * (i - min_node_size) / (max_node_size - min_node_size)
+            for i in node_sizes
+        ]
 
     # Select node colors
     node_colors = None
