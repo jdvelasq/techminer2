@@ -17,7 +17,7 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as tick
 from matplotlib.ticker import MaxNLocator
 
-from .annual_indicators import annual_indicators
+from .indicators_api.annual_indicators import annual_indicators
 
 
 def _yaxis_format(y_value, y_position):
