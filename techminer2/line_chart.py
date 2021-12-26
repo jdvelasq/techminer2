@@ -31,7 +31,7 @@ def _yaxis_format(y_value, y_position):
 def line_chart(
     series,
     color="k",
-    figsize=(6, 6),
+    figsize=(8, 5),
     linewidth=1,
     marker="o",
     markersize=8,
@@ -61,26 +61,26 @@ def line_chart(
         xlabel = series.index.name
         xlabel = xlabel.replace("_", " ")
         xlabel = xlabel.title()
-        ax.set_xlabel(xlabel, color="dimgray")
+    ax.set_xlabel(xlabel, fontsize=7)
 
     if ylabel is None:
         ylabel = series.name
         ylabel = ylabel.replace("_", " ")
         ylabel = ylabel.title()
-        ax.set_ylabel(ylabel, color="dimgray")
+    ax.set_ylabel(ylabel, fontsize=7)
 
     ax.set_xticklabels(
         series.index.astype(str),
         rotation=90,
         horizontalalignment="center",
-        fontsize=7,
-        color="dimgray",
+        fontsize=9,
+        # color="dimgray",
     )
 
     ax.set_yticklabels(
         ax.get_yticks(),
-        fontsize=7,
-        color="dimgray",
+        fontsize=9,
+        # color="dimgray",
     )
 
     if series.dtype == np.int64:
@@ -89,11 +89,13 @@ def line_chart(
     for x in ["top", "right"]:
         ax.spines[x].set_visible(False)
 
-    ax.spines["left"].set_color("dimgray")
-    ax.spines["bottom"].set_color("dimgray")
+    # ax.spines["left"].set_color("dimgray")
+    # ax.spines["bottom"].set_color("dimgray")
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
     ax.grid(alpha=0.5, linestyle=":")
+
+    ax.tick_params(which="mayor", color="k", length=5)
 
     fig.set_tight_layout(True)
 
