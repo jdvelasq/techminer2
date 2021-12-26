@@ -141,7 +141,6 @@ from .source_local_impact import source_local_impact
 from .stacked_bar_chart import stacked_bar_chart
 from .stacked_column_chart import stacked_column_chart
 from .stemming import stemming_and, stemming_or
-from .summary_view import summary_view
 from .tf_idf_matrix import tf_idf_matrix
 from .tf_idf_matrix_svd_map import tf_idf_matrix_svd_map
 from .tf_matrix import tf_matrix
