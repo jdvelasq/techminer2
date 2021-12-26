@@ -18,8 +18,8 @@ author_keywords
 fintech                           139              1285              218
 financial technologies             28               225               41
 financial inclusion                17               339               61
-blockchain                         17               149               22
-innovation                         13               249               46
+block-chain                        17               149               22
+bank                               13               193               23
 
 """
 
@@ -43,7 +43,7 @@ def column_line_chart(
         return indicators
 
     series = indicators.num_documents.head(top_n)
-    darkness = indicators.global_citations.head(top_n)
+
     return line_chart(
         series,
         color=color,
