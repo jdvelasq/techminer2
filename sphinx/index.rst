@@ -1,8 +1,8 @@
-Techminer API for the analysis of bibliographic datasets using Python
+Techminer2: A package for the analysis of bibliographic datasets using Python
 #########################################################################################
 
-**TechMiner-API** is a package for mining relevant information about topics related to Research and 
-Development (R&D) literature extracted from bibliographical databases as Scopus. **TechMiner-API**
+**TechMiner2** is a package for mining relevant information about topics related to Research and 
+Development (R&D) literature extracted from bibliographical databases as Scopus. **TechMiner2**
 facilitates studies of systematic mapping of literature and Tech mining studies. The package can 
 be used by users with basic knowledge of Python programming. However, users with advanced 
 knowledge in programming and text mining can easily incorporate their codes to maximize the power 
@@ -20,7 +20,7 @@ of the library and develop advanced analysis. The package can be used to:
 
 * Plot heatmaps, networks and many other types of plots for analyzing data.
 
-*TechMiner* is an open source (distributed under the MIT license) and friendly-user
+**TechMiner2** is an open source (distributed under the MIT license) and friendly-user
 package developed and tested in Python version 3.6. 
 
 
@@ -75,7 +75,5 @@ package developed and tested in Python version 3.6.
     | jdvelasq@unal.edu.co
 
 
-**Indices and Tables**
 
-* :ref:`modindex`
 
