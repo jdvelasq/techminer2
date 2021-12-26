@@ -43,6 +43,7 @@ setup(
         "python-Levenshtein==0.12.2",
         "PyYAML==5.4.1",
         "wordcloud==1.5.0",
+        "ipywidgets==7.6.5",
         # not in colab:
         "cdlib==0.2.5",
         "squarify==0.4.3",
