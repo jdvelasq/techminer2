@@ -27,8 +27,8 @@ financial service                  11     2016  ...               300   4
 import matplotlib.pyplot as plt
 import numpy as np
 
-from .annual_occurrence_matrix import annual_occurrence_matrix
 from .column_indicators import column_indicators
+from .indicators_api.annual_occurrence_matrix import annual_occurrence_matrix
 
 
 def column_trends(
