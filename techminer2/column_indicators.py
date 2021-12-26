@@ -20,14 +20,13 @@ Worthington AC              2                 7                1
 from .utils import load_filtered_documents
 
 
-def column_indicators(column, sep="; ", directory="./"):
+def column_indicators(
+    column,
+    sep="; ",
+    directory="./",
+):
     """
-    Counts the number of terms by record.
-
-    :param dirpath_or_records: path to the directory or the records object
-    :param column: column to be used to count the terms
-    :param sep: separator to be used to split the column
-    :return: a pandas.Series with the number of terms by record.
+    Column Indicators
     """
 
     report = load_filtered_documents(directory)
@@ -47,6 +46,5 @@ def column_indicators(column, sep="; ", directory="./"):
     )
 
     report = report.astype(int)
-    report.sort_values(by="num_documents", ascending=False, inplace=True)
 
     return report
