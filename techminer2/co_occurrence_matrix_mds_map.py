@@ -67,14 +67,17 @@ def co_occurrence_matrix_mds_map(
     decomposed_matrix = TruncatedSVD(
         n_components=20, n_iter=svd__n_iter, random_state=random_state
     ).fit_transform(matrix)
+
     mds_matrix = MDS(
         n_components=2,
         n_init=mds__n_init,
         max_iter=mds__max_iter,
         random_state=random_state,
     ).fit_transform(decomposed_matrix)
+
     if mds_matrix.shape[0] > 150:
         mds_matrix = mds_matrix[:150, :]
+
     if isinstance(matrix.index, pd.MultiIndex):
         labels = matrix.index.get_level_values(0)
     else:
