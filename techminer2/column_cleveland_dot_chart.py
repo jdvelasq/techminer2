@@ -136,7 +136,6 @@ def column_cleveland_dot_chart(
         sort_index=sort_index,
     )
 
-    # indicators = indicators.sort_values(by=sort_metric, ascending=False)
     indicators = indicators.head(top_n)
 
     if plot is False:
