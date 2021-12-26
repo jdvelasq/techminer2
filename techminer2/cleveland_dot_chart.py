@@ -20,8 +20,6 @@ Cleveland Dot Chart
 
 """
 import matplotlib.pyplot as plt
-
-# import matplotlib.ticker as tick
 import matplotlib.ticker as plticker
 from matplotlib.ticker import MaxNLocator
 
@@ -29,7 +27,7 @@ from matplotlib.ticker import MaxNLocator
 def cleveland_dot_chart(
     series,
     color="k",
-    figsize=(10, 6),
+    figsize=(9, 6),
     markersize=60,
     title=None,
     xlabel=None,
@@ -52,6 +50,8 @@ def cleveland_dot_chart(
         zorder=10,
     )
 
+    # ax.set_xlim(0 - 0.1, max(x_data) + 0.1)
+
     loc = plticker.MultipleLocator(1)
     ax.yaxis.set_major_locator(loc)
     ax.set_ylim(-0.5, len(series) - 0.5)
@@ -61,24 +61,22 @@ def cleveland_dot_chart(
         ax.set_title(
             title,
             fontsize=12,
-            color="dimgray",
+            # color="dimgray",
             loc="left",
         )
 
     if xlabel is not None:
         ax.set_xlabel(
             xlabel,
-            fontsize=10,
-            color="dimgray",
+            fontsize=9,
+            # color="dimgray",
         )
-        # ax.xaxis.set_label_position("right")
 
     if ylabel is not None:
         ax.set_ylabel(
             ylabel,
-            fontsize=10,
-            color="dimgray",
-            # loc="right",
+            fontsize=9,
+            # color="dimgray",
         )
 
     for x in ["top", "right", "bottom"]:
@@ -86,8 +84,8 @@ def cleveland_dot_chart(
 
     ax.grid(axis="y", color="gray", linestyle=":")
     ax.spines["left"].set_color("dimgray")
-    ax.tick_params(axis="x", colors="dimgray")
-    ax.tick_params(axis="y", colors="dimgray")
+    # ax.tick_params(axis="x", colors="dimgray")
+    # ax.tick_params(axis="y", colors="dimgray")
     ax.invert_yaxis()
 
     if series.dtype == "int64":
