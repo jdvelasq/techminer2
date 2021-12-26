@@ -24,8 +24,8 @@ Dincer H       0     0     0     0     0     2
 """
 
 
-from .annual_occurrence_matrix import annual_occurrence_matrix
 from .dotted_gantt_chart import dotted_gantt_chart
+from .indicators_api.annual_occurrence_matrix import annual_occurrence_matrix
 
 
 def column_gantt_chart(
