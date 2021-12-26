@@ -27,7 +27,7 @@ from matplotlib.ticker import MaxNLocator
 def cleveland_dot_chart(
     series,
     color="k",
-    figsize=(9, 6),
+    figsize=(8, 5),
     markersize=60,
     title=None,
     xlabel=None,
@@ -82,7 +82,7 @@ def cleveland_dot_chart(
     for x in ["top", "right", "bottom"]:
         ax.spines[x].set_visible(False)
 
-    ax.grid(axis="y", color="gray", linestyle=":")
+    ax.grid(axis="y", color="gray", linestyle=":", linewidth=0.5)
     ax.spines["left"].set_color("dimgray")
     # ax.tick_params(axis="x", colors="dimgray")
     # ax.tick_params(axis="y", colors="dimgray")
