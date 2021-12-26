@@ -75,5 +75,7 @@ package developed and tested in Python version 3.6.
     | jdvelasq@unal.edu.co
 
 
+**Indices and Tables**
 
+* :ref:`modindex`
 
