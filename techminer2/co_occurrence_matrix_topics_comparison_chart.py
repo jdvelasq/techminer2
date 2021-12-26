@@ -1,5 +1,5 @@
 """
-Co-occurrence Matrix / Topics Comparison chart
+Co-occurrence Matrix / Topics Comparison Chart
 ===============================================================================
 
 
