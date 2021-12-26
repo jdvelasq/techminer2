@@ -118,7 +118,7 @@ def column_cleveland_dot_chart(
     column,
     top_n=20,
     color="k",
-    figsize=(10, 6),
+    figsize=(9, 6),
     directory="./",
     metric="num_documents",
     sort_values=None,
