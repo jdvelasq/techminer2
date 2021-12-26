@@ -32,7 +32,7 @@ def horizontal_bar_chart(
     series,
     darkness=None,
     cmap="Greys",
-    figsize=(6, 6),
+    figsize=(9, 6),
     edgecolor="k",
     linewidth=0.5,
     title=None,
@@ -73,8 +73,8 @@ def horizontal_bar_chart(
         ylabel = ylabel.replace("_", " ")
         ylabel = ylabel.title()
 
-    ax.set_xlabel(xlabel, fontsize=9)
-    ax.set_ylabel(ylabel, fontsize=9)
+    ax.set_xlabel(xlabel, fontsize=7)
+    ax.set_ylabel(ylabel, fontsize=7)
 
     yticklabels = series.index
     if yticklabels.dtype != "int64":
@@ -94,6 +94,8 @@ def horizontal_bar_chart(
 
     for x in ["top", "right", "bottom"]:
         ax.spines[x].set_visible(False)
+
+    ax.spines["left"].set_color("gray")
 
     ax.grid(axis="x", color="gray", linestyle=":")
     ax.tick_params(axis="x", labelsize=7)
