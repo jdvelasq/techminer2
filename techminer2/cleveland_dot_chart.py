@@ -68,14 +68,14 @@ def cleveland_dot_chart(
     if xlabel is not None:
         ax.set_xlabel(
             xlabel,
-            fontsize=9,
+            fontsize=7,
             # color="dimgray",
         )
 
     if ylabel is not None:
         ax.set_ylabel(
             ylabel,
-            fontsize=9,
+            fontsize=7,
             # color="dimgray",
         )
 
@@ -83,7 +83,8 @@ def cleveland_dot_chart(
         ax.spines[x].set_visible(False)
 
     ax.grid(axis="y", color="gray", linestyle=":", linewidth=0.5)
-    ax.spines["left"].set_color("dimgray")
+    ax.spines["left"].set_color("gray")
+    ax.tick_params(which="mayor", color="k", length=5)
     # ax.tick_params(axis="x", colors="dimgray")
     # ax.tick_params(axis="y", colors="dimgray")
     ax.invert_yaxis()
