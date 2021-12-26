@@ -1,8 +1,6 @@
 from .abstract_concordances import abstract_concordances
 from .abstract_screening import abstract_screening
 from .abstract_summarization import abstract_summarization
-from .annual_indicators import annual_indicators
-from .annual_occurrence_matrix import annual_occurrence_matrix
 from .annual_scientific_production import annual_scientific_production
 from .apply_thesaurus import apply_thesaurus
 from .author_local_impact import author_local_impact
@@ -48,7 +46,6 @@ from .co_occurrence_network_communities import co_occurrence_network_communities
 from .co_occurrence_network_degree_plot import co_occurrence_network_degree_plot
 from .co_occurrence_network_graph import co_occurrence_network_graph
 from .co_occurrence_network_indicators import co_occurrence_network_indicators
-from .collaboration_indicators import collaboration_indicators
 from .collaboration_network_communities import collaboration_network_communities
 from .collaboration_network_degree_plot import collaboration_network_degree_plot
 from .collaboration_network_graph import collaboration_network_graph
@@ -83,6 +80,7 @@ from .create_thesaurus import create_thesaurus
 from .cross_corr_matrix import cross_corr_matrix
 from .cross_corr_matrix_heatmap import cross_corr_matrix_heatmap
 from .cross_corr_matrix_html import cross_corr_matrix_html
+from .data import *
 from .document_indicators import document_indicators
 from .document_viewer import document_viewer
 from .dotted_gantt_chart import dotted_gantt_chart
@@ -108,8 +106,9 @@ from .growth_indicators import growth_indicators
 from .heat_map import heat_map
 from .horizontal_bar_chart import horizontal_bar_chart
 from .impact_indicators import impact_indicators
-from .import_references import import_references
-from .import_scopus_file import import_scopus_file
+from .indicators_api.annual_indicators import annual_indicators
+from .indicators_api.annual_occurrence_matrix import annual_occurrence_matrix
+from .indicators_api.collaboration_indicators import collaboration_indicators
 from .line_chart import line_chart
 from .lotka_law import lotka_law
 from .main_information import main_information
