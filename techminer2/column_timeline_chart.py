@@ -15,7 +15,7 @@ Column Timeline Chart
 pub_year          2016  2017  2018  2019  2020  2021
 author_keywords                                     
 bank                 1     1     1     3     2     5
-blockchain           0     2     3     4     2     6
+block-chain          0     2     3     4     2     6
 covid-19             0     0     0     0     2     6
 crowdfunding         0     0     2     1     2     3
 cryptocurrencies     0     0     1     3     1     3
@@ -24,7 +24,7 @@ cryptocurrencies     0     0     1     3     1     3
 
 import matplotlib.pyplot as plt
 
-from .annual_occurrence_matrix import annual_occurrence_matrix
+from .indicators_api.annual_occurrence_matrix import annual_occurrence_matrix
 
 
 def column_timeline_chart(
