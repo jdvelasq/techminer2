@@ -50,6 +50,7 @@ RUN pip3 --disable-pip-version-check --no-cache-dir install \
 RUN pip3 --disable-pip-version-check --no-cache-dir install \
     graphviz==0.10.1 \
     ipykernel==4.10.1 \
+    ipywidgets==7.6.5 \
     matplotlib==3.2.2 \
     networkx==2.6.3 \
     nltk==3.2.5 \
