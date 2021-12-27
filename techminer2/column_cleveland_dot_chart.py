@@ -109,9 +109,9 @@ Yuksel S                    2                15                0
 """
 
 
-from .cleveland_dot_chart import cleveland_dot_chart
-from .column_indicators import column_indicators
-from .column_indicators_subset import column_indicators_subset
+from .visualization_api.cleveland_dot_chart import cleveland_dot_chart
+from .indicators_api.column_indicators import column_indicators
+from .indicators_api.column_indicators_subset import column_indicators_subset
 
 
 def column_cleveland_dot_chart(

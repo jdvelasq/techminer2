@@ -17,8 +17,8 @@ Co-occurrence Network / Degree Plot
 """
 
 from .co_occurrence_matrix import co_occurrence_matrix
-from .network import network
-from .network_degree_plot import network_degree_plot
+from .network_api.network import network
+from .network_api.network_degree_plot import network_degree_plot
 
 
 def co_occurrence_network_degree_plot(

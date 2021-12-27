@@ -1,14 +1,24 @@
 """
-Networkx plot
+Network Plot
+===============================================================================
+
+>>> from techminer2 import *
+>>> directory = "/workspaces/techminer2/data/"
+>>> file_name = "/workspaces/techminer2/sphinx/images/network_plot.png"
+>>> coc_matrix = co_occurrence_matrix(column='author_keywords', min_occ=7,directory=directory)
+>>> network_ = network(coc_matrix)
+>>> network_plot(network_).savefig(file_name)
+
+.. image:: images/network_plot.png
+    :width: 700px
+    :align: center
 
 """
+from operator import itemgetter
 
 import matplotlib.pyplot as plt
-import numpy as np
-import pandas as pd
-from cdlib import algorithms
-
 import networkx as nx
+import numpy as np
 
 group_colors = [
     "tab:blue",
@@ -35,67 +45,12 @@ group_colors = [
 
 
 def network_plot(
-    nodes,
-    edges,
+    network,
     figsize=(7, 7),
     k=0.20,
     iterations=50,
     max_labels=50,
 ):
-    """
-    Plots the network.
-
-    Parameters
-    ----------
-    nodes: pandas.DataFrame
-        Nodes dataframe, with the following columns:
-            - name
-            - size
-            - group
-            - ...
-
-    edges: pandas.DataFrame
-        Edges dataframe, with the following columns:
-            - source
-            - target
-            - value
-            - group
-            - ...
-
-    figsize: tuple
-        Figure size.
-
-    k: float
-        Networkx parameter for the spring layout.
-
-    iterations: int
-        Networkx parameter for the spring layout.
-
-    max_labels: int
-        Maximum number of labels to show.
-
-    """
-
-    # creates a networkx graph
-    G = nx.Graph()
-
-    # add nodes
-    for _, row in nodes.iterrows():
-        G.add_node(
-            row["name"],
-            group=row["group"],
-            size=row["size"],
-        )
-
-    # add edges
-    for _, row in edges.iterrows():
-        G.add_edge(
-            row["source"],
-            row["target"],
-            weight=row["value"],
-            color=group_colors[row["group"]],
-            alpha=0.5,
-        )
 
     fig = plt.figure(figsize=figsize)
     ax = fig.subplots()
@@ -108,12 +63,29 @@ def network_plot(
         "alpha": 0.7,
     }
 
-    colors = [group_colors[node[1]["group"]] for node in G.nodes.data()]
-    sizes = [node[1]["size"] for node in G.nodes.data()]
-    edge_colors = nx.get_edge_attributes(G, "color").values()
-    edge_colors = ["silver"] * len(edge_colors)
+    # --------------------------------------------------------------------------------
+    G = network["G"]
+    nodes = network["nodes"]
+    edges = network["edges"]
 
+    # --------------------------------------------------------------------------------
     pos = nx.spring_layout(G, k=k, iterations=iterations)
+
+    colors = [node[1]["group"] for node in nodes]
+    colors = [group_colors[color] for color in colors]
+
+    sizes = [node[1]["size"] for node in G.nodes.data()]
+    sizes = [size / max(sizes) for size in sizes]
+    max_size = max(sizes)
+    min_size = min(sizes)
+    if max_size == min_size:
+        sizes = [500 for size in sizes]
+    else:
+        sizes = [
+            (size - min_size) / (max_size - min_size) * 1400 + 100 for size in sizes
+        ]
+
+    edge_colors = ["silver"] * len(edges)
 
     # draws the network
     nx.draw(
@@ -132,14 +104,13 @@ def network_plot(
     x_points = [value[0] for value in pos.values()]
     y_points = [value[1] for value in pos.values()]
 
-    x_points_marked = [
-        pos[label][0]
-        for label in nodes.sort_values("size", ascending=False).name.head(max_labels)
+    size = [
+        (node[0], node[1]["size"], pos[node[0]][0], pos[node[0]][1])
+        for node in G.nodes.data()
     ]
-    y_points_marked = [
-        pos[label][1]
-        for label in nodes.sort_values("size", ascending=False).name.head(max_labels)
-    ]
+    size = sorted(size, key=itemgetter(1), reverse=True)
+    x_points_marked = [value[2] for value in size[:max_labels]]
+    y_points_marked = [value[3] for value in size[:max_labels]]
 
     ax.scatter(
         x_points_marked,
@@ -163,7 +134,9 @@ def network_plot(
     ry = factor * (ylim[1] - ylim[0])
     radious = np.sqrt(rx ** 2 + ry ** 2)
 
-    for label in nodes.sort_values("size", ascending=False).name.head(max_labels):
+    for label in size[:max_labels]:
+
+        label = label[0]
 
         x_point, y_point = pos[label]
 

@@ -18,8 +18,8 @@ Arner DW et al, 2020, EUR BUS ORG LAW REV                   26  ...  0.019136
 """
 
 from .co_citation_matrix import co_citation_matrix
-from .network import network
-from .network_indicators import network_indicators
+from .network_api.network import network
+from .network_api.network_indicators import network_indicators
 
 
 def co_citation_network_indicators(

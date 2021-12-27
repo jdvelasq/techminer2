@@ -24,8 +24,8 @@ Name: global_citations, dtype: int64
 
 """
 
-from .cleveland_dot_chart import cleveland_dot_chart
-from .column_indicators import column_indicators
+from .visualization_api.cleveland_dot_chart import cleveland_dot_chart
+from .indicators_api.column_indicators import column_indicators
 
 
 def column_global_citations(

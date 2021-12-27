@@ -23,8 +23,8 @@ Builds a coupling network from a coupling matrix.
 
 
 from .coupling_matrix import coupling_matrix
-from .network import network
-from .network_plot import network_plot
+from .network_api.network import network
+from .network_api.network_plot import network_plot
 from .utils import load_all_documents, records2documents
 
 

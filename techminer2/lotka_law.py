@@ -28,7 +28,7 @@ Lotka's Law
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from .column_indicators import column_indicators
+from .indicators_api.column_indicators import column_indicators
 from .utils import *
 
 

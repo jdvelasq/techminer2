@@ -24,8 +24,8 @@ innovation                         13               249               46
 """
 
 
-from .column_indicators import column_indicators
-from .tree_map import tree_map
+from .indicators_api.column_indicators import column_indicators
+from .visualization_api.tree_map import tree_map
 
 
 def column_tree_map(

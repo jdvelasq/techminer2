@@ -23,8 +23,8 @@ bank                               13               193               23
 
 """
 
-from .column_indicators import column_indicators
-from .line_chart import line_chart
+from .indicators_api.column_indicators import column_indicators
+from .visualization_api.line_chart import line_chart
 
 
 def column_line_chart(

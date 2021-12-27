@@ -10,7 +10,7 @@ from os.path import dirname, isfile, join
 
 import pandas as pd
 
-from ..utils import logging
+from .. import _logging
 from .extract_country import extract_country
 from .thesaurus import Thesaurus, load_file_as_dict, read_textfile
 
@@ -182,7 +182,7 @@ def create_institutions_thesaurus(directory):
 
         return None
 
-    logging.info("Creating institutions thesaurus ...")
+    _logging.info("Creating institutions thesaurus ...")
 
     if directory[-1] != "/":
         directory = directory + "/"
@@ -260,7 +260,7 @@ def create_institutions_thesaurus(directory):
     #
     x["country"] = x.affiliation.map(extract_country, na_action="ignore")
     if any(x.country.isna()):
-        logging.info(
+        _logging.info(
             "Affiliations without country detected - check file "
             + directory
             + "ignored_affiliations.txt"
@@ -284,7 +284,7 @@ def create_institutions_thesaurus(directory):
     #
     x["key"] = x.affiliation.map(search_name)
     if any(x.key.isna()):
-        logging.info(
+        _logging.info(
             "Affiliations without country detected - check file "
             + directory
             + "ignored_affiliations.txt"
@@ -512,4 +512,4 @@ def create_institutions_thesaurus(directory):
         thesaurus_file
     )
 
-    logging.info(f"Thesaurus file '{thesaurus_file}' created.")
+    _logging.info(f"Thesaurus file '{thesaurus_file}' created.")

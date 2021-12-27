@@ -14,7 +14,7 @@ Network Map
     :align: center
 
 """
-from .plots.bubble_map import bubble_map
+from ..visualization_api.bubble_map import bubble_map
 
 
 def network_map(

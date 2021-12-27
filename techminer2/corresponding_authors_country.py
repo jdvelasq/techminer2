@@ -26,7 +26,7 @@ australia                        4                    14   3.500000
 """
 
 from .indicators_api.collaboration_indicators import collaboration_indicators
-from .stacked_bar_chart import stacked_bar_chart
+from .visualization_api.stacked_bar_chart import stacked_bar_chart
 
 
 def corresponding_authors_country(top_n=20, directory="./", plot=True):

@@ -36,8 +36,8 @@ from os.path import join
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from .cleveland_dot_chart import cleveland_dot_chart
-from .column_indicators import column_indicators
+from .visualization_api.cleveland_dot_chart import cleveland_dot_chart
+from .indicators_api.column_indicators import column_indicators
 
 
 def most_local_cited_sources(

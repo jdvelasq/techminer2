@@ -25,8 +25,8 @@ innovation                         13               249               46
 
 import os
 
-from .column_indicators import column_indicators
-from .pie_chart import pie_chart
+from .indicators_api.column_indicators import column_indicators
+from .visualization_api.pie_chart import pie_chart
 
 
 def column_pie_chart(

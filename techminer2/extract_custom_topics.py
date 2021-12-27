@@ -44,8 +44,8 @@ fintech adoption                                  0                  1
 
 """
 
-from .growth_indicators import growth_indicators
-from .stacked_bar_chart import stacked_bar_chart
+from .indicators_api.growth_indicators import growth_indicators
+from .visualization_api.stacked_bar_chart import stacked_bar_chart
 
 
 def extract_custom_topics(

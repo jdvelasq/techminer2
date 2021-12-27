@@ -25,8 +25,8 @@ innovation                         13               249               46
 
 import os
 
-from .column_indicators import column_indicators
-from .word_cloud import word_cloud
+from .indicators_api.column_indicators import column_indicators
+from .visualization_api.word_cloud import word_cloud
 
 
 def column_word_cloud(

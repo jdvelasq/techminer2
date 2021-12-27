@@ -27,8 +27,8 @@ J ASIAN FINANC ECON BUS              3  ...                  5.33
 """
 
 
-from .cleveland_dot_chart import cleveland_dot_chart
-from .impact_indicators import impact_indicators
+from .visualization_api.cleveland_dot_chart import cleveland_dot_chart
+from .indicators_api.impact_indicators import impact_indicators
 
 
 def column_h_index(

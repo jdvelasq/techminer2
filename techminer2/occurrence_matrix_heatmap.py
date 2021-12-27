@@ -21,8 +21,8 @@ Occurrence Matrix / Heatmap
 
 """
 
-from .heat_map import heat_map
 from .occurrence_matrix import occurrence_matrix
+from .visualization_api.heat_map import heat_map
 
 
 def occurrence_matrix_heatmap(

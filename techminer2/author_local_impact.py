@@ -27,8 +27,8 @@ Khan S                2  ...                 18.50
 """
 
 
-from .cleveland_dot_chart import cleveland_dot_chart
-from .impact_indicators import impact_indicators
+from .visualization_api.cleveland_dot_chart import cleveland_dot_chart
+from .indicators_api.impact_indicators import impact_indicators
 
 
 def author_local_impact(

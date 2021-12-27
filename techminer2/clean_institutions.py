@@ -19,6 +19,8 @@ the same directory as the documents.csv file.
 import os
 import sys
 
+from . import _logging
+
 currentdir = os.getcwd()
 parentdir = os.path.dirname(currentdir)
 sys.path.append(parentdir)
@@ -29,8 +31,8 @@ import os
 
 import pandas as pd
 
-from .text.thesaurus import read_textfile
-from .utils import logging, map_
+from .text_api.thesaurus import read_textfile
+from .utils import map_
 
 
 def clean_institutions(directory):
@@ -40,7 +42,7 @@ def clean_institutions(directory):
 
     """
 
-    logging.info("Applying thesaurus to institutions ...")
+    _logging.info("Applying thesaurus to institutions ...")
 
     # --------------------------------------------------------------------------
     # Loads documents.csv
@@ -70,12 +72,12 @@ def clean_institutions(directory):
     #
     # Cleaning
     #
-    logging.info("Extract and cleaning institutions.")
+    _logging.info("Extract and cleaning institutions.")
     documents["institutions"] = map_(
         documents, "institutions", lambda w: th.apply_as_dict(w, strict=True)
     )
 
-    logging.info("Extracting institution of first author ...")
+    _logging.info("Extracting institution of first author ...")
     documents["institution_1st_author"] = documents.institutions.map(
         lambda w: w.split(";")[0] if isinstance(w, str) else w
     )
@@ -88,4 +90,4 @@ def clean_institutions(directory):
         index=False,
     )
     # --------------------------------------------------------------------------
-    logging.info("The thesaurus was applied to institutions.")
+    _logging.info("The thesaurus was applied to institutions.")

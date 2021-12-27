@@ -21,8 +21,8 @@ Occurrence Matrix / Bubble Chart
 
 """
 
-from .bubble_chart import bubble_chart
 from .occurrence_matrix import occurrence_matrix
+from .visualization_api.bubble_chart import bubble_chart
 
 
 def occurrence_matrix_bubble_chart(

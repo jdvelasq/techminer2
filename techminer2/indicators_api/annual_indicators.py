@@ -25,7 +25,7 @@ pub_year                 ...
 
 """
 
-from ..utils import load_filtered_documents
+from .utils import load_filtered_documents
 
 
 def annual_indicators(directory="./"):

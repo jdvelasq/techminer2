@@ -26,8 +26,8 @@ bank                              6                  7
 
 """
 
-from .growth_indicators import growth_indicators
-from .stacked_bar_chart import stacked_bar_chart
+from .indicators_api.growth_indicators import growth_indicators
+from .visualization_api.stacked_bar_chart import stacked_bar_chart
 
 
 def column_top_topics_chart(

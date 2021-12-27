@@ -1,1 +1,0 @@
-from .correspondence_analysis import CorrespondenceAnalysis

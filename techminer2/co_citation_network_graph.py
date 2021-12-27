@@ -17,8 +17,8 @@ Co-citation Network / Graph
 """
 
 from .co_citation_matrix import co_citation_matrix
-from .network import network
-from .network_plot import network_plot
+from .network_api.network import network
+from .network_api.network_plot import network_plot
 
 
 def co_citation_network_graph(

@@ -18,7 +18,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 
-from .utils.multiindex2text import multindex2text
+from .._multiindex2text import multindex2text
 
 TEXTLEN = 40
 

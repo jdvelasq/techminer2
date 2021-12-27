@@ -21,7 +21,7 @@ Cross-correlation Matrix / Heatmap
 """
 
 from .cross_corr_matrix import cross_corr_matrix
-from .heat_map import heat_map
+from .visualization_api.heat_map import heat_map
 
 
 def cross_corr_matrix_heatmap(

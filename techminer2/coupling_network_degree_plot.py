@@ -22,8 +22,8 @@ Builds a coupling network from a coupling matrix.
 import pandas as pd
 
 from .coupling_matrix import coupling_matrix
-from .network import network
-from .network_degree_plot import network_degree_plot
+from .network_api.network import network
+from .network_api.network_degree_plot import network_degree_plot
 from .utils import load_all_documents, records2documents
 
 

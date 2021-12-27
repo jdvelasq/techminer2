@@ -20,7 +20,7 @@ Co-occurrence Matrix / Heatmap
 """
 
 from .co_occurrence_matrix import co_occurrence_matrix
-from .heat_map import heat_map
+from .visualization_api.heat_map import heat_map
 
 
 def co_occurrence_matrix_heatmap(

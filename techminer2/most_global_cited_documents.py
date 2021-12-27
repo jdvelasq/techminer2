@@ -27,8 +27,8 @@ Haddad C et al, 2019, SMALL BUS ECON           10.1007/S11187-018-9991-X  ...   
 """
 
 
-from .cleveland_dot_chart import cleveland_dot_chart
-from .document_indicators import document_indicators
+from .visualization_api.cleveland_dot_chart import cleveland_dot_chart
+from .indicators_api.document_indicators import document_indicators
 from .utils import load_filtered_documents
 
 

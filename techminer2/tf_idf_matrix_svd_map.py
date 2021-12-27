@@ -50,7 +50,7 @@ innovating              0.355488  0.294079  ...  0.014058 -0.015232
 import pandas as pd
 from sklearn.decomposition import TruncatedSVD
 
-from .map_chart import map_chart
+from .visualization_api.map_chart import map_chart
 from .tf_idf_matrix import tf_idf_matrix
 
 

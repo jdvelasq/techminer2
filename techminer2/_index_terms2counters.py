@@ -5,7 +5,7 @@ Adds counter to axis
 import numpy as np
 import pandas as pd
 
-from .explode import explode
+from ._explode import explode
 from .load_filtered_documents import load_filtered_documents
 
 

@@ -57,14 +57,16 @@ from nltk.tokenize import sent_tokenize
 from textblob import TextBlob
 from tqdm import tqdm
 
-from ..clean_institutions import clean_institutions
-from ..clean_keywords import clean_keywords
-from ..text import (
+from . import _logging
+
+from .clean_institutions import clean_institutions
+from .clean_keywords import clean_keywords
+from .text_api import (
     create_institutions_thesaurus,
     create_keywords_thesaurus,
     extract_country,
 )
-from ..utils import logging, map_
+from .utils import map_
 
 # -----< Dataset Trasformations >----------------------------------------------
 
@@ -469,7 +471,7 @@ def _report_duplicate_titles(raw_data, directory):
         duplicates = raw_data[duplicates].copy()
         duplicates = duplicates.sort_values(by=["document_title"])
         duplicates.to_csv(file_name, sep=",", encoding="utf-8", index=False)
-        logging.info(
+        _logging.info(
             f"Duplicate rows found in {directory}documents.csv - Records saved to {file_name}"
         )
 
@@ -495,7 +497,7 @@ def _create_record_no(documents):
 def _create_local_references_using_doi(documents, disable_progress_bar=False):
 
     if "global_references" in documents.columns:
-        logging.info("Searching local references using DOI ...")
+        _logging.info("Searching local references using DOI ...")
         documents = documents.copy()
         with tqdm(total=len(documents.doi), disable=disable_progress_bar) as pbar:
             for i_index, doi in zip(documents.index, documents.doi):
@@ -515,7 +517,7 @@ def _create_local_references_using_doi(documents, disable_progress_bar=False):
 def _create_local_references_using_title(documents, disable_progress_bar=False):
 
     if "global_references" in documents.columns:
-        logging.info("Searching local references using document titles ...")
+        _logging.info("Searching local references using document titles ...")
         documents = documents.copy()
 
         with tqdm(
@@ -552,7 +554,7 @@ def _create_local_references_using_title(documents, disable_progress_bar=False):
 
 
 def _consolidate_local_references(documents):
-    logging.info("Consolidating local references ...")
+    _logging.info("Consolidating local references ...")
     documents["local_references"] = documents.local_references.apply(
         lambda x: sorted(set(x))
     )
@@ -567,7 +569,7 @@ def _compute_local_citations(documents):
     Computes local citations.
 
     """
-    logging.info("Computing local citations ...")
+    _logging.info("Computing local citations ...")
 
     documents = documents.assign(
         local_references=[
@@ -602,7 +604,7 @@ def _compute_bradford_law_zones(documents):
     Computes bradford law zones.
 
     """
-    logging.info("Computing Bradford Law Zones ...")
+    _logging.info("Computing Bradford Law Zones ...")
     documents = documents.copy()
 
     # Counts number of documents per source_name
@@ -761,7 +763,7 @@ def _create_abstracts_csv(documents, directory):
         # save to disk
         file_name = join(directory, "abstracts.csv")
         abstracts.to_csv(file_name, index=False)
-        logging.info(f"Main abstract texts saved to {file_name}")
+        _logging.info(f"Main abstract texts saved to {file_name}")
 
 
 def _load_raw_data_file(file_name):
@@ -773,7 +775,7 @@ def _load_raw_data_file(file_name):
         error_bad_lines=False,
         warn_bad_lines=True,
     )
-    logging.info(f"{pdf.shape[0]} raw records found in {file_name}.")
+    _logging.info(f"{pdf.shape[0]} raw records found in {file_name}.")
     return pdf
 
 
@@ -893,15 +895,15 @@ def import_scopus_file(
     documents = _compute_bradford_law_zones(documents)
     filename = join(directory, "documents.csv")
     documents.to_csv(filename, sep=",", encoding="utf-8", index=False)
-    logging.info(f"Documents saved/merged to '{filename}'")
+    _logging.info(f"Documents saved/merged to '{filename}'")
     # -----------------------------------------------------------------------------------
-    logging.info("Post-processing docuemnts ...")
+    _logging.info("Post-processing docuemnts ...")
     create_institutions_thesaurus(directory=directory)
     create_keywords_thesaurus(directory=directory)
     clean_institutions(directory=directory)
     clean_keywords(directory=directory)
     # -----------------------------------------------------------------------------------
-    logging.info("Process finished!!!")
+    _logging.info("Process finished!!!")
 
 
 # from tqdm import tqdm

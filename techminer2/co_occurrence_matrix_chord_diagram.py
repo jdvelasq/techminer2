@@ -22,8 +22,8 @@ Co-occurrence Matrix / Chord Diagram
 """
 
 
-from .chord_diagram import ChordDiagram
 from .co_occurrence_matrix import co_occurrence_matrix
+from .visualization_api.chord_diagram import ChordDiagram
 
 
 def co_occurrence_matrix_chord_diagram(

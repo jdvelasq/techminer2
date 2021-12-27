@@ -29,7 +29,7 @@ import numpy as np
 import pandas as pd
 from matplotlib.ticker import AutoMinorLocator
 
-from .column_indicators_by_year import column_indicators_by_year
+from .indicators_api.column_indicators_by_year import column_indicators_by_year
 
 
 def column_dynamics(column, top_n=10, figsize=(8, 6), directory="./", plot=True):

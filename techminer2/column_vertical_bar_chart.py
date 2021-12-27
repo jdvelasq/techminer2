@@ -25,8 +25,8 @@ innovation                         13               249               46
 
 import os
 
-from .column_indicators import column_indicators
-from .vertical_bar_chart import vertical_bar_chart
+from .indicators_api.column_indicators import column_indicators
+from .visualization_api.vertical_bar_chart import vertical_bar_chart
 
 
 def column_vertical_bar_chart(

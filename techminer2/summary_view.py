@@ -52,7 +52,7 @@ Summary View
 
 import pandas as pd
 
-from ..utils import load_filtered_documents
+from .utils import load_filtered_documents
 
 
 def summary_view(directory="./"):

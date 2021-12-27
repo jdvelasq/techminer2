@@ -25,7 +25,7 @@ from os.path import dirname, isfile, join
 import numpy as np
 from tqdm import tqdm
 
-from ..utils import logging
+from . import _logging
 from .import_scopus_file import (
     _complete_iso_source_name_colum,
     _create_document_id,
@@ -47,7 +47,7 @@ def _create_references_file(
     documents, references, directory, disable_progress_bar=False
 ):
 
-    logging.info("Creating references file")
+    _logging.info("Creating references file")
     references = references.copy()
     references = references.assign(authors=references.authors.str.lower())
 
@@ -133,7 +133,7 @@ def _create_references_file(
     cited_references = cited_references.sort_values(["citing_id", "cited_id"])
     references_file = join(directory, "cited_references_table.csv")
     cited_references.to_csv(references_file, index=False)
-    logging.info(f"References table saved to {references_file}")
+    _logging.info(f"References table saved to {references_file}")
 
     return cited_references
 
@@ -221,4 +221,4 @@ def import_references(
 
     file_name = join(directory, "references.csv")
     references.to_csv(file_name, index=False)
-    logging.info(f"References table saved to {file_name}")
+    _logging.info(f"References table saved to {file_name}")
