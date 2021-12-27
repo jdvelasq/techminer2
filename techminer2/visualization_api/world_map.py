@@ -46,7 +46,9 @@ def world_map(
     )
 
     module_path = dirname(__file__)
-    with open(join(module_path, "files/worldmap.data"), "r", encoding="utf-8") as file:
+    with open(
+        join(module_path, "../files/worldmap.data"), "r", encoding="utf-8"
+    ) as file:
         countries = json.load(file)
 
     for country in countries.keys():

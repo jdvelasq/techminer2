@@ -13,15 +13,15 @@ Most Global Cited Documents
     :align: center
 
 >>> most_global_cited_documents(directory=directory, plot=False).head()
-                                                                     doi  ...  global_citations_per_year
-document_id                                                               ...                           
-Gomber P et al, 2018, J MANAGE INF SYST    10.1080/07421222.2018.1440766  ...                  55.000000
-Gabor D et al, 2017, NEW POLIT ECON        10.1080/13563467.2017.1259298  ...                  29.200000
-Schueffel P et al, 2016, J INNOV MANAG   10.24840/2183-0606_004.004_0004  ...                  17.666667
-Leong C et al, 2017, INT J INF MANAGE    10.1016/J.IJINFOMGT.2016.11.006  ...                  20.200000
-Haddad C et al, 2019, SMALL BUS ECON           10.1007/S11187-018-9991-X  ...                  32.333333
+                                                    global_citations  ...                          doi
+document_id                                                           ...                             
+Abdullah EME et al, 2018, INT J ENG TECHNOL                        8  ...  10.14419/IJET.V7I2.29.13140
+Abu Daqar MAM et al, 2020, BANKS BANK SYST                         2  ...   10.21511/BBS.15(3).2020.03
+Acar O et al, 2019, PROCEDIA COMPUT SCI                           10  ...  10.1016/J.PROCS.2019.09.138
+Ahern D et al, 2021, EUR BUS ORG LAW REV                           0  ...   10.1007/S40804-021-00217-Z
+Al Nawayseh MK et al, 2020, J OPEN INNOV: TECHN...                10  ...        10.3390/JOITMC6040153
 <BLANKLINE>
-[5 rows x 3 columns]
+[5 rows x 5 columns]
 
 
 """
@@ -40,39 +40,20 @@ def most_global_cited_documents(
     plot=True,
 ):
 
-    indicators = document_indicators(
-        global_citations=True,
-        normalized_citations=False,
-        top_n=None,
-        directory=directory,
-    )
-    indicators = indicators.set_index("document_id")
+    indicators = document_indicators(directory=directory)
 
     if plot is False:
-        indicators.pop("authors")
-        indicators.pop("document_title")
-        indicators.pop("source_name")
-        indicators.pop("iso_source_name")
-        indicators.pop("record_no")
-
-        documents = load_filtered_documents(directory=directory)
-        max_year = documents.pub_year.max()
-        indicators = indicators.assign(
-            global_citations_per_year=indicators.global_citations
-            / (max_year - indicators.pub_year + 1)
-        )
-        indicators.pop("pub_year")
-
         return indicators
 
-    indicators = indicators.global_citations
+    indicators = indicators.sort_values(by="global_citations", ascending=False)
     indicators = indicators.head(top_n)
+    indicators = indicators.global_citations
 
     return cleveland_dot_chart(
         indicators,
         figsize=figsize,
         color=color,
-        title="Most Global Cited Documents",
-        xlabel="Total Citations",
+        title="Most Local Cited Documents",
+        xlabel="Local Citations",
         ylabel="Document",
     )

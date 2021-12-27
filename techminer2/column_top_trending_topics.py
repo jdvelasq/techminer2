@@ -26,10 +26,10 @@ average growth rate.
 ...     plot=False,
 ... ).head()
 fintech                   21.5
-financial inclusion        4.0
 financial technologies     4.0
+financial inclusion        4.0
 covid-19                   3.0
-regulation                 2.5
+regulating                 2.5
 Name: average_growth_rate, dtype: float64
 
 """

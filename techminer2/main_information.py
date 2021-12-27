@@ -37,15 +37,21 @@ AUTHORS        Authors:                                        639
                Countries:                                       70
                Countries (1st author):                          53
 KEYWORDS       Raw author keywords:                            709
-               Cleaned author keywords:                        666
+               Cleaned author keywords:                        663
                Raw index keywords:                             607
-               Cleaned index keywords:                         594
+               Cleaned index keywords:                         591
 OTHERS         document_id                                     246
                iso_source_name                                 145
+               nlp_abstract                                   3675
+               nlp_document_title                              568
+               nlp_phrases                                    4705
                num_global_references                           108
                page_start                                      123
                pubmed_id                                         4
                raw_authors_names                               635
+               raw_nlp_abstract                               3841
+               raw_nlp_document_title                          586
+               raw_nlp_phrases                                5058
                volume                                           80
 
 

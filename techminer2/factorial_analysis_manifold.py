@@ -37,21 +37,21 @@ Based on the bibliometrix/R/conceptualStructure.R code.
 >>> factorial_analyzer.data().head()
                                      Dim-1       Dim-2  Cluster
 author_keywords        #d  #c                                  
-fintech                139 1285  21.789293  133.502844        1
-financial technologies 28  225   23.214658   13.359314        3
-financial inclusion    17  339  -14.080205   11.401536        2
-blockchain             17  149   -4.997082   15.544741        2
-innovation             13  249   13.538624   -4.960027        3
+fintech                139 1285  20.418893  133.715387        1
+financial technologies 28  225   23.598669   12.903288        3
+financial inclusion    17  339  -14.816283   10.690490        2
+block-chain            17  149   -5.769834   15.363572        2
+innovating             13  249   13.479658   -3.236222        3
 
 
 >>> factorial_analyzer.cluster_members().head()
                            CLTR_0  ...                           CLTR_3
 rn                                 ...                                 
-0      financial service 011:0300  ...  financial technologies 028:0225
-1           crowdfunding 008:0116  ...              innovation 013:0249
-2   peer-to-peer lending 008:0073  ...                    bank 012:0185
-3   financial innovation 008:0044  ...                                 
-4               covid-19 008:0036  ...                                 
+0           crowdfunding 008:0116  ...  financial technologies 028:0225
+1   peer-to-peer lending 008:0073  ...              innovating 013:0249
+2               covid-19 008:0036  ...                    bank 012:0185
+3             technology 007:0192  ...                                 
+4               start-up 007:0141  ...                                 
 <BLANKLINE>
 [5 rows x 4 columns]
 

@@ -57,9 +57,9 @@ from nltk.tokenize import sent_tokenize
 from textblob import TextBlob
 from tqdm import tqdm
 
-from .common import logging
 from .clean_institutions import clean_institutions
 from .clean_keywords import clean_keywords
+from .common import logging
 from .common.map_ import map_
 from .text_api import (
     create_institutions_thesaurus,
@@ -73,7 +73,7 @@ from .text_api import (
 def _delete_and_rename_columns(documents):
     documents = documents.copy()
     module_path = dirname(__file__)
-    file_path = join(module_path, "../files/scopus2tags.csv")
+    file_path = join(module_path, "files/scopus2tags.csv")
 
     columns_to_tags = {}
     columns_to_delete = []
@@ -352,7 +352,7 @@ def _search_for_new_iso_source_name(documents):
 
         # adds the abbreviations the the current file
         module_path = dirname(__file__)
-        file_path = join(module_path, "../files/iso_source_names.csv")
+        file_path = join(module_path, "files/iso_source_names.csv")
         pdf = pd.read_csv(file_path, sep=",")
         pdf = pd.concat([pdf, current_iso_names])
         pdf = pdf.sort_values(by=["source_name", "iso_source_name"])
@@ -369,7 +369,7 @@ def _complete_iso_source_name_colum(documents):
         # to translate source names to iso source names
         #
         module_path = dirname(__file__)
-        file_path = join(module_path, "../files/iso_source_names.csv")
+        file_path = join(module_path, "files/iso_source_names.csv")
         pdf = pd.read_csv(file_path, sep=",")
         existent_names = dict(zip(pdf.source_name, pdf.iso_source_name))
 

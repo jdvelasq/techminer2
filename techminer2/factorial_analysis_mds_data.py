@@ -12,13 +12,13 @@ Factorial analysis using MDS and agglomerative clustering / Data
 ...     n_clusters=4, 
 ...     directory=directory,
 ... ).head()
-                                      Dim-1      Dim-2  Cluster
+                                     Dim-1       Dim-2  Cluster
 author_keywords        #d  #c                                  
-fintech                139 1285 -140.731033 -10.443134        3
-financial technologies 28  225   -30.071916   0.960073        1
-financial inclusion    17  339    -9.693089 -19.124404        1
-blockchain             17  149   -15.865792 -13.315312        1
-innovation             13  249   -12.162853   9.074538        0
+fintech                139 1285  18.720838  139.915120        3
+financial technologies 28  225   22.666187   20.337616        1
+financial inclusion    17  339  -14.225525   15.898773        2
+block-chain            17  149   -6.146172   19.745569        2
+innovating             13  249   14.588923    5.253269        1
 
 
 """

@@ -4,23 +4,20 @@ Thematic Map / Communities
 
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
->>> thematic_map_communities('author_keywords', min_occ=4, directory=directory)
-cluster                     CLUST_0  ...                  CLUST_4
-rn                                   ...                         
-0                  fintech 139:1285  ...            risk 007:0015
-1               innovation 013:0249  ...  perceived risk 006:0016
-2                     bank 012:0185  ...           trust 005:0018
-3        financial service 011:0300  ...    peer-to-peer 004:0018
-4               technology 007:0192  ...                         
-5                  finance 007:0052  ...                         
-6           business model 006:0174  ...                         
-7          venture capital 005:0055  ...                         
-8                  startup 004:0104  ...                         
-9              retail bank 004:0056  ...                         
-10               indonesia 004:0010  ...                         
-11                adoption 004:0065  ...                         
+>>> thematic_map_communities(
+...     'author_keywords', 
+...     min_occ=4, 
+...     directory=directory,
+... ).head()
+cluster                     CLUST_0  ...                    CLUST_4
+rn                                   ...                           
+0                  fintech 139:1285  ...       block-chain 017:0149
+1               innovating 013:0249  ...  cryptocurrencies 008:0036
+2                     bank 012:0185  ...    smart contract 004:0018
+3               regulating 011:0084  ...           bitcoin 003:0007
+4        financial service 011:0300  ...                           
 <BLANKLINE>
-[12 rows x 5 columns]
+[5 rows x 5 columns]
 
 """
 

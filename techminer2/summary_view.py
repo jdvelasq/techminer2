@@ -3,7 +3,8 @@ Summary View
 ===============================================================================
 
 >>> from techminer2 import *
->>> summary_view("/workspaces/techminer2/data/")
+>>> directory = "/workspaces/techminer2/data/"
+>>> summary_view(directory)
                     column  number of terms coverage (%)
 0                 abstract              248      100.00%
 1             affiliations              244       98.39%

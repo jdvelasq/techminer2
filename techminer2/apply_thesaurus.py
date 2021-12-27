@@ -12,7 +12,8 @@ Apply Thesaurus
 ...     directory=directory,
 ... )
 - INFO - Creating thesaurus ...
-- INFO - Thesaurus file '/workspaces/techminer-api/data/test_thesaurus.txt' created.
+- INFO - Thesaurus file '/workspaces/techminer2/data/test_thesaurus.txt' created.
+
 >>> apply_thesaurus(
 ...     thesaurus_file="keywords.txt", 
 ...     input_column="author_keywords",

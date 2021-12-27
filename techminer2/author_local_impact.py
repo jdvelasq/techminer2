@@ -7,14 +7,23 @@ Author Local Impact
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
 >>> file_name = "/workspaces/techminer2/sphinx/images/author_local_impact.png"
->>> author_local_impact(impact_measure='h_index', top_n=20, directory=directory).savefig(file_name)
+>>> author_local_impact(
+...     impact_measure='h_index', 
+...     top_n=20, 
+...     directory=directory,
+... ).savefig(file_name)
 
 .. image:: images/author_local_impact.png
     :width: 700px
     :align: center
 
 
->>> author_local_impact(impact_measure='h_index', top_n=20, directory=directory, plot=False).head()
+>>> author_local_impact(
+...     impact_measure='h_index', 
+...     top_n=20, 
+...     directory=directory, 
+...     plot=False,
+... ).head()
           num_documents  ...  avg_global_citations
 Wojcik D              5  ...                  3.80
 Hornuf L              3  ...                 36.67
@@ -27,8 +36,8 @@ Khan S                2  ...                 18.50
 """
 
 
-from .visualization_api.cleveland_dot_chart import cleveland_dot_chart
 from .indicators_api.impact_indicators import impact_indicators
+from .visualization_api.cleveland_dot_chart import cleveland_dot_chart
 
 
 def author_local_impact(

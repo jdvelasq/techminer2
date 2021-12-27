@@ -73,7 +73,13 @@ def _lotka_core_authors(directory="./"):
         str(round(100 * a / sum(z["Num Authors"]), 2)) + " %"
         for a in z["Acum Num Authors"]
     ]
-    m = explode(documents[["authors", "record_no"]], "authors", sep="; ")
+    # ---- remove explode ------------------------------------------------------------>>>
+    # m = explode(documents[["authors", "record_no"]], "authors", sep="; ")
+    m = documents[["authors", "record_no"]].copy()
+    m["authors"] = m["authors"].str.split(";")
+    m = m.explode("authors")
+    m["authors"] = m["authors"].str.strip()
+    # <<<--------------------------------------------------------------------------------
     m = m.dropna()
     m["Documents_written"] = m.authors.map(lambda w: authors_dict[w])
 

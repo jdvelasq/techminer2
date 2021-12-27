@@ -5,7 +5,8 @@ Annual Scientific Production
 
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
->>> annual_scientific_production(directory).savefig("/workspaces/techminer2/sphinx/images/annual_scientific_production.png")
+>>> file_name = "/workspaces/techminer2/sphinx/images/annual_scientific_production.png"
+>>> annual_scientific_production(directory).savefig(file_name)
 
 .. image:: images/annual_scientific_production.png
     :width: 700px

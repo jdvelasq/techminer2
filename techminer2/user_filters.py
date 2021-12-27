@@ -6,16 +6,16 @@ Allow users to select docuemnts to be mined.
 
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
->>> user_filters(directory)
+>>> user_filters(directory, book=True,  erratum=True, first_year=2016, last_year=2021)
 ---< Document >-------------------------------------------------
-               First year : 2022
-                Last year : 2015
-         Global citations : 201
+               First year : 2021
+                Last year : 2016
+         Global citations : 220
 ---< User Filters >---------------------------------------------
-               First year : 2015
-                Last year : 2022
+               First year : 2016
+                Last year : 2021
             Min citations : 0
-            Max citations : 201
+            Max citations : 220
            Bradford zones : 3
   Selected document types : article
                           : book
@@ -23,31 +23,76 @@ Allow users to select docuemnts to be mined.
                           : conference_paper
                           : editorial
                           : erratum
-                          : letter
                           : note
                           : review
                           : short_survey
->>> user_filters(directory, erratum=False,  letter=False, first_year=2016, last_year=2020)
+
+>>> user_filters(directory)
 ---< Document >-------------------------------------------------
-               First year : 2022
-                Last year : 2015
-         Global citations : 201
+               First year : 2021
+                Last year : 2016
+         Global citations : 220
 ---< User Filters >---------------------------------------------
                First year : 2016
-                Last year : 2020
+                Last year : 2021
             Min citations : 0
-            Max citations : 201
+            Max citations : 220
            Bradford zones : 3
   Selected document types : article
                           : book
                           : book_chapter
                           : conference_paper
                           : editorial
+                          : erratum
                           : note
                           : review
                           : short_survey
- Discarded document types : erratum
-                          : letter
+
+>>> user_filters(directory, book=False,  erratum=False, first_year=2017, last_year=2020)
+---< Document >-------------------------------------------------
+               First year : 2021
+                Last year : 2016
+         Global citations : 220
+---< User Filters >---------------------------------------------
+               First year : 2017
+                Last year : 2020
+            Min citations : 0
+            Max citations : 220
+           Bradford zones : 3
+  Selected document types : article
+                          : book_chapter
+                          : conference_paper
+                          : editorial
+                          : note
+                          : review
+                          : short_survey
+ Discarded document types : book
+                          : erratum
+
+
+
+>>> user_filters(directory, book=True,  erratum=True, first_year=2016, last_year=2021)
+---< Document >-------------------------------------------------
+               First year : 2021
+                Last year : 2016
+         Global citations : 220
+---< User Filters >---------------------------------------------
+               First year : 2016
+                Last year : 2021
+            Min citations : 0
+            Max citations : 220
+           Bradford zones : 3
+  Selected document types : article
+                          : book
+                          : book_chapter
+                          : conference_paper
+                          : editorial
+                          : erratum
+                          : note
+                          : review
+                          : short_survey
+
+
 
 """
 import os
@@ -56,7 +101,6 @@ import pandas as pd
 import yaml
 
 from .common import logging
-
 from .documents_api.load_filtered_documents import load_filtered_documents
 
 

@@ -19,7 +19,7 @@ fintech                           139              1285              218
 financial technologies             28               225               41
 financial inclusion                17               339               61
 block-chain                        17               149               22
-bank                               13               193               23
+innovating                         13               249               46
 
 
 

@@ -5,8 +5,14 @@ Network Map
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
 >>> file_name = "/workspaces/techminer2/sphinx/images/co_occurrence_network_map.png"
->>> coc_matrix = co_occurrence_matrix(column='author_keywords', min_occ=7,directory=directory)
+>>> coc_matrix = co_occurrence_matrix(
+...     column='author_keywords', 
+...     min_occ=7, 
+...     directory=directory,
+... )
+>>> from techminer2.network_api.network import network
 >>> network_ = network(coc_matrix)
+>>> from techminer2.network_api.network_map import network_map
 >>> network_map(network_).savefig(file_name)
 
 .. image:: images/co_occurrence_network_map.png

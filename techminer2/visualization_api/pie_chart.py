@@ -6,6 +6,7 @@ Pie Chart
 
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
+>>> from techminer2.indicators_api.annual_indicators import annual_indicators
 >>> pie_chart(
 ...     series=annual_indicators(directory).num_documents, 
 ...     darkness=annual_indicators(directory).global_citations,

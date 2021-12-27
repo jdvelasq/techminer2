@@ -9,7 +9,11 @@ Captures n-words around the keyword.
 
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
->>> abstract_screening('fintech', top_n=10, directory=directory)
+>>> abstract_screening(
+...     text='fintech', 
+...     top_n=10, 
+...     directory=directory,
+... )
                   industry overall, and many FINTECH start-ups are looking
                             hook up with the FINTECH revolution is at stake
                             We present a new FINTECH innovation mapping approach that

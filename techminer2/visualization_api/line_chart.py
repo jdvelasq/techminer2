@@ -5,6 +5,7 @@ Line Chart
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
 >>> file_name = "/workspaces/techminer2/sphinx/images/line_chart.png"
+>>> from techminer2.indicators_api.annual_indicators import annual_indicators
 >>> series = annual_indicators(directory=directory).global_citations
 >>> line_chart(series, title="Citations per year").savefig(file_name)
 

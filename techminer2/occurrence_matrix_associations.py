@@ -11,12 +11,12 @@ Occurrence Matrix / Associations
 ...     min_occ_by=6,
 ...     directory=directory,
 ... ).head()
-                   word_A        word_B  co_occ
-0                 fintech      Wojcik D       5
-1                 fintech      Hornuf L       3
-2              innovation        Iman N       2
-3                 fintech  Zavolokina L       2
-4  financial technologies      Wojcik D       2
+                   word_A      word_B  co_occ
+0                 fintech    Wojcik D       5
+1                 fintech    Hornuf L       3
+2  financial technologies  Suryono RR       2
+3          perceived risk    Meyliana       2
+4          perceived risk    Surjandy       2
 
 
 """

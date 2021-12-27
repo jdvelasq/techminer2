@@ -5,23 +5,22 @@ Network Communities
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
 >>> file_name = "/workspaces/techminer2/sphinx/images/co_occurrence_network_map.png"
->>> coc_matrix = co_occurrence_matrix(column='author_keywords', min_occ=7,directory=directory)
->>> network = co_occurrence_network(coc_matrix)
->>> network_communities(network)
-cluster                          CLUST_0  ...                    CLUST_2
-rn                                        ...                           
-0                       fintech 139:1285  ...        blockchain 017:0149
-1        financial technologies 028:0225  ...  cryptocurrencies 008:0036
-2           financial inclusion 017:0339  ...                           
-3                    regulation 011:0084  ...                           
-4          peer-to-peer lending 008:0073  ...                           
-5          financial innovation 008:0044  ...                           
-6                  crowdfunding 008:0116  ...                           
-7                      covid-19 008:0036  ...                           
-8                          risk 007:0015  ...                           
-9                       finance 007:0052  ...                           
-<BLANKLINE>
-[10 rows x 3 columns]
+>>> coc_matrix = co_occurrence_matrix(
+...     column='author_keywords', 
+...     min_occ=7, 
+...     directory=directory,
+... )
+>>> from techminer2.network_api.network import network
+>>> network_ = network(coc_matrix)
+>>> from techminer2.network_api.network_communities import network_communities
+>>> network_communities(network_).head()
+cluster                          CLUST_0                     CLUST_1
+rn                                                                  
+0                       fintech 139:1285         innovating 013:0249
+1        financial technologies 028:0225               bank 012:0185
+2           financial inclusion 017:0339  financial service 011:0300
+3                   block-chain 017:0149         technology 007:0192
+4                    regulating 011:0084           start-up 007:0141
 
 """
 

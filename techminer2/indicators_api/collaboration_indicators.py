@@ -19,7 +19,6 @@ australia                  18  ...      0.78
 
 
 import numpy as np
-import pandas as pd
 
 from ..documents_api.load_filtered_documents import load_filtered_documents
 
@@ -38,19 +37,21 @@ def collaboration_indicators(
         lambda x: 1 if isinstance(x, str) and len(x.split(";")) > 1 else 0
     )
 
-    exploded = explode(
-        documents[
-            [
-                column,
-                "num_documents",
-                "single_publication",
-                "multiple_publication",
-                "record_no",
-            ]
-        ],
-        column=column,
-        sep=sep,
-    )
+    # ----< remove explode >-------------------------------------------------------------
+    exploded = documents[
+        [
+            column,
+            "num_documents",
+            "single_publication",
+            "multiple_publication",
+            "record_no",
+        ]
+    ].copy()
+    exploded[column] = exploded[column].str.split(";")
+    exploded = exploded.explode(column)
+    exploded[column] = exploded[column].str.strip()
+    # ------------------------------------------------------------------------------------
+
     indicators = exploded.groupby(column, as_index=False).agg(
         {
             "num_documents": np.sum,

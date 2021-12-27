@@ -5,13 +5,20 @@ Authors' Production over Time
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
 >>> file_name = "/workspaces/techminer2/sphinx/images/authors_production_over_time.png"
->>> authors_production_over_time(min_occ=2, directory=directory).savefig(file_name)
+>>> authors_production_over_time(
+...    min_occ=2, 
+...    directory=directory,
+... ).savefig(file_name)
 
 .. image:: images/authors_production_over_time.png
     :width: 700px
     :align: center
 
->>> authors_production_over_time(min_occ=2, directory=directory, plot=False).head()
+>>> authors_production_over_time(
+...     min_occ=2, 
+...     directory=directory, 
+...     plot=False,
+... ).head()
 pub_year    2016  2017  2018  2019  2020  2021
 authors                                       
 Arqawi S       0     0     0     0     1     1

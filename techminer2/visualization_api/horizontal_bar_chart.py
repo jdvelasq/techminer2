@@ -5,6 +5,7 @@ Horizontal Bar Chart
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
 >>> file_name = "/workspaces/techminer2/sphinx/images/horizontal_bar_chart.png"
+>>> from techminer2.indicators_api.column_indicators import column_indicators
 >>> series = column_indicators("countries", directory=directory).num_documents.head(20)
 >>> darkness = column_indicators("countries",directory=directory).global_citations.head(20)
 >>> title = "Country scientific productivity"

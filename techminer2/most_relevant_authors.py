@@ -13,13 +13,13 @@ Most Relevant Authors
 
 
 >>> most_relevant_authors(directory=directory, plot=False).head()
-                num_documents  global_citations  local_citations
-authors                                                         
-Wojcik D                    5                19                4
-Hornuf L                    3               110               24
-Rabbani MR                  3                39                3
-Gomber P                    2               228               34
-Worthington AC              2                 7                1
+             num_documents  global_citations  local_citations
+authors                                                      
+Wojcik D                 5                19                4
+Hornuf L                 3               110               24
+Rabbani MR               3                39                3
+Gomber P                 2               228               34
+Kauffman RJ              2               228               34
 
 
 

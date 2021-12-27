@@ -5,6 +5,7 @@ Gantt Chart
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
 >>> file_name = "/workspaces/techminer2/sphinx/images/gantt_chart.png"
+>>> from techminer2.indicators_api.annual_occurrence_matrix import annual_occurrence_matrix
 >>> data = annual_occurrence_matrix('iso_source_name',  min_occ=10, directory=directory)
 >>> gantt_chart(data, color='tab:blue', figsize=(8, 6)).savefig(file_name)
 

@@ -6,6 +6,7 @@ Tree Map
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
 >>> file_name = "/workspaces/techminer2/sphinx/images/tree_map.png"
+>>> from techminer2.indicators_api.annual_indicators import annual_indicators
 >>> series = annual_indicators(directory).num_documents
 >>> darkness = annual_indicators(directory).global_citations
 >>> tree_map(series=series, darkness=darkness).savefig(file_name)

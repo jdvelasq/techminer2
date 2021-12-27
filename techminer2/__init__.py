@@ -10,7 +10,8 @@ from .auto_corr_matrix_heatmap import auto_corr_matrix_heatmap
 from .auto_corr_matrix_html import auto_corr_matrix_html
 from .average_citations_per_year import average_citations_per_year
 from .bradford_law import bradford_law
-from .ca_factorial_analysis import ca_factorial_analysis
+
+# from .ca_factorial_analysis import ca_factorial_analysis
 from .clean_institutions import clean_institutions
 from .clean_keywords import clean_keywords
 from .co_citation_matrix import co_citation_matrix
@@ -53,7 +54,8 @@ from .column_coverage import column_coverage
 from .column_dynamics import column_dynamics
 from .column_gantt_chart import column_gantt_chart
 from .column_global_citations import column_global_citations
-from .column_h_index import column_h_index
+
+# from .column_h_index import column_h_index
 from .column_horizontal_bar_chart import column_horizontal_bar_chart
 from .column_line_chart import column_line_chart
 from .column_pie_chart import column_pie_chart
@@ -85,7 +87,8 @@ from .emergent_themes_lda_themes import emergent_themes_lda_themes
 from .emergent_themes_nmf import Emergent_Themes_NMF
 from .emergent_themes_nmf_map import emergent_themes_nmf_map
 from .emergent_themes_nmf_themes import emergent_themes_nmf_themes
-from .extract_custom_topics import extract_custom_topics
+
+# from .extract_custom_topics import extract_custom_topics
 from .extract_user_keywords import extract_user_keywords
 from .factor_matrix import factor_matrix
 from .factorial_analysis_manifold import Factorial_analysis_manifold
@@ -100,9 +103,10 @@ from .import_references import import_references
 from .import_scopus_file import import_scopus_file
 from .lotka_law import lotka_law
 from .main_information import main_information
-from .main_path import MainPath
-from .main_path_network import main_path_network
-from .matrix_associations import matrix_associations
+
+# from .main_path import MainPath
+# from .main_path_network import main_path_network
+# from .matrix_associations import matrix_associations
 from .most_global_cited_countries import most_global_cited_countries
 from .most_global_cited_documents import most_global_cited_documents
 from .most_local_cited_authors import most_local_cited_authors

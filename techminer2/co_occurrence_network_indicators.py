@@ -11,11 +11,11 @@ Co-occurrence Network / Indicators
 ... ).head()
                          num_documents  global_citations  ...  closeness  pagerank
 node                                                      ...                     
-adoption                             4                65  ...   0.505747  0.005602
-africa                               2                 8  ...   0.490706  0.003775
-api                                  2                 5  ...   0.505747  0.004480
-artificial intelligence              6                30  ...   0.519685  0.008322
-attitude                             2                 3  ...   0.384840  0.005374
+adoption                             4                65  ...   0.505792  0.005603
+africa                               2                 8  ...   0.490637  0.003784
+api                                  2                 5  ...   0.505792  0.004477
+artificial intelligence              6                30  ...   0.519841  0.008282
+attitude                             2                 3  ...   0.385294  0.005405
 <BLANKLINE>
 [5 rows x 6 columns]
 

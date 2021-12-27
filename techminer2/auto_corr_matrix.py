@@ -6,16 +6,18 @@ Returns an auto-correlation matrix.
 
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
->>> auto_corr_matrix(column='authors', min_occ=6, directory=directory)
-authors                Rabbani MR Reyes-Mercado P    Khan S  Arner DW
-#d                              8               7         6         6
-#c                            65              0         52        125
-authors         #d #c                                                
-Rabbani MR      8  65    1.000000       -0.554700  0.806226 -0.496139
-Reyes-Mercado P 7  0    -0.554700        1.000000 -0.447214 -0.447214
-Khan S          6  52    0.806226       -0.447214  1.000000 -0.400000
-Arner DW        6  125  -0.496139       -0.447214 -0.400000  1.000000
-
+>>> auto_corr_matrix(
+...     column='authors', 
+...     min_occ=3, 
+...     directory=directory,
+... )
+authors            Wojcik D Rabbani MR  Hornuf L
+#d                        5          3         3
+#c                      19         39        110
+authors    #d #c                                
+Wojcik D   5  19   1.000000  -0.559017 -0.559017
+Rabbani MR 3  39  -0.559017   1.000000 -0.375000
+Hornuf L   3  110 -0.559017  -0.375000  1.000000
 
 
 """

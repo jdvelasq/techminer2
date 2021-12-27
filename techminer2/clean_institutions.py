@@ -8,10 +8,10 @@ the same directory as the documents.csv file.
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
 >>> clean_institutions(directory)
-2021-11-08 18:33:47 - INFO - Applying thesaurus to institutions ...
-2021-11-08 18:33:47 - INFO - Extract and cleaning institutions.
-2021-11-08 18:33:47 - INFO - Extracting institution of first author ...
-2021-11-08 18:33:49 - INFO - The thesaurus was applied to institutions.
+- INFO - Applying thesaurus to institutions ...
+- INFO - Extract and cleaning institutions.
+- INFO - Extracting institution of first author ...
+- INFO - The thesaurus was applied to institutions.
 
 """
 

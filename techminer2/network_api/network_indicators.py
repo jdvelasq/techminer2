@@ -5,29 +5,24 @@ Network Indicators
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
 >>> file_name = "/workspaces/techminer2/sphinx/images/co_occurrence_network_map.png"
->>> coc_matrix = co_occurrence_matrix(column='author_keywords', min_occ=7,directory=directory)
->>> network = co_occurrence_network(coc_matrix)
->>> network_indicators(network)
-                        num_documents  global_citations  ...  closeness  pagerank
-node                                                     ...                     
-bank                               12               185  ...   0.681818  0.051579
-blockchain                         17               149  ...   0.714286  0.068868
-covid-19                            8                36  ...   0.535714  0.021563
-crowdfunding                        8               116  ...   0.625000  0.032711
-cryptocurrencies                    8                36  ...   0.576923  0.042013
-finance                             7                52  ...   0.750000  0.051353
-financial inclusion                17               339  ...   0.714286  0.065640
-financial innovation                8                44  ...   0.652174  0.034354
-financial service                  11               300  ...   0.750000  0.056295
-financial technologies             28               225  ...   0.750000  0.080270
-fintech                           139              1285  ...   1.000000  0.270653
-innovation                         13               249  ...   0.681818  0.055722
-peer-to-peer lending                8                73  ...   0.600000  0.026159
-regulation                         11                84  ...   0.714286  0.060199
-risk                                7                15  ...   0.714286  0.041586
-technology                          7               192  ...   0.652174  0.041034
+>>> coc_matrix = co_occurrence_matrix(
+...     column='author_keywords', 
+...     min_occ=7, 
+...     directory=directory,
+... )
+>>> from techminer2.network_api.network import network
+>>> network_ = network(coc_matrix)
+>>> from techminer2.network_api.network_indicators import network_indicators
+>>> network_indicators(network_).head()
+                  num_documents  global_citations  ...  closeness  pagerank
+node                                               ...                     
+bank                         12               185  ...   0.695652  0.050294
+block-chain                  17               149  ...   0.695652  0.064299
+covid-19                      8                36  ...   0.533333  0.020194
+crowdfunding                  8               116  ...   0.615385  0.030571
+cryptocurrencies              8                36  ...   0.571429  0.039274
 <BLANKLINE>
-[16 rows x 6 columns]
+[5 rows x 6 columns]
 
 """
 
