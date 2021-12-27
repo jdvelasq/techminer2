@@ -12,9 +12,9 @@ import os
 import numpy as np
 import pandas as pd
 
-from . import _logging
-
-from .utils import load_all_documents, load_filtered_documents, save_documents
+from .common import logging
+from .documents_api.load_all_documents import load_all_documents
+from .documents_api.save_documents import save_documents
 
 
 def extract_user_keywords(
@@ -33,7 +33,7 @@ def extract_user_keywords(
 
     filename = os.path.join(directory, keywords_file)
 
-    _logging.info(f"Loading user keywords from {filename}")
+    logging.info(f"Loading user keywords from {filename}")
 
     with open(filename, "rt", encoding="utf-8") as file:
         keywords_list = file.read().splitlines()
@@ -66,4 +66,4 @@ def extract_user_keywords(
     )
 
     save_documents(documents=documents, directory=directory)
-    _logging.info(f"User keywords extracted and saved in {directory}")
+    logging.info(f"User keywords extracted and saved in {directory}")

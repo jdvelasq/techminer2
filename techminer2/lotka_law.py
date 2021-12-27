@@ -28,8 +28,8 @@ Lotka's Law
 import matplotlib.pyplot as plt
 import pandas as pd
 
+from .documents_api.load_filtered_documents import load_filtered_documents
 from .indicators_api.column_indicators import column_indicators
-from .utils import *
 
 
 def _lotka_core_authors(directory="./"):

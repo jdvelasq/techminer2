@@ -16,12 +16,7 @@ Hornuf L   3  110 -0.332182  -0.316228  1.000000
 
 
 """
-import numpy as np
-import pandas as pd
-
 from .occurrence_matrix import occurrence_matrix
-from .tf_matrix import tf_matrix
-from .utils import index_terms2counters, load_filtered_documents
 
 # pyltin: disable=c0103
 # pylint: disable=too-many-arguments

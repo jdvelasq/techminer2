@@ -55,9 +55,9 @@ import os
 import pandas as pd
 import yaml
 
-from . import _logging
+from .common import logging
 
-from .utils import load_filtered_documents
+from .documents_api.load_filtered_documents import load_filtered_documents
 
 
 def _load_filter(directory):
@@ -71,7 +71,7 @@ class _UserFilters:
     def __init__(self, directory=None, kwargs=None):
         if directory is None:
             directory = "/workspaces/techminer-api/tests/data/"
-            _logging.info(" **** USING SAMPLE DATA ****")
+            logging.info(" **** USING SAMPLE DATA ****")
         self.directory = directory
         if kwargs is None:
             kwargs = {}

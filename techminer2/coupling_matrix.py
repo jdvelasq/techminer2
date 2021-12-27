@@ -47,14 +47,10 @@ from os.path import join
 import numpy as np
 import pandas as pd
 
+from .documents_api.load_all_documents import load_all_documents
+from .documents_api.load_filtered_documents import load_filtered_documents
+from .documents_api.records2documents import records2documents
 from .tf_matrix import tf_matrix
-from .utils import *
-from .utils import (
-    index_terms2counters,
-    load_all_documents,
-    load_filtered_documents,
-    records2documents,
-)
 
 # pyltin: disable=c0103
 # pylint: disable=too-many-arguments

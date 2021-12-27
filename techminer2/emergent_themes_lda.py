@@ -37,8 +37,8 @@ import pandas as pd
 from sklearn.decomposition import LatentDirichletAllocation
 from sklearn.manifold import MDS
 
-from .plots import bubble_map
 from .tf_matrix import tf_matrix
+from .visualization_api.bubble_map import bubble_map
 
 
 class Emergent_Themes_LDA:

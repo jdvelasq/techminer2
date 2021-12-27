@@ -26,7 +26,7 @@ from os.path import join
 import numpy as np
 import pandas as pd
 
-from .utils import records2documents
+from .documents_api.records2documents import records2documents
 
 
 def co_citation_matrix(top_n=50, directory="./"):

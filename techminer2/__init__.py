@@ -1,180 +1,140 @@
-# from ._explode import explode
-# from ._index_terms2counters import index_terms2counters
-# from ._print_documents import print_documents
-# from ._records2documents import records2documents
-# from ._save_documents import save_documents
-# from .abstract_concordances import abstract_concordances
-# from .abstract_screening import abstract_screening
-# from .abstract_summarization import abstract_summarization
-# from .annual_scientific_production import annual_scientific_production
-# from .apply_thesaurus import apply_thesaurus
-# from .association_index import association_index
-# from .author_local_impact import author_local_impact
-# from .authors_production_over_time import authors_production_over_time
-# from .auto_corr_matrix import auto_corr_matrix
-# from .auto_corr_matrix_heatmap import auto_corr_matrix_heatmap
-# from .auto_corr_matrix_html import auto_corr_matrix_html
-# from .average_citations_per_year import average_citations_per_year
-# from .bradford_law import bradford_law
-# from .ca_factorial_analysis import ca_factorial_analysis
-# from .clean_institutions import clean_institutions
-# from .clean_keywords import clean_keywords
-# from .co_citation_matrix import co_citation_matrix
-# from .co_citation_network_communities import co_citation_network_communities
-# from .co_citation_network_degree_plot import co_citation_network_degree_plot
-# from .co_citation_network_graph import co_citation_network_graph
-# from .co_citation_network_indicators import co_citation_network_indicators
-# from .co_occurrence_matrix import co_occurrence_matrix
-# from .co_occurrence_matrix_associations import co_occurrence_matrix_associations
-# from .co_occurrence_matrix_bubble_chart import co_occurrence_matrix_bubble_chart
-# from .co_occurrence_matrix_chord_diagram import co_occurrence_matrix_chord_diagram
-# from .co_occurrence_matrix_cluster_mds_map import co_occurrence_matrix_cluster_mds_map
-# from .co_occurrence_matrix_cluster_tsne_map import co_occurrence_matrix_cluster_tsne_map
-# from .co_occurrence_matrix_ego_graph import co_occurrence_matrix_ego_graph
-# from .co_occurrence_matrix_ego_network import co_occurrence_matrix_ego_network
-# from .co_occurrence_matrix_heatmap import co_occurrence_matrix_heatmap
-# from .co_occurrence_matrix_html import co_occurrence_matrix_html
-# from .co_occurrence_matrix_manifold import co_occurrence_matrix_manifold
-# from .co_occurrence_matrix_mds_map import co_occurrence_matrix_mds_map
-# from .co_occurrence_matrix_svd_map import co_occurrence_matrix_svd_map
-# from .co_occurrence_matrix_topic_associations import (
-#     co_occurrence_matrix_topic_associations,
-# )
-# from .co_occurrence_matrix_topics_comparison_chart import (
-#     co_occurrence_matrix_topics_comparison_chart,
-# )
-# from .co_occurrence_matrix_topics_comparison_network import (
-#     co_occurrence_matrix_topics_comparison_network,
-# )
-# from .co_occurrence_network_communities import co_occurrence_network_communities
-# from .co_occurrence_network_degree_plot import co_occurrence_network_degree_plot
-# from .co_occurrence_network_graph import co_occurrence_network_graph
-# from .co_occurrence_network_indicators import co_occurrence_network_indicators
-# from .collaboration_network_communities import collaboration_network_communities
-# from .collaboration_network_degree_plot import collaboration_network_degree_plot
-# from .collaboration_network_graph import collaboration_network_graph
-# from .collaboration_network_indicators import collaboration_network_indicators
-# from .column_cleveland_dot_chart import column_cleveland_dot_chart
-# from .column_coverage import column_coverage
-# from .column_dynamics import column_dynamics
-# from .column_gantt_chart import column_gantt_chart
-# from .column_global_citations import column_global_citations
-# from .column_h_index import column_h_index
-# from .column_horizontal_bar_chart import column_horizontal_bar_chart
-# from .column_line_chart import column_line_chart
-# from .column_pie_chart import column_pie_chart
-# from .column_timeline_chart import column_timeline_chart
-# from .column_top_topics_chart import column_top_topics_chart
-# from .column_top_trending_topics import column_top_trending_topics
-# from .column_tree_map import column_tree_map
-# from .column_trends import column_trends
-# from .column_vertical_bar_chart import column_vertical_bar_chart
-# from .column_word_cloud import column_word_cloud
-# from .core_sources import core_sources
-# from .correlation_map import correlation_map
-# from .corresponding_authors_country import corresponding_authors_country
-# from .country_scientific_production import country_scientific_production
-# from .coupling_matrix import coupling_matrix
-# from .coupling_network_communities import coupling_network_communities
-# from .coupling_network_degree_plot import coupling_network_degree_plot
-# from .coupling_network_graph import coupling_network_graph
-# from .create_thesaurus import create_thesaurus
-# from .cross_corr_matrix import cross_corr_matrix
-# from .cross_corr_matrix_heatmap import cross_corr_matrix_heatmap
-# from .cross_corr_matrix_html import cross_corr_matrix_html
-# from .document_viewer import document_viewer
-# from .emergent_themes_lda import Emergent_Themes_LDA
-# from .emergent_themes_lda_map import emergent_themes_lda_map
-# from .emergent_themes_lda_themes import emergent_themes_lda_themes
-# from .emergent_themes_nmf import Emergent_Themes_NMF
-# from .emergent_themes_nmf_map import emergent_themes_nmf_map
-# from .emergent_themes_nmf_themes import emergent_themes_nmf_themes
-# from .extract_custom_topics import extract_custom_topics
-# from .extract_user_keywords import extract_user_keywords
-# from .factor_matrix import factor_matrix
-# from .factorial_analysis_manifold import Factorial_analysis_manifold
-# from .factorial_analysis_mds_communities import factorial_analysis_mds_communities
-# from .factorial_analysis_mds_data import factorial_analysis_mds_data
-# from .factorial_analysis_mds_map import factorial_analysis_mds_map
-# from .factorial_analysis_mds_silhouette_scores import (
-#     factorial_analysis_mds_silhouette_scores,
-# )
-# from .find_string import find_string
-# from .import_references import import_references
-# from .import_scopus_file import import_scopus_file
-# from .indicators_api.annual_indicators import annual_indicators
-# from .indicators_api.annual_occurrence_matrix import annual_occurrence_matrix
-# from .indicators_api.collaboration_indicators import collaboration_indicators
-# from .indicators_api.column_indicators import column_indicators
-# from .indicators_api.column_indicators_by_year import column_indicators_by_year
-# from .indicators_api.document_indicators import document_indicators
-# from .indicators_api.growth_indicators import growth_indicators
-# from .indicators_api.impact_indicators import impact_indicators
-# from .load_all_documents import load_all_documents
-# from .load_filtered_documents import load_filtered_documents
-# from .load_stopwords import load_stopwords
-# from .lotka_law import lotka_law
-# from .main_information import main_information
-# from .main_path import MainPath
-# from .main_path_network import main_path_network
-# from .map_ import map_
-# from .matrix_associations import matrix_associations
-# from .most_global_cited_countries import most_global_cited_countries
-# from .most_global_cited_documents import most_global_cited_documents
-# from .most_local_cited_authors import most_local_cited_authors
-# from .most_local_cited_documents import most_local_cited_documents
-# from .most_local_cited_references import most_local_cited_references
-# from .most_local_cited_sources import most_local_cited_sources
-# from .most_relevant_authors import most_relevant_authors
-# from .most_relevant_institutions import most_relevant_institutions
-# from .most_relevant_sources import most_relevant_sources
-# from .network_api.network import network
-# from .network_api.network_communities import network_communities
-# from .network_api.network_degree_plot import network_degree_plot
-# from .network_api.network_indicators import network_indicators
-# from .network_api.network_map import network_map
-# from .network_api.network_plot import network_plot
-# from .occurrence_matrix import occurrence_matrix
-# from .occurrence_matrix_associations import occurrence_matrix_associations
-# from .occurrence_matrix_bubble_chart import occurrence_matrix_bubble_chart
-# from .occurrence_matrix_heatmap import occurrence_matrix_heatmap
-# from .occurrence_matrix_html import occurrence_matrix_html
-# from .source_dynamics import source_dynamics
-# from .source_local_impact import source_local_impact
-# from .stemming import stemming_and, stemming_or
-# from .summary_view import summary_view
-# from .tf_idf_matrix import tf_idf_matrix
-# from .tf_idf_matrix_svd_map import tf_idf_matrix_svd_map
-# from .tf_matrix import tf_matrix
-# from .thematic_analysis import ThematicAnalysis
-# from .thematic_analysis_map import thematic_analysis_map
-# from .thematic_analysis_partitions import thematic_analysis_partitions
-# from .thematic_analysis_themes import thematic_analysis_themes
-# from .thematic_map_communities import thematic_map_communities
-# from .thematic_map_degree_plot import thematic_map_degree_plot
-# from .thematic_map_indicators import thematic_map_indicators
-# from .thematic_map_network import thematic_map_network
-# from .user_filters import user_filters
-# from .visualization_api.bubble_chart import bubble_chart
-# from .visualization_api.bubble_map import bubble_map
-# from .visualization_api.cleveland_dot_chart import cleveland_dot_chart
-# from .visualization_api.dotted_gantt_chart import dotted_gantt_chart
-# from .visualization_api.gantt_chart import gantt_chart
-# from .visualization_api.heat_map import heat_map
-# from .visualization_api.horizontal_bar_chart import horizontal_bar_chart
-# from .visualization_api.line_chart import line_chart
-# from .visualization_api.map_chart import map_chart
-# from .visualization_api.pie_chart import pie_chart
-# from .visualization_api.stacked_bar_chart import stacked_bar_chart
-# from .visualization_api.stacked_column_chart import stacked_column_chart
-# from .visualization_api.tree_map import tree_map
-# from .visualization_api.vertical_bar_chart import vertical_bar_chart
-# from .visualization_api.word_cloud import word_cloud
-# from .visualization_api.world_map import world_map
-# from .words_most_frequent import words_most_frequent
-# from .words_tree_map import words_tree_map
-# from .words_trend_topics import words_trend_topics
-# from .words_word_cloud import words_word_cloud
-# from .words_word_dynamics import words_word_dynamics
-
-# from .co_occurrence_analysis import Co_occurrence_analysis
+from .abstract_concordances import abstract_concordances
+from .abstract_screening import abstract_screening
+from .abstract_summarization import abstract_summarization
+from .annual_scientific_production import annual_scientific_production
+from .apply_thesaurus import apply_thesaurus
+from .author_local_impact import author_local_impact
+from .authors_production_over_time import authors_production_over_time
+from .auto_corr_matrix import auto_corr_matrix
+from .auto_corr_matrix_heatmap import auto_corr_matrix_heatmap
+from .auto_corr_matrix_html import auto_corr_matrix_html
+from .average_citations_per_year import average_citations_per_year
+from .bradford_law import bradford_law
+from .ca_factorial_analysis import ca_factorial_analysis
+from .clean_institutions import clean_institutions
+from .clean_keywords import clean_keywords
+from .co_citation_matrix import co_citation_matrix
+from .co_citation_network_communities import co_citation_network_communities
+from .co_citation_network_degree_plot import co_citation_network_degree_plot
+from .co_citation_network_graph import co_citation_network_graph
+from .co_citation_network_indicators import co_citation_network_indicators
+from .co_occurrence_matrix import co_occurrence_matrix
+from .co_occurrence_matrix_associations import co_occurrence_matrix_associations
+from .co_occurrence_matrix_bubble_chart import co_occurrence_matrix_bubble_chart
+from .co_occurrence_matrix_chord_diagram import co_occurrence_matrix_chord_diagram
+from .co_occurrence_matrix_cluster_mds_map import co_occurrence_matrix_cluster_mds_map
+from .co_occurrence_matrix_cluster_tsne_map import co_occurrence_matrix_cluster_tsne_map
+from .co_occurrence_matrix_ego_graph import co_occurrence_matrix_ego_graph
+from .co_occurrence_matrix_ego_network import co_occurrence_matrix_ego_network
+from .co_occurrence_matrix_heatmap import co_occurrence_matrix_heatmap
+from .co_occurrence_matrix_html import co_occurrence_matrix_html
+from .co_occurrence_matrix_manifold import co_occurrence_matrix_manifold
+from .co_occurrence_matrix_mds_map import co_occurrence_matrix_mds_map
+from .co_occurrence_matrix_svd_map import co_occurrence_matrix_svd_map
+from .co_occurrence_matrix_topic_associations import (
+    co_occurrence_matrix_topic_associations,
+)
+from .co_occurrence_matrix_topics_comparison_chart import (
+    co_occurrence_matrix_topics_comparison_chart,
+)
+from .co_occurrence_matrix_topics_comparison_network import (
+    co_occurrence_matrix_topics_comparison_network,
+)
+from .co_occurrence_network_communities import co_occurrence_network_communities
+from .co_occurrence_network_degree_plot import co_occurrence_network_degree_plot
+from .co_occurrence_network_graph import co_occurrence_network_graph
+from .co_occurrence_network_indicators import co_occurrence_network_indicators
+from .collaboration_network_communities import collaboration_network_communities
+from .collaboration_network_degree_plot import collaboration_network_degree_plot
+from .collaboration_network_graph import collaboration_network_graph
+from .collaboration_network_indicators import collaboration_network_indicators
+from .column_cleveland_dot_chart import column_cleveland_dot_chart
+from .column_coverage import column_coverage
+from .column_dynamics import column_dynamics
+from .column_gantt_chart import column_gantt_chart
+from .column_global_citations import column_global_citations
+from .column_h_index import column_h_index
+from .column_horizontal_bar_chart import column_horizontal_bar_chart
+from .column_line_chart import column_line_chart
+from .column_pie_chart import column_pie_chart
+from .column_timeline_chart import column_timeline_chart
+from .column_top_topics_chart import column_top_topics_chart
+from .column_top_trending_topics import column_top_trending_topics
+from .column_tree_map import column_tree_map
+from .column_trends import column_trends
+from .column_vertical_bar_chart import column_vertical_bar_chart
+from .column_word_cloud import column_word_cloud
+from .common.association_index import association_index
+from .common.explode import explode
+from .core_sources import core_sources
+from .correlation_map import correlation_map
+from .corresponding_authors_country import corresponding_authors_country
+from .country_scientific_production import country_scientific_production
+from .coupling_matrix import coupling_matrix
+from .coupling_network_communities import coupling_network_communities
+from .coupling_network_degree_plot import coupling_network_degree_plot
+from .coupling_network_graph import coupling_network_graph
+from .create_thesaurus import create_thesaurus
+from .cross_corr_matrix import cross_corr_matrix
+from .cross_corr_matrix_heatmap import cross_corr_matrix_heatmap
+from .cross_corr_matrix_html import cross_corr_matrix_html
+from .document_viewer import document_viewer
+from .emergent_themes_lda import Emergent_Themes_LDA
+from .emergent_themes_lda_map import emergent_themes_lda_map
+from .emergent_themes_lda_themes import emergent_themes_lda_themes
+from .emergent_themes_nmf import Emergent_Themes_NMF
+from .emergent_themes_nmf_map import emergent_themes_nmf_map
+from .emergent_themes_nmf_themes import emergent_themes_nmf_themes
+from .extract_custom_topics import extract_custom_topics
+from .extract_user_keywords import extract_user_keywords
+from .factor_matrix import factor_matrix
+from .factorial_analysis_manifold import Factorial_analysis_manifold
+from .factorial_analysis_mds_communities import factorial_analysis_mds_communities
+from .factorial_analysis_mds_data import factorial_analysis_mds_data
+from .factorial_analysis_mds_map import factorial_analysis_mds_map
+from .factorial_analysis_mds_silhouette_scores import (
+    factorial_analysis_mds_silhouette_scores,
+)
+from .find_string import find_string
+from .import_references import import_references
+from .import_scopus_file import import_scopus_file
+from .lotka_law import lotka_law
+from .main_information import main_information
+from .main_path import MainPath
+from .main_path_network import main_path_network
+from .matrix_associations import matrix_associations
+from .most_global_cited_countries import most_global_cited_countries
+from .most_global_cited_documents import most_global_cited_documents
+from .most_local_cited_authors import most_local_cited_authors
+from .most_local_cited_documents import most_local_cited_documents
+from .most_local_cited_references import most_local_cited_references
+from .most_local_cited_sources import most_local_cited_sources
+from .most_relevant_authors import most_relevant_authors
+from .most_relevant_institutions import most_relevant_institutions
+from .most_relevant_sources import most_relevant_sources
+from .occurrence_matrix import occurrence_matrix
+from .occurrence_matrix_associations import occurrence_matrix_associations
+from .occurrence_matrix_bubble_chart import occurrence_matrix_bubble_chart
+from .occurrence_matrix_heatmap import occurrence_matrix_heatmap
+from .occurrence_matrix_html import occurrence_matrix_html
+from .source_dynamics import source_dynamics
+from .source_local_impact import source_local_impact
+from .stemming import stemming_and, stemming_or
+from .summary_view import summary_view
+from .tf_idf_matrix import tf_idf_matrix
+from .tf_idf_matrix_svd_map import tf_idf_matrix_svd_map
+from .tf_matrix import tf_matrix
+from .thematic_analysis import ThematicAnalysis
+from .thematic_analysis_map import thematic_analysis_map
+from .thematic_analysis_partitions import thematic_analysis_partitions
+from .thematic_analysis_themes import thematic_analysis_themes
+from .thematic_map_communities import thematic_map_communities
+from .thematic_map_degree_plot import thematic_map_degree_plot
+from .thematic_map_indicators import thematic_map_indicators
+from .thematic_map_network import thematic_map_network
+from .user_filters import user_filters
+from .words_most_frequent import words_most_frequent
+from .words_tree_map import words_tree_map
+from .words_trend_topics import words_trend_topics
+from .words_word_cloud import words_word_cloud
+from .words_word_dynamics import words_word_dynamics

@@ -33,11 +33,9 @@ Name: local_citations, dtype: int64
 """
 from os.path import join
 
-import matplotlib.pyplot as plt
 import pandas as pd
 
 from .visualization_api.cleveland_dot_chart import cleveland_dot_chart
-from .indicators_api.column_indicators import column_indicators
 
 
 def most_local_cited_sources(

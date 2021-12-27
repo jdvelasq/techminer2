@@ -5,8 +5,8 @@ Adds counter to axis
 import numpy as np
 import pandas as pd
 
-from ._explode import explode
-from .load_filtered_documents import load_filtered_documents
+from ..documents_api.load_filtered_documents import load_filtered_documents
+from .explode import explode
 
 
 def index_terms2counters(

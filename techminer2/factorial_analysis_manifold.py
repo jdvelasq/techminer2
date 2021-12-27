@@ -70,7 +70,7 @@ import numpy as np
 import pandas as pd
 from sklearn.metrics import silhouette_score
 
-from .plots import conceptual_structure_map
+from .visualization_api.conceptual_structure_map import conceptual_structure_map
 
 
 class Factorial_analysis_manifold:

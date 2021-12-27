@@ -24,10 +24,9 @@ from os.path import isfile, join
 
 import pandas as pd
 
-from . import _logging
-
+from .common import logging
+from .common.map_ import map_
 from .text_api.thesaurus import read_textfile
-from .utils import map_
 
 
 def clean_keywords(directory):
@@ -55,7 +54,7 @@ def clean_keywords(directory):
     # Author keywords cleaning
     #
     if "raw_author_keywords" in documents.columns:
-        _logging.info("Applying thesaurus to 'raw_author_keywords' column ...")
+        logging.info("Applying thesaurus to 'raw_author_keywords' column ...")
         documents["author_keywords"] = map_(
             documents, "raw_author_keywords", th.apply_as_dict
         )
@@ -64,29 +63,29 @@ def clean_keywords(directory):
     # Index keywords cleaning
     #
     if "raw_index_keywords" in documents.columns:
-        _logging.info("Applying thesaurus to 'raw_index_keywords' column...")
+        logging.info("Applying thesaurus to 'raw_index_keywords' column...")
         documents["index_keywords"] = map_(
             documents, "raw_index_keywords", th.apply_as_dict
         )
 
     if "keywords" in documents.columns:
-        _logging.info("Applying thesaurus to 'raw_keywords' column...")
+        logging.info("Applying thesaurus to 'raw_keywords' column...")
         documents["keywords"] = map_(documents, "raw_keywords", th.apply_as_dict)
 
     if "raw_nlp_document_title" in documents.columns:
-        _logging.info("Applying thesaurus to 'raw_nlp_document_title' column...")
+        logging.info("Applying thesaurus to 'raw_nlp_document_title' column...")
         documents["nlp_document_title"] = map_(
             documents, "raw_nlp_document_title", th.apply_as_dict
         )
 
     if "raw_nlp_abstract" in documents.columns:
-        _logging.info("Applying thesaurus to 'raw_nlp_abstract' column...")
+        logging.info("Applying thesaurus to 'raw_nlp_abstract' column...")
         documents["nlp_abstract"] = map_(
             documents, "raw_nlp_abstract", th.apply_as_dict
         )
 
     if "raw_nlp_phrases" in documents.columns:
-        _logging.info("Applying thesaurus to 'raw_nlp_phrases' column...")
+        logging.info("Applying thesaurus to 'raw_nlp_phrases' column...")
         documents["nlp_phrases"] = map_(documents, "raw_nlp_phrases", th.apply_as_dict)
 
     #
@@ -101,4 +100,4 @@ def clean_keywords(directory):
         index=False,
     )
     # --------------------------------------------------------------------------
-    _logging.info("The thesaurus was applied to all keywords.")
+    logging.info("The thesaurus was applied to all keywords.")

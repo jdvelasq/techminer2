@@ -24,7 +24,8 @@ Core Sources
 import numpy as np
 import pandas as pd
 
-from .utils import explode, load_filtered_documents
+from .common.explode import explode
+from .documents_api.load_filtered_documents import load_filtered_documents
 
 
 def core_sources(directory="./"):

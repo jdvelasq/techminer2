@@ -24,8 +24,9 @@ Computes coverage of terms in a column discarding stopwords.
 
 """
 
-from . import _logging
-from .utils import load_filtered_documents, load_stopwords
+from .common import logging
+from .documents_api.load_filtered_documents import load_filtered_documents
+from .documents_api.load_stopwords import load_stopwords
 
 
 def column_coverage(column, sep="; ", directory="./"):
@@ -37,11 +38,11 @@ def column_coverage(column, sep="; ", directory="./"):
     documents = documents[[column, "record_no"]]
 
     n_documents = len(documents)
-    _logging.info("Number of documents : {}".format(n_documents))
-    _logging.info("Documents with NA: {}".format(len(documents.dropna())))
+    logging.info("Number of documents : {}".format(n_documents))
+    logging.info("Documents with NA: {}".format(len(documents.dropna())))
 
     documents = documents.dropna()
-    _logging.info("Efective documents : {}".format(n_documents))
+    logging.info("Efective documents : {}".format(n_documents))
 
     documents = documents.assign(num_documents=1)
     documents[column] = documents[column].str.split("; ")

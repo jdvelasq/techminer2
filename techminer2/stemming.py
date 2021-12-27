@@ -41,10 +41,9 @@ Name: author_keywords, dtype: object
 """
 import string
 
-import pandas as pd
 from nltk.stem import PorterStemmer, SnowballStemmer
 
-from .utils import load_filtered_documents
+from .documents_api.load_filtered_documents import load_filtered_documents
 
 
 def _stemming(directory, column, pattern, stemmer="porter", sep="; ", operator="AND"):

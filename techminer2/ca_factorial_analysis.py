@@ -23,7 +23,7 @@ import pandas as pd
 from sklearn.metrics import silhouette_score
 
 from .correspondence_analysis import CorrespondenceAnalysis
-from .plots import conceptual_structure_map
+from .visualization_api.conceptual_structure_map import conceptual_structure_map
 
 
 class CA_factorial_analysis:

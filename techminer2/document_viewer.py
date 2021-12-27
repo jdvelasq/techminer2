@@ -42,7 +42,7 @@ import textwrap
 
 import pandas as pd
 
-from .utils import load_filtered_documents
+from .documents_api.load_filtered_documents import load_filtered_documents
 
 
 def document_viewer(

@@ -22,7 +22,6 @@ import numpy as np
 import pandas as pd
 
 from ..indicators_api.column_indicators import column_indicators
-from .utils import load_filtered_documents
 
 TEXTLEN = 40
 

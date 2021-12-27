@@ -2,7 +2,7 @@ import os
 
 import pandas as pd
 
-from .. import _logging
+from ..common import logging
 from .porter_stemmer import porter_stemmer
 from .thesaurus import Thesaurus, load_file_as_dict, text_clustering
 
@@ -12,7 +12,7 @@ def create_keywords_thesaurus(directory):
     Createa a keywords thesaurus from the keywords in the articles.
 
     """
-    _logging.info("Creating keywords thesaurus ...")
+    logging.info("Creating keywords thesaurus ...")
 
     # --------------------------------------------------------------------------
     # Loads documents.csv
@@ -93,4 +93,4 @@ def create_keywords_thesaurus(directory):
         #
         text_clustering(pd.Series(words_list)).to_textfile(thesaurus_file)
 
-    _logging.info(f"Thesaurus file '{thesaurus_file}' created.")
+    logging.info(f"Thesaurus file '{thesaurus_file}' created.")

@@ -29,10 +29,9 @@ from os.path import isfile
 
 import pandas as pd
 
-from . import _logging
-
+from .common import logging
+from .documents_api.load_filtered_documents import load_filtered_documents
 from .text_api.thesaurus import Thesaurus, load_file_as_dict, text_clustering
-from .utils import load_filtered_documents
 
 
 def create_thesaurus(
@@ -48,7 +47,7 @@ def create_thesaurus(
     if column not in documents.columns:
         raise ValueError("Column '{}' not in documents".format(column))
 
-    _logging.info("Creating thesaurus ...")
+    logging.info("Creating thesaurus ...")
     words_list = documents[column]
     words_list = words_list.dropna()
 
@@ -81,4 +80,4 @@ def create_thesaurus(
         #
         text_clustering(pd.Series(words_list)).to_textfile(thesaurus_file)
 
-    _logging.info(f"Thesaurus file '{thesaurus_file}' created.")
+    logging.info(f"Thesaurus file '{thesaurus_file}' created.")

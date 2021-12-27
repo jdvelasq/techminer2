@@ -19,9 +19,7 @@ Al Nawayseh MK et al, 2020, J OPEN INNOV: TECHN...                10  ...       
 
 """
 
-import os
-
-from .utils import load_filtered_documents
+from ..documents_api.load_filtered_documents import load_filtered_documents
 
 
 def document_indicators(directory="./"):

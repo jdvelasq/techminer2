@@ -22,7 +22,9 @@ record_no                               ...
 import numpy as np
 import pandas as pd
 
-from .utils import *
+from .common.index_terms2counters import index_terms2counters
+from .documents_api.load_filtered_documents import load_filtered_documents
+from .documents_api.load_stopwords import load_stopwords
 
 # pylint: disable=too-many-arguments
 

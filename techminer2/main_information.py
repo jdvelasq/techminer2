@@ -55,7 +55,7 @@ import datetime
 import numpy as np
 import pandas as pd
 
-from .utils import load_filtered_documents
+from .documents_api.load_filtered_documents import load_filtered_documents
 
 
 def _extract_terms(x, column):
