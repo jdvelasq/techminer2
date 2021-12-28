@@ -34,8 +34,8 @@ Name: average_growth_rate, dtype: float64
 
 """
 
-from .indicators_api.growth_indicators import growth_indicators
-from .visualization_api.horizontal_bar_chart import horizontal_bar_chart
+from .growth_indicators import growth_indicators
+from .horizontal_bar_chart import horizontal_bar_chart
 
 
 def column_top_trending_topics(

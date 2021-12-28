@@ -19,8 +19,8 @@ Hornuf L   3  110        0          0        3
 import numpy as np
 import pandas as pd
 
-from .common.association_index import association_index
-from .common.index_terms2counters import index_terms2counters
+from .association_index import association_index
+from .index_terms2counters import index_terms2counters
 from .tf_matrix import tf_matrix
 
 # pyltin: disable=c0103

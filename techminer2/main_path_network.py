@@ -6,7 +6,7 @@ Main Path Network
 >>> directory = "/workspaces/techminer2/data/"
 
 """
-from .documents_api.load_filtered_documents import load_filtered_documents
+from .load_filtered_documents import load_filtered_documents
 
 
 class _MainPathNetwork:

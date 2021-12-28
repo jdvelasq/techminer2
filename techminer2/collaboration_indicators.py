@@ -20,7 +20,7 @@ australia                  18  ...      0.78
 
 import numpy as np
 
-from ..documents_api.load_filtered_documents import load_filtered_documents
+from .load_filtered_documents import load_filtered_documents
 
 
 def collaboration_indicators(

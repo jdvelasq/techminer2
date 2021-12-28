@@ -24,7 +24,7 @@ cryptocurrencies     0     0     1     3     1     3
 
 import matplotlib.pyplot as plt
 
-from .indicators_api.annual_occurrence_matrix import annual_occurrence_matrix
+from .annual_occurrence_matrix import annual_occurrence_matrix
 
 
 def column_timeline_chart(

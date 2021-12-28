@@ -48,9 +48,9 @@ regulatory sandbox                   6                26                7
 """
 
 
-from .indicators_api.column_indicators_subset import column_indicators_subset
-from .indicators_api.column_indicators import column_indicators
-from .visualization_api.horizontal_bar_chart import horizontal_bar_chart
+from .column_indicators_subset import column_indicators_subset
+from .horizontal_bar_chart import horizontal_bar_chart
+from .column_indicators import column_indicators
 
 
 def column_horizontal_bar_chart(

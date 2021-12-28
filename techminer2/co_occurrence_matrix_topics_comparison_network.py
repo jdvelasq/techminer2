@@ -25,7 +25,7 @@ Co-occurrence Matrix / Topics Comparison Network
 import networkx as nx
 
 from .co_occurrence_matrix import co_occurrence_matrix
-from .network_api.network_plot import network_plot
+from .network_plot import network_plot
 
 
 def co_occurrence_matrix_topics_comparison_network(

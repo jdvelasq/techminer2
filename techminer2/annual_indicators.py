@@ -29,7 +29,7 @@ pub_year                 ...
 
 """
 
-from ..documents_api.load_filtered_documents import load_filtered_documents
+from .load_filtered_documents import load_filtered_documents
 
 
 def annual_indicators(directory="./"):

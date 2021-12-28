@@ -27,7 +27,7 @@ import textwrap
 
 import pandas as pd
 
-from .common import logging
+from . import logging
 
 
 def abstract_concordances(text, top_n=50, directory="./"):

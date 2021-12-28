@@ -35,8 +35,8 @@ rn                                               ...
 """
 
 from .co_occurrence_matrix import co_occurrence_matrix
-from .network_api.network import network
-from .network_api.network_communities import network_communities
+from .network import network
+from .network_communities import network_communities
 
 
 def co_occurrence_network_communities(

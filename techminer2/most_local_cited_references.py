@@ -25,7 +25,7 @@ from os.path import join
 
 import pandas as pd
 
-from .visualization_api.cleveland_dot_chart import cleveland_dot_chart
+from .cleveland_dot_chart import cleveland_dot_chart
 
 
 def most_local_cited_references(

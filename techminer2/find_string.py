@@ -17,7 +17,7 @@ Name: author_keywords, dtype: object
 """
 
 
-from .documents_api.load_filtered_documents import load_filtered_documents
+from .load_filtered_documents import load_filtered_documents
 
 
 def find_string(

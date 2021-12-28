@@ -22,10 +22,10 @@ Builds a coupling network from a coupling matrix.
 import pandas as pd
 
 from .coupling_matrix import coupling_matrix
-from .documents_api.load_all_documents import load_all_documents
-from .documents_api.records2documents import records2documents
-from .network_api.network import network
-from .network_api.network_degree_plot import network_degree_plot
+from .load_all_documents import load_all_documents
+from .records2documents import records2documents
+from .network import network
+from .network_degree_plot import network_degree_plot
 
 
 def coupling_network_degree_plot(

@@ -11,78 +11,60 @@ Co-occurrence Analysis
 
 .. raw:: html
 
-    <hr style="width:80%;height:2px;border-width:0;color:gray;background-color:black">
-
+   <hr style="width:80%;height:2px;border-width:0;color:gray;background-color:black">
 
 Word Associations
 ............................................
 
-.. raw:: html
+    .. toctree::
+        :maxdepth: 1
 
-    <hr style="width:70%;height:1px;border-width:0;color:gray;background-color:black">
-
-.. toctree::
-    :maxdepth: 1
-
-    co_occurrence_matrix_topic_associations
-    co_occurrence_matrix_mds_map
+        co_occurrence_matrix_topic_associations
+        co_occurrence_matrix_mds_map
 
 
 Co-Word Analysis
 ............................................
 
-.. raw:: html
+    .. toctree::
+        :maxdepth: 1
 
-    <hr style="width:70%;height:1px;border-width:0;color:gray;background-color:black">
-
-.. toctree::
-    :maxdepth: 1
-
-    co_occurrence_matrix_cluster_mds_map
-    co_occurrence_matrix_cluster_tsne_map
-    co_occurrence_matrix_manifold
-    column_cleveland_dot_chart
-    
+        co_occurrence_matrix_cluster_mds_map
+        co_occurrence_matrix_cluster_tsne_map
+        co_occurrence_matrix_manifold
+        column_cleveland_dot_chart
 
 Comparison between word pairs
 ............................................
 
-.. raw:: html
+    .. toctree::
+        :maxdepth: 1
 
-    <hr style="width:70%;height:1px;border-width:0;color:gray;background-color:black">
+        co_occurrence_matrix_topics_comparison_chart
+        co_occurrence_matrix_topics_comparison_network
 
-.. toctree::
-    :maxdepth: 1
-
-    co_occurrence_matrix_topics_comparison_chart
-    co_occurrence_matrix_topics_comparison_network
-
-
+        
 Sequence and Network Analysis
 ............................................
 
-.. raw:: html
+    .. toctree::
+        :maxdepth: 1
 
-    <hr style="width:70%;height:1px;border-width:0;color:gray;background-color:black">
-
-.. toctree::
-    :maxdepth: 1
-
-    co_occurrence_matrix_ego_graph
-    co_occurrence_matrix_ego_network
-
+        co_occurrence_matrix_ego_graph
+        co_occurrence_matrix_ego_network
 
 Concordances
 ............................................
 
-.. raw:: html
+    .. toctree::
+        :maxdepth: 1
 
-    <hr style="width:70%;height:1px;border-width:0;color:gray;background-color:black">
+        abstract_concordances
 
-.. toctree::
-    :maxdepth: 1
 
-    abstract_concordances
+
+
+
 
 
 
@@ -97,48 +79,29 @@ Thematic Analysis
 Thematic Analysis of Elementary Contexts
 ............................................
 
-.. raw:: html
+    .. toctree::
+        :maxdepth: 1
 
-    <hr style="width:70%;height:1px;border-width:0;color:gray;background-color:black">
-
-
-.. toctree::
-    :maxdepth: 1
-
-    thematic_analysis_map
-    thematic_analysis_partitions
-    thematic_analysis_themes
+        thematic_analysis_map
+        thematic_analysis_partitions
+        thematic_analysis_themes
 
 
-Modeling of Emergent Themes with LDA
+Modeling of Emergent Themes
 ............................................
 
-.. raw:: html
+    .. toctree::
+        :maxdepth: 1
 
-    <hr style="width:70%;height:1px;border-width:0;color:gray;background-color:black">
-
-
-.. toctree::
-    :maxdepth: 1
-
-    emergent_themes_lda_map
-    emergent_themes_lda_themes
+        emergent_themes_lda_map
+        emergent_themes_lda_themes
 
 
+    .. toctree::
+        :maxdepth: 1
 
-Modeling of Emergent Themes with NFM
-............................................
-
-.. raw:: html
-
-    <hr style="width:70%;height:1px;border-width:0;color:gray;background-color:black">
-
-
-.. toctree::
-    :maxdepth: 1
-
-    emergent_themes_nmf_map
-    emergent_themes_nmf_themes
+        emergent_themes_nmf_map
+        emergent_themes_nmf_themes
 
 
 
@@ -150,18 +113,14 @@ Comparative Analysis
     <hr style="width:80%;height:2px;border-width:0;color:gray;background-color:black">
 
 
-Singunlar Value Decomposition
+Singular Value Decomposition
 ............................................
 
-.. raw:: html
+    .. toctree::
+        :maxdepth: 1
 
-    <hr style="width:70%;height:1px;border-width:0;color:gray;background-color:black">
-
-.. toctree::
-    :maxdepth: 1
-
-    co_occurrence_matrix_svd_map
-    tf_idf_matrix_svd_map
+        co_occurrence_matrix_svd_map
+        tf_idf_matrix_svd_map
 
 
 Lexical and other tools
@@ -171,11 +130,12 @@ Lexical and other tools
 
     <hr style="width:80%;height:2px;border-width:0;color:gray;background-color:black">
 
+Preprocessing options available in the menu of the application.
 
-.. toctree::
-    :maxdepth: 1
+    .. toctree::
+        :maxdepth: 1
 
-    abstract_screening
-    abstract_summarization
-    
+        abstract_screening
+        abstract_summarization
+
 

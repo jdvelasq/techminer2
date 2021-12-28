@@ -35,7 +35,7 @@ Name: fintech, dtype: int64
 
 import numpy as np
 
-from .visualization_api.cleveland_dot_chart import cleveland_dot_chart
+from .cleveland_dot_chart import cleveland_dot_chart
 from .co_occurrence_matrix import co_occurrence_matrix
 
 

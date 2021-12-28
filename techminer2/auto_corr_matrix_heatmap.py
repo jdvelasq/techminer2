@@ -23,7 +23,7 @@ Auto-correlation Matrix / Heatmap
 
 
 from .auto_corr_matrix import auto_corr_matrix
-from .visualization_api.heat_map import heat_map
+from .heat_map import heat_map
 
 
 def auto_corr_matrix_heatmap(

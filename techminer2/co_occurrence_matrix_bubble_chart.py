@@ -20,7 +20,7 @@ Co-occurrence Matrix / Bubble Chart
 """
 
 from .co_occurrence_matrix import co_occurrence_matrix
-from .visualization_api.bubble_chart import bubble_chart
+from .bubble_chart import bubble_chart
 
 
 def co_occurrence_matrix_bubble_chart(

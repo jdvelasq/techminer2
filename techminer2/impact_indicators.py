@@ -27,7 +27,7 @@ Index(['num_documents', 'global_citations', 'first_pb_year', 'age', 'h_index',
 import numpy as np
 import pandas as pd
 
-from ..documents_api.load_filtered_documents import load_filtered_documents
+from .load_filtered_documents import load_filtered_documents
 from .column_indicators import column_indicators
 
 

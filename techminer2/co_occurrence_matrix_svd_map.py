@@ -51,7 +51,7 @@ import pandas as pd
 from sklearn.decomposition import TruncatedSVD
 
 from .co_occurrence_matrix import co_occurrence_matrix
-from .visualization_api.map_chart import map_chart
+from .map_chart import map_chart
 
 
 def co_occurrence_matrix_svd_map(

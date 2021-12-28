@@ -1,4 +1,4 @@
-Columns API
+Documents API
 -----------------------------------------------------------------------------------------
 
 .. raw:: html
@@ -33,7 +33,7 @@ Columns API
 
     column_dynamics
     column_global_citations
-    column_h_index
+
 
     
 .. toctree::

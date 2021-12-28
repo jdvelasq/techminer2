@@ -100,8 +100,8 @@ import os
 import pandas as pd
 import yaml
 
-from .common import logging
-from .documents_api.load_filtered_documents import load_filtered_documents
+from . import logging
+from .load_filtered_documents import load_filtered_documents
 
 
 def _load_filter(directory):

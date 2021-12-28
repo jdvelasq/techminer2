@@ -43,7 +43,7 @@ import string
 
 from nltk.stem import PorterStemmer, SnowballStemmer
 
-from .documents_api.load_filtered_documents import load_filtered_documents
+from .load_filtered_documents import load_filtered_documents
 
 
 def _stemming(directory, column, pattern, stemmer="porter", sep="; ", operator="AND"):

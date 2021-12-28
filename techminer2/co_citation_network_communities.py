@@ -18,8 +18,8 @@ rn                                                        ...
 """
 
 from .co_citation_matrix import co_citation_matrix
-from .network_api.network import network
-from .network_api.network_communities import network_communities
+from .network import network
+from .network_communities import network_communities
 
 
 def co_citation_network_communities(

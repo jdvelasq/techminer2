@@ -18,8 +18,8 @@ financial service                 7  ...                  1.0
 import numpy as np
 import pandas as pd
 
-from ..documents_api.load_filtered_documents import load_filtered_documents
-from ..documents_api.load_stopwords import load_stopwords
+from .load_filtered_documents import load_filtered_documents
+from .load_stopwords import load_stopwords
 
 
 def _num_documents_per_period(documents, column, time_window=2, sep="; "):

@@ -23,8 +23,8 @@ attitude                             2                 3  ...   0.385294  0.0054
 """
 
 from .co_occurrence_matrix import co_occurrence_matrix
-from .network_api.network import network
-from .network_api.network_indicators import network_indicators
+from .network import network
+from .network_indicators import network_indicators
 
 
 def co_occurrence_network_indicators(

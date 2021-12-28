@@ -38,7 +38,7 @@ from sklearn.decomposition import LatentDirichletAllocation
 from sklearn.manifold import MDS
 
 from .tf_matrix import tf_matrix
-from .visualization_api.bubble_map import bubble_map
+from .bubble_map import bubble_map
 
 
 class Emergent_Themes_LDA:

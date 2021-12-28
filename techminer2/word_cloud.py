@@ -9,7 +9,7 @@ World cloud
 >>> data = column_indicators('authors', directory=directory).num_documents.head(50)
 >>> word_cloud(data).savefig(file_name)
 
-.. image:: images/word_cloud_authors.png
+.. image:: images/word_cloud.png
     :width: 700px
     :align: center
 

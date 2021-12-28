@@ -57,15 +57,13 @@ from nltk.tokenize import sent_tokenize
 from textblob import TextBlob
 from tqdm import tqdm
 
+from . import logging
 from .clean_institutions import clean_institutions
 from .clean_keywords import clean_keywords
-from .common import logging
-from .common.map_ import map_
-from .text_api import (
-    create_institutions_thesaurus,
-    create_keywords_thesaurus,
-    extract_country,
-)
+from .create_institutions_thesaurus import create_institutions_thesaurus
+from .create_keywords_thesaurus import create_keywords_thesaurus
+from .extract_country import extract_country
+from .map_ import map_
 
 # -----< Dataset Trasformations >----------------------------------------------
 

@@ -54,7 +54,7 @@ import pandas as pd
 from sklearn.cluster import AgglomerativeClustering
 from sklearn.manifold import MDS
 
-from .visualization_api.bubble_map import bubble_map
+from .bubble_map import bubble_map
 from .tf_idf_matrix import tf_idf_matrix
 
 

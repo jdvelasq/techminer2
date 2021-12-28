@@ -24,9 +24,9 @@ Computes coverage of terms in a column discarding stopwords.
 
 """
 
-from .common import logging
-from .documents_api.load_filtered_documents import load_filtered_documents
-from .documents_api.load_stopwords import load_stopwords
+from . import logging
+from .load_filtered_documents import load_filtered_documents
+from .load_stopwords import load_stopwords
 
 
 def column_coverage(column, sep="; ", directory="./"):

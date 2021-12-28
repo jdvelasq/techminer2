@@ -40,7 +40,7 @@ innovating                   10            0
 import numpy as np
 
 from .co_occurrence_matrix import co_occurrence_matrix
-from .visualization_api.stacked_bar_chart import stacked_bar_chart
+from .stacked_bar_chart import stacked_bar_chart
 
 
 def co_occurrence_matrix_topics_comparison_chart(

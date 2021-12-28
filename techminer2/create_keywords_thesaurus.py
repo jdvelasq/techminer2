@@ -2,7 +2,7 @@ import os
 
 import pandas as pd
 
-from ..common import logging
+from . import logging
 from .porter_stemmer import porter_stemmer
 from .thesaurus import Thesaurus, load_file_as_dict, text_clustering
 

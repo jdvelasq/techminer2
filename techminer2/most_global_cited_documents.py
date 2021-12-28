@@ -27,9 +27,9 @@ Al Nawayseh MK et al, 2020, J OPEN INNOV: TECHN...                10  ...       
 """
 
 
-from .documents_api.load_filtered_documents import load_filtered_documents
-from .indicators_api.document_indicators import document_indicators
-from .visualization_api.cleveland_dot_chart import cleveland_dot_chart
+from .cleveland_dot_chart import cleveland_dot_chart
+from .document_indicators import document_indicators
+from .load_filtered_documents import load_filtered_documents
 
 
 def most_global_cited_documents(

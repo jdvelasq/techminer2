@@ -35,11 +35,11 @@ package developed and tested in Python version 3.6.
     license
 
 .. toctree::
-    :caption: Data preparation
+    :caption: User Functions
     :hidden:
     :maxdepth: 1
 
-    _user_data
+    _techminer2
 
 
 .. toctree::
@@ -50,9 +50,9 @@ package developed and tested in Python version 3.6.
     _api_co_occurrence
     _api_columns
     _api_document_term
-    _api_indicators
-    _api_network
-    _api_visualization
+    
+    
+   
 
 
 .. toctree::
@@ -60,12 +60,21 @@ package developed and tested in Python version 3.6.
     :hidden:
     :maxdepth: 1
 
-    _vantagepoint
     _bibliometrix
     _scientopy
     _tlab
+    _vantagepoint
     
-    
+
+
+.. toctree::
+    :caption: Low level API
+    :hidden:
+    :maxdepth: 1
+
+    _api_indicators
+    _api_network
+    _api_visualization
 
 
 **Author**:

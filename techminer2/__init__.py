@@ -3,6 +3,7 @@ from .abstract_screening import abstract_screening
 from .abstract_summarization import abstract_summarization
 from .annual_scientific_production import annual_scientific_production
 from .apply_thesaurus import apply_thesaurus
+from .association_index import association_index
 from .author_local_impact import author_local_impact
 from .authors_production_over_time import authors_production_over_time
 from .auto_corr_matrix import auto_corr_matrix
@@ -54,8 +55,6 @@ from .column_coverage import column_coverage
 from .column_dynamics import column_dynamics
 from .column_gantt_chart import column_gantt_chart
 from .column_global_citations import column_global_citations
-
-# from .column_h_index import column_h_index
 from .column_horizontal_bar_chart import column_horizontal_bar_chart
 from .column_line_chart import column_line_chart
 from .column_pie_chart import column_pie_chart
@@ -66,8 +65,6 @@ from .column_tree_map import column_tree_map
 from .column_trends import column_trends
 from .column_vertical_bar_chart import column_vertical_bar_chart
 from .column_word_cloud import column_word_cloud
-from .common.association_index import association_index
-from .common.explode import explode
 from .core_sources import core_sources
 from .correlation_map import correlation_map
 from .corresponding_authors_country import corresponding_authors_country
@@ -87,6 +84,7 @@ from .emergent_themes_lda_themes import emergent_themes_lda_themes
 from .emergent_themes_nmf import Emergent_Themes_NMF
 from .emergent_themes_nmf_map import emergent_themes_nmf_map
 from .emergent_themes_nmf_themes import emergent_themes_nmf_themes
+from .explode import explode
 
 # from .extract_custom_topics import extract_custom_topics
 from .extract_user_keywords import extract_user_keywords

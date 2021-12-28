@@ -24,7 +24,7 @@ Brooks S     2017                  1  ...                     3.000
 
 import pandas as pd
 
-from ..documents_api.load_filtered_documents import load_filtered_documents
+from .load_filtered_documents import load_filtered_documents
 
 
 def column_indicators_by_year(directory=None, column="authors"):

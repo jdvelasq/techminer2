@@ -25,8 +25,8 @@ bank                               13               193               23
 
 import os
 
-from .indicators_api.column_indicators import column_indicators
-from .visualization_api.pie_chart import pie_chart
+from .column_indicators import column_indicators
+from .pie_chart import pie_chart
 
 
 def column_pie_chart(

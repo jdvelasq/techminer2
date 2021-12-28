@@ -39,7 +39,7 @@ from sklearn.decomposition import TruncatedSVD
 from sklearn.manifold import MDS
 
 from .co_occurrence_matrix import co_occurrence_matrix
-from .visualization_api.map_chart import map_chart
+from .map_chart import map_chart
 
 
 def co_occurrence_matrix_mds_map(

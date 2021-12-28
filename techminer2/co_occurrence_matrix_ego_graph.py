@@ -1,5 +1,5 @@
 """
-Co-occurrence Network / Ego Graph
+Co-occurrence Matrix / Ego Graph
 ===============================================================================
 
 >>> from techminer2 import *
@@ -24,7 +24,7 @@ Co-occurrence Network / Ego Graph
 import networkx as nx
 
 from .co_occurrence_matrix import co_occurrence_matrix
-from .network_api.network_plot import network_plot
+from .network_plot import network_plot
 
 
 def co_occurrence_matrix_ego_graph(

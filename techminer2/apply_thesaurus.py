@@ -29,10 +29,10 @@ import os
 
 import pandas as pd
 
-from .common import logging
-from .common.map_ import map_
-from .documents_api.load_filtered_documents import load_filtered_documents
-from .text_api.thesaurus import read_textfile
+from . import logging
+from .map_ import map_
+from .load_filtered_documents import load_filtered_documents
+from .thesaurus import read_textfile
 
 
 def apply_thesaurus(

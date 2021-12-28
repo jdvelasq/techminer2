@@ -25,8 +25,8 @@ bank                               13               193               23
 
 import os
 
-from .indicators_api.column_indicators import column_indicators
-from .visualization_api.vertical_bar_chart import vertical_bar_chart
+from .column_indicators import column_indicators
+from .vertical_bar_chart import vertical_bar_chart
 
 
 def column_vertical_bar_chart(

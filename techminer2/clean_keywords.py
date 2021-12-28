@@ -24,9 +24,9 @@ from os.path import isfile, join
 
 import pandas as pd
 
-from .common import logging
-from .common.map_ import map_
-from .text_api.thesaurus import read_textfile
+from . import logging
+from .map_ import map_
+from .thesaurus import read_textfile
 
 
 def clean_keywords(directory):

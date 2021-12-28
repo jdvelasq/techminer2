@@ -17,8 +17,8 @@ Co-citation Network / Degree Plot
 """
 
 from .co_citation_matrix import co_citation_matrix
-from .network_api.network import network
-from .network_api.network_degree_plot import network_degree_plot
+from .network import network
+from .network_degree_plot import network_degree_plot
 
 
 def co_citation_network_degree_plot(

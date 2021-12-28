@@ -20,7 +20,7 @@ Network Map
     :align: center
 
 """
-from ..visualization_api.bubble_map import bubble_map
+from .bubble_map import bubble_map
 
 
 def network_map(

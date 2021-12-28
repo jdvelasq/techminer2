@@ -17,7 +17,7 @@ Yuksel S                2                15                0
 
 """
 
-from ..documents_api.load_filtered_documents import load_filtered_documents
+from .load_filtered_documents import load_filtered_documents
 
 
 def column_indicators(

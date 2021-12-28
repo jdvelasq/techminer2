@@ -26,8 +26,8 @@ innovating                        9                  4
 
 """
 
-from .indicators_api.growth_indicators import growth_indicators
-from .visualization_api.stacked_bar_chart import stacked_bar_chart
+from .growth_indicators import growth_indicators
+from .stacked_bar_chart import stacked_bar_chart
 
 
 def column_top_topics_chart(

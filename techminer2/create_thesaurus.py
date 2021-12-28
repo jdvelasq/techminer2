@@ -30,9 +30,9 @@ from os.path import isfile
 
 import pandas as pd
 
-from .common import logging
-from .documents_api.load_filtered_documents import load_filtered_documents
-from .text_api.thesaurus import Thesaurus, load_file_as_dict, text_clustering
+from . import logging
+from .load_filtered_documents import load_filtered_documents
+from .thesaurus import Thesaurus, load_file_as_dict, text_clustering
 
 
 def create_thesaurus(

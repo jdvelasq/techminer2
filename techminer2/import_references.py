@@ -25,7 +25,7 @@ from os.path import dirname, isfile, join
 import numpy as np
 from tqdm import tqdm
 
-from .common import logging
+from . import logging
 from .import_scopus_file import (
     _complete_iso_source_name_colum,
     _create_document_id,

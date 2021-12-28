@@ -12,9 +12,9 @@ import os
 import numpy as np
 import pandas as pd
 
-from .common import logging
-from .documents_api.load_all_documents import load_all_documents
-from .documents_api.save_documents import save_documents
+from . import logging
+from .load_all_documents import load_all_documents
+from .save_documents import save_documents
 
 
 def extract_user_keywords(

@@ -25,8 +25,8 @@ bank                               13               193               23
 
 import os
 
-from .indicators_api.column_indicators import column_indicators
-from .visualization_api.word_cloud import word_cloud
+from .column_indicators import column_indicators
+from .word_cloud import word_cloud
 
 
 def column_word_cloud(

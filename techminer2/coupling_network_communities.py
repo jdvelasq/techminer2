@@ -26,9 +26,9 @@ rn                                                          ...
 import pandas as pd
 
 from .coupling_matrix import coupling_matrix
-from .documents_api.load_all_documents import load_all_documents
-from .network_api.network import network
-from .network_api.network_communities import network_communities
+from .load_all_documents import load_all_documents
+from .network import network
+from .network_communities import network_communities
 
 
 def coupling_network_communities(

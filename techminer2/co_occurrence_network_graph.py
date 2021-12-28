@@ -20,8 +20,8 @@ Co-occurrence Network / Graph
 """
 
 from .co_occurrence_matrix import co_occurrence_matrix
-from .network_api.network import network
-from .network_api.network_plot import network_plot
+from .network import network
+from .network_plot import network_plot
 
 
 def co_occurrence_network_graph(

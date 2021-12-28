@@ -19,7 +19,7 @@ the same directory as the documents.csv file.
 import os
 import sys
 
-from .common import logging
+from . import logging
 
 currentdir = os.getcwd()
 parentdir = os.path.dirname(currentdir)
@@ -31,8 +31,8 @@ import os
 
 import pandas as pd
 
-from .common.map_ import map_
-from .text_api.thesaurus import read_textfile
+from .map_ import map_
+from .thesaurus import read_textfile
 
 
 def clean_institutions(directory):
