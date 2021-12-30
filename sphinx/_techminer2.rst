@@ -26,12 +26,6 @@ Dataset
         summary_view
         extract_user_keywords
 
-    .. note::
-        VantagePoint uses the title view to select a record for viewing. ``document_viewer`` 
-        function implements a document search and returns documents ordered by global 
-        citations.
-
-
 
     * ``TODO: The Title View``
 
@@ -85,20 +79,31 @@ Abstract
 
 
 
-Column (Report) Charts
+Topic view
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     .. toctree::
         :maxdepth: 1
 
-        column_cleveland_dot_chart
-        column_horizontal_bar_chart
-        column_line_chart
-        column_pie_chart
-        column_gantt_chart 
-        column_tree_map
-        column_vertical_bar_chart
-        column_word_cloud
+        topic_view
+        topic_view_cleveland_chart
+        topic_view_dotted_gantt_chart 
+        topic_view_gantt_chart
+        topic_view_hbar_chart
+        topic_view_line_chart
+        topic_view_pie_chart
+        topic_view_timeline_chart
+        topic_view_tree_map
+        topic_view_vbar_chart
+        topic_view_word_cloud
+
+
+    .. toctree::
+        :maxdepth: 1
+
+        top_topics_chart
+        top_trending_topics
+
 
     .. note::
         The ``World Map`` chart is implemented as `Country Scientific Production <country_scientific_production.html>`__.
