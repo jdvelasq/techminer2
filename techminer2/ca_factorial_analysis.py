@@ -22,7 +22,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from sklearn.metrics import silhouette_score
 
-from .correspondence_analysis import CorrespondenceAnalysis
+# from .correspondence_analysis import CorrespondenceAnalysis
 from .conceptual_structure_map import conceptual_structure_map
 
 
