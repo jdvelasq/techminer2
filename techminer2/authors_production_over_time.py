@@ -30,7 +30,7 @@ Dincer H       0     0     0     0     0     2
 
 """
 
-from .column_gantt_chart import column_gantt_chart
+from .topic_view_dotted_gantt_chart import topic_view_dotted_gantt_chart
 
 
 def authors_production_over_time(
@@ -40,7 +40,7 @@ def authors_production_over_time(
     plot=True,
 ):
 
-    return column_gantt_chart(
+    return topic_view_dotted_gantt_chart(
         column="authors",
         min_occ=min_occ,
         figsize=figsize,
