@@ -24,7 +24,7 @@ Kauffman RJ              2               228               34
 
 
 """
-from .column_cleveland_dot_chart import column_cleveland_dot_chart
+from .topic_view_cleveland_chart import topic_view_cleveland_chart
 
 
 def most_relevant_authors(
@@ -34,7 +34,7 @@ def most_relevant_authors(
     directory="./",
     plot=True,
 ):
-    return column_cleveland_dot_chart(
+    return topic_view_cleveland_chart(
         column="authors",
         top_n=top_n,
         color=color,
