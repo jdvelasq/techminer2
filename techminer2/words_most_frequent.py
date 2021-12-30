@@ -24,7 +24,7 @@ innovating                         13               249               46
 
 
 """
-from .column_cleveland_dot_chart import column_cleveland_dot_chart
+from .topic_view_cleveland_chart import topic_view_cleveland_chart
 
 
 def words_most_frequent(
@@ -35,7 +35,7 @@ def words_most_frequent(
     directory="./",
     plot=True,
 ):
-    return column_cleveland_dot_chart(
+    return topic_view_cleveland_chart(
         column=column,
         top_n=top_n,
         color=color,
