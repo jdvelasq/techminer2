@@ -12,19 +12,10 @@ Most Global Cited Countries
     :align: center
 
 
->>> most_global_cited_countries(directory=directory, plot=False).head()
-countries
-germany           528
-united states     503
-united kingdom    500
-china             333
-australia         318
-Name: global_citations, dtype: int64
-
 
 
 """
-from .column_global_citations import column_global_citations
+from .topic_view_cleveland_chart import topic_view_cleveland_chart
 
 
 def most_global_cited_countries(
@@ -32,13 +23,17 @@ def most_global_cited_countries(
     color="k",
     figsize=(6, 6),
     directory="./",
-    plot=True,
 ):
-    return column_global_citations(
+    return topic_view_cleveland_chart(
         column="countries",
+        metric="global_citations",
         top_n=top_n,
+        min_occ=1,
+        max_occ=None,
+        sort_values=None,
+        sort_index=None,
+        directory=directory,
+        #
         color=color,
         figsize=figsize,
-        directory=directory,
-        plot=plot,
     )
