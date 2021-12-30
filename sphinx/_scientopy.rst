@@ -16,8 +16,8 @@ based on the type of plots.
 
 *  `Column Timeline Chart <column_timeline_chart.html>`__.
 
-*  `Column Top Topics Chart <column_top_topics_chart.html>`__.
+*  `Top Topics Chart <top_topics_chart.html>`__.
 
-*  `Column Top Trending Chart <column_top_trending_topics.html>`__.
+*  `Top Trending Topics <top_trending_topics.html>`__.
 
-*  `Column Word Cloud <column_word_cloud.html>`__.     
+*  `Word Cloud <column_word_cloud.html>`__.     
