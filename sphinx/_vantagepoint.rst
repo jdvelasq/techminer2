@@ -66,20 +66,24 @@ Thesaurus
         create_thesaurus
 
 
-Column (Report) Charts
+Topic View
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     .. toctree::
         :maxdepth: 1
 
-        column_cleveland_dot_chart
-        column_horizontal_bar_chart
-        column_line_chart
-        column_pie_chart
-        column_gantt_chart 
-        column_tree_map
-        column_vertical_bar_chart
-        column_word_cloud
+        topic_view
+        topic_view_cleveland_chart
+        topic_view_gantt_chart 
+        topic_view_hbar_chart
+        topic_view_line_chart
+        topic_view_pie_chart
+        topic_view_timeline_chart
+        topic_view_tree_map
+        topic_view_vbar_chart
+        topic_view_word_cloud
+
+
 
     .. note::
         The ``World Map`` chart is implemented as `Country Scientific Production <country_scientific_production.html>`__.
