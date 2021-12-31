@@ -133,7 +133,7 @@ Documents
       words_most_frequent
       words_tree_map
       words_trend_topics
-      words_word_cloud
+      word_cloud
       words_word_dynamics
    
 
