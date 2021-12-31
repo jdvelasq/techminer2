@@ -32,7 +32,7 @@ def topic_view_word_cloud(
     sort_index=None,
     directory="./",
     #
-    figsize=(8, 6),
+    figsize=(10, 5),
     cmap="Blues",
 ):
 
