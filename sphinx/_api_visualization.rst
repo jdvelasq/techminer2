@@ -9,6 +9,7 @@ Visualization API
 .. toctree::
     :maxdepth: 1
 
+    _word_cloud
     bubble_chart
     dotted_gantt_chart
     gantt_chart
@@ -21,5 +22,4 @@ Visualization API
     stacked_column_chart
     tree_map    
     vertical_bar_chart
-    word_cloud
     world_map

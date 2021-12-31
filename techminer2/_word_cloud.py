@@ -1,5 +1,5 @@
 """
-World cloud
+World cloud graph
 ===============================================================================
 
 >>> from techminer2 import *
@@ -22,7 +22,7 @@ from wordcloud import WordCloud
 TEXTLEN = 40
 
 
-def word_cloud(
+def _word_cloud(
     series,
     darkness=None,
     figsize=(6, 6),
@@ -110,6 +110,7 @@ def word_cloud(
         contour_color=contour_color,
         repeat=repeat,
     )
+
     wordcloud.generate_from_frequencies(words)
     ax.imshow(wordcloud, interpolation="bilinear")
     #

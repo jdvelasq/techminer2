@@ -18,10 +18,8 @@ Topic View / Word Cloud
 
 """
 
-import os
-
+from ._word_cloud import _word_cloud
 from .topic_view import topic_view
-from .word_cloud import word_cloud
 
 
 def topic_view_word_cloud(
@@ -51,7 +49,7 @@ def topic_view_word_cloud(
 
     indicators = indicators[metric]
 
-    return word_cloud(
+    return _word_cloud(
         series=indicators,
         darkness=indicators,
         cmap=cmap,
