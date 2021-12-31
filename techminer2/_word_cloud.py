@@ -27,8 +27,6 @@ def _word_cloud(
     darkness=None,
     figsize=(6, 6),
     font_path=None,
-    width=400,
-    height=200,
     margin=2,
     ranks_only=None,
     prefer_horizontal=0.9,
@@ -48,13 +46,16 @@ def _word_cloud(
     cmap="Blues",
     normalize_plurals=True,
     contour_width=0,
-    contour_color="black",
+    contour_color="white",
     repeat=False,
 ):
     """Plots a wordcloud from a dataframe."""
 
     def color_func(word, font_size, position, orientation, font_path, random_state):
         return color_dic[word]
+
+    height = 400
+    width = int(height * figsize[0] / figsize[1])
 
     series.index = series.index.astype(str)
     if darkness is not None:
