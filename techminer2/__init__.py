@@ -134,10 +134,9 @@ from .topic_view_pie_chart import topic_view_pie_chart
 from .topic_view_timeline_chart import topic_view_timeline_chart
 from .topic_view_tree_map import topic_view_tree_map
 from .topic_view_vbar_chart import topic_view_vbar_chart
-from .topic_view_word_cloud import topic_view_word_cloud
 from .user_filters import user_filters
+from .word_cloud import word_cloud
 from .words_most_frequent import words_most_frequent
 from .words_tree_map import words_tree_map
 from .words_trend_topics import words_trend_topics
-from .words_word_cloud import words_word_cloud
 from .words_word_dynamics import words_word_dynamics
