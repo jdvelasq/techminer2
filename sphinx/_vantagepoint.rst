@@ -76,12 +76,12 @@ Topic View
         topic_view_cleveland_chart
         topic_view_gantt_chart 
         topic_view_hbar_chart
-        topic_view_line_chart
+        line_chart
         topic_view_pie_chart
         topic_view_timeline_chart
         topic_view_tree_map
         topic_view_vbar_chart
-        topic_view_word_cloud
+        word_cloud
 
 
 
