@@ -20,4 +20,4 @@ based on the type of plots.
 
 *  `Top Trending Topics <top_trending_topics.html>`__.
 
-*  `Word Cloud <column_word_cloud.html>`__.     
+*  `Word Cloud <word_cloud.html>`__.     
