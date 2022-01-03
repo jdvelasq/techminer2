@@ -87,6 +87,7 @@ from .factorial_analysis_mds_silhouette_scores import (
 from .find_string import find_string
 from .import_references import import_references
 from .import_scopus_file import import_scopus_file
+from .line_chart import line_chart
 from .lotka_law import lotka_law
 from .main_information import main_information
 
@@ -129,7 +130,6 @@ from .topic_view_cleveland_chart import topic_view_cleveland_chart
 from .topic_view_dotted_gantt_chart import topic_view_dotted_gantt_chart
 from .topic_view_gantt_chart import topic_view_gantt_chart
 from .topic_view_hbar_chart import topic_view_hbar_chart
-from .topic_view_line_chart import topic_view_line_chart
 from .topic_view_pie_chart import topic_view_pie_chart
 from .topic_view_timeline_chart import topic_view_timeline_chart
 from .topic_view_tree_map import topic_view_tree_map
