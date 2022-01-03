@@ -13,9 +13,13 @@ Visualization API
    _hbar_chart
    _line_chart
    _pie_chart
+   _tree_map    
    _vbar_chart
    _word_cloud
-   _tree_map    
+
+
+.. toctree::
+   :maxdepth: 1
 
    bubble_chart
    dotted_gantt_chart
