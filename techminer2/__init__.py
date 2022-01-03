@@ -140,3 +140,4 @@ from .word_cloud import word_cloud
 from .words_tree_map import words_tree_map
 from .words_trend_topics import words_trend_topics
 from .words_word_dynamics import words_word_dynamics
+from .world_map import world_map
