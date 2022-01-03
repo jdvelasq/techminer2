@@ -15,7 +15,7 @@ Most Global Cited Countries
 
 
 """
-from .topic_view_cleveland_chart import topic_view_cleveland_chart
+from .cleveland_chart import cleveland_chart
 
 
 def most_global_cited_countries(
@@ -24,7 +24,7 @@ def most_global_cited_countries(
     figsize=(6, 6),
     directory="./",
 ):
-    return topic_view_cleveland_chart(
+    return cleveland_chart(
         column="countries",
         metric="global_citations",
         top_n=top_n,
