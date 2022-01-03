@@ -5,71 +5,75 @@ Gantt Chart
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
 >>> file_name = "/workspaces/techminer2/sphinx/images/gantt_chart.png"
->>> from techminer2.indicators_api.annual_occurrence_matrix import annual_occurrence_matrix
->>> data = annual_occurrence_matrix('iso_source_name',  min_occ=10, directory=directory)
->>> gantt_chart(data, color='tab:blue', figsize=(8, 6)).savefig(file_name)
+>>> gantt_chart(
+...     column='author_keywords',
+...     top_n=20, 
+...     directory=directory,
+... ).savefig(file_name)
 
 .. image:: images/gantt_chart.png
     :width: 700px
     :align: center
 
+>>> gantt_chart(
+...     column='author_keywords',
+...     top_n=20, 
+...     directory=directory,
+...     plot=False,
+... ).head()
+pub_year                2016  2017  2018  2019  2020  2021
+author_keywords                                           
+fintech                    4     6    16    16    38    59
+financial technologies     1     0     6     4     5    12
+financial inclusion        0     2     0     2     3    10
+block-chain                0     2     3     4     2     6
+innovating                 2     1     3     3     3     1
+
+
 """
 
 
-import matplotlib.pyplot as plt
-import numpy as np
-import pandas as pd
-
-TEXTLEN = 40
+from ._gantt_chart import _gantt_chart
+from .annual_occurrence_matrix import annual_occurrence_matrix
+from .topic_view import topic_view
 
 
-def gantt_chart(annual_occurrence_matrix, color="tab:blue", figsize=(8, 6)):
-
-    data = annual_occurrence_matrix.copy()
-    column = data.index.name
-    data = data.reset_index()
-    data = pd.melt(data, id_vars=column, var_name="year", value_name="occurrences")
-    data["occurrences"] = data.occurrences.map(lambda x: np.nan if x == 0 else x)
-    data = data.dropna()
-    data = data.groupby(column).agg({"year": [np.max, np.min]})
-    data.columns = data.columns.droplevel(0)
-    data = data.rename(columns={"amax": "finish", "amin": "start"})
-    data = data.assign(width=data.finish - data.start + 1)
-
-    data["finish"] = data.finish + 1
-
-    data = data.sort_values(by=["start", "finish"])
-
-    fig = plt.Figure(figsize=figsize)
-    ax = fig.subplots()
-
-    ax.barh(
-        y=data.index,
-        width=data.width,
-        left=data.start,
-        color=color,
-        edgecolor="k",
-        linewidth=0.5,
-        zorder=10,
+def gantt_chart(
+    column,
+    metric="num_documents",
+    top_n=None,
+    min_occ=1,
+    max_occ=None,
+    sort_values=None,
+    sort_index=None,
+    directory="./",
+    #
+    color="tab:blue",
+    figsize=(6, 6),
+    plot=True,
+):
+    indicators = topic_view(
+        column=column,
+        metric=metric,
+        top_n=top_n,
+        min_occ=min_occ,
+        max_occ=max_occ,
+        sort_values=sort_values,
+        sort_index=sort_index,
+        directory=directory,
     )
 
-    for x in ["top", "right", "bottom"]:
-        ax.spines[x].set_visible(False)
+    topics = indicators.index
 
-    years_range = np.arange(
-        annual_occurrence_matrix.columns.values.min(),
-        annual_occurrence_matrix.columns.values.max() + 1,
+    production = annual_occurrence_matrix(
+        column=column,
+        min_occ=1,
+        directory=directory,
     )
-    ax.set_xticks(years_range)
 
-    # ax.tick_params(axis="x", labelrotation=90)
-    xticks = [str(int(x)) for x in ax.get_xticks()]
-    ax.set_xticklabels(xticks, rotation=90, ha="left", fontsize=9)
+    production = production.loc[topics]
 
-    ax.set_yticklabels(data.index, fontsize=9)
+    if plot is False:
+        return production
 
-    ax.grid(axis="x", color="gray", linestyle=":")
-
-    fig.set_tight_layout(True)
-
-    return fig
+    return _gantt_chart(production, figsize=figsize, color=color)
