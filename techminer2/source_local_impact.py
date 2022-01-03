@@ -27,7 +27,7 @@ J ASIAN FINANC ECON BUS              3  ...                  5.33
 """
 
 
-from .cleveland_dot_chart import cleveland_dot_chart
+from ._cleveland_chart import _cleveland_chart
 from .impact_indicators import impact_indicators
 
 
