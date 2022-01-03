@@ -17,6 +17,7 @@ Visualization API
    _vbar_chart
    _word_cloud
    _world_map
+   
 
 
 .. toctree::
@@ -25,6 +26,7 @@ Visualization API
    bubble_chart
    dotted_gantt_chart
    gantt_chart
+   timeline_chart
    heat_map
    
    
