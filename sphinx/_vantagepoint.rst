@@ -78,10 +78,10 @@ Topic View
         :maxdepth: 1
 
         cleveland_chart
+        gantt_chart 
         hbar_chart
         line_chart
         pie_chart
-        topic_view_gantt_chart 
         timeline_chart
         tree_map
         vbar_chart
