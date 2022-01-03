@@ -86,6 +86,7 @@ from .factorial_analysis_mds_silhouette_scores import (
     factorial_analysis_mds_silhouette_scores,
 )
 from .find_string import find_string
+from .gantt_chart import gantt_chart
 from .hbar_chart import hbar_chart
 from .import_references import import_references
 from .import_scopus_file import import_scopus_file
@@ -132,7 +133,6 @@ from .top_topics import top_topics
 from .top_trending_topics import top_trending_topics
 from .topic_view import topic_view
 from .topic_view_dotted_gantt_chart import topic_view_dotted_gantt_chart
-from .topic_view_gantt_chart import topic_view_gantt_chart
 from .tree_map import tree_map
 from .user_filters import user_filters
 from .vbar_chart import vbar_chart
