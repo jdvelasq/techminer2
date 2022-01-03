@@ -27,8 +27,8 @@ Al Nawayseh MK et al, 2020, J OPEN INNOV: TECHN...                10  ...       
 
 """
 
+from ._cleveland_chart import _cleveland_chart
 from .document_indicators import document_indicators
-from .cleveland_dot_chart import cleveland_dot_chart
 
 
 def most_local_cited_documents(
@@ -47,7 +47,7 @@ def most_local_cited_documents(
     indicators = indicators.head(top_n)
     indicators = indicators.local_citations
 
-    return cleveland_dot_chart(
+    return _cleveland_chart(
         indicators,
         figsize=figsize,
         color=color,
