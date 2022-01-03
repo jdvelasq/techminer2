@@ -2,67 +2,66 @@
 Pie Chart
 ===============================================================================
 
-
-
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
->>> from techminer2.indicators_api.annual_indicators import annual_indicators
+>>> file_name = "/workspaces/techminer2/sphinx/images/pie_chart.png"
 >>> pie_chart(
-...     series=annual_indicators(directory).num_documents, 
-...     darkness=annual_indicators(directory).global_citations,
-... ).savefig("/workspaces/techminer2/sphinx/images/pie_chart.png")
-
+...     'author_keywords', 
+...     top_n=15, 
+...     directory=directory,
+... ).savefig(file_name)
 
 .. image:: images/pie_chart.png
     :width: 700px
     :align: center
 
 
+
 """
 
 
-import matplotlib
-import matplotlib.pyplot as plt
-import numpy as np
-import pandas as pd
-
-TEXTLEN = 40
+from ._pie_chart import _pie_chart
+from .topic_view import topic_view
 
 
 def pie_chart(
-    series,
-    darkness=None,
+    column,
+    metric="num_documents",
+    top_n=None,
+    min_occ=1,
+    max_occ=None,
+    sort_values=None,
+    sort_index=None,
+    directory="./",
+    #
+    figsize=(8, 6),
     cmap="Greys",
-    figsize=(6, 6),
-    fontsize=9,
-    wedgeprops={
-        "width": 0.6,
-        "edgecolor": "k",
-        "linewidth": 0.5,
-        "linestyle": "-",
-        "antialiased": True,
-    },
 ):
-    """Plot a pie chart."""
-    darkness = series if darkness is None else darkness
 
-    cmap = plt.cm.get_cmap(cmap)
-    colors = [
-        cmap(0.1 + 0.90 * (d - min(darkness)) / (max(darkness) - min(darkness)))
-        for d in darkness
-    ]
-
-    matplotlib.rc("font", size=fontsize)
-    fig = plt.Figure(figsize=figsize)
-    ax = fig.subplots()
-
-    ax.pie(
-        x=series,
-        labels=series.index,
-        colors=colors,
-        wedgeprops=wedgeprops,
+    indicators = topic_view(
+        column=column,
+        metric=metric,
+        top_n=top_n,
+        min_occ=min_occ,
+        max_occ=max_occ,
+        sort_values=sort_values,
+        sort_index=sort_index,
+        directory=directory,
     )
 
-    fig.set_tight_layout(True)
+    indicators = indicators[metric]
 
-    return fig
+    return _pie_chart(
+        indicators,
+        darkness=indicators,
+        cmap=cmap,
+        figsize=figsize,
+        fontsize=9,
+        wedgeprops={
+            "width": 0.6,
+            "edgecolor": "k",
+            "linewidth": 0.5,
+            "linestyle": "-",
+            "antialiased": True,
+        },
+    )
