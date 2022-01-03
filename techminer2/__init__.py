@@ -92,6 +92,7 @@ from .import_scopus_file import import_scopus_file
 from .line_chart import line_chart
 from .lotka_law import lotka_law
 from .main_information import main_information
+from .most_frequent_words import most_frequent_words
 
 # from .main_path import MainPath
 # from .main_path_network import main_path_network
@@ -136,7 +137,6 @@ from .tree_map import tree_map
 from .user_filters import user_filters
 from .vbar_chart import vbar_chart
 from .word_cloud import word_cloud
-from .words_most_frequent import words_most_frequent
 from .words_tree_map import words_tree_map
 from .words_trend_topics import words_trend_topics
 from .words_word_dynamics import words_word_dynamics
