@@ -133,8 +133,8 @@ from .topic_view_dotted_gantt_chart import topic_view_dotted_gantt_chart
 from .topic_view_gantt_chart import topic_view_gantt_chart
 from .topic_view_timeline_chart import topic_view_timeline_chart
 from .topic_view_tree_map import topic_view_tree_map
-from .topic_view_vbar_chart import topic_view_vbar_chart
 from .user_filters import user_filters
+from .vbar_chart import vbar_chart
 from .word_cloud import word_cloud
 from .words_most_frequent import words_most_frequent
 from .words_tree_map import words_tree_map
