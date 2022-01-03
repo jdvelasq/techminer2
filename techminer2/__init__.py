@@ -108,6 +108,7 @@ from .occurrence_matrix_associations import occurrence_matrix_associations
 from .occurrence_matrix_bubble_chart import occurrence_matrix_bubble_chart
 from .occurrence_matrix_heatmap import occurrence_matrix_heatmap
 from .occurrence_matrix_html import occurrence_matrix_html
+from .pie_chart import pie_chart
 from .source_dynamics import source_dynamics
 from .source_local_impact import source_local_impact
 from .stemming import stemming_and, stemming_or
@@ -130,7 +131,6 @@ from .topic_view_cleveland_chart import topic_view_cleveland_chart
 from .topic_view_dotted_gantt_chart import topic_view_dotted_gantt_chart
 from .topic_view_gantt_chart import topic_view_gantt_chart
 from .topic_view_hbar_chart import topic_view_hbar_chart
-from .topic_view_pie_chart import topic_view_pie_chart
 from .topic_view_timeline_chart import topic_view_timeline_chart
 from .topic_view_tree_map import topic_view_tree_map
 from .topic_view_vbar_chart import topic_view_vbar_chart
