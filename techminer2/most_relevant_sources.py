@@ -24,7 +24,7 @@ FRONTIER ARTIF INTELL                      5                23                4
 
 
 """
-from .topic_view_cleveland_chart import topic_view_cleveland_chart
+from .cleveland_chart import cleveland_chart
 
 
 def most_relevant_sources(
@@ -34,7 +34,7 @@ def most_relevant_sources(
     directory="./",
     plot=True,
 ):
-    return topic_view_cleveland_chart(
+    return cleveland_chart(
         column="iso_source_name",
         top_n=top_n,
         color=color,
