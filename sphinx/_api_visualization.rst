@@ -12,6 +12,7 @@ Visualization API
    _horizontal_bar_chart
    _line_chart
    _pie_chart
+   _vbar_chart
    _word_cloud
 
    bubble_chart
@@ -24,5 +25,5 @@ Visualization API
    stacked_bar_chart
    stacked_column_chart
    tree_map    
-   vertical_bar_chart
+   
    world_map
