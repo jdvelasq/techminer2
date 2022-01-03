@@ -35,7 +35,7 @@ Name: fintech, dtype: int64
 
 import numpy as np
 
-from .cleveland_dot_chart import cleveland_dot_chart
+from ._cleveland_chart import _cleveland_chart
 from .co_occurrence_matrix import co_occurrence_matrix
 
 
@@ -84,7 +84,7 @@ def co_occurrence_matrix_topic_associations(
     else:
         xlabel = normalization.capitalize()
 
-    return cleveland_dot_chart(
+    return _cleveland_chart(
         series,
         figsize=figsize,
         color=color,
