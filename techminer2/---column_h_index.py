@@ -27,7 +27,7 @@ J ASIAN FINANC ECON BUS              3  ...                  5.33
 """
 
 
-from .cleveland_dot_chart import cleveland_dot_chart
+from ._cleveland_chart import _cleveland_chart
 from .impact_indicators import impact_indicators
 
 
@@ -47,7 +47,7 @@ def column_h_index(
 
     indicators = indicators["h_index"].head(top_n)
 
-    return cleveland_dot_chart(
+    return _cleveland_chart(
         indicators,
         figsize=figsize,
         color=color,
