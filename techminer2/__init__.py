@@ -127,12 +127,12 @@ from .thematic_map_communities import thematic_map_communities
 from .thematic_map_degree_plot import thematic_map_degree_plot
 from .thematic_map_indicators import thematic_map_indicators
 from .thematic_map_network import thematic_map_network
-from .top_topics_chart import top_topics_chart
+from .timeline_chart import timeline_chart
+from .top_topics import top_topics
 from .top_trending_topics import top_trending_topics
 from .topic_view import topic_view
 from .topic_view_dotted_gantt_chart import topic_view_dotted_gantt_chart
 from .topic_view_gantt_chart import topic_view_gantt_chart
-from .topic_view_timeline_chart import topic_view_timeline_chart
 from .tree_map import tree_map
 from .user_filters import user_filters
 from .vbar_chart import vbar_chart
