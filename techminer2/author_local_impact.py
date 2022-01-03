@@ -36,7 +36,7 @@ Khan S                2  ...                 18.50
 """
 
 
-from .cleveland_dot_chart import cleveland_dot_chart
+from ._cleveland_chart import _cleveland_chart
 from .impact_indicators import impact_indicators
 
 
@@ -61,7 +61,7 @@ def author_local_impact(
 
     indicators = indicators[impact_measure].head(top_n)
 
-    return cleveland_dot_chart(
+    return _cleveland_chart(
         indicators,
         figsize=figsize,
         color=color,
