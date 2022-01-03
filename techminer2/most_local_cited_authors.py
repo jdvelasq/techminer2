@@ -30,7 +30,7 @@ from os.path import join
 
 import pandas as pd
 
-from .cleveland_dot_chart import cleveland_dot_chart
+from ._cleveland_chart import _cleveland_chart
 
 
 def most_local_cited_authors(
@@ -55,7 +55,7 @@ def most_local_cited_authors(
         return indicators
     indicators = indicators.local_citations.head(top_n)
 
-    return cleveland_dot_chart(
+    return _cleveland_chart(
         indicators,
         figsize=figsize,
         color=color,
