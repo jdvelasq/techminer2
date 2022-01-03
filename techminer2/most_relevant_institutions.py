@@ -26,7 +26,7 @@ University of Pavia ITA                          4  ...                1
 
 
 """
-from .topic_view_cleveland_chart import topic_view_cleveland_chart
+from .cleveland_chart import cleveland_chart
 
 
 def most_relevant_institutions(
@@ -36,7 +36,7 @@ def most_relevant_institutions(
     directory="./",
     plot=True,
 ):
-    return topic_view_cleveland_chart(
+    return cleveland_chart(
         column="institutions",
         top_n=top_n,
         color=color,
