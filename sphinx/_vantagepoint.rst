@@ -86,6 +86,7 @@ Topic View
         tree_map
         vbar_chart
         word_cloud
+        world_map
 
 
 
