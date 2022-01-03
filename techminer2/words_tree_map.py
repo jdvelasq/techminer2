@@ -23,6 +23,6 @@ bank                               13               193               23
 
 """
 
-from .topic_view_tree_map import topic_view_tree_map
+from .tree_map import tree_map
 
-words_tree_map = topic_view_tree_map
+words_tree_map = tree_map
