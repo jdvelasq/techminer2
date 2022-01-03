@@ -5,111 +5,58 @@ Horizontal Bar Chart
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
 >>> file_name = "/workspaces/techminer2/sphinx/images/horizontal_bar_chart.png"
->>> from techminer2.indicators_api.column_indicators import column_indicators
->>> series = column_indicators("countries", directory=directory).num_documents.head(20)
->>> darkness = column_indicators("countries",directory=directory).global_citations.head(20)
->>> title = "Country scientific productivity"
->>> horizontal_bar_chart(series, darkness, title=title).savefig(file_name)
+>>> horizontal_bar_chart(
+...     'author_keywords', 
+...     top_n=20, 
+...     directory=directory,
+... ).savefig(file_name)
 
 .. image:: images/horizontal_bar_chart.png
     :width: 700px
     :align: center
 
 
+
 """
-
-
-import textwrap
-
-import matplotlib.pyplot as plt
-import numpy as np
-
-# from techminer.plots.shorten_ticklabels import shorten_ticklabels
-
-TEXTLEN = 29
+from ._horizontal_bar_chart import _horizontal_bar_chart
+from .topic_view import topic_view
 
 
 def horizontal_bar_chart(
-    series,
-    darkness=None,
+    column,
+    metric="num_documents",
+    top_n=None,
+    min_occ=1,
+    max_occ=None,
+    sort_values=None,
+    sort_index=None,
+    directory="./",
+    #
     cmap="Greys",
-    figsize=(9, 6),
-    edgecolor="k",
-    linewidth=0.5,
-    title=None,
-    xlabel=None,
-    ylabel=None,
-    zorder=10,
+    figsize=(8, 6),
 ):
-    """Make a horizontal bar plot."""
-    darkness = series if darkness is None else darkness
-    cmap = plt.cm.get_cmap(cmap)
-    if max(darkness) == min(darkness):
-        color = [cmap(0.1) for _ in darkness]
-    else:
-        color = [
-            cmap(0.1 + 0.90 * (d - min(darkness)) / (max(darkness) - min(darkness)))
-            for d in darkness
-        ]
-
-    fig = plt.Figure(figsize=figsize)
-    ax = fig.subplots()
-
-    ax.barh(
-        y=range(len(series)),
-        width=series,
-        edgecolor=edgecolor,
-        linewidth=linewidth,
-        zorder=zorder,
-        color=color,
+    indicators = topic_view(
+        column=column,
+        metric=metric,
+        top_n=top_n,
+        min_occ=min_occ,
+        max_occ=max_occ,
+        sort_values=sort_values,
+        sort_index=sort_index,
+        directory=directory,
     )
 
-    if xlabel is None:
-        xlabel = series.name
-        xlabel = xlabel.replace("_", " ")
-        xlabel = xlabel.title()
+    indicators = indicators[metric]
 
-    if ylabel is None:
-        ylabel = series.index.name
-        ylabel = ylabel.replace("_", " ")
-        ylabel = ylabel.title()
-
-    ax.set_xlabel(xlabel, fontsize=7)
-    ax.set_ylabel(ylabel, fontsize=7)
-
-    yticklabels = series.index
-    if yticklabels.dtype != "int64":
-        yticklabels = [
-            textwrap.shorten(
-                text=yticklabels[i],
-                width=TEXTLEN,
-                placeholder="...",
-                break_long_words=False,
-            )
-            for i in range(len(yticklabels))
-        ]
-
-    ax.invert_yaxis()
-    ax.set_yticks(np.arange(len(series)))
-    ax.set_yticklabels(yticklabels)
-
-    for x in ["top", "right", "bottom"]:
-        ax.spines[x].set_visible(False)
-
-    ax.spines["left"].set_color("gray")
-
-    ax.grid(axis="x", color="gray", linestyle=":")
-    ax.tick_params(axis="x", labelsize=7)
-    ax.tick_params(axis="y", labelsize=7)
-
-    if title is not None:
-        ax.set_title(
-            title,
-            fontsize=10,
-            color="dimgray",
-            loc="left",
-        )
-
-    fig.set_tight_layout(True)
-
-    return fig
+    return _horizontal_bar_chart(
+        indicators,
+        darkness=indicators,
+        cmap=cmap,
+        figsize=figsize,
+        edgecolor="k",
+        linewidth=0.5,
+        title=None,
+        xlabel=metric.replace("_", " ").title(),
+        ylabel=column.replace("_", " ").title(),
+        zorder=10,
+    )
