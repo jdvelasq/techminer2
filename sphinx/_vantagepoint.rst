@@ -82,7 +82,7 @@ Topic View
         line_chart
         pie_chart
         topic_view_gantt_chart 
-        topic_view_timeline_chart
+        timeline_chart
         tree_map
         vbar_chart
         word_cloud
