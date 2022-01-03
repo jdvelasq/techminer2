@@ -9,6 +9,7 @@ Visualization API
 .. toctree::
    :maxdepth: 1
 
+   _horizontal_bar_chart
    _line_chart
    _pie_chart
    _word_cloud
@@ -17,7 +18,7 @@ Visualization API
    dotted_gantt_chart
    gantt_chart
    heat_map
-   horizontal_bar_chart
+   
    
    map_chart
    stacked_bar_chart
