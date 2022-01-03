@@ -16,6 +16,7 @@ Visualization API
    _tree_map    
    _vbar_chart
    _word_cloud
+   _world_map
 
 
 .. toctree::
@@ -31,5 +32,3 @@ Visualization API
    stacked_bar_chart
    stacked_column_chart
    
-   
-   world_map
