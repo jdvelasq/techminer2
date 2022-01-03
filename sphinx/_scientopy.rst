@@ -10,14 +10,12 @@ ScientoPy is specialized in the analysis of dataset columns. Allows analysis for
 most relevant topics or for a group of user-defined topics. The presented comparison is
 based on the type of plots.
 
+   .. toctree::
+      :maxdepth: 1
 
+      hbar_chart
+      timeline_chart
+      top_topics
+      top_trending_topics
+      word_cloud
 
-*  `Column Horizontal Bar Chart <column_horizontal_bar_chart.html>`__.     
-
-*  `Column Timeline Chart <column_timeline_chart.html>`__.
-
-*  `Top Topics Chart <top_topics_chart.html>`__.
-
-*  `Top Trending Topics <top_trending_topics.html>`__.
-
-*  `Word Cloud <word_cloud.html>`__.     
