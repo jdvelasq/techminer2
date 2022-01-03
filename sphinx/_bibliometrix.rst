@@ -130,9 +130,9 @@ Documents
    .. toctree::
       :maxdepth: 1
 
+      most_frequent_words
       tree_map
       word_cloud
-      words_most_frequent
       words_trend_topics
       words_word_dynamics
    
