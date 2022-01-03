@@ -15,6 +15,7 @@ from .bradford_law import bradford_law
 # from .ca_factorial_analysis import ca_factorial_analysis
 from .clean_institutions import clean_institutions
 from .clean_keywords import clean_keywords
+from .cleveland_chart import cleveland_chart
 from .co_citation_matrix import co_citation_matrix
 from .co_citation_network_communities import co_citation_network_communities
 from .co_citation_network_degree_plot import co_citation_network_degree_plot
@@ -85,7 +86,7 @@ from .factorial_analysis_mds_silhouette_scores import (
     factorial_analysis_mds_silhouette_scores,
 )
 from .find_string import find_string
-from .horizontal_bar_chart import horizontal_bar_chart
+from .hbar_chart import hbar_chart
 from .import_references import import_references
 from .import_scopus_file import import_scopus_file
 from .line_chart import line_chart
@@ -128,11 +129,10 @@ from .thematic_map_network import thematic_map_network
 from .top_topics_chart import top_topics_chart
 from .top_trending_topics import top_trending_topics
 from .topic_view import topic_view
-from .topic_view_cleveland_chart import topic_view_cleveland_chart
 from .topic_view_dotted_gantt_chart import topic_view_dotted_gantt_chart
 from .topic_view_gantt_chart import topic_view_gantt_chart
 from .topic_view_timeline_chart import topic_view_timeline_chart
-from .topic_view_tree_map import topic_view_tree_map
+from .tree_map import tree_map
 from .user_filters import user_filters
 from .vbar_chart import vbar_chart
 from .word_cloud import word_cloud
