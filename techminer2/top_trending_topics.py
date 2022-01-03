@@ -34,7 +34,7 @@ Name: average_growth_rate, dtype: float64
 
 """
 
-from ._horizontal_bar_chart import _horizontal_bar_chart
+from ._hbar_chart import _hbar_chart
 from .growth_indicators import growth_indicators
 
 
@@ -56,7 +56,7 @@ def top_trending_topics(
 
     indicators = indicators.head(top_n)
 
-    return _horizontal_bar_chart(
+    return _hbar_chart(
         indicators,
         title="Top Trending Topics",
         xlabel="Average Growth Rate",
