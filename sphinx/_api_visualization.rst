@@ -9,11 +9,13 @@ Visualization API
 .. toctree::
    :maxdepth: 1
 
-   _horizontal_bar_chart
+   _cleveland_chart
+   _hbar_chart
    _line_chart
    _pie_chart
    _vbar_chart
    _word_cloud
+   _tree_map    
 
    bubble_chart
    dotted_gantt_chart
@@ -24,6 +26,6 @@ Visualization API
    map_chart
    stacked_bar_chart
    stacked_column_chart
-   tree_map    
+   
    
    world_map
