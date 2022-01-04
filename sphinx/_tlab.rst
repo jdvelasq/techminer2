@@ -19,7 +19,7 @@ Word Associations
     .. toctree::
         :maxdepth: 1
 
-        co_occurrence_matrix_topic_associations
+        topic_associations
         co_occurrence_matrix_mds_map
 
 
