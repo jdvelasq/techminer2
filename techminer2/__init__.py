@@ -34,9 +34,6 @@ from .co_occurrence_matrix_html import co_occurrence_matrix_html
 from .co_occurrence_matrix_manifold import co_occurrence_matrix_manifold
 from .co_occurrence_matrix_mds_map import co_occurrence_matrix_mds_map
 from .co_occurrence_matrix_svd_map import co_occurrence_matrix_svd_map
-from .co_occurrence_matrix_topic_associations import (
-    co_occurrence_matrix_topic_associations,
-)
 from .co_occurrence_matrix_topics_comparison_chart import (
     co_occurrence_matrix_topics_comparison_chart,
 )
@@ -131,13 +128,14 @@ from .thematic_map_network import thematic_map_network
 from .timeline_chart import timeline_chart
 from .top_topics import top_topics
 from .top_trending_topics import top_trending_topics
+from .topic_associations import topic_associations
 from .topic_view import topic_view
 from .topic_view_dotted_gantt_chart import topic_view_dotted_gantt_chart
 from .tree_map import tree_map
+from .trend_topics import trend_topics
 from .user_filters import user_filters
 from .vbar_chart import vbar_chart
 from .word_cloud import word_cloud
+from .word_dynamics import word_dynamics
 from .words_tree_map import words_tree_map
-from .words_trend_topics import words_trend_topics
-from .words_word_dynamics import words_word_dynamics
 from .world_map import world_map
