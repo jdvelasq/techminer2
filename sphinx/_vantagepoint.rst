@@ -167,3 +167,14 @@ Factor Analysis
         :maxdepth: 1
 
         factor_matrix 
+
+
+Document-Term Matrix
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+.. toctree::
+    :maxdepth: 1
+
+    tf_idf_matrix
+    tf_matrix 
