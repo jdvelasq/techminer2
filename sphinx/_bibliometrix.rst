@@ -135,7 +135,7 @@ Documents
       most_frequent_words
       word_cloud
       tree_map
-      word_dynamics
+      topic_dynamics
       trend_topics
 
 
