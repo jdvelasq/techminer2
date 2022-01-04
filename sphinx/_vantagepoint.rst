@@ -78,6 +78,7 @@ Topic View
         :maxdepth: 1
 
         cleveland_chart
+        dotted_gantt_chart
         gantt_chart 
         hbar_chart
         line_chart
