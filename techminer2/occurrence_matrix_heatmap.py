@@ -4,7 +4,7 @@ Occurrence Matrix / Heatmap
 
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
->>> file_name = "/workspaces/techminer2/sphinx/images/occurrence_heatmap.png"
+>>> file_name = "/workspaces/techminer2/sphinx/images/occurrence_matrix_heatmap.png"
 >>> occurrence_matrix_heatmap(
 ...     directory=directory,
 ...     column='authors',
@@ -21,8 +21,8 @@ Occurrence Matrix / Heatmap
 
 """
 
-from .occurrence_matrix import occurrence_matrix
 from .heat_map import heat_map
+from .occurrence_matrix import occurrence_matrix
 
 
 def occurrence_matrix_heatmap(
