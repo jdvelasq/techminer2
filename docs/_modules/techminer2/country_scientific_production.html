@@ -47,25 +47,24 @@
 <li class="toctree-l1"><a class="reference internal" href="../../release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data preparation</span></p>
+<p class="caption"><span class="caption-text">Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_user_data.html">Data</a></li>
-</ul>
-<p class="caption"><span class="caption-text">API Reference</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_co_occurrence.html">Co-occurrence API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_columns.html">Columns API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_document_term.html">Document-Term API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_indicators.html">Indicators API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_network.html">Network API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_visualization.html">Visualization API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../import_references.html">Import References File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../coverage.html">Coverage</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Software comparison</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_vantagepoint.html">VantagePoint</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_bibliometrix.html">Bibliometrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_scientopy.html">ScientoPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_tlab.html">T-Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_vantagepoint.html">VantagePoint</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Low level API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_api_indicators.html">Indicators API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_api_network.html">Network API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_api_visualization.html">Visualization API</a></li>
 </ul>
 
         </div>
@@ -106,6 +105,17 @@
 <span class="sd">    :width: 700px</span>
 <span class="sd">    :align: center</span>
 
+
+<span class="sd"># &gt;&gt;&gt; from IPython.display import display</span>
+<span class="sd"># &gt;&gt;&gt; import ipywidgets as widgets</span>
+<span class="sd"># &gt;&gt;&gt; display(widgets.HTML(&quot;&lt;h3&gt;Country Scientific Production&lt;/h3&gt;&quot;))</span>
+<span class="sd"># HTML(value=&#39;&lt;h3&gt;Country Scientific Production&lt;/h3&gt;&#39;)</span>
+
+<span class="sd"># &gt;&gt;&gt; import matplotlib.pyplot as plt</span>
+<span class="sd"># &gt;&gt;&gt; fig, ax = plt.subplots() </span>
+<span class="sd"># &gt;&gt;&gt; ax.plot([1, 2, 3, 4], [1, 4, 2, 3])</span>
+<span class="sd"># &gt;&gt;&gt; display(fig)</span>
+
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">dirname</span><span class="p">,</span> <span class="n">join</span>
@@ -113,6 +123,7 @@
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
+<span class="kn">from</span> <span class="nn">._world_map</span> <span class="kn">import</span> <span class="n">_world_map</span>
 <span class="kn">from</span> <span class="nn">.column_indicators</span> <span class="kn">import</span> <span class="n">column_indicators</span>
 
 <span class="n">TEXTLEN</span> <span class="o">=</span> <span class="mi">40</span>
@@ -128,85 +139,12 @@
 
     <span class="n">series</span> <span class="o">=</span> <span class="n">column_indicators</span><span class="p">(</span><span class="s2">&quot;countries&quot;</span><span class="p">,</span> <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">)</span><span class="o">.</span><span class="n">num_documents</span>
 
-    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
-    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-    <span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="n">cmap</span><span class="p">)</span>
-
-    <span class="n">df</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
-
-    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;color&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
-        <span class="k">lambda</span> <span class="n">w</span><span class="p">:</span> <span class="mf">0.1</span> <span class="o">+</span> <span class="mf">0.9</span> <span class="o">*</span> <span class="p">(</span><span class="n">w</span> <span class="o">-</span> <span class="n">series</span><span class="o">.</span><span class="n">min</span><span class="p">())</span> <span class="o">/</span> <span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">series</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
-    <span class="p">)</span>
-
-    <span class="n">module_path</span> <span class="o">=</span> <span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="n">module_path</span><span class="p">,</span> <span class="s2">&quot;files/worldmap.data&quot;</span><span class="p">),</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
-        <span class="n">countries</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
-
-    <span class="k">for</span> <span class="n">country</span> <span class="ow">in</span> <span class="n">countries</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">countries</span><span class="p">[</span><span class="n">country</span><span class="p">]</span>
-        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-            <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;-k&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">country</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">():</span>
-                <span class="n">ax</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">color</span><span class="p">[</span><span class="n">country</span><span class="o">.</span><span class="n">lower</span><span class="p">()]))</span>
-    <span class="c1">#</span>
-    <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_xlim</span><span class="p">()</span>
-    <span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()</span>
-    <span class="n">xleft</span> <span class="o">=</span> <span class="n">xmax</span> <span class="o">-</span> <span class="mf">0.02</span> <span class="o">*</span> <span class="p">(</span><span class="n">xmax</span> <span class="o">-</span> <span class="n">xmin</span><span class="p">)</span>
-    <span class="n">xright</span> <span class="o">=</span> <span class="n">xmax</span>
-    <span class="n">xbar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">xleft</span><span class="p">,</span> <span class="n">xright</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-    <span class="n">ybar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ymin</span> <span class="o">+</span> <span class="p">(</span><span class="n">ymax</span> <span class="o">-</span> <span class="n">ymin</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span>
-    <span class="n">xv</span><span class="p">,</span> <span class="n">yv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">xbar</span><span class="p">,</span> <span class="n">ybar</span><span class="p">)</span>
-    <span class="n">z</span> <span class="o">=</span> <span class="n">yv</span> <span class="o">/</span> <span class="p">(</span><span class="n">ymax</span> <span class="o">-</span> <span class="n">ymin</span><span class="p">)</span> <span class="o">-</span> <span class="n">ymin</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">xv</span><span class="p">,</span> <span class="n">yv</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">)</span>
-    <span class="c1">#</span>
-    <span class="n">pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ymin</span> <span class="o">+</span> <span class="p">(</span><span class="n">ymax</span> <span class="o">-</span> <span class="n">ymin</span><span class="p">),</span> <span class="mi">11</span><span class="p">)</span>
-    <span class="n">value</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="nb">round</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">+</span> <span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">series</span><span class="o">.</span><span class="n">min</span><span class="p">())</span> <span class="o">*</span> <span class="n">i</span> <span class="o">/</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>
-    <span class="p">]</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">11</span><span class="p">):</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span>
-            <span class="n">xright</span> <span class="o">+</span> <span class="mf">0.4</span> <span class="o">*</span> <span class="p">(</span><span class="n">xright</span> <span class="o">-</span> <span class="n">xleft</span><span class="p">),</span>
-            <span class="n">pos</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
-            <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="n">i</span><span class="p">])),</span>
-            <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span>
-            <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
-        <span class="p">)</span>
-
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
-        <span class="p">[</span><span class="n">xleft</span> <span class="o">-</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="p">(</span><span class="n">xright</span> <span class="o">-</span> <span class="n">xleft</span><span class="p">),</span> <span class="n">xleft</span> <span class="o">-</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="p">(</span><span class="n">xright</span> <span class="o">-</span> <span class="n">xleft</span><span class="p">)],</span>
-        <span class="p">[</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">],</span>
-        <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span>
-        <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">11</span><span class="p">):</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
-            <span class="p">[</span><span class="n">xleft</span> <span class="o">-</span> <span class="mf">0.0</span> <span class="o">*</span> <span class="p">(</span><span class="n">xright</span> <span class="o">-</span> <span class="n">xleft</span><span class="p">),</span> <span class="n">xright</span><span class="p">],</span>
-            <span class="p">[</span><span class="n">pos</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">pos</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span>
-            <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span>
-            <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">((</span><span class="mi">11</span> <span class="o">-</span> <span class="n">i</span><span class="p">)</span> <span class="o">/</span> <span class="mi">11</span><span class="p">),</span>
-        <span class="p">)</span>
-
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;on&quot;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
-
-    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">&quot;bottom&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">&quot;top&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">&quot;right&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">&quot;left&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
-
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span>
-        <span class="s2">&quot;country Scientific Production&quot;</span><span class="p">,</span>
-        <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-        <span class="n">color</span><span class="o">=</span><span class="s2">&quot;dimgray&quot;</span><span class="p">,</span>
-        <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span>
-    <span class="p">)</span>
-
-    <span class="n">fig</span><span class="o">.</span><span class="n">set_tight_layout</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">fig</span></div>
+    <span class="k">return</span> <span class="n">_world_map</span><span class="p">(</span>
+        <span class="n">series</span><span class="o">=</span><span class="n">series</span><span class="p">,</span>
+        <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span>
+        <span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">,</span>
+        <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Country Scientific Production&quot;</span><span class="p">,</span>
+    <span class="p">)</span></div>
 </pre></div>
 
            </div>

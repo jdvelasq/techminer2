@@ -50,22 +50,14 @@
 <li class="toctree-l1"><a class="reference internal" href="release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data preparation</span></p>
+<p class="caption"><span class="caption-text">Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="_user_data.html">Data</a></li>
-</ul>
-<p class="caption"><span class="caption-text">API Reference</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="_api_co_occurrence.html">Co-occurrence API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_columns.html">Columns API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_document_term.html">Document-Term API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_visualization.html">Visualization API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="import_references.html">Import References File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coverage.html">Coverage</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Software comparison</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="_vantagepoint.html">VantagePoint</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="_bibliometrix.html">Bibliometrix</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#data">Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#filter">Filter</a></li>
@@ -89,6 +81,13 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="_scientopy.html">ScientoPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_tlab.html">T-Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_vantagepoint.html">VantagePoint</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Low level API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_api_visualization.html">Visualization API</a></li>
 </ul>
 
         </div>
@@ -145,13 +144,15 @@
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer2/data/&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">co_citation_network_communities</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-<span class="go">cluster             CLUST_0             CLUST_1             CLUST_2</span>
-<span class="go">rn</span>
-<span class="go">0        2014-0003 01606:06  1989-0000 25830:14  2016-0044 00172:07</span>
-<span class="go">1        2013-0009 00553:06  2003-0002 16860:09  2017-0046 00146:15</span>
-<span class="go">2        2018-0020 00220:31  2000-0000 09760:07  2018-0054 00126:14</span>
-<span class="go">3        2018-0022 00213:38  2009-0013 00876:09  2018-0123 00067:08</span>
-<span class="go">4        2017-0038 00181:21  2013-0015 00452:06  2018-0134 00062:08</span>
+<span class="go">cluster                                          CLUST_0  ...                                            CLUST_2</span>
+<span class="go">rn                                                        ...</span>
+<span class="go">0        Mollick E et al, 2014, J BUS VENTURING 01606:06  ...  Davis FD et al, 1989, MIS QUART MANAGE INF SYS...</span>
+<span class="go">1                  Lee I et al, 2018, BUS HORIZ 00213:38  ...  Venkatesh V et al, 2003, MIS QUART MANAGE INF ...</span>
+<span class="go">2              Gomber P et al, 2017, J BUS ECON 00181:21  ...       Venkatesh V et al, 2000, MANAGE SCI 09760:07</span>
+<span class="go">3        Schueffel P et al, 2016, J INNOV MANAG 00106:13  ...  Lee M-C et al, 2009, ELECT COMMER RES APPL 008...</span>
+<span class="go">4         Leong C et al, 2017, INT J INF MANAGE 00101:16  ...             Lin M et al, 2013, MANAGE SCI 00553:06</span>
+
+<span class="go">[5 rows x 3 columns]</span>
 </pre></div>
 </div>
 <dl class="py function">

@@ -47,25 +47,24 @@
 <li class="toctree-l1"><a class="reference internal" href="../../release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data preparation</span></p>
+<p class="caption"><span class="caption-text">Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_user_data.html">Data</a></li>
-</ul>
-<p class="caption"><span class="caption-text">API Reference</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_co_occurrence.html">Co-occurrence API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_columns.html">Columns API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_document_term.html">Document-Term API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_indicators.html">Indicators API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_network.html">Network API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_visualization.html">Visualization API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../import_references.html">Import References File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../coverage.html">Coverage</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Software comparison</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_vantagepoint.html">VantagePoint</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_bibliometrix.html">Bibliometrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_scientopy.html">ScientoPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_tlab.html">T-Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_vantagepoint.html">VantagePoint</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Low level API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_api_indicators.html">Indicators API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_api_network.html">Network API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_api_visualization.html">Visualization API</a></li>
 </ul>
 
         </div>
@@ -123,8 +122,8 @@
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
+<span class="kn">from</span> <span class="nn">.load_filtered_documents</span> <span class="kn">import</span> <span class="n">load_filtered_documents</span>
 <span class="kn">from</span> <span class="nn">.column_indicators</span> <span class="kn">import</span> <span class="n">column_indicators</span>
-<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="o">*</span>
 
 
 <span class="k">def</span> <span class="nf">_lotka_core_authors</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="s2">&quot;./&quot;</span><span class="p">):</span>
@@ -168,7 +167,13 @@
         <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="n">a</span> <span class="o">/</span> <span class="nb">sum</span><span class="p">(</span><span class="n">z</span><span class="p">[</span><span class="s2">&quot;Num Authors&quot;</span><span class="p">]),</span> <span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="s2">&quot; %&quot;</span>
         <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">z</span><span class="p">[</span><span class="s2">&quot;Acum Num Authors&quot;</span><span class="p">]</span>
     <span class="p">]</span>
-    <span class="n">m</span> <span class="o">=</span> <span class="n">explode</span><span class="p">(</span><span class="n">documents</span><span class="p">[[</span><span class="s2">&quot;authors&quot;</span><span class="p">,</span> <span class="s2">&quot;record_no&quot;</span><span class="p">]],</span> <span class="s2">&quot;authors&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;; &quot;</span><span class="p">)</span>
+    <span class="c1"># ---- remove explode ------------------------------------------------------------&gt;&gt;&gt;</span>
+    <span class="c1"># m = explode(documents[[&quot;authors&quot;, &quot;record_no&quot;]], &quot;authors&quot;, sep=&quot;; &quot;)</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">documents</span><span class="p">[[</span><span class="s2">&quot;authors&quot;</span><span class="p">,</span> <span class="s2">&quot;record_no&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">m</span><span class="p">[</span><span class="s2">&quot;authors&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">m</span><span class="p">[</span><span class="s2">&quot;authors&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span><span class="s2">&quot;authors&quot;</span><span class="p">)</span>
+    <span class="n">m</span><span class="p">[</span><span class="s2">&quot;authors&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">m</span><span class="p">[</span><span class="s2">&quot;authors&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="c1"># &lt;&lt;&lt;--------------------------------------------------------------------------------</span>
     <span class="n">m</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
     <span class="n">m</span><span class="p">[</span><span class="s2">&quot;Documents_written&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">authors</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">w</span><span class="p">:</span> <span class="n">authors_dict</span><span class="p">[</span><span class="n">w</span><span class="p">])</span>
 

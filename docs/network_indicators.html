@@ -50,15 +50,21 @@
 <li class="toctree-l1"><a class="reference internal" href="release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data preparation</span></p>
+<p class="caption"><span class="caption-text">Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="_user_data.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="import_references.html">Import References File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coverage.html">Coverage</a></li>
 </ul>
-<p class="caption"><span class="caption-text">API Reference</span></p>
+<p class="caption"><span class="caption-text">Software comparison</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_bibliometrix.html">Bibliometrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_scientopy.html">ScientoPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_tlab.html">T-Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_vantagepoint.html">VantagePoint</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Low level API</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="_api_co_occurrence.html">Co-occurrence API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_columns.html">Columns API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_document_term.html">Document-Term API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="_api_network.html">Network API</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="network_communities.html">Network Communities</a></li>
@@ -69,13 +75,6 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="_api_visualization.html">Visualization API</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Software comparison</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="_vantagepoint.html">VantagePoint</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_bibliometrix.html">Bibliometrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_scientopy.html">ScientoPy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_tlab.html">T-Lab</a></li>
 </ul>
 
         </div>
@@ -132,29 +131,24 @@
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer2/data/&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer2/sphinx/images/co_occurrence_network_map.png&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">coc_matrix</span> <span class="o">=</span> <span class="n">co_occurrence_matrix</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s1">&#39;author_keywords&#39;</span><span class="p">,</span> <span class="n">min_occ</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span><span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">network</span> <span class="o">=</span> <span class="n">co_occurrence_network</span><span class="p">(</span><span class="n">coc_matrix</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">network_indicators</span><span class="p">(</span><span class="n">network</span><span class="p">)</span>
-<span class="go">                        num_documents  global_citations  ...  closeness  pagerank</span>
-<span class="go">node                                                     ...</span>
-<span class="go">bank                               12               185  ...   0.681818  0.051579</span>
-<span class="go">blockchain                         17               149  ...   0.714286  0.068868</span>
-<span class="go">covid-19                            8                36  ...   0.535714  0.021563</span>
-<span class="go">crowdfunding                        8               116  ...   0.625000  0.032711</span>
-<span class="go">cryptocurrencies                    8                36  ...   0.576923  0.042013</span>
-<span class="go">finance                             7                52  ...   0.750000  0.051353</span>
-<span class="go">financial inclusion                17               339  ...   0.714286  0.065640</span>
-<span class="go">financial innovation                8                44  ...   0.652174  0.034354</span>
-<span class="go">financial service                  11               300  ...   0.750000  0.056295</span>
-<span class="go">financial technologies             28               225  ...   0.750000  0.080270</span>
-<span class="go">fintech                           139              1285  ...   1.000000  0.270653</span>
-<span class="go">innovation                         13               249  ...   0.681818  0.055722</span>
-<span class="go">peer-to-peer lending                8                73  ...   0.600000  0.026159</span>
-<span class="go">regulation                         11                84  ...   0.714286  0.060199</span>
-<span class="go">risk                                7                15  ...   0.714286  0.041586</span>
-<span class="go">technology                          7               192  ...   0.652174  0.041034</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">coc_matrix</span> <span class="o">=</span> <span class="n">co_occurrence_matrix</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">column</span><span class="o">=</span><span class="s1">&#39;author_keywords&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">min_occ</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2.network_api.network</span> <span class="kn">import</span> <span class="n">network</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">network_</span> <span class="o">=</span> <span class="n">network</span><span class="p">(</span><span class="n">coc_matrix</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2.network_api.network_indicators</span> <span class="kn">import</span> <span class="n">network_indicators</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">network_indicators</span><span class="p">(</span><span class="n">network_</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="go">                  num_documents  global_citations  ...  closeness  pagerank</span>
+<span class="go">node                                               ...</span>
+<span class="go">bank                         12               185  ...   0.695652  0.050294</span>
+<span class="go">block-chain                  17               149  ...   0.695652  0.064299</span>
+<span class="go">covid-19                      8                36  ...   0.533333  0.020194</span>
+<span class="go">crowdfunding                  8               116  ...   0.615385  0.030571</span>
+<span class="go">cryptocurrencies              8                36  ...   0.571429  0.039274</span>
 
-<span class="go">[16 rows x 6 columns]</span>
+<span class="go">[5 rows x 6 columns]</span>
 </pre></div>
 </div>
 <dl class="py function">

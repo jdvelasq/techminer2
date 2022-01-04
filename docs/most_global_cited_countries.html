@@ -50,22 +50,14 @@
 <li class="toctree-l1"><a class="reference internal" href="release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data preparation</span></p>
+<p class="caption"><span class="caption-text">Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="_user_data.html">Data</a></li>
-</ul>
-<p class="caption"><span class="caption-text">API Reference</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="_api_co_occurrence.html">Co-occurrence API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_columns.html">Columns API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_document_term.html">Document-Term API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_visualization.html">Visualization API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="import_references.html">Import References File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coverage.html">Coverage</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Software comparison</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="_vantagepoint.html">VantagePoint</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="_bibliometrix.html">Bibliometrix</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#data">Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#filter">Filter</a></li>
@@ -92,6 +84,13 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="_scientopy.html">ScientoPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_tlab.html">T-Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_vantagepoint.html">VantagePoint</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Low level API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_api_visualization.html">Visualization API</a></li>
 </ul>
 
         </div>
@@ -152,19 +151,9 @@
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/most_global_cited_countries.png"><img alt="_images/most_global_cited_countries.png" class="align-center" src="_images/most_global_cited_countries.png" style="width: 700px;" /></a>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">most_global_cited_countries</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-<span class="go">countries</span>
-<span class="go">germany           528</span>
-<span class="go">united states     503</span>
-<span class="go">united kingdom    500</span>
-<span class="go">china             333</span>
-<span class="go">australia         318</span>
-<span class="go">Name: global_citations, dtype: int64</span>
-</pre></div>
-</div>
 <dl class="py function">
 <dt class="sig sig-object py" id="techminer2.most_global_cited_countries.most_global_cited_countries">
-<span class="sig-prename descclassname"><span class="pre">techminer2.most_global_cited_countries.</span></span><span class="sig-name descname"><span class="pre">most_global_cited_countries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">top_n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'k'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(6,</span> <span class="pre">6)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer2/most_global_cited_countries.html#most_global_cited_countries"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer2.most_global_cited_countries.most_global_cited_countries" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">techminer2.most_global_cited_countries.</span></span><span class="sig-name descname"><span class="pre">most_global_cited_countries</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">top_n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'k'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(6,</span> <span class="pre">6)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer2/most_global_cited_countries.html#most_global_cited_countries"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer2.most_global_cited_countries.most_global_cited_countries" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </section>

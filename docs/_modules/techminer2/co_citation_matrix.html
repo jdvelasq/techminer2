@@ -47,25 +47,24 @@
 <li class="toctree-l1"><a class="reference internal" href="../../release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data preparation</span></p>
+<p class="caption"><span class="caption-text">Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_user_data.html">Data</a></li>
-</ul>
-<p class="caption"><span class="caption-text">API Reference</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_co_occurrence.html">Co-occurrence API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_columns.html">Columns API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_document_term.html">Document-Term API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_indicators.html">Indicators API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_network.html">Network API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_visualization.html">Visualization API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../import_references.html">Import References File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../coverage.html">Coverage</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Software comparison</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_vantagepoint.html">VantagePoint</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_bibliometrix.html">Bibliometrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_scientopy.html">ScientoPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_tlab.html">T-Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_vantagepoint.html">VantagePoint</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Low level API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_api_indicators.html">Indicators API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_api_network.html">Network API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_api_visualization.html">Visualization API</a></li>
 </ul>
 
         </div>
@@ -121,7 +120,7 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">records2documents</span>
+<span class="kn">from</span> <span class="nn">.records2documents</span> <span class="kn">import</span> <span class="n">records2documents</span>
 
 
 <div class="viewcode-block" id="co_citation_matrix"><a class="viewcode-back" href="../../co_citation_matrix.html#techminer2.co_citation_matrix.co_citation_matrix">[docs]</a><span class="k">def</span> <span class="nf">co_citation_matrix</span><span class="p">(</span><span class="n">top_n</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">directory</span><span class="o">=</span><span class="s2">&quot;./&quot;</span><span class="p">):</span>
@@ -191,210 +190,6 @@
     <span class="n">co_occ_matrix</span> <span class="o">=</span> <span class="n">records2documents</span><span class="p">(</span><span class="n">matrix</span><span class="o">=</span><span class="n">co_occ_matrix</span><span class="p">,</span> <span class="n">documents</span><span class="o">=</span><span class="n">documents</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">co_occ_matrix</span></div>
-
-
-<span class="c1"># import numpy as np</span>
-<span class="c1"># import pandas as pd</span>
-
-<span class="c1"># from .networkx import (</span>
-<span class="c1">#     betweenness_centrality,</span>
-<span class="c1">#     closeness_centrality,</span>
-<span class="c1">#     network_clustering,</span>
-<span class="c1">#     network_plot,</span>
-<span class="c1">#     node_degrees_plot,</span>
-<span class="c1"># )</span>
-<span class="c1"># from .utils import load_filtered_documents</span>
-
-<span class="c1"># cluster_colors = [</span>
-<span class="c1">#     &quot;tab:blue&quot;,</span>
-<span class="c1">#     &quot;tab:orange&quot;,</span>
-<span class="c1">#     &quot;tab:green&quot;,</span>
-<span class="c1">#     &quot;tab:red&quot;,</span>
-<span class="c1">#     &quot;tab:purple&quot;,</span>
-<span class="c1">#     &quot;tab:brown&quot;,</span>
-<span class="c1">#     &quot;tab:pink&quot;,</span>
-<span class="c1">#     &quot;tab:gray&quot;,</span>
-<span class="c1">#     &quot;tab:olive&quot;,</span>
-<span class="c1">#     &quot;tab:cyan&quot;,</span>
-<span class="c1">#     &quot;cornflowerblue&quot;,</span>
-<span class="c1">#     &quot;lightsalmon&quot;,</span>
-<span class="c1">#     &quot;limegreen&quot;,</span>
-<span class="c1">#     &quot;tomato&quot;,</span>
-<span class="c1">#     &quot;mediumvioletred&quot;,</span>
-<span class="c1">#     &quot;darkgoldenrod&quot;,</span>
-<span class="c1">#     &quot;lightcoral&quot;,</span>
-<span class="c1">#     &quot;silver&quot;,</span>
-<span class="c1">#     &quot;darkkhaki&quot;,</span>
-<span class="c1">#     &quot;skyblue&quot;,</span>
-<span class="c1"># ] * 5</span>
-
-
-<span class="c1"># class Co_citation_network_documents:</span>
-<span class="c1">#     def __init__(self, directory, algorithm=&quot;louvain&quot;, min_edges=2):</span>
-
-<span class="c1">#         self.documents = load_filtered_documents(directory)</span>
-<span class="c1">#         self.algorithm = algorithm</span>
-<span class="c1">#         self.min_edges = min_edges</span>
-
-<span class="c1">#         # ---&lt; processings &gt;-----------------------------------------------------</span>
-<span class="c1">#         self._make_node_id()</span>
-<span class="c1">#         self._make_edges()</span>
-<span class="c1">#         self._make_nodes()</span>
-<span class="c1">#         self._remove_edges()</span>
-<span class="c1">#         self._clustering()</span>
-
-<span class="c1">#     def _make_node_id(self):</span>
-
-<span class="c1">#         self.documents[&quot;authors&quot;] = self.documents.authors.apply(</span>
-<span class="c1">#             lambda x: &quot;[Anonymous]&quot; if pd.isna(x) else x</span>
-<span class="c1">#         )</span>
-
-<span class="c1">#         self.documents = self.documents.assign(</span>
-<span class="c1">#             author_year=self.documents.authors.apply(lambda x: x.split(&quot;; &quot;)[0])</span>
-<span class="c1">#             + &quot;, &quot;</span>
-<span class="c1">#             + self.documents.pub_year.astype(str)</span>
-<span class="c1">#         )</span>
-
-<span class="c1">#         author_year = self.documents[[&quot;author_year&quot;, &quot;record_no&quot;]]</span>
-<span class="c1">#         author_year = author_year.groupby(&quot;author_year&quot;, as_index=False).agg(</span>
-<span class="c1">#             {&quot;record_no&quot;: list}</span>
-<span class="c1">#         )</span>
-<span class="c1">#         author_year = author_year.assign(length=author_year.record_no.apply(len))</span>
-<span class="c1">#         author_year = author_year[author_year.length &gt; 1]</span>
-<span class="c1">#         author_year = author_year.assign(</span>
-<span class="c1">#             record_no=author_year.record_no.apply(lambda x: x[1:])</span>
-<span class="c1">#         )</span>
-<span class="c1">#         author_year = author_year.explode(&quot;record_no&quot;)</span>
-<span class="c1">#         author_year = author_year.assign(</span>
-<span class="c1">#             rn=author_year.groupby(&quot;record_no&quot;).cumcount() + 1</span>
-<span class="c1">#         )</span>
-<span class="c1">#         author_year = author_year.assign(</span>
-<span class="c1">#             author_year=author_year.author_year + &quot;/&quot; + author_year.rn.astype(str)</span>
-<span class="c1">#         )</span>
-<span class="c1">#         author_year = author_year.set_index(&quot;record_no&quot;)</span>
-<span class="c1">#         self.documents.index = self.documents.record_no</span>
-<span class="c1">#         self.documents.loc[author_year.index, &quot;author_year&quot;] = author_year.author_year</span>
-
-<span class="c1">#     def _make_edges(self):</span>
-
-<span class="c1">#         # remove documents without co-citations</span>
-<span class="c1">#         self.edges_ = self.documents[[&quot;author_year&quot;, &quot;local_references&quot;]]</span>
-<span class="c1">#         self.edges_ = self.edges_.dropna()</span>
-<span class="c1">#         self.edges_[&quot;local_references&quot;] = self.edges_.local_references.apply(</span>
-<span class="c1">#             lambda x: x.split(&quot;; &quot;)</span>
-<span class="c1">#         )</span>
-<span class="c1">#         self.edges_ = self.edges_.explode(&quot;local_references&quot;)</span>
-
-<span class="c1">#         document_id2author_year = dict(</span>
-<span class="c1">#             zip(self.documents.record_no, self.documents.author_year)</span>
-<span class="c1">#         )</span>
-
-<span class="c1">#         self.edges_[&quot;local_references&quot;] = self.edges_.local_references.map(</span>
-<span class="c1">#             document_id2author_year</span>
-<span class="c1">#         )</span>
-
-<span class="c1">#         self.edges_ = self.edges_.rename(</span>
-<span class="c1">#             columns={&quot;author_year&quot;: &quot;source&quot;, &quot;local_references&quot;: &quot;target&quot;}</span>
-<span class="c1">#         )</span>
-
-<span class="c1">#         different_nodes = self.edges_.source != self.edges_.target</span>
-<span class="c1">#         self.edges_ = self.edges_[different_nodes]</span>
-
-<span class="c1">#         self.edges_ = self.edges_.assign(value=1)</span>
-
-<span class="c1">#     def _make_nodes(self):</span>
-<span class="c1">#         nodes = pd.concat(</span>
-<span class="c1">#             [self.edges_.source, self.edges_.target],</span>
-<span class="c1">#         ).drop_duplicates()</span>
-
-<span class="c1">#         # counts the number of links</span>
-<span class="c1">#         edges = self.edges_.copy()</span>
-<span class="c1">#         edges = edges.rename(columns={&quot;source&quot;: &quot;target&quot;, &quot;target&quot;: &quot;source&quot;})</span>
-<span class="c1">#         edges = pd.concat([edges, self.edges_])</span>
-<span class="c1">#         edges = edges.drop_duplicates()</span>
-
-<span class="c1">#         num_links = edges.groupby(&quot;source&quot;).size().reset_index(name=&quot;size&quot;)</span>
-<span class="c1">#         num_links = dict(zip(num_links.source, num_links[&quot;size&quot;]))</span>
-
-<span class="c1">#         self.nodes_ = pd.DataFrame(nodes, columns=[&quot;name&quot;])</span>
-<span class="c1">#         self.nodes_[&quot;node_size&quot;] = self.nodes_.name.map(num_links)</span>
-
-<span class="c1">#     def _clustering(self):</span>
-
-<span class="c1">#         nodes = self.nodes_.copy()</span>
-<span class="c1">#         nodes[&quot;size&quot;] = 50 + 950 * self.nodes_.node_size / self.nodes_.node_size.max()</span>
-
-<span class="c1">#         self.nodes_, self.edges_ = network_clustering(</span>
-<span class="c1">#             nodes,</span>
-<span class="c1">#             self.edges_,</span>
-<span class="c1">#             self.algorithm,</span>
-<span class="c1">#         )</span>
-
-<span class="c1">#     def _remove_edges(self):</span>
-
-<span class="c1">#         # remove edges with less than min_edges</span>
-<span class="c1">#         self.nodes_ = self.nodes_[self.nodes_[&quot;node_size&quot;] &gt;= self.min_edges]</span>
-
-<span class="c1">#         # remove links to to removed nodes</span>
-<span class="c1">#         exists = (self.edges_.source.isin(self.nodes_.name)) &amp; (</span>
-<span class="c1">#             self.edges_.target.isin(self.nodes_.name)</span>
-<span class="c1">#         )</span>
-<span class="c1">#         self.edges_ = self.edges_[exists]</span>
-
-<span class="c1">#     def plot(self, figsize=(7, 7), k=0.2, iterations=50):</span>
-
-<span class="c1">#         return network_plot(</span>
-<span class="c1">#             self.nodes_,</span>
-<span class="c1">#             self.edges_,</span>
-<span class="c1">#             figsize=figsize,</span>
-<span class="c1">#             k=k,</span>
-<span class="c1">#             iterations=iterations,</span>
-<span class="c1">#         )</span>
-
-<span class="c1">#     def node_degrees(self, figsize=(6, 6)):</span>
-
-<span class="c1">#         return node_degrees_plot(self.nodes_, self.edges_, figsize)</span>
-
-<span class="c1">#     def table(self):</span>
-
-<span class="c1">#         table_ = pd.DataFrame(</span>
-<span class="c1">#             {</span>
-<span class="c1">#                 &quot;node&quot;: self.matrix.index.get_level_values(0),</span>
-<span class="c1">#                 &quot;num_documents&quot;: self.matrix.index.get_level_values(1),</span>
-<span class="c1">#                 &quot;global_citations&quot;: self.matrix.index.get_level_values(2),</span>
-<span class="c1">#             }</span>
-<span class="c1">#         )</span>
-
-<span class="c1">#         node2cluster = dict(zip(self.nodes_.name, self.nodes_.group))</span>
-<span class="c1">#         table_[&quot;cluster&quot;] = table_.node.map(node2cluster)</span>
-
-<span class="c1">#         betweenness = betweenness_centrality(self.nodes_, self.edges_)</span>
-<span class="c1">#         closeness = closeness_centrality(self.nodes_, self.edges_)</span>
-
-<span class="c1">#         table_[&quot;betweenness&quot;] = table_.node.map(betweenness)</span>
-<span class="c1">#         table_[&quot;closeness&quot;] = table_.node.map(closeness)</span>
-
-<span class="c1">#         return table_</span>
-
-<span class="c1">#     def communities(self):</span>
-<span class="c1">#         groups = self.nodes_.copy()</span>
-
-<span class="c1">#         groups = groups[[&quot;name&quot;, &quot;node_size&quot;, &quot;group&quot;]]</span>
-<span class="c1">#         groups = groups.sort_values(by=[&quot;group&quot;, &quot;node_size&quot;], ascending=False)</span>
-<span class="c1">#         groups[&quot;rn&quot;] = groups.groupby(&quot;group&quot;)[&quot;node_size&quot;].cumcount()</span>
-<span class="c1">#         groups[&quot;group&quot;] = groups.group.map(lambda x: f&quot;CLUST_{x}&quot;)</span>
-<span class="c1">#         groups = groups.pivot(index=&quot;rn&quot;, columns=&quot;group&quot;, values=&quot;name&quot;)</span>
-<span class="c1">#         groups = groups.fillna(&quot;&quot;)</span>
-
-<span class="c1">#         return groups</span>
-
-
-<span class="c1"># def co_citation_network(directory, column=None, algorithm=&quot;louvain&quot;, min_edges=2):</span>
-
-<span class="c1">#     if column is None:</span>
-<span class="c1">#         return Co_citation_network_documents(</span>
-<span class="c1">#             directory, algorithm=algorithm, min_edges=min_edges</span>
-<span class="c1">#         )</span>
 </pre></div>
 
            </div>

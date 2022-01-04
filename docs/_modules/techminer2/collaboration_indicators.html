@@ -47,25 +47,24 @@
 <li class="toctree-l1"><a class="reference internal" href="../../release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data preparation</span></p>
+<p class="caption"><span class="caption-text">Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_user_data.html">Data</a></li>
-</ul>
-<p class="caption"><span class="caption-text">API Reference</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_co_occurrence.html">Co-occurrence API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_columns.html">Columns API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_document_term.html">Document-Term API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_indicators.html">Indicators API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_network.html">Network API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_visualization.html">Visualization API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../import_references.html">Import References File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../coverage.html">Coverage</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Software comparison</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_vantagepoint.html">VantagePoint</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_bibliometrix.html">Bibliometrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_scientopy.html">ScientoPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_tlab.html">T-Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_vantagepoint.html">VantagePoint</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Low level API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_api_indicators.html">Indicators API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_api_network.html">Network API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_api_visualization.html">Visualization API</a></li>
 </ul>
 
         </div>
@@ -114,9 +113,8 @@
 
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">explode</span><span class="p">,</span> <span class="n">load_filtered_documents</span>
+<span class="kn">from</span> <span class="nn">.load_filtered_documents</span> <span class="kn">import</span> <span class="n">load_filtered_documents</span>
 
 
 <div class="viewcode-block" id="collaboration_indicators"><a class="viewcode-back" href="../../collaboration_indicators.html#techminer2.collaboration_indicators.collaboration_indicators">[docs]</a><span class="k">def</span> <span class="nf">collaboration_indicators</span><span class="p">(</span>
@@ -133,19 +131,21 @@
         <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span>
     <span class="p">)</span>
 
-    <span class="n">exploded</span> <span class="o">=</span> <span class="n">explode</span><span class="p">(</span>
-        <span class="n">documents</span><span class="p">[</span>
-            <span class="p">[</span>
-                <span class="n">column</span><span class="p">,</span>
-                <span class="s2">&quot;num_documents&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;single_publication&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;multiple_publication&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;record_no&quot;</span><span class="p">,</span>
-            <span class="p">]</span>
-        <span class="p">],</span>
-        <span class="n">column</span><span class="o">=</span><span class="n">column</span><span class="p">,</span>
-        <span class="n">sep</span><span class="o">=</span><span class="n">sep</span><span class="p">,</span>
-    <span class="p">)</span>
+    <span class="c1"># ----&lt; remove explode &gt;-------------------------------------------------------------</span>
+    <span class="n">exploded</span> <span class="o">=</span> <span class="n">documents</span><span class="p">[</span>
+        <span class="p">[</span>
+            <span class="n">column</span><span class="p">,</span>
+            <span class="s2">&quot;num_documents&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;single_publication&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;multiple_publication&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;record_no&quot;</span><span class="p">,</span>
+        <span class="p">]</span>
+    <span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">exploded</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">=</span> <span class="n">exploded</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
+    <span class="n">exploded</span> <span class="o">=</span> <span class="n">exploded</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span><span class="n">column</span><span class="p">)</span>
+    <span class="n">exploded</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">=</span> <span class="n">exploded</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="c1"># ------------------------------------------------------------------------------------</span>
+
     <span class="n">indicators</span> <span class="o">=</span> <span class="n">exploded</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">column</span><span class="p">,</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span>
         <span class="p">{</span>
             <span class="s2">&quot;num_documents&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">,</span>

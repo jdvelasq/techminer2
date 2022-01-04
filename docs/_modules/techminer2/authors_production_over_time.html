@@ -47,25 +47,24 @@
 <li class="toctree-l1"><a class="reference internal" href="../../release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data preparation</span></p>
+<p class="caption"><span class="caption-text">Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_user_data.html">Data</a></li>
-</ul>
-<p class="caption"><span class="caption-text">API Reference</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_co_occurrence.html">Co-occurrence API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_columns.html">Columns API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_document_term.html">Document-Term API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_indicators.html">Indicators API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_network.html">Network API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_visualization.html">Visualization API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../import_references.html">Import References File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../coverage.html">Coverage</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Software comparison</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_vantagepoint.html">VantagePoint</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_bibliometrix.html">Bibliometrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_scientopy.html">ScientoPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_tlab.html">T-Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_vantagepoint.html">VantagePoint</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Low level API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_api_indicators.html">Indicators API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_api_network.html">Network API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_api_visualization.html">Visualization API</a></li>
 </ul>
 
         </div>
@@ -100,13 +99,20 @@
 <span class="sd">&gt;&gt;&gt; from techminer2 import *</span>
 <span class="sd">&gt;&gt;&gt; directory = &quot;/workspaces/techminer2/data/&quot;</span>
 <span class="sd">&gt;&gt;&gt; file_name = &quot;/workspaces/techminer2/sphinx/images/authors_production_over_time.png&quot;</span>
-<span class="sd">&gt;&gt;&gt; authors_production_over_time(min_occ=2, directory=directory).savefig(file_name)</span>
+<span class="sd">&gt;&gt;&gt; authors_production_over_time(</span>
+<span class="sd">...    min_occ=2, </span>
+<span class="sd">...    directory=directory,</span>
+<span class="sd">... ).savefig(file_name)</span>
 
 <span class="sd">.. image:: images/authors_production_over_time.png</span>
 <span class="sd">    :width: 700px</span>
 <span class="sd">    :align: center</span>
 
-<span class="sd">&gt;&gt;&gt; authors_production_over_time(min_occ=2, directory=directory, plot=False).head()</span>
+<span class="sd">&gt;&gt;&gt; authors_production_over_time(</span>
+<span class="sd">...     min_occ=2, </span>
+<span class="sd">...     directory=directory, </span>
+<span class="sd">...     plot=False,</span>
+<span class="sd">... ).head()</span>
 <span class="sd">pub_year    2016  2017  2018  2019  2020  2021</span>
 <span class="sd">authors                                       </span>
 <span class="sd">Arqawi S       0     0     0     0     1     1</span>
@@ -118,7 +124,7 @@
 
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">.column_gantt_chart</span> <span class="kn">import</span> <span class="n">column_gantt_chart</span>
+<span class="kn">from</span> <span class="nn">.dotted_gantt_chart</span> <span class="kn">import</span> <span class="n">dotted_gantt_chart</span>
 
 
 <div class="viewcode-block" id="authors_production_over_time"><a class="viewcode-back" href="../../authors_production_over_time.html#techminer2.authors_production_over_time.authors_production_over_time">[docs]</a><span class="k">def</span> <span class="nf">authors_production_over_time</span><span class="p">(</span>
@@ -128,7 +134,7 @@
     <span class="n">plot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">):</span>
 
-    <span class="k">return</span> <span class="n">column_gantt_chart</span><span class="p">(</span>
+    <span class="k">return</span> <span class="n">dotted_gantt_chart</span><span class="p">(</span>
         <span class="n">column</span><span class="o">=</span><span class="s2">&quot;authors&quot;</span><span class="p">,</span>
         <span class="n">min_occ</span><span class="o">=</span><span class="n">min_occ</span><span class="p">,</span>
         <span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">,</span>

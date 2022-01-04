@@ -47,25 +47,24 @@
 <li class="toctree-l1"><a class="reference internal" href="release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data preparation</span></p>
+<p class="caption"><span class="caption-text">Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="_user_data.html">Data</a></li>
-</ul>
-<p class="caption"><span class="caption-text">API Reference</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="_api_co_occurrence.html">Co-occurrence API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_columns.html">Columns API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_document_term.html">Document-Term API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_visualization.html">Visualization API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="import_references.html">Import References File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coverage.html">Coverage</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Software comparison</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="_vantagepoint.html">VantagePoint</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_bibliometrix.html">Bibliometrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_scientopy.html">ScientoPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_tlab.html">T-Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_vantagepoint.html">VantagePoint</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Low level API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_api_visualization.html">Visualization API</a></li>
 </ul>
 
         </div>
@@ -109,7 +108,6 @@
  | <a href="#N"><strong>N</strong></a>
  | <a href="#O"><strong>O</strong></a>
  | <a href="#P"><strong>P</strong></a>
- | <a href="#R"><strong>R</strong></a>
  | <a href="#S"><strong>S</strong></a>
  | <a href="#T"><strong>T</strong></a>
  | <a href="#U"><strong>U</strong></a>
@@ -130,10 +128,10 @@
 </li>
       <li><a href="annual_occurrence_matrix.html#techminer2.annual_occurrence_matrix.annual_occurrence_matrix">annual_occurrence_matrix() (in module techminer2.annual_occurrence_matrix)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="annual_scientific_production.html#techminer2.annual_scientific_production.annual_scientific_production">annual_scientific_production() (in module techminer2.annual_scientific_production)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="apply_thesaurus.html#techminer2.apply_thesaurus.apply_thesaurus">apply_thesaurus() (in module techminer2.apply_thesaurus)</a>
 </li>
       <li><a href="author_local_impact.html#techminer2.author_local_impact.author_local_impact">author_local_impact() (in module techminer2.author_local_impact)</a>
@@ -141,6 +139,10 @@
       <li><a href="authors_production_over_time.html#techminer2.authors_production_over_time.authors_production_over_time">authors_production_over_time() (in module techminer2.authors_production_over_time)</a>
 </li>
       <li><a href="auto_corr_matrix.html#techminer2.auto_corr_matrix.auto_corr_matrix">auto_corr_matrix() (in module techminer2.auto_corr_matrix)</a>
+</li>
+      <li><a href="auto_corr_matrix_heatmap.html#techminer2.auto_corr_matrix_heatmap.auto_corr_matrix_heatmap">auto_corr_matrix_heatmap() (in module techminer2.auto_corr_matrix_heatmap)</a>
+</li>
+      <li><a href="auto_corr_matrix_html.html#techminer2.auto_corr_matrix_html.auto_corr_matrix_html">auto_corr_matrix_html() (in module techminer2.auto_corr_matrix_html)</a>
 </li>
       <li><a href="average_citations_per_year.html#techminer2.average_citations_per_year.average_citations_per_year">average_citations_per_year() (in module techminer2.average_citations_per_year)</a>
 </li>
@@ -166,7 +168,7 @@
 </li>
       <li><a href="clean_keywords.html#techminer2.clean_keywords.clean_keywords">clean_keywords() (in module techminer2.clean_keywords)</a>
 </li>
-      <li><a href="factorial_analysis_manifold.html#techminer2.factorial_analysis_manifold.Factorial_analysis_manifold.cluster_members">cluster_members() (techminer2.factorial_analysis_manifold.Factorial_analysis_manifold method)</a>
+      <li><a href="cleveland_chart.html#techminer2.cleveland_chart.cleveland_chart">cleveland_chart() (in module techminer2.cleveland_chart)</a>
 </li>
       <li><a href="co_citation_matrix.html#techminer2.co_citation_matrix.co_citation_matrix">co_citation_matrix() (in module techminer2.co_citation_matrix)</a>
 </li>
@@ -186,17 +188,15 @@
 </li>
       <li><a href="co_occurrence_matrix_chord_diagram.html#techminer2.co_occurrence_matrix_chord_diagram.co_occurrence_matrix_chord_diagram">co_occurrence_matrix_chord_diagram() (in module techminer2.co_occurrence_matrix_chord_diagram)</a>
 </li>
+      <li><a href="co_occurrence_matrix_cluster_mds_map.html#techminer2.co_occurrence_matrix_cluster_mds_map.co_occurrence_matrix_cluster_mds_map">co_occurrence_matrix_cluster_mds_map() (in module techminer2.co_occurrence_matrix_cluster_mds_map)</a>
+</li>
+      <li><a href="co_occurrence_matrix_cluster_tsne_map.html#techminer2.co_occurrence_matrix_cluster_tsne_map.co_occurrence_matrix_cluster_tsne_map">co_occurrence_matrix_cluster_tsne_map() (in module techminer2.co_occurrence_matrix_cluster_tsne_map)</a>
+</li>
       <li><a href="co_occurrence_matrix_heatmap.html#techminer2.co_occurrence_matrix_heatmap.co_occurrence_matrix_heatmap">co_occurrence_matrix_heatmap() (in module techminer2.co_occurrence_matrix_heatmap)</a>
 </li>
       <li><a href="co_occurrence_matrix_html.html#techminer2.co_occurrence_matrix_html.co_occurrence_matrix_html">co_occurrence_matrix_html() (in module techminer2.co_occurrence_matrix_html)</a>
 </li>
       <li><a href="co_occurrence_matrix_manifold.html#techminer2.co_occurrence_matrix_manifold.co_occurrence_matrix_manifold">co_occurrence_matrix_manifold() (in module techminer2.co_occurrence_matrix_manifold)</a>
-</li>
-      <li><a href="co_occurrence_matrix_mds_map.html#techminer2.co_occurrence_matrix_mds_map.co_occurrence_matrix_mds_map">co_occurrence_matrix_mds_map() (in module techminer2.co_occurrence_matrix_mds_map)</a>
-</li>
-      <li><a href="co_occurrence_matrix_svd_map.html#techminer2.co_occurrence_matrix_svd_map.co_occurrence_matrix_svd_map">co_occurrence_matrix_svd_map() (in module techminer2.co_occurrence_matrix_svd_map)</a>
-</li>
-      <li><a href="co_occurrence_matrix_topic_associations.html#techminer2.co_occurrence_matrix_topic_associations.co_occurrence_matrix_topic_associations">co_occurrence_matrix_topic_associations() (in module techminer2.co_occurrence_matrix_topic_associations)</a>
 </li>
       <li><a href="co_occurrence_network_communities.html#techminer2.co_occurrence_network_communities.co_occurrence_network_communities">co_occurrence_network_communities() (in module techminer2.co_occurrence_network_communities)</a>
 </li>
@@ -206,6 +206,12 @@
 </li>
       <li><a href="co_occurrence_network_indicators.html#techminer2.co_occurrence_network_indicators.co_occurrence_network_indicators">co_occurrence_network_indicators() (in module techminer2.co_occurrence_network_indicators)</a>
 </li>
+      <li><a href="co_occurrence_svd_map.html#techminer2.co_occurrence_svd_map.co_occurrence_svd_map">co_occurrence_svd_map() (in module techminer2.co_occurrence_svd_map)</a>
+</li>
+      <li><a href="co_occurrence_svd_mds_map.html#techminer2.co_occurrence_svd_mds_map.co_occurrence_svd_mds_map">co_occurrence_svd_mds_map() (in module techminer2.co_occurrence_svd_mds_map)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="collaboration_indicators.html#techminer2.collaboration_indicators.collaboration_indicators">collaboration_indicators() (in module techminer2.collaboration_indicators)</a>
 </li>
       <li><a href="collaboration_network_communities.html#techminer2.collaboration_network_communities.collaboration_network_communities">collaboration_network_communities() (in module techminer2.collaboration_network_communities)</a>
@@ -218,43 +224,9 @@
 </li>
       <li><a href="bubble_chart.html#techminer2.bubble_chart.collapse_text">collapse_text() (in module techminer2.bubble_chart)</a>
 </li>
-      <li><a href="column_cleveland_dot_chart.html#techminer2.column_cleveland_dot_chart.column_cleveland_dot_chart">column_cleveland_dot_chart() (in module techminer2.column_cleveland_dot_chart)</a>
-</li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="column_coverage.html#techminer2.column_coverage.column_coverage">column_coverage() (in module techminer2.column_coverage)</a>
-</li>
-      <li><a href="column_dynamics.html#techminer2.column_dynamics.column_dynamics">column_dynamics() (in module techminer2.column_dynamics)</a>
-</li>
-      <li><a href="column_gantt_chart.html#techminer2.column_gantt_chart.column_gantt_chart">column_gantt_chart() (in module techminer2.column_gantt_chart)</a>
-</li>
-      <li><a href="column_global_citations.html#techminer2.column_global_citations.column_global_citations">column_global_citations() (in module techminer2.column_global_citations)</a>
-</li>
-      <li><a href="column_h_index.html#techminer2.column_h_index.column_h_index">column_h_index() (in module techminer2.column_h_index)</a>
-</li>
-      <li><a href="column_horizontal_bar_chart.html#techminer2.column_horizontal_bar_chart.column_horizontal_bar_chart">column_horizontal_bar_chart() (in module techminer2.column_horizontal_bar_chart)</a>
-</li>
       <li><a href="column_indicators.html#techminer2.column_indicators.column_indicators">column_indicators() (in module techminer2.column_indicators)</a>
 </li>
       <li><a href="column_indicators_by_year.html#techminer2.column_indicators_by_year.column_indicators_by_year">column_indicators_by_year() (in module techminer2.column_indicators_by_year)</a>
-</li>
-      <li><a href="column_line_chart.html#techminer2.column_line_chart.column_line_chart">column_line_chart() (in module techminer2.column_line_chart)</a>
-</li>
-      <li><a href="column_pie_chart.html#techminer2.column_pie_chart.column_pie_chart">column_pie_chart() (in module techminer2.column_pie_chart)</a>
-</li>
-      <li><a href="column_timeline_chart.html#techminer2.column_timeline_chart.column_timeline_chart">column_timeline_chart() (in module techminer2.column_timeline_chart)</a>
-</li>
-      <li><a href="column_top_topics_chart.html#techminer2.column_top_topics_chart.column_top_topics_chart">column_top_topics_chart() (in module techminer2.column_top_topics_chart)</a>
-</li>
-      <li><a href="column_top_trending_topics.html#techminer2.column_top_trending_topics.column_top_trending_topics">column_top_trending_topics() (in module techminer2.column_top_trending_topics)</a>
-</li>
-      <li><a href="column_tree_map.html#techminer2.column_tree_map.column_tree_map">column_tree_map() (in module techminer2.column_tree_map)</a>
-</li>
-      <li><a href="column_trends.html#techminer2.column_trends.column_trends">column_trends() (in module techminer2.column_trends)</a>
-</li>
-      <li><a href="column_vertical_bar_chart.html#techminer2.column_vertical_bar_chart.column_vertical_bar_chart">column_vertical_bar_chart() (in module techminer2.column_vertical_bar_chart)</a>
-</li>
-      <li><a href="column_word_cloud.html#techminer2.column_word_cloud.column_word_cloud">column_word_cloud() (in module techminer2.column_word_cloud)</a>
 </li>
       <li><a href="core_sources.html#techminer2.core_sources.core_sources">core_sources() (in module techminer2.core_sources)</a>
 </li>
@@ -276,9 +248,15 @@
 </li>
       <li><a href="coupling_network_graph.html#techminer2.coupling_network_graph.coupling_network_graph">coupling_network_graph() (in module techminer2.coupling_network_graph)</a>
 </li>
+      <li><a href="coverage.html#techminer2.coverage.coverage">coverage() (in module techminer2.coverage)</a>
+</li>
       <li><a href="create_thesaurus.html#techminer2.create_thesaurus.create_thesaurus">create_thesaurus() (in module techminer2.create_thesaurus)</a>
 </li>
       <li><a href="cross_corr_matrix.html#techminer2.cross_corr_matrix.cross_corr_matrix">cross_corr_matrix() (in module techminer2.cross_corr_matrix)</a>
+</li>
+      <li><a href="cross_corr_matrix_heatmap.html#techminer2.cross_corr_matrix_heatmap.cross_corr_matrix_heatmap">cross_corr_matrix_heatmap() (in module techminer2.cross_corr_matrix_heatmap)</a>
+</li>
+      <li><a href="cross_corr_matrix_html.html#techminer2.cross_corr_matrix_html.cross_corr_matrix_html">cross_corr_matrix_html() (in module techminer2.cross_corr_matrix_html)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -286,8 +264,6 @@
 <h2 id="D">D</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="factorial_analysis_manifold.html#techminer2.factorial_analysis_manifold.Factorial_analysis_manifold.data">data() (techminer2.factorial_analysis_manifold.Factorial_analysis_manifold method)</a>
-</li>
       <li><a href="document_indicators.html#techminer2.document_indicators.document_indicators">document_indicators() (in module techminer2.document_indicators)</a>
 </li>
   </ul></td>
@@ -302,10 +278,20 @@
 <h2 id="E">E</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="extract_custom_topics.html#techminer2.extract_custom_topics.extract_custom_topics">extract_custom_topics() (in module techminer2.extract_custom_topics)</a>
+      <li><a href="ego_graph.html#techminer2.ego_graph.ego_graph">ego_graph() (in module techminer2.ego_graph)</a>
+</li>
+      <li><a href="ego_network.html#techminer2.ego_network.ego_network">ego_network() (in module techminer2.ego_network)</a>
+</li>
+      <li><a href="emergent_themes_lda_map.html#techminer2.emergent_themes_lda_map.emergent_themes_lda_map">emergent_themes_lda_map() (in module techminer2.emergent_themes_lda_map)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="emergent_themes_lda_themes.html#techminer2.emergent_themes_lda_themes.emergent_themes_lda_themes">emergent_themes_lda_themes() (in module techminer2.emergent_themes_lda_themes)</a>
+</li>
+      <li><a href="emergent_themes_nmf_map.html#techminer2.emergent_themes_nmf_map.emergent_themes_nmf_map">emergent_themes_nmf_map() (in module techminer2.emergent_themes_nmf_map)</a>
+</li>
+      <li><a href="emergent_themes_nmf_themes.html#techminer2.emergent_themes_nmf_themes.emergent_themes_nmf_themes">emergent_themes_nmf_themes() (in module techminer2.emergent_themes_nmf_themes)</a>
+</li>
       <li><a href="extract_user_keywords.html#techminer2.extract_user_keywords.extract_user_keywords">extract_user_keywords() (in module techminer2.extract_user_keywords)</a>
 </li>
   </ul></td>
@@ -316,14 +302,12 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="factor_matrix.html#techminer2.factor_matrix.factor_matrix">factor_matrix() (in module techminer2.factor_matrix)</a>
 </li>
-      <li><a href="factorial_analysis_manifold.html#techminer2.factorial_analysis_manifold.Factorial_analysis_manifold">Factorial_analysis_manifold (class in techminer2.factorial_analysis_manifold)</a>
-</li>
       <li><a href="factorial_analysis_mds_communities.html#techminer2.factorial_analysis_mds_communities.factorial_analysis_mds_communities">factorial_analysis_mds_communities() (in module techminer2.factorial_analysis_mds_communities)</a>
+</li>
+      <li><a href="factorial_analysis_mds_data.html#techminer2.factorial_analysis_mds_data.factorial_analysis_mds_data">factorial_analysis_mds_data() (in module techminer2.factorial_analysis_mds_data)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="factorial_analysis_mds_data.html#techminer2.factorial_analysis_mds_data.factorial_analysis_mds_data">factorial_analysis_mds_data() (in module techminer2.factorial_analysis_mds_data)</a>
-</li>
       <li><a href="factorial_analysis_mds_map.html#techminer2.factorial_analysis_mds_map.factorial_analysis_mds_map">factorial_analysis_mds_map() (in module techminer2.factorial_analysis_mds_map)</a>
 </li>
       <li><a href="factorial_analysis_mds_silhouette_scores.html#techminer2.factorial_analysis_mds_silhouette_scores.factorial_analysis_mds_silhouette_scores">factorial_analysis_mds_silhouette_scores() (in module techminer2.factorial_analysis_mds_silhouette_scores)</a>
@@ -348,11 +332,11 @@
 <h2 id="H">H</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="heat_map.html#techminer2.heat_map.heat_map">heat_map() (in module techminer2.heat_map)</a>
+      <li><a href="hbar_chart.html#techminer2.hbar_chart.hbar_chart">hbar_chart() (in module techminer2.hbar_chart)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="horizontal_bar_chart.html#techminer2.horizontal_bar_chart.horizontal_bar_chart">horizontal_bar_chart() (in module techminer2.horizontal_bar_chart)</a>
+      <li><a href="heat_map.html#techminer2.heat_map.heat_map">heat_map() (in module techminer2.heat_map)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -390,18 +374,32 @@
 </li>
       <li><a href="main_path_network.html#techminer2.main_path_network.main_path_network">main_path_network() (in module techminer2.main_path_network)</a>
 </li>
-      <li><a href="factorial_analysis_manifold.html#techminer2.factorial_analysis_manifold.Factorial_analysis_manifold.map">map() (techminer2.factorial_analysis_manifold.Factorial_analysis_manifold method)</a>
-
-      <ul>
-        <li><a href="thematic_analysis.html#techminer2.thematic_analysis.ThematicAnalysis.map">(techminer2.thematic_analysis.ThematicAnalysis method)</a>
-</li>
-      </ul></li>
       <li><a href="map_chart.html#techminer2.map_chart.map_chart">map_chart() (in module techminer2.map_chart)</a>
 </li>
       <li>
     module
 
       <ul>
+        <li><a href="_cleveland_chart.html#module-techminer2._cleveland_chart">techminer2._cleveland_chart</a>
+</li>
+        <li><a href="_dotted_gantt_chart.html#module-techminer2._dotted_gantt_chart">techminer2._dotted_gantt_chart</a>
+</li>
+        <li><a href="_gantt_chart.html#module-techminer2._gantt_chart">techminer2._gantt_chart</a>
+</li>
+        <li><a href="_hbar_chart.html#module-techminer2._hbar_chart">techminer2._hbar_chart</a>
+</li>
+        <li><a href="_line_chart.html#module-techminer2._line_chart">techminer2._line_chart</a>
+</li>
+        <li><a href="_pie_chart.html#module-techminer2._pie_chart">techminer2._pie_chart</a>
+</li>
+        <li><a href="_tree_map.html#module-techminer2._tree_map">techminer2._tree_map</a>
+</li>
+        <li><a href="_vbar_chart.html#module-techminer2._vbar_chart">techminer2._vbar_chart</a>
+</li>
+        <li><a href="_word_cloud.html#module-techminer2._word_cloud">techminer2._word_cloud</a>
+</li>
+        <li><a href="_world_map.html#module-techminer2._world_map">techminer2._world_map</a>
+</li>
         <li><a href="abstract_concordances.html#module-techminer2.abstract_concordances">techminer2.abstract_concordances</a>
 </li>
         <li><a href="abstract_screening.html#module-techminer2.abstract_screening">techminer2.abstract_screening</a>
@@ -422,6 +420,10 @@
 </li>
         <li><a href="auto_corr_matrix.html#module-techminer2.auto_corr_matrix">techminer2.auto_corr_matrix</a>
 </li>
+        <li><a href="auto_corr_matrix_heatmap.html#module-techminer2.auto_corr_matrix_heatmap">techminer2.auto_corr_matrix_heatmap</a>
+</li>
+        <li><a href="auto_corr_matrix_html.html#module-techminer2.auto_corr_matrix_html">techminer2.auto_corr_matrix_html</a>
+</li>
         <li><a href="average_citations_per_year.html#module-techminer2.average_citations_per_year">techminer2.average_citations_per_year</a>
 </li>
         <li><a href="bradford_law.html#module-techminer2.bradford_law">techminer2.bradford_law</a>
@@ -431,6 +433,8 @@
         <li><a href="clean_institutions.html#module-techminer2.clean_institutions">techminer2.clean_institutions</a>
 </li>
         <li><a href="clean_keywords.html#module-techminer2.clean_keywords">techminer2.clean_keywords</a>
+</li>
+        <li><a href="cleveland_chart.html#module-techminer2.cleveland_chart">techminer2.cleveland_chart</a>
 </li>
         <li><a href="co_citation_matrix.html#module-techminer2.co_citation_matrix">techminer2.co_citation_matrix</a>
 </li>
@@ -450,17 +454,15 @@
 </li>
         <li><a href="co_occurrence_matrix_chord_diagram.html#module-techminer2.co_occurrence_matrix_chord_diagram">techminer2.co_occurrence_matrix_chord_diagram</a>
 </li>
+        <li><a href="co_occurrence_matrix_cluster_mds_map.html#module-techminer2.co_occurrence_matrix_cluster_mds_map">techminer2.co_occurrence_matrix_cluster_mds_map</a>
+</li>
+        <li><a href="co_occurrence_matrix_cluster_tsne_map.html#module-techminer2.co_occurrence_matrix_cluster_tsne_map">techminer2.co_occurrence_matrix_cluster_tsne_map</a>
+</li>
         <li><a href="co_occurrence_matrix_heatmap.html#module-techminer2.co_occurrence_matrix_heatmap">techminer2.co_occurrence_matrix_heatmap</a>
 </li>
         <li><a href="co_occurrence_matrix_html.html#module-techminer2.co_occurrence_matrix_html">techminer2.co_occurrence_matrix_html</a>
 </li>
         <li><a href="co_occurrence_matrix_manifold.html#module-techminer2.co_occurrence_matrix_manifold">techminer2.co_occurrence_matrix_manifold</a>
-</li>
-        <li><a href="co_occurrence_matrix_mds_map.html#module-techminer2.co_occurrence_matrix_mds_map">techminer2.co_occurrence_matrix_mds_map</a>
-</li>
-        <li><a href="co_occurrence_matrix_svd_map.html#module-techminer2.co_occurrence_matrix_svd_map">techminer2.co_occurrence_matrix_svd_map</a>
-</li>
-        <li><a href="co_occurrence_matrix_topic_associations.html#module-techminer2.co_occurrence_matrix_topic_associations">techminer2.co_occurrence_matrix_topic_associations</a>
 </li>
         <li><a href="co_occurrence_network_communities.html#module-techminer2.co_occurrence_network_communities">techminer2.co_occurrence_network_communities</a>
 </li>
@@ -469,6 +471,10 @@
         <li><a href="co_occurrence_network_graph.html#module-techminer2.co_occurrence_network_graph">techminer2.co_occurrence_network_graph</a>
 </li>
         <li><a href="co_occurrence_network_indicators.html#module-techminer2.co_occurrence_network_indicators">techminer2.co_occurrence_network_indicators</a>
+</li>
+        <li><a href="co_occurrence_svd_map.html#module-techminer2.co_occurrence_svd_map">techminer2.co_occurrence_svd_map</a>
+</li>
+        <li><a href="co_occurrence_svd_mds_map.html#module-techminer2.co_occurrence_svd_mds_map">techminer2.co_occurrence_svd_mds_map</a>
 </li>
         <li><a href="collaboration_indicators.html#module-techminer2.collaboration_indicators">techminer2.collaboration_indicators</a>
 </li>
@@ -480,41 +486,9 @@
 </li>
         <li><a href="collaboration_network_indicators.html#module-techminer2.collaboration_network_indicators">techminer2.collaboration_network_indicators</a>
 </li>
-        <li><a href="column_cleveland_dot_chart.html#module-techminer2.column_cleveland_dot_chart">techminer2.column_cleveland_dot_chart</a>
-</li>
-        <li><a href="column_coverage.html#module-techminer2.column_coverage">techminer2.column_coverage</a>
-</li>
-        <li><a href="column_dynamics.html#module-techminer2.column_dynamics">techminer2.column_dynamics</a>
-</li>
-        <li><a href="column_gantt_chart.html#module-techminer2.column_gantt_chart">techminer2.column_gantt_chart</a>
-</li>
-        <li><a href="column_global_citations.html#module-techminer2.column_global_citations">techminer2.column_global_citations</a>
-</li>
-        <li><a href="column_h_index.html#module-techminer2.column_h_index">techminer2.column_h_index</a>
-</li>
-        <li><a href="column_horizontal_bar_chart.html#module-techminer2.column_horizontal_bar_chart">techminer2.column_horizontal_bar_chart</a>
-</li>
         <li><a href="column_indicators.html#module-techminer2.column_indicators">techminer2.column_indicators</a>
 </li>
         <li><a href="column_indicators_by_year.html#module-techminer2.column_indicators_by_year">techminer2.column_indicators_by_year</a>
-</li>
-        <li><a href="column_line_chart.html#module-techminer2.column_line_chart">techminer2.column_line_chart</a>
-</li>
-        <li><a href="column_pie_chart.html#module-techminer2.column_pie_chart">techminer2.column_pie_chart</a>
-</li>
-        <li><a href="column_timeline_chart.html#module-techminer2.column_timeline_chart">techminer2.column_timeline_chart</a>
-</li>
-        <li><a href="column_top_topics_chart.html#module-techminer2.column_top_topics_chart">techminer2.column_top_topics_chart</a>
-</li>
-        <li><a href="column_top_trending_topics.html#module-techminer2.column_top_trending_topics">techminer2.column_top_trending_topics</a>
-</li>
-        <li><a href="column_tree_map.html#module-techminer2.column_tree_map">techminer2.column_tree_map</a>
-</li>
-        <li><a href="column_trends.html#module-techminer2.column_trends">techminer2.column_trends</a>
-</li>
-        <li><a href="column_vertical_bar_chart.html#module-techminer2.column_vertical_bar_chart">techminer2.column_vertical_bar_chart</a>
-</li>
-        <li><a href="column_word_cloud.html#module-techminer2.column_word_cloud">techminer2.column_word_cloud</a>
 </li>
         <li><a href="core_sources.html#module-techminer2.core_sources">techminer2.core_sources</a>
 </li>
@@ -532,9 +506,15 @@
 </li>
         <li><a href="coupling_network_graph.html#module-techminer2.coupling_network_graph">techminer2.coupling_network_graph</a>
 </li>
+        <li><a href="coverage.html#module-techminer2.coverage">techminer2.coverage</a>
+</li>
         <li><a href="create_thesaurus.html#module-techminer2.create_thesaurus">techminer2.create_thesaurus</a>
 </li>
         <li><a href="cross_corr_matrix.html#module-techminer2.cross_corr_matrix">techminer2.cross_corr_matrix</a>
+</li>
+        <li><a href="cross_corr_matrix_heatmap.html#module-techminer2.cross_corr_matrix_heatmap">techminer2.cross_corr_matrix_heatmap</a>
+</li>
+        <li><a href="cross_corr_matrix_html.html#module-techminer2.cross_corr_matrix_html">techminer2.cross_corr_matrix_html</a>
 </li>
         <li><a href="document_indicators.html#module-techminer2.document_indicators">techminer2.document_indicators</a>
 </li>
@@ -542,13 +522,21 @@
 </li>
         <li><a href="dotted_gantt_chart.html#module-techminer2.dotted_gantt_chart">techminer2.dotted_gantt_chart</a>
 </li>
-        <li><a href="extract_custom_topics.html#module-techminer2.extract_custom_topics">techminer2.extract_custom_topics</a>
+        <li><a href="ego_graph.html#module-techminer2.ego_graph">techminer2.ego_graph</a>
+</li>
+        <li><a href="ego_network.html#module-techminer2.ego_network">techminer2.ego_network</a>
+</li>
+        <li><a href="emergent_themes_lda_map.html#module-techminer2.emergent_themes_lda_map">techminer2.emergent_themes_lda_map</a>
+</li>
+        <li><a href="emergent_themes_lda_themes.html#module-techminer2.emergent_themes_lda_themes">techminer2.emergent_themes_lda_themes</a>
+</li>
+        <li><a href="emergent_themes_nmf_map.html#module-techminer2.emergent_themes_nmf_map">techminer2.emergent_themes_nmf_map</a>
+</li>
+        <li><a href="emergent_themes_nmf_themes.html#module-techminer2.emergent_themes_nmf_themes">techminer2.emergent_themes_nmf_themes</a>
 </li>
         <li><a href="extract_user_keywords.html#module-techminer2.extract_user_keywords">techminer2.extract_user_keywords</a>
 </li>
         <li><a href="factor_matrix.html#module-techminer2.factor_matrix">techminer2.factor_matrix</a>
-</li>
-        <li><a href="factorial_analysis_manifold.html#module-techminer2.factorial_analysis_manifold">techminer2.factorial_analysis_manifold</a>
 </li>
         <li><a href="factorial_analysis_mds_communities.html#module-techminer2.factorial_analysis_mds_communities">techminer2.factorial_analysis_mds_communities</a>
 </li>
@@ -564,9 +552,9 @@
 </li>
         <li><a href="growth_indicators.html#module-techminer2.growth_indicators">techminer2.growth_indicators</a>
 </li>
-        <li><a href="heat_map.html#module-techminer2.heat_map">techminer2.heat_map</a>
+        <li><a href="hbar_chart.html#module-techminer2.hbar_chart">techminer2.hbar_chart</a>
 </li>
-        <li><a href="horizontal_bar_chart.html#module-techminer2.horizontal_bar_chart">techminer2.horizontal_bar_chart</a>
+        <li><a href="heat_map.html#module-techminer2.heat_map">techminer2.heat_map</a>
 </li>
         <li><a href="impact_indicators.html#module-techminer2.impact_indicators">techminer2.impact_indicators</a>
 </li>
@@ -640,13 +628,15 @@
 </li>
         <li><a href="tf_idf_matrix.html#module-techminer2.tf_idf_matrix">techminer2.tf_idf_matrix</a>
 </li>
-        <li><a href="tf_idf_svd_map.html#module-techminer2.tf_idf_svd_map">techminer2.tf_idf_svd_map</a>
+        <li><a href="tf_idf_matrix_svd_map.html#module-techminer2.tf_idf_matrix_svd_map">techminer2.tf_idf_matrix_svd_map</a>
 </li>
         <li><a href="tf_matrix.html#module-techminer2.tf_matrix">techminer2.tf_matrix</a>
 </li>
-        <li><a href="thematic_analysis.html#module-techminer2.thematic_analysis">techminer2.thematic_analysis</a>
+        <li><a href="thematic_analysis_map.html#module-techminer2.thematic_analysis_map">techminer2.thematic_analysis_map</a>
 </li>
-        <li><a href="thematic_map.html#module-techminer2.thematic_map">techminer2.thematic_map</a>
+        <li><a href="thematic_analysis_partitions.html#module-techminer2.thematic_analysis_partitions">techminer2.thematic_analysis_partitions</a>
+</li>
+        <li><a href="thematic_analysis_themes.html#module-techminer2.thematic_analysis_themes">techminer2.thematic_analysis_themes</a>
 </li>
         <li><a href="thematic_map_communities.html#module-techminer2.thematic_map_communities">techminer2.thematic_map_communities</a>
 </li>
@@ -656,25 +646,37 @@
 </li>
         <li><a href="thematic_map_network.html#module-techminer2.thematic_map_network">techminer2.thematic_map_network</a>
 </li>
+        <li><a href="timeline_chart.html#module-techminer2.timeline_chart">techminer2.timeline_chart</a>
+</li>
+        <li><a href="top_topics.html#module-techminer2.top_topics">techminer2.top_topics</a>
+</li>
+        <li><a href="top_trending_topics.html#module-techminer2.top_trending_topics">techminer2.top_trending_topics</a>
+</li>
+        <li><a href="topic_associations.html#module-techminer2.topic_associations">techminer2.topic_associations</a>
+</li>
+        <li><a href="topic_dynamics.html#module-techminer2.topic_dynamics">techminer2.topic_dynamics</a>
+</li>
+        <li><a href="topic_view.html#module-techminer2.topic_view">techminer2.topic_view</a>
+</li>
+        <li><a href="topics_comparison_chart.html#module-techminer2.topics_comparison_chart">techminer2.topics_comparison_chart</a>
+</li>
+        <li><a href="topics_comparison_network.html#module-techminer2.topics_comparison_network">techminer2.topics_comparison_network</a>
+</li>
         <li><a href="tree_map.html#module-techminer2.tree_map">techminer2.tree_map</a>
 </li>
         <li><a href="trend_topics.html#module-techminer2.trend_topics">techminer2.trend_topics</a>
 </li>
         <li><a href="user_filters.html#module-techminer2.user_filters">techminer2.user_filters</a>
 </li>
-        <li><a href="vertical_bar_chart.html#module-techminer2.vertical_bar_chart">techminer2.vertical_bar_chart</a>
+        <li><a href="vbar_chart.html#module-techminer2.vbar_chart">techminer2.vbar_chart</a>
 </li>
         <li><a href="word_cloud.html#module-techminer2.word_cloud">techminer2.word_cloud</a>
-</li>
-        <li><a href="word_dynamics.html#module-techminer2.word_dynamics">techminer2.word_dynamics</a>
 </li>
         <li><a href="world_map.html#module-techminer2.world_map">techminer2.world_map</a>
 </li>
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="most_frequent_words.html#techminer2.most_frequent_words.most_frequent_words">most_frequent_words() (in module techminer2.most_frequent_words)</a>
-</li>
       <li><a href="most_global_cited_countries.html#techminer2.most_global_cited_countries.most_global_cited_countries">most_global_cited_countries() (in module techminer2.most_global_cited_countries)</a>
 </li>
       <li><a href="most_global_cited_documents.html#techminer2.most_global_cited_documents.most_global_cited_documents">most_global_cited_documents() (in module techminer2.most_global_cited_documents)</a>
@@ -740,23 +742,9 @@
   </ul></td>
 </tr></table>
 
-<h2 id="R">R</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="factorial_analysis_manifold.html#techminer2.factorial_analysis_manifold.Factorial_analysis_manifold.run">run() (techminer2.factorial_analysis_manifold.Factorial_analysis_manifold method)</a>
-
-      <ul>
-        <li><a href="thematic_analysis.html#techminer2.thematic_analysis.ThematicAnalysis.run">(techminer2.thematic_analysis.ThematicAnalysis method)</a>
-</li>
-      </ul></li>
-  </ul></td>
-</tr></table>
-
 <h2 id="S">S</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="factorial_analysis_manifold.html#techminer2.factorial_analysis_manifold.Factorial_analysis_manifold.silhouette_scores_plot">silhouette_scores_plot() (techminer2.factorial_analysis_manifold.Factorial_analysis_manifold method)</a>
-</li>
       <li><a href="source_dynamics.html#techminer2.source_dynamics.source_dynamics">source_dynamics() (in module techminer2.source_dynamics)</a>
 </li>
       <li><a href="source_local_impact.html#techminer2.source_local_impact.source_local_impact">source_local_impact() (in module techminer2.source_local_impact)</a>
@@ -779,6 +767,76 @@
 <h2 id="T">T</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    techminer2._cleveland_chart
+
+      <ul>
+        <li><a href="_cleveland_chart.html#module-techminer2._cleveland_chart">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2._dotted_gantt_chart
+
+      <ul>
+        <li><a href="_dotted_gantt_chart.html#module-techminer2._dotted_gantt_chart">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2._gantt_chart
+
+      <ul>
+        <li><a href="_gantt_chart.html#module-techminer2._gantt_chart">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2._hbar_chart
+
+      <ul>
+        <li><a href="_hbar_chart.html#module-techminer2._hbar_chart">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2._line_chart
+
+      <ul>
+        <li><a href="_line_chart.html#module-techminer2._line_chart">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2._pie_chart
+
+      <ul>
+        <li><a href="_pie_chart.html#module-techminer2._pie_chart">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2._tree_map
+
+      <ul>
+        <li><a href="_tree_map.html#module-techminer2._tree_map">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2._vbar_chart
+
+      <ul>
+        <li><a href="_vbar_chart.html#module-techminer2._vbar_chart">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2._word_cloud
+
+      <ul>
+        <li><a href="_word_cloud.html#module-techminer2._word_cloud">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2._world_map
+
+      <ul>
+        <li><a href="_world_map.html#module-techminer2._world_map">module</a>
+</li>
+      </ul></li>
       <li>
     techminer2.abstract_concordances
 
@@ -850,6 +908,20 @@
 </li>
       </ul></li>
       <li>
+    techminer2.auto_corr_matrix_heatmap
+
+      <ul>
+        <li><a href="auto_corr_matrix_heatmap.html#module-techminer2.auto_corr_matrix_heatmap">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2.auto_corr_matrix_html
+
+      <ul>
+        <li><a href="auto_corr_matrix_html.html#module-techminer2.auto_corr_matrix_html">module</a>
+</li>
+      </ul></li>
+      <li>
     techminer2.average_citations_per_year
 
       <ul>
@@ -882,6 +954,13 @@
 
       <ul>
         <li><a href="clean_keywords.html#module-techminer2.clean_keywords">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2.cleveland_chart
+
+      <ul>
+        <li><a href="cleveland_chart.html#module-techminer2.cleveland_chart">module</a>
 </li>
       </ul></li>
       <li>
@@ -948,6 +1027,20 @@
 </li>
       </ul></li>
       <li>
+    techminer2.co_occurrence_matrix_cluster_mds_map
+
+      <ul>
+        <li><a href="co_occurrence_matrix_cluster_mds_map.html#module-techminer2.co_occurrence_matrix_cluster_mds_map">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2.co_occurrence_matrix_cluster_tsne_map
+
+      <ul>
+        <li><a href="co_occurrence_matrix_cluster_tsne_map.html#module-techminer2.co_occurrence_matrix_cluster_tsne_map">module</a>
+</li>
+      </ul></li>
+      <li>
     techminer2.co_occurrence_matrix_heatmap
 
       <ul>
@@ -966,27 +1059,6 @@
 
       <ul>
         <li><a href="co_occurrence_matrix_manifold.html#module-techminer2.co_occurrence_matrix_manifold">module</a>
-</li>
-      </ul></li>
-      <li>
-    techminer2.co_occurrence_matrix_mds_map
-
-      <ul>
-        <li><a href="co_occurrence_matrix_mds_map.html#module-techminer2.co_occurrence_matrix_mds_map">module</a>
-</li>
-      </ul></li>
-      <li>
-    techminer2.co_occurrence_matrix_svd_map
-
-      <ul>
-        <li><a href="co_occurrence_matrix_svd_map.html#module-techminer2.co_occurrence_matrix_svd_map">module</a>
-</li>
-      </ul></li>
-      <li>
-    techminer2.co_occurrence_matrix_topic_associations
-
-      <ul>
-        <li><a href="co_occurrence_matrix_topic_associations.html#module-techminer2.co_occurrence_matrix_topic_associations">module</a>
 </li>
       </ul></li>
       <li>
@@ -1015,6 +1087,20 @@
 
       <ul>
         <li><a href="co_occurrence_network_indicators.html#module-techminer2.co_occurrence_network_indicators">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2.co_occurrence_svd_map
+
+      <ul>
+        <li><a href="co_occurrence_svd_map.html#module-techminer2.co_occurrence_svd_map">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2.co_occurrence_svd_mds_map
+
+      <ul>
+        <li><a href="co_occurrence_svd_mds_map.html#module-techminer2.co_occurrence_svd_mds_map">module</a>
 </li>
       </ul></li>
       <li>
@@ -1053,55 +1139,6 @@
 </li>
       </ul></li>
       <li>
-    techminer2.column_cleveland_dot_chart
-
-      <ul>
-        <li><a href="column_cleveland_dot_chart.html#module-techminer2.column_cleveland_dot_chart">module</a>
-</li>
-      </ul></li>
-      <li>
-    techminer2.column_coverage
-
-      <ul>
-        <li><a href="column_coverage.html#module-techminer2.column_coverage">module</a>
-</li>
-      </ul></li>
-      <li>
-    techminer2.column_dynamics
-
-      <ul>
-        <li><a href="column_dynamics.html#module-techminer2.column_dynamics">module</a>
-</li>
-      </ul></li>
-      <li>
-    techminer2.column_gantt_chart
-
-      <ul>
-        <li><a href="column_gantt_chart.html#module-techminer2.column_gantt_chart">module</a>
-</li>
-      </ul></li>
-      <li>
-    techminer2.column_global_citations
-
-      <ul>
-        <li><a href="column_global_citations.html#module-techminer2.column_global_citations">module</a>
-</li>
-      </ul></li>
-      <li>
-    techminer2.column_h_index
-
-      <ul>
-        <li><a href="column_h_index.html#module-techminer2.column_h_index">module</a>
-</li>
-      </ul></li>
-      <li>
-    techminer2.column_horizontal_bar_chart
-
-      <ul>
-        <li><a href="column_horizontal_bar_chart.html#module-techminer2.column_horizontal_bar_chart">module</a>
-</li>
-      </ul></li>
-      <li>
     techminer2.column_indicators
 
       <ul>
@@ -1113,69 +1150,6 @@
 
       <ul>
         <li><a href="column_indicators_by_year.html#module-techminer2.column_indicators_by_year">module</a>
-</li>
-      </ul></li>
-      <li>
-    techminer2.column_line_chart
-
-      <ul>
-        <li><a href="column_line_chart.html#module-techminer2.column_line_chart">module</a>
-</li>
-      </ul></li>
-      <li>
-    techminer2.column_pie_chart
-
-      <ul>
-        <li><a href="column_pie_chart.html#module-techminer2.column_pie_chart">module</a>
-</li>
-      </ul></li>
-      <li>
-    techminer2.column_timeline_chart
-
-      <ul>
-        <li><a href="column_timeline_chart.html#module-techminer2.column_timeline_chart">module</a>
-</li>
-      </ul></li>
-      <li>
-    techminer2.column_top_topics_chart
-
-      <ul>
-        <li><a href="column_top_topics_chart.html#module-techminer2.column_top_topics_chart">module</a>
-</li>
-      </ul></li>
-      <li>
-    techminer2.column_top_trending_topics
-
-      <ul>
-        <li><a href="column_top_trending_topics.html#module-techminer2.column_top_trending_topics">module</a>
-</li>
-      </ul></li>
-      <li>
-    techminer2.column_tree_map
-
-      <ul>
-        <li><a href="column_tree_map.html#module-techminer2.column_tree_map">module</a>
-</li>
-      </ul></li>
-      <li>
-    techminer2.column_trends
-
-      <ul>
-        <li><a href="column_trends.html#module-techminer2.column_trends">module</a>
-</li>
-      </ul></li>
-      <li>
-    techminer2.column_vertical_bar_chart
-
-      <ul>
-        <li><a href="column_vertical_bar_chart.html#module-techminer2.column_vertical_bar_chart">module</a>
-</li>
-      </ul></li>
-      <li>
-    techminer2.column_word_cloud
-
-      <ul>
-        <li><a href="column_word_cloud.html#module-techminer2.column_word_cloud">module</a>
 </li>
       </ul></li>
       <li>
@@ -1235,6 +1209,13 @@
 </li>
       </ul></li>
       <li>
+    techminer2.coverage
+
+      <ul>
+        <li><a href="coverage.html#module-techminer2.coverage">module</a>
+</li>
+      </ul></li>
+      <li>
     techminer2.create_thesaurus
 
       <ul>
@@ -1246,6 +1227,20 @@
 
       <ul>
         <li><a href="cross_corr_matrix.html#module-techminer2.cross_corr_matrix">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2.cross_corr_matrix_heatmap
+
+      <ul>
+        <li><a href="cross_corr_matrix_heatmap.html#module-techminer2.cross_corr_matrix_heatmap">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2.cross_corr_matrix_html
+
+      <ul>
+        <li><a href="cross_corr_matrix_html.html#module-techminer2.cross_corr_matrix_html">module</a>
 </li>
       </ul></li>
       <li>
@@ -1269,13 +1264,46 @@
         <li><a href="dotted_gantt_chart.html#module-techminer2.dotted_gantt_chart">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
-    techminer2.extract_custom_topics
+    techminer2.ego_graph
 
       <ul>
-        <li><a href="extract_custom_topics.html#module-techminer2.extract_custom_topics">module</a>
+        <li><a href="ego_graph.html#module-techminer2.ego_graph">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2.ego_network
+
+      <ul>
+        <li><a href="ego_network.html#module-techminer2.ego_network">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2.emergent_themes_lda_map
+
+      <ul>
+        <li><a href="emergent_themes_lda_map.html#module-techminer2.emergent_themes_lda_map">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2.emergent_themes_lda_themes
+
+      <ul>
+        <li><a href="emergent_themes_lda_themes.html#module-techminer2.emergent_themes_lda_themes">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2.emergent_themes_nmf_map
+
+      <ul>
+        <li><a href="emergent_themes_nmf_map.html#module-techminer2.emergent_themes_nmf_map">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2.emergent_themes_nmf_themes
+
+      <ul>
+        <li><a href="emergent_themes_nmf_themes.html#module-techminer2.emergent_themes_nmf_themes">module</a>
 </li>
       </ul></li>
       <li>
@@ -1292,13 +1320,8 @@
         <li><a href="factor_matrix.html#module-techminer2.factor_matrix">module</a>
 </li>
       </ul></li>
-      <li>
-    techminer2.factorial_analysis_manifold
-
-      <ul>
-        <li><a href="factorial_analysis_manifold.html#module-techminer2.factorial_analysis_manifold">module</a>
-</li>
-      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     techminer2.factorial_analysis_mds_communities
 
@@ -1349,17 +1372,17 @@
 </li>
       </ul></li>
       <li>
+    techminer2.hbar_chart
+
+      <ul>
+        <li><a href="hbar_chart.html#module-techminer2.hbar_chart">module</a>
+</li>
+      </ul></li>
+      <li>
     techminer2.heat_map
 
       <ul>
         <li><a href="heat_map.html#module-techminer2.heat_map">module</a>
-</li>
-      </ul></li>
-      <li>
-    techminer2.horizontal_bar_chart
-
-      <ul>
-        <li><a href="horizontal_bar_chart.html#module-techminer2.horizontal_bar_chart">module</a>
 </li>
       </ul></li>
       <li>
@@ -1615,10 +1638,10 @@
 </li>
       </ul></li>
       <li>
-    techminer2.tf_idf_svd_map
+    techminer2.tf_idf_matrix_svd_map
 
       <ul>
-        <li><a href="tf_idf_svd_map.html#module-techminer2.tf_idf_svd_map">module</a>
+        <li><a href="tf_idf_matrix_svd_map.html#module-techminer2.tf_idf_matrix_svd_map">module</a>
 </li>
       </ul></li>
       <li>
@@ -1629,17 +1652,24 @@
 </li>
       </ul></li>
       <li>
-    techminer2.thematic_analysis
+    techminer2.thematic_analysis_map
 
       <ul>
-        <li><a href="thematic_analysis.html#module-techminer2.thematic_analysis">module</a>
+        <li><a href="thematic_analysis_map.html#module-techminer2.thematic_analysis_map">module</a>
 </li>
       </ul></li>
       <li>
-    techminer2.thematic_map
+    techminer2.thematic_analysis_partitions
 
       <ul>
-        <li><a href="thematic_map.html#module-techminer2.thematic_map">module</a>
+        <li><a href="thematic_analysis_partitions.html#module-techminer2.thematic_analysis_partitions">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2.thematic_analysis_themes
+
+      <ul>
+        <li><a href="thematic_analysis_themes.html#module-techminer2.thematic_analysis_themes">module</a>
 </li>
       </ul></li>
       <li>
@@ -1671,6 +1701,62 @@
 </li>
       </ul></li>
       <li>
+    techminer2.timeline_chart
+
+      <ul>
+        <li><a href="timeline_chart.html#module-techminer2.timeline_chart">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2.top_topics
+
+      <ul>
+        <li><a href="top_topics.html#module-techminer2.top_topics">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2.top_trending_topics
+
+      <ul>
+        <li><a href="top_trending_topics.html#module-techminer2.top_trending_topics">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2.topic_associations
+
+      <ul>
+        <li><a href="topic_associations.html#module-techminer2.topic_associations">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2.topic_dynamics
+
+      <ul>
+        <li><a href="topic_dynamics.html#module-techminer2.topic_dynamics">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2.topic_view
+
+      <ul>
+        <li><a href="topic_view.html#module-techminer2.topic_view">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2.topics_comparison_chart
+
+      <ul>
+        <li><a href="topics_comparison_chart.html#module-techminer2.topics_comparison_chart">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2.topics_comparison_network
+
+      <ul>
+        <li><a href="topics_comparison_network.html#module-techminer2.topics_comparison_network">module</a>
+</li>
+      </ul></li>
+      <li>
     techminer2.tree_map
 
       <ul>
@@ -1692,10 +1778,10 @@
 </li>
       </ul></li>
       <li>
-    techminer2.vertical_bar_chart
+    techminer2.vbar_chart
 
       <ul>
-        <li><a href="vertical_bar_chart.html#module-techminer2.vertical_bar_chart">module</a>
+        <li><a href="vbar_chart.html#module-techminer2.vbar_chart">module</a>
 </li>
       </ul></li>
       <li>
@@ -1703,13 +1789,6 @@
 
       <ul>
         <li><a href="word_cloud.html#module-techminer2.word_cloud">module</a>
-</li>
-      </ul></li>
-      <li>
-    techminer2.word_dynamics
-
-      <ul>
-        <li><a href="word_dynamics.html#module-techminer2.word_dynamics">module</a>
 </li>
       </ul></li>
       <li>
@@ -1721,9 +1800,15 @@
       </ul></li>
       <li><a href="tf_idf_matrix.html#techminer2.tf_idf_matrix.tf_idf_matrix">tf_idf_matrix() (in module techminer2.tf_idf_matrix)</a>
 </li>
-      <li><a href="tf_idf_svd_map.html#techminer2.tf_idf_svd_map.tf_idf_svd_map">tf_idf_svd_map() (in module techminer2.tf_idf_svd_map)</a>
+      <li><a href="tf_idf_matrix_svd_map.html#techminer2.tf_idf_matrix_svd_map.tf_idf_matrix_svd_map">tf_idf_matrix_svd_map() (in module techminer2.tf_idf_matrix_svd_map)</a>
 </li>
       <li><a href="tf_matrix.html#techminer2.tf_matrix.tf_matrix">tf_matrix() (in module techminer2.tf_matrix)</a>
+</li>
+      <li><a href="thematic_analysis_map.html#techminer2.thematic_analysis_map.thematic_analysis_map">thematic_analysis_map() (in module techminer2.thematic_analysis_map)</a>
+</li>
+      <li><a href="thematic_analysis_partitions.html#techminer2.thematic_analysis_partitions.thematic_analysis_partitions">thematic_analysis_partitions() (in module techminer2.thematic_analysis_partitions)</a>
+</li>
+      <li><a href="thematic_analysis_themes.html#techminer2.thematic_analysis_themes.thematic_analysis_themes">thematic_analysis_themes() (in module techminer2.thematic_analysis_themes)</a>
 </li>
       <li><a href="thematic_map_communities.html#techminer2.thematic_map_communities.thematic_map_communities">thematic_map_communities() (in module techminer2.thematic_map_communities)</a>
 </li>
@@ -1733,7 +1818,21 @@
 </li>
       <li><a href="thematic_map_network.html#techminer2.thematic_map_network.thematic_map_network">thematic_map_network() (in module techminer2.thematic_map_network)</a>
 </li>
-      <li><a href="thematic_analysis.html#techminer2.thematic_analysis.ThematicAnalysis">ThematicAnalysis (class in techminer2.thematic_analysis)</a>
+      <li><a href="timeline_chart.html#techminer2.timeline_chart.timeline_chart">timeline_chart() (in module techminer2.timeline_chart)</a>
+</li>
+      <li><a href="top_topics.html#techminer2.top_topics.top_topics">top_topics() (in module techminer2.top_topics)</a>
+</li>
+      <li><a href="top_trending_topics.html#techminer2.top_trending_topics.top_trending_topics">top_trending_topics() (in module techminer2.top_trending_topics)</a>
+</li>
+      <li><a href="topic_associations.html#techminer2.topic_associations.topic_associations">topic_associations() (in module techminer2.topic_associations)</a>
+</li>
+      <li><a href="topic_dynamics.html#techminer2.topic_dynamics.topic_dynamics">topic_dynamics() (in module techminer2.topic_dynamics)</a>
+</li>
+      <li><a href="topic_view.html#techminer2.topic_view.topic_view">topic_view() (in module techminer2.topic_view)</a>
+</li>
+      <li><a href="topics_comparison_chart.html#techminer2.topics_comparison_chart.topics_comparison_chart">topics_comparison_chart() (in module techminer2.topics_comparison_chart)</a>
+</li>
+      <li><a href="topics_comparison_network.html#techminer2.topics_comparison_network.topics_comparison_network">topics_comparison_network() (in module techminer2.topics_comparison_network)</a>
 </li>
       <li><a href="tree_map.html#techminer2.tree_map.tree_map">tree_map() (in module techminer2.tree_map)</a>
 </li>
@@ -1753,7 +1852,7 @@
 <h2 id="V">V</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="vertical_bar_chart.html#techminer2.vertical_bar_chart.vertical_bar_chart">vertical_bar_chart() (in module techminer2.vertical_bar_chart)</a>
+      <li><a href="vbar_chart.html#techminer2.vbar_chart.vbar_chart">vbar_chart() (in module techminer2.vbar_chart)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -1765,8 +1864,6 @@
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="word_dynamics.html#techminer2.word_dynamics.word_dynamics">word_dynamics() (in module techminer2.word_dynamics)</a>
-</li>
       <li><a href="world_map.html#techminer2.world_map.world_map">world_map() (in module techminer2.world_map)</a>
 </li>
   </ul></td>

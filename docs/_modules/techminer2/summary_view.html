@@ -47,25 +47,24 @@
 <li class="toctree-l1"><a class="reference internal" href="../../release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data preparation</span></p>
+<p class="caption"><span class="caption-text">Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_user_data.html">Data</a></li>
-</ul>
-<p class="caption"><span class="caption-text">API Reference</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_co_occurrence.html">Co-occurrence API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_columns.html">Columns API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_document_term.html">Document-Term API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_indicators.html">Indicators API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_network.html">Network API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_visualization.html">Visualization API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../import_references.html">Import References File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../coverage.html">Coverage</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Software comparison</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_vantagepoint.html">VantagePoint</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_bibliometrix.html">Bibliometrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_scientopy.html">ScientoPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_tlab.html">T-Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_vantagepoint.html">VantagePoint</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Low level API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_api_indicators.html">Indicators API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_api_network.html">Network API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_api_visualization.html">Visualization API</a></li>
 </ul>
 
         </div>
@@ -98,7 +97,8 @@
 <span class="sd">===============================================================================</span>
 
 <span class="sd">&gt;&gt;&gt; from techminer2 import *</span>
-<span class="sd">&gt;&gt;&gt; summary_view(&quot;/workspaces/techminer-api/data/&quot;)</span>
+<span class="sd">&gt;&gt;&gt; directory = &quot;/workspaces/techminer2/data/&quot;</span>
+<span class="sd">&gt;&gt;&gt; summary_view(directory)</span>
 <span class="sd">                    column  number of terms coverage (%)</span>
 <span class="sd">0                 abstract              248      100.00%</span>
 <span class="sd">1             affiliations              244       98.39%</span>
@@ -123,24 +123,31 @@
 <span class="sd">20                    issn              240       96.77%</span>
 <span class="sd">21         local_citations              248      100.00%</span>
 <span class="sd">22        local_references              118       47.58%</span>
-<span class="sd">23             num_authors              248      100.00%</span>
-<span class="sd">24   num_global_references              248      100.00%</span>
-<span class="sd">25              page_start              153       61.69%</span>
-<span class="sd">26                pub_year              248      100.00%</span>
-<span class="sd">27               pubmed_id                4        1.61%</span>
-<span class="sd">28     raw_author_keywords              202       81.45%</span>
-<span class="sd">29       raw_authors_names              246       99.19%</span>
-<span class="sd">30      raw_index_keywords               88       35.48%</span>
-<span class="sd">31            raw_keywords               66       26.61%</span>
-<span class="sd">32               record_no              248      100.00%</span>
-<span class="sd">33             source_name              248      100.00%</span>
-<span class="sd">34                  volume              217       87.50%</span>
+<span class="sd">23            nlp_abstract              236       95.16%</span>
+<span class="sd">24      nlp_document_title              247       99.60%</span>
+<span class="sd">25             nlp_phrases              248      100.00%</span>
+<span class="sd">26             num_authors              248      100.00%</span>
+<span class="sd">27   num_global_references              248      100.00%</span>
+<span class="sd">28              page_start              153       61.69%</span>
+<span class="sd">29                pub_year              248      100.00%</span>
+<span class="sd">30               pubmed_id                4        1.61%</span>
+<span class="sd">31     raw_author_keywords              202       81.45%</span>
+<span class="sd">32       raw_authors_names              246       99.19%</span>
+<span class="sd">33      raw_index_keywords               88       35.48%</span>
+<span class="sd">34            raw_keywords              224       90.32%</span>
+<span class="sd">35        raw_nlp_abstract              236       95.16%</span>
+<span class="sd">36  raw_nlp_document_title              247       99.60%</span>
+<span class="sd">37         raw_nlp_phrases              248      100.00%</span>
+<span class="sd">38               record_no              248      100.00%</span>
+<span class="sd">39             source_name              248      100.00%</span>
+<span class="sd">40                  volume              217       87.50%</span>
+
 
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">load_filtered_documents</span>
+<span class="kn">from</span> <span class="nn">.load_filtered_documents</span> <span class="kn">import</span> <span class="n">load_filtered_documents</span>
 
 
 <div class="viewcode-block" id="summary_view"><a class="viewcode-back" href="../../summary_view.html#techminer2.summary_view.summary_view">[docs]</a><span class="k">def</span> <span class="nf">summary_view</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="s2">&quot;./&quot;</span><span class="p">):</span>

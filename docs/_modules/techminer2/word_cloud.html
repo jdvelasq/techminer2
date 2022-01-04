@@ -47,25 +47,24 @@
 <li class="toctree-l1"><a class="reference internal" href="../../release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data preparation</span></p>
+<p class="caption"><span class="caption-text">Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_user_data.html">Data</a></li>
-</ul>
-<p class="caption"><span class="caption-text">API Reference</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_co_occurrence.html">Co-occurrence API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_columns.html">Columns API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_document_term.html">Document-Term API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_indicators.html">Indicators API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_network.html">Network API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_visualization.html">Visualization API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../import_references.html">Import References File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../coverage.html">Coverage</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Software comparison</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_vantagepoint.html">VantagePoint</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_bibliometrix.html">Bibliometrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_scientopy.html">ScientoPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_tlab.html">T-Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_vantagepoint.html">VantagePoint</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Low level API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_api_indicators.html">Indicators API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_api_network.html">Network API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_api_visualization.html">Visualization API</a></li>
 </ul>
 
         </div>
@@ -94,129 +93,62 @@
              
   <h1>Source code for techminer2.word_cloud</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">World cloud</span>
+<span class="sd">Word Cloud</span>
 <span class="sd">===============================================================================</span>
 
 <span class="sd">&gt;&gt;&gt; from techminer2 import *</span>
 <span class="sd">&gt;&gt;&gt; directory = &quot;/workspaces/techminer2/data/&quot;</span>
 <span class="sd">&gt;&gt;&gt; file_name = &quot;/workspaces/techminer2/sphinx/images/word_cloud.png&quot;</span>
-<span class="sd">&gt;&gt;&gt; data = column_indicators(&#39;authors&#39;, directory=directory).num_documents.head(50)</span>
-<span class="sd">&gt;&gt;&gt; word_cloud(data).savefig(file_name)</span>
+<span class="sd">&gt;&gt;&gt; word_cloud(</span>
+<span class="sd">...     column=&#39;author_keywords&#39;, </span>
+<span class="sd">...     top_n=50, </span>
+<span class="sd">...     directory=directory,</span>
+<span class="sd">... ).savefig(file_name)</span>
 
-<span class="sd">.. image:: images/word_cloud_authors.png</span>
+<span class="sd">.. image:: images/word_cloud.png</span>
 <span class="sd">    :width: 700px</span>
 <span class="sd">    :align: center</span>
 
+
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">wordcloud</span> <span class="kn">import</span> <span class="n">WordCloud</span>
-
-<span class="n">TEXTLEN</span> <span class="o">=</span> <span class="mi">40</span>
+<span class="kn">from</span> <span class="nn">._word_cloud</span> <span class="kn">import</span> <span class="n">_word_cloud</span>
+<span class="kn">from</span> <span class="nn">.topic_view</span> <span class="kn">import</span> <span class="n">topic_view</span>
 
 
 <div class="viewcode-block" id="word_cloud"><a class="viewcode-back" href="../../word_cloud.html#techminer2.word_cloud.word_cloud">[docs]</a><span class="k">def</span> <span class="nf">word_cloud</span><span class="p">(</span>
-    <span class="n">series</span><span class="p">,</span>
-    <span class="n">darkness</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span>
-    <span class="n">font_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">width</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span>
-    <span class="n">height</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
-    <span class="n">margin</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-    <span class="n">ranks_only</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">prefer_horizontal</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>
-    <span class="n">mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-    <span class="n">max_words</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span>
-    <span class="n">min_font_size</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
-    <span class="n">stopwords</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">random_state</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">background_color</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span>
-    <span class="n">max_font_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">font_step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-    <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;RGB&quot;</span><span class="p">,</span>
-    <span class="n">relative_scaling</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
-    <span class="n">regexp</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">collocations</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Blues&quot;</span><span class="p">,</span>
-    <span class="n">normalize_plurals</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">contour_width</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-    <span class="n">contour_color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
-    <span class="n">repeat</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Plots a wordcloud from a dataframe.&quot;&quot;&quot;</span>
-
-    <span class="k">def</span> <span class="nf">color_func</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">font_size</span><span class="p">,</span> <span class="n">position</span><span class="p">,</span> <span class="n">orientation</span><span class="p">,</span> <span class="n">font_path</span><span class="p">,</span> <span class="n">random_state</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">color_dic</span><span class="p">[</span><span class="n">word</span><span class="p">]</span>
-
-    <span class="n">series</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">darkness</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">darkness</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">darkness</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
-
-    <span class="n">darkness</span> <span class="o">=</span> <span class="n">series</span> <span class="k">if</span> <span class="n">darkness</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">darkness</span>
-
-    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
-    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-    <span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="n">cmap</span><span class="p">)</span>
-
-    <span class="n">words</span> <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="n">value</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">series</span><span class="p">)}</span>
-
-    <span class="n">color_dic</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="n">key</span><span class="p">:</span> <span class="n">cmap</span><span class="p">(</span>
-            <span class="mf">0.5</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">value</span> <span class="o">-</span> <span class="n">darkness</span><span class="o">.</span><span class="n">min</span><span class="p">())</span> <span class="o">/</span> <span class="p">(</span><span class="n">darkness</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">darkness</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
-        <span class="p">)</span>
-        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">darkness</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">darkness</span><span class="p">)</span>
-    <span class="p">}</span>
-
-    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">color_dic</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-        <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="n">color_dic</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
-        <span class="n">color_dic</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-            <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="mi">255</span><span class="p">),</span>
-            <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">(</span><span class="n">b</span> <span class="o">*</span> <span class="mi">255</span><span class="p">),</span>
-            <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">(</span><span class="n">c</span> <span class="o">*</span> <span class="mi">255</span><span class="p">),</span>
-            <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">(</span><span class="n">d</span> <span class="o">*</span> <span class="mi">255</span><span class="p">),</span>
-        <span class="p">)</span>
-
-    <span class="n">wordcloud</span> <span class="o">=</span> <span class="n">WordCloud</span><span class="p">(</span>
-        <span class="n">font_path</span><span class="o">=</span><span class="n">font_path</span><span class="p">,</span>
-        <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">,</span>
-        <span class="n">height</span><span class="o">=</span><span class="n">height</span><span class="p">,</span>
-        <span class="n">margin</span><span class="o">=</span><span class="n">margin</span><span class="p">,</span>
-        <span class="n">ranks_only</span><span class="o">=</span><span class="n">ranks_only</span><span class="p">,</span>
-        <span class="n">prefer_horizontal</span><span class="o">=</span><span class="n">prefer_horizontal</span><span class="p">,</span>
-        <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span>
-        <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span>
-        <span class="n">color_func</span><span class="o">=</span><span class="n">color_func</span><span class="p">,</span>
-        <span class="n">max_words</span><span class="o">=</span><span class="n">max_words</span><span class="p">,</span>
-        <span class="n">min_font_size</span><span class="o">=</span><span class="n">min_font_size</span><span class="p">,</span>
-        <span class="n">stopwords</span><span class="o">=</span><span class="n">stopwords</span><span class="p">,</span>
-        <span class="n">random_state</span><span class="o">=</span><span class="n">random_state</span><span class="p">,</span>
-        <span class="n">background_color</span><span class="o">=</span><span class="n">background_color</span><span class="p">,</span>
-        <span class="n">max_font_size</span><span class="o">=</span><span class="n">max_font_size</span><span class="p">,</span>
-        <span class="n">font_step</span><span class="o">=</span><span class="n">font_step</span><span class="p">,</span>
-        <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
-        <span class="n">relative_scaling</span><span class="o">=</span><span class="n">relative_scaling</span><span class="p">,</span>
-        <span class="n">regexp</span><span class="o">=</span><span class="n">regexp</span><span class="p">,</span>
-        <span class="n">collocations</span><span class="o">=</span><span class="n">collocations</span><span class="p">,</span>
-        <span class="n">normalize_plurals</span><span class="o">=</span><span class="n">normalize_plurals</span><span class="p">,</span>
-        <span class="n">contour_width</span><span class="o">=</span><span class="n">contour_width</span><span class="p">,</span>
-        <span class="n">contour_color</span><span class="o">=</span><span class="n">contour_color</span><span class="p">,</span>
-        <span class="n">repeat</span><span class="o">=</span><span class="n">repeat</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="n">wordcloud</span><span class="o">.</span><span class="n">generate_from_frequencies</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">wordcloud</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s2">&quot;bilinear&quot;</span><span class="p">)</span>
+    <span class="n">column</span><span class="p">,</span>
+    <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;num_documents&quot;</span><span class="p">,</span>
+    <span class="n">top_n</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">min_occ</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">max_occ</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">sort_values</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">sort_index</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">directory</span><span class="o">=</span><span class="s2">&quot;./&quot;</span><span class="p">,</span>
     <span class="c1">#</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">&quot;bottom&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">&quot;lightgray&quot;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">&quot;top&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">&quot;lightgray&quot;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">&quot;right&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">&quot;lightgray&quot;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">&quot;left&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">&quot;lightgray&quot;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Greys&quot;</span><span class="p">,</span>
+<span class="p">):</span>
 
-    <span class="n">fig</span><span class="o">.</span><span class="n">set_tight_layout</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">indicators</span> <span class="o">=</span> <span class="n">topic_view</span><span class="p">(</span>
+        <span class="n">column</span><span class="o">=</span><span class="n">column</span><span class="p">,</span>
+        <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">,</span>
+        <span class="n">top_n</span><span class="o">=</span><span class="n">top_n</span><span class="p">,</span>
+        <span class="n">min_occ</span><span class="o">=</span><span class="n">min_occ</span><span class="p">,</span>
+        <span class="n">max_occ</span><span class="o">=</span><span class="n">max_occ</span><span class="p">,</span>
+        <span class="n">sort_values</span><span class="o">=</span><span class="n">sort_values</span><span class="p">,</span>
+        <span class="n">sort_index</span><span class="o">=</span><span class="n">sort_index</span><span class="p">,</span>
+        <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
+    <span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">fig</span></div>
+    <span class="n">indicators</span> <span class="o">=</span> <span class="n">indicators</span><span class="p">[</span><span class="n">metric</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">_word_cloud</span><span class="p">(</span>
+        <span class="n">series</span><span class="o">=</span><span class="n">indicators</span><span class="p">,</span>
+        <span class="n">darkness</span><span class="o">=</span><span class="n">indicators</span><span class="p">,</span>
+        <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span>
+        <span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">,</span>
+    <span class="p">)</span></div>
 </pre></div>
 
            </div>

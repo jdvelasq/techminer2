@@ -23,7 +23,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Factor Matrix" href="factor_matrix.html" />
-    <link rel="prev" title="Cross-correlation Matrix" href="cross_corr_matrix.html" /> 
+    <link rel="prev" title="Cross-correlation Matrix / Heatmap" href="cross_corr_matrix_heatmap.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -50,40 +50,44 @@
 <li class="toctree-l1"><a class="reference internal" href="release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data preparation</span></p>
+<p class="caption"><span class="caption-text">Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="_user_data.html">Data</a></li>
-</ul>
-<p class="caption"><span class="caption-text">API Reference</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="_api_co_occurrence.html">Co-occurrence API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_columns.html">Columns API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_document_term.html">Document-Term API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_visualization.html">Visualization API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="import_references.html">Import References File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coverage.html">Coverage</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Software comparison</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="_bibliometrix.html">Bibliometrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_scientopy.html">ScientoPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_tlab.html">T-Lab</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="_vantagepoint.html">VantagePoint</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#dataset">Dataset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#search">Search</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#thesaurus">Thesaurus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#column-report-charts">Column (Report) Charts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#topic-view">Topic View</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#co-occurrence-matrix">Co-occurrence Matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#occurrence-matrix">Occurrence Matrix</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="_vantagepoint.html#correlation-analysis">Correlation Analysis</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="auto_corr_matrix.html">Auto-correlation Matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="auto_corr_matrix_html.html">Auto-correlation Matrix / HTML</a></li>
+<li class="toctree-l3"><a class="reference internal" href="auto_corr_matrix_heatmap.html">Auto-correlation Matrix / Heatmap</a></li>
 <li class="toctree-l3"><a class="reference internal" href="cross_corr_matrix.html">Cross-correlation Matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cross_corr_matrix_html.html">Cross-correlation Matrix / HTML</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cross_corr_matrix_heatmap.html">Cross-correlation Matrix / Heatmap</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Correlation Map</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#factor-analysis">Factor Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#document-term-matrix">Document-Term Matrix</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="_bibliometrix.html">Bibliometrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_scientopy.html">ScientoPy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_tlab.html">T-Lab</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Low level API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_api_visualization.html">Visualization API</a></li>
 </ul>
 
         </div>
@@ -156,7 +160,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="cross_corr_matrix.html" class="btn btn-neutral float-left" title="Cross-correlation Matrix" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cross_corr_matrix_heatmap.html" class="btn btn-neutral float-left" title="Cross-correlation Matrix / Heatmap" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="factor_matrix.html" class="btn btn-neutral float-right" title="Factor Matrix" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

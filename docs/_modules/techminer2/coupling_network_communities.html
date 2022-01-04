@@ -47,25 +47,24 @@
 <li class="toctree-l1"><a class="reference internal" href="../../release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data preparation</span></p>
+<p class="caption"><span class="caption-text">Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_user_data.html">Data</a></li>
-</ul>
-<p class="caption"><span class="caption-text">API Reference</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_co_occurrence.html">Co-occurrence API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_columns.html">Columns API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_document_term.html">Document-Term API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_indicators.html">Indicators API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_network.html">Network API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_visualization.html">Visualization API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../import_references.html">Import References File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../coverage.html">Coverage</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Software comparison</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_vantagepoint.html">VantagePoint</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_bibliometrix.html">Bibliometrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_scientopy.html">ScientoPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_tlab.html">T-Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_vantagepoint.html">VantagePoint</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Low level API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_api_indicators.html">Indicators API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_api_network.html">Network API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_api_visualization.html">Visualization API</a></li>
 </ul>
 
         </div>
@@ -121,9 +120,9 @@
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="kn">from</span> <span class="nn">.coupling_matrix</span> <span class="kn">import</span> <span class="n">coupling_matrix</span>
+<span class="kn">from</span> <span class="nn">.load_all_documents</span> <span class="kn">import</span> <span class="n">load_all_documents</span>
 <span class="kn">from</span> <span class="nn">.network</span> <span class="kn">import</span> <span class="n">network</span>
 <span class="kn">from</span> <span class="nn">.network_communities</span> <span class="kn">import</span> <span class="n">network_communities</span>
-<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">load_all_documents</span>
 
 
 <div class="viewcode-block" id="coupling_network_communities"><a class="viewcode-back" href="../../coupling_network_communities.html#techminer2.coupling_network_communities.coupling_network_communities">[docs]</a><span class="k">def</span> <span class="nf">coupling_network_communities</span><span class="p">(</span>
@@ -146,30 +145,6 @@
     <span class="p">)</span>
 
     <span class="c1"># -------------------------------------------------------------------------</span>
-    <span class="c1"># Rename axis of the matrix</span>
-    <span class="c1"># documents = load_all_documents(directory)</span>
-    <span class="c1"># records2ids = dict(zip(documents.record_no, documents.document_id))</span>
-    <span class="c1"># records2global_citations = dict(</span>
-    <span class="c1">#     zip(documents.record_no, documents.global_citations)</span>
-    <span class="c1"># )</span>
-    <span class="c1"># records2local_citations = dict(zip(documents.record_no, documents.local_citations))</span>
-
-    <span class="c1"># new_indexes = matrix.columns.get_level_values(0)</span>
-    <span class="c1"># new_indexes = [</span>
-    <span class="c1">#     (</span>
-    <span class="c1">#         records2ids[index],</span>
-    <span class="c1">#         records2global_citations[index],</span>
-    <span class="c1">#         records2local_citations[index],</span>
-    <span class="c1">#     )</span>
-    <span class="c1">#     for index in new_indexes</span>
-    <span class="c1"># ]</span>
-    <span class="c1"># new_indexes = pd.MultiIndex.from_tuples(</span>
-    <span class="c1">#     new_indexes, names=[&quot;document&quot;, &quot;global_citations&quot;, &quot;local_citations&quot;]</span>
-    <span class="c1"># )</span>
-
-    <span class="c1"># matrix.columns = new_indexes.copy()</span>
-    <span class="c1"># matrix.index = new_indexes.copy()</span>
-
     <span class="n">network_</span> <span class="o">=</span> <span class="n">network</span><span class="p">(</span>
         <span class="n">matrix</span><span class="p">,</span>
         <span class="n">clustering_method</span><span class="o">=</span><span class="n">clustering_method</span><span class="p">,</span>

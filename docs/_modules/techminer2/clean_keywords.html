@@ -47,25 +47,24 @@
 <li class="toctree-l1"><a class="reference internal" href="../../release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data preparation</span></p>
+<p class="caption"><span class="caption-text">Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_user_data.html">Data</a></li>
-</ul>
-<p class="caption"><span class="caption-text">API Reference</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_co_occurrence.html">Co-occurrence API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_columns.html">Columns API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_document_term.html">Document-Term API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_indicators.html">Indicators API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_network.html">Network API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_visualization.html">Visualization API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../import_references.html">Import References File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../coverage.html">Coverage</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Software comparison</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_vantagepoint.html">VantagePoint</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_bibliometrix.html">Bibliometrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_scientopy.html">ScientoPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_tlab.html">T-Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_vantagepoint.html">VantagePoint</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Low level API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_api_indicators.html">Indicators API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_api_network.html">Network API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_api_visualization.html">Visualization API</a></li>
 </ul>
 
         </div>
@@ -103,10 +102,12 @@
 <span class="sd">&gt;&gt;&gt; from techminer2 import *</span>
 <span class="sd">&gt;&gt;&gt; directory = &quot;/workspaces/techminer2/data/&quot;</span>
 <span class="sd">&gt;&gt;&gt; clean_keywords(directory)</span>
-<span class="sd">2021-11-08 18:48:08 - INFO - Applying thesaurus to &#39;raw_author_keywords&#39; column ...</span>
-<span class="sd">2021-11-08 18:48:08 - INFO - Applying thesaurus to &#39;raw_index_keywords&#39; column...</span>
-<span class="sd">2021-11-08 18:48:08 - INFO - Applying thesaurus to &#39;raw_keywords&#39; column...</span>
-<span class="sd">2021-11-08 18:48:10 - INFO - The thesaurus was applied to keywords.</span>
+<span class="sd">- INFO - Applying thesaurus to &#39;raw_author_keywords&#39; column ...</span>
+<span class="sd">- INFO - Applying thesaurus to &#39;raw_index_keywords&#39; column...</span>
+<span class="sd">- INFO - Applying thesaurus to &#39;raw_nlp_document_title&#39; column...</span>
+<span class="sd">- INFO - Applying thesaurus to &#39;raw_nlp_abstract&#39; column...</span>
+<span class="sd">- INFO - Applying thesaurus to &#39;raw_nlp_phrases&#39; column...</span>
+<span class="sd">- INFO - The thesaurus was applied to all keywords.</span>
 
 
 <span class="sd">&quot;&quot;&quot;</span>
@@ -117,8 +118,9 @@
 
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="kn">from</span> <span class="nn">.text.thesaurus</span> <span class="kn">import</span> <span class="n">read_textfile</span>
-<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">logging</span><span class="p">,</span> <span class="n">map_</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">logging</span>
+<span class="kn">from</span> <span class="nn">.map_</span> <span class="kn">import</span> <span class="n">map_</span>
+<span class="kn">from</span> <span class="nn">.thesaurus</span> <span class="kn">import</span> <span class="n">read_textfile</span>
 
 
 <div class="viewcode-block" id="clean_keywords"><a class="viewcode-back" href="../../clean_keywords.html#techminer2.clean_keywords.clean_keywords">[docs]</a><span class="k">def</span> <span class="nf">clean_keywords</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
@@ -164,24 +166,21 @@
         <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Applying thesaurus to &#39;raw_keywords&#39; column...&quot;</span><span class="p">)</span>
         <span class="n">documents</span><span class="p">[</span><span class="s2">&quot;keywords&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">map_</span><span class="p">(</span><span class="n">documents</span><span class="p">,</span> <span class="s2">&quot;raw_keywords&quot;</span><span class="p">,</span> <span class="n">th</span><span class="o">.</span><span class="n">apply_as_dict</span><span class="p">)</span>
 
-    <span class="c1">#</span>
-    <span class="c1"># Title keywords</span>
-    <span class="c1">#</span>
-    <span class="k">if</span> <span class="s2">&quot;title_keywords&quot;</span> <span class="ow">in</span> <span class="n">documents</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
-        <span class="n">documents</span><span class="p">[</span><span class="s2">&quot;title_keywords_cleaned&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">map_</span><span class="p">(</span>
-            <span class="n">documents</span><span class="p">,</span> <span class="s2">&quot;title_keywords&quot;</span><span class="p">,</span> <span class="n">th</span><span class="o">.</span><span class="n">apply_as_dict</span>
+    <span class="k">if</span> <span class="s2">&quot;raw_nlp_document_title&quot;</span> <span class="ow">in</span> <span class="n">documents</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Applying thesaurus to &#39;raw_nlp_document_title&#39; column...&quot;</span><span class="p">)</span>
+        <span class="n">documents</span><span class="p">[</span><span class="s2">&quot;nlp_document_title&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">map_</span><span class="p">(</span>
+            <span class="n">documents</span><span class="p">,</span> <span class="s2">&quot;raw_nlp_document_title&quot;</span><span class="p">,</span> <span class="n">th</span><span class="o">.</span><span class="n">apply_as_dict</span>
         <span class="p">)</span>
 
-    <span class="c1">#</span>
-    <span class="c1"># Abstract</span>
-    <span class="c1">#</span>
-    <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="p">[</span>
-        <span class="s2">&quot;abstract_author_keywords&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;abstract_index_keywords&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;abstract_keywords&quot;</span><span class="p">,</span>
-    <span class="p">]:</span>
-        <span class="k">if</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">documents</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
-            <span class="n">documents</span><span class="p">[</span><span class="n">column</span> <span class="o">+</span> <span class="s2">&quot;_cl&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">map_</span><span class="p">(</span><span class="n">documents</span><span class="p">,</span> <span class="n">column</span><span class="p">,</span> <span class="n">th</span><span class="o">.</span><span class="n">apply_as_dict</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s2">&quot;raw_nlp_abstract&quot;</span> <span class="ow">in</span> <span class="n">documents</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Applying thesaurus to &#39;raw_nlp_abstract&#39; column...&quot;</span><span class="p">)</span>
+        <span class="n">documents</span><span class="p">[</span><span class="s2">&quot;nlp_abstract&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">map_</span><span class="p">(</span>
+            <span class="n">documents</span><span class="p">,</span> <span class="s2">&quot;raw_nlp_abstract&quot;</span><span class="p">,</span> <span class="n">th</span><span class="o">.</span><span class="n">apply_as_dict</span>
+        <span class="p">)</span>
+
+    <span class="k">if</span> <span class="s2">&quot;raw_nlp_phrases&quot;</span> <span class="ow">in</span> <span class="n">documents</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Applying thesaurus to &#39;raw_nlp_phrases&#39; column...&quot;</span><span class="p">)</span>
+        <span class="n">documents</span><span class="p">[</span><span class="s2">&quot;nlp_phrases&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">map_</span><span class="p">(</span><span class="n">documents</span><span class="p">,</span> <span class="s2">&quot;raw_nlp_phrases&quot;</span><span class="p">,</span> <span class="n">th</span><span class="o">.</span><span class="n">apply_as_dict</span><span class="p">)</span>
 
     <span class="c1">#</span>
     <span class="c1"># Saves!</span>

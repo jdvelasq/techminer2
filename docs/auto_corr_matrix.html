@@ -22,8 +22,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Cross-correlation Matrix" href="cross_corr_matrix.html" />
-    <link rel="prev" title="Create Thesaurus" href="create_thesaurus.html" /> 
+    <link rel="next" title="Auto-correlation Matrix / HTML" href="auto_corr_matrix_html.html" />
+    <link rel="prev" title="Occurrence Matrix / HTML" href="occurrence_matrix_html.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -50,40 +50,44 @@
 <li class="toctree-l1"><a class="reference internal" href="release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data preparation</span></p>
+<p class="caption"><span class="caption-text">Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="_user_data.html">Data</a></li>
-</ul>
-<p class="caption"><span class="caption-text">API Reference</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="_api_co_occurrence.html">Co-occurrence API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_columns.html">Columns API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_document_term.html">Document-Term API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_visualization.html">Visualization API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="import_references.html">Import References File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coverage.html">Coverage</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Software comparison</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="_bibliometrix.html">Bibliometrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_scientopy.html">ScientoPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_tlab.html">T-Lab</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="_vantagepoint.html">VantagePoint</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#dataset">Dataset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#search">Search</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#thesaurus">Thesaurus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#column-report-charts">Column (Report) Charts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#topic-view">Topic View</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#co-occurrence-matrix">Co-occurrence Matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#occurrence-matrix">Occurrence Matrix</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="_vantagepoint.html#correlation-analysis">Correlation Analysis</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Auto-correlation Matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="auto_corr_matrix_html.html">Auto-correlation Matrix / HTML</a></li>
+<li class="toctree-l3"><a class="reference internal" href="auto_corr_matrix_heatmap.html">Auto-correlation Matrix / Heatmap</a></li>
 <li class="toctree-l3"><a class="reference internal" href="cross_corr_matrix.html">Cross-correlation Matrix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cross_corr_matrix_html.html">Cross-correlation Matrix / HTML</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cross_corr_matrix_heatmap.html">Cross-correlation Matrix / Heatmap</a></li>
 <li class="toctree-l3"><a class="reference internal" href="correlation_map.html">Correlation Map</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#factor-analysis">Factor Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#document-term-matrix">Document-Term Matrix</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="_bibliometrix.html">Bibliometrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_scientopy.html">ScientoPy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_tlab.html">T-Lab</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Low level API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_api_visualization.html">Visualization API</a></li>
 </ul>
 
         </div>
@@ -140,15 +144,18 @@
 <p>Returns an auto-correlation matrix.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer2/data/&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">auto_corr_matrix</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s1">&#39;authors&#39;</span><span class="p">,</span> <span class="n">min_occ</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">)</span>
-<span class="go">authors                Rabbani MR Reyes-Mercado P    Khan S  Arner DW</span>
-<span class="go">#d                              8               7         6         6</span>
-<span class="go">#c                            65              0         52        125</span>
-<span class="go">authors         #d #c</span>
-<span class="go">Rabbani MR      8  65    1.000000       -0.554700  0.806226 -0.496139</span>
-<span class="go">Reyes-Mercado P 7  0    -0.554700        1.000000 -0.447214 -0.447214</span>
-<span class="go">Khan S          6  52    0.806226       -0.447214  1.000000 -0.400000</span>
-<span class="go">Arner DW        6  125  -0.496139       -0.447214 -0.400000  1.000000</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">auto_corr_matrix</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">column</span><span class="o">=</span><span class="s1">&#39;authors&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">min_occ</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">authors            Wojcik D Rabbani MR  Hornuf L</span>
+<span class="go">#d                        5          3         3</span>
+<span class="go">#c                      19         39        110</span>
+<span class="go">authors    #d #c</span>
+<span class="go">Wojcik D   5  19   1.000000  -0.559017 -0.559017</span>
+<span class="go">Rabbani MR 3  39  -0.559017   1.000000 -0.375000</span>
+<span class="go">Hornuf L   3  110 -0.559017  -0.375000  1.000000</span>
 </pre></div>
 </div>
 <dl class="py function">
@@ -180,8 +187,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="create_thesaurus.html" class="btn btn-neutral float-left" title="Create Thesaurus" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="cross_corr_matrix.html" class="btn btn-neutral float-right" title="Cross-correlation Matrix" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="occurrence_matrix_html.html" class="btn btn-neutral float-left" title="Occurrence Matrix / HTML" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="auto_corr_matrix_html.html" class="btn btn-neutral float-right" title="Auto-correlation Matrix / HTML" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

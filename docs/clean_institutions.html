@@ -50,41 +50,41 @@
 <li class="toctree-l1"><a class="reference internal" href="release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data preparation</span></p>
+<p class="caption"><span class="caption-text">Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="_user_data.html">Data</a></li>
-</ul>
-<p class="caption"><span class="caption-text">API Reference</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="_api_co_occurrence.html">Co-occurrence API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_columns.html">Columns API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_document_term.html">Document-Term API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_api_visualization.html">Visualization API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="import_references.html">Import References File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coverage.html">Coverage</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Software comparison</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="_bibliometrix.html">Bibliometrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_scientopy.html">ScientoPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_tlab.html">T-Lab</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="_vantagepoint.html">VantagePoint</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#dataset">Dataset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#search">Search</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="_vantagepoint.html#thesaurus">Thesaurus</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Clean Institutions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="clean_keywords.html">Clean Keywords</a></li>
-<li class="toctree-l3"><a class="reference internal" href="apply_thesaurus.html">Thesaurus — apply</a></li>
+<li class="toctree-l3"><a class="reference internal" href="apply_thesaurus.html">Apply Thesaurus</a></li>
 <li class="toctree-l3"><a class="reference internal" href="create_thesaurus.html">Create Thesaurus</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#column-report-charts">Column (Report) Charts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#topic-view">Topic View</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#co-occurrence-matrix">Co-occurrence Matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#occurrence-matrix">Occurrence Matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#correlation-analysis">Correlation Analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#factor-analysis">Factor Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#document-term-matrix">Document-Term Matrix</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="_bibliometrix.html">Bibliometrix</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_scientopy.html">ScientoPy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="_tlab.html">T-Lab</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Low level API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_api_visualization.html">Visualization API</a></li>
 </ul>
 
         </div>
@@ -143,10 +143,10 @@ the same directory as the documents.csv file.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer2/data/&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clean_institutions</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
-<span class="go">2021-11-08 18:33:47 - INFO - Applying thesaurus to institutions ...</span>
-<span class="go">2021-11-08 18:33:47 - INFO - Extract and cleaning institutions.</span>
-<span class="go">2021-11-08 18:33:47 - INFO - Extracting institution of first author ...</span>
-<span class="go">2021-11-08 18:33:49 - INFO - The thesaurus was applied to institutions.</span>
+<span class="go">- INFO - Applying thesaurus to institutions ...</span>
+<span class="go">- INFO - Extract and cleaning institutions.</span>
+<span class="go">- INFO - Extracting institution of first author ...</span>
+<span class="go">- INFO - The thesaurus was applied to institutions.</span>
 </pre></div>
 </div>
 <dl class="py function">

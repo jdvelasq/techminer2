@@ -47,25 +47,24 @@
 <li class="toctree-l1"><a class="reference internal" href="../../release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data preparation</span></p>
+<p class="caption"><span class="caption-text">Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_user_data.html">Data</a></li>
-</ul>
-<p class="caption"><span class="caption-text">API Reference</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_co_occurrence.html">Co-occurrence API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_columns.html">Columns API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_document_term.html">Document-Term API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_indicators.html">Indicators API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_network.html">Network API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../_api_visualization.html">Visualization API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../import_references.html">Import References File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../coverage.html">Coverage</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Software comparison</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../_vantagepoint.html">VantagePoint</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_bibliometrix.html">Bibliometrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_scientopy.html">ScientoPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_tlab.html">T-Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_vantagepoint.html">VantagePoint</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Low level API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../_api_indicators.html">Indicators API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_api_network.html">Network API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../_api_visualization.html">Visualization API</a></li>
 </ul>
 
         </div>
@@ -102,38 +101,14 @@
 
 <span class="sd">&gt;&gt;&gt; from techminer2 import *</span>
 <span class="sd">&gt;&gt;&gt; directory = &quot;/workspaces/techminer2/data/&quot;</span>
-<span class="sd">&gt;&gt;&gt; factor_matrix(co_occurrence_matrix(directory, column=&#39;authors&#39;, min_occ=6))</span>
-<span class="sd">component                 Factor 0  Factor 1      Factor 2  Factor 3  \</span>
-<span class="sd">explained_variance       21.725331 15.188322      4.900000  4.517707    </span>
-<span class="sd">explained_variance_ratio  0.355411  0.248470      0.080161  0.073907   </span>
-<span class="sd">authors          #nd #tc                                               </span>
-<span class="sd">Rabbani MR       10  69  -7.457430  6.816402  4.764260e-16  0.154755   </span>
-<span class="sd">Arner DW         9   135  8.644183  4.495553  1.743793e-16  0.111311   </span>
-<span class="sd">Wojcik D         7   49  -0.475153 -2.993645 -4.949747e+00  3.967407   </span>
-<span class="sd">Buckley RP       7   132  7.448032  3.628330  2.298904e-16  0.051120   </span>
-<span class="sd">Reyes-Mercado P  7   0   -0.475153 -2.993645  4.949747e+00  3.967407   </span>
-<span class="sd">Wonglimpiyarat J 6   52  -0.441073 -2.657812 -1.221041e-14 -1.652716   </span>
-<span class="sd">Gozman DP        6   26  -0.441073 -2.657812 -1.304308e-14 -1.652716   </span>
-<span class="sd">Serrano W        6   15  -0.441073 -2.657812 -2.486696e-14 -1.652716   </span>
-<span class="sd">Khan S           6   49  -5.479113  4.336065 -2.317433e-17  0.011582   </span>
-<span class="sd">Schwienbacher A  6   50  -0.441073 -2.657812 -2.200040e-16 -1.652716   </span>
-<span class="sd">Ozili PK         6   151 -0.441073 -2.657812  1.271205e-14 -1.652716   </span>
-<span class="sd">---</span>
-<span class="sd">component                    Factor  4     Factor  5  </span>
-<span class="sd">explained_variance            3.600000      3.600000   </span>
-<span class="sd">explained_variance_ratio      0.058894      0.058894  </span>
-<span class="sd">authors          #nd #tc                              </span>
-<span class="sd">Rabbani MR       10  69  -2.394465e-17 -3.556690e-17  </span>
-<span class="sd">Arner DW         9   135 -4.125227e-16  3.252556e-16  </span>
-<span class="sd">Wojcik D         7   49   2.252013e-15  6.264949e-15  </span>
-<span class="sd">Buckley RP       7   132 -4.125227e-16  2.697444e-16  </span>
-<span class="sd">Reyes-Mercado P  7   0   -2.466435e-15 -6.558127e-15  </span>
-<span class="sd">Wonglimpiyarat J 6   52   1.753989e+00  4.356088e+00  </span>
-<span class="sd">Gozman DP        6   26  -2.917738e-01 -1.316149e+00  </span>
-<span class="sd">Serrano W        6   15  -2.794042e+00 -2.500854e+00  </span>
-<span class="sd">Khan S           6   49  -2.394465e-17 -3.556690e-17  </span>
-<span class="sd">Schwienbacher A  6   50   4.140452e+00 -2.378176e+00  </span>
-<span class="sd">Ozili PK         6   151 -2.808625e+00  1.839091e+00 </span>
+<span class="sd">&gt;&gt;&gt; factor_matrix(</span>
+<span class="sd">...     co_occurrence_matrix(</span>
+<span class="sd">...         column=&#39;authors&#39;, </span>
+<span class="sd">...         min_occ=6,</span>
+<span class="sd">...         directory=directory, </span>
+<span class="sd">...     )</span>
+<span class="sd">... )</span>
+<span class="sd"> </span>
 
 
 <span class="sd">&quot;&quot;&quot;</span>

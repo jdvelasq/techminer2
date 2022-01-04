@@ -11,93 +11,131 @@ Co-occurrence Analysis
 
 .. raw:: html
 
-    <p style="color:gray">Word Associations</p>
+   <hr style="width:80%;height:2px;border-width:0;color:gray;background-color:black">
+
+Word Associations
+............................................
+
+    .. toctree::
+        :maxdepth: 1
+
+        topic_associations
+        co_occurrence_svd_mds_map
 
 
-See `Co-occurrence API <_api_co_occurrence.html>`__
+Co-Word Analysis
+............................................
 
+    .. toctree::
+        :maxdepth: 1
 
-.. raw:: html
+        co_occurrence_matrix_cluster_mds_map
+        co_occurrence_matrix_cluster_tsne_map
+        co_occurrence_matrix_manifold
+        cleveland_chart
 
-    <p style="color:gray">Co-word Analysis</p>
+Comparison between word pairs
+............................................
 
+    .. toctree::
+        :maxdepth: 1
 
-See `Co-occurrence API <_api_co_occurrence.html>`__
+        topics_comparison_chart
+        topics_comparison_network
 
+        
+Sequence and Network Analysis
+............................................
 
-.. raw:: html
+    .. toctree::
+        :maxdepth: 1
 
-    <p style="color:gray">Comparison between word pairs</p>
-
-.. toctree::
-    :maxdepth: 1
-
-
+        ego_graph
+        ego_network
 
 Concordances
-***************************************
+............................................
 
-.. toctree::
-    :maxdepth: 1
+    .. toctree::
+        :maxdepth: 1
 
-    abstract_concordances
+        abstract_concordances
 
 
-.. raw:: html
 
-   <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+
+
+
+
 
 Thematic Analysis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This analysis is used to obtain and explore a representation of the documents
-throught thematic clusters.
-
-The implemented methodology is based on the Thematic Analysis of Elementary
-Contexts implemented in T-LAB.
-
-**Algorithm**
-
-    1. Obtain the TF-IDF normalized matrix with rows scaled to unit length 
-       using the Euclidean norm. Rows represent documents and columns represent
-       keywords.
-
-    2. Clustering the rows (cosine similarity).
-
-    3. Build a table of keywords by clusters.
-
-    4. Analyze the keywords by clusters.
-
-    5. Visualization with n-1 clusters  
-
-.. toctree::
-    :maxdepth: 1
-
-
 .. raw:: html
 
-   <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+    <hr style="width:80%;height:2px;border-width:0;color:gray;background-color:black">
+
+
+Thematic Analysis of Elementary Contexts
+............................................
+
+    .. toctree::
+        :maxdepth: 1
+
+        thematic_analysis_map
+        thematic_analysis_partitions
+        thematic_analysis_themes
+
+
+Modeling of Emergent Themes
+............................................
+
+    .. toctree::
+        :maxdepth: 1
+
+        emergent_themes_lda_map
+        emergent_themes_lda_themes
+
+
+    .. toctree::
+        :maxdepth: 1
+
+        emergent_themes_nmf_map
+        emergent_themes_nmf_themes
+
+
 
 Comparative Analysis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. toctree::
-    :maxdepth: 1
-
-    co_occurrence_matrix_svd_map
-    tf_idf_svd_map
-
 .. raw:: html
 
-   <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+    <hr style="width:80%;height:2px;border-width:0;color:gray;background-color:black">
+
+
+Singular Value Decomposition
+............................................
+
+    .. toctree::
+        :maxdepth: 1
+
+        co_occurrence_svd_map
+        tf_idf_matrix_svd_map
+
 
 Lexical and other tools
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. toctree::
-    :maxdepth: 1
+.. raw:: html
 
-    abstract_screening
-    abstract_summarization
-    
+    <hr style="width:80%;height:2px;border-width:0;color:gray;background-color:black">
+
+Preprocessing options available in the menu of the application.
+
+    .. toctree::
+        :maxdepth: 1
+
+        abstract_screening
+        abstract_summarization
+
 
