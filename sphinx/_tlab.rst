@@ -20,7 +20,7 @@ Word Associations
         :maxdepth: 1
 
         topic_associations
-        co_occurrence_matrix_mds_map
+        co_occurrence_svd_mds_map
 
 
 Co-Word Analysis
