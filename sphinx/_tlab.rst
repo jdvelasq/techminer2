@@ -40,8 +40,8 @@ Comparison between word pairs
     .. toctree::
         :maxdepth: 1
 
-        co_occurrence_matrix_topics_comparison_chart
-        co_occurrence_matrix_topics_comparison_network
+        topics_comparison_chart
+        topics_comparison_network
 
         
 Sequence and Network Analysis
@@ -50,8 +50,8 @@ Sequence and Network Analysis
     .. toctree::
         :maxdepth: 1
 
-        co_occurrence_matrix_ego_graph
-        co_occurrence_matrix_ego_network
+        ego_graph
+        ego_network
 
 Concordances
 ............................................
