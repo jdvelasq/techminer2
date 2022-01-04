@@ -23,12 +23,12 @@ iso_source_name  SUSTAINABILITY  ...  FRONTIER ARTIF INTELL
 [5 rows x 5 columns]
 
 """
-from .column_dynamics import column_dynamics
+from .topic_dynamics import topic_dynamics
 
 
 def source_dynamics(top_n=10, figsize=(8, 6), directory="./", plot=True):
 
-    return column_dynamics(
+    return topic_dynamics(
         column="iso_source_name",
         top_n=top_n,
         figsize=figsize,
