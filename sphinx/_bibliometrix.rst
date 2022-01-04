@@ -123,6 +123,8 @@ Documents
 
       most_local_cited_references
 
+   * ``TODO: Reference Spectroscopy``
+
    .. raw:: html
 
       <p style="color:gray">Words:</p>
@@ -131,12 +133,10 @@ Documents
       :maxdepth: 1
 
       most_frequent_words
-      tree_map
       word_cloud
-      words_trend_topics
-      words_word_dynamics
-   
-
+      tree_map
+      word_dynamics
+      trend_topics
 
 
 
@@ -182,6 +182,8 @@ Conceptual Structure
    .. toctree::
       :maxdepth: 1
 
+
+   * ``TODO: Thematic Evolution``
 
    .. raw:: html
 
