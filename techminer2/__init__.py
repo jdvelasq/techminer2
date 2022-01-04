@@ -41,8 +41,6 @@ from .collaboration_network_degree_plot import collaboration_network_degree_plot
 from .collaboration_network_graph import collaboration_network_graph
 from .collaboration_network_indicators import collaboration_network_indicators
 from .column_coverage import column_coverage
-from .column_dynamics import column_dynamics
-from .column_trends import column_trends
 from .core_sources import core_sources
 from .correlation_map import correlation_map
 from .corresponding_authors_country import corresponding_authors_country
@@ -123,6 +121,7 @@ from .timeline_chart import timeline_chart
 from .top_topics import top_topics
 from .top_trending_topics import top_trending_topics
 from .topic_associations import topic_associations
+from .topic_dynamics import topic_dynamics
 from .topic_view import topic_view
 from .topic_view_dotted_gantt_chart import topic_view_dotted_gantt_chart
 from .topics_comparison_chart import topics_comparison_chart
@@ -132,6 +131,4 @@ from .trend_topics import trend_topics
 from .user_filters import user_filters
 from .vbar_chart import vbar_chart
 from .word_cloud import word_cloud
-from .word_dynamics import word_dynamics
-from .words_tree_map import words_tree_map
 from .world_map import world_map
