@@ -10,6 +10,7 @@ Visualization API
    :maxdepth: 1
 
    _cleveland_chart
+   _dotted_gantt_chart
    _gantt_chart
    _hbar_chart
    _line_chart
@@ -24,11 +25,9 @@ Visualization API
    :maxdepth: 1
 
    bubble_chart
-   dotted_gantt_chart
-   
+
    timeline_chart
    heat_map
-   
    
    map_chart
    stacked_bar_chart
