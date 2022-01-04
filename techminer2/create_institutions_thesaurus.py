@@ -193,9 +193,7 @@ def create_institutions_thesaurus(directory):
     # Valid names of institutions
     #
     module_path = dirname(__file__)
-    with open(
-        join(module_path, "../files/institutions.txt"), "rt", encoding="utf-8"
-    ) as f:
+    with open(join(module_path, "files/institutions.txt"), "rt", encoding="utf-8") as f:
         VALID_NAMES = f.readlines()
     VALID_NAMES = [w.replace("\n", "").lower() for w in VALID_NAMES]
     VALID_NAMES = [w for w in VALID_NAMES if len(w) > 0]
@@ -204,7 +202,7 @@ def create_institutions_thesaurus(directory):
     # List of standardized country names
     #
     module_path = dirname(__file__)
-    filename = join(module_path, "../files/country_codes.txt")
+    filename = join(module_path, "files/country_codes.txt")
     country_codes = load_file_as_dict(filename)
     country_names = list(country_codes.values())
     country_names = [w[0].lower() for w in country_names]
