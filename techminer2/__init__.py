@@ -40,7 +40,6 @@ from .collaboration_network_communities import collaboration_network_communities
 from .collaboration_network_degree_plot import collaboration_network_degree_plot
 from .collaboration_network_graph import collaboration_network_graph
 from .collaboration_network_indicators import collaboration_network_indicators
-from .column_coverage import column_coverage
 from .core_sources import core_sources
 from .correlation_map import correlation_map
 from .corresponding_authors_country import corresponding_authors_country
@@ -49,11 +48,13 @@ from .coupling_matrix import coupling_matrix
 from .coupling_network_communities import coupling_network_communities
 from .coupling_network_degree_plot import coupling_network_degree_plot
 from .coupling_network_graph import coupling_network_graph
+from .coverage import coverage
 from .create_thesaurus import create_thesaurus
 from .cross_corr_matrix import cross_corr_matrix
 from .cross_corr_matrix_heatmap import cross_corr_matrix_heatmap
 from .cross_corr_matrix_html import cross_corr_matrix_html
 from .document_viewer import document_viewer
+from .dotted_gantt_chart import dotted_gantt_chart
 from .ego_graph import ego_graph
 from .ego_network import ego_network
 from .emergent_themes_lda import Emergent_Themes_LDA
@@ -86,7 +87,6 @@ from .most_frequent_words import most_frequent_words
 
 # from .main_path import MainPath
 # from .main_path_network import main_path_network
-# from .matrix_associations import matrix_associations
 from .most_global_cited_countries import most_global_cited_countries
 from .most_global_cited_documents import most_global_cited_documents
 from .most_local_cited_authors import most_local_cited_authors
@@ -123,7 +123,6 @@ from .top_trending_topics import top_trending_topics
 from .topic_associations import topic_associations
 from .topic_dynamics import topic_dynamics
 from .topic_view import topic_view
-from .topic_view_dotted_gantt_chart import topic_view_dotted_gantt_chart
 from .topics_comparison_chart import topics_comparison_chart
 from .topics_comparison_network import topics_comparison_network
 from .tree_map import tree_map
