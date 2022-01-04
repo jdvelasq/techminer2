@@ -126,6 +126,12 @@ def _process_document_type_columns(documents):
 
 def _process_abstract_column(documents):
     if "abstract" in documents.columns:
+        # ---------------------------------------------------------------------
+        module_path = dirname(__file__)
+        file_path = join(module_path, "files/nlp_phrases.txt")
+        with open(file_path, "r", encoding="utf-8") as file:
+            nlp_stopwords = [line.strip() for line in file]
+        # ---------------------------------------------------------------------
         documents = documents.copy()
         documents.abstract = documents.abstract.str.lower()
         documents.abstract = documents.abstract.map(
@@ -133,7 +139,13 @@ def _process_abstract_column(documents):
         )
         documents = documents.assign(
             raw_nlp_abstract=documents.abstract.map(
-                lambda x: "; ".join(TextBlob(x).noun_phrases)
+                lambda x: "; ".join(
+                    [
+                        phrase
+                        for phrase in TextBlob(x).noun_phrases
+                        if phrase not in nlp_stopwords
+                    ]
+                )
                 if pd.isna(x) is False
                 else x
             )
