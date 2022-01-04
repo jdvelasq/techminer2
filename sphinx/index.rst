@@ -43,7 +43,7 @@ package developed and tested in Python version 3.6.
     
     import_scopus_file
     import_references
-    column_coverage
+    coverage
 
 
 .. toctree::
