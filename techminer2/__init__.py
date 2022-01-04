@@ -27,19 +27,11 @@ from .co_occurrence_matrix_bubble_chart import co_occurrence_matrix_bubble_chart
 from .co_occurrence_matrix_chord_diagram import co_occurrence_matrix_chord_diagram
 from .co_occurrence_matrix_cluster_mds_map import co_occurrence_matrix_cluster_mds_map
 from .co_occurrence_matrix_cluster_tsne_map import co_occurrence_matrix_cluster_tsne_map
-from .co_occurrence_matrix_ego_graph import co_occurrence_matrix_ego_graph
-from .co_occurrence_matrix_ego_network import co_occurrence_matrix_ego_network
 from .co_occurrence_matrix_heatmap import co_occurrence_matrix_heatmap
 from .co_occurrence_matrix_html import co_occurrence_matrix_html
 from .co_occurrence_matrix_manifold import co_occurrence_matrix_manifold
 from .co_occurrence_matrix_mds_map import co_occurrence_matrix_mds_map
 from .co_occurrence_matrix_svd_map import co_occurrence_matrix_svd_map
-from .co_occurrence_matrix_topics_comparison_chart import (
-    co_occurrence_matrix_topics_comparison_chart,
-)
-from .co_occurrence_matrix_topics_comparison_network import (
-    co_occurrence_matrix_topics_comparison_network,
-)
 from .co_occurrence_network_communities import co_occurrence_network_communities
 from .co_occurrence_network_degree_plot import co_occurrence_network_degree_plot
 from .co_occurrence_network_graph import co_occurrence_network_graph
@@ -64,6 +56,8 @@ from .cross_corr_matrix import cross_corr_matrix
 from .cross_corr_matrix_heatmap import cross_corr_matrix_heatmap
 from .cross_corr_matrix_html import cross_corr_matrix_html
 from .document_viewer import document_viewer
+from .ego_graph import ego_graph
+from .ego_network import ego_network
 from .emergent_themes_lda import Emergent_Themes_LDA
 from .emergent_themes_lda_map import emergent_themes_lda_map
 from .emergent_themes_lda_themes import emergent_themes_lda_themes
@@ -131,6 +125,8 @@ from .top_trending_topics import top_trending_topics
 from .topic_associations import topic_associations
 from .topic_view import topic_view
 from .topic_view_dotted_gantt_chart import topic_view_dotted_gantt_chart
+from .topics_comparison_chart import topics_comparison_chart
+from .topics_comparison_network import topics_comparison_network
 from .tree_map import tree_map
 from .trend_topics import trend_topics
 from .user_filters import user_filters
