@@ -34,25 +34,16 @@ package developed and tested in Python version 3.6.
     release_info
     license
 
+
+    
 .. toctree::
-    :caption: User Functions
+    :caption: Data
     :hidden:
     :maxdepth: 1
-
-    _techminer2
-
-
-.. toctree::
-    :caption: API Reference
-    :hidden:
-    :maxdepth: 1
-
-    _api_co_occurrence
-    _api_columns
-    _api_document_term
     
-    
-   
+    import_scopus_file
+    import_references
+    column_coverage
 
 
 .. toctree::
