@@ -32,7 +32,7 @@ Co-Word Analysis
         co_occurrence_matrix_cluster_mds_map
         co_occurrence_matrix_cluster_tsne_map
         co_occurrence_matrix_manifold
-        column_cleveland_dot_chart
+        cleveland_chart
 
 Comparison between word pairs
 ............................................
