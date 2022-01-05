@@ -51,13 +51,7 @@ setup(
     ],
     packages=[
         "techminer2",
-        "techminer2.correspondence_analysis",
-        "techminer2.dashboard",
         "techminer2.files",
-        "techminer2.networkx",
-        "techminer2.plots",
-        "techminer2.text",
-        "techminer2.utils",
     ],
     package_dir={"techminer2": "techminer2"},
     include_package_data=True,
