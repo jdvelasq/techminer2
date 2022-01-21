@@ -33,7 +33,7 @@ setup(
         "graphviz==0.10.1",
         "ipykernel==4.10.1",
         "matplotlib==3.2.2",
-        "networkx==2.5.1",
+        "networkx==2.6.3",
         "nltk==3.2.5",
         "numpy==1.19.5",
         "pandas==1.1.5",
