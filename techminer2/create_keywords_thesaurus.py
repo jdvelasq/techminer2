@@ -7,7 +7,7 @@ from .porter_stemmer import porter_stemmer
 from .thesaurus import Thesaurus, load_file_as_dict, text_clustering
 
 
-def create_keywords_thesaurus(directory):
+def create_keywords_thesaurus(directory, use_nlp_phrases=False):
     """
     Createa a keywords thesaurus from the keywords in the articles.
 
@@ -32,10 +32,10 @@ def create_keywords_thesaurus(directory):
     if "raw_index_keywords" in data.columns:
         words_list += data.raw_index_keywords.tolist()
 
-    if "raw_nlp_document_title" in data.columns:
+    if "raw_nlp_document_title" in data.columns and use_nlp_phrases:
         words_list += data.raw_nlp_document_title.tolist()
 
-    if "raw_nlp_abstract" in data.columns:
+    if "raw_nlp_abstract" in data.columns and use_nlp_phrases:
         words_list += data.raw_nlp_abstract.tolist()
 
     #
