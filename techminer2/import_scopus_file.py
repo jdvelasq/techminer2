@@ -48,6 +48,8 @@ Import a scopus file to a working directory.
 # pylint: disable=consider-using-with
 
 
+# -----< NLP Phrases >----------------------------------------------
+import string
 from os.path import dirname, isfile, join
 
 import numpy as np
@@ -64,6 +66,52 @@ from .create_institutions_thesaurus import create_institutions_thesaurus
 from .create_keywords_thesaurus import create_keywords_thesaurus
 from .extract_country import extract_country
 from .map_ import map_
+
+
+def _check_nlp_phrase(phrase):
+
+    valid_tag_types = [
+        ["JJ", "JJ", "NN"],
+        ["JJ", "JJ", "NNS"],
+        ["JJ", "NN", "NN", "NN"],
+        ["JJ", "NN", "NN"],
+        ["JJ", "NN", "NNS"],
+        ["JJ", "NN"],
+        ["JJ", "NNS", "NN"],
+        ["JJ", "NNS"],
+        ["JJ"],
+        ["NN", "CC", "NN"],
+        ["NN", "CD"],
+        ["NN", "IN", "NN"],
+        ["NN", "IN", "NNS"],
+        ["NN", "JJ", "NN"],
+        ["NN", "NN", "NN"],
+        ["NN", "NN", "NNS"],
+        ["NN", "NN"],
+        ["NN", "NNS"],
+        ["NN", "TO", "VB"],
+        ["NN", "VBG"],
+        ["NN"],
+        ["VBG", "NN"],
+        ["VBG", "NNS"],
+        ["VBG"],
+        ["VBN", "NN", "NN"],
+        ["VBN", "NN"],
+    ]
+
+    if phrase[0] in string.punctuation:
+        return False
+
+    if phrase[0].isdigit():
+        return False
+
+    tags = [tag[1] for tag in TextBlob(phrase).tags]
+
+    if tags not in valid_tag_types:
+        return False
+
+    return True
+
 
 # -----< Dataset Trasformations >----------------------------------------------
 
@@ -144,6 +192,7 @@ def _process_abstract_column(documents):
                         phrase
                         for phrase in TextBlob(x).noun_phrases
                         if phrase not in nlp_stopwords
+                        and _check_nlp_phrase(phrase) is True
                     ]
                 )
                 if pd.isna(x) is False
@@ -189,9 +238,23 @@ def _process_document_title_column(documents):
     documents.document_title = documents.document_title.map(
         lambda x: x[0 : x.find("[")] if pd.isna(x) is False and x[-1] == "]" else x
     )
+    # ---------------------------------------------------------------------
+    module_path = dirname(__file__)
+    file_path = join(module_path, "files/nlp_phrases.txt")
+    with open(file_path, "r", encoding="utf-8") as file:
+        nlp_stopwords = [line.strip() for line in file]
+    # ---------------------------------------------------------------------
     documents = documents.assign(
         raw_nlp_document_title=documents.document_title.map(
-            lambda x: "; ".join(TextBlob(x).noun_phrases) if pd.isna(x) is False else x
+            lambda x: "; ".join(
+                [
+                    phrase
+                    for phrase in TextBlob(x).noun_phrases
+                    if phrase not in nlp_stopwords and _check_nlp_phrase(phrase) is True
+                ]
+            )
+            if pd.isna(x) is False
+            else x
         )
     )
     return documents
@@ -845,6 +908,7 @@ def _make_documents(scopus, cited_by, references):
 def import_scopus_file(
     directory="./",
     scopus_file="raw-documents.csv",
+    use_nlp_phrases=True,
     disable_progress_bar=False,
 ):
     # ---< only scopus >-----------------------------------------------------------------
@@ -908,7 +972,10 @@ def import_scopus_file(
     # -----------------------------------------------------------------------------------
     logging.info("Post-processing docuemnts ...")
     create_institutions_thesaurus(directory=directory)
-    create_keywords_thesaurus(directory=directory)
+    create_keywords_thesaurus(
+        directory=directory,
+        use_nlp_phrases=use_nlp_phrases,
+    )
     clean_institutions(directory=directory)
     clean_keywords(directory=directory)
     # -----------------------------------------------------------------------------------
