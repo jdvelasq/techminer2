@@ -177,7 +177,7 @@ Conceptual Structure
       thematic_map_degree_plot
       thematic_map_indicators
       thematic_map_network
-
+      thematic_map_strategic_diagram
 
    .. toctree::
       :maxdepth: 1
