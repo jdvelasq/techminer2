@@ -34,6 +34,9 @@ from .co_occurrence_network_communities import co_occurrence_network_communities
 from .co_occurrence_network_degree_plot import co_occurrence_network_degree_plot
 from .co_occurrence_network_graph import co_occurrence_network_graph
 from .co_occurrence_network_indicators import co_occurrence_network_indicators
+from .co_occurrence_network_strategic_diagram import (
+    co_occurrence_network_strategic_diagram,
+)
 from .co_occurrence_svd_map import co_occurrence_svd_map
 from .co_occurrence_svd_mds_map import co_occurrence_svd_mds_map
 from .collaboration_network_communities import collaboration_network_communities
@@ -117,6 +120,7 @@ from .thematic_map_communities import thematic_map_communities
 from .thematic_map_degree_plot import thematic_map_degree_plot
 from .thematic_map_indicators import thematic_map_indicators
 from .thematic_map_network import thematic_map_network
+from .thematic_map_strategic_diagram import thematic_map_strategic_diagram
 from .timeline_chart import timeline_chart
 from .top_topics import top_topics
 from .top_trending_topics import top_trending_topics
