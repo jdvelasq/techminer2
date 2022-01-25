@@ -16,27 +16,15 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/* 
 
 RUN pip3 --disable-pip-version-check --no-cache-dir install \
+    twine \
+    setuptools \
+    wheel 
+
+RUN pip3 --disable-pip-version-check --no-cache-dir install \
     black \
     isort \
     pylint \
     pytest
-
-# bandit \
-# flake8 \
-# jedi \
-# mypy \
-# nose \
-# poetry \
-# prospector \
-# pycodestyle \
-# pylama \
-# rope \
-# yapf
-
-RUN pip3 --disable-pip-version-check --no-cache-dir install \
-    twine \
-    setuptools \
-    wheel 
 
 RUN pip3 --disable-pip-version-check --no-cache-dir install \
     sphinx==4.0.3 \
@@ -57,7 +45,7 @@ RUN pip3 --disable-pip-version-check --no-cache-dir install \
     numpy==1.19.5 \
     pandas==1.1.5 \
     PyYAML==5.4.1 \
-    scikit-learn==1.0.1 \
+    scikit-learn==1.0.2 \
     seaborn==0.11.2 \
     textblob==0.15.3 \
     wordcloud==1.5.0 
@@ -68,7 +56,8 @@ RUN python3 -c "import nltk; nltk.download('punkt'); nltk.download('brown'); nlt
 # packages not installed in colab
 RUN pip3 --disable-pip-version-check --no-cache-dir install \
     cdlib==0.2.5 \    
-    squarify==0.4.3
+    squarify==0.4.3 \
+    "python-Levenshtein==0.12.2"
 
 # RUN pip3 --disable-pip-version-check --no-cache-dir install \
 #     flask \
