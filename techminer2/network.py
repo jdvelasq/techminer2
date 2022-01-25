@@ -12,12 +12,11 @@ dict_keys(['nodes', 'edges', 'G', 'indicators', 'communities', 'manifold_data'])
 
 
 """
+import networkx as nx
 import numpy as np
 import pandas as pd
 from cdlib import algorithms
 from sklearn.manifold import MDS
-
-import networkx as nx
 
 
 def network(
@@ -120,7 +119,6 @@ def network(
         }
     )
 
-    ## node2cluster = {node[0]: node[1]["group"] for node in nodes}
     indicators_table["cluster"] = indicators_table.node.map(node2cluster)
 
     betweenness = nx.betweenness_centrality(G)
@@ -161,6 +159,45 @@ def network(
 
     # -------------------------------------------------------------------------
 
+    callon_matrix = matrix.copy()
+    callon_matrix.columns = callon_matrix.columns.get_level_values(0)
+    callon_matrix.index = callon_matrix.index.get_level_values(0)
+
+    callon_matrix["_CLUSTER_"] = callon_matrix.index.map(node2cluster)
+    callon_matrix = callon_matrix.groupby(["_CLUSTER_"]).sum()
+    callon_matrix = callon_matrix.transpose()
+    callon_matrix["_CLUSTER_"] = callon_matrix.index.map(node2cluster)
+    callon_matrix = callon_matrix.groupby(["_CLUSTER_"]).sum()
+
+    callon_matrix = callon_matrix.sort_index(axis=0)
+    callon_matrix = callon_matrix.sort_index(axis=1)
+
+    strategic_diagram = pd.DataFrame(
+        {"callon_centrality": callon_matrix.values.diagonal()}
+    )
+    strategic_diagram["callon_density"] = (
+        callon_matrix.sum() - callon_matrix.values.diagonal()
+    )
+
+    strategic_diagram["callon_centrality"] *= 10
+    strategic_diagram["callon_density"] *= 100
+
+    n_items_per_cluster = indicators_table["cluster"].value_counts()
+    n_items_per_cluster = n_items_per_cluster.sort_index()
+
+    strategic_diagram["n_items"] = n_items_per_cluster
+
+    strategic_diagram["callon_density"] = [
+        d / n for d, n in zip(strategic_diagram["callon_density"], n_items_per_cluster)
+    ]
+
+    cluster_names = cluster_members.iloc[0, :].to_list()
+    cluster_names = [" ".join(name.split(" ")[:-1]) for name in cluster_names]
+
+    strategic_diagram["cluster_name"] = cluster_names
+
+    # -------------------------------------------------------------------------
+
     return {
         "nodes": nodes,
         "edges": edges,
@@ -168,4 +205,5 @@ def network(
         "indicators": indicators_table,
         "communities": cluster_members,
         "manifold_data": manifold_data,
+        "strategic_diagram": strategic_diagram,
     }
