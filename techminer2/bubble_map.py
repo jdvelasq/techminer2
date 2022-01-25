@@ -44,11 +44,11 @@ COLORS += COLORS * 4
 #
 #
 def _get_quadrant(x, y, x_axis_at, y_axis_at):
-    if x >= x_axis_at and y >= y_axis_at:
+    if x >= y_axis_at and y >= x_axis_at:
         return 0
-    if x < x_axis_at and y >= y_axis_at:
+    if x < y_axis_at and y >= x_axis_at:
         return 1
-    if x < x_axis_at and y < y_axis_at:
+    if x < y_axis_at and y < x_axis_at:
         return 2
     return 3
 
@@ -122,7 +122,7 @@ def bubble_map(
         s=node_sizes,
         c=node_colors,
         alpha=0.4,
-        linewidths=3,
+        linewidths=1,
     )
 
     # plot centers as black dots
@@ -161,11 +161,14 @@ def bubble_map(
             3: "center",
         }[quadrant]
 
+        x_ = x_ - y_axis_at
+        y_ = y_ - x_axis_at
+
         delta = factor * (xlim[1] - xlim[0])
         angle = math.atan(math.fabs(y_ / x_))
         radious = math.sqrt(x_ ** 2 + y_ ** 2) + delta
-        x_label = math.copysign(radious * math.cos(angle), x_)
-        y_label = math.copysign(radious * math.sin(angle), y_)
+        x_label = math.copysign(radious * math.cos(angle), x_) + y_axis_at
+        y_label = math.copysign(radious * math.sin(angle), y_) + x_axis_at
 
         ax.text(
             x_label,
@@ -185,47 +188,25 @@ def bubble_map(
         )
 
         ax.plot(
-            [x_, x_label],
-            [y_, y_label],
+            [x_ + y_axis_at, x_label],
+            [y_ + x_axis_at, y_label],
             lw=1,
             ls="-",
             c="k",
             zorder=-1,
         )
 
-    ## limits
-    #  ax.axis("equal")
-
-    ## labels
-    # ax.text(
-    #     # ax.get_xlim()[1],
-    #     x_axis_at,
-    #     y_axis_at,
-    #     s=xlabel,
-    #     fontsize=fontsize,
-    #     horizontalalignment="right",
-    #     verticalalignment="bottom",
-    # )
-    # ax.text(
-    #     0.02 + y_axis_at,
-    #     ax.get_ylim()[1],
-    #     s=ylabel,
-    #     fontsize=fontsize,
-    #     horizontalalignment="left",
-    #     verticalalignment="bottom",
-    # )
-
     ## generic
 
     ax.axhline(
-        y=y_axis_at,
+        y=x_axis_at,
         color="gray",
         linestyle="--",
         linewidth=1,
         zorder=-1,
     )
     ax.axvline(
-        x=x_axis_at,
+        x=y_axis_at,
         color="gray",
         linestyle="--",
         linewidth=1,
@@ -234,13 +215,6 @@ def bubble_map(
 
     for side in ["top", "right", "bottom", "left"]:
         ax.spines[side].set_visible(False)
-
-    # ax.axis("off")
-
-    #  ax.spines["top"].set_visible(False)
-    #  ax.spines["right"].set_visible(False)
-    #  ax.spines["left"].set_visible(False)
-    # ax.spines["bottom"].set_visible(False)
 
     ## adjust figure size
     ax.set_aspect("auto")
