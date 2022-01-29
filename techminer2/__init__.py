@@ -78,6 +78,7 @@ from .factorial_analysis_mds_map import factorial_analysis_mds_map
 from .factorial_analysis_mds_silhouette_scores import (
     factorial_analysis_mds_silhouette_scores,
 )
+from .find_keyword import find_keyword
 from .find_string import find_string
 from .gantt_chart import gantt_chart
 from .hbar_chart import hbar_chart
