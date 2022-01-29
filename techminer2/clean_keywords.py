@@ -29,7 +29,7 @@ from .map_ import map_
 from .thesaurus import read_textfile
 
 
-def clean_keywords(directory):
+def clean_keywords(directory='./'):
     """
     Clean all keywords columns in the records using a thesaurus (keywrords.txt).
 
