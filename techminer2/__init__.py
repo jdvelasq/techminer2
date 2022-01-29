@@ -87,6 +87,7 @@ from .import_scopus_file import import_scopus_file
 from .line_chart import line_chart
 from .lotka_law import lotka_law
 from .main_information import main_information
+from .merge_keywords import merge_keywords
 from .most_frequent_words import most_frequent_words
 
 # from .main_path import MainPath
