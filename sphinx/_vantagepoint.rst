@@ -57,6 +57,7 @@ Thesaurus
         
         clean_institutions
         clean_keywords
+        find_keyword
 
 
     .. toctree::
