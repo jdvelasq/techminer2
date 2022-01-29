@@ -6,13 +6,18 @@ Finds a string in the terms of a column of a document collection.
 
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
->>> find_string("author_keywords", contains='fintech',directory=directory).head()
-0                characteristics of fintech
-1                      cross-sector fintech
-2                     definition of fintech
-3    determinants of using fintech services
-4                                   fintech
-Name: author_keywords, dtype: object
+>>> find_string("author_keywords", contains='fintech', directory=directory).head(10)
+fintech                          139
+fintech-innovations                5
+fintech application                3
+fintech companies                  2
+fintech continuance intention      2
+fintech ecosystem                  2
+fintech platform                   2
+islamic fintech                    2
+characteristics of fintech         1
+cross-sector fintech               1
+Name: author_keywords, dtype: int64
 
 """
 
@@ -53,7 +58,13 @@ def find_string(
         documents = documents[documents.str.endswith(endswith)]
     else:
         raise ValueError("No filter provided")
-    documents = documents.drop_duplicates()
-    documents = documents.sort_values(ascending=True)
-    documents = documents.reset_index(drop=True)
+    # ----< modified to return counts >--------------------------------------
+    # documents = documents.drop_duplicates()
+    # documents = documents.sort_values(ascending=True)
+    # documents = documents.reset_index(drop=True)
+
+    documents = documents.value_counts().to_frame()
+    documents["_index_"] = documents.index
+    documents = documents.sort_values(by=[column, "_index_"], ascending=[False, True])
+    documents = documents[column]
     return documents
