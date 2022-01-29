@@ -102,7 +102,7 @@ def text_clustering(x, name_strategy="mostfrequent", key="porter", transformer=N
     x["key"] = x.word_alt.map(f)
 
     #
-    # groupsby key
+    # group by key
     #
     grp = x.groupby(by="key").agg({"word": list})
 
