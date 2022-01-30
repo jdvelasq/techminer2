@@ -124,8 +124,6 @@ Documents
       most_local_cited_references
       rpys
 
-   * ``TODO: Reference Spectroscopy``
-
    .. raw:: html
 
       <p style="color:gray">Words:</p>
