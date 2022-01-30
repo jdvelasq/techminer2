@@ -72,7 +72,7 @@ def sankey_diagram(
             )
             ax.add_patch(r)
             #
-            text = data.index[i_row]
+            text = data.index[i_row][0]
             ax.text(
                 0.058,
                 base + row_value / 2.0,
@@ -93,7 +93,7 @@ def sankey_diagram(
             )
             ax.add_patch(r)
             #
-            text = data.columns[i_col]
+            text = data.columns[i_col][0]
             ax.text(
                 0.942,
                 base + col_value / 2.0,
