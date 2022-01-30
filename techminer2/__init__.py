@@ -107,6 +107,7 @@ from .occurrence_matrix_bubble_chart import occurrence_matrix_bubble_chart
 from .occurrence_matrix_heatmap import occurrence_matrix_heatmap
 from .occurrence_matrix_html import occurrence_matrix_html
 from .pie_chart import pie_chart
+from .rpys import rpys
 from .source_dynamics import source_dynamics
 from .source_local_impact import source_local_impact
 from .stemming import stemming_and, stemming_or
