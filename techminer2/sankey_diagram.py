@@ -77,7 +77,7 @@ def sankey_diagram(
                 0.058,
                 base + row_value / 2.0,
                 text,
-                fontsize=8,
+                fontsize=9,
                 verticalalignment="center_baseline",
                 zorder=10,
             )
@@ -98,7 +98,7 @@ def sankey_diagram(
                 0.942,
                 base + col_value / 2.0,
                 text,
-                fontsize=8,
+                fontsize=9,
                 horizontalalignment="right",
                 verticalalignment="center_baseline",
                 zorder=10,
