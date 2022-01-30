@@ -133,6 +133,7 @@ Occurrence Matrix
         occurrence_matrix_bubble_chart
         occurrence_matrix_heatmap
         occurrence_matrix_html
+        occurrence_matrix_sankey_diagram
 
 
     See `Co-occurrence API <_api_co_occurrence.html>`__
