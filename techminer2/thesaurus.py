@@ -39,11 +39,7 @@ def text_clustering(x, name_strategy="mostfrequent", key="porter", transformer=N
     x = x.map(lambda w: w.split(";"))
     x = x.explode()
     x = x.map(lambda w: w.strip())
-    x = x.unique()
-
-    #
-    # Creates a dataframe
-    #
+    x = x.drop_duplicates()
     x = pd.DataFrame({"word": x.tolist()})
 
     #
@@ -56,27 +52,51 @@ def text_clustering(x, name_strategy="mostfrequent", key="porter", transformer=N
     x["word_alt"] = x["word_alt"].map(remove_parenthesis)
     x["word_alt"] = x["word_alt"].map(lambda w: w.replace("&", "and"))
     x["word_alt"] = x["word_alt"].map(lambda w: w.replace(" of ", ""))
+    x["word_alt"] = x["word_alt"].map(lambda w: w.replace("-based ", " "))
+    x["word_alt"] = x["word_alt"].map(lambda w: w.replace(" based ", " "))
+    ###
+    x["word_alt"] = x["word_alt"].map(lambda w: w.replace("-", " "))
+    ###
+    x["word_alt"] = x["word_alt"].map(
+        lambda w: w.replace("artificial neural network", "neural network")
+    )
     x["word_alt"] = x["word_alt"].map(
         lambda w: w[4:].strip() if w.startswith("and ") else w
     )
 
+    # son muy pocos casos que en la práctica existe la palabra
+    # con guión y sin guión
+    keywords_with_hypen = [
+        "feed-forward",
+        "big-data",
+        "back-propagation",
+    ]
+
+    for word in keywords_with_hypen:
+        if "(" not in word:
+            x["word_alt"] = x["word_alt"].str.replace(
+                r"\b" + word.replace("-", "") + r"\b",
+                word.replace("-", " "),
+                regex=True,
+            )
+
+    # keywords_with_hypen = x.word_alt[x.word_alt.map(lambda w: "-" in w)]
+    # keywords_without_hypen = keywords_with_hypen.map(lambda w: w.replace("-", ""))
+
+    # for w1, w2 in zip(keywords_without_hypen, keywords_with_hypen):
+    #     x["word_alt"] = x["word_alt"].str.replace(w1, w2, regex=False)
+    #     if w1 in x.word.tolist():
+    #        x.loc[x["word"] == w1, "word_alt"] = w1
+
     #
     # Search for joined terms
     #
+
     keywords_with_2_words = x.word_alt[x.word_alt.map(lambda w: len(w) == 2)]
     keywords_with_1_word = keywords_with_2_words.map(lambda w: w.replace(" ", ""))
     for w1, w2 in zip(keywords_with_1_word, keywords_with_2_words):
         if w1 in x.word_alt.tolist():
-            x["word_alt"] = x["word_alt"].map(lambda w: w.replace(w1, w2))
-
-    #
-    # words with hyphen
-    #
-    keywords_with_hypen = x.word_alt[x.word_alt.map(lambda w: "-" in w)]
-    keywords_without_hypen = keywords_with_hypen.map(lambda w: w.replace("-", ""))
-    for w1, w2 in zip(keywords_without_hypen, keywords_with_hypen):
-        if w1 in x.word.tolist():
-            x["word_alt"] = x["word_alt"].map(lambda w: w.replace(w1, w2))
+            x["word_alt"] = x["word_alt"].map(lambda w: w.replace(w2, w1))
 
     #
     # British to american english
