@@ -71,6 +71,7 @@ def text_clustering(x, name_strategy="mostfrequent", key="porter", transformer=N
         "big-data",
         "back-propagation",
         "multi-layer",
+        "auto-associative",
     ]
 
     for word in keywords_with_hypen:
