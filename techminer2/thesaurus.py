@@ -54,6 +54,7 @@ def text_clustering(x, name_strategy="mostfrequent", key="porter", transformer=N
     x["word_alt"] = x["word_alt"].map(lambda w: w.replace(" of ", ""))
     x["word_alt"] = x["word_alt"].map(lambda w: w.replace("-based ", " "))
     x["word_alt"] = x["word_alt"].map(lambda w: w.replace(" based ", " "))
+    x["word_alt"] = x["word_alt"].map(lambda w: w.replace(" for ", " "))
     ###
     x["word_alt"] = x["word_alt"].map(lambda w: w.replace("-", " "))
     ###
@@ -72,6 +73,13 @@ def text_clustering(x, name_strategy="mostfrequent", key="porter", transformer=N
         "back-propagation",
         "multi-layer",
         "auto-associative",
+        "auto-encoder",
+        "micro-grid",
+        "migro-grids",
+        "smart-grid",
+        "smart-grids",
+        "photo-voltaic",
+        "stand-alone",
     ]
 
     for word in keywords_with_hypen:
