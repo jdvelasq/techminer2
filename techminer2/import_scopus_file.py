@@ -952,8 +952,10 @@ def import_scopus_file(
     documents = _process_issn_column(documents)
     documents = _compute_bradford_law_zones(documents)
     # -----------------------------------------------------------------------------------
-    # documents = _drop_duplicates(documents)
-    # _report_duplicate_titles(documents, directory)
+    # To remove
+    ### documents = _drop_duplicates(documents)
+    ###  _report_duplicate_titles(documents, directory)
+    # -----------------------------------------------------------------------------------
     documents = documents.assign(local_references=[[] for _ in range(len(documents))])
     documents = _create_local_references_using_doi(
         documents, disable_progress_bar=disable_progress_bar
