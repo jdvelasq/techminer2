@@ -14,7 +14,6 @@ artificial intelligence systems
 artificial intelligence technologies
      artificial intelligence technologies
      artificial intelligence technology
-forthcoming artificial intelligence revolution
 novel artificial intelligence
 
 
@@ -33,7 +32,7 @@ def find_keyword(
     directory="./",
 ):
     """
-    Find keywords in thesaurus.
+    Find the specified keyword and reorder the thesaurus to reflect the search.
 
     """
 
@@ -63,10 +62,26 @@ def find_keyword(
 
     keys = df.key.drop_duplicates()
 
-    th = {key: th[key] for key in sorted(keys)}
+    findings = {key: th[key] for key in sorted(keys)}
 
-    for key in sorted(th.keys()):
+    for key, items in sorted(findings.items()):
         print(key)
-        if len(th[key]) > 1:
-            for value in sorted(th[key]):
-                print("    ", value)
+        if len(items) > 1:
+            for item in sorted(items):
+                print("    ", item)
+
+    # reorder the thesaurus to reflect the search
+    for key in findings.keys():
+        th.pop(key)
+
+    with open(thesaurus_file, "w", encoding="utf-8") as file:
+
+        for key in sorted(findings.keys()):
+            file.write(key + "\n")
+            for item in findings[key]:
+                file.write("    " + item + "\n")
+
+        for key in sorted(th.keys()):
+            file.write(key + "\n")
+            for item in th[key]:
+                file.write("    " + item + "\n")
