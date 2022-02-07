@@ -121,6 +121,7 @@ from .thematic_analysis import ThematicAnalysis
 from .thematic_analysis_map import thematic_analysis_map
 from .thematic_analysis_partitions import thematic_analysis_partitions
 from .thematic_analysis_themes import thematic_analysis_themes
+from .thematic_evolution_plot import thematic_evolution_plot
 from .thematic_map_communities import thematic_map_communities
 from .thematic_map_degree_plot import thematic_map_degree_plot
 from .thematic_map_indicators import thematic_map_indicators
