@@ -112,13 +112,14 @@ def _load_filter(directory):
 
 
 class _UserFilters:
-    def __init__(self, directory=None, kwargs=None):
+    def __init__(self, directory=None, quiet=True, kwargs=None):
         if directory is None:
             directory = "/workspaces/techminer-api/tests/data/"
             logging.info(" **** USING SAMPLE DATA ****")
         self.directory = directory
         if kwargs is None:
             kwargs = {}
+        self.quiet = quiet
         self.kwargs = kwargs
         self.filter = _load_filter(directory)
         self.load_raw_documents()
@@ -189,11 +190,12 @@ class _UserFilters:
                     self.filter[key] = value
                 else:
                     raise ValueError(f"The filter '{key}' does not exist.")
-        self.document_report()
-        self.user_report()
+        if self.quiet is False:
+            self.document_report()
+            self.user_report()
         self.save_filter()
 
 
-def user_filters(directory=None, **kwargs):
-    user_filters_ = _UserFilters(directory, kwargs)
+def user_filters(directory=None, quiet=False, **kwargs):
+    user_filters_ = _UserFilters(directory=directory, quiet=quiet, kwargs=kwargs)
     user_filters_.run()
