@@ -181,8 +181,7 @@ Conceptual Structure
    .. toctree::
       :maxdepth: 1
 
-
-   * ``TODO: Thematic Evolution``
+      thematic_evolution_plot
 
    .. raw:: html
 

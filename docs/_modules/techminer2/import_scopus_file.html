@@ -1046,8 +1046,10 @@
     <span class="n">documents</span> <span class="o">=</span> <span class="n">_process_issn_column</span><span class="p">(</span><span class="n">documents</span><span class="p">)</span>
     <span class="n">documents</span> <span class="o">=</span> <span class="n">_compute_bradford_law_zones</span><span class="p">(</span><span class="n">documents</span><span class="p">)</span>
     <span class="c1"># -----------------------------------------------------------------------------------</span>
-    <span class="c1"># documents = _drop_duplicates(documents)</span>
-    <span class="c1"># _report_duplicate_titles(documents, directory)</span>
+    <span class="c1"># To remove</span>
+    <span class="c1">### documents = _drop_duplicates(documents)</span>
+    <span class="c1">###  _report_duplicate_titles(documents, directory)</span>
+    <span class="c1"># -----------------------------------------------------------------------------------</span>
     <span class="n">documents</span> <span class="o">=</span> <span class="n">documents</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">local_references</span><span class="o">=</span><span class="p">[[]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">documents</span><span class="p">))])</span>
     <span class="n">documents</span> <span class="o">=</span> <span class="n">_create_local_references_using_doi</span><span class="p">(</span>
         <span class="n">documents</span><span class="p">,</span> <span class="n">disable_progress_bar</span><span class="o">=</span><span class="n">disable_progress_bar</span>
