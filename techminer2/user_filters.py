@@ -8,8 +8,8 @@ Allow users to select docuemnts to be mined.
 >>> directory = "/workspaces/techminer2/data/"
 >>> user_filters(directory, book=True,  erratum=True, first_year=2016, last_year=2021)
 ---< Document >-------------------------------------------------
-               First year : 2021
-                Last year : 2016
+               First year : 2016
+                Last year : 2021
          Global citations : 220
 ---< User Filters >---------------------------------------------
                First year : 2016
@@ -29,8 +29,8 @@ Allow users to select docuemnts to be mined.
 
 >>> user_filters(directory)
 ---< Document >-------------------------------------------------
-               First year : 2021
-                Last year : 2016
+               First year : 2016
+                Last year : 2021
          Global citations : 220
 ---< User Filters >---------------------------------------------
                First year : 2016
@@ -50,8 +50,8 @@ Allow users to select docuemnts to be mined.
 
 >>> user_filters(directory, book=False,  erratum=False, first_year=2017, last_year=2020)
 ---< Document >-------------------------------------------------
-               First year : 2021
-                Last year : 2016
+               First year : 2016
+                Last year : 2021
          Global citations : 220
 ---< User Filters >---------------------------------------------
                First year : 2017
@@ -73,8 +73,8 @@ Allow users to select docuemnts to be mined.
 
 >>> user_filters(directory, book=True,  erratum=True, first_year=2016, last_year=2021)
 ---< Document >-------------------------------------------------
-               First year : 2021
-                Last year : 2016
+               First year : 2016
+                Last year : 2021
          Global citations : 220
 ---< User Filters >---------------------------------------------
                First year : 2016
@@ -113,9 +113,9 @@ def _load_filter(directory):
 
 class _UserFilters:
     def __init__(self, directory=None, quiet=True, kwargs=None):
-        if directory is None:
-            directory = "/workspaces/techminer-api/tests/data/"
-            logging.info(" **** USING SAMPLE DATA ****")
+        # if directory is None:
+        #     directory = "/workspaces/techminer-api/tests/data/"
+        #     logging.info(" **** USING SAMPLE DATA ****")
         self.directory = directory
         if kwargs is None:
             kwargs = {}
@@ -133,8 +133,8 @@ class _UserFilters:
     def document_report(self):
 
         # years
-        first_year = self.documents["pub_year"].max()
-        last_year = self.documents["pub_year"].min()
+        first_year = self.documents["pub_year"].min()
+        last_year = self.documents["pub_year"].max()
 
         # global citations
         citations = self.documents["global_citations"].max()
@@ -196,6 +196,6 @@ class _UserFilters:
         self.save_filter()
 
 
-def user_filters(directory=None, quiet=False, **kwargs):
+def user_filters(directory="./", quiet=False, **kwargs):
     user_filters_ = _UserFilters(directory=directory, quiet=quiet, kwargs=kwargs)
     user_filters_.run()
