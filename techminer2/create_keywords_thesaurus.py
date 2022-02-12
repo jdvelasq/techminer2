@@ -40,7 +40,8 @@ def create_keywords_thesaurus(directory, use_nlp_phrases=False):
     #
     words_list = [words for words in words_list if not pd.isna(words)]
     words_list = [word for words in words_list for word in words.split(";")]
-    words_list = [word for word in words_list if len(word.strip()) > 0]
+    words_list = [word.strip() for word in words_list]
+    # words_list = [word for word in words_list if len(word.strip()) > 0]
     words_list = [
         word.replace('"', "")
         .replace(chr(8212), "")
