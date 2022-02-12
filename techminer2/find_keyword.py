@@ -52,11 +52,26 @@ def find_keyword(
     )
 
     if contains is not None:
-        df = df[df.text.str.contains(contains)]
+        result = []
+        if isinstance(contains, str):
+            contains = [contains]
+        for word in contains:
+            result.append(df[df.text.str.contains(word)])
+        df = pd.concat(result)
     elif startswith is not None:
-        df = df[df.text.str.startswith(startswith)]
+        result = []
+        if isinstance(startswith, str):
+            startswith = [startswith]
+        for word in startswith:
+            result.append(df[df.text.str.startswith(word)])
+        df = pd.concat(result)
     elif endswith is not None:
-        df = df[df.text.str.endswith(endswith)]
+        result = []
+        if isinstance(endswith, str):
+            endswith = [endswith]
+        for word in endswith:
+            result.append(df[df.text.str.endswith(word)])
+        df = pd.concat(result)
     else:
         raise ValueError("No filter provided")
 
