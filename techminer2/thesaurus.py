@@ -55,15 +55,23 @@ def text_clustering(x, name_strategy="mostfrequent", key="porter", transformer=N
     x["word_alt"] = x["word_alt"].map(lambda w: w.replace("-based ", " "))
     x["word_alt"] = x["word_alt"].map(lambda w: w.replace(" based ", " "))
     x["word_alt"] = x["word_alt"].map(lambda w: w.replace(" for ", " "))
+    x["word_alt"] = x["word_alt"].map(lambda w: w.replace(" type-ii ", " type-2 "))
+    x["word_alt"] = x["word_alt"].map(
+        lambda w: w.replace(" neural-net ", " neural network ")
+    )
+    x["word_alt"] = x["word_alt"].map(
+        lambda w: w.replace("optimisation", "optimization")
+    )
     ###
     x["word_alt"] = x["word_alt"].map(lambda w: w.replace("-", " "))
     ###
     x["word_alt"] = x["word_alt"].map(
         lambda w: w.replace("artificial neural network", "neural network")
     )
-    x["word_alt"] = x["word_alt"].map(
-        lambda w: w[4:].strip() if w.startswith("and ") else w
-    )
+    for word in ["and ", "the ", "a ", "an "]:
+        x["word_alt"] = x["word_alt"].map(
+            lambda w: w[len(word) :].strip() if w.startswith(word) else w
+        )
 
     # son muy pocos casos que en la práctica existe la palabra
     # con guión y sin guión
@@ -75,7 +83,7 @@ def text_clustering(x, name_strategy="mostfrequent", key="porter", transformer=N
         "auto-associative",
         "auto-encoder",
         "micro-grid",
-        "migro-grids",
+        "micro-grids",
         "smart-grid",
         "smart-grids",
         "photo-voltaic",
