@@ -149,7 +149,7 @@ def network(
 
     cluster_members = cluster_members.assign(node=text)
     cluster_members = cluster_members.assign(
-        cluster=cluster_members.cluster.map(lambda x: "CLUST_{:0d}".format(x))
+        cluster=cluster_members.cluster.map(lambda x: "CL_{:02d}".format(x))
     )
     cluster_members = cluster_members[["rn", "node", "cluster"]]
     cluster_members = cluster_members.pivot(
