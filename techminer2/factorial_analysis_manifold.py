@@ -131,7 +131,9 @@ class Factorial_analysis_manifold:
             index="rn", columns="Cluster", values="item"
         )
         cluster_members = cluster_members.fillna("")
-        cluster_members.columns = [f"CLTR_{i}" for i in cluster_members.columns]
+        cluster_members.columns = [
+            "CL_{:02d}".format(i) for i in cluster_members.columns
+        ]
         self.cluster_members_ = cluster_members
 
     def cluster_members(self):
