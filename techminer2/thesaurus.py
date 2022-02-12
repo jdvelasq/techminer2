@@ -57,6 +57,9 @@ def text_clustering(x, name_strategy="mostfrequent", key="porter", transformer=N
     x["word_alt"] = x["word_alt"].map(lambda w: w.replace(" for ", " "))
     x["word_alt"] = x["word_alt"].map(lambda w: w.replace(" type-ii ", " type-2 "))
     x["word_alt"] = x["word_alt"].map(
+        lambda w: w.replace("1-dimensional ", "one-dimensional ")
+    )
+    x["word_alt"] = x["word_alt"].map(
         lambda w: w.replace(" neural-net ", " neural network ")
     )
     x["word_alt"] = x["word_alt"].map(
