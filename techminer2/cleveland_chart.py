@@ -35,6 +35,7 @@ def cleveland_chart(
     #
     color="k",
     figsize=(9, 6),
+    plot=True;
 ):
 
     indicators = topic_view(
@@ -49,6 +50,9 @@ def cleveland_chart(
     )
 
     indicators = indicators[metric]
+
+    if plot is False:
+        return indicators
 
     return _cleveland_chart(
         indicators,
