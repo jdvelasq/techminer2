@@ -38,6 +38,7 @@ def column_indicators(
     if sep is not None:
         report[column] = report[column].str.split(sep)
         report = report.explode(column)
+        report[column] = report[column].str.strip()
 
     report = (
         report.groupby(column, as_index=True)
