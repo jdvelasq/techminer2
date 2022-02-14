@@ -36,6 +36,7 @@ def most_relevant_institutions(
     directory="./",
     plot=True,
 ):
+
     return cleveland_chart(
         column="institutions",
         top_n=top_n,
