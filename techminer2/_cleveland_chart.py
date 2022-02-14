@@ -85,7 +85,7 @@ def _cleveland_chart(
 
     ax.grid(axis="y", color="gray", linestyle=":", linewidth=0.5)
     ax.spines["left"].set_color("gray")
-    ax.tick_params(which="mayor", color="k", length=5)
+    ax.tick_params(which="major", color="k", length=5)
     # ax.tick_params(axis="x", colors="dimgray")
     # ax.tick_params(axis="y", colors="dimgray")
     ax.invert_yaxis()
