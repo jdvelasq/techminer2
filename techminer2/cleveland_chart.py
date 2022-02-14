@@ -35,7 +35,7 @@ def cleveland_chart(
     #
     color="k",
     figsize=(9, 6),
-    plot=True;
+    plot=True,
 ):
 
     indicators = topic_view(
