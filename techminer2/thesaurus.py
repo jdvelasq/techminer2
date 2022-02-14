@@ -18,6 +18,14 @@ def text_clustering(x, name_strategy="mostfrequent", key="porter", transformer=N
             x = " ".join([w.strip() for w in x.split()])
         return x
 
+    def invert_parenthesis(x):
+        if "(" in x:
+            text_to_remove = x[x.find("(") + 1 : x.find(")")]
+            meaning = x[: x.find("(")].strip()
+            if len(meaning) < len(text_to_remove) and len(text_to_remove.split()) > 1:
+                x = text_to_remove + " (" + meaning + ")"
+        return x
+
     def remove_brackets(x):
         if "[" in x:
             text_to_remove = x[x.find("[") : x.find("]") + 1]
@@ -41,6 +49,11 @@ def text_clustering(x, name_strategy="mostfrequent", key="porter", transformer=N
     x = x.map(lambda w: w.strip())
     x = x.drop_duplicates()
     x = pd.DataFrame({"word": x.tolist()})
+
+    #
+    # invert '... (...)'
+    #
+    x["word_alt"] = x["word_alt"].map(invert_parenthesis())
 
     #
     # Delete terms between '(' and ')' or '[' and ']'
@@ -90,17 +103,22 @@ def text_clustering(x, name_strategy="mostfrequent", key="porter", transformer=N
     # son muy pocos casos que en la práctica existe la palabra
     # con guión y sin guión
     keywords_with_hypen = [
-        "feed-forward",
-        "big-data",
-        "back-propagation",
-        "multi-layer",
         "auto-associative",
         "auto-encoder",
+        "back-propagation",
+        "big-data",
+        "feed-forward",
+        "lithium-ion",
         "micro-grid",
         "micro-grids",
+        "multi-layer",
+        "multi-step",
+        "non-linear",
+        "photo-voltaic",
+        "power-point",
+        "radial-basis",
         "smart-grid",
         "smart-grids",
-        "photo-voltaic",
         "stand-alone",
     ]
 
@@ -112,18 +130,9 @@ def text_clustering(x, name_strategy="mostfrequent", key="porter", transformer=N
                 regex=True,
             )
 
-    # keywords_with_hypen = x.word_alt[x.word_alt.map(lambda w: "-" in w)]
-    # keywords_without_hypen = keywords_with_hypen.map(lambda w: w.replace("-", ""))
-
-    # for w1, w2 in zip(keywords_without_hypen, keywords_with_hypen):
-    #     x["word_alt"] = x["word_alt"].str.replace(w1, w2, regex=False)
-    #     if w1 in x.word.tolist():
-    #        x.loc[x["word"] == w1, "word_alt"] = w1
-
     #
     # Search for joined terms
     #
-
     keywords_with_2_words = x.word_alt[x.word_alt.map(lambda w: len(w) == 2)]
     keywords_with_1_word = keywords_with_2_words.map(lambda w: w.replace(" ", ""))
     for w1, w2 in zip(keywords_with_1_word, keywords_with_2_words):
