@@ -1,6 +1,7 @@
 from .abstract_concordances import abstract_concordances
 from .abstract_screening import abstract_screening
 from .abstract_summarization import abstract_summarization
+from .annual_occurrence_matrix import annual_occurrence_matrix
 from .annual_scientific_production import annual_scientific_production
 from .apply_thesaurus import apply_thesaurus
 from .association_index import association_index
