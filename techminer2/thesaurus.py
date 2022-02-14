@@ -56,7 +56,7 @@ def text_clustering(x, name_strategy="mostfrequent", key="porter", transformer=N
     # Delete 'of'
     #
     x["word_alt"] = x["word"].copy()
-    x["word_alt"] = x["word_alt"].map(invert_parenthesis())
+    x["word_alt"] = x["word_alt"].map(invert_parenthesis)
     x["word_alt"] = x["word_alt"].map(remove_brackets)
     x["word_alt"] = x["word_alt"].map(remove_parenthesis)
     x["word_alt"] = x["word_alt"].map(lambda w: w.replace("&", "and"))
