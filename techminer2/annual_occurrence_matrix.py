@@ -19,7 +19,7 @@ from .column_indicators import column_indicators
 from .column_indicators_by_year import column_indicators_by_year
 
 
-def annual_occurrence_matrix(column, sep="; ", min_occ=1, directory="./"):
+def annual_occurrence_matrix(column, sep=";", min_occ=1, directory="./"):
 
     indicators_by_year = column_indicators_by_year(directory=directory, column=column)
     indicators = column_indicators(column=column, sep=sep, directory=directory)
