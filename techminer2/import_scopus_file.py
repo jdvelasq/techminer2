@@ -116,6 +116,16 @@ def _check_nlp_phrase(phrase):
 # -----< Dataset Trasformations >----------------------------------------------
 
 
+def _delete_null_columns(documents):
+    columns_to_delete = []
+    for column in documents.columns:
+        if sum(documents[column].notnull()) == 0:
+            columns_to_delete.append(column)
+    if len(columns_to_delete) > 0:
+        documents = documents.drop(columns=columns_to_delete)
+    return documents
+
+
 def _delete_and_rename_columns(documents):
     documents = documents.copy()
     module_path = dirname(__file__)
@@ -475,6 +485,7 @@ def _repair_iso_source_names_column(documents):
 def _process_issn_column(documents):
     if "issn" in documents.columns:
         documents = documents.copy()
+        documents["issn"] = documents.issn.astype(str)
         documents.issn = documents.issn.str.replace("-", "", regex=True)
         documents.issn = documents.issn.str.upper()
     return documents
@@ -920,6 +931,7 @@ def import_scopus_file(
     stopwords_file = join(directory, "stopwords.txt")
     open(stopwords_file, "a", encoding="utf-8").close()
     # -----------------------------------------------------------------------------------
+    documents = _delete_null_columns(documents)
     documents = _delete_and_rename_columns(documents)
     documents = _process_abstract_column(documents)
     documents = _process_document_title_column(documents)
