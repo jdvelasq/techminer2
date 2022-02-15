@@ -96,8 +96,8 @@ def trend_topics(
     min_documents = keywords_by_year.num_documents.min()
     max_documents = keywords_by_year.num_documents.max()
     keywords_by_year = keywords_by_year.assign(
-        height=0.05
-        + 0.9
+        height=0.1
+        + 0.85
         * (keywords_by_year.num_documents - min_documents)
         / (max_documents - min_documents)
     )
