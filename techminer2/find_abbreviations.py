@@ -50,32 +50,35 @@ def find_abbreviations(
 
     # ----< filter by each abbreviation >----------------------------------------------------------
     abbreviations = df.abbreviation.dropna().drop_duplicates()
-    results = {}
     for abbreviation in abbreviations.to_list():
-        keywords = df[df.text.str.contains(abbreviation)]
-        if len(keywords) > 0:
+        print(abbreviation)
 
-            results[abbreviation] = keywords
+    # results = {}
+    # for abbreviation in abbreviations.to_list():
+    #     keywords = df[df.text.str.contains(abbreviation)]
+    #     if len(keywords) > 0:
 
-            print(abbreviation)
-            for text in keywords.text.to_list():
-                print("    ", text)
+    #         results[abbreviation] = keywords
 
-    # ----< remove found keywords >-----------------------------------------------------------------
-    keys = [text for key in results.keys() for text in results[key].key.to_list()]
-    findings = {key: th[key] for key in sorted(keys)}
-    for key in findings.keys():
-        th.pop(key)
+    #         print(abbreviation)
+    #         for text in keywords.text.to_list():
+    #             print("    ", text)
 
-    # ----< save the thesaurus >--------------------------------------------------------------------
-    with open(thesaurus_file, "w", encoding="utf-8") as file:
+    # # ----< remove found keywords >-----------------------------------------------------------------
+    # keys = [text for key in results.keys() for text in results[key].key.to_list()]
+    # findings = {key: th[key] for key in sorted(keys)}
+    # for key in findings.keys():
+    #     th.pop(key)
 
-        for key in sorted(findings.keys()):
-            file.write(key + "\n")
-            for item in findings[key]:
-                file.write("    " + item + "\n")
+    # # ----< save the thesaurus >--------------------------------------------------------------------
+    # with open(thesaurus_file, "w", encoding="utf-8") as file:
 
-        for key in sorted(th.keys()):
-            file.write(key + "\n")
-            for item in th[key]:
-                file.write("    " + item + "\n")
+    #     for key in sorted(findings.keys()):
+    #         file.write(key + "\n")
+    #         for item in findings[key]:
+    #             file.write("    " + item + "\n")
+
+    #     for key in sorted(th.keys()):
+    #         file.write(key + "\n")
+    #         for item in th[key]:
+    #             file.write("    " + item + "\n")
