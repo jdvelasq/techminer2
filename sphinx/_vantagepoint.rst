@@ -57,6 +57,7 @@ Thesaurus
         
         clean_institutions
         clean_keywords
+        find_abbreviations
         find_keyword
         merge_keywords
 
