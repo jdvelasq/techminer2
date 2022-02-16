@@ -59,38 +59,53 @@ def text_clustering(x, name_strategy="mostfrequent", key="porter", transformer=N
     x["word_alt"] = x["word_alt"].map(invert_parenthesis)
     x["word_alt"] = x["word_alt"].map(remove_brackets)
     x["word_alt"] = x["word_alt"].map(remove_parenthesis)
-    x["word_alt"] = x["word_alt"].map(lambda w: w.replace("&", "and"))
-    x["word_alt"] = x["word_alt"].map(lambda w: w.replace(" of ", ""))
-    x["word_alt"] = x["word_alt"].map(lambda w: w.replace("-based ", " "))
-    x["word_alt"] = x["word_alt"].map(lambda w: w.replace(" based ", " "))
-    x["word_alt"] = x["word_alt"].map(lambda w: w.replace(" for ", " "))
-    x["word_alt"] = x["word_alt"].map(lambda w: w.replace("type-i ", "type-1 "))
-    x["word_alt"] = x["word_alt"].map(lambda w: w.replace("type i ", "type-1 "))
-    x["word_alt"] = x["word_alt"].map(lambda w: w.replace("type 1 ", "type-1 "))
-    x["word_alt"] = x["word_alt"].map(lambda w: w.replace("type-ii ", "type-2 "))
-    x["word_alt"] = x["word_alt"].map(lambda w: w.replace("type ii ", "type-2 "))
-    x["word_alt"] = x["word_alt"].map(lambda w: w.replace("type 2 ", "type-2 "))
-    x["word_alt"] = x["word_alt"].map(lambda w: w.replace("type2 ", "type-2 "))
-    x["word_alt"] = x["word_alt"].map(lambda w: w.replace("interval type ", "type "))
-    x["word_alt"] = x["word_alt"].map(lambda w: w.replace("forecasting", "prediction"))
-    x["word_alt"] = x["word_alt"].map(
-        lambda w: w.replace("type2-fuzzy", "type-2 fuzzy")
-    )
-    x["word_alt"] = x["word_alt"].map(
-        lambda w: w.replace("1-dimensional ", "one-dimensional ")
-    )
-    x["word_alt"] = x["word_alt"].map(
-        lambda w: w.replace(" neural-net ", " neural network ")
-    )
-    x["word_alt"] = x["word_alt"].map(
-        lambda w: w.replace("optimisation", "optimization")
-    )
-    ###
-    x["word_alt"] = x["word_alt"].map(lambda w: w.replace("-", " "))
-    ###
-    x["word_alt"] = x["word_alt"].map(
-        lambda w: w.replace("artificial neural network", "neural network")
-    )
+    #
+    replacements = [
+        ("&", "and"),
+        (" of ", ""),
+        ("-based ", " "),
+        (" based ", " "),
+        (" for ", " "),
+        ("type-i ", "type-1 "),
+        ("type i ", "type-1 "),
+        ("type 1 ", "type-1 "),
+        ("type-ii ", "type-2 "),
+        ("type ii ", "type-2 "),
+        ("type 2 ", "type-2 "),
+        ("type2 ", "type-2 "),
+        ("interval type ", "type "),
+        ("forecasting", "prediction"),
+        ("type2-fuzzy", "type-2 fuzzy"),
+        ("1-dimensional ", "one-dimensional "),
+        (" neural-net ", " neural network "),
+        ("optimisation", "optimization"),
+        ("-", " "),
+        ("artificial neural network", "neural network"),
+    ]
+    for to_replace, value in replacements:
+        x["word_alt"] = x["word_alt"].map(lambda w: w.replace(to_replace, value))
+
+    #
+    # endswith
+    #
+    replacements = [
+        "techniques",
+        "technique",
+        "algorithms",
+        "algorithm",
+        "methods",
+        "method",
+        "approaches",
+        "approach",
+        "strategies",
+        "strategy",
+    ]
+    for to_replace in replacements:
+        x["word_alt"] = x["word_alt"].str.replace(" " + to_replace + "$", "")
+
+    #
+    # Initial phrase words
+    #
     for word in ["and ", "the ", "a ", "an "]:
         x["word_alt"] = x["word_alt"].map(
             lambda w: w[len(word) :].strip() if w.startswith(word) else w
