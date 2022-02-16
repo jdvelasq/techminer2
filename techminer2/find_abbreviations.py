@@ -46,39 +46,41 @@ def find_abbreviations(
             "key": reversed_th.values(),
         }
     )
-    df["abbreviation"] = df["key"].map(extract_abbreviation)
+    df["abbreviation"] = df["text"].map(extract_abbreviation)
 
     # ----< filter by each abbreviation >----------------------------------------------------------
     abbreviations = df.abbreviation.dropna().drop_duplicates()
+
+    results = []
     for abbreviation in abbreviations.to_list():
-        print(abbreviation)
 
-    # results = {}
-    # for abbreviation in abbreviations.to_list():
-    #     keywords = df[df.text.str.contains(abbreviation)]
-    #     if len(keywords) > 0:
+        keywords = df[
+            df.text.map(lambda x: x == abbreviation)
+            | df.text.str.contains("(" + abbreviation + ")", regex=False)
+            | df.text.map(lambda x: x == "(" + abbreviation + ")")
+            | df.text.str.contains("\b" + abbreviation + "\b", regex=True)
+        ]
 
-    #         results[abbreviation] = keywords
+        keywords = keywords.key.drop_duplicates()
 
-    #         print(abbreviation)
-    #         for text in keywords.text.to_list():
-    #             print("    ", text)
+        if len(keywords) > 1:
+            results.append(keywords.to_list())
 
-    # # ----< remove found keywords >-----------------------------------------------------------------
-    # keys = [text for key in results.keys() for text in results[key].key.to_list()]
-    # findings = {key: th[key] for key in sorted(keys)}
-    # for key in findings.keys():
-    #     th.pop(key)
+    # ----< remove found keywords >-----------------------------------------------------------------
+    results = [value for result in results for value in result]
+    findings = {key: th[key] for key in results}
+    for key in findings.keys():
+        th.pop(key)
 
-    # # ----< save the thesaurus >--------------------------------------------------------------------
-    # with open(thesaurus_file, "w", encoding="utf-8") as file:
+    # ----< save the thesaurus >--------------------------------------------------------------------
+    with open(thesaurus_file, "w", encoding="utf-8") as file:
 
-    #     for key in sorted(findings.keys()):
-    #         file.write(key + "\n")
-    #         for item in findings[key]:
-    #             file.write("    " + item + "\n")
+        for key in sorted(findings.keys()):
+            file.write(key + "\n")
+            for item in findings[key]:
+                file.write("    " + item + "\n")
 
-    #     for key in sorted(th.keys()):
-    #         file.write(key + "\n")
-    #         for item in th[key]:
-    #             file.write("    " + item + "\n")
+        for key in sorted(th.keys()):
+            file.write(key + "\n")
+            for item in th[key]:
+                file.write("    " + item + "\n")
