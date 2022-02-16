@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Merge Keywords &mdash; TechMiner2 0.1.0 documentation</title>
+  <title>Find Abbreviations &mdash; TechMiner2 0.1.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
@@ -22,8 +22,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Apply Thesaurus" href="apply_thesaurus.html" />
-    <link rel="prev" title="Find Keyword" href="find_keyword.html" /> 
+    <link rel="next" title="Find Keyword" href="find_keyword.html" />
+    <link rel="prev" title="Clean Keywords" href="clean_keywords.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -67,9 +67,9 @@
 <li class="toctree-l2 current"><a class="reference internal" href="_vantagepoint.html#thesaurus">Thesaurus</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="clean_institutions.html">Clean Institutions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="clean_keywords.html">Clean Keywords</a></li>
-<li class="toctree-l3"><a class="reference internal" href="find_abbreviations.html">Find Abbreviations</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Find Abbreviations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="find_keyword.html">Find Keyword</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Merge Keywords</a></li>
+<li class="toctree-l3"><a class="reference internal" href="merge_keywords.html">Merge Keywords</a></li>
 <li class="toctree-l3"><a class="reference internal" href="apply_thesaurus.html">Apply Thesaurus</a></li>
 <li class="toctree-l3"><a class="reference internal" href="create_thesaurus.html">Create Thesaurus</a></li>
 </ul>
@@ -105,9 +105,9 @@
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="_vantagepoint.html">VantagePoint</a> &raquo;</li>
-      <li>Merge Keywords</li>
+      <li>Find Abbreviations</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/merge_keywords.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/find_abbreviations.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -139,23 +139,18 @@
     text-align: unset;
 }
 </style>
-<span class="target" id="module-techminer2.merge_keywords"></span><section id="merge-keywords">
-<h1>Merge Keywords<a class="headerlink" href="#merge-keywords" title="Permalink to this headline"></a></h1>
-<p>Merge keyword keys in the keywords thesaurus.</p>
+<span class="target" id="module-techminer2.find_abbreviations"></span><section id="find-abbreviations">
+<h1>Find Abbreviations<a class="headerlink" href="#find-abbreviations" title="Permalink to this headline"></a></h1>
+<p>Finds string abbreviations in keywords.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer2/data/&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">merge_keywords</span><span class="p">(</span><span class="n">main_keyword</span><span class="o">=</span><span class="s1">&#39;forecast&#39;</span><span class="p">,</span> <span class="n">keywords_to_merge</span><span class="o">=</span><span class="s1">&#39;prediction&#39;</span><span class="p">,</span>  <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">)</span>
-<span class="go">forecast</span>
-<span class="go">    forecast</span>
-<span class="go">    forecasts</span>
-<span class="go">    prediction</span>
-<span class="go">    predictions</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">find_abbreviations</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">)</span>
 </pre></div>
 </div>
 <dl class="py function">
-<dt class="sig sig-object py" id="techminer2.merge_keywords.merge_keywords">
-<span class="sig-prename descclassname"><span class="pre">techminer2.merge_keywords.</span></span><span class="sig-name descname"><span class="pre">merge_keywords</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">main_keyword</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keywords_to_merge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer2/merge_keywords.html#merge_keywords"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer2.merge_keywords.merge_keywords" title="Permalink to this definition"></a></dt>
-<dd><p>Merge keyword keys in the keywords thesaurus.</p>
+<dt class="sig sig-object py" id="techminer2.find_abbreviations.find_abbreviations">
+<span class="sig-prename descclassname"><span class="pre">techminer2.find_abbreviations.</span></span><span class="sig-name descname"><span class="pre">find_abbreviations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer2/find_abbreviations.html#find_abbreviations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer2.find_abbreviations.find_abbreviations" title="Permalink to this definition"></a></dt>
+<dd><p>Find abbreviations and reorder the thesaurus to reflect the search.</p>
 </dd></dl>
 
 </section>
@@ -164,8 +159,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="find_keyword.html" class="btn btn-neutral float-left" title="Find Keyword" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="apply_thesaurus.html" class="btn btn-neutral float-right" title="Apply Thesaurus" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="clean_keywords.html" class="btn btn-neutral float-left" title="Clean Keywords" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="find_keyword.html" class="btn btn-neutral float-right" title="Find Keyword" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

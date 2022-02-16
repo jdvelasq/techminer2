@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>techminer2.find_keyword &mdash; TechMiner2 0.1.0 documentation</title>
+  <title>techminer2.find_abbreviations &mdash; TechMiner2 0.1.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
@@ -82,7 +82,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../index.html">Module code</a> &raquo;</li>
-      <li>techminer2.find_keyword</li>
+      <li>techminer2.find_abbreviations</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -91,24 +91,16 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <h1>Source code for techminer2.find_keyword</h1><div class="highlight"><pre>
+  <h1>Source code for techminer2.find_abbreviations</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">Find Keyword</span>
+<span class="sd">Find Abbreviations</span>
 <span class="sd">===============================================================================</span>
 
-<span class="sd">Finds a string in the terms of a column of a document collection.</span>
+<span class="sd">Finds string abbreviations in keywords.</span>
 
 <span class="sd">&gt;&gt;&gt; from techminer2 import *</span>
 <span class="sd">&gt;&gt;&gt; directory = &quot;/workspaces/techminer2/data/&quot;</span>
-<span class="sd">&gt;&gt;&gt; find_keyword(contains=&#39;artificial intelligence&#39;, directory=directory)</span>
-<span class="sd">artificial intelligence</span>
-<span class="sd">     artificial intelligence</span>
-<span class="sd">     artificial intelligence (ai)</span>
-<span class="sd">artificial intelligence systems</span>
-<span class="sd">artificial intelligence technologies</span>
-<span class="sd">     artificial intelligence technologies</span>
-<span class="sd">     artificial intelligence technology</span>
-<span class="sd">novel artificial intelligence</span>
+<span class="sd">&gt;&gt;&gt; find_abbreviations(directory=directory)</span>
 
 
 <span class="sd">&quot;&quot;&quot;</span>
@@ -119,70 +111,57 @@
 <span class="kn">from</span> <span class="nn">.thesaurus</span> <span class="kn">import</span> <span class="n">load_file_as_dict</span>
 
 
-<div class="viewcode-block" id="find_keyword"><a class="viewcode-back" href="../../find_keyword.html#techminer2.find_keyword.find_keyword">[docs]</a><span class="k">def</span> <span class="nf">find_keyword</span><span class="p">(</span>
-    <span class="n">contains</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">startswith</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">endswith</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<div class="viewcode-block" id="find_abbreviations"><a class="viewcode-back" href="../../find_abbreviations.html#techminer2.find_abbreviations.find_abbreviations">[docs]</a><span class="k">def</span> <span class="nf">find_abbreviations</span><span class="p">(</span>
     <span class="n">directory</span><span class="o">=</span><span class="s2">&quot;./&quot;</span><span class="p">,</span>
 <span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Find the specified keyword and reorder the thesaurus to reflect the search.</span>
+<span class="sd">    Find abbreviations and reorder the thesaurus to reflect the search.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
+    <span class="k">def</span> <span class="nf">extract_abbreviation</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="k">if</span> <span class="s2">&quot;(&quot;</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+            <span class="n">abbreviation</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;(&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;)&quot;</span><span class="p">)]</span>
+            <span class="k">return</span> <span class="n">abbreviation</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="c1"># ----&lt; Load and reverse the thesaurus &gt;------------------------------------------------------</span>
     <span class="n">thesaurus_file</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="s2">&quot;keywords.txt&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">isfile</span><span class="p">(</span><span class="n">thesaurus_file</span><span class="p">):</span>
         <span class="n">th</span> <span class="o">=</span> <span class="n">load_file_as_dict</span><span class="p">(</span><span class="n">thesaurus_file</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="s2">&quot;The file </span><span class="si">{}</span><span class="s2"> does not exist.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">thesaurus_file</span><span class="p">))</span>
-
     <span class="n">reversed_th</span> <span class="o">=</span> <span class="p">{</span><span class="n">value</span><span class="p">:</span> <span class="n">key</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">values</span> <span class="ow">in</span> <span class="n">th</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">}</span>
 
+    <span class="c1"># ----&lt; search for abbreviations &gt;-------------------------------------------------------------</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
         <span class="p">{</span>
             <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="n">reversed_th</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span>
             <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="n">reversed_th</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span>
         <span class="p">}</span>
     <span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;abbreviation&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;key&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">extract_abbreviation</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">contains</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">contains</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-            <span class="n">contains</span> <span class="o">=</span> <span class="p">[</span><span class="n">contains</span><span class="p">]</span>
-        <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">contains</span><span class="p">:</span>
-            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">word</span><span class="p">)])</span>
-        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">startswith</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">startswith</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-            <span class="n">startswith</span> <span class="o">=</span> <span class="p">[</span><span class="n">startswith</span><span class="p">]</span>
-        <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">startswith</span><span class="p">:</span>
-            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">word</span><span class="p">)])</span>
-        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">endswith</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">endswith</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-            <span class="n">endswith</span> <span class="o">=</span> <span class="p">[</span><span class="n">endswith</span><span class="p">]</span>
-        <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">endswith</span><span class="p">:</span>
-            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="n">word</span><span class="p">)])</span>
-        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;No filter provided&quot;</span><span class="p">)</span>
+    <span class="c1"># ----&lt; filter by each abbreviation &gt;----------------------------------------------------------</span>
+    <span class="n">abbreviations</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">abbreviation</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">abbreviation</span> <span class="ow">in</span> <span class="n">abbreviations</span><span class="o">.</span><span class="n">to_list</span><span class="p">():</span>
+        <span class="n">keywords</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">abbreviation</span><span class="p">)]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">keywords</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
 
-    <span class="n">keys</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">key</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+            <span class="n">results</span><span class="p">[</span><span class="n">abbreviation</span><span class="p">]</span> <span class="o">=</span> <span class="n">keywords</span>
 
+            <span class="nb">print</span><span class="p">(</span><span class="n">abbreviation</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">keywords</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">to_list</span><span class="p">():</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;    &quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+
+    <span class="c1"># ----&lt; remove found keywords &gt;-----------------------------------------------------------------</span>
+    <span class="n">keys</span> <span class="o">=</span> <span class="p">[</span><span class="n">text</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">results</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">key</span><span class="o">.</span><span class="n">to_list</span><span class="p">()]</span>
     <span class="n">findings</span> <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="n">th</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">keys</span><span class="p">)}</span>
-
-    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">items</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">findings</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">items</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">items</span><span class="p">):</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;    &quot;</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
-
-    <span class="c1"># reorder the thesaurus to reflect the search</span>
     <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">findings</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
         <span class="n">th</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
 
+    <span class="c1"># ----&lt; save the thesaurus &gt;--------------------------------------------------------------------</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">thesaurus_file</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
 
         <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">findings</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>

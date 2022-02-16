@@ -102,8 +102,8 @@
 <span class="sd">&gt;&gt;&gt; directory = &quot;/workspaces/techminer2/data/&quot;</span>
 <span class="sd">&gt;&gt;&gt; user_filters(directory, book=True,  erratum=True, first_year=2016, last_year=2021)</span>
 <span class="sd">---&lt; Document &gt;-------------------------------------------------</span>
-<span class="sd">               First year : 2021</span>
-<span class="sd">                Last year : 2016</span>
+<span class="sd">               First year : 2016</span>
+<span class="sd">                Last year : 2021</span>
 <span class="sd">         Global citations : 220</span>
 <span class="sd">---&lt; User Filters &gt;---------------------------------------------</span>
 <span class="sd">               First year : 2016</span>
@@ -123,8 +123,8 @@
 
 <span class="sd">&gt;&gt;&gt; user_filters(directory)</span>
 <span class="sd">---&lt; Document &gt;-------------------------------------------------</span>
-<span class="sd">               First year : 2021</span>
-<span class="sd">                Last year : 2016</span>
+<span class="sd">               First year : 2016</span>
+<span class="sd">                Last year : 2021</span>
 <span class="sd">         Global citations : 220</span>
 <span class="sd">---&lt; User Filters &gt;---------------------------------------------</span>
 <span class="sd">               First year : 2016</span>
@@ -144,8 +144,8 @@
 
 <span class="sd">&gt;&gt;&gt; user_filters(directory, book=False,  erratum=False, first_year=2017, last_year=2020)</span>
 <span class="sd">---&lt; Document &gt;-------------------------------------------------</span>
-<span class="sd">               First year : 2021</span>
-<span class="sd">                Last year : 2016</span>
+<span class="sd">               First year : 2016</span>
+<span class="sd">                Last year : 2021</span>
 <span class="sd">         Global citations : 220</span>
 <span class="sd">---&lt; User Filters &gt;---------------------------------------------</span>
 <span class="sd">               First year : 2017</span>
@@ -167,8 +167,8 @@
 
 <span class="sd">&gt;&gt;&gt; user_filters(directory, book=True,  erratum=True, first_year=2016, last_year=2021)</span>
 <span class="sd">---&lt; Document &gt;-------------------------------------------------</span>
-<span class="sd">               First year : 2021</span>
-<span class="sd">                Last year : 2016</span>
+<span class="sd">               First year : 2016</span>
+<span class="sd">                Last year : 2021</span>
 <span class="sd">         Global citations : 220</span>
 <span class="sd">---&lt; User Filters &gt;---------------------------------------------</span>
 <span class="sd">               First year : 2016</span>
@@ -207,9 +207,9 @@
 
 <span class="k">class</span> <span class="nc">_UserFilters</span><span class="p">:</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">directory</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">directory</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer-api/tests/data/&quot;</span>
-            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot; **** USING SAMPLE DATA ****&quot;</span><span class="p">)</span>
+        <span class="c1"># if directory is None:</span>
+        <span class="c1">#     directory = &quot;/workspaces/techminer-api/tests/data/&quot;</span>
+        <span class="c1">#     logging.info(&quot; **** USING SAMPLE DATA ****&quot;)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">directory</span> <span class="o">=</span> <span class="n">directory</span>
         <span class="k">if</span> <span class="n">kwargs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
@@ -227,8 +227,8 @@
     <span class="k">def</span> <span class="nf">document_report</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="c1"># years</span>
-        <span class="n">first_year</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">documents</span><span class="p">[</span><span class="s2">&quot;pub_year&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
-        <span class="n">last_year</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">documents</span><span class="p">[</span><span class="s2">&quot;pub_year&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+        <span class="n">first_year</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">documents</span><span class="p">[</span><span class="s2">&quot;pub_year&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+        <span class="n">last_year</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">documents</span><span class="p">[</span><span class="s2">&quot;pub_year&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 
         <span class="c1"># global citations</span>
         <span class="n">citations</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">documents</span><span class="p">[</span><span class="s2">&quot;global_citations&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
@@ -290,7 +290,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">save_filter</span><span class="p">()</span>
 
 
-<div class="viewcode-block" id="user_filters"><a class="viewcode-back" href="../../user_filters.html#techminer2.user_filters.user_filters">[docs]</a><span class="k">def</span> <span class="nf">user_filters</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="user_filters"><a class="viewcode-back" href="../../user_filters.html#techminer2.user_filters.user_filters">[docs]</a><span class="k">def</span> <span class="nf">user_filters</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="s2">&quot;./&quot;</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="n">user_filters_</span> <span class="o">=</span> <span class="n">_UserFilters</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="n">quiet</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">=</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="n">user_filters_</span><span class="o">.</span><span class="n">run</span><span class="p">()</span></div>
 </pre></div>
