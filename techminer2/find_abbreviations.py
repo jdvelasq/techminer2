@@ -75,7 +75,7 @@ def find_abbreviations(
     # ----< save the thesaurus >--------------------------------------------------------------------
     with open(thesaurus_file, "w", encoding="utf-8") as file:
 
-        for key in sorted(findings.keys()):
+        for key in findings.keys():
             print(key)
             file.write(key + "\n")
             for item in findings[key]:
