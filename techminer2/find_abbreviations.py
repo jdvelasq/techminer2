@@ -77,9 +77,11 @@ def find_abbreviations(
     with open(thesaurus_file, "w", encoding="utf-8") as file:
 
         for key in sorted(findings.keys()):
+            print(key)
             file.write(key + "\n")
             for item in findings[key]:
                 file.write("    " + item + "\n")
+                print("    " + item)
 
         for key in sorted(th.keys()):
             file.write(key + "\n")
