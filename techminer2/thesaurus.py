@@ -99,6 +99,10 @@ def text_clustering(x, name_strategy="mostfrequent", key="porter", transformer=N
         "approach",
         "strategies",
         "strategy",
+        "models",
+        "model",
+        "methodologies",
+        "methodology",
     ]
     for to_replace in replacements:
         x["word_alt"] = x["word_alt"].str.replace(" " + to_replace + "$", "")
