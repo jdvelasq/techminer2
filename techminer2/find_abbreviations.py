@@ -65,7 +65,6 @@ def find_abbreviations(
 
         if len(keywords) > 1:
             results.append(keywords.to_list())
-            print(abbreviation)
 
     # ----< remove found keywords >-----------------------------------------------------------------
     results = [value for result in results for value in result]
