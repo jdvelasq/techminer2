@@ -55,15 +55,30 @@ def keywords_summarization(
 
         return expanded_keywords
 
-    def select_documents(documents, expanded_keywords):
+    def select_documents(documents, column, expanded_keywords):
         documents = documents.copy()
         documents["_points_"] = 0
+        documents["document_title"] = documents["document_title"].str.lower()
 
         for keyword in expanded_keywords:
             documents.loc[
                 documents.document_title.str.contains(keyword, regex=False), "_points_"
+            ] += 3
+
+            documents.loc[
+                documents.abstract.str.contains(keyword, regex=False), "_points_"
             ] += 1
 
+        #
+        documents[column] = documents[column].str.split(";")
+        documents[column] = documents[column].map(
+            lambda x: [item.strip() for item in x] if isinstance(x, list) else x
+        )
+        documents[column] = documents[column].map(
+            lambda x: len(set(expanded_keywords) & set(x)) if isinstance(x, list) else 0
+        )
+        documents["_points_"] = documents["_points_"] + documents[column]
+        #
         documents = documents[documents._points_ > 0]
         documents = documents.sort_values(
             by=["_points_", "global_citations"], ascending=False
@@ -158,7 +173,7 @@ def keywords_summarization(
 
     documents = load_filtered_documents(directory)
     expanded_keywords = expand_keywords(keywords)
-    documents = select_documents(documents, expanded_keywords)
+    documents = select_documents(documents, column, expanded_keywords)
     documents = documents.head(n_phrases)
     write_report(documents, sufix)
     print("done!")
