@@ -166,6 +166,7 @@ Conceptual Structure
       co_occurrence_network_degree_plot
       co_occurrence_network_graph
       co_occurrence_network_indicators
+      co_occurrence_network_summarization
 
 
 
@@ -177,6 +178,7 @@ Conceptual Structure
       thematic_map_indicators
       thematic_map_network
       thematic_map_strategic_diagram
+      thematic_map_summarization
 
    .. toctree::
       :maxdepth: 1
