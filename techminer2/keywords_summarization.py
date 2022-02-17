@@ -85,13 +85,14 @@ def keywords_summarization(
             by=["_points_", "global_citations"], ascending=False
         )
 
-        documents["document_title"] = documents["document_title"].str.replace(
-            "(", "", regex=False
-        )
-        documents["document_title"] = documents["document_title"].str.replace(
-            ")", "", regex=False
-        )
+        # documents["document_title"] = documents["document_title"].str.replace(
+        #     "(", "\(", regex=False
+        # )
+        # documents["document_title"] = documents["document_title"].str.replace(
+        #     ")", "", regex=False
+        # )
         for keyword in expanded_keywords:
+            keyword = keyword.replace("(", "\(").replace(")", "\)")
             documents["document_title"] = documents["document_title"].str.replace(
                 r"\b" + keyword + r"\b", keyword.upper()
             )
