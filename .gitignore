@@ -1,5 +1,6 @@
 .DS_Store
 
+data/*.txt
 citaciones-dyna/
 
 debug/
