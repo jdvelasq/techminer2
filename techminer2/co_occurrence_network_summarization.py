@@ -111,6 +111,7 @@ def co_occurrence_network_summarization(
         abstract_summarization(
             texts=list_of_keywords,
             n_phrases=n_phrases,
+            sufix="_" + row[0],
             directory=directory,
         )
         print()
