@@ -10,7 +10,7 @@ Keywords Summarization
 ...     n_phrases=5,    
 ...     directory=directory,
 ... )
-Done!
+- INFO - Generating /workspaces/techminer2/data/keywords_summarization.txt
 
 """
 
@@ -23,6 +23,7 @@ import nltk
 import pandas as pd
 from nltk.stem import PorterStemmer
 
+from . import logging
 from .load_filtered_documents import load_filtered_documents
 from .thesaurus import load_file_as_dict
 
@@ -83,6 +84,16 @@ def keywords_summarization(
         documents = documents.sort_values(
             by=["_points_", "global_citations"], ascending=False
         )
+
+        for keyword in expanded_keywords:
+            documents["document_title"] = documents["document_title"].str.replace(
+                r"\b" + keyword + r"\b", keyword.upper()
+            )
+
+            documents["abstract"] = documents["abstract"].str.replace(
+                r"\b" + keyword + r"\b", keyword.upper()
+            )
+
         return documents
 
     def write_report(documents, sufix):
@@ -104,9 +115,11 @@ def keywords_summarization(
         documents = documents[column_list]
 
         # ----< report >-----------------------------------------------------------------
-        with open(
-            join(directory, f"abstract_summarization{sufix}.txt"), "w"
-        ) as out_file:
+        filename = join(directory, f"keywords_summarization{sufix}.txt")
+
+        with open(filename, "w") as out_file:
+
+            logging.info("Generating " + filename)
 
             for index, row in documents.iterrows():
 
@@ -176,7 +189,6 @@ def keywords_summarization(
     documents = select_documents(documents, column, expanded_keywords)
     documents = documents.head(n_phrases)
     write_report(documents, sufix)
-    print("done!")
 
 
 def _keywords_summarization(
