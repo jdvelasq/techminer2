@@ -36,7 +36,7 @@ sample is moderately average, accounting for 44.39%.
 
 """
 
-import re
+
 import textwrap
 from os.path import isfile, join
 from xml.dom import WRONG_DOCUMENT_ERR
@@ -45,6 +45,7 @@ import nltk
 import pandas as pd
 from nltk.stem import PorterStemmer
 
+from .load_filtered_documents import load_filtered_documents
 from .thesaurus import load_file_as_dict
 
 
@@ -179,7 +180,7 @@ def keywords_summarization(
     if isinstance(keywords, str):
         keywords = [keywords]
 
-    documents = pd.read_csv(join(directory, "documents.csv"))
+    documents = load_filtered_documents(directory)
 
     expanded_keywords = expand_keywords(keywords)
     documents_id = select_documents(documents, column, expanded_keywords)
