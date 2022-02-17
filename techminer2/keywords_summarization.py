@@ -10,29 +10,7 @@ Keywords Summarization
 ...     n_phrases=5,    
 ...     directory=directory,
 ... )
-The research on data science and ai in FINTECH involves many latest progress made in smart
-FINTECH for bankingtech, tradetech, lendtech, insurtech, wealthtech, paytech, risktech,
-cryptocurrencies, and BLOCKCHAIN, and the dsai techniques including complex system
-methods, quantitative methods, intelligent interactions, recognition and responses, data
-analytics, deep learning, federated learning, privacy-preserving processing, augmentation,
-optimization, and system intelligence enhancement... From the theoretical point of view,
-our research indicates, that besides key growth driving factors, outlined in existing
-literature, such as strategy, prerequisites for rapid growth, business model choice,
-international business networks, entrepreneur's characteristics, product development or
-theoretical frameworks for development, especially within the international market, the
-quality of digital logistics performance of FINTECH companies seem to matter... Internet
-banking, mobile banking, atm,cash deposit machines, instant payment services, online
-trading in stock markets, online funds transfers, e-wallets,wealth management, peer to
-peer lending, BLOCKCHAIN technology are various FINTECH products and services... The most
-important factors that influence the level of satisfaction when using FINTECH services
-were considered: comfort and ease of use, legal regulations, ease of account opening,
-mobile payments features, crowdfunding options, international money transfers features,
-reduced costs associated with transactions, peer-to-peer lending, insurances options,
-online brokerage, cryptocoins options and exchange options... Fourth, the traditional
-assets, gold and oil, as well as modern assets, green bonds, are useful as good hedgers
-compared with other assets because shock transmissions from them to FINTECH, kftx are
-below 0.1% and, more importantly, the total volatility spill-over of all assets in the
-sample is moderately average, accounting for 44.39%.
+Done!
 
 """
 
@@ -176,6 +154,94 @@ def keywords_summarization(
                 print(paragraph, file=out_file)
                 print("\n", file=out_file)
 
+    def write_report(documents, abstracts, sufix):
+
+        # ----< select columns to report >-----------------------------------------------
+        documents = documents.copy()
+        column_list = []
+        reported_columns = [
+            "document_title",
+            "authors",
+            "global_citations",
+            "source_title",
+            "pub_year",
+            "abstract",
+        ]
+        for column in reported_columns:
+            if column in documents.columns:
+                column_list.append(column)
+        documents = documents[column_list + ["record_no"]]
+
+        # ----< select documents >-------------------------------------------------------
+        records_no = abstracts.record_no.drop_duplicates().tolist()
+
+        documents = documents[documents.record_no.isin(records_no)]
+        if "global_citations" in documents.columns:
+            documents = documents.sort_values(by="global_citations", ascending=False)
+
+        # ----< report >-----------------------------------------------------------------
+        with open(
+            join(directory, f"abstract_summarization{sufix}.txt"), "w"
+        ) as out_file:
+
+            for index, row in documents.iterrows():
+
+                for column in reported_columns:
+
+                    if column not in row.index:
+                        continue
+
+                    if column == "document_title":
+                        print("      document_title :", end="", file=out_file)
+                        print(
+                            textwrap.fill(
+                                row[column],
+                                width=115,
+                                initial_indent=" " * 23,
+                                subsequent_indent=" " * 23,
+                                fix_sentence_endings=True,
+                            )[22:],
+                            file=out_file,
+                        )
+                        continue
+
+                    if column == "abstract":
+                        print("            abstract :", end="", file=out_file)
+                        print(
+                            textwrap.fill(
+                                row[column],
+                                width=115,
+                                initial_indent=" " * 23,
+                                subsequent_indent=" " * 23,
+                                fix_sentence_endings=True,
+                            )[22:],
+                            file=out_file,
+                        )
+                        continue
+
+                    if column in [
+                        "raw_author_keywords",
+                        "author_keywords",
+                        "raw_index_keywords",
+                        "index_keywords",
+                    ]:
+                        keywords = row[column]
+                        if pd.isna(keywords):
+                            continue
+                        keywords = keywords.split("; ")
+                        print(" {:>19} : {}".format(column, keywords[0]), file=out_file)
+                        for keyword in keywords[1:]:
+                            print(" " * 23 + keyword, file=out_file)
+                        continue
+
+                    print(" {:>19} : {}".format(column, row[column]), file=out_file)
+
+                if index != documents.index[-1]:
+                    print(
+                        "-" * 120,
+                        file=out_file,
+                    )
+
     # ----< data must be a list >--------------------------------------------------------
     if isinstance(keywords, str):
         keywords = [keywords]
@@ -187,8 +253,10 @@ def keywords_summarization(
     abstracts = load_abstracts(documents_id, expanded_keywords)
     abstracts = summarize(abstracts, expanded_keywords)
 
-    save_summary(abstracts, sufix)
+    write_report(documents, abstracts, sufix)
+    # save_summary(abstracts, sufix)
 
     # -----------------------------------------------------------------------------------
-    summary = ".. ".join(abstracts.text.values)
-    print(textwrap.fill(summary, width=90))
+    # summary = ".. ".join(abstracts.text.values)
+    # print(textwrap.fill(summary, width=90))
+    print("Done!")
