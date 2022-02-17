@@ -245,6 +245,7 @@ def keywords_summarization(
     # ----< data must be a list >--------------------------------------------------------
     if isinstance(keywords, str):
         keywords = [keywords]
+    keywords = [word for word in keywords if word != ""]
 
     documents = load_filtered_documents(directory)
 
