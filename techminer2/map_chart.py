@@ -119,7 +119,7 @@ def map_chart(
     ax.xaxis.set_minor_locator(AutoMinorLocator())
     ax.yaxis.set_minor_locator(AutoMinorLocator())
 
-    ax.tick_params(which="mayor", color="k", length=5)
+    ax.tick_params(which="major", color="k", length=5)
     ax.tick_params(which="minor", color="k", length=2)
 
     ax.axhline(x_axis_at, color="gray", linestyle="--")
