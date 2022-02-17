@@ -70,6 +70,11 @@ def keywords_summarization(
         for keyword in keywords:
             th_keys.append(reversed_th[keyword])
         expanded_keywords = [text for key in th_keys for text in th[key]]
+
+        print("Expanded Keywords:")
+        for keyword in expanded_keywords:
+            print("   " + keyword)
+
         return expanded_keywords
 
     def select_documents(documents, column, expanded_keywords):
