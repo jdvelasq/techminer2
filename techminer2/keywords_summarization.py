@@ -36,6 +36,7 @@ sample is moderately average, accounting for 44.39%.
 
 """
 
+import re
 import textwrap
 from os.path import isfile, join
 from xml.dom import WRONG_DOCUMENT_ERR
@@ -152,7 +153,7 @@ def keywords_summarization(
                 text, text.upper(), regex=False
             )
             abstracts["text"] = abstracts["text"].str.replace(
-                text.capitalize(), text.upper()
+                text.capitalize(), text.upper(), regex=False
             )
 
         return abstracts
