@@ -20,17 +20,19 @@ our research indicates, that besides key growth driving factors, outlined in exi
 literature, such as strategy, prerequisites for rapid growth, business model choice,
 international business networks, entrepreneur's characteristics, product development or
 theoretical frameworks for development, especially within the international market, the
-quality of digital logistics performance of FINTECH companies seem to matter... The most
+quality of digital logistics performance of FINTECH companies seem to matter... Internet
+banking, mobile banking, atm,cash deposit machines, instant payment services, online
+trading in stock markets, online funds transfers, e-wallets,wealth management, peer to
+peer lending, BLOCKCHAIN technology are various FINTECH products and services... The most
 important factors that influence the level of satisfaction when using FINTECH services
 were considered: comfort and ease of use, legal regulations, ease of account opening,
 mobile payments features, crowdfunding options, international money transfers features,
 reduced costs associated with transactions, peer-to-peer lending, insurances options,
-online brokerage, cryptocoins options and exchange options... Internet banking, mobile
-banking, atm,cash deposit machines, instant payment services, online trading in stock
-markets, online funds transfers, e-wallets,wealth management, peer to peer lending,
-BLOCKCHAIN technology are various FINTECH products and services... It includes design,
-delivery, and provider of financial investment services such as payments, real estate,
-investment, insurance/ takaful, deposits, financing, banking, saving and capital market.
+online brokerage, cryptocoins options and exchange options... Fourth, the traditional
+assets, gold and oil, as well as modern assets, green bonds, are useful as good hedgers
+compared with other assets because shock transmissions from them to FINTECH, kftx are
+below 0.1% and, more importantly, the total volatility spill-over of all assets in the
+sample is moderately average, accounting for 44.39%.
 
 """
 
@@ -71,9 +73,9 @@ def keywords_summarization(
             th_keys.append(reversed_th[keyword])
         expanded_keywords = [text for key in th_keys for text in th[key]]
 
-        print("Expanded Keywords:")
-        for keyword in expanded_keywords:
-            print("   " + keyword)
+        # print("Expanded Keywords:")
+        # for keyword in expanded_keywords:
+        #     print("   " + keyword)
 
         return expanded_keywords
 
@@ -180,7 +182,7 @@ def keywords_summarization(
 
     expanded_keywords = expand_keywords(keywords)
     documents_id = select_documents(documents, column, expanded_keywords)
-    abstracts = load_abstracts(documents_id)
+    abstracts = load_abstracts(documents_id, expanded_keywords)
     abstracts = summarize(abstracts, expanded_keywords)
 
     save_summary(abstracts, sufix)
