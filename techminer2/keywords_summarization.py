@@ -61,7 +61,7 @@ def keywords_summarization(
 
         for keyword in expanded_keywords:
             documents.loc[
-                documents.document_title.str.contains(keyword), "_points_"
+                documents.document_title.str.contains(keyword, regex=False), "_points_"
             ] += 1
 
         documents = documents[documents._points_ > 0]
