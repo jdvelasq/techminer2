@@ -96,7 +96,7 @@ def _line_chart(
     ax.spines["right"].set_visible(False)
     ax.grid(alpha=0.5, linestyle=":")
 
-    ax.tick_params(which="mayor", color="k", length=5)
+    ax.tick_params(which="major", color="k", length=5)
 
     fig.set_tight_layout(True)
 
