@@ -88,10 +88,12 @@ def keywords_summarization(
         document_id = list(set(documents.index.tolist()))
         return document_id
 
-    def load_abstracts(documents_id):
+    def load_abstracts(documents_id, expanded_keywords):
         file_name = join(directory, "abstracts.csv")
         abstracts = pd.read_csv(file_name)
         abstracts = abstracts[abstracts.record_no.isin(documents_id)]
+        regex = r"\b(" + "|".join(expanded_keywords) + r")\b"
+        abstracts = abstracts[abstracts.text.str.contains(regex, regex=True)]
         return abstracts
 
     def summarize(abstracts, expanded_keywords):
@@ -144,7 +146,9 @@ def keywords_summarization(
         abstracts["text"] = abstracts.text.str.capitalize()
 
         for text in expanded_keywords:
-            abstracts["text"] = abstracts["text"].str.replace(text, text.upper())
+            abstracts["text"] = abstracts["text"].str.replace(
+                text, text.upper(), regex=False
+            )
             abstracts["text"] = abstracts["text"].str.replace(
                 text.capitalize(), text.upper()
             )
