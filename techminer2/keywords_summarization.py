@@ -73,11 +73,15 @@ def keywords_summarization(
             th_keys.append(reversed_th[keyword])
         expanded_keywords = [text for key in th_keys for text in th[key]]
 
-        # print("Expanded Keywords:")
-        # for keyword in expanded_keywords:
-        #     print("   " + keyword)
+        result = []
+        for x in expanded_keywords:
+            if "(" in x:
+                text_to_remove = x[x.find("(") : x.find(")") + 1]
+                x = x.replace(text_to_remove, "")
+                x = " ".join([w.strip() for w in x.split()])
+            result.append(x)
 
-        return expanded_keywords
+        return result
 
     def select_documents(documents, column, expanded_keywords):
         documents = documents.copy()
