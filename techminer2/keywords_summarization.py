@@ -73,15 +73,7 @@ def keywords_summarization(
             th_keys.append(reversed_th[keyword])
         expanded_keywords = [text for key in th_keys for text in th[key]]
 
-        result = []
-        for x in expanded_keywords:
-            if "(" in x:
-                text_to_remove = x[x.find("(") : x.find(")") + 1]
-                x = x.replace(text_to_remove, "")
-                x = " ".join([w.strip() for w in x.split()])
-            result.append(x)
-
-        return result
+        return expanded_keywords
 
     def select_documents(documents, column, expanded_keywords):
         documents = documents.copy()
@@ -95,9 +87,13 @@ def keywords_summarization(
         return document_id
 
     def load_abstracts(documents_id, expanded_keywords):
+        expanded_keywords = expanded_keywords.copy()
         file_name = join(directory, "abstracts.csv")
         abstracts = pd.read_csv(file_name)
         abstracts = abstracts[abstracts.record_no.isin(documents_id)]
+        expanded_keywords = [
+            word.replace("(", "\(").replace(")", "\)") for word in expanded_keywords
+        ]
         regex = r"\b(" + "|".join(expanded_keywords) + r")\b"
         abstracts = abstracts[abstracts.text.str.contains(regex, regex=True)]
         return abstracts
