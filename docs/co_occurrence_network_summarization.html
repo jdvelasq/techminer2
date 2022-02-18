@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Thematic Map / Graph &mdash; TechMiner2 0.1.0 documentation</title>
+  <title>Co-occurrence Network / Summarization &mdash; TechMiner2 0.1.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
@@ -22,8 +22,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Thematic Map / Centrality Density Map" href="thematic_map_strategic_diagram.html" />
-    <link rel="prev" title="Thematic Map / Indicators" href="thematic_map_indicators.html" /> 
+    <link rel="next" title="Thematic Map / Communities" href="thematic_map_communities.html" />
+    <link rel="prev" title="Co-occurrence Network / Indicators" href="co_occurrence_network_indicators.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -71,11 +71,11 @@
 <li class="toctree-l3"><a class="reference internal" href="co_occurrence_network_degree_plot.html">Co-occurrence Network / Degree Plot</a></li>
 <li class="toctree-l3"><a class="reference internal" href="co_occurrence_network_graph.html">Co-occurrence Network / Graph</a></li>
 <li class="toctree-l3"><a class="reference internal" href="co_occurrence_network_indicators.html">Co-occurrence Network / Indicators</a></li>
-<li class="toctree-l3"><a class="reference internal" href="co_occurrence_network_summarization.html">Co-occurrence Network / Summarization</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Co-occurrence Network / Summarization</a></li>
 <li class="toctree-l3"><a class="reference internal" href="thematic_map_communities.html">Thematic Map / Communities</a></li>
 <li class="toctree-l3"><a class="reference internal" href="thematic_map_degree_plot.html">Thematic Map / Degree Plot</a></li>
 <li class="toctree-l3"><a class="reference internal" href="thematic_map_indicators.html">Thematic Map / Indicators</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Thematic Map / Graph</a></li>
+<li class="toctree-l3"><a class="reference internal" href="thematic_map_network.html">Thematic Map / Graph</a></li>
 <li class="toctree-l3"><a class="reference internal" href="thematic_map_strategic_diagram.html">Thematic Map / Centrality Density Map</a></li>
 <li class="toctree-l3"><a class="reference internal" href="thematic_map_summarization.html">Thematic Map / Summarization</a></li>
 <li class="toctree-l3"><a class="reference internal" href="thematic_evolution_plot.html">Thematic evolution plot</a></li>
@@ -115,9 +115,9 @@
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="_bibliometrix.html">Bibliometrix</a> &raquo;</li>
-      <li>Thematic Map / Graph</li>
+      <li>Co-occurrence Network / Summarization</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/thematic_map_network.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/co_occurrence_network_summarization.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -149,18 +149,26 @@
     text-align: unset;
 }
 </style>
-<span class="target" id="module-techminer2.thematic_map_network"></span><section id="thematic-map-graph">
-<h1>Thematic Map / Graph<a class="headerlink" href="#thematic-map-graph" title="Permalink to this headline"></a></h1>
+<span class="target" id="module-techminer2.co_occurrence_network_summarization"></span><section id="co-occurrence-network-summarization">
+<h1>Co-occurrence Network / Summarization<a class="headerlink" href="#co-occurrence-network-summarization" title="Permalink to this headline"></a></h1>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer2/data/&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer2/sphinx/images/thematic_map_network.png&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">thematic_map_network</span><span class="p">(</span><span class="s1">&#39;author_keywords&#39;</span><span class="p">,</span> <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">)</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">co_occurrence_network_summarization</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s1">&#39;author_keywords&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">min_occ</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">n_keywords</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">n_phrases</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">- INFO - Generating /workspaces/techminer2/data/keywords_summarization_CL_00.txt</span>
+<span class="go">- INFO - Generating /workspaces/techminer2/data/keywords_summarization_CL_01.txt</span>
+<span class="go">- INFO - Generating /workspaces/techminer2/data/keywords_summarization_CL_02.txt</span>
+<span class="go">- INFO - Generating /workspaces/techminer2/data/keywords_summarization_CL_03.txt</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/thematic_map_network.png"><img alt="_images/thematic_map_network.png" class="align-center" src="_images/thematic_map_network.png" style="width: 700px;" /></a>
 <dl class="py function">
-<dt class="sig sig-object py" id="techminer2.thematic_map_network.thematic_map_network">
-<span class="sig-prename descclassname"><span class="pre">techminer2.thematic_map_network.</span></span><span class="sig-name descname"><span class="pre">thematic_map_network</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_occ</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(8,</span> <span class="pre">8)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iterations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer2/thematic_map_network.html#thematic_map_network"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer2.thematic_map_network.thematic_map_network" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="techminer2.co_occurrence_network_summarization.co_occurrence_network_summarization">
+<span class="sig-prename descclassname"><span class="pre">techminer2.co_occurrence_network_summarization.</span></span><span class="sig-name descname"><span class="pre">co_occurrence_network_summarization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_occ</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_occ</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clustering_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'louvain'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">manifold_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_keywords</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_phrases</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer2/co_occurrence_network_summarization.html#co_occurrence_network_summarization"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer2.co_occurrence_network_summarization.co_occurrence_network_summarization" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </section>
@@ -169,8 +177,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="thematic_map_indicators.html" class="btn btn-neutral float-left" title="Thematic Map / Indicators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="thematic_map_strategic_diagram.html" class="btn btn-neutral float-right" title="Thematic Map / Centrality Density Map" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="co_occurrence_network_indicators.html" class="btn btn-neutral float-left" title="Co-occurrence Network / Indicators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="thematic_map_communities.html" class="btn btn-neutral float-right" title="Thematic Map / Communities" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -19,7 +19,7 @@ Visualization API
    _vbar_chart
    _word_cloud
    _world_map
-   _sankey_diagram
+
 
 .. toctree::
    :maxdepth: 1

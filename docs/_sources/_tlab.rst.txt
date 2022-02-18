@@ -137,5 +137,5 @@ Preprocessing options available in the menu of the application.
 
         abstract_screening
         abstract_summarization
-
+        keywords_summarization
 

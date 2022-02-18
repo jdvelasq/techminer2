@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Abstract Summarization &mdash; TechMiner2 0.1.0 documentation</title>
+  <title>Keywords Summarization &mdash; TechMiner2 0.1.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
@@ -22,8 +22,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Keywords Summarization" href="keywords_summarization.html" />
-    <link rel="prev" title="Abstract Screening" href="abstract_screening.html" /> 
+    <link rel="next" title="VantagePoint" href="_vantagepoint.html" />
+    <link rel="prev" title="Abstract Summarization" href="abstract_summarization.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -66,8 +66,8 @@
 <li class="toctree-l2"><a class="reference internal" href="_tlab.html#comparative-analysis">Comparative Analysis</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="_tlab.html#lexical-and-other-tools">Lexical and other tools</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="abstract_screening.html">Abstract Screening</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Abstract Summarization</a></li>
-<li class="toctree-l3"><a class="reference internal" href="keywords_summarization.html">Keywords Summarization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="abstract_summarization.html">Abstract Summarization</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Keywords Summarization</a></li>
 </ul>
 </li>
 </ul>
@@ -96,9 +96,9 @@
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="_tlab.html">T-Lab</a> &raquo;</li>
-      <li>Abstract Summarization</li>
+      <li>Keywords Summarization</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/abstract_summarization.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/keywords_summarization.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -130,43 +130,22 @@
     text-align: unset;
 }
 </style>
-<span class="target" id="module-techminer2.abstract_summarization"></span><section id="abstract-summarization">
-<h1>Abstract Summarization<a class="headerlink" href="#abstract-summarization" title="Permalink to this headline"></a></h1>
+<span class="target" id="module-techminer2.keywords_summarization"></span><section id="keywords-summarization">
+<h1>Keywords Summarization<a class="headerlink" href="#keywords-summarization" title="Permalink to this headline"></a></h1>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer2/data/&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">abstract_summarization</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">texts</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;fintech&quot;</span><span class="p">,</span> <span class="s2">&quot;blockchain&quot;</span><span class="p">],</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">keywords_summarization</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">column</span><span class="o">=</span><span class="s2">&quot;author_keywords&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">keywords</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;fintech&quot;</span><span class="p">,</span> <span class="s2">&quot;block-chain&quot;</span><span class="p">],</span>
 <span class="gp">... </span>    <span class="n">n_phrases</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
-<span class="go">The research on data science and ai in FINTECH involves many latest progress made in smart</span>
-<span class="go">FINTECH for bankingtech, tradetech, lendtech, insurtech, wealthtech, paytech, risktech,</span>
-<span class="go">cryptocurrencies, and BLOCKCHAIN, and the dsai techniques including complex system</span>
-<span class="go">methods, quantitative methods, intelligent interactions, recognition and responses, data</span>
-<span class="go">analytics, deep learning, federated learning, privacy-preserving processing, augmentation,</span>
-<span class="go">optimization, and system intelligence enhancement... From the theoretical point of view,</span>
-<span class="go">our research indicates, that besides key growth driving factors, outlined in existing</span>
-<span class="go">literature, such as strategy, prerequisites for rapid growth, business model choice,</span>
-<span class="go">international business networks, entrepreneur&#39;s characteristics, product development or</span>
-<span class="go">theoretical frameworks for development, especially within the international market, the</span>
-<span class="go">quality of digital logistics performance of FINTECH companies seem to matter... Internet</span>
-<span class="go">banking, mobile banking, atm,cash deposit machines, instant payment services, online</span>
-<span class="go">trading in stock markets, online funds transfers, e-wallets,wealth management, peer to</span>
-<span class="go">peer lending, BLOCKCHAIN technology are various FINTECH products and services... The most</span>
-<span class="go">important factors that influence the level of satisfaction when using FINTECH services</span>
-<span class="go">were considered: comfort and ease of use, legal regulations, ease of account opening,</span>
-<span class="go">mobile payments features, crowdfunding options, international money transfers features,</span>
-<span class="go">reduced costs associated with transactions, peer-to-peer lending, insurances options,</span>
-<span class="go">online brokerage, cryptocoins options and exchange options... Fourth, the traditional</span>
-<span class="go">assets, gold and oil, as well as modern assets, green bonds, are useful as good hedgers</span>
-<span class="go">compared with other assets because shock transmissions from them to FINTECH, kftx are</span>
-<span class="go">below 0.1% and, more importantly, the total volatility spill-over of all assets in the</span>
-<span class="go">sample is moderately average, accounting for 44.39%.</span>
+<span class="go">- INFO - Generating /workspaces/techminer2/data/keywords_summarization.txt</span>
 </pre></div>
 </div>
 <dl class="py function">
-<dt class="sig sig-object py" id="techminer2.abstract_summarization.abstract_summarization">
-<span class="sig-prename descclassname"><span class="pre">techminer2.abstract_summarization.</span></span><span class="sig-name descname"><span class="pre">abstract_summarization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_phrases</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sufix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer2/abstract_summarization.html#abstract_summarization"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer2.abstract_summarization.abstract_summarization" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="techminer2.keywords_summarization.keywords_summarization">
+<span class="sig-prename descclassname"><span class="pre">techminer2.keywords_summarization.</span></span><span class="sig-name descname"><span class="pre">keywords_summarization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keywords</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_phrases</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sufix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer2/keywords_summarization.html#keywords_summarization"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer2.keywords_summarization.keywords_summarization" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </section>
@@ -175,8 +154,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="abstract_screening.html" class="btn btn-neutral float-left" title="Abstract Screening" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="keywords_summarization.html" class="btn btn-neutral float-right" title="Keywords Summarization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="abstract_summarization.html" class="btn btn-neutral float-left" title="Abstract Summarization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="_vantagepoint.html" class="btn btn-neutral float-right" title="VantagePoint" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

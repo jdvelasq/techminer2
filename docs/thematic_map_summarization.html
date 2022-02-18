@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thematic Map / Summarization &mdash; TechMiner2 0.1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Thematic evolution plot" href="thematic_evolution_plot.html" />
+    <link rel="prev" title="Thematic Map / Centrality Density Map" href="thematic_map_strategic_diagram.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> TechMiner2
+          </a>
+              <div class="version">
+                0.1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_info.html">Release Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">MIT License</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Data</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="import_references.html">Import References File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coverage.html">Coverage</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Software comparison</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="_bibliometrix.html">Bibliometrix</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#data">Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#filter">Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#dataset">Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#sources">Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#authors">Authors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#documents">Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#clustering">Clustering</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="_bibliometrix.html#conceptual-structure">Conceptual Structure</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="co_occurrence_network_communities.html">Co-occurrence Network / Communities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="co_occurrence_network_degree_plot.html">Co-occurrence Network / Degree Plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="co_occurrence_network_graph.html">Co-occurrence Network / Graph</a></li>
+<li class="toctree-l3"><a class="reference internal" href="co_occurrence_network_indicators.html">Co-occurrence Network / Indicators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="co_occurrence_network_summarization.html">Co-occurrence Network / Summarization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="thematic_map_communities.html">Thematic Map / Communities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="thematic_map_degree_plot.html">Thematic Map / Degree Plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="thematic_map_indicators.html">Thematic Map / Indicators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="thematic_map_network.html">Thematic Map / Graph</a></li>
+<li class="toctree-l3"><a class="reference internal" href="thematic_map_strategic_diagram.html">Thematic Map / Centrality Density Map</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Thematic Map / Summarization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="thematic_evolution_plot.html">Thematic evolution plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="factorial_analysis_mds_communities.html">Factorial analysis using MDS and agglomerative clustering / Communities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="factorial_analysis_mds_data.html">Factorial analysis using MDS and agglomerative clustering / Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="factorial_analysis_mds_map.html">Factorial analysis using MDS and agglomerative clustering / Map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="factorial_analysis_mds_silhouette_scores.html">Factorial analysis using MDS and agglomerative clustering / Silhouette scores</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#intellectual-structure">Intellectual Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#social-structure">Social Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="_scientopy.html">ScientoPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_tlab.html">T-Lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_vantagepoint.html">VantagePoint</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Low level API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="_api_visualization.html">Visualization API</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">TechMiner2</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="_bibliometrix.html">Bibliometrix</a> &raquo;</li>
+      <li>Thematic Map / Summarization</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/thematic_map_summarization.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<span class="target" id="module-techminer2.thematic_map_summarization"></span><section id="thematic-map-summarization">
+<h1>Thematic Map / Summarization<a class="headerlink" href="#thematic-map-summarization" title="Permalink to this headline"></a></h1>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer2/data/&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">thematic_map_summarization</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s1">&#39;author_keywords&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">min_occ</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">n_keywords</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">n_phrases</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">The research on data science and ai in FINTECH involves many latest progress made in smart</span>
+<span class="go">FINTECH for BANKingtech, tradetech, lendtech, insurtech, wealthtech, paytech, risktech,</span>
+<span class="go">cryptocurrencies, and blockchain, and the dsai techniques including complex system</span>
+<span class="go">methods, quantitative methods, intelligent interactions, recognition and responses, data</span>
+<span class="go">analytics, deep learning, federated learning, privacy-preserving processing, augmentation,</span>
+<span class="go">optimization, and system intelligence enhancement... From the theoretical point of view,</span>
+<span class="go">our research indicates, that besides key growth driving factors, outlined in existing</span>
+<span class="go">literature, such as strategy, prerequisites for rapid growth, business model choice,</span>
+<span class="go">international business networks, entrepreneur&#39;s characteristics, product development or</span>
+<span class="go">theoretical frameworks for development, especially within the international market, the</span>
+<span class="go">quality of digital logistics performance of FINTECH companies seem to matter... Internet</span>
+<span class="go">BANKing, mobile BANKing, atm,cash deposit machines, instant payment services, online</span>
+<span class="go">trading in stock markets, online funds transfers, e-wallets,wealth management, peer to</span>
+<span class="go">peer lending, blockchain technology are various FINTECH products and services.</span>
+
+<span class="go">Overall, the interconnectedness of the cross-sector fintech beyond the fintech sectors</span>
+<span class="go">drives the fuzzy boundaries between ECOSYSTEMs, established business models, terminology</span>
+<span class="go">definitions, ECOSYSTEM actors roles and relationships, which appear to become more</span>
+<span class="go">heterogeneous and changeable over time... Several factors are included in the analysis,</span>
+<span class="go">controlling for the hedonics of the fintech, including the business model, availability of</span>
+<span class="go">and access to finance, and business ECOSYSTEM framework... We conceptualise three</span>
+<span class="go">practices, as building blocks at the ECOSYSTEM level, through which incumbents and new</span>
+<span class="go">entrants shape financial inclusion: (1) innovative and collaborative practices, (2)</span>
+<span class="go">protectionist and equitable practices, and (3) legitimising and sustaining practices.</span>
+
+<span class="go">The most important factors that influence the level of satisfaction when using fintech</span>
+<span class="go">services were considered: comfort and ease of use, legal regulations, ease of account</span>
+<span class="go">opening, mobile payments features, crowdfunding options, international money transfers</span>
+<span class="go">features, reduced costs associated with transactions, PEER-TO-PEER LENDING, insurances</span>
+<span class="go">options, online brokerage, cryptocoins options and exchange options... The application of</span>
+<span class="go">a series of artificial intelligence technologies such as data mining, accurate profiling,</span>
+<span class="go">machine learning, neural networks, will provide financial products, service channels,</span>
+<span class="go">service methods, RISK management, credit financing and investment decision-making have</span>
+<span class="go">brought about a new round of changes... This study mainly focuses on how different</span>
+<span class="go">cognitive factors such as perceived expenditure, ease of time, level of RISK, service</span>
+<span class="go">quality, frequent use of automated tools, socio cultural factors, perceived TRUST,</span>
+<span class="go">perceived usability and perceived convenience to use influence the users motive to adopt</span>
+<span class="go">and utilise the financial technology.</span>
+
+<span class="go">From the theoretical point of view, our research indicates, that besides key growth</span>
+<span class="go">driving factors, outlined in existing literature, such as strategy, prerequisites for</span>
+<span class="go">rapid growth, business model choice, international business networks, entrepreneur&#39;s</span>
+<span class="go">characteristics, product development or theoretical frameworks for development, especially</span>
+<span class="go">within the international market, the quality of DIGITAL logistics performance of fintech</span>
+<span class="go">companies seem to matter... The most important factors that influence the level of</span>
+<span class="go">satisfaction when using fintech services were considered: comfort and ease of use, legal</span>
+<span class="go">regulations, ease of account opening, mobile payments features, CROWDFUNDING options,</span>
+<span class="go">international money transfers features, reduced costs associated with transactions, peer-</span>
+<span class="go">to-peer lending, insurances options, online brokerage, cryptocoins options and exchange</span>
+<span class="go">options... These research streams are related to cryptocurrencies, smart contracts,</span>
+<span class="go">financial technology, financial industry stability, service, innovation, regulatory</span>
+<span class="go">technology (REGTECH), and machine learning and deep learning innovations.</span>
+
+<span class="go">The research on data science and ai in fintech involves many latest progress made in smart</span>
+<span class="go">fintech for bankingtech, tradetech, lendtech, insurtech, wealthtech, paytech, risktech,</span>
+<span class="go">CRYPTOCURRENCIES, and blockchain, and the dsai techniques including complex system</span>
+<span class="go">methods, quantitative methods, intelligent interactions, recognition and responses, data</span>
+<span class="go">analytics, deep learning, federated learning, privacy-preserving processing, augmentation,</span>
+<span class="go">optimization, and system intelligence enhancement... From the theoretical point of view,</span>
+<span class="go">our research indicates, that besides key growth driving factors, outlined in existing</span>
+<span class="go">literature, such as strategy, prerequisites for rapid growth, business model choice,</span>
+<span class="go">international business networks, entrepreneur&#39;s characteristics, product development or</span>
+<span class="go">theoretical frameworks for development, especially within the international market, the</span>
+<span class="go">quality of digital logistics performance of fintech companies seem to matter... The most</span>
+<span class="go">important factors that influence the level of satisfaction when using fintech services</span>
+<span class="go">were considered: comfort and ease of use, legal regulations, ease of account opening,</span>
+<span class="go">mobile payments features, crowdfunding options, international money transfers features,</span>
+<span class="go">reduced costs associated with transactions, peer-to-peer lending, insurances options,</span>
+<span class="go">online brokerage, cryptocoins options and exchange options.</span>
+</pre></div>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py" id="techminer2.thematic_map_summarization.thematic_map_summarization">
+<span class="sig-prename descclassname"><span class="pre">techminer2.thematic_map_summarization.</span></span><span class="sig-name descname"><span class="pre">thematic_map_summarization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_occ</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_occ</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_keywords</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_phrases</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer2/thematic_map_summarization.html#thematic_map_summarization"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer2.thematic_map_summarization.thematic_map_summarization" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="thematic_map_strategic_diagram.html" class="btn btn-neutral float-left" title="Thematic Map / Centrality Density Map" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="thematic_evolution_plot.html" class="btn btn-neutral float-right" title="Thematic evolution plot" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
