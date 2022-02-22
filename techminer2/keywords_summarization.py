@@ -17,7 +17,6 @@ Keywords Summarization
 
 import textwrap
 from os.path import isfile, join
-from xml.dom import WRONG_DOCUMENT_ERR
 
 import pandas as pd
 
@@ -66,7 +65,8 @@ def keywords_summarization(
 
         for keyword in expanded_keywords:
             documents.loc[
-                documents.abstract.str.contains(keyword, regex=False), "_points_"
+                documents.abstract.str.contains(keyword, regex=False, na=False),
+                "_points_",
             ] += 1
 
         #
