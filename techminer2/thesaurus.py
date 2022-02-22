@@ -75,12 +75,15 @@ def text_clustering(x, name_strategy="mostfrequent", key="porter", transformer=N
         ("type2 ", "type-2 "),
         ("interval type ", "type "),
         ("forecasting", "prediction"),
+        ("forecast", "prediction"),
         ("type2-fuzzy", "type-2 fuzzy"),
         ("1-dimensional ", "one-dimensional "),
         (" neural-net ", " neural network "),
         ("optimisation", "optimization"),
         ("-", " "),
         ("artificial neural network", "neural network"),
+        ("solar irradiance", "solar radiation"),
+        ("solar irradiation", "solar radiation"),
     ]
     for to_replace, value in replacements:
         x["word_alt"] = x["word_alt"].map(lambda w: w.replace(to_replace, value))
