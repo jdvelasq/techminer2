@@ -60,6 +60,7 @@ Concordances
         :maxdepth: 1
 
         abstract_concordances
+        keyword_concordances
 
 
 
