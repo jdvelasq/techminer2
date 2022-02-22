@@ -64,6 +64,7 @@ def keywords_summarization(
                 documents.document_title.str.contains(keyword, regex=False), "_points_"
             ] += 3
 
+        for keyword in expanded_keywords:
             documents.loc[
                 documents.abstract.str.contains(keyword, regex=False), "_points_"
             ] += 1
@@ -85,6 +86,7 @@ def keywords_summarization(
 
         for keyword in expanded_keywords:
             keyword = keyword.replace("(", "\(").replace(")", "\)")
+            keyword = keyword.replace("[", "\[").replace("]", "\]")
             documents["document_title"] = documents["document_title"].str.replace(
                 r"\b" + keyword + r"\b", keyword.upper()
             )
