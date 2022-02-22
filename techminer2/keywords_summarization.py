@@ -144,7 +144,8 @@ def keywords_summarization(
                         continue
 
                     if column == "abstract":
-                        if row[column] is not None:
+                        print(type())
+                        if row[column] is not pd.NA:
                             print("            abstract :", end="", file=out_file)
                             print(
                                 textwrap.fill(
