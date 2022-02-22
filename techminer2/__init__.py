@@ -87,6 +87,7 @@ from .gantt_chart import gantt_chart
 from .hbar_chart import hbar_chart
 from .import_references import import_references
 from .import_scopus_file import import_scopus_file
+from .keyword_concordances import keyword_concordances
 from .keywords_summarization import keywords_summarization
 from .line_chart import line_chart
 from .lotka_law import lotka_law
