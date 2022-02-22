@@ -145,7 +145,7 @@ def keywords_summarization(
 
                     if column == "abstract":
 
-                        if row[column] is not pd.NA:
+                        if not isinstance(row[column], float):
                             print("            abstract :", end="", file=out_file)
                             print(
                                 textwrap.fill(
@@ -157,7 +157,7 @@ def keywords_summarization(
                                 )[22:],
                                 file=out_file,
                             )
-                            continue
+                        continue
 
                     print(" {:>19} : {}".format(column, row[column]), file=out_file)
 
