@@ -144,18 +144,19 @@ def keywords_summarization(
                         continue
 
                     if column == "abstract":
-                        print("            abstract :", end="", file=out_file)
-                        print(
-                            textwrap.fill(
-                                row[column],
-                                width=115,
-                                initial_indent=" " * 23,
-                                subsequent_indent=" " * 23,
-                                fix_sentence_endings=True,
-                            )[22:],
-                            file=out_file,
-                        )
-                        continue
+                        if row[column] is not None:
+                            print("            abstract :", end="", file=out_file)
+                            print(
+                                textwrap.fill(
+                                    row[column],
+                                    width=115,
+                                    initial_indent=" " * 23,
+                                    subsequent_indent=" " * 23,
+                                    fix_sentence_endings=True,
+                                )[22:],
+                                file=out_file,
+                            )
+                            continue
 
                     print(" {:>19} : {}".format(column, row[column]), file=out_file)
 
