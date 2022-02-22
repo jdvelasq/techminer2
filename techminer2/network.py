@@ -131,7 +131,9 @@ def network(
 
     # -------------------------------------------------------------------------
     cluster_members = indicators_table.copy()
-    cluster_members = cluster_members.sort_values(by=["cluster", "num_documents"])
+    cluster_members = cluster_members.sort_values(
+        by=["cluster", "num_documents", "global_citations", "node"]
+    )
     cluster_members = cluster_members.assign(
         rn=cluster_members.groupby("cluster").cumcount(())
     )
