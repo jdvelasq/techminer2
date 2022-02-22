@@ -192,6 +192,9 @@ def _process_abstract_column(documents):
         # ---------------------------------------------------------------------
         documents = documents.copy()
         documents.abstract = documents.abstract.str.lower()
+        documents.loc[
+            documents.abstract == "[no abstract available]", "abstract"
+        ] = None
         documents.abstract = documents.abstract.map(
             lambda x: x[0 : x.find("\u00a9")] if not pd.isna(x) else x
         )
