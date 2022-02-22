@@ -330,7 +330,8 @@ def thematic_evolution_plot(
             method="first", ascending=False
         )
         indicator = indicator.query("rnk == 1").sort_values(
-            by=["cluster", "num_documents"], ascending=[True, False]
+            by=["cluster", "num_documents", "global_citations", "node"],
+            ascending=[True, False, False, True],
         )
         new_names = {f"CL_{i}": k for i, k in enumerate(indicator.keyword.tolist())}
 
