@@ -70,6 +70,7 @@ def abstract_concordances(text, top_n=50, directory="./"):
             print("*** " + document_id, file=out_file)
             print(paragraph, file=out_file)
             print("", file=out_file)
+
     logging.info("Abstract concordances report generated.")
 
     # ---< Display results >-------------------------------------------------------------
