@@ -75,7 +75,7 @@ def keyword_concordances(keyword, top_n=50, directory="./"):
         )
 
     # ---< Writes the report >-----------------------------------------------------------
-    with open(join(directory, "abstract_concordantes.txt"), "w") as out_file:
+    with open(join(directory, "keyword_concordances.txt"), "w") as out_file:
 
         for _, row in abstracts.iterrows():
 
@@ -90,6 +90,7 @@ def keyword_concordances(keyword, top_n=50, directory="./"):
             print("*** " + document_id, file=out_file)
             print(paragraph, file=out_file)
             print("", file=out_file)
+
     logging.info("Abstract concordances report generated.")
 
     # ---< Display results >-------------------------------------------------------------
