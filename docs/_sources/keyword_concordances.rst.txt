@@ -1,4 +1,4 @@
-.. automodule:: techminer2.kewords_concordances
+.. automodule:: techminer2.keyword_concordances
     :members:
     :undoc-members:
     :show-inheritance:
