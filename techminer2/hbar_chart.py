@@ -6,8 +6,8 @@ Hbar Chart
 >>> directory = "/workspaces/techminer2/data/"
 >>> file_name = "/workspaces/techminer2/sphinx/images/hbar_chart.png"
 >>> hbar_chart(
-...     'author_keywords', 
-...     top_n=20, 
+...     'author_keywords',
+...     top_n=20,
 ...     directory=directory,
 ... ).savefig(file_name)
 
