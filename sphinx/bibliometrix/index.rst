@@ -14,25 +14,17 @@ a part of TechMiner's capabilities, and in this sense, Bibliometrix contains onl
 subset of the analytical capabilities of TechMiner.
 
    .. toctree::
+      :hidden:
+      :maxdepth: 0
 
+      data/_index
+      filter/_index
       dataset/_index
+      sources/_index
+      
 
 
-
-
-Data
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-   See ``Import Scopus Files`` in `Data <_user_data.html>`__. 
-
-
-Filter
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-   .. toctree::
-
-      user_filters 
-
+  
 
 
 
@@ -50,17 +42,7 @@ dataset/three_fields_plot
 
 
 
-Sources
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-   .. toctree::
-
-      most_relevant_sources
-      most_local_cited_sources
-      bradford_law
-      core_sources 
-      source_local_impact
-      source_dynamics
 
 
 
@@ -114,6 +96,7 @@ Documents
 
 
    .. toctree::
+      :caption: Documents
       :maxdepth: 1
 
       most_global_cited_documents
