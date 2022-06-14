@@ -13,6 +13,10 @@ tool by users. It should be noted that the functions presented in this section c
 a part of TechMiner's capabilities, and in this sense, Bibliometrix contains only a 
 subset of the analytical capabilities of TechMiner.
 
+   .. toctree::
+
+      dataset/_index
+
 
 
 
@@ -30,15 +34,16 @@ Filter
       user_filters 
 
 
-Dataset
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-   .. toctree::
 
-      dataset/main_information
-      dataset/annual_scientific_production
-      dataset/average_citations_per_year
-      dataset/three_fields_plot
+.. Dataset
+.. ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+      
+dataset/main_information
+dataset/annual_scientific_production
+dataset/average_citations_per_year
+dataset/three_fields_plot
 
        
 
