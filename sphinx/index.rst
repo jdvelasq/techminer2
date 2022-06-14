@@ -41,17 +41,17 @@ package developed and tested in Python version 3.6.
     :hidden:
     :maxdepth: 1
     
-    data/import_scopus_file
-    data/import_references
-    data/coverage
+    import_scopus_file
+    import_references
+    coverage
 
 
 .. toctree::
     :caption: Software comparison
     :hidden:
-    :maxdepth: 0
+    :maxdepth: 1
 
-    bibliometrix/index
+    _bibliometrix
     _scientopy
     _tlab
     _vantagepoint
