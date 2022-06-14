@@ -49,7 +49,7 @@ package developed and tested in Python version 3.6.
 .. toctree::
     :caption: Software comparison
     :hidden:
-    :maxdepth: 1
+    :maxdepth: 0
 
     bibliometrix/index
     _scientopy
