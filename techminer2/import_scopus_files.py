@@ -6,32 +6,34 @@ Import a scopus file to a working directory.
 
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
->>> import_scopus_file(directory, disable_progress_bar=True)
-- INFO - 248 raw records found in /workspaces/techminer2/data/raw-documents.csv.
-- INFO - Main abstract texts saved to /workspaces/techminer2/data/abstracts.csv
+>>> import_scopus_files(directory, disable_progress_bar=True)
+- INFO - 248 raw records found in /workspaces/techminer2/data/raw/documents.
 - INFO - Computing Bradford Law Zones ...
 - INFO - Searching local references using DOI ...
 - INFO - Searching local references using document titles ...
 - INFO - Consolidating local references ...
 - INFO - Computing local citations ...
 - INFO - Computing Bradford Law Zones ...
-- INFO - Documents saved/merged to '/workspaces/techminer2/data/documents.csv'
+- INFO - Main abstract texts saved to /workspaces/techminer2/data/processed/abstracts.csv
+- INFO - Documents saved/merged to '/workspaces/techminer2/data/processed/documents.csv'
 - INFO - Post-processing docuemnts ...
 - INFO - Creating institutions thesaurus ...
+- INFO - Affiliations without country detected - check file /workspaces/techminer2/data/processed/ignored_affiliations.txt
 - INFO - Affiliations without country detected - check file /workspaces/techminer2/data/ignored_affiliations.txt
-- INFO - Affiliations without country detected - check file /workspaces/techminer2/data/ignored_affiliations.txt
-- INFO - Thesaurus file '/workspaces/techminer2/data/institutions.txt' created.
+- INFO - Thesaurus file '/workspaces/techminer2/data/processed/institutions.txt' created.
 - INFO - Creating keywords thesaurus ...
-- INFO - Thesaurus file '/workspaces/techminer2/data/keywords.txt' created.
+- INFO - Thesaurus file '/workspaces/techminer2/data/processed/keywords.txt' created.
 - INFO - Applying thesaurus to institutions ...
 - INFO - Extract and cleaning institutions.
 - INFO - Extracting institution of first author ...
+- INFO - Documents saved/merged to '/workspaces/techminer2/data/processed/documents.csv'
 - INFO - The thesaurus was applied to institutions.
 - INFO - Applying thesaurus to 'raw_author_keywords' column ...
 - INFO - Applying thesaurus to 'raw_index_keywords' column...
 - INFO - Applying thesaurus to 'raw_nlp_document_title' column...
 - INFO - Applying thesaurus to 'raw_nlp_abstract' column...
 - INFO - Applying thesaurus to 'raw_nlp_phrases' column...
+- INFO - Documents saved/merged to '/workspaces/techminer2/data/processed/documents.csv'
 - INFO - The thesaurus was applied to all keywords.
 - INFO - Process finished!!!
 
@@ -48,9 +50,11 @@ Import a scopus file to a working directory.
 # pylint: disable=consider-using-with
 
 
+import os
+import os.path
+
 # -----< NLP Phrases >----------------------------------------------
 import string
-from os.path import dirname, isfile, join
 
 import numpy as np
 import pandas as pd
@@ -65,7 +69,9 @@ from .clean_keywords import clean_keywords
 from .create_institutions_thesaurus import create_institutions_thesaurus
 from .create_keywords_thesaurus import create_keywords_thesaurus
 from .extract_country import extract_country
+from .load_raw_csv_files import load_raw_csv_files
 from .map_ import map_
+from .save_documents import save_documents
 
 
 def _check_nlp_phrase(phrase):
@@ -113,6 +119,84 @@ def _check_nlp_phrase(phrase):
     return True
 
 
+def import_scopus_files(
+    directory="./",
+    use_nlp_phrases=False,
+    disable_progress_bar=False,
+):
+    documents = load_raw_csv_files(os.path.join(directory, "raw", "documents"))
+    documents = _process_documents(documents, disable_progress_bar)
+    _create_abstracts_csv(documents, directory)
+    save_documents(documents, directory)
+
+    _create_stopwords_file(directory)
+    _update_filter_file(documents, directory)
+    logging.info("Post-processing docuemnts ...")
+
+    create_institutions_thesaurus(directory=directory)
+    create_keywords_thesaurus(
+        directory=directory,
+        use_nlp_phrases=use_nlp_phrases,
+    )
+    clean_institutions(directory=directory)
+    clean_keywords(directory=directory)
+    # -----------------------------------------------------------------------------------
+    logging.info("Process finished!!!")
+
+
+def _create_stopwords_file(directory):
+    open(
+        os.path.join(directory, "processed", "stopwords.txt"),
+        "a",
+        encoding="utf-8",
+    ).close()
+
+
+#
+#
+#
+def _process_documents(documents, disable_progress_bar):
+    documents = _delete_null_columns(documents)
+    documents = _delete_and_rename_columns(documents)
+    documents = _process_abstract_column(documents)
+    documents = _process_document_title_column(documents)
+    documents = _remove_accents(documents)
+    documents = _process_authors_id_column(documents)
+    documents = _process_raw_authors_names_column(documents)
+    documents = _disambiguate_authors(documents)
+    documents = _process_doi_column(documents)
+    documents = _process_source_name_column(documents)
+    documents = _process_iso_source_name_column(documents)
+    documents = _search_for_new_iso_source_name(documents)
+    documents = _complete_iso_source_name_colum(documents)
+    documents = _repair_iso_source_names_column(documents)
+    documents = _create_record_no(documents)
+    documents = _create_document_id(documents)
+    documents = _process_document_type_columns(documents)
+    documents = _process_affiliations_column(documents)
+    documents = _process_author_keywords_column(documents)
+    documents = _process_index_keywords_column(documents)
+    documents = _create_keywords_column(documents)
+    documents = _create_nlp_phrases_column(documents)
+    documents = _process_global_citations_column(documents)
+    documents = _process_global_references_column(documents)
+    documents = _process_eissn_column(documents)
+    documents = _process_issn_column(documents)
+    documents = _compute_bradford_law_zones(documents)
+    # -----------------------------------------------------------------------------------
+    documents = documents.assign(local_references=[[] for _ in range(len(documents))])
+    documents = _create_local_references_using_doi(
+        documents, disable_progress_bar=disable_progress_bar
+    )
+    documents = _create_local_references_using_title(
+        documents, disable_progress_bar=disable_progress_bar
+    )
+    documents = _consolidate_local_references(documents)
+    documents = _compute_local_citations(documents)
+    documents = _compute_bradford_law_zones(documents)
+    return documents
+
+
 # -----< Dataset Trasformations >----------------------------------------------
 
 
@@ -128,8 +212,8 @@ def _delete_null_columns(documents):
 
 def _delete_and_rename_columns(documents):
     documents = documents.copy()
-    module_path = dirname(__file__)
-    file_path = join(module_path, "files/scopus2tags.csv")
+    module_path = os.path.dirname(__file__)
+    file_path = os.path.join(module_path, "files/scopus2tags.csv")
 
     columns_to_tags = {}
     columns_to_delete = []
@@ -153,15 +237,6 @@ def _delete_and_rename_columns(documents):
 def _remove_accents(documents):
     documents = documents.copy()
     cols = documents.select_dtypes(include=[np.object]).columns
-    # for col in cols:
-    #     documents[col] = (
-    #         documents[col]
-    #         .astype(str)
-    #         .str.normalize("NFKD")
-    #         .str.encode("ascii", errors="ignore")
-    #         .str.decode("utf-8")
-    #     )
-
     documents[cols] = documents[cols].apply(
         lambda x: x.str.normalize("NFKD")
         .str.encode("ascii", errors="ignore")
@@ -185,8 +260,8 @@ def _process_document_type_columns(documents):
 def _process_abstract_column(documents):
     if "abstract" in documents.columns:
         # ---------------------------------------------------------------------
-        module_path = dirname(__file__)
-        file_path = join(module_path, "files/nlp_phrases.txt")
+        module_path = os.path.dirname(__file__)
+        file_path = os.path.join(module_path, "files/nlp_phrases.txt")
         with open(file_path, "r", encoding="utf-8") as file:
             nlp_stopwords = [line.strip() for line in file]
         # ---------------------------------------------------------------------
@@ -252,8 +327,8 @@ def _process_document_title_column(documents):
         lambda x: x[0 : x.find("[")] if pd.isna(x) is False and x[-1] == "]" else x
     )
     # ---------------------------------------------------------------------
-    module_path = dirname(__file__)
-    file_path = join(module_path, "files/nlp_phrases.txt")
+    module_path = os.path.dirname(__file__)
+    file_path = os.path.join(module_path, "files/nlp_phrases.txt")
     with open(file_path, "r", encoding="utf-8") as file:
         nlp_stopwords = [line.strip() for line in file]
     # ---------------------------------------------------------------------
@@ -437,8 +512,8 @@ def _search_for_new_iso_source_name(documents):
         current_iso_names = current_iso_names.drop_duplicates("source_name")
 
         # adds the abbreviations the the current file
-        module_path = dirname(__file__)
-        file_path = join(module_path, "files/iso_source_names.csv")
+        module_path = os.path.dirname(__file__)
+        file_path = os.path.join(module_path, "files/iso_source_names.csv")
         pdf = pd.read_csv(file_path, sep=",")
         pdf = pd.concat([pdf, current_iso_names])
         pdf = pdf.sort_values(by=["source_name", "iso_source_name"])
@@ -454,8 +529,8 @@ def _complete_iso_source_name_colum(documents):
         # Loads existent iso source names and make a dictionary
         # to translate source names to iso source names
         #
-        module_path = dirname(__file__)
-        file_path = join(module_path, "files/iso_source_names.csv")
+        module_path = os.path.dirname(__file__)
+        file_path = os.path.join(module_path, "files/iso_source_names.csv")
         pdf = pd.read_csv(file_path, sep=",")
         existent_names = dict(zip(pdf.source_name, pdf.iso_source_name))
 
@@ -778,7 +853,7 @@ def _disambiguate_authors(documents):
 
 def _update_filter_file(documents, directory):
 
-    yaml_filename = join(directory, "filter.yaml")
+    yaml_filename = os.path.join(directory, "processed", "filter.yaml")
 
     filter_ = {}
     filter_["first_year"] = int(documents.pub_year.min())
@@ -847,22 +922,9 @@ def _create_abstracts_csv(documents, directory):
             ]
         ]
         # save to disk
-        file_name = join(directory, "abstracts.csv")
+        file_name = os.path.join(directory, "processed", "abstracts.csv")
         abstracts.to_csv(file_name, index=False)
         logging.info(f"Main abstract texts saved to {file_name}")
-
-
-def _load_raw_data_file(file_name):
-    if not isfile(file_name):
-        raise FileNotFoundError(f"File {file_name} not found")
-    pdf = pd.read_csv(
-        file_name,
-        encoding="utf-8",
-        error_bad_lines=False,
-        warn_bad_lines=True,
-    )
-    logging.info(f"{pdf.shape[0]} raw records found in {file_name}.")
-    return pdf
 
 
 def _make_documents(scopus, cited_by, references):
@@ -914,89 +976,6 @@ def _make_documents(scopus, cited_by, references):
     documents["references_group"] = documents.references_group.astype(bool)
 
     return documents
-
-
-#
-#
-#
-def import_scopus_file(
-    directory="./",
-    scopus_file="raw-documents.csv",
-    use_nlp_phrases=True,
-    disable_progress_bar=False,
-):
-    # ---< only scopus >-----------------------------------------------------------------
-    # cited_by = _load_raw_data_file(join(directory, "raw_cited_by.csv"))
-    # references = _load_raw_data_file(join(directory, "raw_references.csv"))
-    # documents = _make_documents(scopus, cited_by, references)
-    # -----------------------------------------------------------------------------------
-    documents = _load_raw_data_file(join(directory, scopus_file))
-    stopwords_file = join(directory, "stopwords.txt")
-    open(stopwords_file, "a", encoding="utf-8").close()
-    # -----------------------------------------------------------------------------------
-    documents = _delete_null_columns(documents)
-    documents = _delete_and_rename_columns(documents)
-    documents = _process_abstract_column(documents)
-    documents = _process_document_title_column(documents)
-    documents = _remove_accents(documents)
-    documents = _process_authors_id_column(documents)
-    documents = _process_raw_authors_names_column(documents)
-    documents = _disambiguate_authors(documents)
-    documents = _process_doi_column(documents)
-    documents = _process_source_name_column(documents)
-    documents = _process_iso_source_name_column(documents)
-    documents = _search_for_new_iso_source_name(documents)
-    documents = _complete_iso_source_name_colum(documents)
-    documents = _repair_iso_source_names_column(documents)
-    documents = _create_record_no(documents)
-    documents = _create_document_id(documents)
-    # -----------------------------------------------------------------------------------
-    _create_abstracts_csv(documents, directory)
-    # ----< only scopus >----------------------------------------------------------------
-    # _create_references_file(documents, directory)
-    # -----------------------------------------------------------------------------------
-    documents = _process_document_type_columns(documents)
-    documents = _process_affiliations_column(documents)
-    documents = _process_author_keywords_column(documents)
-    documents = _process_index_keywords_column(documents)
-    documents = _create_keywords_column(documents)
-    documents = _create_nlp_phrases_column(documents)
-    documents = _process_global_citations_column(documents)
-    documents = _process_global_references_column(documents)
-    documents = _process_eissn_column(documents)
-    documents = _process_issn_column(documents)
-    documents = _compute_bradford_law_zones(documents)
-    # -----------------------------------------------------------------------------------
-    # To remove
-    ### documents = _drop_duplicates(documents)
-    ###  _report_duplicate_titles(documents, directory)
-    # -----------------------------------------------------------------------------------
-    documents = documents.assign(local_references=[[] for _ in range(len(documents))])
-    documents = _create_local_references_using_doi(
-        documents, disable_progress_bar=disable_progress_bar
-    )
-    documents = _create_local_references_using_title(
-        documents, disable_progress_bar=disable_progress_bar
-    )
-    documents = _consolidate_local_references(documents)
-    documents = _compute_local_citations(documents)
-    # -----------------------------------------------------------------------------------
-    _update_filter_file(documents, directory)
-    documents = _compute_bradford_law_zones(documents)
-    filename = join(directory, "documents.csv")
-    documents.to_csv(filename, sep=",", encoding="utf-8", index=False)
-    logging.info(f"Documents saved/merged to '{filename}'")
-    # -----------------------------------------------------------------------------------
-    logging.info("Post-processing docuemnts ...")
-    create_institutions_thesaurus(directory=directory)
-    create_keywords_thesaurus(
-        directory=directory,
-        use_nlp_phrases=use_nlp_phrases,
-    )
-    clean_institutions(directory=directory)
-    clean_keywords(directory=directory)
-    # -----------------------------------------------------------------------------------
-    logging.info("Process finished!!!")
 
 
 # from tqdm import tqdm

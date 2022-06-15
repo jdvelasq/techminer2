@@ -27,6 +27,7 @@ import pandas as pd
 from . import logging
 from .load_all_documents import load_all_documents
 from .map_ import map_
+from .save_documents import save_documents
 from .thesaurus import read_textfile
 
 
@@ -40,7 +41,7 @@ def clean_keywords(directory="./"):
     # Loads documents.csv
     documents = load_all_documents(directory)
 
-    thesaurus_file = join(directory, "keywords.txt")
+    thesaurus_file = join(directory, "processed", "keywords.txt")
     if isfile(thesaurus_file):
         th = read_textfile(thesaurus_file)
         th = th.compile_as_dict()
@@ -90,11 +91,5 @@ def clean_keywords(directory="./"):
     #
     # datastore.to_csv(datastorefile, index=False)
     # --------------------------------------------------------------------------
-    documents.to_csv(
-        join(directory, "documents.csv"),
-        sep=",",
-        encoding="utf-8",
-        index=False,
-    )
-    # --------------------------------------------------------------------------
+    save_documents(documents, directory)
     logging.info("The thesaurus was applied to all keywords.")

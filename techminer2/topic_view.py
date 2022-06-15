@@ -5,8 +5,8 @@ Topic View
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
 >>> topic_view(
-...     'author_keywords', 
-...     top_n=20, 
+...     'author_keywords',
+...     top_n=20,
 ...     directory=directory,
 ... )
                          num_documents  global_citations  local_citations
@@ -33,8 +33,8 @@ artificial intelligence              6                30                4
 regulatory sandbox                   6                26                7
 
 >>> topic_view(
-...     'author_keywords', 
-...     min_occ=8, 
+...     'author_keywords',
+...     min_occ=8,
 ...     max_occ=17,
 ...     directory=directory,
 ... )

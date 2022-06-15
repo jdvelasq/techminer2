@@ -55,7 +55,7 @@ def create_keywords_thesaurus(directory, use_nlp_phrases=False):
     # {palabra: clave_del_grupo}
     new_th = text_clustering(pd.Series(words_list)).to_dict()
 
-    thesaurus_file = os.path.join(directory, "keywords.txt")
+    thesaurus_file = os.path.join(directory, "processed", "keywords.txt")
     if os.path.isfile(thesaurus_file):
         old_th = read_textfile(thesaurus_file).to_dict()
         new_th = {**new_th, **old_th}

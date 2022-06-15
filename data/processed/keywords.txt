@@ -1,158 +1,34 @@
-abstract framings
-    abstract framings
-academic literature
-    academic literature
-academic observers
-    academic observers
 academic paper
     academic paper
-    academic papers
-academic research
-    academic research
-academic research work
-    academic research work
-academic understanding
-    academic understanding
-accelerate access
-    accelerate access
 accelerator
     accelerator
-accelerator actor
-    accelerator actor
-accelerator networks
-    accelerator networks
-acceptance
-    acceptance
-    acceptance model
-acceptance rate
-    acceptance rate
-access external finance
-    access external finance
-access loans
-    access loans
 access to finance
     access to finance
-accessible services
-    accessible services
-account
-    account
-account opening
-    account opening
-account-level data
-    account-level data
-accurate type
-    accurate type
-acm
-    acm
 acp approach
     acp approach
     acp approaches
-action research
-    action research
 active area
     active area
-active customers
-    active customers
-active participant
-    active participant
-active policies
-    active policies
-active population
-    active population
-actor-level responses
-    actor-level responses
-actual productivity
-    actual productivity
-actual usage
-    actual usage
 adapted stochastic process
     adapted stochastic process
-adaptive
-    adaptive
-adaptive moment estimation
-    adaptive moment estimation
-adaptive recovery mechanism
-    adaptive recovery mechanism
-additional complexity
-    additional complexity
-additional experience
-    additional experience
-additional factor
-    additional factor
-additional incentives
-    additional incentives
-additional pressure
-    additional pressure
-additional regulatory requirements
-    additional regulatory requirements
-additional risks
-    additional risks
-additional situational factors
-    additional situational factors
-additional use
-    additional use
-address fintech companies
-    address fintech companies
-administrative reforms
-    administrative reforms
 adoption
     adoption
-adoption intention
-    adoption intention
-adoption research
-    adoption research
-adult life
-    adult life
-advantageous steps
-    advantageous steps
-adverse effect
-    adverse effect
-adverse impact
-    adverse impact
-    adverse impacts
-advisor misconduct
-    advisor misconduct
-affordanceagency relations
-    affordanceagency relations
 africa
     africa
-african
-    african
-african countries
-    african countries
-african fintech firms
-    african fintech firms
-african nations
-    african nations
-african policymakers
-    african policymakers
-agency relationships
-    agency relationships
 agenda 2030
     agenda 2030
-agri sector
-    agri sector
 agri-tech
-    agri- tech
     agri-tech
 agricultural economics
     agricultural economics
 agricultural economy
     agricultural economy
-agricultural nonpoint source
-    agricultural nonpoint source
-agricultural nonpoint source pollution
-    agricultural nonpoint source pollution
 agricultural nps pollution
     agricultural nps pollution
-agricultural supplier
-    agricultural supplier
 agricultural waste
     agricultural waste
 agriculture
     agriculture
-agriculture plays
-    agriculture plays
 agriculture sector
     agriculture sector
 agroindustry
@@ -161,96 +37,19 @@ agropay
     agropay
 ahp
     ahp
-ahp results
-    ahp results
 ai
     ai
 ai engineering
     ai engineering
 ai lifecycle
     ai lifecycle
-ai predictions
-    ai predictions
-aiaiot-fcp model
-    aiaiot-fcp model
-aiaiot-fcp model encompasses
-    aiaiot-fcp model encompasses
-alert task force
-    alert task force
-algorithm program
-    algorithm program
-algorithm solvers
-    algorithm solvers
 algorithms
     algorithms
 alibaba
     alibaba
-alternative credit data
-    alternative credit data
-alternative credit scores
-    alternative credit scores
-alternative forms
-    alternative forms
-alternative investments
-    alternative investments
-    investment alternatives
-alternative reform options
-    alternative reform options
-aml/ctf purposes
-    aml/ctf purposes
-analyse customer experience
-    analyse customer experience
-analyse relationships
-    analyse relationships
-analysis
-    analysis
-analysis data
-    analysis data
-analysis establishes
-    analysis establishes
-analysis results
-    analysis results
-analysis suggests
-    analysis suggests
-analytic hierarchy process
-    analytic hierarchy process
-analytic network process
-    analytic network process
-analytical framework
-    analytical framework
-analytical method
-    analytical method
-analyze factors
-    analyze factors
-analyze risk
-    analyze risk
-analyzing
-    analyzing
-anchor firms
-    anchor firms
-angel investors
-    angel investors
-anhui provinces
-    anhui provinces
-annual growth
-    annual growth
-annual income
-    annual income
-annual publications
-    annual publications
-annual report data
-    annual report data
-annual tourists
-    annual tourists
 anomaly detection
     anomaly detection
     anomaly detection methods
-ap
-    ap
-apec
-    apec
-apec countries
-    apec countries
 api
     api
     apis
@@ -260,40 +59,10 @@ application programming interface
     application programming interface
 application programs
     application programs
-application store
-    application store
 appraisal
     appraisal
-approach
-    approach
-appropriate approach
-    appropriate approach
-appropriate balance
-    appropriate balance
-appropriate mind-set
-    appropriate mind-set
-appropriate policy
-    appropriate policy
-appropriate policy interventions
-    appropriate policy interventions
-appropriate regulatory framework
-    appropriate regulatory framework
-appropriate relaxation
-    appropriate relaxation
-appropriate research entry point
-    appropriate research entry point
-arab emirates
-    arab emirates
-arimax model
-    arimax model
-art techniques
-    art techniques
-art technologies
-    art technologies
 article
     article
-artificial
-    artificial
 artificial intelligence
     artificial intelligence
     artificial intelligence (ai)
@@ -301,122 +70,49 @@ artificial intelligence systems
     artificial intelligence systems
 artificial intelligence technologies
     artificial intelligence technologies
-    artificial intelligence technology
 artificial systems
     artificial systems
 asia
     asia
-asia-pacific countries
-    asia-pacific countries
-asian fintech market
-    asian fintech market
-assessing
-    assessing
 asset allocation
     asset allocation
 asset allocation optimization
     asset allocation optimization
-asset business
-    asset business
-    business assets
-asset classes
-    asset classes
-asset management
-    asset management
-asset structure
-    asset structure
-asymmetric information
-    asymmetric information
-asynchronous ethernet packet
-    asynchronous ethernet packet
-attain economies
-    attain economies
 attitude
     attitude
-attractive business practices
-    attractive business practices
 authentication
     authentication
-authentication accuracy
-    authentication accuracy
-authentication mechanism
-    authentication mechanism
+authentication mechanisms
     authentication mechanisms
-author keywords
-    author keywords
-authoritative settlement
-    authoritative settlement
 automation
     automation
 autonomous operations
     autonomous operations
-autonomous organisation technologies
-    autonomous organisation technologies
-available commentaries
-    available commentaries
-available controllers
-    available controllers
-available labor force
-    available labor force
 average annual growth
     average annual growth
-average citizens
-    average citizens
-average consumer
-    average consumer
 b2b content
     b2b content
-b2b fintech
-    b2b fintech
-babes-bolyai university
-    babes-bolyai university
-background
-    background
-bahasa indonesia
-    bahasa indonesia
 bangladesh
     bangladesh
-bangladeshi users
-    bangladeshi users
 bank
     bank
     banking
     banks
 bank 3.0
     bank 3.0
-bank branches
-    bank branches
 bank business model
     bank business model
 bank competition
     bank competition
     banking competition
-bank customers
-    bank customers
-bank deposits
-    bank deposits
-bank efficiency
-    bank efficiency
-    banking efficiency
-bank income
-    bank income
-bank managers
-    bank managers
 bank marketing
     bank marketing
 bank of england
     bank of england
 bank performance
     bank performance
-bank performance findings
-    bank performance findings
-bank respondents
-    bank respondents
-bank services
-    bank services
-    banking services
-bank users
-    bank users
+banking efficiency
+    banking efficiency
 banking industry
     banking industry
 banking regulation
@@ -424,6 +120,8 @@ banking regulation
     banking regulations
 banking sector
     banking sector
+banking services
+    banking services
 banking-finance system
     banking-finance system
 banknotes
@@ -432,460 +130,147 @@ banks risk-taking
     banks risk-taking
 base of pyramid (bop)
     base of pyramid (bop)
-basic elements
-    basic elements
-basic ethical tenets
-    basic ethical tenets
-basic models
-    basic models
-basic principles
-    basic principles
-basic research architecture
-    basic research architecture
-basic theory
-    basic theory
-basic types
-    basic types
 behavior
     behavior
-behavior theory
-    behavior theory
-behavioral characteristics
-    behavioral characteristics
-    behavioural characteristics
-behavioral intention
-    behavioral intention
-    behavioral intentions
 behavioural economics
     behavioural economics
-behavioural perspective
-    behavioural perspective
-benchmark regression model
-    benchmark regression model
-beneficial pest conditions
-    beneficial pest conditions
 benefit
     benefit
-benefit factors
-    benefit factors
-benevolent loan
-    benevolent loan
 bibliometric analysis
     bibliometric analysis
-bibliometric study
-    bibliometric study
-bibliometrix
-    bibliometrix
-big credit data
-    big credit data
 big data
     big data
-big data analysis
-    big data analysis
 big data analytics
     big data analytics
 bigtech
     bigtech
-bigtech companies
-    bigtech companies
-bigtech firms
-    bigtech firms
-bilateral agreements
-    bilateral agreements
 biometric identification
     biometric identification
-biometric technologies
-    biometric technologies
 bitcoin
     bitcoin
-bitcoin cryptocurrency
-    bitcoin cryptocurrency
-block-chain
-    block chain
-    block-chain
-block-chain technology
+block chain technology
     block chain technology
-    block-chain technology
+block-chain
+    block-chain
 blockchain
     blockchain
-blockchain applications
-    blockchain applications
-blockchain technology
-    blockchain technology
-board interlocks
-    board interlocks
-boosting sustainability
-    boosting sustainability
-bop consumers
-    bop consumers
-bop contexts
-    bop contexts
-bop entrepreneurs
-    bop entrepreneurs
-bop entrepreneurship
-    bop entrepreneurship
-bop inhabitants
-    bop inhabitants
-borrowing decisions
-    borrowing decisions
-borrowing services
-    borrowing services
 brain
     brain
-brand image
-    brand image
-brazilian fintech consumers
-    brazilian fintech consumers
 brexit
     brexit
-brick-and-mortar branches
-    brick-and-mortar branches
-bridging
-    bridging
-brief introduction
-    brief introduction
-british government
-    british government
-broad area
-    broad area
-broad categories
-    broad categories
-broad dsai
-    broad dsai
-broader environment
-    broader environment
-buck stops
-    buck stops
 budget control
     budget control
 building blockes
     building blockes
-    building blocks
-bureaucratic reputation literature
-    bureaucratic reputation literature
 business activities
     business activities
-business areas
-    business areas
-business background
-    business background
-business cases
-    business cases
-business committee
-    business committee
-business context
-    business context
 business development
     business development
-business ecosystem framework
-    business ecosystem framework
 business environment
     business environment
     business environments
-business experience
-    business experience
-business fields
-    business fields
 business financing
     business financing
-business growth
-    business growth
 business infrastructure
     business infrastructure
-    business infrastructures
-business level
-    business level
 business model
     business model
     business models
-    business strategies
     business strategy
-business model choice
-    business model choice
-business model innovation
-    business model innovation
 business modeling
     business modeling
-business operations
-    business operations
-business platform
-    business platform
+business platforms
     business platforms
-    platform business model
 business practices
     business practices
 business process
     business process
-    business processes
 business process re-engineering
     business process re-engineering
 business requirement
     business requirement
-    business requirements
 business sector
     business sector
-    business sectors
-business structure
-    business structure
 business sustainability
     business sustainability
 business value
     business value
-business world
-    business world
-business-to-business digital
-    business-to-business digital
-business-to-business markets
-    business-to-business markets
-buzz words
-    buzz words
-calibrating
-    calibrating
 capacity building
     capacity building
-capita consumption
-    capita consumption
-capital
-    capital
-    capitalism
-capital accumulation
-    capital accumulation
-capital adequacy
-    capital adequacy
-capital flow
-    capital flow
-capital market
-    capital market
-    capital markets
-capital raising
-    capital raising
-capital resources
-    capital resources
 capitalisation
     capitalisation
-card payment transactions
-    card payment transactions
+capitalism
+    capitalism
 carrier mobility
     carrier mobility
-case
-    case
-case description
-    case description
-case firms
-    case firms
-case project
-    case project
-case study explores
-    case study explores
-case study investigation
-    case study investigation
 case study research
     case study research
-case themes
-    case themes
 case-studies
     case study
     case study approach
     case-studies
-cash deposit machines
-    cash deposit machines
-cash payments
-    cash payments
-cash withdrawals
-    cash withdrawals
-cashing
-    cashing
 cashless
     cashless
 cashless policy
     cashless policy
-cashless society
-    cashless society
-catastrophic events
-    catastrophic events
-causal relationship
-    causal relationship
-causal research
-    causal research
-cawi method
-    cawi method
 central bank
     central bank
-central bank support
-    central bank support
-central region
-    central region
-    central regions
-central role
-    central role
 centric softwares
     centric softwares
-century technology assets
-    century technology assets
-ceo interviews
-    ceo interviews
-certain levels
-    certain levels
-certain problems
-    certain problems
-chain finance
-    chain finance
-challenge
-    challenge
-challenging problems
-    challenging problems
-challenging system
-    challenging system
-chapter discusses
-    chapter discusses
 characteristics of fintech
     characteristics of fintech
-characterize fintech
-    characterize fintech
-chief digital officer
-    chief digital officer
 china
     china
 china's banking industry
     china's banking industry
-chinese companies
-    chinese companies
 chinese context
     chinese context
-chinese entrepreneurial practices
-    chinese entrepreneurial practices
-chinese fintech sector
-    chinese fintech sector
-chinese gen
-    chinese gen
 chinese gen z consumers
     chinese gen z consumers
-chinese hi-tech
-    chinese hi-tech
-chinese provinces
-    chinese provinces
-circular process
-    circular process
 citation structure
     citation structure
-    citation structures
-civil societies
-    civil societies
-civil war
-    civil war
-clarity ai
-    clarity ai
-class labels
-    class labels
 classification
     classification
     classification (of information)
     classification approach
-classification performance
-    classification performance
-classify core services
-    classify core services
-classify innovations
-    classify innovations
 clean energy investments
     clean energy investments
-clean energy investors
-    clean energy investors
-clear data
-    clear data
-clear indicators
-    clear indicators
-clear trend
-    clear trend
 clearing and settlement
     clearing and settlement
-click points
-    click points
 client behavior
     client behavior
 climate change
     climate change
 climate change adaptation
     climate change adaptation
-climate changethe case
-    climate changethe case
 climate effect
     climate effect
-climate vulnerability
-    climate vulnerability
 cluster analysis
     cluster analysis
 cluster structure
     cluster structure
 clustering algorithms
     clustering algorithms
-co-occurrence analysis
-    co-occurrence analysis
-co-occurrence network
-    co-occurrence network
 co-opetition theory
     co-opetition theory
-co-petition theory
-    co-petition theory
-cocreate transparency
-    cocreate transparency
-coefficient signs
-    coefficient signs
-cognitive
-    cognitive
-cognitive computational model
-    cognitive computational model
+cognitive computing
     cognitive computing
 coherentism
     coherentism
 collaborative practices
     collaborative practices
-college students
-    college students
 commerce
     commerce
-commercial banks
-    commercial banks
-commercial developments
-    commercial developments
 commercial entity
     commercial entity
-commercial spaces
-    commercial spaces
-common equities
-    common equities
-common features
-    common features
-common framework
-    common framework
-common methodology
-    common methodology
-common practice
-    common practice
-common understanding
-    common understanding
 communication
     communication
-    communication strategies
-communication mediums
-    communication mediums
-communication technologies
-    communication technologies
-    communication technology
 community based organisations
     community based organisations
 company development
     company development
-company web-pages
-    company web-pages
 comparative analysis
     comparative analysis
-comparative approaches
-    comparative approaches
-comparative case study method
-    comparative case study method
-comparative evaluation
-    comparative evaluation
 comparative studies
     comparative studies
     comparative study
@@ -894,416 +279,98 @@ competition
     competition (economics)
 competition and cooperation
     competition and cooperation
-competition enhancement
-    competition enhancement
-competition issues
-    competition issues
 competitive advantage
     competitive advantage
-    competitive advantages
-competitive prediction accuracy
-    competitive prediction accuracy
-complementary role
-    complementary role
 complex adaptive systems
     complex adaptive systems
-complex networks
-    complex networks
-complex picture
-    complex picture
-complex policy options
-    complex policy options
-complex processes
-    complex processes
-complex regulatory regimes
-    complex regulatory regimes
-complex relationships
-    complex relationships
-complex system methods
-    complex system methods
-complex trade-offs
-    complex trade-offs
 complexity
     complexity
-component technologies
-    component technologies
-compound term
-    compound term
 comprehensive analysis
     comprehensive analysis
-comprehensive data
-    comprehensive data
-comprehensive industries
-    comprehensive industries
-comprehensive perspective
-    comprehensive perspective
-comprehensive regulation
-    comprehensive regulation
-comprehensive sample
-    comprehensive sample
-comprehensive study
-    comprehensive study
-comprehensive survey
-    comprehensive survey
-comprehensive view
-    comprehensive view
 computational experiment
     computational experiment
 computational loads
     computational loads
-computational model
-    computational model
-computer applications
-    computer applications
-computer engineers
-    computer engineers
-computer language python
-    computer language python
-computer programmers
-    computer programmers
 computer system recovery
     computer system recovery
-conceptual framework
-    conceptual framework
+conceptual frameworks
     conceptual frameworks
-conceptual level
-    conceptual level
-conceptualizing china
-    conceptualizing china
-conclusion contains
-    conclusion contains
-conclusion section
-    conclusion section
-conditional value
-    conditional value
 conditional value at risk
     conditional value at risk
     conditional value at risk method
-conducive environment
-    conducive environment
-conduct in-depth research
-    conduct in-depth research
-conduct research
-    conduct research
-considerable way
-    considerable way
-consistent estimation results
-    consistent estimation results
-consistent growth
-    consistent growth
-consistent topic
-    consistent topic
 consolidation
     consolidation
-constant innovation
-    constant innovation
-constant review
-    constant review
-constituent actors
-    constituent actors
-consumer adoption
-    consumer adoption
-consumer attitude
-    consumer attitude
-    consumers attitude
 consumer behavior
     consumer behavior
-consumer confidence
-    consumer confidence
-consumer data
-    consumer data
-consumer experiences
-    consumer experiences
-consumer interest
-    consumer interest
 consumer law and policy
     consumer law and policy
-consumer overindebtedness
-    consumer overindebtedness
 consumer protection
     consumer protection
-consumer retention
-    consumer retention
-consumer rights
-    consumer rights
-consumer satisfaction
-    consumer satisfaction
-consumer sectors
-    consumer sectors
-consumer-to-business segment
-    consumer-to-business segment
-consumption activities
-    consumption activities
-consumption attributes
-    consumption attributes
+consumers attitude
+    consumers attitude
 consumption emission
     consumption emission
-contact payment methods
-    contact payment methods
-contactless payment methods
-    contactless payment methods
+contactless payments
     contactless payments
-contemporaneous losses
-    contemporaneous losses
-contemporaneous stock returns
-    contemporaneous stock returns
-contemporary innovations
-    contemporary innovations
-contemporary period
-    contemporary period
-contemporary publicity
-    contemporary publicity
 content analysis
     content analysis
-context-specific theorization
-    context-specific theorization
-contextual factors
-    contextual factors
-contextual root causes
-    contextual root causes
 continuance intention
     continuance intention
-continuous resource
-    continuous resource
 continuous usage intention
     continuous usage intention
-continuous-use behavior
-    continuous-use behavior
 contract law
     contract law
 control systems
     control systems
 controller recovery
     controller recovery
-    recovery controllers
 controllers
     controllers
 controversies
     controversies
-convenience aspect
-    convenience aspect
-convenience factors
-    convenience factors
-convenient ways
-    convenient ways
-conventional bank management
-    conventional bank management
-conventional banking
-    conventional banking
-conventional bricks-and-mortar
-    conventional bricks-and-mortar
-conventional counterpart
-    conventional counterpart
-conventional fintech organization
-    conventional fintech organization
-conventional means
-    conventional means
-conventional motivations
-    conventional motivations
-conventional reluctance
-    conventional reluctance
 convergence time
     convergence time
 cooperative mechanisms
     cooperative mechanisms
-core agenda items
-    core agenda items
-core aspects
-    core aspects
-core business activities
-    core business activities
-core construct
-    core construct
-core drivers
-    core drivers
-core elements
-    core elements
-core purpose
-    core purpose
-core source
-    core source
-core structures
-    core structures
-core topics
-    core topics
-corona virus
-    corona virus
 coronavirus covid-19 pandemic
     coronavirus covid-19 pandemic
-corporate boards
-    corporate boards
-corporate financial performance
-    corporate financial performance
-corporate governance
-    corporate governance
-    corporate governance model
-    corporate governances
-corporate power
-    corporate power
-corporate social responsibility
-    corporate social responsibility
-corporate strategies
-    corporate strategies
-corporationsdigital giantscan
-    corporationsdigital giantscan
-correlation accuracy
-    correlation accuracy
 correlation analysis
     correlation analysis
-corresponding selection
-    corresponding selection
-corrigendum
-    corrigendum
 cost analysis
     cost analysis
-cost efficiency
-    cost efficiency
-cost structures
-    cost structures
 costs
     costs
-counterparty risk
-    counterparty risk
-country adopts
-    country adopts
-country production
-    country production
-country-level interaction
-    country-level interaction
-countryside
-    countryside
-covid
-    covid
 covid-19
     covid 19
-    covid 19.
     covid-19
-covid-19 crises
-    covid-19 crises
-covid-19 crisis
-    covid-19 crisis
-covid-19 crisis outbreak
-    covid-19 crisis outbreak
 covid-19 lockdown
     covid-19 lockdown
-covid-19 outbreak
-    covid-19 outbreak
-covid-19 pandemic
-    covid-19 pandemic
-covid-19 risk
-    covid-19 risk
-craft policies
-    craft policies
-cream-skimming
-    cream-skimming
-creating
-    creating
-creative
-    creative
-credit access
-    credit access
-credit cooperatives-in
-    credit cooperatives-in
-credit data
-    credit data
 credit data & big data
     credit data & big data
-credit decisions
-    credit decisions
-credit facilities
-    credit facilities
 credit grade
     credit grade
-credit infrastructures
-    credit infrastructures
 credit provision
     credit provision
-credit reveals
-    credit reveals
 credit risk management
     credit risk management
-credit score
-    credit score
+credit scoring
     credit scoring
 credit services market
     credit services market
-creditworthiness assessment
-    creditworthiness assessment
 crime
     crime
-criminal activities
-    criminal activities
 crisis
     crisis
 criss and risk management
     criss and risk management
-critical approaches
-    critical approaches
-critical challenge
-    critical challenge
-critical driver
-    critical driver
-critical issue
-    critical issue
+critical issues
     critical issues
-critical mass
-    critical mass
-critical reflections
-    critical reflections
-critical role
-    critical role
-critical study
-    critical study
-critical threats
-    critical threats
-crm
-    crm
-cross section
-    cross section
-cross-border e-commerce transactions
-    cross-border e-commerce transactions
-cross-border fintech trade
-    cross-border fintech trade
-cross-border payment processing
-    cross-border payment processing
-cross-border payments
-    cross border payments
-    cross-border payments
-cross-border tuition payments
-    cross-border tuition payments
-cross-sectional data
-    cross-sectional data
-cross-sector actors
-    cross-sector actors
 cross-sector fintech
-    cross-sector  fintech
     cross-sector fintech
-cross-sectoral cooperation
-    cross-sectoral cooperation
-crossborder money transfers
-    crossborder money transfers
-crosswise applications
-    crosswise applications
 crowdfunding
     crowdfunding
 crowdsourcing
     crowdsourcing
-crucial challenge
-    crucial challenge
-crucial features
-    crucial features
-crucial fintech service
-    crucial fintech service
-crucial obstacles
-    crucial obstacles
-crucial regulatory trade-off
-    crucial regulatory trade-off
-crucial role
-    crucial role
-crude oil
-    crude oil
-crypto phenomenon
-    crypto phenomenon
 crypto-assets
     crypto-assets
 cryptoassets
@@ -1313,93 +380,12 @@ cryptocurrencies
     cryptocurrency
 cryptosystem
     cryptosystem
-cultural factors
-    cultural factors
-cultural perspective
-    cultural perspective
 currency
     currency
-currency markets
-    currency markets
-currency system iterations
-    currency system iterations
-current academic literature
-    current academic literature
-current agenda
-    current agenda
-current approach
-    current approach
-current consumers
-    current consumers
-current crises
-    current crises
-current developments
-    current developments
-current dutch
-    current dutch
-current financial environment
-    current financial environment
-current fintech industry
-    current fintech industry
-current generation
-    current generation
-current interests
-    current interests
-current international context
-    current international context
-current legal status
-    current legal status
-current legislation
-    current legislation
-current literature review
-    current literature review
-current money
-    current money
-current needs
-    current needs
-current paper uses
-    current paper uses
-current position
-    current position
-current regulation
-    current regulation
+current regulations
     current regulations
-current regulatory issues
-    current regulatory issues
-current research
-    current research
-current research characteristics
-    current research characteristics
-current satisfaction
-    current satisfaction
-current security issues
-    current security issues
-current services
-    current services
-current stage exchanges
-    current stage exchanges
-current state
-    current state
-current status
-    current status
-current study
-    current study
-current technological platforms
-    current technological platforms
-current trends
-    current trends
-customer
-    customer
 customer behavior
     customer behavior
-customer behaviour chnages
-    customer behaviour chnages
-customer buying/consumption behavior
-    customer buying/consumption behavior
-customer consumption pattern
-    customer consumption pattern
-customer education
-    customer education
 customer experience
     customer experience
 customer journey
@@ -1408,35 +394,14 @@ customer loyalty
     customer loyalty
 customer relationship management
     customer relationship management
-customer relationships
-    customer relationships
-customer satisfaction
-    customer satisfaction
-customer support
-    customer support
-customer trust
-    customer trust
-customer use
-    customer use
-customer-centric approach
-    customer centricity
-    customer-centric approach
-cyber risk reduction
-    cyber risk reduction
 cyber security
     cyber security
 cybercrime
     cybercrime
 cybersecurity
     cybersecurity
-d activity
-    d activity
-daily basis
-    daily basis
 daily datum
     daily datum
-danish fintech start-up
-    danish fintech start-up
 danp
     danp
 data analytics
@@ -1459,35 +424,14 @@ data privacy
     data privacy
 data processing
     data processing
-    processing data
 data science
     data science
 data security
     data security
-data-driven economy
-    data-driven economy
-data-driven finance models
-    data-driven finance models
-data-driven tool
-    data-driven tool
-database systems
-    database systems
-david wetzel
-    david wetzel
 day-to-day operations
     day-to-day operations
-de-facto control
-    de-facto control
-deadweight cost
-    deadweight cost
-debatable point
-    debatable point
 debt
     debt
-debt levels
-    debt levels
-deceptive behavior
-    deceptive behavior
 decision criteria
     decision criteria
 decision making
@@ -1496,81 +440,22 @@ decision support system
     decision support system
 decision variables
     decision variables
-decision-making criteria
-    decision-making criteria
-deductive analysis
-    deductive analysis
-deep extreme learning machine
-    deep extreme learning machine
-deep focus
-    deep focus
 deep learning
     deep learning
-deep learning cluster structure
-    deep learning cluster structure
 deep learning clusters
     deep learning clusters
-deep learning structure
-    deep learning structure
-deep neural network
-    deep neural network
+deep neural networks
     deep neural networks
-deep service value chain
-    deep service value chain
-default choices
-    default choices
-definition concentrates
-    definition concentrates
 definition of fintech
     definition of fintech
-delicate risk-reward balance
-    delicate risk-reward balance
-delm model
-    delm model
 demand analysis
     demand analysis
 dematel
     dematel
-dense research overview
-    dense research overview
-density/sparsity ratio
-    density/sparsity ratio
-dependent actors
-    dependent actors
-deposit services
-    deposit services
-depth differ
-    depth differ
-describe fintech
-    describe fintech
-descriptive knowledge
-    descriptive knowledge
-descriptive perspective
-    descriptive perspective
-descriptive statistics
-    descriptive statistics
-design routemap
-    design routemap
-design strategies
-    design strategies
-destination sensor nodes
-    destination sensor nodes
-detection
-    detection
-    detection methods
-detection analysis
-    detection analysis
-detection mechanisms
-    detection mechanisms
-detection rate
-    detection rate
+detection rates
     detection rates
-deteriorate users
-    deteriorate users
 determinants of using fintech services
     determinants of using fintech services
-detrimental impact
-    detrimental impact
 developing countries
     developing countries
     developing country
@@ -1578,233 +463,67 @@ developing world
     developing world
 development
     development
-    development methods
-development interventions
-    development interventions
 development process
     development process
-    development processes
     process development
-development process pathways
-    development process pathways
 development tools
     development tools
 development trends
     development trends
-developmental impacts
-    developmental impacts
-developmental trends
-    developmental trends
-different actors
-    different actors
-different application examples
-    different application examples
-different approaches
-    different approaches
-different areas
-    different areas
-different background
-    different background
-different cases
-    different cases
-different categories
-    different categories
-different cognitive factors
-    different cognitive factors
-different countries
-    different countries
-different datacenter locations
-    different datacenter locations
-different departments
-    different departments
-different entrepreneurial actors
-    different entrepreneurial actors
-different fields
-    different fields
-different financial processes
-    different financial processes
-different forms
-    different forms
-different geographic locations
-    different geographic locations
-different groups
-    different groups
-different industries
-    different industries
-different levels
-    different levels
-different markets
-    different markets
-different regulatory problems
-    different regulatory problems
-different roles
-    different roles
-different scenarios
-    different scenarios
-different sectors
-    different sectors
-different stages
-    different stages
-different state
-    different state
-different supervisory authorities
-    different supervisory authorities
-different technologies
-    different technologies
-different time
-    different time
-different topics
-    different topics
-different types
-    different types
-different usages
-    different usages
-different ways
-    different ways
-digital
-    digital
-    digitalization
-    digitization
-digital agenda
-    digital agenda
 digital artifacts
     digital artifacts
 digital assets
     digital assets
 digital banking
     digital banking
-digital business modelsscalability
-    digital business modelsscalability
 digital currencies
     digital currencies
-    digital currency
-digital development
-    digital development
-digital disruption
-    digital disruption
 digital economy
     digital economy
 digital entrepreneurship
     digital entrepreneurship
 digital finance
     digital finance
-digital identity
-    digital identity
-digital infrastructure
-    digital infrastructure
+digital infrastructures
     digital infrastructures
 digital innovation
     digital innovation
     digital innovations
-digital innovation literature
-    digital innovation literature
-digital logistics
-    digital logistics
-digital logistics performance
-    digital logistics performance
 digital marketing
     digital marketing
 digital marketplace
     digital marketplace
-digital media content
-    digital media content
-digital media use
-    digital media use
-digital networks
-    digital networks
-digital newcomers
-    digital newcomers
-digital ones
-    digital ones
 digital payment
     digital payment
-    digital payment methods
-    digital payments
-digital payment system
-    digital payment system
-digital payment transaction industry
-    digital payment transaction industry
-digital platform economies
-    digital platform economies
-digital revolution
-    digital revolution
-digital sector
-    digital sector
-digital services
-    digital services
-digital single market
-    digital single market
 digital techno self-efficacy
     digital techno self-efficacy
 digital technologies
     digital technologies
     digital technology
-digital technology self-efficacy
-    digital technology self-efficacy
 digital technostress
     digital technostress
 digital transformation
     digital transformation
-digital transformation creates
-    digital transformation creates
-digital transnational
-    digital transnational
-digital wallets
-    digital wallets
 digitalisation
     digitalisation
-digitalisation process
-    digitalisation process
+digitalization
+    digitalization
+    digitization
 digitisation
     digitisation
-diploma degree students
-    diploma degree students
-direct analysis
-    direct analysis
-direct opinions
-    direct opinions
-directive ii
-    directive ii
 discourse
     discourse
 discourse analysis
     discourse analysis
-disenabler
-    disenabler
-disintermediate banks
-    disintermediate banks
 disintermediation
     disintermediation
-display fintech
-    display fintech
 disruption
     disruption
-    disruptive
-disruptive fintech
-    disruptive fintech
-disruptive impact
-    disruptive impact
 disruptive innovation
     disruptive innovation
     disruptive innovations
-disruptive potential
-    disruptive potential
-disruptive technologies
-    disruptive technologies
+disruptive technology
     disruptive technology
-    technological disruption
-dissimilar discourses
-    dissimilar discourses
-distinct cases
-    distinct cases
-distinct fields
-    distinct fields
-distinct valences
-    distinct valences
-distinctive roles
-    distinctive roles
-distinctive taxonomy
-    distinctive taxonomy
 distributed lag models
     distributed lag models
 distributed ledger
@@ -1813,301 +532,96 @@ distributed ledger technology
     distributed ledger technology
 distributed networks
     distributed networks
-distribution channels
-    distribution channels
-distribution strategy
-    distribution strategy
-distrust
-    distrust
 distrust in banks
     distrust in banks
-distrust mindset promotes
-    distrust mindset promotes
-dna
-    dna
-document analysis
-    document analysis
-document study
-    document study
-dominant opinion
-    dominant opinion
-dominant technocratic paradigm
-    dominant technocratic paradigm
-dominant tool
-    dominant tool
-double challenge
-    double challenge
 drawing
     drawing
 driving factors
     driving factors
-dsai communities
-    dsai communities
-dsai techniques
-    dsai techniques
 dual mixer time differences
     dual mixer time differences
-due diligence
-    due diligence
-dynamic balance
-    dynamic balance
-dynamic development
-    dynamic development
-dynamic growth
-    dynamic growth
-dynamic research streams
-    dynamic research streams
-dynamic segments
-    dynamic segments
-dynamic trajectory
-    dynamic trajectory
 e-banking
     e-banking
 e-government
     e-government
 e-government services
     e-government services
-e-integrated
-    e-integrated
 e-integrated corporate governance
     e-integrated corporate governance
 e-kyc
     e-kyc
-e-kyc systems
-    e-kyc systems
 e-money products
     e-money products
-e-payment channels
-    e-payment channels
-e-payment index
-    e-payment index
-e-payment usage
-    e-payment usage
 e-payments
     e-payments
 e-reputation
     e-reputation
-e-reputation plays
-    e-reputation plays
 e-trust
     e-trust
-e-trust contribute
-    e-trust contribute
-e-trust variables
-    e-trust variables
-e-views version
-    e-views version
 e-wallet
     e-wallet
-e-wallet services
-    e-wallet services
 e7 economies
     e7 economies
-early adopters
-    early adopters
-early customers
-    early customers
-early days
-    early days
-early stage
-    early stage
-early-career firms
-    early-career firms
 earnings management
     earnings management
 earnings smoothing
     earnings smoothing
-eastern europe
-    eastern europe
-eastern region
-    eastern region
-easy online
-    easy online
-ebola outbreak
-    ebola outbreak
-eco-systematic view
-    eco-systematic view
 economic activities
     economic activities
-    economic activity
-economic aftershocks
-    economic aftershocks
-economic agents
-    economic agents
 economic and social effects
     economic and social effects
 economic aspect
     economic aspect
-economic benefits
-    economic benefits
-economic booms
-    economic booms
-economic center
-    economic center
 economic conditions
     economic conditions
-economic consequences
-    economic consequences
 economic development
     economic development
-economic development variables
-    economic development variables
 economic environment
     economic environment
-economic forum
-    economic forum
 economic geography
     economic geography
 economic growth
     economic growth
 economic impact
     economic impact
-    economic impacts
-economic landscape
-    economic landscape
-economic life
-    economic life
-economic nature
-    economic nature
-economic ones
-    economic ones
-economic over-expressions
-    economic over-expressions
-economic paradigms
-    economic paradigms
-economic performance
-    economic performance
-economic resilience
-    economic resilience
-economic reverberations
-    economic reverberations
-economic sector
-    economic sector
-economic sustainability
-    economic sustainability
-economic theories
-    economic theories
 economic transformation
     economic transformation
 economics
     economics
-economy
-    economy
 ecosystem
     ecosystem
     ecosystem approach
     ecosystems
-ecosystem actor interactions
-    ecosystem actor interactions
 ecosystem development
     ecosystem development
 ecosystem dynamics
     ecosystem dynamics
 ecosystem evolution
     ecosystem evolution
-ecosystem level
-    ecosystem level
+ecosystem levels
     ecosystem levels
-ecosystem perspective
-    ecosystem perspective
-ecosystem practices
-    ecosystem practices
-ecosystem-specific factors
-    ecosystem-specific factors
-edge-cloud
-    edge-cloud
-editorial
-    editorial
-editorial review
-    editorial review
-editorial team
-    editorial team
-ee framework
-    ee framework
-effective alternative
-    effective alternative
-effective decisions
-    effective decisions
-effective implementation
-    effective implementation
-effective means
-    effective means
-effective mechanisms
-    effective mechanisms
-effective provision
-    effective provision
-effective way
-    effective way
 efficiency
     efficiency
-efficiency gains
-    efficiency gains
-efficient allocation
-    efficient allocation
-efficient application
-    efficient application
-efficient decisions
-    efficient decisions
-efficient public infrastructure
-    efficient public infrastructure
 efficient routing
     efficient routing
-effort attempts
-    effort attempts
-effort expectancy
-    effort expectancy
-egocentric networks
-    egocentric networks
 electric power transmission networks
     electric power transmission networks
-electric vehicles
-    electric vehicles
 electrical engineering
     electrical engineering
-electronic books
-    electronic books
 electronic commerce
     electronic commerce
-electronic devices
-    electronic devices
-electronic fraud
-    electronic fraud
-electronic markets
-    electronic markets
 electronic money
     electronic money
-electronic newspapers
-    electronic newspapers
 electronic payment infrastructure
     electronic payment infrastructure
-electronic provision
-    electronic provision
 electronic publishing
     electronic publishing
 electronic services
     electronic services
-electronic survey
-    electronic survey
 electronic trading
     electronic trading
-electronic wallets
-    electronic wallets
 electronics industry
     electronics industry
-elementary technologies
-    elementary technologies
-eligible responses
-    eligible responses
-elimination contradiction
-    elimination contradiction
-embrace fintech
-    embrace fintech
-emergent
-    emergent
-emergent innovations
-    emergent innovations
-emergent needs
-    emergent needs
 emerging economies
     emerging economies
 emerging markets
@@ -2116,53 +630,10 @@ emerging technologies
     emerging technologies
 empirical analysis
     empirical analysis
-empirical analysis focuses
-    empirical analysis focuses
-empirical analysis shows
-    empirical analysis shows
-empirical data
-    empirical data
-empirical evidence
-    empirical evidence
-    empirical evidences
-empirical examination
-    empirical examination
-empirical findings
-    empirical findings
-empirical material
-    empirical material
-empirical part relies
-    empirical part relies
-empirical research
-    empirical research
-empirical research shows
-    empirical research shows
-empirical results
-    empirical results
-empirical role
-    empirical role
-employment length
-    employment length
-enable customers
-    enable customers
-enable ever-wider access
-    enable ever-wider access
-enable fintech start-ups
-    enable fintech start-ups
-enable smart fintech
-    enable smart fintech
-endogenous growth theory
-    endogenous growth theory
-endogenous problem
-    endogenous problem
 energy efficiency
     energy efficiency
-energy efficiency attainment
-    energy efficiency attainment
 energy poverty
     energy poverty
-energy systems
-    energy systems
 engineering
     engineering
 engineering education
@@ -2173,59 +644,23 @@ england
     england
 english (language)
     english (language)
-english language
-    english language
-enhance fintech developments
-    enhance fintech developments
-enhance performance
-    enhance performance
-enhance synergies
-    enhance synergies
-enhancing
-    enhancing
-enhancing internationalization
-    enhancing internationalization
-enigmatic technology
-    enigmatic technology
-enormous range
-    enormous range
-enterprise innovation competencies
-    enterprise innovation competencies
 enterprises
     enterprises
-entire fintech integration process
-    entire fintech integration process
-entire fintech literature
-    entire fintech literature
 entire life cycles
     entire life cycles
-entire lifecycle
-    entire lifecycle
-entire online
-    entire online
 entrepreneur
     entrepreneur
-entrepreneurial dynamics
-    entrepreneurial dynamics
 entrepreneurial ecosystem
     entrepreneurial ecosystem
     entrepreneurial ecosystems
-entrepreneurial ecosystem literature
-    entrepreneurial ecosystem literature
-entrepreneurial endeavours
-    entrepreneurial endeavours
 entrepreneurial finance
     entrepreneurial finance
-entrepreneurial process
-    entrepreneurial process
 entrepreneurship
     entrepreneurship
 environment
     environment
 environment pollution
     environment pollution
-environmental characteristics
-    environmental characteristics
 environmental economics
     environmental economics
 environmental governance
@@ -2241,260 +676,72 @@ environmental monitoring
     environmental monitoring
 environmental protection
     environmental protection
-environmental protection initiatives
-    environmental protection initiatives
 environmental technology
     environmental technology
 epidemic
     epidemic
-equal ground
-    equal ground
-equilibrium strategy
-    equilibrium strategy
-equitable income distribution
-    equitable income distribution
-equitable practices
-    equitable practices
 equity
     equity
 equity and other prices
     equity and other prices
 equity funding
     equity funding
-equity investors
-    equity investors
-erratum
-    erratum
-error correction model
-    error correction model
 esg
     esg
-essential empirical data
-    essential empirical data
-essential item
-    essential item
-essential role
-    essential role
 ether
     ether
 ethereum
     ethereum
-ethereum blockchain
-    ethereum blockchain
-ethereum business model
-    ethereum business model
 ethernet
     ethernet
-ethical islamic finance
-    ethical islamic finance
 ethics
     ethics
 ethnography
     ethnography
-eu
-    eu
-eu countries
-    eu countries
-    eu country
-eu experience
-    eu experience
 eu financial services law
     eu financial services law
-eu fintech platforms
-    eu fintech platforms
-eu institutions
-    eu institutions
-eu legislator
-    eu legislator
 eu market integration
     eu market integration
-eu member states
-    eu member states
-eu regulation
-    eu regulation
-eu regulatory framework
-    eu regulatory framework
-eu rules
-    eu rules
-euro-area demand standardisation
-    euro-area demand standardisation
 europe
     europe
 european banking industry
     european banking industry
-european banks
-    european banks
-european fintech companies
-    european fintech companies
-european level
-    european level
-european practices
-    european practices
-european studies
-    european studies
-european tech companies
-    european tech companies
 european union
     european union
-evaluating drivers
-    evaluating drivers
-evaluation laboratory
-    evaluation laboratory
 evaluation parameters
     evaluation parameters
 event study
     event study
-    event study approach
-evidence
-    evidence
-evidence suggests
-    evidence suggests
 evidence-based policy
     evidence-based policy
-evolutionary dynamics
-    evolutionary dynamics
-exact policies
-    exact policies
-examining
-    examining
-exceptional crm capabilities
-    exceptional crm capabilities
-excessive debt
-    excessive debt
-excessive innovation
-    excessive innovation
-excessive price volatility bitcoin
-    excessive price volatility bitcoin
-excessive regulations
-    excessive regulations
-exchange industry
-    exchange industry
-execution stage
-    execution stage
 exogenous specification
     exogenous specification
-exorbitant privilege
-    exorbitant privilege
 experience report
     experience report
-experiential learning
-    experiential learning
-experimental evidence
-    experimental evidence
-experimentation space
-    experimentation space
-expert interviews
-    expert interviews
-expert survey
-    expert survey
 expert system
     expert system
 explainable ai
     explainable ai
-    explainable ai model
-explanatory research designs
-    explanatory research designs
-explanatory variables
-    explanatory variables
 exploratory case studies
     exploratory case studies
-    exploratory case study
 exploratory studies
     exploratory studies
-    exploratory study
-exploratory-abductive approach
-    exploratory-abductive approach
-explore cases
-    explore cases
-explore determinants
-    explore determinants
-exploring
-    exploring
-exploring fintech
-    exploring fintech
-extensive development
-    extensive development
-extensive economic growth
-    extensive economic growth
-extensive investigation
-    extensive investigation
-extensive literature review
-    extensive literature review
-extensive number
-    extensive number
-extensive regulation
-    extensive regulation
-extensive simulation analysis
-    extensive simulation analysis
-extensive use
-    extensive use
-extent malaysians
-    extent malaysians
-external collaboration
-    external collaboration
-external databases
-    external databases
-external finance
-    external finance
-external innovations
-    external innovations
-external questionnaires
-    external questionnaires
-external shocks
-    external shocks
-extract content
-    extract content
-extraordinary book
-    extraordinary book
-extreme institutional environments
-    extreme institutional environments
-facilitation conditions
-    facilitation conditions
 fama french three-factor
     fama french three-factor
 family firms
     family firms
-favorable environment
-    favorable environment
-favorable pest environment
-    favorable pest environment
-favorable regulatory framework
-    favorable regulatory framework
-fe estimation
-    fe estimation
-feasibility
-    feasibility
 feasibility studies
     feasibility studies
-    feasibility study
 feature selection
     feature selection
 federal law
     federal law
 federated learning
     federated learning
-female user group
-    female user group
-fgls estimation
-    fgls estimation
-fiat money
-    fiat money
-fico score
-    fico score
-field investigation
-    field investigation
-field-level discourse analysis
-    field-level discourse analysis
 figuration
     figuration
-fin
-    fin
 fin- tech
     fin- tech
-final goods
-    final goods
-final strategic decisions
-    final strategic decisions
 finance
     finance
     financing
@@ -2504,737 +751,161 @@ finance indexes
     finance indexes
 finance technology
     finance technology
-financial
-    financial
-    financialization
-financial access
-    financial access
-financial accumulation
-    financial accumulation
-financial activities
-    financial activities
 financial advice
     financial advice
-financial advisors
-    financial advisors
-financial affordability/inclusion
-    financial affordability/inclusion
 financial and economic crisis
     financial and economic crisis
-financial application scenarios
-    financial application scenarios
 financial applications
     financial applications
-financial areas
-    financial areas
 financial assets
     financial assets
 financial authority
     financial authority
-financial barriers
-    financial barriers
-financial behavior
-    financial behavior
-    financial behaviour
 financial big data
     financial big data
-financial businesses
-    financial businesses
 financial capability
     financial capability
 financial capital
     financial capital
-financial centres
-    financial centres
-financial companies
-    financial companies
-financial conduct authority
-    financial conduct authority
-financial consumer
-    financial consumer
-    financial consumers
-financial consumption attributes
-    financial consumption attributes
-financial corporations
-    financial corporations
-financial coverage
-    financial coverage
 financial crises
     financial crises
 financial crisis prediction
     financial crisis prediction
-financial data
-    financial data
-financial dataset
-    financial dataset
-    financial datasets
-financial decision-making
-    financial decision-making
 financial decisions
     financial decisions
 financial development
     financial development
-financial ecologies
-    financial ecologies
-financial ecosystem
-    financial ecosystem
+financial ecosystems
     financial ecosystems
-financial education
-    financial education
 financial engineering
     financial engineering
-financial exclusion
-    financial exclusion
-financial field
-    financial field
-financial fraud
-    financial fraud
 financial geography
     financial geography
-financial geography i
-    financial geography i
 financial governance
     financial governance
 financial inclusion
     financial inclusion
     financial inclusions
-financial inclusion agendas
-    financial inclusion agendas
-financial inclusion channel
-    financial inclusion channel
-financial inclusion index
-    financial inclusion index
-financial inclusion mediates
-    financial inclusion mediates
-financial inclusion parameters
-    financial inclusion parameters
-financial inclusion ratio
-    financial inclusion ratio
-financial inclusion worldwide
-    financial inclusion worldwide
-financial industries
-    financial industries
+financial industry
     financial industry
-financial industry players
-    financial industry players
-financial industry privacy
-    financial industry privacy
-financial industry stability
-    financial industry stability
 financial information
     financial information
-financial information systems
-    financial information systems
-financial infrastructure
-    financial infrastructure
-financial infrastructure tends
-    financial infrastructure tends
 financial innovation
     financial innovation
     financial innovations
-financial innovation theory
-    financial innovation theory
 financial institution
     financial institution
     financial institution strategy
     financial institutions
-financial instruments
-    financial instruments
-financial integration
-    financial integration
-financial interest
-    financial interest
-financial intermediaries
-    financial intermediaries
 financial intermediation
     financial intermediation
-financial intermediation structures
-    financial intermediation structures
-financial intermediation versus disintermediation
-    financial intermediation versus disintermediation
-financial investment services
-    financial investment services
-financial knowledge
-    financial knowledge
-financial landscape
-    financial landscape
 financial literacy
     financial literacy
-financial literacy plays
-    financial literacy plays
 financial management
     financial management
-financial management decisions
-    financial management decisions
 financial market
     financial market
     financial markets
-financial market entities
-    financial market entities
-financial market governance
-    financial market governance
-financial market law
-    financial market law
-financial market participants
-    financial market participants
-    financial market participation
-financial needs
-    financial needs
-financial networks
-    financial networks
-financial opinion
-    financial opinion
 financial performance
     financial performance
-financial performance difficulties
-    financial performance difficulties
-financial picture
-    financial picture
-financial players
-    financial players
 financial products
     financial products
-financial profits
-    financial profits
 financial provision
     financial provision
-financial re-intermediation
-    financial re-intermediation
 financial regulation
     financial regulation
     financial regulations
-    financial regulators
-financial reports
-    financial reports
-financial resources
-    financial resources
-financial revolution
-    financial revolution
 financial sector
     financial sector
     financial sectors
-financial sector altogether
-    financial sector altogether
-financial sector digitalization
-    financial sector digitalization
-financial sector participants
-    financial sector participants
-financial sector regulations
-    financial sector regulations
-    financial sector regulators
-financial segment
-    financial segment
 financial service
     financial service
     financial services
-    financial services.
 financial service authorities
     financial service authorities
-    financial service authority
-    financial services authority
-financial service deliverables
-    financial service deliverables
-financial service management
-    financial service management
-financial service poses
-    financial service poses
-financial service providers
-    financial service providers
-financial service provision
-    financial service provision
-financial service provision worldwide
-    financial service provision worldwide
-financial services demand
-    financial services demand
-financial services domain
-    financial services domain
 financial services industries
     financial services industries
     financial services industry
 financial services market
     financial services market
-financial services sector
-    financial services sector
-financial slack
-    financial slack
-financial solution
-    financial solution
 financial sphere
     financial sphere
 financial stability
     financial stability
-financial stability potential influence
-    financial stability potential influence
-financial status
-    financial status
-financial studies
-    financial studies
 financial supervision
     financial supervision
-financial supervision department
-    financial supervision department
-financial supervision perspectives
-    financial supervision perspectives
-financial supervisors
-    financial supervisors
 financial system
     financial system
-    financial systems
-financial system stability
-    financial system stability
 financial technologies
     financial technologies
     financial technology
     financial technology (fintech)
-financial technology applications
-    financial technology applications
-financial technology companies
-    financial technology companies
-financial technology consumption
-    financial technology consumption
-financial technology corporation
-    financial technology corporation
-    financial technology corporations
-financial technology developers
-    financial technology developers
-financial technology firms
-    financial technology firms
-financial technology index
-    financial technology index
-financial technology opportunities
-    financial technology opportunities
-financial technology penetration
-    financial technology penetration
-financial technology refers
-    financial technology refers
-financial technology research
-    financial technology research
-financial technology research field
-    financial technology research field
-financial technology sector
-    financial technology sector
-    financial technology sectors
-financial technology website
-    financial technology website
-financial transaction engine
-    financial transaction engine
 financial transactions
     financial transactions
-financial transfers
-    financial transfers
-financial transformation
-    financial transformation
 financialisation
     financialisation
+financialization
+    financialization
 fintech
     fintech
-    fintech methods
-    fintech model
-    fintech models
-    fintechs
-fintech  maps
-    fintech  maps
-fintech accelerates
-    fintech accelerates
+fintech accelerators
     fintech accelerators
 fintech adoption
     fintech adoption
-    fintech adoption model
-    fintech adoptions
-fintech adoption index
-    fintech adoption index
-fintech adoption influences
-    fintech adoption influences
-fintech adoption intention
-    fintech adoption intention
-fintech age
-    fintech age
 fintech application
     fintech application
     fintech applications
-fintech area
-    fintech area
-fintech authentication
-    fintech authentication
-fintech behavior
-    fintech behavior
-fintech borrowers
-    fintech borrowers
-fintech business
-    fintech business
+fintech business model
     fintech business model
-    fintech businesses
-fintech challenge-
-    fintech challenge-
-    fintech challengers
-fintech changes
-    fintech changes
-fintech charges
-    fintech charges
-fintech clusters
-    fintech clusters
 fintech collaboration
     fintech collaboration
 fintech companies
     fintech companies
     fintech company
-fintech company client
-    fintech company client
-fintech complements
-    fintech complements
-fintech consumers
-    fintech consumers
-fintech context
-    fintech context
-    fintech contexts
 fintech continuance intention
     fintech continuance intention
-    fintech continuance intentions
-fintech contributes
-    fintech contributes
-fintech corporation
-    fintech corporation
 fintech credit
     fintech credit
-fintech credit implies
-    fintech credit implies
 fintech crises
     fintech crises
 fintech customers satisfaction
     fintech customers satisfaction
 fintech development
     fintech development
-    fintech developments
     fintech for development
-fintech development contributes
-    fintech development contributes
-fintech development curb
-    fintech development curb
-fintech development index
-    fintech development index
-fintech differ
-    fintech differ
-fintech diffusion
-    fintech diffusion
-fintech digital
-    fintech digital
-fintech disenablers
-    fintech disenablers
-fintech disruptors
-    fintech disruptors
-fintech dividend
-    fintech dividend
-fintech documents
-    fintech documents
-fintech dollars
-    fintech dollars
-fintech e-payment affects
-    fintech e-payment affects
 fintech ecosystem
     fintech ecosystem
-    fintech ecosystems
-fintech ecosystem composition
-    fintech ecosystem composition
-fintech ees
-    fintech ees
-fintech empowerment
-    fintech empowerment
-fintech enterprises
-    fintech enterprises
-fintech entities
-    fintech entities
-    fintech entity
-fintech entrepreneurial ecosystems
-    fintech entrepreneurial ecosystems
-fintech entrepreneurs
-    fintech entrepreneurs
-fintech environment
-    fintech environment
-fintech era
-    fintech era
-fintech evolution
-    fintech evolution
-fintech experience
-    fintech experience
-fintech fever
-    fintech fever
-fintech finance
-    fintech finance
 fintech firms
     fintech firms
-fintech formations
-    fintech formations
-fintech founders
-    fintech founders
-fintech identify
-    fintech identify
-fintech index
-    fintech index
-fintech industries
-    fintech industries
-    fintech industry
-fintech infrastructure
-    fintech infrastructure
-fintech initiatives
-    fintech initiatives
-fintech innovation event
-    fintech innovation event
-fintech innovation race
-    fintech innovation race
-fintech innovation regulation
-    fintech innovation regulation
 fintech integration
     fintech integration
-fintech integration process
-    fintech integration process
-fintech integration process suggestion
-    fintech integration process suggestion
-fintech investment
-    fintech investment
-    fintech investments
-fintech investment overall
-    fintech investment overall
-fintech investment targets
-    fintech investment targets
-fintech investment task force
-    fintech investment task force
-fintech involves
-    fintech involves
-fintech landscape
-    fintech landscape
-fintech laws
-    fintech laws
-fintech lenders
-    fintech lenders
-fintech literature
-    fintech literature
-fintech market
-    fintech market
-    fintech markets
-fintech matter
-    fintech matter
-fintech movement
-    fintech movement
-fintech networks
-    fintech networks
-fintech operators
-    fintech operators
-fintech p2p
-    fintech p2p
-fintech participation
-    fintech participation
-fintech parties
-    fintech parties
-fintech patent applications
-    fintech patent applications
-fintech patents
-    fintech patents
-fintech payment innovations
-    fintech payment innovations
-fintech payment services
-    fintech payment services
-fintech peer-to-peer
-    fintech peer-to-peer
-fintech penetration
-    fintech penetration
-fintech perception
-    fintech perception
-    fintech perceptions
-fintech pest
-    fintech pest
-fintech pest environment
-    fintech pest environment
-fintech phenomenon
-    fintech phenomenon
 fintech platform
     fintech platform
     fintech platforms
-fintech platform  s
-    fintech platform  s
-fintech platform adoption
-    fintech platform adoption
-fintech plays
-    fintech plays
-fintech post-covid-19 lockdown
-    fintech post-covid-19 lockdown
-fintech practice
-    fintech practice
-fintech predictive
-    fintech predictive
 fintech predictive modeling
     fintech predictive modeling
-fintech problem
-    fintech problem
-fintech product
-    fintech product
-    fintech products
-fintech product development
-    fintech product development
-fintech projects
-    fintech projects
-fintech providers
-    fintech providers
-fintech publications
-    fintech publications
-fintech regulation
-    fintech regulation
-    regulate fintech
-fintech regulatory sandbox
-    fintech regulatory sandbox
-fintech research
-    fintech research
 fintech revolution
     fintech revolution
-fintech risk management
-    fintech risk management
-fintech risks
-    fintech risks
-fintech sector
-    fintech sector
-    fintech sectors
-fintech sector development
-    fintech sector development
-fintech service
-    fintech service
+fintech services
     fintech services
-    fintechs services
-fintech service providers
-    fintech service providers
-fintech service quality
-    fintech service quality
-fintech service vendors
-    fintech service vendors
-fintech smes
-    fintech smes
-fintech solutions
-    fintech solutions
-fintech start-up emergence
-    fintech start-up emergence
-fintech start-up firms
-    fintech start-up firms
-fintech start-ups
-    fintech start-up
-    fintech start-ups
-fintech startup
-    fintech startup
+fintech startups
     fintech startups
-fintech startup formation need
-    fintech startup formation need
-fintech startup formations
-    fintech startup formations
-fintech subject
-    fintech subject
-fintech success
-    fintech success
-fintech supports
-    fintech supports
-fintech teaching
-    fintech teaching
-fintech technologies
-    fintech technologies
-fintech technology concepts
-    fintech technology concepts
-fintech terms
-    fintech terms
-    term 'fintech
-    term fintech
-fintech tools
-    fintech tools
-fintech transactions
-    fintech transactions
-fintech types performance
-    fintech types performance
-fintech unfolds
-    fintech unfolds
-fintech usage
-    fintech usage
 fintech usage intention
     fintech usage intention
-fintech users
-    fintech users
-fintech utilization
-    fintech utilization
-fintech venture ecosystem
-    fintech venture ecosystem
-fintech venture investment
-    fintech venture investment
-    fintech venture investments
-fintech ventures
-    fintech ventures
-fintech verticals
-    fintech verticals
-fintech-driven paradigm
-    fintech-driven paradigm
-fintech-financialization apparatus
-    fintech-financialization apparatus
 fintech-innovations
     fintech innovation
-    fintech innovations
-    fintech innovators
     fintech-innovations
-fintech-specific aspects
-    fintech-specific aspects
-fintech-specific policy presumes
-    fintech-specific policy presumes
-fintechs  business area
-    fintechs  business area
-fintechthe lessons
-    fintechthe lessons
-firm innovativeness
-    firm innovativeness
-firm strategy
-    firm strategy
-first-wave fintech era
-    first-wave fintech era
-fiscal burdens
-    fiscal burdens
-five-part taxonomy
-    five-part taxonomy
-flash crash
-    flash crash
-flashback method
-    flashback method
-flexible approach
-    flexible approach
 focus group discussion
     focus group discussion
-food security
-    food security
 food supply
     food supply
 forecasting
     forecasting
     prediction algorithms
     prediction methods
-    predictive algorithms
     predictive models
-foreign competitors
-    foreign competitors
-foreign countries
-    foreign countries
-foreign direct investment
-    foreign direct investment
-foreign experience
-    foreign experience
-foreign markets
-    foreign markets
 forex
     forex
-forex services
-    forex services
-formal financial institutions
-    formal financial institutions
-formal financial market
-    formal financial market
-    formal financial markets
-formal financial services
-    formal financial services
-formal recognition
-    formal recognition
-foundational understanding
-    foundational understanding
-four-step process
-    four-step process
 fourth industrial revolution
     fourth industrial revolution
 fractal geometry
@@ -3243,731 +914,172 @@ fraud
     fraud
 fraud detection
     fraud detection
-fraudulent acts
-    fraudulent acts
-fraudulent datasets
-    fraudulent datasets
 frequency domain analysis
     frequency domain analysis
-frequency domain connectedness
-    frequency domain connectedness
-frequent negative events
-    frequent negative events
-frequent problems
-    frequent problems
-frequent use
-    frequent use
-friendship mechanism
-    friendship mechanism
-fruitful soil
-    fruitful soil
-full implementation
-    full implementation
-full launch
-    full launch
-full potential
-    full potential
-functional perspective
-    functional perspective
-fund p2p loans
-    fund p2p loans
-fundamental characteristics
-    fundamental characteristics
-fundamental conversations
-    fundamental conversations
-fundamental decisions
-    fundamental decisions
 fundamental rights
     fundamental rights
-fundamental role
-    fundamental role
-fundamental tension
-    fundamental tension
 funding
     funding
-funny
-    funny
-future behavior
-    future behavior
-future business growth
-    future business growth
-future development
-    future development
-future development opportunities
-    future development opportunities
-future directions
-    future directions
-future frauds
-    future frauds
 future generations
     future generations
-future growth
-    future growth
-future intention
-    future intention
-future investigation directions
-    future investigation directions
-future research
-    future research
 future research direction
     future research direction
     future research directions
-future research potential
-    future research potential
-future trends
-    future trends
-fuze
-    fuze
 fuze effect
     fuze effect
-fuzzy boundaries
-    fuzzy boundaries
-fuzzy decision-making trial
-    fuzzy decision-making trial
-fuzzy group decision
-    fuzzy group decision
-g20 high-level principles
-    g20 high-level principles
-g20 nations
-    g20 nations
 g21
     g21
 g23
     g23
 g51
     g51
-g7 countries
-    g7 countries
-gain momentum
-    gain momentum
-game changer
-    game changer
-game theory experts
-    game theory experts
 gaussian distribution
     gaussian distribution
 gdp
     gdp
-gen tech
-    gen tech
 gen x
     gen x
-gen z
-    gen z
-gen z consumers
-    gen z consumers
 gender
     gender
 gene overexpression
     gene overexpression
-general assembly
-    general assembly
-general public
-    general public
 generalized normal distribution
     generalized normal distribution
-generate models
-    generate models
-generate sales
-    generate sales
 generation technologies
     generation technologies
-generation x
-    generation x
 generation z
     generation z
 genes
     genes
-genetic algorithm
-    genetic algorithm
+genetic algorithms
     genetic algorithms
 genetic learning
     genetic learning
-genetic learning transmits
-    genetic learning transmits
-genome model
-    genome model
-genuine misconduct
-    genuine misconduct
 geographic location
     geographic location
-geographical enquiry
-    geographical enquiry
-geographical focus
-    geographical focus
-geographical perspectives
-    geographical perspectives
-geographical research
-    geographical research
-geography
-    geography
-germany
-    germany
 ghana
     ghana
-gigabit ethernet
-    gigabit ethernet
-global attention
-    global attention
-global bank
-    global bank
-global comparison
-    global comparison
-global cryptocomplex
-    global cryptocomplex
-global cryptocomplex capitalization
-    global cryptocomplex capitalization
-global economic uncertainties
-    global economic uncertainties
-global economy
-    global economy
 global equity index
     global equity index
 global financial crisis
     global financial crisis
-global financial industry
-    global financial industry
-global financial market
-    global financial market
+global financial markets
     global financial markets
 global financial networks
     global financial networks
-global financial system
-    global financial system
-global findex waves
-    global findex waves
-global fintech industry
-    global fintech industry
-global fintech landscape
-    global fintech landscape
-global fintech market
-    global fintech market
-global indicators
-    global indicators
-global leader
-    global leader
 global market
     global market
-    global markets
-global production
-    global production
 global production networks
     global production networks
-global regulation
-    global regulation
-global scale
-    global scale
-global space
-    global space
 global system for mobile communications
     global system for mobile communications
-global theme
-    global theme
-global trend
-    global trend
-    global trends
-global view
-    global view
 globalization
     globalization
-globalization processes
-    globalization processes
-gme approach
-    gme approach
 gmm
     gmm
 go-pay
     go-pay
 gold
     gold
-gold supports
-    gold supports
-good balance
-    good balance
-good hedgers
-    good hedgers
-good innovation readiness
-    good innovation readiness
-google form
-    google form
-google scholar
-    google scholar
 governance
     governance
     governance approach
     government
-governing fintech
-    governing fintech
-government evaluates
-    government evaluates
-government needs
-    government needs
-government services
-    government services
-government support
-    government support
 governmentality
     governmentality
-gp schemes
-    gp schemes
 grand challenges
     grand challenges
 graphical password
     graphical password
     graphical passwords
-graphical password authentication
-    graphical password authentication
-great example
-    great example
-great importance
-    great importance
-great opportunity
-    great opportunity
-great share
-    great share
-great success
-    great success
-great value
-    great value
-green bond
-    green bond
+green bonds
     green bonds
-green business
-    green business
-green business management
-    green business management
 green consumption
     green consumption
-green credit
-    green credit
-green development
-    green development
-green development level
-    green development level
 green finance
     green finance
-green finance index
-    green finance index
-green finance policy implementation
-    green finance policy implementation
-green finance products
-    green finance products
-green finance promotes
-    green finance promotes
 green fintech
     green fintech
-green fintech startups
-    green fintech startups
 green investment
     green investment
 green manufacturing
     green manufacturing
 greenwashing
     greenwashing
-group decision-making
+group decision making
     group decision making
-    group decision-making
-growing economy
-    growing economy
 growth
     growth
-growth possibilities
-    growth possibilities
-hand instruments
-    hand instruments
-hard information
-    hard information
-hardware makers
-    hardware makers
-harm
-    harm
-harness technology
-    harness technology
 health care cost
     health care cost
-healthcare firms
-    healthcare firms
-healthcare organizations
-    healthcare organizations
-healthcare sector
-    healthcare sector
-heavy computational load
-    heavy computational load
-hedge
-    hedge
 hedging instruments
     hedging instruments
-hefei science
-    hefei science
-helpful guidance
-    helpful guidance
 heterogeneity
     heterogeneity
-heterogeneity analysis
-    heterogeneity analysis
-heterogeneity analysis shows
-    heterogeneity analysis shows
-heterogeneous systems
-    heterogeneous systems
-high accuracy profile
-    high accuracy profile
-high costs
-    high costs
-high degree
-    high degree
-high expectations
-    high expectations
-high interest
-    high interest
-high interest rates
-    high interest rates
-high level
-    high level
-high net income
-    high net income
-high possibility
-    high possibility
 high probability
     high probability
-high quality
-    high quality
-high sjr2017 scores
-    high sjr2017 scores
-high speed
-    high speed
-high-end finance
-    high-end finance
-high-pressure regulatory environment
-    high-pressure regulatory environment
-high-tech firms
-    high-tech firms
-high-technology sectors
-    high-technology sectors
-higher-income countries
-    higher-income countries
-higher-risk borrowers
-    higher-risk borrowers
 historical materialism
     historical materialism
-historical materialist
-    historical materialist
-historical reputational
-    historical reputational
 horizontal
     horizontal
-hot research directions
-    hot research directions
-hot research topics
-    hot research topics
-hot topic
-    hot topic
 household income
     household income
-huge advancement
-    huge advancement
-huge burden
-    huge burden
-huge network
-    huge network
-huge opportunity
-    huge opportunity
-huge percentage
-    huge percentage
-huge user data
-    huge user data
 human
     human
-human brain
-    human brain
-human capital
-    human capital
 human experiment
     human experiment
-human life
-    human life
-human lifestyle
-    human lifestyle
 human potential
     human potential
-    human potentials
-human resource implications
-    human resource implications
 human resource management
     human resource management
-human resources
-    human resources
-human society development
-    human society development
 hungary
     hungary
-hybrid companies
-    hybrid companies
 hybrid mcdm model
     hybrid mcdm model
-hyperparameter optimizer
-    hyperparameter optimizer
 hyperparameters
     hyperparameters
 hypothesis testing
     hypothesis testing
 icos
     icos
-ict
-    ict
 ict development
     ict development
-ideal solution
-    ideal solution
-ideal system
-    ideal system
-identifiable information
-    identifiable information
-identification methods
-    identification methods
-identify anomalies
-    identify anomalies
-identify gaps
-    identify gaps
-identify opportunities
-    identify opportunities
-identify risk factors
-    identify risk factors
-idonesian
-    idonesian
 ieee 1588
     ieee 1588
-ii
-    ii
-illegal fintech
-    illegal fintech
-illegal fintech companies
-    illegal fintech companies
-illegal fintech platforms
-    illegal fintech platforms
-illegal transactions
-    illegal transactions
-illuminate entrepreneurship
-    illuminate entrepreneurship
-immense potential
-    immense potential
-imminent use
-    imminent use
-impact
-    impact
-impactful fintech literature
-    impactful fintech literature
-impactful research
-    impactful research
-implementation practices
-    implementation practices
-important aspects
-    important aspects
-important case
-    important case
-important characteristics
-    important characteristics
-important concepts
-    important concepts
-important discussion
-    important discussion
-important driver
-    important driver
-important elements
-    important elements
-important factor
-    important factor
-    important factors
-important field
-    important field
-important growth determinants
-    important growth determinants
-important innovations
-    important innovations
-important issue
-    important issue
-important limitations
-    important limitations
-important national task
-    important national task
-important network-level resources
-    important network-level resources
-important point
-    important point
-important policy task
-    important policy task
-important practical effects
-    important practical effects
-important quality factor
-    important quality factor
-important recommendations
-    important recommendations
-important role
-    important role
-    important roles
-important section
-    important section
-important task
-    important task
-important topics
-    important topics
-improvement priorities
-    improvement priorities
-improving
-    improving
-in-depth analysis
-    in-depth analysis
-in-depth interview
-    in-depth interview
-    in-depth interviews
-in-depth introduction
-    in-depth introduction
-in-depth investigation
-    in-depth investigation
-inadequate frameworks
-    inadequate frameworks
-inclusive financial sectors
-    inclusive financial sectors
-inclusive society
-    inclusive society
 income divide
     income divide
-income gap
-    income gap
-income growth
-    income growth
 income inequality
     income inequality
-    income inequity
-income inequality nexus
-    income inequality nexus
 income per capita
     income per capita
 income smoothing
     income smoothing
-incomplete contract theory
-    incomplete contract theory
-incomplete preferences
-    incomplete preferences
-incorporate contextual elements
-    incorporate contextual elements
-increase awareness
-    increase awareness
-increase efficiency
-    increase efficiency
 incredibility
     incredibility
-incumbent banks
-    incumbent banks
-incumbent banksare
-    incumbent banksare
-incumbent business models
-    incumbent business models
-incumbent retail banks
-    incumbent retail banks
-indebtedness increases
-    indebtedness increases
 independent variables
     independent variables
 index predictions
     index predictions
-india
-    india
-indian agricultural sector
-    indian agricultural sector
-indian business environment
-    indian business environment
-indian economy
-    indian economy
-indian fintech smes
-    indian fintech smes
-indian government
-    indian government
-indicator system
-    indicator system
-indirect effect
-    indirect effect
 individual behavior
     individual behavior
-individual customers
-    individual customers
 individual innovativeness
     individual innovativeness
-individual investors
-    individual investors
-individual methods
-    individual methods
-individual respondents
-    individual respondents
 indonesia
     indonesia
-indonesia stock exchange
-    indonesia stock exchange
-indonesian economy
-    indonesian economy
-indonesian online news collection
-    indonesian online news collection
-indonesian people
-    indonesian people
-indonesian society
-    indonesian society
 industrial engineering
     industrial engineering
-industrial gas emissions
-    industrial gas emissions
 industrial management
     industrial management
 industrial research
     industrial research
-industrial revolution
-    industrial revolution
+industrial revolutions
     industrial revolutions
-industrial revolution era
-    industrial revolution era
-industrial revolution examines
-    industrial revolution examines
-industrial sectors
-    industrial sectors
 industry 4.0
     industry 4.0
-industry competitiveness
-    industry competitiveness
-industry experience
-    industry experience
-industry level
-    industry level
-industry linkage
-    industry linkage
-industry linkage effect
-    industry linkage effect
-industry members
-    industry members
-industry overall
-    industry overall
-industry participants
-    industry participants
-industry plays
-    industry plays
-industry sources
-    industry sources
-industry world
-    industry world
-inequality distribution
-    inequality distribution
-infancy phase
-    infancy phase
-influence
-    influence
-influential changes
-    influential changes
-influential factors
-    influential factors
-influential publications
-    influential publications
 inform-your-markets
     inform-your-markets
 informal settlement
     informal settlement
-    informal settlements
 information
     information
 information analysis
@@ -3975,166 +1087,57 @@ information analysis
 information and communication technologies
     information and communication technologies
     information and communications technology
-information asymmetries
-    information asymmetries
+information asymmetry
     information asymmetry
-information availability
-    information availability
-information environment
-    information environment
-information fintech platform
-    information fintech platform
 information flows
     information flows
 information management
     information management
-information platform
-    information platform
+information platforms
     information platforms
-information processing
-    information processing
-    process information
-information processing capacity
-    information processing capacity
 information quality
     information quality
-information recipients
-    information recipients
-information security
-    information security
 information systems
     information systems
-information technologies
-    information technologies
+information technology
     information technology
-information technology contributes
-    information technology contributes
-information technology disrupts
-    information technology disrupts
-information technology plays
-    information technology plays
 information use
     information use
 informational efficiency
     informational efficiency
 infrastructural development
     infrastructural development
-infrastructure building
-    infrastructure building
 infrastructure planning
     infrastructure planning
-inherent hierarchy
-    inherent hierarchy
-inherent strengths
-    inherent strengths
 initial coin offerings
     initial coin offerings
-initial hypotheses
-    initial hypotheses
-initial search
-    initial search
-initial technology development
-    initial technology development
-innotribe competition
-    innotribe competition
-innovate products
-    innovate products
-    innovative product
-    innovative products
-innovating
-    innovating
+innovation
     innovation
     innovations
-    innovative approach
-innovation challenge
-    innovation challenge
 innovation competencies
     innovation competencies
-innovation ignore
-    innovation ignore
 innovation in financial services
     innovation in financial services
 innovation management
     innovation management
 innovation mechanisms
     innovation mechanisms
-innovation outcomes
-    innovation outcomes
-innovation pace
-    innovation pace
-innovation path
-    innovation path
-innovation platform
-    innovation platform
-innovation regulation
-    innovation regulation
-innovative businesses
-    innovative businesses
-innovative field
-    innovative field
 innovative financial technologies
     innovative financial technologies
-innovative fintech services
-    innovative fintech services
-innovative genetic algorithm
-    innovative genetic algorithm
-innovative high-growth firms
-    innovative high-growth firms
-innovative islamic
-    innovative islamic
-innovative nature
-    innovative nature
 innovative practices
     innovative practices
-innovative propositions
-    innovative propositions
-innovative regulatory framework
-    innovative regulatory framework
-innovative services
-    innovative services
-    service innovation
-    service innovation strategies
-    service innovation strategy
-innovative technologies
-    innovative technologies
-    technological innovation
-    technological innovations
-    technology innovation
-    technology innovations
-innovative technology products
-    innovative technology products
-innovative use
-    innovative use
-innovative way
-    innovative way
+innovative product
+    innovative product
 input-output analysis
     input-output analysis
-instant payment services
-    instant payment services
-instil culture
-    instil culture
 institutional change
     institutional change
-institutional context
-    institutional context
 institutional development
     institutional development
 institutional framework
     institutional framework
-institutional problems
-    institutional problems
-institutional reform
-    institutional reform
-institutional settings
-    institutional settings
-insurance companies
-    insurance companies
-insurance market participation
-    insurance market participation
 insurance markets
     insurance markets
-insurance/ takaful
-    insurance/ takaful
 insurtech
     insurtech
 integer linear programming
@@ -4147,99 +1150,32 @@ integration
     integration
 integration process
     integration process
-integration-test-centric software development process
-    integration-test-centric software development process
-intelligent algorithms
-    intelligent algorithms
-intelligent banker
-    intelligent banker
-    intelligent bankers
-intelligent interactions
-    intelligent interactions
-intelligent regulatory sandbox
-    intelligent regulatory sandbox
 intelligent systems
     intelligent systems
-intense fusion
-    intense fusion
-intensive processes
-    intensive processes
 intention
     intention
 intention to use
     intention to use
-inter-node distance
-    inter-node distance
-interaction policy
-    interaction policy
-interaction systems
-    interaction systems
 interactive computer systems
     interactive computer systems
-interactive field
-    interactive field
-interagency government strategies
-    interagency government strategies
 interconnected system
     interconnected system
 interdisciplinary approach
     interdisciplinary approach
-intergovernmental cooperation
-    intergovernmental cooperation
-interindustry analysis
-    interindustry analysis
 intermediary
     intermediary
-intermediary business
-    intermediary business
-intermediary effect shows
-    intermediary effect shows
-intermediary network
-    intermediary network
-intermediate good
-    intermediate good
-intermediation dynamics
-    intermediation dynamics
-internal departments
-    internal departments
-internal interest
-    internal interest
-internal market
-    internal market
-    international market
-    international markets
-internal readiness
-    internal readiness
-internal restructuration
-    internal restructuration
 international business
     international business
-international business networks
-    international business networks
 international cooperation
     international cooperation
 international development
     international development
-international development organisations
-    international development organisations
-international evidence
-    international evidence
 international financial centers
     international financial centers
-international level
-    international level
-international money transfers
-    international money transfers
-international organisations
-    international organisations
+international markets
+    international markets
+international organization
     international organization
-    international organizations
-international regional hubs
-    international regional hubs
-international settlement
-    international settlement
-international standards
-    international standards
 international trade
     international trade
 internationalization
@@ -4248,102 +1184,34 @@ internet
     internet
 internet based technology
     internet based technology
-internet giantsjd
-    internet giantsjd
 internet of things
     internet of things
     internet of things (iot)
-internet platforms
-    internet platforms
-internet servers
-    internet servers
-internet users
-    internet users
-interpretation function
-    interpretation function
-interpreting
-    interpreting
 interval type-2 fuzzy topsis
     interval type-2 fuzzy topsis
-interview key stakeholders
-    interview key stakeholders
-interview questions
-    interview questions
-intra-africa expansion
-    intra-africa expansion
-introduce fintech
-    introduce fintech
-introduce policies
-    introduce policies
-introduction
-    introduction
-introductory article
-    introductory article
 investment
     investment
     investments
 investment attractiveness
     investment attractiveness
-investment bank
-    investment bank
-investment decision-making
+investment decision making
     investment decision making
-    investment decision-making
-investment firm
-    investment firm
-    investment firms
 investment in fintech
     investment in fintech
 investment management
     investment management
-investment management applications
-    investment management applications
-investment management services
-    investment management services
-investment potential
-    investment potential
-investor education issues
-    investor education issues
 investors
     investors
-invite fintech
-    invite fintech
 iot
     iot
-    iot techniques
-iot devices
-    iot devices
-iot-fintech applications
-    iot-fintech applications
-iot-fintech technology
-    iot-fintech technology
-islamic
-    islamic
 islamic banking
     islamic banking
 islamic economics
     islamic economics
 islamic finance
     islamic finance
-islamic finance industry
-    islamic finance industry
-islamic finance sector
-    islamic finance sector
 islamic fintech
     islamic fintech
-    islamic fintech model
-islamic fintech area
-    islamic fintech area
-islamic fintech firms
-    islamic fintech firms
-islamic fintech opportunities
-    islamic fintech opportunities
-islamic fintech organizations
-    islamic fintech organizations
-islamic tax
-    islamic tax
-issue contribute
-    issue contribute
 it
     it
 it adoption
@@ -4357,81 +1225,14 @@ it technologies
     it technologies
 it vendors
     it vendors
-it-enabled
-    it-enabled
-it2
-    it2
-iteration technique
-    iteration technique
 its applications
     its applications
-jadetabek
-    jadetabek
-jel g00
-    jel g00
-jel g14
-    jel g14
 jordan
     jordan
-jordanian commercial banks
-    jordanian commercial banks
-jupyter notebook
-    jupyter notebook
 kenya
     kenya
-key actors
-    key actors
-key algorithmic tool
-    key algorithmic tool
-key approaches
-    key approaches
-key channel
-    key channel
-key clients
-    key clients
-key concepts
-    key concepts
-key contribution
-    key contribution
-key criterion
-    key criterion
-key determinants
-    key determinants
-key driver
-    key driver
-    key drivers
-key enablers
-    key enablers
-key factor
-    key factor
-key fintech-driven changes
-    key fintech-driven changes
-key framework documents
-    key framework documents
-key input variables
-    key input variables
-key issue
-    key issue
-key players
-    key players
-key reasons
-    key reasons
-key role
-    key role
-key stakeholders
-    key stakeholders
-key takeaways
-    key takeaways
 key technologies
     key technologies
-key tools
-    key tools
-key topic
-    key topic
-key trends
-    key trends
-keyword clusters
-    keyword clusters
 keywords ank
     keywords ank
 kftx
@@ -4446,15 +1247,10 @@ knowledge
     knowledge
 knowledge based systems
     knowledge based systems
-knowledge gap
-    knowledge gap
 knowledge management
     knowledge management
-knowledge management assets
-    knowledge management assets
 knowledge management process
     knowledge management process
-    knowledge management processes
 knowledge spillovers
     knowledge spillovers
 korea
@@ -4463,71 +1259,12 @@ l86
     l86
 laboratory method
     laboratory method
-lack potential
-    lack potential
-large banks
-    large banks
-large companies
-    large companies
-large data
-    large data
-large enterprises
-    large enterprises
-large fintech companies
-    large fintech companies
-large number
-    large number
-    large numbers
-large players
-    large players
-large populations
-    large populations
-large scale analysis
-    large scale analysis
-large sections
-    large sections
-large set
-    large set
-large shifts
-    large shifts
-large technology companies
-    large technology companies
-large value
-    large value
-large-scale capacity building
-    large-scale capacity building
-large-scale evidence
-    large-scale evidence
-late action
-    late action
-late adopters
-    late adopters
 latency measurements
     latency measurements
-latency requirements
-    latency requirements
-latent variables
-    latent variables
-latvian fintech
-    latvian fintech
-latvian fintech sector
-    latvian fintech sector
-latvian society
-    latvian society
-law makers
-    law makers
 laws and legislation
     laws and legislation
-lax
-    lax
-lax screening
-    lax screening
 leadership styles
     leadership styles
-lean ux
-    lean ux
-lean ux development
-    lean ux development
 learning algorithms
     learning algorithms
 learning managements
@@ -4536,276 +1273,58 @@ learning structure
     learning structure
 least squares method
     least squares method
-ledger technology
-    ledger technology
-legacy incredibility
-    legacy incredibility
-legal advisers
-    legal advisers
-legal aspects
-    legal aspects
-legal certainty
-    legal certainty
-legal conundrum
-    legal conundrum
-legal corridor
-    legal corridor
-legal definition
-    legal definition
 legal department
     legal department
-    legal departments
-legal environment
-    legal environment
-legal framework
-    legal framework
-legal instruments
-    legal instruments
-legal issues
-    legal issues
 legal protection
     legal protection
 legal quality
     legal quality
 legal regulation
     legal regulation
-    legal regulations
-legal research methodology
-    legal research methodology
-legal risk
-    legal risk
-legal status
-    legal status
-legal tender
-    legal tender
-legible
-    legible
 legislation
     legislation
-legitimacy needs
-    legitimacy needs
 lendingclub
     lendingclub
-lendingclub credit grade
-    lendingclub credit grade
-lesser status
-    lesser status
-leveraging
-    leveraging
-license application
-    license application
+license applications
     license applications
 life cycle
     life cycle
-likely future development
-    likely future development
-likely impact
-    likely impact
 limited distribution
     limited distribution
 linear programming models
     linear programming models
-linkage effect
-    linkage effect
-linkedin platform
-    linkedin platform
-liquidity business
-    liquidity business
-literary methodology
-    literary methodology
 literature review
     literature review
-literature review analysis
-    literature review analysis
-livelihood support
-    livelihood support
 living maps
     living maps
 loan loss provisions
     loan loss provisions
-loan origination
-    loan origination
-loan transactions
-    loan transactions
-lobby organizations
-    lobby organizations
-local distribution partners
-    local distribution partners
-local economy
-    local economy
-local people
-    local people
-localization products
-    localization products
 logic
     logic
 logistic regression
     logistic regression
-    logistic regression model
-london
-    london
+london [england]
     london [england]
-long run
-    long run
-long run interests
-    long run interests
 long tail markets
     long tail markets
-long term
-    long term
-long-term debt
-    long-term debt
-long-term interests
-    long-term interests
-longstanding problems
-    longstanding problems
-low average levels
-    low average levels
-low cost
-    low cost
+low costs
     low costs
-low financial literacy
-    low financial literacy
-low level
-    low level
-low-cost offerings
-    low-cost offerings
-low-income households
-    low-income households
 low-speed electric vehicles
     low-speed electric vehicles
-loyal behavior
-    loyal behavior
-loyal customers
-    loyal customers
 loyalty
     loyalty
-loyalty intentions
-    loyalty intentions
-lsevs gain
-    lsevs gain
-ltm approach
-    ltm approach
-ltm business approach
-    ltm business approach
-ltm thesis
-    ltm thesis
 m13
     m13
-machine
-    machine
 machine learning
     machine learning
-machine learning applications
-    machine learning applications
-macro-level changes
-    macro-level changes
-macrofinancial risks
-    macrofinancial risks
-main aim
-    main aim
-main aspects
-    main aspects
-main beneficiaries
-    main beneficiaries
-main causes
-    main causes
-main concern
-    main concern
-main constraints
-    main constraints
-main contribution
-    main contribution
-main development scenarios
-    main development scenarios
-main factors
-    main factors
-main findings
-    main findings
-main fintech drivers
-    main fintech drivers
-main focus
-    main focus
-main forms
-    main forms
-main intention
-    main intention
-main issue
-    main issue
-    main issues
-main objective
-    main objective
-main obstacles
-    main obstacles
-main players
-    main players
-main policy objective
-    main policy objective
-main prerequisite
-    main prerequisite
-main reasons
-    main reasons
-main research object
-    main research object
-main results
-    main results
-main risks
-    main risks
-main scenarios
-    main scenarios
-main tools
-    main tools
-main trends
-    main trends
-mainland china account
-    mainland china account
-major barriers
-    major barriers
-major burnt
-    major burnt
-major categories
-    major categories
-major improvements
-    major improvements
-major journey
-    major journey
-major provider
-    major provider
-major technology groups
-    major technology groups
-major transformation
-    major transformation
-major types
-    major types
 make, buy, or ally
     make, buy, or ally
-making
-    making
 malaysia
     malaysia
-management
-    management
-    managers
-management capabilities
-    management capabilities
-management information systems
-    management information systems
 management research
     management research
-managerial decisions
-    managerial decisions
-managerial impact
-    managerial impact
-managerial implications
-    managerial implications
-managerial insights
-    managerial insights
-managerial issues
-    managerial issues
-managerial perspective
-    managerial perspective
-manuscript text contains
-    manuscript text contains
+managers
+    managers
 map passwords
     map passwords
 mapping method
@@ -4813,70 +1332,17 @@ mapping method
     maps
 mapping study
     mapping study
-marginal size
-    marginal size
-market actor
-    market actor
-    market actors
-market analysis
-    market analysis
-market competition
-    market competition
-market concentration
-    market concentration
 market conditions
     market conditions
-market continent
-    market continent
-market crash
-    market crash
-market development
-    market development
-market development constitutes
-    market development constitutes
-market events
-    market events
-market failures
-    market failures
-market framework
-    market framework
-market imperfections
-    market imperfections
-market institutions
-    market institutions
-market integrity
-    market integrity
-market leaders
-    market leaders
-market legitimacy
-    market legitimacy
-market logic
-    market logic
-    market logics
-market niche
-    market niche
 market participants
     market participants
     market participations
-market players
-    market players
 market power
     market power
-market processes
-    market processes
 market researches
     market researches
-market risk
-    market risk
-market segmentation
-    market segmentation
-    market segments
-market share
-    market share
 market structure
     market structure
-market traction
-    market traction
 marketing
     marketing
     marketing strategy
@@ -4887,622 +1353,139 @@ marketing knowledge management
     marketing knowledge management
 marketplace lending
     marketplace lending
-marxian discussions
-    marxian discussions
-mass adoption
-    mass adoption
-mass consumers
-    mass consumers
 mass medium
     mass medium
-massive amount
-    massive amount
-massive infrastructure investments
-    massive infrastructure investments
 material culture
     material culture
-    material cultures
-mathematical model
-    mathematical model
+mathematics
     mathematics
 matlab
     matlab
 matthiola incana
     matthiola incana
-mature applications
-    mature applications
-maximum benefits
-    maximum benefits
 may 6 flash crash
     may 6 flash crash
-mcdm
-    mcdm
-meaningful sociotechnical arrangements
-    meaningful sociotechnical arrangements
-measure fintech risk
-    measure fintech risk
-mechanical turk
-    mechanical turk
-mechanism
-    mechanism
-    mechanism approach
 mediating effect
     mediating effect
 mediation analysis
     mediation analysis
-medium companies
-    medium companies
-medium enterprises
-    medium enterprises
-medium industries
-    medium industries
-medium-sized enterprises
-    medium-sized enterprises
-member states
-    member states
 meta-analysis
     meta-analysis
 metadata
     metadata
-method research design
-    method research design
-methodologies-demand-driven model
-    methodologies-demand-driven model
-mfs framework
-    mfs framework
-mfs platforms
-    mfs platforms
-micro-firm entrepreneurs
-    micro-firm entrepreneurs
 micro-foundations
     micro-foundations
-micro-operating
-    micro-operating
-microfinance aid
-    microfinance aid
-mid-market exchange rate
-    mid-market exchange rate
 migration
     migration
 millennials
     millennials
-millennium goals
-    millennium goals
 misconduct
     misconduct
 misreporting
     misreporting
-mitigate risks
-    mitigate risks
-mitigation
-    mitigation
-mixed-continuous model
-    mixed-continuous model
-mkm capabilities
-    mkm capabilities
-mobile
-    mobile
-    mobility
-    mobilize
-mobile androide application
-    mobile androide application
 mobile application
     mobile application
-mobile application user review
-    mobile application user review
-mobile broadband penetration
-    mobile broadband penetration
-mobile cloud
-    mobile cloud
 mobile cloud computing
     mobile cloud computing
-mobile devices
-    mobile devices
 mobile easy payment service
     mobile easy payment service
-mobile financial service
-    mobile financial service
+mobile financial service (mfs)
     mobile financial service (mfs)
 mobile fintech payment services
     mobile fintech payment services
-mobile internet
-    mobile internet
-mobile internet revolution
-    mobile internet revolution
-mobile internet technologies
-    mobile internet technologies
-mobile money
-    mobile money
-mobile network operators
-    mobile network operators
-mobile networks
-    mobile networks
 mobile payment
     mobile payment
-    mobile payment method
     mobile payments
 mobile payment market
     mobile payment market
-mobile payment security environment
-    mobile payment security environment
 mobile payment service
     mobile payment service
-    mobile payment services
-mobile payment systems
-    mobile payment systems
-mobile phones
-    mobile phones
 mobile telecommunication systems
     mobile telecommunication systems
-mobile telephone subscriptions
-    mobile telephone subscriptions
-mobile transactions
-    mobile transactions
 mobile wallet
     mobile wallet
-    mobile wallets
-mobile wallet ecosystem
-    mobile wallet ecosystem
-mobile wallet platforms
-    mobile wallet platforms
-mobile-payment business
-    mobile-payment business
-model connects
-    model connects
+mobility
+    mobility
 model development
     model development
-model development uses
-    model development uses
-model evaluates
-    model evaluates
-model risk assessment
-    model risk assessment
-model solver
-    model solver
 modeling
     modeling
 moderating effect
     moderating effect
-moderating role
-    moderating role
-modern assets
-    modern assets
-modern economies
-    modern economies
-    modern economy
-modern energy
-    modern energy
-modern inventions
-    modern inventions
-modern networks
-    modern networks
-modern russia
-    modern russia
-modern technologies
-    modern technologies
-    modern technology
-modern times
-    modern times
-modern trends
-    modern trends
-modern world
-    modern world
-modest growth year
-    modest growth year
 modified vikor
     modified vikor
 mom(micro-operating mechanism)
     mom(micro-operating mechanism)
-monetary authority
-    monetary authority
-money transfers
-    money transfers
-monitor engagement
-    monitor engagement
 monitoring
     monitoring
 monopoly
     monopoly
-motor themes
-    motor themes
 multi dimensional
     multi dimensional
-multi-controller environment
-    multi-controller environment
-multi-controller sdn setup
-    multi-controller sdn setup
-multi-dimensional project success framework
-    multi-dimensional project success framework
-multilevel psychic distance
-    multilevel psychic distance
 multilevels
     multilevels
-multiple business lines
-    multiple business lines
-multiple case studies
-    multiple case studies
-multiple enactments
-    multiple enactments
-multiple innovations
-    multiple innovations
 multiple password inference
     multiple password inference
-multiple password memory
-    multiple password memory
 multiple regression
     multiple regression
-    multiple regression model
-    multiple regression techniques
-multiple regression analysis
-    multiple regression analysis
-multisource database
-    multisource database
-multivariate regression
-    multivariate regression
-municipal digital
-    municipal digital
-municipal financial entities
-    municipal financial entities
 mutual authentication
     mutual authentication
 mutual fund
     mutual fund
-mutual fund/ unit trust
-    mutual fund/ unit trust
-mutual integration
-    mutual integration
-mutual learning
-    mutual learning
 naive bayes
     naive bayes
-national demand
-    national demand
-national economic performance
-    national economic performance
 national economy
     national economy
-national fintech market
-    national fintech market
-national level
-    national level
-    national levels
-natural capital
-    natural capital
 natural language processing
     natural language processing
 natural resource
     natural resource
-    natural resources
-necessary mandate
-    necessary mandate
-necessary reformulation
-    necessary reformulation
-need development
-    need development
-negative direct effects
-    negative direct effects
-negative effect
-    negative effect
-    negative effects
 negative events
     negative events
-negative impact
-    negative impact
-negative potentials
-    negative potentials
-negative regulation
-    negative regulation
-negative relationship
-    negative relationship
-negative value effect
-    negative value effect
-neighbor individuals
-    neighbor individuals
-neoliberal development governance
-    neoliberal development governance
-neoliberal projects
-    neoliberal projects
 neoliberalism
     neoliberalism
-net contributors
-    net contributors
-net interest income
-    net interest income
-net receivers
-    net receivers
-network
-    network
-    network approach
 network analysis
     network analysis
-network analysis shows
-    network analysis shows
-network infrastructure
-    network infrastructure
-network load
-    network load
-network need
-    network need
+network approach
+    network approach
 network security
     network security
-network visibility
-    network visibility
-    visibility networks
 network weights
     network weights
-neural network
-    neural network
+neural networks
     neural networks
-neutral computer code
-    neutral computer code
-new african countries
-    new african countries
-new block chain technology
-    new block chain technology
 new business models
     new business models
-new business partners
-    new business partners
-new business practices
-    new business practices
-new commercial entities
-    new commercial entities
-new competitors
-    new competitors
-new concept
-    new concept
-new customer interactions
-    new customer interactions
-new developments
-    new developments
-new dimension
-    new dimension
-new dna
-    new dna
-new domain
-    new domain
-new entrants
-    new entrants
-new entrants shape
-    new entrants shape
-new era
-    new era
-new evidence
-    new evidence
-new experiences
-    new experiences
-new factors
-    new factors
-new financial ecosystems
-    new financial ecosystems
-new financial industry
-    new financial industry
-new financial innovations
-    new financial innovations
-new financial products
-    new financial products
-new financial services
-    new financial services
-new financial technologies
-    new financial technologies
-    new financial technology
-new fintech companies
-    new fintech companies
-new fintech innovation
-    new fintech innovation
-new fintech projects
-    new fintech projects
-new fintech start-ups
-    new fintech start-ups
-new fintech startups
-    new fintech startups
-new forms
-    new forms
-new generations
-    new generations
-new insights
-    new insights
-new intermediaries
-    new intermediaries
-new knowledge
-    new knowledge
-new layers
-    new layers
-new level
-    new level
-new market demands
-    new market demands
-new market entrants
-    new market entrants
-new market entries
-    new market entries
-new market segment
-    new market segment
 new media
     new media
-new media participation
-    new media participation
-new model
-    new model
-    new models
-new niche
-    new niche
-new non-linear l
-    new non-linear l
 new normal behavior
     new normal behavior
-new ones
-    new ones
-new opportunities
-    new opportunities
-new papers
-    new papers
-new pathways
-    new pathways
-new payment landscape
-    new payment landscape
-new phenomenon
-    new phenomenon
-new players
-    new players
-new possibilities
-    new possibilities
-new products
-    new products
-new projects
-    new projects
-new proxy
-    new proxy
-new regulatory framework
-    new regulatory framework
+new regulatory frameworks
     new regulatory frameworks
-new requirements
-    new requirements
-new revenue models
-    new revenue models
-new risks
-    new risks
-new round
-    new round
-new routes
-    new routes
-new sector
-    new sector
-new service concepts
-    new service concepts
 new service development
     new service development
 new services
     new services
-new sources
-    new sources
-new studies
-    new studies
-new targets
-    new targets
-new technological keywords
-    new technological keywords
 new technologies
     new technologies
-    new technology
-new technology innovations
-    new technology innovations
-new technology lead
-    new technology lead
-new terms
-    new terms
-new thing
-    new thing
-new trends
-    new trends
-new trustworthy
-    new trustworthy
-new variables
-    new variables
-new ventures
-    new ventures
-new way
-    new way
-    new ways
 new york city
     new york city
-new-generation fintech
-    new-generation fintech
-niche products
-    niche products
-nlp
-    nlp
-non-bank competition
-    non-bank competition
-non-eu countries
-    non-eu countries
-non-financial companies
-    non-financial companies
-non-financial information
-    non-financial information
-non-financial organisations
-    non-financial organisations
-non-financial performance measures
-    non-financial performance measures
-non-fintech borrowers
-    non-fintech borrowers
-non-functional characteristics
-    non-functional characteristics
-non-linear
-    non-linear
-non-local connectivity
-    non-local connectivity
 non-point source pollution
     non-point source pollution
-non-traditional consumer data
-    non-traditional consumer data
-non-traditional data
-    non-traditional data
-non-traditional payment systems
-    non-traditional payment systems
-nonfinancial startups
-    nonfinancial startups
 nonperforming loans
     nonperforming loans
 nonpoint source pollution
     nonpoint source pollution
 normal distribution
     normal distribution
-normal distribution optimization
-    normal distribution optimization
-normative motivations
-    normative motivations
-northern europe
-    northern europe
-not-so-big
-    not-so-big
-novel artificial intelligence
-    novel artificial intelligence
-novel ecosystem dynamics
-    novel ecosystem dynamics
-novel editorial protocol
-    novel editorial protocol
-novel goods
-    novel goods
-novel hybrid
-    novel hybrid
-novel mcdm model
-    novel mcdm model
-novel mechanism
-    novel mechanism
-novel proposal
-    novel proposal
-novel results
-    novel results
-novel service packages
-    novel service packages
-novel technologies
-    novel technologies
 numerical model
     numerical model
-numerous economic benefits
-    numerous economic benefits
-nurturing
-    nurturing
 o16
     o16
 o32
     o32
-objective function
-    objective function
+objective functions
     objective functions
-objective linear
-    objective linear
-objective perceptions
-    objective perceptions
-objective results
-    objective results
-obvious indicators
-    obvious indicators
-oecd countries
-    oecd countries
-off-line payment
-    off-line payment
 offline payments
     offline payments
 oil
@@ -5511,220 +1494,77 @@ oligopoly
     oligopoly
 omni-channel
     omni-channel
-one-day point decline
-    one-day point decline
-online brokerage
-    online brokerage
-online market
-    online market
 online microloan
     online microloan
 online payments
     online payments
-online platforms
-    online platforms
-online questionnaires
-    online questionnaires
-online sales
-    online sales
-online survey
-    online survey
-    online surveys
 online transaction
     online transaction
-    online transactions
-online/digital insurance
-    online/digital insurance
 open banking
     open banking
-open environment
-    open environment
 open innovation
     open innovation
-open innovation paradigm
-    open innovation paradigm
-open social innovation
-    open social innovation
-operational costs
-    operational costs
-operational innovation
-    operational innovation
 operational risk
     operational risk
-operational structures
-    operational structures
 operations management
     operations management
-operations-an overview
-    operations-an overview
 opinion mining
     opinion mining
-opinion problems
-    opinion problems
-opportunity identification
-    opportunity identification
-opposite impact
-    opposite impact
-optimal indicator system
-    optimal indicator system
-optimal path
-    optimal path
 optimization
     optimization
-order
-    order
-order execution
-    order execution
-order preference
-    order preference
-orderly market growth
-    orderly market growth
 organizational actors
     organizational actors
-organizational figuration
-    organizational figuration
-organizational innovation
-    organizational innovation
 organizational legitimacy
     organizational legitimacy
 organizational support
     organizational support
-original methodology
-    original methodology
-original value
-    original value
 otc derivatives
     otc derivatives
 outlier detection
     outlier detection
-outstanding changes
-    outstanding changes
-overall level
-    overall level
-overall market
-    overall market
-overall structure
-    overall structure
-overall view
-    overall view
-overall vision
-    overall vision
 overindebtedness
     overindebtedness
-oversight system
-    oversight system
-overview
-    overview
 ovo
     ovo
-own innovation
-    own innovation
-own risks
-    own risks
-own set
-    own set
-owner characteristics
-    owner characteristics
 p2p
     p2p
 p2p lending
     p2p lending
-p2p platforms
-    p2p platforms
-package
-    package
 packet networks
     packet networks
 packet timestamping
     packet timestamping
-page 13.
-    page 13.
-palestinian context
-    palestinian context
 panel data
     panel data
-panel techniques
-    panel techniques
-panic environment
-    panic environment
-paper analyses
-    paper analyses
-    paper analyzes
-parabank institutions
-    parabank institutions
-paradigm
-    paradigm
 paradigm shifts
     paradigm shifts
 parallel executions
     parallel executions
-parallel streams
-    parallel streams
-partial mediators
-    partial mediators
 participatory approach
     participatory approach
-particular attention
-    particular attention
-particular banks
-    particular banks
-particular emphasis
-    particular emphasis
-particular eu
-    particular eu
-particular focus
-    particular focus
-particular infrastructures
-    particular infrastructures
-particular internet platform
-    particular internet platform
 parts
     parts
 password-based systems
     password-based systems
-past errors
-    past errors
-patent activity
-    patent activity
 patent application
     patent application
-    patent applications
-patent filings
-    patent filings
 patents
     patents
 patents data
     patents data
-payment
-    payment
-    payment methods
-    payments
 payment activities
     payment activities
-payment channel system
-    payment channel system
-payment industry
-    payment industry
 payment innovation
     payment innovation
-    payment innovations
-payment landscape
-    payment landscape
-payment market
-    payment market
-payment platform providers
-    payment platform providers
-payment service providers
-    payment service providers
+payment methods
+    payment methods
+    payments
 payment services
     payment services
 payment services directive
     payment services directive
-payment system
-    payment system
+payment systems
     payment systems
-peculiar characteristics
-    peculiar characteristics
 peer to peer lending financial technology corporation
     peer to peer lending financial technology corporation
 peer to peer networks
@@ -5732,18 +1572,10 @@ peer to peer networks
 peer-to-peer
     peer to peer
     peer-to-peer
-peer-to-peer communication
-    peer-to-peer communication
 peer-to-peer lending
     peer to peer lending
     peer-to peer lending (p2p lending)
     peer-to-peer lending
-peer-to-peer money exchanges
-    peer-to-peer money exchanges
-peer-to-peer platforms
-    peer-to-peer platforms
-peer-to-peer risk outbreak
-    peer-to-peer risk outbreak
 perceived benefit
     perceived benefit
 perceived ease of use
@@ -5760,69 +1592,26 @@ perceived value
     perceived value
 perception
     perception
-performance
-    performance
-performance expectancy
-    performance expectancy
-    performance expectations
-performance gaps
-    performance gaps
 performance of investment firms
     performance of investment firms
-personal characteristics
-    personal characteristics
-personal credit market
-    personal credit market
-personal data
-    personal data
-personal data fraud
-    personal data fraud
-personal data protection
-    personal data protection
 personal information
     personal information
-personal relationships
-    personal relationships
 personalized law
     personalized law
 personally identifiable information
     personally identifiable information
 personnel training
     personnel training
-perspective
-    perspective
 pert
     pert
-pervasive digital technologies
-    pervasive digital technologies
 pest analysis
     pest analysis
 petroleum reservoir evaluation
     petroleum reservoir evaluation
-phase consist
-    phase consist
-phenomenon
-    phenomenon
-philanthropic investment
-    philanthropic investment
-physical cash
-    physical cash
-physical cash robberies
-    physical cash robberies
 physics
     physics
 pico-second precision
     pico-second precision
-picosecond-level packet timestamping
-    picosecond-level packet timestamping
-picosecond-precision packet
-    picosecond-precision packet
-pillar involves
-    pillar involves
-pilot studies
-    pilot studies
-pivotal role
-    pivotal role
 plannerclient relationship
     plannerclient relationship
 planning
@@ -5833,269 +1622,47 @@ platform absconding
     platform absconding
 platform capitalism
     platform capitalism
-platform consolidation
-    platform consolidation
 platform economy
     platform economy
-platform industry
-    platform industry
-platform misconduct
-    platform misconduct
-platform reintermediation
-    platform reintermediation
 platform security
     platform security
-poisson flow rates
-    poisson flow rates
-poisson intensities
-    poisson intensities
-poland
-    poland
-policy action
-    policy action
-policy agenda
-    policy agenda
-policy enablers
-    policy enablers
-policy front
-    policy front
-policy goals
-    policy goals
-policy intent
-    policy intent
-policy issues
-    policy issues
-policy makers
-    policy makers
-policy objectives
-    policy objectives
-policy perspective
-    policy perspective
 political economy
     political economy
-political uncertainty
-    political uncertainty
 pollution control
     pollution control
-poor access
-    poor access
-poor data flow
-    poor data flow
-poor households
-    poor households
-poor individuals
-    poor individuals
-poor individuls
-    poor individuls
-poor people
-    poor people
-poorer countries
-    poorer countries
-popular approaches
-    popular approaches
-popular belief
-    popular belief
-popular media
-    popular media
-popular payment provider paypal
-    popular payment provider paypal
 popular press
     popular press
-popularize knowledge
-    popularize knowledge
 portfolio diversification
     portfolio diversification
-portuguese fintechs
-    portuguese fintechs
-positive changes
-    positive changes
-positive effect
-    positive effect
-    positive effects
-positive impact
-    positive impact
-positive influences
-    positive influences
-positive perceptions
-    positive perceptions
-positive relationship exists
-    positive relationship exists
-possible approaches
-    possible approaches
-possible benchmark
-    possible benchmark
-possible consequences
-    possible consequences
-possible cooperation
-    possible cooperation
-possible demographic
-    possible demographic
-possible effects
-    possible effects
-possible future
-    possible future
-possible transmission mechanisms
-    possible transmission mechanisms
 post covid-19
     post covid-19
-post-covid-19 lockdown
-    post-covid-19 lockdown
-post-entry phase
-    post-entry phase
-post-internationalization phases
-    post-internationalization phases
-post-pandemic period
-    post-pandemic period
-post-positivist paradigm approach
-    post-positivist paradigm approach
-potential
-    potential
 potential benefits
     potential benefits
-potential consequences
-    potential consequences
-potential customers
-    potential customers
-potential destabilization
-    potential destabilization
-potential development
-    potential development
-potential factors
-    potential factors
-potential framework
-    potential framework
-potential implications
-    potential implications
-potential market
-    potential market
-potential market failures
-    potential market failures
-potential market players
-    potential market players
-potential mfs users
-    potential mfs users
-potential partner
-    potential partner
-potential research directions
-    potential research directions
 potential researches
     potential researches
     research potential
 potential risks
     potential risks
-potential value
-    potential value
 poverty
     poverty
-poverty reduction
-    poverty reduction
-power grids
-    power grids
-powerful predictive software
-    powerful predictive software
-powerful tool
-    powerful tool
-practical aspect
-    practical aspect
-practical guidance
-    practical guidance
-practical implications
-    practical implications
-prais-winsten estimation
-    prais-winsten estimation
-pre-internationalization phase
-    pre-internationalization phase
-precise network time
-    precise network time
-precise packet
-    precise packet
 prediction accuracy
     prediction accuracy
-predictive analytics
-    predictive analytics
-preliminary
-    preliminary
-preliminary study
-    preliminary study
-present article
-    present article
-present body
-    present body
-present experiences
-    present experiences
-present over-expressions
-    present over-expressions
-present study
-    present study
-present study explores
-    present study explores
 preserving personal information
     preserving personal information
-pressing issues
-    pressing issues
-prevalent regulatory uncertainty
-    prevalent regulatory uncertainty
 prevention and control
     prevention and control
-previous critical accounts
-    previous critical accounts
-previous lifecycle models
-    previous lifecycle models
-previous research
-    previous research
-    previous researches
-previous studies
-    previous studies
 price dynamics
     price dynamics
-price risks
-    price risks
-price values
-    price values
 price volatility
     price volatility
-primary antecedent choice
-    primary antecedent choice
-primary data
-    primary data
-primary focus
-    primary focus
-primary objective
-    primary objective
-primary occupation
-    primary occupation
-primary pillars
-    primary pillars
-primary sources
-    primary sources
-primary stage
-    primary stage
-primary systems
-    primary systems
 privacy
     privacy
-privacy issues
-    privacy issues
 privacy-preserving
     privacy-preserving
-private citizens
-    private citizens
-private companies
-    private companies
-private cryptosystems
-    private cryptosystems
-private equity funds
-    private equity funds
-private lenders
-    private lenders
-private sectors
-    private sectors
-proactive steps
-    proactive steps
-process disruptions
-    process disruptions
 process engineering
     process engineering
+process information
+    process information
 process innovation
     process innovation
 process management
@@ -6104,820 +1671,225 @@ processing approach
     processing approach
 product design
     product design
-product development
-    product development
-product services
-    product services
-product specialization
-    product specialization
-production inducement
-    production inducement
 production system
     production system
-productive activities
-    productive activities
-productive entrepreneurship
-    productive entrepreneurship
 productivity
     productivity
 products and services
     products and services
-professional atmosphere
-    professional atmosphere
-professional descriptions
-    professional descriptions
 profitability
     profitability
-profitable direction
-    profitable direction
-profitable segment
-    profitable segment
-profound impact
-    profound impact
-progressive approach
-    progressive approach
-progressive evolution
-    progressive evolution
-progressive regulation
-    progressive regulation
 project financing
     project financing
 project management
     project management
-project management field
-    project management field
 project success
     project success
-prolific objects
-    prolific objects
-promising solution
-    promising solution
-promising strategy
-    promising strategy
-promising technology
-    promising technology
-promo information
-    promo information
-promotion
-    promotion
-promotional platforms
-    promotional platforms
 proof of concept
     proof of concept
-proper education
-    proper education
-proper fintech application
-    proper fintech application
-proper legal regulations
-    proper legal regulations
-proper management
-    proper management
-protection
-    protection
-protective regulation
-    protective regulation
 provide guidances
     provide guidances
-prudential
-    prudential
-prudential supervision
-    prudential supervision
 prudential supervisory disclosure
     prudential supervisory disclosure
-psd
-    psd
 psd2
     psd2
-pseudo anonymity
-    pseudo anonymity
 psychometrics
     psychometrics
 public and private sector
     public and private sector
 public attention
     public attention
-public awareness
-    public awareness
-public discourse
-    public discourse
 public engagement
     public engagement
-public institutions
-    public institutions
 public interest
     public interest
-    public interests
-public interest objectives
-    public interest objectives
-public launch
-    public launch
-public opinion environment
-    public opinion environment
-public opinion supervision
-    public opinion supervision
 public option
     public option
-public platforms
-    public platforms
-public policy needs
-    public policy needs
-public policy restrictions
-    public policy restrictions
 public relations
     public relations
-public sector
-    public sector
-public services
-    public services
 public transportation
     public transportation
 public trust
     public trust
-publisher apologizes
-    publisher apologizes
-pyramid entrepreneurs
-    pyramid entrepreneurs
-pyramid market
-    pyramid market
-pythagorean
-    pythagorean
 pythagorean fuzzy sets
     pythagorean fuzzy sets
 qardh-al-hasan
     qardh-al-hasan
-qualification chain
-    qualification chain
-qualitative analysis
-    qualitative analysis
-qualitative approach
-    qualitative approach
-qualitative research
-    qualitative research
-qualitative research design
-    qualitative research design
-qualitative software
-    qualitative software
-qualitative transformation
-    qualitative transformation
 quality control
     quality control
-quality issues
-    quality issues
-quality services
-    quality services
-    service quality
-quantile level
-    quantile level
-    quantile levels
 quantile regression
     quantile regression
-    quantile regression approach
-quantitative
-    quantitative
+quantitative approach
     quantitative approach
-    quantitative method
-    quantitative methods
-quantitative causality approach
-    quantitative causality approach
 quantitative research
     quantitative research
-    quantitative research methods
 quantum computing
     quantum computing
-questionnaire participants
-    questionnaire participants
 questionnaire survey
     questionnaire survey
-r2 =
-    r2 =
 race
     race
-racial forms
-    racial forms
-radical transformation
-    radical transformation
-random frog algorithm
-    random frog algorithm
 random neural network
     random neural network
 random processes
     random processes
-rapid changes
-    rapid changes
-rapid development
-    rapid development
-rapid growth
-    rapid growth
-rapid increase
-    rapid increase
-rapid succession
-    rapid succession
-rd activity
-    rd activity
-re-engineer
-    re-engineer
 re-intermediation
     re-intermediation
-re-intermediation process
-    re-intermediation process
-real application
-    real application
+real applications
     real applications
-real consumers
-    real consumers
-real economy
-    real economy
-real estate
-    real estate
-real market
-    real market
-real possibilities
-    real possibilities
-real risk
-    real risk
-real test cases
-    real test cases
-real world
-    real world
 real-time
     real-time
-real-time services
-    real-time services
-reasonable potential impact
-    reasonable potential impact
-receivable collection
-    receivable collection
-recent decades
-    recent decades
-recent developments
-    recent developments
-recent emergence
-    recent emergence
-recent fintech
-    recent fintech
-recent fintech phenomenon
-    recent fintech phenomenon
-recent growth
-    recent growth
-recent increase
-    recent increase
-recent international experiences
-    recent international experiences
-recent organizational support
-    recent organizational support
-recent policy pronouncements
-    recent policy pronouncements
-recent regulatory initiatives
-    recent regulatory initiatives
-recent trend
-    recent trend
-    recent trends
-recent world
-    recent world
-recent years
-    recent years
 record keeping
     record keeping
 recovery
     recovery
 recovery mechanisms
     recovery mechanisms
-recovery pool
-    recovery pool
-recovery post-covid-19
-    recovery post-covid-19
 recovery rate
     recovery rate
-recurrent rise
-    recurrent rise
 reduced latencies
     reduced latencies
 reducing costs
     reducing costs
-reduction effect
-    reduction effect
-reductive character
-    reductive character
 reengineering
     reengineering
 refugee
     refugee
     refugees
-refugee governance
-    refugee governance
-regional bank
-    regional bank
-regional hub
-    regional hub
-regional knowledge creation
-    regional knowledge creation
 regression analysis
     regression analysis
-regression methodology
-    regression methodology
-    regression model
-    regression techniques
-regression results
-    regression results
 regtech
     regtech
-regular contact
-    regular contact
-regulating
-    regulating
+regulation
     regulation
     regulations
-regulation disparities
-    regulation disparities
-regulation force
-    regulation force
-regulation sluggish
-    regulation sluggish
-regulator reputation
-    regulator reputation
 regulatory approach
     regulatory approach
 regulatory arbitrage
     regulatory arbitrage
 regulatory authorities
     regulatory authorities
-regulatory barriers
-    regulatory barriers
 regulatory bodies
     regulatory bodies
-regulatory burdens
-    regulatory burdens
-regulatory challenge
-    regulatory challenge
-    regulatory challenges
-regulatory changes
-    regulatory changes
-regulatory compliance
-    regulatory compliance
-regulatory cooperation
-    regulatory cooperation
-regulatory decision-making
-    regulatory decision-making
-regulatory definition
-    regulatory definition
-regulatory dilemma
-    regulatory dilemma
-regulatory dynamics
-    regulatory dynamics
-regulatory enterprise
-    regulatory enterprise
-regulatory environment
-    regulatory environment
-regulatory fitness
-    regulatory fitness
-regulatory fragmentation
-    regulatory fragmentation
-regulatory framework
-    regulatory framework
+regulatory frameworks
     regulatory frameworks
-regulatory friction
-    regulatory friction
 regulatory guidelines
     regulatory guidelines
-regulatory issues
-    regulatory issues
-regulatory lag
-    regulatory lag
-regulatory landscape
-    regulatory landscape
-regulatory legislation
-    regulatory legislation
-regulatory perimeter
-    regulatory perimeter
-regulatory policy responses
-    regulatory policy responses
-regulatory practices
-    regulatory practices
-regulatory pressure
-    regulatory pressure
 regulatory quality
     regulatory quality
-regulatory requirements
-    regulatory requirements
-regulatory responses
-    regulatory responses
-regulatory risks
-    regulatory risks
 regulatory sandbox
     regulatory sandbox
-    regulatory sandboxes
-regulatory sandbox accepts
-    regulatory sandbox accepts
-regulatory sandbox framework
-    regulatory sandbox framework
-regulatory sandbox phenomenon
-    regulatory sandbox phenomenon
-regulatory sandbox policy
-    regulatory sandbox policy
-regulatory system
-    regulatory system
 regulatory technology
     regulatory technology
-regulatory transition
-    regulatory transition
-regulatory uncertainties
-    regulatory uncertainties
-    regulatory uncertainty
 regulatory-instrumentalism
     regulatory-instrumentalism
-reimagine business models
-    reimagine business models
 reinforcement learning
     reinforcement learning
 reintermedation
     reintermedation
-reintermediation
-    reintermediation
-reintermediation processes
-    reintermediation processes
 relational perspective
     relational perspective
-relative benefits
-    relative benefits
-relative desirability
-    relative desirability
-relative weight
-    relative weight
+relative weights
     relative weights
-relay-node candidates
-    relay-node candidates
-relevant affiliation
-    relevant affiliation
-relevant bank employees
-    relevant bank employees
-relevant criteria
-    relevant criteria
-relevant departments
-    relevant departments
-relevant digitalization policy
-    relevant digitalization policy
-relevant extant legislation
-    relevant extant legislation
-relevant fintechs
-    relevant fintechs
-relevant implications
-    relevant implications
-relevant issue
-    relevant issue
-    relevant issues
-relevant literature
-    relevant literature
-relevant organizations
-    relevant organizations
-relevant recommendations
-    relevant recommendations
-relevant studies
-    relevant studies
 reliability analysis
     reliability analysis
 reliability and validity
     reliability and validity
-reliable services
-    reliable services
 relocation decisions
     relocation decisions
-remarkable growth
-    remarkable growth
-remarkable trend
-    remarkable trend
-renewable energy
-    renewable energy
-renewable energy development
-    renewable energy development
-renewable energy finance
-    renewable energy finance
+renewable energy financing
     renewable energy financing
-repair organizational legitimacy
-    repair organizational legitimacy
 representative case
     representative case
-    representative cases
-representative sample
-    representative sample
 republic of korea
     republic of korea
 reputation
     reputation
-reputation theory
-    reputation theory
-reputational gains
-    reputational gains
 research
     research
-    research method
     research methodologies
-    research methodology
     research methods
-    research model
-research area
-    research area
-research attempt
-    research attempt
 research challenges
     research challenges
-research conceptual model
-    research conceptual model
-research confirms
-    research confirms
-research contribute
-    research contribute
-research criteria
-    research criteria
-research design
-    research design
-research directions
-    research directions
-research examines
-    research examines
-research findings
-    research findings
 research focus
     research focus
-research focuses
-    research focuses
-research framework
-    research framework
 research frontiers
     research frontiers
-research gate
-    research gate
-research innovations
-    research innovations
 research instruments
     research instruments
-research investigates
-    research investigates
-research limitations/implications
-    research limitations/implications
-research objective
-    research objective
-research paper
-    research paper
-    research papers
-research proposals
-    research proposals
-research proves
-    research proves
 research results
     research results
-research streams
-    research streams
-research studies
-    research studies
-research theorises
-    research theorises
-research topics
-    research topics
-    topical research
 research work
     research work
 residual energy
     residual energy
 resilience
     resilience
-resource exploitation
-    resource exploitation
-response time
-    response time
 responsible finance
     responsible finance
-responsible loans
-    responsible loans
-responsible production
-    responsible production
-result shows
-    result shows
-resultant values
-    resultant values
 retail bank
     retail bank
     retail banking
     retail banks
 retail financial markets
     retail financial markets
-retail money
-    retail money
-retail payment systems
-    retail payment systems
-review period
-    review period
-rf-ga-dnn algorithm
-    rf-ga-dnn algorithm
-rf-ga-dnn prediction algorithm
-    rf-ga-dnn prediction algorithm
-rigorous research
-    rigorous research
-ripe area
-    ripe area
 ripple
     ripple
-ripple business models
-    ripple business models
-rise
-    rise
 risk
     risk
-    risk method
     risks
 risk assessment
     risk assessment
-risk capital funds
-    risk capital funds
-risk contagion
-    risk contagion
-risk expectation
-    risk expectation
-risk factors
-    risk factors
-risk levels
-    risk levels
 risk management
     risk management
-risk outbreak
-    risk outbreak
-risk outbreak process
-    risk outbreak process
-risk perspectives
-    risk perspectives
-risk platforms
-    risk platforms
-risk prevention
-    risk prevention
-risk rate
-    risk rate
-risk spillover effect
-    risk spillover effect
-risk variables
-    risk variables
-risk-management tool
-    risk-management tool
-risk-reduction approach
-    risk-reduction approach
-riskwashing
-    riskwashing
-risky borrowers
-    risky borrowers
-rmit university
-    rmit university
 roa
     roa
+robo advisory services
+    robo advisory services
 robo-advice
     robo-advice
 robo-advisor
     robo advisors
     robo-advisor
-    robo-advisor model
 robo-advisory
     robo-advisory
-robo-advisory services
-    robo advisory services
-    robo-advisory services
-robot advisor services
-    robot advisor services
-robust estimate
-    robust estimate
-robustness test
-    robustness test
 roe
     roe
-role
-    role
-romanian
-    romanian
 rotating savings and credit association
     rotating savings and credit association
-roundtable discussions
-    roundtable discussions
 routing
     routing
     routing algorithms
 routing protocols
     routing protocols
-run experiments
-    run experiments
-rural areas
-    rural areas
-rural china
-    rural china
-rural commercial bank
-    rural commercial bank
 rural development
     rural development
 rural finance
     rural finance
-rural fintech models
-    rural fintech models
-rural livelihoods
-    rural livelihoods
-rural people
-    rural people
-rural populations
-    rural populations
 rural residents
     rural residents
-rural sub-saharan africa
-    rural sub-saharan africa
-russia
-    russia
 russian federation
     russian federation
-s argument
-    s argument
-s fintech sector
-    s fintech sector
-s government
-    s government
-s growth
-    s growth
-s residual energy
-    s residual energy
-s strategy
-    s strategy
-sac members
-    sac members
-safe haven properties
-    safe haven properties
-safe sustainable development
-    safe sustainable development
-safer borrowers
-    safer borrowers
-safety perceptions
-    safety perceptions
 sales
     sales
-sample data
-    sample data
-sample period
-    sample period
-sample t-test
-    sample t-test
 sandbox
     sandbox
-    sandbox approach
-sars-2 virus
-    sars-2 virus
 scalability
     scalability
 scanning electron microscopy
     scanning electron microscopy
-scant literature
-    scant literature
-scenario analysis
-    scenario analysis
 scenario approach
     scenario approach
 science and technology studies
     science and technology studies
-science core collection
-    science core collection
-scientific community
-    scientific community
-scientific database
-    scientific database
-scientific definition
-    scientific definition
 scientific literature
     scientific literature
-scientific research
-    scientific research
+scientific researches
     scientific researches
-sdg activities
-    sdg activities
-sdg spending
-    sdg spending
-sdg-7 guidelines
-    sdg-7 guidelines
-sdgs
-    sdgs
-sdn controllers
-    sdn controllers
 se4ai
     se4ai
-seamless transactions
-    seamless transactions
-search engines
-    search engines
-second-wave era
-    second-wave era
-second-wave fintech era
-    second-wave fintech era
-secondary data
-    secondary data
-secondary sources
-    secondary sources
-sector analysis
-    sector analysis
-securer service
-    securer service
 security
     security
-security affects
-    security affects
 security and privacy issues
     security and privacy issues
 security and usabilities
@@ -6925,346 +1897,90 @@ security and usabilities
     security and usability
 security challenges
     security challenges
-security dimensions
-    security dimensions
-security issues
-    security issues
 security of data
     security of data
-security solutions
-    security solutions
-select non-integer linear
-    select non-integer linear
-select optimum
-    select optimum
-selection period
-    selection period
-selection process
-    selection process
-self-administration survey
-    self-administration survey
 sem
     sem
-semantic analysis
-    semantic analysis
 semi structured interviews
     semi structured interviews
-semi-parametric difference-in-differences
-    semi-parametric difference-in-differences
-senior executive
-    senior executive
 senior management
     senior management
-sensitive aspects
-    sensitive aspects
-sensitive issues
-    sensitive issues
-sensitivity analysis
-    sensitivity analysis
 sensor nodes
     sensor nodes
 sentiment analysis
     sentiment analysis
-separate cryptosystems
-    separate cryptosystems
-serious consequences
-    serious consequences
-serious downside
-    serious downside
 service channels
     service channels
-service characteristics
-    service characteristics
-service delivery chain
-    service delivery chain
 service design
     service design
-service development process
-    service development process
-service forms
-    service forms
-service improvement
-    service improvement
-    service improvements
 service industry
     service industry
-service innovation lense
-    service innovation lense
-service innovation perspective
-    service innovation perspective
-service innovation theory
-    service innovation theory
-service methods
-    service methods
-    services
-service offerings
-    service offerings
+service innovation
+    service innovation
+    service innovation strategy
 service operations
     service operations
-service providers
-    service providers
-service science
-    service science
+service quality
+    service quality
 service value chains
     service value chains
-severe damage
-    severe damage
+services
+    services
 shadow banking
     shadow banking
-shapley values
-    shapley values
-shareveillance
-    shareveillance
 sharia compliance
     sharia compliance
-shariah-compliant fintech
-    shariah-compliant fintech
 shariah-compliant regulation
     shariah-compliant regulation
 shock transmission
     shock transmission
-    shock transmissions
-short-run impact
-    short-run impact
-short-term witnesses
-    short-term witnesses
-shorthand expression
-    shorthand expression
 sierra leone
     sierra leone
-significant changes
-    significant changes
-significant contribution
-    significant contribution
-significant criterion
-    significant criterion
-significant difference
-    significant difference
-significant effect
-    significant effect
-significant factor
-    significant factor
-significant failures
-    significant failures
-significant favorable influence
-    significant favorable influence
-significant impact
-    significant impact
-significant implications
-    significant implications
-significant influence
-    significant influence
-significant interaction
-    significant interaction
-significant investments
-    significant investments
-significant negative reaction
-    significant negative reaction
-significant part
-    significant part
-significant policy implications
-    significant policy implications
-significant potential
-    significant potential
-significant predictor
-    significant predictor
-significant prospective investment
-    significant prospective investment
-significant reduction
-    significant reduction
-significant regional differences
-    significant regional differences
-significant relationship
-    significant relationship
-significant role
-    significant role
-    significant roles
-significant topics
-    significant topics
-significant value
-    significant value
-similar financial characteristics
-    similar financial characteristics
-similar markets
-    similar markets
-similar methods
-    similar methods
-similar schemes
-    similar schemes
-similar status
-    similar status
-simple transaction charge
-    simple transaction charge
 singapore [southeast asia]
     singapore [southeast asia]
-six-dimensional model
-    six-dimensional model
-skilled workers
-    skilled workers
-skilled workforce
-    skilled workforce
-slow adoption
-    slow adoption
-small
-    small
 small and medium-sized enterprises (smes)
     small and medium-sized enterprise
     small and medium-sized enterprises (smes)
-small business owners
-    small business owners
-small businesses
-    small businesses
-small companies
-    small companies
-small enterprises
-    small enterprises
-small fintechs
-    small fintechs
-small food business
-    small food business
+small food businesses
     small food businesses
-small food business sustainability
-    small food business sustainability
-small loans
-    small loans
-small start-ups
-    small start-ups
-small town bank
-    small town bank
-small-medium enterprises
-    small-medium enterprises
-smart
-    smart
 smart cities
     smart cities
     smart city
 smart contract
     smart contract
     smart contracts
-smart contract technology
-    smart contract technology
-smart devices
-    smart devices
 smart divide
     smart divide
 smart fintech
     smart fintech
-smart fintech ecosystem
-    smart fintech ecosystem
-smart fintech futures
-    smart fintech futures
-smart fintech synthesizes
-    smart fintech synthesizes
 smart investment
     smart investment
-smart investment application
-    smart investment application
 smart investment fintech
     smart investment fintech
-smart pls v2.0
-    smart pls v2.0
-smart pls v3.0
-    smart pls v3.0
 smart regulation
     smart regulation
-smartphone penetration rate
-    smartphone penetration rate
-smartpls 3.0.
-    smartpls 3.0.
-sme-sci.com platform
-    sme-sci.com platform
-snowball technique
-    snowball technique
-social benefits
-    social benefits
-social capital
-    social capital
-social changes
-    social changes
-social construct
-    social construct
-social contexts
-    social contexts
-social creation
-    social creation
 social development
     social development
 social empowerment
     social empowerment
-social expectations
-    social expectations
 social finance
     social finance
-social impact
-    social impact
-social implications
-    social implications
-social influence
-    social influence
 social issues
     social issues
-social media
-    social media
 social media analysis
     social media analysis
-social media use
-    social media use
-social needs
-    social needs
-social networks
-    social networks
-social norms
-    social norms
-social opinion
-    social opinion
-social relations
-    social relations
-social science research network
-    social science research network
 social sciences
     social sciences
-social sdgs
-    social sdgs
-social stratification effect
-    social stratification effect
 social value
     social value
-social value creation
-    social value creation
 social-technical theory
     social-technical theory
 socially responsible investing (sri)
     socially responsible investing (sri)
-societal growth
-    societal growth
-societal innovations
-    societal innovations
-societal welfare
-    societal welfare
-society index
-    society index
-socio-technical
-    socio-technical
-socio-technical system perspective
-    socio-technical system perspective
-socio-technical system theory
-    socio-technical system theory
-socioeconomic development
-    socioeconomic development
-socioeconomic relations
-    socioeconomic relations
 sociotechnical arrangements
     sociotechnical arrangements
 sociotechnical systems
     sociotechnical systems
-sociotechnological phenomenon
-    sociotechnological phenomenon
-soe banks
-    soe banks
-soe smes
-    soe smes
-soft infrastructure
-    soft infrastructure
 software component
     software component
 software craftsmanship
@@ -7277,101 +1993,30 @@ software testing
     software testing
 software-defined networks
     software-defined networks
-solid connections
-    solid connections
-sound financial sector
-    sound financial sector
-sound policy recommendations
-    sound policy recommendations
 south korea
     south korea
-spatial dimensions
-    spatial dimensions
-spatiotemporal processes
-    spatiotemporal processes
-special category
-    special category
-special consideration
-    special consideration
-special digital solutions
-    special digital solutions
-special issue
-    special issue
-special issue engages
-    special issue engages
-special section
-    special section
+special sections
     special sections
 specialization
     specialization
-specific attributes
-    specific attributes
-specific benefits
-    specific benefits
-specific customer base
-    specific customer base
-specific examples
-    specific examples
-specific fintech activity
-    specific fintech activity
-specific fintech areas
-    specific fintech areas
-specific focus
-    specific focus
-specific legislation
-    specific legislation
-specific legislation/regulation
-    specific legislation/regulation
-specific role
-    specific role
 spillover effect
     spillover effect
-spillover patterns
-    spillover patterns
-sri lanka
-    sri lanka
-ssa context
-    ssa context
-stable applications
-    stable applications
-stable earnings
-    stable earnings
-stable path
-    stable path
-stable revenue pools
-    stable revenue pools
 stakeholder
     stakeholder
-stakeholder participation
-    stakeholder participation
-stakeholder value
-    stakeholder value
+stakeholder values
     stakeholder values
-standard setters
-    standard setters
 start-up
     start-up
     start-ups
 start-up companies
     start-up companies
-    start-up company
-start-up enterprises
-    start-up enterprises
 startup
     startup
     startups
-startup companies
-    startup companies
-startup firms
-    startup firms
-state institutions
-    state institutions
 state of the art
     state of the art
 state role
     state role
-state-of-the-art lifecycle models
-    state-of-the-art lifecycle models
 state-of-the-art technology
     state-of-the-art technology
 state-owned commercial banks
@@ -7381,40 +2026,17 @@ state-owned enterprises (soes)
     state-owned enterprises (soes)
 statistical inference
     statistical inference
-statistical link
-    statistical link
-statistical measures
-    statistical measures
-statistical methods
-    statistical methods
+statistics
     statistics
-statistical software
-    statistical software
-statistical tests
-    statistical tests
-status
-    status
-stochastic process
-    stochastic process
 stochastic systems
     stochastic systems
-stock exchange
-    stock exchange
+stock exchanges
     stock exchanges
 stock market
     stock market
-    stock markets
-stock market development
-    stock market development
-stock price changes
-    stock price changes
-stock price movements
-    stock price movements
 stock return
     stock return
     stock returns
-strategic actions
-    strategic actions
 strategic alliance
     strategic alliance
     strategic alliances
@@ -7422,334 +2044,80 @@ strategic approach
     strategic approach
 strategic capability
     strategic capability
-strategic considerations
-    strategic considerations
 strategic decisions
     strategic decisions
-strategic development goals
-    strategic development goals
-strategic direction.1
-    strategic direction.1
-strategic goals
-    strategic goals
-strategic implications
-    strategic implications
-strategic partnerships
-    strategic partnerships
-strategic project
-    strategic project
-strategic response
-    strategic response
-    strategic responses
-strategic task
-    strategic task
 strategy
     strategy
-strategy adaptation
-    strategy adaptation
-street robbery
-    street robbery
-strict regulations
-    strict regulations
-strong attention
-    strong attention
-strong european base
-    strong european base
-strong evidences
-    strong evidences
-strong government support
-    strong government support
-strong institutions
-    strong institutions
-strong practical significance
-    strong practical significance
-strong reputation
-    strong reputation
-strong resource bases
-    strong resource bases
-strong technological expertise
-    strong technological expertise
-strong tendencies
-    strong tendencies
-structural analysis
-    structural analysis
-    structure analysis
 structural effect
     structural effect
-structural equation
-    structural equation
-    structural equation model
+structural equation model (sem)
     structural equation model (sem)
     structural equations model
 structural equation modeling
     structural equation modeling
     structural equation modelling
-structural level
-    structural level
-student debt
-    student debt
+structure analysis
+    structure analysis
 students
     students
-study analyzes
-    study analyzes
-study instrument
-    study instrument
-study investigates
-    study investigates
 study method
     study method
-    study model
-study objective
-    study objective
-study population
-    study population
-study variables
-    study variables
-sub-nanosecond time
-    sub-nanosecond time
-sub-saharan africa
-    sub-saharan africa
-subjective norms
-    subjective norms
-subsequent decreases
-    subsequent decreases
-subsidiary legislation pursuant
-    subsidiary legislation pursuant
-substantial value
-    substantial value
-substitution effect
-    substitution effect
-subvert refugee assistance
-    subvert refugee assistance
 success
     success
 success factors
     success factors
-successful business models
-    successful business models
-successful business outcomes
-    successful business outcomes
-successful development
-    successful development
-successful intra-africa expansion
-    successful intra-africa expansion
-successful market expansion
-    successful market expansion
-successful strategy adaptation
-    successful strategy adaptation
-such activity
-    such activity
-such applications
-    such applications
-such apps
-    such apps
-such disruptive technologies
-    such disruptive technologies
-such ecosystems transform
-    such ecosystems transform
-such innovations
-    such innovations
-such issues
-    such issues
-such participants
-    such participants
-such products
-    such products
-such regulations
-    such regulations
-such requirements
-    such requirements
-such sectors
-    such sectors
-such services
-    such services
-such start-ups
-    such start-ups
-such studies
-    such studies
-such systems
-    such systems
-such technology
-    such technology
-such terminology
-    such terminology
-such themes
-    such themes
-sufficient clarity
-    sufficient clarity
-sufficient recognition
-    sufficient recognition
-suitable controller
-    suitable controller
-suitable leadership
-    suitable leadership
-suitable picosecond-level
-    suitable picosecond-level
-sulphur dioxide emissions
-    sulphur dioxide emissions
-superior performance
-    superior performance
-supervision agency
-    supervision agency
-supervision automation
-    supervision automation
-supervision methods
-    supervision methods
-supervision responsibility
-    supervision responsibility
-supervisory disclosure
-    supervisory disclosure
-supervisory gains
-    supervisory gains
 supervisory technology
     supervisory technology
-supplementary conceptualization
-    supplementary conceptualization
-supply-driven model
-    supply-driven model
-support agriculture sustainability
-    support agriculture sustainability
-support digital
-    support digital
-support farmer
-    support farmer
-support individuals
-    support individuals
-support innovativeness
-    support innovativeness
-support innovator businesses
-    support innovator businesses
-support vector
-    support vector
 support vector machine.
     support vector machine.
     support vector machines
-supportive government policy
-    supportive government policy
 suptech
     suptech
-suptech system
-    suptech system
-surface water quality
-    surface water quality
 survey analysis
     survey analysis
-survey company
-    survey company
-survey data
-    survey data
-survey process
-    survey process
-survey results
-    survey results
-survey studies
-    survey studies
-    survey study
 surveys
     surveys
-suspicious activity
-    suspicious activity
-suspicious customer activity
-    suspicious customer activity
 sustainability
     sustainability
-sustainability intention
-    sustainability intention
 sustainability performance
     sustainability performance
     sustainable performance
 sustainable communities
     sustainable communities
-sustainable competitive advantage
-    sustainable competitive advantage
-sustainable competitiveness
-    sustainable competitiveness
 sustainable development
     sustainable development
 sustainable development goal 8
     sustainable development goal 8
 sustainable development goals
     sustainable development goals
-sustainable development need
-    sustainable development need
-sustainable development provision
-    sustainable development provision
-sustainable digital
-    sustainable digital
-sustainable digital logistics
-    sustainable digital logistics
-sustainable economic growth
-    sustainable economic growth
 sustainable finance
     sustainable finance
-sustainable financial system
-    sustainable financial system
 sustainable growth
     sustainable growth
 sustainable investment
     sustainable investment
-sustainable objectives
-    sustainable objectives
-sustainable practices
-    sustainable practices
-sustainable solution
-    sustainable solution
-swedish fintech startups
-    swedish fintech startups
 swift
     swift
-swiss fintech companies
-    swiss fintech companies
-swiss fintech landscape
-    swiss fintech landscape
 switches
     switches
 switzerland
     switzerland
-swot analysis
-    swot analysis
-synchronization protocol
-    synchronization protocol
+synchronization protocols
     synchronization protocols
 synthetic database
     synthetic database
-    synthetic databases
-system creators
-    system creators
-system intelligence enhancement
-    system intelligence enhancement
-system makers
-    system makers
 system quality
     system quality
 system theory
     system theory
-systematic evaluation
-    systematic evaluation
-systematic framework
-    systematic framework
 systematic literature review
     systematic literature review
-    systematic literature review approach
-systematic review
-    systematic review
-systemic force
-    systemic force
-systemic risk
-    systemic risk
-    systemic risks
-systemic stability
-    systemic stability
 systemically important data
     systemically important data
 systemically important markets
     systemically important markets
 systems engineering
     systems engineering
-tacit rejection
-    tacit rejection
-taiwan
-    taiwan
 taiwan bank industry
     taiwan bank industry
 taiwan fintech industry
@@ -7758,71 +2126,26 @@ tam
     tam
 tam trust
     tam trust
-taming
-    taming
-tangerang
-    tangerang
-tar
-    tar
 task analysis
     task analysis
-tax exemption
-    tax exemption
 taxonomies
     taxonomies
     taxonomy
-taxonomy contributes
-    taxonomy contributes
 teaching and researches
     teaching and researches
-team members
-    team members
-tech
-    tech
-technical field
-    technical field
-technical protection
-    technical protection
-technical vocational education
-    technical vocational education
-technocracy
-    technocracy
-technocratic bias
-    technocratic bias
-technological advancements
-    technological advancements
-technological aspect
-    technological aspect
 technological challenges
     technological challenges
-technological changes
-    technological changes
-technological definition
-    technological definition
-technological determinants
-    technological determinants
 technological development
     technological development
     technological developments
-    technology development
-technological environment
-    technological environment
-technological imbalance
-    technological imbalance
-technological infrastructure
-    technological infrastructure
-    technology infrastructure
-technological knowledge spillover theory
-    technological knowledge spillover theory
+technological innovation
+    technological innovation
+    technology innovation
 technological management
     technological management
     technology management
-technological novelties
-    technological novelties
 technological progress
     technological progress
-technological skills
-    technological skills
 technology
     technology
 technology acceptance
@@ -7832,638 +2155,144 @@ technology adoption
     technology adoption
 technology application
     technology application
-    technology applications
     technology based applications
-technology companies
-    technology companies
-    technology company
-technology diffusion
-    technology diffusion
 technology ecosystem
     technology ecosystem
-technology empowerment
-    technology empowerment
-technology poses
-    technology poses
+technology infrastructure
+    technology infrastructure
 technology research
     technology research
-technology revolution
-    technology revolution
-technology risks
-    technology risks
-technology securities
-    technology securities
+technology security
     technology security
-technology simplifies
-    technology simplifies
-technology studies
-    technology studies
-technology v
-    technology v
 technology-based
     technology-based
-technology-driven firms
-    technology-driven firms
-technosocial environment
-    technosocial environment
-teller machine
-    teller machine
 tencent
     tencent
 terminology
     terminology
-terminology definitions
-    terminology definitions
-tertiary education enrolment
-    tertiary education enrolment
+test drivings
+    test drivings
 test-driven development
     test driven development
     test-driven development
-test-driving
-    test drivings
-    test-driving
 testing architecture
     testing architecture
-text analysis
-    text analysis
 text mining
     text mining
-textual passwords
-    textual passwords
 thematic analysis
     thematic analysis
-thematic content analysis
-    thematic content analysis
-thematic map
-    thematic map
-theme analysis
-    theme analysis
-theoretical approaches
-    theoretical approaches
-    theoretical model
-theoretical background
-    theoretical background
-theoretical basis
-    theoretical basis
-theoretical basis fintech research
-    theoretical basis fintech research
-theoretical contributions
-    theoretical contributions
 theoretical framework
     theoretical framework
-    theoretical frameworks
-theoretical insights
-    theoretical insights
-theoretical point
-    theoretical point
+theoretical model
+    theoretical model
+theoretical points
     theoretical points
-theoretical position
-    theoretical position
-theoretical propositions
-    theoretical propositions
 theoretical study
     theoretical study
 theory development
     theory development
-theory method
-    theory method
 theory of planned behavior
     theory of planned behavior
-theory suggests
-    theory suggests
-third-party payment
-    third-party payment
 threats
     threats
-threshold effect
-    threshold effect
 threshold model
     threshold model
-threshold regression methods
-    threshold regression methods
-tight monetary conditions
-    tight monetary conditions
 time and frequency domains
     time and frequency domains
-time preference
-    time preference
-time understanding
-    time understanding
 time-stamp
     time-stamp
-timeline analysis
-    timeline analysis
 timestamp
     timestamp
 tobit
     tobit
-tobit regression model
-    tobit regression model
 token
     token
-    token models
-token economy
-    token economy
-token valuation
-    token valuation
-top-5 bank
-    top-5 bank
 topsis
     topsis
-total connectedness
-    total connectedness
-total investment
-    total investment
-total investment value
-    total investment value
-total rate
-    total rate
-total sample
-    total sample
-total volatility spill-over
-    total volatility spill-over
-total volume
-    total volume
-tracing
-    tracing
-trade openness
-    trade openness
 trade-off
     trade-off
-traditional
-    traditional
-traditional assets
-    traditional assets
-traditional banks
-    traditional banks
-traditional business
-    traditional business
-traditional common stocks
-    traditional common stocks
-traditional consumer finance
-    traditional consumer finance
-traditional credit system
-    traditional credit system
-traditional financial giants
-    traditional financial giants
-traditional financial industry
-    traditional financial industry
-traditional financial institutions
-    traditional financial institutions
-traditional financial intermediaries
-    traditional financial intermediaries
-traditional financial intermediation
-    traditional financial intermediation
-traditional financial market
-    traditional financial market
-    traditional financial markets
-traditional financial services
-    traditional financial services
-traditional financial system
-    traditional financial system
-traditional function
-    traditional function
-traditional fund
-    traditional fund
-traditional ga-dnn
-    traditional ga-dnn
 traditional knowledge
     traditional knowledge
-traditional lenders
-    traditional lenders
-traditional mainstream businesses
-    traditional mainstream businesses
-traditional participants
-    traditional participants
-traditional players
-    traditional players
-traditional practice
-    traditional practice
-traditional prediction methods
-    traditional prediction methods
-traditional regulatory approaches
-    traditional regulatory approaches
-traditional relationship
-    traditional relationship
-traditional service providers
-    traditional service providers
-traditional software components
-    traditional software components
-traditional tam
-    traditional tam
-transaction costsprevent
-    transaction costsprevent
-transaction data
-    transaction data
-transaction period
-    transaction period
-transaction system
-    transaction system
-transactional leadership
-    transactional leadership
-transactional security
-    transactional security
-transection systems
-    transection systems
-transformation
-    transformation
-    transformation strategies
-    transforming
-transformation driver
-    transformation driver
-transformational leadership
-    transformational leadership
-transformative agency
-    transformative agency
-transformative evolution
-    transformative evolution
-transformative technology
-    transformative technology
-transition platforms
-    transition platforms
 transmissions
     transmissions
-transnational boards
-    transnational boards
 transparency
     transparency
-transparency discourses
-    transparency discourses
-transparencypublicity nexus
-    transparencypublicity nexus
 transportation network
     transportation network
-transportation network companies
-    transportation network companies
-tremendous potential
-    tremendous potential
-true nature
-    true nature
 trust
     trust
-trust element
-    trust element
 trust level
     trust level
 trust mechanism
     trust mechanism
-trustworthy
-    trustworthy
 trustworthy ai.
     trustworthy ai.
-turbulent economy
-    turbulent economy
-turkish economy
-    turkish economy
-turn assists
-    turn assists
-turn underlies
-    turn underlies
 twitter
     twitter
-two-way relationship
-    two-way relationship
 type by enterprise
     type by enterprise
-type fintech crises
-    type fintech crises
-u.s. banks
-    u.s. banks
 uk
     uk
-ukraine
-    ukraine
-ukrainian banks
-    ukrainian banks
-ukrainian platforms
-    ukrainian platforms
-un member states
-    un member states
-un members
-    un members
 unbanked population
     unbanked population
 uncertainty analysis
     uncertainty analysis
-under-developed regions
-    under-developed regions
 underlying components
     underlying components
 underlying networks
     underlying networks
-understanding
-    understanding
-understanding china
-    understanding china
-understanding fintech
-    understanding fintech
 uneven development
     uneven development
-uneven distribution
-    uneven distribution
-uneven quality
-    uneven quality
-unified theory
-    unified theory
 unified theory of acceptance and use technology (utaut)
     unified theory of acceptance and use technology (utaut)
-unique approach
-    unique approach
-unique individual-level data
-    unique individual-level data
-unique informational platform
-    unique informational platform
-unique market
-    unique market
-unique marks
-    unique marks
 unit trust
     unit trust
 united kingdom
     united kingdom
 united nations
     united nations
-unprecedented packet
-    unprecedented packet
-unprecedented rapid decline
-    unprecedented rapid decline
-unrectifiable consumer harm
-    unrectifiable consumer harm
-unsuccessful attempts
-    unsuccessful attempts
-unsuccessful fintech projects
-    unsuccessful fintech projects
-urban commercial banks
-    urban commercial banks
-urban innovation index
-    urban innovation index
-usable sample
-    usable sample
-usage intention
-    usage intention
-use factor
-    use factor
-    usefulness factor
-use perceptions
-    use perceptions
-useful application
-    useful application
-useful insights
-    useful insights
-useful lens
-    useful lens
-usefulness mediates
-    usefulness mediates
-user
-    user
-user acceptance
-    user acceptance
-user attitude
-    user attitude
 user authentication
     user authentication
-user experience
-    user experience
-user opinion
-    user opinion
-user perception
-    user perception
-user research
-    user research
-user review
-    user review
-user trust
-    user trust
-user understanding
-    user understanding
 utaut
     utaut
 utility matrices
     utility matrices
-utility matrix
-    utility matrix
-utilize fintech products
-    utilize fintech products
-ux
-    ux
-valence framework
-    valence framework
-validation
-    validation
-valuable adaptive measure
-    valuable adaptive measure
-valuable attempt
-    valuable attempt
-valuable contributions
-    valuable contributions
-valuable innovation types
-    valuable innovation types
-valuable insights
-    valuable insights
 valuation
     valuation
-value chains
-    value chains
 value cocreation
     value cocreation
-value creation
-    value creation
-value impact
-    value impact
 value proposition
     value proposition
-    value propositions
-value proposition-driven
-    value proposition-driven
-various areas
-    various areas
-various aspects
-    various aspects
-various cases
-    various cases
-various countries
-    various countries
-various digital tools
-    various digital tools
-various e-money
-    various e-money
-various experts
-    various experts
-various financial domains
-    various financial domains
-various financial product
-    various financial product
-various fintech applications
-    various fintech applications
-various fintech products
-    various fintech products
-various fintech services
-    various fintech services
-various fintech technologies
-    various fintech technologies
-various gaps
-    various gaps
-various indicators
-    various indicators
-various layers
-    various layers
-various operations
-    various operations
-various perspectives
-    various perspectives
-various requirements
-    various requirements
-various sciences
-    various sciences
-various strategies
-    various strategies
-various themes
-    various themes
-vast majority
-    vast majority
-vast number
-    vast number
 vc
     vc
 venture
     venture
 venture capital
     venture capital
-venture capital investment
-    venture capital investment
-venture capitalist firms
-    venture capitalist firms
-venture investments
-    venture investments
-venture investors
-    venture investors
-venture sector
-    venture sector
-verification information
-    verification information
 vertical innovations
     vertical innovations
-vertical paradigm
-    vertical paradigm
-veto players
-    veto players
-veto points
-    veto points
-viable business model
-    viable business model
-viable option
-    viable option
-vice presidents
-    vice presidents
 vietnam
     vietnam
-vijayawada
-    vijayawada
 vikor
     vikor
-    vikor method
 virtual currencies
     virtual currencies
     virtual currency
-virtual currency/asset
-    virtual currency/asset
-virtual nature
-    virtual nature
-virtual reality
-    virtual reality
-visekriterijumsko kompromisno rangiranje
-    visekriterijumsko kompromisno rangiranje
 visibility
     visibility
-visual study
-    visual study
+visibility networks
+    visibility networks
 visualization networks
     visualization networks
-vital necessity
-    vital necessity
-vital parameters
-    vital parameters
-vital role
-    vital role
-vivid monopoly
-    vivid monopoly
-voice recognition
-    voice recognition
-volatility connectedness
-    volatility connectedness
-volatility transmission
-    volatility transmission
+volatility transmissions
     volatility transmissions
-vos viewer software
-    vos viewer software
-vulnerable groups
-    vulnerable groups
-vy brownian
-    vy brownian
-wage laborers
-    wage laborers
 water quality
     water quality
-way fintech
-    way fintech
-wealth management
-    wealth management
-wealth management industry
-    wealth management industry
-website usage intention
-    website usage intention
-welfare outcomes
-    welfare outcomes
-well-informed consumers
-    well-informed consumers
-western region
-    western region
-    western regions
-whereas information quality
-    whereas information quality
 white rabbit
     white rabbit
-whole industry
-    whole industry
-whole value chain
-    whole value chain
-wide adoption
-    wide adoption
-wide range
-    wide range
-wide-ranging overview
-    wide-ranging overview
-widespread precarious livelihoods
-    widespread precarious livelihoods
-work defines
-    work defines
-work shows
-    work shows
-world
-    world
 world bank
     world bank
-world health organization
-    world health organization
-world map
-    world map
-worldwide levels
-    worldwide levels
-wrongful accusations
-    wrongful accusations
 xrp
     xrp
-y-14m data
-    y-14m data
-year user growth
-    year user growth
-york
-    york
-young companies
-    young companies
-young men
-    young men
-youth microloan startup
-    youth microloan startup
 zakat
     zakat
