@@ -31,6 +31,7 @@ import os
 
 import pandas as pd
 
+from .load_all_documents import load_all_documents
 from .map_ import map_
 from .thesaurus import read_textfile
 
@@ -46,11 +47,7 @@ def clean_institutions(directory):
 
     # --------------------------------------------------------------------------
     # Loads documents.csv
-    filename = os.path.join(directory, "documents.csv")
-    if not os.path.isfile(filename):
-        raise FileNotFoundError(f"The file '{filename}' does not exist.")
-    documents = pd.read_csv(filename, sep=",", encoding="utf-8")
-    # --------------------------------------------------------------------------
+    documents = load_all_documents(directory)
 
     if directory[-1] != "/":
         directory = directory + "/"
