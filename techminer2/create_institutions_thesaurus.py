@@ -12,6 +12,7 @@ import pandas as pd
 
 from . import logging
 from .extract_country import extract_country
+from .load_all_documents import load_all_documents
 from .thesaurus import Thesaurus, load_file_as_dict, read_textfile
 
 #
@@ -211,11 +212,7 @@ def create_institutions_thesaurus(directory):
     }
 
     # --------------------------------------------------------------------------
-    # Loads documents.csv
-    filename = directory + "documents.csv"
-    if not isfile(filename):
-        raise FileNotFoundError(f"The file '{filename}' does not exist.")
-    data = pd.read_csv(filename, sep=",", encoding="utf-8")
+    data = load_all_documents(directory)
     # --------------------------------------------------------------------------
 
     #
