@@ -27,9 +27,6 @@ sys.path.append(parentdir)
 
 # pylint: disable=no-member
 
-import os
-
-import pandas as pd
 
 from .load_all_documents import load_all_documents
 from .map_ import map_
