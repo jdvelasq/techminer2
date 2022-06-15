@@ -10,8 +10,11 @@ Captures n-words around the keyword.
 >>> abstract_screening(
 ...     text='fintech',
 ...     top_n=10,
+...     left=4,
+...     right=4,
 ...     directory=directory,
 ... )
+- INFO - Saved HTML report: /workspaces/techminer2/data/reports/abstract_screening.html
                   industry overall, and many FINTECH start-ups are looking
                             hook up with the FINTECH revolution is at stake
                             We present a new FINTECH innovation mapping approach that
@@ -26,9 +29,10 @@ Captures n-words around the keyword.
 
 """
 
-
-from .abstract_concordances import _adds_citations_to_abstracts, _select_abstracts
+from .abstract_concordances import _select_abstracts
 from .load_abstracts import load_abstracts
+from .load_template import load_template
+from .save_html_report import save_html_report
 
 
 def abstract_screening(
@@ -40,12 +44,30 @@ def abstract_screening(
 ):
     """Checks the occurrence contexts of a given text in the abstract's phrases."""
     abstracts = load_abstracts(directory)
-    abstracts = _adds_citations_to_abstracts(abstracts, directory)
+    abstracts = abstracts.sort_values(
+        ["global_citations", "record_no", "line_no"], ascending=[False, True, True]
+    )
     abstracts = _select_abstracts(abstracts, text)
-    abstracts = abstracts.head(top_n)
     contexts = _extract_contexts(abstracts, text, left, right)
-    texts = contexts.text.tolist()
-    _print_concordances(texts)
+    _create_report(directory, abstracts)
+    contexts = contexts.head(top_n)
+    _print_contexts(contexts.text.tolist())
+
+
+def _create_report(directory, abstracts):
+
+    abstracts = abstracts.copy()
+    abstracts = abstracts[["document_id", "text"]]
+    abstracts = abstracts.groupby("document_id", as_index=False).aggregate(
+        lambda x: " <br> ".join(x)
+    )
+
+    report_name = "abstract_screening.html"
+    template = load_template(report_name)
+    html = template.render(
+        concordances=zip(abstracts.document_id.tolist(), abstracts.text.tolist())
+    )
+    save_html_report(directory, html, report_name)
 
 
 def _extract_contexts(abstracts, text, left, right):
@@ -68,6 +90,6 @@ def _extract_contexts(abstracts, text, left, right):
     return contexts
 
 
-def _print_concordances(texts):
+def _print_contexts(texts):
     for text in texts:
         print(text)
