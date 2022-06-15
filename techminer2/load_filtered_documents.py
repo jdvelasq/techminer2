@@ -6,10 +6,7 @@ from .load_all_documents import load_all_documents
 
 
 def load_filtered_documents(directory):
-    """
-    Loads documents from project directory.
-
-    """
+    """Loads documents from project directory."""
     documents = load_all_documents(directory)
 
     # Filter documents
