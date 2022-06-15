@@ -101,6 +101,7 @@ import pandas as pd
 import yaml
 
 from . import logging
+from .load_all_documents import load_all_documents
 from .load_filtered_documents import load_filtered_documents
 
 
@@ -125,10 +126,7 @@ class _UserFilters:
         self.load_raw_documents()
 
     def load_raw_documents(self):
-        filename = self.directory + "documents.csv"
-        if not os.path.isfile(filename):
-            raise FileNotFoundError(f"The file '{filename}' does not exist.")
-        self.documents = pd.read_csv(filename, sep=",", encoding="utf-8")
+        self.documents = load_all_documents(self.directory)
 
     def document_report(self):
 
