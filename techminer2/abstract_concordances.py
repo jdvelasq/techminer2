@@ -37,7 +37,9 @@ def abstract_concordances(
     """Checks the occurrence contexts of a given text in the abstract's phrases."""
 
     abstracts = load_abstracts(directory)
-    abstracts = _adds_citations_to_abstracts(abstracts, directory)
+    abstracts = abstracts.sort_values(
+        ["global_citations", "record_no", "line_no"], ascending=[False, True, True]
+    )
     abstracts = _select_abstracts(abstracts, text)
     abstracts = abstracts.head(top_n)
     contexts = _extract_contexts(abstracts, text)
@@ -73,7 +75,6 @@ def _select_abstracts(abstracts, text):
 
     regex = r"\b" + text + r"\b"
     abstracts = abstracts[abstracts.text.str.contains(regex, regex=True)]
-    abstracts = abstracts[["record_no", "text"]]
     abstracts["text"] = abstracts["text"].str.capitalize()
     abstracts["text"] = abstracts["text"].str.replace(
         r"\b" + text + r"\b", text.upper(), regex=True
@@ -82,18 +83,4 @@ def _select_abstracts(abstracts, text):
         r"\b" + text.capitalize() + r"\b", text.upper(), regex=True
     )
 
-    return abstracts
-
-
-def _adds_citations_to_abstracts(abstracts, directory):
-    """Adds citations to abstracts."""
-
-    documents = load_filtered_documents(directory)
-    record_no2citation = dict(
-        zip(documents["record_no"], documents["global_citations"])
-    )
-    abstracts["citations"] = abstracts["record_no"].map(record_no2citation)
-    abstracts = abstracts.sort_values(
-        ["citations", "record_no", "line_no"], ascending=[False, True, True]
-    )
     return abstracts
