@@ -2,16 +2,14 @@
 Abstract Screening
 ===============================================================================
 
-Abstract text exploration tool.
-
 Captures n-words around the keyword.
 
 
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
 >>> abstract_screening(
-...     text='fintech', 
-...     top_n=10, 
+...     text='fintech',
+...     top_n=10,
 ...     directory=directory,
 ... )
                   industry overall, and many FINTECH start-ups are looking
@@ -29,9 +27,8 @@ Captures n-words around the keyword.
 """
 
 
-import os
-
-import pandas as pd
+from .abstract_concordances import _adds_citations_to_abstracts, _select_abstracts
+from .load_abstracts import load_abstracts
 
 
 def abstract_screening(
@@ -41,31 +38,17 @@ def abstract_screening(
     top_n=50,
     directory="./",
 ):
+    """Checks the occurrence contexts of a given text in the abstract's phrases."""
+    abstracts = load_abstracts(directory)
+    abstracts = _adds_citations_to_abstracts(abstracts, directory)
+    abstracts = _select_abstracts(abstracts, text)
+    abstracts = abstracts.head(top_n)
+    contexts = _extract_contexts(abstracts, text, left, right)
+    texts = contexts.text.tolist()
+    _print_concordances(texts)
 
-    # ---< Sort abstracts by importance >------------------------------------------------
-    documents = pd.read_csv(os.path.join(directory, "documents.csv"))
-    record_no2citation = dict(
-        zip(documents["record_no"], documents["global_citations"])
-    )
-    abstracts = pd.read_csv(os.path.join(directory, "abstracts.csv"))
-    abstracts["citations"] = abstracts["record_no"].map(record_no2citation)
-    abstracts = abstracts.sort_values(
-        ["citations", "record_no", "line_no"], ascending=[False, True, True]
-    )
 
-    # ---< Selects the abstracts >-------------------------------------------------------
-    regex = r"\b" + text + r"\b"
-    abstracts = abstracts[abstracts.text.str.contains(regex, regex=True)]
-    abstracts = abstracts[["record_no", "text"]]
-    abstracts["text"] = abstracts["text"].str.capitalize()
-    abstracts["text"] = abstracts["text"].str.replace(
-        r"\b" + text + r"\b", text.upper(), regex=True
-    )
-    abstracts["text"] = abstracts["text"].str.replace(
-        r"\b" + text.capitalize() + r"\b", text.upper(), regex=True
-    )
-
-    # ---< Extracts the n-words around the keyword >-------------------------------------
+def _extract_contexts(abstracts, text, left, right):
     text = text.upper()
     regex = r"\b" + text + r"\b"
 
@@ -76,21 +59,15 @@ def abstract_screening(
     )
     contexts["left_context"] = contexts["left_context"].fillna("")
     contexts["right_context"] = contexts["right_context"].fillna("")
-    # contexts["left_context"] = contexts["left_context"].str.strip()
-    # contexts["right_context"] = contexts["right_context"].str.strip()
     left_max_len = max(contexts["left_context"].str.len())
     contexts["left_context"] = contexts["left_context"].str.rjust(left_max_len)
     contexts = contexts.assign(
         text=contexts.left_context + text + contexts.right_context
     )
 
-    texts = contexts.text.head(top_n).tolist()
+    return contexts
 
+
+def _print_concordances(texts):
     for text in texts:
         print(text)
-
-    # with open(os.path.join(directory, "abstract_screening.txt"), "w") as f:
-    #     for i, row in abstracts.iterrows():
-    #         print(i, " --- ", row["text"], file=f)
-
-    # return abstracts
