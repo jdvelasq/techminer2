@@ -27,11 +27,9 @@ Apply Thesaurus
 """
 import os
 
-import pandas as pd
-
 from . import logging
-from .map_ import map_
 from .load_filtered_documents import load_filtered_documents
+from .map_ import map_
 from .thesaurus import read_textfile
 
 
@@ -55,7 +53,7 @@ def apply_thesaurus(
         documents[output_column] = map_(documents, input_column, apply_strict)
     else:
         documents[output_column] = map_(documents, input_column, apply_unstrict)
-    documents.to_csv(os.path.join(directory, "documents.csv"), index=False)
+    documents.to_csv(os.path.join(directory, "processed", "documents.csv"), index=False)
     logging.info(
         f"The thesaurus file '{thesaurus_file}' was applied to column '{input_column}'."
     )
