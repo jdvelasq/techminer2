@@ -25,6 +25,7 @@ from os.path import isfile, join
 import pandas as pd
 
 from . import logging
+from .load_all_documents import load_all_documents
 from .map_ import map_
 from .thesaurus import read_textfile
 
@@ -37,11 +38,7 @@ def clean_keywords(directory="./"):
 
     # --------------------------------------------------------------------------
     # Loads documents.csv
-    filename = join(directory, "documents.csv")
-    if not isfile(filename):
-        raise FileNotFoundError(f"The file '{filename}' does not exist.")
-    documents = pd.read_csv(filename, sep=",", encoding="utf-8")
-    # --------------------------------------------------------------------------
+    documents = load_all_documents(directory)
 
     thesaurus_file = join(directory, "keywords.txt")
     if isfile(thesaurus_file):
