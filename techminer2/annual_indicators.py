@@ -16,9 +16,9 @@ pub_year                 ...
 <BLANKLINE>
 [6 rows x 8 columns]
 
->>> from techminer2.visualization_api.line_chart import line_chart
+>>> from techminer2._line_chart import _line_chart
 >>> file_name = "/workspaces/techminer2/sphinx/images/annual_scientific_production_.png"
->>> line_chart(
+>>> _line_chart(
 ...     annual_indicators(directory=directory).num_documents, 
 ...     title="Annual Scientific Production",
 ... ).savefig(file_name)

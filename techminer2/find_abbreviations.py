@@ -7,7 +7,42 @@ Finds string abbreviations in keywords.
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
 >>> find_abbreviations(directory=directory)
-
+ai
+    ai
+artificial intelligence
+    artificial intelligence
+    artificial intelligence (ai)
+competition
+    competition
+    competition (economics)
+economics
+    economics
+financial technologies
+    financial technologies
+    financial technology
+    financial technology (fintech)
+fintech
+    fintech
+internet of things
+    internet of things
+    internet of things (iot)
+iot
+    iot
+p2p lending
+    p2p lending
+peer-to-peer lending
+    peer to peer lending
+    peer-to peer lending (p2p lending)
+    peer-to-peer lending
+sem
+    sem
+structural equation model (sem)
+    structural equation model (sem)
+    structural equations model
+unified theory of acceptance and use technology (utaut)
+    unified theory of acceptance and use technology (utaut)
+utaut
+    utaut
 
 """
 from os.path import isfile, join
@@ -32,7 +67,7 @@ def find_abbreviations(
         return None
 
     # ----< Load and reverse the thesaurus >------------------------------------------------------
-    thesaurus_file = join(directory, "keywords.txt")
+    thesaurus_file = join(directory, "processed", "keywords.txt")
     if isfile(thesaurus_file):
         th = load_file_as_dict(thesaurus_file)
     else:

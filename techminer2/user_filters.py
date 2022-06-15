@@ -96,6 +96,7 @@ Allow users to select docuemnts to be mined.
 
 """
 import os
+import os.path
 
 import pandas as pd
 import yaml
@@ -106,7 +107,8 @@ from .load_filtered_documents import load_filtered_documents
 
 
 def _load_filter(directory):
-    yaml_filename = directory + "filter.yaml"
+
+    yaml_filename = os.path.join(directory, "processed", "filter.yaml")
     with open(yaml_filename, "r", encoding="utf-8") as yaml_file:
         filter = yaml.load(yaml_file, Loader=yaml.FullLoader)
     return filter

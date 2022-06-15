@@ -37,11 +37,11 @@ The plot is based on the SVD technique used in T-LAB's comparative analysis.
 ... ).head()
                             dim0      dim1  ...     dim18     dim19
 author_keywords                             ...                    
-fintech                 1.267223 -0.217794  ... -0.013252  0.012584
-financial technologies  0.650255 -0.375421  ... -0.275021 -0.130661
-financial inclusion     0.624967 -0.393748  ...  0.056618  0.266723
-block-chain             0.580905 -0.556643  ... -0.037316 -0.046776
-innovating              0.723366  0.453754  ... -0.220027  0.176728
+fintech                 1.266169 -0.123487  ... -0.011774  0.072038
+financial technologies  0.666967 -0.342768  ... -0.274869 -0.127540
+financial inclusion     0.664505 -0.311517  ...  0.056878  0.324649
+blockchain              0.622238 -0.488122  ... -0.037378 -0.059448
+bank                    0.522908  0.501860  ... -0.062153  0.306625
 <BLANKLINE>
 [5 rows x 20 columns]
 

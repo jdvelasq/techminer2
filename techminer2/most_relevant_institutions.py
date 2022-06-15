@@ -13,16 +13,13 @@ Most Relevant Institutions
 
 
 >>> most_relevant_institutions(directory=directory, plot=False).head()
-                                     num_documents  ...  local_citations
-institutions                                        ...                 
-Bina Nusantara University IDN                    6  ...                7
-Singapore Management University SGP              5  ...               35
-University of Sydney AUS                         5  ...               25
-University of Latvia LVA                         4  ...                4
-University of Pavia ITA                          4  ...                1
-<BLANKLINE>
-[5 rows x 3 columns]
-
+institutions
+Bina Nusantara University IDN          6
+Singapore Management University SGP    5
+University of Sydney AUS               5
+University of Latvia LVA               4
+University of Pavia ITA                4
+Name: num_documents, dtype: int64
 
 
 """

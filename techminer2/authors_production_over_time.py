@@ -19,13 +19,13 @@ Authors' Production over Time
 ...     directory=directory, 
 ...     plot=False,
 ... ).head()
-pub_year    2016  2017  2018  2019  2020  2021
-authors                                       
-Arqawi S       0     0     0     0     1     1
-Bernards N     0     0     0     2     0     0
-Budi I         0     0     0     0     1     1
-Daragmeh A     0     0     0     0     0     2
-Dincer H       0     0     0     0     0     2
+pub_year     2016  2017  2018  2019  2020  2021
+authors                                        
+Wojcik D        0     0     0     0     3     2
+Hornuf L        0     0     0     1     1     1
+Rabbani MR      0     0     0     0     2     1
+Gomber P        0     0     2     0     0     0
+Kauffman RJ     0     0     2     0     0     0
 
 
 """

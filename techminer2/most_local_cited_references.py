@@ -37,7 +37,7 @@ def most_local_cited_references(
 ):
 
     indicators = pd.read_csv(
-        join(directory, "references.csv"), sep=",", encoding="utf-8"
+        join(directory, "processed", "references.csv"), sep=",", encoding="utf-8"
     )
     indicators = indicators[["document_id", "local_citations"]]
     indicators = indicators.dropna()

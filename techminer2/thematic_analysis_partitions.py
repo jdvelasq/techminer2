@@ -19,11 +19,11 @@ Thematic Analysis / Partitions
 ...     random_state=0, 
 ... )
 CLUSTER
-0    120
-1      7
+0    112
+1     13
 2     12
-3     32
-4      6
+3      7
+4     32
 5      6
 Name: num_documents, dtype: int64
 

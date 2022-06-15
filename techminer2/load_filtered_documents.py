@@ -10,7 +10,7 @@ def load_filtered_documents(directory):
     documents = load_all_documents(directory)
 
     # Filter documents
-    yaml_filename = os.path.join(directory, "filter.yaml")
+    yaml_filename = os.path.join(directory, "processed", "filter.yaml")
     with open(yaml_filename, "r", encoding="utf-8") as yaml_file:
         filter_ = yaml.load(yaml_file, Loader=yaml.FullLoader)
 

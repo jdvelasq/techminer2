@@ -1,6 +1,7 @@
 from .abstract_concordances import abstract_concordances
 from .abstract_screening import abstract_screening
 from .abstract_summarization import abstract_summarization
+from .annual_indicators import annual_indicators
 from .annual_occurrence_matrix import annual_occurrence_matrix
 from .annual_scientific_production import annual_scientific_production
 from .apply_thesaurus import apply_thesaurus
@@ -12,6 +13,7 @@ from .auto_corr_matrix_heatmap import auto_corr_matrix_heatmap
 from .auto_corr_matrix_html import auto_corr_matrix_html
 from .average_citations_per_year import average_citations_per_year
 from .bradford_law import bradford_law
+from .bubble_chart import bubble_chart
 
 # from .ca_factorial_analysis import ca_factorial_analysis
 from .clean_institutions import clean_institutions
@@ -41,10 +43,13 @@ from .co_occurrence_network_strategic_diagram import (
 from .co_occurrence_network_summarization import co_occurrence_network_summarization
 from .co_occurrence_svd_map import co_occurrence_svd_map
 from .co_occurrence_svd_mds_map import co_occurrence_svd_mds_map
+from .collaboration_indicators import collaboration_indicators
 from .collaboration_network_communities import collaboration_network_communities
 from .collaboration_network_degree_plot import collaboration_network_degree_plot
 from .collaboration_network_graph import collaboration_network_graph
 from .collaboration_network_indicators import collaboration_network_indicators
+from .column_indicators import column_indicators
+from .column_indicators_by_year import column_indicators_by_year
 from .core_sources import core_sources
 from .correlation_map import correlation_map
 from .corresponding_authors_country import corresponding_authors_country
@@ -58,6 +63,7 @@ from .create_thesaurus import create_thesaurus
 from .cross_corr_matrix import cross_corr_matrix
 from .cross_corr_matrix_heatmap import cross_corr_matrix_heatmap
 from .cross_corr_matrix_html import cross_corr_matrix_html
+from .document_indicators import document_indicators
 from .document_viewer import document_viewer
 from .dotted_gantt_chart import dotted_gantt_chart
 from .ego_graph import ego_graph
@@ -84,7 +90,10 @@ from .find_abbreviations import find_abbreviations
 from .find_keyword import find_keyword
 from .find_string import find_string
 from .gantt_chart import gantt_chart
+from .growth_indicators import growth_indicators
 from .hbar_chart import hbar_chart
+from .heat_map import heat_map
+from .impact_indicators import impact_indicators
 from .import_references import import_references
 from .import_scopus_files import import_scopus_files
 from .keyword_concordances import keyword_concordances
@@ -92,6 +101,7 @@ from .keywords_summarization import keywords_summarization
 from .line_chart import line_chart
 from .lotka_law import lotka_law
 from .main_information import main_information
+from .map_chart import map_chart
 from .merge_keywords import merge_keywords
 from .most_frequent_words import most_frequent_words
 
@@ -106,6 +116,7 @@ from .most_local_cited_sources import most_local_cited_sources
 from .most_relevant_authors import most_relevant_authors
 from .most_relevant_institutions import most_relevant_institutions
 from .most_relevant_sources import most_relevant_sources
+from .network import network
 from .occurrence_matrix import occurrence_matrix
 from .occurrence_matrix_associations import occurrence_matrix_associations
 from .occurrence_matrix_bubble_chart import occurrence_matrix_bubble_chart

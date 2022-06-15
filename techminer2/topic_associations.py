@@ -26,9 +26,9 @@ Topic Associations
 author_keywords
 financial inclusion       15
 financial technologies    14
-block-chain               13
-innovating                10
-regulating                10
+blockchain                13
+innovation                10
+regulation                10
 Name: fintech, dtype: int64
 
 """

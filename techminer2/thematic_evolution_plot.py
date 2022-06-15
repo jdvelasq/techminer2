@@ -12,14 +12,17 @@ Thematic evolution plot
 ...     'author_keywords',
 ...     min_occ=3,
 ...     directory=directory,
-... )
-cluster                        CLUST_0             CLUST_1
-rn                                                        
-0                       fintech 26:797   innovating 06:222
-1        financial technologies 07:109   technology 03:156
-2             financial service 06:288  retail bank 03:053
-3                   block-chain 05:099         bank 03:147
-4                business model 04:172                    
+... ).head()
+cluster                            CL_00  ...                               CL_06
+rn                                        ...                                    
+0                       fintech 139:1285  ...                    startup 004:0104
+1        financial technologies 028:0225  ...      financial institution 003:0219
+2           financial inclusion 017:0339  ...           entrepreneurship 003:0101
+3                  crowdfunding 008:0116  ...  entrepreneurial ecosystem 003:0005
+4          financial innovation 008:0044  ...                                    
+<BLANKLINE>
+[5 rows x 7 columns]
+
 
 >>> user_filters(directory=directory, quiet=True, first_year=2019, last_year=2020)
 >>> ind_2019_2020 = thematic_map_indicators('author_keywords', min_occ=3, directory=directory)
@@ -27,17 +30,16 @@ rn
 ...     'author_keywords',
 ...     min_occ=3,
 ...     directory=directory,
-... )
-cluster                         CLUST_0  ...                  CLUST_3
-rn                                       ...                         
-0                        fintech 54:391  ...       block-chain 06:041
-1                     innovating 06:027  ...  cryptocurrencies 04:034
-2           financial innovation 05:027  ...                         
-3                venture capital 03:024  ...                         
-4             regulatory sandbox 03:015  ...                         
-5        artificial intelligence 03:021  ...                         
+... ).head()
+cluster                            CL_00  ...                               CL_06
+rn                                        ...                                    
+0                       fintech 139:1285  ...                    startup 004:0104
+1        financial technologies 028:0225  ...      financial institution 003:0219
+2           financial inclusion 017:0339  ...           entrepreneurship 003:0101
+3                  crowdfunding 008:0116  ...  entrepreneurial ecosystem 003:0005
+4          financial innovation 008:0044  ...                                    
 <BLANKLINE>
-[6 rows x 4 columns]
+[5 rows x 7 columns]
 
 >>> user_filters(directory=directory, quiet=True, first_year=2021, last_year=2021)
 >>> ind_2021_2021 = thematic_map_indicators('author_keywords', min_occ=3, directory=directory)
@@ -45,19 +47,16 @@ rn                                       ...
 ...     'author_keywords',
 ...     min_occ=3,
 ...     directory=directory,
-... )
-cluster                              CLUST_0  ...                  CLUST_5
-rn                                            ...                         
-0                              fintech 59:97  ...     perceived risk 03:01
-1                  financial inclusion 10:14  ...  perceived benefit 03:00
-2        sustainable development goals 03:04  ...                         
-3                              regtech 03:00  ...                         
-4                        green finance 03:05  ...                         
-5                  financial stability 03:04  ...                         
-6                         crowdfunding 03:01  ...                         
-7                                china 03:06  ...                         
+... ).head()
+cluster                            CL_00  ...                               CL_06
+rn                                        ...                                    
+0                       fintech 139:1285  ...                    startup 004:0104
+1        financial technologies 028:0225  ...      financial institution 003:0219
+2           financial inclusion 017:0339  ...           entrepreneurship 003:0101
+3                  crowdfunding 008:0116  ...  entrepreneurial ecosystem 003:0005
+4          financial innovation 008:0044  ...                                    
 <BLANKLINE>
-[8 rows x 6 columns]
+[5 rows x 7 columns]
 
 >>> thematic_evolution_plot(
 ...     indicators=[ind_2016_2018, ind_2019_2020, ind_2021_2021],

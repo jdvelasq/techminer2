@@ -18,12 +18,12 @@ Thematic Analysis / Themes
 ...     directory=directory,
 ...     random_state=0, 
 ... ).head()
-                     CL_0  ...            CL_5
-0                 fintech  ...  perceived risk
-1  financial technologies  ...           trust
-2                    bank  ...         fintech
-3              innovating  ...                
-4       financial service  ...                
+                     CL_0                    CL_1  ...     CL_4      CL_5
+0                 fintech  financial technologies  ...  fintech  covid-19
+1  financial technologies    peer-to-peer lending  ...            fintech
+2                    bank                 fintech  ...            bitcoin
+3              innovation              regulation  ...                   
+4       financial service                          ...                   
 <BLANKLINE>
 [5 rows x 6 columns]
 

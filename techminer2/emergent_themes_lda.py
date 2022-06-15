@@ -16,12 +16,12 @@ Modeling of Emergent Themes with LDA
 ...     random_state=0,
 ... )
 >>> analysis.themes.head()
-                     TH_0  ...                     TH_5
-0                 fintech  ...             crowdfunding
-1  financial technologies  ...                  fintech
-2     financial inclusion  ...  artificial intelligence
-3              regulating  ...         machine learning
-4             block-chain  ...       internet of things
+                     TH_0  ...                           TH_5
+0                 fintech  ...            fintech-innovations
+1     financial inclusion  ...                 smart contract
+2  financial technologies  ...                     blockchain
+3              regulation  ...  sustainable development goals
+4              blockchain  ...             regulatory sandbox
 <BLANKLINE>
 [5 rows x 6 columns]
 
@@ -37,8 +37,8 @@ import pandas as pd
 from sklearn.decomposition import LatentDirichletAllocation
 from sklearn.manifold import MDS
 
-from .tf_matrix import tf_matrix
 from .bubble_map import bubble_map
+from .tf_matrix import tf_matrix
 
 
 class Emergent_Themes_LDA:

@@ -9,14 +9,13 @@ Thematic Map / Indicators
 ... ).head()
                          num_documents  global_citations  ...  closeness  pagerank
 node                                                      ...                     
-adoption                             4                65  ...   0.532468  0.020583
-artificial intelligence              6                30  ...   0.554054  0.023916
-bank                                12               185  ...   0.594203  0.019845
-bitcoin                              3                 7  ...   0.518987  0.016040
-block-chain                         17               149  ...   0.621212  0.030478
+adoption                             4                65  ...   0.533333  0.021741
+artificial intelligence              6                30  ...   0.555556  0.025306
+bank                                12               185  ...   0.588235  0.020175
+bitcoin                              3                 7  ...   0.519481  0.016778
+blockchain                          17               149  ...   0.625000  0.032010
 <BLANKLINE>
 [5 rows x 6 columns]
-
 
 """
 

@@ -38,7 +38,7 @@ def rpys(
 ):
 
     references = pd.read_csv(
-        join(directory, "references.csv"), sep=",", encoding="utf-8"
+        join(directory, "processed", "references.csv"), sep=",", encoding="utf-8"
     )
     references = references["pub_year"]
     references = references.dropna()

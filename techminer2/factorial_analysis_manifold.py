@@ -35,23 +35,23 @@ Based on the bibliometrix/R/conceptualStructure.R code.
 
 
 >>> factorial_analyzer.data().head()
-                                     Dim-1       Dim-2  Cluster
+                                      Dim-1      Dim-2  Cluster
 author_keywords        #d  #c                                  
-fintech                139 1285  20.418893  133.715387        1
-financial technologies 28  225   23.598669   12.903288        3
-financial inclusion    17  339  -14.816283   10.690490        2
-block-chain            17  149   -5.769834   15.363572        2
-innovating             13  249   13.479658   -3.236222        3
+fintech                139 1285  105.310859  84.575978        1
+financial technologies 28  225    -9.008845  26.253903        3
+financial inclusion    17  339     6.778679  14.603252        3
+blockchain             17  149    16.813353   0.053288        0
+bank                   12  185     3.763717 -16.863474        0
 
 
 >>> factorial_analyzer.cluster_members().head()
-                           CLTR_0  ...                           CLTR_3
-rn                                 ...                                 
-0           crowdfunding 008:0116  ...  financial technologies 028:0225
-1   peer-to-peer lending 008:0073  ...              innovating 013:0249
-2               covid-19 008:0036  ...                    bank 012:0185
-3             technology 007:0192  ...                                 
-4               start-up 007:0141  ...                                 
+                         CL_00  ...                            CL_03
+rn                              ...                                 
+0          blockchain 017:0149  ...  financial technologies 028:0225
+1          innovation 013:0249  ...     financial inclusion 017:0339
+2                bank 012:0185  ...                                 
+3   financial service 011:0300  ...                                 
+4          regulation 011:0084  ...                                 
 <BLANKLINE>
 [5 rows x 4 columns]
 

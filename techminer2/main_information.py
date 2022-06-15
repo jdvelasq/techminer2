@@ -10,7 +10,7 @@ Category       Item
 GENERAL        Documents:                                      248
                Years:                                    2016-2021
                Compound annual growth rate:                91.68 %
-               Current years from publication:                1.23
+               Current years from publication:                2.23
                Average citations per document:                9.36
                Average citations per document per year:       1.56
                Sources:                                        145
@@ -37,23 +37,23 @@ AUTHORS        Authors:                                        639
                Countries:                                       70
                Countries (1st author):                          53
 KEYWORDS       Raw author keywords:                            709
-               Cleaned author keywords:                        663
+               Cleaned author keywords:                        659
                Raw index keywords:                             607
-               Cleaned index keywords:                         591
-OTHERS         document_id                                     246
+               Cleaned index keywords:                         583
+OTHERS         author_keywords_thesaurus                       659
+               document_id                                     246
                iso_source_name                                 145
-               nlp_abstract                                   3675
-               nlp_document_title                              568
-               nlp_phrases                                    4705
+               nlp_abstract                                   3246
+               nlp_document_title                              495
+               nlp_phrases                                    4321
                num_global_references                           108
                page_start                                      123
                pubmed_id                                         4
                raw_authors_names                               635
-               raw_nlp_abstract                               3841
-               raw_nlp_document_title                          586
-               raw_nlp_phrases                                5058
+               raw_nlp_abstract                               3260
+               raw_nlp_document_title                          496
+               raw_nlp_phrases                                4421
                volume                                           80
-
 
 """
 import datetime

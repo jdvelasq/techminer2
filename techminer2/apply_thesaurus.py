@@ -12,7 +12,7 @@ Apply Thesaurus
 ...     directory=directory,
 ... )
 - INFO - Creating thesaurus ...
-- INFO - Thesaurus file '/workspaces/techminer2/data/test_thesaurus.txt' created.
+- INFO - Thesaurus file '/workspaces/techminer2/data/processed/test_thesaurus.txt' created.
 
 >>> apply_thesaurus(
 ...     thesaurus_file="keywords.txt", 
@@ -47,7 +47,7 @@ def apply_thesaurus(
         return thesaurus.apply_as_dict(x, strict=False)
 
     documents = load_filtered_documents(directory)
-    thesaurus = read_textfile(os.path.join(directory, thesaurus_file))
+    thesaurus = read_textfile(os.path.join(directory, "processed", thesaurus_file))
     thesaurus = thesaurus.compile_as_dict()
     if strict:
         documents[output_column] = map_(documents, input_column, apply_strict)

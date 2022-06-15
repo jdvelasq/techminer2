@@ -8,8 +8,8 @@ Growth Indicators
                         before 2020  ...  average_growth_rate
 fintech                          42  ...                 21.5
 financial technologies           11  ...                  4.0
-innovating                        9  ...                 -1.0
-block-chain                       9  ...                  1.0
+blockchain                        9  ...                  1.0
+innovation                        9  ...                 -1.0
 financial service                 7  ...                  1.0
 <BLANKLINE>
 [5 rows x 4 columns]

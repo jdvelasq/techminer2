@@ -12,9 +12,9 @@ Co-occurrence Matrix / Associations
                    word_A   word_B  co_occ
 0     financial inclusion  fintech      15
 1  financial technologies  fintech      14
-2             block-chain  fintech      13
-3              innovating  fintech      10
-4              regulating  fintech      10
+2              blockchain  fintech      13
+3              innovation  fintech      10
+4              regulation  fintech      10
 
 
 """

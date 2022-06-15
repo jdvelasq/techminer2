@@ -9,13 +9,13 @@ Thematic Map / Communities
 ...     min_occ=4, 
 ...     directory=directory,
 ... ).head()
-cluster                     CLUST_0  ...                    CLUST_4
-rn                                   ...                           
-0                  fintech 139:1285  ...       block-chain 017:0149
-1               innovating 013:0249  ...  cryptocurrencies 008:0036
-2                     bank 012:0185  ...    smart contract 004:0018
-3               regulating 011:0084  ...           bitcoin 003:0007
-4        financial service 011:0300  ...                           
+cluster                       CL_00  ...                         CL_04
+rn                                   ...                              
+0               innovation 013:0249  ...  financial inclusion 017:0339
+1                     bank 012:0185  ...              regtech 005:0102
+2        financial service 011:0300  ...       digitalization 005:0045
+3               regulation 011:0084  ...  fintech-innovations 005:0002
+4               technology 007:0192  ...       sustainability 004:0064
 <BLANKLINE>
 [5 rows x 5 columns]
 

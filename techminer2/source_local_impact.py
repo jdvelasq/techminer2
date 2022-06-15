@@ -52,7 +52,7 @@ def source_local_impact(
 
     indicators = indicators[impact_measure].head(top_n)
 
-    return cleveland_dot_chart(
+    return _cleveland_chart(
         indicators,
         figsize=figsize,
         color=color,

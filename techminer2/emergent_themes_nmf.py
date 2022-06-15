@@ -18,12 +18,12 @@ Topic extraction using non-negative matrix factorization.
 ...     random_state=0,
 ... )
 >>> analysis.themes.head()
-                 TH_0  ...                           TH_5
-0             fintech  ...            financial inclusion
-1            covid-19  ...                        regtech
-2      business model  ...  sustainable development goals
-3      perceived risk  ...            financial stability
-4  regulatory sandbox  ...                 sustainability
+             TH_0  ...                           TH_5
+0         fintech  ...            financial inclusion
+1        covid-19  ...                        regtech
+2  business model  ...  sustainable development goals
+3  perceived risk  ...            financial stability
+4         startup  ...                 sustainability
 <BLANKLINE>
 [5 rows x 6 columns]
 
@@ -39,8 +39,8 @@ import pandas as pd
 from sklearn.decomposition import NMF
 from sklearn.manifold import MDS
 
-from .tf_matrix import tf_matrix
 from .bubble_map import bubble_map
+from .tf_matrix import tf_matrix
 
 
 class Emergent_Themes_NMF:

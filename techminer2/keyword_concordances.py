@@ -40,14 +40,14 @@ def keyword_concordances(keyword, top_n=50, directory="./"):
     record_no2citation = dict(
         zip(documents["record_no"], documents["global_citations"])
     )
-    abstracts = pd.read_csv(join(directory, "abstracts.csv"))
+    abstracts = pd.read_csv(join(directory, "processed", "abstracts.csv"))
     abstracts["citations"] = abstracts["record_no"].map(record_no2citation)
     abstracts = abstracts.sort_values(
         ["citations", "record_no", "line_no"], ascending=[False, True, True]
     )
 
     # ----< loads keywords >-------------------------------------------------------------
-    thesaurus_file = join(directory, "keywords.txt")
+    thesaurus_file = join(directory, "processed", "keywords.txt")
     if isfile(thesaurus_file):
         th = load_file_as_dict(thesaurus_file)
     else:
