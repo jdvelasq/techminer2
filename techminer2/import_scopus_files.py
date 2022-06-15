@@ -902,7 +902,9 @@ def _create_abstracts_csv(documents, directory):
     if "abstract" in documents.columns:
 
         # split phrases
-        abstracts = documents[["record_no", "abstract"]].copy()
+        abstracts = documents[
+            ["record_no", "abstract", "global_citations", "document_id"]
+        ].copy()
         abstracts = abstracts.rename(columns={"abstract": "text"})
         abstracts = abstracts.dropna()
         abstracts = abstracts.assign(text=abstracts.text.str.replace(";", "."))
@@ -915,11 +917,7 @@ def _create_abstracts_csv(documents, directory):
         )
 
         abstracts = abstracts[
-            [
-                "record_no",
-                "line_no",
-                "text",
-            ]
+            ["record_no", "line_no", "text", "global_citations", "document_id"]
         ]
         # save to disk
         file_name = os.path.join(directory, "processed", "abstracts.csv")
