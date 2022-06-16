@@ -2,8 +2,7 @@
 Clean Keywords
 ===============================================================================
 
-Cleans the keywords columns using the file keywords.txt, located in 
-the same directory as the documents.csv file.
+Cleans the keywords columns using the `keywords.txt`file.
 
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
@@ -22,10 +21,8 @@ the same directory as the documents.csv file.
 
 from os.path import isfile, join
 
-import pandas as pd
-
 from . import logging
-from .load_all_documents import load_all_documents
+from ._read_records import read_all_records
 from .map_ import map_
 from .save_documents import save_documents
 from .thesaurus import read_textfile
@@ -39,7 +36,7 @@ def clean_keywords(directory="./"):
 
     # --------------------------------------------------------------------------
     # Loads documents.csv
-    documents = load_all_documents(directory)
+    documents = read_all_records(directory)
 
     thesaurus_file = join(directory, "processed", "keywords.txt")
     if isfile(thesaurus_file):
