@@ -18,7 +18,7 @@ def load_raw_csv_files(directory):
 
     files = [f for f in os.listdir(directory) if f.endswith(".csv")]
     if len(files) == 0:
-        raise FileNotFoundError(f"No files found in {directory}")
+        raise FileNotFoundError(f"No CSV files found in {directory}")
 
     data = []
     for file_name in files:
