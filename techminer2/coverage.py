@@ -25,7 +25,7 @@ Computes coverage of terms in a column discarding stopwords.
 """
 
 from . import logging
-from .load_filtered_documents import load_filtered_documents
+from ._read_records import read_filtered_records
 from .load_stopwords import load_stopwords
 
 
