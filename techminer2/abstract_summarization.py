@@ -120,7 +120,7 @@ def abstract_summarization(
         )
 
     with open(
-        os.path.join(directory, f"abstract_summarization{sufix}.txt"), "w"
+        os.path.join(directory, "reports", f"abstract_summarization{sufix}.txt"), "w"
     ) as out_file:
         for index, row in abstracts.iterrows():
             paragraph = textwrap.fill(
