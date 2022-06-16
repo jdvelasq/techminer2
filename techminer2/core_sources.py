@@ -24,7 +24,7 @@ Core Sources
 import numpy as np
 import pandas as pd
 
-from .load_filtered_documents import load_filtered_documents
+from ._read_records import read_filtered_records
 from .explode import explode
 
 
