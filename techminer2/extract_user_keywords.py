@@ -13,7 +13,7 @@ import numpy as np
 import pandas as pd
 
 from . import logging
-from .load_all_documents import load_all_documents
+from ._read_records import read_all_records
 from .save_documents import save_documents
 
 
@@ -25,7 +25,7 @@ def extract_user_keywords(
     flags=0,
 ):
 
-    documents = load_all_documents(directory)
+    documents = read_all_records(directory)
 
     # ---< loads keywords from file >----------------------------------------
     if directory is None:
