@@ -28,7 +28,7 @@ Apply Thesaurus
 import os
 
 from . import logging
-from .load_filtered_documents import load_filtered_documents
+from ._read_records import read_filtered_records
 from .map_ import map_
 from .thesaurus import read_textfile
 
