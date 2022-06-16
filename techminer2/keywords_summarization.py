@@ -116,7 +116,7 @@ def keywords_summarization(
         documents = documents[column_list]
 
         # ----< report >-----------------------------------------------------------------
-        filename = join(directory, f"keywords_summarization{sufix}.txt")
+        filename = join(directory, "reports", f"keywords_summarization{sufix}.txt")
 
         with open(filename, "w") as out_file:
 
