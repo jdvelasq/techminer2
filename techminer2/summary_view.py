@@ -53,7 +53,7 @@ Summary View
 
 import pandas as pd
 
-from .load_filtered_documents import load_filtered_documents
+from ._read_records import read_filtered_records
 
 
 def summary_view(directory="./"):
