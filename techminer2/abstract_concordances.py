@@ -25,8 +25,8 @@ Abstract concordances exploration tool.
 
 """
 
+from ._read_records import read_filtered_records
 from .load_abstracts import load_abstracts
-from .load_filtered_documents import load_filtered_documents
 
 
 def abstract_concordances(
