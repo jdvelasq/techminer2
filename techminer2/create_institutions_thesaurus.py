@@ -11,7 +11,7 @@ import pandas as pd
 
 from . import logging
 from .extract_country import extract_country
-from .load_all_documents import load_all_documents
+from ._read_records import read_all_records
 from .thesaurus import Thesaurus, load_file_as_dict, read_textfile
 
 #
@@ -210,7 +210,7 @@ def create_institutions_thesaurus(directory):
     }
 
     # --------------------------------------------------------------------------
-    data = load_all_documents(directory)
+    data = read_all_records(directory)
     # --------------------------------------------------------------------------
 
     #
