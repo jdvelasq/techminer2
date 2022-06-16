@@ -18,7 +18,7 @@ financial service                 7  ...                  1.0
 import numpy as np
 import pandas as pd
 
-from .load_filtered_documents import load_filtered_documents
+from ._read_records import read_filtered_records
 from .load_stopwords import load_stopwords
 
 
