@@ -179,7 +179,7 @@ class _UserFilters:
                 print("                          : " + document_type)
 
     def save_filter(self):
-        yaml_filename = os.path.join(self.directory, "filter.yaml")
+        yaml_filename = os.path.join(self.directory, "processed", "filter.yaml")
         with open(yaml_filename, "wt", encoding="utf-8") as yaml_file:
             yaml.dump(self.filter, yaml_file, sort_keys=True)
 
