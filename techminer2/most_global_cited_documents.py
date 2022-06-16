@@ -29,7 +29,7 @@ Al Nawayseh MK et al, 2020, J OPEN INNOV: TECHN...                10  ...       
 
 from ._cleveland_chart import _cleveland_chart
 from .document_indicators import document_indicators
-from .load_filtered_documents import load_filtered_documents
+from ._read_records import read_filtered_records
 
 
 def most_global_cited_documents(
