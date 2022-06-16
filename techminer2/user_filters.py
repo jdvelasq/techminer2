@@ -102,8 +102,8 @@ import pandas as pd
 import yaml
 
 from . import logging
-from .load_all_documents import load_all_documents
-from .load_filtered_documents import load_filtered_documents
+from ._read_records import read_all_records
+from ._read_records import read_filtered_records
 
 
 def _load_filter(directory):
@@ -128,7 +128,7 @@ class _UserFilters:
         self.load_raw_documents()
 
     def load_raw_documents(self):
-        self.documents = load_all_documents(self.directory)
+        self.documents = read_all_records(self.directory)
 
     def document_report(self):
 
