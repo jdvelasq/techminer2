@@ -67,6 +67,7 @@ def import_scopus_files(
     use_nlp_phrases=False,
     disable_progress_bar=False,
 ):
+    _check_output_folders(directory)
     _create_documents_csv_file(directory, disable_progress_bar)
     _create_abstracts_csv_file(directory)
     _create_stopwords_file(directory)
@@ -79,6 +80,13 @@ def import_scopus_files(
     clean_institutions(directory=directory)
     clean_keywords(directory=directory)
     logging.info("Process finished!!!")
+
+
+def _check_output_folders(directory):
+    if not os.path.exists(os.path.join(directory, "processed")):
+        os.makedirs(os.path.join(directory, "processed"))
+    if not os.path.exists(os.path.join(directory, "reports")):
+        os.makedirs(os.path.join(directory, "reports"))
 
 
 def _create_filter_file(directory):
