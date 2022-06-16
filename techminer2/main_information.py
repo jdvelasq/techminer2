@@ -61,7 +61,7 @@ import datetime
 import numpy as np
 import pandas as pd
 
-from .load_filtered_documents import load_filtered_documents
+from ._read_records import read_filtered_records
 
 
 def _extract_terms(x, column):
