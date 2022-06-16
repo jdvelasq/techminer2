@@ -1,9 +1,4 @@
-"""
-Load raw csv files.
-=========================================================================================
-
-
-"""
+"""Read a bunch of csv files in a directory"""
 
 import os
 import os.path
