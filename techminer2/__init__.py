@@ -14,8 +14,6 @@ from .auto_corr_matrix_html import auto_corr_matrix_html
 from .average_citations_per_year import average_citations_per_year
 from .bradford_law import bradford_law
 from .bubble_chart import bubble_chart
-
-# from .ca_factorial_analysis import ca_factorial_analysis
 from .clean_institutions import clean_institutions
 from .clean_keywords import clean_keywords
 from .cleveland_chart import cleveland_chart
@@ -75,8 +73,6 @@ from .emergent_themes_nmf import Emergent_Themes_NMF
 from .emergent_themes_nmf_map import emergent_themes_nmf_map
 from .emergent_themes_nmf_themes import emergent_themes_nmf_themes
 from .explode import explode
-
-# from .extract_custom_topics import extract_custom_topics
 from .extract_user_keywords import extract_user_keywords
 from .factor_matrix import factor_matrix
 from .factorial_analysis_manifold import Factorial_analysis_manifold
@@ -104,9 +100,6 @@ from .main_information import main_information
 from .map_chart import map_chart
 from .merge_keywords import merge_keywords
 from .most_frequent_words import most_frequent_words
-
-# from .main_path import MainPath
-# from .main_path_network import main_path_network
 from .most_global_cited_countries import most_global_cited_countries
 from .most_global_cited_documents import most_global_cited_documents
 from .most_local_cited_authors import most_local_cited_authors
