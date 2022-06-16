@@ -46,8 +46,7 @@ from os.path import join
 import numpy as np
 import pandas as pd
 
-from .load_all_documents import load_all_documents
-from .load_filtered_documents import load_filtered_documents
+from ._read_records import read_all_records, read_filtered_records
 from .records2documents import records2documents
 from .tf_matrix import tf_matrix
 
@@ -79,7 +78,7 @@ def coupling_matrix(
             metric=metric,
             directory=directory,
         )
-        documents = load_all_documents(directory=directory)
+        documents = read_all_records(directory=directory)
 
     matrix = records2documents(matrix=matrix, documents=documents)
     return matrix
