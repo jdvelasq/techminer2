@@ -1,6 +1,7 @@
 .DS_Store
 
-data/*.txt
+data/processed/
+data/reports/
 citaciones-dyna/
 
 debug/
