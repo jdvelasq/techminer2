@@ -1,8 +1,7 @@
 .DS_Store
 
-data/processed/
-data/reports/
-citaciones-dyna/
+
+data/processed/*.csv
 
 debug/
 
@@ -140,29 +139,3 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-notebooks/management.csv
-tests/data/abstracts.csv
-tests/data/documents.csv
-tests/data/---raw_cited_by.csv
-tests/data/---raw_references.csv
-data/abstract_concordantes.txt
-data/abstract_screening.txt
-data/abstracts.csv
-data/documents.csv
-data/filter.yaml
-data/ignored_affiliations.txt
-data/institutions.txt
-data/keywords.txt
-data/stopwords.txt
-data/test_thesaurus.txt
-data/top_documents.txt
-data/keywords copy.txt
-data/---natalia-prins---raw-documents.csv
-data/--raw-documents.csv
-data/--raw-references.csv
-data/abstract_summarization.txt
-
-data/references.csv
-data/references.csv
-data/nlp.txt
-data/cited_references_table.csv
