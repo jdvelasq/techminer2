@@ -39,7 +39,7 @@ from .import_scopus_files import (
     _search_for_new_iso_source_name,
 )
 from .load_all_documents import load_all_documents
-from .load_raw_csv_files import load_raw_csv_files
+from .read_raw_csv_files import read_raw_csv_files
 
 
 def _create_references_file(
@@ -182,7 +182,7 @@ def import_references(directory="./", disable_progress_bar=False):
 
     documents = load_all_documents(directory)
     #
-    references = load_raw_csv_files(join(directory, "raw", "references"))
+    references = read_raw_csv_files(join(directory, "raw", "references"))
     references = _delete_and_rename_columns(references)
     references = _process_authors_id_column(references)
     references = _process_raw_authors_names_column(references)
