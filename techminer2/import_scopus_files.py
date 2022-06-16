@@ -8,15 +8,12 @@ Import a scopus file to a working directory.
 >>> directory = "/workspaces/techminer2/data/"
 >>> import_scopus_files(directory, disable_progress_bar=True)
 - INFO - 248 raw records found in /workspaces/techminer2/data/raw/documents.
-- INFO - Computing Bradford Law Zones ...
 - INFO - Searching local references using DOI ...
 - INFO - Searching local references using document titles ...
 - INFO - Consolidating local references ...
 - INFO - Computing local citations ...
 - INFO - Computing Bradford Law Zones ...
 - INFO - Main abstract texts saved to /workspaces/techminer2/data/processed/abstracts.csv
-- INFO - Documents saved/merged to '/workspaces/techminer2/data/processed/documents.csv'
-- INFO - Post-processing docuemnts ...
 - INFO - Creating institutions thesaurus ...
 - INFO - Affiliations without country detected - check file /workspaces/techminer2/data/processed/ignored_affiliations.txt
 - INFO - Affiliations without country detected - check file /workspaces/techminer2/data/ignored_affiliations.txt
@@ -41,15 +38,6 @@ Import a scopus file to a working directory.
 """
 
 
-# pyltin: disable=e1101
-# pylint: disable=no-member
-# pylint: disable=unsupported-assignment-operation
-# pylint: disable=unsubscriptable-object
-# pylint: disable=too-many-instance-attributes
-# pylint: disable=missing-function-docstring
-# pylint: disable=consider-using-with
-
-
 import os
 import os.path
 
@@ -64,14 +52,143 @@ from textblob import TextBlob
 from tqdm import tqdm
 
 from . import logging
+from ._read_raw_csv_files import read_raw_csv_files
+from ._read_records import read_all_records
 from .clean_institutions import clean_institutions
 from .clean_keywords import clean_keywords
 from .create_institutions_thesaurus import create_institutions_thesaurus
 from .create_keywords_thesaurus import create_keywords_thesaurus
 from .extract_country import extract_country
-from .read_raw_csv_files import read_raw_csv_files
 from .map_ import map_
-from .save_documents import save_documents
+
+
+def import_scopus_files(
+    directory="./",
+    use_nlp_phrases=False,
+    disable_progress_bar=False,
+):
+    _create_documents_csv_file(directory, disable_progress_bar)
+    _create_abstracts_csv_file(directory)
+    _create_stopwords_file(directory)
+    _create_filter_file(directory)
+    create_institutions_thesaurus(directory=directory)
+    create_keywords_thesaurus(
+        directory=directory,
+        use_nlp_phrases=use_nlp_phrases,
+    )
+    clean_institutions(directory=directory)
+    clean_keywords(directory=directory)
+    logging.info("Process finished!!!")
+
+
+def _create_filter_file(directory):
+
+    documents = read_all_records(directory)
+
+    filter_ = {}
+    filter_["first_year"] = int(documents.pub_year.min())
+    filter_["last_year"] = int(documents.pub_year.max())
+    filter_["min_citations"] = 0
+    filter_["max_citations"] = int(documents.global_citations.max())
+    filter_["bradford"] = 3
+
+    document_types = documents.document_type.dropna().unique()
+    for document_type in document_types:
+        document_type = document_type.lower()
+        document_type = document_type.replace(" ", "_")
+        filter_[str(document_type)] = True
+
+    yaml_filename = os.path.join(directory, "processed", "filter.yaml")
+    with open(yaml_filename, "wt", encoding="utf-8") as yaml_file:
+        yaml.dump(filter_, yaml_file, sort_keys=True)
+
+
+def _create_stopwords_file(directory):
+    open(
+        os.path.join(directory, "processed", "stopwords.txt"),
+        "a",
+        encoding="utf-8",
+    ).close()
+
+
+def _create_abstracts_csv_file(directory):
+
+    documents = read_all_records(directory)
+
+    if "abstract" in documents.columns:
+
+        abstracts = documents[
+            ["record_no", "abstract", "global_citations", "document_id"]
+        ].copy()
+        abstracts = abstracts.rename(columns={"abstract": "phrase"})
+        abstracts = abstracts.dropna()
+        abstracts = abstracts.assign(phrase=abstracts.phrase.str.replace(";", "."))
+        abstracts = abstracts.assign(phrase=abstracts.phrase.map(sent_tokenize))
+        abstracts = abstracts.explode("phrase")
+        abstracts = abstracts.assign(phrase=abstracts.phrase.str.strip())
+        abstracts = abstracts[abstracts.phrase.str.len() > 0]
+        abstracts = abstracts.assign(
+            line_no=abstracts.groupby(["record_no"]).cumcount()
+        )
+
+        abstracts = abstracts[
+            ["record_no", "line_no", "phrase", "global_citations", "document_id"]
+        ]
+
+        file_name = os.path.join(directory, "processed", "abstracts.csv")
+        abstracts.to_csv(file_name, index=False)
+        logging.info(f"Main abstract texts saved to {file_name}")
+
+    else:
+
+        logging.info(f"`abstract` column not found in  `processed/documents.csv` file")
+
+
+def _create_documents_csv_file(directory, disable_progress_bar):
+    documents = read_raw_csv_files(os.path.join(directory, "raw", "documents"))
+    documents = _delete_null_columns(documents)
+    documents = _delete_and_rename_columns(documents)
+    documents = _process_abstract_column(documents)
+    documents = _process_document_title_column(documents)
+    documents = _remove_accents(documents)
+    documents = _process_authors_id_column(documents)
+    documents = _process_raw_authors_names_column(documents)
+    documents = _disambiguate_authors(documents)
+    documents = _process_doi_column(documents)
+    documents = _process_source_name_column(documents)
+    documents = _process_iso_source_name_column(documents)
+    documents = _search_for_new_iso_source_name(documents)
+    documents = _complete_iso_source_name_colum(documents)
+    documents = _repair_iso_source_names_column(documents)
+    documents = _create_record_no(documents)
+    documents = _create_document_id(documents)
+    documents = _process_document_type_column(documents)
+    documents = _process_affiliations_column(documents)
+    documents = _process_author_keywords_column(documents)
+    documents = _process_index_keywords_column(documents)
+    documents = _create_keywords_column(documents)
+    documents = _create_nlp_phrases_column(documents)
+    documents = _process_global_citations_column(documents)
+    documents = _process_global_references_column(documents)
+    documents = _process_eissn_column(documents)
+    documents = _process_issn_column(documents)
+    documents = documents.assign(local_references=[[] for _ in range(len(documents))])
+    documents = _create_local_references_using_doi(
+        documents, disable_progress_bar=disable_progress_bar
+    )
+    documents = _create_local_references_using_title(
+        documents, disable_progress_bar=disable_progress_bar
+    )
+    documents = _consolidate_local_references(documents)
+    documents = _compute_local_citations(documents)
+    documents = _compute_bradford_law_zones(documents)
+
+    documents.to_csv(
+        os.path.join(directory, "processed", "documents.csv"),
+        sep=",",
+        encoding="utf-8",
+        index=False,
+    )
 
 
 def _check_nlp_phrase(phrase):
@@ -117,84 +234,6 @@ def _check_nlp_phrase(phrase):
         return False
 
     return True
-
-
-def import_scopus_files(
-    directory="./",
-    use_nlp_phrases=False,
-    disable_progress_bar=False,
-):
-    documents = read_raw_csv_files(os.path.join(directory, "raw", "documents"))
-    documents = _process_documents(documents, disable_progress_bar)
-    _create_abstracts_csv(documents, directory)
-    save_documents(documents, directory)
-
-    _create_stopwords_file(directory)
-    _update_filter_file(documents, directory)
-    logging.info("Post-processing docuemnts ...")
-
-    create_institutions_thesaurus(directory=directory)
-    create_keywords_thesaurus(
-        directory=directory,
-        use_nlp_phrases=use_nlp_phrases,
-    )
-    clean_institutions(directory=directory)
-    clean_keywords(directory=directory)
-    # -----------------------------------------------------------------------------------
-    logging.info("Process finished!!!")
-
-
-def _create_stopwords_file(directory):
-    open(
-        os.path.join(directory, "processed", "stopwords.txt"),
-        "a",
-        encoding="utf-8",
-    ).close()
-
-
-#
-#
-#
-def _process_documents(documents, disable_progress_bar):
-    documents = _delete_null_columns(documents)
-    documents = _delete_and_rename_columns(documents)
-    documents = _process_abstract_column(documents)
-    documents = _process_document_title_column(documents)
-    documents = _remove_accents(documents)
-    documents = _process_authors_id_column(documents)
-    documents = _process_raw_authors_names_column(documents)
-    documents = _disambiguate_authors(documents)
-    documents = _process_doi_column(documents)
-    documents = _process_source_name_column(documents)
-    documents = _process_iso_source_name_column(documents)
-    documents = _search_for_new_iso_source_name(documents)
-    documents = _complete_iso_source_name_colum(documents)
-    documents = _repair_iso_source_names_column(documents)
-    documents = _create_record_no(documents)
-    documents = _create_document_id(documents)
-    documents = _process_document_type_columns(documents)
-    documents = _process_affiliations_column(documents)
-    documents = _process_author_keywords_column(documents)
-    documents = _process_index_keywords_column(documents)
-    documents = _create_keywords_column(documents)
-    documents = _create_nlp_phrases_column(documents)
-    documents = _process_global_citations_column(documents)
-    documents = _process_global_references_column(documents)
-    documents = _process_eissn_column(documents)
-    documents = _process_issn_column(documents)
-    documents = _compute_bradford_law_zones(documents)
-    # -----------------------------------------------------------------------------------
-    documents = documents.assign(local_references=[[] for _ in range(len(documents))])
-    documents = _create_local_references_using_doi(
-        documents, disable_progress_bar=disable_progress_bar
-    )
-    documents = _create_local_references_using_title(
-        documents, disable_progress_bar=disable_progress_bar
-    )
-    documents = _consolidate_local_references(documents)
-    documents = _compute_local_citations(documents)
-    documents = _compute_bradford_law_zones(documents)
-    return documents
 
 
 # -----< Dataset Trasformations >----------------------------------------------
@@ -249,7 +288,7 @@ def _remove_accents(documents):
 # -----< Isolated Column Processing >------------------------------------------
 
 
-def _process_document_type_columns(documents):
+def _process_document_type_column(documents):
     if "document_type" in documents.columns:
         documents = documents.copy()
         documents["document_type"] = documents.document_type.str.replace(" ", "_")
@@ -851,27 +890,6 @@ def _disambiguate_authors(documents):
     return documents
 
 
-def _update_filter_file(documents, directory):
-
-    yaml_filename = os.path.join(directory, "processed", "filter.yaml")
-
-    filter_ = {}
-    filter_["first_year"] = int(documents.pub_year.min())
-    filter_["last_year"] = int(documents.pub_year.max())
-    filter_["min_citations"] = 0
-    filter_["max_citations"] = int(documents.global_citations.max())
-    filter_["bradford"] = 3
-
-    document_types = documents.document_type.dropna().unique()
-    for document_type in document_types:
-        document_type = document_type.lower()
-        document_type = document_type.replace(" ", "_")
-        filter_[str(document_type)] = True
-
-    with open(yaml_filename, "wt", encoding="utf-8") as yaml_file:
-        yaml.dump(filter_, yaml_file, sort_keys=True)
-
-
 def _create_document_id(documents):
 
     wos_ref = documents.authors.map(
@@ -886,34 +904,6 @@ def _create_document_id(documents):
     wos_ref = wos_ref + ", " + documents.iso_source_name
     documents["document_id"] = wos_ref.copy()
     return documents
-
-
-def _create_abstracts_csv(documents, directory):
-
-    if "abstract" in documents.columns:
-
-        # split phrases
-        abstracts = documents[
-            ["record_no", "abstract", "global_citations", "document_id"]
-        ].copy()
-        abstracts = abstracts.rename(columns={"abstract": "text"})
-        abstracts = abstracts.dropna()
-        abstracts = abstracts.assign(text=abstracts.text.str.replace(";", "."))
-        abstracts = abstracts.assign(text=abstracts.text.map(sent_tokenize))
-        abstracts = abstracts.explode("text")
-        abstracts = abstracts.assign(text=abstracts.text.str.strip())
-        abstracts = abstracts[abstracts.text.str.len() > 0]
-        abstracts = abstracts.assign(
-            line_no=abstracts.groupby(["record_no"]).cumcount()
-        )
-
-        abstracts = abstracts[
-            ["record_no", "line_no", "text", "global_citations", "document_id"]
-        ]
-        # save to disk
-        file_name = os.path.join(directory, "processed", "abstracts.csv")
-        abstracts.to_csv(file_name, index=False)
-        logging.info(f"Main abstract texts saved to {file_name}")
 
 
 def _make_documents(scopus, cited_by, references):
