@@ -1,3 +1,4 @@
+"""Init module for techminer2."""
 from .abstract_concordances import abstract_concordances
 from .abstract_screening import abstract_screening
 from .abstract_summarization import abstract_summarization
