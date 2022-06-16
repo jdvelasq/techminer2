@@ -24,6 +24,8 @@ import numpy as np
 from tqdm import tqdm
 
 from . import logging
+from ._read_raw_csv_files import read_raw_csv_files
+from ._read_records import read_all_records
 from .import_scopus_files import (
     _complete_iso_source_name_colum,
     _create_document_id,
@@ -38,8 +40,6 @@ from .import_scopus_files import (
     _repair_iso_source_names_column,
     _search_for_new_iso_source_name,
 )
-from .load_all_documents import load_all_documents
-from .read_raw_csv_files import read_raw_csv_files
 
 
 def _create_references_file(
@@ -180,7 +180,7 @@ def import_references(directory="./", disable_progress_bar=False):
 
     """
 
-    documents = load_all_documents(directory)
+    documents = read_all_records(directory)
     #
     references = read_raw_csv_files(join(directory, "raw", "references"))
     references = _delete_and_rename_columns(references)
