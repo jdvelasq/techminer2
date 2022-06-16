@@ -69,7 +69,7 @@ from .clean_keywords import clean_keywords
 from .create_institutions_thesaurus import create_institutions_thesaurus
 from .create_keywords_thesaurus import create_keywords_thesaurus
 from .extract_country import extract_country
-from .load_raw_csv_files import load_raw_csv_files
+from .read_raw_csv_files import read_raw_csv_files
 from .map_ import map_
 from .save_documents import save_documents
 
@@ -124,7 +124,7 @@ def import_scopus_files(
     use_nlp_phrases=False,
     disable_progress_bar=False,
 ):
-    documents = load_raw_csv_files(os.path.join(directory, "raw", "documents"))
+    documents = read_raw_csv_files(os.path.join(directory, "raw", "documents"))
     documents = _process_documents(documents, disable_progress_bar)
     _create_abstracts_csv(documents, directory)
     save_documents(documents, directory)
