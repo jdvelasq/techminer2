@@ -26,7 +26,7 @@ rn                                                          ...
 import pandas as pd
 
 from .coupling_matrix import coupling_matrix
-from .load_all_documents import load_all_documents
+from ._read_records import read_all_records
 from .network import network
 from .network_communities import network_communities
 
