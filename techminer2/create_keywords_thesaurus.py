@@ -3,7 +3,7 @@ import os
 import pandas as pd
 
 from . import logging
-from .load_all_documents import load_all_documents
+from ._read_records import read_all_records
 from .thesaurus import Thesaurus, read_textfile, text_clustering
 
 
@@ -15,7 +15,7 @@ def create_keywords_thesaurus(directory, use_nlp_phrases=False):
     logging.info("Creating keywords thesaurus ...")
 
     # --------------------------------------------------------------------------
-    data = load_all_documents(directory)
+    data = read_all_records(directory)
     # --------------------------------------------------------------------------
 
     words_list = []
