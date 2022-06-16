@@ -20,7 +20,7 @@ import os
 import os.path
 
 from . import logging
-from .load_all_documents import load_all_documents
+from ._read_records import read_all_records
 from .map_ import map_
 from .save_documents import save_documents
 from .thesaurus import read_textfile
@@ -37,7 +37,7 @@ def clean_institutions(directory):
 
     # --------------------------------------------------------------------------
     # Loads documents.csv
-    documents = load_all_documents(directory)
+    documents = read_all_records(directory)
 
     #
     # Loads the thesaurus
