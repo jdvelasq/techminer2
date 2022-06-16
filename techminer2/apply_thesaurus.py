@@ -5,9 +5,9 @@ Apply Thesaurus
 
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
->>> create_thesaurus( 
-...     column="author_keywords", 
-...     thesaurus_file="test_thesaurus.txt", 
+>>> create_thesaurus(
+...     column="author_keywords",
+...     thesaurus_file="test_thesaurus.txt",
 ...     sep="; ",
 ...     directory=directory,
 ... )
