@@ -21,7 +21,7 @@ import matplotlib.ticker as tick
 import pandas as pd
 from matplotlib.ticker import MaxNLocator
 
-from techminer2.load_all_documents import load_all_documents
+from techminer2._read_records import read_all_records
 
 
 def _yaxis_format(y_value, y_position):
@@ -38,7 +38,7 @@ def rpys(
 ):
 
     references = pd.read_csv(
-        join(directory, "references.csv"), sep=",", encoding="utf-8"
+        join(directory, "processed", "references.csv"), sep=",", encoding="utf-8"
     )
     references = references["pub_year"]
     references = references.dropna()
@@ -46,7 +46,7 @@ def rpys(
     max_year = references.index.max()
     min_year = references.index.min()
 
-    documents = load_all_documents(directory)
+    documents = read_all_records(directory)
     documents = documents["pub_year"]
     documents = documents.dropna()
     max_year = max(max_year, documents.max())

@@ -18,14 +18,14 @@ Computes coverage of terms in a column discarding stopwords.
 4       12                164  66.13 %              7
 5       11                166  66.94 %              8
 6        8                174  70.16 %             13
-7        7                174  70.16 %             17
-8        6                177  71.37 %             24
-9        5                179  72.18 %             29
+7        7                174  70.16 %             16
+8        6                177  71.37 %             23
+9        5                179  72.18 %             28
 
 """
 
 from . import logging
-from .load_filtered_documents import load_filtered_documents
+from ._read_records import read_filtered_records
 from .load_stopwords import load_stopwords
 
 

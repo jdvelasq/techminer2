@@ -11,7 +11,7 @@ Coupling Network / Communities
 ...     top_n=20,
 ...     directory=directory,
 ... ).head()
-cluster                                            CLUST_0  ...                            CLUST_3
+cluster                                              CL_00  ...                              CL_03
 rn                                                          ...                                   
 0               Gabor D et al, 2017, NEW POLIT ECON 146:15  ...  Hu Z et al, 2019, SYMMETRY 044:14
 1             Leong C et al, 2017, INT J INF MANAGE 101:16  ...                                   
@@ -26,7 +26,7 @@ rn                                                          ...
 import pandas as pd
 
 from .coupling_matrix import coupling_matrix
-from .load_all_documents import load_all_documents
+from ._read_records import read_all_records
 from .network import network
 from .network_communities import network_communities
 

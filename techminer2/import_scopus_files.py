@@ -1,37 +1,36 @@
 """
-Importing Scopus Files
+Import Scopus Files
 ===============================================================================
 
 Import a scopus file to a working directory.
 
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
->>> import_scopus_file(directory, disable_progress_bar=True)
-- INFO - 248 raw records found in /workspaces/techminer2/data/raw-documents.csv.
-- INFO - Main abstract texts saved to /workspaces/techminer2/data/abstracts.csv
-- INFO - Computing Bradford Law Zones ...
+>>> import_scopus_files(directory, disable_progress_bar=True)
+- INFO - 248 raw records found in /workspaces/techminer2/data/raw/documents.
 - INFO - Searching local references using DOI ...
 - INFO - Searching local references using document titles ...
 - INFO - Consolidating local references ...
 - INFO - Computing local citations ...
 - INFO - Computing Bradford Law Zones ...
-- INFO - Documents saved/merged to '/workspaces/techminer2/data/documents.csv'
-- INFO - Post-processing docuemnts ...
+- INFO - Main abstract texts saved to /workspaces/techminer2/data/processed/abstracts.csv
 - INFO - Creating institutions thesaurus ...
+- INFO - Affiliations without country detected - check file /workspaces/techminer2/data/processed/ignored_affiliations.txt
 - INFO - Affiliations without country detected - check file /workspaces/techminer2/data/ignored_affiliations.txt
-- INFO - Affiliations without country detected - check file /workspaces/techminer2/data/ignored_affiliations.txt
-- INFO - Thesaurus file '/workspaces/techminer2/data/institutions.txt' created.
+- INFO - Thesaurus file '/workspaces/techminer2/data/processed/institutions.txt' created.
 - INFO - Creating keywords thesaurus ...
-- INFO - Thesaurus file '/workspaces/techminer2/data/keywords.txt' created.
+- INFO - Thesaurus file '/workspaces/techminer2/data/processed/keywords.txt' created.
 - INFO - Applying thesaurus to institutions ...
 - INFO - Extract and cleaning institutions.
 - INFO - Extracting institution of first author ...
+- INFO - Documents saved/merged to '/workspaces/techminer2/data/processed/documents.csv'
 - INFO - The thesaurus was applied to institutions.
 - INFO - Applying thesaurus to 'raw_author_keywords' column ...
 - INFO - Applying thesaurus to 'raw_index_keywords' column...
 - INFO - Applying thesaurus to 'raw_nlp_document_title' column...
 - INFO - Applying thesaurus to 'raw_nlp_abstract' column...
 - INFO - Applying thesaurus to 'raw_nlp_phrases' column...
+- INFO - Documents saved/merged to '/workspaces/techminer2/data/processed/documents.csv'
 - INFO - The thesaurus was applied to all keywords.
 - INFO - Process finished!!!
 
@@ -39,18 +38,11 @@ Import a scopus file to a working directory.
 """
 
 
-# pyltin: disable=e1101
-# pylint: disable=no-member
-# pylint: disable=unsupported-assignment-operation
-# pylint: disable=unsubscriptable-object
-# pylint: disable=too-many-instance-attributes
-# pylint: disable=missing-function-docstring
-# pylint: disable=consider-using-with
-
+import os
+import os.path
 
 # -----< NLP Phrases >----------------------------------------------
 import string
-from os.path import dirname, isfile, join
 
 import numpy as np
 import pandas as pd
@@ -60,12 +52,151 @@ from textblob import TextBlob
 from tqdm import tqdm
 
 from . import logging
+from ._read_raw_csv_files import read_raw_csv_files
+from ._read_records import read_all_records
 from .clean_institutions import clean_institutions
 from .clean_keywords import clean_keywords
 from .create_institutions_thesaurus import create_institutions_thesaurus
 from .create_keywords_thesaurus import create_keywords_thesaurus
 from .extract_country import extract_country
 from .map_ import map_
+
+
+def import_scopus_files(
+    directory="./",
+    use_nlp_phrases=False,
+    disable_progress_bar=False,
+):
+    _check_output_folders(directory)
+    _create_documents_csv_file(directory, disable_progress_bar)
+    _create_abstracts_csv_file(directory)
+    _create_stopwords_file(directory)
+    _create_filter_file(directory)
+    create_institutions_thesaurus(directory=directory)
+    create_keywords_thesaurus(
+        directory=directory,
+        use_nlp_phrases=use_nlp_phrases,
+    )
+    clean_institutions(directory=directory)
+    clean_keywords(directory=directory)
+    logging.info("Process finished!!!")
+
+
+def _check_output_folders(directory):
+    if not os.path.exists(os.path.join(directory, "processed")):
+        os.makedirs(os.path.join(directory, "processed"))
+    if not os.path.exists(os.path.join(directory, "reports")):
+        os.makedirs(os.path.join(directory, "reports"))
+
+
+def _create_filter_file(directory):
+
+    documents = read_all_records(directory)
+
+    filter_ = {}
+    filter_["first_year"] = int(documents.pub_year.min())
+    filter_["last_year"] = int(documents.pub_year.max())
+    filter_["min_citations"] = 0
+    filter_["max_citations"] = int(documents.global_citations.max())
+    filter_["bradford"] = 3
+
+    document_types = documents.document_type.dropna().unique()
+    for document_type in document_types:
+        document_type = document_type.lower()
+        document_type = document_type.replace(" ", "_")
+        filter_[str(document_type)] = True
+
+    yaml_filename = os.path.join(directory, "processed", "filter.yaml")
+    with open(yaml_filename, "wt", encoding="utf-8") as yaml_file:
+        yaml.dump(filter_, yaml_file, sort_keys=True)
+
+
+def _create_stopwords_file(directory):
+    open(
+        os.path.join(directory, "processed", "stopwords.txt"),
+        "a",
+        encoding="utf-8",
+    ).close()
+
+
+def _create_abstracts_csv_file(directory):
+
+    documents = read_all_records(directory)
+
+    if "abstract" in documents.columns:
+
+        abstracts = documents[
+            ["record_no", "abstract", "global_citations", "document_id"]
+        ].copy()
+        abstracts = abstracts.rename(columns={"abstract": "phrase"})
+        abstracts = abstracts.dropna()
+        abstracts = abstracts.assign(phrase=abstracts.phrase.str.replace(";", "."))
+        abstracts = abstracts.assign(phrase=abstracts.phrase.map(sent_tokenize))
+        abstracts = abstracts.explode("phrase")
+        abstracts = abstracts.assign(phrase=abstracts.phrase.str.strip())
+        abstracts = abstracts[abstracts.phrase.str.len() > 0]
+        abstracts = abstracts.assign(
+            line_no=abstracts.groupby(["record_no"]).cumcount()
+        )
+
+        abstracts = abstracts[
+            ["record_no", "line_no", "phrase", "global_citations", "document_id"]
+        ]
+
+        file_name = os.path.join(directory, "processed", "abstracts.csv")
+        abstracts.to_csv(file_name, index=False)
+        logging.info(f"Main abstract texts saved to {file_name}")
+
+    else:
+
+        logging.info(f"`abstract` column not found in  `processed/documents.csv` file")
+
+
+def _create_documents_csv_file(directory, disable_progress_bar):
+    documents = read_raw_csv_files(os.path.join(directory, "raw", "documents"))
+    documents = documents.dropna(axis=1, how="all")
+    documents = _delete_and_rename_columns(documents)
+    documents = _process__abstract__column(documents)
+    documents = _process__document_title__column(documents)
+    documents = _remove_accents(documents)
+    documents = _process__authors_id__column(documents)
+    documents = _process__raw_authors_names__column(documents)
+    documents = _disambiguate_authors(documents)
+    documents = _process__doi__column(documents)
+    documents = _process__source_name__column(documents)
+    documents = _process__iso_source_name__column(documents)
+    documents = _search_for_new_iso_source_name(documents)
+    documents = _complete__iso_source_name__colum(documents)
+    documents = _repair__iso_source_name__column(documents)
+    documents = _create__record_no__column(documents)
+    documents = _create__document_id__column(documents)
+    documents = _process__document_type__column(documents)
+    documents = _process__affiliations__column(documents)
+    documents = _process__author_keywords__column(documents)
+    documents = _process__index_keywords__column(documents)
+    documents = _create__keywords__column(documents)
+    documents = _create__nlp_phrases__column(documents)
+    documents = _process__global_citations__column(documents)
+    documents = _process__global_references__column(documents)
+    documents = _process__eissn__column(documents)
+    documents = _process__issn__column(documents)
+    documents = documents.assign(local_references=[[] for _ in range(len(documents))])
+    documents = _create_local_references_using_doi(
+        documents, disable_progress_bar=disable_progress_bar
+    )
+    documents = _create_local_references_using_title(
+        documents, disable_progress_bar=disable_progress_bar
+    )
+    documents = _consolidate_local_references(documents)
+    documents = _compute_local_citations(documents)
+    documents = _compute_bradford_law_zones(documents)
+
+    documents.to_csv(
+        os.path.join(directory, "processed", "documents.csv"),
+        sep=",",
+        encoding="utf-8",
+        index=False,
+    )
 
 
 def _check_nlp_phrase(phrase):
@@ -114,22 +245,11 @@ def _check_nlp_phrase(phrase):
 
 
 # -----< Dataset Trasformations >----------------------------------------------
-
-
-def _delete_null_columns(documents):
-    columns_to_delete = []
-    for column in documents.columns:
-        if sum(documents[column].notnull()) == 0:
-            columns_to_delete.append(column)
-    if len(columns_to_delete) > 0:
-        documents = documents.drop(columns=columns_to_delete)
-    return documents
-
-
 def _delete_and_rename_columns(documents):
     documents = documents.copy()
-    module_path = dirname(__file__)
-    file_path = join(module_path, "files/scopus2tags.csv")
+
+    module_path = os.path.dirname(__file__)
+    file_path = os.path.join(module_path, "files/scopus2tags.csv")
 
     columns_to_tags = {}
     columns_to_delete = []
@@ -153,15 +273,6 @@ def _delete_and_rename_columns(documents):
 def _remove_accents(documents):
     documents = documents.copy()
     cols = documents.select_dtypes(include=[np.object]).columns
-    # for col in cols:
-    #     documents[col] = (
-    #         documents[col]
-    #         .astype(str)
-    #         .str.normalize("NFKD")
-    #         .str.encode("ascii", errors="ignore")
-    #         .str.decode("utf-8")
-    #     )
-
     documents[cols] = documents[cols].apply(
         lambda x: x.str.normalize("NFKD")
         .str.encode("ascii", errors="ignore")
@@ -174,7 +285,7 @@ def _remove_accents(documents):
 # -----< Isolated Column Processing >------------------------------------------
 
 
-def _process_document_type_columns(documents):
+def _process__document_type__column(documents):
     if "document_type" in documents.columns:
         documents = documents.copy()
         documents["document_type"] = documents.document_type.str.replace(" ", "_")
@@ -182,11 +293,11 @@ def _process_document_type_columns(documents):
     return documents
 
 
-def _process_abstract_column(documents):
+def _process__abstract__column(documents):
     if "abstract" in documents.columns:
         # ---------------------------------------------------------------------
-        module_path = dirname(__file__)
-        file_path = join(module_path, "files/nlp_phrases.txt")
+        module_path = os.path.dirname(__file__)
+        file_path = os.path.join(module_path, "files/nlp_phrases.txt")
         with open(file_path, "r", encoding="utf-8") as file:
             nlp_stopwords = [line.strip() for line in file]
         # ---------------------------------------------------------------------
@@ -215,7 +326,7 @@ def _process_abstract_column(documents):
     return documents
 
 
-def _process_affiliations_column(documents):
+def _process__affiliations__column(documents):
     if "affiliations" in documents.columns:
         documents = documents.copy()
         documents["countries"] = map_(documents, "affiliations", extract_country)
@@ -228,14 +339,14 @@ def _process_affiliations_column(documents):
     return documents
 
 
-def _process_author_keywords_column(documents):
+def _process__author_keywords__column(documents):
     if "raw_author_keywords" in documents.columns:
         documents = documents.copy()
         documents.raw_author_keywords = documents.raw_author_keywords.str.lower()
     return documents
 
 
-def _process_authors_id_column(documents):
+def _process__authors_id__column(documents):
     documents = documents.copy()
     documents["authors_id"] = documents.authors_id.map(
         lambda w: pd.NA if w == "[No author id available]" else w
@@ -246,14 +357,14 @@ def _process_authors_id_column(documents):
     return documents
 
 
-def _process_document_title_column(documents):
+def _process__document_title__column(documents):
     documents = documents.copy()
     documents.document_title = documents.document_title.map(
         lambda x: x[0 : x.find("[")] if pd.isna(x) is False and x[-1] == "]" else x
     )
     # ---------------------------------------------------------------------
-    module_path = dirname(__file__)
-    file_path = join(module_path, "files/nlp_phrases.txt")
+    module_path = os.path.dirname(__file__)
+    file_path = os.path.join(module_path, "files/nlp_phrases.txt")
     with open(file_path, "r", encoding="utf-8") as file:
         nlp_stopwords = [line.strip() for line in file]
     # ---------------------------------------------------------------------
@@ -273,14 +384,14 @@ def _process_document_title_column(documents):
     return documents
 
 
-def _process_doi_column(documents):
+def _process__doi__column(documents):
     if "doi" in documents.columns:
         documents = documents.copy()
         documents.doi = documents.doi.str.upper()
     return documents
 
 
-def _process_eissn_column(documents):
+def _process__eissn__column(documents):
     if "eissn" in documents.columns:
         documents = documents.copy()
         documents.eissn = documents.eissn.str.replace("-", "", regex=True)
@@ -288,14 +399,14 @@ def _process_eissn_column(documents):
     return documents
 
 
-def _process_global_citations_column(documents):
+def _process__global_citations__column(documents):
     documents = documents.copy()
     documents.global_citations = documents.global_citations.fillna(0)
     documents.global_citations = documents.global_citations.astype(int)
     return documents
 
 
-def _process_global_references_column(documents):
+def _process__global_references__column(documents):
     if "global_references" in documents.columns:
         documents = documents.copy()
         documents["global_references"] = documents.global_references.map(
@@ -310,14 +421,14 @@ def _process_global_references_column(documents):
     return documents
 
 
-def _process_index_keywords_column(documents):
+def _process__index_keywords__column(documents):
     if "raw_index_keywords" in documents.columns:
         documents = documents.copy()
         documents.raw_index_keywords = documents.raw_index_keywords.str.lower()
     return documents
 
 
-def _create_keywords_column(documents):
+def _create__keywords__column(documents):
     # -----------------------------------------------------------------------------------
     def augment_list(documents, topics):
         documents = documents.copy()
@@ -355,7 +466,7 @@ def _create_keywords_column(documents):
     return documents
 
 
-def _create_nlp_phrases_column(documents):
+def _create__nlp_phrases__column(documents):
     # -----------------------------------------------------------------------------------
     def augment_list(documents, topics):
         documents = documents.copy()
@@ -403,7 +514,7 @@ def _create_nlp_phrases_column(documents):
     return documents
 
 
-def _process_iso_source_name_column(documents):
+def _process__iso_source_name__column(documents):
     if "iso_source_name" in documents.columns:
         documents = documents.copy()
         documents.iso_source_name = documents.iso_source_name.str.upper()
@@ -437,8 +548,8 @@ def _search_for_new_iso_source_name(documents):
         current_iso_names = current_iso_names.drop_duplicates("source_name")
 
         # adds the abbreviations the the current file
-        module_path = dirname(__file__)
-        file_path = join(module_path, "files/iso_source_names.csv")
+        module_path = os.path.dirname(__file__)
+        file_path = os.path.join(module_path, "files/iso_source_names.csv")
         pdf = pd.read_csv(file_path, sep=",")
         pdf = pd.concat([pdf, current_iso_names])
         pdf = pdf.sort_values(by=["source_name", "iso_source_name"])
@@ -447,15 +558,15 @@ def _search_for_new_iso_source_name(documents):
     return documents
 
 
-def _complete_iso_source_name_colum(documents):
+def _complete__iso_source_name__colum(documents):
 
     if "iso_source_name" in documents.columns:
         #
         # Loads existent iso source names and make a dictionary
         # to translate source names to iso source names
         #
-        module_path = dirname(__file__)
-        file_path = join(module_path, "files/iso_source_names.csv")
+        module_path = os.path.dirname(__file__)
+        file_path = os.path.join(module_path, "files/iso_source_names.csv")
         pdf = pd.read_csv(file_path, sep=",")
         existent_names = dict(zip(pdf.source_name, pdf.iso_source_name))
 
@@ -470,7 +581,7 @@ def _complete_iso_source_name_colum(documents):
     return documents
 
 
-def _repair_iso_source_names_column(documents):
+def _repair__iso_source_name__column(documents):
     if "iso_source_name" in documents.columns:
         documents = documents.copy()
         documents.iso_source_name = [
@@ -485,7 +596,7 @@ def _repair_iso_source_names_column(documents):
     return documents
 
 
-def _process_issn_column(documents):
+def _process__issn__column(documents):
     if "issn" in documents.columns:
         documents = documents.copy()
         documents["issn"] = documents.issn.astype(str)
@@ -494,7 +605,7 @@ def _process_issn_column(documents):
     return documents
 
 
-def _process_raw_authors_names_column(documents):
+def _process__raw_authors_names__column(documents):
     documents = documents.copy()
     if "raw_authors_names" in documents.columns:
         documents.raw_authors_names = documents.raw_authors_names.map(
@@ -518,7 +629,7 @@ def _process_raw_authors_names_column(documents):
     return documents
 
 
-def _process_source_name_column(documents):
+def _process__source_name__column(documents):
     documents = documents.copy()
     if "source_name" in documents.columns:
         documents.source_name = documents.source_name.str.upper()
@@ -562,7 +673,7 @@ def _report_duplicate_titles(raw_data, directory):
         )
 
 
-def _create_record_no(documents):
+def _create__record_no__column(documents):
     documents = documents.copy()
     documents = documents.assign(
         record_no=documents.sort_values("global_citations", ascending=False)
@@ -776,28 +887,7 @@ def _disambiguate_authors(documents):
     return documents
 
 
-def _update_filter_file(documents, directory):
-
-    yaml_filename = join(directory, "filter.yaml")
-
-    filter_ = {}
-    filter_["first_year"] = int(documents.pub_year.min())
-    filter_["last_year"] = int(documents.pub_year.max())
-    filter_["min_citations"] = 0
-    filter_["max_citations"] = int(documents.global_citations.max())
-    filter_["bradford"] = 3
-
-    document_types = documents.document_type.dropna().unique()
-    for document_type in document_types:
-        document_type = document_type.lower()
-        document_type = document_type.replace(" ", "_")
-        filter_[str(document_type)] = True
-
-    with open(yaml_filename, "wt", encoding="utf-8") as yaml_file:
-        yaml.dump(filter_, yaml_file, sort_keys=True)
-
-
-def _create_document_id(documents):
+def _create__document_id__column(documents):
 
     wos_ref = documents.authors.map(
         lambda x: x.split("; ")[0].strip() if not pd.isna(x) else "[anonymous]"
@@ -809,60 +899,8 @@ def _create_document_id(documents):
 
     wos_ref = wos_ref + ", " + documents.pub_year.map(str)
     wos_ref = wos_ref + ", " + documents.iso_source_name
-    # wos_ref = wos_ref + documents.volume.map(
-    #     lambda x: ", V" + str(x) if not pd.isna(x) else ""
-    # )
-    # wos_ref = wos_ref + documents.page_start.map(
-    #     lambda x: ", P" + str(x) if not pd.isna(x) else ""
-    # )
-    # wos_ref = wos_ref + documents.doi.map(
-    #     lambda x: ", DOI " + str(x) if not pd.isna(x) else ""
-    # )
     documents["document_id"] = wos_ref.copy()
     return documents
-
-
-def _create_abstracts_csv(documents, directory):
-
-    if "abstract" in documents.columns:
-
-        # split phrases
-        abstracts = documents[["record_no", "abstract"]].copy()
-        abstracts = abstracts.rename(columns={"abstract": "text"})
-        abstracts = abstracts.dropna()
-        abstracts = abstracts.assign(text=abstracts.text.str.replace(";", "."))
-        abstracts = abstracts.assign(text=abstracts.text.map(sent_tokenize))
-        abstracts = abstracts.explode("text")
-        abstracts = abstracts.assign(text=abstracts.text.str.strip())
-        abstracts = abstracts[abstracts.text.str.len() > 0]
-        abstracts = abstracts.assign(
-            line_no=abstracts.groupby(["record_no"]).cumcount()
-        )
-
-        abstracts = abstracts[
-            [
-                "record_no",
-                "line_no",
-                "text",
-            ]
-        ]
-        # save to disk
-        file_name = join(directory, "abstracts.csv")
-        abstracts.to_csv(file_name, index=False)
-        logging.info(f"Main abstract texts saved to {file_name}")
-
-
-def _load_raw_data_file(file_name):
-    if not isfile(file_name):
-        raise FileNotFoundError(f"File {file_name} not found")
-    pdf = pd.read_csv(
-        file_name,
-        encoding="utf-8",
-        error_bad_lines=False,
-        warn_bad_lines=True,
-    )
-    logging.info(f"{pdf.shape[0]} raw records found in {file_name}.")
-    return pdf
 
 
 def _make_documents(scopus, cited_by, references):
@@ -914,249 +952,3 @@ def _make_documents(scopus, cited_by, references):
     documents["references_group"] = documents.references_group.astype(bool)
 
     return documents
-
-
-#
-#
-#
-def import_scopus_file(
-    directory="./",
-    scopus_file="raw-documents.csv",
-    use_nlp_phrases=True,
-    disable_progress_bar=False,
-):
-    # ---< only scopus >-----------------------------------------------------------------
-    # cited_by = _load_raw_data_file(join(directory, "raw_cited_by.csv"))
-    # references = _load_raw_data_file(join(directory, "raw_references.csv"))
-    # documents = _make_documents(scopus, cited_by, references)
-    # -----------------------------------------------------------------------------------
-    documents = _load_raw_data_file(join(directory, scopus_file))
-    stopwords_file = join(directory, "stopwords.txt")
-    open(stopwords_file, "a", encoding="utf-8").close()
-    # -----------------------------------------------------------------------------------
-    documents = _delete_null_columns(documents)
-    documents = _delete_and_rename_columns(documents)
-    documents = _process_abstract_column(documents)
-    documents = _process_document_title_column(documents)
-    documents = _remove_accents(documents)
-    documents = _process_authors_id_column(documents)
-    documents = _process_raw_authors_names_column(documents)
-    documents = _disambiguate_authors(documents)
-    documents = _process_doi_column(documents)
-    documents = _process_source_name_column(documents)
-    documents = _process_iso_source_name_column(documents)
-    documents = _search_for_new_iso_source_name(documents)
-    documents = _complete_iso_source_name_colum(documents)
-    documents = _repair_iso_source_names_column(documents)
-    documents = _create_record_no(documents)
-    documents = _create_document_id(documents)
-    # -----------------------------------------------------------------------------------
-    _create_abstracts_csv(documents, directory)
-    # ----< only scopus >----------------------------------------------------------------
-    # _create_references_file(documents, directory)
-    # -----------------------------------------------------------------------------------
-    documents = _process_document_type_columns(documents)
-    documents = _process_affiliations_column(documents)
-    documents = _process_author_keywords_column(documents)
-    documents = _process_index_keywords_column(documents)
-    documents = _create_keywords_column(documents)
-    documents = _create_nlp_phrases_column(documents)
-    documents = _process_global_citations_column(documents)
-    documents = _process_global_references_column(documents)
-    documents = _process_eissn_column(documents)
-    documents = _process_issn_column(documents)
-    documents = _compute_bradford_law_zones(documents)
-    # -----------------------------------------------------------------------------------
-    # To remove
-    ### documents = _drop_duplicates(documents)
-    ###  _report_duplicate_titles(documents, directory)
-    # -----------------------------------------------------------------------------------
-    documents = documents.assign(local_references=[[] for _ in range(len(documents))])
-    documents = _create_local_references_using_doi(
-        documents, disable_progress_bar=disable_progress_bar
-    )
-    documents = _create_local_references_using_title(
-        documents, disable_progress_bar=disable_progress_bar
-    )
-    documents = _consolidate_local_references(documents)
-    documents = _compute_local_citations(documents)
-    # -----------------------------------------------------------------------------------
-    _update_filter_file(documents, directory)
-    documents = _compute_bradford_law_zones(documents)
-    filename = join(directory, "documents.csv")
-    documents.to_csv(filename, sep=",", encoding="utf-8", index=False)
-    logging.info(f"Documents saved/merged to '{filename}'")
-    # -----------------------------------------------------------------------------------
-    logging.info("Post-processing docuemnts ...")
-    create_institutions_thesaurus(directory=directory)
-    create_keywords_thesaurus(
-        directory=directory,
-        use_nlp_phrases=use_nlp_phrases,
-    )
-    clean_institutions(directory=directory)
-    clean_keywords(directory=directory)
-    # -----------------------------------------------------------------------------------
-    logging.info("Process finished!!!")
-
-
-# from tqdm import tqdm
-
-# def translate_british_to_amerian(self):
-#     """
-#     Translate british spelling to american spelling.
-
-#     """
-#     if "abstract" in self.raw_data.columns:
-#         logging.info("Transforming British to American ...")
-#         module_path = dirname(__file__)
-#         filename = join(module_path, "config/bg2am.txt")
-#         bg2am = load_file_as_dict(filename)
-#         with tqdm(total=len(bg2am.keys())) as pbar:
-
-#             for british_word, american_word in bg2am.items():
-#                 match = re.compile(f"\\b{british_word}\\b")
-#                 self.raw_data = self.raw_data.applymap(
-#                     lambda x: match.sub(american_word[0], x)
-#                     if isinstance(x, str)
-#                     else x
-#                 )
-#                 pbar.update(1)
-
-
-# class _WoSImporter(_BaseImporter):
-#     """
-#     Web of Science importer.
-
-#     """
-
-#     def __init__(self, file_path, file_type, directory):
-#         super().__init__(file_path, file_type, directory)
-#         self.tagsfile = "wos2tags.csv"
-
-#     def extract_data(self):
-#         """
-#         Imports data from a WoS text file.
-
-#         """
-
-#         def load_wosrecords():
-#             records = []
-#             record = {}
-#             key = None
-#             value = []
-#             with open(self.file_name, "rt", encoding="utf-8") as file:
-#                 for line in file:
-#                     line = line.replace("\n", "")
-#                     if line.strip() == "ER":
-#                         if len(record) > 0:
-#                             records.append(record)
-#                         record = {}
-#                         key = None
-#                         value = []
-#                     elif len(line) >= 2 and line[:2] == "  ":
-#                         line = line[2:]
-#                         line = line.strip()
-#                         value.append(line)
-
-#                     elif (
-#                         len(line) >= 2
-#                         and line[:2] != "  "
-#                         and line[:2] not in ["FN", "VR"]
-#                     ):
-#                         if key is not None:
-#                             record[key] = "; ".join(value)
-#                         key = line[:2].strip()
-#                         value = [line[2:].strip()]
-
-#             return records
-
-#         def wosrecords2df(wosrecords):
-#             pdf = pd.DataFrame()
-#             for record in wosrecords:
-#                 record = {key: [value] for key, value in record.items()}
-#                 row = pd.DataFrame(record)
-#                 pdf = pd.concat(
-#                     [pdf, row],
-#                     ignore_index=True,
-#                 )
-#             return pdf
-
-#         super().extract_data()
-#         self.raw_data = wosrecords2df(wosrecords=load_wosrecords())
-
-#     def format_authors(self):
-#         """
-
-#         Formats Authors into a common format.
-
-#         """
-#         if "authors" in self.raw_data.columns:
-#             self.raw_data.authors = self.raw_data.authors.str.replace(
-#                 ",", "", regex=True
-#             )
-
-
-# class _DimensionsImporter(_BaseImporter):
-#     def __init__(self, file_name, file_type, directory):
-#         super().__init__(file_name, file_type, directory)
-#         self.tags_file = "dimensions2tags.csv"
-
-#     def extract_data(self):
-#         """
-#         Imports data from a Dimensions CSV file.
-
-#         """
-#         self.raw_data = pd.read_csv(self.file_name, skiprows=1)
-
-#     def format_authors(self):
-#         """
-#         Formats Authors into a common format.
-
-#         """
-
-#         def format_authorslits(authorslist):
-
-#             authorslist = authorslist.split(";")
-#             authorslist = [author.strip() for author in authorslist]
-
-#             surnames = [
-#                 author.split(",")[0] if "," in author else author.split(" ")[0]
-#                 for author in authorslist
-#             ]
-#             names = [
-#                 author.split(",")[1] if "," in author else author.split(" ")[0]
-#                 for author in authorslist
-#             ]
-
-#             names = [name.strip() for name in names]
-#             names = [name.split() for name in names]
-#             names = [
-#                 [name_part[0] for name_part in name] for name in names if len(name) > 0
-#             ]
-#             names = ["".join(part_name) for name in names for part_name in name]
-
-#             authorslist = [
-#                 surname + " " + name for surname, name in zip(surnames, names)
-#             ]
-#             authorslist = "; ".join(authorslist)
-#             return authorslist
-
-#         if "authors" in self.raw_data.columns:
-#             self.raw_data.authors = self.raw_data.authors.apply(
-#                 lambda x: format_authorslits(x) if not pd.isnull(x) else None,
-#             )
-
-#             logging.info("Removing [Anonymous]")
-#             self.raw_data.authors = self.raw_data.authors.map(
-#                 lambda x: pd.NA if not pd.isna(x) and x == "[Anonymous]" else x
-#             )
-
-
-# def _create_import_object(file_name, file_type, directory):
-#     if file_type == "scopus":
-#         return _ScopusImporter(file_name, file_type, directory)
-#     if file_type == "wos":
-#         return _WoSImporter(file_name, file_type, directory)
-#     if file_type == "dimensions":
-#         return _DimensionsImporter(file_name, file_type, directory)
-#     raise NotImplementedError

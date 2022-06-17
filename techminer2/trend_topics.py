@@ -16,7 +16,7 @@ pub_year                num_documents  year_q1  ...  global_citations  rn
 author_keywords                                 ...                      
 fintech                           139     2016  ...              1285   0
 financial technologies             28     2016  ...               225   1
-innovating                         13     2016  ...               249   2
+innovation                         13     2016  ...               249   2
 bank                               13     2016  ...               193   3
 financial service                  11     2016  ...               300   4
 <BLANKLINE>

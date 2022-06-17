@@ -26,19 +26,22 @@ from os.path import join
 import numpy as np
 import pandas as pd
 
+from .load_references import load_references
 from .records2documents import records2documents
 
 
 def co_citation_matrix(top_n=50, directory="./"):
 
     # ---< obtains the most local cited references >-------------------------------------
-    references = pd.read_csv(join(directory, "references.csv"))
+    references = load_references(directory)
     references = references.sort_values("local_citations", ascending=False)
     record_no = references.record_no
     record_no = record_no.head(top_n)
 
     # ---< obtains the document-reference table >----------------------------------------
-    cited_references_table = pd.read_csv(join(directory, "cited_references_table.csv"))
+    cited_references_table = pd.read_csv(
+        join(directory, "processed", "cited_references_table.csv")
+    )
     cited_references_table = cited_references_table[
         cited_references_table.cited_id.isin(record_no)
     ]
@@ -92,7 +95,7 @@ def co_citation_matrix(top_n=50, directory="./"):
     co_occ_matrix = co_occ_matrix.loc[(co_occ_matrix != 0).any(axis=1), :]
 
     # ---< author, year refereces >------------------------------------------------------
-    documents = pd.read_csv(join(directory, "references.csv"))
+    documents = pd.read_csv(join(directory, "processed", "references.csv"))
     co_occ_matrix = records2documents(matrix=co_occ_matrix, documents=documents)
 
     return co_occ_matrix

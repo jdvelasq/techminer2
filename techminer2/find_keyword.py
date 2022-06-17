@@ -12,9 +12,6 @@ artificial intelligence
      artificial intelligence (ai)
 artificial intelligence systems
 artificial intelligence technologies
-     artificial intelligence technologies
-     artificial intelligence technology
-novel artificial intelligence
 
 
 """
@@ -36,7 +33,7 @@ def find_keyword(
 
     """
 
-    thesaurus_file = join(directory, "keywords.txt")
+    thesaurus_file = join(directory, "processed", "keywords.txt")
     if isfile(thesaurus_file):
         th = load_file_as_dict(thesaurus_file)
     else:

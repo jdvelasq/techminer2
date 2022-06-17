@@ -26,9 +26,9 @@ Extract and plot the top topics of the selected column.
                         before 2020  between 2020-2021
 fintech                          42                 97
 financial technologies           11                 17
+blockchain                        9                  8
 financial inclusion               4                 13
-block-chain                       9                  8
-innovating                        9                  4
+innovation                        9                  4
 
 
 """

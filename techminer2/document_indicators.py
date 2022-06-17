@@ -19,7 +19,7 @@ Al Nawayseh MK et al, 2020, J OPEN INNOV: TECHN...                10  ...       
 
 """
 
-from .load_filtered_documents import load_filtered_documents
+from ._read_records import read_filtered_records
 
 
 def document_indicators(directory="./"):

@@ -26,16 +26,16 @@ Searchs in the terms of a column using stemming
 Name: author_keywords, dtype: object
  
 >>> stemming_or(directory, "author_keywords", "business model").head(10)
-3        structural equation model
-23       structural equation model
-24                        modeling
-48         business sustainability
-48             small food business
-51            business environment
-51                  business model
-58     fintech predictive modeling
-66       structural equation model
-107         fintech business model
+3         structural equation modeling
+23     structural equation model (sem)
+24                            modeling
+48             business sustainability
+48               small food businesses
+51                business environment
+51                      business model
+58         fintech predictive modeling
+66        structural equation modeling
+107             fintech business model
 Name: author_keywords, dtype: object
 
 """
@@ -43,7 +43,7 @@ import string
 
 from nltk.stem import PorterStemmer, SnowballStemmer
 
-from .load_filtered_documents import load_filtered_documents
+from ._read_records import read_filtered_records
 
 
 def _stemming(directory, column, pattern, stemmer="porter", sep="; ", operator="AND"):

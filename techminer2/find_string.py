@@ -12,17 +12,17 @@ fintech-innovations                5
 fintech application                3
 fintech companies                  2
 fintech continuance intention      2
+fintech development                2
 fintech ecosystem                  2
 fintech platform                   2
 islamic fintech                    2
 characteristics of fintech         1
-cross-sector fintech               1
 Name: author_keywords, dtype: int64
 
 """
 
 
-from .load_filtered_documents import load_filtered_documents
+from ._read_records import read_filtered_records
 
 
 def find_string(

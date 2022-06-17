@@ -21,7 +21,6 @@ Young T et al, 2018, IEEE COMPUT INTELL MAG        1071             1           
 <BLANKLINE>
 [5 rows x 15 columns]
 
-
 >>> coupling_matrix(
 ...     column='author_keywords',
 ...     min_occ=3, 
@@ -32,10 +31,10 @@ document                                                                   Schue
 global_citations                                                                                              106  ...                                14 
 local_citations                                                                                                14  ...                                 0 
 document                                  global_citations local_citations                                         ...                                   
-Schueffel P et al, 2016, J INNOV MANAG    106              14                                                   4  ...                                  0
+Schueffel P et al, 2016, J INNOV MANAG    106              14                                                   5  ...                                  0
 Zavolokina L et al, 2016, FINANCIAL INNOV 43               7                                                    1  ...                                  0
 Hung J-L et al, 2016, FINANCIAL INNOV     24               4                                                    0  ...                                  0
-Kotarba M et al, 2016, FOUND MANAG        16               3                                                    0  ...                                  0
+Kotarba M et al, 2016, FOUND MANAG        16               3                                                    1  ...                                  0
 Gabor D et al, 2017, NEW POLIT ECON       146              15                                                   0  ...                                  0
 <BLANKLINE>
 [5 rows x 39 columns]
@@ -47,8 +46,7 @@ from os.path import join
 import numpy as np
 import pandas as pd
 
-from .load_all_documents import load_all_documents
-from .load_filtered_documents import load_filtered_documents
+from ._read_records import read_all_records, read_filtered_records
 from .records2documents import records2documents
 from .tf_matrix import tf_matrix
 
@@ -70,7 +68,7 @@ def coupling_matrix(
             metric=metric,
             directory=directory,
         )
-        documents = pd.read_csv(join(directory, "references.csv"))
+        documents = pd.read_csv(join(directory, "processed", "references.csv"))
 
     else:
         matrix = coupling_by_column_matrix_(
@@ -80,7 +78,7 @@ def coupling_matrix(
             metric=metric,
             directory=directory,
         )
-        documents = load_all_documents(directory=directory)
+        documents = read_all_records(directory=directory)
 
     matrix = records2documents(matrix=matrix, documents=documents)
     return matrix
@@ -101,7 +99,9 @@ def coupling_by_references_matrix_(
     record_no = documents.record_no.values.copy()
 
     # loads the cited references table
-    cited_references = pd.read_csv(join(directory, "cited_references_table.csv"))
+    cited_references = pd.read_csv(
+        join(directory, "processed", "cited_references_table.csv")
+    )
     cited_references = cited_references.loc[
         cited_references.citing_id.map(lambda x: x in record_no)
     ]

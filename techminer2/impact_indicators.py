@@ -27,7 +27,7 @@ Index(['num_documents', 'global_citations', 'first_pb_year', 'age', 'h_index',
 import numpy as np
 import pandas as pd
 
-from .load_filtered_documents import load_filtered_documents
+from ._read_records import read_filtered_records
 from .column_indicators import column_indicators
 
 

@@ -8,7 +8,7 @@ Co-occurrence Network / Strategic Diagram
 ...     'author_keywords',
 ...     min_occ=2,
 ...     directory=directory,
-... ).head()
+... )
 
 
 """

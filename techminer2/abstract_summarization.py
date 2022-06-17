@@ -46,6 +46,9 @@ import nltk
 import pandas as pd
 from nltk.stem import PorterStemmer
 
+from .load_abstracts import load_abstracts
+from ._read_records import read_filtered_records
+
 
 def abstract_summarization(
     texts=None,
@@ -57,9 +60,8 @@ def abstract_summarization(
     if isinstance(texts, str):
         texts = [texts]
 
-    file_name = os.path.join(directory, "abstracts.csv")
-    abstracts = pd.read_csv(file_name)
-    documents = pd.read_csv(os.path.join(directory, "documents.csv"))
+    abstracts = load_abstracts(directory)
+    documents = load_filtered_documents(directory)
 
     regex = r"\b(" + "|".join(texts) + r")\b"
 
@@ -118,7 +120,7 @@ def abstract_summarization(
         )
 
     with open(
-        os.path.join(directory, f"abstract_summarization{sufix}.txt"), "w"
+        os.path.join(directory, "reports", f"abstract_summarization{sufix}.txt"), "w"
     ) as out_file:
         for index, row in abstracts.iterrows():
             paragraph = textwrap.fill(

@@ -3,7 +3,7 @@ import os
 import pandas as pd
 
 from . import logging
-from .porter_stemmer import porter_stemmer
+from ._read_records import read_all_records
 from .thesaurus import Thesaurus, read_textfile, text_clustering
 
 
@@ -15,10 +15,7 @@ def create_keywords_thesaurus(directory, use_nlp_phrases=False):
     logging.info("Creating keywords thesaurus ...")
 
     # --------------------------------------------------------------------------
-    filename = os.path.join(directory, "documents.csv")
-    if not os.path.isfile(filename):
-        raise FileNotFoundError(f"The file '{filename}' does not exist.")
-    data = pd.read_csv(filename, sep=",", encoding="utf-8")
+    data = read_all_records(directory)
     # --------------------------------------------------------------------------
 
     words_list = []
@@ -58,7 +55,7 @@ def create_keywords_thesaurus(directory, use_nlp_phrases=False):
     # {palabra: clave_del_grupo}
     new_th = text_clustering(pd.Series(words_list)).to_dict()
 
-    thesaurus_file = os.path.join(directory, "keywords.txt")
+    thesaurus_file = os.path.join(directory, "processed", "keywords.txt")
     if os.path.isfile(thesaurus_file):
         old_th = read_textfile(thesaurus_file).to_dict()
         new_th = {**new_th, **old_th}

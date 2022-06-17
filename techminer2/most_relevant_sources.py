@@ -13,13 +13,13 @@ Most Relevant Sources
 
 
 >>> most_relevant_sources(directory=directory, plot=False).head()
-                               num_documents  global_citations  local_citations
-iso_source_name                                                                
-SUSTAINABILITY                            15                97               22
-FINANCIAL INNOV                           11               132               17
-J OPEN INNOV: TECHNOL MARK CO              8                35               15
-E3S WEB CONF                               7                 3                0
-FRONTIER ARTIF INTELL                      5                23                4
+iso_source_name
+SUSTAINABILITY                   15
+FINANCIAL INNOV                  11
+J OPEN INNOV: TECHNOL MARK CO     8
+E3S WEB CONF                      7
+FRONTIER ARTIF INTELL             5
+Name: num_documents, dtype: int64
 
 
 

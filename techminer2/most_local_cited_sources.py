@@ -47,7 +47,7 @@ def most_local_cited_sources(
 ):
 
     indicators = pd.read_csv(
-        join(directory, "references.csv"), sep=",", encoding="utf-8"
+        join(directory, "processed", "references.csv"), sep=",", encoding="utf-8"
     )
     indicators = indicators[["iso_source_name", "local_citations"]]
     indicators = indicators.groupby("iso_source_name").sum()

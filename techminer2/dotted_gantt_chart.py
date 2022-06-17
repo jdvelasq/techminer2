@@ -26,8 +26,8 @@ author_keywords
 fintech                    4     6    16    16    38    59
 financial technologies     1     0     6     4     5    12
 financial inclusion        0     2     0     2     3    10
-block-chain                0     2     3     4     2     6
-innovating                 2     1     3     3     3     1
+blockchain                 0     2     3     4     2     6
+innovation                 2     1     3     3     3     1
 
 
 """

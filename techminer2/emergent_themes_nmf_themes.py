@@ -16,12 +16,12 @@ Emergent Themes NMF / Themes
 ...     max_iter=200,
 ...     random_state=0,
 ... ).head()
-                 TH_0  ...                           TH_5
-0             fintech  ...            financial inclusion
-1            covid-19  ...                        regtech
-2      business model  ...  sustainable development goals
-3      perceived risk  ...            financial stability
-4  regulatory sandbox  ...                 sustainability
+             TH_0  ...                           TH_5
+0         fintech  ...            financial inclusion
+1        covid-19  ...                        regtech
+2  business model  ...  sustainable development goals
+3  perceived risk  ...            financial stability
+4         startup  ...                 sustainability
 <BLANKLINE>
 [5 rows x 6 columns]
 

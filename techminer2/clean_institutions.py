@@ -2,7 +2,7 @@
 Clean Institutions
 ===============================================================================
 
-Cleans the institutions columns using the file institutions.txt, located in 
+Cleans the institutions columns using the file institutions.txt, located in
 the same directory as the documents.csv file.
 
 >>> from techminer2 import *
@@ -17,21 +17,12 @@ the same directory as the documents.csv file.
 
 
 import os
-import sys
+import os.path
 
 from . import logging
-
-currentdir = os.getcwd()
-parentdir = os.path.dirname(currentdir)
-sys.path.append(parentdir)
-
-# pylint: disable=no-member
-
-import os
-
-import pandas as pd
-
+from ._read_records import read_all_records
 from .map_ import map_
+from .save_documents import save_documents
 from .thesaurus import read_textfile
 
 
@@ -46,19 +37,12 @@ def clean_institutions(directory):
 
     # --------------------------------------------------------------------------
     # Loads documents.csv
-    filename = os.path.join(directory, "documents.csv")
-    if not os.path.isfile(filename):
-        raise FileNotFoundError(f"The file '{filename}' does not exist.")
-    documents = pd.read_csv(filename, sep=",", encoding="utf-8")
-    # --------------------------------------------------------------------------
-
-    if directory[-1] != "/":
-        directory = directory + "/"
+    documents = read_all_records(directory)
 
     #
     # Loads the thesaurus
     #
-    thesaurus_file = directory + "institutions.txt"
+    thesaurus_file = os.path.join(directory, "processed", "institutions.txt")
     th = read_textfile(thesaurus_file)
     th = th.compile_as_dict()
 
@@ -83,11 +67,5 @@ def clean_institutions(directory):
     )
 
     # --------------------------------------------------------------------------
-    documents.to_csv(
-        directory + "documents.csv",
-        sep=",",
-        encoding="utf-8",
-        index=False,
-    )
-    # --------------------------------------------------------------------------
+    save_documents(documents, directory)
     logging.info("The thesaurus was applied to institutions.")

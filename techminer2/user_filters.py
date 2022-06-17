@@ -96,16 +96,19 @@ Allow users to select docuemnts to be mined.
 
 """
 import os
+import os.path
 
 import pandas as pd
 import yaml
 
 from . import logging
-from .load_filtered_documents import load_filtered_documents
+from ._read_records import read_all_records
+from ._read_records import read_filtered_records
 
 
 def _load_filter(directory):
-    yaml_filename = directory + "filter.yaml"
+
+    yaml_filename = os.path.join(directory, "processed", "filter.yaml")
     with open(yaml_filename, "r", encoding="utf-8") as yaml_file:
         filter = yaml.load(yaml_file, Loader=yaml.FullLoader)
     return filter
@@ -125,10 +128,7 @@ class _UserFilters:
         self.load_raw_documents()
 
     def load_raw_documents(self):
-        filename = self.directory + "documents.csv"
-        if not os.path.isfile(filename):
-            raise FileNotFoundError(f"The file '{filename}' does not exist.")
-        self.documents = pd.read_csv(filename, sep=",", encoding="utf-8")
+        self.documents = read_all_records(self.directory)
 
     def document_report(self):
 
@@ -179,7 +179,7 @@ class _UserFilters:
                 print("                          : " + document_type)
 
     def save_filter(self):
-        yaml_filename = os.path.join(self.directory, "filter.yaml")
+        yaml_filename = os.path.join(self.directory, "processed", "filter.yaml")
         with open(yaml_filename, "wt", encoding="utf-8") as yaml_file:
             yaml.dump(self.filter, yaml_file, sort_keys=True)
 

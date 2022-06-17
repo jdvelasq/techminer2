@@ -2,8 +2,7 @@
 Clean Keywords
 ===============================================================================
 
-Cleans the keywords columns using the file keywords.txt, located in 
-the same directory as the documents.csv file.
+Cleans the keywords columns using the `keywords.txt`file.
 
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
@@ -22,10 +21,10 @@ the same directory as the documents.csv file.
 
 from os.path import isfile, join
 
-import pandas as pd
-
 from . import logging
+from ._read_records import read_all_records
 from .map_ import map_
+from .save_documents import save_documents
 from .thesaurus import read_textfile
 
 
@@ -37,13 +36,9 @@ def clean_keywords(directory="./"):
 
     # --------------------------------------------------------------------------
     # Loads documents.csv
-    filename = join(directory, "documents.csv")
-    if not isfile(filename):
-        raise FileNotFoundError(f"The file '{filename}' does not exist.")
-    documents = pd.read_csv(filename, sep=",", encoding="utf-8")
-    # --------------------------------------------------------------------------
+    documents = read_all_records(directory)
 
-    thesaurus_file = join(directory, "keywords.txt")
+    thesaurus_file = join(directory, "processed", "keywords.txt")
     if isfile(thesaurus_file):
         th = read_textfile(thesaurus_file)
         th = th.compile_as_dict()
@@ -93,11 +88,5 @@ def clean_keywords(directory="./"):
     #
     # datastore.to_csv(datastorefile, index=False)
     # --------------------------------------------------------------------------
-    documents.to_csv(
-        join(directory, "documents.csv"),
-        sep=",",
-        encoding="utf-8",
-        index=False,
-    )
-    # --------------------------------------------------------------------------
+    save_documents(documents, directory)
     logging.info("The thesaurus was applied to all keywords.")

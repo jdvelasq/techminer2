@@ -31,7 +31,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 
-from .load_filtered_documents import load_filtered_documents
+from ._read_records import read_filtered_records
 
 
 def bradford_law(

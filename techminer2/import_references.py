@@ -2,9 +2,9 @@
 Import References File
 ===============================================================================
 
-Import a 'cited by' scopus file with references. 
+Import a 'cited by' scopus file with references.
 
-* The references file is called 'raw-references.csv' and it is obtained from 
+* The references file is called 'raw-references.csv' and it is obtained from
   references option in Scopus.
 
 * This function must be called after the import of the documents.
@@ -12,33 +12,32 @@ Import a 'cited by' scopus file with references.
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
 >>> import_references(directory=directory, disable_progress_bar=True)
-- INFO - 248 raw records found in /workspaces/techminer2/data/documents.csv.
-- INFO - 5123 raw records found in /workspaces/techminer2/data/raw-references.csv.
+- INFO - 5123 raw records found in /workspaces/techminer2/data/raw/references.
 - INFO - Creating references file
-- INFO - References table saved to /workspaces/techminer2/data/cited_references_table.csv
-- INFO - References table saved to /workspaces/techminer2/data/references.csv
-
+- INFO - References table saved to /workspaces/techminer2/data/processed/cited_references_table.csv
+- INFO - References table saved to /workspaces/techminer2/data/processed/references.csv
 
 """
-from os.path import dirname, isfile, join
+from os.path import join
 
 import numpy as np
 from tqdm import tqdm
 
 from . import logging
-from .import_scopus_file import (
-    _complete_iso_source_name_colum,
-    _create_document_id,
-    _create_record_no,
+from ._read_raw_csv_files import read_raw_csv_files
+from ._read_records import read_all_records
+from .import_scopus_files import (
+    _complete__iso_source_name__colum,
+    _create__document_id__column,
+    _create__record_no__column,
     _delete_and_rename_columns,
     _disambiguate_authors,
-    _load_raw_data_file,
-    _process_authors_id_column,
-    _process_doi_column,
-    _process_iso_source_name_column,
-    _process_raw_authors_names_column,
-    _process_source_name_column,
-    _repair_iso_source_names_column,
+    _process__authors_id__column,
+    _process__doi__column,
+    _process__iso_source_name__column,
+    _process__raw_authors_names__column,
+    _process__source_name__column,
+    _repair__iso_source_name__column,
     _search_for_new_iso_source_name,
 )
 
@@ -85,7 +84,7 @@ def _create_references_file(
     references = references[~references.authors.isna()]
 
     with tqdm(total=len(references), disable=disable_progress_bar) as pbar:
-        for index, row in references.iterrows():
+        for _, row in references.iterrows():
             cited_references.loc[
                 cited_references.raw_reference.str.contains(
                     row["document_title"], regex=False
@@ -131,7 +130,7 @@ def _create_references_file(
     cited_references = cited_references.reset_index(drop=True)
     cited_references = cited_references.dropna()
     cited_references = cited_references.sort_values(["citing_id", "cited_id"])
-    references_file = join(directory, "cited_references_table.csv")
+    references_file = join(directory, "processed", "cited_references_table.csv")
     cited_references.to_csv(references_file, index=False)
     logging.info(f"References table saved to {references_file}")
 
@@ -168,9 +167,7 @@ def _create_references_file(
 #         logging.info(f"Cited references saved to {file_name}")
 
 
-def import_references(
-    directory="./", scopus_file="raw-references.csv", disable_progress_bar=False
-):
+def import_references(directory="./", disable_progress_bar=False):
     """
     Import references file.
 
@@ -183,21 +180,21 @@ def import_references(
 
     """
 
-    documents = _load_raw_data_file(join(directory, "documents.csv"))
+    documents = read_all_records(directory)
     #
-    references = _load_raw_data_file(join(directory, scopus_file))
+    references = read_raw_csv_files(join(directory, "raw", "references"))
     references = _delete_and_rename_columns(references)
-    references = _process_authors_id_column(references)
-    references = _process_raw_authors_names_column(references)
+    references = _process__authors_id__column(references)
+    references = _process__raw_authors_names__column(references)
     references = _disambiguate_authors(references)
-    references = _process_doi_column(references)
-    references = _process_source_name_column(references)
-    references = _process_iso_source_name_column(references)
+    references = _process__doi__column(references)
+    references = _process__source_name__column(references)
+    references = _process__iso_source_name__column(references)
     references = _search_for_new_iso_source_name(references)
-    references = _complete_iso_source_name_colum(references)
-    references = _repair_iso_source_names_column(references)
-    references = _create_record_no(references)
-    references = _create_document_id(references)
+    references = _complete__iso_source_name__colum(references)
+    references = _repair__iso_source_name__column(references)
+    references = _create__record_no__column(references)
+    references = _create__document_id__column(references)
     #
     cited_references_table = _create_references_file(
         documents=documents,
@@ -219,6 +216,6 @@ def import_references(
     references["local_citations"].fillna(1, inplace=True)
     references["local_citations"] = references["local_citations"].astype(int)
 
-    file_name = join(directory, "references.csv")
+    file_name = join(directory, "processed", "references.csv")
     references.to_csv(file_name, index=False)
     logging.info(f"References table saved to {file_name}")

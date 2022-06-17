@@ -5,55 +5,55 @@ Summary View
 >>> from techminer2 import *
 >>> directory = "/workspaces/techminer2/data/"
 >>> summary_view(directory)
-                    column  number of terms coverage (%)
-0                 abstract              248      100.00%
-1             affiliations              244       98.39%
-2          author_keywords              202       81.45%
-3                  authors              245       98.79%
-4               authors_id              245       98.79%
-5        bradford_law_zone              248      100.00%
-6                countries              244       98.39%
-7       country_1st_author              244       98.39%
-8              document_id              248      100.00%
-9           document_title              248      100.00%
-10           document_type              248      100.00%
-11                     doi              248      100.00%
-12      frac_num_documents              248      100.00%
-13        global_citations              248      100.00%
-14       global_references              238       95.97%
-15          index_keywords               88       35.48%
-16  institution_1st_author              236       95.16%
-17            institutions              236       95.16%
-18                    isbn               13        5.24%
-19         iso_source_name              248      100.00%
-20                    issn              240       96.77%
-21         local_citations              248      100.00%
-22        local_references              118       47.58%
-23            nlp_abstract              236       95.16%
-24      nlp_document_title              247       99.60%
-25             nlp_phrases              248      100.00%
-26             num_authors              248      100.00%
-27   num_global_references              248      100.00%
-28              page_start              153       61.69%
-29                pub_year              248      100.00%
-30               pubmed_id                4        1.61%
-31     raw_author_keywords              202       81.45%
-32       raw_authors_names              246       99.19%
-33      raw_index_keywords               88       35.48%
-34            raw_keywords              224       90.32%
-35        raw_nlp_abstract              236       95.16%
-36  raw_nlp_document_title              247       99.60%
-37         raw_nlp_phrases              248      100.00%
-38               record_no              248      100.00%
-39             source_name              248      100.00%
-40                  volume              217       87.50%
-
+                       column  number of terms coverage (%)
+0                    abstract              236       95.16%
+1                affiliations              244       98.39%
+2             author_keywords              202       81.45%
+3   author_keywords_thesaurus              202       81.45%
+4                     authors              245       98.79%
+5                  authors_id              245       98.79%
+6           bradford_law_zone              248      100.00%
+7                   countries              244       98.39%
+8          country_1st_author              244       98.39%
+9                 document_id              248      100.00%
+10             document_title              248      100.00%
+11              document_type              248      100.00%
+12                        doi              248      100.00%
+13         frac_num_documents              248      100.00%
+14           global_citations              248      100.00%
+15          global_references              238       95.97%
+16             index_keywords               88       35.48%
+17     institution_1st_author              236       95.16%
+18               institutions              236       95.16%
+19                       isbn               13        5.24%
+20            iso_source_name              248      100.00%
+21                       issn              248      100.00%
+22            local_citations              248      100.00%
+23           local_references              118       47.58%
+24               nlp_abstract              236       95.16%
+25         nlp_document_title              247       99.60%
+26                nlp_phrases              248      100.00%
+27                num_authors              248      100.00%
+28      num_global_references              248      100.00%
+29                 page_start              153       61.69%
+30                   pub_year              248      100.00%
+31                  pubmed_id                4        1.61%
+32        raw_author_keywords              202       81.45%
+33          raw_authors_names              246       99.19%
+34         raw_index_keywords               88       35.48%
+35               raw_keywords              224       90.32%
+36           raw_nlp_abstract              236       95.16%
+37     raw_nlp_document_title              247       99.60%
+38            raw_nlp_phrases              248      100.00%
+39                  record_no              248      100.00%
+40                source_name              248      100.00%
+41                     volume              217       87.50%
 
 """
 
 import pandas as pd
 
-from .load_filtered_documents import load_filtered_documents
+from ._read_records import read_filtered_records
 
 
 def summary_view(directory="./"):

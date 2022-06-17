@@ -13,7 +13,7 @@ Create Thesaurus
 ...     directory=directory, 
 ... )
 - INFO - Creating thesaurus ...
-- INFO - Thesaurus file '/workspaces/techminer2/data/test_thesaurus.txt' created.
+- INFO - Thesaurus file '/workspaces/techminer2/data/processed/test_thesaurus.txt' created.
 
 >>> apply_thesaurus(
 ...     thesaurus_file="keywords.txt", 
@@ -31,7 +31,7 @@ from os.path import isfile
 import pandas as pd
 
 from . import logging
-from .load_filtered_documents import load_filtered_documents
+from ._read_records import read_filtered_records
 from .thesaurus import Thesaurus, load_file_as_dict, text_clustering
 
 
@@ -43,7 +43,7 @@ def create_thesaurus(
 ):
 
     documents = load_filtered_documents(directory)
-    thesaurus_file = os.path.join(directory, thesaurus_file)
+    thesaurus_file = os.path.join(directory, "processed", thesaurus_file)
 
     if column not in documents.columns:
         raise ValueError("Column '{}' not in documents".format(column))

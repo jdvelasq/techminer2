@@ -5,13 +5,13 @@ Cleaning institutions fields.
 Creates a institutions thesaurus from the data in the database.
 """
 
-
-from os.path import dirname, isfile, join
+import os.path
 
 import pandas as pd
 
 from . import logging
 from .extract_country import extract_country
+from ._read_records import read_all_records
 from .thesaurus import Thesaurus, load_file_as_dict, read_textfile
 
 #
@@ -184,16 +184,15 @@ def create_institutions_thesaurus(directory):
 
     logging.info("Creating institutions thesaurus ...")
 
-    if directory[-1] != "/":
-        directory = directory + "/"
-
-    thesaurus_file = directory + "institutions.txt"
+    thesaurus_file = os.path.join(directory, "processed", "institutions.txt")
 
     #
     # Valid names of institutions
     #
-    module_path = dirname(__file__)
-    with open(join(module_path, "files/institutions.txt"), "rt", encoding="utf-8") as f:
+    module_path = os.path.dirname(__file__)
+    with open(
+        os.path.join(module_path, "files/institutions.txt"), "rt", encoding="utf-8"
+    ) as f:
         VALID_NAMES = f.readlines()
     VALID_NAMES = [w.replace("\n", "").lower() for w in VALID_NAMES]
     VALID_NAMES = [w for w in VALID_NAMES if len(w) > 0]
@@ -201,8 +200,8 @@ def create_institutions_thesaurus(directory):
     #
     # List of standardized country names
     #
-    module_path = dirname(__file__)
-    filename = join(module_path, "files/country_codes.txt")
+    module_path = os.path.dirname(__file__)
+    filename = os.path.join(module_path, "files/country_codes.txt")
     country_codes = load_file_as_dict(filename)
     country_names = list(country_codes.values())
     country_names = [w[0].lower() for w in country_names]
@@ -211,11 +210,7 @@ def create_institutions_thesaurus(directory):
     }
 
     # --------------------------------------------------------------------------
-    # Loads documents.csv
-    filename = directory + "documents.csv"
-    if not isfile(filename):
-        raise FileNotFoundError(f"The file '{filename}' does not exist.")
-    data = pd.read_csv(filename, sep=",", encoding="utf-8")
+    data = read_all_records(directory)
     # --------------------------------------------------------------------------
 
     #
@@ -237,7 +232,7 @@ def create_institutions_thesaurus(directory):
     # Loads the current thesaurus and
     # select only new affiliations
     #
-    if isfile(thesaurus_file):
+    if os.path.isfile(thesaurus_file):
 
         dict_ = load_file_as_dict(thesaurus_file)
         clustered_text = [word for key in dict_.keys() for word in dict_[key]]
@@ -260,8 +255,7 @@ def create_institutions_thesaurus(directory):
     if any(x.country.isna()):
         logging.info(
             "Affiliations without country detected - check file "
-            + directory
-            + "ignored_affiliations.txt"
+            + os.path.join(directory, "processed", "ignored_affiliations.txt")
         )
 
     #
@@ -292,7 +286,9 @@ def create_institutions_thesaurus(directory):
     #
     # list of ignored affiliations for manual review
     #
-    ignored_affiliations_file = directory + "ignored_affiliations.txt"
+    ignored_affiliations_file = os.path.join(
+        directory, "processed", "ignored_affiliations.txt"
+    )
     with open(ignored_affiliations_file, "wt", encoding="utf-8") as text_file:
         for aff in ignored_affiliations:
             print(aff, file=text_file)
@@ -503,7 +499,7 @@ def create_institutions_thesaurus(directory):
         for key, value in zip(grp.index.tolist(), grp["affiliation"].tolist())
     }
 
-    if isfile(thesaurus_file):
+    if os.path.isfile(thesaurus_file):
         result = {**result, **dict_}
 
     Thesaurus(result, ignore_case=False, full_match=True, use_re=False).to_textfile(

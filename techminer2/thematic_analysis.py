@@ -21,22 +21,22 @@ Contexts implemented in T-LAB.
 ...     random_state=0, 
 ... )
 >>> analysis.themes.head()
-                     CL_0  ...            CL_5
-0                 fintech  ...  perceived risk
-1  financial technologies  ...           trust
-2                    bank  ...         fintech
-3              innovating  ...                
-4       financial service  ...                
+                     CL_0                    CL_1  ...     CL_4      CL_5
+0                 fintech  financial technologies  ...  fintech  covid-19
+1  financial technologies    peer-to-peer lending  ...            fintech
+2                    bank                 fintech  ...            bitcoin
+3              innovation              regulation  ...                   
+4       financial service                          ...                   
 <BLANKLINE>
 [5 rows x 6 columns]
 
 >>> analysis.partitions
 CLUSTER
-0    120
-1      7
+0    112
+1     13
 2     12
-3     32
-4      6
+3      7
+4     32
 5      6
 Name: num_documents, dtype: int64
 
