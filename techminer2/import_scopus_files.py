@@ -154,32 +154,32 @@ def _create_abstracts_csv_file(directory):
 
 def _create_documents_csv_file(directory, disable_progress_bar):
     documents = read_raw_csv_files(os.path.join(directory, "raw", "documents"))
-    documents = _delete_null_columns(documents)
+    documents = documents.dropna(axis=1, how="all")
     documents = _delete_and_rename_columns(documents)
-    documents = _process_abstract_column(documents)
-    documents = _process_document_title_column(documents)
+    documents = _process__abstract__column(documents)
+    documents = _process__document_title__column(documents)
     documents = _remove_accents(documents)
-    documents = _process_authors_id_column(documents)
-    documents = _process_raw_authors_names_column(documents)
+    documents = _process__authors_id__column(documents)
+    documents = _process__raw_authors_names__column(documents)
     documents = _disambiguate_authors(documents)
-    documents = _process_doi_column(documents)
-    documents = _process_source_name_column(documents)
-    documents = _process_iso_source_name_column(documents)
+    documents = _process__doi__column(documents)
+    documents = _process__source_name__column(documents)
+    documents = _process__iso_source_name__column(documents)
     documents = _search_for_new_iso_source_name(documents)
-    documents = _complete_iso_source_name_colum(documents)
-    documents = _repair_iso_source_names_column(documents)
-    documents = _create_record_no(documents)
-    documents = _create_document_id(documents)
-    documents = _process_document_type_column(documents)
-    documents = _process_affiliations_column(documents)
-    documents = _process_author_keywords_column(documents)
-    documents = _process_index_keywords_column(documents)
-    documents = _create_keywords_column(documents)
-    documents = _create_nlp_phrases_column(documents)
-    documents = _process_global_citations_column(documents)
-    documents = _process_global_references_column(documents)
-    documents = _process_eissn_column(documents)
-    documents = _process_issn_column(documents)
+    documents = _complete__iso_source_name__colum(documents)
+    documents = _repair__iso_source_name__column(documents)
+    documents = _create__record_no__column(documents)
+    documents = _create__document_id__column(documents)
+    documents = _process__document_type__column(documents)
+    documents = _process__affiliations__column(documents)
+    documents = _process__author_keywords__column(documents)
+    documents = _process__index_keywords__column(documents)
+    documents = _create__keywords__column(documents)
+    documents = _create__nlp_phrases__column(documents)
+    documents = _process__global_citations__column(documents)
+    documents = _process__global_references__column(documents)
+    documents = _process__eissn__column(documents)
+    documents = _process__issn__column(documents)
     documents = documents.assign(local_references=[[] for _ in range(len(documents))])
     documents = _create_local_references_using_doi(
         documents, disable_progress_bar=disable_progress_bar
@@ -245,20 +245,9 @@ def _check_nlp_phrase(phrase):
 
 
 # -----< Dataset Trasformations >----------------------------------------------
-
-
-def _delete_null_columns(documents):
-    columns_to_delete = []
-    for column in documents.columns:
-        if sum(documents[column].notnull()) == 0:
-            columns_to_delete.append(column)
-    if len(columns_to_delete) > 0:
-        documents = documents.drop(columns=columns_to_delete)
-    return documents
-
-
 def _delete_and_rename_columns(documents):
     documents = documents.copy()
+
     module_path = os.path.dirname(__file__)
     file_path = os.path.join(module_path, "files/scopus2tags.csv")
 
@@ -296,7 +285,7 @@ def _remove_accents(documents):
 # -----< Isolated Column Processing >------------------------------------------
 
 
-def _process_document_type_column(documents):
+def _process__document_type__column(documents):
     if "document_type" in documents.columns:
         documents = documents.copy()
         documents["document_type"] = documents.document_type.str.replace(" ", "_")
@@ -304,7 +293,7 @@ def _process_document_type_column(documents):
     return documents
 
 
-def _process_abstract_column(documents):
+def _process__abstract__column(documents):
     if "abstract" in documents.columns:
         # ---------------------------------------------------------------------
         module_path = os.path.dirname(__file__)
@@ -337,7 +326,7 @@ def _process_abstract_column(documents):
     return documents
 
 
-def _process_affiliations_column(documents):
+def _process__affiliations__column(documents):
     if "affiliations" in documents.columns:
         documents = documents.copy()
         documents["countries"] = map_(documents, "affiliations", extract_country)
@@ -350,14 +339,14 @@ def _process_affiliations_column(documents):
     return documents
 
 
-def _process_author_keywords_column(documents):
+def _process__author_keywords__column(documents):
     if "raw_author_keywords" in documents.columns:
         documents = documents.copy()
         documents.raw_author_keywords = documents.raw_author_keywords.str.lower()
     return documents
 
 
-def _process_authors_id_column(documents):
+def _process__authors_id__column(documents):
     documents = documents.copy()
     documents["authors_id"] = documents.authors_id.map(
         lambda w: pd.NA if w == "[No author id available]" else w
@@ -368,7 +357,7 @@ def _process_authors_id_column(documents):
     return documents
 
 
-def _process_document_title_column(documents):
+def _process__document_title__column(documents):
     documents = documents.copy()
     documents.document_title = documents.document_title.map(
         lambda x: x[0 : x.find("[")] if pd.isna(x) is False and x[-1] == "]" else x
@@ -395,14 +384,14 @@ def _process_document_title_column(documents):
     return documents
 
 
-def _process_doi_column(documents):
+def _process__doi__column(documents):
     if "doi" in documents.columns:
         documents = documents.copy()
         documents.doi = documents.doi.str.upper()
     return documents
 
 
-def _process_eissn_column(documents):
+def _process__eissn__column(documents):
     if "eissn" in documents.columns:
         documents = documents.copy()
         documents.eissn = documents.eissn.str.replace("-", "", regex=True)
@@ -410,14 +399,14 @@ def _process_eissn_column(documents):
     return documents
 
 
-def _process_global_citations_column(documents):
+def _process__global_citations__column(documents):
     documents = documents.copy()
     documents.global_citations = documents.global_citations.fillna(0)
     documents.global_citations = documents.global_citations.astype(int)
     return documents
 
 
-def _process_global_references_column(documents):
+def _process__global_references__column(documents):
     if "global_references" in documents.columns:
         documents = documents.copy()
         documents["global_references"] = documents.global_references.map(
@@ -432,14 +421,14 @@ def _process_global_references_column(documents):
     return documents
 
 
-def _process_index_keywords_column(documents):
+def _process__index_keywords__column(documents):
     if "raw_index_keywords" in documents.columns:
         documents = documents.copy()
         documents.raw_index_keywords = documents.raw_index_keywords.str.lower()
     return documents
 
 
-def _create_keywords_column(documents):
+def _create__keywords__column(documents):
     # -----------------------------------------------------------------------------------
     def augment_list(documents, topics):
         documents = documents.copy()
@@ -477,7 +466,7 @@ def _create_keywords_column(documents):
     return documents
 
 
-def _create_nlp_phrases_column(documents):
+def _create__nlp_phrases__column(documents):
     # -----------------------------------------------------------------------------------
     def augment_list(documents, topics):
         documents = documents.copy()
@@ -525,7 +514,7 @@ def _create_nlp_phrases_column(documents):
     return documents
 
 
-def _process_iso_source_name_column(documents):
+def _process__iso_source_name__column(documents):
     if "iso_source_name" in documents.columns:
         documents = documents.copy()
         documents.iso_source_name = documents.iso_source_name.str.upper()
@@ -569,7 +558,7 @@ def _search_for_new_iso_source_name(documents):
     return documents
 
 
-def _complete_iso_source_name_colum(documents):
+def _complete__iso_source_name__colum(documents):
 
     if "iso_source_name" in documents.columns:
         #
@@ -592,7 +581,7 @@ def _complete_iso_source_name_colum(documents):
     return documents
 
 
-def _repair_iso_source_names_column(documents):
+def _repair__iso_source_name__column(documents):
     if "iso_source_name" in documents.columns:
         documents = documents.copy()
         documents.iso_source_name = [
@@ -607,7 +596,7 @@ def _repair_iso_source_names_column(documents):
     return documents
 
 
-def _process_issn_column(documents):
+def _process__issn__column(documents):
     if "issn" in documents.columns:
         documents = documents.copy()
         documents["issn"] = documents.issn.astype(str)
@@ -616,7 +605,7 @@ def _process_issn_column(documents):
     return documents
 
 
-def _process_raw_authors_names_column(documents):
+def _process__raw_authors_names__column(documents):
     documents = documents.copy()
     if "raw_authors_names" in documents.columns:
         documents.raw_authors_names = documents.raw_authors_names.map(
@@ -640,7 +629,7 @@ def _process_raw_authors_names_column(documents):
     return documents
 
 
-def _process_source_name_column(documents):
+def _process__source_name__column(documents):
     documents = documents.copy()
     if "source_name" in documents.columns:
         documents.source_name = documents.source_name.str.upper()
@@ -684,7 +673,7 @@ def _report_duplicate_titles(raw_data, directory):
         )
 
 
-def _create_record_no(documents):
+def _create__record_no__column(documents):
     documents = documents.copy()
     documents = documents.assign(
         record_no=documents.sort_values("global_citations", ascending=False)
@@ -898,7 +887,7 @@ def _disambiguate_authors(documents):
     return documents
 
 
-def _create_document_id(documents):
+def _create__document_id__column(documents):
 
     wos_ref = documents.authors.map(
         lambda x: x.split("; ")[0].strip() if not pd.isna(x) else "[anonymous]"
