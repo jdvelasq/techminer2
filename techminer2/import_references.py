@@ -27,17 +27,17 @@ from . import logging
 from ._read_raw_csv_files import read_raw_csv_files
 from ._read_records import read_all_records
 from .import_scopus_files import (
-    _complete_iso_source_name_colum,
-    _create_document_id,
-    _create_record_no,
+    _complete__iso_source_name__colum,
+    _create__document_id__column,
+    _create__record_no__column,
     _delete_and_rename_columns,
     _disambiguate_authors,
-    _process_authors_id_column,
-    _process_doi_column,
-    _process_iso_source_name_column,
-    _process_raw_authors_names_column,
-    _process_source_name_column,
-    _repair_iso_source_names_column,
+    _process__authors_id__column,
+    _process__doi__column,
+    _process__iso_source_name__column,
+    _process__raw_authors_names__column,
+    _process__source_name__column,
+    _repair__iso_source_name__column,
     _search_for_new_iso_source_name,
 )
 
@@ -184,17 +184,17 @@ def import_references(directory="./", disable_progress_bar=False):
     #
     references = read_raw_csv_files(join(directory, "raw", "references"))
     references = _delete_and_rename_columns(references)
-    references = _process_authors_id_column(references)
-    references = _process_raw_authors_names_column(references)
+    references = _process__authors_id__column(references)
+    references = _process__raw_authors_names__column(references)
     references = _disambiguate_authors(references)
-    references = _process_doi_column(references)
-    references = _process_source_name_column(references)
-    references = _process_iso_source_name_column(references)
+    references = _process__doi__column(references)
+    references = _process__source_name__column(references)
+    references = _process__iso_source_name__column(references)
     references = _search_for_new_iso_source_name(references)
-    references = _complete_iso_source_name_colum(references)
-    references = _repair_iso_source_names_column(references)
-    references = _create_record_no(references)
-    references = _create_document_id(references)
+    references = _complete__iso_source_name__colum(references)
+    references = _repair__iso_source_name__column(references)
+    references = _create__record_no__column(references)
+    references = _create__document_id__column(references)
     #
     cited_references_table = _create_references_file(
         documents=documents,
