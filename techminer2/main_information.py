@@ -3,57 +3,48 @@ Main Information
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> main_information(directory)
-                                                             value
-Category       Item                                               
-GENERAL        Documents:                                      248
-               Years:                                    2016-2021
-               Compound annual growth rate:                91.68 %
-               Current years from publication:                2.23
-               Average citations per document:                9.36
-               Average citations per document per year:       1.56
-               Sources:                                        145
-               Average documents per source:                     2
-DOCUMENT TYPES article:                                        178
-               book:                                             1
-               book_chapter:                                     4
-               conference_paper:                                31
-               editorial:                                       10
-               erratum:                                          3
-               note:                                             1
-               review:                                          19
-               short_survey:                                     1
-AUTHORS        Authors:                                        639
-               Author appearances:                             682
-               Documents per author:                          0.39
-               Authors per document:                          2.58
-               Single-authored documents:                       54
-               Multi-authored documents:                       192
-               Co-authors per document:                       2.75
-               Collaboration index:                            3.1
-               Institutions:                                   382
-               Institutions (1st author):                      200
-               Countries:                                       70
-               Countries (1st author):                          53
-KEYWORDS       Raw author keywords:                            709
-               Cleaned author keywords:                        659
-               Raw index keywords:                             607
-               Cleaned index keywords:                         583
-OTHERS         author_keywords_thesaurus                       659
-               document_id                                     246
-               iso_source_name                                 145
-               nlp_abstract                                   3246
-               nlp_document_title                              495
-               nlp_phrases                                    4321
-               num_global_references                           108
-               page_start                                      123
-               pubmed_id                                         4
-               raw_authors_names                               635
-               raw_nlp_abstract                               3260
-               raw_nlp_document_title                          496
-               raw_nlp_phrases                                4421
-               volume                                           80
+                                                            Value
+Category       Item                                              
+GENERAL        Timespan                                 2016:2021
+               Documents                                      248
+               Annual growth rate %                         91.68
+               Document average age                          2.23
+               References                                   12836
+               Average citations per document                9.36
+               Average citations per document per year       1.56
+               Average references per document              53.93
+               Sources                                        145
+               Average documents per source                  1.71
+DOCUMENT TYPES article                                        178
+               book                                             1
+               book_chapter                                     4
+               conference_paper                                31
+               editorial                                       10
+               erratum                                          3
+               note                                             1
+               review                                          19
+               short_survey                                     1
+AUTHORS        Authors                                      639.0
+               Authors of single-authored documents          48.0
+               Single-authored documents                     54.0
+               Multi-authored documents                     192.0
+               Authors per document                          2.75
+               Co-authors per document                       3.28
+               International co-authorship %                33.61
+               Author appearances                           682.0
+               Documents per author                          0.36
+               Collaboration index                            1.0
+               Institutions                                 382.0
+               Institutions (1st author)                    200.0
+               Countries                                     70.0
+               Countries (1st author)                        53.0
+KEYWORDS       Raw author keywords                            709
+               Cleaned author keywords                        659
+               Raw index keywords                             607
+               Cleaned index keywords                         583
+
 
 """
 import datetime
@@ -64,307 +55,461 @@ import pandas as pd
 from ._read_records import read_filtered_records
 
 
-def _extract_terms(x, column):
-    x = x.copy()
-    x[column] = x[column].map(
-        lambda w: w.split("; ") if not pd.isna(w) and isinstance(w, str) else w
-    )
-    x = x.explode(column)
-    x[column] = x[column].map(lambda w: w.strip() if isinstance(w, str) else w)
-    x = pd.unique(x[column].dropna())
-    x = np.sort(x)
-    return pd.DataFrame({column: x})
+class MainInformation:
+    def __init__(self, directory):
+        self.directory = directory
+        self.records = read_filtered_records(directory)
+        self.n_records = len(self.records)
+        self.compute_general_information_stats()
+        self.compute_document_types_stats()
+        self.compute_authors_stats()
+        self.compute_keywords_stats()
+        self.make_report()
 
-
-def _count_terms(records, column):
-    return len(_extract_terms(records, column))
-
-
-def main_information(directory="./"):
-    """
-    Returns an overview of the dataset.
-
-    Parameters
-    ----------
-    records: pandas.DataFrame
-        records object.
-
-    Returns
-    -------
-    pandas.DataFrame
-        Summary statistcs
-    """
-
-    records = load_filtered_documents(directory)
-
-    records = records.copy()
-    general = {}
-
-    #
-    # documents count
-    #
-    general["Documents:"] = str(len(records))
-
-    #
-    # range of years
-    #
-
-    n_records = len(records)
-
-    if "pub_year" in records.columns:
-        #
-        # range of years
-        #
-        general["Years:"] = (
-            str(min(records.pub_year)) + "-" + str(max(records.pub_year))
+    def make_report(self):
+        pdf = pd.concat(
+            [
+                self.general_information_stats,
+                self.document_types_stats,
+                self.authors_stats,
+                self.keywords_stats,
+            ]
         )
+        index = pd.MultiIndex.from_arrays(
+            [pdf.Category, pdf.Item], names=["Category", "Item"]
+        )
+        self.report_ = pd.DataFrame(pdf.Value.tolist(), columns=["Value"], index=index)
 
-        #
-        # compound annual growth rate
-        #
-        n_years = max(records.pub_year) - min(records.pub_year) + 1
-        Po = len(records.pub_year[records.pub_year == min(records.pub_year)])
-        cagr = str(round(100 * (np.power(n_records / Po, 1 / n_years) - 1), 2)) + " %"
-        general["Compound annual growth rate:"] = cagr
+    #####################################################################################
+    # def count_unique_terms(self, column):
+    #     return int(len(self.extract_unique_terms(column)))
 
-        #
-        # average years from publication
-        #
-        mean_years = records.pub_year.copy()
+    # def count_terms(self, column):
+    #     return len(self.extract_terms(column))
+
+    # def count_records(self, column, value):
+    #     return len(self.records[self.records[column] == value])
+
+    # def extract_terms(self, column):
+    #     terms = self.records[column].copy()
+    #     terms = terms.str.split(";")
+    #     terms = terms.explode()
+    #     terms = terms.str.strip()
+    #     terms = terms.dropna()
+    #     return terms
+
+    # def extract_unique_terms(self, column):
+    #     terms = self.extract_terms(column)
+    #     terms = terms.drop_duplicates()
+    #     return terms
+
+    #####################################################################################
+    def compute_general_information_stats(self):
+        self.general_information_stats = pd.DataFrame(
+            columns=["Category", "Item", "Value"]
+        )
+        self.general_information_stats.loc[0] = [
+            "GENERAL",
+            "Timespan",
+            self.compute_timespam(),
+        ]
+        self.general_information_stats.loc[1] = [
+            "GENERAL",
+            "Documents",
+            self.documents(),
+        ]
+        self.general_information_stats.loc[2] = [
+            "GENERAL",
+            "Annual growth rate %",
+            self.annual_growth_rate(),
+        ]
+        self.general_information_stats.loc[3] = [
+            "GENERAL",
+            "Document average age",
+            self.document_average_age(),
+        ]
+        self.general_information_stats.loc[4] = [
+            "GENERAL",
+            "References",
+            self.cited_references(),
+        ]
+        self.general_information_stats.loc[5] = [
+            "GENERAL",
+            "Average citations per document",
+            self.average_citations_per_document(),
+        ]
+        self.general_information_stats.loc[6] = [
+            "GENERAL",
+            "Average citations per document per year",
+            self.average_citations_per_document_per_year(),
+        ]
+        self.general_information_stats.loc[7] = [
+            "GENERAL",
+            "Average references per document",
+            self.average_references_per_document(),
+        ]
+        self.general_information_stats.loc[8] = [
+            "GENERAL",
+            "Sources",
+            self.sources(),
+        ]
+        self.general_information_stats.loc[9] = [
+            "GENERAL",
+            "Average documents per source",
+            self.average_documents_per_source(),
+        ]
+
+    # -----------------------------------------------------------------------------------
+
+    def compute_timespam(self):
+        return str(min(self.records.pub_year)) + ":" + str(max(self.records.pub_year))
+
+    def documents(self):
+        return len(self.records)
+
+    def annual_growth_rate(self):
+        n_years = max(self.records.pub_year) - min(self.records.pub_year) + 1
+        Po = len(
+            self.records.pub_year[self.records.pub_year == min(self.records.pub_year)]
+        )
+        return round(100 * (np.power(self.n_records / Po, 1 / n_years) - 1), 2)
+
+    def document_average_age(self):
+        mean_years = self.records.pub_year.copy()
         mean_years = mean_years.dropna()
         mean_years = mean_years.mean()
         current_year = datetime.datetime.now().year
-        agrp = round(int(current_year) - mean_years, 2)
-        general["Current years from publication:"] = agrp
+        return round(int(current_year) - mean_years, 2)
 
-    if "global_citations" in records.columns:
-        #
-        # average citations per document
-        #
-        general["Average citations per document:"] = "{:4.2f}".format(
-            records["global_citations"].mean()
+    def cited_references(self):
+        if "global_references" in self.records.columns:
+            records = self.records.global_references.copy()
+            records = records.dropna()
+            records = records.str.split(";")
+            records = records.explode()
+            records = records.str.strip()
+            return len(records)
+        else:
+            return pd.NA
+
+    def average_citations_per_document(self):
+        if "global_citations" in self.records.columns:
+            return round(self.records.global_citations.mean(), 2)
+        else:
+            return pd.NA
+
+    def average_citations_per_document_per_year(self):
+        if "global_citations" in self.records.columns:
+            return round(
+                self.records.global_citations.mean()
+                / (self.records.pub_year.max() - self.records.pub_year.min() + 1),
+                2,
+            )
+        else:
+            return pd.NA
+
+    def average_references_per_document(self):
+        if "global_references" in self.records.columns:
+            num_references = self.records.global_references.copy()
+            num_references = num_references.dropna()
+            num_references = num_references.str.split(";")
+            num_references = num_references.map(len)
+            return round(num_references.mean(), 2)
+        else:
+            return pd.NA
+
+    def sources(self):
+        if "source_name" in self.records.columns:
+            records = self.records.source_name.copy()
+            records = records.dropna()
+            records = records.drop_duplicates()
+            return len(records)
+        else:
+            return pd.NA
+
+    def average_documents_per_source(self):
+        if "source_name" in self.records.columns:
+            sources = self.records.source_name.copy()
+            sources = sources.dropna()
+            n_records = len(sources)
+            sources = sources.drop_duplicates()
+            n_sources = len(sources)
+            return round(n_records / n_sources, 2)
+        else:
+            return pd.NA
+
+    #####################################################################################
+    def compute_document_types_stats(self):
+        self.document_types_stats = pd.DataFrame(columns=["Category", "Item", "Value"])
+        records = self.records[["document_type"]].dropna()
+        document_types_count = (
+            records[["document_type"]].groupby("document_type").size()
         )
+        for index, (document_type, count) in enumerate(
+            zip(document_types_count.index, document_types_count)
+        ):
+            self.document_types_stats.loc[index] = [
+                "DOCUMENT TYPES",
+                document_type,
+                count,
+            ]
 
-    if "global_citations" in records.columns and "pub_year" in records.columns:
-        general["Average citations per document per year:"] = "{:4.2f}".format(
-            records["global_citations"].sum()
-            / (len(records) * (records.pub_year.max() - records.pub_year.min() + 1))
-        )
+    #####################################################################################
+    def compute_authors_stats(self):
+        self.authors_stats = pd.DataFrame(columns=["Category", "Item", "Value"])
+        self.authors_stats.loc[0] = [
+            "AUTHORS",
+            "Authors",
+            self.authors(),
+        ]
+        self.authors_stats.loc[1] = [
+            "AUTHORS",
+            "Authors of single-authored documents",
+            self.authors_of_single_authored_documents(),
+        ]
+        self.authors_stats.loc[2] = [
+            "AUTHORS",
+            "Single-authored documents",
+            self.count_single_authored_documents(),
+        ]
+        self.authors_stats.loc[3] = [
+            "AUTHORS",
+            "Multi-authored documents",
+            self.count_multi_authored_documents(),
+        ]
+        self.authors_stats.loc[4] = [
+            "AUTHORS",
+            "Authors per document",
+            self.average_authors_per_document(),
+        ]
+        self.authors_stats.loc[5] = [
+            "AUTHORS",
+            "Co-authors per document",
+            self.co_authors_per_document(),
+        ]
+        self.authors_stats.loc[6] = [
+            "AUTHORS",
+            "International co-authorship %",
+            self.international_co_authorship(),
+        ]
+        self.authors_stats.loc[7] = [
+            "AUTHORS",
+            "Author appearances",
+            self.author_appearances(),
+        ]
+        self.authors_stats.loc[8] = [
+            "AUTHORS",
+            "Documents per author",
+            self.average_documents_per_author(),
+        ]
 
-    if "cited_references" in records.columns:
-        general["Cited references:"] = round(_count_terms(records, "global_references"))
-        general["Average cited references per document:"] = round(
-            _count_terms(records, "cited_references") / n_records
-        )
+        self.authors_stats.loc[9] = [
+            "AUTHORS",
+            "Collaboration index",
+            self.collaboration_index(),
+        ]
+        self.authors_stats.loc[10] = [
+            "AUTHORS",
+            "Institutions",
+            self.institutions(),
+        ]
+        self.authors_stats.loc[11] = [
+            "AUTHORS",
+            "Institutions (1st author)",
+            self.institutions_1st_author(),
+        ]
+        self.authors_stats.loc[12] = [
+            "AUTHORS",
+            "Countries",
+            self.countries(),
+        ]
+        self.authors_stats.loc[13] = [
+            "AUTHORS",
+            "Countries (1st author)",
+            self.countries_1st_author(),
+        ]
 
-    if "source_name" in records.columns:
-        general["Sources:"] = round(_count_terms(records, "source_name"))
-        general["Average documents per source:"] = round(
-            n_records / _count_terms(records, "source_name")
-        )
-        records.pop("source_name")
+    # -----------------------------------------------------------------------------------
 
-    if "iso_source_abbreviation" in records.columns:
-        general["Abbreviated Source titles:"] = round(
-            _count_terms(records, "iso_source_abbreviation")
-        )
-        records.pop("iso_source_abbreviation")
+    def authors(self):
+        records = self.records.authors.copy()
+        records = records.dropna()
+        records = records.str.split(";")
+        records = records.explode()
+        records = records.str.strip()
+        records = records.drop_duplicates()
+        return len(records)
 
-    #
-    #  Document types
-    #
-    document_types = {}
-    if "document_type" in records.columns:
-        z = records[["document_type"]].groupby("document_type").size()
-        for index, value in zip(z.index, z):
-            document_types[index + ":"] = value
-        records.pop("document_type")
+    def authors_of_single_authored_documents(self):
+        records = self.records[self.records["num_authors"] == 1]
+        authors = records.authors.dropna()
+        authors = authors.drop_duplicates()
+        return len(authors)
 
-    #
-    #  Authors
-    #
-    authors = {}
+    def count_single_authored_documents(self):
+        return len(self.records[self.records["num_authors"] == 1])
 
-    if "authors" in records.columns:
+    def count_multi_authored_documents(self):
+        return len(self.records[self.records["num_authors"] > 1])
 
-        authors["Authors:"] = _count_terms(records, "authors")
+    def average_authors_per_document(self):
+        num_authors = self.records["num_authors"].dropna()
+        return round(num_authors.mean(), 2)
 
-        m = records.authors
-        m = m.dropna()
-        m = m.map(lambda w: w.split(";"), na_action="ignore")
-        m = m.explode()
-        authors["Author appearances:"] = len(m)
+    def co_authors_per_document(self):
+        records = self.records.copy()
+        num_authors = records[records.num_authors > 1].num_authors
+        return round(num_authors.mean(), 2)
 
-        authors["Documents per author:"] = round(
-            n_records / _count_terms(records, "authors"), 2
-        )
-        authors["Authors per document:"] = round(
-            _count_terms(records, "authors") / n_records, 2
-        )
+    def international_co_authorship(self):
+        countries = self.records.countries.copy()
+        countries = countries.dropna()
+        countries = countries.str.split(";")
+        countries = countries.map(len)
+        return round(len(countries[countries > 1]) / len(countries) * 100, 2)
 
-    if "num_authors" in records.columns:
-        authors["Single-authored documents:"] = len(
-            records[records["num_authors"] == 1]
-        )
-        authors["Multi-authored documents:"] = len(records[records["num_authors"] > 1])
-        authors["Co-authors per document:"] = round(records["num_authors"].mean(), 2)
-        authors["Collaboration index:"] = round(
-            _count_terms(records[records.num_authors > 1], "authors")
-            / len(records[records.num_authors > 1]),
-            2,
-        )
+    def author_appearances(self):
+        records = self.records.authors.copy()
+        records = records.dropna()
+        records = records.str.split(";")
+        records = records.explode()
+        records = records.str.strip()
+        return len(records)
 
-    if "institutions" in records.columns:
-        authors["Institutions:"] = _count_terms(records, "institutions")
-        records.pop("institutions")
+    def average_documents_per_author(self):
+        records = self.records.authors.copy()
+        records = records.dropna()
+        n_records = len(records)
+        records = records.str.split(";")
+        records = records.explode()
+        n_authors = len(records)
+        return round(n_records / n_authors, 2)
 
-    if "institution_1st_author" in records.columns:
-        authors["Institutions (1st author):"] = _count_terms(
-            records, "institution_1st_author"
-        )
-        records.pop("institution_1st_author")
+    def collaboration_index(self):
+        records = self.records[["authors", "num_authors"]].copy()
+        records = records.dropna()
+        records = records[records.num_authors > 1]
+        n_records = len(records)
 
-    if "countries" in records.columns:
-        authors["Countries:"] = _count_terms(records, "countries")
-        if "countries" in records.columns:
-            records.pop("countries")
+        n_authors = records.authors.copy()
+        n_authors = n_authors.str.split(";")
+        n_authors = n_authors.explode()
+        n_authors = len(records)
+        return round(n_authors / n_records, 2)
 
-    if "country_1st_author" in records.columns:
-        authors["Countries (1st author):"] = _count_terms(records, "country_1st_author")
-        records.pop("country_1st_author")
+    def institutions(self):
+        if "institutions" in self.records.columns:
+            records = self.records.institutions.copy()
+            records = records.dropna()
+            records = records.str.split(";")
+            records = records.explode()
+            records = records.str.strip()
+            records = records.drop_duplicates()
+            return len(records)
+        else:
+            return pd.NA
 
-    #
-    #  Keywords
-    #
-    keywords = {}
+    def institutions_1st_author(self):
+        if "institution_1st_author" in self.records.columns:
+            records = self.records.institution_1st_author.copy()
+            records = records.dropna()
+            records = records.str.split(";")
+            records = records.explode()
+            records = records.str.strip()
+            records = records.drop_duplicates()
+            return len(records)
+        else:
+            return pd.NA
 
-    if "raw_author_keywords" in records.columns:
-        keywords["Raw author keywords:"] = round(
-            _count_terms(records, "raw_author_keywords")
-        )
-        records.pop("raw_author_keywords")
+    def countries(self):
+        if "countries" in self.records.columns:
+            records = self.records.countries.copy()
+            records = records.dropna()
+            records = records.str.split(";")
+            records = records.explode()
+            records = records.str.strip()
+            records = records.drop_duplicates()
+            return len(records)
+        else:
+            return pd.NA
 
-    if "author_keywords" in records.columns:
-        keywords["Cleaned author keywords:"] = round(
-            _count_terms(records, "author_keywords")
-        )
-        records.pop("author_keywords")
+    def countries_1st_author(self):
+        if "country_1st_author" in self.records.columns:
+            records = self.records.country_1st_author.copy()
+            records = records.dropna()
+            records = records.str.split(";")
+            records = records.explode()
+            records = records.str.strip()
+            records = records.drop_duplicates()
+            return len(records)
+        else:
+            return pd.NA
 
-    if "raw_index_keywords" in records.columns:
-        keywords["Raw index keywords:"] = round(
-            _count_terms(records, "raw_index_keywords")
-        )
-        records.pop("raw_index_keywords")
+    #####################################################################################
+    def compute_keywords_stats(self):
+        self.keywords_stats = pd.DataFrame(columns=["Category", "Item", "Value"])
+        self.keywords_stats.loc[0] = [
+            "KEYWORDS",
+            "Raw author keywords",
+            self.raw_author_keywords(),
+        ]
+        self.keywords_stats.loc[1] = [
+            "KEYWORDS",
+            "Cleaned author keywords",
+            self.author_keywords(),
+        ]
+        self.keywords_stats.loc[2] = [
+            "KEYWORDS",
+            "Raw index keywords",
+            self.raw_index_keywords(),
+        ]
+        self.keywords_stats.loc[3] = [
+            "KEYWORDS",
+            "Cleaned index keywords",
+            self.index_keywords(),
+        ]
 
-    if "index_keywords" in records.columns:
-        keywords["Cleaned index keywords:"] = round(
-            _count_terms(records, "index_keywords")
-        )
-        records.pop("index_keywords")
+    # -----------------------------------------------------------------------------------
 
-    if "keywords_cl" in records.columns:
-        keywords["Keywords (cleaned):"] = round(_count_terms(records, "keywords_cl"))
-        records.pop("keywords_cl")
+    def raw_author_keywords(self):
+        records = self.records.raw_author_keywords.copy()
+        records = records.dropna()
+        records = records.str.split(";")
+        records = records.explode()
+        records = records.str.strip()
+        records = records.drop_duplicates()
+        return len(records)
 
-    if "title_words" in records.columns:
-        keywords["Raw title words:"] = round(_count_terms(records, "title_words"))
-        records.pop("title_words")
+    def author_keywords(self):
+        records = self.records.author_keywords.copy()
+        records = records.dropna()
+        records = records.str.split(";")
+        records = records.explode()
+        records = records.str.strip()
+        records = records.drop_duplicates()
+        return len(records)
 
-    if "title_words_CL" in records.columns:
-        keywords["Title words (cleaned):"] = round(
-            _count_terms(records, "title_words_CL")
-        )
-        records.pop("title_words_CL")
+    def raw_index_keywords(self):
+        records = self.records.raw_index_keywords.copy()
+        records = records.dropna()
+        records = records.str.split(";")
+        records = records.explode()
+        records = records.str.strip()
+        records = records.drop_duplicates()
+        return len(records)
 
-    if "abstract_words" in records.columns:
-        keywords["Abstract words (raw)"] = round(
-            _count_terms(records, "abstract_words")
-        )
-        records.pop("abstract_words")
+    def index_keywords(self):
+        records = self.records.index_keywords.copy()
+        records = records.dropna()
+        records = records.str.split(";")
+        records = records.explode()
+        records = records.str.strip()
+        records = records.drop_duplicates()
+        return len(records)
 
-    if "abstract_words_cl" in records.columns:
-        keywords["Abstract words (cleaned)"] = round(
-            _count_terms(records, "abstract_words_cl")
-        )
-        records.pop("abstract_words_cl")
 
-    #
-    #  Report
-    #
+def main_information(directory="./"):
+    """Returns main statistics of the dataset."""
 
-    if "frac_num_documents" in records.columns:
-        records.pop("frac_num_documents")
-
-    if "record_no" in records.columns:
-        records.pop("record_no")
-
-    d = []
-    d += [key for key in general.keys()]
-    d += [key for key in document_types.keys()]
-    d += [key for key in authors.keys()]
-    d += [key for key in keywords.keys()]
-
-    v = []
-    v += [general[key] for key in general.keys()]
-    v += [document_types[key] for key in document_types.keys()]
-    v += [authors[key] for key in authors.keys()]
-    v += [keywords[key] for key in keywords.keys()]
-
-    #
-    #  Other columns in the dataset
-    #
-
-    others = {}
-    for column in sorted(records.columns):
-
-        if column + ":" in d or column in [
-            "abstract_author_keywords_cl",
-            "abstract_author_keywords",
-            "abstract_index_keywords_cl",
-            "abstract_index_keywords",
-            "abstract_keywords_cl",
-            "abstract_keywords",
-            "abstract",
-            "affiliations",
-            "authors_id",
-            "authors",
-            "bradford_law_zone",
-            "document_title",
-            "global_citations",
-            "global_references_count",
-            "global_references",
-            "isbn",
-            "issn",
-            "doi",
-            "keywords",
-            "local_citations",
-            "local_references",
-            "num_authors",
-            "pub_year",
-            "raw_keywords",
-            "record_no",
-            "wos_id",
-        ]:
-            continue
-
-        others[column] = round(_count_terms(records, column))
-
-    if len(others):
-        d += [key for key in others.keys()]
-        v += [others[key] for key in others.keys()]
-
-    return pd.DataFrame(
-        v,
-        columns=["value"],
-        index=pd.MultiIndex.from_arrays(
-            [
-                ["GENERAL"] * len(general)
-                + ["DOCUMENT TYPES"] * len(document_types)
-                + ["AUTHORS"] * len(authors)
-                + ["KEYWORDS"] * len(keywords)
-                + ["OTHERS"] * len(others),
-                d,
-            ],
-            names=["Category", "Item"],
-        ),
-    )
+    main_information = MainInformation(directory)
+    return main_information.report_
