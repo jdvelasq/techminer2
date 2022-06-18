@@ -34,9 +34,9 @@ from ._read_records import read_filtered_records
 
 def annual_indicators(directory="./"):
 
-    indicators = load_filtered_documents(directory)
-    indicators = indicators.assign(num_documents=1)
-    indicators = indicators[
+    records = read_filtered_records(directory)
+    records = records.assign(num_documents=1)
+    records = records[
         [
             "pub_year",
             "num_documents",
@@ -44,20 +44,16 @@ def annual_indicators(directory="./"):
             "global_citations",
         ]
     ].copy()
-    indicators = indicators.groupby("pub_year", as_index=True).sum()
-    indicators = indicators.sort_index(ascending=True, axis="index")
-    indicators = indicators.assign(
-        mean_global_citations=indicators.global_citations / indicators.num_documents
+    records = records.groupby("pub_year", as_index=True).sum()
+    records = records.sort_index(ascending=True, axis="index")
+    records = records.assign(
+        mean_global_citations=records.global_citations / records.num_documents
     )
-    indicators = indicators.assign(
-        mean_local_citations=indicators.local_citations / indicators.num_documents
+    records = records.assign(
+        mean_local_citations=records.local_citations / records.num_documents
     )
-    indicators = indicators.assign(cum_num_documents=indicators.num_documents.cumsum())
-    indicators = indicators.assign(
-        cum_global_citations=indicators.global_citations.cumsum()
-    )
-    indicators = indicators.assign(
-        cum_local_citations=indicators.local_citations.cumsum()
-    )
+    records = records.assign(cum_num_documents=records.num_documents.cumsum())
+    records = records.assign(cum_global_citations=records.global_citations.cumsum())
+    records = records.assign(cum_local_citations=records.local_citations.cumsum())
 
-    return indicators
+    return records
