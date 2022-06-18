@@ -81,29 +81,6 @@ class _MainInformation:
         self.report_ = pd.DataFrame(pdf.Value.tolist(), columns=["Value"], index=index)
 
     #####################################################################################
-    # def count_unique_terms(self, column):
-    #     return int(len(self.extract_unique_terms(column)))
-
-    # def count_terms(self, column):
-    #     return len(self.extract_terms(column))
-
-    # def count_records(self, column, value):
-    #     return len(self.records[self.records[column] == value])
-
-    # def extract_terms(self, column):
-    #     terms = self.records[column].copy()
-    #     terms = terms.str.split(";")
-    #     terms = terms.explode()
-    #     terms = terms.str.strip()
-    #     terms = terms.dropna()
-    #     return terms
-
-    # def extract_unique_terms(self, column):
-    #     terms = self.extract_terms(column)
-    #     terms = terms.drop_duplicates()
-    #     return terms
-
-    #####################################################################################
     def compute_general_information_stats(self):
         self.general_information_stats = pd.DataFrame(
             columns=["Category", "Item", "Value"]
