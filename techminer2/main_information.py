@@ -55,7 +55,7 @@ import pandas as pd
 from ._read_records import read_filtered_records
 
 
-class MainInformation:
+class _MainInformation:
     def __init__(self, directory):
         self.directory = directory
         self.records = read_filtered_records(directory)
@@ -511,5 +511,5 @@ class MainInformation:
 def main_information(directory="./"):
     """Returns main statistics of the dataset."""
 
-    main_information = MainInformation(directory)
+    main_information = _MainInformation(directory)
     return main_information.report_
