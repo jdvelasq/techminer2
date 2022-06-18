@@ -25,6 +25,7 @@ Author Local Impact
 ...     plot=False,
 ... ).head()
           num_documents  ...  avg_global_citations
+authors                  ...                      
 Wojcik D              5  ...                  3.80
 Hornuf L              3  ...                 36.67
 Arqawi S              2  ...                  2.50
