@@ -11,7 +11,8 @@ Thematic Map / Summarization
 ...     n_phrases=3,
 ...     directory=directory,
 ... )
-
+- INFO - Generating data/reports/keywords_summarization_CL_00.txt
+- INFO - Generating data/reports/keywords_summarization_CL_01.txt
 
 """
 

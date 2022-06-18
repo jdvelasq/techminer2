@@ -9,15 +9,13 @@ Thematic Map / Communities
 ...     min_occ=4, 
 ...     directory=directory,
 ... ).head()
-cluster                       CL_00  ...                         CL_04
-rn                                   ...                              
-0               innovation 013:0249  ...  financial inclusion 017:0339
-1                     bank 012:0185  ...              regtech 005:0102
-2        financial service 011:0300  ...       digitalization 005:0045
-3               regulation 011:0084  ...  fintech-innovations 005:0002
-4               technology 007:0192  ...       sustainability 004:0064
-<BLANKLINE>
-[5 rows x 5 columns]
+cluster                         CL_00           CL_01
+rn                                                   
+0                       fintech 59:97  covid-19 06:08
+1        financial technologies 12:32      risk 04:00
+2           financial inclusion 10:14                
+3                    blockchain 06:09                
+4                    regulation 06:01                
 
 """
 
