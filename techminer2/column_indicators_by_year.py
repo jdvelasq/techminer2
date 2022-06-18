@@ -29,7 +29,7 @@ from ._read_records import read_filtered_records
 
 def column_indicators_by_year(directory=None, column="authors"):
 
-    indicators = load_filtered_documents(directory)
+    indicators = read_filtered_records(directory)
     indicators = indicators.assign(num_documents=1)
     indicators[column] = indicators[column].str.split(";")
     indicators = indicators.explode(column)
