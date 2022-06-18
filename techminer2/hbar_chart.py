@@ -4,7 +4,7 @@ Hbar Chart
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "/workspaces/techminer2/sphinx/images/hbar_chart.png"
+>>> file_name = "sphinx/images/hbar_chart.png"
 >>> hbar_chart(
 ...     'author_keywords',
 ...     top_n=20,

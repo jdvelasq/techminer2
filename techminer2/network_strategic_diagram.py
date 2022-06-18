@@ -4,7 +4,7 @@ Network strategic map
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "/workspaces/techminer2/sphinx/images/network_strategic_diagram.png"
+>>> file_name = "sphinx/images/network_strategic_diagram.png"
 >>> coc_matrix = co_occurrence_matrix(
 ...     column='author_keywords', 
 ...     normalization="equivalence",

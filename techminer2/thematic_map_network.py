@@ -4,7 +4,7 @@ Thematic Map / Graph
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "/workspaces/techminer2/sphinx/images/thematic_map_network.png"
+>>> file_name = "sphinx/images/thematic_map_network.png"
 >>> thematic_map_network('author_keywords', directory=directory).savefig(file_name)
 
 .. image:: images/thematic_map_network.png

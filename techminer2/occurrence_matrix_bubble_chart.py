@@ -4,7 +4,7 @@ Occurrence Matrix / Bubble Chart
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "/workspaces/techminer2/sphinx/images/occurrence_matrix_bubble_chart.png"
+>>> file_name = "sphinx/images/occurrence_matrix_bubble_chart.png"
 >>> occurrence_matrix_bubble_chart(
 ...     directory=directory,
 ...     column='authors',

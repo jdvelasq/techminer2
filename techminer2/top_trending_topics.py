@@ -8,7 +8,7 @@ average growth rate.
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "/workspaces/techminer2/sphinx/images/top_trending_topics.png"
+>>> file_name = "sphinx/images/top_trending_topics.png"
 >>> top_trending_topics(
 ...     column="author_keywords", 
 ...     top_n=20,

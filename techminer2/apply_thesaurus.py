@@ -12,7 +12,7 @@ Apply Thesaurus
 ...     directory=directory,
 ... )
 - INFO - Creating thesaurus ...
-- INFO - Thesaurus file '/workspaces/techminer2/data/processed/test_thesaurus.txt' created.
+- INFO - Thesaurus file 'data/processed/test_thesaurus.txt' created.
 
 >>> apply_thesaurus(
 ...     thesaurus_file="keywords.txt", 

@@ -17,7 +17,7 @@ Based on the bibliometrix/R/conceptualStructure.R code.
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "/workspaces/techminer2/sphinx/images/factorial_analysis_mds_map.png"
+>>> file_name = "sphinx/images/factorial_analysis_mds_map.png"
 >>> factorial_analysis_mds_map(
 ...     'author_keywords', 
 ...     min_occ=2, 

@@ -6,7 +6,7 @@ VBar Chart
 >>> from techminer2.column_indicators import column_indicators
 >>> series = column_indicators("countries", directory=directory).num_documents.head(20)
 >>> darkness = column_indicators("countries", directory=directory).global_citations.head(20)
->>> file_name = "/workspaces/techminer2/sphinx/images/_vbar_chart.png"
+>>> file_name = "sphinx/images/_vbar_chart.png"
 >>> _vbar_chart(series, darkness).savefig(file_name)
 
 

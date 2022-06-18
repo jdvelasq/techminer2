@@ -17,7 +17,7 @@ The plot is based on the SVD technique used in T-LAB's comparative analysis.
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "/workspaces/techminer2/sphinx/images/co_occurrence_svd_map.png"
+>>> file_name = "sphinx/images/co_occurrence_svd_map.png"
 >>> co_occurrence_svd_map(
 ...     column='author_keywords',
 ...     min_occ=5,    

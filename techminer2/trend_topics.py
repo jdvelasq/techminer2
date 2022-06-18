@@ -4,7 +4,7 @@ Trend Topics
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "/workspaces/techminer2/sphinx/images/trend_topics.png"
+>>> file_name = "sphinx/images/trend_topics.png"
 >>> trend_topics('author_keywords', directory=directory).savefig(file_name)
 
 .. image:: images/trend_topics.png

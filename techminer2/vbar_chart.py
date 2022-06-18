@@ -4,7 +4,7 @@ VBar Chart
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "/workspaces/techminer2/sphinx/images/vbar_chart.png"
+>>> file_name = "sphinx/images/vbar_chart.png"
 >>> vbar_chart(
 ...     column='author_keywords',
 ...     top_n=15,

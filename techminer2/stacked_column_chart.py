@@ -4,7 +4,7 @@ Stacked column chart
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "/workspaces/techminer2/sphinx/images/stacked_column_chart.png"
+>>> file_name = "sphinx/images/stacked_column_chart.png"
 >>> from techminer2.indicators_api.collaboration_indicators import collaboration_indicators
 >>> data = collaboration_indicators("countries", directory=directory)
 >>> data = data.sort_values(by="num_documents", ascending=False)

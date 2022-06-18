@@ -4,7 +4,7 @@ Co-occurrence Matrix / Bubble Chart
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "/workspaces/techminer2/sphinx/images/co_occurrence_matrix_bubble_chart.png"
+>>> file_name = "sphinx/images/co_occurrence_matrix_bubble_chart.png"
 >>> co_occurrence_matrix_bubble_chart(
 ...     directory=directory,
 ...     column='authors',

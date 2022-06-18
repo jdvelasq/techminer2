@@ -4,7 +4,7 @@ Co-occurrence Network / Degree Plot
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "/workspaces/techminer2/sphinx/images/co_occurrence_network_degree_plot.png"
+>>> file_name = "sphinx/images/co_occurrence_network_degree_plot.png"
 >>> co_occurrence_network_degree_plot(
 ...     'author_keywords',
 ...     directory=directory,

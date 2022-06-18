@@ -5,7 +5,7 @@ Cleveland Chart
 
 
 >>> directory = "data/"
->>> file_name = "/workspaces/techminer2/sphinx/images/_cleveland_chart.png" 
+>>> file_name = "sphinx/images/_cleveland_chart.png" 
 >>> from techminer2.annual_indicators import annual_indicators
 >>> from techminer2._cleveland_chart import _cleveland_chart
 >>> _cleveland_chart(

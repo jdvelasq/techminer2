@@ -4,7 +4,7 @@ Co-occurrence Matrix / HTML
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "/workspaces/techminer2/sphinx/images/co_occurrence_matrix_html.png"
+>>> file_name = "sphinx/images/co_occurrence_matrix_html.png"
 >>> co_occurrence_matrix_html(
 ...     directory=directory, 
 ...     column='authors', 

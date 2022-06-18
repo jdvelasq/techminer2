@@ -6,7 +6,7 @@ Pie Chart
 >>> directory = "data/"
 >>> from techminer2.annual_indicators import annual_indicators
 >>> from techminer2._pie_chart import _pie_chart
->>> file_name = "/workspaces/techminer2/sphinx/images/_pie_chart.png"
+>>> file_name = "sphinx/images/_pie_chart.png"
 >>> _pie_chart(
 ...     series=annual_indicators(directory).num_documents, 
 ...     darkness=annual_indicators(directory).global_citations,

@@ -4,7 +4,7 @@ Chord Diagram
 
 # >>> from techminer2 import *
 # >>> directory = "data/"
-# >>> file_name = "/workspaces/techminer2/sphinx/images/chord_diagram.png"
+# >>> file_name = "sphinx/images/chord_diagram.png"
 
 # >>> matrix = co_occurrence_matrix(column='authors', min_occ=2, directory=directory)
 # >>> chord_diagram(matrix).savefig(file_name)

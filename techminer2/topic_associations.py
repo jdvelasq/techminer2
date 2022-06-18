@@ -5,7 +5,7 @@ Topic Associations
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "/workspaces/techminer2/sphinx/images/topic_associations.png"
+>>> file_name = "sphinx/images/topic_associations.png"
 >>> topic_associations(
 ...     'fintech', 
 ...     'author_keywords', 

@@ -6,7 +6,7 @@ Map Chart
 >>> from sklearn.decomposition import TruncatedSVD
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "/workspaces/techminer2/sphinx/images/map_chart.png"
+>>> file_name = "sphinx/images/map_chart.png"
 >>> co_occ_matrix = co_occurrence_matrix(
 ...     column='author_keywords',
 ...     min_occ=5,

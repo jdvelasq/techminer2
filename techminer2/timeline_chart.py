@@ -4,7 +4,7 @@ Timeline Chart
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "/workspaces/techminer2/sphinx/images/timeline_chart.png"
+>>> file_name = "sphinx/images/timeline_chart.png"
 >>> timeline_chart(
 ...     column='author_keywords', 
 ...     top_n=20,

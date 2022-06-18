@@ -4,7 +4,7 @@ Co-occurrence Matrix / Cluster TSNE Map
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "/workspaces/techminer2/sphinx/images/co_occurrence_matrix_cluster_tsne_map.png"
+>>> file_name = "sphinx/images/co_occurrence_matrix_cluster_tsne_map.png"
 >>> co_occurrence_matrix_cluster_tsne_map(
 ...     'author_keywords',
 ...     min_occ=2, 

@@ -4,7 +4,7 @@ Topic Dynamics
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "/workspaces/techminer2/sphinx/images/topic_dynamics.png"
+>>> file_name = "sphinx/images/topic_dynamics.png"
 >>> topic_dynamics(
 ...     column='iso_source_name', 
 ...     top_n=10, 

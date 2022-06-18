@@ -4,7 +4,7 @@ Word Cloud
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "/workspaces/techminer2/sphinx/images/word_cloud.png"
+>>> file_name = "sphinx/images/word_cloud.png"
 >>> word_cloud(
 ...     column='author_keywords', 
 ...     top_n=50, 

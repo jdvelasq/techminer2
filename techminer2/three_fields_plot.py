@@ -4,7 +4,7 @@ Three fields plot
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "/workspaces/techminer2/sphinx/images/three_fields_plot.png"
+>>> file_name = "sphinx/images/three_fields_plot.png"
 >>> three_fields_plot(
 ...     directory=directory,
 ...     left_column='authors',

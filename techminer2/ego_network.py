@@ -4,7 +4,7 @@ Ego Network
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "/workspaces/techminer2/sphinx/images/ego_network.png"
+>>> file_name = "sphinx/images/ego_network.png"
 >>> ego_network(
 ...     'block-chain',
 ...     'author_keywords', 

@@ -4,7 +4,7 @@ Tree Map
 
 
 >>> directory = "data/"
->>> file_name = "/workspaces/techminer2/sphinx/images/_tree_map.png"
+>>> file_name = "sphinx/images/_tree_map.png"
 >>> from techminer2.annual_indicators import annual_indicators
 >>> series = annual_indicators(directory).num_documents
 >>> darkness = annual_indicators(directory).global_citations

@@ -5,7 +5,7 @@ Lotka's Law
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "/workspaces/techminer2/sphinx/images/lotka.png"
+>>> file_name = "sphinx/images/lotka.png"
 >>> lotka_law(directory=directory).savefig(file_name)
 
 .. image:: images/lotka.png

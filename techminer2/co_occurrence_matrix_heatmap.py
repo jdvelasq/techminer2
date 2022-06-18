@@ -4,7 +4,7 @@ Co-occurrence Matrix / Heatmap
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "/workspaces/techminer2/sphinx/images/co_occurrence_matrix_heatmap.png"
+>>> file_name = "sphinx/images/co_occurrence_matrix_heatmap.png"
 >>> co_occurrence_matrix_heatmap(
 ...     directory=directory, 
 ...     column='authors', 

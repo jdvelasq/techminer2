@@ -4,7 +4,7 @@ Co-occurrence Matrix / Manifold Map
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "/workspaces/techminer2/sphinx/images/co_occurrence_matrix_manifold.png"
+>>> file_name = "sphinx/images/co_occurrence_matrix_manifold.png"
 >>> co_occurrence_matrix_manifold(
 ...     'author_keywords',
 ...     min_occ=2, 

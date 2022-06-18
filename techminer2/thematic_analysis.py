@@ -41,7 +41,7 @@ CLUSTER
 Name: num_documents, dtype: int64
 
 
->>> file_name = "/workspaces/techminer2/sphinx/images/thematic_analysis__mds_map.png"
+>>> file_name = "sphinx/images/thematic_analysis__mds_map.png"
 >>> analysis.map().savefig(file_name)
 
 .. image:: images/thematic_analysis__mds_map.png

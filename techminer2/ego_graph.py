@@ -4,7 +4,7 @@ Ego Graph
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "/workspaces/techminer2/sphinx/images/ego_graph.png"
+>>> file_name = "sphinx/images/ego_graph.png"
 >>> ego_graph(
 ...     'block-chain',
 ...     'author_keywords', 

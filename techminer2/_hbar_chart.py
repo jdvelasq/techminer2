@@ -3,7 +3,7 @@ HBar Chart
 ===============================================================================
 
 >>> directory = "data/"
->>> file_name = "/workspaces/techminer2/sphinx/images/_hbar_chart.png"
+>>> file_name = "sphinx/images/_hbar_chart.png"
 >>> from techminer2.column_indicators import column_indicators
 >>> series = column_indicators(column="countries", directory=directory).num_documents.head(20)
 >>> darkness = column_indicators("countries",directory=directory).global_citations.head(20)

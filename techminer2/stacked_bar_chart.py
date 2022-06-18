@@ -4,7 +4,7 @@ Stacked bar chart
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "/workspaces/techminer2/sphinx/images/stacked_bar_chart.png"
+>>> file_name = "sphinx/images/stacked_bar_chart.png"
 >>> data = collaboration_indicators("countries", directory=directory)
 >>> data = data.sort_values(by="num_documents", ascending=False)
 >>> data = data[["single_publication", "multiple_publication"]].head(20)

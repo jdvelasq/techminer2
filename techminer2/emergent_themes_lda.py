@@ -25,7 +25,7 @@ Modeling of Emergent Themes with LDA
 <BLANKLINE>
 [5 rows x 6 columns]
 
->>> file_name = "/workspaces/techminer2/sphinx/images/emergent_themes_lda_mds_map.png"
+>>> file_name = "sphinx/images/emergent_themes_lda_mds_map.png"
 >>> analysis.map().savefig(file_name)
 
 .. image:: images/emergent_themes_lda_mds_map.png

@@ -21,7 +21,7 @@ Based on the bibliometrix/R/conceptualStructure.R code.
 >>> from sklearn.manifold import MDS
 >>> directory = "data/"
 >>> coc_matrix = co_occurrence_matrix('author_keywords', min_occ=4, directory=directory)
->>> file_name = "/workspaces/techminer2/sphinx/images/factorial_analysis_manifold_silhouette.png"
+>>> file_name = "sphinx/images/factorial_analysis_manifold_silhouette.png"
 >>> factorial_analyzer = Factorial_analysis_manifold(
 ...     coc_matrix, 
 ...     manifold_method=MDS(random_state=0), 
@@ -57,7 +57,7 @@ rn                              ...
 
 
 
->>> file_name = "/workspaces/techminer2/sphinx/images/factorial_analysis_manifold_map.png"
+>>> file_name = "sphinx/images/factorial_analysis_manifold_map.png"
 >>> factorial_analyzer.map().savefig(file_name)
 
 .. image:: images/factorial_analysis_manifold_map.png

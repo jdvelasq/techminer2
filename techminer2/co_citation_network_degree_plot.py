@@ -5,7 +5,7 @@ Co-citation Network / Degree Plot
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "/workspaces/techminer2/sphinx/images/co_citation_network_degree_plot.png"
+>>> file_name = "sphinx/images/co_citation_network_degree_plot.png"
 >>> co_citation_network_degree_plot(directory=directory).savefig(file_name)
 
 .. image:: images/co_citation_network_degree_plot.png

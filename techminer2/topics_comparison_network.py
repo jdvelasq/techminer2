@@ -4,7 +4,7 @@ Topics Comparison Network
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "/workspaces/techminer2/sphinx/images/topics_comparison_network.png"
+>>> file_name = "sphinx/images/topics_comparison_network.png"
 >>> topics_comparison_network(
 ...     'block-chain',
 ...     'fintech',

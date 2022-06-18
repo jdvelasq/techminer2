@@ -4,7 +4,7 @@ Dotted Gantt Chart
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "/workspaces/techminer2/sphinx/images/dotted_gantt_chart.png"
+>>> file_name = "sphinx/images/dotted_gantt_chart.png"
 >>> dotted_gantt_chart(
 ...     column='author_keywords',
 ...     top_n=20, 

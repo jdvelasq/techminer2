@@ -4,7 +4,7 @@ Collaboration Network / Graph
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "/workspaces/techminer2/sphinx/images/collaboration_network_graph.png"
+>>> file_name = "sphinx/images/collaboration_network_graph.png"
 >>> collaboration_network_graph('authors', min_occ=2, directory=directory).savefig(file_name)
 
 .. image:: images/collaboration_network_graph.png

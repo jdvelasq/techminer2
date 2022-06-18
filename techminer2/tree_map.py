@@ -4,7 +4,7 @@ Tree Map
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "/workspaces/techminer2/sphinx/images/tree_map.png"
+>>> file_name = "sphinx/images/tree_map.png"
 >>> tree_map(
 ...     'author_keywords',
 ...     top_n=15, 

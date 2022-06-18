@@ -6,7 +6,7 @@ Builds a coupling network from a coupling matrix.
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "/workspaces/techminer2/sphinx/images/coupling_network_degree_plot.png"
+>>> file_name = "sphinx/images/coupling_network_degree_plot.png"
 >>> coupling_network_degree_plot(
 ...     column='author_keywords',
 ...     min_occ=4, 

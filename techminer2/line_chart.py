@@ -4,7 +4,7 @@ Line Chart
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "/workspaces/techminer2/sphinx/images/line_chart.png"
+>>> file_name = "sphinx/images/line_chart.png"
 >>> line_chart(
 ...     'author_keywords', 
 ...     top_n=15, 
