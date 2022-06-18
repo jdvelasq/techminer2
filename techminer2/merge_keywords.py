@@ -26,7 +26,7 @@ def merge_keywords(main_keyword, keywords_to_merge, directory="./"):
 
     """
 
-    thesaurus_file = join(directory, "keywords.txt")
+    thesaurus_file = join(directory, "processed", "keywords.txt")
     if isfile(thesaurus_file):
         th = load_file_as_dict(thesaurus_file)
     else:

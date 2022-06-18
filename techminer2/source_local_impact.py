@@ -16,6 +16,7 @@ Source Local Impact
 
 >>> source_local_impact(impact_measure='h_index', top_n=20, directory=directory, plot=False).head()
                          num_documents  ...  avg_global_citations
+iso_source_name                         ...                      
 FINANCIAL INNOV                     11  ...                 12.00
 SUSTAINABILITY                      15  ...                  6.47
 ENVIRON PLANN A                      4  ...                  7.50

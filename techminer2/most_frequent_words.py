@@ -9,7 +9,7 @@ Most Frequent Words
 ...     'author_keywords', 
 ...     top_n=20,
 ...     directory=directory,
-... ).savefig(file_name)
+... ).write_image(file_name)
 
 .. image:: images/most_frequent_words.png
     :width: 700px
