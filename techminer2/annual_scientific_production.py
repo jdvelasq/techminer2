@@ -14,10 +14,7 @@ Annual Scientific Production
 
 
 """
-import matplotlib.pyplot as plt
-import matplotlib.ticker as tick
 import plotly.express as px
-from matplotlib.ticker import MaxNLocator
 
 from .annual_indicators import annual_indicators
 
