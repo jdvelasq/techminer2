@@ -16,17 +16,6 @@ pub_year                 ...
 <BLANKLINE>
 [6 rows x 8 columns]
 
->>> from techminer2._line_chart import _line_chart
->>> file_name = "/workspaces/techminer2/sphinx/images/annual_scientific_production_.png"
->>> _line_chart(
-...     annual_indicators(directory=directory).num_documents, 
-...     title="Annual Scientific Production",
-... ).savefig(file_name)
-
-.. image:: images/annual_scientific_production_.png
-    :width: 700px
-    :align: center
-
 """
 
 from ._read_records import read_filtered_records
