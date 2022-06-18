@@ -4,7 +4,7 @@ Network Plot
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "/workspaces/techminer2/sphinx/images/network_plot.png"
+>>> file_name = "sphinx/images/network_plot.png"
 >>> coc_matrix = co_occurrence_matrix(
 ...     column='author_keywords', 
 ...     min_occ=7, 
