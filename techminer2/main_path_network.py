@@ -11,7 +11,7 @@ from ._read_records import read_filtered_records
 
 class _MainPathNetwork:
     def __init__(self, directory):
-        self.documents = load_filtered_documents(directory)
+        self.documents = read_filtered_records(directory)
         self.run()
 
     def create_sequence(self):

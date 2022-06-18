@@ -172,7 +172,7 @@ def keywords_summarization(
         keywords = [keywords]
     keywords = [word for word in keywords if word != ""]
 
-    documents = load_filtered_documents(directory)
+    documents = read_filtered_records(directory)
     expanded_keywords = expand_keywords(keywords)
     documents = select_documents(documents, column, expanded_keywords)
     documents = documents.head(n_phrases)
@@ -399,7 +399,7 @@ def keywords_summarization(
 #         keywords = [keywords]
 #     keywords = [word for word in keywords if word != ""]
 
-#     documents = load_filtered_documents(directory)
+#     documents = read_filtered_records(directory)
 
 #     expanded_keywords = expand_keywords(keywords)
 #     documents_id = select_documents(documents, column, expanded_keywords)

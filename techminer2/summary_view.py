@@ -70,7 +70,7 @@ def summary_view(directory="./"):
     pandas.DataFrame
         Coverage statistcs
     """
-    documents = load_filtered_documents(directory)
+    documents = read_filtered_records(directory)
     columns = sorted(documents.columns)
     n_documents = len(documents)
     report = pd.DataFrame(

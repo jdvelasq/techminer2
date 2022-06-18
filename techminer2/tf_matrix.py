@@ -38,7 +38,7 @@ def tf_matrix(
     directory="./",
 ):
 
-    documents = load_filtered_documents(directory)
+    documents = read_filtered_records(directory)
 
     documents = documents.reset_index()
     documents = documents[[column, "record_no"]].copy()

@@ -18,7 +18,7 @@ Column Explorer
 #     def __init__(self, directory, top_n=100):
 
 #         # Data
-#         self.documents = load_filtered_documents(directory)
+#         self.documents = read_filtered_records(directory)
 #         columns = sorted(self.documents.columns)
 
 #         # Left panel controls

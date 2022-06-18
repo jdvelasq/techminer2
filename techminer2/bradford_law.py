@@ -43,7 +43,7 @@ def bradford_law(
 ):
 
     # -----------------------------------------------------------------------------------
-    documents = load_filtered_documents(directory)
+    documents = read_filtered_records(directory)
     documents = documents.copy()
     documents = documents.assign(num_documents=1)
     sources = documents.groupby("iso_source_name", as_index=False).agg(

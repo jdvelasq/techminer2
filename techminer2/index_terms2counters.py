@@ -17,7 +17,7 @@ def index_terms2counters(
     sep,
 ):
 
-    documents = load_filtered_documents(directory)
+    documents = read_filtered_records(directory)
     table = table.copy()
 
     documents = documents.assign(num_documents=1)

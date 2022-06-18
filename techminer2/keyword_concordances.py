@@ -36,7 +36,7 @@ from .thesaurus import load_file_as_dict
 def keyword_concordances(keyword, top_n=50, directory="./"):
 
     # ---< Sort abstracts by importance >------------------------------------------------
-    documents = load_filtered_documents(directory)
+    documents = read_filtered_records(directory)
     record_no2citation = dict(
         zip(documents["record_no"], documents["global_citations"])
     )

@@ -50,7 +50,7 @@ def impact_indicators(column, sep="; ", directory="./"):
         Impact analysis of the column
     """
 
-    documents = load_filtered_documents(directory)
+    documents = read_filtered_records(directory)
 
     if column not in [
         "authors",

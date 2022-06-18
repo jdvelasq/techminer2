@@ -24,7 +24,7 @@ from ._read_records import read_filtered_records
 
 def document_indicators(directory="./"):
 
-    documents = load_filtered_documents(directory)
+    documents = read_filtered_records(directory)
 
     max_pub_year = documents.pub_year.dropna().max()
 

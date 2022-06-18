@@ -28,7 +28,7 @@ def collaboration_indicators(
     sep="; ",
     directory="./",
 ):
-    documents = load_filtered_documents(directory)
+    documents = read_filtered_records(directory)
     documents = documents.assign(num_documents=1)
     documents["single_publication"] = documents[column].map(
         lambda x: 1 if isinstance(x, str) and len(x.split(";")) == 1 else 0

@@ -102,7 +102,7 @@ def _average_documents_per_year(documents, column, time_window, sep="; "):
 
 def growth_indicators(column, sep="; ", time_window=2, directory="./"):
 
-    documents = load_filtered_documents(directory)
+    documents = read_filtered_records(directory)
 
     ndpp = _num_documents_per_period(
         documents=documents, column=column, time_window=time_window, sep=sep

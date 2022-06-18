@@ -56,7 +56,7 @@ def _stemming(directory, column, pattern, stemmer="porter", sep="; ", operator="
         raise ValueError(f"Stemmer {stemmer} not supported")
 
     # explodes the column
-    documents = load_filtered_documents(directory)
+    documents = read_filtered_records(directory)
     documents = documents[[column]]
     documents = documents.dropna()
     documents[column] = documents[column].str.split(sep)

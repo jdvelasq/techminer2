@@ -46,7 +46,7 @@ def _lotka_core_authors(directory="./"):
     pandas.DataFrame
         Dataframe with the core authors of the records
     """
-    documents = load_filtered_documents(directory)
+    documents = read_filtered_records(directory)
     documents = documents.copy()
 
     z = column_indicators(column="authors", sep="; ", directory=directory)[

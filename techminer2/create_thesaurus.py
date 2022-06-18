@@ -42,7 +42,7 @@ def create_thesaurus(
     directory="./",
 ):
 
-    documents = load_filtered_documents(directory)
+    documents = read_filtered_records(directory)
     thesaurus_file = os.path.join(directory, "processed", thesaurus_file)
 
     if column not in documents.columns:

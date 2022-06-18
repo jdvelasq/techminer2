@@ -42,7 +42,7 @@ def core_sources(directory="./"):
     pandas.DataFrame
         Dataframe with the core sources of the records
     """
-    documents = load_filtered_documents(directory)
+    documents = read_filtered_records(directory)
     documents["num_documents"] = 1
     documents = explode(
         documents[

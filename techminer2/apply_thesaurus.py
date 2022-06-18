@@ -46,7 +46,7 @@ def apply_thesaurus(
     def apply_unstrict(x):
         return thesaurus.apply_as_dict(x, strict=False)
 
-    documents = load_filtered_documents(directory)
+    documents = read_filtered_records(directory)
     thesaurus = read_textfile(os.path.join(directory, "processed", thesaurus_file))
     thesaurus = thesaurus.compile_as_dict()
     if strict:

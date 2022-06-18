@@ -55,7 +55,7 @@ def document_viewer(
     directory="./",
 ):
 
-    documents = load_filtered_documents(directory)
+    documents = read_filtered_records(directory)
     contains = documents[column].str.contains(text, case=case, flags=flags, regex=regex)
     contains = contains.dropna()
     contains = contains[contains]
