@@ -14,24 +14,24 @@ FINTECH for bankingtech, tradetech, lendtech, insurtech, wealthtech, paytech, ri
 cryptocurrencies, and BLOCKCHAIN, and the dsai techniques including complex system
 methods, quantitative methods, intelligent interactions, recognition and responses, data
 analytics, deep learning, federated learning, privacy-preserving processing, augmentation,
-optimization, and system intelligence enhancement... From the theoretical point of view,
-our research indicates, that besides key growth driving factors, outlined in existing
+optimization, and system intelligence enhancement... Fourth, the traditional assets, gold
+and oil, as well as modern assets, green bonds, are useful as good hedgers compared with
+other assets because shock transmissions from them to FINTECH, kftx are below 0.1% and,
+more importantly, the total volatility spill-over of all assets in the sample is
+moderately average, accounting for 44.39%... From the theoretical point of view, our
+research indicates, that besides key growth driving factors, outlined in existing
 literature, such as strategy, prerequisites for rapid growth, business model choice,
 international business networks, entrepreneur's characteristics, product development or
 theoretical frameworks for development, especially within the international market, the
-quality of digital logistics performance of FINTECH companies seem to matter... Internet
-banking, mobile banking, atm,cash deposit machines, instant payment services, online
-trading in stock markets, online funds transfers, e-wallets,wealth management, peer to
-peer lending, BLOCKCHAIN technology are various FINTECH products and services... The most
+quality of digital logistics performance of FINTECH companies seem to matter... The most
 important factors that influence the level of satisfaction when using FINTECH services
 were considered: comfort and ease of use, legal regulations, ease of account opening,
 mobile payments features, crowdfunding options, international money transfers features,
 reduced costs associated with transactions, peer-to-peer lending, insurances options,
-online brokerage, cryptocoins options and exchange options... Fourth, the traditional
-assets, gold and oil, as well as modern assets, green bonds, are useful as good hedgers
-compared with other assets because shock transmissions from them to FINTECH, kftx are
-below 0.1% and, more importantly, the total volatility spill-over of all assets in the
-sample is moderately average, accounting for 44.39%.
+online brokerage, cryptocoins options and exchange options... Internet banking, mobile
+banking, atm,cash deposit machines, instant payment services, online trading in stock
+markets, online funds transfers, e-wallets,wealth management, peer to peer lending,
+BLOCKCHAIN technology are various FINTECH products and services.
 
 
 
@@ -46,8 +46,8 @@ import nltk
 import pandas as pd
 from nltk.stem import PorterStemmer
 
-from .load_abstracts import load_abstracts
 from ._read_records import read_filtered_records
+from .load_abstracts import load_abstracts
 
 
 def abstract_summarization(
@@ -61,17 +61,17 @@ def abstract_summarization(
         texts = [texts]
 
     abstracts = load_abstracts(directory)
-    documents = load_filtered_documents(directory)
+    documents = read_filtered_records(directory)
 
     regex = r"\b(" + "|".join(texts) + r")\b"
 
-    abstracts = abstracts[abstracts.text.str.contains(regex, regex=True)]
-    abstracts = abstracts[["record_no", "text"]]
+    abstracts = abstracts[abstracts.phrase.str.contains(regex, regex=True)]
+    abstracts = abstracts[["record_no", "phrase"]]
 
     # -----------------------------------------------------------------------------------
     porter_stemmer = PorterStemmer()
 
-    abstracts["formatted_text"] = abstracts.text.copy()
+    abstracts["formatted_text"] = abstracts.phrase.copy()
     abstracts["formatted_text"] = abstracts["formatted_text"].str.replace(
         r"[[0-9]]*", " "
     )
@@ -111,11 +111,11 @@ def abstract_summarization(
     abstracts = abstracts.sort_values(by=["sentence_scores"], ascending=False)
 
     abstracts = abstracts.head(n_phrases)
-    abstracts["text"] = abstracts.text.str.capitalize()
+    abstracts["phrase"] = abstracts.phrase.str.capitalize()
 
     for text in texts:
-        abstracts["text"] = abstracts["text"].str.replace(text, text.upper())
-        abstracts["text"] = abstracts["text"].str.replace(
+        abstracts["phrase"] = abstracts["phrase"].str.replace(text, text.upper())
+        abstracts["phrase"] = abstracts["phrase"].str.replace(
             text.capitalize(), text.upper()
         )
 
@@ -124,7 +124,7 @@ def abstract_summarization(
     ) as out_file:
         for index, row in abstracts.iterrows():
             paragraph = textwrap.fill(
-                row["text"],
+                row["phrase"],
                 width=90,
             )
             document_id = documents[documents.record_no == row["record_no"]].document_id
@@ -133,7 +133,7 @@ def abstract_summarization(
             print(paragraph, file=out_file)
             print("\n", file=out_file)
 
-    summary = ".. ".join(abstracts.text.values)
+    summary = ".. ".join(abstracts.phrase.values)
 
     print(textwrap.fill(summary, width=90))
 
