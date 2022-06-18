@@ -8,6 +8,7 @@ Impact Indicators
 >>> directory = "data/"
 >>> impact_indicators("countries", directory=directory).head()
             num_documents  ...  avg_global_citations
+countries                  ...                      
 armenia                 1  ...                  1.00
 australia              18  ...                 17.67
 austria                 4  ...                  0.75

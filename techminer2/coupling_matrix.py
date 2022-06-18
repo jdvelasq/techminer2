@@ -93,7 +93,7 @@ def coupling_by_references_matrix_(
     directory="./",
 ):
     # selects the top_n most cited documents
-    documents = load_filtered_documents(directory=directory)
+    documents = read_filtered_records(directory=directory)
     documents = documents.sort_values(by=metric, ascending=False)
     documents = documents.head(top_n)
     record_no = documents.record_no.values.copy()
@@ -177,7 +177,7 @@ def coupling_by_column_matrix_(
         sep=sep,
     )
 
-    documents = load_filtered_documents(directory=directory)
+    documents = read_filtered_records(directory=directory)
     documents = documents.sort_values(by=metric, ascending=False)
     record_no = documents.head(top_n).record_no.values.copy()
 

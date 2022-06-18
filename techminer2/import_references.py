@@ -12,10 +12,10 @@ Import a 'cited by' scopus file with references.
 >>> from techminer2 import *
 >>> directory = "data/"
 >>> import_references(directory=directory, disable_progress_bar=True)
-- INFO - 5123 raw records found in /workspaces/techminer2/data/raw/references.
+- INFO - 5123 raw records found in data/raw/references.
 - INFO - Creating references file
-- INFO - References table saved to /workspaces/techminer2/data/processed/cited_references_table.csv
-- INFO - References table saved to /workspaces/techminer2/data/processed/references.csv
+- INFO - References table saved to data/processed/cited_references_table.csv
+- INFO - References table saved to data/processed/references.csv
 
 """
 from os.path import join

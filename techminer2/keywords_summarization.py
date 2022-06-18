@@ -10,7 +10,7 @@ Keywords Summarization
 ...     n_phrases=5,    
 ...     directory=directory,
 ... )
-- INFO - Generating /workspaces/techminer2/data/keywords_summarization.txt
+- INFO - Generating data/reports/keywords_summarization.txt
 
 """
 

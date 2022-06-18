@@ -6,6 +6,7 @@ Growth Indicators
 >>> directory = "data/"
 >>> growth_indicators(column="author_keywords", directory=directory).head()
                         before 2020  ...  average_growth_rate
+author_keywords                      ...                     
 fintech                          42  ...                 21.5
 financial technologies           11  ...                  4.0
 blockchain                        9  ...                  1.0

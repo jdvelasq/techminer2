@@ -11,10 +11,10 @@ Co-occurrence Network / Summarization
 ...     n_phrases=3,
 ...     directory=directory,
 ... )
-- INFO - Generating /workspaces/techminer2/data/keywords_summarization_CL_00.txt
-- INFO - Generating /workspaces/techminer2/data/keywords_summarization_CL_01.txt
-- INFO - Generating /workspaces/techminer2/data/keywords_summarization_CL_02.txt
-- INFO - Generating /workspaces/techminer2/data/keywords_summarization_CL_03.txt
+- INFO - Generating data/reports/keywords_summarization_CL_00.txt
+- INFO - Generating data/reports/keywords_summarization_CL_01.txt
+- INFO - Generating data/reports/keywords_summarization_CL_02.txt
+- INFO - Generating data/reports/keywords_summarization_CL_03.txt
 
 
 """
