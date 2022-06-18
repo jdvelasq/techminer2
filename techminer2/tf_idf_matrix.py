@@ -6,18 +6,17 @@ TF-IDF Matrix
 >>> from techminer2 import *
 >>> directory = "data/"
 >>> tf_idf_matrix('authors', min_occ=2, directory=directory).head()
-authors   Wojcik D Rabbani MR Hornuf L  ... Giudici P Iman N Zavolokina L
-#d               5          3        3  ...         2      2            2
-#c             19         39       110  ...       18     19           54 
-record_no                               ...                              
-2016-0001      0.0        0.0      0.0  ...       0.0    0.0      0.57735
-2017-0006      0.0        0.0      0.0  ...       0.0    0.0      0.57735
-2017-0008      0.0        0.0      0.0  ...       0.0    0.0      0.00000
-2018-0000      0.0        0.0      0.0  ...       0.0    0.0      0.00000
-2018-0004      0.0        0.0      0.0  ...       0.0    0.0      0.00000
+authors   Wojcik D Rabbani MR Hornuf L  ...  Zhang MX Daragmeh A Kauffman RJ
+#d               5          3        3  ...         2          2           2
+#c             19         39       110  ...       12         3           228
+record_no                               ...                                 
+2016-0001      0.0        0.0      0.0  ...  0.000000        0.0         0.0
+2017-0006      0.0        0.0      0.0  ...  0.000000        0.0         0.0
+2017-0008      0.0        0.0      0.0  ...  0.707107        0.0         0.0
+2018-0000      0.0        0.0      0.0  ...  0.000000        0.0         0.5
+2018-0004      0.0        0.0      0.0  ...  0.000000        0.0         0.0
 <BLANKLINE>
 [5 rows x 38 columns]
-
 
 """
 import pandas as pd

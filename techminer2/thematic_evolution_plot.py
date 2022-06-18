@@ -13,15 +13,13 @@ Thematic evolution plot
 ...     min_occ=3,
 ...     directory=directory,
 ... ).head()
-cluster                            CL_00  ...                               CL_06
-rn                                        ...                                    
-0                       fintech 139:1285  ...                    startup 004:0104
-1        financial technologies 028:0225  ...      financial institution 003:0219
-2           financial inclusion 017:0339  ...           entrepreneurship 003:0101
-3                  crowdfunding 008:0116  ...  entrepreneurial ecosystem 003:0005
-4          financial innovation 008:0044  ...                                    
-<BLANKLINE>
-[5 rows x 7 columns]
+cluster                          CL_00               CL_01
+rn                                                        
+0                       fintech 26:797   innovation 06:222
+1        financial technologies 07:109   technology 03:156
+2             financial service 06:288         bank 03:147
+3                    blockchain 05:099  retail bank 03:053
+4                business model 04:172
 
 
 >>> user_filters(directory=directory, quiet=True, first_year=2019, last_year=2020)
@@ -31,15 +29,7 @@ rn                                        ...
 ...     min_occ=3,
 ...     directory=directory,
 ... ).head()
-cluster                            CL_00  ...                               CL_06
-rn                                        ...                                    
-0                       fintech 139:1285  ...                    startup 004:0104
-1        financial technologies 028:0225  ...      financial institution 003:0219
-2           financial inclusion 017:0339  ...           entrepreneurship 003:0101
-3                  crowdfunding 008:0116  ...  entrepreneurial ecosystem 003:0005
-4          financial innovation 008:0044  ...                                    
-<BLANKLINE>
-[5 rows x 7 columns]
+
 
 >>> user_filters(directory=directory, quiet=True, first_year=2021, last_year=2021)
 >>> ind_2021_2021 = thematic_map_indicators('author_keywords', min_occ=3, directory=directory)
@@ -48,15 +38,7 @@ rn                                        ...
 ...     min_occ=3,
 ...     directory=directory,
 ... ).head()
-cluster                            CL_00  ...                               CL_06
-rn                                        ...                                    
-0                       fintech 139:1285  ...                    startup 004:0104
-1        financial technologies 028:0225  ...      financial institution 003:0219
-2           financial inclusion 017:0339  ...           entrepreneurship 003:0101
-3                  crowdfunding 008:0116  ...  entrepreneurial ecosystem 003:0005
-4          financial innovation 008:0044  ...                                    
-<BLANKLINE>
-[5 rows x 7 columns]
+
 
 >>> thematic_evolution_plot(
 ...     indicators=[ind_2016_2018, ind_2019_2020, ind_2021_2021],
