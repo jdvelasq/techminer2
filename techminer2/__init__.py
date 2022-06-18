@@ -88,7 +88,7 @@ from .find_keyword import find_keyword
 from .find_string import find_string
 from .gantt_chart import gantt_chart
 from .growth_indicators import growth_indicators
-from .hbar_chart import hbar_chart
+from .hbar_chart import column_chart
 from .heat_map import heat_map
 from .impact_indicators import impact_indicators
 from .import_references import import_references
