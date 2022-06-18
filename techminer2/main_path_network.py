@@ -3,7 +3,7 @@ Main Path Network
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 
 """
 from ._read_records import read_filtered_records

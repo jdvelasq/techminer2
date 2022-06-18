@@ -3,7 +3,7 @@ Chord Diagram
 ===============================================================================
 
 # >>> from techminer2 import *
-# >>> directory = "/workspaces/techminer2/data/"
+# >>> directory = "data/"
 # >>> file_name = "/workspaces/techminer2/sphinx/images/chord_diagram.png"
 
 # >>> matrix = co_occurrence_matrix(column='authors', min_occ=2, directory=directory)
@@ -263,11 +263,11 @@ class ChordDiagram:
                 x1, y1 = p1
                 x2, y2 = p2
                 xb = [
-                    (1 - t) ** 2 * x0 + 2 * t * (1 - t) * x1 + t ** 2 * x2
+                    (1 - t) ** 2 * x0 + 2 * t * (1 - t) * x1 + t**2 * x2
                     for t in np.linspace(0.0, 1.0, n_bezier)
                 ]
                 yb = [
-                    (1 - t) ** 2 * y0 + 2 * t * (1 - t) * y1 + t ** 2 * y2
+                    (1 - t) ** 2 * y0 + 2 * t * (1 - t) * y1 + t**2 * y2
                     for t in np.linspace(0.0, 1.0, n_bezier)
                 ]
                 ax.plot(xb, yb, **kwargs)

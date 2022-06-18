@@ -4,7 +4,7 @@ Emergent Themes NMF / Themes
 
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> emergent_themes_nmf_themes(
 ...     column="author_keywords",
 ...     min_occ=4,

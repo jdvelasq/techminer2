@@ -3,7 +3,7 @@ World Map
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> file_name = "/workspaces/techminer2/sphinx/images/_world_map.png"
 >>> from .column_indicators import column_indicators
 >>> series = column_indicators("countries", directory=directory).num_documents

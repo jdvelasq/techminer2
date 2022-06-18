@@ -3,7 +3,7 @@ Keywords Summarization
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> keywords_summarization(
 ...     column="author_keywords",
 ...     keywords=["fintech", "block-chain"],

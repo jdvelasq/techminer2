@@ -3,7 +3,7 @@ Topics Comparison Network
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> file_name = "/workspaces/techminer2/sphinx/images/topics_comparison_network.png"
 >>> topics_comparison_network(
 ...     'block-chain',

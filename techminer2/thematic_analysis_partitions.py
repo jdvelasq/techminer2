@@ -4,7 +4,7 @@ Thematic Analysis / Partitions
 
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> thematic_analysis_partitions(
 ...     column="author_keywords",
 ...     min_occ=4,

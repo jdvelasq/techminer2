@@ -3,7 +3,7 @@ Co-citation Network / Communities
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> co_citation_network_communities(directory=directory).head()
 cluster                                            CL_00  ...                                              CL_02
 rn                                                        ...                                                   

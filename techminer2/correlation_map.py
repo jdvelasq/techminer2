@@ -3,7 +3,7 @@ Correlation Map
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> file_name = "/workspaces/techminer2/sphinx/images/auto_corr_map.png"
 >>> matrix = auto_corr_matrix('authors', min_occ=2, directory=directory)
 >>> correlation_map(matrix).savefig(file_name)
@@ -173,7 +173,7 @@ def correlation_map(
     factor = 0.05
     rx = factor * (xlim[1] - xlim[0])
     ry = factor * (ylim[1] - ylim[0])
-    radious = np.sqrt(rx ** 2 + ry ** 2)
+    radious = np.sqrt(rx**2 + ry**2)
 
     for label in nodes.name:
 

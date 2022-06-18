@@ -3,7 +3,7 @@ Column Indicators
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> column_indicators('authors',directory=directory).head()
             num_documents  global_citations  local_citations
 authors                                                     
@@ -22,14 +22,14 @@ from ._read_records import read_filtered_records
 
 def column_indicators(
     column,
-    sep="; ",
+    sep=";",
     directory="./",
 ):
     """
     Column Indicators
     """
 
-    report = load_filtered_documents(directory)
+    report = read_filtered_records(directory)
     report = report.assign(num_documents=1)
     report = report[
         [column, "num_documents", "global_citations", "local_citations"]

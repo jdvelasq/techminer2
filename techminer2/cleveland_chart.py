@@ -1,63 +1,78 @@
 """
-Cleveland Chart (New)
+Cleveland Chart (updated to use Plotly)
 ===============================================================================
 
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
->>> file_name = "/workspaces/techminer2/sphinx/images/cleveland_chart.jpg"
+>>> directory = "data/"
+>>> file_name = "sphinx/images/cleveland_chart.jpg"
 >>> cleveland_chart(
 ...    column="author_keywords", 
 ...    top_n=20,
 ...    directory=directory,
-... ).savefig(file_name)
+... ).write_image(file_name)
 
 .. image:: images/cleveland_chart.jpg
     :width: 700px
     :align: center
 
 """
-
+import plotly.express as px
 
 from ._cleveland_chart import _cleveland_chart
+from .column_indicators import column_indicators
 from .topic_view import topic_view
 
 
 def cleveland_chart(
     column,
-    metric="num_documents",
     top_n=None,
-    min_occ=1,
+    min_occ=None,
     max_occ=None,
-    sort_values=None,
-    sort_index=None,
     directory="./",
-    #
-    color="k",
-    figsize=(9, 6),
-    plot=True,
 ):
 
-    indicators = topic_view(
+    indicators = column_indicators(
         column=column,
-        metric=metric,
-        top_n=top_n,
-        min_occ=min_occ,
-        max_occ=max_occ,
-        sort_values=sort_values,
-        sort_index=sort_index,
         directory=directory,
+    ).num_documents
+
+    indicators = indicators.sort_values(ascending=False)
+
+    if top_n is not None:
+        indicators = indicators.head(top_n)
+
+    if min_occ is not None:
+        indicators = indicators[indicators >= min_occ]
+
+    if max_occ is not None:
+        indicators = indicators[indicators <= max_occ]
+
+    fig = px.scatter(
+        x=indicators.values,
+        y=indicators.index,
+        title="Most relevant sources",
+        text=indicators.astype(str),
+        labels={"x": "Num Documents", "y": column.replace("_", " ").title()},
+    )
+    fig.update_traces(marker=dict(size=10, color="black"))
+    fig.update_traces(textposition="middle right")
+    fig.update_traces(line=dict(color="black"))
+    fig.update_layout(paper_bgcolor="white", plot_bgcolor="white")
+    fig.update_yaxes(
+        linecolor="gray",
+        linewidth=2,
+        gridcolor="lightgray",
+        autorange="reversed",
+        griddash="dot",
     )
 
-    indicators = indicators[metric]
+    return fig
 
-    if plot is False:
-        return indicators
-
-    return _cleveland_chart(
-        indicators,
-        figsize=figsize,
-        color=color,
-        xlabel=metric.replace("_", " ").title(),
-        ylabel=column.replace("_", " ").title(),
-    )
+    # return _cleveland_chart(
+    #     indicators,
+    #     figsize=figsize,
+    #     color=color,
+    #     xlabel=metric.replace("_", " ").title(),
+    #     ylabel=column.replace("_", " ").title(),
+    # )

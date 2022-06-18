@@ -3,7 +3,7 @@ Word Cloud
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> file_name = "/workspaces/techminer2/sphinx/images/word_cloud.png"
 >>> word_cloud(
 ...     column='author_keywords', 

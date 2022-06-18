@@ -4,7 +4,7 @@ Emergent Themes NMF / Map
 
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> file_name = "/workspaces/techminer2/sphinx/images/emergent_themes_nmf_mds_map.png"
 >>> emergent_themes_nmf_map(
 ...     column="author_keywords",

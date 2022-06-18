@@ -6,7 +6,7 @@ Abstract concordances exploration tool.
 
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> abstract_concordances(
 ...     'fintech',
 ...     top_n=10,
@@ -55,7 +55,7 @@ def _print_concordances(contexts, text):
 def _extract_contexts(abstracts, text):
     text = text.upper()
     regex = r"\b" + text + r"\b"
-    contexts = abstracts["text"].str.extract(
+    contexts = abstracts["phrase"].str.extract(
         r"(?P<left_context>[\s \S]*)" + regex + r"(?P<right_context>[\s \S]*)"
     )
 
@@ -74,12 +74,12 @@ def _select_abstracts(abstracts, text):
     """Selects the abstracts."""
 
     regex = r"\b" + text + r"\b"
-    abstracts = abstracts[abstracts.text.str.contains(regex, regex=True)]
-    abstracts["text"] = abstracts["text"].str.capitalize()
-    abstracts["text"] = abstracts["text"].str.replace(
+    abstracts = abstracts[abstracts.phrase.str.contains(regex, regex=True)]
+    abstracts["phrase"] = abstracts["phrase"].str.capitalize()
+    abstracts["phrase"] = abstracts["phrase"].str.replace(
         r"\b" + text + r"\b", text.upper(), regex=True
     )
-    abstracts["text"] = abstracts["text"].str.replace(
+    abstracts["phrase"] = abstracts["phrase"].str.replace(
         r"\b" + text.capitalize() + r"\b", text.upper(), regex=True
     )
 

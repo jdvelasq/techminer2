@@ -3,7 +3,7 @@ Most Frequent Words
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> file_name = "/workspaces/techminer2/sphinx/images/most_frequent_words.png"
 >>> most_frequent_words(
 ...     'author_keywords', 

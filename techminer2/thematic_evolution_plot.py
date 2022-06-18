@@ -3,7 +3,7 @@ Thematic evolution plot
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> file_name = "/workspaces/techminer2/sphinx/images/thematic_evolution_plot.png"
 
 >>> user_filters(directory=directory, quiet=True, first_year=2016, last_year=2018)

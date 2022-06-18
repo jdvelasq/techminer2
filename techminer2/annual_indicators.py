@@ -3,7 +3,7 @@ Annual Indicators
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> annual_indicators(directory)
           num_documents  ...  cum_local_citations
 pub_year                 ...                     

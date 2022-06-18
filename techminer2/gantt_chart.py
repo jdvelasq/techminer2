@@ -3,7 +3,7 @@ Gantt Chart
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> file_name = "/workspaces/techminer2/sphinx/images/gantt_chart.png"
 >>> gantt_chart(
 ...     column='author_keywords',

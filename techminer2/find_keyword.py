@@ -5,7 +5,7 @@ Find Keyword
 Finds a string in the terms of a column of a document collection.
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> find_keyword(contains='artificial intelligence', directory=directory)
 artificial intelligence
      artificial intelligence

@@ -5,7 +5,7 @@ Most Local Cited Authors
 Most local cited authors in references.
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> file_name = "/workspaces/techminer2/sphinx/images/most_local_cited_authors.png"
 >>> most_local_cited_authors(directory=directory).savefig(file_name)
 

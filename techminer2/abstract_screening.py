@@ -6,7 +6,7 @@ Captures n-words around the keyword.
 
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> abstract_screening(
 ...     text='fintech',
 ...     top_n=10,
@@ -14,7 +14,7 @@ Captures n-words around the keyword.
 ...     right=4,
 ...     directory=directory,
 ... )
-- INFO - Saved HTML report: /workspaces/techminer2/data/reports/abstract_screening.html
+- INFO - Saved HTML report: data/reports/abstract_screening.html
                   industry overall, and many FINTECH start-ups are looking
                             hook up with the FINTECH revolution is at stake
                             We present a new FINTECH innovation mapping approach that
@@ -25,7 +25,6 @@ Captures n-words around the keyword.
                      out the quintessence of FINTECH using both spheres
                         it is concluded that FINTECH is a new financial
                     Financial technology, or FINTECH, involves the design and
-
 
 """
 
@@ -57,7 +56,7 @@ def abstract_screening(
 def _create_report(directory, abstracts):
 
     abstracts = abstracts.copy()
-    abstracts = abstracts[["document_id", "text"]]
+    abstracts = abstracts[["document_id", "phrase"]]
     abstracts = abstracts.groupby("document_id", as_index=False).aggregate(
         lambda x: " <br> ".join(x)
     )
@@ -65,7 +64,7 @@ def _create_report(directory, abstracts):
     report_name = "abstract_screening.html"
     template = load_template(report_name)
     html = template.render(
-        concordances=zip(abstracts.document_id.tolist(), abstracts.text.tolist())
+        concordances=zip(abstracts.document_id.tolist(), abstracts.phrase.tolist())
     )
     save_html_report(directory, html, report_name)
 
@@ -76,7 +75,7 @@ def _extract_contexts(abstracts, text, left, right):
 
     left_context_regex = r"(?P<left_context>(?:\w+\W+){1," + str(left) + "})"
     right_context_regex = r"(?P<right_context>(?:\W+\w+){1," + str(right) + "})"
-    contexts = abstracts["text"].str.extract(
+    contexts = abstracts["phrase"].str.extract(
         left_context_regex + regex + right_context_regex
     )
     contexts["left_context"] = contexts["left_context"].fillna("")

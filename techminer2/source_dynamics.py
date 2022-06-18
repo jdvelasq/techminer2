@@ -3,7 +3,7 @@ Source Dynamics
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> file_name = "/workspaces/techminer2/sphinx/images/source_dynamics.png"
 >>> source_dynamics(10, directory=directory).savefig(file_name)
 

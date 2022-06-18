@@ -10,7 +10,7 @@ Import a 'cited by' scopus file with references.
 * This function must be called after the import of the documents.
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> import_references(directory=directory, disable_progress_bar=True)
 - INFO - 5123 raw records found in /workspaces/techminer2/data/raw/references.
 - INFO - Creating references file

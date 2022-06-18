@@ -4,7 +4,7 @@ Most Local Cited Documents
 
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> file_name = "/workspaces/techminer2/sphinx/images/most_local_cited_documents.png"
 >>> most_local_cited_documents(directory=directory).savefig(file_name)
 

@@ -3,7 +3,7 @@ Pie Chart
 ===============================================================================
 
 
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> from techminer2.annual_indicators import annual_indicators
 >>> from techminer2._pie_chart import _pie_chart
 >>> file_name = "/workspaces/techminer2/sphinx/images/_pie_chart.png"

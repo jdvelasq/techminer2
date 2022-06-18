@@ -6,7 +6,7 @@ Cleans the institutions columns using the file institutions.txt, located in
 the same directory as the documents.csv file.
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> clean_institutions(directory)
 - INFO - Applying thesaurus to institutions ...
 - INFO - Extract and cleaning institutions.

@@ -5,7 +5,7 @@ Clean Keywords
 Cleans the keywords columns using the `keywords.txt`file.
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> clean_keywords(directory)
 - INFO - Applying thesaurus to 'raw_author_keywords' column ...
 - INFO - Applying thesaurus to 'raw_index_keywords' column...

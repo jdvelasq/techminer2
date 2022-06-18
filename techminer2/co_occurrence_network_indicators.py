@@ -3,7 +3,7 @@ Co-occurrence Network / Indicators
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> co_occurrence_network_indicators(
 ...     'author_keywords',
 ...     min_occ=2,

@@ -3,7 +3,7 @@ Growth Indicators
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> growth_indicators(column="author_keywords", directory=directory).head()
                         before 2020  ...  average_growth_rate
 fintech                          42  ...                 21.5

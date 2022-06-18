@@ -5,7 +5,7 @@ Coupling Network / Graph
 Builds a coupling network from a coupling matrix.
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> file_name = "/workspaces/techminer2/sphinx/images/coupling__network_graph.png"
 >>> coupling_network_graph(
 ...     column='author_keywords',

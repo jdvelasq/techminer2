@@ -4,7 +4,7 @@ Thematic Analysis / Map
 
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> file_name = "/workspaces/techminer2/sphinx/images/thematic_analysis_map.png"
 >>> thematic_analysis_map(
 ...     column="author_keywords",

@@ -3,7 +3,7 @@ VBar Chart
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> file_name = "/workspaces/techminer2/sphinx/images/vbar_chart.png"
 >>> vbar_chart(
 ...     column='author_keywords',

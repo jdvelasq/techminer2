@@ -4,7 +4,7 @@ Coupling Network / Communities
 
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> coupling_network_communities(
 ...     column='author_keywords',
 ...     min_occ=4, 

@@ -3,7 +3,7 @@ Co-occurrence Network / Graph
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> file_name = "/workspaces/techminer2/sphinx/images/co_occurrence_network_graph.png"
 >>> co_occurrence_network_graph(
 ...     'author_keywords', 

@@ -3,7 +3,7 @@ Summary View
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> summary_view(directory)
                        column  number of terms coverage (%)
 0                    abstract              236       95.16%

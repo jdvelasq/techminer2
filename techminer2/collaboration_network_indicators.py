@@ -3,7 +3,7 @@ Collaboration Network / Indicators
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> collaboration_network_indicators('authors', min_occ=2, directory=directory).head()
             num_documents  global_citations  ...  closeness  pagerank
 node                                         ...                     

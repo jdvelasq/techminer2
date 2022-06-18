@@ -3,7 +3,7 @@ Network Plot
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> file_name = "/workspaces/techminer2/sphinx/images/network_plot.png"
 >>> coc_matrix = co_occurrence_matrix(
 ...     column='author_keywords', 
@@ -138,7 +138,7 @@ def network_plot(
     factor = 0.05
     rx = factor * (xlim[1] - xlim[0])
     ry = factor * (ylim[1] - ylim[0])
-    radious = np.sqrt(rx ** 2 + ry ** 2)
+    radious = np.sqrt(rx**2 + ry**2)
 
     for label in size[:max_labels]:
 

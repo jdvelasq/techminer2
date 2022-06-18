@@ -5,7 +5,7 @@ Coverage
 Computes coverage of terms in a column discarding stopwords.
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> coverage("author_keywords", directory=directory).head(10)
 - INFO - Number of documents : 248
 - INFO - Documents with NA: 202

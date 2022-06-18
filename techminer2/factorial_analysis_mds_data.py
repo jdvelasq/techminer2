@@ -4,7 +4,7 @@ Factorial analysis using MDS and agglomerative clustering / Data
 
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> file_name = "/workspaces/techminer2/sphinx/images/factorial_analysis_mds_map.png"
 >>> factorial_analysis_mds_data(
 ...     'author_keywords', 

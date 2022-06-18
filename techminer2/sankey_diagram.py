@@ -3,7 +3,7 @@ Sankey Diagram
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> file_name = "/workspaces/techminer2/sphinx/images/sankey_diagram.png"
 >>> matrix = occurrence_matrix(column='authors', by='author_keywords', min_occ=3, min_occ_by=6, directory=directory)
 >>> sankey_diagram(matrix).savefig(file_name)

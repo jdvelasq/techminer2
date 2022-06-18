@@ -3,7 +3,7 @@ Collaboration Network / Communities
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> collaboration_network_communities('authors', min_occ=2, directory=directory).head()
 cluster              CL_00  ...           CL_19
 rn                          ...                

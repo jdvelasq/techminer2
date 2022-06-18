@@ -6,7 +6,7 @@ Extract and plot the user custom topics of the selected column.
 
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> file_name = "/workspaces/techminer2/sphinx/images/extract_custom_topics.png"
 >>> custom_topics = find_string(
 ...     "author_keywords", 

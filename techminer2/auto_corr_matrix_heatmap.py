@@ -5,7 +5,7 @@ Auto-correlation Matrix / Heatmap
 
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> file_name = "/workspaces/techminer2/sphinx/images/auto_corr_matrix_heatmap.png"
 >>> auto_corr_matrix_heatmap(
 ...     column='authors', 

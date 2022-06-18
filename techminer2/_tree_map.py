@@ -3,7 +3,7 @@ Tree Map
 ===============================================================================
 
 
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> file_name = "/workspaces/techminer2/sphinx/images/_tree_map.png"
 >>> from techminer2.annual_indicators import annual_indicators
 >>> series = annual_indicators(directory).num_documents

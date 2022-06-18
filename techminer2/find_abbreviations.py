@@ -5,7 +5,7 @@ Find Abbreviations
 Finds string abbreviations in keywords.
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> find_abbreviations(directory=directory)
 ai
     ai

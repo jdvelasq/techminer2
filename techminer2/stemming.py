@@ -13,7 +13,7 @@ Searchs in the terms of a column using stemming
 
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> stemming_and(directory, "author_keywords", "business model").head(10)
 51             business model
 107    fintech business model

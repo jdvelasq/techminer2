@@ -3,7 +3,7 @@ Pie Chart
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> file_name = "/workspaces/techminer2/sphinx/images/pie_chart.png"
 >>> pie_chart(
 ...     'author_keywords', 

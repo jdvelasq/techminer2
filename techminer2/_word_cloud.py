@@ -3,7 +3,7 @@ World cloud
 ===============================================================================
 
 >>> from techminer2._word_cloud import _word_cloud
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> file_name = "/workspaces/techminer2/sphinx/images/_word_cloud.png"
 >>> from techminer2.column_indicators import column_indicators
 >>> data = column_indicators('authors', directory=directory).num_documents.head(50)

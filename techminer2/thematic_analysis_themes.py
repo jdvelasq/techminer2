@@ -4,7 +4,7 @@ Thematic Analysis / Themes
 
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> thematic_analysis_themes(
 ...     column="author_keywords",
 ...     min_occ=4,

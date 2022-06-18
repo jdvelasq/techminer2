@@ -5,7 +5,7 @@ Import Scopus Files
 Import a scopus file to a working directory.
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> import_scopus_files(directory, disable_progress_bar=True)
 - INFO - 248 raw records found in /workspaces/techminer2/data/raw/documents.
 - INFO - Searching local references using DOI ...

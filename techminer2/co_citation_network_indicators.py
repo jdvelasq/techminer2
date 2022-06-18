@@ -3,7 +3,7 @@ Co-citation Network / Indicators
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> co_citation_network_indicators(directory=directory).head()
                                                  num_documents  ...  pagerank
 node                                                            ...          

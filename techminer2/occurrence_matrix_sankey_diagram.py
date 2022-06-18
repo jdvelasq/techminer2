@@ -3,7 +3,7 @@ Occurrence Matrix / Sankey Diagram
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> file_name = "/workspaces/techminer2/sphinx/images/occurrence_matrix_sankey_diagram.png"
 >>> occurrence_matrix_sankey_diagram(
 ...     directory=directory,

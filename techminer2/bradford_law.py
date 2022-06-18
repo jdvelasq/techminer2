@@ -4,7 +4,7 @@ Bradford's Law
 
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> file_name = "/workspaces/techminer2/sphinx/images/bradford.png"
 >>> bradford_law(directory=directory).savefig(file_name)
 

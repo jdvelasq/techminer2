@@ -2,7 +2,7 @@
 VBar Chart
 ===============================================================================
 
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> from techminer2.column_indicators import column_indicators
 >>> series = column_indicators("countries", directory=directory).num_documents.head(20)
 >>> darkness = column_indicators("countries", directory=directory).global_citations.head(20)

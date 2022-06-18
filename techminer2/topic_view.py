@@ -3,7 +3,7 @@ Topic View
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> topic_view(
 ...     'author_keywords',
 ...     top_n=20,

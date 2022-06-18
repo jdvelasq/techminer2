@@ -6,7 +6,7 @@ Factor matrix obtained by appliying PCA to the co-occurrence matrix.
 matrix.
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> factor_matrix(
 ...     co_occurrence_matrix(
 ...         column='authors', 

@@ -3,7 +3,7 @@ Hbar Chart
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "/workspaces/techminer2/data/"
+>>> directory = "data/"
 >>> file_name = "/workspaces/techminer2/sphinx/images/hbar_chart.png"
 >>> hbar_chart(
 ...     'author_keywords',
