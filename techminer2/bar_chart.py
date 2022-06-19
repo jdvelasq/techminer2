@@ -64,6 +64,6 @@ def bar_chart(
         griddash="dot",
     )
     fig.update_xaxes(tickangle=270)
-    fig.update_yaxes(visible=False)
+    fig.update_yaxes(showticklabels=False)
 
     return fig
