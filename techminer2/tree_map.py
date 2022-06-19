@@ -1,5 +1,5 @@
 """
-Tree Map
+Tree Map (*)
 ===============================================================================
 
 >>> from techminer2 import *
@@ -9,50 +9,42 @@ Tree Map
 ...     'author_keywords',
 ...     top_n=15, 
 ...     directory=directory,
-... ).savefig(file_name)
+... ).write_image(file_name)
 
 .. image:: images/tree_map.png
     :width: 700px
     :align: center
 
-
 """
+import plotly.express as px
 
-
-from ._tree_map import _tree_map
-from .topic_view import topic_view
+from ._column_indicators_by_metric import column_indicators_by_metric
 
 
 def tree_map(
     column,
-    metric="num_documents",
-    top_n=None,
-    min_occ=1,
+    min_occ=None,
     max_occ=None,
-    sort_values=None,
-    sort_index=None,
+    top_n=None,
     directory="./",
-    #
-    figsize=(8, 6),
-    cmap="Blues",
+    metric="num_documents",
 ):
 
-    indicators = topic_view(
-        column=column,
-        metric=metric,
-        top_n=top_n,
+    indicators = column_indicators_by_metric(
+        column,
         min_occ=min_occ,
         max_occ=max_occ,
-        sort_values=sort_values,
-        sort_index=sort_index,
+        top_n=top_n,
         directory=directory,
+        metric=metric,
     )
 
-    indicators = indicators[metric]
-
-    return _tree_map(
-        series=indicators,
-        darkness=indicators,
-        cmap=cmap,
-        figsize=figsize,
+    fig = px.treemap(
+        names=indicators.index,
+        parents=[""] * len(indicators),
+        values=indicators,
     )
+    fig.update_traces(root_color="lightgrey")
+    fig.update_layout(margin=dict(t=1, l=1, r=1, b=1))
+
+    return fig

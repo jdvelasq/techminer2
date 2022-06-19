@@ -29,23 +29,23 @@ def column_indicators(
     Column Indicators
     """
 
-    report = read_filtered_records(directory)
-    report = report.assign(num_documents=1)
-    report = report[
+    records = read_filtered_records(directory)
+    records = records.assign(num_documents=1)
+    records = records[
         [column, "num_documents", "global_citations", "local_citations"]
     ].copy()
 
     if sep is not None:
-        report[column] = report[column].str.split(sep)
-        report = report.explode(column)
-        report[column] = report[column].str.strip()
+        records[column] = records[column].str.split(sep)
+        records = records.explode(column)
+        records[column] = records[column].str.strip()
 
-    report = (
-        report.groupby(column, as_index=True)
+    indicators = (
+        records.groupby(column, as_index=True)
         .sum()
         .sort_values(by="num_documents", ascending=False)
     )
 
-    report = report.astype(int)
+    indicators = indicators.astype(int)
 
-    return report
+    return indicators

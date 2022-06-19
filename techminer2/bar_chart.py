@@ -15,37 +15,28 @@ Bar Chart (*)
     :width: 700px
     :align: center
 
-
 """
-
 import plotly.express as px
 
-from .column_indicators import column_indicators
+from ._column_indicators_by_metric import column_indicators_by_metric
 
 
 def bar_chart(
     column,
-    top_n=None,
     min_occ=None,
     max_occ=None,
+    top_n=None,
     directory="./",
+    metric="num_documents",
 ):
-
-    indicators = column_indicators(
-        column=column,
+    indicators = column_indicators_by_metric(
+        column,
+        min_occ=min_occ,
+        max_occ=max_occ,
+        top_n=top_n,
         directory=directory,
-    ).num_documents
-
-    indicators = indicators.sort_values(ascending=False)
-
-    if top_n is not None:
-        indicators = indicators.head(top_n)
-
-    if min_occ is not None:
-        indicators = indicators[indicators >= min_occ]
-
-    if max_occ is not None:
-        indicators = indicators[indicators <= max_occ]
+        metric=metric,
+    )
 
     fig = px.bar(
         x=indicators.index,

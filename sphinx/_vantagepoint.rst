@@ -69,18 +69,19 @@ Thesaurus
         create_thesaurus
 
 
-Report (Plotly)
+Report (*Plotly*)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     .. toctree::
         :maxdepth: 1
 
         bar_chart
+        circle_chart
         cleveland_chart
         column_chart
-        circle_chart
-        line_chart
         gantt_chart 
+        line_chart
+        tree_map
 
 
 Report
@@ -96,9 +97,7 @@ Report
 
         
         dotted_gantt_chart
-        
         timeline_chart
-        tree_map
         word_cloud
         world_map
 
