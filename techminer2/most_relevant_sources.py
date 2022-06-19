@@ -1,5 +1,5 @@
 """
-Most Relevant Sources
+Most Relevant Sources (*)
 ===============================================================================
 
 >>> from techminer2 import *

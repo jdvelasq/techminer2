@@ -23,7 +23,6 @@ Country Scientific Production
 # >>> display(fig)
 
 """
-import json
 from os.path import dirname, join
 
 import matplotlib.pyplot as plt
