@@ -41,7 +41,7 @@ package developed and tested in Python version 3.6.
     :hidden:
     :maxdepth: 1
     
-    import_scopus_file
+    import_scopus_files
     import_references
     coverage
 

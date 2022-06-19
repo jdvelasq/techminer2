@@ -1,29 +1,29 @@
 """
-Column Chart (*)
+Bar Chart (*)
 ===============================================================================
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "sphinx/images/column_chart.png"
->>> column_chart(
-...     'author_keywords',
-...     top_n=20,
+>>> file_name = "sphinx/images/bar_chart.png"
+>>> bar_chart(
+...     column='author_keywords',
+...     top_n=15,
 ...     directory=directory,
 ... ).write_image(file_name)
 
-.. image:: images/column_chart.png
+.. image:: images/bar_chart.png
     :width: 700px
     :align: center
 
 
-
 """
+
 import plotly.express as px
 
 from .column_indicators import column_indicators
 
 
-def column_chart(
+def bar_chart(
     column,
     top_n=None,
     min_occ=None,
@@ -48,21 +48,22 @@ def column_chart(
         indicators = indicators[indicators <= max_occ]
 
     fig = px.bar(
-        x=indicators.values,
-        y=indicators.index,
+        x=indicators.index,
+        y=indicators.values,
         text=indicators.astype(str),
-        labels={"x": "Num Documents", "y": column.replace("_", " ").title()},
-        orientation="h",
+        labels={"y": "Num Documents", "x": column.replace("_", " ").title()},
+        orientation="v",
     )
     fig.update_traces(textposition="outside")
     fig.update_layout(paper_bgcolor="white", plot_bgcolor="white")
     fig.update_traces(marker_color="lightgray")
-    fig.update_yaxes(
+    fig.update_xaxes(
         linecolor="gray",
         linewidth=2,
         gridcolor="lightgray",
-        autorange="reversed",
         griddash="dot",
     )
+    fig.update_xaxes(tickangle=270)
+    fig.update_yaxes(visible=False)
 
     return fig

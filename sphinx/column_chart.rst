@@ -1,4 +1,4 @@
-.. automodule:: techminer2.hbar_chart
+.. automodule:: techminer2.column_chart
     :members:
     :undoc-members:
     :show-inheritance:

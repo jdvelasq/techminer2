@@ -1,4 +1,4 @@
-.. automodule:: techminer2.vbar_chart
+.. automodule:: techminer2.circle_chart
     :members:
     :undoc-members:
     :show-inheritance:

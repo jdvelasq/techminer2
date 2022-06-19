@@ -1,34 +1,37 @@
 """
-Column Chart (*)
+Circle Chart (*)
 ===============================================================================
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "sphinx/images/column_chart.png"
->>> column_chart(
-...     'author_keywords',
-...     top_n=20,
+>>> file_name = "sphinx/images/circle_chart.png"
+>>> circle_chart(
+...     'author_keywords', 
+...     top_n=15, 
 ...     directory=directory,
+...     hole=0.5,
 ... ).write_image(file_name)
 
-.. image:: images/column_chart.png
+.. image:: images/circle_chart.png
     :width: 700px
     :align: center
 
 
 
 """
+
 import plotly.express as px
 
 from .column_indicators import column_indicators
 
 
-def column_chart(
+def circle_chart(
     column,
     top_n=None,
     min_occ=None,
     max_occ=None,
     directory="./",
+    hole=0.0,
 ):
 
     indicators = column_indicators(
@@ -47,22 +50,11 @@ def column_chart(
     if max_occ is not None:
         indicators = indicators[indicators <= max_occ]
 
-    fig = px.bar(
-        x=indicators.values,
-        y=indicators.index,
-        text=indicators.astype(str),
-        labels={"x": "Num Documents", "y": column.replace("_", " ").title()},
-        orientation="h",
+    fig = px.pie(
+        values=indicators.values,
+        names=indicators.index,
+        hole=hole,
     )
-    fig.update_traces(textposition="outside")
-    fig.update_layout(paper_bgcolor="white", plot_bgcolor="white")
-    fig.update_traces(marker_color="lightgray")
-    fig.update_yaxes(
-        linecolor="gray",
-        linewidth=2,
-        gridcolor="lightgray",
-        autorange="reversed",
-        griddash="dot",
-    )
-
+    fig.update_traces(textinfo="value")
+    fig.update_layout(legend=dict(y=0.5))
     return fig

@@ -13,8 +13,10 @@ from .auto_corr_matrix import auto_corr_matrix
 from .auto_corr_matrix_heatmap import auto_corr_matrix_heatmap
 from .auto_corr_matrix_html import auto_corr_matrix_html
 from .average_citations_per_year import average_citations_per_year
+from .bar_chart import bar_chart
 from .bradford_law import bradford_law
 from .bubble_chart import bubble_chart
+from .circle_chart import circle_chart
 from .clean_institutions import clean_institutions
 from .clean_keywords import clean_keywords
 from .cleveland_chart import cleveland_chart
@@ -47,6 +49,7 @@ from .collaboration_network_communities import collaboration_network_communities
 from .collaboration_network_degree_plot import collaboration_network_degree_plot
 from .collaboration_network_graph import collaboration_network_graph
 from .collaboration_network_indicators import collaboration_network_indicators
+from .column_chart import column_chart
 from .column_indicators import column_indicators
 from .column_indicators_by_year import column_indicators_by_year
 from .core_sources import core_sources
@@ -88,7 +91,6 @@ from .find_keyword import find_keyword
 from .find_string import find_string
 from .gantt_chart import gantt_chart
 from .growth_indicators import growth_indicators
-from .hbar_chart import column_chart
 from .heat_map import heat_map
 from .impact_indicators import impact_indicators
 from .import_references import import_references
@@ -117,7 +119,6 @@ from .occurrence_matrix_bubble_chart import occurrence_matrix_bubble_chart
 from .occurrence_matrix_heatmap import occurrence_matrix_heatmap
 from .occurrence_matrix_html import occurrence_matrix_html
 from .occurrence_matrix_sankey_diagram import occurrence_matrix_sankey_diagram
-from .pie_chart import pie_chart
 from .rpys import rpys
 from .sankey_diagram import sankey_diagram
 from .source_dynamics import source_dynamics
@@ -150,6 +151,5 @@ from .topics_comparison_network import topics_comparison_network
 from .tree_map import tree_map
 from .trend_topics import trend_topics
 from .user_filters import user_filters
-from .vbar_chart import vbar_chart
 from .word_cloud import word_cloud
 from .world_map import world_map

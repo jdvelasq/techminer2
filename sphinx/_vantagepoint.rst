@@ -69,7 +69,19 @@ Thesaurus
         create_thesaurus
 
 
-Topic View
+Report (Plotly)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    .. toctree::
+        :maxdepth: 1
+
+        bar_chart
+        column_chart
+        circle_chart
+
+
+
+Report
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     .. toctree::
@@ -83,12 +95,10 @@ Topic View
         cleveland_chart
         dotted_gantt_chart
         gantt_chart 
-        hbar_chart
         line_chart
-        pie_chart
+        
         timeline_chart
         tree_map
-        vbar_chart
         word_cloud
         world_map
 
