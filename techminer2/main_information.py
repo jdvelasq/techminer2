@@ -1,5 +1,5 @@
 """
-Main Information
+Main Information (*)
 ===============================================================================
 
 >>> from techminer2 import *

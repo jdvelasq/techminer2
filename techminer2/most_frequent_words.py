@@ -1,5 +1,5 @@
 """
-Most Frequent Words
+Most Frequent Words (*)
 ===============================================================================
 
 >>> from techminer2 import *
@@ -15,9 +15,37 @@ Most Frequent Words
     :width: 700px
     :align: center
 
-
-
 """
-from .cleveland_chart import cleveland_chart
+import plotly.express as px
 
-most_frequent_words = cleveland_chart
+from .column_indicators import column_indicators
+
+
+def most_frequent_words(column="author_keywords", directory="./", top_n=20):
+
+    indicators = column_indicators(column=column, directory=directory)
+    indicators = indicators.sort_values(
+        by=["num_documents", "global_citations", "local_citations"], ascending=False
+    )
+    indicators = indicators.head(top_n)
+
+    fig = px.scatter(
+        x=indicators.num_documents,
+        y=indicators.index,
+        title="Most frequent words",
+        text=indicators.num_documents,
+        labels={"x": "Num Documents", "y": "Institution Name"},
+    )
+    fig.update_traces(marker=dict(size=10, color="black"))
+    fig.update_traces(textposition="middle right")
+    fig.update_traces(line=dict(color="black"))
+    fig.update_layout(paper_bgcolor="white", plot_bgcolor="white")
+    fig.update_yaxes(
+        linecolor="gray",
+        linewidth=2,
+        gridcolor="lightgray",
+        autorange="reversed",
+        griddash="dot",
+    )
+
+    return fig

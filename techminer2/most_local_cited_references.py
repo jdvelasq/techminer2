@@ -1,58 +1,60 @@
 """
-Most Local Cited References
+Most Local Cited References (*)
 ===============================================================================
 
 
 >>> from techminer2 import *
 >>> directory = "data/"
 >>> file_name = "sphinx/images/most_local_cited_references.png"
->>> most_local_cited_references(directory=directory).savefig(file_name)
+>>> most_local_cited_references(
+...     top_n=20,
+...     directory=directory,
+... ).write_image(file_name)
 
 .. image:: images/most_local_cited_references.png
     :width: 700px
     :align: center
 
->>> most_local_cited_references(directory=directory, plot=False).head()
-                                   document_id  local_citations
-2060              Lee I et al, 2018, BUS HORIZ               38
-2055   Gomber P et al, 2018, J MANAGE INF SYST               31
-3835      Haddad C et al, 2019, SMALL BUS ECON               22
-2110          Gomber P et al, 2017, J BUS ECON               21
-2247  Gai K et al, 2018, J NETWORK COMPUT APPL               19
 
 """
-from os.path import join
+import os.path
 
 import pandas as pd
-
-from ._cleveland_chart import _cleveland_chart
+import plotly.express as px
 
 
 def most_local_cited_references(
     top_n=20,
-    color="k",
-    figsize=(8, 6),
     directory="./",
-    plot=True,
 ):
 
     indicators = pd.read_csv(
-        join(directory, "processed", "references.csv"), sep=",", encoding="utf-8"
+        os.path.join(directory, "processed", "references.csv"),
+        sep=",",
+        encoding="utf-8",
     )
     indicators = indicators[["document_id", "local_citations"]]
     indicators = indicators.dropna()
     indicators = indicators.sort_values(by="local_citations", ascending=False)
+    indicators = indicators.head(top_n)
 
-    if plot is False:
-        return indicators
-
-    indicators.index = indicators.document_id
-    indicators = indicators.local_citations.head(top_n)
-    return _cleveland_chart(
-        indicators,
-        figsize=figsize,
-        color=color,
-        title="Most Local Cited References",
-        xlabel="Local Citations",
-        ylabel="Document",
+    fig = px.scatter(
+        x=indicators.local_citations,
+        y=indicators.document_id,
+        title="Most local cited references",
+        text=indicators.local_citations,
+        labels={"x": "Local citations", "y": "Document"},
     )
+    fig.update_traces(marker=dict(size=10, color="black"))
+    fig.update_traces(textposition="middle right")
+    fig.update_traces(line=dict(color="black"))
+    fig.update_layout(paper_bgcolor="white", plot_bgcolor="white")
+    fig.update_yaxes(
+        linecolor="gray",
+        linewidth=2,
+        gridcolor="lightgray",
+        autorange="reversed",
+        griddash="dot",
+    )
+    fig.update_xaxes(showticklabels=False)
+    return fig
