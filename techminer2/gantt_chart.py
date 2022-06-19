@@ -55,8 +55,6 @@ def gantt_chart(
 
     records = records.loc[index.index, :]
 
-    # print(records)
-
     fig = px.timeline(
         records,
         x_start="start",
