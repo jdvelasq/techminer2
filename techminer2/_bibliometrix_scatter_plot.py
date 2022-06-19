@@ -24,5 +24,5 @@ def bibliometrix_scatter_plot(x, y, title, text, xlabel, ylabel):
         autorange="reversed",
         griddash="dot",
     )
-
+    fig.update_xaxes(showticklabels=False)
     return fig

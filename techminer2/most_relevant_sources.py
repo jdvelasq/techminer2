@@ -13,9 +13,6 @@ Most Relevant Sources (*)
 
 
 """
-
-import plotly.express as px
-
 from ._bibliometrix_scatter_plot import bibliometrix_scatter_plot
 from .column_indicators import column_indicators
 
