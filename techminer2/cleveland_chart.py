@@ -63,5 +63,6 @@ def cleveland_chart(
         autorange="reversed",
         griddash="dot",
     )
+    fig.update_xaxes(showticklabels=False)
 
     return fig

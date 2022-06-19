@@ -1,5 +1,5 @@
 """
-Gantt Chart
+Gantt Chart (*)
 ===============================================================================
 
 >>> from techminer2 import *
@@ -9,71 +9,115 @@ Gantt Chart
 ...     column='author_keywords',
 ...     top_n=20, 
 ...     directory=directory,
-... ).savefig(file_name)
+... ).write_image(file_name)
 
 .. image:: images/gantt_chart.png
     :width: 700px
     :align: center
 
->>> gantt_chart(
-...     column='author_keywords',
-...     top_n=20, 
-...     directory=directory,
-...     plot=False,
-... ).head()
-pub_year                2016  2017  2018  2019  2020  2021
-author_keywords                                           
-fintech                    4     6    16    16    38    59
-financial technologies     1     0     6     4     5    12
-financial inclusion        0     2     0     2     3    10
-blockchain                 0     2     3     4     2     6
-innovation                 2     1     3     3     3     1
-
 
 """
+import plotly.express as px
+from pyparsing import col
 
-
-from ._gantt_chart import _gantt_chart
-from .annual_occurrence_matrix import annual_occurrence_matrix
-from .topic_view import topic_view
+from ._read_records import read_filtered_records
 
 
 def gantt_chart(
-    column,
-    metric="num_documents",
-    top_n=None,
-    min_occ=1,
-    max_occ=None,
-    sort_values=None,
-    sort_index=None,
+    column="author_keywords",
     directory="./",
-    #
-    color="tab:blue",
-    figsize=(6, 6),
-    plot=True,
+    top_n=10,
 ):
-    indicators = topic_view(
-        column=column,
-        metric=metric,
-        top_n=top_n,
-        min_occ=min_occ,
-        max_occ=max_occ,
-        sort_values=sort_values,
-        sort_index=sort_index,
-        directory=directory,
+
+    records = read_filtered_records(directory)
+    records = records[["pub_year", column]]
+    records = records.dropna(subset=[column])
+    records[column] = records[column].str.split(";")
+    records = records.explode(column)
+    records[column] = records[column].str.strip()
+    records = records.groupby(column).agg({"pub_year": [min, max]})
+    records.columns = records.columns.droplevel()
+    records = records.rename(columns={"min": "start", "max": "finish"})
+    records["data"] = records.index
+
+    records["start"] = records["start"].astype(str) + "-01-01"
+    records["finish"] = records["finish"].astype(str) + "-12-31"
+
+    index = read_filtered_records(directory)
+    index = index[column]
+    index = index.dropna()
+    index = index.str.split(";")
+    index = index.explode()
+    index = index.str.strip()
+    index = index.value_counts()
+    index = index.sort_values(ascending=False)
+    index = index.head(top_n)
+
+    records = records.loc[index.index, :]
+
+    # print(records)
+
+    fig = px.timeline(
+        records,
+        x_start="start",
+        x_end="finish",
+        y="data",
+    )
+    fig.update_yaxes(autorange="reversed")
+    fig.update_layout(paper_bgcolor="white", plot_bgcolor="white")
+    fig.update_traces(marker_color="lightgray")
+    fig.update_xaxes(
+        linecolor="gray",
+        linewidth=2,
+        gridcolor="lightgray",
+        griddash="dot",
     )
 
-    topics = indicators.index
-
-    production = annual_occurrence_matrix(
-        column=column,
-        min_occ=1,
-        directory=directory,
+    fig.update_yaxes(
+        linecolor="gray",
+        linewidth=2,
     )
+    fig.update_xaxes(tickangle=270)
 
-    production = production.loc[topics]
+    return fig
 
-    if plot is False:
-        return production
 
-    return _gantt_chart(production, figsize=figsize, color=color)
+# def ____gantt_chart(
+#     column,
+#     metric="num_documents",
+#     top_n=None,
+#     min_occ=1,
+#     max_occ=None,
+#     sort_values=None,
+#     sort_index=None,
+#     directory="./",
+#     #
+#     color="tab:blue",
+#     figsize=(6, 6),
+#     plot=True,
+# ):
+#     indicators = topic_view(
+#         column=column,
+#         metric=metric,
+#         top_n=top_n,
+#         min_occ=min_occ,
+#         max_occ=max_occ,
+#         sort_values=sort_values,
+#         sort_index=sort_index,
+#         directory=directory,
+#     )
+
+#     topics = indicators.index
+
+#     production = annual_occurrence_matrix(
+#         column=column,
+#         min_occ=1,
+#         directory=directory,
+#     )
+
+#     production = production.loc[topics]
+
+#     if plot is False:
+#         return production
+
+#     return _gantt_chart(production, figsize=figsize, color=color)
