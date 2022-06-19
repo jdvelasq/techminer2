@@ -1,39 +1,51 @@
 """
-Most Global Cited Countries
+Most Global Cited Countries (*)
 ===============================================================================
 
 >>> from techminer2 import *
 >>> directory = "data/"
 >>> file_name = "sphinx/images/most_global_cited_countries.png"
->>> most_global_cited_countries(directory=directory).savefig(file_name)
+>>> most_global_cited_countries(
+...     top_n=20,
+...     directory=directory,
+... ).write_image(file_name)
 
 .. image:: images/most_global_cited_countries.png
     :width: 700px
     :align: center
 
-
-
-
 """
-from .cleveland_chart import cleveland_chart
+
+import plotly.express as px
+
+from .column_indicators import column_indicators
 
 
-def most_global_cited_countries(
-    top_n=20,
-    color="k",
-    figsize=(6, 6),
-    directory="./",
-):
-    return cleveland_chart(
-        column="countries",
-        metric="global_citations",
-        top_n=top_n,
-        min_occ=1,
-        max_occ=None,
-        sort_values=None,
-        sort_index=None,
-        directory=directory,
-        #
-        color=color,
-        figsize=figsize,
+def most_global_cited_countries(directory="./", top_n=20):
+
+    indicators = column_indicators(column="countries", directory=directory)
+    indicators = indicators.sort_values(
+        by=["global_citations", "num_documents", "local_citations"], ascending=False
     )
+    indicators = indicators.head(top_n)
+
+    fig = px.scatter(
+        x=indicators.global_citations,
+        y=indicators.index,
+        title="Most global cited countries",
+        text=indicators.global_citations,
+        labels={"x": "Global citations", "y": "Country"},
+    )
+    fig.update_traces(marker=dict(size=10, color="black"))
+    fig.update_traces(textposition="middle right")
+    fig.update_traces(line=dict(color="black"))
+    fig.update_layout(paper_bgcolor="white", plot_bgcolor="white")
+    fig.update_yaxes(
+        linecolor="gray",
+        linewidth=2,
+        gridcolor="lightgray",
+        autorange="reversed",
+        griddash="dot",
+    )
+    fig.update_xaxes(showticklabels=False)
+    return fig
