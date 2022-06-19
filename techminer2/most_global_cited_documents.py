@@ -17,8 +17,7 @@ Most Global Cited Documents (*)
 
 
 """
-import plotly.express as px
-
+from ._bibliometrix_scatter_plot import bibliometrix_scatter_plot
 from .document_indicators import document_indicators
 
 
@@ -31,23 +30,11 @@ def most_global_cited_documents(
     indicators = indicators.sort_values(by="global_citations", ascending=False)
     indicators = indicators.head(top_n)
 
-    fig = px.scatter(
+    return bibliometrix_scatter_plot(
         x=indicators.global_citations,
         y=indicators.index,
         title="Most global cited documents",
         text=indicators.global_citations,
-        labels={"x": "Global citations", "y": "Document"},
+        xlabel="Global citations",
+        ylabel="Document",
     )
-    fig.update_traces(marker=dict(size=10, color="black"))
-    fig.update_traces(textposition="middle right")
-    fig.update_traces(line=dict(color="black"))
-    fig.update_layout(paper_bgcolor="white", plot_bgcolor="white")
-    fig.update_yaxes(
-        linecolor="gray",
-        linewidth=2,
-        gridcolor="lightgray",
-        autorange="reversed",
-        griddash="dot",
-    )
-    fig.update_xaxes(showticklabels=False)
-    return fig
