@@ -1,5 +1,5 @@
 """
-Cleveland Chart (updated to use Plotly)
+Cleveland Chart (*)
 ===============================================================================
 
 

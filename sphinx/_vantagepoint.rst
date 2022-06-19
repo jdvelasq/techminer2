@@ -76,6 +76,7 @@ Report (Plotly)
         :maxdepth: 1
 
         bar_chart
+        cleveland_chart
         column_chart
         circle_chart
         line_chart
@@ -92,7 +93,7 @@ Report
     .. toctree::
         :maxdepth: 1
 
-        cleveland_chart
+        
         dotted_gantt_chart
         gantt_chart 
         
