@@ -69,7 +69,7 @@ Thesaurus
         create_thesaurus
 
 
-Report (*Plotly*)
+Report
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     .. toctree::
@@ -84,7 +84,7 @@ Report (*Plotly*)
         tree_map
 
 
-Report
+Repo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     .. toctree::
