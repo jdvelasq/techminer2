@@ -80,6 +80,7 @@ Report (Plotly)
         column_chart
         circle_chart
         line_chart
+        gantt_chart 
 
 
 Report
@@ -95,8 +96,6 @@ Report
 
         
         dotted_gantt_chart
-        gantt_chart 
-        
         
         timeline_chart
         tree_map
