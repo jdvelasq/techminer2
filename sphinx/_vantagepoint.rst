@@ -78,7 +78,7 @@ Report (Plotly)
         bar_chart
         column_chart
         circle_chart
-
+        line_chart
 
 
 Report
@@ -95,7 +95,7 @@ Report
         cleveland_chart
         dotted_gantt_chart
         gantt_chart 
-        line_chart
+        
         
         timeline_chart
         tree_map

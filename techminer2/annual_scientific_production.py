@@ -1,5 +1,5 @@
 """
-Annual Scientific Production
+Annual Scientific Production (*)
 ===============================================================================
 
 
@@ -37,4 +37,5 @@ def annual_scientific_production(directory="./"):
     fig.update_layout(paper_bgcolor="white", plot_bgcolor="white")
     fig.update_xaxes(linecolor="gray", gridcolor="lightgray")
     fig.update_yaxes(linecolor="gray", gridcolor="lightgray")
+    fig.update_yaxes(showticklabels=False)
     return fig
