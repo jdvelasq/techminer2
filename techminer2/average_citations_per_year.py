@@ -1,5 +1,5 @@
 """
-Average Citations per Year (*)
+Average Citations per Year (*!)
 ===============================================================================
 
 
@@ -11,6 +11,19 @@ Average Citations per Year (*)
 .. image:: images/average_citations_per_year.png
     :width: 700px
     :align: center
+
+>>> annual_indicators(directory)[
+...     ['num_documents', 'mean_global_citations', 'mean_global_citations', 'citable_years']
+... ].head()
+          num_documents  ...  citable_years
+pub_year                 ...               
+2016                  5  ...              6
+2017                 10  ...              5
+2018                 34  ...              4
+2019                 38  ...              3
+2020                 62  ...              2
+<BLANKLINE>
+[5 rows x 4 columns]
 
 """
 import plotly.express as px
