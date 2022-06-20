@@ -43,8 +43,8 @@ def tree_map(
         names=indicators.index,
         parents=[""] * len(indicators),
         values=indicators,
+        color_continuous_scale="Greys",
     )
     fig.update_traces(root_color="lightgrey")
     fig.update_layout(margin=dict(t=1, l=1, r=1, b=1))
-
     return fig
