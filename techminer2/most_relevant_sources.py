@@ -1,5 +1,5 @@
 """
-Most Relevant Sources (*)
+Most Relevant Sources (!)
 ===============================================================================
 
 >>> from techminer2 import *
@@ -11,6 +11,17 @@ Most Relevant Sources (*)
     :width: 700px
     :align: center
 
+>>> column_indicators(
+...     column="iso_source_name",
+...     directory=directory,
+... ).num_documents.sort_values(ascending=False).head()
+iso_source_name
+SUSTAINABILITY                   15
+FINANCIAL INNOV                  11
+J OPEN INNOV: TECHNOL MARK CO     8
+E3S WEB CONF                      7
+FRONTIER ARTIF INTELL             5
+Name: num_documents, dtype: int64
 
 """
 from ._bibliometrix_scatter_plot import bibliometrix_scatter_plot
