@@ -1,5 +1,5 @@
 """
-Annual Scientific Production (*!)
+Annual Scientific Production (*)
 ===============================================================================
 
 
