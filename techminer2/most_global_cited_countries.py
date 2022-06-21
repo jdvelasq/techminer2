@@ -14,6 +14,18 @@ Most Global Cited Countries (*)
     :width: 700px
     :align: center
 
+
+>>> column_indicators("countries",directory=directory).head()
+                num_documents  ...  avg_document_global_citations
+countries                      ...                               
+china                      43  ...                              7
+united kingdom             41  ...                             12
+indonesia                  22  ...                              2
+united states              22  ...                             22
+australia                  18  ...                             17
+<BLANKLINE>
+[5 rows x 4 columns]
+
 """
 from ._bibliometrix_scatter_plot import bibliometrix_scatter_plot
 from .column_indicators import column_indicators
