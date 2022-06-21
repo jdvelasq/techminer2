@@ -39,7 +39,7 @@ def column_indicators(
     """
 
     if file_name == "documents.csv":
-        records = read_filtered_records(directory=directory, file_name=file_name)
+        records = read_filtered_records(directory=directory)
     elif file_name == "references.csv":
         records = read_all_records(directory=directory, file_name=file_name)
     else:
