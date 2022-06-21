@@ -1,7 +1,8 @@
 """
-Most Global Cited Documents (*)
+Most Global Cited Documents
 ===============================================================================
 
+See https://jdvelasq.github.io/techminer2/document_indicators.html
 
 >>> from techminer2 import *
 >>> directory = "data/"
@@ -14,7 +15,6 @@ Most Global Cited Documents (*)
 .. image:: images/most_global_cited_documents.png
     :width: 700px
     :align: center
-
 
 """
 from ._bibliometrix_scatter_plot import bibliometrix_scatter_plot
