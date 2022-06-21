@@ -19,10 +19,6 @@ See https://jdvelasq.github.io/techminer2/column_indicators.html
     :align: center
 
 """
-import os.path
-
-import pandas as pd
-
 from ._bibliometrix_scatter_plot import bibliometrix_scatter_plot
 from .column_indicators import column_indicators
 
