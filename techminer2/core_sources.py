@@ -21,17 +21,16 @@ Core Sources (!)
 
 >>> from pprint import pprint
 >>> columns = core_sources(directory).columns.to_list()
->>> columns = sorted(columns)
 >>> pprint(columns)
-['%',
- '% Acum',
+['Num Sources',
+ '%',
  'Acum Num Sources',
- "Bradford's Group",
+ '% Acum',
  'Documents published',
+ 'Tot Documents published',
  'Num Documents',
- 'Num Sources',
  'Tot Documents',
- 'Tot Documents published']
+ "Bradford's Group"]
 
 """
 
