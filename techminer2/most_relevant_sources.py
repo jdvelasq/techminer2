@@ -1,6 +1,8 @@
 """
-Most Relevant Sources (!)
+Most Relevant Sources
 ===============================================================================
+
+See https://jdvelasq.github.io/techminer2/column_indicators.html
 
 >>> from techminer2 import *
 >>> directory = "data/"
@@ -10,18 +12,6 @@ Most Relevant Sources (!)
 .. image:: images/most_relevant_sources.png
     :width: 700px
     :align: center
-
->>> column_indicators(
-...     column="iso_source_name",
-...     directory=directory,
-... ).num_documents.sort_values(ascending=False).head()
-iso_source_name
-SUSTAINABILITY                   15
-FINANCIAL INNOV                  11
-J OPEN INNOV: TECHNOL MARK CO     8
-E3S WEB CONF                      7
-FRONTIER ARTIF INTELL             5
-Name: num_documents, dtype: int64
 
 """
 from ._bibliometrix_scatter_plot import bibliometrix_scatter_plot
