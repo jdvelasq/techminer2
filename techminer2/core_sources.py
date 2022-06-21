@@ -1,5 +1,5 @@
 """
-Core Sources (*)
+Core Sources (!)
 ===============================================================================
 
 
@@ -18,6 +18,20 @@ Core Sources (*)
 8          105  72.41 %  ...        100.0 %                3
 <BLANKLINE>
 [9 rows x 9 columns]
+
+>>> from pprint import pprint
+>>> columns = core_sources(directory).columns.to_list()
+>>> columns = sorted(columns)
+>>> pprint(columns)
+['%',
+ '% Acum',
+ 'Acum Num Sources',
+ "Bradford's Group",
+ 'Documents published',
+ 'Num Documents',
+ 'Num Sources',
+ 'Tot Documents',
+ 'Tot Documents published']
 
 """
 
