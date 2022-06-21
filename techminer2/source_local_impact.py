@@ -18,20 +18,25 @@ Source Local Impact (*)
     :align: center
 
 
->>> from pprint import pprint
->>> columns = impact_indicators("iso_source_name", directory=directory).columns.to_list()
->>> columns = sorted(columns)
->>> pprint(columns)
-['age',
- 'avg_global_citations',
- 'first_pb_year',
- 'g_index',
- 'global_citations',
- 'global_citations_per_year',
- 'h_index',
- 'm_index',
- 'num_documents']
-
+>>> impact_indicators("iso_source_name", directory=directory)[
+...     [
+...         'h_index',
+...         'g_index',
+...         'm_index',
+...         'global_citations',
+...         'num_documents', 
+...         'first_pb_year',
+...     ]   
+... ].head()
+                 h_index  g_index  ...  num_documents  first_pb_year
+iso_source_name                    ...                              
+ACCOUNT FINANC         1        1  ...              1           2018
+AM BEHAV SCI           0        0  ...              1           2020
+ANN OPER RES           0        0  ...              1           2021
+APPL SCI               0        0  ...              1           2021
+BANKS BANK SYST        2        1  ...              3           2019
+<BLANKLINE>
+[5 rows x 6 columns]
 
 """
 from ._bibliometrix_scatter_plot import bibliometrix_scatter_plot
