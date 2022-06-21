@@ -1,5 +1,5 @@
 """
-Annual Scientific Production (*)
+Annual Scientific Production (!)
 ===============================================================================
 
 
@@ -11,7 +11,6 @@ Annual Scientific Production (*)
 .. image:: images/annual_scientific_production.png
     :width: 700px
     :align: center
-
 
 >>> annual_indicators(directory).num_documents
 pub_year
