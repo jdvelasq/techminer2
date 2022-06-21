@@ -1,7 +1,8 @@
 """
-Most Local Cited Documents (*)
+Most Local Cited Documents
 ===============================================================================
 
+See https://jdvelasq.github.io/techminer2/document_indicators.html
 
 >>> from techminer2 import *
 >>> directory = "data/"
