@@ -17,11 +17,19 @@ bangladesh              1  ...                  0.00
 <BLANKLINE>
 [5 rows x 9 columns]
 
->>> impact_indicators("countries", directory=directory).columns
-Index(['num_documents', 'global_citations', 'first_pb_year', 'age', 'h_index',
-       'g_index', 'm_index', 'global_citations_per_year',
-       'avg_global_citations'],
-      dtype='object')
+>>> from pprint import pprint
+>>> columns = impact_indicators("countries", directory=directory).columns.to_list()
+>>> columns = sorted(columns)
+>>> pprint(columns)
+['age',
+ 'avg_global_citations',
+ 'first_pb_year',
+ 'g_index',
+ 'global_citations',
+ 'global_citations_per_year',
+ 'h_index',
+ 'm_index',
+ 'num_documents']
 
 """
 
@@ -29,10 +37,9 @@ import numpy as np
 import pandas as pd
 
 from ._read_records import read_filtered_records
-from .column_indicators import column_indicators
 
 
-def impact_indicators(column, sep="; ", directory="./"):
+def impact_indicators(column, directory="./", sep="; "):
     """
     Impact index analysis
 
@@ -148,5 +155,6 @@ def impact_indicators(column, sep="; ", directory="./"):
 
     # indicators = indicators.sort_values("h_index", ascending=False)
     indicators = indicators.sort_index(axis="index")
+    indicators.first_pb_year = indicators.first_pb_year.astype(int)
 
     return indicators
