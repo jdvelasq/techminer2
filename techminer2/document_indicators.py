@@ -16,8 +16,13 @@ Al Nawayseh MK et al, 2020, J OPEN INNOV: TECHN...                10  ...       
 [5 rows x 5 columns]
 
 
-
-
+>>> from pprint import pprint
+>>> pprint(document_indicators(directory=directory).columns.to_list())
+['global_citations',
+ 'local_citations',
+ 'global_citations_per_year',
+ 'local_citations_per_year',
+ 'doi']
 
 """
 
