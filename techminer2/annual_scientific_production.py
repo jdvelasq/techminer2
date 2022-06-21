@@ -1,6 +1,8 @@
 """
-Annual Scientific Production (!)
+Annual Scientific Production (!!!)
 ===============================================================================
+
+See https://jdvelasq.github.io/techminer2/annual_indicators.html
 
 
 >>> from techminer2 import *
@@ -11,19 +13,6 @@ Annual Scientific Production (!)
 .. image:: images/annual_scientific_production.png
     :width: 700px
     :align: center
-
->>> annual_indicators(directory)[
-...     [
-...         'num_documents',
-...     ]
-... ].head()
-          num_documents
-pub_year               
-2016                  5
-2017                 10
-2018                 34
-2019                 38
-2020                 62
 
 """
 import plotly.express as px
