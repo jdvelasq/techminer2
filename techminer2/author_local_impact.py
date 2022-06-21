@@ -1,5 +1,5 @@
 """
-Author Local Impact
+Author Local Impact (!)
 ===============================================================================
 
 See https://jdvelasq.github.io/techminer2/impact_indicators.html
@@ -45,7 +45,7 @@ def author_local_impact(
     return bibliometrix_scatter_plot(
         x=indicators,
         y=indicators.index,
-        title="Source Local Impact by " + impact_measure.capitalize(),
+        title="Source Local Impact by " + impact_measure.replace("_", " ").title(),
         text=indicators,
         xlabel=impact_measure.replace("_", " ").title(),
         ylabel="Author Name",
