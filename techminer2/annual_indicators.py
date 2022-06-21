@@ -1,5 +1,5 @@
 """
-Annual Indicators (!)
+Annual Indicators
 ===============================================================================
 
 >>> from techminer2 import *
