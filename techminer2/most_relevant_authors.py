@@ -1,6 +1,8 @@
 """
-Most Relevant Authors (!)
+Most Relevant Authors
 ===============================================================================
+
+See https://jdvelasq.github.io/techminer2/column_indicators.html
 
 >>> from techminer2 import *
 >>> directory = "data/"
@@ -14,18 +16,6 @@ Most Relevant Authors (!)
     :width: 700px
     :align: center
 
-
->>> column_indicators(
-...     column="authors",
-...     directory=directory,
-... ).num_documents.sort_values(ascending=False).head()
-authors
-Wojcik D          5
-Hornuf L          3
-Rabbani MR        3
-Gomber P          2
-Worthington AC    2
-Name: num_documents, dtype: int64
 
 """
 from ._bibliometrix_scatter_plot import bibliometrix_scatter_plot
