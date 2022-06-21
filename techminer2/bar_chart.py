@@ -1,5 +1,5 @@
 """
-Bar Chart (*)
+Bar Chart (!)
 ===============================================================================
 
 >>> from techminer2 import *
@@ -42,7 +42,10 @@ def bar_chart(
         x=indicators.index,
         y=indicators.values,
         text=indicators.astype(str),
-        labels={"y": "Num Documents", "x": column.replace("_", " ").title()},
+        labels={
+            "y": metric.replace("_", " ").title(),
+            "x": column.replace("_", " ").title(),
+        },
         orientation="v",
     )
     fig.update_traces(textposition="outside")
