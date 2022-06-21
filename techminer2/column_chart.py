@@ -1,5 +1,5 @@
 """
-Column Chart (*)
+Column Chart (!)
 ===============================================================================
 
 >>> from techminer2 import *
@@ -45,7 +45,10 @@ def column_chart(
         x=indicators.values,
         y=indicators.index,
         text=indicators.astype(str),
-        labels={"x": "Num Documents", "y": column.replace("_", " ").title()},
+        labels={
+            "x": metric.replace("_", " ").title(),
+            "y": column.replace("_", " ").title(),
+        },
         orientation="h",
     )
     fig.update_traces(textposition="outside")
