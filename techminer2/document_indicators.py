@@ -26,44 +26,47 @@ Al Nawayseh MK et al, 2020, J OPEN INNOV: TECHN...                10  ...       
 
 """
 
-from ._read_records import read_filtered_records
+from ._read_records import read_all_records, read_filtered_records
 
 
-def document_indicators(directory="./"):
+def document_indicators(directory="./", file_name="documents.csv"):
 
-    documents = read_filtered_records(directory)
+    if file_name == "documents.csv":
+        records = read_filtered_records(directory=directory)
+    elif file_name == "references.csv":
+        records = read_all_records(directory=directory, file_name=file_name)
+    else:
+        raise ValueError("file_name must be 'documents.csv' or 'references.csv'")
 
-    max_pub_year = documents.pub_year.dropna().max()
-
-    # -----------------------------------------------------------------------------------
-    documents = documents.assign(
-        global_citations_per_year=documents.global_citations
-        / (max_pub_year - documents.pub_year + 1)
-    )
-    documents = documents.assign(
-        global_citations_per_year=documents.global_citations_per_year.round(3)
-    )
+    max_pub_year = records.pub_year.dropna().max()
 
     # -----------------------------------------------------------------------------------
-    documents = documents.assign(
-        local_citations_per_year=documents.local_citations
-        / (max_pub_year - documents.pub_year + 1)
+    records = records.assign(
+        global_citations_per_year=records.global_citations
+        / (max_pub_year - records.pub_year + 1)
     )
-    documents = documents.assign(
-        local_citations_per_year=documents.local_citations_per_year.round(3)
+    records = records.assign(
+        global_citations_per_year=records.global_citations_per_year.round(3)
     )
 
     # -----------------------------------------------------------------------------------
-    documents["global_citations"] = documents.global_citations.map(
-        int, na_action="ignore"
+    records = records.assign(
+        local_citations_per_year=records.local_citations
+        / (max_pub_year - records.pub_year + 1)
+    )
+    records = records.assign(
+        local_citations_per_year=records.local_citations_per_year.round(3)
     )
 
     # -----------------------------------------------------------------------------------
-    documents = documents.set_index("document_id")
-    documents = documents.sort_index(axis="index", ascending=True)
+    records["global_citations"] = records.global_citations.map(int, na_action="ignore")
 
     # -----------------------------------------------------------------------------------
-    documents = documents[
+    records = records.set_index("document_id")
+    records = records.sort_index(axis="index", ascending=True)
+
+    # -----------------------------------------------------------------------------------
+    records = records[
         [
             "global_citations",
             "local_citations",
@@ -73,4 +76,4 @@ def document_indicators(directory="./"):
         ]
     ]
 
-    return documents
+    return records
