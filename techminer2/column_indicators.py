@@ -32,12 +32,13 @@ def column_indicators(
     column,
     sep=";",
     directory="./",
+    file_name="documents.csv",
 ):
     """
     Column Indicators
     """
 
-    records = read_filtered_records(directory)
+    records = read_filtered_records(directory=directory, file_name=file_name)
     records = records.assign(num_documents=1)
     records = records[
         [column, "num_documents", "global_citations", "local_citations"]
