@@ -1,5 +1,5 @@
 """
-Most Relevant Authors
+Most Relevant Authors (!)
 ===============================================================================
 
 See https://jdvelasq.github.io/techminer2/column_indicators.html
@@ -24,7 +24,9 @@ from .column_indicators import column_indicators
 
 def most_relevant_authors(directory="./", top_n=20):
 
-    indicators = column_indicators(column="authors", directory=directory)
+    indicators = column_indicators(
+        column="authors", directory=directory, file_name="documents.csv"
+    )
     indicators = indicators.sort_values(
         by=["num_documents", "global_citations", "local_citations"], ascending=False
     )
