@@ -1,5 +1,5 @@
 """
-Most Global Cited Countries (*)
+Most Global Cited Countries (!)
 ===============================================================================
 
 >>> from techminer2 import *
