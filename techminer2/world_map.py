@@ -1,5 +1,5 @@
 """
-World map
+World map 
 ===============================================================================
 
 >>> from techminer2 import *
@@ -12,12 +12,6 @@ World map
     :align: center
 
 """
-import json
-from os.path import dirname, join
-
-import matplotlib.pyplot as plt
-import numpy as np
-
 from ._world_map import _world_map
 from .column_indicators import column_indicators
 
