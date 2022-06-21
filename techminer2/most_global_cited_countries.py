@@ -1,6 +1,8 @@
 """
-Most Global Cited Countries (!)
+Most Global Cited Countries
 ===============================================================================
+
+See https://jdvelasq.github.io/techminer2/column_indicators.html
 
 >>> from techminer2 import *
 >>> directory = "data/"
@@ -13,18 +15,6 @@ Most Global Cited Countries (!)
 .. image:: images/most_global_cited_countries.png
     :width: 700px
     :align: center
-
-
->>> column_indicators("countries",directory=directory).head()
-                num_documents  ...  avg_document_global_citations
-countries                      ...                               
-china                      43  ...                              7
-united kingdom             41  ...                             12
-indonesia                  22  ...                              2
-united states              22  ...                             22
-australia                  18  ...                             17
-<BLANKLINE>
-[5 rows x 4 columns]
 
 """
 from ._bibliometrix_scatter_plot import bibliometrix_scatter_plot
