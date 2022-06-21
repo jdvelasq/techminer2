@@ -1,5 +1,5 @@
 """
-Average Citations per Year (!)
+Average Citations per Year 
 ===============================================================================
 
 See https://jdvelasq.github.io/techminer2/annual_indicators.html

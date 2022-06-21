@@ -1,5 +1,5 @@
 """
-Most Relevant Authors (!)
+Most Relevant Authors 
 ===============================================================================
 
 See https://jdvelasq.github.io/techminer2/column_indicators.html

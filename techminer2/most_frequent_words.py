@@ -1,5 +1,5 @@
 """
-Most Frequent Words (!)
+Most Frequent Words 
 ===============================================================================
 
 See https://jdvelasq.github.io/techminer2/column_indicators.html

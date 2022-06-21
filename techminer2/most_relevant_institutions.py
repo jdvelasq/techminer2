@@ -1,5 +1,5 @@
 """
-Most Relevant Institutions (!)
+Most Relevant Institutions 
 ===============================================================================
 
 See https://jdvelasq.github.io/techminer2/column_indicators.html
