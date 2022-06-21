@@ -1,5 +1,5 @@
 """
-Most Local Cited References (*)
+Most Local Cited References (!)
 ===============================================================================
 
 
@@ -17,11 +17,8 @@ Most Local Cited References (*)
 
 
 """
-import os.path
-
-import pandas as pd
-
 from ._bibliometrix_scatter_plot import bibliometrix_scatter_plot
+from .document_indicators import document_indicators
 
 
 def most_local_cited_references(
@@ -29,19 +26,13 @@ def most_local_cited_references(
     directory="./",
 ):
 
-    indicators = pd.read_csv(
-        os.path.join(directory, "processed", "references.csv"),
-        sep=",",
-        encoding="utf-8",
-    )
-    indicators = indicators[["document_id", "local_citations"]]
-    indicators = indicators.dropna()
+    indicators = document_indicators(directory=directory, file_name="references.csv")
     indicators = indicators.sort_values(by="local_citations", ascending=False)
     indicators = indicators.head(top_n)
 
     return bibliometrix_scatter_plot(
         x=indicators.local_citations,
-        y=indicators.document_id,
+        y=indicators.index,
         title="Most local cited references",
         text=indicators.local_citations,
         xlabel="Local citations",
