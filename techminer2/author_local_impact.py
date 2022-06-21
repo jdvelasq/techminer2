@@ -1,8 +1,8 @@
 """
-Author Local Impact (!)
+Author Local Impact
 ===============================================================================
 
-
+See https://jdvelasq.github.io/techminer2/impact_indicators.html
 
 >>> from techminer2 import *
 >>> directory = "data/"
@@ -16,26 +16,6 @@ Author Local Impact (!)
 .. image:: images/author_local_impact.png
     :width: 700px
     :align: center
-
->>> impact_indicators(column="authors", directory=directory)[
-...     [
-...         'h_index',
-...         'g_index', 
-...         'm_index',
-...         'global_citations', 
-...         'num_documents',
-...         'first_pb_year'
-...     ]
-... ].head()
-               h_index  g_index  ...  num_documents  first_pb_year
-authors                          ...                              
-Aas TH               0        0  ...              1           2021
-Abakah EJA           1        1  ...              1           2021
-Abbas F              1        1  ...              1           2020
-Abdullah EME         1        1  ...              1           2018
-Abu Daqar MAM        1        1  ...              1           2020
-<BLANKLINE>
-[5 rows x 6 columns]
 
 """
 from ._bibliometrix_scatter_plot import bibliometrix_scatter_plot
