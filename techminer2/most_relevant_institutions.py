@@ -1,6 +1,8 @@
 """
-Most Relevant Institutions (*)
+Most Relevant Institutions
 ===============================================================================
+
+See https://jdvelasq.github.io/techminer2/column_indicators.html
 
 >>> from techminer2 import *
 >>> directory = "data/"
