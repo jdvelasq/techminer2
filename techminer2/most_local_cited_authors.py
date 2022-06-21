@@ -1,5 +1,5 @@
 """
-Most Local Cited Authors in References (*)
+Most Local Cited Authors in References (!)
 ===============================================================================
 
 >>> from techminer2 import *
@@ -16,27 +16,19 @@ Most Local Cited Authors in References (*)
 
 
 """
-import os.path
-
-import pandas as pd
 import plotly.express as px
+
+from .column_indicators import column_indicators
 
 
 def most_local_cited_authors(
     top_n=20,
     directory="./",
 ):
-    indicators = pd.read_csv(
-        os.path.join(directory, "processed", "references.csv"),
-        sep=",",
-        encoding="utf-8",
+
+    indicators = column_indicators(
+        column="authors", directory=directory, file_name="references.csv"
     )
-    indicators = indicators[["authors", "local_citations"]]
-    indicators = indicators.dropna()
-    indicators = indicators.assign(authors=indicators.authors.str.split(";"))
-    indicators = indicators.explode("authors")
-    indicators = indicators.assign(authors=indicators.authors.str.strip())
-    indicators = indicators.groupby("authors").sum()
     indicators = indicators.sort_values(by="local_citations", ascending=False)
     indicators = indicators.head(top_n)
 
