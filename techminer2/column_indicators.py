@@ -25,7 +25,7 @@ Yuksel S                2  ...                              7
 
 """
 
-from ._read_records import read_filtered_records
+from ._read_records import read_all_records, read_filtered_records
 
 
 def column_indicators(
@@ -38,7 +38,13 @@ def column_indicators(
     Column Indicators
     """
 
-    records = read_filtered_records(directory=directory, file_name=file_name)
+    if file_name == "documents.csv":
+        records = read_filtered_records(directory=directory, file_name=file_name)
+    elif file_name == "references.csv":
+        records = read_all_records(directory=directory, file_name=file_name)
+    else:
+        raise ValueError("file_name must be 'documents.csv' or 'references.csv'")
+
     records = records.assign(num_documents=1)
     records = records[
         [column, "num_documents", "global_citations", "local_citations"]
