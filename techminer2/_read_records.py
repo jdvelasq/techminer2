@@ -6,15 +6,14 @@ import pandas as pd
 import yaml
 
 
-def read_all_records(directory):
-    "Reads all records of the documents.csv file."
+def read_all_records(directory, file_name="documents.csv"):
+    "Reads all records of the specified file."
 
-    filename = os.path.join(directory, "processed", "documents.csv")
-    if not os.path.isfile(filename):
-        raise FileNotFoundError(f"The file {filename} does not exist.")
-    documents = pd.read_csv(filename, sep=",", encoding="utf-8")
-
-    return documents
+    file_path = os.path.join(directory, "processed", file_name)
+    if not os.path.isfile(file_path):
+        raise FileNotFoundError(f"The file {file_path} does not exist.")
+    records = pd.read_csv(file_path, sep=",", encoding="utf-8")
+    return records
 
 
 def read_filtered_records(directory):
