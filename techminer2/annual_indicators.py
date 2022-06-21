@@ -30,9 +30,6 @@ pub_year                 ...
  'mean_global_citations_per_year',
  'mean_local_citations_per_year']
 
-
-
-
 """
 
 from ._read_records import read_filtered_records
