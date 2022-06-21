@@ -17,6 +17,22 @@ Source Local Impact (*)
     :width: 700px
     :align: center
 
+
+>>> from pprint import pprint
+>>> columns = impact_indicators("iso_source_name", directory=directory).columns.to_list()
+>>> columns = sorted(columns)
+>>> pprint(columns)
+['age',
+ 'avg_global_citations',
+ 'first_pb_year',
+ 'g_index',
+ 'global_citations',
+ 'global_citations_per_year',
+ 'h_index',
+ 'm_index',
+ 'num_documents']
+
+
 """
 from ._bibliometrix_scatter_plot import bibliometrix_scatter_plot
 from .impact_indicators import impact_indicators
