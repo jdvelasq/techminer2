@@ -1,5 +1,5 @@
 """
-Average Citations per Year (*!)
+Average Citations per Year (!)
 ===============================================================================
 
 
@@ -13,7 +13,12 @@ Average Citations per Year (*!)
     :align: center
 
 >>> annual_indicators(directory)[
-...     ['num_documents', 'mean_global_citations', 'mean_global_citations', 'citable_years']
+...     [
+...         'num_documents',
+...         'mean_global_citations',
+...         'mean_global_citations',
+...         'citable_years',
+...     ]
 ... ].head()
           num_documents  ...  citable_years
 pub_year                 ...               
