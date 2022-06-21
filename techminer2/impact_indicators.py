@@ -1,8 +1,6 @@
 """
-Impact Indicators (!)
+Impact Indicators
 ===============================================================================
-
-
 
 >>> from techminer2 import *
 >>> directory = "data/"
