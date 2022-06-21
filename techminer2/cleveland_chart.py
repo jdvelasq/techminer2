@@ -1,5 +1,5 @@
 """
-Cleveland Chart (New) (*) 
+Cleveland Chart (New) (!) 
 ===============================================================================
 
 
@@ -44,7 +44,10 @@ def cleveland_chart(
         x=indicators.values,
         y=indicators.index,
         text=indicators.astype(str),
-        labels={"x": "Num Documents", "y": column.replace("_", " ").title()},
+        labels={
+            "x": metric.replace("_", " ").title(),
+            "y": column.replace("_", " ").title(),
+        },
     )
     fig.update_traces(marker=dict(size=10, color="black"))
     fig.update_traces(textposition="middle right")
