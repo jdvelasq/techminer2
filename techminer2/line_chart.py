@@ -1,5 +1,5 @@
 """
-Line Chart (*)
+Line Chart (!)
 ===============================================================================
 
 >>> from techminer2 import *
@@ -45,7 +45,10 @@ def line_chart(
         y=indicators.values,
         markers=True,
         text=indicators.astype(str),
-        labels={"y": "Num Documents", "x": column.replace("_", " ").title()},
+        labels={
+            "y": metric.replace("_", " ").title(),
+            "x": column.replace("_", " ").title(),
+        },
     )
     fig.update_traces(marker=dict(size=12))
     fig.update_traces(textposition="top right")
