@@ -1,8 +1,8 @@
 """
-Source Local Impact (!)
+Source Local Impact
 ===============================================================================
 
-
+See https://jdvelasq.github.io/techminer2/impact_indicators.html
 
 >>> from techminer2 import *
 >>> directory = "data/"
@@ -16,27 +16,6 @@ Source Local Impact (!)
 .. image:: images/source_local_impact.png
     :width: 700px
     :align: center
-
-
->>> impact_indicators("iso_source_name", directory=directory)[
-...     [
-...         'h_index',
-...         'g_index',
-...         'm_index',
-...         'global_citations',
-...         'num_documents', 
-...         'first_pb_year',
-...     ]   
-... ].head()
-                 h_index  g_index  ...  num_documents  first_pb_year
-iso_source_name                    ...                              
-ACCOUNT FINANC         1        1  ...              1           2018
-AM BEHAV SCI           0        0  ...              1           2020
-ANN OPER RES           0        0  ...              1           2021
-APPL SCI               0        0  ...              1           2021
-BANKS BANK SYST        2        1  ...              3           2019
-<BLANKLINE>
-[5 rows x 6 columns]
 
 """
 from ._bibliometrix_scatter_plot import bibliometrix_scatter_plot
