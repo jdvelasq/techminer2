@@ -52,7 +52,7 @@ import datetime
 import numpy as np
 import pandas as pd
 
-from .._read_records import read_filtered_records
+from ._read_records import read_filtered_records
 
 
 class _MainInformation:
