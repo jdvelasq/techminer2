@@ -10,7 +10,7 @@ Visualization API
 .. toctree::
    :maxdepth: 1
 
-   bar_plot
+   plots/bar_plot
 
 
 .. toctree::
