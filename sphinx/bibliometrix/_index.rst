@@ -46,6 +46,7 @@ Sources
    .. toctree::
 
       most_relevant_sources
+      most_local_cited_sources
 
 Authors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

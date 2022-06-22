@@ -8,7 +8,7 @@ See https://jdvelasq.github.io/techminer2/column_indicators.html
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "sphinx/images/most_local_cited_sources.png"
+>>> file_name = "sphinx/bibliometrix/images/most_local_cited_sources.png"
 >>> most_local_cited_sources(
 ...     top_n=20,
 ...     directory=directory,
@@ -19,8 +19,8 @@ See https://jdvelasq.github.io/techminer2/column_indicators.html
     :align: center
 
 """
-from ._bibliometrix_scatter_plot import bibliometrix_scatter_plot
-from .column_indicators import column_indicators
+from ..column_indicators import column_indicators
+from ..plots import cleveland_plot
 
 
 def most_local_cited_sources(
@@ -28,17 +28,18 @@ def most_local_cited_sources(
     directory="./",
 ):
 
-    indicators = column_indicators(
+    indicator = column_indicators(
         column="iso_source_name", directory=directory, file_name="references.csv"
     )
-    indicators = indicators.sort_values(by="local_citations", ascending=False)
-    indicators = indicators.head(top_n)
+    indicator = indicator.sort_values(by="local_citations", ascending=False)
+    indicator = indicator.head(top_n)
+    indicator = indicator.local_citations
 
-    return bibliometrix_scatter_plot(
-        x=indicators.local_citations,
-        y=indicators.index,
+    fig = cleveland_plot(
+        series=indicator,
+        x_label=None,
+        y_label="Source Title",
         title="Most local cited sources in references",
-        text=indicators.local_citations,
-        xlabel="Num Documents",
-        ylabel="Source Title",
     )
+
+    return fig

@@ -46,8 +46,6 @@ from .collaboration_network_communities import collaboration_network_communities
 from .collaboration_network_degree_plot import collaboration_network_degree_plot
 from .collaboration_network_graph import collaboration_network_graph
 from .collaboration_network_indicators import collaboration_network_indicators
-
-# from .vantagepoint.column_chart import column_chart
 from .column_indicators import column_indicators
 from .column_indicators_by_year import column_indicators_by_year
 from .core_sources import core_sources
@@ -105,7 +103,6 @@ from .most_global_cited_documents import most_global_cited_documents
 from .most_local_cited_authors import most_local_cited_authors
 from .most_local_cited_documents import most_local_cited_documents
 from .most_local_cited_references import most_local_cited_references
-from .most_local_cited_sources import most_local_cited_sources
 from .most_relevant_authors import most_relevant_authors
 from .most_relevant_institutions import most_relevant_institutions
 from .network import network
