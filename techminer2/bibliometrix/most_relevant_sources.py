@@ -24,13 +24,13 @@ from ..plots import cleveland_plot
 
 def most_relevant_sources(directory="./", top_n=20):
 
-    indicators = column_indicators(column="iso_source_name", directory=directory)
-    indicators = indicators.sort_values(
+    indicator = column_indicators(column="iso_source_name", directory=directory)
+    indicator = indicator.sort_values(
         by=["num_documents", "global_citations", "local_citations"],
         ascending=False,
     )
-    indicator = indicators.head(top_n)
-    indicator = indicators.num_documents
+    indicator = indicator.head(top_n)
+    indicator = indicator.num_documents
 
     fig = cleveland_plot(
         series=indicator,
