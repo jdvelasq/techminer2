@@ -56,9 +56,7 @@ package developed and tested in Python version 3.6.
     _tlab
     _vantagepoint
 
-
-    bibliometrix/_index
-    scopus/_index
+    scopus
     vantagepoint/_index
     
 

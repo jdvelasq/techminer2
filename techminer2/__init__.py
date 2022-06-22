@@ -4,6 +4,7 @@ from .abstract_screening import abstract_screening
 from .abstract_summarization import abstract_summarization
 from .annual_indicators import annual_indicators
 from .annual_occurrence_matrix import annual_occurrence_matrix
+from .annual_scientific_production import annual_scientific_production
 from .apply_thesaurus import apply_thesaurus
 from .association_index import association_index
 from .author_local_impact import author_local_impact
@@ -11,6 +12,8 @@ from .authors_production_over_time import authors_production_over_time
 from .auto_corr_matrix import auto_corr_matrix
 from .auto_corr_matrix_heatmap import auto_corr_matrix_heatmap
 from .auto_corr_matrix_html import auto_corr_matrix_html
+from .average_citations_per_year import average_citations_per_year
+from .bar_chart import bar_chart
 from .bar_plot import bar_plot
 from .bradford_law import bradford_law
 from .bubble_chart import bubble_chart
@@ -18,6 +21,7 @@ from .circle_chart import circle_chart
 from .clean_institutions import clean_institutions
 from .clean_keywords import clean_keywords
 from .cleveland_chart import cleveland_chart
+from .cleveland_plot import cleveland_plot
 from .co_citation_matrix import co_citation_matrix
 from .co_citation_network_communities import co_citation_network_communities
 from .co_citation_network_degree_plot import co_citation_network_degree_plot
@@ -65,6 +69,12 @@ from .cross_corr_matrix_heatmap import cross_corr_matrix_heatmap
 from .cross_corr_matrix_html import cross_corr_matrix_html
 from .document_indicators import document_indicators
 from .document_viewer import document_viewer
+from .documents_by_affiliation import documents_by_affiliation
+from .documents_by_author import documents_by_author
+from .documents_by_country import documents_by_country
+from .documents_by_type import documents_by_type
+from .documents_by_year import documents_by_year
+from .documents_per_year_by_source import documents_per_year_by_source
 from .dotted_gantt_chart import dotted_gantt_chart
 from .ego_graph import ego_graph
 from .ego_network import ego_network
@@ -106,8 +116,10 @@ from .most_global_cited_documents import most_global_cited_documents
 from .most_local_cited_authors import most_local_cited_authors
 from .most_local_cited_documents import most_local_cited_documents
 from .most_local_cited_references import most_local_cited_references
+from .most_local_cited_sources import most_local_cited_sources
 from .most_relevant_authors import most_relevant_authors
 from .most_relevant_institutions import most_relevant_institutions
+from .most_relevant_sources import most_relevant_sources
 from .network import network
 from .occurrence_matrix import occurrence_matrix
 from .occurrence_matrix_associations import occurrence_matrix_associations
@@ -134,6 +146,7 @@ from .thematic_map_indicators import thematic_map_indicators
 from .thematic_map_network import thematic_map_network
 from .thematic_map_strategic_diagram import thematic_map_strategic_diagram
 from .thematic_map_summarization import thematic_map_summarization
+from .three_fields_plot import three_fields_plot
 from .timeline_chart import timeline_chart
 from .top_topics import top_topics
 from .top_trending_topics import top_trending_topics
@@ -145,6 +158,5 @@ from .topics_comparison_network import topics_comparison_network
 from .tree_map import tree_map
 from .trend_topics import trend_topics
 from .user_filters import user_filters
-from .vantagepoint.bar_chart import bar_chart
 from .word_cloud import word_cloud
 from .world_map import world_map

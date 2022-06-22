@@ -33,6 +33,9 @@ Dataset
    .. toctree::
 
       main_information
+      annual_scientific_production
+      average_citations_per_year
+      three_fields_plot
 
 
 Sources
@@ -40,7 +43,9 @@ Sources
 
    .. toctree::
 
-
+      most_relevant_sources
+      most_local_cited_sources
+      bradford_law
       core_sources 
       source_local_impact
       source_dynamics
