@@ -1,4 +1,4 @@
-.. automodule:: techminer2.plots.bar_plot
+.. automodule:: techminer2.column_plot
     :members:
     :undoc-members:
     :show-inheritance:

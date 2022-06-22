@@ -10,9 +10,9 @@ Visualization API
 .. toctree::
    :maxdepth: 1
 
-   plots/bar_plot
-   plots/column_plot
-   plots/cleveland_plot
+   bar_plot
+   column_plot
+   cleveland_plot
 
 
 .. toctree::
