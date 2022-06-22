@@ -1,5 +1,5 @@
 """
-Documents by type (pendient)
+Documents by type (!)
 ===============================================================================
 
 >>> from techminer2.scopus import *
@@ -15,7 +15,15 @@ Documents by type (pendient)
     :align: center
 
 """
+from ..vantagepoint import *
 
 
 def documents_by_type(directory):
-    pass
+    return bar_chart(
+        column="document_type",
+        min_occ=None,
+        max_occ=None,
+        top_n=10,
+        directory=directory,
+        metric="num_documents",
+    )
