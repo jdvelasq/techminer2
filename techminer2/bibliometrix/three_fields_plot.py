@@ -2,9 +2,10 @@
 Three fields plot 
 ===============================================================================
 
->>> from techminer2 import *
+>>> from techminer2.bibliometrix import *
 >>> directory = "data/"
->>> file_name = "sphinx/images/three_fields_plot.png"
+>>> file_name = "sphinx/bibliometrix/images/three_fields_plot.png"
+
 >>> three_fields_plot(
 ...     directory=directory,
 ...     left_column='authors',
@@ -26,7 +27,7 @@ import numpy as np
 import pandas as pd
 from matplotlib.patches import Rectangle
 
-from .occurrence_matrix import occurrence_matrix
+from ..occurrence_matrix import occurrence_matrix
 
 
 def _sankey_3fields_diagram(
