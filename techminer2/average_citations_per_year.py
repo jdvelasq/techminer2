@@ -1,8 +1,9 @@
 """
-Average Citations per Year
+Average Citations per Year (ok!)
 ===============================================================================
 
-See https://jdvelasq.github.io/techminer2/annual_indicators.html
+See :doc:`annual indicators <annual_indicators>` to obtain a `pandas.Dataframe` 
+with the data.
 
 >>> from techminer2 import *
 >>> directory = "data/"
