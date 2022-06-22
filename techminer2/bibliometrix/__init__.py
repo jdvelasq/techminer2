@@ -4,3 +4,4 @@ from .main_information import main_information
 from .most_local_cited_sources import most_local_cited_sources
 from .most_relevant_sources import most_relevant_sources
 from .three_fields_plot import three_fields_plot
+from .user_filters import user_filters

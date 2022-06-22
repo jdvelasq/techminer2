@@ -141,7 +141,6 @@ from .topics_comparison_chart import topics_comparison_chart
 from .topics_comparison_network import topics_comparison_network
 from .tree_map import tree_map
 from .trend_topics import trend_topics
-from .user_filters import user_filters
 from .vantagepoint.bar_chart import bar_chart
 from .word_cloud import word_cloud
 from .world_map import world_map
