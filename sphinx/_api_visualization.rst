@@ -13,7 +13,6 @@ Visualization API
    _dotted_gantt_chart
    _gantt_chart
    _hbar_chart
-   _line_chart
    _pie_chart
    _tree_map    
    _vbar_chart
