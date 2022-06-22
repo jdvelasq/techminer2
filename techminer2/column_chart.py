@@ -4,7 +4,7 @@ Column Chart (!)
 
 >>> from techminer2.vantagepoint import *
 >>> directory = "data/"
->>> file_name = "sphinx/vantagepoint/images/column_chart.png"
+>>> file_name = "sphinx/images/column_chart.png"
 >>> column_chart(
 ...     'author_keywords',
 ...     top_n=20,
