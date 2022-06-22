@@ -17,4 +17,4 @@ Documents per year by source (pendient)
 """
 from ..bibliometrix import annual_scientific_production
 
-# documents_per_year_by_source =
+documents_per_year_by_source = None

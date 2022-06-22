@@ -49,7 +49,8 @@ from .collaboration_network_communities import collaboration_network_communities
 from .collaboration_network_degree_plot import collaboration_network_degree_plot
 from .collaboration_network_graph import collaboration_network_graph
 from .collaboration_network_indicators import collaboration_network_indicators
-from .column_chart import column_chart
+
+# from .vantagepoint.column_chart import column_chart
 from .column_indicators import column_indicators
 from .column_indicators_by_year import column_indicators_by_year
 from .core_sources import core_sources
@@ -121,7 +122,8 @@ from .occurrence_matrix_html import occurrence_matrix_html
 from .occurrence_matrix_sankey_diagram import occurrence_matrix_sankey_diagram
 from .rpys import rpys
 from .sankey_diagram import sankey_diagram
-from .source_dynamics import source_dynamics
+
+# from .bibliometrix.source_dynamics import source_dynamics
 from .source_local_impact import source_local_impact
 from .stemming import stemming_and, stemming_or
 from .summary_view import summary_view

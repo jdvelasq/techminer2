@@ -11,6 +11,7 @@ Visualization API
    :maxdepth: 1
 
    plots/bar_plot
+   plots/column_plot
 
 
 .. toctree::

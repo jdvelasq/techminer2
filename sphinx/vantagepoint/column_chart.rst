@@ -1,4 +1,4 @@
-.. automodule:: techminer2.column_chart
+.. automodule:: techminer2.vantagepoint.column_chart
     :members:
     :undoc-members:
     :show-inheritance:
