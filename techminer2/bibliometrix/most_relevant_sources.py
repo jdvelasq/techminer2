@@ -6,16 +6,20 @@ See https://jdvelasq.github.io/techminer2/column_indicators.html
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "sphinx/images/most_relevant_sources.png"
->>> most_relevant_sources(directory=directory).write_image(file_name)
+>>> file_name = "sphinx/bibliometrix/images/most_relevant_sources.png"
+
+>>> most_relevant_sources(
+...     directory=directory,
+...     top_n=10,
+... ).write_image(file_name)
 
 .. image:: images/most_relevant_sources.png
     :width: 700px
     :align: center
 
 """
-from ._bibliometrix_scatter_plot import bibliometrix_scatter_plot
-from .column_indicators import column_indicators
+from ..column_indicators import column_indicators
+from ..plots import cleveland_plot
 
 
 def most_relevant_sources(directory="./", top_n=20):
@@ -25,13 +29,14 @@ def most_relevant_sources(directory="./", top_n=20):
         by=["num_documents", "global_citations", "local_citations"],
         ascending=False,
     )
-    indicators = indicators.head(top_n)
+    indicator = indicators.head(top_n)
+    indicator = indicators.num_documents
 
-    return bibliometrix_scatter_plot(
-        x=indicators.num_documents,
-        y=indicators.index,
+    fig = cleveland_plot(
+        series=indicator,
+        x_label=None,
+        y_label=None,
         title="Most relevant sources",
-        text=indicators.num_documents,
-        xlabel="Num Documents",
-        ylabel="Source Title",
     )
+
+    return fig

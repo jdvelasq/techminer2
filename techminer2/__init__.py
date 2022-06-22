@@ -112,7 +112,6 @@ from .most_local_cited_references import most_local_cited_references
 from .most_local_cited_sources import most_local_cited_sources
 from .most_relevant_authors import most_relevant_authors
 from .most_relevant_institutions import most_relevant_institutions
-from .most_relevant_sources import most_relevant_sources
 from .network import network
 from .occurrence_matrix import occurrence_matrix
 from .occurrence_matrix_associations import occurrence_matrix_associations
