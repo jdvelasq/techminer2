@@ -57,7 +57,7 @@ package developed and tested in Python version 3.6.
     _vantagepoint
 
 
-
+    bibliometrix/_index
     scopus/_index
     vantagepoint/_index
     
