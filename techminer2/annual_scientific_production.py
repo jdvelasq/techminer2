@@ -1,5 +1,5 @@
 """
-Annual Scientific Production
+Annual Scientific Production (ok!)
 ===============================================================================
 
 See :doc:`annual indicators <annual_indicators>`.
