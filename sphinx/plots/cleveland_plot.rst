@@ -1,4 +1,4 @@
-.. automodule:: techminer2._cleveland_chart
+.. automodule:: techminer2.plots.cleveland_plot 
     :members:
     :undoc-members:
     :show-inheritance:

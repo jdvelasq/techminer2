@@ -12,15 +12,14 @@ Visualization API
 
    plots/bar_plot
    plots/column_plot
+   plots/cleveland_plot
 
 
 .. toctree::
    :maxdepth: 1
 
-   _cleveland_chart
    _dotted_gantt_chart
    _gantt_chart
-   
    _pie_chart
    _tree_map    
    _vbar_chart
