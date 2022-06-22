@@ -1,113 +1,76 @@
 """
-HBar Chart
+Bar plot (!)
 ===============================================================================
 
+>>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "sphinx/images/_hbar_chart.png"
->>> from techminer2.column_indicators import column_indicators
->>> series = column_indicators(column="countries", directory=directory).num_documents.head(20)
->>> darkness = column_indicators("countries",directory=directory).global_citations.head(20)
->>> _hbar_chart(series, darkness).savefig(file_name)
+>>> file_name = "sphinx/images/bar_plot.png"
+>>> series = column_indicators(
+...     column="countries", 
+...     directory=directory,
+... ).num_documents.head(20)
 
-.. image:: images/_horizontal_bar_chart.png
+>>> bar_plot(
+...     series,
+...     x_label=None,
+...     y_label=None,
+...     title=None,
+... ).write_image(file_name)
+
+.. image:: images/bar_plot.png
     :width: 700px
     :align: center
 
-
 """
-
-
 import textwrap
 
-import matplotlib.pyplot as plt
-import numpy as np
+import plotly.express as px
 
-# from techminer.plots.shorten_ticklabels import shorten_ticklabels
-
-TEXTLEN = 29
+TEXTLEN = 40
 
 
-def _hbar_chart(
+def bar_plot(
     series,
-    darkness=None,
-    cmap="Greys",
-    figsize=(9, 6),
-    edgecolor="k",
-    linewidth=0.5,
+    x_label=None,
+    y_label=None,
     title=None,
-    xlabel=None,
-    ylabel=None,
-    zorder=10,
 ):
-    """Make a horizontal bar plot."""
-    darkness = series if darkness is None else darkness
-    cmap = plt.cm.get_cmap(cmap)
-    if max(darkness) == min(darkness):
-        color = [cmap(0.1) for _ in darkness]
-    else:
-        color = [
-            cmap(0.1 + 0.90 * (d - min(darkness)) / (max(darkness) - min(darkness)))
-            for d in darkness
-        ]
+    if x_label is None:
+        x_label = series.name.replace("_", " ").title()
 
-    fig = plt.Figure(figsize=figsize)
-    ax = fig.subplots()
+    if y_label is None:
+        y_label = series.index.name.replace("_", " ").title()
 
-    ax.barh(
-        y=range(len(series)),
-        width=series,
-        edgecolor=edgecolor,
-        linewidth=linewidth,
-        zorder=zorder,
-        color=color,
-    )
-
-    if xlabel is None:
-        xlabel = series.name
-        xlabel = xlabel.replace("_", " ")
-        xlabel = xlabel.title()
-
-    if ylabel is None:
-        ylabel = series.index.name
-        ylabel = ylabel.replace("_", " ")
-        ylabel = ylabel.title()
-
-    ax.set_xlabel(xlabel, fontsize=7)
-    ax.set_ylabel(ylabel, fontsize=7)
-
-    yticklabels = series.index
-    if yticklabels.dtype != "int64":
-        yticklabels = [
+    if series.index.dtype != "int64":
+        series.index = [
             textwrap.shorten(
-                text=yticklabels[i],
+                text=text,
                 width=TEXTLEN,
                 placeholder="...",
                 break_long_words=False,
             )
-            for i in range(len(yticklabels))
+            for text in series.index.to_list()
         ]
 
-    ax.invert_yaxis()
-    ax.set_yticks(np.arange(len(series)))
-    ax.set_yticklabels(yticklabels)
-
-    for x in ["top", "right", "bottom"]:
-        ax.spines[x].set_visible(False)
-
-    ax.spines["left"].set_color("gray")
-
-    ax.grid(axis="x", color="gray", linestyle=":")
-    ax.tick_params(axis="x", labelsize=7)
-    ax.tick_params(axis="y", labelsize=7)
-
-    if title is not None:
-        ax.set_title(
-            title,
-            fontsize=10,
-            color="dimgray",
-            loc="left",
-        )
-
-    fig.set_tight_layout(True)
+    fig = px.bar(
+        x=series.values,
+        y=series.index,
+        text=series.astype(str),
+        title=title,
+        labels={"x": x_label, "y": y_label},
+        orientation="h",
+    )
+    fig.update_traces(textposition="outside")
+    fig.update_layout(paper_bgcolor="white", plot_bgcolor="white")
+    fig.update_traces(marker_color="lightgray", marker_line={"color": "gray"})
+    fig.update_yaxes(
+        linecolor="gray",
+        linewidth=2,
+        autorange="reversed",
+        # gridcolor="lightgray",
+        # griddash="dot",
+    )
+    # fig.update_xaxes(tickangle=270)
+    fig.update_xaxes(showticklabels=False)
 
     return fig
