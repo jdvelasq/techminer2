@@ -1,1 +1,6 @@
+from .documents_by_affiliation import documents_by_affiliation
+from .documents_by_author import documents_by_author
+from .documents_by_country import documents_by_country
+from .documents_by_type import documents_by_type
 from .documents_by_year import documents_by_year
+from .documents_per_year_by_source import documents_per_year_by_source
