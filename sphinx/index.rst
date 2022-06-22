@@ -55,9 +55,8 @@ package developed and tested in Python version 3.6.
     _scientopy
     _tlab
     _vantagepoint
-
     scopus
-    vantagepoint/_index
+    
     
 
 

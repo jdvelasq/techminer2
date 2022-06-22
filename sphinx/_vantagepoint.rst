@@ -74,7 +74,9 @@ Report
 
     .. toctree::
         :maxdepth: 1
-
+        
+        bar_chart
+        column_chart
         circle_chart
         cleveland_chart        
         gantt_chart 
