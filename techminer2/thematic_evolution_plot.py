@@ -74,8 +74,8 @@ import numpy as np
 import pandas as pd
 from matplotlib.patches import Rectangle
 
-from .bibliometrix.user_filters import _UserFilters
 from .occurrence_matrix import occurrence_matrix
+from .user_filters import _UserFilters
 
 
 def _sankey_plot(
