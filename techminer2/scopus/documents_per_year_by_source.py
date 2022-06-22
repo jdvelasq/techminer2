@@ -15,7 +15,6 @@ Documents per year by source (pendient)
     :align: center
 
 """
+from ..bibliometrix import annual_scientific_production
 
-
-def documents_per_year_by_source(directory):
-    pass
+# documents_per_year_by_source =
