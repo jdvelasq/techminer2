@@ -40,18 +40,12 @@ Dataset
       average_citations_per_year
       three_fields_plot
 
-       
-
-
-
-
 Sources
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    .. toctree::
 
-
-
+      most_relevant_sources
 
 Authors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
