@@ -11,8 +11,6 @@ from .authors_production_over_time import authors_production_over_time
 from .auto_corr_matrix import auto_corr_matrix
 from .auto_corr_matrix_heatmap import auto_corr_matrix_heatmap
 from .auto_corr_matrix_html import auto_corr_matrix_html
-
-# from .bibliometrix.annual_scientific_production import annual_scientific_production
 from .bradford_law import bradford_law
 from .bubble_chart import bubble_chart
 from .circle_chart import circle_chart
@@ -99,8 +97,6 @@ from .keyword_concordances import keyword_concordances
 from .keywords_summarization import keywords_summarization
 from .line_chart import line_chart
 from .lotka_law import lotka_law
-
-# from .bibliometrix.main_information import main_information
 from .map_chart import map_chart
 from .merge_keywords import merge_keywords
 from .most_frequent_words import most_frequent_words
@@ -121,8 +117,6 @@ from .occurrence_matrix_html import occurrence_matrix_html
 from .occurrence_matrix_sankey_diagram import occurrence_matrix_sankey_diagram
 from .rpys import rpys
 from .sankey_diagram import sankey_diagram
-
-# from .bibliometrix.source_dynamics import source_dynamics
 from .source_local_impact import source_local_impact
 from .stemming import stemming_and, stemming_or
 from .summary_view import summary_view
