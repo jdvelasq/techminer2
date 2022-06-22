@@ -10,3 +10,4 @@ Scopus search results analysis
         documents_by_funding_sponsor
         documents_by_type
         documents_by_year
+        documents_per_year_by_source
