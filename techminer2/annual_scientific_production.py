@@ -2,8 +2,7 @@
 Annual Scientific Production
 ===============================================================================
 
-See https://jdvelasq.github.io/techminer2/annual_indicators.html
-
+See :doc:`annual indicators <annual_indicators>`.
 
 >>> from techminer2.bibliometrix import *
 >>> directory = "data/"
