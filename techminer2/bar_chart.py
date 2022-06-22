@@ -19,7 +19,7 @@ Bar Chart (!)
 
 """
 from ._column_indicators_by_metric import column_indicators_by_metric
-from .bar_plot import bar_plot
+from .plots.bar_plot import bar_plot
 
 
 def bar_chart(
