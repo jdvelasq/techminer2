@@ -13,7 +13,6 @@ from .auto_corr_matrix import auto_corr_matrix
 from .auto_corr_matrix_heatmap import auto_corr_matrix_heatmap
 from .auto_corr_matrix_html import auto_corr_matrix_html
 from .average_citations_per_year import average_citations_per_year
-from .bar_chart import bar_chart
 from .bradford_law import bradford_law
 from .bubble_chart import bubble_chart
 from .circle_chart import circle_chart
@@ -151,5 +150,6 @@ from .topics_comparison_network import topics_comparison_network
 from .tree_map import tree_map
 from .trend_topics import trend_topics
 from .user_filters import user_filters
+from .vantagepoint.bar_chart import bar_chart
 from .word_cloud import word_cloud
 from .world_map import world_map
