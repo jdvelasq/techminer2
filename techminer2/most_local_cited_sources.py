@@ -8,7 +8,7 @@ See https://jdvelasq.github.io/techminer2/column_indicators.html
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "sphinx/bibliometrix/images/most_local_cited_sources.png"
+>>> file_name = "sphinx/images/most_local_cited_sources.png"
 >>> most_local_cited_sources(
 ...     top_n=20,
 ...     directory=directory,
