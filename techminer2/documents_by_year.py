@@ -1,5 +1,5 @@
 """
-Documents by year (!)
+Documents by year
 ===============================================================================
 
 >>> from techminer2.scopus import *

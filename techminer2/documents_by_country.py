@@ -1,5 +1,5 @@
 """
-Documents by country (!)
+Documents by country
 ===============================================================================
 
 >>> from techminer2.scopus import *

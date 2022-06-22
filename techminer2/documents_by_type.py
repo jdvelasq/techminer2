@@ -1,5 +1,5 @@
 """
-Documents by type (!)
+Documents by type
 ===============================================================================
 
 >>> from techminer2.scopus import *

@@ -1,5 +1,5 @@
 """
-Documents by author (!)
+Documents by author
 ===============================================================================
 
 >>> from techminer2.scopus import *

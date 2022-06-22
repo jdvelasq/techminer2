@@ -1,5 +1,5 @@
 """
-Documents by affiliation (!)
+Documents by affiliation
 ===============================================================================
 
 >>> from techminer2.scopus import *
