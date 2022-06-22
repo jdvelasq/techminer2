@@ -26,7 +26,12 @@ iso_source_name  SUSTAINABILITY  ...  FRONTIER ARTIF INTELL
 from .topic_dynamics import topic_dynamics
 
 
-def source_dynamics(top_n=10, figsize=(8, 6), directory="./", plot=True):
+def source_dynamics(
+    top_n=10,
+    figsize=(8, 6),
+    directory="./",
+    plot=True,
+):
 
     return topic_dynamics(
         column="iso_source_name",
