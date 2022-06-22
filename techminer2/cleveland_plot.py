@@ -1,12 +1,12 @@
 """
-Cleveland plot
+Cleveland plot (!)
 ===============================================================================
 
 
 >>> from techminer2 import *
 >>> from techminer2.plots import *
 >>> directory = "data/"
->>> file_name = "sphinx/plots/images/cleveland_plot.png"
+>>> file_name = "sphinx/images/cleveland_plot.png"
 >>> series = column_indicators(
 ...     column="countries", 
 ...     directory=directory,
