@@ -6,7 +6,7 @@ See https://jdvelasq.github.io/techminer2/annual_indicators.html
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "sphinx/images/average_citations_per_year.png"
+>>> file_name = "sphinx/bibliometrix/images/average_citations_per_year.png"
 >>> average_citations_per_year(directory=directory).write_image(file_name)
 
 .. image:: images/average_citations_per_year.png
@@ -16,7 +16,7 @@ See https://jdvelasq.github.io/techminer2/annual_indicators.html
 """
 import plotly.express as px
 
-from .annual_indicators import annual_indicators
+from ..annual_indicators import annual_indicators
 
 
 def average_citations_per_year(directory="./"):
