@@ -2,7 +2,8 @@
 Annual Scientific Production (ok!)
 ===============================================================================
 
-See :doc:`annual indicators <annual_indicators>`.
+See :doc:`annual indicators <annual_indicators>` to obtain a `pandas.Dataframe` 
+with the data.
 
 >>> from techminer2.bibliometrix import *
 >>> directory = "data/"
