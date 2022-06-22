@@ -20,7 +20,7 @@ from .bar_chart import bar_chart
 
 def documents_by_country(directory):
     return bar_chart(
-        column="authors",
+        column="countries",
         min_occ=None,
         max_occ=None,
         top_n=10,
