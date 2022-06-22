@@ -100,7 +100,8 @@ from .keyword_concordances import keyword_concordances
 from .keywords_summarization import keywords_summarization
 from .line_chart import line_chart
 from .lotka_law import lotka_law
-from .main_information import main_information
+
+# from .bibliometrix.main_information import main_information
 from .map_chart import map_chart
 from .merge_keywords import merge_keywords
 from .most_frequent_words import most_frequent_words
