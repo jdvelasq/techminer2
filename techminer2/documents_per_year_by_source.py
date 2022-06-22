@@ -6,7 +6,7 @@ Documents per year by source (pendient)
 >>> directory = "data/"
 >>> file_name = "sphinx/images/documents_per_year_by_source.png"
 
->>> documents_by_author(
+>>> documents_per_year_by_source(
 ...     directory
 ... ).write_image(file_name)
 
@@ -15,6 +15,8 @@ Documents per year by source (pendient)
     :align: center
 
 """
-from .annual_scientific_production import annual_scientific_production
+from .source_dynamics import source_dynamics
 
-documents_per_year_by_source = None
+
+def documents_per_year_by_source(directory="./"):
+    return source_dynamics(top_n=10, directory=directory)
