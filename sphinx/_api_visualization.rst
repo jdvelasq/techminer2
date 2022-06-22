@@ -22,7 +22,6 @@ Visualization API
    _gantt_chart
    _pie_chart
    _tree_map    
-   _vbar_chart
    _word_cloud
    _world_map
 
