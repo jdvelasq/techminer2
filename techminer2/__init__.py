@@ -4,7 +4,6 @@ from .abstract_screening import abstract_screening
 from .abstract_summarization import abstract_summarization
 from .annual_indicators import annual_indicators
 from .annual_occurrence_matrix import annual_occurrence_matrix
-from .annual_scientific_production import annual_scientific_production
 from .apply_thesaurus import apply_thesaurus
 from .association_index import association_index
 from .author_local_impact import author_local_impact
@@ -13,6 +12,8 @@ from .auto_corr_matrix import auto_corr_matrix
 from .auto_corr_matrix_heatmap import auto_corr_matrix_heatmap
 from .auto_corr_matrix_html import auto_corr_matrix_html
 from .average_citations_per_year import average_citations_per_year
+
+# from .bibliometrix.annual_scientific_production import annual_scientific_production
 from .bradford_law import bradford_law
 from .bubble_chart import bubble_chart
 from .circle_chart import circle_chart
