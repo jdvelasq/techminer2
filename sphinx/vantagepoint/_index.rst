@@ -8,3 +8,4 @@ Report
         :maxdepth: 1
 
         bar_chart
+        column_chart
