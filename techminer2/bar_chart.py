@@ -1,14 +1,16 @@
 """
-Bar Chart
+Bar Chart (!)
 ===============================================================================
 
 >>> from techminer2 import *
 >>> directory = "data/"
 >>> file_name = "sphinx/images/bar_chart.png"
+
 >>> bar_chart(
 ...     column='author_keywords',
 ...     top_n=15,
 ...     directory=directory,
+...     metric="num_documents",
 ... ).write_image(file_name)
 
 .. image:: images/bar_chart.png
@@ -16,9 +18,8 @@ Bar Chart
     :align: center
 
 """
-import plotly.express as px
-
 from ._column_indicators_by_metric import column_indicators_by_metric
+from .bar_plot import bar_plot
 
 
 def bar_chart(
@@ -29,7 +30,7 @@ def bar_chart(
     directory="./",
     metric="num_documents",
 ):
-    indicators = column_indicators_by_metric(
+    indicator = column_indicators_by_metric(
         column,
         min_occ=min_occ,
         max_occ=max_occ,
@@ -38,26 +39,11 @@ def bar_chart(
         metric=metric,
     )
 
-    fig = px.bar(
-        x=indicators.index,
-        y=indicators.values,
-        text=indicators.astype(str),
-        labels={
-            "y": metric.replace("_", " ").title(),
-            "x": column.replace("_", " ").title(),
-        },
-        orientation="v",
+    fig = bar_plot(
+        indicator,
+        x_label=None,
+        y_label=None,
+        title=None,
     )
-    fig.update_traces(textposition="outside")
-    fig.update_layout(paper_bgcolor="white", plot_bgcolor="white")
-    fig.update_traces(marker_color="lightgray")
-    fig.update_xaxes(
-        linecolor="gray",
-        linewidth=2,
-        gridcolor="lightgray",
-        griddash="dot",
-    )
-    fig.update_xaxes(tickangle=270)
-    fig.update_yaxes(showticklabels=False)
 
     return fig
