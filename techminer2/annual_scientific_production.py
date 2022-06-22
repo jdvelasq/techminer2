@@ -20,7 +20,7 @@ import plotly.express as px
 from .annual_indicators import annual_indicators
 
 
-def annual_scientific_production(directory):
+def annual_scientific_production(directory="./"):
     indicators = annual_indicators(directory)
     fig = px.line(
         x=indicators.index,
