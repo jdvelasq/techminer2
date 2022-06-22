@@ -1,5 +1,5 @@
 """
-Most Relevant Sources (!)
+Most Relevant Sources
 ===============================================================================
 
 See https://jdvelasq.github.io/techminer2/column_indicators.html

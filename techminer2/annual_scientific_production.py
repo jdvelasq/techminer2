@@ -1,5 +1,5 @@
 """
-Annual Scientific Production (!)
+Annual Scientific Production
 ===============================================================================
 
 See https://jdvelasq.github.io/techminer2/annual_indicators.html
