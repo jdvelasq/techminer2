@@ -143,7 +143,7 @@ from .three_fields_plot import three_fields_plot
 from .timeline_chart import timeline_chart
 from .top_topics import top_topics
 from .top_trending_topics import top_trending_topics
-from .topic_associations import topic_associations
+from .topic_associations import Topic_associations
 from .topic_dynamics import topic_dynamics
 from .topic_view import topic_view
 from .topics_comparison_chart import topics_comparison_chart

@@ -1,4 +1,4 @@
-.. automodule:: techminer2._hbar_chart
+.. automodule:: techminer2.topic_associations_graph
     :members:
     :undoc-members:
     :show-inheritance:

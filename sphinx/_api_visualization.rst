@@ -6,13 +6,20 @@ Visualization API
    <hr style="height:4px;border-width:0;color:gray;background-color:black">
 
 
+
+.. toctree::
+   :maxdepth: 1
+
+   bar_plot
+
+
 .. toctree::
    :maxdepth: 1
 
    _cleveland_chart
    _dotted_gantt_chart
    _gantt_chart
-   _hbar_chart
+   
    _pie_chart
    _tree_map    
    _vbar_chart
