@@ -1,5 +1,5 @@
 """
-Documents by year (change plot)
+Documents by year (!)
 ===============================================================================
 
 >>> from techminer2.scopus import *
@@ -15,18 +15,6 @@ Documents by year (change plot)
     :align: center
 
 """
-from ..annual_indicators import annual_indicators
-from ..plots import bar_plot
+from ..bibliometrix import annual_scientific_production
 
-
-def documents_by_year(directory):
-
-    indicators = annual_indicators(directory).num_documents
-    fig = bar_plot(
-        indicators,
-        x_label=None,
-        y_label=None,
-        title="Documents by year",
-    )
-
-    return fig
+documents_by_year = annual_scientific_production
