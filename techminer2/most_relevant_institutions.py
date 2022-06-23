@@ -1,12 +1,15 @@
 """
-Most Relevant Institutions
+Most Relevant Institutions (ok!)
 ===============================================================================
 
-See https://jdvelasq.github.io/techminer2/column_indicators.html
+See :doc:`column indicators <column_indicators>` to obtain a `pandas.Dataframe` 
+with the data.
+
 
 >>> from techminer2 import *
 >>> directory = "data/"
 >>> file_name = "sphinx/images/most_relevant_institutions.png"
+
 >>> most_relevant_institutions(
 ...     top_n=20,
 ...     directory=directory,
