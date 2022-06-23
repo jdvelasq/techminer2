@@ -2,11 +2,13 @@
 Source Local Impact
 ===============================================================================
 
-See https://jdvelasq.github.io/techminer2/impact_indicators.html
+See :doc:`impact indicators <impact_indicators>` to obtain a `pandas.Dataframe` 
+with the data. 
 
 >>> from techminer2 import *
 >>> directory = "data/"
 >>> file_name = "sphinx/images/source_local_impact.png"
+
 >>> source_local_impact(
 ...     impact_measure='h_index', 
 ...     top_n=20, 
