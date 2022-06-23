@@ -1,5 +1,5 @@
 """
-Source Local Impact
+Source Local Impact (ok!)
 ===============================================================================
 
 See :doc:`impact indicators <impact_indicators>` to obtain a `pandas.Dataframe` 
