@@ -46,8 +46,6 @@ def bar_chart(
     }
     indicators = indicators.rename(columns=column_names)
 
-    #
-
     fig = px.bar(
         indicators,
         x=metric.replace("_", " ").title(),
