@@ -34,21 +34,3 @@ def most_relevant_sources(directory="./", top_n=20):
         metric="num_documents",
         title="Most relevant sources",
     )
-
-    # from .column_indicators import column_indicators
-    indicator = column_indicators(column="iso_source_name", directory=directory)
-    indicator = indicator.sort_values(
-        by=["num_documents", "global_citations", "local_citations"],
-        ascending=False,
-    )
-    indicator = indicator.head(top_n)
-    indicator = indicator.num_documents
-
-    fig = cleveland_plot(
-        series=indicator,
-        x_label=None,
-        y_label=None,
-        title="Most relevant sources",
-    )
-
-    return fig
