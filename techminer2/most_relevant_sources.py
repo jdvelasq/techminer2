@@ -1,8 +1,9 @@
 """
-Most Relevant Sources
+Most relevant sources (ok!)
 ===============================================================================
 
-See https://jdvelasq.github.io/techminer2/column_indicators.html
+See :doc:`column indicators <column_indicators>` to obtain a `pandas.Dataframe` 
+with the data.
 
 >>> from techminer2 import *
 >>> directory = "data/"
