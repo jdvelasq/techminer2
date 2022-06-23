@@ -1,5 +1,5 @@
 """
-Documents by funding sponsor (pendient)
+Documents by funding sponsor (TODO)
 ===============================================================================
 
 >>> from techminer2.scopus import *
