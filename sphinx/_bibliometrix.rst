@@ -80,6 +80,7 @@ Authors
       :maxdepth: 1
 
       most_relevant_institutions
+      most_global_cited_institutions
       institutions_production_over_time
 
 
