@@ -17,7 +17,6 @@ Cleveland Chart
 
     <iframe src="_static/cleveland_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
-
 """
 import plotly.express as px
 
