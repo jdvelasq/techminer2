@@ -1,10 +1,24 @@
 """
-Most Local Cited Authors in References
+Most local cited authors in references (ok!)
 ===============================================================================
+
+See :doc:`column indicators <column_indicators>` to obtain a `pandas.Dataframe` 
+with the data. Use the following code:
+
+
+.. code:: python
+
+    column_indicators(
+        column="authors", 
+        directory=directory, 
+        file_name="references.csv",
+    )
+
 
 >>> from techminer2 import *
 >>> directory = "data/"
 >>> file_name = "sphinx/images/most_local_cited_authors.png"
+
 >>> most_local_cited_authors(
 ...     top_n=20,
 ...     directory=directory,
