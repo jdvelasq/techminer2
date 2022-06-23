@@ -18,7 +18,7 @@ Bar Chart
     :align: center
 
 """
-from ._column_indicators_by_metric import column_indicators_by_metric
+from .column_indicators_by_metric import column_indicators_by_metric
 from .bar_plot import bar_plot
 
 
