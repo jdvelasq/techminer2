@@ -9,6 +9,7 @@ from .apply_thesaurus import apply_thesaurus
 from .association_index import association_index
 from .author_local_impact import author_local_impact
 from .authors_production_over_time import authors_production_over_time
+from .authors_production_per_year import authors_production_per_year
 from .auto_corr_matrix import auto_corr_matrix
 from .auto_corr_matrix_heatmap import auto_corr_matrix_heatmap
 from .auto_corr_matrix_html import auto_corr_matrix_html
