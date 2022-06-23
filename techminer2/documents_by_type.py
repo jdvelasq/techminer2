@@ -2,23 +2,25 @@
 Documents by type
 ===============================================================================
 
->>> from techminer2.scopus import *
+>>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "sphinx/images/documents_by_type.png"
+>>> file_name = "sphinx/_static/documents_by_type.html"
+
 
 >>> documents_by_type(
 ...     directory
-... ).write_image(file_name)
+... ).write_html(file_name)
 
-.. image:: images/documents_by_type.png
-    :width: 700px
-    :align: center
+.. raw:: html
+
+    <iframe src="_static/documents_by_type.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 from .bar_chart import bar_chart
 
 
 def documents_by_type(directory):
+
     return bar_chart(
         column="document_type",
         min_occ=None,
