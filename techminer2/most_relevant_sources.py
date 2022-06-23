@@ -1,5 +1,5 @@
 """
-Most relevant sources (ok!)
+Most relevant sources
 ===============================================================================
 
 See :doc:`column indicators <column_indicators>` to obtain a `pandas.Dataframe` 
