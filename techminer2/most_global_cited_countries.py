@@ -1,39 +1,34 @@
 """
-Most Global Cited Countries
+Most global cited countries
 ===============================================================================
 
 See https://jdvelasq.github.io/techminer2/column_indicators.html
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "sphinx/images/most_global_cited_countries.png"
->>> most_global_cited_countries(
-...     top_n=20,
-...     directory=directory,
-... ).write_image(file_name)
+>>> file_name = "sphinx/_static/most_global_cited_countries.html"
 
-.. image:: images/most_global_cited_countries.png
-    :width: 700px
-    :align: center
+>>> most_global_cited_countries(
+...     directory=directory,
+...     top_n=20,
+... ).write_html(file_name)
+
+.. raw:: html
+
+    <iframe src="_static/most_global_cited_countries.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ._bibliometrix_scatter_plot import bibliometrix_scatter_plot
-from .column_indicators import column_indicators
+from .cleveland_chart import cleveland_chart
 
 
 def most_global_cited_countries(directory="./", top_n=20):
 
-    indicators = column_indicators(column="countries", directory=directory)
-    indicators = indicators.sort_values(
-        by=["global_citations", "num_documents", "local_citations"], ascending=False
-    )
-    indicators = indicators.head(top_n)
-
-    return bibliometrix_scatter_plot(
-        x=indicators.global_citations,
-        y=indicators.index,
+    return cleveland_chart(
+        column="countries",
+        top_n=top_n,
+        min_occ=None,
+        max_occ=None,
+        directory=directory,
+        metric="global_citations",
         title="Most global cited countries",
-        text=indicators.global_citations,
-        xlabel="Global citations",
-        ylabel="Country",
     )
