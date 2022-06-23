@@ -1,12 +1,14 @@
 """
-Author Local Impact
+Author local impact (ok!)
 ===============================================================================
 
-See https://jdvelasq.github.io/techminer2/impact_indicators.html
+See :doc:`impact indicators <impact_indicators>` to obtain a `pandas.Dataframe` 
+with the data.
 
 >>> from techminer2 import *
 >>> directory = "data/"
 >>> file_name = "sphinx/images/author_local_impact.png"
+
 >>> author_local_impact(
 ...     impact_measure='h_index', 
 ...     top_n=20, 
@@ -45,7 +47,7 @@ def author_local_impact(
     return bibliometrix_scatter_plot(
         x=indicators,
         y=indicators.index,
-        title="Source Local Impact by " + impact_measure.replace("_", " ").title(),
+        title="Author Local Impact by " + impact_measure.replace("_", " ").title(),
         text=indicators,
         xlabel=impact_measure.replace("_", " ").title(),
         ylabel="Author Name",
