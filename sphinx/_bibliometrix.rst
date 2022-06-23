@@ -48,7 +48,8 @@ Sources
       bradford_law
       core_sources 
       source_local_impact
-      source_dynamics
+      source_dynamics_table
+      source_dynamics_plot
 
 
 
