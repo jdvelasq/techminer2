@@ -17,11 +17,11 @@ Documents by year
 ---
 
 """
-# from ._by_year_analysis_plot import by_year_analysis_plot
+from .annual_indicators_plot import annual_indicators_plot
 
 
 def documents_by_year(directory="./"):
-    return by_year_analysis_plot(
+    return annual_indicators_plot(
         column="num_documents",
         title="Documents by year",
         directory=directory,
