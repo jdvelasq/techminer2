@@ -15,8 +15,11 @@ Documents per year by source (pendient)
     :align: center
 
 """
-from .source_dynamics import source_dynamics
+# from .source_dynamics_table import source_dynamics_table
 
 
 def documents_per_year_by_source(directory="./"):
-    return source_dynamics(top_n=10, directory=directory)
+    pass
+
+
+#     return source_dynamics_table(top_n=10, directory=directory)
