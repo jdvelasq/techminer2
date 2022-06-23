@@ -51,6 +51,7 @@ package developed and tested in Python version 3.6.
     :hidden:
     :maxdepth: 1
 
+    techminer
     _bibliometrix
     _scientopy
     _tlab

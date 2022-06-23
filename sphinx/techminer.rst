@@ -31,7 +31,17 @@ Basic dataset statistics
 Analysis by year
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-   .. toctree::
+    .. toctree::
         :maxdepth: 1
 
         annual_indicators 
+
+
+    .. toctree::
+        :maxdepth: 1
+
+        documents_by_year
+
+
+        
+     

@@ -2,19 +2,27 @@
 Documents by year
 ===============================================================================
 
->>> from techminer2.scopus import *
+>>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "sphinx/images/documents_by_year.png"
+>>> file_name = "sphinx/_static/documents_by_year_plot.html"
 
 >>> documents_by_year(
 ...     directory
-... ).write_image(file_name)
+... ).write_html(file_name)
 
-.. image:: images/documents_by_year.png
-    :width: 700px
-    :align: center
+.. raw:: html
+
+    <iframe src="_static/documents_by_year_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
+
+---
 
 """
-from .annual_scientific_production import annual_scientific_production
+from ._by_year_analysis_plot import by_year_analysis_plot
 
-documents_by_year = annual_scientific_production
+
+def documents_by_year(directory="./"):
+    return by_year_analysis_plot(
+        column="num_documents",
+        title="Annual Scientific Production",
+        directory=directory,
+    )

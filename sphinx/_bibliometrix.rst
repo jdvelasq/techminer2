@@ -30,10 +30,12 @@ Filter
 Overview
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+
+   * :doc:`Annual scientific production <documents_by_year>`
+
    .. toctree::
 
       main_information
-      annual_scientific_production
       average_citations_per_year
       three_fields_plot
 
