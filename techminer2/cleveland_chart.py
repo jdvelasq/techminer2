@@ -31,6 +31,7 @@ def cleveland_chart(
     max_occ=None,
     directory="./",
     metric="num_documents",
+    title=None,
 ):
 
     indicators = column_indicators_by_metric(
@@ -52,6 +53,7 @@ def cleveland_chart(
         x=metric.replace("_", " ").title(),
         y=column.replace("_", " ").title(),
         hover_data=["Num Documents", "Global Citations", "Local Citations"],
+        title=title,
     )
     fig.update_traces(marker=dict(size=10, color="black"))
     fig.update_traces(textposition="middle right")
