@@ -1,5 +1,5 @@
 """
-Annual Scientific Production (ok!)
+Annual Scientific Production
 ===============================================================================
 
 See :doc:`annual indicators <annual_indicators>` to obtain a `pandas.Dataframe` 
