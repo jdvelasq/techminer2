@@ -57,10 +57,6 @@ Sources
 Authors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-   .. raw:: html
-
-      <p style="color:gray">Authors:</p>
-
    .. toctree::
       :maxdepth: 1
 
@@ -72,9 +68,9 @@ Authors
       lotka_law    
       author_local_impact
 
-   .. raw:: html
 
-      <p style="color:gray">Affiliations:</p>
+Institutions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    .. toctree::
       :maxdepth: 1
@@ -84,9 +80,8 @@ Authors
       institutions_production_over_time
 
 
-   .. raw:: html
-
-      <p style="color:gray">Countries:</p>
+Countries
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    .. toctree::
       :maxdepth: 1
@@ -95,6 +90,7 @@ Authors
       country_scientific_production
       countries_production_over_time
       most_global_cited_countries
+      country_local_impact
 
 
 
