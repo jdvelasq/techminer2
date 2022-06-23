@@ -19,7 +19,7 @@ Line Chart
 
 import plotly.express as px
 
-from ._column_indicators_by_metric import column_indicators_by_metric
+from .column_indicators_by_metric import column_indicators_by_metric
 
 
 def line_chart(
