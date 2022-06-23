@@ -106,6 +106,7 @@ from .gantt_chart import gantt_chart
 from .growth_indicators import growth_indicators
 from .heat_map import heat_map
 from .impact_indicators import impact_indicators
+from .impact_indicators_plot import impact_indicators_plot
 from .import_references import import_references
 from .import_scopus_files import import_scopus_files
 from .keyword_concordances import keyword_concordances

@@ -7,21 +7,21 @@ with the data.
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "sphinx/images/author_local_impact.png"
+>>> file_name = "sphinx/_static/author_local_impact.html"
 
 >>> author_local_impact(
 ...     impact_measure='h_index', 
 ...     top_n=20, 
 ...     directory=directory,
-... ).write_image(file_name)
+... ).write_html(file_name)
 
-.. image:: images/author_local_impact.png
-    :width: 700px
-    :align: center
+.. raw:: html
+
+    <iframe src="_static/author_local_impact.html" height="600px" width="100%" frameBorder="0"></iframe>
+
 
 """
-from ._bibliometrix_scatter_plot import bibliometrix_scatter_plot
-from .impact_indicators import impact_indicators
+from .impact_indicators_plot import impact_indicators_plot
 
 
 def author_local_impact(
@@ -29,26 +29,10 @@ def author_local_impact(
     top_n=20,
     directory="./",
 ):
-
-    if impact_measure not in [
-        "h_index",
-        "g_index",
-        "m_index",
-        "global_citations",
-    ]:
-        raise ValueError(
-            "Impact measure must be one of: h_index, g_index, m_index, global_citations"
-        )
-
-    indicators = impact_indicators(directory=directory, column="authors")
-    indicators = indicators.sort_values(by=impact_measure, ascending=False)
-    indicators = indicators[impact_measure].head(top_n)
-
-    return bibliometrix_scatter_plot(
-        x=indicators,
-        y=indicators.index,
+    return impact_indicators_plot(
+        column="authors",
+        impact_measure=impact_measure,
+        top_n=top_n,
+        directory=directory,
         title="Author Local Impact by " + impact_measure.replace("_", " ").title(),
-        text=indicators,
-        xlabel=impact_measure.replace("_", " ").title(),
-        ylabel="Author Name",
     )
