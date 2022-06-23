@@ -1,5 +1,5 @@
 """
-Most local cited authors in references (ok!)
+Most local cited authors in references
 ===============================================================================
 
 See :doc:`column indicators <column_indicators>` to obtain a `pandas.Dataframe` 

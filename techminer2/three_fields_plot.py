@@ -1,5 +1,5 @@
 """
-Three fields plot (ok!)
+Three fields plot
 ===============================================================================
 
 >>> from techminer2 import *

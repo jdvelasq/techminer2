@@ -1,5 +1,5 @@
 """
-Source dynamics plot (ok!)
+Source dynamics plot
 ===============================================================================
 
 See :doc:`column indicators by year <column_indicators_by_year>` to obtain a 

@@ -1,5 +1,5 @@
 """
-Main information (ok!)
+Main information
 ===============================================================================
 
 >>> from techminer2.bibliometrix import *
