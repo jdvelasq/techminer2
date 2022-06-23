@@ -1,5 +1,5 @@
 """
-Documents per year by source (pendient)
+Documents per year by source (TODO)
 ===============================================================================
 
 >>> from techminer2.scopus import *
