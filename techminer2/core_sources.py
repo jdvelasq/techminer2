@@ -1,10 +1,11 @@
 """
-Core Sources 
+Core Sources (ok!)
 ===============================================================================
 
 
 >>> from techminer2 import *
 >>> directory = "data/"
+
 >>> core_sources(directory)
    Num Sources        %  ...  Tot Documents Bradford's Group
 0            1   0.69 %  ...         6.05 %                1
