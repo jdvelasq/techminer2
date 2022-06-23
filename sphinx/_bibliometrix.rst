@@ -92,6 +92,7 @@ Authors
 
       corresponding_authors_country
       country_scientific_production
+      countries_production_over_time
       most_global_cited_countries
 
 

@@ -61,6 +61,7 @@ from .column_plot import column_plot
 from .core_sources import core_sources
 from .correlation_map import correlation_map
 from .corresponding_authors_country import corresponding_authors_country
+from .countries_production_over_time import countries_production_over_time
 from .country_scientific_production import country_scientific_production
 from .coupling_matrix import coupling_matrix
 from .coupling_network_communities import coupling_network_communities
