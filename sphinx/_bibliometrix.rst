@@ -68,6 +68,7 @@ Authors
       most_local_cited_authors
       authors_production_over_time
       authors_production_per_year
+      authors_documents
       lotka_law    
       author_local_impact
 
