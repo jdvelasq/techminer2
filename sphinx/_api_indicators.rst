@@ -17,3 +17,9 @@ Indicators API
     document_indicators
     growth_indicators
     impact_indicators
+
+.. toctree::
+    :maxdepth: 1
+
+    column_dynamics_table
+    column_dynamics_plot
