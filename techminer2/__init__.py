@@ -165,4 +165,6 @@ from .tree_map import tree_map
 from .trend_topics import trend_topics
 from .user_filters import user_filters
 from .word_cloud import word_cloud
+from .word_dynamics_plot import word_dynamics_plot
+from .word_dynamics_table import word_dynamics_table
 from .world_map import world_map

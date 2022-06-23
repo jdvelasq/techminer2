@@ -133,6 +133,8 @@ Documents
       word_cloud
       tree_map
       topic_dynamics
+      word_dynamics_plot
+      word_dynamics_table
       trend_topics
 
 
