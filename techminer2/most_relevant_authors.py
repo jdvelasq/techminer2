@@ -1,12 +1,14 @@
 """
-Most Relevant Authors
+Most relevant authors (ok!)
 ===============================================================================
 
-See https://jdvelasq.github.io/techminer2/column_indicators.html
+See :doc:`column indicators <column_indicators>` to obtain a `pandas.Dataframe` 
+with the data.
 
 >>> from techminer2 import *
 >>> directory = "data/"
 >>> file_name = "sphinx/images/most_relevant_authors.png"
+
 >>> most_relevant_authors(
 ...     top_n=20,
 ...     directory=directory,
