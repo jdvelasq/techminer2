@@ -7,35 +7,46 @@ with the data.
 
 >>> from techminer2.bibliometrix import *
 >>> directory = "data/"
->>> file_name = "sphinx/images/annual_scientific_production.png"
->>> annual_scientific_production(directory).write_image(file_name)
+>>> file_name = "sphinx/_static/annual_scientific_production.html"
 
-.. image:: images/annual_scientific_production.png
-    :width: 700px
-    :align: center
+>>> annual_scientific_production(directory).write_html(file_name)
+
+.. raw:: html
+
+    <iframe src="_static/annual_scientific_production.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-import plotly.express as px
-
-from .annual_indicators import annual_indicators
+from .annual_indicators_plot import annual_indicators_plot
 
 
 def annual_scientific_production(directory="./"):
-    indicators = annual_indicators(directory)
-    fig = px.line(
-        x=indicators.index,
-        y=indicators.num_documents,
+    return annual_indicators_plot(
+        column="num_documents",
         title="Annual Scientific Production",
-        markers=True,
-        text=indicators.num_documents,
-        labels={"x": "Year", "y": "Number of publications"},
+        directory=directory,
     )
-    fig.update_traces(marker=dict(size=12))
-    fig.update_traces(textposition="bottom right")
-    fig.update_traces(line=dict(color="black"))
-    fig.update_xaxes(tickangle=270)
-    fig.update_layout(paper_bgcolor="white", plot_bgcolor="white")
-    fig.update_xaxes(linecolor="gray", gridcolor="lightgray")
-    fig.update_yaxes(linecolor="gray", gridcolor="lightgray")
-    fig.update_yaxes(showticklabels=False)
-    return fig
+
+
+# import plotly.express as px
+
+# from .annual_indicators import annual_indicators
+
+# def annual_scientific_production(directory="./"):
+#     indicators = annual_indicators(directory)
+#     fig = px.line(
+#         x=indicators.index,
+#         y=indicators.num_documents,
+#         title="Annual Scientific Production",
+#         markers=True,
+#         text=indicators.num_documents,
+#         labels={"x": "Year", "y": "Number of publications"},
+#     )
+#     fig.update_traces(marker=dict(size=12))
+#     fig.update_traces(textposition="bottom right")
+#     fig.update_traces(line=dict(color="black"))
+#     fig.update_xaxes(tickangle=270)
+#     fig.update_layout(paper_bgcolor="white", plot_bgcolor="white")
+#     fig.update_xaxes(linecolor="gray", gridcolor="lightgray")
+#     fig.update_yaxes(linecolor="gray", gridcolor="lightgray")
+#     fig.update_yaxes(showticklabels=False)
+#     return fig
