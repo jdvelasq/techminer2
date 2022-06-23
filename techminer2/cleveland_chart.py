@@ -1,25 +1,27 @@
 """
-Cleveland Chart (New)
+Cleveland Chart
 ===============================================================================
 
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "sphinx/images/cleveland_chart.jpg"
+>>> file_name = "sphinx/_static/cleveland_chart.html"
+
 >>> cleveland_chart(
 ...    column="author_keywords", 
 ...    top_n=20,
 ...    directory=directory,
-... ).write_image(file_name)
+... ).write_html(file_name)
 
-.. image:: images/cleveland_chart.jpg
-    :width: 700px
-    :align: center
+.. raw:: html
+
+    <iframe src="_static/cleveland_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+
 
 """
 import plotly.express as px
 
-from ._column_indicators_by_metric import column_indicators_by_metric
+from .column_indicators_by_metric import column_indicators_by_metric
 
 
 def cleveland_chart(
@@ -39,15 +41,17 @@ def cleveland_chart(
         directory=directory,
         metric=metric,
     )
+    indicators = indicators.reset_index()
+    column_names = {
+        column: column.replace("_", " ").title() for column in indicators.columns
+    }
+    indicators = indicators.rename(columns=column_names)
 
     fig = px.scatter(
-        x=indicators.values,
-        y=indicators.index,
-        text=indicators.astype(str),
-        labels={
-            "x": metric.replace("_", " ").title(),
-            "y": column.replace("_", " ").title(),
-        },
+        indicators,
+        x=metric.replace("_", " ").title(),
+        y=column.replace("_", " ").title(),
+        hover_data=["Num Documents", "Global Citations", "Local Citations"],
     )
     fig.update_traces(marker=dict(size=10, color="black"))
     fig.update_traces(textposition="middle right")
@@ -60,6 +64,11 @@ def cleveland_chart(
         autorange="reversed",
         griddash="dot",
     )
-    fig.update_xaxes(showticklabels=False)
+    fig.update_xaxes(
+        linecolor="gray",
+        linewidth=2,
+        gridcolor="lightgray",
+        griddash="dot",
+    )
 
     return fig
