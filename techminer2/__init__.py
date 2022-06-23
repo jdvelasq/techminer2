@@ -51,6 +51,8 @@ from .collaboration_network_communities import collaboration_network_communities
 from .collaboration_network_degree_plot import collaboration_network_degree_plot
 from .collaboration_network_graph import collaboration_network_graph
 from .collaboration_network_indicators import collaboration_network_indicators
+from .column_dynamics_plot import column_dynamics_plot
+from .column_dynamics_table import column_dynamics_table
 from .column_indicators import column_indicators
 from .column_indicators_by_year import column_indicators_by_year
 from .column_plot import column_plot
@@ -129,6 +131,8 @@ from .occurrence_matrix_html import occurrence_matrix_html
 from .occurrence_matrix_sankey_diagram import occurrence_matrix_sankey_diagram
 from .rpys import rpys
 from .sankey_diagram import sankey_diagram
+from .source_dynamics_plot import source_dynamics_plot
+from .source_dynamics_table import source_dynamics_table
 from .source_local_impact import source_local_impact
 from .stemming import stemming_and, stemming_or
 from .summary_view import summary_view
@@ -151,7 +155,6 @@ from .timeline_chart import timeline_chart
 from .top_topics import top_topics
 from .top_trending_topics import top_trending_topics
 from .topic_associations import Topic_associations
-from .topic_dynamics import topic_dynamics
 from .topic_view import topic_view
 from .topics_comparison_chart import topics_comparison_chart
 from .topics_comparison_network import topics_comparison_network
