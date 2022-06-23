@@ -16,7 +16,7 @@ Column Chart
     :align: center
 
 """
-from ._column_indicators_by_metric import column_indicators_by_metric
+from .column_indicators_by_metric import column_indicators_by_metric
 from .column_plot import column_plot
 
 
