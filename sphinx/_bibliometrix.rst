@@ -99,20 +99,14 @@ Countries
 Documents 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-   .. raw:: html
-
-      <p style="color:gray">Documents:</p>
-
-
    .. toctree::
       :maxdepth: 1
 
       most_global_cited_documents
       most_local_cited_documents     
 
-   .. raw:: html
-
-      <p style="color:gray">Cited References:</p>
+Cited References
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    .. toctree::
       :maxdepth: 1
@@ -120,9 +114,9 @@ Documents
       most_local_cited_references
       rpys
 
-   .. raw:: html
+Words
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-      <p style="color:gray">Words:</p>
 
    .. toctree::
       :maxdepth: 1
