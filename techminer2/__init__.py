@@ -110,6 +110,7 @@ from .impact_indicators import impact_indicators
 from .impact_indicators_plot import impact_indicators_plot
 from .import_references import import_references
 from .import_scopus_files import import_scopus_files
+from .institution_local_impact import institution_local_impact
 from .keyword_concordances import keyword_concordances
 from .keywords_summarization import keywords_summarization
 from .line_chart import line_chart
