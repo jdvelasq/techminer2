@@ -1,10 +1,20 @@
 """
-Most Local Cited Sources (in References)
+Most Local Cited Sources (in References) (ok!)
 ===============================================================================
 
 Plot the most local cited sources in the references.
 
-See https://jdvelasq.github.io/techminer2/column_indicators.html
+See :doc:`column indicators <column_indicators>` to obtain a `pandas.Dataframe` 
+with the data. In this case, use:
+
+.. code:: python
+
+    column_indicators(
+        column="iso_source_name",
+        directory=directory,
+        file_name="references.csv",
+    )
+
 
 >>> from techminer2 import *
 >>> directory = "data/"
@@ -29,7 +39,9 @@ def most_local_cited_sources(
 ):
 
     indicator = column_indicators(
-        column="iso_source_name", directory=directory, file_name="references.csv"
+        column="iso_source_name",
+        directory=directory,
+        file_name="references.csv",
     )
     indicator = indicator.sort_values(by="local_citations", ascending=False)
     indicator = indicator.head(top_n)
