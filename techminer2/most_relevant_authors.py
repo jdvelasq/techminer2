@@ -1,5 +1,5 @@
 """
-Most relevant authors (ok!)
+Most relevant authors
 ===============================================================================
 
 See :doc:`column indicators <column_indicators>` to obtain a `pandas.Dataframe` 
@@ -7,38 +7,29 @@ with the data.
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "sphinx/images/most_relevant_authors.png"
+>>> file_name = "sphinx/_static/most_relevant_authors.html"
 
 >>> most_relevant_authors(
-...     top_n=20,
 ...     directory=directory,
-... ).write_image(file_name)
+...     top_n=20,
+... ).write_html(file_name)
 
-.. image:: images/most_relevant_authors.png
-    :width: 700px
-    :align: center
+.. raw:: html
 
+    <iframe src="_static/most_relevant_authors.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ._bibliometrix_scatter_plot import bibliometrix_scatter_plot
-from .column_indicators import column_indicators
+from .cleveland_chart import cleveland_chart
 
 
 def most_relevant_authors(directory="./", top_n=20):
 
-    indicators = column_indicators(
-        column="authors", directory=directory, file_name="documents.csv"
-    )
-    indicators = indicators.sort_values(
-        by=["num_documents", "global_citations", "local_citations"], ascending=False
-    )
-    indicators = indicators.head(top_n)
-
-    return bibliometrix_scatter_plot(
-        x=indicators.num_documents,
-        y=indicators.index,
+    return cleveland_chart(
+        column="authors",
+        top_n=top_n,
+        min_occ=None,
+        max_occ=None,
+        directory=directory,
+        metric="num_documents",
         title="Most relevant authors",
-        text=indicators.num_documents,
-        xlabel="Num Documents",
-        ylabel="Author Name",
     )
