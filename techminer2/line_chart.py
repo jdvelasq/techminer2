@@ -1,19 +1,20 @@
 """
-Line Chart
+Line chart
 ===============================================================================
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "sphinx/images/line_chart.png"
+>>> file_name = "sphinx/_static/line_chart.html"
+
 >>> line_chart(
 ...     'author_keywords', 
 ...     top_n=15, 
 ...     directory=directory,
-... ).write_image(file_name)
+... ).write_html(file_name)
 
-.. image:: images/line_chart.png
-    :width: 700px
-    :align: center
+.. raw:: html
+
+    <iframe src="_static/line_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 
@@ -29,6 +30,7 @@ def line_chart(
     max_occ=None,
     directory="./",
     metric="num_documents",
+    title=None,
 ):
 
     indicators = column_indicators_by_metric(
@@ -39,24 +41,36 @@ def line_chart(
         directory=directory,
         metric=metric,
     )
+    indicators = indicators.reset_index()
+    column_names = {
+        column: column.replace("_", " ").title() for column in indicators.columns
+    }
+    indicators = indicators.rename(columns=column_names)
 
     fig = px.line(
-        x=indicators.index,
-        y=indicators.values,
+        indicators,
+        x=column.replace("_", " ").title(),
+        y=metric.replace("_", " ").title(),
+        hover_data=["Num Documents", "Global Citations", "Local Citations"],
+        title=title,
+        orientation="v",
         markers=True,
-        text=indicators.astype(str),
-        labels={
-            "y": metric.replace("_", " ").title(),
-            "x": column.replace("_", " ").title(),
-        },
     )
-    fig.update_traces(marker=dict(size=12))
-    fig.update_traces(textposition="top right")
-    fig.update_traces(line=dict(color="black"))
-    fig.update_xaxes(tickangle=270)
     fig.update_layout(paper_bgcolor="white", plot_bgcolor="white")
-    fig.update_xaxes(linecolor="gray", gridcolor="lightgray")
-    fig.update_yaxes(linecolor="gray", gridcolor="white")
-    fig.update_yaxes(visible=True)
-    fig.update_yaxes(showticklabels=False)
+    fig.update_traces(marker=dict(size=12))
+    fig.update_traces(line=dict(color="black"))
+    fig.update_yaxes(
+        linecolor="gray",
+        linewidth=2,
+        gridcolor="lightgray",
+        griddash="dot",
+    )
+    fig.update_xaxes(
+        linecolor="gray",
+        linewidth=2,
+        gridcolor="lightgray",
+        griddash="dot",
+        tickangle=270,
+    )
+
     return fig
