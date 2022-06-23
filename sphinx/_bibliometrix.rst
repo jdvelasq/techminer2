@@ -80,6 +80,7 @@ Authors
       :maxdepth: 1
 
       most_relevant_institutions
+      institutions_production_over_time
 
 
    .. raw:: html
