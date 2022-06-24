@@ -1,40 +1,35 @@
 """
-Most Global Cited Documents
+Most global cited documents
 ===============================================================================
 
-See https://jdvelasq.github.io/techminer2/document_indicators.html
+See :doc:`document indicators <document_indicators>` to obtain a `pandas.Dataframe` 
+with the data.
+
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "sphinx/images/most_global_cited_documents.png"
+>>> file_name = "sphinx/_static/most_global_cited_documents.html"
+
 >>> most_global_cited_documents(
 ...     top_n=20,
 ...     directory=directory,
-... ).write_image(file_name)
+... ).write_html(file_name)
 
-.. image:: images/most_global_cited_documents.png
-    :width: 700px
-    :align: center
+.. raw:: html
+
+    <iframe src="_static/most_global_cited_documents.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ._bibliometrix_scatter_plot import bibliometrix_scatter_plot
-from .document_indicators import document_indicators
+from .most_cited_documents import most_cited_documents
 
 
 def most_global_cited_documents(
     top_n=20,
     directory="./",
 ):
-
-    indicators = document_indicators(directory=directory)
-    indicators = indicators.sort_values(by="global_citations", ascending=False)
-    indicators = indicators.head(top_n)
-
-    return bibliometrix_scatter_plot(
-        x=indicators.global_citations,
-        y=indicators.index,
+    return most_cited_documents(
+        metric="global_citations",
+        top_n=top_n,
+        directory=directory,
         title="Most global cited documents",
-        text=indicators.global_citations,
-        xlabel="Global citations",
-        ylabel="Document",
     )
