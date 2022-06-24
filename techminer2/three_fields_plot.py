@@ -4,7 +4,7 @@ Three fields plot
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "sphinx/images/three_fields_plot.png"
+>>> file_name = "sphinx/_static/three_fields_plot.html"
 
 >>> three_fields_plot(
 ...     directory=directory,
@@ -14,11 +14,11 @@ Three fields plot
 ...     min_occ_left=2, 
 ...     min_occ_middle=6,
 ...     min_occ_right=8,
-... ).write_image(file_name)
+... ).write_html(file_name)
 
-.. image:: images/three_fields_plot.png
-    :width: 700px
-    :align: center
+.. raw:: html
+
+    <iframe src="_static/three_fields_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 
