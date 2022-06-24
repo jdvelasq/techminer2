@@ -8,8 +8,11 @@ def column_indicators_by_metric(
     top_n=None,
     directory="./",
     metric="num_documents",
+    file_name="documents.csv",
 ):
-    indicators = column_indicators(column=column, directory=directory)
+    indicators = column_indicators(
+        column=column, directory=directory, file_name=file_name
+    )
     if min_occ is not None:
         indicators = indicators[indicators.num_documents >= min_occ]
     if max_occ is not None:
@@ -17,5 +20,4 @@ def column_indicators_by_metric(
     indicators = indicators.sort_values(metric, ascending=False)
     if top_n is not None:
         indicators = indicators.head(top_n)
-    # indicators = indicators[metric]
     return indicators
