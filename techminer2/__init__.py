@@ -84,6 +84,7 @@ from .documents_by_country import documents_by_country
 from .documents_by_type import documents_by_type
 from .documents_by_year import documents_by_year
 from .documents_per_author import documents_per_author
+from .documents_per_country import documents_per_country
 from .documents_per_year_by_source import documents_per_year_by_source
 from .dotted_gantt_chart import dotted_gantt_chart
 from .ego_graph import ego_graph

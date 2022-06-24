@@ -92,6 +92,7 @@ Countries
       country_scientific_production
       countries_production_over_time
       countries_production_per_year
+      documents_per_country
       most_global_cited_countries
       country_local_impact
 
