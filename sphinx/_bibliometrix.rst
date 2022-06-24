@@ -64,7 +64,6 @@ Authors
       most_local_cited_authors
       authors_production_over_time
       authors_production_per_year
-      documents_per_author
       lotka_law    
       author_local_impact
 
@@ -92,7 +91,6 @@ Countries
       country_scientific_production
       countries_production_over_time
       countries_production_per_year
-      documents_per_country
       most_global_cited_countries
       country_local_impact
 
@@ -107,6 +105,9 @@ Documents
 
       most_global_cited_documents
       most_local_cited_documents     
+      documents_per_author
+      documents_per_country
+      documents_per_institution
 
 Cited References
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
