@@ -78,6 +78,7 @@ Institutions
       most_relevant_institutions
       most_global_cited_institutions
       institutions_production_over_time
+      institutions_production_per_year
       institution_local_impact
 
 
@@ -90,6 +91,7 @@ Countries
       corresponding_authors_country
       country_scientific_production
       countries_production_over_time
+      countries_production_per_year
       most_global_cited_countries
       country_local_impact
 
