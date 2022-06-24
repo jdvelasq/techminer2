@@ -1,49 +1,32 @@
 """
-Authors' Production over Time
+Authors' production over time
 ===============================================================================
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "sphinx/images/authors_production_over_time.png"
+>>> file_name = "sphinx/_static/authors_production_over_time.html"
+
 >>> authors_production_over_time(
-...    min_occ=2, 
+...    top_n=10, 
 ...    directory=directory,
-... ).savefig(file_name)
+... ).write_html(file_name)
 
-.. image:: images/authors_production_over_time.png
-    :width: 700px
-    :align: center
+.. raw:: html
 
->>> authors_production_over_time(
-...     min_occ=2, 
-...     directory=directory, 
-...     plot=False,
-... ).head()
-pub_year     2016  2017  2018  2019  2020  2021
-authors                                        
-Wojcik D        0     0     0     0     3     2
-Hornuf L        0     0     0     1     1     1
-Rabbani MR      0     0     0     0     2     1
-Gomber P        0     0     2     0     0     0
-Kauffman RJ     0     0     2     0     0     0
-
+    <iframe src="_static/authors_production_over_time.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-
-from .dotted_gantt_chart import dotted_gantt_chart
+from .column_production_by_year import column_production_by_year
 
 
 def authors_production_over_time(
-    min_occ=2,
-    figsize=(6, 6),
+    top_n=10,
     directory="./",
-    plot=True,
 ):
 
-    return dotted_gantt_chart(
+    return column_production_by_year(
         column="authors",
-        min_occ=min_occ,
-        figsize=figsize,
+        top_n=top_n,
         directory=directory,
-        plot=plot,
+        title="Authors' production over time",
     )
