@@ -17,22 +17,20 @@ with the data. Use the following code:
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "sphinx/images/most_local_cited_authors.png"
+>>> file_name = "sphinx/_static/most_local_cited_authors.html"
 
 >>> most_local_cited_authors(
 ...     top_n=20,
 ...     directory=directory,
-... ).write_image(file_name)
+... ).write_html(file_name)
 
-.. image:: images/most_local_cited_authors.png
-    :width: 700px
-    :align: center
+.. raw:: html
+
+    <iframe src="_static/most_local_cited_authors.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
 """
-import plotly.express as px
-
-from .column_indicators import column_indicators
+from .cleveland_chart import cleveland_chart
 
 
 def most_local_cited_authors(
@@ -40,29 +38,13 @@ def most_local_cited_authors(
     directory="./",
 ):
 
-    indicators = column_indicators(
-        column="authors", directory=directory, file_name="references.csv"
+    return cleveland_chart(
+        column="authors",
+        top_n=top_n,
+        min_occ=None,
+        max_occ=None,
+        directory=directory,
+        metric="local_citations",
+        title="Most local cited authors",
+        file_name="references.csv",
     )
-    indicators = indicators.sort_values(by="local_citations", ascending=False)
-    indicators = indicators.head(top_n)
-
-    fig = px.scatter(
-        x=indicators.local_citations,
-        y=indicators.index,
-        title="Most local cited authors in references",
-        text=indicators.local_citations,
-        labels={"x": "Local citations", "y": "Author Name"},
-    )
-    fig.update_traces(marker=dict(size=10, color="black"))
-    fig.update_traces(textposition="middle right")
-    fig.update_traces(line=dict(color="black"))
-    fig.update_layout(paper_bgcolor="white", plot_bgcolor="white")
-    fig.update_yaxes(
-        linecolor="gray",
-        linewidth=2,
-        gridcolor="lightgray",
-        autorange="reversed",
-        griddash="dot",
-    )
-    fig.update_xaxes(showticklabels=False)
-    return fig
