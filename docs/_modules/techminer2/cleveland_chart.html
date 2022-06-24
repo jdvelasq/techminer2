@@ -127,6 +127,7 @@
     <span class="n">directory</span><span class="o">=</span><span class="s2">&quot;./&quot;</span><span class="p">,</span>
     <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;num_documents&quot;</span><span class="p">,</span>
     <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">file_name</span><span class="o">=</span><span class="s2">&quot;documents.csv&quot;</span><span class="p">,</span>
 <span class="p">):</span>
 
     <span class="n">indicators</span> <span class="o">=</span> <span class="n">column_indicators_by_metric</span><span class="p">(</span>
@@ -136,6 +137,7 @@
         <span class="n">top_n</span><span class="o">=</span><span class="n">top_n</span><span class="p">,</span>
         <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
         <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">,</span>
+        <span class="n">file_name</span><span class="o">=</span><span class="n">file_name</span><span class="p">,</span>
     <span class="p">)</span>
     <span class="n">indicators</span> <span class="o">=</span> <span class="n">indicators</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
     <span class="n">column_names</span> <span class="o">=</span> <span class="p">{</span>

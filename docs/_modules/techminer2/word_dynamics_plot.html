@@ -95,7 +95,7 @@
              
   <h1>Source code for techminer2.word_dynamics_plot</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">Word dynamics plot (TODO)</span>
+<span class="sd">Word dynamics plot</span>
 <span class="sd">===============================================================================</span>
 
 <span class="sd">See :doc:`column indicators by year &lt;column_indicators_by_year&gt;` to obtain a </span>
@@ -103,31 +103,33 @@
 
 <span class="sd">&gt;&gt;&gt; from techminer2.bibliometrix import *</span>
 <span class="sd">&gt;&gt;&gt; directory = &quot;data/&quot;</span>
-<span class="sd">&gt;&gt;&gt; file_name = &quot;sphinx/images/word_dynamics_plot.png&quot;</span>
+<span class="sd">&gt;&gt;&gt; file_name = &quot;sphinx/_static/word_dynamics_plot.html&quot;</span>
 
 <span class="sd">&gt;&gt;&gt; word_dynamics_plot(</span>
-<span class="sd">...     column=&quot;author_keywords&quot;,</span>
+<span class="sd">...     word=&quot;author_keywords&quot;,</span>
 <span class="sd">...     top_n=10, </span>
 <span class="sd">...     directory=directory,</span>
-<span class="sd">... ).write_image(file_name)</span>
+<span class="sd">... ).write_html(file_name)</span>
 
-<span class="sd">.. image:: images/word_dynamics_plot.png</span>
-<span class="sd">    :width: 700px</span>
-<span class="sd">    :align: center</span>
+<span class="sd">.. raw:: html</span>
+
+<span class="sd">    &lt;iframe src=&quot;_static/word_dynamics_plot.html&quot; height=&quot;600px&quot; width=&quot;100%&quot; frameBorder=&quot;0&quot;&gt;&lt;/iframe&gt;</span>
+
 
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">from</span> <span class="nn">.column_dynamics_plot</span> <span class="kn">import</span> <span class="n">column_dynamics_plot</span>
 
 
 <div class="viewcode-block" id="word_dynamics_plot"><a class="viewcode-back" href="../../word_dynamics_plot.html#techminer2.word_dynamics_plot.word_dynamics_plot">[docs]</a><span class="k">def</span> <span class="nf">word_dynamics_plot</span><span class="p">(</span>
-    <span class="n">column</span><span class="o">=</span><span class="s2">&quot;author_keywords&quot;</span><span class="p">,</span>
+    <span class="n">word</span><span class="p">,</span>
     <span class="n">top_n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
     <span class="n">directory</span><span class="o">=</span><span class="s2">&quot;./&quot;</span><span class="p">,</span>
 <span class="p">):</span>
     <span class="k">return</span> <span class="n">column_dynamics_plot</span><span class="p">(</span>
-        <span class="n">column</span><span class="o">=</span><span class="n">column</span><span class="p">,</span>
+        <span class="n">column</span><span class="o">=</span><span class="n">word</span><span class="p">,</span>
         <span class="n">top_n</span><span class="o">=</span><span class="n">top_n</span><span class="p">,</span>
         <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
+        <span class="n">title</span><span class="o">=</span><span class="n">word</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot; dynamics&quot;</span><span class="p">,</span>
     <span class="p">)</span></div>
 </pre></div>
 

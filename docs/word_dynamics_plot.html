@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Word dynamics plot (TODO) &mdash; TechMiner2 0.1.0 documentation</title>
+  <title>Word dynamics plot &mdash; TechMiner2 0.1.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
@@ -73,7 +73,7 @@
 <li class="toctree-l3"><a class="reference internal" href="most_frequent_words.html">Most Frequent Words</a></li>
 <li class="toctree-l3"><a class="reference internal" href="word_cloud.html">Word Cloud</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tree_map.html">Tree Map</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Word dynamics plot (TODO)</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Word dynamics plot</a></li>
 <li class="toctree-l3"><a class="reference internal" href="word_dynamics_table.html">Word dynamics table</a></li>
 <li class="toctree-l3"><a class="reference internal" href="trend_topics.html">Trend Topics</a></li>
 </ul>
@@ -111,7 +111,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="_bibliometrix.html">Bibliometrix</a> &raquo;</li>
-      <li>Word dynamics plot (TODO)</li>
+      <li>Word dynamics plot</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/word_dynamics_plot.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -145,26 +145,25 @@
     text-align: unset;
 }
 </style>
-<span class="target" id="module-techminer2.word_dynamics_plot"></span><section id="word-dynamics-plot-todo">
-<h1>Word dynamics plot (TODO)<a class="headerlink" href="#word-dynamics-plot-todo" title="Permalink to this heading"></a></h1>
+<span class="target" id="module-techminer2.word_dynamics_plot"></span><section id="word-dynamics-plot">
+<h1>Word dynamics plot<a class="headerlink" href="#word-dynamics-plot" title="Permalink to this heading"></a></h1>
 <p>See <a class="reference internal" href="column_indicators_by_year.html"><span class="doc">column indicators by year</span></a> to obtain a
 <cite>pandas.Dataframe</cite> with the data.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2.bibliometrix</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;data/&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;sphinx/images/word_dynamics_plot.png&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;sphinx/_static/word_dynamics_plot.html&quot;</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">word_dynamics_plot</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">column</span><span class="o">=</span><span class="s2">&quot;author_keywords&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">word</span><span class="o">=</span><span class="s2">&quot;author_keywords&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">top_n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
-<span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">write_image</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+<span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="images/word_dynamics_plot.png"><img alt="images/word_dynamics_plot.png" class="align-center" src="images/word_dynamics_plot.png" style="width: 700px;" /></a>
-<dl class="py function">
+<iframe src="_static/word_dynamics_plot.html" height="600px" width="100%" frameBorder="0"></iframe><dl class="py function">
 <dt class="sig sig-object py" id="techminer2.word_dynamics_plot.word_dynamics_plot">
-<span class="sig-prename descclassname"><span class="pre">techminer2.word_dynamics_plot.</span></span><span class="sig-name descname"><span class="pre">word_dynamics_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'author_keywords'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer2/word_dynamics_plot.html#word_dynamics_plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer2.word_dynamics_plot.word_dynamics_plot" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">techminer2.word_dynamics_plot.</span></span><span class="sig-name descname"><span class="pre">word_dynamics_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">word</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer2/word_dynamics_plot.html#word_dynamics_plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer2.word_dynamics_plot.word_dynamics_plot" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </section>

@@ -95,44 +95,39 @@
              
   <h1>Source code for techminer2.most_global_cited_documents</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">Most Global Cited Documents</span>
+<span class="sd">Most global cited documents</span>
 <span class="sd">===============================================================================</span>
 
-<span class="sd">See https://jdvelasq.github.io/techminer2/document_indicators.html</span>
+<span class="sd">See :doc:`document indicators &lt;document_indicators&gt;` to obtain a `pandas.Dataframe` </span>
+<span class="sd">with the data.</span>
+
 
 <span class="sd">&gt;&gt;&gt; from techminer2 import *</span>
 <span class="sd">&gt;&gt;&gt; directory = &quot;data/&quot;</span>
-<span class="sd">&gt;&gt;&gt; file_name = &quot;sphinx/images/most_global_cited_documents.png&quot;</span>
+<span class="sd">&gt;&gt;&gt; file_name = &quot;sphinx/_static/most_global_cited_documents.html&quot;</span>
+
 <span class="sd">&gt;&gt;&gt; most_global_cited_documents(</span>
 <span class="sd">...     top_n=20,</span>
 <span class="sd">...     directory=directory,</span>
-<span class="sd">... ).write_image(file_name)</span>
+<span class="sd">... ).write_html(file_name)</span>
 
-<span class="sd">.. image:: images/most_global_cited_documents.png</span>
-<span class="sd">    :width: 700px</span>
-<span class="sd">    :align: center</span>
+<span class="sd">.. raw:: html</span>
+
+<span class="sd">    &lt;iframe src=&quot;_static/most_global_cited_documents.html&quot; height=&quot;600px&quot; width=&quot;100%&quot; frameBorder=&quot;0&quot;&gt;&lt;/iframe&gt;</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">from</span> <span class="nn">._bibliometrix_scatter_plot</span> <span class="kn">import</span> <span class="n">bibliometrix_scatter_plot</span>
-<span class="kn">from</span> <span class="nn">.document_indicators</span> <span class="kn">import</span> <span class="n">document_indicators</span>
+<span class="kn">from</span> <span class="nn">.most_cited_documents</span> <span class="kn">import</span> <span class="n">most_cited_documents</span>
 
 
 <div class="viewcode-block" id="most_global_cited_documents"><a class="viewcode-back" href="../../most_global_cited_documents.html#techminer2.most_global_cited_documents.most_global_cited_documents">[docs]</a><span class="k">def</span> <span class="nf">most_global_cited_documents</span><span class="p">(</span>
     <span class="n">top_n</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
     <span class="n">directory</span><span class="o">=</span><span class="s2">&quot;./&quot;</span><span class="p">,</span>
 <span class="p">):</span>
-
-    <span class="n">indicators</span> <span class="o">=</span> <span class="n">document_indicators</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">)</span>
-    <span class="n">indicators</span> <span class="o">=</span> <span class="n">indicators</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;global_citations&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">indicators</span> <span class="o">=</span> <span class="n">indicators</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">top_n</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">bibliometrix_scatter_plot</span><span class="p">(</span>
-        <span class="n">x</span><span class="o">=</span><span class="n">indicators</span><span class="o">.</span><span class="n">global_citations</span><span class="p">,</span>
-        <span class="n">y</span><span class="o">=</span><span class="n">indicators</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
+    <span class="k">return</span> <span class="n">most_cited_documents</span><span class="p">(</span>
+        <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;global_citations&quot;</span><span class="p">,</span>
+        <span class="n">top_n</span><span class="o">=</span><span class="n">top_n</span><span class="p">,</span>
+        <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
         <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Most global cited documents&quot;</span><span class="p">,</span>
-        <span class="n">text</span><span class="o">=</span><span class="n">indicators</span><span class="o">.</span><span class="n">global_citations</span><span class="p">,</span>
-        <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Global citations&quot;</span><span class="p">,</span>
-        <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Document&quot;</span><span class="p">,</span>
     <span class="p">)</span></div>
 </pre></div>
 

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Most Frequent Words &mdash; TechMiner2 0.1.0 documentation</title>
+  <title>Documents per country &mdash; TechMiner2 0.1.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
@@ -23,8 +23,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Word Cloud" href="word_cloud.html" />
-    <link rel="prev" title="RPYS (Reference Publication Year Spectroscopy)" href="rpys.html" /> 
+    <link rel="next" title="Documents per institution" href="documents_per_institution.html" />
+    <link rel="prev" title="Documents per author" href="documents_per_author.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -67,17 +67,16 @@
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#authors">Authors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#institutions">Institutions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#countries">Countries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#documents">Documents</a></li>
-<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#cited-references">Cited References</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="_bibliometrix.html#words">Words</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Most Frequent Words</a></li>
-<li class="toctree-l3"><a class="reference internal" href="word_cloud.html">Word Cloud</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tree_map.html">Tree Map</a></li>
-<li class="toctree-l3"><a class="reference internal" href="word_dynamics_plot.html">Word dynamics plot</a></li>
-<li class="toctree-l3"><a class="reference internal" href="word_dynamics_table.html">Word dynamics table</a></li>
-<li class="toctree-l3"><a class="reference internal" href="trend_topics.html">Trend Topics</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="_bibliometrix.html#documents">Documents</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="most_global_cited_documents.html">Most global cited documents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="most_local_cited_documents.html">Most local cited documents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documents_per_author.html">Documents per author</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Documents per country</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documents_per_institution.html">Documents per institution</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#cited-references">Cited References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#words">Words</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#clustering">Clustering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#conceptual-structure">Conceptual Structure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#intellectual-structure">Intellectual Structure</a></li>
@@ -111,9 +110,9 @@
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="_bibliometrix.html">Bibliometrix</a> &raquo;</li>
-      <li>Most Frequent Words</li>
+      <li>Documents per country</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/most_frequent_words.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/documents_per_country.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -145,25 +144,28 @@
     text-align: unset;
 }
 </style>
-<span class="target" id="module-techminer2.most_frequent_words"></span><section id="most-frequent-words">
-<h1>Most Frequent Words<a class="headerlink" href="#most-frequent-words" title="Permalink to this heading"></a></h1>
-<p>See <a class="reference internal" href="column_indicators.html"><span class="doc">column indicators</span></a> to obtain a <cite>pandas.Dataframe</cite>
-with the data.</p>
+<span class="target" id="module-techminer2.documents_per_country"></span><section id="documents-per-country">
+<h1>Documents per country<a class="headerlink" href="#documents-per-country" title="Permalink to this heading"></a></h1>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;data/&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;sphinx/_static/most_frequent_words.html&quot;</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">most_frequent_words</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">column</span><span class="o">=</span><span class="s2">&quot;author_keywords&quot;</span><span class="p">,</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">documents_per_country</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">top_n</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
-<span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+<span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="go">  countries  ...                                        document_id</span>
+<span class="go">0  malaysia  ...  Razak MIA et al, 2021, PERTANIKA J SOC SCI HUM...</span>
+<span class="go">1   nigeria  ...  Omodero CO et al, 2021, STUD UNIV VASILE GOLDI...</span>
+<span class="go">2     china  ...                  Li B et al, 2021, FINANCIAL INNOV</span>
+<span class="go">3   hungary  ...         Daragmeh A et al, 2021, J BEHAV EXP FINANC</span>
+<span class="go">4     china  ...         Xiang D et al, 2021, IEEE TRANS ENG MANAGE</span>
+
+<span class="go">[5 rows x 6 columns]</span>
 </pre></div>
 </div>
-<iframe src="_static/most_frequent_words.html" height="600px" width="100%" frameBorder="0"></iframe><dl class="py function">
-<dt class="sig sig-object py" id="techminer2.most_frequent_words.most_frequent_words">
-<span class="sig-prename descclassname"><span class="pre">techminer2.most_frequent_words.</span></span><span class="sig-name descname"><span class="pre">most_frequent_words</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'author_keywords'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer2/most_frequent_words.html#most_frequent_words"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer2.most_frequent_words.most_frequent_words" title="Permalink to this definition"></a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="techminer2.documents_per_country.documents_per_country">
+<span class="sig-prename descclassname"><span class="pre">techminer2.documents_per_country.</span></span><span class="sig-name descname"><span class="pre">documents_per_country</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer2/documents_per_country.html#documents_per_country"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer2.documents_per_country.documents_per_country" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </section>
@@ -172,8 +174,8 @@ with the data.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="rpys.html" class="btn btn-neutral float-left" title="RPYS (Reference Publication Year Spectroscopy)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="word_cloud.html" class="btn btn-neutral float-right" title="Word Cloud" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="documents_per_author.html" class="btn btn-neutral float-left" title="Documents per author" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="documents_per_institution.html" class="btn btn-neutral float-right" title="Documents per institution" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

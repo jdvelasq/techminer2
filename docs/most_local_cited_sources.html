@@ -160,17 +160,18 @@ with the data. In this case, use:</p>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;data/&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;sphinx/images/most_local_cited_sources.png&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">most_local_cited_sources</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">top_n</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
-<span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">write_image</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;sphinx/_static/most_local_cited_sources.html&quot;</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/most_local_cited_sources.png"><img alt="_images/most_local_cited_sources.png" class="align-center" src="_images/most_local_cited_sources.png" style="width: 700px;" /></a>
-<dl class="py function">
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">most_local_cited_sources</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">top_n</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+</pre></div>
+</div>
+<iframe src="_static/most_local_cited_sources.html" height="600px" width="100%" frameBorder="0"></iframe><dl class="py function">
 <dt class="sig sig-object py" id="techminer2.most_local_cited_sources.most_local_cited_sources">
-<span class="sig-prename descclassname"><span class="pre">techminer2.most_local_cited_sources.</span></span><span class="sig-name descname"><span class="pre">most_local_cited_sources</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">top_n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer2/most_local_cited_sources.html#most_local_cited_sources"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer2.most_local_cited_sources.most_local_cited_sources" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">techminer2.most_local_cited_sources.</span></span><span class="sig-name descname"><span class="pre">most_local_cited_sources</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer2/most_local_cited_sources.html#most_local_cited_sources"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer2.most_local_cited_sources.most_local_cited_sources" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </section>

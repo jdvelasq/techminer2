@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Authors’ documents (TODO) &mdash; TechMiner2 0.1.0 documentation</title>
+  <title>Documents per author &mdash; TechMiner2 0.1.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
@@ -23,8 +23,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Lotka’s Law" href="lotka_law.html" />
-    <link rel="prev" title="Authors’ production per year" href="authors_production_per_year.html" /> 
+    <link rel="next" title="Documents per country" href="documents_per_country.html" />
+    <link rel="prev" title="Most local cited documents" href="most_local_cited_documents.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -64,19 +64,17 @@
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#filter">Filter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#sources">Sources</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="_bibliometrix.html#authors">Authors</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="most_relevant_authors.html">Most relevant authors</a></li>
-<li class="toctree-l3"><a class="reference internal" href="most_local_cited_authors.html">Most local cited authors in references</a></li>
-<li class="toctree-l3"><a class="reference internal" href="authors_production_over_time.html">Authors’ production over time</a></li>
-<li class="toctree-l3"><a class="reference internal" href="authors_production_per_year.html">Authors’ production per year</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Authors’ documents (TODO)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="lotka_law.html">Lotka’s Law</a></li>
-<li class="toctree-l3"><a class="reference internal" href="author_local_impact.html">Author local impact</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#authors">Authors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#institutions">Institutions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#countries">Countries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#documents">Documents</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="_bibliometrix.html#documents">Documents</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="most_global_cited_documents.html">Most global cited documents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="most_local_cited_documents.html">Most local cited documents</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Documents per author</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documents_per_country.html">Documents per country</a></li>
+<li class="toctree-l3"><a class="reference internal" href="documents_per_institution.html">Documents per institution</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#cited-references">Cited References</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#words">Words</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#clustering">Clustering</a></li>
@@ -112,9 +110,9 @@
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="_bibliometrix.html">Bibliometrix</a> &raquo;</li>
-      <li>Authors’ documents (TODO)</li>
+      <li>Documents per author</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/authors_documents.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/documents_per_author.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -146,31 +144,28 @@
     text-align: unset;
 }
 </style>
-<span class="target" id="module-techminer2.authors_documents"></span><section id="authors-documents-todo">
-<h1>Authors’ documents (TODO)<a class="headerlink" href="#authors-documents-todo" title="Permalink to this heading"></a></h1>
-<p>Creates a table with:</p>
-<ul class="simple">
-<li><p>Author</p></li>
-<li><p>Year</p></li>
-<li><p>Document title</p></li>
-<li><p>Source title</p></li>
-<li><p>DOI</p></li>
-<li><p>Global citations</p></li>
-<li><p>Global citations / citable period</p></li>
-</ul>
+<span class="target" id="module-techminer2.documents_per_author"></span><section id="documents-per-author">
+<h1>Documents per author<a class="headerlink" href="#documents-per-author" title="Permalink to this heading"></a></h1>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;data/&quot;</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">authors_documents</span><span class="p">(</span>
-<span class="gp">... </span>   <span class="n">top_n</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-<span class="gp">... </span>   <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
-<span class="gp">... </span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">documents_per_author</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="go">      authors  ...                                        document_id</span>
+<span class="go">0   Razak MIA  ...  Razak MIA et al, 2021, PERTANIKA J SOC SCI HUM...</span>
+<span class="go">1    Dali NAM  ...  Razak MIA et al, 2021, PERTANIKA J SOC SCI HUM...</span>
+<span class="go">2   Dhillon G  ...  Razak MIA et al, 2021, PERTANIKA J SOC SCI HUM...</span>
+<span class="go">3   Manaf AWA  ...  Razak MIA et al, 2021, PERTANIKA J SOC SCI HUM...</span>
+<span class="go">4  Omodero CO  ...  Omodero CO et al, 2021, STUD UNIV VASILE GOLDI...</span>
+
+<span class="go">[5 rows x 6 columns]</span>
 </pre></div>
 </div>
 <dl class="py function">
-<dt class="sig sig-object py" id="techminer2.authors_documents.authors_documents">
-<span class="sig-prename descclassname"><span class="pre">techminer2.authors_documents.</span></span><span class="sig-name descname"><span class="pre">authors_documents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">top_n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer2/authors_documents.html#authors_documents"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer2.authors_documents.authors_documents" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="techminer2.documents_per_author.documents_per_author">
+<span class="sig-prename descclassname"><span class="pre">techminer2.documents_per_author.</span></span><span class="sig-name descname"><span class="pre">documents_per_author</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer2/documents_per_author.html#documents_per_author"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer2.documents_per_author.documents_per_author" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </section>
@@ -179,8 +174,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="authors_production_per_year.html" class="btn btn-neutral float-left" title="Authors’ production per year" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="lotka_law.html" class="btn btn-neutral float-right" title="Lotka’s Law" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="most_local_cited_documents.html" class="btn btn-neutral float-left" title="Most local cited documents" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="documents_per_country.html" class="btn btn-neutral float-right" title="Documents per country" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
