@@ -31,6 +31,7 @@ def cleveland_chart(
     directory="./",
     metric="num_documents",
     title=None,
+    file_name="documents.csv",
 ):
 
     indicators = column_indicators_by_metric(
@@ -40,6 +41,7 @@ def cleveland_chart(
         top_n=top_n,
         directory=directory,
         metric=metric,
+        file_name=file_name,
     )
     indicators = indicators.reset_index()
     column_names = {
