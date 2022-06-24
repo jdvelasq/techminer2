@@ -58,6 +58,7 @@ from .column_dynamics_table import column_dynamics_table
 from .column_indicators import column_indicators
 from .column_indicators_by_year import column_indicators_by_year
 from .column_plot import column_plot
+from .column_production_by_year import column_production_by_year
 from .core_sources import core_sources
 from .correlation_map import correlation_map
 from .corresponding_authors_country import corresponding_authors_country
@@ -111,6 +112,7 @@ from .impact_indicators_plot import impact_indicators_plot
 from .import_references import import_references
 from .import_scopus_files import import_scopus_files
 from .institution_local_impact import institution_local_impact
+from .institutions_production_over_time import institutions_production_over_time
 from .keyword_concordances import keyword_concordances
 from .keywords_summarization import keywords_summarization
 from .line_chart import line_chart
