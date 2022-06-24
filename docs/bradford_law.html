@@ -15,6 +15,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
@@ -23,7 +24,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Core Sources" href="core_sources.html" />
-    <link rel="prev" title="Most Local Cited Sources" href="most_local_cited_sources.html" /> 
+    <link rel="prev" title="Most Local Cited Sources (in References)" href="most_local_cited_sources.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -44,35 +45,40 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Introduction</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction/getting_started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction/release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction/license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data</span></p>
+<p class="caption" role="heading"><span class="caption-text">Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="import_scopus_files.html">Import Scopus Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="import_references.html">Import References File</a></li>
 <li class="toctree-l1"><a class="reference internal" href="coverage.html">Coverage</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Software comparison</span></p>
+<p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="_bibliometrix.html">Bibliometrix</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#data">Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#filter">Filter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#dataset">Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#overview">Overview</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="_bibliometrix.html#sources">Sources</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="most_relevant_sources.html">Most Relevant Sources</a></li>
-<li class="toctree-l3"><a class="reference internal" href="most_local_cited_sources.html">Most Local Cited Sources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="most_relevant_sources.html">Most relevant sources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="most_local_cited_sources.html">Most Local Cited Sources (in References)</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Bradford’s Law</a></li>
 <li class="toctree-l3"><a class="reference internal" href="core_sources.html">Core Sources</a></li>
-<li class="toctree-l3"><a class="reference internal" href="source_local_impact.html">Source Local Impact</a></li>
-<li class="toctree-l3"><a class="reference internal" href="source_dynamics.html">Source Dynamics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source_local_impact.html">Source local impact</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source_dynamics_table.html">Source dynamics table</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source_dynamics_plot.html">Source dynamics plot</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#authors">Authors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#institutions">Institutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#countries">Countries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#documents">Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#cited-references">Cited References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#words">Words</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#clustering">Clustering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#conceptual-structure">Conceptual Structure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#intellectual-structure">Intellectual Structure</a></li>
@@ -82,8 +88,9 @@
 <li class="toctree-l1"><a class="reference internal" href="_scientopy.html">ScientoPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_tlab.html">T-Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_vantagepoint.html">VantagePoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scopus.html">Scopus search results analysis</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Low level API</span></p>
+<p class="caption" role="heading"><span class="caption-text">Low level API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
@@ -140,10 +147,10 @@
 }
 </style>
 <span class="target" id="module-techminer2.bradford_law"></span><section id="bradford-s-law">
-<h1>Bradford’s Law<a class="headerlink" href="#bradford-s-law" title="Permalink to this headline"></a></h1>
+<h1>Bradford’s Law<a class="headerlink" href="#bradford-s-law" title="Permalink to this heading"></a></h1>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer2/data/&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer2/sphinx/images/bradford.png&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;data/&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;sphinx/images/bradford.png&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">bradford_law</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">)</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -170,7 +177,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="most_local_cited_sources.html" class="btn btn-neutral float-left" title="Most Local Cited Sources" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="most_local_cited_sources.html" class="btn btn-neutral float-left" title="Most Local Cited Sources (in References)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="core_sources.html" class="btn btn-neutral float-right" title="Core Sources" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

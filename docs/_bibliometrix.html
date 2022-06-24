@@ -15,6 +15,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
@@ -44,19 +45,19 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Introduction</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction/getting_started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction/release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction/license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data</span></p>
+<p class="caption" role="heading"><span class="caption-text">Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="import_scopus_files.html">Import Scopus Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="import_references.html">Import References File</a></li>
 <li class="toctree-l1"><a class="reference internal" href="coverage.html">Coverage</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Software comparison</span></p>
+<p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Bibliometrix</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#data">Data</a></li>
@@ -64,43 +65,66 @@
 <li class="toctree-l3"><a class="reference internal" href="user_filters.html">User Filters</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#dataset">Dataset</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="main_information.html">Main Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="main_information.html">Main information</a></li>
 <li class="toctree-l3"><a class="reference internal" href="annual_scientific_production.html">Annual Scientific Production</a></li>
 <li class="toctree-l3"><a class="reference internal" href="average_citations_per_year.html">Average Citations per Year</a></li>
 <li class="toctree-l3"><a class="reference internal" href="three_fields_plot.html">Three fields plot</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#sources">Sources</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="most_relevant_sources.html">Most Relevant Sources</a></li>
-<li class="toctree-l3"><a class="reference internal" href="most_local_cited_sources.html">Most Local Cited Sources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="most_relevant_sources.html">Most relevant sources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="most_local_cited_sources.html">Most Local Cited Sources (in References)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="bradford_law.html">Bradford’s Law</a></li>
 <li class="toctree-l3"><a class="reference internal" href="core_sources.html">Core Sources</a></li>
-<li class="toctree-l3"><a class="reference internal" href="source_local_impact.html">Source Local Impact</a></li>
-<li class="toctree-l3"><a class="reference internal" href="source_dynamics.html">Source Dynamics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source_local_impact.html">Source local impact</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source_dynamics_table.html">Source dynamics table</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source_dynamics_plot.html">Source dynamics plot</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#authors">Authors</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="most_relevant_authors.html">Most Relevant Authors</a></li>
-<li class="toctree-l3"><a class="reference internal" href="most_local_cited_authors.html">Most Local Cited Authors</a></li>
-<li class="toctree-l3"><a class="reference internal" href="authors_production_over_time.html">Authors’ Production over Time</a></li>
+<li class="toctree-l3"><a class="reference internal" href="most_relevant_authors.html">Most relevant authors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="most_local_cited_authors.html">Most local cited authors in references</a></li>
+<li class="toctree-l3"><a class="reference internal" href="authors_production_over_time.html">Authors’ production over time</a></li>
+<li class="toctree-l3"><a class="reference internal" href="authors_production_per_year.html">Authors’ production per year</a></li>
+<li class="toctree-l3"><a class="reference internal" href="authors_documents.html">Authors’ documents (TODO)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="lotka_law.html">Lotka’s Law</a></li>
-<li class="toctree-l3"><a class="reference internal" href="author_local_impact.html">Author Local Impact</a></li>
-<li class="toctree-l3"><a class="reference internal" href="most_relevant_institutions.html">Most Relevant Institutions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="author_local_impact.html">Author local impact</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#institutions">Institutions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="most_relevant_institutions.html">Most relevant institutions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="most_global_cited_institutions.html">Most global cited institutions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="institutions_production_over_time.html">Institutions’ production over time</a></li>
+<li class="toctree-l3"><a class="reference internal" href="institutions_production_per_year.html">Institutions’ production per year</a></li>
+<li class="toctree-l3"><a class="reference internal" href="institution_local_impact.html">Institution local impact</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#countries">Countries</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="corresponding_authors_country.html">Corresponding Author’s Country</a></li>
 <li class="toctree-l3"><a class="reference internal" href="country_scientific_production.html">Country Scientific Production</a></li>
-<li class="toctree-l3"><a class="reference internal" href="most_global_cited_countries.html">Most Global Cited Countries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="countries_production_over_time.html">Countries’ production over time</a></li>
+<li class="toctree-l3"><a class="reference internal" href="countries_production_per_year.html">Countries’ production per year</a></li>
+<li class="toctree-l3"><a class="reference internal" href="most_global_cited_countries.html">Most global cited countries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="country_local_impact.html">Country local impact</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#documents">Documents</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="most_global_cited_documents.html">Most Global Cited Documents</a></li>
 <li class="toctree-l3"><a class="reference internal" href="most_local_cited_documents.html">Most Local Cited Documents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#cited-references">Cited References</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="most_local_cited_references.html">Most Local Cited References</a></li>
 <li class="toctree-l3"><a class="reference internal" href="rpys.html">RPYS (Reference Publication Year Spectroscopy)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#words">Words</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="most_frequent_words.html">Most Frequent Words</a></li>
 <li class="toctree-l3"><a class="reference internal" href="word_cloud.html">Word Cloud</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tree_map.html">Tree Map</a></li>
-<li class="toctree-l3"><a class="reference internal" href="topic_dynamics.html">Topic Dynamics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="word_dynamics_plot.html">Word dynamics plot (TODO)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="word_dynamics_table.html">Word dynamics table</a></li>
 <li class="toctree-l3"><a class="reference internal" href="trend_topics.html">Trend Topics</a></li>
 </ul>
 </li>
@@ -151,8 +175,9 @@
 <li class="toctree-l1"><a class="reference internal" href="_scientopy.html">ScientoPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_tlab.html">T-Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_vantagepoint.html">VantagePoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scopus.html">Scopus search results analysis</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Low level API</span></p>
+<p class="caption" role="heading"><span class="caption-text">Low level API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
@@ -208,7 +233,7 @@
 }
 </style>
 <section id="bibliometrix">
-<h1>Bibliometrix<a class="headerlink" href="#bibliometrix" title="Permalink to this headline"></a></h1>
+<h1>Bibliometrix<a class="headerlink" href="#bibliometrix" title="Permalink to this heading"></a></h1>
 <hr style="height:4px;border-width:0;color:gray;background-color:black"><p>In this section, the library’s functionalities are presented in the structure used
 internally in Bibliometrix, in order to facilitate comparison. Likewise, functions have
 been created with the same names as the Bibliometrix menus to facilitate the use of the
@@ -216,13 +241,13 @@ tool by users. It should be noted that the functions presented in this section c
 a part of TechMiner’s capabilities, and in this sense, Bibliometrix contains only a
 subset of the analytical capabilities of TechMiner.</p>
 <section id="data">
-<h2>Data<a class="headerlink" href="#data" title="Permalink to this headline"></a></h2>
+<h2>Data<a class="headerlink" href="#data" title="Permalink to this heading"></a></h2>
 <blockquote>
 <div><p>See <code class="docutils literal notranslate"><span class="pre">Import</span> <span class="pre">Scopus</span> <span class="pre">Files</span></code> in <a class="reference external" href="_user_data.html">Data</a>.</p>
 </div></blockquote>
 </section>
 <section id="filter">
-<h2>Filter<a class="headerlink" href="#filter" title="Permalink to this headline"></a></h2>
+<h2>Filter<a class="headerlink" href="#filter" title="Permalink to this heading"></a></h2>
 <blockquote>
 <div><div class="toctree-wrapper compound">
 <ul>
@@ -231,12 +256,12 @@ subset of the analytical capabilities of TechMiner.</p>
 </div>
 </div></blockquote>
 </section>
-<section id="dataset">
-<h2>Dataset<a class="headerlink" href="#dataset" title="Permalink to this headline"></a></h2>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
 <blockquote>
 <div><div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="main_information.html">Main Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main_information.html">Main information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="annual_scientific_production.html">Annual Scientific Production</a></li>
 <li class="toctree-l1"><a class="reference internal" href="average_citations_per_year.html">Average Citations per Year</a></li>
 <li class="toctree-l1"><a class="reference internal" href="three_fields_plot.html">Three fields plot</a></li>
@@ -245,74 +270,105 @@ subset of the analytical capabilities of TechMiner.</p>
 </div></blockquote>
 </section>
 <section id="sources">
-<h2>Sources<a class="headerlink" href="#sources" title="Permalink to this headline"></a></h2>
+<h2>Sources<a class="headerlink" href="#sources" title="Permalink to this heading"></a></h2>
 <blockquote>
 <div><div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="most_relevant_sources.html">Most Relevant Sources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="most_local_cited_sources.html">Most Local Cited Sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="most_relevant_sources.html">Most relevant sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="most_local_cited_sources.html">Most Local Cited Sources (in References)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bradford_law.html">Bradford’s Law</a></li>
 <li class="toctree-l1"><a class="reference internal" href="core_sources.html">Core Sources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="source_local_impact.html">Source Local Impact</a></li>
-<li class="toctree-l1"><a class="reference internal" href="source_dynamics.html">Source Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source_local_impact.html">Source local impact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source_dynamics_table.html">Source dynamics table</a></li>
+<li class="toctree-l1"><a class="reference internal" href="source_dynamics_plot.html">Source dynamics plot</a></li>
 </ul>
 </div>
 </div></blockquote>
 </section>
 <section id="authors">
-<h2>Authors<a class="headerlink" href="#authors" title="Permalink to this headline"></a></h2>
+<h2>Authors<a class="headerlink" href="#authors" title="Permalink to this heading"></a></h2>
 <blockquote>
-<div><p style="color:gray">Authors:</p><div class="toctree-wrapper compound">
+<div><div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="most_relevant_authors.html">Most Relevant Authors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="most_local_cited_authors.html">Most Local Cited Authors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="authors_production_over_time.html">Authors’ Production over Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="most_relevant_authors.html">Most relevant authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="most_local_cited_authors.html">Most local cited authors in references</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors_production_over_time.html">Authors’ production over time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors_production_per_year.html">Authors’ production per year</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors_documents.html">Authors’ documents (TODO)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lotka_law.html">Lotka’s Law</a></li>
-<li class="toctree-l1"><a class="reference internal" href="author_local_impact.html">Author Local Impact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="author_local_impact.html">Author local impact</a></li>
 </ul>
 </div>
-<p style="color:gray">Affiliations:</p><div class="toctree-wrapper compound">
+</div></blockquote>
+</section>
+<section id="institutions">
+<h2>Institutions<a class="headerlink" href="#institutions" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="most_relevant_institutions.html">Most Relevant Institutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="most_relevant_institutions.html">Most relevant institutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="most_global_cited_institutions.html">Most global cited institutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="institutions_production_over_time.html">Institutions’ production over time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="institutions_production_per_year.html">Institutions’ production per year</a></li>
+<li class="toctree-l1"><a class="reference internal" href="institution_local_impact.html">Institution local impact</a></li>
 </ul>
 </div>
-<p style="color:gray">Countries:</p><div class="toctree-wrapper compound">
+</div></blockquote>
+</section>
+<section id="countries">
+<h2>Countries<a class="headerlink" href="#countries" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="corresponding_authors_country.html">Corresponding Author’s Country</a></li>
 <li class="toctree-l1"><a class="reference internal" href="country_scientific_production.html">Country Scientific Production</a></li>
-<li class="toctree-l1"><a class="reference internal" href="most_global_cited_countries.html">Most Global Cited Countries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="countries_production_over_time.html">Countries’ production over time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="countries_production_per_year.html">Countries’ production per year</a></li>
+<li class="toctree-l1"><a class="reference internal" href="most_global_cited_countries.html">Most global cited countries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="country_local_impact.html">Country local impact</a></li>
 </ul>
 </div>
 </div></blockquote>
 </section>
 <section id="documents">
-<h2>Documents<a class="headerlink" href="#documents" title="Permalink to this headline"></a></h2>
+<h2>Documents<a class="headerlink" href="#documents" title="Permalink to this heading"></a></h2>
 <blockquote>
-<div><p style="color:gray">Documents:</p><div class="toctree-wrapper compound">
+<div><div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="most_global_cited_documents.html">Most Global Cited Documents</a></li>
 <li class="toctree-l1"><a class="reference internal" href="most_local_cited_documents.html">Most Local Cited Documents</a></li>
 </ul>
 </div>
-<p style="color:gray">Cited References:</p><div class="toctree-wrapper compound">
+</div></blockquote>
+</section>
+<section id="cited-references">
+<h2>Cited References<a class="headerlink" href="#cited-references" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="most_local_cited_references.html">Most Local Cited References</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rpys.html">RPYS (Reference Publication Year Spectroscopy)</a></li>
 </ul>
 </div>
-<p style="color:gray">Words:</p><div class="toctree-wrapper compound">
+</div></blockquote>
+</section>
+<section id="words">
+<h2>Words<a class="headerlink" href="#words" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="most_frequent_words.html">Most Frequent Words</a></li>
 <li class="toctree-l1"><a class="reference internal" href="word_cloud.html">Word Cloud</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tree_map.html">Tree Map</a></li>
-<li class="toctree-l1"><a class="reference internal" href="topic_dynamics.html">Topic Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="word_dynamics_plot.html">Word dynamics plot (TODO)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="word_dynamics_table.html">Word dynamics table</a></li>
 <li class="toctree-l1"><a class="reference internal" href="trend_topics.html">Trend Topics</a></li>
 </ul>
 </div>
 </div></blockquote>
 </section>
 <section id="clustering">
-<h2>Clustering<a class="headerlink" href="#clustering" title="Permalink to this headline"></a></h2>
+<h2>Clustering<a class="headerlink" href="#clustering" title="Permalink to this heading"></a></h2>
 <blockquote>
 <div><div class="toctree-wrapper compound">
 <ul>
@@ -325,7 +381,7 @@ subset of the analytical capabilities of TechMiner.</p>
 </div></blockquote>
 </section>
 <section id="conceptual-structure">
-<h2>Conceptual Structure<a class="headerlink" href="#conceptual-structure" title="Permalink to this headline"></a></h2>
+<h2>Conceptual Structure<a class="headerlink" href="#conceptual-structure" title="Permalink to this heading"></a></h2>
 <blockquote>
 <div><p style="color:gray">Network Approach:</p><div class="toctree-wrapper compound">
 <ul>
@@ -365,7 +421,7 @@ subset of the analytical capabilities of TechMiner.</p>
 </div></blockquote>
 </section>
 <section id="intellectual-structure">
-<h2>Intellectual Structure<a class="headerlink" href="#intellectual-structure" title="Permalink to this headline"></a></h2>
+<h2>Intellectual Structure<a class="headerlink" href="#intellectual-structure" title="Permalink to this heading"></a></h2>
 <blockquote>
 <div><div class="toctree-wrapper compound">
 <ul>
@@ -393,7 +449,7 @@ subset of the analytical capabilities of TechMiner.</p>
 </div></blockquote>
 </section>
 <section id="social-structure">
-<h2>Social Structure<a class="headerlink" href="#social-structure" title="Permalink to this headline"></a></h2>
+<h2>Social Structure<a class="headerlink" href="#social-structure" title="Permalink to this heading"></a></h2>
 <blockquote>
 <div><div class="admonition note">
 <p class="admonition-title">Note</p>

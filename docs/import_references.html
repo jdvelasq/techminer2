@@ -15,6 +15,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
@@ -23,7 +24,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Coverage" href="coverage.html" />
-    <link rel="prev" title="Importing Scopus Files" href="import_scopus_file.html" /> 
+    <link rel="prev" title="Import Scopus Files" href="import_scopus_files.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -44,26 +45,27 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Introduction</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction/getting_started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction/release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction/license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data</span></p>
+<p class="caption" role="heading"><span class="caption-text">Data</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="import_scopus_files.html">Import Scopus Files</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Import References File</a></li>
 <li class="toctree-l1"><a class="reference internal" href="coverage.html">Coverage</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Software comparison</span></p>
+<p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="_bibliometrix.html">Bibliometrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_scientopy.html">ScientoPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_tlab.html">T-Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_vantagepoint.html">VantagePoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scopus.html">Scopus search results analysis</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Low level API</span></p>
+<p class="caption" role="heading"><span class="caption-text">Low level API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
@@ -119,7 +121,7 @@
 }
 </style>
 <span class="target" id="module-techminer2.import_references"></span><section id="import-references-file">
-<h1>Import References File<a class="headerlink" href="#import-references-file" title="Permalink to this headline"></a></h1>
+<h1>Import References File<a class="headerlink" href="#import-references-file" title="Permalink to this heading"></a></h1>
 <p>Import a ‘cited by’ scopus file with references.</p>
 <ul class="simple">
 <li><p>The references file is called ‘raw-references.csv’ and it is obtained from
@@ -127,18 +129,17 @@ references option in Scopus.</p></li>
 <li><p>This function must be called after the import of the documents.</p></li>
 </ul>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer2/data/&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;data/&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">import_references</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span> <span class="n">disable_progress_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="go">- INFO - 248 raw records found in /workspaces/techminer2/data/documents.csv.</span>
-<span class="go">- INFO - 5123 raw records found in /workspaces/techminer2/data/raw-references.csv.</span>
+<span class="go">- INFO - 5123 raw records found in data/raw/references.</span>
 <span class="go">- INFO - Creating references file</span>
-<span class="go">- INFO - References table saved to /workspaces/techminer2/data/cited_references_table.csv</span>
-<span class="go">- INFO - References table saved to /workspaces/techminer2/data/references.csv</span>
+<span class="go">- INFO - References table saved to data/processed/cited_references_table.csv</span>
+<span class="go">- INFO - References table saved to data/processed/references.csv</span>
 </pre></div>
 </div>
 <dl class="py function">
 <dt class="sig sig-object py" id="techminer2.import_references.import_references">
-<span class="sig-prename descclassname"><span class="pre">techminer2.import_references.</span></span><span class="sig-name descname"><span class="pre">import_references</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scopus_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'raw-references.csv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disable_progress_bar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer2/import_references.html#import_references"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer2.import_references.import_references" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">techminer2.import_references.</span></span><span class="sig-name descname"><span class="pre">import_references</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disable_progress_bar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer2/import_references.html#import_references"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer2.import_references.import_references" title="Permalink to this definition"></a></dt>
 <dd><p>Import references file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -159,7 +160,7 @@ references option in Scopus.</p></li>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="import_scopus_file.html" class="btn btn-neutral float-left" title="Importing Scopus Files" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="import_scopus_files.html" class="btn btn-neutral float-left" title="Import Scopus Files" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="coverage.html" class="btn btn-neutral float-right" title="Coverage" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

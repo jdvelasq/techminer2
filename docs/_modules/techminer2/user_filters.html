@@ -14,6 +14,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/clipboard.min.js"></script>
         <script src="../../_static/copybutton.js"></script>
@@ -41,26 +42,27 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Introduction</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction/getting_started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction/release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction/license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data</span></p>
+<p class="caption" role="heading"><span class="caption-text">Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../import_scopus_files.html">Import Scopus Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../import_references.html">Import References File</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../coverage.html">Coverage</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Software comparison</span></p>
+<p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../_bibliometrix.html">Bibliometrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_scientopy.html">ScientoPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_tlab.html">T-Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_vantagepoint.html">VantagePoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scopus.html">Scopus search results analysis</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Low level API</span></p>
+<p class="caption" role="heading"><span class="caption-text">Low level API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../_api_indicators.html">Indicators API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_api_network.html">Network API</a></li>
@@ -99,7 +101,7 @@
 <span class="sd">Allow users to select docuemnts to be mined.</span>
 
 <span class="sd">&gt;&gt;&gt; from techminer2 import *</span>
-<span class="sd">&gt;&gt;&gt; directory = &quot;/workspaces/techminer2/data/&quot;</span>
+<span class="sd">&gt;&gt;&gt; directory = &quot;data/&quot;</span>
 <span class="sd">&gt;&gt;&gt; user_filters(directory, book=True,  erratum=True, first_year=2016, last_year=2021)</span>
 <span class="sd">---&lt; Document &gt;-------------------------------------------------</span>
 <span class="sd">               First year : 2016</span>
@@ -190,16 +192,18 @@
 
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">os.path</span>
 
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">yaml</span>
 
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">logging</span>
-<span class="kn">from</span> <span class="nn">.load_filtered_documents</span> <span class="kn">import</span> <span class="n">load_filtered_documents</span>
+<span class="kn">from</span> <span class="nn">._read_records</span> <span class="kn">import</span> <span class="n">read_all_records</span><span class="p">,</span> <span class="n">read_filtered_records</span>
 
 
 <span class="k">def</span> <span class="nf">_load_filter</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
-    <span class="n">yaml_filename</span> <span class="o">=</span> <span class="n">directory</span> <span class="o">+</span> <span class="s2">&quot;filter.yaml&quot;</span>
+
+    <span class="n">yaml_filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="s2">&quot;processed&quot;</span><span class="p">,</span> <span class="s2">&quot;filter.yaml&quot;</span><span class="p">)</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">yaml_filename</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">yaml_file</span><span class="p">:</span>
         <span class="nb">filter</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">yaml_file</span><span class="p">,</span> <span class="n">Loader</span><span class="o">=</span><span class="n">yaml</span><span class="o">.</span><span class="n">FullLoader</span><span class="p">)</span>
     <span class="k">return</span> <span class="nb">filter</span>
@@ -219,10 +223,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">load_raw_documents</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">load_raw_documents</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">filename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">directory</span> <span class="o">+</span> <span class="s2">&quot;documents.csv&quot;</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The file &#39;</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">&#39; does not exist.&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">documents</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">documents</span> <span class="o">=</span> <span class="n">read_all_records</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">directory</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">document_report</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
@@ -273,7 +274,7 @@
                 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;                          : &quot;</span> <span class="o">+</span> <span class="n">document_type</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">save_filter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">yaml_filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">directory</span><span class="p">,</span> <span class="s2">&quot;filter.yaml&quot;</span><span class="p">)</span>
+        <span class="n">yaml_filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">directory</span><span class="p">,</span> <span class="s2">&quot;processed&quot;</span><span class="p">,</span> <span class="s2">&quot;filter.yaml&quot;</span><span class="p">)</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">yaml_filename</span><span class="p">,</span> <span class="s2">&quot;wt&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">yaml_file</span><span class="p">:</span>
             <span class="n">yaml</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filter</span><span class="p">,</span> <span class="n">yaml_file</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 

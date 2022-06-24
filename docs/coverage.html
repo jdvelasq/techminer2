@@ -15,6 +15,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
@@ -44,26 +45,27 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Introduction</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction/getting_started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction/release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction/license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data</span></p>
+<p class="caption" role="heading"><span class="caption-text">Data</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="import_scopus_files.html">Import Scopus Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="import_references.html">Import References File</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Coverage</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Software comparison</span></p>
+<p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="_bibliometrix.html">Bibliometrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_scientopy.html">ScientoPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_tlab.html">T-Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_vantagepoint.html">VantagePoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scopus.html">Scopus search results analysis</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Low level API</span></p>
+<p class="caption" role="heading"><span class="caption-text">Low level API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
@@ -119,10 +121,10 @@
 }
 </style>
 <span class="target" id="module-techminer2.coverage"></span><section id="coverage">
-<h1>Coverage<a class="headerlink" href="#coverage" title="Permalink to this headline"></a></h1>
+<h1>Coverage<a class="headerlink" href="#coverage" title="Permalink to this heading"></a></h1>
 <p>Computes coverage of terms in a column discarding stopwords.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer2/data/&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;data/&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">coverage</span><span class="p">(</span><span class="s2">&quot;author_keywords&quot;</span><span class="p">,</span> <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 <span class="go">- INFO - Number of documents : 248</span>
 <span class="go">- INFO - Documents with NA: 202</span>
@@ -135,9 +137,9 @@
 <span class="go">4       12                164  66.13 %              7</span>
 <span class="go">5       11                166  66.94 %              8</span>
 <span class="go">6        8                174  70.16 %             13</span>
-<span class="go">7        7                174  70.16 %             17</span>
-<span class="go">8        6                177  71.37 %             24</span>
-<span class="go">9        5                179  72.18 %             29</span>
+<span class="go">7        7                174  70.16 %             16</span>
+<span class="go">8        6                177  71.37 %             23</span>
+<span class="go">9        5                179  72.18 %             28</span>
 </pre></div>
 </div>
 <dl class="py function">

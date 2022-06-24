@@ -14,6 +14,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/clipboard.min.js"></script>
         <script src="../../_static/copybutton.js"></script>
@@ -41,26 +42,27 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Introduction</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction/getting_started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction/release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction/license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data</span></p>
+<p class="caption" role="heading"><span class="caption-text">Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../import_scopus_files.html">Import Scopus Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../import_references.html">Import References File</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../coverage.html">Coverage</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Software comparison</span></p>
+<p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../_bibliometrix.html">Bibliometrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_scientopy.html">ScientoPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_tlab.html">T-Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_vantagepoint.html">VantagePoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scopus.html">Scopus search results analysis</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Low level API</span></p>
+<p class="caption" role="heading"><span class="caption-text">Low level API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../_api_indicators.html">Indicators API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_api_network.html">Network API</a></li>
@@ -93,75 +95,42 @@
              
   <h1>Source code for techminer2.author_local_impact</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">Author Local Impact</span>
+<span class="sd">Author local impact</span>
 <span class="sd">===============================================================================</span>
 
-
+<span class="sd">See :doc:`impact indicators &lt;impact_indicators&gt;` to obtain a `pandas.Dataframe` </span>
+<span class="sd">with the data.</span>
 
 <span class="sd">&gt;&gt;&gt; from techminer2 import *</span>
-<span class="sd">&gt;&gt;&gt; directory = &quot;/workspaces/techminer2/data/&quot;</span>
-<span class="sd">&gt;&gt;&gt; file_name = &quot;/workspaces/techminer2/sphinx/images/author_local_impact.png&quot;</span>
+<span class="sd">&gt;&gt;&gt; directory = &quot;data/&quot;</span>
+<span class="sd">&gt;&gt;&gt; file_name = &quot;sphinx/_static/author_local_impact.html&quot;</span>
+
 <span class="sd">&gt;&gt;&gt; author_local_impact(</span>
 <span class="sd">...     impact_measure=&#39;h_index&#39;, </span>
 <span class="sd">...     top_n=20, </span>
 <span class="sd">...     directory=directory,</span>
-<span class="sd">... ).savefig(file_name)</span>
+<span class="sd">... ).write_html(file_name)</span>
 
-<span class="sd">.. image:: images/author_local_impact.png</span>
-<span class="sd">    :width: 700px</span>
-<span class="sd">    :align: center</span>
+<span class="sd">.. raw:: html</span>
 
+<span class="sd">    &lt;iframe src=&quot;_static/author_local_impact.html&quot; height=&quot;600px&quot; width=&quot;100%&quot; frameBorder=&quot;0&quot;&gt;&lt;/iframe&gt;</span>
 
-<span class="sd">&gt;&gt;&gt; author_local_impact(</span>
-<span class="sd">...     impact_measure=&#39;h_index&#39;, </span>
-<span class="sd">...     top_n=20, </span>
-<span class="sd">...     directory=directory, </span>
-<span class="sd">...     plot=False,</span>
-<span class="sd">... ).head()</span>
-<span class="sd">          num_documents  ...  avg_global_citations</span>
-<span class="sd">Wojcik D              5  ...                  3.80</span>
-<span class="sd">Hornuf L              3  ...                 36.67</span>
-<span class="sd">Arqawi S              2  ...                  2.50</span>
-<span class="sd">Zhang MX              2  ...                  6.00</span>
-<span class="sd">Khan S                2  ...                 18.50</span>
-<span class="sd">&lt;BLANKLINE&gt;</span>
-<span class="sd">[5 rows x 9 columns]</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
-
-
-<span class="kn">from</span> <span class="nn">._cleveland_chart</span> <span class="kn">import</span> <span class="n">_cleveland_chart</span>
-<span class="kn">from</span> <span class="nn">.impact_indicators</span> <span class="kn">import</span> <span class="n">impact_indicators</span>
+<span class="kn">from</span> <span class="nn">.impact_indicators_plot</span> <span class="kn">import</span> <span class="n">impact_indicators_plot</span>
 
 
 <div class="viewcode-block" id="author_local_impact"><a class="viewcode-back" href="../../author_local_impact.html#techminer2.author_local_impact.author_local_impact">[docs]</a><span class="k">def</span> <span class="nf">author_local_impact</span><span class="p">(</span>
     <span class="n">impact_measure</span><span class="o">=</span><span class="s2">&quot;h_index&quot;</span><span class="p">,</span>
     <span class="n">top_n</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
-    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span>
-    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span>
     <span class="n">directory</span><span class="o">=</span><span class="s2">&quot;./&quot;</span><span class="p">,</span>
-    <span class="n">plot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">):</span>
-    <span class="k">if</span> <span class="n">impact_measure</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;h_index&quot;</span><span class="p">,</span> <span class="s2">&quot;g_index&quot;</span><span class="p">,</span> <span class="s2">&quot;m_index&quot;</span><span class="p">,</span> <span class="s2">&quot;global_citations&quot;</span><span class="p">]:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-            <span class="s2">&quot;Impact measure must be one of: h_index, g_index, m_index, global_citations&quot;</span>
-        <span class="p">)</span>
-
-    <span class="n">indicators</span> <span class="o">=</span> <span class="n">impact_indicators</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s2">&quot;authors&quot;</span><span class="p">)</span>
-    <span class="n">indicators</span> <span class="o">=</span> <span class="n">indicators</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="n">impact_measure</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">plot</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">indicators</span>
-
-    <span class="n">indicators</span> <span class="o">=</span> <span class="n">indicators</span><span class="p">[</span><span class="n">impact_measure</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">top_n</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">_cleveland_chart</span><span class="p">(</span>
-        <span class="n">indicators</span><span class="p">,</span>
-        <span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">,</span>
-        <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span>
-        <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Authors Local Impact by &quot;</span> <span class="o">+</span> <span class="n">impact_measure</span><span class="o">.</span><span class="n">capitalize</span><span class="p">(),</span>
-        <span class="n">xlabel</span><span class="o">=</span><span class="n">impact_measure</span><span class="o">.</span><span class="n">capitalize</span><span class="p">(),</span>
-        <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Authors&quot;</span><span class="p">,</span>
+    <span class="k">return</span> <span class="n">impact_indicators_plot</span><span class="p">(</span>
+        <span class="n">column</span><span class="o">=</span><span class="s2">&quot;authors&quot;</span><span class="p">,</span>
+        <span class="n">impact_measure</span><span class="o">=</span><span class="n">impact_measure</span><span class="p">,</span>
+        <span class="n">top_n</span><span class="o">=</span><span class="n">top_n</span><span class="p">,</span>
+        <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
+        <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Author Local Impact by &quot;</span> <span class="o">+</span> <span class="n">impact_measure</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">title</span><span class="p">(),</span>
     <span class="p">)</span></div>
 </pre></div>
 

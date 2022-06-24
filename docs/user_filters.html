@@ -15,6 +15,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
@@ -22,7 +23,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Main Information" href="main_information.html" />
+    <link rel="next" title="Main information" href="main_information.html" />
     <link rel="prev" title="Bibliometrix" href="_bibliometrix.html" /> 
 </head>
 
@@ -44,19 +45,19 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Introduction</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction/getting_started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction/release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction/license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data</span></p>
+<p class="caption" role="heading"><span class="caption-text">Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="import_scopus_files.html">Import Scopus Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="import_references.html">Import References File</a></li>
 <li class="toctree-l1"><a class="reference internal" href="coverage.html">Coverage</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Software comparison</span></p>
+<p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="_bibliometrix.html">Bibliometrix</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#data">Data</a></li>
@@ -64,10 +65,14 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">User Filters</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#dataset">Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#sources">Sources</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#authors">Authors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#institutions">Institutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#countries">Countries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#documents">Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#cited-references">Cited References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#words">Words</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#clustering">Clustering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#conceptual-structure">Conceptual Structure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#intellectual-structure">Intellectual Structure</a></li>
@@ -77,8 +82,9 @@
 <li class="toctree-l1"><a class="reference internal" href="_scientopy.html">ScientoPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_tlab.html">T-Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_vantagepoint.html">VantagePoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scopus.html">Scopus search results analysis</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Low level API</span></p>
+<p class="caption" role="heading"><span class="caption-text">Low level API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
@@ -135,10 +141,10 @@
 }
 </style>
 <span class="target" id="module-techminer2.user_filters"></span><section id="user-filters">
-<h1>User Filters<a class="headerlink" href="#user-filters" title="Permalink to this headline"></a></h1>
+<h1>User Filters<a class="headerlink" href="#user-filters" title="Permalink to this heading"></a></h1>
 <p>Allow users to select docuemnts to be mined.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer2/data/&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;data/&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">user_filters</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="n">book</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="n">erratum</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">first_year</span><span class="o">=</span><span class="mi">2016</span><span class="p">,</span> <span class="n">last_year</span><span class="o">=</span><span class="mi">2021</span><span class="p">)</span>
 <span class="go">---&lt; Document &gt;-------------------------------------------------</span>
 <span class="go">               First year : 2016</span>
@@ -239,7 +245,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="_bibliometrix.html" class="btn btn-neutral float-left" title="Bibliometrix" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="main_information.html" class="btn btn-neutral float-right" title="Main Information" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="main_information.html" class="btn btn-neutral float-right" title="Main information" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

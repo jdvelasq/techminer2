@@ -15,6 +15,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
@@ -44,27 +45,31 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Introduction</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction/getting_started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction/release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction/license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data</span></p>
+<p class="caption" role="heading"><span class="caption-text">Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="import_scopus_files.html">Import Scopus Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="import_references.html">Import References File</a></li>
 <li class="toctree-l1"><a class="reference internal" href="coverage.html">Coverage</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Software comparison</span></p>
+<p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="_bibliometrix.html">Bibliometrix</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#data">Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#filter">Filter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#dataset">Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#sources">Sources</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#authors">Authors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#institutions">Institutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#countries">Countries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#documents">Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#cited-references">Cited References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#words">Words</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#clustering">Clustering</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="_bibliometrix.html#conceptual-structure">Conceptual Structure</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="co_occurrence_network_communities.html">Co-occurrence Network / Communities</a></li>
@@ -92,8 +97,9 @@
 <li class="toctree-l1"><a class="reference internal" href="_scientopy.html">ScientoPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_tlab.html">T-Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_vantagepoint.html">VantagePoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scopus.html">Scopus search results analysis</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Low level API</span></p>
+<p class="caption" role="heading"><span class="caption-text">Low level API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
@@ -150,19 +156,19 @@
 }
 </style>
 <span class="target" id="module-techminer2.thematic_map_indicators"></span><section id="thematic-map-indicators">
-<h1>Thematic Map / Indicators<a class="headerlink" href="#thematic-map-indicators" title="Permalink to this headline"></a></h1>
+<h1>Thematic Map / Indicators<a class="headerlink" href="#thematic-map-indicators" title="Permalink to this heading"></a></h1>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer2/data/&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;data/&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">thematic_map_indicators</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="s1">&#39;author_keywords&#39;</span><span class="p">,</span> <span class="n">min_occ</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">directory</span><span class="o">=</span><span class="n">directory</span>
 <span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-<span class="go">                         num_documents  global_citations  ...  closeness  pagerank</span>
-<span class="go">node                                                      ...</span>
-<span class="go">adoption                             4                65  ...   0.532468  0.020583</span>
-<span class="go">artificial intelligence              6                30  ...   0.554054  0.023916</span>
-<span class="go">bank                                12               185  ...   0.594203  0.019845</span>
-<span class="go">bitcoin                              3                 7  ...   0.518987  0.016040</span>
-<span class="go">block-chain                         17               149  ...   0.621212  0.030478</span>
+<span class="go">                        num_documents  global_citations  ...  closeness  pagerank</span>
+<span class="go">node                                                     ...</span>
+<span class="go">bank                                5                12  ...   0.636364  0.106303</span>
+<span class="go">blockchain                          6                 9  ...   0.636364  0.126858</span>
+<span class="go">covid-19                            6                 8  ...   0.583333  0.109351</span>
+<span class="go">financial inclusion                10                14  ...   0.636364  0.094269</span>
+<span class="go">financial technologies             12                32  ...   0.700000  0.131281</span>
 
 <span class="go">[5 rows x 6 columns]</span>
 </pre></div>

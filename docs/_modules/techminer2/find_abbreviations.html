@@ -14,6 +14,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/clipboard.min.js"></script>
         <script src="../../_static/copybutton.js"></script>
@@ -41,26 +42,27 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Introduction</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction/getting_started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction/release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction/license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data</span></p>
+<p class="caption" role="heading"><span class="caption-text">Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../import_scopus_files.html">Import Scopus Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../import_references.html">Import References File</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../coverage.html">Coverage</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Software comparison</span></p>
+<p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../_bibliometrix.html">Bibliometrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_scientopy.html">ScientoPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_tlab.html">T-Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_vantagepoint.html">VantagePoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scopus.html">Scopus search results analysis</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Low level API</span></p>
+<p class="caption" role="heading"><span class="caption-text">Low level API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../_api_indicators.html">Indicators API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_api_network.html">Network API</a></li>
@@ -99,9 +101,44 @@
 <span class="sd">Finds string abbreviations in keywords.</span>
 
 <span class="sd">&gt;&gt;&gt; from techminer2 import *</span>
-<span class="sd">&gt;&gt;&gt; directory = &quot;/workspaces/techminer2/data/&quot;</span>
+<span class="sd">&gt;&gt;&gt; directory = &quot;data/&quot;</span>
 <span class="sd">&gt;&gt;&gt; find_abbreviations(directory=directory)</span>
-
+<span class="sd">ai</span>
+<span class="sd">    ai</span>
+<span class="sd">artificial intelligence</span>
+<span class="sd">    artificial intelligence</span>
+<span class="sd">    artificial intelligence (ai)</span>
+<span class="sd">competition</span>
+<span class="sd">    competition</span>
+<span class="sd">    competition (economics)</span>
+<span class="sd">economics</span>
+<span class="sd">    economics</span>
+<span class="sd">financial technologies</span>
+<span class="sd">    financial technologies</span>
+<span class="sd">    financial technology</span>
+<span class="sd">    financial technology (fintech)</span>
+<span class="sd">fintech</span>
+<span class="sd">    fintech</span>
+<span class="sd">internet of things</span>
+<span class="sd">    internet of things</span>
+<span class="sd">    internet of things (iot)</span>
+<span class="sd">iot</span>
+<span class="sd">    iot</span>
+<span class="sd">p2p lending</span>
+<span class="sd">    p2p lending</span>
+<span class="sd">peer-to-peer lending</span>
+<span class="sd">    peer to peer lending</span>
+<span class="sd">    peer-to peer lending (p2p lending)</span>
+<span class="sd">    peer-to-peer lending</span>
+<span class="sd">sem</span>
+<span class="sd">    sem</span>
+<span class="sd">structural equation model (sem)</span>
+<span class="sd">    structural equation model (sem)</span>
+<span class="sd">    structural equations model</span>
+<span class="sd">unified theory of acceptance and use technology (utaut)</span>
+<span class="sd">    unified theory of acceptance and use technology (utaut)</span>
+<span class="sd">utaut</span>
+<span class="sd">    utaut</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">isfile</span><span class="p">,</span> <span class="n">join</span>
@@ -126,7 +163,7 @@
         <span class="k">return</span> <span class="kc">None</span>
 
     <span class="c1"># ----&lt; Load and reverse the thesaurus &gt;------------------------------------------------------</span>
-    <span class="n">thesaurus_file</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="s2">&quot;keywords.txt&quot;</span><span class="p">)</span>
+    <span class="n">thesaurus_file</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="s2">&quot;processed&quot;</span><span class="p">,</span> <span class="s2">&quot;keywords.txt&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">isfile</span><span class="p">(</span><span class="n">thesaurus_file</span><span class="p">):</span>
         <span class="n">th</span> <span class="o">=</span> <span class="n">load_file_as_dict</span><span class="p">(</span><span class="n">thesaurus_file</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>

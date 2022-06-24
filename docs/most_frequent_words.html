@@ -15,6 +15,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
@@ -44,35 +45,36 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Introduction</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction/getting_started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction/release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction/license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data</span></p>
+<p class="caption" role="heading"><span class="caption-text">Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="import_scopus_files.html">Import Scopus Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="import_references.html">Import References File</a></li>
 <li class="toctree-l1"><a class="reference internal" href="coverage.html">Coverage</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Software comparison</span></p>
+<p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="_bibliometrix.html">Bibliometrix</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#data">Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#filter">Filter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#dataset">Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#sources">Sources</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#authors">Authors</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="_bibliometrix.html#documents">Documents</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="most_global_cited_documents.html">Most Global Cited Documents</a></li>
-<li class="toctree-l3"><a class="reference internal" href="most_local_cited_documents.html">Most Local Cited Documents</a></li>
-<li class="toctree-l3"><a class="reference internal" href="most_local_cited_references.html">Most Local Cited References</a></li>
-<li class="toctree-l3"><a class="reference internal" href="rpys.html">RPYS (Reference Publication Year Spectroscopy)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#institutions">Institutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#countries">Countries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#documents">Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#cited-references">Cited References</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="_bibliometrix.html#words">Words</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Most Frequent Words</a></li>
 <li class="toctree-l3"><a class="reference internal" href="word_cloud.html">Word Cloud</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tree_map.html">Tree Map</a></li>
-<li class="toctree-l3"><a class="reference internal" href="topic_dynamics.html">Topic Dynamics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="word_dynamics_plot.html">Word dynamics plot (TODO)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="word_dynamics_table.html">Word dynamics table</a></li>
 <li class="toctree-l3"><a class="reference internal" href="trend_topics.html">Trend Topics</a></li>
 </ul>
 </li>
@@ -85,8 +87,9 @@
 <li class="toctree-l1"><a class="reference internal" href="_scientopy.html">ScientoPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_tlab.html">T-Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_vantagepoint.html">VantagePoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scopus.html">Scopus search results analysis</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Low level API</span></p>
+<p class="caption" role="heading"><span class="caption-text">Low level API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
@@ -143,18 +146,25 @@
 }
 </style>
 <span class="target" id="module-techminer2.most_frequent_words"></span><section id="most-frequent-words">
-<h1>Most Frequent Words<a class="headerlink" href="#most-frequent-words" title="Permalink to this headline"></a></h1>
+<h1>Most Frequent Words<a class="headerlink" href="#most-frequent-words" title="Permalink to this heading"></a></h1>
+<p>See <a class="reference external" href="https://jdvelasq.github.io/techminer2/column_indicators.html">https://jdvelasq.github.io/techminer2/column_indicators.html</a></p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer2/data/&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer2/sphinx/images/most_frequent_words.png&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">most_frequent_words</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="s1">&#39;author_keywords&#39;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">top_n</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
-<span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;data/&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;sphinx/_static/most_frequent_words.html&quot;</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/most_frequent_words.png"><img alt="_images/most_frequent_words.png" class="align-center" src="_images/most_frequent_words.png" style="width: 700px;" /></a>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">most_frequent_words</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">column</span><span class="o">=</span><span class="s2">&quot;author_keywords&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">top_n</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+</pre></div>
+</div>
+<iframe src="_static/most_frequent_words.html" height="600px" width="100%" frameBorder="0"></iframe><dl class="py function">
+<dt class="sig sig-object py" id="techminer2.most_frequent_words.most_frequent_words">
+<span class="sig-prename descclassname"><span class="pre">techminer2.most_frequent_words.</span></span><span class="sig-name descname"><span class="pre">most_frequent_words</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'author_keywords'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer2/most_frequent_words.html#most_frequent_words"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer2.most_frequent_words.most_frequent_words" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 </section>
 
 

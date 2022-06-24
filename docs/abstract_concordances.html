@@ -15,6 +15,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
@@ -44,33 +45,36 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Introduction</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction/getting_started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction/release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction/license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data</span></p>
+<p class="caption" role="heading"><span class="caption-text">Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="import_scopus_files.html">Import Scopus Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="import_references.html">Import References File</a></li>
 <li class="toctree-l1"><a class="reference internal" href="coverage.html">Coverage</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Software comparison</span></p>
+<p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="_bibliometrix.html">Bibliometrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_scientopy.html">ScientoPy</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="_tlab.html">T-Lab</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="_tlab.html#co-occurrence-analysis">Co-occurrence Analysis</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="_tlab.html#word-associations">Word Associations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="_tlab.html#co-word-analysis">Co-Word Analysis</a></li>
-<li class="toctree-l3"><a class="reference internal" href="_tlab.html#comparison-between-word-pairs">Comparison between word pairs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="_tlab.html#sequence-and-network-analysis">Sequence and Network Analysis</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="_tlab.html#concordances">Concordances</a><ul class="current">
-<li class="toctree-l4 current"><a class="current reference internal" href="#">Abstract Concordances</a></li>
-<li class="toctree-l4"><a class="reference internal" href="keyword_concordances.html">Keyword Concordances</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="topic_associations.html">Topic Associations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="co_occurrence_svd_mds_map.html">Co-occurrence SVD-MDS Map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="co_occurrence_matrix_cluster_mds_map.html">Co-occurrence Matrix / Cluster MDS Map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="co_occurrence_matrix_cluster_tsne_map.html">Co-occurrence Matrix / Cluster TSNE Map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="co_occurrence_matrix_manifold.html">Co-occurrence Matrix / Manifold Map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cleveland_chart.html">Cleveland Chart</a></li>
+<li class="toctree-l3"><a class="reference internal" href="topics_comparison_chart.html">Topics Comparison Chart</a></li>
+<li class="toctree-l3"><a class="reference internal" href="topics_comparison_network.html">Topics Comparison Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ego_graph.html">Ego Graph</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ego_network.html">Ego Network</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Abstract Concordances</a></li>
+<li class="toctree-l3"><a class="reference internal" href="keyword_concordances.html">Keyword Concordances</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="_tlab.html#thematic-analysis">Thematic Analysis</a></li>
@@ -79,8 +83,9 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="_vantagepoint.html">VantagePoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scopus.html">Scopus search results analysis</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Low level API</span></p>
+<p class="caption" role="heading"><span class="caption-text">Low level API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
@@ -137,12 +142,15 @@
 }
 </style>
 <span class="target" id="module-techminer2.abstract_concordances"></span><section id="abstract-concordances">
-<h1>Abstract Concordances<a class="headerlink" href="#abstract-concordances" title="Permalink to this headline"></a></h1>
+<h1>Abstract Concordances<a class="headerlink" href="#abstract-concordances" title="Permalink to this heading"></a></h1>
 <p>Abstract concordances exploration tool.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer2/data/&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">abstract_concordances</span><span class="p">(</span><span class="s1">&#39;fintech&#39;</span><span class="p">,</span> <span class="n">top_n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">)</span>
-<span class="go">- INFO - Abstract concordances report generated.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;data/&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">abstract_concordances</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s1">&#39;fintech&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">top_n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
 <span class="go">                             The industry overall, and many  FINTECH  start-ups are looking for new pathways to successful bu ...</span>
 <span class="gp">... </span> <span class="n">able</span> <span class="n">to</span> <span class="n">figure</span> <span class="n">out</span> <span class="n">how</span> <span class="n">to</span> <span class="n">effectively</span> <span class="n">hook</span> <span class="n">up</span> <span class="k">with</span> <span class="n">the</span>  <span class="n">FINTECH</span>  <span class="n">revolution</span> <span class="ow">is</span> <span class="n">at</span> <span class="n">stake</span><span class="o">.</span>
 <span class="go">                                           We present a new  FINTECH  innovation mapping approach that enables the assessment ...</span>
@@ -158,7 +166,8 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="techminer2.abstract_concordances.abstract_concordances">
 <span class="sig-prename descclassname"><span class="pre">techminer2.abstract_concordances.</span></span><span class="sig-name descname"><span class="pre">abstract_concordances</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer2/abstract_concordances.html#abstract_concordances"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer2.abstract_concordances.abstract_concordances" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Checks the occurrence contexts of a given text in the abstract’s phrases.</p>
+</dd></dl>
 
 </section>
 

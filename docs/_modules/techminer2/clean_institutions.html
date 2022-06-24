@@ -14,6 +14,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/clipboard.min.js"></script>
         <script src="../../_static/copybutton.js"></script>
@@ -41,26 +42,27 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Introduction</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction/getting_started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction/release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction/license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data</span></p>
+<p class="caption" role="heading"><span class="caption-text">Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../import_scopus_files.html">Import Scopus Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../import_references.html">Import References File</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../coverage.html">Coverage</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Software comparison</span></p>
+<p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../_bibliometrix.html">Bibliometrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_scientopy.html">ScientoPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_tlab.html">T-Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_vantagepoint.html">VantagePoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scopus.html">Scopus search results analysis</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Low level API</span></p>
+<p class="caption" role="heading"><span class="caption-text">Low level API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../_api_indicators.html">Indicators API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_api_network.html">Network API</a></li>
@@ -96,11 +98,11 @@
 <span class="sd">Clean Institutions</span>
 <span class="sd">===============================================================================</span>
 
-<span class="sd">Cleans the institutions columns using the file institutions.txt, located in </span>
+<span class="sd">Cleans the institutions columns using the file institutions.txt, located in</span>
 <span class="sd">the same directory as the documents.csv file.</span>
 
 <span class="sd">&gt;&gt;&gt; from techminer2 import *</span>
-<span class="sd">&gt;&gt;&gt; directory = &quot;/workspaces/techminer2/data/&quot;</span>
+<span class="sd">&gt;&gt;&gt; directory = &quot;data/&quot;</span>
 <span class="sd">&gt;&gt;&gt; clean_institutions(directory)</span>
 <span class="sd">- INFO - Applying thesaurus to institutions ...</span>
 <span class="sd">- INFO - Extract and cleaning institutions.</span>
@@ -111,21 +113,12 @@
 
 
 <span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">os.path</span>
 
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">logging</span>
-
-<span class="n">currentdir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
-<span class="n">parentdir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">currentdir</span><span class="p">)</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">parentdir</span><span class="p">)</span>
-
-<span class="c1"># pylint: disable=no-member</span>
-
-<span class="kn">import</span> <span class="nn">os</span>
-
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-
+<span class="kn">from</span> <span class="nn">._read_records</span> <span class="kn">import</span> <span class="n">read_all_records</span>
 <span class="kn">from</span> <span class="nn">.map_</span> <span class="kn">import</span> <span class="n">map_</span>
+<span class="kn">from</span> <span class="nn">.save_documents</span> <span class="kn">import</span> <span class="n">save_documents</span>
 <span class="kn">from</span> <span class="nn">.thesaurus</span> <span class="kn">import</span> <span class="n">read_textfile</span>
 
 
@@ -140,19 +133,12 @@
 
     <span class="c1"># --------------------------------------------------------------------------</span>
     <span class="c1"># Loads documents.csv</span>
-    <span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="s2">&quot;documents.csv&quot;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The file &#39;</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">&#39; does not exist.&quot;</span><span class="p">)</span>
-    <span class="n">documents</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
-    <span class="c1"># --------------------------------------------------------------------------</span>
-
-    <span class="k">if</span> <span class="n">directory</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;/&quot;</span><span class="p">:</span>
-        <span class="n">directory</span> <span class="o">=</span> <span class="n">directory</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span>
+    <span class="n">documents</span> <span class="o">=</span> <span class="n">read_all_records</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
 
     <span class="c1">#</span>
     <span class="c1"># Loads the thesaurus</span>
     <span class="c1">#</span>
-    <span class="n">thesaurus_file</span> <span class="o">=</span> <span class="n">directory</span> <span class="o">+</span> <span class="s2">&quot;institutions.txt&quot;</span>
+    <span class="n">thesaurus_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="s2">&quot;processed&quot;</span><span class="p">,</span> <span class="s2">&quot;institutions.txt&quot;</span><span class="p">)</span>
     <span class="n">th</span> <span class="o">=</span> <span class="n">read_textfile</span><span class="p">(</span><span class="n">thesaurus_file</span><span class="p">)</span>
     <span class="n">th</span> <span class="o">=</span> <span class="n">th</span><span class="o">.</span><span class="n">compile_as_dict</span><span class="p">()</span>
 
@@ -177,13 +163,7 @@
     <span class="p">)</span>
 
     <span class="c1"># --------------------------------------------------------------------------</span>
-    <span class="n">documents</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span>
-        <span class="n">directory</span> <span class="o">+</span> <span class="s2">&quot;documents.csv&quot;</span><span class="p">,</span>
-        <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span>
-        <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">,</span>
-        <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="c1"># --------------------------------------------------------------------------</span>
+    <span class="n">save_documents</span><span class="p">(</span><span class="n">documents</span><span class="p">,</span> <span class="n">directory</span><span class="p">)</span>
     <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;The thesaurus was applied to institutions.&quot;</span><span class="p">)</span></div>
 </pre></div>
 

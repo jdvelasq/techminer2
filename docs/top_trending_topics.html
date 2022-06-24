@@ -15,6 +15,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
@@ -44,23 +45,23 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Introduction</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction/getting_started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction/release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction/license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data</span></p>
+<p class="caption" role="heading"><span class="caption-text">Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="import_scopus_files.html">Import Scopus Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="import_references.html">Import References File</a></li>
 <li class="toctree-l1"><a class="reference internal" href="coverage.html">Coverage</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Software comparison</span></p>
+<p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="_bibliometrix.html">Bibliometrix</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="_scientopy.html">ScientoPy</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="hbar_chart.html">Hbar Chart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bar_chart.html">Bar Chart</a></li>
 <li class="toctree-l2"><a class="reference internal" href="timeline_chart.html">Timeline Chart</a></li>
 <li class="toctree-l2"><a class="reference internal" href="top_topics.html">Top Topics</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Top Trending Topics</a></li>
@@ -69,8 +70,9 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="_tlab.html">T-Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_vantagepoint.html">VantagePoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scopus.html">Scopus search results analysis</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Low level API</span></p>
+<p class="caption" role="heading"><span class="caption-text">Low level API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
@@ -127,12 +129,12 @@
 }
 </style>
 <span class="target" id="module-techminer2.top_trending_topics"></span><section id="top-trending-topics">
-<h1>Top Trending Topics<a class="headerlink" href="#top-trending-topics" title="Permalink to this headline"></a></h1>
+<h1>Top Trending Topics<a class="headerlink" href="#top-trending-topics" title="Permalink to this heading"></a></h1>
 <p>Extract and plot the top trending topics for the selected column using the
 average growth rate.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer2/data/&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer2/sphinx/images/top_trending_topics.png&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;data/&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;sphinx/images/top_trending_topics.png&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">top_trending_topics</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">column</span><span class="o">=</span><span class="s2">&quot;author_keywords&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">top_n</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
@@ -150,7 +152,7 @@ average growth rate.</p>
 <span class="go">financial technologies     4.0</span>
 <span class="go">financial inclusion        4.0</span>
 <span class="go">covid-19                   3.0</span>
-<span class="go">regulating                 2.5</span>
+<span class="go">regulation                 2.5</span>
 <span class="go">Name: average_growth_rate, dtype: float64</span>
 </pre></div>
 </div>

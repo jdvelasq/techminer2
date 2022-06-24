@@ -15,6 +15,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
@@ -22,7 +23,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="HBar Chart" href="_hbar_chart.html" />
+    <link rel="next" title="Pie Chart" href="_pie_chart.html" />
     <link rel="prev" title="Dotted Gantt Chart" href="_dotted_gantt_chart.html" /> 
 </head>
 
@@ -44,38 +45,38 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Introduction</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction/getting_started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction/release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction/license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data</span></p>
+<p class="caption" role="heading"><span class="caption-text">Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="import_scopus_files.html">Import Scopus Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="import_references.html">Import References File</a></li>
 <li class="toctree-l1"><a class="reference internal" href="coverage.html">Coverage</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Software comparison</span></p>
+<p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="_bibliometrix.html">Bibliometrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_scientopy.html">ScientoPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_tlab.html">T-Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_vantagepoint.html">VantagePoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scopus.html">Scopus search results analysis</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Low level API</span></p>
+<p class="caption" role="heading"><span class="caption-text">Low level API</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="_api_visualization.html">Visualization API</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="_cleveland_chart.html">Cleveland Chart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bar_plot.html">Bar plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="column_plot.html">Column plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cleveland_plot.html">Cleveland plot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_dotted_gantt_chart.html">Dotted Gantt Chart</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Gantt Chart</a></li>
-<li class="toctree-l2"><a class="reference internal" href="_hbar_chart.html">HBar Chart</a></li>
-<li class="toctree-l2"><a class="reference internal" href="_line_chart.html">Line Chart</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_pie_chart.html">Pie Chart</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_tree_map.html">Tree Map</a></li>
-<li class="toctree-l2"><a class="reference internal" href="_vbar_chart.html">VBar Chart</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_word_cloud.html">World cloud</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_world_map.html">World Map</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bubble_chart.html">Bubble Chart</a></li>
@@ -138,9 +139,9 @@
 }
 </style>
 <span class="target" id="module-techminer2._gantt_chart"></span><section id="gantt-chart">
-<h1>Gantt Chart<a class="headerlink" href="#gantt-chart" title="Permalink to this headline"></a></h1>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer2/data/&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer2/sphinx/images/_gantt_chart.png&quot;</span>
+<h1>Gantt Chart<a class="headerlink" href="#gantt-chart" title="Permalink to this heading"></a></h1>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;data/&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;sphinx/images/_gantt_chart.png&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2.annual_occurrence_matrix</span> <span class="kn">import</span> <span class="n">annual_occurrence_matrix</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">annual_occurrence_matrix</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s1">&#39;author_keywords&#39;</span><span class="p">,</span>  <span class="n">min_occ</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">_gantt_chart</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:blue&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
@@ -154,7 +155,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="_dotted_gantt_chart.html" class="btn btn-neutral float-left" title="Dotted Gantt Chart" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="_hbar_chart.html" class="btn btn-neutral float-right" title="HBar Chart" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="_pie_chart.html" class="btn btn-neutral float-right" title="Pie Chart" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

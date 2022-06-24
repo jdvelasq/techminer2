@@ -15,6 +15,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
@@ -44,27 +45,31 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Introduction</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction/getting_started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction/release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction/license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data</span></p>
+<p class="caption" role="heading"><span class="caption-text">Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="import_scopus_files.html">Import Scopus Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="import_references.html">Import References File</a></li>
 <li class="toctree-l1"><a class="reference internal" href="coverage.html">Coverage</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Software comparison</span></p>
+<p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="_bibliometrix.html">Bibliometrix</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#data">Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#filter">Filter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#dataset">Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#overview">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#sources">Sources</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#authors">Authors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#institutions">Institutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#countries">Countries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#documents">Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#cited-references">Cited References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#words">Words</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="_bibliometrix.html#clustering">Clustering</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="coupling_matrix.html">Coupling Matrix</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Coupling Network / Communities</a></li>
@@ -80,8 +85,9 @@
 <li class="toctree-l1"><a class="reference internal" href="_scientopy.html">ScientoPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_tlab.html">T-Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_vantagepoint.html">VantagePoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scopus.html">Scopus search results analysis</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Low level API</span></p>
+<p class="caption" role="heading"><span class="caption-text">Low level API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
@@ -138,16 +144,16 @@
 }
 </style>
 <span class="target" id="module-techminer2.coupling_network_communities"></span><section id="coupling-network-communities">
-<h1>Coupling Network / Communities<a class="headerlink" href="#coupling-network-communities" title="Permalink to this headline"></a></h1>
+<h1>Coupling Network / Communities<a class="headerlink" href="#coupling-network-communities" title="Permalink to this heading"></a></h1>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer2/data/&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;data/&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">coupling_network_communities</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">column</span><span class="o">=</span><span class="s1">&#39;author_keywords&#39;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">min_occ</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">top_n</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-<span class="go">cluster                                            CLUST_0  ...                            CLUST_3</span>
+<span class="go">cluster                                              CL_00  ...                              CL_03</span>
 <span class="go">rn                                                          ...</span>
 <span class="go">0               Gabor D et al, 2017, NEW POLIT ECON 146:15  ...  Hu Z et al, 2019, SYMMETRY 044:14</span>
 <span class="go">1             Leong C et al, 2017, INT J INF MANAGE 101:16  ...</span>

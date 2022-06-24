@@ -9,7 +9,7 @@ Indicators API
 .. toctree::
     :maxdepth: 1
 
-    annual_indicators 
+    annual_indicators
     annual_occurrence_matrix
     collaboration_indicators
     column_indicators
@@ -17,3 +17,9 @@ Indicators API
     document_indicators
     growth_indicators
     impact_indicators
+
+.. toctree::
+    :maxdepth: 1
+
+    column_dynamics_table
+    column_dynamics_plot

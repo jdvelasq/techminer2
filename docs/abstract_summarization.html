@@ -15,6 +15,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
@@ -44,19 +45,19 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Introduction</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction/getting_started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction/release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction/license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data</span></p>
+<p class="caption" role="heading"><span class="caption-text">Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="import_scopus_files.html">Import Scopus Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="import_references.html">Import References File</a></li>
 <li class="toctree-l1"><a class="reference internal" href="coverage.html">Coverage</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Software comparison</span></p>
+<p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="_bibliometrix.html">Bibliometrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_scientopy.html">ScientoPy</a></li>
@@ -73,8 +74,9 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="_vantagepoint.html">VantagePoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scopus.html">Scopus search results analysis</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Low level API</span></p>
+<p class="caption" role="heading"><span class="caption-text">Low level API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
@@ -131,9 +133,9 @@
 }
 </style>
 <span class="target" id="module-techminer2.abstract_summarization"></span><section id="abstract-summarization">
-<h1>Abstract Summarization<a class="headerlink" href="#abstract-summarization" title="Permalink to this headline"></a></h1>
+<h1>Abstract Summarization<a class="headerlink" href="#abstract-summarization" title="Permalink to this heading"></a></h1>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer2/data/&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;data/&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">abstract_summarization</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">texts</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;fintech&quot;</span><span class="p">,</span> <span class="s2">&quot;blockchain&quot;</span><span class="p">],</span>
 <span class="gp">... </span>    <span class="n">n_phrases</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
@@ -144,24 +146,24 @@
 <span class="go">cryptocurrencies, and BLOCKCHAIN, and the dsai techniques including complex system</span>
 <span class="go">methods, quantitative methods, intelligent interactions, recognition and responses, data</span>
 <span class="go">analytics, deep learning, federated learning, privacy-preserving processing, augmentation,</span>
-<span class="go">optimization, and system intelligence enhancement... From the theoretical point of view,</span>
-<span class="go">our research indicates, that besides key growth driving factors, outlined in existing</span>
+<span class="go">optimization, and system intelligence enhancement... Fourth, the traditional assets, gold</span>
+<span class="go">and oil, as well as modern assets, green bonds, are useful as good hedgers compared with</span>
+<span class="go">other assets because shock transmissions from them to FINTECH, kftx are below 0.1% and,</span>
+<span class="go">more importantly, the total volatility spill-over of all assets in the sample is</span>
+<span class="go">moderately average, accounting for 44.39%... From the theoretical point of view, our</span>
+<span class="go">research indicates, that besides key growth driving factors, outlined in existing</span>
 <span class="go">literature, such as strategy, prerequisites for rapid growth, business model choice,</span>
 <span class="go">international business networks, entrepreneur&#39;s characteristics, product development or</span>
 <span class="go">theoretical frameworks for development, especially within the international market, the</span>
-<span class="go">quality of digital logistics performance of FINTECH companies seem to matter... Internet</span>
-<span class="go">banking, mobile banking, atm,cash deposit machines, instant payment services, online</span>
-<span class="go">trading in stock markets, online funds transfers, e-wallets,wealth management, peer to</span>
-<span class="go">peer lending, BLOCKCHAIN technology are various FINTECH products and services... The most</span>
+<span class="go">quality of digital logistics performance of FINTECH companies seem to matter... The most</span>
 <span class="go">important factors that influence the level of satisfaction when using FINTECH services</span>
 <span class="go">were considered: comfort and ease of use, legal regulations, ease of account opening,</span>
 <span class="go">mobile payments features, crowdfunding options, international money transfers features,</span>
 <span class="go">reduced costs associated with transactions, peer-to-peer lending, insurances options,</span>
-<span class="go">online brokerage, cryptocoins options and exchange options... Fourth, the traditional</span>
-<span class="go">assets, gold and oil, as well as modern assets, green bonds, are useful as good hedgers</span>
-<span class="go">compared with other assets because shock transmissions from them to FINTECH, kftx are</span>
-<span class="go">below 0.1% and, more importantly, the total volatility spill-over of all assets in the</span>
-<span class="go">sample is moderately average, accounting for 44.39%.</span>
+<span class="go">online brokerage, cryptocoins options and exchange options... Internet banking, mobile</span>
+<span class="go">banking, atm,cash deposit machines, instant payment services, online trading in stock</span>
+<span class="go">markets, online funds transfers, e-wallets,wealth management, peer to peer lending,</span>
+<span class="go">BLOCKCHAIN technology are various FINTECH products and services.</span>
 </pre></div>
 </div>
 <dl class="py function">

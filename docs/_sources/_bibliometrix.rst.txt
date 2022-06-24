@@ -13,9 +13,6 @@ tool by users. It should be noted that the functions presented in this section c
 a part of TechMiner's capabilities, and in this sense, Bibliometrix contains only a 
 subset of the analytical capabilities of TechMiner.
 
-
-
-
 Data
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -27,10 +24,10 @@ Filter
 
    .. toctree::
 
-      user_filters 
+      user_filters
 
 
-Dataset
+Overview
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    .. toctree::
@@ -39,10 +36,6 @@ Dataset
       annual_scientific_production
       average_citations_per_year
       three_fields_plot
-
-       
-
-
 
 
 Sources
@@ -55,7 +48,8 @@ Sources
       bradford_law
       core_sources 
       source_local_impact
-      source_dynamics
+      source_dynamics_table
+      source_dynamics_plot
 
 
 
@@ -63,39 +57,43 @@ Sources
 Authors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-   .. raw:: html
-
-      <p style="color:gray">Authors:</p>
-
    .. toctree::
       :maxdepth: 1
 
       most_relevant_authors
       most_local_cited_authors
       authors_production_over_time
+      authors_production_per_year
+      authors_documents
       lotka_law    
       author_local_impact
 
-   .. raw:: html
 
-      <p style="color:gray">Affiliations:</p>
+Institutions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    .. toctree::
       :maxdepth: 1
 
       most_relevant_institutions
+      most_global_cited_institutions
+      institutions_production_over_time
+      institutions_production_per_year
+      institution_local_impact
 
 
-   .. raw:: html
-
-      <p style="color:gray">Countries:</p>
+Countries
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    .. toctree::
       :maxdepth: 1
 
       corresponding_authors_country
       country_scientific_production
+      countries_production_over_time
+      countries_production_per_year
       most_global_cited_countries
+      country_local_impact
 
 
 
@@ -103,20 +101,14 @@ Authors
 Documents 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-   .. raw:: html
-
-      <p style="color:gray">Documents:</p>
-
-
    .. toctree::
       :maxdepth: 1
 
       most_global_cited_documents
       most_local_cited_documents     
 
-   .. raw:: html
-
-      <p style="color:gray">Cited References:</p>
+Cited References
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    .. toctree::
       :maxdepth: 1
@@ -124,9 +116,9 @@ Documents
       most_local_cited_references
       rpys
 
-   .. raw:: html
+Words
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-      <p style="color:gray">Words:</p>
 
    .. toctree::
       :maxdepth: 1
@@ -135,6 +127,8 @@ Documents
       word_cloud
       tree_map
       topic_dynamics
+      word_dynamics_plot
+      word_dynamics_table
       trend_topics
 
 

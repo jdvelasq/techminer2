@@ -15,6 +15,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
@@ -44,19 +45,19 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Introduction</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction/getting_started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction/release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction/license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data</span></p>
+<p class="caption" role="heading"><span class="caption-text">Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="import_scopus_files.html">Import Scopus Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="import_references.html">Import References File</a></li>
 <li class="toctree-l1"><a class="reference internal" href="coverage.html">Coverage</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Software comparison</span></p>
+<p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="_bibliometrix.html">Bibliometrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_scientopy.html">ScientoPy</a></li>
@@ -64,19 +65,17 @@
 <li class="toctree-l2"><a class="reference internal" href="_tlab.html#co-occurrence-analysis">Co-occurrence Analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_tlab.html#thematic-analysis">Thematic Analysis</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="_tlab.html#comparative-analysis">Comparative Analysis</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="_tlab.html#singular-value-decomposition">Singular Value Decomposition</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="co_occurrence_svd_map.html">Co-occurrence SVD Map</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">TF-IDF Matrix / SVD Map</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="co_occurrence_svd_map.html">Co-occurrence SVD Map</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">TF-IDF Matrix / SVD Map</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="_tlab.html#lexical-and-other-tools">Lexical and other tools</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="_vantagepoint.html">VantagePoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scopus.html">Scopus search results analysis</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Low level API</span></p>
+<p class="caption" role="heading"><span class="caption-text">Low level API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
@@ -133,7 +132,7 @@
 }
 </style>
 <span class="target" id="module-techminer2.tf_idf_matrix_svd_map"></span><section id="tf-idf-matrix-svd-map">
-<h1>TF-IDF Matrix / SVD Map<a class="headerlink" href="#tf-idf-matrix-svd-map" title="Permalink to this headline"></a></h1>
+<h1>TF-IDF Matrix / SVD Map<a class="headerlink" href="#tf-idf-matrix-svd-map" title="Permalink to this heading"></a></h1>
 <p>Plots the SVD of the TFIDF matrix (0/1 values).</p>
 <p>The plot is based on the SVD technique used in T-LAB’s comparative analysis.</p>
 <p><strong>Algorithm</strong></p>
@@ -143,8 +142,8 @@
 <li><p>Plot the decomposed matrix.</p></li>
 </ol>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer2/data/&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer2/sphinx/images/tf_idf_matrix_svd_map.png&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;data/&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;sphinx/images/tf_idf_matrix_svd_map.png&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tf_idf_matrix_svd_map</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">column</span><span class="o">=</span><span class="s1">&#39;author_keywords&#39;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">min_occ</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
@@ -161,11 +160,11 @@
 <span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 <span class="go">                            dim0      dim1  ...     dim18     dim19</span>
 <span class="go">author_keywords                             ...</span>
-<span class="go">fintech                 7.152515 -0.424804  ... -0.009826 -0.011054</span>
-<span class="go">financial technologies  0.617614  3.551213  ...  0.020476 -0.060667</span>
-<span class="go">financial inclusion     0.622441  0.156807  ...  0.132777 -0.032816</span>
-<span class="go">block-chain             0.372215  0.365045  ...  0.036942 -0.286799</span>
-<span class="go">innovating              0.355488  0.294079  ...  0.014058 -0.015232</span>
+<span class="go">fintech                 7.351135 -0.401663  ... -0.000113  0.004895</span>
+<span class="go">financial technologies  0.590853  3.559285  ... -0.072427  0.041903</span>
+<span class="go">financial inclusion     0.599857  0.179345  ... -0.045422  0.009677</span>
+<span class="go">blockchain              0.358602  0.375982  ... -0.266282 -0.662902</span>
+<span class="go">bank                    0.247483  0.507004  ... -0.049019 -0.039345</span>
 
 <span class="go">[5 rows x 20 columns]</span>
 </pre></div>

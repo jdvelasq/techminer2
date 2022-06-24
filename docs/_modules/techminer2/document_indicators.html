@@ -14,6 +14,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/clipboard.min.js"></script>
         <script src="../../_static/copybutton.js"></script>
@@ -41,26 +42,27 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Introduction</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction/getting_started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction/release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction/license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data</span></p>
+<p class="caption" role="heading"><span class="caption-text">Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../import_scopus_files.html">Import Scopus Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../import_references.html">Import References File</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../coverage.html">Coverage</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Software comparison</span></p>
+<p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../_bibliometrix.html">Bibliometrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_scientopy.html">ScientoPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_tlab.html">T-Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_vantagepoint.html">VantagePoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scopus.html">Scopus search results analysis</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Low level API</span></p>
+<p class="caption" role="heading"><span class="caption-text">Low level API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../_api_indicators.html">Indicators API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_api_network.html">Network API</a></li>
@@ -97,7 +99,7 @@
 <span class="sd">===============================================================================</span>
 
 <span class="sd">&gt;&gt;&gt; from techminer2 import *</span>
-<span class="sd">&gt;&gt;&gt; directory = &quot;/workspaces/techminer2/data/&quot;</span>
+<span class="sd">&gt;&gt;&gt; directory = &quot;data/&quot;</span>
 <span class="sd">&gt;&gt;&gt; document_indicators(directory=directory).head()</span>
 <span class="sd">                                                    global_citations  ...                          doi</span>
 <span class="sd">document_id                                                           ...                             </span>
@@ -110,47 +112,57 @@
 <span class="sd">[5 rows x 5 columns]</span>
 
 
+<span class="sd">&gt;&gt;&gt; from pprint import pprint</span>
+<span class="sd">&gt;&gt;&gt; pprint(document_indicators(directory=directory).columns.to_list())</span>
+<span class="sd">[&#39;global_citations&#39;,</span>
+<span class="sd"> &#39;local_citations&#39;,</span>
+<span class="sd"> &#39;global_citations_per_year&#39;,</span>
+<span class="sd"> &#39;local_citations_per_year&#39;,</span>
+<span class="sd"> &#39;doi&#39;]</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">.load_filtered_documents</span> <span class="kn">import</span> <span class="n">load_filtered_documents</span>
+<span class="kn">from</span> <span class="nn">._read_records</span> <span class="kn">import</span> <span class="n">read_all_records</span><span class="p">,</span> <span class="n">read_filtered_records</span>
 
 
-<div class="viewcode-block" id="document_indicators"><a class="viewcode-back" href="../../document_indicators.html#techminer2.document_indicators.document_indicators">[docs]</a><span class="k">def</span> <span class="nf">document_indicators</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="s2">&quot;./&quot;</span><span class="p">):</span>
+<div class="viewcode-block" id="document_indicators"><a class="viewcode-back" href="../../document_indicators.html#techminer2.document_indicators.document_indicators">[docs]</a><span class="k">def</span> <span class="nf">document_indicators</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="s2">&quot;./&quot;</span><span class="p">,</span> <span class="n">file_name</span><span class="o">=</span><span class="s2">&quot;documents.csv&quot;</span><span class="p">):</span>
 
-    <span class="n">documents</span> <span class="o">=</span> <span class="n">load_filtered_documents</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">file_name</span> <span class="o">==</span> <span class="s2">&quot;documents.csv&quot;</span><span class="p">:</span>
+        <span class="n">records</span> <span class="o">=</span> <span class="n">read_filtered_records</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">file_name</span> <span class="o">==</span> <span class="s2">&quot;references.csv&quot;</span><span class="p">:</span>
+        <span class="n">records</span> <span class="o">=</span> <span class="n">read_all_records</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span> <span class="n">file_name</span><span class="o">=</span><span class="n">file_name</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;file_name must be &#39;documents.csv&#39; or &#39;references.csv&#39;&quot;</span><span class="p">)</span>
 
-    <span class="n">max_pub_year</span> <span class="o">=</span> <span class="n">documents</span><span class="o">.</span><span class="n">pub_year</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
-
-    <span class="c1"># -----------------------------------------------------------------------------------</span>
-    <span class="n">documents</span> <span class="o">=</span> <span class="n">documents</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span>
-        <span class="n">global_citations_per_year</span><span class="o">=</span><span class="n">documents</span><span class="o">.</span><span class="n">global_citations</span>
-        <span class="o">/</span> <span class="p">(</span><span class="n">max_pub_year</span> <span class="o">-</span> <span class="n">documents</span><span class="o">.</span><span class="n">pub_year</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="p">)</span>
-    <span class="n">documents</span> <span class="o">=</span> <span class="n">documents</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span>
-        <span class="n">global_citations_per_year</span><span class="o">=</span><span class="n">documents</span><span class="o">.</span><span class="n">global_citations_per_year</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-    <span class="p">)</span>
+    <span class="n">max_pub_year</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">pub_year</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 
     <span class="c1"># -----------------------------------------------------------------------------------</span>
-    <span class="n">documents</span> <span class="o">=</span> <span class="n">documents</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span>
-        <span class="n">local_citations_per_year</span><span class="o">=</span><span class="n">documents</span><span class="o">.</span><span class="n">local_citations</span>
-        <span class="o">/</span> <span class="p">(</span><span class="n">max_pub_year</span> <span class="o">-</span> <span class="n">documents</span><span class="o">.</span><span class="n">pub_year</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span>
+        <span class="n">global_citations_per_year</span><span class="o">=</span><span class="n">records</span><span class="o">.</span><span class="n">global_citations</span>
+        <span class="o">/</span> <span class="p">(</span><span class="n">max_pub_year</span> <span class="o">-</span> <span class="n">records</span><span class="o">.</span><span class="n">pub_year</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
     <span class="p">)</span>
-    <span class="n">documents</span> <span class="o">=</span> <span class="n">documents</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span>
-        <span class="n">local_citations_per_year</span><span class="o">=</span><span class="n">documents</span><span class="o">.</span><span class="n">local_citations_per_year</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span>
+        <span class="n">global_citations_per_year</span><span class="o">=</span><span class="n">records</span><span class="o">.</span><span class="n">global_citations_per_year</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
     <span class="p">)</span>
 
     <span class="c1"># -----------------------------------------------------------------------------------</span>
-    <span class="n">documents</span><span class="p">[</span><span class="s2">&quot;global_citations&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">documents</span><span class="o">.</span><span class="n">global_citations</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
-        <span class="nb">int</span><span class="p">,</span> <span class="n">na_action</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span>
+    <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span>
+        <span class="n">local_citations_per_year</span><span class="o">=</span><span class="n">records</span><span class="o">.</span><span class="n">local_citations</span>
+        <span class="o">/</span> <span class="p">(</span><span class="n">max_pub_year</span> <span class="o">-</span> <span class="n">records</span><span class="o">.</span><span class="n">pub_year</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span>
+        <span class="n">local_citations_per_year</span><span class="o">=</span><span class="n">records</span><span class="o">.</span><span class="n">local_citations_per_year</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
     <span class="p">)</span>
 
     <span class="c1"># -----------------------------------------------------------------------------------</span>
-    <span class="n">documents</span> <span class="o">=</span> <span class="n">documents</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;document_id&quot;</span><span class="p">)</span>
-    <span class="n">documents</span> <span class="o">=</span> <span class="n">documents</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;index&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">records</span><span class="p">[</span><span class="s2">&quot;global_citations&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">global_citations</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">na_action</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
 
     <span class="c1"># -----------------------------------------------------------------------------------</span>
-    <span class="n">documents</span> <span class="o">=</span> <span class="n">documents</span><span class="p">[</span>
+    <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;document_id&quot;</span><span class="p">)</span>
+    <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;index&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># -----------------------------------------------------------------------------------</span>
+    <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span>
         <span class="p">[</span>
             <span class="s2">&quot;global_citations&quot;</span><span class="p">,</span>
             <span class="s2">&quot;local_citations&quot;</span><span class="p">,</span>
@@ -160,7 +172,7 @@
         <span class="p">]</span>
     <span class="p">]</span>
 
-    <span class="k">return</span> <span class="n">documents</span></div>
+    <span class="k">return</span> <span class="n">records</span></div>
 </pre></div>
 
            </div>

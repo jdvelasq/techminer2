@@ -14,6 +14,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/clipboard.min.js"></script>
         <script src="../../_static/copybutton.js"></script>
@@ -41,26 +42,27 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Introduction</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction/getting_started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction/release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction/license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data</span></p>
+<p class="caption" role="heading"><span class="caption-text">Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../import_scopus_files.html">Import Scopus Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../import_references.html">Import References File</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../coverage.html">Coverage</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Software comparison</span></p>
+<p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../_bibliometrix.html">Bibliometrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_scientopy.html">ScientoPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_tlab.html">T-Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_vantagepoint.html">VantagePoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scopus.html">Scopus search results analysis</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Low level API</span></p>
+<p class="caption" role="heading"><span class="caption-text">Low level API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../_api_indicators.html">Indicators API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_api_network.html">Network API</a></li>
@@ -110,8 +112,8 @@
 
 
 <span class="sd">&gt;&gt;&gt; from techminer2 import *</span>
-<span class="sd">&gt;&gt;&gt; directory = &quot;/workspaces/techminer2/data/&quot;</span>
-<span class="sd">&gt;&gt;&gt; file_name = &quot;/workspaces/techminer2/sphinx/images/tf_idf_matrix_svd_map.png&quot;</span>
+<span class="sd">&gt;&gt;&gt; directory = &quot;data/&quot;</span>
+<span class="sd">&gt;&gt;&gt; file_name = &quot;sphinx/images/tf_idf_matrix_svd_map.png&quot;</span>
 <span class="sd">&gt;&gt;&gt; tf_idf_matrix_svd_map(</span>
 <span class="sd">...     column=&#39;author_keywords&#39;,</span>
 <span class="sd">...     min_occ=6,</span>
@@ -131,11 +133,11 @@
 <span class="sd">... ).head()</span>
 <span class="sd">                            dim0      dim1  ...     dim18     dim19</span>
 <span class="sd">author_keywords                             ...                    </span>
-<span class="sd">fintech                 7.152515 -0.424804  ... -0.009826 -0.011054</span>
-<span class="sd">financial technologies  0.617614  3.551213  ...  0.020476 -0.060667</span>
-<span class="sd">financial inclusion     0.622441  0.156807  ...  0.132777 -0.032816</span>
-<span class="sd">block-chain             0.372215  0.365045  ...  0.036942 -0.286799</span>
-<span class="sd">innovating              0.355488  0.294079  ...  0.014058 -0.015232</span>
+<span class="sd">fintech                 7.351135 -0.401663  ... -0.000113  0.004895</span>
+<span class="sd">financial technologies  0.590853  3.559285  ... -0.072427  0.041903</span>
+<span class="sd">financial inclusion     0.599857  0.179345  ... -0.045422  0.009677</span>
+<span class="sd">blockchain              0.358602  0.375982  ... -0.266282 -0.662902</span>
+<span class="sd">bank                    0.247483  0.507004  ... -0.049019 -0.039345</span>
 <span class="sd">&lt;BLANKLINE&gt;</span>
 <span class="sd">[5 rows x 20 columns]</span>
 

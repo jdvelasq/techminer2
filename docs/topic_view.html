@@ -15,6 +15,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
@@ -23,7 +24,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Dotted Gantt Chart" href="dotted_gantt_chart.html" />
-    <link rel="prev" title="Create Thesaurus" href="create_thesaurus.html" /> 
+    <link rel="prev" title="Line chart" href="line_chart.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -44,19 +45,19 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Introduction</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction/getting_started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction/release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction/license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data</span></p>
+<p class="caption" role="heading"><span class="caption-text">Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="import_scopus_files.html">Import Scopus Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="import_references.html">Import References File</a></li>
 <li class="toctree-l1"><a class="reference internal" href="coverage.html">Coverage</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Software comparison</span></p>
+<p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="_bibliometrix.html">Bibliometrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_scientopy.html">ScientoPy</a></li>
@@ -65,17 +66,11 @@
 <li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#dataset">Dataset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#search">Search</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#thesaurus">Thesaurus</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="_vantagepoint.html#topic-view">Topic View</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#report">Report</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="_vantagepoint.html#repo">Repo</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Topic View</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cleveland_chart.html">Cleveland Chart (New)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dotted_gantt_chart.html">Dotted Gantt Chart</a></li>
-<li class="toctree-l3"><a class="reference internal" href="gantt_chart.html">Gantt Chart</a></li>
-<li class="toctree-l3"><a class="reference internal" href="hbar_chart.html">Hbar Chart</a></li>
-<li class="toctree-l3"><a class="reference internal" href="line_chart.html">Line Chart</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pie_chart.html">Pie Chart</a></li>
 <li class="toctree-l3"><a class="reference internal" href="timeline_chart.html">Timeline Chart</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tree_map.html">Tree Map</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vbar_chart.html">VBar Chart</a></li>
 <li class="toctree-l3"><a class="reference internal" href="word_cloud.html">Word Cloud</a></li>
 <li class="toctree-l3"><a class="reference internal" href="world_map.html">World map</a></li>
 </ul>
@@ -87,8 +82,9 @@
 <li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#document-term-matrix">Document-Term Matrix</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="scopus.html">Scopus search results analysis</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Low level API</span></p>
+<p class="caption" role="heading"><span class="caption-text">Low level API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
@@ -145,9 +141,9 @@
 }
 </style>
 <span class="target" id="module-techminer2.topic_view"></span><section id="topic-view">
-<h1>Topic View<a class="headerlink" href="#topic-view" title="Permalink to this headline"></a></h1>
+<h1>Topic View<a class="headerlink" href="#topic-view" title="Permalink to this heading"></a></h1>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer2/data/&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;data/&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">topic_view</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="s1">&#39;author_keywords&#39;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">top_n</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
@@ -158,10 +154,10 @@
 <span class="go">fintech                            139              1285              218</span>
 <span class="go">financial technologies              28               225               41</span>
 <span class="go">financial inclusion                 17               339               61</span>
-<span class="go">block-chain                         17               149               22</span>
-<span class="go">innovating                          13               249               46</span>
+<span class="go">blockchain                          17               149               22</span>
+<span class="go">innovation                          13               249               46</span>
 <span class="go">bank                                13               193               23</span>
-<span class="go">regulating                          12                89               10</span>
+<span class="go">regulation                          12                89               10</span>
 <span class="go">financial service                   11               300               43</span>
 <span class="go">crowdfunding                         8               116               18</span>
 <span class="go">peer-to-peer lending                 8                73               11</span>
@@ -169,12 +165,12 @@
 <span class="go">covid-19                             8                36                6</span>
 <span class="go">cryptocurrencies                     8                36                5</span>
 <span class="go">technology                           7               192               31</span>
-<span class="go">start-up                             7               141               28</span>
 <span class="go">finance                              7                52                8</span>
 <span class="go">risk                                 7                15                1</span>
 <span class="go">business model                       6               174               25</span>
 <span class="go">artificial intelligence              6                30                4</span>
 <span class="go">regulatory sandbox                   6                26                7</span>
+<span class="go">financial stability                  6                22                3</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">topic_view</span><span class="p">(</span>
@@ -186,10 +182,10 @@
 <span class="go">                      num_documents  global_citations  local_citations</span>
 <span class="go">author_keywords</span>
 <span class="go">financial inclusion              17               339               61</span>
-<span class="go">block-chain                      17               149               22</span>
-<span class="go">innovating                       13               249               46</span>
+<span class="go">blockchain                       17               149               22</span>
+<span class="go">innovation                       13               249               46</span>
 <span class="go">bank                             13               193               23</span>
-<span class="go">regulating                       12                89               10</span>
+<span class="go">regulation                       12                89               10</span>
 <span class="go">financial service                11               300               43</span>
 <span class="go">crowdfunding                      8               116               18</span>
 <span class="go">peer-to-peer lending              8                73               11</span>
@@ -208,16 +204,16 @@
 <span class="go">                      num_documents  global_citations  local_citations</span>
 <span class="go">author_keywords</span>
 <span class="go">bank                             13               193               23</span>
-<span class="go">block-chain                      17               149               22</span>
+<span class="go">blockchain                       17               149               22</span>
 <span class="go">covid-19                          8                36                6</span>
 <span class="go">crowdfunding                      8               116               18</span>
 <span class="go">cryptocurrencies                  8                36                5</span>
 <span class="go">financial inclusion              17               339               61</span>
 <span class="go">financial innovation              8                44               15</span>
 <span class="go">financial service                11               300               43</span>
-<span class="go">innovating                       13               249               46</span>
+<span class="go">innovation                       13               249               46</span>
 <span class="go">peer-to-peer lending              8                73               11</span>
-<span class="go">regulating                       12                89               10</span>
+<span class="go">regulation                       12                89               10</span>
 </pre></div>
 </div>
 <dl class="py function">
@@ -231,7 +227,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="create_thesaurus.html" class="btn btn-neutral float-left" title="Create Thesaurus" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="line_chart.html" class="btn btn-neutral float-left" title="Line chart" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="dotted_gantt_chart.html" class="btn btn-neutral float-right" title="Dotted Gantt Chart" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

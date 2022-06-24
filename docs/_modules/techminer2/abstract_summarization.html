@@ -14,6 +14,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/clipboard.min.js"></script>
         <script src="../../_static/copybutton.js"></script>
@@ -41,26 +42,27 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Introduction</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction/getting_started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction/release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction/license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data</span></p>
+<p class="caption" role="heading"><span class="caption-text">Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../import_scopus_files.html">Import Scopus Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../import_references.html">Import References File</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../coverage.html">Coverage</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Software comparison</span></p>
+<p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../_bibliometrix.html">Bibliometrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_scientopy.html">ScientoPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_tlab.html">T-Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_vantagepoint.html">VantagePoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scopus.html">Scopus search results analysis</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Low level API</span></p>
+<p class="caption" role="heading"><span class="caption-text">Low level API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../_api_indicators.html">Indicators API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_api_network.html">Network API</a></li>
@@ -97,7 +99,7 @@
 <span class="sd">===============================================================================</span>
 
 <span class="sd">&gt;&gt;&gt; from techminer2 import *</span>
-<span class="sd">&gt;&gt;&gt; directory = &quot;/workspaces/techminer2/data/&quot;</span>
+<span class="sd">&gt;&gt;&gt; directory = &quot;data/&quot;</span>
 <span class="sd">&gt;&gt;&gt; abstract_summarization(</span>
 <span class="sd">...     texts=[&quot;fintech&quot;, &quot;blockchain&quot;],</span>
 <span class="sd">...     n_phrases=5,    </span>
@@ -108,24 +110,24 @@
 <span class="sd">cryptocurrencies, and BLOCKCHAIN, and the dsai techniques including complex system</span>
 <span class="sd">methods, quantitative methods, intelligent interactions, recognition and responses, data</span>
 <span class="sd">analytics, deep learning, federated learning, privacy-preserving processing, augmentation,</span>
-<span class="sd">optimization, and system intelligence enhancement... From the theoretical point of view,</span>
-<span class="sd">our research indicates, that besides key growth driving factors, outlined in existing</span>
+<span class="sd">optimization, and system intelligence enhancement... Fourth, the traditional assets, gold</span>
+<span class="sd">and oil, as well as modern assets, green bonds, are useful as good hedgers compared with</span>
+<span class="sd">other assets because shock transmissions from them to FINTECH, kftx are below 0.1% and,</span>
+<span class="sd">more importantly, the total volatility spill-over of all assets in the sample is</span>
+<span class="sd">moderately average, accounting for 44.39%... From the theoretical point of view, our</span>
+<span class="sd">research indicates, that besides key growth driving factors, outlined in existing</span>
 <span class="sd">literature, such as strategy, prerequisites for rapid growth, business model choice,</span>
 <span class="sd">international business networks, entrepreneur&#39;s characteristics, product development or</span>
 <span class="sd">theoretical frameworks for development, especially within the international market, the</span>
-<span class="sd">quality of digital logistics performance of FINTECH companies seem to matter... Internet</span>
-<span class="sd">banking, mobile banking, atm,cash deposit machines, instant payment services, online</span>
-<span class="sd">trading in stock markets, online funds transfers, e-wallets,wealth management, peer to</span>
-<span class="sd">peer lending, BLOCKCHAIN technology are various FINTECH products and services... The most</span>
+<span class="sd">quality of digital logistics performance of FINTECH companies seem to matter... The most</span>
 <span class="sd">important factors that influence the level of satisfaction when using FINTECH services</span>
 <span class="sd">were considered: comfort and ease of use, legal regulations, ease of account opening,</span>
 <span class="sd">mobile payments features, crowdfunding options, international money transfers features,</span>
 <span class="sd">reduced costs associated with transactions, peer-to-peer lending, insurances options,</span>
-<span class="sd">online brokerage, cryptocoins options and exchange options... Fourth, the traditional</span>
-<span class="sd">assets, gold and oil, as well as modern assets, green bonds, are useful as good hedgers</span>
-<span class="sd">compared with other assets because shock transmissions from them to FINTECH, kftx are</span>
-<span class="sd">below 0.1% and, more importantly, the total volatility spill-over of all assets in the</span>
-<span class="sd">sample is moderately average, accounting for 44.39%.</span>
+<span class="sd">online brokerage, cryptocoins options and exchange options... Internet banking, mobile</span>
+<span class="sd">banking, atm,cash deposit machines, instant payment services, online trading in stock</span>
+<span class="sd">markets, online funds transfers, e-wallets,wealth management, peer to peer lending,</span>
+<span class="sd">BLOCKCHAIN technology are various FINTECH products and services.</span>
 
 
 
@@ -140,6 +142,9 @@
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">nltk.stem</span> <span class="kn">import</span> <span class="n">PorterStemmer</span>
 
+<span class="kn">from</span> <span class="nn">._read_records</span> <span class="kn">import</span> <span class="n">read_filtered_records</span>
+<span class="kn">from</span> <span class="nn">.load_abstracts</span> <span class="kn">import</span> <span class="n">load_abstracts</span>
+
 
 <div class="viewcode-block" id="abstract_summarization"><a class="viewcode-back" href="../../abstract_summarization.html#techminer2.abstract_summarization.abstract_summarization">[docs]</a><span class="k">def</span> <span class="nf">abstract_summarization</span><span class="p">(</span>
     <span class="n">texts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -151,19 +156,18 @@
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">texts</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
         <span class="n">texts</span> <span class="o">=</span> <span class="p">[</span><span class="n">texts</span><span class="p">]</span>
 
-    <span class="n">file_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="s2">&quot;abstracts.csv&quot;</span><span class="p">)</span>
-    <span class="n">abstracts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
-    <span class="n">documents</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="s2">&quot;documents.csv&quot;</span><span class="p">))</span>
+    <span class="n">abstracts</span> <span class="o">=</span> <span class="n">load_abstracts</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
+    <span class="n">documents</span> <span class="o">=</span> <span class="n">read_filtered_records</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
 
     <span class="n">regex</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;\b(&quot;</span> <span class="o">+</span> <span class="s2">&quot;|&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">texts</span><span class="p">)</span> <span class="o">+</span> <span class="sa">r</span><span class="s2">&quot;)\b&quot;</span>
 
-    <span class="n">abstracts</span> <span class="o">=</span> <span class="n">abstracts</span><span class="p">[</span><span class="n">abstracts</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">regex</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)]</span>
-    <span class="n">abstracts</span> <span class="o">=</span> <span class="n">abstracts</span><span class="p">[[</span><span class="s2">&quot;record_no&quot;</span><span class="p">,</span> <span class="s2">&quot;text&quot;</span><span class="p">]]</span>
+    <span class="n">abstracts</span> <span class="o">=</span> <span class="n">abstracts</span><span class="p">[</span><span class="n">abstracts</span><span class="o">.</span><span class="n">phrase</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">regex</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)]</span>
+    <span class="n">abstracts</span> <span class="o">=</span> <span class="n">abstracts</span><span class="p">[[</span><span class="s2">&quot;record_no&quot;</span><span class="p">,</span> <span class="s2">&quot;phrase&quot;</span><span class="p">]]</span>
 
     <span class="c1"># -----------------------------------------------------------------------------------</span>
     <span class="n">porter_stemmer</span> <span class="o">=</span> <span class="n">PorterStemmer</span><span class="p">()</span>
 
-    <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;formatted_text&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">abstracts</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;formatted_text&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">abstracts</span><span class="o">.</span><span class="n">phrase</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
     <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;formatted_text&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;formatted_text&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
         <span class="sa">r</span><span class="s2">&quot;[[0-9]]*&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span>
     <span class="p">)</span>
@@ -203,20 +207,20 @@
     <span class="n">abstracts</span> <span class="o">=</span> <span class="n">abstracts</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;sentence_scores&quot;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
     <span class="n">abstracts</span> <span class="o">=</span> <span class="n">abstracts</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n_phrases</span><span class="p">)</span>
-    <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">abstracts</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
+    <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;phrase&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">abstracts</span><span class="o">.</span><span class="n">phrase</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
 
     <span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">texts</span><span class="p">:</span>
-        <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">text</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
-        <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
+        <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;phrase&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;phrase&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">text</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+        <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;phrase&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;phrase&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
             <span class="n">text</span><span class="o">.</span><span class="n">capitalize</span><span class="p">(),</span> <span class="n">text</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
         <span class="p">)</span>
 
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;abstract_summarization</span><span class="si">{</span><span class="n">sufix</span><span class="si">}</span><span class="s2">.txt&quot;</span><span class="p">),</span> <span class="s2">&quot;w&quot;</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="s2">&quot;reports&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;abstract_summarization</span><span class="si">{</span><span class="n">sufix</span><span class="si">}</span><span class="s2">.txt&quot;</span><span class="p">),</span> <span class="s2">&quot;w&quot;</span>
     <span class="p">)</span> <span class="k">as</span> <span class="n">out_file</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">abstracts</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
             <span class="n">paragraph</span> <span class="o">=</span> <span class="n">textwrap</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span>
-                <span class="n">row</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">],</span>
+                <span class="n">row</span><span class="p">[</span><span class="s2">&quot;phrase&quot;</span><span class="p">],</span>
                 <span class="n">width</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span>
             <span class="p">)</span>
             <span class="n">document_id</span> <span class="o">=</span> <span class="n">documents</span><span class="p">[</span><span class="n">documents</span><span class="o">.</span><span class="n">record_no</span> <span class="o">==</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;record_no&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">document_id</span>
@@ -225,7 +229,7 @@
             <span class="nb">print</span><span class="p">(</span><span class="n">paragraph</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">out_file</span><span class="p">)</span>
             <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">out_file</span><span class="p">)</span>
 
-    <span class="n">summary</span> <span class="o">=</span> <span class="s2">&quot;.. &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">abstracts</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+    <span class="n">summary</span> <span class="o">=</span> <span class="s2">&quot;.. &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">abstracts</span><span class="o">.</span><span class="n">phrase</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 
     <span class="nb">print</span><span class="p">(</span><span class="n">textwrap</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">summary</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">90</span><span class="p">))</span></div>
 

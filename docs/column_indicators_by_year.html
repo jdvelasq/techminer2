@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Column Indicators by Year &mdash; TechMiner2 0.1.0 documentation</title>
+  <title>Column indicators by year &mdash; TechMiner2 0.1.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
@@ -15,6 +15,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
@@ -44,36 +45,39 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Introduction</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction/getting_started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction/release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction/license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data</span></p>
+<p class="caption" role="heading"><span class="caption-text">Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="import_scopus_files.html">Import Scopus Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="import_references.html">Import References File</a></li>
 <li class="toctree-l1"><a class="reference internal" href="coverage.html">Coverage</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Software comparison</span></p>
+<p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="_bibliometrix.html">Bibliometrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_scientopy.html">ScientoPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_tlab.html">T-Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_vantagepoint.html">VantagePoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scopus.html">Scopus search results analysis</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Low level API</span></p>
+<p class="caption" role="heading"><span class="caption-text">Low level API</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="_api_indicators.html">Indicators API</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="annual_indicators.html">Annual Indicators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="annual_occurrence_matrix.html">Annual Occurrence Matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="collaboration_indicators.html">Collaboration Indicators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="column_indicators.html">Column Indicators</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Column Indicators by Year</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Column indicators by year</a></li>
 <li class="toctree-l2"><a class="reference internal" href="document_indicators.html">Document Indicators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="growth_indicators.html">Growth Indicators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="impact_indicators.html">Impact Indicators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="column_dynamics_table.html">Column dynamics table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="column_dynamics_plot.html">Column dynamics plot</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
@@ -95,7 +99,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="_api_indicators.html">Indicators API</a> &raquo;</li>
-      <li>Column Indicators by Year</li>
+      <li>Column indicators by year</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/column_indicators_by_year.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -130,10 +134,15 @@
 }
 </style>
 <span class="target" id="module-techminer2.column_indicators_by_year"></span><section id="column-indicators-by-year">
-<h1>Column Indicators by Year<a class="headerlink" href="#column-indicators-by-year" title="Permalink to this headline"></a></h1>
+<h1>Column indicators by year<a class="headerlink" href="#column-indicators-by-year" title="Permalink to this heading"></a></h1>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer2/data/&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">column_indicators_by_year</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="s1">&#39;authors&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;data/&quot;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">column_indicators_by_year</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s1">&#39;authors&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 <span class="go">                       num_documents  ...  local_citations_per_year</span>
 <span class="go">authors      pub_year                 ...</span>
 <span class="go">Dolata M     2016                  1  ...                     1.167</span>
@@ -152,7 +161,7 @@
 </div>
 <dl class="py function">
 <dt class="sig sig-object py" id="techminer2.column_indicators_by_year.column_indicators_by_year">
-<span class="sig-prename descclassname"><span class="pre">techminer2.column_indicators_by_year.</span></span><span class="sig-name descname"><span class="pre">column_indicators_by_year</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'authors'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer2/column_indicators_by_year.html#column_indicators_by_year"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer2.column_indicators_by_year.column_indicators_by_year" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">techminer2.column_indicators_by_year.</span></span><span class="sig-name descname"><span class="pre">column_indicators_by_year</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'authors'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer2/column_indicators_by_year.html#column_indicators_by_year"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer2.column_indicators_by_year.column_indicators_by_year" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </section>

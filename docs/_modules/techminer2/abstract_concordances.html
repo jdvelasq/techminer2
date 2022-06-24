@@ -14,6 +14,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/clipboard.min.js"></script>
         <script src="../../_static/copybutton.js"></script>
@@ -41,26 +42,27 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Introduction</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction/getting_started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction/release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction/license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data</span></p>
+<p class="caption" role="heading"><span class="caption-text">Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../import_scopus_files.html">Import Scopus Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../import_references.html">Import References File</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../coverage.html">Coverage</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Software comparison</span></p>
+<p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../_bibliometrix.html">Bibliometrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_scientopy.html">ScientoPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_tlab.html">T-Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_vantagepoint.html">VantagePoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scopus.html">Scopus search results analysis</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Low level API</span></p>
+<p class="caption" role="heading"><span class="caption-text">Low level API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../_api_indicators.html">Indicators API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_api_network.html">Network API</a></li>
@@ -94,15 +96,18 @@
   <h1>Source code for techminer2.abstract_concordances</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Abstract Concordances</span>
-<span class="sd">===============================================================================</span>
+<span class="sd">=========================================================================================</span>
 
 <span class="sd">Abstract concordances exploration tool.</span>
 
 
 <span class="sd">&gt;&gt;&gt; from techminer2 import *</span>
-<span class="sd">&gt;&gt;&gt; directory = &quot;/workspaces/techminer2/data/&quot;</span>
-<span class="sd">&gt;&gt;&gt; abstract_concordances(&#39;fintech&#39;, top_n=10, directory=directory)</span>
-<span class="sd">- INFO - Abstract concordances report generated.</span>
+<span class="sd">&gt;&gt;&gt; directory = &quot;data/&quot;</span>
+<span class="sd">&gt;&gt;&gt; abstract_concordances(</span>
+<span class="sd">...     &#39;fintech&#39;,</span>
+<span class="sd">...     top_n=10,</span>
+<span class="sd">...     directory=directory,</span>
+<span class="sd">... )</span>
 <span class="sd">                             The industry overall, and many  FINTECH  start-ups are looking for new pathways to successful bu ...</span>
 <span class="sd">...  able to figure out how to effectively hook up with the  FINTECH  revolution is at stake.</span>
 <span class="sd">                                           We present a new  FINTECH  innovation mapping approach that enables the assessment ...</span>
@@ -116,60 +121,37 @@
 
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">textwrap</span>
-
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-
-<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">logging</span>
+<span class="kn">from</span> <span class="nn">._read_records</span> <span class="kn">import</span> <span class="n">read_filtered_records</span>
+<span class="kn">from</span> <span class="nn">.load_abstracts</span> <span class="kn">import</span> <span class="n">load_abstracts</span>
 
 
-<div class="viewcode-block" id="abstract_concordances"><a class="viewcode-back" href="../../abstract_concordances.html#techminer2.abstract_concordances.abstract_concordances">[docs]</a><span class="k">def</span> <span class="nf">abstract_concordances</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">top_n</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">directory</span><span class="o">=</span><span class="s2">&quot;./&quot;</span><span class="p">):</span>
+<div class="viewcode-block" id="abstract_concordances"><a class="viewcode-back" href="../../abstract_concordances.html#techminer2.abstract_concordances.abstract_concordances">[docs]</a><span class="k">def</span> <span class="nf">abstract_concordances</span><span class="p">(</span>
+    <span class="n">text</span><span class="p">,</span>
+    <span class="n">top_n</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+    <span class="n">directory</span><span class="o">=</span><span class="s2">&quot;./&quot;</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Checks the occurrence contexts of a given text in the abstract&#39;s phrases.&quot;&quot;&quot;</span>
 
-    <span class="c1"># ---&lt; Sort abstracts by importance &gt;------------------------------------------------</span>
-    <span class="n">documents</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="s2">&quot;documents.csv&quot;</span><span class="p">))</span>
-    <span class="n">record_no2citation</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-        <span class="nb">zip</span><span class="p">(</span><span class="n">documents</span><span class="p">[</span><span class="s2">&quot;record_no&quot;</span><span class="p">],</span> <span class="n">documents</span><span class="p">[</span><span class="s2">&quot;global_citations&quot;</span><span class="p">])</span>
-    <span class="p">)</span>
-    <span class="n">abstracts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="s2">&quot;abstracts.csv&quot;</span><span class="p">))</span>
-    <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;citations&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;record_no&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">record_no2citation</span><span class="p">)</span>
+    <span class="n">abstracts</span> <span class="o">=</span> <span class="n">load_abstracts</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
     <span class="n">abstracts</span> <span class="o">=</span> <span class="n">abstracts</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span>
-        <span class="p">[</span><span class="s2">&quot;citations&quot;</span><span class="p">,</span> <span class="s2">&quot;record_no&quot;</span><span class="p">,</span> <span class="s2">&quot;line_no&quot;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">]</span>
+        <span class="p">[</span><span class="s2">&quot;global_citations&quot;</span><span class="p">,</span> <span class="s2">&quot;record_no&quot;</span><span class="p">,</span> <span class="s2">&quot;line_no&quot;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">]</span>
     <span class="p">)</span>
+    <span class="n">abstracts</span> <span class="o">=</span> <span class="n">_select_abstracts</span><span class="p">(</span><span class="n">abstracts</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+    <span class="n">abstracts</span> <span class="o">=</span> <span class="n">abstracts</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">top_n</span><span class="p">)</span>
+    <span class="n">contexts</span> <span class="o">=</span> <span class="n">_extract_contexts</span><span class="p">(</span><span class="n">abstracts</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+    <span class="n">_print_concordances</span><span class="p">(</span><span class="n">contexts</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span></div>
 
-    <span class="c1"># ---&lt; Selects the abstracts &gt;-------------------------------------------------------</span>
-    <span class="n">regex</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;\b&quot;</span> <span class="o">+</span> <span class="n">text</span> <span class="o">+</span> <span class="sa">r</span><span class="s2">&quot;\b&quot;</span>
-    <span class="n">abstracts</span> <span class="o">=</span> <span class="n">abstracts</span><span class="p">[</span><span class="n">abstracts</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">regex</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)]</span>
-    <span class="n">abstracts</span> <span class="o">=</span> <span class="n">abstracts</span><span class="p">[[</span><span class="s2">&quot;record_no&quot;</span><span class="p">,</span> <span class="s2">&quot;text&quot;</span><span class="p">]]</span>
-    <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
-    <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
-        <span class="sa">r</span><span class="s2">&quot;\b&quot;</span> <span class="o">+</span> <span class="n">text</span> <span class="o">+</span> <span class="sa">r</span><span class="s2">&quot;\b&quot;</span><span class="p">,</span> <span class="n">text</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span>
-    <span class="p">)</span>
-    <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
-        <span class="sa">r</span><span class="s2">&quot;\b&quot;</span> <span class="o">+</span> <span class="n">text</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span> <span class="o">+</span> <span class="sa">r</span><span class="s2">&quot;\b&quot;</span><span class="p">,</span> <span class="n">text</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span>
-    <span class="p">)</span>
 
-    <span class="c1"># ---&lt; Writes the report &gt;-----------------------------------------------------------</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="s2">&quot;abstract_concordantes.txt&quot;</span><span class="p">),</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">out_file</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">abstracts</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+<span class="k">def</span> <span class="nf">_print_concordances</span><span class="p">(</span><span class="n">contexts</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Prints the report.&quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">contexts</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;left_context&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">&gt;60</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">text</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;right_context&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-            <span class="n">paragraph</span> <span class="o">=</span> <span class="n">textwrap</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span>
-                <span class="n">row</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">],</span>
-                <span class="n">width</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span>
-            <span class="p">)</span>
-            <span class="n">document_id</span> <span class="o">=</span> <span class="n">documents</span><span class="p">[</span>
-                <span class="n">documents</span><span class="o">.</span><span class="n">record_no</span> <span class="o">==</span> <span class="n">row</span><span class="o">.</span><span class="n">record_no</span>
-            <span class="p">]</span><span class="o">.</span><span class="n">document_id</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;*** &quot;</span> <span class="o">+</span> <span class="n">document_id</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">out_file</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">paragraph</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">out_file</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">out_file</span><span class="p">)</span>
-    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Abstract concordances report generated.&quot;</span><span class="p">)</span>
-
-    <span class="c1"># ---&lt; Display results &gt;-------------------------------------------------------------</span>
+<span class="k">def</span> <span class="nf">_extract_contexts</span><span class="p">(</span><span class="n">abstracts</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
     <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
     <span class="n">regex</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;\b&quot;</span> <span class="o">+</span> <span class="n">text</span> <span class="o">+</span> <span class="sa">r</span><span class="s2">&quot;\b&quot;</span>
-    <span class="n">contexts</span> <span class="o">=</span> <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span>
+    <span class="n">contexts</span> <span class="o">=</span> <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;phrase&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span>
         <span class="sa">r</span><span class="s2">&quot;(?P&lt;left_context&gt;[\s \S]*)&quot;</span> <span class="o">+</span> <span class="n">regex</span> <span class="o">+</span> <span class="sa">r</span><span class="s2">&quot;(?P&lt;right_context&gt;[\s \S]*)&quot;</span>
     <span class="p">)</span>
 
@@ -181,14 +163,23 @@
     <span class="n">contexts</span><span class="p">[</span><span class="s2">&quot;right_context&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">contexts</span><span class="p">[</span><span class="s2">&quot;right_context&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
         <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[:</span><span class="mi">56</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot; ...&quot;</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">60</span> <span class="k">else</span> <span class="n">x</span>
     <span class="p">)</span>
-    <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">contexts</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">top_n</span><span class="p">)</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
-        <span class="nb">print</span><span class="p">(</span>
-            <span class="s2">&quot;</span><span class="si">{:&gt;60s}</span><span class="s2"> </span><span class="si">{:s}</span><span class="s2"> </span><span class="si">{:s}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                <span class="n">row</span><span class="p">[</span><span class="s2">&quot;left_context&quot;</span><span class="p">],</span>
-                <span class="n">text</span><span class="p">,</span>
-                <span class="n">row</span><span class="p">[</span><span class="s2">&quot;right_context&quot;</span><span class="p">],</span>
-            <span class="p">)</span>
-        <span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">contexts</span>
+
+
+<span class="k">def</span> <span class="nf">_select_abstracts</span><span class="p">(</span><span class="n">abstracts</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Selects the abstracts.&quot;&quot;&quot;</span>
+
+    <span class="n">regex</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;\b&quot;</span> <span class="o">+</span> <span class="n">text</span> <span class="o">+</span> <span class="sa">r</span><span class="s2">&quot;\b&quot;</span>
+    <span class="n">abstracts</span> <span class="o">=</span> <span class="n">abstracts</span><span class="p">[</span><span class="n">abstracts</span><span class="o">.</span><span class="n">phrase</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">regex</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)]</span>
+    <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;phrase&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;phrase&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
+    <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;phrase&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;phrase&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
+        <span class="sa">r</span><span class="s2">&quot;\b&quot;</span> <span class="o">+</span> <span class="n">text</span> <span class="o">+</span> <span class="sa">r</span><span class="s2">&quot;\b&quot;</span><span class="p">,</span> <span class="n">text</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
+    <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;phrase&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;phrase&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
+        <span class="sa">r</span><span class="s2">&quot;\b&quot;</span> <span class="o">+</span> <span class="n">text</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span> <span class="o">+</span> <span class="sa">r</span><span class="s2">&quot;\b&quot;</span><span class="p">,</span> <span class="n">text</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">abstracts</span>
 </pre></div>
 
            </div>

@@ -15,6 +15,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
@@ -22,8 +23,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Line Chart" href="line_chart.html" />
-    <link rel="prev" title="Dotted Gantt Chart" href="dotted_gantt_chart.html" /> 
+    <link rel="next" title="Line chart" href="line_chart.html" />
+    <link rel="prev" title="Circle Chart" href="circle_chart.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -44,19 +45,19 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Introduction</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction/getting_started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction/release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction/license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data</span></p>
+<p class="caption" role="heading"><span class="caption-text">Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="import_scopus_files.html">Import Scopus Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="import_references.html">Import References File</a></li>
 <li class="toctree-l1"><a class="reference internal" href="coverage.html">Coverage</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Software comparison</span></p>
+<p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="_bibliometrix.html">Bibliometrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_scientopy.html">ScientoPy</a></li>
@@ -65,21 +66,17 @@
 <li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#dataset">Dataset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#search">Search</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#thesaurus">Thesaurus</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="_vantagepoint.html#topic-view">Topic View</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="topic_view.html">Topic View</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cleveland_chart.html">Cleveland Chart (New)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="dotted_gantt_chart.html">Dotted Gantt Chart</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="_vantagepoint.html#report">Report</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="bar_chart.html">Bar Chart</a></li>
+<li class="toctree-l3"><a class="reference internal" href="column_chart.html">Column Chart</a></li>
+<li class="toctree-l3"><a class="reference internal" href="circle_chart.html">Circle Chart</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cleveland_chart.html">Cleveland Chart</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Gantt Chart</a></li>
-<li class="toctree-l3"><a class="reference internal" href="hbar_chart.html">Hbar Chart</a></li>
-<li class="toctree-l3"><a class="reference internal" href="line_chart.html">Line Chart</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pie_chart.html">Pie Chart</a></li>
-<li class="toctree-l3"><a class="reference internal" href="timeline_chart.html">Timeline Chart</a></li>
+<li class="toctree-l3"><a class="reference internal" href="line_chart.html">Line chart</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tree_map.html">Tree Map</a></li>
-<li class="toctree-l3"><a class="reference internal" href="vbar_chart.html">VBar Chart</a></li>
-<li class="toctree-l3"><a class="reference internal" href="word_cloud.html">Word Cloud</a></li>
-<li class="toctree-l3"><a class="reference internal" href="world_map.html">World map</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#repo">Repo</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#co-occurrence-matrix">Co-occurrence Matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#occurrence-matrix">Occurrence Matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#correlation-analysis">Correlation Analysis</a></li>
@@ -87,8 +84,9 @@
 <li class="toctree-l2"><a class="reference internal" href="_vantagepoint.html#document-term-matrix">Document-Term Matrix</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="scopus.html">Scopus search results analysis</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Low level API</span></p>
+<p class="caption" role="heading"><span class="caption-text">Low level API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
@@ -145,36 +143,21 @@
 }
 </style>
 <span class="target" id="module-techminer2.gantt_chart"></span><section id="gantt-chart">
-<h1>Gantt Chart<a class="headerlink" href="#gantt-chart" title="Permalink to this headline"></a></h1>
+<h1>Gantt Chart<a class="headerlink" href="#gantt-chart" title="Permalink to this heading"></a></h1>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer2/data/&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer2/sphinx/images/gantt_chart.png&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;data/&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;sphinx/images/gantt_chart.png&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">gantt_chart</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">column</span><span class="o">=</span><span class="s1">&#39;author_keywords&#39;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">top_n</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
-<span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+<span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">write_image</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/gantt_chart.png"><img alt="_images/gantt_chart.png" class="align-center" src="_images/gantt_chart.png" style="width: 700px;" /></a>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">gantt_chart</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">column</span><span class="o">=</span><span class="s1">&#39;author_keywords&#39;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">top_n</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">plot</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-<span class="go">pub_year                2016  2017  2018  2019  2020  2021</span>
-<span class="go">author_keywords</span>
-<span class="go">fintech                    4     6    16    16    38    59</span>
-<span class="go">financial technologies     1     0     6     4     5    12</span>
-<span class="go">financial inclusion        0     2     0     2     3    10</span>
-<span class="go">block-chain                0     2     3     4     2     6</span>
-<span class="go">innovating                 2     1     3     3     3     1</span>
-</pre></div>
-</div>
 <dl class="py function">
 <dt class="sig sig-object py" id="techminer2.gantt_chart.gantt_chart">
-<span class="sig-prename descclassname"><span class="pre">techminer2.gantt_chart.</span></span><span class="sig-name descname"><span class="pre">gantt_chart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'num_documents'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_occ</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_occ</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_values</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'tab:blue'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(6,</span> <span class="pre">6)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer2/gantt_chart.html#gantt_chart"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer2.gantt_chart.gantt_chart" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">techminer2.gantt_chart.</span></span><span class="sig-name descname"><span class="pre">gantt_chart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'author_keywords'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer2/gantt_chart.html#gantt_chart"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer2.gantt_chart.gantt_chart" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </section>
@@ -183,8 +166,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="dotted_gantt_chart.html" class="btn btn-neutral float-left" title="Dotted Gantt Chart" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="line_chart.html" class="btn btn-neutral float-right" title="Line Chart" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="circle_chart.html" class="btn btn-neutral float-left" title="Circle Chart" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="line_chart.html" class="btn btn-neutral float-right" title="Line chart" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

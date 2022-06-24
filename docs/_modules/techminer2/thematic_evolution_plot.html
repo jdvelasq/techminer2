@@ -14,6 +14,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/clipboard.min.js"></script>
         <script src="../../_static/copybutton.js"></script>
@@ -41,26 +42,27 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Introduction</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction/getting_started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction/release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction/license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data</span></p>
+<p class="caption" role="heading"><span class="caption-text">Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../import_scopus_files.html">Import Scopus Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../import_references.html">Import References File</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../coverage.html">Coverage</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Software comparison</span></p>
+<p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../_bibliometrix.html">Bibliometrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_scientopy.html">ScientoPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_tlab.html">T-Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_vantagepoint.html">VantagePoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scopus.html">Scopus search results analysis</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Low level API</span></p>
+<p class="caption" role="heading"><span class="caption-text">Low level API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../_api_indicators.html">Indicators API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_api_network.html">Network API</a></li>
@@ -97,8 +99,8 @@
 <span class="sd">===============================================================================</span>
 
 <span class="sd">&gt;&gt;&gt; from techminer2 import *</span>
-<span class="sd">&gt;&gt;&gt; directory = &quot;/workspaces/techminer2/data/&quot;</span>
-<span class="sd">&gt;&gt;&gt; file_name = &quot;/workspaces/techminer2/sphinx/images/thematic_evolution_plot.png&quot;</span>
+<span class="sd">&gt;&gt;&gt; directory = &quot;data/&quot;</span>
+<span class="sd">&gt;&gt;&gt; file_name = &quot;sphinx/images/thematic_evolution_plot.png&quot;</span>
 
 <span class="sd">&gt;&gt;&gt; user_filters(directory=directory, quiet=True, first_year=2016, last_year=2018)</span>
 <span class="sd">&gt;&gt;&gt; ind_2016_2018 = thematic_map_indicators(&#39;author_keywords&#39;, min_occ=3, directory=directory)</span>
@@ -106,14 +108,15 @@
 <span class="sd">...     &#39;author_keywords&#39;,</span>
 <span class="sd">...     min_occ=3,</span>
 <span class="sd">...     directory=directory,</span>
-<span class="sd">... )</span>
-<span class="sd">cluster                        CLUST_0             CLUST_1</span>
+<span class="sd">... ).head()</span>
+<span class="sd">cluster                          CL_00               CL_01</span>
 <span class="sd">rn                                                        </span>
-<span class="sd">0                       fintech 26:797   innovating 06:222</span>
+<span class="sd">0                       fintech 26:797   innovation 06:222</span>
 <span class="sd">1        financial technologies 07:109   technology 03:156</span>
-<span class="sd">2             financial service 06:288  retail bank 03:053</span>
-<span class="sd">3                   block-chain 05:099         bank 03:147</span>
+<span class="sd">2             financial service 06:288         bank 03:147</span>
+<span class="sd">3                    blockchain 05:099  retail bank 03:053</span>
 <span class="sd">4                business model 04:172                    </span>
+
 
 <span class="sd">&gt;&gt;&gt; user_filters(directory=directory, quiet=True, first_year=2019, last_year=2020)</span>
 <span class="sd">&gt;&gt;&gt; ind_2019_2020 = thematic_map_indicators(&#39;author_keywords&#39;, min_occ=3, directory=directory)</span>
@@ -121,17 +124,16 @@
 <span class="sd">...     &#39;author_keywords&#39;,</span>
 <span class="sd">...     min_occ=3,</span>
 <span class="sd">...     directory=directory,</span>
-<span class="sd">... )</span>
-<span class="sd">cluster                         CLUST_0  ...                  CLUST_3</span>
+<span class="sd">... ).head()</span>
+<span class="sd">cluster                           CL_00  ...                    CL_03</span>
 <span class="sd">rn                                       ...                         </span>
-<span class="sd">0                        fintech 54:391  ...       block-chain 06:041</span>
-<span class="sd">1                     innovating 06:027  ...  cryptocurrencies 04:034</span>
+<span class="sd">0                        fintech 54:391  ...        blockchain 06:041</span>
+<span class="sd">1                     innovation 06:027  ...  cryptocurrencies 04:034</span>
 <span class="sd">2           financial innovation 05:027  ...                         </span>
 <span class="sd">3                venture capital 03:024  ...                         </span>
-<span class="sd">4             regulatory sandbox 03:015  ...                         </span>
-<span class="sd">5        artificial intelligence 03:021  ...                         </span>
+<span class="sd">4        artificial intelligence 03:021  ...                         </span>
 <span class="sd">&lt;BLANKLINE&gt;</span>
-<span class="sd">[6 rows x 4 columns]</span>
+<span class="sd">[5 rows x 4 columns]</span>
 
 <span class="sd">&gt;&gt;&gt; user_filters(directory=directory, quiet=True, first_year=2021, last_year=2021)</span>
 <span class="sd">&gt;&gt;&gt; ind_2021_2021 = thematic_map_indicators(&#39;author_keywords&#39;, min_occ=3, directory=directory)</span>
@@ -139,19 +141,16 @@
 <span class="sd">...     &#39;author_keywords&#39;,</span>
 <span class="sd">...     min_occ=3,</span>
 <span class="sd">...     directory=directory,</span>
-<span class="sd">... )</span>
-<span class="sd">cluster                              CLUST_0  ...                  CLUST_5</span>
+<span class="sd">... ).head()</span>
+<span class="sd">cluster                                CL_00  ...                    CL_04</span>
 <span class="sd">rn                                            ...                         </span>
 <span class="sd">0                              fintech 59:97  ...     perceived risk 03:01</span>
 <span class="sd">1                  financial inclusion 10:14  ...  perceived benefit 03:00</span>
-<span class="sd">2        sustainable development goals 03:04  ...                         </span>
-<span class="sd">3                              regtech 03:00  ...                         </span>
-<span class="sd">4                        green finance 03:05  ...                         </span>
-<span class="sd">5                  financial stability 03:04  ...                         </span>
-<span class="sd">6                         crowdfunding 03:01  ...                         </span>
-<span class="sd">7                                china 03:06  ...                         </span>
+<span class="sd">2                                china 03:06  ...                         </span>
+<span class="sd">3                        green finance 03:05  ...                         </span>
+<span class="sd">4        sustainable development goals 03:04  ...                         </span>
 <span class="sd">&lt;BLANKLINE&gt;</span>
-<span class="sd">[8 rows x 6 columns]</span>
+<span class="sd">[5 rows x 5 columns]</span>
 
 <span class="sd">&gt;&gt;&gt; thematic_evolution_plot(</span>
 <span class="sd">...     indicators=[ind_2016_2018, ind_2019_2020, ind_2021_2021],</span>

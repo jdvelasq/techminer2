@@ -13,7 +13,7 @@ based on the type of plots.
    .. toctree::
       :maxdepth: 1
 
-      hbar_chart
+      bar_chart
       timeline_chart
       top_topics
       top_trending_topics

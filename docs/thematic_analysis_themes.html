@@ -15,6 +15,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
@@ -44,32 +45,32 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Introduction</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction/getting_started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction/release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction/license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data</span></p>
+<p class="caption" role="heading"><span class="caption-text">Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="import_scopus_files.html">Import Scopus Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="import_references.html">Import References File</a></li>
 <li class="toctree-l1"><a class="reference internal" href="coverage.html">Coverage</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Software comparison</span></p>
+<p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="_bibliometrix.html">Bibliometrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_scientopy.html">ScientoPy</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="_tlab.html">T-Lab</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="_tlab.html#co-occurrence-analysis">Co-occurrence Analysis</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="_tlab.html#thematic-analysis">Thematic Analysis</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="_tlab.html#thematic-analysis-of-elementary-contexts">Thematic Analysis of Elementary Contexts</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="thematic_analysis_map.html">Thematic Analysis / Map</a></li>
-<li class="toctree-l4"><a class="reference internal" href="thematic_analysis_partitions.html">Thematic Analysis / Partitions</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">Thematic Analysis / Themes</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="_tlab.html#modeling-of-emergent-themes">Modeling of Emergent Themes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="thematic_analysis_map.html">Thematic Analysis / Map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="thematic_analysis_partitions.html">Thematic Analysis / Partitions</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Thematic Analysis / Themes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="emergent_themes_lda_map.html">Emergent Themes LDA / MAP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="emergent_themes_lda_themes.html">Emergent Themes LDA / Themes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="emergent_themes_nmf_map.html">Emergent Themes NMF / Map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="emergent_themes_nmf_themes.html">Emergent Themes NMF / Themes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="_tlab.html#comparative-analysis">Comparative Analysis</a></li>
@@ -77,8 +78,9 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="_vantagepoint.html">VantagePoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scopus.html">Scopus search results analysis</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Low level API</span></p>
+<p class="caption" role="heading"><span class="caption-text">Low level API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
@@ -135,9 +137,9 @@
 }
 </style>
 <span class="target" id="module-techminer2.thematic_analysis_themes"></span><section id="thematic-analysis-themes">
-<h1>Thematic Analysis / Themes<a class="headerlink" href="#thematic-analysis-themes" title="Permalink to this headline"></a></h1>
+<h1>Thematic Analysis / Themes<a class="headerlink" href="#thematic-analysis-themes" title="Permalink to this heading"></a></h1>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer2/data/&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;data/&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">thematic_analysis_themes</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">column</span><span class="o">=</span><span class="s2">&quot;author_keywords&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">min_occ</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
@@ -151,12 +153,12 @@
 <span class="gp">... </span>    <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-<span class="go">                     CL_0  ...            CL_5</span>
-<span class="go">0                 fintech  ...  perceived risk</span>
-<span class="go">1  financial technologies  ...           trust</span>
-<span class="go">2                    bank  ...         fintech</span>
-<span class="go">3              innovating  ...</span>
-<span class="go">4       financial service  ...</span>
+<span class="go">                     CL_0                    CL_1  ...     CL_4      CL_5</span>
+<span class="go">0                 fintech  financial technologies  ...  fintech  covid-19</span>
+<span class="go">1  financial technologies    peer-to-peer lending  ...            fintech</span>
+<span class="go">2                    bank                 fintech  ...            bitcoin</span>
+<span class="go">3              innovation              regulation  ...</span>
+<span class="go">4       financial service                          ...</span>
 
 <span class="go">[5 rows x 6 columns]</span>
 </pre></div>

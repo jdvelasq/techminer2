@@ -14,6 +14,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
@@ -44,26 +45,27 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Introduction</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction/getting_started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction/release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction/license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data</span></p>
+<p class="caption" role="heading"><span class="caption-text">Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="import_scopus_files.html">Import Scopus Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="import_references.html">Import References File</a></li>
 <li class="toctree-l1"><a class="reference internal" href="coverage.html">Coverage</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Software comparison</span></p>
+<p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="_bibliometrix.html">Bibliometrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_scientopy.html">ScientoPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_tlab.html">T-Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_vantagepoint.html">VantagePoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scopus.html">Scopus search results analysis</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Low level API</span></p>
+<p class="caption" role="heading"><span class="caption-text">Low level API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
@@ -113,11 +115,6 @@
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
-       <a href="_cleveland_chart.html#module-techminer2._cleveland_chart"><code class="xref">techminer2._cleveland_chart</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
        <a href="_dotted_gantt_chart.html#module-techminer2._dotted_gantt_chart"><code class="xref">techminer2._dotted_gantt_chart</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
@@ -128,27 +125,12 @@
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
-       <a href="_hbar_chart.html#module-techminer2._hbar_chart"><code class="xref">techminer2._hbar_chart</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="_line_chart.html#module-techminer2._line_chart"><code class="xref">techminer2._line_chart</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
        <a href="_pie_chart.html#module-techminer2._pie_chart"><code class="xref">techminer2._pie_chart</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
        <a href="_tree_map.html#module-techminer2._tree_map"><code class="xref">techminer2._tree_map</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
-       <a href="_vbar_chart.html#module-techminer2._vbar_chart"><code class="xref">techminer2._vbar_chart</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
@@ -203,7 +185,17 @@
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
+       <a href="authors_documents.html#module-techminer2.authors_documents"><code class="xref">techminer2.authors_documents</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
        <a href="authors_production_over_time.html#module-techminer2.authors_production_over_time"><code class="xref">techminer2.authors_production_over_time</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="authors_production_per_year.html#module-techminer2.authors_production_per_year"><code class="xref">techminer2.authors_production_per_year</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
@@ -228,12 +220,27 @@
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
+       <a href="bar_chart.html#module-techminer2.bar_chart"><code class="xref">techminer2.bar_chart</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="bar_plot.html#module-techminer2.bar_plot"><code class="xref">techminer2.bar_plot</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
        <a href="bradford_law.html#module-techminer2.bradford_law"><code class="xref">techminer2.bradford_law</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
        <a href="bubble_chart.html#module-techminer2.bubble_chart"><code class="xref">techminer2.bubble_chart</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="circle_chart.html#module-techminer2.circle_chart"><code class="xref">techminer2.circle_chart</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
@@ -249,6 +256,11 @@
        <td></td>
        <td>&#160;&#160;&#160;
        <a href="cleveland_chart.html#module-techminer2.cleveland_chart"><code class="xref">techminer2.cleveland_chart</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="cleveland_plot.html#module-techminer2.cleveland_plot"><code class="xref">techminer2.cleveland_plot</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
@@ -383,12 +395,32 @@
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
+       <a href="column_chart.html#module-techminer2.column_chart"><code class="xref">techminer2.column_chart</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="column_dynamics_plot.html#module-techminer2.column_dynamics_plot"><code class="xref">techminer2.column_dynamics_plot</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="column_dynamics_table.html#module-techminer2.column_dynamics_table"><code class="xref">techminer2.column_dynamics_table</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
        <a href="column_indicators.html#module-techminer2.column_indicators"><code class="xref">techminer2.column_indicators</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
        <a href="column_indicators_by_year.html#module-techminer2.column_indicators_by_year"><code class="xref">techminer2.column_indicators_by_year</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="column_plot.html#module-techminer2.column_plot"><code class="xref">techminer2.column_plot</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
@@ -404,6 +436,21 @@
        <td></td>
        <td>&#160;&#160;&#160;
        <a href="corresponding_authors_country.html#module-techminer2.corresponding_authors_country"><code class="xref">techminer2.corresponding_authors_country</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="countries_production_over_time.html#module-techminer2.countries_production_over_time"><code class="xref">techminer2.countries_production_over_time</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="countries_production_per_year.html#module-techminer2.countries_production_per_year"><code class="xref">techminer2.countries_production_per_year</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="country_local_impact.html#module-techminer2.country_local_impact"><code class="xref">techminer2.country_local_impact</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
@@ -464,6 +511,41 @@
        <td></td>
        <td>&#160;&#160;&#160;
        <a href="document_viewer.html#module-techminer2.document_viewer"><code class="xref">techminer2.document_viewer</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="documents_by_affiliation.html#module-techminer2.documents_by_affiliation"><code class="xref">techminer2.documents_by_affiliation</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="documents_by_author.html#module-techminer2.documents_by_author"><code class="xref">techminer2.documents_by_author</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="documents_by_country.html#module-techminer2.documents_by_country"><code class="xref">techminer2.documents_by_country</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="documents_by_funding_sponsor.html#module-techminer2.documents_by_funding_sponsor"><code class="xref">techminer2.documents_by_funding_sponsor</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="documents_by_type.html#module-techminer2.documents_by_type"><code class="xref">techminer2.documents_by_type</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="documents_by_year.html#module-techminer2.documents_by_year"><code class="xref">techminer2.documents_by_year</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="documents_per_year_by_source.html#module-techminer2.documents_per_year_by_source"><code class="xref">techminer2.documents_per_year_by_source</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
@@ -558,11 +640,6 @@
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
-       <a href="hbar_chart.html#module-techminer2.hbar_chart"><code class="xref">techminer2.hbar_chart</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
        <a href="heat_map.html#module-techminer2.heat_map"><code class="xref">techminer2.heat_map</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
@@ -578,7 +655,22 @@
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
-       <a href="import_scopus_file.html#module-techminer2.import_scopus_file"><code class="xref">techminer2.import_scopus_file</code></a></td><td>
+       <a href="import_scopus_files.html#module-techminer2.import_scopus_files"><code class="xref">techminer2.import_scopus_files</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="institution_local_impact.html#module-techminer2.institution_local_impact"><code class="xref">techminer2.institution_local_impact</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="institutions_production_over_time.html#module-techminer2.institutions_production_over_time"><code class="xref">techminer2.institutions_production_over_time</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="institutions_production_per_year.html#module-techminer2.institutions_production_per_year"><code class="xref">techminer2.institutions_production_per_year</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
@@ -634,6 +726,11 @@
        <td></td>
        <td>&#160;&#160;&#160;
        <a href="most_global_cited_documents.html#module-techminer2.most_global_cited_documents"><code class="xref">techminer2.most_global_cited_documents</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="most_global_cited_institutions.html#module-techminer2.most_global_cited_institutions"><code class="xref">techminer2.most_global_cited_institutions</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
@@ -728,17 +825,17 @@
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
-       <a href="pie_chart.html#module-techminer2.pie_chart"><code class="xref">techminer2.pie_chart</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
        <a href="rpys.html#module-techminer2.rpys"><code class="xref">techminer2.rpys</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
-       <a href="source_dynamics.html#module-techminer2.source_dynamics"><code class="xref">techminer2.source_dynamics</code></a></td><td>
+       <a href="source_dynamics_plot.html#module-techminer2.source_dynamics_plot"><code class="xref">techminer2.source_dynamics_plot</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="source_dynamics_table.html#module-techminer2.source_dynamics_table"><code class="xref">techminer2.source_dynamics_table</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
@@ -858,11 +955,6 @@
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
-       <a href="topic_dynamics.html#module-techminer2.topic_dynamics"><code class="xref">techminer2.topic_dynamics</code></a></td><td>
-       <em></em></td></tr>
-     <tr class="cg-1">
-       <td></td>
-       <td>&#160;&#160;&#160;
        <a href="topic_view.html#module-techminer2.topic_view"><code class="xref">techminer2.topic_view</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
@@ -893,12 +985,17 @@
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
-       <a href="vbar_chart.html#module-techminer2.vbar_chart"><code class="xref">techminer2.vbar_chart</code></a></td><td>
+       <a href="word_cloud.html#module-techminer2.word_cloud"><code class="xref">techminer2.word_cloud</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
-       <a href="word_cloud.html#module-techminer2.word_cloud"><code class="xref">techminer2.word_cloud</code></a></td><td>
+       <a href="word_dynamics_plot.html#module-techminer2.word_dynamics_plot"><code class="xref">techminer2.word_dynamics_plot</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="word_dynamics_table.html#module-techminer2.word_dynamics_table"><code class="xref">techminer2.word_dynamics_table</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>

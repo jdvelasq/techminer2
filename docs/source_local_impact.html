@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Source Local Impact &mdash; TechMiner2 0.1.0 documentation</title>
+  <title>Source local impact &mdash; TechMiner2 0.1.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
@@ -15,6 +15,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
@@ -22,7 +23,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Source Dynamics" href="source_dynamics.html" />
+    <link rel="next" title="Source dynamics table" href="source_dynamics_table.html" />
     <link rel="prev" title="Core Sources" href="core_sources.html" /> 
 </head>
 
@@ -44,35 +45,40 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Introduction</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction/getting_started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction/release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction/license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data</span></p>
+<p class="caption" role="heading"><span class="caption-text">Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="import_scopus_files.html">Import Scopus Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="import_references.html">Import References File</a></li>
 <li class="toctree-l1"><a class="reference internal" href="coverage.html">Coverage</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Software comparison</span></p>
+<p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="_bibliometrix.html">Bibliometrix</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#data">Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#filter">Filter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#dataset">Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#overview">Overview</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="_bibliometrix.html#sources">Sources</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="most_relevant_sources.html">Most Relevant Sources</a></li>
-<li class="toctree-l3"><a class="reference internal" href="most_local_cited_sources.html">Most Local Cited Sources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="most_relevant_sources.html">Most relevant sources</a></li>
+<li class="toctree-l3"><a class="reference internal" href="most_local_cited_sources.html">Most Local Cited Sources (in References)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="bradford_law.html">Bradford’s Law</a></li>
 <li class="toctree-l3"><a class="reference internal" href="core_sources.html">Core Sources</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Source Local Impact</a></li>
-<li class="toctree-l3"><a class="reference internal" href="source_dynamics.html">Source Dynamics</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Source local impact</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source_dynamics_table.html">Source dynamics table</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source_dynamics_plot.html">Source dynamics plot</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#authors">Authors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#institutions">Institutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#countries">Countries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#documents">Documents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#cited-references">Cited References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#words">Words</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#clustering">Clustering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#conceptual-structure">Conceptual Structure</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_bibliometrix.html#intellectual-structure">Intellectual Structure</a></li>
@@ -82,8 +88,9 @@
 <li class="toctree-l1"><a class="reference internal" href="_scientopy.html">ScientoPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_tlab.html">T-Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_vantagepoint.html">VantagePoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scopus.html">Scopus search results analysis</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Low level API</span></p>
+<p class="caption" role="heading"><span class="caption-text">Low level API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
@@ -105,7 +112,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="_bibliometrix.html">Bibliometrix</a> &raquo;</li>
-      <li>Source Local Impact</li>
+      <li>Source local impact</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/source_local_impact.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -140,28 +147,24 @@
 }
 </style>
 <span class="target" id="module-techminer2.source_local_impact"></span><section id="source-local-impact">
-<h1>Source Local Impact<a class="headerlink" href="#source-local-impact" title="Permalink to this headline"></a></h1>
+<h1>Source local impact<a class="headerlink" href="#source-local-impact" title="Permalink to this heading"></a></h1>
+<p>See <a class="reference internal" href="impact_indicators.html"><span class="doc">impact indicators</span></a> to obtain a <cite>pandas.Dataframe</cite>
+with the data.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer2/data/&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;/workspaces/techminer2/sphinx/images/source_local_impact.png&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">source_local_impact</span><span class="p">(</span><span class="n">impact_measure</span><span class="o">=</span><span class="s1">&#39;h_index&#39;</span><span class="p">,</span> <span class="n">top_n</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">)</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;data/&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;sphinx/_static/source_local_impact.html&quot;</span>
 </pre></div>
 </div>
-<a class="reference internal image-reference" href="_images/source_local_impact.png"><img alt="_images/source_local_impact.png" class="align-center" src="_images/source_local_impact.png" style="width: 700px;" /></a>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">source_local_impact</span><span class="p">(</span><span class="n">impact_measure</span><span class="o">=</span><span class="s1">&#39;h_index&#39;</span><span class="p">,</span> <span class="n">top_n</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-<span class="go">                         num_documents  ...  avg_global_citations</span>
-<span class="go">FINANCIAL INNOV                     11  ...                 12.00</span>
-<span class="go">SUSTAINABILITY                      15  ...                  6.47</span>
-<span class="go">ENVIRON PLANN A                      4  ...                  7.50</span>
-<span class="go">FRONTIER ARTIF INTELL                5  ...                  4.60</span>
-<span class="go">J ASIAN FINANC ECON BUS              3  ...                  5.33</span>
-
-<span class="go">[5 rows x 9 columns]</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">source_local_impact</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">impact_measure</span><span class="o">=</span><span class="s1">&#39;h_index&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">top_n</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
 </pre></div>
 </div>
-<dl class="py function">
+<iframe src="_static/source_local_impact.html" height="600px" width="100%" frameBorder="0"></iframe><dl class="py function">
 <dt class="sig sig-object py" id="techminer2.source_local_impact.source_local_impact">
-<span class="sig-prename descclassname"><span class="pre">techminer2.source_local_impact.</span></span><span class="sig-name descname"><span class="pre">source_local_impact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">impact_measure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'h_index'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'k'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(8,</span> <span class="pre">6)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer2/source_local_impact.html#source_local_impact"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer2.source_local_impact.source_local_impact" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">techminer2.source_local_impact.</span></span><span class="sig-name descname"><span class="pre">source_local_impact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">impact_measure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'h_index'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top_n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/techminer2/source_local_impact.html#source_local_impact"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer2.source_local_impact.source_local_impact" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </section>
@@ -171,7 +174,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="core_sources.html" class="btn btn-neutral float-left" title="Core Sources" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="source_dynamics.html" class="btn btn-neutral float-right" title="Source Dynamics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="source_dynamics_table.html" class="btn btn-neutral float-right" title="Source dynamics table" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

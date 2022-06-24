@@ -14,6 +14,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
@@ -41,26 +42,27 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Introduction</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction/getting_started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction/release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction/license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data</span></p>
+<p class="caption" role="heading"><span class="caption-text">Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="import_scopus_files.html">Import Scopus Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="import_references.html">Import References File</a></li>
 <li class="toctree-l1"><a class="reference internal" href="coverage.html">Coverage</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Software comparison</span></p>
+<p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="_bibliometrix.html">Bibliometrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_scientopy.html">ScientoPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_tlab.html">T-Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_vantagepoint.html">VantagePoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scopus.html">Scopus search results analysis</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Low level API</span></p>
+<p class="caption" role="heading"><span class="caption-text">Low level API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="_api_indicators.html">Indicators API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_api_network.html">Network API</a></li>
@@ -108,12 +110,10 @@
  | <a href="#M"><strong>M</strong></a>
  | <a href="#N"><strong>N</strong></a>
  | <a href="#O"><strong>O</strong></a>
- | <a href="#P"><strong>P</strong></a>
  | <a href="#R"><strong>R</strong></a>
  | <a href="#S"><strong>S</strong></a>
  | <a href="#T"><strong>T</strong></a>
  | <a href="#U"><strong>U</strong></a>
- | <a href="#V"><strong>V</strong></a>
  | <a href="#W"><strong>W</strong></a>
  
 </div>
@@ -132,13 +132,17 @@
 </li>
       <li><a href="annual_scientific_production.html#techminer2.annual_scientific_production.annual_scientific_production">annual_scientific_production() (in module techminer2.annual_scientific_production)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="apply_thesaurus.html#techminer2.apply_thesaurus.apply_thesaurus">apply_thesaurus() (in module techminer2.apply_thesaurus)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="author_local_impact.html#techminer2.author_local_impact.author_local_impact">author_local_impact() (in module techminer2.author_local_impact)</a>
 </li>
+      <li><a href="authors_documents.html#techminer2.authors_documents.authors_documents">authors_documents() (in module techminer2.authors_documents)</a>
+</li>
       <li><a href="authors_production_over_time.html#techminer2.authors_production_over_time.authors_production_over_time">authors_production_over_time() (in module techminer2.authors_production_over_time)</a>
+</li>
+      <li><a href="authors_production_per_year.html#techminer2.authors_production_per_year.authors_production_per_year">authors_production_per_year() (in module techminer2.authors_production_per_year)</a>
 </li>
       <li><a href="auto_corr_matrix.html#techminer2.auto_corr_matrix.auto_corr_matrix">auto_corr_matrix() (in module techminer2.auto_corr_matrix)</a>
 </li>
@@ -154,10 +158,14 @@
 <h2 id="B">B</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="bradford_law.html#techminer2.bradford_law.bradford_law">bradford_law() (in module techminer2.bradford_law)</a>
+      <li><a href="bar_chart.html#techminer2.bar_chart.bar_chart">bar_chart() (in module techminer2.bar_chart)</a>
+</li>
+      <li><a href="bar_plot.html#techminer2.bar_plot.bar_plot">bar_plot() (in module techminer2.bar_plot)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="bradford_law.html#techminer2.bradford_law.bradford_law">bradford_law() (in module techminer2.bradford_law)</a>
+</li>
       <li><a href="bubble_chart.html#techminer2.bubble_chart.bubble_chart">bubble_chart() (in module techminer2.bubble_chart)</a>
 </li>
   </ul></td>
@@ -166,11 +174,15 @@
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="circle_chart.html#techminer2.circle_chart.circle_chart">circle_chart() (in module techminer2.circle_chart)</a>
+</li>
       <li><a href="clean_institutions.html#techminer2.clean_institutions.clean_institutions">clean_institutions() (in module techminer2.clean_institutions)</a>
 </li>
       <li><a href="clean_keywords.html#techminer2.clean_keywords.clean_keywords">clean_keywords() (in module techminer2.clean_keywords)</a>
 </li>
       <li><a href="cleveland_chart.html#techminer2.cleveland_chart.cleveland_chart">cleveland_chart() (in module techminer2.cleveland_chart)</a>
+</li>
+      <li><a href="cleveland_plot.html#techminer2.cleveland_plot.cleveland_plot">cleveland_plot() (in module techminer2.cleveland_plot)</a>
 </li>
       <li><a href="co_citation_matrix.html#techminer2.co_citation_matrix.co_citation_matrix">co_citation_matrix() (in module techminer2.co_citation_matrix)</a>
 </li>
@@ -212,14 +224,14 @@
 </li>
       <li><a href="co_occurrence_svd_map.html#techminer2.co_occurrence_svd_map.co_occurrence_svd_map">co_occurrence_svd_map() (in module techminer2.co_occurrence_svd_map)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="co_occurrence_svd_mds_map.html#techminer2.co_occurrence_svd_mds_map.co_occurrence_svd_mds_map">co_occurrence_svd_mds_map() (in module techminer2.co_occurrence_svd_mds_map)</a>
 </li>
       <li><a href="collaboration_indicators.html#techminer2.collaboration_indicators.collaboration_indicators">collaboration_indicators() (in module techminer2.collaboration_indicators)</a>
 </li>
       <li><a href="collaboration_network_communities.html#techminer2.collaboration_network_communities.collaboration_network_communities">collaboration_network_communities() (in module techminer2.collaboration_network_communities)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="collaboration_network_degree_plot.html#techminer2.collaboration_network_degree_plot.collaboration_network_degree_plot">collaboration_network_degree_plot() (in module techminer2.collaboration_network_degree_plot)</a>
 </li>
       <li><a href="collaboration_network_graph.html#techminer2.collaboration_network_graph.collaboration_network_graph">collaboration_network_graph() (in module techminer2.collaboration_network_graph)</a>
@@ -228,15 +240,29 @@
 </li>
       <li><a href="bubble_chart.html#techminer2.bubble_chart.collapse_text">collapse_text() (in module techminer2.bubble_chart)</a>
 </li>
+      <li><a href="column_chart.html#techminer2.column_chart.column_chart">column_chart() (in module techminer2.column_chart)</a>
+</li>
+      <li><a href="column_dynamics_plot.html#techminer2.column_dynamics_plot.column_dynamics_plot">column_dynamics_plot() (in module techminer2.column_dynamics_plot)</a>
+</li>
+      <li><a href="column_dynamics_table.html#techminer2.column_dynamics_table.column_dynamics_table">column_dynamics_table() (in module techminer2.column_dynamics_table)</a>
+</li>
       <li><a href="column_indicators.html#techminer2.column_indicators.column_indicators">column_indicators() (in module techminer2.column_indicators)</a>
 </li>
       <li><a href="column_indicators_by_year.html#techminer2.column_indicators_by_year.column_indicators_by_year">column_indicators_by_year() (in module techminer2.column_indicators_by_year)</a>
+</li>
+      <li><a href="column_plot.html#techminer2.column_plot.column_plot">column_plot() (in module techminer2.column_plot)</a>
 </li>
       <li><a href="core_sources.html#techminer2.core_sources.core_sources">core_sources() (in module techminer2.core_sources)</a>
 </li>
       <li><a href="correlation_map.html#techminer2.correlation_map.correlation_map">correlation_map() (in module techminer2.correlation_map)</a>
 </li>
       <li><a href="corresponding_authors_country.html#techminer2.corresponding_authors_country.corresponding_authors_country">corresponding_authors_country() (in module techminer2.corresponding_authors_country)</a>
+</li>
+      <li><a href="countries_production_over_time.html#techminer2.countries_production_over_time.countries_production_over_time">countries_production_over_time() (in module techminer2.countries_production_over_time)</a>
+</li>
+      <li><a href="countries_production_per_year.html#techminer2.countries_production_per_year.countries_production_per_year">countries_production_per_year() (in module techminer2.countries_production_per_year)</a>
+</li>
+      <li><a href="country_local_impact.html#techminer2.country_local_impact.country_local_impact">country_local_impact() (in module techminer2.country_local_impact)</a>
 </li>
       <li><a href="country_scientific_production.html#techminer2.country_scientific_production.country_scientific_production">country_scientific_production() (in module techminer2.country_scientific_production)</a>
 </li>
@@ -270,9 +296,23 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="document_indicators.html#techminer2.document_indicators.document_indicators">document_indicators() (in module techminer2.document_indicators)</a>
 </li>
+      <li><a href="document_viewer.html#techminer2.document_viewer.document_viewer">document_viewer() (in module techminer2.document_viewer)</a>
+</li>
+      <li><a href="documents_by_affiliation.html#techminer2.documents_by_affiliation.documents_by_affiliation">documents_by_affiliation() (in module techminer2.documents_by_affiliation)</a>
+</li>
+      <li><a href="documents_by_author.html#techminer2.documents_by_author.documents_by_author">documents_by_author() (in module techminer2.documents_by_author)</a>
+</li>
+      <li><a href="documents_by_country.html#techminer2.documents_by_country.documents_by_country">documents_by_country() (in module techminer2.documents_by_country)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="document_viewer.html#techminer2.document_viewer.document_viewer">document_viewer() (in module techminer2.document_viewer)</a>
+      <li><a href="documents_by_funding_sponsor.html#techminer2.documents_by_funding_sponsor.documents_by_funding_sponsor">documents_by_funding_sponsor() (in module techminer2.documents_by_funding_sponsor)</a>
+</li>
+      <li><a href="documents_by_type.html#techminer2.documents_by_type.documents_by_type">documents_by_type() (in module techminer2.documents_by_type)</a>
+</li>
+      <li><a href="documents_by_year.html#techminer2.documents_by_year.documents_by_year">documents_by_year() (in module techminer2.documents_by_year)</a>
+</li>
+      <li><a href="documents_per_year_by_source.html#techminer2.documents_per_year_by_source.documents_per_year_by_source">documents_per_year_by_source() (in module techminer2.documents_per_year_by_source)</a>
 </li>
       <li><a href="dotted_gantt_chart.html#techminer2.dotted_gantt_chart.dotted_gantt_chart">dotted_gantt_chart() (in module techminer2.dotted_gantt_chart)</a>
 </li>
@@ -332,6 +372,8 @@
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="topic_associations.html#techminer2.topic_associations.Topic_associations.graph_">graph_ (techminer2.topic_associations.Topic_associations property)</a>
+</li>
       <li><a href="growth_indicators.html#techminer2.growth_indicators.growth_indicators">growth_indicators() (in module techminer2.growth_indicators)</a>
 </li>
   </ul></td>
@@ -339,10 +381,6 @@
 
 <h2 id="H">H</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="hbar_chart.html#techminer2.hbar_chart.hbar_chart">hbar_chart() (in module techminer2.hbar_chart)</a>
-</li>
-  </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="heat_map.html#techminer2.heat_map.heat_map">heat_map() (in module techminer2.heat_map)</a>
 </li>
@@ -354,11 +392,17 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="impact_indicators.html#techminer2.impact_indicators.impact_indicators">impact_indicators() (in module techminer2.impact_indicators)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="import_references.html#techminer2.import_references.import_references">import_references() (in module techminer2.import_references)</a>
 </li>
-      <li><a href="import_scopus_file.html#techminer2.import_scopus_file.import_scopus_file">import_scopus_file() (in module techminer2.import_scopus_file)</a>
+      <li><a href="import_scopus_files.html#techminer2.import_scopus_files.import_scopus_files">import_scopus_files() (in module techminer2.import_scopus_files)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="institution_local_impact.html#techminer2.institution_local_impact.institution_local_impact">institution_local_impact() (in module techminer2.institution_local_impact)</a>
+</li>
+      <li><a href="institutions_production_over_time.html#techminer2.institutions_production_over_time.institutions_production_over_time">institutions_production_over_time() (in module techminer2.institutions_production_over_time)</a>
+</li>
+      <li><a href="institutions_production_per_year.html#techminer2.institutions_production_per_year.institutions_production_per_year">institutions_production_per_year() (in module techminer2.institutions_production_per_year)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -402,21 +446,13 @@
     module
 
       <ul>
-        <li><a href="_cleveland_chart.html#module-techminer2._cleveland_chart">techminer2._cleveland_chart</a>
-</li>
         <li><a href="_dotted_gantt_chart.html#module-techminer2._dotted_gantt_chart">techminer2._dotted_gantt_chart</a>
 </li>
         <li><a href="_gantt_chart.html#module-techminer2._gantt_chart">techminer2._gantt_chart</a>
 </li>
-        <li><a href="_hbar_chart.html#module-techminer2._hbar_chart">techminer2._hbar_chart</a>
-</li>
-        <li><a href="_line_chart.html#module-techminer2._line_chart">techminer2._line_chart</a>
-</li>
         <li><a href="_pie_chart.html#module-techminer2._pie_chart">techminer2._pie_chart</a>
 </li>
         <li><a href="_tree_map.html#module-techminer2._tree_map">techminer2._tree_map</a>
-</li>
-        <li><a href="_vbar_chart.html#module-techminer2._vbar_chart">techminer2._vbar_chart</a>
 </li>
         <li><a href="_word_cloud.html#module-techminer2._word_cloud">techminer2._word_cloud</a>
 </li>
@@ -438,7 +474,11 @@
 </li>
         <li><a href="author_local_impact.html#module-techminer2.author_local_impact">techminer2.author_local_impact</a>
 </li>
+        <li><a href="authors_documents.html#module-techminer2.authors_documents">techminer2.authors_documents</a>
+</li>
         <li><a href="authors_production_over_time.html#module-techminer2.authors_production_over_time">techminer2.authors_production_over_time</a>
+</li>
+        <li><a href="authors_production_per_year.html#module-techminer2.authors_production_per_year">techminer2.authors_production_per_year</a>
 </li>
         <li><a href="auto_corr_matrix.html#module-techminer2.auto_corr_matrix">techminer2.auto_corr_matrix</a>
 </li>
@@ -448,15 +488,23 @@
 </li>
         <li><a href="average_citations_per_year.html#module-techminer2.average_citations_per_year">techminer2.average_citations_per_year</a>
 </li>
+        <li><a href="bar_chart.html#module-techminer2.bar_chart">techminer2.bar_chart</a>
+</li>
+        <li><a href="bar_plot.html#module-techminer2.bar_plot">techminer2.bar_plot</a>
+</li>
         <li><a href="bradford_law.html#module-techminer2.bradford_law">techminer2.bradford_law</a>
 </li>
         <li><a href="bubble_chart.html#module-techminer2.bubble_chart">techminer2.bubble_chart</a>
+</li>
+        <li><a href="circle_chart.html#module-techminer2.circle_chart">techminer2.circle_chart</a>
 </li>
         <li><a href="clean_institutions.html#module-techminer2.clean_institutions">techminer2.clean_institutions</a>
 </li>
         <li><a href="clean_keywords.html#module-techminer2.clean_keywords">techminer2.clean_keywords</a>
 </li>
         <li><a href="cleveland_chart.html#module-techminer2.cleveland_chart">techminer2.cleveland_chart</a>
+</li>
+        <li><a href="cleveland_plot.html#module-techminer2.cleveland_plot">techminer2.cleveland_plot</a>
 </li>
         <li><a href="co_citation_matrix.html#module-techminer2.co_citation_matrix">techminer2.co_citation_matrix</a>
 </li>
@@ -510,15 +558,29 @@
 </li>
         <li><a href="collaboration_network_indicators.html#module-techminer2.collaboration_network_indicators">techminer2.collaboration_network_indicators</a>
 </li>
+        <li><a href="column_chart.html#module-techminer2.column_chart">techminer2.column_chart</a>
+</li>
+        <li><a href="column_dynamics_plot.html#module-techminer2.column_dynamics_plot">techminer2.column_dynamics_plot</a>
+</li>
+        <li><a href="column_dynamics_table.html#module-techminer2.column_dynamics_table">techminer2.column_dynamics_table</a>
+</li>
         <li><a href="column_indicators.html#module-techminer2.column_indicators">techminer2.column_indicators</a>
 </li>
         <li><a href="column_indicators_by_year.html#module-techminer2.column_indicators_by_year">techminer2.column_indicators_by_year</a>
+</li>
+        <li><a href="column_plot.html#module-techminer2.column_plot">techminer2.column_plot</a>
 </li>
         <li><a href="core_sources.html#module-techminer2.core_sources">techminer2.core_sources</a>
 </li>
         <li><a href="correlation_map.html#module-techminer2.correlation_map">techminer2.correlation_map</a>
 </li>
         <li><a href="corresponding_authors_country.html#module-techminer2.corresponding_authors_country">techminer2.corresponding_authors_country</a>
+</li>
+        <li><a href="countries_production_over_time.html#module-techminer2.countries_production_over_time">techminer2.countries_production_over_time</a>
+</li>
+        <li><a href="countries_production_per_year.html#module-techminer2.countries_production_per_year">techminer2.countries_production_per_year</a>
+</li>
+        <li><a href="country_local_impact.html#module-techminer2.country_local_impact">techminer2.country_local_impact</a>
 </li>
         <li><a href="country_scientific_production.html#module-techminer2.country_scientific_production">techminer2.country_scientific_production</a>
 </li>
@@ -543,6 +605,20 @@
         <li><a href="document_indicators.html#module-techminer2.document_indicators">techminer2.document_indicators</a>
 </li>
         <li><a href="document_viewer.html#module-techminer2.document_viewer">techminer2.document_viewer</a>
+</li>
+        <li><a href="documents_by_affiliation.html#module-techminer2.documents_by_affiliation">techminer2.documents_by_affiliation</a>
+</li>
+        <li><a href="documents_by_author.html#module-techminer2.documents_by_author">techminer2.documents_by_author</a>
+</li>
+        <li><a href="documents_by_country.html#module-techminer2.documents_by_country">techminer2.documents_by_country</a>
+</li>
+        <li><a href="documents_by_funding_sponsor.html#module-techminer2.documents_by_funding_sponsor">techminer2.documents_by_funding_sponsor</a>
+</li>
+        <li><a href="documents_by_type.html#module-techminer2.documents_by_type">techminer2.documents_by_type</a>
+</li>
+        <li><a href="documents_by_year.html#module-techminer2.documents_by_year">techminer2.documents_by_year</a>
+</li>
+        <li><a href="documents_per_year_by_source.html#module-techminer2.documents_per_year_by_source">techminer2.documents_per_year_by_source</a>
 </li>
         <li><a href="dotted_gantt_chart.html#module-techminer2.dotted_gantt_chart">techminer2.dotted_gantt_chart</a>
 </li>
@@ -580,15 +656,19 @@
 </li>
         <li><a href="growth_indicators.html#module-techminer2.growth_indicators">techminer2.growth_indicators</a>
 </li>
-        <li><a href="hbar_chart.html#module-techminer2.hbar_chart">techminer2.hbar_chart</a>
-</li>
         <li><a href="heat_map.html#module-techminer2.heat_map">techminer2.heat_map</a>
 </li>
         <li><a href="impact_indicators.html#module-techminer2.impact_indicators">techminer2.impact_indicators</a>
 </li>
         <li><a href="import_references.html#module-techminer2.import_references">techminer2.import_references</a>
 </li>
-        <li><a href="import_scopus_file.html#module-techminer2.import_scopus_file">techminer2.import_scopus_file</a>
+        <li><a href="import_scopus_files.html#module-techminer2.import_scopus_files">techminer2.import_scopus_files</a>
+</li>
+        <li><a href="institution_local_impact.html#module-techminer2.institution_local_impact">techminer2.institution_local_impact</a>
+</li>
+        <li><a href="institutions_production_over_time.html#module-techminer2.institutions_production_over_time">techminer2.institutions_production_over_time</a>
+</li>
+        <li><a href="institutions_production_per_year.html#module-techminer2.institutions_production_per_year">techminer2.institutions_production_per_year</a>
 </li>
         <li><a href="keyword_concordances.html#module-techminer2.keyword_concordances">techminer2.keyword_concordances</a>
 </li>
@@ -611,6 +691,8 @@
         <li><a href="most_global_cited_countries.html#module-techminer2.most_global_cited_countries">techminer2.most_global_cited_countries</a>
 </li>
         <li><a href="most_global_cited_documents.html#module-techminer2.most_global_cited_documents">techminer2.most_global_cited_documents</a>
+</li>
+        <li><a href="most_global_cited_institutions.html#module-techminer2.most_global_cited_institutions">techminer2.most_global_cited_institutions</a>
 </li>
         <li><a href="most_local_cited_authors.html#module-techminer2.most_local_cited_authors">techminer2.most_local_cited_authors</a>
 </li>
@@ -648,11 +730,11 @@
 </li>
         <li><a href="occurrence_matrix_sankey_diagram.html#module-techminer2.occurrence_matrix_sankey_diagram">techminer2.occurrence_matrix_sankey_diagram</a>
 </li>
-        <li><a href="pie_chart.html#module-techminer2.pie_chart">techminer2.pie_chart</a>
-</li>
         <li><a href="rpys.html#module-techminer2.rpys">techminer2.rpys</a>
 </li>
-        <li><a href="source_dynamics.html#module-techminer2.source_dynamics">techminer2.source_dynamics</a>
+        <li><a href="source_dynamics_plot.html#module-techminer2.source_dynamics_plot">techminer2.source_dynamics_plot</a>
+</li>
+        <li><a href="source_dynamics_table.html#module-techminer2.source_dynamics_table">techminer2.source_dynamics_table</a>
 </li>
         <li><a href="source_local_impact.html#module-techminer2.source_local_impact">techminer2.source_local_impact</a>
 </li>
@@ -700,8 +782,6 @@
 </li>
         <li><a href="topic_associations.html#module-techminer2.topic_associations">techminer2.topic_associations</a>
 </li>
-        <li><a href="topic_dynamics.html#module-techminer2.topic_dynamics">techminer2.topic_dynamics</a>
-</li>
         <li><a href="topic_view.html#module-techminer2.topic_view">techminer2.topic_view</a>
 </li>
         <li><a href="topics_comparison_chart.html#module-techminer2.topics_comparison_chart">techminer2.topics_comparison_chart</a>
@@ -714,18 +794,24 @@
 </li>
         <li><a href="user_filters.html#module-techminer2.user_filters">techminer2.user_filters</a>
 </li>
-        <li><a href="vbar_chart.html#module-techminer2.vbar_chart">techminer2.vbar_chart</a>
-</li>
         <li><a href="word_cloud.html#module-techminer2.word_cloud">techminer2.word_cloud</a>
+</li>
+        <li><a href="word_dynamics_plot.html#module-techminer2.word_dynamics_plot">techminer2.word_dynamics_plot</a>
+</li>
+        <li><a href="word_dynamics_table.html#module-techminer2.word_dynamics_table">techminer2.word_dynamics_table</a>
 </li>
         <li><a href="world_map.html#module-techminer2.world_map">techminer2.world_map</a>
 </li>
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="most_frequent_words.html#techminer2.most_frequent_words.most_frequent_words">most_frequent_words() (in module techminer2.most_frequent_words)</a>
+</li>
       <li><a href="most_global_cited_countries.html#techminer2.most_global_cited_countries.most_global_cited_countries">most_global_cited_countries() (in module techminer2.most_global_cited_countries)</a>
 </li>
       <li><a href="most_global_cited_documents.html#techminer2.most_global_cited_documents.most_global_cited_documents">most_global_cited_documents() (in module techminer2.most_global_cited_documents)</a>
+</li>
+      <li><a href="most_global_cited_institutions.html#techminer2.most_global_cited_institutions.most_global_cited_institutions">most_global_cited_institutions() (in module techminer2.most_global_cited_institutions)</a>
 </li>
       <li><a href="most_local_cited_authors.html#techminer2.most_local_cited_authors.most_local_cited_authors">most_local_cited_authors() (in module techminer2.most_local_cited_authors)</a>
 </li>
@@ -782,14 +868,6 @@
   </ul></td>
 </tr></table>
 
-<h2 id="P">P</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="pie_chart.html#techminer2.pie_chart.pie_chart">pie_chart() (in module techminer2.pie_chart)</a>
-</li>
-  </ul></td>
-</tr></table>
-
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -801,7 +879,9 @@
 <h2 id="S">S</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="source_dynamics.html#techminer2.source_dynamics.source_dynamics">source_dynamics() (in module techminer2.source_dynamics)</a>
+      <li><a href="source_dynamics_plot.html#techminer2.source_dynamics_plot.source_dynamics_plot">source_dynamics_plot() (in module techminer2.source_dynamics_plot)</a>
+</li>
+      <li><a href="source_dynamics_table.html#techminer2.source_dynamics_table.source_dynamics_table">source_dynamics_table() (in module techminer2.source_dynamics_table)</a>
 </li>
       <li><a href="source_local_impact.html#techminer2.source_local_impact.source_local_impact">source_local_impact() (in module techminer2.source_local_impact)</a>
 </li>
@@ -823,13 +903,8 @@
 <h2 id="T">T</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li>
-    techminer2._cleveland_chart
-
-      <ul>
-        <li><a href="_cleveland_chart.html#module-techminer2._cleveland_chart">module</a>
+      <li><a href="topic_associations.html#techminer2.topic_associations.Topic_associations.table_">table_ (techminer2.topic_associations.Topic_associations property)</a>
 </li>
-      </ul></li>
       <li>
     techminer2._dotted_gantt_chart
 
@@ -845,20 +920,6 @@
 </li>
       </ul></li>
       <li>
-    techminer2._hbar_chart
-
-      <ul>
-        <li><a href="_hbar_chart.html#module-techminer2._hbar_chart">module</a>
-</li>
-      </ul></li>
-      <li>
-    techminer2._line_chart
-
-      <ul>
-        <li><a href="_line_chart.html#module-techminer2._line_chart">module</a>
-</li>
-      </ul></li>
-      <li>
     techminer2._pie_chart
 
       <ul>
@@ -870,13 +931,6 @@
 
       <ul>
         <li><a href="_tree_map.html#module-techminer2._tree_map">module</a>
-</li>
-      </ul></li>
-      <li>
-    techminer2._vbar_chart
-
-      <ul>
-        <li><a href="_vbar_chart.html#module-techminer2._vbar_chart">module</a>
 </li>
       </ul></li>
       <li>
@@ -950,10 +1004,24 @@
 </li>
       </ul></li>
       <li>
+    techminer2.authors_documents
+
+      <ul>
+        <li><a href="authors_documents.html#module-techminer2.authors_documents">module</a>
+</li>
+      </ul></li>
+      <li>
     techminer2.authors_production_over_time
 
       <ul>
         <li><a href="authors_production_over_time.html#module-techminer2.authors_production_over_time">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2.authors_production_per_year
+
+      <ul>
+        <li><a href="authors_production_per_year.html#module-techminer2.authors_production_per_year">module</a>
 </li>
       </ul></li>
       <li>
@@ -985,6 +1053,20 @@
 </li>
       </ul></li>
       <li>
+    techminer2.bar_chart
+
+      <ul>
+        <li><a href="bar_chart.html#module-techminer2.bar_chart">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2.bar_plot
+
+      <ul>
+        <li><a href="bar_plot.html#module-techminer2.bar_plot">module</a>
+</li>
+      </ul></li>
+      <li>
     techminer2.bradford_law
 
       <ul>
@@ -996,6 +1078,13 @@
 
       <ul>
         <li><a href="bubble_chart.html#module-techminer2.bubble_chart">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2.circle_chart
+
+      <ul>
+        <li><a href="circle_chart.html#module-techminer2.circle_chart">module</a>
 </li>
       </ul></li>
       <li>
@@ -1017,6 +1106,13 @@
 
       <ul>
         <li><a href="cleveland_chart.html#module-techminer2.cleveland_chart">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2.cleveland_plot
+
+      <ul>
+        <li><a href="cleveland_plot.html#module-techminer2.cleveland_plot">module</a>
 </li>
       </ul></li>
       <li>
@@ -1202,6 +1298,27 @@
 </li>
       </ul></li>
       <li>
+    techminer2.column_chart
+
+      <ul>
+        <li><a href="column_chart.html#module-techminer2.column_chart">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2.column_dynamics_plot
+
+      <ul>
+        <li><a href="column_dynamics_plot.html#module-techminer2.column_dynamics_plot">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2.column_dynamics_table
+
+      <ul>
+        <li><a href="column_dynamics_table.html#module-techminer2.column_dynamics_table">module</a>
+</li>
+      </ul></li>
+      <li>
     techminer2.column_indicators
 
       <ul>
@@ -1213,6 +1330,13 @@
 
       <ul>
         <li><a href="column_indicators_by_year.html#module-techminer2.column_indicators_by_year">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2.column_plot
+
+      <ul>
+        <li><a href="column_plot.html#module-techminer2.column_plot">module</a>
 </li>
       </ul></li>
       <li>
@@ -1234,6 +1358,27 @@
 
       <ul>
         <li><a href="corresponding_authors_country.html#module-techminer2.corresponding_authors_country">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2.countries_production_over_time
+
+      <ul>
+        <li><a href="countries_production_over_time.html#module-techminer2.countries_production_over_time">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2.countries_production_per_year
+
+      <ul>
+        <li><a href="countries_production_per_year.html#module-techminer2.countries_production_per_year">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2.country_local_impact
+
+      <ul>
+        <li><a href="country_local_impact.html#module-techminer2.country_local_impact">module</a>
 </li>
       </ul></li>
       <li>
@@ -1321,6 +1466,55 @@
 </li>
       </ul></li>
       <li>
+    techminer2.documents_by_affiliation
+
+      <ul>
+        <li><a href="documents_by_affiliation.html#module-techminer2.documents_by_affiliation">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2.documents_by_author
+
+      <ul>
+        <li><a href="documents_by_author.html#module-techminer2.documents_by_author">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2.documents_by_country
+
+      <ul>
+        <li><a href="documents_by_country.html#module-techminer2.documents_by_country">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2.documents_by_funding_sponsor
+
+      <ul>
+        <li><a href="documents_by_funding_sponsor.html#module-techminer2.documents_by_funding_sponsor">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2.documents_by_type
+
+      <ul>
+        <li><a href="documents_by_type.html#module-techminer2.documents_by_type">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2.documents_by_year
+
+      <ul>
+        <li><a href="documents_by_year.html#module-techminer2.documents_by_year">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2.documents_per_year_by_source
+
+      <ul>
+        <li><a href="documents_per_year_by_source.html#module-techminer2.documents_per_year_by_source">module</a>
+</li>
+      </ul></li>
+      <li>
     techminer2.dotted_gantt_chart
 
       <ul>
@@ -1376,6 +1570,8 @@
         <li><a href="extract_user_keywords.html#module-techminer2.extract_user_keywords">module</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     techminer2.factor_matrix
 
@@ -1425,8 +1621,6 @@
         <li><a href="find_keyword.html#module-techminer2.find_keyword">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     techminer2.find_string
 
@@ -1446,13 +1640,6 @@
 
       <ul>
         <li><a href="growth_indicators.html#module-techminer2.growth_indicators">module</a>
-</li>
-      </ul></li>
-      <li>
-    techminer2.hbar_chart
-
-      <ul>
-        <li><a href="hbar_chart.html#module-techminer2.hbar_chart">module</a>
 </li>
       </ul></li>
       <li>
@@ -1477,10 +1664,31 @@
 </li>
       </ul></li>
       <li>
-    techminer2.import_scopus_file
+    techminer2.import_scopus_files
 
       <ul>
-        <li><a href="import_scopus_file.html#module-techminer2.import_scopus_file">module</a>
+        <li><a href="import_scopus_files.html#module-techminer2.import_scopus_files">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2.institution_local_impact
+
+      <ul>
+        <li><a href="institution_local_impact.html#module-techminer2.institution_local_impact">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2.institutions_production_over_time
+
+      <ul>
+        <li><a href="institutions_production_over_time.html#module-techminer2.institutions_production_over_time">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2.institutions_production_per_year
+
+      <ul>
+        <li><a href="institutions_production_per_year.html#module-techminer2.institutions_production_per_year">module</a>
 </li>
       </ul></li>
       <li>
@@ -1558,6 +1766,13 @@
 
       <ul>
         <li><a href="most_global_cited_documents.html#module-techminer2.most_global_cited_documents">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2.most_global_cited_institutions
+
+      <ul>
+        <li><a href="most_global_cited_institutions.html#module-techminer2.most_global_cited_institutions">module</a>
 </li>
       </ul></li>
       <li>
@@ -1687,13 +1902,6 @@
 </li>
       </ul></li>
       <li>
-    techminer2.pie_chart
-
-      <ul>
-        <li><a href="pie_chart.html#module-techminer2.pie_chart">module</a>
-</li>
-      </ul></li>
-      <li>
     techminer2.rpys
 
       <ul>
@@ -1701,10 +1909,17 @@
 </li>
       </ul></li>
       <li>
-    techminer2.source_dynamics
+    techminer2.source_dynamics_plot
 
       <ul>
-        <li><a href="source_dynamics.html#module-techminer2.source_dynamics">module</a>
+        <li><a href="source_dynamics_plot.html#module-techminer2.source_dynamics_plot">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2.source_dynamics_table
+
+      <ul>
+        <li><a href="source_dynamics_table.html#module-techminer2.source_dynamics_table">module</a>
 </li>
       </ul></li>
       <li>
@@ -1869,13 +2084,6 @@
 </li>
       </ul></li>
       <li>
-    techminer2.topic_dynamics
-
-      <ul>
-        <li><a href="topic_dynamics.html#module-techminer2.topic_dynamics">module</a>
-</li>
-      </ul></li>
-      <li>
     techminer2.topic_view
 
       <ul>
@@ -1918,17 +2126,24 @@
 </li>
       </ul></li>
       <li>
-    techminer2.vbar_chart
-
-      <ul>
-        <li><a href="vbar_chart.html#module-techminer2.vbar_chart">module</a>
-</li>
-      </ul></li>
-      <li>
     techminer2.word_cloud
 
       <ul>
         <li><a href="word_cloud.html#module-techminer2.word_cloud">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2.word_dynamics_plot
+
+      <ul>
+        <li><a href="word_dynamics_plot.html#module-techminer2.word_dynamics_plot">module</a>
+</li>
+      </ul></li>
+      <li>
+    techminer2.word_dynamics_table
+
+      <ul>
+        <li><a href="word_dynamics_table.html#module-techminer2.word_dynamics_table">module</a>
 </li>
       </ul></li>
       <li>
@@ -1972,9 +2187,7 @@
 </li>
       <li><a href="top_trending_topics.html#techminer2.top_trending_topics.top_trending_topics">top_trending_topics() (in module techminer2.top_trending_topics)</a>
 </li>
-      <li><a href="topic_associations.html#techminer2.topic_associations.topic_associations">topic_associations() (in module techminer2.topic_associations)</a>
-</li>
-      <li><a href="topic_dynamics.html#techminer2.topic_dynamics.topic_dynamics">topic_dynamics() (in module techminer2.topic_dynamics)</a>
+      <li><a href="topic_associations.html#techminer2.topic_associations.Topic_associations">Topic_associations (class in techminer2.topic_associations)</a>
 </li>
       <li><a href="topic_view.html#techminer2.topic_view.topic_view">topic_view() (in module techminer2.topic_view)</a>
 </li>
@@ -1997,21 +2210,17 @@
   </ul></td>
 </tr></table>
 
-<h2 id="V">V</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="vbar_chart.html#techminer2.vbar_chart.vbar_chart">vbar_chart() (in module techminer2.vbar_chart)</a>
-</li>
-  </ul></td>
-</tr></table>
-
 <h2 id="W">W</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="word_cloud.html#techminer2.word_cloud.word_cloud">word_cloud() (in module techminer2.word_cloud)</a>
 </li>
+      <li><a href="word_dynamics_plot.html#techminer2.word_dynamics_plot.word_dynamics_plot">word_dynamics_plot() (in module techminer2.word_dynamics_plot)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="word_dynamics_table.html#techminer2.word_dynamics_table.word_dynamics_table">word_dynamics_table() (in module techminer2.word_dynamics_table)</a>
+</li>
       <li><a href="world_map.html#techminer2.world_map.world_map">world_map() (in module techminer2.world_map)</a>
 </li>
   </ul></td>

@@ -14,6 +14,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/clipboard.min.js"></script>
         <script src="../../_static/copybutton.js"></script>
@@ -41,26 +42,27 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Introduction</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction/getting_started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction/release_info.html">Release Information</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction/license.html">MIT License</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Data</span></p>
+<p class="caption" role="heading"><span class="caption-text">Data</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../import_scopus_file.html">Importing Scopus Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../import_scopus_files.html">Import Scopus Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../import_references.html">Import References File</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../coverage.html">Coverage</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Software comparison</span></p>
+<p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../_bibliometrix.html">Bibliometrix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_scientopy.html">ScientoPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_tlab.html">T-Lab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_vantagepoint.html">VantagePoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scopus.html">Scopus search results analysis</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Low level API</span></p>
+<p class="caption" role="heading"><span class="caption-text">Low level API</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../_api_indicators.html">Indicators API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../_api_network.html">Network API</a></li>
@@ -107,7 +109,7 @@
 
 
 <span class="sd">&gt;&gt;&gt; from techminer2 import *</span>
-<span class="sd">&gt;&gt;&gt; directory = &quot;/workspaces/techminer2/data/&quot;</span>
+<span class="sd">&gt;&gt;&gt; directory = &quot;data/&quot;</span>
 <span class="sd">&gt;&gt;&gt; stemming_and(directory, &quot;author_keywords&quot;, &quot;business model&quot;).head(10)</span>
 <span class="sd">51             business model</span>
 <span class="sd">107    fintech business model</span>
@@ -120,16 +122,16 @@
 <span class="sd">Name: author_keywords, dtype: object</span>
 <span class="sd"> </span>
 <span class="sd">&gt;&gt;&gt; stemming_or(directory, &quot;author_keywords&quot;, &quot;business model&quot;).head(10)</span>
-<span class="sd">3        structural equation model</span>
-<span class="sd">23       structural equation model</span>
-<span class="sd">24                        modeling</span>
-<span class="sd">48         business sustainability</span>
-<span class="sd">48             small food business</span>
-<span class="sd">51            business environment</span>
-<span class="sd">51                  business model</span>
-<span class="sd">58     fintech predictive modeling</span>
-<span class="sd">66       structural equation model</span>
-<span class="sd">107         fintech business model</span>
+<span class="sd">3         structural equation modeling</span>
+<span class="sd">23     structural equation model (sem)</span>
+<span class="sd">24                            modeling</span>
+<span class="sd">48             business sustainability</span>
+<span class="sd">48               small food businesses</span>
+<span class="sd">51                business environment</span>
+<span class="sd">51                      business model</span>
+<span class="sd">58         fintech predictive modeling</span>
+<span class="sd">66        structural equation modeling</span>
+<span class="sd">107             fintech business model</span>
 <span class="sd">Name: author_keywords, dtype: object</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
@@ -137,7 +139,7 @@
 
 <span class="kn">from</span> <span class="nn">nltk.stem</span> <span class="kn">import</span> <span class="n">PorterStemmer</span><span class="p">,</span> <span class="n">SnowballStemmer</span>
 
-<span class="kn">from</span> <span class="nn">.load_filtered_documents</span> <span class="kn">import</span> <span class="n">load_filtered_documents</span>
+<span class="kn">from</span> <span class="nn">._read_records</span> <span class="kn">import</span> <span class="n">read_filtered_records</span>
 
 
 <span class="k">def</span> <span class="nf">_stemming</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="n">column</span><span class="p">,</span> <span class="n">pattern</span><span class="p">,</span> <span class="n">stemmer</span><span class="o">=</span><span class="s2">&quot;porter&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;; &quot;</span><span class="p">,</span> <span class="n">operator</span><span class="o">=</span><span class="s2">&quot;AND&quot;</span><span class="p">):</span>
@@ -150,7 +152,7 @@
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Stemmer </span><span class="si">{</span><span class="n">stemmer</span><span class="si">}</span><span class="s2"> not supported&quot;</span><span class="p">)</span>
 
     <span class="c1"># explodes the column</span>
-    <span class="n">documents</span> <span class="o">=</span> <span class="n">load_filtered_documents</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
+    <span class="n">documents</span> <span class="o">=</span> <span class="n">read_filtered_records</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
     <span class="n">documents</span> <span class="o">=</span> <span class="n">documents</span><span class="p">[[</span><span class="n">column</span><span class="p">]]</span>
     <span class="n">documents</span> <span class="o">=</span> <span class="n">documents</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
     <span class="n">documents</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">=</span> <span class="n">documents</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">sep</span><span class="p">)</span>
