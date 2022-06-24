@@ -1,5 +1,5 @@
 """
-Word dynamics plot (TODO)
+Word dynamics plot
 ===============================================================================
 
 See :doc:`column indicators by year <column_indicators_by_year>` to obtain a 
@@ -7,29 +7,31 @@ See :doc:`column indicators by year <column_indicators_by_year>` to obtain a
 
 >>> from techminer2.bibliometrix import *
 >>> directory = "data/"
->>> file_name = "sphinx/images/word_dynamics_plot.png"
+>>> file_name = "sphinx/_static/word_dynamics_plot.html"
 
 >>> word_dynamics_plot(
-...     column="author_keywords",
+...     word="author_keywords",
 ...     top_n=10, 
 ...     directory=directory,
-... ).write_image(file_name)
+... ).write_html(file_name)
 
-.. image:: images/word_dynamics_plot.png
-    :width: 700px
-    :align: center
+.. raw:: html
+
+    <iframe src="_static/word_dynamics_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
+
 
 """
 from .column_dynamics_plot import column_dynamics_plot
 
 
 def word_dynamics_plot(
-    column="author_keywords",
+    word,
     top_n=10,
     directory="./",
 ):
     return column_dynamics_plot(
-        column=column,
+        column=word,
         top_n=top_n,
         directory=directory,
+        title=word.replace("_", " ").title() + " dynamics",
     )
