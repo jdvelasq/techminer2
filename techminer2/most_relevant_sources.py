@@ -11,13 +11,12 @@ with the data.
 
 >>> most_relevant_sources(
 ...     directory=directory,
-...     top_n=10,
+...     top_n=20,
 ... ).write_html(file_name)
 
 .. raw:: html
 
     <iframe src="_static/most_relevant_sources.html" height="600px" width="100%" frameBorder="0"></iframe>
-
 
 """
 from .cleveland_chart import cleveland_chart
