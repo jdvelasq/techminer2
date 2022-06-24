@@ -53,6 +53,7 @@ from .collaboration_network_communities import collaboration_network_communities
 from .collaboration_network_degree_plot import collaboration_network_degree_plot
 from .collaboration_network_graph import collaboration_network_graph
 from .collaboration_network_indicators import collaboration_network_indicators
+from .column_documents import column_documents
 from .column_dynamics_plot import column_dynamics_plot
 from .column_dynamics_table import column_dynamics_table
 from .column_indicators import column_indicators
@@ -82,6 +83,7 @@ from .documents_by_author import documents_by_author
 from .documents_by_country import documents_by_country
 from .documents_by_type import documents_by_type
 from .documents_by_year import documents_by_year
+from .documents_per_author import documents_per_author
 from .documents_per_year_by_source import documents_per_year_by_source
 from .dotted_gantt_chart import dotted_gantt_chart
 from .ego_graph import ego_graph
