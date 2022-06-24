@@ -1,42 +1,32 @@
 """
-Countries' production over time (TODO)
+Countries' production over time
 ===============================================================================
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "sphinx/images/countries_production_over_time.png"
+>>> file_name = "sphinx/_static/countries_production_over_time.html"
+
 >>> countries_production_over_time(
-...    min_occ=2, 
+...    top_n=10, 
 ...    directory=directory,
-... ).savefig(file_name)
+... ).write_html(file_name)
 
-.. image:: images/countries_production_over_time.png
-    :width: 700px
-    :align: center
+.. raw:: html
 
->>> countries_production_over_time(
-...     min_occ=2, 
-...     directory=directory, 
-...     plot=False,
-... ).head()
-
+    <iframe src="_static/countries_production_over_time.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-
-from .dotted_gantt_chart import dotted_gantt_chart
+from .column_production_by_year import column_production_by_year
 
 
 def countries_production_over_time(
-    min_occ=2,
-    figsize=(6, 6),
+    top_n=10,
     directory="./",
-    plot=True,
 ):
 
-    return dotted_gantt_chart(
+    return column_production_by_year(
         column="countries",
-        min_occ=min_occ,
-        figsize=figsize,
+        top_n=top_n,
         directory=directory,
-        plot=plot,
+        title="Countries' production over time",
     )
