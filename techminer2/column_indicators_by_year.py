@@ -1,10 +1,14 @@
 """
-Column Indicators by Year
+Column indicators by year
 ===============================================================================
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> column_indicators_by_year(directory, 'authors').head(10)
+
+>>> column_indicators_by_year(
+...     'authors',
+...     directory=directory, 
+... ).head(10)
                        num_documents  ...  local_citations_per_year
 authors      pub_year                 ...                          
 Dolata M     2016                  1  ...                     1.167
@@ -27,7 +31,10 @@ import pandas as pd
 from ._read_records import read_filtered_records
 
 
-def column_indicators_by_year(directory=None, column="authors"):
+def column_indicators_by_year(
+    column="authors",
+    directory=None,
+):
 
     indicators = read_filtered_records(directory)
     indicators = indicators.assign(num_documents=1)
