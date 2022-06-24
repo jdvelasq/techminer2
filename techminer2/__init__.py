@@ -63,6 +63,7 @@ from .core_sources import core_sources
 from .correlation_map import correlation_map
 from .corresponding_authors_country import corresponding_authors_country
 from .countries_production_over_time import countries_production_over_time
+from .countries_production_per_year import countries_production_per_year
 from .country_local_impact import country_local_impact
 from .country_scientific_production import country_scientific_production
 from .coupling_matrix import coupling_matrix
@@ -113,6 +114,7 @@ from .import_references import import_references
 from .import_scopus_files import import_scopus_files
 from .institution_local_impact import institution_local_impact
 from .institutions_production_over_time import institutions_production_over_time
+from .institutions_production_per_year import institutions_production_per_year
 from .keyword_concordances import keyword_concordances
 from .keywords_summarization import keywords_summarization
 from .line_chart import line_chart
