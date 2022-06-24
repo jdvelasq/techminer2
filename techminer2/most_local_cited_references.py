@@ -1,40 +1,35 @@
 """
-Most Local Cited References 
+Most local cited references
 ===============================================================================
 
+See :doc:`document indicators <document_indicators>` to obtain a `pandas.Dataframe` 
+with the data.
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "sphinx/images/most_local_cited_references.png"
+>>> file_name = "sphinx/_static/most_local_cited_references.html"
+
 >>> most_local_cited_references(
 ...     top_n=20,
 ...     directory=directory,
-... ).write_image(file_name)
+... ).write_html(file_name)
 
-.. image:: images/most_local_cited_references.png
-    :width: 700px
-    :align: center
+.. raw:: html
 
+    <iframe src="_static/most_local_cited_references.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ._bibliometrix_scatter_plot import bibliometrix_scatter_plot
-from .document_indicators import document_indicators
+from .most_cited_documents import most_cited_documents
 
 
 def most_local_cited_references(
     top_n=20,
     directory="./",
 ):
-
-    indicators = document_indicators(directory=directory, file_name="references.csv")
-    indicators = indicators.sort_values(by="local_citations", ascending=False)
-    indicators = indicators.head(top_n)
-
-    return bibliometrix_scatter_plot(
-        x=indicators.local_citations,
-        y=indicators.index,
+    return most_cited_documents(
+        metric="local_citations",
+        top_n=top_n,
+        directory=directory,
         title="Most local cited references",
-        text=indicators.local_citations,
-        xlabel="Local citations",
-        ylabel="Reference",
+        file_name="references.csv",
     )
