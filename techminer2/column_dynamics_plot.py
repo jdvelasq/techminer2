@@ -26,6 +26,7 @@ def column_dynamics_plot(
     column,
     top_n=10,
     directory="./",
+    title=None,
 ):
     dynamics = column_dynamics_table(
         column=column,
@@ -39,30 +40,35 @@ def column_dynamics_plot(
     )
     dynamics = dynamics.rename(
         columns={
-            "index": "year",
+            "index": "Year",
             "value": "Cum Num Documents",
             column: column.replace("_", " ").title(),
         }
     )
 
-    fig = px.line(
+    fig = px.scatter(
         dynamics,
-        x="year",
-        y="Cum Num Documents",
-        color=column.replace("_", " ").title(),
+        x="Year",
+        y=column.replace("_", " ").title(),
+        size="Cum Num Documents",
+        color_discrete_sequence=["darkslategray"],
+        title=title,
     )
     fig.update_layout(paper_bgcolor="white", plot_bgcolor="white")
-    fig.update_xaxes(tickangle=270)
     fig.update_yaxes(
-        linecolor="gray",
-        linewidth=2,
-        gridcolor="lightgray",
+        linecolor="white",
+        linewidth=1,
+        autorange="reversed",
+        gridcolor="gray",
         griddash="dot",
     )
     fig.update_xaxes(
-        linecolor="gray",
-        linewidth=2,
-        gridcolor="lightgray",
+        linecolor="white",
+        linewidth=1,
+        gridcolor="gray",
         griddash="dot",
     )
+    fig.update_xaxes(tickangle=270)
+    fig.update_layout(xaxis_type="category")
+
     return fig
