@@ -1,16 +1,20 @@
 """
-Corresponding Author's Country
+Corresponding author's country
 ===============================================================================
 
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "sphinx/images/corresponding_authors_country.png"
->>> corresponding_authors_country(directory=directory).savefig(file_name)
+>>> file_name = "sphinx/_static/corresponding_authors_country.html"
 
-.. image:: images/corresponding_authors_country.png
-    :width: 700px
-    :align: center
+>>> corresponding_authors_country(
+...     top_n=20,
+...     directory=directory,
+... ).write_html(file_name)
+
+.. raw:: html
+
+    <iframe src="_static/corresponding_authors_country.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
 >>> corresponding_authors_country(directory=directory, plot=False).head()
@@ -24,9 +28,9 @@ australia                        4                    14   3.500000
 
 
 """
+import plotly.express as px
 
 from .collaboration_indicators import collaboration_indicators
-from .stacked_bar_chart import stacked_bar_chart
 
 
 def corresponding_authors_country(top_n=20, directory="./", plot=True):
@@ -43,9 +47,46 @@ def corresponding_authors_country(top_n=20, directory="./", plot=True):
         return indicators
 
     indicators = indicators.head(top_n)
-    return stacked_bar_chart(
-        indicators,
-        title="Corresponding Author's Country",
-        xlabel="Num Documents",
-        ylabel="Country",
+    indicators = indicators.reset_index()
+
+    indicators = indicators.melt(
+        id_vars="countries", value_vars=["single_publication", "multiple_publication"]
     )
+    indicators = indicators.rename(
+        columns={"variable": "publication", "value": "Num Documents"}
+    )
+    indicators.publication = indicators.publication.map(
+        lambda x: x.replace("_", " ").title()
+    )
+    indicators.countries = indicators.countries.map(lambda x: x.title())
+
+    fig = px.bar(
+        indicators,
+        x="Num Documents",
+        y="countries",
+        color="publication",
+        title="Corresponding author's country",
+        hover_data=["Num Documents"],
+        orientation="h",
+        color_discrete_map={
+            "Single Publication": "#8da4b4",
+            "Multiple Publication": "#556f81",
+        },
+    )
+    # "slategray"
+    fig.update_layout(paper_bgcolor="white", plot_bgcolor="white")
+    fig.update_yaxes(
+        linecolor="gray",
+        linewidth=2,
+        autorange="reversed",
+        # gridcolor="gray",
+        # griddash="dot",
+    )
+    fig.update_xaxes(
+        linecolor="gray",
+        linewidth=2,
+        gridcolor="gray",
+        griddash="dot",
+    )
+
+    return fig
