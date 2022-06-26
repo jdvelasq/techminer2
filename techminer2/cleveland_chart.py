@@ -11,6 +11,7 @@ Cleveland Chart
 ...    column="author_keywords", 
 ...    top_n=20,
 ...    directory=directory,
+...     metric="num_documents",
 ... ).write_html(file_name)
 
 .. raw:: html
@@ -18,9 +19,8 @@ Cleveland Chart
     <iframe src="_static/cleveland_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-import plotly.express as px
-
 from .column_indicators_by_metric import column_indicators_by_metric
+from .cleveland_plot import cleveland_plot
 
 
 def cleveland_chart(
@@ -43,35 +43,9 @@ def cleveland_chart(
         metric=metric,
         file_name=file_name,
     )
-    indicators = indicators.reset_index()
-    column_names = {
-        column: column.replace("_", " ").title() for column in indicators.columns
-    }
-    indicators = indicators.rename(columns=column_names)
 
-    fig = px.scatter(
-        indicators,
-        x=metric.replace("_", " ").title(),
-        y=column.replace("_", " ").title(),
-        hover_data=["Num Documents", "Global Citations", "Local Citations"],
+    return cleveland_plot(
+        dataframe=indicators,
+        metric=metric,
         title=title,
     )
-    fig.update_traces(marker=dict(size=10, color="black"))
-    fig.update_traces(textposition="middle right")
-    fig.update_traces(line=dict(color="black"))
-    fig.update_layout(paper_bgcolor="white", plot_bgcolor="white")
-    fig.update_yaxes(
-        linecolor="gray",
-        linewidth=2,
-        gridcolor="lightgray",
-        autorange="reversed",
-        griddash="dot",
-    )
-    fig.update_xaxes(
-        linecolor="gray",
-        linewidth=2,
-        gridcolor="lightgray",
-        griddash="dot",
-    )
-
-    return fig
