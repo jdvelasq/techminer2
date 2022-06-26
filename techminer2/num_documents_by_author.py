@@ -8,7 +8,9 @@ Num documents by author (Most relevant authors)
 
 
 >>> num_documents_by_author(
-...     directory
+...     directory,
+...     top_n=20,
+...     plot="column",
 ... ).write_html(file_name)
 
 .. raw:: html
@@ -17,6 +19,7 @@ Num documents by author (Most relevant authors)
 
 """
 from .bar_chart import bar_chart
+from .column_chart import column_chart
 
 
 def num_documents_by_author(
@@ -31,6 +34,7 @@ def num_documents_by_author(
 
     plot_function = {
         "bar": bar_chart,
+        "column": column_chart,
     }[plot]
 
     return plot_function(
