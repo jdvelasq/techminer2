@@ -22,11 +22,8 @@ Bar plot
 
 
 """
-import textwrap
-
-import plotly.express as px
-
-TEXTLEN = 40
+from .make_bar_plot import make_bar_plot
+from .prepare_plot import prepare_plot
 
 
 def bar_plot(
@@ -43,48 +40,30 @@ def bar_plot(
     :return: Plotly figure
     """
 
-    x_label = column.replace("_", " ").title()
-    y_label = dataframe.index.name.replace("_", " ").title()
+    x_label, y_label, dataframe = prepare_plot(dataframe, column)
 
-    dataframe = dataframe.reset_index()
-    names_dict = {col: col.replace("_", " ").title() for col in dataframe.columns}
-    dataframe.rename(columns=names_dict, inplace=True)
-    dataframe[y_label] = dataframe[y_label].str.title()
+    # x_label = column.replace("_", " ").title()
+    # y_label = dataframe.index.name.replace("_", " ").title()
 
-    if dataframe.index.dtype != "int64":
-        dataframe.index = [
-            textwrap.shorten(
-                text=text,
-                width=TEXTLEN,
-                placeholder="...",
-                break_long_words=False,
-            )
-            for text in dataframe.index.to_list()
-        ]
+    # dataframe = dataframe.reset_index()
+    # names_dict = {col: col.replace("_", " ").title() for col in dataframe.columns}
+    # dataframe.rename(columns=names_dict, inplace=True)
+    # dataframe[y_label] = dataframe[y_label].str.title()
 
-    fig = px.bar(
-        dataframe,
-        x=x_label,
-        y=y_label,
-        hover_data=dataframe.columns.to_list(),
+    # if dataframe.index.dtype != "int64":
+    #     dataframe.index = [
+    #         textwrap.shorten(
+    #             text=text,
+    #             width=TEXTLEN,
+    #             placeholder="...",
+    #             break_long_words=False,
+    #         )
+    #         for text in dataframe.index.to_list()
+    #     ]
+
+    return make_bar_plot(
+        dataframe=dataframe,
+        x_label=x_label,
+        y_label=y_label,
         title=title,
-        orientation="h",
     )
-    fig.update_layout(paper_bgcolor="white", plot_bgcolor="white")
-    fig.update_traces(
-        marker_color="rgb(171,171,171)", marker_line={"color": "darkslategray"}
-    )
-    fig.update_yaxes(
-        linecolor="gray",
-        linewidth=2,
-        autorange="reversed",
-        gridcolor="lightgray",
-        griddash="dot",
-    )
-    fig.update_xaxes(
-        linecolor="gray",
-        linewidth=2,
-        gridcolor="lightgray",
-        griddash="dot",
-    )
-    return fig
