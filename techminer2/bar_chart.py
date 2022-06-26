@@ -32,6 +32,7 @@ def bar_chart(
     title=None,
 ):
     """Plots a bar chart from a column of a dataframe."""
+
     indicators = column_indicators_by_metric(
         column,
         min_occ=min_occ,
@@ -43,6 +44,6 @@ def bar_chart(
 
     return bar_plot(
         dataframe=indicators,
-        column=metric,
+        metric=metric,
         title=title,
     )
