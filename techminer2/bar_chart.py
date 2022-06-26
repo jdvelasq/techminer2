@@ -46,36 +46,3 @@ def bar_chart(
         column=metric,
         title=title,
     )
-
-    # indicators = indicators.reset_index()
-    # column_names = {
-    #     column: column.replace("_", " ").title() for column in indicators.columns
-    # }
-    # indicators = indicators.rename(columns=column_names)
-
-    # fig = px.bar(
-    #     indicators,
-    #     x=metric.replace("_", " ").title(),
-    #     y=column.replace("_", " ").title(),
-    #     hover_data=["Num Documents", "Global Citations", "Local Citations"],
-    #     title=title,
-    #     orientation="h",
-    # )
-    # fig.update_traces(textposition="outside")
-    # fig.update_layout(paper_bgcolor="white", plot_bgcolor="white")
-    # fig.update_traces(marker_color="lightgray", marker_line={"color": "gray"})
-    # fig.update_yaxes(
-    #     linecolor="gray",
-    #     linewidth=2,
-    #     autorange="reversed",
-    #     gridcolor="lightgray",
-    #     griddash="dot",
-    # )
-    # fig.update_xaxes(
-    #     linecolor="gray",
-    #     linewidth=2,
-    #     gridcolor="lightgray",
-    #     griddash="dot",
-    # )
-
-    # return fig
