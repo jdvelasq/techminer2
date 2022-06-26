@@ -1,12 +1,15 @@
 """
-Word Cloud
+Word cloud (chart)
 ===============================================================================
 
 >>> from techminer2 import *
 >>> directory = "data/"
 >>> file_name = "sphinx/images/word_cloud.png"
+
 >>> word_cloud(
 ...     column='author_keywords', 
+...     metric='num_documents',
+...     title="Author Keywords",
 ...     top_n=50, 
 ...     directory=directory,
 ... ).savefig(file_name)
@@ -15,43 +18,39 @@ Word Cloud
     :width: 700px
     :align: center
 
-
 """
 
-from ._word_cloud import _word_cloud
-from .topic_view import topic_view
+from .column_indicators_by_metric import column_indicators_by_metric
+from .word_cloud_plot import word_cloud_plot
 
 
 def word_cloud(
     column,
-    metric="num_documents",
     top_n=None,
-    min_occ=1,
+    min_occ=None,
     max_occ=None,
-    sort_values=None,
-    sort_index=None,
     directory="./",
+    metric="num_documents",
+    title=None,
+    file_name="documents.csv",
     #
-    figsize=(10, 5),
-    cmap="Greys",
+    figsize=(10, 10),
 ):
+    """Makes a word cloud from a dataframe."""
 
-    indicators = topic_view(
-        column=column,
-        metric=metric,
-        top_n=top_n,
+    indicators = column_indicators_by_metric(
+        column,
         min_occ=min_occ,
         max_occ=max_occ,
-        sort_values=sort_values,
-        sort_index=sort_index,
+        top_n=top_n,
         directory=directory,
+        metric=metric,
+        file_name=file_name,
     )
 
-    indicators = indicators[metric]
-
-    return _word_cloud(
-        series=indicators,
-        darkness=indicators,
-        cmap=cmap,
+    return word_cloud_plot(
+        dataframe=indicators,
+        metric=metric,
+        title=title,
         figsize=figsize,
     )
