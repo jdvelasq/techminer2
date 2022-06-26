@@ -4,22 +4,21 @@ Circle Chart
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "sphinx/images/circle_chart.png"
+>>> file_name = "sphinx/_static/circle_chart.html"
+
 >>> circle_chart(
-...     'author_keywords', 
-...     top_n=15, 
+...     'author_keywords',
+...     top_n=15,
 ...     directory=directory,
 ...     hole=0.5,
-... ).write_image(file_name)
+... ).write_html(file_name)
 
-.. image:: images/circle_chart.png
-    :width: 700px
-    :align: center
+.. raw:: html
+
+    <iframe src="_static/circle_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-
-import plotly.express as px
-
+from .circle_plot import circle_plot
 from .column_indicators_by_metric import column_indicators_by_metric
 
 
@@ -29,9 +28,12 @@ def circle_chart(
     min_occ=None,
     max_occ=None,
     directory="./",
-    hole=0.0,
     metric="num_documents",
+    title=None,
+    file_name="documents.csv",
+    hole=0.0,
 ):
+    """Makes a circle chart from a dataframe."""
 
     indicators = column_indicators_by_metric(
         column,
@@ -40,13 +42,12 @@ def circle_chart(
         top_n=top_n,
         directory=directory,
         metric=metric,
+        file_name=file_name,
     )
 
-    fig = px.pie(
-        values=indicators.values,
-        names=indicators.index,
+    return circle_plot(
+        dataframe=indicators,
+        metric=metric,
+        title=title,
         hole=hole,
     )
-    fig.update_traces(textinfo="value")
-    fig.update_layout(legend=dict(y=0.5))
-    return fig
