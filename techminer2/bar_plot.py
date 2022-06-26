@@ -72,7 +72,7 @@ def bar_plot(
     )
     fig.update_layout(paper_bgcolor="white", plot_bgcolor="white")
     fig.update_traces(
-        marker_color="rgb(96,99,106)", marker_line={"color": "darkslategray"}
+        marker_color="rgb(171,171,171)", marker_line={"color": "darkslategray"}
     )
     fig.update_yaxes(
         linecolor="gray",
