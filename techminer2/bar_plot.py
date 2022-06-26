@@ -1,27 +1,6 @@
-"""
-Bar plot
-===============================================================================
+"""Makes a bar plot from a dataframe."""
 
->>> from techminer2 import *
->>> directory = "data/"
->>> file_name = "sphinx/_static/bar_plot.html"
->>> dataframe = column_indicators(
-...     column="countries",
-...     directory=directory,
-... ).head(20)
-
->>> bar_plot(
-...     dataframe,
-...     metric="num_documents",
-...     title="Annual Scientific Production",
-... ).write_html(file_name)
-
-.. raw:: html
-
-    <iframe src="_static/bar_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
-
-"""
-from .make_bar_plot import make_bar_plot
+from .bar_px import bar_px
 from .format_dataset_to_plot import format_dataset_to_plot
 
 
@@ -40,7 +19,7 @@ def bar_plot(
     """
 
     metric, column, dataframe = format_dataset_to_plot(dataframe, metric)
-    return make_bar_plot(
+    return bar_px(
         dataframe=dataframe,
         x_label=metric,
         y_label=column,

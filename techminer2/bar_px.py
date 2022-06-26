@@ -3,13 +3,14 @@
 import plotly.express as px
 
 
-def make_bar_plot(
+def bar_px(
     dataframe,
     x_label,
     y_label,
     title,
 ):
-    """Makes a bar plot."""
+    """Primitive to make a bar plot."""
+
     fig = px.bar(
         dataframe,
         x=x_label,
