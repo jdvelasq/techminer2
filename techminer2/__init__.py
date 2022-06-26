@@ -22,7 +22,6 @@ from .circle_chart import circle_chart
 from .clean_institutions import clean_institutions
 from .clean_keywords import clean_keywords
 from .cleveland_chart import cleveland_chart
-from .cleveland_plot import cleveland_plot
 from .co_citation_matrix import co_citation_matrix
 from .co_citation_network_communities import co_citation_network_communities
 from .co_citation_network_degree_plot import co_citation_network_degree_plot
