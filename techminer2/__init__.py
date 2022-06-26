@@ -79,7 +79,6 @@ from .cross_corr_matrix_html import cross_corr_matrix_html
 from .document_indicators import document_indicators
 from .document_viewer import document_viewer
 from .documents_by_affiliation import documents_by_affiliation
-from .documents_by_author import documents_by_author
 from .documents_by_country import documents_by_country
 from .documents_by_type import documents_by_type
 from .documents_by_year import documents_by_year
@@ -138,6 +137,7 @@ from .most_relevant_authors import most_relevant_authors
 from .most_relevant_institutions import most_relevant_institutions
 from .most_relevant_sources import most_relevant_sources
 from .network import network
+from .num_documents_by_author import num_documents_by_author
 from .occurrence_matrix import occurrence_matrix
 from .occurrence_matrix_associations import occurrence_matrix_associations
 from .occurrence_matrix_bubble_chart import occurrence_matrix_bubble_chart
