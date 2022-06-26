@@ -5,13 +5,13 @@ import plotly.express as px
 TEXTLEN = 40
 
 
-def make_column_plot(
+def column_px(
     dataframe,
     x_label=None,
     y_label=None,
     title=None,
 ):
-    """Makes a column plot."""
+    """Primitive to make a column plot."""
     fig = px.bar(
         dataframe,
         x=x_label,

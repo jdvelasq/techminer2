@@ -23,8 +23,8 @@ Column plot
     <iframe src="_static/column_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
+from .column_px import column_px
 from .format_dataset_to_plot import format_dataset_to_plot
-from .make_column_plot import make_column_plot
 
 
 def column_plot(
@@ -42,7 +42,7 @@ def column_plot(
     """
 
     metric, column, dataframe = format_dataset_to_plot(dataframe, metric)
-    return make_column_plot(
+    return column_px(
         dataframe=dataframe,
         x_label=column,
         y_label=metric,
