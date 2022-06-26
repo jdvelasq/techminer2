@@ -1,4 +1,5 @@
 """Primitive to make a bar plot."""
+
 import plotly.express as px
 
 
@@ -21,16 +22,17 @@ def make_bar_plot(
     fig.update_traces(
         marker_color="rgb(171,171,171)", marker_line={"color": "darkslategray"}
     )
+    fig.update_xaxes(
+        linecolor="gray",
+        linewidth=2,
+        gridcolor="lightgray",
+        griddash="dot",
+    )
+
     fig.update_yaxes(
         linecolor="gray",
         linewidth=2,
         autorange="reversed",
-        gridcolor="lightgray",
-        griddash="dot",
-    )
-    fig.update_xaxes(
-        linecolor="gray",
-        linewidth=2,
         gridcolor="lightgray",
         griddash="dot",
     )
