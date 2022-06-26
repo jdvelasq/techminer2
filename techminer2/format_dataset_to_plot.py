@@ -4,7 +4,7 @@ import textwrap
 TEXTLEN = 40
 
 
-def prepare_plot(
+def format_dataset_to_plot(
     dataframe,
     metric,
 ):

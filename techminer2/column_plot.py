@@ -23,8 +23,8 @@ Column plot
     <iframe src="_static/column_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
+from .format_dataset_to_plot import format_dataset_to_plot
 from .make_column_plot import make_column_plot
-from .prepare_plot import prepare_plot
 
 
 def column_plot(
@@ -41,7 +41,7 @@ def column_plot(
     :return: Plotly figure
     """
 
-    metric, column, dataframe = prepare_plot(dataframe, metric)
+    metric, column, dataframe = format_dataset_to_plot(dataframe, metric)
     return make_column_plot(
         dataframe=dataframe,
         x_label=column,

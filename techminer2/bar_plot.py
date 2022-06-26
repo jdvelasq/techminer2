@@ -22,7 +22,7 @@ Bar plot
 
 """
 from .make_bar_plot import make_bar_plot
-from .prepare_plot import prepare_plot
+from .format_dataset_to_plot import format_dataset_to_plot
 
 
 def bar_plot(
@@ -39,7 +39,7 @@ def bar_plot(
     :return: Plotly figure
     """
 
-    metric, column, dataframe = prepare_plot(dataframe, metric)
+    metric, column, dataframe = format_dataset_to_plot(dataframe, metric)
     return make_bar_plot(
         dataframe=dataframe,
         x_label=metric,
