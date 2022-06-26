@@ -4,74 +4,40 @@ Cleveland plot
 
 
 >>> from techminer2 import *
->>> from techminer2.plots import *
+>>> from techminer2.cleveland_plot import cleveland_plot
 >>> directory = "data/"
->>> file_name = "sphinx/images/cleveland_plot.png"
->>> series = column_indicators(
-...     column="countries", 
+>>> file_name = "sphinx/_static/cleveland_plot.html"
+>>> dataframe = column_indicators(
+...     column="countries",
 ...     directory=directory,
-... ).num_documents.head(20)
+... ).head(20)
 
 >>> cleveland_plot(
-...     series,
-...     x_label=None,
-...     y_label=None,
-...     title=None,
-... ).write_image(file_name)
+...     dataframe,
+...     metric="num_documents",
+...     title="Most relevant countries",
+... ).write_html(file_name)
 
-.. image:: images/cleveland_plot.png
-    :width: 700px
-    :align: center
+.. raw:: html
+
+    <iframe src="_static/cleveland_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
+
 
 """
-import textwrap
-
-import plotly.express as px
-
-TEXTLEN = 40
+from .format_dataset_to_plot import format_dataset_to_plot
+from .cleveland_px import cleveland_px
 
 
 def cleveland_plot(
-    series,
-    x_label=None,
-    y_label=None,
+    dataframe,
+    metric,
     title=None,
 ):
 
-    if x_label is None:
-        x_label = series.name.replace("_", " ").title()
-
-    if y_label is None:
-        y_label = series.index.name.replace("_", " ").title()
-
-    if series.index.dtype != "int64":
-        series.index = [
-            textwrap.shorten(
-                text=text,
-                width=TEXTLEN,
-                placeholder="...",
-                break_long_words=False,
-            )
-            for text in series.index.to_list()
-        ]
-
-    fig = px.scatter(
-        x=series.values,
-        y=series.index,
+    metric, column, dataframe = format_dataset_to_plot(dataframe, metric)
+    return cleveland_px(
+        dataframe=dataframe,
+        x_label=metric,
+        y_label=column,
         title=title,
-        text=series.astype(str),
-        labels={"x": x_label, "y": y_label},
     )
-    fig.update_traces(marker=dict(size=10, color="black"))
-    fig.update_traces(textposition="middle right")
-    fig.update_traces(line=dict(color="black"))
-    fig.update_layout(paper_bgcolor="white", plot_bgcolor="white")
-    fig.update_yaxes(
-        linecolor="gray",
-        linewidth=2,
-        gridcolor="lightgray",
-        autorange="reversed",
-        griddash="dot",
-    )
-    fig.update_xaxes(showticklabels=False)
-    return fig
