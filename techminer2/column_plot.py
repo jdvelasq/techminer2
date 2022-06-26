@@ -3,72 +3,48 @@ Column plot
 ===============================================================================
 
 >>> from techminer2 import *
+>>> from techminer2.column_plot import column_plot
 >>> directory = "data/"
->>> file_name = "sphinx/images/column_plot.png"
->>> series = column_indicators(
-...     column="countries", 
+>>> file_name = "sphinx/_static/column_plot.html"
+>>> dataframe = column_indicators(
+...     column="countries",
 ...     directory=directory,
-... ).num_documents.head(20)
+... ).head(20)
+
 
 >>> column_plot(
-...     series,
-...     x_label=None,
-...     y_label=None,
-...     title=None,
-... ).write_image(file_name)
+...     dataframe,
+...     metric="num_documents",
+...     title="Most relevant countries",
+... ).write_html(file_name)
 
-.. image:: images/column_plot.png
-    :width: 700px
-    :align: center
+.. raw:: html
+
+    <iframe src="_static/column_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-import textwrap
-
-import plotly.express as px
-
-TEXTLEN = 40
+from .make_column_plot import make_column_plot
+from .prepare_plot import prepare_plot
 
 
 def column_plot(
-    series,
-    x_label=None,
-    y_label=None,
+    dataframe,
+    metric,
     title=None,
 ):
-    if x_label is None:
-        x_label = series.index.name.replace("_", " ").title()
+    """
+    Make a  bar plot from a dataframe.
 
-    if y_label is None:
-        y_label = series.name.replace("_", " ").title()
+    :param dataframe: Dataframe
+    :param column: Column to plot
+    :param title: Title of the plot
+    :return: Plotly figure
+    """
 
-    if series.index.dtype != "int64":
-        series.index = [
-            textwrap.shorten(
-                text=text,
-                width=TEXTLEN,
-                placeholder="...",
-                break_long_words=False,
-            )
-            for text in series.index.to_list()
-        ]
-
-    fig = px.bar(
-        x=series.index,
-        y=series.values,
-        text=series.astype(str),
+    metric, column, dataframe = prepare_plot(dataframe, metric)
+    return make_column_plot(
+        dataframe=dataframe,
+        x_label=column,
+        y_label=metric,
         title=title,
-        labels={"x": x_label, "y": y_label},
-        orientation="v",
     )
-    fig.update_traces(textposition="outside")
-    fig.update_layout(paper_bgcolor="white", plot_bgcolor="white")
-    fig.update_traces(marker_color="lightgray", marker_line={"color": "gray"})
-    fig.update_xaxes(
-        linecolor="gray",
-        linewidth=2,
-        autorange="reversed",
-    )
-    fig.update_xaxes(tickangle=270)
-    fig.update_yaxes(showticklabels=False)
-
-    return fig
