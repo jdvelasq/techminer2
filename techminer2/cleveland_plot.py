@@ -1,31 +1,7 @@
-"""
-Cleveland plot
-===============================================================================
+"""Makes a cleveland plot from a dataframe."""
 
-
->>> from techminer2 import *
->>> from techminer2.cleveland_plot import cleveland_plot
->>> directory = "data/"
->>> file_name = "sphinx/_static/cleveland_plot.html"
->>> dataframe = column_indicators(
-...     column="countries",
-...     directory=directory,
-... ).head(20)
-
->>> cleveland_plot(
-...     dataframe,
-...     metric="num_documents",
-...     title="Most relevant countries",
-... ).write_html(file_name)
-
-.. raw:: html
-
-    <iframe src="_static/cleveland_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
-
-
-"""
-from .format_dataset_to_plot import format_dataset_to_plot
 from .cleveland_px import cleveland_px
+from .format_dataset_to_plot import format_dataset_to_plot
 
 
 def cleveland_plot(
@@ -33,6 +9,7 @@ def cleveland_plot(
     metric,
     title=None,
 ):
+    """Makes a cleveland plot from a dataframe."""
 
     metric, column, dataframe = format_dataset_to_plot(dataframe, metric)
     return cleveland_px(

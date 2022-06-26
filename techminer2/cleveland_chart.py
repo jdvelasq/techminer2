@@ -19,8 +19,8 @@ Cleveland Chart
     <iframe src="_static/cleveland_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .column_indicators_by_metric import column_indicators_by_metric
 from .cleveland_plot import cleveland_plot
+from .column_indicators_by_metric import column_indicators_by_metric
 
 
 def cleveland_chart(
@@ -33,6 +33,7 @@ def cleveland_chart(
     title=None,
     file_name="documents.csv",
 ):
+    """Makes a cleveland chart from a dataframe."""
 
     indicators = column_indicators_by_metric(
         column,
