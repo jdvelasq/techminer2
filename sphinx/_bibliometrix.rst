@@ -54,6 +54,7 @@ Sources
       most_global_cited_sources
       most_local_cited_sources
       sources_production_over_time
+      source_local_impact
 
    .. toctree::
 
@@ -61,7 +62,7 @@ Sources
       
       bradford_law
       core_sources 
-      source_local_impact
+      
       source_dynamics_table
       source_dynamics_plot
 
@@ -78,6 +79,7 @@ Authors
       most_global_cited_authors
       most_local_cited_authors
       authors_production_over_time
+      author_local_impact
 
    .. toctree::
       :maxdepth: 1
@@ -85,7 +87,7 @@ Authors
       
       authors_production_per_year
       lotka_law    
-      author_local_impact
+      
 
 
 Institutions
@@ -98,16 +100,15 @@ Institutions
       most_global_cited_institutions
       most_local_cited_institutions
       institutions_production_over_time
+      institution_local_impact
 
    .. toctree::
       :maxdepth: 1
 
       
-      
-      
-      institutions_production_over_time
+
       institutions_production_per_year
-      institution_local_impact
+      
 
 
 Countries
@@ -120,6 +121,7 @@ Countries
       most_global_cited_countries
       most_local_cited_countries
       countries_production_over_time
+      country_local_impact
 
    .. toctree::
       :maxdepth: 1
@@ -128,7 +130,7 @@ Countries
       country_scientific_production
       
       countries_production_per_year
-      country_local_impact
+      
 
 
 
