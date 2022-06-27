@@ -79,12 +79,13 @@ Report
         circle_chart
         cleveland_chart                
         column_chart
-        line_chart        
+        line_chart      
+        word_cloud          
+
 
     .. toctree::
         :maxdepth: 1
 
-        
         gantt_chart 
         tree_map
 
@@ -99,11 +100,9 @@ Repo
 
     .. toctree::
         :maxdepth: 1
-
         
         dotted_gantt_chart
         timeline_chart
-        word_cloud
         world_map
 
 
