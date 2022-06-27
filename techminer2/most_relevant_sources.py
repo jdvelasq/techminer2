@@ -1,17 +1,15 @@
 """
-Most relevant sources
+Most relevant sources (ok!)
 ===============================================================================
-
-See :doc:`column indicators <column_indicators>` to obtain a `pandas.Dataframe` 
-with the data.
 
 >>> from techminer2 import *
 >>> directory = "data/"
 >>> file_name = "sphinx/_static/most_relevant_sources.html"
 
 >>> most_relevant_sources(
-...     directory=directory,
+...     directory,
 ...     top_n=20,
+...     plot="cleveland",
 ... ).write_html(file_name)
 
 .. raw:: html
@@ -19,17 +17,26 @@ with the data.
     <iframe src="_static/most_relevant_sources.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .cleveland_chart import cleveland_chart
+from .plot_metric_by_item import plot_metric_by_item
 
 
-def most_relevant_sources(directory="./", top_n=20):
+def most_relevant_sources(
+    directory="./",
+    top_n=20,
+    min_occ=None,
+    max_occ=None,
+    title="Num documents by source",
+    plot="bar",
+):
+    """Plots the number of documents by source using the specified plot."""
 
-    return cleveland_chart(
+    return plot_metric_by_item(
         column="iso_source_name",
-        top_n=top_n,
-        min_occ=None,
-        max_occ=None,
-        directory=directory,
         metric="num_documents",
-        title="Most relevant sources",
+        directory=directory,
+        top_n=top_n,
+        min_occ=min_occ,
+        max_occ=max_occ,
+        title=title,
+        plot=plot,
     )

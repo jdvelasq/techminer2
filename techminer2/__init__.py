@@ -147,7 +147,6 @@ from .network import network
 from .num_documents_by_author import num_documents_by_author
 from .num_documents_by_country import num_documents_by_country
 from .num_documents_by_institution import num_documents_by_institution
-from .num_documents_by_source import num_documents_by_source
 from .num_documents_by_type import num_documents_by_type
 from .occurrence_matrix import occurrence_matrix
 from .occurrence_matrix_associations import occurrence_matrix_associations

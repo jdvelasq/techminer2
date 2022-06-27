@@ -13,22 +13,23 @@ tool by users. It should be noted that the functions presented in this section c
 a part of TechMiner's capabilities, and in this sense, Bibliometrix contains only a 
 subset of the analytical capabilities of TechMiner.
 
-* **Data**
 
+Data
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    See ``Import Scopus Files`` in `Data <_user_data.html>`__. 
 
 
-* **Filter**
-
+Filter
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    .. toctree::
 
       user_filters
 
 
-* **Overview**
-
+Overview
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    .. toctree::
 
       num_documents_by_type
@@ -48,7 +49,6 @@ Sources
 
    .. toctree::
 
-      num_documents_by_source
       global_citations_by_source
       local_citations_by_source
 
