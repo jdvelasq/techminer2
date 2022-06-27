@@ -107,10 +107,6 @@ from .find_abbreviations import find_abbreviations
 from .find_keyword import find_keyword
 from .find_string import find_string
 from .gantt_chart import gantt_chart
-from .global_citations_by_author import global_citations_by_author
-from .global_citations_by_country import global_citations_by_country
-from .global_citations_by_institution import global_citations_by_institution
-from .global_citations_by_source import global_citations_by_source
 from .global_citations_by_type import global_citations_by_type
 from .growth_indicators import growth_indicators
 from .heat_map import heat_map
@@ -133,9 +129,11 @@ from .main_information import main_information
 from .map_chart import map_chart
 from .merge_keywords import merge_keywords
 from .most_frequent_words import most_frequent_words
+from .most_global_cited_authors import most_global_cited_authors
 from .most_global_cited_countries import most_global_cited_countries
 from .most_global_cited_documents import most_global_cited_documents
 from .most_global_cited_institutions import most_global_cited_institutions
+from .most_global_cited_sources import most_global_cited_sources
 from .most_local_cited_authors import most_local_cited_authors
 from .most_local_cited_documents import most_local_cited_documents
 from .most_local_cited_references import most_local_cited_references
