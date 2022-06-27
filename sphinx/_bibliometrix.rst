@@ -53,6 +53,7 @@ Sources
       most_relevant_sources
       most_global_cited_sources
       most_local_cited_sources
+      sources_production_over_time
 
    .. toctree::
 
@@ -76,11 +77,12 @@ Authors
       most_relevant_authors
       most_global_cited_authors
       most_local_cited_authors
+      authors_production_over_time
 
    .. toctree::
       :maxdepth: 1
       
-      authors_production_over_time
+      
       authors_production_per_year
       lotka_law    
       author_local_impact
@@ -95,6 +97,7 @@ Institutions
       most_relevant_institutions
       most_global_cited_institutions
       most_local_cited_institutions
+      institutions_production_over_time
 
    .. toctree::
       :maxdepth: 1
@@ -116,13 +119,14 @@ Countries
       most_relevant_countries
       most_global_cited_countries
       most_local_cited_countries
+      countries_production_over_time
 
    .. toctree::
       :maxdepth: 1
       
       corresponding_authors_country
       country_scientific_production
-      countries_production_over_time
+      
       countries_production_per_year
       country_local_impact
 
