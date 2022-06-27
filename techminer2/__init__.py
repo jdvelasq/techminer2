@@ -110,7 +110,7 @@ from .global_citations_by_type import global_citations_by_type
 from .growth_indicators import growth_indicators
 from .heat_map import heat_map
 from .impact_indicators import impact_indicators
-from .impact_indicators_plot import impact_indicators_plot
+from .local_impact import local_impact
 from .import_references import import_references
 from .import_scopus_files import import_scopus_files
 from .institution_local_impact import institution_local_impact
