@@ -52,7 +52,7 @@ Sources
 
       most_relevant_sources
       most_global_cited_sources
-      most_local_cited_sources_from_reference_lists
+      most_local_cited_sources
 
    .. toctree::
 
@@ -94,7 +94,7 @@ Institutions
 
       most_relevant_institutions
       most_global_cited_institutions
-      most_local_cited_institutions_from_reference_lists
+      most_local_cited_institutions
 
    .. toctree::
       :maxdepth: 1
