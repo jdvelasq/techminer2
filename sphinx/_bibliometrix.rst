@@ -113,7 +113,7 @@ Countries
    .. toctree::
       :maxdepth: 1
 
-      num_documents_by_country
+      
       global_citations_by_country
       local_citations_by_country
 
@@ -121,6 +121,7 @@ Countries
    .. toctree::
       :maxdepth: 1
 
+      most_relevant_countries
       corresponding_authors_country
       country_scientific_production
       countries_production_over_time

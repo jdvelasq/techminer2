@@ -1,12 +1,12 @@
 """
-Num documents by country
+Most relevant countries (ok!)
 ===============================================================================
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "sphinx/_static/num_documents_by_country.html"
+>>> file_name = "sphinx/_static/most_relevant_countries.html"
 
->>> num_documents_by_country(
+>>> most_relevant_countries(
 ...     directory,
 ...     top_n=20,
 ...     plot="cleveland",
@@ -14,18 +14,18 @@ Num documents by country
 
 .. raw:: html
 
-    <iframe src="_static/num_documents_by_country.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="_static/most_relevant_countries.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 from .plot_metric_by_item import plot_metric_by_item
 
 
-def num_documents_by_country(
+def most_relevant_countries(
     directory="./",
     top_n=20,
     min_occ=None,
     max_occ=None,
-    title="Num documents by country",
+    title="Most relevant countries",
     plot="bar",
 ):
     """Plots the number of documents by country using the specified plot."""

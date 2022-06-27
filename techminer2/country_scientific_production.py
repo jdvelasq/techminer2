@@ -12,16 +12,6 @@ Country Scientific Production
     :align: center
 
 
-# >>> from IPython.display import display
-# >>> import ipywidgets as widgets
-# >>> display(widgets.HTML("<h3>Country Scientific Production</h3>"))
-# HTML(value='<h3>Country Scientific Production</h3>')
-
-# >>> import matplotlib.pyplot as plt
-# >>> fig, ax = plt.subplots() 
-# >>> ax.plot([1, 2, 3, 4], [1, 4, 2, 3])
-# >>> display(fig)
-
 """
 from os.path import dirname, join
 
