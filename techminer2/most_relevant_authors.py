@@ -1,5 +1,5 @@
 """
-Most relevant authors (ok!)
+Most relevant authors
 ===============================================================================
 
 >>> from techminer2 import *
@@ -10,7 +10,7 @@ Most relevant authors (ok!)
 >>> most_relevant_authors(
 ...     directory,
 ...     top_n=20,
-...     plot="bar",
+...     plot="cleveland",
 ... ).write_html(file_name)
 
 .. raw:: html
@@ -26,7 +26,7 @@ def most_relevant_authors(
     top_n=20,
     min_occ=None,
     max_occ=None,
-    title="Num documents by author",
+    title="Most relevant authors",
     plot="bar",
 ):
     """Plots the number of documents by author using the specified plot."""
@@ -40,4 +40,5 @@ def most_relevant_authors(
         max_occ=max_occ,
         title=title,
         plot=plot,
+        file_name="documents.csv",
     )
