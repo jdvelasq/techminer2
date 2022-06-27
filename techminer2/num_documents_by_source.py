@@ -31,7 +31,7 @@ def num_documents_by_source(
     """Plots the number of documents by source using the specified plot."""
 
     return plot_metric_by_item(
-        column="source_name",
+        column="iso_source_name",
         metric="num_documents",
         directory=directory,
         top_n=top_n,
