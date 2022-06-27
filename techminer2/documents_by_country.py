@@ -1,31 +1,31 @@
 """
-Documents by country
+Documents per country
 ===============================================================================
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "sphinx/_static/documents_by_country.html"
-
 
 >>> documents_by_country(
-...     directory
-... ).write_html(file_name)
-
-.. raw:: html
-
-    <iframe src="_static/documents_by_country.html" height="600px" width="100%" frameBorder="0"></iframe>
+...     directory=directory,
+... ).head()
+  countries  ...                                        document_id
+0  malaysia  ...  Razak MIA et al, 2021, PERTANIKA J SOC SCI HUM...
+1   nigeria  ...  Omodero CO et al, 2021, STUD UNIV VASILE GOLDI...
+2     china  ...                  Li B et al, 2021, FINANCIAL INNOV
+3   hungary  ...         Daragmeh A et al, 2021, J BEHAV EXP FINANC
+4     china  ...         Xiang D et al, 2021, IEEE TRANS ENG MANAGE
+<BLANKLINE>
+[5 rows x 6 columns]
 
 """
-from .bar_chart import bar_chart
+
+from .column_documents import column_documents
 
 
-def documents_by_country(directory):
-
-    return bar_chart(
+def documents_by_country(
+    directory="./",
+):
+    return column_documents(
         column="countries",
-        min_occ=None,
-        max_occ=None,
-        top_n=10,
         directory=directory,
-        metric="num_documents",
     )
