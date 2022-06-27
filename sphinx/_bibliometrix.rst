@@ -92,7 +92,6 @@ Institutions
 
    .. toctree::
       :maxdepth: 1
-
       
       most_global_cited_institutions
       institutions_production_over_time
@@ -107,6 +106,8 @@ Countries
       :maxdepth: 1
 
       num_documents_by_country
+      global_citations_by_country
+
 
    .. toctree::
       :maxdepth: 1
@@ -115,7 +116,6 @@ Countries
       country_scientific_production
       countries_production_over_time
       countries_production_per_year
-      most_global_cited_countries
       country_local_impact
 
 
