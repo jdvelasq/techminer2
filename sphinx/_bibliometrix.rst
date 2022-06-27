@@ -32,11 +32,12 @@ Overview
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    .. toctree::
 
+
+   .. toctree::
+
       num_documents_by_type
       global_citations_by_type
       local_citations_by_type
-
-   .. toctree::
 
       main_information
       annual_scientific_production
@@ -49,13 +50,15 @@ Sources
 
    .. toctree::
 
-      global_citations_by_source
-      local_citations_by_source
-
+      most_relevant_sources
+      most_global_cited_sources
 
    .. toctree::
 
-      most_relevant_sources
+      
+      local_citations_by_source
+
+
       most_local_cited_sources
       bradford_law
       core_sources 
@@ -72,14 +75,14 @@ Authors
    .. toctree::
       :maxdepth: 1
 
+      most_relevant_authors
+      most_global_cited_authors
       
-      global_citations_by_author
-      local_citations_by_author
 
    .. toctree::
       :maxdepth: 1
 
-      most_relevant_authors
+      local_citations_by_author
       most_local_cited_authors
       authors_production_over_time
       authors_production_per_year
@@ -93,15 +96,15 @@ Institutions
    .. toctree::
       :maxdepth: 1
 
-      num_documents_by_institution
-      global_citations_by_institution
-      local_citations_by_institution
-
+      most_relevant_institutions
+      most_global_cited_institutions
 
    .. toctree::
       :maxdepth: 1
+
       
-      most_global_cited_institutions
+      
+      local_citations_by_institution
       institutions_production_over_time
       institutions_production_per_year
       institution_local_impact
@@ -113,15 +116,16 @@ Countries
    .. toctree::
       :maxdepth: 1
 
-      
-      global_citations_by_country
-      local_citations_by_country
-
+      most_relevant_countries
+      most_global_cited_countries
 
    .. toctree::
       :maxdepth: 1
 
-      most_relevant_countries
+
+      local_citations_by_country
+
+      
       corresponding_authors_country
       country_scientific_production
       countries_production_over_time
@@ -133,6 +137,10 @@ Countries
 
 Documents 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+   .. toctree::
+      :maxdepth: 1
+
 
    .. toctree::
       :maxdepth: 1
@@ -149,11 +157,18 @@ Cited References
    .. toctree::
       :maxdepth: 1
 
+
+   .. toctree::
+      :maxdepth: 1
+
       most_local_cited_references
       rpys
 
 Words
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+   .. toctree::
+      :maxdepth: 1
 
 
    .. toctree::
@@ -171,6 +186,11 @@ Words
 
 Clustering
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+   .. toctree::
+      :maxdepth: 1
+
+
 
    .. toctree::
       :maxdepth: 1
