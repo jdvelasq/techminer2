@@ -1,5 +1,5 @@
 """
-Most Local Cited Sources (in References)
+Most local cited sources (from reference lists) (ok!)
 ===============================================================================
 
 Plot the most local cited sources in the references.
@@ -30,18 +30,24 @@ with the data. In this case, use:
     <iframe src="_static/most_local_cited_sources.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .cleveland_chart import cleveland_chart
+from .plot_metric_by_item import plot_metric_by_item
 
 
-def most_local_cited_sources(directory="./", top_n=20):
+def most_local_cited_sources(
+    directory="./",
+    top_n=20,
+    plot="bar",
+):
+    """Most local cited sources from reference lists."""
 
-    return cleveland_chart(
+    return plot_metric_by_item(
         column="iso_source_name",
+        metric="local_citations",
+        directory=directory,
         top_n=top_n,
         min_occ=None,
         max_occ=None,
-        directory=directory,
-        metric="num_documents",
         title="Most local cited sources",
+        plot=plot,
         file_name="references.csv",
     )

@@ -30,6 +30,7 @@ def bar_chart(
     directory="./",
     metric="num_documents",
     title=None,
+    file_name="documents.csv",
 ):
     """Plots a bar chart from a column of a dataframe."""
 
@@ -40,6 +41,7 @@ def bar_chart(
         top_n=top_n,
         directory=directory,
         metric=metric,
+        file_name=file_name,
     )
 
     return bar_plot(

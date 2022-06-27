@@ -30,6 +30,7 @@ def column_chart(
     directory="./",
     metric="num_documents",
     title=None,
+    file_name="documents.csv",
 ):
     """Plots a column chart from a column of a dataframe."""
 
@@ -40,6 +41,7 @@ def column_chart(
         top_n=top_n,
         directory=directory,
         metric=metric,
+        file_name=file_name,
     )
 
     return column_plot(

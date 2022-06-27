@@ -17,6 +17,7 @@ def plot_metric_by_item(
     max_occ,
     title,
     plot,
+    file_name,
 ):
     """Plots the number of documents by source using the specified plot."""
 
@@ -37,4 +38,5 @@ def plot_metric_by_item(
         directory=directory,
         metric=metric,
         title=title,
+        file_name=file_name,
     )

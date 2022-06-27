@@ -39,4 +39,5 @@ def most_relevant_sources(
         max_occ=max_occ,
         title=title,
         plot=plot,
+        file_name="documents.csv",
     )
