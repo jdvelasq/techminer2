@@ -5,6 +5,10 @@ import numpy as np
 from wordcloud import WordCloud
 
 
+def _recolor(word, **kwargs):
+    return "black"
+
+
 def word_cloud_py(
     dataframe,
     metric,
@@ -20,6 +24,7 @@ def word_cloud_py(
 
     text = {key: value for key, value in zip(dataframe[column], dataframe[metric])}
     wc.generate_from_frequencies(text)
+    wc.recolor(color_func=_recolor)
 
     fig = plt.Figure(figsize=figsize)
     ax = fig.subplots()
