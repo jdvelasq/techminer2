@@ -1,13 +1,13 @@
 """
-Global citations by source
+Most global cited sources
 ===============================================================================
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "sphinx/_static/global_citations_by_source.html"
+>>> file_name = "sphinx/_static/most_global_cited_sources.html"
 
 
->>> global_citations_by_source(
+>>> most_global_cited_sources(
 ...     directory,
 ...     top_n=20,
 ...     plot="bar",
@@ -15,18 +15,18 @@ Global citations by source
 
 .. raw:: html
 
-    <iframe src="_static/global_citations_by_source.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="_static/most_global_cited_sources.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 from .plot_metric_by_item import plot_metric_by_item
 
 
-def global_citations_by_source(
+def most_global_cited_sources(
     directory="./",
     top_n=20,
     min_occ=None,
     max_occ=None,
-    title="Global citations by source",
+    title="Most global cited sources",
     plot="bar",
 ):
     """Plots the number of global citations by source name using the specified plot."""
@@ -40,4 +40,5 @@ def global_citations_by_source(
         max_occ=max_occ,
         title=title,
         plot=plot,
+        file_name="documents.csv",
     )

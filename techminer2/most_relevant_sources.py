@@ -1,5 +1,5 @@
 """
-Most relevant sources (ok!)
+Most relevant sources
 ===============================================================================
 
 >>> from techminer2 import *
@@ -25,7 +25,7 @@ def most_relevant_sources(
     top_n=20,
     min_occ=None,
     max_occ=None,
-    title="Num documents by source",
+    title="Most relevant sources",
     plot="bar",
 ):
     """Plots the number of documents by source using the specified plot."""
