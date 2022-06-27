@@ -16,7 +16,7 @@ Countries' production over time
     <iframe src="_static/countries_production_over_time.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .column_production_by_year import column_production_by_year
+from .production_over_time import production_over_time
 
 
 def countries_production_over_time(
@@ -24,7 +24,7 @@ def countries_production_over_time(
     directory="./",
 ):
 
-    return column_production_by_year(
+    return production_over_time(
         column="countries",
         top_n=top_n,
         directory=directory,
