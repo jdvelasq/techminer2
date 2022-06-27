@@ -72,13 +72,14 @@ Authors
    .. toctree::
       :maxdepth: 1
 
-      num_documents_by_author
+      
       global_citations_by_author
       local_citations_by_author
 
    .. toctree::
       :maxdepth: 1
 
+      most_relevant_authors
       most_local_cited_authors
       authors_production_over_time
       authors_production_per_year
