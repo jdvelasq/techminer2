@@ -33,6 +33,7 @@ subset of the analytical capabilities of TechMiner.
 
       num_documents_by_type
       global_citations_by_type
+      local_citations_by_type
 
    .. toctree::
 
@@ -49,6 +50,7 @@ Sources
 
       num_documents_by_source
       global_citations_by_source
+      local_citations_by_source
 
 
    .. toctree::
@@ -72,6 +74,7 @@ Authors
 
       num_documents_by_author
       global_citations_by_author
+      local_citations_by_author
 
    .. toctree::
       :maxdepth: 1
@@ -91,6 +94,7 @@ Institutions
 
       num_documents_by_institution
       global_citations_by_institution
+      local_citations_by_institution
 
 
    .. toctree::
@@ -110,6 +114,7 @@ Countries
 
       num_documents_by_country
       global_citations_by_country
+      local_citations_by_country
 
 
    .. toctree::
