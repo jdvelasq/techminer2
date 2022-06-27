@@ -21,13 +21,28 @@ def annual_indicators_plot(
         y=column_names[column],
         title=title,
         markers=True,
-        # hover_name="Year",
         hover_data=["Num Documents", "Global Citations", "Local Citations"],
     )
-    fig.update_traces(marker=dict(size=12))
-    fig.update_traces(line=dict(color="black"))
-    fig.update_xaxes(tickangle=270)
-    fig.update_layout(paper_bgcolor="white", plot_bgcolor="white")
-    fig.update_xaxes(linecolor="gray", gridcolor="lightgray")
-    fig.update_yaxes(linecolor="gray", gridcolor="lightgray")
+    fig.update_traces(
+        marker=dict(size=10, line=dict(color="darkslategray", width=2)),
+        marker_color="rgb(171,171,171)",
+        line=dict(color="darkslategray"),
+    )
+    fig.update_layout(
+        paper_bgcolor="white",
+        plot_bgcolor="white",
+    )
+    fig.update_yaxes(
+        linecolor="gray",
+        linewidth=2,
+        gridcolor="lightgray",
+        griddash="dot",
+    )
+    fig.update_xaxes(
+        linecolor="gray",
+        linewidth=2,
+        gridcolor="lightgray",
+        griddash="dot",
+        tickangle=270,
+    )
     return fig
