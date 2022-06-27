@@ -75,13 +75,9 @@ from .cross_corr_matrix_heatmap import cross_corr_matrix_heatmap
 from .cross_corr_matrix_html import cross_corr_matrix_html
 from .document_indicators import document_indicators
 from .document_viewer import document_viewer
-from .documents_by_affiliation import documents_by_affiliation
+from .documents_by_author import documents_by_author
 from .documents_by_country import documents_by_country
-from .documents_by_type import documents_by_type
-from .documents_by_year import documents_by_year
-from .documents_per_author import documents_per_author
-from .documents_per_country import documents_per_country
-from .documents_per_institution import documents_per_institution
+from .documents_by_institution import documents_by_institution
 from .documents_per_year_by_source import documents_per_year_by_source
 from .dotted_gantt_chart import dotted_gantt_chart
 from .ego_graph import ego_graph
@@ -110,7 +106,6 @@ from .global_citations_by_type import global_citations_by_type
 from .growth_indicators import growth_indicators
 from .heat_map import heat_map
 from .impact_indicators import impact_indicators
-from .local_impact import local_impact
 from .import_references import import_references
 from .import_scopus_files import import_scopus_files
 from .institution_local_impact import institution_local_impact
@@ -119,10 +114,8 @@ from .institutions_production_per_year import institutions_production_per_year
 from .keyword_concordances import keyword_concordances
 from .keywords_summarization import keywords_summarization
 from .line_chart import line_chart
-from .local_citations_by_author import local_citations_by_author
-from .local_citations_by_country import local_citations_by_country
-from .local_citations_by_institution import local_citations_by_institution
 from .local_citations_by_type import local_citations_by_type
+from .local_impact import local_impact
 from .lotka_law import lotka_law
 from .main_information import main_information
 from .map_chart import map_chart
