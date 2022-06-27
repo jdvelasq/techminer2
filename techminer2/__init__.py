@@ -107,6 +107,7 @@ from .find_abbreviations import find_abbreviations
 from .find_keyword import find_keyword
 from .find_string import find_string
 from .gantt_chart import gantt_chart
+from .global_citations_by_author import global_citations_by_author
 from .growth_indicators import growth_indicators
 from .heat_map import heat_map
 from .impact_indicators import impact_indicators
@@ -138,6 +139,7 @@ from .num_documents_by_author import num_documents_by_author
 from .num_documents_by_country import num_documents_by_country
 from .num_documents_by_institution import num_documents_by_institution
 from .num_documents_by_source import num_documents_by_source
+from .num_documents_by_type import num_documents_by_type
 from .occurrence_matrix import occurrence_matrix
 from .occurrence_matrix_associations import occurrence_matrix_associations
 from .occurrence_matrix_bubble_chart import occurrence_matrix_bubble_chart

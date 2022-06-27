@@ -69,6 +69,7 @@ Authors
       :maxdepth: 1
 
       num_documents_by_author
+      global_citations_by_author
 
    .. toctree::
       :maxdepth: 1
