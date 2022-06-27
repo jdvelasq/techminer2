@@ -27,7 +27,6 @@ def cleveland_px(
             size=10,
             line=dict(color="darkslategray", width=2),
         ),
-        # marker_color="rgb(171,171,171)",
         marker_color="lightgrey",
     )
     fig.update_xaxes(
