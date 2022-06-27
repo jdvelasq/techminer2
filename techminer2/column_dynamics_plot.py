@@ -54,7 +54,10 @@ def column_dynamics_plot(
         color_discrete_sequence=["darkslategray"],
         title=title,
     )
-    fig.update_layout(paper_bgcolor="white", plot_bgcolor="white")
+    fig.update_layout(
+        paper_bgcolor="white",
+        plot_bgcolor="white",
+    )
     fig.update_yaxes(
         linecolor="white",
         linewidth=1,
