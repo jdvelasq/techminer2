@@ -10,19 +10,10 @@ Visualization API
 .. toctree::
    :maxdepth: 1
 
-   bar_plot
-   column_plot
-   cleveland_plot
-
-
-.. toctree::
-   :maxdepth: 1
-
    _dotted_gantt_chart
    _gantt_chart
    _pie_chart
    _tree_map    
-   _word_cloud
    _world_map
 
 
@@ -30,10 +21,8 @@ Visualization API
    :maxdepth: 1
 
    bubble_chart
-
    timeline_chart
    heat_map
-   
    map_chart
    stacked_bar_chart
    stacked_column_chart
