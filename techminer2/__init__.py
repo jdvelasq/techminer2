@@ -57,7 +57,6 @@ from .column_dynamics_plot import column_dynamics_plot
 from .column_dynamics_table import column_dynamics_table
 from .column_indicators import column_indicators
 from .column_indicators_by_year import column_indicators_by_year
-from .column_production_by_year import column_production_by_year
 from .core_sources import core_sources
 from .correlation_map import correlation_map
 from .corresponding_authors_country import corresponding_authors_country
@@ -135,17 +134,11 @@ from .most_global_cited_documents import most_global_cited_documents
 from .most_global_cited_institutions import most_global_cited_institutions
 from .most_global_cited_sources import most_global_cited_sources
 from .most_local_cited_authors import most_local_cited_authors
-from .most_local_cited_countries import (
-    most_local_cited_countries,
-)
+from .most_local_cited_countries import most_local_cited_countries
 from .most_local_cited_documents import most_local_cited_documents
-from .most_local_cited_institutions import (
-    most_local_cited_institutions,
-)
+from .most_local_cited_institutions import most_local_cited_institutions
 from .most_local_cited_references import most_local_cited_references
-from .most_local_cited_sources import (
-    most_local_cited_sources,
-)
+from .most_local_cited_sources import most_local_cited_sources
 from .most_relevant_authors import most_relevant_authors
 from .most_relevant_countries import most_relevant_countries
 from .most_relevant_institutions import most_relevant_institutions
@@ -158,11 +151,13 @@ from .occurrence_matrix_bubble_chart import occurrence_matrix_bubble_chart
 from .occurrence_matrix_heatmap import occurrence_matrix_heatmap
 from .occurrence_matrix_html import occurrence_matrix_html
 from .occurrence_matrix_sankey_diagram import occurrence_matrix_sankey_diagram
+from .production_over_time import production_over_time
 from .rpys import rpys
 from .sankey_diagram import sankey_diagram
 from .source_dynamics_plot import source_dynamics_plot
 from .source_dynamics_table import source_dynamics_table
 from .source_local_impact import source_local_impact
+from .sources_production_over_time import sources_production_over_time
 from .stemming import stemming_and, stemming_or
 from .summary_view import summary_view
 from .tf_idf_matrix import tf_idf_matrix
