@@ -31,7 +31,7 @@ def num_documents_by_type(
     """Plots the number of documents by type using the specified plot."""
 
     return plot_metric_by_item(
-        column="document type",
+        column="document_type",
         metric="num_documents",
         directory=directory,
         top_n=top_n,
