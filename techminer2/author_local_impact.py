@@ -21,7 +21,7 @@ with the data.
 
 
 """
-from .impact_indicators_plot import impact_indicators_plot
+from .local_impact import local_impact
 
 
 def author_local_impact(
@@ -29,7 +29,7 @@ def author_local_impact(
     top_n=20,
     directory="./",
 ):
-    return impact_indicators_plot(
+    return local_impact(
         column="authors",
         impact_measure=impact_measure,
         top_n=top_n,
