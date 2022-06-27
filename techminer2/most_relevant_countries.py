@@ -1,5 +1,5 @@
 """
-Most relevant countries (ok!)
+Most relevant countries
 ===============================================================================
 
 >>> from techminer2 import *
@@ -39,4 +39,5 @@ def most_relevant_countries(
         max_occ=max_occ,
         title=title,
         plot=plot,
+        file_name="documents.csv",
     )
