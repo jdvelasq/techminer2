@@ -48,6 +48,7 @@ Sources
    .. toctree::
 
       num_documents_by_source
+      global_citations_by_source
 
 
    .. toctree::
@@ -89,6 +90,7 @@ Institutions
       :maxdepth: 1
 
       num_documents_by_institution
+      global_citations_by_institution
 
 
    .. toctree::

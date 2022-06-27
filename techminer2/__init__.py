@@ -109,6 +109,8 @@ from .find_string import find_string
 from .gantt_chart import gantt_chart
 from .global_citations_by_author import global_citations_by_author
 from .global_citations_by_country import global_citations_by_country
+from .global_citations_by_institution import global_citations_by_institution
+from .global_citations_by_source import global_citations_by_source
 from .global_citations_by_type import global_citations_by_type
 from .growth_indicators import growth_indicators
 from .heat_map import heat_map
