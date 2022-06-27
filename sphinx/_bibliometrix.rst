@@ -31,6 +31,10 @@ subset of the analytical capabilities of TechMiner.
 
    .. toctree::
 
+      num_documents_by_type
+
+   .. toctree::
+
       main_information
       annual_scientific_production
       average_citations_per_year
@@ -43,6 +47,7 @@ Sources
    .. toctree::
 
       num_documents_by_source
+
 
    .. toctree::
 
@@ -81,11 +86,13 @@ Institutions
    .. toctree::
       :maxdepth: 1
 
+      num_documents_by_institution
+
 
    .. toctree::
       :maxdepth: 1
 
-      most_relevant_institutions
+      
       most_global_cited_institutions
       institutions_production_over_time
       institutions_production_per_year
@@ -98,6 +105,7 @@ Countries
    .. toctree::
       :maxdepth: 1
 
+      num_documents_by_country
 
    .. toctree::
       :maxdepth: 1
