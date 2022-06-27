@@ -32,6 +32,7 @@ subset of the analytical capabilities of TechMiner.
    .. toctree::
 
       num_documents_by_type
+      global_citations_by_type
 
    .. toctree::
 
