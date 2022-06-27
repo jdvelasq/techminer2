@@ -15,7 +15,7 @@ Word cloud (chart)
 ... ).savefig(file_name)
 
 .. image:: images/word_cloud.png
-    :width: 700px
+    :width: 900px
     :align: center
 
 """
@@ -34,7 +34,7 @@ def word_cloud(
     title=None,
     file_name="documents.csv",
     #
-    figsize=(10, 10),
+    figsize=(12, 12),
 ):
     """Makes a word cloud from a dataframe."""
 
