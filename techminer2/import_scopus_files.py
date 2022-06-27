@@ -6,7 +6,7 @@ Import a scopus file to a working directory.
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> import_scopus_files(directory, disable_progress_bar=True)
+## >>> import_scopus_files(directory, disable_progress_bar=True)
 - INFO - 248 raw records found in data/raw/documents.
 - INFO - Searching local references using DOI ...
 - INFO - Searching local references using document titles ...
