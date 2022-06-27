@@ -80,7 +80,8 @@ Report
         cleveland_chart                
         column_chart
         line_chart      
-        word_cloud          
+        word_cloud
+        world_map
 
 
     .. toctree::
@@ -103,7 +104,7 @@ Repo
         
         dotted_gantt_chart
         timeline_chart
-        world_map
+        
 
 
 
