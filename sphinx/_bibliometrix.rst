@@ -32,13 +32,6 @@ Overview
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    .. toctree::
 
-
-   .. toctree::
-
-      num_documents_by_type
-      global_citations_by_type
-      local_citations_by_type
-
       main_information
       annual_scientific_production
       average_citations_per_year
@@ -141,15 +134,18 @@ Documents
    .. toctree::
       :maxdepth: 1
 
-
-   .. toctree::
-      :maxdepth: 1
-
       most_global_cited_documents
       most_local_cited_documents     
       documents_per_author
       documents_per_country
       documents_per_institution
+
+   .. toctree::
+
+      num_documents_by_type
+      global_citations_by_type
+      local_citations_by_type
+
 
 Cited References
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
