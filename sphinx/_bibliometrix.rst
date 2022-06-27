@@ -115,7 +115,7 @@ Countries
 
       most_relevant_countries
       most_global_cited_countries
-      most_local_cited_countries_from_reference_lists
+      most_local_cited_countrie
 
    .. toctree::
       :maxdepth: 1
