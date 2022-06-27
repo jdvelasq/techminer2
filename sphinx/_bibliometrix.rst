@@ -75,7 +75,7 @@ Authors
 
       most_relevant_authors
       most_global_cited_authors
-      most_local_cited_authors_from_reference_lists
+      most_local_cited_authors
 
    .. toctree::
       :maxdepth: 1

@@ -1,5 +1,5 @@
 """
-Most local cited authors from reference lists
+Most local cited authors (from reference lists)
 ===============================================================================
 
 Plot the most local cited authors in the references.
@@ -18,22 +18,22 @@ with the data. In this case, use:
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "sphinx/_static/most_local_cited_authors_from_reference_lists.html"
+>>> file_name = "sphinx/_static/most_local_cited_authors.html"
 
->>> most_local_cited_authors_from_reference_lists(
+>>> most_local_cited_authors(
 ...     top_n=20,
 ...     directory=directory,
 ... ).write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="_static/most_local_cited_authors_from_reference_lists.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="_static/most_local_cited_authors.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 from .plot_metric_by_item import plot_metric_by_item
 
 
-def most_local_cited_authors_from_reference_lists(
+def most_local_cited_authors(
     directory="./",
     top_n=20,
     plot="bar",
@@ -47,7 +47,7 @@ def most_local_cited_authors_from_reference_lists(
         top_n=top_n,
         min_occ=None,
         max_occ=None,
-        title="Most local cited authors from reference lists",
+        title="Most local cited authors in references",
         plot=plot,
         file_name="references.csv",
     )
