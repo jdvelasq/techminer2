@@ -127,7 +127,6 @@ from .line_chart import line_chart
 from .local_citations_by_author import local_citations_by_author
 from .local_citations_by_country import local_citations_by_country
 from .local_citations_by_institution import local_citations_by_institution
-from .local_citations_by_source import local_citations_by_source
 from .local_citations_by_type import local_citations_by_type
 from .lotka_law import lotka_law
 from .main_information import main_information

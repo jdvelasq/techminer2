@@ -1,16 +1,17 @@
 """
-Most local cited authors in references
+Most local cited authors (from reference lists) (ok!)
 ===============================================================================
 
-See :doc:`column indicators <column_indicators>` to obtain a `pandas.Dataframe` 
-with the data. Use the following code:
+Plot the most local cited authors in the references.
 
+See :doc:`column indicators <column_indicators>` to obtain a `pandas.Dataframe` 
+with the data. In this case, use:
 
 .. code:: python
 
     column_indicators(
-        column="authors", 
-        directory=directory, 
+        column="authors",
+        directory=directory,
         file_name="references.csv",
     )
 
@@ -28,23 +29,25 @@ with the data. Use the following code:
 
     <iframe src="_static/most_local_cited_authors.html" height="600px" width="100%" frameBorder="0"></iframe>
 
-
 """
-from .cleveland_chart import cleveland_chart
+from .plot_metric_by_item import plot_metric_by_item
 
 
 def most_local_cited_authors(
-    top_n=20,
     directory="./",
+    top_n=20,
+    plot="bar",
 ):
+    """Most local cited authors from reference lists."""
 
-    return cleveland_chart(
+    return plot_metric_by_item(
         column="authors",
+        metric="local_citations",
+        directory=directory,
         top_n=top_n,
         min_occ=None,
         max_occ=None,
-        directory=directory,
-        metric="local_citations",
-        title="Most local cited authors",
+        title="Most local cited authors (from reference lists)",
+        plot=plot,
         file_name="references.csv",
     )
