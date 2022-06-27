@@ -1,35 +1,47 @@
 """
-World map 
+World map
 ===============================================================================
+
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "sphinx/images/world_map.png"
->>> world_map(column="countries", directory=directory).savefig(file_name)
- 
-.. image:: images/world_map.png
-    :width: 700px
-    :align: center
+>>> file_name = "sphinx/_static/world_map.html"
+
+>>> world_map(
+...     directory=directory,
+...     metric="num_documents",
+... ).write_html(file_name)
+
+.. raw:: html
+
+    <iframe src="_static/world_map.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ._world_map import _world_map
-from .column_indicators import column_indicators
-
-TEXTLEN = 40
+from .column_indicators_by_metric import column_indicators_by_metric
+from .world_map_plot import world_map_plot
 
 
 def world_map(
-    column,
-    metric="num_documents",
-    cmap="Greys",
-    figsize=(9, 5),
     directory="./",
+    metric="num_documents",
+    title=None,
+    file_name="documents.csv",
 ):
+    """Makes a world map from a dataframe."""
 
-    series = column_indicators(column=column, directory=directory)[metric]
-    return _world_map(
-        series=series,
-        cmap=cmap,
-        figsize=figsize,
-        title=None,
+    indicators = column_indicators_by_metric(
+        "countries",
+        min_occ=None,
+        max_occ=None,
+        top_n=None,
+        directory=directory,
+        metric=metric,
+        file_name=file_name,
+    )
+
+    return world_map_plot(
+        dataframe=indicators,
+        metric=metric,
+        title=title,
+        colormap="Blues",
     )
