@@ -135,6 +135,7 @@ from .most_relevant_institutions import most_relevant_institutions
 from .most_relevant_sources import most_relevant_sources
 from .network import network
 from .num_documents_by_author import num_documents_by_author
+from .num_documents_by_source import num_documents_by_source
 from .occurrence_matrix import occurrence_matrix
 from .occurrence_matrix_associations import occurrence_matrix_associations
 from .occurrence_matrix_bubble_chart import occurrence_matrix_bubble_chart

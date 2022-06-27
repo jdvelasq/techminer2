@@ -4,8 +4,16 @@ Scopus search results analysis
 
    .. toctree::
 
+         num_documents_by_author
+         num_documents_by_source
+
+
+
+
+   .. toctree::
+
         documents_by_affiliation
-        num_documents_by_author
+  
         documents_by_country
         documents_by_funding_sponsor
         documents_by_type

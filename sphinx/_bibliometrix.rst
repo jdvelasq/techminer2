@@ -42,7 +42,11 @@ Sources
 
    .. toctree::
 
-      most_relevant_sources
+      num_documents_by_source
+
+   .. toctree::
+
+      
       most_local_cited_sources
       bradford_law
       core_sources 
@@ -60,6 +64,10 @@ Authors
       :maxdepth: 1
 
       num_documents_by_author
+
+   .. toctree::
+      :maxdepth: 1
+
       most_local_cited_authors
       authors_production_over_time
       authors_production_per_year
@@ -73,6 +81,10 @@ Institutions
    .. toctree::
       :maxdepth: 1
 
+
+   .. toctree::
+      :maxdepth: 1
+
       most_relevant_institutions
       most_global_cited_institutions
       institutions_production_over_time
@@ -82,6 +94,10 @@ Institutions
 
 Countries
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+   .. toctree::
+      :maxdepth: 1
+
 
    .. toctree::
       :maxdepth: 1
