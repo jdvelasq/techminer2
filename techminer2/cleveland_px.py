@@ -17,6 +17,7 @@ def cleveland_px(
         y=y_label,
         hover_data=dataframe.columns.to_list(),
         title=title,
+        size=x_label,
     )
     fig.update_layout(
         paper_bgcolor="white",
@@ -24,7 +25,7 @@ def cleveland_px(
     )
     fig.update_traces(
         marker=dict(
-            size=10,
+            # size=10,
             line=dict(color="darkslategray", width=2),
         ),
         marker_color="lightgrey",
