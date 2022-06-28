@@ -24,13 +24,20 @@ with the data.
 from .cleveland_chart import cleveland_chart
 
 
-def most_frequent_words(column="author_keywords", directory="./", top_n=20):
+def most_frequent_words(
+    column="author_keywords",
+    directory="./",
+    top_n=20,
+    min_occ=None,
+    max_occ=None,
+):
+    """Plot the most frequent words."""
 
     return cleveland_chart(
         column=column,
         top_n=top_n,
-        min_occ=None,
-        max_occ=None,
+        min_occ=min_occ,
+        max_occ=max_occ,
         directory=directory,
         metric="num_documents",
         title="Most frequent words",
