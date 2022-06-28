@@ -11,6 +11,7 @@ Import a 'cited by' scopus file with references.
 
 >>> from techminer2 import *
 >>> directory = "data/"
+
 ## >>> import_references(directory=directory, disable_progress_bar=True)
 - INFO - 5123 raw records found in data/raw/references.
 - INFO - Creating references file
