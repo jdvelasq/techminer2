@@ -67,7 +67,7 @@ def impact_indicators(column, directory="./", sep="; "):
         "iso_source_name",
     ]:
         raise ValueError(
-            "Impact indicators only works with 'authors', 'authors_id', 'countries', 'institutions', 'source_name' or 'iso_source_name'."
+            'Impact indicators only works with "authors", "authors_id", "countries", "institutions", "source_name" or "ISO_Source_Name".'
         )
 
     columns_to_explode = [
