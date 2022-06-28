@@ -78,7 +78,6 @@ from .document_viewer import document_viewer
 from .documents_by_author import documents_by_author
 from .documents_by_country import documents_by_country
 from .documents_by_institution import documents_by_institution
-from .documents_per_year_by_source import documents_per_year_by_source
 from .dotted_gantt_chart import dotted_gantt_chart
 from .ego_graph import ego_graph
 from .ego_network import ego_network
