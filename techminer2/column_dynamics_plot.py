@@ -7,7 +7,7 @@ Column dynamics plot
 >>> file_name = "sphinx/images/column_dynamics_plot.png"
 
 >>> column_dynamics_plot(
-...     column='iso_source_name', 
+...     column="ISO_Source_Name", 
 ...     top_n=10, 
 ...     directory=directory,
 ... ).write_image(file_name)
