@@ -25,10 +25,10 @@ def cleveland_px(
     )
     fig.update_traces(
         marker=dict(
-            # size=10,
-            line=dict(color="darkslategray", width=2),
+            size=12,
+            line=dict(color="black", width=2),
         ),
-        marker_color="lightgrey",
+        marker_color="slategray",
     )
     fig.update_xaxes(
         linecolor="gray",

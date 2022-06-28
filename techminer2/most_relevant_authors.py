@@ -26,7 +26,7 @@ def most_relevant_authors(
     top_n=20,
     min_occ=None,
     max_occ=None,
-    title="Most relevant authors",
+    title="Most Relevant Authors",
     plot="bar",
 ):
     """Plots the number of documents by author using the specified plot."""
