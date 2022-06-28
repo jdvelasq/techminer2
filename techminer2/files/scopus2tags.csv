@@ -15,7 +15,7 @@ Conference location
 Conference name
 Correspondence Address
 Document Type,document_type
-DOI,DOI
+DOI,doi
 Editors
 EID
 Funding Details
@@ -33,8 +33,8 @@ Funding Text 11
 Funding Text 12
 Funding Text 13
 Index Keywords,raw_index_keywords
-ISBN,ISBN
-ISSN,ISSN
+ISBN,isbn
+ISSN,issn
 Issue
 Language of Original Document
 Link
