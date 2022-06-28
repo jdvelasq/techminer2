@@ -6,7 +6,7 @@ Import a scopus file to a working directory.
 
 >>> from techminer2 import *
 >>> directory = "data/"
-## >>> import_scopus_files(directory, disable_progress_bar=True)
+>>> import_scopus_files(directory, disable_progress_bar=True)
 - INFO - 248 raw records found in data/raw/documents.
 - INFO - Searching local references using DOI ...
 - INFO - Searching local references using document titles ...
@@ -515,10 +515,10 @@ def _create__nlp_phrases__column(documents):
 
 
 def _process__iso_source_name__column(documents):
-    if "iso_source_name" in documents.columns:
+    if "ISO_Source_Name" in documents.columns:
         documents = documents.copy()
-        documents.iso_source_name = documents.iso_source_name.str.upper()
-        documents.iso_source_name = documents.iso_source_name.map(
+        documents.ISO_Source_Name = documents.ISO_Source_Name.str.upper()
+        documents.ISO_Source_Name = documents.ISO_Source_Name.map(
             lambda x: x.replace(".", "") if not pd.isna(x) else x
         )
     return documents
@@ -526,24 +526,24 @@ def _process__iso_source_name__column(documents):
 
 def _search_for_new_iso_source_name(documents):
     # search new iso source names not included in files/iso_source_names.csv
-    if "iso_source_name" in documents.columns:
+    if "ISO_Source_Name" in documents.columns:
 
         # iso souce names in the current file
         documents = documents.copy()
-        documents.iso_source_name = documents.iso_source_name.str.upper()
-        documents.iso_source_name = documents.iso_source_name.map(
+        documents.ISO_Source_Name = documents.ISO_Source_Name.str.upper()
+        documents.ISO_Source_Name = documents.ISO_Source_Name.map(
             lambda x: x.replace(".", "") if not pd.isna(x) else x
         )
-        current_iso_names = documents[["source_name", "iso_source_name"]].copy()
+        current_iso_names = documents[["source_name", "ISO_Source_Name"]].copy()
         current_iso_names = current_iso_names.assign(
             source_name=current_iso_names.source_name.str.strip()
         )
         current_iso_names = current_iso_names.assign(
-            iso_source_name=current_iso_names.iso_source_name.str.strip()
+            iso_source_name=current_iso_names.ISO_Source_Name.str.strip()
         )
         current_iso_names = current_iso_names.dropna()
         current_iso_names = current_iso_names.sort_values(
-            by=["source_name", "iso_source_name"]
+            by=["source_name", "ISO_Source_Name"]
         )
         current_iso_names = current_iso_names.drop_duplicates("source_name")
 
@@ -552,7 +552,7 @@ def _search_for_new_iso_source_name(documents):
         file_path = os.path.join(module_path, "files/iso_source_names.csv")
         pdf = pd.read_csv(file_path, sep=",")
         pdf = pd.concat([pdf, current_iso_names])
-        pdf = pdf.sort_values(by=["source_name", "iso_source_name"])
+        pdf = pdf.sort_values(by=["source_name", "ISO_Source_Name"])
         pdf = pdf.drop_duplicates("source_name")
         pdf.to_csv(file_path, index=False)
     return documents
@@ -560,7 +560,7 @@ def _search_for_new_iso_source_name(documents):
 
 def _complete__iso_source_name__colum(documents):
 
-    if "iso_source_name" in documents.columns:
+    if "ISO_Source_Name" in documents.columns:
         #
         # Loads existent iso source names and make a dictionary
         # to translate source names to iso source names
@@ -568,28 +568,28 @@ def _complete__iso_source_name__colum(documents):
         module_path = os.path.dirname(__file__)
         file_path = os.path.join(module_path, "files/iso_source_names.csv")
         pdf = pd.read_csv(file_path, sep=",")
-        existent_names = dict(zip(pdf.source_name, pdf.iso_source_name))
+        existent_names = dict(zip(pdf.source_name, pdf.ISO_Source_Name))
 
         # complete iso source names
         documents = documents.copy()
-        documents.iso_source_name = [
+        documents.ISO_Source_Name = [
             abb
             if not pd.isna(abb)
             else (existent_names[name] if name in existent_names.keys() else abb)
-            for name, abb in zip(documents.source_name, documents.iso_source_name)
+            for name, abb in zip(documents.source_name, documents.ISO_Source_Name)
         ]
     return documents
 
 
 def _repair__iso_source_name__column(documents):
-    if "iso_source_name" in documents.columns:
+    if "ISO_Source_Name" in documents.columns:
         documents = documents.copy()
-        documents.iso_source_name = [
+        documents.ISO_Source_Name = [
             "--- " + name[:25] if pd.isna(abb) and not pd.isna(name) else abb
-            for name, abb in zip(documents.source_name, documents.iso_source_name)
+            for name, abb in zip(documents.source_name, documents.ISO_Source_Name)
         ]
         documents = documents.assign(
-            iso_source_name=documents.iso_source_name.map(
+            iso_source_name=documents.ISO_Source_Name.map(
                 lambda x: x[:29] if isinstance(x, str) else x
             )
         )
