@@ -6,7 +6,7 @@ Column dynamics table
 >>> directory = "data/"
 
 >>> column_dynamics_table(
-...     column='iso_source_name', 
+...     column="ISO_Source_Name", 
 ...     top_n=10, 
 ...     directory=directory,
 ... ).tail(5)
