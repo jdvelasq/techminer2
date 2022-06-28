@@ -1,21 +1,21 @@
 Abbreviated Source Title,ISO_Source_Name
-Abstract,abstract
-Affiliations,affiliations
+Abstract,Abstract
+Affiliations,Affiliations
 Art. No.
-Author Keywords,raw_author_keywords
-Author(s) ID,authors_id
-Authors,raw_authors_names
+Author Keywords,Raw_Author_Keywords
+Author(s) ID,Authors_ID
+Authors,Raw_Authors_Names
 Authors with affiliations
 Chemicals/CAS
-Cited by,global_citations
+Cited by,Global_Citations
 CODEN
 Conference code
 Conference date
 Conference location
 Conference name
 Correspondence Address
-Document Type,document_type
-DOI,doi
+Document Type,Document_Type
+DOI,DOI
 Editors
 EID
 Funding Details
@@ -32,9 +32,9 @@ Funding Text 10
 Funding Text 11
 Funding Text 12
 Funding Text 13
-Index Keywords,raw_index_keywords
-ISBN,isbn
-ISSN,issn
+Index Keywords,Raw_Index_Keywords
+ISBN,ISBN
+ISSN,ISSN
 Issue
 Language of Original Document
 Link
@@ -43,15 +43,15 @@ Molecular Sequence Numbers
 Open Access
 Page count
 Page end
-Page start,page_start
+Page start,Page_start
 Publication Stage
 Publisher
-PubMed ID,pubmed_id
-References,global_references
+PubMed ID,PubMed_ID
+References,Global_References
 Source
-Source title,source_name
+Source title,Source_Name
 Sponsors
-Title,document_title
+Title,Document_Title
 Tradenames
-Volume,volume
-Year,pub_year
+Volume,Volume
+Year,Year
