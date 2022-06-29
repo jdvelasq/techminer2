@@ -56,15 +56,20 @@ import yaml
 from nltk.tokenize import RegexpTokenizer, sent_tokenize
 from tqdm import tqdm
 
-from ._read_raw_csv_files import read_raw_csv_files
-from ._read_records import read_all_records
-from .clean_institutions import clean_institutions
-from .clean_keywords import clean_keywords
 from .column_indicators import column_indicators
-from .create_institutions_thesaurus import create_institutions_thesaurus
-from .create_keywords_thesaurus import create_keywords_thesaurus
 from .extract_country import extract_country
-from .map_ import map_
+
+# from ._read_raw_csv_files import read_raw_csv_files
+# from ._read_records import read_all_records
+# from .clean_institutions import clean_institutions
+# from .clean_keywords import clean_keywords
+
+
+# from .create_institutions_thesaurus import create_institutions_thesaurus
+# from .create_keywords_thesaurus import create_keywords_thesaurus
+
+
+# from .map_ import map_
 
 
 def import_scopus_files(
@@ -124,7 +129,7 @@ def import_scopus_files(
     #    )
     #
     #    clean_keywords(directory=directory)
-    #   _create__bradford__column(directory)
+    _create__bradford__column(directory)
 
     sys.stdout.write("--INFO-- Process finished!!!\n")
 
@@ -135,12 +140,6 @@ def _create__local_citations__column(directory):
 
     file_name = os.path.join(directory, "processed", "_documents.csv")
     documents = pd.read_csv(file_name)
-    # documents = documents.assign(
-    #     local_references=[
-    #         None if len(local_reference) == 0 else local_reference
-    #         for local_reference in documents.local_references
-    #     ]
-    # )
 
     local_references = documents[["local_references"]]
     local_references = local_references.rename(
@@ -319,25 +318,6 @@ def _create__num_global_references__column(directory):
             )
             data.num_global_references = data.num_global_references.map(
                 lambda x: len(x) if isinstance(x, list) else 0
-            )
-        data.to_csv(file, sep=",", index=False, encoding="utf-8")
-
-
-def _create__num_global_references__column(directory):
-
-    sys.stdout.write("--INFO-- Creating `num_global_referneces` column\n")
-
-    files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
-    for file in files:
-        data = pd.read_csv(file, encoding="utf-8")
-        if "global_references" in data.columns:
-            data = data.assign(
-                num_global_references=data.global_references.str.split(";")
-            )
-            data = data.assign(
-                num_global_references=data.global_references.map(
-                    lambda x: len(x) if isinstance(x, list) else 0
-                )
             )
         data.to_csv(file, sep=",", index=False, encoding="utf-8")
 
