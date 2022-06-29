@@ -8,6 +8,30 @@ VantagePoint
 
 In this section, **TechMiner** is compared with VantagePoint.
 
+**Quick Reference for Menu** (Pag 2)
+
+    * **Fields**
+
+        * Further Procesing:
+
+            * Author cleanup
+
+            * Dates ->
+
+            * Divide at ->
+
+            * Divide authors ->
+
+            .. toctree::
+                :maxdepth: 1
+
+                extract_country
+
+
+
+
+
+
 
 Dataset
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
