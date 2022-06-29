@@ -41,7 +41,8 @@ Import a scopus file to a working directory.
 --INFO-- Complete `source_abbr` column
 --INFO-- Creating `abstract.csv` file from `documents` database
 --INFO-- Creating `local_references` column
-
+--INFO-- Creating `local_citations` column
+--INFO-- Process finished!!!
 
 """
 import glob
@@ -110,56 +111,39 @@ def import_scopus_files(
     _create__raw_countries__column(directory)
     _create__coutry_1st_autor__column(directory)
     _create__num_global_references__column(directory)
-
-    # _create__bradford__column(directory)
-
     _complete__source_abbr__column(directory)
     _create__abstract_csv__file(directory)
     _create__local_references__column(
         directory, disable_progress_bar=disable_progress_bar
     )
+    _create__local_citations__column(directory)
 
     # create_institutions_thesaurus(directory=directory)
     # clean_institutions(directory=directory)
+    #
+    #    create_keywords_thesaurus(
+    #        directory=directory,
+    #        use_nlp_phrases=use_nlp_phrases,
+    #    )
+    #
+    #    clean_keywords(directory=directory)
+    #   _create__bradford__column(directory)
+
+    sys.stdout.write("--INFO-- Process finished!!!\n")
 
 
-#    _create_documents_csv_file(directory, disable_progress_bar)
+def _create__local_citations__column(directory):
 
-#
-
-#
-#    create_keywords_thesaurus(
-#        directory=directory,
-#        use_nlp_phrases=use_nlp_phrases,
-#    )
-#
-#    clean_keywords(directory=directory)
-#    logging.info("Process finished!!!")
-
-
-def _searching__local_references_using_doi(directory, disable_progress_bar=False):
-
-    sys.stdout.write("--INFO-- Searching `local_references` using doi\n")
+    sys.stdout.write("--INFO-- Creating `local_citations` column\n")
 
     file_name = os.path.join(directory, "processed", "_documents.csv")
     documents = pd.read_csv(file_name)
-
-    return documents
-
-
-def _compute_local_citations(documents):
-    """
-    Computes local citations.
-
-    """
-    logging.info("Computing local citations ...")
-
-    documents = documents.assign(
-        local_references=[
-            None if len(local_reference) == 0 else local_reference
-            for local_reference in documents.local_references
-        ]
-    )
+    # documents = documents.assign(
+    #     local_references=[
+    #         None if len(local_reference) == 0 else local_reference
+    #         for local_reference in documents.local_references
+    #     ]
+    # )
 
     local_references = documents[["local_references"]]
     local_references = local_references.rename(
@@ -167,19 +151,20 @@ def _compute_local_citations(documents):
     )
     local_references = local_references.dropna()
 
-    local_references["local_citations"] = local_references.local_citations.map(
-        lambda w: w.split("; ")
+    local_references["local_citations"] = local_references.local_citations.str.split(
+        ";"
     )
     local_references = local_references.explode("local_citations")
+    local_references["local_citations"] = local_references.local_citations.str.strip()
+
     local_references = local_references.groupby(
         by="local_citations", as_index=True
     ).size()
     documents["local_citations"] = 0
     documents.index = documents.record_no
     documents.loc[local_references.index, "local_citations"] = local_references
-    documents.index = list(range(len(documents)))
 
-    return documents
+    documents.to_csv(file_name, sep=",", index=False, encoding="utf-8")
 
 
 def _create__local_references__column(directory, disable_progress_bar):
@@ -198,7 +183,11 @@ def _create__local_references__column(directory, disable_progress_bar):
         # Identifies if a document is a local reference using doi
         #
         with tqdm(total=len(documents.doi), disable=disable_progress_bar) as pbar:
-            for document_index, doi in zip(documents.index, documents.doi):
+            for document_index, doi, global_citations in zip(
+                documents.index, documents.doi, documents.global_citations
+            ):
+                if global_citations == 0:
+                    continue
                 if not pd.isna(doi):
                     doi = doi.upper()
                     for j_index, references in zip(
@@ -215,24 +204,43 @@ def _create__local_references__column(directory, disable_progress_bar):
         #
         with tqdm(total=len(documents.title), disable=disable_progress_bar) as pbar:
 
-            for document_index in documents.index:
+            for (
+                document_index,
+                document_title,
+                document_year,
+                document_citations,
+            ) in zip(
+                documents.index,
+                documents.title.str.lower(),
+                documents.year,
+                documents.global_citations,
+            ):
 
-                title = documents.title[document_index].lower()
-                year = documents.year[document_index]
+                if document_citations > 0:
 
-                for j_index, references in zip(
-                    documents.index, documents.global_references.tolist()
-                ):
+                    document_title = documents.title[document_index].lower()
+                    document_year = documents.year[document_index]
 
-                    if pd.isna(references) is False and title in references.lower():
+                    for j_index, references in zip(
+                        documents.index, documents.global_references.tolist()
+                    ):
 
-                        for reference in references.split(";"):
+                        if (
+                            pd.isna(references) is False
+                            and document_title in references.lower()
+                        ):
 
-                            if title in reference.lower() and str(year) in reference:
+                            for reference in references.split(";"):
 
-                                documents.at[j_index, "local_references"] += [
-                                    documents.record_no[document_index]
-                                ]
+                                if (
+                                    document_title in reference.lower()
+                                    and str(document_year) in reference
+                                ):
+
+                                    documents.at[j_index, "local_references"] += [
+                                        documents.record_no[document_index]
+                                    ]
+
                 pbar.update(1)
 
         #
