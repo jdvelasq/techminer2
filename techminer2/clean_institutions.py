@@ -14,12 +14,10 @@ the same directory as the documents.csv file.
 - INFO - The thesaurus was applied to institutions.
 
 """
-
-
 import os
 import os.path
+import sys
 
-from . import logging
 from ._read_records import read_all_records
 from .map_ import map_
 from .save_documents import save_documents
@@ -32,8 +30,7 @@ def clean_institutions(directory):
     institutions thesaurus (institutions.txt file).
 
     """
-
-    logging.info("Applying thesaurus to institutions ...")
+    sys.stdout.write("--INFO-- Applying thesaurus to institutions\n")
 
     # --------------------------------------------------------------------------
     # Loads documents.csv
@@ -56,16 +53,17 @@ def clean_institutions(directory):
     #
     # Cleaning
     #
-    logging.info("Extract and cleaning institutions.")
+    sys.stdout.write("--INFO-- Extracting and cleaning institutions\n")
+
     documents["institutions"] = map_(
         documents, "institutions", lambda w: th.apply_as_dict(w, strict=True)
     )
 
-    logging.info("Extracting institution of first author ...")
+    sys.stdout.write("--INFO-- Extracting institution of first author\n")
     documents["institution_1st_author"] = documents.institutions.map(
         lambda w: w.split(";")[0] if isinstance(w, str) else w
     )
 
     # --------------------------------------------------------------------------
     save_documents(documents, directory)
-    logging.info("The thesaurus was applied to institutions.")
+    sys.stdout.write("--INFO-- The thesaurus was applied to institutions\n")
