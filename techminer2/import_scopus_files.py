@@ -17,7 +17,7 @@ Import a scopus file to a working directory.
 --INFO-- Creating `filter.yaml` file
 --INFO-- Processing `abstract` column
 --INFO-- Processing `authors_id` column
---INFO-- Processing `document_title` column
+--INFO-- Processing `title` column
 --INFO-- Processing `document_type` column
 --INFO-- Processing `doi` column
 --INFO-- Processing `eissn` column
@@ -88,7 +88,7 @@ def import_scopus_files(
     #
     _process__abstract__column(directory)
     _process__authors_id__column(directory)
-    _process__document_title__column(directory)
+    _process__title__column(directory)
     _process__document_type__column(directory)
     _process__doi__column(directory)
     _process__eissn__column(directory)
@@ -115,7 +115,9 @@ def import_scopus_files(
 
     _complete__source_abbr__column(directory)
     _create__abstract_csv__file(directory)
-    _create__local_references__column(directory)
+    _create__local_references__column(
+        directory, disable_progress_bar=disable_progress_bar
+    )
 
     # create_institutions_thesaurus(directory=directory)
     # clean_institutions(directory=directory)
@@ -135,13 +137,114 @@ def import_scopus_files(
 #    logging.info("Process finished!!!")
 
 
-def _create__local_references__column(directory):
+def _searching__local_references_using_doi(directory, disable_progress_bar=False):
+
+    sys.stdout.write("--INFO-- Searching `local_references` using doi\n")
+
+    file_name = os.path.join(directory, "processed", "_documents.csv")
+    documents = pd.read_csv(file_name)
+
+    return documents
+
+
+def _compute_local_citations(documents):
+    """
+    Computes local citations.
+
+    """
+    logging.info("Computing local citations ...")
+
+    documents = documents.assign(
+        local_references=[
+            None if len(local_reference) == 0 else local_reference
+            for local_reference in documents.local_references
+        ]
+    )
+
+    local_references = documents[["local_references"]]
+    local_references = local_references.rename(
+        columns={"local_references": "local_citations"}
+    )
+    local_references = local_references.dropna()
+
+    local_references["local_citations"] = local_references.local_citations.map(
+        lambda w: w.split("; ")
+    )
+    local_references = local_references.explode("local_citations")
+    local_references = local_references.groupby(
+        by="local_citations", as_index=True
+    ).size()
+    documents["local_citations"] = 0
+    documents.index = documents.record_no
+    documents.loc[local_references.index, "local_citations"] = local_references
+    documents.index = list(range(len(documents)))
+
+    return documents
+
+
+def _create__local_references__column(directory, disable_progress_bar):
 
     sys.stdout.write("--INFO-- Creating `local_references` column\n")
 
     file_name = os.path.join(directory, "processed", "_documents.csv")
     documents = pd.read_csv(file_name)
+
+    # creates a empty list which will be filled with the local references
     documents = documents.assign(local_references=[[] for _ in range(len(documents))])
+
+    if "global_references" in documents.columns:
+
+        #
+        # Identifies if a document is a local reference using doi
+        #
+        with tqdm(total=len(documents.doi), disable=disable_progress_bar) as pbar:
+            for document_index, doi in zip(documents.index, documents.doi):
+                if not pd.isna(doi):
+                    doi = doi.upper()
+                    for j_index, references in zip(
+                        documents.index, documents.global_references.tolist()
+                    ):
+                        if pd.isna(references) is False and doi in references.upper():
+                            documents.at[j_index, "local_references"].append(
+                                documents.record_no[document_index]
+                            )
+                pbar.update(1)
+
+        #
+        # Identifies if a document is a local reference using the title
+        #
+        with tqdm(total=len(documents.title), disable=disable_progress_bar) as pbar:
+
+            for document_index in documents.index:
+
+                title = documents.title[document_index].lower()
+                year = documents.year[document_index]
+
+                for j_index, references in zip(
+                    documents.index, documents.global_references.tolist()
+                ):
+
+                    if pd.isna(references) is False and title in references.lower():
+
+                        for reference in references.split(";"):
+
+                            if title in reference.lower() and str(year) in reference:
+
+                                documents.at[j_index, "local_references"] += [
+                                    documents.record_no[document_index]
+                                ]
+                pbar.update(1)
+
+        #
+        # Create a string list of with the local references
+        #
+        documents["local_references"] = documents.local_references.apply(
+            lambda x: sorted(set(x))
+        )
+        documents["local_references"] = documents.local_references.apply(
+            lambda x: "; ".join(x) if isinstance(x, list) else x
+        )
+
     documents.to_csv(file_name, sep=",", index=False, encoding="utf-8")
 
 
@@ -651,18 +754,16 @@ def _process__raw_authors__column(directory):
         data.to_csv(file, sep=",", encoding="utf-8", index=False)
 
 
-def _process__document_title__column(directory):
+def _process__title__column(directory):
 
-    sys.stdout.write("--INFO-- Processing `document_title` column\n")
+    sys.stdout.write("--INFO-- Processing `title` column\n")
 
     files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
     for file in files:
         data = pd.read_csv(file, encoding="utf-8")
-        if "document_title" in data.columns:
-            data["document_title"] = data.document_title.str.replace(
-                r"\[.*", "", regex=True
-            )
-            data["document_title"] = data.document_title.str.strip()
+        if "title" in data.columns:
+            data["title"] = data.title.str.replace(r"\[.*", "", regex=True)
+            data["title"] = data.title.str.strip()
         data.to_csv(file, sep=",", encoding="utf-8", index=False)
 
 
@@ -892,53 +993,6 @@ def _concat_raw_csv_files(path):
     return data
 
 
-def _create_documents_csv_file(directory, disable_progress_bar):
-    # documents = read_raw_csv_files(os.path.join(directory, "raw", "documents"))
-    # documents = documents.dropna(axis=1, how="all")
-    # documents = _delete_and_rename_columns(documents)
-    # documents = _process__abstract__column(documents)
-    # documents = _process__document_title__column(documents)
-    # documents = _remove_accents(documents)
-    # documents = _process__authors_id__column(documents)
-    # documents = _process__raw_authors__column(documents)
-    # documents = _disambiguate_authors(documents)
-    # documents = _process__doi__column(documents)
-    # documents = _process__source_name__column(documents)
-    # documents = _process__source_abbr__column(documents)
-    # documents = _search_for_new_source_abbr(documents)
-    # documents = _complete__source_abbr__colum(documents)
-    # documents = _repair__source_abbr__column(documents)
-    # documents = _create__record_no__column(documents)
-    # documents = _create__document_id__column(documents)
-    # documents = _process__document_type__column(documents)
-    # documents = _process__affiliations__column(documents)
-    # documents = _process__author_keywords__column(documents)
-    # documents = _process__index_keywords__column(documents)
-    # documents = _create__keywords__column(documents)
-    # documents = _create__nlp_phrases__column(documents)
-    # documents = _process__global_citations__column(documents)
-    # documents = _process__global_references__column(documents)
-    # documents = _process__eissn__column(documents)
-    # documents = _process__issn__column(documents)
-
-    documents = _create_local_references_using_doi(
-        documents, disable_progress_bar=disable_progress_bar
-    )
-    documents = _create_local_references_using_title(
-        documents, disable_progress_bar=disable_progress_bar
-    )
-    documents = _consolidate_local_references(documents)
-    documents = _compute_local_citations(documents)
-    # documents = _compute_bradford_law_zones(documents)
-
-    # documents.to_csv(
-    #     os.path.join(directory, "processed", "documents.csv"),
-    #     sep=",",
-    #     encoding="utf-8",
-    #     index=False,
-    # )
-
-
 def _create_working_directories(directory):
     if not os.path.exists(os.path.join(directory, "processed")):
         os.makedirs(os.path.join(directory, "processed"))
@@ -957,148 +1011,7 @@ def _create_working_directories(directory):
 #     return documents
 
 
-def _complete__source_abbr__colum(documents):
-
-    if "source_abbr" in documents.columns:
-        #
-        # Loads existent iso source names and make a dictionary
-        # to translate source names to iso source names
-        #
-        module_path = os.path.dirname(__file__)
-        file_path = os.path.join(module_path, "files/source_abbr.csv")
-        pdf = pd.read_csv(file_path, sep=",")
-        existent_names = dict(zip(pdf.source_name, pdf.source_abbr))
-
-        # complete iso source names
-        documents = documents.copy()
-        documents.source_abbr = [
-            abb
-            if not pd.isna(abb)
-            else (existent_names[name] if name in existent_names.keys() else abb)
-            for name, abb in zip(documents.source_name, documents.source_abbr)
-        ]
-    return documents
-
-
-def _repair__source_abbr__column(documents):
-    if "source_abbr" in documents.columns:
-        documents = documents.copy()
-        documents.source_abbr = [
-            "--- " + name[:25] if pd.isna(abb) and not pd.isna(name) else abb
-            for name, abb in zip(documents.source_name, documents.source_abbr)
-        ]
-        documents = documents.assign(
-            source_abbr=documents.source_abbr.map(
-                lambda x: x[:29] if isinstance(x, str) else x
-            )
-        )
-    return documents
-
-
 # ----< Local references >-----------------------------------------------------
-def _create_local_references_using_doi(documents, disable_progress_bar=False):
-
-    if "global_references" in documents.columns:
-        logging.info("Searching local references using DOI ...")
-        documents = documents.copy()
-        with tqdm(total=len(documents.doi), disable=disable_progress_bar) as pbar:
-            for i_index, doi in zip(documents.index, documents.doi):
-                if not pd.isna(doi):
-                    doi = doi.upper()
-                    for j_index, references in zip(
-                        documents.index, documents.global_references.tolist()
-                    ):
-                        if pd.isna(references) is False and doi in references.upper():
-                            documents.at[j_index, "local_references"].append(
-                                documents.record_no[i_index]
-                            )
-                pbar.update(1)
-    return documents
-
-
-def _create_local_references_using_title(documents, disable_progress_bar=False):
-
-    if "global_references" in documents.columns:
-        logging.info("Searching local references using document titles ...")
-        documents = documents.copy()
-
-        with tqdm(
-            total=len(documents.document_title), disable=disable_progress_bar
-        ) as pbar:
-
-            for i_index in documents.index:
-
-                document_title = documents.document_title[i_index].lower()
-                year = documents.year[i_index]
-
-                for j_index, references in zip(
-                    documents.index, documents.global_references.tolist()
-                ):
-
-                    if (
-                        pd.isna(references) is False
-                        and document_title in references.lower()
-                    ):
-
-                        for reference in references.split(";"):
-
-                            if (
-                                document_title in reference.lower()
-                                and str(year) in reference
-                            ):
-
-                                documents.at[j_index, "local_references"] += [
-                                    documents.record_no[i_index]
-                                ]
-                pbar.update(1)
-
-    return documents
-
-
-def _consolidate_local_references(documents):
-    logging.info("Consolidating local references ...")
-    documents["local_references"] = documents.local_references.apply(
-        lambda x: sorted(set(x))
-    )
-    documents["local_references"] = documents.local_references.apply(
-        lambda x: "; ".join(x) if isinstance(x, list) else x
-    )
-    return documents
-
-
-def _compute_local_citations(documents):
-    """
-    Computes local citations.
-
-    """
-    logging.info("Computing local citations ...")
-
-    documents = documents.assign(
-        local_references=[
-            None if len(local_reference) == 0 else local_reference
-            for local_reference in documents.local_references
-        ]
-    )
-
-    local_references = documents[["local_references"]]
-    local_references = local_references.rename(
-        columns={"local_references": "local_citations"}
-    )
-    local_references = local_references.dropna()
-
-    local_references["local_citations"] = local_references.local_citations.map(
-        lambda w: w.split("; ")
-    )
-    local_references = local_references.explode("local_citations")
-    local_references = local_references.groupby(
-        by="local_citations", as_index=True
-    ).size()
-    documents["local_citations"] = 0
-    documents.index = documents.record_no
-    documents.loc[local_references.index, "local_citations"] = local_references
-    documents.index = list(range(len(documents)))
-
-    return documents
 
 
 def _make_documents(scopus, cited_by, references):
