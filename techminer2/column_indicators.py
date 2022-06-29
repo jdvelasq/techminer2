@@ -32,18 +32,20 @@ def column_indicators(
     column,
     sep=";",
     directory="./",
-    file_name="documents.csv",
+    database="documents",
 ):
     """
     Column Indicators
     """
 
-    if file_name == "documents.csv":
+    if database == "documents":
         records = read_filtered_records(directory=directory)
-    elif file_name == "references.csv":
-        records = read_all_records(directory=directory, file_name=file_name)
+    elif database == "references":
+        records = read_all_records(directory=directory, database=database)
     else:
-        raise ValueError("file_name must be 'documents.csv' or 'references.csv'")
+        raise ValueError(
+            "database must be one of 'documents', 'references', or 'cited_by'"
+        )
 
     records = records.assign(num_documents=1)
     records = records[
