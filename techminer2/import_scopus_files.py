@@ -48,14 +48,12 @@ Import a scopus file to a working directory.
 import glob
 import os
 import os.path
-import string
 import sys
 
 import numpy as np
 import pandas as pd
 import yaml
 from nltk.tokenize import RegexpTokenizer, sent_tokenize
-from textblob import TextBlob
 from tqdm import tqdm
 
 from ._read_raw_csv_files import read_raw_csv_files
