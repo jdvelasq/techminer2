@@ -71,7 +71,6 @@ from .map_ import map_
 
 def import_scopus_files(
     directory="./",
-    use_nlp_phrases=False,
     disable_progress_bar=False,
 ):
     """Import Scopus files."""
