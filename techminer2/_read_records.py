@@ -6,8 +6,14 @@ import pandas as pd
 import yaml
 
 
-def read_all_records(directory, file_name="documents.csv"):
+def read_all_records(directory, database="documents"):
     "Reads all records of the specified file."
+
+    file_name = {
+        "documents": "_documents.csv",
+        "references": "_references.csv",
+        "cited_by": "_cited_by.csv",
+    }[database]
 
     file_path = os.path.join(directory, "processed", file_name)
     if not os.path.isfile(file_path):
@@ -26,15 +32,15 @@ def read_filtered_records(directory):
         filter_ = yaml.load(yaml_file, Loader=yaml.FullLoader)
 
     year_min, year_max = filter_["first_year"], filter_["last_year"]
-    documents = documents.query(f"pub_year >= {year_min}")
-    documents = documents.query(f"pub_year <= {year_max}")
+    documents = documents.query(f"year >= {year_min}")
+    documents = documents.query(f"year <= {year_max}")
 
     min_citations, max_citations = filter_["min_citations"], filter_["max_citations"]
     documents = documents.query(f"global_citations >= {min_citations}")
     documents = documents.query(f"global_citations <= {max_citations}")
 
     bradford = filter_["bradford"]
-    documents = documents.query(f"bradford_law_zone <= {bradford}")
+    documents = documents.query(f"bradford <= {bradford}")
 
     for key, value in filter_.items():
         if key in [
