@@ -6,12 +6,12 @@ Creates a institutions thesaurus from the data in the database.
 """
 
 import os.path
+import sys
 
 import pandas as pd
 
-from . import logging
-from .extract_country import extract_country
 from ._read_records import read_all_records
+from .extract_country import extract_country
 from .thesaurus import Thesaurus, load_file_as_dict, read_textfile
 
 #
@@ -182,7 +182,7 @@ def create_institutions_thesaurus(directory):
 
         return None
 
-    logging.info("Creating institutions thesaurus ...")
+    sys.stdout.write("--INFO-- Creating institutions thesaurus\n")
 
     thesaurus_file = os.path.join(directory, "processed", "institutions.txt")
 
@@ -253,9 +253,10 @@ def create_institutions_thesaurus(directory):
     #
     x["country"] = x.affiliation.map(extract_country, na_action="ignore")
     if any(x.country.isna()):
-        logging.info(
-            "Affiliations without country detected - check file "
-            + os.path.join(directory, "processed", "ignored_affiliations.txt")
+
+        sys.stdout.write(
+            "--INFO-- Affiliations without country detected - check file "
+            + os.path.join(directory, "processed", "ignored_affiliations.txt\n")
         )
 
     #
@@ -276,11 +277,12 @@ def create_institutions_thesaurus(directory):
     #
     x["key"] = x.affiliation.map(search_name)
     if any(x.key.isna()):
-        logging.info(
+        msg = (
             "Affiliations without country detected - check file "
             + directory
             + "ignored_affiliations.txt"
         )
+        sys.stdout.write("--INFO-- " + msg + "\n")
     ignored_affiliations += x[x.key.isna()]["affiliation"].tolist()
 
     #
@@ -506,4 +508,4 @@ def create_institutions_thesaurus(directory):
         thesaurus_file
     )
 
-    logging.info(f"Thesaurus file '{thesaurus_file}' created.")
+    sys.stdout.write(f"--INFO-- Thesaurus file '{thesaurus_file}' created\n")
