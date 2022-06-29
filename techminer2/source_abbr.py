@@ -132,3 +132,41 @@
 #         pdf = pdf.drop_duplicates("source_name")
 #         pdf.to_csv(file_path, index=False)
 #     return documents
+
+
+def _complete__source_abbr__colum(documents):
+
+    if "source_abbr" in documents.columns:
+        #
+        # Loads existent iso source names and make a dictionary
+        # to translate source names to iso source names
+        #
+        module_path = os.path.dirname(__file__)
+        file_path = os.path.join(module_path, "files/source_abbr.csv")
+        pdf = pd.read_csv(file_path, sep=",")
+        existent_names = dict(zip(pdf.source_name, pdf.source_abbr))
+
+        # complete iso source names
+        documents = documents.copy()
+        documents.source_abbr = [
+            abb
+            if not pd.isna(abb)
+            else (existent_names[name] if name in existent_names.keys() else abb)
+            for name, abb in zip(documents.source_name, documents.source_abbr)
+        ]
+    return documents
+
+
+def _repair__source_abbr__column(documents):
+    if "source_abbr" in documents.columns:
+        documents = documents.copy()
+        documents.source_abbr = [
+            "--- " + name[:25] if pd.isna(abb) and not pd.isna(name) else abb
+            for name, abb in zip(documents.source_name, documents.source_abbr)
+        ]
+        documents = documents.assign(
+            source_abbr=documents.source_abbr.map(
+                lambda x: x[:29] if isinstance(x, str) else x
+            )
+        )
+    return documents
