@@ -40,6 +40,7 @@ Import a scopus file to a working directory.
 --INFO-- Creating `num_global_referneces` column
 --INFO-- Complete `source_abbr` column
 --INFO-- Creating `abstract.csv` file from `documents` database
+--INFO-- Creating `local_references` column
 
 
 """
@@ -114,6 +115,7 @@ def import_scopus_files(
 
     _complete__source_abbr__column(directory)
     _create__abstract_csv__file(directory)
+    _create__local_references__column(directory)
 
     # create_institutions_thesaurus(directory=directory)
     # clean_institutions(directory=directory)
@@ -131,6 +133,16 @@ def import_scopus_files(
 #
 #    clean_keywords(directory=directory)
 #    logging.info("Process finished!!!")
+
+
+def _create__local_references__column(directory):
+
+    sys.stdout.write("--INFO-- Creating `local_references` column\n")
+
+    file_name = os.path.join(directory, "processed", "_documents.csv")
+    documents = pd.read_csv(file_name)
+    documents = documents.assign(local_references=[[] for _ in range(len(documents))])
+    documents.to_csv(file_name, sep=",", index=False, encoding="utf-8")
 
 
 def _create__abstract_csv__file(directory):
@@ -908,7 +920,7 @@ def _create_documents_csv_file(directory, disable_progress_bar):
     # documents = _process__global_references__column(documents)
     # documents = _process__eissn__column(documents)
     # documents = _process__issn__column(documents)
-    documents = documents.assign(local_references=[[] for _ in range(len(documents))])
+
     documents = _create_local_references_using_doi(
         documents, disable_progress_bar=disable_progress_bar
     )
