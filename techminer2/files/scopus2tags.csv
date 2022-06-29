@@ -1,57 +1,10 @@
-Abbreviated Source Title,iso_source_name
-Abstract,abstract
-Affiliations,affiliations
-Art. No.
+Abbreviated Source Title,source_abbr
 Author Keywords,raw_author_keywords
 Author(s) ID,authors_id
-Authors,raw_authors_names
-Authors with affiliations
-Chemicals/CAS
+Authors,raw_authors
 Cited by,global_citations
-CODEN
-Conference code
-Conference date
-Conference location
-Conference name
-Correspondence Address
-Document Type,document_type
-DOI,doi
-Editors
-EID
-Funding Details
-Funding Text 1
-Funding Text 2
-Funding Text 3
-Funding Text 4
-Funding Text 5
-Funding Text 6
-Funding Text 7
-Funding Text 8
-Funding Text 9
-Funding Text 10
-Funding Text 11
-Funding Text 12
-Funding Text 13
 Index Keywords,raw_index_keywords
-ISBN,isbn
-ISSN,issn
-Issue
-Language of Original Document
-Link
-Manufacturers
-Molecular Sequence Numbers
-Open Access
-Page count
-Page end
-Page start,page_start
-Publication Stage
-Publisher
-PubMed ID,pubmed_id
 References,global_references
-Source
-Source title,source_name
-Sponsors
-Title,document_title
-Tradenames
-Volume,volume
-Year,pub_year
+Source title,source_title
+Title,title
+Year,year
