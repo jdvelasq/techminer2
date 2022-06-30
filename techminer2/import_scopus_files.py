@@ -382,7 +382,7 @@ def _create__countries__column(directory):
     files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
     for file in files:
         data = pd.read_csv(file, encoding="utf-8")
-        if "countries" in data.columns:
+        if "raw_countries" in data.columns:
             data = data.assign(countries=data["raw_countries"].str.split(";"))
             data = data.assign(
                 countries=data["countries"].map(
