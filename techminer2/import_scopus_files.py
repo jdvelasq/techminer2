@@ -38,6 +38,7 @@ Import a scopus file to a working directory.
 --INFO-- Creating `raw_title_words` column
 --INFO-- Creating `raw_countries` column
 --INFO-- Creating `country_1st_author` column
+--INFO-- Creating `countries` column
 --INFO-- Creating `num_global_references` column
 --INFO-- Complete `source_abbr` column
 --INFO-- Creating `abstract.csv` file from `documents` database
@@ -114,6 +115,7 @@ def import_scopus_files(
     _create__raw_title_words__column(directory)
     _create__raw_countries__column(directory)
     _create__coutry_1st_autor__column(directory)
+    _create__countries__column(directory)
     _create__num_global_references__column(directory)
     _complete__source_abbr__column(directory)
     _create__abstract_csv__file(directory)
@@ -371,6 +373,24 @@ def _create__bradford__column(directory):
     source2zone = dict(zip(indicators.source_title, indicators.zone))
     data = data.assign(bradford=data["source_title"].map(source2zone))
     data.to_csv(file_path, sep=",", encoding="utf-8", index=False)
+
+
+def _create__countries__column(directory):
+
+    sys.stdout.write("--INFO-- Creating `countries` column\n")
+
+    files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
+    for file in files:
+        data = pd.read_csv(file, encoding="utf-8")
+        if "countries" in data.columns:
+            data = data.assign(countries=data["raw_countries"].str.split(";"))
+            data = data.assign(
+                countries=data["countries"].map(
+                    lambda x: len(x) if isinstance(x, list) else 0
+                )
+            )
+
+        data.to_csv(file, sep=",", encoding="utf-8", index=False)
 
 
 def _create__coutry_1st_autor__column(directory):
