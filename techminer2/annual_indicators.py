@@ -61,7 +61,7 @@ def annual_indicators(directory="./", database="documents"):
     current_year = records.index.max()
     records = records.assign(citable_years=current_year - records.index + 1)
 
-    if "global_citataions" in records.columns:
+    if "global_citations" in records.columns:
         records = records.assign(
             mean_global_citations=records.global_citations / records.num_documents
         )
