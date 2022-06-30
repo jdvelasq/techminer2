@@ -19,7 +19,7 @@ Bar chart
 
 """
 from .bar_plot import bar_plot
-from .column_indicators_by_metric import column_indicators_by_metric
+from .column_indicators import column_indicators
 
 
 def bar_chart(
@@ -30,19 +30,26 @@ def bar_chart(
     directory="./",
     metric="num_documents",
     title=None,
-    file_name="documents.csv",
+    database="documents",
 ):
     """Plots a bar chart from a column of a dataframe."""
 
-    indicators = column_indicators_by_metric(
-        column,
-        min_occ=min_occ,
-        max_occ=max_occ,
-        top_n=top_n,
+    indicators = column_indicators(
+        column=column,
         directory=directory,
-        metric=metric,
-        file_name=file_name,
+        database=database,
+        use_filter=True if database == "documents" else False,
+        sep=";",
     )
+
+    indicators = indicators.sort_values(metric, ascending=False)
+
+    if min_occ is not None:
+        indicators = indicators[indicators.num_documents >= min_occ]
+    if max_occ is not None:
+        indicators = indicators[indicators.num_documents <= max_occ]
+    if top_n is not None:
+        indicators = indicators.head(top_n)
 
     return bar_plot(
         dataframe=indicators,
