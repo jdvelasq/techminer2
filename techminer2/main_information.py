@@ -139,20 +139,18 @@ class _MainInformation:
     # -----------------------------------------------------------------------------------
 
     def compute_timespam(self):
-        return str(min(self.records.pub_year)) + ":" + str(max(self.records.pub_year))
+        return str(min(self.records.year)) + ":" + str(max(self.records.year))
 
     def documents(self):
         return len(self.records)
 
     def annual_growth_rate(self):
-        n_years = max(self.records.pub_year) - min(self.records.pub_year) + 1
-        Po = len(
-            self.records.pub_year[self.records.pub_year == min(self.records.pub_year)]
-        )
+        n_years = max(self.records.year) - min(self.records.year) + 1
+        Po = len(self.records.year[self.records.year == min(self.records.year)])
         return round(100 * (np.power(self.n_records / Po, 1 / n_years) - 1), 2)
 
     def document_average_age(self):
-        mean_years = self.records.pub_year.copy()
+        mean_years = self.records.year.copy()
         mean_years = mean_years.dropna()
         mean_years = mean_years.mean()
         current_year = datetime.datetime.now().year
@@ -179,7 +177,7 @@ class _MainInformation:
         if "global_citations" in self.records.columns:
             return round(
                 self.records.global_citations.mean()
-                / (self.records.pub_year.max() - self.records.pub_year.min() + 1),
+                / (self.records.year.max() - self.records.year.min() + 1),
                 2,
             )
         else:
