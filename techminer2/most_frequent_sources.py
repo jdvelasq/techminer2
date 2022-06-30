@@ -2,23 +2,25 @@
 Most frequent sources
 ===============================================================================
 
+See :doc:`column indicators <column_indicators>` to obtain a `pandas.Dataframe` 
+with the data.
+
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "sphinx/_static/most_relevant_sources.html"
+>>> file_name = "sphinx/_static/most_frequent_sources.html"
 
 >>> most_frequent_sources(
 ...     directory,
 ...     top_n=20,
 ...     min_occ=None,
 ...     max_occ=None,
-...     title="Most Frequent Sources",
 ...     plot="cleveland",
 ...     database="documents",
 ... ).write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="_static/most_relevant_sources.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="_static/most_frequent_sources.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 from .bar_chart import bar_chart
@@ -34,11 +36,21 @@ def most_frequent_sources(
     top_n=20,
     min_occ=None,
     max_occ=None,
-    title="Most Frequent Sources",
     plot="bar",
     database="documents",
 ):
     """Plots the number of documents by source using the specified plot."""
+
+    if database == "documents":
+        title = "Most Frequent Sources"
+    elif database == "references":
+        title = "Most Frequent Sources in References"
+    elif database == "cited_by":
+        title = "Most Frequent Sources in Citing documents"
+    else:
+        raise ValueError(
+            "Invalid database name. Database must be one of: 'documents', 'references', 'cited_by'"
+        )
 
     plot_function = {
         "bar": bar_chart,
