@@ -46,8 +46,8 @@ def read_filtered_records(directory):
         if key in [
             "first_year",
             "last_year",
-            "citations_min",
-            "citations_max",
+            "min_citations",
+            "max_citations",
             "bradford",
         ]:
             continue
