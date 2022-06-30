@@ -45,6 +45,8 @@ Import a scopus file to a working directory.
 --INFO-- Creating `local_references` column
 --INFO-- Creating `local_citations` column
 --INFO-- Creating `bradford` column
+--INFO-- Creating `keywords.txt` thesaurus file
+--INFO-- Cleaning keywords in database files
 --INFO-- Process finished!!!
 
 """
@@ -59,16 +61,17 @@ import yaml
 from nltk.tokenize import RegexpTokenizer, sent_tokenize
 from tqdm import tqdm
 
+from .clean_keywords import clean_keywords
+from .create_keywords_thesaurus import create_keywords_thesaurus
 from .extract_country import extract_country
 
 # from ._read_raw_csv_files import read_raw_csv_files
 # from ._read_records import read_all_records
 # from .clean_institutions import clean_institutions
-# from .clean_keywords import clean_keywords
+#
 
 
 # from .create_institutions_thesaurus import create_institutions_thesaurus
-# from .create_keywords_thesaurus import create_keywords_thesaurus
 
 
 # from .map_ import map_
@@ -126,14 +129,11 @@ def import_scopus_files(
 
     # create_institutions_thesaurus(directory=directory)
     # clean_institutions(directory=directory)
-    #
-    #    create_keywords_thesaurus(
-    #        directory=directory,
-    #        use_nlp_phrases=use_nlp_phrases,
-    #    )
-    #
-    #    clean_keywords(directory=directory)
+
     _create__bradford__column(directory)
+
+    create_keywords_thesaurus(directory)
+    clean_keywords(directory)
 
     sys.stdout.write("--INFO-- Process finished!!!\n")
 
@@ -386,7 +386,7 @@ def _create__countries__column(directory):
             data = data.assign(countries=data["raw_countries"].str.split(";"))
             data = data.assign(
                 countries=data["countries"].map(
-                    lambda x: len(x) if isinstance(x, list) else 0
+                    lambda x: "; ".join(set(x)) if isinstance(x, list) else x
                 )
             )
 
