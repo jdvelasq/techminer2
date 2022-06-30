@@ -1,55 +1,43 @@
+import glob
 import os
+import sys
 
 import pandas as pd
 
-from . import logging
-from ._read_records import read_all_records
 from .thesaurus import Thesaurus, read_textfile, text_clustering
 
 
-def create_keywords_thesaurus(directory, use_nlp_phrases=False):
-    """
-    Createa a keywords thesaurus from the keywords in the articles.
+def create_keywords_thesaurus(directory):
+    """Createa a keywords thesaurus from the keywords."""
 
-    """
-    logging.info("Creating keywords thesaurus ...")
-
-    # --------------------------------------------------------------------------
-    data = read_all_records(directory)
-    # --------------------------------------------------------------------------
+    sys.stdout.write("--INFO-- Creating `keywords.txt` thesaurus file\n")
 
     words_list = []
+    files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
+    for file in files:
+        data = pd.read_csv(file, encoding="utf-8")
+        if "raw_author_keywords" in data.columns:
+            words_list += data.raw_author_keywords.tolist()
+        if "raw_index_keywords" in data.columns:
+            words_list += data.raw_index_keywords.tolist()
 
-    if "raw_author_keywords" in data.columns:
-        words_list += data.raw_author_keywords.tolist()
+    words_list = pd.Series(words_list)
+    words_list = words_list.dropna()
+    words_list = words_list.str.lower()
+    words_list = words_list.str.split(";")
+    words_list = words_list.explode()
+    words_list = words_list.str.strip()
+    words_list = words_list[words_list.str.len() > 1]
 
-    if "raw_index_keywords" in data.columns:
-        words_list += data.raw_index_keywords.tolist()
+    words_list = words_list.str.replace('"', "")
+    words_list = words_list.str.replace(chr(8212), "")
+    words_list = words_list.str.replace(chr(8220), "")
+    words_list = words_list.str.replace(chr(8221), "")
 
-    if "raw_nlp_document_title" in data.columns and use_nlp_phrases:
-        words_list += data.raw_nlp_document_title.tolist()
-
-    if "raw_nlp_abstract" in data.columns and use_nlp_phrases:
-        words_list += data.raw_nlp_abstract.tolist()
-
-    #
-    # Rules for keywords
-    #
-    words_list = [words for words in words_list if not pd.isna(words)]
-    words_list = [word for words in words_list for word in words.split(";")]
-    words_list = [word.strip() for word in words_list]
-    words_list = [word for word in words_list if len(word) > 1]
-    words_list = [
-        word.replace('"', "")
-        .replace(chr(8212), "")
-        .replace(chr(8220), "")
-        .replace(chr(8221), "")
-        for word in words_list
-    ]
-    words_list = [
-        word.replace("-", "") if word[0] == "-" and len(word) > 1 else word
-        for word in words_list
-    ]
+    words_list = words_list.where(
+        (words_list.str[0] == "-") & words_list.str.len() > 1,
+        words_list.str.replace("-", ""),
+    )
 
     # ----< new algorithm >----------------------------------------------------
     # {palabra: clave_del_grupo}
@@ -73,5 +61,3 @@ def create_keywords_thesaurus(directory, use_nlp_phrases=False):
         full_match=False,
         use_re=False,
     ).to_textfile(thesaurus_file)
-
-    logging.info(f"Thesaurus file '{thesaurus_file}' created.")
