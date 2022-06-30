@@ -147,12 +147,10 @@ def _create__num_authors__column(directory):
         data = pd.read_csv(file, encoding="utf-8")
         #
         data = data.assign(num_authors=data.authors.str.split(";"))
+        data = data.assign(num_authors=data.num_authors.map(len, na_action="ignore"))
         data = data.assign(
-            num_authors=data.num_authors.map(
-                lambda x: len(x) if isinstance(x, list) else 0
-            )
+            num_authors=data.num_authors.where(data.num_authors.isna(), 0)
         )
-        #
         data.to_csv(file, sep=",", encoding="utf-8", index=False)
 
 
@@ -297,11 +295,9 @@ def _create__abstract_csv__file(directory):
         abstracts = abstracts.assign(
             line_no=abstracts.groupby(["record_no"]).cumcount()
         )
-
         abstracts = abstracts[
             ["record_no", "line_no", "phrase", "global_citations", "document_id"]
         ]
-
         file_name = os.path.join(directory, "processed", "abstracts.csv")
         abstracts.to_csv(file_name, index=False)
 
