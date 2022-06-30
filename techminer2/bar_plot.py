@@ -1,7 +1,7 @@
 """Makes a bar plot from a dataframe."""
 
 from .bar_px import bar_px
-from .format_dataset_to_plot import format_dataset_to_plot
+from .format_dataset_to_plot_with_plotly import format_dataset_to_plot_with_plotly
 
 
 def bar_plot(
@@ -18,7 +18,7 @@ def bar_plot(
     :return: Plotly figure
     """
 
-    metric, column, dataframe = format_dataset_to_plot(dataframe, metric)
+    metric, column, dataframe = format_dataset_to_plot_with_plotly(dataframe, metric)
     return bar_px(
         dataframe=dataframe,
         x_label=metric,
