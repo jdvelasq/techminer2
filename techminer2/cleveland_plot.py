@@ -1,7 +1,7 @@
 """Makes a cleveland plot from a dataframe."""
 
 from .cleveland_px import cleveland_px
-from .format_dataset_to_plot import format_dataset_to_plot
+from .format_dataset_to_plot_with_plotly import format_dataset_to_plot_with_plotly
 
 
 def cleveland_plot(
@@ -11,7 +11,7 @@ def cleveland_plot(
 ):
     """Makes a cleveland plot from a dataframe."""
 
-    metric, column, dataframe = format_dataset_to_plot(dataframe, metric)
+    metric, column, dataframe = format_dataset_to_plot_with_plotly(dataframe, metric)
     return cleveland_px(
         dataframe=dataframe,
         x_label=metric,
