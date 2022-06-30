@@ -43,19 +43,18 @@ from ._read_records import read_records
 
 def annual_indicators(directory="./", database="documents"):
     """Computes annual indicators,"""
+
     records = read_records(directory=directory, database=database, use_filter=False)
     records = records.assign(num_documents=1)
-    #
-    columns = ["num_documents"]
-    if "year" in records.columns:
-        columns.append("year")
+
+    columns = ["num_documents", "year"]
+
     if "local_citations" in records.columns:
         columns.append("local_citations")
     if "global_citations" in records.columns:
         columns.append("global_citations")
     records = records[columns]
-    #
-    #
+
     records = records.groupby("year", as_index=True).sum()
     records = records.sort_index(ascending=True, axis="index")
     records = records.assign(cum_num_documents=records.num_documents.cumsum())
