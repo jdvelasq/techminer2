@@ -7,8 +7,11 @@ def annual_indicators_plot(
     column,
     title,
     directory,
+    database,
 ):
-    indicators = annual_indicators(directory)
+    """Makes a line plot for annual indicators."""
+
+    indicators = annual_indicators(directory, database)
     indicators = indicators.reset_index()
     column_names = {
         column: column.replace("_", " ").title() for column in indicators.columns
