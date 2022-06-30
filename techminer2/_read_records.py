@@ -35,6 +35,12 @@ def read_records(directory="./", database="documents", use_filter=True):
 
     records = pd.read_csv(file_path, sep=",", encoding="utf-8")
     if use_filter:
+        if database != "documents":
+            raise (
+                NotImplementedError(
+                    "filter not implemented for references and cited_by"
+                )
+            )
         records = _filter_records(directory, records)
     return records
 
