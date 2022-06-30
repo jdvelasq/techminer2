@@ -58,7 +58,7 @@ def clean_keywords(directory="./"):
             )
             data = data.assign(
                 author_keywords=data.author_keywords.map(
-                    lambda x: set(x) if isinstance(x, list) else x
+                    lambda x: sorted(set(x)) if isinstance(x, list) else x
                 )
             )
             data = data.assign(author_keywords=data.author_keywords.str.join("; "))
@@ -74,7 +74,7 @@ def clean_keywords(directory="./"):
             )
             data = data.assign(
                 index_keywords=data.index_keywords.map(
-                    lambda x: set(x) if isinstance(x, list) else x
+                    lambda x: sorted(set(x)) if isinstance(x, list) else x
                 )
             )
             data = data.assign(index_keywords=data.index_keywords.str.join("; "))
