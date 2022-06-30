@@ -38,7 +38,7 @@ def column_chart(
         column=column,
         directory=directory,
         database=database,
-        use_filter=True if database == "documents" else False,
+        use_filter=(database == "documents"),
         sep=";",
     )
 
