@@ -120,6 +120,7 @@ from .main_information import main_information
 from .map_chart import map_chart
 from .merge_keywords import merge_keywords
 from .most_frequent_authors import most_frequent_authors
+from .most_frequent_countries import most_frequent_countries
 from .most_frequent_sources import most_frequent_sources
 from .most_frequent_words import most_frequent_words
 from .most_global_cited_authors import most_global_cited_authors
@@ -133,7 +134,6 @@ from .most_local_cited_documents import most_local_cited_documents
 from .most_local_cited_institutions import most_local_cited_institutions
 from .most_local_cited_references import most_local_cited_references
 from .most_local_cited_sources import most_local_cited_sources
-from .most_relevant_countries import most_relevant_countries
 from .most_relevant_institutions import most_relevant_institutions
 from .network import network
 from .num_documents_by_type import num_documents_by_type

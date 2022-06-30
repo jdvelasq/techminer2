@@ -110,7 +110,7 @@ Countries
    .. toctree::
       :maxdepth: 1
 
-      most_relevant_countries
+      most_frequent_countries
       most_global_cited_countries
       most_local_cited_countries
       countries_production_over_time

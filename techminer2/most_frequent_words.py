@@ -1,5 +1,5 @@
 """
-Most Frequent Words
+Most frequent words
 ===============================================================================
 
 See :doc:`column indicators <column_indicators>` to obtain a `pandas.Dataframe` 
@@ -14,6 +14,10 @@ with the data.
 ...     column="author_keywords",
 ...     directory=directory,
 ...     top_n=20,
+...     min_occ=None,
+...     max_occ=None,
+...     plot="cleveland",
+...     database="documents",
 ... ).write_html(file_name)
 
 .. raw:: html
@@ -21,7 +25,12 @@ with the data.
     <iframe src="_static/most_frequent_words.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
+from .bar_chart import bar_chart
+from .circle_chart import circle_chart
 from .cleveland_chart import cleveland_chart
+from .column_chart import column_chart
+from .line_chart import line_chart
+from .word_cloud import word_cloud
 
 
 def most_frequent_words(
@@ -30,15 +39,48 @@ def most_frequent_words(
     top_n=20,
     min_occ=None,
     max_occ=None,
+    plot="bar",
+    database="documents",
 ):
     """Plot the most frequent words."""
 
-    return cleveland_chart(
+    if column not in [
+        "author_keywords",
+        "index_keywords",
+        "title_words",
+        "abstract_words",
+    ]:
+        raise ValueError(
+            "Invalid column name. Column must be one of: 'author_keywords', 'index_keywords', 'title_words', 'abstract_words'"
+        )
+
+    if database == "documents":
+        title = "Most Frequent " + column.replace("_", " ").title()
+    elif database == "references":
+        title = "Most Frequent " + column.replace("_", " ").title() + " in References"
+    elif database == "cited_by":
+        title = "Most Frequent " + column.replace("_", " ").title() + " in Cited By"
+    else:
+        raise ValueError(
+            "Invalid database name. Database must be one of: 'documents', 'references', 'cited_by'"
+        )
+
+    plot_function = {
+        "bar": bar_chart,
+        "column": column_chart,
+        "line": line_chart,
+        "circle": circle_chart,
+        "cleveland": cleveland_chart,
+        "wordcloud": word_cloud,
+    }[plot]
+
+    return plot_function(
         column=column,
-        top_n=top_n,
         min_occ=min_occ,
         max_occ=max_occ,
+        top_n=top_n,
         directory=directory,
         metric="num_documents",
-        title="Most frequent words",
+        title=title,
+        database=database,
     )
