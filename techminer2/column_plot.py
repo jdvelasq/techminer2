@@ -24,7 +24,7 @@ Column plot
 
 """
 from .column_px import column_px
-from .format_dataset_to_plot import format_dataset_to_plot
+from .format_dataset_to_plot_with_plotly import format_dataset_to_plot_with_plotly
 
 
 def column_plot(
@@ -41,7 +41,7 @@ def column_plot(
     :return: Plotly figure
     """
 
-    metric, column, dataframe = format_dataset_to_plot(dataframe, metric)
+    metric, column, dataframe = format_dataset_to_plot_with_plotly(dataframe, metric)
     return column_px(
         dataframe=dataframe,
         x_label=column,
