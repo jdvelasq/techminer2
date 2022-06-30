@@ -1,7 +1,7 @@
 """Makes a cicle plot from a dataframe."""
 
 from .circle_px import circle_px
-from .format_dataset_to_plot import format_dataset_to_plot
+from .format_dataset_to_plot_with_plotly import format_dataset_to_plot_with_plotly
 
 
 def circle_plot(
@@ -12,7 +12,7 @@ def circle_plot(
 ):
     """Makes a cleveland plot from a dataframe."""
 
-    metric, column, dataframe = format_dataset_to_plot(dataframe, metric)
+    metric, column, dataframe = format_dataset_to_plot_with_plotly(dataframe, metric)
     return circle_px(
         dataframe=dataframe,
         values=metric,
