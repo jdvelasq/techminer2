@@ -59,7 +59,9 @@ def most_frequent_words(
     elif database == "references":
         title = "Most Frequent " + column.replace("_", " ").title() + " in References"
     elif database == "cited_by":
-        title = "Most Frequent " + column.replace("_", " ").title() + " in Cited By"
+        title = (
+            "Most Frequent " + column.replace("_", " ").title() + " in Citing documents"
+        )
     else:
         raise ValueError(
             "Invalid database name. Database must be one of: 'documents', 'references', 'cited_by'"
