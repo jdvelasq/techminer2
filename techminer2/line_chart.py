@@ -10,6 +10,7 @@ Line chart
 ...     'author_keywords',
 ...     top_n=15,
 ...     directory=directory,
+...     metric="num_documents",
 ... ).write_html(file_name)
 
 .. raw:: html
@@ -17,7 +18,7 @@ Line chart
     <iframe src="_static/line_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .column_indicators_by_metric import column_indicators_by_metric
+from .column_indicators import column_indicators
 from .line_plot import line_plot
 
 
@@ -29,19 +30,27 @@ def line_chart(
     directory="./",
     metric="num_documents",
     title=None,
-    file_name="documents.csv",
+    database="documents",
 ):
     """Makes a line chart from a dataframe."""
 
-    indicators = column_indicators_by_metric(
-        column,
-        min_occ=min_occ,
-        max_occ=max_occ,
-        top_n=top_n,
+    indicators = column_indicators(
+        column=column,
         directory=directory,
-        metric=metric,
-        file_name=file_name,
+        database=database,
+        use_filter=True if database == "documents" else False,
+        sep=";",
     )
+
+    indicators = indicators.sort_values(metric, ascending=False)
+
+    if min_occ is not None:
+        indicators = indicators[indicators.num_documents >= min_occ]
+    if max_occ is not None:
+        indicators = indicators[indicators.num_documents <= max_occ]
+    if top_n is not None:
+        indicators = indicators.head(top_n)
+
     return line_plot(
         dataframe=indicators,
         metric=metric,
