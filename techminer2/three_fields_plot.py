@@ -37,6 +37,7 @@ def three_fields_plot(
     min_occ_right=1,
     directory="./",
 ):
+    """Sankey plot"""
 
     matrix_left, matrix_right = _compute_matrixes(
         left_column=left_column,
