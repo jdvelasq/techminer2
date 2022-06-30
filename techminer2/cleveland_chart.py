@@ -20,7 +20,7 @@ Cleveland Chart
 
 """
 from .cleveland_plot import cleveland_plot
-from .column_indicators_by_metric import column_indicators_by_metric
+from .column_indicators import column_indicators
 
 
 def cleveland_chart(
@@ -31,19 +31,26 @@ def cleveland_chart(
     directory="./",
     metric="num_documents",
     title=None,
-    file_name="documents.csv",
+    database="documents",
 ):
     """Makes a cleveland chart from a dataframe."""
 
-    indicators = column_indicators_by_metric(
-        column,
-        min_occ=min_occ,
-        max_occ=max_occ,
-        top_n=top_n,
+    indicators = column_indicators(
+        column=column,
         directory=directory,
-        metric=metric,
-        file_name=file_name,
+        database=database,
+        use_filter=True if database == "documents" else False,
+        sep=";",
     )
+
+    indicators = indicators.sort_values(metric, ascending=False)
+
+    if min_occ is not None:
+        indicators = indicators[indicators.num_documents >= min_occ]
+    if max_occ is not None:
+        indicators = indicators[indicators.num_documents <= max_occ]
+    if top_n is not None:
+        indicators = indicators.head(top_n)
 
     return cleveland_plot(
         dataframe=indicators,
