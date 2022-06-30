@@ -904,9 +904,9 @@ def _remove_accents_in_database_files(directory):
 def _create_stopwords_file(directory):
     with open(
         os.path.join(directory, "processed", "stopwords.txt"), "w", encoding="utf-8"
-    ) as f:
-        f.write("")
-        f.close()
+    ) as file:
+        file.write("")
+        file.close()
 
 
 def _drop_na_columns_in_database_files(directory):
