@@ -31,6 +31,7 @@ Import a scopus file to a working directory.
 --INFO-- Processing `source_name` column
 --INFO-- Processing `global_references` column
 --INFO-- Creating `authors` column
+--INFO-- Creating `num_authors` column
 --INFO-- Creating `record_no` column
 --INFO-- Creating `document_id` column
 --INFO-- Creating `raw_abstract_words` column
@@ -106,6 +107,7 @@ def import_scopus_files(
     _process__global_references__column(directory)
     #
     _create__authors__column(directory)
+    _create__num_authors__column(directory)
     _create__record_no__column(directory)
     _create__document_id__column(directory)
     _create__raw_abstract_words__column(directory)
@@ -132,6 +134,24 @@ def import_scopus_files(
     _create__bradford__column(directory)
 
     sys.stdout.write("--INFO-- Process finished!!!\n")
+
+
+def _create__num_authors__column(directory):
+
+    sys.stdout.write("--INFO-- Creating `num_authors` column\n")
+
+    files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
+    for file in files:
+        data = pd.read_csv(file, encoding="utf-8")
+        #
+        data = data.assign(num_authors=data.authors.str.split(";"))
+        data = data.assign(
+            num_authors=data.num_authors.map(
+                lambda x: len(x) if isinstance(x, list) else 0
+            )
+        )
+        #
+        data.to_csv(file, sep=",", encoding="utf-8", index=False)
 
 
 def _create__local_citations__column(directory):
@@ -340,14 +360,15 @@ def _create__bradford__column(directory):
     )
 
     num_documents = indicators["num_documents"].sum()
-    indicators = indicators.assign(zone=1)
+    indicators = indicators.reset_index(drop=True)
+    indicators = indicators.assign(zone=3)
     indicators.zone = indicators.zone.where(
-        indicators.zone >= int(num_documents / 3), 2
+        indicators.cum_num_documents >= int(num_documents * 2 / 3), 2
     )
     indicators.zone = indicators.zone.where(
-        indicators.zone >= int(num_documents * 2 / 3), 3
+        indicators.cum_num_documents >= int(num_documents / 3), 1
     )
-    source2zone = dict(zip(indicators.index, indicators.zone))
+    source2zone = dict(zip(indicators.source_title, indicators.zone))
     data = data.assign(bradford=data["source_title"].map(source2zone))
     data.to_csv(file_path, sep=",", encoding="utf-8", index=False)
 
