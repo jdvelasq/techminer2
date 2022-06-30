@@ -1,24 +1,24 @@
 """
-Most frequent authors
+Most frequent sources
 ===============================================================================
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "sphinx/_static/most_relevant_authors.html"
+>>> file_name = "sphinx/_static/most_relevant_sources.html"
 
->>> most_frequent_authors(
+>>> most_frequent_sources(
 ...     directory,
 ...     top_n=20,
 ...     min_occ=None,
 ...     max_occ=None,
-...     title="Most Frequent Authors",
+...     title="Most Frequent Sources",
 ...     plot="cleveland",
 ...     database="documents",
 ... ).write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="_static/most_relevant_authors.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="_static/most_relevant_sources.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 from .bar_chart import bar_chart
@@ -29,16 +29,16 @@ from .line_chart import line_chart
 from .word_cloud import word_cloud
 
 
-def most_frequent_authors(
+def most_frequent_sources(
     directory="./",
     top_n=20,
     min_occ=None,
     max_occ=None,
-    title="Most Frequent Authors",
+    title="Most Frequent Sources",
     plot="bar",
     database="documents",
 ):
-    """Plots the number of documents by author using the specified plot."""
+    """Plots the number of documents by source using the specified plot."""
 
     plot_function = {
         "bar": bar_chart,
@@ -50,7 +50,7 @@ def most_frequent_authors(
     }[plot]
 
     return plot_function(
-        column="authors",
+        column="source_title",
         min_occ=min_occ,
         max_occ=max_occ,
         top_n=top_n,
