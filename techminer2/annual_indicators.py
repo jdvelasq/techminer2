@@ -4,75 +4,69 @@ Annual Indicators
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> annual_indicators(directory)
-          num_documents  ...  mean_local_citations_per_year
-pub_year                 ...                               
-2016                  5  ...                           0.97
-2017                 10  ...                           0.96
-2018                 34  ...                           0.93
-2019                 38  ...                           0.97
-2020                 62  ...                           0.50
-2021                 99  ...                           0.20
+>>> annual_indicators(directory) # doctest: +NORMALIZE_WHITESPACE
+      num_documents  ...  mean_local_citations_per_year
+year                 ...                               
+2016              2  ...                           0.36
+2017              5  ...                           0.23
+2018             16  ...                           0.40
+2019             14  ...                           0.23
+2020             25  ...                           0.21
+2021             22  ...                           0.07
+2022             10  ...                           0.00
 <BLANKLINE>
-[6 rows x 11 columns]
+[7 rows x 8 columns]
 
->>> from pprint import pprint
->>> pprint(annual_indicators(directory).columns.to_list())
-['num_documents',
- 'local_citations',
- 'global_citations',
- 'mean_global_citations',
- 'mean_local_citations',
- 'cum_num_documents',
- 'cum_global_citations',
- 'cum_local_citations',
- 'citable_years',
- 'mean_global_citations_per_year',
- 'mean_local_citations_per_year']
 
 """
+from ._read_records import read_records
 
-from ._read_records import read_filtered_records
 
-
-def annual_indicators(directory="./"):
-
-    records = read_filtered_records(directory)
+def annual_indicators(directory="./", database="documents"):
+    """Computes annual indicators,"""
+    records = read_records(directory=directory, database=database, use_filter=False)
     records = records.assign(num_documents=1)
-    records = records[
-        [
-            "pub_year",
-            "num_documents",
-            "local_citations",
-            "global_citations",
-        ]
-    ].copy()
-    records = records.groupby("pub_year", as_index=True).sum()
+    #
+    columns = ["num_documents"]
+    if "year" in records.columns:
+        columns.append("year")
+    if "local_citations" in records.columns:
+        columns.append("local_citations")
+    if "global_citations" in records.columns:
+        columns.append("global_citations")
+    records = records[columns]
+
+    #
+    records = records.groupby("year", as_index=True).sum()
     records = records.sort_index(ascending=True, axis="index")
-    records = records.assign(
-        mean_global_citations=records.global_citations / records.num_documents
-    )
-    records = records.assign(
-        mean_local_citations=records.local_citations / records.num_documents
-    )
     records = records.assign(cum_num_documents=records.num_documents.cumsum())
-    records = records.assign(cum_global_citations=records.global_citations.cumsum())
-    records = records.assign(cum_local_citations=records.local_citations.cumsum())
     current_year = records.index.max()
     records = records.assign(citable_years=current_year - records.index + 1)
-    records = records.assign(
-        mean_global_citations_per_year=records.mean_global_citations
-        / records.citable_years
-    )
-    records.mean_global_citations_per_year = (
-        records.mean_global_citations_per_year.round(2)
-    )
-    records = records.assign(
-        mean_local_citations_per_year=records.mean_local_citations
-        / records.citable_years
-    )
-    records.mean_local_citations_per_year = records.mean_local_citations_per_year.round(
-        2
-    )
+
+    if "global_citataions" in records.columns:
+        records = records.assign(
+            mean_global_citations=records.global_citations / records.num_documents
+        )
+        records = records.assign(cum_global_citations=records.global_citations.cumsum())
+        records = records.assign(
+            mean_global_citations_per_year=records.mean_global_citations
+            / records.citable_years
+        )
+        records.mean_global_citations_per_year = (
+            records.mean_global_citations_per_year.round(2)
+        )
+
+    if "local_citations" in records.columns:
+        records = records.assign(
+            mean_local_citations=records.local_citations / records.num_documents
+        )
+        records = records.assign(cum_local_citations=records.local_citations.cumsum())
+        records = records.assign(
+            mean_local_citations_per_year=records.mean_local_citations
+            / records.citable_years
+        )
+        records.mean_local_citations_per_year = (
+            records.mean_local_citations_per_year.round(2)
+        )
 
     return records
