@@ -37,11 +37,12 @@ Import a scopus file to a working directory.
 --INFO-- Creating `raw_title_words` column
 --INFO-- Creating `raw_countries` column
 --INFO-- Creating `country_1st_author` column
---INFO-- Creating `num_global_referneces` column
+--INFO-- Creating `num_global_references` column
 --INFO-- Complete `source_abbr` column
 --INFO-- Creating `abstract.csv` file from `documents` database
 --INFO-- Creating `local_references` column
 --INFO-- Creating `local_citations` column
+--INFO-- Creating `bradford` column
 --INFO-- Process finished!!!
 
 """
@@ -56,7 +57,6 @@ import yaml
 from nltk.tokenize import RegexpTokenizer, sent_tokenize
 from tqdm import tqdm
 
-from .column_indicators import column_indicators
 from .extract_country import extract_country
 
 # from ._read_raw_csv_files import read_raw_csv_files
@@ -326,44 +326,30 @@ def _create__bradford__column(directory):
 
     sys.stdout.write("--INFO-- Creating `bradford` column\n")
 
-    def compute_source2zone(file):
-        if "_documents.csv" in file:
-            database = "documents"
-        elif "_references.csv" in file:
-            database = "references"
-        elif "_cited_by.csv" in file:
-            database = "cited_by"
-        else:
-            return None
-        indicators = column_indicators(
-            "source_title", directory=directory, database=database
-        )
-        # indicators = indicators.sort_values(by=['num_documents', 'global_citations', 'local_citations'], ascending=False)
-        indicators = indicators.sort_values(
-            by=["num_documents", "global_citations"], ascending=False
-        )
-        indicators = indicators.assign(
-            cum_num_documents=indicators["num_documents"].cumsum()
-        )
-        num_documents = indicators["num_documents"].sum()
-        indicators = indicators.assign(zone=1)
-        indicators.zone = indicators.zone.where(
-            indicators.zone >= int(num_documents / 3), 2
-        )
-        indicators.zone = indicators.zone.where(
-            indicators.zone >= int(num_documents * 2 / 3), 3
-        )
-        source2zone = dict(zip(indicators.index, indicators.zone))
-        return source2zone
+    file_path = os.path.join(directory, "processed", "_documents.csv")
+    data = pd.read_csv(file_path, encoding="utf-8")
 
-    sys.stdout.write("--INFO-- Creating `bradford` column\n")
+    indicators = data[["source_title", "global_citations"]]
+    indicators = indicators.assign(num_documents=1)
+    indicators = indicators.groupby(["source_title"], as_index=False).sum()
+    indicators = indicators.sort_values(
+        by=["num_documents", "global_citations"], ascending=False
+    )
+    indicators = indicators.assign(
+        cum_num_documents=indicators["num_documents"].cumsum()
+    )
 
-    files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
-    for file in files:
-        source2zone = compute_source2zone(file=file)
-        data = pd.read_csv(file, encoding="utf-8")
-        data = data.assign(bradford=data["source_title"].map(source2zone))
-        data.to_csv(file, sep=",", encoding="utf-8", index=False)
+    num_documents = indicators["num_documents"].sum()
+    indicators = indicators.assign(zone=1)
+    indicators.zone = indicators.zone.where(
+        indicators.zone >= int(num_documents / 3), 2
+    )
+    indicators.zone = indicators.zone.where(
+        indicators.zone >= int(num_documents * 2 / 3), 3
+    )
+    source2zone = dict(zip(indicators.index, indicators.zone))
+    data = data.assign(bradford=data["source_title"].map(source2zone))
+    data.to_csv(file_path, sep=",", encoding="utf-8", index=False)
 
 
 def _create__coutry_1st_autor__column(directory):
