@@ -17,6 +17,25 @@ year                 ...
 <BLANKLINE>
 [7 rows x 8 columns]
 
+>>> annual_indicators(directory, database="references").tail() # doctest: +NORMALIZE_WHITESPACE
+      num_documents  global_citations  cum_num_documents  citable_years
+year                                                                   
+2018            189              9143                885              5
+2019            140              7315               1025              4
+2020            146              3219               1171              3
+2021             40               462               1211              2
+2022              3                 4               1214              1
+
+>>> annual_indicators(directory, database="cited_by").tail() # doctest: +NORMALIZE_WHITESPACE
+      num_documents  global_citations  cum_num_documents  citable_years
+year                                                                   
+2018             11               361                 14              5
+2019             52              1292                 66              4
+2020            105               839                171              3
+2021            184               597                355              2
+2022            119                85                474              1
+
+
 
 """
 from ._read_records import read_records
