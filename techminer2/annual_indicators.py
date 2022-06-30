@@ -54,7 +54,7 @@ def annual_indicators(directory="./", database="documents"):
     if "global_citations" in records.columns:
         columns.append("global_citations")
     records = records[columns]
-
+    #
     #
     records = records.groupby("year", as_index=True).sum()
     records = records.sort_index(ascending=True, axis="index")
