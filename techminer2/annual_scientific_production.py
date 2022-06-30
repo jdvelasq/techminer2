@@ -22,7 +22,10 @@ with the data.
 from .annual_indicators_plot import annual_indicators_plot
 
 
-def annual_scientific_production(directory="./", database="documents"):
+def annual_scientific_production(
+    directory="./",
+    database="documents",
+):
     """Computes annual scientific production (number of documents per year)."""
 
     if database == "documents":
@@ -30,7 +33,7 @@ def annual_scientific_production(directory="./", database="documents"):
     elif database == "references":
         title = "Num Documents per Year in References"
     elif database == "cited_by":
-        title = "Citting Documents per Year"
+        title = "Citing Documents per Year"
     else:
         raise ValueError("Invalid database")
 
