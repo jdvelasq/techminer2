@@ -25,16 +25,18 @@ import numpy as np
 from tqdm import tqdm
 
 from . import logging
-from ._read_raw_csv_files import read_raw_csv_files
+
+# from ._read_raw_csv_files import read_raw_csv_files
 from ._read_records import read_all_records
-from .import_scopus_files import (  # _delete_and_rename_columns,; _disambiguate_authors,; _search_for_new_iso_source_name,; _process__iso_source_name__column,; _repair__iso_source_name__column,; _complete__source_abbr__colum,
-    _create__document_id__column,
-    _create__record_no__column,
-    _process__authors_id__column,
-    _process__doi__column,
-    _process__raw_authors__column,
-    _process__source_name__column,
-)
+
+# from .import_scopus_files import (  # _delete_and_rename_columns,; _disambiguate_authors,; _search_for_new_iso_source_name,; _process__iso_source_name__column,; _repair__iso_source_name__column,; _complete__source_abbr__colum,
+#     _create__document_id__column,
+#     _create__record_no__column,
+#     _process__authors_id__column,
+#     _process__doi__column,
+#     _process__raw_authors__column,
+#     _process__source_name__column,
+# )
 
 
 def _create_references_file(
@@ -177,19 +179,19 @@ def import_references(directory="./", disable_progress_bar=False):
 
     documents = read_all_records(directory)
     #
-    references = read_raw_csv_files(join(directory, "raw", "references"))
-    references = _delete_and_rename_columns(references)
-    references = _process__authors_id__column(references)
-    references = _process__raw_authors_names__column(references)
-    references = _disambiguate_authors(references)
-    references = _process__doi__column(references)
-    references = _process__source_name__column(references)
-    references = _process__iso_source_name__column(references)
-    references = _search_for_new_iso_source_name(references)
-    references = _complete__iso_source_name__colum(references)
-    references = _repair__iso_source_name__column(references)
-    references = _create__record_no__column(references)
-    references = _create__document_id__column(references)
+    # references = read_raw_csv_files(join(directory, "raw", "references"))
+    # references = _delete_and_rename_columns(references)
+    # references = _process__authors_id__column(references)
+    # references = _process__raw_authors_names__column(references)
+    # references = _disambiguate_authors(references)
+    # references = _process__doi__column(references)
+    # references = _process__source_name__column(references)
+    # references = _process__iso_source_name__column(references)
+    # references = _search_for_new_iso_source_name(references)
+    # references = _complete__iso_source_name__colum(references)
+    # references = _repair__iso_source_name__column(references)
+    # references = _create__record_no__column(references)
+    # references = _create__document_id__column(references)
     #
     cited_references_table = _create_references_file(
         documents=documents,
