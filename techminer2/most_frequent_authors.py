@@ -4,7 +4,7 @@ Most frequent authors
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "sphinx/_static/most_relevant_authors.html"
+>>> file_name = "sphinx/_static/most_frequent_authors.html"
 
 >>> most_frequent_authors(
 ...     directory,
@@ -17,7 +17,7 @@ Most frequent authors
 
 .. raw:: html
 
-    <iframe src="_static/most_relevant_authors.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="_static/most_frequent_authors.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 from .bar_chart import bar_chart
