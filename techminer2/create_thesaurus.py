@@ -1,66 +1,78 @@
 """
-Create Thesaurus
+Create a thesaurus from a column
 ===============================================================================
-
-
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> create_thesaurus(
-...     column="author_keywords", 
-...     thesaurus_file="test_thesaurus.txt", 
-...     sep="; ",
-...     directory=directory, 
-... )
-- INFO - Creating thesaurus ...
-- INFO - Thesaurus file 'data/processed/test_thesaurus.txt' created.
 
->>> apply_thesaurus(
+>>> create_thesaurus(
+...     column="author_keywords",
+...     output_file="test_keywords.txt",
+...     directory=directory,
+... )
+--INFO-- Creating a thesaurus file from `author_keywords` column in all databases
+--INFO-- The thesaurus file data/processed/test_keywords.txt was created
+
+
+# >>> apply_thesaurus(
 ...     thesaurus_file="keywords.txt", 
 ...     input_column="author_keywords",
 ...     output_column="author_keywords_thesaurus", 
 ...     strict=False,
 ...     directory=directory, 
 ... )
-- INFO - The thesaurus file 'keywords.txt' was applied to column 'author_keywords'.
+
 
 """
+import glob
 import os
-from os.path import isfile
+import os.path
+import sys
 
 import pandas as pd
 
-from . import logging
-from ._read_records import read_filtered_records
 from .thesaurus import Thesaurus, load_file_as_dict, text_clustering
 
 
 def create_thesaurus(
-    thesaurus_file,
     column,
-    sep,
+    output_file=None,
+    sep=";",
     directory="./",
 ):
+    """Create a thesaurus from a column of a dataframe."""
 
-    documents = read_filtered_records(directory)
-    thesaurus_file = os.path.join(directory, "processed", thesaurus_file)
+    if output_file is None:
+        output_file = column + ".txt"
+    output_file = os.path.join(directory, "processed", output_file)
 
-    if column not in documents.columns:
-        raise ValueError("Column '{}' not in documents".format(column))
+    words_list = []
+    files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
+    for file in files:
+        data = pd.read_csv(file, encoding="utf-8")
+        if column in data.columns:
+            words_list += data[column].tolist()
+    if len(words_list) == 0:
+        raise ValueError(
+            f"Column '{column}' do not exists in any database or it is empty."
+        )
 
-    logging.info("Creating thesaurus ...")
-    words_list = documents[column]
+    sys.stdout.write(
+        f"--INFO-- Creating a thesaurus file from `{column}` column in all databases\n"
+    )
+
+    words_list = pd.Series(words_list)
     words_list = words_list.dropna()
 
     if sep is not None:
         words_list = words_list.str.split(sep)
         words_list = words_list.explode()
 
-    if isfile(thesaurus_file):
+    if os.path.isfile(output_file):
         #
         # Loads existent thesaurus
         #
-        dict_ = load_file_as_dict(thesaurus_file)
+        dict_ = load_file_as_dict(output_file)
         clustered_words = [word for key in dict_.keys() for word in dict_[key]]
         words_list = [word for word in words_list if word not in clustered_words]
 
@@ -74,11 +86,11 @@ def create_thesaurus(
                 full_match=False,
                 use_re=False,
             )
-            th_.to_textfile(thesaurus_file)
+            th_.to_textfile(output_file)
     else:
         #
         # Creates a new thesaurus
         #
-        text_clustering(pd.Series(words_list)).to_textfile(thesaurus_file)
+        text_clustering(pd.Series(words_list)).to_textfile(output_file)
 
-    logging.info(f"Thesaurus file '{thesaurus_file}' created.")
+    sys.stdout.write(f"--INFO-- The thesaurus file {output_file} was created\n")

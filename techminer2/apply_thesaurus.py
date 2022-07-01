@@ -1,34 +1,37 @@
 """
-Apply Thesaurus
+Apply a thesaurus to a column
 ===============================================================================
 
 
 >>> from techminer2 import *
 >>> directory = "data/"
+
 >>> create_thesaurus(
 ...     column="author_keywords",
-...     thesaurus_file="test_thesaurus.txt",
-...     sep="; ",
+...     output_file="test_keywords.txt",
 ...     directory=directory,
 ... )
-- INFO - Creating thesaurus ...
-- INFO - Thesaurus file 'data/processed/test_thesaurus.txt' created.
+--INFO-- Creating a thesaurus file from `author_keywords` column in all databases
+--INFO-- The thesaurus file data/processed/test_keywords.txt was created
+
 
 >>> apply_thesaurus(
-...     thesaurus_file="keywords.txt", 
+...     thesaurus_file="test_keywords.txt",
 ...     input_column="author_keywords",
-...     output_column="author_keywords_thesaurus", 
+...     output_column="author_keywords_thesaurus",
 ...     strict=False,
 ...     directory=directory,
 ... )
-- INFO - The thesaurus file 'keywords.txt' was applied to column 'author_keywords'.
+--INFO-- The thesaurus was applied to all databases
 
 
 """
+import glob
 import os
+import sys
 
-from . import logging
-from ._read_records import read_filtered_records
+import pandas as pd
+
 from .map_ import map_
 from .thesaurus import read_textfile
 
@@ -40,20 +43,25 @@ def apply_thesaurus(
     strict,
     directory="./",
 ):
-    def apply_strict(x):
-        return thesaurus.apply_as_dict(x, strict=True)
+    """Apply a thesaurus to a column of a dataframe."""
 
-    def apply_unstrict(x):
-        return thesaurus.apply_as_dict(x, strict=False)
+    def apply_strict(text):
+        return thesaurus.apply_as_dict(text, strict=True)
 
-    documents = read_filtered_records(directory)
-    thesaurus = read_textfile(os.path.join(directory, "processed", thesaurus_file))
+    def apply_unstrict(text):
+        return thesaurus.apply_as_dict(text, strict=False)
+
+    thesaurus_file = os.path.join(directory, "processed", thesaurus_file)
+    thesaurus = read_textfile(thesaurus_file)
     thesaurus = thesaurus.compile_as_dict()
-    if strict:
-        documents[output_column] = map_(documents, input_column, apply_strict)
-    else:
-        documents[output_column] = map_(documents, input_column, apply_unstrict)
-    documents.to_csv(os.path.join(directory, "processed", "documents.csv"), index=False)
-    logging.info(
-        f"The thesaurus file '{thesaurus_file}' was applied to column '{input_column}'."
-    )
+
+    files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
+    for file in files:
+        data = pd.read_csv(file, encoding="utf-8")
+        if strict:
+            data[output_column] = map_(data, input_column, apply_strict)
+        else:
+            data[output_column] = map_(data, input_column, apply_unstrict)
+        data.to_csv(file, sep=",", encoding="utf-8", index=False)
+
+    sys.stdout.write("--INFO-- The thesaurus was applied to all databases\n")
