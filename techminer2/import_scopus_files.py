@@ -51,6 +51,12 @@ Import a scopus file to a working directory.
 --INFO-- Creating a thesaurus file from `raw_index_keywords` column in all databases
 --INFO-- The thesaurus file data/processed/index_keywords.txt was created
 --INFO-- The thesaurus was applied to all databases
+--INFO-- Creating institutions thesaurus
+--INFO-- Affiliations without country detected - check file data/processed/ignored_affiliations.txt
+--INFO-- Affiliations without country detected - check file data/ignored_affiliations.txt
+--INFO-- Thesaurus file 'data/processed/institutions.txt' created
+--INFO-- Applying thesaurus to institutions
+--INFO-- The thesaurus was applied to institutions in all databases
 --INFO-- Process finished!!!
 
 """
@@ -65,8 +71,9 @@ import yaml
 from nltk.tokenize import RegexpTokenizer, sent_tokenize
 from tqdm import tqdm
 
+from .apply_institutions_thesaurus import apply_institutions_thesaurus
 from .apply_thesaurus import apply_thesaurus
-from .clean_keywords import clean_keywords
+from .create_institutions_thesaurus import create_institutions_thesaurus
 from .create_thesaurus import create_thesaurus
 from .extract_country import extract_country
 
@@ -129,9 +136,6 @@ def import_scopus_files(
     )
     _create__local_citations__column(directory)
 
-    # create_institutions_thesaurus(directory=directory)
-    # clean_institutions(directory=directory)
-
     _create__bradford__column(directory)
 
     create_thesaurus(
@@ -156,7 +160,8 @@ def import_scopus_files(
         directory=directory,
     )
 
-    # clean_keywords(directory)
+    create_institutions_thesaurus(directory=directory)
+    apply_institutions_thesaurus(directory=directory)
 
     sys.stdout.write("--INFO-- Process finished!!!\n")
 

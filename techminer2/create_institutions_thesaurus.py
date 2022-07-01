@@ -5,14 +5,14 @@ Cleaning institutions fields.
 Creates a institutions thesaurus from the data in the database.
 """
 
+import glob
 import os.path
 import sys
 
 import pandas as pd
 
-from ._read_records import read_all_records
-from .extract_country import extract_country
-from .thesaurus import Thesaurus, load_file_as_dict, read_textfile
+from .extract_country import extract_country_from_string
+from .thesaurus import Thesaurus, load_file_as_dict
 
 #
 # The algorithm searches in order until detect a match
@@ -116,7 +116,7 @@ PORTUGUES = [
 ]
 
 
-def create_institutions_thesaurus(directory):
+def create_institutions_thesaurus(directory="./"):
     """
     Creates an insitutions thesaurus from the data in the database.
     """
@@ -209,14 +209,18 @@ def create_institutions_thesaurus(directory):
         item: code for code in country_codes.keys() for item in country_codes[code]
     }
 
-    # --------------------------------------------------------------------------
-    data = read_all_records(directory)
+    # --------------------------------------------------------------------------[]
+    affiliations = []
+    files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
+    for file in files:
+        data = pd.read_csv(file, encoding="utf-8")
+        affiliations += data["affiliations"].tolist()
     # --------------------------------------------------------------------------
 
     #
     # Transform affiliations to lower case
     #
-    x = data.affiliations
+    x = pd.Series(affiliations, name="affiliations")
     x = x.map(lambda w: w.lower().strip(), na_action="ignore")
 
     #
@@ -251,7 +255,7 @@ def create_institutions_thesaurus(directory):
     # Extracts the country and drop rows
     # without country
     #
-    x["country"] = x.affiliation.map(extract_country, na_action="ignore")
+    x["country"] = x.affiliation.map(extract_country_from_string, na_action="ignore")
     if any(x.country.isna()):
 
         sys.stdout.write(
