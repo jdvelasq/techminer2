@@ -1,3 +1,11 @@
+"""
+Create keywords thesaurus
+===============================================================================
+
+
+
+"""
+
 import glob
 import os
 import sys
@@ -7,10 +15,12 @@ import pandas as pd
 from .thesaurus import Thesaurus, read_textfile, text_clustering
 
 
-def create_keywords_thesaurus(directory):
-    """Createa a keywords thesaurus from the keywords."""
+def create_keywords_thesaurus(directory="./"):
+    """Createa a keywords thesaurus from raw author/index keywords and title/abstact words."""
 
-    sys.stdout.write("--INFO-- Creating `keywords.txt` thesaurus file\n")
+    sys.stdout.write(
+        "--INFO-- Creating `keywords.txt` from author/index keywords, and abstract/title words\n"
+    )
 
     words_list = []
     files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
@@ -20,6 +30,10 @@ def create_keywords_thesaurus(directory):
             words_list += data.raw_author_keywords.tolist()
         if "raw_index_keywords" in data.columns:
             words_list += data.raw_index_keywords.tolist()
+        if "raw_title_words" in data.columns:
+            words_list += data.raw_title_words.tolist()
+        if "raw_abstract_words" in data.columns:
+            words_list += data.raw_abstract_words.tolist()
 
     words_list = pd.Series(words_list)
     words_list = words_list.dropna()

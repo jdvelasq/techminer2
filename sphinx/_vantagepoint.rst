@@ -79,20 +79,27 @@ Thesaurus
     .. toctree::
         :maxdepth: 1
 
-        apply_thesaurus
         create_thesaurus
-
-    .. toctree::
-        :maxdepth: 1
-
-        apply_institution_thesaurus
-        create_institution_thesaurus
+        apply_thesaurus
         
 
     .. toctree::
         :maxdepth: 1
 
-        clean_keywords
+        create_institutions_thesaurus
+        apply_institutions_thesaurus
+        
+        
+    .. toctree::
+        :maxdepth: 1
+
+        create_keywords_thesaurus
+        apply_keywords_thesaurus
+        
+
+    .. toctree::
+        :maxdepth: 1
+
         find_abbreviations
         find_keyword
         merge_keywords

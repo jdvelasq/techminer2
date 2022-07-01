@@ -1,5 +1,5 @@
 """
-Clean Keywords
+Apply keywords thesaurus
 ===============================================================================
 
 Cleans the keywords columns using the `keywords.txt`file.
@@ -7,13 +7,7 @@ Cleans the keywords columns using the `keywords.txt`file.
 >>> from techminer2 import *
 >>> directory = "data/"
 
->>> clean_keywords(directory)
-- INFO - Applying thesaurus to 'raw_author_keywords' column ...
-- INFO - Applying thesaurus to 'raw_index_keywords' column...
-- INFO - Applying thesaurus to 'raw_nlp_document_title' column...
-- INFO - Applying thesaurus to 'raw_nlp_abstract' column...
-- INFO - Applying thesaurus to 'raw_nlp_phrases' column...
-- INFO - The thesaurus was applied to all keywords.
+>>> apply_keywords_thesaurus(directory)
 
 
 """
@@ -30,10 +24,12 @@ import pandas as pd
 from .thesaurus import read_textfile
 
 
-def clean_keywords(directory="./"):
+def apply_keywords_thesaurus(directory="./"):
     """Clean all keywords columns in the records using a thesaurus (keywrords.txt)."""
 
-    sys.stdout.write("--INFO-- Cleaning keywords in database files\n")
+    sys.stdout.write(
+        "--INFO-- Applying keywords thesaurus to author/index keywords and abstract/title words\n"
+    )
 
     thesaurus_file = os.path.join(directory, "processed", "keywords.txt")
     if os.path.isfile(thesaurus_file):
@@ -78,6 +74,38 @@ def clean_keywords(directory="./"):
                 )
             )
             data = data.assign(index_keywords=data.index_keywords.str.join("; "))
+
+        if "raw_title_words" in data.columns:
+            data = data.assign(title_words=data.raw_title_words.str.split(";"))
+            data = data.assign(
+                title_words=data.title_words.map(
+                    lambda x: [thesaurus.apply_as_dict(y.strip()) for y in x]
+                    if isinstance(x, list)
+                    else x
+                )
+            )
+            data = data.assign(
+                title_words=data.title_words.map(
+                    lambda x: sorted(set(x)) if isinstance(x, list) else x
+                )
+            )
+            data = data.assign(title_words=data.title_words.str.join("; "))
+
+        if "raw_abstract_words" in data.columns:
+            data = data.assign(abstract_words=data.raw_abstract_words.str.split(";"))
+            data = data.assign(
+                abstract_words=data.abstract_words.map(
+                    lambda x: [thesaurus.apply_as_dict(y.strip()) for y in x]
+                    if isinstance(x, list)
+                    else x
+                )
+            )
+            data = data.assign(
+                abstract_words=data.abstract_words.map(
+                    lambda x: sorted(set(x)) if isinstance(x, list) else x
+                )
+            )
+            data = data.assign(abstract_words=data.abstract_words.str.join("; "))
 
         #
         data.to_csv(file, sep=",", encoding="utf-8", index=False)

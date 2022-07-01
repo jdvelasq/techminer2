@@ -51,6 +51,8 @@ Import a scopus file to a working directory.
 --INFO-- Creating a thesaurus file from `raw_index_keywords` column in all databases
 --INFO-- The thesaurus file data/processed/index_keywords.txt was created
 --INFO-- The thesaurus was applied to all databases
+--INFO-- Creating `keywords.txt` from author/index keywords, and abstract/title words
+--INFO-- Applying keywords thesaurus to author/index keywords and abstract/title words
 --INFO-- Creating institutions thesaurus
 --INFO-- Affiliations without country detected - check file data/processed/ignored_affiliations.txt
 --INFO-- Affiliations without country detected - check file data/ignored_affiliations.txt
@@ -72,18 +74,12 @@ from nltk.tokenize import RegexpTokenizer, sent_tokenize
 from tqdm import tqdm
 
 from .apply_institutions_thesaurus import apply_institutions_thesaurus
+from .apply_keywords_thesaurus import apply_keywords_thesaurus
 from .apply_thesaurus import apply_thesaurus
 from .create_institutions_thesaurus import create_institutions_thesaurus
+from .create_keywords_thesaurus import create_keywords_thesaurus
 from .create_thesaurus import create_thesaurus
 from .extract_country import extract_country
-
-# from ._read_raw_csv_files import read_raw_csv_files
-# from ._read_records import read_all_records
-# from .clean_institutions import clean_institutions
-#
-
-
-# from .create_institutions_thesaurus import create_institutions_thesaurus
 
 
 def import_scopus_files(
@@ -159,6 +155,9 @@ def import_scopus_files(
         strict=False,
         directory=directory,
     )
+
+    create_keywords_thesaurus(directory=directory)
+    apply_keywords_thesaurus(directory=directory)
 
     create_institutions_thesaurus(directory=directory)
     apply_institutions_thesaurus(directory=directory)
@@ -491,7 +490,10 @@ def _create__raw_abstract_words__column(directory):
     for file in files:
         data = pd.read_csv(file, encoding="utf-8")
         #
-        data = data.assign(raw_abstract_words=data.title.str.lower())
+        if "abstract" not in data.columns:
+            continue
+
+        data = data.assign(raw_abstract_words=data.abstract.str.lower())
         data = data.assign(
             raw_abstract_words=data.raw_abstract_words.str.replace("-", "ZZZ")
         )
@@ -500,15 +502,22 @@ def _create__raw_abstract_words__column(directory):
                 word, word.replace(" ", "_"), regex=False
             )
         data = data.assign(
-            raw_abstract_words=data.raw_abstract_words.map(tokenizer.tokenize)
+            raw_abstract_words=data.raw_abstract_words.map(
+                tokenizer.tokenize, na_action="ignore"
+            )
         )
         data = data.assign(
             raw_abstract_words=data.raw_abstract_words.map(
-                lambda x: [word for word in x if word not in nltk_stopwords]
+                lambda x: [word for word in x if word not in nltk_stopwords],
+                na_action="ignore",
             )
         )
 
-        data = data.assign(raw_abstract_words=data.raw_abstract_words.map("; ".join))
+        data = data.assign(
+            raw_abstract_words=data.raw_abstract_words.map(
+                "; ".join, na_action="ignore"
+            ),
+        )
         data = data.assign(
             raw_abstract_words=data.raw_abstract_words.str.replace("_", " ")
         )

@@ -1,5 +1,5 @@
 """
-Clean Institutions
+Apply institutions thesaurus
 ===============================================================================
 
 Cleans the institutions columns using the file institutions.txt, located in
@@ -7,11 +7,17 @@ the same directory as the documents.csv file.
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> clean_institutions(directory)
-- INFO - Applying thesaurus to institutions ...
-- INFO - Extract and cleaning institutions.
-- INFO - Extracting institution of first author ...
-- INFO - The thesaurus was applied to institutions.
+
+>>> create_institutions_thesaurus(directory)
+--INFO-- Creating institutions thesaurus
+--INFO-- Affiliations without country detected - check file data/processed/ignored_affiliations.txt
+--INFO-- Affiliations without country detected - check file data/ignored_affiliations.txt
+--INFO-- Thesaurus file 'data/processed/institutions.txt' created
+
+>>> apply_institutions_thesaurus(directory)
+--INFO-- Applying thesaurus to institutions
+--INFO-- The thesaurus was applied to institutions in all databases
+
 
 """
 import glob
@@ -21,9 +27,7 @@ import sys
 
 import pandas as pd
 
-from ._read_records import read_all_records
 from .map_ import map_
-from .save_documents import save_documents
 from .thesaurus import read_textfile
 
 

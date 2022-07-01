@@ -4,6 +4,7 @@ from .abstract_screening import abstract_screening
 from .abstract_summarization import abstract_summarization
 from .annual_indicators import annual_indicators
 from .annual_occurrence_matrix import annual_occurrence_matrix
+from .apply_institutions_thesaurus import apply_institutions_thesaurus
 from .apply_thesaurus import apply_thesaurus
 from .association_index import association_index
 from .author_local_impact import author_local_impact
@@ -19,8 +20,6 @@ from .bar_plot import bar_plot
 from .bradford_law import bradford_law
 from .bubble_chart import bubble_chart
 from .circle_chart import circle_chart
-from .clean_institutions import clean_institutions
-from .clean_keywords import clean_keywords
 from .cleveland_chart import cleveland_chart
 from .co_citation_matrix import co_citation_matrix
 from .co_citation_network_communities import co_citation_network_communities
@@ -69,6 +68,9 @@ from .coupling_network_communities import coupling_network_communities
 from .coupling_network_degree_plot import coupling_network_degree_plot
 from .coupling_network_graph import coupling_network_graph
 from .coverage import coverage
+from .create_institutions_thesaurus import create_institutions_thesaurus
+from .create_keywords_thesaurus import create_keywords_thesaurus
+from .create_thesaurus import create_thesaurus
 from .cross_corr_matrix import cross_corr_matrix
 from .cross_corr_matrix_heatmap import cross_corr_matrix_heatmap
 from .cross_corr_matrix_html import cross_corr_matrix_html
