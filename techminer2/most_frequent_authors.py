@@ -33,7 +33,6 @@ def most_frequent_authors(
     top_n=20,
     min_occ=None,
     max_occ=None,
-    title="Most Frequent Authors",
     plot="bar",
     database="documents",
 ):
