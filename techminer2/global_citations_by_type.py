@@ -9,7 +9,6 @@ Global citations by type
 
 >>> global_citations_by_type(
 ...     directory,
-...     top_n=20,
 ...     plot="bar",
 ... ).write_html(file_name)
 
@@ -18,26 +17,48 @@ Global citations by type
     <iframe src="_static/global_citations_by_type.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .plot_metric_by_item import plot_metric_by_item
+from .bar_chart import bar_chart
+from .circle_chart import circle_chart
+from .cleveland_chart import cleveland_chart
+from .column_chart import column_chart
+from .line_chart import line_chart
+from .word_cloud import word_cloud
 
 
 def global_citations_by_type(
     directory="./",
-    top_n=20,
-    min_occ=None,
-    max_occ=None,
-    title="Global citations by type",
-    plot="bar",
+    plot="cleveland",
+    database="documents",
 ):
     """Plots the number of global citations by document type using the specified plot."""
 
-    return plot_metric_by_item(
+    if database == "documents":
+        title = "Global Citations by Document Type"
+    elif database == "references":
+        title = "Global Citations in References by Document Type"
+    elif database == "cited_by":
+        title = "Global Citations in Citing Documents by Document Type"
+    else:
+        raise ValueError(
+            "Invalid database name. Database must be one of: 'documents', 'references', 'cited_by'"
+        )
+
+    plot_function = {
+        "bar": bar_chart,
+        "column": column_chart,
+        "line": line_chart,
+        "circle": circle_chart,
+        "cleveland": cleveland_chart,
+        "wordcloud": word_cloud,
+    }[plot]
+
+    return plot_function(
         column="document_type",
-        metric="global_citations",
+        min_occ=None,
+        max_occ=None,
+        top_n=None,
         directory=directory,
-        top_n=top_n,
-        min_occ=min_occ,
-        max_occ=max_occ,
+        metric="global_citations",
         title=title,
-        plot=plot,
+        database=database,
     )
