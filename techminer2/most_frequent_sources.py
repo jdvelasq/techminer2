@@ -46,7 +46,7 @@ def most_frequent_sources(
     elif database == "references":
         title = "Most Frequent Sources in References"
     elif database == "cited_by":
-        title = "Most Frequent Sources in Citing documents"
+        title = "Most Frequent Sources in Citing Documents"
     else:
         raise ValueError(
             "Invalid database name. Database must be one of: 'documents', 'references', 'cited_by'"
