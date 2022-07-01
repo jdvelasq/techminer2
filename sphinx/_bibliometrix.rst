@@ -78,6 +78,7 @@ Authors
       most_local_cited_authors
       authors_production_over_time
       author_local_impact
+      authors_production_per_year
 
 
    TODO:
@@ -85,8 +86,6 @@ Authors
    .. toctree::
       :maxdepth: 1
       
-      
-      authors_production_per_year
       lotka_law    
       
 
@@ -102,7 +101,7 @@ Institutions
       most_local_cited_institutions
       institutions_production_over_time
       institution_local_impact
-
+      institutions_production_per_year
 
       
 
@@ -118,6 +117,7 @@ Countries
       most_local_cited_countries
       countries_production_over_time
       country_local_impact
+      countries_production_per_year
 
    TODO:
 
@@ -126,7 +126,7 @@ Countries
       
       corresponding_authors_country
       country_scientific_production
-      countries_production_per_year
+      
       
 
 
@@ -184,13 +184,14 @@ Words
       :maxdepth: 1
 
       most_frequent_words
+      word_cloud
 
    TODO:
 
    .. toctree::
       :maxdepth: 1
 
-      word_cloud
+      
       tree_map
       topic_dynamics
       word_dynamics_plot

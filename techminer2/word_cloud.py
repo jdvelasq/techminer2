@@ -19,8 +19,7 @@ Word cloud (chart)
     :align: center
 
 """
-
-from .column_indicators_by_metric import column_indicators_by_metric
+from .column_indicators import column_indicators
 from .word_cloud_plot import word_cloud_plot
 
 
@@ -32,21 +31,28 @@ def word_cloud(
     directory="./",
     metric="num_documents",
     title=None,
-    file_name="documents.csv",
+    database="documents",
     #
     figsize=(12, 12),
 ):
-    """Makes a word cloud from a dataframe."""
+    """Plots a word cloud from a dataframe."""
 
-    indicators = column_indicators_by_metric(
-        column,
-        min_occ=min_occ,
-        max_occ=max_occ,
-        top_n=top_n,
+    indicators = column_indicators(
+        column=column,
         directory=directory,
-        metric=metric,
-        file_name=file_name,
+        database=database,
+        use_filter=(database == "documents"),
+        sep=";",
     )
+
+    indicators = indicators.sort_values(metric, ascending=False)
+
+    if min_occ is not None:
+        indicators = indicators[indicators.num_documents >= min_occ]
+    if max_occ is not None:
+        indicators = indicators[indicators.num_documents <= max_occ]
+    if top_n is not None:
+        indicators = indicators.head(top_n)
 
     return word_cloud_plot(
         dataframe=indicators,
