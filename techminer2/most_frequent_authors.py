@@ -11,7 +11,6 @@ Most frequent authors
 ...     top_n=20,
 ...     min_occ=None,
 ...     max_occ=None,
-...     title="Most Frequent Authors",
 ...     plot="cleveland",
 ...     database="documents",
 ... ).write_html(file_name)
@@ -39,6 +38,17 @@ def most_frequent_authors(
     database="documents",
 ):
     """Plots the number of documents by author using the specified plot."""
+
+    if database == "documents":
+        title = "Most Frequent Authors"
+    elif database == "references":
+        title = "Most Frequent Authors in References"
+    elif database == "cited_by":
+        title = "Most Frequent Authors in Citing documents"
+    else:
+        raise ValueError(
+            "Invalid database name. Database must be one of: 'documents', 'references', 'cited_by'"
+        )
 
     plot_function = {
         "bar": bar_chart,
