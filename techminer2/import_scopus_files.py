@@ -45,6 +45,8 @@ Import a scopus file to a working directory.
 --INFO-- Creating `local_references` column
 --INFO-- Creating `local_citations` column
 --INFO-- Creating `bradford` column
+--INFO-- Creating `references_by_document.csv` file
+--INFO-- Creating `local_citations` column in references database
 --INFO-- Creating a thesaurus file from `raw_author_keywords` column in all databases
 --INFO-- The thesaurus file data/processed/author_keywords.txt was created
 --INFO-- The thesaurus was applied to all databases
@@ -131,8 +133,15 @@ def import_scopus_files(
         directory, disable_progress_bar=disable_progress_bar
     )
     _create__local_citations__column(directory)
-
     _create__bradford__column(directory)
+    #
+    #
+    _create_references_by_document_file(
+        directory, disable_progress_bar=disable_progress_bar
+    )
+    _create__local_citations__column_in_references_database(directory)
+    #
+    #
 
     create_thesaurus(
         "raw_author_keywords", output_file="author_keywords.txt", directory=directory
@@ -163,6 +172,107 @@ def import_scopus_files(
     apply_institutions_thesaurus(directory=directory)
 
     sys.stdout.write("--INFO-- Process finished!!!\n")
+
+
+def _create__local_citations__column_in_references_database(directory):
+
+    sys.stdout.write(
+        "--INFO-- Creating `local_citations` column in references database\n"
+    )
+
+    references_by_document = pd.read_csv(
+        os.path.join(directory, "processed", "references_by_document.csv")
+    )
+
+    local_citations_by_reference = references_by_document.groupby(
+        "references_record_no", as_index=True
+    ).count()
+
+    references = pd.read_csv(os.path.join(directory, "processed", "_references.csv"))
+    references = references.assign(local_citations=0)
+    references.index = references.record_no
+    references.loc[
+        local_citations_by_reference.index, "local_citations"
+    ] = local_citations_by_reference.documents_record_no
+    references = references.reset_index(drop=True)
+    references["local_citations"].fillna(1, inplace=True)
+    references["local_citations"] = references["local_citations"].astype(int)
+    file_name = os.path.join(directory, "processed", "_references.csv")
+    references.to_csv(file_name, index=False)
+
+
+def _create_references_by_document_file(directory, disable_progress_bar=False):
+
+    sys.stdout.write("--INFO-- Creating `references_by_document.csv` file\n")
+
+    references = pd.read_csv(os.path.join(directory, "processed", "_references.csv"))
+    references = references.assign(authors=references.authors.str.lower())
+
+    documents = pd.read_csv(os.path.join(directory, "processed", "_documents.csv"))
+
+    # builds a table with:
+    #   record_no  raw_reference
+    #   ------------------------------------------------
+    reference_by_record = documents[["record_no", "global_references"]].copy()
+
+    reference_by_record = reference_by_record.rename(
+        columns={"global_references": "raw_reference"}
+    )
+    reference_by_record = reference_by_record.dropna()
+    reference_by_record = reference_by_record.assign(
+        raw_reference=reference_by_record.raw_reference.str.split(";")
+    )
+    reference_by_record = reference_by_record.explode("raw_reference")
+    reference_by_record = reference_by_record.assign(
+        raw_reference=reference_by_record.raw_reference.str.strip()
+    )
+    reference_by_record = reference_by_record.assign(
+        raw_reference=reference_by_record.raw_reference.str.lower()
+    )
+    reference_by_record = reference_by_record.sort_values("raw_reference")
+
+    # -------------------------------------------------------------------------
+    # optimized for speed
+    # raw references and list of citting documents:
+    reference_by_record = reference_by_record.groupby(
+        ["raw_reference"], as_index=False
+    ).agg(list)
+    reference_by_record = reference_by_record.assign(references_record_no=np.nan)
+    #
+    references = references.assign(title=references.title.str.lower())
+    references = references[~references.authors.isna()]
+
+    with tqdm(total=len(references), disable=disable_progress_bar) as pbar:
+        for _, row in references.iterrows():
+            reference_by_record.loc[
+                reference_by_record.raw_reference.str.contains(
+                    row["title"], regex=False
+                )
+                & reference_by_record.raw_reference.str.contains(str(row["year"]))
+                & reference_by_record.raw_reference.str.contains(
+                    row["authors"].split(" ")[0].strip()
+                ),
+                "references_record_no",
+            ] = row["record_no"]
+            pbar.update(1)
+
+    reference_by_record = reference_by_record.dropna()
+    reference_by_record = reference_by_record.explode("record_no")
+    reference_by_record = reference_by_record[
+        ["record_no", "references_record_no"]
+    ].copy()
+    reference_by_record = reference_by_record.rename(
+        columns={"record_no": "documents_record_no"}
+    )
+    reference_by_record = reference_by_record.reset_index(drop=True)
+    reference_by_record = reference_by_record.dropna()
+    reference_by_record = reference_by_record.sort_values(
+        ["documents_record_no", "references_record_no"]
+    )
+
+    reference_by_record.to_csv(
+        os.path.join(directory, "processed", "references_by_document.csv"), index=False
+    )
 
 
 def _create__num_authors__column(directory):
