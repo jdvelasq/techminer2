@@ -33,7 +33,6 @@ def most_frequent_countries(
     top_n=20,
     min_occ=None,
     max_occ=None,
-    title="Most Frequent Countries",
     plot="bar",
     database="documents",
 ):
