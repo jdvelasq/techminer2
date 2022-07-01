@@ -69,7 +69,6 @@ from .coupling_network_communities import coupling_network_communities
 from .coupling_network_degree_plot import coupling_network_degree_plot
 from .coupling_network_graph import coupling_network_graph
 from .coverage import coverage
-from .create_thesaurus import create_thesaurus
 from .cross_corr_matrix import cross_corr_matrix
 from .cross_corr_matrix_heatmap import cross_corr_matrix_heatmap
 from .cross_corr_matrix_html import cross_corr_matrix_html
