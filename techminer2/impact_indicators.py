@@ -5,13 +5,13 @@ Impact Indicators
 >>> from techminer2 import *
 >>> directory = "data/"
 >>> impact_indicators("countries", directory=directory).head()
-            num_documents  ...  avg_global_citations
-countries                  ...                      
-armenia                 1  ...                  1.00
-australia              18  ...                 17.67
-austria                 4  ...                  0.75
-bahrain                 3  ...                 13.00
-bangladesh              1  ...                  0.00
+                   num_documents  ...  avg_global_citations
+countries                         ...                      
+Australia                     14  ...                 16.86
+Austria                        1  ...                  1.00
+Bahrain                        8  ...                  2.75
+Belgium                        1  ...                  0.00
+Brunei Darussalam              1  ...                  3.00
 <BLANKLINE>
 [5 rows x 9 columns]
 
@@ -34,7 +34,7 @@ bangladesh              1  ...                  0.00
 import numpy as np
 import pandas as pd
 
-from ._read_records import read_filtered_records
+from ._read_records import read_records
 
 
 def impact_indicators(column, directory="./", sep="; "):
@@ -56,24 +56,26 @@ def impact_indicators(column, directory="./", sep="; "):
         Impact analysis of the column
     """
 
-    documents = read_filtered_records(directory)
+    documents = read_records(
+        directory=directory, database="documents", use_filter=False
+    )
 
     if column not in [
         "authors",
         "authors_id",
         "countries",
         "institutions",
-        "source_name",
-        "iso_source_name",
+        "source_title",
+        "source_abbr",
     ]:
         raise ValueError(
-            'Impact indicators only works with "authors", "authors_id", "countries", "institutions", "source_name" or "ISO_Source_Name".'
+            'Impact indicators only works with "authors", "authors_id", "countries", "institutions", "source_title" or "source_abbr".'
         )
 
     columns_to_explode = [
         column,
         "global_citations",
-        "pub_year",
+        "year",
     ]
     detailed_citations = documents[columns_to_explode]
     detailed_citations[column] = detailed_citations[column].str.split(";")
@@ -94,11 +96,11 @@ def impact_indicators(column, directory="./", sep="; "):
     )
 
     detailed_citations["first_pb_year"] = detailed_citations.groupby(column)[
-        "pub_year"
+        "year"
     ].transform("min")
 
     detailed_citations["age"] = (
-        documents.pub_year.max() - detailed_citations["first_pb_year"] + 1
+        documents.year.max() - detailed_citations["first_pb_year"] + 1
     )
     ages = detailed_citations.groupby(column, as_index=True).agg({"age": np.max})
 
