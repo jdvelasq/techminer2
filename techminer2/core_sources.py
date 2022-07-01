@@ -8,17 +8,13 @@ Core Sources
 
 >>> core_sources(directory)
    Num Sources        %  ...  Tot Documents Bradford's Group
-0            1   0.69 %  ...         6.05 %                1
-1            1   0.69 %  ...        10.48 %                1
-2            1   0.69 %  ...        13.71 %                1
-3            1   0.69 %  ...        16.53 %                1
-4            2   1.38 %  ...        20.56 %                1
-5            9   6.21 %  ...        35.08 %                2
-6            6   4.14 %  ...        42.34 %                2
-7           19   13.1 %  ...        57.66 %                2
-8          105  72.41 %  ...        100.0 %                3
+0            1   1.49 %  ...         5.32 %                1
+1            2   2.99 %  ...        13.83 %                1
+2            4   5.97 %  ...         26.6 %                1
+3            9  13.43 %  ...        45.74 %                2
+4           51  76.12 %  ...        100.0 %                3
 <BLANKLINE>
-[9 rows x 9 columns]
+[5 rows x 9 columns]
 
 >>> from pprint import pprint
 >>> columns = core_sources(directory).columns.to_list()
@@ -38,7 +34,7 @@ Core Sources
 import numpy as np
 import pandas as pd
 
-from ._read_records import read_filtered_records
+from ._read_records import read_records
 from .explode import explode
 
 
@@ -56,21 +52,24 @@ def core_sources(directory="./"):
     pandas.DataFrame
         Dataframe with the core sources of the records
     """
-    documents = read_filtered_records(directory)
+    documents = read_records(
+        directory=directory, database="documents", use_filter=False
+    )
+
     documents["num_documents"] = 1
     documents = explode(
         documents[
             [
-                "source_name",
+                "source_title",
                 "num_documents",
                 "record_no",
             ]
         ],
-        "source_name",
+        "source_title",
         sep="; ",
     )
 
-    sources = documents.groupby("source_name", as_index=True).agg(
+    sources = documents.groupby("source_title", as_index=True).agg(
         {
             "num_documents": np.sum,
         }

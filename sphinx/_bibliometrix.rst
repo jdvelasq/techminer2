@@ -54,13 +54,13 @@ Sources
       most_local_cited_sources
       sources_production_over_time
       source_local_impact
+      core_sources  
 
    TODO:
 
    .. toctree::
 
-      bradford_law
-      core_sources       
+      bradford_law     
       source_dynamics_table
       source_dynamics_plot
 
