@@ -95,12 +95,7 @@ Institutions
       institutions_production_over_time
       institution_local_impact
 
-   .. toctree::
-      :maxdepth: 1
 
-      
-
-      institutions_production_per_year
       
 
 
@@ -138,7 +133,7 @@ Documents
 
    .. toctree::
       :maxdepth: 1
-            
+
       documents_by_author
       documents_by_country
       documents_by_institution

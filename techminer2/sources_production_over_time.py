@@ -23,9 +23,10 @@ def sources_production_over_time(
     top_n=10,
     directory="./",
 ):
+    """Plots source production over time."""
 
     return production_over_time(
-        column="iso_source_name",
+        column="source_abbr",
         top_n=top_n,
         directory=directory,
         title="Sources' production over time",
