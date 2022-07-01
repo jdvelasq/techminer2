@@ -9,6 +9,8 @@ def local_impact(
     directory="./",
     title=None,
 ):
+    """computes local impact"""
+
     if impact_measure not in [
         "h_index",
         "g_index",

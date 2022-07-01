@@ -10,8 +10,8 @@ with the data.
 >>> file_name = "sphinx/_static/author_local_impact.html"
 
 >>> author_local_impact(
-...     impact_measure='h_index', 
-...     top_n=20, 
+...     impact_measure='h_index',
+...     top_n=20,
 ...     directory=directory,
 ... ).write_html(file_name)
 
@@ -29,6 +29,7 @@ def author_local_impact(
     top_n=20,
     directory="./",
 ):
+    """computes local impact"""
     return local_impact(
         column="authors",
         impact_measure=impact_measure,

@@ -30,7 +30,7 @@ def source_local_impact(
     directory="./",
 ):
     return local_impact(
-        column="iso_source_name",
+        column="source_abbr",
         impact_measure=impact_measure,
         top_n=top_n,
         directory=directory,
