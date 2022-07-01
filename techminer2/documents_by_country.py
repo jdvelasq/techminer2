@@ -1,5 +1,5 @@
 """
-Documents per country
+Documents by country
 ===============================================================================
 
 >>> from techminer2 import *
@@ -8,12 +8,12 @@ Documents per country
 >>> documents_by_country(
 ...     directory=directory,
 ... ).head()
-  countries  ...                                        document_id
-0  malaysia  ...  Razak MIA et al, 2021, PERTANIKA J SOC SCI HUM...
-1   nigeria  ...  Omodero CO et al, 2021, STUD UNIV VASILE GOLDI...
-2     china  ...                  Li B et al, 2021, FINANCIAL INNOV
-3   hungary  ...         Daragmeh A et al, 2021, J BEHAV EXP FINANC
-4     china  ...         Xiang D et al, 2021, IEEE TRANS ENG MANAGE
+           countries  ...                                 document_id
+0       South Africa  ...       von Solms J et al, 2021, J BANK REGUL
+1              India  ...       Dashottar S et al, 2021, J BANK REGUL
+2            Bahrain  ...  Turki M et al, 2021, ADV INTELL SYS COMPUT
+3            Bahrain  ...  Turki M et al, 2021, ADV INTELL SYS COMPUT
+4  Brunei Darussalam  ...       Guo H et al, 2021, STUD COMPUT INTELL
 <BLANKLINE>
 [5 rows x 6 columns]
 
@@ -25,6 +25,7 @@ from .column_documents import column_documents
 def documents_by_country(
     directory="./",
 ):
+    """Returns a dataframe with the documents by each country."""
     return column_documents(
         column="countries",
         directory=directory,
