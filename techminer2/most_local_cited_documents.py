@@ -26,9 +26,12 @@ def most_local_cited_documents(
     top_n=20,
     directory="./",
 ):
+    """Most local cited documents."""
+
     return most_cited_documents(
         metric="local_citations",
         top_n=top_n,
         directory=directory,
         title="Most local cited documents",
+        use_filter=False,
     )
