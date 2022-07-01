@@ -32,7 +32,7 @@ from ._read_records import read_records
 
 def column_indicators_by_year(
     column="authors",
-    directory=None,
+    directory="./",
     database="documents",
     use_filter=True,
 ):
