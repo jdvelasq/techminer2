@@ -30,11 +30,17 @@ Filter
 
 Overview
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   
    .. toctree::
 
       main_information
       annual_scientific_production
       average_citations_per_year
+
+   TODO:
+
+   .. toctree::
+
       three_fields_plot
 
 
@@ -49,13 +55,12 @@ Sources
       sources_production_over_time
       source_local_impact
 
+   TODO:
+
    .. toctree::
 
-      
-      
       bradford_law
-      core_sources 
-      
+      core_sources       
       source_dynamics_table
       source_dynamics_plot
 
@@ -73,6 +78,9 @@ Authors
       most_local_cited_authors
       authors_production_over_time
       author_local_impact
+
+
+   TODO:
 
    .. toctree::
       :maxdepth: 1
@@ -110,6 +118,8 @@ Countries
       most_local_cited_countries
       countries_production_over_time
       country_local_impact
+
+   TODO:
 
    .. toctree::
       :maxdepth: 1
@@ -173,11 +183,13 @@ Words
    .. toctree::
       :maxdepth: 1
 
+      most_frequent_words
+
+   TODO:
 
    .. toctree::
       :maxdepth: 1
 
-      most_frequent_words
       word_cloud
       tree_map
       topic_dynamics
