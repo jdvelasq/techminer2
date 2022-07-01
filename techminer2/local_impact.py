@@ -1,5 +1,9 @@
+import textwrap
+
 from .cleveland_px import cleveland_px
 from .impact_indicators import impact_indicators
+
+TEXTLEN = 40
 
 
 def local_impact(
@@ -24,8 +28,9 @@ def local_impact(
     indicators = impact_indicators(directory=directory, column=column)
     indicators = indicators.sort_values(by=impact_measure, ascending=False)
     indicators = indicators.head(top_n)
-
     indicators = indicators.reset_index()
+    indicators[column] = indicators[column].apply(_shorten)
+
     column_names = {
         column: column.replace("_", " ").title() for column in indicators.columns
     }
@@ -36,4 +41,13 @@ def local_impact(
         x_label=impact_measure.replace("_", " ").title(),
         y_label=column.replace("_", " ").title(),
         title=title,
+    )
+
+
+def _shorten(text):
+    return textwrap.shorten(
+        text=text,
+        width=TEXTLEN,
+        placeholder="...",
+        break_long_words=False,
     )
