@@ -8,9 +8,14 @@ def most_cited_documents(
     top_n=20,
     directory="./",
     title=None,
-    file_name="documents.csv",
+    database="documents",
+    use_filter=True,
 ):
-    indicators = document_indicators(directory=directory, file_name=file_name)
+    """Most cited documents."""
+
+    indicators = document_indicators(
+        directory=directory, database=database, use_filter=use_filter
+    )
     indicators = indicators.sort_values(by=metric, ascending=False)
     indicators = indicators.head(top_n)
     indicators = indicators.rename(

@@ -32,4 +32,5 @@ def most_global_cited_documents(
         top_n=top_n,
         directory=directory,
         title="Most global cited documents",
+        use_filter=True,
     )
