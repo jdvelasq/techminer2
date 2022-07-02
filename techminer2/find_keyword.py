@@ -6,16 +6,22 @@ Finds a string in the terms of a column of a document collection.
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> find_keyword(contains='artificial intelligence', directory=directory)
+
+>>> find_keyword(
+...     thesaurus_file="author_keywords.txt",
+...     contains='artificial intelligence',
+...     directory=directory,
+... )
 artificial intelligence
      artificial intelligence
      artificial intelligence (ai)
-artificial intelligence systems
-artificial intelligence technologies
-
+artificial intelligence & law
+artificial intelligence (ai) governance
+artificial intelligence in education
+responsible artificial intelligence
 
 """
-from os.path import isfile, join
+import os.path
 
 import pandas as pd
 
@@ -23,21 +29,19 @@ from .thesaurus import load_file_as_dict
 
 
 def find_keyword(
+    thesaurus_file,
     contains=None,
     startswith=None,
     endswith=None,
     directory="./",
 ):
-    """
-    Find the specified keyword and reorder the thesaurus to reflect the search.
+    """Find the specified keyword and reorder the thesaurus to reflect the search."""
 
-    """
-
-    thesaurus_file = join(directory, "processed", "keywords.txt")
-    if isfile(thesaurus_file):
-        th = load_file_as_dict(thesaurus_file)
+    th_file = os.path.join(directory, "processed", thesaurus_file)
+    if os.path.isfile(th_file):
+        th = load_file_as_dict(th_file)
     else:
-        raise FileNotFoundError("The file {} does not exist.".format(thesaurus_file))
+        raise FileNotFoundError("The file {} does not exist.".format(th_file))
 
     reversed_th = {value: key for key, values in th.items() for value in values}
 
@@ -86,7 +90,7 @@ def find_keyword(
     for key in findings.keys():
         th.pop(key)
 
-    with open(thesaurus_file, "w", encoding="utf-8") as file:
+    with open(th_file, "w", encoding="utf-8") as file:
 
         for key in sorted(findings.keys()):
             file.write(key + "\n")
