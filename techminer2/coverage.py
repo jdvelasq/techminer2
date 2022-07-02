@@ -6,43 +6,53 @@ Computes coverage of terms in a column discarding stopwords.
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> coverage("author_keywords", directory=directory).head(10)
-- INFO - Number of documents : 248
-- INFO - Documents with NA: 202
-- INFO - Efective documents : 248
+>>> coverage(
+...     "author_keywords",
+...     directory=directory,
+... ).head(10)
+--INFO-- Number of documents : 94
+--INFO-- Documents with NA: 85
+--INFO--Efective documents : 94
    min_occ  cum_sum_documents coverage  cum num items
-0      139                139  56.05 %              1
-1       28                153  61.69 %              2
-2       17                158  63.71 %              4
-3       13                162  65.32 %              6
-4       12                164  66.13 %              7
-5       11                166  66.94 %              8
-6        8                174  70.16 %             13
-7        7                174  70.16 %             16
-8        6                177  71.37 %             23
-9        5                179  72.18 %             28
+0       70                 70  74.47 %              1
+1       42                 70  74.47 %              2
+2       18                 71  75.53 %              3
+3       13                 74  78.72 %              4
+4       12                 81  86.17 %              6
+5        9                 82  87.23 %              7
+6        8                 82  87.23 %              8
+7        6                 82  87.23 %             10
+8        5                 82  87.23 %             12
+9        4                 83  88.30 %             22
+
 
 """
 
-from . import logging
-from ._read_records import read_filtered_records
+import sys
+
+from ._read_records import read_records
 from .load_stopwords import load_stopwords
 
 
-def coverage(column, sep="; ", directory="./"):
+def coverage(
+    column,
+    directory="./",
+    database="documents",
+    sep=";",
+):
 
     stopwords = load_stopwords(directory)
 
-    documents = read_filtered_records(directory)
+    documents = read_records(directory=directory, database=database, use_filter=False)
     documents = documents.reset_index()
     documents = documents[[column, "record_no"]]
 
     n_documents = len(documents)
-    logging.info("Number of documents : {}".format(n_documents))
-    logging.info("Documents with NA: {}".format(len(documents.dropna())))
+    sys.stdout.write(f"--INFO-- Number of documents : {n_documents}\n")
+    sys.stdout.write(f"--INFO-- Documents with NA: {len(documents.dropna())}\n")
 
     documents = documents.dropna()
-    logging.info("Efective documents : {}".format(n_documents))
+    sys.stdout.write(f"--INFO--Efective documents : {n_documents}\n")
 
     documents = documents.assign(num_documents=1)
     documents[column] = documents[column].str.split("; ")
