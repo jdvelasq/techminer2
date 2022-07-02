@@ -6,23 +6,21 @@ Finds a string in the terms of a column of a document collection.
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> find_string("author_keywords", contains='fintech', directory=directory).head(10)
-fintech                          139
-fintech-innovations                5
-fintech application                3
-fintech companies                  2
-fintech continuance intention      2
-fintech development                2
-fintech ecosystem                  2
-fintech platform                   2
-islamic fintech                    2
-characteristics of fintech         1
+
+>>> find_string(
+...     "author_keywords", 
+...     contains='fintech', 
+...     directory=directory,
+... ).head(10)
+fintech                   42
+fintech credit             1
+fintech crises             1
+fintech regtech            1
+fintech sustainability     1
 Name: author_keywords, dtype: int64
 
 """
-
-
-from ._read_records import read_filtered_records
+from ._read_records import read_records
 
 
 def find_string(
@@ -32,6 +30,8 @@ def find_string(
     startswith=None,
     endswith=None,
     directory="./",
+    database="documents",
+    use_filter=True,
 ):
     """
     Find string in documents
@@ -44,7 +44,10 @@ def find_string(
     :param endswith: string to find
     :return: list of strings
     """
-    documents = read_filtered_records(directory)
+
+    documents = read_records(
+        directory=directory, database=database, use_filter=use_filter
+    )
     documents.index = documents.record_no
     documents = documents[column]
     documents = documents.dropna()
