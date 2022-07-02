@@ -120,7 +120,6 @@ Report
         world_map
         timeline_chart
         tree_map
-        world_map
 
     TODO:
 
