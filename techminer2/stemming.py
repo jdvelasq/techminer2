@@ -14,28 +14,28 @@ Searchs in the terms of a column using stemming
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> stemming_and(directory, "author_keywords", "business model").head(10)
-51             business model
-107    fintech business model
-111       bank business model
-154            business model
-202            business model
-211            business model
-213            business model
-242            business model
+
+>>> stemming_and(
+...     "author_keywords", 
+...     "launder money",
+...     directory=directory,
+... ).head(10)
+0                           anti-money laundering
+1                           anti money laundering
+2    banking money laundering terrorist financing
+3                                money laundering
 Name: author_keywords, dtype: object
- 
->>> stemming_or(directory, "author_keywords", "business model").head(10)
-3         structural equation modeling
-23     structural equation model (sem)
-24                            modeling
-48             business sustainability
-48               small food businesses
-51                business environment
-51                      business model
-58         fintech predictive modeling
-66        structural equation modeling
-107             fintech business model
+
+>>> stemming_or(
+...     "author_keywords",
+...     "launder money",
+...     directory=directory,
+... ).head(10)
+0                           anti-money laundering
+1                           anti money laundering
+2    banking money laundering terrorist financing
+3                                money laundering
+4           legalization (laundering) of proceeds
 Name: author_keywords, dtype: object
 
 """
@@ -43,10 +43,56 @@ import string
 
 from nltk.stem import PorterStemmer, SnowballStemmer
 
-from ._read_records import read_filtered_records
+from ._read_records import read_records
 
 
-def _stemming(directory, column, pattern, stemmer="porter", sep="; ", operator="AND"):
+def stemming_and(
+    column,
+    pattern,
+    directory="./",
+    stemmer="porter",
+    sep=";",
+    database="documents",
+):
+    return _stemming(
+        directory=directory,
+        column=column,
+        pattern=pattern,
+        stemmer=stemmer,
+        sep=sep,
+        operator="AND",
+        database=database,
+    )
+
+
+def stemming_or(
+    column,
+    pattern,
+    directory="./",
+    stemmer="porter",
+    sep=";",
+    database="documents",
+):
+    return _stemming(
+        directory=directory,
+        column=column,
+        pattern=pattern,
+        stemmer=stemmer,
+        sep=sep,
+        operator="OR",
+        database=database,
+    )
+
+
+def _stemming(
+    column,
+    pattern,
+    stemmer,
+    operator,
+    directory,
+    database,
+    sep,
+):
 
     if stemmer == "porter":
         stemmer = PorterStemmer()
@@ -56,11 +102,16 @@ def _stemming(directory, column, pattern, stemmer="porter", sep="; ", operator="
         raise ValueError(f"Stemmer {stemmer} not supported")
 
     # explodes the column
-    documents = read_filtered_records(directory)
+    documents = read_records(
+        directory=directory,
+        database=database,
+        use_filter=False,
+    )
     documents = documents[[column]]
     documents = documents.dropna()
     documents[column] = documents[column].str.split(sep)
     documents = documents.explode(column)
+    documents[column] = documents[column].str.strip()
 
     # stemming
     documents = documents.assign(words=documents[column])
@@ -71,7 +122,7 @@ def _stemming(directory, column, pattern, stemmer="porter", sep="; ", operator="
     )
     documents["words"] = documents["words"].str.split()
     documents["words"] = documents["words"].map(
-        lambda x: set([stemmer.stem(word) for word in x])
+        lambda x: set(stemmer.stem(word) for word in x)
     )
 
     # patter preparation
@@ -96,26 +147,7 @@ def _stemming(directory, column, pattern, stemmer="porter", sep="; ", operator="
     else:
         raise ValueError(f"Operator {operator} not supported")
 
+    result = result.drop_duplicates()
+    result = result.reset_index(drop=True)
+
     return result
-
-
-def stemming_and(directory, column, pattern, stemmer="porter", sep="; "):
-    return _stemming(
-        directory=directory,
-        column=column,
-        pattern=pattern,
-        stemmer=stemmer,
-        sep=sep,
-        operator="AND",
-    )
-
-
-def stemming_or(directory, column, pattern, stemmer="porter", sep="; "):
-    return _stemming(
-        directory=directory,
-        column=column,
-        pattern=pattern,
-        stemmer=stemmer,
-        sep=sep,
-        operator="OR",
-    )
