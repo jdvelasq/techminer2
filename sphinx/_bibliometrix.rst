@@ -189,14 +189,14 @@ Words
 
       most_frequent_words
       word_cloud
+      tree_map
+
 
    TODO:
 
    .. toctree::
       :maxdepth: 1
-
       
-      tree_map
       topic_dynamics
       word_dynamics_plot
       word_dynamics_table

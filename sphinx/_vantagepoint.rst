@@ -119,34 +119,17 @@ Report
         word_cloud
         world_map
         timeline_chart
-
-
-    .. toctree::
-        :maxdepth: 1
-
-        gantt_chart 
         tree_map
+        world_map
 
-
-Repo
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    TODO:
 
     .. toctree::
         :maxdepth: 1
 
+        gantt_chart     
         topic_view
 
-    .. toctree::
-        :maxdepth: 1
-        
-        dotted_gantt_chart
-        
-        
-
-
-
-    .. note::
-        The ``World Map`` chart is implemented as `Country Scientific Production <country_scientific_production.html>`__.
 
 
 
