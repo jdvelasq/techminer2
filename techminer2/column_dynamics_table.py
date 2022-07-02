@@ -6,16 +6,16 @@ Column dynamics table
 >>> directory = "data/"
 
 >>> column_dynamics_table(
-...     column="ISO_Source_Name", 
+...     column="source_abbr", 
 ...     top_n=10, 
 ...     directory=directory,
 ... ).tail(5)
-iso_source_name  SUSTAINABILITY  ...  PROCEDIA COMPUT SCI
-2017                          0  ...                    0
-2018                          0  ...                    1
-2019                          4  ...                    4
-2020                         10  ...                    4
-2021                         15  ...                    4
+source_abbr  CEUR WORKSHOP PROC  ...  LECT NOTES NETWORKS SYST
+2018                          3  ...                         0
+2019                          3  ...                         0
+2020                          4  ...                         0
+2021                          5  ...                         0
+2022                          5  ...                         2
 <BLANKLINE>
 [5 rows x 10 columns]
 
@@ -33,11 +33,11 @@ def column_dynamics_table(
 ):
 
     dynamics = column_indicators_by_year(directory=directory, column=column)
-    dynamics = dynamics.assign(pub_year=dynamics.index.get_level_values(1))
+    dynamics = dynamics.assign(year=dynamics.index.get_level_values(1))
     dynamics.index = dynamics.index.get_level_values(0)
 
-    dynamics = dynamics[["pub_year", "num_documents"]].copy()
-    dynamics = dynamics.pivot(columns="pub_year")
+    dynamics = dynamics[["year", "num_documents"]].copy()
+    dynamics = dynamics.pivot(columns="year")
     dynamics = dynamics.transpose()
     dynamics.index = dynamics.index.get_level_values(1)
 

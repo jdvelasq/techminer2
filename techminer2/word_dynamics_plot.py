@@ -29,6 +29,7 @@ def word_dynamics_plot(
     top_n=10,
     directory="./",
 ):
+    """Makes a dynamics chat for a word."""
     return column_dynamics_plot(
         column=word,
         top_n=top_n,

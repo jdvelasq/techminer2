@@ -27,8 +27,9 @@ def source_dynamics_plot(
     top_n=10,
     directory="./",
 ):
+    """Makes a dynamics chat for top sources."""
     return column_dynamics_plot(
-        column="iso_source_name",
+        column="source_abbr",
         top_n=top_n,
         directory=directory,
         title="Source dynamics",

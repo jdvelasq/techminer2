@@ -4,17 +4,17 @@ Column dynamics plot
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "sphinx/images/column_dynamics_plot.png"
+>>> file_name = "sphinx/_static/column_dinamics_plot.html"
 
 >>> column_dynamics_plot(
-...     column="ISO_Source_Name", 
-...     top_n=10, 
+...     column="source_abbr",
+...     top_n=10,
 ...     directory=directory,
-... ).write_image(file_name)
+... ).write_html(file_name)
 
-.. image:: images/column_dynamics_plot.png
-    :width: 700px
-    :align: center
+.. raw:: html
+
+    <iframe src="_static/column_dinamics_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 import plotly.express as px

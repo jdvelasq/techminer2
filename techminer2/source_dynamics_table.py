@@ -12,12 +12,12 @@ See :doc:`column indicators by year <column_indicators_by_year>` to obtain a
 ...     top_n=10, 
 ...     directory=directory,
 ... ).tail(5)
-iso_source_name  SUSTAINABILITY  ...  PROCEDIA COMPUT SCI
-2017                          0  ...                    0
-2018                          0  ...                    1
-2019                          4  ...                    4
-2020                         10  ...                    4
-2021                         15  ...                    4
+source_abbr  CEUR WORKSHOP PROC  ...  LECT NOTES NETWORKS SYST
+2018                          3  ...                         0
+2019                          3  ...                         0
+2020                          4  ...                         0
+2021                          5  ...                         0
+2022                          5  ...                         2
 <BLANKLINE>
 [5 rows x 10 columns]
 
@@ -30,7 +30,7 @@ def source_dynamics_table(
     directory="./",
 ):
     return column_dynamics_table(
-        column="iso_source_name",
+        column="source_abbr",
         top_n=top_n,
         directory=directory,
     )
