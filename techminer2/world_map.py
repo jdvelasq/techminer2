@@ -17,7 +17,7 @@ World map
     <iframe src="_static/world_map.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .column_indicators_by_metric import column_indicators_by_metric
+from .column_indicators import column_indicators
 from .world_map_plot import world_map_plot
 
 
@@ -25,23 +25,19 @@ def world_map(
     directory="./",
     metric="num_documents",
     title=None,
-    file_name="documents.csv",
+    database="documents",
+    colormap="Blues",
 ):
     """Makes a world map from a dataframe."""
 
-    indicators = column_indicators_by_metric(
-        "countries",
-        min_occ=None,
-        max_occ=None,
-        top_n=None,
-        directory=directory,
-        metric=metric,
-        file_name=file_name,
+    indicators = column_indicators(
+        column="countries", directory=directory, database=database
     )
+    indicators = indicators.sort_values(metric, ascending=False)
 
     return world_map_plot(
         dataframe=indicators,
         metric=metric,
         title=title,
-        colormap="Blues",
+        colormap=colormap,
     )

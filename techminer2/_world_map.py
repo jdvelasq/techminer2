@@ -20,9 +20,6 @@ from os.path import dirname, join
 
 import matplotlib.pyplot as plt
 import numpy as np
-import pandas as pd
-
-from .column_indicators import column_indicators
 
 TEXTLEN = 40
 

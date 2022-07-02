@@ -118,6 +118,7 @@ Countries
       countries_production_over_time
       country_local_impact
       countries_production_per_year
+      country_scientific_production
 
    TODO:
 
@@ -125,7 +126,7 @@ Countries
       :maxdepth: 1
       
       corresponding_authors_country
-      country_scientific_production
+      
       
       
 

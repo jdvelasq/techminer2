@@ -4,39 +4,31 @@ Country Scientific Production
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "sphinx/images/country_scientific_production.png"
->>> country_scientific_production(directory=directory).savefig(file_name)
+>>> file_name = "sphinx/_static/country_scientific_production.html"
+>>> country_scientific_production(
+...     directory=directory
+... ).write_html(file_name)
  
-.. image:: images/country_scientific_production.png
-    :width: 700px
-    :align: center
+.. raw:: html
 
+    <iframe src="_static/country_scientific_production.html" height="410px" width="100%" frameBorder="0"></iframe>
 
 """
-from os.path import dirname, join
-
-import matplotlib.pyplot as plt
-import numpy as np
-
-from ._world_map import _world_map
-from .column_indicators import column_indicators
-
-TEXTLEN = 40
+from .world_map import world_map
 
 
 def country_scientific_production(
-    cmap="Blues",
-    figsize=(9, 5),
     directory="./",
+    metric="num_documents",
+    database="documents",
+    colormap="Blues",
 ):
-
     """Worldmap plot with the number of documents per country."""
 
-    series = column_indicators("countries", directory=directory).num_documents
-
-    return _world_map(
-        series=series,
-        cmap=cmap,
-        figsize=figsize,
+    return world_map(
+        directory=directory,
+        metric=metric,
         title="Country Scientific Production",
+        database=database,
+        colormap=colormap,
     )
