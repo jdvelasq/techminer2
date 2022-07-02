@@ -23,6 +23,7 @@ def authors_production_over_time(
     top_n=10,
     directory="./",
 ):
+    """Author production over time."""
 
     return production_over_time(
         column="authors",

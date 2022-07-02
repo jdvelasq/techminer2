@@ -14,7 +14,7 @@ World map
 
 .. raw:: html
 
-    <iframe src="_static/world_map.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="_static/world_map.html" height="410px" width="100%" frameBorder="0"></iframe>
 
 """
 from .column_indicators import column_indicators

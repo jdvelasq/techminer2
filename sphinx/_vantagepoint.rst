@@ -118,6 +118,7 @@ Report
         line_chart      
         word_cloud
         world_map
+        timeline_chart
 
 
     .. toctree::
@@ -139,7 +140,7 @@ Repo
         :maxdepth: 1
         
         dotted_gantt_chart
-        timeline_chart
+        
         
 
 

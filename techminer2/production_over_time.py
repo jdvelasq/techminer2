@@ -35,7 +35,7 @@ def production_over_time(
     fig.update_layout(
         paper_bgcolor="white",
         plot_bgcolor="white",
-        xaxis_type="category",
+        # xaxis_type="category",
         showlegend=False,
     )
     fig.update_traces(
@@ -54,6 +54,7 @@ def production_over_time(
         gridcolor="gray",
         griddash="dot",
         tickangle=270,
+        dtick=1.0,
     )
     fig.update_yaxes(
         linecolor="white",
