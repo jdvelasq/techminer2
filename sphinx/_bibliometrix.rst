@@ -55,14 +55,14 @@ Sources
       sources_production_over_time
       source_local_impact
       core_sources  
+      source_dynamics_table
+      source_dynamics_plot
 
    TODO:
 
    .. toctree::
 
       bradford_law     
-      source_dynamics_table
-      source_dynamics_plot
 
 
 
@@ -126,11 +126,6 @@ Countries
       :maxdepth: 1
       
       corresponding_authors_country
-      
-      
-      
-
-
 
 
 Documents 
@@ -190,6 +185,8 @@ Words
       most_frequent_words
       word_cloud
       tree_map
+      word_dynamics_plot
+      word_dynamics_table
 
 
    TODO:
@@ -198,8 +195,6 @@ Words
       :maxdepth: 1
       
       topic_dynamics
-      word_dynamics_plot
-      word_dynamics_table
       trend_topics
 
 
