@@ -52,9 +52,6 @@ Sources
       most_frequent_sources
       most_local_cited_sources
       
-
-      
-      sources_production_over_time
       source_local_impact
       core_sources  
       source_dynamics_table
@@ -64,6 +61,7 @@ Sources
 
    .. toctree::
 
+      sources_production_over_time
       most_global_cited_sources_in_refs
 
 
@@ -85,8 +83,8 @@ Authors
 
       most_frequent_authors
       most_local_cited_authors
-
       authors_production_over_time
+
       author_local_impact
       authors_production_per_year
 
@@ -115,8 +113,8 @@ Institutions
 
       most_frequent_institutions
       most_local_cited_institutions
-
       institutions_production_over_time
+
       institution_local_impact
       institutions_production_per_year
 
@@ -136,8 +134,8 @@ Countries
 
       most_frequent_countries
       most_local_cited_countries
-      
       countries_production_over_time
+
       country_local_impact
       countries_production_per_year
       country_scientific_production
