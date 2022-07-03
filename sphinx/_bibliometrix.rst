@@ -84,8 +84,8 @@ Authors
       :maxdepth: 1
 
       most_frequent_authors
-      most_global_cited_authors
       most_local_cited_authors
+
       authors_production_over_time
       author_local_impact
       authors_production_per_year
@@ -114,8 +114,8 @@ Institutions
       :maxdepth: 1
 
       most_frequent_institutions
-      most_global_cited_institutions
       most_local_cited_institutions
+
       institutions_production_over_time
       institution_local_impact
       institutions_production_per_year
@@ -135,8 +135,8 @@ Countries
       :maxdepth: 1
 
       most_frequent_countries
-      most_global_cited_countries
       most_local_cited_countries
+      
       countries_production_over_time
       country_local_impact
       countries_production_per_year
