@@ -48,29 +48,33 @@ Sources
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    .. toctree::
-
       most_frequent_sources
+
+   .. toctree::
       most_local_cited_sources
-      
+
+   .. toctree::
+      sources_production_over_time
+   
+   .. toctree::
+      bradford_law     
+      core_sources
+
+   .. toctree::
       source_local_impact
-      core_sources  
-      source_dynamics_table
-      source_dynamics_plot
+
+      
+      source_dynamics_table *
+      source_dynamics_plot *
 
    **New:**
 
    .. toctree::
-
-      sources_production_over_time
       most_global_cited_sources_in_refs
 
 
 
-   TODO:
-
-   .. toctree::
-
-      bradford_law     
+      
 
 
 
@@ -79,19 +83,23 @@ Authors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    .. toctree::
-      :maxdepth: 1
-
       most_frequent_authors
-      most_local_cited_authors
-      authors_production_over_time
 
-      author_local_impact
+   .. toctree::      
+      most_local_cited_authors
+
+   .. toctree::      
+      authors_production_over_time
       authors_production_per_year
+      documents_by_author
+
+   .. toctree::
+      author_local_impact
+      
 
    **New:**
 
    .. toctree::
-
       most_global_cited_authors_in_refs
 
 
@@ -99,8 +107,6 @@ Authors
    TODO:
 
    .. toctree::
-      :maxdepth: 1
-      
       lotka_law    
       
 
@@ -109,19 +115,23 @@ Institutions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    .. toctree::
-      :maxdepth: 1
-
       most_frequent_institutions
+
+   .. toctree::      
       most_local_cited_institutions
+
+   .. toctree::      
       institutions_production_over_time
 
+   .. toctree::
       institution_local_impact
+
+   .. toctree::      
       institutions_production_per_year
 
    **New:**
 
    .. toctree::
-
       most_global_cited_institutions_in_refs
       
 
@@ -130,21 +140,27 @@ Countries
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    .. toctree::
-      :maxdepth: 1
-
       most_frequent_countries
+
+   .. toctree::      
       most_local_cited_countries
+
+   .. toctree::      
       countries_production_over_time
 
+   .. toctree::
       country_local_impact
+
+   .. toctree::
       countries_production_per_year
+
+   .. toctree::      
       country_scientific_production
 
 
    **New:**
 
    .. toctree::
-
       most_global_cited_countries_in_refs
 
 
@@ -160,25 +176,18 @@ Documents
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    .. toctree::
-      :maxdepth: 1
-
       most_global_cited_documents
-      most_local_cited_documents
 
    .. toctree::
-      :maxdepth: 1
+      most_local_cited_documents
 
-      documents_by_author
+   .. toctree::      
       documents_by_country
       documents_by_institution
 
    **New:**
 
    .. toctree::
-
-
-   .. toctree::
-
       num_documents_by_type
       global_citations_by_type
       local_citations_by_type
@@ -188,15 +197,12 @@ Cited References
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    .. toctree::
-      :maxdepth: 1
-
       most_local_cited_references
 
 
    **New:**
 
    .. toctree::
-
       most_global_cited_references
 
 
