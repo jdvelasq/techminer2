@@ -27,18 +27,8 @@ subset of the analytical capabilities of TechMiner.
    _menu_bbx_social_struct
 
 
-Data
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-   See ``Import Scopus Files`` in `Data <_user_data.html>`__. 
-
-
-Filter
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-   .. toctree::
-
-      user_filters
+      
 
 
 
