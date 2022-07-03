@@ -44,6 +44,7 @@ package developed and tested in Python version 3.6.
     import_scopus_files
     import_references
     coverage
+    user_filters
 
 
 .. toctree::
