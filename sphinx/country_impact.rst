@@ -1,4 +1,4 @@
-.. automodule:: techminer2.author_local_impact
+.. automodule:: techminer2.country_impact
     :members:
     :undoc-members:
     :show-inheritance:

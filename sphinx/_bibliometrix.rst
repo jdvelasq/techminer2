@@ -61,22 +61,14 @@ Sources
       core_sources
 
    .. toctree::
-      source_local_impact
+      source_impact
 
-      
-      source_dynamics_table *
-      source_dynamics_plot *
-
-   **New:**
+   .. toctree::
+      source_dynamics_table
+      source_dynamics_plot
 
    .. toctree::
       most_global_cited_sources_in_refs
-
-
-
-      
-
-
 
 
 Authors
@@ -94,11 +86,8 @@ Authors
       documents_by_author
 
    .. toctree::
-      author_local_impact
+      author_impact
       
-
-   **New:**
-
    .. toctree::
       most_global_cited_authors_in_refs
 
@@ -124,7 +113,7 @@ Institutions
       institutions_production_over_time
 
    .. toctree::
-      institution_local_impact
+      institution_impact
 
    .. toctree::      
       institutions_production_per_year
@@ -149,7 +138,7 @@ Countries
       countries_production_over_time
 
    .. toctree::
-      country_local_impact
+      country_impact
 
    .. toctree::
       countries_production_per_year

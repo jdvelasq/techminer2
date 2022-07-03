@@ -37,7 +37,7 @@ import pandas as pd
 from ._read_records import read_records
 
 
-def impact_indicators(column, directory="./", sep="; "):
+def impact_indicators(column, directory="./"):
     """
     Impact index analysis
 

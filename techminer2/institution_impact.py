@@ -1,15 +1,15 @@
 """
-Source local impact
+Institution impact (new)
 ===============================================================================
 
 See :doc:`impact indicators <impact_indicators>` to obtain a `pandas.Dataframe` 
-with the data. 
+with the data.
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "sphinx/_static/source_local_impact.html"
+>>> file_name = "sphinx/_static/institution_impact.html"
 
->>> source_local_impact(
+>>> institution_impact(
 ...     impact_measure='h_index', 
 ...     top_n=20, 
 ...     directory=directory,
@@ -17,22 +17,23 @@ with the data.
 
 .. raw:: html
 
-    <iframe src="_static/source_local_impact.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="_static/institution_impact.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
 """
-from .local_impact import local_impact
+from .impact import impact
 
 
-def source_local_impact(
+def institution_impact(
     impact_measure="h_index",
     top_n=20,
     directory="./",
 ):
-    return local_impact(
-        column="source_abbr",
+    """Plots the selected impact measure by institution."""
+    return impact(
+        column="institutions",
         impact_measure=impact_measure,
         top_n=top_n,
         directory=directory,
-        title="Source Local Impact by " + impact_measure.replace("_", " ").title(),
+        title="Institution Local Impact by " + impact_measure.replace("_", " ").title(),
     )

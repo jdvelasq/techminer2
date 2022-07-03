@@ -1,19 +1,26 @@
+"""Make impact indicators plot."""
+
 import textwrap
 
+from .bar_px import bar_px
+from .circle_px import circle_px
 from .cleveland_px import cleveland_px
+from .column_px import column_px
 from .impact_indicators import impact_indicators
+from .line_px import line_px
 
 TEXTLEN = 40
 
 
-def local_impact(
+def impact(
     column,
     impact_measure="h_index",
     top_n=20,
     directory="./",
     title=None,
+    plot="cleveland",
 ):
-    """computes local impact"""
+    """computes local impact by <column>"""
 
     if impact_measure not in [
         "h_index",
@@ -36,7 +43,15 @@ def local_impact(
     }
     indicators = indicators.rename(columns=column_names)
 
-    return cleveland_px(
+    plot_function = {
+        "bar": bar_px,
+        "column": column_px,
+        "line": line_px,
+        "circle": circle_px,
+        "cleveland": cleveland_px,
+    }[plot]
+
+    return plot_function(
         dataframe=indicators,
         x_label=impact_measure.replace("_", " ").title(),
         y_label=column.replace("_", " ").title(),

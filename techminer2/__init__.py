@@ -7,7 +7,7 @@ from .annual_occurrence_matrix import annual_occurrence_matrix
 from .apply_institutions_thesaurus import apply_institutions_thesaurus
 from .apply_thesaurus import apply_thesaurus
 from .association_index import association_index
-from .author_local_impact import author_local_impact
+from .author_impact import author_impact
 from .authors_documents import authors_documents
 from .authors_production_over_time import authors_production_over_time
 from .authors_production_per_year import authors_production_per_year
@@ -61,7 +61,7 @@ from .correlation_map import correlation_map
 from .corresponding_authors_country import corresponding_authors_country
 from .countries_production_over_time import countries_production_over_time
 from .countries_production_per_year import countries_production_per_year
-from .country_local_impact import country_local_impact
+from .country_impact import country_impact
 from .country_scientific_production import country_scientific_production
 from .coupling_matrix import coupling_matrix
 from .coupling_network_communities import coupling_network_communities
@@ -108,14 +108,13 @@ from .heat_map import heat_map
 from .impact_indicators import impact_indicators
 from .import_references import import_references
 from .import_scopus_files import import_scopus_files
-from .institution_local_impact import institution_local_impact
+from .institution_impact import institution_impact
 from .institutions_production_over_time import institutions_production_over_time
 from .institutions_production_per_year import institutions_production_per_year
 from .keyword_concordances import keyword_concordances
 from .keywords_summarization import keywords_summarization
 from .line_chart import line_chart
 from .local_citations_by_type import local_citations_by_type
-from .local_impact import local_impact
 from .lotka_law import lotka_law
 from .main_information import main_information
 from .map_chart import map_chart
@@ -154,7 +153,7 @@ from .rpys import rpys
 from .sankey_diagram import sankey_diagram
 from .source_dynamics_plot import source_dynamics_plot
 from .source_dynamics_table import source_dynamics_table
-from .source_local_impact import source_local_impact
+from .source_impact import source_impact
 from .sources_production_over_time import sources_production_over_time
 from .stemming import stemming_and, stemming_or
 from .summary_view import summary_view

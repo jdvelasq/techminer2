@@ -1,4 +1,4 @@
-.. automodule:: techminer2.institution_local_impact
+.. automodule:: techminer2.author_impact
     :members:
     :undoc-members:
     :show-inheritance:
