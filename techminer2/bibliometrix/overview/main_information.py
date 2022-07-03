@@ -4,47 +4,44 @@ Main information
 
 >>> from techminer2.bibliometrix import *
 >>> directory = "data/"
+
 >>> main_information(directory)
                                                             Value
 Category       Item                                              
-GENERAL        Timespan                                 2016:2021
-               Documents                                      248
-               Annual growth rate %                         91.68
-               Document average age                          2.23
-               References                                   12836
-               Average citations per document                9.36
-               Average citations per document per year       1.56
-               Average references per document              53.93
-               Sources                                        145
-               Average documents per source                  1.71
-DOCUMENT TYPES article                                        178
+GENERAL        Timespan                                 2016:2022
+               Documents                                       94
+               Annual growth rate %                         73.33
+               Document average age                          2.29
+               References                                    4433
+               Average citations per document                6.73
+               Average citations per document per year       0.96
+               Average references per document              49.26
+               Sources                                         67
+               Average documents per source                   1.4
+DOCUMENT TYPES article                                         51
                book                                             1
-               book_chapter                                     4
-               conference_paper                                31
-               editorial                                       10
-               erratum                                          3
-               note                                             1
-               review                                          19
-               short_survey                                     1
-AUTHORS        Authors                                      639.0
-               Authors of single-authored documents          48.0
-               Single-authored documents                     54.0
-               Multi-authored documents                     192.0
-               Authors per document                          2.75
-               Co-authors per document                       3.28
-               International co-authorship %                33.61
-               Author appearances                           682.0
-               Documents per author                          0.36
+               book_chapter                                    14
+               conference_paper                                22
+               editorial                                        2
+               review                                           4
+AUTHORS        Authors                                      193.0
+               Authors of single-authored documents          33.0
+               Single-authored documents                     33.0
+               Multi-authored documents                      61.0
+               Authors per document                          2.37
+               Co-authors per document                       3.11
+               International co-authorship %                41.94
+               Author appearances                           223.0
+               Documents per author                          0.42
                Collaboration index                            1.0
-               Institutions                                 382.0
-               Institutions (1st author)                    200.0
-               Countries                                     70.0
-               Countries (1st author)                        53.0
-KEYWORDS       Raw author keywords                            709
-               Cleaned author keywords                        659
-               Raw index keywords                             607
-               Cleaned index keywords                         583
-
+               Institutions                                 120.0
+               Institutions (1st author)                     70.0
+               Countries                                     39.0
+               Countries (1st author)                        35.0
+KEYWORDS       Raw author keywords                            303
+               Cleaned author keywords                        285
+               Raw index keywords                             259
+               Cleaned index keywords                         255
 
 """
 import datetime
@@ -52,13 +49,15 @@ import datetime
 import numpy as np
 import pandas as pd
 
-from ._read_records import read_filtered_records
+from .. import read_records
 
 
 class _MainInformation:
     def __init__(self, directory):
         self.directory = directory
-        self.records = read_filtered_records(directory)
+        self.records = read_records(
+            directory=directory, database="documents", use_filter=False
+        )
         self.n_records = len(self.records)
         self.compute_general_information_stats()
         self.compute_document_types_stats()
@@ -194,8 +193,8 @@ class _MainInformation:
             return pd.NA
 
     def sources(self):
-        if "source_name" in self.records.columns:
-            records = self.records.source_name.copy()
+        if "source_title" in self.records.columns:
+            records = self.records.source_title.copy()
             records = records.dropna()
             records = records.drop_duplicates()
             return len(records)
@@ -203,8 +202,8 @@ class _MainInformation:
             return pd.NA
 
     def average_documents_per_source(self):
-        if "source_name" in self.records.columns:
-            sources = self.records.source_name.copy()
+        if "source_title" in self.records.columns:
+            sources = self.records.source_title.copy()
             sources = sources.dropna()
             n_records = len(sources)
             sources = sources.drop_duplicates()
@@ -361,6 +360,7 @@ class _MainInformation:
         return round(n_records / n_authors, 2)
 
     def collaboration_index(self):
+
         records = self.records[["authors", "num_authors"]].copy()
         records = records.dropna()
         records = records[records.num_authors > 1]

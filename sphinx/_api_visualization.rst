@@ -12,8 +12,7 @@ Visualization API
 
    _dotted_gantt_chart
    _gantt_chart
-   _pie_chart
-   _tree_map    
+   _pie_chart 
    _world_map
 
 

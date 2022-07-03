@@ -286,7 +286,7 @@ def _create__num_authors__column(directory):
         data = data.assign(num_authors=data.authors.str.split(";"))
         data = data.assign(num_authors=data.num_authors.map(len, na_action="ignore"))
         data = data.assign(
-            num_authors=data.num_authors.where(data.num_authors.isna(), 0)
+            num_authors=data.num_authors.where(~data.num_authors.isna(), 0)
         )
         data.to_csv(file, sep=",", encoding="utf-8", index=False)
 

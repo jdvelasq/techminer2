@@ -14,6 +14,12 @@ a part of TechMiner's capabilities, and in this sense, Bibliometrix contains onl
 subset of the analytical capabilities of TechMiner.
 
 
+.. toctree::
+   :maxdepth: 1
+   
+   bibliometrix/overview/_index
+
+
 Data
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
