@@ -125,7 +125,6 @@ from .most_frequent_countries import most_frequent_countries
 from .most_frequent_institutions import most_frequent_institutions
 from .most_frequent_sources import most_frequent_sources
 from .most_frequent_words import most_frequent_words
-from .most_global_cited_authors import most_global_cited_authors
 from .most_global_cited_authors_in_refs import most_global_cited_authors_in_refs
 from .most_global_cited_countries import most_global_cited_countries
 from .most_global_cited_countries_in_refs import most_global_cited_countries_in_refs
