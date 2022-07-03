@@ -1,5 +1,5 @@
 """
-Institution impact (new)
+Institution impact (NEW)
 ===============================================================================
 
 See :doc:`impact indicators <impact_indicators>` to obtain a `pandas.Dataframe` 

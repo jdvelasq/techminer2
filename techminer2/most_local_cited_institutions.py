@@ -1,5 +1,5 @@
 """
-Most local cited institutions (from reference lists)
+Most local cited institutions (from reference lists) (NEW)
 ===============================================================================
 
 See :doc:`column indicators <column_indicators>` to obtain a `pandas.Dataframe` 

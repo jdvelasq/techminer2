@@ -30,9 +30,9 @@ package developed and tested in Python version 3.6.
     :hidden:
     :maxdepth: 1
 
-    introduction/getting_started
-    introduction/release_info
-    introduction/license
+    getting_started
+    release_info
+    license
 
 
     
@@ -51,7 +51,7 @@ package developed and tested in Python version 3.6.
     :hidden:
     :maxdepth: 1
 
-    _bibliometrix
+    _menu_bbx
     _scientopy
     _tlab
     _vantagepoint

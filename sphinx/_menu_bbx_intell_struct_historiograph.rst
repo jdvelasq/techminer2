@@ -1,6 +1,8 @@
-Overview
+Co-citation Network
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-   
-   .. toctree::
 
-      main_information
+   .. toctree::
+      :maxdepth: 1
+
+
+   * ``TODO: Historiograph``

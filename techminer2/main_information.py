@@ -2,7 +2,7 @@
 Main information
 ===============================================================================
 
->>> from techminer2.bibliometrix import *
+>>> from techminer2 import *
 >>> directory = "data/"
 
 >>> main_information(directory)
@@ -49,7 +49,7 @@ import datetime
 import numpy as np
 import pandas as pd
 
-from .. import read_records
+from ._read_records import read_records
 
 
 class _MainInformation:

@@ -17,7 +17,6 @@ from .auto_corr_matrix_html import auto_corr_matrix_html
 from .average_citations_per_year import average_citations_per_year
 from .bar_chart import bar_chart
 from .bar_plot import bar_plot
-from .bibliometrix.overview.main_information import main_information
 from .bradford_law import bradford_law
 from .bubble_chart import bubble_chart
 from .circle_chart import circle_chart
@@ -117,6 +116,7 @@ from .keywords_summarization import keywords_summarization
 from .line_chart import line_chart
 from .local_citations_by_type import local_citations_by_type
 from .lotka_law import lotka_law
+from .main_information import main_information
 from .map_chart import map_chart
 from .merge_keywords import merge_keywords
 from .most_frequent_authors import most_frequent_authors
