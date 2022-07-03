@@ -27,10 +27,13 @@ def most_global_cited_documents(
     top_n=20,
     directory="./",
 ):
+    """Plots the most global cited documents in the main collection."""
+
     return most_cited_documents(
         metric="global_citations",
         top_n=top_n,
         directory=directory,
         title="Most global cited documents",
+        database="documents",
         use_filter=True,
     )
