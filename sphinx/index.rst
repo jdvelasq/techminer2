@@ -54,7 +54,7 @@ package developed and tested in Python version 3.6.
     _menu_bbx
     _scientopy
     _tlab
-    _vantagepoint
+    _menu_vp
     
     
 
