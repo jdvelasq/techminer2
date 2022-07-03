@@ -1,12 +1,12 @@
 """
-Local Citations by Type **(NEW)**
+Local Citations by Document Type
 ===============================================================================
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "sphinx/_static/local_citations_by_type.html"
+>>> file_name = "sphinx/_static/local_citations_by_document_type.html"
 
->>> local_citations_by_type(
+>>> local_citations_by_document_type(
 ...     directory,
 ...     plot="bar",
 ... ).write_html(file_name)
@@ -24,7 +24,7 @@ from .line_chart import line_chart
 from .word_cloud import word_cloud
 
 
-def local_citations_by_type(
+def local_citations_by_document_type(
     directory="./",
     plot="cleveland",
     database="documents",

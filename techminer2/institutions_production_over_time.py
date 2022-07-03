@@ -1,5 +1,5 @@
 """
-Institutions' production over time
+Institutions' Production over Time
 ===============================================================================
 
 >>> from techminer2 import *

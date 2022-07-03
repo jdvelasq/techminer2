@@ -1,5 +1,5 @@
 """
-Countries' production over time
+Countries' Production over Time
 ===============================================================================
 
 >>> from techminer2 import *

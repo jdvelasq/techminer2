@@ -6,10 +6,15 @@ Sources
 
    .. toctree::
       most_local_cited_sources
-   
-   .. toctree::
-      bradford_law     
-      core_sources
+
+   * Bradford Law
+
+      
+      .. toctree::
+         bradford_law     
+
+      .. toctree::
+         core_sources
 
    .. toctree::
       source_impact
@@ -19,8 +24,8 @@ Sources
       source_dynamics_plot
 
 
-   .. toctree::
-      sources_production_over_time
+   * **NEW**:
 
-   .. toctree::
-      most_global_cited_sources_in_refs
+      .. toctree::
+         sources_production_over_time
+         most_global_cited_sources_in_refs

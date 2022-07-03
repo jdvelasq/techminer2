@@ -1,5 +1,5 @@
 """
-Institutions' production per year
+Institutions' Production per Year
 ===============================================================================
 
 >>> from techminer2 import *

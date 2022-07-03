@@ -1,5 +1,5 @@
 """
-Most global cited countries in reference lists (NEW)
+Most Global Cited Countries in Reference Lists
 ===============================================================================
 
 >>> from techminer2 import *

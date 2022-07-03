@@ -2,13 +2,13 @@ Overview
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    
    .. toctree::
-
       main_information
-      annual_scientific_production
-      average_citations_per_year
-
-   TODO:
 
    .. toctree::
+      annual_scientific_production
 
+   .. toctree::
+      average_citations_per_year
+
+   .. toctree::
       three_fields_plot

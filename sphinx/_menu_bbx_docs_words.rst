@@ -10,11 +10,18 @@ Words
    .. toctree::
       tree_map
 
-   .. toctree::      
-      word_dynamics_plot
-      word_dynamics_table
+
+   * Word Dynamics:
+
+      .. toctree::
+         word_dynamics_plot
+
+      .. toctree::
+         word_dynamics_table
 
    .. toctree::
       topic_dynamics
+
+   .. toctree::
       trend_topics
 

@@ -1,5 +1,5 @@
 """
-Authors' production per year
+Authors' Production per Year
 ===============================================================================
 
 >>> from techminer2 import *

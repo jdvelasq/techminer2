@@ -7,7 +7,9 @@ Cited References
    .. toctree::
       rpys
 
-   .. toctree::
-      most_global_cited_references
+   * **NEW**:
+
+      .. toctree::
+         most_global_cited_references
 
 

@@ -1,5 +1,5 @@
 """
-Country Impact **(NEW)**
+Country Impact
 ===============================================================================
 
 See :doc:`impact indicators <impact_indicators>` to obtain a `pandas.Dataframe` 

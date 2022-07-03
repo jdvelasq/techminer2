@@ -102,7 +102,7 @@ from .find_abbreviations import find_abbreviations
 from .find_keyword import find_keyword
 from .find_string import find_string
 from .gantt_chart import gantt_chart
-from .global_citations_by_type import global_citations_by_type
+from .global_citations_by_document_type import global_citations_by_document_type
 from .growth_indicators import growth_indicators
 from .heat_map import heat_map
 from .impact_indicators import impact_indicators
@@ -114,7 +114,7 @@ from .institutions_production_per_year import institutions_production_per_year
 from .keyword_concordances import keyword_concordances
 from .keywords_summarization import keywords_summarization
 from .line_chart import line_chart
-from .local_citations_by_type import local_citations_by_type
+from .local_citations_by_document_type import local_citations_by_document_type
 from .lotka_law import lotka_law
 from .main_information import main_information
 from .map_chart import map_chart
@@ -141,7 +141,7 @@ from .most_local_cited_institutions import most_local_cited_institutions
 from .most_local_cited_references import most_local_cited_references
 from .most_local_cited_sources import most_local_cited_sources
 from .network import network
-from .num_documents_by_type import num_documents_by_type
+from .num_documents_by_document_type import num_documents_by_document_type
 from .occurrence_matrix import occurrence_matrix
 from .occurrence_matrix_associations import occurrence_matrix_associations
 from .occurrence_matrix_bubble_chart import occurrence_matrix_bubble_chart

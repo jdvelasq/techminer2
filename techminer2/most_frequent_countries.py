@@ -1,5 +1,5 @@
 """
-Most frequent countries (NEW)
+Most frequent countries
 ===============================================================================
 
 >>> from techminer2 import *

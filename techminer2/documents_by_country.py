@@ -1,5 +1,5 @@
 """
-Documents by country (NEW)
+Documents by Country
 ===============================================================================
 
 >>> from techminer2 import *

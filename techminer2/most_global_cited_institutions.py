@@ -1,5 +1,5 @@
 """
-Most global cited institutions
+Most Global Cited Institutions
 ===============================================================================
 
 >>> from techminer2 import *

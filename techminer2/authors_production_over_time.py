@@ -1,5 +1,5 @@
 """
-Authors' production over time
+Authors' Production over Time
 ===============================================================================
 
 >>> from techminer2 import *

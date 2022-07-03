@@ -1,20 +1,19 @@
 """
-Global Citations by Type **(NEW)**
+Num Documents by Document Type
 ===============================================================================
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "sphinx/_static/global_citations_by_type.html"
+>>> file_name = "sphinx/_static/num_documents_by_document_type.html"
 
-
->>> global_citations_by_type(
+>>> num_documents_by_document_type(
 ...     directory,
 ...     plot="bar",
 ... ).write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="_static/global_citations_by_type.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="_static/num_documents_by_document_type.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 from .bar_chart import bar_chart
@@ -25,19 +24,19 @@ from .line_chart import line_chart
 from .word_cloud import word_cloud
 
 
-def global_citations_by_type(
+def num_documents_by_document_type(
     directory="./",
     plot="cleveland",
     database="documents",
 ):
-    """Plots the number of global citations by document type using the specified plot."""
+    """Plots the number of documents by type using the specified plot."""
 
     if database == "documents":
-        title = "Global Citations by Document Type"
+        title = "Num Documents by Document Type"
     elif database == "references":
-        title = "Global Citations in References by Document Type"
+        title = "Num References by Document Type"
     elif database == "cited_by":
-        title = "Global Citations in Citing Documents by Document Type"
+        title = "Num Citing Documents by Document Type"
     else:
         raise ValueError(
             "Invalid database name. Database must be one of: 'documents', 'references', 'cited_by'"
@@ -58,7 +57,7 @@ def global_citations_by_type(
         max_occ=None,
         top_n=None,
         directory=directory,
-        metric="global_citations",
+        metric="num_documents",
         title=title,
         database=database,
     )

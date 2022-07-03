@@ -1,5 +1,5 @@
 """
-Most global cited references (NEW)
+Most Global Cited References
 ===============================================================================
 
 See :doc:`document indicators <document_indicators>` to obtain a `pandas.Dataframe` 

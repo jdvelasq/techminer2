@@ -1,5 +1,5 @@
 """
-Countries' production per year
+Countries' Production per Year
 ===============================================================================
 
 >>> from techminer2 import *

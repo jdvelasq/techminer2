@@ -2,25 +2,38 @@ Authors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    .. toctree::
-      most_frequent_authors
-      documents_by_author
+      most_frequent_authors      
 
    .. toctree::      
       most_local_cited_authors
 
-   .. toctree::      
-      authors_production_over_time
-      authors_production_per_year
-      documents_by_author
+   * Author's Production over Time:
 
-   .. toctree::
-      lotka_law    
+      .. toctree::
+         authors_production_over_time
+
+      .. toctree::
+         authors_production_per_year
+
+      .. toctree::
+         documents_by_author
+
+   * Lotka's Law:
+
+      .. toctree::
+         lotka_law
+
+      * Separar indicadores
+
 
    .. toctree::
       author_impact
       
-   .. toctree::
-      most_global_cited_authors_in_refs
+
+   * **NEW**:
+
+      .. toctree::
+         most_global_cited_authors_in_refs
 
 
       

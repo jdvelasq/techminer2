@@ -1,5 +1,5 @@
 """
-Most global cited authors in references **(NEW)**
+Most Global Cited Authors in References
 ===============================================================================
 
 >>> from techminer2 import *

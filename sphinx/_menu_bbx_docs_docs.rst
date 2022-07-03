@@ -8,9 +8,13 @@ Documents
       most_local_cited_documents
 
 
-   **New:**
+   **NEW:**
 
-   .. toctree::
-      num_documents_by_type
-      global_citations_by_type
-      local_citations_by_type
+      .. toctree::
+         num_documents_by_document_type
+
+      .. toctree::
+         global_citations_by_document_type
+
+      .. toctree::
+         local_citations_by_document_type

@@ -1,5 +1,5 @@
 """
-Most local cited documents
+Most Local Cited Documents
 ===============================================================================
 
 See :doc:`document indicators <document_indicators>` to obtain a `pandas.Dataframe` 
