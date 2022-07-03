@@ -50,13 +50,21 @@ Sources
    .. toctree::
 
       most_frequent_sources
-      most_global_cited_sources
       most_local_cited_sources
+      
+
+      most_global_cited_sources
       sources_production_over_time
       source_local_impact
       core_sources  
       source_dynamics_table
       source_dynamics_plot
+
+   **New:**
+
+   .. toctree::
+
+
 
    TODO:
 
@@ -79,6 +87,11 @@ Authors
       authors_production_over_time
       author_local_impact
       authors_production_per_year
+
+   **New:**
+
+   .. toctree::
+
 
 
    TODO:
@@ -103,6 +116,9 @@ Institutions
       institution_local_impact
       institutions_production_per_year
 
+   **New:**
+
+   .. toctree::
       
 
 
@@ -119,6 +135,12 @@ Countries
       country_local_impact
       countries_production_per_year
       country_scientific_production
+
+
+   **New:**
+
+   .. toctree::
+
 
    TODO:
 
@@ -144,6 +166,11 @@ Documents
       documents_by_country
       documents_by_institution
 
+   **New:**
+
+   .. toctree::
+
+
    .. toctree::
 
       num_documents_by_type
@@ -160,6 +187,11 @@ Cited References
       most_local_cited_references
 
 
+   **New:**
+
+   .. toctree::
+
+
    TODO:
 
    .. toctree::
@@ -171,8 +203,10 @@ Cited References
 Citing Documents
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+   **New:**
+
    .. toctree::
-      :maxdepth: 1
+
 
 
 
@@ -187,6 +221,10 @@ Words
       tree_map
       word_dynamics_plot
       word_dynamics_table
+
+   **New:**
+
+   .. toctree::
 
 
    TODO:
@@ -205,6 +243,10 @@ Clustering
    .. toctree::
       :maxdepth: 1
 
+
+   **New:**
+
+   .. toctree::
 
 
    .. toctree::
@@ -264,6 +306,9 @@ Conceptual Structure
 
    * ``TODO: Factorial Approach / CA``
 
+   **New:**
+
+   .. toctree::
 
 
 
@@ -277,6 +322,11 @@ Intellectual Structure
       co_citation_network_degree_plot
       co_citation_network_graph    
       co_citation_network_indicators
+
+
+   **New:**
+
+   .. toctree::
 
 
    .. Note::
@@ -320,5 +370,10 @@ Social Structure
       collaboration_network_graph
       collaboration_network_indicators
       
+
+   **New:**
+
+   .. toctree::
+
 
    * ``TODO: Collaboration WorldMap``
