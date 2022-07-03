@@ -1,5 +1,5 @@
 """
-Local citations by type
+Local Citations by Type **(NEW)**
 ===============================================================================
 
 >>> from techminer2 import *

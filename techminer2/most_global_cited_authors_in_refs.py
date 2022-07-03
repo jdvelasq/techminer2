@@ -1,5 +1,5 @@
 """
-Most global cited authors in references (NEW)
+Most global cited authors in references **(NEW)**
 ===============================================================================
 
 >>> from techminer2 import *
@@ -16,7 +16,7 @@ Most global cited authors in references (NEW)
 
 .. raw:: html
 
-    <iframe src="_static/most_global_cited_authors.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="_static/most_global_cited_authors_in_refs.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 from .bar_chart import bar_chart

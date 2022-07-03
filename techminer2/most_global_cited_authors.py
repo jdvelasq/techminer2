@@ -1,5 +1,4 @@
-"""
-Most global cited authors
+"""Most global cited authors
 ===============================================================================
 
 >>> from techminer2 import *

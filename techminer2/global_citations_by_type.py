@@ -1,5 +1,5 @@
 """
-Global citations by type
+Global Citations by Type **(NEW)**
 ===============================================================================
 
 >>> from techminer2 import *

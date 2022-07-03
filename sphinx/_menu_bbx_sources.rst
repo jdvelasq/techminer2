@@ -6,9 +6,6 @@ Sources
 
    .. toctree::
       most_local_cited_sources
-
-   .. toctree::
-      sources_production_over_time
    
    .. toctree::
       bradford_law     
@@ -20,6 +17,10 @@ Sources
    .. toctree::
       source_dynamics_table
       source_dynamics_plot
+
+
+   .. toctree::
+      sources_production_over_time
 
    .. toctree::
       most_global_cited_sources_in_refs

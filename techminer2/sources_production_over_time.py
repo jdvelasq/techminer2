@@ -1,5 +1,5 @@
 """
-Sources' production over time (new)
+Sources' production over time **(NEW)**
 ===============================================================================
 
 >>> from techminer2 import *

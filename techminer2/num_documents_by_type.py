@@ -1,5 +1,5 @@
 """
-Num documents by type
+Num Documents by Document Type **(NEW)**
 ===============================================================================
 
 >>> from techminer2 import *
