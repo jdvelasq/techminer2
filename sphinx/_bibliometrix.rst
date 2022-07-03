@@ -94,6 +94,8 @@ Authors
 
    .. toctree::
 
+      most_global_cited_authors_in_refs
+
 
 
    TODO:
@@ -121,6 +123,8 @@ Institutions
    **New:**
 
    .. toctree::
+
+      most_global_cited_institutions_in_refs
       
 
 
