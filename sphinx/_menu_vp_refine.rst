@@ -1,6 +1,3 @@
-Refine
+Comparative Analysis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    .. toctree::
-        :maxdepth: 1
-        

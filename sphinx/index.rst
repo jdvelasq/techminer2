@@ -53,7 +53,7 @@ package developed and tested in Python version 3.6.
 
     _menu_bbx
     _scientopy
-    _tlab
+    _menu_tlab
     _menu_vp
     
     
