@@ -53,7 +53,7 @@ Sources
       most_local_cited_sources
       
 
-      most_global_cited_sources
+      
       sources_production_over_time
       source_local_impact
       core_sources  

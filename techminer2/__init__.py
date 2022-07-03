@@ -135,7 +135,6 @@ from .most_global_cited_institutions_in_refs import (
     most_global_cited_institutions_in_refs,
 )
 from .most_global_cited_references import most_global_cited_references
-from .most_global_cited_sources import most_global_cited_sources
 from .most_global_cited_sources_in_refs import most_global_cited_sources_in_refs
 from .most_local_cited_authors import most_local_cited_authors
 from .most_local_cited_countries import most_local_cited_countries
