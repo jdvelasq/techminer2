@@ -32,7 +32,7 @@ def most_global_cited_sources_in_refs(
     top_n=20,
     min_occ=None,
     max_occ=None,
-    plot="bar",
+    plot="cleveland",
 ):
     """Plots the number of global citations by source in reference lists using the specified plot."""
 
