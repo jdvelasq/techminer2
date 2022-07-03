@@ -1,5 +1,5 @@
 """
-Most global cited sources in references
+Most global cited sources in reference lists
 ===============================================================================
 
 >>> from techminer2 import *
