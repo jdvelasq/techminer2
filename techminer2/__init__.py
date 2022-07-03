@@ -182,6 +182,7 @@ from .topics_comparison_network import topics_comparison_network
 from .tree_map import tree_map
 from .trend_topics import trend_topics
 from .user_filters import user_filters
+from .word_associations_for_all_items import word_associations_for_all_items
 from .word_cloud import word_cloud
 from .word_dynamics_plot import word_dynamics_plot
 from .word_dynamics_table import word_dynamics_table
