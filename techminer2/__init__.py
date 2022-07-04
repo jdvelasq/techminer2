@@ -21,11 +21,14 @@ from .bradford_law import bradford_law
 from .bubble_chart import bubble_chart
 from .circle_chart import circle_chart
 from .cleveland_chart import cleveland_chart
+from .cluster_map import cluster_map
 from .co_citation_matrix import co_citation_matrix
 from .co_citation_network_communities import co_citation_network_communities
 from .co_citation_network_degree_plot import co_citation_network_degree_plot
 from .co_citation_network_graph import co_citation_network_graph
 from .co_citation_network_indicators import co_citation_network_indicators
+from .co_occ_matrix import co_occ_matrix
+from .co_occ_matrix_list import co_occ_matrix_list
 from .co_occurrence_matrix import co_occurrence_matrix
 from .co_occurrence_matrix_associations import co_occurrence_matrix_associations
 from .co_occurrence_matrix_bubble_chart import co_occurrence_matrix_bubble_chart
@@ -145,8 +148,6 @@ from .most_local_cited_references import most_local_cited_references
 from .most_local_cited_sources import most_local_cited_sources
 from .network import network
 from .num_documents_by_document_type import num_documents_by_document_type
-from .occ_flood_matrix import occ_flood_matrix
-from .occ_matrix import occ_matrix
 from .occurrence_matrix import occurrence_matrix
 from .occurrence_matrix_associations import occurrence_matrix_associations
 from .occurrence_matrix_bubble_chart import occurrence_matrix_bubble_chart
