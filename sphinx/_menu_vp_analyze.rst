@@ -1,7 +1,10 @@
 Analyze
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+    .. toctree::
+        occ_flush_matrix
 
+-----
 
     .. toctree::
         :maxdepth: 1

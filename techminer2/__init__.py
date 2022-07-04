@@ -111,6 +111,9 @@ from .import_scopus_files import import_scopus_files
 from .institution_impact import institution_impact
 from .institutions_production_over_time import institutions_production_over_time
 from .institutions_production_per_year import institutions_production_per_year
+from .items_associations_for_a_item import items_associations_for_a_item
+from .items_associations_for_all_items import items_associations_for_all_items
+from .items_associations_plot import items_associations_plot
 from .keyword_concordances import keyword_concordances
 from .keywords_summarization import keywords_summarization
 from .line_chart import line_chart
@@ -142,6 +145,7 @@ from .most_local_cited_references import most_local_cited_references
 from .most_local_cited_sources import most_local_cited_sources
 from .network import network
 from .num_documents_by_document_type import num_documents_by_document_type
+from .occ_flush_matrix import occ_flush_matrix
 from .occurrence_matrix import occurrence_matrix
 from .occurrence_matrix_associations import occurrence_matrix_associations
 from .occurrence_matrix_bubble_chart import occurrence_matrix_bubble_chart
@@ -181,9 +185,6 @@ from .topics_comparison_network import topics_comparison_network
 from .tree_map import tree_map
 from .trend_topics import trend_topics
 from .user_filters import user_filters
-from .word_associations_for_a_item import word_associations_for_a_item
-from .word_associations_for_all_items import word_associations_for_all_items
-from .word_associations_plot import word_associations_plot
 from .word_cloud import word_cloud
 from .word_dynamics_plot import word_dynamics_plot
 from .word_dynamics_table import word_dynamics_table
