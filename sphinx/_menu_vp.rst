@@ -20,28 +20,11 @@ internally in TheVantagePoint software, in order to facilitate comparison.
         _menu_vp_editors
 
 
+    .. toctree::
+        summary_view
+
 
 In this section, **TechMiner** is compared with VantagePoint.
-
-**Quick Reference for Menu** (Pag 2)
-
-    * **Fields**
-
-        * Further Procesing:
-
-            * Author cleanup
-
-            * Dates ->
-
-            * Divide at ->
-
-            * Divide authors ->
-
-            .. toctree::
-                :maxdepth: 1
-
-                extract_country
-
 
 
 
@@ -51,10 +34,7 @@ In this section, **TechMiner** is compared with VantagePoint.
     .. toctree::
         :maxdepth: 1
 
-
-
         document_viewer
-        summary_view
         extract_user_keywords
 
     .. note::
@@ -68,8 +48,6 @@ In this section, **TechMiner** is compared with VantagePoint.
 
     * ``TODO: Create a sub-dataset``
 
-    * ``TODO: Extract Nearby Phrases``
-
     * ``TODO: Detail Window``
 
 
@@ -78,30 +56,8 @@ In this section, **TechMiner** is compared with VantagePoint.
     .. toctree::
         :maxdepth: 1
 
-        find_string
-        stemming
         extract_user_keywords
 
-
-    .. toctree::
-        :maxdepth: 1
-
-        create_thesaurus
-        apply_thesaurus
-        
-
-    .. toctree::
-        :maxdepth: 1
-
-        create_institutions_thesaurus
-        apply_institutions_thesaurus
-        
-        
-    .. toctree::
-        :maxdepth: 1
-
-        create_keywords_thesaurus
-        apply_keywords_thesaurus
         
 
 

@@ -65,9 +65,12 @@ Analyze
     .. toctree::
         factor_matrix 
 
-    .. toctree::
-        tf_matrix 
 
-    .. toctree::        
-        tf_idf_matrix
+    * TFIDF:
+
+        .. toctree::
+            tf_matrix 
+
+        .. toctree::        
+            tf_idf_matrix
 

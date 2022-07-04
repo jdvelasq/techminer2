@@ -2,32 +2,47 @@ Report
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     .. toctree::
-        :maxdepth: 1
-        
-        bar_chart
-        circle_chart
-        cleveland_chart                
         column_chart
-        line_chart      
-        word_cloud
-        world_map
-        timeline_chart
-        tree_map
-
-    TODO:
 
     .. toctree::
-        :maxdepth: 1
+        bar_chart
 
-        gantt_chart     
-        topic_view
+    .. toctree::
+        circle_chart
 
+    .. toctree::
+        line_chart
 
+    .. toctree::
+        word_cloud
 
+    .. toctree::
+        bubble_chart
 
-    FROM VANTAGE POINT TOOLBAR
+    .. toctree::
+        gantt_chart
 
+    .. toctree::
+        matrix_viewer
 
-    * Cluster Map
+    .. toctree::
+        cluster_map
 
-    * Matrix Viewer
+    .. toctree::
+        world_map
+
+    .. toctree::
+        plot_classification
+
+    * **NEW**:
+
+        .. toctree::
+            tree_map
+
+        .. toctree::
+            cleveland_chart
+
+        .. toctree::
+            timeline_chart
+
+        
