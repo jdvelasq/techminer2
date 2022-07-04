@@ -1,4 +1,4 @@
-.. automodule:: techminer2.occ_flush_matrix
+.. automodule:: techminer2.occ_flood_matrix
     :members:
     :undoc-members:
     :show-inheritance:
