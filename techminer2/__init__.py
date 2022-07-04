@@ -145,7 +145,8 @@ from .most_local_cited_references import most_local_cited_references
 from .most_local_cited_sources import most_local_cited_sources
 from .network import network
 from .num_documents_by_document_type import num_documents_by_document_type
-from .occ_flush_matrix import occ_flush_matrix
+from .occ_flood_matrix import occ_flood_matrix
+from .occ_matrix import occ_matrix
 from .occurrence_matrix import occurrence_matrix
 from .occurrence_matrix_associations import occurrence_matrix_associations
 from .occurrence_matrix_bubble_chart import occurrence_matrix_bubble_chart
