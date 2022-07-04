@@ -1,9 +1,23 @@
-Analyze
+Matrix
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
+    * **Co-occurrence Matrix**:
+
+        .. toctree::
+            co_occ_matrix_list
+
+        .. toctree::
+            co_occ_matrix
+
+
+
+
     .. toctree::
-        _menu_vp_analyze_matrix
+        make_heat_map
+
+
+
 
 -----
 
@@ -63,8 +77,11 @@ Analyze
         factor_matrix 
 
 
-    
-    .. toctree::
-        _menu_vp_analyze_matrix
+    * TFIDF:
 
-        
+        .. toctree::
+            tf_matrix 
+
+        .. toctree::        
+            tf_idf_matrix
+
