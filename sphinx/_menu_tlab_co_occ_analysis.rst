@@ -1,18 +1,30 @@
 Co-occurrence Analysis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    * Items Association:
+    * **Word Associations**
 
-        .. toctree::
-            items_associations_for_a_item
+        * **Graphs**
+        
+        * **Tables**
 
-        .. toctree::
-            items_associations_for_all_items
+            * Selected item: 
 
-        .. toctree::
-            items_associations_plot
+                .. toctree::
+                        items_associations_for_a_item
+
+            * All items: See `Co-occurrence Matrix List <co_occ_matrix_list.html>`__
+            
+            * Co-occurrence Matrix: See `Co-occurrence Matrix <co_occ_matrix_list.html>`__
+
+            * Significance Test: TODO:
 
 
+
+
+
+
+----
+----
 ----
 
 
