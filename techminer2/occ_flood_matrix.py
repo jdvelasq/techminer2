@@ -33,6 +33,7 @@ OCC Flood Matrix
 
 from ._read_records import read_records
 from .items2counters import items2counters
+from .load_stopwords import load_stopwords
 
 
 def occ_flood_matrix(
@@ -68,6 +69,10 @@ def occ_flood_matrix(
 
     records = records.sort_values(by=["OCC", column, by], ascending=[False, True, True])
     records = records.reset_index(drop=True)
+
+    stopwords = load_stopwords(directory)
+    records = records[~records[column].isin(stopwords)]
+    records = records[~records[by].isin(stopwords)]
 
     new_col_names = items2counters(
         column=column,
