@@ -1,12 +1,6 @@
 Home
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    .. toctree::
-        occ_flood_matrix
-
-    .. toctree::
-        occ_matrix
-
 
 
     * Find:
