@@ -1,17 +1,19 @@
 Co-occurrence Analysis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    .. toctree::
-        items_associations_for_a_item
+    * Items Association:
 
-    .. toctree::
-        items_associations_for_all_items
+        .. toctree::
+            items_associations_for_a_item
 
-    .. toctree::
-        items_associations_plot
+        .. toctree::
+            items_associations_for_all_items
+
+        .. toctree::
+            items_associations_plot
 
 
-
+----
 
 
     .. toctree::
@@ -26,7 +28,7 @@ Co-occurrence Analysis
         co_occurrence_matrix_cluster_mds_map
         co_occurrence_matrix_cluster_tsne_map
         co_occurrence_matrix_manifold
-        cleveland_chart
+
 
 
     .. toctree::
