@@ -1,12 +1,12 @@
 """
-Word Associations for a Item
+Items Associations for a Item
 ===============================================================================
 
 
 >>> from techminer2 import *
 >>> directory = "data/"
 
->>> word_associations_for_a_item(
+>>> items_associations_for_a_item(
 ...     'regtech',
 ...     'author_keywords',
 ...     directory=directory,
@@ -20,10 +20,10 @@ financial regulation        8
 Name: OCC, dtype: int64
 
 """
-from .word_associations_for_all_items import word_associations_for_all_items
+from .items_associations_for_all_items import items_associations_for_all_items
 
 
-def word_associations_for_a_item(
+def items_associations_for_a_item(
     item,
     column,
     top_n=10,
@@ -32,7 +32,7 @@ def word_associations_for_a_item(
 ):
     """Computes the co-occurrence matrix for a given column."""
 
-    word_associations = word_associations_for_all_items(
+    word_associations = items_associations_for_all_items(
         column=column,
         top_n=None,
         directory=directory,

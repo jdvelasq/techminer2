@@ -1,13 +1,13 @@
 """
-Word Assocations Plot
+Items Assocations Plot
 ===============================================================================
 
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "sphinx/_static/word_associations_plot.html"
+>>> file_name = "sphinx/_static/items_associations_plot.html"
 
->>> word_associations_plot(
+>>> items_associations_plot(
 ...     'regtech', 
 ...     'author_keywords', 
 ...     directory=directory,
@@ -15,7 +15,7 @@ Word Assocations Plot
 
 .. raw:: html
 
-    <iframe src="_static/word_associations_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="_static/items_associations_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
 """
@@ -23,11 +23,11 @@ from .bar_px import bar_px
 from .circle_px import circle_px
 from .cleveland_px import cleveland_px
 from .column_px import column_px
+from .items_associations_for_a_item import items_associations_for_a_item
 from .line_px import line_px
-from .word_associations_for_a_item import word_associations_for_a_item
 
 
-def word_associations_plot(
+def items_associations_plot(
     item,
     column,
     top_n=10,
@@ -36,7 +36,7 @@ def word_associations_plot(
     plot="cleveland",
 ):
 
-    word_associations = word_associations_for_a_item(
+    word_associations = items_associations_for_a_item(
         item=item,
         column=column,
         top_n=top_n,

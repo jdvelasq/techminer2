@@ -2,13 +2,15 @@ Co-occurrence Analysis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     .. toctree::
-        word_associations_for_a_item
+        items_associations_for_a_item
 
     .. toctree::
-        word_associations_for_all_items
+        items_associations_for_all_items
 
     .. toctree::
-        word_associations_plot
+        items_associations_plot
+
+
 
 
 

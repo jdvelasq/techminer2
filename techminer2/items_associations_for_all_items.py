@@ -1,12 +1,12 @@
 """
-Word Associations for All Items
+Items Associations for All Items
 ===============================================================================
 
 
 >>> from techminer2 import *
 >>> directory = "data/"
 
->>> word_associations_for_all_items(
+>>> items_associations_for_all_items(
 ...     column='author_keywords',
 ...     directory=directory,
 ... ).head(10)
@@ -27,7 +27,7 @@ Word Associations for All Items
 from ._read_records import read_records
 
 
-def word_associations_for_all_items(
+def items_associations_for_all_items(
     column,
     top_n=10,
     directory="./",
