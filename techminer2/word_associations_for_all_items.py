@@ -10,7 +10,7 @@ Word Associations for All Items
 ...     column='author_keywords',
 ...     directory=directory,
 ... ).head(10)
-                    word_A                   word_B  co_occ
+                    word_a                   word_b  CO_OCC
 0                  fintech                  regtech      42
 1                  regtech                  fintech      42
 2               blockchain                  regtech      17
@@ -41,22 +41,22 @@ def word_associations_for_all_items(
         use_filter=True,
     )
     records = records[[column]]
-    records = records.assign(word_B=records[column])
+    records = records.assign(word_b=records[column])
     records = records.dropna()
 
-    records["word_B"] = records["word_B"].str.split(";")
-    records = records.explode("word_B")
-    records["word_B"] = records["word_B"].str.strip()
+    records["word_b"] = records["word_b"].str.split(";")
+    records = records.explode("word_b")
+    records["word_b"] = records["word_b"].str.strip()
 
     records[column] = records[column].str.split(";")
     records = records.explode(column)
     records[column] = records[column].str.strip()
 
-    records = records.assign(co_occ=1)
-    records = records.groupby([column, "word_B"], as_index=False).agg({"co_occ": "sum"})
-    records = records.rename(columns={column: "word_A"})
-    records = records[records.word_A != records.word_B]
-    records = records.sort_values(by=["co_occ", "word_A"], ascending=[False, True])
+    records = records.assign(CO_OCC=1)
+    records = records.groupby([column, "word_b"], as_index=False).agg({"CO_OCC": "sum"})
+    records = records.rename(columns={column: "word_a"})
+    records = records[records.word_a != records.word_b]
+    records = records.sort_values(by=["CO_OCC", "word_a"], ascending=[False, True])
     if top_n is not None:
         records = records.head(top_n)
     records = records.reset_index(drop=True)

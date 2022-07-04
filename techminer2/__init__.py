@@ -175,14 +175,15 @@ from .three_fields_plot import three_fields_plot
 from .timeline_chart import timeline_chart
 from .top_topics import top_topics
 from .top_trending_topics import top_trending_topics
-from .topic_associations import Topic_associations
 from .topic_view import topic_view
 from .topics_comparison_chart import topics_comparison_chart
 from .topics_comparison_network import topics_comparison_network
 from .tree_map import tree_map
 from .trend_topics import trend_topics
 from .user_filters import user_filters
+from .word_associations_for_a_item import word_associations_for_a_item
 from .word_associations_for_all_items import word_associations_for_all_items
+from .word_associations_plot import word_associations_plot
 from .word_cloud import word_cloud
 from .word_dynamics_plot import word_dynamics_plot
 from .word_dynamics_table import word_dynamics_table

@@ -1,17 +1,20 @@
 Co-occurrence Analysis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+    .. toctree::
+        word_associations_for_a_item
 
     .. toctree::
-        
+        word_associations_for_all_items
 
+    .. toctree::
+        word_associations_plot
 
 
 
     .. toctree::
         :maxdepth: 1
 
-        topic_associations
         co_occurrence_svd_mds_map
 
 
