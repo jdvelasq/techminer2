@@ -2,10 +2,14 @@
 Matrix Viwer
 ===============================================================================
 
+
+
+**Matrix view for a occurrence matrix.**
+
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "sphinx/_static/matrix_viewer_occ.html"
 
+>>> file_name = "sphinx/_static/matrix_viewer_occ-0.html"
 >>> matrix = co_occ_matrix_list(
 ...    column='author_keywords',
 ...    row='authors',
@@ -36,26 +40,97 @@ Matrix Viwer
 
 .. raw:: html
 
-    <iframe src="_static/matrix_viewer_occ.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="_static/matrix_viewer_occ-0.html" height="600px" width="100%" frameBorder="0"></iframe>
+
+
+**Matrix view for a co-occurrence matrix.**
+
+>>> file_name = "sphinx/_static/matrix_viewer_occ-1.html"
+>>> matrix = co_occ_matrix_list(
+...    column='author_keywords',
+...    min_occ=8,
+...    directory=directory,
+... )
+>>> matrix
+                                         row  ... OCC
+0                             regtech 70:462  ...  70
+1                             fintech 42:406  ...  42
+2                             fintech 42:406  ...  42
+3                             regtech 70:462  ...  42
+4                          blockchain 18:109  ...  18
+5                          blockchain 18:109  ...  17
+6                             regtech 70:462  ...  17
+7                          blockchain 18:109  ...  14
+8                             fintech 42:406  ...  14
+9             artificial intelligence 13:065  ...  13
+10                         compliance 12:020  ...  12
+11                         compliance 12:020  ...  12
+12                            regtech 70:462  ...  12
+13  regulatory technologies (regtech) 12:047  ...  12
+14            artificial intelligence 13:065  ...  10
+15                            regtech 70:462  ...  10
+16             financial technologies 09:032  ...   9
+17            artificial intelligence 13:065  ...   8
+18               financial regulation 08:091  ...   8
+19               financial regulation 08:091  ...   8
+20                            fintech 42:406  ...   8
+21                            regtech 70:462  ...   8
+<BLANKLINE>
+[22 rows x 3 columns]
+
+>>> matrix_viewer(
+...     matrix,
+...     nx_k=0.5,
+...     nx_iteratons=5,
+... ).write_html(file_name)
+
+.. raw:: html
+
+    <iframe src="_static/matrix_viewer_occ-1.html" height="600px" width="100%" frameBorder="0"></iframe>
+
+
 
 """
-
 import networkx as nx
+import numpy as np
 import plotly.graph_objects as go
 
 
 def matrix_viewer(
     matrix_list,
+    nx_k=0.5,
+    nx_iteratons=10,
+    delta=1.0,
 ):
     """Makes cluster map from a ocurrence flooding matrix."""
 
+    column = matrix_list["column"].drop_duplicates().sort_values()
+    row = matrix_list["row"].drop_duplicates().sort_values()
+    if row.equals(column):
+        return _matrix_viewer_for_co_occ_matrix(matrix_list, nx_k, nx_iteratons, delta)
+    return _matrix_viewer_for_occ_matrix(matrix_list, nx_k, nx_iteratons, delta)
+
+
+def _matrix_viewer_for_co_occ_matrix(matrix_list, nx_k, nx_iteratons, delta):
     G = nx.Graph()
-    G = _create_nodes(G, matrix_list)
+    G = _create_nodes(G, matrix_list, 0)
     G = _create_edges(G, matrix_list)
-    G = _make_layout(G)
+    G = _make_layout(G, nx_k, nx_iteratons)
     edge_trace, node_trace = _create_traces(G)
     node_trace = _color_node_points(G, node_trace)
-    fig = _create_network_graph(edge_trace, node_trace)
+    fig = _create_network_graph(edge_trace, node_trace, delta)
+    return fig
+
+
+def _matrix_viewer_for_occ_matrix(matrix_list, nx_k, nx_iteratons, delta):
+    G = nx.Graph()
+    G = _create_nodes(G, matrix_list, 0)
+    G = _create_nodes(G, matrix_list, 1)
+    G = _create_edges(G, matrix_list)
+    G = _make_layout(G, nx_k, nx_iteratons)
+    edge_trace, node_trace = _create_traces(G)
+    node_trace = _color_node_points(G, node_trace)
+    fig = _create_network_graph(edge_trace, node_trace, delta)
     return fig
 
 
@@ -66,7 +141,7 @@ def _make_layout(G, k=0.2, iteratons=50):
     return G
 
 
-def _create_network_graph(edge_trace, node_trace):
+def _create_network_graph(edge_trace, node_trace, delta=1.0):
     fig = go.Figure(
         data=[edge_trace, node_trace],
         layout=go.Layout(
@@ -97,8 +172,7 @@ def _create_network_graph(edge_trace, node_trace):
             font_family="monospace",
         )
     )
-    # fig.update_traces(textposition="top center")
-    fig.update_xaxes(range=[-1.5, 1.5])
+    fig.update_xaxes(range=[-1 - delta, 1 + delta])
     fig.update_layout(
         paper_bgcolor="white",
         plot_bgcolor="white",
@@ -109,7 +183,7 @@ def _create_network_graph(edge_trace, node_trace):
 def _color_node_points(G, node_trace):
     node_adjacencies = []
     node_hove_text = []
-    for node, adjacencies in enumerate(G.adjacency()):
+    for _, adjacencies in enumerate(G.adjacency()):
         node_adjacencies.append(len(adjacencies[1]))
         text = "<b>" + adjacencies[0] + "</b>"
         max_len = list(adjacencies[1].keys())
@@ -160,6 +234,19 @@ def _create_traces(G):
         else:
             colors.append("#5DADE2")
 
+    x_mean = np.mean(node_x)
+    y_mean = np.mean(node_y)
+    textposition = []
+    for x_pos, y_pos in zip(node_x, node_y):
+        if x_pos >= x_mean and y_pos >= y_mean:
+            textposition.append("top right")
+        if x_pos <= x_mean and y_pos >= y_mean:
+            textposition.append("top left")
+        if x_pos <= x_mean and y_pos <= y_mean:
+            textposition.append("bottom left")
+        if x_pos >= x_mean and y_pos <= y_mean:
+            textposition.append("bottom right")
+
     node_trace = go.Scatter(
         x=node_x,
         y=node_y,
@@ -171,37 +258,29 @@ def _create_traces(G):
             size=13,
             line_width=2,
         ),
-        textposition="bottom left",
+        textposition=textposition,
     )
 
     return edge_trace, node_trace
 
 
 def _create_edges(G, flood_matrix):
-
     edges = []
-
     for _, row in flood_matrix.iterrows():
         edges.append((row[0], row[1], row[2]))
-
     G.add_weighted_edges_from(edges)
     return G
 
 
-def _create_nodes(G, flood_matrix):
+def _create_nodes(G, flood_matrix, col_index):
 
     nodes = []
 
-    col0 = flood_matrix[flood_matrix.columns[0]]
-    value_counts0 = col0.value_counts()
+    col = flood_matrix[flood_matrix.columns[col_index]]
+    value_counts = col.value_counts()
     nodes += [
-        (item, dict(size=value_counts0[item], group=0)) for item in value_counts0.index
-    ]
-
-    col1 = flood_matrix[flood_matrix.columns[1]]
-    value_counts1 = col1.value_counts()
-    nodes += [
-        (item, dict(size=value_counts1[item], group=1)) for item in value_counts1.index
+        (item, dict(size=value_counts[item], group=col_index))
+        for item in value_counts.index
     ]
 
     G.add_nodes_from(nodes)
