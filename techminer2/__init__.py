@@ -15,7 +15,6 @@ from .auto_corr_matrix import auto_corr_matrix
 from .auto_corr_matrix_list import auto_corr_matrix_list
 from .average_citations_per_year import average_citations_per_year
 from .bar_chart import bar_chart
-from .bar_plot import bar_plot
 from .bradford_law import bradford_law
 from .bubble_chart import bubble_chart
 from .circle_chart import circle_chart

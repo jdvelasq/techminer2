@@ -34,7 +34,7 @@ Name: average_growth_rate, dtype: float64
 
 """
 
-from .bar_plot import bar_plot
+# from .bar_chart import bar_plot
 from .growth_indicators import growth_indicators
 
 
