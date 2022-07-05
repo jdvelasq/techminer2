@@ -20,7 +20,7 @@ def items2counters(
         use_filter=use_filter,
     )
 
-    num_docs = indicators.num_documents.values
+    num_docs = indicators.OCC.values
     cited_by = indicators.global_citations.values
     n_zeros_docs = int(np.log10(max(num_docs))) + 1
     n_zeros_cited_by = int(np.log10(max(cited_by))) + 1

@@ -77,10 +77,15 @@ def column_indicators_by_year(
         .sum()
         .sort_values(by=["year", column], ascending=True)
     )
+    indicators = indicators.sort_values([column, "year"], ascending=True)
 
-    indicators = indicators.assign(
-        cum_OCC=indicators.sort_values([column, "year"], ascending=True).OCC.cumsum()
-    )
+    indicators["cum_OCC"] = indicators.groupby([column]).OCC.cumsum()
+
+    # indicators = indicators.assign(
+    #     cum_OCC=indicators.sort_values([column, "year"], ascending=True)
+    #     .groupby([column, "year"])
+    #     .cumsum()
+    # )
     indicators.insert(3, "cum_OCC", indicators.pop("cum_OCC"))
 
     indicators["age"] = max_pub_year - indicators.year + 1
