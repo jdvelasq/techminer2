@@ -177,7 +177,6 @@ from .thematic_map_network import thematic_map_network
 from .thematic_map_strategic_diagram import thematic_map_strategic_diagram
 from .thematic_map_summarization import thematic_map_summarization
 from .three_fields_plot import three_fields_plot
-from .timeline_chart import timeline_chart
 from .top_topics import top_topics
 from .top_trending_topics import top_trending_topics
 from .topic_view import topic_view
