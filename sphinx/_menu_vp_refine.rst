@@ -1,7 +1,19 @@
 Refine
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+    * List Cleanup:
 
+        TechMiner works directly over a thesaurus. The following functions are available:
+
+        .. toctree::
+            find_abbreviations
+
+        .. toctree::
+            find_string
+
+        .. toctree::
+            fuzzy_search
+        
 
 
     * Thesaurus:
@@ -26,14 +38,6 @@ Refine
             apply_keywords_thesaurus
 
 
-        .. toctree::
-            find_abbreviations
-
-        .. toctree::
-            find_keyword
-        
-        .. toctree::
-            merge_keywords
 
 
 

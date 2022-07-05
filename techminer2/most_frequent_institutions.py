@@ -26,6 +26,7 @@ from .column_chart import column_chart
 from .line_chart import line_chart
 from .pie_chart import pie_chart
 from .word_cloud import word_cloud
+from .make_list import make_list
 
 
 def most_frequent_institutions(
@@ -48,7 +49,15 @@ def most_frequent_institutions(
         raise ValueError(
             "Invalid database name. Database must be one of: 'documents', 'references', 'cited_by'"
         )
-
+    indicators = make_list(
+        column="institutions",
+        metric="OCC",
+        top_n=top_n,
+        min_occ=min_occ,
+        max_occ=max_occ,
+        directory=directory,
+        database=database,
+    )
     plot_function = {
         "bar": bar_chart,
         "column": column_chart,
@@ -59,12 +68,7 @@ def most_frequent_institutions(
     }[plot]
 
     return plot_function(
-        column="institutions",
-        min_occ=min_occ,
-        max_occ=max_occ,
-        top_n=top_n,
-        directory=directory,
-        metric="num_documents",
+        dataframe=indicators,
+        metric="OCC",
         title=title,
-        database=database,
     )

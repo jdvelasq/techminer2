@@ -98,8 +98,8 @@ from .factorial_analysis_mds_silhouette_scores import (
     factorial_analysis_mds_silhouette_scores,
 )
 from .find_abbreviations import find_abbreviations
-from .find_keyword import find_keyword
 from .find_string import find_string
+from .fuzzy_search import fuzzy_search
 from .gantt_chart import gantt_chart
 from .global_citations_by_document_type import global_citations_by_document_type
 from .growth_indicators import growth_indicators
@@ -122,7 +122,6 @@ from .main_information import main_information
 from .make_list import make_list
 from .map_chart import map_chart
 from .matrix_viewer import matrix_viewer
-from .merge_keywords import merge_keywords
 from .most_frequent_authors import most_frequent_authors
 from .most_frequent_countries import most_frequent_countries
 from .most_frequent_institutions import most_frequent_institutions
