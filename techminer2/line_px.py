@@ -24,7 +24,7 @@ def line_px(
         plot_bgcolor="white",
     )
     fig.update_traces(
-        marker=dict(size=10, line=dict(color="darkslategray", width=2)),
+        marker=dict(size=9, line=dict(color="darkslategray", width=2)),
         marker_color="rgb(171,171,171)",
         line=dict(color="darkslategray"),
     )
