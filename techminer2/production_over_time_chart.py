@@ -1,21 +1,42 @@
-"""Primitive to plot production over time."""
+"""
+Production over Time Chart
+===============================================================================
+
+>>> from techminer2 import *
+>>> directory = "data/"
+>>> file_name = "sphinx/_static/production_over_time_chart.html"
+
+>>> production_over_time_chart(
+...     column='author_keywords',
+...     top_n=20, 
+...     directory=directory,
+... ).write_html(file_name)
+
+.. raw:: html
+
+    <iframe src="_static/production_over_time_chart.html" height="800px" width="100%" frameBorder="0"></iframe>
+
+"""
+
+
 import textwrap
 
 import plotly.express as px
 
+from .co_occ_matrix_list import _add_counters_to_items
 from .column_indicators import column_indicators
 from .column_indicators_by_year import column_indicators_by_year
 
 TEXTLEN = 40
 
 
-def production_over_time(
+def production_over_time_chart(
     column,
     top_n=10,
     directory="./",
     title=None,
 ):
-    """Primitive to plot production over time."""
+    """Production over time."""
 
     indicators_by_year = _compute_production_over_time(
         column=column,
@@ -23,11 +44,33 @@ def production_over_time(
         directory=directory,
     )
 
+    indicators_by_year = _add_counters_to_items(
+        column,
+        column.replace("_", " ").title(),
+        directory,
+        "documents",
+        indicators_by_year,
+    )
+
+    indicators_by_year["global_occ"] = (
+        indicators_by_year[column.replace("_", " ").title()]
+        .str.split()
+        .map(lambda x: x[-1])
+        .str.split(":")
+        .map(lambda x: x[0])
+    )
+    indicators_by_year = indicators_by_year.sort_values(
+        by=["global_occ", "Global Citations", column.replace("_", " ").title(), "Year"],
+        ascending=[False, False, True, True],
+    )
+
+    indicators_by_year.pop("global_occ")
+
     fig = px.scatter(
         indicators_by_year,
         x="Year",
         y=column.replace("_", " ").title(),
-        size="Num Documents",
+        size="OCC",
         hover_data=indicators_by_year.columns.to_list(),
         title=title,
         color=column.replace("_", " ").title(),
@@ -35,8 +78,8 @@ def production_over_time(
     fig.update_layout(
         paper_bgcolor="white",
         plot_bgcolor="white",
-        # xaxis_type="category",
         showlegend=False,
+        xaxis_title=None,
     )
     fig.update_traces(
         marker=dict(
@@ -88,7 +131,15 @@ def _compute_production_over_time(
 
     indicators_by_year = indicators_by_year.rename(
         columns={
-            col: col.replace("_", " ").title() for col in indicators_by_year.columns
+            col: col.replace("_", " ").title()
+            for col in indicators_by_year.columns
+            if col not in ["OCC", "cum_OCC"]
+        }
+    )
+
+    indicators_by_year = indicators_by_year.rename(
+        columns={
+            "cum_OCC": "Cum OCC",
         }
     )
 

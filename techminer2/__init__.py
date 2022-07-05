@@ -152,7 +152,7 @@ from .occurrence_matrix_heatmap import occurrence_matrix_heatmap
 from .occurrence_matrix_html import occurrence_matrix_html
 from .occurrence_matrix_sankey_diagram import occurrence_matrix_sankey_diagram
 from .pie_chart import pie_chart
-from .production_over_time import production_over_time
+from .production_over_time_chart import production_over_time_chart
 from .rpys import rpys
 from .sankey_diagram import sankey_diagram
 from .source_dynamics_plot import source_dynamics_plot

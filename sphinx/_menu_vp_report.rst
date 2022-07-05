@@ -44,6 +44,6 @@ Report
             cleveland_chart
 
         .. toctree::
-            timeline_chart
+            production_over_time_chart
 
         
