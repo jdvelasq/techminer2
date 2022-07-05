@@ -7,53 +7,36 @@ Cleveland Chart
 >>> directory = "data/"
 >>> file_name = "sphinx/_static/cleveland_chart.html"
 
->>> cleveland_chart(
-...    column="author_keywords", 
-...    top_n=20,
+>>> indicators = make_list(
+...    column='author_keywords',
+...    min_occ=3,
 ...    directory=directory,
-...     metric="num_documents",
-... ).write_html(file_name)
+... )
+
+>>> cleveland_chart(indicators).write_html(file_name)
 
 .. raw:: html
 
     <iframe src="_static/cleveland_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .cleveland_plot import cleveland_plot
-from .column_indicators import column_indicators
+
+from .cleveland_px import cleveland_px
+from .format_dataset_to_plot_with_plotly import format_dataset_to_plot_with_plotly
 
 
 def cleveland_chart(
-    column,
-    top_n=None,
-    min_occ=None,
-    max_occ=None,
-    directory="./",
-    metric="num_documents",
+    dataframe,
+    metric="OCC",
     title=None,
-    database="documents",
 ):
-    """Makes a cleveland chart from a dataframe."""
+    """Makes a cleveland plot from a dataframe."""
 
-    indicators = column_indicators(
-        column=column,
-        directory=directory,
-        database=database,
-        use_filter=(database == "documents"),
-        sep=";",
-    )
+    metric, column, dataframe = format_dataset_to_plot_with_plotly(dataframe, metric)
 
-    indicators = indicators.sort_values(metric, ascending=False)
-
-    if min_occ is not None:
-        indicators = indicators[indicators.num_documents >= min_occ]
-    if max_occ is not None:
-        indicators = indicators[indicators.num_documents <= max_occ]
-    if top_n is not None:
-        indicators = indicators.head(top_n)
-
-    return cleveland_plot(
-        dataframe=indicators,
-        metric=metric,
+    return cleveland_px(
+        dataframe=dataframe,
+        x_label=metric,
+        y_label=column,
         title=title,
     )
