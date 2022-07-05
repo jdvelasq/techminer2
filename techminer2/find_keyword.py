@@ -2,7 +2,7 @@
 Find Keyword
 ===============================================================================
 
-Finds a string in the terms of a column of a document collection.
+Finds a string in the terms of a thesaurus.
 
 >>> from techminer2 import *
 >>> directory = "data/"
