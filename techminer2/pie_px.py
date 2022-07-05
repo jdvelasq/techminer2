@@ -3,7 +3,7 @@
 import plotly.express as px
 
 
-def circle_px(
+def pie_px(
     dataframe,
     values,
     names,

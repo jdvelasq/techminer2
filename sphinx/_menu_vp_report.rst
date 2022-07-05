@@ -8,7 +8,7 @@ Report
         bar_chart
 
     .. toctree::
-        circle_chart
+        pie_chart
 
     .. toctree::
         line_chart

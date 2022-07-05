@@ -17,7 +17,6 @@ from .average_citations_per_year import average_citations_per_year
 from .bar_chart import bar_chart
 from .bradford_law import bradford_law
 from .bubble_chart import bubble_chart
-from .circle_chart import circle_chart
 from .cleveland_chart import cleveland_chart
 from .cluster_map import cluster_map
 from .co_citation_matrix import co_citation_matrix
@@ -152,6 +151,7 @@ from .occurrence_matrix_bubble_chart import occurrence_matrix_bubble_chart
 from .occurrence_matrix_heatmap import occurrence_matrix_heatmap
 from .occurrence_matrix_html import occurrence_matrix_html
 from .occurrence_matrix_sankey_diagram import occurrence_matrix_sankey_diagram
+from .pie_chart import pie_chart
 from .production_over_time import production_over_time
 from .rpys import rpys
 from .sankey_diagram import sankey_diagram

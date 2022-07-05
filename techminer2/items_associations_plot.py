@@ -20,11 +20,11 @@ Items Assocations Plot
 
 """
 from .bar_px import bar_px
-from .circle_px import circle_px
 from .cleveland_px import cleveland_px
 from .column_px import column_px
 from .items_associations_for_a_item import items_associations_for_a_item
 from .line_px import line_px
+from .pie_px import pie_px
 
 
 def items_associations_plot(
@@ -52,7 +52,7 @@ def items_associations_plot(
         "bar": bar_px,
         "column": column_px,
         "line": line_px,
-        "circle": circle_px,
+        "pie": pie_px,
         "cleveland": cleveland_px,
     }[plot]
 

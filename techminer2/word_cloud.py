@@ -1,62 +1,45 @@
 """
-Word cloud (chart)
+Word cloud
 ===============================================================================
 
 >>> from techminer2 import *
 >>> directory = "data/"
 >>> file_name = "sphinx/images/word_cloud.png"
 
->>> word_cloud(
-...     column='author_keywords', 
-...     metric='num_documents',
-...     title="Author Keywords",
-...     top_n=50, 
-...     directory=directory,
-... ).savefig(file_name)
+>>> indicators = make_list(
+...    column='author_keywords',
+...    top_n=250,
+...    directory=directory,
+... )
+
+>>> word_cloud(indicators).savefig(file_name)
 
 .. image:: images/word_cloud.png
     :width: 900px
     :align: center
 
 """
-from .column_indicators import column_indicators
-from .word_cloud_plot import word_cloud_plot
+
+from .format_dataset_to_plot_with_plotly import format_dataset_to_plot_with_plotly
+from .word_cloud_py import word_cloud_py
+
+TEXTLEN = 40
 
 
 def word_cloud(
-    column,
-    top_n=None,
-    min_occ=None,
-    max_occ=None,
-    directory="./",
-    metric="num_documents",
+    dataframe,
+    metric="OCC",
     title=None,
-    database="documents",
-    #
-    figsize=(12, 12),
+    figsize=(8, 8),
 ):
-    """Plots a word cloud from a dataframe."""
+    """Makes a cleveland plot from a dataframe."""
 
-    indicators = column_indicators(
-        column=column,
-        directory=directory,
-        database=database,
-        use_filter=(database == "documents"),
-        sep=";",
-    )
+    metric, column, dataframe = format_dataset_to_plot_with_plotly(dataframe, metric)
 
-    indicators = indicators.sort_values(metric, ascending=False)
-
-    if min_occ is not None:
-        indicators = indicators[indicators.num_documents >= min_occ]
-    if max_occ is not None:
-        indicators = indicators[indicators.num_documents <= max_occ]
-    if top_n is not None:
-        indicators = indicators.head(top_n)
-
-    return word_cloud_plot(
-        dataframe=indicators,
+    return word_cloud_py(
+        dataframe=dataframe,
         metric=metric,
+        column=column,
         title=title,
         figsize=figsize,
     )

@@ -17,7 +17,7 @@ Local Citations by Document Type
 
 """
 from .bar_chart import bar_chart
-from .circle_chart import circle_chart
+from .pie_chart import pie_chart
 from .cleveland_chart import cleveland_chart
 from .column_chart import column_chart
 from .line_chart import line_chart
@@ -46,7 +46,7 @@ def local_citations_by_document_type(
         "bar": bar_chart,
         "column": column_chart,
         "line": line_chart,
-        "circle": circle_chart,
+        "circle": pie_chart,
         "cleveland": cleveland_chart,
         "wordcloud": word_cloud,
     }[plot]
