@@ -121,6 +121,7 @@ from .line_chart import line_chart
 from .local_citations_by_document_type import local_citations_by_document_type
 from .lotka_law import lotka_law
 from .main_information import main_information
+from .make_list import make_list
 from .map_chart import map_chart
 from .merge_keywords import merge_keywords
 from .most_frequent_authors import most_frequent_authors
