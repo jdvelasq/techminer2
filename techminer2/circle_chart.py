@@ -6,55 +6,38 @@ Circle Chart
 >>> directory = "data/"
 >>> file_name = "sphinx/_static/circle_chart.html"
 
->>> circle_chart(
-...     'author_keywords',
-...     top_n=15,
-...     directory=directory,
-...     hole=0.5,
-... ).write_html(file_name)
+>>> indicators = make_list(
+...    column='author_keywords',
+...    min_occ=3,
+...    directory=directory,
+... )
+
+>>> circle_chart(indicators, hole=0.5).write_html(file_name)
 
 .. raw:: html
 
     <iframe src="_static/circle_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .circle_plot import circle_plot
-from .column_indicators import column_indicators
+
+from .circle_px import circle_px
+from .format_dataset_to_plot_with_plotly import format_dataset_to_plot_with_plotly
 
 
 def circle_chart(
-    column,
-    top_n=None,
-    min_occ=None,
-    max_occ=None,
-    directory="./",
-    metric="num_documents",
+    dataframe,
+    metric="OCC",
     title=None,
-    database="documents",
-    hole=0.0,
+    hole=0.5,
 ):
-    """Makes a circle chart from a dataframe."""
+    """Makes a cleveland plot from a dataframe."""
 
-    indicators = column_indicators(
-        column=column,
-        directory=directory,
-        database=database,
-        use_filter=(database == "documents"),
-        sep=";",
-    )
+    metric, column, dataframe = format_dataset_to_plot_with_plotly(dataframe, metric)
 
-    indicators = indicators.sort_values(metric, ascending=False)
-
-    if min_occ is not None:
-        indicators = indicators[indicators.num_documents >= min_occ]
-    if max_occ is not None:
-        indicators = indicators[indicators.num_documents <= max_occ]
-    if top_n is not None:
-        indicators = indicators.head(top_n)
-
-    return circle_plot(
-        dataframe=indicators,
-        metric=metric,
+    return circle_px(
+        dataframe=dataframe,
+        values=metric,
+        names=column,
         title=title,
         hole=hole,
     )
