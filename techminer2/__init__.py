@@ -12,7 +12,7 @@ from .authors_documents import authors_documents
 from .authors_production_over_time import authors_production_over_time
 from .authors_production_per_year import authors_production_per_year
 from .auto_corr_matrix import auto_corr_matrix
-from .auto_corr_matrix_heatmap import auto_corr_matrix_heatmap
+from .auto_corr_matrix_list import auto_corr_matrix_list
 from .average_citations_per_year import average_citations_per_year
 from .bar_chart import bar_chart
 from .bar_plot import bar_plot

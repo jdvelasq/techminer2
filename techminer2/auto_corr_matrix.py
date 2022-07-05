@@ -6,9 +6,10 @@ Returns an auto-correlation matrix.
 
 >>> from techminer2 import *
 >>> directory = "data/"
+
 >>> auto_corr_matrix(
-...     column='authors', 
-...     top_n=10, 
+...     column='authors',
+...     top_n=10,
 ...     directory=directory,
 ... )
                    Arner DW 7:220  ...  Hamdan A 2:011
@@ -27,8 +28,6 @@ Hamdan A 2:011          -0.030101  ...        1.000000
 
 
 """
-
-
 from .co_occ_matrix import co_occ_matrix
 
 

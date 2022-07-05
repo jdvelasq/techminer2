@@ -134,20 +134,20 @@ def co_occ_matrix_list(
     matrix_list = _remove_stopwords(directory, matrix_list)
     matrix_list = _remove_terms_by_occ(min_occ, max_occ, matrix_list)
     matrix_list = _add_counters_to_items(column, row, directory, database, matrix_list)
-    matrix_list = _select_top_n_items(top_n, matrix_list)
+    matrix_list = _select_top_n_items(top_n, matrix_list, "column")
+    matrix_list = _select_top_n_items(top_n, matrix_list, "row")
     matrix_list = matrix_list.reset_index(drop=True)
 
     return matrix_list
 
 
-def _select_top_n_items(top_n, matrix_list):
-    for name in ["row", "column"]:
-        terms = matrix_list[name].drop_duplicates().to_list()
-        sorted_terms = sorted(
-            terms, key=lambda x: x.split()[-1].split(":")[0], reverse=True
-        )
-        sorted_terms = sorted_terms[:top_n]
-        matrix_list = matrix_list[matrix_list[name].isin(sorted_terms)]
+def _select_top_n_items(top_n, matrix_list, column):
+    terms = matrix_list[column].drop_duplicates().to_list()
+    sorted_terms = sorted(
+        terms, key=lambda x: x.split()[-1].split(":")[0], reverse=True
+    )
+    sorted_terms = sorted_terms[:top_n]
+    matrix_list = matrix_list[matrix_list[column].isin(sorted_terms)]
     return matrix_list
 
 

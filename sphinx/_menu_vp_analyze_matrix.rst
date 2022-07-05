@@ -10,10 +10,23 @@ Matrix
         .. toctree::
             co_occ_matrix_list
 
+
     * **Auto-correlation Matrix**:
 
-        
+        .. toctree::
+            auto_corr_matrix
 
+        .. toctree::
+            auto_corr_matrix_list
+
+
+    * **Cross-correlation Matrix**:
+
+        .. toctree::
+            cross_corr_matrix
+
+        .. toctree::
+            cross_corr_matrix_list
 
 
 
@@ -32,7 +45,7 @@ Matrix
         co_occurrence_matrix_associations
         co_occurrence_matrix_bubble_chart
         co_occurrence_matrix_chord_diagram
-        co_occurrence_matrix_heatmap
+
         co_occurrence_matrix_html
 
 
@@ -44,12 +57,11 @@ Matrix
         occurrence_matrix
         occurrence_matrix_associations
         occurrence_matrix_bubble_chart
-        occurrence_matrix_heatmap
+
         occurrence_matrix_html
         occurrence_matrix_sankey_diagram
 
 
-    See `Co-occurrence API <_api_co_occurrence.html>`__
 
 
 
@@ -58,9 +70,9 @@ Matrix
     .. toctree::
         :maxdepth: 1
 
-        auto_corr_matrix
+
         auto_corr_matrix_html
-        auto_corr_matrix_heatmap
+
 
 
     .. toctree::
