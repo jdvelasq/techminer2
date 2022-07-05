@@ -74,8 +74,7 @@ from .create_institutions_thesaurus import create_institutions_thesaurus
 from .create_keywords_thesaurus import create_keywords_thesaurus
 from .create_thesaurus import create_thesaurus
 from .cross_corr_matrix import cross_corr_matrix
-from .cross_corr_matrix_heatmap import cross_corr_matrix_heatmap
-from .cross_corr_matrix_html import cross_corr_matrix_html
+from .cross_corr_matrix_list import cross_corr_matrix_list
 from .document_indicators import document_indicators
 from .document_viewer import document_viewer
 from .documents_by_author import documents_by_author
