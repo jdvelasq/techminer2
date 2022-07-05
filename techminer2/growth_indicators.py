@@ -5,13 +5,13 @@ Growth Indicators
 >>> from techminer2 import *
 >>> directory = "data/"
 >>> growth_indicators(column="author_keywords", directory=directory).head()
-                        before 2020  ...  average_growth_rate
-author_keywords                      ...                     
-fintech                          42  ...                 21.5
-financial technologies           11  ...                  4.0
-blockchain                        9  ...                  1.0
-innovation                        9  ...                 -1.0
-financial service                 7  ...                  1.0
+                         before 2021  ...  average_growth_rate
+author_keywords                       ...                     
+regtech                           50  ...                 -6.5
+fintech                           32  ...                 -4.0
+blockchain                        13  ...                 -1.5
+compliance                        10  ...                 -2.5
+artificial intelligence            8  ...                 -1.5
 <BLANKLINE>
 [5 rows x 4 columns]
 
@@ -19,27 +19,25 @@ financial service                 7  ...                  1.0
 import numpy as np
 import pandas as pd
 
-from ._read_records import read_filtered_records
+from ._read_records import read_records
 from .load_stopwords import load_stopwords
 
 
-def _num_documents_per_period(documents, column, time_window=2, sep="; "):
+def _occ_per_period(documents, column, time_window=2, sep="; "):
     #
     # Computes the total number of documents published in each period
     #
     if time_window < 2:
         raise ValueError("Time window must be greater than 1")
-    year_limit = documents.pub_year.max() - time_window + 1
+    year_limit = documents.year.max() - time_window + 1
     result = documents.copy()
     result.index = result.record_no
-    result = result[[column, "pub_year"]].copy()
+    result = result[[column, "year"]].copy()
     result[column] = result[column].str.split(sep)
     result = result.explode(column)
+    result = result.assign(before=result.year.map(lambda x: 1 if x < year_limit else 0))
     result = result.assign(
-        before=result.pub_year.map(lambda x: 1 if x < year_limit else 0)
-    )
-    result = result.assign(
-        between=result.pub_year.map(lambda x: 1 if x >= year_limit else 0)
+        between=result.year.map(lambda x: 1 if x >= year_limit else 0)
     )
     result = result.groupby(column, as_index=False).agg(
         {"before": np.sum, "between": np.sum}
@@ -61,23 +59,21 @@ def _average_growth_rate(documents, column, time_window, sep="; "):
         raise ValueError("Time window must be greater than 1")
 
     # first and last years in the time window
-    first_year = documents.pub_year.max() - time_window
-    last_year = documents.pub_year.max()
+    first_year = documents.year.max() - time_window
+    last_year = documents.year.max()
 
     # generates a table of term and year.
     result = documents.copy()
     result.index = result.record_no
-    result = result[[column, "pub_year"]].copy()
+    result = result[[column, "year"]].copy()
     result[column] = result[column].str.split(sep)
     result = result.explode(column)
-    result = result[(result.pub_year == first_year) | (result.pub_year == last_year)]
-    result = result.assign(num_documents=1)
+    result = result[(result.year == first_year) | (result.year == last_year)]
+    result = result.assign(OCC=1)
 
     #
-    result = result.groupby([column, "pub_year"], as_index=False).agg(
-        {"num_documents": np.sum}
-    )
-    result = result.pivot(index=column, columns="pub_year", values="num_documents")
+    result = result.groupby([column, "year"], as_index=False).agg({"OCC": np.sum})
+    result = result.pivot(index=column, columns="year", values="OCC")
     result = result.fillna(0)
     result = result.assign(
         average_growth_rate=(result.iloc[:, 1] - result.iloc[:, 0]) / time_window
@@ -93,7 +89,7 @@ def _average_documents_per_year(documents, column, time_window, sep="; "):
     #  ADY = -----------------------------------------
     #                  Y_end - Y_start + 1
     #
-    result = _num_documents_per_period(
+    result = _occ_per_period(
         documents=documents, column=column, time_window=time_window, sep=sep
     )
     result = result.assign(average_documents_per_year=result.between / time_window)
@@ -101,11 +97,16 @@ def _average_documents_per_year(documents, column, time_window, sep="; "):
     return result
 
 
-def growth_indicators(column, sep="; ", time_window=2, directory="./"):
+def growth_indicators(
+    column, sep="; ", time_window=2, directory="./", database="documents"
+):
+    """Computes growth indicators."""
 
-    documents = read_filtered_records(directory)
+    documents = read_records(
+        directory=directory, database=database, use_filter=(database == "documents")
+    )
 
-    ndpp = _num_documents_per_period(
+    ndpp = _occ_per_period(
         documents=documents, column=column, time_window=time_window, sep=sep
     )
     adpy = _average_documents_per_year(
@@ -116,11 +117,11 @@ def growth_indicators(column, sep="; ", time_window=2, directory="./"):
     )
     result = pd.concat([ndpp, adpy, agr], axis="columns")
 
-    year_limit = documents.pub_year.max() - time_window + 1
+    year_limit = documents.year.max() - time_window + 1
     result = result.rename(
         columns={
             "before": f"before {year_limit}",
-            "between": f"between {year_limit}-{documents.pub_year.max()}",
+            "between": f"between {year_limit}-{documents.year.max()}",
         }
     )
 
