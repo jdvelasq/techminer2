@@ -5,29 +5,28 @@ Impact Indicators
 >>> from techminer2 import *
 >>> directory = "data/"
 >>> impact_indicators("countries", directory=directory).head()
-                   num_documents  ...  avg_global_citations
-countries                         ...                      
-Australia                     14  ...                 16.86
-Austria                        1  ...                  1.00
-Bahrain                        8  ...                  2.75
-Belgium                        1  ...                  0.00
-Brunei Darussalam              1  ...                  3.00
+                   OCC  ...  avg_global_citations
+countries               ...                      
+Australia           14  ...                 16.86
+Austria              1  ...                  1.00
+Bahrain              8  ...                  2.75
+Belgium              1  ...                  0.00
+Brunei Darussalam    1  ...                  3.00
 <BLANKLINE>
 [5 rows x 9 columns]
 
+
 >>> from pprint import pprint
->>> columns = impact_indicators("countries", directory=directory).columns.to_list()
->>> columns = sorted(columns)
->>> pprint(columns)
-['age',
+>>> pprint(sorted(impact_indicators("countries", directory=directory).columns.to_list()))
+['OCC',
+ 'age',
  'avg_global_citations',
  'first_pb_year',
  'g_index',
  'global_citations',
  'global_citations_per_year',
  'h_index',
- 'm_index',
- 'num_documents']
+ 'm_index']
 
 """
 
@@ -112,7 +111,7 @@ def impact_indicators(column, directory="./"):
         {"first_pb_year": np.min}
     )
 
-    num_documents = detailed_citations.groupby(column, as_index=True).size()
+    occ = detailed_citations.groupby(column, as_index=True).size()
 
     h_indexes = detailed_citations.query("global_citations >= cumcount_")
     h_indexes = h_indexes.groupby(column, as_index=True).agg({"cumcount_": np.max})
@@ -123,12 +122,12 @@ def impact_indicators(column, directory="./"):
     g_indexes = g_indexes.rename(columns={"cumcount_": "g_index"})
 
     indicators = pd.concat(
-        [num_documents, global_citations, first_pb_year, ages, h_indexes, g_indexes],
+        [occ, global_citations, first_pb_year, ages, h_indexes, g_indexes],
         axis=1,
         sort=False,
     )
 
-    indicators = indicators.rename(columns={0: "num_documents"})
+    indicators = indicators.rename(columns={0: "OCC"})
     indicators = indicators.fillna(0)
 
     indicators = indicators.assign(m_index=indicators.h_index / indicators.age)
@@ -138,7 +137,7 @@ def impact_indicators(column, directory="./"):
         global_citations_per_year=indicators.global_citations / indicators.age
     )
     indicators = indicators.assign(
-        avg_global_citations=indicators.global_citations / indicators.num_documents
+        avg_global_citations=indicators.global_citations / indicators.OCC
     )
 
     indicators[
