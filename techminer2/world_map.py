@@ -9,7 +9,7 @@ World map
 
 >>> world_map(
 ...     directory=directory,
-...     metric="num_documents",
+...     metric="OCC",
 ... ).write_html(file_name)
 
 .. raw:: html
@@ -23,7 +23,7 @@ from .world_map_plot import world_map_plot
 
 def world_map(
     directory="./",
-    metric="num_documents",
+    metric="OCC",
     title=None,
     database="documents",
     colormap="Blues",

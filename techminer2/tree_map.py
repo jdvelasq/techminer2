@@ -6,11 +6,13 @@ Tree Map
 >>> directory = "data/"
 >>> file_name = "sphinx/_static/tree_map.html"
 
->>> tree_map(
-...     'author_keywords',
-...     top_n=15, 
-...     directory=directory,
-... ).write_html(file_name)
+>>> indicators = make_list(
+...    column='author_keywords',
+...    min_occ=3,
+...    directory=directory,
+... )
+
+>>> tree_map(indicators).write_html(file_name)
 
 .. raw:: html
 
@@ -19,47 +21,25 @@ Tree Map
 """
 import plotly.express as px
 
-from .column_indicators import column_indicators
+from .format_dataset_to_plot_with_plotly import format_dataset_to_plot_with_plotly
 
 
 def tree_map(
-    column,
-    min_occ=None,
-    max_occ=None,
-    top_n=None,
-    directory="./",
-    metric="num_documents",
+    dataframe,
+    metric="OCC",
     title=None,
-    database="documents",
+    colormap="Greys",
 ):
+    """Makes a treemap."""
 
-    indicators = column_indicators(
-        column=column,
-        directory=directory,
-        database=database,
-        use_filter=(database == "documents"),
-        sep=";",
-    )
-
-    indicators = indicators.sort_values(metric, ascending=False)
-
-    if min_occ is not None:
-        indicators = indicators[indicators.num_documents >= min_occ]
-    if max_occ is not None:
-        indicators = indicators[indicators.num_documents <= max_occ]
-    if top_n is not None:
-        indicators = indicators.head(top_n)
-
-    indicators = indicators.reset_index()
+    metric, column, dataframe = format_dataset_to_plot_with_plotly(dataframe, metric)
 
     fig = px.treemap(
-        indicators,
+        dataframe,
         path=[column],
         values=metric,
         color=metric,
-        color_continuous_scale="Greys",
-        # names=indicators.index,
-        # parents=[""] * len(indicators),
+        color_continuous_scale=colormap,
         title=title,
     )
     fig.update_traces(root_color="lightgrey")
