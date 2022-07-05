@@ -8,68 +8,66 @@ Returns an auto-correlation matrix.
 >>> directory = "data/"
 >>> auto_corr_matrix(
 ...     column='authors', 
-...     min_occ=3, 
+...     top_n=10, 
 ...     directory=directory,
 ... )
-authors            Wojcik D Rabbani MR  Hornuf L
-#d                        5          3         3
-#c                      19         39        110
-authors    #d #c                                
-Wojcik D   5  19   1.000000  -0.559017 -0.559017
-Rabbani MR 3  39  -0.559017   1.000000 -0.375000
-Hornuf L   3  110 -0.559017  -0.375000  1.000000
+                   Arner DW 7:220  ...  Hamdan A 2:011
+Arner DW 7:220           1.000000  ...       -0.030101
+Buckley RP 6:217         0.994905  ...       -0.030133
+Barberis JN 4:146        0.932362  ...       -0.026364
+Zetzsche DA 4:092        0.948713  ...       -0.029984
+Brennan R 3:008         -0.018995  ...       -0.024252
+Ryan P 3:008            -0.018995  ...       -0.024252
+Butler T 2:005          -0.026161  ...       -0.033401
+Crane M 2:008           -0.019294  ...       -0.024634
+Das SR 2:028            -0.018175  ...       -0.023205
+Hamdan A 2:011          -0.030101  ...        1.000000
+<BLANKLINE>
+[10 rows x 10 columns]
 
 
 """
 
 
-from .tf_matrix import tf_matrix
-
-# pyltin: disable=c0103
-# pylint: disable=too-many-arguments
-# pylint: disable=invalid-name
+from .co_occ_matrix import co_occ_matrix
 
 
 def auto_corr_matrix(
     column,
     method="pearson",
-    min_occ=1,
-    max_occ=None,
-    scheme=None,
-    sep="; ",
+    top_n=50,
     directory="./",
+    database="documents",
 ):
-    """
-    Returns a co-occurrence matrix.
+    """Returns an auto-correlation."""
 
-    :param directory_or_records:
-        A directory or a list of records.
-    :param column:
-        The column to be used.
-    :param by:
-        The column to be used to group the records.
-    :param min_occurrence:
-        The minimum occurrence of a word.
-    :param max_occurrence:
-        The maximum occurrence of a word.
-    :param stopwords:
-        A list of stopwords.
-    :param scheme:
-        The scheme to be used.
-    :param sep:
-        The separator to be used.
-    :return:
-        A co-occurrence matrix.
-    """
-
-    doc_term_matrix = tf_matrix(
-        directory=directory,
+    coc_matrix = co_occ_matrix(
         column=column,
-        min_occ=min_occ,
-        max_occ=max_occ,
-        scheme=scheme,
-        sep=sep,
+        row=None,
+        top_n=None,
+        min_occ=None,
+        max_occ=None,
+        directory=directory,
+        database=database,
     )
-    matrix = doc_term_matrix.corr(method=method)
+
+    coc_matrix = _select_top_n_from_columns(matrix=coc_matrix, top_n=top_n)
+
+    coc_matrix.columns = coc_matrix.columns.to_list()
+
+    matrix = coc_matrix.corr(method=method)
+
+    return matrix
+
+
+def _select_top_n_from_columns(matrix, top_n):
+
+    terms = matrix.columns.to_list()
+    sorted_terms = sorted(
+        terms, key=lambda x: x.split()[-1].split(":")[0], reverse=True
+    )
+    sorted_terms = sorted_terms[:top_n]
+
+    matrix = matrix[sorted_terms]
 
     return matrix
