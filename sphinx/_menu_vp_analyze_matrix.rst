@@ -28,7 +28,7 @@ Matrix
             cross_corr_matrix_list
 
 
-    * Heatmap of a co-occurrence, auto-correlation, or cross-correlation matrix:
+    * **Heat map** of a co-occurrence, auto-correlation, or cross-correlation matrix:
 
         .. toctree::
             heat_map
