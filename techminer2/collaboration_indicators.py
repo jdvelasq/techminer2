@@ -5,31 +5,38 @@ Collaboration Indicators
 >>> from techminer2 import *
 >>> directory = "data/"
 >>> collaboration_indicators("countries", directory=directory).head()
-                num_documents  ...  mp_ratio
-countries                      ...          
-china                      43  ...      0.53
-united kingdom             41  ...      0.54
-indonesia                  22  ...      0.05
-united states              22  ...      0.68
-australia                  18  ...      0.78
-<BLANKLINE>
-[5 rows x 4 columns]
+                OCC  single_publication  multiple_publication  mp_ratio
+countries                                                              
+United Kingdom   20                   7                    13      0.65
+Australia        14                   4                    10      0.71
+Hong Kong        12                   1                    11      0.92
+United States    12                   6                     6      0.50
+Germany          11                   3                     8      0.73
+
+>>> from pprint import pprint
+>>> pprint(sorted(collaboration_indicators("countries", directory=directory).columns.to_list()))
+['OCC', 'mp_ratio', 'multiple_publication', 'single_publication']
+
 
 """
 
 
 import numpy as np
 
-from ._read_records import read_filtered_records
+from ._read_records import read_records
 
 
 def collaboration_indicators(
     column,
-    sep="; ",
     directory="./",
+    database="documents",
 ):
-    documents = read_filtered_records(directory)
-    documents = documents.assign(num_documents=1)
+    """Collaboration indicators."""
+
+    documents = read_records(
+        directory=directory, database=database, use_filter=(database == "documents")
+    )
+    documents = documents.assign(OCC=1)
     documents["single_publication"] = documents[column].map(
         lambda x: 1 if isinstance(x, str) and len(x.split(";")) == 1 else 0
     )
@@ -41,7 +48,7 @@ def collaboration_indicators(
     exploded = documents[
         [
             column,
-            "num_documents",
+            "OCC",
             "single_publication",
             "multiple_publication",
             "record_no",
@@ -54,17 +61,17 @@ def collaboration_indicators(
 
     indicators = exploded.groupby(column, as_index=False).agg(
         {
-            "num_documents": np.sum,
+            "OCC": np.sum,
             "single_publication": np.sum,
             "multiple_publication": np.sum,
         }
     )
     indicators["mp_ratio"] = [
         round(mp / nd, 2)
-        for nd, mp in zip(indicators.num_documents, indicators.multiple_publication)
+        for nd, mp in zip(indicators.OCC, indicators.multiple_publication)
     ]
 
     indicators = indicators.set_index(column)
-    indicators = indicators.sort_values(by=["num_documents"], ascending=False)
+    indicators = indicators.sort_values(by=["OCC"], ascending=False)
 
     return indicators
