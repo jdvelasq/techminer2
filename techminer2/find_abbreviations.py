@@ -2,7 +2,7 @@
 Find Abbreviations
 ===============================================================================
 
-Finds string abbreviations in keywords.
+Finds string abbreviations in the keywords of a thesaurus.
 
 >>> from techminer2 import *
 >>> directory = "data/"
