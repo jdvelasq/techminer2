@@ -59,22 +59,20 @@ Co-occurrence Matrix List
 ...    top_n=5,
 ...    directory=directory,
 ... )
-                  row                                    column  OCC
-0      Arner DW 7:220                            regtech 70:462    6
-1      Arner DW 7:220                            fintech 42:406    5
-2    Buckley RP 6:217                            regtech 70:462    5
-3    Buckley RP 6:217                            fintech 42:406    4
-4   Zetzsche DA 4:092                            fintech 42:406    4
-5   Zetzsche DA 4:092                            regtech 70:462    4
-6   Barberis JN 4:146                            regtech 70:462    3
-7     Brennan R 3:008                            regtech 70:462    3
-8   Barberis JN 4:146                            fintech 42:406    2
-9     Brennan R 3:008                         compliance 12:020    2
-10     Arner DW 7:220                         blockchain 18:109    1
-11     Arner DW 7:220  regulatory technologies (regtech) 12:047    1
-12  Barberis JN 4:146  regulatory technologies (regtech) 12:047    1
-13   Buckley RP 6:217                         blockchain 18:109    1
-14  Zetzsche DA 4:092                         blockchain 18:109    1
+                  row             column  OCC
+0      Arner DW 7:220     regtech 70:462    6
+1      Arner DW 7:220     fintech 42:406    5
+2    Buckley RP 6:217     regtech 70:462    5
+3    Buckley RP 6:217     fintech 42:406    4
+4   Zetzsche DA 4:092     fintech 42:406    4
+5   Zetzsche DA 4:092     regtech 70:462    4
+6   Barberis JN 4:146     regtech 70:462    3
+7     Brennan R 3:008     regtech 70:462    3
+8   Barberis JN 4:146     fintech 42:406    2
+9     Brennan R 3:008  compliance 12:020    2
+10     Arner DW 7:220  blockchain 18:109    1
+11   Buckley RP 6:217  blockchain 18:109    1
+12  Zetzsche DA 4:092  blockchain 18:109    1
 
 
 >>> co_occ_matrix_list(
@@ -109,6 +107,7 @@ Co-occurrence Matrix List
 23  artificial intelligence 13:065               compliance 12:020    1
 24               compliance 12:020  artificial intelligence 13:065    1
 
+
 """
 
 from ._read_records import read_records
@@ -133,7 +132,10 @@ def co_occ_matrix_list(
     matrix_list = _create_matrix_list(column, row, directory, database)
     matrix_list = _remove_stopwords(directory, matrix_list)
     matrix_list = _remove_terms_by_occ(min_occ, max_occ, matrix_list)
-    matrix_list = _add_counters_to_items(column, row, directory, database, matrix_list)
+    matrix_list = _add_counters_to_items(
+        column, "column", directory, database, matrix_list
+    )
+    matrix_list = _add_counters_to_items(row, "row", directory, database, matrix_list)
     matrix_list = _select_top_n_items(top_n, matrix_list, "column")
     matrix_list = _select_top_n_items(top_n, matrix_list, "row")
     matrix_list = matrix_list.reset_index(drop=True)
@@ -151,21 +153,14 @@ def _select_top_n_items(top_n, matrix_list, column):
     return matrix_list
 
 
-def _add_counters_to_items(column, row, directory, database, matrix_list):
-    new_row_names = items2counters(
-        column=row,
-        directory=directory,
-        database=database,
-        use_filter=True,
-    )
+def _add_counters_to_items(column, name, directory, database, matrix_list):
     new_column_names = items2counters(
         column=column,
         directory=directory,
         database=database,
         use_filter=True,
     )
-    matrix_list["row"] = matrix_list["row"].map(new_row_names)
-    matrix_list["column"] = matrix_list["column"].map(new_column_names)
+    matrix_list[name] = matrix_list[name].map(new_column_names)
     return matrix_list
 
 
