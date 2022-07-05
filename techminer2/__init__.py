@@ -121,6 +121,7 @@ from .lotka_law import lotka_law
 from .main_information import main_information
 from .make_list import make_list
 from .map_chart import map_chart
+from .matrix_viewer import matrix_viewer
 from .merge_keywords import merge_keywords
 from .most_frequent_authors import most_frequent_authors
 from .most_frequent_countries import most_frequent_countries
