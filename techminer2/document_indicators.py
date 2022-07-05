@@ -5,7 +5,15 @@ Document Indicators
 >>> from techminer2 import *
 >>> directory = "data/"
 >>> document_indicators(directory=directory).head()
-
+                                                    global_citations  ...                                 doi
+document_id                                                           ...                                    
+Abi-Lahoud E et al, 2018, CEUR WORKSHOP PROC                       0  ...                                 NaN
+Anagnostopoulos I et al, 2018, J ECON BUS                        110  ...      10.1016/J.JECONBUS.2018.07.003
+Arner DW et al, 2017, HANDB OF BLOCKCHAIN, DIGI...                 7  ...  10.1016/B978-0-12-810441-5.00016-6
+Arner DW et al, 2017, NORTHWEST J INTL LAW BUS                   118  ...                                 NaN
+Arner DW et al, 2019, EUR BUS ORG LAW REV                         18  ...          10.1007/S40804-019-00135-1
+<BLANKLINE>
+[5 rows x 5 columns]
 
 
 >>> from pprint import pprint
