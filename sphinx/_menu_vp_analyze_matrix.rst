@@ -5,19 +5,20 @@ Matrix
     * **Co-occurrence Matrix**:
 
         .. toctree::
-            co_occ_matrix_list
-
-        .. toctree::
             co_occ_matrix
 
+        .. toctree::
+            co_occ_matrix_list
 
 
 
-    .. toctree::
-        make_heat_map
 
 
 
+
+-----
+
+-----
 
 -----
 
