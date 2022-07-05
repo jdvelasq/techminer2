@@ -34,9 +34,6 @@ Report
     .. toctree::
         plot_classification
 
-    .. toctree::
-        heat_map
-
 
     * **NEW**:
 
