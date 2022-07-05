@@ -4,56 +4,73 @@ Heat Map
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> coc_matrix = co_occurrence_matrix(directory=directory, column='authors', min_occ=3)
->>> file_name = "sphinx/images/co_occurrence_heat_map.png"
->>> heat_map(coc_matrix, cmap='Blues').savefig(file_name)
 
-.. image:: images/co_occurrence_heat_map.png
-    :width: 700px
-    :align: center
+>>> matrix = co_occ_matrix(
+...    column='author_keywords',
+...    row='authors',
+...    min_occ=3,
+...    directory=directory,
+... )
+>>> file_name = "sphinx/_static/heat_map_1.html"
+
+>>> heat_map(
+...     matrix,
+... ).write_html(file_name)
+
+.. raw:: html
+
+    <iframe src="_static/heat_map_1.html" height="800px" width="100%" frameBorder="0"></iframe>
+
+
+
+>>> matrix = co_occ_matrix(
+...    column='author_keywords',
+...    min_occ=4,
+...    directory=directory,
+... )
+>>> file_name = "sphinx/_static/heat_map_2.html"
+
+>>> heat_map(
+...     matrix,
+... ).write_html(file_name)
+
+.. raw:: html
+
+    <iframe src="_static/heat_map_2.html" height="800px" width="100%" frameBorder="0"></iframe>
+
 
 """
-
-import matplotlib.pyplot as plt
-import pandas as pd
-import seaborn as sns
-
-TEXTLEN = 40
+import numpy as np
+import plotly.express as px
 
 
-def heat_map(
-    matrix,
-    cmap="Greys",
-    figsize=(6, 6),
-):
-    """Plots a heatmap from a matrix."""
-    matrix = matrix.copy()
+def heat_map(matrix, colormap="Blues"):
 
-    if isinstance(matrix.columns, pd.MultiIndex):
-        matrix.columns = matrix.columns.get_level_values(0)
-    if isinstance(matrix.index, pd.MultiIndex):
-        matrix.index = matrix.index.get_level_values(0)
+    """Make a heat map."""
 
-    fig = plt.figure(figsize=figsize)
-    ax = fig.subplots()
-
-    ax = sns.heatmap(
+    fig = px.imshow(
         matrix,
-        ax=ax,
-        cmap=cmap,
-        vmax=0.3,
-        square=True,
-        linewidths=0.2,
-        cbar=False,
-        linecolor="gainsboro",
+        color_continuous_scale=colormap,
     )
-    ax.xaxis.set_ticks_position("top")
-    ax.xaxis.set_label_position("top")
-    ax.tick_params(axis="x", labelrotation=90)
+    fig.update_xaxes(
+        side="top",
+        tickangle=270,
+    )
+    fig.update_layout(
+        yaxis_title=None,
+        xaxis_title=None,
+        coloraxis_showscale=False,
+        margin=dict(l=1, r=1, t=1, b=1),
+    )
 
-    ax.set_xlabel("")
-    ax.set_ylabel("")
+    full_fig = fig.full_figure_for_development()
+    x_min, x_max = full_fig.layout.xaxis.range
+    y_max, y_min = full_fig.layout.yaxis.range
 
-    fig.set_tight_layout(True)
+    for value in np.linspace(x_min, x_max, matrix.shape[1] + 1):
+        fig.add_vline(x=value, line_width=2, line_color="lightgray")
+
+    for value in np.linspace(y_min, y_max, matrix.shape[0] + 1):
+        fig.add_hline(y=value, line_width=2, line_color="lightgray")
 
     return fig
