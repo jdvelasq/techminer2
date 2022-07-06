@@ -31,10 +31,11 @@ with the data. In this case, use:
 
 """
 from .bar_chart import bar_chart
-from .pie_chart import pie_chart
 from .cleveland_chart import cleveland_chart
 from .column_chart import column_chart
 from .line_chart import line_chart
+from .make_list import make_list
+from .pie_chart import pie_chart
 from .word_cloud import word_cloud
 
 
@@ -54,13 +55,20 @@ def most_local_cited_sources(
         "wordcloud": word_cloud,
     }[plot]
 
-    return plot_function(
+    indicators = make_list(
         column="source_abbr",
         metric="local_citations",
-        directory=directory,
         top_n=top_n,
         min_occ=None,
         max_occ=None,
-        title="Most local cited sources from reference lists",
+        directory=directory,
         database="references",
+    )
+
+    title = "Most local cited sources from reference lists"
+
+    return plot_function(
+        dataframe=indicators,
+        metric="local_citations",
+        title=title,
     )
