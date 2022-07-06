@@ -20,8 +20,7 @@ Sources
       source_impact
 
    .. toctree::
-      source_dynamics_table
-      source_dynamics_plot
+      sources_cum_prod_over_time
 
 
    * **NEW**:

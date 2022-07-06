@@ -10,6 +10,9 @@ Institutions
          institutions_production_over_time
 
       .. toctree::
+         institutions_cum_production_over_time
+
+      .. toctree::
          institutions_production_per_year
 
       .. toctree::

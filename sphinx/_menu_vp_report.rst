@@ -46,4 +46,6 @@ Report
         .. toctree::
             production_over_time_chart
 
+        .. toctree::
+            cum_production_over_time_chart
         

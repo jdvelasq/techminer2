@@ -12,6 +12,9 @@ Countries
       .. toctree::
          countries_production_over_time
 
+      .. toctree::
+         countries_cum_production_over_time         
+
       .. toctree::      
          countries_production_per_year
 
@@ -32,5 +35,7 @@ Countries
       
       .. toctree::
          most_global_cited_countries_in_refs
+
+      
 
 

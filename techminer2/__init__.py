@@ -8,6 +8,7 @@ from .apply_institutions_thesaurus import apply_institutions_thesaurus
 from .apply_thesaurus import apply_thesaurus
 from .association_index import association_index
 from .author_impact import author_impact
+from .authors_cum_production_over_time import authors_cum_production_over_time
 from .authors_documents import authors_documents
 from .authors_production_over_time import authors_production_over_time
 from .authors_production_per_year import authors_production_per_year
@@ -52,8 +53,6 @@ from .collaboration_network_graph import collaboration_network_graph
 from .collaboration_network_indicators import collaboration_network_indicators
 from .column_chart import column_chart
 from .column_documents import column_documents
-from .column_dynamics_plot import column_dynamics_plot
-from .column_dynamics_table import column_dynamics_table
 from .column_indicators import column_indicators
 from .column_indicators_by_year import column_indicators_by_year
 from .core_sources import core_sources
@@ -73,6 +72,7 @@ from .create_keywords_thesaurus import create_keywords_thesaurus
 from .create_thesaurus import create_thesaurus
 from .cross_corr_matrix import cross_corr_matrix
 from .cross_corr_matrix_list import cross_corr_matrix_list
+from .cum_production_over_time_chart import cum_production_over_time_chart
 from .document_indicators import document_indicators
 from .document_viewer import document_viewer
 from .documents_by_author import documents_by_author
@@ -108,6 +108,7 @@ from .impact_indicators import impact_indicators
 from .import_references import import_references
 from .import_scopus_files import import_scopus_files
 from .institution_impact import institution_impact
+from .institutions_cum_production_over_time import institutions_cum_production_over_time
 from .institutions_production_over_time import institutions_production_over_time
 from .institutions_production_per_year import institutions_production_per_year
 from .items_associations_for_a_item import items_associations_for_a_item
@@ -155,9 +156,8 @@ from .pie_chart import pie_chart
 from .production_over_time_chart import production_over_time_chart
 from .rpys import rpys
 from .sankey_diagram import sankey_diagram
-from .source_dynamics_plot import source_dynamics_plot
-from .source_dynamics_table import source_dynamics_table
 from .source_impact import source_impact
+from .sources_cum_production_over_time import sources_cum_production_over_time
 from .sources_production_over_time import sources_production_over_time
 from .stemming import stemming_and, stemming_or
 from .summary_view import summary_view
@@ -186,6 +186,4 @@ from .tree_map import tree_map
 from .trend_topics import trend_topics
 from .user_filters import user_filters
 from .word_cloud import word_cloud
-from .word_dynamics_plot import word_dynamics_plot
-from .word_dynamics_table import word_dynamics_table
 from .world_map import world_map

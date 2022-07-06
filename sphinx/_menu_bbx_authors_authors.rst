@@ -35,5 +35,8 @@ Authors
       .. toctree::
          most_global_cited_authors_in_refs
 
+      .. toctree::
+         authors_cum_production_over_time
+
 
       
