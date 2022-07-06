@@ -20,10 +20,11 @@ Most Global Cited Authors in References
 
 """
 from .bar_chart import bar_chart
-from .pie_chart import pie_chart
 from .cleveland_chart import cleveland_chart
 from .column_chart import column_chart
 from .line_chart import line_chart
+from .make_list import make_list
+from .pie_chart import pie_chart
 from .word_cloud import word_cloud
 
 
@@ -36,6 +37,16 @@ def most_global_cited_authors_in_refs(
 ):
     """Plots the number of global citations by author in reference lists using the specified plot."""
 
+    indicators = make_list(
+        column="authors",
+        metric="global_citations",
+        top_n=top_n,
+        min_occ=min_occ,
+        max_occ=max_occ,
+        directory=directory,
+        database="references",
+    )
+
     plot_function = {
         "bar": bar_chart,
         "column": column_chart,
@@ -46,12 +57,7 @@ def most_global_cited_authors_in_refs(
     }[plot]
 
     return plot_function(
-        column="authors",
-        min_occ=min_occ,
-        max_occ=max_occ,
-        top_n=top_n,
-        directory=directory,
+        dataframe=indicators,
         metric="global_citations",
         title="Most Global Cited Authors in References",
-        database="references",
     )

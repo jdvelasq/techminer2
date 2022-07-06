@@ -24,9 +24,9 @@ from .bar_chart import bar_chart
 from .cleveland_chart import cleveland_chart
 from .column_chart import column_chart
 from .line_chart import line_chart
+from .make_list import make_list
 from .pie_chart import pie_chart
 from .word_cloud import word_cloud
-from .make_list import make_list
 
 
 def most_frequent_authors(

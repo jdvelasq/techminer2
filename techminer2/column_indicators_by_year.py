@@ -71,6 +71,7 @@ def column_indicators_by_year(
     indicators = indicators[
         [column, "OCC", "global_citations", "local_citations", "year"]
     ].copy()
+    indicators = indicators.dropna()
     max_pub_year = indicators.year.max()
     indicators = (
         indicators.groupby([column, "year"], as_index=False)
@@ -81,11 +82,6 @@ def column_indicators_by_year(
 
     indicators["cum_OCC"] = indicators.groupby([column]).OCC.cumsum()
 
-    # indicators = indicators.assign(
-    #     cum_OCC=indicators.sort_values([column, "year"], ascending=True)
-    #     .groupby([column, "year"])
-    #     .cumsum()
-    # )
     indicators.insert(3, "cum_OCC", indicators.pop("cum_OCC"))
 
     indicators["age"] = max_pub_year - indicators.year + 1

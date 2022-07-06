@@ -64,6 +64,11 @@ def production_over_time_chart(
         ascending=[False, False, True, True],
     )
 
+    if indicators_by_year[column.replace("_", " ").title()].dtype != "int64":
+        indicators_by_year[column.replace("_", " ").title()] = indicators_by_year[
+            column.replace("_", " ").title()
+        ].apply(_shorten)
+
     indicators_by_year.pop("global_occ")
 
     fig = px.scatter(
@@ -125,9 +130,6 @@ def _compute_production_over_time(
     indicators_by_year = indicators_by_year[
         indicators_by_year[column].map(lambda x: x in terms)
     ]
-
-    if indicators_by_year[column].dtype != "int64":
-        indicators_by_year[column] = indicators_by_year[column].apply(_shorten)
 
     indicators_by_year = indicators_by_year.rename(
         columns={
