@@ -14,17 +14,21 @@ def annual_indicators_plot(
     indicators = annual_indicators(directory, database)
     indicators = indicators.reset_index()
     column_names = {
-        column: column.replace("_", " ").title() for column in indicators.columns
+        column: column.replace("_", " ").title()
+        for column in indicators.columns
+        if column not in ["OCC", "cum_OCC"]
     }
+    column_names["OCC"] = "OCC"
+    column_names["cum_OCC"] = "cum_OCC"
     indicators = indicators.rename(columns=column_names)
-    indicators = indicators.rename(columns={"Pub Year": "Year"})
+    # indicators = indicators.rename(columns={"Pub Year": "Year"})
     fig = px.line(
         indicators,
         x="Year",
         y=column_names[column],
         title=title,
         markers=True,
-        hover_data=["Num Documents", "Global Citations", "Local Citations"],
+        hover_data=["OCC", "Global Citations", "Local Citations"],
     )
     fig.update_traces(
         marker=dict(size=10, line=dict(color="darkslategray", width=2)),

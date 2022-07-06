@@ -52,7 +52,10 @@ def cross_corr_matrix(
     )
 
     matrix_list = _remove_stopwords(directory, matrix_list)
-    matrix_list = _add_counters_to_items(column, by, directory, database, matrix_list)
+    matrix_list = _add_counters_to_items(
+        column, "column", directory, database, matrix_list
+    )
+    matrix_list = _add_counters_to_items(by, "row", directory, database, matrix_list)
     matrix_list = _select_top_n_items(top_n, matrix_list, "column")
 
     matrix = matrix_list.pivot(index="row", columns="column", values="OCC")
@@ -60,42 +63,5 @@ def cross_corr_matrix(
     matrix = matrix.corr(method=method)
     matrix.columns = matrix.columns.to_list()
     matrix.index = matrix.index.to_list()
-
-    return matrix
-
-
-from .occurrence_matrix import occurrence_matrix
-
-# pyltin: disable=c0103
-# pylint: disable=too-many-arguments
-# pylint: disable=invalid-name
-
-
-def cross_corr_matrix_xx(
-    column,
-    by=None,
-    method="pearson",
-    min_occ=1,
-    max_occ=None,
-    min_occ_by=1,
-    max_occ_by=None,
-    scheme=None,
-    sep="; ",
-    directory="./",
-):
-
-    co_occ_matrix = occurrence_matrix(
-        directory=directory,
-        column=column,
-        by=by,
-        min_occ=min_occ,
-        max_occ=max_occ,
-        min_occ_by=min_occ_by,
-        max_occ_by=max_occ_by,
-        scheme=scheme,
-        sep=sep,
-    )
-
-    matrix = co_occ_matrix.corr(method=method)
 
     return matrix

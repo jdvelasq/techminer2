@@ -4,6 +4,7 @@ from .abstract_screening import abstract_screening
 from .abstract_summarization import abstract_summarization
 from .annual_indicators import annual_indicators
 from .annual_occurrence_matrix import annual_occurrence_matrix
+from .annual_scientific_production import annual_scientific_production
 from .apply_institutions_thesaurus import apply_institutions_thesaurus
 from .apply_thesaurus import apply_thesaurus
 from .association_index import association_index
@@ -130,10 +131,8 @@ from .most_frequent_institutions import most_frequent_institutions
 from .most_frequent_sources import most_frequent_sources
 from .most_frequent_words import most_frequent_words
 from .most_global_cited_authors_in_refs import most_global_cited_authors_in_refs
-from .most_global_cited_countries import most_global_cited_countries
 from .most_global_cited_countries_in_refs import most_global_cited_countries_in_refs
 from .most_global_cited_documents import most_global_cited_documents
-from .most_global_cited_institutions import most_global_cited_institutions
 from .most_global_cited_institutions_in_refs import (
     most_global_cited_institutions_in_refs,
 )

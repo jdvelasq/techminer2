@@ -20,10 +20,11 @@
 
 """
 from .bar_chart import bar_chart
-from .pie_chart import pie_chart
 from .cleveland_chart import cleveland_chart
 from .column_chart import column_chart
 from .line_chart import line_chart
+from .make_list import make_list
+from .pie_chart import pie_chart
 from .word_cloud import word_cloud
 
 
@@ -48,6 +49,16 @@ def most_global_cited_authors(
             "Invalid database name. Database must be one of: 'documents', 'references', 'cited_by'"
         )
 
+    indicators = make_list(
+        column="authors",
+        metric="global_citations",
+        top_n=top_n,
+        min_occ=min_occ,
+        max_occ=max_occ,
+        directory=directory,
+        database=database,
+    )
+
     plot_function = {
         "bar": bar_chart,
         "column": column_chart,
@@ -58,12 +69,7 @@ def most_global_cited_authors(
     }[plot]
 
     return plot_function(
-        column="authors",
-        min_occ=min_occ,
-        max_occ=max_occ,
-        top_n=top_n,
-        directory=directory,
+        dataframe=indicators,
         metric="global_citations",
         title=title,
-        database=database,
     )

@@ -5,7 +5,7 @@ Annual Scientific Production
 See :doc:`annual indicators <annual_indicators>` to obtain a `pandas.Dataframe` 
 with the data.
 
->>> from techminer2.bibliometrix import *
+>>> from techminer2 import *
 >>> directory = "data/"
 >>> file_name = "sphinx/_static/annual_scientific_production.html"
 
@@ -38,7 +38,7 @@ def annual_scientific_production(
         raise ValueError("Invalid database")
 
     return annual_indicators_plot(
-        column="num_documents",
+        column="OCC",
         title=title,
         directory=directory,
         database=database,
