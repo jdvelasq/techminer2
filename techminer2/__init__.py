@@ -58,6 +58,7 @@ from .column_indicators_by_year import column_indicators_by_year
 from .core_sources import core_sources
 from .correlation_map import correlation_map
 from .corresponding_authors_country import corresponding_authors_country
+from .countries_cum_production_over_time import countries_cum_production_over_time
 from .countries_production_over_time import countries_production_over_time
 from .countries_production_per_year import countries_production_per_year
 from .country_impact import country_impact

@@ -4,22 +4,22 @@ Countries' Cum Production over Time
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "sphinx/_static/countries_production_over_time.html"
+>>> file_name = "sphinx/_static/countries_cum_production_over_time.html"
 
->>> countries_production_over_time(
+>>> countries_cum_production_over_time(
 ...    top_n=5, 
 ...    directory=directory,
 ... ).write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="_static/countries_production_over_time.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="_static/countries_cum_production_over_time.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 from .cum_production_over_time_chart import cum_production_over_time_chart
 
 
-def countries_production_over_time(
+def countries_cum_production_over_time(
     top_n=5,
     directory="./",
 ):

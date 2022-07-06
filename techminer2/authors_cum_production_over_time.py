@@ -4,7 +4,7 @@ Authors' Cum Production over Time
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "sphinx/_static/authorscum__production_over_time.html"
+>>> file_name = "sphinx/_static/authors_cum_production_over_time.html"
 
 >>> authors_cum_production_over_time(
 ...    top_n=5, 
