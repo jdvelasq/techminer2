@@ -68,12 +68,15 @@ def _replace_sinonimous(affiliations):
         ("espana", "spain"),
         ("macao", "china"),
         ("macau", "china"),
+        ("n. cyprus", "cyprus"),
         ("peoples r china", "china"),
         ("rusia", "russia"),
         ("russian federation", "russia"),
+        ("syrian arab republic", "syria"),
         ("united states of america", "united states"),
         ("usa", "united states"),
         ("viet-nam", "vietnam"),
+        ("viet nam", "vietnam"),
     ]:
         affiliations = affiliations.assign(
             key=affiliations.key.str.replace(
