@@ -52,8 +52,8 @@ package developed and tested in Python version 3.6.
     :hidden:
     :maxdepth: 1
 
-    _menu_vp
     _menu_bbx
+    _menu_vp
     _scientopy
     _menu_tlab
     
