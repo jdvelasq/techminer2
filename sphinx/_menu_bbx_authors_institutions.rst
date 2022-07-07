@@ -2,7 +2,9 @@ Institutions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    .. toctree::
-      most_frequent_institutions
+      :maxdepth: 1
+      
+      _menu_bbx_authors_institutions_most_cited
       
    * Affiliations' Production over Time:   
 
