@@ -23,8 +23,8 @@ from .bar_chart import bar_chart
 from .cleveland_chart import cleveland_chart
 from .column_chart import column_chart
 from .line_chart import line_chart
-from .make_list import make_list
 from .pie_chart import pie_chart
+from .terms_list import terms_list
 from .word_cloud import word_cloud
 
 
@@ -49,7 +49,7 @@ def most_global_cited_authors(
             "Invalid database name. Database must be one of: 'documents', 'references', 'cited_by'"
         )
 
-    indicators = make_list(
+    indicators = terms_list(
         column="authors",
         metric="global_citations",
         top_n=top_n,

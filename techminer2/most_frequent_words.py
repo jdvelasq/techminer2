@@ -29,7 +29,7 @@ from .bar_chart import bar_chart
 from .cleveland_chart import cleveland_chart
 from .column_chart import column_chart
 from .line_chart import line_chart
-from .make_list import make_list
+from .terms_list import terms_list
 from .pie_chart import pie_chart
 from .word_cloud import word_cloud
 
@@ -68,7 +68,7 @@ def most_frequent_words(
             "Invalid database name. Database must be one of: 'documents', 'references', 'cited_by'"
         )
 
-    indicators = make_list(
+    indicators = terms_list(
         column=column,
         metric="OCC",
         top_n=top_n,

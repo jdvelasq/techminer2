@@ -1,5 +1,5 @@
 """
-Make List
+Terms List
 ===============================================================================
 
 >>> from techminer2 import *
@@ -38,7 +38,7 @@ machine learning                     6  ...                             0
 from .column_indicators import column_indicators
 
 
-def make_list(
+def terms_list(
     column,
     metric="OCC",
     top_n=None,

@@ -6,7 +6,7 @@ Word cloud
 >>> directory = "data/"
 >>> file_name = "sphinx/images/word_cloud.png"
 
->>> indicators = make_list(
+>>> indicators = terms_list(
 ...    column='author_keywords',
 ...    top_n=250,
 ...    directory=directory,

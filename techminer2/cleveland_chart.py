@@ -7,7 +7,7 @@ Cleveland Chart
 >>> directory = "data/"
 >>> file_name = "sphinx/_static/cleveland_chart.html"
 
->>> indicators = make_list(
+>>> indicators = terms_list(
 ...    column='author_keywords',
 ...    min_occ=3,
 ...    directory=directory,

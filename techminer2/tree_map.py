@@ -6,7 +6,7 @@ Tree Map
 >>> directory = "data/"
 >>> file_name = "sphinx/_static/tree_map.html"
 
->>> indicators = make_list(
+>>> indicators = terms_list(
 ...    column='author_keywords',
 ...    min_occ=3,
 ...    directory=directory,

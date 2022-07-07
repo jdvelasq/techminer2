@@ -26,7 +26,7 @@ from .column_chart import column_chart
 from .line_chart import line_chart
 from .pie_chart import pie_chart
 from .word_cloud import word_cloud
-from .make_list import make_list
+from .terms_list import terms_list
 
 
 def most_frequent_institutions(
@@ -49,7 +49,7 @@ def most_frequent_institutions(
         raise ValueError(
             "Invalid database name. Database must be one of: 'documents', 'references', 'cited_by'"
         )
-    indicators = make_list(
+    indicators = terms_list(
         column="institutions",
         metric="OCC",
         top_n=top_n,

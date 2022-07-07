@@ -122,7 +122,6 @@ from .line_chart import line_chart
 from .local_citations_by_document_type import local_citations_by_document_type
 from .lotka_law import lotka_law
 from .main_information import main_information
-from .make_list import make_list
 from .map_chart import map_chart
 from .matrix_viewer import matrix_viewer
 from .most_frequent_authors import most_frequent_authors
@@ -162,6 +161,7 @@ from .sources_production_over_time import sources_production_over_time
 from .stemming import stemming_and, stemming_or
 from .summary_view import summary_view
 from .terms_by_year import terms_by_year
+from .terms_list import terms_list
 from .tf_idf_matrix import tf_idf_matrix
 from .tf_idf_matrix_svd_map import tf_idf_matrix_svd_map
 from .tf_matrix import tf_matrix
