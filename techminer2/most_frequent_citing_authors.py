@@ -1,12 +1,12 @@
 """
-Most frequent authors
+Most Frequent Cititng Authors
 ===============================================================================
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "sphinx/_static/most_frequent_authors.html"
+>>> file_name = "sphinx/_static/most_frequent_citing_authors.html"
 
->>> most_frequent_authors(
+>>> most_frequent_citing_authors(
 ...     directory,
 ...     top_n=20,
 ...     min_occ=None,
@@ -16,13 +16,13 @@ Most frequent authors
 
 .. raw:: html
 
-    <iframe src="_static/most_frequent_authors.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="_static/most_frequent_citing_authors.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 from .most_frequent_items import most_frequent_items
 
 
-def most_frequent_authors(
+def most_frequent_citing_authors(
     directory="./",
     top_n=20,
     min_occ=None,
@@ -37,7 +37,7 @@ def most_frequent_authors(
         top_n=top_n,
         min_occ=min_occ,
         max_occ=max_occ,
-        title="Most Frequent Authors",
+        title="Most Frequent Citing Authors",
         plot=plot,
-        database="documents",
+        database="cited_by",
     )

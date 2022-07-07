@@ -2,7 +2,11 @@ Authors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    .. toctree::
-      most_frequent_authors      
+      :maxdepth: 1
+      
+      _menu_bbx_authors_authors_most_frequent
+
+
 
    .. toctree::      
       most_local_cited_authors
