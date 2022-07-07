@@ -2,7 +2,9 @@ Sources
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    .. toctree::
+      most_frequent_citing_sources
       most_frequent_sources
+      most_frequent_sources_in_references
 
    .. toctree::
       most_local_cited_sources

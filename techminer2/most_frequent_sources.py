@@ -1,5 +1,5 @@
 """
-Most frequent sources (in main documents database)
+Most frequent sources
 ===============================================================================
 
 See :doc:`column indicators <column_indicators>` to obtain a `pandas.Dataframe` 
