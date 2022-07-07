@@ -52,6 +52,7 @@ BHS
     bahamas
 BIH
     bosnia and herz.
+    bosnia and herzegovina
 BLM
     saint barthélemy
 BLR
