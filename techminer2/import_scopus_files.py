@@ -48,13 +48,13 @@ Import a scopus file to a working directory.
 --INFO-- Creating `references_by_document.csv` file
 --INFO-- Creating `local_citations` column in references database
 --INFO-- Creating a thesaurus file from `raw_author_keywords` column in all databases
---INFO-- The thesaurus file data/processed/author_keywords.txt was created
---INFO-- The thesaurus was applied to all databases
+--INFO-- The thesaurus file `author_keywords.txt` was created
+--INFO-- Applying `author_keywords.txt` thesaurus
 --INFO-- Creating a thesaurus file from `raw_index_keywords` column in all databases
---INFO-- The thesaurus file data/processed/index_keywords.txt was created
---INFO-- The thesaurus was applied to all databases
---INFO-- Creating `keywords.txt` from author/index keywords, and abstract/title words
---INFO-- Applying keywords thesaurus to author/index keywords and abstract/title words
+--INFO-- The thesaurus file `index_keywords.txt` was created
+--INFO-- Applying `index_keywords.txt` thesaurus
+--INFO-- Creating `words.txt` from author/index keywords, and abstract/title words
+--INFO-- Applying `words.txt` thesaurus to author/index keywords and abstract/title words
 --INFO-- Creating institutions thesaurus
 --INFO-- Affiliations without country detected - check file data/processed/ignored_affiliations.txt
 --INFO-- Affiliations without country detected - check file data/ignored_affiliations.txt
@@ -62,6 +62,7 @@ Import a scopus file to a working directory.
 --INFO-- Applying thesaurus to institutions
 --INFO-- The thesaurus was applied to institutions in all databases
 --INFO-- Process finished!!!
+
 
 """
 import glob
@@ -75,12 +76,13 @@ import yaml
 from nltk.tokenize import RegexpTokenizer, sent_tokenize
 from tqdm import tqdm
 
+from .apply_author_keywords_thesaurus import apply_author_keywords_thesaurus
+from .apply_index_keywords_thesaurus import apply_index_keywords_thesaurus
 from .apply_institutions_thesaurus import apply_institutions_thesaurus
-from .apply_keywords_thesaurus import apply_keywords_thesaurus
-from .apply_thesaurus import apply_thesaurus
+from .apply_words_thesaurus import apply_words_thesaurus
 from .create_institutions_thesaurus import create_institutions_thesaurus
-from .create_keywords_thesaurus import create_keywords_thesaurus
 from .create_thesaurus import create_thesaurus
+from .create_words_thesaurus import create_words_thesaurus
 from .extract_country import extract_country
 
 
@@ -141,33 +143,21 @@ def import_scopus_files(
     )
     _create__local_citations__column_in_references_database(directory)
     #
-    #
-
     create_thesaurus(
-        "raw_author_keywords", output_file="author_keywords.txt", directory=directory
-    )
-    apply_thesaurus(
-        thesaurus_file="author_keywords.txt",
-        input_column="raw_author_keywords",
-        output_column="author_keywords",
-        strict=False,
+        "raw_author_keywords",
+        output_file="author_keywords.txt",
         directory=directory,
     )
-
+    apply_author_keywords_thesaurus(directory)
+    #
     create_thesaurus(
         "raw_index_keywords", output_file="index_keywords.txt", directory=directory
     )
-    apply_thesaurus(
-        thesaurus_file="index_keywords.txt",
-        input_column="raw_index_keywords",
-        output_column="index_keywords",
-        strict=False,
-        directory=directory,
-    )
-
-    create_keywords_thesaurus(directory=directory)
-    apply_keywords_thesaurus(directory=directory)
-
+    apply_index_keywords_thesaurus(directory=directory)
+    #
+    create_words_thesaurus(directory=directory)
+    apply_words_thesaurus(directory=directory)
+    #
     create_institutions_thesaurus(directory=directory)
     apply_institutions_thesaurus(directory=directory)
 

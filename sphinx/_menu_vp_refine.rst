@@ -16,29 +16,11 @@ Refine
         
 
 
-    * Thesaurus:
 
-        .. toctree::
-            create_thesaurus
-
-        .. toctree::
-            apply_thesaurus
+    .. toctree::
+        :maxdepth: 1
         
-
-        .. toctree::
-            create_institutions_thesaurus
-
-        .. toctree::        
-            apply_institutions_thesaurus
-                
-        .. toctree::
-            create_keywords_thesaurus
-
-        .. toctree::        
-            apply_keywords_thesaurus
-
-
-
+        _menu_vp_refine_thesaurus
 
 
     * Further Processing:

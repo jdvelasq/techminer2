@@ -11,7 +11,7 @@ Create a thesaurus from a column
 ...     directory=directory,
 ... )
 --INFO-- Creating a thesaurus file from `author_keywords` column in all databases
---INFO-- The thesaurus file data/processed/test_keywords.txt was created
+--INFO-- The thesaurus file `test_keywords.txt` was created
 
 
 # >>> apply_thesaurus(
@@ -44,7 +44,8 @@ def create_thesaurus(
 
     if output_file is None:
         output_file = column + ".txt"
-    output_file = os.path.join(directory, "processed", output_file)
+
+    output_file_path = os.path.join(directory, "processed", output_file)
 
     words_list = []
     files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
@@ -68,11 +69,11 @@ def create_thesaurus(
         words_list = words_list.str.split(sep)
         words_list = words_list.explode()
 
-    if os.path.isfile(output_file):
+    if os.path.isfile(output_file_path):
         #
         # Loads existent thesaurus
         #
-        dict_ = load_file_as_dict(output_file)
+        dict_ = load_file_as_dict(output_file_path)
         clustered_words = [word for key in dict_.keys() for word in dict_[key]]
         words_list = [word for word in words_list if word not in clustered_words]
 
@@ -86,11 +87,11 @@ def create_thesaurus(
                 full_match=False,
                 use_re=False,
             )
-            th_.to_textfile(output_file)
+            th_.to_textfile(output_file_path)
     else:
         #
         # Creates a new thesaurus
         #
-        text_clustering(pd.Series(words_list)).to_textfile(output_file)
+        text_clustering(pd.Series(words_list)).to_textfile(output_file_path)
 
-    sys.stdout.write(f"--INFO-- The thesaurus file {output_file} was created\n")
+    sys.stdout.write(f"--INFO-- The thesaurus file `{output_file}` was created\n")
