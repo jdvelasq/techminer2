@@ -1,5 +1,5 @@
 """
-Most frequent authors
+Most Frequent Authors
 ===============================================================================
 
 >>> from techminer2 import *
