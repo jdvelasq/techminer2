@@ -1,5 +1,5 @@
 """
-Most frequent sources
+Most frequent sources (in main documents database)
 ===============================================================================
 
 See :doc:`column indicators <column_indicators>` to obtain a `pandas.Dataframe` 
@@ -14,8 +14,6 @@ with the data.
 ...     top_n=20,
 ...     min_occ=None,
 ...     max_occ=None,
-...     plot="cleveland",
-...     database="documents",
 ... ).write_html(file_name)
 
 .. raw:: html
@@ -23,13 +21,7 @@ with the data.
     <iframe src="_static/most_frequent_sources.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .bar_chart import bar_chart
-from .cleveland_chart import cleveland_chart
-from .column_chart import column_chart
-from .line_chart import line_chart
-from .terms_list import terms_list
-from .pie_chart import pie_chart
-from .word_cloud import word_cloud
+from .most_frequent_items import most_frequent_items
 
 
 def most_frequent_sources(
@@ -37,43 +29,53 @@ def most_frequent_sources(
     top_n=20,
     min_occ=None,
     max_occ=None,
-    plot="bar",
-    database="documents",
+    plot="cleveland",
 ):
     """Plots the number of documents by source using the specified plot."""
 
-    if database == "documents":
-        title = "Most Frequent Sources"
-    elif database == "references":
-        title = "Most Frequent Sources in References"
-    elif database == "cited_by":
-        title = "Most Frequent Sources in Citing Documents"
-    else:
-        raise ValueError(
-            "Invalid database name. Database must be one of: 'documents', 'references', 'cited_by'"
-        )
-
-    indicators = terms_list(
+    return most_frequent_items(
         column="source_abbr",
-        metric="OCC",
+        directory=directory,
         top_n=top_n,
         min_occ=min_occ,
         max_occ=max_occ,
-        directory=directory,
-        database=database,
+        title="Most Frequent Sources",
+        plot=plot,
+        database="documents",
     )
 
-    plot_function = {
-        "bar": bar_chart,
-        "column": column_chart,
-        "line": line_chart,
-        "circle": pie_chart,
-        "cleveland": cleveland_chart,
-        "wordcloud": word_cloud,
-    }[plot]
+    # if database == "documents":
+    #     title = "Most Frequent Sources"
+    # elif database == "references":
+    #     title = "Most Frequent Sources in References"
+    # elif database == "cited_by":
+    #     title = "Most Frequent Sources in Citing Documents"
+    # else:
+    #     raise ValueError(
+    #         "Invalid database name. Database must be one of: 'documents', 'references', 'cited_by'"
+    #     )
 
-    return plot_function(
-        dataframe=indicators,
-        metric="OCC",
-        title=title,
-    )
+    # indicators = terms_list(
+    #     column="source_abbr",
+    #     metric="OCC",
+    #     top_n=top_n,
+    #     min_occ=min_occ,
+    #     max_occ=max_occ,
+    #     directory=directory,
+    #     database=database,
+    # )
+
+    # plot_function = {
+    #     "bar": bar_chart,
+    #     "column": column_chart,
+    #     "line": line_chart,
+    #     "circle": pie_chart,
+    #     "cleveland": cleveland_chart,
+    #     "wordcloud": word_cloud,
+    # }[plot]
+
+    # return plot_function(
+    #     dataframe=indicators,
+    #     metric="OCC",
+    #     title=title,
+    # )
