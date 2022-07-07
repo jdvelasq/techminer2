@@ -14,6 +14,7 @@ with the data.
 ...     top_n=20,
 ...     min_occ=None,
 ...     max_occ=None,
+...     plot="cleveland",
 ... ).write_html(file_name)
 
 .. raw:: html
