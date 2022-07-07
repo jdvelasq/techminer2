@@ -1,12 +1,12 @@
 """
-Most Frequent Countries
+Most Frequent Citing Countries
 ===============================================================================
 
 >>> from techminer2 import *
 >>> directory = "data/"
->>> file_name = "sphinx/_static/most_frequent_countries.html"
+>>> file_name = "sphinx/_static/most_frequent_citing_countries.html"
 
->>> most_frequent_countries(
+>>> most_frequent_citing_countries(
 ...     directory,
 ...     top_n=20,
 ...     min_occ=None,
@@ -16,13 +16,13 @@ Most Frequent Countries
 
 .. raw:: html
 
-    <iframe src="_static/most_frequent_countries.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="_static/most_frequent_citing_countries.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 from .most_frequent_items import most_frequent_items
 
 
-def most_frequent_countries(
+def most_frequent_citing_countries(
     directory="./",
     top_n=20,
     min_occ=None,
@@ -37,7 +37,7 @@ def most_frequent_countries(
         top_n=top_n,
         min_occ=min_occ,
         max_occ=max_occ,
-        title="Most Frequent Countries",
+        title="Most Frequent Citing Countries",
         plot=plot,
-        database="documents",
+        database="cited_by",
     )

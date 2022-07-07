@@ -2,6 +2,11 @@ Countries
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    .. toctree::
+      :maxdepth: 1
+
+      _menu_bbx_authors_countries_most_frequent
+
+   .. toctree::
       corresponding_authors_country
 
    .. toctree::      
