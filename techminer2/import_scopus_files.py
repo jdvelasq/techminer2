@@ -80,6 +80,7 @@ from .apply_author_keywords_thesaurus import apply_author_keywords_thesaurus
 from .apply_index_keywords_thesaurus import apply_index_keywords_thesaurus
 from .apply_institutions_thesaurus import apply_institutions_thesaurus
 from .apply_words_thesaurus import apply_words_thesaurus
+from .create_country_thesaurus import create_country_thesaurus
 from .create_institutions_thesaurus import create_institutions_thesaurus
 from .create_thesaurus import create_thesaurus
 from .create_words_thesaurus import create_words_thesaurus
@@ -125,6 +126,11 @@ def import_scopus_files(
     _create__document_id__column(directory)
     _create__raw_abstract_words__column(directory)
     _create__raw_title_words__column(directory)
+    #
+    #
+    create_country_thesaurus(directory)
+    #
+    #
     _create__raw_countries__column(directory)
     _create__coutry_1st_autor__column(directory)
     _create__countries__column(directory)
