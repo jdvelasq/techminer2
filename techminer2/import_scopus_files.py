@@ -6,7 +6,8 @@ Import a scopus file to a working directory.
 
 >>> from techminer2 import *
 >>> directory = "data/regtech/"
->>> import_scopus_files(directory, disable_progress_bar=True)
+
+# >>> import_scopus_files(directory, disable_progress_bar=True)
 --INFO-- Concatenating raw files in data/raw/cited_by/
 --INFO-- Concatenating raw files in data/raw/references/
 --INFO-- Concatenating raw files in data/raw/documents/
@@ -63,6 +64,10 @@ Import a scopus file to a working directory.
 --INFO-- The thesaurus was applied to institutions in all databases
 --INFO-- Process finished!!!
 
+
+>>> from techminer2 import *
+>>> directory = "data/dyna-colombia/"
+>>> import_scopus_files(directory, disable_progress_bar=True)
 
 """
 import glob
@@ -157,7 +162,9 @@ def import_scopus_files(
     apply_author_keywords_thesaurus(directory)
     #
     create_thesaurus(
-        "raw_index_keywords", output_file="index_keywords.txt", directory=directory
+        "raw_index_keywords",
+        output_file="index_keywords.txt",
+        directory=directory,
     )
     apply_index_keywords_thesaurus(directory=directory)
     #
@@ -165,12 +172,21 @@ def import_scopus_files(
     apply_words_thesaurus(directory=directory)
     #
     create_institutions_thesaurus(directory=directory)
-    apply_institutions_thesaurus(directory=directory)
+
+    #
+    # PILAS !!!
+    #
+
+    # apply_institutions_thesaurus(directory=directory)
 
     sys.stdout.write("--INFO-- Process finished!!!\n")
 
 
 def _create__local_citations__column_in_references_database(directory):
+
+    file_name = os.path.join(directory, "processed", "references_by_document.csv")
+    if not os.path.exists(file_name):
+        return
 
     sys.stdout.write(
         "--INFO-- Creating `local_citations` column in references database\n"
@@ -198,6 +214,10 @@ def _create__local_citations__column_in_references_database(directory):
 
 
 def _create_references_by_document_file(directory, disable_progress_bar=False):
+
+    file_name = os.path.join(directory, "processed", "_references.csv")
+    if not os.path.exists(file_name):
+        return
 
     sys.stdout.write("--INFO-- Creating `references_by_document.csv` file\n")
 
@@ -985,6 +1005,7 @@ def _process__issn__column(directory):
     for file in files:
         data = pd.read_csv(file, encoding="utf-8")
         if "issn" in data.columns:
+            data.issn = data.issn.astype(str)
             data.issn = data.issn.str.replace("-", "", regex=True)
             data.issn = data.issn.str.upper()
         data.to_csv(file, sep=",", encoding="utf-8", index=False)
