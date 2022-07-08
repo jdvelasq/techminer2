@@ -1,8 +1,13 @@
 .DS_Store
 
 
-data/processed/
-data/reports/
+data/regtech/processed/
+data/regtech/reports/
+data/dyna-colombia/processed/
+data/dyna-colombia/reports/
+
+
+
 sphinx/images/
 
 debug/
