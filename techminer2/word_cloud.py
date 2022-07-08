@@ -3,7 +3,7 @@ Word cloud
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/images/word_cloud.png"
 
 >>> indicators = terms_list(
