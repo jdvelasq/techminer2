@@ -3,7 +3,7 @@ Line chart
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/line_chart.html"
 
 >>> line_chart(
