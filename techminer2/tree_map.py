@@ -3,7 +3,7 @@ Tree Map
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/tree_map.html"
 
 >>> indicators = terms_list(
