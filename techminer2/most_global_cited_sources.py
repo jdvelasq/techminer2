@@ -19,12 +19,7 @@ Most Global Cited Sources in `documents`
     <iframe src="_static/most_global_cited_sources.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .bar_chart import bar_chart
-from .cleveland_chart import cleveland_chart
-from .column_chart import column_chart
-from .line_chart import line_chart
-from .pie_chart import pie_chart
-from .word_cloud import word_cloud
+from .most_global_cited_items import most_global_cited_items
 
 
 def most_global_cited_sources(
@@ -32,26 +27,17 @@ def most_global_cited_sources(
     top_n=20,
     min_occ=None,
     max_occ=None,
-    plot="bar",
+    plot="cleveland",
 ):
-    """Plots the number of global citations by author using the specified plot."""
+    """Plots the number of documents by source using the specified plot."""
 
-    plot_function = {
-        "bar": bar_chart,
-        "column": column_chart,
-        "line": line_chart,
-        "circle": pie_chart,
-        "cleveland": cleveland_chart,
-        "wordcloud": word_cloud,
-    }[plot]
-
-    return plot_function(
+    return most_global_cited_items(
         column="source_abbr",
+        directory=directory,
+        top_n=top_n,
         min_occ=min_occ,
         max_occ=max_occ,
-        top_n=top_n,
-        directory=directory,
-        metric="global_citations",
-        title="Most Global Cited sources",
+        title="Most Global Cited Sources",
+        plot=plot,
         database="documents",
     )

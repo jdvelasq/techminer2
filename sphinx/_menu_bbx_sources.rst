@@ -8,6 +8,8 @@ Sources
       
 
    .. toctree::
+      :maxdepth: 1
+
       _menu_bbx_sources_most_cited
 
    * Bradford Law
@@ -30,4 +32,3 @@ Sources
 
       .. toctree::
          sources_production_over_time
-         most_global_cited_sources_in_refs

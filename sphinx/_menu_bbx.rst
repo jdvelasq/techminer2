@@ -20,6 +20,8 @@ subset of the analytical capabilities of TechMiner.
    _menu_bbx_overview
    _menu_bbx_sources
    _menu_bbx_authors
+   _menu_bbx_countries
+   _menu_bbx_institutions
    _menu_bbx_docs
    _menu_bbx_clustering
    _menu_bbx_concept_struct
