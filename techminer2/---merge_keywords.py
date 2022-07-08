@@ -5,7 +5,7 @@ Merge Keywords
 Merge keyword keys in the keywords thesaurus.
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> merge_keywords(main_keyword='forecast', keywords_to_merge='prediction',  directory=directory)
 forecast
     forecast
