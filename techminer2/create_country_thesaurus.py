@@ -4,7 +4,12 @@ Create Country Thesaurus
 
 Creates a country thesaurus from 'affiliations' column in the datasets.
 
+>>> from techminer2.create_country_thesaurus import create_country_thesaurus
+>>> directory = "data/regtech/"
 
+# >>> directory = "data/dyna-colombia/"
+
+>>> create_country_thesaurus(directory)
 
 """
 import glob
@@ -20,6 +25,7 @@ def create_country_thesaurus(directory):
     """Creates a country thesaurus from 'affiliations' column in the datasets."""
 
     country_names = _get_country_names()
+    country_names = [r"\b" + name + r"\b" for name in country_names]
     country_names_as_regex = "|".join(country_names)
     country_names_as_regex = country_names_as_regex.lower()
 
@@ -32,7 +38,13 @@ def create_country_thesaurus(directory):
 
     affiliations = pd.DataFrame({"affiliation": affiliations.tolist()})
     affiliations = affiliations.assign(country=affiliations.affiliation)
+    affiliations = affiliations.assign(country=affiliations.country.str.split(","))
+    affiliations = affiliations.assign(
+        country=affiliations.country.map(lambda x: x[-1])
+    )
+
     affiliations = affiliations.assign(country=affiliations.country.str.lower())
+
     affiliations = _replace_sinonimous(affiliations, "country")
 
     affiliations["country"] = affiliations["country"].map(
@@ -49,7 +61,7 @@ def create_country_thesaurus(directory):
 
     countries_dict = affiliations.groupby(by="country").agg({"affiliation": list})
     countries_dict = {
-        key: items
+        key: sorted(items)
         for key, items in zip(countries_dict.index, countries_dict.affiliation)
     }
 
