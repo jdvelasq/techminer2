@@ -3,7 +3,7 @@ Gantt Chart
 ===============================================================================
 
 
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/images/_gantt_chart.png"
 >>> from techminer2.annual_occurrence_matrix import annual_occurrence_matrix
 >>> data = annual_occurrence_matrix(column='author_keywords',  min_occ=6, directory=directory)
