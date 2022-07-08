@@ -5,7 +5,7 @@ Auto-correlation Matrix / HTML
 
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> auto_corr_matrix_html(
 ...     column='authors', 
 ...     min_occ=6, 
