@@ -3,7 +3,7 @@ World map
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/images/world_map.png"
 >>> world_map(column="countries", directory=directory).savefig(file_name)
  
