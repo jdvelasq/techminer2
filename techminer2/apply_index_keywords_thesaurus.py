@@ -25,9 +25,16 @@ from .thesaurus import read_textfile
 def apply_index_keywords_thesaurus(directory="./"):
     """Transforms 'raw_index_keywords' column in 'index_keywords' using index_keywrords.txt thesaurus."""
 
+    thesaurus_file = os.path.join(directory, "processed", "index_keywords.txt")
+
+    if not os.path.exists(thesaurus_file):
+        sys.stdout.write(
+            f"--ERROR-- Thesaurus file '{thesaurus_file}' does not exists\n"
+        )
+        return
+
     sys.stdout.write("--INFO-- Applying `index_keywords.txt` thesaurus\n")
 
-    thesaurus_file = os.path.join(directory, "processed", "index_keywords.txt")
     if os.path.isfile(thesaurus_file):
         thesaurus = read_textfile(thesaurus_file)
         thesaurus = thesaurus.compile_as_dict()
