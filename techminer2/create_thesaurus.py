@@ -54,9 +54,10 @@ def create_thesaurus(
         if column in data.columns:
             words_list += data[column].tolist()
     if len(words_list) == 0:
-        raise ValueError(
-            f"Column '{column}' do not exists in any database or it is empty."
+        sys.stdout.write(
+            f"--ERROR-- Column '{column}' do not exists in any database or it is empty\n"
         )
+        return
 
     sys.stdout.write(
         f"--INFO-- Creating a thesaurus file from `{column}` column in all databases\n"
