@@ -5,7 +5,7 @@ Find String
 Finds a string in the terms of a column of a document collection.
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 
 >>> find_string(
 ...     "author_keywords", 
