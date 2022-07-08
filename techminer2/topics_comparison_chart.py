@@ -4,7 +4,7 @@ Topics Comparison Chart
 
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/images/topics_comparison_chart.png"
 >>> topics_comparison_chart(
 ...     'fintech', 

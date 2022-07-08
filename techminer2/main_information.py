@@ -3,7 +3,7 @@ Main information
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 
 >>> main_information(directory)
                                                             Value

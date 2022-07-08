@@ -3,7 +3,7 @@ Bar Chart
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/bar_chart.html"
 
 >>> indicators = terms_list(

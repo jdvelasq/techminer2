@@ -3,7 +3,7 @@ Thematic Map / Centrality Density Map
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/images/thematic_map_strategic_diagram.png"
 >>> thematic_map_strategic_diagram('author_keywords', directory=directory).savefig(file_name)
 

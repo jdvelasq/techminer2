@@ -3,7 +3,7 @@ Ego Graph
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/images/ego_graph.png"
 >>> ego_graph(
 ...     'block-chain',

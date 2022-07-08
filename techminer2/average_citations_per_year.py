@@ -6,7 +6,7 @@ See :doc:`annual indicators <annual_indicators>` to obtain a `pandas.Dataframe`
 with the data.
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/average_citations_per_year.html"
 
 >>> average_citations_per_year(

@@ -3,7 +3,7 @@ Collaboration Network / Indicators
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> collaboration_network_indicators('authors', min_occ=2, directory=directory).head()
 
 

@@ -3,7 +3,7 @@ Most Frequent Countries in References
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/most_frequent_countries_in_references.html"
 
 >>> most_frequent_countries(

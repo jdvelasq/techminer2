@@ -3,7 +3,7 @@ Most Global Cited Institutions in References
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/most_global_cited_institutions_in_refs.html"
 
 >>> most_global_cited_institutions_in_refs(

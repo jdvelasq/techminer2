@@ -3,7 +3,7 @@ Countries' Cum Production over Time
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/countries_cum_production_over_time.html"
 
 >>> countries_cum_production_over_time(

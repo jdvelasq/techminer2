@@ -3,7 +3,7 @@ Collaboration Network / Degree Plot
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/images/collaboration_network_degree_plot.png"
 >>> collaboration_network_degree_plot('authors', min_occ=2, directory=directory).savefig(file_name)
 

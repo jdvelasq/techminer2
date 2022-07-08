@@ -3,7 +3,7 @@ Modeling of Emergent Themes with LDA
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> analysis = Emergent_Themes_LDA(
 ...     column="author_keywords",
 ...     min_occ=4,

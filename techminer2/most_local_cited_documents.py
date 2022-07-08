@@ -6,7 +6,7 @@ See :doc:`document indicators <document_indicators>` to obtain a `pandas.Datafra
 with the data.
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/most_local_cited_documents.html"
 
 >>> most_local_cited_documents(

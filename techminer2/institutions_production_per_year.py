@@ -3,7 +3,7 @@ Institutions' Production per Year
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 
 >>> institutions_production_per_year(
 ...    directory=directory,

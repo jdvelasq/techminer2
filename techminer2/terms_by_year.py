@@ -3,7 +3,7 @@ Terms by Year
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 
 >>> terms_by_year(
 ...    column='author_keywords',

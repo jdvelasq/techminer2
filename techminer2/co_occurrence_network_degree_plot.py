@@ -3,7 +3,7 @@ Co-occurrence Network / Degree Plot
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/images/co_occurrence_network_degree_plot.png"
 >>> co_occurrence_network_degree_plot(
 ...     'author_keywords',

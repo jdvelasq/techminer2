@@ -3,7 +3,7 @@ Co-occurrence Network / Summarization
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> co_occurrence_network_summarization(
 ...     'author_keywords', 
 ...     min_occ=4, 

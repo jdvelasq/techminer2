@@ -4,7 +4,7 @@ Cross-correlation Matrix
 
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 
 >>> cross_corr_matrix(
 ...     'authors', 

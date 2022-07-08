@@ -3,7 +3,7 @@ Most Global Cited Sources
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/most_global_cited_sources.html"
 
 >>> most_global_cited_sources(

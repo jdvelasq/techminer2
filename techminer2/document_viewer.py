@@ -4,7 +4,7 @@ Document Viewer
 
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 
 >>> document_viewer(
 ...     'author_keywords', 

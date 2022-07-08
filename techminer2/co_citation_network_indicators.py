@@ -3,7 +3,7 @@ Co-citation Network / Indicators
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> co_citation_network_indicators(directory=directory).head()
                                                  num_documents  ...  pagerank
 node                                                            ...          

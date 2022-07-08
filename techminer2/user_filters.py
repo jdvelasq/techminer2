@@ -5,7 +5,7 @@ User Filters
 Allow users to select docuemnts to be mined.
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> user_filters(directory, book=True,  erratum=True, first_year=2016, last_year=2021)
 ---< Document >-------------------------------------------------
                First year : 2016

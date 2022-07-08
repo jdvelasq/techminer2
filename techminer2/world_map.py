@@ -4,7 +4,7 @@ World map
 
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/world_map.html"
 
 >>> world_map(

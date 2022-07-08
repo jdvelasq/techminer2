@@ -3,7 +3,7 @@ Documents by author
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 
 >>> documents_by_author(
 ...     directory=directory,

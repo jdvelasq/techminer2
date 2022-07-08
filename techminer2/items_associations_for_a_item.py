@@ -4,7 +4,7 @@ Items Associations for a Item
 
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 
 >>> items_associations_for_a_item(
 ...     'regtech',

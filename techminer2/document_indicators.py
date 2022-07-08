@@ -3,7 +3,7 @@ Document Indicators
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> document_indicators(directory=directory).head()
                                                     global_citations  ...                                 doi
 document_id                                                           ...                                    

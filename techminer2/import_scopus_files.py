@@ -5,7 +5,7 @@ Import Scopus Files
 Import a scopus file to a working directory.
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> import_scopus_files(directory, disable_progress_bar=True)
 --INFO-- Concatenating raw files in data/raw/cited_by/
 --INFO-- Concatenating raw files in data/raw/references/

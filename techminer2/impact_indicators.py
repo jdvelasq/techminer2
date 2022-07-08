@@ -3,7 +3,7 @@ Impact Indicators
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> impact_indicators("countries", directory=directory).head()
                    OCC  ...  avg_global_citations
 countries               ...                      

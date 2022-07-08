@@ -3,7 +3,7 @@ Thematic Map / Graph
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/images/thematic_map_network.png"
 >>> thematic_map_network('author_keywords', directory=directory).savefig(file_name)
 

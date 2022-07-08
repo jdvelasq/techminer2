@@ -6,7 +6,7 @@ Abstract concordances exploration tool.
 
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> keyword_concordances('structural equation model', top_n=10, directory=directory)
 - INFO - Abstract concordances report generated.
                                 We analyzed the data with a  structural equation model  (sem) to test the hypotheses, including the relationshi ...

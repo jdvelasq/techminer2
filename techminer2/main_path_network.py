@@ -3,7 +3,7 @@ Main Path Network
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 
 """
 from ._read_records import read_filtered_records

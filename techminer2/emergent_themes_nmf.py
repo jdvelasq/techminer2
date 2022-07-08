@@ -5,7 +5,7 @@ Modeling of Emergent Themes with NMF
 Topic extraction using non-negative matrix factorization.
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> analysis = Emergent_Themes_NMF(
 ...     column="author_keywords",
 ...     min_occ=4,

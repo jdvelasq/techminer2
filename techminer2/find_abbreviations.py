@@ -5,7 +5,7 @@ Find Abbreviations
 Finds string abbreviations in the keywords of a thesaurus.
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 
 >>> find_abbreviations(
 ...     "author_keywords.txt",

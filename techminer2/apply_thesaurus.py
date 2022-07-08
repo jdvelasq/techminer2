@@ -4,7 +4,7 @@ Apply a thesaurus to a column
 
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 
 >>> create_thesaurus(
 ...     column="author_keywords",

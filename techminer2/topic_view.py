@@ -3,7 +3,7 @@ Topic View
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> topic_view(
 ...     'author_keywords',
 ...     top_n=20,

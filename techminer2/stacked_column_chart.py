@@ -3,7 +3,7 @@ Stacked column chart
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/images/stacked_column_chart.png"
 >>> from techminer2.indicators_api.collaboration_indicators import collaboration_indicators
 >>> data = collaboration_indicators("countries", directory=directory)

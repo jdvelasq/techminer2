@@ -3,7 +3,7 @@ Abstract Summarization
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> abstract_summarization(
 ...     texts=["fintech", "blockchain"],
 ...     n_phrases=5,    

@@ -3,7 +3,7 @@ Co-occurrence Network / Strategic Diagram
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> co_occurrence_network_strategic_diagram(
 ...     'author_keywords',
 ...     min_occ=2,

@@ -5,7 +5,7 @@ Auto-correlation Matrix
 Returns an auto-correlation matrix.
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 
 >>> auto_corr_matrix(
 ...     column='authors',

@@ -3,7 +3,7 @@ Thematic Map / Degree Plot
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/images/thematic_map_degree_plot.png"
 >>> thematic_map_degree_plot('author_keywords', min_occ=4, directory=directory).savefig(file_name)
 

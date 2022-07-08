@@ -4,7 +4,7 @@ Items Associations for All Items
 
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 
 >>> items_associations_for_all_items(
 ...     column='author_keywords',

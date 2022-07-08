@@ -3,7 +3,7 @@ Column Indicators
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> column_indicators('authors',directory=directory).head() # doctest: +NORMALIZE_WHITESPACE
              OCC  ...  local_citations_per_document
 authors           ...                              

@@ -6,7 +6,7 @@ Captures n-words around the keyword.
 
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> abstract_screening(
 ...     text='fintech',
 ...     top_n=10,

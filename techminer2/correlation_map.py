@@ -3,7 +3,7 @@ Correlation Map
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/images/auto_corr_map.png"
 >>> matrix = auto_corr_matrix('authors', min_occ=2, directory=directory)
 >>> correlation_map(matrix).savefig(file_name)

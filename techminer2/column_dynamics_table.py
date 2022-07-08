@@ -3,7 +3,7 @@ Column dynamics table
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 
 >>> column_dynamics_table(
 ...     column="source_abbr", 

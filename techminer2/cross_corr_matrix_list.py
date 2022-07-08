@@ -5,7 +5,7 @@ Cross-correlation Matrix List
 Returns an auto-correlation matrix.
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 
 >>> cross_corr_matrix_list(
 ...     column='authors',

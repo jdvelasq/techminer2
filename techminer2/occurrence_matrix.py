@@ -3,7 +3,7 @@ Occurrence Matrix
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> occurrence_matrix(column='authors', min_occ=3,directory=directory)
 authors           Wojcik D Rabbani MR Hornuf L
 #d                       5          3        3

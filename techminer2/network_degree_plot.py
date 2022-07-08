@@ -3,7 +3,7 @@ Network Degree Plot
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/images/co_occurrence_network_degree_plot.png"
 >>> coc_matrix = co_occurrence_matrix(
 ...     column='author_keywords', 

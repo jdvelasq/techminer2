@@ -3,7 +3,7 @@ Most Frequent Authors
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/most_frequent_authors.html"
 
 >>> most_frequent_authors(

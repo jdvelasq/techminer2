@@ -5,7 +5,7 @@ Apply `'author_keywords.txt'` Thesaurus
 Transforms 'raw_author_keywords' column in 'author_keywords' using author_keywrords.txt thesaurus.
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 
 >>> apply_keywords_thesaurus(directory)
 

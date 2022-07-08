@@ -4,7 +4,7 @@ Thematic Analysis / Map
 
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/images/thematic_analysis_map.png"
 >>> thematic_analysis_map(
 ...     column="author_keywords",

@@ -3,7 +3,7 @@ Occurrence Matrix / HTML
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> occurrence_matrix_html(
 ...     directory=directory, 
 ...     column='authors', 

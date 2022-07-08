@@ -5,7 +5,7 @@ Create institutions thesaurus
 Creates a institutions thesaurus from the data in the database.
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 
 >>> create_institutions_thesaurus(directory)
 --INFO-- Creating institutions thesaurus

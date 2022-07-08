@@ -3,7 +3,7 @@ Co-occurrence Matrix
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 
 >>> co_occ_matrix(
 ...    column='author_keywords',

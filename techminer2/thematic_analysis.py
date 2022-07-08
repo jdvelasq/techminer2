@@ -6,7 +6,7 @@ The implemented methodology is based on the Thematic Analysis of Elementary
 Contexts implemented in T-LAB.
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> analysis = ThematicAnalysis(
 ...     column="author_keywords",
 ...     min_occ=4,

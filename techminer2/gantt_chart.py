@@ -3,7 +3,7 @@ Gantt Chart
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/gantt_chart.html"
 
 >>> gantt_chart(

@@ -5,7 +5,7 @@ Fuzzy Search (of a string in a thesaurus)
 Finds a string in the terms of a thesaurus using fuzzy search.
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 
 >>> fuzzy_search(
 ...     thesaurus_file="author_keywords.txt",

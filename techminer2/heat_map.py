@@ -3,7 +3,7 @@ Heat Map
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 
 >>> matrix = co_occ_matrix(
 ...    column='author_keywords',

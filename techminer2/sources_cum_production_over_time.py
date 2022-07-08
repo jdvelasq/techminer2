@@ -3,7 +3,7 @@ Sources' Cum Production over Time
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/sources_cum_production_over_time.html"
 
 >>> sources_cum_production_over_time(

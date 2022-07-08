@@ -3,7 +3,7 @@ Co-occurrence Matrix / Bubble Chart
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/images/co_occurrence_matrix_bubble_chart.png"
 >>> co_occurrence_matrix_bubble_chart(
 ...     directory=directory,

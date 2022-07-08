@@ -3,7 +3,7 @@ Cluster Map
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/cluster_map_occurrence.html"
 
 >>> occ_mtx = occ_flood_matrix(

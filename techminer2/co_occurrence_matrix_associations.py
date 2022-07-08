@@ -3,7 +3,7 @@ Co-occurrence Matrix / Associations
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> co_occurrence_matrix_associations(
 ...     column='author_keywords', 
 ...     min_occ=3, 

@@ -8,7 +8,7 @@ See :doc:`column indicators <column_indicators>` to obtain a `pandas.Dataframe`
 with the data.
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/most_frequent_sources_in_references.html"
 
 >>> most_frequent_sources_in_references(

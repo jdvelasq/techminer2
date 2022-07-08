@@ -3,7 +3,7 @@ Growth Indicators
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> growth_indicators(column="author_keywords", directory=directory).head()
                          before 2021  ...  average_growth_rate
 author_keywords                       ...                     

@@ -3,7 +3,7 @@ Global Citations by Document Type
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/global_citations_by_document_type.html"
 
 

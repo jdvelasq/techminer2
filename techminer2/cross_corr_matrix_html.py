@@ -4,7 +4,7 @@ Cross-correlation Matrix / HTML
 
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> cross_corr_matrix_html(
 ...     'authors',
 ...     min_occ=3, 

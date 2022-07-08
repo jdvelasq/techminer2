@@ -4,7 +4,7 @@ Core Sources
 
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 
 >>> core_sources(directory)
    Num Sources        %  ...  Tot Documents Bradford's Group

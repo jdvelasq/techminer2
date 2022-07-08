@@ -3,7 +3,7 @@ Co-occurrence Matrix List
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 
 **Item selection by occurrence.**
 

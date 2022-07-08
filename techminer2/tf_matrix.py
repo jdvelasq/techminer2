@@ -4,7 +4,7 @@ TF Matrix
 
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> tf_matrix('authors', min_occ=2, directory=directory).head()
 authors   Wojcik D Rabbani MR Hornuf L  ... Zhang MX Daragmeh A Kauffman RJ
 #d               5          3        3  ...        2          2           2

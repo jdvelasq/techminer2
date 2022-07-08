@@ -6,7 +6,7 @@ See :doc:`column indicators by year <column_indicators_by_year>` to obtain a
 `pandas.Dataframe` with the data. 
 
 >>> from techminer2.bibliometrix import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 
 >>> word_dynamics_table(
 ...     column="author_keywords",

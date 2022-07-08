@@ -3,7 +3,7 @@ Occurrence Matrix / Heatmap
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/images/occurrence_matrix_heatmap.png"
 >>> occurrence_matrix_heatmap(
 ...     directory=directory,

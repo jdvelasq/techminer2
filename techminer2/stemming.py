@@ -13,7 +13,7 @@ Searchs in the terms of a column using stemming
 
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 
 >>> stemming_and(
 ...     "author_keywords", 

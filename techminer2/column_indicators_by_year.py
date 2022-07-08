@@ -3,7 +3,7 @@ Column indicators by year
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 
 >>> column_indicators_by_year(
 ...     'authors',

@@ -4,7 +4,7 @@ RPYS (Reference Publication Year Spectroscopy) (TODO)
 
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/images/rpys.png"
 >>> rpys(directory=directory).savefig(file_name)
 

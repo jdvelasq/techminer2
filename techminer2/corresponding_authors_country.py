@@ -4,7 +4,7 @@ Corresponding author's country (TODO)
 
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/corresponding_authors_country.html"
 
 >>> corresponding_authors_country(

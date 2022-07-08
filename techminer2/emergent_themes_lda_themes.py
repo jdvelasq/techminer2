@@ -4,7 +4,7 @@ Emergent Themes LDA / Themes
 
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> emergent_themes_lda_themes(
 ...     column="author_keywords",
 ...     min_occ=4,

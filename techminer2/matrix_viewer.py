@@ -7,7 +7,7 @@ Matrix Viwer
 **Matrix view for a occurrence matrix.**
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 
 >>> file_name = "sphinx/_static/matrix_viewer_occ-0.html"
 >>> matrix = co_occ_matrix_list(

@@ -20,7 +20,7 @@ Creates a table with:
 
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 
 >>> authors_documents(
 ...    top_n=5, 

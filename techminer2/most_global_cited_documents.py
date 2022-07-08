@@ -7,7 +7,7 @@ with the data.
 
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/most_global_cited_documents.html"
 
 >>> most_global_cited_documents(

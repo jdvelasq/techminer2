@@ -4,7 +4,7 @@ Co-citation Matrix
 
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> matrix = co_citation_matrix(directory=directory)
 >>> matrix.head()
 document                                                                            Davis FD et al, 1989, MIS QUART MANAGE INF SYST  ... Goo JJ et al, 2020, J OPEN INNOV: TECHNOL MARK CO

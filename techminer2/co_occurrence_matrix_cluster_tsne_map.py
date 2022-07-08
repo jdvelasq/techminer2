@@ -3,7 +3,7 @@ Co-occurrence Matrix / Cluster TSNE Map
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/images/co_occurrence_matrix_cluster_tsne_map.png"
 >>> co_occurrence_matrix_cluster_tsne_map(
 ...     'author_keywords',

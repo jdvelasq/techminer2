@@ -4,7 +4,7 @@ Items Assocations Plot
 
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/items_associations_plot.html"
 
 >>> items_associations_plot(

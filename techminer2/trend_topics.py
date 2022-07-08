@@ -3,7 +3,7 @@ Trend Topics
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/images/trend_topics.png"
 >>> trend_topics('author_keywords', directory=directory).savefig(file_name)
 

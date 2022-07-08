@@ -5,7 +5,7 @@ Find String (in a thesarus)
 Finds a string in the terms of a thesaurus.
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 
 >>> find_string(
 ...     thesaurus_file="author_keywords.txt",

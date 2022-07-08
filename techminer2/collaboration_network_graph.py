@@ -3,7 +3,7 @@ Collaboration Network / Graph
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/images/collaboration_network_graph.png"
 >>> collaboration_network_graph('authors', min_occ=2, directory=directory).savefig(file_name)
 

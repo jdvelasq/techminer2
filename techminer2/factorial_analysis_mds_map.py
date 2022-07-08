@@ -16,7 +16,7 @@ Based on the bibliometrix/R/conceptualStructure.R code.
 4. Visualize the results.
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/images/factorial_analysis_mds_map.png"
 >>> factorial_analysis_mds_map(
 ...     'author_keywords', 

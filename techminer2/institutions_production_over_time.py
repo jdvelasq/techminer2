@@ -3,7 +3,7 @@ Institutions' Production over Time
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/institutions_production_over_time.html"
 
 >>> institutions_production_over_time(

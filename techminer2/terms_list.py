@@ -3,7 +3,7 @@ Terms List
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 
 >>> make_list(
 ...    column='author_keywords',

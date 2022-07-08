@@ -4,7 +4,7 @@ Thematic Analysis / Themes
 
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> thematic_analysis_themes(
 ...     column="author_keywords",
 ...     min_occ=4,

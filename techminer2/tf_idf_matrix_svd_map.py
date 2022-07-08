@@ -16,7 +16,7 @@ The plot is based on the SVD technique used in T-LAB's comparative analysis.
 
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/images/tf_idf_matrix_svd_map.png"
 >>> tf_idf_matrix_svd_map(
 ...     column='author_keywords',

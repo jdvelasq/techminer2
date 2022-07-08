@@ -3,7 +3,7 @@ Countries' Production over Time
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/countries_production_over_time.html"
 
 >>> countries_production_over_time(

@@ -4,7 +4,7 @@ Cross-correlation Matrix / Heatmap
 
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/images/cross_corr_matrix_heatmap.png"
 >>> cross_corr_matrix_heatmap(
 ...     'authors',

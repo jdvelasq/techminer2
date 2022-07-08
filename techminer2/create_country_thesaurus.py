@@ -30,36 +30,37 @@ def create_country_thesaurus(directory):
     affiliations = affiliations.str.strip()
     affiliations = affiliations.drop_duplicates()
 
-    affiliations = pd.DataFrame({"key": affiliations.tolist()})
-    affiliations = affiliations.assign(text=affiliations.key)
-    affiliations = affiliations.assign(key=affiliations.key.str.lower())
-    affiliations = _replace_sinonimous(affiliations)
+    affiliations = pd.DataFrame({"affiliation": affiliations.tolist()})
+    affiliations = affiliations.assign(country=affiliations.affiliation)
+    affiliations = affiliations.assign(country=affiliations.country.str.lower())
+    affiliations = _replace_sinonimous(affiliations, "country")
 
-    affiliations["key"] = affiliations["key"].map(
+    affiliations["country"] = affiliations["country"].map(
         lambda x: re.search(country_names_as_regex, x)
     )
-    affiliations["key"] = affiliations["key"].map(
+    affiliations["country"] = affiliations["country"].map(
         lambda x: x.group(0) if x is not None else "unknown"
     )
 
-    affiliations["key"] = affiliations["key"].str.title()
-    affiliations["key"] = affiliations["key"].str.replace(" And ", " and ")
-    affiliations["key"] = affiliations["key"].str.replace(" Of ", " of ")
-    affiliations["key"] = affiliations["key"].str.replace("Unknown", "[UNKNOWN]")
+    affiliations["country"] = affiliations["country"].str.title()
+    affiliations["country"] = affiliations["country"].str.replace(" And ", " and ")
+    affiliations["country"] = affiliations["country"].str.replace(" Of ", " of ")
+    affiliations["country"] = affiliations["country"].str.replace("Unknown", "[UKN]")
 
-    countries_dict = affiliations.groupby(by="key").agg({"text": list})
+    countries_dict = affiliations.groupby(by="country").agg({"affiliation": list})
     countries_dict = {
-        key: items for key, items in zip(countries_dict.index, countries_dict.text)
+        key: items
+        for key, items in zip(countries_dict.index, countries_dict.affiliation)
     }
 
     thesarurus = Thesaurus(
         x=countries_dict,
     )
-    output_file = os.path.join("data", "processed", "countries.txt")
+    output_file = os.path.join(directory, "processed", "countries.txt")
     thesarurus.to_textfile(output_file)
 
 
-def _replace_sinonimous(affiliations):
+def _replace_sinonimous(affiliations, column):
     affiliations = affiliations.copy()
     for text_to_replace, new_text in [
         ("bosnia and herz.", "bosnia and herzegovina"),
@@ -78,12 +79,11 @@ def _replace_sinonimous(affiliations):
         ("viet-nam", "vietnam"),
         ("viet nam", "vietnam"),
     ]:
-        affiliations = affiliations.assign(
-            key=affiliations.key.str.replace(
-                text_to_replace,
-                new_text,
-            )
+        affiliations[column] = affiliations[column].str.replace(
+            text_to_replace,
+            new_text,
         )
+
     return affiliations
 
 

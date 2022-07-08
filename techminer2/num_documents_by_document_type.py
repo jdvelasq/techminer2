@@ -3,7 +3,7 @@ Num Documents by Document Type
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/num_documents_by_document_type.html"
 
 >>> num_documents_by_document_type(

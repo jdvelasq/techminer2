@@ -3,7 +3,7 @@ Thematic Map / Communities
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> thematic_map_communities(
 ...     'author_keywords', 
 ...     min_occ=4, 

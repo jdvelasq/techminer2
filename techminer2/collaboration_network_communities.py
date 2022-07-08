@@ -3,7 +3,7 @@ Collaboration Network / Communities
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> collaboration_network_communities('authors', min_occ=2, directory=directory).head()
 cluster              CL_00  ...           CL_19
 rn                          ...                

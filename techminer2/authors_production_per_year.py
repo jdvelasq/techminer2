@@ -3,7 +3,7 @@ Authors' Production per Year
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 
 >>> authors_production_per_year(
 ...    directory=directory,

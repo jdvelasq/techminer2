@@ -3,7 +3,7 @@ Three fields plot (TODO)
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/three_fields_plot.html"
 
 >>> three_fields_plot(

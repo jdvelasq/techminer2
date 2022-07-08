@@ -3,7 +3,7 @@ Co-occurrence Matrix / Cluster MDS Map
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/images/co_occurrence_matrix_cluster_mds_map.png"
 >>> co_occurrence_matrix_cluster_mds_map(
 ...     'author_keywords',

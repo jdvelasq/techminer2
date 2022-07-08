@@ -4,7 +4,7 @@ Emergent Themes NMF / Map
 
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/images/emergent_themes_nmf_mds_map.png"
 >>> emergent_themes_nmf_map(
 ...     column="author_keywords",

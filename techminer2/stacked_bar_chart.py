@@ -3,7 +3,7 @@ Stacked bar chart
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/images/stacked_bar_chart.png"
 >>> data = collaboration_indicators("countries", directory=directory)
 >>> data = data.sort_values(by="num_documents", ascending=False)

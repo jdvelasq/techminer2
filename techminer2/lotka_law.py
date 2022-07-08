@@ -4,7 +4,7 @@ Lotka's Law (TODO)
 
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/images/lotka.png"
 >>> lotka_law(directory=directory).savefig(file_name)
 

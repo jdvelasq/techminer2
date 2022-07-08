@@ -5,7 +5,7 @@ Co-occurrence Matrix / Chord Diagram
 
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/images/co_occurrence_matrix_chord_diagram.png"
 >>> co_occurrence_matrix_chord_diagram(
 ...     column='author_keywords',

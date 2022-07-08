@@ -3,7 +3,7 @@ Occurrence Matrix / Associations
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> occurrence_matrix_associations(
 ...     column='authors', 
 ...     min_occ=2, 

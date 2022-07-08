@@ -3,7 +3,7 @@ Documents by institution
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 
 >>> documents_by_institution(
 ...     directory=directory,

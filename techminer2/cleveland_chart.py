@@ -4,7 +4,7 @@ Cleveland Chart
 
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/cleveland_chart.html"
 
 >>> indicators = terms_list(

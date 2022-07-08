@@ -7,7 +7,7 @@ with the data.
 
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/most_frequent_words.html"
 
 >>> most_frequent_words(

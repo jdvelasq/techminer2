@@ -3,7 +3,7 @@ Most Frequent Institutions in References
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/most_frequent_institutions_in_references.html"
 
 >>> most_frequent_institutions_in_references(

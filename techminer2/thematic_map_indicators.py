@@ -3,7 +3,7 @@ Thematic Map / Indicators
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> thematic_map_indicators(
 ...     'author_keywords', min_occ=4, directory=directory
 ... ).head()

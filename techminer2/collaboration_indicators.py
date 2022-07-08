@@ -3,7 +3,7 @@ Collaboration Indicators
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> collaboration_indicators("countries", directory=directory).head()
                 OCC  single_publication  multiple_publication  mp_ratio
 countries                                                              

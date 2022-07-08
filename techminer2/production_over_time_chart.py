@@ -3,7 +3,7 @@ Production over Time Chart
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/production_over_time_chart.html"
 
 >>> production_over_time_chart(

@@ -3,7 +3,7 @@ Coupling Matrix
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> coupling_matrix(
 ...     top_n=15,
 ...     column='references',

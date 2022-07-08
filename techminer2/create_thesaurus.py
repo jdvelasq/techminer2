@@ -3,7 +3,7 @@ Create a thesaurus from a column
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 
 >>> create_thesaurus(
 ...     column="author_keywords",

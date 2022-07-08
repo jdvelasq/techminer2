@@ -3,7 +3,7 @@ Documents by Country
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 
 >>> documents_by_country(
 ...     directory=directory,

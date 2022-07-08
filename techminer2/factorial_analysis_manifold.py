@@ -19,7 +19,7 @@ Based on the bibliometrix/R/conceptualStructure.R code.
 >>> from techminer2 import *
 >>> from sklearn.cluster import KMeans
 >>> from sklearn.manifold import MDS
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> coc_matrix = co_occurrence_matrix('author_keywords', min_occ=4, directory=directory)
 >>> file_name = "sphinx/images/factorial_analysis_manifold_silhouette.png"
 >>> factorial_analyzer = Factorial_analysis_manifold(

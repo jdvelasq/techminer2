@@ -5,7 +5,7 @@ Apply `'words.txt'` Thesaurus
 Cleans the keywords columns using the `keywords.txt`file.
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 
 >>> apply_keywords_thesaurus(directory)
 

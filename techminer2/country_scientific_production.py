@@ -3,7 +3,7 @@ Country Scientific Production
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/country_scientific_production.html"
 >>> country_scientific_production(
 ...     directory=directory

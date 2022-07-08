@@ -3,7 +3,7 @@ Network strategic map
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/images/network_strategic_diagram.png"
 >>> coc_matrix = co_occurrence_matrix(
 ...     column='author_keywords', 

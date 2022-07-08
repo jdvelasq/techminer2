@@ -3,7 +3,7 @@ Thematic Map / Summarization
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> thematic_map_summarization(
 ...     'author_keywords', 
 ...     min_occ=4, 

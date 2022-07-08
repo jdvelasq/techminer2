@@ -3,7 +3,7 @@ Occurrence Matrix / Bubble Chart
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/images/occurrence_matrix_bubble_chart.png"
 >>> occurrence_matrix_bubble_chart(
 ...     directory=directory,

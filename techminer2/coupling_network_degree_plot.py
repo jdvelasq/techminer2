@@ -5,7 +5,7 @@ Coupling Network / Degree Plot
 Builds a coupling network from a coupling matrix.
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/images/coupling_network_degree_plot.png"
 >>> coupling_network_degree_plot(
 ...     column='author_keywords',
