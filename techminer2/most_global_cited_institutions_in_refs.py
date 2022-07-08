@@ -19,13 +19,7 @@ Most Global Cited Institutions in References
     <iframe src="_static/most_global_cited_institutions_in_refs.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .bar_chart import bar_chart
-from .cleveland_chart import cleveland_chart
-from .column_chart import column_chart
-from .line_chart import line_chart
-from .pie_chart import pie_chart
-from .terms_list import terms_list
-from .word_cloud import word_cloud
+from .most_global_cited_items import most_global_cited_items
 
 
 def most_global_cited_institutions_in_refs(
@@ -34,30 +28,17 @@ def most_global_cited_institutions_in_refs(
     min_occ=None,
     max_occ=None,
     plot="cleveland",
+    title="Most Global Cited Institutions in References",
 ):
-    """Plots the number of global citations by institution in reference lists using the specified plot."""
+    """Most global cited institutions in references."""
 
-    indicators = terms_list(
+    return most_global_cited_items(
         column="institutions",
-        metric="global_citations",
+        directory=directory,
         top_n=top_n,
         min_occ=min_occ,
         max_occ=max_occ,
-        directory=directory,
+        title=title,
+        plot=plot,
         database="references",
-    )
-
-    plot_function = {
-        "bar": bar_chart,
-        "column": column_chart,
-        "line": line_chart,
-        "circle": pie_chart,
-        "cleveland": cleveland_chart,
-        "wordcloud": word_cloud,
-    }[plot]
-
-    return plot_function(
-        dataframe=indicators,
-        metric="global_citations",
-        title="Most Global Cited Institutions in References",
     )

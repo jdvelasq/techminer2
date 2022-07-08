@@ -28,8 +28,9 @@ def most_global_cited_sources(
     min_occ=None,
     max_occ=None,
     plot="cleveland",
+    title="Most Global Cited Sources",
 ):
-    """Plots the number of documents by source using the specified plot."""
+    """Most global cited sources in `documents`."""
 
     return most_global_cited_items(
         column="source_abbr",
@@ -37,7 +38,7 @@ def most_global_cited_sources(
         top_n=top_n,
         min_occ=min_occ,
         max_occ=max_occ,
-        title="Most Global Cited Sources",
+        title=title,
         plot=plot,
         database="documents",
     )

@@ -8,15 +8,16 @@ Authors' Production per Year
 >>> authors_production_per_year(
 ...    directory=directory,
 ... ).head()
-                  num_documents  ...  local_citations_per_year
-authors     year                 ...                          
-Arner DW    2016              1  ...                     0.000
-Barberis JN 2016              1  ...                     0.000
-Baxter LG   2016              1  ...                     0.714
-Arner DW    2017              2  ...                     1.167
-Barberis JN 2017              2  ...                     1.167
+                   OCC  ...  local_citations_per_year
+authors      year       ...                          
+Abdullah Y   2022    1  ...                     0.000
+Abi-Lahoud E 2018    1  ...                     0.000
+Ajmi JA      2021    1  ...                     0.500
+Al Haider N  2020    1  ...                     0.333
+Alam TM      2021    1  ...                     0.000
 <BLANKLINE>
-[5 rows x 6 columns]
+[5 rows x 7 columns]
+
 
 """
 from .column_indicators_by_year import column_indicators_by_year

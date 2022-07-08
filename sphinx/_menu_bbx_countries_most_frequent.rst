@@ -1,4 +1,4 @@
-Most Frequent Countries -
+Most Frequent Countries
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    .. toctree::

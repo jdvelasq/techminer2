@@ -1,8 +1,26 @@
 Countries
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+
    .. toctree::
-      _menu_bbx_authors_countries_most_frequent
+      _menu_bbx_countries_most_frequent
+
+
+   .. toctree::
+      _menu_bbx_countries_most_cited
+
+
+   .. toctree::
+      country_impact
+
+
+   .. toctree::
+      _menu_bbx_countries_production
+
+
+
+---
+
 
    .. toctree::
       corresponding_authors_country
@@ -10,32 +28,7 @@ Countries
    .. toctree::      
       country_scientific_production
       
-   * Countries' Production over Time:
 
-      .. toctree::
-         countries_production_over_time
-
-      .. toctree::
-         countries_cum_production_over_time         
-
-      .. toctree::      
-         countries_production_per_year
-
-      .. toctree::
-         documents_by_country
-
-   .. toctree::      
-      most_local_cited_countries
-
-      
-   * **NEW**:
-
-         
-      .. toctree::
-         country_impact
-      
-      .. toctree::
-         most_global_cited_countries_in_refs
 
       
 

@@ -18,8 +18,6 @@ Refine
 
 
     .. toctree::
-        :maxdepth: 1
-        
         _menu_vp_refine_thesaurus
 
 
