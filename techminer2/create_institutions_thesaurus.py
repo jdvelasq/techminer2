@@ -6,6 +6,7 @@ Creates a institutions thesaurus from the data in the database.
 
 >>> from techminer2 import *
 >>> directory = "data/regtech/"
+>>> directory = "data/dyna-colombia/"
 
 >>> x = create_institutions_thesaurus(directory)
 >>> x[x.institution.isna()]
@@ -23,7 +24,7 @@ import sys
 
 import pandas as pd
 
-from .thesaurus import load_file_as_dict
+from .thesaurus import Thesaurus, load_file_as_dict
 
 #
 # The algorithm searches in order until detect a match
@@ -132,12 +133,64 @@ def create_institutions_thesaurus(directory="./"):
 
     affiliations = _load_affiliations_from_country_thesaurus(directory)
     affiliations = _convert_countries_to_codes(affiliations)
-    affiliations["institution"] = affiliations["affiliation"].map(_select_institution)
+    affiliations["institution"] = affiliations["affiliation"]
+    affiliations = _clean_affiliation_names(affiliations)
+    affiliations["institution"] = affiliations["institution"].map(_select_institution)
+
+    # return affiliations
+
+    affiliations = affiliations[["affiliation", "institution"]]
+    grp = affiliations.groupby(by="institution", as_index=False).agg(
+        {"affiliation": list}
+    )
+
+    th_dict = {inst: aff for inst, aff in zip(grp.institution, grp.affiliation)}
+
+    thesaurus_file = os.path.join(directory, "processed", "institutions.txt")
+
+    Thesaurus(
+        th_dict,
+        ignore_case=False,
+        full_match=True,
+        use_re=False,
+    ).to_textfile(thesaurus_file)
+
+    # for key, value in th_dict.items():
+    #     print(key)
+    #     print("     ", value)
 
     return affiliations
 
 
 ###
+def _clean_affiliation_names(affiliations):
+
+    affiliations = affiliations.copy()
+
+    repl = [
+        (".", ""),
+        ("&", " and "),
+        (" aandm ", " a and m "),
+        ("the university of ", "university of "),
+        (" univ. nacional de ", " universidad nacional de "),
+        (" univ. de la ", " universidad de la "),
+        (" univ. del ", " universidad del "),
+        (" univ. do ", " universidade do "),
+        (" univ. of ", " university of "),
+        ("'", ""),
+        ('"', ""),
+        ("“", ""),
+        ("”", ""),
+        ("’", ""),
+    ]
+    for pattern, text in repl:
+        affiliations["affiliation"] = affiliations["affiliation"].str.replace(
+            pattern, text
+        )
+
+    return affiliations
+
+
 def _select_institution(affiliation):
     # affiliation es un string con cada afiliacion completa separada por comas
 
@@ -146,6 +199,7 @@ def _select_institution(affiliation):
     for aff in affiliation:
         if "univers" in aff.lower():
             return aff
+    return "----" + affiliation[0]
 
     #
     #
