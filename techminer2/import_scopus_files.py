@@ -6,11 +6,10 @@ Import a scopus file to a working directory.
 
 >>> from techminer2 import *
 >>> directory = "data/regtech/"
-
-# >>> import_scopus_files(directory, disable_progress_bar=True)
---INFO-- Concatenating raw files in data/raw/cited_by/
---INFO-- Concatenating raw files in data/raw/references/
---INFO-- Concatenating raw files in data/raw/documents/
+>>> import_scopus_files(directory, disable_progress_bar=True)
+--INFO-- Concatenating raw files in data/regtech/raw/cited_by/
+--INFO-- Concatenating raw files in data/regtech/raw/references/
+--INFO-- Concatenating raw files in data/regtech/raw/documents/
 --INFO-- Applying scopus tags to database files
 --INFO-- Formating column names in database files
 --INFO-- Dropping NA columns in database files
@@ -37,9 +36,8 @@ Import a scopus file to a working directory.
 --INFO-- Creating `document_id` column
 --INFO-- Creating `raw_abstract_words` column
 --INFO-- Creating `raw_title_words` column
---INFO-- Creating `raw_countries` column
---INFO-- Creating `country_1st_author` column
---INFO-- Creating `countries` column
+--INFO-- The data/regtech/processed/countries.txt thesaurus file was created
+--INFO-- The data/regtech/processed/countries.txt thesaurus file was applied to affiliations in all databases
 --INFO-- Creating `num_global_references` column
 --INFO-- Complete `source_abbr` column
 --INFO-- Creating `abstract.csv` file from `documents` database
@@ -56,18 +54,10 @@ Import a scopus file to a working directory.
 --INFO-- Applying `index_keywords.txt` thesaurus
 --INFO-- Creating `words.txt` from author/index keywords, and abstract/title words
 --INFO-- Applying `words.txt` thesaurus to author/index keywords and abstract/title words
---INFO-- Creating institutions thesaurus
---INFO-- Affiliations without country detected - check file data/processed/ignored_affiliations.txt
---INFO-- Affiliations without country detected - check file data/ignored_affiliations.txt
---INFO-- Thesaurus file 'data/processed/institutions.txt' created
---INFO-- Applying thesaurus to institutions
---INFO-- The thesaurus was applied to institutions in all databases
+--INFO-- The data/regtech/processed/institutions.txt thesaurus file was created
+--INFO-- The data/regtech/processed/institutions.txt thesaurus file was applied to affiliations in all databases
 --INFO-- Process finished!!!
 
-
->>> from techminer2 import *
->>> directory = "data/dyna-colombia/"
->>> import_scopus_files(directory, disable_progress_bar=True)
 
 """
 import glob
@@ -82,6 +72,7 @@ from nltk.tokenize import RegexpTokenizer, sent_tokenize
 from tqdm import tqdm
 
 from .apply_author_keywords_thesaurus import apply_author_keywords_thesaurus
+from .apply_country_thesaurus import apply_country_thesaurus
 from .apply_index_keywords_thesaurus import apply_index_keywords_thesaurus
 from .apply_institutions_thesaurus import apply_institutions_thesaurus
 from .apply_words_thesaurus import apply_words_thesaurus
@@ -89,7 +80,8 @@ from .create_country_thesaurus import create_country_thesaurus
 from .create_institutions_thesaurus import create_institutions_thesaurus
 from .create_thesaurus import create_thesaurus
 from .create_words_thesaurus import create_words_thesaurus
-from .extract_country import extract_country
+
+# from .extract_country import extract_country
 
 
 def import_scopus_files(
@@ -134,11 +126,12 @@ def import_scopus_files(
     #
     #
     create_country_thesaurus(directory)
+    apply_country_thesaurus(directory)
     #
     #
-    _create__raw_countries__column(directory)
-    _create__coutry_1st_autor__column(directory)
-    _create__countries__column(directory)
+    # _create__raw_countries__column(directory)
+    # _create__coutry_1st_autor__column(directory)
+    # _create__countries__column(directory)
     _create__num_global_references__column(directory)
     _complete__source_abbr__column(directory)
     _create__abstract_csv__file(directory)
@@ -172,6 +165,7 @@ def import_scopus_files(
     apply_words_thesaurus(directory=directory)
     #
     create_institutions_thesaurus(directory=directory)
+    apply_institutions_thesaurus(directory=directory)
 
     #
     # PILAS !!!
@@ -556,13 +550,13 @@ def _create__coutry_1st_autor__column(directory):
         data.to_csv(file, sep=",", encoding="utf-8", index=False)
 
 
-def _create__raw_countries__column(directory):
-    sys.stdout.write("--INFO-- Creating `raw_countries` column\n")
-    extract_country(
-        directory=directory,
-        input_col="affiliations",
-        output_col="raw_countries",
-    )
+# def _create__raw_countries__column(directory):
+#     sys.stdout.write("--INFO-- Creating `raw_countries` column\n")
+#     extract_country(
+#         directory=directory,
+#         input_col="affiliations",
+#         output_col="raw_countries",
+#     )
 
 
 def _extract_keywords_from_database_files(directory):

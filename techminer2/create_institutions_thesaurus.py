@@ -6,15 +6,9 @@ Creates a institutions thesaurus from the data in the database.
 
 >>> from techminer2 import *
 >>> directory = "data/regtech/"
->>> directory = "data/dyna-colombia/"
+>>> create_institutions_thesaurus(directory)
+--INFO-- Creating data/regtech/processed/institutions.txt thesaurus file
 
->>> x = create_institutions_thesaurus(directory)
->>> x[x.institution.isna()]
-
-
-# >>> apply_institutions_thesaurus(directory)
---INFO-- Applying thesaurus to institutions
---INFO-- The thesaurus was applied to institutions in all databases
 
 """
 
@@ -25,86 +19,6 @@ import sys
 import pandas as pd
 
 from .thesaurus import Thesaurus, load_file_as_dict
-
-#
-# The algorithm searches in order until detect a match
-#
-NAMES = [
-    "ministry",
-    "national",
-    "univ ",
-    "unisversidade",
-    "univerza",
-    "univerrsity",
-    "universidad",
-    "universidade",
-    "universita",
-    "universitas",
-    "universitat",
-    "universite",
-    "universiteit",
-    "university",
-    "univesity",
-    "univesrity",
-    "unversitat",
-    "universiti",
-    "institut",
-    "instituto",
-    "college",
-    "colegio",
-    "bank",
-    "banco",
-    "centre",
-    "center",
-    "centro",
-    "agency",
-    "agencia",
-    "council",
-    "commission",
-    "comision",
-    "consejo",
-    "politec",
-    "polytechnic",
-    "politecnico",
-    "department",
-    "direction",
-    "laboratory",
-    "laboratoire",
-    "laboratorio",
-    "school",
-    "skola",
-    "scuola",
-    "ecole",
-    "escuela",
-    "hospital",
-    "association",
-    "asociacion",
-    "company",
-    "organization",
-    "academy",
-    "academia",
-    "tecnologico",
-    "empresa",
-    "inc.",
-    "ltd.",
-    "office",
-    "oficina",
-    "corporation",
-    "corporacion",
-    "ministerio",
-    "technologies",
-    "unidad",
-    "tecnologico",
-    "consorcio",
-    "autoridad",
-    "compania",
-    "sociedad",
-    "servicio",
-    "government",
-    "institute",
-    "sociedad",
-    "society",
-]
 
 SPANISH = [
     "ARG",
@@ -127,24 +41,120 @@ PORTUGUES = [
     "PRT",
 ]
 
+NAMES = [
+    "ministry",
+    "ministerio",
+    #
+    "universidad",
+    "universidade",
+    "universita",
+    "universite",
+    "universiti",
+    "universiteit",
+    "university",
+    "univerza",
+    "unversitat",
+    #
+    "bank",
+    "banco",
+    #
+    "agency",
+    "agencia",
+    #
+    "council",
+    "commission",
+    "comision",
+    "consejo",
+    "consortium",
+    #
+    "politec",
+    "polytechnic",
+    "politecnico",
+    #
+    "hospital",
+    #
+    "association",
+    "asociacion",
+    #
+    "sociedad",
+    "society",
+    #
+    "consorcio",
+    #
+    "company",
+    "organization",
+    #
+    "inc.",
+    "ltd.",
+    "office",
+    "oficina",
+    "corporation",
+    "corporacion",
+    #
+    "government",
+    #
+    "fundacion",
+    "foundation",
+]
+
 
 def create_institutions_thesaurus(directory="./"):
     """Creates an insitutions thesaurus."""
 
     affiliations = _load_affiliations_from_country_thesaurus(directory)
     affiliations = _convert_countries_to_codes(affiliations)
-    affiliations["institution"] = affiliations["affiliation"]
+    affiliations["affiliation"] = affiliations["raw_affiliation"]
     affiliations = _clean_affiliation_names(affiliations)
+    affiliations["institution"] = affiliations["affiliation"]
     affiliations["institution"] = affiliations["institution"].map(_select_institution)
 
-    # return affiliations
+    _group_and_save(affiliations, directory)
 
-    affiliations = affiliations[["affiliation", "institution"]]
+
+def _select_institution(affiliation):
+    """Selects the institution from the affiliation."""
+
+    affiliation = affiliation.split(",")
+    affiliation = [a.strip() for a in affiliation]
+
+    # --------------------------------------------------------------------------------
+    valid_names = _load_valid_names()
+    for name in valid_names:
+        for aff in affiliation:
+            if name in aff.lower():
+                return aff
+
+    # --------------------------------------------------------------------------------
+    for aff in affiliation:
+        for name in NAMES:
+            if name in aff.lower():
+                if aff[:4].lower() == "the ":
+                    aff = aff.replace("The ", "", 1)
+                    return aff
+                return aff
+
+    # Regla por defecto: la primera componente de la afiliación
+    return "---" + affiliation[0]
+
+
+def _load_valid_names():
+    module_path = os.path.dirname(__file__)
+    with open(
+        os.path.join(module_path, "files/institutions.txt"), "rt", encoding="utf-8"
+    ) as f:
+        valid_names = f.readlines()
+    valid_names = [w.replace("\n", "").lower() for w in valid_names]
+    return valid_names
+
+
+def _group_and_save(affiliations, directory):
+
+    affiliations = affiliations[["raw_affiliation", "institution"]]
+
     grp = affiliations.groupby(by="institution", as_index=False).agg(
-        {"affiliation": list}
+        {"raw_affiliation": list}
     )
-
-    th_dict = {inst: aff for inst, aff in zip(grp.institution, grp.affiliation)}
+    th_dict = {k: v for k, v in zip(grp.institution, grp.raw_affiliation)}
 
     thesaurus_file = os.path.join(directory, "processed", "institutions.txt")
 
@@ -155,14 +165,9 @@ def create_institutions_thesaurus(directory="./"):
         use_re=False,
     ).to_textfile(thesaurus_file)
 
-    # for key, value in th_dict.items():
-    #     print(key)
-    #     print("     ", value)
-
-    return affiliations
+    sys.stdout.write(f"--INFO-- The {thesaurus_file} thesaurus file was created\n")
 
 
-###
 def _clean_affiliation_names(affiliations):
 
     affiliations = affiliations.copy()
@@ -171,57 +176,48 @@ def _clean_affiliation_names(affiliations):
         (".", ""),
         ("&", " and "),
         (" aandm ", " a and m "),
-        ("the university of ", "university of "),
-        (" univ. nacional de ", " universidad nacional de "),
-        (" univ. de la ", " universidad de la "),
-        (" univ. del ", " universidad del "),
-        (" univ. do ", " universidade do "),
-        (" univ. of ", " university of "),
+        ("The University of ", "University of "),
+        (" Univ. Nacional de ", " Universidad Nacional de "),
+        (" Univ. de la ", " Universidad de la "),
+        (" Univ. del ", " Universidad del "),
+        (" Univ. do ", " Universidade do "),
+        (" Univ. of ", " University of "),
+        (" Univ,", " University,"),
+        (" U. de ", " Universidad de "),
         ("'", ""),
         ('"', ""),
         ("“", ""),
         ("”", ""),
         ("’", ""),
+        ("-", " "),
+        (" UNAM,", " Universidad Nacional Autonoma de Mexico,"),
     ]
     for pattern, text in repl:
         affiliations["affiliation"] = affiliations["affiliation"].str.replace(
             pattern, text
         )
 
+    affiliations["affiliation"] = affiliations["affiliation"].str.replace(
+        r"\([A-Za-z\-]+\)", "", regex=True
+    )
+    affiliations["affiliation"] = affiliations["affiliation"].str.strip()
+
     return affiliations
-
-
-def _select_institution(affiliation):
-    # affiliation es un string con cada afiliacion completa separada por comas
-
-    affiliation = affiliation.split(",")
-    affiliation = [a.strip() for a in affiliation]
-    for aff in affiliation:
-        if "univers" in aff.lower():
-            return aff
-    return "----" + affiliation[0]
-
-    #
-    #
-    #
-    return pd.NA
-
-
-def _get_list_of_countries():
-    pass
 
 
 def _load_affiliations_from_country_thesaurus(directory):
 
     file_name = os.path.join(directory, "processed", "countries.txt")
     th_dict = load_file_as_dict(file_name)
+    country = [k for k, v in th_dict.items() for t in v]
+    aff = [t for k, v in th_dict.items() for t in v]
+
     affiliations = pd.DataFrame(
         {
-            "affiliation": th_dict.values(),
-            "country": th_dict.keys(),
+            "raw_affiliation": aff,
+            "country": country,
         }
     )
-    affiliations["affiliation"] = affiliations["affiliation"].map(lambda x: x[0])
     return affiliations
 
 

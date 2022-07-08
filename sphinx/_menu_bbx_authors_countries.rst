@@ -2,8 +2,6 @@ Countries
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    .. toctree::
-      :maxdepth: 1
-
       _menu_bbx_authors_countries_most_frequent
 
    .. toctree::
@@ -32,8 +30,6 @@ Countries
       
    * **NEW**:
 
-      .. toctree::
-         most_frequent_countries
          
       .. toctree::
          country_impact

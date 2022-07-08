@@ -8,7 +8,7 @@ Sources
       
 
    .. toctree::
-      most_local_cited_sources
+      _menu_bbx_sources_most_cited
 
    * Bradford Law
 

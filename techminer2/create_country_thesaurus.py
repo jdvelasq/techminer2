@@ -7,14 +7,13 @@ Creates a country thesaurus from 'affiliations' column in the datasets.
 >>> from techminer2.create_country_thesaurus import create_country_thesaurus
 >>> directory = "data/regtech/"
 
-# >>> directory = "data/dyna-colombia/"
-
 >>> create_country_thesaurus(directory)
 
 """
 import glob
 import os.path
 import re
+import sys
 
 import pandas as pd
 
@@ -70,6 +69,8 @@ def create_country_thesaurus(directory):
     )
     output_file = os.path.join(directory, "processed", "countries.txt")
     thesarurus.to_textfile(output_file)
+
+    sys.stdout.write(f"--INFO-- The {output_file} thesaurus file was created\n")
 
 
 def _replace_sinonimous(affiliations, column):
