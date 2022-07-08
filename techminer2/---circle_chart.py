@@ -3,7 +3,7 @@ Circle Chart
 ===============================================================================
 
 >>> from techminer2 import *
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/circle_chart.html"
 
 >>> circle_chart(
