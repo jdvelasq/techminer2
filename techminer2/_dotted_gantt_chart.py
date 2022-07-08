@@ -3,7 +3,7 @@ Dotted Gantt Chart
 ===============================================================================
 
 
->>> directory = "data/"
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/images/_dotted_gantt_chart.png"
 >>> from techminer2.annual_occurrence_matrix import annual_occurrence_matrix
 >>> data = annual_occurrence_matrix("ISO_Source_Name",  min_occ=8, directory=directory)
