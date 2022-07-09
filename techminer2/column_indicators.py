@@ -5,20 +5,20 @@ Column Indicators
 >>> from techminer2 import *
 >>> directory = "data/regtech/"
 >>> column_indicators('authors',directory=directory).head() # doctest: +NORMALIZE_WHITESPACE
-             OCC  ...  local_citations_per_document
-authors           ...                              
-Arner DW       7  ...                             2
-Buckley RP     6  ...                             2
-Zetzsche DA    4  ...                             2
-Barberis JN    4  ...                             3
-Ryan P         3  ...                             1
+       authors  ...  local_citations_per_document
+0     Arner DW  ...                             2
+1   Buckley RP  ...                             2
+2  Zetzsche DA  ...                             2
+3  Barberis JN  ...                             3
+4       Ryan P  ...                             1
 <BLANKLINE>
-[5 rows x 5 columns]
+[5 rows x 6 columns]
 
 
 >>> from pprint import pprint
 >>> pprint(sorted(column_indicators('authors',directory=directory).columns.to_list()))
 ['OCC',
+ 'authors',
  'global_citations',
  'global_citations_per_document',
  'local_citations',
@@ -74,5 +74,6 @@ def column_indicators(
         )
 
     indicators = indicators.astype(int)
+    indicators = indicators.reset_index()
 
     return indicators
