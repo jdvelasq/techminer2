@@ -6,40 +6,37 @@ Annual Indicators
 >>> directory = "data/regtech/"
 
 >>> annual_indicators(directory) # doctest: +NORMALIZE_WHITESPACE
-      OCC  cum_OCC  ...  cum_local_citations  mean_local_citations_per_year
-year                ...                                                    
-2016    2        2  ...                    5                           0.36
-2017    5        7  ...                   12                           0.23
-2018   16       23  ...                   44                           0.40
-2019   14       37  ...                   57                           0.23
-2020   25       62  ...                   73                           0.21
-2021   22       84  ...                   76                           0.07
-2022   10       94  ...                   76                           0.00
+   year  cum_OCC  ...  cum_local_citations  mean_local_citations_per_year
+0  2016        2  ...                    5                           -0.0
+1  2017        7  ...                   12                           -0.0
+2  2018       23  ...                   44                           -0.0
+3  2019       37  ...                   57                           -0.0
+4  2020       62  ...                   73                           -0.0
+5  2021       84  ...                   76                           -0.0
+6  2022       94  ...                   76                           -0.0
 <BLANKLINE>
-[7 rows x 11 columns]
+[7 rows x 12 columns]
 
 
 >>> annual_indicators(directory, database="references").tail() # doctest: +NORMALIZE_WHITESPACE
-      OCC  cum_OCC  ...  cum_local_citations  mean_local_citations_per_year
-year                ...                                                    
-2018  189      885  ...                  823                           0.22
-2019  140     1025  ...                  950                           0.23
-2020  146     1171  ...                 1073                           0.28
-2021   40     1211  ...                 1103                           0.38
-2022    3     1214  ...                 1104                           0.33
+    year  cum_OCC  ...  cum_local_citations  mean_local_citations_per_year
+43  2018      885  ...                  823                           -0.0
+44  2019     1025  ...                  950                           -0.0
+45  2020     1171  ...                 1073                           -0.0
+46  2021     1211  ...                 1103                           -0.0
+47  2022     1214  ...                 1104                           -0.0
 <BLANKLINE>
-[5 rows x 11 columns]
+[5 rows x 12 columns]
 
 >>> annual_indicators(directory, database="cited_by").tail() # doctest: +NORMALIZE_WHITESPACE
-      OCC  cum_OCC  ...  cum_global_citations  mean_global_citations_per_year
-year                ...                                                      
-2018   11       14  ...                   385                            6.56
-2019   52       66  ...                  1677                            6.21
-2020  105      171  ...                  2516                            2.66
-2021  184      355  ...                  3113                            1.62
-2022  119      474  ...                  3198                            0.71
+   year  cum_OCC  ...  cum_global_citations  mean_global_citations_per_year
+1  2018       14  ...                   385                           -0.02
+2  2019       66  ...                  1677                           -0.01
+3  2020      171  ...                  2516                           -0.00
+4  2021      355  ...                  3113                           -0.00
+5  2022      474  ...                  3198                           -0.00
 <BLANKLINE>
-[5 rows x 7 columns]
+[5 rows x 8 columns]
 
 >>> from pprint import pprint
 >>> pprint(sorted(annual_indicators(directory=directory).columns.to_list()))
@@ -53,13 +50,17 @@ year                ...
  'mean_global_citations',
  'mean_global_citations_per_year',
  'mean_local_citations',
- 'mean_local_citations_per_year']
+ 'mean_local_citations_per_year',
+ 'year']
 
 """
 from ._read_records import read_records
 
 
-def annual_indicators(directory="./", database="documents", as_index=True):
+def annual_indicators(
+    directory="./",
+    database="documents",
+):
     """Computes annual indicators,"""
 
     records = read_records(directory=directory, database=database, use_filter=False)
@@ -73,13 +74,14 @@ def annual_indicators(directory="./", database="documents", as_index=True):
         columns.append("global_citations")
     records = records[columns]
 
-    records = records.groupby("year", as_index=True).sum()
-    records = records.sort_index(ascending=True, axis="index")
+    records = records.groupby("year", as_index=False).sum()
+    records = records.sort_values(by=["year"], ascending=True)
+    records = records.reset_index(drop=True)
     records = records.assign(cum_OCC=records.OCC.cumsum())
     records.insert(1, "cum_OCC", records.pop("cum_OCC"))
 
     current_year = records.index.max()
-    records = records.assign(citable_years=current_year - records.index + 1)
+    records = records.assign(citable_years=current_year - records.year + 1)
 
     if "global_citations" in records.columns:
         records = records.assign(
@@ -106,8 +108,5 @@ def annual_indicators(directory="./", database="documents", as_index=True):
         records.mean_local_citations_per_year = (
             records.mean_local_citations_per_year.round(2)
         )
-
-    if as_index is False:
-        records = records.reset_index()
 
     return records
