@@ -30,13 +30,13 @@ AUTHORS        Authors                                      193.0
                Multi-authored documents                      61.0
                Authors per document                          2.37
                Co-authors per document                       3.11
-               International co-authorship %                41.94
+               International co-authorship %                25.81
                Author appearances                           223.0
                Documents per author                          0.42
                Collaboration index                            1.0
-               Institutions                                 120.0
-               Institutions (1st author)                     70.0
-               Countries                                     39.0
+               Institutions                                 148.0
+               Institutions (1st author)                     82.0
+               Countries                                     40.0
                Countries (1st author)                        35.0
 KEYWORDS       Raw author keywords                            303
                Cleaned author keywords                        285
