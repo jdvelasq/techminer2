@@ -1,14 +1,6 @@
-Overview
+Overview (ok!)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    
-
-
-----
-
-----
-
-----
-
    .. toctree::
       main_information
       annual_scientific_production
