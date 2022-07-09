@@ -41,10 +41,10 @@ package developed and tested in Python version 3.6.
     :hidden:
     :maxdepth: 1
     
-    _tm2_data
-    _tm2_indicators
-    _tm2_network
-    _tm2_visualization
+    _menu_tm2_data
+    _menu_tm2_indicators
+    _menu_tm2_network
+    _menu_tm2_visualization
 
 
 .. toctree::
