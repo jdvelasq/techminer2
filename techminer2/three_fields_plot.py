@@ -1,5 +1,5 @@
 """
-Three fields plot (TODO)
+Three Fields Plot
 ===============================================================================
 
 >>> from techminer2 import *
@@ -11,9 +11,8 @@ Three fields plot (TODO)
 ...     left_column='authors',
 ...     middle_column='countries',
 ...     right_column='author_keywords',
-...     min_occ_left=2, 
-...     min_occ_middle=6,
-...     min_occ_right=8,
+...     top_n_left=2, 
+...     top_n_right=8,
 ... ).write_html(file_name)
 
 .. raw:: html
@@ -21,31 +20,32 @@ Three fields plot (TODO)
     <iframe src="_static/three_fields_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-
-
 import plotly.graph_objects as go
 
-from .occurrence_matrix import occurrence_matrix
+from .co_occ_matrix import co_occ_matrix
 
 
 def three_fields_plot(
     left_column,
     middle_column,
     right_column,
-    min_occ_left=1,
-    min_occ_middle=1,
-    min_occ_right=1,
+    top_n_left,
+    top_n_right,
     directory="./",
 ):
     """Sankey plot"""
 
-    matrix_left, matrix_right = _compute_matrixes(
-        left_column=left_column,
-        middle_column=middle_column,
-        right_column=right_column,
-        min_occ_left=min_occ_left,
-        min_occ_middle=min_occ_middle,
-        min_occ_right=min_occ_right,
+    matrix_left = co_occ_matrix(
+        column=middle_column,
+        row=left_column,
+        top_n=top_n_left,
+        directory=directory,
+    )
+
+    matrix_right = co_occ_matrix(
+        column=right_column,
+        row=middle_column,
+        top_n=top_n_right,
         directory=directory,
     )
 
@@ -104,45 +104,7 @@ def _make_sankey_plot(matrix_left, matrix_right):
 
     fig.update_layout(
         hovermode="x",
-        title="Three field plot",
         font=dict(size=10, color="black"),
     )
 
     return fig
-
-
-def _compute_matrixes(
-    left_column,
-    middle_column,
-    right_column,
-    min_occ_left,
-    min_occ_middle,
-    min_occ_right=1,
-    directory="./",
-):
-
-    matrix_left = occurrence_matrix(
-        column=middle_column,
-        by=left_column,
-        min_occ=min_occ_middle,
-        min_occ_by=min_occ_left,
-        directory=directory,
-    )
-
-    matrix_right = occurrence_matrix(
-        column=right_column,
-        by=middle_column,
-        min_occ=min_occ_right,
-        min_occ_by=min_occ_middle,
-        directory=directory,
-    )
-
-    matrix_left.columns = matrix_left.columns.get_level_values(0)
-    matrix_right.columns = matrix_right.columns.get_level_values(0)
-    matrix_left.index = matrix_left.index.get_level_values(0)
-    matrix_right.index = matrix_right.index.get_level_values(0)
-
-    matrix_left = matrix_left.sort_index(axis=1, ascending=True)
-    matrix_right = matrix_right.sort_index(axis=0, ascending=True)
-
-    return matrix_left, matrix_right
