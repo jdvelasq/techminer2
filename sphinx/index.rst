@@ -42,7 +42,7 @@ package developed and tested in Python version 3.6.
     :maxdepth: 1
     
     _menu_tm2_data
-    _menu_tm2_indicators
+    _menu_tm2_basic_indicators
     _menu_tm2_network
     _menu_tm2_visualization
 
