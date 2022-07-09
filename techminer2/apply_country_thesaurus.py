@@ -1,5 +1,5 @@
 """
-Apply Country Thesaurus
+Apply 'countries.txt' Thesaurus
 ===============================================================================
 
 Cleans the country columns using the file countries.txt, located in

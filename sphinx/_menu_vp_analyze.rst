@@ -2,7 +2,6 @@ Analyze
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     .. toctree::
-        :maxdepth: 1
 
         terms_list
         _menu_vp_analyze_matrix

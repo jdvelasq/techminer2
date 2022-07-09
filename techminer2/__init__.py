@@ -124,6 +124,7 @@ from .lotka_law import lotka_law
 from .main_information import main_information
 from .map_chart import map_chart
 from .matrix_viewer import matrix_viewer
+from .most_frequent_author_keywords import most_frequent_words
 from .most_frequent_authors import most_frequent_authors
 from .most_frequent_authors_in_references import most_frequent_authors_in_references
 from .most_frequent_citing_authors import most_frequent_citing_authors
@@ -138,7 +139,6 @@ from .most_frequent_institutions_in_references import (
 )
 from .most_frequent_sources import most_frequent_sources
 from .most_frequent_sources_in_references import most_frequent_sources_in_references
-from .most_frequent_words import most_frequent_words
 from .most_global_cited_authors import most_global_cited_authors
 from .most_global_cited_authors_in_cited_by import most_global_cited_authors_in_cited_by
 from .most_global_cited_authors_in_refs import most_global_cited_authors_in_refs

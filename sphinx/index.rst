@@ -37,14 +37,14 @@ package developed and tested in Python version 3.6.
 
     
 .. toctree::
-    :caption: Data
+    :caption: TechMiner2
     :hidden:
     :maxdepth: 1
     
-    import_scopus_files
-    import_references
-    coverage
-    user_filters
+    _tm2_data
+    _api_indicators
+    _api_network
+    _api_visualization
 
 
 .. toctree::
@@ -66,9 +66,6 @@ package developed and tested in Python version 3.6.
     :hidden:
     :maxdepth: 1
 
-    _api_indicators
-    _api_network
-    _api_visualization
 
 
 **Author**:

@@ -1,5 +1,5 @@
 """
-Apply `'index_keywords.txt'` Thesaurus
+Apply 'index_keywords.txt' Thesaurus
 ===============================================================================
 
 Transforms 'raw_index_keywords' column in 'index_keywords' using index_keywrords.txt thesaurus.

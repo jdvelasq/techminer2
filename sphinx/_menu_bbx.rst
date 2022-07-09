@@ -23,6 +23,7 @@ subset of the analytical capabilities of TechMiner.
    _menu_bbx_countries
    _menu_bbx_institutions
    _menu_bbx_docs
+   _menu_bbx_words
    _menu_bbx_clustering
    _menu_bbx_concept_struct
    _menu_bbx_intell_struct

@@ -1,5 +1,5 @@
 """
-Apply `'author_keywords.txt'` Thesaurus
+Apply 'author_keywords.txt' Thesaurus
 ===============================================================================
 
 Transforms 'raw_author_keywords' column in 'author_keywords' using author_keywrords.txt thesaurus.

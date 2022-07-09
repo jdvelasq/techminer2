@@ -1,5 +1,5 @@
 """
-Apply `'words.txt'` Thesaurus
+Apply 'words.txt' Thesaurus
 ===============================================================================
 
 Cleans the keywords columns using the `keywords.txt`file.

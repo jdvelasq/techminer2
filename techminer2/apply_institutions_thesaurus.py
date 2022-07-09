@@ -1,5 +1,5 @@
 """
-Apply institutions thesaurus
+Apply 'institutions.txt' Thesaurus
 ===============================================================================
 
 Cleans the institutions columns using the file institutions.txt, located in
