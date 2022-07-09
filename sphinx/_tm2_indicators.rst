@@ -10,6 +10,14 @@ Indicators
     :maxdepth: 1
 
     annual_indicators
+
+-----
+
+TODO:
+
+.. toctree::
+    :maxdepth: 1
+
     annual_occurrence_matrix
     collaboration_indicators
     column_indicators
