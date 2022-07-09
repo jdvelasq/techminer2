@@ -42,9 +42,9 @@ package developed and tested in Python version 3.6.
     :maxdepth: 1
     
     _tm2_data
-    _api_indicators
-    _api_network
-    _api_visualization
+    _tm2_indicators
+    _tm2_network
+    _tm2_visualization
 
 
 .. toctree::
