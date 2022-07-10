@@ -17,9 +17,11 @@ from .auto_corr_matrix import auto_corr_matrix
 from .auto_corr_matrix_list import auto_corr_matrix_list
 from .average_citations_per_year import average_citations_per_year
 from .bar_chart import bar_chart
+from .bar_plot import bar_plot
 from .bradford_law import bradford_law
 from .bubble_chart import bubble_chart
 from .cleveland_chart import cleveland_chart
+from .cleveland_plot import cleveland_plot
 from .cluster_map import cluster_map
 from .co_citation_matrix import co_citation_matrix
 from .co_citation_network_communities import co_citation_network_communities
@@ -56,6 +58,7 @@ from .column_chart import column_chart
 from .column_documents import column_documents
 from .column_indicators import column_indicators
 from .column_indicators_by_year import column_indicators_by_year
+from .column_plot import column_plot
 from .core_sources import core_sources
 from .correlation_map import correlation_map
 from .corresponding_authors_country import corresponding_authors_country
@@ -119,6 +122,8 @@ from .items_associations_plot import items_associations_plot
 from .keyword_concordances import keyword_concordances
 from .keywords_summarization import keywords_summarization
 from .line_chart import line_chart
+from .line_plot import line_plot
+from .list_view import list_view
 from .local_citations_by_document_type import local_citations_by_document_type
 from .lotka_law import lotka_law
 from .main_information import main_information
@@ -174,6 +179,7 @@ from .occurrence_matrix_heatmap import occurrence_matrix_heatmap
 from .occurrence_matrix_html import occurrence_matrix_html
 from .occurrence_matrix_sankey_diagram import occurrence_matrix_sankey_diagram
 from .pie_chart import pie_chart
+from .pie_plot import pie_plot
 from .production_over_time_chart import production_over_time_chart
 from .rpys import rpys
 from .sankey_diagram import sankey_diagram
@@ -183,7 +189,6 @@ from .sources_production_over_time import sources_production_over_time
 from .stemming import stemming_and, stemming_or
 from .summary_view import summary_view
 from .terms_by_year import terms_by_year
-from .terms_list import terms_list
 from .tf_idf_matrix import tf_idf_matrix
 from .tf_idf_matrix_svd_map import tf_idf_matrix_svd_map
 from .tf_matrix import tf_matrix

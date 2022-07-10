@@ -42,7 +42,7 @@ def time_plot(
 
     fig = px.line(
         indicators,
-        x="Year",
+        x=indicators.index,
         y=column_names[metric],
         title=title,
         markers=True,

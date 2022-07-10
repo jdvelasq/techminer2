@@ -1,45 +1,41 @@
 """
-Word cloud
+Line Plot
 ===============================================================================
 
 >>> from techminer2 import *
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/images/word_cloud.png"
+>>> file_name = "sphinx/_static/line_plot.html"
 
 >>> indicators = list_view(
 ...    column='author_keywords',
-...    top_n=250,
+...    min_occ=3,
 ...    directory=directory,
 ... )
 
->>> word_cloud(indicators).savefig(file_name)
+>>> line_plot(indicators).write_html(file_name)
 
-.. image:: images/word_cloud.png
-    :width: 900px
-    :align: center
+.. raw:: html
+
+    <iframe src="_static/line_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 
 from .format_dataset_to_plot_with_plotly import format_dataset_to_plot_with_plotly
-from .word_cloud_py import word_cloud_py
-
-TEXTLEN = 40
+from .line_px import line_px
 
 
-def word_cloud(
+def line_plot(
     dataframe,
     metric="OCC",
     title=None,
-    figsize=(8, 8),
 ):
-    """Makes a cleveland plot from a dataframe."""
+    """Makes a line plot from a dataframe."""
 
     metric, column, dataframe = format_dataset_to_plot_with_plotly(dataframe, metric)
 
-    return word_cloud_py(
+    return line_px(
         dataframe=dataframe,
-        metric=metric,
-        column=column,
+        x_label=column,
+        y_label=metric,
         title=title,
-        figsize=figsize,
     )

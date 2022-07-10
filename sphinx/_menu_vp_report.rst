@@ -1,6 +1,7 @@
 Report
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+
     .. toctree::
         column_chart
 
@@ -12,6 +13,20 @@ Report
 
     .. toctree::
         line_chart
+
+    .. toctree::
+        cleveland_chart
+
+
+-----
+
+-----
+
+-----
+
+
+
+
 
     .. toctree::
         word_cloud
@@ -39,9 +54,6 @@ Report
 
         .. toctree::
             tree_map
-
-        .. toctree::
-            cleveland_chart
 
         .. toctree::
             production_over_time_chart

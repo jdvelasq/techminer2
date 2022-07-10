@@ -9,6 +9,11 @@ Visualization
 .. toctree::
    :maxdepth: 1
 
+   bar_plot
+   cleveland_plot
+   column_plot
+   line_plot
+   pie_plot
    time_plot
 
 

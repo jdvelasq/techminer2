@@ -19,7 +19,7 @@ Most Frequent Institutions in References
     <iframe src="_static/most_frequent_institutions_in_references.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .most_frequent_items import most_frequent_items
+from .chart import chart
 
 
 def most_frequent_institutions_in_references(
@@ -31,7 +31,7 @@ def most_frequent_institutions_in_references(
 ):
     """Plots the number of documents by institutions using the specified plot."""
 
-    return most_frequent_items(
+    return chart(
         column="institutions",
         directory=directory,
         top_n=top_n,

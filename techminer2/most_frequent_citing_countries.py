@@ -19,7 +19,7 @@ Most Frequent Citing Countries
     <iframe src="_static/most_frequent_citing_countries.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .most_frequent_items import most_frequent_items
+from .chart import chart
 
 
 def most_frequent_citing_countries(
@@ -31,7 +31,7 @@ def most_frequent_citing_countries(
 ):
     """Plots the number of documents by country using the specified plot."""
 
-    return most_frequent_items(
+    return chart(
         column="countries",
         directory=directory,
         top_n=top_n,

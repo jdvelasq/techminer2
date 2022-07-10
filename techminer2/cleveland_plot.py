@@ -1,45 +1,42 @@
 """
-Word cloud
+Cleveland Plot
 ===============================================================================
+
 
 >>> from techminer2 import *
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/images/word_cloud.png"
+>>> file_name = "sphinx/_static/cleveland_plot.html"
 
 >>> indicators = list_view(
 ...    column='author_keywords',
-...    top_n=250,
+...    min_occ=3,
 ...    directory=directory,
 ... )
 
->>> word_cloud(indicators).savefig(file_name)
+>>> cleveland_plot(indicators).write_html(file_name)
 
-.. image:: images/word_cloud.png
-    :width: 900px
-    :align: center
+.. raw:: html
+
+    <iframe src="_static/cleveland_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 
+from .cleveland_px import cleveland_px
 from .format_dataset_to_plot_with_plotly import format_dataset_to_plot_with_plotly
-from .word_cloud_py import word_cloud_py
-
-TEXTLEN = 40
 
 
-def word_cloud(
+def cleveland_plot(
     dataframe,
     metric="OCC",
     title=None,
-    figsize=(8, 8),
 ):
     """Makes a cleveland plot from a dataframe."""
 
     metric, column, dataframe = format_dataset_to_plot_with_plotly(dataframe, metric)
 
-    return word_cloud_py(
+    return cleveland_px(
         dataframe=dataframe,
-        metric=metric,
-        column=column,
+        x_label=metric,
+        y_label=column,
         title=title,
-        figsize=figsize,
     )

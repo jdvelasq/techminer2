@@ -1,4 +1,4 @@
-.. automodule:: techminer2._pie_chart
+.. automodule:: techminer2.pie_plot
     :members:
     :undoc-members:
     :show-inheritance:

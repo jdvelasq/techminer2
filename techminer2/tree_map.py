@@ -6,7 +6,7 @@ Tree Map
 >>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/tree_map.html"
 
->>> indicators = terms_list(
+>>> indicators = list_view(
 ...    column='author_keywords',
 ...    min_occ=3,
 ...    directory=directory,

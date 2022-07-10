@@ -23,7 +23,7 @@ with the data.
     <iframe src="_static/most_frequent_citing_sources.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .most_frequent_items import most_frequent_items
+from .chart import chart
 
 
 def most_frequent_citing_sources(
@@ -35,7 +35,7 @@ def most_frequent_citing_sources(
 ):
     """Plots the number of documents by source (in citing documents database) using the specified plot."""
 
-    return most_frequent_items(
+    return chart(
         column="source_abbr",
         directory=directory,
         top_n=top_n,

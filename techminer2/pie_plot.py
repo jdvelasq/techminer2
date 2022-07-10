@@ -1,45 +1,42 @@
 """
-Word cloud
+Pie Plot
 ===============================================================================
 
 >>> from techminer2 import *
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/images/word_cloud.png"
+>>> file_name = "sphinx/_static/pie_plot.html"
 
 >>> indicators = list_view(
 ...    column='author_keywords',
-...    top_n=250,
+...    min_occ=3,
 ...    directory=directory,
 ... )
 
->>> word_cloud(indicators).savefig(file_name)
+>>> pie_plot(indicators, hole=0.5).write_html(file_name)
 
-.. image:: images/word_cloud.png
-    :width: 900px
-    :align: center
+.. raw:: html
+
+    <iframe src="_static/pie_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-
 from .format_dataset_to_plot_with_plotly import format_dataset_to_plot_with_plotly
-from .word_cloud_py import word_cloud_py
-
-TEXTLEN = 40
+from .pie_px import pie_px
 
 
-def word_cloud(
+def pie_plot(
     dataframe,
     metric="OCC",
     title=None,
-    figsize=(8, 8),
+    hole=0.5,
 ):
     """Makes a cleveland plot from a dataframe."""
 
     metric, column, dataframe = format_dataset_to_plot_with_plotly(dataframe, metric)
 
-    return word_cloud_py(
+    return pie_px(
         dataframe=dataframe,
-        metric=metric,
-        column=column,
+        values=metric,
+        names=column,
         title=title,
-        figsize=figsize,
+        hole=hole,
     )

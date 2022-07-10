@@ -1,5 +1,5 @@
 """
-Terms List
+List View
 ===============================================================================
 
 >>> from techminer2 import *
@@ -38,7 +38,7 @@ machine learning                     6  ...                             0
 from .column_indicators import column_indicators
 
 
-def terms_list(
+def list_view(
     column,
     metric="OCC",
     top_n=None,

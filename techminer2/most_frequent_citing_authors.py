@@ -19,7 +19,7 @@ Most Frequent Cititng Authors
     <iframe src="_static/most_frequent_citing_authors.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .most_frequent_items import most_frequent_items
+from .chart import chart
 
 
 def most_frequent_citing_authors(
@@ -31,7 +31,7 @@ def most_frequent_citing_authors(
 ):
     """Plots the number of documents by author using the specified plot."""
 
-    return most_frequent_items(
+    return chart(
         column="authors",
         directory=directory,
         top_n=top_n,

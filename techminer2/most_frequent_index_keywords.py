@@ -25,12 +25,12 @@ with the data.
     <iframe src="_static/most_frequent_words.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .bar_chart import bar_chart
-from .cleveland_chart import cleveland_chart
-from .column_chart import column_chart
-from .line_chart import line_chart
-from .terms_list import terms_list
-from .pie_chart import pie_chart
+from .bar_plot import bar_plot
+from .cleveland_plot import cleveland_plot
+from .column_plot import column_plot
+from .line_plot import line_plot
+from .list_view import list_view
+from .pie_plot import pie_plot
 from .word_cloud import word_cloud
 
 
@@ -68,7 +68,7 @@ def most_frequent_words(
             "Invalid database name. Database must be one of: 'documents', 'references', 'cited_by'"
         )
 
-    indicators = terms_list(
+    indicators = list_view(
         column=column,
         metric="OCC",
         top_n=top_n,

@@ -1,15 +1,15 @@
 """Most frequent items in a databases"""
 
-from .bar_chart import bar_chart
-from .cleveland_chart import cleveland_chart
-from .column_chart import column_chart
-from .line_chart import line_chart
-from .pie_chart import pie_chart
-from .terms_list import terms_list
+from .bar_plot import bar_plot
+from .cleveland_plot import cleveland_plot
+from .column_plot import column_plot
+from .line_plot import line_plot
+from .list_view import list_view
+from .pie_plot import pie_plot
 from .word_cloud import word_cloud
 
 
-def most_frequent_items(
+def chart(
     column,
     directory="./",
     top_n=20,
@@ -21,7 +21,7 @@ def most_frequent_items(
 ):
     """Plots the number of documents by source using the specified plot."""
 
-    indicators = terms_list(
+    indicators = list_view(
         column=column,
         metric="OCC",
         top_n=top_n,
@@ -32,11 +32,11 @@ def most_frequent_items(
     )
 
     plot_function = {
-        "bar": bar_chart,
-        "column": column_chart,
-        "line": line_chart,
-        "circle": pie_chart,
-        "cleveland": cleveland_chart,
+        "bar": bar_plot,
+        "column": column_plot,
+        "line": line_plot,
+        "pie": pie_plot,
+        "cleveland": cleveland_plot,
         "wordcloud": word_cloud,
     }[plot]
 

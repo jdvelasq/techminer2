@@ -1,42 +1,43 @@
 """
-Line Chart
+Line chart
 ===============================================================================
 
 >>> from techminer2 import *
 >>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/line_chart.html"
 
->>> indicators = terms_list(
-...    column='author_keywords',
-...    min_occ=3,
-...    directory=directory,
-... )
-
-
->>> line_chart(indicators).write_html(file_name)
+>>> line_chart(
+...     'author_keywords',
+...     top_n=15,
+...     directory=directory,
+... ).write_html(file_name)
 
 .. raw:: html
 
     <iframe src="_static/line_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-
-from .format_dataset_to_plot_with_plotly import format_dataset_to_plot_with_plotly
-from .line_px import line_px
+from .chart import chart
 
 
 def line_chart(
-    dataframe,
-    metric="OCC",
+    column,
+    directory="./",
+    top_n=20,
+    min_occ=None,
+    max_occ=None,
     title=None,
+    database="documents",
 ):
-    """Makes a line plot from a dataframe."""
+    """Plots a bar chart from a column of a dataframe."""
 
-    metric, column, dataframe = format_dataset_to_plot_with_plotly(dataframe, metric)
-
-    return line_px(
-        dataframe=dataframe,
-        x_label=column,
-        y_label=metric,
+    return chart(
+        column=column,
+        directory=directory,
+        top_n=top_n,
+        min_occ=min_occ,
+        max_occ=max_occ,
         title=title,
+        plot="line",
+        database=database,
     )

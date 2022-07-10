@@ -1,11 +1,11 @@
 """Most global cited items in a databases"""
 
-from .bar_chart import bar_chart
-from .cleveland_chart import cleveland_chart
-from .column_chart import column_chart
-from .line_chart import line_chart
-from .pie_chart import pie_chart
-from .terms_list import terms_list
+from .bar_plot import bar_plot
+from .cleveland_plot import cleveland_plot
+from .column_plot import column_plot
+from .line_plot import line_plot
+from .pie_plot import pie_plot
+from .list_view import list_view
 from .word_cloud import word_cloud
 
 
@@ -21,7 +21,7 @@ def most_global_cited_items(
 ):
     """Plots the number of documents by source using the specified plot."""
 
-    indicators = terms_list(
+    indicators = list_view(
         column=column,
         metric="global_citations",
         top_n=top_n,

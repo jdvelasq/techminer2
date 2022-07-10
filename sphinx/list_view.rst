@@ -1,4 +1,4 @@
-.. automodule:: techminer2.terms_list
+.. automodule:: techminer2.list_view
     :members:
     :undoc-members:
     :show-inheritance:

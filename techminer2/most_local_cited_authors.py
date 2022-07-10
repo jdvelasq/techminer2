@@ -28,12 +28,12 @@ with the data. In this case, use:
     <iframe src="_static/most_local_cited_authors.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .bar_chart import bar_chart
-from .cleveland_chart import cleveland_chart
-from .column_chart import column_chart
-from .line_chart import line_chart
-from .pie_chart import pie_chart
-from .terms_list import terms_list
+from .bar_plot import bar_plot
+from .cleveland_plot import cleveland_plot
+from .column_plot import column_plot
+from .line_plot import line_plot
+from .pie_plot import pie_plot
+from .list_view import list_view
 from .word_cloud import word_cloud
 
 
@@ -53,7 +53,7 @@ def most_local_cited_authors(
         "wordcloud": word_cloud,
     }[plot]
 
-    indicators = terms_list(
+    indicators = list_view(
         column="authors",
         metric="local_citations",
         top_n=top_n,
