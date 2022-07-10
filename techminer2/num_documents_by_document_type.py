@@ -17,11 +17,11 @@ Num Documents by Document Type
 
 """
 from .bar_plot import bar_plot
-from .pie_plot import pie_plot
 from .cleveland_plot import cleveland_plot
 from .column_plot import column_plot
 from .line_plot import line_plot
-from .word_cloud import word_cloud
+from .pie_plot import pie_plot
+from .wordcloud import wordcloud
 
 
 def num_documents_by_document_type(
@@ -48,7 +48,7 @@ def num_documents_by_document_type(
         "line": line_chart,
         "circle": pie_chart,
         "cleveland": cleveland_chart,
-        "wordcloud": word_cloud,
+        "wordcloud": wordcloud,
     }[plot]
 
     return plot_function(

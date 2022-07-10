@@ -1,5 +1,5 @@
 """
-Most frequent sources
+Most Frequent Sources
 ===============================================================================
 
 See :doc:`column indicators <column_indicators>` to obtain a `pandas.Dataframe` 
@@ -31,6 +31,7 @@ def most_frequent_sources(
     min_occ=None,
     max_occ=None,
     plot="cleveland",
+    database="documents",
 ):
     """Plots the number of documents by source using the specified plot."""
 
@@ -42,5 +43,5 @@ def most_frequent_sources(
         max_occ=max_occ,
         title="Most Frequent Sources",
         plot=plot,
-        database="documents",
+        database=database,
     )

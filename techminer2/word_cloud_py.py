@@ -2,6 +2,7 @@
 
 import matplotlib.pyplot as plt
 import numpy as np
+
 from wordcloud import WordCloud
 
 
@@ -12,7 +13,6 @@ def _recolor(word, **kwargs):
 def word_cloud_py(
     dataframe,
     metric,
-    column,
     title,
     figsize,
 ):
@@ -22,7 +22,7 @@ def word_cloud_py(
     mask = 255 * mask.astype(int)
     wc = WordCloud(background_color="white", repeat=True, mask=mask, colormap="Greys")
 
-    text = {key: value for key, value in zip(dataframe[column], dataframe[metric])}
+    text = {key: value for key, value in zip(dataframe.index, dataframe[metric])}
     wc.generate_from_frequencies(text)
     wc.recolor(color_func=_recolor)
 

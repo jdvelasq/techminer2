@@ -2,7 +2,7 @@ Sources
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    .. toctree::
-      _menu_bbx_sources_most_frequent
+      most_frequent_sources
       
 
    .. toctree::

@@ -12,6 +12,7 @@ Most Frequent Institutions
 ...     min_occ=None,
 ...     max_occ=None,
 ...     plot="cleveland",
+...     database="documents",
 ... ).write_html(file_name)
 
 .. raw:: html
@@ -28,6 +29,7 @@ def most_frequent_institutions(
     min_occ=None,
     max_occ=None,
     plot="cleveland",
+    database="documents",
 ):
     """Plots the number of documents by institutions using the specified plot."""
 
@@ -37,7 +39,7 @@ def most_frequent_institutions(
         top_n=top_n,
         min_occ=min_occ,
         max_occ=max_occ,
-        title="Most Frequent institutions",
+        title="Most Frequent Institutions",
         plot=plot,
-        database="documents",
+        database=database,
     )

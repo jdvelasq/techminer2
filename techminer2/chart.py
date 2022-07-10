@@ -6,7 +6,7 @@ from .column_plot import column_plot
 from .line_plot import line_plot
 from .list_view import list_view
 from .pie_plot import pie_plot
-from .word_cloud import word_cloud
+from .wordcloud import wordcloud
 
 
 def chart(
@@ -37,7 +37,7 @@ def chart(
         "line": line_plot,
         "pie": pie_plot,
         "cleveland": cleveland_plot,
-        "wordcloud": word_cloud,
+        "wordcloud": wordcloud,
     }[plot]
 
     return plot_function(

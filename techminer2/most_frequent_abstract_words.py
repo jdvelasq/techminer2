@@ -30,7 +30,7 @@ from .column_plot import column_plot
 from .line_plot import line_plot
 from .pie_plot import pie_plot
 from .list_view import list_view
-from .word_cloud import word_cloud
+from .wordcloud import wordcloud
 
 
 def most_frequent_abstract_words(
@@ -73,7 +73,7 @@ def most_frequent_abstract_words(
         "line": line_chart,
         "circle": pie_chart,
         "cleveland": cleveland_chart,
-        "wordcloud": word_cloud,
+        "wordcloud": wordcloud,
     }[plot]
 
     return plot_function(

@@ -12,6 +12,7 @@ Most Frequent Authors
 ...     min_occ=None,
 ...     max_occ=None,
 ...     plot="cleveland",
+...     database="documents",
 ... ).write_html(file_name)
 
 .. raw:: html
@@ -28,6 +29,7 @@ def most_frequent_authors(
     min_occ=None,
     max_occ=None,
     plot="cleveland",
+    database="documents",
 ):
     """Plots the number of documents by author using the specified plot."""
 
@@ -39,5 +41,5 @@ def most_frequent_authors(
         max_occ=max_occ,
         title="Most Frequent Authors",
         plot=plot,
-        database="documents",
+        database=database,
     )

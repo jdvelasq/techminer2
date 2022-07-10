@@ -34,7 +34,7 @@ from .column_plot import column_plot
 from .line_plot import line_plot
 from .pie_plot import pie_plot
 from .list_view import list_view
-from .word_cloud import word_cloud
+from .wordcloud import wordcloud
 
 
 def most_local_cited_authors(
@@ -50,7 +50,7 @@ def most_local_cited_authors(
         "line": line_chart,
         "circle": pie_chart,
         "cleveland": cleveland_chart,
-        "wordcloud": word_cloud,
+        "wordcloud": wordcloud,
     }[plot]
 
     indicators = list_view(
