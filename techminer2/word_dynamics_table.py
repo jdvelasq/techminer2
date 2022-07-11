@@ -23,7 +23,7 @@ author_keywords  regtech  fintech  ...  machine learning  regulate
 [5 rows x 10 columns]
 
 """
-from .column_dynamics_table import column_dynamics_table
+from .dynamics import dynamics
 
 
 def word_dynamics_table(
@@ -32,7 +32,7 @@ def word_dynamics_table(
     directory="./",
 ):
     """Makes a dynamics table for a word."""
-    return column_dynamics_table(
+    return dynamics(
         column=column,
         top_n=top_n,
         directory=directory,

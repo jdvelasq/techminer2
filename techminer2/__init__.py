@@ -63,6 +63,7 @@ from .correlation_map import correlation_map
 from .corresponding_authors_country import corresponding_authors_country
 from .countries_production_over_time import countries_production_over_time
 from .countries_production_per_year import countries_production_per_year
+from .country_dynamics import country_dynamics
 from .country_impact import country_impact
 from .country_scientific_production import country_scientific_production
 from .coupling_matrix import coupling_matrix
@@ -103,7 +104,6 @@ from .find_abbreviations import find_abbreviations
 from .find_string import find_string
 from .fuzzy_search import fuzzy_search
 from .gantt_chart import gantt_chart
-from .global_citations_by_document_type import global_citations_by_document_type
 from .growth_indicators import growth_indicators
 from .heat_map import heat_map
 from .impact_indicators import impact_indicators
@@ -120,7 +120,6 @@ from .keywords_summarization import keywords_summarization
 from .line_chart import line_chart
 from .line_plot import line_plot
 from .list_view import list_view
-from .local_citations_by_document_type import local_citations_by_document_type
 from .lotka_law import lotka_law
 from .main_information import main_information
 from .map_chart import map_chart
@@ -143,7 +142,6 @@ from .most_local_cited_institutions import most_local_cited_institutions
 from .most_local_cited_references import most_local_cited_references
 from .most_local_cited_sources import most_local_cited_sources
 from .network import network
-from .num_documents_by_document_type import num_documents_by_document_type
 from .occurrence_matrix import occurrence_matrix
 from .occurrence_matrix_associations import occurrence_matrix_associations
 from .occurrence_matrix_bubble_chart import occurrence_matrix_bubble_chart
@@ -155,6 +153,7 @@ from .pie_plot import pie_plot
 from .production_over_time_chart import production_over_time_chart
 from .rpys import rpys
 from .sankey_diagram import sankey_diagram
+from .source_dynamics import source_dynamics
 from .source_impact import source_impact
 from .sources_production_over_time import sources_production_over_time
 from .stemming import stemming_and, stemming_or

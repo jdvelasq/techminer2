@@ -28,5 +28,5 @@ def countries_production_over_time(
         column="countries",
         top_n=top_n,
         directory=directory,
-        title="Countries' production over time",
+        title="Countries' Production over Time",
     )

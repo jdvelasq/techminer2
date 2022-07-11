@@ -1,7 +1,4 @@
-.. automodule:: techminer2.source_dynamics_plot
+.. automodule:: techminer2.country_dynamics
     :members:
     :undoc-members:
     :show-inheritance:
-
-
-

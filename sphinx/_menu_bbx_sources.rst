@@ -18,6 +18,7 @@ Sources
    .. toctree::      
       source_impact
       sources_production_over_time
+      source_dynamics
 
 
    

@@ -19,7 +19,7 @@ Column dynamics plot
 """
 import plotly.express as px
 
-from .column_dynamics_table import column_dynamics_table
+from .dynamics import dynamics
 
 
 def column_dynamics_plot(
@@ -28,7 +28,7 @@ def column_dynamics_plot(
     directory="./",
     title=None,
 ):
-    dynamics = column_dynamics_table(
+    dynamics = dynamics(
         column=column,
         top_n=top_n,
         directory=directory,
