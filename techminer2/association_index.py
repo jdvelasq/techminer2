@@ -36,7 +36,7 @@ def association_index(matrix, association):
     matrix = matrix.applymap(float)
     normalized_matrix = matrix.copy()
 
-    if association == "jaccard":
+    if association == "jaccard":  # verificado
         for col in matrix.columns:
             for row in matrix.index:
                 normalized_matrix.at[row, col] = matrix.at[row, col] / (
@@ -46,22 +46,22 @@ def association_index(matrix, association):
         for col in matrix.columns:
             for row in matrix.index:
                 normalized_matrix.at[row, col] = matrix.at[row, col] / (
-                    matrix.loc[row, row] + matrix.at[col, col] + 2 * matrix.at[row, col]
+                    matrix.loc[row, row] + matrix.at[col, col]
                 )
-    elif association == "salton":  # cosine
+    elif association == "salton":  # cosine, verificado
         for col in matrix.columns:
             for row in matrix.index:
                 normalized_matrix.at[row, col] = matrix.at[row, col] / np.sqrt(
                     (matrix.loc[row, row] * matrix.at[col, col])
                 )
 
-    elif association == "equivalence":
+    elif association == "equivalence":  # verificado
         for col in matrix.columns:
             for row in matrix.index:
                 normalized_matrix.at[row, col] = matrix.at[row, col] ** 2 / (
                     matrix.loc[row, row] * matrix.at[col, col]
                 )
-    elif association == "inclusion":
+    elif association == "inclusion":  # verificado
         for col in matrix.columns:
             for row in matrix.index:
                 normalized_matrix.at[row, col] = matrix.at[row, col] / min(
