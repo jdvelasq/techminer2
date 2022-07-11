@@ -29,5 +29,5 @@ def authors_production_over_time(
         column="authors",
         top_n=top_n,
         directory=directory,
-        title="Authors' production over time",
+        title="Authors' Production over Time",
     )
