@@ -10,12 +10,13 @@ def _recolor(word, **kwargs):
     return "black"
 
 
-def word_cloud_py(
+def word_cloud(
     dataframe,
     metric,
     title,
     figsize,
 ):
+    """Wordcloud from a dataframe of indicators"""
 
     x_mask, y_mask = np.ogrid[:300, :300]
     mask = (x_mask - 150) ** 2 + (y_mask - 150) ** 2 > 130**2
@@ -27,18 +28,9 @@ def word_cloud_py(
     wc.recolor(color_func=_recolor)
 
     fig = plt.Figure(figsize=figsize)
-    ax = fig.subplots()
-    ax.imshow(wc, interpolation="bilinear")
-    ax.set_axis_off()
-    ax.set_title(title)
-
-    # ax.spines["bottom"].set_color("lightgray")
-    # ax.spines["top"].set_color("lightgray")
-    # ax.spines["right"].set_color("lightgray")
-    # ax.spines["left"].set_color("lightgray")
-    # ax.set_xticks([])
-    # ax.set_yticks([])
-
-    # fig.set_tight_layout(True)
+    axs = fig.subplots()
+    axs.imshow(wc, interpolation="bilinear")
+    axs.set_axis_off()
+    axs.set_title(title)
 
     return fig

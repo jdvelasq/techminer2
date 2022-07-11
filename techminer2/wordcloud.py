@@ -1,26 +1,25 @@
 """
-Word Cloud
+WordCloud
 ===============================================================================
 
 >>> from techminer2 import *
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/images/word_cloud.png"
+>>> file_name = "sphinx/images/wordcloud.png"
 
 >>> wordcloud(
 ...     column='author_keywords', 
-...     metric='num_documents',
 ...     title="Author Keywords",
 ...     top_n=50, 
 ...     directory=directory,
 ... ).savefig(file_name)
 
-.. image:: images/word_cloud.png
+.. image:: images/wordcloud.png
     :width: 900px
     :align: center
 
 """
 from .column_indicators import column_indicators
-from .word_cloud_py import word_cloud_py
+from .word_cloud import word_cloud
 
 
 def wordcloud(
@@ -48,13 +47,13 @@ def wordcloud(
     indicators = indicators.sort_values(metric, ascending=False)
 
     if min_occ is not None:
-        indicators = indicators[indicators.num_documents >= min_occ]
+        indicators = indicators[indicators.OCC >= min_occ]
     if max_occ is not None:
-        indicators = indicators[indicators.num_documents <= max_occ]
+        indicators = indicators[indicators.OCC <= max_occ]
     if top_n is not None:
         indicators = indicators.head(top_n)
 
-    return word_cloud_py(
+    return word_cloud(
         dataframe=indicators,
         metric=metric,
         title=title,

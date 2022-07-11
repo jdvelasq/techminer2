@@ -1,10 +1,10 @@
 """
-Tree Map
+TreeMap
 ===============================================================================
 
 >>> from techminer2 import *
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/tree_map.html"
+>>> file_name = "sphinx/_static/treemap.html"
 
 >>> indicators = list_view(
 ...    column='author_keywords',
@@ -12,11 +12,11 @@ Tree Map
 ...    directory=directory,
 ... )
 
->>> tree_map(indicators).write_html(file_name)
+>>> treemap(indicators).write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="_static/tree_map.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="_static/treemap.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 import plotly.express as px
@@ -24,7 +24,7 @@ import plotly.express as px
 from .format_dataset_to_plot_with_plotly import format_dataset_to_plot_with_plotly
 
 
-def tree_map(
+def treemap(
     dataframe,
     metric="OCC",
     title=None,

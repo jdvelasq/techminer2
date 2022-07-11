@@ -1,57 +1,44 @@
 Report
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    * **List view**:
+    .. toctree::
+        column_chart
+        bar_chart
+        pie_chart
+        line_chart
+        cleveland_chart
+        wordcloud
 
-        .. toctree::
-            column_chart
-
-        .. toctree::
-            bar_chart
-
-        .. toctree::
-            pie_chart
-
-        .. toctree::
-            line_chart
-
-        .. toctree::
-            cleveland_chart
-
-
-    * **Matrixes**:
-
-        .. toctree::
-            heat_map
-
-        .. toctree::
-            bubble_chart
-
-        .. toctree::
-            matrix_viewer
-
-        .. toctree::
-            gantt_chart
-
-
-        .. toctree::
-            production_over_time_chart
-
-
------
-
------
-
------
-
------
-
------
 
 
 
     .. toctree::
-        word_cloud
+        heat_map
+        bubble_chart
+        gantt_chart
+        matrix_viewer
+
+    .. toctree::
+        
+
+    .. toctree::
+        
+
+
+    .. toctree::
+        production_over_time_chart
+
+
+-----
+
+-----
+
+-----
+
+-----
+
+-----
+
 
     .. toctree::
         cluster_map

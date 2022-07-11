@@ -15,6 +15,7 @@ Visualization
    line_plot
    pie_plot
    time_plot
+   word_cloud
 
 
 ----
