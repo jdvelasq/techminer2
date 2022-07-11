@@ -184,5 +184,6 @@ from .topics_comparison_network import topics_comparison_network
 from .treemap import treemap
 from .trend_topics import trend_topics
 from .user_filters import user_filters
+from .word_dynamics import word_dynamics
 from .wordcloud import wordcloud
 from .world_map import world_map
