@@ -3,20 +3,11 @@ Countries
 
 
    .. toctree::
-      _menu_bbx_countries_most_frequent
-
-
-   .. toctree::
-      _menu_bbx_countries_most_cited
-
-
-   .. toctree::
+      most_frequent_countries
+      most_global_cited_countries
+      most_local_cited_countries
+      countries_production_over_time
       country_impact
-
-
-   .. toctree::
-      _menu_bbx_countries_production
-
 
 
 ---

@@ -33,7 +33,7 @@ def most_global_cited_institutions(
     """Most global cited institutions."""
 
     return chart(
-        column="authors",
+        column="institutions",
         directory=directory,
         metric="global_citations",
         top_n=top_n,

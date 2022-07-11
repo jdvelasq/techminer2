@@ -39,7 +39,7 @@ def most_local_cited_authors(
     """Most Local Cited Authors (from Reference Lists)."""
 
     return chart(
-        column="source_abbr",
+        column="authors",
         directory=directory,
         top_n=top_n,
         min_occ=None,

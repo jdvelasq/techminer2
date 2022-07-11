@@ -127,6 +127,7 @@ from .map_chart import map_chart
 from .matrix_viewer import matrix_viewer
 from .most_frequent_authors import most_frequent_authors
 from .most_frequent_countries import most_frequent_countries
+from .most_frequent_institutions import most_frequent_institutions
 from .most_frequent_sources import most_frequent_sources
 from .most_frequent_words import most_frequent_words
 from .most_global_cited_authors import most_global_cited_authors

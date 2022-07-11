@@ -39,7 +39,7 @@ def most_local_cited_countries(
     """Most Local Cited Countries (from Reference Lists)."""
 
     return chart(
-        column="source_abbr",
+        column="countries",
         directory=directory,
         top_n=top_n,
         min_occ=None,

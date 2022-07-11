@@ -2,19 +2,12 @@ Institutions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    .. toctree::
-      _menu_bbx_institutions_most_frequent
-
-
-   .. toctree::
-      _menu_bbx_institutions_most_cited
-
-
-   .. toctree::
+      most_frequent_institutions
+      most_global_cited_institutions
+      most_local_cited_institutions
+      institutions_production_over_time
       institution_impact
 
-   .. toctree::
-      _menu_bbx_institutions_production
-
-
+   
       
 

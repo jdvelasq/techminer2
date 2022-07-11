@@ -5,21 +5,7 @@ Authors
       most_frequent_authors
       most_global_cited_authors
       most_local_cited_authors
-      author_impact
-
-
-   .. toctree::
-      author_impact
-
-
-   .. toctree::
-      _menu_bbx_authors_production
-
-
-
-
-----
-
+      authors_production_over_time
 
    * Lotka's Law:
 
@@ -28,6 +14,8 @@ Authors
 
       * Separar indicadores
 
+   .. toctree::
+      author_impact
 
 
-      
+
