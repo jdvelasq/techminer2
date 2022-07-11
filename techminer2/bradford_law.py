@@ -1,133 +1,102 @@
 """
-Bradford's Law (TODO)
+Bradford's Law
 ===============================================================================
 
 
 >>> from techminer2 import *
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/images/bradford.png"
->>> bradford_law(directory=directory).savefig(file_name)
+>>> file_name = "sphinx/_static/bradford_law.html"
 
-.. image:: images/bradford.png
-    :width: 700px
-    :align: center
+>>> bradford_law(directory=directory).write_html(file_name)
+
+.. raw:: html
+
+    <iframe src="_static/bradford_law.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
->>> bradford_law(directory=directory, plot=False).head(5)
-                 iso_source_name  num_documents  ...  cum_num_documents    zone
-0                 SUSTAINABILITY             15  ...                 15  zone 1
-1                FINANCIAL INNOV             11  ...                 26  zone 1
-2  J OPEN INNOV: TECHNOL MARK CO              8  ...                 34  zone 1
-3                   E3S WEB CONF              7  ...                 41  zone 1
-4          FRONTIER ARTIF INTELL              5  ...                 46  zone 1
-<BLANKLINE>
-[5 rows x 5 columns]
+>>> bradford_law(
+...     directory=directory,
+...     plot=False,
+... ).head(5)
+                     no  OCC  cum_OCC  global_citations  zone
+source_abbr                                                  
+CEUR WORKSHOP PROC    1    5        5                 2     1
+STUD COMPUT INTELL    2    4        9                 3     1
+JUSLETTER IT          3    4       13                 0     1
+EUR BUS ORG LAW REV   4    3       16                65     1
+J BANK REGUL          5    3       19                29     1
 
 
 """
+import plotly.express as px
 
-
-import matplotlib
-import matplotlib.pyplot as plt
-import numpy as np
-
-from ._read_records import read_filtered_records
+from .source_clustering import source_clustering
 
 
 def bradford_law(
-    top_n=10,
-    cmap="Greys",
-    figsize=(8, 6),
     directory="./",
+    database="documents",
     plot=True,
 ):
 
-    # -----------------------------------------------------------------------------------
-    documents = read_filtered_records(directory)
-    documents = documents.copy()
-    documents = documents.assign(num_documents=1)
-    sources = documents.groupby("iso_source_name", as_index=False).agg(
-        {
-            "num_documents": np.sum,
-            "global_citations": np.sum,
-        }
-    )
-    sources["global_citations"] = sources["global_citations"].map(int)
-    sources = sources.sort_values(
-        by=["num_documents", "global_citations", "iso_source_name"],
-        ascending=[False, False, True],
-    )
-    sources = sources.reset_index(drop=True)
-    sources = sources.assign(cum_num_documents=sources.num_documents.cumsum())
-    num_documents_per_zone = int(len(documents) / 3)
-    sources["zone"] = np.where(
-        sources.cum_num_documents <= num_documents_per_zone,
-        "zone 1",
-        np.where(
-            sources.cum_num_documents <= 2 * num_documents_per_zone, "zone 2", "zone 3"
-        ),
+    indicators = source_clustering(
+        directory=directory,
+        database=database,
     )
 
     if plot is False:
-        return sources
+        return indicators
 
-    core_sources = sources[sources.cum_num_documents <= num_documents_per_zone]
-
-    # -----------------------------------------------------------------------------------
-
-    n_sources = len(sources)
-    n_core_sources = len(core_sources)
-    num_records_by_source = sources.num_documents.tolist()
-
-    matplotlib.rc("font")
-    fig, ax_ = plt.subplots(figsize=figsize)
-
-    cmap = plt.cm.get_cmap(cmap)
-    color = cmap(0.6)
-
-    ax_.plot(
-        list(range(1, n_sources + 1)),
-        num_records_by_source,
-        linestyle="-",
+    fig = px.line(
+        indicators,
+        x="no",
+        y="OCC",
+        title="Source Clustering through Bradford's Law",
+        markers=True,
+        hover_data=[indicators.index, "OCC"],
+        log_x=True,
+    )
+    fig.update_traces(
+        marker=dict(size=5, line=dict(color="darkslategray", width=1)),
+        marker_color="rgb(171,171,171)",
+        line=dict(color="darkslategray"),
+    )
+    fig.update_layout(
+        paper_bgcolor="white",
+        plot_bgcolor="white",
+        xaxis_title=None,
+        xaxis_showticklabels=False,
+    )
+    fig.update_yaxes(
+        linecolor="gray",
         linewidth=2,
-        color="k",
+        gridcolor="lightgray",
+        griddash="dot",
+    )
+    fig.update_xaxes(
+        linecolor="gray",
+        linewidth=2,
+        gridcolor="lightgray",
+        griddash="dot",
+        tickangle=270,
     )
 
-    ax_.fill_between(
-        list(range(1, n_sources + 1)),
-        num_records_by_source,
-        color=color,
-        alpha=0.6,
+    core = len(indicators.loc[indicators.zone == 1])
+
+    fig.add_shape(
+        type="rect",
+        x0=1,
+        y0=0,
+        x1=core,
+        y1=indicators.OCC.max(),
+        line=dict(
+            color="lightgrey",
+            width=2,
+        ),
+        fillcolor="lightgrey",
+        opacity=0.2,
     )
 
-    ax_.axvspan(
-        1,
-        n_core_sources + 1,
-        color=color,
-        alpha=0.2,
-    )
+    fig.data = fig.data[::-1]
 
-    for side in ["top", "right", "left", "bottom"]:
-        ax_.spines[side].set_visible(False)
-
-    ax_.set_xscale("log")
-
-    ax_.grid(axis="y", color="lightgray", linestyle=":")
-    ax_.grid(axis="x", color="lightgray", linestyle=":")
-    ax_.set_ylabel("Num Documents", fontsize=7)
-
-    ax_.tick_params(axis="x", labelrotation=90)
-
-    ax_.set_xticks(list(range(1, top_n + 1)))
-    # ax_.get_xaxis().set_major_formatter(matplotlib.ticker.ScalarFormatter())
-    ax_.set_xticklabels(sources.iso_source_name.head(top_n).tolist(), fontsize=7)
-
-    ax_.set_xlim(1, n_sources)
-    ax_.set_ylim(0, max(num_records_by_source))
-
-    for item in ax_.get_yticklabels():
-        item.set_fontsize(7)
-
-    ax_.set_title("Bradford's Law", fontsize=10, loc="left", color="k")
-    fig.set_tight_layout(True)
     return fig

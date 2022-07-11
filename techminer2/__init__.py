@@ -153,6 +153,7 @@ from .pie_plot import pie_plot
 from .production_over_time_chart import production_over_time_chart
 from .rpys import rpys
 from .sankey_diagram import sankey_diagram
+from .source_clustering import source_clustering
 from .source_dynamics import source_dynamics
 from .source_impact import source_impact
 from .sources_production_over_time import sources_production_over_time
