@@ -19,7 +19,7 @@ from .world_map import world_map
 
 def country_scientific_production(
     directory="./",
-    metric="num_documents",
+    metric="OCC",
     database="documents",
     colormap="Blues",
 ):

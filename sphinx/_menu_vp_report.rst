@@ -8,23 +8,15 @@ Report
         line_chart
         cleveland_chart
         wordcloud
-
-
+        bubble_chart
+        gantt_chart
+        matrix_viewer
+        world_map
 
 
     .. toctree::
         heat_map
-        bubble_chart
-        gantt_chart
-        matrix_viewer
-
-    .. toctree::
         
-
-    .. toctree::
-        
-
-
     .. toctree::
         production_over_time_chart
 
@@ -44,7 +36,7 @@ Report
         cluster_map
 
     .. toctree::
-        world_map
+        
 
     .. toctree::
         plot_classification
