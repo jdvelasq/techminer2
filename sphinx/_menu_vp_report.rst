@@ -1,21 +1,41 @@
 Report
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+    * **List view**:
 
-    .. toctree::
-        column_chart
+        .. toctree::
+            column_chart
 
-    .. toctree::
-        bar_chart
+        .. toctree::
+            bar_chart
 
-    .. toctree::
-        pie_chart
+        .. toctree::
+            pie_chart
 
-    .. toctree::
-        line_chart
+        .. toctree::
+            line_chart
 
-    .. toctree::
-        cleveland_chart
+        .. toctree::
+            cleveland_chart
+
+
+    * **Matrixes**:
+
+        .. toctree::
+            heat_map
+
+        .. toctree::
+            bubble_chart
+
+        .. toctree::
+            matrix_viewer
+
+        .. toctree::
+            gantt_chart
+
+
+        .. toctree::
+            production_over_time_chart
 
 
 -----
@@ -24,21 +44,14 @@ Report
 
 -----
 
+-----
 
+-----
 
 
 
     .. toctree::
         word_cloud
-
-    .. toctree::
-        bubble_chart
-
-    .. toctree::
-        gantt_chart
-
-    .. toctree::
-        matrix_viewer
 
     .. toctree::
         cluster_map
@@ -55,8 +68,6 @@ Report
         .. toctree::
             tree_map
 
-        .. toctree::
-            production_over_time_chart
 
         .. toctree::
             cum_production_over_time_chart

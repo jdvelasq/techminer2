@@ -31,7 +31,7 @@ Matrix
     * **Heat map** of a co-occurrence, auto-correlation, or cross-correlation matrix:
 
         .. toctree::
-            heat_map
+            
 
 
 

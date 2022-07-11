@@ -19,24 +19,20 @@ with the data.
     <iframe src="_static/most_local_cited_references.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .chart import chart
+from .most_cited_documents import most_cited_documents
 
 
 def most_local_cited_references(
     directory="./",
     top_n=20,
-    plot="cleveland",
 ):
     """Most local cited references."""
 
-    return chart(
-        column="source_abbr",
-        directory=directory,
-        top_n=top_n,
-        min_occ=None,
-        max_occ=None,
-        title="Most Local Cited References",
-        plot=plot,
-        database="references",
+    return most_cited_documents(
         metric="local_citations",
+        top_n=top_n,
+        directory=directory,
+        title="Most Local Cited References",
+        database="references",
+        use_filter=False,
     )
