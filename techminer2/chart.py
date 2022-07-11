@@ -18,12 +18,13 @@ def chart(
     title=None,
     plot="bar",
     database="documents",
+    metric="OCC",
 ):
     """Plots the number of documents by source using the specified plot."""
 
     indicators = list_view(
         column=column,
-        metric="OCC",
+        metric=metric,
         top_n=top_n,
         min_occ=min_occ,
         max_occ=max_occ,
@@ -42,6 +43,6 @@ def chart(
 
     return plot_function(
         dataframe=indicators,
-        metric="OCC",
+        metric=metric,
         title=title,
     )

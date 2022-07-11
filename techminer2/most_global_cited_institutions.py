@@ -19,7 +19,7 @@ Most Global Cited Institutions
     <iframe src="_static/most_global_cited_institutions.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .most_global_cited_items import most_global_cited_items
+from .chart import chart
 
 
 def most_global_cited_institutions(
@@ -28,17 +28,18 @@ def most_global_cited_institutions(
     min_occ=None,
     max_occ=None,
     plot="cleveland",
-    title="Most Global Cited Institutions",
+    database="documents",
 ):
     """Most global cited institutions."""
 
-    return most_global_cited_items(
-        column="institutions",
+    return chart(
+        column="authors",
         directory=directory,
+        metric="global_citations",
         top_n=top_n,
         min_occ=min_occ,
         max_occ=max_occ,
-        title=title,
+        title="Most Global Cited Institutions",
         plot=plot,
-        database="documents",
+        database=database,
     )

@@ -1,5 +1,5 @@
 """
-Most Global Cited Sources in `documents`
+Most Global Cited Sources
 ===============================================================================
 
 >>> from techminer2 import *
@@ -19,7 +19,7 @@ Most Global Cited Sources in `documents`
     <iframe src="_static/most_global_cited_sources.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .most_global_cited_items import most_global_cited_items
+from .chart import chart
 
 
 def most_global_cited_sources(
@@ -28,17 +28,18 @@ def most_global_cited_sources(
     min_occ=None,
     max_occ=None,
     plot="cleveland",
-    title="Most Global Cited Sources",
+    database="documents",
 ):
-    """Most global cited sources in `documents`."""
+    """Most global cited sources."""
 
-    return most_global_cited_items(
+    return chart(
         column="source_abbr",
         directory=directory,
+        metric="global_citations",
         top_n=top_n,
         min_occ=min_occ,
         max_occ=max_occ,
-        title=title,
+        title="Most Global Cited Sources",
         plot=plot,
-        database="documents",
+        database=database,
     )

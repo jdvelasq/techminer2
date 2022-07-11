@@ -1,5 +1,5 @@
 """
-Most local cited authors (from reference lists)
+Most Local Cited Authors
 ===============================================================================
 
 See :doc:`column indicators <column_indicators>` to obtain a `pandas.Dataframe` 
@@ -28,13 +28,7 @@ with the data. In this case, use:
     <iframe src="_static/most_local_cited_authors.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .bar_plot import bar_plot
-from .cleveland_plot import cleveland_plot
-from .column_plot import column_plot
-from .line_plot import line_plot
-from .pie_plot import pie_plot
-from .list_view import list_view
-from .wordcloud import wordcloud
+from .chart import chart
 
 
 def most_local_cited_authors(
@@ -42,31 +36,16 @@ def most_local_cited_authors(
     top_n=20,
     plot="cleveland",
 ):
-    """Most local cited authors from reference lists."""
+    """Most Local Cited Authors (from Reference Lists)."""
 
-    plot_function = {
-        "bar": bar_chart,
-        "column": column_chart,
-        "line": line_chart,
-        "circle": pie_chart,
-        "cleveland": cleveland_chart,
-        "wordcloud": wordcloud,
-    }[plot]
-
-    indicators = list_view(
-        column="authors",
-        metric="local_citations",
+    return chart(
+        column="source_abbr",
+        directory=directory,
         top_n=top_n,
         min_occ=None,
         max_occ=None,
-        directory=directory,
+        title="Most Local Cited Authors (from Reference Lists)",
+        plot=plot,
         database="references",
-    )
-
-    title = "Most local cited authors from reference lists"
-
-    return plot_function(
-        dataframe=indicators,
         metric="local_citations",
-        title=title,
     )

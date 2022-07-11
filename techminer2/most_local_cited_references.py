@@ -1,5 +1,5 @@
 """
-Most local cited references
+Most Local Cited References
 ===============================================================================
 
 See :doc:`document indicators <document_indicators>` to obtain a `pandas.Dataframe` 
@@ -19,19 +19,24 @@ with the data.
     <iframe src="_static/most_local_cited_references.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .most_cited_documents import most_cited_documents
+from .chart import chart
 
 
 def most_local_cited_references(
-    top_n=20,
     directory="./",
+    top_n=20,
+    plot="cleveland",
 ):
     """Most local cited references."""
-    return most_cited_documents(
-        metric="local_citations",
-        top_n=top_n,
+
+    return chart(
+        column="source_abbr",
         directory=directory,
-        title="Most local cited references",
+        top_n=top_n,
+        min_occ=None,
+        max_occ=None,
+        title="Most Local Cited References",
+        plot=plot,
         database="references",
-        use_filter=False,
+        metric="local_citations",
     )

@@ -3,29 +3,22 @@ Sources
 
    .. toctree::
       most_frequent_sources
-      
-
-   .. toctree::
-      _menu_bbx_sources_most_cited
-
-
-   .. toctree::
-      source_impact
-
-
-   .. toctree::
-      _menu_bbx_sources_production
-
-
-
-----
+      most_global_cited_sources
+      most_local_cited_sources
 
    * Bradford Law
 
       
       .. toctree::
-         bradford_law     
+         bradford_law
 
       .. toctree::
          core_sources
+
+   .. toctree::      
+      source_impact
+      sources_production_over_time
+
+
+   
 

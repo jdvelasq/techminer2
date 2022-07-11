@@ -3,10 +3,9 @@ Authors
 
    .. toctree::
       most_frequent_authors
-
-
-   .. toctree::
-      _menu_bbx_authors_most_cited
+      most_global_cited_authors
+      most_local_cited_authors
+      author_impact
 
 
    .. toctree::

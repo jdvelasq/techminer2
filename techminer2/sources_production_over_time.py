@@ -20,8 +20,7 @@ from .production_over_time_chart import production_over_time_chart
 
 
 def sources_production_over_time(
-    top_n=10,
-    directory="./",
+    top_n=10, directory="./", title="Sources' Production over Time"
 ):
     """Plots source production over time."""
 
@@ -29,5 +28,5 @@ def sources_production_over_time(
         column="source_abbr",
         top_n=top_n,
         directory=directory,
-        title="Sources' production over time",
+        title=title,
     )

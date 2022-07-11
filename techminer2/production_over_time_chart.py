@@ -35,6 +35,7 @@ def production_over_time_chart(
     top_n=10,
     directory="./",
     title=None,
+    metric="OCC",
 ):
     """Production over time."""
 
@@ -75,7 +76,7 @@ def production_over_time_chart(
         indicators_by_year,
         x="Year",
         y=column.replace("_", " ").title(),
-        size="OCC",
+        size=metric,
         hover_data=indicators_by_year.columns.to_list(),
         title=title,
         color=column.replace("_", " ").title(),
@@ -139,11 +140,11 @@ def _compute_production_over_time(
         }
     )
 
-    indicators_by_year = indicators_by_year.rename(
-        columns={
-            "cum_OCC": "Cum OCC",
-        }
-    )
+    # indicators_by_year = indicators_by_year.rename(
+    #     columns={
+    #         "cum_OCC": "Cum OCC",
+    #     }
+    # )
 
     return indicators_by_year
 

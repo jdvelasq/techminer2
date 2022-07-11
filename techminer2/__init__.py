@@ -9,7 +9,6 @@ from .apply_institutions_thesaurus import apply_institutions_thesaurus
 from .apply_thesaurus import apply_thesaurus
 from .association_index import association_index
 from .author_impact import author_impact
-from .authors_cum_production_over_time import authors_cum_production_over_time
 from .authors_documents import authors_documents
 from .authors_production_over_time import authors_production_over_time
 from .authors_production_per_year import authors_production_per_year
@@ -62,7 +61,6 @@ from .column_plot import column_plot
 from .core_sources import core_sources
 from .correlation_map import correlation_map
 from .corresponding_authors_country import corresponding_authors_country
-from .countries_cum_production_over_time import countries_cum_production_over_time
 from .countries_production_over_time import countries_production_over_time
 from .countries_production_per_year import countries_production_per_year
 from .country_impact import country_impact
@@ -77,7 +75,6 @@ from .create_thesaurus import create_thesaurus
 from .create_words_thesaurus import create_words_thesaurus
 from .cross_corr_matrix import cross_corr_matrix
 from .cross_corr_matrix_list import cross_corr_matrix_list
-from .cum_production_over_time_chart import cum_production_over_time_chart
 from .document_indicators import document_indicators
 from .document_viewer import document_viewer
 from .documents_by_author import documents_by_author
@@ -113,7 +110,6 @@ from .impact_indicators import impact_indicators
 from .import_references import import_references
 from .import_scopus_files import import_scopus_files
 from .institution_impact import institution_impact
-from .institutions_cum_production_over_time import institutions_cum_production_over_time
 from .institutions_production_over_time import institutions_production_over_time
 from .institutions_production_per_year import institutions_production_per_year
 from .items_associations_for_a_item import items_associations_for_a_item
@@ -129,38 +125,16 @@ from .lotka_law import lotka_law
 from .main_information import main_information
 from .map_chart import map_chart
 from .matrix_viewer import matrix_viewer
-from .most_frequent_author_keywords import most_frequent_words
 from .most_frequent_authors import most_frequent_authors
-from .most_frequent_citing_countries import most_frequent_citing_countries
-from .most_frequent_citing_institutions import most_frequent_citing_institutions
 from .most_frequent_countries import most_frequent_countries
-from .most_frequent_countries_in_references import most_frequent_countries_in_references
-from .most_frequent_institutions import most_frequent_institutions
-from .most_frequent_institutions_in_references import (
-    most_frequent_institutions_in_references,
-)
 from .most_frequent_sources import most_frequent_sources
 from .most_frequent_words import most_frequent_words
 from .most_global_cited_authors import most_global_cited_authors
-from .most_global_cited_authors_in_cited_by import most_global_cited_authors_in_cited_by
-from .most_global_cited_authors_in_refs import most_global_cited_authors_in_refs
 from .most_global_cited_countries import most_global_cited_countries
-from .most_global_cited_countries_in_cited_by import (
-    most_global_cited_countries_in_cited_by,
-)
-from .most_global_cited_countries_in_refs import most_global_cited_countries_in_refs
 from .most_global_cited_documents import most_global_cited_documents
 from .most_global_cited_institutions import most_global_cited_institutions
-from .most_global_cited_institutions_in_cited_by import (
-    most_global_cited_institutions_in_cited_by,
-)
-from .most_global_cited_institutions_in_refs import (
-    most_global_cited_institutions_in_refs,
-)
 from .most_global_cited_references import most_global_cited_references
 from .most_global_cited_sources import most_global_cited_sources
-from .most_global_cited_sources_in_cited_by import most_global_cited_sources_in_cited_by
-from .most_global_cited_sources_in_refs import most_global_cited_sources_in_refs
 from .most_local_cited_authors import most_local_cited_authors
 from .most_local_cited_countries import most_local_cited_countries
 from .most_local_cited_documents import most_local_cited_documents
@@ -181,7 +155,6 @@ from .production_over_time_chart import production_over_time_chart
 from .rpys import rpys
 from .sankey_diagram import sankey_diagram
 from .source_impact import source_impact
-from .sources_cum_production_over_time import sources_cum_production_over_time
 from .sources_production_over_time import sources_production_over_time
 from .stemming import stemming_and, stemming_or
 from .summary_view import summary_view
