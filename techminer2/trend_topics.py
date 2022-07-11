@@ -4,28 +4,35 @@ Trend Topics
 
 >>> from techminer2 import *
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/images/trend_topics.png"
->>> trend_topics('author_keywords', directory=directory).savefig(file_name)
+>>> file_name = "sphinx/_static/trend_topics.html"
 
-.. image:: images/trend_topics.png
-    :width: 700px
-    :align: center
-
->>> trend_topics('author_keywords', directory=directory, plot=False).head()
-pub_year                num_documents  year_q1  ...  global_citations  rn
-author_keywords                                 ...                      
-fintech                           139     2016  ...              1285   0
-financial technologies             28     2016  ...               225   1
-innovation                         13     2016  ...               249   2
-bank                               13     2016  ...               193   3
-financial service                  11     2016  ...               300   4
+>>> trend_topics(
+...     'author_keywords',
+...     directory=directory, 
+...     plot=False,
+... ).head()
+year                               OCC  year_q1  ...  global_citations  rn
+author_keywords                                  ...                      
+regtech                             70     2016  ...               462   0
+fintech                             42     2016  ...               406   1
+regulatory technologies (regtech)   12     2016  ...                47   2
+financial technologies               9     2016  ...                32   3
+financial regulation                 8     2016  ...                91   4
 <BLANKLINE>
 [5 rows x 6 columns]
 
-"""
+>>> trend_topics(
+...     'author_keywords', 
+...     directory=directory,
+... ).write_html(file_name)
 
-import matplotlib.pyplot as plt
+.. raw:: html
+
+    <iframe src="_static/trend_topics.html" height="900px" width="100%" frameBorder="0"></iframe>
+
+"""
 import numpy as np
+import plotly.graph_objects as go
 
 from .annual_occurrence_matrix import annual_occurrence_matrix
 from .column_indicators import column_indicators
@@ -33,13 +40,13 @@ from .column_indicators import column_indicators
 
 def trend_topics(
     column,
-    n_keywords_per_year=5,
+    n_words_per_year=5,
     directory="./",
     plot=True,
-    figsize=(6, 6),
 ):
+    """Trend topics"""
 
-    keywords_by_year = annual_occurrence_matrix(
+    words_by_year = annual_occurrence_matrix(
         column=column,
         min_occ=1,
         directory=directory,
@@ -49,10 +56,10 @@ def trend_topics(
     year_med = []
     year_q3 = []
 
-    for i_row, row in keywords_by_year.iterrows():
+    for _, row in words_by_year.iterrows():
 
         sequence = []
-        for item, year in zip(row, keywords_by_year.columns):
+        for item, year in zip(row, words_by_year.columns):
             if item > 0:
                 sequence.extend([year] * int(item))
 
@@ -60,73 +67,73 @@ def trend_topics(
         year_med.append(int(round(np.percentile(sequence, 0.50))))
         year_q3.append(int(round(np.percentile(sequence, 0.75))))
 
-    keywords_by_year["year_q1"] = year_q1
-    keywords_by_year["year_med"] = year_med
-    keywords_by_year["year_q3"] = year_q3
+    words_by_year["year_q1"] = year_q1
+    words_by_year["year_med"] = year_med
+    words_by_year["year_q3"] = year_q3
 
-    keywords_by_year = keywords_by_year.assign(
-        num_documents=keywords_by_year[keywords_by_year.columns[:-3]].sum(axis=1)
+    words_by_year = words_by_year.assign(
+        OCC=words_by_year[words_by_year.columns[:-3]].sum(axis=1)
     )
 
-    keywords_by_year = keywords_by_year[
-        ["num_documents", "year_q1", "year_med", "year_q3"]
-    ]
+    words_by_year = words_by_year[["OCC", "year_q1", "year_med", "year_q3"]]
 
     global_citations = column_indicators(column, directory=directory).global_citations
 
-    keyword2citation = dict(zip(global_citations.index, global_citations.values))
-    keywords_by_year = keywords_by_year.assign(
-        global_citations=keywords_by_year.index.map(keyword2citation)
+    word2citation = dict(zip(global_citations.index, global_citations.values))
+    words_by_year = words_by_year.assign(
+        global_citations=words_by_year.index.map(word2citation)
     )
 
-    keywords_by_year = keywords_by_year.sort_values(
-        by=["year_med", "num_documents", "global_citations"],
+    words_by_year = words_by_year.sort_values(
+        by=["year_med", "OCC", "global_citations"],
         ascending=[True, False, False],
     )
 
-    keywords_by_year = keywords_by_year.assign(
-        rn=keywords_by_year.groupby(["year_med"]).cumcount()
+    words_by_year = words_by_year.assign(
+        rn=words_by_year.groupby(["year_med"]).cumcount()
     ).sort_values(["year_med", "rn"], ascending=[True, True])
 
-    keywords_by_year = keywords_by_year.query("rn < @n_keywords_per_year")
+    words_by_year = words_by_year.query(f"rn < {n_words_per_year}")
 
     if plot is False:
-        return keywords_by_year
+        return words_by_year
 
-    min_documents = keywords_by_year.num_documents.min()
-    max_documents = keywords_by_year.num_documents.max()
-    keywords_by_year = keywords_by_year.assign(
-        height=0.1
-        + 0.85
-        * (keywords_by_year.num_documents - min_documents)
-        / (max_documents - min_documents)
+    min_occ = words_by_year.OCC.min()
+    max_occ = words_by_year.OCC.max()
+    words_by_year = words_by_year.assign(
+        height=0.15 + 0.82 * (words_by_year.OCC - min_occ) / (max_occ - min_occ)
     )
-    keywords_by_year = keywords_by_year.assign(
-        width=keywords_by_year.year_q3 - keywords_by_year.year_q1 + 1
+    words_by_year = words_by_year.assign(
+        width=words_by_year.year_q3 - words_by_year.year_q1 + 1
     )
 
-    fig = plt.Figure(figsize=figsize)
-    ax = fig.subplots()
-
-    ax.barh(
-        y=keywords_by_year.index,
-        width=keywords_by_year.width,
-        # height=0.8,
-        height=keywords_by_year.height,
-        left=keywords_by_year.year_q1,
-        alpha=0.8,
+    fig = go.Figure(
+        go.Bar(
+            x=words_by_year.width,
+            y=words_by_year.index,
+            base=words_by_year.year_q1,
+            width=words_by_year.height,
+            orientation="h",
+            marker_color="lightslategrey",
+        ),
     )
-
-    for x in ["top", "right", "bottom"]:
-        ax.spines[x].set_visible(False)
-
-    ax.grid(axis="x", color="gray", linestyle=":")
-    xticks = [str(int(x)) for x in ax.get_xticks()]
-    ax.set_xticklabels(xticks, rotation=90, ha="left", fontsize=9)
-    ax.spines["left"].set_color("dimgray")
-    ax.tick_params(axis="x", labelsize=7)
-    ax.tick_params(axis="y", labelsize=7)
-
-    fig.set_tight_layout(True)
+    fig.update_layout(
+        paper_bgcolor="white",
+        plot_bgcolor="white",
+    )
+    fig.update_yaxes(
+        linecolor="gray",
+        linewidth=1,
+        gridcolor="lightgray",
+        griddash="dot",
+    )
+    fig.update_xaxes(
+        linecolor="gray",
+        linewidth=1,
+        gridcolor="lightgray",
+        griddash="dot",
+        tickangle=270,
+        dtick=1.0,
+    )
 
     return fig
