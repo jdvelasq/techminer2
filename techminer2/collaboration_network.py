@@ -8,7 +8,7 @@ Collaboration Network
 
     * Authors.
 
-    * Institutions. 
+    * Institutions.
 
     * Countries.
 
