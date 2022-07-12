@@ -49,10 +49,7 @@ from .co_occurrence_network_summarization import co_occurrence_network_summariza
 from .co_occurrence_svd_map import co_occurrence_svd_map
 from .co_occurrence_svd_mds_map import co_occurrence_svd_mds_map
 from .collaboration_indicators import collaboration_indicators
-from .collaboration_network_communities import collaboration_network_communities
-from .collaboration_network_degree_plot import collaboration_network_degree_plot
-from .collaboration_network_graph import collaboration_network_graph
-from .collaboration_network_indicators import collaboration_network_indicators
+from .collaboration_network import collaboration_network
 from .column_chart import column_chart
 from .column_documents import column_documents
 from .column_indicators import column_indicators

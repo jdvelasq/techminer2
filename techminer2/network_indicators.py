@@ -33,7 +33,7 @@ import pandas as pd
 def network_indicators(graph):
     """Network indicators"""
 
-    nodes = [node for node in graph.nodes()]
+    nodes = list(graph.nodes())
     group = [data["group"] for _, data in graph.nodes(data=True)]
     betweenness = nx.betweenness_centrality(graph)
     closeness = nx.closeness_centrality(graph)

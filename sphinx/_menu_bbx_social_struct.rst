@@ -15,13 +15,10 @@ Social Structure
       As a consequence, many implemented plots and analysis are valid for analyzing a 
       co-occurrence network, including heat maps and other plot types.
 
-   .. toctree::
-      :maxdepth: 1
 
-      collaboration_network_communities
-      collaboration_network_degree_plot
-      collaboration_network_graph
-      collaboration_network_indicators
+   .. toctree::
+      collaboration_network
+
       
 
    **New:**
