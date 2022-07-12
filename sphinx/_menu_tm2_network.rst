@@ -8,8 +8,11 @@ Network
 
 .. toctree::
 
+   co_occ_network
    network_degree_plot
    network_community_detection
+   network_communities
+   
 
 ----
 
@@ -22,8 +25,6 @@ Network
 .. toctree::
     :maxdepth: 1
 
-    network_communities
-    
     network_indicators
     network_map
     network_plot

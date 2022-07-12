@@ -1,5 +1,5 @@
 """
-Co-occurrence network
+Co-occurrence Network
 ===============================================================================
 
 Builds a network from a matrix
