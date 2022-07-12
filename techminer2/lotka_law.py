@@ -7,172 +7,146 @@ Lotka's Law
 >>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/lotka_law.html"
 
->>> lotka_law(directory=directory).write_html(file_name)
+>>> lotka_law(directory=directory).plot_.write_html(file_name)
 
 .. raw:: html
 
     <iframe src="_static/lotka_law.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
->>> lotka_law(directory=directory, plot=False)
-   Num Authors        %  ...  Acum Num Documents % Acum Num Documents
-0            1   0.52 %  ...                   7                7.45%
-1            1   0.52 %  ...                   7                7.45%
-2            2   1.04 %  ...                   7                7.45%
-3            2   1.04 %  ...                  10               10.64%
-4            9   4.66 %  ...                  21               22.34%
-5          178  92.23 %  ...                  94               100.0%
+>>> lotka_law(directory=directory).table_
+   Documents Written  ...  Prop Theoretical Authors
+0                  1  ...                     0.679
+1                  2  ...                     0.170
+2                  3  ...                     0.075
+3                  4  ...                     0.042
+4                  6  ...                     0.019
+5                  7  ...                     0.014
 <BLANKLINE>
-[6 rows x 9 columns]
-
+[6 rows x 5 columns]
 
 """
-import pandas as pd
-import plotly.express as px
+import plotly.graph_objects as go
 
-from ._read_records import read_records
 from .column_indicators import column_indicators
+
+
+class _Results:
+    def __init__(self, plot, table):
+        self.plot_ = plot
+        self.table_ = table
 
 
 def lotka_law(
     directory="./",
-    plot=True,
 ):
     """Lotka's Law"""
 
-    data = _lotka_core_authors(directory)
+    indicators = _core_authors(directory)
+    results = _Results(table=indicators, plot=_plot_lotka_law(indicators))
 
-    if plot is False:
-        return data
+    return results
 
-    # fig, ax_ = plt.subplots(figsize=figsize)
-    # cmap = plt.cm.get_cmap(cmap)
-    # color = cmap(0.6)
 
-    percentage_authors = data["%"].map(lambda w: float(w[:-2])).tolist()
-    percentage_authors.reverse()
-    documents_written = data["Documents written per Author"].tolist()
-    documents_written.reverse()
-    total_authors = data["Num Authors"].max()
-    theoretical = [total_authors / float(x * x) for x in documents_written]
-    total_theoretical = sum(theoretical)
-    perc_theoretical_authors = [w / total_theoretical * 100 for w in theoretical]
+def _plot_lotka_law(indicators):
 
-    fig = px.area(
-        x=documents_written,
-        y=percentage_authors,
-        title="Lotka's Law",
-        markers=True,
+    fig = go.Figure()
+    fig.add_trace(
+        go.Scatter(
+            x=indicators["Documents Written"],
+            y=indicators["Proportion of Authors"],
+            fill="tozeroy",
+            name="Real",
+            opacity=0.5,
+            marker_color="darkslategray",
+        )
+    )
+    fig.add_trace(
+        go.Scatter(
+            x=indicators["Documents Written"],
+            y=indicators["Prop Theoretical Authors"],
+            fill="tozeroy",
+            name="Theoretical",
+            opacity=0.5,
+            marker_color="lightgrey",
+        )
+    )
+    fig.update_layout(
+        paper_bgcolor="white",
+        plot_bgcolor="white",
+        title="Author Productivity through Lotka's Law",
+    )
+
+    fig.update_traces(
+        marker=dict(
+            size=7,
+            line=dict(color="darkslategray", width=2),
+        ),
+    )
+    fig.update_xaxes(
+        linecolor="gray",
+        linewidth=2,
+        gridcolor="lightgray",
+        griddash="dot",
+        title="Documents Written",
+    )
+    fig.update_yaxes(
+        linecolor="gray",
+        linewidth=2,
+        gridcolor="lightgray",
+        griddash="dot",
+        title="Proportion of Authors",
     )
 
     return fig
 
-    # ax_.plot(
-    #     documents_written,
-    #     percentage_authors,
-    #     linestyle="-",
-    #     linewidth=2,
-    #     color="k",
-    # )
-    # ax_.fill_between(
-    #     documents_written,
-    #     percentage_authors,
-    #     color=color,
-    #     alpha=0.6,
-    # )
 
-    # ax_.plot(
-    #     documents_written,
-    #     perc_theoretical_authors,
-    #     linestyle=":",
-    #     linewidth=4,
-    #     color="k",
-    # )
-
-    # for side in ["top", "right", "left", "bottom"]:
-    #     ax_.spines[side].set_visible(False)
-
-    # ax_.grid(axis="y", color="gray", linestyle=":")
-    # ax_.grid(axis="x", color="gray", linestyle=":")
-    # ax_.tick_params(axis="x", labelsize=7)
-    # ax_.tick_params(axis="y", labelsize=7)
-    # ax_.set_ylabel("% of Authors", fontsize=9)
-    # ax_.set_xlabel("Documets written per Author", fontsize=9)
-
-    # ax_.set_title(
-    #     "Frequency distribution of scientific productivity",
-    #     fontsize=10,
-    #     color="dimgray",
-    #     loc="left",
-    # )
-
-    # fig.set_tight_layout(True)
-
-    # return fig
-
-
-def _lotka_core_authors(directory="./", database="documents"):
-
-    records = read_records(directory=directory, database=database, use_filter=False)
-
-    z = column_indicators(column="authors", sep=";", directory=directory)["OCC"]
-
-    authors_dict = {
-        author: num_docs for author, num_docs in zip(z.index, z) if not pd.isna(author)
-    }
+def _core_authors(directory="./", database="documents"):
 
     #
-    #  Num Authors x Documents written per Author
+    # Part 1: Computes the number of written documents per number of authors.
+    #         Read as: "178 authors write only 1 document and 1 author writes 7 documents"
     #
-    z = z.to_frame(name="OCC")
-    z = z.groupby(["OCC"]).size()
-    w = [str(round(100 * a / sum(z), 2)) + " %" for a in z]
-    z = pd.DataFrame(
-        {"Num Authors": z.tolist(), "%": w, "Documents written per Author": z.index}
+    #    Documents Written  Num Authors
+    # 0                  1          178
+    # 1                  2            9
+    # 2                  3            2
+    # 3                  4            2
+    # 4                  6            1
+    # 5                  7            1
+    #
+    indicators = column_indicators(
+        column="authors",
+        sep=";",
+        directory=directory,
+        database=database,
+        use_filter=False,
+    )[["OCC"]]
+    indicators = indicators.groupby(["OCC"], as_index=False).size()
+    indicators.columns = ["Documents Written", "Num Authors"]
+    indicators = indicators.sort_values(by="Documents Written", ascending=True)
+    indicators = indicators.reset_index(drop=True)
+    indicators = indicators[["Documents Written", "Num Authors"]]
+    indicators["Proportion of Authors"] = (
+        indicators["Num Authors"]
+        .map(lambda x: x / indicators["Num Authors"].sum())
+        .round(3)
     )
-    z = z.sort_values(["Documents written per Author"], ascending=False)
-    z["Acum Num Authors"] = z["Num Authors"].cumsum()
-    z["% Acum"] = [
-        str(round(100 * a / sum(z["Num Authors"]), 2)) + " %"
-        for a in z["Acum Num Authors"]
-    ]
-    # ---- remove explode ------------------------------------------------------------>>>
-    m = records[["authors", "record_no"]].copy()
-    m["authors"] = m["authors"].str.split(";")
-    m = m.explode("authors")
-    m["authors"] = m["authors"].str.strip()
-    # <<<--------------------------------------------------------------------------------
-    m = m.dropna()
-    m["Documents_written"] = m.authors.map(lambda w: authors_dict[w])
 
-    n = []
-    for k in z["Documents written per Author"]:
-        s = m.query("Documents_written >= " + str(k))
-        s = s[["record_no"]]
-        s = s.drop_duplicates()
-        n.append(len(s))
+    #
+    # Part 2: Computes the theoretical number of authors
+    #
+    total_authors = indicators["Num Authors"].max()
+    indicators["Theoretical Num Authors"] = (
+        indicators["Documents Written"]
+        .map(lambda x: total_authors / float(x * x))
+        .round(3)
+    )
+    total_theoretical_num_authors = indicators["Theoretical Num Authors"].sum()
+    indicators["Prop Theoretical Authors"] = (
+        indicators["Theoretical Num Authors"]
+        .map(lambda x: x / total_theoretical_num_authors)
+        .round(3)
+    )
 
-    k = []
-    for index in range(len(n) - 1):
-        k.append(n[index + 1] - n[index])
-    k = [n[0]] + k
-    z["Num Documents"] = k
-    z["% Num Documents"] = [str(round(i / max(n) * 100, 2)) + "%" for i in k]
-    z["Acum Num Documents"] = n
-    z["% Acum Num Documents"] = [str(round(i / max(n) * 100, 2)) + "%" for i in n]
-
-    z = z[
-        [
-            "Num Authors",
-            "%",
-            "Acum Num Authors",
-            "% Acum",
-            "Documents written per Author",
-            "Num Documents",
-            "% Num Documents",
-            "Acum Num Documents",
-            "% Acum Num Documents",
-        ]
-    ]
-
-    return z.reset_index(drop=True)
+    return indicators
