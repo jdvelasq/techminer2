@@ -110,6 +110,7 @@ def dynamics(
         gridcolor="lightgray",
         griddash="dot",
         tickangle=270,
+        dtick=1,
     )
     return fig
 
