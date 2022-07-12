@@ -2,61 +2,76 @@
 Network Degree Plot
 ===============================================================================
 
+
 >>> from techminer2 import *
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/images/co_occurrence_network_degree_plot.png"
->>> coc_matrix = co_occurrence_matrix(
-...     column='author_keywords', 
-...     min_occ=7, 
-...     directory=directory,
+>>> matrix_list = co_occ_matrix_list(
+...    column='author_keywords',
+...    min_occ=3,
+...    directory=directory,
 ... )
->>> from techminer2.network_api.network import network
->>> network_ = network(coc_matrix)
->>> from techminer2.network_api.network_degree_plot import network_degree_plot
->>> network_degree_plot(network_).savefig(file_name)
 
-.. image:: images/co_occurrence_network_degree_plot.png
-    :width: 700px
-    :align: center
+>>> from techminer2.co_occ_network import co_occ_network
+>>> graph = co_occ_network(matrix_list)
+>>> from techminer2.community_detection import community_detection
+>>> graph = community_detection(graph, method='louvain')
 
+>>> file_name = "sphinx/_static/network_degree_plot.html"
+>>> from techminer2.network_degree_plot import network_degree_plot
+>>> network_degree_plot(graph).write_html(file_name)
+
+.. raw:: html
+
+    <iframe src="_static/network_degree_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
+import pandas as pd
+import plotly.express as px
 
 
-import matplotlib.pyplot as plt
+def network_degree_plot(graph):
 
+    degrees = []
+    for _, adjacencies in enumerate(graph.adjacency()):
+        degrees.append((adjacencies[0], len(adjacencies[1])))
 
-def network_degree_plot(
-    network,
-    figsize=(6, 6),
-):
-    G = network["G"]
-
-    degree = [val for (_, val) in G.degree()]
-    degree = sorted(degree, reverse=True)
-
-    fig = plt.figure(figsize=figsize)
-    ax = fig.subplots()
-
-    ax.plot(degree, ".-k")
-    ax.set_xlabel("Node")
-    ax.set_ylabel("Degree")
-
-    ax.set_yticklabels(
-        ax.get_yticks(),
-        fontsize=7,
-        color="dimgray",
+    degree = pd.DataFrame(
+        {
+            "Name": [node for node, degree in degrees],
+            "Degree": [degree for node, degree in degrees],
+        }
     )
 
-    for x in ["top", "right"]:
-        ax.spines[x].set_visible(False)
+    degree = degree.sort_values(by="Degree", ascending=False)
+    degree["Node"] = range(len(degrees))
 
-    ax.spines["left"].set_color("dimgray")
-    ax.spines["bottom"].set_color("dimgray")
-    ax.spines["top"].set_visible(False)
-    ax.spines["right"].set_visible(False)
-    ax.grid(alpha=0.5)
-
-    fig.set_tight_layout(True)
-
+    fig = px.line(
+        degree,
+        x="Node",
+        y="Degree",
+        markers=True,
+        hover_data=["Name"],
+    )
+    fig.update_traces(
+        marker=dict(size=8, line=dict(color="darkslategray", width=2)),
+        marker_color="rgb(171,171,171)",
+        line=dict(color="darkslategray"),
+    )
+    fig.update_layout(
+        paper_bgcolor="white",
+        plot_bgcolor="white",
+    )
+    fig.update_yaxes(
+        linecolor="gray",
+        linewidth=2,
+        gridcolor="lightgray",
+        griddash="dot",
+    )
+    fig.update_xaxes(
+        linecolor="gray",
+        linewidth=2,
+        gridcolor="lightgray",
+        griddash="dot",
+        # tickangle=270,
+    )
     return fig
