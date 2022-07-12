@@ -4,10 +4,17 @@ Network Approach
    .. toctree::
       :maxdepth: 1
 
-      co_occurrence_network_communities
-      co_occurrence_network_degree_plot
-      co_occurrence_network_graph
-      co_occurrence_network_indicators
+      co_words_network.rst
+
+----
+
+----
+
+----
+
+
+
+
       co_occurrence_network_summarization
 
 

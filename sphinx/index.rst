@@ -35,18 +35,6 @@ package developed and tested in Python version 3.6.
     license
 
 
-    
-.. toctree::
-    :caption: TechMiner2
-    :hidden:
-    :maxdepth: 1
-    
-    _menu_tm2_data
-    _menu_tm2_basic_indicators
-    _menu_tm2_network
-    _menu_tm2_visualization
-
-
 .. toctree::
     :caption: Software comparison
     :hidden:
@@ -56,15 +44,17 @@ package developed and tested in Python version 3.6.
     _menu_vp
     _scientopy
     _menu_tlab
-    
-    
-    
 
-
+    
 .. toctree::
-    :caption: Low level API
+    :caption: TechMiner 2
     :hidden:
     :maxdepth: 1
+    
+    _menu_tm2_data
+    _menu_tm2_basic_indicators
+    _menu_tm2_network
+    _menu_tm2_visualization
 
 
 

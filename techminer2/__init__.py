@@ -48,6 +48,7 @@ from .co_occurrence_network_strategic_diagram import (
 from .co_occurrence_network_summarization import co_occurrence_network_summarization
 from .co_occurrence_svd_map import co_occurrence_svd_map
 from .co_occurrence_svd_mds_map import co_occurrence_svd_mds_map
+from .co_words_network import co_words_network
 from .collaboration_indicators import collaboration_indicators
 from .collaboration_network import collaboration_network
 from .column_chart import column_chart
@@ -165,11 +166,7 @@ from .thematic_analysis_map import thematic_analysis_map
 from .thematic_analysis_partitions import thematic_analysis_partitions
 from .thematic_analysis_themes import thematic_analysis_themes
 from .thematic_evolution_plot import thematic_evolution_plot
-from .thematic_map_communities import thematic_map_communities
-from .thematic_map_degree_plot import thematic_map_degree_plot
-from .thematic_map_indicators import thematic_map_indicators
-from .thematic_map_network import thematic_map_network
-from .thematic_map_strategic_diagram import thematic_map_strategic_diagram
+from .thematic_map import thematic_map
 from .thematic_map_summarization import thematic_map_summarization
 from .three_fields_plot import three_fields_plot
 from .time_plot import time_plot
