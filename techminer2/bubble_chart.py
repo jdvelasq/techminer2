@@ -64,6 +64,7 @@ def bubble_chart(
         mode="markers",
     )
     fig.update_xaxes(
+        side="top",
         linecolor="white",
         linewidth=1,
         gridcolor="gray",
