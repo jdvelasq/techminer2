@@ -1,7 +1,6 @@
 Factorial Approach
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-
    .. toctree::
       :maxdepth: 1
 
@@ -11,8 +10,3 @@ Factorial Approach
          factorial_analysis_mds_silhouette_scores
 
    * ``TODO: Factorial Approach / CA``
-
-
-
-
-
