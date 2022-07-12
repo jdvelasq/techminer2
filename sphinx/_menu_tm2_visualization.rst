@@ -18,27 +18,24 @@ Visualization
    word_cloud
 
 
-----
-
-----
-
-----
 
 .. toctree::
-   :maxdepth: 1
-
-   _dotted_gantt_chart
-   _gantt_chart
-   _pie_chart 
-   _world_map
-
-
-.. toctree::
-   :maxdepth: 1
-
    bubble_chart
-   timeline_chart
    heat_map
+
+----
+
+----
+
+----
+
+   
+   
+
+
+.. toctree::
+   :maxdepth: 1
+
    map_chart
    stacked_bar_chart
    stacked_column_chart
