@@ -18,12 +18,6 @@ Social Structure
 
    .. toctree::
       collaboration_network
+      collaboration_worldmap
 
       
-
-   **New:**
-
-   .. toctree::
-
-
-   * ``TODO: Collaboration WorldMap``

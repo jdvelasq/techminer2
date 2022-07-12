@@ -51,6 +51,7 @@ from .co_occurrence_svd_mds_map import co_occurrence_svd_mds_map
 from .co_words_network import co_words_network
 from .collaboration_indicators import collaboration_indicators
 from .collaboration_network import collaboration_network
+from .collaboration_worldmap import collaboration_worldmap
 from .column_chart import column_chart
 from .column_documents import column_documents
 from .column_indicators import column_indicators
