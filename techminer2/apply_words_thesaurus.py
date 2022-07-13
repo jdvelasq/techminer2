@@ -107,5 +107,21 @@ def apply_words_thesaurus(directory="./"):
             )
             data = data.assign(abstract_words=data.abstract_words.str.join("; "))
 
+        if "raw_words" in data.columns:
+            data = data.assign(words=data.raw_words.str.split(";"))
+            data = data.assign(
+                words=data.words.map(
+                    lambda x: [thesaurus.apply_as_dict(y.strip()) for y in x]
+                    if isinstance(x, list)
+                    else x
+                )
+            )
+            data = data.assign(
+                words=data.words.map(
+                    lambda x: sorted(set(x)) if isinstance(x, list) else x
+                )
+            )
+            data = data.assign(words=data.words.str.join("; "))
+
         #
         data.to_csv(file, sep=",", encoding="utf-8", index=False)
