@@ -11,8 +11,11 @@ T-LAB menu.
         :maxdepth: 1
 
         _menu_tlab_co_occ_analysis
+
         _menu_tlab_thematic_analysis
+        
         _menu_tlab_comparative_analysis
+        
         _menu_tlab_lexical_tools
 
 
