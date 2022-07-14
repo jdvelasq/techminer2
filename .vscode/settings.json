@@ -20,5 +20,6 @@
     "search.exclude": {
         "**./*.js": true,
         "**/*.html": true
-    }
+    },
+    "notebook.output.textLineLimit": 200
 }
