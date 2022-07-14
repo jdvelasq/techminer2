@@ -34,9 +34,10 @@ Import a scopus file to a working directory.
 --INFO-- Creating `article` column
 --INFO-- Processing `raw_author_keywords` column
 --INFO-- Processing `raw_index_keywords` column
---INFO-- Creating `raw_abstract_words` column
 --INFO-- Creating `raw_abstract_words` column in data/regtech/processed/_documents.csv
 --INFO-- Creating `raw_title_words` column in data/regtech/processed/_documents.csv
+--INFO-- Creating `raw_title_words` column in data/regtech/processed/_references.csv
+--INFO-- Creating `raw_title_words` column in data/regtech/processed/_cited_by.csv
 --INFO-- Creating `raw_words` column
 --INFO-- Creating `words.txt` from author/index keywords, and abstract/title words
 --INFO-- Applying `words.txt` thesaurus to author/index keywords and abstract/title words
@@ -46,12 +47,17 @@ Import a scopus file to a working directory.
 --INFO-- Complete `source_abbr` column
 --INFO-- Creating `abstract.csv` file from `documents` database
 --INFO-- Creating `bradford` column
---INFO-- Creating `references` column
+--INFO-- Searching `references` using DOI
+--INFO-- Searching `references` using (year, title, author)
+--INFO-- Searching `references` using (title)
 --INFO-- Creating `local_citations` column in references database
---INFO-- Creating `local_citations` column in references database
+--INFO-- Creating `local_citations` column in documents database
 --INFO-- The data/regtech/processed/institutions.txt thesaurus file was created
 --INFO-- The data/regtech/processed/institutions.txt thesaurus file was applied to affiliations in all databases
 --INFO-- Process finished!!!
+
+
+
 
 """
 import glob
@@ -62,7 +68,9 @@ import sys
 import numpy as np
 import pandas as pd
 import yaml
+from nltk.stem import PorterStemmer
 from nltk.tokenize import sent_tokenize
+from textblob import TextBlob
 from tqdm import tqdm
 
 from .apply_countries_thesaurus import apply_countries_thesaurus
@@ -111,8 +119,14 @@ def import_scopus_files(
     # Keywords: --------------------------------------------------------------
     _process__raw_author_keywords__column(directory)
     _process__raw_index_keywords__column(directory)
-    _create__raw_abstract_words__column(directory)
-    _create__raw_title_words__column(directory)
+    #
+    _create_extract_raw_words_from_column(
+        directory, source_column="abstract", dest_column="raw_abstract_words"
+    )
+    _create_extract_raw_words_from_column(
+        directory, source_column="title", dest_column="raw_title_words"
+    )
+    #
     _create__raw_words__column(directory)
     create_words_thesaurus(directory=directory)
     apply_words_thesaurus(directory)
@@ -128,7 +142,7 @@ def import_scopus_files(
     _create__bradford__column(directory)
     #
     # WoS References ----------------------------------------------------------
-    _create_references(directory)
+    _create_references(directory, disable_progress_bar)
     _create__local_citations__column_in_references_database(directory)
     _create__local_citations__column_in_documents_database(directory)
     #
@@ -139,10 +153,89 @@ def import_scopus_files(
     sys.stdout.write("--INFO-- Process finished!!!\n")
 
 
+def _create_extract_raw_words_from_column(directory, source_column, dest_column):
+
+    roots = _extract_keywords_roots_from_database_files(directory).to_list()
+
+    files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
+    for file in files:
+        data = pd.read_csv(file, encoding="utf-8")
+        #
+        if source_column not in data.columns:
+            continue
+
+        sys.stdout.write(f"--INFO-- Creating `{dest_column}` column in {file}\n")
+
+        text = data[["article", source_column]].copy()
+        text = text.dropna()
+
+        text[source_column] = text[source_column].str.lower().copy()
+
+        text["raw_words"] = text[source_column].map(lambda x: TextBlob(x).noun_phrases)
+        text = text.explode("raw_words")
+        text = text.dropna()
+        text["keys"] = text["raw_words"].str.split()
+        s = PorterStemmer()
+        text["keys"] = text["keys"].map(lambda x: [s.stem(y) for y in x])
+        text["keys"] = text["keys"].map(set)
+        text["keys"] = text["keys"].map(sorted)
+        text["keys"] = text["keys"].map(lambda x: " ".join(x))
+
+        text["found"] = text["keys"].map(lambda x: x in roots)
+        text = text[text["found"] == True]
+
+        text = text[["article", "raw_words"]]
+        text = text.groupby("article", as_index=False).aggregate(lambda x: list(x))
+        text["raw_words"] = text["raw_words"].map(set)
+        text["raw_words"] = text["raw_words"].map(sorted)
+        text["raw_words"] = text["raw_words"].str.join("; ")
+
+        # convert the pandas series to a dictionary
+        values_dict = dict(zip(text.article, text.raw_words))
+        data[dest_column] = data["article"].map(lambda x: values_dict.get(x, pd.NA))
+        #
+        data.to_csv(file, sep=",", encoding="utf-8", index=False)
+
+
+def _create__raw_words__column(directory):
+
+    sys.stdout.write("--INFO-- Creating `raw_words` column\n")
+
+    files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
+    for file in files:
+        data = pd.read_csv(file, encoding="utf-8")
+        #
+        data["raw_words"] = ""
+        data["raw_words"] = data["raw_words"].str.split(";")
+
+        for column in [
+            "raw_author_keywords",
+            "raw_index_keywords",
+            "raw_abstract_words",
+            "raw_title_words",
+        ]:
+
+            if column in data.columns:
+
+                text = data[column]
+                text = text.fillna("")
+                text = text.str.replace("; ", ";")
+                text = text.str.split(";")
+
+                data["raw_words"] += text
+
+        data["raw_words"] = data["raw_words"].map(lambda x: sorted(set(x)))
+        data["raw_words"] = data["raw_words"].map(lambda x: [y for y in x if y != ""])
+        data["raw_words"] = data["raw_words"].map(lambda x: pd.NA if len(x) == 0 else x)
+        data["raw_words"] = data["raw_words"].str.join("; ")
+        #
+        data.to_csv(file, sep=",", encoding="utf-8", index=False)
+
+
 def _create__local_citations__column_in_documents_database(directory):
 
     sys.stdout.write(
-        "--INFO-- Creating `local_citations` column in references database\n"
+        "--INFO-- Creating `local_citations` column in documents database\n"
     )
 
     # counts the number of citations for each local reference
@@ -193,9 +286,7 @@ def _create__local_citations__column_in_references_database(directory):
     references.to_csv(references_path, index=False)
 
 
-def _create_references(directory):
-
-    sys.stdout.write("--INFO-- Creating `references` column\n")
+def _create_references(directory, disable_progress_bar=False):
 
     documents_path = os.path.join(directory, "processed/_documents.csv")
     documents = pd.read_csv(documents_path)
@@ -220,38 +311,31 @@ def _create_references(directory):
     references["found"] = False
 
     # busqueda por doi
-    for doi, article in zip(references.doi, references.article):
-        for key in thesaurus.keys():
-            if not pd.isna(doi) and doi in key:
-                thesaurus[key] = article
-                references.loc[references.doi == doi, "found"] = True
+    sys.stdout.write("--INFO-- Searching `references` using DOI\n")
+    with tqdm(total=len(references), disable=disable_progress_bar) as pbar:
+        for doi, article in zip(references.doi, references.article):
+            for key in thesaurus.keys():
+                if not pd.isna(doi) and doi in key:
+                    thesaurus[key] = article
+                    references.loc[references.doi == doi, "found"] = True
+            pbar.update(1)
 
     # Reduce la base de búsqueda
     references = references[~references.found]
 
     # Busqueda por (año, autor y tttulo)
-    for article, year, authors, title in zip(
-        references.article,
-        references.year,
-        references.authors,
-        references.title,
-    ):
-        year = str(year)
-        author = authors.split()[0].lower()
-        title = (
-            title.lower()
-            .replace(".", "")
-            .replace(",", "")
-            .replace(":", "")
-            .replace(";", "")
-            .replace("-", " ")
-            .replace("'", "")
-        )
-
-        for key in thesaurus.keys():
-            text = key
-            text = (
-                text.lower()
+    sys.stdout.write("--INFO-- Searching `references` using (year, title, author)\n")
+    with tqdm(total=len(references), disable=disable_progress_bar) as pbar:
+        for article, year, authors, title in zip(
+            references.article,
+            references.year,
+            references.authors,
+            references.title,
+        ):
+            year = str(year)
+            author = authors.split()[0].lower()
+            title = (
+                title.lower()
                 .replace(".", "")
                 .replace(",", "")
                 .replace(":", "")
@@ -260,36 +344,40 @@ def _create_references(directory):
                 .replace("'", "")
             )
 
-            if author in text and str(year) in text and title[:29] in text:
-                thesaurus[key] = article
-                references.found[references.article == article] = True
-            elif author in text and str(year) in text and title[-29:] in text:
-                thesaurus[key] = article
-                references.found[references.article == article] = True
+            for key in thesaurus.keys():
+                text = key
+                text = (
+                    text.lower()
+                    .replace(".", "")
+                    .replace(",", "")
+                    .replace(":", "")
+                    .replace(";", "")
+                    .replace("-", " ")
+                    .replace("'", "")
+                )
+
+                if author in text and str(year) in text and title[:29] in text:
+                    thesaurus[key] = article
+                    references.found[references.article == article] = True
+                elif author in text and str(year) in text and title[-29:] in text:
+                    thesaurus[key] = article
+                    references.found[references.article == article] = True
+
+            pbar.update(1)
 
     # Reduce la base de búsqueda
     references = references[~references.found]
 
     # Busqueda por titulo
-    for article, title in zip(
-        references.article,
-        references.title,
-    ):
+    sys.stdout.write("--INFO-- Searching `references` using (title)\n")
+    with tqdm(total=len(references), disable=disable_progress_bar) as pbar:
+        for article, title in zip(
+            references.article,
+            references.title,
+        ):
 
-        title = (
-            title.lower()
-            .replace(".", "")
-            .replace(",", "")
-            .replace(":", "")
-            .replace(";", "")
-            .replace("-", " ")
-            .replace("'", "")
-        )
-
-        for key in thesaurus.keys():
-            text = key
-            text = (
-                text.lower()
+            title = (
+                title.lower()
                 .replace(".", "")
                 .replace(",", "")
                 .replace(":", "")
@@ -298,10 +386,23 @@ def _create_references(directory):
                 .replace("'", "")
             )
 
-            if title in text:
-                thesaurus[key] = article
-                references.found[references.article == article] = True
+            for key in thesaurus.keys():
+                text = key
+                text = (
+                    text.lower()
+                    .replace(".", "")
+                    .replace(",", "")
+                    .replace(":", "")
+                    .replace(";", "")
+                    .replace("-", " ")
+                    .replace("'", "")
+                )
 
+                if title in text:
+                    thesaurus[key] = article
+                    references.found[references.article == article] = True
+
+            pbar.update(1)
     #
     # Crea la columna de referencias locales
     #
@@ -345,41 +446,6 @@ def _create_references(directory):
 #         # )
 #         #
 #         data.to_csv(file, sep=",", encoding="utf-8", index=False)
-
-
-def _create__raw_words__column(directory):
-
-    sys.stdout.write("--INFO-- Creating `raw_words` column\n")
-
-    files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
-    for file in files:
-        data = pd.read_csv(file, encoding="utf-8")
-        #
-        data["raw_words"] = ""
-        data["raw_words"] = data["raw_words"].str.split(";")
-
-        for column in [
-            "raw_author_keywords",
-            "raw_index_keywords",
-            "raw_abstract_words",
-            "raw_title_words",
-        ]:
-
-            if column in data.columns:
-
-                text = data[column]
-                text = text.fillna("")
-                text = text.str.replace("; ", ";")
-                text = text.str.split(";")
-
-                data["raw_words"] += text
-
-        data["raw_words"] = data["raw_words"].map(lambda x: sorted(set(x)))
-        data["raw_words"] = data["raw_words"].map(lambda x: [y for y in x if y != ""])
-        data["raw_words"] = data["raw_words"].map(lambda x: pd.NA if len(x) == 0 else x)
-        data["raw_words"] = data["raw_words"].str.join("; ")
-        #
-        data.to_csv(file, sep=",", encoding="utf-8", index=False)
 
 
 def _create__article__column(directory):
@@ -758,6 +824,39 @@ def _create__bradford__column(directory):
 #     )
 
 
+def _extract_keywords_roots_from_database_files(directory):
+
+    keywords_list = []
+
+    files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
+    for file in files:
+        data = pd.read_csv(file, encoding="utf-8")
+        for column in ["raw_author_keywords", "raw_index_keywords"]:
+            keywords_list.append(data[column])
+
+    keywords_list = pd.concat(keywords_list)
+    keywords_list = keywords_list.dropna()
+    keywords_list = keywords_list.str.split(";")
+    keywords_list = keywords_list.explode()
+    keywords_list = keywords_list.str.strip()
+    keywords_list = keywords_list.drop_duplicates()
+
+    keywords_list = keywords_list.str.replace(r"\[.+\]", "", regex=True)
+    keywords_list = keywords_list.str.replace(r"\(.+\)", "", regex=True)
+    keywords_list = keywords_list.str.replace(r"-", " ", regex=False)
+    keywords_list = keywords_list.str.replace(r"&", " ", regex=False)
+
+    # list of single words
+    keywords_list = keywords_list.str.split()
+    s = PorterStemmer()
+    keywords_list = keywords_list.map(lambda x: [s.stem(y) for y in x])
+    keywords_list = keywords_list.map(set)
+    keywords_list = keywords_list.map(sorted)
+    keywords_list = keywords_list.map(lambda x: " ".join(x))
+
+    return keywords_list
+
+
 def _extract_keywords_from_database_files(directory):
     keywords_list = []
     files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
@@ -794,99 +893,53 @@ def _extract_keywords_from_database_files(directory):
 #     return nltk_stopwords
 
 
-def _create__raw_abstract_words__column(directory):
+# def _create__raw_title_words__column(directory):
 
-    sys.stdout.write("--INFO-- Creating `raw_abstract_words` column\n")
+#     keywords = _extract_keywords_from_database_files(directory)
+#     keywords = keywords.str.replace(r"\(.+\)", "", regex=True)
+#     keywords = keywords.str.replace(r"\(.+$", "", regex=True)
+#     keywords = keywords.str.replace(r"^.+\)", "", regex=True)
+#     keywords = keywords.str.replace("  ", " ")
+#     keywords = keywords.str.replace("  ", " ")
+#     keywords = keywords.str.replace("  ", " ")
+#     keywords = keywords.dropna()
+#     keywords = keywords.to_list()
 
-    #
-    keywords = _extract_keywords_from_database_files(directory)
-    keywords = keywords.str.replace(r"\(.+\)", "", regex=True)
-    keywords = keywords.str.replace(r"\(.+$", "", regex=True)
-    keywords = keywords.str.replace(r"^.+\)", "", regex=True)
-    keywords = keywords.str.replace("  ", " ")
-    keywords = keywords.str.replace("  ", " ")
-    keywords = keywords.str.replace("  ", " ")
-    keywords = keywords.dropna()
-    keywords = keywords.to_list()
+#     #
+#     files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
+#     for file in files:
 
-    #
-    files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
-    for file in files:
-        data = pd.read_csv(file, encoding="utf-8")
-        #
-        if "abstract" not in data.columns:
-            continue
+#         if "_documents.csv" not in file:
+#             continue
 
-        sys.stdout.write(f"--INFO-- Creating `raw_abstract_words` column in {file}\n")
+#         data = pd.read_csv(file, encoding="utf-8")
 
-        data["raw_abstract_words"] = [[] for _ in range(len(data))]
-        for keyword in keywords:
+#         sys.stdout.write(f"--INFO-- Creating `raw_title_words` column in {file}\n")
 
-            keyword = r"\b(" + keyword + r")\b"
-            found = data["abstract"].str.extract(keyword, expand=False)
-            found = found.fillna("")
-            found = found.map(lambda x: [x])
-            data["raw_abstract_words"] += found
+#         if "title" not in data.columns:
+#             continue
 
-        data["raw_abstract_words"] = data["raw_abstract_words"].map(
-            lambda x: sorted(set([y.strip() for y in x if y != ""]))
-        )
-        data["raw_abstract_words"] = data["raw_abstract_words"].map(
-            lambda x: pd.NA if len(x) == 0 else x
-        )
-        data["raw_abstract_words"] = data["raw_abstract_words"].str.join("; ")
+#         title = data["title"].str.lower()
 
-        #
-        data.to_csv(file, sep=",", encoding="utf-8", index=False)
+#         data["raw_title_words"] = [[] for _ in range(len(data))]
+#         for keyword in keywords:
 
+#             keyword = r"\b(" + keyword + r")\b"
+#             found = title.str.extract(keyword, expand=False)
+#             found = found.fillna("")
+#             found = found.map(lambda x: [x])
+#             data["raw_title_words"] += found
 
-def _create__raw_title_words__column(directory):
+#         data["raw_title_words"] = data["raw_title_words"].map(
+#             lambda x: sorted(set([y.strip() for y in x if y != ""]))
+#         )
+#         data["raw_title_words"] = data["raw_title_words"].map(
+#             lambda x: pd.NA if len(x) == 0 else x
+#         )
+#         data["raw_title_words"] = data["raw_title_words"].str.join("; ")
 
-    keywords = _extract_keywords_from_database_files(directory)
-    keywords = keywords.str.replace(r"\(.+\)", "", regex=True)
-    keywords = keywords.str.replace(r"\(.+$", "", regex=True)
-    keywords = keywords.str.replace(r"^.+\)", "", regex=True)
-    keywords = keywords.str.replace("  ", " ")
-    keywords = keywords.str.replace("  ", " ")
-    keywords = keywords.str.replace("  ", " ")
-    keywords = keywords.dropna()
-    keywords = keywords.to_list()
-
-    #
-    files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
-    for file in files:
-
-        if "_documents.csv" not in file:
-            continue
-
-        data = pd.read_csv(file, encoding="utf-8")
-
-        sys.stdout.write(f"--INFO-- Creating `raw_title_words` column in {file}\n")
-
-        if "title" not in data.columns:
-            continue
-
-        title = data["title"].str.lower()
-
-        data["raw_title_words"] = [[] for _ in range(len(data))]
-        for keyword in keywords:
-
-            keyword = r"\b(" + keyword + r")\b"
-            found = title.str.extract(keyword, expand=False)
-            found = found.fillna("")
-            found = found.map(lambda x: [x])
-            data["raw_title_words"] += found
-
-        data["raw_title_words"] = data["raw_title_words"].map(
-            lambda x: sorted(set([y.strip() for y in x if y != ""]))
-        )
-        data["raw_title_words"] = data["raw_title_words"].map(
-            lambda x: pd.NA if len(x) == 0 else x
-        )
-        data["raw_title_words"] = data["raw_title_words"].str.join("; ")
-
-        #
-        data.to_csv(file, sep=",", encoding="utf-8", index=False)
+#         #
+#         data.to_csv(file, sep=",", encoding="utf-8", index=False)
 
 
 # def _create__record_no__column(directory):
