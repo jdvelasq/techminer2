@@ -1,6 +1,19 @@
 Co-occurrence Analysis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+    .. toctree::
+        :maxdepth: 1
+
+        _menu_tlab_co_occ_analysis_words_assoc
+
+
+----
+
+----
+
+----
+
+
     * **Word Associations**
 
         * **Graphs**
