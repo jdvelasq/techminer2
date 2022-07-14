@@ -1,9 +1,29 @@
-Refine
+Refine (Thesaurus)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    * List Cleanup:
+The following fnctions operate on a thesaurus.
 
-        TechMiner works directly over a thesaurus. The following functions are available:
+
+    * **Generic Thesaurus**: Funtions to create and apply a generic thesaurus on a column.
+    
+        .. toctree::
+            create_thesaurus
+        
+        .. toctree::
+            apply_thesaurus
+
+    * **Specialized thesaurus**: Apply multiple operations on databases.
+
+        .. toctree::
+            apply_countries_thesaurus
+
+        .. toctree::
+            apply_institutions_thesaurus
+
+        .. toctree::
+            apply_words_thesaurus
+            
+    * Operations over thesaurus files:
 
         .. toctree::
             find_abbreviations
@@ -17,23 +37,3 @@ Refine
 
 
 
-    .. toctree::
-        _menu_vp_refine_thesaurus
-
-
-    * Further Processing:
-
-        .. toctree::
-            extract_country
-
-        * Author cleanup
-
-        * Dates ->
-
-        * Divide at ->
-
-        * Divide authors ->
-
-
-
-    * ``TODO: Extract Nearby Phrases``

@@ -24,7 +24,7 @@ import pandas as pd
 from .thesaurus import read_textfile
 
 
-def apply_country_thesaurus(directory="./"):
+def apply_countries_thesaurus(directory="./"):
     """Apply country thesaurus."""
 
     # thesaurus preparation

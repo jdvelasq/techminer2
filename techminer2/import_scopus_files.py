@@ -14,6 +14,7 @@ Import a scopus file to a working directory.
 --INFO-- Formating column names in database files
 --INFO-- Dropping NA columns in database files
 --INFO-- Removing accents in database files
+--INFO-- Removing stranger chars in database files
 --INFO-- Creating `filter.yaml` file
 --INFO-- Processing `abstract` column
 --INFO-- Processing `authors_id` column
@@ -24,40 +25,33 @@ Import a scopus file to a working directory.
 --INFO-- Processing `global_citations` column
 --INFO-- Processing `isbn` column
 --INFO-- Processing `issn` column
---INFO-- Processing `raw_author_keywords` column
 --INFO-- Processing `raw_authors` column
---INFO-- Processing `raw_index_keywords` column
 --INFO-- Processing `source_abbr` column
 --INFO-- Processing `source_name` column
 --INFO-- Processing `global_references` column
 --INFO-- Creating `authors` column
 --INFO-- Creating `num_authors` column
---INFO-- Creating `record_no` column
---INFO-- Creating `document_id` column
+--INFO-- Creating `article` column
+--INFO-- Processing `raw_author_keywords` column
+--INFO-- Processing `raw_index_keywords` column
 --INFO-- Creating `raw_abstract_words` column
---INFO-- Creating `raw_title_words` column
+--INFO-- Creating `raw_abstract_words` column in data/regtech/processed/_documents.csv
+--INFO-- Creating `raw_title_words` column in data/regtech/processed/_documents.csv
+--INFO-- Creating `raw_words` column
+--INFO-- Creating `words.txt` from author/index keywords, and abstract/title words
+--INFO-- Applying `words.txt` thesaurus to author/index keywords and abstract/title words
 --INFO-- The data/regtech/processed/countries.txt thesaurus file was created
 --INFO-- The data/regtech/processed/countries.txt thesaurus file was applied to affiliations in all databases
 --INFO-- Creating `num_global_references` column
 --INFO-- Complete `source_abbr` column
 --INFO-- Creating `abstract.csv` file from `documents` database
---INFO-- Creating `local_references` column
---INFO-- Creating `local_citations` column
 --INFO-- Creating `bradford` column
---INFO-- Creating `references_by_document.csv` file
+--INFO-- Creating `references` column
 --INFO-- Creating `local_citations` column in references database
---INFO-- Creating a thesaurus file from `raw_author_keywords` column in all databases
---INFO-- The thesaurus file `author_keywords.txt` was created
---INFO-- Applying `author_keywords.txt` thesaurus
---INFO-- Creating a thesaurus file from `raw_index_keywords` column in all databases
---INFO-- The thesaurus file `index_keywords.txt` was created
---INFO-- Applying `index_keywords.txt` thesaurus
---INFO-- Creating `words.txt` from author/index keywords, and abstract/title words
---INFO-- Applying `words.txt` thesaurus to author/index keywords and abstract/title words
+--INFO-- Creating `local_citations` column in references database
 --INFO-- The data/regtech/processed/institutions.txt thesaurus file was created
 --INFO-- The data/regtech/processed/institutions.txt thesaurus file was applied to affiliations in all databases
 --INFO-- Process finished!!!
-
 
 """
 import glob
@@ -71,10 +65,10 @@ import yaml
 from nltk.tokenize import sent_tokenize
 from tqdm import tqdm
 
-from .apply_country_thesaurus import apply_country_thesaurus
+from .apply_countries_thesaurus import apply_countries_thesaurus
 from .apply_institutions_thesaurus import apply_institutions_thesaurus
 from .apply_words_thesaurus import apply_words_thesaurus
-from .create_country_thesaurus import create_country_thesaurus
+from .create_countries_thesaurus import create_countries_thesaurus
 from .create_institutions_thesaurus import create_institutions_thesaurus
 from .create_words_thesaurus import create_words_thesaurus
 
@@ -86,14 +80,14 @@ def import_scopus_files(
     """Import Scopus files."""
 
     _create_working_directories(directory)
-    #
-    _create_stopwords_file(directory)
+    _create_ignore_file(directory)
     _create_database_files(directory)
     #
     _apply_scopus2tags_to_database_files(directory)
     _format_columns_names_in_database_files(directory)
     _drop_na_columns_in_database_files(directory)
     _remove_accents_in_database_files(directory)
+    _remove_stranger_chars_in_database_files(directory)
     _create_filter_file(directory)
     #
     _process__abstract__column(directory)
@@ -114,7 +108,6 @@ def import_scopus_files(
     _create__num_authors__column(directory)
     _create__article__column(directory)
     #
-    #
     # Keywords: --------------------------------------------------------------
     _process__raw_author_keywords__column(directory)
     _process__raw_index_keywords__column(directory)
@@ -125,8 +118,8 @@ def import_scopus_files(
     apply_words_thesaurus(directory)
     #
     # -------------------------------------------------------------------------
-    create_country_thesaurus(directory)
-    apply_country_thesaurus(directory)
+    create_countries_thesaurus(directory)
+    apply_countries_thesaurus(directory)
     #
     _create__num_global_references__column(directory)
     _complete__source_abbr__column(directory)
@@ -134,26 +127,23 @@ def import_scopus_files(
     #
     _create__bradford__column(directory)
     #
-    # -------------------------------------------------------------------------
+    # WoS References ----------------------------------------------------------
+    _create_references(directory)
     _create__local_citations__column_in_references_database(directory)
     _create__local_citations__column_in_documents_database(directory)
     #
-    # -------------------------------------------------------------------------
+    # Institutions ------------------------------------------------------------
     create_institutions_thesaurus(directory=directory)
     apply_institutions_thesaurus(directory=directory)
 
-    _create_references(directory)
-
-    #
-
-    # sys.stdout.write("--INFO-- Process finished!!!\n")
+    sys.stdout.write("--INFO-- Process finished!!!\n")
 
 
 def _create__local_citations__column_in_documents_database(directory):
 
-    # sys.stdout.write(
-    #     "--INFO-- Creating `local_citations` column in references database\n"
-    # )
+    sys.stdout.write(
+        "--INFO-- Creating `local_citations` column in references database\n"
+    )
 
     # counts the number of citations for each local reference
     documents_path = os.path.join(directory, "processed", "_documents.csv")
@@ -177,9 +167,9 @@ def _create__local_citations__column_in_documents_database(directory):
 
 def _create__local_citations__column_in_references_database(directory):
 
-    # sys.stdout.write(
-    #     "--INFO-- Creating `local_citations` column in references database\n"
-    # )
+    sys.stdout.write(
+        "--INFO-- Creating `local_citations` column in references database\n"
+    )
 
     # counts the number of citations for each local reference
     documents_path = os.path.join(directory, "processed", "_documents.csv")
@@ -205,7 +195,7 @@ def _create__local_citations__column_in_references_database(directory):
 
 def _create_references(directory):
 
-    # sys.stdout.write("--INFO-- Creating `references` column\n")
+    sys.stdout.write("--INFO-- Creating `references` column\n")
 
     documents_path = os.path.join(directory, "processed/_documents.csv")
     documents = pd.read_csv(documents_path)
@@ -335,32 +325,31 @@ def _create_references(directory):
     documents.to_csv(documents_path, index=False)
 
 
-def _create__author_year_source__column(directory):
-
-    # sys.stdout.write("--INFO-- Creating `author_year_source` column\n")
-
-    files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
-    for file in files:
-        data = pd.read_csv(file, encoding="utf-8")
-        #
-        name = data.authors.map(
-            lambda x: x.split("; ")[0].strip() if not pd.isna(x) else "[Anonymous]"
-        )
-        name += " " + data.year.map(str)
-        name += " " + data.source_abbr
-        #
-        data["author_year_source"] = name.copy()
-        #
-        # TODO: assertion fails!!!
-        # assert len(data["author_year_source"]) == len(
-        #     data["author_year_source"].drop_duplicates()
-        # )
-        #
-        data.to_csv(file, sep=",", encoding="utf-8", index=False)
+# def _create__author_year_source__column(directory):
+#     sys.stdout.write("--INFO-- Creating `author_year_source` column\n")
+#     files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
+#     for file in files:
+#         data = pd.read_csv(file, encoding="utf-8")
+#         #
+#         name = data.authors.map(
+#             lambda x: x.split("; ")[0].strip() if not pd.isna(x) else "[Anonymous]"
+#         )
+#         name += " " + data.year.map(str)
+#         name += " " + data.source_abbr
+#         #
+#         data["author_year_source"] = name.copy()
+#         #
+#         # TODO: assertion fails!!!
+#         # assert len(data["author_year_source"]) == len(
+#         #     data["author_year_source"].drop_duplicates()
+#         # )
+#         #
+#         data.to_csv(file, sep=",", encoding="utf-8", index=False)
 
 
 def _create__raw_words__column(directory):
-    # sys.stdout.write("--INFO-- Creating `author_year_source` column\n")
+
+    sys.stdout.write("--INFO-- Creating `raw_words` column\n")
 
     files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
     for file in files:
@@ -397,7 +386,7 @@ def _create__article__column(directory):
     #
     # First Author, year, source_abbr, 'V'volumne, 'P'page_start, ' DOI ' doi
     #
-    # sys.stdout.write("--INFO-- Creating `article` column\n")
+    sys.stdout.write("--INFO-- Creating `article` column\n")
 
     files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
     for file in files:
@@ -429,7 +418,7 @@ def _create__article__column(directory):
 #     if not os.path.exists(file_name):
 #         return
 
-#     # sys.stdout.write("--INFO-- Creating `references_by_document.csv` file\n")
+#     sys.stdout.write("--INFO-- Creating `references_by_document.csv` file\n")
 
 #     references = pd.read_csv(os.path.join(directory, "processed", "_references.csv"))
 #     references = references.assign(authors=references.authors.str.lower())
@@ -503,7 +492,7 @@ def _create__article__column(directory):
 
 def _create__num_authors__column(directory):
 
-    # sys.stdout.write("--INFO-- Creating `num_authors` column\n")
+    sys.stdout.write("--INFO-- Creating `num_authors` column\n")
 
     files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
     for file in files:
@@ -517,129 +506,129 @@ def _create__num_authors__column(directory):
         data.to_csv(file, sep=",", encoding="utf-8", index=False)
 
 
-def _create__local_citations__column(directory):
+# def _create__local_citations__column(directory):
+#
+#     sys.stdout.write("--INFO-- Creating `local_citations` column\n")
+#
+#     file_name = os.path.join(directory, "processed", "_documents.csv")
+#     documents = pd.read_csv(file_name)
+#
+#     local_references = documents[["local_references"]]
+#     local_references = local_references.rename(
+#         columns={"local_references": "local_citations"}
+#     )
+#     local_references = local_references.dropna()
+#
+#     local_references["local_citations"] = local_references.local_citations.str.split(
+#         ";"
+#     )
+#     local_references = local_references.explode("local_citations")
+#     local_references["local_citations"] = local_references.local_citations.str.strip()
+#
+#     local_references = local_references.groupby(
+#         by="local_citations", as_index=True
+#     ).size()
+#     documents["local_citations"] = 0
+#     documents.index = documents.record_no
+#     documents.loc[local_references.index, "local_citations"] = local_references
+#
+#     documents.to_csv(file_name, sep=",", index=False, encoding="utf-8")
 
-    # sys.stdout.write("--INFO-- Creating `local_citations` column\n")
 
-    file_name = os.path.join(directory, "processed", "_documents.csv")
-    documents = pd.read_csv(file_name)
-
-    local_references = documents[["local_references"]]
-    local_references = local_references.rename(
-        columns={"local_references": "local_citations"}
-    )
-    local_references = local_references.dropna()
-
-    local_references["local_citations"] = local_references.local_citations.str.split(
-        ";"
-    )
-    local_references = local_references.explode("local_citations")
-    local_references["local_citations"] = local_references.local_citations.str.strip()
-
-    local_references = local_references.groupby(
-        by="local_citations", as_index=True
-    ).size()
-    documents["local_citations"] = 0
-    documents.index = documents.record_no
-    documents.loc[local_references.index, "local_citations"] = local_references
-
-    documents.to_csv(file_name, sep=",", index=False, encoding="utf-8")
-
-
-def _create__local_references__column(directory, disable_progress_bar):
-
-    # sys.stdout.write("--INFO-- Creating `local_references` column\n")
-
-    file_name = os.path.join(directory, "processed", "_documents.csv")
-    documents = pd.read_csv(file_name)
-
-    # creates a empty list which will be filled with the local references
-    documents = documents.assign(local_references=[[] for _ in range(len(documents))])
-
-    if "global_references" in documents.columns:
-
-        #
-        # Identifies if a document is a local reference using doi
-        #
-        with tqdm(total=len(documents.doi), disable=disable_progress_bar) as pbar:
-            for document_index, doi, global_citations in zip(
-                documents.index, documents.doi, documents.global_citations
-            ):
-                if global_citations == 0:
-                    continue
-                if not pd.isna(doi):
-                    doi = doi.upper()
-                    for j_index, references in zip(
-                        documents.index, documents.global_references.tolist()
-                    ):
-                        if pd.isna(references) is False and doi in references.upper():
-                            documents.at[j_index, "local_references"].append(
-                                documents.record_no[document_index]
-                            )
-                pbar.update(1)
-
-        #
-        # Identifies if a document is a local reference using the title
-        #
-        with tqdm(total=len(documents.title), disable=disable_progress_bar) as pbar:
-
-            for (
-                document_index,
-                document_title,
-                document_year,
-                document_citations,
-            ) in zip(
-                documents.index,
-                documents.title.str.lower(),
-                documents.year,
-                documents.global_citations,
-            ):
-
-                if document_citations > 0:
-
-                    document_title = documents.title[document_index].lower()
-                    document_year = documents.year[document_index]
-
-                    for j_index, references in zip(
-                        documents.index, documents.global_references.tolist()
-                    ):
-
-                        if (
-                            pd.isna(references) is False
-                            and document_title in references.lower()
-                        ):
-
-                            for reference in references.split(";"):
-
-                                if (
-                                    document_title in reference.lower()
-                                    and str(document_year) in reference
-                                ):
-
-                                    documents.at[j_index, "local_references"] += [
-                                        documents.record_no[document_index]
-                                    ]
-
-                pbar.update(1)
-
-        #
-        # Create a string list of with the local references
-        #
-        documents["local_references"] = documents.local_references.apply(
-            lambda x: sorted(set(x))
-        )
-        documents["local_references"] = documents.local_references.apply(
-            lambda x: "; ".join(x) if isinstance(x, list) else x
-        )
-
-    documents.to_csv(file_name, sep=",", index=False, encoding="utf-8")
+# def _create__local_references__column(directory, disable_progress_bar):
+#
+#     sys.stdout.write("--INFO-- Creating `local_references` column\n")
+#
+#     file_name = os.path.join(directory, "processed", "_documents.csv")
+#     documents = pd.read_csv(file_name)
+#
+#     # creates a empty list which will be filled with the local references
+#     documents = documents.assign(local_references=[[] for _ in range(len(documents))])
+#
+#     if "global_references" in documents.columns:
+#
+#         #
+#         # Identifies if a document is a local reference using doi
+#         #
+#         with tqdm(total=len(documents.doi), disable=disable_progress_bar) as pbar:
+#             for document_index, doi, global_citations in zip(
+#                 documents.index, documents.doi, documents.global_citations
+#             ):
+#                 if global_citations == 0:
+#                     continue
+#                 if not pd.isna(doi):
+#                     doi = doi.upper()
+#                     for j_index, references in zip(
+#                         documents.index, documents.global_references.tolist()
+#                     ):
+#                         if pd.isna(references) is False and doi in references.upper():
+#                             documents.at[j_index, "local_references"].append(
+#                                 documents.record_no[document_index]
+#                             )
+#                 pbar.update(1)
+#
+#         #
+#         # Identifies if a document is a local reference using the title
+#         #
+#         with tqdm(total=len(documents.title), disable=disable_progress_bar) as pbar:
+#
+#             for (
+#                 document_index,
+#                 document_title,
+#                 document_year,
+#                 document_citations,
+#             ) in zip(
+#                 documents.index,
+#                 documents.title.str.lower(),
+#                 documents.year,
+#                 documents.global_citations,
+#             ):
+#
+#                 if document_citations > 0:
+#
+#                     document_title = documents.title[document_index].lower()
+#                     document_year = documents.year[document_index]
+#
+#                     for j_index, references in zip(
+#                         documents.index, documents.global_references.tolist()
+#                     ):
+#
+#                         if (
+#                             pd.isna(references) is False
+#                             and document_title in references.lower()
+#                         ):
+#
+#                             for reference in references.split(";"):
+#
+#                                 if (
+#                                     document_title in reference.lower()
+#                                     and str(document_year) in reference
+#                                 ):
+#
+#                                     documents.at[j_index, "local_references"] += [
+#                                         documents.record_no[document_index]
+#                                     ]
+#
+#                 pbar.update(1)
+#
+#         #
+#         # Create a string list of with the local references
+#         #
+#         documents["local_references"] = documents.local_references.apply(
+#             lambda x: sorted(set(x))
+#         )
+#         documents["local_references"] = documents.local_references.apply(
+#             lambda x: "; ".join(x) if isinstance(x, list) else x
+#         )
+#
+#     documents.to_csv(file_name, sep=",", index=False, encoding="utf-8")
 
 
 def _create__abstract_csv__file(directory):
 
-    # sys.stdout.write(
-    #    "--INFO-- Creating `abstract.csv` file from `documents` database\n"
-    # )
+    sys.stdout.write(
+        "--INFO-- Creating `abstract.csv` file from `documents` database\n"
+    )
 
     documents = pd.read_csv(os.path.join(directory, "processed", "_documents.csv"))
 
@@ -661,7 +650,7 @@ def _create__abstract_csv__file(directory):
 
 def _process__global_references__column(directory):
 
-    # sys.stdout.write("--INFO-- Processing `global_references` column\n")
+    sys.stdout.write("--INFO-- Processing `global_references` column\n")
 
     files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
     for file in files:
@@ -682,7 +671,7 @@ def _process__global_references__column(directory):
 
 def _create__num_global_references__column(directory):
 
-    # sys.stdout.write("--INFO-- Creating `num_global_references` column\n")
+    sys.stdout.write("--INFO-- Creating `num_global_references` column\n")
 
     files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
     for file in files:
@@ -699,7 +688,7 @@ def _create__num_global_references__column(directory):
 
 def _create__bradford__column(directory):
 
-    # sys.stdout.write("--INFO-- Creating `bradford` column\n")
+    sys.stdout.write("--INFO-- Creating `bradford` column\n")
 
     file_path = os.path.join(directory, "processed", "_documents.csv")
     data = pd.read_csv(file_path, encoding="utf-8")
@@ -728,36 +717,36 @@ def _create__bradford__column(directory):
     data.to_csv(file_path, sep=",", encoding="utf-8", index=False)
 
 
-def _create__countries__column(directory):
+# def _create__countries__column(directory):
+#
+#     sys.stdout.write("--INFO-- Creating `countries` column\n")
+#
+#     files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
+#     for file in files:
+#         data = pd.read_csv(file, encoding="utf-8")
+#         if "raw_countries" in data.columns:
+#             data = data.assign(countries=data["raw_countries"].str.split(";"))
+#             data = data.assign(
+#                 countries=data["countries"].map(
+#                     lambda x: "; ".join(set(x)) if isinstance(x, list) else x
+#                 )
+#             )
+#
+#         data.to_csv(file, sep=",", encoding="utf-8", index=False)
 
-    # sys.stdout.write("--INFO-- Creating `countries` column\n")
 
-    files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
-    for file in files:
-        data = pd.read_csv(file, encoding="utf-8")
-        if "raw_countries" in data.columns:
-            data = data.assign(countries=data["raw_countries"].str.split(";"))
-            data = data.assign(
-                countries=data["countries"].map(
-                    lambda x: "; ".join(set(x)) if isinstance(x, list) else x
-                )
-            )
-
-        data.to_csv(file, sep=",", encoding="utf-8", index=False)
-
-
-def _create__coutry_1st_autor__column(directory):
-
-    # sys.stdout.write("--INFO-- Creating `country_1st_author` column\n")
-
-    files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
-    for file in files:
-        data = pd.read_csv(file, encoding="utf-8")
-        if "raw_countries" in data.columns:
-            data = data.assign(
-                country_1st_author=data["raw_countries"].str.split(";").str[0]
-            )
-        data.to_csv(file, sep=",", encoding="utf-8", index=False)
+# def _create__coutry_1st_autor__column(directory):
+#
+#     sys.stdout.write("--INFO-- Creating `country_1st_author` column\n")
+#
+#     files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
+#     for file in files:
+#         data = pd.read_csv(file, encoding="utf-8")
+#         if "raw_countries" in data.columns:
+#             data = data.assign(
+#                 country_1st_author=data["raw_countries"].str.split(";").str[0]
+#             )
+#         data.to_csv(file, sep=",", encoding="utf-8", index=False)
 
 
 # def _create__raw_countries__column(directory):
@@ -787,27 +776,27 @@ def _extract_keywords_from_database_files(directory):
     return keywords_list
 
 
-def _select_compound_keywords(keywords_list):
-    keywords_list = keywords_list.to_frame()
-    keywords_list = keywords_list.assign(
-        is_compound=keywords_list.keyword.str.contains(" ")
-    )
-    keywords_list = keywords_list[keywords_list.is_compound]
-    keywords_list = keywords_list[["keyword"]]
-    return keywords_list
+# def _select_compound_keywords(keywords_list):
+#     keywords_list = keywords_list.to_frame()
+#     keywords_list = keywords_list.assign(
+#         is_compound=keywords_list.keyword.str.contains(" ")
+#     )
+#     keywords_list = keywords_list[keywords_list.is_compound]
+#     keywords_list = keywords_list[["keyword"]]
+#     return keywords_list
 
 
-def _load_nltk_stopwords():
-    module_path = os.path.dirname(__file__)
-    file_path = os.path.join(module_path, "files/nltk_stopwords.txt")
-    with open(file_path, "r", encoding="utf-8") as file:
-        nltk_stopwords = [line.strip() for line in file]
-    return nltk_stopwords
+# def _load_nltk_stopwords():
+#     module_path = os.path.dirname(__file__)
+#     file_path = os.path.join(module_path, "files/nltk_stopwords.txt")
+#     with open(file_path, "r", encoding="utf-8") as file:
+#         nltk_stopwords = [line.strip() for line in file]
+#     return nltk_stopwords
 
 
 def _create__raw_abstract_words__column(directory):
 
-    # sys.stdout.write("--INFO-- Creating `raw_abstract_words` column\n")
+    sys.stdout.write("--INFO-- Creating `raw_abstract_words` column\n")
 
     #
     keywords = _extract_keywords_from_database_files(directory)
@@ -828,7 +817,7 @@ def _create__raw_abstract_words__column(directory):
         if "abstract" not in data.columns:
             continue
 
-        # sys.stdout.write(f"--INFO-- Creating `raw_abstract_words` column in {file}\n")
+        sys.stdout.write(f"--INFO-- Creating `raw_abstract_words` column in {file}\n")
 
         data["raw_abstract_words"] = [[] for _ in range(len(data))]
         for keyword in keywords:
@@ -872,7 +861,7 @@ def _create__raw_title_words__column(directory):
 
         data = pd.read_csv(file, encoding="utf-8")
 
-        # sys.stdout.write(f"--INFO-- Creating `raw_title_words` column in {file}\n")
+        sys.stdout.write(f"--INFO-- Creating `raw_title_words` column in {file}\n")
 
         if "title" not in data.columns:
             continue
@@ -947,7 +936,7 @@ def _create__raw_title_words__column(directory):
 
 def _create_filter_file(directory):
 
-    # sys.stdout.write("--INFO-- Creating `filter.yaml` file\n")
+    sys.stdout.write("--INFO-- Creating `filter.yaml` file\n")
 
     file_name = os.path.join(directory, "processed/_documents.csv")
     documents = pd.read_csv(file_name, encoding="utf-8")
@@ -972,7 +961,7 @@ def _create_filter_file(directory):
 
 def _complete__source_abbr__column(directory):
 
-    # sys.stdout.write("--INFO-- Complete `source_abbr` column\n")
+    sys.stdout.write("--INFO-- Complete `source_abbr` column\n")
 
     name2iso = {}
     files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
@@ -1061,7 +1050,7 @@ def _create__authors__column(directory):
             data.to_csv(file, sep=",", encoding="utf-8", index=False)
 
     #
-    # sys.stdout.write("--INFO-- Creating `authors` column\n")
+    sys.stdout.write("--INFO-- Creating `authors` column\n")
 
     data = load_authors_names()
     author_id2name = build_dict_names(data)
@@ -1070,7 +1059,7 @@ def _create__authors__column(directory):
 
 def _process__source_abbr__column(directory):
 
-    # sys.stdout.write("--INFO-- Processing `source_abbr` column\n")
+    sys.stdout.write("--INFO-- Processing `source_abbr` column\n")
 
     files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
     for file in files:
@@ -1083,7 +1072,7 @@ def _process__source_abbr__column(directory):
 
 def _process__raw_index_keywords__column(directory):
 
-    # sys.stdout.write("--INFO-- Processing `raw_index_keywords` column\n")
+    sys.stdout.write("--INFO-- Processing `raw_index_keywords` column\n")
 
     files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
     for file in files:
@@ -1102,7 +1091,7 @@ def _process__raw_index_keywords__column(directory):
 
 def _process__raw_author_keywords__column(directory):
 
-    # sys.stdout.write("--INFO-- Processing `raw_author_keywords` column\n")
+    sys.stdout.write("--INFO-- Processing `raw_author_keywords` column\n")
 
     files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
     for file in files:
@@ -1122,7 +1111,7 @@ def _process__raw_author_keywords__column(directory):
 
 def _process__global_citations__column(directory):
 
-    # sys.stdout.write("--INFO-- Processing `global_citations` column\n")
+    sys.stdout.write("--INFO-- Processing `global_citations` column\n")
 
     files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
     for file in files:
@@ -1135,7 +1124,7 @@ def _process__global_citations__column(directory):
 
 def _process__raw_authors__column(directory):
 
-    # sys.stdout.write("--INFO-- Processing `raw_authors` column\n")
+    sys.stdout.write("--INFO-- Processing `raw_authors` column\n")
 
     files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
     for file in files:
@@ -1151,7 +1140,7 @@ def _process__raw_authors__column(directory):
 
 def _process__title__column(directory):
 
-    # sys.stdout.write("--INFO-- Processing `title` column\n")
+    sys.stdout.write("--INFO-- Processing `title` column\n")
 
     files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
     for file in files:
@@ -1164,7 +1153,7 @@ def _process__title__column(directory):
 
 def _process__abstract__column(directory):
 
-    # sys.stdout.write("--INFO-- Processing `abstract` column\n")
+    sys.stdout.write("--INFO-- Processing `abstract` column\n")
 
     files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
     for file in files:
@@ -1181,7 +1170,7 @@ def _process__abstract__column(directory):
 
 def _process__authors_id__column(directory):
 
-    # sys.stdout.write("--INFO-- Processing `authors_id` column\n")
+    sys.stdout.write("--INFO-- Processing `authors_id` column\n")
 
     files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
     for file in files:
@@ -1196,7 +1185,7 @@ def _process__authors_id__column(directory):
 
 def _process__document_type__column(directory):
 
-    # sys.stdout.write("--INFO-- Processing `document_type` column\n")
+    sys.stdout.write("--INFO-- Processing `document_type` column\n")
 
     files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
     for file in files:
@@ -1210,7 +1199,7 @@ def _process__document_type__column(directory):
 
 def _process__source_name__column(directory):
 
-    # sys.stdout.write("--INFO-- Processing `source_name` column\n")
+    sys.stdout.write("--INFO-- Processing `source_name` column\n")
 
     files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
     for file in files:
@@ -1223,7 +1212,7 @@ def _process__source_name__column(directory):
 
 def _process__issn__column(directory):
 
-    # sys.stdout.write("--INFO-- Processing `issn` column\n")
+    sys.stdout.write("--INFO-- Processing `issn` column\n")
 
     files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
     for file in files:
@@ -1237,7 +1226,7 @@ def _process__issn__column(directory):
 
 def _process__isbn__column(directory):
 
-    # sys.stdout.write("--INFO-- Processing `isbn` column\n")
+    sys.stdout.write("--INFO-- Processing `isbn` column\n")
 
     files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
     for file in files:
@@ -1250,7 +1239,7 @@ def _process__isbn__column(directory):
 
 def _process__eissn__column(directory):
 
-    # sys.stdout.write("--INFO-- Processing `eissn` column\n")
+    sys.stdout.write("--INFO-- Processing `eissn` column\n")
 
     files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
     for file in files:
@@ -1263,7 +1252,7 @@ def _process__eissn__column(directory):
 
 def _process__doi__column(directory):
 
-    # sys.stdout.write("--INFO-- Processing `doi` column\n")
+    sys.stdout.write("--INFO-- Processing `doi` column\n")
 
     files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
     for file in files:
@@ -1275,28 +1264,43 @@ def _process__doi__column(directory):
 
 def _remove_accents_in_database_files(directory):
 
-    # sys.stdout.write("--INFO-- Removing accents in database files\n")
+    sys.stdout.write("--INFO-- Removing accents in database files\n")
 
     files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
     for file in files:
         data = pd.read_csv(file, encoding="utf-8")
+        #
         cols = data.select_dtypes(include=[np.object]).columns
         data[cols] = data[cols].apply(
             lambda x: x.str.normalize("NFKD")
             .str.encode("ascii", errors="ignore")
             .str.decode("utf-8")
         )
+        #
+        data.to_csv(file, sep=",", encoding="utf-8", index=False)
+
+
+def _remove_stranger_chars_in_database_files(directory):
+
+    sys.stdout.write("--INFO-- Removing stranger chars in database files\n")
+
+    files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
+    for file in files:
+        data = pd.read_csv(file, encoding="utf-8")
+        #
+        cols = data.select_dtypes(include=[np.object]).columns
         data[cols] = data[cols].apply(lambda x: x.str.replace("\n", ""))
         data[cols] = data[cols].apply(lambda x: x.str.replace("\r", ""))
         data[cols] = data[cols].apply(lambda x: x.str.replace("&lpar;", "("))
         data[cols] = data[cols].apply(lambda x: x.str.replace("&rpar;", ")"))
         data[cols] = data[cols].apply(lambda x: x.str.replace("&colon;", ":"))
+        #
         data.to_csv(file, sep=",", encoding="utf-8", index=False)
 
 
-def _create_stopwords_file(directory):
+def _create_ignore_file(directory):
     with open(
-        os.path.join(directory, "processed", "stopwords.txt"), "w", encoding="utf-8"
+        os.path.join(directory, "processed", "ignore.txt"), "w", encoding="utf-8"
     ) as file:
         file.write("")
         file.close()
@@ -1304,7 +1308,7 @@ def _create_stopwords_file(directory):
 
 def _drop_na_columns_in_database_files(directory):
 
-    # sys.stdout.write("--INFO-- Dropping NA columns in database files\n")
+    sys.stdout.write("--INFO-- Dropping NA columns in database files\n")
 
     files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
     for file in files:
@@ -1316,7 +1320,7 @@ def _drop_na_columns_in_database_files(directory):
 def _format_columns_names_in_database_files(directory):
     """Format column names in database files."""
 
-    # sys.stdout.write("--INFO-- Formating column names in database files\n")
+    sys.stdout.write("--INFO-- Formating column names in database files\n")
 
     files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
     for file in files:
@@ -1332,7 +1336,7 @@ def _format_columns_names_in_database_files(directory):
 
 def _apply_scopus2tags_to_database_files(directory):
 
-    # sys.stdout.write("--INFO-- Applying scopus tags to database files\n")
+    sys.stdout.write("--INFO-- Applying scopus tags to database files\n")
 
     scopus2tags = _load_scopus2tags_as_dict()
     files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
@@ -1372,7 +1376,7 @@ def _create_database_files(directory):
 def _concat_raw_csv_files(path):
     """Load raw csv files in a directory."""
 
-    # sys.stdout.write(f"--INFO-- Concatenating raw files in {path}/\n")
+    sys.stdout.write(f"--INFO-- Concatenating raw files in {path}/\n")
 
     files = [f for f in os.listdir(path) if f.endswith(".csv")]
     if len(files) == 0:
@@ -1415,52 +1419,52 @@ def _create_working_directories(directory):
 # ----< Local references >-----------------------------------------------------
 
 
-def _make_documents(scopus, cited_by, references):
-
-    links_scopus = scopus.Link.copy()
-    links_cited_by = cited_by.Link.copy()
-    links_references = references.Link.copy()
-
-    links_cited_by_unique = set(links_cited_by) - set(links_scopus)
-    links_references_unique = set(links_references) - set(links_scopus)
-    links_cited_by_common = set(links_scopus) & set(links_cited_by)
-    links_references_common = set(links_scopus) & set(links_references)
-
-    # citing documents not in the main collection
-    cited_by.index = cited_by.Link
-    cited_by = cited_by.loc[links_cited_by_unique, :]
-    cited_by["main_group"] = False
-    cited_by["citing_group"] = True
-    cited_by["references_group"] = False
-
-    # references not in the main collection
-    references.index = references.Link
-    references = references.loc[links_references_unique, :]
-    references["main_group"] = False
-    references["citing_group"] = False
-    references["references_group"] = True
-    references.loc[:, "References"] = np.nan
-
-    scopus.index = scopus.Link
-    scopus["main_group"] = True
-    scopus["citing_group"] = False
-    scopus["references_group"] = False
-    scopus.loc[links_cited_by_common, "citing_group"] = True
-    scopus.loc[links_references_common, "references_group"] = True
-
-    documents = pd.concat(
-        [
-            scopus,
-            cited_by,
-            references,
-        ],
-        ignore_index=True,
-    )
-
-    documents = documents.reset_index(drop=True)
-
-    documents["main_group"] = documents.main_group.astype(bool)
-    documents["citing_group"] = documents.citing_group.astype(bool)
-    documents["references_group"] = documents.references_group.astype(bool)
-
-    return documents
+# def _make_documents(scopus, cited_by, references):
+#
+#     links_scopus = scopus.Link.copy()
+#     links_cited_by = cited_by.Link.copy()
+#     links_references = references.Link.copy()
+#
+#     links_cited_by_unique = set(links_cited_by) - set(links_scopus)
+#     links_references_unique = set(links_references) - set(links_scopus)
+#     links_cited_by_common = set(links_scopus) & set(links_cited_by)
+#     links_references_common = set(links_scopus) & set(links_references)
+#
+#     # citing documents not in the main collection
+#     cited_by.index = cited_by.Link
+#     cited_by = cited_by.loc[links_cited_by_unique, :]
+#     cited_by["main_group"] = False
+#     cited_by["citing_group"] = True
+#     cited_by["references_group"] = False
+#
+#     # references not in the main collection
+#     references.index = references.Link
+#     references = references.loc[links_references_unique, :]
+#     references["main_group"] = False
+#     references["citing_group"] = False
+#     references["references_group"] = True
+#     references.loc[:, "References"] = np.nan
+#
+#     scopus.index = scopus.Link
+#     scopus["main_group"] = True
+#     scopus["citing_group"] = False
+#     scopus["references_group"] = False
+#     scopus.loc[links_cited_by_common, "citing_group"] = True
+#     scopus.loc[links_references_common, "references_group"] = True
+#
+#     documents = pd.concat(
+#         [
+#             scopus,
+#             cited_by,
+#             references,
+#         ],
+#         ignore_index=True,
+#     )
+#
+#     documents = documents.reset_index(drop=True)
+#
+#     documents["main_group"] = documents.main_group.astype(bool)
+#     documents["citing_group"] = documents.citing_group.astype(bool)
+#     documents["references_group"] = documents.references_group.astype(bool)
+#
+#     return documents

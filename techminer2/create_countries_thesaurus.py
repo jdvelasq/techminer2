@@ -20,7 +20,7 @@ import pandas as pd
 from .thesaurus import Thesaurus, load_file_as_dict
 
 
-def create_country_thesaurus(directory):
+def create_countries_thesaurus(directory):
     """Creates a country thesaurus from 'affiliations' column in the datasets."""
 
     country_names = _get_country_names()
