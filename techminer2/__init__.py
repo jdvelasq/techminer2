@@ -29,6 +29,7 @@ from .co_citation_network_graph import co_citation_network_graph
 from .co_citation_network_indicators import co_citation_network_indicators
 from .co_occ_matrix import co_occ_matrix
 from .co_occ_matrix_list import co_occ_matrix_list
+from .co_occ_word_association import co_occ_word_association
 from .co_occurrence_matrix import co_occurrence_matrix
 from .co_occurrence_matrix_associations import co_occurrence_matrix_associations
 from .co_occurrence_matrix_bubble_chart import co_occurrence_matrix_bubble_chart
@@ -150,6 +151,7 @@ from .occurrence_matrix_sankey_diagram import occurrence_matrix_sankey_diagram
 from .pie_chart import pie_chart
 from .pie_plot import pie_plot
 from .production_over_time_chart import production_over_time_chart
+from .radial_diagram import radial_diagram
 from .rpys import rpys
 from .sankey_diagram import sankey_diagram
 from .source_clustering import source_clustering
