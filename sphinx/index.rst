@@ -36,6 +36,16 @@ package developed and tested in Python version 3.6.
 
 
 .. toctree::
+    :caption: Data
+    :hidden:
+    :maxdepth: 1
+
+    import_scopus_files
+    coverage
+    user_filters
+
+
+.. toctree::
     :caption: Software comparison
     :hidden:
     :maxdepth: 1
@@ -51,7 +61,6 @@ package developed and tested in Python version 3.6.
     :hidden:
     :maxdepth: 1
     
-    _menu_tm2_data
     _menu_tm2_basic_indicators
     _menu_tm2_network
     _menu_tm2_visualization
