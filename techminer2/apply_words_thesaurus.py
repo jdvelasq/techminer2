@@ -43,85 +43,23 @@ def apply_words_thesaurus(directory="./"):
     for file in files:
         data = pd.read_csv(file, encoding="utf-8")
         #
-        if "raw_author_keywords" in data.columns:
-            data = data.assign(author_keywords=data.raw_author_keywords.str.split(";"))
-            data = data.assign(
-                author_keywords=data.author_keywords.map(
+        for raw_column, column in [
+            ("raw_author_keywords", "author_keywords"),
+            ("raw_index_keywords", "index_keywords"),
+            ("raw_title_words", "title_words"),
+            ("raw_abstract_words", "abstract_words"),
+        ]:
+
+            if raw_column in data.columns:
+                data[column] = data[raw_column].str.split(";")
+                data[column] = data[column].map(
                     lambda x: [thesaurus.apply_as_dict(y.strip()) for y in x]
                     if isinstance(x, list)
                     else x
                 )
-            )
-            data = data.assign(
-                author_keywords=data.author_keywords.map(
+                data[column] = data[column].map(
                     lambda x: sorted(set(x)) if isinstance(x, list) else x
                 )
-            )
-            data = data.assign(author_keywords=data.author_keywords.str.join("; "))
-
-        if "raw_index_keywords" in data.columns:
-            data = data.assign(index_keywords=data.raw_index_keywords.str.split(";"))
-            data = data.assign(
-                index_keywords=data.index_keywords.map(
-                    lambda x: [thesaurus.apply_as_dict(y.strip()) for y in x]
-                    if isinstance(x, list)
-                    else x
-                )
-            )
-            data = data.assign(
-                index_keywords=data.index_keywords.map(
-                    lambda x: sorted(set(x)) if isinstance(x, list) else x
-                )
-            )
-            data = data.assign(index_keywords=data.index_keywords.str.join("; "))
-
-        if "raw_title_words" in data.columns:
-            data = data.assign(title_words=data.raw_title_words.str.split(";"))
-            data = data.assign(
-                title_words=data.title_words.map(
-                    lambda x: [thesaurus.apply_as_dict(y.strip()) for y in x]
-                    if isinstance(x, list)
-                    else x
-                )
-            )
-            data = data.assign(
-                title_words=data.title_words.map(
-                    lambda x: sorted(set(x)) if isinstance(x, list) else x
-                )
-            )
-            data = data.assign(title_words=data.title_words.str.join("; "))
-
-        if "raw_abstract_words" in data.columns:
-            data = data.assign(abstract_words=data.raw_abstract_words.str.split(";"))
-            data = data.assign(
-                abstract_words=data.abstract_words.map(
-                    lambda x: [thesaurus.apply_as_dict(y.strip()) for y in x]
-                    if isinstance(x, list)
-                    else x
-                )
-            )
-            data = data.assign(
-                abstract_words=data.abstract_words.map(
-                    lambda x: sorted(set(x)) if isinstance(x, list) else x
-                )
-            )
-            data = data.assign(abstract_words=data.abstract_words.str.join("; "))
-
-        if "raw_words" in data.columns:
-            data = data.assign(words=data.raw_words.str.split(";"))
-            data = data.assign(
-                words=data.words.map(
-                    lambda x: [thesaurus.apply_as_dict(y.strip()) for y in x]
-                    if isinstance(x, list)
-                    else x
-                )
-            )
-            data = data.assign(
-                words=data.words.map(
-                    lambda x: sorted(set(x)) if isinstance(x, list) else x
-                )
-            )
-            data = data.assign(words=data.words.str.join("; "))
-
+                data[column] = data[column].str.join("; ")
         #
         data.to_csv(file, sep=",", encoding="utf-8", index=False)

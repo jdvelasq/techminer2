@@ -22,10 +22,21 @@ def create_words_thesaurus(directory="./"):
         "--INFO-- Creating `words.txt` from author/index keywords, and abstract/title words\n"
     )
 
+    words_list = []
     files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
     for file in files:
         data = pd.read_csv(file, encoding="utf-8")
-        words_list = data.raw_words.copy()
+
+        for column in [
+            "raw_author_keywords",
+            "raw_index_keywords",
+            "raw_title_words",
+            "raw_abstract_words",
+        ]:
+
+            if column in data.columns:
+                words_list.append(data[column])
+    words_list = pd.concat(words_list, ignore_index=True)
 
     words_list = words_list.dropna()
     words_list = words_list.str.lower()
