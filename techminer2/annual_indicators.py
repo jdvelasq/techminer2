@@ -8,25 +8,24 @@ Annual Indicators
 >>> annual_indicators(directory) # doctest: +NORMALIZE_WHITESPACE
       OCC  cum_OCC  ...  cum_local_citations  mean_local_citations_per_year
 year                ...                                                    
-2016    2        2  ...                    5                           0.36
-2017    5        7  ...                   12                           0.23
-2018   16       23  ...                   44                           0.40
-2019   14       37  ...                   57                           0.23
-2020   25       62  ...                   73                           0.21
-2021   22       84  ...                   76                           0.07
-2022   10       94  ...                   76                           0.00
+2016    2        2  ...                  7.0                           0.50
+2017    5        7  ...                 27.0                           0.67
+2018   16       23  ...                 63.0                           0.45
+2019   14       37  ...                 76.0                           0.23
+2020   25       62  ...                 93.0                           0.23
+2021   22       84  ...                 96.0                           0.07
+2022   10       94  ...                 96.0                           0.00
 <BLANKLINE>
 [7 rows x 11 columns]
-
 
 >>> annual_indicators(directory, database="references").tail() # doctest: +NORMALIZE_WHITESPACE
       OCC  cum_OCC  ...  cum_local_citations  mean_local_citations_per_year
 year                ...                                                    
-2018  189      885  ...                  823                           0.22
-2019  140     1025  ...                  950                           0.23
-2020  146     1171  ...                 1073                           0.28
-2021   40     1211  ...                 1103                           0.38
-2022    3     1214  ...                 1104                           0.33
+2018  189      885  ...                994.0                           0.26
+2019  140     1025  ...               1144.0                           0.27
+2020  146     1171  ...               1295.0                           0.34
+2021   40     1211  ...               1334.0                           0.49
+2022    3     1214  ...               1337.0                           1.00
 <BLANKLINE>
 [5 rows x 11 columns]
 
