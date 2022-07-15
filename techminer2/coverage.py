@@ -6,6 +6,7 @@ Computes coverage of terms in a column discarding stopwords.
 
 >>> from techminer2 import *
 >>> directory = "data/regtech/"
+
 >>> coverage(
 ...     "author_keywords",
 ...     directory=directory,
