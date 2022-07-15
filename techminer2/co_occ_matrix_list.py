@@ -135,10 +135,21 @@ def co_occ_matrix_list(
     matrix_list = _create_matrix_list(column, row, directory, database)
     matrix_list = _remove_stopwords(directory, matrix_list)
     matrix_list = _remove_terms_by_occ(min_occ, max_occ, matrix_list)
+
     matrix_list = _add_counters_to_items(
-        column, "column", directory, database, matrix_list
+        column,
+        "column",
+        directory,
+        database,
+        matrix_list,
     )
-    matrix_list = _add_counters_to_items(row, "row", directory, database, matrix_list)
+    matrix_list = _add_counters_to_items(
+        row,
+        "row",
+        directory,
+        database,
+        matrix_list,
+    )
 
     matrix_list = _select_top_n_items(top_n, matrix_list, "column")
     matrix_list = _select_top_n_items(top_n, matrix_list, "row")

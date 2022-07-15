@@ -7,17 +7,7 @@ Co-citation Matrix
 >>> directory = "data/regtech/"
 >>> matrix = co_citation_matrix(directory=directory)
 >>> matrix.head()
-document                                                                            Davis FD et al, 1989, MIS QUART MANAGE INF SYST  ... Goo JJ et al, 2020, J OPEN INNOV: TECHNOL MARK CO
-global_citations                                                                                                              25830  ...                                             15   
-local_citations                                                                                                                  14  ...                                                6 
-document                                           global_citations local_citations                                                  ...                                                  
-Davis FD et al, 1989, MIS QUART MANAGE INF SYST    25830            14                                                         14.0  ...                                               0.0
-Venkatesh V et al, 2000, MANAGE SCI                9760             7                                                           4.0  ...                                               1.0
-Venkatesh V et al, 2003, MIS QUART MANAGE INF SYST 16860            9                                                           5.0  ...                                               1.0
-Lee M-C et al, 2009, ELECT COMMER RES APPL         876              9                                                           4.0  ...                                               0.0
-Lin M et al, 2013, MANAGE SCI                      553              6                                                           0.0  ...                                               0.0
-<BLANKLINE>
-[5 rows x 50 columns]
+
 
 
 """
@@ -33,6 +23,12 @@ from .load_references import load_references
 
 def co_citation_matrix(top_n=50, directory="./"):
 
+
+
+
+
+
+def plotpto():
     # ---< obtains the most local cited references >-------------------------------------
     references = load_references(directory)
     references = references.sort_values("local_citations", ascending=False)

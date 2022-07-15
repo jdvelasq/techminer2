@@ -24,12 +24,12 @@ from .bubble_chart import bubble_chart
 from .cleveland_chart import cleveland_chart
 from .cleveland_plot import cleveland_plot
 from .cluster_map import cluster_map
+from .co_citation_matrix_list import co_citation_matrix_list
 from .co_occ_matrix import co_occ_matrix
 from .co_occ_matrix_list import co_occ_matrix_list
 from .co_occ_network import co_occ_network
 from .co_occ_svd_map import co_occ_svd_map
 from .co_occ_word_association import co_occ_word_association
-from .co_words_network import co_words_network
 from .collaboration_indicators import collaboration_indicators
 from .collaboration_network import collaboration_network
 from .collaboration_worldmap import collaboration_worldmap
@@ -47,8 +47,8 @@ from .country_impact import country_impact
 from .country_scientific_production import country_scientific_production
 from .coverage import coverage
 from .create_institutions_thesaurus import create_institutions_thesaurus
-from .create_thesaurus import create_thesaurus
 from .create_keywords_thesaurus import create_keywords_thesaurus
+from .create_thesaurus import create_thesaurus
 from .cross_corr_matrix import cross_corr_matrix
 from .cross_corr_matrix_list import cross_corr_matrix_list
 from .document_indicators import document_indicators
