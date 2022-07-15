@@ -5,7 +5,6 @@ T-Lab
 
    <hr style="height:4px;border-width:0;color:gray;background-color:black">
 
-T-LAB menu.
 
     .. toctree::
         :maxdepth: 1
