@@ -710,7 +710,7 @@ def _create__abstract_csv__file(directory):
         abstracts = abstracts[abstracts.phrase.str.len() > 0]
         abstracts = abstracts.assign(line_no=abstracts.groupby(["article"]).cumcount())
         abstracts = abstracts[["article", "line_no", "phrase", "global_citations"]]
-        file_name = os.path.join(directory, "processed", "_abstracts.csv")
+        file_name = os.path.join(directory, "processed", "abstracts.csv")
         abstracts.to_csv(file_name, index=False)
 
 

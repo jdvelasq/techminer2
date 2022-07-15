@@ -23,7 +23,7 @@ def most_cited_documents(
     )
     indicators = indicators.reset_index()
 
-    indicators = indicators.rename(columns={"document_id": "Document"})
+    indicators = indicators.rename(columns={"article": "Document"})
 
     fig = px.scatter(
         indicators,

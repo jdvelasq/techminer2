@@ -26,11 +26,11 @@ Matrix Viwer
 5   Zetzsche DA 4:092                  fintech 42:406    4
 6   Zetzsche DA 4:092                  regtech 70:462    4
 7   Barberis JN 4:146                  regtech 70:462    3
-8     Brennan R 3:008                  account 04:022    3
+8     Brennan R 3:008           accountability 04:022    3
 9     Brennan R 3:008  data protection officer 03:008    3
 10    Brennan R 3:008                  regtech 70:462    3
 11   Buckley RP 6:217     financial regulation 08:091    3
-12       Ryan P 3:008                  account 04:022    3
+12       Ryan P 3:008           accountability 04:022    3
 13       Ryan P 3:008  data protection officer 03:008    3
 14       Ryan P 3:008                  regtech 70:462    3
 

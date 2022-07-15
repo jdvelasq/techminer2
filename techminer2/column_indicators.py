@@ -7,11 +7,11 @@ Column Indicators
 >>> column_indicators('authors',directory=directory).head() # doctest: +NORMALIZE_WHITESPACE
              OCC  ...  local_citations_per_document
 authors           ...                              
-Arner DW       7  ...                             2
-Buckley RP     6  ...                             2
+Arner DW       7  ...                             4
+Buckley RP     6  ...                             4
 Zetzsche DA    4  ...                             2
-Barberis JN    4  ...                             3
-Ryan P         3  ...                             1
+Barberis JN    4  ...                             6
+Ryan P         3  ...                             0
 <BLANKLINE>
 [5 rows x 5 columns]
 

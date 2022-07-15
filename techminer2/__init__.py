@@ -8,6 +8,7 @@ from .annual_scientific_production import annual_scientific_production
 from .apply_institutions_thesaurus import apply_institutions_thesaurus
 from .apply_thesaurus import apply_thesaurus
 from .association_index import association_index
+from .associations_for_a_item import associations_for_a_item
 from .associations_for_all_items import associations_for_all_items
 from .author_impact import author_impact
 from .authors_documents import authors_documents
@@ -30,6 +31,7 @@ from .co_citation_network_graph import co_citation_network_graph
 from .co_citation_network_indicators import co_citation_network_indicators
 from .co_occ_matrix import co_occ_matrix
 from .co_occ_matrix_list import co_occ_matrix_list
+from .co_occ_network import co_occ_network
 from .co_occ_svd_map import co_occ_svd_map
 from .co_occ_word_association import co_occ_word_association
 from .co_occurrence_matrix import co_occurrence_matrix
@@ -59,7 +61,6 @@ from .column_documents import column_documents
 from .column_indicators import column_indicators
 from .column_indicators_by_year import column_indicators_by_year
 from .column_plot import column_plot
-from .core_sources import core_sources
 from .correlation_map import correlation_map
 from .corresponding_authors_country import corresponding_authors_country
 from .countries_production_over_time import countries_production_over_time
@@ -108,12 +109,10 @@ from .gantt_chart import gantt_chart
 from .growth_indicators import growth_indicators
 from .heat_map import heat_map
 from .impact_indicators import impact_indicators
-from .import_references import import_references
 from .import_scopus_files import import_scopus_files
 from .institution_impact import institution_impact
 from .institutions_production_over_time import institutions_production_over_time
 from .institutions_production_per_year import institutions_production_per_year
-from .associations_for_a_item import associations_for_a_item
 from .items_associations_plot import items_associations_plot
 from .keyword_concordances import keyword_concordances
 from .keywords_summarization import keywords_summarization
@@ -154,7 +153,6 @@ from .production_over_time_chart import production_over_time_chart
 from .radial_diagram import radial_diagram
 from .rpys import rpys
 from .sankey_diagram import sankey_diagram
-from .source_clustering import source_clustering
 from .source_dynamics import source_dynamics
 from .source_impact import source_impact
 from .sources_production_over_time import sources_production_over_time

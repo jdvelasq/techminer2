@@ -22,6 +22,7 @@ Ryan P 3:008                    3  ...                               3
 <BLANKLINE>
 [6 rows x 5 columns]
 
+
 >>> co_occ_matrix(
 ...    column='author_keywords',
 ...    min_occ=4,
@@ -38,17 +39,17 @@ regulatory technologies (regtech) 12:047               4  ...               0
 financial technologies 09:032                          5  ...               0
 financial regulation 08:091                            8  ...               0
 machine learning 06:013                                6  ...               0
-regulate 06:120                                        5  ...               0
+regulation 06:120                                      5  ...               0
 financial inclusion 05:068                             5  ...               0
 financial service 05:135                               5  ...               0
-account 04:022                                         4  ...               0
+accountability 04:022                                  4  ...               0
 anti-money laundering 04:030                           0  ...               0
 bank 04:001                                            0  ...               0
 big data 04:027                                        4  ...               0
 crowdfunding 04:030                                    4  ...               0
 cryptocurrencies 04:029                                0  ...               0
 financial innovation 04:007                            4  ...               0
-innovate 04:029                                        0  ...               0
+innovation 04:029                                      0  ...               0
 insurtech 04:005                                       4  ...               0
 suptech 04:003                                         4  ...               4
 <BLANKLINE>

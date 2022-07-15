@@ -12,8 +12,8 @@ Builds a network from a matrix
 ...    directory=directory,
 ... )
 
->>> co_occ_network(matrix_list)
-
+>>> co_occ_network(matrix_list) # doctest: +ELLIPSIS
+<networkx.classes.graph.Graph ...
 
 """
 import networkx as nx

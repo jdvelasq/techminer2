@@ -20,11 +20,11 @@ Returns an auto-correlation matrix.
 3     Brennan R 3:008       Ryan P 3:008  1.000000
 4    Buckley RP 6:217   Buckley RP 6:217  1.000000
 ..                ...                ...       ...
-95      Sarea A 2:006     Arner DW 7:220 -0.283651
-96   Buckley RP 6:217      Sarea A 2:006 -0.310634
-97      Sarea A 2:006   Buckley RP 6:217 -0.310634
-98      Sarea A 2:006  Zetzsche DA 4:092 -0.311531
-99  Zetzsche DA 4:092      Sarea A 2:006 -0.311531
+95      Turki M 2:011   Buckley RP 6:217 -0.249260
+96       Das SR 2:028     Hamdan A 2:011 -0.258227
+97       Das SR 2:028      Turki M 2:011 -0.258227
+98     Hamdan A 2:011       Das SR 2:028 -0.258227
+99      Turki M 2:011       Das SR 2:028 -0.258227
 <BLANKLINE>
 [100 rows x 3 columns]
 

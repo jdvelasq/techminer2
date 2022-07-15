@@ -5,7 +5,7 @@ List View
 >>> from techminer2 import *
 >>> directory = "data/regtech/"
 
->>> make_list(
+>>> list_view(
 ...    column='author_keywords',
 ...    min_occ=3,
 ...    directory=directory,
@@ -20,14 +20,14 @@ regulatory technologies (regtech)   12  ...                             0
 compliance                          12  ...                             0
 financial technologies               9  ...                             0
 financial regulation                 8  ...                             1
-regulate                             6  ...                             2
+regulation                           6  ...                             3
 machine learning                     6  ...                             0
 <BLANKLINE>
 [10 rows x 5 columns]
 
 
 >>> from pprint import pprint
->>> pprint(sorted(make_list("author_keywords", directory=directory).columns.to_list()))
+>>> pprint(sorted(list_view("author_keywords", directory=directory).columns.to_list()))
 ['OCC',
  'global_citations',
  'global_citations_per_document',

@@ -22,13 +22,14 @@ Co-occurrence Matrix List
 5   Zetzsche DA 4:092                  fintech 42:406    4
 6   Zetzsche DA 4:092                  regtech 70:462    4
 7   Barberis JN 4:146                  regtech 70:462    3
-8     Brennan R 3:008                  account 04:022    3
+8     Brennan R 3:008           accountability 04:022    3
 9     Brennan R 3:008  data protection officer 03:008    3
 10    Brennan R 3:008                  regtech 70:462    3
 11   Buckley RP 6:217     financial regulation 08:091    3
-12       Ryan P 3:008                  account 04:022    3
+12       Ryan P 3:008           accountability 04:022    3
 13       Ryan P 3:008  data protection officer 03:008    3
 14       Ryan P 3:008                  regtech 70:462    3
+
 
 >>> co_occ_matrix_list(
 ...    column='author_keywords',
@@ -43,7 +44,7 @@ Co-occurrence Matrix List
 4                          blockchain 18:109  blockchain 18:109   18
 ..                                       ...                ...  ...
 75                            regtech 70:462     suptech 04:003    4
-76                           regulate 06:120     fintech 42:406    4
+76                         regulation 06:120     fintech 42:406    4
 77  regulatory technologies (regtech) 12:047     regtech 70:462    4
 78                            suptech 04:003     regtech 70:462    4
 79                            suptech 04:003     suptech 04:003    4
@@ -59,20 +60,21 @@ Co-occurrence Matrix List
 ...    top_n=5,
 ...    directory=directory,
 ... )
-                  row             column  OCC
-0      Arner DW 7:220     regtech 70:462    6
-1      Arner DW 7:220     fintech 42:406    5
-2    Buckley RP 6:217     regtech 70:462    5
-3    Buckley RP 6:217     fintech 42:406    4
-4   Zetzsche DA 4:092     fintech 42:406    4
-5   Zetzsche DA 4:092     regtech 70:462    4
-6   Barberis JN 4:146     regtech 70:462    3
-7     Brennan R 3:008     regtech 70:462    3
-8   Barberis JN 4:146     fintech 42:406    2
-9     Brennan R 3:008  compliance 12:020    2
-10     Arner DW 7:220  blockchain 18:109    1
-11   Buckley RP 6:217  blockchain 18:109    1
-12  Zetzsche DA 4:092  blockchain 18:109    1
+                  row                                    column  OCC
+0      Arner DW 7:220                            regtech 70:462    6
+1      Arner DW 7:220                            fintech 42:406    5
+2    Buckley RP 6:217                            regtech 70:462    5
+3    Buckley RP 6:217                            fintech 42:406    4
+4   Zetzsche DA 4:092                            fintech 42:406    4
+5   Zetzsche DA 4:092                            regtech 70:462    4
+6   Barberis JN 4:146                            regtech 70:462    3
+7     Brennan R 3:008                            regtech 70:462    3
+8   Barberis JN 4:146                            fintech 42:406    2
+9      Arner DW 7:220                         blockchain 18:109    1
+10     Arner DW 7:220  regulatory technologies (regtech) 12:047    1
+11  Barberis JN 4:146  regulatory technologies (regtech) 12:047    1
+12   Buckley RP 6:217                         blockchain 18:109    1
+13  Zetzsche DA 4:092                         blockchain 18:109    1
 
 
 >>> co_occ_matrix_list(
@@ -80,32 +82,32 @@ Co-occurrence Matrix List
 ...    top_n=5,
 ...    directory=directory,
 ... )
-                               row                          column  OCC
-0                   regtech 70:462                  regtech 70:462   70
-1                   fintech 42:406                  fintech 42:406   42
-2                   fintech 42:406                  regtech 70:462   42
-3                   regtech 70:462                  fintech 42:406   42
-4                blockchain 18:109               blockchain 18:109   18
-5                blockchain 18:109                  regtech 70:462   17
-6                   regtech 70:462               blockchain 18:109   17
-7                blockchain 18:109                  fintech 42:406   14
-8                   fintech 42:406               blockchain 18:109   14
-9   artificial intelligence 13:065  artificial intelligence 13:065   13
-10               compliance 12:020               compliance 12:020   12
-11               compliance 12:020                  regtech 70:462   12
-12                  regtech 70:462               compliance 12:020   12
-13  artificial intelligence 13:065                  regtech 70:462   10
-14                  regtech 70:462  artificial intelligence 13:065   10
-15  artificial intelligence 13:065                  fintech 42:406    8
-16                  fintech 42:406  artificial intelligence 13:065    8
-17               blockchain 18:109               compliance 12:020    3
-18               compliance 12:020               blockchain 18:109    3
-19               compliance 12:020                  fintech 42:406    3
-20                  fintech 42:406               compliance 12:020    3
-21  artificial intelligence 13:065               blockchain 18:109    2
-22               blockchain 18:109  artificial intelligence 13:065    2
-23  artificial intelligence 13:065               compliance 12:020    1
-24               compliance 12:020  artificial intelligence 13:065    1
+                                         row  ... OCC
+0                             regtech 70:462  ...  70
+1                             fintech 42:406  ...  42
+2                             fintech 42:406  ...  42
+3                             regtech 70:462  ...  42
+4                          blockchain 18:109  ...  18
+5                          blockchain 18:109  ...  17
+6                             regtech 70:462  ...  17
+7                          blockchain 18:109  ...  14
+8                             fintech 42:406  ...  14
+9             artificial intelligence 13:065  ...  13
+10  regulatory technologies (regtech) 12:047  ...  12
+11            artificial intelligence 13:065  ...  10
+12                            regtech 70:462  ...  10
+13            artificial intelligence 13:065  ...   8
+14                            fintech 42:406  ...   8
+15                            regtech 70:462  ...   4
+16  regulatory technologies (regtech) 12:047  ...   4
+17                            fintech 42:406  ...   3
+18  regulatory technologies (regtech) 12:047  ...   3
+19            artificial intelligence 13:065  ...   2
+20            artificial intelligence 13:065  ...   2
+21                         blockchain 18:109  ...   2
+22  regulatory technologies (regtech) 12:047  ...   2
+<BLANKLINE>
+[23 rows x 3 columns]
 
 
 """
