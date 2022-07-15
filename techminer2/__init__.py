@@ -48,7 +48,7 @@ from .country_scientific_production import country_scientific_production
 from .coverage import coverage
 from .create_institutions_thesaurus import create_institutions_thesaurus
 from .create_thesaurus import create_thesaurus
-from .create_words_thesaurus import create_words_thesaurus
+from .create_keywords_thesaurus import create_keywords_thesaurus
 from .cross_corr_matrix import cross_corr_matrix
 from .cross_corr_matrix_list import cross_corr_matrix_list
 from .document_indicators import document_indicators

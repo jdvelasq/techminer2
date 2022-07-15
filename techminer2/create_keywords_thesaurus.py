@@ -15,7 +15,7 @@ import pandas as pd
 from .thesaurus import Thesaurus, read_textfile, text_clustering
 
 
-def create_words_thesaurus(directory="./"):
+def create_keywords_thesaurus(directory="./"):
     """Creates a words thesaurus from raw author/index keywords and title/abstact words."""
 
     sys.stdout.write(
@@ -59,7 +59,7 @@ def create_words_thesaurus(directory="./"):
     # {palabra: clave_del_grupo}
     new_th = text_clustering(pd.Series(words_list)).to_dict()
 
-    thesaurus_file = os.path.join(directory, "processed", "words.txt")
+    thesaurus_file = os.path.join(directory, "processed", "keywords.txt")
     if os.path.isfile(thesaurus_file):
         old_th = read_textfile(thesaurus_file).to_dict()
         new_th = {**new_th, **old_th}

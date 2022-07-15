@@ -1,5 +1,5 @@
 """
-Apply 'words.txt' Thesaurus
+Apply 'keywords.txt' Thesaurus
 ===============================================================================
 
 Cleans the keywords columns using the `keywords.txt`file.
@@ -24,14 +24,14 @@ import pandas as pd
 from .thesaurus import read_textfile
 
 
-def apply_words_thesaurus(directory="./"):
+def apply_keywords_thesaurus(directory="./"):
     """Clean all words columns in the records using a thesaurus (keywrords.txt)."""
 
     sys.stdout.write(
         "--INFO-- Applying `words.txt` thesaurus to author/index keywords and abstract/title words\n"
     )
 
-    thesaurus_file = os.path.join(directory, "processed", "words.txt")
+    thesaurus_file = os.path.join(directory, "processed", "keywords.txt")
     if os.path.isfile(thesaurus_file):
         thesaurus = read_textfile(thesaurus_file)
         thesaurus = thesaurus.compile_as_dict()

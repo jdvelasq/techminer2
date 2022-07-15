@@ -8,7 +8,7 @@ Finds a string in the terms of a thesaurus using fuzzy search.
 >>> directory = "data/regtech/"
 
 >>> fuzzy_search(
-...     thesaurus_file="words.txt",
+...     thesaurus_file="keywords.txt",
 ...     patterns='intelligencia',
 ...     threshold=80,
 ...     directory=directory,

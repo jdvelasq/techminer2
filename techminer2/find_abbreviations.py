@@ -8,7 +8,7 @@ Finds string abbreviations in the keywords of a thesaurus.
 >>> directory = "data/regtech/"
 
 >>> find_abbreviations(
-...     "words.txt",
+...     "keywords.txt",
 ...     directory=directory,
 ... )
 aml

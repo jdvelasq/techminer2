@@ -53,7 +53,7 @@ def keyword_concordances(
     )
 
     # ----< loads keywords >-------------------------------------------------------------
-    thesaurus_file = join(directory, "processed", "words.txt")
+    thesaurus_file = join(directory, "processed", "keywords.txt")
     if isfile(thesaurus_file):
         th = load_file_as_dict(thesaurus_file)
     else:

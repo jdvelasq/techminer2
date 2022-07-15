@@ -75,10 +75,10 @@ from tqdm import tqdm
 
 from .apply_countries_thesaurus import apply_countries_thesaurus
 from .apply_institutions_thesaurus import apply_institutions_thesaurus
-from .apply_words_thesaurus import apply_words_thesaurus
+from .apply_keywords_thesaurus import apply_keywords_thesaurus
 from .create_countries_thesaurus import create_countries_thesaurus
 from .create_institutions_thesaurus import create_institutions_thesaurus
-from .create_words_thesaurus import create_words_thesaurus
+from .create_keywords_thesaurus import create_keywords_thesaurus
 
 
 def import_scopus_files(
@@ -128,8 +128,8 @@ def import_scopus_files(
     )
     #
     _create__raw_words__column(directory)
-    create_words_thesaurus(directory=directory)
-    apply_words_thesaurus(directory)
+    create_keywords_thesaurus(directory=directory)
+    apply_keywords_thesaurus(directory)
     #
     # -------------------------------------------------------------------------
     create_countries_thesaurus(directory)

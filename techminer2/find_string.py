@@ -8,7 +8,7 @@ Finds a string in the terms of a thesaurus.
 >>> directory = "data/regtech/"
 
 >>> find_string(
-...     thesaurus_file="words.txt",
+...     thesaurus_file="keywords.txt",
 ...     contains='artificial intelligence',
 ...     directory=directory,
 ... )
