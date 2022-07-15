@@ -14,17 +14,17 @@ Captures n-words around the keyword.
 ...     right=4,
 ...     directory=directory,
 ... )
-- INFO - Saved HTML report: data/reports/abstract_screening.html
-                  industry overall, and many FINTECH start-ups are looking
-                            hook up with the FINTECH revolution is at stake
-                            We present a new FINTECH innovation mapping approach that
-                influenced by blockchain and FINTECH innovations
- organisations, philanthropic investment and FINTECH companies
-                         about what the term FINTECH means
-                  explores the complexity of FINTECH, and attempts a definition
-                     out the quintessence of FINTECH using both spheres
-                        it is concluded that FINTECH is a new financial
-                    Financial technology, or FINTECH, involves the design and
+- INFO - Saved HTML report: data/regtech/reports/abstract_screening.html
+                 review the effect of FINTECH development against the broader
+          the disruptive potential of FINTECH, and its implications for
+                                      FINTECH
+           bankers who might consider FINTECH and strategic partnerships as
+       We argue financial technology (FINTECH) is the key driver
+                The full potential of FINTECH to support the sdgs
+     economies and societies, through FINTECH, financial inclusion and sustainable
+                  that many banks and FINTECH start-ups are investing
+      co-operative collaboration with FINTECH start-ups on regulatory
+       field of financial technology (FINTECH) and the different financial
 
 """
 
@@ -42,9 +42,10 @@ def abstract_screening(
     directory="./",
 ):
     """Checks the occurrence contexts of a given text in the abstract's phrases."""
+
     abstracts = load_abstracts(directory)
     abstracts = abstracts.sort_values(
-        ["global_citations", "record_no", "line_no"], ascending=[False, True, True]
+        ["global_citations", "article", "line_no"], ascending=[False, True, True]
     )
     abstracts = _select_abstracts(abstracts, text)
     contexts = _extract_contexts(abstracts, text, left, right)
@@ -56,15 +57,15 @@ def abstract_screening(
 def _create_report(directory, abstracts):
 
     abstracts = abstracts.copy()
-    abstracts = abstracts[["document_id", "phrase"]]
-    abstracts = abstracts.groupby("document_id", as_index=False).aggregate(
+    abstracts = abstracts[["article", "phrase"]]
+    abstracts = abstracts.groupby("article", as_index=False).aggregate(
         lambda x: " <br> ".join(x)
     )
 
     report_name = "abstract_screening.html"
     template = load_template(report_name)
     html = template.render(
-        concordances=zip(abstracts.document_id.tolist(), abstracts.phrase.tolist())
+        concordances=zip(abstracts.article.tolist(), abstracts.phrase.tolist())
     )
     save_html_report(directory, html, report_name)
 
