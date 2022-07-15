@@ -4,6 +4,7 @@ Summary View
 
 >>> from techminer2 import *
 >>> directory = "data/regtech/"
+
 >>> summary_view(directory).head()
            column  number of terms coverage (%)
 0        abstract               89       94.68%
