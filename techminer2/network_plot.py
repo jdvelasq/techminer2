@@ -27,6 +27,7 @@ Network Plot
 """
 import networkx as nx
 import numpy as np
+import plotly.express as px
 import plotly.graph_objects as go
 
 
@@ -134,10 +135,22 @@ def _create_traces(graph):
         node_x.append(x)
         node_y.append(y)
         text.append(node)
-        if graph.nodes[node]["group"] == 0:
-            colors.append("#F1948A")
+        group = graph.nodes[node]["group"]
+        if graph.nodes[node]["group"] < 24:
+            colors.append(px.colors.qualitative.Dark24[group])
         else:
-            colors.append("#5DADE2")
+            group = group - 24
+            colors.append(px.colors.qualitative.Light24[group])
+
+    node_size = []
+    for node, adjacencies in enumerate(graph.adjacency()):
+        node_size.append(1 + len(adjacencies[1]))
+    max_size = max(node_size)
+    min_size = min(node_size)
+    if max_size == min_size:
+        node_size = [13] * len(node_size)
+    else:
+        node_size = [12 + 8 * (x - min_size) / (max_size - min_size) for x in node_size]
 
     x_mean = np.mean(node_x)
     y_mean = np.mean(node_y)
@@ -160,8 +173,8 @@ def _create_traces(graph):
         text=text,
         marker=dict(
             color=colors,
-            size=13,
-            line_width=2,
+            size=node_size,
+            line=dict(width=2, color="DarkSlateGrey"),
         ),
         textposition=textposition,
     )
@@ -174,169 +187,3 @@ def _make_layout(graph, k=0.2, iteratons=50):
     for node in graph.nodes():
         graph.nodes[node]["pos"] = pos[node]
     return graph
-
-
-# from operator import itemgetter
-
-# import matplotlib.pyplot as plt
-#
-# import numpy as np
-
-# group_colors = [
-#     "tab:blue",
-#     "tab:orange",
-#     "tab:green",
-#     "tab:red",
-#     "tab:purple",
-#     "tab:brown",
-#     "tab:pink",
-#     "tab:gray",
-#     "tab:olive",
-#     "tab:cyan",
-#     "cornflowerblue",
-#     "lightsalmon",
-#     "limegreen",
-#     "tomato",
-#     "mediumvioletred",
-#     "darkgoldenrod",
-#     "lightcoral",
-#     "silver",
-#     "darkkhaki",
-#     "skyblue",
-# ] * 5
-
-
-# def network_plot(
-#     network,
-#     figsize=(7, 7),
-#     k=0.20,
-#     iterations=50,
-#     max_labels=50,
-# ):
-
-#     fig = plt.figure(figsize=figsize)
-#     ax = fig.subplots()
-
-#     options = {
-#         "width": 1,
-#         "with_labels": False,
-#         "font_size": 7,
-#         "font_weight": "regular",
-#         "alpha": 0.7,
-#     }
-
-#     # --------------------------------------------------------------------------------
-#     G = network["G"]
-#     nodes = network["nodes"]
-#     edges = network["edges"]
-
-#     # --------------------------------------------------------------------------------
-#     pos = nx.spring_layout(G, k=k, iterations=iterations)
-
-#     colors = [node[1]["group"] for node in nodes]
-#     colors = [group_colors[color] for color in colors]
-
-#     sizes = [node[1]["size"] for node in G.nodes.data()]
-#     sizes = [size / max(sizes) for size in sizes]
-#     max_size = max(sizes)
-#     min_size = min(sizes)
-#     if max_size == min_size:
-#         sizes = [500 for size in sizes]
-#     else:
-#         sizes = [
-#             (size - min_size) / (max_size - min_size) * 1400 + 100 for size in sizes
-#         ]
-
-#     edge_colors = ["silver"] * len(edges)
-
-#     # draws the network
-#     nx.draw(
-#         G,
-#         node_color=colors,
-#         node_size=sizes,
-#         edge_color=edge_colors,
-#         pos=pos,
-#         **options,
-#     )
-
-#     # edge color of nodes
-#     ax.collections[0].set_edgecolor("k")
-
-#     # plot centers as black dots
-#     x_points = [value[0] for value in pos.values()]
-#     y_points = [value[1] for value in pos.values()]
-
-#     size = [
-#         (node[0], node[1]["size"], pos[node[0]][0], pos[node[0]][1])
-#         for node in G.nodes.data()
-#     ]
-#     size = sorted(size, key=itemgetter(1), reverse=True)
-#     x_points_marked = [value[2] for value in size[:max_labels]]
-#     y_points_marked = [value[3] for value in size[:max_labels]]
-
-#     ax.scatter(
-#         x_points_marked,
-#         y_points_marked,
-#         marker="o",
-#         s=20,
-#         c="k",
-#         alpha=1.0,
-#         zorder=10,
-#     )
-
-#     #  Center of the plot
-#     x_mean = sum(x_points) / len(x_points)
-#     y_mean = sum(y_points) / len(y_points)
-
-#     xlim = ax.get_xlim()
-#     ylim = ax.get_ylim()
-
-#     factor = 0.05
-#     rx = factor * (xlim[1] - xlim[0])
-#     ry = factor * (ylim[1] - ylim[0])
-#     radious = np.sqrt(rx**2 + ry**2)
-
-#     for label in size[:max_labels]:
-
-#         label = label[0]
-
-#         x_point, y_point = pos[label]
-
-#         x_c = x_point - x_mean
-#         y_c = y_point - y_mean
-#         angle = np.arctan(np.abs(y_c / x_c))
-#         x_label = x_point + np.copysign(radious * np.cos(angle), x_c)
-#         y_label = y_point + np.copysign(radious * np.sin(angle), y_c)
-
-#         ha = "left" if x_point > x_mean else "right"
-#         va = "center"
-
-#         ax.text(
-#             x_label,
-#             y_label,
-#             s=label,
-#             fontsize=7,
-#             bbox=dict(
-#                 facecolor="w",
-#                 alpha=1.0,
-#                 edgecolor="gray",
-#                 boxstyle="round,pad=0.5",
-#             ),
-#             horizontalalignment=ha,
-#             verticalalignment=va,
-#             alpha=0.9,
-#             zorder=13,
-#         )
-
-#         ax.plot(
-#             [x_point, x_label],
-#             [y_point, y_label],
-#             lw=1,
-#             ls="-",
-#             c="k",
-#             zorder=13,
-#         )
-
-#     fig.set_tight_layout(True)
-
-#     return fig

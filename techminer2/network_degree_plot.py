@@ -13,8 +13,8 @@ Network Degree Plot
 
 >>> from techminer2.co_occ_network import co_occ_network
 >>> graph = co_occ_network(matrix_list)
->>> from techminer2.community_detection import community_detection
->>> graph = community_detection(graph, method='louvain')
+>>> from techminer2.network_community_detection import network_community_detection
+>>> graph = network_community_detection(graph, method='louvain')
 
 >>> file_name = "sphinx/_static/network_degree_plot.html"
 >>> from techminer2.network_degree_plot import network_degree_plot

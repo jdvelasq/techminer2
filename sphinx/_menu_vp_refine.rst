@@ -21,7 +21,7 @@ The following fnctions operate on a thesaurus.
             apply_institutions_thesaurus
 
         .. toctree::
-            apply_words_thesaurus
+            apply_keywords_thesaurus
             
     * Operations over thesaurus files:
 
