@@ -8,6 +8,14 @@ Co-occurrence Analysis
 
         _menu_tlab_co_occ_analysis__co_word
 
+        _menu_tlab_co_occ_analysis__pairs
+
+
+
+        _menu_tlab_co_occ_analysis__concordances
+
+
+
 
 ----
 ----
@@ -38,8 +46,4 @@ Co-occurrence Analysis
         ego_network
 
 
-    .. toctree::
-        :maxdepth: 1
 
-        abstract_concordances
-        keyword_concordances
