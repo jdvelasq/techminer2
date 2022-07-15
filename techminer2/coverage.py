@@ -11,7 +11,7 @@ Computes coverage of terms in a column discarding stopwords.
 ...     directory=directory,
 ... ).head(10)
 --INFO-- Number of documents : 94
---INFO-- Documents with NA: 85
+--INFO-- Documents with NA: 9
 --INFO--Efective documents : 94
    min_occ  cum_sum_documents coverage  cum num items
 0       70                 70  74.47 %              1
@@ -45,11 +45,13 @@ def coverage(
 
     documents = read_records(directory=directory, database=database, use_filter=False)
     documents = documents.reset_index()
-    documents = documents[[column, "record_no"]]
+    documents = documents[[column, "article"]]
 
     n_documents = len(documents)
     sys.stdout.write(f"--INFO-- Number of documents : {n_documents}\n")
-    sys.stdout.write(f"--INFO-- Documents with NA: {len(documents.dropna())}\n")
+    sys.stdout.write(
+        f"--INFO-- Documents with NA: {n_documents - len(documents.dropna())}\n"
+    )
 
     documents = documents.dropna()
     sys.stdout.write(f"--INFO--Efective documents : {n_documents}\n")
@@ -61,22 +63,22 @@ def coverage(
     documents = documents[~documents[column].isin(stopwords)]
 
     documents = documents.groupby(by=[column]).agg(
-        {"num_documents": "count", "record_no": list}
+        {"num_documents": "count", "article": list}
     )
     documents = documents.sort_values(by=["num_documents"], ascending=False)
 
     documents = documents.reset_index()
 
     documents = documents.groupby(by="num_documents", as_index=False).agg(
-        {"record_no": list, column: list}
+        {"article": list, column: list}
     )
 
     documents = documents.sort_values(by=["num_documents"], ascending=False)
-    documents["record_no"] = documents.record_no.map(
+    documents["article"] = documents.article.map(
         lambda x: [term for sublist in x for term in sublist]
     )
 
-    documents = documents.assign(cum_sum_documents=documents.record_no.cumsum())
+    documents = documents.assign(cum_sum_documents=documents.article.cumsum())
     documents = documents.assign(cum_sum_documents=documents.cum_sum_documents.map(set))
     documents = documents.assign(cum_sum_documents=documents.cum_sum_documents.map(len))
 
@@ -90,7 +92,7 @@ def coverage(
     documents = documents.assign(cum_sum_items=documents.cum_sum_items.map(set))
     documents = documents.assign(cum_sum_items=documents.cum_sum_items.map(len))
 
-    documents.drop("record_no", axis=1, inplace=True)
+    documents.drop("article", axis=1, inplace=True)
     documents.drop(column, axis=1, inplace=True)
 
     documents = documents.rename(
