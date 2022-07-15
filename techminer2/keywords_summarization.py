@@ -4,24 +4,21 @@ Keywords Summarization
 
 >>> from techminer2 import *
 >>> directory = "data/regtech/"
+
 >>> keywords_summarization(
 ...     column="author_keywords",
-...     keywords=["fintech", "block-chain"],
+...     keywords=["fintech", "blockchain"],
 ...     n_phrases=5,    
 ...     directory=directory,
 ... )
-- INFO - Generating data/reports/keywords_summarization.txt
+--INFO-- Generating data/regtech/reports/keywords_summarization.txt
 
 """
-
-
+import sys
 import textwrap
 from os.path import isfile, join
 
-import pandas as pd
-
-from . import logging
-from ._read_records import read_filtered_records
+from ._read_records import read_records
 from .thesaurus import load_file_as_dict
 
 
@@ -36,7 +33,7 @@ def keywords_summarization(
         #
         # Expands the original keywords list to the equivalent keywords in the thesaurus.
         #
-        thesaurus_file = join(directory, "processed", "keywords.txt")
+        thesaurus_file = join(directory, "processed", "words.txt")
         if isfile(thesaurus_file):
             th = load_file_as_dict(thesaurus_file)
         else:
@@ -56,11 +53,11 @@ def keywords_summarization(
     def select_documents(documents, column, expanded_keywords):
         documents = documents.copy()
         documents["_points_"] = 0
-        documents["document_title"] = documents["document_title"].str.lower()
+        documents["title"] = documents["title"].str.lower()
 
         for keyword in expanded_keywords:
             documents.loc[
-                documents.document_title.str.contains(keyword, regex=False), "_points_"
+                documents.title.str.contains(keyword, regex=False), "_points_"
             ] += 3
 
         for keyword in expanded_keywords:
@@ -87,7 +84,7 @@ def keywords_summarization(
         for keyword in expanded_keywords:
             keyword = keyword.replace("(", "\(").replace(")", "\)")
             keyword = keyword.replace("[", "\[").replace("]", "\]")
-            documents["document_title"] = documents["document_title"].str.replace(
+            documents["title"] = documents["title"].str.replace(
                 r"\b" + keyword + r"\b", keyword.upper()
             )
 
@@ -103,11 +100,11 @@ def keywords_summarization(
         documents = documents.copy()
         column_list = []
         reported_columns = [
-            "document_title",
+            "title",
             "authors",
             "global_citations",
             "source_title",
-            "pub_year",
+            "year",
             "abstract",
         ]
         for column in reported_columns:
@@ -120,7 +117,7 @@ def keywords_summarization(
 
         with open(filename, "w") as out_file:
 
-            logging.info("Generating " + filename)
+            sys.stdout.write("--INFO-- Generating " + filename + "\n")
 
             for index, row in documents.iterrows():
 
@@ -129,8 +126,8 @@ def keywords_summarization(
                     if column not in row.index:
                         continue
 
-                    if column == "document_title":
-                        print("      document_title :", end="", file=out_file)
+                    if column == "title":
+                        print("      title :", end="", file=out_file)
                         print(
                             textwrap.fill(
                                 row[column],
@@ -172,7 +169,7 @@ def keywords_summarization(
         keywords = [keywords]
     keywords = [word for word in keywords if word != ""]
 
-    documents = read_filtered_records(directory)
+    documents = read_records(directory)
     expanded_keywords = expand_keywords(keywords)
     documents = select_documents(documents, column, expanded_keywords)
     documents = documents.head(n_phrases)
@@ -312,11 +309,11 @@ def keywords_summarization(
 #         documents = documents.copy()
 #         column_list = []
 #         reported_columns = [
-#             "document_title",
+#             "title",
 #             "authors",
 #             "global_citations",
 #             "source_title",
-#             "pub_year",
+#             "year",
 #             "abstract",
 #         ]
 #         for column in reported_columns:
@@ -343,8 +340,8 @@ def keywords_summarization(
 #                     if column not in row.index:
 #                         continue
 
-#                     if column == "document_title":
-#                         print("      document_title :", end="", file=out_file)
+#                     if column == "title":
+#                         print("      title :", end="", file=out_file)
 #                         print(
 #                             textwrap.fill(
 #                                 row[column],
