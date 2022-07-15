@@ -143,14 +143,19 @@ def _create_traces(graph):
             colors.append(px.colors.qualitative.Light24[group])
 
     node_size = []
+    text_size = []
     for node, adjacencies in enumerate(graph.adjacency()):
         node_size.append(1 + len(adjacencies[1]))
     max_size = max(node_size)
     min_size = min(node_size)
     if max_size == min_size:
         node_size = [13] * len(node_size)
+        text_size = [10] * len(node_size)
     else:
-        node_size = [12 + 8 * (x - min_size) / (max_size - min_size) for x in node_size]
+        text_size = [7 + 5 * (x - min_size) / (max_size - min_size) for x in node_size]
+        node_size = [
+            10 + 10 * (x - min_size) / (max_size - min_size) for x in node_size
+        ]
 
     x_mean = np.mean(node_x)
     y_mean = np.mean(node_y)
@@ -177,6 +182,7 @@ def _create_traces(graph):
             line=dict(width=2, color="DarkSlateGrey"),
         ),
         textposition=textposition,
+        textfont=dict(size=text_size),
     )
 
     return edge_trace, node_trace

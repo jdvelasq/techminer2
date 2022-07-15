@@ -24,6 +24,15 @@ Thematic Map
     <iframe src="_static/thematic_map_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> nnet.communities_.head()
+                            CL_00  ...                    CL_02
+0                  regtech 70:462  ...        regulation 06:120
+1                  fintech 42:406  ...      crowdfunding 04:030
+2               blockchain 18:109  ...  cryptocurrencies 04:029
+3  artificial intelligence 13:065  ...        innovation 04:029
+4               compliance 12:020  ...          big data 04:027
+<BLANKLINE>
+[5 rows x 3 columns]
+
 
 >>> file_name = "sphinx/_static/thematic_map_degree_plot.html"
 >>> nnet.degree_plot_.write_html(file_name)
@@ -34,6 +43,12 @@ Thematic Map
 
 
 >>> nnet.indicators_.head()
+                                group  betweenness  closeness  pagerank
+regtech 70:462                      0     0.131537   1.000000  0.214240
+fintech 42:406                      0     0.131537   1.000000  0.167876
+blockchain 18:109                   0     0.060777   0.826087  0.077431
+artificial intelligence 13:065      0     0.053314   0.791667  0.059587
+compliance 12:020                   0     0.007317   0.612903  0.038065
 
 """
 
@@ -47,7 +62,7 @@ from .network_indicators import network_indicators
 from .network_plot import network_plot
 
 
-class Result:
+class _Result:
     """Results"""
 
     def __init__(self, communities, indicators, plot, degree_plot):
@@ -90,13 +105,14 @@ def thematic_map(
     matrix_list = matrix_list.sort_values(
         by=["OCC", "row", "column"], ascending=[False, True, True]
     )
+    matrix_list = matrix_list[matrix_list.OCC > 0]
     matrix_list = matrix_list.reset_index(drop=True)
     # end TODO
 
     graph = co_occ_network(matrix_list)
     graph = network_community_detection(graph, method=method)
 
-    result = Result(
+    result = _Result(
         communities=network_communities(graph),
         indicators=network_indicators(graph),
         plot=network_plot(
