@@ -17,7 +17,6 @@ internally in TheVantagePoint software, in order to facilitate comparison.
         _menu_vp_refine
         _menu_vp_analyze
         _menu_vp_report
-        _menu_vp_editors
 
 
     .. toctree::
@@ -25,22 +24,6 @@ internally in TheVantagePoint software, in order to facilitate comparison.
 
 
 In this section, **TechMiner** is compared with VantagePoint.
-
-
-
-
-
-
-    .. toctree::
-        :maxdepth: 1
-
-        
-        extract_user_keywords
-
-    .. note::
-        VantagePoint uses the title view to select a record for viewing. ``document_viewer`` 
-        function implements a document search and returns documents ordered by global 
-        citations.
 
 
 
