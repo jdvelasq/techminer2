@@ -5,12 +5,12 @@ Summary View
 >>> from techminer2 import *
 >>> directory = "data/regtech/"
 >>> summary_view(directory).head()
-            column  number of terms coverage (%)
-0         abstract                5        5.32%
-1   abstract_words                5        5.32%
-2     affiliations               93       98.94%
-3           art_no               13       13.83%
-4  author_keywords               85       90.43%
+           column  number of terms coverage (%)
+0        abstract               89       94.68%
+1  abstract_words               87       92.55%
+2    affiliations               93       98.94%
+3          art_no               13       13.83%
+4         article               94      100.00%
 
 """
 import pandas as pd
