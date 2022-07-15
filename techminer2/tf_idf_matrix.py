@@ -5,18 +5,21 @@ TF-IDF Matrix
 
 >>> from techminer2 import *
 >>> directory = "data/regtech/"
->>> tf_idf_matrix('authors', min_occ=2, directory=directory).head()
-authors   Wojcik D Rabbani MR Hornuf L  ...  Zhang MX Daragmeh A Kauffman RJ
-#d               5          3        3  ...         2          2           2
-#c             19         39       110  ...       12         3           228
-record_no                               ...                                 
-2016-0001      0.0        0.0      0.0  ...  0.000000        0.0         0.0
-2017-0006      0.0        0.0      0.0  ...  0.000000        0.0         0.0
-2017-0008      0.0        0.0      0.0  ...  0.707107        0.0         0.0
-2018-0000      0.0        0.0      0.0  ...  0.000000        0.0         0.5
-2018-0004      0.0        0.0      0.0  ...  0.000000        0.0         0.0
+
+>>> tf_idf_matrix(
+...     'authors', 
+...     min_occ=2, 
+...     directory=directory,
+... ).head()
+                                                    Arner DW 7:220  ...  Lin W 2:007
+article                                                             ...             
+Arner DW, 2017, HANDB OF BLOCKCHAIN, DIGIT FINA...        0.522776  ...          0.0
+Arner DW, 2017, NORTHWEST J INTL LAW BUS, V37, ...        0.522776  ...          0.0
+Arner DW, 2019, EUR BUS ORG LAW REV, V20, P55             0.439335  ...          0.0
+Arner DW, 2020, EUR BUS ORG LAW REV, V21, P7              0.522776  ...          0.0
+Barberis JN, 2016, NEW ECON WINDOWS, P69                  0.629705  ...          0.0
 <BLANKLINE>
-[5 rows x 38 columns]
+[5 rows x 15 columns]
 
 """
 import pandas as pd
