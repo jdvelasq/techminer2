@@ -8,6 +8,7 @@ from .annual_scientific_production import annual_scientific_production
 from .apply_institutions_thesaurus import apply_institutions_thesaurus
 from .apply_thesaurus import apply_thesaurus
 from .association_index import association_index
+from .associations_for_all_items import associations_for_all_items
 from .author_impact import author_impact
 from .authors_documents import authors_documents
 from .authors_production_over_time import authors_production_over_time
@@ -29,6 +30,7 @@ from .co_citation_network_graph import co_citation_network_graph
 from .co_citation_network_indicators import co_citation_network_indicators
 from .co_occ_matrix import co_occ_matrix
 from .co_occ_matrix_list import co_occ_matrix_list
+from .co_occ_svd_map import co_occ_svd_map
 from .co_occ_word_association import co_occ_word_association
 from .co_occurrence_matrix import co_occurrence_matrix
 from .co_occurrence_matrix_associations import co_occurrence_matrix_associations
@@ -47,7 +49,6 @@ from .co_occurrence_network_strategic_diagram import (
     co_occurrence_network_strategic_diagram,
 )
 from .co_occurrence_network_summarization import co_occurrence_network_summarization
-from .co_occ_svd_map import co_occ_svd_map
 from .co_occurrence_svd_mds_map import co_occurrence_svd_mds_map
 from .co_words_network import co_words_network
 from .collaboration_indicators import collaboration_indicators
@@ -112,8 +113,7 @@ from .import_scopus_files import import_scopus_files
 from .institution_impact import institution_impact
 from .institutions_production_over_time import institutions_production_over_time
 from .institutions_production_per_year import institutions_production_per_year
-from .items_associations_for_a_item import items_associations_for_a_item
-from .items_associations_for_all_items import items_associations_for_all_items
+from .associations_for_a_item import associations_for_a_item
 from .items_associations_plot import items_associations_plot
 from .keyword_concordances import keyword_concordances
 from .keywords_summarization import keywords_summarization

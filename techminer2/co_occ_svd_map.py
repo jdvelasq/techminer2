@@ -17,33 +17,35 @@ The plot is based on the SVD technique used in T-LAB's comparative analysis.
 
 >>> from techminer2 import *
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/images/co_occurrence_svd_map.png"
->>> co_occurrence_svd_map(
+>>> file_name = "sphinx/_static/co_occ_svd_map.html"
+
+>>> co_occ_svd_map(
 ...     column='author_keywords',
 ...     min_occ=5,    
 ...     directory=directory,
-... ).savefig(file_name)
+... ).plot_.write_html(file_name)
 
 
-.. image:: images/co_occurrence_svd_map.png
-    :width: 700px
-    :align: center
+.. raw:: html
 
->>> co_occurrence_svd_map(
+    <iframe src="_static/co_occ_svd_map.html" height="800px" width="100%" frameBorder="0"></iframe>
+
+
+>>> co_occ_svd_map(
 ...     column='author_keywords',
 ...     min_occ=5,    
 ...     directory=directory,
-...     plot=False,
-... ).head()
-                            dim0      dim1  ...     dim18     dim19
-author_keywords                             ...                    
-fintech                 1.266169 -0.123487  ... -0.011774  0.072038
-financial technologies  0.666967 -0.342768  ... -0.274869 -0.127540
-financial inclusion     0.664505 -0.311517  ...  0.056878  0.324649
-blockchain              0.622238 -0.488122  ... -0.037378 -0.059448
-bank                    0.522908  0.501860  ... -0.062153  0.306625
+...     delta=20,
+... ).table_.head()
+                                     dim0       dim1  ...      dim9     dim10
+row                                                   ...                    
+regtech 70:462                  85.583912   8.166457  ...  0.206008  0.208199
+fintech 42:406                  60.949638 -11.167665  ... -0.233467 -0.998573
+blockchain 18:109               24.948933  -6.642690  ... -0.017336  0.676491
+artificial intelligence 13:065  13.776312  -1.005190  ... -0.022696  0.566117
+compliance 12:020               10.424578  11.346089  ... -0.330724 -0.264842
 <BLANKLINE>
-[5 rows x 20 columns]
+[5 rows x 11 columns]
 
 """
 
@@ -52,6 +54,12 @@ from sklearn.decomposition import TruncatedSVD
 
 from .co_occ_matrix import co_occ_matrix
 from .map_chart import map_chart
+
+
+class _Result:
+    def __init__(self):
+        self.table_ = None
+        self.plot_ = None
 
 
 def co_occ_svd_map(
@@ -64,6 +72,7 @@ def co_occ_svd_map(
     directory="./",
     svd__n_iter=5,
     random_state=0,
+    delta=0.5,
 ):
     """Co-occurrence SVD Map."""
 
@@ -90,8 +99,13 @@ def co_occ_svd_map(
         index=matrix.index,
     )
 
-    return map_chart(
-        data=decomposed_matrix,
+    result = _Result()
+    result.table_ = decomposed_matrix
+    result.plot_ = map_chart(
+        dataframe=decomposed_matrix,
         dim_x=dim_x,
         dim_y=dim_y,
+        delta=delta,
     )
+
+    return result

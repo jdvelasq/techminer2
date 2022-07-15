@@ -4,47 +4,14 @@ Co-occurrence Analysis
     .. toctree::
         :maxdepth: 1
 
-        _menu_tlab_co_occ_analysis_words_assoc
+        _menu_tlab_co_occ_analysis__words_assoc
 
-
-----
-
-----
-
-----
-
-
-    * **Word Associations**
-
-        * **Graphs**
-        
-        * **Tables**
-
-            * Selected item: 
-
-                .. toctree::
-                        items_associations_for_a_item
-
-            * All items: See `Co-occurrence Matrix List <co_occ_matrix_list.html>`__
-            
-            * Co-occurrence Matrix: See `Co-occurrence Matrix <co_occ_matrix_list.html>`__
-
-            * Significance Test: TODO:
-
-
-
-
-
+        _menu_tlab_co_occ_analysis__co_word
 
 ----
 ----
 ----
 
-
-    .. toctree::
-        :maxdepth: 1
-
-        co_occurrence_svd_mds_map
 
 
     .. toctree::
