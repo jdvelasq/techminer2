@@ -6,12 +6,12 @@ Document Indicators
 >>> directory = "data/regtech/"
 >>> document_indicators(directory=directory).head()
                                                     global_citations  ...                                 doi
-document_id                                                           ...                                    
-Abi-Lahoud E et al, 2018, CEUR WORKSHOP PROC                       0  ...                                 NaN
-Anagnostopoulos I et al, 2018, J ECON BUS                        110  ...      10.1016/J.JECONBUS.2018.07.003
-Arner DW et al, 2017, HANDB OF BLOCKCHAIN, DIGI...                 7  ...  10.1016/B978-0-12-810441-5.00016-6
-Arner DW et al, 2017, NORTHWEST J INTL LAW BUS                   118  ...                                 NaN
-Arner DW et al, 2019, EUR BUS ORG LAW REV                         18  ...          10.1007/S40804-019-00135-1
+article                                                               ...                                    
+Abi-Lahoud E, 2018, CEUR WORKSHOP PROC, V2044                      0  ...                                 NaN
+Anagnostopoulos I, 2018, J ECON BUS, V100, P7                    110  ...      10.1016/J.JECONBUS.2018.07.003
+Arner DW, 2017, HANDB OF BLOCKCHAIN, DIGIT FINA...                 7  ...  10.1016/B978-0-12-810441-5.00016-6
+Arner DW, 2017, NORTHWEST J INTL LAW BUS, V37, ...               118  ...                                 NaN
+Arner DW, 2019, EUR BUS ORG LAW REV, V20, P55                     18  ...          10.1007/S40804-019-00135-1
 <BLANKLINE>
 [5 rows x 5 columns]
 
@@ -58,7 +58,7 @@ def document_indicators(directory="./", database="documents", use_filter=True):
     records["global_citations"] = records.global_citations.map(int, na_action="ignore")
 
     # -----------------------------------------------------------------------------------
-    records = records.set_index("document_id")
+    records = records.set_index("article")
     records = records.sort_index(axis="index", ascending=True)
 
     # -----------------------------------------------------------------------------------
