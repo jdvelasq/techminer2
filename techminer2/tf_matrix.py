@@ -5,25 +5,28 @@ TF Matrix
 
 >>> from techminer2 import *
 >>> directory = "data/regtech/"
->>> tf_matrix('authors', min_occ=2, directory=directory).head()
-authors   Wojcik D Rabbani MR Hornuf L  ... Zhang MX Daragmeh A Kauffman RJ
-#d               5          3        3  ...        2          2           2
-#c             19         39       110  ...      12         3           228
-record_no                               ...                                
-2016-0001        0          0        0  ...        0          0           0
-2017-0006        0          0        0  ...        0          0           0
-2017-0008        0          0        0  ...        1          0           0
-2018-0000        0          0        0  ...        0          0           1
-2018-0004        0          0        0  ...        0          0           0
+
+>>> tf_matrix(
+...     'authors', 
+...     min_occ=2, 
+...     directory=directory,
+... ).head()
+                                                    Arner DW 7:220  ...  Lin W 2:007
+article                                                             ...             
+Arner DW, 2017, HANDB OF BLOCKCHAIN, DIGIT FINA...               1  ...            0
+Arner DW, 2017, NORTHWEST J INTL LAW BUS, V37, ...               1  ...            0
+Arner DW, 2019, EUR BUS ORG LAW REV, V20, P55                    1  ...            0
+Arner DW, 2020, EUR BUS ORG LAW REV, V21, P7                     1  ...            0
+Barberis JN, 2016, NEW ECON WINDOWS, P69                         1  ...            0
 <BLANKLINE>
-[5 rows x 38 columns]
+[5 rows x 15 columns]
 
 """
 import numpy as np
 import pandas as pd
 
-from ._read_records import read_filtered_records
-from .index_terms2counters import index_terms2counters
+from ._read_records import read_records
+from .items2counters import items2counters
 from .load_stopwords import load_stopwords
 
 # pylint: disable=too-many-arguments
@@ -38,21 +41,21 @@ def tf_matrix(
     directory="./",
 ):
 
-    documents = read_filtered_records(directory)
+    documents = read_records(directory)
 
     documents = documents.reset_index()
-    documents = documents[[column, "record_no"]].copy()
+    documents = documents[[column, "article"]].copy()
     documents["value"] = 1
     documents[column] = documents[column].str.split(sep)
     documents = documents.explode(column)
     # documents = explode(documents, column, sep)
 
-    grouped_records = documents.groupby(["record_no", column], as_index=False).agg(
+    grouped_records = documents.groupby(["article", column], as_index=False).agg(
         {"value": np.sum}
     )
 
     result = pd.pivot(
-        index="record_no",
+        index="article",
         data=grouped_records,
         columns=column,
     )
@@ -68,7 +71,16 @@ def tf_matrix(
         terms = terms[terms <= max_occ]
     terms = terms.drop(labels=load_stopwords(directory), errors="ignore")
     result = result.loc[:, terms.index]
-    result = index_terms2counters(directory, result, "columns", column, sep)
+
+    items_dict = items2counters(
+        column=column,
+        directory=directory,
+        database="documents",
+        use_filter=True,
+    )
+
+    # result = index_terms2counters(directory, result, "columns", column, sep)
+    result = result.rename(columns=items_dict)
 
     # ---< Remove rows with only zeros detected -------------------------------
     result = result.loc[(result != 0).any(axis=1)]
