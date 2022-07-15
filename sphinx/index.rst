@@ -42,6 +42,8 @@ package developed and tested in Python version 3.6.
 
     import_scopus_files
     coverage
+    summary_view
+    document_viewer
     user_filters
 
 
