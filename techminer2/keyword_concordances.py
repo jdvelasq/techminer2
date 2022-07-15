@@ -33,7 +33,11 @@ from ._read_records import read_filtered_records
 from .thesaurus import load_file_as_dict
 
 
-def keyword_concordances(keyword, top_n=50, directory="./"):
+def keyword_concordances(
+    keyword,
+    top_n=50,
+    directory="./",
+):
 
     # ---< Sort abstracts by importance >------------------------------------------------
     documents = read_filtered_records(directory)
