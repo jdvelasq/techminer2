@@ -21,7 +21,7 @@ internally in TheVantagePoint software, in order to facilitate comparison.
 
 
     .. toctree::
-        summary_view
+        
 
 
 In this section, **TechMiner** is compared with VantagePoint.
@@ -34,7 +34,7 @@ In this section, **TechMiner** is compared with VantagePoint.
     .. toctree::
         :maxdepth: 1
 
-        document_viewer
+        
         extract_user_keywords
 
     .. note::
@@ -51,12 +51,6 @@ In this section, **TechMiner** is compared with VantagePoint.
     * ``TODO: Detail Window``
 
 
-
-
-    .. toctree::
-        :maxdepth: 1
-
-        extract_user_keywords
 
         
 
