@@ -7,25 +7,25 @@ Abstract concordances exploration tool.
 
 >>> from techminer2 import *
 >>> directory = "data/regtech/"
+
 >>> abstract_concordances(
-...     'fintech',
+...     'regtech',
 ...     top_n=10,
 ...     directory=directory,
 ... )
-                             The industry overall, and many  FINTECH  start-ups are looking for new pathways to successful bu ...
-...  able to figure out how to effectively hook up with the  FINTECH  revolution is at stake.
-                                           We present a new  FINTECH  innovation mapping approach that enables the assessment ...
-... robo-advisory and services influenced by blockchain and  FINTECH  innovations.
-... development organisations, philanthropic investment and  FINTECH  companies.
-        There is currently no consensus about what the term  FINTECH  means.
-... g more than 200 scholarly articles referencing the term  FINTECH  and covering a period of more than 40 years.
-... tion concentrates on extracting out the quintessence of  FINTECH  using both spheres.
-... rreviewed definitions of the term, it is concluded that  FINTECH  is a new financial industry that applies technology to  ...
-                                   Financial technology, or  FINTECH , involves the design and delivery of financial products ...
+<<< l systems requires increasing the use of and reliance on REGTECH .
+                                                             REGTECH developments are leading towards a paradigm shift necess >>>
+                                                             REGTECH to date has focused on the digitization of manual report >>>
+                                   However, the potential of REGTECH is far greater  it has the potential to enable a nearly  >>>
+<<< ld, sets the foundation for a practical understanding of REGTECH , and proposes sequenced reforms that could benefit regu >>>
+           Although also not a panacea, the development of " REGTECH " solutions will help clear away volumes of work that un >>>
+                                                             REGTECH will not eliminate policy considerations, nor will it re >>>
+                 Nevertheless, a sophisticated deployment of REGTECH should help focus regulatory discretion and public-polic >>>
+                                             Europes road to REGTECH has rested upon four apparently unrelated pillars: (1) e >>>
+<<< that together they are underpinning the development of a REGTECH ecosystem in europe and will continue to do so.
+
 
 """
-
-# from ._read_records import read_filtered_records
 from .load_abstracts import load_abstracts
 
 
@@ -38,7 +38,7 @@ def abstract_concordances(
 
     abstracts = load_abstracts(directory)
     abstracts = abstracts.sort_values(
-        ["global_citations", "record_no", "line_no"], ascending=[False, True, True]
+        ["global_citations", "article", "line_no"], ascending=[False, True, True]
     )
     abstracts = _select_abstracts(abstracts, text)
     abstracts = abstracts.head(top_n)
@@ -60,12 +60,15 @@ def _extract_contexts(abstracts, text):
     )
 
     contexts["left_context"] = contexts["left_context"].fillna("")
+    contexts["left_context"] = contexts["left_context"].str.strip()
+
     contexts["right_context"] = contexts["right_context"].fillna("")
+    contexts["right_context"] = contexts["right_context"].str.strip()
     contexts["left_context"] = contexts["left_context"].map(
-        lambda x: "... " + x[-56:] if len(x) > 60 else x
+        lambda x: "<<< " + x[-56:] if len(x) > 60 else x
     )
     contexts["right_context"] = contexts["right_context"].map(
-        lambda x: x[:56] + " ..." if len(x) > 60 else x
+        lambda x: x[:56] + " >>>" if len(x) > 60 else x
     )
     return contexts
 
