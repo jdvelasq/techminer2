@@ -8,42 +8,72 @@ Finds string abbreviations in the keywords of a thesaurus.
 >>> directory = "data/regtech/"
 
 >>> find_abbreviations(
-...     "author_keywords.txt",
+...     "words.txt",
 ...     directory=directory,
 ... )
+aml
+    aml
+anti money laundering
+    anti money laundering
+    anti money laundering (aml)
+antimoney laundering
+    antimoney laundering
+    antimoney laundering (aml)
+ai
+    ai
+    ai strategy
 artificial intelligence
     artificial intelligence
     artificial intelligence (ai)
 artificial intelligence (ai) governance
     artificial intelligence (ai) governance
-ai
-    ai
-    ai strategy
-aml
-    aml
-anti-money laundering
-    anti money laundering
-    anti money laundering (aml)
-    anti-money laundering
-    anti-money laundering (aml)
+artificial neural network
+    artificial neural network
+    neural network
+    neural networks
+    neural networks (computer)
+computational methods
+    computational methods
+    computer
+    computers
 bank regulation
     bank regulation
     bank regulation (basel iii)
     bank regulations
+    bank regulators
     banking regulation
 basel iii
     basel iii
+communication channel
+    communication channel
+    communication channels (information theory)
+information theory
+    information theory
+competition
+    competition
+    competition (economics)
+    competitiveness
+economics
+    economics
 compliance
     compliance
     compliance (grc)
+    compliance approach
+    compliance.
 grc
     grc
-contracting
+contract
+    contract
     contracting
     contracts
     contracts (htlc)
 hashed timelock contracts (htlc)
     hashed timelock contracts (htlc)
+corporate social responsibilities (csr)
+    corporate social responsibilities (csr)
+    corporate social responsibility
+csr
+    csr
 dao
     dao
 decentralized autonomous organization
@@ -74,11 +104,15 @@ gdpr
 general data protection regulation
     general data protection regulation
     general data protection regulation (gdpr)
+    general data protection regulations
 ict
     ict
 information and communication technologies
     information and communication technologies
+    information and communication technology
     information and communication technology (ict)
+    information and communications technologies (icts)
+    information and communications technology
 information technologies
     information technologies
     information technology
@@ -92,7 +126,8 @@ initial coin offering
     initial coin offering
     initial coin offering (ico)
     initial coin offerings
-internet of things
+internet of thing (iot)
+    internet of thing (iot)
     internet of things
     internet of things (iot)
 iot
@@ -101,27 +136,38 @@ know your customer (kyc) compliance
     know your customer (kyc) compliance
 youre your customer (kyc)
     youre your customer (kyc)
+laundering
+    laundering
+legalization (laundering) of proceeds
+    legalization (laundering) of proceeds
+    legalization of proceeds
 natural language processing
     natural language processing
     natural language processing (nlp)
 nlp
     nlp
-partial least squares structural equation modeling (pls-sem)
-    partial least squares structural equation modeling (pls-sem)
-pls-sem
-    pls-sem
+partial least square structural equation modeling
+    partial least square structural equation modeling
+    partial least squares structural equation modeling (plssem)
+plssem
+    plssem
 p2p
     p2p
-peer-to-peer (p2p) lending risk evaluation
-    peer-to-peer (p2p) lending risk evaluation
-peer-to-peer lending
-    peer to peer lending
-    peer-to-peer (p2p) lending
-    peer-to-peer lending
-proof of work (pow)
+peertopeer (p2p) lending
+    peertopeer (p2p) lending
+    peertopeer lending
+peertopeer (p2p) lending risk evaluation
+    peertopeer (p2p) lending risk evaluation
+proof of work
+    proof of work
     proof of work (pow)
-proof-of-work (pow)
-    proof-of-work (pow)
+proofofwork (pow)
+    proofofwork (pow)
+recurrent neural network (rnn)
+    recurrent neural network (rnn)
+    recurrent neural networks
+rnn
+    rnn
 regtech
     regtech
     regtech.
@@ -129,19 +175,48 @@ regulatory technologies (regtech)
     regulatory technologies (regtech)
     regulatory technology
     regulatory technology (regtech)
+rdf
+    rdf
+resource description framework (rdf)
+    resource description framework (rdf)
+    resources description frameworks
+regulation
+    regulation
+    regulations
+standard
+    standard (regulation)
+    standard model
+    standard models
+    standardization
+    standards
+    standard
+team software process (tsp)
+    team software process (tsp)
+tsp
+    tsp
 tam
     tam
 technology acceptance model
     technology acceptance model
     technology acceptance model (tam)
-tism
-    tism
-total interpretive structural modeling (tism)
-    total interpretive structural modeling (tism)
+the unified theory of acceptance and use of technology(utaut)
+    the unified theory of acceptance and use of technology(utaut)
+    unified theory of acceptance and use of technology
 unified theory of acceptance and use technology (utaut)
     unified theory of acceptance and use technology (utaut)
 utaut
     utaut
+tism
+    tism
+total interpretive structural modeling (tism)
+    total interpretive structural modeling (tism)
+mathematical models
+    mathematical models
+    mathematical techniques
+    mathematics
+trees (mathematics)
+    trees (mathematics)
+
 
 """
 from os.path import isfile, join

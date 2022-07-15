@@ -8,7 +8,7 @@ Finds a string in the terms of a thesaurus.
 >>> directory = "data/regtech/"
 
 >>> find_string(
-...     thesaurus_file="author_keywords.txt",
+...     thesaurus_file="words.txt",
 ...     contains='artificial intelligence',
 ...     directory=directory,
 ... )
@@ -17,7 +17,15 @@ artificial intelligence
      artificial intelligence (ai)
 artificial intelligence & law
 artificial intelligence (ai) governance
+artificial intelligence agent
+artificial intelligence course
+     artificial intelligence course
+     artificial intelligence courses
 artificial intelligence in education
+artificial intelligence technologies
+     artificial intelligence technologies
+     artificial intelligence technology
+artificial intelligence tools
 responsible artificial intelligence
 
 

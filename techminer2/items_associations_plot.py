@@ -35,18 +35,23 @@ def items_associations_plot(
     database="documents",
     plot="cleveland",
 ):
+    """Items association plot."""
 
     word_associations = associations_for_a_item(
         item=item,
         column=column,
-        top_n=top_n,
         directory=directory,
         database=database,
     ).to_frame()
+
+    word_associations = word_associations.head(top_n)
+
     word_associations = word_associations.reset_index()
     word_associations = word_associations.rename(
-        columns={"word": column.replace("_", " ").title()}
+        columns={column: column.replace("_", " ").title()}
     )
+
+    # word_associations = word_associations.set_index(column.replace("_", " ").title())
 
     plot_function = {
         "bar": bar_px,

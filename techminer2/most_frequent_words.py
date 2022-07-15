@@ -12,13 +12,13 @@ with the data.
 
 >>> most_frequent_words(
 ...     column="author_keywords",
-...     directory,
+...     directory=directory,
 ...     top_n=20,
 ...     min_occ=None,
 ...     max_occ=None,
 ...     plot="cleveland",
 ...     database="documents",
-... ).plot_.write_html(file_name)
+... ).write_html(file_name)
 
 .. raw:: html
 

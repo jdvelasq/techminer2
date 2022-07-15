@@ -7,9 +7,9 @@ Impact Indicators
 >>> impact_indicators("countries", directory=directory).head()
                    OCC  ...  avg_global_citations
 countries               ...                      
-Australia           14  ...                 16.86
+Australia           13  ...                 18.15
 Austria              1  ...                  1.00
-Bahrain              8  ...                  2.75
+Bahrain              5  ...                  2.20
 Belgium              1  ...                  0.00
 Brunei Darussalam    1  ...                  3.00
 <BLANKLINE>

@@ -7,12 +7,10 @@ Creates a institutions thesaurus from the data in the database.
 >>> from techminer2 import *
 >>> directory = "data/regtech/"
 >>> create_institutions_thesaurus(directory)
---INFO-- Creating data/regtech/processed/institutions.txt thesaurus file
+--INFO-- The data/regtech/processed/institutions.txt thesaurus file was created
 
 
 """
-
-import glob
 import os.path
 import sys
 

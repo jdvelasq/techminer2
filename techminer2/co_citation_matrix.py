@@ -27,7 +27,8 @@ import numpy as np
 import pandas as pd
 
 from .load_references import load_references
-from .records2documents import records2documents
+
+# from .records2documents import records2documents
 
 
 def co_citation_matrix(top_n=50, directory="./"):

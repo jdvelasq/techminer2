@@ -47,7 +47,8 @@ import numpy as np
 import pandas as pd
 
 from ._read_records import read_all_records, read_filtered_records
-from .records2documents import records2documents
+
+# from .records2documents import records2documents
 from .tf_matrix import tf_matrix
 
 # pyltin: disable=c0103

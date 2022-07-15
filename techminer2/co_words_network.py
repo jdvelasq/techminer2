@@ -25,11 +25,11 @@ Co-Words Network
 
 >>> nnet.communities_.head()
                             CL_00  ...                    CL_02
-0                  regtech 70:462  ...      crowdfunding 04:030
-1                  fintech 42:406  ...  cryptocurrencies 04:029
-2               blockchain 18:109  ...          big data 04:027
-3  artificial intelligence 13:065  ...                         
-4               compliance 12:020  ...                         
+0                  regtech 70:462  ...        regulation 06:120
+1                  fintech 42:406  ...      crowdfunding 04:030
+2               blockchain 18:109  ...  cryptocurrencies 04:029
+3  artificial intelligence 13:065  ...        innovation 04:029
+4               compliance 12:020  ...          big data 04:027
 <BLANKLINE>
 [5 rows x 3 columns]
 
@@ -43,11 +43,11 @@ Co-Words Network
 
 >>> nnet.indicators_.head()
                                 group  betweenness  closeness  pagerank
-regtech 70:462                      0     0.131628   1.000000  0.214319
-fintech 42:406                      0     0.131628   1.000000  0.166280
-blockchain 18:109                   0     0.061647   0.826087  0.077500
-artificial intelligence 13:065      0     0.060429   0.826087  0.061255
-compliance 12:020                   0     0.010088   0.633333  0.039735
+regtech 70:462                      0     0.131537   1.000000  0.214240
+fintech 42:406                      0     0.131537   1.000000  0.167876
+blockchain 18:109                   0     0.060777   0.826087  0.077431
+artificial intelligence 13:065      0     0.053314   0.791667  0.059587
+compliance 12:020                   0     0.007317   0.612903  0.038065
 
 
 """

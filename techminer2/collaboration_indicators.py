@@ -7,11 +7,11 @@ Collaboration Indicators
 >>> collaboration_indicators("countries", directory=directory).head()
                 OCC  single_publication  multiple_publication  mp_ratio
 countries                                                              
-United Kingdom   20                   7                    13      0.65
-Australia        14                   4                    10      0.71
-Hong Kong        12                   1                    11      0.92
-United States    12                   6                     6      0.50
+United Kingdom   16                  10                     6      0.38
+Australia        13                   4                     9      0.69
 Germany          11                   3                     8      0.73
+United States    10                   6                     4      0.40
+Hong Kong         8                   2                     6      0.75
 
 >>> from pprint import pprint
 >>> pprint(sorted(collaboration_indicators("countries", directory=directory).columns.to_list()))
@@ -51,7 +51,7 @@ def collaboration_indicators(
             "OCC",
             "single_publication",
             "multiple_publication",
-            "record_no",
+            "article",
         ]
     ].copy()
     exploded[column] = exploded[column].str.split(";")

@@ -8,25 +8,30 @@ Finds a string in the terms of a thesaurus using fuzzy search.
 >>> directory = "data/regtech/"
 
 >>> fuzzy_search(
-...     thesaurus_file="author_keywords.txt",
+...     thesaurus_file="words.txt",
 ...     patterns='intelligencia',
 ...     threshold=80,
 ...     directory=directory,
 ... )
---INFO-- No matches found for the current thresold
-
->>> fuzzy_search(
-...     thesaurus_file="author_keywords.txt",
-...     patterns='intelligencia',
-...     threshold=75,
-...     directory=directory,
-... )
+ambient intelligence
+artificial general intelligence (agi)
+     artificial general intelligence (agi)
+     artificial general intelligences
 artificial intelligence
      artificial intelligence
      artificial intelligence (ai)
 artificial intelligence & law
 artificial intelligence (ai) governance
+artificial intelligence agent
+artificial intelligence course
+     artificial intelligence course
+     artificial intelligence courses
 artificial intelligence in education
+artificial intelligence technologies
+     artificial intelligence technologies
+     artificial intelligence technology
+artificial intelligence tools
+artificial narrow intelligence (ani)
 augmented intelligence
 augmented intelligence collaboration
 business intelligence
@@ -34,13 +39,31 @@ business intelligence
      business intelligence (bi)
 business process intelligence
 collective intelligence
+     collective intelligence
+     collective intelligences
 competitive intelligence
 computational intelligence
+     computational intelligence
+     intelligent computers
+     intelligent computing
 cyber threat intelligence
 financial intelligence units
+intelligence
+intelligence activities
+intelligence control
+     intelligence control
+     intelligent control
+intelligence decision
+intelligence services
+     intelligence services
+     intelligent services
+intelligence systems
+     intelligence systems
+     intelligent systems
 responsible artificial intelligence
 risk intelligence
 social media intelligence
+
 
 """
 import os.path
