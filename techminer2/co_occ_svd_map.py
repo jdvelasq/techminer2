@@ -8,7 +8,7 @@ The plot is based on the SVD technique used in T-LAB's comparative analysis.
 
 **Algorithm**
 
-1. Computes the  co-occurrence matrix normalized with the **salton** measure.
+1. Computes the  co-occurrence matrix normalized with the **salton** association index.
 
 2. Apply SVD to the co-occurrence matrix with `n_components=20`.
 
@@ -50,28 +50,30 @@ bank                    0.522908  0.501860  ... -0.062153  0.306625
 import pandas as pd
 from sklearn.decomposition import TruncatedSVD
 
-from .co_occurrence_matrix import co_occurrence_matrix
+from .co_occ_matrix import co_occ_matrix
 from .map_chart import map_chart
 
 
-def co_occurrence_svd_map(
+def co_occ_svd_map(
     column,
-    min_occ=1,
-    max_terms=150,
+    top_n=50,
+    min_occ=None,
+    max_occ=None,
     dim_x=0,
     dim_y=1,
     directory="./",
-    figsize=(7, 7),
     svd__n_iter=5,
     random_state=0,
-    plot=True,
 ):
+    """Co-occurrence SVD Map."""
 
-    matrix = co_occurrence_matrix(
+    matrix = co_occ_matrix(
         column=column,
+        top_n=top_n,
         min_occ=min_occ,
-        normalization="salton",
+        max_occ=max_occ,
         directory=directory,
+        database="documents",
     )
 
     max_dimensions = min(20, len(matrix.columns) - 1)
@@ -82,27 +84,14 @@ def co_occurrence_svd_map(
         random_state=random_state,
     ).fit_transform(matrix)
 
-    if decomposed_matrix.shape[0] > max_terms:
-        decomposed_matrix = decomposed_matrix.head(max_terms)
-    if isinstance(matrix.index, pd.MultiIndex):
-        labels = matrix.index.get_level_values(0)
-    else:
-        labels = matrix.index
-
     decomposed_matrix = pd.DataFrame(
         decomposed_matrix,
         columns=[f"dim{dim}" for dim in range(max_dimensions)],
-        index=labels,
+        index=matrix.index,
     )
-
-    if plot is False:
-        return decomposed_matrix
 
     return map_chart(
         data=decomposed_matrix,
         dim_x=dim_x,
         dim_y=dim_y,
-        max_items=max_terms,
-        figsize=figsize,
-        color="k",
     )

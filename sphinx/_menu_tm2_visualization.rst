@@ -23,6 +23,9 @@ Visualization
    bubble_chart
    heat_map
 
+.. toctree::
+   map_chart
+   
 ----
 
 ----
@@ -36,7 +39,7 @@ Visualization
 .. toctree::
    :maxdepth: 1
 
-   map_chart
+   
    stacked_bar_chart
    stacked_column_chart
    

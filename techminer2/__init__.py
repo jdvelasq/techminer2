@@ -47,7 +47,7 @@ from .co_occurrence_network_strategic_diagram import (
     co_occurrence_network_strategic_diagram,
 )
 from .co_occurrence_network_summarization import co_occurrence_network_summarization
-from .co_occurrence_svd_map import co_occurrence_svd_map
+from .co_occ_svd_map import co_occ_svd_map
 from .co_occurrence_svd_mds_map import co_occurrence_svd_mds_map
 from .co_words_network import co_words_network
 from .collaboration_indicators import collaboration_indicators

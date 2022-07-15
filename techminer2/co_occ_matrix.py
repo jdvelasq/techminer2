@@ -73,7 +73,7 @@ def co_occ_matrix(
     if row is None:
         row = column
 
-    flood_matrix = co_occ_matrix_list(
+    matrix_list = co_occ_matrix_list(
         column=column,
         row=row,
         top_n=top_n,
@@ -83,7 +83,7 @@ def co_occ_matrix(
         database=database,
     )
 
-    matrix = flood_matrix.pivot(index="row", columns="column", values="OCC")
+    matrix = matrix_list.pivot(index="row", columns="column", values="OCC")
     matrix = matrix.fillna(0)
     matrix = matrix.astype(int)
 
