@@ -4,34 +4,30 @@ Abstract Summarization
 
 >>> from techminer2 import *
 >>> directory = "data/regtech/"
+
 >>> abstract_summarization(
 ...     texts=["fintech", "blockchain"],
 ...     n_phrases=5,    
 ...     directory=directory,
 ... )
-The research on data science and ai in FINTECH involves many latest progress made in smart
-FINTECH for bankingtech, tradetech, lendtech, insurtech, wealthtech, paytech, risktech,
-cryptocurrencies, and BLOCKCHAIN, and the dsai techniques including complex system
-methods, quantitative methods, intelligent interactions, recognition and responses, data
-analytics, deep learning, federated learning, privacy-preserving processing, augmentation,
-optimization, and system intelligence enhancement... Fourth, the traditional assets, gold
-and oil, as well as modern assets, green bonds, are useful as good hedgers compared with
-other assets because shock transmissions from them to FINTECH, kftx are below 0.1% and,
-more importantly, the total volatility spill-over of all assets in the sample is
-moderately average, accounting for 44.39%... From the theoretical point of view, our
-research indicates, that besides key growth driving factors, outlined in existing
-literature, such as strategy, prerequisites for rapid growth, business model choice,
-international business networks, entrepreneur's characteristics, product development or
-theoretical frameworks for development, especially within the international market, the
-quality of digital logistics performance of FINTECH companies seem to matter... The most
-important factors that influence the level of satisfaction when using FINTECH services
-were considered: comfort and ease of use, legal regulations, ease of account opening,
-mobile payments features, crowdfunding options, international money transfers features,
-reduced costs associated with transactions, peer-to-peer lending, insurances options,
-online brokerage, cryptocoins options and exchange options... Internet banking, mobile
-banking, atm,cash deposit machines, instant payment services, online trading in stock
-markets, online funds transfers, e-wallets,wealth management, peer to peer lending,
-BLOCKCHAIN technology are various FINTECH products and services.
+Featuring coverage on a broad range of topics such as crowdfunding platforms, crypto-
+assets, and BLOCKCHAIN technology, this book is ideally designed for researchers,
+economists, practitioners, policymakers, analysts, managers, executives, educators, and
+students seeking current research on the strategic role of technology in the future
+development of financial and economic activity. >>> Since the market events took place in
+electronic markets, and algorithmic trading and high-frequency trading, parts of FINTECH,
+played significant roles, we handle the may 6 flash crash from the FINTECH, suptech, and
+financial supervision perspectives. >>> This new regulatory model aims to build a system
+that integrates equal access to information on BLOCKCHAIN transactions by both parties to
+it (i.e., the regulators and the financial institutions they regulate) for the purpose of
+oversight, intelligent real-time oversight, and an experimental sandbox for developing
+regulatory technology. >>> Pace of transition can be seen in particular in the position of
+emerging technology, also summarized as the abcd framework: artificial intelligence
+("ai"), BLOCKCHAIN, cloud and technology, which are rapidly co-evolving with finance. >>>
+The development of financial technology ('FINTECH'), rapid developments in emerging
+markets, and the recent pro-active stance of regulators in developing regulatory
+sandboxes, represent a unique combination of events, which could facilitate the transition
+from one regulatory model to another.
 
 
 
@@ -43,10 +39,9 @@ import os
 import textwrap
 
 import nltk
-import pandas as pd
 from nltk.stem import PorterStemmer
 
-from ._read_records import read_filtered_records
+from ._read_records import read_records
 from .load_abstracts import load_abstracts
 
 
@@ -61,12 +56,12 @@ def abstract_summarization(
         texts = [texts]
 
     abstracts = load_abstracts(directory)
-    documents = read_filtered_records(directory)
+    documents = read_records(directory)
 
     regex = r"\b(" + "|".join(texts) + r")\b"
 
     abstracts = abstracts[abstracts.phrase.str.contains(regex, regex=True)]
-    abstracts = abstracts[["record_no", "phrase"]]
+    abstracts = abstracts[["article", "phrase"]]
 
     # -----------------------------------------------------------------------------------
     porter_stemmer = PorterStemmer()
@@ -127,13 +122,13 @@ def abstract_summarization(
                 row["phrase"],
                 width=90,
             )
-            document_id = documents[documents.record_no == row["record_no"]].document_id
-            document_id = document_id.iloc[0]
-            print("*** " + document_id, file=out_file)
+            article = documents[documents.article == row["article"]].article
+            article = article.iloc[0]
+            print("*** " + article, file=out_file)
             print(paragraph, file=out_file)
             print("\n", file=out_file)
 
-    summary = ".. ".join(abstracts.phrase.values)
+    summary = " >>> ".join(abstracts.phrase.values)
 
     print(textwrap.fill(summary, width=90))
 
