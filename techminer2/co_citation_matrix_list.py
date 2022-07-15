@@ -5,6 +5,7 @@ Co-citation Matrix List
 
 >>> from techminer2 import *
 >>> directory = "data/regtech/"
+
 >>> matrix = co_citation_matrix_list(directory=directory)
 >>> matrix.head()
                                               row  ... OCC
@@ -22,7 +23,10 @@ from ._read_records import read_records
 from .co_occ_matrix_list import _add_counters_to_items, _create_matrix_list
 
 
-def co_citation_matrix_list(top_n=50, directory="./"):
+def co_citation_matrix_list(
+    top_n=50,
+    directory="./",
+):
 
     """Co-citation matrix"""
 

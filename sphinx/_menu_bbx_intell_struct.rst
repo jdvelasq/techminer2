@@ -2,8 +2,23 @@ Intellectual Structure
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    .. toctree::
+      co_citation_network
+
+
+   .. toctree::
       :maxdepth: 1
 
-         _menu_bbx_intell_struct_co_citation
-         _menu_bbx_intell_struct_historiograph
+   * ``TODO: Historiograph``         
+
+         
+         
+
+   .. Note::
+   In addition, **TechMiner** implements the following functions:
+
+      .. toctree::
+            :maxdepth: 1
+
+            co_citation_matrix    
+            main_path_network
 

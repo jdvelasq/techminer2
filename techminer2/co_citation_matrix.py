@@ -22,10 +22,7 @@ from .load_references import load_references
 
 
 def co_citation_matrix(top_n=50, directory="./"):
-
-
-
-
+    pass
 
 
 def plotpto():

@@ -25,6 +25,7 @@ from .cleveland_chart import cleveland_chart
 from .cleveland_plot import cleveland_plot
 from .cluster_map import cluster_map
 from .co_citation_matrix_list import co_citation_matrix_list
+from .co_citation_network import co_citation_network
 from .co_occ_matrix import co_occ_matrix
 from .co_occ_matrix_list import co_occ_matrix_list
 from .co_occ_network import co_occ_network
