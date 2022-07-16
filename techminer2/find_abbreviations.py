@@ -11,6 +11,14 @@ Finds string abbreviations in the keywords of a thesaurus.
 ...     "keywords.txt",
 ...     directory=directory,
 ... )
+artificial intelligence
+    artificial intelligence
+    artificial intelligence (ai)
+artificial intelligence (ai) governance
+    artificial intelligence (ai) governance
+ai
+    ai
+    ai strategy
 aml
     aml
 anti money laundering
@@ -19,14 +27,6 @@ anti money laundering
 antimoney laundering
     antimoney laundering
     antimoney laundering (aml)
-ai
-    ai
-    ai strategy
-artificial intelligence
-    artificial intelligence
-    artificial intelligence (ai)
-artificial intelligence (ai) governance
-    artificial intelligence (ai) governance
 artificial neural network
     artificial neural network
     neural network
@@ -216,7 +216,6 @@ mathematical models
     mathematics
 trees (mathematics)
     trees (mathematics)
-
 
 """
 from os.path import isfile, join

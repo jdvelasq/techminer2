@@ -16,19 +16,19 @@ Abi-Lahoud E      2018    1  ...                     0.000
 Ajmi JA           2021    1  ...                     0.500
 Al Haider N       2020    1  ...                     0.333
 Alam TM           2021    1  ...                     0.000
-Anagnostopoulos I 2018    1  ...                     2.600
+Anagnostopoulos I 2018    1  ...                     3.000
 Anasweh M         2020    1  ...                     0.667
 Arner DW          2016    1  ...                     0.000
-                  2017    2  ...                     1.167
+                  2017    2  ...                     3.167
                   2019    1  ...                     1.250
                   2020    3  ...                     1.667
 Aubert J          2021    1  ...                     0.000
 Audrelia J        2022    1  ...                     0.000
 Barberis JN       2016    1  ...                     0.000
-                  2017    2  ...                     1.167
+                  2017    2  ...                     3.167
                   2019    1  ...                     1.250
 Battanta L        2020    1  ...                     0.000
-Baxter LG         2016    1  ...                     0.714
+Baxter LG         2016    1  ...                     1.000
 Bayon PS          2018    1  ...                     0.000
 Becker M          2019    1  ...                     0.000
 <BLANKLINE>

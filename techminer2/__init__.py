@@ -13,7 +13,6 @@ from .associations_for_all_items import associations_for_all_items
 from .author_impact import author_impact
 from .authors_documents import authors_documents
 from .authors_production_over_time import authors_production_over_time
-from .authors_production_per_year import authors_production_per_year
 from .auto_corr_matrix import auto_corr_matrix
 from .auto_corr_matrix_list import auto_corr_matrix_list
 from .average_citations_per_year import average_citations_per_year
@@ -42,7 +41,6 @@ from .column_plot import column_plot
 from .correlation_map import correlation_map
 from .corresponding_authors_country import corresponding_authors_country
 from .countries_production_over_time import countries_production_over_time
-from .countries_production_per_year import countries_production_per_year
 from .country_dynamics import country_dynamics
 from .country_impact import country_impact
 from .country_scientific_production import country_scientific_production
@@ -86,7 +84,6 @@ from .impact_indicators import impact_indicators
 from .import_scopus_files import import_scopus_files
 from .institution_impact import institution_impact
 from .institutions_production_over_time import institutions_production_over_time
-from .institutions_production_per_year import institutions_production_per_year
 from .items_associations_plot import items_associations_plot
 from .keyword_concordances import keyword_concordances
 from .keywords_summarization import keywords_summarization
