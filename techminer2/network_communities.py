@@ -53,5 +53,6 @@ def network_communities(graph):
 
     df = pd.DataFrame.from_dict(members, orient="index").T
     df = df.fillna("")
+    df = df.sort_index(axis=1)
 
     return df

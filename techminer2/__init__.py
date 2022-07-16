@@ -44,6 +44,7 @@ from .countries_production_over_time import countries_production_over_time
 from .country_dynamics import country_dynamics
 from .country_impact import country_impact
 from .country_scientific_production import country_scientific_production
+from .coupling_network import coupling_network
 from .coverage import coverage
 from .create_institutions_thesaurus import create_institutions_thesaurus
 from .create_keywords_thesaurus import create_keywords_thesaurus

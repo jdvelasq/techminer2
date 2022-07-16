@@ -1,4 +1,4 @@
-.. automodule:: techminer2.coupling_network_degree_plot
+.. automodule:: techminer2.coupling_network
     :members:
     :undoc-members:
     :show-inheritance:

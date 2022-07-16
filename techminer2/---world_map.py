@@ -12,7 +12,7 @@ World map
     :align: center
 
 """
-from ._world_map import _world_map
+# from ._world_map import _world_map
 from .column_indicators import column_indicators
 
 TEXTLEN = 40
