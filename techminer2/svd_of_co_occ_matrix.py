@@ -17,26 +17,22 @@ The plot is based on the SVD technique used in T-LAB's comparative analysis.
 
 >>> from techminer2 import *
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/co_occ_svd_map.html"
+>>> file_name = "sphinx/_static/svd_of_co_occ_matrix.html"
 
->>> co_occ_svd_map(
+>>> svd = svd_of_co_occ_matrix(
 ...     column='author_keywords',
 ...     min_occ=5,    
 ...     directory=directory,
-... ).plot_.write_html(file_name)
+... )
 
+>>> svd.plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="_static/co_occ_svd_map.html" height="800px" width="100%" frameBorder="0"></iframe>
+    <iframe src="_static/svd_of_co_occ_matrix.html" height="800px" width="100%" frameBorder="0"></iframe>
 
 
->>> co_occ_svd_map(
-...     column='author_keywords',
-...     min_occ=5,    
-...     directory=directory,
-...     delta=20,
-... ).table_.head()
+>>> svd.table_.head()
                                      dim0       dim1  ...      dim9     dim10
 row                                                   ...                    
 regtech 70:462                  85.583912   8.166457  ...  0.206008  0.208199
@@ -62,7 +58,7 @@ class _Result:
         self.plot_ = None
 
 
-def co_occ_svd_map(
+def svd_of_co_occ_matrix(
     column,
     top_n=50,
     min_occ=None,

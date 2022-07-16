@@ -8,7 +8,7 @@ The plot is based on the SVD technique used in T-LAB's comparative analysis.
 
 **Algorithm**
 
-1. Transpose the TF-IDF matrix
+1. Transpose the TF matrix
 
 2. Apply SVD to the transposed matrix. T-LAB uses `n_components=20`. 
 
@@ -35,22 +35,21 @@ The plot is based on the SVD technique used in T-LAB's comparative analysis.
 
 >>> svd.table_.head()
                                               dim0  ...      dim9
-regtech 70:462                            3.955303  ... -0.013210
-fintech 42:406                            3.288423  ... -0.044653
-blockchain 18:109                         1.479294  ... -0.113154
-artificial intelligence 13:065            0.616298  ... -0.478101
-regulatory technologies (regtech) 12:047  0.237330  ... -0.017035
+regtech 70:462                            8.081926  ... -0.157125
+fintech 42:406                            5.813552  ...  0.014649
+blockchain 18:109                         2.447622  ... -0.095429
+artificial intelligence 13:065            1.439807  ... -0.696927
+regulatory technologies (regtech) 12:047  0.600339  ... -0.220161
 <BLANKLINE>
 [5 rows x 10 columns]
 
 
 """
-
 import pandas as pd
 from sklearn.decomposition import TruncatedSVD
 
 from .map_chart import map_chart
-from .tf_idf_matrix import tf_idf_matrix
+from .tf_matrix import tf_matrix
 
 
 class _Result:
@@ -63,31 +62,20 @@ def svd_of_tf_matrix(
     column,
     min_occ=None,
     max_occ=None,
-    # tf-matrix parameters:
-    norm="l2",
-    use_idf=True,
-    smooth_idf=True,
-    sublinear_tf=False,
+    scheme=None,
     directory="./",
-    #
     dim_x=0,
     dim_y=1,
-    #
     svd__n_iter=5,
-    random_state=0,
+    svd__random_state=0,
     delta=1,
 ):
 
-    matrix = tf_idf_matrix(
+    matrix = tf_matrix(
         column=column,
         min_occ=min_occ,
         max_occ=max_occ,
-        scheme="binary",
-        norm=norm,
-        use_idf=use_idf,
-        smooth_idf=smooth_idf,
-        sublinear_tf=sublinear_tf,
-        sep=";",
+        scheme=scheme,
         directory=directory,
     ).transpose()
 
@@ -96,7 +84,7 @@ def svd_of_tf_matrix(
     decomposed_matrix = TruncatedSVD(
         n_components=max_dimensions,
         n_iter=svd__n_iter,
-        random_state=random_state,
+        random_state=svd__random_state,
     ).fit_transform(matrix)
 
     labels = matrix.index

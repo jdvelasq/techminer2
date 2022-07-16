@@ -128,7 +128,7 @@ from .source_impact import source_impact
 from .sources_production_over_time import sources_production_over_time
 from .stemming import stemming_and, stemming_or
 from .summary_view import summary_view
-from .svd_of_co_occ_matrix import co_occ_svd_map
+from .svd_of_co_occ_matrix import svd_of_co_occ_matrix
 from .svd_of_tf_matrix import svd_of_tf_matrix
 from .terms_by_year import terms_by_year
 from .tf_idf_matrix import tf_idf_matrix
