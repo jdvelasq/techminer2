@@ -1,5 +1,5 @@
 """
-Single Value Decomposition (SVD) of TF Matrix
+SVD of TF Matrix
 ===============================================================================
 
 Plots the SVD of the TF-IDF matrix (0/1 values).

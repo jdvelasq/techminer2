@@ -1,4 +1,4 @@
-Comparative Analysis
+Single Value Decomposition
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
