@@ -1,42 +1,39 @@
 """
-TF-IDF Matrix / SVD Map
+Single Value Decomposition (SVD) of TF Matrix
 ===============================================================================
 
-Plots the SVD of the TFIDF matrix (0/1 values).
+Plots the SVD of the TF-IDF matrix (0/1 values).
 
 The plot is based on the SVD technique used in T-LAB's comparative analysis.
 
 **Algorithm**
 
-1. Transpose the TF matrix
+1. Transpose the TF-IDF matrix
 
-2. Apply SVD to the transposed matrix with `n_components=20`.
+2. Apply SVD to the transposed matrix. T-LAB uses `n_components=20`. 
 
-3. Plot the decomposed matrix.
+3. Plot the decomposed matrix as a map.
 
 
 >>> from techminer2 import *
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/tf_idf_matrix_svd_map.html"
+>>> file_name = "sphinx/_static/svd_of_tf_matrix.html"
 
->>> tf_idf_matrix_svd_map(
+>>> svd = svd_of_tf_matrix(
 ...     column='author_keywords',
 ...     min_occ=6,
 ...     directory=directory,
-... ).write_html(file_name)
+... )
+
+>>> svd.plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="_static/tf_idf_matrix_svd_map.html" height="800px" width="100%" frameBorder="0"></iframe>
+    <iframe src="_static/svd_of_tf_matrix.html" height="800px" width="100%" frameBorder="0"></iframe>
 
 
 
->>> tf_idf_matrix_svd_map(
-...     column='author_keywords',
-...     min_occ=6,
-...     directory=directory,
-...     plot=False,
-... ).head()
+>>> svd.table_.head()
                                               dim0  ...      dim9
 regtech 70:462                            3.955303  ... -0.013210
 fintech 42:406                            3.288423  ... -0.044653
@@ -45,7 +42,6 @@ artificial intelligence 13:065            0.616298  ... -0.478101
 regulatory technologies (regtech) 12:047  0.237330  ... -0.017035
 <BLANKLINE>
 [5 rows x 10 columns]
-
 
 
 """
@@ -57,20 +53,28 @@ from .map_chart import map_chart
 from .tf_idf_matrix import tf_idf_matrix
 
 
-def tf_idf_matrix_svd_map(
+class _Result:
+    def __init__(self):
+        self.table_ = None
+        self.plot_ = None
+
+
+def svd_of_tf_matrix(
     column,
-    min_occ=1,
+    min_occ=None,
     max_occ=None,
+    # tf-matrix parameters:
     norm="l2",
     use_idf=True,
     smooth_idf=True,
     sublinear_tf=False,
     directory="./",
+    #
     dim_x=0,
     dim_y=1,
+    #
     svd__n_iter=5,
     random_state=0,
-    plot=True,
     delta=1,
 ):
 
@@ -83,7 +87,7 @@ def tf_idf_matrix_svd_map(
         use_idf=use_idf,
         smooth_idf=smooth_idf,
         sublinear_tf=sublinear_tf,
-        sep="; ",
+        sep=";",
         directory=directory,
     ).transpose()
 
@@ -103,12 +107,13 @@ def tf_idf_matrix_svd_map(
         index=labels,
     )
 
-    if plot is False:
-        return decomposed_matrix
-
-    return map_chart(
+    result = _Result()
+    result.table_ = decomposed_matrix
+    result.plot_ = map_chart(
         dataframe=decomposed_matrix,
         dim_x=dim_x,
         dim_y=dim_y,
         delta=delta,
     )
+
+    return result

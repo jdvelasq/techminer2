@@ -5,5 +5,7 @@ Comparative Analysis
     .. toctree::
         :maxdepth: 1
 
-        _menu_tlab_comparative_analysis_svd
+        svd_of_co_occ_matrix
+        svd_of_tf_matrix
+        
 

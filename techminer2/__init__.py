@@ -28,7 +28,6 @@ from .co_citation_network import co_citation_network
 from .co_occ_matrix import co_occ_matrix
 from .co_occ_matrix_list import co_occ_matrix_list
 from .co_occ_network import co_occ_network
-from .co_occ_svd_map import co_occ_svd_map
 from .co_occ_word_association import co_occ_word_association
 from .collaboration_indicators import collaboration_indicators
 from .collaboration_network import collaboration_network
@@ -129,9 +128,10 @@ from .source_impact import source_impact
 from .sources_production_over_time import sources_production_over_time
 from .stemming import stemming_and, stemming_or
 from .summary_view import summary_view
+from .svd_of_co_occ_matrix import co_occ_svd_map
+from .svd_of_tf_matrix import svd_of_tf_matrix
 from .terms_by_year import terms_by_year
 from .tf_idf_matrix import tf_idf_matrix
-from .tf_idf_matrix_svd_map import tf_idf_matrix_svd_map
 from .tf_matrix import tf_matrix
 from .thematic_analysis import ThematicAnalysis
 from .thematic_analysis_map import thematic_analysis_map

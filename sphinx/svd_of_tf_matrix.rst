@@ -1,4 +1,6 @@
-.. automodule:: techminer2.co_occ_svd_map
+.. automodule:: techminer2.svd_of_tf_matrix
     :members:
     :undoc-members:
     :show-inheritance:
+
+

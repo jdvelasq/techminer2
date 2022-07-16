@@ -1353,7 +1353,7 @@ def _remove_stranger_chars_in_database_files(directory):
 
 def _create_ignore_file(directory):
     with open(
-        os.path.join(directory, "processed", "ignore.txt"), "w", encoding="utf-8"
+        os.path.join(directory, "processed", "stopwords.txt"), "w", encoding="utf-8"
     ) as file:
         file.write("")
         file.close()

@@ -1,5 +1,5 @@
 """
-TF Matrix
+TF Matrix (ok!)
 ===============================================================================
 
 
@@ -40,17 +40,18 @@ def tf_matrix(
     sep="; ",
     directory="./",
 ):
+    """Computes TF Matrix."""
 
-    documents = read_records(directory)
+    records = read_records(directory)
 
-    documents = documents.reset_index()
-    documents = documents[[column, "article"]].copy()
-    documents["value"] = 1
-    documents[column] = documents[column].str.split(sep)
-    documents = documents.explode(column)
-    # documents = explode(documents, column, sep)
-
-    grouped_records = documents.groupby(["article", column], as_index=False).agg(
+    records = records.reset_index()
+    records = records[[column, "article"]].copy()
+    records = records.dropna()
+    records["value"] = 1
+    records[column] = records[column].str.split(sep)
+    records[column] = records[column].map(lambda x: [y.strip() for y in x])
+    records = records.explode(column)
+    grouped_records = records.groupby(["article", column], as_index=False).agg(
         {"value": np.sum}
     )
 
