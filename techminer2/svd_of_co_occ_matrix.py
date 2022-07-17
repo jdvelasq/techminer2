@@ -1,5 +1,5 @@
 """
-SVD of Co-occurrence Matrix
+SVD of the Co-occurrence Matrix
 ===============================================================================
 
 Plots the SVD of the co-occurrence matrix normalized with the **salton** measure.
