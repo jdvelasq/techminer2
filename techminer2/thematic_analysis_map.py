@@ -28,7 +28,7 @@ Thematic Analysis / Map
 
 """
 
-from .thematic_analysis import ThematicAnalysis
+# from .thematic_analysis import ThematicAnalysis
 
 
 def thematic_analysis_map(
@@ -48,6 +48,7 @@ def thematic_analysis_map(
     color_scheme="clusters",
     figsize=(9, 9),
 ):
+    """Thematic analysis"""
     analysis = ThematicAnalysis(
         column=column,
         min_occ=min_occ,

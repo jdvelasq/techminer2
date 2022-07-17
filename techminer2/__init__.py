@@ -133,10 +133,7 @@ from .svd_of_tf_matrix import svd_of_tf_matrix
 from .terms_by_year import terms_by_year
 from .tf_idf_matrix import tf_idf_matrix
 from .tf_matrix import tf_matrix
-from .thematic_analysis import ThematicAnalysis
-from .thematic_analysis_map import thematic_analysis_map
-from .thematic_analysis_partitions import thematic_analysis_partitions
-from .thematic_analysis_themes import thematic_analysis_themes
+from .thematic_analysis import thematic_analysis
 from .thematic_evolution_plot import thematic_evolution_plot
 from .thematic_map import thematic_map
 from .thematic_map_summarization import thematic_map_summarization

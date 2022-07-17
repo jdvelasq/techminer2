@@ -30,7 +30,7 @@ Name: num_documents, dtype: int64
 
 """
 
-from .thematic_analysis import ThematicAnalysis
+# from .thematic_analysis import ThematicAnalysis
 
 
 def thematic_analysis_partitions(

@@ -31,7 +31,8 @@ Thematic Analysis / Themes
 """
 
 from .tf_idf_matrix import tf_idf_matrix
-from .thematic_analysis import ThematicAnalysis
+
+# from .thematic_analysis import ThematicAnalysis
 
 
 def thematic_analysis_themes(

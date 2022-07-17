@@ -37,7 +37,6 @@ def tf_matrix(
     min_occ=None,
     max_occ=None,
     scheme=None,
-    sep="; ",
     directory="./",
 ):
     """Computes TF Matrix."""
@@ -48,7 +47,7 @@ def tf_matrix(
     records = records[[column, "article"]].copy()
     records = records.dropna()
     records["value"] = 1
-    records[column] = records[column].str.split(sep)
+    records[column] = records[column].str.split(";")
     records[column] = records[column].map(lambda x: [y.strip() for y in x])
     records = records.explode(column)
     grouped_records = records.groupby(["article", column], as_index=False).agg(
