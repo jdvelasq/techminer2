@@ -1,5 +1,5 @@
 """
-SVD of TF Matrix
+SVD of the TF Matrix
 ===============================================================================
 
 Plots the SVD of the TF-IDF matrix (0/1 values).
