@@ -1,4 +1,4 @@
-Intellectual Structure
+Intellectual Structure (ok!)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    .. toctree::

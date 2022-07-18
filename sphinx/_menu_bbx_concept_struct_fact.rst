@@ -1,12 +1,11 @@
-Factorial Approach
+Factorial Approach (ok!)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    .. toctree::
       :maxdepth: 1
 
-         factorial_analysis_mds_communities
-         factorial_analysis_mds_data
-         factorial_analysis_mds_map
-         factorial_analysis_mds_silhouette_scores
+      factorial_analysis
+         
 
    * ``TODO: Factorial Approach / CA``
+   

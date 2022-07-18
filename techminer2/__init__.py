@@ -62,13 +62,7 @@ from .emergent_themes import emergent_themes_with_lda, emergent_themes_with_nmf
 from .explode import explode
 from .extract_user_keywords import extract_user_keywords
 from .factor_matrix import factor_matrix
-from .factorial_analysis_manifold import Factorial_analysis_manifold
-from .factorial_analysis_mds_communities import factorial_analysis_mds_communities
-from .factorial_analysis_mds_data import factorial_analysis_mds_data
-from .factorial_analysis_mds_map import factorial_analysis_mds_map
-from .factorial_analysis_mds_silhouette_scores import (
-    factorial_analysis_mds_silhouette_scores,
-)
+from .factorial_analysis import factorial_analysis_with_mds
 from .find_abbreviations import find_abbreviations
 from .find_string import find_string
 from .fuzzy_search import fuzzy_search

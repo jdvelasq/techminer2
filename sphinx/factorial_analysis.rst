@@ -1,4 +1,4 @@
-.. automodule:: techminer2.factorial_analysis_mds_data
+.. automodule:: techminer2.factorial_analysis
     :members:
     :undoc-members:
     :show-inheritance:
