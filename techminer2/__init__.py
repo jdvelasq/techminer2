@@ -31,7 +31,6 @@ from .co_occ_word_association import co_occ_word_association
 from .collaboration_indicators import collaboration_indicators
 from .collaboration_network import collaboration_network
 from .collaboration_worldmap import collaboration_worldmap
-from .column_chart import column_chart
 from .column_documents import column_documents
 from .column_indicators import column_indicators
 from .column_indicators_by_year import column_indicators_by_year
@@ -133,7 +132,6 @@ from .topics_comparison_network import topics_comparison_network
 from .treemap import treemap
 from .trend_topics import trend_topics
 from .user_filters import user_filters
-from .vp.report.bar_chart import bar_chart
 from .word_dynamics import word_dynamics
 from .wordcloud import wordcloud
 from .world_map import world_map
