@@ -2,9 +2,11 @@
 List View
 ===============================================================================
 
->>> from techminer2 import *
+
 >>> directory = "data/regtech/"
 
+
+>>> from techminer2.vp.analyze import list_view
 >>> list_view(
 ...    column='author_keywords',
 ...    min_occ=3,
@@ -35,7 +37,7 @@ machine learning                     6  ...                             0
  'local_citations_per_document']
 
 """
-from .column_indicators import column_indicators
+from ...column_indicators import column_indicators
 
 
 def list_view(

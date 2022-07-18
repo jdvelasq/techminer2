@@ -14,4 +14,5 @@ internally in TheVantagePoint software, in order to facilitate comparison.
     .. toctree::
         :maxdepth: 1
 
-        report/_index.rst
+        analyze/_index
+        report/_index

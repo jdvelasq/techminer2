@@ -2,7 +2,7 @@
 Bubble Chart
 ===============================================================================
 
->>> from techminer2 import *
+
 >>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/bubble_chart.html"
 
@@ -13,11 +13,12 @@ Bubble Chart
 ...    directory=directory,
 ... )
 
+>>> from techminer2.vp.report import bubble_chart
 >>> bubble_chart(matrix).write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="_static/bubble_chart.html" height="800px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/bubble_chart.html" height="800px" width="100%" frameBorder="0"></iframe>
 
 """
 import plotly.express as px

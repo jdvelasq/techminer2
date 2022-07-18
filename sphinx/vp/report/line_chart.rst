@@ -1,4 +1,4 @@
-.. automodule:: techminer2.pie_chart
+.. automodule:: techminer2.vp.report.line_chart
     :members:
     :undoc-members:
     :show-inheritance:

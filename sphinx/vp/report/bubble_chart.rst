@@ -1,4 +1,4 @@
-.. automodule:: techminer2.cleveland_chart
+.. automodule:: techminer2.vp.report.bubble_chart
     :members:
     :undoc-members:
     :show-inheritance:

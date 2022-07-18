@@ -22,7 +22,7 @@ Occurrence Matrix / Bubble Chart
 """
 
 from .occurrence_matrix import occurrence_matrix
-from .bubble_chart import bubble_chart
+from .vp.report.bubble_chart import bubble_chart
 
 
 def occurrence_matrix_bubble_chart(

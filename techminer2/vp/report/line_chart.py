@@ -2,10 +2,11 @@
 Line chart
 ===============================================================================
 
->>> from techminer2 import *
+
 >>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/line_chart.html"
 
+>>> from techminer2.vp.report import line_chart
 >>> line_chart(
 ...     'author_keywords',
 ...     top_n=15,
@@ -14,10 +15,10 @@ Line chart
 
 .. raw:: html
 
-    <iframe src="_static/line_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/line_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .vp.report.chart import chart
+from .chart import chart
 
 
 def line_chart(

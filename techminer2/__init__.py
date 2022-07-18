@@ -18,8 +18,6 @@ from .auto_corr_matrix_list import auto_corr_matrix_list
 from .average_citations_per_year import average_citations_per_year
 from .bar_plot import bar_plot
 from .bradford_law import bradford_law
-from .bubble_chart import bubble_chart
-from .cleveland_chart import cleveland_chart
 from .cleveland_plot import cleveland_plot
 from .cluster_map import cluster_map
 from .co_citation_matrix_list import co_citation_matrix_list
@@ -74,9 +72,7 @@ from .institutions_production_over_time import institutions_production_over_time
 from .items_associations_plot import items_associations_plot
 from .keyword_concordances import keyword_concordances
 from .keywords_summarization import keywords_summarization
-from .line_chart import line_chart
 from .line_plot import line_plot
-from .list_view import list_view
 from .lotka_law import lotka_law
 from .main_information import main_information
 from .map_chart import map_chart
@@ -102,7 +98,6 @@ from .occurrence_matrix import occurrence_matrix
 from .occurrence_matrix_associations import occurrence_matrix_associations
 from .occurrence_matrix_bubble_chart import occurrence_matrix_bubble_chart
 from .occurrence_matrix_sankey_diagram import occurrence_matrix_sankey_diagram
-from .pie_chart import pie_chart
 from .pie_plot import pie_plot
 from .production_over_time_chart import production_over_time_chart
 from .radial_diagram import radial_diagram

@@ -1,27 +1,27 @@
 """
-Cleveland Chart
+Pie Chart
 ===============================================================================
 
 
->>> from techminer2 import *
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/cleveland_chart.html"
+>>> file_name = "sphinx/_static/pie_chart.html"
 
->>> cleveland_chart(
-...     column="author_keywords", 
-...     top_n=20,
+>>> from techminer2.vp.report import pie_chart
+>>> pie_chart(
+...     'author_keywords',
+...     top_n=15,
 ...     directory=directory,
 ... ).write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="_static/cleveland_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/pie_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .vp.report.chart import chart
+from .chart import chart
 
 
-def cleveland_chart(
+def pie_chart(
     column,
     directory="./",
     top_n=20,
@@ -39,6 +39,6 @@ def cleveland_chart(
         min_occ=min_occ,
         max_occ=max_occ,
         title=title,
-        plot="cleveland",
+        plot="pie",
         database=database,
     )
