@@ -26,7 +26,6 @@ from .factorial_analysis import factorial_analysis_with_mds
 from .find_abbreviations import find_abbreviations
 from .find_string import find_string
 from .fuzzy_search import fuzzy_search
-from .gantt_chart import gantt_chart
 from .import_scopus_files import import_scopus_files
 from .items_associations_plot import items_associations_plot
 from .map_chart import map_chart

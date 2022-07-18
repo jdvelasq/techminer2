@@ -2,10 +2,11 @@
 Gantt Chart
 ===============================================================================
 
->>> from techminer2 import *
+
 >>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/gantt_chart.html"
 
+>>> from techminer2.vp.report import gantt_chart
 >>> gantt_chart(
 ...     column='author_keywords',
 ...     top_n=20, 
@@ -14,12 +15,12 @@ Gantt Chart
 
 .. raw:: html
 
-    <iframe src="_static/gantt_chart.html" height="800px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/gantt_chart.html" height="800px" width="100%" frameBorder="0"></iframe>
 
 """
 import plotly.express as px
 
-from ._read_records import read_records
+from ..._read_records import read_records
 
 
 def gantt_chart(
