@@ -2,10 +2,11 @@
 Three Fields Plot
 ===============================================================================
 
->>> from techminer2 import *
+
 >>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/three_fields_plot.html"
 
+>>> from techminer2.bbx.overview import three_fields_plot
 >>> three_fields_plot(
 ...     directory=directory,
 ...     left_column='authors',
@@ -17,12 +18,12 @@ Three Fields Plot
 
 .. raw:: html
 
-    <iframe src="_static/three_fields_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/three_fields_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 import plotly.graph_objects as go
 
-from .co_occ_matrix import co_occ_matrix
+from ...co_occ_matrix import co_occ_matrix
 
 
 def three_fields_plot(

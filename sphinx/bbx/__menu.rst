@@ -15,9 +15,12 @@ subset of the analytical capabilities of TechMiner.
 
 
    .. toctree::
-      :maxdepth: 1
-      
-         overview/_index
+     
+         overview/__menu
+
+
+   .. toctree::      
+
          sources/_index
          authors/_index
          documents/_index

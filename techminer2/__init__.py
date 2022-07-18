@@ -4,7 +4,6 @@ from .abstract_screening import abstract_screening
 from .abstract_summarization import abstract_summarization
 from .annual_indicators import annual_indicators
 from .annual_occurrence_matrix import annual_occurrence_matrix
-from .annual_scientific_production import annual_scientific_production
 from .apply_institutions_thesaurus import apply_institutions_thesaurus
 from .apply_thesaurus import apply_thesaurus
 from .association_index import association_index
@@ -15,7 +14,6 @@ from .authors_documents import authors_documents
 from .authors_production_over_time import authors_production_over_time
 from .auto_corr_matrix import auto_corr_matrix
 from .auto_corr_matrix_list import auto_corr_matrix_list
-from .average_citations_per_year import average_citations_per_year
 from .bar_plot import bar_plot
 from .bradford_law import bradford_law
 from .cleveland_plot import cleveland_plot
@@ -72,7 +70,6 @@ from .keyword_concordances import keyword_concordances
 from .keywords_summarization import keywords_summarization
 from .line_plot import line_plot
 from .lotka_law import lotka_law
-from .main_information import main_information
 from .map_chart import map_chart
 from .matrix_viewer import matrix_viewer
 from .most_frequent_authors import most_frequent_authors
@@ -111,7 +108,6 @@ from .thematic_analysis import thematic_analysis
 from .thematic_evolution_plot import thematic_evolution_plot
 from .thematic_map import thematic_map
 from .thematic_map_summarization import thematic_map_summarization
-from .three_fields_plot import three_fields_plot
 from .time_plot import time_plot
 from .top_topics import top_topics
 from .top_trending_topics import top_trending_topics

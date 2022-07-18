@@ -49,23 +49,22 @@ package developed and tested in Python version 3.6.
 
 
 .. toctree::
-    :caption: Test
-    :hidden:
-    :maxdepth: 1
-
-    bbx/_index
-    vp/_index
+    :caption: Software comparison
+    
+    bbx/__menu
 
 
 .. toctree::
-    :caption: Software comparison
+    :caption: Software comparison test
     :hidden:
     :maxdepth: 1
 
-    _menu_bbx
-    _menu_vp
+    vp/_index
     _scientopy
     _menu_tlab
+
+
+    
 
     
 .. toctree::
