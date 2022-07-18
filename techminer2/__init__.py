@@ -20,7 +20,6 @@ from .create_thesaurus import create_thesaurus
 from .document_viewer import document_viewer
 from .documents_by_country import documents_by_country
 from .documents_by_institution import documents_by_institution
-from .dotted_gantt_chart import dotted_gantt_chart
 from .ego_graph import ego_graph
 from .ego_network import ego_network
 from .explode import explode
@@ -31,7 +30,6 @@ from .find_abbreviations import find_abbreviations
 from .find_string import find_string
 from .fuzzy_search import fuzzy_search
 from .gantt_chart import gantt_chart
-from .heat_map import heat_map
 from .import_scopus_files import import_scopus_files
 from .items_associations_plot import items_associations_plot
 from .keyword_concordances import keyword_concordances
@@ -43,7 +41,6 @@ from .occurrence_matrix_associations import occurrence_matrix_associations
 from .occurrence_matrix_bubble_chart import occurrence_matrix_bubble_chart
 from .occurrence_matrix_sankey_diagram import occurrence_matrix_sankey_diagram
 from .production_over_time_chart import production_over_time_chart
-from .radial_diagram import radial_diagram
 from .rpys import rpys
 from .sankey_diagram import sankey_diagram
 from .stemming import stemming_and, stemming_or

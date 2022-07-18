@@ -2,9 +2,10 @@
 Heat Map
 ===============================================================================
 
->>> from techminer2 import *
+
 >>> directory = "data/regtech/"
 
+>>> from techminer2.vp.analyze.matrix import co_occ_matrix
 >>> matrix = co_occ_matrix(
 ...    column='author_keywords',
 ...    row='authors',
@@ -13,13 +14,14 @@ Heat Map
 ... )
 >>> file_name = "sphinx/_static/heat_map_1.html"
 
+>>> from techminer2.vp.report.heat_map import heat_map
 >>> heat_map(
 ...     matrix,
 ... ).write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="_static/heat_map_1.html" height="800px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/heat_map_1.html" height="800px" width="100%" frameBorder="0"></iframe>
 
 
 
@@ -36,7 +38,7 @@ Heat Map
 
 .. raw:: html
 
-    <iframe src="_static/heat_map_2.html" height="800px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/heat_map_2.html" height="800px" width="100%" frameBorder="0"></iframe>
 
 
 """

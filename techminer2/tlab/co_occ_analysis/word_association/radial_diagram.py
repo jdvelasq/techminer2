@@ -2,10 +2,11 @@
 Radial Diagram
 ===============================================================================
 
->>> from techminer2 import *
+
 >>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/radial_diagram.html"
 
+>>> from techminer2.tlab.co_occ_analysis.word_association import radial_diagram
 >>> radial_diagram(
 ...     term="regtech",
 ...     min_occ=4,
@@ -15,13 +16,13 @@ Radial Diagram
 
 .. raw:: html
 
-    <iframe src="_static/radial_diagram.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../../_static/radial_diagram.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 import networkx as nx
 
-from .vp.analyze.matrix.co_occ_matrix_list import co_occ_matrix_list
-from .tm2.plots.network_plot import network_plot
+from ....tm2.plots.network_plot import network_plot
+from ....vp.analyze.matrix.co_occ_matrix_list import co_occ_matrix_list
 
 
 def radial_diagram(

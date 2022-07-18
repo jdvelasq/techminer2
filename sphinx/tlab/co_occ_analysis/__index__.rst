@@ -4,7 +4,7 @@ Co-occurrence Analysis
     .. toctree::
         :maxdepth: 1
 
-        _menu_tlab_co_occ_analysis__words_assoc
+        word_association/__index__
 
         _menu_tlab_co_occ_analysis__co_word
 

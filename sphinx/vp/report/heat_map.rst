@@ -1,4 +1,4 @@
-.. automodule:: techminer2.heat_map
+.. automodule:: techminer2.vp.report.heat_map
     :members:
     :undoc-members:
     :show-inheritance:
