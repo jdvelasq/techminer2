@@ -28,7 +28,7 @@ with the data.
 
 
 """
-from .chart import chart
+from .vp.report.chart import chart
 
 
 def most_frequent_words(

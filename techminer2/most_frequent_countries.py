@@ -20,7 +20,7 @@ Most Frequent Countries
     <iframe src="_static/most_frequent_countries.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .chart import chart
+from .vp.report.chart import chart
 
 
 def most_frequent_countries(

@@ -16,7 +16,6 @@ from .authors_production_over_time import authors_production_over_time
 from .auto_corr_matrix import auto_corr_matrix
 from .auto_corr_matrix_list import auto_corr_matrix_list
 from .average_citations_per_year import average_citations_per_year
-from .bar_chart import bar_chart
 from .bar_plot import bar_plot
 from .bradford_law import bradford_law
 from .bubble_chart import bubble_chart
@@ -86,7 +85,6 @@ from .matrix_viewer import matrix_viewer
 from .most_frequent_authors import most_frequent_authors
 from .most_frequent_countries import most_frequent_countries
 from .most_frequent_institutions import most_frequent_institutions
-from .most_frequent_sources import most_frequent_sources
 from .most_frequent_words import most_frequent_words
 from .most_global_cited_authors import most_global_cited_authors
 from .most_global_cited_countries import most_global_cited_countries
@@ -135,6 +133,7 @@ from .topics_comparison_network import topics_comparison_network
 from .treemap import treemap
 from .trend_topics import trend_topics
 from .user_filters import user_filters
+from .vp.report.bar_chart import bar_chart
 from .word_dynamics import word_dynamics
 from .wordcloud import wordcloud
 from .world_map import world_map

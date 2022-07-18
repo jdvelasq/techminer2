@@ -47,6 +47,15 @@ package developed and tested in Python version 3.6.
     user_filters
 
 
+
+.. toctree::
+    :caption: Test
+    :hidden:
+    :maxdepth: 1
+
+    bbx/_index
+
+
 .. toctree::
     :caption: Software comparison
     :hidden:

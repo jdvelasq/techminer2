@@ -17,7 +17,7 @@ Line chart
     <iframe src="_static/line_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .chart import chart
+from .vp.report.chart import chart
 
 
 def line_chart(

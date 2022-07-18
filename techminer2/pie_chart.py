@@ -17,7 +17,7 @@ Pie Chart
     <iframe src="_static/pie_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .chart import chart
+from .vp.report.chart import chart
 
 
 def pie_chart(

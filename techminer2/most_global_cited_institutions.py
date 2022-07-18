@@ -19,7 +19,7 @@ Most Global Cited Institutions
     <iframe src="_static/most_global_cited_institutions.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .chart import chart
+from .vp.report.chart import chart
 
 
 def most_global_cited_institutions(

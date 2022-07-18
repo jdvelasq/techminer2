@@ -2,13 +2,13 @@
 Most Frequent Sources
 ===============================================================================
 
-See :doc:`column indicators <column_indicators>` to obtain a `pandas.Dataframe` 
+See :doc:`column indicators <../../column_indicators>` to obtain a `pandas.Dataframe` 
 with the data.
 
->>> from techminer2 import *
 >>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/most_frequent_sources.html"
 
+>>> from techminer2.bbx.sources import most_frequent_sources
 >>> most_frequent_sources(
 ...     directory,
 ...     top_n=20,
@@ -19,10 +19,10 @@ with the data.
 
 .. raw:: html
 
-    <iframe src="_static/most_frequent_sources.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/most_frequent_sources.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .chart import chart
+from ...vp.report.chart import chart
 
 
 def most_frequent_sources(
