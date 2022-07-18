@@ -2,10 +2,11 @@
 Sources' Production over Time
 ===============================================================================
 
->>> from techminer2 import *
+
 >>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/sources_production_over_time.html"
 
+>>> from techminer2.bbx.sources import sources_production_over_time
 >>> sources_production_over_time(
 ...    top_n=10, 
 ...    directory=directory,
@@ -13,10 +14,10 @@ Sources' Production over Time
 
 .. raw:: html
 
-    <iframe src="_static/sources_production_over_time.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/sources_production_over_time.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .production_over_time_chart import production_over_time_chart
+from ...production_over_time_chart import production_over_time_chart
 
 
 def sources_production_over_time(

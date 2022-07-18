@@ -16,10 +16,10 @@ Collaboration Network
     co-occurrence network, including heat maps and other plot types.
 
 
->>> from techminer2 import *
+
 >>> directory = "data/regtech/"
 
->>> from .collaboration_network import collaboration_network
+>>> from techminer2.bbx.social_structure import collaboration_network
 >>> nnet = collaboration_network(
 ...     "authors",
 ...     top_n=20,
@@ -36,7 +36,7 @@ Collaboration Network
 
 .. raw:: html
 
-    <iframe src="_static/collaboration_network_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/collaboration_network_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> nnet.communities_.head()
                CL_00            CL_01  ...                    CL_08            CL_09
@@ -54,7 +54,7 @@ Collaboration Network
 
 .. raw:: html
 
-    <iframe src="_static/collaboration_network_degree_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/collaboration_network_degree_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
 >>> nnet.indicators_.head()
@@ -67,6 +67,6 @@ Brennan R 3:008        1     0.000000   0.105263  0.067520
 
 """
 
-from .network import network
+from ...network import network
 
 collaboration_network = network

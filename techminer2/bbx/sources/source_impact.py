@@ -5,10 +5,11 @@ Source Impact
 See :doc:`impact indicators <impact_indicators>` to obtain a `pandas.Dataframe` 
 with the data. 
 
->>> from techminer2 import *
+
 >>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/source_impact.html"
 
+>>> from techminer2.bbx.sources import source_impact
 >>> source_impact(
 ...     impact_measure='h_index',
 ...     top_n=20, 
@@ -17,11 +18,11 @@ with the data.
 
 .. raw:: html
 
-    <iframe src="_static/source_impact.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/source_impact.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
 """
-from .impact import impact
+from ...impact import impact
 
 
 def source_impact(

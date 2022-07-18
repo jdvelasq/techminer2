@@ -27,8 +27,6 @@ from .co_occ_matrix_list import co_occ_matrix_list
 from .co_occ_network import co_occ_network
 from .co_occ_word_association import co_occ_word_association
 from .collaboration_indicators import collaboration_indicators
-from .collaboration_network import collaboration_network
-from .collaboration_worldmap import collaboration_worldmap
 from .column_documents import column_documents
 from .column_indicators import column_indicators
 from .column_indicators_by_year import column_indicators_by_year
@@ -102,8 +100,6 @@ from .radial_diagram import radial_diagram
 from .rpys import rpys
 from .sankey_diagram import sankey_diagram
 from .source_dynamics import source_dynamics
-from .source_impact import source_impact
-from .sources_production_over_time import sources_production_over_time
 from .stemming import stemming_and, stemming_or
 from .summary_view import summary_view
 from .svd_of_co_occ_matrix import svd_of_co_occ_matrix

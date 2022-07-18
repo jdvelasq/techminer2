@@ -14,5 +14,26 @@ internally in TheVantagePoint software, in order to facilitate comparison.
     .. toctree::
         :maxdepth: 1
 
+        home/_index
+        refine/_index
         analyze/_index
         report/_index
+
+
+
+
+    * ``TODO: The Title View``
+
+    * ``TODO: Create a sub-dataset``
+
+    * ``TODO: Detail Window``
+
+
+
+        
+
+
+
+
+
+

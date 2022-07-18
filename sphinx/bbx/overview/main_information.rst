@@ -1,4 +1,4 @@
-.. automodule:: techminer2._gantt_chart
+.. automodule:: techminer2.bbx.overview.main_information
     :members:
     :undoc-members:
     :show-inheritance:
