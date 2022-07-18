@@ -54,6 +54,7 @@ package developed and tested in Python version 3.6.
     :maxdepth: 1
 
     bbx/_index
+    vp/_index
 
 
 .. toctree::

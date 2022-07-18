@@ -2,10 +2,12 @@
 Bar Chart
 ===============================================================================
 
->>> from techminer2 import *
+
+
 >>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/bar_chart.html"
 
+>>> from techminer2.vp.report import bar_chart
 >>> bar_chart(
 ...    column='author_keywords',
 ...    min_occ=3,
@@ -14,7 +16,7 @@ Bar Chart
 
 .. raw:: html
 
-    <iframe src="_static/bar_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/bar_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 from .chart import chart
