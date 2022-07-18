@@ -86,13 +86,11 @@ from .most_global_cited_countries import most_global_cited_countries
 from .most_global_cited_documents import most_global_cited_documents
 from .most_global_cited_institutions import most_global_cited_institutions
 from .most_global_cited_references import most_global_cited_references
-from .most_global_cited_sources import most_global_cited_sources
 from .most_local_cited_authors import most_local_cited_authors
 from .most_local_cited_countries import most_local_cited_countries
 from .most_local_cited_documents import most_local_cited_documents
 from .most_local_cited_institutions import most_local_cited_institutions
 from .most_local_cited_references import most_local_cited_references
-from .most_local_cited_sources import most_local_cited_sources
 from .network import network
 from .occurrence_matrix import occurrence_matrix
 from .occurrence_matrix_associations import occurrence_matrix_associations

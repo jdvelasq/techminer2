@@ -2,10 +2,11 @@
 Most Global Cited Sources
 ===============================================================================
 
->>> from techminer2 import *
+
 >>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/most_global_cited_sources.html"
 
+>>> from techminer2.bbx.sources import most_global_cited_sources
 >>> most_global_cited_sources(
 ...     directory,
 ...     top_n=20,
@@ -16,10 +17,10 @@ Most Global Cited Sources
 
 .. raw:: html
 
-    <iframe src="_static/most_global_cited_sources.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/most_global_cited_sources.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .vp.report.chart import chart
+from ...vp.report.chart import chart
 
 
 def most_global_cited_sources(
