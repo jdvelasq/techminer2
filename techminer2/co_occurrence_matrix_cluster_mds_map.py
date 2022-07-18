@@ -19,7 +19,7 @@ Co-occurrence Matrix / Cluster MDS Map
 """
 from sklearn.manifold import MDS
 
-from .co_occurrence_matrix import co_occurrence_matrix
+# from .co_occurrence_matrix import co_occurrence_matrix
 from .network import network
 from .network_map import network_map
 

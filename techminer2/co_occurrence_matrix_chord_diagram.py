@@ -22,7 +22,7 @@ Co-occurrence Matrix / Chord Diagram
 """
 
 
-from .co_occurrence_matrix import co_occurrence_matrix
+# from .co_occurrence_matrix import co_occurrence_matrix
 from .chord_diagram import ChordDiagram
 
 

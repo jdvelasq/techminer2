@@ -1,5 +1,4 @@
-"""
-Co-occurrence Matrix / Associations
+"""Co-occurrence Matrix / Associations
 ===============================================================================
 
 >>> from techminer2 import *
@@ -20,7 +19,7 @@ Co-occurrence Matrix / Associations
 """
 import pandas as pd
 
-from .co_occurrence_matrix import co_occurrence_matrix
+# from .co_occurrence_matrix import co_occurrence_matrix
 
 
 def co_occurrence_matrix_associations(

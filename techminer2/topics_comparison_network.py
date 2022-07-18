@@ -24,7 +24,7 @@ Topics Comparison Network
 
 import networkx as nx
 
-from .co_occurrence_matrix import co_occurrence_matrix
+#  from .co_occurrence_matrix import co_occurrence_matrix
 from .network_plot import network_plot
 
 
