@@ -1,7 +1,4 @@
 """Init module for techminer2."""
-from .abstract_concordances import abstract_concordances
-from .abstract_screening import abstract_screening
-from .abstract_summarization import abstract_summarization
 from .annual_occurrence_matrix import annual_occurrence_matrix
 from .apply_institutions_thesaurus import apply_institutions_thesaurus
 from .apply_thesaurus import apply_thesaurus
@@ -32,8 +29,6 @@ from .fuzzy_search import fuzzy_search
 from .gantt_chart import gantt_chart
 from .import_scopus_files import import_scopus_files
 from .items_associations_plot import items_associations_plot
-from .keyword_concordances import keyword_concordances
-from .keywords_summarization import keywords_summarization
 from .map_chart import map_chart
 from .network import network
 from .occurrence_matrix import occurrence_matrix

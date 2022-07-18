@@ -20,7 +20,9 @@ Co-occurrence Network / Summarization
 """
 
 # from .co_occurrence_network_communities import co_occurrence_network_communities
-from .keywords_summarization import keywords_summarization
+from .tlab.co_occ_analysis.concordances.keywords_summarization import (
+    keywords_summarization,
+)
 
 
 def co_occurrence_network_summarization(

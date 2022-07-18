@@ -5,15 +5,17 @@ Keyword Concordances
 Abstract concordances exploration tool.
 
 
->>> from techminer2 import *
+
 >>> directory = "data/regtech/"
 
+
+>>> from techminer2.tlab.co_occ_analysis.concordances import keyword_concordances
 >>> keyword_concordances(
 ...     'regtech', 
 ...     top_n=10, 
 ...     directory=directory,
 ... )
-- INFO - Abstract concordances report generated.
+--INFO-- Abstract concordances report generated.
 <<<  systems requires increasing the use of and reliance on  regtech .
                                                              regtech  developments are leading towards a paradigm shift neces >>>
                                                              regtech  to date has focused on the digitization of manual repor >>>
@@ -26,15 +28,14 @@ Abstract concordances exploration tool.
 <<< hat together they are underpinning the development of a  regtech  ecosystem in europe and will continue to do so.
 
 """
-
+import sys
 import textwrap
 from os.path import isfile, join
 
 import pandas as pd
 
-
-from ._read_records import read_records
-from .thesaurus import load_file_as_dict
+from ...._read_records import read_records
+from ....thesaurus import load_file_as_dict
 
 
 def keyword_concordances(
@@ -97,7 +98,7 @@ def keyword_concordances(
             print(paragraph, file=out_file)
             print("", file=out_file)
 
-    logging.info("Abstract concordances report generated.")
+    sys.stdout.write("--INFO-- Abstract concordances report generated.\n")
 
     # ---< Display results >-------------------------------------------------------------
     expanded_keywords = [word.upper() for word in expanded_keywords]

@@ -2,9 +2,9 @@
 Keywords Summarization
 ===============================================================================
 
->>> from techminer2 import *
 >>> directory = "data/regtech/"
 
+>>> from techminer2.tlab.co_occ_analysis.concordances import keywords_summarization
 >>> keywords_summarization(
 ...     column="author_keywords",
 ...     keywords=["fintech", "blockchain"],
@@ -18,8 +18,8 @@ import sys
 import textwrap
 from os.path import isfile, join
 
-from ._read_records import read_records
-from .thesaurus import load_file_as_dict
+from ...._read_records import read_records
+from ....thesaurus import load_file_as_dict
 
 
 def keywords_summarization(

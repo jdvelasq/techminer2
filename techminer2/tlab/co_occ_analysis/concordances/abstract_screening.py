@@ -5,9 +5,10 @@ Abstract Screening
 Captures n-words around the keyword.
 
 
->>> from techminer2 import *
+
 >>> directory = "data/regtech/"
 
+>>> from techminer2.tlab.co_occ_analysis.concordances import abstract_screening
 >>> abstract_screening(
 ...     text='fintech',
 ...     top_n=10,
@@ -15,7 +16,7 @@ Captures n-words around the keyword.
 ...     right=4,
 ...     directory=directory,
 ... )
-- INFO - Saved HTML report: data/regtech/reports/abstract_screening.html
+--INFO-- Saved HTML report: data/regtech/reports/abstract_screening.html
                  review the effect of FINTECH development against the broader
           the disruptive potential of FINTECH, and its implications for
                                       FINTECH
@@ -27,12 +28,13 @@ Captures n-words around the keyword.
       co-operative collaboration with FINTECH start-ups on regulatory
        field of financial technology (FINTECH) and the different financial
 
+
 """
 
+from ....load_abstracts import load_abstracts
+from ....load_template import load_template
+from ....save_html_report import save_html_report
 from .abstract_concordances import _select_abstracts
-from .load_abstracts import load_abstracts
-from .load_template import load_template
-from .save_html_report import save_html_report
 
 
 def abstract_screening(

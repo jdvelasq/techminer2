@@ -5,6 +5,7 @@ Co-occurrence Analysis
         :maxdepth: 1
 
         word_association/__index__
+        concordances/__index__
 
         _menu_tlab_co_occ_analysis__co_word
 
@@ -12,7 +13,6 @@ Co-occurrence Analysis
 
 
 
-        _menu_tlab_co_occ_analysis__concordances
 
 
 

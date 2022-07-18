@@ -41,8 +41,8 @@ import textwrap
 import nltk
 from nltk.stem import PorterStemmer
 
-from ._read_records import read_records
-from .load_abstracts import load_abstracts
+from ...._read_records import read_records
+from ....load_abstracts import load_abstracts
 
 
 def abstract_summarization(

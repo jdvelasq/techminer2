@@ -1,4 +1,5 @@
 import os.path
+import sys
 
 
 def save_html_report(directory, html, report_name):
@@ -13,4 +14,4 @@ def save_html_report(directory, html, report_name):
     report_path = os.path.join(directory, "reports", report_name)
     with open(report_path, "w", encoding="utf-8") as f:
         f.write(html)
-    logging.info(f"Saved HTML report: {report_path}")
+    sys.stdout.write(f"--INFO-- Saved HTML report: {report_path}\n")

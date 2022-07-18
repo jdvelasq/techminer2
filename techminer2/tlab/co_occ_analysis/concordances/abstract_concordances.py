@@ -5,9 +5,9 @@ Abstract Concordances
 Abstract concordances exploration tool.
 
 
->>> from techminer2 import *
 >>> directory = "data/regtech/"
 
+>>> from techminer2.tlab.co_occ_analysis.concordances import abstract_concordances
 >>> abstract_concordances(
 ...     'regtech',
 ...     top_n=10,
@@ -26,7 +26,7 @@ Abstract concordances exploration tool.
 
 
 """
-from .load_abstracts import load_abstracts
+from ....load_abstracts import load_abstracts
 
 
 def abstract_concordances(
