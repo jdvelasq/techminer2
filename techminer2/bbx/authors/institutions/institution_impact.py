@@ -22,7 +22,7 @@ with the data.
 
 
 """
-from ....impact import impact
+from ...impact import impact
 
 
 def institution_impact(

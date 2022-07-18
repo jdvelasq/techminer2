@@ -17,7 +17,7 @@ Country Scientific Production
     <iframe src="../../../_static/country_scientific_production.html" height="410px" width="100%" frameBorder="0"></iframe>
 
 """
-from ....world_map import world_map
+from ....vp.report.world_map import world_map
 
 
 def country_scientific_production(

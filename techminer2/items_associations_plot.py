@@ -20,11 +20,11 @@ Items Assocations Plot
 
 """
 from .associations_for_a_item import associations_for_a_item
-from .bar_px import bar_px
-from .cleveland_px import cleveland_px
-from .column_px import column_px
-from .line_px import line_px
-from .pie_px import pie_px
+from .tm2.px.bar_px import bar_px
+from .tm2.px.cleveland_px import cleveland_px
+from .tm2.px.column_px import column_px
+from .tm2.px.line_px import line_px
+from .tm2.px.pie_px import pie_px
 
 
 def items_associations_plot(

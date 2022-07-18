@@ -21,7 +21,7 @@ import pandas as pd
 
 from .association_index import association_index
 from .index_terms2counters import index_terms2counters
-from .tf_matrix import tf_matrix
+from .vp.analyze.tfidf.tf_matrix import tf_matrix
 
 # pyltin: disable=c0103
 # pylint: disable=too-many-arguments

@@ -18,7 +18,7 @@ Auto-correlation Matrix / HTML
 """
 
 
-from .auto_corr_matrix import auto_corr_matrix
+from .vp.analyze.matrix.auto_corr_matrix import auto_corr_matrix
 
 
 def auto_corr_matrix_html(

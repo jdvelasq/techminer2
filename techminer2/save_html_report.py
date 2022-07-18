@@ -1,7 +1,5 @@
 import os.path
 
-from . import logging
-
 
 def save_html_report(directory, html, report_name):
     """Save an HTML report.

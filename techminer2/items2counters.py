@@ -2,7 +2,7 @@
 
 import numpy as np
 
-from .column_indicators import column_indicators
+from .tm2.indicators.column_indicators import column_indicators
 
 
 def items2counters(

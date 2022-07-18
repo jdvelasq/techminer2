@@ -22,7 +22,7 @@ Auto-correlation Matrix / Heatmap
 """
 
 
-from .auto_corr_matrix import auto_corr_matrix
+from .vp.analyze.matrix.auto_corr_matrix import auto_corr_matrix
 from .heat_map import heat_map
 
 

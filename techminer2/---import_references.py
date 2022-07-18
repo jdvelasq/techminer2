@@ -29,7 +29,6 @@ from os.path import join
 import numpy as np
 from tqdm import tqdm
 
-from . import logging
 
 # from ._read_raw_csv_files import read_raw_csv_files
 from ._read_records import read_all_records

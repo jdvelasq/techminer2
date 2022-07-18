@@ -76,7 +76,7 @@ peer-to-peer lending              8                73               11
 regulation                       12                89               10
 
 """
-from .column_indicators import column_indicators
+from .tm2.indicators.column_indicators import column_indicators
 
 
 def topic_view(

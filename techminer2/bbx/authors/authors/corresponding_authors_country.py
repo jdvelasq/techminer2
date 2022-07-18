@@ -31,7 +31,7 @@ Hong Kong                        2                     6   3.000000
 """
 import plotly.express as px
 
-from ....collaboration_indicators import collaboration_indicators
+from ....tm2.indicators.collaboration_indicators import collaboration_indicators
 
 
 class _Results:

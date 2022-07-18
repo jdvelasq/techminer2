@@ -12,7 +12,6 @@ import os
 import numpy as np
 import pandas as pd
 
-from . import logging
 from ._read_records import read_all_records
 from .save_documents import save_documents
 

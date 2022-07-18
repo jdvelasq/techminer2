@@ -23,7 +23,7 @@ Three Fields Plot
 """
 import plotly.graph_objects as go
 
-from ...co_occ_matrix import co_occ_matrix
+from ...vp.analyze.matrix.co_occ_matrix import co_occ_matrix
 
 
 def three_fields_plot(

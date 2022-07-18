@@ -22,7 +22,7 @@ See :doc:`column indicators by year <column_indicators_by_year>` to obtain a
 
 
 """
-from ....dynamics import dynamics
+from ...dynamics import dynamics
 
 
 def country_dynamics(

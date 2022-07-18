@@ -33,8 +33,11 @@ Terms by Year
 19     financial regulation 08:091  2020    3        7
 
 """
-from .co_occ_matrix_list import _add_counters_to_items, _select_top_n_items
-from .column_indicators_by_year import column_indicators_by_year
+from .vp.analyze.matrix.co_occ_matrix_list import (
+    _add_counters_to_items,
+    _select_top_n_items,
+)
+from .tm2.indicators.column_indicators_by_year import column_indicators_by_year
 
 
 def terms_by_year(

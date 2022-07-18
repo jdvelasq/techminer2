@@ -23,9 +23,9 @@ import textwrap
 
 import plotly.express as px
 
-from .co_occ_matrix_list import _add_counters_to_items
-from .column_indicators import column_indicators
-from .column_indicators_by_year import column_indicators_by_year
+from .vp.analyze.matrix.co_occ_matrix_list import _add_counters_to_items
+from .tm2.indicators.column_indicators import column_indicators
+from .tm2.indicators.column_indicators_by_year import column_indicators_by_year
 
 TEXTLEN = 40
 

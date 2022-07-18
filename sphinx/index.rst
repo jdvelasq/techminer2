@@ -51,30 +51,12 @@ package developed and tested in Python version 3.6.
 .. toctree::
     :caption: Software comparison
     
+    
     bbx/__index__
-
-
-.. toctree::
-    :caption: Software comparison test
-    :hidden:
-    :maxdepth: 1
-
-    vp/_index
+    vp/__index__
+    tlab/__index__
+    tm2/__index__
     _scientopy
-    _menu_tlab
-
-
-    
-
-    
-.. toctree::
-    :caption: TechMiner 2
-    :hidden:
-    :maxdepth: 1
-    
-    _menu_tm2_basic_indicators
-    _menu_tm2_network
-    _menu_tm2_visualization
 
 
 

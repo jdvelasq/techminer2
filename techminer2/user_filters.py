@@ -101,7 +101,7 @@ import os.path
 import pandas as pd
 import yaml
 
-from . import logging
+
 from ._read_records import read_all_records, read_filtered_records
 
 

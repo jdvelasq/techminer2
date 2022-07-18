@@ -18,7 +18,7 @@ Collaboration WorldMap
 import plotly.express as px
 import plotly.graph_objects as go
 
-from ...co_occ_matrix_list import co_occ_matrix_list
+from ...vp.analyze.matrix.co_occ_matrix_list import co_occ_matrix_list
 
 
 def collaboration_worldmap(

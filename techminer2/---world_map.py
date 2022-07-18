@@ -13,7 +13,7 @@ World map
 
 """
 # from ._world_map import _world_map
-from .column_indicators import column_indicators
+from .tm2.indicators.column_indicators import column_indicators
 
 TEXTLEN = 40
 

@@ -17,8 +17,8 @@ with the data.
     <iframe src="../../_static/annual_scientific_production.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ...annual_indicators import annual_indicators
-from ...time_plot import time_plot
+from ...tm2.plots.time_plot import time_plot
+from ...tm2.indicators.annual_indicators import annual_indicators
 
 
 def annual_scientific_production(directory="./"):

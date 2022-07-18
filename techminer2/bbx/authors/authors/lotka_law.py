@@ -29,7 +29,7 @@ Lotka's Law
 """
 import plotly.graph_objects as go
 
-from ....column_indicators import column_indicators
+from ....tm2.indicators.column_indicators import column_indicators
 
 
 class _Results:

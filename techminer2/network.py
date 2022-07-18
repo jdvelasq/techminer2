@@ -1,13 +1,13 @@
 """Network interface."""
 
 
-from .co_occ_matrix_list import co_occ_matrix_list
+from .vp.analyze.matrix.co_occ_matrix_list import co_occ_matrix_list
 from .co_occ_network import co_occ_network
 from .network_communities import network_communities
 from .network_community_detection import network_community_detection
 from .network_degree_plot import network_degree_plot
-from .network_indicators import network_indicators
-from .network_plot import network_plot
+from .tm2.indicators.network_indicators import network_indicators
+from .tm2.plots.network_plot import network_plot
 
 
 class Result:

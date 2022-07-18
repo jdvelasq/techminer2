@@ -19,7 +19,7 @@ Word cloud (chart)
     :align: center
 
 """
-from .column_indicators import column_indicators
+from .tm2.indicators.column_indicators import column_indicators
 
 # from .word_cloud import word_cloud_plot
 

@@ -32,7 +32,7 @@ from os.path import isfile, join
 
 import pandas as pd
 
-from . import logging
+
 from ._read_records import read_records
 from .thesaurus import load_file_as_dict
 
