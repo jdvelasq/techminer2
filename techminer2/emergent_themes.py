@@ -1,5 +1,5 @@
 """
-Modeling of Emergent Themes with NMF
+Modeling of Emergent Themes
 ===============================================================================
 
 Topic extraction using non-negative matrix factorization.
