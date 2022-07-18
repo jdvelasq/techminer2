@@ -46,7 +46,7 @@ def keyword_concordances(
     # ---< Sort abstracts by importance >------------------------------------------------
     documents = read_records(directory)
     article2citation = dict(zip(documents["article"], documents["global_citations"]))
-    abstracts = pd.read_csv(join(directory, "processed", "_abstracts.csv"))
+    abstracts = pd.read_csv(join(directory, "processed", "abstracts.csv"))
     abstracts["citations"] = abstracts["article"].map(article2citation)
     abstracts = abstracts.sort_values(
         ["citations", "article", "line_no"], ascending=[False, True, True]

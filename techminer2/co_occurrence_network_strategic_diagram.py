@@ -13,9 +13,8 @@ Co-occurrence Network / Strategic Diagram
 
 """
 
-from matplotlib.pyplot import figimage
 
-from .co_occurrence_matrix import co_occurrence_matrix
+# from .co_occurrence_matrix import co_occurrence_matrix
 from .network import network
 from .network_strategic_diagram import network_strategic_diagram
 

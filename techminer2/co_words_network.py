@@ -2,7 +2,7 @@
 Co-Words Network
 ===============================================================================
 
->>> from techminer2 import *
+>>> from .co_words_network import co_words_network
 >>> directory = "data/regtech/"
 
 >>> nnet = co_words_network(

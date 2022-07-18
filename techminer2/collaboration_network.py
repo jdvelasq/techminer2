@@ -39,14 +39,15 @@ Collaboration Network
     <iframe src="_static/collaboration_network_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> nnet.communities_.head()
-               CL_00            CL_01  ...            CL_09          CL_04
-0     Arner DW 7:220  Brennan R 3:008  ...  Baxter LG 1:023  Lamb GW 1:037
-1   Buckley RP 6:217     Ryan P 3:008  ...                     Lui A 1:037
-2  Barberis JN 4:146    Crane M 2:008  ...                                
-3  Zetzsche DA 4:092                   ...                                
-4      Veidt R 1:040                   ...                                
+               CL_00            CL_01  ...                    CL_08            CL_09
+0     Arner DW 7:220  Brennan R 3:008  ...  Anagnostopoulos I 1:110  Baxter LG 1:023
+1   Buckley RP 6:217     Ryan P 3:008  ...                                          
+2  Barberis JN 4:146    Crane M 2:008  ...                                          
+3  Zetzsche DA 4:092                   ...                                          
+4      Veidt R 1:040                   ...                                          
 <BLANKLINE>
 [5 rows x 10 columns]
+
 
 >>> file_name = "sphinx/_static/collaboration_network_degree_plot.html"
 >>> nnet.degree_plot_.write_html(file_name)
@@ -63,7 +64,6 @@ Buckley RP 6:217       0     0.001949   0.210526  0.085773
 Barberis JN 4:146      0     0.000000   0.168421  0.051275
 Zetzsche DA 4:092      0     0.001949   0.210526  0.063693
 Brennan R 3:008        1     0.000000   0.105263  0.067520
-
 
 """
 

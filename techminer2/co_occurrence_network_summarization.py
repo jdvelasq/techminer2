@@ -19,7 +19,7 @@ Co-occurrence Network / Summarization
 
 """
 
-from .co_occurrence_network_communities import co_occurrence_network_communities
+# from .co_occurrence_network_communities import co_occurrence_network_communities
 from .keywords_summarization import keywords_summarization
 
 

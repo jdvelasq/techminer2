@@ -1,24 +1,26 @@
 """
-Coupling Matrix
+Coupling Matrix List
 ===============================================================================
 
->>> from techminer2 import *
+>>> from .coupling_matrix_list import coupling_matrix_list
 >>> directory = "data/regtech/"
 
->>> coupling_matrix(
+>>> coupling_matrix_list(
+...     unit_of_analysis='article',
+...     coupling_measured_by='local_references',
 ...     top_n=15,
-...     column='local_references',
+...     metric='local_references',
 ...     directory=directory,
 ... ).head()
+                                                 row  ... OCC
+0  Anagnostopoulos I, 2018, J ECON BUS, V100, P7 ...  ...  31
+1  Anagnostopoulos I, 2018, J ECON BUS, V100, P7 ...  ...   1
+2  Anagnostopoulos I, 2018, J ECON BUS, V100, P7 ...  ...   2
+3  Anagnostopoulos I, 2018, J ECON BUS, V100, P7 ...  ...   1
+4  Anagnostopoulos I, 2018, J ECON BUS, V100, P7 ...  ...   1
+<BLANKLINE>
+[5 rows x 3 columns]
 
-
-
->>> coupling_matrix(
-...     column='author_keywords',
-...     min_occ=3, 
-...     top_n=50,
-...     directory=directory,
-... ).head()
 
 
 """

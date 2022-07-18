@@ -33,7 +33,6 @@ def tf_idf_matrix(
     min_occ=None,
     max_occ=None,
     scheme=None,
-    sep="; ",
     norm="l2",
     use_idf=True,
     smooth_idf=True,
@@ -52,7 +51,6 @@ def tf_idf_matrix(
         min_occ=min_occ,
         max_occ=max_occ,
         scheme=scheme,
-        sep=sep,
     )
 
     values = (
