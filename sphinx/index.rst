@@ -51,7 +51,7 @@ package developed and tested in Python version 3.6.
 .. toctree::
     :caption: Software comparison
     
-    bbx/__menu
+    bbx/__index__
 
 
 .. toctree::

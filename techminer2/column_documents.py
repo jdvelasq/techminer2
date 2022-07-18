@@ -19,10 +19,11 @@ def column_documents(
         [
             column,
             "title",
+            "year",
             "source_title",
             "global_citations",
             "local_citations",
-            "document_id",
+            "doi",
         ]
     ]
     records = records.reset_index(drop=True)
