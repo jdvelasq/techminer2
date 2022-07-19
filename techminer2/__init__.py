@@ -14,25 +14,6 @@ from .column_chart import column_chart
 from .column_indicators import column_indicators
 from .line_chart import line_chart
 from .pie_chart import pie_chart
-from .t_lab.co_occ_analysis.concordances.abstract_concordances import (
-    abstract_concordances,
-)
-from .t_lab.co_occ_analysis.concordances.abstract_screening import abstract_screening
-from .t_lab.co_occ_analysis.concordances.keyword_concordances import (
-    keyword_concordances,
-)
-from .t_lab.co_occ_analysis.concordances.keywords_summarization import (
-    keywords_summarization,
-)
-from .t_lab.co_occ_analysis.word_association.associations_for_a_item import (
-    associations_for_a_item,
-)
-from .t_lab.co_occ_analysis.word_association.associations_for_all_items import (
-    associations_for_all_items,
-)
-from .t_lab.co_occ_analysis.word_association.co_occ_word_association import (
-    co_occ_word_association,
-)
-from .t_lab.co_occ_analysis.word_association.radial_diagram import radial_diagram
+from .t_lab import *
 from .vantagepoint.analyze.list_view import list_view
 from .wordcloud import wordcloud
