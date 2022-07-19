@@ -11,7 +11,9 @@ most relevant topics or for a group of user-defined topics. The presented compar
 based on the type of plots.
 
 
+    * `Bar Chart <../bar_chart>`_
+
     .. toctree::
         :maxdepth: 1
 
-        bar
+        

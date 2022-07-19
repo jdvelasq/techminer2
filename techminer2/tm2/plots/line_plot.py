@@ -1,24 +1,4 @@
-"""
-Line Plot
-===============================================================================
-
->>> from techminer2 import *
->>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/line_plot.html"
-
->>> indicators = list_view(
-...    column='author_keywords',
-...    min_occ=3,
-...    directory=directory,
-... )
-
->>> line_plot(indicators).write_html(file_name)
-
-.. raw:: html
-
-    <iframe src="_static/line_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
-
-"""
+"""Makes a line plot from a dataframe."""
 
 from ..px.line_px import line_px
 from .format_dataset_to_plot_with_plotly import format_dataset_to_plot_with_plotly

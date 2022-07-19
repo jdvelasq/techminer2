@@ -1,24 +1,5 @@
-"""
-Bar Plot
-===============================================================================
+"""Make a  bar cbart from a dataframe."""
 
->>> from techminer2 import *
->>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/bar_chart.html"
-
->>> indicators = list_view(
-...    column='author_keywords',
-...    min_occ=3,
-...    directory=directory,
-... )
-
->>> bar_plot(indicators).write_html(file_name)
-
-.. raw:: html
-
-    <iframe src="_static/bar_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
-
-"""
 from ..px.bar_px import bar_px
 from .format_dataset_to_plot_with_plotly import format_dataset_to_plot_with_plotly
 

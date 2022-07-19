@@ -4,7 +4,7 @@ Most Relevant Sources
 
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/most_frequent_sources.html"
+>>> file_name = "sphinx/_static/most_relevant_sources.html"
 
 >>> from techminer2 import most_relevant_sources
 >>> most_relevant_sources(

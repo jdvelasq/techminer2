@@ -12,3 +12,4 @@ internally in TheVantagePoint software, in order to facilitate comparison.
    .. toctree::
 
         analyze/__index__
+        report/__index__
