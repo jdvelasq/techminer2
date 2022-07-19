@@ -2,7 +2,7 @@ Conceptual Structure (ok!)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    .. toctree::
-      _menu_bbx_concept_struct_net
-      _menu_bbx_concept_struct_fact
+      network_approach/__index__
+      factorial_approach/__index__
 
 

@@ -2,9 +2,10 @@
 Co-Words Network
 ===============================================================================
 
->>> from .co_words_network import co_words_network
+
 >>> directory = "data/regtech/"
 
+>>> from techminer2.bbx.conceptual_structure.network_approach import co_words_network
 >>> nnet = co_words_network(
 ...     "author_keywords",
 ...     top_n=20,
@@ -21,7 +22,7 @@ Co-Words Network
 
 .. raw:: html
 
-    <iframe src="_static/co_words_network_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/co_words_network_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> nnet.communities_.head()
                             CL_00  ...                    CL_02
@@ -38,7 +39,7 @@ Co-Words Network
 
 .. raw:: html
 
-    <iframe src="_static/co_words_network_degree_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/co_words_network_degree_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
 >>> nnet.indicators_.head()
@@ -52,6 +53,6 @@ compliance 12:020                   0     0.007317   0.612903  0.038065
 
 """
 
-from .network import network
+from ....network import network
 
 co_words_network = network

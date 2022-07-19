@@ -19,7 +19,7 @@ with the data.
     <iframe src="_static/most_local_cited_documents.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ....most_cited_documents import most_cited_documents
+from .most_cited_documents import most_cited_documents
 
 
 def most_local_cited_documents(

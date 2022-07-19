@@ -22,7 +22,6 @@ from .ego_network import ego_network
 from .explode import explode
 from .extract_user_keywords import extract_user_keywords
 from .factor_matrix import factor_matrix
-from .factorial_analysis import factorial_analysis_with_mds
 from .find_abbreviations import find_abbreviations
 from .find_string import find_string
 from .fuzzy_search import fuzzy_search
@@ -35,14 +34,11 @@ from .occurrence_matrix_associations import occurrence_matrix_associations
 from .occurrence_matrix_bubble_chart import occurrence_matrix_bubble_chart
 from .occurrence_matrix_sankey_diagram import occurrence_matrix_sankey_diagram
 from .production_over_time_chart import production_over_time_chart
-from .rpys import rpys
+from .bbx.documents.references.rpys import rpys
 from .sankey_diagram import sankey_diagram
 from .stemming import stemming_and, stemming_or
 from .summary_view import summary_view
 from .terms_by_year import terms_by_year
-from .thematic_evolution_plot import thematic_evolution_plot
-from .thematic_map import thematic_map
-from .thematic_map_summarization import thematic_map_summarization
 from .top_topics import top_topics
 from .top_trending_topics import top_trending_topics
 from .topic_view import topic_view

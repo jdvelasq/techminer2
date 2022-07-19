@@ -20,7 +20,7 @@ with the data.
     <iframe src="_static/most_global_cited_references.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ....most_cited_documents import most_cited_documents
+from ..documents.most_cited_documents import most_cited_documents
 
 
 def most_global_cited_references(

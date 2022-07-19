@@ -21,7 +21,7 @@ Thematic Map
 
 .. raw:: html
 
-    <iframe src="_static/thematic_map_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/thematic_map_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> nnet.communities_.head()
                             CL_00  ...                    CL_02
@@ -52,14 +52,14 @@ compliance 12:020                   0     0.007317   0.612903  0.038065
 
 """
 
-from .association_index import association_index
-from .vp.analyze.matrix.co_occ_matrix import co_occ_matrix
-from .co_occ_network import co_occ_network
-from .network_communities import network_communities
-from .network_community_detection import network_community_detection
-from .network_degree_plot import network_degree_plot
-from .tm2.indicators.network_indicators import network_indicators
-from .tm2.plots.network_plot import network_plot
+from ....association_index import association_index
+from ....co_occ_network import co_occ_network
+from ....network_communities import network_communities
+from ....network_community_detection import network_community_detection
+from ....network_degree_plot import network_degree_plot
+from ....tm2.indicators.network_indicators import network_indicators
+from ....tm2.plots.network_plot import network_plot
+from ....vp.analyze.matrix.co_occ_matrix import co_occ_matrix
 
 
 class _Result:

@@ -1,6 +1,6 @@
 import plotly.express as px
 
-from .tm2.indicators.document_indicators import document_indicators
+from ....tm2.indicators.document_indicators import document_indicators
 
 
 def most_cited_documents(

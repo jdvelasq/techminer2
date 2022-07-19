@@ -17,7 +17,7 @@ Thematic Map / Summarization
 """
 
 
-from .co_occurrence_network_summarization import co_occurrence_network_summarization
+from ....co_occurrence_network_summarization import co_occurrence_network_summarization
 
 
 def thematic_map_summarization(

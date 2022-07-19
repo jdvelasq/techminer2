@@ -56,7 +56,7 @@ from sklearn.cluster import AgglomerativeClustering
 from sklearn.manifold import MDS
 from sklearn.metrics import silhouette_score
 
-from .vp.analyze.matrix.co_occ_matrix import co_occ_matrix
+from ....vp.analyze.matrix.co_occ_matrix import co_occ_matrix
 
 # from .conceptual_structure_map import conceptual_structure_map
 
