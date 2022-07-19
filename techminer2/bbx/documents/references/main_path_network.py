@@ -6,7 +6,7 @@ Main Path Network
 >>> directory = "data/regtech/"
 
 """
-from ._read_records import read_filtered_records
+from ...._read_records import read_filtered_records
 
 
 class _MainPathNetwork:

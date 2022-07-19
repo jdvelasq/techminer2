@@ -15,7 +15,7 @@ internally in TheVantagePoint software, in order to facilitate comparison.
         :maxdepth: 1
 
         home/_index
-        refine/_index
+        refine/__index__
         analyze/__index__
         report/__index__
 

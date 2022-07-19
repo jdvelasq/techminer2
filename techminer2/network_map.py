@@ -20,7 +20,7 @@ Network Map
     :align: center
 
 """
-from .bubble_map import bubble_map
+from .tlab.co_occ_analysis.word_association.bubble_map import bubble_map
 
 
 def network_map(

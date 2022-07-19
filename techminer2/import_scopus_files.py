@@ -73,12 +73,12 @@ from nltk.tokenize import sent_tokenize
 from textblob import TextBlob
 from tqdm import tqdm
 
-from .apply_countries_thesaurus import apply_countries_thesaurus
-from .apply_institutions_thesaurus import apply_institutions_thesaurus
-from .apply_keywords_thesaurus import apply_keywords_thesaurus
-from .create_countries_thesaurus import create_countries_thesaurus
-from .create_institutions_thesaurus import create_institutions_thesaurus
-from .create_keywords_thesaurus import create_keywords_thesaurus
+from .vp.refine.apply_countries_thesaurus import apply_countries_thesaurus
+from .vp.refine.apply_institutions_thesaurus import apply_institutions_thesaurus
+from .vp.refine.apply_keywords_thesaurus import apply_keywords_thesaurus
+from .vp.refine.create_countries_thesaurus import create_countries_thesaurus
+from .vp.refine.create_institutions_thesaurus import create_institutions_thesaurus
+from .vp.refine.create_keywords_thesaurus import create_keywords_thesaurus
 
 
 def import_scopus_files(

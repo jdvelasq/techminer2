@@ -21,7 +21,7 @@ import sys
 
 import pandas as pd
 
-from .thesaurus import read_textfile
+from ...thesaurus import read_textfile
 
 
 def apply_keywords_thesaurus(directory="./"):

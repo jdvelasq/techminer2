@@ -19,7 +19,9 @@ Items Assocations Plot
 
 
 """
-from .associations_for_a_item import associations_for_a_item
+from .tlab.co_occ_analysis.word_association.associations_for_a_item import (
+    associations_for_a_item,
+)
 from .tm2.px.bar_px import bar_px
 from .tm2.px.cleveland_px import cleveland_px
 from .tm2.px.column_px import column_px

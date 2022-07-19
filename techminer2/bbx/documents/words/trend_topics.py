@@ -34,7 +34,7 @@ financial regulation                 8     2016  ...                91   4
 import numpy as np
 import plotly.graph_objects as go
 
-from ....annual_occurrence_matrix import annual_occurrence_matrix
+from ....tm2.indicators.annual_occurrence_matrix import annual_occurrence_matrix
 from ....tm2.indicators.column_indicators import column_indicators
 
 
