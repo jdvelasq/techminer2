@@ -1,5 +1,6 @@
 from .authors import *
 from .clustering import *
+from .conceptual_structure import *
 from .documents import *
 from .intellectual_structure import *
 from .overview import *

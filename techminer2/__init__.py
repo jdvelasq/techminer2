@@ -9,6 +9,7 @@ from .column_indicators import column_indicators
 from .line_chart import line_chart
 from .pie_chart import pie_chart
 from .t_lab import *
+from .user_filters import user_filters
 from .vantagepoint import *
 from .wordcloud import wordcloud
 from .world_map import world_map
