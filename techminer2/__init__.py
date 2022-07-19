@@ -15,5 +15,5 @@ from .column_indicators import column_indicators
 from .line_chart import line_chart
 from .pie_chart import pie_chart
 from .t_lab import *
-from .vantagepoint.analyze.list_view import list_view
+from .vantagepoint import *
 from .wordcloud import wordcloud
