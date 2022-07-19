@@ -101,7 +101,7 @@ import os.path
 import pandas as pd
 import yaml
 
-from .read_records import read_records
+from ._read_records import read_records
 
 
 def _load_filter(directory):

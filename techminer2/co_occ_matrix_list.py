@@ -114,9 +114,9 @@ Co-occurrence Matrix List
 """
 import pandas as pd
 
+from ._load_stopwords import load_stopwords
 from .items2counters import items2counters
-from .load_stopwords import load_stopwords
-from .read_records import read_records
+from ._read_records import read_records
 
 
 def co_occ_matrix_list(

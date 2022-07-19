@@ -37,11 +37,11 @@ innovation                        9                  4
 
 """
 
+from .growth_indicators import growth_indicators
 from .stacked_bar_chart import stacked_bar_chart
-from .tm2 import growth_indicators
 
 
-def top_topics(
+def bar_trends(
     column,
     top_n=20,
     time_window=2,
@@ -49,6 +49,7 @@ def top_topics(
     directory="./",
     plot=True,
 ):
+    """ScientoPy Bar Trend."""
 
     indicators = growth_indicators(column, time_window=time_window, directory=directory)
     indicators = indicators[indicators.columns[:2]]

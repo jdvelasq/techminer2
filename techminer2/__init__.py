@@ -1,23 +1,26 @@
-"""Init module for techminer2."""
-
-## Data
-from .coverage import coverage
-from .import_scopus_files import import_scopus_files
-from .record_view import record_view
-from .summary_view import summary_view
-
-# from .bar_chart import bar_chart
-# from .bibliometrix import *
-# from .cleveland_chart import cleveland_chart
-# from .co_occ_matrix import co_occ_matrix
-# from .co_occ_matrix_list import co_occ_matrix_list
-# from .column_chart import column_chart
-# from .column_indicators import column_indicators
-
-# from .line_chart import line_chart
-# from .pie_chart import pie_chart
-# from .t_lab import *
-# from .user_filters import user_filters
-# from .vantagepoint import *
-# from .wordcloud import wordcloud
-# from .world_map import world_map
+from .annual_scientific_production import annual_scientific_production
+from .average_citations_per_year import average_citations_per_year
+from .co_citation_matrix_list import co_citation_matrix_list
+from .co_citation_network import co_citation_network
+from .co_words_network import co_words_network
+from .coupling_matrix_list import coupling_matrix_list
+from .coupling_network import coupling_network
+from .factorial_analysis import factorial_analysis_with_mds
+from .institution_impact import institution_impact
+from .institutions_production_over_time import institutions_production_over_time
+from .main_information import main_information
+from .most_frequent_institutions import most_frequent_institutions
+from .most_frequent_words import most_frequent_words
+from .most_global_cited_documents import most_global_cited_documents
+from .most_global_cited_institutions import most_global_cited_institutions
+from .most_global_cited_references import most_global_cited_references
+from .most_local_cited_documents import most_local_cited_documents
+from .most_local_cited_institutions import most_local_cited_institutions
+from .most_local_cited_references import most_local_cited_references
+from .rpys import rpys
+from .thematic_evolution_plot import thematic_evolution_plot
+from .thematic_map import thematic_map
+from .thematic_map_summarization import thematic_map_summarization
+from .three_fields_plot import three_fields_plot
+from .trend_topics import trend_topics
+from .word_dynamics import word_dynamics

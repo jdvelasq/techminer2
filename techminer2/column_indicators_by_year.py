@@ -49,7 +49,7 @@ Becker M          2019    1  ...                     0.000
 """
 import pandas as pd
 
-from .read_records import read_records
+from ._read_records import read_records
 
 
 def column_indicators_by_year(

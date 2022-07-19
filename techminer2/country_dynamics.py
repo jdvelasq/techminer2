@@ -1,36 +1,39 @@
 """
-Source Dynamics
+Country Dynamics
 ===============================================================================
 
 
->>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/source_dynamics.html"
 
->>> from techminer2 import source_dynamics
->>> source_dynamics(
-...     top_n=10, 
+
+>>> directory = "data/regtech/"
+>>> file_name = "sphinx/_static/country_dynamics.html"
+
+
+>>> from techminer2 import country_dynamics
+>>> country_dynamics(
+...     top_n=5, 
 ...     directory=directory,
 ... ).write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="_static/source_dynamics.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/country_dynamics.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
 """
-from ...dynamics import dynamics
+from .dynamics import dynamics
 
 
-def source_dynamics(
-    top_n=10,
+def country_dynamics(
+    top_n=5,
     directory="./",
-    title="Source Dynamics",
+    title="Country Dynamics",
     plot=True,
 ):
     """Makes a dynamics chat for top sources."""
 
     return dynamics(
-        column="source_abbr",
+        column="countries",
         top_n=top_n,
         directory=directory,
         plot=plot,

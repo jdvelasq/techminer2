@@ -48,7 +48,7 @@ import pandas as pd
 import plotly.express as px
 
 from ...explode import explode
-from ...read_records import read_records
+from ..._read_records import read_records
 
 
 class _Result:
