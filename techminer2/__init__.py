@@ -11,3 +11,4 @@ from .pie_chart import pie_chart
 from .t_lab import *
 from .vantagepoint import *
 from .wordcloud import wordcloud
+from .world_map import world_map
