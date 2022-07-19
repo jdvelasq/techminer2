@@ -22,3 +22,7 @@ subset of the analytical capabilities of TechMiner.
         authors/__index__
         documents/__index__
         clustering/__index__
+
+
+
+        social_structure/__index__

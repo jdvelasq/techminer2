@@ -1,4 +1,4 @@
-.. automodule:: techminer2.bbx.social_structure.collaboration_network
+.. automodule:: techminer2.bibliometrix.social_structure.collaboration_network
     :members:
     :undoc-members:
     :show-inheritance:

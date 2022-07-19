@@ -3,22 +3,22 @@ Collaboration WorldMap
 ===============================================================================
 
 >>> directory = "data/regtech/"
-
->>> from techminer2.bbx.social_structure import collaboration_worldmap
 >>> file_name = "sphinx/_static/collaboration_worldmap.html"
+
+>>> from techminer2 import collaboration_worldmap
 >>> collaboration_worldmap(
 ...     directory=directory,
 ... ).write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../_static/collaboration_worldmap.html" height="410px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/collaboration_worldmap.html" height="410px" width="100%" frameBorder="0"></iframe>
 
 """
 import plotly.express as px
 import plotly.graph_objects as go
 
-from ...vp.analyze.matrix.co_occ_matrix_list import co_occ_matrix_list
+from ...co_occ_matrix_list import co_occ_matrix_list
 
 
 def collaboration_worldmap(
