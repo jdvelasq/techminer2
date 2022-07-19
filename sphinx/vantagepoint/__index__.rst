@@ -12,5 +12,7 @@ internally in TheVantagePoint software, in order to facilitate comparison.
    .. toctree::
 
       summary_view
+      record_view
+      coverage
       analyze/__index__
       report/__index__
