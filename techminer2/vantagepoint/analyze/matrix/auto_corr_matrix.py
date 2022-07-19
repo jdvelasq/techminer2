@@ -28,7 +28,7 @@ Hamdan A 2:011          -0.030101  ...        1.000000
 
 
 """
-from .co_occ_matrix import co_occ_matrix
+from ....co_occ_matrix import co_occ_matrix
 
 
 def auto_corr_matrix(

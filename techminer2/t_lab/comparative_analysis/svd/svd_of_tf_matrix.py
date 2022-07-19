@@ -49,8 +49,8 @@ regulatory technologies (regtech) 12:047  0.600339  ... -0.220161
 import pandas as pd
 from sklearn.decomposition import TruncatedSVD
 
-from ....map_chart import map_chart
-from ....vp.analyze.tfidf.tf_matrix import tf_matrix
+from ....tf_matrix import tf_matrix
+from .map_chart import map_chart
 
 
 class _Result:

@@ -9,3 +9,5 @@ T-Lab
 .. toctree::
 
    co_occ_analysis/__index__
+   thematic_analysis/__index__
+   comparative_analysis/__index__
