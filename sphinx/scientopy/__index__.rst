@@ -11,7 +11,7 @@ most relevant topics or for a group of user-defined topics. The presented compar
 based on the type of plots.
 
 
-    * `Bar Chart <../bar_chart>`_
+    * `Bar Chart <../vantagepoint/report/bar_chart.html>`_
 
     .. toctree::
         :maxdepth: 1
