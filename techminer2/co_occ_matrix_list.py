@@ -2,11 +2,12 @@
 Co-occurrence Matrix List
 ===============================================================================
 
->>> from techminer2 import *
+
 >>> directory = "data/regtech/"
 
 **Item selection by occurrence.**
 
+>>> from techminer2 import co_occ_matrix_list
 >>> co_occ_matrix_list(
 ...    column='author_keywords',
 ...    row='authors',
@@ -113,9 +114,9 @@ Co-occurrence Matrix List
 """
 import pandas as pd
 
-from .read_records import read_records
 from .items2counters import items2counters
 from .load_stopwords import load_stopwords
+from .read_records import read_records
 
 
 def co_occ_matrix_list(

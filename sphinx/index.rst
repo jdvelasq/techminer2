@@ -33,6 +33,7 @@ package developed and tested in Python version 3.6.
     
     bibliometrix/__index__
     vantagepoint/__index__
+    t_lab/__index__
     scientopy/__index__
 
 

@@ -14,5 +14,12 @@ from .column_chart import column_chart
 from .column_indicators import column_indicators
 from .line_chart import line_chart
 from .pie_chart import pie_chart
+from .t_lab.co_occ_analysis.word_association.associations_for_a_item import (
+    associations_for_a_item,
+)
+from .t_lab.co_occ_analysis.word_association.associations_for_all_items import (
+    associations_for_all_items,
+)
+from .t_lab.co_occ_analysis.word_association.radial_diagram import radial_diagram
 from .vantagepoint.analyze.list_view import list_view
 from .wordcloud import wordcloud

@@ -2,9 +2,10 @@
 Co-occurrence Matrix
 ===============================================================================
 
->>> from techminer2 import *
+
 >>> directory = "data/regtech/"
 
+>>> from techminer2 import co_occ_matrix
 >>> co_occ_matrix(
 ...    column='author_keywords',
 ...    row='authors',
