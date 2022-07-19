@@ -19,7 +19,7 @@ Source Impact
 
 
 """
-from ...impact import impact
+from .impact import impact
 
 
 def source_impact(

@@ -18,7 +18,7 @@ Most Local Cited Sources (from reference lists)
     <iframe src="../../_static/most_local_cited_sources.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ...chart import chart
+from .chart import chart
 
 
 def most_local_cited_sources(

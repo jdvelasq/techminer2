@@ -67,6 +67,6 @@ Brennan R 3:008        1     0.000000   0.105263  0.067520
 
 """
 
-from ...network import network
+from .network import network
 
 collaboration_network = network

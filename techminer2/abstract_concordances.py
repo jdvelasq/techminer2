@@ -26,7 +26,7 @@ Abstract concordances exploration tool.
 
 
 """
-from .load_abstracts import load_abstracts
+from ._load_abstracts import load_abstracts
 
 
 def abstract_concordances(

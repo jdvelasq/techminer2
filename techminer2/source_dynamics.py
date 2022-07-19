@@ -18,7 +18,7 @@ Source Dynamics
 
 
 """
-from ...dynamics import dynamics
+from .dynamics import dynamics
 
 
 def source_dynamics(

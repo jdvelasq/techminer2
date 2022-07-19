@@ -1,13 +1,13 @@
 """
-Most Relevant Sources
+Most Global Cited Sources
 ===============================================================================
 
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/most_relevant_sources.html"
+>>> file_name = "sphinx/_static/most_global_cited_sources.html"
 
->>> from techminer2 import most_relevant_sources
->>> most_relevant_sources(
+>>> from techminer2 import most_global_cited_sources
+>>> most_global_cited_sources(
 ...     directory,
 ...     top_n=20,
 ...     min_occ=None,
@@ -17,13 +17,13 @@ Most Relevant Sources
 
 .. raw:: html
 
-    <iframe src="../../_static/most_relevant_sources.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/most_global_cited_sources.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ...chart import chart
+from .chart import chart
 
 
-def most_relevant_sources(
+def most_global_cited_sources(
     directory="./",
     top_n=20,
     min_occ=None,
@@ -31,15 +31,16 @@ def most_relevant_sources(
     plot="cleveland",
     database="documents",
 ):
-    """Most Relevant Sources."""
+    """Most global cited sources."""
 
     return chart(
         column="source_abbr",
         directory=directory,
+        metric="global_citations",
         top_n=top_n,
         min_occ=min_occ,
         max_occ=max_occ,
-        title="Most Relevant Sources",
+        title="Most Global Cited Sources",
         plot=plot,
         database=database,
     )

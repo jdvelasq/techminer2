@@ -18,8 +18,8 @@ import sys
 import textwrap
 from os.path import isfile, join
 
-from ....load_thesaurus_as_dict import load_thesaurus_as_dict
-from ...._read_records import read_records
+from ._read_records import read_records
+from .load_thesaurus_as_dict import load_thesaurus_as_dict
 
 
 def keywords_summarization(
