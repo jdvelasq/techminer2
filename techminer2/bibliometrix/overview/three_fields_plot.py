@@ -6,7 +6,7 @@ Three Fields Plot
 >>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/three_fields_plot.html"
 
->>> from techminer2.bibliometrix.overview import three_fields_plot
+>>> from techminer2 import three_fields_plot
 >>> three_fields_plot(
 ...     directory=directory,
 ...     left_column='authors',

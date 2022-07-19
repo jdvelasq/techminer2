@@ -6,7 +6,7 @@ Annual Scientific Production
 >>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/annual_scientific_production.html"
 
->>> from techminer2.bibliometrix.overview import annual_scientific_production
+>>> from techminer2 import annual_scientific_production
 >>> annual_scientific_production(directory).write_html(file_name)
 
 .. raw:: html

@@ -28,8 +28,12 @@ package developed and tested in Python version 3.6.
 
 .. toctree::
     :caption: Software comparison
+    :maxdepth: 1
+    :hidden:
     
     bibliometrix/__index__
+    vantagepoint/__index__
+    scientopy/__index__
 
 
 

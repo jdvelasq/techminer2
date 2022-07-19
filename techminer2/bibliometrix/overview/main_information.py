@@ -5,7 +5,7 @@ Main information
 
 >>> directory = "data/regtech/"
 
->>> from techminer2.bibliometrix.overview import main_information
+>>> from techminer2 import main_information
 >>> main_information(directory)
                                                             Value
 Category       Item                                              
