@@ -17,12 +17,12 @@ subset of the analytical capabilities of TechMiner.
    .. toctree::
       
 
-        overview/__index__
-        sources/__index__
-        authors/__index__
-        documents/__index__
-        clustering/__index__
+      overview/__index__
+      sources/__index__
+      authors/__index__
+      documents/__index__
+      clustering/__index__
 
 
-
-        social_structure/__index__
+      intellectual_structure/__index__      
+      social_structure/__index__
