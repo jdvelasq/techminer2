@@ -24,6 +24,23 @@ of the library and develop advanced analysis. The package can be used to:
 package developed and tested in Python version 3.6. 
 
 
+.. toctree::
+    :caption: Introduction
+    :hidden:
+    :maxdepth: 1
+
+    introduction/getting_started
+    introduction/release_info
+    introduction/license
+
+
+.. toctree::
+    :caption: Data
+    :hidden:
+    :maxdepth: 1
+
+    import_scopus_files
+
 
 
 .. toctree::
@@ -38,36 +55,12 @@ package developed and tested in Python version 3.6.
 
 
 
-... toctree::
-    :caption: Introduction
-    :hidden:
-    :maxdepth: 1
-
-    getting_started
-    release_info
-    license
-
-
-... toctree::
-    :caption: Data
-    :hidden:
-    :maxdepth: 1
-
-    import_scopus_files
-    coverage
-    summary_view
-    document_viewer
-    user_filters
 
 
 
 
 
 
-...    vp/__index__
-...    tlab/__index__
-...    tm2/__index__
-...    _scientopy
 
 
 
