@@ -20,6 +20,9 @@ from .t_lab.co_occ_analysis.word_association.associations_for_a_item import (
 from .t_lab.co_occ_analysis.word_association.associations_for_all_items import (
     associations_for_all_items,
 )
+from .t_lab.co_occ_analysis.word_association.co_occ_word_association import (
+    co_occ_word_association,
+)
 from .t_lab.co_occ_analysis.word_association.radial_diagram import radial_diagram
 from .vantagepoint.analyze.list_view import list_view
 from .wordcloud import wordcloud
