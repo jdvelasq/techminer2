@@ -1,3 +1,4 @@
 from .authors import *
+from .documents import *
 from .overview import *
 from .sources import *

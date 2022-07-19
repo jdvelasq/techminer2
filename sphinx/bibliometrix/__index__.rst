@@ -20,3 +20,4 @@ subset of the analytical capabilities of TechMiner.
         overview/__index__
         sources/__index__
         authors/__index__
+        documents/__index__
