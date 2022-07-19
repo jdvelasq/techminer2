@@ -67,7 +67,7 @@ import textwrap
 
 import pandas as pd
 
-from ..read_records import read_records
+from .read_records import read_records
 
 
 def record_view(

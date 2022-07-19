@@ -1,14 +1,18 @@
 """
-Top Topics
+Bar Trends
 ===============================================================================
 
-Extract and plot the top topics of the selected column.
+ScientoPy Bar Trends
+
 
 
 >>> from techminer2 import *
 >>> directory = "data/regtech/"
+
+
+
 >>> file_name = "sphinx/images/top_topics.png"
->>> top_topics(
+>>> bar_trends(
 ...     column="author_keywords", 
 ...     directory=directory,
 ... ).savefig(file_name)
@@ -33,8 +37,8 @@ innovation                        9                  4
 
 """
 
-from .tm2.indicators.growth_indicators import growth_indicators
 from .stacked_bar_chart import stacked_bar_chart
+from .tm2 import growth_indicators
 
 
 def top_topics(

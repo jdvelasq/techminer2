@@ -1,4 +1,4 @@
-.. automodule:: techminer2.vantagepoint.summary_view
+.. automodule:: techminer2.coverage
     :members:
     :undoc-members:
     :show-inheritance:

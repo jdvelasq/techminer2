@@ -40,10 +40,13 @@ package developed and tested in Python version 3.6.
     :maxdepth: 1
 
     import_scopus_files
+    coverage
+    record_view
+    summary_view
 
 
 
-.. toctree::
+... toctree::
     :caption: Software comparison
     :maxdepth: 1
     :hidden:
