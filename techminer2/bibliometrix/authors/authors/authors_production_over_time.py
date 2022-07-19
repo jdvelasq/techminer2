@@ -46,7 +46,7 @@ Alam TM      2021    1  ...                     0.000
 
 
 """
-from ...column_indicators_by_year import column_indicators_by_year
+from ....column_indicators_by_year import column_indicators_by_year
 from ...documents_per import documents_per
 from ...production_over_time import production_over_time
 

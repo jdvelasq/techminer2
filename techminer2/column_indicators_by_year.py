@@ -5,7 +5,7 @@ Column indicators by year
 
 >>> directory = "data/regtech/"
 
->>> from techminer2.bibliometrix.column_indicators_by_year import column_indicators_by_year
+>>> from techminer2.column_indicators_by_year import column_indicators_by_year
 >>> column_indicators_by_year(
 ...     'authors',
 ...     directory=directory,
@@ -49,7 +49,7 @@ Becker M          2019    1  ...                     0.000
 """
 import pandas as pd
 
-from ..read_records import read_records
+from .read_records import read_records
 
 
 def column_indicators_by_year(
