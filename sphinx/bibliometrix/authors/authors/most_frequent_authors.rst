@@ -1,4 +1,4 @@
-.. automodule:: techminer2.bibliometrix.authors.authors.most_frequent_authors
+.. automodule:: techminer2.most_frequent_authors
     :members:
     :undoc-members:
     :show-inheritance:

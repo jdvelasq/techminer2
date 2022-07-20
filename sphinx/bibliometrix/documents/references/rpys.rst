@@ -1,4 +1,4 @@
-.. automodule:: techminer2.bibliometrix.documents.references.rpys
+.. automodule:: techminer2.rpys
     :members:
     :undoc-members:
     :show-inheritance:

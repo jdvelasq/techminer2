@@ -6,51 +6,109 @@ ScientoPy Bar Trends
 
 
 
->>> from techminer2 import *
+
 >>> directory = "data/regtech/"
+>>> file_name = "sphinx/_static/bar_trends.html"
 
-
-
->>> file_name = "sphinx/images/top_topics.png"
->>> bar_trends(
-...     column="author_keywords", 
+>>> from techminer2 import bar_trends
+>>> trends = bar_trends(
+...     column="author_keywords",
 ...     directory=directory,
-... ).savefig(file_name)
+... )
+>>> trends.plot_.write_html(file_name)
 
-.. image:: images/top_topics.png
-    :width: 700px
-    :align: center
+.. raw:: html
+
+    <iframe src="../_static/bar_trends.html" height="800px" width="100%" frameBorder="0"></iframe>
 
 
->>> top_topics(
-...     column='author_keywords',
-...     directory=directory, 
-...     plot=False,
-... ).head()
-                        before 2020  between 2020-2021
-fintech                          42                 97
-financial technologies           11                 17
-blockchain                        9                  8
-financial inclusion               4                 13
-innovation                        9                  4
-
+>>> trends.table_.head()
+                         Before 2021  Between 2021-2022
+author_keywords                                        
+regtech                           50                 20
+fintech                           32                 10
+blockchain                        13                  5
+artificial intelligence            8                  5
+compliance                        10                  2
 
 """
+## ScientoPy // Bar Trends
+import plotly.express as px
 
 from .growth_indicators import growth_indicators
-from .stacked_bar_chart import stacked_bar_chart
+
+
+class _Results:
+    def __init__(self):
+        self.table_ = None
+        self.plot_ = None
 
 
 def bar_trends(
     column,
     top_n=20,
     time_window=2,
-    figsize=(6, 6),
     directory="./",
-    plot=True,
 ):
     """ScientoPy Bar Trend."""
 
+    results = _Results()
+    results.table_ = _make_table(column, time_window, directory)
+    results.plot_ = _make_plot(column, results.table_, top_n)
+    return results
+
+
+def _make_plot(column, indicators, top_n):
+
+    col0 = indicators.columns[0]
+    col1 = indicators.columns[1]
+    indicators = indicators.copy()
+    indicators = indicators.iloc[:, :2]
+    indicators = indicators.head(top_n)
+    indicators = indicators.reset_index()
+
+    indicators = indicators.melt(id_vars=column, value_vars=[col0, col1])
+    indicators = indicators.rename(
+        columns={
+            column: column.replace("_", " ").title(),
+            "variable": "Period",
+            "value": "Num Documents",
+        }
+    )
+
+    fig = px.bar(
+        indicators,
+        x="Num Documents",
+        y=column.replace("_", " ").title(),
+        color="Period",
+        title="Trend",
+        hover_data=["Num Documents"],
+        orientation="h",
+        color_discrete_map={
+            col0: "#8da4b4",
+            col1: "#556f81",
+        },
+    )
+    fig.update_layout(
+        paper_bgcolor="white",
+        plot_bgcolor="white",
+    )
+    fig.update_yaxes(
+        linecolor="gray",
+        linewidth=2,
+        autorange="reversed",
+    )
+    fig.update_xaxes(
+        linecolor="gray",
+        linewidth=2,
+        gridcolor="gray",
+        griddash="dot",
+    )
+
+    return fig
+
+
+def _make_table(column, time_window, directory):
     indicators = growth_indicators(column, time_window=time_window, directory=directory)
     indicators = indicators[indicators.columns[:2]]
     indicators = indicators.assign(
@@ -59,16 +117,4 @@ def bar_trends(
     )
     indicators = indicators.sort_values(by="num_documents", ascending=False)
     indicators.pop("num_documents")
-
-    if plot is False:
-        return indicators
-
-    indicators = indicators.head(top_n)
-
-    return stacked_bar_chart(
-        indicators,
-        title="Total Num Documents",
-        xlabel="Num Documents",
-        ylabel=column,
-        figsize=figsize,
-    )
+    return indicators

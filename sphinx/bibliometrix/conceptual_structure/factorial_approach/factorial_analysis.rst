@@ -1,4 +1,4 @@
-.. automodule:: techminer2.bibliometrix.conceptual_structure.factorial_approach.factorial_analysis
+.. automodule:: techminer2.factorial_analysis
     :members:
     :undoc-members:
     :show-inheritance:

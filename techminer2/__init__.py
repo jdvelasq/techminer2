@@ -1,3 +1,4 @@
+"""TechMiner 2"""
 from .abstract_concordances import abstract_concordances
 from .abstract_screening import abstract_screening
 from .abstract_summarization import abstract_summarization
@@ -5,6 +6,7 @@ from .annual_scientific_production import annual_scientific_production
 from .associations_for_a_item import associations_for_a_item
 from .associations_for_all_items import associations_for_all_items
 from .average_citations_per_year import average_citations_per_year
+from .bar_trends import bar_trends
 from .bradford_law import bradford_law
 from .co_citation_matrix_list import co_citation_matrix_list
 from .co_citation_network import co_citation_network
@@ -14,8 +16,10 @@ from .collaboration_network import collaboration_network
 from .collaboration_worldmap import collaboration_worldmap
 from .coupling_matrix_list import coupling_matrix_list
 from .coupling_network import coupling_network
+from .coverage import coverage
 from .emergent_themes import emergent_themes_with_lda, emergent_themes_with_nmf
 from .factorial_analysis import factorial_analysis_with_mds
+from .import_scopus_files import import_scopus_files
 from .institution_impact import institution_impact
 from .institutions_production_over_time import institutions_production_over_time
 from .keyword_concordances import keyword_concordances
@@ -34,10 +38,12 @@ from .most_local_cited_references import most_local_cited_references
 from .most_local_cited_sources import most_local_cited_sources
 from .most_relevant_sources import most_relevant_sources
 from .radial_diagram import radial_diagram
+from .record_view import record_view
 from .rpys import rpys
 from .source_dynamics import source_dynamics
 from .source_impact import source_impact
 from .sources_production_over_time import sources_production_over_time
+from .summary_view import summary_view
 from .svd_of_co_occ_matrix import svd_of_co_occ_matrix
 from .svd_of_tf_matrix import svd_of_tf_matrix
 from .terms_by_year import terms_by_year

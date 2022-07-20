@@ -1,4 +1,4 @@
-.. automodule:: techminer2.bibliometrix.authors.countries.most_local_cited_countries
+.. automodule:: techminer2.most_local_cited_countries
     :members:
     :undoc-members:
     :show-inheritance:

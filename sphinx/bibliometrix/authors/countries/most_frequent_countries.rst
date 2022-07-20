@@ -1,4 +1,4 @@
-.. automodule:: techminer2.bibliometrix.authors.countries.most_frequent_countries
+.. automodule:: techminer2.most_frequent_countries
     :members:
     :undoc-members:
     :show-inheritance:

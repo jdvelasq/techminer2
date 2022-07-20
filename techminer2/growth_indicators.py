@@ -2,7 +2,6 @@
 Growth Indicators
 ===============================================================================
 
-
 >>> directory = "data/regtech/"
 
 >>> from techminer2 import growth_indicators
@@ -25,15 +24,15 @@ from ._load_stopwords import load_stopwords
 from ._read_records import read_records
 
 
-def _occ_per_period(documents, column, time_window=2, sep="; "):
+def _occ_per_period(records, column, time_window=2, sep="; "):
     #
     # Computes the total number of documents published in each period
     #
     if time_window < 2:
         raise ValueError("Time window must be greater than 1")
-    year_limit = documents.year.max() - time_window + 1
-    result = documents.copy()
-    result.index = result.record_no
+    year_limit = records.year.max() - time_window + 1
+    result = records.copy()
+    result.index = result.article
     result = result[[column, "year"]].copy()
     result[column] = result[column].str.split(sep)
     result = result.explode(column)
@@ -50,7 +49,7 @@ def _occ_per_period(documents, column, time_window=2, sep="; "):
     return result
 
 
-def _average_growth_rate(documents, column, time_window, sep="; "):
+def _average_growth_rate(records, column, time_window, sep="; "):
     #
     #         sum_{i=Y_start}^Y_end  Num_Documents[i] - Num_Documents[i-1]
     #  AGR = --------------------------------------------------------------
@@ -61,12 +60,12 @@ def _average_growth_rate(documents, column, time_window, sep="; "):
         raise ValueError("Time window must be greater than 1")
 
     # first and last years in the time window
-    first_year = documents.year.max() - time_window
-    last_year = documents.year.max()
+    first_year = records.year.max() - time_window
+    last_year = records.year.max()
 
     # generates a table of term and year.
-    result = documents.copy()
-    result.index = result.record_no
+    result = records.copy()
+    result.index = result.article
     result = result[[column, "year"]].copy()
     result[column] = result[column].str.split(sep)
     result = result.explode(column)
@@ -85,14 +84,14 @@ def _average_growth_rate(documents, column, time_window, sep="; "):
     return result
 
 
-def _average_documents_per_year(documents, column, time_window, sep="; "):
+def _average_documents_per_year(records, column, time_window, sep="; "):
     #
     #         sum_{i=Y_start}^Y_end  Num_Documents[i]
     #  ADY = -----------------------------------------
     #                  Y_end - Y_start + 1
     #
     result = _occ_per_period(
-        documents=documents, column=column, time_window=time_window, sep=sep
+        records=records, column=column, time_window=time_window, sep=sep
     )
     result = result.assign(average_documents_per_year=result.between / time_window)
     result = result[["average_documents_per_year"]]
@@ -104,26 +103,26 @@ def growth_indicators(
 ):
     """Computes growth indicators."""
 
-    documents = read_records(
+    records = read_records(
         directory=directory, database=database, use_filter=(database == "documents")
     )
 
     ndpp = _occ_per_period(
-        documents=documents, column=column, time_window=time_window, sep=sep
+        records=records, column=column, time_window=time_window, sep=sep
     )
     adpy = _average_documents_per_year(
-        documents=documents, column=column, time_window=time_window, sep=sep
+        records=records, column=column, time_window=time_window, sep=sep
     )
     agr = _average_growth_rate(
-        documents=documents, column=column, time_window=time_window, sep=sep
+        records=records, column=column, time_window=time_window, sep=sep
     )
     result = pd.concat([ndpp, adpy, agr], axis="columns")
 
-    year_limit = documents.year.max() - time_window + 1
+    year_limit = records.year.max() - time_window + 1
     result = result.rename(
         columns={
-            "before": f"before {year_limit}",
-            "between": f"between {year_limit}-{documents.year.max()}",
+            "before": f"Before {year_limit}",
+            "between": f"Between {year_limit}-{records.year.max()}",
         }
     )
 

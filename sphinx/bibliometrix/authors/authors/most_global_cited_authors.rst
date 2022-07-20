@@ -1,4 +1,4 @@
-.. automodule:: techminer2.bibliometrix.authors.authors.most_global_cited_authors
+.. automodule:: techminer2.most_global_cited_authors
     :members:
     :undoc-members:
     :show-inheritance:

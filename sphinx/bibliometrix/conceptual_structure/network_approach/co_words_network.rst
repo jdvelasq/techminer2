@@ -1,4 +1,4 @@
-.. automodule:: techminer2.bibliometrix.conceptual_structure.network_approach.co_words_network
+.. automodule:: techminer2.co_words_network
     :members:
     :undoc-members:
     :show-inheritance:

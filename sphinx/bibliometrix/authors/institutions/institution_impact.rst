@@ -1,4 +1,4 @@
-.. automodule:: techminer2.bibliometrix.authors.institutions.institution_impact
+.. automodule:: techminer2.institution_impact
     :members:
     :undoc-members:
     :show-inheritance:

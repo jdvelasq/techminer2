@@ -1,4 +1,4 @@
-.. automodule:: techminer2.bibliometrix.documents.words.word_dynamics
+.. automodule:: techminer2.word_dynamics
     :members:
     :undoc-members:
     :show-inheritance:

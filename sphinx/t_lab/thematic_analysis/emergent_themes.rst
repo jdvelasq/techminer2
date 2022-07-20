@@ -1,4 +1,4 @@
-.. automodule:: techminer2.tlab.thematic_analysis.emergent_themes
+.. automodule:: techminer2.emergent_themes
     :members:
     :undoc-members:
     :show-inheritance:
