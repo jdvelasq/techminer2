@@ -37,7 +37,6 @@ from .most_local_cited_references import most_local_cited_references
 from .most_local_cited_sources import most_local_cited_sources
 from .most_relevant_sources import most_relevant_sources
 from .radial_diagram import radial_diagram
-from .record_view import record_view
 from .rpys import rpys
 from .scientopy__bar import scientopy__bar
 from .scientopy__bar_trends import scientopy__bar_trends
@@ -56,4 +55,5 @@ from .thematic_map import thematic_map
 from .thematic_map_summarization import thematic_map_summarization
 from .three_fields_plot import three_fields_plot
 from .trend_topics import trend_topics
+from .vantagepoint__record_view import vantagepoint__record_view
 from .word_dynamics import word_dynamics

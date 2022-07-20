@@ -9,8 +9,11 @@ VantagePoint
 In this section, the library's functionalities are presented in the structure used 
 internally in TheVantagePoint software, in order to facilitate comparison.
 
-   .. toctree::
 
+   .. toctree::
+      vantagepoint__record_view
+
+   .. toctree::
       refine/__index__
       analyze/__index__
       report/__index__

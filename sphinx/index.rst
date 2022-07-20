@@ -41,7 +41,6 @@ package developed and tested in Python version 3.6.
 
     data/import_scopus_files
     data/coverage
-    data/record_view
     data/summary_view
 
 

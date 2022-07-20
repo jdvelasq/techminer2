@@ -2,12 +2,12 @@
 Record View
 ===============================================================================
 
-
+VantagePoint / Record View
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import record_view
->>> record_view(
+>>> from techminer2 import vantagepoint__record_view
+>>> vantagepoint__record_view(
 ...     'author_keywords', 
 ...     'regtech',
 ...     top_n=1,
@@ -63,6 +63,7 @@ Record View
                        regulation
 
 """
+## VantagePoint / Record View
 import textwrap
 
 import pandas as pd
@@ -70,7 +71,7 @@ import pandas as pd
 from ._read_records import read_records
 
 
-def record_view(
+def vantagepoint__record_view(
     col,
     text,
     case=False,
