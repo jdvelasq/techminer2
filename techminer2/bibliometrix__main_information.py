@@ -5,8 +5,8 @@ Main information
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import main_information
->>> main_information(directory)
+>>> from techminer2 import bibliometrix__main_information
+>>> bibliometrix__main_information(directory)
                                                             Value
 Category       Item                                              
 GENERAL        Timespan                                 2016:2022
@@ -484,7 +484,7 @@ class _MainInformation:
         return len(records)
 
 
-def main_information(directory="./"):
+def bibliometrix__main_information(directory="./"):
     """Returns main statistics of the dataset."""
 
     main_information = _MainInformation(directory)

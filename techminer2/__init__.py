@@ -6,6 +6,7 @@ from .annual_scientific_production import annual_scientific_production
 from .associations_for_a_item import associations_for_a_item
 from .associations_for_all_items import associations_for_all_items
 from .average_citations_per_year import average_citations_per_year
+from .bibliometrix__main_information import bibliometrix__main_information
 from .bradford_law import bradford_law
 from .co_citation_matrix_list import co_citation_matrix_list
 from .co_citation_network import co_citation_network
@@ -24,7 +25,6 @@ from .institutions_production_over_time import institutions_production_over_time
 from .keyword_concordances import keyword_concordances
 from .keywords_summarization import keywords_summarization
 from .list_view import list_view
-from .main_information import main_information
 from .most_frequent_institutions import most_frequent_institutions
 from .most_frequent_words import most_frequent_words
 from .most_global_cited_documents import most_global_cited_documents
