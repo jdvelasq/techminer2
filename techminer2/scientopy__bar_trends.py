@@ -8,10 +8,10 @@ ScientoPy Bar Trends
 
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/bar_trends.html"
+>>> file_name = "sphinx/_static/scientpy__bar_trends.html"
 
->>> from techminer2 import bar_trends
->>> trends = bar_trends(
+>>> from techminer2 import scientpy__bar_trends
+>>> trends = scientpy__bar_trends(
 ...     column="author_keywords",
 ...     directory=directory,
 ... )
@@ -19,7 +19,7 @@ ScientoPy Bar Trends
 
 .. raw:: html
 
-    <iframe src="../_static/bar_trends.html" height="800px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../_static/scientpy__bar_trends.html" height="800px" width="100%" frameBorder="0"></iframe>
 
 
 >>> trends.table_.head()
@@ -44,7 +44,7 @@ class _Results:
         self.plot_ = None
 
 
-def bar_trends(
+def scientopy__bar_trends(
     column,
     top_n=20,
     time_window=2,

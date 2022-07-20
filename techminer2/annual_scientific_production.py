@@ -15,7 +15,7 @@ Annual Scientific Production
 
 """
 from .annual_indicators import annual_indicators
-from .time_plot import time_plot
+from ._time_plot import time_plot
 
 
 def annual_scientific_production(directory="./"):

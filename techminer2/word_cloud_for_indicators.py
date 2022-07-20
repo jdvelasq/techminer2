@@ -1,4 +1,4 @@
-"""Primitive to make a wordcloud."""
+"""Primitive to make a wordcloud from an indicators table."""
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -10,7 +10,7 @@ def _recolor(word, **kwargs):
     return "black"
 
 
-def word_cloud(
+def word_cloud_for_indicators(
     dataframe,
     metric,
     title,

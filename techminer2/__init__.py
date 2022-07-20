@@ -6,7 +6,6 @@ from .annual_scientific_production import annual_scientific_production
 from .associations_for_a_item import associations_for_a_item
 from .associations_for_all_items import associations_for_all_items
 from .average_citations_per_year import average_citations_per_year
-from .bar_trends import bar_trends
 from .bradford_law import bradford_law
 from .co_citation_matrix_list import co_citation_matrix_list
 from .co_citation_network import co_citation_network
@@ -40,6 +39,10 @@ from .most_relevant_sources import most_relevant_sources
 from .radial_diagram import radial_diagram
 from .record_view import record_view
 from .rpys import rpys
+from .scientopy__bar import scientopy__bar
+from .scientopy__bar_trends import scientopy__bar_trends
+from .scientopy__time_line import scientopy__time_line
+from .scientopy__word_cloud import scientopy__word_cloud
 from .source_dynamics import source_dynamics
 from .source_impact import source_impact
 from .sources_production_over_time import sources_production_over_time

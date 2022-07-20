@@ -16,6 +16,11 @@ based on the type of plots.
     .. toctree::
         :maxdepth: 1
 
-        bar_trends
+        scientopy__bar
+        scientopy__bar_trends
+        scientopy__time_line
+        scientopy__word_cloud
 
-        
+    * TODO: Evolution Plot
+
+    * TODO: Add `year` and `custom topics` filters. 

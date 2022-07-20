@@ -21,7 +21,7 @@ WordCloud
 
 """
 from .column_indicators import column_indicators
-from .word_cloud import word_cloud
+from .word_cloud_for_indicators import word_cloud_for_indicators
 
 
 def wordcloud(
@@ -55,7 +55,7 @@ def wordcloud(
     if top_n is not None:
         indicators = indicators.head(top_n)
 
-    return word_cloud(
+    return word_cloud_for_indicators(
         dataframe=indicators,
         metric=metric,
         title=title,

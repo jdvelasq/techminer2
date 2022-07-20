@@ -1,4 +1,4 @@
-.. automodule:: techminer2.bar_trends
+.. automodule:: techminer2.scientopy__word_cloud
     :members:
     :undoc-members:
     :show-inheritance:

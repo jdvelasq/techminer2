@@ -15,7 +15,7 @@ Average Citations per Year
 
 """
 from .annual_indicators import annual_indicators
-from .time_plot import time_plot
+from ._time_plot import time_plot
 
 
 def average_citations_per_year(
