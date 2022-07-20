@@ -19,7 +19,7 @@ Documents by Country
 
 """
 
-from .column_documents import column_documents
+# from .column_documents import column_documents
 
 
 def documents_by_country(

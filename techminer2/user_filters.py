@@ -98,7 +98,7 @@ Allow users to select docuemnts to be mined.
 import os
 import os.path
 
-import pandas as pd
+
 import yaml
 
 from ._read_records import read_records

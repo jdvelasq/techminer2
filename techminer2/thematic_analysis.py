@@ -59,7 +59,7 @@ Name: CLUSTER, dtype: int64
 """
 import pandas as pd
 
-from ...vp.analyze.tfidf.tf_matrix import tf_matrix
+from .tf_matrix import tf_matrix
 
 
 class _ThematicAnalysis:

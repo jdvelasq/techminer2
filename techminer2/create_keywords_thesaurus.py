@@ -12,7 +12,7 @@ import sys
 
 import pandas as pd
 
-from ...thesaurus import Thesaurus, read_textfile, text_clustering
+from .thesaurus import Thesaurus, read_textfile, text_clustering
 
 
 def create_keywords_thesaurus(directory="./"):

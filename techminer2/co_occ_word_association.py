@@ -19,12 +19,12 @@ Word Association
     <iframe src="../../../_static/co_occ_word_association.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ....co_occ_matrix_list import co_occ_matrix_list
-from ....tm2.plots.bar_plot import bar_plot
-from ....tm2.plots.cleveland_plot import cleveland_plot
-from ....tm2.plots.column_plot import column_plot
-from ....tm2.plots.line_plot import line_plot
-from ....tm2.plots.pie_plot import pie_plot
+from .bar_plot import bar_plot
+from .cleveland_plot import cleveland_plot
+from .co_occ_matrix_list import co_occ_matrix_list
+from .column_plot import column_plot
+from .line_plot import line_plot
+from .pie_plot import pie_plot
 
 
 def co_occ_word_association(

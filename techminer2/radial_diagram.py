@@ -21,8 +21,8 @@ Radial Diagram
 """
 import networkx as nx
 
-from ....co_occ_matrix_list import co_occ_matrix_list
-from ....network_plot import network_plot
+from .co_occ_matrix_list import co_occ_matrix_list
+from .network_plot import network_plot
 
 
 def radial_diagram(

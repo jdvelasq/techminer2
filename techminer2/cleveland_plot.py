@@ -1,6 +1,6 @@
 """Makes a cleveland plot from a dataframe."""
 
-from ..px.cleveland_px import cleveland_px
+from .cleveland_px import cleveland_px
 from .format_dataset_to_plot_with_plotly import format_dataset_to_plot_with_plotly
 
 

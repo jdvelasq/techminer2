@@ -18,7 +18,7 @@ Documents by institution
 [5 rows x 6 columns]
 
 """
-from .column_documents import column_documents
+# from .column_documents import column_documents
 
 
 def documents_by_institution(

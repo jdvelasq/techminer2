@@ -35,7 +35,7 @@ Name: average_growth_rate, dtype: float64
 """
 
 # from .bar_chart import bar_plot
-from .tm2.indicators.growth_indicators import growth_indicators
+from .growth_indicators import growth_indicators
 
 
 def top_trending_topics(

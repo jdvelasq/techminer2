@@ -51,7 +51,6 @@ compliance 12:020               -8.445413  10.321464        2
 
 """
 import matplotlib.pyplot as plt
-import numpy as np
 import pandas as pd
 from sklearn.cluster import AgglomerativeClustering
 from sklearn.manifold import MDS

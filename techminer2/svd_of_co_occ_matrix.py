@@ -49,7 +49,7 @@ compliance 12:020               10.424578  11.346089  ... -0.330724 -0.264842
 import pandas as pd
 from sklearn.decomposition import TruncatedSVD
 
-from ....co_occ_matrix import co_occ_matrix
+from .co_occ_matrix import co_occ_matrix
 from .map_chart import map_chart
 
 

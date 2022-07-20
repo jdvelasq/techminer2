@@ -20,7 +20,7 @@ Gantt Chart
 """
 import plotly.express as px
 
-from ..._read_records import read_records
+from ._read_records import read_records
 
 
 def gantt_chart(

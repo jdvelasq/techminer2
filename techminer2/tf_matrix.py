@@ -25,9 +25,9 @@ Barberis JN, 2016, NEW ECON WINDOWS, P69                         1  ...         
 import numpy as np
 import pandas as pd
 
-from ...._read_records import read_records
-from ....items2counters import items2counters
-from ....load_stopwords import load_stopwords
+from ._load_stopwords import load_stopwords
+from ._read_records import read_records
+from .items2counters import items2counters
 
 # pylint: disable=too-many-arguments
 

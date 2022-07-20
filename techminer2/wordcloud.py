@@ -21,7 +21,7 @@ WordCloud
 
 """
 from .column_indicators import column_indicators
-from .tm2.plots.word_cloud import word_cloud
+from .word_cloud import word_cloud
 
 
 def wordcloud(

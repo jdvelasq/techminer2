@@ -27,8 +27,8 @@ import sys
 
 import pandas as pd
 
-from ...map_ import map_
-from ...thesaurus import read_textfile
+from .map_ import map_
+from .thesaurus import read_textfile
 
 
 def clean_institutions(directory="./"):

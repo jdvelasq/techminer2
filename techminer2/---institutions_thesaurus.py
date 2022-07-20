@@ -25,7 +25,7 @@ import sys
 
 import pandas as pd
 
-from .extract_country import extract_country_from_string
+# from .extract_country import extract_country_from_string
 from .thesaurus import Thesaurus, load_file_as_dict
 
 #

@@ -13,7 +13,8 @@ import numpy as np
 import pandas as pd
 
 from ._read_records import read_all_records
-from .save_documents import save_documents
+
+# from .save_documents import save_documents
 
 
 def extract_user_keywords(

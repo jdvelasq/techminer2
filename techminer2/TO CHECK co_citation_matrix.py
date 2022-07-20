@@ -16,7 +16,7 @@ from os.path import join
 import numpy as np
 import pandas as pd
 
-from ...load_references import load_references
+from ._load_references import load_references
 
 # from .records2documents import records2documents
 

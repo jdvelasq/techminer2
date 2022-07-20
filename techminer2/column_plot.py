@@ -1,6 +1,6 @@
 """Make a  bar plot from a dataframe."""
 
-from ..px.column_px import column_px
+from .column_px import column_px
 from .format_dataset_to_plot_with_plotly import format_dataset_to_plot_with_plotly
 
 

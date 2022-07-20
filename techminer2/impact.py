@@ -2,12 +2,12 @@
 
 import textwrap
 
-from .tm2.px.bar_px import bar_px
-from .tm2.px.cleveland_px import cleveland_px
-from .tm2.px.column_px import column_px
-from .tm2.px.line_px import line_px
-from .tm2.px.pie_px import pie_px
+from .bar_px import bar_px
+from .cleveland_px import cleveland_px
+from .column_px import column_px
 from .impact_indicators import impact_indicators
+from .line_px import line_px
+from .pie_px import pie_px
 
 TEXTLEN = 40
 

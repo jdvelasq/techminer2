@@ -26,7 +26,7 @@ Associations for All Items
 
 
 """
-from ....co_occ_matrix_list import co_occ_matrix_list
+from .co_occ_matrix_list import co_occ_matrix_list
 
 
 def associations_for_all_items(
