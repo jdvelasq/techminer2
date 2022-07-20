@@ -45,7 +45,6 @@ from .scientopy__word_cloud import scientopy__word_cloud
 from .source_dynamics import source_dynamics
 from .source_impact import source_impact
 from .sources_production_over_time import sources_production_over_time
-from .summary_view import summary_view
 from .svd_of_co_occ_matrix import svd_of_co_occ_matrix
 from .svd_of_tf_matrix import svd_of_tf_matrix
 from .terms_by_year import terms_by_year
@@ -56,4 +55,5 @@ from .thematic_map_summarization import thematic_map_summarization
 from .three_fields_plot import three_fields_plot
 from .trend_topics import trend_topics
 from .vantagepoint__record_view import vantagepoint__record_view
+from .vantagepoint__summary_view import vantagepoint__summary_view
 from .word_dynamics import word_dynamics

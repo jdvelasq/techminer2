@@ -12,6 +12,7 @@ internally in TheVantagePoint software, in order to facilitate comparison.
 
    .. toctree::
       vantagepoint__record_view
+      vantagepoint__summary_view
 
    .. toctree::
       refine/__index__

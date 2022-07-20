@@ -2,10 +2,11 @@
 Summary View
 ===============================================================================
 
->>> from techminer2 import *
+
 >>> directory = "data/regtech/"
 
->>> summary_view(directory).head()
+>>> from techminer2 import vantagepoint__summary_view
+>>> vantagepoint__summary_view(directory).head()
            column  number of terms coverage (%)
 0        abstract               89       94.68%
 1  abstract_words               87       92.55%
@@ -19,7 +20,7 @@ import pandas as pd
 from ._read_records import read_records
 
 
-def summary_view(
+def vantagepoint__summary_view(
     directory="./",
     database="documents",
 ):
