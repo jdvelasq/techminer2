@@ -121,6 +121,7 @@ from .vantagepoint__co_occ_matrix_list import vantagepoint__co_occ_matrix_list
 from .vantagepoint__column_chart import vantagepoint__column_chart
 from .vantagepoint__cross_corr_matrix import vantagepoint__cross_corr_matrix
 from .vantagepoint__cross_corr_matrix_list import vantagepoint__cross_corr_matrix_list
+from .vantagepoint__gantt_chart import vantagepoint__gantt_chart
 from .vantagepoint__heat_map import vantagepoint__heat_map
 from .vantagepoint__line_chart import vantagepoint__line_chart
 from .vantagepoint__list_view import vantagepoint__list_view
