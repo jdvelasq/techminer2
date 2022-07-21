@@ -17,10 +17,10 @@ The plot is based on the SVD technique used in T-LAB's comparative analysis.
 
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/svd_of_co_occ_matrix.html"
+>>> file_name = "sphinx/_static/t_lab__svd_of_co_occ_matrix.html"
 
->>> from techminer2.tlab.comparative_analysis.svd import svd_of_co_occ_matrix
->>> svd = svd_of_co_occ_matrix(
+>>> from techminer2 import t_lab__svd_of_co_occ_matrix
+>>> svd = t_lab__svd_of_co_occ_matrix(
 ...     column='author_keywords',
 ...     min_occ=5,    
 ...     directory=directory,
@@ -30,7 +30,7 @@ The plot is based on the SVD technique used in T-LAB's comparative analysis.
 
 .. raw:: html
 
-    <iframe src="../../../_static/svd_of_co_occ_matrix.html" height="800px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/t_lab__svd_of_co_occ_matrix.html" height="800px" width="100%" frameBorder="0"></iframe>
 
 
 >>> svd.table_.head()
@@ -49,8 +49,8 @@ compliance 12:020               10.424578  11.346089  ... -0.330724 -0.264842
 import pandas as pd
 from sklearn.decomposition import TruncatedSVD
 
-from .vantagepoint__co_occ_matrix import vantagepoint__co_occ_matrix
 from .map_chart import map_chart
+from .vantagepoint__co_occ_matrix import vantagepoint__co_occ_matrix
 
 
 class _Result:
@@ -59,7 +59,7 @@ class _Result:
         self.plot_ = None
 
 
-def svd_of_co_occ_matrix(
+def t_lab__svd_of_co_occ_matrix(
     column,
     top_n=50,
     min_occ=None,

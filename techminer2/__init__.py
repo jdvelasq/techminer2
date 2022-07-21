@@ -106,8 +106,8 @@ from .scientopy__bar import scientopy__bar
 from .scientopy__bar_trends import scientopy__bar_trends
 from .scientopy__time_line import scientopy__time_line
 from .scientopy__word_cloud import scientopy__word_cloud
-from .svd_of_co_occ_matrix import svd_of_co_occ_matrix
-from .svd_of_tf_matrix import svd_of_tf_matrix
+from .t_lab__svd_of_co_occ_matrix import t_lab__svd_of_co_occ_matrix
+from .t_lab__svd_of_tf_matrix import t_lab__svd_of_tf_matrix
 from .thematic_analysis import thematic_analysis
 from .thematic_evolution_plot import thematic_evolution_plot
 from .thematic_map_summarization import thematic_map_summarization
