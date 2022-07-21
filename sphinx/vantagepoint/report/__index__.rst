@@ -2,7 +2,6 @@ Report
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     .. toctree::
-
         vantagepoint__bar_chart
         vantagepoint__cleveland_chart
         vantagepoint__column_chart
