@@ -4,10 +4,10 @@ Source Impact
 
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/source_impact.html"
+>>> file_name = "sphinx/_static/bibliometrix__source_impact.html"
 
->>> from techminer2 import source_impact
->>> source_impact(
+>>> from techminer2 import bibliometrix__source_impact
+>>> bibliometrix__source_impact(
 ...     impact_measure='h_index',
 ...     top_n=20, 
 ...     directory=directory,
@@ -15,20 +15,21 @@ Source Impact
 
 .. raw:: html
 
-    <iframe src="../../_static/source_impact.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/bibliometrix__source_impact.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
 """
-from .impact import impact
+from .bibliometrix__impact import bibliometrix__impact
 
 
-def source_impact(
+def bibliometrix__source_impact(
     impact_measure="h_index",
     top_n=20,
     directory="./",
 ):
     """Plots the selected impact measure by source."""
-    return impact(
+
+    return bibliometrix__impact(
         column="source_abbr",
         impact_measure=impact_measure,
         top_n=top_n,

@@ -1,4 +1,4 @@
-.. automodule:: techminer2.country_impact
+.. automodule:: techminer2.bibliometrix__author_impact
     :members:
     :undoc-members:
     :show-inheritance:

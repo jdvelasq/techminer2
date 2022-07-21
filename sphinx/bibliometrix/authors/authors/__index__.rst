@@ -7,5 +7,5 @@ Authors
       bibliometrix__most_local_cited_authors
       authors_production_over_time
       lotka_law
-      author_impact
+      bibliometrix__author_impact
       

@@ -6,7 +6,7 @@ Institutions
       most_global_cited_institutions
       most_local_cited_institutions
       institutions_production_over_time
-      institution_impact
+      bibliometrix__institution_impact
 
    
       

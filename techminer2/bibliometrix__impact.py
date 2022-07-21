@@ -12,7 +12,7 @@ from .pie_px import pie_px
 TEXTLEN = 40
 
 
-def impact(
+def bibliometrix__impact(
     column,
     impact_measure="h_index",
     top_n=20,
