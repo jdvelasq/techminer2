@@ -4,29 +4,29 @@ Most Global Cited Documents
 
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/most_global_cited_documents.html"
+>>> file_name = "sphinx/_static/bibliometrix__most_global_cited_documents.html"
 
->>> from techminer2 import most_global_cited_documents
->>> most_global_cited_documents(
+>>> from techminer2 import bibliometrix__most_global_cited_documents
+>>> bibliometrix__most_global_cited_documents(
 ...     top_n=20,
 ...     directory=directory,
 ... ).write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../_static/most_global_cited_documents.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/bibliometrix__most_global_cited_documents.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .most_xxx_cited_documents import most_xxx_cited_documents
+from .bibliometrix__cited_documents import bibiometrix_cited_documents
 
 
-def most_global_cited_documents(
+def bibliometrix__most_global_cited_documents(
     top_n=20,
     directory="./",
 ):
     """Plots the most global cited documents in the main collection."""
 
-    return most_xxx_cited_documents(
+    return bibiometrix_cited_documents(
         metric="global_citations",
         top_n=top_n,
         directory=directory,

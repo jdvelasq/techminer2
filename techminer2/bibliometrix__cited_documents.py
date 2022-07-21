@@ -3,7 +3,7 @@ import plotly.express as px
 from .document_indicators import document_indicators
 
 
-def most_xxx_cited_documents(
+def bibiometrix_cited_documents(
     metric,
     top_n=20,
     directory="./",

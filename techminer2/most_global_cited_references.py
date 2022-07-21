@@ -18,7 +18,7 @@ Most Global Cited References
     <iframe src="../../../_static/most_global_cited_references.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .most_xxx_cited_documents import most_xxx_cited_documents
+from .bibliometrix__cited_documents import bibiometrix_cited_documents
 
 
 def most_global_cited_references(
@@ -27,7 +27,7 @@ def most_global_cited_references(
 ):
     """Plots the most global cited references."""
 
-    return most_xxx_cited_documents(
+    return bibiometrix_cited_documents(
         metric="global_citations",
         top_n=top_n,
         directory=directory,

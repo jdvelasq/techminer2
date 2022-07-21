@@ -43,6 +43,9 @@ from .bibliometrix__most_global_cited_authors import (
 from .bibliometrix__most_global_cited_countries import (
     bibliometrix__most_global_cited_countries,
 )
+from .bibliometrix__most_global_cited_documents import (
+    bibliometrix__most_global_cited_documents,
+)
 from .bibliometrix__most_global_cited_institutions import (
     bibliometrix__most_global_cited_institutions,
 )
@@ -55,7 +58,9 @@ from .bibliometrix__most_local_cited_authors import (
 from .bibliometrix__most_local_cited_countries import (
     bibliometrix__most_local_cited_countries,
 )
-from .bibliometrix__most_local_cited_documents import most_local_cited_documents
+from .bibliometrix__most_local_cited_documents import (
+    bibliometrix__most_local_cited_documents,
+)
 from .bibliometrix__most_local_cited_institutions import (
     bibliometrix__most_local_cited_institutions,
 )
@@ -87,7 +92,6 @@ from .keyword_concordances import keyword_concordances
 from .keywords_summarization import keywords_summarization
 from .list_view import list_view
 from .most_frequent_words import most_frequent_words
-from .most_global_cited_documents import most_global_cited_documents
 from .most_global_cited_references import most_global_cited_references
 from .most_local_cited_references import most_local_cited_references
 from .radial_diagram import radial_diagram
