@@ -12,6 +12,12 @@ from .bibliometrix__average_citations_per_year import (
 )
 from .bibliometrix__main_information import bibliometrix__main_information
 from .bibliometrix__most_frequent_authors import bibliometrix__most_frequent_authors
+from .bibliometrix__most_global_cited_authors import (
+    bibliometrix__most_global_cited_authors,
+)
+from .bibliometrix__most_local_cited_authors import (
+    bibliometrix__most_local_cited_authors,
+)
 from .bibliometrix__most_relevant_sources import bibliometrix__most_relevant_sources
 from .bibliometrix__three_fields_plot import bibliometrix__three_fields_plot
 from .bradford_law import bradford_law
