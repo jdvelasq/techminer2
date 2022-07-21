@@ -4,27 +4,28 @@ Bubble Chart
 
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/bubble_chart.html"
+>>> file_name = "sphinx/_static/vantagepoint__bubble_chart.html"
 
 
->>> matrix = co_occ_matrix(
+>>> from techminer2 import vantagepoint__co_occ_matrix
+>>> matrix = vantagepoint__co_occ_matrix(
 ...    column='author_keywords',
 ...    min_occ=4,
 ...    directory=directory,
 ... )
 
->>> from techminer2.vp.report import bubble_chart
->>> bubble_chart(matrix).write_html(file_name)
+>>> from techminer2 import vantagepoint__bubble_chart
+>>> vantagepoint__bubble_chart(matrix).write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../_static/bubble_chart.html" height="800px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/vantagepoint__bubble_chart.html" height="800px" width="100%" frameBorder="0"></iframe>
 
 """
 import plotly.express as px
 
 
-def bubble_chart(
+def vantagepoint__bubble_chart(
     matrix,
     title=None,
 ):
