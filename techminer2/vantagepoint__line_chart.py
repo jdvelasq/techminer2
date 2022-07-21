@@ -4,10 +4,10 @@ Line chart
 
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/line_chart.html"
+>>> file_name = "sphinx/_static/vantagepoint__line_chart.html"
 
->>> from techminer2 import line_chart
->>> line_chart(
+>>> from techminer2 import vantagepoint__line_chart
+>>> vantagepoint__line_chart(
 ...     'author_keywords',
 ...     top_n=15,
 ...     directory=directory,
@@ -15,13 +15,13 @@ Line chart
 
 .. raw:: html
 
-    <iframe src="../../_static/line_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/vantagepoint__line_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 from .vantagepoint__chart import vantagepoint__chart
 
 
-def line_chart(
+def vantagepoint__line_chart(
     column,
     directory="./",
     top_n=20,

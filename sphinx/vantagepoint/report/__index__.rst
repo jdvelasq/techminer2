@@ -5,6 +5,6 @@ Report
 
         vantagepoint__bar_chart
         vantagepoint__cleveland_chart
-        column_chart
-        line_chart
-        pie_chart
+        vantagepoint__column_chart
+        vantagepoint__line_chart
+        vantagepoint__pie_chart

@@ -4,10 +4,10 @@ Pie Chart
 
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/pie_chart.html"
+>>> file_name = "sphinx/_static/vantagepoint__pie_chart.html"
 
->>> from techminer2 import pie_chart
->>> pie_chart(
+>>> from techminer2 import vantagepoint__pie_chart
+>>> vantagepoint__pie_chart(
 ...     'author_keywords',
 ...     top_n=15,
 ...     directory=directory,
@@ -15,13 +15,13 @@ Pie Chart
 
 .. raw:: html
 
-    <iframe src="../../_static/pie_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/vantagepoint__pie_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 from .vantagepoint__chart import vantagepoint__chart
 
 
-def pie_chart(
+def vantagepoint__pie_chart(
     column,
     directory="./",
     top_n=20,

@@ -4,10 +4,10 @@ Column chart
 
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/column_chart.html"
+>>> file_name = "sphinx/_static/vantagepoint__column_chart.html"
 
->>> from techminer2 import column_chart
->>> column_chart(
+>>> from techminer2 import vantagepoint__column_chart
+>>> vantagepoint__column_chart(
 ...     column='author_keywords',
 ...     top_n=15,
 ...     directory=directory,
@@ -15,13 +15,13 @@ Column chart
 
 .. raw:: html
 
-    <iframe src="../../_static/column_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/vantagepoint__column_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 from .vantagepoint__chart import vantagepoint__chart
 
 
-def column_chart(
+def vantagepoint__column_chart(
     column,
     directory="./",
     top_n=20,
