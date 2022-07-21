@@ -5,40 +5,42 @@ Heat Map
 
 >>> directory = "data/regtech/"
 
->>> from techminer2.vp.analyze.matrix import co_occ_matrix
->>> matrix = co_occ_matrix(
+>>> from techminer2.vantagepoint__co_occ_matrix import vantagepoint__co_occ_matrix
+>>> matrix = vantagepoint__co_occ_matrix(
 ...    column='author_keywords',
 ...    row='authors',
 ...    min_occ=3,
 ...    directory=directory,
 ... )
->>> file_name = "sphinx/_static/heat_map_1.html"
+>>> file_name = "sphinx/_static/vantagepoint__heat_map-1.html"
 
->>> from techminer2.vp.report.heat_map import heat_map
->>> heat_map(
+
+>>> from techminer2.vantagepoint__heat_map import vantagepoint__heat_map
+>>> vantagepoint__heat_map(
 ...     matrix,
 ... ).write_html(file_name)
 
+
 .. raw:: html
 
-    <iframe src="../../_static/heat_map_1.html" height="800px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/vantagepoint__heat_map-1.html" height="800px" width="100%" frameBorder="0"></iframe>
 
 
 
->>> matrix = co_occ_matrix(
+>>> matrix = vantagepoint__co_occ_matrix(
 ...    column='author_keywords',
 ...    min_occ=4,
 ...    directory=directory,
 ... )
->>> file_name = "sphinx/_static/heat_map_2.html"
+>>> file_name = "sphinx/_static/vantagepoint__heat_map-2.html"
 
->>> heat_map(
+>>> vantagepoint__heat_map(
 ...     matrix,
 ... ).write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../_static/heat_map_2.html" height="800px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/vantagepoint__heat_map-2.html" height="800px" width="100%" frameBorder="0"></iframe>
 
 
 """
@@ -46,7 +48,7 @@ import numpy as np
 import plotly.express as px
 
 
-def heat_map(matrix, colormap="Blues"):
+def vantagepoint__heat_map(matrix, colormap="Blues"):
 
     """Make a heat map."""
 

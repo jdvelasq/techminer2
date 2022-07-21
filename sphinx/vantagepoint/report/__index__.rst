@@ -12,3 +12,4 @@ Report
     .. toctree::
         vantagepoint__world_map
         vantagepoint__matrix_viewer
+        vantagepoint__heat_map
