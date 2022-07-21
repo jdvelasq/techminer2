@@ -137,4 +137,5 @@ from .vantagepoint__terms_by_year import vantagepoint__terms_by_year
 from .vantagepoint__tf_idf_matrix import vantagepoint__tf_idf_matrix
 from .vantagepoint__tf_matrix import vantagepoint__tf_matrix
 from .vantagepoint__treemap import vantagepoint__treemap
+from .vantagepoint__word_cloud import vantagepoint__word_cloud
 from .vantagepoint__world_map import vantagepoint__world_map

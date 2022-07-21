@@ -5,7 +5,7 @@ from .cleveland_plot import cleveland_plot
 from .column_plot import column_plot
 from .line_plot import line_plot
 from .pie_plot import pie_plot
-from .wordcloud import wordcloud
+from .vantagepoint__word_cloud import vantagepoint__word_cloud
 
 
 def plot_metric_by_item(
@@ -27,7 +27,7 @@ def plot_metric_by_item(
         "line": line_chart,
         "pie": pie_chart,
         "cleveland": cleveland_chart,
-        "wordcloud": wordcloud,
+        "wordcloud": vantagepoint__word_cloud,
     }[plot]
 
     return plot_function(

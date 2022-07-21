@@ -15,3 +15,4 @@ Report
         vantagepoint__heat_map
         vantagepoint__bubble_chart
         vantagepoint__gantt_chart
+        vantagepoint__word_cloud

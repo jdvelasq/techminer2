@@ -7,7 +7,7 @@ from .line_plot import line_plot
 from .vantagepoint__list_view import vantagepoint__list_view
 from .pie_plot import pie_plot
 from .treemap_plot import treemap_plot
-from .wordcloud import wordcloud
+from .vantagepoint__word_cloud import vantagepoint__word_cloud
 
 
 def vantagepoint__chart(
@@ -40,7 +40,7 @@ def vantagepoint__chart(
         "line": line_plot,
         "pie": pie_plot,
         "treemap": treemap_plot,
-        "wordcloud": wordcloud,
+        "wordcloud": vantagepoint__word_cloud,
     }[plot]
 
     return plot_function(

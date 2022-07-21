@@ -4,18 +4,18 @@ WordCloud
 
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/images/wordcloud.png"
+>>> file_name = "sphinx/images/vantagepoint__word_cloud.png"
 
 
->>> from techminer2 import wordcloud
->>> wordcloud(
+>>> from techminer2 import vantagepoint__word_cloud
+>>> vantagepoint__word_cloud(
 ...     column='author_keywords',
 ...     title="Author Keywords",
 ...     top_n=50,
 ...     directory=directory,
 ... ).savefig(file_name)
 
-.. image:: images/wordcloud.png
+.. image:: ../../images/vantagepoint__word_cloud.png
     :width: 900px
     :align: center
 
@@ -24,7 +24,7 @@ from .column_indicators import column_indicators
 from .word_cloud_for_indicators import word_cloud_for_indicators
 
 
-def wordcloud(
+def vantagepoint__word_cloud(
     column,
     top_n=None,
     min_occ=None,

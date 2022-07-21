@@ -20,6 +20,6 @@ Word Cloud
     :align: center
 
 """
-from .wordcloud import wordcloud
+from .vantagepoint__word_cloud import vantagepoint__word_cloud
 
-scientopy__word_cloud = wordcloud
+scientopy__word_cloud = vantagepoint__word_cloud
