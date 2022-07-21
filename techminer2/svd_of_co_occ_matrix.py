@@ -49,7 +49,7 @@ compliance 12:020               10.424578  11.346089  ... -0.330724 -0.264842
 import pandas as pd
 from sklearn.decomposition import TruncatedSVD
 
-from .co_occ_matrix import co_occ_matrix
+from .vantagepoint__co_occ_matrix import vantagepoint__co_occ_matrix
 from .map_chart import map_chart
 
 
@@ -73,7 +73,7 @@ def svd_of_co_occ_matrix(
 ):
     """Co-occurrence SVD Map."""
 
-    matrix = co_occ_matrix(
+    matrix = vantagepoint__co_occ_matrix(
         column=column,
         top_n=top_n,
         min_occ=min_occ,

@@ -74,7 +74,7 @@ import numpy as np
 import pandas as pd
 from matplotlib.patches import Rectangle
 
-from .co_occ_matrix import co_occ_matrix
+from .vantagepoint__co_occ_matrix import vantagepoint__co_occ_matrix
 
 # from ....user_filters import _UserFilters
 

@@ -56,7 +56,7 @@ from sklearn.cluster import AgglomerativeClustering
 from sklearn.manifold import MDS
 from sklearn.metrics import silhouette_score
 
-from .co_occ_matrix import co_occ_matrix
+from .vantagepoint__co_occ_matrix import vantagepoint__co_occ_matrix
 
 
 class _FactorialAnalysis:
@@ -187,7 +187,7 @@ def factorial_analysis_with_mds(
     random_state=0,
     directory="./",
 ):
-    coc_matrix = co_occ_matrix(
+    coc_matrix = vantagepoint__co_occ_matrix(
         column,
         top_n=top_n,
         min_occ=min_occ,

@@ -54,7 +54,7 @@ compliance 12:020                   0     0.007317   0.612903  0.038065
 """
 
 from .association_index import association_index
-from .co_occ_matrix import co_occ_matrix
+from .vantagepoint__co_occ_matrix import vantagepoint__co_occ_matrix
 from .co_occ_network import co_occ_network
 from .network_communities import network_communities
 from .network_community_detection import network_community_detection
@@ -85,7 +85,7 @@ def thematic_map(
 ):
     """Thematic map network analysis"""
 
-    matrix = co_occ_matrix(
+    matrix = vantagepoint__co_occ_matrix(
         column=column,
         top_n=top_n,
         min_occ=None,

@@ -28,7 +28,7 @@ Hamdan A 2:011          -0.030101  ...        1.000000
 
 
 """
-from .co_occ_matrix import co_occ_matrix
+from .vantagepoint__co_occ_matrix import vantagepoint__co_occ_matrix
 
 
 def auto_corr_matrix(
@@ -40,7 +40,7 @@ def auto_corr_matrix(
 ):
     """Returns an auto-correlation."""
 
-    coc_matrix = co_occ_matrix(
+    coc_matrix = vantagepoint__co_occ_matrix(
         column=column,
         row=None,
         top_n=None,

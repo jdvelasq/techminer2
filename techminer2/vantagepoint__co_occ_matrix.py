@@ -5,8 +5,8 @@ Co-occurrence Matrix
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import co_occ_matrix
->>> co_occ_matrix(
+>>> from techminer2 import vantagepoint__co_occ_matrix
+>>> vantagepoint__co_occ_matrix(
 ...    column='author_keywords',
 ...    row='authors',
 ...    min_occ=3,
@@ -24,7 +24,7 @@ Ryan P 3:008                    3  ...                               3
 [6 rows x 5 columns]
 
 
->>> co_occ_matrix(
+>>> vantagepoint__co_occ_matrix(
 ...    column='author_keywords',
 ...    min_occ=4,
 ...    directory=directory,
@@ -61,7 +61,7 @@ suptech 04:003                                         4  ...               4
 from .vantagepoint__co_occ_matrix_list import vantagepoint__co_occ_matrix_list
 
 
-def co_occ_matrix(
+def vantagepoint__co_occ_matrix(
     column,
     row=None,
     top_n=None,
