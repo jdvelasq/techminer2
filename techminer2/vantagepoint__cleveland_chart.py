@@ -5,11 +5,10 @@ Cleveland Chart
 
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/cleveland_chart.html"
+>>> file_name = "sphinx/_static/vantagepoint__cleveland_chart.html"
 
-
->>> from techminer2 import cleveland_chart
->>> cleveland_chart(
+>>> from techminer2 import vantagepoint__cleveland_chart
+>>> vantagepoint__cleveland_chart(
 ...     column="author_keywords", 
 ...     top_n=20,
 ...     directory=directory,
@@ -17,13 +16,13 @@ Cleveland Chart
 
 .. raw:: html
 
-    <iframe src="../../_static/cleveland_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/vantagepoint__cleveland_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 from .vantagepoint__chart import vantagepoint__chart
 
 
-def cleveland_chart(
+def vantagepoint__cleveland_chart(
     column,
     directory="./",
     top_n=20,

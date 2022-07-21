@@ -59,6 +59,7 @@ from .thematic_map import thematic_map
 from .thematic_map_summarization import thematic_map_summarization
 from .trend_topics import trend_topics
 from .vantagepoint__bar_chart import vantagepoint__bar_chart
+from .vantagepoint__cleveland_chart import vantagepoint__cleveland_chart
 from .vantagepoint__record_view import vantagepoint__record_view
 from .vantagepoint__summary_view import vantagepoint__summary_view
 from .word_dynamics import word_dynamics
