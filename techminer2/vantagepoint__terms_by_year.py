@@ -2,10 +2,11 @@
 Terms by Year
 ===============================================================================
 
->>> from techminer2 import *
+
 >>> directory = "data/regtech/"
 
->>> terms_by_year(
+>>> from techminer2 import vantagepoint__terms_by_year
+>>> vantagepoint__terms_by_year(
 ...    column='author_keywords',
 ...    top_n=10,
 ...    directory=directory,
@@ -33,14 +34,14 @@ Terms by Year
 19     financial regulation 08:091  2020    3        7
 
 """
+from .column_indicators_by_year import column_indicators_by_year
 from .vantagepoint__co_occ_matrix_list import (
     _add_counters_to_items,
     _select_top_n_items,
 )
-from .column_indicators_by_year import column_indicators_by_year
 
 
-def terms_by_year(
+def vantagepoint__terms_by_year(
     column,
     top_n=50,
     directory="./",
@@ -57,7 +58,6 @@ def terms_by_year(
     indicators_by_year = _add_counters_to_items(
         column, column, directory, database, indicators_by_year
     )
-    # indicators_by_year = indicators_by_year.rename(columns={"OCC": "OCC"})
     indicators_by_year = _select_top_n_items(top_n, indicators_by_year, column)
 
     indicators_by_year = indicators_by_year.sort_values(

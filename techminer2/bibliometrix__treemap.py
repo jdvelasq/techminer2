@@ -18,7 +18,7 @@ TreeMap
     <iframe src="../../../_static/bibliometrix__treemap.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .list_view import list_view
+from .vantagepoint__list_view import vantagepoint__list_view
 from .treemap_plot import treemap_plot
 
 
@@ -34,7 +34,7 @@ def bibliometrix__treemap(
 ):
     """Makes a treemap."""
 
-    indicators = list_view(
+    indicators = vantagepoint__list_view(
         column=column,
         metric=metric,
         top_n=top_n,

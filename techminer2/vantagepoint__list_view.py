@@ -6,8 +6,8 @@ List View
 >>> directory = "data/regtech/"
 
 
->>> from techminer2 import list_view
->>> list_view(
+>>> from techminer2 import vantagepoint__list_view
+>>> vantagepoint__list_view(
 ...    column='author_keywords',
 ...    min_occ=3,
 ...    directory=directory,
@@ -29,7 +29,7 @@ machine learning                     6  ...                             0
 
 
 >>> from pprint import pprint
->>> pprint(sorted(list_view("author_keywords", directory=directory).columns.to_list()))
+>>> pprint(sorted(vantagepoint__list_view("author_keywords", directory=directory).columns.to_list()))
 ['OCC',
  'global_citations',
  'global_citations_per_document',
@@ -40,7 +40,7 @@ machine learning                     6  ...                             0
 from .column_indicators import column_indicators
 
 
-def list_view(
+def vantagepoint__list_view(
     column,
     metric="OCC",
     top_n=None,

@@ -3,7 +3,7 @@ Analyze
 
     .. toctree::
 
-        list_view
+        vantagepoint__list_view
         matrix/__index__
         tfidf/__index__
-        terms_by_year
+        vantagepoint__terms_by_year

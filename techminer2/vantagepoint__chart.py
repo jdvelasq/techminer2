@@ -4,7 +4,7 @@ from .bar_plot import bar_plot
 from .cleveland_plot import cleveland_plot
 from .column_plot import column_plot
 from .line_plot import line_plot
-from .list_view import list_view
+from .vantagepoint__list_view import vantagepoint__list_view
 from .pie_plot import pie_plot
 from .treemap_plot import treemap_plot
 from .wordcloud import wordcloud
@@ -23,7 +23,7 @@ def vantagepoint__chart(
 ):
     """Plots the number of documents by source using the specified plot."""
 
-    indicators = list_view(
+    indicators = vantagepoint__list_view(
         column=column,
         metric=metric,
         top_n=top_n,
