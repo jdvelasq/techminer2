@@ -1,22 +1,5 @@
-"""
-Column dynamics table
-===============================================================================
+"""Bibliometrix generic dynamics plot."""
 
->>> from techminer2.bibliometrix.dynamics import dynamics
->>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/dynamics.html"
-
->>> dynamics(
-...     column="source_abbr", 
-...     top_n=5, 
-...     directory=directory,
-... ).write_html(file_name)
-
-.. raw:: html
-
-    <iframe src="_static/dynamics.html" height="600px" width="100%" frameBorder="0"></iframe>
-
-"""
 import textwrap
 
 import numpy as np
@@ -28,13 +11,14 @@ from .column_indicators_by_year import column_indicators_by_year
 TEXTLEN = 40
 
 
-def dynamics(
+def bibliometrix__dynamics(
     column,
     top_n=10,
     directory="./",
     plot=True,
     title=None,
 ):
+    """Bibliometrix generic dynamics plot."""
 
     indicators = column_indicators_by_year(directory=directory, column=column)
     indicators = indicators[["OCC"]]

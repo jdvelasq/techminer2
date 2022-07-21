@@ -12,6 +12,7 @@ from .bibliometrix__average_citations_per_year import (
     bibliometrix__average_citations_per_year,
 )
 from .bibliometrix__bradford_law import bibliometrix__bradford_law
+from .bibliometrix__country_dynamics import bibliometrix__country_dynamics
 from .bibliometrix__country_impact import bibliometrix__country_impact
 from .bibliometrix__institution_impact import bibliometrix__institution_impact
 from .bibliometrix__main_information import bibliometrix__main_information
@@ -46,8 +47,10 @@ from .bibliometrix__most_local_cited_sources import (
     bibliometrix__most_local_cited_sources,
 )
 from .bibliometrix__most_relevant_sources import bibliometrix__most_relevant_sources
+from .bibliometrix__source_dynamics import bibliometrix__source_dynamics
 from .bibliometrix__source_impact import bibliometrix__source_impact
 from .bibliometrix__three_fields_plot import bibliometrix__three_fields_plot
+from .bibliometrix__word_dynamics import bibliometrix__word_dynamics
 from .co_citation_matrix_list import co_citation_matrix_list
 from .co_citation_network import co_citation_network
 from .co_occ_word_association import co_occ_word_association
@@ -74,7 +77,6 @@ from .scientopy__bar import scientopy__bar
 from .scientopy__bar_trends import scientopy__bar_trends
 from .scientopy__time_line import scientopy__time_line
 from .scientopy__word_cloud import scientopy__word_cloud
-from .source_dynamics import source_dynamics
 from .sources_production_over_time import sources_production_over_time
 from .svd_of_co_occ_matrix import svd_of_co_occ_matrix
 from .svd_of_tf_matrix import svd_of_tf_matrix
@@ -91,4 +93,3 @@ from .vantagepoint__line_chart import vantagepoint__line_chart
 from .vantagepoint__pie_chart import vantagepoint__pie_chart
 from .vantagepoint__record_view import vantagepoint__record_view
 from .vantagepoint__summary_view import vantagepoint__summary_view
-from .word_dynamics import word_dynamics

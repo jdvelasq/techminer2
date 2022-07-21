@@ -2,10 +2,10 @@ Words
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    .. toctree::
-      most_frequent_words
+      bibliometrix__most_frequent_words
       wordcloud
       treemap
-      word_dynamics
+      bibliometrix__word_dynamics
       trend_topics
 
    

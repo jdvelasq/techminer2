@@ -4,10 +4,10 @@ Word Dynamics
 
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/word_dynamics.html"
+>>> file_name = "sphinx/_static/bibliometrix__word_dynamics.html"
 
->>> from techminer2 import word_dynamics
->>> word_dynamics(
+>>> from techminer2 import bibliometrix__word_dynamics
+>>> bibliometrix__word_dynamics(
 ...     column="author_keywords",
 ...     top_n=5,
 ...     directory=directory,
@@ -15,13 +15,13 @@ Word Dynamics
 
 .. raw:: html
 
-    <iframe src="../../../_static/word_dynamics.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/bibliometrix__word_dynamics.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .dynamics import dynamics
+from .bibliometrix__dynamics import bibliometrix__dynamics
 
 
-def word_dynamics(
+def bibliometrix__word_dynamics(
     column="author_keywords",
     top_n=5,
     directory="./",
@@ -30,7 +30,7 @@ def word_dynamics(
 ):
     """Makes a dynamics chat for top sources."""
 
-    return dynamics(
+    return bibliometrix__dynamics(
         column=column,
         top_n=top_n,
         directory=directory,

@@ -1,6 +1,7 @@
-.. automodule:: techminer2.word_dynamics
+.. automodule:: techminer2.bibliometrix__source_dynamics
     :members:
     :undoc-members:
     :show-inheritance:
+
 
 

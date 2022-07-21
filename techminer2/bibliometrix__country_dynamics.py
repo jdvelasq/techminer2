@@ -6,25 +6,25 @@ Country Dynamics
 
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/country_dynamics.html"
+>>> file_name = "sphinx/_static/bibliometrix__country_dynamics.html"
 
 
->>> from techminer2 import country_dynamics
->>> country_dynamics(
+>>> from techminer2 import bibliometrix__country_dynamics
+>>> bibliometrix__country_dynamics(
 ...     top_n=5, 
 ...     directory=directory,
 ... ).write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../_static/country_dynamics.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/bibliometrix__country_dynamics.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
 """
-from .dynamics import dynamics
+from .bibliometrix__dynamics import bibliometrix__dynamics
 
 
-def country_dynamics(
+def bibliometrix__country_dynamics(
     top_n=5,
     directory="./",
     title="Country Dynamics",
@@ -32,7 +32,7 @@ def country_dynamics(
 ):
     """Makes a dynamics chat for top sources."""
 
-    return dynamics(
+    return bibliometrix__dynamics(
         column="countries",
         top_n=top_n,
         directory=directory,
