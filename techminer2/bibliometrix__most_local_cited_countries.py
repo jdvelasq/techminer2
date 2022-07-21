@@ -6,7 +6,7 @@ Most Local Cited Countries
 
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/most_bibliometrix__most_local_cited_countrieslocal_cited_countries.html"
+>>> file_name = "sphinx/_static/bibliometrix__most_local_cited_countries.html"
 
 >>> from techminer2 import bibliometrix__most_local_cited_countries
 >>> bibliometrix__most_local_cited_countries(

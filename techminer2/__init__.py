@@ -23,6 +23,9 @@ from .bibliometrix__most_frequent_institutions import (
 from .bibliometrix__most_global_cited_authors import (
     bibliometrix__most_global_cited_authors,
 )
+from .bibliometrix__most_global_cited_countries import (
+    bibliometrix__most_global_cited_countries,
+)
 from .bibliometrix__most_global_cited_institutions import (
     bibliometrix__most_global_cited_institutions,
 )
@@ -32,8 +35,13 @@ from .bibliometrix__most_global_cited_sources import (
 from .bibliometrix__most_local_cited_authors import (
     bibliometrix__most_local_cited_authors,
 )
+from .bibliometrix__most_local_cited_countries import (
+    bibliometrix__most_local_cited_countries,
+)
 from .bibliometrix__most_local_cited_documents import most_local_cited_documents
-from .bibliometrix__most_local_cited_institutions import most_local_cited_institutions
+from .bibliometrix__most_local_cited_institutions import (
+    bibliometrix__most_local_cited_institutions,
+)
 from .bibliometrix__most_local_cited_sources import (
     bibliometrix__most_local_cited_sources,
 )
