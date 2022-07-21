@@ -121,12 +121,6 @@ def _compute_production_over_time(
         }
     )
 
-    # indicators_by_year = indicators_by_year.rename(
-    #     columns={
-    #         "cum_OCC": "Cum OCC",
-    #     }
-    # )
-
     return indicators_by_year
 
 
