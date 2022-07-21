@@ -3,10 +3,11 @@ Cross-correlation Matrix
 ===============================================================================
 
 
->>> from techminer2 import *
+
 >>> directory = "data/regtech/"
 
->>> cross_corr_matrix(
+>>> from techminer2 import vantagepoint__cross_corr_matrix
+>>> vantagepoint__cross_corr_matrix(
 ...     'authors', 
 ...     by='countries',
 ...     top_n=10,
@@ -35,7 +36,7 @@ from .vantagepoint__co_occ_matrix_list import (
 )
 
 
-def cross_corr_matrix(
+def vantagepoint__cross_corr_matrix(
     column,
     by,
     method="pearson",

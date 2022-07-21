@@ -29,7 +29,7 @@ Returns an auto-correlation matrix.
 [100 rows x 3 columns]
 
 """
-from .cross_corr_matrix import cross_corr_matrix
+from .vantagepoint__cross_corr_matrix import vantagepoint__cross_corr_matrix
 
 
 def vantagepoint__cross_corr_matrix_list(
@@ -42,7 +42,7 @@ def vantagepoint__cross_corr_matrix_list(
 ):
     """Returns an auto-correlation matrix list."""
 
-    matrix = cross_corr_matrix(
+    matrix = vantagepoint__cross_corr_matrix(
         column=column,
         by=by,
         method=method,
