@@ -5,8 +5,8 @@ Clustering by coupling.
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import coupling_network
->>> nnet = coupling_network(
+>>> from techminer2 import bibliometrix__coupling_network
+>>> nnet = bibliometrix__coupling_network(
 ...     unit_of_analysis="article",
 ...     coupling_measured_by='local_references',
 ...     top_n=50,
@@ -18,12 +18,12 @@ Clustering by coupling.
 ...     delta=1.0,    
 ... )
 
->>> file_name = "sphinx/_static/coupling_network_plot_by_references.html"
+>>> file_name = "sphinx/_static/bibliometrix_coupling_network_plot_by_references.html"
 >>> nnet.plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../_static/coupling_network_plot_by_references.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/bibliometrix_coupling_network_plot_by_references.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> nnet.communities_.head()
                                                CL_00  ...                                              CL_19
@@ -37,12 +37,12 @@ Clustering by coupling.
 
 
 
->>> file_name = "sphinx/_static/coupling_network_plot_by_references_degree_plot.html"
+>>> file_name = "sphinx/_static/bibliometrix_coupling_network_plot_by_references_degree_plot.html"
 >>> nnet.degree_plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../_static/coupling_network_plot_by_references_degree_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/bibliometrix_coupling_network_plot_by_references_degree_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
 >>> nnet.indicators_.head()
@@ -57,26 +57,26 @@ Arner DW, 2020, EUR BUS ORG LAW REV, V21, P7 1:040      1  ...  0.041074
 
 
 """
-from .co_occ_network import co_occ_network
-from .network_communities import network_communities
-from .network_community_detection import network_community_detection
-from .network_degree_plot import network_degree_plot
-from .network_indicators import network_indicators
-from .network_plot import network_plot
+from dataclasses import dataclass
+
 from .bibliometrix__coupling_matrix_list import bibliometrix__coupling_matrix_list
+from .get_network_graph_communities import get_network_graph_communities
+from .get_network_graph_degree_plot import get_network_graph_degree_plot
+from .get_network_graph_indicators import get_network_graph_indicators
+from .get_network_graph_plot import network_graph_plot
+from .matrix_list_2_network_graph import matrix_list_2_network_graph
+from .network_community_detection import network_community_detection
 
 
-class _Result:
-    """Results"""
-
-    def __init__(self):
-        self.communities_ = None
-        self.indicators_ = None
-        self.plot_ = None
-        self.degree_plot_ = None
+@dataclass(init=False)
+class _Results:
+    communities_: None
+    indicators_: None
+    plot_: None
+    degree_plot_: None
 
 
-def coupling_network(
+def bibliometrix__coupling_network(
     unit_of_analysis,
     coupling_measured_by,
     top_n=250,
@@ -97,19 +97,19 @@ def coupling_network(
         directory=directory,
     )
 
-    graph = co_occ_network(matrix_list)
+    graph = matrix_list_2_network_graph(matrix_list)
     graph = network_community_detection(graph, method=method)
 
-    result = _Result()
+    result = _Results()
 
-    result.communities_ = network_communities(graph)
-    result.indicators_ = network_indicators(graph)
-    result.plot_ = network_plot(
+    result.communities_ = get_network_graph_communities(graph)
+    result.indicators_ = get_network_graph_indicators(graph)
+    result.plot_ = network_graph_plot(
         graph,
         nx_k=nx_k,
         nx_iteratons=nx_iteratons,
         delta=delta,
     )
-    result.degree_plot_ = network_degree_plot(graph)
+    result.degree_plot_ = get_network_graph_degree_plot(graph)
 
     return result

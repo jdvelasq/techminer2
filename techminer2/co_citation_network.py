@@ -51,12 +51,12 @@ Arner DW, 2019, EUR BUS ORG LAW REV, V20, P55 0...      0  ...  0.027119
 [5 rows x 4 columns]
 
 """
-from .co_occ_network import co_occ_network
-from .network_communities import network_communities
+from .matrix_list_2_network_graph import matrix_list_2_network_graph
+from .get_network_graph_communities import get_network_graph_communities
 from .network_community_detection import network_community_detection
-from .network_degree_plot import network_degree_plot
-from .network_indicators import network_indicators
-from .network_plot import network_plot
+from .get_network_graph_degree_plot import get_network_graph_degree_plot
+from .get_network_graph_indicators import get_network_graph_indicators
+from .get_network_graph_plot import network_graph_plot
 from .co_citation_matrix_list import co_citation_matrix_list
 
 
@@ -85,19 +85,19 @@ def co_citation_network(
         directory=directory,
     )
 
-    graph = co_occ_network(matrix_list)
+    graph = matrix_list_2_network_graph(matrix_list)
     graph = network_community_detection(graph, method=method)
 
     result = _Result()
 
-    result.communities_ = network_communities(graph)
-    result.indicators_ = network_indicators(graph)
-    result.plot_ = network_plot(
+    result.communities_ = get_network_graph_communities(graph)
+    result.indicators_ = get_network_graph_indicators(graph)
+    result.plot_ = network_graph_plot(
         graph,
         nx_k=nx_k,
         nx_iteratons=nx_iteratons,
         delta=delta,
     )
-    result.degree_plot_ = network_degree_plot(graph)
+    result.degree_plot_ = get_network_graph_degree_plot(graph)
 
     return result

@@ -93,7 +93,7 @@ from .co_occ_word_association import co_occ_word_association
 from .co_words_network import co_words_network
 from .collaboration_network import collaboration_network
 from .collaboration_worldmap import collaboration_worldmap
-from .coupling_network import coupling_network
+from .bibliometrix__coupling_network import bibliometrix__coupling_network
 from .coverage import coverage
 from .emergent_themes import emergent_themes_with_lda, emergent_themes_with_nmf
 from .factorial_analysis import factorial_analysis_with_mds

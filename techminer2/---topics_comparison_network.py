@@ -25,7 +25,7 @@ Topics Comparison Network
 import networkx as nx
 
 #  from .co_occurrence_matrix import co_occurrence_matrix
-from .network_plot import network_plot
+from .get_network_graph_plot import network_graph_plot
 
 
 def topics_comparison_network(
@@ -133,7 +133,7 @@ def topics_comparison_network(
         "G": G,
     }
 
-    return network_plot(
+    return network_graph_plot(
         network_,
         figsize=figsize,
         k=k,

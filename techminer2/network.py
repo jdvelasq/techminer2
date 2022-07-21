@@ -2,12 +2,12 @@
 
 
 from .vantagepoint__co_occ_matrix_list import vantagepoint__co_occ_matrix_list
-from .co_occ_network import co_occ_network
-from .network_communities import network_communities
+from .matrix_list_2_network_graph import matrix_list_2_network_graph
+from .get_network_graph_communities import get_network_graph_communities
 from .network_community_detection import network_community_detection
-from .network_degree_plot import network_degree_plot
-from .network_indicators import network_indicators
-from .network_plot import network_plot
+from .get_network_graph_degree_plot import get_network_graph_degree_plot
+from .get_network_graph_indicators import get_network_graph_indicators
+from .get_network_graph_plot import network_graph_plot
 
 
 class Result:
@@ -39,19 +39,19 @@ def network(
         database=database,
     )
 
-    graph = co_occ_network(matrix_list)
+    graph = matrix_list_2_network_graph(matrix_list)
     graph = network_community_detection(graph, method=method)
 
     result = Result(
-        communities=network_communities(graph),
-        indicators=network_indicators(graph),
-        plot=network_plot(
+        communities=get_network_graph_communities(graph),
+        indicators=get_network_graph_indicators(graph),
+        plot=network_graph_plot(
             graph,
             nx_k=nx_k,
             nx_iteratons=nx_iteratons,
             delta=delta,
         ),
-        degree_plot=network_degree_plot(graph),
+        degree_plot=get_network_graph_degree_plot(graph),
     )
 
     return result

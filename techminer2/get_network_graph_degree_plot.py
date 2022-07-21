@@ -29,7 +29,7 @@ import pandas as pd
 import plotly.express as px
 
 
-def network_degree_plot(graph):
+def get_network_graph_degree_plot(graph):
 
     degrees = []
     for _, adjacencies in enumerate(graph.adjacency()):

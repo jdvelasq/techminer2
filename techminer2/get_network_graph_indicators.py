@@ -30,7 +30,7 @@ import networkx as nx
 import pandas as pd
 
 
-def network_indicators(graph):
+def get_network_graph_indicators(graph):
     """Network indicators"""
 
     nodes = list(graph.nodes())

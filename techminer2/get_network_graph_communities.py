@@ -32,7 +32,7 @@ Network Communities
 import pandas as pd
 
 
-def network_communities(graph):
+def get_network_graph_communities(graph):
     """Network Communities"""
 
     members = {}

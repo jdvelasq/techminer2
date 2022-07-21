@@ -22,7 +22,7 @@ Builds a network from a matrix
 import networkx as nx
 
 
-def co_occ_network(
+def matrix_list_2_network_graph(
     matrix_list,
 ):
     """Transforms a co-occurrence matrix list into a networkx graph."""

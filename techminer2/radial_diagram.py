@@ -22,7 +22,7 @@ Radial Diagram
 import networkx as nx
 
 from .vantagepoint__co_occ_matrix_list import vantagepoint__co_occ_matrix_list
-from .network_plot import network_plot
+from .get_network_graph_plot import network_graph_plot
 
 
 def radial_diagram(
@@ -77,7 +77,7 @@ def radial_diagram(
     graph.add_weighted_edges_from(edges)
 
     # create a network plot
-    fig = network_plot(
+    fig = network_graph_plot(
         graph,
         nx_k=0.5,
         nx_iteratons=10,
