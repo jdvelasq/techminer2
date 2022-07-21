@@ -1,13 +1,13 @@
 """
-Radial Diagram
+Words Radial Diagram
 ===============================================================================
 
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/tlab__radial_diagram.html"
+>>> file_name = "sphinx/_static/tlab__words_radial_diagram.html"
 
->>> from techminer2 import tlab__radial_diagram
->>> tlab__radial_diagram(
+>>> from techminer2 import tlab__words_radial_diagram
+>>> tlab__words_radial_diagram(
 ...     term="regtech",
 ...     min_occ=4,
 ...     column='author_keywords',
@@ -16,7 +16,7 @@ Radial Diagram
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/tlab__radial_diagram.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../../_static/tlab__words_radial_diagram.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 import networkx as nx
@@ -25,7 +25,7 @@ from .get_network_graph_plot import network_graph_plot
 from .vantagepoint__co_occ_matrix_list import vantagepoint__co_occ_matrix_list
 
 
-def tlab__radial_diagram(
+def tlab__words_radial_diagram(
     term,
     column,
     top_n=None,

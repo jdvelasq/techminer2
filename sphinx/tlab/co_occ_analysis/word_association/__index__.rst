@@ -6,7 +6,7 @@ Word Association
     * **Graphs**
 
         .. toctree::
-            tlab__radial_diagram
+            tlab__words_radial_diagram
 
         * Cosine association
 
