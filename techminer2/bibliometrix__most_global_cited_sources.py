@@ -4,10 +4,10 @@ Most Global Cited Sources
 
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/most_global_cited_sources.html"
+>>> file_name = "sphinx/_static/bibliometrix__most_global_cited_sources.html"
 
->>> from techminer2 import most_global_cited_sources
->>> most_global_cited_sources(
+>>> from techminer2 import bibliometrix__most_global_cited_sources
+>>> bibliometrix__most_global_cited_sources(
 ...     directory,
 ...     top_n=20,
 ...     min_occ=None,
@@ -17,13 +17,13 @@ Most Global Cited Sources
 
 .. raw:: html
 
-    <iframe src="../../_static/most_global_cited_sources.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/bibliometrix__most_global_cited_sources.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 from .vantagepoint__chart import vantagepoint__chart
 
 
-def most_global_cited_sources(
+def bibliometrix__most_global_cited_sources(
     directory="./",
     top_n=20,
     min_occ=None,

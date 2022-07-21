@@ -1,4 +1,4 @@
-.. automodule:: techminer2.most_global_cited_sources
+.. automodule:: techminer2.bibliometrix__most_global_cited_sources
     :members:
     :undoc-members:
     :show-inheritance:

@@ -15,6 +15,9 @@ from .bibliometrix__most_frequent_authors import bibliometrix__most_frequent_aut
 from .bibliometrix__most_global_cited_authors import (
     bibliometrix__most_global_cited_authors,
 )
+from .bibliometrix__most_global_cited_sources import (
+    bibliometrix__most_global_cited_sources,
+)
 from .bibliometrix__most_local_cited_authors import (
     bibliometrix__most_local_cited_authors,
 )
@@ -43,7 +46,6 @@ from .most_frequent_words import most_frequent_words
 from .most_global_cited_documents import most_global_cited_documents
 from .most_global_cited_institutions import most_global_cited_institutions
 from .most_global_cited_references import most_global_cited_references
-from .most_global_cited_sources import most_global_cited_sources
 from .most_local_cited_documents import most_local_cited_documents
 from .most_local_cited_institutions import most_local_cited_institutions
 from .most_local_cited_references import most_local_cited_references
