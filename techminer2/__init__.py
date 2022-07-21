@@ -4,7 +4,9 @@ from .abstract_screening import abstract_screening
 from .abstract_summarization import abstract_summarization
 from .associations_for_a_item import associations_for_a_item
 from .associations_for_all_items import associations_for_all_items
-from .average_citations_per_year import average_citations_per_year
+from .bibliometrix__average_citations_per_year import (
+    bibliometrix__average_citations_per_year,
+)
 from .bibliometrix__annual_scientific_production import (
     bibliometrix__annual_scientific_production,
 )
