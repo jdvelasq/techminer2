@@ -18,6 +18,7 @@ from .bibliometrix__bradford_law import bibliometrix__bradford_law
 from .bibliometrix__co_citation_matrix_list import bibliometrix__co_citation_matrix_list
 from .bibliometrix__co_citation_network import bibliometrix__co_citation_network
 from .bibliometrix__collaboration_network import bibliometrix__collaboration_network
+from .bibliometrix__collaboration_worldmap import bibliometrix__collaboration_worldmap
 from .bibliometrix__corresponding_authors_country import (
     bibliometrix__corresponding_authors_country,
 )
@@ -93,7 +94,6 @@ from .bibliometrix__word_cloud import bibliometrix__word_cloud
 from .bibliometrix__word_dynamics import bibliometrix__word_dynamics
 from .co_occ_word_association import co_occ_word_association
 from .co_words_network import co_words_network
-from .collaboration_worldmap import collaboration_worldmap
 from .coverage import coverage
 from .emergent_themes import emergent_themes_with_lda, emergent_themes_with_nmf
 from .factorial_analysis import factorial_analysis_with_mds

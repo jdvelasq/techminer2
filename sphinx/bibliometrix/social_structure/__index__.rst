@@ -3,6 +3,6 @@ Social Structure
 
    .. toctree::
       bibliometrix__collaboration_network
-      collaboration_worldmap
+      bibliometrix__collaboration_worldmap
 
       
