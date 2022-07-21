@@ -11,3 +11,4 @@ Report
 
     .. toctree::
         vantagepoint__world_map
+        vantagepoint__matrix_viewer

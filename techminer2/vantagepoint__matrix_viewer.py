@@ -6,11 +6,13 @@ Matrix Viwer
 
 **Matrix view for a occurrence matrix.**
 
->>> from techminer2 import *
+
 >>> directory = "data/regtech/"
 
->>> file_name = "sphinx/_static/matrix_viewer_occ-0.html"
->>> matrix = co_occ_matrix_list(
+>>> file_name = "sphinx/_static/vantagepoint__matrix_viewer-0.html"
+
+>>> from techminer2 import vantagepoint__co_occ_matrix_list
+>>> matrix = vantagepoint__co_occ_matrix_list(
 ...    column='author_keywords',
 ...    row='authors',
 ...    min_occ=3,
@@ -34,19 +36,21 @@ Matrix Viwer
 13       Ryan P 3:008  data protection officer 03:008    3
 14       Ryan P 3:008                  regtech 70:462    3
 
->>> matrix_viewer(
+>>> vantagepoint__matrix_viewer(
 ...     matrix,
 ... ).write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="_static/matrix_viewer_occ-0.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/vantagepoint__matrix_viewer-0.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
 **Matrix view for a co-occurrence matrix.**
 
->>> file_name = "sphinx/_static/matrix_viewer_occ-1.html"
->>> matrix = co_occ_matrix_list(
+>>> file_name = "sphinx/_static/vantagepoint__matrix_viewer-1.html"
+
+>>> from techminer2 import vantagepoint__co_occ_matrix_list
+>>> matrix = vantagepoint__co_occ_matrix_list(
 ...    column='author_keywords',
 ...    min_occ=8,
 ...    directory=directory,
@@ -78,7 +82,7 @@ Matrix Viwer
 <BLANKLINE>
 [22 rows x 3 columns]
 
->>> matrix_viewer(
+>>> vantagepoint__matrix_viewer(
 ...     matrix,
 ...     nx_k=0.5,
 ...     nx_iteratons=5,
@@ -86,7 +90,7 @@ Matrix Viwer
 
 .. raw:: html
 
-    <iframe src="_static/matrix_viewer_occ-1.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/vantagepoint__matrix_viewer-1.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
 
@@ -96,7 +100,7 @@ import numpy as np
 import plotly.graph_objects as go
 
 
-def matrix_viewer(
+def vantagepoint__matrix_viewer(
     matrix_list,
     nx_k=0.5,
     nx_iteratons=10,
