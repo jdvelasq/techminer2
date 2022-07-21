@@ -115,6 +115,7 @@ from .thematic_map import thematic_map
 from .thematic_map_summarization import thematic_map_summarization
 from .vantagepoint__bar_chart import vantagepoint__bar_chart
 from .vantagepoint__cleveland_chart import vantagepoint__cleveland_chart
+from .vantagepoint__co_occ_matrix_list import vantagepoint__co_occ_matrix_list
 from .vantagepoint__column_chart import vantagepoint__column_chart
 from .vantagepoint__line_chart import vantagepoint__line_chart
 from .vantagepoint__pie_chart import vantagepoint__pie_chart

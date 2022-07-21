@@ -21,7 +21,10 @@ Co-citation Matrix List
 
 
 """
-from .co_occ_matrix_list import _add_counters_to_items, _create_matrix_list
+from .vantagepoint__co_occ_matrix_list import (
+    _add_counters_to_items,
+    _create_matrix_list,
+)
 from ._read_records import read_records
 
 

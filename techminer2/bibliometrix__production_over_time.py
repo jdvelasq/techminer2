@@ -4,7 +4,7 @@ import textwrap
 
 import plotly.express as px
 
-from .co_occ_matrix_list import _add_counters_to_items
+from .vantagepoint__co_occ_matrix_list import _add_counters_to_items
 from .column_indicators import column_indicators
 from .column_indicators_by_year import column_indicators_by_year
 

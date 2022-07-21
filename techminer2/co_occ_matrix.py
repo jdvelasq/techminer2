@@ -58,7 +58,7 @@ suptech 04:003                                         4  ...               4
 
 
 """
-from .co_occ_matrix_list import co_occ_matrix_list
+from .vantagepoint__co_occ_matrix_list import vantagepoint__co_occ_matrix_list
 
 
 def co_occ_matrix(
@@ -75,7 +75,7 @@ def co_occ_matrix(
     if row is None:
         row = column
 
-    matrix_list = co_occ_matrix_list(
+    matrix_list = vantagepoint__co_occ_matrix_list(
         column=column,
         row=row,
         top_n=top_n,

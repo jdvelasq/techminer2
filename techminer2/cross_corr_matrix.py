@@ -27,7 +27,7 @@ Zetzsche DA 4:092        0.943564  ...           1.000000
 [10 rows x 10 columns]
 
 """
-from .co_occ_matrix_list import (
+from .vantagepoint__co_occ_matrix_list import (
     _add_counters_to_items,
     _create_matrix_list,
     _remove_stopwords,

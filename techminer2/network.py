@@ -1,7 +1,7 @@
 """Network interface."""
 
 
-from .co_occ_matrix_list import co_occ_matrix_list
+from .vantagepoint__co_occ_matrix_list import vantagepoint__co_occ_matrix_list
 from .co_occ_network import co_occ_network
 from .network_communities import network_communities
 from .network_community_detection import network_community_detection
@@ -31,7 +31,7 @@ def network(
     delta=1.0,
 ):
 
-    matrix_list = co_occ_matrix_list(
+    matrix_list = vantagepoint__co_occ_matrix_list(
         column=column,
         row=None,
         top_n=top_n,

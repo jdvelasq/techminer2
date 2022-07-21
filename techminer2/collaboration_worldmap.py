@@ -18,7 +18,7 @@ Collaboration WorldMap
 import plotly.express as px
 import plotly.graph_objects as go
 
-from .co_occ_matrix_list import co_occ_matrix_list
+from .vantagepoint__co_occ_matrix_list import vantagepoint__co_occ_matrix_list
 
 
 def collaboration_worldmap(
@@ -27,7 +27,7 @@ def collaboration_worldmap(
 ):
     """Collaboration World Map"""
 
-    collaboration = co_occ_matrix_list(
+    collaboration = vantagepoint__co_occ_matrix_list(
         column="countries",
         row=None,
         top_n=None,

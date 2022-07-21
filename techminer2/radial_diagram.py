@@ -21,7 +21,7 @@ Radial Diagram
 """
 import networkx as nx
 
-from .co_occ_matrix_list import co_occ_matrix_list
+from .vantagepoint__co_occ_matrix_list import vantagepoint__co_occ_matrix_list
 from .network_plot import network_plot
 
 
@@ -36,7 +36,7 @@ def radial_diagram(
 ):
     """Creates a radial diagram of term associations from a co-occurrence matrix."""
 
-    matrix_list = co_occ_matrix_list(
+    matrix_list = vantagepoint__co_occ_matrix_list(
         column=column,
         row=None,
         top_n=None,

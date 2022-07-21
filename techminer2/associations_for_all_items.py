@@ -26,7 +26,7 @@ Associations for All Items
 
 
 """
-from .co_occ_matrix_list import co_occ_matrix_list
+from .vantagepoint__co_occ_matrix_list import vantagepoint__co_occ_matrix_list
 
 
 def associations_for_all_items(
@@ -36,7 +36,7 @@ def associations_for_all_items(
 ):
     """Computes the co-occurrence matrix for a given column."""
 
-    return co_occ_matrix_list(
+    return vantagepoint__co_occ_matrix_list(
         column=column,
         row=None,
         top_n=None,

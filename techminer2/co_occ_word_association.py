@@ -21,7 +21,7 @@ Word Association
 """
 from .bar_plot import bar_plot
 from .cleveland_plot import cleveland_plot
-from .co_occ_matrix_list import co_occ_matrix_list
+from .vantagepoint__co_occ_matrix_list import vantagepoint__co_occ_matrix_list
 from .column_plot import column_plot
 from .line_plot import line_plot
 from .pie_plot import pie_plot
@@ -39,7 +39,7 @@ def co_occ_word_association(
 ):
     """Word Association"""
 
-    matrix_list = co_occ_matrix_list(
+    matrix_list = vantagepoint__co_occ_matrix_list(
         column=column,
         row=None,
         top_n=None,

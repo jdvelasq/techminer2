@@ -7,8 +7,8 @@ Co-occurrence Matrix List
 
 **Item selection by occurrence.**
 
->>> from techminer2 import co_occ_matrix_list
->>> co_occ_matrix_list(
+>>> from techminer2 import vantagepoint__co_occ_matrix_list
+>>> vantagepoint__co_occ_matrix_list(
 ...    column='author_keywords',
 ...    row='authors',
 ...    min_occ=3,
@@ -32,7 +32,7 @@ Co-occurrence Matrix List
 14       Ryan P 3:008                  regtech 70:462    3
 
 
->>> co_occ_matrix_list(
+>>> vantagepoint__co_occ_matrix_list(
 ...    column='author_keywords',
 ...    min_occ=4,
 ...    directory=directory,
@@ -55,7 +55,7 @@ Co-occurrence Matrix List
 
 **Seleccition of top terms.**
 
->>> co_occ_matrix_list(
+>>> vantagepoint__co_occ_matrix_list(
 ...    column='author_keywords',
 ...    row='authors',
 ...    top_n=5,
@@ -78,7 +78,7 @@ Co-occurrence Matrix List
 13  Zetzsche DA 4:092                         blockchain 18:109    1
 
 
->>> co_occ_matrix_list(
+>>> vantagepoint__co_occ_matrix_list(
 ...    column='author_keywords',
 ...    top_n=5,
 ...    directory=directory,
@@ -115,11 +115,11 @@ Co-occurrence Matrix List
 import pandas as pd
 
 from ._load_stopwords import load_stopwords
-from .items2counters import items2counters
 from ._read_records import read_records
+from .items2counters import items2counters
 
 
-def co_occ_matrix_list(
+def vantagepoint__co_occ_matrix_list(
     column,
     row=None,
     top_n=None,
