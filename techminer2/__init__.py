@@ -101,13 +101,13 @@ from .factorial_analysis import factorial_analysis_with_mds
 from .import_scopus_files import import_scopus_files
 from .keyword_concordances import keyword_concordances
 from .keywords_summarization import keywords_summarization
-from .radial_diagram import radial_diagram
 from .scientopy__bar import scientopy__bar
 from .scientopy__bar_trends import scientopy__bar_trends
 from .scientopy__time_line import scientopy__time_line
 from .scientopy__word_cloud import scientopy__word_cloud
-from .t_lab__svd_of_co_occ_matrix import t_lab__svd_of_co_occ_matrix
-from .t_lab__svd_of_tf_matrix import t_lab__svd_of_tf_matrix
+from .tlab__radial_diagram import tlab__radial_diagram
+from .tlab__svd_of_co_occ_matrix import tlab__svd_of_co_occ_matrix
+from .tlab__svd_of_tf_matrix import tlab__svd_of_tf_matrix
 from .thematic_analysis import thematic_analysis
 from .thematic_evolution_plot import thematic_evolution_plot
 from .thematic_map_summarization import thematic_map_summarization
