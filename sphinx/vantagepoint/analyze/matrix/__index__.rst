@@ -13,19 +13,19 @@ Matrix
     * **Auto-correlation Matrix**:
 
         .. toctree::
-            auto_corr_matrix
+            vantagepoint__auto_corr_matrix
 
         .. toctree::
-            auto_corr_matrix_list
+            vantagepoint__auto_corr_matrix_list
 
 
     * **Cross-correlation Matrix**:
 
         .. toctree::
-            cross_corr_matrix
+            vantagepoint__cross_corr_matrix
 
         .. toctree::
-            cross_corr_matrix_list
+            vantagepoint__cross_corr_matrix_list
 
 
 
