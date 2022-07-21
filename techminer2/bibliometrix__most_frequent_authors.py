@@ -1,29 +1,30 @@
 """
-Most Relevant Sources
+Most Frequent Authors
 ===============================================================================
 
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/most_relevant_sources.html"
+>>> file_name = "sphinx/_static/bibliometrix__most_frequent_authors.html"
 
->>> from techminer2 import most_relevant_sources
->>> most_relevant_sources(
+>>> from techminer2 import bibliometrix__most_frequent_authors
+>>> bibliometrix__most_frequent_authors(
 ...     directory,
 ...     top_n=20,
 ...     min_occ=None,
 ...     max_occ=None,
 ...     plot="cleveland",
+...     database="documents",
 ... ).write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../_static/most_relevant_sources.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/bibliometrix__most_frequent_authors.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 from .vantagepoint__chart import vantagepoint__chart
 
 
-def most_relevant_sources(
+def bibliometrix__most_frequent_authors(
     directory="./",
     top_n=20,
     min_occ=None,
@@ -31,15 +32,15 @@ def most_relevant_sources(
     plot="cleveland",
     database="documents",
 ):
-    """Most Relevant Sources."""
+    """Plots the number of documents by author using the specified plot."""
 
     return vantagepoint__chart(
-        column="source_abbr",
+        column="authors",
         directory=directory,
         top_n=top_n,
         min_occ=min_occ,
         max_occ=max_occ,
-        title="Most Relevant Sources",
+        title="Most Frequent Authors",
         plot=plot,
         database=database,
     )
