@@ -1,4 +1,4 @@
-.. automodule:: techminer2.co_words_network
+.. automodule:: techminer2.bibliometrix__thematic_map
     :members:
     :undoc-members:
     :show-inheritance:

@@ -17,6 +17,7 @@ from .bibliometrix__average_citations_per_year import (
 from .bibliometrix__bradford_law import bibliometrix__bradford_law
 from .bibliometrix__co_citation_matrix_list import bibliometrix__co_citation_matrix_list
 from .bibliometrix__co_citation_network import bibliometrix__co_citation_network
+from .bibliometrix__co_occurrence_network import bibliometrix__co_occurrence_network
 from .bibliometrix__collaboration_network import bibliometrix__collaboration_network
 from .bibliometrix__collaboration_worldmap import bibliometrix__collaboration_worldmap
 from .bibliometrix__corresponding_authors_country import (
@@ -87,13 +88,13 @@ from .bibliometrix__source_impact import bibliometrix__source_impact
 from .bibliometrix__sources_production_over_time import (
     bibliometrix__sources_production_over_time,
 )
+from .bibliometrix__thematic_map import bibliometrix__thematic_map
 from .bibliometrix__three_fields_plot import bibliometrix__three_fields_plot
 from .bibliometrix__treemap import bibliometrix__treemap
 from .bibliometrix__trend_topics import bibliometrix__trend_topics
 from .bibliometrix__word_cloud import bibliometrix__word_cloud
 from .bibliometrix__word_dynamics import bibliometrix__word_dynamics
 from .co_occ_word_association import co_occ_word_association
-from .co_words_network import co_words_network
 from .coverage import coverage
 from .emergent_themes import emergent_themes_with_lda, emergent_themes_with_nmf
 from .factorial_analysis import factorial_analysis_with_mds
@@ -111,7 +112,6 @@ from .svd_of_tf_matrix import svd_of_tf_matrix
 from .terms_by_year import terms_by_year
 from .thematic_analysis import thematic_analysis
 from .thematic_evolution_plot import thematic_evolution_plot
-from .thematic_map import thematic_map
 from .thematic_map_summarization import thematic_map_summarization
 from .vantagepoint__bar_chart import vantagepoint__bar_chart
 from .vantagepoint__cleveland_chart import vantagepoint__cleveland_chart
