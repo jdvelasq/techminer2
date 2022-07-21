@@ -4,10 +4,10 @@ Most Frequent Institutions
 
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/most_frequent_institutions.html"
+>>> file_name = "sphinx/_static/bibliometrix__most_frequent_institutions.html"
 
->>> from techminer2 import most_frequent_institutions
->>> most_frequent_institutions(
+>>> from techminer2 import bibliometrix__most_frequent_institutions
+>>> bibliometrix__most_frequent_institutions(
 ...     directory,
 ...     top_n=20,
 ...     min_occ=None,
@@ -18,13 +18,13 @@ Most Frequent Institutions
 
 .. raw:: html
 
-    <iframe src="../../../_static/most_frequent_institutions.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/bibliometrix__most_frequent_institutions.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 from .vantagepoint__chart import vantagepoint__chart
 
 
-def most_frequent_institutions(
+def bibliometrix__most_frequent_institutions(
     directory="./",
     top_n=20,
     min_occ=None,

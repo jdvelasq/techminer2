@@ -16,8 +16,15 @@ from .bibliometrix__country_impact import bibliometrix__country_impact
 from .bibliometrix__institution_impact import bibliometrix__institution_impact
 from .bibliometrix__main_information import bibliometrix__main_information
 from .bibliometrix__most_frequent_authors import bibliometrix__most_frequent_authors
+from .bibliometrix__most_frequent_countries import bibliometrix__most_frequent_countries
+from .bibliometrix__most_frequent_institutions import (
+    bibliometrix__most_frequent_institutions,
+)
 from .bibliometrix__most_global_cited_authors import (
     bibliometrix__most_global_cited_authors,
+)
+from .bibliometrix__most_global_cited_institutions import (
+    bibliometrix__most_global_cited_institutions,
 )
 from .bibliometrix__most_global_cited_sources import (
     bibliometrix__most_global_cited_sources,
@@ -25,6 +32,8 @@ from .bibliometrix__most_global_cited_sources import (
 from .bibliometrix__most_local_cited_authors import (
     bibliometrix__most_local_cited_authors,
 )
+from .bibliometrix__most_local_cited_documents import most_local_cited_documents
+from .bibliometrix__most_local_cited_institutions import most_local_cited_institutions
 from .bibliometrix__most_local_cited_sources import (
     bibliometrix__most_local_cited_sources,
 )
@@ -47,13 +56,9 @@ from .institutions_production_over_time import institutions_production_over_time
 from .keyword_concordances import keyword_concordances
 from .keywords_summarization import keywords_summarization
 from .list_view import list_view
-from .most_frequent_institutions import most_frequent_institutions
 from .most_frequent_words import most_frequent_words
 from .most_global_cited_documents import most_global_cited_documents
-from .most_global_cited_institutions import most_global_cited_institutions
 from .most_global_cited_references import most_global_cited_references
-from .most_local_cited_documents import most_local_cited_documents
-from .most_local_cited_institutions import most_local_cited_institutions
 from .most_local_cited_references import most_local_cited_references
 from .radial_diagram import radial_diagram
 from .rpys import rpys

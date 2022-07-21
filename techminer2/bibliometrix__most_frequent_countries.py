@@ -1,30 +1,31 @@
 """
-Most Global Cited Countries
+Most Frequent Countries
 ===============================================================================
 
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/most_global_cited_countries.html"
+>>> file_name = "sphinx/_static/bibliometrix__most_frequent_countries.html"
 
 
->>> from techminer2 import most_global_cited_countries
->>> most_global_cited_countries(
+>>> from techminer2 import bibliometrix__most_frequent_countries
+>>> bibliometrix__most_frequent_countries(
 ...     directory,
 ...     top_n=20,
 ...     min_occ=None,
 ...     max_occ=None,
 ...     plot="cleveland",
+...     database="documents",
 ... ).write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../_static/most_global_cited_countries.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/bibliometrix__most_frequent_countries.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 from .vantagepoint__chart import vantagepoint__chart
 
 
-def most_global_cited_countries(
+def bibliometrix__most_frequent_countries(
     directory="./",
     top_n=20,
     min_occ=None,
@@ -32,16 +33,15 @@ def most_global_cited_countries(
     plot="cleveland",
     database="documents",
 ):
-    """Most global cited countries."""
+    """Plots the number of documents by country using the specified plot."""
 
     return vantagepoint__chart(
         column="countries",
         directory=directory,
-        metric="global_citations",
         top_n=top_n,
         min_occ=min_occ,
         max_occ=max_occ,
-        title="Most Global Cited Countries",
+        title="Most Frequent Countries",
         plot=plot,
         database=database,
     )
