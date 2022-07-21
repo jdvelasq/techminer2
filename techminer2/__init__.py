@@ -37,6 +37,7 @@ from .bibliometrix__most_frequent_countries import bibliometrix__most_frequent_c
 from .bibliometrix__most_frequent_institutions import (
     bibliometrix__most_frequent_institutions,
 )
+from .bibliometrix__most_frequent_words import bibliometrix__most_frequent_words
 from .bibliometrix__most_global_cited_authors import (
     bibliometrix__most_global_cited_authors,
 )
@@ -81,6 +82,7 @@ from .bibliometrix__sources_production_over_time import (
     bibliometrix__sources_production_over_time,
 )
 from .bibliometrix__three_fields_plot import bibliometrix__three_fields_plot
+from .bibliometrix__trend_topics import bibliometrix__trend_topics
 from .bibliometrix__word_dynamics import bibliometrix__word_dynamics
 from .co_citation_matrix_list import co_citation_matrix_list
 from .co_citation_network import co_citation_network
@@ -97,7 +99,6 @@ from .import_scopus_files import import_scopus_files
 from .keyword_concordances import keyword_concordances
 from .keywords_summarization import keywords_summarization
 from .list_view import list_view
-from .most_frequent_words import most_frequent_words
 from .radial_diagram import radial_diagram
 from .scientopy__bar import scientopy__bar
 from .scientopy__bar_trends import scientopy__bar_trends
@@ -110,7 +111,6 @@ from .thematic_analysis import thematic_analysis
 from .thematic_evolution_plot import thematic_evolution_plot
 from .thematic_map import thematic_map
 from .thematic_map_summarization import thematic_map_summarization
-from .trend_topics import trend_topics
 from .vantagepoint__bar_chart import vantagepoint__bar_chart
 from .vantagepoint__cleveland_chart import vantagepoint__cleveland_chart
 from .vantagepoint__column_chart import vantagepoint__column_chart

@@ -5,10 +5,10 @@ Most Frequent Words
 
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/most_frequent_words.html"
+>>> file_name = "sphinx/_static/bibliometrix__most_frequent_words.html"
 
->>> from techminer2 import most_frequent_words
->>> most_frequent_words(
+>>> from techminer2 import bibliometrix__most_frequent_words
+>>> bibliometrix__most_frequent_words(
 ...     column="author_keywords",
 ...     directory=directory,
 ...     top_n=20,
@@ -20,7 +20,7 @@ Most Frequent Words
 
 .. raw:: html
 
-    <iframe src="../../../_static/most_frequent_words.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/bibliometrix__most_frequent_words.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
 
@@ -29,7 +29,7 @@ Most Frequent Words
 from .vantagepoint__chart import vantagepoint__chart
 
 
-def most_frequent_words(
+def bibliometrix__most_frequent_words(
     column="author_keywords",
     directory="./",
     top_n=20,

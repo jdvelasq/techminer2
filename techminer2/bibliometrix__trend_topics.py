@@ -4,14 +4,13 @@ Trend Topics
 
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/trend_topics.html"
+>>> file_name = "sphinx/_static/bibliometrix__trend_topics.html"
 
->>> from techminer2 import trend_topics
->>> trend_topics(
+>>> from techminer2 import bibliometrix__trend_topics
+>>> bibliometrix__trend_topics(
 ...     'author_keywords',
 ...     directory=directory, 
-...     plot=False,
-... ).head()
+... ).table_.head()
 year                               OCC  year_q1  ...  global_citations  rn
 author_keywords                                  ...                      
 regtech                             70     2016  ...               462   0
@@ -22,28 +21,35 @@ financial regulation                 8     2016  ...                91   4
 <BLANKLINE>
 [5 rows x 6 columns]
 
->>> trend_topics(
+>>> bibliometrix__trend_topics(
 ...     'author_keywords', 
 ...     directory=directory,
-... ).write_html(file_name)
+... ).plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../_static/trend_topics.html" height="900px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/bibliometrix__trend_topics.html" height="900px" width="100%" frameBorder="0"></iframe>
 
 """
+from dataclasses import dataclass
+
 import numpy as np
 import plotly.graph_objects as go
 
-from .column_indicators import column_indicators
 from .annual_occurrence_matrix import annual_occurrence_matrix
+from .column_indicators import column_indicators
 
 
-def trend_topics(
+@dataclass(init=False)
+class _Results:
+    plot_: None
+    table_: None
+
+
+def bibliometrix__trend_topics(
     column,
     n_words_per_year=5,
     directory="./",
-    plot=True,
 ):
     """Trend topics"""
 
@@ -96,8 +102,8 @@ def trend_topics(
 
     words_by_year = words_by_year.query(f"rn < {n_words_per_year}")
 
-    if plot is False:
-        return words_by_year
+    results = _Results()
+    results.table_ = words_by_year
 
     min_occ = words_by_year.OCC.min()
     max_occ = words_by_year.OCC.max()
@@ -136,5 +142,6 @@ def trend_topics(
         tickangle=270,
         dtick=1.0,
     )
+    results.plot_ = fig
 
-    return fig
+    return results

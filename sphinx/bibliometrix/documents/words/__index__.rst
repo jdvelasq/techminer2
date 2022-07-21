@@ -6,6 +6,6 @@ Words
       wordcloud
       treemap
       bibliometrix__word_dynamics
-      trend_topics
+      bibliometrix__trend_topics
 
    
