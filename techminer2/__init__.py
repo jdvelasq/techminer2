@@ -120,4 +120,5 @@ from .vantagepoint__line_chart import vantagepoint__line_chart
 from .vantagepoint__pie_chart import vantagepoint__pie_chart
 from .vantagepoint__record_view import vantagepoint__record_view
 from .vantagepoint__summary_view import vantagepoint__summary_view
+from .vantagepoint__treemap import vantagepoint__treemap
 from .vantagepoint__world_map import vantagepoint__world_map

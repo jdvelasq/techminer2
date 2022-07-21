@@ -7,6 +7,7 @@ Report
         vantagepoint__column_chart
         vantagepoint__line_chart
         vantagepoint__pie_chart
+        vantagepoint__treemap
 
     .. toctree::
         vantagepoint__world_map
