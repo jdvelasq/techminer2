@@ -5,19 +5,19 @@ Bradford's Law
 
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/bradford_law.html"
+>>> file_name = "sphinx/_static/bibliometrix__bradford_law.html"
 
->>> from techminer2 import bradford_law
->>> bradford_law(
+>>> from techminer2 import bibliometrix__bradford_law
+>>> bibliometrix__bradford_law(
 ...     directory=directory,
 ... ).plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../_static/bradford_law.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/bibliometrix__bradford_law.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
->>> bradford_law(
+>>> bibliometrix__bradford_law(
 ...     directory=directory,
 ... ).source_clustering_.head(5)
                      no  OCC  cum_OCC  global_citations  zone
@@ -29,7 +29,7 @@ EUR BUS ORG LAW REV   4    3       16                65     1
 J BANK REGUL          5    3       19                29     1
 
 
->>> bradford_law(
+>>> bibliometrix__bradford_law(
 ...     directory=directory,
 ... ).core_sources_.head(5)
    Num Sources        %  ...  Tot Documents Bradford's Group
@@ -43,25 +43,29 @@ J BANK REGUL          5    3       19                29     1
 
 
 """
+from dataclasses import dataclass
+
 import numpy as np
 import pandas as pd
 import plotly.express as px
 
-from .explode import explode
 from ._read_records import read_records
+from .explode import explode
 
 
+@dataclass(init=False)
 class _Result:
-    def __init__(self):
-        self.plot_ = None
-        self.source_clustering_ = None
-        self.core_sources_ = None
+    plot_: None
+    source_clustering_: None
+    core_sources_: None
 
 
-def bradford_law(
+def bibliometrix__bradford_law(
     directory="./",
     database="documents",
 ):
+    """Bradfor's Law"""
+
     results = _Result()
 
     results.source_clustering_ = _source_clustering(

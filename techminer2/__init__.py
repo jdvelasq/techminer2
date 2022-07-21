@@ -10,6 +10,7 @@ from .bibliometrix__annual_scientific_production import (
 from .bibliometrix__average_citations_per_year import (
     bibliometrix__average_citations_per_year,
 )
+from .bibliometrix__bradford_law import bibliometrix__bradford_law
 from .bibliometrix__main_information import bibliometrix__main_information
 from .bibliometrix__most_frequent_authors import bibliometrix__most_frequent_authors
 from .bibliometrix__most_global_cited_authors import (
@@ -21,9 +22,11 @@ from .bibliometrix__most_global_cited_sources import (
 from .bibliometrix__most_local_cited_authors import (
     bibliometrix__most_local_cited_authors,
 )
+from .bibliometrix__most_local_cited_sources import (
+    bibliometrix__most_local_cited_sources,
+)
 from .bibliometrix__most_relevant_sources import bibliometrix__most_relevant_sources
 from .bibliometrix__three_fields_plot import bibliometrix__three_fields_plot
-from .bradford_law import bradford_law
 from .co_citation_matrix_list import co_citation_matrix_list
 from .co_citation_network import co_citation_network
 from .co_occ_word_association import co_occ_word_association
@@ -49,7 +52,6 @@ from .most_global_cited_references import most_global_cited_references
 from .most_local_cited_documents import most_local_cited_documents
 from .most_local_cited_institutions import most_local_cited_institutions
 from .most_local_cited_references import most_local_cited_references
-from .most_local_cited_sources import most_local_cited_sources
 from .radial_diagram import radial_diagram
 from .rpys import rpys
 from .scientopy__bar import scientopy__bar
