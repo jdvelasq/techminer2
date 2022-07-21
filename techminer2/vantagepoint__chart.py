@@ -6,6 +6,7 @@ from .column_plot import column_plot
 from .line_plot import line_plot
 from .list_view import list_view
 from .pie_plot import pie_plot
+from .treemap_plot import treemap_plot
 from .wordcloud import wordcloud
 
 
@@ -34,10 +35,11 @@ def vantagepoint__chart(
 
     plot_function = {
         "bar": bar_plot,
+        "cleveland": cleveland_plot,
         "column": column_plot,
         "line": line_plot,
         "pie": pie_plot,
-        "cleveland": cleveland_plot,
+        "treemap": treemap_plot,
         "wordcloud": wordcloud,
     }[plot]
 

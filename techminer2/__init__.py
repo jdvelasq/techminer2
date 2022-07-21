@@ -82,6 +82,7 @@ from .bibliometrix__sources_production_over_time import (
     bibliometrix__sources_production_over_time,
 )
 from .bibliometrix__three_fields_plot import bibliometrix__three_fields_plot
+from .bibliometrix__treemap import bibliometrix__treemap
 from .bibliometrix__trend_topics import bibliometrix__trend_topics
 from .bibliometrix__word_cloud import bibliometrix__word_cloud
 from .bibliometrix__word_dynamics import bibliometrix__word_dynamics
