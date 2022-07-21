@@ -100,6 +100,7 @@ from .keywords_summarization import keywords_summarization
 from .scientopy__bar import scientopy__bar
 from .scientopy__bar_trends import scientopy__bar_trends
 from .scientopy__time_line import scientopy__time_line
+from .scientopy__top_trending_topics import scientopy__top_trending_topics
 from .scientopy__word_cloud import scientopy__word_cloud
 from .thematic_evolution_plot import thematic_evolution_plot
 from .thematic_map_summarization import thematic_map_summarization
