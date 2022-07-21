@@ -60,6 +60,7 @@ from .bibliometrix__most_local_cited_sources import (
     bibliometrix__most_local_cited_sources,
 )
 from .bibliometrix__most_relevant_sources import bibliometrix__most_relevant_sources
+from .bibliometrix__rpys import bibliometrix__rpys
 from .bibliometrix__source_dynamics import bibliometrix__source_dynamics
 from .bibliometrix__source_impact import bibliometrix__source_impact
 from .bibliometrix__sources_production_over_time import (
@@ -87,7 +88,6 @@ from .most_global_cited_documents import most_global_cited_documents
 from .most_global_cited_references import most_global_cited_references
 from .most_local_cited_references import most_local_cited_references
 from .radial_diagram import radial_diagram
-from .rpys import rpys
 from .scientopy__bar import scientopy__bar
 from .scientopy__bar_trends import scientopy__bar_trends
 from .scientopy__time_line import scientopy__time_line

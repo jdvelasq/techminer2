@@ -5,17 +5,17 @@ RPYS (Reference Publication Year Spectroscopy)
 
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/rpys.html"
+>>> file_name = "sphinx/_static/bibliometrix__rpys.html"
 
->>> from techminer2 import rpys
->>> rpys(directory=directory).plot_.write_html(file_name)
+>>> from techminer2 import bibliometrix__rpys
+>>> bibliometrix__rpys(directory=directory).plot_.write_html(file_name)
 
 .. raw:: html
 
     <iframe src="../../../_static/rpys.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
->>> rpys(directory=directory).table_.head()
+>>> bibliometrix__rpys(directory=directory).table_.head()
       Num References  Median
 1937               1    -1.0
 1938               0     0.0
@@ -26,20 +26,19 @@ RPYS (Reference Publication Year Spectroscopy)
 
 """
 import os.path
+from dataclasses import dataclass
 
 import pandas as pd
 import plotly.graph_objects as go
 
 
-class _Result:
-    """Result of the RPYS analysis."""
-
-    def __init__(self):
-        self.plot_ = None
-        self.table_ = None
+@dataclass(init=False)
+class _Results:
+    plot_: None
+    table_: None
 
 
-def rpys(
+def bibliometrix__rpys(
     directory="./",
     starting_year=None,
     ending_year=None,
@@ -59,7 +58,7 @@ def rpys(
 
     fig = _plot_rpys(indicator)
 
-    result = _Result()
+    result = _Results()
     result.table_ = indicator
     result.plot_ = fig
     return result

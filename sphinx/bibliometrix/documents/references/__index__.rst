@@ -6,6 +6,6 @@ Cited References
       most_global_cited_references
 
    .. toctree::
-      rpys
+      bibliometrix__rpys
 
 
