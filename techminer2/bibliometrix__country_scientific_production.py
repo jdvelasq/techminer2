@@ -4,23 +4,23 @@ Country Scientific Production
 
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/country_scientific_production.html"
+>>> file_name = "sphinx/_static/bibliometrix__country_scientific_production.html"
 
 
->>> from techminer2 import country_scientific_production
->>> country_scientific_production(
+>>> from techminer2 import bibliometrix__country_scientific_production
+>>> bibliometrix__country_scientific_production(
 ...     directory=directory
 ... ).write_html(file_name)
  
 .. raw:: html
 
-    <iframe src="../../../_static/country_scientific_production.html" height="410px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/bibliometrix__country_scientific_production.html" height="410px" width="100%" frameBorder="0"></iframe>
 
 """
-from .world_map import world_map
+from .vantagepoint__world_map import vantagepoint__world_map
 
 
-def country_scientific_production(
+def bibliometrix__country_scientific_production(
     directory="./",
     metric="OCC",
     database="documents",
@@ -28,7 +28,7 @@ def country_scientific_production(
 ):
     """Worldmap plot with the number of documents per country."""
 
-    return world_map(
+    return vantagepoint__world_map(
         column="countries",
         directory=directory,
         metric=metric,

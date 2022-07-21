@@ -23,6 +23,9 @@ from .bibliometrix__countries_production_over_time import (
 )
 from .bibliometrix__country_dynamics import bibliometrix__country_dynamics
 from .bibliometrix__country_impact import bibliometrix__country_impact
+from .bibliometrix__country_scientific_production import (
+    bibliometrix__country_scientific_production,
+)
 from .bibliometrix__institution_impact import bibliometrix__institution_impact
 from .bibliometrix__institutions_production_over_time import (
     bibliometrix__institutions_production_over_time,

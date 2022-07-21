@@ -10,4 +10,4 @@ Countries
       bibliometrix__countries_production_over_time
       bibliometrix__country_impact
       bibliometrix__country_dynamics
-      country_scientific_production
+      bibliometrix__country_scientific_production

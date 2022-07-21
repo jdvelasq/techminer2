@@ -4,17 +4,17 @@ World Map
 
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/world_map.html"
+>>> file_name = "sphinx/_static/vantagepoint__world_map.html"
 
->>> from techminer2 import *
->>> world_map(
+>>> from techminer2 import vantagepoint__world_map
+>>> vantagepoint__world_map(
 ...     column="countries", 
 ...     directory=directory,
 ... ).write_html(file_name)
  
 .. raw:: html
 
-    <iframe src="../../../_static/world_map.html" height="800px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/vantagepoint__world_map.html" height="800px" width="100%" frameBorder="0"></iframe>
 
 
 """
@@ -24,7 +24,7 @@ from .world_map_plot import world_map_plot
 TEXTLEN = 40
 
 
-def world_map(
+def vantagepoint__world_map(
     column,
     metric="OCC",
     colormap="Greys",
