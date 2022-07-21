@@ -46,16 +46,18 @@ Alam TM      2021    1  ...                     0.000
 
 
 """
+from dataclasses import dataclass
+
 from .bibliometrix__production_over_time import bibliometrix__production_over_time
 from .column_indicators_by_year import column_indicators_by_year
-from .documents_per import documents_per
+from .bibliometrix_documents_per import bibliometrix__documents_per
 
 
-class _Result:
-    def __init__(self):
-        self.plot_ = None
-        self.production_per_year_ = None
-        self.documents_per_author_ = None
+@dataclass(init=False)
+class _Results:
+    plot_ = None
+    production_per_year_ = None
+    documents_per_author_ = None
 
 
 def bibliometrix__authors_production_over_time(
@@ -64,21 +66,21 @@ def bibliometrix__authors_production_over_time(
 ):
     """Author production over time."""
 
-    result = _Result()
-    result.plot_ = bibliometrix__production_over_time(
+    results = _Results()
+    results.plot_ = bibliometrix__production_over_time(
         column="authors",
         top_n=top_n,
         directory=directory,
         title="Authors' Production over Time",
     )
-    result.documents_per_author_ = documents_per(
+    results.documents_per_author_ = bibliometrix__documents_per(
         column="authors",
         directory=directory,
     )
 
-    result.production_per_year_ = column_indicators_by_year(
+    results.production_per_year_ = column_indicators_by_year(
         "authors",
         directory=directory,
     )
 
-    return result
+    return results

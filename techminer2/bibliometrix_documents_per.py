@@ -2,7 +2,7 @@
 from ._read_records import read_records
 
 
-def documents_per(
+def bibliometrix__documents_per(
     column,
     directory="./",
     database="documents",

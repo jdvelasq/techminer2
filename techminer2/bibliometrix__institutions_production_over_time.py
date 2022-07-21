@@ -45,7 +45,7 @@ from dataclasses import dataclass
 
 from .bibliometrix__production_over_time import bibliometrix__production_over_time
 from .column_indicators_by_year import column_indicators_by_year
-from .documents_per import documents_per
+from .bibliometrix_documents_per import bibliometrix__documents_per
 
 
 @dataclass(init=False)
@@ -68,7 +68,7 @@ def bibliometrix__institutions_production_over_time(
         directory=directory,
         title="Institutions' production over time",
     )
-    results.documents_per_institution_ = documents_per(
+    results.documents_per_institution_ = bibliometrix__documents_per(
         column="institutions",
         directory=directory,
     )
