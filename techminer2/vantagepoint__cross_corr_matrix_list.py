@@ -4,10 +4,10 @@ Cross-correlation Matrix List
 
 Returns an auto-correlation matrix.
 
->>> from techminer2 import *
+>>> from techminer2 import vantagepoint__cross_corr_matrix_list
 >>> directory = "data/regtech/"
 
->>> cross_corr_matrix_list(
+>>> vantagepoint__cross_corr_matrix_list(
 ...     column='authors',
 ...     by="author_keywords",
 ...     top_n=10,
@@ -32,7 +32,7 @@ Returns an auto-correlation matrix.
 from .cross_corr_matrix import cross_corr_matrix
 
 
-def cross_corr_matrix_list(
+def vantagepoint__cross_corr_matrix_list(
     column,
     by,
     method="pearson",

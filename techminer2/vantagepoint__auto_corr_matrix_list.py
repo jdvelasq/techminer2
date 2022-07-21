@@ -30,7 +30,7 @@ Returns an auto-correlation matrix.
 
 
 """
-from .auto_corr_matrix import auto_corr_matrix
+from .vantagepoint__auto_corr_matrix import vantagepoint__auto_corr_matrix
 
 
 def vantagepoint__auto_corr_matrix_list(
@@ -42,7 +42,7 @@ def vantagepoint__auto_corr_matrix_list(
 ):
     """Returns an auto-correlation matrix list."""
 
-    matrix = auto_corr_matrix(
+    matrix = vantagepoint__auto_corr_matrix(
         column=column,
         method=method,
         top_n=top_n,

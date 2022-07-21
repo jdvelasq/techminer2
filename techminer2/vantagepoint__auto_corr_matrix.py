@@ -4,10 +4,11 @@ Auto-correlation Matrix
 
 Returns an auto-correlation matrix.
 
->>> from techminer2 import *
+
 >>> directory = "data/regtech/"
 
->>> auto_corr_matrix(
+>>> from techminer2 import vantagepoint__auto_corr_matrix
+>>> vantagepoint__auto_corr_matrix(
 ...     column='authors',
 ...     top_n=10,
 ...     directory=directory,
@@ -31,7 +32,7 @@ Hamdan A 2:011          -0.030101  ...        1.000000
 from .vantagepoint__co_occ_matrix import vantagepoint__co_occ_matrix
 
 
-def auto_corr_matrix(
+def vantagepoint__auto_corr_matrix(
     column,
     method="pearson",
     top_n=50,
