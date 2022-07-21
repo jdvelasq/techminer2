@@ -11,8 +11,8 @@ Word Association
         * Cosine association
 
         .. toctree::
-            co_occ_word_association
-            co_occ_svd_map
+            tlab__word_co_occurrentes_plot
+            tlab__word_associations_mds_map
 
 
     * **Tables**

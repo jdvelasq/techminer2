@@ -94,7 +94,6 @@ from .bibliometrix__treemap import bibliometrix__treemap
 from .bibliometrix__trend_topics import bibliometrix__trend_topics
 from .bibliometrix__word_cloud import bibliometrix__word_cloud
 from .bibliometrix__word_dynamics import bibliometrix__word_dynamics
-from .co_occ_word_association import co_occ_word_association
 from .coverage import coverage
 from .emergent_themes import emergent_themes_with_lda, emergent_themes_with_nmf
 from .factorial_analysis import factorial_analysis_with_mds
@@ -105,12 +104,14 @@ from .scientopy__bar import scientopy__bar
 from .scientopy__bar_trends import scientopy__bar_trends
 from .scientopy__time_line import scientopy__time_line
 from .scientopy__word_cloud import scientopy__word_cloud
-from .tlab__radial_diagram import tlab__radial_diagram
-from .tlab__svd_of_co_occ_matrix import tlab__svd_of_co_occ_matrix
-from .tlab__svd_of_tf_matrix import tlab__svd_of_tf_matrix
 from .thematic_analysis import thematic_analysis
 from .thematic_evolution_plot import thematic_evolution_plot
 from .thematic_map_summarization import thematic_map_summarization
+from .tlab__radial_diagram import tlab__radial_diagram
+from .tlab__svd_of_co_occ_matrix import tlab__svd_of_co_occ_matrix
+from .tlab__svd_of_tf_matrix import tlab__svd_of_tf_matrix
+from .tlab__word_associations_mds_map import tlab__word_associations_mds_map
+from .tlab__word_co_occurrentes_plot import tlab__word_co_occurrentes_plot
 from .vantagepoint__auto_corr_matrix import vantagepoint__auto_corr_matrix
 from .vantagepoint__auto_corr_matrix_list import vantagepoint__auto_corr_matrix_list
 from .vantagepoint__bar_chart import vantagepoint__bar_chart

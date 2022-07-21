@@ -1,13 +1,13 @@
 """
-Word Association
+Word Co-occurrences Plot
 ===============================================================================
 
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/co_occ_word_association.html"
+>>> file_name = "sphinx/_static/tlab__word_co_occurrentes_plot.html"
 
->>> from techminer2 import co_occ_word_association
->>> co_occ_word_association(
+>>> from techminer2 import tlab__word_co_occurrentes_plot
+>>> tlab__word_co_occurrentes_plot(
 ...     term="regtech",
 ...     min_occ=4,
 ...     column='author_keywords',
@@ -16,18 +16,18 @@ Word Association
 
 .. raw:: html
 
-    <iframe src="../../../_static/co_occ_word_association.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/tlab__word_co_occurrentes_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 from .bar_plot import bar_plot
 from .cleveland_plot import cleveland_plot
-from .vantagepoint__co_occ_matrix_list import vantagepoint__co_occ_matrix_list
 from .column_plot import column_plot
 from .line_plot import line_plot
 from .pie_plot import pie_plot
+from .vantagepoint__co_occ_matrix_list import vantagepoint__co_occ_matrix_list
 
 
-def co_occ_word_association(
+def tlab__word_co_occurrentes_plot(
     term,
     column,
     top_n=None,
