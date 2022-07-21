@@ -1,12 +1,12 @@
 """
-TF Matrix (ok!)
+TF Matrix
 ===============================================================================
 
 
->>> from techminer2 import *
+>>> from techminer2 import vantagepoint__tf_matrix
 >>> directory = "data/regtech/"
 
->>> tf_matrix(
+>>> vantagepoint__tf_matrix(
 ...     'authors', 
 ...     min_occ=2, 
 ...     directory=directory,
@@ -32,7 +32,7 @@ from .items2counters import items2counters
 # pylint: disable=too-many-arguments
 
 
-def tf_matrix(
+def vantagepoint__tf_matrix(
     column,
     min_occ=None,
     max_occ=None,

@@ -127,5 +127,7 @@ from .vantagepoint__matrix_viewer import vantagepoint__matrix_viewer
 from .vantagepoint__pie_chart import vantagepoint__pie_chart
 from .vantagepoint__record_view import vantagepoint__record_view
 from .vantagepoint__summary_view import vantagepoint__summary_view
+from .vantagepoint__tf_idf_matrix import vantagepoint__tf_idf_matrix
+from .vantagepoint__tf_matrix import vantagepoint__tf_matrix
 from .vantagepoint__treemap import vantagepoint__treemap
 from .vantagepoint__world_map import vantagepoint__world_map

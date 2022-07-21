@@ -59,7 +59,7 @@ Name: CLUSTER, dtype: int64
 """
 import pandas as pd
 
-from .tf_matrix import tf_matrix
+from .vantagepoint__tf_matrix import vantagepoint__tf_matrix
 
 
 class _ThematicAnalysis:
@@ -166,7 +166,7 @@ class _ThematicAnalysis:
     def _build_tf_matrix(self):
         """Build the TF matrix."""
 
-        self._tf_matrix = tf_matrix(
+        self._tf_matrix = vantagepoint__tf_matrix(
             column=self.column,
             min_occ=self.min_occ,
             max_occ=self.max_occ,

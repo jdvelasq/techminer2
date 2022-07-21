@@ -64,7 +64,7 @@ from sklearn.decomposition import NMF, LatentDirichletAllocation
 from sklearn.manifold import MDS
 
 # from .bubble_map import bubble_map
-from .tf_matrix import tf_matrix
+from .vantagepoint__tf_matrix import vantagepoint__tf_matrix
 
 ##################
 
@@ -89,7 +89,7 @@ def emergent_themes_with_nmf(
 ):
     """Emergent Themes with NMF"""
 
-    _tf_matrix = tf_matrix(
+    _tf_matrix = vantagepoint__tf_matrix(
         column=column,
         min_occ=min_occ,
         max_occ=max_occ,
@@ -134,7 +134,7 @@ def emergent_themes_with_lda(
 ):
     """Emergent Themes with NMF"""
 
-    _tf_matrix = tf_matrix(
+    _tf_matrix = vantagepoint__tf_matrix(
         column=column,
         min_occ=min_occ,
         max_occ=max_occ,

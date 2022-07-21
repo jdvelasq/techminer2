@@ -1,12 +1,13 @@
 """
-TF-IDF Matrix (ok!)
+TF-IDF Matrix
 ===============================================================================
 
 
->>> from techminer2 import *
+
 >>> directory = "data/regtech/"
 
->>> tf_idf_matrix(
+>>> from techminer2 import vantagepoint__tf_idf_matrix
+>>> vantagepoint__tf_idf_matrix(
 ...     'authors', 
 ...     min_occ=2, 
 ...     directory=directory,
@@ -25,10 +26,10 @@ Barberis JN, 2016, NEW ECON WINDOWS, P69                  0.629705  ...         
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfTransformer
 
-from .tf_matrix import tf_matrix
+from .vantagepoint__tf_matrix import vantagepoint__tf_matrix
 
 
-def tf_idf_matrix(
+def vantagepoint__tf_idf_matrix(
     column,
     min_occ=None,
     max_occ=None,
@@ -45,7 +46,7 @@ def tf_idf_matrix(
     Parameters
     ----------
     """
-    tfmatrix = tf_matrix(
+    tfmatrix = vantagepoint__tf_matrix(
         directory=directory,
         column=column,
         min_occ=min_occ,

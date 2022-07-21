@@ -4,8 +4,8 @@ TF-IDF
 
 
     .. toctree::
-        tf_matrix 
+        vantagepoint__tf_matrix 
 
     .. toctree::        
-        tf_idf_matrix
+        vantagepoint__tf_idf_matrix
 

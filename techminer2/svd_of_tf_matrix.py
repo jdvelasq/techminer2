@@ -49,8 +49,8 @@ regulatory technologies (regtech) 12:047  0.600339  ... -0.220161
 import pandas as pd
 from sklearn.decomposition import TruncatedSVD
 
-from .tf_matrix import tf_matrix
 from .map_chart import map_chart
+from .vantagepoint__tf_matrix import vantagepoint__tf_matrix
 
 
 class _Result:
@@ -72,7 +72,7 @@ def svd_of_tf_matrix(
     delta=1,
 ):
 
-    matrix = tf_matrix(
+    matrix = vantagepoint__tf_matrix(
         column=column,
         min_occ=min_occ,
         max_occ=max_occ,
