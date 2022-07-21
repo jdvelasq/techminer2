@@ -113,6 +113,7 @@ from .terms_by_year import terms_by_year
 from .thematic_analysis import thematic_analysis
 from .thematic_evolution_plot import thematic_evolution_plot
 from .thematic_map_summarization import thematic_map_summarization
+from .vantagepoint__auto_corr_matrix_list import vantagepoint__auto_corr_matrix_list
 from .vantagepoint__bar_chart import vantagepoint__bar_chart
 from .vantagepoint__cleveland_chart import vantagepoint__cleveland_chart
 from .vantagepoint__co_occ_matrix import vantagepoint__co_occ_matrix

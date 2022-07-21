@@ -4,10 +4,11 @@ Auto-correlation Matrix List
 
 Returns an auto-correlation matrix.
 
->>> from techminer2 import *
+
 >>> directory = "data/regtech/"
 
->>> auto_corr_matrix_list(
+>>> from techminer2 import vantagepoint__auto_corr_matrix_list
+>>> vantagepoint__auto_corr_matrix_list(
 ...     column='authors',
 ...     top_n=10,
 ...     directory=directory,
@@ -32,7 +33,7 @@ Returns an auto-correlation matrix.
 from .auto_corr_matrix import auto_corr_matrix
 
 
-def auto_corr_matrix_list(
+def vantagepoint__auto_corr_matrix_list(
     column,
     method="pearson",
     top_n=50,
