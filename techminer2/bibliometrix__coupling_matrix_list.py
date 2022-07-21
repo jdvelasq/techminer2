@@ -5,8 +5,8 @@ Coupling Matrix List
 
 >>> directory = "data/regtech/"
 
->>> from techminer2.bibliometrix.clustering.coupling_matrix_list import coupling_matrix_list
->>> coupling_matrix_list(
+>>> from techminer2 import bibliometrix__coupling_matrix_list
+>>> bibliometrix__coupling_matrix_list(
 ...     unit_of_analysis='article',
 ...     coupling_measured_by='local_references',
 ...     top_n=15,
@@ -42,23 +42,14 @@ from .vantagepoint__co_occ_matrix_list import _add_counters_to_items
 #
 
 
-def coupling_matrix_list(
+def bibliometrix__coupling_matrix_list(
     unit_of_analysis,
     coupling_measured_by,
     top_n=250,
     metric="local_citations",
     directory="./",
 ):
-    """Coupling matrix."""
-
-    # if coupling_measured_by == "local_references":
-    #     return _coupling_by_references(
-    #         unit_of_analysis=unit_of_analysis,
-    #         top_n=top_n,
-    #         metric=metric,
-    #         directory=directory,
-    #     )
-    # return _coupling_by_other_column()
+    """Coupling matrix list."""
 
     records = read_records(directory, database="documents", use_filter=True)
     records = records[
@@ -126,76 +117,3 @@ def coupling_matrix_list(
     )
 
     return matrix_list
-
-
-# def _coupling_by_references(unit_of_analysis, top_n, metric, directory):
-
-#     records = read_records(directory, database="documents", use_filter=True)
-#     records = records[[unit_of_analysis, "local_references"]]
-
-#     # Prepare: expands the coupling_measured_by -> references
-#     records = records[records.local_references.notnull()]
-#     records["local_references"] = records["local_references"].str.split(";")
-#     records = records.explode("local_references")
-#     records["local_references"] = records["local_references"].str.strip()
-
-#     # Prepare: expands the unit_of_analysis
-#     records[unit_of_analysis] = records[unit_of_analysis].str.split(";")
-#     records = records.explode(unit_of_analysis)
-#     records[unit_of_analysis] = records[unit_of_analysis].str.strip()
-
-#     # Gruoup by references
-#     records = records.groupby("local_references", as_index=False).agg(
-#         {unit_of_analysis: list}
-#     )
-#     records[unit_of_analysis] = records[unit_of_analysis].map(set)
-#     records[unit_of_analysis] = records[unit_of_analysis].map(sorted)
-#     records[unit_of_analysis] = records[unit_of_analysis].str.join("; ")
-
-#     # Filter by top references
-#     selected_refs = read_records(directory, database="references", use_filter=False)
-#     if metric == "local_references":
-#         selected_columns = ["local_citations", "global_citations", "article"]
-#     else:
-#         selected_columns = ["global_citations", "local_citations", "article"]
-#     selected_refs = selected_refs.sort_values(
-#         selected_columns, ascending=[False, False, True]
-#     )
-#     selected_refs = selected_refs.article.head(top_n)
-#     records = records[records.local_references.isin(selected_refs)]
-
-#     # Compute matrix list
-#     matrix_list = records[[unit_of_analysis]].copy()
-#     matrix_list = matrix_list.rename(columns={unit_of_analysis: "column"})
-#     matrix_list = matrix_list.assign(row=records[[unit_of_analysis]])
-
-#     for name in ["column", "row"]:
-#         matrix_list[name] = matrix_list[name].str.split(";")
-#         matrix_list = matrix_list.explode(name)
-#         matrix_list[name] = matrix_list[name].str.strip()
-
-#     matrix_list["OCC"] = 1
-#     matrix_list = matrix_list.groupby(["row", "column"], as_index=False).aggregate(
-#         "sum"
-#     )
-
-#     matrix_list = _add_counters_to_items(
-#         unit_of_analysis,
-#         "column",
-#         directory,
-#         "documents",
-#         matrix_list,
-#     )
-#     matrix_list = _add_counters_to_items(
-#         unit_of_analysis,
-#         "row",
-#         directory,
-#         "documents",
-#         matrix_list,
-#     )
-
-#     return matrix_list
-
-
-# def _coupling_by_other_column():
-#     pass

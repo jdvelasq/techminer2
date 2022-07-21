@@ -63,7 +63,7 @@ from .network_community_detection import network_community_detection
 from .network_degree_plot import network_degree_plot
 from .network_indicators import network_indicators
 from .network_plot import network_plot
-from .coupling_matrix_list import coupling_matrix_list
+from .bibliometrix__coupling_matrix_list import bibliometrix__coupling_matrix_list
 
 
 class _Result:
@@ -89,7 +89,7 @@ def coupling_network(
 ):
     """Clustering by coupling."""
 
-    matrix_list = coupling_matrix_list(
+    matrix_list = bibliometrix__coupling_matrix_list(
         unit_of_analysis=unit_of_analysis,
         coupling_measured_by=coupling_measured_by,
         top_n=top_n,
