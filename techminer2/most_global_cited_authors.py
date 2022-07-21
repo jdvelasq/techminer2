@@ -19,7 +19,7 @@
     <iframe src="../../../_static/most_global_cited_authors.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .chart import chart
+from .vantagepoint__chart import vantagepoint__chart
 
 
 def most_global_cited_authors(
@@ -32,7 +32,7 @@ def most_global_cited_authors(
 ):
     """Most global cited authors."""
 
-    return chart(
+    return vantagepoint__chart(
         column="authors",
         directory=directory,
         metric="global_citations",

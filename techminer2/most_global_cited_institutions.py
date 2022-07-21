@@ -20,7 +20,7 @@ Most Global Cited Institutions
     <iframe src="../../../_static/most_global_cited_institutions.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .chart import chart
+from .vantagepoint__chart import vantagepoint__chart
 
 
 def most_global_cited_institutions(
@@ -33,7 +33,7 @@ def most_global_cited_institutions(
 ):
     """Most global cited institutions."""
 
-    return chart(
+    return vantagepoint__chart(
         column="institutions",
         directory=directory,
         metric="global_citations",

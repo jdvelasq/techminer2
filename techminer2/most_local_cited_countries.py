@@ -19,7 +19,7 @@ Most Local Cited Countries
     <iframe src="../../../_static/most_local_cited_countries.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .chart import chart
+from .vantagepoint__chart import vantagepoint__chart
 
 
 def most_local_cited_countries(
@@ -29,7 +29,7 @@ def most_local_cited_countries(
 ):
     """Most Local Cited Countries (from Reference Lists)."""
 
-    return chart(
+    return vantagepoint__chart(
         column="countries",
         directory=directory,
         top_n=top_n,

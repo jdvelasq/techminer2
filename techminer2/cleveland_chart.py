@@ -20,7 +20,7 @@ Cleveland Chart
     <iframe src="../../_static/cleveland_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .chart import chart
+from .vantagepoint__chart import vantagepoint__chart
 
 
 def cleveland_chart(
@@ -34,7 +34,7 @@ def cleveland_chart(
 ):
     """Plots a bar chart from a column of a dataframe."""
 
-    return chart(
+    return vantagepoint__chart(
         column=column,
         directory=directory,
         top_n=top_n,

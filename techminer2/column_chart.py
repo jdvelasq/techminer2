@@ -18,7 +18,7 @@ Column chart
     <iframe src="../../_static/column_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .chart import chart
+from .vantagepoint__chart import vantagepoint__chart
 
 
 def column_chart(
@@ -32,7 +32,7 @@ def column_chart(
 ):
     """Plots a bar chart from a column of a dataframe."""
 
-    return chart(
+    return vantagepoint__chart(
         column=column,
         directory=directory,
         top_n=top_n,

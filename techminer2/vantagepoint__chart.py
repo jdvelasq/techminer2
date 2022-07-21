@@ -9,7 +9,7 @@ from .pie_plot import pie_plot
 from .wordcloud import wordcloud
 
 
-def chart(
+def vantagepoint__chart(
     column,
     directory="./",
     top_n=20,

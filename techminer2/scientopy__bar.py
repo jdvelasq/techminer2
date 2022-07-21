@@ -19,6 +19,6 @@ Bar
     <iframe src="../_static/scientopy__bar.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .bar_chart import bar_chart
+from .vantagepoint__bar_chart import vantagepoint__bar_chart
 
-scientopy__bar = bar_chart
+scientopy__bar = vantagepoint__bar_chart

@@ -21,7 +21,7 @@ Most Frequent Authors
     <iframe src="../../../_static/most_frequent_authors.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .chart import chart
+from .vantagepoint__chart import vantagepoint__chart
 
 
 def most_frequent_authors(
@@ -34,7 +34,7 @@ def most_frequent_authors(
 ):
     """Plots the number of documents by author using the specified plot."""
 
-    return chart(
+    return vantagepoint__chart(
         column="authors",
         directory=directory,
         top_n=top_n,

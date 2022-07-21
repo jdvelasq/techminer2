@@ -26,7 +26,7 @@ Most Frequent Words
 
 
 """
-from .chart import chart
+from .vantagepoint__chart import vantagepoint__chart
 
 
 def most_frequent_words(
@@ -40,7 +40,7 @@ def most_frequent_words(
 ):
     """Plots the number of documents by country using the specified plot."""
 
-    return chart(
+    return vantagepoint__chart(
         column=column,
         directory=directory,
         top_n=top_n,

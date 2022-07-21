@@ -20,7 +20,7 @@ Most Relevant Sources
     <iframe src="../../_static/most_relevant_sources.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .chart import chart
+from .vantagepoint__chart import vantagepoint__chart
 
 
 def most_relevant_sources(
@@ -33,7 +33,7 @@ def most_relevant_sources(
 ):
     """Most Relevant Sources."""
 
-    return chart(
+    return vantagepoint__chart(
         column="source_abbr",
         directory=directory,
         top_n=top_n,

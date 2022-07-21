@@ -21,7 +21,7 @@ Most Frequent Institutions
     <iframe src="../../../_static/most_frequent_institutions.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .chart import chart
+from .vantagepoint__chart import vantagepoint__chart
 
 
 def most_frequent_institutions(
@@ -34,7 +34,7 @@ def most_frequent_institutions(
 ):
     """Plots the number of documents by institutions using the specified plot."""
 
-    return chart(
+    return vantagepoint__chart(
         column="institutions",
         directory=directory,
         top_n=top_n,

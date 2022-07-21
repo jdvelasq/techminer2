@@ -21,7 +21,7 @@ Most Global Cited Countries
     <iframe src="../../../_static/most_global_cited_countries.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .chart import chart
+from .vantagepoint__chart import vantagepoint__chart
 
 
 def most_global_cited_countries(
@@ -34,7 +34,7 @@ def most_global_cited_countries(
 ):
     """Most global cited countries."""
 
-    return chart(
+    return vantagepoint__chart(
         column="countries",
         directory=directory,
         metric="global_citations",
