@@ -2,8 +2,6 @@
 from .abstract_concordances import abstract_concordances
 from .abstract_screening import abstract_screening
 from .abstract_summarization import abstract_summarization
-from .associations_for_a_item import associations_for_a_item
-from .associations_for_all_items import associations_for_all_items
 from .bibliometrix__annual_scientific_production import (
     bibliometrix__annual_scientific_production,
 )
@@ -95,7 +93,6 @@ from .bibliometrix__trend_topics import bibliometrix__trend_topics
 from .bibliometrix__word_cloud import bibliometrix__word_cloud
 from .bibliometrix__word_dynamics import bibliometrix__word_dynamics
 from .coverage import coverage
-from .emergent_themes import emergent_themes_with_lda, emergent_themes_with_nmf
 from .factorial_analysis import factorial_analysis_with_mds
 from .import_scopus_files import import_scopus_files
 from .keyword_concordances import keyword_concordances
@@ -107,8 +104,14 @@ from .scientopy__word_cloud import scientopy__word_cloud
 from .thematic_analysis import thematic_analysis
 from .thematic_evolution_plot import thematic_evolution_plot
 from .thematic_map_summarization import thematic_map_summarization
+from .tlab__emergent_themes import (
+    tlab__emergent_themes_with_lda,
+    tlab__emergent_themes_with_nmf,
+)
 from .tlab__svd_of_co_occ_matrix import tlab__svd_of_co_occ_matrix
 from .tlab__svd_of_tf_matrix import tlab__svd_of_tf_matrix
+from .tlab__word_associations_for_a_item import tlab__word_associations_for_a_item
+from .tlab__word_associations_for_all_items import tlab__word_associations_for_all_items
 from .tlab__word_associations_mds_map import tlab__word_associations_mds_map
 from .tlab__word_co_occurrentes_plot import tlab__word_co_occurrentes_plot
 from .tlab__words_radial_diagram import tlab__words_radial_diagram

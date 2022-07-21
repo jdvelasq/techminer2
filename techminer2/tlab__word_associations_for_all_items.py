@@ -1,5 +1,5 @@
 """
-Associations for All Items
+Word Associations for All Items
 ===============================================================================
 
 
@@ -7,8 +7,8 @@ Associations for All Items
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import associations_for_all_items
->>> associations_for_all_items(
+>>> from techminer2 import tlab__word_associations_for_all_items
+>>> tlab__word_associations_for_all_items(
 ...     column='author_keywords',
 ...     directory=directory,
 ... ).head(10)
@@ -29,12 +29,12 @@ Associations for All Items
 from .vantagepoint__co_occ_matrix_list import vantagepoint__co_occ_matrix_list
 
 
-def associations_for_all_items(
+def tlab__word_associations_for_all_items(
     column,
     directory="./",
     database="documents",
 ):
-    """Computes the co-occurrence matrix for a given column."""
+    """Computes the co-occurrence matrix list."""
 
     return vantagepoint__co_occ_matrix_list(
         column=column,

@@ -18,8 +18,8 @@ Word Association
     * **Tables**
 
         .. toctree::
-            associations_for_a_item
-            associations_for_all_items
+            tlab__word_associations_for_a_item
+            tlab__word_associations_for_all_items
             
             
         * Co-occurrence Matrix: See `Co-occurrence Matrix <../../co_occ_matrix_list.html>`__

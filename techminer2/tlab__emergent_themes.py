@@ -4,10 +4,11 @@ Modeling of Emergent Themes
 
 Topic extraction using non-negative matrix factorization.
 
->>> from techminer2 import *
+
 >>> directory = "data/regtech/"
 
->>> nmf = emergent_themes_with_nmf(
+>>> from techminer2 import tlab__emergent_themes_with_nmf
+>>> nmf = tlab__emergent_themes_with_nmf(
 ...     column="author_keywords",
 ...     min_occ=4,
 ...     max_occ=None,
@@ -33,8 +34,8 @@ Topic extraction using non-negative matrix factorization.
 
 
 
-
->>> lda = emergent_themes_with_lda(
+>>> from techminer2 import tlab__emergent_themes_with_lda
+>>> lda = tlab__emergent_themes_with_lda(
 ...     column="author_keywords",
 ...     min_occ=4,
 ...     max_occ=None,
@@ -75,7 +76,7 @@ class _Result:
         self.mds_data_ = None
 
 
-def emergent_themes_with_nmf(
+def tlab__emergent_themes_with_nmf(
     column,
     min_occ=None,
     max_occ=None,
@@ -122,7 +123,7 @@ def emergent_themes_with_nmf(
     return result
 
 
-def emergent_themes_with_lda(
+def tlab__emergent_themes_with_lda(
     column,
     min_occ=None,
     max_occ=None,

@@ -19,7 +19,7 @@ Items Assocations Plot
 
 
 """
-from .associations_for_a_item import associations_for_a_item
+from .tlab__word_associations_for_a_item import tlab__word_associations_for_a_item
 from .bar_px import bar_px
 from .cleveland_px import cleveland_px
 from .column_px import column_px
@@ -37,7 +37,7 @@ def items_associations_plot(
 ):
     """Items association plot."""
 
-    word_associations = associations_for_a_item(
+    word_associations = tlab__word_associations_for_a_item(
         item=item,
         column=column,
         directory=directory,

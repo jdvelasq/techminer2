@@ -1,13 +1,13 @@
 """
-Associations for a Item
+Word Associations for a Item
 ===============================================================================
 
 
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import associations_for_a_item
->>> associations_for_a_item(
+>>> from techminer2 import tlab__word_associations_for_a_item
+>>> tlab__word_associations_for_a_item(
 ...     'regtech',
 ...     'author_keywords',
 ...     directory=directory,
@@ -21,10 +21,10 @@ financial regulation 08:091        8
 Name: OCC, dtype: int64
 
 """
-from .associations_for_all_items import associations_for_all_items
+from .tlab__word_associations_for_all_items import tlab__word_associations_for_all_items
 
 
-def associations_for_a_item(
+def tlab__word_associations_for_a_item(
     item,
     column,
     directory="./",
@@ -32,7 +32,7 @@ def associations_for_a_item(
 ):
     """Computes the co-occurrence matrix for a given column."""
 
-    word_associations = associations_for_all_items(
+    word_associations = tlab__word_associations_for_all_items(
         column=column,
         directory=directory,
         database=database,
