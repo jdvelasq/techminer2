@@ -11,7 +11,7 @@ World Map
 ...     column="countries", 
 ...     directory=directory,
 ... ).write_html(file_name)
- 
+
 .. raw:: html
 
     <iframe src="../../../_static/vantagepoint__world_map.html" height="800px" width="100%" frameBorder="0"></iframe>
