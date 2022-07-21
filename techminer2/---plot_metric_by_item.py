@@ -1,6 +1,6 @@
 """Make a plot of a metric by item."""
 
-from .bar_plot import bar_plot
+from ._plots.bar_plot import bar_plot
 from .cleveland_plot import cleveland_plot
 from .column_plot import column_plot
 from .line_plot import line_plot

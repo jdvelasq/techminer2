@@ -19,7 +19,7 @@ Word Co-occurrences Plot
     <iframe src="../../../_static/tlab__word_co_occurrentes_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .bar_plot import bar_plot
+from ._plots.bar_plot import bar_plot
 from .cleveland_plot import cleveland_plot
 from .column_plot import column_plot
 from .line_plot import line_plot
