@@ -2,7 +2,7 @@ Social Structure
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    .. toctree::
-      collaboration_network
+      bibliometrix__collaboration_network
       collaboration_worldmap
 
       
