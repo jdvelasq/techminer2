@@ -108,7 +108,6 @@ from .scientopy__time_line import scientopy__time_line
 from .scientopy__word_cloud import scientopy__word_cloud
 from .svd_of_co_occ_matrix import svd_of_co_occ_matrix
 from .svd_of_tf_matrix import svd_of_tf_matrix
-from .vantagepoint__terms_by_year import vantagepoint__terms_by_year
 from .thematic_analysis import thematic_analysis
 from .thematic_evolution_plot import thematic_evolution_plot
 from .thematic_map_summarization import thematic_map_summarization
@@ -128,6 +127,7 @@ from .vantagepoint__matrix_viewer import vantagepoint__matrix_viewer
 from .vantagepoint__pie_chart import vantagepoint__pie_chart
 from .vantagepoint__record_view import vantagepoint__record_view
 from .vantagepoint__summary_view import vantagepoint__summary_view
+from .vantagepoint__terms_by_year import vantagepoint__terms_by_year
 from .vantagepoint__tf_idf_matrix import vantagepoint__tf_idf_matrix
 from .vantagepoint__tf_matrix import vantagepoint__tf_matrix
 from .vantagepoint__treemap import vantagepoint__treemap
