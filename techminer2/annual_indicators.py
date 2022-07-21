@@ -112,3 +112,52 @@ def annual_indicators(
         )
 
     return records
+
+
+def time_plot(
+    indicators,
+    metric,
+    title,
+):
+    """Makes a line plot for annual indicators."""
+
+    column_names = {
+        column: column.replace("_", " ").title()
+        for column in indicators.columns
+        if column not in ["OCC", "cum_OCC"]
+    }
+    column_names["OCC"] = "OCC"
+    column_names["cum_OCC"] = "cum_OCC"
+    indicators = indicators.rename(columns=column_names)
+
+    fig = px.line(
+        indicators,
+        x=indicators.index,
+        y=column_names[metric],
+        title=title,
+        markers=True,
+        hover_data=["OCC", "Global Citations", "Local Citations"],
+    )
+    fig.update_traces(
+        marker=dict(size=10, line=dict(color="darkslategray", width=2)),
+        marker_color="rgb(171,171,171)",
+        line=dict(color="darkslategray"),
+    )
+    fig.update_layout(
+        paper_bgcolor="white",
+        plot_bgcolor="white",
+    )
+    fig.update_yaxes(
+        linecolor="gray",
+        linewidth=2,
+        gridcolor="lightgray",
+        griddash="dot",
+    )
+    fig.update_xaxes(
+        linecolor="gray",
+        linewidth=2,
+        gridcolor="lightgray",
+        griddash="dot",
+        tickangle=270,
+    )
+    return fig

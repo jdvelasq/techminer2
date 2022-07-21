@@ -2,10 +2,12 @@
 from .abstract_concordances import abstract_concordances
 from .abstract_screening import abstract_screening
 from .abstract_summarization import abstract_summarization
-from .annual_scientific_production import annual_scientific_production
 from .associations_for_a_item import associations_for_a_item
 from .associations_for_all_items import associations_for_all_items
 from .average_citations_per_year import average_citations_per_year
+from .bibliometrix__annual_scientific_production import (
+    bibliometrix__annual_scientific_production,
+)
 from .bibliometrix__main_information import bibliometrix__main_information
 from .bradford_law import bradford_law
 from .co_citation_matrix_list import co_citation_matrix_list

@@ -32,7 +32,7 @@ def time_plot(
     metric,
     title,
 ):
-    """Makes a line plot for annual indicators."""
+    """Makes a time line plot for indicators."""
 
     column_names = {
         column: column.replace("_", " ").title()
