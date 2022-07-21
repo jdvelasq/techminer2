@@ -1,5 +1,5 @@
 """
-Thematic analysis of documents
+Thematic Analysis of Documents
 ===============================================================================
 
 The implemented methodology is based on the Thematic Analysis of Elementary
@@ -24,10 +24,11 @@ Contexts implemented in T-LAB.
 ...     sublinear_tf=False,
 ... )
 
->>> from techminer2 import *
+
 >>> directory = "data/regtech/"
 
->>> analysis = thematic_analysis(
+>>> from techminer2 import tlab__thematic_analysis
+>>> analysis = tlab__thematic_analysis(
 ...     column="author_keywords",
 ...     min_occ=4,
 ...     directory=directory,
@@ -174,7 +175,7 @@ class _ThematicAnalysis:
         )
 
 
-def thematic_analysis(
+def tlab__thematic_analysis(
     column,
     min_occ=None,
     max_occ=None,

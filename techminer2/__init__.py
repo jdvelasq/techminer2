@@ -101,7 +101,6 @@ from .scientopy__bar import scientopy__bar
 from .scientopy__bar_trends import scientopy__bar_trends
 from .scientopy__time_line import scientopy__time_line
 from .scientopy__word_cloud import scientopy__word_cloud
-from .thematic_analysis import thematic_analysis
 from .thematic_evolution_plot import thematic_evolution_plot
 from .thematic_map_summarization import thematic_map_summarization
 from .tlab__emergent_themes import (
@@ -110,6 +109,7 @@ from .tlab__emergent_themes import (
 )
 from .tlab__svd_of_co_occ_matrix import tlab__svd_of_co_occ_matrix
 from .tlab__svd_of_tf_matrix import tlab__svd_of_tf_matrix
+from .tlab__thematic_analysis import tlab__thematic_analysis
 from .tlab__word_associations_for_a_item import tlab__word_associations_for_a_item
 from .tlab__word_associations_for_all_items import tlab__word_associations_for_all_items
 from .tlab__word_associations_mds_map import tlab__word_associations_mds_map
