@@ -49,6 +49,9 @@ from .bibliometrix__most_global_cited_documents import (
 from .bibliometrix__most_global_cited_institutions import (
     bibliometrix__most_global_cited_institutions,
 )
+from .bibliometrix__most_global_cited_references import (
+    bibliometrix__most_global_cited_references,
+)
 from .bibliometrix__most_global_cited_sources import (
     bibliometrix__most_global_cited_sources,
 )
@@ -63,6 +66,9 @@ from .bibliometrix__most_local_cited_documents import (
 )
 from .bibliometrix__most_local_cited_institutions import (
     bibliometrix__most_local_cited_institutions,
+)
+from .bibliometrix__most_local_cited_references import (
+    bibliometrix__most_local_cited_references,
 )
 from .bibliometrix__most_local_cited_sources import (
     bibliometrix__most_local_cited_sources,
@@ -92,8 +98,6 @@ from .keyword_concordances import keyword_concordances
 from .keywords_summarization import keywords_summarization
 from .list_view import list_view
 from .most_frequent_words import most_frequent_words
-from .most_global_cited_references import most_global_cited_references
-from .most_local_cited_references import most_local_cited_references
 from .radial_diagram import radial_diagram
 from .scientopy__bar import scientopy__bar
 from .scientopy__bar_trends import scientopy__bar_trends

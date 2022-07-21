@@ -4,23 +4,23 @@ Most Local Cited References
 
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/most_local_cited_references.html"
+>>> file_name = "sphinx/_static/bibliometrix__most_local_cited_references.html"
 
->>> from techminer2 import most_local_cited_references
->>> most_local_cited_references(
+>>> from techminer2 import bibliometrix__most_local_cited_references
+>>> bibliometrix__most_local_cited_references(
 ...     top_n=20,
 ...     directory=directory,
 ... ).write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../_static/most_local_cited_references.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/bibliometrix__most_local_cited_references.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 from .bibliometrix__cited_documents import bibiometrix_cited_documents
 
 
-def most_local_cited_references(
+def bibliometrix__most_local_cited_references(
     directory="./",
     top_n=20,
 ):
