@@ -15,6 +15,8 @@ from .bibliometrix__average_citations_per_year import (
     bibliometrix__average_citations_per_year,
 )
 from .bibliometrix__bradford_law import bibliometrix__bradford_law
+from .bibliometrix__co_citation_matrix_list import bibliometrix__co_citation_matrix_list
+from .bibliometrix__co_citation_network import bibliometrix__co_citation_network
 from .bibliometrix__corresponding_authors_country import (
     bibliometrix__corresponding_authors_country,
 )
@@ -27,6 +29,7 @@ from .bibliometrix__country_scientific_production import (
     bibliometrix__country_scientific_production,
 )
 from .bibliometrix__coupling_matrix_list import bibliometrix__coupling_matrix_list
+from .bibliometrix__coupling_network import bibliometrix__coupling_network
 from .bibliometrix__institution_impact import bibliometrix__institution_impact
 from .bibliometrix__institutions_production_over_time import (
     bibliometrix__institutions_production_over_time,
@@ -87,13 +90,10 @@ from .bibliometrix__treemap import bibliometrix__treemap
 from .bibliometrix__trend_topics import bibliometrix__trend_topics
 from .bibliometrix__word_cloud import bibliometrix__word_cloud
 from .bibliometrix__word_dynamics import bibliometrix__word_dynamics
-from .co_citation_matrix_list import co_citation_matrix_list
-from .co_citation_network import co_citation_network
 from .co_occ_word_association import co_occ_word_association
 from .co_words_network import co_words_network
 from .collaboration_network import collaboration_network
 from .collaboration_worldmap import collaboration_worldmap
-from .bibliometrix__coupling_network import bibliometrix__coupling_network
 from .coverage import coverage
 from .emergent_themes import emergent_themes_with_lda, emergent_themes_with_nmf
 from .factorial_analysis import factorial_analysis_with_mds

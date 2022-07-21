@@ -5,8 +5,8 @@ Co-citation Network
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import co_citation_network
->>> nnet = co_citation_network(
+>>> from techminer2 import bibliometrix__co_citation_network
+>>> nnet = bibliometrix__co_citation_network(
 ...     top_n=50,
 ...     directory=directory,
 ...     method="louvain",
@@ -15,12 +15,12 @@ Co-citation Network
 ...     delta=1.0,    
 ... )
 
->>> file_name = "sphinx/_static/co_citation_network_plot.html"
+>>> file_name = "sphinx/_static/bibliometrix__co_citation_network_plot.html"
 >>> nnet.plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../_static/co_citation_network_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/bibliometrix__co_citation_network_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> nnet.communities_.head()
                                                CL_00  ...                                   CL_05
@@ -32,12 +32,12 @@ Co-citation Network
 <BLANKLINE>
 [5 rows x 6 columns]
 
->>> file_name = "sphinx/_static/co_citation_network_degree_plot.html"
+>>> file_name = "sphinx/_static/bibliometrix__co_citation_network_degree_plot.html"
 >>> nnet.degree_plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../_static/co_citation_network_degree_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/bibliometrix__co_citation_network_degree_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
 >>> nnet.indicators_.head()
@@ -51,13 +51,13 @@ Arner DW, 2019, EUR BUS ORG LAW REV, V20, P55 0...      0  ...  0.027119
 [5 rows x 4 columns]
 
 """
-from .matrix_list_2_network_graph import matrix_list_2_network_graph
+from .bibliometrix__co_citation_matrix_list import bibliometrix__co_citation_matrix_list
 from .get_network_graph_communities import get_network_graph_communities
-from .network_community_detection import network_community_detection
 from .get_network_graph_degree_plot import get_network_graph_degree_plot
 from .get_network_graph_indicators import get_network_graph_indicators
 from .get_network_graph_plot import network_graph_plot
-from .co_citation_matrix_list import co_citation_matrix_list
+from .matrix_list_2_network_graph import matrix_list_2_network_graph
+from .network_community_detection import network_community_detection
 
 
 class _Result:
@@ -70,7 +70,7 @@ class _Result:
         self.degree_plot_ = None
 
 
-def co_citation_network(
+def bibliometrix__co_citation_network(
     top_n=50,
     directory="./",
     method="louvain",
@@ -80,7 +80,7 @@ def co_citation_network(
 ):
     """Co-citation Network."""
 
-    matrix_list = co_citation_matrix_list(
+    matrix_list = bibliometrix__co_citation_matrix_list(
         top_n=top_n,
         directory=directory,
     )

@@ -2,7 +2,8 @@ Intellectual Structure
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    .. toctree::
-      co_citation_network
+      bibliometrix__co_citation_matrix_list
+      bibliometrix__co_citation_network
 
 
 
@@ -17,6 +18,5 @@ Intellectual Structure
 
       .. toctree::
 
-            co_citation_matrix    
             main_path_network
 

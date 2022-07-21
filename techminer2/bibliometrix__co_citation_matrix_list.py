@@ -6,10 +6,8 @@ Co-citation Matrix List
 
 >>> directory = "data/regtech/"
 
-
->>> from techminer2 import co_citation_matrix_list
->>> matrix = co_citation_matrix_list(directory=directory)
->>> matrix.head()
+>>> from techminer2 import bibliometrix__co_citation_matrix_list
+>>> bibliometrix__co_citation_matrix_list(directory=directory).head()
                                               row  ... OCC
 363  Adhami S, 2018, J ECON BUS, V100, P64 04:027  ...   4
 375  Adhami S, 2018, J ECON BUS, V100, P64 04:027  ...   2
@@ -21,14 +19,14 @@ Co-citation Matrix List
 
 
 """
+from ._read_records import read_records
 from .vantagepoint__co_occ_matrix_list import (
     _add_counters_to_items,
     _create_matrix_list,
 )
-from ._read_records import read_records
 
 
-def co_citation_matrix_list(
+def bibliometrix__co_citation_matrix_list(
     top_n=50,
     directory="./",
 ):
