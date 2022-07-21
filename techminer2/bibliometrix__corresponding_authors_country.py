@@ -5,20 +5,23 @@ Corresponding Author's Country
 
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/corresponding_authors_country.html"
+>>> file_name = "sphinx/_static/bibliometrix__corresponding_authors_country.html"
 
->>> from techminer2 import corresponding_authors_country
->>> corresponding_authors_country(
+>>> from techminer2 import bibliometrix__corresponding_authors_country
+>>> bibliometrix__corresponding_authors_country(
 ...     top_n=20,
 ...     directory=directory,
 ... ).plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../_static/corresponding_authors_country.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/bibliometrix__corresponding_authors_country.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
->>> corresponding_authors_country(directory=directory, top_n=20).table_.head()
+>>> bibliometrix__corresponding_authors_country(
+...     directory=directory, 
+...     top_n=20,
+... ).table_.head()
                 single_publication  multiple_publication  mcp_ratio
 countries                                                          
 United Kingdom                  10                     6   0.600000
@@ -29,29 +32,28 @@ Hong Kong                        2                     6   3.000000
 
 
 """
+from dataclasses import dataclass
+
 import plotly.express as px
 
 from .collaboration_indicators import collaboration_indicators
 
 
+@dataclass(init=False)
 class _Results:
-    def __init__(self):
-        self.table_ = None
-        self.plot_ = None
+    plot_: None
+    table_: None
 
 
-def corresponding_authors_country(
+def bibliometrix__corresponding_authors_country(
     top_n=20,
     directory="./",
 ):
     """Corresponding Author's Country"""
 
-    indicators = _make_table(directory)
-    fig = _make_plot(indicators, top_n)
-
     results = _Results()
-    results.table_ = indicators
-    results.plot_ = fig
+    results.table_ = _make_table(directory)
+    results.plot_ = _make_plot(results.table_, top_n)
     return results
 
 

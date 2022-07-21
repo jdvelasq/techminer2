@@ -3,7 +3,7 @@ Countries
 
 
    .. toctree::
-      corresponding_authors_country
+      bibliometrix__corresponding_authors_country
       bibliometrix__most_frequent_countries
       bibliometrix__most_global_cited_countries
       bibliometrix__most_local_cited_countries

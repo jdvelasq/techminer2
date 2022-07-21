@@ -15,6 +15,9 @@ from .bibliometrix__average_citations_per_year import (
     bibliometrix__average_citations_per_year,
 )
 from .bibliometrix__bradford_law import bibliometrix__bradford_law
+from .bibliometrix__corresponding_authors_country import (
+    bibliometrix__corresponding_authors_country,
+)
 from .bibliometrix__countries_production_over_time import (
     bibliometrix__countries_production_over_time,
 )
@@ -24,6 +27,7 @@ from .bibliometrix__institution_impact import bibliometrix__institution_impact
 from .bibliometrix__institutions_production_over_time import (
     bibliometrix__institutions_production_over_time,
 )
+from .bibliometrix__lotka_law import bibliometrix__lotka_law
 from .bibliometrix__main_information import bibliometrix__main_information
 from .bibliometrix__most_frequent_authors import bibliometrix__most_frequent_authors
 from .bibliometrix__most_frequent_countries import bibliometrix__most_frequent_countries

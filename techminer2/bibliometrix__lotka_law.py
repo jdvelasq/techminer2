@@ -5,17 +5,17 @@ Lotka's Law
 
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/lotka_law.html"
+>>> file_name = "sphinx/_static/bibliometrix__lotka_law.html"
 
->>> from techminer2 import lotka_law
->>> lotka_law(directory=directory).plot_.write_html(file_name)
+>>> from techminer2 import bibliometrix__lotka_law
+>>> bibliometrix__lotka_law(directory=directory).plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../_static/lotka_law.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/bibliometrix__lotka_law.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
->>> lotka_law(directory=directory).table_
+>>> bibliometrix__lotka_law(directory=directory).table_
    Documents Written  ...  Prop Theoretical Authors
 0                  1  ...                     0.679
 1                  2  ...                     0.170
@@ -27,25 +27,27 @@ Lotka's Law
 [6 rows x 5 columns]
 
 """
+from dataclasses import dataclass
+
 import plotly.graph_objects as go
 
 from .column_indicators import column_indicators
 
 
+@dataclass(init=False)
 class _Results:
-    def __init__(self, plot, table):
-        self.plot_ = plot
-        self.table_ = table
+    plot_: None
+    table_: None
 
 
-def lotka_law(
+def bibliometrix__lotka_law(
     directory="./",
 ):
     """Lotka's Law"""
 
-    indicators = _core_authors(directory)
-    results = _Results(table=indicators, plot=_plot_lotka_law(indicators))
-
+    results = _Results()
+    results.table_ = _core_authors(directory=directory)
+    results.plot_ = _plot_lotka_law(results.table_)
     return results
 
 
