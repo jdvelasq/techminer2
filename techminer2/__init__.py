@@ -83,6 +83,7 @@ from .bibliometrix__sources_production_over_time import (
 )
 from .bibliometrix__three_fields_plot import bibliometrix__three_fields_plot
 from .bibliometrix__trend_topics import bibliometrix__trend_topics
+from .bibliometrix__word_cloud import bibliometrix__word_cloud
 from .bibliometrix__word_dynamics import bibliometrix__word_dynamics
 from .co_citation_matrix_list import co_citation_matrix_list
 from .co_citation_network import co_citation_network
