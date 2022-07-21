@@ -31,6 +31,7 @@ from .bibliometrix__country_scientific_production import (
 )
 from .bibliometrix__coupling_matrix_list import bibliometrix__coupling_matrix_list
 from .bibliometrix__coupling_network import bibliometrix__coupling_network
+from .bibliometrix__factorial_analysis import bibliometrix__factorial_analysis_with_mds
 from .bibliometrix__institution_impact import bibliometrix__institution_impact
 from .bibliometrix__institutions_production_over_time import (
     bibliometrix__institutions_production_over_time,
@@ -93,7 +94,6 @@ from .bibliometrix__trend_topics import bibliometrix__trend_topics
 from .bibliometrix__word_cloud import bibliometrix__word_cloud
 from .bibliometrix__word_dynamics import bibliometrix__word_dynamics
 from .coverage import coverage
-from .factorial_analysis import factorial_analysis_with_mds
 from .import_scopus_files import import_scopus_files
 from .keyword_concordances import keyword_concordances
 from .keywords_summarization import keywords_summarization

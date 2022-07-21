@@ -19,8 +19,8 @@ Based on the bibliometrix/R/conceptualStructure.R code.
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import factorial_analysis_with_mds
->>> fa = factorial_analysis_with_mds(
+>>> from techminer2 import bibliometrix__factorial_analysis_with_mds
+>>> fa = bibliometrix__factorial_analysis_with_mds(
 ...     'author_keywords', 
 ...     min_occ=2, 
 ...     n_clusters=4, 
@@ -178,7 +178,7 @@ class _Result:
         self.cluster_members_ = None
 
 
-def factorial_analysis_with_mds(
+def bibliometrix__factorial_analysis_with_mds(
     column,
     top_n=50,
     min_occ=2,
