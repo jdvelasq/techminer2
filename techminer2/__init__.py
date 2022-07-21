@@ -93,7 +93,6 @@ from .bibliometrix__treemap import bibliometrix__treemap
 from .bibliometrix__trend_topics import bibliometrix__trend_topics
 from .bibliometrix__word_cloud import bibliometrix__word_cloud
 from .bibliometrix__word_dynamics import bibliometrix__word_dynamics
-from .coverage import coverage
 from .import_scopus_files import import_scopus_files
 from .keyword_concordances import keyword_concordances
 from .keywords_summarization import keywords_summarization
@@ -102,6 +101,7 @@ from .scientopy__bar_trends import scientopy__bar_trends
 from .scientopy__time_line import scientopy__time_line
 from .scientopy__top_trending_topics import scientopy__top_trending_topics
 from .scientopy__word_cloud import scientopy__word_cloud
+from .techminer2__coverage import techminer2__coverage
 from .thematic_evolution_plot import thematic_evolution_plot
 from .thematic_map_summarization import thematic_map_summarization
 from .tlab__emergent_themes import (
