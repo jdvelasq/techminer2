@@ -4,13 +4,14 @@ from .abstract_screening import abstract_screening
 from .abstract_summarization import abstract_summarization
 from .associations_for_a_item import associations_for_a_item
 from .associations_for_all_items import associations_for_all_items
-from .bibliometrix__average_citations_per_year import (
-    bibliometrix__average_citations_per_year,
-)
 from .bibliometrix__annual_scientific_production import (
     bibliometrix__annual_scientific_production,
 )
+from .bibliometrix__average_citations_per_year import (
+    bibliometrix__average_citations_per_year,
+)
 from .bibliometrix__main_information import bibliometrix__main_information
+from .bibliometrix__three_fields_plot import bibliometrix__three_fields_plot
 from .bradford_law import bradford_law
 from .co_citation_matrix_list import co_citation_matrix_list
 from .co_citation_network import co_citation_network
@@ -56,7 +57,6 @@ from .thematic_analysis import thematic_analysis
 from .thematic_evolution_plot import thematic_evolution_plot
 from .thematic_map import thematic_map
 from .thematic_map_summarization import thematic_map_summarization
-from .three_fields_plot import three_fields_plot
 from .trend_topics import trend_topics
 from .vantagepoint__record_view import vantagepoint__record_view
 from .vantagepoint__summary_view import vantagepoint__summary_view

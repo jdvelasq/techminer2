@@ -4,10 +4,10 @@ Three Fields Plot
 
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/three_fields_plot.html"
+>>> file_name = "sphinx/_static/bibliometrix__three_fields_plot.html"
 
->>> from techminer2 import three_fields_plot
->>> three_fields_plot(
+>>> from techminer2 import bibliometrix__three_fields_plot
+>>> bibliometrix__three_fields_plot(
 ...     directory=directory,
 ...     left_column='authors',
 ...     middle_column='countries',
@@ -18,7 +18,7 @@ Three Fields Plot
 
 .. raw:: html
 
-    <iframe src="../../_static/three_fields_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/bibliometrix__three_fields_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 import plotly.graph_objects as go
@@ -26,7 +26,7 @@ import plotly.graph_objects as go
 from .co_occ_matrix import co_occ_matrix
 
 
-def three_fields_plot(
+def bibliometrix__three_fields_plot(
     left_column,
     middle_column,
     right_column,
