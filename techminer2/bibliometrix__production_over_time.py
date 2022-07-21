@@ -11,7 +11,7 @@ from .column_indicators_by_year import column_indicators_by_year
 TEXTLEN = 40
 
 
-def production_over_time(
+def bibliometrix__production_over_time(
     column,
     top_n=10,
     directory="./",

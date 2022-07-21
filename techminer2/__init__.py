@@ -8,13 +8,22 @@ from .bibliometrix__annual_scientific_production import (
     bibliometrix__annual_scientific_production,
 )
 from .bibliometrix__author_impact import bibliometrix__author_impact
+from .bibliometrix__authors_production_over_time import (
+    bibliometrix__authors_production_over_time,
+)
 from .bibliometrix__average_citations_per_year import (
     bibliometrix__average_citations_per_year,
 )
 from .bibliometrix__bradford_law import bibliometrix__bradford_law
+from .bibliometrix__countries_production_over_time import (
+    bibliometrix__countries_production_over_time,
+)
 from .bibliometrix__country_dynamics import bibliometrix__country_dynamics
 from .bibliometrix__country_impact import bibliometrix__country_impact
 from .bibliometrix__institution_impact import bibliometrix__institution_impact
+from .bibliometrix__institutions_production_over_time import (
+    bibliometrix__institutions_production_over_time,
+)
 from .bibliometrix__main_information import bibliometrix__main_information
 from .bibliometrix__most_frequent_authors import bibliometrix__most_frequent_authors
 from .bibliometrix__most_frequent_countries import bibliometrix__most_frequent_countries
@@ -49,6 +58,9 @@ from .bibliometrix__most_local_cited_sources import (
 from .bibliometrix__most_relevant_sources import bibliometrix__most_relevant_sources
 from .bibliometrix__source_dynamics import bibliometrix__source_dynamics
 from .bibliometrix__source_impact import bibliometrix__source_impact
+from .bibliometrix__sources_production_over_time import (
+    bibliometrix__sources_production_over_time,
+)
 from .bibliometrix__three_fields_plot import bibliometrix__three_fields_plot
 from .bibliometrix__word_dynamics import bibliometrix__word_dynamics
 from .co_citation_matrix_list import co_citation_matrix_list
@@ -63,7 +75,6 @@ from .coverage import coverage
 from .emergent_themes import emergent_themes_with_lda, emergent_themes_with_nmf
 from .factorial_analysis import factorial_analysis_with_mds
 from .import_scopus_files import import_scopus_files
-from .institutions_production_over_time import institutions_production_over_time
 from .keyword_concordances import keyword_concordances
 from .keywords_summarization import keywords_summarization
 from .list_view import list_view
@@ -77,7 +88,6 @@ from .scientopy__bar import scientopy__bar
 from .scientopy__bar_trends import scientopy__bar_trends
 from .scientopy__time_line import scientopy__time_line
 from .scientopy__word_cloud import scientopy__word_cloud
-from .sources_production_over_time import sources_production_over_time
 from .svd_of_co_occ_matrix import svd_of_co_occ_matrix
 from .svd_of_tf_matrix import svd_of_tf_matrix
 from .terms_by_year import terms_by_year

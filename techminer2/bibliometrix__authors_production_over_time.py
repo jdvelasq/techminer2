@@ -4,11 +4,11 @@ Authors' Production over Time
 
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/authors_production_over_time.html"
+>>> file_name = "sphinx/_static/bibliometrix__authors_production_over_time.html"
 
 
->>> from techminer2 import authors_production_over_time
->>> pot = authors_production_over_time(
+>>> from techminer2 import bibliometrix__authors_production_over_time
+>>> pot = bibliometrix__authors_production_over_time(
 ...    top_n=10, 
 ...    directory=directory,
 ... )
@@ -17,7 +17,7 @@ Authors' Production over Time
 
 .. raw:: html
 
-    <iframe src="../../../_static/authors_production_over_time.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/bibliometrix__authors_production_over_time.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
 
@@ -46,9 +46,9 @@ Alam TM      2021    1  ...                     0.000
 
 
 """
+from .bibliometrix__production_over_time import bibliometrix__production_over_time
 from .column_indicators_by_year import column_indicators_by_year
 from .documents_per import documents_per
-from .production_over_time import production_over_time
 
 
 class _Result:
@@ -58,14 +58,14 @@ class _Result:
         self.documents_per_author_ = None
 
 
-def authors_production_over_time(
+def bibliometrix__authors_production_over_time(
     top_n=10,
     directory="./",
 ):
     """Author production over time."""
 
     result = _Result()
-    result.plot_ = production_over_time(
+    result.plot_ = bibliometrix__production_over_time(
         column="authors",
         top_n=top_n,
         directory=directory,
