@@ -1,6 +1,6 @@
 """Make a  bar cbart from a dataframe."""
 
-from ..bar_px import bar_px
+from .._px.bar_px import bar_px
 from ..format_dataset_to_plot_with_plotly import format_dataset_to_plot_with_plotly
 
 

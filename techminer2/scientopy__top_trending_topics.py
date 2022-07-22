@@ -40,7 +40,7 @@ average growth rate.
 """
 from dataclasses import dataclass
 
-from .bar_px import bar_px
+from ._px.bar_px import bar_px
 from .growth_indicators import growth_indicators
 
 

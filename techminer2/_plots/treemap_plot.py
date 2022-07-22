@@ -3,7 +3,7 @@
 
 import plotly.express as px
 
-from .format_dataset_to_plot_with_plotly import format_dataset_to_plot_with_plotly
+from ..format_dataset_to_plot_with_plotly import format_dataset_to_plot_with_plotly
 
 
 def treemap_plot(

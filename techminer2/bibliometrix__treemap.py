@@ -19,7 +19,7 @@ TreeMap
 
 """
 from .vantagepoint__list_view import vantagepoint__list_view
-from .treemap_plot import treemap_plot
+from ._plots.treemap_plot import treemap_plot
 
 
 def bibliometrix__treemap(

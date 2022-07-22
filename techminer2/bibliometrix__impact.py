@@ -2,7 +2,7 @@
 
 import textwrap
 
-from .bar_px import bar_px
+from ._px.bar_px import bar_px
 from .cleveland_px import cleveland_px
 from .column_px import column_px
 from .impact_indicators import impact_indicators

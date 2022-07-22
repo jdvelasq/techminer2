@@ -19,7 +19,7 @@ World Map
 
 """
 from .column_indicators import column_indicators
-from .world_map_plot import world_map_plot
+from ._plots.world_map_plot import world_map_plot
 
 TEXTLEN = 40
 
