@@ -13,11 +13,3 @@ Intellectual Structure
          
          
 
-   .. Note::
-      
-      In addition, **TechMiner** implements the following functions:
-
-      .. toctree::
-
-            main_path_network
-

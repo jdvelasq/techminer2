@@ -9,3 +9,5 @@ Cited References
       bibliometrix__rpys
 
 
+   .. toctree::
+      main_path_network
