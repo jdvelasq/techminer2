@@ -21,7 +21,7 @@ ScientoPy Time Line Plot.
     <iframe src="../_static/scientopy__time_line-1.html" height="800px" width="100%" frameBorder="0"></iframe>
 
 
-**`skip_first` argument.**
+**'skip_first' argument.**
 
 >>> time_line.table_.head()
    Year Author Keywords  OCC
