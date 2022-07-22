@@ -74,12 +74,12 @@ from nltk.tokenize import sent_tokenize
 from textblob import TextBlob
 from tqdm import tqdm
 
-# from .vp.refine.apply_countries_thesaurus import apply_countries_thesaurus
-# from .vp.refine.apply_institutions_thesaurus import apply_institutions_thesaurus
-# from .vp.refine.apply_keywords_thesaurus import apply_keywords_thesaurus
-# from .vp.refine.create_countries_thesaurus import create_countries_thesaurus
-# from .vp.refine.create_institutions_thesaurus import create_institutions_thesaurus
-# from .vp.refine.create_keywords_thesaurus import create_keywords_thesaurus
+from ._create_countries_thesaurus import create_countries_thesaurus
+from ._create_institutions_thesaurus import create_institutions_thesaurus
+from ._create_keywords_thesaurus import create_keywords_thesaurus
+from .vantagepoint__clean_countries import vantagepoint__clean_countries
+from .vantagepoint__clean_institutions import vantagepoint__clean_institutions
+from .vantagepoint__clean_keywords import vantagepoint__clean_keywords
 
 
 def import_scopus_files(
@@ -130,11 +130,11 @@ def import_scopus_files(
     #
     _create__raw_words__column(directory)
     create_keywords_thesaurus(directory=directory)
-    apply_keywords_thesaurus(directory)
+    vantagepoint__clean_keywords(directory)
     #
     # -------------------------------------------------------------------------
     create_countries_thesaurus(directory)
-    apply_countries_thesaurus(directory)
+    vantagepoint__clean_countries(directory)
     #
     _create__num_global_references__column(directory)
     _complete__source_abbr__column(directory)
@@ -149,7 +149,7 @@ def import_scopus_files(
     #
     # Institutions ------------------------------------------------------------
     create_institutions_thesaurus(directory=directory)
-    apply_institutions_thesaurus(directory=directory)
+    vantagepoint__clean_institutions(directory=directory)
 
     sys.stdout.write("--INFO-- Process finished!!!\n")
 
