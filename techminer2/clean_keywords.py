@@ -2,7 +2,7 @@
 Clean Keywords
 ===============================================================================
 
-Cleans the keywords columns using the `keywords.txt`file.
+Cleans the keywords columns using the `keywords.txt` file.
 
 >>> from techminer2 import *
 >>> directory = "data/regtech/"

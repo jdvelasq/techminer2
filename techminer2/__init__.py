@@ -1,7 +1,4 @@
 """TechMiner 2"""
-from .abstract_concordances import abstract_concordances
-from .abstract_screening import abstract_screening
-from .abstract_summarization import abstract_summarization
 from .bibliometrix__annual_scientific_production import (
     bibliometrix__annual_scientific_production,
 )
@@ -98,18 +95,19 @@ from .bibliometrix__trend_topics import bibliometrix__trend_topics
 from .bibliometrix__word_cloud import bibliometrix__word_cloud
 from .bibliometrix__word_dynamics import bibliometrix__word_dynamics
 from .import_scopus_files import import_scopus_files
-from .keyword_concordances import keyword_concordances
-from .keywords_summarization import keywords_summarization
 from .scientopy__bar import scientopy__bar
 from .scientopy__bar_trends import scientopy__bar_trends
 from .scientopy__time_line import scientopy__time_line
 from .scientopy__top_trending_topics import scientopy__top_trending_topics
 from .scientopy__word_cloud import scientopy__word_cloud
 from .techminer2__coverage import techminer2__coverage
+from .tlab__abstract_summarization import tlab__abstract_summarization
+from .tlab__concordances import tlab__concordances
 from .tlab__emergent_themes import (
     tlab__emergent_themes_with_lda,
     tlab__emergent_themes_with_nmf,
 )
+from .tlab__keywords_summarization import tlab__keywords_summarization
 from .tlab__svd_of_co_occ_matrix import tlab__svd_of_co_occ_matrix
 from .tlab__svd_of_tf_matrix import tlab__svd_of_tf_matrix
 from .tlab__text_screening import tlab__text_screening
@@ -129,6 +127,7 @@ from .vantagepoint__co_occ_matrix_list import vantagepoint__co_occ_matrix_list
 from .vantagepoint__column_chart import vantagepoint__column_chart
 from .vantagepoint__cross_corr_matrix import vantagepoint__cross_corr_matrix
 from .vantagepoint__cross_corr_matrix_list import vantagepoint__cross_corr_matrix_list
+from .vantagepoint__factor_matrix import vantagepoint__factor_matrix
 from .vantagepoint__gantt_chart import vantagepoint__gantt_chart
 from .vantagepoint__heat_map import vantagepoint__heat_map
 from .vantagepoint__line_chart import vantagepoint__line_chart

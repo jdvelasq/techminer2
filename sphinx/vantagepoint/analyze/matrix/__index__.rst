@@ -31,6 +31,6 @@ Matrix
 
         
     .. toctree::
-        factor_matrix 
+        vantagepoint__factor_matrix 
 
 

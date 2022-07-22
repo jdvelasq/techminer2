@@ -1,5 +1,4 @@
-.. automodule:: techminer2.keyword_concordances
+.. automodule:: techminer2.vantagepoint__factor_matrix
     :members:
     :undoc-members:
     :show-inheritance:
-

@@ -1,5 +1,5 @@
 """
-Abstract Concordances
+Concordances
 =========================================================================================
 
 Abstract concordances exploration tool.
@@ -7,8 +7,8 @@ Abstract concordances exploration tool.
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import abstract_concordances
->>> abstract_concordances(
+>>> from techminer2 import tlab__concordances
+>>> tlab__concordances(
 ...     'regtech',
 ...     top_n=10,
 ...     directory=directory,
@@ -29,8 +29,8 @@ Abstract concordances exploration tool.
 from ._load_abstracts import load_abstracts
 
 
-def abstract_concordances(
-    text,
+def tlab__concordances(
+    search_for,
     top_n=50,
     directory="./",
 ):
@@ -40,10 +40,10 @@ def abstract_concordances(
     abstracts = abstracts.sort_values(
         ["global_citations", "article", "line_no"], ascending=[False, True, True]
     )
-    abstracts = _select_abstracts(abstracts, text)
+    abstracts = _select_abstracts(abstracts, search_for)
     abstracts = abstracts.head(top_n)
-    contexts = _extract_contexts(abstracts, text)
-    _print_concordances(contexts, text)
+    contexts = _extract_contexts(abstracts, search_for)
+    _print_concordances(contexts, search_for)
 
 
 def _print_concordances(contexts, text):

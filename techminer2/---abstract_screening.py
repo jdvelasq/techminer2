@@ -32,7 +32,7 @@ Captures n-words around the keyword.
 """
 
 from ._load_abstracts import load_abstracts
-from .abstract_concordances import _select_abstracts
+from .tlab__concordances import _select_abstracts
 from .load_template import load_template
 from .save_html_report import save_html_report
 

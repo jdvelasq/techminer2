@@ -14,7 +14,8 @@ Intellectual Structure
          
 
    .. Note::
-   In addition, **TechMiner** implements the following functions:
+      
+      In addition, **TechMiner** implements the following functions:
 
       .. toctree::
 

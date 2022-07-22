@@ -23,7 +23,7 @@ import pandas as pd
 from sklearn.decomposition import PCA
 
 
-def factor_matrix(
+def vantagepoint__factor_matrix(
     similarity_matrix,
     pca=None,
 ):
