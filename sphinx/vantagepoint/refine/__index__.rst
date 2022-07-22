@@ -29,10 +29,10 @@ The following fnctions operate on a thesaurus.
             vantagepoint__find_abbreviations
 
         .. toctree::
-            find_string
+            vantagepoint__find_string
 
         .. toctree::
-            fuzzy_search
+            vantagepoint__fuzzy_search
         
 
 

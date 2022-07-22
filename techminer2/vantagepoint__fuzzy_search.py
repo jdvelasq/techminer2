@@ -4,10 +4,11 @@ Fuzzy Search (of a string in a thesaurus)
 
 Finds a string in the terms of a thesaurus using fuzzy search.
 
->>> from techminer2 import *
+
 >>> directory = "data/regtech/"
 
->>> fuzzy_search(
+>>> from techminer2 import vantagepoint__fuzzy_search
+>>> vantagepoint__fuzzy_search(
 ...     thesaurus_file="keywords.txt",
 ...     patterns='intelligencia',
 ...     threshold=80,
@@ -75,7 +76,7 @@ from fuzzywuzzy import process
 from .thesaurus import load_file_as_dict
 
 
-def fuzzy_search(
+def vantagepoint__fuzzy_search(
     thesaurus_file,
     patterns,
     threshold=80,

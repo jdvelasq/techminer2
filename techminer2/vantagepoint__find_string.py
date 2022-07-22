@@ -4,10 +4,11 @@ Find String (in a thesarus)
 
 Finds a string in the terms of a thesaurus.
 
->>> from techminer2 import *
+
 >>> directory = "data/regtech/"
 
->>> find_string(
+>>> from techminer2 import vantagepoint__find_string
+>>> vantagepoint__find_string(
 ...     thesaurus_file="keywords.txt",
 ...     contains='artificial intelligence',
 ...     directory=directory,
@@ -37,7 +38,7 @@ import pandas as pd
 from .thesaurus import load_file_as_dict
 
 
-def find_string(
+def vantagepoint__find_string(
     thesaurus_file,
     contains=None,
     startswith=None,
