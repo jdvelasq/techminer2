@@ -33,7 +33,6 @@ from .._read_records import read_records
 
 def column_indicators(
     column,
-    sep=";",
     directory="./",
     database="documents",
     use_filter=False,
@@ -44,6 +43,12 @@ def column_indicators(
         directory=directory, database=database, use_filter=use_filter
     )
 
+    indicators = _column_indicators_from_records(column, records)
+
+    return indicators
+
+
+def _column_indicators_from_records(column, records):
     records = records.assign(OCC=1)
     columns = [column, "OCC"]
     if "local_citations" in records.columns:
@@ -52,10 +57,9 @@ def column_indicators(
         columns.append("global_citations")
     records = records[columns]
 
-    if sep is not None:
-        records[column] = records[column].str.split(sep)
-        records = records.explode(column)
-        records[column] = records[column].str.strip()
+    records[column] = records[column].str.split(";")
+    records = records.explode(column)
+    records[column] = records[column].str.strip()
 
     indicators = (
         records.groupby(column, as_index=True)
@@ -77,5 +81,4 @@ def column_indicators(
         )
 
     indicators = indicators.astype(int)
-
     return indicators
