@@ -27,7 +27,7 @@ import pandas as pd
 
 from ._load_stopwords import load_stopwords
 from ._read_records import read_records
-from .items2counters import items2counters
+from ._items2counters import items2counters
 
 # pylint: disable=too-many-arguments
 
