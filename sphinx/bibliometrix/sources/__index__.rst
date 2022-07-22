@@ -8,3 +8,4 @@ Sources
       bibliometrix__bradford_law
       bibliometrix__source_impact
       bibliometrix__sources_production_over_time
+      bibliometrix__source_dynamics

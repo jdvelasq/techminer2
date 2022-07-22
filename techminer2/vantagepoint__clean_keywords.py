@@ -4,10 +4,11 @@ Clean Keywords
 
 Cleans the keywords columns using the `keywords.txt` file.
 
->>> from techminer2 import *
+
 >>> directory = "data/regtech/"
 
->>> apply_keywords_thesaurus(directory)
+>>> from techminer2 import vantagepoint__clean_keywords
+>>> vantagepoint__clean_keywords(directory)
 
 
 """
@@ -24,7 +25,7 @@ import pandas as pd
 from .thesaurus import read_textfile
 
 
-def clean_keywords(directory="./"):
+def vantagepoint__clean_keywords(directory="./"):
     """Clean all words columns in the records using a thesaurus (keywrords.txt)."""
 
     sys.stdout.write(

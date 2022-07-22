@@ -15,13 +15,13 @@ The following fnctions operate on a thesaurus.
     * **Specialized thesaurus**: Apply multiple operations on databases.
 
         .. toctree::
-            apply_countries_thesaurus
+            vantagepoint__clean_countries
 
         .. toctree::
-            apply_institutions_thesaurus
+            vantagepoint__clean_institutions
 
         .. toctree::
-            apply_keywords_thesaurus
+            vantagepoint__clean_keywords
             
     * Operations over thesaurus files:
 

@@ -1,4 +1,4 @@
-.. automodule:: techminer2.clean_countries
+.. automodule:: techminer2.vantagepoint__clean_countries
     :members:
     :undoc-members:
     :show-inheritance:

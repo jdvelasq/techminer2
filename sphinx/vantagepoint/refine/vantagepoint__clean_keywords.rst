@@ -1,4 +1,4 @@
-.. automodule:: techminer2.create_keywords_thesaurus
+.. automodule:: techminer2.vantagepoint__clean_keywords
     :members:
     :undoc-members:
     :show-inheritance:
