@@ -6,8 +6,8 @@ Import a scopus file to a working directory.
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import *
->>> import_scopus_files(directory, disable_progress_bar=True)
+>>> from techminer2 import tm2__import_scopus_files
+>>> tm2__import_scopus_files(directory, disable_progress_bar=True)
 --INFO-- Concatenating raw files in data/regtech/raw/cited_by/
 --INFO-- Concatenating raw files in data/regtech/raw/references/
 --INFO-- Concatenating raw files in data/regtech/raw/documents/
@@ -40,8 +40,8 @@ Import a scopus file to a working directory.
 --INFO-- Creating `raw_title_words` column in data/regtech/processed/_references.csv
 --INFO-- Creating `raw_title_words` column in data/regtech/processed/_cited_by.csv
 --INFO-- Creating `raw_words` column
---INFO-- Creating `words.txt` from author/index keywords, and abstract/title words
---INFO-- Applying `words.txt` thesaurus to author/index keywords and abstract/title words
+--INFO-- Creating `keywords.txt` from author/index keywords, and abstract/title words
+--INFO-- Applying `keywords.txt` thesaurus to author/index keywords and abstract/title words
 --INFO-- The data/regtech/processed/countries.txt thesaurus file was created
 --INFO-- The data/regtech/processed/countries.txt thesaurus file was applied to affiliations in all databases
 --INFO-- Creating `num_global_references` column
@@ -82,7 +82,7 @@ from .vantagepoint__clean_institutions import vantagepoint__clean_institutions
 from .vantagepoint__clean_keywords import vantagepoint__clean_keywords
 
 
-def import_scopus_files(
+def tm2__import_scopus_files(
     directory="./",
     disable_progress_bar=False,
 ):

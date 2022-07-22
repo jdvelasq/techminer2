@@ -7,8 +7,8 @@ Computes coverage of terms in a column discarding stopwords.
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import techminer2__coverage
->>> techminer2__coverage(
+>>> from techminer2 import tm2__coverage
+>>> tm2__coverage(
 ...     "author_keywords",
 ...     directory=directory,
 ... ).head(10)
@@ -36,7 +36,7 @@ from ._load_stopwords import load_stopwords
 from ._read_records import read_records
 
 
-def techminer2__coverage(
+def tm2__coverage(
     column,
     directory="./",
     database="documents",

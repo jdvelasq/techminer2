@@ -29,7 +29,7 @@ def vantagepoint__clean_keywords(directory="./"):
     """Clean all words columns in the records using a thesaurus (keywrords.txt)."""
 
     sys.stdout.write(
-        "--INFO-- Applying `words.txt` thesaurus to author/index keywords and abstract/title words\n"
+        "--INFO-- Applying `keywords.txt` thesaurus to author/index keywords and abstract/title words\n"
     )
 
     thesaurus_file = os.path.join(directory, "processed", "keywords.txt")

@@ -35,12 +35,11 @@ package developed and tested in Python version 3.6.
 
 
 .. toctree::
-    :caption: Data
+    :caption: TM-2
     :hidden:
     :maxdepth: 1
 
-    data/import_scopus_files
-    data/techminer2__coverage
+    data/__index__
     
 
 

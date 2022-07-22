@@ -1,6 +1,4 @@
-.. automodule:: techminer2.import_scopus_files
+.. automodule:: techminer2.tm2__coverage
     :members:
     :undoc-members:
     :show-inheritance:
-
-
