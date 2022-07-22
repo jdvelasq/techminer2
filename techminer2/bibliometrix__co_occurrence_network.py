@@ -54,7 +54,7 @@ cryptocurrencies 04:029           1     0.011062   0.655172  0.058695
 """
 from dataclasses import dataclass
 
-from .association_index import association_index
+from ._association_index import association_index
 from .get_network_graph_communities import get_network_graph_communities
 from .get_network_graph_degree_plot import get_network_graph_degree_plot
 from .get_network_graph_indicators import get_network_graph_indicators

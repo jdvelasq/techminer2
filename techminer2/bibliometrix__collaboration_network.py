@@ -69,7 +69,7 @@ Veidt R 1:040                0          0.0   0.168421  0.065063
 """
 from dataclasses import dataclass
 
-from .association_index import association_index
+from ._association_index import association_index
 from .get_network_graph_communities import get_network_graph_communities
 from .get_network_graph_degree_plot import get_network_graph_degree_plot
 from .get_network_graph_indicators import get_network_graph_indicators

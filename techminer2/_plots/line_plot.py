@@ -1,6 +1,6 @@
 """Makes a line plot from a dataframe."""
 
-from ..format_dataset_to_plot_with_plotly import format_dataset_to_plot_with_plotly
+from .format_dataset_to_plot_with_plotly import format_dataset_to_plot_with_plotly
 from .._px.line_px import line_px
 
 
