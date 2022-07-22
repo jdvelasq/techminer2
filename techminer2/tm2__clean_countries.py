@@ -20,7 +20,7 @@ import sys
 
 import pandas as pd
 
-from .thesaurus import read_textfile
+from ._thesaurus import read_textfile
 
 
 def tm2__clean_countries(directory="./"):

@@ -35,7 +35,7 @@ import os.path
 
 import pandas as pd
 
-from .thesaurus import load_file_as_dict
+from ._thesaurus import load_file_as_dict
 
 
 def vantagepoint__find_string(

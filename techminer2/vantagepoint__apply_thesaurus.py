@@ -34,7 +34,7 @@ import sys
 import pandas as pd
 
 from .map_ import map_
-from .thesaurus import read_textfile
+from ._thesaurus import read_textfile
 
 
 def vantagepoint__apply_thesaurus(

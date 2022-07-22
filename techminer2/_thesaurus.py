@@ -4,9 +4,9 @@ from os.path import dirname, join
 
 import pandas as pd
 
-from .porter_stemmer import porter_stemmer
-from .snowball_stemmer import snowball_stemmer
-from .text import find_string, fingerprint, one_gram, two_gram
+from ._porter_stemmer import porter_stemmer
+from ._snowball_stemmer import snowball_stemmer
+from ._text import find_string, fingerprint, one_gram, two_gram
 
 
 def text_clustering(x, name_strategy="mostfrequent", key="porter", transformer=None):

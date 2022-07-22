@@ -73,7 +73,7 @@ import sys
 import pandas as pd
 from fuzzywuzzy import process
 
-from .thesaurus import load_file_as_dict
+from ._thesaurus import load_file_as_dict
 
 
 def vantagepoint__fuzzy_search(

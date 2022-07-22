@@ -32,7 +32,7 @@ import sys
 
 import pandas as pd
 
-from .thesaurus import Thesaurus, load_file_as_dict, text_clustering
+from ._thesaurus import Thesaurus, load_file_as_dict, text_clustering
 
 
 def vantagepoint__create_thesaurus(

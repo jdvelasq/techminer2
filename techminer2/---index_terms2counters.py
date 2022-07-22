@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 
 from ._read_records import read_filtered_records
-from .explode import explode
+from ._explode import explode
 
 
 def index_terms2counters(
