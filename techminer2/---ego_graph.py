@@ -2,19 +2,19 @@
 Ego Graph
 ===============================================================================
 
->>> from techminer2 import *
->>> directory = "data/regtech/"
->>> file_name = "sphinx/images/ego_graph.png"
->>> ego_graph(
-...     'block-chain',
-...     'author_keywords', 
-...      min_occ=5,
-...      directory=directory,
-... ).savefig(file_name)
+# >>> from techminer2 import *
+# >>> directory = "data/regtech/"
+# >>> file_name = "sphinx/images/ego_graph.png"
+# >>> ego_graph(
+# ...     'block-chain',
+# ...     'author_keywords', 
+# ...      min_occ=5,
+# ...      directory=directory,
+# ... ).savefig(file_name)
 
-.. image:: images/ego_graph.png
-    :width: 700px
-    :align: center
+# .. image:: images/ego_graph.png
+#     :width: 700px
+#     :align: center
 
 
 

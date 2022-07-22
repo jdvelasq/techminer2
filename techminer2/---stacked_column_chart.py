@@ -2,19 +2,19 @@
 Stacked column chart
 ===============================================================================
 
->>> from techminer2 import *
->>> directory = "data/regtech/"
->>> file_name = "sphinx/images/stacked_column_chart.png"
->>> from techminer2.indicators_api.collaboration_indicators import collaboration_indicators
->>> data = collaboration_indicators("countries", directory=directory)
->>> data = data.sort_values(by="num_documents", ascending=False)
->>> data = data[["single_publication", "multiple_publication"]].head(20)
->>> title = "Country collaboration indicators"
->>> stacked_column_chart(data, title=title).savefig(file_name)
+# >>> from techminer2 import *
+# >>> directory = "data/regtech/"
+# >>> file_name = "sphinx/images/stacked_column_chart.png"
+# >>> from techminer2.indicators_api.collaboration_indicators import collaboration_indicators
+# >>> data = collaboration_indicators("countries", directory=directory)
+# >>> data = data.sort_values(by="num_documents", ascending=False)
+# >>> data = data[["single_publication", "multiple_publication"]].head(20)
+# >>> title = "Country collaboration indicators"
+# >>> stacked_column_chart(data, title=title).savefig(file_name)
 
-.. image:: images/stacked_column_chart.png
-    :width: 700px
-    :align: center
+# .. image:: images/stacked_column_chart.png
+#     :width: 700px
+#     :align: center
 
 
 """

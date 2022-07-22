@@ -5,42 +5,42 @@ Extract Custom Topics
 Extract and plot the user custom topics of the selected column.
 
 
->>> from techminer2 import *
->>> directory = "data/regtech/"
->>> file_name = "sphinx/images/extract_custom_topics.png"
->>> custom_topics = find_string(
-...     "author_keywords", 
-...     contains='fintech',
-...     directory=directory,
-... ).head(10)
->>> extract_custom_topics(
-...     column="author_keywords",
-...     topics=custom_topics,
-...     directory=directory,
-... ).savefig(file_name)
+# >>> from techminer2 import *
+# >>> directory = "data/regtech/"
+# >>> file_name = "sphinx/images/extract_custom_topics.png"
+# >>> custom_topics = find_string(
+# ...     "author_keywords", 
+# ...     contains='fintech',
+# ...     directory=directory,
+# ... ).head(10)
+# >>> extract_custom_topics(
+# ...     column="author_keywords",
+# ...     topics=custom_topics,
+# ...     directory=directory,
+# ... ).savefig(file_name)
 
-.. image:: images/extract_custom_topics.png
-    :width: 700px
-    :align: center
+# .. image:: images/extract_custom_topics.png
+#     :width: 700px
+#     :align: center
 
 
->>> extract_custom_topics(
-...     column="author_keywords",
-...     topics=custom_topics,
-...     directory=directory,
-...     plot=False,
-... )
-                                        before 2020  between 2020-2021
-fintech                                          42                 97
-fintech application                               1                  2
-fintech accelerators                              1                  0
-determinants of using fintech services            0                  1
-definition of fintech                             0                  1
-cross-sector fintech                              0                  1
-characteristics of fintech                        0                  1
-fintech collaboration                             0                  1
-fintech business model                            0                  1
-fintech adoption                                  0                  1
+# >>> extract_custom_topics(
+# ...     column="author_keywords",
+# ...     topics=custom_topics,
+# ...     directory=directory,
+# ...     plot=False,
+# ... )
+#                                         before 2020  between 2020-2021
+# fintech                                          42                 97
+# fintech application                               1                  2
+# fintech accelerators                              1                  0
+# determinants of using fintech services            0                  1
+# definition of fintech                             0                  1
+# cross-sector fintech                              0                  1
+# characteristics of fintech                        0                  1
+# fintech collaboration                             0                  1
+# fintech business model                            0                  1
+# fintech adoption                                  0                  1
 
 """
 

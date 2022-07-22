@@ -5,7 +5,8 @@ Create a thesaurus from a column
 >>> from techminer2 import *
 >>> directory = "data/regtech/"
 
->>> create_thesaurus(
+>>> from techminer2 import vantagepoint__create_thesaurus
+>>> vantagepoint__create_thesaurus(
 ...     column="author_keywords",
 ...     output_file="test_keywords.txt",
 ...     directory=directory,
@@ -13,8 +14,8 @@ Create a thesaurus from a column
 --INFO-- Creating a thesaurus file from `author_keywords` column in all databases
 --INFO-- The thesaurus file `test_keywords.txt` was created
 
-
-# >>> apply_thesaurus(
+>>> from techminer2 import vantagepoint__apply_thesaurus
+# >>> vantagepoint__apply_thesaurus(
 ...     thesaurus_file="keywords.txt", 
 ...     input_column="author_keywords",
 ...     output_column="author_keywords_thesaurus", 
@@ -34,7 +35,7 @@ import pandas as pd
 from .thesaurus import Thesaurus, load_file_as_dict, text_clustering
 
 
-def create_thesaurus(
+def vantagepoint__create_thesaurus(
     column,
     output_file=None,
     sep=";",

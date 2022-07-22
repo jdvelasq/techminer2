@@ -56,5 +56,5 @@ class _MainPathNetwork:
         pass
 
 
-def main_path_network(directory):
+def bibliometrix__main_path_network(directory):
     return _MainPathNetwork(directory)

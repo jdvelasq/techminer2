@@ -7,10 +7,10 @@ The following fnctions operate on a thesaurus.
     * **Generic Thesaurus**: Funtions to create and apply a generic thesaurus on a column.
     
         .. toctree::
-            create_thesaurus
+            vantagepoint__create_thesaurus
         
         .. toctree::
-            apply_thesaurus
+            vantagepoint__apply_thesaurus
 
     * **Specialized thesaurus**: Apply multiple operations on databases.
 

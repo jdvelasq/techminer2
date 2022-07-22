@@ -4,10 +4,10 @@ Apply 'index_keywords.txt' Thesaurus
 
 Transforms 'raw_index_keywords' column in 'index_keywords' using index_keywrords.txt thesaurus.
 
->>> from techminer2 import *
->>> directory = "data/regtech/"
+# >>> from techminer2 import *
+# >>> directory = "data/regtech/"
 
->>> apply_index_keywords_thesaurus(directory)
+# >>> apply_index_keywords_thesaurus(directory)
 
 
 """

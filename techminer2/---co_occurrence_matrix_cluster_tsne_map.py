@@ -2,18 +2,18 @@
 Co-occurrence Matrix / Cluster TSNE Map
 ===============================================================================
 
->>> from techminer2 import *
->>> directory = "data/regtech/"
->>> file_name = "sphinx/images/co_occurrence_matrix_cluster_tsne_map.png"
->>> co_occurrence_matrix_cluster_tsne_map(
-...     'author_keywords',
-...     min_occ=2, 
-...     directory=directory,
-... ).savefig(file_name)
+# >>> from techminer2 import *
+# >>> directory = "data/regtech/"
+# >>> file_name = "sphinx/images/co_occurrence_matrix_cluster_tsne_map.png"
+# >>> co_occurrence_matrix_cluster_tsne_map(
+# ...     'author_keywords',
+# ...     min_occ=2, 
+# ...     directory=directory,
+# ... ).savefig(file_name)
 
-.. image:: images/co_occurrence_matrix_cluster_tsne_map.png
-    :width: 700px
-    :align: center
+# .. image:: images/co_occurrence_matrix_cluster_tsne_map.png
+#     :width: 700px
+#     :align: center
 
 
 """

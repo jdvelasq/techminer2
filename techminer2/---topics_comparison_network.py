@@ -2,20 +2,20 @@
 Topics Comparison Network
 ===============================================================================
 
->>> from techminer2 import *
->>> directory = "data/regtech/"
->>> file_name = "sphinx/images/topics_comparison_network.png"
->>> topics_comparison_network(
-...     'block-chain',
-...     'fintech',
-...     'author_keywords', 
-...      min_occ=5,
-...      directory=directory,
-... ).savefig(file_name)
+# >>> from techminer2 import *
+# >>> directory = "data/regtech/"
+# >>> file_name = "sphinx/images/topics_comparison_network.png"
+# >>> topics_comparison_network(
+# ...     'block-chain',
+# ...     'fintech',
+# ...     'author_keywords', 
+# ...      min_occ=5,
+# ...      directory=directory,
+# ... ).savefig(file_name)
 
-.. image:: images/topics_comparison_network.png
-    :width: 700px
-    :align: center
+# .. image:: images/topics_comparison_network.png
+#     :width: 700px
+#     :align: center
 
 
 

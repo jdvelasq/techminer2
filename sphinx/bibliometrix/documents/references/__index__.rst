@@ -10,4 +10,4 @@ Cited References
 
 
    .. toctree::
-      main_path_network
+      bibliometrix__main_path_network

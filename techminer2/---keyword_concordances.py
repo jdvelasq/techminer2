@@ -6,26 +6,26 @@ Abstract concordances exploration tool.
 
 
 
->>> directory = "data/regtech/"
+# >>> directory = "data/regtech/"
 
 
->>> from techminer2 import keyword_concordances
->>> keyword_concordances(
-...     'regtech', 
-...     top_n=10, 
-...     directory=directory,
-... )
---INFO-- Abstract concordances report generated.
-<<<  systems requires increasing the use of and reliance on  regtech .
-                                                             regtech  developments are leading towards a paradigm shift neces >>>
-                                                             regtech  to date has focused on the digitization of manual repor >>>
-                                  However, the potential of  regtech  is far greater  it has the potential to enable a nearly >>>
-<<< d, sets the foundation for a practical understanding of  regtech , and proposes sequenced reforms that could benefit regu >>>
-           Although also not a panacea, the development of " regtech " solutions will help clear away volumes of work that un >>>
-                                                             regtech  will not eliminate policy considerations, nor will it r >>>
-                Nevertheless, a sophisticated deployment of  regtech  should help focus regulatory discretion and public-poli >>>
-                                            Europes road to  regtech  has rested upon four apparently unrelated pillars: (1)  >>>
-<<< hat together they are underpinning the development of a  regtech  ecosystem in europe and will continue to do so.
+# >>> from techminer2 import keyword_concordances
+# >>> keyword_concordances(
+# ...     'regtech', 
+# ...     top_n=10, 
+# ...     directory=directory,
+# ... )
+# --INFO-- Abstract concordances report generated.
+# <<<  systems requires increasing the use of and reliance on  regtech .
+#                                                              regtech  developments are leading towards a paradigm shift neces >>>
+#                                                              regtech  to date has focused on the digitization of manual repor >>>
+#                                   However, the potential of  regtech  is far greater  it has the potential to enable a nearly >>>
+# <<< d, sets the foundation for a practical understanding of  regtech , and proposes sequenced reforms that could benefit regu >>>
+#            Although also not a panacea, the development of " regtech " solutions will help clear away volumes of work that un >>>
+#                                                              regtech  will not eliminate policy considerations, nor will it r >>>
+#                 Nevertheless, a sophisticated deployment of  regtech  should help focus regulatory discretion and public-poli >>>
+#                                             Europes road to  regtech  has rested upon four apparently unrelated pillars: (1)  >>>
+# <<< hat together they are underpinning the development of a  regtech  ecosystem in europe and will continue to do so.
 
 """
 import sys

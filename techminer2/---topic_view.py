@@ -2,78 +2,78 @@
 Topic View
 ===============================================================================
 
->>> from techminer2 import *
->>> directory = "data/regtech/"
->>> topic_view(
-...     'author_keywords',
-...     top_n=20,
-...     directory=directory,
-... )
-                         num_documents  global_citations  local_citations
-author_keywords                                                          
-fintech                            139              1285              218
-financial technologies              28               225               41
-financial inclusion                 17               339               61
-blockchain                          17               149               22
-innovation                          13               249               46
-bank                                13               193               23
-regulation                          12                89               10
-financial service                   11               300               43
-crowdfunding                         8               116               18
-peer-to-peer lending                 8                73               11
-financial innovation                 8                44               15
-covid-19                             8                36                6
-cryptocurrencies                     8                36                5
-technology                           7               192               31
-finance                              7                52                8
-risk                                 7                15                1
-business model                       6               174               25
-artificial intelligence              6                30                4
-regulatory sandbox                   6                26                7
-financial stability                  6                22                3
+# >>> from techminer2 import *
+# >>> directory = "data/regtech/"
+# >>> topic_view(
+# ...     'author_keywords',
+# ...     top_n=20,
+# ...     directory=directory,
+# ... )
+#                          num_documents  global_citations  local_citations
+# author_keywords                                                          
+# fintech                            139              1285              218
+# financial technologies              28               225               41
+# financial inclusion                 17               339               61
+# blockchain                          17               149               22
+# innovation                          13               249               46
+# bank                                13               193               23
+# regulation                          12                89               10
+# financial service                   11               300               43
+# crowdfunding                         8               116               18
+# peer-to-peer lending                 8                73               11
+# financial innovation                 8                44               15
+# covid-19                             8                36                6
+# cryptocurrencies                     8                36                5
+# technology                           7               192               31
+# finance                              7                52                8
+# risk                                 7                15                1
+# business model                       6               174               25
+# artificial intelligence              6                30                4
+# regulatory sandbox                   6                26                7
+# financial stability                  6                22                3
 
 
->>> topic_view(
-...     'author_keywords',
-...     min_occ=8,
-...     max_occ=17,
-...     directory=directory,
-... )
-                      num_documents  global_citations  local_citations
-author_keywords                                                       
-financial inclusion              17               339               61
-blockchain                       17               149               22
-innovation                       13               249               46
-bank                             13               193               23
-regulation                       12                89               10
-financial service                11               300               43
-crowdfunding                      8               116               18
-peer-to-peer lending              8                73               11
-financial innovation              8                44               15
-covid-19                          8                36                6
-cryptocurrencies                  8                36                5
+# >>> topic_view(
+# ...     'author_keywords',
+# ...     min_occ=8,
+# ...     max_occ=17,
+# ...     directory=directory,
+# ... )
+#                       num_documents  global_citations  local_citations
+# author_keywords                                                       
+# financial inclusion              17               339               61
+# blockchain                       17               149               22
+# innovation                       13               249               46
+# bank                             13               193               23
+# regulation                       12                89               10
+# financial service                11               300               43
+# crowdfunding                      8               116               18
+# peer-to-peer lending              8                73               11
+# financial innovation              8                44               15
+# covid-19                          8                36                6
+# cryptocurrencies                  8                36                5
 
 
->>> topic_view(
-...     'author_keywords', 
-...     min_occ=8, 
-...     max_occ=17,
-...     sort_index={"ascending": True},
-...     directory=directory,
-... )
-                      num_documents  global_citations  local_citations
-author_keywords                                                       
-bank                             13               193               23
-blockchain                       17               149               22
-covid-19                          8                36                6
-crowdfunding                      8               116               18
-cryptocurrencies                  8                36                5
-financial inclusion              17               339               61
-financial innovation              8                44               15
-financial service                11               300               43
-innovation                       13               249               46
-peer-to-peer lending              8                73               11
-regulation                       12                89               10
+# >>> topic_view(
+# ...     'author_keywords', 
+# ...     min_occ=8, 
+# ...     max_occ=17,
+# ...     sort_index={"ascending": True},
+# ...     directory=directory,
+# ... )
+#                       num_documents  global_citations  local_citations
+# author_keywords                                                       
+# bank                             13               193               23
+# blockchain                       17               149               22
+# covid-19                          8                36                6
+# crowdfunding                      8               116               18
+# cryptocurrencies                  8                36                5
+# financial inclusion              17               339               61
+# financial innovation              8                44               15
+# financial service                11               300               43
+# innovation                       13               249               46
+# peer-to-peer lending              8                73               11
+# regulation                       12                89               10
 
 """
 from .column_indicators import column_indicators

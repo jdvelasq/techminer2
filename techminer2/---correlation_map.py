@@ -2,23 +2,22 @@
 Correlation Map
 ===============================================================================
 
->>> from techminer2 import *
->>> directory = "data/regtech/"
->>> file_name = "sphinx/images/auto_corr_map.png"
->>> matrix = auto_corr_matrix('authors', min_occ=2, directory=directory)
->>> correlation_map(matrix).savefig(file_name)
+# >>> from techminer2 import *
+# >>> directory = "data/regtech/"
+# >>> file_name = "sphinx/images/auto_corr_map.png"
+# >>> matrix = auto_corr_matrix('authors', min_occ=2, directory=directory)
+# >>> correlation_map(matrix).savefig(file_name)
 
-.. image:: images/auto_corr_map.png
-    :width: 700px
-    :align: center
+# .. image:: images/auto_corr_map.png
+#     :width: 700px
+#     :align: center
 
 """
 
 import matplotlib.pyplot as plt
+import networkx as nx
 import numpy as np
 import pandas as pd
-
-import networkx as nx
 
 # pyltin: disable=c0103
 # pylint: disable=too-many-arguments

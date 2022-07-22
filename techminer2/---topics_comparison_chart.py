@@ -3,37 +3,37 @@ Topics Comparison Chart
 ===============================================================================
 
 
->>> from techminer2 import *
->>> directory = "data/regtech/"
->>> file_name = "sphinx/images/topics_comparison_chart.png"
->>> topics_comparison_chart(
-...     'fintech', 
-...     'block-chain',
-...     'author_keywords', 
-...     directory=directory,
-...     top_n=20,
-... ).savefig(file_name)
+# >>> from techminer2 import *
+# >>> directory = "data/regtech/"
+# >>> file_name = "sphinx/images/topics_comparison_chart.png"
+# >>> topics_comparison_chart(
+# ...     'fintech', 
+# ...     'block-chain',
+# ...     'author_keywords', 
+# ...     directory=directory,
+# ...     top_n=20,
+# ... ).savefig(file_name)
 
-.. image:: images/topics_comparison_chart.png
-    :width: 700px
-    :align: center
+# .. image:: images/topics_comparison_chart.png
+#     :width: 700px
+#     :align: center
 
 
->>> topics_comparison_chart(
-...     'fintech', 
-...     'block-chain',
-...     'author_keywords', 
-...     directory=directory,
-...     top_n=20,
-...     plot=False,
-... ).head()
-author_keywords         fintech  block-chain
-author_keywords                             
-financial technologies       14            2
-financial inclusion          15            0
-cryptocurrencies              7            6
-regulating                   10            1
-innovating                   10            0
+# >>> topics_comparison_chart(
+# ...     'fintech', 
+# ...     'block-chain',
+# ...     'author_keywords', 
+# ...     directory=directory,
+# ...     top_n=20,
+# ...     plot=False,
+# ... ).head()
+# author_keywords         fintech  block-chain
+# author_keywords                             
+# financial technologies       14            2
+# financial inclusion          15            0
+# cryptocurrencies              7            6
+# regulating                   10            1
+# innovating                   10            0
 
 """
 

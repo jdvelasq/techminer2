@@ -2,41 +2,41 @@
 Cluster Map
 ===============================================================================
 
->>> from techminer2 import *
->>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/cluster_map_occurrence.html"
+# >>> from techminer2 import *
+# >>> directory = "data/regtech/"
+# >>> file_name = "sphinx/_static/cluster_map_occurrence.html"
 
->>> occ_mtx = occ_flood_matrix(
-...    column='author_keywords',
-...    by='authors',
-...    min_occ=3,
-...    directory=directory,
-... )
->>> occ_mtx
-                   author_keywords            authors  OCC
-0                   regtech 70:462     Arner DW 7:220    6
-1                   fintech 42:406     Arner DW 7:220    5
-2                   regtech 70:462   Buckley RP 6:217    5
-3      financial regulation 08:091     Arner DW 7:220    4
-4                   fintech 42:406   Buckley RP 6:217    4
-5                   fintech 42:406  Zetzsche DA 4:092    4
-6                   regtech 70:462  Zetzsche DA 4:092    4
-7                   account 04:022    Brennan R 3:008    3
-8                   account 04:022       Ryan P 3:008    3
-9   data protection officer 03:008    Brennan R 3:008    3
-10  data protection officer 03:008       Ryan P 3:008    3
-11     financial regulation 08:091   Buckley RP 6:217    3
-12                  regtech 70:462  Barberis JN 4:146    3
-13                  regtech 70:462    Brennan R 3:008    3
-14                  regtech 70:462       Ryan P 3:008    3
+# >>> occ_mtx = occ_flood_matrix(
+# ...    column='author_keywords',
+# ...    by='authors',
+# ...    min_occ=3,
+# ...    directory=directory,
+# ... )
+# >>> occ_mtx
+#                    author_keywords            authors  OCC
+# 0                   regtech 70:462     Arner DW 7:220    6
+# 1                   fintech 42:406     Arner DW 7:220    5
+# 2                   regtech 70:462   Buckley RP 6:217    5
+# 3      financial regulation 08:091     Arner DW 7:220    4
+# 4                   fintech 42:406   Buckley RP 6:217    4
+# 5                   fintech 42:406  Zetzsche DA 4:092    4
+# 6                   regtech 70:462  Zetzsche DA 4:092    4
+# 7                   account 04:022    Brennan R 3:008    3
+# 8                   account 04:022       Ryan P 3:008    3
+# 9   data protection officer 03:008    Brennan R 3:008    3
+# 10  data protection officer 03:008       Ryan P 3:008    3
+# 11     financial regulation 08:091   Buckley RP 6:217    3
+# 12                  regtech 70:462  Barberis JN 4:146    3
+# 13                  regtech 70:462    Brennan R 3:008    3
+# 14                  regtech 70:462       Ryan P 3:008    3
 
->>> cluster_map(
-...     occ_mtx
-... ).write_html(file_name)
+# >>> cluster_map(
+# ...     occ_mtx
+# ... ).write_html(file_name)
 
-.. raw:: html
+# .. raw:: html
 
-    <iframe src="_static/cluster_map_occurrence.html" height="600px" width="100%" frameBorder="0"></iframe>
+#     <iframe src="_static/cluster_map_occurrence.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 

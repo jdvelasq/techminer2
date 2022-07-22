@@ -6,35 +6,35 @@ Captures n-words around the keyword.
 
 
 
->>> directory = "data/regtech/"
+# >>> directory = "data/regtech/"
 
->>> from techminer2 import abstract_screening
->>> abstract_screening(
-...     text='fintech',
-...     top_n=10,
-...     left=4,
-...     right=4,
-...     directory=directory,
-... )
---INFO-- Saved HTML report: data/regtech/reports/abstract_screening.html
-                 review the effect of FINTECH development against the broader
-          the disruptive potential of FINTECH, and its implications for
-                                      FINTECH
-           bankers who might consider FINTECH and strategic partnerships as
-       We argue financial technology (FINTECH) is the key driver
-                The full potential of FINTECH to support the sdgs
-     economies and societies, through FINTECH, financial inclusion and sustainable
-                  that many banks and FINTECH start-ups are investing
-      co-operative collaboration with FINTECH start-ups on regulatory
-       field of financial technology (FINTECH) and the different financial
+# >>> from techminer2 import abstract_screening
+# >>> abstract_screening(
+# ...     text='fintech',
+# ...     top_n=10,
+# ...     left=4,
+# ...     right=4,
+# ...     directory=directory,
+# ... )
+# --INFO-- Saved HTML report: data/regtech/reports/abstract_screening.html
+#                  review the effect of FINTECH development against the broader
+#           the disruptive potential of FINTECH, and its implications for
+#                                       FINTECH
+#            bankers who might consider FINTECH and strategic partnerships as
+#        We argue financial technology (FINTECH) is the key driver
+#                 The full potential of FINTECH to support the sdgs
+#      economies and societies, through FINTECH, financial inclusion and sustainable
+#                   that many banks and FINTECH start-ups are investing
+#       co-operative collaboration with FINTECH start-ups on regulatory
+#        field of financial technology (FINTECH) and the different financial
 
 
 """
 
 from ._load_abstracts import load_abstracts
-from .tlab__concordances import _select_abstracts
 from .load_template import load_template
 from .save_html_report import save_html_report
+from .tlab__concordances import _select_abstracts
 
 
 def abstract_screening(

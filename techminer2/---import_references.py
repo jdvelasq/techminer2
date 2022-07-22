@@ -9,14 +9,14 @@ Import a 'cited by' scopus file with references.
 
 * This function must be called after the import of the documents.
 
->>> from techminer2 import *
->>> directory = "data/regtech/"
+# >>> from techminer2 import *
+# >>> directory = "data/regtech/"
 
-## >>> import_references(directory=directory, disable_progress_bar=True)
-- INFO - 5123 raw records found in data/raw/references.
-- INFO - Creating references file
-- INFO - References table saved to data/processed/cited_references_table.csv
-- INFO - References table saved to data/processed/references.csv
+# ## >>> import_references(directory=directory, disable_progress_bar=True)
+# - INFO - 5123 raw records found in data/raw/references.
+# - INFO - Creating references file
+# - INFO - References table saved to data/processed/cited_references_table.csv
+# - INFO - References table saved to data/processed/references.csv
 
 
 
@@ -28,7 +28,6 @@ from os.path import join
 
 import numpy as np
 from tqdm import tqdm
-
 
 # from ._read_raw_csv_files import read_raw_csv_files
 from ._read_records import read_all_records

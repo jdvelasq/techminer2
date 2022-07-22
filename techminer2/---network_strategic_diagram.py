@@ -2,23 +2,23 @@
 Network strategic map
 ===============================================================================
 
->>> from techminer2 import *
->>> directory = "data/regtech/"
->>> file_name = "sphinx/images/network_strategic_diagram.png"
->>> coc_matrix = co_occurrence_matrix(
-...     column='author_keywords', 
-...     normalization="equivalence",
-...     min_occ=7, 
-...     directory=directory,
-... )
->>> from techminer2.network_api.network import network
->>> network_ = network(coc_matrix)
->>> from techminer2.network_api.network_map import network_strategic_diagram
->>> network_strategic_map(network_).savefig(file_name)
+# >>> from techminer2 import *
+# >>> directory = "data/regtech/"
+# >>> file_name = "sphinx/images/network_strategic_diagram.png"
+# >>> coc_matrix = co_occurrence_matrix(
+# ...     column='author_keywords', 
+# ...     normalization="equivalence",
+# ...     min_occ=7, 
+# ...     directory=directory,
+# ... )
+# >>> from techminer2.network_api.network import network
+# >>> network_ = network(coc_matrix)
+# >>> from techminer2.network_api.network_map import network_strategic_diagram
+# >>> network_strategic_map(network_).savefig(file_name)
 
-.. image:: images/network_strategic_diagram.png
-    :width: 700px
-    :align: center
+# .. image:: images/network_strategic_diagram.png
+#     :width: 700px
+#     :align: center
 
 """
 # from .bubble_map import bubble_map

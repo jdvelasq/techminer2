@@ -4,18 +4,18 @@ Create institutions thesaurus
 
 Creates a institutions thesaurus from the data in the database.
 
->>> from techminer2 import *
->>> directory = "data/regtech/"
+# >>> from techminer2 import *
+# >>> directory = "data/regtech/"
 
->>> create_institutions_thesaurus(directory)
---INFO-- Creating institutions thesaurus
---INFO-- Affiliations without country detected - check file data/processed/ignored_affiliations.txt
---INFO-- Affiliations without country detected - check file data/ignored_affiliations.txt
---INFO-- Thesaurus file 'data/processed/institutions.txt' created
+# >>> create_institutions_thesaurus(directory)
+# --INFO-- Creating institutions thesaurus
+# --INFO-- Affiliations without country detected - check file data/processed/ignored_affiliations.txt
+# --INFO-- Affiliations without country detected - check file data/ignored_affiliations.txt
+# --INFO-- Thesaurus file 'data/processed/institutions.txt' created
 
->>> apply_institutions_thesaurus(directory)
---INFO-- Applying thesaurus to institutions
---INFO-- The thesaurus was applied to institutions in all databases
+# >>> apply_institutions_thesaurus(directory)
+# --INFO-- Applying thesaurus to institutions
+# --INFO-- The thesaurus was applied to institutions in all databases
 
 """
 

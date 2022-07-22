@@ -2,15 +2,15 @@
 Sankey Diagram
 ===============================================================================
 
->>> from techminer2 import *
->>> directory = "data/regtech/"
->>> file_name = "sphinx/images/sankey_diagram.png"
->>> matrix = occurrence_matrix(column='authors', by='author_keywords', min_occ=3, min_occ_by=6, directory=directory)
->>> sankey_diagram(matrix).savefig(file_name)
+# >>> from techminer2 import *
+# >>> directory = "data/regtech/"
+# >>> file_name = "sphinx/images/sankey_diagram.png"
+# >>> matrix = occurrence_matrix(column='authors', by='author_keywords', min_occ=3, min_occ_by=6, directory=directory)
+# >>> sankey_diagram(matrix).savefig(file_name)
 
-.. image:: images/sankey_diagram.png
-    :width: 700px
-    :align: center
+# .. image:: images/sankey_diagram.png
+#     :width: 700px
+#     :align: center
 
 """
 import matplotlib.pyplot as plt

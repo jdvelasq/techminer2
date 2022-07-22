@@ -29,30 +29,30 @@ class ChordDiagram:
     Examples
     ----------------------------------------------------------------------------------------------
 
-    >>> chord = ChordDiagram()
-    >>> chord.add_nodes_from('abcdef', color='black', s=10)
-    >>> chord.add_edge('a', 'b')
-    >>> chord.add_edges_from([('a', 'b'), ('c', 'd'), ('e', 'f')])
-    >>> _ = pyplot.figure(figsize=(6, 6))
-    >>> _ = chord.plot(R=1, dist=0.05, fontsize=20, color='red')
-    >>> pyplot.savefig('sphinx/images/chord_demo_1.png')
+    # >>> chord = ChordDiagram()
+    # >>> chord.add_nodes_from('abcdef', color='black', s=10)
+    # >>> chord.add_edge('a', 'b')
+    # >>> chord.add_edges_from([('a', 'b'), ('c', 'd'), ('e', 'f')])
+    # >>> _ = pyplot.figure(figsize=(6, 6))
+    # >>> _ = chord.plot(R=1, dist=0.05, fontsize=20, color='red')
+    # >>> pyplot.savefig('sphinx/images/chord_demo_1.png')
 
-    .. image:: images/chord_demo_1.png
-        :width: 700px
-        :align: center
+    # .. image:: images/chord_demo_1.png
+    #     :width: 700px
+    #     :align: center
 
-    >>> chord = ChordDiagram()
-    >>> chord.add_nodes_from('abcd', color='black', s=20)
-    >>> chord.add_node('e', s=100, color='black')
-    >>> chord.add_node('g', s=200, color='black')
-    >>> chord.add_edge('a', 'b', linestyle=':', color='red')
-    >>> _ = pyplot.figure(figsize=(6, 6))
-    >>> _ = chord.plot(R=1, dist=0.05, fontsize=20, color='red')
-    >>> pyplot.savefig('sphinx/images/chord_demo_2.png')
+    # >>> chord = ChordDiagram()
+    # >>> chord.add_nodes_from('abcd', color='black', s=20)
+    # >>> chord.add_node('e', s=100, color='black')
+    # >>> chord.add_node('g', s=200, color='black')
+    # >>> chord.add_edge('a', 'b', linestyle=':', color='red')
+    # >>> _ = pyplot.figure(figsize=(6, 6))
+    # >>> _ = chord.plot(R=1, dist=0.05, fontsize=20, color='red')
+    # >>> pyplot.savefig('sphinx/images/chord_demo_2.png')
 
-    .. image:: images/chord_demo_2.png
-        :width: 700px
-        :align: center
+    # .. image:: images/chord_demo_2.png
+    #     :width: 700px
+    #     :align: center
 
 
     """
@@ -68,13 +68,13 @@ class ChordDiagram:
         ----------------------------------------------------------------------------------------------
 
 
-        >>> chord = ChordDiagram()
-        >>> chord.add_node('A', nodeA_prop=1)
-        >>> chord.add_node('B', nodeB_prop=2)
-        >>> chord._nodes
-        {'A': {'nodeA_prop': 1}, 'B': {'nodeB_prop': 2}}
+        # >>> chord = ChordDiagram()
+        # >>> chord.add_node('A', nodeA_prop=1)
+        # >>> chord.add_node('B', nodeB_prop=2)
+        # >>> chord._nodes
+        # {'A': {'nodeA_prop': 1}, 'B': {'nodeB_prop': 2}}
 
-        >>> chord.add_node('C', nodeC_prop1=10, nodeC_prop2=20)
+        # >>> chord.add_node('C', nodeC_prop1=10, nodeC_prop2=20)
 
         """
         if node_to_add in self._nodes:
@@ -88,20 +88,20 @@ class ChordDiagram:
         Examples
         ----------------------------------------------------------------------------------------------
 
-        >>> chord = ChordDiagram()
-        >>> chord.add_nodes_from('abcde')
-        >>> chord._nodes
-        {'a': {}, 'b': {}, 'c': {}, 'd': {}, 'e': {}}
+        # >>> chord = ChordDiagram()
+        # >>> chord.add_nodes_from('abcde')
+        # >>> chord._nodes
+        # {'a': {}, 'b': {}, 'c': {}, 'd': {}, 'e': {}}
 
-        >>> chord = ChordDiagram()
-        >>> chord.add_nodes_from('abc', linewidth=1)
-        >>> chord._nodes
-        {'a': {'linewidth': 1}, 'b': {'linewidth': 1}, 'c': {'linewidth': 1}}
+        # >>> chord = ChordDiagram()
+        # >>> chord.add_nodes_from('abc', linewidth=1)
+        # >>> chord._nodes
+        # {'a': {'linewidth': 1}, 'b': {'linewidth': 1}, 'c': {'linewidth': 1}}
 
-        >>> chord = ChordDiagram()
-        >>> chord.add_nodes_from( [('a', dict(linewidth=1)), ('b', {'linewidth':2}), ('c',{}) ], linewidth=10)
-        >>> chord._nodes
-        {'a': {'linewidth': 1}, 'b': {'linewidth': 2}, 'c': {'linewidth': 10}}
+        # >>> chord = ChordDiagram()
+        # >>> chord.add_nodes_from( [('a', dict(linewidth=1)), ('b', {'linewidth':2}), ('c',{}) ], linewidth=10)
+        # >>> chord._nodes
+        # {'a': {'linewidth': 1}, 'b': {'linewidth': 2}, 'c': {'linewidth': 10}}
 
         """
         for n in nodes_for_adding:
@@ -117,10 +117,10 @@ class ChordDiagram:
         Examples
         ----------------------------------------------------------------------------------------------
 
-        >>> chord = ChordDiagram()
-        >>> chord.add_edge('A','B', edgeAB_prop1=1, edgeAB_prop2=2)
-        >>> chord._edges
-        {('A', 'B'): {'edgeAB_prop1': 1, 'edgeAB_prop2': 2}}
+        # >>> chord = ChordDiagram()
+        # >>> chord.add_edge('A','B', edgeAB_prop1=1, edgeAB_prop2=2)
+        # >>> chord._edges
+        # {('A', 'B'): {'edgeAB_prop1': 1, 'edgeAB_prop2': 2}}
 
 
         """
@@ -137,10 +137,10 @@ class ChordDiagram:
         Examples
         ----------------------------------------------------------------------------------------------
 
-        >>> chord = ChordDiagram()
-        >>> chord.add_edges_from([(2, 3, {'linewidth': 1}), (3, 4), (5, 4)], linewidth=20)
-        >>> chord._edges
-        {(2, 3): {'linewidth': 1}, (3, 4): {'linewidth': 20}, (4, 5): {'linewidth': 20}}
+        # >>> chord = ChordDiagram()
+        # >>> chord.add_edges_from([(2, 3, {'linewidth': 1}), (3, 4), (5, 4)], linewidth=20)
+        # >>> chord._edges
+        # {(2, 3): {'linewidth': 1}, (3, 4): {'linewidth': 20}, (4, 5): {'linewidth': 20}}
 
         """
         for e in edges_to_add:

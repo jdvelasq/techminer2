@@ -15,7 +15,8 @@ Apply a thesaurus to a column
 --INFO-- The thesaurus file data/processed/test_keywords.txt was created
 
 
->>> apply_thesaurus(
+>>> from techminer2 import vantagepoint__apply_thesaurus
+>>> vantagepoint__apply_thesaurus(
 ...     thesaurus_file="test_keywords.txt",
 ...     input_column="author_keywords",
 ...     output_column="author_keywords_thesaurus",
@@ -36,7 +37,7 @@ from .map_ import map_
 from .thesaurus import read_textfile
 
 
-def apply_thesaurus(
+def vantagepoint__apply_thesaurus(
     thesaurus_file,
     input_column,
     output_column,

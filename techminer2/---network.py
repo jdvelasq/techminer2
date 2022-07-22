@@ -4,11 +4,11 @@ Network
 
 Builds a network from a matrix
 
->>> from techminer2 import *
->>> directory = "data/regtech/"
->>> coc_matrix = co_occurrence_matrix(column='author_keywords', min_occ=8, directory=directory)
->>> network(coc_matrix).keys()
-dict_keys(['nodes', 'edges', 'G', 'indicators', 'communities', 'manifold_data'])
+# >>> from techminer2 import *
+# >>> directory = "data/regtech/"
+# >>> coc_matrix = co_occurrence_matrix(column='author_keywords', min_occ=8, directory=directory)
+# >>> network(coc_matrix).keys()
+# dict_keys(['nodes', 'edges', 'G', 'indicators', 'communities', 'manifold_data'])
 
 
 """
