@@ -4,8 +4,8 @@ Keywords Summarization
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import tlab__keywords_summarization
->>> tlab__keywords_summarization(
+>>> from techminer2 import tm2__keywords_summarization
+>>> tm2__keywords_summarization(
 ...     column="author_keywords",
 ...     keywords=["fintech", "blockchain"],
 ...     n_phrases=5,    
@@ -18,11 +18,11 @@ import sys
 import textwrap
 from os.path import isfile, join
 
-from ._read_records import read_records
 from ._load_thesaurus_as_dict import load_thesaurus_as_dict
+from ._read_records import read_records
 
 
-def tlab__keywords_summarization(
+def tm2__keywords_summarization(
     column,
     keywords=None,
     n_phrases=10,

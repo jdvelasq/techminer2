@@ -41,7 +41,7 @@ package developed and tested in Python version 3.6.
 
     tm2__data/__index__
     tm2__thesaurus/__index__
-    
+    tm2__text_summarization/__index__
 
 
 

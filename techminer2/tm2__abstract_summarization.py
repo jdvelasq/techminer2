@@ -5,8 +5,8 @@ Abstract Summarization
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import tlab__abstract_summarization
->>> tlab__abstract_summarization(
+>>> from techminer2 import tm2__abstract_summarization
+>>> tm2__abstract_summarization(
 ...     texts=["fintech", "blockchain"],
 ...     n_phrases=5,    
 ...     directory=directory,
@@ -41,7 +41,7 @@ from ._load_abstracts import load_abstracts
 from ._read_records import read_records
 
 
-def tlab__abstract_summarization(
+def tm2__abstract_summarization(
     texts=None,
     n_phrases=10,
     sufix="",

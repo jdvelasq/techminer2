@@ -101,13 +101,13 @@ from .scientopy__time_line import scientopy__time_line
 from .scientopy__top_trending_topics import scientopy__top_trending_topics
 from .scientopy__word_cloud import scientopy__word_cloud
 from .tm2__coverage import tm2__coverage
-from .tlab__abstract_summarization import tlab__abstract_summarization
+from .tm2__abstract_summarization import tm2__abstract_summarization
 from .tlab__concordances import tlab__concordances
 from .tlab__emergent_themes import (
     tlab__emergent_themes_with_lda,
     tlab__emergent_themes_with_nmf,
 )
-from .tlab__keywords_summarization import tlab__keywords_summarization
+from .tm2__keywords_summarization import tm2__keywords_summarization
 from .tlab__svd_of_co_occ_matrix import tlab__svd_of_co_occ_matrix
 from .tlab__svd_of_tf_matrix import tlab__svd_of_tf_matrix
 from .tlab__text_screening import tlab__text_screening

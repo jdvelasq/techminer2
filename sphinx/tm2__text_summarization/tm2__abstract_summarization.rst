@@ -1,4 +1,4 @@
-.. automodule:: techminer2.tlab__keywords_summarization
+.. automodule:: techminer2.tm2__abstract_summarization
     :members:
     :undoc-members:
     :show-inheritance:
