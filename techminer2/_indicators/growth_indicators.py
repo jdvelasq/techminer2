@@ -20,8 +20,8 @@ artificial intelligence            8  ...                 -1.5
 import numpy as np
 import pandas as pd
 
-from ._load_stopwords import load_stopwords
-from ._read_records import read_records
+from .._load_stopwords import load_stopwords
+from .._read_records import read_records
 
 
 def _occ_per_period(records, column, time_window=2, sep="; "):

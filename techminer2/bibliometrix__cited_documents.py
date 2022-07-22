@@ -1,6 +1,6 @@
 import plotly.express as px
 
-from .document_indicators import document_indicators
+from ._indicators.document_indicators import document_indicators
 
 
 def bibiometrix_cited_documents(

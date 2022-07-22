@@ -35,7 +35,7 @@ compliance                        10                  2
 ## ScientoPy // Bar Trends
 import plotly.express as px
 
-from .growth_indicators import growth_indicators
+from ._indicators.growth_indicators import growth_indicators
 
 
 class _Results:

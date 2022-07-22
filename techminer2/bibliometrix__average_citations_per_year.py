@@ -15,7 +15,7 @@ Average Citations per Year
 
 """
 from ._time_plot import time_plot
-from .annual_indicators import annual_indicators
+from ._indicators.annual_indicators import annual_indicators
 
 
 def bibliometrix__average_citations_per_year(

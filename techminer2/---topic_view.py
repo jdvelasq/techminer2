@@ -76,7 +76,7 @@ Topic View
 # regulation                       12                89               10
 
 """
-from .column_indicators import column_indicators
+from ._indicators.column_indicators import column_indicators
 
 
 def topic_view(

@@ -36,7 +36,7 @@ from dataclasses import dataclass
 
 import plotly.express as px
 
-from .collaboration_indicators import collaboration_indicators
+from ._indicators.collaboration_indicators import collaboration_indicators
 
 
 @dataclass(init=False)

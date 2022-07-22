@@ -44,7 +44,7 @@ institutions                                       year       ...
 from dataclasses import dataclass
 
 from .bibliometrix__production_over_time import bibliometrix__production_over_time
-from .column_indicators_by_year import column_indicators_by_year
+from ._indicators.column_indicators_by_year import column_indicators_by_year
 from .bibliometrix_documents_per import bibliometrix__documents_per
 
 

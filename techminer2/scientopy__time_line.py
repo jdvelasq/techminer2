@@ -37,7 +37,7 @@ import numpy as np
 import pandas as pd
 import plotly.express as px
 
-from .column_indicators_by_year import column_indicators_by_year
+from ._indicators.column_indicators_by_year import column_indicators_by_year
 
 TEXTLEN = 40
 

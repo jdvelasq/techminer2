@@ -15,7 +15,7 @@ Annual Scientific Production
 
 """
 from ._time_plot import time_plot
-from .annual_indicators import annual_indicators
+from ._indicators.annual_indicators import annual_indicators
 
 
 def bibliometrix__annual_scientific_production(directory="./"):

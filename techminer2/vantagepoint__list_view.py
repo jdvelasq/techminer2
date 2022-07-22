@@ -37,7 +37,7 @@ machine learning                     6  ...                             0
  'local_citations_per_document']
 
 """
-from .column_indicators import column_indicators
+from ._indicators.column_indicators import column_indicators
 
 
 def vantagepoint__list_view(

@@ -20,7 +20,7 @@ WordCloud
     :align: center
 
 """
-from .column_indicators import column_indicators
+from ._indicators.column_indicators import column_indicators
 from .word_cloud_for_indicators import word_cloud_for_indicators
 
 

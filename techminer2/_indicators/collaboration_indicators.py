@@ -25,7 +25,7 @@ Hong Kong         8                   2                     6      0.75
 
 import numpy as np
 
-from ._read_records import read_records
+from .._read_records import read_records
 
 
 def collaboration_indicators(

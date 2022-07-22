@@ -57,7 +57,7 @@ year                ...
  'mean_local_citations_per_year']
 
 """
-from ._read_records import read_records
+from .._read_records import read_records
 
 
 def annual_indicators(

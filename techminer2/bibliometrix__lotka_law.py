@@ -31,7 +31,7 @@ from dataclasses import dataclass
 
 import plotly.graph_objects as go
 
-from .column_indicators import column_indicators
+from ._indicators.column_indicators import column_indicators
 
 
 @dataclass(init=False)
