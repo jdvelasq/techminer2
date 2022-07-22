@@ -191,7 +191,9 @@ def _make_table(
     custom_topics,
 ):
 
-    indicators = column_indicators_by_year(directory=directory, column=column)
+    indicators = column_indicators_by_year(
+        directory=directory, column=column, use_filter=False
+    )
     indicators = indicators[["OCC"]]
     indicators = indicators.reset_index()
     indicators = indicators.sort_values([column, "year"], ascending=True)
