@@ -26,7 +26,7 @@ The following fnctions operate on a thesaurus.
     * Operations over thesaurus files:
 
         .. toctree::
-            find_abbreviations
+            vantagepoint__find_abbreviations
 
         .. toctree::
             find_string
