@@ -20,8 +20,8 @@ Zetzsche DA     0     0     1     3     0     0
 """
 
 
-from ._indicators.column_indicators import column_indicators
-from ._indicators.column_indicators_by_year import column_indicators_by_year
+from .column_indicators import column_indicators
+from .column_indicators_by_year import column_indicators_by_year
 
 
 def annual_occurrence_matrix(column, sep=";", min_occ=1, directory="./"):

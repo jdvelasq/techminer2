@@ -36,7 +36,7 @@ from dataclasses import dataclass
 import numpy as np
 import plotly.graph_objects as go
 
-from .annual_occurrence_matrix import annual_occurrence_matrix
+from ._indicators.annual_occurrence_matrix import annual_occurrence_matrix
 from ._indicators.column_indicators import column_indicators
 
 
