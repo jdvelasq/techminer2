@@ -22,12 +22,12 @@ ScientoPy Time Line Plot.
 
 
 >>> time_line.table_.head()
-   year author_keywords  OCC
+   Year Author Keywords  OCC
 0  2016         regtech    1
 1  2017         regtech    3
 2  2018         regtech   14
 3  2019         regtech   13
-4  2020         regtech   19
+4  2020         regtech   18
 
 """
 ## ScientoPy // Time Line
@@ -57,8 +57,8 @@ def scientopy__time_line(
     """ScientoPy Bar Trend."""
 
     results = _Results()
-    results.table_ = _make_table(column, directory, top_n)
-    results.plot_ = _make_plot(column, results.table_, title)
+    column_, results.table_ = _make_table(column, directory, top_n)
+    results.plot_ = _make_plot(column_, results.table_, title)
     return results
 
 
@@ -66,11 +66,11 @@ def _make_plot(column, indicators, title):
 
     fig = px.line(
         indicators,
-        x="year",
+        x="Year",
         y="OCC",
         title=title,
         markers=True,
-        hover_data=[column, "year", "OCC"],
+        hover_data=[column, "Year", "OCC"],
         color=column,
     )
     fig.update_traces(
@@ -137,7 +137,10 @@ def _make_table(column, directory, top_n):
     )
     indicators[column] = indicators[column].apply(_shorten)
 
-    return indicators
+    column_ = column.replace("_", " ").title()
+    indicators = indicators.rename(columns={"year": "Year", column: column_})
+
+    return column_, indicators
 
 
 def _shorten(text):
