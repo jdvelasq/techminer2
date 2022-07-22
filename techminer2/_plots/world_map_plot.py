@@ -1,7 +1,7 @@
 """Makes a cloropleth plot from a dataframe."""
 
 from ..format_dataset_to_plot_with_plotly import format_dataset_to_plot_with_plotly
-from ..world_map_px import world_map_px
+from .._px.world_map_px import world_map_px
 
 
 def world_map_plot(
