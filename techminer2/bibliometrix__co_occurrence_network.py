@@ -12,7 +12,7 @@ Co-occurrence Network
 ...     directory=directory,
 ...     method="louvain",
 ...     nx_k=0.5,
-...     nx_iteratons=10,
+...     nx_iterations=10,
 ...     delta=1.0,    
 ... )
 

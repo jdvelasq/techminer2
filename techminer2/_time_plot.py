@@ -10,8 +10,8 @@ with the data.
 >>> file_name = "sphinx/_static/time_plot.html"
 
 
->>> from techminer2.bibliometrix.overview.annual_indicators import annual_indicators
->>> from techminer2.bibliometrix.overview.time_plot import time_plot
+>>> from techminer2.annual_indicators import annual_indicators
+>>> from techminer2._time_plot import time_plot
 >>> indicators = annual_indicators(directory)
 >>> time_plot(
 ...     indicators,
