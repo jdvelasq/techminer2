@@ -4,9 +4,10 @@ User Filters
 
 Allow users to select docuemnts to be mined.
 
->>> from techminer2 import *
 >>> directory = "data/regtech/"
->>> user_filters(directory, book=True,  erratum=True, first_year=2016, last_year=2021)
+
+>>> from techminer2 import tm2__user_filters
+>>> tm2__user_filters(directory, book=True,  erratum=True, first_year=2016, last_year=2021)
 ---< Document >-------------------------------------------------
                First year : 2016
                 Last year : 2021
@@ -97,7 +98,6 @@ Allow users to select docuemnts to be mined.
 """
 import os
 import os.path
-
 
 import yaml
 
@@ -194,6 +194,12 @@ class _UserFilters:
         self.save_filter()
 
 
-def user_filters(directory="./", quiet=False, **kwargs):
+def tm2__user_filters(
+    directory="./",
+    quiet=False,
+    **kwargs,
+):
+    """Data filtering."""
+
     user_filters_ = _UserFilters(directory=directory, quiet=quiet, kwargs=kwargs)
     user_filters_.run()

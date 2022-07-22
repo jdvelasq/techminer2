@@ -1,15 +1,17 @@
 """
-Clean Countries
+Clean Institutions
 ===============================================================================
 
-Cleans the country columns using the file countries.txt, located in
+Cleans the institutions columns using the file institutions.txt, located in
 the same directory as the documents.csv file.
 
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import vantagepoint__clean_countries
->>> vantagepoint__clean_countries(directory)
+>>> from techminer2 import tm2__clean_institutions
+>>> tm2__clean_institutions(directory)
+--INFO-- Applying thesaurus to institutions
+--INFO-- The thesaurus was applied to institutions in all databases
 
 
 """
@@ -20,42 +22,48 @@ import sys
 
 import pandas as pd
 
+from .map_ import map_
 from .thesaurus import read_textfile
 
 
-def vantagepoint__clean_countries(directory="./"):
-    """Apply country thesaurus."""
+def tm2__clean_institutions(directory="./"):
+    """Apply institutions thesaurus."""
 
-    # thesaurus preparation
-    thesaurus_file = os.path.join(directory, "processed", "countries.txt")
+    # Read the thesaurus
+    thesaurus_file = os.path.join(directory, "processed", "institutions.txt")
     thesaurus = read_textfile(thesaurus_file)
     thesaurus = thesaurus.compile_as_dict()
 
-    # apply thesaurus
+    # Apply thesaurus
     files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
+
     for file in files:
         records = pd.read_csv(file, encoding="utf-8")
         #
-        records = records.assign(raw_countries=records.affiliations.str.split(";"))
+        #
+        records = records.assign(raw_institutions=records.affiliations.str.split(";"))
         records = records.assign(
-            raw_countries=records.raw_countries.map(
+            raw_institutions=records.raw_institutions.map(
                 lambda x: [thesaurus.apply_as_dict(y.strip()) for y in x]
                 if isinstance(x, list)
                 else x
             )
         )
         #
-        records["country_1st_author"] = records.raw_countries.map(
+        records["institution_1st_author"] = records.raw_institutions.map(
             lambda w: w[0], na_action="ignore"
         )
         #
         records = records.assign(
-            countries=records.raw_countries.map(
+            institutions=records.raw_institutions.map(
                 lambda x: sorted(set(x)) if isinstance(x, list) else x
             )
         )
-        records = records.assign(raw_countries=records.raw_countries.str.join("; "))
-        records = records.assign(countries=records.countries.str.join("; "))
+        records = records.assign(
+            raw_institutions=records.raw_institutions.str.join("; ")
+        )
+        records = records.assign(institutions=records.institutions.str.join("; "))
+        #
         #
         records.to_csv(file, sep=",", encoding="utf-8", index=False)
 

@@ -7,8 +7,8 @@ Finds string abbreviations in the keywords of a thesaurus.
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import vantagepoint__find_abbreviations
->>> vantagepoint__find_abbreviations(
+>>> from techminer2 import tm2__find_abbreviations
+>>> tm2__find_abbreviations(
 ...     "keywords.txt",
 ...     directory=directory,
 ... )
@@ -226,7 +226,7 @@ import pandas as pd
 from .thesaurus import load_file_as_dict
 
 
-def vantagepoint__find_abbreviations(
+def tm2__find_abbreviations(
     thesaurus_file,
     directory="./",
 ):

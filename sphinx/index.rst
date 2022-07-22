@@ -39,7 +39,8 @@ package developed and tested in Python version 3.6.
     :hidden:
     :maxdepth: 1
 
-    data/__index__
+    tm2__data/__index__
+    tm2__thesaurus/__index__
     
 
 

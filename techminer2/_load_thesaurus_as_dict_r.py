@@ -1,6 +1,6 @@
 """Load thesaurus as reversed dictionary."""
 
-from .load_thesaurus_as_dict import load_thesaurus_as_dict
+from ._load_thesaurus_as_dict import load_thesaurus_as_dict
 
 
 def load_thesaurus_as_dict_r(filename):

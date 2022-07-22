@@ -67,7 +67,7 @@ import textwrap
 
 from ._load_abstracts import load_abstracts
 from ._load_template import load_template
-from .save_html_report import save_html_report
+from ._save_html_report import save_html_report
 from .tlab__concordances import _select_abstracts
 
 
