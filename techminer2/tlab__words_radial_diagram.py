@@ -21,7 +21,7 @@ Words Radial Diagram
 """
 import networkx as nx
 
-from .get_network_graph_plot import network_graph_plot
+from ._get_network_graph_plot import network_graph_plot
 from .vantagepoint__co_occ_matrix_list import vantagepoint__co_occ_matrix_list
 
 

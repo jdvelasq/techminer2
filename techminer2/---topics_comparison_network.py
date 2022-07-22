@@ -25,7 +25,7 @@ Topics Comparison Network
 import networkx as nx
 
 #  from .co_occurrence_matrix import co_occurrence_matrix
-from .get_network_graph_plot import network_graph_plot
+from ._get_network_graph_plot import network_graph_plot
 
 
 def topics_comparison_network(

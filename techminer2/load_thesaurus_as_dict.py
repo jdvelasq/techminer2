@@ -12,7 +12,7 @@ def load_thesaurus_as_dict(filename):
         if len(word) > 0:
             if word[0] != " ":
                 if key is not None:
-                    if values == []:
+                    if not values:
                         raise Exception(
                             "Key '"
                             + key
@@ -26,6 +26,7 @@ def load_thesaurus_as_dict(filename):
             else:
                 if values is not None and len(word.strip()) > 0:
                     values.append(word.strip())
+    # checks the exit
     if key not in dic.keys():
         if values == []:
             raise Exception(

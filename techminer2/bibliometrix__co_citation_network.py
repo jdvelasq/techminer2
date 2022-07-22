@@ -52,12 +52,12 @@ Arner DW, 2019, EUR BUS ORG LAW REV, V20, P55 0...      0  ...  0.027119
 
 """
 from .bibliometrix__co_citation_matrix_list import bibliometrix__co_citation_matrix_list
-from .get_network_graph_communities import get_network_graph_communities
-from .get_network_graph_degree_plot import get_network_graph_degree_plot
-from .get_network_graph_indicators import get_network_graph_indicators
-from .get_network_graph_plot import network_graph_plot
-from .matrix_list_2_network_graph import matrix_list_2_network_graph
-from .network_community_detection import network_community_detection
+from ._get_network_graph_communities import get_network_graph_communities
+from ._get_network_graph_degree_plot import get_network_graph_degree_plot
+from ._get_network_graph_indicators import get_network_graph_indicators
+from ._get_network_graph_plot import network_graph_plot
+from ._matrix_list_2_network_graph import matrix_list_2_network_graph
+from ._network_community_detection import network_community_detection
 
 
 class _Result:

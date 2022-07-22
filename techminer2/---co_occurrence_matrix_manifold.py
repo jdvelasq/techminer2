@@ -20,7 +20,7 @@ Co-occurrence Matrix / Manifold Map
 
 # from .co_occurrence_matrix import co_occurrence_matrix
 from .network import network
-from .network_map import network_map
+from ._network_map import network_map
 
 
 def co_occurrence_matrix_manifold(
