@@ -87,7 +87,11 @@ from .bibliometrix__source_impact import bibliometrix__source_impact
 from .bibliometrix__sources_production_over_time import (
     bibliometrix__sources_production_over_time,
 )
+from .bibliometrix__thematic_evolution_plot import bibliometrix__thematic_evolution_plot
 from .bibliometrix__thematic_map import bibliometrix__thematic_map
+from .bibliometrix__thematic_map_summarization import (
+    bibliometrix__thematic_map_summarization,
+)
 from .bibliometrix__three_fields_plot import bibliometrix__three_fields_plot
 from .bibliometrix__treemap import bibliometrix__treemap
 from .bibliometrix__trend_topics import bibliometrix__trend_topics
@@ -102,14 +106,13 @@ from .scientopy__time_line import scientopy__time_line
 from .scientopy__top_trending_topics import scientopy__top_trending_topics
 from .scientopy__word_cloud import scientopy__word_cloud
 from .techminer2__coverage import techminer2__coverage
-from .thematic_evolution_plot import thematic_evolution_plot
-from .thematic_map_summarization import thematic_map_summarization
 from .tlab__emergent_themes import (
     tlab__emergent_themes_with_lda,
     tlab__emergent_themes_with_nmf,
 )
 from .tlab__svd_of_co_occ_matrix import tlab__svd_of_co_occ_matrix
 from .tlab__svd_of_tf_matrix import tlab__svd_of_tf_matrix
+from .tlab__text_screening import tlab__text_screening
 from .tlab__thematic_analysis import tlab__thematic_analysis
 from .tlab__word_associations_for_a_item import tlab__word_associations_for_a_item
 from .tlab__word_associations_for_all_items import tlab__word_associations_for_all_items

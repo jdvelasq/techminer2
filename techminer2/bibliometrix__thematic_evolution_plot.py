@@ -271,7 +271,7 @@ def _sankey_plot(
     return fig
 
 
-def thematic_evolution_plot(
+def bibliometrix__thematic_evolution_plot(
     indicators,
     figsize=(6, 6),
 ):

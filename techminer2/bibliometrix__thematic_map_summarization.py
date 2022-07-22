@@ -20,7 +20,7 @@ Thematic Map / Summarization
 # from ....co_occurrence_network_summarization import co_occurrence_network_summarization
 
 
-def thematic_map_summarization(
+def bibliometrix__thematic_map_summarization(
     column,
     min_occ=2,
     max_occ=None,

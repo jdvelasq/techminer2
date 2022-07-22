@@ -7,3 +7,6 @@ Concordances
         abstract_summarization
         keyword_concordances
         keywords_summarization
+
+    .. toctree::
+        tlab__text_screening

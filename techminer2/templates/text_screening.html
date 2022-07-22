@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Text screening</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            padding-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h3>Text Screening</h2>
+    </header>
+    <div>
+
+        {% for text in concordances %}
+        <div>
+            <p><strong>{{ text[0] }}</strong></p>
+            <p>{{ text[1] }}</p>
+            <br>
+        </div>
+        {% endfor %}
+
+    </div>
+
+</body>
+
+</html>
