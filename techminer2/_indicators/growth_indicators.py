@@ -99,7 +99,11 @@ def _average_documents_per_year(records, column, time_window, sep="; "):
 
 
 def growth_indicators(
-    column, sep="; ", time_window=2, directory="./", database="documents"
+    column,
+    sep="; ",
+    time_window=2,
+    directory="./",
+    database="documents",
 ):
     """Computes growth indicators."""
 
@@ -107,6 +111,10 @@ def growth_indicators(
         directory=directory, database=database, use_filter=(database == "documents")
     )
 
+    return _growth_indicators_from_records(column, sep, time_window, directory, records)
+
+
+def _growth_indicators_from_records(column, sep, time_window, directory, records):
     ndpp = _occ_per_period(
         records=records, column=column, time_window=time_window, sep=sep
     )

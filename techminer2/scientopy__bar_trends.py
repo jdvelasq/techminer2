@@ -5,13 +5,13 @@ Bar Trends
 ScientoPy Bar Trends
 
 
-
+**Basic Usage.**
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/scientpy__bar_trends.html"
 
->>> from techminer2 import scientpy__bar_trends
->>> trends = scientpy__bar_trends(
+>>> file_name = "sphinx/_static/scientpy__bar_trends-1.html"
+>>> from techminer2 import scientopy__bar_trends
+>>> trends = scientopy__bar_trends(
 ...     column="author_keywords",
 ...     directory=directory,
 ... )
@@ -19,23 +19,83 @@ ScientoPy Bar Trends
 
 .. raw:: html
 
-    <iframe src="../_static/scientpy__bar_trends.html" height="800px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../_static/scientpy__bar_trends-1.html" height="800px" width="100%" frameBorder="0"></iframe>
 
 
 >>> trends.table_.head()
                          Before 2021  Between 2021-2022
 author_keywords                                        
-regtech                           50                 20
+regtech                           49                 20
 fintech                           32                 10
 blockchain                        13                  5
 artificial intelligence            8                  5
-compliance                        10                  2
+regulatory technology              6                  6
+
+
+**'skip_first' argument.**
+
+>>> file_name = "sphinx/_static/scientpy__bar_trends-2.html"
+>>> from techminer2 import scientopy__bar_trends
+>>> trends = scientopy__bar_trends(
+...     column="author_keywords",
+...     skip_first=2,
+...     directory=directory,
+... )
+>>> trends.plot_.write_html(file_name)
+
+.. raw:: html
+
+    <iframe src="../_static/scientpy__bar_trends-2.html" height="800px" width="100%" frameBorder="0"></iframe>
+
+
+**Time Filter.**
+
+>>> file_name = "sphinx/_static/scientpy__bar_trends-3.html"
+>>> from techminer2 import scientopy__bar_trends
+>>> trends = scientopy__bar_trends(
+...     column="author_keywords",
+...     start_year=2018,
+...     end_year=2021,
+...     directory=directory,
+... )
+>>> trends.plot_.write_html(file_name)
+
+.. raw:: html
+
+    <iframe src="../_static/scientpy__bar_trends-3.html" height="800px" width="100%" frameBorder="0"></iframe>
+
+
+
+**Custom Topics Extraction.**
+
+>>> file_name = "sphinx/_static/scientpy__bar_trends-4.html"
+>>> from techminer2 import scientopy__bar_trends
+>>> trends = scientopy__bar_trends(
+...     column="author_keywords",
+...     custom_topics=[
+...         "fintech", 
+...         "blockchain", 
+...         "financial regulation", 
+...         "machine learning",
+...         "big data",
+...         "cryptocurrency",
+...     ],
+...     directory=directory,
+... )
+>>> trends.plot_.write_html(file_name)
+
+.. raw:: html
+
+    <iframe src="../_static/scientpy__bar_trends-4.html" height="800px" width="100%" frameBorder="0"></iframe>
+
+
 
 """
 ## ScientoPy // Bar Trends
 import plotly.express as px
 
-from ._indicators.growth_indicators import growth_indicators
+from ._indicators.growth_indicators import _growth_indicators_from_records
+from ._read_records import read_records
 
 
 class _Results:
@@ -46,25 +106,46 @@ class _Results:
 
 def scientopy__bar_trends(
     column,
-    top_n=20,
+    topics_length=20,
+    start_year=None,
+    end_year=None,
+    skip_first=0,
+    custom_topics=None,
     time_window=2,
     directory="./",
+    database="documents",
 ):
     """ScientoPy Bar Trend."""
 
+    records = read_records(directory=directory, database=database, use_filter=False)
+
+    if start_year is not None:
+        records = records[records.year >= start_year]
+    if end_year is not None:
+        records = records[records.year <= end_year]
+
+    indicators = _growth_indicators_from_records(
+        column=column,
+        sep="; ",
+        time_window=time_window,
+        directory=directory,
+        records=records,
+    )
+
+    indicators = _make_table(indicators)
     results = _Results()
-    results.table_ = _make_table(column, time_window, directory)
-    results.plot_ = _make_plot(column, results.table_, top_n)
-    return results
+    results.table_ = indicators.copy()
 
+    indicators = _filter_indicators(
+        indicators, topics_length, skip_first, custom_topics
+    )
 
-def _make_plot(column, indicators, top_n):
+    results = _Results()
+    results.table_ = indicators.copy()
 
     col0 = indicators.columns[0]
     col1 = indicators.columns[1]
-    indicators = indicators.copy()
-    indicators = indicators.iloc[:, :2]
-    indicators = indicators.head(top_n)
+    indicators = indicators.head(topics_length)
     indicators = indicators.reset_index()
 
     indicators = indicators.melt(id_vars=column, value_vars=[col0, col1])
@@ -75,6 +156,41 @@ def _make_plot(column, indicators, top_n):
             "value": "Num Documents",
         }
     )
+
+    results.plot_ = _make_plot(indicators, column, col0, col1)
+    return results
+
+
+def _filter_indicators(indicators, topics_length, skip_first, custom_topics):
+    indicators = indicators.copy()
+    if custom_topics is not None:
+        custom_topics = [
+            topic for topic in custom_topics if topic in indicators.index.tolist()
+        ]
+    else:
+        custom_topics = indicators.index.copy()
+        if skip_first > 0:
+            custom_topics = custom_topics[skip_first:]
+        custom_topics = custom_topics[:topics_length]
+
+    indicators = indicators.loc[custom_topics, :]
+
+    return indicators
+
+
+def _make_table(indicators):
+
+    indicators = indicators[indicators.columns[:2]]
+    indicators = indicators.assign(
+        num_documents=indicators[indicators.columns[0]]
+        + indicators[indicators.columns[1]]
+    )
+    indicators = indicators.sort_values(by="num_documents", ascending=False)
+    indicators.pop("num_documents")
+    return indicators
+
+
+def _make_plot(indicators, column, col0, col1):
 
     fig = px.bar(
         indicators,
@@ -106,15 +222,3 @@ def _make_plot(column, indicators, top_n):
     )
 
     return fig
-
-
-def _make_table(column, time_window, directory):
-    indicators = growth_indicators(column, time_window=time_window, directory=directory)
-    indicators = indicators[indicators.columns[:2]]
-    indicators = indicators.assign(
-        num_documents=indicators[indicators.columns[0]]
-        + indicators[indicators.columns[1]]
-    )
-    indicators = indicators.sort_values(by="num_documents", ascending=False)
-    indicators.pop("num_documents")
-    return indicators
