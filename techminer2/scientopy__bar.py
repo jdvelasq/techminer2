@@ -3,6 +3,8 @@ Bar
 ===============================================================================
 
 
+**Basic Usage.**
+
 >>> directory = "data/regtech/"
 
 >>> file_name = "sphinx/_static/scientopy__bar-1.html"
@@ -22,9 +24,9 @@ Bar
 >>> file_name = "sphinx/_static/scientopy__bar-2.html"
 >>> from techminer2 import scientopy__bar
 >>> scientopy__bar(
-...    column='author_keywords',
-...    skip_first=2,
-...    directory=directory,
+...     column='author_keywords',
+...     skip_first=2,
+...     directory=directory,
 ... ).write_html(file_name)
 
 .. raw:: html
@@ -37,10 +39,10 @@ Bar
 >>> file_name = "sphinx/_static/scientopy__bar-3.html"
 >>> from techminer2 import scientopy__bar
 >>> scientopy__bar(
-...    column='author_keywords',
-...    start_year=2018,
-...    end_year=2021,
-...    directory=directory,
+...     column='author_keywords',
+...     start_year=2018,
+...     end_year=2021,
+...     directory=directory,
 ... ).write_html(file_name)
 
 .. raw:: html
