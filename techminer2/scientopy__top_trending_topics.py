@@ -28,20 +28,20 @@ average growth rate.
 ...     directory=directory,
 ...     top_n=20,
 ... ).table_.head()
-                     author_keywords  Average Growth Rate
-0   wealthtech (wealth + technology)                  0.5
-1                        text mining                  0.5
-2   edutech (education + technology)                  0.5
-3                           business                  0.5
-4  register of processing activities                  0.5
+                    author_keywords  Average Growth Rate
+0  wealthtech (wealth + technology)                  0.5
+1                          ai tools                  0.5
+2         technology trend analysis                  0.5
+3                 computer auditing                  0.5
+4                  ai-based systems                  0.5
 
 
 
 """
 from dataclasses import dataclass
 
-from ._px.bar_px import bar_px
 from ._indicators.growth_indicators import growth_indicators
+from ._px.bar_px import bar_px
 
 
 @dataclass(init=False)

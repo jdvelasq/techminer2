@@ -101,8 +101,6 @@ import os.path
 
 import yaml
 
-from ._read_records import read_records
-
 
 def _load_filter(directory):
 

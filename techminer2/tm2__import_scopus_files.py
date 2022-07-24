@@ -7,7 +7,10 @@ Import a scopus file to a working directory.
 >>> directory = "data/regtech/"
 
 >>> from techminer2 import tm2__import_scopus_files
->>> tm2__import_scopus_files(directory, disable_progress_bar=True)
+>>> tm2__import_scopus_files(
+...     directory, 
+...     disable_progress_bar=True,
+... )
 --INFO-- Concatenating raw files in data/regtech/raw/cited_by/
 --INFO-- Concatenating raw files in data/regtech/raw/references/
 --INFO-- Concatenating raw files in data/regtech/raw/documents/
@@ -56,9 +59,11 @@ Import a scopus file to a working directory.
 --INFO-- The data/regtech/processed/institutions.txt thesaurus file was created
 --INFO-- The data/regtech/processed/institutions.txt thesaurus file was applied to affiliations in all databases
 --INFO-- Process finished!!!
+--INFO-- data/regtech/processed/_documents.csv: 94 imported records
+--INFO-- data/regtech/processed/_references.csv: 1214 imported records
+--INFO-- data/regtech/processed/_cited_by.csv: 474 imported records
 
-
-
+ 
 
 """
 import glob
@@ -85,6 +90,7 @@ from .tm2__clean_keywords import tm2__clean_keywords
 def tm2__import_scopus_files(
     directory="./",
     disable_progress_bar=False,
+    **document_types,
 ):
     """Import Scopus files."""
 
@@ -94,6 +100,7 @@ def tm2__import_scopus_files(
     #
     _apply_scopus2tags_to_database_files(directory)
     _format_columns_names_in_database_files(directory)
+    _remove_selected_docoument_types_from_documents(directory, **document_types)
     _drop_na_columns_in_database_files(directory)
     _remove_accents_in_database_files(directory)
     _remove_stranger_chars_in_database_files(directory)
@@ -152,6 +159,47 @@ def tm2__import_scopus_files(
     tm2__clean_institutions(directory=directory)
 
     sys.stdout.write("--INFO-- Process finished!!!\n")
+    _report_records(directory)
+
+
+def _report_records(directory):
+    files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
+    for file in files:
+        data = pd.read_csv(file, encoding="utf-8")
+        sys.stdout.write(f"--INFO-- {file}: {len(data.index)} imported records\n")
+
+
+def _remove_selected_docoument_types_from_documents(directory, **document_types):
+
+    discarded_document_types = [
+        key.lower()
+        for key, value in document_types.items()
+        if isinstance(value, bool) and value is False
+    ]
+
+    if len(discarded_document_types) == 0:
+        return
+
+    sys.stdout.write(
+        "--INFO-- Removing selecting document types in documents database\n"
+    )
+
+    files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
+    for file in files:
+        data = pd.read_csv(file, encoding="utf-8")
+        #
+        data["TEMP"] = data.document_type.copy()
+        data["TEMP"] = data["TEMP"].str.lower()
+        data["TEMP"] = data["TEMP"].str.replace(" ", "_")
+        data = data[~data["TEMP"].isin(discarded_document_types)]
+        data.drop(columns=["TEMP"], inplace=True)
+        #
+        data.to_csv(file, sep=",", encoding="utf-8", index=False)
+
+    documents_path = os.path.join(directory, "processed", "_documents.csv")
+    data = pd.read_csv(documents_path)
+
+    data.to_csv(documents_path, sep=",", encoding="utf-8", index=False)
 
 
 def _create_extract_raw_words_from_column(directory, source_column, dest_column):
@@ -1427,10 +1475,11 @@ def _create_database_files(directory):
         )
 
 
-def _concat_raw_csv_files(path):
+def _concat_raw_csv_files(path, quiet=False):
     """Load raw csv files in a directory."""
 
-    sys.stdout.write(f"--INFO-- Concatenating raw files in {path}/\n")
+    if quiet is False:
+        sys.stdout.write(f"--INFO-- Concatenating raw files in {path}/\n")
 
     files = [f for f in os.listdir(path) if f.endswith(".csv")]
     if len(files) == 0:

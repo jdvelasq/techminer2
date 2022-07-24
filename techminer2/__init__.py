@@ -94,20 +94,16 @@ from .bibliometrix__treemap import bibliometrix__treemap
 from .bibliometrix__trend_topics import bibliometrix__trend_topics
 from .bibliometrix__word_cloud import bibliometrix__word_cloud
 from .bibliometrix__word_dynamics import bibliometrix__word_dynamics
-from .tm2__import_scopus_files import tm2__import_scopus_files
 from .scientopy__bar import scientopy__bar
 from .scientopy__bar_trends import scientopy__bar_trends
 from .scientopy__time_line import scientopy__time_line
 from .scientopy__top_trending_topics import scientopy__top_trending_topics
 from .scientopy__word_cloud import scientopy__word_cloud
-from .tm2__coverage import tm2__coverage
-from .tm2__abstract_summarization import tm2__abstract_summarization
 from .tlab__concordances import tlab__concordances
 from .tlab__emergent_themes import (
     tlab__emergent_themes_with_lda,
     tlab__emergent_themes_with_nmf,
 )
-from .tm2__keywords_summarization import tm2__keywords_summarization
 from .tlab__svd_of_co_occ_matrix import tlab__svd_of_co_occ_matrix
 from .tlab__svd_of_tf_matrix import tlab__svd_of_tf_matrix
 from .tlab__text_screening import tlab__text_screening
@@ -117,6 +113,12 @@ from .tlab__word_associations_for_all_items import tlab__word_associations_for_a
 from .tlab__word_associations_mds_map import tlab__word_associations_mds_map
 from .tlab__word_co_occurrentes_plot import tlab__word_co_occurrentes_plot
 from .tlab__words_radial_diagram import tlab__words_radial_diagram
+from .tm2__abstract_summarization import tm2__abstract_summarization
+from .tm2__coverage import tm2__coverage
+from .tm2__find_abbreviations import tm2__find_abbreviations
+from .tm2__import_scopus_files import tm2__import_scopus_files
+from .tm2__keywords_summarization import tm2__keywords_summarization
+from .tm2__raw_document_types import tm2__raw_document_types
 from .vantagepoint__auto_corr_matrix import vantagepoint__auto_corr_matrix
 from .vantagepoint__auto_corr_matrix_list import vantagepoint__auto_corr_matrix_list
 from .vantagepoint__bar_chart import vantagepoint__bar_chart
@@ -128,7 +130,6 @@ from .vantagepoint__column_chart import vantagepoint__column_chart
 from .vantagepoint__cross_corr_matrix import vantagepoint__cross_corr_matrix
 from .vantagepoint__cross_corr_matrix_list import vantagepoint__cross_corr_matrix_list
 from .vantagepoint__factor_matrix import vantagepoint__factor_matrix
-from .tm2__find_abbreviations import tm2__find_abbreviations
 from .vantagepoint__find_string import vantagepoint__find_string
 from .vantagepoint__fuzzy_search import vantagepoint__fuzzy_search
 from .vantagepoint__gantt_chart import vantagepoint__gantt_chart
