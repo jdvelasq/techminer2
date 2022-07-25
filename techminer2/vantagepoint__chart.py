@@ -7,7 +7,6 @@ from ._plots.column_plot import column_plot
 from ._plots.line_plot import line_plot
 from ._plots.pie_plot import pie_plot
 from ._plots.treemap_plot import treemap_plot
-
 from .vantagepoint__word_cloud import vantagepoint__word_cloud
 
 
@@ -36,6 +35,22 @@ def vantagepoint__chart(
         end_year=end_year,
         **filters,
     )
+
+    if metric == "OCC":
+        indicators = indicators.sort_values(
+            ["OCC", "global_citations", "local_citations"],
+            ascending=[False, False, False],
+        )
+    if metric == "global_citations":
+        indicators = indicators.sort_values(
+            ["global_citations", "local_citations", "OCC"],
+            ascending=[False, False, False],
+        )
+    if metric == "local_citations":
+        indicators = indicators.sort_values(
+            ["local_citations", "global_citations", "OCC"],
+            ascending=[False, False, False],
+        )
 
     if custom_topics is None:
         custom_topics = indicators.copy()

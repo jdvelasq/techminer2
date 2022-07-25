@@ -49,8 +49,8 @@ import numpy as np
 import pandas as pd
 import plotly.express as px
 
-from ._read_records import read_records
 from ._explode import explode
+from ._read_records import read_records
 
 
 @dataclass(init=False)
@@ -63,6 +63,9 @@ class _Result:
 def bibliometrix__bradford_law(
     directory="./",
     database="documents",
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
     """Bradfor's Law"""
 
@@ -71,18 +74,33 @@ def bibliometrix__bradford_law(
     results.source_clustering_ = _source_clustering(
         directory=directory,
         database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
     )
 
     results.plot_ = _bradford_law_plot(
         indicators=results.source_clustering_,
     )
 
-    results.core_sources_ = _core_sources(directory=directory)
+    results.core_sources_ = _core_sources(
+        directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
+    )
 
     return results
 
 
-def _core_sources(directory):
+def _core_sources(
+    directory,
+    database,
+    start_year,
+    end_year,
+    **filters,
+):
     """
     Returns a dataframe with the core analysis.
 
@@ -97,7 +115,11 @@ def _core_sources(directory):
         Dataframe with the core sources of the records
     """
     documents = read_records(
-        directory=directory, database="documents", use_filter=False
+        directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
     )
 
     documents["num_documents"] = 1
@@ -169,10 +191,19 @@ def _core_sources(directory):
 def _source_clustering(
     directory="./",
     database="documents",
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
     """Source clustering throught Bradfors's Law."""
 
-    records = read_records(directory=directory, database=database, use_filter=False)
+    records = read_records(
+        directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
+    )
 
     indicators = records[["source_abbr", "global_citations"]]
     indicators = indicators.assign(OCC=1)
