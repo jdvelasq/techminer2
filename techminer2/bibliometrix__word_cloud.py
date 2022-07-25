@@ -9,9 +9,9 @@ WordCloud
 
 >>> from techminer2 import bibliometrix__word_cloud
 >>> bibliometrix__word_cloud(
-...     column='author_keywords',
+...     criterion='author_keywords',
 ...     title="Author Keywords",
-...     top_n=50,
+...     topics_length=50,
 ...     directory=directory,
 ... ).savefig(file_name)
 
@@ -24,28 +24,34 @@ from .vantagepoint__word_cloud import vantagepoint__word_cloud
 
 
 def bibliometrix__word_cloud(
-    column,
-    top_n=None,
-    min_occ=None,
-    max_occ=None,
+    criterion,
+    topics_length=250,
     directory="./",
     metric="OCC",
     title=None,
     database="documents",
     #
     figsize=(12, 12),
+    #
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
     """Plots a word cloud from a dataframe."""
 
     return vantagepoint__word_cloud(
-        column=column,
-        top_n=top_n,
-        min_occ=min_occ,
-        max_occ=max_occ,
+        criterion=criterion,
+        topics_length=topics_length,
+        min_occ=None,
+        max_occ=None,
         directory=directory,
         metric=metric,
         title=title,
         database=database,
         #
         figsize=figsize,
+        #
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
     )

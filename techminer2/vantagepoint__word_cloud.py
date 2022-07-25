@@ -36,7 +36,6 @@ def vantagepoint__word_cloud(
     max_occ=None,
     custom_topics=None,
     title=None,
-    plot="bar",
     figsize=(12, 12),
     **filters,
 ):

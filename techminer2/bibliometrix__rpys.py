@@ -12,7 +12,7 @@ RPYS (Reference Publication Year Spectroscopy)
 
 .. raw:: html
 
-    <iframe src="../../../_static/rpys.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/bibliometrix__rpys.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
 >>> bibliometrix__rpys(directory=directory).table_.head()
