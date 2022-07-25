@@ -8,8 +8,8 @@ TreeMap
 
 >>> from techminer2 import bibliometrix__treemap
 >>> bibliometrix__treemap(
-...    column='author_keywords',
-...    min_occ=3,
+...    criterion='author_keywords',
+...    topics_length=20,
 ...    directory=directory,
 ... ).write_html(file_name)
 
@@ -18,31 +18,37 @@ TreeMap
     <iframe src="../../../_static/bibliometrix__treemap.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .vantagepoint__list_view import vantagepoint__list_view
+from ._indicators.indicators_by_topic import indicators_by_topic
 from ._plots.treemap_plot import treemap_plot
 
 
 def bibliometrix__treemap(
-    column,
+    criterion,
     directory="./",
-    top_n=20,
-    min_occ=None,
-    max_occ=None,
+    metric="OCC",
+    topics_length=20,
     title=None,
     database="documents",
-    metric="OCC",
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
     """Makes a treemap."""
 
-    indicators = vantagepoint__list_view(
-        column=column,
-        metric=metric,
-        top_n=top_n,
-        min_occ=min_occ,
-        max_occ=max_occ,
+    indicators = indicators_by_topic(
+        criterion=criterion,
         directory=directory,
         database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
     )
+
+    indicators = indicators.sort_values(
+        by=["OCC", "global_citations", "local_citations"],
+        ascending=False,
+    )
+    indicators = indicators.head(topics_length)
 
     return treemap_plot(
         dataframe=indicators,
