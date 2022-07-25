@@ -25,14 +25,21 @@ def bibliometrix__country_scientific_production(
     metric="OCC",
     database="documents",
     colormap="Blues",
+    start_year=None,
+    end_year=None,
+    title="Country Scientific Production",
+    **filters,
 ):
     """Worldmap plot with the number of documents per country."""
 
     return vantagepoint__world_map(
-        column="countries",
+        criterion="countries",
         directory=directory,
-        metric=metric,
-        title="Country Scientific Production",
         database=database,
+        metric=metric,
+        start_year=start_year,
+        end_year=end_year,
         colormap=colormap,
+        title=title,
+        **filters,
     )
