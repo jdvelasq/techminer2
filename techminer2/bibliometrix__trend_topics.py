@@ -11,15 +11,14 @@ Trend Topics
 ...     'author_keywords',
 ...     directory=directory, 
 ... ).table_.head()
-year                               OCC  year_q1  ...  global_citations  rn
-author_keywords                                  ...                      
-regtech                             70     2016  ...               462   0
-fintech                             42     2016  ...               406   1
-regulatory technologies (regtech)   12     2016  ...                47   2
-financial technologies               9     2016  ...                32   3
-financial regulation                 8     2016  ...                91   4
-<BLANKLINE>
-[5 rows x 6 columns]
+year                   OCC  year_q1  year_med  year_q3  global_citations  rn
+author_keywords                                                             
+regtech                 69     2016      2016     2017               461   0
+fintech                 42     2016      2016     2016               406   1
+regulatory technology   12     2016      2016     2016                47   2
+financial technology     9     2016      2016     2016                32   3
+financial regulation     8     2016      2016     2016                91   4
+
 
 >>> bibliometrix__trend_topics(
 ...     'author_keywords', 
@@ -50,13 +49,21 @@ def bibliometrix__trend_topics(
     column,
     n_words_per_year=5,
     directory="./",
+    database="documents",
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
     """Trend topics"""
 
     words_by_year = annual_occurrence_matrix(
-        column=column,
+        criterion=column,
         min_occ=1,
         directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
     )
 
     year_q1 = []

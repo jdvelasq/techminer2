@@ -24,12 +24,32 @@ from .indicators_by_topic import indicators_by_topic
 from .indicators_by_topic_per_year import indicators_by_topic_per_year
 
 
-def annual_occurrence_matrix(column, sep=";", min_occ=1, directory="./"):
+def annual_occurrence_matrix(
+    criterion,
+    min_occ=1,
+    directory="./",
+    database="documents",
+    start_year=None,
+    end_year=None,
+    **filters,
+):
 
     indicators_by_year = indicators_by_topic_per_year(
-        directory=directory, criterion=column
+        criterion=criterion,
+        directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
     )
-    indicators = indicators_by_topic(criterion=column, sep=sep, directory=directory)
+    indicators = indicators_by_topic(
+        criterion=criterion,
+        directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
+    )
     indicators = indicators.sort_values("OCC", ascending=False)
     indicators = indicators[indicators["OCC"] >= min_occ]
 
