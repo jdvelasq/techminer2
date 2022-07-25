@@ -4,11 +4,14 @@ Growth Indicators
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import growth_indicators
->>> growth_indicators(column="author_keywords", directory=directory).head()
-                         before 2021  ...  average_growth_rate
+>>> from techminer2._indicators.growth_indicators_by_topic import growth_indicators_by_topic
+>>> growth_indicators_by_topic(
+...     criterion="author_keywords", 
+...     directory=directory,
+... ).head()
+                         Before 2021  ...  average_growth_rate
 author_keywords                       ...                     
-regtech                           50  ...                 -6.5
+regtech                           49  ...                 -6.0
 fintech                           32  ...                 -4.0
 blockchain                        13  ...                 -1.5
 compliance                        10  ...                 -2.5
@@ -114,19 +117,26 @@ def _average_documents_per_year(
     return result
 
 
-def growth_indicators(
-    column,
+def growth_indicators_by_topic(
+    criterion,
     time_window=2,
     directory="./",
     database="documents",
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
     """Computes growth indicators."""
 
     records = read_records(
-        directory=directory, database=database, use_filter=(database == "documents")
+        directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
     )
 
-    return _growth_indicators_from_records(column, time_window, directory, records)
+    return _growth_indicators_from_records(criterion, time_window, directory, records)
 
 
 def _growth_indicators_from_records(column, time_window, directory, records):

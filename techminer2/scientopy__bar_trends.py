@@ -78,7 +78,7 @@ regulatory technology              6                  6
 ## ScientoPy // Bar Trends
 import plotly.express as px
 
-from ._indicators.growth_indicators import _growth_indicators_from_records
+from ._indicators.growth_indicators_by_topic import _growth_indicators_from_records
 from ._read_records import read_records
 
 

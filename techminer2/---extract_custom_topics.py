@@ -44,7 +44,7 @@ Extract and plot the user custom topics of the selected column.
 
 """
 
-from ._indicators.growth_indicators import growth_indicators
+from ._indicators.growth_indicators_by_topic import growth_indicators_by_topic
 from .stacked_bar_chart import stacked_bar_chart
 
 
@@ -58,7 +58,9 @@ def extract_custom_topics(
     plot=True,
 ):
 
-    indicators = growth_indicators(column, time_window=time_window, directory=directory)
+    indicators = growth_indicators_by_topic(
+        column, time_window=time_window, directory=directory
+    )
     indicators = indicators[indicators.columns[:2]]
     indicators = indicators[indicators.index.isin(topics)]
     indicators = indicators.assign(
