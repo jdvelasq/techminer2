@@ -5,8 +5,10 @@ Document Indicators
 
 >>> directory = "data/regtech/"
 
->>> from techminer2.bibliometrix.documents.document_indicators import document_indicators
->>> document_indicators(directory=directory).head()
+>>> from techminer2._indicators.indicators_by_document import indicators_by_document
+>>> indicators_by_document(
+...     directory=directory,
+... ).head()
                                                     global_citations  ...                                 doi
 article                                                               ...                                    
 Abi-Lahoud E, 2018, CEUR WORKSHOP PROC, V2044                      0  ...                                 NaN
@@ -19,7 +21,7 @@ Arner DW, 2019, EUR BUS ORG LAW REV, V20, P55                     18  ...       
 
 
 >>> from pprint import pprint
->>> pprint(document_indicators(directory=directory).columns.to_list())
+>>> pprint(indicators_by_document(directory=directory).columns.to_list())
 ['global_citations',
  'local_citations',
  'global_citations_per_year',
@@ -31,15 +33,21 @@ Arner DW, 2019, EUR BUS ORG LAW REV, V20, P55                     18  ...       
 from .._read_records import read_records
 
 
-def document_indicators(
+def indicators_by_document(
     directory="./",
     database="documents",
-    use_filter=True,
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
     """Document indicators"""
 
     records = read_records(
-        directory=directory, database=database, use_filter=use_filter
+        directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
     )
 
     max_year = records.year.dropna().max()

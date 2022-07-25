@@ -9,7 +9,7 @@ Most Global Cited References
 
 >>> from techminer2 import bibliometrix__most_global_cited_references
 >>> bibliometrix__most_global_cited_references(
-...     top_n=20,
+...     topics_length=20,
 ...     directory=directory,
 ... ).write_html(file_name)
 
@@ -22,16 +22,22 @@ from .bibliometrix__cited_documents import bibiometrix_cited_documents
 
 
 def bibliometrix__most_global_cited_references(
-    top_n=20,
     directory="./",
+    topics_length=20,
+    title="Most Global Cited References",
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
     """Plots the most global cited references."""
 
     return bibiometrix_cited_documents(
         metric="global_citations",
-        top_n=top_n,
         directory=directory,
-        title="Most global cited references",
         database="references",
-        use_filter=False,
+        topics_length=topics_length,
+        title=title,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
     )

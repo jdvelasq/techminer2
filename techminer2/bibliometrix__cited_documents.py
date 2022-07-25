@@ -1,23 +1,29 @@
 import plotly.express as px
 
-from ._indicators.document_indicators import document_indicators
+from ._indicators.indicators_by_document import indicators_by_document
 
 
 def bibiometrix_cited_documents(
     metric,
-    top_n=20,
     directory="./",
-    title=None,
     database="documents",
-    use_filter=True,
+    topics_length=20,
+    title=None,
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
     """Most cited documents."""
 
-    indicators = document_indicators(
-        directory=directory, database=database, use_filter=use_filter
+    indicators = indicators_by_document(
+        directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
     )
     indicators = indicators.sort_values(by=metric, ascending=False)
-    indicators = indicators.head(top_n)
+    indicators = indicators.head(topics_length)
     indicators = indicators.rename(
         columns={col: col.replace("_", " ").title() for col in indicators.columns}
     )

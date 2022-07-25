@@ -8,7 +8,7 @@ Most Local Cited Documents
 
 >>> from techminer2 import bibliometrix__most_local_cited_documents
 >>> bibliometrix__most_local_cited_documents(
-...     top_n=20,
+...     topics_length=20,
 ...     directory=directory,
 ... ).write_html(file_name)
 
@@ -22,15 +22,21 @@ from .bibliometrix__cited_documents import bibiometrix_cited_documents
 
 def bibliometrix__most_local_cited_documents(
     directory="./",
-    top_n=20,
+    topics_length=20,
+    title="Most Local Cited Documents",
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
     """Most local cited documents."""
 
     return bibiometrix_cited_documents(
         metric="local_citations",
-        top_n=top_n,
         directory=directory,
-        title="Most Local Cited Documents",
         database="documents",
-        use_filter=True,
+        topics_length=topics_length,
+        title=title,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
     )
