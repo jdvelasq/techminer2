@@ -32,22 +32,6 @@ artificial intelligence            8                  5
 regulatory technology              6                  6
 
 
-**'skip_first' argument.**
-
->>> file_name = "sphinx/_static/scientpy__bar_trends-2.html"
->>> from techminer2 import scientopy__bar_trends
->>> trends = scientopy__bar_trends(
-...     column="author_keywords",
-...     skip_first=2,
-...     directory=directory,
-... )
->>> trends.plot_.write_html(file_name)
-
-.. raw:: html
-
-    <iframe src="../_static/scientpy__bar_trends-2.html" height="800px" width="100%" frameBorder="0"></iframe>
-
-
 **Time Filter.**
 
 >>> file_name = "sphinx/_static/scientpy__bar_trends-3.html"
@@ -109,24 +93,24 @@ def scientopy__bar_trends(
     topics_length=20,
     start_year=None,
     end_year=None,
-    skip_first=0,
     custom_topics=None,
     time_window=2,
     directory="./",
     database="documents",
+    **filters,
 ):
     """ScientoPy Bar Trend."""
 
-    records = read_records(directory=directory, database=database, use_filter=False)
-
-    if start_year is not None:
-        records = records[records.year >= start_year]
-    if end_year is not None:
-        records = records[records.year <= end_year]
+    records = read_records(
+        directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
+    )
 
     indicators = _growth_indicators_from_records(
         column=column,
-        sep="; ",
         time_window=time_window,
         directory=directory,
         records=records,
@@ -137,7 +121,9 @@ def scientopy__bar_trends(
     results.table_ = indicators.copy()
 
     indicators = _filter_indicators(
-        indicators, topics_length, skip_first, custom_topics
+        indicators,
+        topics_length,
+        custom_topics,
     )
 
     results = _Results()
@@ -161,7 +147,7 @@ def scientopy__bar_trends(
     return results
 
 
-def _filter_indicators(indicators, topics_length, skip_first, custom_topics):
+def _filter_indicators(indicators, topics_length, custom_topics):
     indicators = indicators.copy()
     if custom_topics is not None:
         custom_topics = [
@@ -169,8 +155,6 @@ def _filter_indicators(indicators, topics_length, skip_first, custom_topics):
         ]
     else:
         custom_topics = indicators.index.copy()
-        if skip_first > 0:
-            custom_topics = custom_topics[skip_first:]
         custom_topics = custom_topics[:topics_length]
 
     indicators = indicators.loc[custom_topics, :]
