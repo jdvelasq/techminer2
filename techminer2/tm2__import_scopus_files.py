@@ -11,6 +11,7 @@ Import a scopus file to a working directory.
 # ...     directory, 
 # ...     disable_progress_bar=True,
 # ... )
+
 --INFO-- Concatenating raw files in data/regtech/raw/cited_by/
 --INFO-- Concatenating raw files in data/regtech/raw/references/
 --INFO-- Concatenating raw files in data/regtech/raw/documents/
