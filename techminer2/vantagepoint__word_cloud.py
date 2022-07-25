@@ -9,9 +9,9 @@ WordCloud
 
 >>> from techminer2 import vantagepoint__word_cloud
 >>> vantagepoint__word_cloud(
-...     column='author_keywords',
+...     criterion='author_keywords',
 ...     title="Author Keywords",
-...     top_n=50,
+...     topics_length=50,
 ...     directory=directory,
 ... ).savefig(file_name)
 
@@ -25,35 +25,46 @@ from ._plots.word_cloud_for_indicators import word_cloud_for_indicators
 
 
 def vantagepoint__word_cloud(
-    column,
-    top_n=None,
+    criterion,
+    directory="./",
+    database="documents",
+    metric="OCC",
+    start_year=None,
+    end_year=None,
+    topics_length=20,
     min_occ=None,
     max_occ=None,
-    directory="./",
-    metric="OCC",
+    custom_topics=None,
     title=None,
-    database="documents",
-    #
+    plot="bar",
     figsize=(12, 12),
+    **filters,
 ):
     """Plots a word cloud from a dataframe."""
 
     indicators = indicators_by_topic(
-        criterion=column,
+        criterion=criterion,
         directory=directory,
         database=database,
-        use_filter=(database == "documents"),
-        sep=";",
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
     )
 
-    indicators = indicators.sort_values(metric, ascending=False)
+    if custom_topics is None:
+        custom_topics = indicators.copy()
+        if min_occ is not None:
+            custom_topics = custom_topics[custom_topics["OCC"] >= min_occ]
+        if max_occ is not None:
+            custom_topics = custom_topics[custom_topics["OCC"] <= max_occ]
+        custom_topics = custom_topics.index.copy()
+        custom_topics = custom_topics[:topics_length]
+    else:
+        custom_topics = [
+            topic for topic in custom_topics if topic in indicators.index.tolist()
+        ]
 
-    if min_occ is not None:
-        indicators = indicators[indicators.OCC >= min_occ]
-    if max_occ is not None:
-        indicators = indicators[indicators.OCC <= max_occ]
-    if top_n is not None:
-        indicators = indicators.head(top_n)
+    indicators = indicators.loc[custom_topics, :]
 
     return word_cloud_for_indicators(
         dataframe=indicators,

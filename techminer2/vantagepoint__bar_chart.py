@@ -33,7 +33,7 @@ def vantagepoint__bar_chart(
     max_occ=None,
     custom_topics=None,
     title=None,
-    **filters
+    **filters,
 ):
     """Plots a bar chart from a column of a dataframe."""
 

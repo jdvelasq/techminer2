@@ -8,7 +8,7 @@ World Map
 
 >>> from techminer2 import vantagepoint__world_map
 >>> vantagepoint__world_map(
-...     column="countries", 
+...     criterion="countries", 
 ...     directory=directory,
 ... ).write_html(file_name)
 
@@ -25,20 +25,31 @@ TEXTLEN = 40
 
 
 def vantagepoint__world_map(
-    column,
-    metric="OCC",
-    colormap="Greys",
+    criterion,
     directory="./",
-    title=None,
     database="documents",
+    metric="OCC",
+    start_year=None,
+    end_year=None,
+    colormap="Greys",
+    title=None,
+    **filters,
 ):
     """Worldmap"""
 
-    dataframe = indicators_by_topic(
-        criterion=column, directory=directory, database=database
-    )[metric]
+    indicators = indicators_by_topic(
+        criterion=criterion,
+        directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
+    )
+
+    indicators = indicators[metric]
+
     return world_map_plot(
-        dataframe=dataframe,
+        dataframe=indicators,
         metric=metric,
         colormap=colormap,
         title=title,

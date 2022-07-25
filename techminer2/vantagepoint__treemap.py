@@ -9,7 +9,7 @@ Treemap
 
 >>> from techminer2 import vantagepoint__treemap
 >>> vantagepoint__treemap(
-...    column='author_keywords',
+...    criterion='author_keywords',
 ...    min_occ=3,
 ...    directory=directory,
 ... ).write_html(file_name)
@@ -23,23 +23,32 @@ from .vantagepoint__chart import vantagepoint__chart
 
 
 def vantagepoint__treemap(
-    column,
+    criterion,
     directory="./",
-    top_n=20,
+    database="documents",
+    start_year=None,
+    end_year=None,
+    topics_length=20,
     min_occ=None,
     max_occ=None,
+    custom_topics=None,
     title=None,
-    database="documents",
+    **filters,
 ):
     """Treemap."""
 
     return vantagepoint__chart(
-        criterion=column,
+        criterion=criterion,
         directory=directory,
-        topics_length=top_n,
+        database=database,
+        metric="OCC",
+        start_year=start_year,
+        end_year=end_year,
+        topics_length=topics_length,
         min_occ=min_occ,
         max_occ=max_occ,
+        custom_topics=custom_topics,
         title=title,
         plot="treemap",
-        database=database,
+        **filters,
     )
