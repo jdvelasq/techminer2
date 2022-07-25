@@ -23,6 +23,9 @@ from ._read_records import read_records
 def vantagepoint__summary_view(
     directory="./",
     database="documents",
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
     """
     Returns an coverage report of the dataset.
@@ -37,7 +40,13 @@ def vantagepoint__summary_view(
     pandas.DataFrame
         Coverage statistcs
     """
-    documents = read_records(directory=directory, database=database, use_filter=True)
+    documents = read_records(
+        directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
+    )
     columns = sorted(documents.columns)
     n_documents = len(documents)
     report = pd.DataFrame(

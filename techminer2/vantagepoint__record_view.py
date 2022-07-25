@@ -8,9 +8,9 @@ VantagePoint / Record View
 
 >>> from techminer2 import vantagepoint__record_view
 >>> vantagepoint__record_view(
-...     'author_keywords', 
-...     'regtech',
-...     top_n=1,
+...     criterion='author_keywords', 
+...     search_for='regtech',
+...     records_length=1,
 ...     directory=directory,
 ... )
                title : Fintech and regtech: Impact on regulators and banks
@@ -72,19 +72,31 @@ from ._read_records import read_records
 
 
 def vantagepoint__record_view(
-    col,
-    text,
+    criterion,
+    search_for,
     case=False,
     flags=0,
     regex=True,
-    top_n=10,
+    records_length=10,
     directory="./",
     database="documents",
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
     """Record View."""
 
-    documents = read_records(directory=directory, database=database, use_filter=False)
-    contains = documents[col].str.contains(text, case=case, flags=flags, regex=regex)
+    documents = read_records(
+        directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
+    )
+
+    contains = documents[criterion].str.contains(
+        search_for, case=case, flags=flags, regex=regex
+    )
     contains = contains.dropna()
     contains = contains[contains]
     documents = documents.loc[contains.index, :]
@@ -102,29 +114,29 @@ def vantagepoint__record_view(
         "raw_index_keywords",
     ]
 
-    for col in reported_columns:
+    for criterion in reported_columns:
 
-        if col in documents.columns:
-            column_list.append(col)
+        if criterion in documents.columns:
+            column_list.append(criterion)
 
     documents = documents[column_list]
     if "global_citations" in documents.columns:
         documents = documents.sort_values(by="global_citations", ascending=False)
 
-    documents = documents.head(top_n)
+    documents = documents.head(records_length)
 
     for index, row in documents.iterrows():
 
-        for col in reported_columns:
+        for criterion in reported_columns:
 
-            if col not in row.index:
+            if criterion not in row.index:
                 continue
 
-            if col == "document_title":
+            if criterion == "document_title":
                 print("      document_title :", end="")
                 print(
                     textwrap.fill(
-                        row[col],
+                        row[criterion],
                         width=115,
                         initial_indent=" " * 23,
                         subsequent_indent=" " * 23,
@@ -133,12 +145,12 @@ def vantagepoint__record_view(
                 )
                 continue
 
-            if col == "abstract":
-                if not pd.isna(row[col]):
+            if criterion == "abstract":
+                if not pd.isna(row[criterion]):
                     print("            abstract :", end="")
                     print(
                         textwrap.fill(
-                            row[col],
+                            row[criterion],
                             width=115,
                             initial_indent=" " * 23,
                             subsequent_indent=" " * 23,
@@ -147,22 +159,22 @@ def vantagepoint__record_view(
                     )
                 continue
 
-            if col in [
+            if criterion in [
                 "raw_author_keywords",
                 "author_keywords",
                 "raw_index_keywords",
                 "index_keywords",
             ]:
-                keywords = row[col]
+                keywords = row[criterion]
                 if pd.isna(keywords):
                     continue
                 keywords = keywords.split("; ")
-                print(" {:>19} : {}".format(col, keywords[0]))
+                print(" {:>19} : {}".format(criterion, keywords[0]))
                 for keyword in keywords[1:]:
                     print(" " * 23 + keyword)
                 continue
 
-            print(" {:>19} : {}".format(col, row[col]))
+            print(" {:>19} : {}".format(criterion, row[criterion]))
 
         if index != documents.index[-1]:
             print("-" * 120)
