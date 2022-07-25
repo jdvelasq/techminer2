@@ -31,9 +31,9 @@ def bibliometrix__most_local_cited_authors(
     """Most Local Cited Authors (from Reference Lists)."""
 
     return vantagepoint__chart(
-        column="authors",
+        criterion="authors",
         directory=directory,
-        top_n=top_n,
+        topics_length=top_n,
         min_occ=None,
         max_occ=None,
         title="Most Local Cited Authors (from Reference Lists)",

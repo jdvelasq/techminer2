@@ -33,9 +33,9 @@ def vantagepoint__column_chart(
     """Plots a bar chart from a column of a dataframe."""
 
     return vantagepoint__chart(
-        column=column,
+        criterion=column,
         directory=directory,
-        top_n=top_n,
+        topics_length=top_n,
         min_occ=min_occ,
         max_occ=max_occ,
         title=title,

@@ -35,10 +35,10 @@ def bibliometrix__most_global_cited_countries(
     """Most global cited countries."""
 
     return vantagepoint__chart(
-        column="countries",
+        criterion="countries",
         directory=directory,
         metric="global_citations",
-        top_n=top_n,
+        topics_length=top_n,
         min_occ=min_occ,
         max_occ=max_occ,
         title="Most Global Cited Countries",

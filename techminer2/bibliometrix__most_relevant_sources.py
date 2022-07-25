@@ -34,9 +34,9 @@ def bibliometrix__most_relevant_sources(
     """Most Relevant Sources."""
 
     return vantagepoint__chart(
-        column="source_abbr",
+        criterion="source_abbr",
         directory=directory,
-        top_n=top_n,
+        topics_length=top_n,
         min_occ=min_occ,
         max_occ=max_occ,
         title="Most Relevant Sources",

@@ -35,9 +35,9 @@ def bibliometrix__most_frequent_authors(
     """Plots the number of documents by author using the specified plot."""
 
     return vantagepoint__chart(
-        column="authors",
+        criterion="authors",
         directory=directory,
-        top_n=top_n,
+        topics_length=top_n,
         min_occ=min_occ,
         max_occ=max_occ,
         title="Most Frequent Authors",

@@ -30,9 +30,9 @@ def bibliometrix__most_local_cited_countries(
     """Most Local Cited Countries (from Reference Lists)."""
 
     return vantagepoint__chart(
-        column="countries",
+        criterion="countries",
         directory=directory,
-        top_n=top_n,
+        topics_length=top_n,
         min_occ=None,
         max_occ=None,
         title="Most Local Cited Countries (from Reference Lists)",

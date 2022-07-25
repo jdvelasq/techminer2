@@ -9,7 +9,7 @@ Bar Chart
 
 >>> from techminer2 import vantagepoint__bar_chart
 >>> vantagepoint__bar_chart(
-...    column='author_keywords',
+...    criterion='author_keywords',
 ...    min_occ=3,
 ...    directory=directory,
 ... ).write_html(file_name)
@@ -23,23 +23,32 @@ from .vantagepoint__chart import vantagepoint__chart
 
 
 def vantagepoint__bar_chart(
-    column,
+    criterion,
     directory="./",
-    top_n=20,
+    database="documents",
+    start_year=None,
+    end_year=None,
+    topics_length=20,
     min_occ=None,
     max_occ=None,
+    custom_topics=None,
     title=None,
-    database="documents",
+    **filters
 ):
     """Plots a bar chart from a column of a dataframe."""
 
     return vantagepoint__chart(
-        column=column,
+        criterion=criterion,
         directory=directory,
-        top_n=top_n,
+        database=database,
+        metric="OCC",
+        start_year=start_year,
+        end_year=end_year,
+        topics_length=topics_length,
         min_occ=min_occ,
         max_occ=max_occ,
+        custom_topics=custom_topics,
         title=title,
         plot="bar",
-        database=database,
+        **filters,
     )

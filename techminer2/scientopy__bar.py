@@ -100,7 +100,7 @@ def scientopy__bar(
     topics_length=20,
     custom_topics=None,
     title=None,
-    **filters
+    **filters,
 ):
     """ScientoPy Bar Plot."""
 
