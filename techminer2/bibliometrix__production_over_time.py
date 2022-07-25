@@ -5,7 +5,7 @@ import textwrap
 import plotly.express as px
 
 from .vantagepoint__co_occ_matrix_list import _add_counters_to_items
-from ._indicators.column_indicators import column_indicators
+from ._indicators.indicators_by_topic import indicators_by_topic
 from ._indicators.column_indicators_by_year import column_indicators_by_year
 
 TEXTLEN = 40
@@ -106,7 +106,9 @@ def _compute_production_over_time(
         column=column, directory=directory, database="documents", use_filter=True
     )
     indicators_by_year = indicators_by_year.reset_index()
-    selected_terms = column_indicators(column=column, directory=directory).head(top_n)
+    selected_terms = indicators_by_topic(criterion=column, directory=directory).head(
+        top_n
+    )
     terms = selected_terms.index.to_list()
 
     indicators_by_year = indicators_by_year[

@@ -78,7 +78,8 @@ Word Cloud
 
 """
 from ._plots.word_cloud_for_indicators import word_cloud_for_indicators
-from .scientopy__bar import _compute_indicators, _filter_indicators
+
+# from .scientopy__bar import _compute_indicators, _filter_indicators
 
 
 def scientopy__word_cloud(

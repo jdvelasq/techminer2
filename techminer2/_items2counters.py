@@ -2,7 +2,7 @@
 
 import numpy as np
 
-from ._indicators.column_indicators import column_indicators
+from ._indicators.indicators_by_topic import indicators_by_topic
 
 
 def items2counters(
@@ -13,8 +13,8 @@ def items2counters(
 ):
     """Creates a dictionary to transform a 'item' to a 'item counter:counter'."""
 
-    indicators = column_indicators(
-        column=column,
+    indicators = indicators_by_topic(
+        criterion=column,
         directory=directory,
         database=database,
         use_filter=use_filter,

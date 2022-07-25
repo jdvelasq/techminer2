@@ -37,7 +37,7 @@ machine learning                     6  ...                             0
  'local_citations_per_document']
 
 """
-from ._indicators.column_indicators import column_indicators
+from ._indicators.indicators_by_topic import indicators_by_topic
 
 
 def vantagepoint__list_view(
@@ -51,8 +51,8 @@ def vantagepoint__list_view(
 ):
     """Creates a list of terms with indicators."""
 
-    indicators = column_indicators(
-        column=column,
+    indicators = indicators_by_topic(
+        criterion=column,
         directory=directory,
         database=database,
         use_filter=(database == "documents"),

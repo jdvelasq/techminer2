@@ -20,7 +20,7 @@ WordCloud
     :align: center
 
 """
-from ._indicators.column_indicators import column_indicators
+from ._indicators.indicators_by_topic import indicators_by_topic
 from ._plots.word_cloud_for_indicators import word_cloud_for_indicators
 
 
@@ -38,8 +38,8 @@ def vantagepoint__word_cloud(
 ):
     """Plots a word cloud from a dataframe."""
 
-    indicators = column_indicators(
-        column=column,
+    indicators = indicators_by_topic(
+        criterion=column,
         directory=directory,
         database=database,
         use_filter=(database == "documents"),

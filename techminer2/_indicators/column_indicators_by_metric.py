@@ -1,4 +1,4 @@
-from .column_indicators import column_indicators
+from .indicators_by_topic import indicators_by_topic
 
 
 def column_indicators_by_metric(
@@ -10,8 +10,8 @@ def column_indicators_by_metric(
     metric="num_documents",
     file_name="documents.csv",
 ):
-    indicators = column_indicators(
-        column=column, directory=directory, database=file_name
+    indicators = indicators_by_topic(
+        criterion=column, directory=directory, database=file_name
     )
     if min_occ is not None:
         indicators = indicators[indicators.num_documents >= min_occ]

@@ -1,13 +1,16 @@
 """
-Column Indicators
+Indicators by topic
 ===============================================================================
 
 
 >>> directory = "data/regtech/"
 
 
->>> from techminer2 import column_indicators
->>> column_indicators('authors',directory=directory).head() # doctest: +NORMALIZE_WHITESPACE
+>>> from techminer2._indicators.indicators_by_topic import indicators_by_topic
+>>> indicators_by_topic(
+...     criterion='authors',
+...     directory=directory,
+... ).head() # doctest: +NORMALIZE_WHITESPACE
              OCC  ...  local_citations_per_document
 authors           ...                              
 Arner DW       7  ...                             4
@@ -20,7 +23,7 @@ Ryan P         3  ...                             0
 
 
 >>> from pprint import pprint
->>> pprint(sorted(column_indicators('authors',directory=directory).columns.to_list()))
+>>> pprint(sorted(indicators_by_topic('authors',directory=directory).columns.to_list()))
 ['OCC',
  'global_citations',
  'global_citations_per_document',
@@ -31,19 +34,25 @@ Ryan P         3  ...                             0
 from .._read_records import read_records
 
 
-def column_indicators(
-    column,
+def indicators_by_topic(
+    criterion,
     directory="./",
     database="documents",
-    use_filter=False,
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
     """column indicators"""
 
     records = read_records(
-        directory=directory, database=database, use_filter=use_filter
+        directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
     )
 
-    indicators = _column_indicators_from_records(column, records)
+    indicators = _column_indicators_from_records(criterion, records)
 
     return indicators
 

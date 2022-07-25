@@ -18,7 +18,7 @@ World Map
 
 
 """
-from ._indicators.column_indicators import column_indicators
+from ._indicators.indicators_by_topic import indicators_by_topic
 from ._plots.world_map_plot import world_map_plot
 
 TEXTLEN = 40
@@ -34,8 +34,8 @@ def vantagepoint__world_map(
 ):
     """Worldmap"""
 
-    dataframe = column_indicators(
-        column=column, directory=directory, database=database
+    dataframe = indicators_by_topic(
+        criterion=column, directory=directory, database=database
     )[metric]
     return world_map_plot(
         dataframe=dataframe,

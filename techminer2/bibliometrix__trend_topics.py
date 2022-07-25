@@ -37,7 +37,7 @@ import numpy as np
 import plotly.graph_objects as go
 
 from ._indicators.annual_occurrence_matrix import annual_occurrence_matrix
-from ._indicators.column_indicators import column_indicators
+from ._indicators.indicators_by_topic import indicators_by_topic
 
 
 @dataclass(init=False)
@@ -84,7 +84,7 @@ def bibliometrix__trend_topics(
 
     words_by_year = words_by_year[["OCC", "year_q1", "year_med", "year_q3"]]
 
-    global_citations = column_indicators(column, directory=directory).global_citations
+    global_citations = indicators_by_topic(column, directory=directory).global_citations
 
     word2citation = dict(zip(global_citations.index, global_citations.values))
     words_by_year = words_by_year.assign(
