@@ -9,11 +9,9 @@ Most Frequent Words
 
 >>> from techminer2 import bibliometrix__most_frequent_words
 >>> bibliometrix__most_frequent_words(
-...     column="author_keywords",
+...     criterion="author_keywords",
 ...     directory=directory,
-...     top_n=20,
-...     min_occ=None,
-...     max_occ=None,
+...     topics_length=20,
 ...     plot="cleveland",
 ...     database="documents",
 ... ).write_html(file_name)
@@ -30,23 +28,31 @@ from .vantagepoint__chart import vantagepoint__chart
 
 
 def bibliometrix__most_frequent_words(
-    column="author_keywords",
+    criterion="author_keywords",
     directory="./",
-    top_n=20,
+    topics_length=20,
     min_occ=None,
     max_occ=None,
     plot="cleveland",
     database="documents",
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
     """Plots the number of documents by country using the specified plot."""
 
     return vantagepoint__chart(
-        criterion=column,
+        criterion=criterion,
         directory=directory,
-        topics_length=top_n,
+        database=database,
+        metric="OCC",
+        start_year=start_year,
+        end_year=end_year,
+        topics_length=topics_length,
         min_occ=min_occ,
         max_occ=max_occ,
-        title="Most Frequent Countries",
+        custom_topics=None,
+        title="Most Frequent Keywords",
         plot=plot,
-        database=database,
+        **filters,
     )

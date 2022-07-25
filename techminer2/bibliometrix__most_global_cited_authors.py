@@ -8,9 +8,7 @@
 >>> from techminer2 import bibliometrix__most_global_cited_authors
 >>> bibliometrix__most_global_cited_authors(
 ...     directory,
-...     top_n=20,
-...     min_occ=None,
-...     max_occ=None,
+...     topics_length=20,
 ...     plot="cleveland",
 ... ).write_html(file_name)
 
@@ -24,22 +22,27 @@ from .vantagepoint__chart import vantagepoint__chart
 
 def bibliometrix__most_global_cited_authors(
     directory="./",
-    top_n=20,
-    min_occ=None,
-    max_occ=None,
+    topics_length=20,
     plot="cleveland",
     database="documents",
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
     """Most global cited authors."""
 
     return vantagepoint__chart(
         criterion="authors",
         directory=directory,
+        database=database,
         metric="global_citations",
-        topics_length=top_n,
-        min_occ=min_occ,
-        max_occ=max_occ,
+        start_year=start_year,
+        end_year=end_year,
+        topics_length=topics_length,
+        min_occ=None,
+        max_occ=None,
+        custom_topics=None,
         title="Most Global Cited Authors",
         plot=plot,
-        database=database,
+        **filters,
     )
