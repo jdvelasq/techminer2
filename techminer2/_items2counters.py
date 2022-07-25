@@ -9,7 +9,9 @@ def items2counters(
     column,
     directory,
     database,
-    use_filter,
+    start_year,
+    end_year,
+    **filters,
 ):
     """Creates a dictionary to transform a 'item' to a 'item counter:counter'."""
 
@@ -17,7 +19,9 @@ def items2counters(
         criterion=column,
         directory=directory,
         database=database,
-        use_filter=use_filter,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
     )
 
     num_docs = indicators.OCC.values

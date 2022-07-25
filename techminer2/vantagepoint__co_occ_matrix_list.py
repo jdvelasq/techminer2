@@ -114,9 +114,9 @@ Co-occurrence Matrix List
 """
 import pandas as pd
 
+from ._items2counters import items2counters
 from ._load_stopwords import load_stopwords
 from ._read_records import read_records
-from ._items2counters import items2counters
 
 
 def vantagepoint__co_occ_matrix_list(
@@ -176,12 +176,23 @@ def _select_top_n_items(top_n, matrix_list, column):
     return matrix_list
 
 
-def _add_counters_to_items(column, name, directory, database, matrix_list):
+def _add_counters_to_items(
+    column,
+    name,
+    directory,
+    database,
+    matrix_list,
+    start_year,
+    end_year,
+    **filters,
+):
     new_column_names = items2counters(
         column=column,
         directory=directory,
         database=database,
-        use_filter=True,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
     )
     matrix_list[name] = matrix_list[name].map(new_column_names)
     return matrix_list

@@ -3,21 +3,30 @@ from ._read_records import read_records
 
 
 def bibliometrix__documents_per(
-    column,
+    criterion,
     directory="./",
     database="documents",
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
     """Documents"""
 
-    records = read_records(directory=directory, database=database, use_filter=True)
+    records = read_records(
+        directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
+    )
 
-    records[column] = records[column].str.split(";")
-    records = records.explode(column)
-    records[column] = records[column].str.strip()
+    records[criterion] = records[criterion].str.split(";")
+    records = records.explode(criterion)
+    records[criterion] = records[criterion].str.strip()
 
     records = records[
         [
-            column,
+            criterion,
             "title",
             "year",
             "source_title",

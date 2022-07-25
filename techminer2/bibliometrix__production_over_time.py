@@ -4,51 +4,67 @@ import textwrap
 
 import plotly.express as px
 
-from .vantagepoint__co_occ_matrix_list import _add_counters_to_items
 from ._indicators.indicators_by_topic import indicators_by_topic
-from ._indicators.column_indicators_by_year import column_indicators_by_year
+from ._indicators.indicators_by_topic_per_year import indicators_by_topic_per_year
+from .vantagepoint__co_occ_matrix_list import _add_counters_to_items
 
 TEXTLEN = 40
 
 
 def bibliometrix__production_over_time(
-    column,
-    top_n=10,
+    criterion,
+    topics_length=10,
     directory="./",
     title=None,
     metric="OCC",
+    database="documents",
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
     """Production over time."""
 
     indicators_by_year = _compute_production_over_time(
-        column=column,
-        top_n=top_n,
+        criterion=criterion,
+        topics_length=topics_length,
         directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
     )
 
     indicators_by_year = _add_counters_to_items(
-        column,
-        column.replace("_", " ").title(),
+        criterion,
+        criterion.replace("_", " ").title(),
         directory,
         "documents",
         indicators_by_year,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
     )
 
     indicators_by_year["global_occ"] = (
-        indicators_by_year[column.replace("_", " ").title()]
+        indicators_by_year[criterion.replace("_", " ").title()]
         .str.split()
         .map(lambda x: x[-1])
         .str.split(":")
         .map(lambda x: x[0])
     )
     indicators_by_year = indicators_by_year.sort_values(
-        by=["global_occ", "Global Citations", column.replace("_", " ").title(), "Year"],
+        by=[
+            "global_occ",
+            "Global Citations",
+            criterion.replace("_", " ").title(),
+            "Year",
+        ],
         ascending=[False, False, True, True],
     )
 
-    if indicators_by_year[column.replace("_", " ").title()].dtype != "int64":
-        indicators_by_year[column.replace("_", " ").title()] = indicators_by_year[
-            column.replace("_", " ").title()
+    if indicators_by_year[criterion.replace("_", " ").title()].dtype != "int64":
+        indicators_by_year[criterion.replace("_", " ").title()] = indicators_by_year[
+            criterion.replace("_", " ").title()
         ].apply(_shorten)
 
     indicators_by_year.pop("global_occ")
@@ -56,11 +72,11 @@ def bibliometrix__production_over_time(
     fig = px.scatter(
         indicators_by_year,
         x="Year",
-        y=column.replace("_", " ").title(),
+        y=criterion.replace("_", " ").title(),
         size=metric,
         hover_data=indicators_by_year.columns.to_list(),
         title=title,
-        color=column.replace("_", " ").title(),
+        color=criterion.replace("_", " ").title(),
     )
     fig.update_layout(
         paper_bgcolor="white",
@@ -97,22 +113,39 @@ def bibliometrix__production_over_time(
 
 
 def _compute_production_over_time(
-    column,
-    top_n=10,
-    directory="./",
+    criterion,
+    topics_length,
+    directory,
+    database,
+    start_year,
+    end_year,
+    **filters,
 ):
 
-    indicators_by_year = column_indicators_by_year(
-        column=column, directory=directory, database="documents", use_filter=True
+    indicators_by_year = indicators_by_topic_per_year(
+        criterion=criterion,
+        directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
     )
+
     indicators_by_year = indicators_by_year.reset_index()
-    selected_terms = indicators_by_topic(criterion=column, directory=directory).head(
-        top_n
-    )
+
+    selected_terms = indicators_by_topic(
+        criterion=criterion,
+        directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
+    ).head(topics_length)
+
     terms = selected_terms.index.to_list()
 
     indicators_by_year = indicators_by_year[
-        indicators_by_year[column].map(lambda x: x in terms)
+        indicators_by_year[criterion].map(lambda x: x in terms)
     ]
 
     indicators_by_year = indicators_by_year.rename(

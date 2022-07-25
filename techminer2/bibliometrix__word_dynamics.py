@@ -8,8 +8,8 @@ Word Dynamics
 
 >>> from techminer2 import bibliometrix__word_dynamics
 >>> bibliometrix__word_dynamics(
-...     column="author_keywords",
-...     top_n=5,
+...     criterion="author_keywords",
+...     topics_length=5,
 ...     directory=directory,
 ... ).write_html(file_name)
 
@@ -22,18 +22,26 @@ from .bibliometrix__dynamics import bibliometrix__dynamics
 
 
 def bibliometrix__word_dynamics(
-    column="author_keywords",
-    top_n=5,
+    criterion="author_keywords",
+    topics_length=5,
     directory="./",
     title="Word Dynamics",
     plot=True,
+    database="documents",
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
     """Makes a dynamics chat for top sources."""
 
     return bibliometrix__dynamics(
-        column=column,
-        top_n=top_n,
+        criterion=criterion,
+        topics_length=topics_length,
         directory=directory,
         plot=plot,
         title=title,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
     )

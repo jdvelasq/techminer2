@@ -6,25 +6,37 @@ import numpy as np
 import pandas as pd
 import plotly.express as px
 
-from ._indicators.column_indicators_by_year import column_indicators_by_year
+from ._indicators.indicators_by_topic_per_year import indicators_by_topic_per_year
 
 TEXTLEN = 40
 
 
 def bibliometrix__dynamics(
-    column,
-    top_n=10,
+    criterion,
+    topics_length=10,
     directory="./",
     plot=True,
     title=None,
+    database="documents",
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
     """Bibliometrix generic dynamics plot."""
 
-    indicators = column_indicators_by_year(directory=directory, column=column)
+    indicators = indicators_by_topic_per_year(
+        directory=directory,
+        criterion=criterion,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
+    )
+
     indicators = indicators[["OCC"]]
     indicators = indicators.reset_index()
-    indicators = indicators.sort_values([column, "year"], ascending=True)
-    indicators = indicators.pivot(index="year", columns=column, values="OCC")
+    indicators = indicators.sort_values([criterion, "year"], ascending=True)
+    indicators = indicators.pivot(index="year", columns=criterion, values="OCC")
     indicators = indicators.fillna(0)
 
     # complete missing years
@@ -42,7 +54,7 @@ def bibliometrix__dynamics(
     occ = indicators.sum(axis=0)
     occ = occ.sort_values(ascending=False)
 
-    indicators = indicators[occ.index[:top_n]]
+    indicators = indicators[occ.index[:topics_length]]
 
     # cumsum
     indicators = indicators.cumsum()
@@ -57,10 +69,10 @@ def bibliometrix__dynamics(
     indicators = indicators.melt(
         id_vars="year",
         value_vars=indicators.columns,
-        var_name=column,
+        var_name=criterion,
         value_name="cum_OCC",
     )
-    indicators[column] = indicators[column].apply(_shorten)
+    indicators[criterion] = indicators[criterion].apply(_shorten)
 
     #
     fig = px.line(
@@ -69,8 +81,8 @@ def bibliometrix__dynamics(
         y="cum_OCC",
         title=title,
         markers=True,
-        hover_data=[column, "year", "cum_OCC"],
-        color=column,
+        hover_data=[criterion, "year", "cum_OCC"],
+        color=criterion,
     )
     fig.update_traces(
         marker=dict(size=10, line=dict(color="darkslategray", width=2)),

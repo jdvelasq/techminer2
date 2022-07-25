@@ -8,7 +8,7 @@ Institutions' Production over Time
 
 >>> from techminer2 import bibliometrix__institutions_production_over_time
 >>> pot = bibliometrix__institutions_production_over_time(
-...    top_n=10, 
+...    topics_length=10, 
 ...    directory=directory,
 ... )
 
@@ -43,9 +43,9 @@ institutions                                       year       ...
 """
 from dataclasses import dataclass
 
-from .bibliometrix__production_over_time import bibliometrix__production_over_time
-from ._indicators.column_indicators_by_year import column_indicators_by_year
+from ._indicators.indicators_by_topic_per_year import indicators_by_topic_per_year
 from .bibliometrix__documents_per import bibliometrix__documents_per
+from .bibliometrix__production_over_time import bibliometrix__production_over_time
 
 
 @dataclass(init=False)
@@ -56,25 +56,45 @@ class _Results:
 
 
 def bibliometrix__institutions_production_over_time(
-    top_n=10,
+    topics_length=10,
     directory="./",
+    database="documents",
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
     """Institution production over time."""
 
     results = _Results()
+
     results.plot_ = bibliometrix__production_over_time(
-        column="institutions",
-        top_n=top_n,
+        criterion="institutions",
+        topics_length=topics_length,
         directory=directory,
         title="Institutions' production over time",
+        metric="OCC",
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
     )
+
     results.documents_per_institution_ = bibliometrix__documents_per(
-        column="institutions",
+        criterion="institutions",
         directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
     )
-    results.production_per_year_ = column_indicators_by_year(
-        "institutions",
+
+    results.production_per_year_ = indicators_by_topic_per_year(
+        criterion="institutions",
         directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
     )
 
     return results

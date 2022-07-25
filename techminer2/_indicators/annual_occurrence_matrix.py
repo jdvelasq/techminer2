@@ -21,12 +21,14 @@ Zetzsche DA     0     0     1     3     0     0
 
 
 from .indicators_by_topic import indicators_by_topic
-from .column_indicators_by_year import column_indicators_by_year
+from .indicators_by_topic_per_year import indicators_by_topic_per_year
 
 
 def annual_occurrence_matrix(column, sep=";", min_occ=1, directory="./"):
 
-    indicators_by_year = column_indicators_by_year(directory=directory, column=column)
+    indicators_by_year = indicators_by_topic_per_year(
+        directory=directory, criterion=column
+    )
     indicators = indicators_by_topic(criterion=column, sep=sep, directory=directory)
     indicators = indicators.sort_values("OCC", ascending=False)
     indicators = indicators[indicators["OCC"] >= min_occ]

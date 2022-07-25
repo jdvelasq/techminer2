@@ -42,11 +42,21 @@ class _Results:
 
 def bibliometrix__lotka_law(
     directory="./",
+    database="documents",
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
     """Lotka's Law"""
 
     results = _Results()
-    results.table_ = _core_authors(directory=directory)
+    results.table_ = _core_authors(
+        directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
+    )
     results.plot_ = _plot_lotka_law(results.table_)
     return results
 
@@ -104,7 +114,13 @@ def _plot_lotka_law(indicators):
     return fig
 
 
-def _core_authors(directory="./", database="documents"):
+def _core_authors(
+    directory,
+    database,
+    start_year,
+    end_year,
+    **filters,
+):
 
     #
     # Part 1: Computes the number of written documents per number of authors.
@@ -120,11 +136,14 @@ def _core_authors(directory="./", database="documents"):
     #
     indicators = indicators_by_topic(
         criterion="authors",
-        sep=";",
         directory=directory,
         database=database,
-        use_filter=False,
-    )[["OCC"]]
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
+    )
+
+    indicators = indicators[["OCC"]]
     indicators = indicators.groupby(["OCC"], as_index=False).size()
     indicators.columns = ["Documents Written", "Num Authors"]
     indicators = indicators.sort_values(by="Documents Written", ascending=True)

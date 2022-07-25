@@ -108,7 +108,7 @@ import numpy as np
 import pandas as pd
 import plotly.express as px
 
-from ._indicators.column_indicators_by_year import column_indicators_by_year
+from ._indicators.indicators_by_topic_per_year import indicators_by_topic_per_year
 
 TEXTLEN = 40
 
@@ -191,8 +191,8 @@ def _make_table(
     custom_topics,
 ):
 
-    indicators = column_indicators_by_year(
-        directory=directory, column=column, use_filter=False
+    indicators = indicators_by_topic_per_year(
+        directory=directory, criterion=column, use_filter=False
     )
     indicators = indicators[["OCC"]]
     indicators = indicators.reset_index()

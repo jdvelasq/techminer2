@@ -9,27 +9,69 @@ Countries' Production over Time
 
 >>> from techminer2 import bibliometrix__countries_production_over_time
 >>> bibliometrix__countries_production_over_time(
-...    top_n=10, 
+...    topics_length=10,
 ...    directory=directory,
-... ).write_html(file_name)
+... ).plot_.write_html(file_name)
 
 .. raw:: html
 
     <iframe src="../../../_static/bibliometrix__countries_production_over_time.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
+from dataclasses import dataclass
+
+from ._indicators.indicators_by_topic_per_year import indicators_by_topic_per_year
+from .bibliometrix__documents_per import bibliometrix__documents_per
 from .bibliometrix__production_over_time import bibliometrix__production_over_time
 
 
-def bibliometrix__countries_production_over_time(
-    top_n=10,
-    directory="./",
-):
-    """Countries' Production over Time."""
+@dataclass(init=False)
+class _Results:
+    plot_ = None
+    production_per_year_ = None
+    documents_per_country_ = None
 
-    return bibliometrix__production_over_time(
-        column="countries",
-        top_n=top_n,
+
+def bibliometrix__countries_production_over_time(
+    topics_length=10,
+    directory="./",
+    database="documents",
+    start_year=None,
+    end_year=None,
+    **filters,
+):
+    """Country production over time."""
+
+    results = _Results()
+
+    results.plot_ = bibliometrix__production_over_time(
+        criterion="countries",
+        topics_length=topics_length,
         directory=directory,
-        title="Countries' Production over Time",
+        title="Country' production over time",
+        metric="OCC",
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
     )
+
+    results.documents_per_country_ = bibliometrix__documents_per(
+        criterion="countries",
+        directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
+    )
+
+    results.production_per_year_ = indicators_by_topic_per_year(
+        criterion="countries",
+        directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
+    )
+
+    return results

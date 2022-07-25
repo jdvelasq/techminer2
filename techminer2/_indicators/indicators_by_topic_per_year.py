@@ -1,12 +1,12 @@
 """
-Column indicators by year
+Indicators by topic per year
 ===============================================================================
 
 
 >>> directory = "data/regtech/"
 
->>> from techminer2.column_indicators_by_year import column_indicators_by_year
->>> column_indicators_by_year(
+>>> from techminer2._indicators.indicators_by_topic_per_year import indicators_by_topic_per_year
+>>> indicators_by_topic_per_year(
 ...     'authors',
 ...     directory=directory,
 ... ).head(20)
@@ -37,7 +37,7 @@ Becker M          2019    1  ...                     0.000
 
 
 >>> from pprint import pprint
->>> pprint(sorted(column_indicators_by_year('authors',directory=directory).columns.to_list()))
+>>> pprint(sorted(indicators_by_topic_per_year('authors',directory=directory).columns.to_list()))
 ['OCC',
  'age',
  'cum_OCC',
@@ -52,36 +52,43 @@ import pandas as pd
 from .._read_records import read_records
 
 
-def column_indicators_by_year(
-    column="authors",
+def indicators_by_topic_per_year(
+    criterion="authors",
     directory="./",
     database="documents",
-    use_filter=True,
     as_index=True,
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
-    """Computes column indicators by year."""
+    """Computes indicators by topic per year."""
 
     indicators = read_records(
-        directory=directory, database=database, use_filter=use_filter
+        directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
     )
+
     indicators = indicators.assign(OCC=1)
-    indicators[column] = indicators[column].str.split(";")
-    indicators = indicators.explode(column)
-    indicators[column] = indicators[column].str.strip()
+    indicators[criterion] = indicators[criterion].str.split(";")
+    indicators = indicators.explode(criterion)
+    indicators[criterion] = indicators[criterion].str.strip()
     indicators = indicators.reset_index(drop=True)
     indicators = indicators[
-        [column, "OCC", "global_citations", "local_citations", "year"]
+        [criterion, "OCC", "global_citations", "local_citations", "year"]
     ].copy()
     indicators = indicators.dropna()
     max_pub_year = indicators.year.max()
     indicators = (
-        indicators.groupby([column, "year"], as_index=False)
+        indicators.groupby([criterion, "year"], as_index=False)
         .sum()
-        .sort_values(by=["year", column], ascending=True)
+        .sort_values(by=["year", criterion], ascending=True)
     )
-    indicators = indicators.sort_values([column, "year"], ascending=True)
+    indicators = indicators.sort_values([criterion, "year"], ascending=True)
 
-    indicators["cum_OCC"] = indicators.groupby([column]).OCC.cumsum()
+    indicators["cum_OCC"] = indicators.groupby([criterion]).OCC.cumsum()
 
     indicators.insert(3, "cum_OCC", indicators.pop("cum_OCC"))
 
@@ -108,16 +115,16 @@ def column_indicators_by_year(
     indicators["local_citations"] = indicators.local_citations.astype(int)
     # indicators = indicators.dropna()
 
-    indicators = indicators.sort_values(by=[column, "year"], ascending=True)
+    indicators = indicators.sort_values(by=[criterion, "year"], ascending=True)
 
     if as_index is False:
         return indicators
 
-    index = [(name, year) for name, year in zip(indicators[column], indicators.year)]
-    index = pd.MultiIndex.from_tuples(index, names=[column, "year"])
+    index = [(name, year) for name, year in zip(indicators[criterion], indicators.year)]
+    index = pd.MultiIndex.from_tuples(index, names=[criterion, "year"])
     indicators.index = index
 
-    indicators.pop(column)
+    indicators.pop(criterion)
     indicators.pop("year")
 
     return indicators

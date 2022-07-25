@@ -34,7 +34,7 @@ Terms by Year
 19     financial regulation 08:091  2020    3        7
 
 """
-from ._indicators.column_indicators_by_year import column_indicators_by_year
+from ._indicators.indicators_by_topic_per_year import indicators_by_topic_per_year
 from .vantagepoint__co_occ_matrix_list import (
     _add_counters_to_items,
     _select_top_n_items,
@@ -49,8 +49,8 @@ def vantagepoint__terms_by_year(
 ):
     """Computes the number of terms by year."""
 
-    indicators_by_year = column_indicators_by_year(
-        column=column, directory=directory, database="documents", use_filter=True
+    indicators_by_year = indicators_by_topic_per_year(
+        criterion=column, directory=directory, database="documents", use_filter=True
     )
 
     indicators_by_year = indicators_by_year[["OCC", "cum_OCC"]]
