@@ -16,16 +16,16 @@ Computes coverage of terms in a column discarding stopwords.
 --INFO-- Documents with NA: 9
 --INFO--Efective documents : 94
    min_occ  cum_sum_documents coverage  cum num items
-0       70                 70  74.47 %              1
-1       42                 70  74.47 %              2
-2       18                 71  75.53 %              3
-3       13                 74  78.72 %              4
-4       12                 81  86.17 %              6
-5        9                 82  87.23 %              7
-6        8                 82  87.23 %              8
-7        6                 82  87.23 %             10
-8        5                 82  87.23 %             12
-9        4                 83  88.30 %             22
+0       69                 69  73.40 %              1
+1       42                 69  73.40 %              2
+2       18                 70  74.47 %              3
+3       13                 73  77.66 %              4
+4       12                 80  85.11 %              6
+5        9                 81  86.17 %              7
+6        8                 81  86.17 %              8
+7        6                 81  86.17 %             10
+8        5                 81  86.17 %             12
+9        4                 82  87.23 %             22
 
 
 """
