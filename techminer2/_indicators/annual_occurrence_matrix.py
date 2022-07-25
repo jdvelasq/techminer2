@@ -5,7 +5,7 @@ Annual Occurrence Matrix
 
 >>> directory = "data/regtech/"
 
->>> from techminer2.bibliometrix.documents.words.annual_occurrence_matrix import annual_occurrence_matrix
+>>> from techminer2._indicators.annual_occurrence_matrix import annual_occurrence_matrix
 >>> annual_occurrence_matrix('authors',  min_occ=3, directory=directory).head(10)
 year         2016  2017  2019  2020  2021  2022
 authors                                        
