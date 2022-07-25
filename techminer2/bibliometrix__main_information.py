@@ -40,9 +40,9 @@ AUTHORS        Authors                                      193.0
                Countries                                     40.0
                Countries (1st author)                        35.0
 KEYWORDS       Raw author keywords                            303
-               Cleaned author keywords                        285
+               Cleaned author keywords                        286
                Raw index keywords                             259
-               Cleaned index keywords                         255
+               Cleaned index keywords                         254
 
 """
 import datetime
@@ -54,10 +54,21 @@ from ._read_records import read_records
 
 
 class _MainInformation:
-    def __init__(self, directory):
+    def __init__(
+        self,
+        directory,
+        database="documents",
+        start_year=None,
+        end_year=None,
+        **filters,
+    ):
         self.directory = directory
         self.records = read_records(
-            directory=directory, database="documents", use_filter=False
+            directory=directory,
+            database=database,
+            start_year=start_year,
+            end_year=end_year,
+            **filters,
         )
         self.n_records = len(self.records)
         self.compute_general_information_stats()
@@ -484,8 +495,20 @@ class _MainInformation:
         return len(records)
 
 
-def bibliometrix__main_information(directory="./"):
+def bibliometrix__main_information(
+    directory="./",
+    database="documents",
+    start_year=None,
+    end_year=None,
+    **filters,
+):
     """Returns main statistics of the dataset."""
 
-    main_information = _MainInformation(directory)
+    main_information = _MainInformation(
+        directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
+    )
     return main_information.report_
