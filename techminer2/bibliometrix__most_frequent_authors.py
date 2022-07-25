@@ -9,9 +9,7 @@ Most Frequent Authors
 >>> from techminer2 import bibliometrix__most_frequent_authors
 >>> bibliometrix__most_frequent_authors(
 ...     directory,
-...     top_n=20,
-...     min_occ=None,
-...     max_occ=None,
+...     topics_length=20,
 ...     plot="cleveland",
 ...     database="documents",
 ... ).write_html(file_name)
@@ -26,21 +24,27 @@ from .vantagepoint__chart import vantagepoint__chart
 
 def bibliometrix__most_frequent_authors(
     directory="./",
-    top_n=20,
-    min_occ=None,
-    max_occ=None,
+    topics_length=20,
     plot="cleveland",
     database="documents",
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
     """Plots the number of documents by author using the specified plot."""
 
     return vantagepoint__chart(
         criterion="authors",
         directory=directory,
-        topics_length=top_n,
-        min_occ=min_occ,
-        max_occ=max_occ,
+        database=database,
+        metric="OCC",
+        start_year=start_year,
+        end_year=end_year,
+        topics_length=topics_length,
+        min_occ=None,
+        max_occ=None,
+        custom_topics=None,
         title="Most Frequent Authors",
         plot=plot,
-        database=database,
+        **filters,
     )
