@@ -6,8 +6,8 @@ Annual Indicators
 >>> directory = "data/regtech/"
 
 
->>> from techminer2.bibliometrix.overview.annual_indicators import annual_indicators
->>> annual_indicators(directory) # doctest: +NORMALIZE_WHITESPACE
+>>> from techminer2._indicators.indicators_by_year import indicators_by_year
+>>> indicators_by_year(directory) # doctest: +NORMALIZE_WHITESPACE
       OCC  cum_OCC  ...  cum_local_citations  mean_local_citations_per_year
 year                ...                                                    
 2016    2        2  ...                  7.0                           0.50
@@ -20,18 +20,20 @@ year                ...
 <BLANKLINE>
 [7 rows x 11 columns]
 
->>> annual_indicators(directory, database="references").tail() # doctest: +NORMALIZE_WHITESPACE
+
+>>> indicators_by_year(directory, database="references").tail() # doctest: +NORMALIZE_WHITESPACE
       OCC  cum_OCC  ...  cum_local_citations  mean_local_citations_per_year
 year                ...                                                    
 2018  189      885  ...                994.0                           0.26
-2019  140     1025  ...               1144.0                           0.27
-2020  146     1171  ...               1295.0                           0.34
-2021   40     1211  ...               1334.0                           0.49
-2022    3     1214  ...               1337.0                           1.00
+2019  139     1024  ...               1141.0                           0.26
+2020  146     1170  ...               1292.0                           0.34
+2021   40     1210  ...               1331.0                           0.49
+2022    3     1213  ...               1334.0                           1.00
 <BLANKLINE>
 [5 rows x 11 columns]
 
->>> annual_indicators(directory, database="cited_by").tail() # doctest: +NORMALIZE_WHITESPACE
+
+>>> indicators_by_year(directory, database="cited_by").tail() # doctest: +NORMALIZE_WHITESPACE
       OCC  cum_OCC  ...  cum_global_citations  mean_global_citations_per_year
 year                ...                                                      
 2018   11       14  ...                   385                            6.56
@@ -42,8 +44,10 @@ year                ...
 <BLANKLINE>
 [5 rows x 7 columns]
 
+
+
 >>> from pprint import pprint
->>> pprint(sorted(annual_indicators(directory=directory).columns.to_list()))
+>>> pprint(sorted(indicators_by_year(directory=directory).columns.to_list()))
 ['OCC',
  'citable_years',
  'cum_OCC',
@@ -57,16 +61,28 @@ year                ...
  'mean_local_citations_per_year']
 
 """
+import plotly.express as px
+
 from .._read_records import read_records
 
 
-def annual_indicators(
+def indicators_by_year(
     directory="./",
     database="documents",
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
     """Computes annual indicators,"""
 
-    records = read_records(directory=directory, database=database, use_filter=False)
+    records = read_records(
+        directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
+    )
+
     records = records.assign(OCC=1)
 
     columns = ["OCC", "year"]

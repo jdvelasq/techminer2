@@ -14,14 +14,26 @@ Annual Scientific Production
     <iframe src="../../_static/bibliometrix__annual_scientific_production.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
+from ._indicators.indicators_by_year import indicators_by_year
 from ._time_plot import time_plot
-from ._indicators.annual_indicators import annual_indicators
 
 
-def bibliometrix__annual_scientific_production(directory="./"):
+def bibliometrix__annual_scientific_production(
+    directory="./",
+    database="documents",
+    start_year=None,
+    end_year=None,
+    **filters,
+):
     """Computes annual scientific production (number of documents per year)."""
 
-    indicators = annual_indicators(directory)
+    indicators = indicators_by_year(
+        directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
+    )
     return time_plot(
         indicators,
         metric="OCC",
