@@ -11,7 +11,6 @@ Import a scopus file to a working directory.
 # ...     directory, 
 # ...     disable_progress_bar=True,
 # ... )
-
 --INFO-- Concatenating raw files in data/regtech/raw/cited_by/
 --INFO-- Concatenating raw files in data/regtech/raw/references/
 --INFO-- Concatenating raw files in data/regtech/raw/documents/
@@ -61,7 +60,7 @@ Import a scopus file to a working directory.
 --INFO-- The data/regtech/processed/institutions.txt thesaurus file was applied to affiliations in all databases
 --INFO-- Process finished!!!
 --INFO-- data/regtech/processed/_documents.csv: 94 imported records
---INFO-- data/regtech/processed/_references.csv: 1214 imported records
+--INFO-- data/regtech/processed/_references.csv: 1213 imported records
 --INFO-- data/regtech/processed/_cited_by.csv: 474 imported records
 
  
@@ -521,10 +520,7 @@ def _create__article__column(directory):
         )
         # wos_ref += data.doi.map(lambda x: ", DOI " + str(x) if not pd.isna(x) else "")
         data["article"] = wos_ref.copy()
-        #
-        # TODO: assertion fails!!!
-        # assert len(data["article"]) == len(data["article"].drop_duplicates())
-        #
+        data = data.drop_duplicates(subset=["article"])
         data.to_csv(file, sep=",", encoding="utf-8", index=False)
 
 
