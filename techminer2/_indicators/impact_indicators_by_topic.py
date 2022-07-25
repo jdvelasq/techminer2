@@ -6,8 +6,8 @@ Impact Indicators
 >>> directory = "data/regtech/"
 
 
->>> from techminer2.bibliometrix.impact_indicators import impact_indicators
->>> impact_indicators("countries", directory=directory).head()
+>>> from techminer2._indicators.impact_indicators_by_topic import impact_indicators_by_topic
+>>> impact_indicators_by_topic("countries", directory=directory).head()
                    OCC  ...  avg_global_citations
 countries               ...                      
 Australia           13  ...                 18.15
@@ -20,7 +20,7 @@ Brunei Darussalam    1  ...                  3.00
 
 
 >>> from pprint import pprint
->>> pprint(sorted(impact_indicators("countries", directory=directory).columns.to_list()))
+>>> pprint(sorted(impact_indicators_by_topic("countries", directory=directory).columns.to_list()))
 ['OCC',
  'age',
  'avg_global_citations',
@@ -39,30 +39,26 @@ import pandas as pd
 from .._read_records import read_records
 
 
-def impact_indicators(column, directory="./"):
-    """
-    Impact index analysis
+def impact_indicators_by_topic(
+    criterion,
+    directory="./",
+    database="documents",
+    start_year=None,
+    end_year=None,
+    **filters,
+):
 
-    Parameters
-    ----------
-    directory_or_records: str
-        Directory or pandas dataframe with records.
-    column: str
-        Name of the column to analyze
-    stopwords: list
-        List of stopwords to remove from the analysis.
-
-    Returns
-    -------
-    impact_analysis: pandas.DataFrame
-        Impact analysis of the column
-    """
+    """Impact indicators."""
 
     documents = read_records(
-        directory=directory, database="documents", use_filter=False
+        directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
     )
 
-    if column not in [
+    if criterion not in [
         "authors",
         "authors_id",
         "countries",
@@ -75,53 +71,53 @@ def impact_indicators(column, directory="./"):
         )
 
     columns_to_explode = [
-        column,
+        criterion,
         "global_citations",
         "year",
     ]
     detailed_citations = documents[columns_to_explode]
-    detailed_citations[column] = detailed_citations[column].str.split(";")
-    detailed_citations = detailed_citations.explode(column)
-    detailed_citations[column] = detailed_citations[column].str.strip()
+    detailed_citations[criterion] = detailed_citations[criterion].str.split(";")
+    detailed_citations = detailed_citations.explode(criterion)
+    detailed_citations[criterion] = detailed_citations[criterion].str.strip()
     detailed_citations = detailed_citations.reset_index(drop=True)
     detailed_citations = detailed_citations.assign(
         cumcount_=detailed_citations.sort_values("global_citations", ascending=False)
-        .groupby(column)
+        .groupby(criterion)
         .cumcount()
         + 1
     )
     detailed_citations = detailed_citations.sort_values(
-        [column, "global_citations", "cumcount_"], ascending=[True, False, True]
+        [criterion, "global_citations", "cumcount_"], ascending=[True, False, True]
     )
     detailed_citations = detailed_citations.assign(
         cumcount_2=detailed_citations.cumcount_.map(lambda w: w * w)
     )
 
-    detailed_citations["first_pb_year"] = detailed_citations.groupby(column)[
+    detailed_citations["first_pb_year"] = detailed_citations.groupby(criterion)[
         "year"
     ].transform("min")
 
     detailed_citations["age"] = (
         documents.year.max() - detailed_citations["first_pb_year"] + 1
     )
-    ages = detailed_citations.groupby(column, as_index=True).agg({"age": np.max})
+    ages = detailed_citations.groupby(criterion, as_index=True).agg({"age": np.max})
 
-    global_citations = detailed_citations.groupby(column, as_index=True).agg(
+    global_citations = detailed_citations.groupby(criterion, as_index=True).agg(
         {"global_citations": np.sum}
     )
 
-    first_pb_year = detailed_citations.groupby(column, as_index=True).agg(
+    first_pb_year = detailed_citations.groupby(criterion, as_index=True).agg(
         {"first_pb_year": np.min}
     )
 
-    occ = detailed_citations.groupby(column, as_index=True).size()
+    occ = detailed_citations.groupby(criterion, as_index=True).size()
 
     h_indexes = detailed_citations.query("global_citations >= cumcount_")
-    h_indexes = h_indexes.groupby(column, as_index=True).agg({"cumcount_": np.max})
+    h_indexes = h_indexes.groupby(criterion, as_index=True).agg({"cumcount_": np.max})
     h_indexes = h_indexes.rename(columns={"cumcount_": "h_index"})
 
     g_indexes = detailed_citations.query("global_citations >= cumcount_2")
-    g_indexes = g_indexes.groupby(column, as_index=True).agg({"cumcount_": np.max})
+    g_indexes = g_indexes.groupby(criterion, as_index=True).agg({"cumcount_": np.max})
     g_indexes = g_indexes.rename(columns={"cumcount_": "g_index"})
 
     indicators = pd.concat(

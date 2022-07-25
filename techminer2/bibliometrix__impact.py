@@ -2,10 +2,10 @@
 
 import textwrap
 
+from ._indicators.impact_indicators_by_topic import impact_indicators_by_topic
 from ._px.bar_px import bar_px
 from ._px.cleveland_px import cleveland_px
 from ._px.column_px import column_px
-from ._indicators.impact_indicators import impact_indicators
 from ._px.line_px import line_px
 from ._px.pie_px import pie_px
 
@@ -13,12 +13,16 @@ TEXTLEN = 40
 
 
 def bibliometrix__impact(
-    column,
+    criterion,
     impact_measure="h_index",
-    top_n=20,
+    topics_length=20,
     directory="./",
     title=None,
     plot="cleveland",
+    database="documents",
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
     """computes local impact by <column>"""
 
@@ -32,11 +36,18 @@ def bibliometrix__impact(
             "Impact measure must be one of: h_index, g_index, m_index, global_citations"
         )
 
-    indicators = impact_indicators(directory=directory, column=column)
+    indicators = impact_indicators_by_topic(
+        criterion=criterion,
+        directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
+    )
     indicators = indicators.sort_values(by=impact_measure, ascending=False)
-    indicators = indicators.head(top_n)
+    indicators = indicators.head(topics_length)
     indicators = indicators.reset_index()
-    indicators[column] = indicators[column].apply(_shorten)
+    indicators[criterion] = indicators[criterion].apply(_shorten)
 
     column_names = {
         column: column.replace("_", " ").title() for column in indicators.columns
@@ -54,7 +65,7 @@ def bibliometrix__impact(
     return plot_function(
         dataframe=indicators,
         x_label=impact_measure.replace("_", " ").title(),
-        y_label=column.replace("_", " ").title(),
+        y_label=criterion.replace("_", " ").title(),
         title=title,
     )
 
