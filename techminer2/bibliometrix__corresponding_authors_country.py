@@ -9,7 +9,7 @@ Corresponding Author's Country
 
 >>> from techminer2 import bibliometrix__corresponding_authors_country
 >>> bibliometrix__corresponding_authors_country(
-...     top_n=20,
+...     topics_length=20,
 ...     directory=directory,
 ... ).plot_.write_html(file_name)
 
@@ -20,7 +20,7 @@ Corresponding Author's Country
 
 >>> bibliometrix__corresponding_authors_country(
 ...     directory=directory, 
-...     top_n=20,
+...     topics_length=20,
 ... ).table_.head()
                 single_publication  multiple_publication  mcp_ratio
 countries                                                          
@@ -36,7 +36,9 @@ from dataclasses import dataclass
 
 import plotly.express as px
 
-from ._indicators.collaboration_indicators import collaboration_indicators
+from ._indicators.collaboration_indicators_by_topic import (
+    collaboration_indicators_by_topic,
+)
 
 
 @dataclass(init=False)
@@ -46,20 +48,44 @@ class _Results:
 
 
 def bibliometrix__corresponding_authors_country(
-    top_n=20,
+    topics_length=20,
     directory="./",
+    database="documents",
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
     """Corresponding Author's Country"""
 
     results = _Results()
-    results.table_ = _make_table(directory)
-    results.plot_ = _make_plot(results.table_, top_n)
+    results.table_ = _make_table(
+        directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
+    )
+    results.plot_ = _make_plot(results.table_, topics_length)
     return results
 
 
-def _make_table(directory):
+def _make_table(
+    directory,
+    database,
+    start_year,
+    end_year,
+    **filters,
+):
 
-    indicators = collaboration_indicators("countries", directory=directory)
+    indicators = collaboration_indicators_by_topic(
+        "countries",
+        directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
+    )
+
     indicators = indicators.sort_values(by="OCC", ascending=False)
     indicators = indicators[["single_publication", "multiple_publication"]]
     indicators = indicators.assign(
@@ -68,9 +94,9 @@ def _make_table(directory):
     return indicators
 
 
-def _make_plot(indicators, top_n):
+def _make_plot(indicators, topics_length):
 
-    indicators = indicators.head(top_n)
+    indicators = indicators.head(topics_length)
     indicators = indicators.reset_index()
 
     indicators = indicators.melt(
