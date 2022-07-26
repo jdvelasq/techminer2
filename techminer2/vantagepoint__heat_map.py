@@ -7,9 +7,8 @@ Heat Map
 
 >>> from techminer2.vantagepoint__co_occ_matrix import vantagepoint__co_occ_matrix
 >>> matrix = vantagepoint__co_occ_matrix(
-...    column='author_keywords',
-...    row='authors',
-...    min_occ=3,
+...    criterion='author_keywords',
+...    min_occ_per_topic=3,
 ...    directory=directory,
 ... )
 >>> file_name = "sphinx/_static/vantagepoint__heat_map-1.html"
@@ -27,20 +26,6 @@ Heat Map
 
 
 
->>> matrix = vantagepoint__co_occ_matrix(
-...    column='author_keywords',
-...    min_occ=4,
-...    directory=directory,
-... )
->>> file_name = "sphinx/_static/vantagepoint__heat_map-2.html"
-
->>> vantagepoint__heat_map(
-...     matrix,
-... ).write_html(file_name)
-
-.. raw:: html
-
-    <iframe src="../../_static/vantagepoint__heat_map-2.html" height="800px" width="100%" frameBorder="0"></iframe>
 
 
 """

@@ -29,24 +29,29 @@ from .vantagepoint__co_occ_matrix_list import vantagepoint__co_occ_matrix_list
 
 def tlab__word_co_occurrentes_plot(
     term,
-    column,
-    top_n=None,
-    min_occ=None,
-    max_occ=None,
+    criterion,
+    topics_length=None,
+    min_occ_per_topic=None,
+    min_citations_per_topic=None,
+    plot="bar",
     directory="./",
     database="documents",
-    plot="bar",
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
     """Word Association"""
 
     matrix_list = vantagepoint__co_occ_matrix_list(
-        criterion=column,
-        row=None,
-        topics_length=None,
-        min_occ_per_topic=None,
-        min_citations_per_topic=None,
+        criterion=criterion,
+        topics_length=topics_length,
+        min_occ_per_topic=min_occ_per_topic,
+        min_citations_per_topic=min_citations_per_topic,
         directory=directory,
         database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
     )
 
     matrix_list = matrix_list[
@@ -57,14 +62,8 @@ def tlab__word_co_occurrentes_plot(
 
     matrix_list = matrix_list[["column", "OCC"]]
 
-    if min_occ is not None:
-        matrix_list = matrix_list[matrix_list["OCC"] >= min_occ]
-
-    if max_occ is not None:
-        matrix_list = matrix_list[matrix_list["OCC"] <= max_occ]
-
-    if top_n is not None:
-        matrix_list = matrix_list.head(top_n)
+    if topics_length is not None:
+        matrix_list = matrix_list.head(topics_length)
 
     matrix_list = matrix_list.set_index("column")
 

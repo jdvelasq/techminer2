@@ -3,11 +3,13 @@ Network Communities
 ===============================================================================
 
 
->>> from techminer2 import *
+
 >>> directory = "data/regtech/"
+
+>>> from techminer2 import *
 >>> matrix_list = co_occ_matrix_list(
-...    column='author_keywords',
-...    min_occ=3,
+...    criterion='author_keywords',
+...    min_occ_per_topic=3,
 ...    directory=directory,
 ... )
 

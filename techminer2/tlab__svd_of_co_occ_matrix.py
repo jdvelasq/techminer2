@@ -21,8 +21,8 @@ The plot is based on the SVD technique used in T-LAB's comparative analysis.
 
 >>> from techminer2 import tlab__svd_of_co_occ_matrix
 >>> svd = tlab__svd_of_co_occ_matrix(
-...     column='author_keywords',
-...     min_occ=5,    
+...     criterion='author_keywords',
+...     min_occ_per_topic=5,    
 ...     directory=directory,
 ... )
 
@@ -34,13 +34,13 @@ The plot is based on the SVD technique used in T-LAB's comparative analysis.
 
 
 >>> svd.table_.head()
-                                     dim0       dim1  ...      dim9     dim10
-row                                                   ...                    
-regtech 70:462                  85.583912   8.166457  ...  0.206008  0.208199
-fintech 42:406                  60.949638 -11.167665  ... -0.233467 -0.998573
-blockchain 18:109               24.948933  -6.642690  ... -0.017336  0.676491
-artificial intelligence 13:065  13.776312  -1.005190  ... -0.022696  0.566117
-compliance 12:020               10.424578  11.346089  ... -0.330724 -0.264842
+                                     dim0      dim1  ...      dim9     dim10
+row                                                  ...                    
+regtech 69:461                  84.928900 -2.721688  ...  0.099540 -0.399477
+fintech 42:406                  61.832611  2.278441  ... -0.384420  0.069563
+blockchain 18:109               25.915631 -4.905159  ...  0.121866 -0.188590
+artificial intelligence 13:065  15.160618  6.382477  ...  0.865626 -0.858157
+compliance 12:020               13.045184 -5.500958  ... -0.142193  0.747093
 <BLANKLINE>
 [5 rows x 11 columns]
 
@@ -60,26 +60,33 @@ class _Result:
 
 
 def tlab__svd_of_co_occ_matrix(
-    column,
-    top_n=50,
-    min_occ=None,
-    max_occ=None,
+    criterion,
+    topics_length=50,
+    min_occ_per_topic=None,
+    min_citations_per_topic=None,
     dim_x=0,
     dim_y=1,
-    directory="./",
     svd__n_iter=5,
     random_state=0,
     delta=0.5,
+    directory="./",
+    database="documents",
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
     """Co-occurrence SVD Map."""
 
     matrix = vantagepoint__co_occ_matrix(
-        column=column,
-        top_n=top_n,
-        min_occ=min_occ,
-        max_occ=max_occ,
+        criterion=criterion,
+        topics_length=topics_length,
+        min_occ_per_topic=min_occ_per_topic,
+        min_citations_per_topic=min_citations_per_topic,
         directory=directory,
-        database="documents",
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
     )
 
     max_dimensions = min(20, len(matrix.columns) - 1)
