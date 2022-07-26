@@ -80,7 +80,7 @@ def tlab__words_radial_diagram(
     fig = network_graph_plot(
         graph,
         nx_k=0.5,
-        nx_iteratons=10,
+        nx_iterations=10,
         delta=1.0,
     )
 

@@ -9,12 +9,12 @@ import plotly.graph_objects as go
 def network_graph_plot(
     graph,
     nx_k=0.5,
-    nx_iteratons=10,
+    nx_iterations=10,
     delta=1.0,
 ):
     """Network plot"""
 
-    graph = _make_layout(graph, nx_k, nx_iteratons)
+    graph = _make_layout(graph, nx_k, nx_iterations)
     edge_trace, node_trace = _create_traces(graph)
     node_trace = _color_node_points(graph, node_trace)
     fig = _create_network_graph(edge_trace, node_trace, delta)
@@ -163,8 +163,8 @@ def _create_traces(graph):
     return edge_trace, node_trace
 
 
-def _make_layout(graph, k=0.2, iteratons=50):
-    pos = nx.spring_layout(graph, k=k, iterations=iteratons)
+def _make_layout(graph, k=0.2, iterations=50):
+    pos = nx.spring_layout(graph, k=k, iterations=iterations)
     for node in graph.nodes():
         graph.nodes[node]["pos"] = pos[node]
     return graph

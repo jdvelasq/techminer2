@@ -91,15 +91,22 @@ def bibliometrix__co_occurrence_network(
     """Co-occurrence network."""
 
     if criterion not in [
+        "raw_author_keywords",
+        "raw_index_keywords",
+        "raw_title_words",
+        "raw_abstract_words",
+        "raw_words",
         "author_keywords",
         "index_keywords",
-        "title_keywords",
-        "abstract_keywords",
-        "all_keywords",
+        "title_words",
+        "abstract_words",
+        "words",
     ]:
         raise ValueError(
-            f"criterion must be one of: "
-            f"'author_keywords', 'index_keywords', 'title_keywords', 'abstract_keywords', 'all_keywords'"
+            "criterion must be one of: "
+            "{'author_keywords', 'index_keywords', 'title_words', 'abstract_words', 'words', "
+            "{'raw_author_keywords', 'raw_index_keywords', 'raw_title_words', 'raw_abstract_words', "
+            "'raw_words'}"
         )
 
     matrix = vantagepoint__co_occ_matrix(
@@ -126,7 +133,7 @@ def bibliometrix__co_occurrence_network(
     results.plot_ = network_graph_plot(
         graph,
         nx_k=nx_k,
-        nx_iteratons=nx_iterations,
+        nx_iterations=nx_iterations,
         delta=delta,
     )
     results.degree_plot_ = get_network_graph_degree_plot(graph)

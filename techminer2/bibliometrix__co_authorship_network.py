@@ -1,42 +1,42 @@
 """
-Collaboration Network
+Co-authorship (collaboration) Network
 ===============================================================================
 
 .. note:: 
-    A collaboration network is a generic co-occurrence network where the analized column
+    A co-authorship network is a generic co-occurrence network where the analized column
     is restricted to the following columns in the dataset:
 
     * Authors.
 
-    * Institutions.
+    * Organizations.
 
     * Countries.
 
     As a consequence, many implemented plots and analysis are valid for analyzing a 
-    co-occurrence network, including heat maps and other plot types.
+    generic co-occurrence network, including heat maps and other plot types.
 
 
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import bibliometrix__collaboration_network
->>> nnet = bibliometrix__collaboration_network(
-...     "authors",
-...     top_n=20,
+>>> from techminer2 import bibliometrix__co_authorship_network
+>>> nnet = bibliometrix__co_authorship_network(
+...     criterion="authors",
+...     topics_length=20,
 ...     directory=directory,
 ...     method="louvain",
 ...     nx_k=0.5,
-...     nx_iteratons=10,
+...     nx_iterations=10,
 ...     delta=1.0,    
 ... )
 
 
->>> file_name = "sphinx/_static/bibliometrix__collaboration_network.html"
+>>> file_name = "sphinx/_static/bibliometrix__co_authorship_network_plot.html"
 >>> nnet.plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../../_static/bibliometrix__collaboration_network.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/bibliometrix__co_authorship_network_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> nnet.communities_.head()
                CL_00            CL_01  ...         CL_08          CL_09
@@ -49,12 +49,12 @@ Collaboration Network
 [5 rows x 10 columns]
 
 
->>> file_name = "sphinx/_static/bibliometrix__collaboration_network_degree_plot.html"
+>>> file_name = "sphinx/_static/bibliometrix__co_authorship_network_degree_plot.html"
 >>> nnet.degree_plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../../_static/bibliometrix__collaboration_network_degree_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/bibliometrix__co_authorship_network_degree_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
 >>> nnet.indicators_.head()
@@ -88,25 +88,43 @@ class _Results:
     degree_plot_: None
 
 
-def bibliometrix__collaboration_network(
-    column,
-    top_n=None,
-    directory="./",
-    database="documents",
+def bibliometrix__co_authorship_network(
+    criterion,
+    topics_length=None,
+    min_occ_per_topic=None,
+    min_citations_per_topic=0,
     normalization="association",
     method="louvain",
     nx_k=0.5,
-    nx_iteratons=10,
+    nx_iterations=10,
     delta=1.0,
+    directory="./",
+    database="documents",
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
-    """Collaboration network"""
+    """Co-authorship network"""
+
+    if criterion not in [
+        "authors",
+        "organizations",
+        "countries",
+    ]:
+        raise ValueError(
+            "criterion must be one of: " "{'authors', 'organizations', 'countries'}"
+        )
 
     matrix = vantagepoint__co_occ_matrix(
-        column=column,
-        row=None,
-        top_n=top_n,
+        criterion=criterion,
+        topics_length=topics_length,
+        min_occ_per_topic=min_occ_per_topic,
+        min_citations_per_topic=min_citations_per_topic,
         directory=directory,
         database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
     )
 
     matrix = association_index(matrix, association=normalization)
@@ -121,7 +139,7 @@ def bibliometrix__collaboration_network(
     results.plot_ = network_graph_plot(
         graph,
         nx_k=nx_k,
-        nx_iteratons=nx_iteratons,
+        nx_iterations=nx_iterations,
         delta=delta,
     )
     results.degree_plot_ = get_network_graph_degree_plot(graph)

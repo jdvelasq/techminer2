@@ -95,7 +95,7 @@ def bibliometrix__co_citation_network(
     result.plot_ = network_graph_plot(
         graph,
         nx_k=nx_k,
-        nx_iteratons=nx_iteratons,
+        nx_iterations=nx_iteratons,
         delta=delta,
     )
     result.degree_plot_ = get_network_graph_degree_plot(graph)
