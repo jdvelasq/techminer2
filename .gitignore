@@ -1,5 +1,6 @@
 .DS_Store
 
+sphinx/_static
 
 data/regtech/processed/
 data/regtech/reports/
