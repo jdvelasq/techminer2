@@ -90,9 +90,9 @@ def bibliometrix__coupling_network(
     """Clustering by coupling."""
 
     matrix_list = bibliometrix__coupling_matrix_list(
-        unit_of_analysis=unit_of_analysis,
+        criterion=unit_of_analysis,
         coupling_measured_by=coupling_measured_by,
-        top_n=top_n,
+        topics_length=top_n,
         metric=metric,
         directory=directory,
     )

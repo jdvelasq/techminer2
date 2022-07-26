@@ -7,9 +7,9 @@ Coupling Matrix List
 
 >>> from techminer2 import bibliometrix__coupling_matrix_list
 >>> bibliometrix__coupling_matrix_list(
-...     unit_of_analysis='article',
+...     criterion='article',
 ...     coupling_measured_by='local_references',
-...     top_n=15,
+...     topics_length=15,
 ...     metric='local_references',
 ...     directory=directory,
 ... ).head()
@@ -36,34 +36,49 @@ from .vantagepoint__co_occ_matrix_list import _add_counters_to_items
 # pylint: disable=invalid-name
 
 #
-# unit_of_analysis = {article, author, source, institution, country}
+# unit_of_analysis = {article, author, source, organization, country}
 #
 # coupling_measured_by = {references, author_keywords, index_keywords, abstract_words, title_words, words}
 #
 
 
 def bibliometrix__coupling_matrix_list(
-    unit_of_analysis,
+    criterion,
     coupling_measured_by,
-    top_n=250,
+    topics_length=250,
     metric="local_citations",
     directory="./",
+    database="documents",
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
     """Coupling matrix list."""
 
-    records = read_records(directory, database="documents", use_filter=True)
+    records = read_records(
+        directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
+    )
     records = records[
-        [unit_of_analysis, coupling_measured_by, "local_citations", "global_citations"]
+        [
+            criterion,
+            coupling_measured_by,
+            "local_citations",
+            "global_citations",
+        ]
     ]
     records = records.dropna()
 
-    for col in [unit_of_analysis, coupling_measured_by]:
+    for col in [criterion, coupling_measured_by]:
         records[col] = records[col].str.split(";")
         records = records.explode(col)
         records[col] = records[col].str.strip()
 
     # Filter unit-of-analysis by metric
-    records = records.groupby(unit_of_analysis, as_index=False).agg(
+    records = records.groupby(criterion, as_index=False).agg(
         {
             "local_citations": sum,
             "global_citations": sum,
@@ -71,25 +86,25 @@ def bibliometrix__coupling_matrix_list(
         }
     )
     if metric == "local_references":
-        selected_columns = ["local_citations", "global_citations", unit_of_analysis]
+        selected_columns = ["local_citations", "global_citations", criterion]
     else:
-        selected_columns = ["global_citations", "local_citations", unit_of_analysis]
+        selected_columns = ["global_citations", "local_citations", criterion]
     records = records.sort_values(selected_columns, ascending=[False, False, True])
-    records = records.head(top_n)
+    records = records.head(topics_length)
     records = records.explode(coupling_measured_by)
 
     # Gruoup by
     records = records.groupby(coupling_measured_by, as_index=False).agg(
-        {unit_of_analysis: list, "local_citations": sum, "global_citations": sum}
+        {criterion: list, "local_citations": sum, "global_citations": sum}
     )
-    records[unit_of_analysis] = records[unit_of_analysis].map(set)
-    records[unit_of_analysis] = records[unit_of_analysis].map(sorted)
-    records[unit_of_analysis] = records[unit_of_analysis].str.join("; ")
+    records[criterion] = records[criterion].map(set)
+    records[criterion] = records[criterion].map(sorted)
+    records[criterion] = records[criterion].str.join("; ")
 
     # Compute co-occurrence matrix list
-    matrix_list = records[[unit_of_analysis]].copy()
-    matrix_list = matrix_list.rename(columns={unit_of_analysis: "column"})
-    matrix_list = matrix_list.assign(row=records[[unit_of_analysis]])
+    matrix_list = records[[criterion]].copy()
+    matrix_list = matrix_list.rename(columns={criterion: "column"})
+    matrix_list = matrix_list.assign(row=records[[criterion]])
 
     for name in ["column", "row"]:
         matrix_list[name] = matrix_list[name].str.split(";")
@@ -101,19 +116,16 @@ def bibliometrix__coupling_matrix_list(
         "sum"
     )
 
-    matrix_list = _add_counters_to_items(
-        unit_of_analysis,
-        "column",
-        directory,
-        "documents",
-        matrix_list,
-    )
-    matrix_list = _add_counters_to_items(
-        unit_of_analysis,
-        "row",
-        directory,
-        "documents",
-        matrix_list,
-    )
+    for column_name in ["row", "column"]:
+        matrix_list = _add_counters_to_items(
+            matrix_list=matrix_list,
+            column_name=column_name,
+            criterion=criterion,
+            directory=directory,
+            database=database,
+            start_year=start_year,
+            end_year=end_year,
+            **filters,
+        )
 
     return matrix_list
