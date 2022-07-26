@@ -1,5 +1,5 @@
 """
-Bar
+Bar (ok!)
 ===============================================================================
 
 
@@ -85,27 +85,45 @@ Bar
     <iframe src="../_static/scientopy__bar-6.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
+>>> file_name = "sphinx/_static/scientopy__bar-7.html"
+>>> from techminer2 import scientopy__bar
+>>> scientopy__bar(
+...     criterion='author_keywords',
+...     directory=directory,
+...     trend_analysis=True,
+...     start_year=2018,
+...     end_year=2021,
+... ).write_html(file_name)
+
+.. raw:: html
+
+    <iframe src="../_static/scientopy__bar-7.html" height="600px" width="100%" frameBorder="0"></iframe>
+
+
 
 """
-from ._indicators.indicators_by_topic import indicators_by_topic
+from ._indicators.growth_indicators_by_topic import growth_indicators_by_topic
 from ._plots.bar_plot import bar_plot
 
 
 def scientopy__bar(
     criterion,
+    time_window=2,
+    topics_length=20,
+    custom_topics=None,
+    trend_analysis=False,
+    title=None,
     directory="./",
     database="documents",
     start_year=None,
     end_year=None,
-    topics_length=20,
-    custom_topics=None,
-    title=None,
     **filters,
 ):
     """ScientoPy Bar Plot."""
 
-    indicators = indicators_by_topic(
+    indicators = growth_indicators_by_topic(
         criterion=criterion,
+        time_window=time_window,
         directory=directory,
         database=database,
         start_year=start_year,
@@ -113,10 +131,26 @@ def scientopy__bar(
         **filters,
     )
 
+    if trend_analysis is True:
+        indicators = indicators.sort_values(
+            by=["average_growth_rate", "OCC", "global_citations"],
+            ascending=[False, False, False],
+        )
+    else:
+        indicators = indicators.sort_values(
+            by=["OCC", "global_citations", "average_growth_rate"],
+            ascending=[False, False, False],
+        )
+
     indicators = _filter_indicators_by_custom_topics(
         indicators=indicators,
         topics_length=topics_length,
         custom_topics=custom_topics,
+    )
+
+    indicators = indicators.sort_values(
+        by=["OCC", "global_citations", "average_growth_rate"],
+        ascending=[False, False, False],
     )
 
     return bar_plot(
