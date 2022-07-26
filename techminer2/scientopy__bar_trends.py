@@ -1,5 +1,5 @@
 """
-Bar Trends
+Bar Trends (ok!)
 ===============================================================================
 
 ScientoPy Bar Trends
@@ -12,7 +12,7 @@ ScientoPy Bar Trends
 >>> file_name = "sphinx/_static/scientpy__bar_trends-1.html"
 >>> from techminer2 import scientopy__bar_trends
 >>> trends = scientopy__bar_trends(
-...     column="author_keywords",
+...     criterion="author_keywords",
 ...     directory=directory,
 ... )
 >>> trends.plot_.write_html(file_name)
@@ -37,7 +37,7 @@ regulatory technology              6                  6
 >>> file_name = "sphinx/_static/scientpy__bar_trends-3.html"
 >>> from techminer2 import scientopy__bar_trends
 >>> trends = scientopy__bar_trends(
-...     column="author_keywords",
+...     criterion="author_keywords",
 ...     start_year=2018,
 ...     end_year=2021,
 ...     directory=directory,
@@ -55,7 +55,7 @@ regulatory technology              6                  6
 >>> file_name = "sphinx/_static/scientpy__bar_trends-4.html"
 >>> from techminer2 import scientopy__bar_trends
 >>> trends = scientopy__bar_trends(
-...     column="author_keywords",
+...     criterion="author_keywords",
 ...     custom_topics=[
 ...         "fintech", 
 ...         "blockchain", 
@@ -74,12 +74,29 @@ regulatory technology              6                  6
 
 
 
+
+>>> file_name = "sphinx/_static/scientpy__bar_trends-5.html"
+>>> from techminer2 import scientopy__bar_trends
+>>> trends = scientopy__bar_trends(
+...     criterion="author_keywords",
+...     trend_analysis=True,
+...     start_year=2018,
+...     end_year=2021,
+...     directory=directory,
+... )
+>>> trends.plot_.write_html(file_name)
+
+.. raw:: html
+
+    <iframe src="../_static/scientpy__bar_trends-5.html" height="800px" width="100%" frameBorder="0"></iframe>
+
+
 """
 ## ScientoPy // Bar Trends
 import plotly.express as px
 
-from ._indicators.growth_indicators_by_topic import _growth_indicators_from_records
-from ._read_records import read_records
+from ._indicators.growth_indicators_by_topic import growth_indicators_by_topic
+from .scientopy__bar import _filter_indicators_by_custom_topics
 
 
 class _Results:
@@ -89,19 +106,23 @@ class _Results:
 
 
 def scientopy__bar_trends(
-    column,
-    topics_length=20,
-    start_year=None,
-    end_year=None,
-    custom_topics=None,
+    criterion,
     time_window=2,
+    topics_length=20,
+    custom_topics=None,
+    trend_analysis=False,
+    time=None,
     directory="./",
     database="documents",
+    start_year=None,
+    end_year=None,
     **filters,
 ):
     """ScientoPy Bar Trend."""
 
-    records = read_records(
+    indicators = growth_indicators_by_topic(
+        criterion=criterion,
+        time_window=time_window,
         directory=directory,
         database=database,
         start_year=start_year,
@@ -109,77 +130,56 @@ def scientopy__bar_trends(
         **filters,
     )
 
-    indicators = _growth_indicators_from_records(
-        column=column,
-        time_window=time_window,
-        directory=directory,
-        records=records,
+    if trend_analysis is True:
+        indicators = indicators.sort_values(
+            by=["average_growth_rate", "OCC", "global_citations"],
+            ascending=[False, False, False],
+        )
+    else:
+        indicators = indicators.sort_values(
+            by=["OCC", "global_citations", "average_growth_rate"],
+            ascending=[False, False, False],
+        )
+
+    indicators = _filter_indicators_by_custom_topics(
+        indicators=indicators,
+        topics_length=topics_length,
+        custom_topics=custom_topics,
     )
 
-    indicators = _make_table(indicators)
-    results = _Results()
-    results.table_ = indicators.copy()
-
-    indicators = _filter_indicators(
-        indicators,
-        topics_length,
-        custom_topics,
+    indicators = indicators.sort_values(
+        by=["OCC", "global_citations", "average_growth_rate"],
+        ascending=[False, False, False],
     )
-
-    results = _Results()
-    results.table_ = indicators.copy()
 
     col0 = indicators.columns[0]
     col1 = indicators.columns[1]
-    indicators = indicators.head(topics_length)
-    indicators = indicators.reset_index()
 
-    indicators = indicators.melt(id_vars=column, value_vars=[col0, col1])
+    indicators = indicators[[col0, col1]]
+
+    results = _Results()
+    results.table_ = indicators.copy()
+
+    indicators = indicators.reset_index()
+    indicators = indicators.melt(id_vars=criterion, value_vars=[col0, col1])
     indicators = indicators.rename(
         columns={
-            column: column.replace("_", " ").title(),
+            criterion: criterion.replace("_", " ").title(),
             "variable": "Period",
             "value": "Num Documents",
         }
     )
 
-    results.plot_ = _make_plot(indicators, column, col0, col1)
+    results.plot_ = _make_plot(indicators, criterion, col0, col1)
     return results
 
 
-def _filter_indicators(indicators, topics_length, custom_topics):
-    indicators = indicators.copy()
-    if custom_topics is not None:
-        custom_topics = [
-            topic for topic in custom_topics if topic in indicators.index.tolist()
-        ]
-    else:
-        custom_topics = indicators.index.copy()
-        custom_topics = custom_topics[:topics_length]
-
-    indicators = indicators.loc[custom_topics, :]
-
-    return indicators
-
-
-def _make_table(indicators):
-
-    indicators = indicators[indicators.columns[:2]]
-    indicators = indicators.assign(
-        num_documents=indicators[indicators.columns[0]]
-        + indicators[indicators.columns[1]]
-    )
-    indicators = indicators.sort_values(by="num_documents", ascending=False)
-    indicators.pop("num_documents")
-    return indicators
-
-
-def _make_plot(indicators, column, col0, col1):
+def _make_plot(indicators, criterion, col0, col1):
 
     fig = px.bar(
         indicators,
         x="Num Documents",
-        y=column.replace("_", " ").title(),
+        y=criterion.replace("_", " ").title(),
         color="Period",
         title="Trend",
         hover_data=["Num Documents"],
@@ -206,3 +206,78 @@ def _make_plot(indicators, column, col0, col1):
     )
 
     return fig
+
+    ###############################################################################
+
+
+#     records = read_records(
+#         directory=directory,
+#         database=database,
+#         start_year=start_year,
+#         end_year=end_year,
+#         **filters,
+#     )
+
+#     indicators = _growth_indicators_from_records(
+#         column=criterion,
+#         time_window=time_window,
+#         directory=directory,
+#         records=records,
+#     )
+
+#     indicators = _make_table(indicators)
+#     results = _Results()
+#     results.table_ = indicators.copy()
+
+#     indicators = _filter_indicators(
+#         indicators,
+#         topics_length,
+#         custom_topics,
+#     )
+
+#     results = _Results()
+#     results.table_ = indicators.copy()
+
+#     col0 = indicators.columns[0]
+#     col1 = indicators.columns[1]
+#     indicators = indicators.head(topics_length)
+#     indicators = indicators.reset_index()
+
+#     indicators = indicators.melt(id_vars=criterion, value_vars=[col0, col1])
+#     indicators = indicators.rename(
+#         columns={
+#             criterion: criterion.replace("_", " ").title(),
+#             "variable": "Period",
+#             "value": "Num Documents",
+#         }
+#     )
+
+#     results.plot_ = _make_plot(indicators, criterion, col0, col1)
+#     return results
+
+
+# def _filter_indicators(indicators, topics_length, custom_topics):
+#     indicators = indicators.copy()
+#     if custom_topics is not None:
+#         custom_topics = [
+#             topic for topic in custom_topics if topic in indicators.index.tolist()
+#         ]
+#     else:
+#         custom_topics = indicators.index.copy()
+#         custom_topics = custom_topics[:topics_length]
+
+#     indicators = indicators.loc[custom_topics, :]
+
+#     return indicators
+
+
+# def _make_table(indicators):
+
+#     indicators = indicators[indicators.columns[:2]]
+#     indicators = indicators.assign(
+#         num_documents=indicators[indicators.columns[0]]
+#         + indicators[indicators.columns[1]]
+#     )
+#     indicators = indicators.sort_values(by="num_documents", ascending=False)
+#     indicators.pop("num_documents")
+#     return indicators
