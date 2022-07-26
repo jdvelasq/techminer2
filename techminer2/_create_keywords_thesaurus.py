@@ -3,7 +3,7 @@ Create keywords thesaurus
 ===============================================================================
 
 >>> directory = "data/regtech/"
->>> from techminer2.create_keywords_thesaurus import create_keywords_thesaurus
+>>> from techminer2._create_keywords_thesaurus import create_keywords_thesaurus
 >>> create_keywords_thesaurus(directory=directory)
 --INFO-- Creating `keywords.txt` from author/index keywords, and abstract/title words
 

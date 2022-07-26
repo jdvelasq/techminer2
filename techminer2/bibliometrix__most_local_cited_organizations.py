@@ -1,27 +1,28 @@
 """
-Most Global Cited Institutions
+Most Local Cited Institutions
 ===============================================================================
 
 
->>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/bibliometrix__most_global_cited_institutions.html"
 
->>> from techminer2 import bibliometrix__most_global_cited_institutions
->>> bibliometrix__most_global_cited_institutions(
-...     directory,
+
+>>> directory = "data/regtech/"
+>>> file_name = "sphinx/_static/bibliometrix__most_local_cited_organizations.html"
+
+>>> from techminer2 import bibliometrix__most_local_cited_organizations
+>>> bibliometrix__most_local_cited_organizations(
 ...     topics_length=20,
-...     plot="cleveland",
+...     directory=directory,
 ... ).write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../_static/bibliometrix__most_global_cited_institutions.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/bibliometrix__most_local_cited_organizations.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 from .vantagepoint__chart import vantagepoint__chart
 
 
-def bibliometrix__most_global_cited_institutions(
+def bibliometrix__most_local_cited_organizations(
     directory="./",
     topics_length=20,
     plot="cleveland",
@@ -30,20 +31,20 @@ def bibliometrix__most_global_cited_institutions(
     end_year=None,
     **filters,
 ):
-    """Most global cited institutions."""
+    """Most Local Cited Organizations (from Reference Lists)."""
 
     return vantagepoint__chart(
-        criterion="institutions",
+        criterion="organizations",
         directory=directory,
         database=database,
-        metric="global_citations",
+        metric="local_citations",
         start_year=start_year,
         end_year=end_year,
         topics_length=topics_length,
         min_occ=None,
         max_occ=None,
         custom_topics=None,
-        title="Most Global Cited Institutions",
+        title="Most Local Cited Organizations (from Reference Lists)",
         plot=plot,
         **filters,
     )

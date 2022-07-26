@@ -1,13 +1,13 @@
 """
-Most Frequent Institutions
+Most Relevant Organizations
 ===============================================================================
 
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/bibliometrix__most_frequent_institutions.html"
+>>> file_name = "sphinx/_static/bibliometrix__most_relevant_organizations.html"
 
->>> from techminer2 import bibliometrix__most_frequent_institutions
->>> bibliometrix__most_frequent_institutions(
+>>> from techminer2 import bibliometrix__most_relevant_organizations
+>>> bibliometrix__most_relevant_organizations(
 ...     directory=directory,
 ...     topics_length=20,
 ...     plot="cleveland",
@@ -16,13 +16,13 @@ Most Frequent Institutions
 
 .. raw:: html
 
-    <iframe src="../../../_static/bibliometrix__most_frequent_institutions.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/bibliometrix__most_relevant_organizations.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 from .vantagepoint__chart import vantagepoint__chart
 
 
-def bibliometrix__most_frequent_institutions(
+def bibliometrix__most_relevant_organizations(
     directory="./",
     topics_length=20,
     min_occ=None,
@@ -33,10 +33,10 @@ def bibliometrix__most_frequent_institutions(
     end_year=None,
     **filters,
 ):
-    """Plots the number of documents by institutions using the specified plot."""
+    """Plots the number of documents by organizations using the specified plot."""
 
     return vantagepoint__chart(
-        criterion="institutions",
+        criterion="organizations",
         directory=directory,
         database=database,
         metric="OCC",
@@ -46,7 +46,7 @@ def bibliometrix__most_frequent_institutions(
         min_occ=min_occ,
         max_occ=max_occ,
         custom_topics=None,
-        title="Most Frequent Institutions",
+        title="Most Frequent Organizations",
         plot=plot,
         **filters,
     )

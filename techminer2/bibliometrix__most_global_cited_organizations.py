@@ -1,28 +1,27 @@
 """
-Most Local Cited Institutions
+Most Global Cited Organizations
 ===============================================================================
 
 
-
-
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/bibliometrix__most_local_cited_institutions.html"
+>>> file_name = "sphinx/_static/bibliometrix__most_global_cited_organizations.html"
 
->>> from techminer2 import bibliometrix__most_local_cited_institutions
->>> bibliometrix__most_local_cited_institutions(
+>>> from techminer2 import bibliometrix__most_global_cited_organizations
+>>> bibliometrix__most_global_cited_organizations(
+...     directory,
 ...     topics_length=20,
-...     directory=directory,
+...     plot="cleveland",
 ... ).write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../_static/bibliometrix__most_local_cited_institutions.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/bibliometrix__most_global_cited_organizations.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 from .vantagepoint__chart import vantagepoint__chart
 
 
-def bibliometrix__most_local_cited_institutions(
+def bibliometrix__most_global_cited_organizations(
     directory="./",
     topics_length=20,
     plot="cleveland",
@@ -31,20 +30,20 @@ def bibliometrix__most_local_cited_institutions(
     end_year=None,
     **filters,
 ):
-    """Most Local Cited Sources (from Reference Lists)."""
+    """Most global cited organizations."""
 
     return vantagepoint__chart(
-        criterion="institutions",
+        criterion="organizations",
         directory=directory,
         database=database,
-        metric="local_citations",
+        metric="global_citations",
         start_year=start_year,
         end_year=end_year,
         topics_length=topics_length,
         min_occ=None,
         max_occ=None,
         custom_topics=None,
-        title="Most Local Cited Institutions (from Reference Lists)",
+        title="Most Global Cited Organizations",
         plot=plot,
         **filters,
     )

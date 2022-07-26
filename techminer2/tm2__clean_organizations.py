@@ -10,8 +10,8 @@ the same directory as the documents.csv file.
 
 >>> from techminer2 import tm2__clean_organizations
 >>> tm2__clean_organizations(directory)
---INFO-- Applying thesaurus to organizatioins
---INFO-- The thesaurus was applied to organizations in all databases
+--INFO-- The data/regtech/processed/organizations.txt thesaurus file was applied to affiliations in all databases
+
 
 
 """

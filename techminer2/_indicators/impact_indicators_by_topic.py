@@ -62,12 +62,12 @@ def impact_indicators_by_topic(
         "authors",
         "authors_id",
         "countries",
-        "institutions",
+        "organizations",
         "source_title",
         "source_abbr",
     ]:
         raise ValueError(
-            'Impact indicators only works with "authors", "authors_id", "countries", "institutions", "source_title" or "source_abbr".'
+            'Impact indicators only works with "authors", "authors_id", "countries", "organizations", "source_title" or "source_abbr".'
         )
 
     columns_to_explode = [

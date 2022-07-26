@@ -29,17 +29,10 @@ from .bibliometrix__country_scientific_production import (
 from .bibliometrix__coupling_matrix_list import bibliometrix__coupling_matrix_list
 from .bibliometrix__coupling_network import bibliometrix__coupling_network
 from .bibliometrix__factorial_analysis import bibliometrix__factorial_analysis_with_mds
-from .bibliometrix__institution_impact import bibliometrix__institution_impact
-from .bibliometrix__institutions_production_over_time import (
-    bibliometrix__institutions_production_over_time,
-)
 from .bibliometrix__lotka_law import bibliometrix__lotka_law
 from .bibliometrix__main_information import bibliometrix__main_information
 from .bibliometrix__most_frequent_authors import bibliometrix__most_frequent_authors
 from .bibliometrix__most_frequent_countries import bibliometrix__most_frequent_countries
-from .bibliometrix__most_frequent_institutions import (
-    bibliometrix__most_frequent_institutions,
-)
 from .bibliometrix__most_frequent_words import bibliometrix__most_frequent_words
 from .bibliometrix__most_global_cited_authors import (
     bibliometrix__most_global_cited_authors,
@@ -50,8 +43,8 @@ from .bibliometrix__most_global_cited_countries import (
 from .bibliometrix__most_global_cited_documents import (
     bibliometrix__most_global_cited_documents,
 )
-from .bibliometrix__most_global_cited_institutions import (
-    bibliometrix__most_global_cited_institutions,
+from .bibliometrix__most_global_cited_organizations import (
+    bibliometrix__most_global_cited_organizations,
 )
 from .bibliometrix__most_global_cited_references import (
     bibliometrix__most_global_cited_references,
@@ -68,8 +61,8 @@ from .bibliometrix__most_local_cited_countries import (
 from .bibliometrix__most_local_cited_documents import (
     bibliometrix__most_local_cited_documents,
 )
-from .bibliometrix__most_local_cited_institutions import (
-    bibliometrix__most_local_cited_institutions,
+from .bibliometrix__most_local_cited_organizations import (
+    bibliometrix__most_local_cited_organizations,
 )
 from .bibliometrix__most_local_cited_references import (
     bibliometrix__most_local_cited_references,
@@ -77,7 +70,14 @@ from .bibliometrix__most_local_cited_references import (
 from .bibliometrix__most_local_cited_sources import (
     bibliometrix__most_local_cited_sources,
 )
+from .bibliometrix__most_relevant_organizations import (
+    bibliometrix__most_relevant_organizations,
+)
 from .bibliometrix__most_relevant_sources import bibliometrix__most_relevant_sources
+from .bibliometrix__organization_impact import bibliometrix__organization_impact
+from .bibliometrix__organizations_production_over_time import (
+    bibliometrix__organizations_production_over_time,
+)
 from .bibliometrix__rpys import bibliometrix__rpys
 from .bibliometrix__source_dynamics import bibliometrix__source_dynamics
 from .bibliometrix__source_impact import bibliometrix__source_impact
@@ -114,6 +114,7 @@ from .tlab__word_associations_mds_map import tlab__word_associations_mds_map
 from .tlab__word_co_occurrentes_plot import tlab__word_co_occurrentes_plot
 from .tlab__words_radial_diagram import tlab__words_radial_diagram
 from .tm2__abstract_summarization import tm2__abstract_summarization
+from .tm2__clean_organizations import tm2__clean_organizations
 from .tm2__coverage import tm2__coverage
 from .tm2__find_abbreviations import tm2__find_abbreviations
 from .tm2__import_scopus_files import tm2__import_scopus_files

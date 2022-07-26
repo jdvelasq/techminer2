@@ -1,13 +1,13 @@
 """
-Institutions' Production over Time
+Organizations' Production over Time
 ===============================================================================
 
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/bibliometrix__institutions_production_over_time.html"
+>>> file_name = "sphinx/_static/bibliometrix__organizations_production_over_time.html"
 
->>> from techminer2 import bibliometrix__institutions_production_over_time
->>> pot = bibliometrix__institutions_production_over_time(
+>>> from techminer2 import bibliometrix__organizations_production_over_time
+>>> pot = bibliometrix__organizations_production_over_time(
 ...    topics_length=10, 
 ...    directory=directory,
 ... )
@@ -16,10 +16,10 @@ Institutions' Production over Time
 
 .. raw:: html
 
-    <iframe src="../../../_static/bibliometrix__institutions_production_over_time.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/bibliometrix__organizations_production_over_time.html" height="600px" width="100%" frameBorder="0"></iframe>
 
->>> pot.documents_per_institution_.head()
-                                institutions  ...                           doi
+>>> pot.documents_per_organization_.head()
+                               organizations  ...                           doi
 0                 University of Johannesburg  ...    10.1057/S41261-020-00134-0
 1  ---Indian Institute of Management Lucknow  ...    10.1057/S41261-020-00127-Z
 2                           Ahlia University  ...  10.1007/978-981-15-3383-9_32
@@ -30,7 +30,7 @@ Institutions' Production over Time
 
 >>> pot.production_per_year_.head()
                                                          OCC  ...  local_citations_per_year
-institutions                                       year       ...                          
+organizations                                      year       ...                          
 ---3PB                                             2022    1  ...                     0.000
 ---ABES Engineering College                        2021    1  ...                     0.000
 ---AML Forensic library KPMG Luxembourg Societe... 2020    1  ...                     0.333
@@ -52,10 +52,10 @@ from .bibliometrix__production_over_time import bibliometrix__production_over_ti
 class _Results:
     plot_ = None
     production_per_year_ = None
-    documents_per_institution_ = None
+    documents_per_organization_ = None
 
 
-def bibliometrix__institutions_production_over_time(
+def bibliometrix__organizations_production_over_time(
     topics_length=10,
     directory="./",
     database="documents",
@@ -68,10 +68,10 @@ def bibliometrix__institutions_production_over_time(
     results = _Results()
 
     results.plot_ = bibliometrix__production_over_time(
-        criterion="institutions",
+        criterion="organizations",
         topics_length=topics_length,
         directory=directory,
-        title="Institutions' production over time",
+        title="Organizations' production over time",
         metric="OCC",
         database=database,
         start_year=start_year,
@@ -79,8 +79,8 @@ def bibliometrix__institutions_production_over_time(
         **filters,
     )
 
-    results.documents_per_institution_ = bibliometrix__documents_per(
-        criterion="institutions",
+    results.documents_per_organization_ = bibliometrix__documents_per(
+        criterion="organizations",
         directory=directory,
         database=database,
         start_year=start_year,
@@ -89,7 +89,7 @@ def bibliometrix__institutions_production_over_time(
     )
 
     results.production_per_year_ = indicators_by_topic_per_year(
-        criterion="institutions",
+        criterion="organizations",
         directory=directory,
         database=database,
         start_year=start_year,
