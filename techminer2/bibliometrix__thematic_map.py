@@ -69,7 +69,7 @@ def bibliometrix__thematic_map(
 
     return bibliometrix__co_occurrence_network(
         column,
-        top_n=top_n,
+        topics_length=top_n,
         directory=directory,
         database=database,
         normalization="association",
