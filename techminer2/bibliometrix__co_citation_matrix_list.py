@@ -27,27 +27,36 @@ from .vantagepoint__co_occ_matrix_list import (
 
 
 def bibliometrix__co_citation_matrix_list(
-    top_n=50,
+    topics_length=50,
     directory="./",
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
 
     """Co-citation matrix"""
 
     matrix_list = _create_matrix_list(
         criterion="local_references",
-        row="local_references",
         directory=directory,
         database="documents",
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
     )
 
     # select most local cited references
     references = read_records(
-        directory=directory, database="references", use_filter=False
+        directory=directory,
+        database="references",
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
     )
     references = references.sort_values(
         ["local_citations", "global_citations"], ascending=[False, False]
     )
-    references = references.head(top_n)
+    references = references.head(topics_length)
     references = references.article
 
     # filter matrix list
@@ -55,19 +64,15 @@ def bibliometrix__co_citation_matrix_list(
     matrix_list = matrix_list[matrix_list.column.isin(references)]
 
     # add counters to items
-    matrix_list = _add_counters_to_items(
-        "local_references",
-        "column",
-        directory,
-        "documents",
-        matrix_list,
-    )
-    matrix_list = _add_counters_to_items(
-        "local_references",
-        "row",
-        directory,
-        "documents",
-        matrix_list,
-    )
+    for column_name in ["row", "column"]:
+        matrix_list = _add_counters_to_items(
+            matrix_list=matrix_list,
+            column_name=column_name,
+            criterion="local_references",
+            directory=directory,
+            database="documents",
+            start_year=start_year,
+            end_year=end_year,
+        )
 
     return matrix_list

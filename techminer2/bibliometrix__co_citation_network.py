@@ -7,11 +7,11 @@ Co-citation Network
 
 >>> from techminer2 import bibliometrix__co_citation_network
 >>> nnet = bibliometrix__co_citation_network(
-...     top_n=50,
+...     topics_length=50,
 ...     directory=directory,
 ...     method="louvain",
 ...     nx_k=0.5,
-...     nx_iteratons=10,
+...     nx_iterations=10,
 ...     delta=1.0,    
 ... )
 
@@ -51,13 +51,13 @@ Arner DW, 2019, EUR BUS ORG LAW REV, V20, P55 0...      0  ...  0.027119
 [5 rows x 4 columns]
 
 """
-from .bibliometrix__co_citation_matrix_list import bibliometrix__co_citation_matrix_list
 from ._get_network_graph_communities import get_network_graph_communities
 from ._get_network_graph_degree_plot import get_network_graph_degree_plot
 from ._get_network_graph_indicators import get_network_graph_indicators
 from ._get_network_graph_plot import network_graph_plot
 from ._matrix_list_2_network_graph import matrix_list_2_network_graph
 from ._network_community_detection import network_community_detection
+from .bibliometrix__co_citation_matrix_list import bibliometrix__co_citation_matrix_list
 
 
 class _Result:
@@ -71,18 +71,24 @@ class _Result:
 
 
 def bibliometrix__co_citation_network(
-    top_n=50,
+    topics_length=50,
     directory="./",
     method="louvain",
     nx_k=0.5,
-    nx_iteratons=10,
+    nx_iterations=10,
     delta=1.0,
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
     """Co-citation Network."""
 
     matrix_list = bibliometrix__co_citation_matrix_list(
-        top_n=top_n,
+        topics_length=topics_length,
         directory=directory,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
     )
 
     graph = matrix_list_2_network_graph(matrix_list)
@@ -95,7 +101,7 @@ def bibliometrix__co_citation_network(
     result.plot_ = network_graph_plot(
         graph,
         nx_k=nx_k,
-        nx_iterations=nx_iteratons,
+        nx_iterations=nx_iterations,
         delta=delta,
     )
     result.degree_plot_ = get_network_graph_degree_plot(graph)
