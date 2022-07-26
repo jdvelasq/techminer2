@@ -113,7 +113,7 @@ def scientopy__bar(
         **filters,
     )
 
-    indicators = _filter_indicators(
+    indicators = _filter_indicators_by_custom_topics(
         indicators=indicators,
         topics_length=topics_length,
         custom_topics=custom_topics,
@@ -126,7 +126,7 @@ def scientopy__bar(
     )
 
 
-def _filter_indicators(indicators, topics_length, custom_topics):
+def _filter_indicators_by_custom_topics(indicators, topics_length, custom_topics):
     indicators = indicators.copy()
     if custom_topics is not None:
         custom_topics = [

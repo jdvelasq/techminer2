@@ -44,7 +44,7 @@ average growth rate.
 """
 from dataclasses import dataclass
 
-from techminer2.scientopy__bar import _filter_indicators
+from techminer2.scientopy__bar import _filter_indicators_by_custom_topics
 
 from ._indicators.growth_indicators_by_topic import growth_indicators_by_topic
 from ._px.bar_px import bar_px
@@ -79,7 +79,7 @@ def scientopy__top_trending_topics(
         **filters,
     )
 
-    indicators = _filter_indicators(
+    indicators = _filter_indicators_by_custom_topics(
         indicators=indicators,
         topics_length=topics_length,
         custom_topics=custom_topics,
