@@ -10,7 +10,7 @@ the same directory as the documents.csv file.
 
 >>> from techminer2 import tm2__clean_countries
 >>> tm2__clean_countries(directory)
-
+--INFO-- The data/regtech/processed/countries.txt thesaurus file was applied to affiliations in all databases
 
 """
 import glob

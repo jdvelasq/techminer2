@@ -4,10 +4,12 @@ Create Country Thesaurus
 
 Creates a country thesaurus from 'affiliations' column in the datasets.
 
->>> from techminer2.create_country_thesaurus import create_country_thesaurus
+>>> from techminer2._create_countries_thesaurus import create_countries_thesaurus
 >>> directory = "data/regtech/"
 
->>> create_country_thesaurus(directory)
+>>> create_countries_thesaurus(directory)
+--INFO-- The data/regtech/processed/countries.txt thesaurus file was created
+
 
 """
 import glob

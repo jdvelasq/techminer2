@@ -114,6 +114,7 @@ from .tlab__word_associations_mds_map import tlab__word_associations_mds_map
 from .tlab__word_co_occurrentes_plot import tlab__word_co_occurrentes_plot
 from .tlab__words_radial_diagram import tlab__words_radial_diagram
 from .tm2__abstract_summarization import tm2__abstract_summarization
+from .tm2__clean_countries import tm2__clean_countries
 from .tm2__clean_organizations import tm2__clean_organizations
 from .tm2__coverage import tm2__coverage
 from .tm2__find_abbreviations import tm2__find_abbreviations
