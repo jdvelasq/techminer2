@@ -32,9 +32,9 @@ def network(
 ):
 
     matrix_list = vantagepoint__co_occ_matrix_list(
-        column=column,
+        criterion=column,
         row=None,
-        top_n=top_n,
+        topics_length=top_n,
         directory=directory,
         database=database,
     )

@@ -37,11 +37,11 @@ def tlab__word_associations_for_all_items(
     """Computes the co-occurrence matrix list."""
 
     return vantagepoint__co_occ_matrix_list(
-        column=column,
+        criterion=column,
         row=None,
-        top_n=None,
-        min_occ=None,
-        max_occ=None,
+        topics_length=None,
+        min_occ_per_topic=None,
+        min_citations_per_topic=None,
         directory=directory,
         database=database,
     )

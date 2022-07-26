@@ -35,9 +35,8 @@ Terms by Year
 
 """
 from ._indicators.indicators_by_topic_per_year import indicators_by_topic_per_year
-from .vantagepoint__co_occ_matrix_list import (
+from .vantagepoint__co_occ_matrix_list import (  # _select_top_n_items,
     _add_counters_to_items,
-    _select_top_n_items,
 )
 
 

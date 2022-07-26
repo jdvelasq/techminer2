@@ -28,11 +28,10 @@ Zetzsche DA 4:092        0.943564  ...           1.000000
 [10 rows x 10 columns]
 
 """
-from .vantagepoint__co_occ_matrix_list import (
+from .vantagepoint__co_occ_matrix_list import (  # _select_top_n_items,
     _add_counters_to_items,
     _create_matrix_list,
     _remove_stopwords,
-    _select_top_n_items,
 )
 
 
@@ -46,7 +45,7 @@ def vantagepoint__cross_corr_matrix(
 ):
 
     matrix_list = _create_matrix_list(
-        column=column,
+        criterion=column,
         row=by,
         directory=directory,
         database=database,

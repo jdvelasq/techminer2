@@ -34,7 +34,7 @@ def bibliometrix__co_citation_matrix_list(
     """Co-citation matrix"""
 
     matrix_list = _create_matrix_list(
-        column="local_references",
+        criterion="local_references",
         row="local_references",
         directory=directory,
         database="documents",
