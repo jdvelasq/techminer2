@@ -9,7 +9,7 @@ Occurrence Matrix
 >>> vantagepoint__occ_matrix(
 ...    criterion_for_columns='author_keywords',
 ...    criterion_for_rows='authors',
-...    min_occ_per_topic=3,
+...    topic_min_occ=3,
 ...    directory=directory,
 ... )
 column             regtech 69:461  ...  semantic web 03:002
@@ -34,8 +34,8 @@ def vantagepoint__occ_matrix(
     criterion_for_columns,
     criterion_for_rows=None,
     topics_length=None,
-    min_occ_per_topic=None,
-    min_citations_per_topic=None,
+    topic_min_occ=None,
+    topic_min_citations=None,
     directory="./",
     database="documents",
     start_year=None,
@@ -51,8 +51,8 @@ def vantagepoint__occ_matrix(
         criterion_for_columns=criterion_for_columns,
         criterion_for_rows=criterion_for_rows,
         topics_length=topics_length,
-        min_occ_per_topic=min_occ_per_topic,
-        min_citations_per_topic=min_citations_per_topic,
+        topic_min_occ=topic_min_occ,
+        topic_min_citations=topic_min_citations,
         directory=directory,
         database=database,
         start_year=start_year,

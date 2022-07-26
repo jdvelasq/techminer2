@@ -22,7 +22,7 @@ The plot is based on the SVD technique used in T-LAB's comparative analysis.
 >>> from techminer2 import tlab__svd_of_co_occ_matrix
 >>> svd = tlab__svd_of_co_occ_matrix(
 ...     criterion='author_keywords',
-...     min_occ_per_topic=5,    
+...     topic_min_occ=5,    
 ...     directory=directory,
 ... )
 
@@ -62,8 +62,8 @@ class _Result:
 def tlab__svd_of_co_occ_matrix(
     criterion,
     topics_length=50,
-    min_occ_per_topic=None,
-    min_citations_per_topic=None,
+    topic_min_occ=None,
+    topic_min_citations=None,
     dim_x=0,
     dim_y=1,
     svd__n_iter=5,
@@ -80,8 +80,8 @@ def tlab__svd_of_co_occ_matrix(
     matrix = vantagepoint__co_occ_matrix(
         criterion=criterion,
         topics_length=topics_length,
-        min_occ_per_topic=min_occ_per_topic,
-        min_citations_per_topic=min_citations_per_topic,
+        topic_min_occ=topic_min_occ,
+        topic_min_citations=topic_min_citations,
         directory=directory,
         database=database,
         start_year=start_year,

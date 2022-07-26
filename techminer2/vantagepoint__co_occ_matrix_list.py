@@ -9,7 +9,7 @@ Co-occurrence Matrix List
 
 >>> vantagepoint__co_occ_matrix_list(
 ...    criterion='author_keywords',
-...    min_occ_per_topic=4,
+...    topic_min_occ=4,
 ...    directory=directory,
 ... )
                 row                          column  OCC
@@ -72,8 +72,8 @@ from ._read_records import read_records
 def vantagepoint__co_occ_matrix_list(
     criterion,
     topics_length=None,
-    min_occ_per_topic=None,
-    min_citations_per_topic=None,
+    topic_min_occ=None,
+    topic_min_citations=None,
     directory="./",
     database="documents",
     start_year=None,
@@ -98,8 +98,8 @@ def vantagepoint__co_occ_matrix_list(
 
     matrix_list = _select_topics_by_occ_and_citations_and_topic_length(
         matrix_list=matrix_list,
-        min_occ_per_topic=min_occ_per_topic,
-        min_citations_per_topic=min_citations_per_topic,
+        topic_min_occ=topic_min_occ,
+        topic_min_citations=topic_min_citations,
         topics_length=topics_length,
         criterion=criterion,
         directory=directory,
@@ -188,8 +188,8 @@ def _add_counters_to_items(
 
 def _select_topics_by_occ_and_citations_and_topic_length(
     matrix_list,
-    min_occ_per_topic,
-    min_citations_per_topic,
+    topic_min_occ,
+    topic_min_citations,
     topics_length,
     criterion,
     directory,
@@ -207,10 +207,10 @@ def _select_topics_by_occ_and_citations_and_topic_length(
         **filters,
     )
 
-    if min_occ_per_topic is not None:
-        indicators = indicators[indicators.OCC >= min_occ_per_topic]
-    if min_citations_per_topic is not None:
-        indicators = indicators[indicators.global_citations >= min_citations_per_topic]
+    if topic_min_occ is not None:
+        indicators = indicators[indicators.OCC >= topic_min_occ]
+    if topic_min_citations is not None:
+        indicators = indicators[indicators.global_citations >= topic_min_citations]
 
     indicators = indicators.sort_values(
         ["OCC", "global_citations", "local_citations"],

@@ -15,8 +15,8 @@ TEXTLEN = 40
 def bibliometrix__dynamics(
     criterion,
     topics_length=10,
-    min_occ_per_topic=None,
-    min_citations_per_topic=0,
+    topic_min_occ=None,
+    topic_min_citations=0,
     directory="./",
     plot=True,
     title=None,
@@ -67,11 +67,11 @@ def bibliometrix__dynamics(
         ascending=[False, False, False],
     )
 
-    if min_occ_per_topic is not None:
-        selected_topics = selected_topics[selected_topics["OCC"] >= min_occ_per_topic]
-    if min_citations_per_topic is not None:
+    if topic_min_occ is not None:
+        selected_topics = selected_topics[selected_topics["OCC"] >= topic_min_occ]
+    if topic_min_citations is not None:
         selected_topics = selected_topics[
-            selected_topics["global_citations"] >= min_citations_per_topic
+            selected_topics["global_citations"] >= topic_min_citations
         ]
     selected_topics = selected_topics.head(topics_length)
 

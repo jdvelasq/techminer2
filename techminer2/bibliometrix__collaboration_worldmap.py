@@ -28,8 +28,8 @@ def bibliometrix__collaboration_worldmap(
     collaboration = vantagepoint__co_occ_matrix_list(
         criterion="countries",
         topics_length=None,
-        min_occ_per_topic=None,
-        min_citations_per_topic=None,
+        topic_min_occ=None,
+        topic_min_citations=None,
         directory=directory,
         database="documents",
     )

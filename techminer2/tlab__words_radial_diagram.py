@@ -40,8 +40,8 @@ def tlab__words_radial_diagram(
         criterion=column,
         row=None,
         topics_length=None,
-        min_occ_per_topic=None,
-        min_citations_per_topic=None,
+        topic_min_occ=None,
+        topic_min_citations=None,
         directory=directory,
         database=database,
     )

@@ -23,8 +23,8 @@ from .bibliometrix__dynamics import bibliometrix__dynamics
 
 def bibliometrix__source_dynamics(
     topics_length=10,
-    min_occ_per_topic=None,
-    min_citations_per_topic=0,
+    topic_min_occ=None,
+    topic_min_citations=0,
     directory="./",
     title="Source Dynamics",
     plot=True,
@@ -38,8 +38,8 @@ def bibliometrix__source_dynamics(
     return bibliometrix__dynamics(
         criterion="source_abbr",
         topics_length=topics_length,
-        min_occ_per_topic=min_occ_per_topic,
-        min_citations_per_topic=min_citations_per_topic,
+        topic_min_occ=topic_min_occ,
+        topic_min_citations=topic_min_citations,
         directory=directory,
         plot=plot,
         title=title,

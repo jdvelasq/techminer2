@@ -9,7 +9,7 @@ Network Communities
 >>> from techminer2 import *
 >>> matrix_list = co_occ_matrix_list(
 ...    criterion='author_keywords',
-...    min_occ_per_topic=3,
+...    topic_min_occ=3,
 ...    directory=directory,
 ... )
 

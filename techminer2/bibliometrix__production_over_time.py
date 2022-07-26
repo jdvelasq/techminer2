@@ -14,8 +14,8 @@ TEXTLEN = 40
 def bibliometrix__production_over_time(
     criterion,
     topics_length=10,
-    min_occ_per_topic=None,
-    min_citations_per_topic=0,
+    topic_min_occ=None,
+    topic_min_citations=0,
     directory="./",
     title=None,
     metric="OCC",
@@ -29,8 +29,8 @@ def bibliometrix__production_over_time(
     indicators_by_year = _compute_production_over_time(
         criterion=criterion,
         topics_length=topics_length,
-        min_occ_per_topic=min_occ_per_topic,
-        min_citations_per_topic=min_citations_per_topic,
+        topic_min_occ=topic_min_occ,
+        topic_min_citations=topic_min_citations,
         directory=directory,
         database=database,
         start_year=start_year,
@@ -120,8 +120,8 @@ def bibliometrix__production_over_time(
 def _compute_production_over_time(
     criterion,
     topics_length,
-    min_occ_per_topic,
-    min_citations_per_topic,
+    topic_min_occ,
+    topic_min_citations,
     directory,
     database,
     start_year,
@@ -149,11 +149,11 @@ def _compute_production_over_time(
         **filters,
     )
 
-    if min_occ_per_topic is not None:
-        selected_terms = selected_terms[selected_terms["OCC"] >= min_occ_per_topic]
-    if min_citations_per_topic is not None:
+    if topic_min_occ is not None:
+        selected_terms = selected_terms[selected_terms["OCC"] >= topic_min_occ]
+    if topic_min_citations is not None:
         selected_terms = selected_terms[
-            selected_terms["global_citations"] >= min_citations_per_topic
+            selected_terms["global_citations"] >= topic_min_citations
         ]
 
     selected_terms = selected_terms.head(topics_length)

@@ -58,7 +58,7 @@ from .bibliometrix__co_occurrence_network import bibliometrix__co_occurrence_net
 def bibliometrix__thematic_map(
     criterion,
     topics_length=None,
-    min_occ_per_topic=None,
+    topic_min_occ=None,
     method="louvain",
     nx_k=0.5,
     nx_iterations=10,
@@ -74,7 +74,7 @@ def bibliometrix__thematic_map(
     return bibliometrix__co_occurrence_network(
         criterion=criterion,
         topics_length=topics_length,
-        min_occ_per_topic=min_occ_per_topic,
+        topic_min_occ=topic_min_occ,
         normalization="association",
         method=method,
         nx_k=nx_k,

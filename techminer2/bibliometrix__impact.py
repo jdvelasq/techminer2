@@ -16,8 +16,8 @@ def bibliometrix__impact(
     criterion,
     impact_measure="h_index",
     topics_length=20,
-    min_occ_per_topic=None,
-    min_citations_per_topic=None,
+    topic_min_occ=None,
+    topic_min_citations=None,
     directory="./",
     title=None,
     plot="cleveland",
@@ -47,12 +47,10 @@ def bibliometrix__impact(
         **filters,
     )
 
-    if min_occ_per_topic is not None:
-        indicators = indicators[indicators["OCC"] >= min_occ_per_topic]
-    if min_citations_per_topic is not None:
-        indicators = indicators[
-            indicators["global_citations"] >= min_citations_per_topic
-        ]
+    if topic_min_occ is not None:
+        indicators = indicators[indicators["OCC"] >= topic_min_occ]
+    if topic_min_citations is not None:
+        indicators = indicators[indicators["global_citations"] >= topic_min_citations]
 
     indicators = indicators.sort_values(by=impact_measure, ascending=False)
     indicators = indicators.head(topics_length)

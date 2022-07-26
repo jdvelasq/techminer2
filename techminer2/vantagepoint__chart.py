@@ -18,8 +18,8 @@ def vantagepoint__chart(
     start_year=None,
     end_year=None,
     topics_length=20,
-    min_occ_per_topic=None,
-    min_citations_per_topic=0,
+    topic_min_occ=None,
+    topic_min_citations=0,
     custom_topics=None,
     title=None,
     plot="bar",
@@ -54,11 +54,11 @@ def vantagepoint__chart(
 
     if custom_topics is None:
         custom_topics = indicators.copy()
-        if min_occ_per_topic is not None:
-            custom_topics = custom_topics[custom_topics["OCC"] >= min_occ_per_topic]
-        if min_citations_per_topic is not None:
+        if topic_min_occ is not None:
+            custom_topics = custom_topics[custom_topics["OCC"] >= topic_min_occ]
+        if topic_min_citations is not None:
             custom_topics = custom_topics[
-                custom_topics["global_citations"] >= min_citations_per_topic
+                custom_topics["global_citations"] >= topic_min_citations
             ]
         custom_topics = custom_topics.index.copy()
         custom_topics = custom_topics[:topics_length]

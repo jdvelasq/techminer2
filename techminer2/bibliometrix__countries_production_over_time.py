@@ -34,8 +34,8 @@ class _Results:
 
 def bibliometrix__countries_production_over_time(
     topics_length=10,
-    min_occ_per_topic=None,
-    min_citations_per_topic=0,
+    topic_min_occ=None,
+    topic_min_citations=0,
     directory="./",
     database="documents",
     start_year=None,
@@ -49,8 +49,8 @@ def bibliometrix__countries_production_over_time(
     results.plot_ = bibliometrix__production_over_time(
         criterion="countries",
         topics_length=topics_length,
-        min_occ_per_topic=min_occ_per_topic,
-        min_citations_per_topic=min_citations_per_topic,
+        topic_min_occ=topic_min_occ,
+        topic_min_citations=topic_min_citations,
         directory=directory,
         title="Country' production over time",
         metric="OCC",

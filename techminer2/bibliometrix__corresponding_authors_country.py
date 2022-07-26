@@ -49,8 +49,8 @@ class _Results:
 
 def bibliometrix__corresponding_authors_country(
     topics_length=20,
-    min_occ_per_topic=None,
-    min_citations_per_topic=None,
+    topic_min_occ=None,
+    topic_min_citations=None,
     directory="./",
     database="documents",
     start_year=None,
@@ -68,10 +68,10 @@ def bibliometrix__corresponding_authors_country(
         **filters,
     )
 
-    if min_occ_per_topic is not None:
-        table = table[table.OCC >= min_occ_per_topic]
-    if min_citations_per_topic is not None:
-        table = table[table.global_citations >= min_citations_per_topic]
+    if topic_min_occ is not None:
+        table = table[table.OCC >= topic_min_occ]
+    if topic_min_citations is not None:
+        table = table[table.global_citations >= topic_min_citations]
     table = table.head(topics_length)
 
     results.table_ = table

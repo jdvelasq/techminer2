@@ -1,5 +1,5 @@
 """
-Word Cloud
+Word Cloud (ok!)
 ===============================================================================
 
 
@@ -62,6 +62,31 @@ Word Cloud
     :align: center
 
 
+**Filters (previous search results).**
+
+>>> from techminer2 import scientopy__word_cloud
+>>> file_name = "sphinx/images/scientopy__word_cloud-5.png"
+>>> scientopy__word_cloud(
+...     criterion='author_keywords',
+...     custom_topics=[
+...         "fintech",
+...         "blockchain",
+...         "financial regulation",
+...         "machine learning",
+...         "big data",
+...         "cryptocurrency",
+...     ],
+...     directory=directory,
+...     countries=["United States"],
+... ).savefig(file_name)
+
+.. image:: ../images/scientopy__word_cloud-5.png
+    :width: 900px
+    :align: center
+
+
+
+
 """
 from ._indicators.indicators_by_topic import indicators_by_topic
 from ._plots.word_cloud_for_indicators import word_cloud_for_indicators
@@ -70,15 +95,18 @@ from .scientopy__bar import _filter_indicators
 
 def scientopy__word_cloud(
     criterion,
-    start_year=None,
-    end_year=None,
     topics_length=50,
+    topic_min_occ=None,
+    topic_min_citations=None,
     custom_topics=None,
+    #
     title=None,
+    figsize=(12, 12),
+    #
     directory="./",
     database="documents",
-    #
-    figsize=(12, 12),
+    start_year=None,
+    end_year=None,
     **filters,
 ):
     """Plots a word cloud from a dataframe."""
@@ -91,6 +119,11 @@ def scientopy__word_cloud(
         end_year=end_year,
         **filters,
     )
+
+    if topic_min_occ is not None:
+        indicators = indicators[indicators.OCC >= topic_min_occ]
+    if topic_min_citations is not None:
+        indicators = indicators[indicators.global_citations >= topic_min_citations]
 
     indicators = _filter_indicators(
         indicators=indicators,

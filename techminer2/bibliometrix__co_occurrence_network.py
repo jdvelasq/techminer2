@@ -76,7 +76,7 @@ class _Results:
 def bibliometrix__co_occurrence_network(
     criterion,
     topics_length=None,
-    min_occ_per_topic=None,
+    topic_min_occ=None,
     normalization="association",
     method="louvain",
     nx_k=0.5,
@@ -112,8 +112,8 @@ def bibliometrix__co_occurrence_network(
     matrix = vantagepoint__co_occ_matrix(
         criterion=criterion,
         topics_length=topics_length,
-        min_occ_per_topic=min_occ_per_topic,
-        min_citations_per_topic=0,
+        topic_min_occ=topic_min_occ,
+        topic_min_citations=0,
         directory=directory,
         database=database,
         start_year=start_year,

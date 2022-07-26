@@ -11,7 +11,7 @@ Occurrence Matrix List
 >>> vantagepoint__occ_matrix_list(
 ...    criterion_for_columns='author_keywords',
 ...    criterion_for_rows='authors',
-...    min_occ_per_topic=4,
+...    topic_min_occ=4,
 ...    directory=directory,
 ... )
                   row                        column  OCC
@@ -88,8 +88,8 @@ def vantagepoint__occ_matrix_list(
     criterion_for_columns,
     criterion_for_rows,
     topics_length=None,
-    min_occ_per_topic=None,
-    min_citations_per_topic=None,
+    topic_min_occ=None,
+    topic_min_citations=None,
     directory="./",
     database="documents",
     start_year=None,
@@ -114,8 +114,8 @@ def vantagepoint__occ_matrix_list(
 
     matrix_list = _select_topics_by_occ_and_citations_and_topic_length(
         matrix_list=matrix_list,
-        min_occ_per_topic=min_occ_per_topic,
-        min_citations_per_topic=min_citations_per_topic,
+        topic_min_occ=topic_min_occ,
+        topic_min_citations=topic_min_citations,
         topics_length=topics_length,
         criterion_for_columns=criterion_for_columns,
         criterion_for_rows=criterion_for_rows,
@@ -189,8 +189,8 @@ def _add_counters_to_items(
 
 def _select_topics_by_occ_and_citations_and_topic_length(
     matrix_list,
-    min_occ_per_topic,
-    min_citations_per_topic,
+    topic_min_occ,
+    topic_min_citations,
     topics_length,
     criterion_for_columns,
     criterion_for_rows,
@@ -211,12 +211,10 @@ def _select_topics_by_occ_and_citations_and_topic_length(
             **filters,
         )
 
-        if min_occ_per_topic is not None:
-            indicators = indicators[indicators.OCC >= min_occ_per_topic]
-        if min_citations_per_topic is not None:
-            indicators = indicators[
-                indicators.global_citations >= min_citations_per_topic
-            ]
+        if topic_min_occ is not None:
+            indicators = indicators[indicators.OCC >= topic_min_occ]
+        if topic_min_citations is not None:
+            indicators = indicators[indicators.global_citations >= topic_min_citations]
 
         indicators = indicators.sort_values(
             ["OCC", "global_citations", "local_citations"],

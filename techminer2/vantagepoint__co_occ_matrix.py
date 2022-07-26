@@ -8,7 +8,7 @@ Co-occurrence Matrix
 
 >>> vantagepoint__co_occ_matrix(
 ...    criterion='author_keywords',
-...    min_occ_per_topic=4,
+...    topic_min_occ=4,
 ...    directory=directory,
 ... )
 column                          regtech 69:461  ...  suptech 04:003
@@ -47,8 +47,8 @@ from .vantagepoint__co_occ_matrix_list import vantagepoint__co_occ_matrix_list
 def vantagepoint__co_occ_matrix(
     criterion,
     topics_length=None,
-    min_occ_per_topic=None,
-    min_citations_per_topic=None,
+    topic_min_occ=None,
+    topic_min_citations=None,
     directory="./",
     database="documents",
     start_year=None,
@@ -60,8 +60,8 @@ def vantagepoint__co_occ_matrix(
     matrix_list = vantagepoint__co_occ_matrix_list(
         criterion=criterion,
         topics_length=topics_length,
-        min_occ_per_topic=min_occ_per_topic,
-        min_citations_per_topic=min_citations_per_topic,
+        topic_min_occ=topic_min_occ,
+        topic_min_citations=topic_min_citations,
         directory=directory,
         database=database,
         start_year=start_year,
