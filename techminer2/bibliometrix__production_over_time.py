@@ -14,6 +14,8 @@ TEXTLEN = 40
 def bibliometrix__production_over_time(
     criterion,
     topics_length=10,
+    min_occ_per_topic=None,
+    min_citations_per_topic=0,
     directory="./",
     title=None,
     metric="OCC",
@@ -27,6 +29,8 @@ def bibliometrix__production_over_time(
     indicators_by_year = _compute_production_over_time(
         criterion=criterion,
         topics_length=topics_length,
+        min_occ_per_topic=min_occ_per_topic,
+        min_citations_per_topic=min_citations_per_topic,
         directory=directory,
         database=database,
         start_year=start_year,
@@ -52,6 +56,7 @@ def bibliometrix__production_over_time(
         .str.split(":")
         .map(lambda x: x[0])
     )
+
     indicators_by_year = indicators_by_year.sort_values(
         by=[
             "global_occ",
@@ -115,6 +120,8 @@ def bibliometrix__production_over_time(
 def _compute_production_over_time(
     criterion,
     topics_length,
+    min_occ_per_topic,
+    min_citations_per_topic,
     directory,
     database,
     start_year,
@@ -140,7 +147,16 @@ def _compute_production_over_time(
         start_year=start_year,
         end_year=end_year,
         **filters,
-    ).head(topics_length)
+    )
+
+    if min_occ_per_topic is not None:
+        selected_terms = selected_terms[selected_terms["OCC"] >= min_occ_per_topic]
+    if min_citations_per_topic is not None:
+        selected_terms = selected_terms[
+            selected_terms["global_citations"] >= min_citations_per_topic
+        ]
+
+    selected_terms = selected_terms.head(topics_length)
 
     terms = selected_terms.index.to_list()
 

@@ -8,7 +8,7 @@ Most Global Cited Sources
 
 >>> from techminer2 import bibliometrix__most_global_cited_sources
 >>> bibliometrix__most_global_cited_sources(
-...     directory,
+...     directory=directory,
 ...     topics_length=20,
 ...     plot="cleveland",
 ... ).write_html(file_name)
@@ -24,6 +24,8 @@ from .vantagepoint__chart import vantagepoint__chart
 def bibliometrix__most_global_cited_sources(
     directory="./",
     topics_length=20,
+    min_occ_per_topic=None,
+    min_citations_per_topic=0,
     plot="cleveland",
     database="documents",
     start_year=None,
@@ -40,8 +42,8 @@ def bibliometrix__most_global_cited_sources(
         start_year=start_year,
         end_year=end_year,
         topics_length=topics_length,
-        min_occ=None,
-        max_occ=None,
+        min_occ_per_topic=min_occ_per_topic,
+        min_citations_per_topic=min_citations_per_topic,
         custom_topics=None,
         title="Most Global Cited Sources",
         plot=plot,

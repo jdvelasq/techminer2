@@ -26,6 +26,8 @@ from .bibliometrix__dynamics import bibliometrix__dynamics
 
 def bibliometrix__country_dynamics(
     topics_length=5,
+    min_occ_per_topic=None,
+    min_citations_per_topic=0,
     directory="./",
     title="Country Dynamics",
     plot=True,
@@ -39,6 +41,8 @@ def bibliometrix__country_dynamics(
     return bibliometrix__dynamics(
         criterion="countries",
         topics_length=topics_length,
+        min_occ_per_topic=min_occ_per_topic,
+        min_citations_per_topic=min_citations_per_topic,
         directory=directory,
         plot=plot,
         title=title,

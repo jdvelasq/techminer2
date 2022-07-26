@@ -6,6 +6,7 @@ import numpy as np
 import pandas as pd
 import plotly.express as px
 
+from ._indicators.indicators_by_topic import indicators_by_topic
 from ._indicators.indicators_by_topic_per_year import indicators_by_topic_per_year
 
 TEXTLEN = 40
@@ -14,6 +15,8 @@ TEXTLEN = 40
 def bibliometrix__dynamics(
     criterion,
     topics_length=10,
+    min_occ_per_topic=None,
+    min_citations_per_topic=0,
     directory="./",
     plot=True,
     title=None,
@@ -51,10 +54,31 @@ def bibliometrix__dynamics(
     indicators = indicators.sort_index()
 
     # top items
+    selected_topics = indicators_by_topic(
+        directory=directory,
+        criterion=criterion,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
+    )
+    selected_topics = selected_topics.sort_values(
+        by=["OCC", "global_citations", "local_citations"],
+        ascending=[False, False, False],
+    )
+
+    if min_occ_per_topic is not None:
+        selected_topics = selected_topics[selected_topics["OCC"] >= min_occ_per_topic]
+    if min_citations_per_topic is not None:
+        selected_topics = selected_topics[
+            selected_topics["global_citations"] >= min_citations_per_topic
+        ]
+    selected_topics = selected_topics.head(topics_length)
+
     occ = indicators.sum(axis=0)
     occ = occ.sort_values(ascending=False)
 
-    indicators = indicators[occ.index[:topics_length]]
+    indicators = indicators[selected_topics.index]
 
     # cumsum
     indicators = indicators.cumsum()
