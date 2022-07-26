@@ -17,7 +17,7 @@ def bibliometrix__impact(
     impact_measure="h_index",
     topics_length=20,
     min_occ_per_topic=None,
-    min_citations_per_topic=0,
+    min_citations_per_topic=None,
     directory="./",
     title=None,
     plot="cleveland",

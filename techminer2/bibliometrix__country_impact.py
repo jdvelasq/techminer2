@@ -28,6 +28,8 @@ from .bibliometrix__impact import bibliometrix__impact
 def bibliometrix__country_impact(
     impact_measure="h_index",
     topics_length=20,
+    min_occ_per_topic=None,
+    min_citations_per_topic=None,
     directory="./",
     database="documents",
     start_year=None,
@@ -40,6 +42,8 @@ def bibliometrix__country_impact(
         criterion="countries",
         impact_measure=impact_measure,
         topics_length=topics_length,
+        min_occ_per_topic=min_occ_per_topic,
+        min_citations_per_topic=min_citations_per_topic,
         directory=directory,
         title="Country Local Impact by " + impact_measure.replace("_", " ").title(),
         database=database,

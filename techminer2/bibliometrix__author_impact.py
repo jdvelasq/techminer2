@@ -25,6 +25,8 @@ from .bibliometrix__impact import bibliometrix__impact
 def bibliometrix__author_impact(
     impact_measure="h_index",
     topics_length=20,
+    min_occ_per_topic=0,
+    min_citations_per_topic=0,
     directory="./",
     database="documents",
     start_year=None,
@@ -37,6 +39,8 @@ def bibliometrix__author_impact(
         criterion="authors",
         impact_measure=impact_measure,
         topics_length=topics_length,
+        min_occ_per_topic=min_occ_per_topic,
+        min_citations_per_topic=min_citations_per_topic,
         directory=directory,
         title="Author Local Impact by " + impact_measure.replace("_", " ").title(),
         database=database,

@@ -92,7 +92,7 @@ def bibliometrix__co_authorship_network(
     criterion,
     topics_length=None,
     min_occ_per_topic=None,
-    min_citations_per_topic=0,
+    min_citations_per_topic=None,
     normalization="association",
     method="louvain",
     nx_k=0.5,

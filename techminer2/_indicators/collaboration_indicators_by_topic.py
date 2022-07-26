@@ -58,6 +58,8 @@ def collaboration_indicators_by_topic(
         [
             criterion,
             "OCC",
+            "global_citations",
+            "local_citations",
             "single_publication",
             "multiple_publication",
             "article",
@@ -71,6 +73,8 @@ def collaboration_indicators_by_topic(
     indicators = exploded.groupby(criterion, as_index=False).agg(
         {
             "OCC": np.sum,
+            "global_citations": np.sum,
+            "local_citations": np.sum,
             "single_publication": np.sum,
             "multiple_publication": np.sum,
         }
@@ -81,6 +85,9 @@ def collaboration_indicators_by_topic(
     ]
 
     indicators = indicators.set_index(criterion)
-    indicators = indicators.sort_values(by=["OCC"], ascending=False)
+    indicators = indicators.sort_values(
+        by=["OCC", "global_citations", "local_citations"],
+        ascending=[False, False, False],
+    )
 
     return indicators

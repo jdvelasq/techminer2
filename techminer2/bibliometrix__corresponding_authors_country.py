@@ -49,6 +49,8 @@ class _Results:
 
 def bibliometrix__corresponding_authors_country(
     topics_length=20,
+    min_occ_per_topic=None,
+    min_citations_per_topic=None,
     directory="./",
     database="documents",
     start_year=None,
@@ -58,14 +60,23 @@ def bibliometrix__corresponding_authors_country(
     """Corresponding Author's Country"""
 
     results = _Results()
-    results.table_ = _make_table(
+    table = _make_table(
         directory=directory,
         database=database,
         start_year=start_year,
         end_year=end_year,
         **filters,
     )
-    results.plot_ = _make_plot(results.table_, topics_length)
+
+    if min_occ_per_topic is not None:
+        table = table[table.OCC >= min_occ_per_topic]
+    if min_citations_per_topic is not None:
+        table = table[table.global_citations >= min_citations_per_topic]
+    table = table.head(topics_length)
+
+    results.table_ = table
+    table = table.reset_index()
+    results.plot_ = _make_plot(table)
     return results
 
 
@@ -94,10 +105,7 @@ def _make_table(
     return indicators
 
 
-def _make_plot(indicators, topics_length):
-
-    indicators = indicators.head(topics_length)
-    indicators = indicators.reset_index()
+def _make_plot(indicators):
 
     indicators = indicators.melt(
         id_vars="countries", value_vars=["single_publication", "multiple_publication"]
