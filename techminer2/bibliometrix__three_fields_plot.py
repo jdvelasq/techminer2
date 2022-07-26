@@ -9,11 +9,11 @@ Three Fields Plot
 >>> from techminer2 import bibliometrix__three_fields_plot
 >>> bibliometrix__three_fields_plot(
 ...     directory=directory,
-...     left_column='authors',
-...     middle_column='countries',
-...     right_column='author_keywords',
-...     top_n_left=2, 
-...     top_n_right=8,
+...     left_criterion='authors',
+...     middle_criterion='countries',
+...     right_criterion='author_keywords',
+...     topics_length_left=2, 
+...     topics_length_right=8,
 ... ).write_html(file_name)
 
 .. raw:: html
@@ -23,31 +23,42 @@ Three Fields Plot
 """
 import plotly.graph_objects as go
 
-from .vantagepoint__co_occ_matrix import vantagepoint__co_occ_matrix
+from .vantagepoint__occ_matrix import vantagepoint__occ_matrix
 
 
 def bibliometrix__three_fields_plot(
-    left_column,
-    middle_column,
-    right_column,
-    top_n_left,
-    top_n_right,
+    left_criterion,
+    middle_criterion,
+    right_criterion,
+    topics_length_left,
+    topics_length_right,
     directory="./",
+    database="documents",
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
     """Sankey plot"""
 
-    matrix_left = vantagepoint__co_occ_matrix(
-        column=middle_column,
-        row=left_column,
-        top_n=top_n_left,
+    matrix_left = vantagepoint__occ_matrix(
+        criterion_for_columns=middle_criterion,
+        criterion_for_rows=left_criterion,
+        topics_length=topics_length_left,
         directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
     )
 
-    matrix_right = vantagepoint__co_occ_matrix(
-        column=right_column,
-        row=middle_column,
-        top_n=top_n_right,
+    matrix_right = vantagepoint__occ_matrix(
+        criterion_for_columns=right_criterion,
+        criterion_for_rows=middle_criterion,
+        topics_length=topics_length_right,
         directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
     )
 
     return _make_sankey_plot(matrix_left, matrix_right)

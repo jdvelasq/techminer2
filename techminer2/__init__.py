@@ -10,10 +10,10 @@ from .bibliometrix__average_citations_per_year import (
     bibliometrix__average_citations_per_year,
 )
 from .bibliometrix__bradford_law import bibliometrix__bradford_law
+from .bibliometrix__co_authorship_network import bibliometrix__co_authorship_network
 from .bibliometrix__co_citation_matrix_list import bibliometrix__co_citation_matrix_list
 from .bibliometrix__co_citation_network import bibliometrix__co_citation_network
 from .bibliometrix__co_occurrence_network import bibliometrix__co_occurrence_network
-from .bibliometrix__co_authorship_network import bibliometrix__co_authorship_network
 from .bibliometrix__collaboration_worldmap import bibliometrix__collaboration_worldmap
 from .bibliometrix__corresponding_authors_country import (
     bibliometrix__corresponding_authors_country,
@@ -137,6 +137,8 @@ from .vantagepoint__heat_map import vantagepoint__heat_map
 from .vantagepoint__line_chart import vantagepoint__line_chart
 from .vantagepoint__list_view import vantagepoint__list_view
 from .vantagepoint__matrix_viewer import vantagepoint__matrix_viewer
+from .vantagepoint__occ_matrix import vantagepoint__occ_matrix
+from .vantagepoint__occ_matrix_list import vantagepoint__occ_matrix_list
 from .vantagepoint__pie_chart import vantagepoint__pie_chart
 from .vantagepoint__record_view import vantagepoint__record_view
 from .vantagepoint__summary_view import vantagepoint__summary_view

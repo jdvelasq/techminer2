@@ -7,173 +7,162 @@ Occurrence Matrix List
 
 **Item selection by occurrence.**
 
->>> from techminer2 import vantagepoint__co_occ_matrix_list
->>> vantagepoint__co_occ_matrix_list(
-...    column='author_keywords',
-...    row='authors',
-...    min_occ=3,
+>>> from techminer2 import vantagepoint__occ_matrix_list
+>>> vantagepoint__occ_matrix_list(
+...    criterion_for_columns='author_keywords',
+...    criterion_for_rows='authors',
+...    min_occ_per_topic=4,
 ...    directory=directory,
 ... )
-                  row                          column  OCC
-0      Arner DW 7:220                  regtech 70:462    6
-1      Arner DW 7:220                  fintech 42:406    5
-2    Buckley RP 6:217                  regtech 70:462    5
-3      Arner DW 7:220     financial regulation 08:091    4
-4    Buckley RP 6:217                  fintech 42:406    4
-5   Zetzsche DA 4:092                  fintech 42:406    4
-6   Zetzsche DA 4:092                  regtech 70:462    4
-7   Barberis JN 4:146                  regtech 70:462    3
-8     Brennan R 3:008           accountability 04:022    3
-9     Brennan R 3:008  data protection officer 03:008    3
-10    Brennan R 3:008                  regtech 70:462    3
-11   Buckley RP 6:217     financial regulation 08:091    3
-12       Ryan P 3:008           accountability 04:022    3
-13       Ryan P 3:008  data protection officer 03:008    3
-14       Ryan P 3:008                  regtech 70:462    3
+                  row                        column  OCC
+0      Arner DW 7:220                regtech 69:461    6
+1      Arner DW 7:220                fintech 42:406    5
+2      Arner DW 7:220             blockchain 18:109    1
+3      Arner DW 7:220  regulatory technology 12:047    1
+4      Arner DW 7:220   financial technology 09:032    1
+5      Arner DW 7:220   financial regulation 08:091    4
+6      Arner DW 7:220     financial services 05:135    1
+7      Arner DW 7:220    financial inclusion 05:068    2
+8      Arner DW 7:220  anti-money laundering 04:030    1
+9      Arner DW 7:220   financial innovation 04:007    1
+10   Buckley RP 6:217                regtech 69:461    5
+11   Buckley RP 6:217                fintech 42:406    4
+12   Buckley RP 6:217             blockchain 18:109    1
+13   Buckley RP 6:217   financial regulation 08:091    3
+14   Buckley RP 6:217     financial services 05:135    1
+15   Buckley RP 6:217    financial inclusion 05:068    2
+16   Buckley RP 6:217  anti-money laundering 04:030    1
+17  Barberis JN 4:146                regtech 69:461    3
+18  Barberis JN 4:146                fintech 42:406    2
+19  Barberis JN 4:146  regulatory technology 12:047    1
+20  Barberis JN 4:146   financial technology 09:032    1
+21  Barberis JN 4:146   financial regulation 08:091    2
+22  Barberis JN 4:146     financial services 05:135    1
+23  Barberis JN 4:146    financial inclusion 05:068    1
+24  Barberis JN 4:146  anti-money laundering 04:030    1
+25  Barberis JN 4:146   financial innovation 04:007    1
+26  Zetzsche DA 4:092                regtech 69:461    4
+27  Zetzsche DA 4:092                fintech 42:406    4
+28  Zetzsche DA 4:092             blockchain 18:109    1
+29  Zetzsche DA 4:092   financial regulation 08:091    2
+30  Zetzsche DA 4:092    financial inclusion 05:068    2
+31  Zetzsche DA 4:092  anti-money laundering 04:030    1
 
-
->>> vantagepoint__co_occ_matrix_list(
-...    column='author_keywords',
-...    min_occ=4,
-...    directory=directory,
-... )
-                                         row             column  OCC
-0                             regtech 70:462     regtech 70:462   70
-1                             fintech 42:406     fintech 42:406   42
-2                             fintech 42:406     regtech 70:462   42
-3                             regtech 70:462     fintech 42:406   42
-4                          blockchain 18:109  blockchain 18:109   18
-..                                       ...                ...  ...
-75                            regtech 70:462     suptech 04:003    4
-76                         regulation 06:120     fintech 42:406    4
-77  regulatory technologies (regtech) 12:047     regtech 70:462    4
-78                            suptech 04:003     regtech 70:462    4
-79                            suptech 04:003     suptech 04:003    4
-<BLANKLINE>
-[80 rows x 3 columns]
 
 
 **Seleccition of top terms.**
 
->>> vantagepoint__co_occ_matrix_list(
-...    column='author_keywords',
-...    row='authors',
-...    top_n=5,
+>>> vantagepoint__occ_matrix_list(
+...    criterion_for_columns='author_keywords',
+...    criterion_for_rows='authors',
+...    topics_length=5,
 ...    directory=directory,
 ... )
-                  row                                    column  OCC
-0      Arner DW 7:220                            regtech 70:462    6
-1      Arner DW 7:220                            fintech 42:406    5
-2    Buckley RP 6:217                            regtech 70:462    5
-3    Buckley RP 6:217                            fintech 42:406    4
-4   Zetzsche DA 4:092                            fintech 42:406    4
-5   Zetzsche DA 4:092                            regtech 70:462    4
-6   Barberis JN 4:146                            regtech 70:462    3
-7     Brennan R 3:008                            regtech 70:462    3
-8   Barberis JN 4:146                            fintech 42:406    2
-9      Arner DW 7:220                         blockchain 18:109    1
-10     Arner DW 7:220  regulatory technologies (regtech) 12:047    1
-11  Barberis JN 4:146  regulatory technologies (regtech) 12:047    1
-12   Buckley RP 6:217                         blockchain 18:109    1
-13  Zetzsche DA 4:092                         blockchain 18:109    1
+                  row                        column  OCC
+0      Arner DW 7:220                regtech 69:461    6
+1      Arner DW 7:220                fintech 42:406    5
+2      Arner DW 7:220             blockchain 18:109    1
+3      Arner DW 7:220  regulatory technology 12:047    1
+4    Buckley RP 6:217                regtech 69:461    5
+5    Buckley RP 6:217                fintech 42:406    4
+6    Buckley RP 6:217             blockchain 18:109    1
+7   Barberis JN 4:146                regtech 69:461    3
+8   Barberis JN 4:146                fintech 42:406    2
+9   Barberis JN 4:146  regulatory technology 12:047    1
+10  Zetzsche DA 4:092                regtech 69:461    4
+11  Zetzsche DA 4:092                fintech 42:406    4
+12  Zetzsche DA 4:092             blockchain 18:109    1
+13       Ryan P 3:008                regtech 69:461    3
 
-
->>> vantagepoint__co_occ_matrix_list(
-...    column='author_keywords',
-...    top_n=5,
-...    directory=directory,
-... )
-                                         row  ... OCC
-0                             regtech 70:462  ...  70
-1                             fintech 42:406  ...  42
-2                             fintech 42:406  ...  42
-3                             regtech 70:462  ...  42
-4                          blockchain 18:109  ...  18
-5                          blockchain 18:109  ...  17
-6                             regtech 70:462  ...  17
-7                          blockchain 18:109  ...  14
-8                             fintech 42:406  ...  14
-9             artificial intelligence 13:065  ...  13
-10  regulatory technologies (regtech) 12:047  ...  12
-11            artificial intelligence 13:065  ...  10
-12                            regtech 70:462  ...  10
-13            artificial intelligence 13:065  ...   8
-14                            fintech 42:406  ...   8
-15                            regtech 70:462  ...   4
-16  regulatory technologies (regtech) 12:047  ...   4
-17                            fintech 42:406  ...   3
-18  regulatory technologies (regtech) 12:047  ...   3
-19            artificial intelligence 13:065  ...   2
-20            artificial intelligence 13:065  ...   2
-21                         blockchain 18:109  ...   2
-22  regulatory technologies (regtech) 12:047  ...   2
-<BLANKLINE>
-[23 rows x 3 columns]
 
 
 """
-import pandas as pd
-
+from ._indicators.indicators_by_topic import indicators_by_topic
 from ._items2counters import items2counters
 from ._load_stopwords import load_stopwords
 from ._read_records import read_records
+from .vantagepoint__co_occ_matrix_list import _sort_matrix_list
 
 
-def vantagepoint__co_occ_matrix_list(
-    column,
-    row=None,
-    top_n=None,
-    min_occ=None,
-    max_occ=None,
+def vantagepoint__occ_matrix_list(
+    criterion_for_columns,
+    criterion_for_rows,
+    topics_length=None,
+    min_occ_per_topic=None,
+    min_citations_per_topic=None,
     directory="./",
     database="documents",
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
     """Creates a list of the cells of a co-occurrence matrix."""
 
-    if row is None:
-        row = column
+    if criterion_for_rows == criterion_for_columns:
+        raise ValueError("The criterion for row and column must be different.")
 
-    matrix_list = _create_matrix_list(column, row, directory, database)
+    matrix_list = _create_matrix_list(
+        column=criterion_for_columns,
+        row=criterion_for_rows,
+        directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
+    )
     matrix_list = _remove_stopwords(directory, matrix_list)
-    matrix_list = _remove_terms_by_occ(min_occ, max_occ, matrix_list)
 
-    matrix_list = _add_counters_to_items(
-        column,
-        "column",
-        directory,
-        database,
-        matrix_list,
-    )
-    matrix_list = _add_counters_to_items(
-        row,
-        "row",
-        directory,
-        database,
-        matrix_list,
+    matrix_list = _select_topics_by_occ_and_citations_and_topic_length(
+        matrix_list=matrix_list,
+        min_occ_per_topic=min_occ_per_topic,
+        min_citations_per_topic=min_citations_per_topic,
+        topics_length=topics_length,
+        criterion_for_columns=criterion_for_columns,
+        criterion_for_rows=criterion_for_rows,
+        directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
     )
 
-    matrix_list = _select_top_n_items(top_n, matrix_list, "column")
-    matrix_list = _select_top_n_items(top_n, matrix_list, "row")
+    for criterion, name in [
+        (criterion_for_columns, "column"),
+        (criterion_for_rows, "row"),
+    ]:
+
+        matrix_list = _add_counters_to_items(
+            column=criterion,
+            name=name,
+            directory=directory,
+            database=database,
+            matrix_list=matrix_list,
+            start_year=start_year,
+            end_year=end_year,
+            **filters,
+        )
+
+    matrix_list = _sort_matrix_list(matrix_list)
 
     matrix_list = matrix_list.reset_index(drop=True)
 
     return matrix_list
 
 
-def _select_top_n_items(top_n, matrix_list, column):
+# def _select_top_n_items(top_n, matrix_list, column):
 
-    table = pd.DataFrame({"term": matrix_list[column].drop_duplicates()})
-    table["ranking"] = table.term.str.split()
-    table["ranking"] = table["ranking"].map(lambda x: x[-1])
-    table["name"] = table.term.str.split()
-    table["name"] = table["name"].map(lambda x: x[:-1])
-    table["name"] = table["name"].str.join(" ")
-    table = table.sort_values(["ranking", "name"], ascending=[False, True])
-    table = table.head(top_n)
-    terms = table.term.tolist()
+#     table = pd.DataFrame({"term": matrix_list[column].drop_duplicates()})
+#     table["ranking"] = table.term.str.split()
+#     table["ranking"] = table["ranking"].map(lambda x: x[-1])
+#     table["name"] = table.term.str.split()
+#     table["name"] = table["name"].map(lambda x: x[:-1])
+#     table["name"] = table["name"].str.join(" ")
+#     table = table.sort_values(["ranking", "name"], ascending=[False, True])
+#     table = table.head(top_n)
+#     terms = table.term.tolist()
 
-    matrix_list = matrix_list[matrix_list[column].isin(terms)]
-    return matrix_list
+#     matrix_list = matrix_list[matrix_list[column].isin(terms)]
+#     return matrix_list
 
 
 def _add_counters_to_items(
@@ -198,14 +187,52 @@ def _add_counters_to_items(
     return matrix_list
 
 
-def _remove_terms_by_occ(min_occ, max_occ, matrix_list):
-    if min_occ is not None:
-        matrix_list = matrix_list[matrix_list.OCC >= min_occ]
-    if max_occ is not None:
-        matrix_list = matrix_list[matrix_list.OCC <= max_occ]
-    matrix_list = matrix_list.sort_values(
-        by=["OCC", "row", "column"], ascending=[False, True, True]
-    )
+def _select_topics_by_occ_and_citations_and_topic_length(
+    matrix_list,
+    min_occ_per_topic,
+    min_citations_per_topic,
+    topics_length,
+    criterion_for_columns,
+    criterion_for_rows,
+    directory,
+    database,
+    start_year,
+    end_year,
+    **filters,
+):
+    for criterion in [criterion_for_columns, criterion_for_rows]:
+
+        indicators = indicators_by_topic(
+            criterion=criterion,
+            directory=directory,
+            database=database,
+            start_year=start_year,
+            end_year=end_year,
+            **filters,
+        )
+
+        if min_occ_per_topic is not None:
+            indicators = indicators[indicators.OCC >= min_occ_per_topic]
+        if min_citations_per_topic is not None:
+            indicators = indicators[
+                indicators.global_citations >= min_citations_per_topic
+            ]
+
+        indicators = indicators.sort_values(
+            ["OCC", "global_citations", "local_citations"],
+            ascending=[False, False, False],
+        )
+
+        if topics_length is not None:
+            indicators = indicators.head(topics_length)
+
+        topics = indicators.index.to_list()
+
+        if criterion == criterion_for_columns:
+            matrix_list = matrix_list[matrix_list.column.isin(topics)]
+        else:
+            matrix_list = matrix_list[matrix_list.row.isin(topics)]
+
     return matrix_list
 
 
@@ -216,9 +243,23 @@ def _remove_stopwords(directory, matrix_list):
     return matrix_list
 
 
-def _create_matrix_list(column, row, directory, database):
+def _create_matrix_list(
+    column,
+    row,
+    directory,
+    database,
+    start_year,
+    end_year,
+    **filters,
+):
 
-    records = read_records(directory, database=database, use_filter=True)
+    records = read_records(
+        directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
+    )
 
     matrix_list = records[[column]].copy()
     matrix_list = matrix_list.rename(columns={column: "column"})
