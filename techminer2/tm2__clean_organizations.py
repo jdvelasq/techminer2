@@ -1,17 +1,17 @@
 """
-Clean Institutions
+Clean Organizations
 ===============================================================================
 
-Cleans the institutions columns using the file institutions.txt, located in
+Cleans the organizations columns using the file organizations.txt, located in
 the same directory as the documents.csv file.
 
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import tm2__clean_institutions
->>> tm2__clean_institutions(directory)
---INFO-- Applying thesaurus to institutions
---INFO-- The thesaurus was applied to institutions in all databases
+>>> from techminer2 import tm2__clean_organizations
+>>> tm2__clean_organizations(directory)
+--INFO-- Applying thesaurus to organizatioins
+--INFO-- The thesaurus was applied to organizations in all databases
 
 
 """
@@ -26,7 +26,7 @@ from ._thesaurus import read_textfile
 
 
 def tm2__clean_organizations(directory="./"):
-    """Apply institutions thesaurus."""
+    """Apply 'organizations.txt' thesaurus."""
 
     # Read the thesaurus
     thesaurus_file = os.path.join(directory, "processed", "organizations.txt")
@@ -54,14 +54,14 @@ def tm2__clean_organizations(directory="./"):
         )
         #
         records = records.assign(
-            institutions=records.raw_organizations.map(
+            organizations=records.raw_organizations.map(
                 lambda x: sorted(set(x)) if isinstance(x, list) else x
             )
         )
         records = records.assign(
             raw_organizations=records.raw_organizations.str.join("; ")
         )
-        records = records.assign(organization=records.institutions.str.join("; "))
+        records = records.assign(organizations=records.organizations.str.join("; "))
         #
         #
         records.to_csv(file, sep=",", encoding="utf-8", index=False)

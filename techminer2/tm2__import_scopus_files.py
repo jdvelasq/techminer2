@@ -7,11 +7,10 @@ Import a scopus file to a working directory.
 >>> directory = "data/regtech/"
 
 >>> from techminer2 import tm2__import_scopus_files
-# >>> tm2__import_scopus_files(
-# ...     directory, 
-# ...     disable_progress_bar=True,
-# ... )
-
+>>> tm2__import_scopus_files(
+...     directory, 
+...     disable_progress_bar=True,
+... )
 --INFO-- Concatenating raw files in data/regtech/raw/cited_by/
 --INFO-- Concatenating raw files in data/regtech/raw/references/
 --INFO-- Concatenating raw files in data/regtech/raw/documents/

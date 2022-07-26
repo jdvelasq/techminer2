@@ -35,8 +35,8 @@ AUTHORS        Authors                                      193.0
                Author appearances                           223.0
                Documents per author                          0.42
                Collaboration index                            1.0
-               Institutions                                 148.0
-               Institutions (1st author)                     82.0
+               Organizations                                148.0
+               Organizations (1st author)                    82.0
                Countries                                     40.0
                Countries (1st author)                        35.0
 KEYWORDS       Raw author keywords                            303
@@ -296,13 +296,13 @@ class _MainInformation:
         ]
         self.authors_stats.loc[10] = [
             "AUTHORS",
-            "Institutions",
-            self.institutions(),
+            "Organizations",
+            self.organizations(),
         ]
         self.authors_stats.loc[11] = [
             "AUTHORS",
-            "Institutions (1st author)",
-            self.institutions_1st_author(),
+            "Organizations (1st author)",
+            self.organizations_1st_author(),
         ]
         self.authors_stats.loc[12] = [
             "AUTHORS",
@@ -384,9 +384,9 @@ class _MainInformation:
         n_authors = len(records)
         return round(n_authors / n_records, 2)
 
-    def institutions(self):
-        if "institutions" in self.records.columns:
-            records = self.records.institutions.copy()
+    def organizations(self):
+        if "organizations" in self.records.columns:
+            records = self.records.organizations.copy()
             records = records.dropna()
             records = records.str.split(";")
             records = records.explode()
@@ -396,9 +396,9 @@ class _MainInformation:
         else:
             return pd.NA
 
-    def institutions_1st_author(self):
-        if "institution_1st_author" in self.records.columns:
-            records = self.records.institution_1st_author.copy()
+    def organizations_1st_author(self):
+        if "organization_1st_author" in self.records.columns:
+            records = self.records.organization_1st_author.copy()
             records = records.dropna()
             records = records.str.split(";")
             records = records.explode()

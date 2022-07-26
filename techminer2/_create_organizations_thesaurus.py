@@ -1,13 +1,15 @@
 """
-Create institutions thesaurus
+Create 'organizations.txt' thesaurus file
 ===============================================================================
 
-Creates a institutions thesaurus from the data in the database.
+Creates a organizations thesaurus from the data in the database.
 
->>> from techminer2 import *
+
 >>> directory = "data/regtech/"
->>> create_institutions_thesaurus(directory)
---INFO-- The data/regtech/processed/institutions.txt thesaurus file was created
+
+>>> from techminer2 import create_organizations_thesaurus
+>>> create_organizations_thesaurus(directory)
+--INFO-- The data/regtech/processed/organizations.txt thesaurus file was created
 
 
 """
@@ -97,7 +99,7 @@ NAMES = [
 
 
 def create_organizations_thesaurus(directory="./"):
-    """Creates an insitutions thesaurus."""
+    """Creates organizations.txt thesaurus file."""
 
     affiliations = _load_affiliations_from_country_thesaurus(directory)
     affiliations = _convert_countries_to_codes(affiliations)
