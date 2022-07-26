@@ -96,21 +96,23 @@ NAMES = [
 ]
 
 
-def create_institutions_thesaurus(directory="./"):
+def create_organizations_thesaurus(directory="./"):
     """Creates an insitutions thesaurus."""
 
     affiliations = _load_affiliations_from_country_thesaurus(directory)
     affiliations = _convert_countries_to_codes(affiliations)
     affiliations["affiliation"] = affiliations["raw_affiliation"]
-    affiliations = _clean_affiliation_names(affiliations)
-    affiliations["institution"] = affiliations["affiliation"]
-    affiliations["institution"] = affiliations["institution"].map(_select_institution)
+    affiliations = _clean_organization_names(affiliations)
+    affiliations["organization"] = affiliations["affiliation"]
+    affiliations["organization"] = affiliations["organization"].map(
+        _select_organization
+    )
 
     _group_and_save(affiliations, directory)
 
 
-def _select_institution(affiliation):
-    """Selects the institution from the affiliation."""
+def _select_organization(affiliation):
+    """Selects the organization from the affiliation."""
 
     affiliation = affiliation.split(",")
     affiliation = [a.strip() for a in affiliation]
@@ -138,23 +140,23 @@ def _select_institution(affiliation):
 def _load_valid_names():
     module_path = os.path.dirname(__file__)
     with open(
-        os.path.join(module_path, "files/institutions.txt"), "rt", encoding="utf-8"
-    ) as f:
-        valid_names = f.readlines()
+        os.path.join(module_path, "files/organizations.txt"), "rt", encoding="utf-8"
+    ) as file:
+        valid_names = file.readlines()
     valid_names = [w.replace("\n", "").lower() for w in valid_names]
     return valid_names
 
 
 def _group_and_save(affiliations, directory):
 
-    affiliations = affiliations[["raw_affiliation", "institution"]]
+    affiliations = affiliations[["raw_affiliation", "organization"]]
 
-    grp = affiliations.groupby(by="institution", as_index=False).agg(
+    grp = affiliations.groupby(by="organization", as_index=False).agg(
         {"raw_affiliation": list}
     )
-    th_dict = {k: v for k, v in zip(grp.institution, grp.raw_affiliation)}
+    th_dict = {k: v for k, v in zip(grp.organization, grp.raw_affiliation)}
 
-    thesaurus_file = os.path.join(directory, "processed", "institutions.txt")
+    thesaurus_file = os.path.join(directory, "processed", "organizations.txt")
 
     Thesaurus(
         th_dict,
@@ -166,7 +168,7 @@ def _group_and_save(affiliations, directory):
     sys.stdout.write(f"--INFO-- The {thesaurus_file} thesaurus file was created\n")
 
 
-def _clean_affiliation_names(affiliations):
+def _clean_organization_names(affiliations):
 
     affiliations = affiliations.copy()
 

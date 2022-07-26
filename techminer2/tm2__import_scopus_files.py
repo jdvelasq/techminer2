@@ -57,8 +57,8 @@ Import a scopus file to a working directory.
 --INFO-- Searching `references` using (title)
 --INFO-- Creating `local_citations` column in references database
 --INFO-- Creating `local_citations` column in documents database
---INFO-- The data/regtech/processed/institutions.txt thesaurus file was created
---INFO-- The data/regtech/processed/institutions.txt thesaurus file was applied to affiliations in all databases
+--INFO-- The data/regtech/processed/organizations.txt thesaurus file was created
+--INFO-- The data/regtech/processed/organizations.txt thesaurus file was applied to affiliations in all databases
 --INFO-- Process finished!!!
 --INFO-- data/regtech/processed/_documents.csv: 94 imported records
 --INFO-- data/regtech/processed/_references.csv: 1213 imported records
@@ -81,11 +81,11 @@ from textblob import TextBlob
 from tqdm import tqdm
 
 from ._create_countries_thesaurus import create_countries_thesaurus
-from ._create_institutions_thesaurus import create_institutions_thesaurus
 from ._create_keywords_thesaurus import create_keywords_thesaurus
+from ._create_organizations_thesaurus import create_organizations_thesaurus
 from .tm2__clean_countries import tm2__clean_countries
-from .tm2__clean_institutions import tm2__clean_institutions
 from .tm2__clean_keywords import tm2__clean_keywords
+from .tm2__clean_organizations import tm2__clean_organizations
 
 
 def tm2__import_scopus_files(
@@ -155,9 +155,9 @@ def tm2__import_scopus_files(
     _create__local_citations__column_in_references_database(directory)
     _create__local_citations__column_in_documents_database(directory)
     #
-    # Institutions ------------------------------------------------------------
-    create_institutions_thesaurus(directory=directory)
-    tm2__clean_institutions(directory=directory)
+    # Organizations ------------------------------------------------------------
+    create_organizations_thesaurus(directory=directory)
+    tm2__clean_organizations(directory=directory)
 
     sys.stdout.write("--INFO-- Process finished!!!\n")
     _report_records(directory)

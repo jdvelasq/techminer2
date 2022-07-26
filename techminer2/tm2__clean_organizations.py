@@ -22,15 +22,14 @@ import sys
 
 import pandas as pd
 
-from .map_ import map_
 from ._thesaurus import read_textfile
 
 
-def tm2__clean_institutions(directory="./"):
+def tm2__clean_organizations(directory="./"):
     """Apply institutions thesaurus."""
 
     # Read the thesaurus
-    thesaurus_file = os.path.join(directory, "processed", "institutions.txt")
+    thesaurus_file = os.path.join(directory, "processed", "organizations.txt")
     thesaurus = read_textfile(thesaurus_file)
     thesaurus = thesaurus.compile_as_dict()
 
@@ -41,28 +40,28 @@ def tm2__clean_institutions(directory="./"):
         records = pd.read_csv(file, encoding="utf-8")
         #
         #
-        records = records.assign(raw_institutions=records.affiliations.str.split(";"))
+        records = records.assign(raw_organizations=records.affiliations.str.split(";"))
         records = records.assign(
-            raw_institutions=records.raw_institutions.map(
+            raw_organizations=records.raw_organizations.map(
                 lambda x: [thesaurus.apply_as_dict(y.strip()) for y in x]
                 if isinstance(x, list)
                 else x
             )
         )
         #
-        records["institution_1st_author"] = records.raw_institutions.map(
+        records["organization_1st_author"] = records.raw_organizations.map(
             lambda w: w[0], na_action="ignore"
         )
         #
         records = records.assign(
-            institutions=records.raw_institutions.map(
+            institutions=records.raw_organizations.map(
                 lambda x: sorted(set(x)) if isinstance(x, list) else x
             )
         )
         records = records.assign(
-            raw_institutions=records.raw_institutions.str.join("; ")
+            raw_organizations=records.raw_organizations.str.join("; ")
         )
-        records = records.assign(institutions=records.institutions.str.join("; "))
+        records = records.assign(organization=records.institutions.str.join("; "))
         #
         #
         records.to_csv(file, sep=",", encoding="utf-8", index=False)

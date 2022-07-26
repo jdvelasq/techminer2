@@ -54,7 +54,7 @@ package developed and tested in Python version 3.6.
     vantagepoint/__index__
     tlab/__index__
     scientopy/__index__
-
+    vosviewer/__index__
 
 
 
