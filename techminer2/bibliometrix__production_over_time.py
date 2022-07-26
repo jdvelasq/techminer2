@@ -35,11 +35,11 @@ def bibliometrix__production_over_time(
     )
 
     indicators_by_year = _add_counters_to_items(
-        criterion,
-        criterion.replace("_", " ").title(),
-        directory,
-        "documents",
-        indicators_by_year,
+        matrix_list=indicators_by_year,
+        column_name=criterion.replace("_", " ").title(),
+        criterion=criterion,
+        directory=directory,
+        database=database,
         start_year=start_year,
         end_year=end_year,
         **filters,

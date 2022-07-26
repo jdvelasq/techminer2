@@ -8,7 +8,7 @@ Sources' Production over Time
 
 >>> from techminer2 import bibliometrix__sources_production_over_time
 >>> bibliometrix__sources_production_over_time(
-...    topics_length=10, 
+...    topics_length=10,
 ...    directory=directory,
 ... ).plot_.write_html(file_name)
 
