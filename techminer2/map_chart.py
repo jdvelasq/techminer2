@@ -9,13 +9,14 @@ Map Chart
 
 >>> file_name = "sphinx/_static/map_chart.html"
 
->>> coc_matrix = co_occ_matrix(
-...     column='author_keywords',
-...     top_n=20,
+>>> from techminer2 import vantagepoint__co_occ_matrix
+>>> coc_matrix = vantagepoint__co_occ_matrix(
+...     criterion='author_keywords',
+...     topics_length=20,
 ...     directory=directory,
 ... )
 
->>> from techminer2.association_index import association_index
+>>> from techminer2._association_index import association_index
 >>> coc_matrix = association_index(coc_matrix, "salton")
 
 >>> decomposed_matrix = TruncatedSVD(
@@ -29,6 +30,7 @@ Map Chart
 ...     index=coc_matrix.index,
 ... )
 
+>>> from techminer2.map_chart import map_chart
 >>> map_chart(
 ...     decomposed_matrix, 
 ...     dim_x=0,
