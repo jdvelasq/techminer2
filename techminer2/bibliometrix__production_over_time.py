@@ -15,7 +15,7 @@ def bibliometrix__production_over_time(
     criterion,
     topics_length=10,
     topic_min_occ=None,
-    topic_min_citations=0,
+    topic_min_citations=None,
     directory="./",
     title=None,
     metric="OCC",
