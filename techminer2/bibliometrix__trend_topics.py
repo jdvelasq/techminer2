@@ -46,7 +46,7 @@ class _Results:
 
 
 def bibliometrix__trend_topics(
-    column,
+    criterion,
     n_words_per_year=5,
     directory="./",
     database="documents",
@@ -57,7 +57,7 @@ def bibliometrix__trend_topics(
     """Trend topics"""
 
     words_by_year = annual_occurrence_matrix(
-        criterion=column,
+        criterion=criterion,
         min_occ=1,
         directory=directory,
         database=database,
@@ -91,7 +91,9 @@ def bibliometrix__trend_topics(
 
     words_by_year = words_by_year[["OCC", "year_q1", "year_med", "year_q3"]]
 
-    global_citations = indicators_by_topic(column, directory=directory).global_citations
+    global_citations = indicators_by_topic(
+        criterion, directory=directory
+    ).global_citations
 
     word2citation = dict(zip(global_citations.index, global_citations.values))
     words_by_year = words_by_year.assign(
