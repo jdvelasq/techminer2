@@ -1,5 +1,5 @@
 """
-Auto-correlation Matrix
+Auto-correlation Matrix (TODO)
 ===============================================================================
 
 Returns an auto-correlation matrix.
@@ -33,17 +33,16 @@ from .vantagepoint__co_occ_matrix import vantagepoint__co_occ_matrix
 
 
 def vantagepoint__auto_corr_matrix(
-    column,
+    criterion,
     method="pearson",
-    top_n=50,
+    topics_length=50,
     directory="./",
     database="documents",
 ):
     """Returns an auto-correlation."""
 
     coc_matrix = vantagepoint__co_occ_matrix(
-        column=column,
-        row=None,
+        criterion=criterion,
         top_n=None,
         min_occ=None,
         max_occ=None,
@@ -51,7 +50,7 @@ def vantagepoint__auto_corr_matrix(
         database=database,
     )
 
-    coc_matrix = _select_top_n_from_columns(matrix=coc_matrix, top_n=top_n)
+    coc_matrix = _select_top_n_from_columns(matrix=coc_matrix, top_n=topics_length)
 
     coc_matrix.columns = coc_matrix.columns.to_list()
 
