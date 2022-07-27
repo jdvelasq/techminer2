@@ -3,15 +3,15 @@ Abstracts Summarization (NO --- requiere pytorch)
 ===============================================================================
 
 
->>> directory = "data/regtech/"
+# >>> directory = "data/regtech/"
 
->>> from techminer2 import tm2__abstractive_summarization
->>> tm2__abstractive_summarization(
-...     criterion="author_keywords",
-...     custom_topics=["blockchain"],
-...     n_abstracts=20,    
-...     directory=directory,
-... )
+# >>> from techminer2 import tm2__abstractive_summarization
+# >>> tm2__abstractive_summarization(
+# ...     criterion="author_keywords",
+# ...     custom_topics=["blockchain"],
+# ...     n_abstracts=20,    
+# ...     directory=directory,
+# ... )
 
 
 """
