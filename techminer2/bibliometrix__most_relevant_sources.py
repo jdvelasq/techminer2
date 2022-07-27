@@ -25,7 +25,7 @@ def bibliometrix__most_relevant_sources(
     directory="./",
     topics_length=20,
     topic_min_occ=None,
-    topic_min_citations=0,
+    topic_min_citations=None,
     plot="cleveland",
     database="documents",
     start_year=None,
