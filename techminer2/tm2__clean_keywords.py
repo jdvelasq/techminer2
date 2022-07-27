@@ -1,5 +1,5 @@
 """
-Clean Keywords
+Clean Keywords (ok!)
 ===============================================================================
 
 Cleans the keywords columns using the `keywords.txt` file.
@@ -9,7 +9,7 @@ Cleans the keywords columns using the `keywords.txt` file.
 
 >>> from techminer2 import tm2__clean_keywords
 >>> tm2__clean_keywords(directory)
-
+--INFO-- Applying `keywords.txt` thesaurus to author/index keywords and abstract/title words
 
 """
 # pylint: disable=no-member
@@ -49,6 +49,7 @@ def tm2__clean_keywords(directory="./"):
             ("raw_index_keywords", "index_keywords"),
             ("raw_title_words", "title_words"),
             ("raw_abstract_words", "abstract_words"),
+            ("raw_words", "words"),
         ]:
 
             if raw_column in data.columns:
