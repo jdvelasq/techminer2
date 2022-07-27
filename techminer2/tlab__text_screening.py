@@ -1,5 +1,5 @@
 """
-Text Screening
+Text Screening (ok!)
 ===============================================================================
 
 
@@ -67,6 +67,7 @@ import textwrap
 
 from ._load_abstracts import load_abstracts
 from ._load_template import load_template
+from ._read_records import read_records
 from ._save_html_report import save_html_report
 from .tlab__concordances import _select_abstracts
 
@@ -75,10 +76,23 @@ def tlab__text_screening(
     search_for,
     top_n=5,
     directory="./",
+    database="documents",
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
     """Checks the occurrence contexts of a given text in the abstract's phrases."""
 
+    records = read_records(
+        directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
+    )
+
     abstracts = load_abstracts(directory)
+    abstracts = abstracts[abstracts.article.isin(records.article)]
     abstracts = _join_phrases(abstracts)
     abstracts = _select_abstracts(abstracts, search_for)
     _create_report(directory, abstracts)
