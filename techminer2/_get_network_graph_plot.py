@@ -30,9 +30,12 @@ def _color_node_points(G, node_trace):
         if adjacencies[1]:
             max_len = list(adjacencies[1].keys())
             max_len = max([len(x) for x in max_len])
-            fmt = "<br> {:>" + str(max_len) + "} {}"
-            for key, value in adjacencies[1].items():
-                text += fmt.format(key, value["weight"])
+            fmt = "<br>  {:>" + str(max_len) + "}"
+            for index, key in enumerate(adjacencies[1].keys()):
+                if index > 30:
+                    text += fmt.format("[...]")
+                    break
+                text += fmt.format(key)
         node_hove_text.append(text)
 
     # node_trace.marker.color = node_adjacencies
