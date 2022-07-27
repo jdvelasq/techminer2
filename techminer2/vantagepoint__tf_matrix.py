@@ -1,5 +1,5 @@
 """
-TF Matrix
+TF Matrix (TODO:)
 ===============================================================================
 
 
@@ -25,62 +25,88 @@ Barberis JN, 2016, NEW ECON WINDOWS, P69                         1  ...         
 import numpy as np
 import pandas as pd
 
+from ._items2counters import items2counters
 from ._load_stopwords import load_stopwords
 from ._read_records import read_records
-from ._items2counters import items2counters
 
 # pylint: disable=too-many-arguments
 
 
 def vantagepoint__tf_matrix(
-    column,
-    min_occ=None,
-    max_occ=None,
+    criterion,
+    topics_length=None,
+    topic_min_occ=None,
+    topic_min_citations=None,
     scheme=None,
     directory="./",
+    database="documents",
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
     """Computes TF Matrix."""
 
-    records = read_records(directory)
+    records = read_records(
+        directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
+    )
 
     records = records.reset_index()
-    records = records[[column, "article"]].copy()
+    records = records[[criterion, "article"]].copy()
     records = records.dropna()
-    records["value"] = 1
-    records[column] = records[column].str.split(";")
-    records[column] = records[column].map(lambda x: [y.strip() for y in x])
-    records = records.explode(column)
-    grouped_records = records.groupby(["article", column], as_index=False).agg(
-        {"value": np.sum}
+    records["OCC"] = 1
+    records[criterion] = records[criterion].str.split(";")
+    records[criterion] = records[criterion].map(lambda x: [y.strip() for y in x])
+    records = records.explode(criterion)
+    grouped_records = records.groupby(["article", criterion], as_index=False).agg(
+        {"OCC": np.sum}
     )
 
     result = pd.pivot(
         index="article",
         data=grouped_records,
-        columns=column,
+        columns=criterion,
     )
     result = result.fillna(0)
+
+    items_dict = items2counters(
+        column=criterion,
+        directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
+    )
+    result = result.rename(columns=items_dict)
+
+    ## filter columns
+    selected_columns = result.columns
+    if topic_min_occ is not None:
+        selected_columns = [
+            col
+            for col in selected_columns
+            if int(col.split()[-1].split(":")[0]) >= topic_min_occ
+        ]
+    if topic_min_citations is not None:
+        selected_columns = [
+            col
+            for col in selected_columns
+            if int(col.split()[-1].split(":")[0]) >= topic_min_citations
+        ]
 
     # ----< Counts term occurrence >-------------------------------------------
     result.columns = [b for _, b in result.columns]
     terms = result.sum(axis=0)
     terms = terms.sort_values(ascending=False)
-    if min_occ is not None:
-        terms = terms[terms >= min_occ]
-    if max_occ is not None:
-        terms = terms[terms <= max_occ]
+    if topic_min_occ is not None:
+        terms = terms[terms >= topic_min_occ]
+    if topic_min_citations is not None:
+        terms = terms[terms <= topic_min_citations]
     terms = terms.drop(labels=load_stopwords(directory), errors="ignore")
     result = result.loc[:, terms.index]
-
-    items_dict = items2counters(
-        column=column,
-        directory=directory,
-        database="documents",
-        use_filter=True,
-    )
-
-    # result = index_terms2counters(directory, result, "columns", column, sep)
-    result = result.rename(columns=items_dict)
 
     # ---< Remove rows with only zeros detected -------------------------------
     result = result.loc[(result != 0).any(axis=1)]
