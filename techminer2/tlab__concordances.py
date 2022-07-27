@@ -27,16 +27,29 @@ Abstract concordances exploration tool.
 
 """
 from ._load_abstracts import load_abstracts
+from ._read_records import read_records
 
 
 def tlab__concordances(
     search_for,
     top_n=50,
     directory="./",
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
     """Checks the occurrence contexts of a given text in the abstract's phrases."""
 
+    records = read_records(
+        directory=directory,
+        database="documents",
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
+    )
+
     abstracts = load_abstracts(directory)
+    abstracts = abstracts[abstracts.article.isin(records.article)]
     abstracts = abstracts.sort_values(
         ["global_citations", "article", "line_no"], ascending=[False, True, True]
     )
