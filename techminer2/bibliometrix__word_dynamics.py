@@ -25,7 +25,7 @@ def bibliometrix__word_dynamics(
     criterion="author_keywords",
     topics_length=5,
     topic_min_occ=None,
-    topic_min_citations=0,
+    topic_min_citations=None,
     directory="./",
     title="Word Dynamics",
     plot=True,
