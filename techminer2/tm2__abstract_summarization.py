@@ -47,6 +47,10 @@ def tm2__abstract_summarization(
     sufix="",
     directory="./",
 ):
+    pass
+
+
+def test():
 
     if isinstance(texts, str):
         texts = [texts]
