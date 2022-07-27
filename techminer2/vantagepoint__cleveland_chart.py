@@ -1,5 +1,5 @@
 """
-Cleveland Chart
+Cleveland Chart (ok!)
 ===============================================================================
 
 
@@ -29,8 +29,8 @@ def vantagepoint__cleveland_chart(
     start_year=None,
     end_year=None,
     topics_length=20,
-    min_occ=None,
-    max_occ=None,
+    topic_min_occ=None,
+    topic_min_citations=None,
     custom_topics=None,
     title=None,
     **filters
@@ -45,8 +45,8 @@ def vantagepoint__cleveland_chart(
         start_year=start_year,
         end_year=end_year,
         topics_length=topics_length,
-        min_occ=min_occ,
-        max_occ=max_occ,
+        topic_min_occ=topic_min_occ,
+        topic_min_citations=topic_min_citations,
         custom_topics=custom_topics,
         title=title,
         plot="cleveland",
