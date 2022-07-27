@@ -1,5 +1,5 @@
 """
-Word Associations MDS Map (ok!)
+Word Associations MDS Map
 ===============================================================================
 
 Plots the SVD of the co-occurrence matrix normalized with the **salton** measure.

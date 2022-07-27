@@ -1,5 +1,5 @@
 """
-Abstracts Extractive Summarization (ok!)
+Abstracts Extractive Summarization
 ===============================================================================
 
 

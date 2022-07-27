@@ -1,5 +1,5 @@
 """
-Record View (ok!)
+Record View
 ===============================================================================
 
 VantagePoint / Record View

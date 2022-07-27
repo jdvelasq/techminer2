@@ -1,5 +1,5 @@
 """
-Word Associations for a Item (ok!)
+Word Associations for a Item
 ===============================================================================
 
 

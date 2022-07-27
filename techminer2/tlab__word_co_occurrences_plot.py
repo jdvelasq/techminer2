@@ -1,5 +1,5 @@
 """
-Word Co-occurrences Plot (ok!)
+Word Co-occurrences Plot
 ===============================================================================
 
 
