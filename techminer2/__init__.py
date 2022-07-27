@@ -113,11 +113,11 @@ from .tlab__word_associations_for_all_items import tlab__word_associations_for_a
 from .tlab__word_associations_mds_map import tlab__word_associations_mds_map
 from .tlab__word_co_occurrentes_plot import tlab__word_co_occurrentes_plot
 from .tlab__words_radial_diagram import tlab__words_radial_diagram
-from .tm2__abstract_summarization import tm2__abstract_summarization
 from .tm2__abstracts_report import tm2__abstracts_report
 from .tm2__clean_countries import tm2__clean_countries
 from .tm2__clean_organizations import tm2__clean_organizations
 from .tm2__coverage import tm2__coverage
+from .tm2__extractive_summarization import tm2__extractive_summarization
 from .tm2__find_abbreviations import tm2__find_abbreviations
 from .tm2__import_scopus_files import tm2__import_scopus_files
 from .tm2__raw_document_types import tm2__raw_document_types
