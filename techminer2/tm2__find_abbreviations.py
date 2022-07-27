@@ -22,27 +22,18 @@ ai
     ai strategy
 aml
     aml
-anti money laundering
-    anti money laundering
+anti money laundering (aml)
     anti money laundering (aml)
-antimoney laundering
-    antimoney laundering
-    antimoney laundering (aml)
-artificial neural network
-    artificial neural network
-    neural network
-    neural networks
-    neural networks (computer)
-computational methods
-    computational methods
-    computer
-    computers
-bank regulation
+    anti money laundering
+anti-money laundering
+    anti-money laundering
+    anti-money laundering (aml)
+banking regulation
+    banking regulation
     bank regulation
     bank regulation (basel iii)
     bank regulations
     bank regulators
-    banking regulation
 basel iii
     basel iii
 communication channel
@@ -60,19 +51,18 @@ compliance
     compliance
     compliance (grc)
     compliance approach
-    compliance.
 grc
     grc
-contract
+contracts
+    contracts
     contract
     contracting
-    contracts
     contracts (htlc)
 hashed timelock contracts (htlc)
     hashed timelock contracts (htlc)
-corporate social responsibilities (csr)
-    corporate social responsibilities (csr)
+corporate social responsibility
     corporate social responsibility
+    corporate social responsibilities (csr)
 csr
     csr
 dao
@@ -86,26 +76,26 @@ dapp
 distributed applications
     distributed applications
     distributed applications (dapps)
-distributed ledger technologies
-    distributed ledger technologies
+distributed ledger technology
     distributed ledger technology
+    distributed ledger technologies
     distributed ledger technology (dlt)
 dlt
     dlt
-financial technologies
-    financial technologies
-    financial technologies (fintech)
+financial technology
     financial technology
+    financial technologies
     financial technology (fintech)
+    financial technologies (fintech)
 fintech
     fintech
     fintechs
 gdpr
     gdpr
-general data protection regulation
+general data protection regulations
+    general data protection regulations
     general data protection regulation
     general data protection regulation (gdpr)
-    general data protection regulations
 ict
     ict
 information and communication technologies
@@ -114,23 +104,23 @@ information and communication technologies
     information and communication technology (ict)
     information and communications technologies (icts)
     information and communications technology
-information technologies
-    information technologies
+information technology
     information technology
+    information technologies
     information technology (it)
 it
     it
 ico
     ico
     icos
-initial coin offering
+initial coin offerings
+    initial coin offerings
     initial coin offering
     initial coin offering (ico)
-    initial coin offerings
-internet of thing (iot)
-    internet of thing (iot)
+internet of things
     internet of things
     internet of things (iot)
+    internet of thing (iot)
 iot
     iot
 know your customer (kyc) compliance
@@ -141,29 +131,36 @@ laundering
     laundering
 legalization (laundering) of proceeds
     legalization (laundering) of proceeds
-    legalization of proceeds
 natural language processing
     natural language processing
     natural language processing (nlp)
 nlp
     nlp
+computers
+    computers
+    computer
+    computational methods
+neural networks
+    neural networks
+    neural network
+    neural networks (computer)
 partial least square structural equation modeling
     partial least square structural equation modeling
-    partial least squares structural equation modeling (plssem)
-plssem
-    plssem
+    partial least squares structural equation modeling (pls-sem)
+pls-sem
+    pls-sem
 p2p
     p2p
-peertopeer (p2p) lending
-    peertopeer (p2p) lending
-    peertopeer lending
-peertopeer (p2p) lending risk evaluation
-    peertopeer (p2p) lending risk evaluation
+peer-to-peer (p2p) lending risk evaluation
+    peer-to-peer (p2p) lending risk evaluation
+peer-to-peer lending
+    peer-to-peer lending
+    peer-to-peer (p2p) lending
 proof of work
     proof of work
     proof of work (pow)
-proofofwork (pow)
-    proofofwork (pow)
+proof-of-work (pow)
+    proof-of-work (pow)
 recurrent neural network (rnn)
     recurrent neural network (rnn)
     recurrent neural networks
@@ -171,11 +168,11 @@ rnn
     rnn
 regtech
     regtech
-    regtech.
-regulatory technologies (regtech)
-    regulatory technologies (regtech)
+regulatory technology
     regulatory technology
     regulatory technology (regtech)
+    regulatory technologies
+    regulatory technologies (regtech)
 rdf
     rdf
 resource description framework (rdf)
@@ -184,13 +181,12 @@ resource description framework (rdf)
 regulation
     regulation
     regulations
-standard
+standardization
+    standardization
+    standards
     standard (regulation)
     standard model
     standard models
-    standardization
-    standards
-    standard
 team software process (tsp)
     team software process (tsp)
 tsp
@@ -203,7 +199,6 @@ technology acceptance model
 the unified theory of acceptance and use of technology(utaut)
     the unified theory of acceptance and use of technology(utaut)
     unified theory of acceptance and use of technology
-unified theory of acceptance and use technology (utaut)
     unified theory of acceptance and use technology (utaut)
 utaut
     utaut
@@ -217,6 +212,9 @@ mathematical models
     mathematics
 trees (mathematics)
     trees (mathematics)
+
+
+
 
 """
 from os.path import isfile, join
