@@ -1,5 +1,5 @@
 """
-Fuzzy Search (of a string in a thesaurus)
+Fuzzy Search (of a string in a thesaurus) (ok!)
 ===============================================================================
 
 Finds a string in the terms of a thesaurus using fuzzy search.
@@ -51,14 +51,14 @@ cyber threat intelligence
 financial intelligence units
 intelligence
 intelligence activities
-intelligence control
-     intelligence control
-     intelligent control
 intelligence decision
 intelligence services
      intelligence services
      intelligent services
-intelligence systems
+intelligent control
+     intelligence control
+     intelligent control
+intelligent systems
      intelligence systems
      intelligent systems
 responsible artificial intelligence
