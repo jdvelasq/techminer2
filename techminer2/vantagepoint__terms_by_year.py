@@ -1,5 +1,5 @@
 """
-Terms by Year
+Terms by Year (ok!)
 ===============================================================================
 
 
@@ -36,10 +36,7 @@ Terms by Year
 """
 from ._indicators.indicators_by_topic import indicators_by_topic
 from ._indicators.indicators_by_topic_per_year import indicators_by_topic_per_year
-from .vantagepoint__co_occ_matrix_list import (
-    _add_counters_to_items,
-    _select_topics_by_occ_and_citations_and_topic_length,
-)
+from .vantagepoint__co_occ_matrix_list import _add_counters_to_items
 
 
 def vantagepoint__terms_by_year(
