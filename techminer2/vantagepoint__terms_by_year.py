@@ -7,8 +7,8 @@ Terms by Year
 
 >>> from techminer2 import vantagepoint__terms_by_year
 >>> vantagepoint__terms_by_year(
-...    column='author_keywords',
-...    top_n=10,
+...    criterion='author_keywords',
+...    topics_length=10,
 ...    directory=directory,
 ... ).head(20)
                    author_keywords  year  OCC  cum_OCC
@@ -34,33 +34,85 @@ Terms by Year
 19     financial regulation 08:091  2020    3        7
 
 """
+from ._indicators.indicators_by_topic import indicators_by_topic
 from ._indicators.indicators_by_topic_per_year import indicators_by_topic_per_year
-from .vantagepoint__co_occ_matrix_list import (  # _select_top_n_items,
+from .vantagepoint__co_occ_matrix_list import (
     _add_counters_to_items,
+    _select_topics_by_occ_and_citations_and_topic_length,
 )
 
 
 def vantagepoint__terms_by_year(
-    column,
-    top_n=50,
+    criterion,
+    topics_length=50,
+    topic_min_occ=None,
+    topic_min_citations=None,
     directory="./",
     database="documents",
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
     """Computes the number of terms by year."""
 
     indicators_by_year = indicators_by_topic_per_year(
-        criterion=column, directory=directory, database="documents", use_filter=True
+        criterion=criterion,
+        directory=directory,
+        database="documents",
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
     )
 
     indicators_by_year = indicators_by_year[["OCC", "cum_OCC"]]
     indicators_by_year = indicators_by_year.reset_index()
-    indicators_by_year = _add_counters_to_items(
-        column, column, directory, database, indicators_by_year
+
+    ###
+
+    indicators = indicators_by_topic(
+        criterion=criterion,
+        directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
     )
-    indicators_by_year = _select_top_n_items(top_n, indicators_by_year, column)
+
+    indicators = indicators.sort_values(
+        ["OCC", "global_citations", "local_citations"],
+        ascending=[False, False, False],
+    )
+
+    custom_topics = indicators.copy()
+    if topic_min_occ is not None:
+        custom_topics = custom_topics[custom_topics["OCC"] >= topic_min_occ]
+    if topic_min_citations is not None:
+        custom_topics = custom_topics[
+            custom_topics["global_citations"] >= topic_min_citations
+        ]
+    custom_topics = custom_topics.index.copy()
+    custom_topics = custom_topics[:topics_length]
+
+    indicators = indicators.loc[custom_topics, :]
+
+    indicators_by_year = indicators_by_year[
+        indicators_by_year[criterion].isin(indicators.index)
+    ]
+    ###
+
+    indicators_by_year = _add_counters_to_items(
+        matrix_list=indicators_by_year,
+        column_name=criterion,
+        criterion=criterion,
+        directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
+    )
 
     indicators_by_year = indicators_by_year.sort_values(
-        [column, "year"], ascending=[True, True]
+        [criterion, "year"], ascending=[True, True]
     )
     indicators_by_year = indicators_by_year.reset_index(drop=True)
     return indicators_by_year
