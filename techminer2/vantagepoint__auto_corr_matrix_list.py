@@ -43,9 +43,9 @@ def vantagepoint__auto_corr_matrix_list(
     """Returns an auto-correlation matrix list."""
 
     matrix = vantagepoint__auto_corr_matrix(
-        column=column,
+        criterion=column,
         method=method,
-        top_n=top_n,
+        topics_length=top_n,
         directory=directory,
         database=database,
     )
