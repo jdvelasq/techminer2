@@ -21,7 +21,3 @@ based on the type of plots.
         scientopy__time_line
         scientopy__word_cloud
         scientopy__top_trending_topics
-
-    * TODO: Evolution Plot
-
-    * TODO: Add `year` and `custom topics` filters. 
