@@ -1,5 +1,5 @@
 """
-Word Associations for All Items
+Word Associations for All Items (ok!)
 ===============================================================================
 
 
@@ -9,20 +9,20 @@ Word Associations for All Items
 
 >>> from techminer2 import tlab__word_associations_for_all_items
 >>> tlab__word_associations_for_all_items(
-...     column='author_keywords',
+...     criterion='author_keywords',
 ...     directory=directory,
 ... ).head(10)
-                              row                          column  OCC
-0                  regtech 70:462                  regtech 70:462   70
-1                  fintech 42:406                  fintech 42:406   42
-2                  fintech 42:406                  regtech 70:462   42
-3                  regtech 70:462                  fintech 42:406   42
-4               blockchain 18:109               blockchain 18:109   18
-5               blockchain 18:109                  regtech 70:462   17
-6                  regtech 70:462               blockchain 18:109   17
-7               blockchain 18:109                  fintech 42:406   14
-8                  fintech 42:406               blockchain 18:109   14
-9  artificial intelligence 13:065  artificial intelligence 13:065   13
+              row                          column  OCC
+0  regtech 69:461                  regtech 69:461   69
+1  regtech 69:461                  fintech 42:406   42
+2  regtech 69:461               blockchain 18:109   17
+3  regtech 69:461  artificial intelligence 13:065   10
+4  regtech 69:461    regulatory technology 12:047    4
+5  regtech 69:461               compliance 12:020   12
+6  regtech 69:461     financial technology 09:032    5
+7  regtech 69:461     financial regulation 08:091    8
+8  regtech 69:461               regulation 06:120    5
+9  regtech 69:461         machine learning 06:013    6
 
 
 """
@@ -30,18 +30,26 @@ from .vantagepoint__co_occ_matrix_list import vantagepoint__co_occ_matrix_list
 
 
 def tlab__word_associations_for_all_items(
-    column,
+    criterion,
+    topics_length=None,
+    topic_min_occ=None,
+    topic_min_citations=None,
     directory="./",
     database="documents",
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
     """Computes the co-occurrence matrix list."""
 
     return vantagepoint__co_occ_matrix_list(
-        criterion=column,
-        row=None,
-        topics_length=None,
-        topic_min_occ=None,
-        topic_min_citations=None,
+        criterion=criterion,
+        topics_length=topics_length,
+        topic_min_occ=topic_min_occ,
+        topic_min_citations=topic_min_citations,
         directory=directory,
         database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
     )
