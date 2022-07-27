@@ -1,5 +1,5 @@
 """
-Co-occurrence Network
+Matrix List ---> Networkx Graph
 ===============================================================================
 
 Builds a network from a matrix
@@ -7,15 +7,15 @@ Builds a network from a matrix
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import co_occ_matrix_list
->>> matrix_list = co_occ_matrix_list(
-...    column='author_keywords',
-...    min_occ=3,
+>>> from techminer2 import vantagepoint__co_occ_matrix_list
+>>> matrix_list = vantagepoint__co_occ_matrix_list(
+...    criterion='author_keywords',
+...    topics_length=3,
 ...    directory=directory,
 ... )
 
->>> from techminer2.co_occ_network import co_occ_network
->>> co_occ_network(matrix_list) # doctest: +ELLIPSIS
+>>> from techminer2._matrix_list_2_network_graph import matrix_list_2_network_graph
+>>> matrix_list_2_network_graph(matrix_list) # doctest: +ELLIPSIS
 <networkx.classes.graph.Graph ...
 
 """
