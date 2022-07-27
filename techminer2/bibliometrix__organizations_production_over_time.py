@@ -58,7 +58,7 @@ class _Results:
 def bibliometrix__organizations_production_over_time(
     topics_length=10,
     topic_min_occ=None,
-    topic_min_citations=0,
+    topic_min_citations=None,
     directory="./",
     database="documents",
     start_year=None,
