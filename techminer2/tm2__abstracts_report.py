@@ -27,6 +27,7 @@ def tm2__abstracts_report(
     custom_topics=None,
     file_name="abstracts_report.txt",
     n_abstracts=10,
+    use_textwrap=True,
     directory="./",
     database="documents",
     start_year=None,
@@ -63,12 +64,27 @@ def tm2__abstracts_report(
     ) as out_file:
         for _, row in records.iterrows():
 
-            print(textwrap.fill(row["article"], width=90), file=out_file)
-            print(textwrap.fill(row["title"], width=90), file=out_file)
-            print(textwrap.fill(row[criterion], width=90), file=out_file)
-            print("Citations: " + str(row["global_citations"]), file=out_file)
+            if use_textwrap:
+                text_article = textwrap.fill(row["article"], width=90)
+                text_title = textwrap.fill(row["title"], width=90)
+                text_criterion = textwrap.fill(row[criterion], width=90)
+                text_abstract = textwrap.fill(row["abstract"], width=90)
+
+            else:
+                text_article = row["article"]
+                text_title = row["title"]
+                text_criterion = row[criterion]
+                text_abstract = row["abstract"]
+
+            text_citation = "Citations: " + str(row["global_citations"])
+
+            print("-" * 90, file=out_file)
+            print(text_article, file=out_file)
+            print(text_title, file=out_file)
+            print(text_criterion, file=out_file)
+            print(text_citation, file=out_file)
             print("\n", file=out_file)
-            print(textwrap.fill(row["abstract"], width=90), file=out_file)
+            print(text_abstract, file=out_file)
             print("\n\n", file=out_file)
 
     # sys.stdout.write("--INFO-- Abstrats Report generated.\n")
