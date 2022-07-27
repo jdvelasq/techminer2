@@ -4,10 +4,10 @@ Word Co-occurrences Plot (ok!)
 
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/tlab__word_co_occurrentes_plot.html"
+>>> file_name = "sphinx/_static/tlab__word_co_occurrences_plot.html"
 
->>> from techminer2 import tlab__word_co_occurrentes_plot
->>> tlab__word_co_occurrentes_plot(
+>>> from techminer2 import tlab__word_co_occurrences_plot
+>>> tlab__word_co_occurrences_plot(
 ...     criterion='words',
 ...     topic="regtech",
 ...     topic_min_occ=4,
