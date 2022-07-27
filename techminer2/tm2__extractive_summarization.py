@@ -1,5 +1,5 @@
 """
-Abstracts Summarization
+Abstracts Extractive Summarization (ok!)
 ===============================================================================
 
 
@@ -13,22 +13,21 @@ Abstracts Summarization
 ...     n_phrases_per_algorithm=20,
 ...     directory=directory,
 ... )
-pace of transition can be seen in particular in the position of emerging technology, also
+authors of this paper investigate how blockchain can be used to secure stock exchange
+transactions, with an especial focus to the technological as well as legal aspects of such
+applications. >> blockchain (bc) technology, being distributed and immutable in nature,
+has proved to the 'trust machine' eliminating the need for third-parties. >> however, to
+create valid legal effects blockchains should be anchored prudently in the surrounding
+legal context and specific regulations will be supportive to unfold their potential in a
+sustainable way and in an international context. >> in this work, we propose a blockchain-
+based regtech system which helps to track the credit of organizations. >> pace of
+transition can be seen in particular in the position of emerging technology, also
 summarized as the abcd framework: artificial intelligence ("ai"), blockchain, cloud and
-technology, which are rapidly co-evolving with finance. >>> authors of this paper
-investigate how blockchain can be used to secure stock exchange transactions, with an
-especial focus to the technological as well as legal aspects of such applications. >>>
-though blockchain technology has been leveraged to increase effectiveness of certain
-corporate banking products, the originality of the paper lies in coming out with a
-detailed framework for the possible use of blockchain (a distributed ledger based
-technology) for credit decisions, timely generation of red-flags and tightening the
-regulatory framework. >>> in this work, we propose a blockchain-based regtech system which
-helps to track the credit of organizations. >>> blockchain (bc) technology, being
-distributed and immutable in nature, has proved to the 'trust machine' eliminating the
-need for third-parties. >>> however, to create valid legal effects blockchains should be
-anchored prudently in the surrounding legal context and specific regulations will be
-supportive to unfold their potential in a sustainable way and in an international context.
-
+technology, which are rapidly co-evolving with finance. >> though blockchain technology
+has been leveraged to increase effectiveness of certain corporate banking products, the
+originality of the paper lies in coming out with a detailed framework for the possible use
+of blockchain (a distributed ledger based technology) for credit decisions, timely
+generation of red-flags and tightening the regulatory framework.
 
 """
 import os
@@ -91,9 +90,9 @@ def tm2__extractive_summarization(
             if topic in sentence:
                 final_summary.append(sentence)
 
-    final_summary = list(set(final_summary))
+    final_summary = sorted(set(final_summary))
 
-    final_summary = " >>> ".join(final_summary)
+    final_summary = " >> ".join(final_summary)
     final_summary = textwrap.fill(final_summary, width=90)
 
     with open(
