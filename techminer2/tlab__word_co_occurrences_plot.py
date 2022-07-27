@@ -27,7 +27,7 @@ from ._plots.pie_plot import pie_plot
 from .vantagepoint__co_occ_matrix_list import vantagepoint__co_occ_matrix_list
 
 
-def tlab__word_co_occurrentes_plot(
+def tlab__word_co_occurrences_plot(
     criterion,
     topic,
     topics_length=None,
