@@ -27,7 +27,7 @@ from .bibliometrix__dynamics import bibliometrix__dynamics
 def bibliometrix__country_dynamics(
     topics_length=5,
     topic_min_occ=None,
-    topic_min_citations=0,
+    topic_min_citations=None,
     directory="./",
     title="Country Dynamics",
     plot=True,
