@@ -26,6 +26,8 @@ from .vantagepoint__word_cloud import vantagepoint__word_cloud
 def bibliometrix__word_cloud(
     criterion,
     topics_length=250,
+    topic_min_occ=None,
+    topic_min_citations=None,
     directory="./",
     metric="OCC",
     title=None,
@@ -42,8 +44,8 @@ def bibliometrix__word_cloud(
     return vantagepoint__word_cloud(
         criterion=criterion,
         topics_length=topics_length,
-        min_occ=None,
-        max_occ=None,
+        topic_min_occ=topic_min_occ,
+        topic_min_citations=topic_min_citations,
         directory=directory,
         metric=metric,
         title=title,
