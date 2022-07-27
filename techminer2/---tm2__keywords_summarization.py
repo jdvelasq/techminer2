@@ -2,16 +2,16 @@
 Keywords Summarization
 ===============================================================================
 
->>> directory = "data/regtech/"
+# >>> directory = "data/regtech/"
 
->>> from techminer2 import tm2__keywords_summarization
->>> tm2__keywords_summarization(
-...     column="author_keywords",
-...     keywords=["fintech", "blockchain"],
-...     n_phrases=5,    
-...     directory=directory,
-... )
---INFO-- Generating data/regtech/reports/keywords_summarization.txt
+# >>> from techminer2 import tm2__keywords_summarization
+# >>> tm2__keywords_summarization(
+# ...     column="author_keywords",
+# ...     keywords=["fintech", "blockchain"],
+# ...     n_phrases=5,    
+# ...     directory=directory,
+# ... )
+# --INFO-- Generating data/regtech/reports/keywords_summarization.txt
 
 """
 import sys
