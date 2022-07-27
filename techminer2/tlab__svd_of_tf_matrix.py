@@ -73,9 +73,9 @@ def tlab__svd_of_tf_matrix(
 ):
 
     matrix = vantagepoint__tf_matrix(
-        column=column,
-        min_occ=min_occ,
-        max_occ=max_occ,
+        criterion=column,
+        topic_min_occ=min_occ,
+        topic_min_citations=max_occ,
         scheme=scheme,
         directory=directory,
     ).transpose()
