@@ -8,7 +8,7 @@ Words Radial Diagram (ok!)
 
 >>> from techminer2 import tlab__words_radial_diagram
 >>> tlab__words_radial_diagram(
-...     criterion='author_keywords',
+...     criterion='words',
 ...     topic="regtech",
 ...     topic_min_occ=4,
 ...     directory=directory,
