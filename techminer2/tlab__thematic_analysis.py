@@ -168,9 +168,9 @@ class _ThematicAnalysis:
         """Build the TF matrix."""
 
         self._tf_matrix = vantagepoint__tf_matrix(
-            column=self.column,
-            min_occ=self.min_occ,
-            max_occ=self.max_occ,
+            criterion=self.column,
+            topic_min_occ=self.min_occ,
+            topic_min_citations=self.max_occ,
             directory=self.directory,
         )
 
