@@ -1,5 +1,5 @@
 """
-Word Associations MDS Map
+Word Associations MDS Map (ok!)
 ===============================================================================
 
 Plots the SVD of the co-occurrence matrix normalized with the **salton** measure.
@@ -24,6 +24,7 @@ The plot is based on the SVD technique used in T-LAB's comparative analysis.
 ...     criterion='author_keywords',
 ...     topic_min_occ=5,    
 ...     directory=directory,
+...     delta=0.3,
 ... )
 
 >>> mds_map.plot_.write_html(file_name)
