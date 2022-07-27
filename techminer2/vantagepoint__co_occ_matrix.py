@@ -5,7 +5,7 @@ Co-occurrence Matrix
 
 >>> directory = "data/regtech/"
 
-
+>>> from techminer2 import vantagepoint__co_occ_matrix
 >>> vantagepoint__co_occ_matrix(
 ...    criterion='author_keywords',
 ...    topic_min_occ=4,
