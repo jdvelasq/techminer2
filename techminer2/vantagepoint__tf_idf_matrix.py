@@ -48,9 +48,9 @@ def vantagepoint__tf_idf_matrix(
     """
     tfmatrix = vantagepoint__tf_matrix(
         directory=directory,
-        column=column,
-        min_occ=min_occ,
-        max_occ=max_occ,
+        criterion=column,
+        topic_min_occ=min_occ,
+        topic_min_citations=max_occ,
         scheme=scheme,
     )
 
