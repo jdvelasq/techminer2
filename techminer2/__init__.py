@@ -116,6 +116,7 @@ from .tlab__words_radial_diagram import tlab__words_radial_diagram
 from .tm2__abstractive_summarization import tm2__abstractive_summarization
 from .tm2__abstracts_report import tm2__abstracts_report
 from .tm2__clean_countries import tm2__clean_countries
+from .tm2__clean_keywords import tm2__clean_keywords
 from .tm2__clean_organizations import tm2__clean_organizations
 from .tm2__coverage import tm2__coverage
 from .tm2__extractive_summarization import tm2__extractive_summarization
