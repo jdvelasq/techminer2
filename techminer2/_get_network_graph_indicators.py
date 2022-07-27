@@ -2,27 +2,27 @@
 Network Indicators
 ===============================================================================
 
->>> from techminer2 import *
+
 >>> directory = "data/regtech/"
->>> matrix_list = co_occ_matrix_list(
-...    column='author_keywords',
-...    min_occ=3,
+
+>>> from techminer2 import vantagepoint__co_occ_matrix_list
+>>> from techminer2._matrix_list_2_network_graph import matrix_list_2_network_graph
+>>> from techminer2._get_network_graph_indicators import get_network_graph_indicators
+>>> from techminer2._network_community_detection import network_community_detection
+
+>>> matrix_list = vantagepoint__co_occ_matrix_list(
+...    criterion='author_keywords',
+...    topics_length=3,
 ...    directory=directory,
 ... )
 
->>> from techminer2.co_occ_network import co_occ_network
->>> graph = co_occ_network(matrix_list)
->>> from techminer2.network_community_detection import network_community_detection
+>>> graph = matrix_list_2_network_graph(matrix_list) 
 >>> graph = network_community_detection(graph, method='louvain')
-
->>> from techminer2.network_indicators import network_indicators
->>> network_indicators(graph).head()
-                                group  betweenness  closeness  pagerank
-regtech 70:462                      0     0.562500   0.875000  0.293120
-fintech 42:406                      0     0.151210   0.662162  0.192005
-blockchain 18:109                   0     0.002016   0.471154  0.057606
-artificial intelligence 13:065      1     0.000000   0.462264  0.035665
-compliance 12:020                   0     0.000000   0.462264  0.030006
+>>> get_network_graph_indicators(graph).head()
+                   group  betweenness  closeness  pagerank
+regtech 69:461         0          0.0        1.0  0.396082
+fintech 42:406         0          0.0        1.0  0.376834
+blockchain 18:109      0          0.0        1.0  0.227084
 
 
 """
