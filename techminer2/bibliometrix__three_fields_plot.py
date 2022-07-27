@@ -32,7 +32,7 @@ def bibliometrix__three_fields_plot(
     right_criterion,
     topics_length_left,
     topics_length_right,
-    topic_min_citations=0,
+    topic_min_citations=None,
     directory="./",
     database="documents",
     start_year=None,
