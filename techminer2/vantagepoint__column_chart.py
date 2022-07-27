@@ -48,6 +48,6 @@ def vantagepoint__column_chart(
         topic_min_citations=topic_min_citations,
         custom_topics=custom_topics,
         title=title,
-        plot="bar",
+        plot="column",
         **filters,
     )
