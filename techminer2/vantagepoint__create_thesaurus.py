@@ -1,5 +1,5 @@
 """
-Create a thesaurus from a column
+Create a thesaurus from a column (TODO)
 ===============================================================================
 
 >>> from techminer2 import *
