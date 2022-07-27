@@ -7,13 +7,12 @@ with the data.
 
 
 >>> directory = "data/regtech/"
-
 >>> file_name = "sphinx/_static/time_plot.html"
 
-
-
+>>> from ._indicators.indicators_by_year import indicators_by_year
 >>> from techminer2._time_plot import time_plot
->>> indicators = annual_indicators(directory)
+
+>>> indicators = indicators_by_year(directory=directory)
 >>> time_plot(
 ...     indicators,
 ...     metric="OCC",
