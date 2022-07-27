@@ -7,6 +7,7 @@ Co-occurrence Matrix List
 
 **Item selection by occurrence.**
 
+>>> from techminer2 import vantagepoint__co_occ_matrix_list
 >>> vantagepoint__co_occ_matrix_list(
 ...    criterion='author_keywords',
 ...    topic_min_occ=4,
@@ -30,7 +31,7 @@ Co-occurrence Matrix List
 
 **Seleccition of top terms.**
 
-
+>>> from techminer2 import vantagepoint__co_occ_matrix_list
 >>> vantagepoint__co_occ_matrix_list(
 ...    criterion='author_keywords',
 ...    topics_length=5,
