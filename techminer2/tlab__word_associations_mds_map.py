@@ -21,8 +21,8 @@ The plot is based on the SVD technique used in T-LAB's comparative analysis.
 
 >>> from techminer2 import tlab__word_associations_mds_map
 >>> mds_map = tlab__word_associations_mds_map(
-...     column='author_keywords',
-...     min_occ=5,    
+...     criterion='author_keywords',
+...     topic_min_occ=5,    
 ...     directory=directory,
 ... )
 
@@ -34,13 +34,13 @@ The plot is based on the SVD technique used in T-LAB's comparative analysis.
 
 
 >>> mds_map.table_.head()
-                                     dim0       dim1
-row                                                 
-regtech 70:462                  85.583912   8.166457
-fintech 42:406                  60.949638 -11.167665
-blockchain 18:109               24.948933  -6.642690
-artificial intelligence 13:065  13.776312  -1.005190
-compliance 12:020               10.424578  11.346089
+                                     dim0      dim1
+row                                                
+regtech 69:461                  84.928900 -2.721688
+fintech 42:406                  61.832611  2.278441
+blockchain 18:109               25.915631 -4.905159
+artificial intelligence 13:065  15.160618  6.382477
+compliance 12:020               13.045184 -5.500958
 
 """
 
@@ -58,24 +58,31 @@ class _Result:
 
 
 def tlab__word_associations_mds_map(
-    column,
-    top_n=50,
-    min_occ=None,
-    max_occ=None,
-    directory="./",
+    criterion,
+    topics_length=50,
+    topic_min_occ=None,
+    topic_min_citations=None,
     svd__n_iter=5,
     random_state=0,
-    delta=0.5,
+    delta=0.2,
+    directory="./",
+    database="documents",
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
     """Co-occurrence SVD Map."""
 
     matrix = vantagepoint__co_occ_matrix(
-        column=column,
-        top_n=top_n,
-        min_occ=min_occ,
-        max_occ=max_occ,
+        criterion=criterion,
+        topics_length=topics_length,
+        topic_min_occ=topic_min_occ,
+        topic_min_citations=topic_min_citations,
         directory=directory,
-        database="documents",
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
     )
 
     max_dimensions = 2
