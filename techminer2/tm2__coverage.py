@@ -40,12 +40,21 @@ def tm2__coverage(
     column,
     directory="./",
     database="documents",
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
     """Coverage of terms in a column discarding stopwords."""
 
     stopwords = load_stopwords(directory)
 
-    documents = read_records(directory=directory, database=database, use_filter=False)
+    documents = read_records(
+        directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
+    )
     documents = documents.reset_index()
     documents = documents[[column, "article"]]
 
