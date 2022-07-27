@@ -24,7 +24,7 @@ from .bibliometrix__dynamics import bibliometrix__dynamics
 def bibliometrix__source_dynamics(
     topics_length=10,
     topic_min_occ=None,
-    topic_min_citations=0,
+    topic_min_citations=None,
     directory="./",
     title="Source Dynamics",
     plot=True,
