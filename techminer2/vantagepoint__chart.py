@@ -19,7 +19,7 @@ def vantagepoint__chart(
     end_year=None,
     topics_length=20,
     topic_min_occ=None,
-    topic_min_citations=0,
+    topic_min_citations=None,
     custom_topics=None,
     title=None,
     plot="bar",
