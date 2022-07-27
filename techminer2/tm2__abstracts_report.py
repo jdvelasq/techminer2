@@ -5,6 +5,7 @@ Abstracts Report
 
 >>> directory = "data/regtech/"
 
+>>> # file generated in data/regtech/reports/abstracts_report.txt
 >>> from techminer2 import tm2__abstracts_report
 >>> tm2__abstracts_report(
 ...     criterion="author_keywords",
