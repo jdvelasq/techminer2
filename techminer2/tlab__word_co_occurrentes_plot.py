@@ -1,5 +1,5 @@
 """
-Word Co-occurrences Plot
+Word Co-occurrences Plot (ok!)
 ===============================================================================
 
 
@@ -8,15 +8,15 @@ Word Co-occurrences Plot
 
 >>> from techminer2 import tlab__word_co_occurrentes_plot
 >>> tlab__word_co_occurrentes_plot(
-...     term="regtech",
-...     min_occ=4,
-...     column='author_keywords',
+...     criterion='words',
+...     topic="regtech",
+...     topic_min_occ=4,
 ...     directory=directory,
 ... ).write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../_static/tlab__word_co_occurrentes_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/tlab__word_co_occurrentes_plot.html" height="1000px" width="100%" frameBorder="0"></iframe>
 
 """
 from ._plots.bar_plot import bar_plot
@@ -28,8 +28,8 @@ from .vantagepoint__co_occ_matrix_list import vantagepoint__co_occ_matrix_list
 
 
 def tlab__word_co_occurrentes_plot(
-    term,
     criterion,
+    topic,
     topics_length=None,
     topic_min_occ=None,
     topic_min_citations=None,
@@ -55,7 +55,7 @@ def tlab__word_co_occurrentes_plot(
     )
 
     matrix_list = matrix_list[
-        matrix_list["row"].map(lambda x: " ".join(x.split()[:-1]) == term)
+        matrix_list["row"].map(lambda x: " ".join(x.split()[:-1]) == topic)
     ]
 
     matrix_list = matrix_list[matrix_list["row"] != matrix_list["column"]]
@@ -66,6 +66,7 @@ def tlab__word_co_occurrentes_plot(
         matrix_list = matrix_list.head(topics_length)
 
     matrix_list = matrix_list.set_index("column")
+    matrix_list = matrix_list.sort_values(by="OCC", ascending=False)
 
     plot_function = {
         "bar": bar_plot,
