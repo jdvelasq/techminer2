@@ -91,9 +91,9 @@ def tlab__emergent_themes_with_nmf(
     """Emergent Themes with NMF"""
 
     _tf_matrix = vantagepoint__tf_matrix(
-        column=column,
-        min_occ=min_occ,
-        max_occ=max_occ,
+        criterion=column,
+        topic_min_occ=min_occ,
+        topic_min_citations=max_occ,
         directory=directory,
     )
 
@@ -136,9 +136,9 @@ def tlab__emergent_themes_with_lda(
     """Emergent Themes with NMF"""
 
     _tf_matrix = vantagepoint__tf_matrix(
-        column=column,
-        min_occ=min_occ,
-        max_occ=max_occ,
+        criterion=column,
+        topic_min_occ=min_occ,
+        topic_min_citations=max_occ,
         directory=directory,
     )
 
