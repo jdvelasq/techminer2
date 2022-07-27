@@ -1,5 +1,5 @@
 """
-Bar Trends (ok!)
+Bar Trends
 ===============================================================================
 
 ScientoPy Bar Trends
@@ -111,7 +111,7 @@ def scientopy__bar_trends(
     topics_length=20,
     custom_topics=None,
     trend_analysis=False,
-    time=None,
+    title="Trend",
     directory="./",
     database="documents",
     start_year=None,
@@ -170,18 +170,18 @@ def scientopy__bar_trends(
         }
     )
 
-    results.plot_ = _make_plot(indicators, criterion, col0, col1)
+    results.plot_ = _make_plot(indicators, criterion, col0, col1, title)
     return results
 
 
-def _make_plot(indicators, criterion, col0, col1):
+def _make_plot(indicators, criterion, col0, col1, title):
 
     fig = px.bar(
         indicators,
         x="Num Documents",
         y=criterion.replace("_", " ").title(),
         color="Period",
-        title="Trend",
+        title=title,
         hover_data=["Num Documents"],
         orientation="h",
         color_discrete_map={

@@ -7,6 +7,7 @@ ScientoPy Time Line Plot.
 
 >>> directory = "data/regtech/"
 
+
 >>> file_name = "sphinx/_static/scientopy__time_line-1.html"
 >>> from techminer2 import scientopy__time_line
 >>> time_line = scientopy__time_line(
@@ -42,12 +43,12 @@ ScientoPy Time Line Plot.
 
 
 >>> time_line.table_.head()
-   Year Author Keywords  OCC
-0  2018         regtech   14
-1  2019         regtech   13
-2  2020         regtech   18
-3  2021         regtech   14
-4  2018         fintech   10
+   Year          Author Keywords  OCC
+0  2018  artificial intelligence    2
+1  2019  artificial intelligence    1
+2  2020  artificial intelligence    5
+3  2021  artificial intelligence    3
+4  2018               blockchain    2
 
 
 
@@ -67,6 +68,26 @@ ScientoPy Time Line Plot.
     <iframe src="../_static/scientopy__time_line-4.html" height="800px" width="100%" frameBorder="0"></iframe>
 
 
+>>> file_name = "sphinx/_static/scientopy__time_line-5.html"
+>>> from techminer2 import scientopy__time_line
+>>> time_line = scientopy__time_line(
+...     criterion="author_keywords",
+...     topics_length=5,
+...     trend_analysis=True,
+...     start_year=2018,
+...     end_year=2021,
+...     directory=directory,
+... )
+>>> time_line.plot_.write_html(file_name)
+
+.. raw:: html
+
+    <iframe src="../_static/scientopy__time_line-5.html" height="800px" width="100%" frameBorder="0"></iframe>
+
+
+
+
+
 """
 ## ScientoPy // Time Line
 import textwrap
@@ -75,7 +96,9 @@ import numpy as np
 import pandas as pd
 import plotly.express as px
 
+from ._indicators.growth_indicators_by_topic import growth_indicators_by_topic
 from ._indicators.indicators_by_topic_per_year import indicators_by_topic_per_year
+from .scientopy__bar import _filter_indicators_by_custom_topics
 
 TEXTLEN = 40
 
@@ -88,28 +111,179 @@ class _Results:
 
 def scientopy__time_line(
     criterion,
+    time_window=2,
     topics_length=5,
+    custom_topics=None,
+    trend_analysis=False,
+    title="Time Line",
     directory="./",
+    database="documents",
     start_year=None,
     end_year=None,
-    custom_topics=None,
-    title=None,
     **filters,
 ):
     """ScientoPy Bar Trend."""
 
-    results = _Results()
-    column_, results.table_ = _make_table(
+    # compute basic growth indicators
+
+    growth_indicators = growth_indicators_by_topic(
         criterion=criterion,
+        time_window=time_window,
         directory=directory,
-        topics_length=topics_length,
+        database=database,
         start_year=start_year,
         end_year=end_year,
-        custom_topics=custom_topics,
         **filters,
     )
+
+    if trend_analysis is True:
+        growth_indicators = growth_indicators.sort_values(
+            by=["average_growth_rate", "OCC", "global_citations"],
+            ascending=[False, False, False],
+        )
+    else:
+        growth_indicators = growth_indicators.sort_values(
+            by=["OCC", "global_citations", "average_growth_rate"],
+            ascending=[False, False, False],
+        )
+
+    growth_indicators = _filter_indicators_by_custom_topics(
+        indicators=growth_indicators,
+        topics_length=topics_length,
+        custom_topics=custom_topics,
+    )
+
+    growth_indicators = growth_indicators.sort_values(
+        by=["OCC", "global_citations", "average_growth_rate"],
+        ascending=[False, False, False],
+    )
+
+    ## here, the index of growth_indicators are the topics to plot
+    selected_topics = growth_indicators.index.to_list()
+
+    ## data to plot
+    indicators = indicators_by_topic_per_year(
+        directory=directory,
+        criterion=criterion,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
+    )
+
+    indicators = indicators[["OCC"]]
+    indicators = indicators.reset_index()
+
+    # the magic!
+    indicators = indicators[indicators[criterion].isin(selected_topics)]
+
+    indicators = indicators.sort_values([criterion, "year"], ascending=True)
+    indicators = indicators.pivot(index="year", columns=criterion, values="OCC")
+    indicators = indicators.fillna(0)
+
+    # complete missing years
+    year_range = list(range(indicators.index.min(), indicators.index.max() + 1))
+    missing_years = [year for year in year_range if year not in indicators.index]
+    pdf = pd.DataFrame(
+        np.zeros((len(missing_years), len(indicators.columns))),
+        index=missing_years,
+        columns=indicators.columns,
+    )
+    indicators = indicators.append(pdf)
+    indicators = indicators.sort_index()
+
+    indicators = indicators.astype(int)
+
+    ## plot data
+    indicators.columns = [col for col in indicators.columns]
+    indicators = indicators.reset_index()
+    indicators = indicators.rename(columns={"index": "year"})
+    indicators = indicators.melt(
+        id_vars="year",
+        value_vars=indicators.columns,
+        var_name=criterion,
+        value_name="OCC",
+    )
+    indicators[criterion] = indicators[criterion].apply(_shorten)
+
+    column_ = criterion.replace("_", " ").title()
+    indicators = indicators.rename(columns={"year": "Year", criterion: column_})
+
+    ###
+
+    results = _Results()
+    results.table_ = indicators
+
     results.plot_ = _make_plot(column_, results.table_, title)
     return results
+
+
+# def _make_table(
+#     criterion,
+#     directory,
+#     topics_length,
+#     start_year,
+#     end_year,
+#     custom_topics,
+#     **filters,
+# ):
+
+#     indicators = indicators_by_topic_per_year(
+#         directory=directory,
+#         criterion=criterion,
+#         start_year=start_year,
+#         end_year=end_year,
+#         **filters,
+#     )
+
+#     indicators = indicators[["OCC"]]
+#     indicators = indicators.reset_index()
+#     indicators = indicators.sort_values([criterion, "year"], ascending=True)
+#     indicators = indicators.pivot(index="year", columns=criterion, values="OCC")
+#     indicators = indicators.fillna(0)
+
+#     # complete missing years
+#     year_range = list(range(indicators.index.min(), indicators.index.max() + 1))
+#     missing_years = [year for year in year_range if year not in indicators.index]
+#     pdf = pd.DataFrame(
+#         np.zeros((len(missing_years), len(indicators.columns))),
+#         index=missing_years,
+#         columns=indicators.columns,
+#     )
+#     indicators = indicators.append(pdf)
+#     indicators = indicators.sort_index()
+
+#     ## Count and sort topics
+#     occ = indicators.sum(axis=0)
+#     occ = occ.sort_values(ascending=False)
+
+#     ## Custom topics
+#     if custom_topics is not None:
+#         custom_topics = [topic for topic in custom_topics if topic in occ.index]
+#     else:
+#         custom_topics = occ.index.copy()
+#         custom_topics = custom_topics[:topics_length]
+
+#     ## Create table
+#     indicators = indicators[custom_topics]
+
+#     indicators = indicators.astype(int)
+
+#     ## plot data
+#     indicators.columns = [col for col in indicators.columns]
+#     indicators = indicators.reset_index()
+#     indicators = indicators.rename(columns={"index": "year"})
+#     indicators = indicators.melt(
+#         id_vars="year",
+#         value_vars=indicators.columns,
+#         var_name=criterion,
+#         value_name="OCC",
+#     )
+#     indicators[criterion] = indicators[criterion].apply(_shorten)
+
+#     column_ = criterion.replace("_", " ").title()
+#     indicators = indicators.rename(columns={"year": "Year", criterion: column_})
+
+#     return column_, indicators
 
 
 def _make_plot(criterion, indicators, title):
@@ -146,75 +320,6 @@ def _make_plot(criterion, indicators, title):
         dtick=1,
     )
     return fig
-
-
-def _make_table(
-    criterion,
-    directory,
-    topics_length,
-    start_year,
-    end_year,
-    custom_topics,
-    **filters,
-):
-
-    indicators = indicators_by_topic_per_year(
-        directory=directory,
-        criterion=criterion,
-        start_year=start_year,
-        end_year=end_year,
-        **filters,
-    )
-
-    indicators = indicators[["OCC"]]
-    indicators = indicators.reset_index()
-    indicators = indicators.sort_values([criterion, "year"], ascending=True)
-    indicators = indicators.pivot(index="year", columns=criterion, values="OCC")
-    indicators = indicators.fillna(0)
-
-    # complete missing years
-    year_range = list(range(indicators.index.min(), indicators.index.max() + 1))
-    missing_years = [year for year in year_range if year not in indicators.index]
-    pdf = pd.DataFrame(
-        np.zeros((len(missing_years), len(indicators.columns))),
-        index=missing_years,
-        columns=indicators.columns,
-    )
-    indicators = indicators.append(pdf)
-    indicators = indicators.sort_index()
-
-    ## Count and sort topics
-    occ = indicators.sum(axis=0)
-    occ = occ.sort_values(ascending=False)
-
-    ## Custom topics
-    if custom_topics is not None:
-        custom_topics = [topic for topic in custom_topics if topic in occ.index]
-    else:
-        custom_topics = occ.index.copy()
-        custom_topics = custom_topics[:topics_length]
-
-    ## Create table
-    indicators = indicators[custom_topics]
-
-    indicators = indicators.astype(int)
-
-    ## plot data
-    indicators.columns = [col for col in indicators.columns]
-    indicators = indicators.reset_index()
-    indicators = indicators.rename(columns={"index": "year"})
-    indicators = indicators.melt(
-        id_vars="year",
-        value_vars=indicators.columns,
-        var_name=criterion,
-        value_name="OCC",
-    )
-    indicators[criterion] = indicators[criterion].apply(_shorten)
-
-    column_ = criterion.replace("_", " ").title()
-    indicators = indicators.rename(columns={"year": "Year", criterion: column_})
-
-    return column_, indicators
 
 
 def _shorten(text):

@@ -1,6 +1,10 @@
 """
-Bar (ok!)
+Bar
 ===============================================================================
+
+
+
+
 
 
 **Basic Usage.**
@@ -90,6 +94,7 @@ Bar (ok!)
 >>> scientopy__bar(
 ...     criterion='author_keywords',
 ...     directory=directory,
+...     topics_length=5,
 ...     trend_analysis=True,
 ...     start_year=2018,
 ...     end_year=2021,
@@ -121,7 +126,7 @@ def scientopy__bar(
 ):
     """ScientoPy Bar Plot."""
 
-    indicators = growth_indicators_by_topic(
+    growth_indicators = growth_indicators_by_topic(
         criterion=criterion,
         time_window=time_window,
         directory=directory,
@@ -132,29 +137,29 @@ def scientopy__bar(
     )
 
     if trend_analysis is True:
-        indicators = indicators.sort_values(
+        growth_indicators = growth_indicators.sort_values(
             by=["average_growth_rate", "OCC", "global_citations"],
             ascending=[False, False, False],
         )
     else:
-        indicators = indicators.sort_values(
+        growth_indicators = growth_indicators.sort_values(
             by=["OCC", "global_citations", "average_growth_rate"],
             ascending=[False, False, False],
         )
 
-    indicators = _filter_indicators_by_custom_topics(
-        indicators=indicators,
+    growth_indicators = _filter_indicators_by_custom_topics(
+        indicators=growth_indicators,
         topics_length=topics_length,
         custom_topics=custom_topics,
     )
 
-    indicators = indicators.sort_values(
+    growth_indicators = growth_indicators.sort_values(
         by=["OCC", "global_citations", "average_growth_rate"],
         ascending=[False, False, False],
     )
 
     return bar_plot(
-        dataframe=indicators,
+        dataframe=growth_indicators,
         metric="OCC",
         title=title,
     )

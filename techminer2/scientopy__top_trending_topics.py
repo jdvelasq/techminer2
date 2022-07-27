@@ -13,7 +13,7 @@ average growth rate.
 >>> from techminer2 import scientopy__top_trending_topics
 >>> scientopy__top_trending_topics(
 ...     criterion="author_keywords",
-...     topics_length=20,
+...     topics_length=5,
 ...     directory=directory,
 ...     start_year=2018,
 ...     end_year=2021,
@@ -28,16 +28,16 @@ average growth rate.
 >>> scientopy__top_trending_topics(
 ...     criterion='author_keywords',
 ...     directory=directory,
-...     topics_length=20,
+...     topics_length=5,
 ...     start_year=2018,
 ...     end_year=2021,
 ... ).table_.head()
            author_keywords  Average Growth Rate
 0    regulatory technology                  2.0
-1     financial technology                  1.0
-2  artificial intelligence                  1.0
-3                  regtech                  0.5
-4               regulation                  0.5
+1  artificial intelligence                  1.0
+2     financial technology                  1.0
+3               innovation                  1.0
+4                insurtech                  1.0
 
 
 
@@ -69,8 +69,8 @@ def scientopy__top_trending_topics(
 ):
     """Top trending topics."""
 
-    indicators = growth_indicators_by_topic(
-        criterion,
+    growth_indicators = growth_indicators_by_topic(
+        criterion=criterion,
         time_window=time_window,
         directory=directory,
         database=database,
@@ -79,27 +79,39 @@ def scientopy__top_trending_topics(
         **filters,
     )
 
-    indicators = _filter_indicators_by_custom_topics(
-        indicators=indicators,
+    growth_indicators = growth_indicators.sort_values(
+        by=["average_growth_rate", "OCC", "global_citations"],
+        ascending=[False, False, False],
+    )
+
+    growth_indicators = _filter_indicators_by_custom_topics(
+        indicators=growth_indicators,
         topics_length=topics_length,
         custom_topics=custom_topics,
     )
 
-    indicators = indicators.reset_index()
-    indicators = indicators[[criterion, "average_growth_rate"]]
-    indicators = indicators.sort_values("average_growth_rate", ascending=False)
-    indicators = indicators.reset_index(drop=True)
-    indicators = indicators.rename(
+    growth_indicators = growth_indicators.sort_values(
+        by=["OCC", "global_citations", "average_growth_rate"],
+        ascending=[False, False, False],
+    )
+
+    growth_indicators = growth_indicators.reset_index()
+    growth_indicators = growth_indicators[[criterion, "average_growth_rate"]]
+    growth_indicators = growth_indicators.sort_values(
+        "average_growth_rate", ascending=False
+    )
+    growth_indicators = growth_indicators.reset_index(drop=True)
+    growth_indicators = growth_indicators.rename(
         columns={"average_growth_rate": "Average Growth Rate"}
     )
 
     results = _Results()
-    results.table_ = indicators.copy()
+    results.table_ = growth_indicators.copy()
 
-    indicators = indicators.head(topics_length)
+    growth_indicators = growth_indicators.head(topics_length)
 
     results.plot_ = bar_px(
-        dataframe=indicators,
+        dataframe=growth_indicators,
         x_label="Average Growth Rate",
         y_label=criterion,
         title="Top Trending Topics",
