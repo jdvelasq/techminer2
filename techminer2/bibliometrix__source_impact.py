@@ -26,7 +26,7 @@ def bibliometrix__source_impact(
     impact_measure="h_index",
     topics_length=20,
     topic_min_occ=None,
-    topic_min_citations=0,
+    topic_min_citations=None,
     directory="./",
     database="documents",
     start_year=None,
