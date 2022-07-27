@@ -1,5 +1,5 @@
 """
-Apply a thesaurus to a column
+Apply a thesaurus to a column (TODO)
 ===============================================================================
 
 
@@ -33,8 +33,8 @@ import sys
 
 import pandas as pd
 
-from .map_ import map_
 from ._thesaurus import read_textfile
+from .map_ import map_
 
 
 def vantagepoint__apply_thesaurus(
