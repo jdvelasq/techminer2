@@ -16,7 +16,7 @@ def bibliometrix__dynamics(
     criterion,
     topics_length=10,
     topic_min_occ=None,
-    topic_min_citations=0,
+    topic_min_citations=None,
     directory="./",
     plot=True,
     title=None,
