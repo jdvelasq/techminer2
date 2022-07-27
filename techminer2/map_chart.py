@@ -50,7 +50,7 @@ def map_chart(
     dataframe,
     dim_x=0,
     dim_y=1,
-    delta=1.0,
+    delta=0.2,
 ):
     """Makes a map chart."""
 
@@ -83,8 +83,10 @@ def map_chart(
             x=node_x,
             y=node_y,
             mode="markers+text",
+            hoverinfo="text",
             textposition=textposition,
             text=dataframe.index.tolist(),
+            # hovertext=dataframe.index.tolist(),
         )
     )
     fig.update_layout(
@@ -101,6 +103,7 @@ def map_chart(
 
     x_max = node_x.max()
     x_min = node_x.min()
+    x_range = x_max - x_min
 
     fig.update_xaxes(
         linecolor="white",
@@ -111,7 +114,7 @@ def map_chart(
         tickwidth=2,
         ticklen=10,
         minor=dict(ticklen=5),
-        range=[x_min - delta, x_max + delta],
+        range=[x_min - delta * x_range, x_max + delta * x_range],
     )
     fig.update_yaxes(
         linecolor="white",

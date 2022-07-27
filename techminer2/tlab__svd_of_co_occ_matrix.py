@@ -1,5 +1,5 @@
 """
-SVD of the Co-occurrence Matrix
+SVD of the Co-occurrence Matrix (ok!)
 ===============================================================================
 
 Plots the SVD of the co-occurrence matrix normalized with the **salton** measure.
@@ -21,9 +21,11 @@ The plot is based on the SVD technique used in T-LAB's comparative analysis.
 
 >>> from techminer2 import tlab__svd_of_co_occ_matrix
 >>> svd = tlab__svd_of_co_occ_matrix(
-...     criterion='author_keywords',
-...     topic_min_occ=5,    
+...     criterion='words',
+...     topic_min_occ=4,    
+...     topics_length=30,
 ...     directory=directory,
+...     delta=0.4,
 ... )
 
 >>> svd.plot_.write_html(file_name)
@@ -34,15 +36,16 @@ The plot is based on the SVD technique used in T-LAB's comparative analysis.
 
 
 >>> svd.table_.head()
-                                     dim0      dim1  ...      dim9     dim10
-row                                                  ...                    
-regtech 69:461                  84.928900 -2.721688  ...  0.099540 -0.399477
-fintech 42:406                  61.832611  2.278441  ... -0.384420  0.069563
-blockchain 18:109               25.915631 -4.905159  ...  0.121866 -0.188590
-artificial intelligence 13:065  15.160618  6.382477  ...  0.865626 -0.858157
-compliance 12:020               13.045184 -5.500958  ... -0.142193  0.747093
+                                     dim0       dim1  ...     dim18     dim19
+row                                                   ...                    
+regtech 69:461                  96.128479  -5.992499  ... -0.256446  0.634847
+fintech 42:406                  70.447064  -6.502379  ... -0.253378 -1.142547
+regulatory technology 27:241    34.855736  17.837853  ... -0.170260 -0.245663
+financial technology 24:289     37.628786   9.002861  ...  0.429911  0.681598
+artificial intelligence 19:071  25.652384  -5.882582  ... -1.169009 -0.405793
 <BLANKLINE>
-[5 rows x 11 columns]
+[5 rows x 20 columns]
+
 
 """
 
@@ -68,7 +71,7 @@ def tlab__svd_of_co_occ_matrix(
     dim_y=1,
     svd__n_iter=5,
     random_state=0,
-    delta=0.5,
+    delta=0.2,
     directory="./",
     database="documents",
     start_year=None,

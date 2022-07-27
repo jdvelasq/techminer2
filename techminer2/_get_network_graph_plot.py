@@ -23,7 +23,7 @@ def network_graph_plot(
 
 def _color_node_points(G, node_trace):
     node_adjacencies = []
-    node_hove_text = []
+    node_hover_text = []
     for _, adjacencies in enumerate(G.adjacency()):
         node_adjacencies.append(len(adjacencies[1]))
         text = "<b>" + adjacencies[0] + "</b>"
@@ -36,10 +36,10 @@ def _color_node_points(G, node_trace):
                     text += fmt.format("[...]")
                     break
                 text += fmt.format(key)
-        node_hove_text.append(text)
+        node_hover_text.append(text)
 
     # node_trace.marker.color = node_adjacencies
-    node_trace.hovertext = node_hove_text
+    node_trace.hovertext = node_hover_text
     return node_trace
 
 
