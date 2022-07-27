@@ -1,5 +1,5 @@
 """
-Gantt Chart
+Gantt Chart (ok!)
 ===============================================================================
 
 
@@ -8,8 +8,8 @@ Gantt Chart
 
 >>> from techminer2 import vantagepoint__gantt_chart
 >>> vantagepoint__gantt_chart(
-...     column='author_keywords',
-...     top_n=20, 
+...     criterion='author_keywords',
+...     topics_length=20, 
 ...     directory=directory,
 ... ).write_html(file_name)
 
@@ -24,23 +24,30 @@ from ._read_records import read_records
 
 
 def vantagepoint__gantt_chart(
-    column="author_keywords",
+    criterion="author_keywords",
     directory="./",
-    top_n=10,
+    topics_length=10,
     database="documents",
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
     """Makes a gantt (timeline) chart."""
 
     records = read_records(
-        directory=directory, database=database, use_filter=(database == "documents")
+        directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
     )
 
-    records = records[["year", column]]
-    records = records.dropna(subset=[column])
-    records[column] = records[column].str.split(";")
-    records = records.explode(column)
-    records[column] = records[column].str.strip()
-    records = records.groupby(column).agg({"year": [min, max]})
+    records = records[["year", criterion]]
+    records = records.dropna(subset=[criterion])
+    records[criterion] = records[criterion].str.split(";")
+    records = records.explode(criterion)
+    records[criterion] = records[criterion].str.strip()
+    records = records.groupby(criterion).agg({"year": [min, max]})
     records.columns = records.columns.droplevel()
     records = records.rename(columns={"min": "start", "max": "finish"})
     records["data"] = records.index
@@ -49,16 +56,20 @@ def vantagepoint__gantt_chart(
     records["finish"] = records["finish"].astype(str) + "-12-31"
 
     index = read_records(
-        directory=directory, database=database, use_filter=(database == "documents")
+        directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
     )
-    index = index[column]
+    index = index[criterion]
     index = index.dropna()
     index = index.str.split(";")
     index = index.explode()
     index = index.str.strip()
     index = index.value_counts()
     index = index.sort_values(ascending=False)
-    index = index.head(top_n)
+    index = index.head(topics_length)
 
     records = records.loc[index.index, :]
 
