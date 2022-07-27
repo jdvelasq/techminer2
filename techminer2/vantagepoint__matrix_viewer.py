@@ -1,5 +1,5 @@
 """
-Matrix Viwer
+Matrix Viwer (ok!)
 ===============================================================================
 
 
@@ -11,30 +11,63 @@ Matrix Viwer
 
 >>> file_name = "sphinx/_static/vantagepoint__matrix_viewer-0.html"
 
->>> from techminer2 import vantagepoint__co_occ_matrix_list
->>> matrix = vantagepoint__co_occ_matrix_list(
-...    column='author_keywords',
-...    row='authors',
-...    min_occ=3,
+>>> from techminer2 import vantagepoint__occ_matrix_list
+>>> matrix = vantagepoint__occ_matrix_list(
+...    criterion_for_columns='author_keywords',
+...    criterion_for_rows='authors',
+...    topic_min_occ=3,
 ...    directory=directory,
 ... )
 >>> matrix
                   row                          column  OCC
-0      Arner DW 7:220                  regtech 70:462    6
+0      Arner DW 7:220                  regtech 69:461    6
 1      Arner DW 7:220                  fintech 42:406    5
-2    Buckley RP 6:217                  regtech 70:462    5
-3      Arner DW 7:220     financial regulation 08:091    4
-4    Buckley RP 6:217                  fintech 42:406    4
-5   Zetzsche DA 4:092                  fintech 42:406    4
-6   Zetzsche DA 4:092                  regtech 70:462    4
-7   Barberis JN 4:146                  regtech 70:462    3
-8     Brennan R 3:008           accountability 04:022    3
-9     Brennan R 3:008  data protection officer 03:008    3
-10    Brennan R 3:008                  regtech 70:462    3
-11   Buckley RP 6:217     financial regulation 08:091    3
-12       Ryan P 3:008           accountability 04:022    3
-13       Ryan P 3:008  data protection officer 03:008    3
-14       Ryan P 3:008                  regtech 70:462    3
+2      Arner DW 7:220               blockchain 18:109    1
+3      Arner DW 7:220    regulatory technology 12:047    1
+4      Arner DW 7:220     financial technology 09:032    1
+5      Arner DW 7:220     financial regulation 08:091    4
+6      Arner DW 7:220       financial services 05:135    1
+7      Arner DW 7:220      financial inclusion 05:068    2
+8      Arner DW 7:220    anti-money laundering 04:030    1
+9      Arner DW 7:220     financial innovation 04:007    1
+10     Arner DW 7:220                  finance 03:019    1
+11   Buckley RP 6:217                  regtech 69:461    5
+12   Buckley RP 6:217                  fintech 42:406    4
+13   Buckley RP 6:217               blockchain 18:109    1
+14   Buckley RP 6:217     financial regulation 08:091    3
+15   Buckley RP 6:217       financial services 05:135    1
+16   Buckley RP 6:217      financial inclusion 05:068    2
+17   Buckley RP 6:217    anti-money laundering 04:030    1
+18   Buckley RP 6:217                  finance 03:019    1
+19  Barberis JN 4:146                  regtech 69:461    3
+20  Barberis JN 4:146                  fintech 42:406    2
+21  Barberis JN 4:146    regulatory technology 12:047    1
+22  Barberis JN 4:146     financial technology 09:032    1
+23  Barberis JN 4:146     financial regulation 08:091    2
+24  Barberis JN 4:146       financial services 05:135    1
+25  Barberis JN 4:146      financial inclusion 05:068    1
+26  Barberis JN 4:146    anti-money laundering 04:030    1
+27  Barberis JN 4:146     financial innovation 04:007    1
+28  Barberis JN 4:146                  finance 03:019    1
+29  Zetzsche DA 4:092                  regtech 69:461    4
+30  Zetzsche DA 4:092                  fintech 42:406    4
+31  Zetzsche DA 4:092               blockchain 18:109    1
+32  Zetzsche DA 4:092     financial regulation 08:091    2
+33  Zetzsche DA 4:092      financial inclusion 05:068    2
+34  Zetzsche DA 4:092    anti-money laundering 04:030    1
+35  Zetzsche DA 4:092                  finance 03:019    1
+36    Brennan R 3:008                  regtech 69:461    3
+37    Brennan R 3:008               compliance 12:020    2
+38    Brennan R 3:008           accountability 04:022    3
+39    Brennan R 3:008                     gdpr 03:012    2
+40    Brennan R 3:008  data protection officer 03:008    3
+41    Brennan R 3:008             semantic web 03:002    1
+42       Ryan P 3:008                  regtech 69:461    3
+43       Ryan P 3:008               compliance 12:020    2
+44       Ryan P 3:008           accountability 04:022    3
+45       Ryan P 3:008                     gdpr 03:012    2
+46       Ryan P 3:008  data protection officer 03:008    3
+47       Ryan P 3:008             semantic web 03:002    1
 
 >>> vantagepoint__matrix_viewer(
 ...     matrix,
@@ -51,36 +84,68 @@ Matrix Viwer
 
 >>> from techminer2 import vantagepoint__co_occ_matrix_list
 >>> matrix = vantagepoint__co_occ_matrix_list(
-...    column='author_keywords',
-...    min_occ=8,
+...    criterion='author_keywords',
+...    topic_min_occ=8,
 ...    directory=directory,
 ... )
 >>> matrix
-                                         row  ... OCC
-0                             regtech 70:462  ...  70
-1                             fintech 42:406  ...  42
-2                             fintech 42:406  ...  42
-3                             regtech 70:462  ...  42
-4                          blockchain 18:109  ...  18
-5                          blockchain 18:109  ...  17
-6                             regtech 70:462  ...  17
-7                          blockchain 18:109  ...  14
-8                             fintech 42:406  ...  14
-9             artificial intelligence 13:065  ...  13
-10                         compliance 12:020  ...  12
-11                         compliance 12:020  ...  12
-12                            regtech 70:462  ...  12
-13  regulatory technologies (regtech) 12:047  ...  12
-14            artificial intelligence 13:065  ...  10
-15                            regtech 70:462  ...  10
-16             financial technologies 09:032  ...   9
-17            artificial intelligence 13:065  ...   8
-18               financial regulation 08:091  ...   8
-19               financial regulation 08:091  ...   8
-20                            fintech 42:406  ...   8
-21                            regtech 70:462  ...   8
-<BLANKLINE>
-[22 rows x 3 columns]
+                               row                          column  OCC
+0                   regtech 69:461                  regtech 69:461   69
+1                   regtech 69:461                  fintech 42:406   42
+2                   regtech 69:461               blockchain 18:109   17
+3                   regtech 69:461  artificial intelligence 13:065   10
+4                   regtech 69:461    regulatory technology 12:047    4
+5                   regtech 69:461               compliance 12:020   12
+6                   regtech 69:461     financial technology 09:032    5
+7                   regtech 69:461     financial regulation 08:091    8
+8                   fintech 42:406                  regtech 69:461   42
+9                   fintech 42:406                  fintech 42:406   42
+10                  fintech 42:406               blockchain 18:109   14
+11                  fintech 42:406  artificial intelligence 13:065    8
+12                  fintech 42:406    regulatory technology 12:047    3
+13                  fintech 42:406               compliance 12:020    3
+14                  fintech 42:406     financial technology 09:032    4
+15                  fintech 42:406     financial regulation 08:091    5
+16               blockchain 18:109                  regtech 69:461   17
+17               blockchain 18:109                  fintech 42:406   14
+18               blockchain 18:109               blockchain 18:109   18
+19               blockchain 18:109  artificial intelligence 13:065    2
+20               blockchain 18:109               compliance 12:020    3
+21               blockchain 18:109     financial technology 09:032    1
+22               blockchain 18:109     financial regulation 08:091    1
+23  artificial intelligence 13:065                  regtech 69:461   10
+24  artificial intelligence 13:065                  fintech 42:406    8
+25  artificial intelligence 13:065               blockchain 18:109    2
+26  artificial intelligence 13:065  artificial intelligence 13:065   13
+27  artificial intelligence 13:065    regulatory technology 12:047    2
+28  artificial intelligence 13:065               compliance 12:020    1
+29  artificial intelligence 13:065     financial technology 09:032    2
+30  artificial intelligence 13:065     financial regulation 08:091    2
+31    regulatory technology 12:047                  regtech 69:461    4
+32    regulatory technology 12:047                  fintech 42:406    3
+33    regulatory technology 12:047  artificial intelligence 13:065    2
+34    regulatory technology 12:047    regulatory technology 12:047   12
+35    regulatory technology 12:047     financial technology 09:032    6
+36    regulatory technology 12:047     financial regulation 08:091    2
+37               compliance 12:020                  regtech 69:461   12
+38               compliance 12:020                  fintech 42:406    3
+39               compliance 12:020               blockchain 18:109    3
+40               compliance 12:020  artificial intelligence 13:065    1
+41               compliance 12:020               compliance 12:020   12
+42     financial technology 09:032                  regtech 69:461    5
+43     financial technology 09:032                  fintech 42:406    4
+44     financial technology 09:032               blockchain 18:109    1
+45     financial technology 09:032  artificial intelligence 13:065    2
+46     financial technology 09:032    regulatory technology 12:047    6
+47     financial technology 09:032     financial technology 09:032    9
+48     financial technology 09:032     financial regulation 08:091    2
+49     financial regulation 08:091                  regtech 69:461    8
+50     financial regulation 08:091                  fintech 42:406    5
+51     financial regulation 08:091               blockchain 18:109    1
+52     financial regulation 08:091  artificial intelligence 13:065    2
+53     financial regulation 08:091    regulatory technology 12:047    2
+54     financial regulation 08:091     financial technology 09:032    2
+55     financial regulation 08:091     financial regulation 08:091    8
 
 >>> vantagepoint__matrix_viewer(
 ...     matrix,
