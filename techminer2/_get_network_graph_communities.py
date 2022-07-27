@@ -1,41 +1,10 @@
-"""
-Network Communities
-===============================================================================
+"""Networkx graph communities"""
 
-
-
->>> directory = "data/regtech/"
-
->>> from techminer2 import *
->>> matrix_list = co_occ_matrix_list(
-...    criterion='author_keywords',
-...    topic_min_occ=3,
-...    directory=directory,
-... )
-
->>> from techminer2.co_occ_network import co_occ_network
->>> graph = co_occ_network(matrix_list)
->>> from techminer2.network_community_detection import network_community_detection
->>> graph = network_community_detection(graph, method='louvain')
-
->>> from techminer2.network_communities import network_communities
->>> network_communities(graph).head()
-                         CL_00  ...                CL_06
-0               regtech 70:462  ...  semantic web 03:002
-1               fintech 42:406  ...                     
-2            blockchain 18:109  ...                     
-3            compliance 12:020  ...                     
-4  financial regulation 08:091  ...                     
-<BLANKLINE>
-[5 rows x 7 columns]
-
-
-"""
 import pandas as pd
 
 
 def get_network_graph_communities(graph):
-    """Network Communities"""
+    """Extracts communities from a networkx graph"""
 
     members = {}
     for node, data in graph.nodes(data=True):
