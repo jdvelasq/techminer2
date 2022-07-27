@@ -7,17 +7,24 @@ Collaboration Indicators
 
 >>> from techminer2._indicators.collaboration_indicators_by_topic import collaboration_indicators_by_topic
 >>> collaboration_indicators_by_topic("countries", directory=directory).head()
-                OCC  single_publication  multiple_publication  mp_ratio
-countries                                                              
-United Kingdom   16                  10                     6      0.38
-Australia        13                   4                     9      0.69
-Germany          11                   3                     8      0.73
-United States    10                   6                     4      0.40
-Hong Kong         8                   2                     6      0.75
+                OCC  global_citations  ...  multiple_publication  mp_ratio
+countries                              ...                                
+United Kingdom   16               253  ...                     6      0.38
+Australia        13               236  ...                     9      0.69
+Germany          11               116  ...                     8      0.73
+United States    10               120  ...                     4      0.40
+Hong Kong         8               239  ...                     6      0.75
+<BLANKLINE>
+[5 rows x 6 columns]
 
 >>> from pprint import pprint
 >>> pprint(sorted(collaboration_indicators_by_topic("countries", directory=directory).columns.to_list()))
-['OCC', 'mp_ratio', 'multiple_publication', 'single_publication']
+['OCC',
+ 'global_citations',
+ 'local_citations',
+ 'mp_ratio',
+ 'multiple_publication',
+ 'single_publication']
 
 
 """
