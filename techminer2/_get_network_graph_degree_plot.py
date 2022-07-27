@@ -1,35 +1,11 @@
-"""
-Network Degree Plot
-===============================================================================
+"""Networkx Degree Plot"""
 
-
->>> from techminer2 import *
->>> directory = "data/regtech/"
->>> matrix_list = co_occ_matrix_list(
-...    column='author_keywords',
-...    min_occ=3,
-...    directory=directory,
-... )
-
->>> from techminer2.co_occ_network import co_occ_network
->>> graph = co_occ_network(matrix_list)
->>> from techminer2.network_community_detection import network_community_detection
->>> graph = network_community_detection(graph, method='louvain')
-
->>> file_name = "sphinx/_static/network_degree_plot.html"
->>> from techminer2.network_degree_plot import network_degree_plot
->>> network_degree_plot(graph).write_html(file_name)
-
-.. raw:: html
-
-    <iframe src="_static/network_degree_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
-
-"""
 import pandas as pd
 import plotly.express as px
 
 
 def get_network_graph_degree_plot(graph):
+    """Networkx Degree Plot"""
 
     degrees = []
     for _, adjacencies in enumerate(graph.adjacency()):
