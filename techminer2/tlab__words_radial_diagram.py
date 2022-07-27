@@ -1,5 +1,5 @@
 """
-Words Radial Diagram
+Words Radial Diagram (ok!)
 ===============================================================================
 
 
@@ -8,9 +8,9 @@ Words Radial Diagram
 
 >>> from techminer2 import tlab__words_radial_diagram
 >>> tlab__words_radial_diagram(
-...     term="regtech",
-...     min_occ=4,
-...     column='author_keywords',
+...     criterion='author_keywords',
+...     topic="regtech",
+...     topic_min_occ=4,
 ...     directory=directory,
 ... ).write_html(file_name)
 
@@ -26,38 +26,37 @@ from .vantagepoint__co_occ_matrix_list import vantagepoint__co_occ_matrix_list
 
 
 def tlab__words_radial_diagram(
-    term,
-    column,
-    top_n=None,
-    min_occ=None,
-    max_occ=None,
+    criterion,
+    topic,
+    topics_length=None,
+    topic_min_occ=None,
+    topic_min_citations=None,
     directory="./",
     database="documents",
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
     """Creates a radial diagram of term associations from a co-occurrence matrix."""
 
     matrix_list = vantagepoint__co_occ_matrix_list(
-        criterion=column,
-        row=None,
-        topics_length=None,
-        topic_min_occ=None,
-        topic_min_citations=None,
+        criterion=criterion,
+        topics_length=topics_length,
+        topic_min_occ=topic_min_occ,
+        topic_min_citations=topic_min_citations,
         directory=directory,
         database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
     )
 
     matrix_list = matrix_list[
-        matrix_list["row"].map(lambda x: " ".join(x.split()[:-1]) == term)
+        matrix_list["row"].map(lambda x: " ".join(x.split()[:-1]) == topic)
     ]
 
-    if min_occ is not None:
-        matrix_list = matrix_list[matrix_list["OCC"] >= min_occ]
-
-    if max_occ is not None:
-        matrix_list = matrix_list[matrix_list["OCC"] <= max_occ]
-
-    if top_n is not None:
-        matrix_list = matrix_list.head(top_n)
+    if topics_length is not None:
+        matrix_list = matrix_list.head(topics_length)
 
     # create a empty network
     graph = nx.Graph()
