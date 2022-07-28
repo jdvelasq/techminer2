@@ -32,6 +32,7 @@ setup(
         "cdlib==0.2.6",
         "fuzzywuzzy==0.18.0",
         "networkx==2.6.3",
+        "nltk==3.7",
         "pandas==1.3.5",
         "plotly==5.9.0",
         "python-Levenshtein==0.12.2",
