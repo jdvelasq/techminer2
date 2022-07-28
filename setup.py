@@ -9,7 +9,7 @@ class BuildPyCommand(build_py):
 
         #
         # nltk.download("stopwords")
-        # nltk.download("punkt")
+        nltk.download("punkt")
         nltk.download("brown")
         # nltk.download("averaged_perceptron_tagger")
         # nltk.download("punkt")
