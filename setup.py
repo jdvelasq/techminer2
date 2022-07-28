@@ -48,6 +48,7 @@ setup(
         "PyYAML==5.4.1",
         "scikit-learn==1.0.2",
         "sumy==0.10.0",
+        "textblob==0.15.3",
         "wordcloud==1.5.0",
     ],
     packages=[
