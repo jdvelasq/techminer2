@@ -33,6 +33,7 @@ setup(
     install_requires=[
         "plotly==5.8.2",
         "pandas==1.4.2",
+        "networkx==2.8.4",
     ],
     packages=[
         "techminer2",
