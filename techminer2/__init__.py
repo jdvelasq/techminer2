@@ -113,7 +113,6 @@ from .tlab__word_associations_for_all_items import tlab__word_associations_for_a
 from .tlab__word_associations_mds_map import tlab__word_associations_mds_map
 from .tlab__word_co_occurrences_plot import tlab__word_co_occurrences_plot
 from .tlab__words_radial_diagram import tlab__words_radial_diagram
-from .tm2__abstractive_summarization import tm2__abstractive_summarization
 from .tm2__abstracts_report import tm2__abstracts_report
 from .tm2__clean_countries import tm2__clean_countries
 from .tm2__clean_keywords import tm2__clean_keywords
