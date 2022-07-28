@@ -1330,6 +1330,7 @@ def _process__isbn__column(directory):
     for file in files:
         data = pd.read_csv(file, encoding="utf-8")
         if "isbn" in data.columns:
+            data.isbn = data.isbn.astype(str)
             data.isbn = data.isbn.str.replace("-", "", regex=True)
             data.isbn = data.isbn.str.upper()
         data.to_csv(file, sep=",", encoding="utf-8", index=False)
