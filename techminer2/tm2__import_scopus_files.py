@@ -73,7 +73,6 @@ import sys
 
 import numpy as np
 import pandas as pd
-import yaml
 from nltk.stem import PorterStemmer
 from nltk.tokenize import sent_tokenize
 from textblob import TextBlob
