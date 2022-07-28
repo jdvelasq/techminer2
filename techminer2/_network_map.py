@@ -1,32 +1,40 @@
 """
-Network Map
+Network Map (Deprecated)
 ===============================================================================
 
->>> from techminer2 import *
->>> directory = "data/regtech/"
->>> file_name = "sphinx/images/co_occurrence_network_map.png"
->>> coc_matrix = co_occurrence_matrix(
-...     column='author_keywords', 
-...     min_occ=7, 
-...     directory=directory,
-... )
->>> from techminer2.network_api.network import network
->>> network_ = network(coc_matrix)
->>> from techminer2.network_api.network_map import network_map
->>> network_map(network_).savefig(file_name)
 
-.. image:: images/co_occurrence_network_map.png
-    :width: 700px
-    :align: center
+
+# >>> directory = "data/regtech/"
+# >>> file_name = "sphinx/images/co_occurrence_network_map.png"
+
+# >>> from techminer2 import vantagepoint__co_occ_matrix_list
+# >>> from techminer2._matrix_list_2_network_graph import matrix_list_2_network_graph
+# >>> from techminer2._get_network_graph_indicators import get_network_graph_indicators
+# >>> from techminer2._network_community_detection import network_community_detection
+# >>> from techminer2._network_map import network_map
+
+# >>> matrix_list = vantagepoint__co_occ_matrix_list(
+# ...    criterion='author_keywords',
+# ...    topics_length=3,
+# ...    directory=directory,
+# ... )
+# >>> graph = matrix_list_2_network_graph(matrix_list) 
+# >>> graph = network_community_detection(graph, method='louvain')
+# >>> network_map(graph).savefig(file_name)
+
+
+
+# .. image:: images/co_occurrence_network_map.png
+#     :width: 700px
+#     :align: center
 
 """
-# from .bubble_map import bubble_map
+from ._bubble_map import bubble_map
 
 
 def network_map(
     network,
     color_scheme="clusters",
-    figsize=(7, 7),
 ):
 
     manifold = network["manifold_data"]
@@ -35,7 +43,7 @@ def network_map(
         node_x=manifold["Dim-0"],
         node_y=manifold["Dim-1"],
         node_clusters=manifold["cluster"],
-        node_texts=manifold["node"],
+        node_text=manifold["node"],
         node_sizes=manifold["degree"],
         x_axis_at=0,
         y_axis_at=0,

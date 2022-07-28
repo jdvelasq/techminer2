@@ -51,13 +51,33 @@ crowdfunding 04:030               1     0.014529   0.678571  0.093745
 cryptocurrency 04:029             1     0.011062   0.655172  0.058653
 
 
+
+>>> file_name = "sphinx/_static/bibliometrix__co_occurrence_network_mds_map.html"
+>>> nnet.mds_map_.write_html(file_name)
+
+.. raw:: html
+
+    <iframe src="../../../_static/bibliometrix__co_occurrence_network_mds_map.html" height="600px" width="100%" frameBorder="0"></iframe>
+
+
+>>> file_name = "sphinx/_static/bibliometrix__co_occurrence_network_tsne_map.html"
+>>> nnet.tsne_map_.write_html(file_name)
+
+.. raw:: html
+
+    <iframe src="../../../_static/bibliometrix__co_occurrence_network_tsne_map.html" height="600px" width="100%" frameBorder="0"></iframe>
+
+
 """
 from dataclasses import dataclass
+
+from sklearn.manifold import MDS, TSNE
 
 from ._association_index import association_index
 from ._get_network_graph_communities import get_network_graph_communities
 from ._get_network_graph_degree_plot import get_network_graph_degree_plot
 from ._get_network_graph_indicators import get_network_graph_indicators
+from ._get_network_graph_manifold_map import get_network_graph_manifold_map
 from ._get_network_graph_plot import network_graph_plot
 from ._matrix_2_matrix_list import matrix_2_matrix_list
 from ._matrix_list_2_network_graph import matrix_list_2_network_graph
@@ -71,6 +91,8 @@ class _Results:
     indicators_: None
     plot_: None
     degree_plot_: None
+    mds_map_: None
+    tsne_map_: None
 
 
 def bibliometrix__co_occurrence_network(
@@ -137,5 +159,17 @@ def bibliometrix__co_occurrence_network(
         delta=delta,
     )
     results.degree_plot_ = get_network_graph_degree_plot(graph)
+
+    results.mds_map_ = get_network_graph_manifold_map(
+        matrix_list=matrix_list,
+        graph=graph,
+        manifold_method=MDS(n_components=2),
+    )
+
+    results.tsne_map_ = get_network_graph_manifold_map(
+        matrix_list=matrix_list,
+        graph=graph,
+        manifold_method=TSNE(n_components=2),
+    )
 
     return results
