@@ -1344,6 +1344,7 @@ def _process__eissn__column(directory):
     for file in files:
         data = pd.read_csv(file, encoding="utf-8")
         if "eissn" in data.columns:
+            data.eissn = data.eissn.astype(str)
             data.eissn = data.eissn.str.replace("-", "", regex=True)
             data.eissn = data.eissn.str.upper()
         data.to_csv(file, sep=",", encoding="utf-8", index=False)
