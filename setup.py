@@ -32,7 +32,7 @@ setup(
     provides=["techminer2"],
     install_requires=[
         "plotly==5.8.2",
-        "pandas==1.4.2",
+        "pandas==1.3.5",
         "networkx==2.8.4",
         "cdlib==0.2.6",
         "python-Levenshtein==0.12.2",
