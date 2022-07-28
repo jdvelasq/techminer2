@@ -31,6 +31,7 @@ setup(
     platforms="any",
     provides=["techminer2"],
     install_requires=[
+        "plotly==5.8.2",
         # "graphviz==0.10.1",
         # "ipykernel==4.10.1",
         # "ipywidgets==7.6.5",
