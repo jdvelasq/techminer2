@@ -7,12 +7,10 @@ class BuildPyCommand(build_py):
         #
         import nltk
 
-        #
-        # nltk.download("stopwords")
         nltk.download("punkt")
         nltk.download("brown")
+        # nltk.download("stopwords")
         # nltk.download("averaged_perceptron_tagger")
-        # nltk.download("punkt")
         #
         build_py.run(self)
 
@@ -38,6 +36,7 @@ setup(
         "plotly==5.9.0",
         "python-Levenshtein==0.12.2",
         "PyYAML==5.4.1",
+        "scikit-learn==1.0.2",
         "sumy==0.10.0",
     ],
     packages=[
