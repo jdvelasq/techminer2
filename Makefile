@@ -13,7 +13,3 @@ html:
 	cd sphinx
 	make html
 	cd ..	
-
-wordcloud==1.8.1
-wrapt==1.14.1
-zipp==3.8.0
