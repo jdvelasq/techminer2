@@ -35,6 +35,7 @@ setup(
         "pandas==1.4.2",
         "networkx==2.8.4",
         "cdlib==0.2.6",
+        "python-Levenshtein==0.12.2",
     ],
     packages=[
         "techminer2",
