@@ -1,22 +1,31 @@
 from setuptools import setup
-from setuptools.command.build_py import build_py
+
+# from setuptools.command.build_py import build_py
+
+# class BuildPyCommand(build_py):
+#     def run(self):
+#         #
+#         import nltk
+
+#         nltk.download("punkt")
+#         nltk.download("brown")
+#         # nltk.download("stopwords")
+#         # nltk.download("averaged_perceptron_tagger")
+#         #
+#         build_py.run(self)
 
 
-class BuildPyCommand(build_py):
-    def run(self):
-        #
-        import nltk
+def _post_install():
+    import nltk
 
-        nltk.download("punkt")
-        nltk.download("brown")
-        # nltk.download("stopwords")
-        # nltk.download("averaged_perceptron_tagger")
-        #
-        build_py.run(self)
+    nltk.download("punkt")
+    nltk.download("brown")
+    nltk.download("stopwords")
+    nltk.download("averaged_perceptron_tagger")
 
 
 setup(
-    cmdclass={"build_py": BuildPyCommand},
+    # cmdclass={"build_py": BuildPyCommand},
     name="techminer2",
     version="0.1.0",
     author="Juan D. Velasquez",
@@ -64,3 +73,5 @@ setup(
         "Programming Language :: Python :: 3.8",
     ],
 )
+
+_post_install()
