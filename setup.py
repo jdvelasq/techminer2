@@ -32,6 +32,7 @@ setup(
     provides=["techminer2"],
     install_requires=[
         "cdlib==0.2.6",
+        "fuzzywuzzy==0.18.0",
         "networkx==2.6.3",
         "pandas==1.3.5",
         "plotly==5.8.2",
