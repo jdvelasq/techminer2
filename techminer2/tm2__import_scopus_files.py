@@ -104,7 +104,7 @@ def tm2__import_scopus_files(
     _drop_na_columns_in_database_files(directory)
     _remove_accents_in_database_files(directory)
     _remove_stranger_chars_in_database_files(directory)
-    _create_filter_file(directory)
+    # _create_filter_file(directory)
     #
     _process__abstract__column(directory)
     _process__authors_id__column(directory)
@@ -1033,29 +1033,29 @@ def _extract_keywords_from_database_files(directory):
 #         data.to_csv(file, sep=",", encoding="utf-8", index=False)
 
 
-def _create_filter_file(directory):
+# def _create_filter_file(directory):
 
-    sys.stdout.write("--INFO-- Creating `filter.yaml` file\n")
+#     sys.stdout.write("--INFO-- Creating `filter.yaml` file\n")
 
-    file_name = os.path.join(directory, "processed/_documents.csv")
-    documents = pd.read_csv(file_name, encoding="utf-8")
+#     file_name = os.path.join(directory, "processed/_documents.csv")
+#     documents = pd.read_csv(file_name, encoding="utf-8")
 
-    filter_ = {}
-    filter_["first_year"] = int(documents.year.min())
-    filter_["last_year"] = int(documents.year.max())
-    filter_["min_citations"] = 0
-    filter_["max_citations"] = int(documents.global_citations.max())
-    filter_["bradford"] = 3
+#     filter_ = {}
+#     filter_["first_year"] = int(documents.year.min())
+#     filter_["last_year"] = int(documents.year.max())
+#     filter_["min_citations"] = 0
+#     filter_["max_citations"] = int(documents.global_citations.max())
+#     filter_["bradford"] = 3
 
-    document_types = documents.document_type.dropna().unique()
-    for document_type in document_types:
-        document_type = document_type.lower()
-        document_type = document_type.replace(" ", "_")
-        filter_[str(document_type)] = True
+#     document_types = documents.document_type.dropna().unique()
+#     for document_type in document_types:
+#         document_type = document_type.lower()
+#         document_type = document_type.replace(" ", "_")
+#         filter_[str(document_type)] = True
 
-    yaml_filename = os.path.join(directory, "processed", "filter.yaml")
-    with open(yaml_filename, "wt", encoding="utf-8") as yaml_file:
-        yaml.dump(filter_, yaml_file, sort_keys=True)
+#     yaml_filename = os.path.join(directory, "processed", "filter.yaml")
+#     with open(yaml_filename, "wt", encoding="utf-8") as yaml_file:
+#         yaml.dump(filter_, yaml_file, sort_keys=True)
 
 
 def _complete__source_abbr__column(directory):
