@@ -35,7 +35,7 @@ setup(
         "fuzzywuzzy==0.18.0",
         "networkx==2.6.3",
         "pandas==1.3.5",
-        "plotly==5.8.2",
+        "plotly==5.9.0",
         "python-Levenshtein==0.12.2",
         "sumy==0.10.0",
     ],
