@@ -5,12 +5,12 @@ from setuptools.command.build_py import build_py
 class BuildPyCommand(build_py):
     def run(self):
         #
-        # import nltk
+        import nltk
 
         #
         # nltk.download("stopwords")
         # nltk.download("punkt")
-        # nltk.download("brown")
+        nltk.download("brown")
         # nltk.download("averaged_perceptron_tagger")
         # nltk.download("punkt")
         #
