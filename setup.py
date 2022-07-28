@@ -37,6 +37,7 @@ setup(
         "pandas==1.3.5",
         "plotly==5.9.0",
         "python-Levenshtein==0.12.2",
+        "PyYAML==5.4.1",
         "sumy==0.10.0",
     ],
     packages=[
