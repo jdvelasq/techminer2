@@ -34,6 +34,7 @@ setup(
         "plotly==5.8.2",
         "pandas==1.4.2",
         "networkx==2.8.4",
+        "cdlib==0.2.6",
     ],
     packages=[
         "techminer2",
