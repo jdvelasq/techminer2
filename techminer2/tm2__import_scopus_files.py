@@ -341,6 +341,157 @@ def _create__local_citations__column_in_references_database(directory):
 def _create_references(directory, disable_progress_bar=False):
 
     references_path = os.path.join(directory, "processed/_references.csv")
+    if os.path.exists(references_path):
+        _create_referneces_from_references_csv_file(directory, disable_progress_bar)
+    else:
+        _create_references_from_documents_csv_file(directory, disable_progress_bar)
+
+
+def _create_references_from_documents_csv_file(directory, disable_progress_bar=False):
+
+    sys.stdout.write("--INFO-- Creating references from  `documents.csv` file.\n")
+
+    documents_path = os.path.join(directory, "processed/_documents.csv")
+    documents = pd.read_csv(documents_path)
+
+    # references como aparecen en los articulos
+    raw_cited_references = documents.global_references.copy()
+    raw_cited_references = raw_cited_references.str.lower()
+    raw_cited_references = raw_cited_references.str.split(";")
+    raw_cited_references = raw_cited_references.explode()
+    raw_cited_references = raw_cited_references.str.strip()
+    raw_cited_references = raw_cited_references.dropna()
+    raw_cited_references = raw_cited_references.drop_duplicates()
+    raw_cited_references = raw_cited_references.reset_index(drop=True)
+
+    # record in document.csv ---> reference
+    thesaurus = {t: None for t in raw_cited_references.tolist()}
+
+    # references = pd.read_csv(references_path)
+
+    # marcador para indicar si la referencia fue encontrada
+    references = documents.copy()
+    references["found"] = False
+
+    # busqueda por doi
+    sys.stdout.write("--INFO-- Searching `references` using DOI\n")
+    with tqdm(total=len(references), disable=disable_progress_bar) as pbar:
+        for doi, article in zip(references.doi, references.article):
+            for key in thesaurus.keys():
+                if not pd.isna(doi) and doi in key:
+                    thesaurus[key] = article
+                    references.loc[references.doi == doi, "found"] = True
+            pbar.update(1)
+
+    # Reduce la base de búsqueda
+    references = references[~references.found]
+
+    # Busqueda por (año, autor y tttulo)
+    sys.stdout.write("--INFO-- Searching `references` using (year, title, author)\n")
+    with tqdm(total=len(references), disable=disable_progress_bar) as pbar:
+        for article, year, authors, title in zip(
+            references.article,
+            references.year,
+            references.authors,
+            references.title,
+        ):
+            year = str(year)
+            author = authors.split()[0].lower()
+            title = (
+                title.lower()
+                .replace(".", "")
+                .replace(",", "")
+                .replace(":", "")
+                .replace(";", "")
+                .replace("-", " ")
+                .replace("'", "")
+            )
+
+            for key in thesaurus.keys():
+                text = key
+                text = (
+                    text.lower()
+                    .replace(".", "")
+                    .replace(",", "")
+                    .replace(":", "")
+                    .replace(";", "")
+                    .replace("-", " ")
+                    .replace("'", "")
+                )
+
+                if author in text and str(year) in text and title[:29] in text:
+                    thesaurus[key] = article
+                    references.found[references.article == article] = True
+                elif author in text and str(year) in text and title[-29:] in text:
+                    thesaurus[key] = article
+                    references.found[references.article == article] = True
+
+            pbar.update(1)
+
+    # Reduce la base de búsqueda
+    references = references[~references.found]
+
+    # Busqueda por titulo
+    sys.stdout.write("--INFO-- Searching `references` using (title)\n")
+    with tqdm(total=len(references), disable=disable_progress_bar) as pbar:
+        for article, title in zip(
+            references.article,
+            references.title,
+        ):
+
+            title = (
+                title.lower()
+                .replace(".", "")
+                .replace(",", "")
+                .replace(":", "")
+                .replace(";", "")
+                .replace("-", " ")
+                .replace("'", "")
+            )
+
+            for key in thesaurus.keys():
+                text = key
+                text = (
+                    text.lower()
+                    .replace(".", "")
+                    .replace(",", "")
+                    .replace(":", "")
+                    .replace(";", "")
+                    .replace("-", " ")
+                    .replace("'", "")
+                )
+
+                if title in text:
+                    thesaurus[key] = article
+                    references.found[references.article == article] = True
+
+            pbar.update(1)
+    #
+    # Crea la columna de referencias locales
+    #
+    documents["local_references"] = documents.global_references.copy()
+    documents["local_references"] = documents["local_references"].str.lower()
+    documents["local_references"] = documents["local_references"].str.split(";")
+    documents["local_references"] = documents["local_references"].map(
+        lambda x: [t.strip() for t in x] if isinstance(x, list) else x
+    )
+    documents["local_references"] = documents["local_references"].map(
+        lambda x: [thesaurus.get(t, "") for t in x] if isinstance(x, list) else x
+    )
+    documents["local_references"] = documents["local_references"].map(
+        lambda x: [t for t in x if t is not None] if isinstance(x, list) else x
+    )
+    documents["local_references"] = documents["local_references"].str.join("; ")
+    documents["local_references"] = documents["local_references"].map(
+        lambda x: pd.NA if x == "" else x
+    )
+    #
+    documents.to_csv(documents_path, index=False)
+
+
+def _create_referneces_from_references_csv_file(directory, disable_progress_bar=False):
+
+    references_path = os.path.join(directory, "processed/_references.csv")
 
     if not os.path.exists(references_path):
         sys.stdout.write(f"--WARN-- The  file {references_path} does not exists.\n")
