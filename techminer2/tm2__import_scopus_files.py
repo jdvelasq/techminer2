@@ -81,9 +81,9 @@ from tqdm import tqdm
 from ._create_countries_thesaurus import create_countries_thesaurus
 from ._create_keywords_thesaurus import create_keywords_thesaurus
 from ._create_organizations_thesaurus import create_organizations_thesaurus
-from .tm2__clean_countries import tm2__clean_countries
-from .tm2__clean_keywords import tm2__clean_keywords
-from .tm2__clean_organizations import tm2__clean_organizations
+from .vantagepoint__clean_countries import vantagepoint__clean_countries
+from .vantagepoint__clean_keywords import vantagepoint__clean_keywords
+from .vantagepoint__clean_organizations import vantagepoint__clean_organizations
 
 
 def tm2__import_scopus_files(
@@ -136,11 +136,11 @@ def tm2__import_scopus_files(
     #
     _create__raw_words__column(directory)
     create_keywords_thesaurus(directory=directory)
-    tm2__clean_keywords(directory)
+    vantagepoint__clean_keywords(directory)
     #
     # -------------------------------------------------------------------------
     create_countries_thesaurus(directory)
-    tm2__clean_countries(directory)
+    vantagepoint__clean_countries(directory)
     #
     _create__num_global_references__column(directory)
     _complete__source_abbr__column(directory)
@@ -155,7 +155,7 @@ def tm2__import_scopus_files(
     #
     # Organizations ------------------------------------------------------------
     create_organizations_thesaurus(directory=directory)
-    tm2__clean_organizations(directory=directory)
+    vantagepoint__clean_organizations(directory=directory)
 
     sys.stdout.write("--INFO-- Process finished!!!\n")
     _report_records(directory)

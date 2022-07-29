@@ -9,8 +9,8 @@ Finds a string in the terms of a thesaurus.
 
 >>> from techminer2 import vantagepoint__find_string
 >>> vantagepoint__find_string(
-...     thesaurus_file="keywords.txt",
 ...     contains='artificial intelligence',
+...     thesaurus_file="keywords.txt",
 ...     directory=directory,
 ... )
 artificial intelligence
@@ -39,10 +39,10 @@ from ._thesaurus import load_file_as_dict
 
 
 def vantagepoint__find_string(
-    thesaurus_file,
     contains=None,
     startswith=None,
     endswith=None,
+    thesaurus_file="keywords.txt",
     directory="./",
 ):
     """Find the specified keyword and reorder the thesaurus to reflect the search."""

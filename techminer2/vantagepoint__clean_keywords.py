@@ -7,8 +7,8 @@ Cleans the keywords columns using the `keywords.txt` file.
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import tm2__clean_keywords
->>> tm2__clean_keywords(directory)
+>>> from techminer2 import vantagepoint__clean_keywords
+>>> vantagepoint__clean_keywords(directory)
 --INFO-- Applying `keywords.txt` thesaurus to author/index keywords and abstract/title words
 
 """
@@ -25,7 +25,7 @@ import pandas as pd
 from ._thesaurus import read_textfile
 
 
-def tm2__clean_keywords(directory="./"):
+def vantagepoint__clean_keywords(directory="./"):
     """Clean all words columns in the records using a thesaurus (keywrords.txt)."""
 
     sys.stdout.write(
