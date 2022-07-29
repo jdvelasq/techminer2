@@ -1,5 +1,5 @@
 """
-Auto-correlation Matrix (TODO)
+Auto-correlation Matrix
 ===============================================================================
 
 Returns an auto-correlation matrix.
@@ -9,64 +9,86 @@ Returns an auto-correlation matrix.
 
 >>> from techminer2 import vantagepoint__auto_corr_matrix
 >>> vantagepoint__auto_corr_matrix(
-...     column='authors',
-...     top_n=10,
+...     criterion='authors',
+...     topics_length=10,
 ...     directory=directory,
 ... )
-                   Arner DW 7:220  ...  Hamdan A 2:011
-Arner DW 7:220           1.000000  ...       -0.030101
-Buckley RP 6:217         0.994905  ...       -0.030133
-Barberis JN 4:146        0.932362  ...       -0.026364
-Zetzsche DA 4:092        0.948713  ...       -0.029984
-Brennan R 3:008         -0.018995  ...       -0.024252
-Ryan P 3:008            -0.018995  ...       -0.024252
-Butler T 2:005          -0.026161  ...       -0.033401
-Crane M 2:008           -0.019294  ...       -0.024634
-Das SR 2:028            -0.018175  ...       -0.023205
-Hamdan A 2:011          -0.030101  ...        1.000000
+authors            Arner DW 7:220  ...  Mayer N 2:002
+authors                            ...               
+Arner DW 7:220           1.000000  ...            0.0
+Buckley RP 6:217         0.882735  ...            0.0
+Barberis JN 4:146        0.662994  ...            0.0
+Zetzsche DA 4:092        0.662994  ...            0.0
+Brennan R 3:008          0.000000  ...            0.0
+Ryan P 3:008             0.000000  ...            0.0
+Hamdan A 2:011           0.000000  ...            0.0
+Singh C 2:007            0.000000  ...            0.0
+Sarea A 2:006            0.000000  ...            0.0
+Mayer N 2:002            0.000000  ...            1.0
 <BLANKLINE>
 [10 rows x 10 columns]
 
 
 """
-from .vantagepoint__co_occ_matrix import vantagepoint__co_occ_matrix
+import pandas as pd
+
+from .vantagepoint__tf_matrix import vantagepoint__tf_matrix
 
 
 def vantagepoint__auto_corr_matrix(
     criterion,
     method="pearson",
     topics_length=50,
+    topic_min_occ=None,
+    topic_min_citations=None,
+    custom_topics=None,
     directory="./",
     database="documents",
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
     """Returns an auto-correlation."""
 
-    coc_matrix = vantagepoint__co_occ_matrix(
+    tf_matrix = vantagepoint__tf_matrix(
         criterion=criterion,
-        top_n=None,
-        min_occ=None,
-        max_occ=None,
+        topics_length=topics_length,
+        topic_min_occ=topic_min_occ,
+        topic_min_citations=topic_min_citations,
+        custom_topics=custom_topics,
         directory=directory,
         database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
     )
 
-    coc_matrix = _select_top_n_from_columns(matrix=coc_matrix, top_n=topics_length)
-
-    coc_matrix.columns = coc_matrix.columns.to_list()
-
-    matrix = coc_matrix.corr(method=method)
-
-    return matrix
-
-
-def _select_top_n_from_columns(matrix, top_n):
-
-    terms = matrix.columns.to_list()
-    sorted_terms = sorted(
-        terms, key=lambda x: x.split()[-1].split(":")[0], reverse=True
+    auto_corr_matrix = pd.DataFrame(
+        0.0,
+        columns=tf_matrix.columns,
+        index=tf_matrix.columns,
     )
-    sorted_terms = sorted_terms[:top_n]
 
-    matrix = matrix[sorted_terms]
+    for col in tf_matrix.columns:
+        for row in tf_matrix.columns:
+            if col == row:
+                auto_corr_matrix.loc[row, col] = 1.0
+            else:
+                matrix = tf_matrix[[col, row]].copy()
+                matrix = matrix.loc[(matrix != 0).any(axis=1)]
+                matrix = matrix.astype(float)
+                sumproduct = matrix[row].mul(matrix[col], axis=0).sum()
+                if matrix.shape[0] == 0:
+                    corr = 0.0
+                elif sumproduct == 0.0:
+                    corr = 0.0
+                elif matrix.shape[0] == 1:
+                    corr = 1.0
+                elif matrix.shape[0] > 1:
+                    corr = tf_matrix[col].corr(other=tf_matrix[row], method=method)
+                else:
+                    corr = 0.0
+                auto_corr_matrix.loc[row, col] = corr
+                auto_corr_matrix.loc[col, row] = corr
 
-    return matrix
+    return auto_corr_matrix
