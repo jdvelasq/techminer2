@@ -1,5 +1,5 @@
 """
-Cross-correlation Matrix List (TODO)
+Cross-correlation Matrix List
 ===============================================================================
 
 Returns an auto-correlation matrix.
