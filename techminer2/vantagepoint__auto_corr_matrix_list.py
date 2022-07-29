@@ -1,5 +1,5 @@
 """
-Auto-correlation Matrix List (TODO)
+Auto-correlation Matrix List
 ===============================================================================
 
 Returns an auto-correlation matrix.
