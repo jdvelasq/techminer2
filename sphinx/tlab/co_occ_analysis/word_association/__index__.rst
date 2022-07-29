@@ -6,12 +6,12 @@ Word Association
     * **Graphs**
 
         .. toctree::
-            tlab__words_radial_diagram
+            tlab__word_associations_radial_diagram
 
         * Cosine association
 
         .. toctree::
-            tlab__word_co_occurrentes_plot
+            tlab__word_associations_co_occurrences_plot
             tlab__word_associations_mds_map
 
 

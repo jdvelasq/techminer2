@@ -108,11 +108,15 @@ from .tlab__svd_of_co_occ_matrix import tlab__svd_of_co_occ_matrix
 from .tlab__svd_of_tf_matrix import tlab__svd_of_tf_matrix
 from .tlab__text_screening import tlab__text_screening
 from .tlab__thematic_analysis import tlab__thematic_analysis
+from .tlab__word_associations_co_occurrences_plot import (
+    tlab__word_associations_co_occurrences_plot,
+)
 from .tlab__word_associations_for_a_item import tlab__word_associations_for_a_item
 from .tlab__word_associations_for_all_items import tlab__word_associations_for_all_items
 from .tlab__word_associations_mds_map import tlab__word_associations_mds_map
-from .tlab__word_co_occurrences_plot import tlab__word_co_occurrences_plot
-from .tlab__words_radial_diagram import tlab__words_radial_diagram
+from .tlab__word_associations_radial_diagram import (
+    tlab__word_associations_radial_diagram,
+)
 from .tm2__abstracts_report import tm2__abstracts_report
 from .tm2__coverage import tm2__coverage
 from .tm2__extractive_summarization import tm2__extractive_summarization

@@ -6,8 +6,8 @@ Words Radial Diagram
 >>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/tlab__words_radial_diagram.html"
 
->>> from techminer2 import tlab__words_radial_diagram
->>> tlab__words_radial_diagram(
+>>> from techminer2 import tlab__word_associations_radial_diagram
+>>> tlab__word_associations_radial_diagram(
 ...     criterion='words',
 ...     topic="regtech",
 ...     topic_min_occ=4,
@@ -16,7 +16,7 @@ Words Radial Diagram
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/tlab__words_radial_diagram.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../../_static/tlab__word_associations_radial_diagram.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 import networkx as nx
@@ -25,7 +25,7 @@ from ._get_network_graph_plot import network_graph_plot
 from .vantagepoint__co_occ_matrix_list import vantagepoint__co_occ_matrix_list
 
 
-def tlab__words_radial_diagram(
+def tlab__word_associations_radial_diagram(
     criterion,
     topic,
     topics_length=None,

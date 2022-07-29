@@ -1,39 +1,34 @@
 """
-Word Co-occurrences Plot
+Word Associations Co-occurrences Plot
 ===============================================================================
 
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/tlab__word_co_occurrences_plot.html"
+>>> file_name = "sphinx/_static/tlab__word_associations_co_occurrences_plot.html"
 
->>> from techminer2 import tlab__word_co_occurrences_plot
->>> tlab__word_co_occurrences_plot(
+>>> from techminer2 import tlab__word_associations_co_occurrences_plot
+>>> tlab__word_associations_co_occurrences_plot(
 ...     criterion='words',
 ...     topic="regtech",
-...     topic_min_occ=4,
+...     topics_length=10,
 ...     directory=directory,
 ... ).write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../_static/tlab__word_co_occurrentes_plot.html" height="1000px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/tlab__word_associations_co_occurrences_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 from ._plots.bar_plot import bar_plot
-from ._plots.cleveland_plot import cleveland_plot
-from ._plots.column_plot import column_plot
-from ._plots.line_plot import line_plot
-from ._plots.pie_plot import pie_plot
 from .vantagepoint__co_occ_matrix_list import vantagepoint__co_occ_matrix_list
 
 
-def tlab__word_co_occurrences_plot(
+def tlab__word_associations_co_occurrences_plot(
     criterion,
     topic,
     topics_length=None,
     topic_min_occ=None,
     topic_min_citations=None,
-    plot="bar",
     directory="./",
     database="documents",
     start_year=None,
@@ -59,6 +54,13 @@ def tlab__word_co_occurrences_plot(
     ]
 
     matrix_list = matrix_list[matrix_list["row"] != matrix_list["column"]]
+    matrix_list["total_OCC"] = matrix_list["row"].map(lambda x: x.split())
+    matrix_list["total_OCC"] = matrix_list["total_OCC"].str[-1]
+    matrix_list["total_OCC"] = matrix_list["total_OCC"].str.split(":")
+    matrix_list["total_OCC"] = matrix_list["total_OCC"].str[-1]
+    matrix_list["total_OCC"] = matrix_list["total_OCC"].astype(int)
+    matrix_list = matrix_list.assign(OCC=matrix_list["OCC"] / matrix_list["total_OCC"])
+    matrix_list["OCC"] = matrix_list["OCC"].round(2)
 
     matrix_list = matrix_list[["column", "OCC"]]
 
@@ -68,18 +70,12 @@ def tlab__word_co_occurrences_plot(
     matrix_list = matrix_list.set_index("column")
     matrix_list = matrix_list.sort_values(by="OCC", ascending=False)
 
-    plot_function = {
-        "bar": bar_plot,
-        "column": column_plot,
-        "line": line_plot,
-        "pie": pie_plot,
-        "cleveland": cleveland_plot,
-    }[plot]
+    # matrix_list = matrix_list.rename(columns={"OCC": "% OCC"})
 
-    fig = plot_function(
+    fig = bar_plot(
         dataframe=matrix_list,
         metric="OCC",
-        title=None,
+        title="(%) Co-occurrence with '{topic}'",
     )
     fig.update_layout(
         yaxis_title=None,
