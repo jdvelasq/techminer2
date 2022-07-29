@@ -8,9 +8,9 @@ Returns an auto-correlation matrix.
 >>> directory = "data/regtech/"
 
 >>> vantagepoint__cross_corr_matrix_list(
-...     column='authors',
-...     by="author_keywords",
-...     top_n=10,
+...     criterion_for_columns='authors',
+...     criterion_for_rows="author_keywords",
+...     topics_length=10,
 ...     directory=directory,
 ... )
                   row             column      CORR
@@ -20,43 +20,48 @@ Returns an auto-correlation matrix.
 3     Brennan R 3:008       Ryan P 3:008  1.000000
 4    Buckley RP 6:217   Buckley RP 6:217  1.000000
 ..                ...                ...       ...
-95      Turki M 2:011   Buckley RP 6:217 -0.249260
-96       Das SR 2:028     Hamdan A 2:011 -0.258227
-97       Das SR 2:028      Turki M 2:011 -0.258227
-98     Hamdan A 2:011       Das SR 2:028 -0.258227
-99      Turki M 2:011       Das SR 2:028 -0.258227
+71      Turki M 2:011  Barberis JN 4:146 -0.113228
+72     Arner DW 7:220     Hamdan A 2:011 -0.292322
+73     Arner DW 7:220      Turki M 2:011 -0.292322
+74     Hamdan A 2:011     Arner DW 7:220 -0.292322
+75      Turki M 2:011     Arner DW 7:220 -0.292322
 <BLANKLINE>
-[100 rows x 3 columns]
+[76 rows x 3 columns]
 
 """
+from .vantagepoint__auto_corr_matrix_list import _transform_to_matrix_list
 from .vantagepoint__cross_corr_matrix import vantagepoint__cross_corr_matrix
 
 
 def vantagepoint__cross_corr_matrix_list(
-    column,
-    by,
+    criterion_for_columns=None,
+    criterion_for_rows=None,
     method="pearson",
-    top_n=50,
+    topics_length=None,
+    topic_min_occ=None,
+    topic_min_citations=None,
     directory="./",
     database="documents",
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
     """Returns an auto-correlation matrix list."""
 
     matrix = vantagepoint__cross_corr_matrix(
-        column=column,
-        by=by,
+        criterion_for_columns=criterion_for_columns,
+        criterion_for_rows=criterion_for_rows,
         method=method,
-        top_n=top_n,
+        topics_length=topics_length,
+        topic_min_occ=topic_min_occ,
+        topic_min_citations=topic_min_citations,
         directory=directory,
         database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
     )
 
-    matrix = matrix.melt(value_name="CORR", var_name="column", ignore_index=False)
-    matrix = matrix.reset_index()
-    matrix = matrix.rename(columns={"index": "row"})
-    matrix = matrix.sort_values(
-        by=["CORR", "row", "column"], ascending=[False, True, True]
-    )
-    matrix = matrix.reset_index(drop=True)
+    matrix = _transform_to_matrix_list(criterion_for_columns, matrix)
 
     return matrix
