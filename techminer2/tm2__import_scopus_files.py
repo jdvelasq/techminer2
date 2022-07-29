@@ -378,9 +378,10 @@ def _create_references_from_documents_csv_file(directory, disable_progress_bar=F
     with tqdm(total=len(references), disable=disable_progress_bar) as pbar:
         for doi, article in zip(references.doi, references.article):
             for key in thesaurus.keys():
-                if not pd.isna(doi) and doi in key:
-                    thesaurus[key] = article
-                    references.loc[references.doi == doi, "found"] = True
+                if thesaurus[key] is None:
+                    if not pd.isna(doi) and doi in key:
+                        thesaurus[key] = article
+                        references.loc[references.doi == doi, "found"] = True
             pbar.update(1)
 
     # Reduce la base de búsqueda
@@ -408,23 +409,24 @@ def _create_references_from_documents_csv_file(directory, disable_progress_bar=F
             )
 
             for key in thesaurus.keys():
-                text = key
-                text = (
-                    text.lower()
-                    .replace(".", "")
-                    .replace(",", "")
-                    .replace(":", "")
-                    .replace(";", "")
-                    .replace("-", " ")
-                    .replace("'", "")
-                )
+                if thesaurus[key] is None:
+                    text = key
+                    text = (
+                        text.lower()
+                        .replace(".", "")
+                        .replace(",", "")
+                        .replace(":", "")
+                        .replace(";", "")
+                        .replace("-", " ")
+                        .replace("'", "")
+                    )
 
-                if author in text and str(year) in text and title[:29] in text:
-                    thesaurus[key] = article
-                    references.found[references.article == article] = True
-                elif author in text and str(year) in text and title[-29:] in text:
-                    thesaurus[key] = article
-                    references.found[references.article == article] = True
+                    if author in text and str(year) in text and title[:29] in text:
+                        thesaurus[key] = article
+                        references.found[references.article == article] = True
+                    elif author in text and str(year) in text and title[-29:] in text:
+                        thesaurus[key] = article
+                        references.found[references.article == article] = True
 
             pbar.update(1)
 
@@ -524,9 +526,10 @@ def _create_referneces_from_references_csv_file(directory, disable_progress_bar=
     with tqdm(total=len(references), disable=disable_progress_bar) as pbar:
         for doi, article in zip(references.doi, references.article):
             for key in thesaurus.keys():
-                if not pd.isna(doi) and doi in key:
-                    thesaurus[key] = article
-                    references.loc[references.doi == doi, "found"] = True
+                if thesaurus[key] is None:
+                    if not pd.isna(doi) and doi in key:
+                        thesaurus[key] = article
+                        references.loc[references.doi == doi, "found"] = True
             pbar.update(1)
 
     # Reduce la base de búsqueda
@@ -554,23 +557,24 @@ def _create_referneces_from_references_csv_file(directory, disable_progress_bar=
             )
 
             for key in thesaurus.keys():
-                text = key
-                text = (
-                    text.lower()
-                    .replace(".", "")
-                    .replace(",", "")
-                    .replace(":", "")
-                    .replace(";", "")
-                    .replace("-", " ")
-                    .replace("'", "")
-                )
+                if thesaurus[key] is None:
+                    text = key
+                    text = (
+                        text.lower()
+                        .replace(".", "")
+                        .replace(",", "")
+                        .replace(":", "")
+                        .replace(";", "")
+                        .replace("-", " ")
+                        .replace("'", "")
+                    )
 
-                if author in text and str(year) in text and title[:29] in text:
-                    thesaurus[key] = article
-                    references.found[references.article == article] = True
-                elif author in text and str(year) in text and title[-29:] in text:
-                    thesaurus[key] = article
-                    references.found[references.article == article] = True
+                    if author in text and str(year) in text and title[:29] in text:
+                        thesaurus[key] = article
+                        references.found[references.article == article] = True
+                    elif author in text and str(year) in text and title[-29:] in text:
+                        thesaurus[key] = article
+                        references.found[references.article == article] = True
 
             pbar.update(1)
 
