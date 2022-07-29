@@ -21,8 +21,8 @@ The plot is based on the SVD technique used in T-LAB's comparative analysis.
 
 >>> from techminer2 import tlab__svd_of_tf_matrix
 >>> svd = tlab__svd_of_tf_matrix(
-...     column='author_keywords',
-...     min_occ=6,
+...     criterion='author_keywords',
+...     topic_min_occ=6,
 ...     directory=directory,
 ... )
 
@@ -35,15 +35,15 @@ The plot is based on the SVD technique used in T-LAB's comparative analysis.
 
 
 >>> svd.table_.head()
-                                              dim0  ...      dim9
-regtech 70:462                            8.081926  ... -0.157125
-fintech 42:406                            5.813552  ...  0.014649
-blockchain 18:109                         2.447622  ... -0.095429
-artificial intelligence 13:065            1.439807  ... -0.696927
-regulatory technologies (regtech) 12:047  0.600339  ... -0.220161
+                                    dim0      dim1  ...      dim8      dim9
+author_keywords                                     ...                    
+regtech 69:461                  8.027279 -0.675318  ...  0.054604 -0.178393
+fintech 42:406                  5.832399  0.584421  ... -0.058765  0.034144
+blockchain 18:109               2.456070 -1.152906  ... -0.066790 -0.094229
+artificial intelligence 13:065  1.444791  1.461649  ...  0.116242 -0.692996
+regulatory technology 12:047    0.602569  2.623255  ... -1.191997 -0.215982
 <BLANKLINE>
 [5 rows x 10 columns]
-
 
 """
 import pandas as pd
@@ -60,24 +60,36 @@ class _Result:
 
 
 def tlab__svd_of_tf_matrix(
-    column,
-    min_occ=None,
-    max_occ=None,
-    scheme=None,
-    directory="./",
+    criterion,
+    topics_length=None,
+    topic_min_occ=None,
+    topic_min_citations=None,
+    custom_topics=None,
     dim_x=0,
     dim_y=1,
     svd__n_iter=5,
     svd__random_state=0,
     delta=1,
+    scheme=None,
+    directory="./",
+    database="documents",
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
 
     matrix = vantagepoint__tf_matrix(
-        criterion=column,
-        topic_min_occ=min_occ,
-        topic_min_citations=max_occ,
+        criterion=criterion,
+        topics_length=topics_length,
+        topic_min_occ=topic_min_occ,
+        topic_min_citations=topic_min_citations,
+        custom_topics=custom_topics,
         scheme=scheme,
         directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
     ).transpose()
 
     max_dimensions = min(20, len(matrix.columns) - 1, len(matrix.index))
