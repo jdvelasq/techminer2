@@ -1,5 +1,5 @@
 """
-Apply a thesaurus to a column (TODO)
+Apply a thesaurus to a column
 ===============================================================================
 
 
