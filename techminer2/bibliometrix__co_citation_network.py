@@ -51,6 +51,7 @@ Arner DW, 2019, EUR BUS ORG LAW REV, V20, P55 0...      0  ...  0.027119
 [5 rows x 4 columns]
 
 """
+from ._check_references_csv import check_references_csv
 from ._get_network_graph_communities import get_network_graph_communities
 from ._get_network_graph_degree_plot import get_network_graph_degree_plot
 from ._get_network_graph_indicators import get_network_graph_indicators
@@ -82,6 +83,9 @@ def bibliometrix__co_citation_network(
     **filters,
 ):
     """Co-citation Network."""
+
+    if not check_references_csv(directory):
+        return
 
     matrix_list = bibliometrix__co_citation_matrix_list(
         topics_length=topics_length,
