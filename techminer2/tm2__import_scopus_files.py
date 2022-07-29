@@ -336,11 +336,17 @@ def _create__local_citations__column_in_references_database(directory):
 
 def _create_references(directory, disable_progress_bar=False):
 
+    references_path = os.path.join(directory, "processed/_references.csv")
+
+    if not os.path.exists(references_path):
+        sys.stdout.write(f"--WARN-- The  file {references_path} does not exists.\n")
+        sys.stdout.write("--WARN-- Some functionalities are disabled.\n")
+        return
+
+    references = pd.read_csv(references_path)
+
     documents_path = os.path.join(directory, "processed/_documents.csv")
     documents = pd.read_csv(documents_path)
-
-    references_path = os.path.join(directory, "processed/_references.csv")
-    references = pd.read_csv(references_path)
 
     # references como aparecen en los articulos
     raw_cited_references = documents.global_references.copy()
