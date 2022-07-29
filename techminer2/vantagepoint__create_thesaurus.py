@@ -7,7 +7,7 @@ Create a thesaurus from a column (TODO)
 
 >>> from techminer2 import vantagepoint__create_thesaurus
 >>> vantagepoint__create_thesaurus(
-...     column="author_keywords",
+...     criterion="author_keywords",
 ...     output_file="test_keywords.txt",
 ...     directory=directory,
 ... )
