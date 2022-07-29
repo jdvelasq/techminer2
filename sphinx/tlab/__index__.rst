@@ -7,6 +7,7 @@ T-LAB
 
 
 .. toctree::
+   :maxdepth: 1
 
    co_occ_analysis/__index__
    thematic_analysis/__index__
