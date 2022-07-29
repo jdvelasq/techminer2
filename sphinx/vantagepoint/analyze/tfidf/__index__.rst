@@ -4,8 +4,8 @@ TF-IDF
 
 
     .. toctree::
-        vantagepoint__tf_matrix 
+        :maxdepth: 1
 
-    .. toctree::        
+        vantagepoint__tf_matrix 
         vantagepoint__tf_idf_matrix
 
