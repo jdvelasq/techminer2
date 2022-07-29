@@ -4,6 +4,7 @@ import sys
 
 
 def check_references_csv(directory):
+    """Check if file exists"""
 
     file_path = os.path.join(directory, "processed", "_references.csv")
     if not os.path.exists(file_path):
