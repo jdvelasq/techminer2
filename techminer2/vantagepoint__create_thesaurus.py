@@ -14,14 +14,6 @@ Create a thesaurus from a column (TODO)
 --INFO-- Creating a thesaurus file from `author_keywords` column in all databases
 --INFO-- The thesaurus file `test_keywords.txt` was created
 
->>> from techminer2 import vantagepoint__apply_thesaurus
-# >>> vantagepoint__apply_thesaurus(
-...     thesaurus_file="keywords.txt", 
-...     input_column="author_keywords",
-...     output_column="author_keywords_thesaurus", 
-...     strict=False,
-...     directory=directory, 
-... )
 
 
 """
@@ -36,15 +28,14 @@ from ._thesaurus import Thesaurus, load_file_as_dict, text_clustering
 
 
 def vantagepoint__create_thesaurus(
-    column,
+    criterion,
     output_file=None,
-    sep=";",
     directory="./",
 ):
     """Create a thesaurus from a column of a dataframe."""
 
     if output_file is None:
-        output_file = column + ".txt"
+        output_file = criterion + ".txt"
 
     output_file_path = os.path.join(directory, "processed", output_file)
 
@@ -52,24 +43,23 @@ def vantagepoint__create_thesaurus(
     files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
     for file in files:
         data = pd.read_csv(file, encoding="utf-8")
-        if column in data.columns:
-            words_list += data[column].tolist()
+        if criterion in data.columns:
+            words_list += data[criterion].tolist()
     if len(words_list) == 0:
         sys.stdout.write(
-            f"--ERROR-- Column '{column}' do not exists in any database or it is empty\n"
+            f"--ERROR-- Column '{criterion}' do not exists in any database or it is empty\n"
         )
         return
 
     sys.stdout.write(
-        f"--INFO-- Creating a thesaurus file from `{column}` column in all databases\n"
+        f"--INFO-- Creating a thesaurus file from `{criterion}` column in all databases\n"
     )
 
     words_list = pd.Series(words_list)
     words_list = words_list.dropna()
 
-    if sep is not None:
-        words_list = words_list.str.split(sep)
-        words_list = words_list.explode()
+    words_list = words_list.str.split(";")
+    words_list = words_list.explode()
 
     if os.path.isfile(output_file_path):
         #
