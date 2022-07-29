@@ -15,6 +15,7 @@ subset of the analytical capabilities of TechMiner.
 
 
    .. toctree::
+      :maxdepth: 1
       
 
       overview/__index__
