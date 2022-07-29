@@ -308,6 +308,10 @@ def _create__local_citations__column_in_documents_database(directory):
 
 def _create__local_citations__column_in_references_database(directory):
 
+    references_path = os.path.join(directory, "processed", "_references.csv")
+    if not os.path.exists(references_path):
+        return
+
     sys.stdout.write(
         "--INFO-- Creating `local_citations` column in references database\n"
     )
@@ -324,7 +328,7 @@ def _create__local_citations__column_in_references_database(directory):
     values_dict = local_references.to_dict()
 
     # assigns the number of citations to each reference in references database
-    references_path = os.path.join(directory, "processed", "_references.csv")
+
     references = pd.read_csv(references_path)
     references["local_citations"] = references.article
     references["local_citations"] = references["local_citations"].map(values_dict)
