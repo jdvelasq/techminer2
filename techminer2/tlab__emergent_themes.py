@@ -9,9 +9,8 @@ Topic extraction using non-negative matrix factorization.
 
 >>> from techminer2 import tlab__emergent_themes_with_nmf
 >>> nmf = tlab__emergent_themes_with_nmf(
-...     column="author_keywords",
-...     min_occ=4,
-...     max_occ=None,
+...     criterion="author_keywords",
+...     topics_length=4,
 ...     directory=directory,
 ...     nmf__n_components=6,
 ...     nmf__init=None,
@@ -23,22 +22,20 @@ Topic extraction using non-negative matrix factorization.
 
 
 >>> nmf.themes_.head()
-                         TH_00  ...                TH_05
-0               regtech 70:462  ...    regulation 06:120
-1               fintech 42:406  ...    innovation 04:029
-2   financial inclusion 05:068  ...      big data 04:027
-3     financial service 05:135  ...          bank 04:001
-4  financial regulation 08:091  ...  crowdfunding 04:030
+                            TH_00  ...                           TH_05
+0                  regtech 69:461  ...                  fintech 42:406
+1                  fintech 42:406  ...                  regtech 69:461
+2               blockchain 18:109  ...               blockchain 18:109
+3  artificial intelligence 13:065  ...  artificial intelligence 13:065
 <BLANKLINE>
-[5 rows x 6 columns]
+[4 rows x 6 columns]
 
 
 
 >>> from techminer2 import tlab__emergent_themes_with_lda
 >>> lda = tlab__emergent_themes_with_lda(
-...     column="author_keywords",
-...     min_occ=4,
-...     max_occ=None,
+...     criterion="author_keywords",
+...     topics_length=4,
 ...     directory=directory,
 ...     lda__n_components=10,
 ...     lda__max_iter=5,
@@ -47,14 +44,13 @@ Topic extraction using non-negative matrix factorization.
 ...  )    
 
 >>> lda.themes_.head()
-               TH_00  ...                           TH_09
-0     regtech 70:462  ...    anti-money laundering 04:030
-1  blockchain 18:109  ...                     bank 04:001
-2     fintech 42:406  ...  artificial intelligence 13:065
-3  regulation 06:120  ...                insurtech 04:005
-4        bank 04:001  ...        financial service 05:135
+                            TH_00  ...                           TH_09
+0                  regtech 69:461  ...  artificial intelligence 13:065
+1               blockchain 18:109  ...               blockchain 18:109
+2                  fintech 42:406  ...                  fintech 42:406
+3  artificial intelligence 13:065  ...                  regtech 69:461
 <BLANKLINE>
-[5 rows x 10 columns]
+[4 rows x 10 columns]
 
 """
 
@@ -77,24 +73,37 @@ class _Result:
 
 
 def tlab__emergent_themes_with_nmf(
-    column,
-    min_occ=None,
-    max_occ=None,
-    directory="./",
+    criterion,
+    topics_length=None,
+    topic_min_occ=None,
+    topic_min_citations=None,
+    custom_topics=None,
     nmf__n_components=10,
     nmf__init=None,
     nmf__solver="cu",
     nmf__beta_loss="frobenius",
     nmf__max_iter=200,
     nmf__random_state=0,
+    directory="./",
+    database="documents",
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
     """Emergent Themes with NMF"""
 
     _tf_matrix = vantagepoint__tf_matrix(
-        criterion=column,
-        topic_min_occ=min_occ,
-        topic_min_citations=max_occ,
+        criterion=criterion,
+        topics_length=topics_length,
+        topic_min_occ=topic_min_occ,
+        topic_min_citations=topic_min_citations,
+        custom_topics=custom_topics,
+        scheme="binary",
         directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
     )
 
     nmf = NMF(
@@ -124,22 +133,35 @@ def tlab__emergent_themes_with_nmf(
 
 
 def tlab__emergent_themes_with_lda(
-    column,
-    min_occ=None,
-    max_occ=None,
-    directory="./",
+    criterion,
+    topics_length=None,
+    topic_min_occ=None,
+    topic_min_citations=None,
+    custom_topics=None,
     lda__n_components=10,
     lda__max_iter=5,
     lda__learning_offset=50.0,
     lda__random_state=0,
+    directory="./",
+    database="documents",
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
-    """Emergent Themes with NMF"""
+    """Emergent Themes with LDA"""
 
     _tf_matrix = vantagepoint__tf_matrix(
-        criterion=column,
-        topic_min_occ=min_occ,
-        topic_min_citations=max_occ,
+        criterion=criterion,
+        topics_length=topics_length,
+        topic_min_occ=topic_min_occ,
+        topic_min_citations=topic_min_citations,
+        custom_topics=custom_topics,
+        scheme="binary",
         directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
     )
 
     lda = LatentDirichletAllocation(
