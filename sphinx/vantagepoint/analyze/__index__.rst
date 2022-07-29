@@ -2,6 +2,7 @@ Analyze
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     .. toctree::
+        :maxdepth: 1
 
         vantagepoint__list_view
         matrix/__index__
