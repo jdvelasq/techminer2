@@ -1,5 +1,5 @@
 """
-Word Associations for All Items
+All Items (Co-Occurrences)
 ===============================================================================
 
 
