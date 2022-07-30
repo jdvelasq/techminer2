@@ -1,5 +1,5 @@
 """
-Word Associations Co-occurrences Plot
+Co-Occurrences Plot
 ===============================================================================
 
 
