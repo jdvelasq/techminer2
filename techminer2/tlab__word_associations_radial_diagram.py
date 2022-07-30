@@ -1,10 +1,10 @@
 """
-Words Radial Diagram
+Radial Diagram
 ===============================================================================
 
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/tlab__words_radial_diagram.html"
+>>> file_name = "sphinx/_static/tlab__word_associations_radial_diagram.html"
 
 >>> from techminer2 import tlab__word_associations_radial_diagram
 >>> tlab__word_associations_radial_diagram(
