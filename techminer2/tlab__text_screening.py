@@ -69,7 +69,7 @@ from ._load_abstracts import load_abstracts
 from ._load_template import load_template
 from ._read_records import read_records
 from ._save_html_report import save_html_report
-from .tlab__concordances import _select_abstracts
+from .tlab__co_occurrence_analysis__concordances import _select_abstracts
 
 
 def tlab__text_screening(

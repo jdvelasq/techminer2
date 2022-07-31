@@ -9,8 +9,8 @@ Co-Word Analysis
 >>> from sklearn.cluster import AgglomerativeClustering
 
 
->>> from techminer2 import tlab__co_occ__co_word_analysis
->>> cwa = tlab__co_occ__co_word_analysis(
+>>> from techminer2 import tlab__co_occurrence_analysis__co_word_analysis
+>>> cwa = tlab__co_occurrence_analysis__co_word_analysis(
 ...     criterion='words',
 ...     topics_length=10,
 ...     clustering_method=AgglomerativeClustering(n_clusters=5),
@@ -71,7 +71,7 @@ class _Results:
     tsne_map_: None
 
 
-def tlab__co_occ__co_word_analysis(
+def tlab__co_occurrence_analysis__co_word_analysis(
     criterion,
     topics_length=None,
     topic_min_occ=None,

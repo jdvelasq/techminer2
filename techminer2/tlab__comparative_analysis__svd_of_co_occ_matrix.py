@@ -19,8 +19,8 @@ The plot is based on the SVD technique used in T-LAB's comparative analysis.
 >>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/tlab__svd_of_co_occ_matrix.html"
 
->>> from techminer2 import tlab__svd_of_co_occ_matrix
->>> svd = tlab__svd_of_co_occ_matrix(
+>>> from techminer2 import tlab__comparative_analysis__svd_of_co_occ_matrix
+>>> svd = tlab__comparative_analysis__svd_of_co_occ_matrix(
 ...     criterion='words',
 ...     topic_min_occ=4,    
 ...     topics_length=30,
@@ -62,7 +62,7 @@ class _Result:
         self.plot_ = None
 
 
-def tlab__svd_of_co_occ_matrix(
+def tlab__comparative_analysis__svd_of_co_occ_matrix(
     criterion,
     topics_length=50,
     topic_min_occ=None,

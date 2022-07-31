@@ -7,8 +7,8 @@ Abstract concordances exploration tool.
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import tlab__concordances
->>> tlab__concordances(
+>>> from techminer2 import tlab__co_occurrence_analysis__concordances
+>>> tlab__co_occurrence_analysis__concordances(
 ...     'regtech',
 ...     top_n=10,
 ...     directory=directory,
@@ -30,7 +30,7 @@ from ._load_abstracts import load_abstracts
 from ._read_records import read_records
 
 
-def tlab__concordances(
+def tlab__co_occurrence_analysis__concordances(
     search_for,
     top_n=50,
     directory="./",

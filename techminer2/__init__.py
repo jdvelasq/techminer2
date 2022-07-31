@@ -99,14 +99,20 @@ from .scientopy__bar_trends import scientopy__bar_trends
 from .scientopy__time_line import scientopy__time_line
 from .scientopy__top_trending_topics import scientopy__top_trending_topics
 from .scientopy__word_cloud import scientopy__word_cloud
-from .tlab__co_occ__co_word_analysis import tlab__co_occ__co_word_analysis
-from .tlab__concordances import tlab__concordances
-from .tlab__emergent_themes import (
-    tlab__emergent_themes_with_lda,
-    tlab__emergent_themes_with_nmf,
+from .tlab__co_occurrence_analysis__co_word_analysis import (
+    tlab__co_occurrence_analysis__co_word_analysis,
 )
-from .tlab__svd_of_co_occ_matrix import tlab__svd_of_co_occ_matrix
-from .tlab__svd_of_tf_matrix import tlab__svd_of_tf_matrix
+from .tlab__co_occurrence_analysis__concordances import (
+    tlab__co_occurrence_analysis__concordances,
+)
+from .tlab__thematic_analysis__emergent_themes import (
+    tlab__thematic_analysis__emergent_themes_with_lda,
+    tlab__thematic_analysis__emergent_themes_with_nmf,
+)
+from .tlab__comparative_analysis__svd_of_co_occ_matrix import (
+    tlab__comparative_analysis__svd_of_co_occ_matrix,
+)
+from .tlab__comp_analysis__svd_of_tf_matrix import tlab__comp_analysis__svd_of_tf_matrix
 from .tlab__text_screening import tlab__text_screening
 from .tlab__thematic_analysis import tlab__thematic_analysis
 from .tlab__word_associations_co_occurrences_plot import (

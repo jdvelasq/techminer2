@@ -7,8 +7,8 @@ Topic extraction using non-negative matrix factorization.
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import tlab__emergent_themes_with_nmf
->>> nmf = tlab__emergent_themes_with_nmf(
+>>> from techminer2 import tlab__thematic_analysis__emergent_themes_with_nmf
+>>> nmf = tlab__thematic_analysis__emergent_themes_with_nmf(
 ...     criterion="author_keywords",
 ...     topics_length=4,
 ...     directory=directory,
@@ -32,8 +32,8 @@ Topic extraction using non-negative matrix factorization.
 
 
 
->>> from techminer2 import tlab__emergent_themes_with_lda
->>> lda = tlab__emergent_themes_with_lda(
+>>> from techminer2 import tlab__thematic_analysis__emergent_themes_with_lda
+>>> lda = tlab__thematic_analysis__emergent_themes_with_lda(
 ...     criterion="author_keywords",
 ...     topics_length=4,
 ...     directory=directory,
@@ -72,7 +72,7 @@ class _Result:
         self.mds_data_ = None
 
 
-def tlab__emergent_themes_with_nmf(
+def tlab__thematic_analysis__emergent_themes_with_nmf(
     criterion,
     topics_length=None,
     topic_min_occ=None,
@@ -132,7 +132,7 @@ def tlab__emergent_themes_with_nmf(
     return result
 
 
-def tlab__emergent_themes_with_lda(
+def tlab__thematic_analysis__emergent_themes_with_lda(
     criterion,
     topics_length=None,
     topic_min_occ=None,
