@@ -112,8 +112,10 @@ from .tlab__thematic_analysis__emergent_themes import (
 from .tlab__comparative_analysis__svd_of_co_occ_matrix import (
     tlab__comparative_analysis__svd_of_co_occ_matrix,
 )
-from .tlab__comp_analysis__svd_of_tf_matrix import tlab__comp_analysis__svd_of_tf_matrix
-from .tlab__text_screening import tlab__text_screening
+from .tlab__comparative_analysis__svd_of_tf_matrix import (
+    tlab__comparative_analysis__svd_of_tf_matrix,
+)
+from .tlab__lexical_tools__text_screening import tlab__lexical_tools__text_screening
 from .tlab__thematic_analysis import tlab__thematic_analysis
 from .tlab__word_associations_co_occurrences_plot import (
     tlab__word_associations_co_occurrences_plot,
