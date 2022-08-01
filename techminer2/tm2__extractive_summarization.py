@@ -13,6 +13,7 @@ Abstracts Extractive Summarization
 ...     n_phrases_per_algorithm=20,
 ...     directory=directory,
 ... )
+extractive_summarization.txt
 authors of this paper investigate how blockchain can be used to secure stock exchange
 transactions, with an especial focus to the technological as well as legal aspects of such
 applications. >> blockchain (bc) technology, being distributed and immutable in nature,
@@ -28,6 +29,8 @@ has been leveraged to increase effectiveness of certain corporate banking produc
 originality of the paper lies in coming out with a detailed framework for the possible use
 of blockchain (a distributed ledger based technology) for credit decisions, timely
 generation of red-flags and tightening the regulatory framework.
+<BLANKLINE>
+
 
 """
 import os
@@ -49,6 +52,7 @@ def tm2__extractive_summarization(
     file_name="extractive_summarization.txt",
     n_abstracts=50,
     n_phrases_per_algorithm=5,
+    quiet=False,
     directory="./",
     database="documents",
     start_year=None,
@@ -101,9 +105,10 @@ def tm2__extractive_summarization(
 
         print(final_summary, file=out_file)
 
-    print(file_name)
-    print(final_summary)
-    print()
+    if quiet is False:
+        print(file_name)
+        print(final_summary)
+        print()
 
 
 def _summarize_with_klsummarizer(document, n_phrases_per_algorithm):
