@@ -1426,8 +1426,17 @@ def _process__abstract__column(directory):
             data["abstract"] = data.abstract.mask(
                 data.abstract == "[no abstract available]", pd.NA
             )
-            data["abstract"] = data.abstract.str.replace(r"\u00a9.*", "", regex=True)
-
+            data.abstracts = data.abstract.str.split(".")
+            data.abstracts = data.abstracts.map(
+                lambda x: [y for y in x if x != ""],
+                na_action="ignore",
+            )
+            data.abstracts = data.abstracts.map(
+                lambda x: x[:-1],
+                na_action="ignore",
+            )
+            data.abstracts = data.abstracts.str.join(". ")
+            
         data.to_csv(file, sep=",", encoding="utf-8", index=False)
 
 
