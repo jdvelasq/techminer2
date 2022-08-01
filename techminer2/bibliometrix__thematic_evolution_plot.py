@@ -2,12 +2,15 @@
 Thematic evolution plot
 ===============================================================================
 
->>> from techminer2 import *
+
 >>> directory = "data/regtech/"
 >>> file_name = "sphinx/images/thematic_evolution_plot.png"
 
->>> user_filters(directory=directory, quiet=True, first_year=2016, last_year=2018)
->>> ind_2016_2018 = thematic_map_indicators('author_keywords', min_occ=3, directory=directory)
+>>> from techminer2 import *
+
+
+
+>>> tm_2016_2018 = thematic_map_indicators('author_keywords', min_occ=3, directory=directory)
 >>> thematic_map_communities(
 ...     'author_keywords',
 ...     min_occ=3,
@@ -76,7 +79,84 @@ from matplotlib.patches import Rectangle
 
 from .vantagepoint__co_occ_matrix import vantagepoint__co_occ_matrix
 
-# from ....user_filters import _UserFilters
+
+def bibliometrix__thematic_evolution_plot(
+    indicators,
+    figsize=(6, 6),
+):
+    # ----< number of clusters per period >----------------------------------------------
+    n_clusters = []
+    for indicator in indicators:
+        n_clusters.append(indicator[["cluster"]].drop_duplicates().shape[0])
+
+    # ----< co-occurrence matrixes >-----------------------------------------------------
+    data = []
+    n_rows = n_clusters[0]
+    for index in range(1, len(n_clusters)):
+        row_names = [f"CL_{i}" for i in range(n_rows)]
+        col_names = [f"CL_{i}" for i in range(n_clusters[index])]
+        matrix = pd.DataFrame(
+            np.zeros((n_rows, n_clusters[index])), index=row_names, columns=col_names
+        )
+        n_rows = n_clusters[index]
+        data.append(matrix)
+
+    # ----< matrices >-------------------------------------------------------------------
+    for i_indicator in range(len(indicators) - 1):
+
+        left_table = indicators[i_indicator]
+        right_table = indicators[i_indicator + 1]
+
+        for left_keyword in left_table.index:
+
+            if left_keyword in right_table.index.to_list():
+
+                left_cluster = f"CL_{left_table.loc[left_keyword, 'cluster']}"
+                right_cluster = f"CL_{right_table.loc[left_keyword, 'cluster']}"
+                data[i_indicator].loc[left_cluster, right_cluster] += min(
+                    left_table.loc[left_keyword, "num_documents"],
+                    right_table.loc[left_keyword, "num_documents"],
+                )
+
+    # ----< heights >--------------------------------------------------------------------
+    heights = {}
+    for i_indicator in range(len(indicators)):
+        matrix = indicators[i_indicator][["cluster", "num_documents"]]
+        matrix = matrix.groupby("cluster", as_index=True).sum()
+        heights[i_indicator] = pd.Series(
+            matrix.num_documents.tolist(),
+            index=[f"CL_{i}" for i in matrix.index.tolist()],
+        )
+
+    # ----< rename clusters >------------------------------------------------------------
+    for i_indicator in range(len(indicators)):
+
+        indicator = indicators[i_indicator].copy()
+        indicator["keyword"] = indicator.index
+        indicator["rnk"] = indicator.groupby("cluster")["num_documents"].rank(
+            method="first", ascending=False
+        )
+        indicator = indicator.query("rnk == 1").sort_values(
+            by=["cluster", "num_documents", "global_citations", "node"],
+            ascending=[True, False, False, True],
+        )
+        new_names = {f"CL_{i}": k for i, k in enumerate(indicator.keyword.tolist())}
+
+        if i_indicator == 0:
+            data[i_indicator] = data[i_indicator].rename(index=new_names)
+        elif i_indicator == len(indicators) - 1:
+            data[i_indicator - 1] = data[i_indicator - 1].rename(columns=new_names)
+        else:
+            data[i_indicator - 1] = data[i_indicator - 1].rename(columns=new_names)
+            data[i_indicator] = data[i_indicator].rename(index=new_names)
+
+        heights[i_indicator] = heights[i_indicator].rename(index=new_names)
+
+    return _sankey_plot(
+        data,
+        heights,
+        figsize=figsize,
+    )
 
 
 def _sankey_plot(
@@ -269,82 +349,3 @@ def _sankey_plot(
     ax.set_axis_off()
 
     return fig
-
-
-def bibliometrix__thematic_evolution_plot(
-    indicators,
-    figsize=(6, 6),
-):
-    # ----< number of clusters per period >----------------------------------------------
-    n_clusters = []
-    for indicator in indicators:
-        n_clusters.append(indicator[["cluster"]].drop_duplicates().shape[0])
-
-    # ----< co-occurrence matrixes >-----------------------------------------------------
-    data = []
-    n_rows = n_clusters[0]
-    for index in range(1, len(n_clusters)):
-        row_names = [f"CL_{i}" for i in range(n_rows)]
-        col_names = [f"CL_{i}" for i in range(n_clusters[index])]
-        matrix = pd.DataFrame(
-            np.zeros((n_rows, n_clusters[index])), index=row_names, columns=col_names
-        )
-        n_rows = n_clusters[index]
-        data.append(matrix)
-
-    # ----< matrices >-------------------------------------------------------------------
-    for i_indicator in range(len(indicators) - 1):
-
-        left_table = indicators[i_indicator]
-        right_table = indicators[i_indicator + 1]
-
-        for left_keyword in left_table.index:
-
-            if left_keyword in right_table.index.to_list():
-
-                left_cluster = f"CL_{left_table.loc[left_keyword, 'cluster']}"
-                right_cluster = f"CL_{right_table.loc[left_keyword, 'cluster']}"
-                data[i_indicator].loc[left_cluster, right_cluster] += min(
-                    left_table.loc[left_keyword, "num_documents"],
-                    right_table.loc[left_keyword, "num_documents"],
-                )
-
-    # ----< heights >--------------------------------------------------------------------
-    heights = {}
-    for i_indicator in range(len(indicators)):
-        matrix = indicators[i_indicator][["cluster", "num_documents"]]
-        matrix = matrix.groupby("cluster", as_index=True).sum()
-        heights[i_indicator] = pd.Series(
-            matrix.num_documents.tolist(),
-            index=[f"CL_{i}" for i in matrix.index.tolist()],
-        )
-
-    # ----< rename clusters >------------------------------------------------------------
-    for i_indicator in range(len(indicators)):
-
-        indicator = indicators[i_indicator].copy()
-        indicator["keyword"] = indicator.index
-        indicator["rnk"] = indicator.groupby("cluster")["num_documents"].rank(
-            method="first", ascending=False
-        )
-        indicator = indicator.query("rnk == 1").sort_values(
-            by=["cluster", "num_documents", "global_citations", "node"],
-            ascending=[True, False, False, True],
-        )
-        new_names = {f"CL_{i}": k for i, k in enumerate(indicator.keyword.tolist())}
-
-        if i_indicator == 0:
-            data[i_indicator] = data[i_indicator].rename(index=new_names)
-        elif i_indicator == len(indicators) - 1:
-            data[i_indicator - 1] = data[i_indicator - 1].rename(columns=new_names)
-        else:
-            data[i_indicator - 1] = data[i_indicator - 1].rename(columns=new_names)
-            data[i_indicator] = data[i_indicator].rename(index=new_names)
-
-        heights[i_indicator] = heights[i_indicator].rename(index=new_names)
-
-    return _sankey_plot(
-        data,
-        heights,
-        figsize=figsize,
-    )
