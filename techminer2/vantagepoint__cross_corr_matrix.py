@@ -13,8 +13,7 @@ Cross-correlation Matrix
 ...     topics_length=10,
 ...     directory=directory,
 ... )
-column             Arner DW 7:220  ...  Das SR 2:028
-column                             ...              
+                   Arner DW 7:220  ...  Das SR 2:028
 Arner DW 7:220           1.000000  ...           0.0
 Buckley RP 6:217         0.994244  ...           0.0
 Barberis JN 4:146        0.921304  ...           0.0
