@@ -181,24 +181,24 @@ def vantagepoint__matrix_viewer(
 
 
 def _matrix_viewer_for_co_occ_matrix(matrix_list, nx_k, nx_iteratons, delta):
-    G = nx.Graph()
-    G = _create_nodes(G, matrix_list, 0)
-    G = _create_edges(G, matrix_list)
-    G = _make_layout(G, nx_k, nx_iteratons)
-    edge_trace, node_trace = _create_traces(G)
-    node_trace = _color_node_points(G, node_trace)
+    graph = nx.Graph()
+    graph = _create_nodes(graph, matrix_list, 0)
+    graph = _create_edges(graph, matrix_list)
+    graph = _make_layout(graph, nx_k, nx_iteratons)
+    edge_trace, node_trace = _create_traces(graph)
+    node_trace = _color_node_points(graph, node_trace)
     fig = _create_network_graph(edge_trace, node_trace, delta)
     return fig
 
 
 def _matrix_viewer_for_occ_matrix(matrix_list, nx_k, nx_iteratons, delta):
-    G = nx.Graph()
-    G = _create_nodes(G, matrix_list, 0)
-    G = _create_nodes(G, matrix_list, 1)
-    G = _create_edges(G, matrix_list)
-    G = _make_layout(G, nx_k, nx_iteratons)
-    edge_trace, node_trace = _create_traces(G)
-    node_trace = _color_node_points(G, node_trace)
+    graph = nx.Graph()
+    graph = _create_nodes(graph, matrix_list, 0)
+    graph = _create_nodes(graph, matrix_list, 1)
+    graph = _create_edges(graph, matrix_list)
+    graph = _make_layout(graph, nx_k, nx_iteratons)
+    edge_trace, node_trace = _create_traces(graph)
+    node_trace = _color_node_points(graph, node_trace)
     fig = _create_network_graph(edge_trace, node_trace, delta)
     return fig
 
