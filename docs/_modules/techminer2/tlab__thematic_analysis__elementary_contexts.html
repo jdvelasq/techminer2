@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>techminer2.tlab__thematic_analysis__elementary_contexts &mdash; TechMiner2 0.1.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> TechMiner2
+          </a>
+              <div class="version">
+                0.1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/release_info.html">Release Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/license.html">MIT License</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TM-2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tm2__data/__index__.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tm2__text_summarization/__index__.html">Text Summarization and Report</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../bibliometrix/__index__.html">Bibliometrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vantagepoint/__index__.html">VantagePoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tlab/__index__.html">T-LAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scientopy/__index__.html">ScientoPy</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">TechMiner2</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      <li>techminer2.tlab__thematic_analysis__elementary_contexts</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for techminer2.tlab__thematic_analysis__elementary_contexts</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Thematic Analysis of Documents</span>
+<span class="sd">===============================================================================</span>
+
+<span class="sd">The implemented methodology is based on the Thematic Analysis of Elementary</span>
+<span class="sd">Contexts implemented in T-LAB.</span>
+
+<span class="sd">**Algortihm:**</span>
+
+<span class="sd">1. Compute the TF matrix.</span>
+<span class="sd">2. Apply TF-IDF transformation</span>
+<span class="sd">3. Clustering using cosine distance</span>
+<span class="sd">4. Obtain the table of units by clusters</span>
+
+<span class="sd">&gt;&gt;&gt; directory = &quot;data/regtech/&quot;</span>
+
+<span class="sd">&gt;&gt;&gt; from sklearn.cluster import AgglomerativeClustering</span>
+<span class="sd">&gt;&gt;&gt; clustering_method = AgglomerativeClustering(n_clusters=5)</span>
+
+<span class="sd">&gt;&gt;&gt; from techminer2 import tlab__thematic_analysis__elementary_contexts</span>
+<span class="sd">&gt;&gt;&gt; analysis = tlab__thematic_analysis__elementary_contexts(</span>
+<span class="sd">...     criterion=&quot;author_keywords&quot;,</span>
+<span class="sd">...     topic_min_occ=4,</span>
+<span class="sd">...     directory=directory,</span>
+<span class="sd">...     clustering_method=clustering_method,</span>
+<span class="sd">... )</span>
+
+<span class="sd">&gt;&gt;&gt; analysis.themes_.head()</span>
+<span class="sd">                            TH_00  ...                  TH_04</span>
+<span class="sd">0                  fintech 42:406  ...      blockchain 18:109</span>
+<span class="sd">1                  regtech 69:461  ...         regtech 69:461</span>
+<span class="sd">2  artificial intelligence 13:065  ...         fintech 42:406</span>
+<span class="sd">3     financial regulation 08:091  ...      compliance 12:020</span>
+<span class="sd">4               regulation 06:120  ...  cryptocurrency 04:029</span>
+<span class="sd">&lt;BLANKLINE&gt;</span>
+<span class="sd">[5 rows x 5 columns]</span>
+
+
+
+
+
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">.vantagepoint__tf_idf_matrix</span> <span class="kn">import</span> <span class="n">vantagepoint__tf_idf_matrix</span>
+
+
+<span class="k">class</span> <span class="nc">_ThematicAnalysis</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">criterion</span><span class="p">,</span>
+        <span class="n">topics_length</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">topic_min_occ</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">topic_min_citations</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">custom_topics</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">clustering_method</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">directory</span><span class="o">=</span><span class="s2">&quot;./&quot;</span><span class="p">,</span>
+        <span class="n">database</span><span class="o">=</span><span class="s2">&quot;documents&quot;</span><span class="p">,</span>
+        <span class="n">start_year</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">end_year</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">norm</span><span class="o">=</span><span class="s2">&quot;l2&quot;</span><span class="p">,</span>
+        <span class="n">use_idf</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">smooth_idf</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">sublinear_tf</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">filters</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">criterion</span> <span class="o">=</span> <span class="n">criterion</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">criterion</span> <span class="o">=</span> <span class="n">criterion</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">topics_length</span> <span class="o">=</span> <span class="n">topics_length</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">topic_min_occ</span> <span class="o">=</span> <span class="n">topic_min_occ</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">topic_min_citations</span> <span class="o">=</span> <span class="n">topic_min_citations</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">custom_topics</span> <span class="o">=</span> <span class="n">custom_topics</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clustering_method</span> <span class="o">=</span> <span class="n">clustering_method</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">directory</span> <span class="o">=</span> <span class="n">directory</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">database</span> <span class="o">=</span> <span class="n">database</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_year</span> <span class="o">=</span> <span class="n">start_year</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">end_year</span> <span class="o">=</span> <span class="n">end_year</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">norm</span> <span class="o">=</span> <span class="n">norm</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">use_idf</span> <span class="o">=</span> <span class="n">use_idf</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">smooth_idf</span> <span class="o">=</span> <span class="n">smooth_idf</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sublinear_tf</span> <span class="o">=</span> <span class="n">sublinear_tf</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">filters</span> <span class="o">=</span> <span class="n">filters</span>
+        <span class="c1">#</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tfidf_matrix</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_clusters</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_themes</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_partitions</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_documents</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1">#</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_run</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_build_tf_idf_matrix</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_apply_clustering</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_compute_clusters</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_compute_themes</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_obtain_documents</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_compute_partitions</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_compute_partitions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">value_counts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tfidf_matrix</span><span class="o">.</span><span class="n">CLUSTER</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+        <span class="n">value_counts</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;CL_</span><span class="si">{:&gt;02d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">value_counts</span><span class="p">))]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_partitions</span> <span class="o">=</span> <span class="n">value_counts</span>
+
+    <span class="k">def</span> <span class="nf">_obtain_documents</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">documents</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tfidf_matrix</span><span class="p">[[</span><span class="s2">&quot;CLUSTER&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">documents</span> <span class="o">=</span> <span class="n">documents</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">documents</span> <span class="o">=</span> <span class="n">documents</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;CLUSTER&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+        <span class="n">documents</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;article&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_documents</span> <span class="o">=</span> <span class="n">documents</span>
+
+    <span class="k">def</span> <span class="nf">_compute_themes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="n">themes</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">cluster</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clusters</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="n">themes</span><span class="p">[</span><span class="n">cluster</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">word</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_clusters</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clusters</span><span class="p">[</span><span class="n">cluster</span><span class="p">])</span>
+                <span class="k">if</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="mi">0</span>
+            <span class="p">]</span>
+
+        <span class="k">for</span> <span class="n">theme</span> <span class="ow">in</span> <span class="n">themes</span><span class="p">:</span>
+            <span class="n">themes</span><span class="p">[</span><span class="n">theme</span><span class="p">]</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">theme</span> <span class="ow">in</span> <span class="n">themes</span><span class="p">:</span>
+            <span class="n">themes</span><span class="p">[</span><span class="n">theme</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">themes</span><span class="p">[</span><span class="n">theme</span><span class="p">]]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_themes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">themes</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;index&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_themes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_themes</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_compute_clusters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tfidf_matrix</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tfidf_matrix</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span>
+            <span class="n">CLUSTER</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">clustering_method</span><span class="o">.</span><span class="n">labels_</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_clusters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tfidf_matrix</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;CLUSTER&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        <span class="n">n_clusters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">clustering_method</span><span class="o">.</span><span class="n">n_clusters</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_clusters</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;TH_</span><span class="si">{:&gt;02d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_clusters</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_clusters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clusters</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_apply_clustering</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clustering_method</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tfidf_matrix</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_build_tf_idf_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tfidf_matrix</span> <span class="o">=</span> <span class="n">vantagepoint__tf_idf_matrix</span><span class="p">(</span>
+            <span class="n">criterion</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">criterion</span><span class="p">,</span>
+            <span class="n">topics_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">topics_length</span><span class="p">,</span>
+            <span class="n">topic_min_occ</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">topic_min_occ</span><span class="p">,</span>
+            <span class="n">topic_min_citations</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">topic_min_citations</span><span class="p">,</span>
+            <span class="n">custom_topics</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">custom_topics</span><span class="p">,</span>
+            <span class="n">scheme</span><span class="o">=</span><span class="s2">&quot;binary&quot;</span><span class="p">,</span>
+            <span class="n">directory</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">directory</span><span class="p">,</span>
+            <span class="n">database</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">database</span><span class="p">,</span>
+            <span class="n">start_year</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">start_year</span><span class="p">,</span>
+            <span class="n">end_year</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">end_year</span><span class="p">,</span>
+            <span class="n">norm</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">norm</span><span class="p">,</span>
+            <span class="n">use_idf</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">use_idf</span><span class="p">,</span>
+            <span class="n">smooth_idf</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">smooth_idf</span><span class="p">,</span>
+            <span class="n">sublinear_tf</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">sublinear_tf</span><span class="p">,</span>
+            <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">filters</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="c1">######</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">partitions_</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns partitions&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_partitions</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">themes_</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns themes&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_themes</span>
+
+
+<div class="viewcode-block" id="tlab__thematic_analysis__elementary_contexts"><a class="viewcode-back" href="../../tlab/thematic_analysis/tlab__thematic_analysis__elementary_contexts.html#techminer2.tlab__thematic_analysis__elementary_contexts.tlab__thematic_analysis__elementary_contexts">[docs]</a><span class="k">def</span> <span class="nf">tlab__thematic_analysis__elementary_contexts</span><span class="p">(</span>
+    <span class="n">criterion</span><span class="p">,</span>
+    <span class="n">topic_min_occ</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">topic_min_citations</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">clustering_method</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">directory</span><span class="o">=</span><span class="s2">&quot;./&quot;</span><span class="p">,</span>
+    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;documents&quot;</span><span class="p">,</span>
+    <span class="n">start_year</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">end_year</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">filters</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Thematic Analysis of Elementary Contexts.&quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="n">_ThematicAnalysis</span><span class="p">(</span>
+        <span class="n">criterion</span><span class="o">=</span><span class="n">criterion</span><span class="p">,</span>
+        <span class="n">topic_min_occ</span><span class="o">=</span><span class="n">topic_min_occ</span><span class="p">,</span>
+        <span class="n">topic_min_citations</span><span class="o">=</span><span class="n">topic_min_citations</span><span class="p">,</span>
+        <span class="n">clustering_method</span><span class="o">=</span><span class="n">clustering_method</span><span class="p">,</span>
+        <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
+        <span class="n">database</span><span class="o">=</span><span class="n">database</span><span class="p">,</span>
+        <span class="n">start_year</span><span class="o">=</span><span class="n">start_year</span><span class="p">,</span>
+        <span class="n">end_year</span><span class="o">=</span><span class="n">end_year</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">filters</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<span class="c1">#####</span>
+
+<span class="c1"># import pandas as pd</span>
+<span class="c1"># from sklearn.cluster import AgglomerativeClustering</span>
+<span class="c1"># from sklearn.manifold import MDS</span>
+
+<span class="c1"># from .bubble_map import bubble_map</span>
+<span class="c1"># from .tf_idf_matrix import tf_idf_matrix</span>
+
+
+<span class="c1"># class ThematicAnalysis_:</span>
+<span class="c1">#     def __init__(</span>
+<span class="c1">#         self,</span>
+<span class="c1">#         column,</span>
+<span class="c1">#         min_occ=None,</span>
+<span class="c1">#         norm=&quot;l2&quot;,</span>
+<span class="c1">#         use_idf=True,</span>
+<span class="c1">#         smooth_idf=True,</span>
+<span class="c1">#         sublinear_tf=False,</span>
+<span class="c1">#         n_clusters=6,</span>
+<span class="c1">#         linkage=&quot;ward&quot;,</span>
+<span class="c1">#         affinity=&quot;euclidean&quot;,</span>
+<span class="c1">#         directory=&quot;./&quot;,</span>
+<span class="c1">#         random_state=0,</span>
+<span class="c1">#     ):</span>
+<span class="c1">#         # -------------------------------------------------------------------------------</span>
+<span class="c1">#         tfidf = tf_idf_matrix(</span>
+<span class="c1">#             column=column,</span>
+<span class="c1">#             min_occ=min_occ,</span>
+<span class="c1">#             scheme=&quot;binary&quot;,</span>
+<span class="c1">#             norm=norm,</span>
+<span class="c1">#             use_idf=use_idf,</span>
+<span class="c1">#             smooth_idf=smooth_idf,</span>
+<span class="c1">#             sublinear_tf=sublinear_tf,</span>
+<span class="c1">#             directory=directory,</span>
+<span class="c1">#         )</span>
+<span class="c1">#         # -------------------------------------------------------------------------------</span>
+<span class="c1">#         mds = MDS(random_state=random_state)</span>
+<span class="c1">#         mds.fit(tfidf.transpose())</span>
+<span class="c1">#         self.mds_map = pd.DataFrame(</span>
+<span class="c1">#             mds.embedding_,</span>
+<span class="c1">#             columns=[&quot;DIM-0&quot;, &quot;DIM-1&quot;],</span>
+<span class="c1">#             index=tfidf.columns.tolist(),</span>
+<span class="c1">#         )</span>
+
+<span class="c1">#         # -------------------------------------------------------------------------------</span>
+<span class="c1">#         clustering = AgglomerativeClustering(</span>
+<span class="c1">#             n_clusters=n_clusters,</span>
+<span class="c1">#             linkage=linkage,</span>
+<span class="c1">#             affinity=affinity,</span>
+<span class="c1">#         )</span>
+<span class="c1">#         clustering.fit(tfidf)</span>
+<span class="c1">#         tfidf = tfidf.assign(CLUSTER=clustering.labels_)</span>
+
+<span class="c1">#         clusters = tfidf.groupby(&quot;CLUSTER&quot;).sum()</span>
+<span class="c1">#         format_str = &quot;CL_{:02d}&quot; if n_clusters &gt; 9 else &quot;CL_{:d}&quot;</span>
+<span class="c1">#         clusters.index = [format_str.format(i) for i in range(n_clusters)]</span>
+<span class="c1">#         self.clusters = clusters.transpose()</span>
+
+<span class="c1">#         # -------------------------------------------------------------------------------</span>
+
+<span class="c1">#         # -------------------------------------------------------------------------------</span>
+
+<span class="c1">#         # -------------------------------------------------------------------------------</span>
+<span class="c1">#         partitions = documents.copy()</span>
+<span class="c1">#         partitions = partitions.assign(num_documents=partitions.record_no.apply(len))</span>
+<span class="c1">#         partitions = partitions[&quot;num_documents&quot;]</span>
+<span class="c1">#         self._partitions = partitions</span>
+
+<span class="c1">#         # -------------------------------------------------------------------------------</span>
+<span class="c1">#         clusters = self.clusters.copy()</span>
+<span class="c1">#         clusters = clusters.transpose()</span>
+<span class="c1">#         mds = MDS(n_components=n_clusters - 1, random_state=random_state)</span>
+<span class="c1">#         mds_data = mds.fit_transform(clusters)</span>
+<span class="c1">#         mds_data = pd.DataFrame(</span>
+<span class="c1">#             mds_data,</span>
+<span class="c1">#             columns=[f&quot;DIM-{i}&quot; for i in range(n_clusters - 1)],</span>
+<span class="c1">#             index=clusters.index,</span>
+<span class="c1">#         )</span>
+<span class="c1">#         self.mds_data = mds_data</span>
+
+<span class="c1">#     @property</span>
+<span class="c1">#     def themes(self):</span>
+<span class="c1">#         return self._themes</span>
+
+<span class="c1">#     @property</span>
+<span class="c1">#     def documents(self):</span>
+<span class="c1">#         return self._documents</span>
+
+<span class="c1">#     @property</span>
+<span class="c1">#     def partitions(self):</span>
+<span class="c1">#         return self._partitions</span>
+
+<span class="c1">#     def map(</span>
+<span class="c1">#         self,</span>
+<span class="c1">#         dim_x=0,</span>
+<span class="c1">#         dim_y=1,</span>
+<span class="c1">#         color_scheme=&quot;clusters&quot;,</span>
+<span class="c1">#         figsize=(9, 9),</span>
+<span class="c1">#     ):</span>
+
+<span class="c1">#         return bubble_map(</span>
+<span class="c1">#             node_x=self.mds_data.loc[:, f&quot;DIM-{dim_x}&quot;],</span>
+<span class="c1">#             node_y=self.mds_data.loc[:, f&quot;DIM-{dim_y}&quot;],</span>
+<span class="c1">#             node_clusters=range(len(self.mds_data)),</span>
+<span class="c1">#             node_texts=self.mds_data.index.tolist(),</span>
+<span class="c1">#             node_sizes=self._partitions.tolist(),</span>
+<span class="c1">#             x_axis_at=0,</span>
+<span class="c1">#             y_axis_at=0,</span>
+<span class="c1">#             color_scheme=color_scheme,</span>
+<span class="c1">#             xlabel=f&quot;X-Axis (Dim-{dim_x})&quot;,</span>
+<span class="c1">#             ylabel=f&quot;Y-Axis (Dim-{dim_y})&quot;,</span>
+<span class="c1">#             figsize=figsize,</span>
+<span class="c1">#             fontsize=7,</span>
+<span class="c1">#         )</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

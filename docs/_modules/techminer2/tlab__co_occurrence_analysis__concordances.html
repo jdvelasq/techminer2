@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>techminer2.tlab__co_occurrence_analysis__concordances &mdash; TechMiner2 0.1.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> TechMiner2
+          </a>
+              <div class="version">
+                0.1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/release_info.html">Release Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/license.html">MIT License</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TM-2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tm2__data/__index__.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tm2__text_summarization/__index__.html">Text Summarization and Report</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../bibliometrix/__index__.html">Bibliometrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vantagepoint/__index__.html">VantagePoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tlab/__index__.html">T-LAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scientopy/__index__.html">ScientoPy</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">TechMiner2</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      <li>techminer2.tlab__co_occurrence_analysis__concordances</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for techminer2.tlab__co_occurrence_analysis__concordances</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Concordances</span>
+<span class="sd">=========================================================================================</span>
+
+<span class="sd">Abstract concordances exploration tool.</span>
+
+
+<span class="sd">&gt;&gt;&gt; directory = &quot;data/regtech/&quot;</span>
+
+<span class="sd">&gt;&gt;&gt; from techminer2 import tlab__co_occurrence_analysis__concordances</span>
+<span class="sd">&gt;&gt;&gt; tlab__co_occurrence_analysis__concordances(</span>
+<span class="sd">...     &#39;regtech&#39;,</span>
+<span class="sd">...     top_n=10,</span>
+<span class="sd">...     directory=directory,</span>
+<span class="sd">... )</span>
+<span class="sd">&lt;&lt;&lt; l systems requires increasing the use of and reliance on REGTECH .</span>
+<span class="sd">                                                             REGTECH developments are leading towards a paradigm shift necess &gt;&gt;&gt;</span>
+<span class="sd">                                                             REGTECH to date has focused on the digitization of manual report &gt;&gt;&gt;</span>
+<span class="sd">                                   However, the potential of REGTECH is far greater  it has the potential to enable a nearly  &gt;&gt;&gt;</span>
+<span class="sd">&lt;&lt;&lt; ld, sets the foundation for a practical understanding of REGTECH , and proposes sequenced reforms that could benefit regu &gt;&gt;&gt;</span>
+<span class="sd">           Although also not a panacea, the development of &quot; REGTECH &quot; solutions will help clear away volumes of work that un &gt;&gt;&gt;</span>
+<span class="sd">                                                             REGTECH will not eliminate policy considerations, nor will it re &gt;&gt;&gt;</span>
+<span class="sd">                 Nevertheless, a sophisticated deployment of REGTECH should help focus regulatory discretion and public-polic &gt;&gt;&gt;</span>
+<span class="sd">                                             Europes road to REGTECH has rested upon four apparently unrelated pillars: (1) e &gt;&gt;&gt;</span>
+<span class="sd">&lt;&lt;&lt; that together they are underpinning the development of a REGTECH ecosystem in europe and will continue to do so.</span>
+
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">._load_abstracts</span> <span class="kn">import</span> <span class="n">load_abstracts</span>
+<span class="kn">from</span> <span class="nn">._read_records</span> <span class="kn">import</span> <span class="n">read_records</span>
+
+
+<div class="viewcode-block" id="tlab__co_occurrence_analysis__concordances"><a class="viewcode-back" href="../../tlab/co_occ_analysis/concordances/tlab__co_occurrence_analysis__concordances.html#techminer2.tlab__co_occurrence_analysis__concordances.tlab__co_occurrence_analysis__concordances">[docs]</a><span class="k">def</span> <span class="nf">tlab__co_occurrence_analysis__concordances</span><span class="p">(</span>
+    <span class="n">search_for</span><span class="p">,</span>
+    <span class="n">top_n</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+    <span class="n">directory</span><span class="o">=</span><span class="s2">&quot;./&quot;</span><span class="p">,</span>
+    <span class="n">start_year</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">end_year</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">filters</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Checks the occurrence contexts of a given text in the abstract&#39;s phrases.&quot;&quot;&quot;</span>
+
+    <span class="n">records</span> <span class="o">=</span> <span class="n">read_records</span><span class="p">(</span>
+        <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
+        <span class="n">database</span><span class="o">=</span><span class="s2">&quot;documents&quot;</span><span class="p">,</span>
+        <span class="n">start_year</span><span class="o">=</span><span class="n">start_year</span><span class="p">,</span>
+        <span class="n">end_year</span><span class="o">=</span><span class="n">end_year</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">filters</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">abstracts</span> <span class="o">=</span> <span class="n">load_abstracts</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
+    <span class="n">abstracts</span> <span class="o">=</span> <span class="n">abstracts</span><span class="p">[</span><span class="n">abstracts</span><span class="o">.</span><span class="n">article</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">records</span><span class="o">.</span><span class="n">article</span><span class="p">)]</span>
+    <span class="n">abstracts</span> <span class="o">=</span> <span class="n">abstracts</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span>
+        <span class="p">[</span><span class="s2">&quot;global_citations&quot;</span><span class="p">,</span> <span class="s2">&quot;article&quot;</span><span class="p">,</span> <span class="s2">&quot;line_no&quot;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">]</span>
+    <span class="p">)</span>
+    <span class="n">abstracts</span> <span class="o">=</span> <span class="n">_select_abstracts</span><span class="p">(</span><span class="n">abstracts</span><span class="p">,</span> <span class="n">search_for</span><span class="p">)</span>
+    <span class="n">abstracts</span> <span class="o">=</span> <span class="n">abstracts</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">top_n</span><span class="p">)</span>
+    <span class="n">contexts</span> <span class="o">=</span> <span class="n">_extract_contexts</span><span class="p">(</span><span class="n">abstracts</span><span class="p">,</span> <span class="n">search_for</span><span class="p">)</span>
+    <span class="n">_print_concordances</span><span class="p">(</span><span class="n">contexts</span><span class="p">,</span> <span class="n">search_for</span><span class="p">)</span></div>
+
+
+<span class="k">def</span> <span class="nf">_print_concordances</span><span class="p">(</span><span class="n">contexts</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Prints the report.&quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">contexts</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;left_context&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">&gt;60</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">text</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;right_context&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_extract_contexts</span><span class="p">(</span><span class="n">abstracts</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+    <span class="n">regex</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;\b&quot;</span> <span class="o">+</span> <span class="n">text</span> <span class="o">+</span> <span class="sa">r</span><span class="s2">&quot;\b&quot;</span>
+    <span class="n">contexts</span> <span class="o">=</span> <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;phrase&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span>
+        <span class="sa">r</span><span class="s2">&quot;(?P&lt;left_context&gt;[\s \S]*)&quot;</span> <span class="o">+</span> <span class="n">regex</span> <span class="o">+</span> <span class="sa">r</span><span class="s2">&quot;(?P&lt;right_context&gt;[\s \S]*)&quot;</span>
+    <span class="p">)</span>
+
+    <span class="n">contexts</span><span class="p">[</span><span class="s2">&quot;left_context&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">contexts</span><span class="p">[</span><span class="s2">&quot;left_context&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="n">contexts</span><span class="p">[</span><span class="s2">&quot;left_context&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">contexts</span><span class="p">[</span><span class="s2">&quot;left_context&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+    <span class="n">contexts</span><span class="p">[</span><span class="s2">&quot;right_context&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">contexts</span><span class="p">[</span><span class="s2">&quot;right_context&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="n">contexts</span><span class="p">[</span><span class="s2">&quot;right_context&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">contexts</span><span class="p">[</span><span class="s2">&quot;right_context&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="n">contexts</span><span class="p">[</span><span class="s2">&quot;left_context&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">contexts</span><span class="p">[</span><span class="s2">&quot;left_context&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+        <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s2">&quot;&lt;&lt;&lt; &quot;</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">56</span><span class="p">:]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">60</span> <span class="k">else</span> <span class="n">x</span>
+    <span class="p">)</span>
+    <span class="n">contexts</span><span class="p">[</span><span class="s2">&quot;right_context&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">contexts</span><span class="p">[</span><span class="s2">&quot;right_context&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+        <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[:</span><span class="mi">56</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot; &gt;&gt;&gt;&quot;</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">60</span> <span class="k">else</span> <span class="n">x</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">contexts</span>
+
+
+<span class="k">def</span> <span class="nf">_select_abstracts</span><span class="p">(</span><span class="n">abstracts</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Selects the abstracts.&quot;&quot;&quot;</span>
+
+    <span class="n">regex</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;\b&quot;</span> <span class="o">+</span> <span class="n">text</span> <span class="o">+</span> <span class="sa">r</span><span class="s2">&quot;\b&quot;</span>
+    <span class="n">abstracts</span> <span class="o">=</span> <span class="n">abstracts</span><span class="p">[</span><span class="n">abstracts</span><span class="o">.</span><span class="n">phrase</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">regex</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)]</span>
+    <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;phrase&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;phrase&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
+    <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;phrase&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;phrase&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
+        <span class="sa">r</span><span class="s2">&quot;\b&quot;</span> <span class="o">+</span> <span class="n">text</span> <span class="o">+</span> <span class="sa">r</span><span class="s2">&quot;\b&quot;</span><span class="p">,</span> <span class="n">text</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
+    <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;phrase&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">abstracts</span><span class="p">[</span><span class="s2">&quot;phrase&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
+        <span class="sa">r</span><span class="s2">&quot;\b&quot;</span> <span class="o">+</span> <span class="n">text</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span> <span class="o">+</span> <span class="sa">r</span><span class="s2">&quot;\b&quot;</span><span class="p">,</span> <span class="n">text</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">abstracts</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matrix Viwer &mdash; TechMiner2 0.1.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Heat Map" href="vantagepoint__heat_map.html" />
+    <link rel="prev" title="World Map" href="vantagepoint__world_map.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> TechMiner2
+          </a>
+              <div class="version">
+                0.1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/release_info.html">Release Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction/license.html">MIT License</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TM-2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tm2__data/__index__.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tm2__text_summarization/__index__.html">Text Summarization and Report</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../bibliometrix/__index__.html">Bibliometrix</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../__index__.html">VantagePoint</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../vantagepoint__record_view.html">Record View</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vantagepoint__summary_view.html">Summary View</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../refine/__index__.html">Refine (Thesaurus)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analyze/__index__.html">Analyze</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="__index__.html">Report</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="vantagepoint__bar_chart.html">Bar Chart</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vantagepoint__cleveland_chart.html">Cleveland Chart</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vantagepoint__column_chart.html">Column chart</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vantagepoint__line_chart.html">Line Chart</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vantagepoint__pie_chart.html">Pie Chart</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vantagepoint__treemap.html">Treemap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vantagepoint__world_map.html">World Map</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Matrix Viwer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vantagepoint__heat_map.html">Heat Map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vantagepoint__bubble_chart.html">Bubble Chart</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vantagepoint__gantt_chart.html">Gantt Chart</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vantagepoint__word_cloud.html">WordCloud</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../tlab/__index__.html">T-LAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scientopy/__index__.html">ScientoPy</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">TechMiner2</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../__index__.html">VantagePoint</a> &raquo;</li>
+          <li><a href="__index__.html">Report</a> &raquo;</li>
+      <li>Matrix Viwer</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/vantagepoint/report/vantagepoint__matrix_viewer.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<span class="target" id="module-techminer2.vantagepoint__matrix_viewer"></span><section id="matrix-viwer">
+<h1>Matrix Viwer<a class="headerlink" href="#matrix-viwer" title="Permalink to this heading"></a></h1>
+<p><strong>Matrix view for a occurrence matrix.</strong></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;data/regtech/&quot;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;sphinx/_static/vantagepoint__matrix_viewer-0.html&quot;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2</span> <span class="kn">import</span> <span class="n">vantagepoint__occ_matrix_list</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span> <span class="o">=</span> <span class="n">vantagepoint__occ_matrix_list</span><span class="p">(</span>
+<span class="gp">... </span>   <span class="n">criterion_for_columns</span><span class="o">=</span><span class="s1">&#39;author_keywords&#39;</span><span class="p">,</span>
+<span class="gp">... </span>   <span class="n">criterion_for_rows</span><span class="o">=</span><span class="s1">&#39;authors&#39;</span><span class="p">,</span>
+<span class="gp">... </span>   <span class="n">topic_min_occ</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="gp">... </span>   <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span>
+<span class="go">                  row                          column  OCC</span>
+<span class="go">0      Arner DW 7:220                  regtech 69:461    6</span>
+<span class="go">1      Arner DW 7:220                  fintech 42:406    5</span>
+<span class="go">2      Arner DW 7:220               blockchain 18:109    1</span>
+<span class="go">3      Arner DW 7:220    regulatory technology 12:047    1</span>
+<span class="go">4      Arner DW 7:220     financial technology 09:032    1</span>
+<span class="go">5      Arner DW 7:220     financial regulation 08:091    4</span>
+<span class="go">6      Arner DW 7:220       financial services 05:135    1</span>
+<span class="go">7      Arner DW 7:220      financial inclusion 05:068    2</span>
+<span class="go">8      Arner DW 7:220    anti-money laundering 04:030    1</span>
+<span class="go">9      Arner DW 7:220     financial innovation 04:007    1</span>
+<span class="go">10     Arner DW 7:220                  finance 03:019    1</span>
+<span class="go">11   Buckley RP 6:217                  regtech 69:461    5</span>
+<span class="go">12   Buckley RP 6:217                  fintech 42:406    4</span>
+<span class="go">13   Buckley RP 6:217               blockchain 18:109    1</span>
+<span class="go">14   Buckley RP 6:217     financial regulation 08:091    3</span>
+<span class="go">15   Buckley RP 6:217       financial services 05:135    1</span>
+<span class="go">16   Buckley RP 6:217      financial inclusion 05:068    2</span>
+<span class="go">17   Buckley RP 6:217    anti-money laundering 04:030    1</span>
+<span class="go">18   Buckley RP 6:217                  finance 03:019    1</span>
+<span class="go">19  Barberis JN 4:146                  regtech 69:461    3</span>
+<span class="go">20  Barberis JN 4:146                  fintech 42:406    2</span>
+<span class="go">21  Barberis JN 4:146    regulatory technology 12:047    1</span>
+<span class="go">22  Barberis JN 4:146     financial technology 09:032    1</span>
+<span class="go">23  Barberis JN 4:146     financial regulation 08:091    2</span>
+<span class="go">24  Barberis JN 4:146       financial services 05:135    1</span>
+<span class="go">25  Barberis JN 4:146      financial inclusion 05:068    1</span>
+<span class="go">26  Barberis JN 4:146    anti-money laundering 04:030    1</span>
+<span class="go">27  Barberis JN 4:146     financial innovation 04:007    1</span>
+<span class="go">28  Barberis JN 4:146                  finance 03:019    1</span>
+<span class="go">29  Zetzsche DA 4:092                  regtech 69:461    4</span>
+<span class="go">30  Zetzsche DA 4:092                  fintech 42:406    4</span>
+<span class="go">31  Zetzsche DA 4:092               blockchain 18:109    1</span>
+<span class="go">32  Zetzsche DA 4:092     financial regulation 08:091    2</span>
+<span class="go">33  Zetzsche DA 4:092      financial inclusion 05:068    2</span>
+<span class="go">34  Zetzsche DA 4:092    anti-money laundering 04:030    1</span>
+<span class="go">35  Zetzsche DA 4:092                  finance 03:019    1</span>
+<span class="go">36    Brennan R 3:008                  regtech 69:461    3</span>
+<span class="go">37    Brennan R 3:008               compliance 12:020    2</span>
+<span class="go">38    Brennan R 3:008           accountability 04:022    3</span>
+<span class="go">39    Brennan R 3:008                     gdpr 03:012    2</span>
+<span class="go">40    Brennan R 3:008  data protection officer 03:008    3</span>
+<span class="go">41    Brennan R 3:008             semantic web 03:002    1</span>
+<span class="go">42       Ryan P 3:008                  regtech 69:461    3</span>
+<span class="go">43       Ryan P 3:008               compliance 12:020    2</span>
+<span class="go">44       Ryan P 3:008           accountability 04:022    3</span>
+<span class="go">45       Ryan P 3:008                     gdpr 03:012    2</span>
+<span class="go">46       Ryan P 3:008  data protection officer 03:008    3</span>
+<span class="go">47       Ryan P 3:008             semantic web 03:002    1</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vantagepoint__matrix_viewer</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">matrix</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+</pre></div>
+</div>
+<iframe src="../../_static/vantagepoint__matrix_viewer-0.html" height="600px" width="100%" frameBorder="0"></iframe><p><strong>Matrix view for a co-occurrence matrix.</strong></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;sphinx/_static/vantagepoint__matrix_viewer-1.html&quot;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2</span> <span class="kn">import</span> <span class="n">vantagepoint__co_occ_matrix_list</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span> <span class="o">=</span> <span class="n">vantagepoint__co_occ_matrix_list</span><span class="p">(</span>
+<span class="gp">... </span>   <span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;author_keywords&#39;</span><span class="p">,</span>
+<span class="gp">... </span>   <span class="n">topic_min_occ</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+<span class="gp">... </span>   <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span>
+<span class="go">                               row                          column  OCC</span>
+<span class="go">0                   regtech 69:461                  regtech 69:461   69</span>
+<span class="go">1                   regtech 69:461                  fintech 42:406   42</span>
+<span class="go">2                   regtech 69:461               blockchain 18:109   17</span>
+<span class="go">3                   regtech 69:461  artificial intelligence 13:065   10</span>
+<span class="go">4                   regtech 69:461    regulatory technology 12:047    4</span>
+<span class="go">5                   regtech 69:461               compliance 12:020   12</span>
+<span class="go">6                   regtech 69:461     financial technology 09:032    5</span>
+<span class="go">7                   regtech 69:461     financial regulation 08:091    8</span>
+<span class="go">8                   fintech 42:406                  regtech 69:461   42</span>
+<span class="go">9                   fintech 42:406                  fintech 42:406   42</span>
+<span class="go">10                  fintech 42:406               blockchain 18:109   14</span>
+<span class="go">11                  fintech 42:406  artificial intelligence 13:065    8</span>
+<span class="go">12                  fintech 42:406    regulatory technology 12:047    3</span>
+<span class="go">13                  fintech 42:406               compliance 12:020    3</span>
+<span class="go">14                  fintech 42:406     financial technology 09:032    4</span>
+<span class="go">15                  fintech 42:406     financial regulation 08:091    5</span>
+<span class="go">16               blockchain 18:109                  regtech 69:461   17</span>
+<span class="go">17               blockchain 18:109                  fintech 42:406   14</span>
+<span class="go">18               blockchain 18:109               blockchain 18:109   18</span>
+<span class="go">19               blockchain 18:109  artificial intelligence 13:065    2</span>
+<span class="go">20               blockchain 18:109               compliance 12:020    3</span>
+<span class="go">21               blockchain 18:109     financial technology 09:032    1</span>
+<span class="go">22               blockchain 18:109     financial regulation 08:091    1</span>
+<span class="go">23  artificial intelligence 13:065                  regtech 69:461   10</span>
+<span class="go">24  artificial intelligence 13:065                  fintech 42:406    8</span>
+<span class="go">25  artificial intelligence 13:065               blockchain 18:109    2</span>
+<span class="go">26  artificial intelligence 13:065  artificial intelligence 13:065   13</span>
+<span class="go">27  artificial intelligence 13:065    regulatory technology 12:047    2</span>
+<span class="go">28  artificial intelligence 13:065               compliance 12:020    1</span>
+<span class="go">29  artificial intelligence 13:065     financial technology 09:032    2</span>
+<span class="go">30  artificial intelligence 13:065     financial regulation 08:091    2</span>
+<span class="go">31    regulatory technology 12:047                  regtech 69:461    4</span>
+<span class="go">32    regulatory technology 12:047                  fintech 42:406    3</span>
+<span class="go">33    regulatory technology 12:047  artificial intelligence 13:065    2</span>
+<span class="go">34    regulatory technology 12:047    regulatory technology 12:047   12</span>
+<span class="go">35    regulatory technology 12:047     financial technology 09:032    6</span>
+<span class="go">36    regulatory technology 12:047     financial regulation 08:091    2</span>
+<span class="go">37               compliance 12:020                  regtech 69:461   12</span>
+<span class="go">38               compliance 12:020                  fintech 42:406    3</span>
+<span class="go">39               compliance 12:020               blockchain 18:109    3</span>
+<span class="go">40               compliance 12:020  artificial intelligence 13:065    1</span>
+<span class="go">41               compliance 12:020               compliance 12:020   12</span>
+<span class="go">42     financial technology 09:032                  regtech 69:461    5</span>
+<span class="go">43     financial technology 09:032                  fintech 42:406    4</span>
+<span class="go">44     financial technology 09:032               blockchain 18:109    1</span>
+<span class="go">45     financial technology 09:032  artificial intelligence 13:065    2</span>
+<span class="go">46     financial technology 09:032    regulatory technology 12:047    6</span>
+<span class="go">47     financial technology 09:032     financial technology 09:032    9</span>
+<span class="go">48     financial technology 09:032     financial regulation 08:091    2</span>
+<span class="go">49     financial regulation 08:091                  regtech 69:461    8</span>
+<span class="go">50     financial regulation 08:091                  fintech 42:406    5</span>
+<span class="go">51     financial regulation 08:091               blockchain 18:109    1</span>
+<span class="go">52     financial regulation 08:091  artificial intelligence 13:065    2</span>
+<span class="go">53     financial regulation 08:091    regulatory technology 12:047    2</span>
+<span class="go">54     financial regulation 08:091     financial technology 09:032    2</span>
+<span class="go">55     financial regulation 08:091     financial regulation 08:091    8</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vantagepoint__matrix_viewer</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">matrix</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">nx_k</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">nx_iteratons</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+</pre></div>
+</div>
+<iframe src="../../_static/vantagepoint__matrix_viewer-1.html" height="600px" width="100%" frameBorder="0"></iframe><dl class="py function">
+<dt class="sig sig-object py" id="techminer2.vantagepoint__matrix_viewer.vantagepoint__matrix_viewer">
+<span class="sig-prename descclassname"><span class="pre">techminer2.vantagepoint__matrix_viewer.</span></span><span class="sig-name descname"><span class="pre">vantagepoint__matrix_viewer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nx_k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nx_iteratons</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/techminer2/vantagepoint__matrix_viewer.html#vantagepoint__matrix_viewer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer2.vantagepoint__matrix_viewer.vantagepoint__matrix_viewer" title="Permalink to this definition"></a></dt>
+<dd><p>Makes cluster map from a ocurrence flooding matrix.</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="vantagepoint__world_map.html" class="btn btn-neutral float-left" title="World Map" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="vantagepoint__heat_map.html" class="btn btn-neutral float-right" title="Heat Map" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

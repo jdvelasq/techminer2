@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Auto-correlation Matrix &mdash; TechMiner2 0.1.0 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Auto-correlation Matrix List" href="vantagepoint__auto_corr_matrix_list.html" />
+    <link rel="prev" title="Co-occurrence Matrix List" href="vantagepoint__co_occ_matrix_list.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> TechMiner2
+          </a>
+              <div class="version">
+                0.1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction/release_info.html">Release Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction/license.html">MIT License</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TM-2</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tm2__data/__index__.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tm2__text_summarization/__index__.html">Text Summarization and Report</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../bibliometrix/__index__.html">Bibliometrix</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../__index__.html">VantagePoint</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../vantagepoint__record_view.html">Record View</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../vantagepoint__summary_view.html">Summary View</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../refine/__index__.html">Refine (Thesaurus)</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../__index__.html">Analyze</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../vantagepoint__list_view.html">List View</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="__index__.html">Matrix</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="vantagepoint__co_occ_matrix.html">Co-occurrence Matrix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vantagepoint__co_occ_matrix_list.html">Co-occurrence Matrix List</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Auto-correlation Matrix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vantagepoint__auto_corr_matrix_list.html">Auto-correlation Matrix List</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vantagepoint__cross_corr_matrix.html">Cross-correlation Matrix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vantagepoint__cross_corr_matrix_list.html">Cross-correlation Matrix List</a></li>
+<li class="toctree-l4"><a class="reference internal" href="vantagepoint__factor_matrix.html">Factor Matrix (TODO)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../tfidf/__index__.html">TF-IDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../vantagepoint__terms_by_year.html">Terms by Year</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../report/__index__.html">Report</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tlab/__index__.html">T-LAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../scientopy/__index__.html">ScientoPy</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">TechMiner2</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../__index__.html">VantagePoint</a> &raquo;</li>
+          <li><a href="../__index__.html">Analyze</a> &raquo;</li>
+          <li><a href="__index__.html">Matrix</a> &raquo;</li>
+      <li>Auto-correlation Matrix</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/vantagepoint/analyze/matrix/vantagepoint__auto_corr_matrix.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<span class="target" id="module-techminer2.vantagepoint__auto_corr_matrix"></span><section id="auto-correlation-matrix">
+<h1>Auto-correlation Matrix<a class="headerlink" href="#auto-correlation-matrix" title="Permalink to this heading"></a></h1>
+<p>Returns an auto-correlation matrix.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;data/regtech/&quot;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2</span> <span class="kn">import</span> <span class="n">vantagepoint__auto_corr_matrix</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vantagepoint__auto_corr_matrix</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;authors&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">topics_length</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="go">                   Arner DW 7:220  ...  Mayer N 2:002</span>
+<span class="go">Arner DW 7:220           1.000000  ...            0.0</span>
+<span class="go">Buckley RP 6:217         0.882735  ...            0.0</span>
+<span class="go">Barberis JN 4:146        0.662994  ...            0.0</span>
+<span class="go">Zetzsche DA 4:092        0.662994  ...            0.0</span>
+<span class="go">Brennan R 3:008          0.000000  ...            0.0</span>
+<span class="go">Ryan P 3:008             0.000000  ...            0.0</span>
+<span class="go">Hamdan A 2:011           0.000000  ...            0.0</span>
+<span class="go">Singh C 2:007            0.000000  ...            0.0</span>
+<span class="go">Sarea A 2:006            0.000000  ...            0.0</span>
+<span class="go">Mayer N 2:002            0.000000  ...            1.0</span>
+
+<span class="go">[10 rows x 10 columns]</span>
+</pre></div>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py" id="techminer2.vantagepoint__auto_corr_matrix.vantagepoint__auto_corr_matrix">
+<span class="sig-prename descclassname"><span class="pre">techminer2.vantagepoint__auto_corr_matrix.</span></span><span class="sig-name descname"><span class="pre">vantagepoint__auto_corr_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">criterion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'pearson'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">topics_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">topic_min_occ</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">topic_min_citations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_topics</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">database</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'documents'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_year</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_year</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">filters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/techminer2/vantagepoint__auto_corr_matrix.html#vantagepoint__auto_corr_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer2.vantagepoint__auto_corr_matrix.vantagepoint__auto_corr_matrix" title="Permalink to this definition"></a></dt>
+<dd><p>Returns an auto-correlation.</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="vantagepoint__co_occ_matrix_list.html" class="btn btn-neutral float-left" title="Co-occurrence Matrix List" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="vantagepoint__auto_corr_matrix_list.html" class="btn btn-neutral float-right" title="Auto-correlation Matrix List" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
