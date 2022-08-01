@@ -86,9 +86,6 @@ from .bibliometrix__sources_production_over_time import (
 )
 from .bibliometrix__thematic_evolution_plot import bibliometrix__thematic_evolution_plot
 from .bibliometrix__thematic_map import bibliometrix__thematic_map
-from .bibliometrix__thematic_map_summarization import (
-    bibliometrix__thematic_map_summarization,
-)
 from .bibliometrix__three_fields_plot import bibliometrix__three_fields_plot
 from .bibliometrix__treemap import bibliometrix__treemap
 from .bibliometrix__trend_topics import bibliometrix__trend_topics
