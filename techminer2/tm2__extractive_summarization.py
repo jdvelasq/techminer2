@@ -101,7 +101,9 @@ def tm2__extractive_summarization(
 
         print(final_summary, file=out_file)
 
+    print(file_name)
     print(final_summary)
+    print()
 
 
 def _summarize_with_klsummarizer(document, n_phrases_per_algorithm):
