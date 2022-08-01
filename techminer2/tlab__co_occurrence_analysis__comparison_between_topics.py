@@ -267,7 +267,7 @@ def _create_bart_chart(matrix_list, topic_a, topic_b):
         x="OCC",
         y="column",
         color="row",
-        title="Co-occurrences betwee topics",
+        title="Co-occurrences between topics",
         hover_data=["OCC"],
         orientation="h",
         color_discrete_map={

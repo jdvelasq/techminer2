@@ -5,7 +5,7 @@ Thematic Analysis
         :maxdepth: 1
 
         tlab__thematic_analysis
-        tlab__emergent_themes
+        tlab__thematic_analysis__emergent_themes
 
         
         

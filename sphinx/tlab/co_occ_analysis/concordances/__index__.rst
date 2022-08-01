@@ -2,5 +2,4 @@ Concordances
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     .. toctree::
-        tlab__concordances
-        tlab__text_screening
+        tlab__co_occurrence_analysis__concordances
