@@ -111,6 +111,7 @@ def tlab__co_occurrence_analysis__comparison_between_topics(
     end_year=None,
     **filters,
 ):
+    """Comparison between topics."""
 
     matrix_list = _create_comparison_matrix_list(
         topic_a=topic_a,
