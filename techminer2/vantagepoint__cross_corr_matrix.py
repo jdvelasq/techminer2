@@ -43,6 +43,7 @@ def vantagepoint__cross_corr_matrix(
     end_year=None,
     **filters,
 ):
+    """Compute the cross-correlation matrix."""
 
     data_matrix = vantagepoint__occ_matrix(
         criterion_for_columns=criterion_for_columns,
