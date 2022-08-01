@@ -115,7 +115,9 @@ from .tlab__comparative_analysis__svd_of_tf_matrix import (
     tlab__comparative_analysis__svd_of_tf_matrix,
 )
 from .tlab__lexical_tools__text_screening import tlab__lexical_tools__text_screening
-from .tlab__thematic_analysis import tlab__thematic_analysis
+from .tlab__thematic_analysis__elementary_contexts import (
+    tlab__thematic_analysis__elementary_contexts,
+)
 from .tlab__thematic_analysis__emergent_themes import (
     tlab__thematic_analysis__emergent_themes_with_lda,
     tlab__thematic_analysis__emergent_themes_with_nmf,
