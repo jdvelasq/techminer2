@@ -74,6 +74,7 @@ from dataclasses import dataclass
 from sklearn.manifold import MDS, TSNE
 
 from ._association_index import association_index
+from ._clusters_summarization import clusters_summarization
 from ._get_network_graph_communities import get_network_graph_communities
 from ._get_network_graph_degree_plot import get_network_graph_degree_plot
 from ._get_network_graph_indicators import get_network_graph_indicators
@@ -100,6 +101,9 @@ def bibliometrix__co_occurrence_network(
     topics_length=None,
     topic_min_occ=None,
     normalization="association",
+    directory_for_summarization="co-occurrence_network_summarization/",
+    n_abstracts=50,
+    n_phrases_per_algorithm=5,
     method="louvain",
     nx_k=0.5,
     nx_iterations=10,
@@ -170,6 +174,19 @@ def bibliometrix__co_occurrence_network(
         matrix_list=matrix_list,
         graph=graph,
         manifold_method=TSNE(n_components=2),
+    )
+
+    clusters_summarization(
+        criterion=criterion,
+        communities=results.communities_,
+        directory_for_summarization=directory_for_summarization,
+        n_abstracts=n_abstracts,
+        n_phrases_per_algorithm=n_phrases_per_algorithm,
+        directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
     )
 
     return results
