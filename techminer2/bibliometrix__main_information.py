@@ -25,20 +25,20 @@ DOCUMENT TYPES article                                         51
                conference_paper                                22
                editorial                                        2
                review                                           4
-AUTHORS        Authors                                      193.0
-               Authors of single-authored documents          33.0
-               Single-authored documents                     33.0
-               Multi-authored documents                      61.0
+AUTHORS        Authors                                        193
+               Authors of single-authored documents            33
+               Single-authored documents                       33
+               Multi-authored documents                        61
                Authors per document                          2.37
                Co-authors per document                       3.11
                International co-authorship %                25.81
-               Author appearances                           223.0
+               Author appearances                             223
                Documents per author                          0.42
                Collaboration index                            1.0
-               Organizations                                148.0
-               Organizations (1st author)                    82.0
-               Countries                                     40.0
-               Countries (1st author)                        35.0
+               Organizations                                  148
+               Organizations (1st author)                      82
+               Countries                                       40
+               Countries (1st author)                          35
 KEYWORDS       Raw author keywords                            303
                Cleaned author keywords                        286
                Raw index keywords                             259
