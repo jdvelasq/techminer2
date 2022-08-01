@@ -101,6 +101,7 @@ def bibliometrix__co_occurrence_network(
     topics_length=None,
     topic_min_occ=None,
     normalization="association",
+    summarize=False,
     directory_for_summarization="co-occurrence_network_summarization/",
     n_abstracts=50,
     n_phrases_per_algorithm=5,
@@ -176,18 +177,19 @@ def bibliometrix__co_occurrence_network(
         manifold_method=TSNE(n_components=2),
     )
 
-    clusters_summarization(
-        criterion=criterion,
-        communities=results.communities_,
-        directory_for_summarization=directory_for_summarization,
-        n_abstracts=n_abstracts,
-        n_phrases_per_algorithm=n_phrases_per_algorithm,
-        quiet=True,
-        directory=directory,
-        database=database,
-        start_year=start_year,
-        end_year=end_year,
-        **filters,
-    )
+    if summarize is True:
+        clusters_summarization(
+            criterion=criterion,
+            communities=results.communities_,
+            directory_for_summarization=directory_for_summarization,
+            n_abstracts=n_abstracts,
+            n_phrases_per_algorithm=n_phrases_per_algorithm,
+            quiet=True,
+            directory=directory,
+            database=database,
+            start_year=start_year,
+            end_year=end_year,
+            **filters,
+        )
 
     return results
