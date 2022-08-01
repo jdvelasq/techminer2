@@ -102,12 +102,11 @@ from .scientopy__word_cloud import scientopy__word_cloud
 from .tlab__co_occurrence_analysis__co_word_analysis import (
     tlab__co_occurrence_analysis__co_word_analysis,
 )
+from .tlab__co_occurrence_analysis__comparison_between_topics import (
+    tlab__co_occurrence_analysis__comparison_between_topics,
+)
 from .tlab__co_occurrence_analysis__concordances import (
     tlab__co_occurrence_analysis__concordances,
-)
-from .tlab__thematic_analysis__emergent_themes import (
-    tlab__thematic_analysis__emergent_themes_with_lda,
-    tlab__thematic_analysis__emergent_themes_with_nmf,
 )
 from .tlab__comparative_analysis__svd_of_co_occ_matrix import (
     tlab__comparative_analysis__svd_of_co_occ_matrix,
@@ -117,6 +116,10 @@ from .tlab__comparative_analysis__svd_of_tf_matrix import (
 )
 from .tlab__lexical_tools__text_screening import tlab__lexical_tools__text_screening
 from .tlab__thematic_analysis import tlab__thematic_analysis
+from .tlab__thematic_analysis__emergent_themes import (
+    tlab__thematic_analysis__emergent_themes_with_lda,
+    tlab__thematic_analysis__emergent_themes_with_nmf,
+)
 from .tlab__word_associations_co_occurrences_plot import (
     tlab__word_associations_co_occurrences_plot,
 )
