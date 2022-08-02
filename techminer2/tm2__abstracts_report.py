@@ -66,7 +66,7 @@ def tm2__abstracts_report(
         )
         selected_records["TOPICS"] = selected_records["TOPICS"].str.join("; ")
 
-        records = records.sort_values(
+        records = selected_records.sort_values(
             by=["TOPICS", "global_citations", "local_citations"],
             ascending=[True, False, False],
         )
