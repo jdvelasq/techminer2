@@ -112,7 +112,6 @@ def _make_sankey_plot(matrix_left, matrix_right):
                 "source": [key[0] for key in connections.keys()],
                 "target": [key[1] for key in connections.keys()],
                 "value": [value for value in connections.values()],
-                # "color": "lightgray",
             },
         )
     )
