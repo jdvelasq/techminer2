@@ -14,7 +14,7 @@ Computes coverage of terms in a column discarding stopwords.
 ... ).head(10)
 --INFO-- Number of documents : 94
 --INFO-- Documents with NA: 9
---INFO--Efective documents : 94
+--INFO-- Efective documents : 94
    min_occ  cum_sum_documents coverage  cum num items
 0       69                 69  73.40 %              1
 1       42                 69  73.40 %              2
@@ -65,7 +65,7 @@ def tm2__coverage(
     )
 
     documents = documents.dropna()
-    sys.stdout.write(f"--INFO--Efective documents : {n_documents}\n")
+    sys.stdout.write(f"--INFO-- Efective documents : {n_documents}\n")
 
     documents = documents.assign(num_documents=1)
     documents[column] = documents[column].str.split("; ")
