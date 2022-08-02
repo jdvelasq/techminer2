@@ -3,6 +3,7 @@
 import numpy as np
 
 from ._indicators.indicators_by_topic import indicators_by_topic
+from ._load_stopwords import load_stopwords
 
 
 def items2counters(
@@ -23,6 +24,11 @@ def items2counters(
         end_year=end_year,
         **filters,
     )
+
+    stopwords = load_stopwords(directory)
+    index = [index for index in indicators.index if index not in stopwords]
+    indicators = indicators.loc[index, :]
+    #
 
     num_docs = indicators.OCC.values
     cited_by = indicators.global_citations.values
