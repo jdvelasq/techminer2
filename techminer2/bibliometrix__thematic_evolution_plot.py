@@ -60,7 +60,7 @@ Thematic evolution plot
 
 >>> file_name = "sphinx/_static/bibliometrix__thematic_evolution_plot.html"
 >>> bibliometrix__thematic_evolution_plot(
-...     indicators=[tm1, tm2, tm2],
+...     indicators=[tm1, tm2, tm3],
 ... ).write_html(file_name)
 
 .. raw:: html
@@ -148,13 +148,12 @@ def _make_sankey_plot(labels, x, y, source, target, value):
                 "label": labels,
                 "x": x,
                 "y": y,
-                "color": "dimgray",
+                "color": "#333",
             },
             link={
                 "source": source,
                 "target": target,
                 "value": value,
-                "color": "lightgray",
             },
         )
     )
