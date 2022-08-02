@@ -1,7 +1,6 @@
 """Clusters summarization"""
 import glob
 import os
-import shutil
 
 from .tm2__extractive_summarization import tm2__extractive_summarization
 
@@ -10,6 +9,7 @@ def clusters_summarization(
     criterion,
     communities,
     directory_for_summarization,
+    n_keywords=10,
     n_abstracts=50,
     n_phrases_per_algorithm=5,
     quiet=True,
@@ -23,6 +23,7 @@ def clusters_summarization(
 
     _delete_directory(directory_for_summarization, directory)
 
+    communities = communities.head(n_keywords)
     for community_name in communities:
 
         community = communities[community_name].tolist()
