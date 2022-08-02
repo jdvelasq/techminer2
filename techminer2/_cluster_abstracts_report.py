@@ -10,6 +10,7 @@ def cluster_abstracts_report(
     criterion,
     communities,
     directory_for_abstracts,
+    n_keywords=10,
     n_abstracts=30,
     directory="./",
     database="documents",
@@ -21,6 +22,7 @@ def cluster_abstracts_report(
 
     _delete_directory(directory_for_abstracts, directory)
 
+    communities = communities.head(n_keywords)
     for community_name in communities:
 
         community = communities[community_name].tolist()
