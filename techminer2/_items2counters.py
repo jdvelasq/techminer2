@@ -25,6 +25,7 @@ def items2counters(
         **filters,
     )
 
+    ###
     stopwords = load_stopwords(directory)
     index = [index for index in indicators.index if index not in stopwords]
     indicators = indicators.loc[index, :]
