@@ -65,7 +65,7 @@ Thematic evolution plot
 
 .. raw:: html
 
-    <iframe src="../../_static/bibliometrix__thematic_evolution_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/bibliometrix__thematic_evolution_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
 """
