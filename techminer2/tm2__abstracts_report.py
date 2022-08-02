@@ -19,6 +19,8 @@ Abstracts Report
 import os.path
 import textwrap
 
+import pandas as pd
+
 from ._read_records import read_records
 
 
@@ -68,13 +70,15 @@ def tm2__abstracts_report(
                 text_article = textwrap.fill(row["article"], width=90)
                 text_title = textwrap.fill(row["title"], width=90)
                 text_criterion = textwrap.fill(row[criterion], width=90)
-                text_abstract = textwrap.fill(row["abstract"], width=90)
+                if not pd.isna(row["abstract"]):
+                    text_abstract = textwrap.fill(row["abstract"], width=90)
 
             else:
                 text_article = row["article"]
                 text_title = row["title"]
                 text_criterion = row[criterion]
-                text_abstract = row["abstract"]
+                if not pd.isna(row["abstract"]):
+                    text_abstract = row["abstract"]
 
             text_citation = "Citations: " + str(row["global_citations"])
 
