@@ -87,9 +87,12 @@ def tm2__abstracts_report(
         for _, row in records.iterrows():
 
             if use_textwrap:
-                text_article = textwrap.fill(row["article"], width=90)
-                text_title = textwrap.fill(row["title"], width=90)
-                text_criterion = textwrap.fill(row[criterion], width=90)
+                if not pd.isna(row["article"]):
+                    text_article = textwrap.fill(row["article"], width=90)
+                if not pd.isna(row["title"]):
+                    text_title = textwrap.fill(row["title"], width=90)
+                if not pd.isna(row[criterion]):
+                    text_criterion = textwrap.fill(row[criterion], width=90)
                 if not pd.isna(row["abstract"]):
                     text_abstract = textwrap.fill(row["abstract"], width=90)
 
