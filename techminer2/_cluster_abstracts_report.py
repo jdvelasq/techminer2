@@ -1,4 +1,5 @@
 """Clusters summarization"""
+import glob
 import os
 import shutil
 
@@ -18,10 +19,7 @@ def cluster_abstracts_report(
 ):
     """Clusters summarization."""
 
-    path = os.path.join(directory, "reports", directory_for_abstracts)
-    if os.path.exists(path):
-        shutil.rmtree(path, ignore_errors=True)
-    os.makedirs(path)
+    _delete_directory(directory_for_abstracts, directory)
 
     for community_name in communities:
 
@@ -43,3 +41,18 @@ def cluster_abstracts_report(
             end_year=end_year,
             **filters,
         )
+
+
+def _delete_directory(directory_for_abstracts, directory):
+
+    path = os.path.join(directory, "reports", directory_for_abstracts)
+
+    if os.path.exists(path):
+
+        files = glob.glob(path + "/*.txt")
+        for f in files:
+            os.remove(f)
+
+        shutil.rmtree(path)
+
+    os.makedirs(path)
