@@ -46,15 +46,10 @@ def clusters_summarization(
 
 
 def _delete_directory(directory_for_summarization, directory):
-
     path = os.path.join(directory, "reports", directory_for_summarization)
-
     if os.path.exists(path):
-
         files = glob.glob(path + "/*.txt")
-        for f in files:
-            os.remove(f)
-
-        shutil.rmtree(path)
-
-    os.makedirs(path)
+        for file in files:
+            os.remove(file)
+    else:
+        os.makedirs(path)
