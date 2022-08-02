@@ -26,13 +26,20 @@ def items2counters(
     )
 
     ###
+    # num_docs = indicators.OCC.values
+    # cited_by = indicators.global_citations.values
     stopwords = load_stopwords(directory)
-    index = [index for index in indicators.index if index not in stopwords]
-    indicators = indicators.loc[index, :]
-    #
 
-    num_docs = indicators.OCC.values
-    cited_by = indicators.global_citations.values
+    num_docs = [
+        value
+        for value, index in zip(indicators.OCC.values, indicators.index)
+        if index not in stopwords
+    ]
+    cited_by = [
+        value
+        for value, index in zip(indicators.global_citations.values, indicators.index)
+        if index not in stopwords
+    ]
     n_zeros_docs = int(np.log10(max(num_docs))) + 1
     n_zeros_cited_by = int(np.log10(max(cited_by))) + 1
 
