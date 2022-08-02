@@ -12,211 +12,11 @@ Finds string abbreviations in the keywords of a thesaurus.
 ...     "keywords.txt",
 ...     directory=directory,
 ... )
-artificial intelligence
-    artificial intelligence
-    artificial intelligence (ai)
-artificial intelligence (ai) governance
-    artificial intelligence (ai) governance
-ai
-    ai
-    ai strategy
-aml
-    aml
-anti money laundering (aml)
-    anti money laundering (aml)
-    anti money laundering
-anti-money laundering
-    anti-money laundering
-    anti-money laundering (aml)
-banking regulation
-    banking regulation
-    bank regulation
-    bank regulation (basel iii)
-    bank regulations
-    bank regulators
-basel iii
-    basel iii
-communication channel
-    communication channel
-    communication channels (information theory)
-information theory
-    information theory
-competition
-    competition
-    competition (economics)
-    competitiveness
-economics
-    economics
-compliance
-    compliance
-    compliance (grc)
-    compliance approach
-grc
-    grc
-contracts
-    contracts
-    contract
-    contracting
-    contracts (htlc)
-hashed timelock contracts (htlc)
-    hashed timelock contracts (htlc)
-corporate social responsibility
-    corporate social responsibility
-    corporate social responsibilities (csr)
-csr
-    csr
-dao
-    dao
-decentralized autonomous organization
-    decentralized autonomous organization
-    decentralized autonomous organization (dao)
-dapp
-    dapp
-    dapps
-distributed applications
-    distributed applications
-    distributed applications (dapps)
-distributed ledger technology
-    distributed ledger technology
-    distributed ledger technologies
-    distributed ledger technology (dlt)
-dlt
-    dlt
-financial technology
-    financial technology
-    financial technologies
-    financial technology (fintech)
-    financial technologies (fintech)
-fintech
-    fintech
-    fintechs
-gdpr
-    gdpr
-general data protection regulations
-    general data protection regulations
-    general data protection regulation
-    general data protection regulation (gdpr)
-ict
-    ict
-information and communication technologies
-    information and communication technologies
-    information and communication technology
-    information and communication technology (ict)
-    information and communications technologies (icts)
-    information and communications technology
-information technology
-    information technology
-    information technologies
-    information technology (it)
-it
-    it
-ico
-    ico
-    icos
-initial coin offerings
-    initial coin offerings
-    initial coin offering
-    initial coin offering (ico)
-internet of things
-    internet of things
-    internet of things (iot)
-    internet of thing (iot)
-iot
-    iot
-know your customer (kyc) compliance
-    know your customer (kyc) compliance
-youre your customer (kyc)
-    youre your customer (kyc)
-laundering
-    laundering
-legalization (laundering) of proceeds
-    legalization (laundering) of proceeds
-natural language processing
-    natural language processing
-    natural language processing (nlp)
-nlp
-    nlp
-computers
-    computers
-    computer
-    computational methods
-neural networks
-    neural networks
-    neural network
-    neural networks (computer)
-partial least square structural equation modeling
-    partial least square structural equation modeling
-    partial least squares structural equation modeling (pls-sem)
-pls-sem
-    pls-sem
-p2p
-    p2p
-peer-to-peer (p2p) lending risk evaluation
-    peer-to-peer (p2p) lending risk evaluation
-peer-to-peer lending
-    peer-to-peer lending
-    peer-to-peer (p2p) lending
-proof of work
-    proof of work
-    proof of work (pow)
-proof-of-work (pow)
-    proof-of-work (pow)
-recurrent neural network (rnn)
-    recurrent neural network (rnn)
-    recurrent neural networks
-rnn
-    rnn
-regtech
-    regtech
-regulatory technology
-    regulatory technology
-    regulatory technology (regtech)
-    regulatory technologies
-    regulatory technologies (regtech)
-rdf
-    rdf
-resource description framework (rdf)
-    resource description framework (rdf)
-    resources description frameworks
-regulation
-    regulation
-    regulations
-standardization
-    standardization
-    standards
-    standard (regulation)
-    standard model
-    standard models
-team software process (tsp)
-    team software process (tsp)
-tsp
-    tsp
-tam
-    tam
-technology acceptance model
-    technology acceptance model
-    technology acceptance model (tam)
-the unified theory of acceptance and use of technology(utaut)
-    the unified theory of acceptance and use of technology(utaut)
-    unified theory of acceptance and use of technology
-    unified theory of acceptance and use technology (utaut)
-utaut
-    utaut
-tism
-    tism
-total interpretive structural modeling (tism)
-    total interpretive structural modeling (tism)
-mathematical models
-    mathematical models
-    mathematical techniques
-    mathematics
-trees (mathematics)
-    trees (mathematics)
-
-
+--INFO-- The file data/regtech/processed/keywords.txt has been reordered.
 
 
 """
+import sys
 from os.path import isfile, join
 
 import pandas as pd
@@ -241,7 +41,7 @@ def vantagepoint__find_abbreviations(
     if isfile(th_file):
         th = load_file_as_dict(th_file)
     else:
-        raise FileNotFoundError("The file {} does not exist.".format(th_file))
+        raise FileNotFoundError(f"The file {th_file} does not exist.")
     reversed_th = {value: key for key, values in th.items() for value in values}
 
     # ----< search for abbreviations >-------------------------------------------------------------
@@ -281,13 +81,15 @@ def vantagepoint__find_abbreviations(
     with open(th_file, "w", encoding="utf-8") as file:
 
         for key in findings.keys():
-            print(key)
+            # print(key)
             file.write(key + "\n")
             for item in findings[key]:
                 file.write("    " + item + "\n")
-                print("    " + item)
+                # print("    " + item)
 
         for key in sorted(th.keys()):
             file.write(key + "\n")
             for item in th[key]:
                 file.write("    " + item + "\n")
+
+    sys.stdout.write(f"--INFO-- The file {th_file} has been reordered.\n")
