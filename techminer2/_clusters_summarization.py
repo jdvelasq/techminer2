@@ -22,7 +22,7 @@ def clusters_summarization(
 
     path = os.path.join(directory, "reports", directory_for_summarization)
     if os.path.exists(path):
-        shutil.rmtree(path)
+        shutil.rmtree(path, ignore_errors=True)
     os.makedirs(path)
 
     for community_name in communities:
