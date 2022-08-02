@@ -66,19 +66,20 @@ def tm2__abstracts_report(
         )
         records["TOPICS"] = records["TOPICS"].str.join("; ")
 
-        records = records.sort_values(
-            by=["TOPICS", "global_citations", "local_citations"],
-            ascending=[True, False, False],
-        )
-
-    else:
-
-        records = records.sort_values(
-            by=["global_citations", "local_citations"],
-            ascending=[False, False],
-        )
+    records = records.sort_values(
+        by=["global_citations", "local_citations"],
+        ascending=[False, False],
+    )
 
     records = records.head(n_abstracts)
+
+    if "TOPICS" not in records.columns:
+        records["TOPICS"] = records[criterion].copy()
+
+    records = records.sort_values(
+        by=["TOPICS", "global_citations", "local_citations"],
+        ascending=[True, False, False],
+    )
 
     with open(
         os.path.join(directory, "reports", file_name), "w", encoding="utf-8"
