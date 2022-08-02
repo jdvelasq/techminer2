@@ -9,7 +9,7 @@ Abstracts Report
 >>> from techminer2 import tm2__abstracts_report
 >>> tm2__abstracts_report(
 ...     criterion="author_keywords",
-...     custom_topics=["blockchain"],
+...     custom_topics=["blockchain" ,"regtech"],
 ...     n_abstracts=10,    
 ...     directory=directory,
 ... )
@@ -47,6 +47,7 @@ def tm2__abstracts_report(
     )
 
     if criterion is not None:
+        ##
         selected_records = records[["article", criterion]]
         selected_records[criterion] = selected_records[criterion].str.split(";")
         selected_records = selected_records.explode(criterion)
@@ -56,22 +57,22 @@ def tm2__abstracts_report(
         ]
         records = records[records["article"].isin(selected_records["article"])]
 
-        selected_records["TOPICS"] = selected_records[criterion].copy()
-        selected_records["TOPICS"] = selected_records["TOPICS"].str.split(";")
-        selected_records["TOPICS"] = selected_records["TOPICS"].map(
-            lambda x: [y.strip() for y in x]
-        )
-        selected_records["TOPICS"] = selected_records["TOPICS"].map(
+        ##
+        records["TOPICS"] = records[criterion].copy()
+        records["TOPICS"] = records["TOPICS"].str.split(";")
+        records["TOPICS"] = records["TOPICS"].map(lambda x: [y.strip() for y in x])
+        records["TOPICS"] = records["TOPICS"].map(
             lambda x: sorted([y for y in x if y in custom_topics])
         )
-        selected_records["TOPICS"] = selected_records["TOPICS"].str.join("; ")
+        records["TOPICS"] = records["TOPICS"].str.join("; ")
 
-        records = selected_records.sort_values(
+        records = records.sort_values(
             by=["TOPICS", "global_citations", "local_citations"],
             ascending=[True, False, False],
         )
 
     else:
+
         records = records.sort_values(
             by=["global_citations", "local_citations"],
             ascending=[False, False],
