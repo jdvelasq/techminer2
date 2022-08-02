@@ -56,14 +56,33 @@ def tm2__abstracts_report(
         ]
         records = records[records["article"].isin(selected_records["article"])]
 
-    records = records.sort_values(
-        by=["global_citations", "local_citations"], ascending=False
-    )
+        selected_records["TOPICS"] = selected_records[criterion].copy()
+        selected_records["TOPICS"] = selected_records["TOPICS"].str.split(";")
+        selected_records["TOPICS"] = selected_records["TOPICS"].map(
+            lambda x: [y.strip() for y in x]
+        )
+        selected_records["TOPICS"] = selected_records["TOPICS"].map(
+            lambda x: sorted([y for y in x if y in custom_topics])
+        )
+        selected_records["TOPICS"] = selected_records["TOPICS"].str.join("; ")
+
+        records = records.sort_values(
+            by=["TOPICS", "global_citations", "local_citations"],
+            ascending=[True, False, False],
+        )
+
+    else:
+        records = records.sort_values(
+            by=["global_citations", "local_citations"],
+            ascending=[False, False],
+        )
+
     records = records.head(n_abstracts)
 
     with open(
         os.path.join(directory, "reports", file_name), "w", encoding="utf-8"
     ) as out_file:
+
         for _, row in records.iterrows():
 
             if use_textwrap:
