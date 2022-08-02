@@ -106,13 +106,13 @@ def _make_sankey_plot(matrix_left, matrix_right):
                 + [0.01] * len(middle_labels)
                 + [0.02] * len(right_labels),
                 "pad": 10,
-                "color": "dimgray",
+                "color": "#333",
             },
             link={
                 "source": [key[0] for key in connections.keys()],
                 "target": [key[1] for key in connections.keys()],
                 "value": [value for value in connections.values()],
-                "color": "lightgray",
+                # "color": "lightgray",
             },
         )
     )
