@@ -61,25 +61,34 @@ def tm2__abstracts_report(
         records["TOPICS"] = records[criterion].copy()
         records["TOPICS"] = records["TOPICS"].str.split(";")
         records["TOPICS"] = records["TOPICS"].map(lambda x: [y.strip() for y in x])
-        records["TOPICS"] = records["TOPICS"].map(
-            lambda x: sorted([y for y in x if y in custom_topics])
-        )
-        records["TOPICS"] = records["TOPICS"].str.join("; ")
 
-    records = records.sort_values(
-        by=["global_citations", "local_citations"],
-        ascending=[False, False],
-    )
+        records["POINTS"] = ""
+        for topic in custom_topics:
+            records["POINTS"] += records["TOPICS"].map(
+                lambda x: "1" if topic in x else "0"
+            )
+
+        records = records.sort_values(
+            by=["POINTS", "global_citations", "local_citations"],
+            ascending=[False, False, False],
+        )
+
+    else:
+
+        records = records.sort_values(
+            by=["global_citations", "local_citations"],
+            ascending=[False, False],
+        )
 
     records = records.head(n_abstracts)
 
-    if "TOPICS" not in records.columns:
-        records["TOPICS"] = records[criterion].copy()
+    # if "TOPICS" not in records.columns:
+    #     records["TOPICS"] = records[criterion].copy()
 
-    records = records.sort_values(
-        by=["TOPICS", "global_citations", "local_citations"],
-        ascending=[True, False, False],
-    )
+    # records = records.sort_values(
+    #     by=["TOPICS", "global_citations", "local_citations"],
+    #     ascending=[True, False, False],
+    # )
 
     with open(
         os.path.join(directory, "reports", file_name), "w", encoding="utf-8"
