@@ -73,6 +73,12 @@ def tm2__abstracts_report(
             ascending=[False, False, False],
         )
 
+        records["RNK"] = records.groupby("POINTS")["global_citations"].rank(
+            ascending=False, method="dense"
+        )
+
+        records = records[records["RNK"] < 10]
+
     else:
 
         records = records.sort_values(
@@ -81,14 +87,6 @@ def tm2__abstracts_report(
         )
 
     records = records.head(n_abstracts)
-
-    # if "TOPICS" not in records.columns:
-    #     records["TOPICS"] = records[criterion].copy()
-
-    # records = records.sort_values(
-    #     by=["TOPICS", "global_citations", "local_citations"],
-    #     ascending=[True, False, False],
-    # )
 
     with open(
         os.path.join(directory, "reports", file_name), "w", encoding="utf-8"
