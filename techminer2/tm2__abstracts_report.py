@@ -79,6 +79,17 @@ def tm2__abstracts_report(
 
         records = records[records["RNK"] < 10]
 
+        records["TERMS"] = records[criterion].str.split(";")
+        records["TERMS"] = records["TERMS"].map(lambda x: [y.strip() for y in x])
+        records["TERMS_1"] = records["TERMS"].map(
+            lambda x: ["(*) " + y for y in x if y in custom_topics], na_action="ignore"
+        )
+        records["TERMS_2"] = records["TERMS"].map(
+            lambda x: [y for y in x if y not in custom_topics], na_action="ignore"
+        )
+        records["TERMS"] = records["TERMS_1"] + records["TERMS_2"]
+        records[criterion] = records["TERMS"].str.join("; ")
+
     else:
 
         records = records.sort_values(
@@ -96,13 +107,37 @@ def tm2__abstracts_report(
 
             if use_textwrap:
                 if not pd.isna(row["article"]):
-                    text_article = textwrap.fill(row["article"], width=90)
+                    text_article = textwrap.fill(
+                        row["article"],
+                        width=87,
+                        initial_indent=" " * 0,
+                        subsequent_indent=" " * 3,
+                        fix_sentence_endings=True,
+                    )
                 if not pd.isna(row["title"]):
-                    text_title = textwrap.fill(row["title"], width=90)
+                    text_title = textwrap.fill(
+                        row["title"],
+                        width=87,
+                        initial_indent=" " * 0,
+                        subsequent_indent=" " * 3,
+                        fix_sentence_endings=True,
+                    )
                 if not pd.isna(row[criterion]):
-                    text_criterion = textwrap.fill(row[criterion], width=90)
+                    text_criterion = textwrap.fill(
+                        row[criterion],
+                        width=87,
+                        initial_indent=" " * 0,
+                        subsequent_indent=" " * 3,
+                        fix_sentence_endings=True,
+                    )
                 if not pd.isna(row["abstract"]):
-                    text_abstract = textwrap.fill(row["abstract"], width=90)
+                    text_abstract = textwrap.fill(
+                        row["abstract"],
+                        width=87,
+                        initial_indent=" " * 0,
+                        subsequent_indent=" " * 3,
+                        fix_sentence_endings=True,
+                    )
 
             else:
                 text_article = row["article"]
@@ -111,15 +146,24 @@ def tm2__abstracts_report(
                 if not pd.isna(row["abstract"]):
                     text_abstract = row["abstract"]
 
-            text_citation = "Citations: " + str(row["global_citations"])
+            text_citation = str(row["global_citations"])
 
             print("-" * 90, file=out_file)
+            print("AR ", end="", file=out_file)
             print(text_article, file=out_file)
+
+            print("TI ", end="", file=out_file)
             print(text_title, file=out_file)
+
+            print("KW ", end="", file=out_file)
             print(text_criterion, file=out_file)
+
+            print("TC ", end="", file=out_file)
             print(text_citation, file=out_file)
-            print("\n", file=out_file)
+
+            print("AB ", end="", file=out_file)
             print(text_abstract, file=out_file)
-            print("\n\n", file=out_file)
+
+            print("\n", file=out_file)
 
     # sys.stdout.write("--INFO-- Abstrats Report generated.\n")
