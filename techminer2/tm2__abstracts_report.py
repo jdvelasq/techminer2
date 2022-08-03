@@ -108,6 +108,8 @@ def tm2__abstracts_report(
         os.path.join(directory, "reports", file_name), "w", encoding="utf-8"
     ) as out_file:
 
+        counter = 0
+
         for _, row in records.iterrows():
 
             if use_textwrap:
@@ -154,6 +156,7 @@ def tm2__abstracts_report(
             text_citation = str(row["global_citations"])
 
             print("-" * 90, file=out_file)
+            print("#  {}".format(counter), file=out_file)
             print("AR ", end="", file=out_file)
             print(text_article, file=out_file)
 
@@ -170,5 +173,7 @@ def tm2__abstracts_report(
             print(text_abstract, file=out_file)
 
             print("\n", file=out_file)
+
+            counter += 1
 
     # sys.stdout.write("--INFO-- Abstrats Report generated.\n")
