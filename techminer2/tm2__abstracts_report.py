@@ -135,7 +135,7 @@ def _write_report(criterion, file_name, use_textwrap, directory, records):
                         subsequent_indent=" " * 3,
                         fix_sentence_endings=True,
                     )
-                if not pd.isna(row["abstract"]):
+                if "abstract" in row.index and not pd.isna(row["abstract"]):
                     text_abstract = textwrap.fill(
                         row["abstract"],
                         width=87,
@@ -143,6 +143,8 @@ def _write_report(criterion, file_name, use_textwrap, directory, records):
                         subsequent_indent=" " * 3,
                         fix_sentence_endings=True,
                     )
+                else:
+                    text_abstract = ""
 
             else:
                 text_article = row["article"]
