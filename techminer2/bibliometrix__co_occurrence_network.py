@@ -188,7 +188,6 @@ def bibliometrix__co_occurrence_network(
             n_keywords=n_keywords,
             n_abstracts=n_abstracts,
             n_phrases_per_algorithm=n_phrases_per_algorithm,
-            quiet=True,
             directory=directory,
             database=database,
             start_year=start_year,
