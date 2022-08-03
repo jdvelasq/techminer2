@@ -47,56 +47,8 @@ def tm2__abstracts_report(
     )
 
     if criterion is not None:
-        ##
-        selected_records = records[["article", criterion]]
-        selected_records[criterion] = selected_records[criterion].str.split(";")
-        selected_records = selected_records.explode(criterion)
-        selected_records[criterion] = selected_records[criterion].str.strip()
-        selected_records = selected_records[
-            selected_records[criterion].isin(custom_topics)
-        ]
-        records = records[records["article"].isin(selected_records["article"])]
-
-        ##
-        records["TOPICS"] = records[criterion].copy()
-        records["TOPICS"] = records["TOPICS"].str.split(";")
-        records["TOPICS"] = records["TOPICS"].map(lambda x: [y.strip() for y in x])
-
-        records["POINTS"] = ""
-        for topic in custom_topics:
-            records["POINTS"] += records["TOPICS"].map(
-                lambda x: "1" if topic in x else "0"
-            )
-
-        records = records.sort_values(
-            by=["POINTS", "global_citations", "local_citations"],
-            ascending=[False, False, False],
-        )
-
-        records["RNK"] = records.groupby("POINTS")["global_citations"].rank(
-            ascending=False, method="dense"
-        )
-
-        records = records[records["RNK"] < 10]
-
-        records["TERMS"] = records[criterion].str.split(";")
-        records["TERMS"] = records["TERMS"].map(lambda x: [y.strip() for y in x])
-        records["TERMS_1"] = records["TERMS"].map(
-            lambda x: [
-                "(*) " + custom_topic
-                for custom_topic in custom_topics
-                if custom_topic in x
-            ],
-            na_action="ignore",
-        )
-        records["TERMS_2"] = records["TERMS"].map(
-            lambda x: [y for y in x if y not in custom_topics], na_action="ignore"
-        )
-        records["TERMS"] = records["TERMS_1"] + records["TERMS_2"]
-        records[criterion] = records["TERMS"].str.join("; ")
-
+        records = _sort_by_custom_terms(criterion, custom_topics, records)
     else:
-
         records = records.sort_values(
             by=["global_citations", "local_citations"],
             ascending=[False, False],
@@ -104,14 +56,60 @@ def tm2__abstracts_report(
 
     records = records.head(n_abstracts)
 
+    _write_report(criterion, file_name, use_textwrap, directory, records)
+
+
+def _sort_by_custom_terms(criterion, custom_topics, records):
+    selected_records = records[["article", criterion]]
+    selected_records[criterion] = selected_records[criterion].str.split(";")
+    selected_records = selected_records.explode(criterion)
+    selected_records[criterion] = selected_records[criterion].str.strip()
+    selected_records = selected_records[selected_records[criterion].isin(custom_topics)]
+    records = records[records["article"].isin(selected_records["article"])]
+
+    ##
+    records["TOPICS"] = records[criterion].copy()
+    records["TOPICS"] = records["TOPICS"].str.split(";")
+    records["TOPICS"] = records["TOPICS"].map(lambda x: [y.strip() for y in x])
+
+    records["POINTS"] = ""
+    for topic in custom_topics:
+        records["POINTS"] += records["TOPICS"].map(lambda x: "1" if topic in x else "0")
+
+    records = records.sort_values(
+        by=["POINTS", "global_citations", "local_citations"],
+        ascending=[False, False, False],
+    )
+
+    records["RNK"] = records.groupby("POINTS")["global_citations"].rank(
+        ascending=False, method="dense"
+    )
+
+    records = records[records["RNK"] < 10]
+
+    records["TERMS"] = records[criterion].str.split(";")
+    records["TERMS"] = records["TERMS"].map(lambda x: [y.strip() for y in x])
+    records["TERMS_1"] = records["TERMS"].map(
+        lambda x: [
+            "(*) " + custom_topic for custom_topic in custom_topics if custom_topic in x
+        ],
+        na_action="ignore",
+    )
+    records["TERMS_2"] = records["TERMS"].map(
+        lambda x: [y for y in x if y not in custom_topics], na_action="ignore"
+    )
+    records["TERMS"] = records["TERMS_1"] + records["TERMS_2"]
+    records[criterion] = records["TERMS"].str.join("; ")
+    return records
+
+
+def _write_report(criterion, file_name, use_textwrap, directory, records):
     with open(
         os.path.join(directory, "reports", file_name), "w", encoding="utf-8"
     ) as out_file:
-
         counter = 0
 
         for _, row in records.iterrows():
-
             if use_textwrap:
                 if not pd.isna(row["article"]):
                     text_article = textwrap.fill(
