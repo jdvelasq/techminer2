@@ -1572,11 +1572,15 @@ def _remove_stranger_chars_in_database_files(directory):
 
 
 def _create_ignore_file(directory):
-    with open(
-        os.path.join(directory, "processed", "stopwords.txt"), "w", encoding="utf-8"
-    ) as file:
-        file.write("")
-        file.close()
+
+    file_path = os.path.join(directory, "processed", "stopwords.txt")
+
+    if not os.path.exists(file_path):
+        with open(
+            file_path, "w", encoding="utf-8"
+        ) as file:
+            file.write("")
+            file.close()
 
 
 def _drop_na_columns_in_database_files(directory):
