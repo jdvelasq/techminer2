@@ -149,22 +149,6 @@ def _sort_matrix_list(matrix_list):
     return matrix_list
 
 
-# def _select_top_n_items(top_n, matrix_list, column):
-
-#     table = pd.DataFrame({"term": matrix_list[column].drop_duplicates()})
-#     table["ranking"] = table.term.str.split()
-#     table["ranking"] = table["ranking"].map(lambda x: x[-1])
-#     table["name"] = table.term.str.split()
-#     table["name"] = table["name"].map(lambda x: x[:-1])
-#     table["name"] = table["name"].str.join(" ")
-#     table = table.sort_values(["ranking", "name"], ascending=[False, True])
-#     table = table.head(top_n)
-#     terms = table.term.tolist()
-
-#     matrix_list = matrix_list[matrix_list[column].isin(terms)]
-#     return matrix_list
-
-
 def _add_counters_to_items(
     matrix_list,
     column_name,
