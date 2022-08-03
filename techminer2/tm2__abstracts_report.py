@@ -155,8 +155,8 @@ def tm2__abstracts_report(
 
             text_citation = str(row["global_citations"])
 
-            print("-" * 90, file=out_file)
-            print("#  {}".format(counter), file=out_file)
+            # print("-" * 90, file=out_file)
+            print("-- {:03d} ".format(counter) + "-" * 83, file=out_file)
             print("AR ", end="", file=out_file)
             print(text_article, file=out_file)
 
