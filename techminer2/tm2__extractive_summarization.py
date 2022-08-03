@@ -101,6 +101,8 @@ def _sort_summary(records, criterion, custom_topics):
 
     records = records.sort_values(by=["POINTS", "RNK"], ascending=[False, True])
 
+    records = records[records["RNK"] < 10]
+
     return records
 
 
