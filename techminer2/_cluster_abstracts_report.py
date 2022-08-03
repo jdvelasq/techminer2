@@ -1,7 +1,6 @@
 """Clusters summarization"""
 import glob
 import os
-import shutil
 
 from .tm2__abstracts_report import tm2__abstracts_report
 
