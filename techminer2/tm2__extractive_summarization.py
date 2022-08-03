@@ -34,7 +34,7 @@ def tm2__extractive_summarization(
     custom_topics,
     file_name="extractive_summarization.txt",
     n_abstracts=50,
-    n_phrases_per_algorithm=50,
+    n_phrases_per_algorithm=200,
     directory="./",
     database="documents",
     start_year=None,
@@ -58,7 +58,7 @@ def tm2__extractive_summarization(
     final_summary = _select_phrases_with_keywords(custom_topics, summary)
 
     ###
-    final_summary = summary
+    # final_summary = summary
     ###
 
     final_summary = _complete_record_info(criterion, records, final_summary)
