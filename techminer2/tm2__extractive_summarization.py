@@ -34,7 +34,7 @@ def tm2__extractive_summarization(
     custom_topics,
     file_name="extractive_summarization.txt",
     n_abstracts=50,
-    n_phrases_per_algorithm=200,
+    n_phrases_per_algorithm=1000,
     directory="./",
     database="documents",
     start_year=None,
@@ -56,13 +56,17 @@ def tm2__extractive_summarization(
     document = _create_document(records)
     summary = _generate_summary(n_phrases_per_algorithm, document)
     ###
-    # final_summary = _select_phrases_with_keywords(custom_topics, summary)
-    final_summary = summary
+    final_summary = _select_phrases_with_keywords(custom_topics, summary)
+    # final_summary = summary
     ###
 
     final_summary = _complete_record_info(criterion, records, final_summary)
 
     final_summary = _sort_criterion_field(
+        records=final_summary, criterion=criterion, custom_topics=custom_topics
+    )
+
+    final_summary = _sort_summary(
         records=final_summary, criterion=criterion, custom_topics=custom_topics
     )
 
@@ -75,6 +79,29 @@ def tm2__extractive_summarization(
         directory=directory,
         records=final_summary,
     )
+
+
+def _sort_summary(records, criterion, custom_topics):
+    records["TOPICS"] = records[criterion].copy()
+    records["TOPICS"] = records["TOPICS"].str.split(";")
+    records["TOPICS"] = records["TOPICS"].map(lambda x: [y.strip() for y in x])
+
+    records["POINTS"] = ""
+    for topic in custom_topics:
+        records["POINTS"] += records["TOPICS"].map(lambda x: "1" if topic in x else "0")
+
+    records = records.sort_values(
+        by=["POINTS", "global_citations", "local_citations"],
+        ascending=[False, False, False],
+    )
+
+    records["RNK"] = records.groupby("POINTS")["global_citations"].rank(
+        ascending=False, method="dense"
+    )
+
+    records = records.sort_values(by=["POINTS", "RNK"], ascending=[False, True])
+
+    return records
 
 
 def _sort_criterion_field(records, criterion, custom_topics):
