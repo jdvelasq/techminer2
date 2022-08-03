@@ -26,6 +26,9 @@ Abstract concordances exploration tool.
 
 
 """
+import os.path
+import textwrap
+
 from ._load_abstracts import load_abstracts
 from ._read_records import read_records
 
@@ -54,9 +57,47 @@ def tlab__co_occurrence_analysis__concordances(
         ["global_citations", "article", "line_no"], ascending=[False, True, True]
     )
     abstracts = _select_abstracts(abstracts, search_for)
+
+    _write_report(directory, abstracts)
+
     abstracts = abstracts.head(top_n)
     contexts = _extract_contexts(abstracts, search_for)
     _print_concordances(contexts, search_for)
+
+
+def _write_report(directory, abstracts):
+
+    abstracts = abstracts.copy()
+    abstracts = abstracts[["global_citations", "article", "phrase"]]
+    abstracts = abstracts.groupby(["article"], as_index=False).agg(list)
+    abstracts["phrase"] = abstracts["phrase"].str.join("  ")
+    abstracts["global_citations"] = abstracts["global_citations"].map(lambda x: max(x))
+
+    file_name = os.path.join(directory, "reports", "concordances.txt")
+    with open(file_name, "w", encoding="utf-8") as out_file:
+        counter = 0
+
+        for _, row in abstracts.iterrows():
+            print("-- {:03d} ".format(counter) + "-" * 83, file=out_file)
+            print("AR ", end="", file=out_file)
+            print(_fill(row["article"]), file=out_file)
+            print("TC ", end="", file=out_file)
+            print(str(row.global_citations), file=out_file)
+            print("AB ", end="", file=out_file)
+            print(_fill(row.phrase), file=out_file)
+            print("\n", file=out_file)
+
+            counter += 1
+
+
+def _fill(text):
+    return textwrap.fill(
+        text,
+        width=87,
+        initial_indent=" " * 0,
+        subsequent_indent=" " * 3,
+        fix_sentence_endings=True,
+    )
 
 
 def _print_concordances(contexts, text):
