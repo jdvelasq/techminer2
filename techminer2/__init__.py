@@ -133,6 +133,7 @@ from .tm2__coverage import tm2__coverage
 from .tm2__extractive_summarization import tm2__extractive_summarization
 from .tm2__import_scopus_files import tm2__import_scopus_files
 from .tm2__raw_document_types import tm2__raw_document_types
+from .tm2__replace import tm2__replace
 from .vantagepoint__apply_thesaurus import vantagepoint__apply_thesaurus
 from .vantagepoint__auto_corr_matrix import vantagepoint__auto_corr_matrix
 from .vantagepoint__auto_corr_matrix_list import vantagepoint__auto_corr_matrix_list
