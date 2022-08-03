@@ -56,8 +56,8 @@ def tm2__extractive_summarization(
     document = _create_document(records)
     summary = _generate_summary(n_phrases_per_algorithm, document)
     ###
-    final_summary = _select_phrases_with_keywords(custom_topics, summary)
-    # final_summary = summary
+    # final_summary = _select_phrases_with_keywords(custom_topics, summary)
+    final_summary = summary
     ###
 
     final_summary = _complete_record_info(criterion, records, final_summary)
