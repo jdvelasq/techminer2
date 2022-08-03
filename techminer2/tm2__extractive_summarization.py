@@ -44,6 +44,7 @@ from sumy.summarizers.lsa import LsaSummarizer
 from sumy.summarizers.luhn import LuhnSummarizer
 
 from ._read_records import read_records
+from .tm2__abstracts_report import _sort_by_custom_terms
 
 
 def tm2__extractive_summarization(
@@ -70,7 +71,9 @@ def tm2__extractive_summarization(
     )
 
     records = _select_records(criterion, custom_topics, n_abstracts, records)
+
     document = _create_document(records)
+
     summary_with_lexrank = _summarize_with_lexrank(document, n_phrases_per_algorithm)
     summary_with_lsasummarizer = _summarize_with_lsasummarizer(
         document, n_phrases_per_algorithm
@@ -151,15 +154,23 @@ def _create_document(records):
 
 
 def _select_records(criterion, custom_topics, n_abstracts, records):
-    selected_records = records[["article", criterion]]
-    selected_records[criterion] = selected_records[criterion].str.split(";")
-    selected_records = selected_records.explode(criterion)
-    selected_records[criterion] = selected_records[criterion].str.strip()
-    selected_records = selected_records[selected_records[criterion].isin(custom_topics)]
-    records = records[records["article"].isin(selected_records["article"])]
 
-    records = records.sort_values(
-        by=["global_citations", "local_citations"], ascending=False
-    )
+    records = _sort_by_custom_terms(criterion, custom_topics, records)
     records = records.head(n_abstracts)
     return records
+
+
+# def _select_records(criterion, custom_topics, n_abstracts, records):
+
+#     selected_records = records[["article", criterion]]
+#     selected_records[criterion] = selected_records[criterion].str.split(";")
+#     selected_records = selected_records.explode(criterion)
+#     selected_records[criterion] = selected_records[criterion].str.strip()
+#     selected_records = selected_records[selected_records[criterion].isin(custom_topics)]
+#     records = records[records["article"].isin(selected_records["article"])]
+
+#     records = records.sort_values(
+#         by=["global_citations", "local_citations"], ascending=False
+#     )
+#     records = records.head(n_abstracts)
+#     return records
