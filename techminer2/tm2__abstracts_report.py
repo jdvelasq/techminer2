@@ -82,7 +82,12 @@ def tm2__abstracts_report(
         records["TERMS"] = records[criterion].str.split(";")
         records["TERMS"] = records["TERMS"].map(lambda x: [y.strip() for y in x])
         records["TERMS_1"] = records["TERMS"].map(
-            lambda x: ["(*) " + y for y in x if y in custom_topics], na_action="ignore"
+            lambda x: [
+                "(*) " + custom_topic
+                for custom_topic in custom_topics
+                if custom_topic in x
+            ],
+            na_action="ignore",
         )
         records["TERMS_2"] = records["TERMS"].map(
             lambda x: [y for y in x if y not in custom_topics], na_action="ignore"
