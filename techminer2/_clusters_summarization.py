@@ -11,7 +11,7 @@ def clusters_summarization(
     directory_for_summarization,
     n_keywords=10,
     n_abstracts=50,
-    n_phrases_per_algorithm=5,
+    n_phrases_per_algorithm=50,
     quiet=True,
     directory="./",
     database="documents",
