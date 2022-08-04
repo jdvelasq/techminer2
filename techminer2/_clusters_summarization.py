@@ -1,7 +1,7 @@
 """Clusters summarization"""
-import glob
 import os
 
+from ._create_directory import create_directory
 from .tm2__extractive_summarization import tm2__extractive_summarization
 
 
@@ -20,7 +20,10 @@ def clusters_summarization(
 ):
     """Clusters summarization."""
 
-    _delete_directory(directory_for_summarization, directory)
+    create_directory(
+        base_directory=directory,
+        target_directory=directory_for_summarization,
+    )
 
     communities = communities.head(n_keywords)
     for community_name in communities:
@@ -42,13 +45,3 @@ def clusters_summarization(
             end_year=end_year,
             **filters,
         )
-
-
-def _delete_directory(directory_for_summarization, directory):
-    path = os.path.join(directory, "reports", directory_for_summarization)
-    if os.path.exists(path):
-        files = glob.glob(path + "/*.txt")
-        for file in files:
-            os.remove(file)
-    else:
-        os.makedirs(path)
