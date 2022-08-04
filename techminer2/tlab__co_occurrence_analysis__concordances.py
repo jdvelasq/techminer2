@@ -59,7 +59,7 @@ def tlab__co_occurrence_analysis__concordances(
     )
     abstracts = _select_abstracts(abstracts, search_for)
 
-    _write_report(directory, abstracts)
+    _write_report(directory, abstracts, start_year, end_year, **filters)
 
     if not quiet:
         abstracts = abstracts.head(top_n)
@@ -67,7 +67,7 @@ def tlab__co_occurrence_analysis__concordances(
         _print_concordances(contexts, search_for)
 
 
-def _write_report(directory, abstracts):
+def _write_report(directory, abstracts, start_year, end_year, **filters):
 
     abstracts = abstracts.copy()
     abstracts = abstracts[["global_citations", "article", "phrase"]]
@@ -75,6 +75,17 @@ def _write_report(directory, abstracts):
     abstracts["phrase"] = abstracts["phrase"].str.join("  ")
     abstracts["global_citations"] = abstracts["global_citations"].map(max)
     abstracts = abstracts.sort_values("global_citations", ascending=False)
+
+    records = read_records(
+        directory=directory,
+        database="documents",
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
+    )
+    records.index = records.article
+    abstracts["title"] = records.loc[abstracts.article, "title"].to_list()
+    abstracts = abstracts.dropna(subset=["title"])
 
     file_name = os.path.join(directory, "reports", "concordances.txt")
     with open(file_name, "w", encoding="utf-8") as out_file:
@@ -84,6 +95,8 @@ def _write_report(directory, abstracts):
             print("-- {:03d} ".format(counter) + "-" * 83, file=out_file)
             print("AR ", end="", file=out_file)
             print(_fill(row["article"]), file=out_file)
+            print("TI ", end="", file=out_file)
+            print(_fill(row["title"]), file=out_file)
             print("TC ", end="", file=out_file)
             print(str(row.global_citations), file=out_file)
             print("AB ", end="", file=out_file)
