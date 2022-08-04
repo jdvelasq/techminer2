@@ -52,32 +52,27 @@ def tm2__extractive_summarization(
     )
     records = records.dropna(subset=["abstract"])
 
-    records = _select_records(criterion, custom_topics, n_abstracts, records)
-    document = _create_document(records)
+    selected_records = _select_records(criterion, custom_topics, n_abstracts, records)
+    document = _create_document(selected_records)
     summary = _generate_summary(n_phrases_per_algorithm, document)
-    ###
-    # final_summary = _select_phrases_with_keywords(custom_topics, summary)
-    final_summary = summary
-    ###
+    summary = _get_article(selected_records, summary)
+    records.index = records.article
+    article = summary.article.drop_duplicates().tolist()
+    records = records.loc[article, :]
 
-    final_summary = _complete_record_info(criterion, records, final_summary)
-
-    final_summary = _sort_criterion_field(
-        records=final_summary, criterion=criterion, custom_topics=custom_topics
+    records = _sort_criterion_field(
+        records=records, criterion=criterion, custom_topics=custom_topics
     )
-
-    final_summary = _sort_summary(
-        records=final_summary, criterion=criterion, custom_topics=custom_topics
+    records = _sort_summary(
+        records=records, criterion=criterion, custom_topics=custom_topics
     )
-
-    final_summary = final_summary.rename(columns={"phrase": "abstract"})
 
     _write_report(
         criterion=criterion,
         file_name=file_name,
         use_textwrap=True,
         directory=directory,
-        records=final_summary,
+        records=records,
     )
 
 
@@ -123,8 +118,8 @@ def _sort_criterion_field(records, criterion, custom_topics):
     return records
 
 
-def _complete_record_info(criterion, records, final_summary):
-    summarization = pd.DataFrame({"phrase": final_summary})
+def _get_article(records, summary):
+    summarization = pd.DataFrame({"phrase": summary})
     summarization["article"] = pd.NA
     for record in records.itertuples():
         summarization.loc[
@@ -136,18 +131,18 @@ def _complete_record_info(criterion, records, final_summary):
 
     summarization = summarization.dropna(subset=["article"])
 
-    records.index = records.article
+    # records.index = records.article
 
-    summarization["global_citations"] = records.loc[
-        summarization.article, "global_citations"
-    ].tolist()
+    # summarization["global_citations"] = records.loc[
+    #     summarization.article, "global_citations"
+    # ].tolist()
 
-    summarization["local_citations"] = records.loc[
-        summarization.article, "local_citations"
-    ].tolist()
+    # summarization["local_citations"] = records.loc[
+    #     summarization.article, "local_citations"
+    # ].tolist()
 
-    summarization["title"] = records.loc[summarization.article, "title"].tolist()
-    summarization[criterion] = records.loc[summarization.article, criterion].tolist()
+    # summarization["title"] = records.loc[summarization.article, "title"].tolist()
+    # summarization[criterion] = records.loc[summarization.article, criterion].tolist()
 
     return summarization
 
