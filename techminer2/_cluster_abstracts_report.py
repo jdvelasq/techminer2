@@ -2,6 +2,7 @@
 import glob
 import os
 
+from ._create_directory import create_directory
 from .tm2__abstracts_report import tm2__abstracts_report
 
 
@@ -19,7 +20,10 @@ def cluster_abstracts_report(
 ):
     """Clusters summarization."""
 
-    _delete_directory(directory_for_abstracts, directory)
+    create_directory(
+        base_directory=directory,
+        target_directory=directory_for_abstracts,
+    )
 
     communities = communities.head(n_keywords)
     for community_name in communities:
@@ -42,13 +46,3 @@ def cluster_abstracts_report(
             end_year=end_year,
             **filters,
         )
-
-
-def _delete_directory(directory_for_abstracts, directory):
-    path = os.path.join(directory, "reports", directory_for_abstracts)
-    if os.path.exists(path):
-        files = glob.glob(path + "/*.txt")
-        for file in files:
-            os.remove(file)
-    else:
-        os.makedirs(path)
