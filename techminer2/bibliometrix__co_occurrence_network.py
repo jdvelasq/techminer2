@@ -9,6 +9,7 @@ Co-occurrence Network
 >>> nnet = bibliometrix__co_occurrence_network(
 ...     criterion="author_keywords",
 ...     topics_length=20,
+...     summarize=False,
 ...     directory=directory,
 ...     method="louvain",
 ...     nx_k=0.5,
@@ -69,13 +70,16 @@ cryptocurrency 04:029             1     0.011062   0.655172  0.058653
 
 
 """
+import os.path
 from dataclasses import dataclass
 
 from sklearn.manifold import MDS, TSNE
 
 from ._association_index import association_index
 from ._cluster_abstracts_report import cluster_abstracts_report
+from ._clusters_concordances import clusters_concordances
 from ._clusters_summarization import clusters_summarization
+from ._create_directory import create_directory
 from ._get_network_graph_communities import get_network_graph_communities
 from ._get_network_graph_degree_plot import get_network_graph_degree_plot
 from ._get_network_graph_indicators import get_network_graph_indicators
@@ -103,8 +107,7 @@ def bibliometrix__co_occurrence_network(
     topic_min_occ=None,
     normalization="association",
     summarize=False,
-    directory_for_summarization="co-occurrence_network_summarization/",
-    directory_for_abstracts="co-occurrence_network_abstracts/",
+    directory_for_results="co-occurrence_network/",
     n_keywords=10,
     n_abstracts=50,
     n_phrases_per_algorithm=5,
@@ -180,7 +183,15 @@ def bibliometrix__co_occurrence_network(
         manifold_method=TSNE(n_components=2),
     )
 
+    create_directory(
+        base_directory=directory,
+        target_directory=directory_for_results,
+    )
+
     if summarize is True:
+        directory_for_summarization = os.path.join(
+            directory_for_results, "summarization"
+        )
         clusters_summarization(
             criterion=criterion,
             communities=results.communities_,
@@ -195,6 +206,7 @@ def bibliometrix__co_occurrence_network(
             **filters,
         )
 
+    directory_for_abstracts = os.path.join(directory_for_results, "abstracts")
     cluster_abstracts_report(
         criterion=criterion,
         communities=results.communities_,
@@ -203,6 +215,18 @@ def bibliometrix__co_occurrence_network(
         n_abstracts=n_abstracts,
         directory=directory,
         database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
+    )
+
+    directory_for_concordances = os.path.join(directory_for_results, "concordances")
+    clusters_concordances(
+        communities=results.communities_,
+        directory_for_concordances=directory_for_concordances,
+        n_keywords=n_keywords,
+        n_abstracts=n_abstracts,
+        directory=directory,
         start_year=start_year,
         end_year=end_year,
         **filters,
