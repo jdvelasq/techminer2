@@ -58,6 +58,7 @@ def tlab__co_occurrence_analysis__concordances(
         ["global_citations", "article", "line_no"], ascending=[False, True, True]
     )
     abstracts = _select_abstracts(abstracts, search_for)
+    abstracts = abstracts.sort_values("global_citations", ascending=False)
 
     _write_report(directory, abstracts)
 
