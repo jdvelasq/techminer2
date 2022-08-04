@@ -36,6 +36,7 @@ from ._read_records import read_records
 def tlab__co_occurrence_analysis__concordances(
     search_for,
     top_n=50,
+    quiet=False,
     directory="./",
     start_year=None,
     end_year=None,
@@ -60,9 +61,10 @@ def tlab__co_occurrence_analysis__concordances(
 
     _write_report(directory, abstracts)
 
-    abstracts = abstracts.head(top_n)
-    contexts = _extract_contexts(abstracts, search_for)
-    _print_concordances(contexts, search_for)
+    if not quiet:
+        abstracts = abstracts.head(top_n)
+        contexts = _extract_contexts(abstracts, search_for)
+        _print_concordances(contexts, search_for)
 
 
 def _write_report(directory, abstracts):
@@ -71,7 +73,7 @@ def _write_report(directory, abstracts):
     abstracts = abstracts[["global_citations", "article", "phrase"]]
     abstracts = abstracts.groupby(["article"], as_index=False).agg(list)
     abstracts["phrase"] = abstracts["phrase"].str.join("  ")
-    abstracts["global_citations"] = abstracts["global_citations"].map(lambda x: max(x))
+    abstracts["global_citations"] = abstracts["global_citations"].map(max)
 
     file_name = os.path.join(directory, "reports", "concordances.txt")
     with open(file_name, "w", encoding="utf-8") as out_file:
