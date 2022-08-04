@@ -58,7 +58,6 @@ def tlab__co_occurrence_analysis__concordances(
         ["global_citations", "article", "line_no"], ascending=[False, True, True]
     )
     abstracts = _select_abstracts(abstracts, search_for)
-    abstracts = abstracts.sort_values("global_citations", ascending=False)
 
     _write_report(directory, abstracts)
 
@@ -75,6 +74,7 @@ def _write_report(directory, abstracts):
     abstracts = abstracts.groupby(["article"], as_index=False).agg(list)
     abstracts["phrase"] = abstracts["phrase"].str.join("  ")
     abstracts["global_citations"] = abstracts["global_citations"].map(max)
+    abstracts = abstracts.sort_values("global_citations", ascending=False)
 
     file_name = os.path.join(directory, "reports", "concordances.txt")
     with open(file_name, "w", encoding="utf-8") as out_file:
