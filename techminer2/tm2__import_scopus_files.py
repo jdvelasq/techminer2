@@ -1576,9 +1576,7 @@ def _create_ignore_file(directory):
     file_path = os.path.join(directory, "processed", "stopwords.txt")
 
     if not os.path.exists(file_path):
-        with open(
-            file_path, "w", encoding="utf-8"
-        ) as file:
+        with open(file_path, "w", encoding="utf-8") as file:
             file.write("")
             file.close()
 
