@@ -40,7 +40,7 @@ def clusters_concordances(
         community = [x for x in community if x != ""]
         community = [" ".join(x.split()[:-1]) for x in community]
 
-        for member in community:
+        for i_member, member in enumerate(community):
             tlab__co_occurrence_analysis__concordances(
                 search_for=member,
                 top_n=n_abstracts,
@@ -52,5 +52,7 @@ def clusters_concordances(
             )
 
             src_file = os.path.join(directory, "reports/concordances.txt")
-            dst_file = os.path.join(path, member + ".txt")
+            dst_file = os.path.join(
+                path, "{:02d}_".format(i_member) + member.replace(" ", "_") + ".txt"
+            )
             shutil.copyfile(src_file, dst_file)
