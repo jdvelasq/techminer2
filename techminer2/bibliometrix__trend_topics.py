@@ -10,14 +10,34 @@ Trend Topics
 >>> bibliometrix__trend_topics(
 ...     'author_keywords',
 ...     directory=directory, 
-... ).table_.head()
-year                   OCC  year_q1  year_med  year_q3  global_citations  rn
-author_keywords                                                             
-regtech                 69     2016      2016     2017               461   0
-fintech                 42     2016      2016     2016               406   1
-regulatory technology   12     2016      2016     2016                47   2
-financial technology     9     2016      2016     2016                32   3
-financial regulation     8     2016      2016     2016                91   4
+... ).table_.head(20)
+year                        OCC  year_q1  ...  global_citations  rn
+author_keywords                           ...                      
+regtech                      69     2016  ...               461   0
+fintech                      42     2016  ...               406   1
+regulatory technology        12     2016  ...                47   2
+financial technology          9     2016  ...                32   3
+financial regulation          8     2016  ...                91   4
+blockchain                   18     2017  ...               109   0
+financial services            5     2017  ...               135   1
+smart contracts               3     2017  ...                15   2
+sandboxes                     2     2017  ...                 7   3
+shared ledger technologies    1     2017  ...                 9   4
+artificial intelligence      13     2018  ...                65   0
+compliance                   12     2018  ...                20   1
+regulation                    6     2018  ...               120   2
+financial inclusion           5     2018  ...                68   3
+cryptocurrency                4     2018  ...                29   4
+machine learning              6     2019  ...                13   0
+anti-money laundering         4     2019  ...                30   1
+crowdfunding                  4     2019  ...                30   2
+suptech                       4     2019  ...                 3   3
+p2p lending                   3     2019  ...                26   4
+<BLANKLINE>
+[20 rows x 6 columns]
+
+
+
 
 
 >>> bibliometrix__trend_topics(
@@ -28,6 +48,30 @@ financial regulation     8     2016      2016     2016                91   4
 .. raw:: html
 
     <iframe src="../../../_static/bibliometrix__trend_topics.html" height="900px" width="100%" frameBorder="0"></iframe>
+
+
+
+>>> bibliometrix__trend_topics(
+...     'author_keywords',
+...     custom_topics=[
+...         "fintech",
+...         "regulatory technology",
+...         "blockchain",
+...         "suptech",
+...         "artificial intelligence",
+...         "financial inclusion",
+...     ], 
+...     directory=directory, 
+... ).table_.head(10)
+year                     OCC  year_q1  year_med  year_q3  global_citations  rn
+author_keywords                                                               
+fintech                   42     2016      2016     2016               406   0
+regulatory technology     12     2016      2016     2016                47   1
+blockchain                18     2017      2017     2017               109   0
+artificial intelligence   13     2018      2018     2018                65   0
+financial inclusion        5     2018      2018     2018                68   1
+suptech                    4     2019      2019     2019                 3   0
+
 
 """
 from dataclasses import dataclass
@@ -48,6 +92,7 @@ class _Results:
 def bibliometrix__trend_topics(
     criterion,
     n_words_per_year=5,
+    custom_topics=None,
     directory="./",
     database="documents",
     start_year=None,
@@ -65,6 +110,9 @@ def bibliometrix__trend_topics(
         end_year=end_year,
         **filters,
     )
+
+    if custom_topics is not None:
+        words_by_year = words_by_year.loc[custom_topics, :]
 
     year_q1 = []
     year_med = []
