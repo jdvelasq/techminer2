@@ -20,6 +20,7 @@ Gantt Chart
 """
 import plotly.express as px
 
+from ._indicators.indicators_by_topic import indicators_by_topic
 from ._read_records import read_records
 
 
@@ -27,6 +28,9 @@ def vantagepoint__gantt_chart(
     criterion="author_keywords",
     directory="./",
     topics_length=10,
+    topic_min_occ=None,
+    topic_min_citations=None,
+    custom_topics=None,
     database="documents",
     start_year=None,
     end_year=None,
@@ -55,23 +59,34 @@ def vantagepoint__gantt_chart(
     records["start"] = records["start"].astype(str) + "-01-01"
     records["finish"] = records["finish"].astype(str) + "-12-31"
 
-    index = read_records(
+    indicators = indicators_by_topic(
+        criterion=criterion,
         directory=directory,
         database=database,
         start_year=start_year,
         end_year=end_year,
         **filters,
     )
-    index = index[criterion]
-    index = index.dropna()
-    index = index.str.split(";")
-    index = index.explode()
-    index = index.str.strip()
-    index = index.value_counts()
-    index = index.sort_values(ascending=False)
-    index = index.head(topics_length)
+    indicators = indicators.sort_values(
+        ["OCC", "global_citations", "local_citations"],
+        ascending=[False, False, False],
+    )
+    if custom_topics is None:
+        custom_topics = indicators.copy()
+        if topic_min_occ is not None:
+            custom_topics = custom_topics[custom_topics["OCC"] >= topic_min_occ]
+        if topic_min_citations is not None:
+            custom_topics = custom_topics[
+                custom_topics["global_citations"] >= topic_min_citations
+            ]
+        custom_topics = custom_topics.index.copy()
+        custom_topics = custom_topics[:topics_length]
+    else:
+        custom_topics = [
+            topic for topic in custom_topics if topic in indicators.index.tolist()
+        ]
 
-    records = records.loc[index.index, :]
+    records = records.loc[custom_topics, :]
 
     fig = px.timeline(
         records,
