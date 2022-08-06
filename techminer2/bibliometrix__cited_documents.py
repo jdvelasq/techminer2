@@ -7,7 +7,7 @@ def bibiometrix_cited_documents(
     metric,
     directory="./",
     database="documents",
-    topics_length=20,
+    top_n=20,
     title=None,
     start_year=None,
     end_year=None,
@@ -23,7 +23,7 @@ def bibiometrix_cited_documents(
         **filters,
     )
     indicators = indicators.sort_values(by=metric, ascending=False)
-    indicators = indicators.head(topics_length)
+    indicators = indicators.head(top_n)
     indicators = indicators.rename(
         columns={col: col.replace("_", " ").title() for col in indicators.columns}
     )
