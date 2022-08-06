@@ -34,7 +34,7 @@ def bibliometrix__most_local_cited_documents(
         metric="local_citations",
         directory=directory,
         database="documents",
-        topics_length=topics_length,
+        top_n=topics_length,
         title=title,
         start_year=start_year,
         end_year=end_year,
