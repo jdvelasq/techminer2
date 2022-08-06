@@ -35,7 +35,7 @@ def bibliometrix__most_global_cited_references(
         metric="global_citations",
         directory=directory,
         database="references",
-        topics_length=topics_length,
+        top_n=topics_length,
         title=title,
         start_year=start_year,
         end_year=end_year,
