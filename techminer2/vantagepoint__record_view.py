@@ -94,8 +94,6 @@ ID nan
 ## VantagePoint / Record View
 import textwrap
 
-import numpy as np
-
 from ._read_records import read_records
 
 
@@ -114,7 +112,7 @@ def vantagepoint__record_view(
 ):
     """Record View."""
 
-    documents = read_records(
+    records = read_records(
         directory=directory,
         database=database,
         start_year=start_year,
@@ -122,12 +120,12 @@ def vantagepoint__record_view(
         **filters,
     )
 
-    contains = documents[criterion].str.contains(
+    contains = records[criterion].str.contains(
         search_for, case=case, flags=flags, regex=regex
     )
     contains = contains.dropna()
     contains = contains[contains]
-    documents = documents.loc[contains.index, :]
+    records = records.loc[contains.index, :]
 
     column_list = []
 
@@ -145,16 +143,16 @@ def vantagepoint__record_view(
 
     for criterion in reported_columns:
 
-        if criterion in documents.columns:
+        if criterion in records.columns:
             column_list.append(criterion)
 
-    documents = documents[column_list]
-    if "global_citations" in documents.columns:
-        documents = documents.sort_values(by="global_citations", ascending=False)
+    records = records[column_list]
+    if "global_citations" in records.columns:
+        records = records.sort_values(by="global_citations", ascending=False)
 
-    documents = documents.head(records_length)
+    records = records.head(records_length)
 
-    for index, row in documents.iterrows():
+    for index, row in records.iterrows():
 
         for criterion in reported_columns:
 
@@ -197,5 +195,5 @@ def vantagepoint__record_view(
                 )[3:]
             )
 
-        if index != documents.index[-1]:
+        if index != records.index[-1]:
             print("-" * 90)
