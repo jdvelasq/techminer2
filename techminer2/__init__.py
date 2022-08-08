@@ -132,6 +132,7 @@ from .tm2__abstracts_report import tm2__abstracts_report
 from .tm2__coverage import tm2__coverage
 from .tm2__extractive_summarization import tm2__extractive_summarization
 from .tm2__import_scopus_files import tm2__import_scopus_files
+from .tm2__most_cited_documents import tm2__most_cited_documents
 from .tm2__raw_document_types import tm2__raw_document_types
 from .tm2__replace import tm2__replace
 from .vantagepoint__apply_thesaurus import vantagepoint__apply_thesaurus
