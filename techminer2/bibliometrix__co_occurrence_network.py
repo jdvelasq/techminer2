@@ -9,7 +9,6 @@ Co-occurrence Network
 >>> nnet = bibliometrix__co_occurrence_network(
 ...     criterion="author_keywords",
 ...     topics_length=20,
-...     summarize=False,
 ...     directory=directory,
 ...     method="louvain",
 ...     nx_k=0.5,
@@ -78,7 +77,6 @@ from sklearn.manifold import MDS, TSNE
 from ._association_index import association_index
 from ._cluster_abstracts_report import cluster_abstracts_report
 from ._clusters_concordances import clusters_concordances
-from ._clusters_summarization import clusters_summarization
 from ._create_directory import create_directory
 from ._get_network_graph_communities import get_network_graph_communities
 from ._get_network_graph_degree_plot import get_network_graph_degree_plot
@@ -106,11 +104,11 @@ def bibliometrix__co_occurrence_network(
     topics_length=None,
     topic_min_occ=None,
     normalization="association",
-    summarize=False,
+    # summarize=False,
     directory_for_results="co-occurrence_network/",
     n_keywords=10,
-    n_abstracts=50,
-    n_phrases_per_algorithm=5,
+    # n_abstracts=50,
+    # n_phrases_per_algorithm=5,
     method="louvain",
     nx_k=0.5,
     nx_iterations=10,
@@ -188,23 +186,23 @@ def bibliometrix__co_occurrence_network(
         target_directory=directory_for_results,
     )
 
-    if summarize is True:
-        directory_for_summarization = os.path.join(
-            directory_for_results, "summarization"
-        )
-        clusters_summarization(
-            criterion=criterion,
-            communities=results.communities_,
-            directory_for_summarization=directory_for_summarization,
-            n_keywords=n_keywords,
-            n_abstracts=n_abstracts,
-            n_phrases_per_algorithm=n_phrases_per_algorithm,
-            directory=directory,
-            database=database,
-            start_year=start_year,
-            end_year=end_year,
-            **filters,
-        )
+    # if summarize is True:
+    #     directory_for_summarization = os.path.join(
+    #         directory_for_results, "summarization"
+    #     )
+    #     clusters_summarization(
+    #         criterion=criterion,
+    #         communities=results.communities_,
+    #         directory_for_summarization=directory_for_summarization,
+    #         n_keywords=n_keywords,
+    #         n_abstracts=n_abstracts,
+    #         n_phrases_per_algorithm=n_phrases_per_algorithm,
+    #         directory=directory,
+    #         database=database,
+    #         start_year=start_year,
+    #         end_year=end_year,
+    #         **filters,
+    #     )
 
     directory_for_abstracts = os.path.join(directory_for_results, "abstracts")
     cluster_abstracts_report(
@@ -212,7 +210,7 @@ def bibliometrix__co_occurrence_network(
         communities=results.communities_,
         directory_for_abstracts=directory_for_abstracts,
         n_keywords=n_keywords,
-        n_abstracts=n_abstracts,
+        # n_abstracts=n_abstracts,
         directory=directory,
         database=database,
         start_year=start_year,
@@ -225,7 +223,7 @@ def bibliometrix__co_occurrence_network(
         communities=results.communities_,
         directory_for_concordances=directory_for_concordances,
         n_keywords=n_keywords,
-        n_abstracts=n_abstracts,
+        # n_abstracts=n_abstracts,
         directory=directory,
         start_year=start_year,
         end_year=end_year,
