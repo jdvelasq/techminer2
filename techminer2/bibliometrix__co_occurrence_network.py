@@ -77,7 +77,6 @@ from sklearn.manifold import MDS, TSNE
 
 from ._association_index import association_index
 from ._cluster_abstracts_report import cluster_abstracts_report
-from ._cluster_most_cited_abstracts import cluster_most_cited_abstracts
 from ._clusters_concordances import clusters_concordances
 from ._clusters_summarization import clusters_summarization
 from ._create_directory import create_directory
@@ -225,21 +224,6 @@ def bibliometrix__co_occurrence_network(
     clusters_concordances(
         communities=results.communities_,
         directory_for_concordances=directory_for_concordances,
-        n_keywords=n_keywords,
-        n_abstracts=n_abstracts,
-        directory=directory,
-        start_year=start_year,
-        end_year=end_year,
-        **filters,
-    )
-
-    directory_for_most_cited_documents = os.path.join(
-        directory_for_results, "most_cited_documents"
-    )
-    cluster_most_cited_abstracts(
-        criterion=criterion,
-        communities=results.communities_,
-        directory_for_abstracts=directory_for_most_cited_documents,
         n_keywords=n_keywords,
         n_abstracts=n_abstracts,
         directory=directory,
