@@ -28,7 +28,7 @@ def tm2__abstracts_report(
     criterion=None,
     custom_topics=None,
     file_name="abstracts_report.txt",
-    n_abstracts=10,
+    # n_abstracts=10,
     use_textwrap=True,
     directory="./",
     database="documents",
@@ -54,7 +54,7 @@ def tm2__abstracts_report(
             ascending=[False, False],
         )
 
-    records = records.head(n_abstracts)
+    # records = records.head(n_abstracts)
 
     _write_report(criterion, file_name, use_textwrap, directory, records)
 
@@ -81,11 +81,11 @@ def _sort_by_custom_terms(criterion, custom_topics, records):
         ascending=[False, False, False],
     )
 
-    records["RNK"] = records.groupby("POINTS")["global_citations"].rank(
-        ascending=False, method="dense"
-    )
+    # records["RNK"] = records.groupby("POINTS")["global_citations"].rank(
+    #     ascending=False, method="dense"
+    # )
 
-    records = records[records["RNK"] < 10]
+    # records = records[records["RNK"] < 10]
 
     records["TERMS"] = records[criterion].str.split(";")
     records["TERMS"] = records["TERMS"].map(lambda x: [y.strip() for y in x])
