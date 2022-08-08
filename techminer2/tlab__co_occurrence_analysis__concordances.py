@@ -59,6 +59,11 @@ def tlab__co_occurrence_analysis__concordances(
     )
     abstracts = _select_abstracts(abstracts, search_for)
 
+    # abstracts.index = abstracts.article
+    # records.index = records.article
+    # abstracts["title"] = records.loc[abstracts.article, "title"]
+    # abstracts = abstracts.reset_index(drop=True)
+
     _write_report(directory, abstracts, start_year, end_year, **filters)
 
     if not quiet:
@@ -84,8 +89,8 @@ def _write_report(directory, abstracts, start_year, end_year, **filters):
         **filters,
     )
     records.index = records.article
-    abstracts["title"] = records.loc[abstracts.article, "title"].to_list()
-    abstracts = abstracts.dropna(subset=["title"])
+    abstracts.index = abstracts.article
+    abstracts["title"] = records.loc[abstracts.article, "title"]
 
     file_name = os.path.join(directory, "reports", "concordances.txt")
     with open(file_name, "w", encoding="utf-8") as out_file:
@@ -107,13 +112,16 @@ def _write_report(directory, abstracts, start_year, end_year, **filters):
 
 
 def _fill(text):
-    return textwrap.fill(
-        text,
-        width=87,
-        initial_indent=" " * 0,
-        subsequent_indent=" " * 3,
-        fix_sentence_endings=True,
-    )
+    if isinstance(text, str):
+        return textwrap.fill(
+            text,
+            width=87,
+            initial_indent=" " * 0,
+            subsequent_indent=" " * 3,
+            fix_sentence_endings=True,
+        )
+    else:
+        return ""
 
 
 def _print_concordances(contexts, text):
