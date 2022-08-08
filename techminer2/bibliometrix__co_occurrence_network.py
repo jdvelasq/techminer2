@@ -237,6 +237,7 @@ def bibliometrix__co_occurrence_network(
         directory_for_results, "most_cited_documents"
     )
     cluster_most_cited_abstracts(
+        criterion=criterion,
         communities=results.communities_,
         directory_for_abstracts=directory_for_most_cited_documents,
         n_keywords=n_keywords,
