@@ -7,6 +7,7 @@ from ._read_records import read_records
 
 
 def cluster_most_cited_abstracts(
+    criterion,
     communities,
     directory_for_abstracts,
     n_keywords=10,
@@ -42,6 +43,25 @@ def cluster_most_cited_abstracts(
             by="global_citations",
             ascending=False,
         ).head(n_abstracts)
+
+        ####
+
+        records["TERMS"] = records[criterion].str.split(";")
+        records["TERMS"] = records["TERMS"].map(
+            lambda x: [y.strip() for y in x], na_action="ignore"
+        )
+        records["TERMS_1"] = records["TERMS"].map(
+            lambda x: [
+                "(*) " + custom_topic for custom_topic in community if custom_topic in x
+            ],
+            na_action="ignore",
+        )
+        records["TERMS_2"] = records["TERMS"].map(
+            lambda x: [y for y in x if y not in community], na_action="ignore"
+        )
+        records["TERMS"] = records["TERMS_1"] + records["TERMS_2"]
+        records[criterion] = records["TERMS"].str.join("; ")
+        ####
 
         column_list = []
 
