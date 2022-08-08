@@ -162,6 +162,8 @@
 <span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="kn">import</span> <span class="n">MDS</span><span class="p">,</span> <span class="n">TSNE</span>
 
 <span class="kn">from</span> <span class="nn">._association_index</span> <span class="kn">import</span> <span class="n">association_index</span>
+<span class="kn">from</span> <span class="nn">._cluster_abstracts_report</span> <span class="kn">import</span> <span class="n">cluster_abstracts_report</span>
+<span class="kn">from</span> <span class="nn">._clusters_summarization</span> <span class="kn">import</span> <span class="n">clusters_summarization</span>
 <span class="kn">from</span> <span class="nn">._get_network_graph_communities</span> <span class="kn">import</span> <span class="n">get_network_graph_communities</span>
 <span class="kn">from</span> <span class="nn">._get_network_graph_degree_plot</span> <span class="kn">import</span> <span class="n">get_network_graph_degree_plot</span>
 <span class="kn">from</span> <span class="nn">._get_network_graph_indicators</span> <span class="kn">import</span> <span class="n">get_network_graph_indicators</span>
@@ -188,6 +190,12 @@
     <span class="n">topics_length</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">topic_min_occ</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">normalization</span><span class="o">=</span><span class="s2">&quot;association&quot;</span><span class="p">,</span>
+    <span class="n">summarize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">directory_for_summarization</span><span class="o">=</span><span class="s2">&quot;co-occurrence_network_summarization/&quot;</span><span class="p">,</span>
+    <span class="n">directory_for_abstracts</span><span class="o">=</span><span class="s2">&quot;co-occurrence_network_abstracts/&quot;</span><span class="p">,</span>
+    <span class="n">n_keywords</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">n_abstracts</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+    <span class="n">n_phrases_per_algorithm</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
     <span class="n">method</span><span class="o">=</span><span class="s2">&quot;louvain&quot;</span><span class="p">,</span>
     <span class="n">nx_k</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
     <span class="n">nx_iterations</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
@@ -258,6 +266,35 @@
         <span class="n">matrix_list</span><span class="o">=</span><span class="n">matrix_list</span><span class="p">,</span>
         <span class="n">graph</span><span class="o">=</span><span class="n">graph</span><span class="p">,</span>
         <span class="n">manifold_method</span><span class="o">=</span><span class="n">TSNE</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
+    <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">summarize</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">clusters_summarization</span><span class="p">(</span>
+            <span class="n">criterion</span><span class="o">=</span><span class="n">criterion</span><span class="p">,</span>
+            <span class="n">communities</span><span class="o">=</span><span class="n">results</span><span class="o">.</span><span class="n">communities_</span><span class="p">,</span>
+            <span class="n">directory_for_summarization</span><span class="o">=</span><span class="n">directory_for_summarization</span><span class="p">,</span>
+            <span class="n">n_keywords</span><span class="o">=</span><span class="n">n_keywords</span><span class="p">,</span>
+            <span class="n">n_abstracts</span><span class="o">=</span><span class="n">n_abstracts</span><span class="p">,</span>
+            <span class="n">n_phrases_per_algorithm</span><span class="o">=</span><span class="n">n_phrases_per_algorithm</span><span class="p">,</span>
+            <span class="n">quiet</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
+            <span class="n">database</span><span class="o">=</span><span class="n">database</span><span class="p">,</span>
+            <span class="n">start_year</span><span class="o">=</span><span class="n">start_year</span><span class="p">,</span>
+            <span class="n">end_year</span><span class="o">=</span><span class="n">end_year</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">filters</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="n">cluster_abstracts_report</span><span class="p">(</span>
+        <span class="n">criterion</span><span class="o">=</span><span class="n">criterion</span><span class="p">,</span>
+        <span class="n">communities</span><span class="o">=</span><span class="n">results</span><span class="o">.</span><span class="n">communities_</span><span class="p">,</span>
+        <span class="n">directory_for_abstracts</span><span class="o">=</span><span class="n">directory_for_abstracts</span><span class="p">,</span>
+        <span class="n">n_keywords</span><span class="o">=</span><span class="n">n_keywords</span><span class="p">,</span>
+        <span class="n">n_abstracts</span><span class="o">=</span><span class="n">n_abstracts</span><span class="p">,</span>
+        <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
+        <span class="n">database</span><span class="o">=</span><span class="n">database</span><span class="p">,</span>
+        <span class="n">start_year</span><span class="o">=</span><span class="n">start_year</span><span class="p">,</span>
+        <span class="n">end_year</span><span class="o">=</span><span class="n">end_year</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">filters</span><span class="p">,</span>
     <span class="p">)</span>
 
     <span class="k">return</span> <span class="n">results</span></div>

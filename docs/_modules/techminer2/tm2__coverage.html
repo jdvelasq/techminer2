@@ -102,7 +102,7 @@
 <span class="sd">... ).head(10)</span>
 <span class="sd">--INFO-- Number of documents : 94</span>
 <span class="sd">--INFO-- Documents with NA: 9</span>
-<span class="sd">--INFO--Efective documents : 94</span>
+<span class="sd">--INFO-- Efective documents : 94</span>
 <span class="sd">   min_occ  cum_sum_documents coverage  cum num items</span>
 <span class="sd">0       69                 69  73.40 %              1</span>
 <span class="sd">1       42                 69  73.40 %              2</span>
@@ -153,7 +153,7 @@
     <span class="p">)</span>
 
     <span class="n">documents</span> <span class="o">=</span> <span class="n">documents</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
-    <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;--INFO--Efective documents : </span><span class="si">{</span><span class="n">n_documents</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;--INFO-- Efective documents : </span><span class="si">{</span><span class="n">n_documents</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="n">documents</span> <span class="o">=</span> <span class="n">documents</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">num_documents</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">documents</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">=</span> <span class="n">documents</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;; &quot;</span><span class="p">)</span>

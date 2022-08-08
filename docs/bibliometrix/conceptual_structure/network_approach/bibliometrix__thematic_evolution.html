@@ -24,7 +24,7 @@
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Factorial Approach" href="../factorial_approach/__index__.html" />
-    <link rel="prev" title="Thematic Map / Summarization" href="bibliometrix__thematic_map_summarization.html" /> 
+    <link rel="prev" title="Thematic Map" href="bibliometrix__thematic_map.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -68,7 +68,6 @@
 <li class="toctree-l3 current"><a class="reference internal" href="__index__.html">Network Approach</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="bibliometrix__co_occurrence_network.html">Co-occurrence Network</a></li>
 <li class="toctree-l4"><a class="reference internal" href="bibliometrix__thematic_map.html">Thematic Map</a></li>
-<li class="toctree-l4"><a class="reference internal" href="bibliometrix__thematic_map_summarization.html">Thematic Map / Summarization</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">Thematic evolution plot</a></li>
 </ul>
 </li>
@@ -137,74 +136,75 @@
 </style>
 <span class="target" id="module-techminer2.bibliometrix__thematic_evolution_plot"></span><section id="thematic-evolution-plot">
 <h1>Thematic evolution plot<a class="headerlink" href="#thematic-evolution-plot" title="Permalink to this heading"></a></h1>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;data/regtech/&quot;</span>
+</pre></div>
+</div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;data/regtech/&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;sphinx/images/thematic_evolution_plot.png&quot;</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">user_filters</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">first_year</span><span class="o">=</span><span class="mi">2016</span><span class="p">,</span> <span class="n">last_year</span><span class="o">=</span><span class="mi">2018</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ind_2016_2018</span> <span class="o">=</span> <span class="n">thematic_map_indicators</span><span class="p">(</span><span class="s1">&#39;author_keywords&#39;</span><span class="p">,</span> <span class="n">min_occ</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">thematic_map_communities</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="s1">&#39;author_keywords&#39;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">min_occ</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tm1</span> <span class="o">=</span> <span class="n">bibliometrix__thematic_map</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">criterion</span><span class="o">=</span><span class="s2">&quot;author_keywords&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">topic_min_occ</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
-<span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-<span class="go">cluster                          CL_00               CL_01</span>
-<span class="go">rn</span>
-<span class="go">0                       fintech 26:797   innovation 06:222</span>
-<span class="go">1        financial technologies 07:109   technology 03:156</span>
-<span class="go">2             financial service 06:288         bank 03:147</span>
-<span class="go">3                    blockchain 05:099  retail bank 03:053</span>
-<span class="go">4                business model 04:172</span>
+<span class="gp">... </span>    <span class="n">start_year</span><span class="o">=</span><span class="mi">2016</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">end_year</span><span class="o">=</span><span class="mi">2018</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tm1</span><span class="o">.</span><span class="n">communities_</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="go">                         CL_00                           CL_01</span>
+<span class="go">0               regtech 18:238  artificial intelligence 02:037</span>
+<span class="go">1               fintech 12:211        financial markets 02:000</span>
+<span class="go">2    financial services 04:133                      law 02:000</span>
+<span class="go">3  financial technology 04:019        legal informatics 02:000</span>
+<span class="go">4            blockchain 04:013            robo-advisors 02:000</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">user_filters</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">first_year</span><span class="o">=</span><span class="mi">2019</span><span class="p">,</span> <span class="n">last_year</span><span class="o">=</span><span class="mi">2020</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ind_2019_2020</span> <span class="o">=</span> <span class="n">thematic_map_indicators</span><span class="p">(</span><span class="s1">&#39;author_keywords&#39;</span><span class="p">,</span> <span class="n">min_occ</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">thematic_map_communities</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="s1">&#39;author_keywords&#39;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">min_occ</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tm2</span> <span class="o">=</span> <span class="n">bibliometrix__thematic_map</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">criterion</span><span class="o">=</span><span class="s2">&quot;author_keywords&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">topic_min_occ</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
-<span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-<span class="go">cluster                           CL_00  ...                    CL_03</span>
-<span class="go">rn                                       ...</span>
-<span class="go">0                        fintech 54:391  ...        blockchain 06:041</span>
-<span class="go">1                     innovation 06:027  ...  cryptocurrencies 04:034</span>
-<span class="go">2           financial innovation 05:027  ...</span>
-<span class="go">3                venture capital 03:024  ...</span>
-<span class="go">4        artificial intelligence 03:021  ...</span>
+<span class="gp">... </span>    <span class="n">start_year</span><span class="o">=</span><span class="mi">2019</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">end_year</span><span class="o">=</span><span class="mi">2020</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tm2</span><span class="o">.</span><span class="n">communities_</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="go">                            CL_00  ...                      CL_02</span>
+<span class="go">0                  regtech 31:209  ...        crowdfunding 03:028</span>
+<span class="go">1                  fintech 20:183  ...            big data 02:027</span>
+<span class="go">2               blockchain 09:088  ...      cryptocurrency 02:024</span>
+<span class="go">3  artificial intelligence 06:025  ...         p2p lending 02:024</span>
+<span class="go">4     financial regulation 04:044  ...  regulatory sandbox 02:024</span>
+
+<span class="go">[5 rows x 3 columns]</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tm3</span> <span class="o">=</span> <span class="n">bibliometrix__thematic_map</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">criterion</span><span class="o">=</span><span class="s2">&quot;author_keywords&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">topic_min_occ</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">start_year</span><span class="o">=</span><span class="mi">2021</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">end_year</span><span class="o">=</span><span class="mi">2022</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tm3</span><span class="o">.</span><span class="n">communities_</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="go">                           CL_00  ...                        CL_03</span>
+<span class="go">0                  fintech 10:12  ...  regulatory technology 06:14</span>
+<span class="go">1               blockchain 05:08  ...  anti-money laundering 02:05</span>
+<span class="go">2  artificial intelligence 05:03  ...</span>
+<span class="go">3                insurtech 03:00  ...</span>
+<span class="go">4     financial technology 02:05  ...</span>
 
 <span class="go">[5 rows x 4 columns]</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">user_filters</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">first_year</span><span class="o">=</span><span class="mi">2021</span><span class="p">,</span> <span class="n">last_year</span><span class="o">=</span><span class="mi">2021</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ind_2021_2021</span> <span class="o">=</span> <span class="n">thematic_map_indicators</span><span class="p">(</span><span class="s1">&#39;author_keywords&#39;</span><span class="p">,</span> <span class="n">min_occ</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">thematic_map_communities</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="s1">&#39;author_keywords&#39;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">min_occ</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
-<span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-<span class="go">cluster                                CL_00  ...                    CL_04</span>
-<span class="go">rn                                            ...</span>
-<span class="go">0                              fintech 59:97  ...     perceived risk 03:01</span>
-<span class="go">1                  financial inclusion 10:14  ...  perceived benefit 03:00</span>
-<span class="go">2                                china 03:06  ...</span>
-<span class="go">3                        green finance 03:05  ...</span>
-<span class="go">4        sustainable development goals 03:04  ...</span>
-
-<span class="go">[5 rows x 5 columns]</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;sphinx/_static/bibliometrix__thematic_evolution_plot.html&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bibliometrix__thematic_evolution_plot</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">indicators</span><span class="o">=</span><span class="p">[</span><span class="n">tm1</span><span class="p">,</span> <span class="n">tm2</span><span class="p">,</span> <span class="n">tm3</span><span class="p">],</span>
+<span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">thematic_evolution_plot</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">indicators</span><span class="o">=</span><span class="p">[</span><span class="n">ind_2016_2018</span><span class="p">,</span> <span class="n">ind_2019_2020</span><span class="p">,</span> <span class="n">ind_2021_2021</span><span class="p">],</span>
-<span class="gp">... </span>    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
-<span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
-</pre></div>
-</div>
-<a class="reference internal image-reference" href="bibliometrix/conceptual_structure/network_approach/images/thematic_evolution_plot.png"><img alt="bibliometrix/conceptual_structure/network_approach/images/thematic_evolution_plot.png" class="align-center" src="bibliometrix/conceptual_structure/network_approach/images/thematic_evolution_plot.png" style="width: 700px;" /></a>
-<dl class="py function">
+<iframe src="../../../_static/bibliometrix__thematic_evolution_plot.html" height="600px" width="100%" frameBorder="0"></iframe><dl class="py function">
 <dt class="sig sig-object py" id="techminer2.bibliometrix__thematic_evolution_plot.bibliometrix__thematic_evolution_plot">
-<span class="sig-prename descclassname"><span class="pre">techminer2.bibliometrix__thematic_evolution_plot.</span></span><span class="sig-name descname"><span class="pre">bibliometrix__thematic_evolution_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indicators</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(6,</span> <span class="pre">6)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/techminer2/bibliometrix__thematic_evolution_plot.html#bibliometrix__thematic_evolution_plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer2.bibliometrix__thematic_evolution_plot.bibliometrix__thematic_evolution_plot" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<span class="sig-prename descclassname"><span class="pre">techminer2.bibliometrix__thematic_evolution_plot.</span></span><span class="sig-name descname"><span class="pre">bibliometrix__thematic_evolution_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indicators</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/techminer2/bibliometrix__thematic_evolution_plot.html#bibliometrix__thematic_evolution_plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer2.bibliometrix__thematic_evolution_plot.bibliometrix__thematic_evolution_plot" title="Permalink to this definition"></a></dt>
+<dd><p>Thematic evolution plot</p>
+</dd></dl>
 
 </section>
 
@@ -212,7 +212,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="bibliometrix__thematic_map_summarization.html" class="btn btn-neutral float-left" title="Thematic Map / Summarization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bibliometrix__thematic_map.html" class="btn btn-neutral float-left" title="Thematic Map" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="../factorial_approach/__index__.html" class="btn btn-neutral float-right" title="Factorial Approach" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

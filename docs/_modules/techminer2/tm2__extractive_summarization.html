@@ -96,31 +96,16 @@
 <span class="sd">&gt;&gt;&gt; from techminer2 import tm2__extractive_summarization</span>
 <span class="sd">&gt;&gt;&gt; tm2__extractive_summarization(</span>
 <span class="sd">...     criterion=&quot;author_keywords&quot;,</span>
-<span class="sd">...     custom_topics=[&quot;blockchain&quot;],</span>
-<span class="sd">...     n_abstracts=20,    </span>
-<span class="sd">...     n_phrases_per_algorithm=20,</span>
+<span class="sd">...     custom_topics=[&quot;blockchain&quot;, &quot;artificial intelligence&quot;],</span>
+<span class="sd">...     n_abstracts=50,    </span>
+<span class="sd">...     n_phrases_per_algorithm=50,</span>
 <span class="sd">...     directory=directory,</span>
 <span class="sd">... )</span>
-<span class="sd">authors of this paper investigate how blockchain can be used to secure stock exchange</span>
-<span class="sd">transactions, with an especial focus to the technological as well as legal aspects of such</span>
-<span class="sd">applications. &gt;&gt; blockchain (bc) technology, being distributed and immutable in nature,</span>
-<span class="sd">has proved to the &#39;trust machine&#39; eliminating the need for third-parties. &gt;&gt; however, to</span>
-<span class="sd">create valid legal effects blockchains should be anchored prudently in the surrounding</span>
-<span class="sd">legal context and specific regulations will be supportive to unfold their potential in a</span>
-<span class="sd">sustainable way and in an international context. &gt;&gt; in this work, we propose a blockchain-</span>
-<span class="sd">based regtech system which helps to track the credit of organizations. &gt;&gt; pace of</span>
-<span class="sd">transition can be seen in particular in the position of emerging technology, also</span>
-<span class="sd">summarized as the abcd framework: artificial intelligence (&quot;ai&quot;), blockchain, cloud and</span>
-<span class="sd">technology, which are rapidly co-evolving with finance. &gt;&gt; though blockchain technology</span>
-<span class="sd">has been leveraged to increase effectiveness of certain corporate banking products, the</span>
-<span class="sd">originality of the paper lies in coming out with a detailed framework for the possible use</span>
-<span class="sd">of blockchain (a distributed ledger based technology) for credit decisions, timely</span>
-<span class="sd">generation of red-flags and tightening the regulatory framework.</span>
+
 
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">textwrap</span>
 
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">sumy.nlp.tokenizers</span> <span class="kn">import</span> <span class="n">Tokenizer</span>
 <span class="kn">from</span> <span class="nn">sumy.parsers.plaintext</span> <span class="kn">import</span> <span class="n">PlaintextParser</span>
 <span class="kn">from</span> <span class="nn">sumy.summarizers.kl</span> <span class="kn">import</span> <span class="n">KLSummarizer</span>
@@ -129,6 +114,7 @@
 <span class="kn">from</span> <span class="nn">sumy.summarizers.luhn</span> <span class="kn">import</span> <span class="n">LuhnSummarizer</span>
 
 <span class="kn">from</span> <span class="nn">._read_records</span> <span class="kn">import</span> <span class="n">read_records</span>
+<span class="kn">from</span> <span class="nn">.tm2__abstracts_report</span> <span class="kn">import</span> <span class="n">_sort_by_custom_terms</span><span class="p">,</span> <span class="n">_write_report</span>
 
 
 <div class="viewcode-block" id="tm2__extractive_summarization"><a class="viewcode-back" href="../../tm2__text_summarization/tm2__extractive_summarization.html#techminer2.tm2__extractive_summarization.tm2__extractive_summarization">[docs]</a><span class="k">def</span> <span class="nf">tm2__extractive_summarization</span><span class="p">(</span>
@@ -136,7 +122,7 @@
     <span class="n">custom_topics</span><span class="p">,</span>
     <span class="n">file_name</span><span class="o">=</span><span class="s2">&quot;extractive_summarization.txt&quot;</span><span class="p">,</span>
     <span class="n">n_abstracts</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
-    <span class="n">n_phrases_per_algorithm</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">n_phrases_per_algorithm</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
     <span class="n">directory</span><span class="o">=</span><span class="s2">&quot;./&quot;</span><span class="p">,</span>
     <span class="n">database</span><span class="o">=</span><span class="s2">&quot;documents&quot;</span><span class="p">,</span>
     <span class="n">start_year</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -152,9 +138,91 @@
         <span class="n">end_year</span><span class="o">=</span><span class="n">end_year</span><span class="p">,</span>
         <span class="o">**</span><span class="n">filters</span><span class="p">,</span>
     <span class="p">)</span>
+    <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;abstract&quot;</span><span class="p">])</span>
 
     <span class="n">records</span> <span class="o">=</span> <span class="n">_select_records</span><span class="p">(</span><span class="n">criterion</span><span class="p">,</span> <span class="n">custom_topics</span><span class="p">,</span> <span class="n">n_abstracts</span><span class="p">,</span> <span class="n">records</span><span class="p">)</span>
     <span class="n">document</span> <span class="o">=</span> <span class="n">_create_document</span><span class="p">(</span><span class="n">records</span><span class="p">)</span>
+    <span class="n">summary</span> <span class="o">=</span> <span class="n">_generate_summary</span><span class="p">(</span><span class="n">n_phrases_per_algorithm</span><span class="p">,</span> <span class="n">document</span><span class="p">)</span>
+    <span class="n">final_summary</span> <span class="o">=</span> <span class="n">_select_phrases_with_keywords</span><span class="p">(</span><span class="n">custom_topics</span><span class="p">,</span> <span class="n">summary</span><span class="p">)</span>
+
+    <span class="c1">###</span>
+    <span class="n">final_summary</span> <span class="o">=</span> <span class="n">summary</span>
+    <span class="c1">###</span>
+
+    <span class="n">final_summary</span> <span class="o">=</span> <span class="n">_complete_record_info</span><span class="p">(</span><span class="n">criterion</span><span class="p">,</span> <span class="n">records</span><span class="p">,</span> <span class="n">final_summary</span><span class="p">)</span>
+
+    <span class="n">final_summary</span> <span class="o">=</span> <span class="n">_sort_criterion_field</span><span class="p">(</span>
+        <span class="n">records</span><span class="o">=</span><span class="n">final_summary</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="n">criterion</span><span class="p">,</span> <span class="n">custom_topics</span><span class="o">=</span><span class="n">custom_topics</span>
+    <span class="p">)</span>
+
+    <span class="n">final_summary</span> <span class="o">=</span> <span class="n">final_summary</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;phrase&quot;</span><span class="p">:</span> <span class="s2">&quot;abstract&quot;</span><span class="p">})</span>
+
+    <span class="n">_write_report</span><span class="p">(</span>
+        <span class="n">criterion</span><span class="o">=</span><span class="n">criterion</span><span class="p">,</span>
+        <span class="n">file_name</span><span class="o">=</span><span class="n">file_name</span><span class="p">,</span>
+        <span class="n">use_textwrap</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
+        <span class="n">records</span><span class="o">=</span><span class="n">final_summary</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<span class="k">def</span> <span class="nf">_sort_criterion_field</span><span class="p">(</span><span class="n">records</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">custom_topics</span><span class="p">):</span>
+    <span class="n">records</span><span class="p">[</span><span class="s2">&quot;TERMS&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="n">criterion</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
+    <span class="n">records</span><span class="p">[</span><span class="s2">&quot;TERMS&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="s2">&quot;TERMS&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">[</span><span class="n">y</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">x</span><span class="p">])</span>
+    <span class="n">records</span><span class="p">[</span><span class="s2">&quot;TERMS_1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="s2">&quot;TERMS&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+        <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;(*) &quot;</span> <span class="o">+</span> <span class="n">custom_topic</span> <span class="k">for</span> <span class="n">custom_topic</span> <span class="ow">in</span> <span class="n">custom_topics</span> <span class="k">if</span> <span class="n">custom_topic</span> <span class="ow">in</span> <span class="n">x</span>
+        <span class="p">],</span>
+        <span class="n">na_action</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">records</span><span class="p">[</span><span class="s2">&quot;TERMS_2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="s2">&quot;TERMS&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+        <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">[</span><span class="n">y</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">x</span> <span class="k">if</span> <span class="n">y</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">custom_topics</span><span class="p">],</span> <span class="n">na_action</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span>
+    <span class="p">)</span>
+    <span class="n">records</span><span class="p">[</span><span class="s2">&quot;TERMS&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="s2">&quot;TERMS_1&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">records</span><span class="p">[</span><span class="s2">&quot;TERMS_2&quot;</span><span class="p">]</span>
+    <span class="n">records</span><span class="p">[</span><span class="n">criterion</span><span class="p">]</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="s2">&quot;TERMS&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;; &quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">records</span>
+
+
+<span class="k">def</span> <span class="nf">_complete_record_info</span><span class="p">(</span><span class="n">criterion</span><span class="p">,</span> <span class="n">records</span><span class="p">,</span> <span class="n">final_summary</span><span class="p">):</span>
+    <span class="n">summarization</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;phrase&quot;</span><span class="p">:</span> <span class="n">final_summary</span><span class="p">})</span>
+    <span class="n">summarization</span><span class="p">[</span><span class="s2">&quot;article&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span>
+    <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">records</span><span class="o">.</span><span class="n">itertuples</span><span class="p">():</span>
+        <span class="n">summarization</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+            <span class="n">summarization</span><span class="p">[</span><span class="s2">&quot;phrase&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+                <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[:</span><span class="mi">50</span><span class="p">]</span> <span class="ow">in</span> <span class="n">record</span><span class="o">.</span><span class="n">abstract</span><span class="p">,</span> <span class="n">na_action</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span>
+            <span class="p">),</span>
+            <span class="s2">&quot;article&quot;</span><span class="p">,</span>
+        <span class="p">]</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">article</span>
+
+    <span class="n">summarization</span> <span class="o">=</span> <span class="n">summarization</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;article&quot;</span><span class="p">])</span>
+
+    <span class="n">records</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">article</span>
+
+    <span class="n">summarization</span><span class="p">[</span><span class="s2">&quot;global_citations&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+        <span class="n">summarization</span><span class="o">.</span><span class="n">article</span><span class="p">,</span> <span class="s2">&quot;global_citations&quot;</span>
+    <span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+    <span class="n">summarization</span><span class="p">[</span><span class="s2">&quot;local_citations&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+        <span class="n">summarization</span><span class="o">.</span><span class="n">article</span><span class="p">,</span> <span class="s2">&quot;local_citations&quot;</span>
+    <span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+    <span class="n">summarization</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">summarization</span><span class="o">.</span><span class="n">article</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="n">summarization</span><span class="p">[</span><span class="n">criterion</span><span class="p">]</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">summarization</span><span class="o">.</span><span class="n">article</span><span class="p">,</span> <span class="n">criterion</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">summarization</span>
+
+
+<span class="k">def</span> <span class="nf">_select_phrases_with_keywords</span><span class="p">(</span><span class="n">custom_topics</span><span class="p">,</span> <span class="n">summary</span><span class="p">):</span>
+    <span class="n">final_summary</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">topic</span> <span class="ow">in</span> <span class="n">custom_topics</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="n">summary</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">topic</span> <span class="ow">in</span> <span class="n">sentence</span><span class="p">:</span>
+                <span class="n">final_summary</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span>
+    <span class="n">final_summary</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">final_summary</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">final_summary</span>
+
+
+<span class="k">def</span> <span class="nf">_generate_summary</span><span class="p">(</span><span class="n">n_phrases_per_algorithm</span><span class="p">,</span> <span class="n">document</span><span class="p">):</span>
     <span class="n">summary_with_lexrank</span> <span class="o">=</span> <span class="n">_summarize_with_lexrank</span><span class="p">(</span><span class="n">document</span><span class="p">,</span> <span class="n">n_phrases_per_algorithm</span><span class="p">)</span>
     <span class="n">summary_with_lsasummarizer</span> <span class="o">=</span> <span class="n">_summarize_with_lsasummarizer</span><span class="p">(</span>
         <span class="n">document</span><span class="p">,</span> <span class="n">n_phrases_per_algorithm</span>
@@ -170,26 +238,12 @@
         <span class="o">+</span> <span class="n">summary_with_luhn</span>
         <span class="o">+</span> <span class="n">summary_with_klsummarizer</span>
     <span class="p">)</span>
+
+    <span class="c1"># summary = [phrase[:-1] for phrase in summary if phrase[-1] == &quot;.&quot;]</span>
+    <span class="c1"># summary = [text for phrase in summary for text in phrase.split(&quot;.&quot;)]</span>
+
     <span class="n">summary</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">summary</span><span class="p">))</span>
-
-    <span class="n">final_summary</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">topic</span> <span class="ow">in</span> <span class="n">custom_topics</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="n">summary</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">topic</span> <span class="ow">in</span> <span class="n">sentence</span><span class="p">:</span>
-                <span class="n">final_summary</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span>
-
-    <span class="n">final_summary</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">final_summary</span><span class="p">))</span>
-
-    <span class="n">final_summary</span> <span class="o">=</span> <span class="s2">&quot; &gt;&gt; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">final_summary</span><span class="p">)</span>
-    <span class="n">final_summary</span> <span class="o">=</span> <span class="n">textwrap</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">final_summary</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
-
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="s2">&quot;reports&quot;</span><span class="p">,</span> <span class="n">file_name</span><span class="p">),</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span>
-    <span class="p">)</span> <span class="k">as</span> <span class="n">out_file</span><span class="p">:</span>
-
-        <span class="nb">print</span><span class="p">(</span><span class="n">final_summary</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">out_file</span><span class="p">)</span>
-
-    <span class="nb">print</span><span class="p">(</span><span class="n">final_summary</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">summary</span>
 
 
 <span class="k">def</span> <span class="nf">_summarize_with_klsummarizer</span><span class="p">(</span><span class="n">document</span><span class="p">,</span> <span class="n">n_phrases_per_algorithm</span><span class="p">):</span>
@@ -232,16 +286,8 @@
 
 
 <span class="k">def</span> <span class="nf">_select_records</span><span class="p">(</span><span class="n">criterion</span><span class="p">,</span> <span class="n">custom_topics</span><span class="p">,</span> <span class="n">n_abstracts</span><span class="p">,</span> <span class="n">records</span><span class="p">):</span>
-    <span class="n">selected_records</span> <span class="o">=</span> <span class="n">records</span><span class="p">[[</span><span class="s2">&quot;article&quot;</span><span class="p">,</span> <span class="n">criterion</span><span class="p">]]</span>
-    <span class="n">selected_records</span><span class="p">[</span><span class="n">criterion</span><span class="p">]</span> <span class="o">=</span> <span class="n">selected_records</span><span class="p">[</span><span class="n">criterion</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
-    <span class="n">selected_records</span> <span class="o">=</span> <span class="n">selected_records</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span><span class="n">criterion</span><span class="p">)</span>
-    <span class="n">selected_records</span><span class="p">[</span><span class="n">criterion</span><span class="p">]</span> <span class="o">=</span> <span class="n">selected_records</span><span class="p">[</span><span class="n">criterion</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-    <span class="n">selected_records</span> <span class="o">=</span> <span class="n">selected_records</span><span class="p">[</span><span class="n">selected_records</span><span class="p">[</span><span class="n">criterion</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">custom_topics</span><span class="p">)]</span>
-    <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="n">records</span><span class="p">[</span><span class="s2">&quot;article&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">selected_records</span><span class="p">[</span><span class="s2">&quot;article&quot;</span><span class="p">])]</span>
 
-    <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span>
-        <span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;global_citations&quot;</span><span class="p">,</span> <span class="s2">&quot;local_citations&quot;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span>
-    <span class="p">)</span>
+    <span class="n">records</span> <span class="o">=</span> <span class="n">_sort_by_custom_terms</span><span class="p">(</span><span class="n">criterion</span><span class="p">,</span> <span class="n">custom_topics</span><span class="p">,</span> <span class="n">records</span><span class="p">)</span>
     <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n_abstracts</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">records</span>
 </pre></div>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>techminer2.bibliometrix__thematic_map_summarization &mdash; TechMiner2 0.1.0 documentation</title>
+  <title>techminer2.tm2__replace &mdash; TechMiner2 0.1.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
@@ -76,7 +76,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../index.html">Module code</a> &raquo;</li>
-      <li>techminer2.bibliometrix__thematic_map_summarization</li>
+      <li>techminer2.tm2__replace</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -85,49 +85,29 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <h1>Source code for techminer2.bibliometrix__thematic_map_summarization</h1><div class="highlight"><pre>
+  <h1>Source code for techminer2.tm2__replace</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">Thematic Map / Summarization</span>
+<span class="sd">Replace text in column</span>
 <span class="sd">===============================================================================</span>
 
-<span class="sd">&gt;&gt;&gt; from techminer2 import *</span>
-<span class="sd">&gt;&gt;&gt; directory = &quot;data/regtech/&quot;</span>
-<span class="sd">&gt;&gt;&gt; thematic_map_summarization(</span>
-<span class="sd">...     &#39;author_keywords&#39;, </span>
-<span class="sd">...     min_occ=4, </span>
-<span class="sd">...     n_keywords=5,</span>
-<span class="sd">...     n_phrases=3,</span>
-<span class="sd">...     directory=directory,</span>
-<span class="sd">... )</span>
-<span class="sd">- INFO - Generating data/reports/keywords_summarization_CL_00.txt</span>
-<span class="sd">- INFO - Generating data/reports/keywords_summarization_CL_01.txt</span>
-
 <span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">os.path</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 
-<span class="c1"># from ....co_occurrence_network_summarization import co_occurrence_network_summarization</span>
-
-
-<div class="viewcode-block" id="bibliometrix__thematic_map_summarization"><a class="viewcode-back" href="../../bibliometrix/conceptual_structure/network_approach/bibliometrix__thematic_map_summarization.html#techminer2.bibliometrix__thematic_map_summarization.bibliometrix__thematic_map_summarization">[docs]</a><span class="k">def</span> <span class="nf">bibliometrix__thematic_map_summarization</span><span class="p">(</span>
-    <span class="n">column</span><span class="p">,</span>
-    <span class="n">min_occ</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-    <span class="n">max_occ</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">n_keywords</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-    <span class="n">n_phrases</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<div class="viewcode-block" id="tm2__replace"><a class="viewcode-back" href="../../tm2__data/tm2__replace.html#techminer2.tm2__replace.tm2__replace">[docs]</a><span class="k">def</span> <span class="nf">tm2__replace</span><span class="p">(</span>
+    <span class="n">criterion</span><span class="p">,</span>
+    <span class="n">to_replace</span><span class="p">,</span>
+    <span class="n">value</span><span class="p">,</span>
     <span class="n">directory</span><span class="o">=</span><span class="s2">&quot;./&quot;</span><span class="p">,</span>
 <span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Replace text in columns.&quot;&quot;&quot;</span>
 
-    <span class="k">return</span> <span class="n">co_occurrence_network_summarization</span><span class="p">(</span>
-        <span class="n">column</span><span class="o">=</span><span class="n">column</span><span class="p">,</span>
-        <span class="n">min_occ</span><span class="o">=</span><span class="n">min_occ</span><span class="p">,</span>
-        <span class="n">max_occ</span><span class="o">=</span><span class="n">max_occ</span><span class="p">,</span>
-        <span class="n">normalization</span><span class="o">=</span><span class="s2">&quot;association&quot;</span><span class="p">,</span>
-        <span class="n">clustering_method</span><span class="o">=</span><span class="s2">&quot;louvain&quot;</span><span class="p">,</span>
-        <span class="n">manifold_method</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">n_keywords</span><span class="o">=</span><span class="n">n_keywords</span><span class="p">,</span>
-        <span class="n">n_phrases</span><span class="o">=</span><span class="n">n_phrases</span><span class="p">,</span>
-        <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
-    <span class="p">)</span></div>
+    <span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="s2">&quot;processed/_documents.csv&quot;</span><span class="p">)</span>
+    <span class="n">records</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+    <span class="n">records</span><span class="p">[</span><span class="n">criterion</span><span class="p">]</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="n">criterion</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">to_replace</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+    <span class="n">records</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
 </pre></div>
 
            </div>

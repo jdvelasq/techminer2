@@ -107,7 +107,6 @@
 <span class="sd">--INFO-- Dropping NA columns in database files</span>
 <span class="sd">--INFO-- Removing accents in database files</span>
 <span class="sd">--INFO-- Removing stranger chars in database files</span>
-<span class="sd">--INFO-- Creating `filter.yaml` file</span>
 <span class="sd">--INFO-- Processing `abstract` column</span>
 <span class="sd">--INFO-- Processing `authors_id` column</span>
 <span class="sd">--INFO-- Processing `title` column</span>
@@ -1514,7 +1513,16 @@
             <span class="n">data</span><span class="p">[</span><span class="s2">&quot;abstract&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">abstract</span><span class="o">.</span><span class="n">mask</span><span class="p">(</span>
                 <span class="n">data</span><span class="o">.</span><span class="n">abstract</span> <span class="o">==</span> <span class="s2">&quot;[no abstract available]&quot;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span>
             <span class="p">)</span>
-            <span class="n">data</span><span class="p">[</span><span class="s2">&quot;abstract&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">abstract</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\u00a9.*&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="c1"># data.abstracts = data.abstract.str.split(&quot;.&quot;)</span>
+            <span class="c1"># data.abstracts = data.abstracts.map(</span>
+            <span class="c1">#     lambda x: [y for y in x if x != &quot;&quot;],</span>
+            <span class="c1">#     na_action=&quot;ignore&quot;,</span>
+            <span class="c1"># )</span>
+            <span class="c1"># data.abstracts = data.abstracts.map(</span>
+            <span class="c1">#     lambda x: x[:-1],</span>
+            <span class="c1">#     na_action=&quot;ignore&quot;,</span>
+            <span class="c1"># )</span>
+            <span class="c1"># data.abstracts = data.abstracts.str.join(&quot;. &quot;)</span>
 
         <span class="n">data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
