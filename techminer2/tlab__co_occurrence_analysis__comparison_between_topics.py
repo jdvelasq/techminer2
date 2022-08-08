@@ -3,6 +3,7 @@ Topics Comparison Chart
 ===============================================================================
 
 
+
 >>> directory = "data/regtech/"
 
 >>> from techminer2 import tlab__co_occurrence_analysis__comparison_between_topics
@@ -66,7 +67,6 @@ Topics Comparison Chart
 .. raw:: html
 
     <iframe src="../../../../_static/tlab__co_occurrence_analysis__comparison_between_topics_radial_diagram.html" height="600px" width="100%" frameBorder="0"></iframe>
-
 
 
 
@@ -232,27 +232,52 @@ def _create_nodes(graph, matrix_list, topic_a, topic_b):
     )
     group_b = 0 if group_a == 1 else 1
 
-    nodes += [
-        (
-            topic_a,
-            dict(
-                size=topic_size.loc[topic_a]["OCC"]
-                + topic_size.loc[" & ".join([topic_a, topic_b])]["OCC"],
-                group=group_a,
-            ),
-        )
-    ]
+    join_terms = " & ".join([topic_a, topic_b])
+    if join_terms in topic_size.index:
 
-    nodes += [
-        (
-            topic_b,
-            dict(
-                size=topic_size.loc[topic_b]["OCC"]
-                + topic_size.loc[" & ".join([topic_a, topic_b])]["OCC"],
-                group=group_b,
-            ),
-        )
-    ]
+        nodes += [
+            (
+                topic_a,
+                dict(
+                    size=topic_size.loc[topic_a]["OCC"]
+                    + topic_size.loc[" & ".join([topic_a, topic_b])]["OCC"],
+                    group=group_a,
+                ),
+            )
+        ]
+
+        nodes += [
+            (
+                topic_b,
+                dict(
+                    size=topic_size.loc[topic_b]["OCC"]
+                    + topic_size.loc[" & ".join([topic_a, topic_b])]["OCC"],
+                    group=group_b,
+                ),
+            )
+        ]
+
+    else:
+
+        nodes += [
+            (
+                topic_a,
+                dict(
+                    size=topic_size.loc[topic_a]["OCC"],
+                    group=group_a,
+                ),
+            )
+        ]
+
+        nodes += [
+            (
+                topic_b,
+                dict(
+                    size=topic_size.loc[topic_b]["OCC"],
+                    group=group_b,
+                ),
+            )
+        ]
 
     graph.add_nodes_from(nodes)
     return graph
