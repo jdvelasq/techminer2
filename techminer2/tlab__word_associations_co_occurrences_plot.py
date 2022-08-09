@@ -66,11 +66,10 @@ def tlab__word_associations_co_occurrences_plot(
 
     matrix_list = matrix_list[["column", "OCC"]]
 
-    if topics_length is not None:
-        matrix_list = matrix_list.head(topics_length)
-
     matrix_list = matrix_list.set_index("column")
     matrix_list = matrix_list.sort_values(by="OCC", ascending=False)
+
+    matrix_list = matrix_list[matrix_list.OCC > 0.0]
 
     fig = bar_plot(
         dataframe=matrix_list,
