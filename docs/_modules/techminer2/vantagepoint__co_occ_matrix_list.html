@@ -237,22 +237,6 @@
     <span class="k">return</span> <span class="n">matrix_list</span>
 
 
-<span class="c1"># def _select_top_n_items(top_n, matrix_list, column):</span>
-
-<span class="c1">#     table = pd.DataFrame({&quot;term&quot;: matrix_list[column].drop_duplicates()})</span>
-<span class="c1">#     table[&quot;ranking&quot;] = table.term.str.split()</span>
-<span class="c1">#     table[&quot;ranking&quot;] = table[&quot;ranking&quot;].map(lambda x: x[-1])</span>
-<span class="c1">#     table[&quot;name&quot;] = table.term.str.split()</span>
-<span class="c1">#     table[&quot;name&quot;] = table[&quot;name&quot;].map(lambda x: x[:-1])</span>
-<span class="c1">#     table[&quot;name&quot;] = table[&quot;name&quot;].str.join(&quot; &quot;)</span>
-<span class="c1">#     table = table.sort_values([&quot;ranking&quot;, &quot;name&quot;], ascending=[False, True])</span>
-<span class="c1">#     table = table.head(top_n)</span>
-<span class="c1">#     terms = table.term.tolist()</span>
-
-<span class="c1">#     matrix_list = matrix_list[matrix_list[column].isin(terms)]</span>
-<span class="c1">#     return matrix_list</span>
-
-
 <span class="k">def</span> <span class="nf">_add_counters_to_items</span><span class="p">(</span>
     <span class="n">matrix_list</span><span class="p">,</span>
     <span class="n">column_name</span><span class="p">,</span>

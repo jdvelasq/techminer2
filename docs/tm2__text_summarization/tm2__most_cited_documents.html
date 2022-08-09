@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Abstracts Report &mdash; TechMiner2 0.1.0 documentation</title>
+  <title>Most Global Cited Documents &mdash; TechMiner2 0.1.0 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
@@ -22,9 +22,7 @@
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Abstracts Extractive Summarization" href="tm2__extractive_summarization.html" />
-    <link rel="prev" title="Text Summarization and Report" href="__index__.html" /> 
+    <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -52,13 +50,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../introduction/license.html">MIT License</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">TM-2</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../tm2__data/__index__.html">Data</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="__index__.html">Text Summarization and Report</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Abstracts Report</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tm2__extractive_summarization.html">Abstracts Extractive Summarization</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="__index__.html">Text Summarization and Report</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
 <ul>
@@ -82,10 +76,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="__index__.html">Text Summarization and Report</a> &raquo;</li>
-      <li>Abstracts Report</li>
+      <li>Most Global Cited Documents</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/tm2__text_summarization/tm2__abstracts_report.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/tm2__text_summarization/tm2__most_cited_documents.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -117,25 +110,21 @@
     text-align: unset;
 }
 </style>
-<span class="target" id="module-techminer2.tm2__abstracts_report"></span><section id="abstracts-report">
-<h1>Abstracts Report<a class="headerlink" href="#abstracts-report" title="Permalink to this heading"></a></h1>
+<span class="target" id="module-techminer2.tm2__most_cited_documents"></span><section id="most-global-cited-documents">
+<h1>Most Global Cited Documents<a class="headerlink" href="#most-global-cited-documents" title="Permalink to this heading"></a></h1>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;data/regtech/&quot;</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># file generated in data/regtech/reports/abstracts_report.txt</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2</span> <span class="kn">import</span> <span class="n">tm2__abstracts_report</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tm2__abstracts_report</span><span class="p">(</span>
-<span class="gp">... </span>    <span class="n">criterion</span><span class="o">=</span><span class="s2">&quot;author_keywords&quot;</span><span class="p">,</span>
-<span class="gp">... </span>    <span class="n">custom_topics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;blockchain&quot;</span> <span class="p">,</span><span class="s2">&quot;regtech&quot;</span><span class="p">],</span>
-<span class="gp">... </span>    <span class="n">n_abstracts</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2</span> <span class="kn">import</span> <span class="n">tm2__most_cited_documents</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tm2__most_cited_documents</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)</span>
 </pre></div>
 </div>
 <dl class="py function">
-<dt class="sig sig-object py" id="techminer2.tm2__abstracts_report.tm2__abstracts_report">
-<span class="sig-prename descclassname"><span class="pre">techminer2.tm2__abstracts_report.</span></span><span class="sig-name descname"><span class="pre">tm2__abstracts_report</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">criterion</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_topics</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'abstracts_report.txt'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_textwrap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">database</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'documents'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_year</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_year</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">filters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/techminer2/tm2__abstracts_report.html#tm2__abstracts_report"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer2.tm2__abstracts_report.tm2__abstracts_report" title="Permalink to this definition"></a></dt>
-<dd><p>Extracts abstracts of documents meeting the given criteria.</p>
+<dt class="sig sig-object py" id="techminer2.tm2__most_cited_documents.tm2__most_cited_documents">
+<span class="sig-prename descclassname"><span class="pre">techminer2.tm2__most_cited_documents.</span></span><span class="sig-name descname"><span class="pre">tm2__most_cited_documents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'most_cited_documents.txt'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_year</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_year</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">filters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/techminer2/tm2__most_cited_documents.html#tm2__most_cited_documents"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer2.tm2__most_cited_documents.tm2__most_cited_documents" title="Permalink to this definition"></a></dt>
+<dd><p>Prints .</p>
 </dd></dl>
 
 </section>
@@ -143,10 +132,7 @@
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="__index__.html" class="btn btn-neutral float-left" title="Text Summarization and Report" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="tm2__extractive_summarization.html" class="btn btn-neutral float-right" title="Abstracts Extractive Summarization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+          <footer>
 
   <hr/>
 

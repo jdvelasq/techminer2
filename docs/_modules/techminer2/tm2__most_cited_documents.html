@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>techminer2.bibliometrix__most_global_cited_documents &mdash; TechMiner2 0.1.0 documentation</title>
+  <title>techminer2.tm2__most_cited_documents &mdash; TechMiner2 0.1.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
@@ -76,7 +76,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="../index.html">Module code</a> &raquo;</li>
-      <li>techminer2.bibliometrix__most_global_cited_documents</li>
+      <li>techminer2.tm2__most_cited_documents</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -85,55 +85,35 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <h1>Source code for techminer2.bibliometrix__most_global_cited_documents</h1><div class="highlight"><pre>
+  <h1>Source code for techminer2.tm2__most_cited_documents</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Most Global Cited Documents</span>
 <span class="sd">===============================================================================</span>
 
 
 <span class="sd">&gt;&gt;&gt; directory = &quot;data/regtech/&quot;</span>
-<span class="sd">&gt;&gt;&gt; file_name = &quot;sphinx/_static/bibliometrix__most_global_cited_documents.html&quot;</span>
 
-<span class="sd">&gt;&gt;&gt; from techminer2 import bibliometrix__most_global_cited_documents</span>
-<span class="sd">&gt;&gt;&gt; bibliometrix__most_global_cited_documents(</span>
-<span class="sd">...     top_n=5,</span>
+<span class="sd">&gt;&gt;&gt; from techminer2 import tm2__most_cited_documents</span>
+<span class="sd">&gt;&gt;&gt; tm2__most_cited_documents(</span>
 <span class="sd">...     directory=directory,</span>
-<span class="sd">... ).write_html(file_name)</span>
+<span class="sd">... )</span>
 
-<span class="sd">.. raw:: html</span>
-
-<span class="sd">    &lt;iframe src=&quot;../../../_static/bibliometrix__most_global_cited_documents.html&quot; height=&quot;600px&quot; width=&quot;100%&quot; frameBorder=&quot;0&quot;&gt;&lt;/iframe&gt;</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">os.path</span>
 <span class="kn">import</span> <span class="nn">textwrap</span>
 
-<span class="kn">from</span> <span class="nn">._indicators.indicators_by_document</span> <span class="kn">import</span> <span class="n">indicators_by_document</span>
 <span class="kn">from</span> <span class="nn">._read_records</span> <span class="kn">import</span> <span class="n">read_records</span>
-<span class="kn">from</span> <span class="nn">.bibliometrix__cited_documents</span> <span class="kn">import</span> <span class="n">bibiometrix_cited_documents</span>
 
 
-<div class="viewcode-block" id="bibliometrix__most_global_cited_documents"><a class="viewcode-back" href="../../bibliometrix/documents/documents/bibliometrix__most_global_cited_documents.html#techminer2.bibliometrix__most_global_cited_documents.bibliometrix__most_global_cited_documents">[docs]</a><span class="k">def</span> <span class="nf">bibliometrix__most_global_cited_documents</span><span class="p">(</span>
+<div class="viewcode-block" id="tm2__most_cited_documents"><a class="viewcode-back" href="../../tm2__text_summarization/tm2__most_cited_documents.html#techminer2.tm2__most_cited_documents.tm2__most_cited_documents">[docs]</a><span class="k">def</span> <span class="nf">tm2__most_cited_documents</span><span class="p">(</span>
     <span class="n">directory</span><span class="o">=</span><span class="s2">&quot;./&quot;</span><span class="p">,</span>
-    <span class="n">top_n</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
-    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Most Global Cited Documents&quot;</span><span class="p">,</span>
+    <span class="n">file_name</span><span class="o">=</span><span class="s2">&quot;most_cited_documents.txt&quot;</span><span class="p">,</span>
     <span class="n">start_year</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">end_year</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="o">**</span><span class="n">filters</span><span class="p">,</span>
 <span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Plots the most global cited documents in the main collection.&quot;&quot;&quot;</span>
-
-    <span class="c1">## TODO: Review and extract</span>
-
-    <span class="n">indicators</span> <span class="o">=</span> <span class="n">indicators_by_document</span><span class="p">(</span>
-        <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
-        <span class="n">database</span><span class="o">=</span><span class="s2">&quot;documents&quot;</span><span class="p">,</span>
-        <span class="n">start_year</span><span class="o">=</span><span class="n">start_year</span><span class="p">,</span>
-        <span class="n">end_year</span><span class="o">=</span><span class="n">end_year</span><span class="p">,</span>
-        <span class="o">**</span><span class="n">filters</span><span class="p">,</span>
-    <span class="p">)</span>
-    <span class="n">indicators</span> <span class="o">=</span> <span class="n">indicators</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;global_citations&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">indicators</span> <span class="o">=</span> <span class="n">indicators</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">top_n</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;Prints .&quot;&quot;&quot;</span>
 
     <span class="n">records</span> <span class="o">=</span> <span class="n">read_records</span><span class="p">(</span>
         <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
@@ -142,25 +122,6 @@
         <span class="n">end_year</span><span class="o">=</span><span class="n">end_year</span><span class="p">,</span>
         <span class="o">**</span><span class="n">filters</span><span class="p">,</span>
     <span class="p">)</span>
-
-    <span class="n">records</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">article</span>
-    <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">indicators</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="p">:]</span>
-
-    <span class="n">_save_report</span><span class="p">(</span><span class="n">records</span><span class="p">,</span> <span class="n">directory</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">bibiometrix_cited_documents</span><span class="p">(</span>
-        <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;global_citations&quot;</span><span class="p">,</span>
-        <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
-        <span class="n">database</span><span class="o">=</span><span class="s2">&quot;documents&quot;</span><span class="p">,</span>
-        <span class="n">top_n</span><span class="o">=</span><span class="n">top_n</span><span class="p">,</span>
-        <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span>
-        <span class="n">start_year</span><span class="o">=</span><span class="n">start_year</span><span class="p">,</span>
-        <span class="n">end_year</span><span class="o">=</span><span class="n">end_year</span><span class="p">,</span>
-        <span class="o">**</span><span class="n">filters</span><span class="p">,</span>
-    <span class="p">)</span></div>
-
-
-<span class="k">def</span> <span class="nf">_save_report</span><span class="p">(</span><span class="n">records</span><span class="p">,</span> <span class="n">directory</span><span class="p">):</span>
 
     <span class="n">column_list</span> <span class="o">=</span> <span class="p">[]</span>
 
@@ -184,7 +145,7 @@
     <span class="k">if</span> <span class="s2">&quot;global_citations&quot;</span> <span class="ow">in</span> <span class="n">records</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
         <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;global_citations&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
-    <span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="s2">&quot;reports/most_global_cited_documents.txt&quot;</span><span class="p">)</span>
+    <span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="s2">&quot;reports&quot;</span><span class="p">,</span> <span class="n">file_name</span><span class="p">)</span>
 
     <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">with</span> <span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
@@ -234,7 +195,7 @@
                         <span class="n">fix_sentence_endings</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                     <span class="p">)[</span><span class="mi">3</span><span class="p">:],</span>
                     <span class="n">file</span><span class="o">=</span><span class="n">file</span><span class="p">,</span>
-                <span class="p">)</span>
+                <span class="p">)</span></div>
 </pre></div>
 
            </div>

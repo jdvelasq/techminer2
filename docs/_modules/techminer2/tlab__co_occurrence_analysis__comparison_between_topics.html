@@ -87,8 +87,9 @@
              
   <h1>Source code for techminer2.tlab__co_occurrence_analysis__comparison_between_topics</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">Topics Comparison Chart</span>
+<span class="sd">Compararison between topics</span>
 <span class="sd">===============================================================================</span>
+
 
 
 <span class="sd">&gt;&gt;&gt; directory = &quot;data/regtech/&quot;</span>
@@ -104,41 +105,19 @@
 <span class="sd">...     directory=directory,</span>
 <span class="sd">... )</span>
 
-<span class="sd">&gt;&gt;&gt; cbt.table_</span>
-<span class="sd">                                  row                        column  OCC</span>
-<span class="sd">0                             regtech                fintech 42:406   34</span>
-<span class="sd">1   artificial intelligence &amp; regtech                fintech 42:406    8</span>
-<span class="sd">2   artificial intelligence &amp; regtech             blockchain 18:109    2</span>
-<span class="sd">3                             regtech             blockchain 18:109   15</span>
-<span class="sd">4   artificial intelligence &amp; regtech             compliance 12:020    1</span>
-<span class="sd">5                             regtech             compliance 12:020   11</span>
-<span class="sd">6                             regtech   financial regulation 08:091    6</span>
-<span class="sd">7   artificial intelligence &amp; regtech   financial regulation 08:091    2</span>
-<span class="sd">8                             regtech       machine learning 06:013    2</span>
-<span class="sd">9   artificial intelligence &amp; regtech       machine learning 06:013    4</span>
-<span class="sd">10            artificial intelligence   financial technology 09:032    1</span>
-<span class="sd">11                            regtech   financial technology 09:032    4</span>
-<span class="sd">12  artificial intelligence &amp; regtech   financial technology 09:032    1</span>
-<span class="sd">13                            regtech     financial services 05:135    5</span>
-<span class="sd">14  artificial intelligence &amp; regtech             regulation 06:120    1</span>
-<span class="sd">15                            regtech             regulation 06:120    4</span>
-<span class="sd">16                            regtech  regulatory technology 12:047    3</span>
-<span class="sd">17  artificial intelligence &amp; regtech  regulatory technology 12:047    1</span>
-<span class="sd">18            artificial intelligence  regulatory technology 12:047    1</span>
-<span class="sd">19                            regtech    financial inclusion 05:068    5</span>
-<span class="sd">20                            regtech   financial innovation 04:007    3</span>
-<span class="sd">21  artificial intelligence &amp; regtech   financial innovation 04:007    1</span>
-<span class="sd">22  artificial intelligence &amp; regtech              insurtech 04:005    2</span>
-<span class="sd">23                            regtech              insurtech 04:005    2</span>
-<span class="sd">24                            regtech           crowdfunding 04:030    3</span>
-<span class="sd">25  artificial intelligence &amp; regtech           crowdfunding 04:030    1</span>
-<span class="sd">26                            regtech               big data 04:027    3</span>
-<span class="sd">27  artificial intelligence &amp; regtech               big data 04:027    1</span>
-<span class="sd">28                            regtech         accountability 04:022    4</span>
-<span class="sd">29                            regtech         cryptocurrency 04:029    3</span>
-<span class="sd">30                            regtech             innovation 04:029    3</span>
-<span class="sd">31  artificial intelligence &amp; regtech  anti-money laundering 04:030    1</span>
-<span class="sd">32                            regtech  anti-money laundering 04:030    1</span>
+<span class="sd">&gt;&gt;&gt; cbt.table_.head(10)</span>
+<span class="sd">                                 row                       column  OCC</span>
+<span class="sd">0            artificial intelligence               fintech 42:406    0</span>
+<span class="sd">1  artificial intelligence &amp; regtech               fintech 42:406    8</span>
+<span class="sd">2                            regtech               fintech 42:406   34</span>
+<span class="sd">3                            regtech            blockchain 18:109   15</span>
+<span class="sd">4            artificial intelligence            blockchain 18:109    0</span>
+<span class="sd">5  artificial intelligence &amp; regtech            blockchain 18:109    2</span>
+<span class="sd">6                            regtech            compliance 12:020   11</span>
+<span class="sd">7  artificial intelligence &amp; regtech            compliance 12:020    1</span>
+<span class="sd">8            artificial intelligence            compliance 12:020    0</span>
+<span class="sd">9            artificial intelligence  financial regulation 08:091    0</span>
+
 
 <span class="sd">&gt;&gt;&gt; file_name = &quot;sphinx/_static/tlab__co_occurrence_analysis__comparison_between_topics_bar_chart.html&quot;</span>
 <span class="sd">&gt;&gt;&gt; cbt.bar_chart_.write_html(file_name)</span>
@@ -154,7 +133,6 @@
 <span class="sd">.. raw:: html</span>
 
 <span class="sd">    &lt;iframe src=&quot;../../../../_static/tlab__co_occurrence_analysis__comparison_between_topics_radial_diagram.html&quot; height=&quot;600px&quot; width=&quot;100%&quot; frameBorder=&quot;0&quot;&gt;&lt;/iframe&gt;</span>
-
 
 
 
@@ -320,27 +298,52 @@
     <span class="p">)</span>
     <span class="n">group_b</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">group_a</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">1</span>
 
-    <span class="n">nodes</span> <span class="o">+=</span> <span class="p">[</span>
-        <span class="p">(</span>
-            <span class="n">topic_a</span><span class="p">,</span>
-            <span class="nb">dict</span><span class="p">(</span>
-                <span class="n">size</span><span class="o">=</span><span class="n">topic_size</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">topic_a</span><span class="p">][</span><span class="s2">&quot;OCC&quot;</span><span class="p">]</span>
-                <span class="o">+</span> <span class="n">topic_size</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot; &amp; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">topic_a</span><span class="p">,</span> <span class="n">topic_b</span><span class="p">])][</span><span class="s2">&quot;OCC&quot;</span><span class="p">],</span>
-                <span class="n">group</span><span class="o">=</span><span class="n">group_a</span><span class="p">,</span>
-            <span class="p">),</span>
-        <span class="p">)</span>
-    <span class="p">]</span>
+    <span class="n">join_terms</span> <span class="o">=</span> <span class="s2">&quot; &amp; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">topic_a</span><span class="p">,</span> <span class="n">topic_b</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">join_terms</span> <span class="ow">in</span> <span class="n">topic_size</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
 
-    <span class="n">nodes</span> <span class="o">+=</span> <span class="p">[</span>
-        <span class="p">(</span>
-            <span class="n">topic_b</span><span class="p">,</span>
-            <span class="nb">dict</span><span class="p">(</span>
-                <span class="n">size</span><span class="o">=</span><span class="n">topic_size</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">topic_b</span><span class="p">][</span><span class="s2">&quot;OCC&quot;</span><span class="p">]</span>
-                <span class="o">+</span> <span class="n">topic_size</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot; &amp; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">topic_a</span><span class="p">,</span> <span class="n">topic_b</span><span class="p">])][</span><span class="s2">&quot;OCC&quot;</span><span class="p">],</span>
-                <span class="n">group</span><span class="o">=</span><span class="n">group_b</span><span class="p">,</span>
-            <span class="p">),</span>
-        <span class="p">)</span>
-    <span class="p">]</span>
+        <span class="n">nodes</span> <span class="o">+=</span> <span class="p">[</span>
+            <span class="p">(</span>
+                <span class="n">topic_a</span><span class="p">,</span>
+                <span class="nb">dict</span><span class="p">(</span>
+                    <span class="n">size</span><span class="o">=</span><span class="n">topic_size</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">topic_a</span><span class="p">][</span><span class="s2">&quot;OCC&quot;</span><span class="p">]</span>
+                    <span class="o">+</span> <span class="n">topic_size</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot; &amp; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">topic_a</span><span class="p">,</span> <span class="n">topic_b</span><span class="p">])][</span><span class="s2">&quot;OCC&quot;</span><span class="p">],</span>
+                    <span class="n">group</span><span class="o">=</span><span class="n">group_a</span><span class="p">,</span>
+                <span class="p">),</span>
+            <span class="p">)</span>
+        <span class="p">]</span>
+
+        <span class="n">nodes</span> <span class="o">+=</span> <span class="p">[</span>
+            <span class="p">(</span>
+                <span class="n">topic_b</span><span class="p">,</span>
+                <span class="nb">dict</span><span class="p">(</span>
+                    <span class="n">size</span><span class="o">=</span><span class="n">topic_size</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">topic_b</span><span class="p">][</span><span class="s2">&quot;OCC&quot;</span><span class="p">]</span>
+                    <span class="o">+</span> <span class="n">topic_size</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot; &amp; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">topic_a</span><span class="p">,</span> <span class="n">topic_b</span><span class="p">])][</span><span class="s2">&quot;OCC&quot;</span><span class="p">],</span>
+                    <span class="n">group</span><span class="o">=</span><span class="n">group_b</span><span class="p">,</span>
+                <span class="p">),</span>
+            <span class="p">)</span>
+        <span class="p">]</span>
+
+    <span class="k">else</span><span class="p">:</span>
+
+        <span class="n">nodes</span> <span class="o">+=</span> <span class="p">[</span>
+            <span class="p">(</span>
+                <span class="n">topic_a</span><span class="p">,</span>
+                <span class="nb">dict</span><span class="p">(</span>
+                    <span class="n">size</span><span class="o">=</span><span class="n">topic_size</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">topic_a</span><span class="p">][</span><span class="s2">&quot;OCC&quot;</span><span class="p">],</span>
+                    <span class="n">group</span><span class="o">=</span><span class="n">group_a</span><span class="p">,</span>
+                <span class="p">),</span>
+            <span class="p">)</span>
+        <span class="p">]</span>
+
+        <span class="n">nodes</span> <span class="o">+=</span> <span class="p">[</span>
+            <span class="p">(</span>
+                <span class="n">topic_b</span><span class="p">,</span>
+                <span class="nb">dict</span><span class="p">(</span>
+                    <span class="n">size</span><span class="o">=</span><span class="n">topic_size</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">topic_b</span><span class="p">][</span><span class="s2">&quot;OCC&quot;</span><span class="p">],</span>
+                    <span class="n">group</span><span class="o">=</span><span class="n">group_b</span><span class="p">,</span>
+                <span class="p">),</span>
+            <span class="p">)</span>
+        <span class="p">]</span>
 
     <span class="n">graph</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">graph</span>
@@ -478,6 +481,16 @@
     <span class="n">matrix_list</span> <span class="o">=</span> <span class="n">matrix_list</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;row&quot;</span><span class="p">,</span> <span class="s2">&quot;column&quot;</span><span class="p">],</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span>
         <span class="s2">&quot;sum&quot;</span>
     <span class="p">)</span>
+
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">matrix_list</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s2">&quot;row&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;column&quot;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s2">&quot;OCC&quot;</span><span class="p">)</span>
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s2">&quot; &amp; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">topic_a</span><span class="p">,</span> <span class="n">topic_b</span><span class="p">])</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">matrix</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">to_list</span><span class="p">():</span>
+        <span class="n">matrix</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot; &amp; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">topic_a</span><span class="p">,</span> <span class="n">topic_b</span><span class="p">])]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="n">matrix_list</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">value_name</span><span class="o">=</span><span class="s2">&quot;OCC&quot;</span><span class="p">,</span> <span class="n">var_name</span><span class="o">=</span><span class="s2">&quot;column&quot;</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="n">matrix_list</span> <span class="o">=</span> <span class="n">matrix_list</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    <span class="n">matrix_list</span><span class="p">[</span><span class="s2">&quot;OCC&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">matrix_list</span><span class="p">[</span><span class="s2">&quot;OCC&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">matrix_list</span>
 

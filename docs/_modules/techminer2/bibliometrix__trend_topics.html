@@ -98,14 +98,34 @@
 <span class="sd">&gt;&gt;&gt; bibliometrix__trend_topics(</span>
 <span class="sd">...     &#39;author_keywords&#39;,</span>
 <span class="sd">...     directory=directory, </span>
-<span class="sd">... ).table_.head()</span>
-<span class="sd">year                   OCC  year_q1  year_med  year_q3  global_citations  rn</span>
-<span class="sd">author_keywords                                                             </span>
-<span class="sd">regtech                 69     2016      2016     2017               461   0</span>
-<span class="sd">fintech                 42     2016      2016     2016               406   1</span>
-<span class="sd">regulatory technology   12     2016      2016     2016                47   2</span>
-<span class="sd">financial technology     9     2016      2016     2016                32   3</span>
-<span class="sd">financial regulation     8     2016      2016     2016                91   4</span>
+<span class="sd">... ).table_.head(20)</span>
+<span class="sd">year                        OCC  year_q1  ...  global_citations  rn</span>
+<span class="sd">author_keywords                           ...                      </span>
+<span class="sd">regtech                      69     2016  ...               461   0</span>
+<span class="sd">fintech                      42     2016  ...               406   1</span>
+<span class="sd">regulatory technology        12     2016  ...                47   2</span>
+<span class="sd">financial technology          9     2016  ...                32   3</span>
+<span class="sd">financial regulation          8     2016  ...                91   4</span>
+<span class="sd">blockchain                   18     2017  ...               109   0</span>
+<span class="sd">financial services            5     2017  ...               135   1</span>
+<span class="sd">smart contracts               3     2017  ...                15   2</span>
+<span class="sd">sandboxes                     2     2017  ...                 7   3</span>
+<span class="sd">shared ledger technologies    1     2017  ...                 9   4</span>
+<span class="sd">artificial intelligence      13     2018  ...                65   0</span>
+<span class="sd">compliance                   12     2018  ...                20   1</span>
+<span class="sd">regulation                    6     2018  ...               120   2</span>
+<span class="sd">financial inclusion           5     2018  ...                68   3</span>
+<span class="sd">cryptocurrency                4     2018  ...                29   4</span>
+<span class="sd">machine learning              6     2019  ...                13   0</span>
+<span class="sd">anti-money laundering         4     2019  ...                30   1</span>
+<span class="sd">crowdfunding                  4     2019  ...                30   2</span>
+<span class="sd">suptech                       4     2019  ...                 3   3</span>
+<span class="sd">p2p lending                   3     2019  ...                26   4</span>
+<span class="sd">&lt;BLANKLINE&gt;</span>
+<span class="sd">[20 rows x 6 columns]</span>
+
+
+
 
 
 <span class="sd">&gt;&gt;&gt; bibliometrix__trend_topics(</span>
@@ -116,6 +136,30 @@
 <span class="sd">.. raw:: html</span>
 
 <span class="sd">    &lt;iframe src=&quot;../../../_static/bibliometrix__trend_topics.html&quot; height=&quot;900px&quot; width=&quot;100%&quot; frameBorder=&quot;0&quot;&gt;&lt;/iframe&gt;</span>
+
+
+
+<span class="sd">&gt;&gt;&gt; bibliometrix__trend_topics(</span>
+<span class="sd">...     &#39;author_keywords&#39;,</span>
+<span class="sd">...     custom_topics=[</span>
+<span class="sd">...         &quot;fintech&quot;,</span>
+<span class="sd">...         &quot;regulatory technology&quot;,</span>
+<span class="sd">...         &quot;blockchain&quot;,</span>
+<span class="sd">...         &quot;suptech&quot;,</span>
+<span class="sd">...         &quot;artificial intelligence&quot;,</span>
+<span class="sd">...         &quot;financial inclusion&quot;,</span>
+<span class="sd">...     ], </span>
+<span class="sd">...     directory=directory, </span>
+<span class="sd">... ).table_.head(10)</span>
+<span class="sd">year                     OCC  year_q1  year_med  year_q3  global_citations  rn</span>
+<span class="sd">author_keywords                                                               </span>
+<span class="sd">fintech                   42     2016      2016     2016               406   0</span>
+<span class="sd">regulatory technology     12     2016      2016     2016                47   1</span>
+<span class="sd">blockchain                18     2017      2017     2017               109   0</span>
+<span class="sd">artificial intelligence   13     2018      2018     2018                65   0</span>
+<span class="sd">financial inclusion        5     2018      2018     2018                68   1</span>
+<span class="sd">suptech                    4     2019      2019     2019                 3   0</span>
+
 
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
@@ -136,6 +180,7 @@
 <div class="viewcode-block" id="bibliometrix__trend_topics"><a class="viewcode-back" href="../../bibliometrix/documents/words/bibliometrix__trend_topics.html#techminer2.bibliometrix__trend_topics.bibliometrix__trend_topics">[docs]</a><span class="k">def</span> <span class="nf">bibliometrix__trend_topics</span><span class="p">(</span>
     <span class="n">criterion</span><span class="p">,</span>
     <span class="n">n_words_per_year</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">custom_topics</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">directory</span><span class="o">=</span><span class="s2">&quot;./&quot;</span><span class="p">,</span>
     <span class="n">database</span><span class="o">=</span><span class="s2">&quot;documents&quot;</span><span class="p">,</span>
     <span class="n">start_year</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -153,6 +198,9 @@
         <span class="n">end_year</span><span class="o">=</span><span class="n">end_year</span><span class="p">,</span>
         <span class="o">**</span><span class="n">filters</span><span class="p">,</span>
     <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">custom_topics</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">words_by_year</span> <span class="o">=</span> <span class="n">words_by_year</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">custom_topics</span><span class="p">,</span> <span class="p">:]</span>
 
     <span class="n">year_q1</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">year_med</span> <span class="o">=</span> <span class="p">[]</span>

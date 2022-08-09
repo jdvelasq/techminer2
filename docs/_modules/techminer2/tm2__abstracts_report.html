@@ -116,7 +116,7 @@
     <span class="n">criterion</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">custom_topics</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">file_name</span><span class="o">=</span><span class="s2">&quot;abstracts_report.txt&quot;</span><span class="p">,</span>
-    <span class="n">n_abstracts</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="c1"># n_abstracts=10,</span>
     <span class="n">use_textwrap</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">directory</span><span class="o">=</span><span class="s2">&quot;./&quot;</span><span class="p">,</span>
     <span class="n">database</span><span class="o">=</span><span class="s2">&quot;documents&quot;</span><span class="p">,</span>
@@ -142,7 +142,7 @@
             <span class="n">ascending</span><span class="o">=</span><span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
         <span class="p">)</span>
 
-    <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n_abstracts</span><span class="p">)</span>
+    <span class="c1"># records = records.head(n_abstracts)</span>
 
     <span class="n">_write_report</span><span class="p">(</span><span class="n">criterion</span><span class="p">,</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">use_textwrap</span><span class="p">,</span> <span class="n">directory</span><span class="p">,</span> <span class="n">records</span><span class="p">)</span></div>
 
@@ -169,11 +169,11 @@
         <span class="n">ascending</span><span class="o">=</span><span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
     <span class="p">)</span>
 
-    <span class="n">records</span><span class="p">[</span><span class="s2">&quot;RNK&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;POINTS&quot;</span><span class="p">)[</span><span class="s2">&quot;global_citations&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span>
-        <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;dense&quot;</span>
-    <span class="p">)</span>
+    <span class="c1"># records[&quot;RNK&quot;] = records.groupby(&quot;POINTS&quot;)[&quot;global_citations&quot;].rank(</span>
+    <span class="c1">#     ascending=False, method=&quot;dense&quot;</span>
+    <span class="c1"># )</span>
 
-    <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="n">records</span><span class="p">[</span><span class="s2">&quot;RNK&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">]</span>
+    <span class="c1"># records = records[records[&quot;RNK&quot;] &lt; 10]</span>
 
     <span class="n">records</span><span class="p">[</span><span class="s2">&quot;TERMS&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="n">criterion</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
     <span class="n">records</span><span class="p">[</span><span class="s2">&quot;TERMS&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="s2">&quot;TERMS&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">[</span><span class="n">y</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">x</span><span class="p">])</span>

@@ -147,14 +147,31 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">bibliometrix__trend_topics</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="s1">&#39;author_keywords&#39;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
-<span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">table_</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-<span class="go">year                   OCC  year_q1  year_med  year_q3  global_citations  rn</span>
-<span class="go">author_keywords</span>
-<span class="go">regtech                 69     2016      2016     2017               461   0</span>
-<span class="go">fintech                 42     2016      2016     2016               406   1</span>
-<span class="go">regulatory technology   12     2016      2016     2016                47   2</span>
-<span class="go">financial technology     9     2016      2016     2016                32   3</span>
-<span class="go">financial regulation     8     2016      2016     2016                91   4</span>
+<span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">table_</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="go">year                        OCC  year_q1  ...  global_citations  rn</span>
+<span class="go">author_keywords                           ...</span>
+<span class="go">regtech                      69     2016  ...               461   0</span>
+<span class="go">fintech                      42     2016  ...               406   1</span>
+<span class="go">regulatory technology        12     2016  ...                47   2</span>
+<span class="go">financial technology          9     2016  ...                32   3</span>
+<span class="go">financial regulation          8     2016  ...                91   4</span>
+<span class="go">blockchain                   18     2017  ...               109   0</span>
+<span class="go">financial services            5     2017  ...               135   1</span>
+<span class="go">smart contracts               3     2017  ...                15   2</span>
+<span class="go">sandboxes                     2     2017  ...                 7   3</span>
+<span class="go">shared ledger technologies    1     2017  ...                 9   4</span>
+<span class="go">artificial intelligence      13     2018  ...                65   0</span>
+<span class="go">compliance                   12     2018  ...                20   1</span>
+<span class="go">regulation                    6     2018  ...               120   2</span>
+<span class="go">financial inclusion           5     2018  ...                68   3</span>
+<span class="go">cryptocurrency                4     2018  ...                29   4</span>
+<span class="go">machine learning              6     2019  ...                13   0</span>
+<span class="go">anti-money laundering         4     2019  ...                30   1</span>
+<span class="go">crowdfunding                  4     2019  ...                30   2</span>
+<span class="go">suptech                       4     2019  ...                 3   3</span>
+<span class="go">p2p lending                   3     2019  ...                26   4</span>
+
+<span class="go">[20 rows x 6 columns]</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bibliometrix__trend_topics</span><span class="p">(</span>
@@ -163,9 +180,31 @@
 <span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">plot_</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
 </pre></div>
 </div>
-<iframe src="../../../_static/bibliometrix__trend_topics.html" height="900px" width="100%" frameBorder="0"></iframe><dl class="py function">
+<iframe src="../../../_static/bibliometrix__trend_topics.html" height="900px" width="100%" frameBorder="0"></iframe><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bibliometrix__trend_topics</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="s1">&#39;author_keywords&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">custom_topics</span><span class="o">=</span><span class="p">[</span>
+<span class="gp">... </span>        <span class="s2">&quot;fintech&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;regulatory technology&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;blockchain&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;suptech&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;artificial intelligence&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;financial inclusion&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">],</span>
+<span class="gp">... </span>    <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">table_</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="go">year                     OCC  year_q1  year_med  year_q3  global_citations  rn</span>
+<span class="go">author_keywords</span>
+<span class="go">fintech                   42     2016      2016     2016               406   0</span>
+<span class="go">regulatory technology     12     2016      2016     2016                47   1</span>
+<span class="go">blockchain                18     2017      2017     2017               109   0</span>
+<span class="go">artificial intelligence   13     2018      2018     2018                65   0</span>
+<span class="go">financial inclusion        5     2018      2018     2018                68   1</span>
+<span class="go">suptech                    4     2019      2019     2019                 3   0</span>
+</pre></div>
+</div>
+<dl class="py function">
 <dt class="sig sig-object py" id="techminer2.bibliometrix__trend_topics.bibliometrix__trend_topics">
-<span class="sig-prename descclassname"><span class="pre">techminer2.bibliometrix__trend_topics.</span></span><span class="sig-name descname"><span class="pre">bibliometrix__trend_topics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">criterion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_words_per_year</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">database</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'documents'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_year</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_year</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">filters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/techminer2/bibliometrix__trend_topics.html#bibliometrix__trend_topics"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer2.bibliometrix__trend_topics.bibliometrix__trend_topics" title="Permalink to this definition"></a></dt>
+<span class="sig-prename descclassname"><span class="pre">techminer2.bibliometrix__trend_topics.</span></span><span class="sig-name descname"><span class="pre">bibliometrix__trend_topics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">criterion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_words_per_year</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_topics</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">database</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'documents'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_year</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_year</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">filters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/techminer2/bibliometrix__trend_topics.html#bibliometrix__trend_topics"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer2.bibliometrix__trend_topics.bibliometrix__trend_topics" title="Permalink to this definition"></a></dt>
 <dd><p>Trend topics</p>
 </dd></dl>
 
