@@ -53,7 +53,7 @@ def tlab__word_associations_co_occurrences_plot(
         matrix_list["row"].map(lambda x: " ".join(x.split()[:-1]) == topic)
     ]
 
-    total_occ_topic = matrix_list["row"][0]
+    total_occ_topic = matrix_list["row"].iloc[0]
     total_occ_topic = total_occ_topic.split()[-1]
     total_occ_topic = total_occ_topic.split(":")[0]
     total_occ_topic = int(total_occ_topic)
