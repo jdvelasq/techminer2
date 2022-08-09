@@ -1,5 +1,5 @@
 """
-Topics Comparison Chart
+Compararison between topics
 ===============================================================================
 
 
@@ -17,41 +17,19 @@ Topics Comparison Chart
 ...     directory=directory,
 ... )
 
->>> cbt.table_
-                                  row                        column  OCC
-0                             regtech                fintech 42:406   34
-1   artificial intelligence & regtech                fintech 42:406    8
-2   artificial intelligence & regtech             blockchain 18:109    2
-3                             regtech             blockchain 18:109   15
-4   artificial intelligence & regtech             compliance 12:020    1
-5                             regtech             compliance 12:020   11
-6                             regtech   financial regulation 08:091    6
-7   artificial intelligence & regtech   financial regulation 08:091    2
-8                             regtech       machine learning 06:013    2
-9   artificial intelligence & regtech       machine learning 06:013    4
-10            artificial intelligence   financial technology 09:032    1
-11                            regtech   financial technology 09:032    4
-12  artificial intelligence & regtech   financial technology 09:032    1
-13                            regtech     financial services 05:135    5
-14  artificial intelligence & regtech             regulation 06:120    1
-15                            regtech             regulation 06:120    4
-16                            regtech  regulatory technology 12:047    3
-17  artificial intelligence & regtech  regulatory technology 12:047    1
-18            artificial intelligence  regulatory technology 12:047    1
-19                            regtech    financial inclusion 05:068    5
-20                            regtech   financial innovation 04:007    3
-21  artificial intelligence & regtech   financial innovation 04:007    1
-22  artificial intelligence & regtech              insurtech 04:005    2
-23                            regtech              insurtech 04:005    2
-24                            regtech           crowdfunding 04:030    3
-25  artificial intelligence & regtech           crowdfunding 04:030    1
-26                            regtech               big data 04:027    3
-27  artificial intelligence & regtech               big data 04:027    1
-28                            regtech         accountability 04:022    4
-29                            regtech         cryptocurrency 04:029    3
-30                            regtech             innovation 04:029    3
-31  artificial intelligence & regtech  anti-money laundering 04:030    1
-32                            regtech  anti-money laundering 04:030    1
+>>> cbt.table_.head(10)
+                                 row                       column  OCC
+0            artificial intelligence               fintech 42:406    0
+1  artificial intelligence & regtech               fintech 42:406    8
+2                            regtech               fintech 42:406   34
+3                            regtech            blockchain 18:109   15
+4            artificial intelligence            blockchain 18:109    0
+5  artificial intelligence & regtech            blockchain 18:109    2
+6                            regtech            compliance 12:020   11
+7  artificial intelligence & regtech            compliance 12:020    1
+8            artificial intelligence            compliance 12:020    0
+9            artificial intelligence  financial regulation 08:091    0
+
 
 >>> file_name = "sphinx/_static/tlab__co_occurrence_analysis__comparison_between_topics_bar_chart.html"
 >>> cbt.bar_chart_.write_html(file_name)
@@ -415,6 +393,16 @@ def _create_comparison_matrix_list(
     matrix_list = matrix_list.groupby(["row", "column"], as_index=False).aggregate(
         "sum"
     )
+
+    matrix = matrix_list.pivot(index="row", columns="column", values="OCC")
+    matrix = matrix.fillna(0)
+    if " & ".join([topic_a, topic_b]) not in matrix.index.to_list():
+        matrix.loc[" & ".join([topic_a, topic_b])] = 0
+
+    matrix_list = matrix.melt(value_name="OCC", var_name="column", ignore_index=False)
+
+    matrix_list = matrix_list.reset_index()
+    matrix_list["OCC"] = matrix_list["OCC"].astype(int)
 
     return matrix_list
 
