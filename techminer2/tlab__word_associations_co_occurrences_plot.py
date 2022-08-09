@@ -53,15 +53,19 @@ def tlab__word_associations_co_occurrences_plot(
         matrix_list["row"].map(lambda x: " ".join(x.split()[:-1]) == topic)
     ]
 
+    total_occ_topic = matrix_list["row"][0]
+    total_occ_topic = total_occ_topic.split()[-1]
+    total_occ_topic = total_occ_topic.split(":")[0]
+    total_occ_topic = int(total_occ_topic)
+
     matrix_list = matrix_list[matrix_list["row"] != matrix_list["column"]]
-    matrix_list["total_OCC"] = matrix_list["row"].map(lambda x: x.split())
-    matrix_list["total_OCC"] = matrix_list["total_OCC"].str[-1]
-    matrix_list["total_OCC"] = matrix_list["total_OCC"].str.split(":")
-    matrix_list["total_OCC"] = matrix_list["total_OCC"].str[-1]
-    matrix_list["total_OCC"] = matrix_list["total_OCC"].astype(float)
-    matrix_list = matrix_list.assign(
-        OCC=100 * matrix_list["OCC"] / matrix_list["total_OCC"]
-    )
+
+    # matrix_list["total_OCC"] = matrix_list["row"].map(lambda x: x.split())
+    # matrix_list["total_OCC"] = matrix_list["total_OCC"].str[-1]
+    # matrix_list["total_OCC"] = matrix_list["total_OCC"].str.split(":")
+    # matrix_list["total_OCC"] = matrix_list["total_OCC"].str[-1]
+    # matrix_list["total_OCC"] = matrix_list["total_OCC"].astype(float)
+    matrix_list = matrix_list.assign(OCC=100 * matrix_list["OCC"] / total_occ_topic)
     matrix_list["OCC"] = matrix_list["OCC"].round(1)
 
     matrix_list = matrix_list[["column", "OCC"]]
