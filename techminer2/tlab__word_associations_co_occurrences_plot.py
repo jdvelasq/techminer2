@@ -58,9 +58,11 @@ def tlab__word_associations_co_occurrences_plot(
     matrix_list["total_OCC"] = matrix_list["total_OCC"].str[-1]
     matrix_list["total_OCC"] = matrix_list["total_OCC"].str.split(":")
     matrix_list["total_OCC"] = matrix_list["total_OCC"].str[-1]
-    matrix_list["total_OCC"] = matrix_list["total_OCC"].astype(int)
-    matrix_list = matrix_list.assign(OCC=matrix_list["OCC"] / matrix_list["total_OCC"])
-    matrix_list["OCC"] = matrix_list["OCC"].round(2)
+    matrix_list["total_OCC"] = matrix_list["total_OCC"].astype(float)
+    matrix_list = matrix_list.assign(
+        OCC=100 * matrix_list["OCC"] / matrix_list["total_OCC"]
+    )
+    matrix_list["OCC"] = matrix_list["OCC"].round(1)
 
     matrix_list = matrix_list[["column", "OCC"]]
 
@@ -70,16 +72,14 @@ def tlab__word_associations_co_occurrences_plot(
     matrix_list = matrix_list.set_index("column")
     matrix_list = matrix_list.sort_values(by="OCC", ascending=False)
 
-    # matrix_list = matrix_list.rename(columns={"OCC": "% OCC"})
-
     fig = bar_plot(
         dataframe=matrix_list,
         metric="OCC",
-        title="(%) Co-occurrence with '{topic}'",
+        title=f"(%) Co-occurrence with '{topic}'",
     )
+
     fig.update_layout(
         yaxis_title=None,
-        margin=dict(l=1, r=1, t=1, b=1),
     )
 
     return fig
