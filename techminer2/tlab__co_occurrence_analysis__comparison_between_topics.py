@@ -4,6 +4,11 @@ Compararison between topics
 
 
 
+
+
+
+
+
 >>> directory = "data/regtech/"
 
 >>> from techminer2 import tlab__co_occurrence_analysis__comparison_between_topics
@@ -374,7 +379,7 @@ def _create_comparison_matrix_list(
     ]
 
     matrix_list["row"] = matrix_list["row"].map(
-        lambda x: [y for y in x if y in [topic_a, topic_b]]
+        lambda x: sorted([y for y in x if y in [topic_a, topic_b]])
     )
     matrix_list["row"] = matrix_list["row"].str.join(" & ")
     matrix_list = matrix_list.explode("row")
@@ -397,7 +402,7 @@ def _create_comparison_matrix_list(
     matrix = matrix_list.pivot(index="row", columns="column", values="OCC")
     matrix = matrix.fillna(0)
     if " & ".join([topic_a, topic_b]) not in matrix.index.to_list():
-        matrix.loc[" & ".join([topic_a, topic_b])] = 0
+        matrix.loc[" & ".join(sorted([topic_a, topic_b]))] = 0
 
     matrix_list = matrix.melt(value_name="OCC", var_name="column", ignore_index=False)
 
