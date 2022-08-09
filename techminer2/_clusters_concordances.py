@@ -52,6 +52,7 @@ def clusters_concordances(
             )
 
             src_file = os.path.join(directory, "reports/concordances.txt")
+            member = member.replace("/", "_")
             dst_file = os.path.join(
                 path, "{:02d}_".format(i_member) + member.replace(" ", "_") + ".txt"
             )
