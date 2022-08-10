@@ -85,6 +85,7 @@ def tlab__co_occurrence_analysis__comparison_between_topics(
     topics_length=20,
     topic_min_occ=None,
     topic_min_citations=None,
+    custom_topics=None,
     nx_k=0.5,
     nx_iterations=10,
     delta=0.2,
@@ -112,11 +113,12 @@ def tlab__co_occurrence_analysis__comparison_between_topics(
         matrix_list,
     )
 
-    matrix_list = _select_topics_by_occ_and_citations_and_topic_length(
+    matrix_list = _select_topics(
         matrix_list=matrix_list,
         topic_min_occ=topic_min_occ,
         topic_min_citations=topic_min_citations,
         topics_length=topics_length,
+        custom_topics=custom_topics,
         criterion=criterion,
         directory=directory,
         database=database,
@@ -125,18 +127,16 @@ def tlab__co_occurrence_analysis__comparison_between_topics(
         **filters,
     )
 
-    for column_name in ["column"]:
-
-        matrix_list = _add_counters_to_items(
-            matrix_list=matrix_list,
-            column_name=column_name,
-            criterion=criterion,
-            directory=directory,
-            database=database,
-            start_year=start_year,
-            end_year=end_year,
-            **filters,
-        )
+    matrix_list = _add_counters_to_items(
+        matrix_list=matrix_list,
+        column_name="column",
+        criterion=criterion,
+        directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
+    )
 
     matrix_list = _sort_matrix_list(matrix_list)
     matrix_list = matrix_list.reset_index(drop=True)
@@ -300,11 +300,12 @@ def _create_bart_chart(matrix_list, topic_a, topic_b):
     return fig
 
 
-def _select_topics_by_occ_and_citations_and_topic_length(
+def _select_topics(
     matrix_list,
     topic_min_occ,
     topic_min_citations,
     topics_length,
+    custom_topics,
     criterion,
     directory,
     database,
@@ -321,22 +322,24 @@ def _select_topics_by_occ_and_citations_and_topic_length(
         **filters,
     )
 
-    if topic_min_occ is not None:
-        indicators = indicators[indicators.OCC >= topic_min_occ]
-    if topic_min_citations is not None:
-        indicators = indicators[indicators.global_citations >= topic_min_citations]
+    if custom_topics:
 
-    indicators = indicators.sort_values(
-        ["OCC", "global_citations", "local_citations"],
-        ascending=[False, False, False],
-    )
+        if topic_min_occ is not None:
+            indicators = indicators[indicators.OCC >= topic_min_occ]
+        if topic_min_citations is not None:
+            indicators = indicators[indicators.global_citations >= topic_min_citations]
 
-    if topics_length is not None:
-        indicators = indicators.head(topics_length)
+        indicators = indicators.sort_values(
+            ["OCC", "global_citations", "local_citations"],
+            ascending=[False, False, False],
+        )
 
-    topics = indicators.index.to_list()
+        if topics_length is not None:
+            indicators = indicators.head(topics_length)
 
-    matrix_list = matrix_list[matrix_list.column.isin(topics)]
+        custom_topics = indicators.index.to_list()
+
+    matrix_list = matrix_list[matrix_list.column.isin(custom_topics)]
 
     return matrix_list
 
