@@ -4,7 +4,30 @@ Compararison between topics
 
 
 
+>>> directory = "data/regtech/"
 
+>>> from techminer2 import tlab__co_occurrence_analysis__comparison_between_topics
+>>> cbt = tlab__co_occurrence_analysis__comparison_between_topics(
+...     criterion="author_keywords",
+...     topic_a="artificial intelligence",
+...     topic_b="regtech",
+...     topics_length=None,
+...     topic_min_occ=None,
+...     topic_min_citations=None,
+...     custom_topics=[
+...         "fintech",
+...         "blockchain",
+...         "machine learning",
+...     ],
+...     directory=directory,
+... )
+
+>>> file_name = "sphinx/_static/tlab__co_occurrence_analysis__comparison_between_topics_bar_chart-1.html"
+>>> cbt.bar_chart_.write_html(file_name)
+
+.. raw:: html
+
+    <iframe src="../../../../_static/tlab__co_occurrence_analysis__comparison_between_topics_bar_chart-1.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
 
@@ -297,6 +320,10 @@ def _create_bart_chart(matrix_list, topic_a, topic_b):
         griddash="dot",
     )
 
+    fig.update_layout(
+        yaxis_title=None,
+    )
+
     return fig
 
 
@@ -322,7 +349,7 @@ def _select_topics(
         **filters,
     )
 
-    if custom_topics:
+    if custom_topics is None:
 
         if topic_min_occ is not None:
             indicators = indicators[indicators.OCC >= topic_min_occ]
