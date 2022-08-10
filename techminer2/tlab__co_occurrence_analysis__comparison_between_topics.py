@@ -339,7 +339,7 @@ def _select_topics(
 
         custom_topics = indicators.index.to_list()
 
-    matrix_list = matrix_list[matrix_list.column.isin(custom_topics)]
+    matrix_list = matrix_list.loc[matrix_list.column.isin(custom_topics), :]
 
     return matrix_list
 
