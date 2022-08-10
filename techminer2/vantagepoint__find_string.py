@@ -13,25 +13,11 @@ Finds a string in the terms of a thesaurus.
 ...     thesaurus_file="keywords.txt",
 ...     directory=directory,
 ... )
-artificial intelligence
-     artificial intelligence
-     artificial intelligence (ai)
-artificial intelligence & law
-artificial intelligence (ai) governance
-artificial intelligence agent
-artificial intelligence course
-     artificial intelligence course
-     artificial intelligence courses
-artificial intelligence in education
-artificial intelligence technologies
-     artificial intelligence technologies
-     artificial intelligence technology
-artificial intelligence tools
-responsible artificial intelligence
-
+--INFO-- The file data/regtech/processed/keywords.txt has been reordered.
 
 """
 import os.path
+import sys
 
 import pandas as pd
 
@@ -102,8 +88,10 @@ def vantagepoint__find_string(
             for item in th_dict[key]:
                 file.write("    " + item + "\n")
 
-    for key, items in sorted(findings.items()):
-        print(key)
-        if len(items) > 1:
-            for item in sorted(items):
-                print("    ", item)
+    sys.stdout.write(f"--INFO-- The file {th_file} has been reordered.\n")
+
+    # for key, items in sorted(findings.items()):
+    #     print(key)
+    #     if len(items) > 1:
+    #         for item in sorted(items):
+    #             print("    ", item)
