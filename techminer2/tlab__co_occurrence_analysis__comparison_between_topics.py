@@ -281,7 +281,7 @@ def _create_bart_chart(matrix_list, topic_a, topic_b):
         color_discrete_map={
             topic_a: "#CCD3D9",
             topic_b: "#99A8B3",
-            " & ".join([topic_a, topic_b]): "#556f81",
+            " & ".join(sorted([topic_a, topic_b])): "#556f81",
         },
     )
     fig.update_layout(paper_bgcolor="white", plot_bgcolor="white")
