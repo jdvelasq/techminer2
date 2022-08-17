@@ -22,7 +22,7 @@ Co-Word Analysis
 
 .. raw:: html
 
-    <iframe src="../../../_static/tlab__co_occ__co_word_analysis_mds_map.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/tlab__co_occ__co_word_analysis_mds_map.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
 >>> file_name = "sphinx/_static/tlab__co_occ__co_word_analysis_tsne_map.html"
@@ -216,8 +216,8 @@ def _get_matrix_communities(clustering_method, dissimilarity_matrix):
     for key, items in communities.items():
         communities[key] = sorted(items)
 
-    df = pd.DataFrame.from_dict(communities, orient="index").T
-    df = df.fillna("")
-    df = df.sort_index(axis=1)
+    pdf = pd.DataFrame.from_dict(communities, orient="index").T
+    pdf = pdf.fillna("")
+    pdf = pdf.sort_index(axis=1)
 
-    return df
+    return pdf
