@@ -55,7 +55,7 @@ from ._check_references_csv import check_references_csv
 from ._get_network_graph_communities import get_network_graph_communities
 from ._get_network_graph_degree_plot import get_network_graph_degree_plot
 from ._get_network_graph_indicators import get_network_graph_indicators
-from ._get_network_graph_plot import network_graph_plot
+from ._get_network_graph_plot import get_network_graph_plot
 from ._matrix_list_2_network_graph import matrix_list_2_network_graph
 from ._network_community_detection import network_community_detection
 from .bibliometrix__co_citation_matrix_list import bibliometrix__co_citation_matrix_list
@@ -102,7 +102,7 @@ def bibliometrix__co_citation_network(
 
     result.communities_ = get_network_graph_communities(graph)
     result.indicators_ = get_network_graph_indicators(graph)
-    result.plot_ = network_graph_plot(
+    result.plot_ = get_network_graph_plot(
         graph,
         nx_k=nx_k,
         nx_iterations=nx_iterations,

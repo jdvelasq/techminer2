@@ -6,7 +6,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 
 
-def network_graph_plot(
+def get_network_graph_plot(
     graph,
     nx_k=0.5,
     nx_iterations=10,

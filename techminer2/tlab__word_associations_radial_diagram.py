@@ -21,7 +21,7 @@ Radial Diagram
 """
 import networkx as nx
 
-from ._get_network_graph_plot import network_graph_plot
+from ._get_network_graph_plot import get_network_graph_plot
 from .vantagepoint__co_occ_matrix_list import vantagepoint__co_occ_matrix_list
 
 
@@ -76,7 +76,7 @@ def tlab__word_associations_radial_diagram(
     graph.add_weighted_edges_from(edges)
 
     # create a network plot
-    fig = network_graph_plot(
+    fig = get_network_graph_plot(
         graph,
         nx_k=0.5,
         nx_iterations=10,

@@ -20,7 +20,7 @@ def get_network_graph_manifold_map(
     transformed_matrix = manifold_method.fit_transform(matrix)
 
     nodes = matrix.index.to_list()
-    node_names = [" ".join(name.split()[:-1]) for name in nodes]
+    # node_names = [" ".join(name.split()[:-1]) for name in nodes]
     node_occ = [int(name.split()[-1].split(":")[0]) for name in nodes]
     node_global_citations = [int(name.split()[-1].split(":")[-1]) for name in nodes]
 
