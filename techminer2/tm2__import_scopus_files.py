@@ -543,6 +543,9 @@ def _create_referneces_from_references_csv_file(directory, disable_progress_bar=
             references.authors,
             references.title,
         ):
+
+            if authors is pd.NA:
+                continue
             year = str(year)
             author = authors.split()[0].lower()
             title = (
