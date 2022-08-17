@@ -28,7 +28,7 @@ def create_keywords_thesaurus(directory="./"):
     )
 
     keywords_list = _load_keywords_from_databases(directory=directory)
-    keywords_list = _expldode_keywords(keywords_list)
+    keywords_list = _explode_keywords(keywords_list)
     keywords_list = _remove_strange_characters(keywords_list)
     keywords_list = _build_occurrences_table(keywords_list)
     keywords_list = _build_fingerprint(keywords_list)
@@ -54,14 +54,14 @@ def _merge_thesaurus(directory, keywords_list):
     if not os.path.isfile(thesaurus_file):
         return keywords_list
     old_th_dict = load_thesaurus_as_dict_r(thesaurus_file)
-    th_dict = {
+    new_th_dict = {
         key: value for key, value in zip(keywords_list.word, keywords_list.keyterm)
     }
-    th_dict = {**th_dict, **old_th_dict}
+    new_th_dict = {**new_th_dict, **old_th_dict}
     keywords_list = pd.DataFrame(
         {
-            "word": list(th_dict.keys()),
-            "keyterm": list(th_dict.values()),
+            "word": list(new_th_dict.keys()),
+            "keyterm": list(new_th_dict.values()),
         }
     )
     return keywords_list
@@ -276,7 +276,7 @@ def _remove_strange_characters(keywords_list):
     return keywords_list
 
 
-def _expldode_keywords(keywords_list):
+def _explode_keywords(keywords_list):
     keywords_list = keywords_list.copy()
     keywords_list = keywords_list.dropna()
     keywords_list = keywords_list.str.lower()
