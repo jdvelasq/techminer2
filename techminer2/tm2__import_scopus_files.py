@@ -4,7 +4,9 @@ Import Scopus Files
 
 Import a scopus file to a working directory.
 
+
 >>> directory = "data/regtech/"
+>>> directory = "data/mateo/"
 
 >>> from techminer2 import tm2__import_scopus_files
 >>> tm2__import_scopus_files(
@@ -544,8 +546,9 @@ def _create_referneces_from_references_csv_file(directory, disable_progress_bar=
             references.title,
         ):
 
-            if authors is pd.NA:
+            if pd.isna(authors) or pd.isna(year) or pd.isna(title) or pd.isna(article):
                 continue
+
             year = str(year)
             author = authors.split()[0].lower()
             title = (
