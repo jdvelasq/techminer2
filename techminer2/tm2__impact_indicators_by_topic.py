@@ -1,13 +1,13 @@
 """
-Impact Indicators
+Impact Indicators by Topic
 ===============================================================================
 
 
 >>> directory = "data/regtech/"
 
 
->>> from techminer2._indicators.impact_indicators_by_topic import impact_indicators_by_topic
->>> impact_indicators_by_topic("countries", directory=directory).head()
+>>> from techminer2 import tm2__impact_indicators_by_topic
+>>> tm2__impact_indicators_by_topic("countries", directory=directory).head()
                    OCC  ...  avg_global_citations
 countries               ...                      
 Australia           13  ...                 18.15
@@ -36,10 +36,10 @@ Brunei Darussalam    1  ...                  3.00
 import numpy as np
 import pandas as pd
 
-from .._read_records import read_records
+from ._read_records import read_records
 
 
-def impact_indicators_by_topic(
+def tm2__impact_indicators_by_topic(
     criterion,
     directory="./",
     database="documents",
@@ -73,6 +73,7 @@ def impact_indicators_by_topic(
     columns_to_explode = [
         criterion,
         "global_citations",
+        "local_citations",
         "year",
     ]
     detailed_citations = documents[columns_to_explode]
