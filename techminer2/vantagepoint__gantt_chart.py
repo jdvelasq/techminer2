@@ -20,7 +20,7 @@ Gantt Chart
 """
 import plotly.express as px
 
-from ._indicators.indicators_by_topic import indicators_by_topic
+from .tm2__indicators_by_topic import tm2__indicators_by_topic
 from ._read_records import read_records
 
 
@@ -59,7 +59,7 @@ def vantagepoint__gantt_chart(
     records["start"] = records["start"].astype(str) + "-01-01"
     records["finish"] = records["finish"].astype(str) + "-12-31"
 
-    indicators = indicators_by_topic(
+    indicators = tm2__indicators_by_topic(
         criterion=criterion,
         directory=directory,
         database=database,

@@ -4,8 +4,8 @@ Growth Indicators by Topic
 
 >>> directory = "data/regtech/"
 
->>> from techminer2._indicators.growth_indicators_by_topic import growth_indicators_by_topic
->>> growth_indicators_by_topic(
+>>> from techminer2.tm2__growth_indicators_by_topic import tm2__growth_indicators_by_topic
+>>> tm2__growth_indicators_by_topic(
 ...     criterion="author_keywords", 
 ...     directory=directory,
 ... ).head()
@@ -32,11 +32,11 @@ regulatory technology              6  ...                 -0.5
 import numpy as np
 import pandas as pd
 
-from .._load_stopwords import load_stopwords
-from .._read_records import read_records
+from ._load_stopwords import load_stopwords
+from ._read_records import read_records
 
 
-def growth_indicators_by_topic(
+def tm2__growth_indicators_by_topic(
     criterion,
     time_window=2,
     directory="./",

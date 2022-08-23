@@ -36,8 +36,8 @@ from dataclasses import dataclass
 
 import plotly.express as px
 
-from ._indicators.collaboration_indicators_by_topic import (
-    collaboration_indicators_by_topic,
+from .tm2__collaboration_indicators_by_topic import (
+    tm2__collaboration_indicators_by_topic,
 )
 
 
@@ -88,7 +88,7 @@ def _make_table(
     **filters,
 ):
 
-    indicators = collaboration_indicators_by_topic(
+    indicators = tm2__collaboration_indicators_by_topic(
         "countries",
         directory=directory,
         database=database,

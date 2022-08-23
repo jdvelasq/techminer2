@@ -31,7 +31,7 @@ from dataclasses import dataclass
 
 import plotly.graph_objects as go
 
-from ._indicators.indicators_by_topic import indicators_by_topic
+from .tm2__indicators_by_topic import tm2__indicators_by_topic
 
 
 @dataclass(init=False)
@@ -134,7 +134,7 @@ def _core_authors(
     # 4                  6            1
     # 5                  7            1
     #
-    indicators = indicators_by_topic(
+    indicators = tm2__indicators_by_topic(
         criterion="authors",
         directory=directory,
         database=database,

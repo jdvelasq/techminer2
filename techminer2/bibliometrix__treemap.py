@@ -18,7 +18,7 @@ TreeMap
     <iframe src="../../../_static/bibliometrix__treemap.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ._indicators.indicators_by_topic import indicators_by_topic
+from .tm2__indicators_by_topic import tm2__indicators_by_topic
 from ._plots.treemap_plot import treemap_plot
 
 
@@ -35,7 +35,7 @@ def bibliometrix__treemap(
 ):
     """Makes a treemap."""
 
-    indicators = indicators_by_topic(
+    indicators = tm2__indicators_by_topic(
         criterion=criterion,
         directory=directory,
         database=database,

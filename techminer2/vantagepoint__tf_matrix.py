@@ -25,7 +25,7 @@ Barberis JN, 2016, NEW ECON WINDOWS, P69                         1  ...         
 import numpy as np
 import pandas as pd
 
-from ._indicators.indicators_by_topic import indicators_by_topic
+from .tm2__indicators_by_topic import tm2__indicators_by_topic
 from ._items2counters import items2counters
 from ._load_stopwords import load_stopwords
 from ._read_records import read_records
@@ -212,7 +212,7 @@ def _compute_filter(
     **filters,
 ):
     """apply filter to topics"""
-    indicators = indicators_by_topic(
+    indicators = tm2__indicators_by_topic(
         criterion=criterion,
         directory=directory,
         database=database,

@@ -20,7 +20,7 @@ WordCloud
     :align: center
 
 """
-from ._indicators.indicators_by_topic import indicators_by_topic
+from .tm2__indicators_by_topic import tm2__indicators_by_topic
 from ._plots.word_cloud_for_indicators import word_cloud_for_indicators
 
 
@@ -41,7 +41,7 @@ def vantagepoint__word_cloud(
 ):
     """Plots a word cloud from a dataframe."""
 
-    indicators = indicators_by_topic(
+    indicators = tm2__indicators_by_topic(
         criterion=criterion,
         directory=directory,
         database=database,

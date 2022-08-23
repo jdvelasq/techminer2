@@ -79,8 +79,8 @@ from dataclasses import dataclass
 import numpy as np
 import plotly.graph_objects as go
 
-from ._indicators.annual_occurrence_matrix import annual_occurrence_matrix
-from ._indicators.indicators_by_topic import indicators_by_topic
+from .tm2__annual_occurrence_matrix import tm2__annual_occurrence_matrix
+from .tm2__indicators_by_topic import tm2__indicators_by_topic
 
 
 @dataclass(init=False)
@@ -101,7 +101,7 @@ def bibliometrix__trend_topics(
 ):
     """Trend topics"""
 
-    words_by_year = annual_occurrence_matrix(
+    words_by_year = tm2__annual_occurrence_matrix(
         criterion=criterion,
         min_occ=1,
         directory=directory,
@@ -139,7 +139,7 @@ def bibliometrix__trend_topics(
 
     words_by_year = words_by_year[["OCC", "year_q1", "year_med", "year_q3"]]
 
-    global_citations = indicators_by_topic(
+    global_citations = tm2__indicators_by_topic(
         criterion, directory=directory
     ).global_citations
 

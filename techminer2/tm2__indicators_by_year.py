@@ -1,12 +1,12 @@
 """
-Annual Indicators
+Indicators by Year
 ===============================================================================
 
 
 >>> directory = "data/regtech/"
 
 
->>> from techminer2._indicators.indicators_by_year import indicators_by_year
+>>> from techminer2 import tm2__indicators_by_year
 >>> indicators_by_year(directory) # doctest: +NORMALIZE_WHITESPACE
       OCC  cum_OCC  ...  cum_local_citations  mean_local_citations_per_year
 year                ...                                                    
@@ -21,7 +21,7 @@ year                ...
 [7 rows x 11 columns]
 
 
->>> indicators_by_year(directory, database="references").tail() # doctest: +NORMALIZE_WHITESPACE
+>>> tm2__indicators_by_year(directory, database="references").tail() # doctest: +NORMALIZE_WHITESPACE
       OCC  cum_OCC  ...  cum_local_citations  mean_local_citations_per_year
 year                ...                                                    
 2018  189      885  ...                994.0                           0.26
@@ -33,7 +33,7 @@ year                ...
 [5 rows x 11 columns]
 
 
->>> indicators_by_year(directory, database="cited_by").tail() # doctest: +NORMALIZE_WHITESPACE
+>>> tm2__indicators_by_year(directory, database="cited_by").tail() # doctest: +NORMALIZE_WHITESPACE
       OCC  cum_OCC  ...  cum_global_citations  mean_global_citations_per_year
 year                ...                                                      
 2018   11       14  ...                   385                            6.56
@@ -47,7 +47,7 @@ year                ...
 
 
 >>> from pprint import pprint
->>> pprint(sorted(indicators_by_year(directory=directory).columns.to_list()))
+>>> pprint(sorted(tm2__indicators_by_year(directory=directory).columns.to_list()))
 ['OCC',
  'citable_years',
  'cum_OCC',
@@ -63,10 +63,10 @@ year                ...
 """
 import plotly.express as px
 
-from .._read_records import read_records
+from ._read_records import read_records
 
 
-def indicators_by_year(
+def tm2__indicators_by_year(
     directory="./",
     database="documents",
     start_year=None,

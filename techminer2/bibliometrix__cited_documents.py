@@ -1,6 +1,6 @@
 import plotly.express as px
 
-from ._indicators.indicators_by_document import indicators_by_document
+from .tm2__indicators_by_document import tm2__indicators_by_document
 
 
 def bibiometrix_cited_documents(
@@ -15,7 +15,7 @@ def bibiometrix_cited_documents(
 ):
     """Most cited documents."""
 
-    indicators = indicators_by_document(
+    indicators = tm2__indicators_by_document(
         directory=directory,
         database=database,
         start_year=start_year,

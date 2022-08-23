@@ -5,8 +5,8 @@ Document Indicators
 
 >>> directory = "data/regtech/"
 
->>> from techminer2._indicators.indicators_by_document import indicators_by_document
->>> indicators_by_document(
+>>> from techminer2.tm2__indicators_by_document import tm2__indicators_by_document
+>>> tm2__indicators_by_document(
 ...     directory=directory,
 ... ).head()
                                                     global_citations  ...                                 doi
@@ -21,7 +21,7 @@ Arner DW, 2019, EUR BUS ORG LAW REV, V20, P55                     18  ...       
 
 
 >>> from pprint import pprint
->>> pprint(indicators_by_document(directory=directory).columns.to_list())
+>>> pprint(tm2__indicators_by_document(directory=directory).columns.to_list())
 ['global_citations',
  'local_citations',
  'global_citations_per_year',
@@ -30,10 +30,10 @@ Arner DW, 2019, EUR BUS ORG LAW REV, V20, P55                     18  ...       
 
 """
 
-from .._read_records import read_records
+from ._read_records import read_records
 
 
-def indicators_by_document(
+def tm2__indicators_by_document(
     directory="./",
     database="documents",
     start_year=None,

@@ -6,7 +6,7 @@ Indicators by topic
 >>> directory = "data/regtech/"
 
 
->>> from techminer2._indicators.indicators_by_topic import indicators_by_topic
+>>> from techminer2.tm2__indicators_by_topic import tm2__indicators_by_topic
 >>> indicators_by_topic(
 ...     criterion='authors',
 ...     directory=directory,
@@ -23,7 +23,7 @@ Ryan P         3  ...                             0
 
 
 >>> from pprint import pprint
->>> pprint(sorted(indicators_by_topic('authors',directory=directory).columns.to_list()))
+>>> pprint(sorted(tm2__indicators_by_topic('authors',directory=directory).columns.to_list()))
 ['OCC',
  'global_citations',
  'global_citations_per_document',
@@ -31,10 +31,10 @@ Ryan P         3  ...                             0
  'local_citations_per_document']
 
 """
-from .._read_records import read_records
+from ._read_records import read_records
 
 
-def indicators_by_topic(
+def tm2__indicators_by_topic(
     criterion,
     directory="./",
     database="documents",

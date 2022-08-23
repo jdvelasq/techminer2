@@ -4,8 +4,8 @@ import textwrap
 
 import plotly.express as px
 
-from ._indicators.indicators_by_topic import indicators_by_topic
-from ._indicators.indicators_by_topic_per_year import indicators_by_topic_per_year
+from .tm2__indicators_by_topic import tm2__indicators_by_topic
+from .tm2__indicators_by_topic_per_year import tm2__indicators_by_topic_per_year
 from .vantagepoint__co_occ_matrix_list import _add_counters_to_items
 
 TEXTLEN = 40
@@ -129,7 +129,7 @@ def _compute_production_over_time(
     **filters,
 ):
 
-    indicators_by_year = indicators_by_topic_per_year(
+    indicators_by_year = tm2__indicators_by_topic_per_year(
         criterion=criterion,
         directory=directory,
         database=database,
@@ -140,7 +140,7 @@ def _compute_production_over_time(
 
     indicators_by_year = indicators_by_year.reset_index()
 
-    selected_terms = indicators_by_topic(
+    selected_terms = tm2__indicators_by_topic(
         criterion=criterion,
         directory=directory,
         database=database,

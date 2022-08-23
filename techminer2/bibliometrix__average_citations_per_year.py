@@ -14,7 +14,7 @@ Average Citations per Year
     <iframe src="../../_static/bibliometrix__average_citations_per_year.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ._indicators.indicators_by_year import indicators_by_year
+from .tm2__indicators_by_year import tm2__indicators_by_year
 from ._time_plot import time_plot
 
 
@@ -27,7 +27,7 @@ def bibliometrix__average_citations_per_year(
 ):
     """Average citations per year."""
 
-    indicators = indicators_by_year(
+    indicators = tm2__indicators_by_year(
         directory=directory,
         database=database,
         start_year=start_year,

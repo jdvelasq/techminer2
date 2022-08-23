@@ -107,8 +107,8 @@ Bar
 
 
 """
-from ._indicators.growth_indicators_by_topic import growth_indicators_by_topic
 from ._plots.bar_plot import bar_plot
+from .tm2__growth_indicators_by_topic import tm2__growth_indicators_by_topic
 
 
 def scientopy__bar(
@@ -126,7 +126,7 @@ def scientopy__bar(
 ):
     """ScientoPy Bar Plot."""
 
-    growth_indicators = growth_indicators_by_topic(
+    growth_indicators = tm2__growth_indicators_by_topic(
         criterion=criterion,
         time_window=time_window,
         directory=directory,

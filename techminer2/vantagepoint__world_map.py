@@ -18,7 +18,7 @@ World Map
 
 
 """
-from ._indicators.indicators_by_topic import indicators_by_topic
+from .tm2__indicators_by_topic import tm2__indicators_by_topic
 from ._plots.world_map_plot import world_map_plot
 
 TEXTLEN = 40
@@ -37,7 +37,7 @@ def vantagepoint__world_map(
 ):
     """Worldmap"""
 
-    indicators = indicators_by_topic(
+    indicators = tm2__indicators_by_topic(
         criterion=criterion,
         directory=directory,
         database=database,

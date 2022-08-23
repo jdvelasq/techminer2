@@ -20,9 +20,9 @@ Most Global Cited Documents
 import os.path
 import textwrap
 
-from ._indicators.indicators_by_document import indicators_by_document
 from ._read_records import read_records
 from .bibliometrix__cited_documents import bibiometrix_cited_documents
+from .tm2__indicators_by_document import tm2__indicators_by_document
 
 
 def bibliometrix__most_global_cited_documents(
@@ -37,7 +37,7 @@ def bibliometrix__most_global_cited_documents(
 
     ## TODO: Review and extract
 
-    indicators = indicators_by_document(
+    indicators = tm2__indicators_by_document(
         directory=directory,
         database="documents",
         start_year=start_year,

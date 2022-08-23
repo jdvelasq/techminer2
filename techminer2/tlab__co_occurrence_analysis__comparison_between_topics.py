@@ -82,7 +82,7 @@ from dataclasses import dataclass
 import networkx as nx
 import plotly.express as px
 
-from ._indicators.indicators_by_topic import indicators_by_topic
+from .tm2__indicators_by_topic import tm2__indicators_by_topic
 from ._items2counters import items2counters
 from ._load_stopwords import load_stopwords
 from ._read_records import read_records
@@ -340,7 +340,7 @@ def _select_topics(
     end_year,
     **filters,
 ):
-    indicators = indicators_by_topic(
+    indicators = tm2__indicators_by_topic(
         criterion=criterion,
         directory=directory,
         database=database,

@@ -5,8 +5,8 @@ Indicators by topic per year
 
 >>> directory = "data/regtech/"
 
->>> from techminer2._indicators.indicators_by_topic_per_year import indicators_by_topic_per_year
->>> indicators_by_topic_per_year(
+>>> from techminer2.tm2__indicators_by_topic_per_year import tm2__indicators_by_topic_per_year
+>>> tm2__indicators_by_topic_per_year(
 ...     'authors',
 ...     directory=directory,
 ... ).head(20)
@@ -37,7 +37,7 @@ Becker M          2019    1  ...                     0.000
 
 
 >>> from pprint import pprint
->>> pprint(sorted(indicators_by_topic_per_year('authors',directory=directory).columns.to_list()))
+>>> pprint(sorted(tm2__indicators_by_topic_per_year('authors',directory=directory).columns.to_list()))
 ['OCC',
  'age',
  'cum_OCC',
@@ -49,10 +49,10 @@ Becker M          2019    1  ...                     0.000
 """
 import pandas as pd
 
-from .._read_records import read_records
+from ._read_records import read_records
 
 
-def indicators_by_topic_per_year(
+def tm2__indicators_by_topic_per_year(
     criterion="authors",
     directory="./",
     database="documents",

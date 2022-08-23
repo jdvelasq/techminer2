@@ -102,8 +102,8 @@ Word Cloud
 
 
 
->>> from techminer2._indicators.growth_indicators_by_topic import growth_indicators_by_topic
->>> growth_indicators_by_topic(
+>>> from techminer2.tm2__growth_indicators_by_topic import tm2__growth_indicators_by_topic
+>>> tm2__growth_indicators_by_topic(
 ...     criterion="author_keywords", 
 ...     directory=directory,
 ... )[['OCC', 'average_growth_rate']].sort_values(['average_growth_rate', 'OCC'], ascending=False).head(20)
@@ -134,9 +134,9 @@ edutech (education + technology)                1                  0.5
 
 
 """
-from ._indicators.growth_indicators_by_topic import growth_indicators_by_topic
 from ._plots.word_cloud_for_indicators import word_cloud_for_indicators
 from .scientopy__bar import _filter_indicators_by_custom_topics
+from .tm2__growth_indicators_by_topic import tm2__growth_indicators_by_topic
 
 
 def scientopy__word_cloud(
@@ -157,7 +157,7 @@ def scientopy__word_cloud(
 ):
     """Plots a word cloud from a dataframe."""
 
-    indicators = growth_indicators_by_topic(
+    indicators = tm2__growth_indicators_by_topic(
         criterion=criterion,
         time_window=time_window,
         directory=directory,

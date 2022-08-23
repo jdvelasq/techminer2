@@ -5,8 +5,8 @@ Annual Occurrence Matrix
 
 >>> directory = "data/regtech/"
 
->>> from techminer2._indicators.annual_occurrence_matrix import annual_occurrence_matrix
->>> annual_occurrence_matrix('authors',  min_occ=3, directory=directory).head(10)
+>>> from techminer2.tm2__annual_occurrence_matrix import tm2__annual_occurrence_matrix
+>>> tm2__annual_occurrence_matrix('authors',  min_occ=3, directory=directory).head(10)
 year         2016  2017  2019  2020  2021  2022
 authors                                        
 Arner DW        1     2     1     3     0     0
@@ -20,11 +20,11 @@ Zetzsche DA     0     0     1     3     0     0
 """
 
 
-from .indicators_by_topic import indicators_by_topic
-from .indicators_by_topic_per_year import indicators_by_topic_per_year
+from .tm2__indicators_by_topic import tm2__indicators_by_topic
+from .tm2__indicators_by_topic_per_year import tm2__indicators_by_topic_per_year
 
 
-def annual_occurrence_matrix(
+def tm2__annual_occurrence_matrix(
     criterion,
     min_occ=1,
     directory="./",
@@ -34,7 +34,7 @@ def annual_occurrence_matrix(
     **filters,
 ):
 
-    indicators_by_year = indicators_by_topic_per_year(
+    indicators_by_year = tm2__indicators_by_topic_per_year(
         criterion=criterion,
         directory=directory,
         database=database,
@@ -42,7 +42,7 @@ def annual_occurrence_matrix(
         end_year=end_year,
         **filters,
     )
-    indicators = indicators_by_topic(
+    indicators = tm2__indicators_by_topic(
         criterion=criterion,
         directory=directory,
         database=database,

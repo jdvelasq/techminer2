@@ -1,6 +1,6 @@
 """Most frequent items in a databases"""
 
-from ._indicators.indicators_by_topic import indicators_by_topic
+from .tm2__indicators_by_topic import tm2__indicators_by_topic
 from ._plots.bar_plot import bar_plot
 from ._plots.cleveland_plot import cleveland_plot
 from ._plots.column_plot import column_plot
@@ -27,7 +27,7 @@ def vantagepoint__chart(
 ):
     """Generic chart for list plotting."""
 
-    indicators = indicators_by_topic(
+    indicators = tm2__indicators_by_topic(
         criterion=criterion,
         directory=directory,
         database=database,

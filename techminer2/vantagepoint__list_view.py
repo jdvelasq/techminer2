@@ -31,7 +31,7 @@ regulatory technology     12  ...                             0
  'local_citations_per_document']
 
 """
-from ._indicators.indicators_by_topic import indicators_by_topic
+from .tm2__indicators_by_topic import tm2__indicators_by_topic
 
 
 def vantagepoint__list_view(
@@ -44,7 +44,7 @@ def vantagepoint__list_view(
 ):
     """Creates a list of terms with indicators."""
 
-    return indicators_by_topic(
+    return tm2__indicators_by_topic(
         criterion=criterion,
         directory=directory,
         database=database,

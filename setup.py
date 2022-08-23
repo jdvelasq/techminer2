@@ -53,7 +53,6 @@ setup(
     ],
     packages=[
         "techminer2",
-        "techminer2._indicators",
         "techminer2._plots",
         "techminer2._px",
         "techminer2.files",

@@ -95,8 +95,8 @@ regulatory technology              6                  6
 ## ScientoPy // Bar Trends
 import plotly.express as px
 
-from ._indicators.growth_indicators_by_topic import growth_indicators_by_topic
 from .scientopy__bar import _filter_indicators_by_custom_topics
+from .tm2__growth_indicators_by_topic import tm2__growth_indicators_by_topic
 
 
 class _Results:
@@ -120,7 +120,7 @@ def scientopy__bar_trends(
 ):
     """ScientoPy Bar Trend."""
 
-    indicators = growth_indicators_by_topic(
+    indicators = tm2__growth_indicators_by_topic(
         criterion=criterion,
         time_window=time_window,
         directory=directory,

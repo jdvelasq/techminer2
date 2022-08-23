@@ -34,8 +34,8 @@ Terms by Year
 19     financial regulation 08:091  2020    3        7
 
 """
-from ._indicators.indicators_by_topic import indicators_by_topic
-from ._indicators.indicators_by_topic_per_year import indicators_by_topic_per_year
+from .tm2__indicators_by_topic import tm2__indicators_by_topic
+from .tm2__indicators_by_topic_per_year import tm2__indicators_by_topic_per_year
 from .vantagepoint__co_occ_matrix_list import _add_counters_to_items
 
 
@@ -52,7 +52,7 @@ def vantagepoint__terms_by_year(
 ):
     """Computes the number of terms by year."""
 
-    indicators_by_year = indicators_by_topic_per_year(
+    indicators_by_year = tm2__indicators_by_topic_per_year(
         criterion=criterion,
         directory=directory,
         database="documents",
@@ -66,7 +66,7 @@ def vantagepoint__terms_by_year(
 
     ###
 
-    indicators = indicators_by_topic(
+    indicators = tm2__indicators_by_topic(
         criterion=criterion,
         directory=directory,
         database=database,

@@ -76,7 +76,7 @@ Topic View
 # regulation                       12                89               10
 
 """
-from ._indicators.indicators_by_topic import indicators_by_topic
+from .tm2__indicators_by_topic import tm2__indicators_by_topic
 
 
 def topic_view(
@@ -113,7 +113,7 @@ def topic_view(
 
     # -----------------------------------------------------------------------------------
 
-    indicators = indicators_by_topic(criterion=column, directory=directory)
+    indicators = tm2__indicators_by_topic(criterion=column, directory=directory)
     if min_occ is not None:
         indicators = indicators[indicators["num_documents"] >= min_occ]
     if max_occ is not None:

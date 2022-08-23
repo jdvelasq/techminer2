@@ -2,7 +2,7 @@
 
 import numpy as np
 
-from ._indicators.indicators_by_topic import indicators_by_topic
+from .tm2__indicators_by_topic import tm2__indicators_by_topic
 from ._load_stopwords import load_stopwords
 
 
@@ -16,7 +16,7 @@ def items2counters(
 ):
     """Creates a dictionary to transform a 'item' to a 'item counter:counter'."""
 
-    indicators = indicators_by_topic(
+    indicators = tm2__indicators_by_topic(
         criterion=column,
         directory=directory,
         database=database,
