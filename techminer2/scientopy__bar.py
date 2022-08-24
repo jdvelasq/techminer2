@@ -9,9 +9,18 @@ Bar
 
 **Basic Usage.**
 
->>> directory = "data/regtech/"
 
+>>> directory = "data/sustainability/"
+>>> scientopy__bar(
+...    criterion='author_keywords',
+...    directory=directory,
+...    countries=["China"],
+... )
+
+
+>>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/scientopy__bar-1.html"
+
 >>> from techminer2 import scientopy__bar
 >>> scientopy__bar(
 ...    criterion='author_keywords',
