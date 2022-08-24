@@ -9,15 +9,6 @@ Bar
 
 **Basic Usage.**
 
-
->>> directory = "data/sustainability/"
->>> scientopy__bar(
-...    criterion='author_keywords',
-...    directory=directory,
-...    countries=["China"],
-... )
-
-
 >>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/scientopy__bar-1.html"
 
