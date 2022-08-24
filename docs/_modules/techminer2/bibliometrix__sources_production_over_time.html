@@ -51,6 +51,7 @@
 <p class="caption" role="heading"><span class="caption-text">TM-2</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tm2__data/__index__.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tm2__indicators/__index__.html">Indicators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tm2__text_summarization/__index__.html">Text Summarization and Report</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
@@ -107,9 +108,9 @@
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
 
-<span class="kn">from</span> <span class="nn">._indicators.indicators_by_topic_per_year</span> <span class="kn">import</span> <span class="n">indicators_by_topic_per_year</span>
 <span class="kn">from</span> <span class="nn">.bibliometrix__documents_per</span> <span class="kn">import</span> <span class="n">bibliometrix__documents_per</span>
 <span class="kn">from</span> <span class="nn">.bibliometrix__production_over_time</span> <span class="kn">import</span> <span class="n">bibliometrix__production_over_time</span>
+<span class="kn">from</span> <span class="nn">.tm2__indicators_by_topic_per_year</span> <span class="kn">import</span> <span class="n">tm2__indicators_by_topic_per_year</span>
 
 
 <span class="nd">@dataclass</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -156,7 +157,7 @@
         <span class="o">**</span><span class="n">filters</span><span class="p">,</span>
     <span class="p">)</span>
 
-    <span class="n">results</span><span class="o">.</span><span class="n">production_per_year_</span> <span class="o">=</span> <span class="n">indicators_by_topic_per_year</span><span class="p">(</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">production_per_year_</span> <span class="o">=</span> <span class="n">tm2__indicators_by_topic_per_year</span><span class="p">(</span>
         <span class="n">criterion</span><span class="o">=</span><span class="s2">&quot;source_abbr&quot;</span><span class="p">,</span>
         <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
         <span class="n">database</span><span class="o">=</span><span class="n">database</span><span class="p">,</span>

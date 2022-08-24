@@ -51,6 +51,7 @@
 <p class="caption" role="heading"><span class="caption-text">TM-2</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tm2__data/__index__.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tm2__indicators/__index__.html">Indicators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tm2__text_summarization/__index__.html">Text Summarization and Report</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
@@ -108,7 +109,7 @@
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
 
-<span class="kn">from</span> <span class="nn">._indicators.indicators_by_topic</span> <span class="kn">import</span> <span class="n">indicators_by_topic</span>
+<span class="kn">from</span> <span class="nn">.tm2__indicators_by_topic</span> <span class="kn">import</span> <span class="n">tm2__indicators_by_topic</span>
 <span class="kn">from</span> <span class="nn">._read_records</span> <span class="kn">import</span> <span class="n">read_records</span>
 
 
@@ -147,7 +148,7 @@
     <span class="n">records</span><span class="p">[</span><span class="s2">&quot;start&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="s2">&quot;start&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;-01-01&quot;</span>
     <span class="n">records</span><span class="p">[</span><span class="s2">&quot;finish&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="s2">&quot;finish&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;-12-31&quot;</span>
 
-    <span class="n">indicators</span> <span class="o">=</span> <span class="n">indicators_by_topic</span><span class="p">(</span>
+    <span class="n">indicators</span> <span class="o">=</span> <span class="n">tm2__indicators_by_topic</span><span class="p">(</span>
         <span class="n">criterion</span><span class="o">=</span><span class="n">criterion</span><span class="p">,</span>
         <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
         <span class="n">database</span><span class="o">=</span><span class="n">database</span><span class="p">,</span>

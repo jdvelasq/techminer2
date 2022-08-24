@@ -51,6 +51,7 @@
 <p class="caption" role="heading"><span class="caption-text">TM-2</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tm2__data/__index__.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tm2__indicators/__index__.html">Indicators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tm2__text_summarization/__index__.html">Text Summarization and Report</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
@@ -195,8 +196,8 @@
 
 
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">from</span> <span class="nn">._indicators.growth_indicators_by_topic</span> <span class="kn">import</span> <span class="n">growth_indicators_by_topic</span>
 <span class="kn">from</span> <span class="nn">._plots.bar_plot</span> <span class="kn">import</span> <span class="n">bar_plot</span>
+<span class="kn">from</span> <span class="nn">.tm2__growth_indicators_by_topic</span> <span class="kn">import</span> <span class="n">tm2__growth_indicators_by_topic</span>
 
 
 <div class="viewcode-block" id="scientopy__bar"><a class="viewcode-back" href="../../scientopy/scientopy__bar.html#techminer2.scientopy__bar.scientopy__bar">[docs]</a><span class="k">def</span> <span class="nf">scientopy__bar</span><span class="p">(</span>
@@ -214,7 +215,7 @@
 <span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;ScientoPy Bar Plot.&quot;&quot;&quot;</span>
 
-    <span class="n">growth_indicators</span> <span class="o">=</span> <span class="n">growth_indicators_by_topic</span><span class="p">(</span>
+    <span class="n">growth_indicators</span> <span class="o">=</span> <span class="n">tm2__growth_indicators_by_topic</span><span class="p">(</span>
         <span class="n">criterion</span><span class="o">=</span><span class="n">criterion</span><span class="p">,</span>
         <span class="n">time_window</span><span class="o">=</span><span class="n">time_window</span><span class="p">,</span>
         <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>

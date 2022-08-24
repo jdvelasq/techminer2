@@ -51,6 +51,7 @@
 <p class="caption" role="heading"><span class="caption-text">TM-2</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tm2__data/__index__.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tm2__indicators/__index__.html">Indicators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tm2__text_summarization/__index__.html">Text Summarization and Report</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
@@ -92,7 +93,9 @@
 
 <span class="sd">Import a scopus file to a working directory.</span>
 
+
 <span class="sd">&gt;&gt;&gt; directory = &quot;data/regtech/&quot;</span>
+<span class="sd">&gt;&gt;&gt; directory = &quot;data/mateo/&quot;</span>
 
 <span class="sd">&gt;&gt;&gt; from techminer2 import tm2__import_scopus_files</span>
 <span class="sd">&gt;&gt;&gt; tm2__import_scopus_files(</span>
@@ -631,6 +634,10 @@
             <span class="n">references</span><span class="o">.</span><span class="n">authors</span><span class="p">,</span>
             <span class="n">references</span><span class="o">.</span><span class="n">title</span><span class="p">,</span>
         <span class="p">):</span>
+
+            <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">authors</span><span class="p">)</span> <span class="ow">or</span> <span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">year</span><span class="p">)</span> <span class="ow">or</span> <span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">title</span><span class="p">)</span> <span class="ow">or</span> <span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">article</span><span class="p">):</span>
+                <span class="k">continue</span>
+
             <span class="n">year</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">year</span><span class="p">)</span>
             <span class="n">author</span> <span class="o">=</span> <span class="n">authors</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
             <span class="n">title</span> <span class="o">=</span> <span class="p">(</span>

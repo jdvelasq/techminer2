@@ -51,6 +51,7 @@
 <p class="caption" role="heading"><span class="caption-text">TM-2</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tm2__data/__index__.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tm2__indicators/__index__.html">Indicators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tm2__text_summarization/__index__.html">Text Summarization and Report</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
@@ -141,33 +142,36 @@
         <span class="n">matrix_list</span><span class="p">[</span><span class="s2">&quot;row&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">()[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="n">topic</span><span class="p">)</span>
     <span class="p">]</span>
 
+    <span class="n">total_occ_topic</span> <span class="o">=</span> <span class="n">matrix_list</span><span class="p">[</span><span class="s2">&quot;row&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">total_occ_topic</span> <span class="o">=</span> <span class="n">total_occ_topic</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">total_occ_topic</span> <span class="o">=</span> <span class="n">total_occ_topic</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">total_occ_topic</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">total_occ_topic</span><span class="p">)</span>
+
     <span class="n">matrix_list</span> <span class="o">=</span> <span class="n">matrix_list</span><span class="p">[</span><span class="n">matrix_list</span><span class="p">[</span><span class="s2">&quot;row&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="n">matrix_list</span><span class="p">[</span><span class="s2">&quot;column&quot;</span><span class="p">]]</span>
-    <span class="n">matrix_list</span><span class="p">[</span><span class="s2">&quot;total_OCC&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">matrix_list</span><span class="p">[</span><span class="s2">&quot;row&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
-    <span class="n">matrix_list</span><span class="p">[</span><span class="s2">&quot;total_OCC&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">matrix_list</span><span class="p">[</span><span class="s2">&quot;total_OCC&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">matrix_list</span><span class="p">[</span><span class="s2">&quot;total_OCC&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">matrix_list</span><span class="p">[</span><span class="s2">&quot;total_OCC&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
-    <span class="n">matrix_list</span><span class="p">[</span><span class="s2">&quot;total_OCC&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">matrix_list</span><span class="p">[</span><span class="s2">&quot;total_OCC&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">matrix_list</span><span class="p">[</span><span class="s2">&quot;total_OCC&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">matrix_list</span><span class="p">[</span><span class="s2">&quot;total_OCC&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-    <span class="n">matrix_list</span> <span class="o">=</span> <span class="n">matrix_list</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">OCC</span><span class="o">=</span><span class="n">matrix_list</span><span class="p">[</span><span class="s2">&quot;OCC&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">matrix_list</span><span class="p">[</span><span class="s2">&quot;total_OCC&quot;</span><span class="p">])</span>
-    <span class="n">matrix_list</span><span class="p">[</span><span class="s2">&quot;OCC&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">matrix_list</span><span class="p">[</span><span class="s2">&quot;OCC&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="c1"># matrix_list[&quot;total_OCC&quot;] = matrix_list[&quot;row&quot;].map(lambda x: x.split())</span>
+    <span class="c1"># matrix_list[&quot;total_OCC&quot;] = matrix_list[&quot;total_OCC&quot;].str[-1]</span>
+    <span class="c1"># matrix_list[&quot;total_OCC&quot;] = matrix_list[&quot;total_OCC&quot;].str.split(&quot;:&quot;)</span>
+    <span class="c1"># matrix_list[&quot;total_OCC&quot;] = matrix_list[&quot;total_OCC&quot;].str[-1]</span>
+    <span class="c1"># matrix_list[&quot;total_OCC&quot;] = matrix_list[&quot;total_OCC&quot;].astype(float)</span>
+    <span class="n">matrix_list</span> <span class="o">=</span> <span class="n">matrix_list</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">OCC</span><span class="o">=</span><span class="mi">100</span> <span class="o">*</span> <span class="n">matrix_list</span><span class="p">[</span><span class="s2">&quot;OCC&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">total_occ_topic</span><span class="p">)</span>
+    <span class="n">matrix_list</span><span class="p">[</span><span class="s2">&quot;OCC&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">matrix_list</span><span class="p">[</span><span class="s2">&quot;OCC&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
     <span class="n">matrix_list</span> <span class="o">=</span> <span class="n">matrix_list</span><span class="p">[[</span><span class="s2">&quot;column&quot;</span><span class="p">,</span> <span class="s2">&quot;OCC&quot;</span><span class="p">]]</span>
-
-    <span class="k">if</span> <span class="n">topics_length</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">matrix_list</span> <span class="o">=</span> <span class="n">matrix_list</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">topics_length</span><span class="p">)</span>
 
     <span class="n">matrix_list</span> <span class="o">=</span> <span class="n">matrix_list</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;column&quot;</span><span class="p">)</span>
     <span class="n">matrix_list</span> <span class="o">=</span> <span class="n">matrix_list</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;OCC&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
-    <span class="c1"># matrix_list = matrix_list.rename(columns={&quot;OCC&quot;: &quot;% OCC&quot;})</span>
+    <span class="n">matrix_list</span> <span class="o">=</span> <span class="n">matrix_list</span><span class="p">[</span><span class="n">matrix_list</span><span class="o">.</span><span class="n">OCC</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">]</span>
 
     <span class="n">fig</span> <span class="o">=</span> <span class="n">bar_plot</span><span class="p">(</span>
         <span class="n">dataframe</span><span class="o">=</span><span class="n">matrix_list</span><span class="p">,</span>
         <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;OCC&quot;</span><span class="p">,</span>
-        <span class="n">title</span><span class="o">=</span><span class="s2">&quot;(%) Co-occurrence with &#39;</span><span class="si">{topic}</span><span class="s2">&#39;&quot;</span><span class="p">,</span>
+        <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;(%) Co-occurrence with &#39;</span><span class="si">{</span><span class="n">topic</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">,</span>
     <span class="p">)</span>
+
     <span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
         <span class="n">yaxis_title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">margin</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">l</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
     <span class="p">)</span>
 
     <span class="k">return</span> <span class="n">fig</span></div>

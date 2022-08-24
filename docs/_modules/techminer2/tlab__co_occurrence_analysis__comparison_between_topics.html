@@ -51,6 +51,7 @@
 <p class="caption" role="heading"><span class="caption-text">TM-2</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tm2__data/__index__.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tm2__indicators/__index__.html">Indicators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tm2__text_summarization/__index__.html">Text Summarization and Report</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
@@ -89,6 +90,34 @@
 <span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Compararison between topics</span>
 <span class="sd">===============================================================================</span>
+
+
+
+<span class="sd">&gt;&gt;&gt; directory = &quot;data/regtech/&quot;</span>
+
+<span class="sd">&gt;&gt;&gt; from techminer2 import tlab__co_occurrence_analysis__comparison_between_topics</span>
+<span class="sd">&gt;&gt;&gt; cbt = tlab__co_occurrence_analysis__comparison_between_topics(</span>
+<span class="sd">...     criterion=&quot;author_keywords&quot;,</span>
+<span class="sd">...     topic_a=&quot;artificial intelligence&quot;,</span>
+<span class="sd">...     topic_b=&quot;regtech&quot;,</span>
+<span class="sd">...     topics_length=None,</span>
+<span class="sd">...     topic_min_occ=None,</span>
+<span class="sd">...     topic_min_citations=None,</span>
+<span class="sd">...     custom_topics=[</span>
+<span class="sd">...         &quot;fintech&quot;,</span>
+<span class="sd">...         &quot;blockchain&quot;,</span>
+<span class="sd">...         &quot;machine learning&quot;,</span>
+<span class="sd">...     ],</span>
+<span class="sd">...     directory=directory,</span>
+<span class="sd">... )</span>
+
+<span class="sd">&gt;&gt;&gt; file_name = &quot;sphinx/_static/tlab__co_occurrence_analysis__comparison_between_topics_bar_chart-1.html&quot;</span>
+<span class="sd">&gt;&gt;&gt; cbt.bar_chart_.write_html(file_name)</span>
+
+<span class="sd">.. raw:: html</span>
+
+<span class="sd">    &lt;iframe src=&quot;../../../../_static/tlab__co_occurrence_analysis__comparison_between_topics_bar_chart-1.html&quot; height=&quot;600px&quot; width=&quot;100%&quot; frameBorder=&quot;0&quot;&gt;&lt;/iframe&gt;</span>
+
 
 
 
@@ -142,7 +171,7 @@
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 <span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
 
-<span class="kn">from</span> <span class="nn">._indicators.indicators_by_topic</span> <span class="kn">import</span> <span class="n">indicators_by_topic</span>
+<span class="kn">from</span> <span class="nn">.tm2__indicators_by_topic</span> <span class="kn">import</span> <span class="n">tm2__indicators_by_topic</span>
 <span class="kn">from</span> <span class="nn">._items2counters</span> <span class="kn">import</span> <span class="n">items2counters</span>
 <span class="kn">from</span> <span class="nn">._load_stopwords</span> <span class="kn">import</span> <span class="n">load_stopwords</span>
 <span class="kn">from</span> <span class="nn">._read_records</span> <span class="kn">import</span> <span class="n">read_records</span>
@@ -168,6 +197,7 @@
     <span class="n">topics_length</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
     <span class="n">topic_min_occ</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">topic_min_citations</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">custom_topics</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">nx_k</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
     <span class="n">nx_iterations</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
     <span class="n">delta</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
@@ -195,11 +225,12 @@
         <span class="n">matrix_list</span><span class="p">,</span>
     <span class="p">)</span>
 
-    <span class="n">matrix_list</span> <span class="o">=</span> <span class="n">_select_topics_by_occ_and_citations_and_topic_length</span><span class="p">(</span>
+    <span class="n">matrix_list</span> <span class="o">=</span> <span class="n">_select_topics</span><span class="p">(</span>
         <span class="n">matrix_list</span><span class="o">=</span><span class="n">matrix_list</span><span class="p">,</span>
         <span class="n">topic_min_occ</span><span class="o">=</span><span class="n">topic_min_occ</span><span class="p">,</span>
         <span class="n">topic_min_citations</span><span class="o">=</span><span class="n">topic_min_citations</span><span class="p">,</span>
         <span class="n">topics_length</span><span class="o">=</span><span class="n">topics_length</span><span class="p">,</span>
+        <span class="n">custom_topics</span><span class="o">=</span><span class="n">custom_topics</span><span class="p">,</span>
         <span class="n">criterion</span><span class="o">=</span><span class="n">criterion</span><span class="p">,</span>
         <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
         <span class="n">database</span><span class="o">=</span><span class="n">database</span><span class="p">,</span>
@@ -208,18 +239,16 @@
         <span class="o">**</span><span class="n">filters</span><span class="p">,</span>
     <span class="p">)</span>
 
-    <span class="k">for</span> <span class="n">column_name</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;column&quot;</span><span class="p">]:</span>
-
-        <span class="n">matrix_list</span> <span class="o">=</span> <span class="n">_add_counters_to_items</span><span class="p">(</span>
-            <span class="n">matrix_list</span><span class="o">=</span><span class="n">matrix_list</span><span class="p">,</span>
-            <span class="n">column_name</span><span class="o">=</span><span class="n">column_name</span><span class="p">,</span>
-            <span class="n">criterion</span><span class="o">=</span><span class="n">criterion</span><span class="p">,</span>
-            <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
-            <span class="n">database</span><span class="o">=</span><span class="n">database</span><span class="p">,</span>
-            <span class="n">start_year</span><span class="o">=</span><span class="n">start_year</span><span class="p">,</span>
-            <span class="n">end_year</span><span class="o">=</span><span class="n">end_year</span><span class="p">,</span>
-            <span class="o">**</span><span class="n">filters</span><span class="p">,</span>
-        <span class="p">)</span>
+    <span class="n">matrix_list</span> <span class="o">=</span> <span class="n">_add_counters_to_items</span><span class="p">(</span>
+        <span class="n">matrix_list</span><span class="o">=</span><span class="n">matrix_list</span><span class="p">,</span>
+        <span class="n">column_name</span><span class="o">=</span><span class="s2">&quot;column&quot;</span><span class="p">,</span>
+        <span class="n">criterion</span><span class="o">=</span><span class="n">criterion</span><span class="p">,</span>
+        <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
+        <span class="n">database</span><span class="o">=</span><span class="n">database</span><span class="p">,</span>
+        <span class="n">start_year</span><span class="o">=</span><span class="n">start_year</span><span class="p">,</span>
+        <span class="n">end_year</span><span class="o">=</span><span class="n">end_year</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">filters</span><span class="p">,</span>
+    <span class="p">)</span>
 
     <span class="n">matrix_list</span> <span class="o">=</span> <span class="n">_sort_matrix_list</span><span class="p">(</span><span class="n">matrix_list</span><span class="p">)</span>
     <span class="n">matrix_list</span> <span class="o">=</span> <span class="n">matrix_list</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -364,7 +393,7 @@
         <span class="n">color_discrete_map</span><span class="o">=</span><span class="p">{</span>
             <span class="n">topic_a</span><span class="p">:</span> <span class="s2">&quot;#CCD3D9&quot;</span><span class="p">,</span>
             <span class="n">topic_b</span><span class="p">:</span> <span class="s2">&quot;#99A8B3&quot;</span><span class="p">,</span>
-            <span class="s2">&quot; &amp; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">topic_a</span><span class="p">,</span> <span class="n">topic_b</span><span class="p">]):</span> <span class="s2">&quot;#556f81&quot;</span><span class="p">,</span>
+            <span class="s2">&quot; &amp; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">sorted</span><span class="p">([</span><span class="n">topic_a</span><span class="p">,</span> <span class="n">topic_b</span><span class="p">])):</span> <span class="s2">&quot;#556f81&quot;</span><span class="p">,</span>
         <span class="p">},</span>
     <span class="p">)</span>
     <span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">paper_bgcolor</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">plot_bgcolor</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">)</span>
@@ -380,14 +409,19 @@
         <span class="n">griddash</span><span class="o">=</span><span class="s2">&quot;dot&quot;</span><span class="p">,</span>
     <span class="p">)</span>
 
+    <span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+        <span class="n">yaxis_title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span>
+
     <span class="k">return</span> <span class="n">fig</span>
 
 
-<span class="k">def</span> <span class="nf">_select_topics_by_occ_and_citations_and_topic_length</span><span class="p">(</span>
+<span class="k">def</span> <span class="nf">_select_topics</span><span class="p">(</span>
     <span class="n">matrix_list</span><span class="p">,</span>
     <span class="n">topic_min_occ</span><span class="p">,</span>
     <span class="n">topic_min_citations</span><span class="p">,</span>
     <span class="n">topics_length</span><span class="p">,</span>
+    <span class="n">custom_topics</span><span class="p">,</span>
     <span class="n">criterion</span><span class="p">,</span>
     <span class="n">directory</span><span class="p">,</span>
     <span class="n">database</span><span class="p">,</span>
@@ -395,7 +429,7 @@
     <span class="n">end_year</span><span class="p">,</span>
     <span class="o">**</span><span class="n">filters</span><span class="p">,</span>
 <span class="p">):</span>
-    <span class="n">indicators</span> <span class="o">=</span> <span class="n">indicators_by_topic</span><span class="p">(</span>
+    <span class="n">indicators</span> <span class="o">=</span> <span class="n">tm2__indicators_by_topic</span><span class="p">(</span>
         <span class="n">criterion</span><span class="o">=</span><span class="n">criterion</span><span class="p">,</span>
         <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
         <span class="n">database</span><span class="o">=</span><span class="n">database</span><span class="p">,</span>
@@ -404,22 +438,24 @@
         <span class="o">**</span><span class="n">filters</span><span class="p">,</span>
     <span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">topic_min_occ</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">indicators</span> <span class="o">=</span> <span class="n">indicators</span><span class="p">[</span><span class="n">indicators</span><span class="o">.</span><span class="n">OCC</span> <span class="o">&gt;=</span> <span class="n">topic_min_occ</span><span class="p">]</span>
-    <span class="k">if</span> <span class="n">topic_min_citations</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">indicators</span> <span class="o">=</span> <span class="n">indicators</span><span class="p">[</span><span class="n">indicators</span><span class="o">.</span><span class="n">global_citations</span> <span class="o">&gt;=</span> <span class="n">topic_min_citations</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">custom_topics</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
 
-    <span class="n">indicators</span> <span class="o">=</span> <span class="n">indicators</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span>
-        <span class="p">[</span><span class="s2">&quot;OCC&quot;</span><span class="p">,</span> <span class="s2">&quot;global_citations&quot;</span><span class="p">,</span> <span class="s2">&quot;local_citations&quot;</span><span class="p">],</span>
-        <span class="n">ascending</span><span class="o">=</span><span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
-    <span class="p">)</span>
+        <span class="k">if</span> <span class="n">topic_min_occ</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">indicators</span> <span class="o">=</span> <span class="n">indicators</span><span class="p">[</span><span class="n">indicators</span><span class="o">.</span><span class="n">OCC</span> <span class="o">&gt;=</span> <span class="n">topic_min_occ</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">topic_min_citations</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">indicators</span> <span class="o">=</span> <span class="n">indicators</span><span class="p">[</span><span class="n">indicators</span><span class="o">.</span><span class="n">global_citations</span> <span class="o">&gt;=</span> <span class="n">topic_min_citations</span><span class="p">]</span>
 
-    <span class="k">if</span> <span class="n">topics_length</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">indicators</span> <span class="o">=</span> <span class="n">indicators</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">topics_length</span><span class="p">)</span>
+        <span class="n">indicators</span> <span class="o">=</span> <span class="n">indicators</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span>
+            <span class="p">[</span><span class="s2">&quot;OCC&quot;</span><span class="p">,</span> <span class="s2">&quot;global_citations&quot;</span><span class="p">,</span> <span class="s2">&quot;local_citations&quot;</span><span class="p">],</span>
+            <span class="n">ascending</span><span class="o">=</span><span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+        <span class="p">)</span>
 
-    <span class="n">topics</span> <span class="o">=</span> <span class="n">indicators</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">topics_length</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">indicators</span> <span class="o">=</span> <span class="n">indicators</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">topics_length</span><span class="p">)</span>
 
-    <span class="n">matrix_list</span> <span class="o">=</span> <span class="n">matrix_list</span><span class="p">[</span><span class="n">matrix_list</span><span class="o">.</span><span class="n">column</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">topics</span><span class="p">)]</span>
+        <span class="n">custom_topics</span> <span class="o">=</span> <span class="n">indicators</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+
+    <span class="n">matrix_list</span> <span class="o">=</span> <span class="n">matrix_list</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">matrix_list</span><span class="o">.</span><span class="n">column</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">custom_topics</span><span class="p">),</span> <span class="p">:]</span>
 
     <span class="k">return</span> <span class="n">matrix_list</span>
 
@@ -462,7 +498,7 @@
     <span class="p">]</span>
 
     <span class="n">matrix_list</span><span class="p">[</span><span class="s2">&quot;row&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">matrix_list</span><span class="p">[</span><span class="s2">&quot;row&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
-        <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">[</span><span class="n">y</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">x</span> <span class="k">if</span> <span class="n">y</span> <span class="ow">in</span> <span class="p">[</span><span class="n">topic_a</span><span class="p">,</span> <span class="n">topic_b</span><span class="p">]]</span>
+        <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">sorted</span><span class="p">([</span><span class="n">y</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">x</span> <span class="k">if</span> <span class="n">y</span> <span class="ow">in</span> <span class="p">[</span><span class="n">topic_a</span><span class="p">,</span> <span class="n">topic_b</span><span class="p">]])</span>
     <span class="p">)</span>
     <span class="n">matrix_list</span><span class="p">[</span><span class="s2">&quot;row&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">matrix_list</span><span class="p">[</span><span class="s2">&quot;row&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot; &amp; &quot;</span><span class="p">)</span>
     <span class="n">matrix_list</span> <span class="o">=</span> <span class="n">matrix_list</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span><span class="s2">&quot;row&quot;</span><span class="p">)</span>
@@ -485,7 +521,7 @@
     <span class="n">matrix</span> <span class="o">=</span> <span class="n">matrix_list</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s2">&quot;row&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;column&quot;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s2">&quot;OCC&quot;</span><span class="p">)</span>
     <span class="n">matrix</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="k">if</span> <span class="s2">&quot; &amp; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">topic_a</span><span class="p">,</span> <span class="n">topic_b</span><span class="p">])</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">matrix</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">to_list</span><span class="p">():</span>
-        <span class="n">matrix</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot; &amp; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">topic_a</span><span class="p">,</span> <span class="n">topic_b</span><span class="p">])]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">matrix</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot; &amp; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">sorted</span><span class="p">([</span><span class="n">topic_a</span><span class="p">,</span> <span class="n">topic_b</span><span class="p">]))]</span> <span class="o">=</span> <span class="mi">0</span>
 
     <span class="n">matrix_list</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">value_name</span><span class="o">=</span><span class="s2">&quot;OCC&quot;</span><span class="p">,</span> <span class="n">var_name</span><span class="o">=</span><span class="s2">&quot;column&quot;</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 

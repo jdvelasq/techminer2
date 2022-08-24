@@ -51,6 +51,7 @@
 <p class="caption" role="heading"><span class="caption-text">TM-2</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tm2__data/__index__.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tm2__indicators/__index__.html">Indicators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tm2__text_summarization/__index__.html">Text Summarization and Report</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
@@ -167,8 +168,8 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>
 
-<span class="kn">from</span> <span class="nn">._indicators.annual_occurrence_matrix</span> <span class="kn">import</span> <span class="n">annual_occurrence_matrix</span>
-<span class="kn">from</span> <span class="nn">._indicators.indicators_by_topic</span> <span class="kn">import</span> <span class="n">indicators_by_topic</span>
+<span class="kn">from</span> <span class="nn">.tm2__annual_occurrence_matrix</span> <span class="kn">import</span> <span class="n">tm2__annual_occurrence_matrix</span>
+<span class="kn">from</span> <span class="nn">.tm2__indicators_by_topic</span> <span class="kn">import</span> <span class="n">tm2__indicators_by_topic</span>
 
 
 <span class="nd">@dataclass</span><span class="p">(</span><span class="n">init</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -189,7 +190,7 @@
 <span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Trend topics&quot;&quot;&quot;</span>
 
-    <span class="n">words_by_year</span> <span class="o">=</span> <span class="n">annual_occurrence_matrix</span><span class="p">(</span>
+    <span class="n">words_by_year</span> <span class="o">=</span> <span class="n">tm2__annual_occurrence_matrix</span><span class="p">(</span>
         <span class="n">criterion</span><span class="o">=</span><span class="n">criterion</span><span class="p">,</span>
         <span class="n">min_occ</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
         <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
@@ -227,7 +228,7 @@
 
     <span class="n">words_by_year</span> <span class="o">=</span> <span class="n">words_by_year</span><span class="p">[[</span><span class="s2">&quot;OCC&quot;</span><span class="p">,</span> <span class="s2">&quot;year_q1&quot;</span><span class="p">,</span> <span class="s2">&quot;year_med&quot;</span><span class="p">,</span> <span class="s2">&quot;year_q3&quot;</span><span class="p">]]</span>
 
-    <span class="n">global_citations</span> <span class="o">=</span> <span class="n">indicators_by_topic</span><span class="p">(</span>
+    <span class="n">global_citations</span> <span class="o">=</span> <span class="n">tm2__indicators_by_topic</span><span class="p">(</span>
         <span class="n">criterion</span><span class="p">,</span> <span class="n">directory</span><span class="o">=</span><span class="n">directory</span>
     <span class="p">)</span><span class="o">.</span><span class="n">global_citations</span>
 

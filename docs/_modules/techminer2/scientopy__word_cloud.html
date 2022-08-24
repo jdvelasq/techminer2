@@ -51,6 +51,7 @@
 <p class="caption" role="heading"><span class="caption-text">TM-2</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tm2__data/__index__.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tm2__indicators/__index__.html">Indicators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tm2__text_summarization/__index__.html">Text Summarization and Report</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
@@ -190,8 +191,8 @@
 
 
 
-<span class="sd">&gt;&gt;&gt; from techminer2._indicators.growth_indicators_by_topic import growth_indicators_by_topic</span>
-<span class="sd">&gt;&gt;&gt; growth_indicators_by_topic(</span>
+<span class="sd">&gt;&gt;&gt; from techminer2.tm2__growth_indicators_by_topic import tm2__growth_indicators_by_topic</span>
+<span class="sd">&gt;&gt;&gt; tm2__growth_indicators_by_topic(</span>
 <span class="sd">...     criterion=&quot;author_keywords&quot;, </span>
 <span class="sd">...     directory=directory,</span>
 <span class="sd">... )[[&#39;OCC&#39;, &#39;average_growth_rate&#39;]].sort_values([&#39;average_growth_rate&#39;, &#39;OCC&#39;], ascending=False).head(20)</span>
@@ -222,9 +223,9 @@
 
 
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">from</span> <span class="nn">._indicators.growth_indicators_by_topic</span> <span class="kn">import</span> <span class="n">growth_indicators_by_topic</span>
 <span class="kn">from</span> <span class="nn">._plots.word_cloud_for_indicators</span> <span class="kn">import</span> <span class="n">word_cloud_for_indicators</span>
 <span class="kn">from</span> <span class="nn">.scientopy__bar</span> <span class="kn">import</span> <span class="n">_filter_indicators_by_custom_topics</span>
+<span class="kn">from</span> <span class="nn">.tm2__growth_indicators_by_topic</span> <span class="kn">import</span> <span class="n">tm2__growth_indicators_by_topic</span>
 
 
 <div class="viewcode-block" id="scientopy__word_cloud"><a class="viewcode-back" href="../../scientopy/scientopy__word_cloud.html#techminer2.scientopy__word_cloud.scientopy__word_cloud">[docs]</a><span class="k">def</span> <span class="nf">scientopy__word_cloud</span><span class="p">(</span>
@@ -245,7 +246,7 @@
 <span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Plots a word cloud from a dataframe.&quot;&quot;&quot;</span>
 
-    <span class="n">indicators</span> <span class="o">=</span> <span class="n">growth_indicators_by_topic</span><span class="p">(</span>
+    <span class="n">indicators</span> <span class="o">=</span> <span class="n">tm2__growth_indicators_by_topic</span><span class="p">(</span>
         <span class="n">criterion</span><span class="o">=</span><span class="n">criterion</span><span class="p">,</span>
         <span class="n">time_window</span><span class="o">=</span><span class="n">time_window</span><span class="p">,</span>
         <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>

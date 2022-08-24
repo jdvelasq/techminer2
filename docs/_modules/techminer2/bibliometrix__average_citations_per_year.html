@@ -51,6 +51,7 @@
 <p class="caption" role="heading"><span class="caption-text">TM-2</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tm2__data/__index__.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tm2__indicators/__index__.html">Indicators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tm2__text_summarization/__index__.html">Text Summarization and Report</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
@@ -102,7 +103,7 @@
 <span class="sd">    &lt;iframe src=&quot;../../_static/bibliometrix__average_citations_per_year.html&quot; height=&quot;600px&quot; width=&quot;100%&quot; frameBorder=&quot;0&quot;&gt;&lt;/iframe&gt;</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">from</span> <span class="nn">._indicators.indicators_by_year</span> <span class="kn">import</span> <span class="n">indicators_by_year</span>
+<span class="kn">from</span> <span class="nn">.tm2__indicators_by_year</span> <span class="kn">import</span> <span class="n">tm2__indicators_by_year</span>
 <span class="kn">from</span> <span class="nn">._time_plot</span> <span class="kn">import</span> <span class="n">time_plot</span>
 
 
@@ -115,7 +116,7 @@
 <span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Average citations per year.&quot;&quot;&quot;</span>
 
-    <span class="n">indicators</span> <span class="o">=</span> <span class="n">indicators_by_year</span><span class="p">(</span>
+    <span class="n">indicators</span> <span class="o">=</span> <span class="n">tm2__indicators_by_year</span><span class="p">(</span>
         <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
         <span class="n">database</span><span class="o">=</span><span class="n">database</span><span class="p">,</span>
         <span class="n">start_year</span><span class="o">=</span><span class="n">start_year</span><span class="p">,</span>

@@ -51,6 +51,7 @@
 <p class="caption" role="heading"><span class="caption-text">TM-2</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tm2__data/__index__.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tm2__indicators/__index__.html">Indicators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tm2__text_summarization/__index__.html">Text Summarization and Report</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
@@ -108,7 +109,7 @@
 <span class="sd">    :align: center</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">from</span> <span class="nn">._indicators.indicators_by_topic</span> <span class="kn">import</span> <span class="n">indicators_by_topic</span>
+<span class="kn">from</span> <span class="nn">.tm2__indicators_by_topic</span> <span class="kn">import</span> <span class="n">tm2__indicators_by_topic</span>
 <span class="kn">from</span> <span class="nn">._plots.word_cloud_for_indicators</span> <span class="kn">import</span> <span class="n">word_cloud_for_indicators</span>
 
 
@@ -129,7 +130,7 @@
 <span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Plots a word cloud from a dataframe.&quot;&quot;&quot;</span>
 
-    <span class="n">indicators</span> <span class="o">=</span> <span class="n">indicators_by_topic</span><span class="p">(</span>
+    <span class="n">indicators</span> <span class="o">=</span> <span class="n">tm2__indicators_by_topic</span><span class="p">(</span>
         <span class="n">criterion</span><span class="o">=</span><span class="n">criterion</span><span class="p">,</span>
         <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
         <span class="n">database</span><span class="o">=</span><span class="n">database</span><span class="p">,</span>

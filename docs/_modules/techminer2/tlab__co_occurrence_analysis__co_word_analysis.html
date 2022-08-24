@@ -51,6 +51,7 @@
 <p class="caption" role="heading"><span class="caption-text">TM-2</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../tm2__data/__index__.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tm2__indicators/__index__.html">Indicators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tm2__text_summarization/__index__.html">Text Summarization and Report</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
@@ -110,7 +111,7 @@
 
 <span class="sd">.. raw:: html</span>
 
-<span class="sd">    &lt;iframe src=&quot;../../../_static/tlab__co_occ__co_word_analysis_mds_map.html&quot; height=&quot;600px&quot; width=&quot;100%&quot; frameBorder=&quot;0&quot;&gt;&lt;/iframe&gt;</span>
+<span class="sd">    &lt;iframe src=&quot;../../_static/tlab__co_occ__co_word_analysis_mds_map.html&quot; height=&quot;600px&quot; width=&quot;100%&quot; frameBorder=&quot;0&quot;&gt;&lt;/iframe&gt;</span>
 
 
 <span class="sd">&gt;&gt;&gt; file_name = &quot;sphinx/_static/tlab__co_occ__co_word_analysis_tsne_map.html&quot;</span>
@@ -304,11 +305,11 @@
     <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">items</span> <span class="ow">in</span> <span class="n">communities</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
         <span class="n">communities</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
 
-    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">communities</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;index&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">pdf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">communities</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s2">&quot;index&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+    <span class="n">pdf</span> <span class="o">=</span> <span class="n">pdf</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="n">pdf</span> <span class="o">=</span> <span class="n">pdf</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">df</span>
+    <span class="k">return</span> <span class="n">pdf</span>
 </pre></div>
 
            </div>

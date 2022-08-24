@@ -54,6 +54,7 @@
 <p class="caption" role="heading"><span class="caption-text">TM-2</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../tm2__data/__index__.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tm2__indicators/__index__.html">Indicators</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tm2__text_summarization/__index__.html">Text Summarization and Report</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
@@ -199,8 +200,8 @@
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="../_images/scientopy__word_cloud-6.png"><img alt="../_images/scientopy__word_cloud-6.png" class="align-center" src="../_images/scientopy__word_cloud-6.png" style="width: 900px;" /></a>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2._indicators.growth_indicators_by_topic</span> <span class="kn">import</span> <span class="n">growth_indicators_by_topic</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">growth_indicators_by_topic</span><span class="p">(</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2.tm2__growth_indicators_by_topic</span> <span class="kn">import</span> <span class="n">tm2__growth_indicators_by_topic</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tm2__growth_indicators_by_topic</span><span class="p">(</span>
 <span class="gp">... </span>    <span class="n">criterion</span><span class="o">=</span><span class="s2">&quot;author_keywords&quot;</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
 <span class="gp">... </span><span class="p">)[[</span><span class="s1">&#39;OCC&#39;</span><span class="p">,</span> <span class="s1">&#39;average_growth_rate&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;average_growth_rate&#39;</span><span class="p">,</span> <span class="s1">&#39;OCC&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
