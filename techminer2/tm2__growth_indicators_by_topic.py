@@ -86,7 +86,7 @@ def _growth_indicators_from_records(column, time_window, directory, records):
     )
 
     stopwords = load_stopwords(directory)
-    result = result.drop(stopwords, axis=0)
+    result = result.drop(stopwords, axis=0, errors="ignore")
 
     return result
 
