@@ -4,6 +4,15 @@ Find Abbreviations
 
 Finds string abbreviations in the keywords of a thesaurus.
 
+>>> directory = "data/mateo/"
+
+>>> from techminer2 import vantagepoint__find_abbreviations
+>>> vantagepoint__find_abbreviations(
+...     "keywords.txt",
+...     directory=directory,
+... )
+
+
 
 >>> directory = "data/regtech/"
 
@@ -59,17 +68,21 @@ def vantagepoint__find_abbreviations(
     results = []
     for abbreviation in abbreviations.to_list():
 
-        keywords = df[
-            df.text.map(lambda x: x == abbreviation)
-            | df.text.str.contains("(" + abbreviation + ")", regex=False)
-            | df.text.map(lambda x: x == "(" + abbreviation + ")")
-            | df.text.str.contains("\b" + abbreviation + "\b", regex=True)
-        ]
+        try:
+            keywords = df[
+                df.text.map(lambda x: x == abbreviation)
+                | df.text.str.contains("(" + abbreviation + ")", regex=False)
+                | df.text.map(lambda x: x == "(" + abbreviation + ")")
+                | df.text.str.contains("\b" + abbreviation + "\b", regex=True)
+            ]
 
-        keywords = keywords.key.drop_duplicates()
+            keywords = keywords.key.drop_duplicates()
 
-        if len(keywords) > 1:
-            results.append(keywords.to_list())
+            if len(keywords) > 1:
+                results.append(keywords.to_list())
+
+        except:
+            print("Manual check: " + abbreviation)
 
     # ----< remove found keywords >-----------------------------------------------------------------
     results = [value for result in results for value in result]
