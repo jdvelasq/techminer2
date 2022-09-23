@@ -3,6 +3,9 @@ Create keywords thesaurus
 ===============================================================================
 
 >>> directory = "data/regtech/"
+
+>>> directory = "data/mateo/"
+
 >>> from techminer2._create_keywords_thesaurus import create_keywords_thesaurus
 >>> create_keywords_thesaurus(directory=directory)
 --INFO-- Creating `keywords.txt` from author/index keywords, and abstract/title words
@@ -94,7 +97,7 @@ def _build_fingerprint(keywords_list):
         if "(" in word:
             text_to_remove = word[word.find("(") + 1 : word.find(")")]
             meaning = word[: word.find("(")].strip()
-            if len(meaning) < len(text_to_remove) and len(text_to_remove.split()) > 1:
+            if len(meaning) < len(text_to_remove) and len(text_to_remove.strip()) > 1:
                 word = text_to_remove + " (" + meaning + ")"
         return word
 
@@ -303,4 +306,6 @@ def _load_keywords_from_databases(directory="./"):
             if column in data.columns:
                 words_list.append(data[column])
     words_list = pd.concat(words_list, ignore_index=True)
+    words_list = words_list.str.strip()
+    words_list = words_list[words_list.str.len() > 0]
     return words_list
