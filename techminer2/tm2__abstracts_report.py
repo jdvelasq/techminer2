@@ -4,15 +4,24 @@ Abstracts Report
 
 
 >>> directory = "data/regtech/"
+>>> directory = "data/mateo/"
 
 >>> # file generated in data/regtech/reports/abstracts_report.txt
 >>> from techminer2 import tm2__abstracts_report
+
 >>> tm2__abstracts_report(
 ...     criterion="author_keywords",
-...     custom_topics=["blockchain" ,"regtech"],
-...     n_abstracts=10,    
+...     custom_topics=[""],
 ...     directory=directory,
 ... )
+
+
+# >>> tm2__abstracts_report(
+# ...     criterion="author_keywords",
+# ...     custom_topics=["blockchain" ,"regtech"],
+# ...     n_abstracts=10,    
+# ...     directory=directory,
+# ... )
 
 
 """
