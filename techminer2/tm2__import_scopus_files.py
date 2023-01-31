@@ -1047,7 +1047,11 @@ def _extract_keywords_roots_from_database_files(directory):
     for file in files:
         data = pd.read_csv(file, encoding="utf-8")
         for column in ["raw_author_keywords", "raw_index_keywords"]:
-            keywords_list.append(data[column])
+            if column in data.columns:
+                keywords_list.append(data[column])
+
+    if len(keywords_list) == 0:
+        return  
 
     keywords_list = pd.concat(keywords_list)
     keywords_list = keywords_list.dropna()
