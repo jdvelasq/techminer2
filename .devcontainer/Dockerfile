@@ -36,32 +36,23 @@ RUN pip3 --disable-pip-version-check --no-cache-dir install \
     pygments
 
 RUN pip3 --disable-pip-version-check --no-cache-dir install \
-    graphviz==0.10.1 \
-    ipykernel==4.10.1 \
-    ipywidgets==7.6.5 \
-    matplotlib==3.2.2 \
-    networkx==2.6.3 \
-    nltk==3.2.5 \
-    numpy==1.19.5 \
-    pandas==1.1.5 \
-    PyYAML==5.4.1 \
-    scikit-learn==1.0.2 \
-    seaborn==0.11.2 \
-    textblob==0.15.3 \
-    wordcloud==1.5.0 
+        cdlib==0.2.6 \
+        fuzzywuzzy==0.18.0 \
+        networkx==2.6.3 \
+        nltk==3.7 \
+        pandas==1.3.5 \
+        plotly==5.9.0 \
+        python-Levenshtein==0.12.2 \
+        PyYAML==5.4.1 \
+        scikit-learn==1.0.2 \
+        sumy==0.10.0 \
+        textblob==0.15.3 \
+        wordcloud==1.5.0 \
+        squarify==0.4.3
 
 RUN python3 -c "import nltk; nltk.download('punkt'); nltk.download('brown'); nltk.download('averaged_perceptron_tagger'); nltk.download('stopwords')"
 
 
-# packages not installed in colab
-RUN pip3 --disable-pip-version-check --no-cache-dir install \
-    cdlib==0.2.5 \    
-    squarify==0.4.3 \
-    "python-Levenshtein==0.12.2"
-
-# RUN pip3 --disable-pip-version-check --no-cache-dir install \
-#     flask \
-#     flask-wtf
 
 RUN apt update \
     && apt -yq --no-install-recommends install  graphviz \
