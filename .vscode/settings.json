@@ -21,5 +21,6 @@
         "**./*.js": true,
         "**/*.html": true
     },
-    "notebook.output.textLineLimit": 200
+    "notebook.output.textLineLimit": 200,
+    "python.formatting.provider": "black"
 }
