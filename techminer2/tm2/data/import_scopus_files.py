@@ -7,8 +7,8 @@ Import a scopus file to a working directory.
 
 >>> directory = "data/regtech/"
 
->>> from techminer2.tm2.data import import_scopus_files
->>> import_scopus_files(
+>>> from techminer2 import tm2
+>>> tm2.data.import_scopus_files(
 ...     directory, 
 ...     disable_progress_bar=True,
 ... )
