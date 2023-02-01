@@ -50,7 +50,7 @@ package developed and tested in Python version 3.6.
     :maxdepth: 1
     :hidden:
     
-    tm2/__index__
+    techminer/__index__
     bibliometrix/__index__
     vantagepoint/__index__
     tlab/__index__

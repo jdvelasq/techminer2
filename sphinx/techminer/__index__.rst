@@ -1,4 +1,4 @@
-TechMiner2
+TechMiner
 #########################################################################################
 
 .. raw:: html
@@ -8,6 +8,6 @@ TechMiner2
 .. toctree::
     :maxdepth: 1
     
-    data/__index__
+    
     indicaators/__index__
-    text/__index__
+    tools/__index__
