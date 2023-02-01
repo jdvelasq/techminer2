@@ -9,7 +9,7 @@ The following fnctions operate on a thesaurus.
             vantagepoint__clean_countries
 
         .. toctree::
-            vantagepoint__clean_keywords
+            clean_keywords
 
         .. toctree::
             vantagepoint__clean_organizations

@@ -7,8 +7,8 @@ Cleans the keywords columns using the `keywords.txt` file.
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import vantagepoint__clean_keywords
->>> vantagepoint__clean_keywords(directory)
+>>> from techminer2 import vantagepoint
+>>> vantagepoint.refine.clean_keywords(directory)
 --INFO-- Applying `keywords.txt` thesaurus to author/index keywords and abstract/title words
 
 """
