@@ -140,7 +140,7 @@ from .tm2__extractive_summarization import tm2__extractive_summarization
 from .tm2__growth_indicators_by_topic import tm2__growth_indicators_by_topic
 from .tm2__impact_indicators_by_topic import tm2__impact_indicators_by_topic
 
-# from .tm2.data.import_scopus_files import import_scopus_files
+
 from .tm2__indicators_by_document import tm2__indicators_by_document
 from .tm2__indicators_by_topic import tm2__indicators_by_topic
 from .tm2__indicators_by_topic_per_year import tm2__indicators_by_topic_per_year

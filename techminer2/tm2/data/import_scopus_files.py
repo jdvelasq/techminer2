@@ -38,7 +38,9 @@ Import a scopus file to a working directory.
 --INFO-- Creating `article` column
 --INFO-- Processing `raw_author_keywords` column
 --INFO-- Processing `raw_index_keywords` column
+--INFO-- Processing `raw_keywords` column
 --INFO-- Creating `raw_abstract_words` column in data/regtech/processed/_documents.csv
+--INFO-- Creating `raw_abstract_words` column in data/regtech/processed/_cited_by.csv
 --INFO-- Creating `raw_title_words` column in data/regtech/processed/_documents.csv
 --INFO-- Creating `raw_title_words` column in data/regtech/processed/_references.csv
 --INFO-- Creating `raw_title_words` column in data/regtech/processed/_cited_by.csv
@@ -59,9 +61,9 @@ Import a scopus file to a working directory.
 --INFO-- The data/regtech/processed/organizations.txt thesaurus file was created
 --INFO-- The data/regtech/processed/organizations.txt thesaurus file was applied to affiliations in all databases
 --INFO-- Process finished!!!
---INFO-- data/regtech/processed/_documents.csv: 94 imported records
---INFO-- data/regtech/processed/_references.csv: 1213 imported records
---INFO-- data/regtech/processed/_cited_by.csv: 474 imported records
+--INFO-- data/regtech/processed/_documents.csv: 52 imported records
+--INFO-- data/regtech/processed/_references.csv: 909 imported records
+--INFO-- data/regtech/processed/_cited_by.csv: 388 imported records
 
  
 
@@ -126,6 +128,7 @@ def import_scopus_files(
     # Keywords: --------------------------------------------------------------
     _process__raw_author_keywords__column(directory)
     _process__raw_index_keywords__column(directory)
+    _process__raw_keywords__column(directory)
     #
     _create_extract_raw_words_from_column(
         directory, source_column="abstract", dest_column="raw_abstract_words"
@@ -1380,6 +1383,34 @@ def _process__raw_author_keywords__column(directory):
         data.to_csv(file, sep=",", encoding="utf-8", index=False)
 
 
+def _process__raw_keywords__column(directory):
+
+    sys.stdout.write("--INFO-- Processing `raw_keywords` column\n")
+
+    files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
+    for file in files:
+        data = pd.read_csv(file, encoding="utf-8")
+        if (
+            "raw_author_keywords" in data.columns
+            and "raw_index_keywords" in data.columns
+        ):
+            raw_author_keywords = data.raw_author_keywords.str.split("; ")
+            raw_author_keywords = raw_author_keywords.map(
+                lambda x: [] if not isinstance(x, list) else x
+            )
+            raw_index_keywords = data.raw_index_keywords.str.split("; ")
+            raw_index_keywords = raw_index_keywords.map(
+                lambda x: [] if not isinstance(x, list) else x
+            )
+            data.raw_keywords = raw_author_keywords + raw_index_keywords
+            data.raw_keywords = data.raw_keywords.map(lambda x: sorted(x))
+            data.raw_keywords = data.raw_keywords.map(lambda x: pd.NA if x == [] else x)
+            data.raw_keywords = data.raw_author_keywords.map(
+                lambda x: "; ".join(x) if isinstance(x, list) else x
+            )
+        data.to_csv(file, sep=",", encoding="utf-8", index=False)
+
+
 def _process__global_citations__column(directory):
 
     sys.stdout.write("--INFO-- Processing `global_citations` column\n")
@@ -1541,7 +1572,8 @@ def _remove_accents_in_database_files(directory):
     for file in files:
         data = pd.read_csv(file, encoding="utf-8")
         #
-        cols = data.select_dtypes(include=[np.object]).columns
+        # cols = data.select_dtypes(include=[np.object]).columns
+        cols = data.select_dtypes(include=["object"]).columns
         data[cols] = data[cols].apply(
             lambda x: x.str.normalize("NFKD")
             .str.encode("ascii", errors="ignore")
@@ -1559,7 +1591,8 @@ def _remove_stranger_chars_in_database_files(directory):
     for file in files:
         data = pd.read_csv(file, encoding="utf-8")
         #
-        cols = data.select_dtypes(include=[np.object]).columns
+        # cols = data.select_dtypes(include=[np.object]).columns
+        cols = data.select_dtypes(include=["object"]).columns
         data[cols] = data[cols].apply(lambda x: x.str.replace("\n", ""))
         data[cols] = data[cols].apply(lambda x: x.str.replace("\r", ""))
         data[cols] = data[cols].apply(lambda x: x.str.replace("&lpar;", "("))
@@ -1621,7 +1654,7 @@ def _apply_scopus2tags_to_database_files(directory):
 
 def _load_scopus2tags_as_dict():
     module_path = os.path.dirname(__file__)
-    file_path = os.path.join(module_path, "files/scopus2tags.csv")
+    file_path = os.path.join(module_path, "../../files/scopus2tags.csv")
     names_dict = {}
     with open(file_path, "r", encoding="utf-8") as file:
         for line in file:
