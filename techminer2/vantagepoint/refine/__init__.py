@@ -7,3 +7,4 @@ from .create_keywords_thesaurus import create_keywords_thesaurus
 from .create_organizations_thesaurus import create_organizations_thesaurus
 from .create_thesaurus import create_thesaurus
 from .find_string import find_string
+from .fuzzy_search import fuzzy_search

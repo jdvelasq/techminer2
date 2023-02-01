@@ -33,7 +33,7 @@ The following fnctions operate on a thesaurus.
             find_string
 
         .. toctree::
-            vantagepoint__fuzzy_search
+            fuzzy_search
 
         .. toctree::
             vantagepoint__find_abbreviations

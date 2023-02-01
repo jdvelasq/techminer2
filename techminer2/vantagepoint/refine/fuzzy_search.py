@@ -7,63 +7,38 @@ Finds a string in the terms of a thesaurus using fuzzy search.
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import vantagepoint__fuzzy_search
->>> vantagepoint__fuzzy_search(
+>>> from techminer2 import vantagepoint
+>>> vantagepoint.refine.fuzzy_search(
 ...     thesaurus_file="keywords.txt",
 ...     patterns='intelligencia',
 ...     threshold=80,
 ...     directory=directory,
 ... )
 ambient intelligence
-artificial general intelligence (agi)
-     artificial general intelligence (agi)
-     artificial general intelligences
 artificial intelligence
      artificial intelligence
      artificial intelligence (ai)
 artificial intelligence & law
-artificial intelligence (ai) governance
-artificial intelligence agent
 artificial intelligence course
      artificial intelligence course
      artificial intelligence courses
-artificial intelligence in education
+artificial intelligence systems
 artificial intelligence technologies
      artificial intelligence technologies
      artificial intelligence technology
-artificial intelligence tools
-artificial narrow intelligence (ani)
-augmented intelligence
 augmented intelligence collaboration
 business intelligence
-     business intelligence
-     business intelligence (bi)
-business process intelligence
 collective intelligence
-     collective intelligence
-     collective intelligences
 competitive intelligence
+computational and artificial intelligence
+     computational and artificial intelligence
+     computational and artificial intelligences
 computational intelligence
-     computational intelligence
-     intelligent computers
-     intelligent computing
-cyber threat intelligence
 financial intelligence units
 intelligence
 intelligence activities
-intelligence decision
-intelligence services
-     intelligence services
-     intelligent services
-intelligent control
-     intelligence control
-     intelligent control
-intelligent systems
-     intelligence systems
-     intelligent systems
+regulatory intelligence
 responsible artificial intelligence
-risk intelligence
-social media intelligence
 
 
 """
@@ -73,10 +48,10 @@ import sys
 import pandas as pd
 from fuzzywuzzy import process
 
-from ._thesaurus import load_file_as_dict
+from ..._thesaurus import load_file_as_dict
 
 
-def vantagepoint__fuzzy_search(
+def fuzzy_search(
     thesaurus_file,
     patterns,
     threshold=80,
