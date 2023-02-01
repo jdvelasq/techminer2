@@ -7,8 +7,8 @@ Creates a organizations thesaurus from the data in the database.
 
 >>> directory = "data/regtech/"
 
->>> from techminer2._create_organizations_thesaurus import create_organizations_thesaurus
->>> create_organizations_thesaurus(directory)
+>>> from techminer2 import vantagepoint
+>>> vantagepoint.refine.create_organizations_thesaurus(directory)
 --INFO-- The data/regtech/processed/organizations.txt thesaurus file was created
 
 
@@ -142,7 +142,9 @@ def _select_organization(affiliation):
 def _load_valid_names():
     module_path = os.path.dirname(__file__)
     with open(
-        os.path.join(module_path, "files/organizations.txt"), "rt", encoding="utf-8"
+        os.path.join(module_path, "../../files/organizations.txt"),
+        "rt",
+        encoding="utf-8",
     ) as file:
         valid_names = file.readlines()
     valid_names = [w.replace("\n", "").lower() for w in valid_names]
@@ -226,7 +228,7 @@ def _load_affiliations_from_country_thesaurus(directory):
 def _convert_countries_to_codes(affiliations):
 
     module_path = os.path.dirname(__file__)
-    filename = os.path.join(module_path, "files/country_codes.txt")
+    filename = os.path.join(module_path, "../../files/country_codes.txt")
     codes_dict = load_file_as_dict(filename)
     codes_dict = {t: k for k, v in codes_dict.items() for t in v}
 
