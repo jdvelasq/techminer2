@@ -8,8 +8,8 @@ the same directory as the documents.csv file.
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import vantagepoint__clean_countries
->>> vantagepoint__clean_countries(directory)
+>>> from techminer2 import vantagepoint
+>>> vantagepoint.refine.clean_countries(directory)
 --INFO-- The data/regtech/processed/countries.txt thesaurus file was applied to affiliations in all databases
 
 """
@@ -20,10 +20,10 @@ import sys
 
 import pandas as pd
 
-from ._thesaurus import read_textfile
+from ..._thesaurus import read_textfile
 
 
-def vantagepoint__clean_countries(directory="./"):
+def clean_countries(directory="./"):
     """Apply country thesaurus."""
 
     # thesaurus preparation

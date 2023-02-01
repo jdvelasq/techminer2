@@ -6,7 +6,7 @@ The following fnctions operate on a thesaurus.
     * **Specialized Thesaurus designed for TechMiner2**:
 
         .. toctree::
-            vantagepoint__clean_countries
+            clean_countries
 
         .. toctree::
             clean_keywords

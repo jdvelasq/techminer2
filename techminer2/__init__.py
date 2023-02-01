@@ -153,10 +153,12 @@ from .vantagepoint__auto_corr_matrix import vantagepoint__auto_corr_matrix
 from .vantagepoint__auto_corr_matrix_list import vantagepoint__auto_corr_matrix_list
 from .vantagepoint__bar_chart import vantagepoint__bar_chart
 from .vantagepoint__bubble_chart import vantagepoint__bubble_chart
-from .vantagepoint__clean_countries import vantagepoint__clean_countries
-from .vantagepoint.refine.clean_keywords import (
-    clean_keywords,
-)
+
+# from .vantagepoint__clean_countries import vantagepoint__clean_countries
+
+# from .vantagepoint.refine.clean_keywords import (
+#    clean_keywords,
+# )
 from .vantagepoint__clean_organizations import vantagepoint__clean_organizations
 from .vantagepoint__cleveland_chart import vantagepoint__cleveland_chart
 from .vantagepoint__co_occ_matrix import vantagepoint__co_occ_matrix

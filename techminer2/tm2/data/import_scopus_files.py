@@ -83,7 +83,6 @@ from tqdm import tqdm
 from ..._create_countries_thesaurus import create_countries_thesaurus
 from ..._create_keywords_thesaurus import create_keywords_thesaurus
 from ..._create_organizations_thesaurus import create_organizations_thesaurus
-from ...vantagepoint__clean_countries import vantagepoint__clean_countries
 from ... import vantagepoint
 from ...vantagepoint__clean_organizations import vantagepoint__clean_organizations
 
@@ -143,7 +142,7 @@ def import_scopus_files(
     #
     # -------------------------------------------------------------------------
     create_countries_thesaurus(directory)
-    vantagepoint__clean_countries(directory)
+    vantagepoint.refine.clean_countries(directory)
     #
     _create__num_global_references__column(directory)
     _complete__source_abbr__column(directory)
