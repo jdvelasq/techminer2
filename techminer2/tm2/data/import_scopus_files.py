@@ -81,7 +81,7 @@ from textblob import TextBlob
 from tqdm import tqdm
 
 
-from ..._create_keywords_thesaurus import create_keywords_thesaurus
+
 from ..._create_organizations_thesaurus import create_organizations_thesaurus
 from ... import vantagepoint
 
@@ -136,7 +136,7 @@ def import_scopus_files(
     )
     #
     _create__raw_words__column(directory)
-    create_keywords_thesaurus(directory=directory)
+    vantagepoint.refine.create_keywords_thesaurus(directory=directory)
     vantagepoint.refine.clean_keywords(directory)
     #
     # -------------------------------------------------------------------------

@@ -19,8 +19,8 @@ import sys
 import pandas as pd
 from nltk.stem import PorterStemmer
 
-from ._load_thesaurus_as_dict import load_thesaurus_as_dict
-from ._load_thesaurus_as_dict_r import load_thesaurus_as_dict_r
+from ..._load_thesaurus_as_dict import load_thesaurus_as_dict
+from ..._load_thesaurus_as_dict_r import load_thesaurus_as_dict_r
 
 
 def create_keywords_thesaurus(directory="./"):
@@ -210,7 +210,7 @@ def _build_fingerprint(keywords_list):
         #
         def load_br2am_dict():
             module_path = os.path.dirname(__file__)
-            filename = os.path.join(module_path, "files/bg2am.txt")
+            filename = os.path.join(module_path, "../../files/bg2am.txt")
             br2am_dict = load_thesaurus_as_dict(filename)
             br2am_dict = {key: value[0] for key, value in br2am_dict.items()}
             return br2am_dict
