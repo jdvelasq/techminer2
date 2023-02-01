@@ -10,8 +10,8 @@ average growth rate.
 >>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/scientopy__top_trending_topics.html"
 
->>> from techminer2 import scientopy__top_trending_topics
->>> scientopy__top_trending_topics(
+>>> from techminer2 import scientopy
+>>> scientopy.top_trending_topics(
 ...     criterion="author_keywords",
 ...     topics_length=5,
 ...     directory=directory,
@@ -25,29 +25,29 @@ average growth rate.
 
 
 
->>> scientopy__top_trending_topics(
+>>> scientopy.top_trending_topics(
 ...     criterion='author_keywords',
 ...     directory=directory,
 ...     topics_length=5,
 ...     start_year=2018,
 ...     end_year=2021,
 ... ).table_.head()
-           author_keywords  Average Growth Rate
-0    regulatory technology                  2.0
-1  artificial intelligence                  1.0
-2     financial technology                  1.0
-3               innovation                  1.0
-4                insurtech                  1.0
+         author_keywords  Average Growth Rate
+0  regulatory technology                  1.5
+1  anti-money laundering                  1.0
+2             regulation                  0.5
+3         accountability                  0.5
+4                   gdpr                  0.5
 
 
 
 """
 from dataclasses import dataclass
 
-from techminer2.scientopy__bar import _filter_indicators_by_custom_topics
+from techminer2.scientopy.bar import _filter_indicators_by_custom_topics
 
-from ._px.bar_px import bar_px
-from .tm2__growth_indicators_by_topic import tm2__growth_indicators_by_topic
+from .._px.bar_px import bar_px
+from ..tm2__growth_indicators_by_topic import tm2__growth_indicators_by_topic
 
 
 @dataclass(init=False)
@@ -56,7 +56,7 @@ class _Results:
     table_: None
 
 
-def scientopy__top_trending_topics(
+def top_trending_topics(
     criterion,
     topics_length=20,
     time_window=2,

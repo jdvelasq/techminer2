@@ -12,8 +12,8 @@ Bar
 >>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/scientopy__bar-1.html"
 
->>> from techminer2 import scientopy__bar
->>> scientopy__bar(
+>>> from techminer2 import scientopy
+>>> scientopy.bar(
 ...    criterion='author_keywords',
 ...    directory=directory,
 ... ).write_html(file_name)
@@ -26,8 +26,8 @@ Bar
 **Time Filter.**
 
 >>> file_name = "sphinx/_static/scientopy__bar-3.html"
->>> from techminer2 import scientopy__bar
->>> scientopy__bar(
+>>> from techminer2 import scientopy
+>>> scientopy.bar(
 ...     criterion='author_keywords',
 ...     start_year=2018,
 ...     end_year=2021,
@@ -42,8 +42,8 @@ Bar
 **Custom Topics Extraction.**
 
 >>> file_name = "sphinx/_static/scientopy__bar-4.html"
->>> from techminer2 import scientopy__bar
->>> scientopy__bar(
+>>> from techminer2 import scientopy
+>>> scientopy.bar(
 ...     criterion='author_keywords',
 ...     custom_topics=[
 ...         "fintech", 
@@ -65,8 +65,8 @@ Bar
 **Filters.**
 
 >>> file_name = "sphinx/_static/scientopy__bar-5.html"
->>> from techminer2 import scientopy__bar
->>> scientopy__bar(
+>>> from techminer2 import scientopy
+>>> scientopy.bar(
 ...     criterion='countries',
 ...     directory=directory,
 ... ).write_html(file_name)
@@ -77,12 +77,14 @@ Bar
 
 
 >>> file_name = "sphinx/_static/scientopy__bar-6.html"
->>> from techminer2 import scientopy__bar
->>> scientopy__bar(
+>>> from techminer2 import scientopy
+>>> scientopy.bar(
 ...     criterion='countries',
 ...     directory=directory,
-...     countries=['United States'],
+...     countries=['Australia', 'United Kingdom', 'United States'],
 ... ).write_html(file_name)
+
+
 
 .. raw:: html
 
@@ -90,8 +92,8 @@ Bar
 
 
 >>> file_name = "sphinx/_static/scientopy__bar-7.html"
->>> from techminer2 import scientopy__bar
->>> scientopy__bar(
+>>> from techminer2 import scientopy
+>>> scientopy.bar(
 ...     criterion='author_keywords',
 ...     directory=directory,
 ...     topics_length=5,
@@ -107,11 +109,11 @@ Bar
 
 
 """
-from ._plots.bar_plot import bar_plot
-from .tm2__growth_indicators_by_topic import tm2__growth_indicators_by_topic
+from .._plots.bar_plot import bar_plot
+from ..tm2__growth_indicators_by_topic import tm2__growth_indicators_by_topic
 
 
-def scientopy__bar(
+def bar(
     criterion,
     time_window=2,
     topics_length=20,

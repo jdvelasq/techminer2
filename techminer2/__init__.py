@@ -93,11 +93,6 @@ from .bibliometrix__treemap import bibliometrix__treemap
 from .bibliometrix__trend_topics import bibliometrix__trend_topics
 from .bibliometrix__word_cloud import bibliometrix__word_cloud
 from .bibliometrix__word_dynamics import bibliometrix__word_dynamics
-from .scientopy__bar import scientopy__bar
-from .scientopy__bar_trends import scientopy__bar_trends
-from .scientopy__time_line import scientopy__time_line
-from .scientopy__top_trending_topics import scientopy__top_trending_topics
-from .scientopy__word_cloud import scientopy__word_cloud
 from .tlab__co_occurrence_analysis__co_word_analysis import (
     tlab__co_occurrence_analysis__co_word_analysis,
 )

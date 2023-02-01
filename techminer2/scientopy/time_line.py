@@ -9,8 +9,8 @@ ScientoPy Time Line Plot.
 
 
 >>> file_name = "sphinx/_static/scientopy__time_line-1.html"
->>> from techminer2 import scientopy__time_line
->>> time_line = scientopy__time_line(
+>>> from techminer2 import scientopy
+>>> time_line = scientopy.time_line(
 ...     criterion="author_keywords",
 ...     topics_length=5,
 ...     directory=directory,
@@ -27,8 +27,8 @@ ScientoPy Time Line Plot.
 **Time Filter.**
 
 >>> file_name = "sphinx/_static/scientopy__time_line-3.html"
->>> from techminer2 import scientopy__time_line
->>> time_line = scientopy__time_line(
+>>> from techminer2 import scientopy
+>>> time_line = scientopy.time_line(
 ...     criterion="author_keywords",
 ...     topics_length=5,
 ...     start_year=2018,
@@ -43,20 +43,20 @@ ScientoPy Time Line Plot.
 
 
 >>> time_line.table_.head()
-   Year          Author Keywords  OCC
-0  2018  artificial intelligence    2
-1  2019  artificial intelligence    1
-2  2020  artificial intelligence    5
-3  2021  artificial intelligence    3
-4  2018               blockchain    2
+   Year Author Keywords  OCC
+0  2018      compliance    0
+1  2019      compliance    1
+2  2020      compliance    3
+3  2021      compliance    1
+4  2018         fintech    2
 
 
 
 **Custom Topics Extraction.**
 
 >>> file_name = "sphinx/_static/scientopy__time_line-4.html"
->>> from techminer2 import scientopy__time_line
->>> time_line = scientopy__time_line(
+>>> from techminer2 import scientopy
+>>> time_line = scientopy.time_line(
 ...     criterion="author_keywords",
 ...     custom_topics=["fintech", "blockchain", "financial regulation", "machine learning"],
 ...     directory=directory,
@@ -69,8 +69,8 @@ ScientoPy Time Line Plot.
 
 
 >>> file_name = "sphinx/_static/scientopy__time_line-5.html"
->>> from techminer2 import scientopy__time_line
->>> time_line = scientopy__time_line(
+>>> from techminer2 import scientopy
+>>> time_line = scientopy.time_line(
 ...     criterion="author_keywords",
 ...     topics_length=5,
 ...     trend_analysis=True,
@@ -96,10 +96,9 @@ import numpy as np
 import pandas as pd
 import plotly.express as px
 
-from .scientopy__bar import _filter_indicators_by_custom_topics
-from .tm2__growth_indicators_by_topic import tm2__growth_indicators_by_topic
-from .tm2__indicators_by_topic_per_year import \
-    tm2__indicators_by_topic_per_year
+from ..tm2__growth_indicators_by_topic import tm2__growth_indicators_by_topic
+from ..tm2__indicators_by_topic_per_year import tm2__indicators_by_topic_per_year
+from .bar import _filter_indicators_by_custom_topics
 
 TEXTLEN = 40
 
@@ -110,7 +109,7 @@ class _Results:
         self.plot_ = None
 
 
-def scientopy__time_line(
+def time_line(
     criterion,
     time_window=2,
     topics_length=5,

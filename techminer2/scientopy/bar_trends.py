@@ -10,8 +10,9 @@ ScientoPy Bar Trends
 >>> directory = "data/regtech/"
 
 >>> file_name = "sphinx/_static/scientpy__bar_trends-1.html"
->>> from techminer2 import scientopy__bar_trends
->>> trends = scientopy__bar_trends(
+
+>>> from techminer2 import scientopy
+>>> trends = scientopy.bar_trends(
 ...     criterion="author_keywords",
 ...     directory=directory,
 ... )
@@ -23,20 +24,19 @@ ScientoPy Bar Trends
 
 
 >>> trends.table_.head()
-                         Before 2021  Between 2021-2022
-author_keywords                                        
-regtech                           49                 20
-fintech                           32                 10
-blockchain                        13                  5
-artificial intelligence            8                  5
-regulatory technology              6                  6
-
+                       Before 2022  Between 2022-2023
+author_keywords                                      
+regtech                         20                  8
+fintech                         10                  2
+regulatory technology            5                  2
+compliance                       5                  2
+regulation                       4                  1
 
 **Time Filter.**
 
 >>> file_name = "sphinx/_static/scientpy__bar_trends-3.html"
->>> from techminer2 import scientopy__bar_trends
->>> trends = scientopy__bar_trends(
+>>> from techminer2 import scientopy
+>>> trends = scientopy.bar_trends(
 ...     criterion="author_keywords",
 ...     start_year=2018,
 ...     end_year=2021,
@@ -53,8 +53,8 @@ regulatory technology              6                  6
 **Custom Topics Extraction.**
 
 >>> file_name = "sphinx/_static/scientpy__bar_trends-4.html"
->>> from techminer2 import scientopy__bar_trends
->>> trends = scientopy__bar_trends(
+>>> from techminer2 import scientopy
+>>> trends = scientopy.bar_trends(
 ...     criterion="author_keywords",
 ...     custom_topics=[
 ...         "fintech", 
@@ -76,8 +76,8 @@ regulatory technology              6                  6
 
 
 >>> file_name = "sphinx/_static/scientpy__bar_trends-5.html"
->>> from techminer2 import scientopy__bar_trends
->>> trends = scientopy__bar_trends(
+>>> from techminer2 import scientopy
+>>> trends = scientopy.bar_trends(
 ...     criterion="author_keywords",
 ...     trend_analysis=True,
 ...     start_year=2018,
@@ -92,11 +92,11 @@ regulatory technology              6                  6
 
 
 """
-## ScientoPy // Bar Trends
+
 import plotly.express as px
 
-from .scientopy__bar import _filter_indicators_by_custom_topics
-from .tm2__growth_indicators_by_topic import tm2__growth_indicators_by_topic
+from ..tm2__growth_indicators_by_topic import tm2__growth_indicators_by_topic
+from .bar import _filter_indicators_by_custom_topics
 
 
 class _Results:
@@ -105,7 +105,7 @@ class _Results:
         self.plot_ = None
 
 
-def scientopy__bar_trends(
+def bar_trends(
     criterion,
     time_window=2,
     topics_length=20,

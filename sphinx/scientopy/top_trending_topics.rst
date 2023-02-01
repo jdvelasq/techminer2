@@ -1,4 +1,4 @@
-.. automodule:: techminer2.scientopy__time_line
+.. automodule:: techminer2.scientopy.top_trending_topics
     :members:
     :undoc-members:
     :show-inheritance:

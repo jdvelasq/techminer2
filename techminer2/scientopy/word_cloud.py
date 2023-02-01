@@ -8,9 +8,9 @@ Word Cloud
 
 **Basic Usage.**
 
->>> from techminer2 import scientopy__word_cloud
+>>> from techminer2 import scientopy
 >>> file_name = "sphinx/images/scientopy__word_cloud-1.png"
->>> scientopy__word_cloud(
+>>> scientopy.word_cloud(
 ...     criterion='author_keywords',
 ...     title="Author Keywords",
 ...     topics_length=50,
@@ -25,9 +25,9 @@ Word Cloud
 
 **Time Filter.**
 
->>> from techminer2 import scientopy__word_cloud
+>>> from techminer2 import scientopy
 >>> file_name = "sphinx/images/scientopy__word_cloud-3.png"
->>> scientopy__word_cloud(
+>>> scientopy.word_cloud(
 ...     criterion='author_keywords',
 ...     title="Author Keywords",
 ...     start_year=2018,
@@ -42,9 +42,9 @@ Word Cloud
 
 **Custom Topics Extraction.**
 
->>> from techminer2 import scientopy__word_cloud
+>>> from techminer2 import scientopy
 >>> file_name = "sphinx/images/scientopy__word_cloud-4.png"
->>> scientopy__word_cloud(
+>>> scientopy.word_cloud(
 ...     criterion='author_keywords',
 ...     custom_topics=[
 ...         "fintech",
@@ -64,20 +64,18 @@ Word Cloud
 
 **Filters (previous search results).**
 
->>> from techminer2 import scientopy__word_cloud
+>>> from techminer2 import scientopy
 >>> file_name = "sphinx/images/scientopy__word_cloud-5.png"
->>> scientopy__word_cloud(
+>>> scientopy.word_cloud(
 ...     criterion='author_keywords',
 ...     custom_topics=[
 ...         "fintech",
 ...         "blockchain",
 ...         "financial regulation",
-...         "machine learning",
-...         "big data",
-...         "cryptocurrency",
+...         "innovation",
 ...     ],
 ...     directory=directory,
-...     countries=["United States"],
+...     countries=["Australia", "United Kingdom", "United States"],
 ... ).savefig(file_name)
 
 .. image:: ../images/scientopy__word_cloud-5.png
@@ -87,9 +85,9 @@ Word Cloud
 
 **Trend Analysis.**
 
->>> from techminer2 import scientopy__word_cloud
+>>> from techminer2 import scientopy
 >>> file_name = "sphinx/images/scientopy__word_cloud-6.png"
->>> scientopy__word_cloud(
+>>> scientopy.word_cloud(
 ...     criterion='author_keywords',
 ...     topics_length=20,
 ...     trend_analysis=True,
@@ -107,39 +105,39 @@ Word Cloud
 ...     criterion="author_keywords", 
 ...     directory=directory,
 ... )[['OCC', 'average_growth_rate']].sort_values(['average_growth_rate', 'OCC'], ascending=False).head(20)
-                                              OCC  average_growth_rate
-author_keywords                                                       
-semantic web                                    3                  0.5
-smart contracts                                 3                  0.5
-ethics                                          2                  0.5
-china                                           2                  0.5
-business models                                 2                  0.5
-proptech (property + technology)                1                  0.5
-register of processing activities               1                  0.5
-regtech (regulation + technology)               1                  0.5
-predictive analytics                            1                  0.5
-regulatory enforcement                          1                  0.5
-algorithmic transparency                        1                  0.5
-technology trend analysis                       1                  0.5
-terrorist financing                             1                  0.5
-text mining                                     1                  0.5
-unsupervised learning                           1                  0.5
-ai-based systems                                1                  0.5
-ai tools                                        1                  0.5
-social network analysis                         1                  0.5
-banking money laundering terrorist financing    1                  0.5
-edutech (education + technology)                1                  0.5
+                             OCC  average_growth_rate
+author_keywords                                      
+challenges                     1                  0.5
+online shareholder voting      1                  0.5
+mifid ii                       1                  0.5
+shareholder monitoring         1                  0.5
+annual general meetings        1                  0.5
+costs of voting                1                  0.5
+companies                      1                  0.5
+benefit                        1                  0.5
+compliance                     7                  0.0
+regtech                       28                 -0.5
+fintech                       12                 -0.5
+regulation                     5                 -0.5
+innovation                     3                 -0.5
+blockchain                     3                 -0.5
+sandbox                        2                 -0.5
+gdpr                           2                 -0.5
+data protection officer        2                 -0.5
+accountability                 2                 -0.5
+anti money laundering (aml)    2                 -0.5
+otc reform                     1                 -0.5
 
 
 
 
 """
-from ._plots.word_cloud_for_indicators import word_cloud_for_indicators
-from .scientopy__bar import _filter_indicators_by_custom_topics
-from .tm2__growth_indicators_by_topic import tm2__growth_indicators_by_topic
+from .._plots.word_cloud_for_indicators import word_cloud_for_indicators
+from ..tm2__growth_indicators_by_topic import tm2__growth_indicators_by_topic
+from .bar import _filter_indicators_by_custom_topics
 
 
-def scientopy__word_cloud(
+def word_cloud(
     criterion,
     time_window=2,
     topics_length=50,
