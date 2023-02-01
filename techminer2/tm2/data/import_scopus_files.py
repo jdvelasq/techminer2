@@ -100,7 +100,6 @@ def import_scopus_files(
     _drop_na_columns_in_database_files(directory)
     _remove_accents_in_database_files(directory)
     _remove_stranger_chars_in_database_files(directory)
-    # _create_filter_file(directory)
     #
     _process__abstract__column(directory)
     _process__authors_id__column(directory)
