@@ -47,6 +47,7 @@ def vantagepoint__clean_keywords(directory="./"):
         for raw_column, column in [
             ("raw_author_keywords", "author_keywords"),
             ("raw_index_keywords", "index_keywords"),
+            ("raw_keywords", "keywords"),
             ("raw_title_words", "title_words"),
             ("raw_abstract_words", "abstract_words"),
             ("raw_words", "words"),
