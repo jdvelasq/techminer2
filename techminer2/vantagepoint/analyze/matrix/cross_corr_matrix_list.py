@@ -4,36 +4,37 @@ Cross-correlation Matrix List
 
 Returns an auto-correlation matrix.
 
->>> from techminer2 import vantagepoint__cross_corr_matrix_list
+>>> from techminer2 import vantagepoint
 >>> directory = "data/regtech/"
 
->>> vantagepoint__cross_corr_matrix_list(
+>>> vantagepoint.analyze.matrix.cross_corr_matrix_list(
 ...     criterion_for_columns='authors',
 ...     criterion_for_rows="author_keywords",
 ...     topics_length=10,
 ...     directory=directory,
 ... )
                   row             column      CORR
-0      Arner DW 7:220     Arner DW 7:220  1.000000
-1   Barberis JN 4:146  Barberis JN 4:146  1.000000
-2     Brennan R 3:008    Brennan R 3:008  1.000000
-3     Brennan R 3:008       Ryan P 3:008  1.000000
-4    Buckley RP 6:217   Buckley RP 6:217  1.000000
+0      Arner DW 3:185     Arner DW 3:185  1.000000
+1   Barberis JN 2:161  Barberis JN 2:161  1.000000
+2     Brennan R 2:014    Brennan R 2:014  1.000000
+3     Brennan R 2:014      Crane M 2:014  1.000000
+4    Buckley RP 3:185   Buckley RP 3:185  1.000000
 ..                ...                ...       ...
-71      Turki M 2:011  Barberis JN 4:146 -0.113228
-72     Arner DW 7:220     Hamdan A 2:011 -0.292322
-73     Arner DW 7:220      Turki M 2:011 -0.292322
-74     Hamdan A 2:011     Arner DW 7:220 -0.292322
-75      Turki M 2:011     Arner DW 7:220 -0.292322
+71        Lin W 2:017      Turki M 2:018 -0.047088
+72      Singh C 2:017     Hamdan A 2:018 -0.047088
+73      Singh C 2:017      Turki M 2:018 -0.047088
+74      Turki M 2:018        Lin W 2:017 -0.047088
+75      Turki M 2:018      Singh C 2:017 -0.047088
 <BLANKLINE>
 [76 rows x 3 columns]
 
+
 """
-from .vantagepoint.analyze.matrix.auto_corr_matrix_list import _transform_to_matrix_list
-from .vantagepoint__cross_corr_matrix import vantagepoint__cross_corr_matrix
+from .auto_corr_matrix_list import _transform_to_matrix_list
+from .cross_corr_matrix import cross_corr_matrix
 
 
-def vantagepoint__cross_corr_matrix_list(
+def cross_corr_matrix_list(
     criterion_for_columns=None,
     criterion_for_rows=None,
     method="pearson",
@@ -48,7 +49,7 @@ def vantagepoint__cross_corr_matrix_list(
 ):
     """Returns an auto-correlation matrix list."""
 
-    matrix = vantagepoint__cross_corr_matrix(
+    matrix = cross_corr_matrix(
         criterion_for_columns=criterion_for_columns,
         criterion_for_rows=criterion_for_rows,
         method=method,
