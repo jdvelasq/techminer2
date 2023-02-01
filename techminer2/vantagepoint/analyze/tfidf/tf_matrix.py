@@ -2,22 +2,21 @@
 TF Matrix
 ===============================================================================
 
-
->>> from techminer2 import vantagepoint__tf_matrix
 >>> directory = "data/regtech/"
 
->>> vantagepoint__tf_matrix(
+>>> from techminer2 import vantagepoint
+>>> vantagepoint.analyze.tfidf.tf_matrix(
 ...     criterion='authors', 
 ...     topic_min_occ=2, 
 ...     directory=directory,
 ... ).head()
-authors                                             Arner DW 7:220  ...  Mayer N 2:002
-article                                                             ...               
-Arner DW, 2017, HANDB OF BLOCKCHAIN, DIGIT FINA...               1  ...              0
-Arner DW, 2017, NORTHWEST J INTL LAW BUS, V37, ...               1  ...              0
-Arner DW, 2019, EUR BUS ORG LAW REV, V20, P55                    1  ...              0
-Arner DW, 2020, EUR BUS ORG LAW REV, V21, P7                     1  ...              0
-Barberis JN, 2016, NEW ECON WINDOWS, P69                         1  ...              0
+authors                                             Arner DW 3:185  ...  Arman AA 2:000
+article                                                             ...                
+Arner DW, 2017, HANDB OF BLOCKCHAIN, DIGIT FINA...               1  ...               0
+Arner DW, 2017, NORTHWEST J INTL LAW BUS, V37, ...               1  ...               0
+Battanta L, 2020, PROC EUR CONF INNOV ENTREPREN...               0  ...               0
+Buckley RP, 2020, J BANK REGUL, V21, P26                         1  ...               0
+Butler T/1, 2018, J RISK MANG FINANCIAL INST, V...               0  ...               0
 <BLANKLINE>
 [5 rows x 15 columns]
 
@@ -25,15 +24,15 @@ Barberis JN, 2016, NEW ECON WINDOWS, P69                         1  ...         
 import numpy as np
 import pandas as pd
 
-from ._items2counters import items2counters
-from ._load_stopwords import load_stopwords
-from ._read_records import read_records
-from .tm2__indicators_by_topic import tm2__indicators_by_topic
+from ...._items2counters import items2counters
+from ...._load_stopwords import load_stopwords
+from ...._read_records import read_records
+from ....tm2__indicators_by_topic import tm2__indicators_by_topic
 
 # pylint: disable=too-many-arguments
 
 
-def vantagepoint__tf_matrix(
+def tf_matrix(
     criterion,
     topics_length=None,
     topic_min_occ=None,

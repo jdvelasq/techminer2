@@ -26,7 +26,7 @@ Barberis JN, 2016, NEW ECON WINDOWS, P69                  0.629705  ...         
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfTransformer
 
-from .vantagepoint__tf_matrix import vantagepoint__tf_matrix
+from .vantagepoint.analyze.tfidf.tf_matrix import tf_matrix
 
 
 def vantagepoint__tf_idf_matrix(
@@ -52,7 +52,7 @@ def vantagepoint__tf_idf_matrix(
     Parameters
     ----------
     """
-    tfmatrix = vantagepoint__tf_matrix(
+    tfmatrix = tf_matrix(
         criterion=criterion,
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,

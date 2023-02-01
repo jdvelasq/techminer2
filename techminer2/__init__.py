@@ -150,6 +150,7 @@ from .vantagepoint.analyze.matrix.auto_corr_matrix_list import auto_corr_matrix_
 from .vantagepoint.analyze.matrix.cross_corr_matrix import cross_corr_matrix
 from .vantagepoint.analyze.matrix.cross_corr_matrix_list import cross_corr_matrix_list
 from .vantagepoint.analyze.matrix.factor_matrix import factor_matrix
+from .vantagepoint.analyze.tfidf.tf_matrix import tf_matrix
 from .vantagepoint__bar_chart import vantagepoint__bar_chart
 from .vantagepoint__bubble_chart import vantagepoint__bubble_chart
 from .vantagepoint__cleveland_chart import vantagepoint__cleveland_chart
@@ -162,7 +163,6 @@ from .vantagepoint__occ_matrix import vantagepoint__occ_matrix
 from .vantagepoint__occ_matrix_list import vantagepoint__occ_matrix_list
 from .vantagepoint__pie_chart import vantagepoint__pie_chart
 from .vantagepoint__tf_idf_matrix import vantagepoint__tf_idf_matrix
-from .vantagepoint__tf_matrix import vantagepoint__tf_matrix
 from .vantagepoint__treemap import vantagepoint__treemap
 from .vantagepoint__word_cloud import vantagepoint__word_cloud
 from .vantagepoint__world_map import vantagepoint__world_map

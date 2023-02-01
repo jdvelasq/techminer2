@@ -50,7 +50,7 @@ import pandas as pd
 from sklearn.decomposition import TruncatedSVD
 
 from .map_chart import map_chart
-from .vantagepoint__tf_matrix import vantagepoint__tf_matrix
+from .vantagepoint.analyze.tfidf.tf_matrix import tf_matrix
 
 
 class _Result:
@@ -78,7 +78,7 @@ def tlab__comparative_analysis__svd_of_tf_matrix(
     **filters,
 ):
 
-    matrix = vantagepoint__tf_matrix(
+    matrix = tf_matrix(
         criterion=criterion,
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,
