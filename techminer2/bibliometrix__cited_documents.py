@@ -1,8 +1,6 @@
 import plotly.express as px
 
-from .tm2.indicators.tm2__bibliometric_indicators_by_document import (
-    tm2__indicators_by_document,
-)
+from .tm2.indicators.tm2__indicators_by_document import tm2__indicators_by_document
 
 
 def bibiometrix_cited_documents(
