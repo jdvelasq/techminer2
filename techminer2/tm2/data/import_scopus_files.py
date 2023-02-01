@@ -80,9 +80,7 @@ from nltk.tokenize import sent_tokenize
 from textblob import TextBlob
 from tqdm import tqdm
 
-from ...vantagepoint.refine._create_countries_thesaurus import (
-    create_countries_thesaurus,
-)
+
 from ..._create_keywords_thesaurus import create_keywords_thesaurus
 from ..._create_organizations_thesaurus import create_organizations_thesaurus
 from ... import vantagepoint
@@ -142,7 +140,7 @@ def import_scopus_files(
     vantagepoint.refine.clean_keywords(directory)
     #
     # -------------------------------------------------------------------------
-    create_countries_thesaurus(directory)
+    vantagepoint.refine.create_countries_thesaurus(directory)
     vantagepoint.refine.clean_countries(directory)
     #
     _create__num_global_references__column(directory)
