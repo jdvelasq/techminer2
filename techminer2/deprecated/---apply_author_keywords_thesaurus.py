@@ -19,7 +19,7 @@ import sys
 
 import pandas as pd
 
-from ._thesaurus import read_textfile
+from .._thesaurus import read_textfile
 
 
 def apply_author_keywords_thesaurus(directory="./"):

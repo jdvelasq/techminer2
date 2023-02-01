@@ -44,8 +44,8 @@ Extract and plot the user custom topics of the selected column.
 
 """
 
-from .stacked_bar_chart import stacked_bar_chart
-from .tm2__growth_indicators_by_topic import tm2__growth_indicators_by_topic
+from ..stacked_bar_chart import stacked_bar_chart
+from ..tm2__growth_indicators_by_topic import tm2__growth_indicators_by_topic
 
 
 def extract_custom_topics(
