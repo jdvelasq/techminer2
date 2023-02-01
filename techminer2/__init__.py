@@ -1,6 +1,9 @@
 """TechMiner 2"""
-from .bibliometrix__annual_scientific_production import (
+from .bibliometrix.overview.bibliometrix__annual_scientific_production import (
     bibliometrix__annual_scientific_production,
+)
+from .bibliometrix.overview.bibliometrix__main_information import (
+    bibliometrix__main_information,
 )
 from .bibliometrix__author_impact import bibliometrix__author_impact
 from .bibliometrix__authors_production_over_time import (
@@ -30,7 +33,6 @@ from .bibliometrix__coupling_matrix_list import bibliometrix__coupling_matrix_li
 from .bibliometrix__coupling_network import bibliometrix__coupling_network
 from .bibliometrix__factorial_analysis import bibliometrix__factorial_analysis_with_mds
 from .bibliometrix__lotka_law import bibliometrix__lotka_law
-from .bibliometrix__main_information import bibliometrix__main_information
 from .bibliometrix__most_frequent_authors import bibliometrix__most_frequent_authors
 from .bibliometrix__most_frequent_countries import bibliometrix__most_frequent_countries
 from .bibliometrix__most_frequent_words import bibliometrix__most_frequent_words
@@ -137,7 +139,8 @@ from .tm2__coverage import tm2__coverage
 from .tm2__extractive_summarization import tm2__extractive_summarization
 from .tm2__growth_indicators_by_topic import tm2__growth_indicators_by_topic
 from .tm2__impact_indicators_by_topic import tm2__impact_indicators_by_topic
-from .tm2__import_scopus_files import tm2__import_scopus_files
+
+# from .tm2.data.import_scopus_files import import_scopus_files
 from .tm2__indicators_by_document import tm2__indicators_by_document
 from .tm2__indicators_by_topic import tm2__indicators_by_topic
 from .tm2__indicators_by_topic_per_year import tm2__indicators_by_topic_per_year

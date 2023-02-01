@@ -1,4 +1,3 @@
-.. automodule:: techminer2.bibliometrix__main_information
+.. automodule:: techminer2.bibliometrix.overview.bibliometrix__main_information
     :members:
-    :undoc-members:
     :show-inheritance:

@@ -14,8 +14,8 @@ Annual Scientific Production
     <iframe src="../../_static/bibliometrix__annual_scientific_production.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .tm2__indicators_by_year import tm2__indicators_by_year
-from ._time_plot import time_plot
+from ..._time_plot import time_plot
+from ...tm2__indicators_by_year import tm2__indicators_by_year
 
 
 def bibliometrix__annual_scientific_production(
