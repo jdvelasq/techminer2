@@ -17,7 +17,7 @@ Collaboration WorldMap
 """
 import plotly.express as px
 
-from .vantagepoint__co_occ_matrix_list import vantagepoint__co_occ_matrix_list
+from .vantagepoint.analyze.matrix.co_occ_matrix_list import co_occ_matrix_list
 
 
 def bibliometrix__collaboration_worldmap(
@@ -25,7 +25,7 @@ def bibliometrix__collaboration_worldmap(
 ):
     """Collaboration World Map"""
 
-    collaboration = vantagepoint__co_occ_matrix_list(
+    collaboration = co_occ_matrix_list(
         criterion="countries",
         topics_length=None,
         topic_min_occ=None,

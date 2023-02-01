@@ -22,7 +22,7 @@ Radial Diagram
 import networkx as nx
 
 from ._get_network_graph_plot import get_network_graph_plot
-from .vantagepoint__co_occ_matrix_list import vantagepoint__co_occ_matrix_list
+from .vantagepoint.analyze.matrix.co_occ_matrix_list import co_occ_matrix_list
 
 
 def tlab__word_associations_radial_diagram(
@@ -39,7 +39,7 @@ def tlab__word_associations_radial_diagram(
 ):
     """Creates a radial diagram of term associations from a co-occurrence matrix."""
 
-    matrix_list = vantagepoint__co_occ_matrix_list(
+    matrix_list = co_occ_matrix_list(
         criterion=criterion,
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,

@@ -20,7 +20,7 @@ Co-Occurrences Plot
 
 """
 from ._plots.bar_plot import bar_plot
-from .vantagepoint__co_occ_matrix_list import vantagepoint__co_occ_matrix_list
+from .vantagepoint.analyze.matrix.co_occ_matrix_list import co_occ_matrix_list
 
 
 def tlab__word_associations_co_occurrences_plot(
@@ -37,7 +37,7 @@ def tlab__word_associations_co_occurrences_plot(
 ):
     """Word Association"""
 
-    matrix_list = vantagepoint__co_occ_matrix_list(
+    matrix_list = co_occ_matrix_list(
         criterion=criterion,
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,

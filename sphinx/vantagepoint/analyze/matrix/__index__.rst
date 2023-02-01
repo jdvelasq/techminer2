@@ -8,7 +8,7 @@ Matrix
             co_occ_matrix
 
         .. toctree::
-            vantagepoint__co_occ_matrix_list
+            co_occ_matrix_list
 
     * **Auto-correlation Matrix**:
 

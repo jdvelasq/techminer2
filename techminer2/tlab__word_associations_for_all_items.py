@@ -26,7 +26,7 @@ All Items (Co-Occurrences)
 
 
 """
-from .vantagepoint__co_occ_matrix_list import vantagepoint__co_occ_matrix_list
+from .vantagepoint.analyze.matrix.co_occ_matrix_list import co_occ_matrix_list
 
 
 def tlab__word_associations_for_all_items(
@@ -42,7 +42,7 @@ def tlab__word_associations_for_all_items(
 ):
     """Computes the co-occurrence matrix list."""
 
-    return vantagepoint__co_occ_matrix_list(
+    return co_occ_matrix_list(
         criterion=criterion,
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,

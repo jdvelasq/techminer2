@@ -81,7 +81,7 @@ from ._items2counters import items2counters
 from ._load_stopwords import load_stopwords
 from ._read_records import read_records
 from .tm2__indicators_by_topic import tm2__indicators_by_topic
-from .vantagepoint__co_occ_matrix_list import _sort_matrix_list
+from .vantagepoint.analyze.matrix.co_occ_matrix_list import _sort_matrix_list
 
 
 def vantagepoint__occ_matrix_list(

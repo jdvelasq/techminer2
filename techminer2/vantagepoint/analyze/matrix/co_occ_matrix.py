@@ -26,7 +26,7 @@ financial services 04:168                    3  ...                          4
 
 
 """
-from ....vantagepoint__co_occ_matrix_list import vantagepoint__co_occ_matrix_list
+from .co_occ_matrix_list import co_occ_matrix_list
 
 
 def co_occ_matrix(
@@ -42,7 +42,7 @@ def co_occ_matrix(
 ):
     """Creates a co-occurrence matrix."""
 
-    matrix_list = vantagepoint__co_occ_matrix_list(
+    matrix_list = co_occ_matrix_list(
         criterion=criterion,
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,
