@@ -53,12 +53,15 @@ from dataclasses import dataclass
 import pandas as pd
 import plotly.express as px
 from sklearn.manifold import MDS, TSNE
-from sklearn.metrics.pairwise import (cosine_distances, euclidean_distances,
-                                      haversine_distances)
+from sklearn.metrics.pairwise import (
+    cosine_distances,
+    euclidean_distances,
+    haversine_distances,
+)
 
 from ._association_index import association_index
 from ._bubble_map import bubble_map
-from .vantagepoint__co_occ_matrix import vantagepoint__co_occ_matrix
+from .vantagepoint.analyze.matrix.co_occ_matrix import co_occ_matrix
 
 
 @dataclass(init=False)
@@ -109,7 +112,7 @@ def tlab__co_occurrence_analysis__co_word_analysis(
     # Algorithm:
     #
 
-    matrix = vantagepoint__co_occ_matrix(
+    matrix = co_occ_matrix(
         criterion=criterion,
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,

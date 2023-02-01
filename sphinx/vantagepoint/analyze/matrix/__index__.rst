@@ -5,7 +5,7 @@ Matrix
     * **Co-occurrence Matrix**:
 
         .. toctree::
-            vantagepoint__co_occ_matrix
+            co_occ_matrix
 
         .. toctree::
             vantagepoint__co_occ_matrix_list

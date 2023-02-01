@@ -77,7 +77,7 @@ from ._get_network_graph_plot import get_network_graph_plot
 from ._matrix_2_matrix_list import matrix_2_matrix_list
 from ._matrix_list_2_network_graph import matrix_list_2_network_graph
 from ._network_community_detection import network_community_detection
-from .vantagepoint__co_occ_matrix import vantagepoint__co_occ_matrix
+from .vantagepoint.analyze.matrix.co_occ_matrix import co_occ_matrix
 
 
 @dataclass(init=False)
@@ -115,7 +115,7 @@ def bibliometrix__co_authorship_network(
             "criterion must be one of: " "{'authors', 'organizations', 'countries'}"
         )
 
-    matrix = vantagepoint__co_occ_matrix(
+    matrix = co_occ_matrix(
         criterion=criterion,
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,

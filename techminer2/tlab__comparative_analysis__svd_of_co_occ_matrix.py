@@ -53,7 +53,7 @@ import pandas as pd
 from sklearn.decomposition import TruncatedSVD
 
 from .map_chart import map_chart
-from .vantagepoint__co_occ_matrix import vantagepoint__co_occ_matrix
+from .vantagepoint.analyze.matrix.co_occ_matrix import co_occ_matrix
 
 
 class _Result:
@@ -80,7 +80,7 @@ def tlab__comparative_analysis__svd_of_co_occ_matrix(
 ):
     """Co-occurrence SVD Map."""
 
-    matrix = vantagepoint__co_occ_matrix(
+    matrix = co_occ_matrix(
         criterion=criterion,
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,
