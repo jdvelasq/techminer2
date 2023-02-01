@@ -1,24 +1,24 @@
 """
-TF-IDF Matrix
+TFIDF Matrix
 ===============================================================================
 
 
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import vantagepoint__tf_idf_matrix
->>> vantagepoint__tf_idf_matrix(
+>>> from techminer2 import vantagepoint
+>>> vantagepoint.analyze.tfidf.tfidf_matrix(
 ...     criterion='authors',
 ...     topic_min_occ=2,
 ...     directory=directory,
 ... ).head()
-authors                                             Arner DW 7:220  ...  Mayer N 2:002
-article                                                             ...               
-Arner DW, 2017, HANDB OF BLOCKCHAIN, DIGIT FINA...        0.522776  ...            0.0
-Arner DW, 2017, NORTHWEST J INTL LAW BUS, V37, ...        0.522776  ...            0.0
-Arner DW, 2019, EUR BUS ORG LAW REV, V20, P55             0.439335  ...            0.0
-Arner DW, 2020, EUR BUS ORG LAW REV, V21, P7              0.522776  ...            0.0
-Barberis JN, 2016, NEW ECON WINDOWS, P69                  0.629705  ...            0.0
+authors                                             Arner DW 3:185  ...  Arman AA 2:000
+article                                                             ...                
+Arner DW, 2017, HANDB OF BLOCKCHAIN, DIGIT FINA...        0.554789  ...             0.0
+Arner DW, 2017, NORTHWEST J INTL LAW BUS, V37, ...        0.554789  ...             0.0
+Battanta L, 2020, PROC EUR CONF INNOV ENTREPREN...        0.000000  ...             0.0
+Buckley RP, 2020, J BANK REGUL, V21, P26                  0.707107  ...             0.0
+Butler T/1, 2018, J RISK MANG FINANCIAL INST, V...        0.000000  ...             0.0
 <BLANKLINE>
 [5 rows x 15 columns]
 
@@ -26,10 +26,10 @@ Barberis JN, 2016, NEW ECON WINDOWS, P69                  0.629705  ...         
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfTransformer
 
-from .vantagepoint.analyze.tfidf.tf_matrix import tf_matrix
+from .tf_matrix import tf_matrix
 
 
-def vantagepoint__tf_idf_matrix(
+def tfidf_matrix(
     criterion,
     topics_length=None,
     topic_min_occ=None,

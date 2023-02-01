@@ -43,7 +43,7 @@ Contexts implemented in T-LAB.
 """
 import pandas as pd
 
-from .vantagepoint__tf_idf_matrix import vantagepoint__tf_idf_matrix
+from .vantagepoint.analyze.tfidf.tfidf_matrix import tfidf_matrix
 
 
 class _ThematicAnalysis:
@@ -144,7 +144,7 @@ class _ThematicAnalysis:
 
     def _build_tf_idf_matrix(self):
 
-        self._tfidf_matrix = vantagepoint__tf_idf_matrix(
+        self._tfidf_matrix = tfidf_matrix(
             criterion=self.criterion,
             topics_length=self.topics_length,
             topic_min_occ=self.topic_min_occ,
