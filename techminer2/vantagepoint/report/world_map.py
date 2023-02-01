@@ -6,8 +6,8 @@ World Map
 >>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/vantagepoint__world_map.html"
 
->>> from techminer2 import vantagepoint__world_map
->>> vantagepoint__world_map(
+>>> from techminer2 import vantagepoint
+>>> vantagepoint.report.world_map(
 ...     criterion="countries", 
 ...     directory=directory,
 ... ).write_html(file_name)
@@ -18,13 +18,13 @@ World Map
 
 
 """
-from ._plots.world_map_plot import world_map_plot
-from .tm2__indicators_by_topic import tm2__indicators_by_topic
+from ..._plots.world_map_plot import world_map_plot
+from ...tm2__indicators_by_topic import tm2__indicators_by_topic
 
 TEXTLEN = 40
 
 
-def vantagepoint__world_map(
+def world_map(
     criterion,
     directory="./",
     database="documents",

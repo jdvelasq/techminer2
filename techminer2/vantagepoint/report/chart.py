@@ -1,16 +1,16 @@
 """Most frequent items in a databases"""
 
-from ._plots.bar_plot import bar_plot
-from ._plots.cleveland_plot import cleveland_plot
-from ._plots.column_plot import column_plot
-from ._plots.line_plot import line_plot
-from ._plots.pie_plot import pie_plot
-from ._plots.treemap_plot import treemap_plot
-from .tm2__indicators_by_topic import tm2__indicators_by_topic
-from .vantagepoint__word_cloud import vantagepoint__word_cloud
+from ..._plots.bar_plot import bar_plot
+from ..._plots.cleveland_plot import cleveland_plot
+from ..._plots.column_plot import column_plot
+from ..._plots.line_plot import line_plot
+from ..._plots.pie_plot import pie_plot
+from ..._plots.treemap_plot import treemap_plot
+from ...tm2__indicators_by_topic import tm2__indicators_by_topic
+from .word_cloud import word_cloud
 
 
-def vantagepoint__chart(
+def chart(
     criterion,
     directory="./",
     database="documents",
@@ -76,7 +76,7 @@ def vantagepoint__chart(
         "line": line_plot,
         "pie": pie_plot,
         "treemap": treemap_plot,
-        "wordcloud": vantagepoint__word_cloud,
+        "wordcloud": word_cloud,
     }[plot]
 
     return plot_function(

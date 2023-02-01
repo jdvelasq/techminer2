@@ -20,7 +20,7 @@ Most Frequent Countries
     <iframe src="../../../_static/bibliometrix__most_frequent_countries.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .vantagepoint__chart import vantagepoint__chart
+from .vantagepoint.report.chart import chart
 
 
 def bibliometrix__most_frequent_countries(
@@ -36,7 +36,7 @@ def bibliometrix__most_frequent_countries(
 ):
     """Plots the number of documents by country using the specified plot."""
 
-    return vantagepoint__chart(
+    return chart(
         criterion="countries",
         directory=directory,
         database=database,

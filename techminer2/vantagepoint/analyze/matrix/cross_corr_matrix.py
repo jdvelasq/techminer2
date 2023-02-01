@@ -29,8 +29,8 @@ Turki M 2:018            0.000000  ...            1.0
 
 
 """
-from ....vantagepoint__occ_matrix import vantagepoint__occ_matrix
 from .auto_corr_matrix import _compute_corr_matrix
+from .occ_matrix import occ_matrix
 
 
 def cross_corr_matrix(
@@ -48,7 +48,7 @@ def cross_corr_matrix(
 ):
     """Compute the cross-correlation matrix."""
 
-    data_matrix = vantagepoint__occ_matrix(
+    data_matrix = occ_matrix(
         criterion_for_columns=criterion_for_columns,
         criterion_for_rows=criterion_for_rows,
         topics_length=topics_length,

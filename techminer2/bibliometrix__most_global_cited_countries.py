@@ -19,7 +19,7 @@ Most Global Cited Countries
     <iframe src="../../../_static/bibliometrix__most_global_cited_countries.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .vantagepoint__chart import vantagepoint__chart
+from .vantagepoint.report.chart import chart
 
 
 def bibliometrix__most_global_cited_countries(
@@ -35,7 +35,7 @@ def bibliometrix__most_global_cited_countries(
 ):
     """Most global cited countries."""
 
-    return vantagepoint__chart(
+    return chart(
         criterion="countries",
         directory=directory,
         database=database,

@@ -27,10 +27,10 @@ Ryan P 3:008                    3  ...                    1
 
 
 """
-from .vantagepoint__occ_matrix_list import vantagepoint__occ_matrix_list
+from .occ_matrix_list import occ_matrix_list
 
 
-def vantagepoint__occ_matrix(
+def occ_matrix(
     criterion_for_columns,
     criterion_for_rows=None,
     topics_length=None,
@@ -47,7 +47,7 @@ def vantagepoint__occ_matrix(
     if criterion_for_rows is None:
         criterion_for_rows = criterion_for_columns
 
-    matrix_list = vantagepoint__occ_matrix_list(
+    matrix_list = occ_matrix_list(
         criterion_for_columns=criterion_for_columns,
         criterion_for_rows=criterion_for_rows,
         topics_length=topics_length,

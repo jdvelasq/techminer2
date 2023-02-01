@@ -77,14 +77,14 @@ Occurrence Matrix List
 
 
 """
-from ._items2counters import items2counters
-from ._load_stopwords import load_stopwords
-from ._read_records import read_records
-from .tm2__indicators_by_topic import tm2__indicators_by_topic
-from .vantagepoint.analyze.matrix.co_occ_matrix_list import _sort_matrix_list
+from ...._items2counters import items2counters
+from ...._load_stopwords import load_stopwords
+from ...._read_records import read_records
+from ....tm2__indicators_by_topic import tm2__indicators_by_topic
+from .co_occ_matrix_list import _sort_matrix_list
 
 
-def vantagepoint__occ_matrix_list(
+def occ_matrix_list(
     criterion_for_columns,
     criterion_for_rows,
     topics_length=None,

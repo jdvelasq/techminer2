@@ -7,8 +7,8 @@ Cleveland Chart
 >>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/vantagepoint__cleveland_chart.html"
 
->>> from techminer2 import vantagepoint__cleveland_chart
->>> vantagepoint__cleveland_chart(
+>>> from techminer2 import vantagepoint
+>>> vantagepoint.report.cleveland_chart(
 ...     criterion="author_keywords", 
 ...     topics_length=20,
 ...     directory=directory,
@@ -19,10 +19,10 @@ Cleveland Chart
     <iframe src="../../_static/vantagepoint__cleveland_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .vantagepoint__chart import vantagepoint__chart
+from .chart import chart
 
 
-def vantagepoint__cleveland_chart(
+def cleveland_chart(
     criterion,
     directory="./",
     database="documents",
@@ -37,7 +37,7 @@ def vantagepoint__cleveland_chart(
 ):
     """Plots a bar chart from a column of a dataframe."""
 
-    return vantagepoint__chart(
+    return chart(
         criterion=criterion,
         directory=directory,
         database=database,

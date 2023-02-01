@@ -18,7 +18,7 @@ Most Relevant Sources
     <iframe src="../../_static/bibliometrix__most_relevant_sources.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .vantagepoint__chart import vantagepoint__chart
+from .vantagepoint.report.chart import chart
 
 
 def bibliometrix__most_relevant_sources(
@@ -34,7 +34,7 @@ def bibliometrix__most_relevant_sources(
 ):
     """Most Relevant Sources."""
 
-    return vantagepoint__chart(
+    return chart(
         criterion="source_abbr",
         directory=directory,
         database=database,

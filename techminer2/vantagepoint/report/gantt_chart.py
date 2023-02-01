@@ -6,8 +6,8 @@ Gantt Chart
 >>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/vantagepoint__gantt_chart.html"
 
->>> from techminer2 import vantagepoint__gantt_chart
->>> vantagepoint__gantt_chart(
+>>> from techminer2 import vantagepoint
+>>> vantagepoint.report.gantt_chart(
 ...     criterion='author_keywords',
 ...     topics_length=20, 
 ...     directory=directory,
@@ -20,11 +20,11 @@ Gantt Chart
 """
 import plotly.express as px
 
-from ._read_records import read_records
-from .tm2__indicators_by_topic import tm2__indicators_by_topic
+from ..._read_records import read_records
+from ...tm2__indicators_by_topic import tm2__indicators_by_topic
 
 
-def vantagepoint__gantt_chart(
+def gantt_chart(
     criterion="author_keywords",
     directory="./",
     topics_length=10,

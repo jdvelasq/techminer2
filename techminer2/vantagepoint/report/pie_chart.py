@@ -1,28 +1,27 @@
 """
-Treemap
+Pie Chart
 ===============================================================================
 
 
-
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/vantagepoint__treemap.html"
+>>> file_name = "sphinx/_static/vantagepoint__pie_chart.html"
 
->>> from techminer2 import vantagepoint__treemap
->>> vantagepoint__treemap(
-...    criterion='author_keywords',
-...    topic_min_occ=3,
-...    directory=directory,
+>>> from techminer2 import vantagepoint
+>>> vantagepoint.report.pie_chart(
+...     criterion='author_keywords',
+...     topics_length=15,
+...     directory=directory,
 ... ).write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../_static/vantagepoint__treemap.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/vantagepoint__pie_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .vantagepoint__chart import vantagepoint__chart
+from .chart import chart
 
 
-def vantagepoint__treemap(
+def pie_chart(
     criterion,
     directory="./",
     database="documents",
@@ -35,9 +34,9 @@ def vantagepoint__treemap(
     title=None,
     **filters,
 ):
-    """Treemap."""
+    """Plots a bar chart from a column of a dataframe."""
 
-    return vantagepoint__chart(
+    return chart(
         criterion=criterion,
         directory=directory,
         database=database,
@@ -49,6 +48,6 @@ def vantagepoint__treemap(
         topic_min_citations=topic_min_citations,
         custom_topics=custom_topics,
         title=title,
-        plot="treemap",
+        plot="pie",
         **filters,
     )

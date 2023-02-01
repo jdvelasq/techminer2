@@ -7,8 +7,8 @@ WordCloud
 >>> file_name = "sphinx/images/vantagepoint__word_cloud.png"
 
 
->>> from techminer2 import vantagepoint__word_cloud
->>> vantagepoint__word_cloud(
+>>> from techminer2 import vantagepoint
+>>> vantagepoint.report.word_cloud(
 ...     criterion='author_keywords',
 ...     title="Author Keywords",
 ...     topics_length=50,
@@ -20,11 +20,11 @@ WordCloud
     :align: center
 
 """
-from ._plots.word_cloud_for_indicators import word_cloud_for_indicators
-from .tm2__indicators_by_topic import tm2__indicators_by_topic
+from ..._plots.word_cloud_for_indicators import word_cloud_for_indicators
+from ...tm2__indicators_by_topic import tm2__indicators_by_topic
 
 
-def vantagepoint__word_cloud(
+def word_cloud(
     criterion,
     directory="./",
     database="documents",

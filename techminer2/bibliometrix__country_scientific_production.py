@@ -17,7 +17,7 @@ Country Scientific Production
     <iframe src="../../../_static/bibliometrix__country_scientific_production.html" height="410px" width="100%" frameBorder="0"></iframe>
 
 """
-from .vantagepoint__world_map import vantagepoint__world_map
+from .vantagepoint.report.world_map import world_map
 
 
 def bibliometrix__country_scientific_production(
@@ -32,7 +32,7 @@ def bibliometrix__country_scientific_production(
 ):
     """Worldmap plot with the number of documents per country."""
 
-    return vantagepoint__world_map(
+    return world_map(
         criterion="countries",
         directory=directory,
         database=database,

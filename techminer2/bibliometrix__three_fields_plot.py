@@ -23,7 +23,7 @@ Three Fields Plot
 """
 import plotly.graph_objects as go
 
-from .vantagepoint__occ_matrix import vantagepoint__occ_matrix
+from .vantagepoint.analyze.matrix.occ_matrix import occ_matrix
 
 
 def bibliometrix__three_fields_plot(
@@ -41,7 +41,7 @@ def bibliometrix__three_fields_plot(
 ):
     """Sankey plot"""
 
-    matrix_left = vantagepoint__occ_matrix(
+    matrix_left = occ_matrix(
         criterion_for_columns=middle_criterion,
         criterion_for_rows=left_criterion,
         topics_length=topics_length_left,
@@ -53,7 +53,7 @@ def bibliometrix__three_fields_plot(
         **filters,
     )
 
-    matrix_right = vantagepoint__occ_matrix(
+    matrix_right = occ_matrix(
         criterion_for_columns=right_criterion,
         criterion_for_rows=middle_criterion,
         topics_length=topics_length_right,

@@ -7,15 +7,15 @@ Bubble Chart
 >>> file_name = "sphinx/_static/vantagepoint__bubble_chart.html"
 
 
->>> from techminer2 import vantagepoint__co_occ_matrix
->>> matrix = vantagepoint__co_occ_matrix(
+>>> from techminer2 import vantagepoint
+>>> matrix = vantagepoint.analyze.matrix.co_occ_matrix(
 ...    criterion='author_keywords',
 ...    topic_min_occ=4,
 ...    directory=directory,
 ... )
 
->>> from techminer2 import vantagepoint__bubble_chart
->>> vantagepoint__bubble_chart(matrix).write_html(file_name)
+
+>>> vantagepoint.report.bubble_chart(matrix).write_html(file_name)
 
 .. raw:: html
 
@@ -25,7 +25,7 @@ Bubble Chart
 import plotly.express as px
 
 
-def vantagepoint__bubble_chart(
+def bubble_chart(
     matrix,
     title=None,
 ):

@@ -1,13 +1,13 @@
 """
-Pie Chart
+Column chart
 ===============================================================================
 
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/vantagepoint__pie_chart.html"
+>>> file_name = "sphinx/_static/vantagepoint__column_chart.html"
 
->>> from techminer2 import vantagepoint__pie_chart
->>> vantagepoint__pie_chart(
+>>> from techminer2 import vantagepoint
+>>> vantagepoint.report.column_chart(
 ...     criterion='author_keywords',
 ...     topics_length=15,
 ...     directory=directory,
@@ -15,13 +15,13 @@ Pie Chart
 
 .. raw:: html
 
-    <iframe src="../../_static/vantagepoint__pie_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/vantagepoint__column_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .vantagepoint__chart import vantagepoint__chart
+from .chart import chart
 
 
-def vantagepoint__pie_chart(
+def column_chart(
     criterion,
     directory="./",
     database="documents",
@@ -32,11 +32,11 @@ def vantagepoint__pie_chart(
     topic_min_citations=None,
     custom_topics=None,
     title=None,
-    **filters,
+    **filters
 ):
     """Plots a bar chart from a column of a dataframe."""
 
-    return vantagepoint__chart(
+    return chart(
         criterion=criterion,
         directory=directory,
         database=database,
@@ -48,6 +48,6 @@ def vantagepoint__pie_chart(
         topic_min_citations=topic_min_citations,
         custom_topics=custom_topics,
         title=title,
-        plot="pie",
+        plot="column",
         **filters,
     )

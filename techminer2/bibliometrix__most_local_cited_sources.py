@@ -18,7 +18,7 @@ Most Local Cited Sources (from reference lists)
     <iframe src="../../_static/bibliometrix__most_local_cited_sources.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .vantagepoint__chart import vantagepoint__chart
+from .vantagepoint.report.chart import chart
 
 
 def bibliometrix__most_local_cited_sources(
@@ -34,7 +34,7 @@ def bibliometrix__most_local_cited_sources(
 ):
     """Most Local Cited Sources (from Reference Lists)."""
 
-    return vantagepoint__chart(
+    return chart(
         criterion="source_abbr",
         directory=directory,
         database=database,

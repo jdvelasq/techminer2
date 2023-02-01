@@ -19,7 +19,7 @@ Most Local Cited Institutions
     <iframe src="../../../_static/bibliometrix__most_local_cited_organizations.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .vantagepoint__chart import vantagepoint__chart
+from .vantagepoint.report.chart import chart
 
 
 def bibliometrix__most_local_cited_organizations(
@@ -35,7 +35,7 @@ def bibliometrix__most_local_cited_organizations(
 ):
     """Most Local Cited Organizations (from Reference Lists)."""
 
-    return vantagepoint__chart(
+    return chart(
         criterion="organizations",
         directory=directory,
         database=database,

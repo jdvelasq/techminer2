@@ -1,27 +1,28 @@
 """
-Column chart
+Treemap
 ===============================================================================
 
 
->>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/vantagepoint__column_chart.html"
 
->>> from techminer2 import vantagepoint__column_chart
->>> vantagepoint__column_chart(
-...     criterion='author_keywords',
-...     topics_length=15,
-...     directory=directory,
+>>> directory = "data/regtech/"
+>>> file_name = "sphinx/_static/vantagepoint__treemap.html"
+
+>>> from techminer2 import vantagepoint
+>>> vantagepoint.report.treemap(
+...    criterion='author_keywords',
+...    topic_min_occ=3,
+...    directory=directory,
 ... ).write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../_static/vantagepoint__column_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/vantagepoint__treemap.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .vantagepoint__chart import vantagepoint__chart
+from .chart import chart
 
 
-def vantagepoint__column_chart(
+def treemap(
     criterion,
     directory="./",
     database="documents",
@@ -32,11 +33,11 @@ def vantagepoint__column_chart(
     topic_min_citations=None,
     custom_topics=None,
     title=None,
-    **filters
+    **filters,
 ):
-    """Plots a bar chart from a column of a dataframe."""
+    """Treemap."""
 
-    return vantagepoint__chart(
+    return chart(
         criterion=criterion,
         directory=directory,
         database=database,
@@ -48,6 +49,6 @@ def vantagepoint__column_chart(
         topic_min_citations=topic_min_citations,
         custom_topics=custom_topics,
         title=title,
-        plot="column",
+        plot="treemap",
         **filters,
     )

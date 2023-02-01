@@ -7,8 +7,8 @@ Bar Chart
 >>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/vantagepoint__bar_chart.html"
 
->>> from techminer2 import vantagepoint__bar_chart
->>> vantagepoint__bar_chart(
+>>> from techminer2 import vantagepoint
+>>> vantagepoint.report.bar_chart(
 ...    criterion='author_keywords',
 ...    topic_min_occ=3,
 ...    directory=directory,
@@ -19,10 +19,10 @@ Bar Chart
     <iframe src="../../_static/vantagepoint__bar_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .vantagepoint__chart import vantagepoint__chart
+from .chart import chart
 
 
-def vantagepoint__bar_chart(
+def bar_chart(
     criterion,
     directory="./",
     database="documents",
@@ -37,7 +37,7 @@ def vantagepoint__bar_chart(
 ):
     """Plots a bar chart from a column of a dataframe."""
 
-    return vantagepoint__chart(
+    return chart(
         criterion=criterion,
         directory=directory,
         database=database,

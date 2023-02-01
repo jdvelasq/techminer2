@@ -5,17 +5,15 @@ Heat Map
 
 >>> directory = "data/regtech/"
 
->>> from techminer2.vantagepoint__co_occ_matrix import vantagepoint__co_occ_matrix
->>> matrix = vantagepoint__co_occ_matrix(
+>>> from techminer2 import vantagepoint
+>>> matrix = vantagepoint.analyze.matrix.co_occ_matrix(
 ...    criterion='author_keywords',
 ...    topic_min_occ=3,
 ...    directory=directory,
 ... )
 >>> file_name = "sphinx/_static/vantagepoint__heat_map-1.html"
 
-
->>> from techminer2.vantagepoint__heat_map import vantagepoint__heat_map
->>> vantagepoint__heat_map(
+>>> vantagepoint.report.heat_map(
 ...     matrix,
 ... ).write_html(file_name)
 
@@ -33,7 +31,7 @@ import numpy as np
 import plotly.express as px
 
 
-def vantagepoint__heat_map(matrix, colormap="Blues"):
+def heat_map(matrix, colormap="Blues"):
 
     """Make a heat map."""
 

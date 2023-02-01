@@ -24,7 +24,7 @@ Most Frequent Words
 
 
 """
-from .vantagepoint__chart import vantagepoint__chart
+from .vantagepoint.report.chart import chart
 
 
 def bibliometrix__most_frequent_words(
@@ -41,7 +41,7 @@ def bibliometrix__most_frequent_words(
 ):
     """Plots the number of documents by country using the specified plot."""
 
-    return vantagepoint__chart(
+    return chart(
         criterion=criterion,
         directory=directory,
         database=database,

@@ -19,7 +19,7 @@ Most Relevant Organizations
     <iframe src="../../../_static/bibliometrix__most_relevant_organizations.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .vantagepoint__chart import vantagepoint__chart
+from .vantagepoint.report.chart import chart
 
 
 def bibliometrix__most_relevant_organizations(
@@ -35,7 +35,7 @@ def bibliometrix__most_relevant_organizations(
 ):
     """Plots the number of documents by organizations using the specified plot."""
 
-    return vantagepoint__chart(
+    return chart(
         criterion="organizations",
         directory=directory,
         database=database,

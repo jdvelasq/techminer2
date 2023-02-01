@@ -86,9 +86,12 @@ from ._items2counters import items2counters
 from ._load_stopwords import load_stopwords
 from ._read_records import read_records
 from .tm2__indicators_by_topic import tm2__indicators_by_topic
-from .vantagepoint__matrix_viewer import (_color_node_points,
-                                          _create_network_graph,
-                                          _create_traces, _make_layout)
+from .vantagepoint.report.matrix_viewer import (
+    _color_node_points,
+    _create_network_graph,
+    _create_traces,
+    _make_layout,
+)
 
 
 @dataclass(init=False)

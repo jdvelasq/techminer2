@@ -1,4 +1,4 @@
-.. automodule:: techminer2.vantagepoint__matrix_viewer
+.. automodule:: techminer2.vantagepoint.report.treemap
     :members:
     :undoc-members:
     :show-inheritance:

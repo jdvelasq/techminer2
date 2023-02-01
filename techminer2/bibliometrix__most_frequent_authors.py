@@ -19,7 +19,7 @@ Most Frequent Authors
     <iframe src="../../../_static/bibliometrix__most_frequent_authors.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from .vantagepoint__chart import vantagepoint__chart
+from .vantagepoint.report.chart import chart
 
 
 def bibliometrix__most_frequent_authors(
@@ -35,7 +35,7 @@ def bibliometrix__most_frequent_authors(
 ):
     """Plots the number of documents by author using the specified plot."""
 
-    return vantagepoint__chart(
+    return chart(
         criterion="authors",
         directory=directory,
         database=database,

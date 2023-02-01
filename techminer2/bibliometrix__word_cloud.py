@@ -20,7 +20,7 @@ WordCloud
     :align: center
 
 """
-from .vantagepoint__word_cloud import vantagepoint__word_cloud
+from .vantagepoint.report.word_cloud import word_cloud
 
 
 def bibliometrix__word_cloud(
@@ -41,7 +41,7 @@ def bibliometrix__word_cloud(
 ):
     """Plots a word cloud from a dataframe."""
 
-    return vantagepoint__word_cloud(
+    return word_cloud(
         criterion=criterion,
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,
