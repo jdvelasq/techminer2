@@ -159,7 +159,7 @@ from .vantagepoint__bubble_chart import vantagepoint__bubble_chart
 # from .vantagepoint.refine.clean_keywords import (
 #    clean_keywords,
 # )
-from .vantagepoint__clean_organizations import vantagepoint__clean_organizations
+# from .vantagepoint.refine.clean_organizations import clean_organizations
 from .vantagepoint__cleveland_chart import vantagepoint__cleveland_chart
 from .vantagepoint__co_occ_matrix import vantagepoint__co_occ_matrix
 from .vantagepoint__co_occ_matrix_list import vantagepoint__co_occ_matrix_list

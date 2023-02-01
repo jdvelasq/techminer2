@@ -84,7 +84,7 @@ from ..._create_countries_thesaurus import create_countries_thesaurus
 from ..._create_keywords_thesaurus import create_keywords_thesaurus
 from ..._create_organizations_thesaurus import create_organizations_thesaurus
 from ... import vantagepoint
-from ...vantagepoint__clean_organizations import vantagepoint__clean_organizations
+from ...vantagepoint.refine.clean_organizations import clean_organizations
 
 
 def import_scopus_files(
@@ -157,7 +157,7 @@ def import_scopus_files(
     #
     # Organizations ------------------------------------------------------------
     create_organizations_thesaurus(directory=directory)
-    vantagepoint__clean_organizations(directory=directory)
+    vantagepoint.refine.clean_organizations(directory=directory)
 
     sys.stdout.write("--INFO-- Process finished!!!\n")
     _report_records(directory)

@@ -12,7 +12,7 @@ The following fnctions operate on a thesaurus.
             clean_keywords
 
         .. toctree::
-            vantagepoint__clean_organizations
+            clean_organizations
 
 
 
