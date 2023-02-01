@@ -2,7 +2,7 @@
 import os
 
 from ._create_directory import create_directory
-from .techminer2.reports.tm2__extractive_summarization import (
+from .techminer.reports.tm2__extractive_summarization import (
     tm2__extractive_summarization,
 )
 

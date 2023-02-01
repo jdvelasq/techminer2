@@ -19,7 +19,7 @@ TreeMap
 
 """
 from ._plots.treemap_plot import treemap_plot
-from .techminer2.indicators.tm2__indicators_by_topic import tm2__indicators_by_topic
+from .techminer.indicators.tm2__indicators_by_topic import tm2__indicators_by_topic
 
 
 def bibliometrix__treemap(
