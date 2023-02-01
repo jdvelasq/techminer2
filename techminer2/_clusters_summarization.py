@@ -2,7 +2,9 @@
 import os
 
 from ._create_directory import create_directory
-from .tm2.reports.tm2__extractive_summarization import tm2__extractive_summarization
+from .techminer2.reports.tm2__extractive_summarization import (
+    tm2__extractive_summarization,
+)
 
 
 def clusters_summarization(

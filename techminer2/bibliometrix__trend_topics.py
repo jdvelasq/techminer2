@@ -79,8 +79,10 @@ from dataclasses import dataclass
 import numpy as np
 import plotly.graph_objects as go
 
-from .tm2.indicators.tm2__annual_occurrence_matrix import tm2__annual_occurrence_matrix
-from .tm2.indicators.tm2__indicators_by_topic import tm2__indicators_by_topic
+from .techminer2.indicators.tm2__annual_occurrence_matrix import (
+    tm2__annual_occurrence_matrix,
+)
+from .techminer2.indicators.tm2__indicators_by_topic import tm2__indicators_by_topic
 
 
 @dataclass(init=False)

@@ -45,7 +45,7 @@ Extract and plot the user custom topics of the selected column.
 """
 
 from ..stacked_bar_chart import stacked_bar_chart
-from ..tm2.indicators.tm2__growth_indicators_by_topic import (
+from ..techminer.indicators.tm2__growth_indicators_by_topic import (
     tm2__growth_indicators_by_topic,
 )
 

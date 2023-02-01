@@ -6,7 +6,7 @@ from ..._plots.column_plot import column_plot
 from ..._plots.line_plot import line_plot
 from ..._plots.pie_plot import pie_plot
 from ..._plots.treemap_plot import treemap_plot
-from ...tm2.indicators.tm2__indicators_by_topic import tm2__indicators_by_topic
+from ...techminer.indicators.tm2__indicators_by_topic import tm2__indicators_by_topic
 from .word_cloud import word_cloud
 
 

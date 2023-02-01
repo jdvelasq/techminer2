@@ -15,7 +15,7 @@ Annual Scientific Production
 
 """
 from ..._time_plot import time_plot
-from ...tm2.indicators.tm2__indicators_by_year import tm2__indicators_by_year
+from ...techminer.indicators.tm2__indicators_by_year import tm2__indicators_by_year
 
 
 def bibliometrix__annual_scientific_production(

@@ -36,7 +36,7 @@ from dataclasses import dataclass
 
 import plotly.express as px
 
-from .tm2.indicators.tm2__collaboration_indicators_by_topic import (
+from .techminer2.indicators.tm2__collaboration_indicators_by_topic import (
     tm2__collaboration_indicators_by_topic,
 )
 

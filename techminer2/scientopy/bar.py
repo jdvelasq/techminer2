@@ -110,7 +110,7 @@ Bar
 
 """
 from .._plots.bar_plot import bar_plot
-from ..tm2.indicators.tm2__growth_indicators_by_topic import (
+from ..techminer.indicators.tm2__growth_indicators_by_topic import (
     tm2__growth_indicators_by_topic,
 )
 
