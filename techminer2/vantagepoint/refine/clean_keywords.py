@@ -22,10 +22,10 @@ import sys
 
 import pandas as pd
 
-from ._thesaurus import read_textfile
+from ..._thesaurus import read_textfile
 
 
-def vantagepoint__clean_keywords(directory="./"):
+def clean_keywords(directory="./"):
     """Clean all words columns in the records using a thesaurus (keywrords.txt)."""
 
     sys.stdout.write(

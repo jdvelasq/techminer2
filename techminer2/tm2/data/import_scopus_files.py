@@ -84,7 +84,7 @@ from ..._create_countries_thesaurus import create_countries_thesaurus
 from ..._create_keywords_thesaurus import create_keywords_thesaurus
 from ..._create_organizations_thesaurus import create_organizations_thesaurus
 from ...vantagepoint__clean_countries import vantagepoint__clean_countries
-from ...vantagepoint__clean_keywords import vantagepoint__clean_keywords
+from ... import vantagepoint
 from ...vantagepoint__clean_organizations import vantagepoint__clean_organizations
 
 
@@ -139,7 +139,7 @@ def import_scopus_files(
     #
     _create__raw_words__column(directory)
     create_keywords_thesaurus(directory=directory)
-    vantagepoint__clean_keywords(directory)
+    vantagepoint.refine.clean_keywords(directory)
     #
     # -------------------------------------------------------------------------
     create_countries_thesaurus(directory)
