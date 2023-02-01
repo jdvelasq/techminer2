@@ -4,20 +4,10 @@ Find Abbreviations
 
 Finds string abbreviations in the keywords of a thesaurus.
 
->>> directory = "data/mateo/"
-
->>> from techminer2 import vantagepoint__find_abbreviations
->>> vantagepoint__find_abbreviations(
-...     "keywords.txt",
-...     directory=directory,
-... )
-
-
-
 >>> directory = "data/regtech/"
 
->>> from techminer2 import vantagepoint__find_abbreviations
->>> vantagepoint__find_abbreviations(
+>>> from techminer2 import vantagepoint
+>>> vantagepoint.refine.find_abbreviations(
 ...     "keywords.txt",
 ...     directory=directory,
 ... )
@@ -30,10 +20,10 @@ from os.path import isfile, join
 
 import pandas as pd
 
-from ._thesaurus import load_file_as_dict
+from ..._thesaurus import load_file_as_dict
 
 
-def vantagepoint__find_abbreviations(
+def find_abbreviations(
     thesaurus_file="keywords.txt",
     directory="./",
 ):

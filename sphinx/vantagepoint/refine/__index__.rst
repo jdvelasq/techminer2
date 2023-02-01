@@ -36,7 +36,7 @@ The following fnctions operate on a thesaurus.
             fuzzy_search
 
         .. toctree::
-            vantagepoint__find_abbreviations
+            find_abbreviations
         
 
 
