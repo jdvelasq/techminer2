@@ -31,7 +31,7 @@ regulation               5  ...                             4
  'local_citations_per_document']
 
 """
-from ...tm2__indicators_by_topic import tm2__indicators_by_topic
+from ...core.indicators.tm2__indicators_by_topic import tm2__indicators_by_topic
 
 
 def list_view(

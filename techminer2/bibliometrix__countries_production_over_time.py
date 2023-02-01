@@ -21,10 +21,10 @@ Countries' Production over Time
 from dataclasses import dataclass
 
 from .bibliometrix__documents_per import bibliometrix__documents_per
-from .bibliometrix__production_over_time import \
-    bibliometrix__production_over_time
-from .tm2__indicators_by_topic_per_year import \
-    tm2__indicators_by_topic_per_year
+from .bibliometrix__production_over_time import bibliometrix__production_over_time
+from .core.indicators.tm2__indicators_by_topic_per_year import (
+    tm2__indicators_by_topic_per_year,
+)
 
 
 @dataclass(init=False)

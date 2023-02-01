@@ -1,5 +1,5 @@
 """
-Indicators by topic per year
+Bibliometric Indicators by Topic per Year
 ===============================================================================
 
 
@@ -49,7 +49,7 @@ Becker M          2019    1  ...                     0.000
 """
 import pandas as pd
 
-from ._read_records import read_records
+from ..._read_records import read_records
 
 
 def tm2__indicators_by_topic_per_year(

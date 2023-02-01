@@ -93,6 +93,28 @@ from .bibliometrix__treemap import bibliometrix__treemap
 from .bibliometrix__trend_topics import bibliometrix__trend_topics
 from .bibliometrix__word_cloud import bibliometrix__word_cloud
 from .bibliometrix__word_dynamics import bibliometrix__word_dynamics
+from .core.indicators.tm2__annual_occurrence_matrix import tm2__annual_occurrence_matrix
+from .core.indicators.tm2__collaboration_indicators_by_topic import (
+    tm2__collaboration_indicators_by_topic,
+)
+from .core.indicators.tm2__growth_indicators_by_topic import (
+    tm2__growth_indicators_by_topic,
+)
+from .core.indicators.tm2__impact_indicators_by_topic import (
+    tm2__impact_indicators_by_topic,
+)
+from .core.indicators.tm2__indicators_by_document import tm2__indicators_by_document
+from .core.indicators.tm2__indicators_by_topic import tm2__indicators_by_topic
+from .core.indicators.tm2__indicators_by_topic_per_year import (
+    tm2__indicators_by_topic_per_year,
+)
+from .core.indicators.tm2__indicators_by_year import tm2__indicators_by_year
+from .core.reports.tm2__abstracts_report import tm2__abstracts_report
+from .core.reports.tm2__coverage import tm2__coverage
+from .core.reports.tm2__extractive_summarization import tm2__extractive_summarization
+from .core.reports.tm2__most_cited_documents import tm2__most_cited_documents
+from .core.reports.tm2__raw_document_types import tm2__raw_document_types
+from .core.tm2__replace import tm2__replace
 from .tlab__co_occurrence_analysis__co_word_analysis import (
     tlab__co_occurrence_analysis__co_word_analysis,
 )
@@ -125,19 +147,3 @@ from .tlab__word_associations_mds_map import tlab__word_associations_mds_map
 from .tlab__word_associations_radial_diagram import (
     tlab__word_associations_radial_diagram,
 )
-from .tm2__abstracts_report import tm2__abstracts_report
-from .tm2__annual_occurrence_matrix import tm2__annual_occurrence_matrix
-from .tm2__collaboration_indicators_by_topic import (
-    tm2__collaboration_indicators_by_topic,
-)
-from .tm2__coverage import tm2__coverage
-from .tm2__extractive_summarization import tm2__extractive_summarization
-from .tm2__growth_indicators_by_topic import tm2__growth_indicators_by_topic
-from .tm2__impact_indicators_by_topic import tm2__impact_indicators_by_topic
-from .tm2__indicators_by_document import tm2__indicators_by_document
-from .tm2__indicators_by_topic import tm2__indicators_by_topic
-from .tm2__indicators_by_topic_per_year import tm2__indicators_by_topic_per_year
-from .tm2__indicators_by_year import tm2__indicators_by_year
-from .tm2__most_cited_documents import tm2__most_cited_documents
-from .tm2__raw_document_types import tm2__raw_document_types
-from .tm2__replace import tm2__replace

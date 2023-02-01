@@ -3,7 +3,7 @@
 import numpy as np
 
 from ._load_stopwords import load_stopwords
-from .tm2__indicators_by_topic import tm2__indicators_by_topic
+from .core.indicators.tm2__indicators_by_topic import tm2__indicators_by_topic
 
 
 def items2counters(

@@ -36,7 +36,7 @@ Brunei Darussalam    1  ...                  3.00
 import numpy as np
 import pandas as pd
 
-from ._read_records import read_records
+from ..._read_records import read_records
 
 
 def tm2__impact_indicators_by_topic(

@@ -7,7 +7,9 @@ from ._px.cleveland_px import cleveland_px
 from ._px.column_px import column_px
 from ._px.line_px import line_px
 from ._px.pie_px import pie_px
-from .tm2__impact_indicators_by_topic import tm2__impact_indicators_by_topic
+from .core.indicators.tm2__impact_indicators_by_topic import (
+    tm2__impact_indicators_by_topic,
+)
 
 TEXTLEN = 40
 

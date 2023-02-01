@@ -1,5 +1,5 @@
 """
-Document Indicators
+Bibliometric indicators by document
 ===============================================================================
 
 
@@ -30,7 +30,7 @@ Arner DW, 2019, EUR BUS ORG LAW REV, V20, P55                     18  ...       
 
 """
 
-from ._read_records import read_records
+from ..._read_records import read_records
 
 
 def tm2__indicators_by_document(

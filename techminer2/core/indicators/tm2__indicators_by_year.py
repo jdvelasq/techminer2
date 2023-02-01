@@ -1,5 +1,5 @@
 """
-Indicators by Year
+Bibliometric Indicators by Year
 ===============================================================================
 
 
@@ -63,7 +63,7 @@ year                ...
 """
 import plotly.express as px
 
-from ._read_records import read_records
+from ..._read_records import read_records
 
 
 def tm2__indicators_by_year(

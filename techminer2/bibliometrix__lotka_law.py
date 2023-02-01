@@ -31,7 +31,7 @@ from dataclasses import dataclass
 
 import plotly.graph_objects as go
 
-from .tm2__indicators_by_topic import tm2__indicators_by_topic
+from .core.indicators.tm2__indicators_by_topic import tm2__indicators_by_topic
 
 
 @dataclass(init=False)

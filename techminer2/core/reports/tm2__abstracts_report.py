@@ -30,7 +30,7 @@ import textwrap
 
 import pandas as pd
 
-from ._read_records import read_records
+from ..._read_records import read_records
 
 
 def tm2__abstracts_report(

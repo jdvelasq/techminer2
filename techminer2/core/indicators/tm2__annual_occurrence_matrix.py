@@ -21,8 +21,7 @@ Zetzsche DA     0     0     1     3     0     0
 
 
 from .tm2__indicators_by_topic import tm2__indicators_by_topic
-from .tm2__indicators_by_topic_per_year import \
-    tm2__indicators_by_topic_per_year
+from .tm2__indicators_by_topic_per_year import tm2__indicators_by_topic_per_year
 
 
 def tm2__annual_occurrence_matrix(

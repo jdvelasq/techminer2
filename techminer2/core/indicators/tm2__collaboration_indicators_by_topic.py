@@ -1,5 +1,5 @@
 """
-Collaboration Indicators
+Collaboration Indicators by Topic
 ===============================================================================
 
 
@@ -32,7 +32,7 @@ Hong Kong         8               239  ...                     6      0.75
 
 import numpy as np
 
-from ._read_records import read_records
+from ..._read_records import read_records
 
 
 def tm2__collaboration_indicators_by_topic(

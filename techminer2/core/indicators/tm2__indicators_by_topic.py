@@ -1,5 +1,5 @@
 """
-Indicators by topic
+Bibliometric Indicators by Topic
 ===============================================================================
 
 
@@ -31,7 +31,7 @@ Ryan P         3  ...                             0
  'local_citations_per_document']
 
 """
-from ._read_records import read_records
+from ..._read_records import read_records
 
 
 def tm2__indicators_by_topic(

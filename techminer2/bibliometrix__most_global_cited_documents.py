@@ -22,7 +22,9 @@ import textwrap
 
 from ._read_records import read_records
 from .bibliometrix__cited_documents import bibiometrix_cited_documents
-from .tm2__indicators_by_document import tm2__indicators_by_document
+from .core.indicators.tm2__bibliometric_indicators_by_document import (
+    tm2__indicators_by_document,
+)
 
 
 def bibliometrix__most_global_cited_documents(

@@ -57,7 +57,7 @@ def tm2__raw_document_types(directory):
         data = _concat_raw_csv_files(os.path.join(directory, "raw", folder), quiet=True)
         document_types = data["Document Type"].dropna()
         document_types = document_types.value_counts()
-        sys.stdout.write(f"--INFO__ Document types in: {folder}\n")
+        sys.stdout.write(f"--INFO-- Document types in: {folder}\n")
         print(document_types)
         print("")
         print("")

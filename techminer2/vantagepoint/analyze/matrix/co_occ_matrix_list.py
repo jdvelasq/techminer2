@@ -105,7 +105,7 @@ Co-occurrence Matrix List
 from ...._items2counters import items2counters
 from ...._load_stopwords import load_stopwords
 from ...._read_records import read_records
-from ....tm2__indicators_by_topic import tm2__indicators_by_topic
+from ....core.indicators.tm2__indicators_by_topic import tm2__indicators_by_topic
 
 
 def co_occ_matrix_list(

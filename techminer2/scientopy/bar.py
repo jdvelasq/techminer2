@@ -110,7 +110,9 @@ Bar
 
 """
 from .._plots.bar_plot import bar_plot
-from ..tm2__growth_indicators_by_topic import tm2__growth_indicators_by_topic
+from ..core.indicators.tm2__growth_indicators_by_topic import (
+    tm2__growth_indicators_by_topic,
+)
 
 
 def bar(

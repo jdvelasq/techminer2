@@ -6,9 +6,10 @@ import numpy as np
 import pandas as pd
 import plotly.express as px
 
-from .tm2__indicators_by_topic import tm2__indicators_by_topic
-from .tm2__indicators_by_topic_per_year import \
-    tm2__indicators_by_topic_per_year
+from .core.indicators.tm2__indicators_by_topic import tm2__indicators_by_topic
+from .core.indicators.tm2__indicators_by_topic_per_year import (
+    tm2__indicators_by_topic_per_year,
+)
 
 TEXTLEN = 40
 

@@ -32,8 +32,8 @@ regulatory technology              6  ...                 -0.5
 import numpy as np
 import pandas as pd
 
-from ._load_stopwords import load_stopwords
-from ._read_records import read_records
+from ..._load_stopwords import load_stopwords
+from ..._read_records import read_records
 
 
 def tm2__growth_indicators_by_topic(
