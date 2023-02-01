@@ -7,23 +7,23 @@ Returns an auto-correlation matrix.
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import vantagepoint__auto_corr_matrix
->>> vantagepoint__auto_corr_matrix(
+>>> from techminer2 import vantagepoint
+>>> vantagepoint.analyze.matrix.auto_corr_matrix(
 ...     criterion='authors',
 ...     topics_length=10,
 ...     directory=directory,
 ... )
-                   Arner DW 7:220  ...  Mayer N 2:002
-Arner DW 7:220           1.000000  ...            0.0
-Buckley RP 6:217         0.882735  ...            0.0
-Barberis JN 4:146        0.662994  ...            0.0
-Zetzsche DA 4:092        0.662994  ...            0.0
-Brennan R 3:008          0.000000  ...            0.0
-Ryan P 3:008             0.000000  ...            0.0
-Hamdan A 2:011           0.000000  ...            0.0
-Singh C 2:007            0.000000  ...            0.0
-Sarea A 2:006            0.000000  ...            0.0
-Mayer N 2:002            0.000000  ...            1.0
+                  Arner DW 3:185  ...  Grassi L 2:002
+Arner DW 3:185               1.0  ...             0.0
+Buckley RP 3:185             1.0  ...             0.0
+Butler T/1 2:041             0.0  ...             0.0
+Hamdan A 2:018               0.0  ...             0.0
+Lin W 2:017                  0.0  ...             0.0
+Singh C 2:017                0.0  ...             0.0
+Brennan R 2:014              0.0  ...             0.0
+Crane M 2:014                0.0  ...             0.0
+Sarea A 2:012                0.0  ...             0.0
+Grassi L 2:002               0.0  ...             1.0
 <BLANKLINE>
 [10 rows x 10 columns]
 
@@ -31,10 +31,10 @@ Mayer N 2:002            0.000000  ...            1.0
 """
 import pandas as pd
 
-from .vantagepoint__tf_matrix import vantagepoint__tf_matrix
+from ....vantagepoint__tf_matrix import vantagepoint__tf_matrix
 
 
-def vantagepoint__auto_corr_matrix(
+def auto_corr_matrix(
     criterion,
     method="pearson",
     topics_length=50,

@@ -13,7 +13,7 @@ Matrix
     * **Auto-correlation Matrix**:
 
         .. toctree::
-            vantagepoint__auto_corr_matrix
+            auto_corr_matrix
 
         .. toctree::
             vantagepoint__auto_corr_matrix_list

@@ -26,7 +26,7 @@ Das SR 2:028             0.000000  ...           1.0
 [8 rows x 8 columns]
 
 """
-from .vantagepoint__auto_corr_matrix import _compute_corr_matrix
+from .vantagepoint.analyze.matrix.auto_corr_matrix import _compute_corr_matrix
 from .vantagepoint__occ_matrix import vantagepoint__occ_matrix
 
 
