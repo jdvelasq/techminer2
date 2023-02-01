@@ -160,7 +160,6 @@ from .vantagepoint__factor_matrix import vantagepoint__factor_matrix
 from .vantagepoint__gantt_chart import vantagepoint__gantt_chart
 from .vantagepoint__heat_map import vantagepoint__heat_map
 from .vantagepoint__line_chart import vantagepoint__line_chart
-from .vantagepoint__list_view import vantagepoint__list_view
 from .vantagepoint__matrix_viewer import vantagepoint__matrix_viewer
 from .vantagepoint__occ_matrix import vantagepoint__occ_matrix
 from .vantagepoint__occ_matrix_list import vantagepoint__occ_matrix_list
