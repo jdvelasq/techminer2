@@ -29,7 +29,7 @@ Returns an auto-correlation matrix.
 [76 rows x 3 columns]
 
 """
-from .vantagepoint__auto_corr_matrix_list import _transform_to_matrix_list
+from .vantagepoint.analyze.matrix.auto_corr_matrix_list import _transform_to_matrix_list
 from .vantagepoint__cross_corr_matrix import vantagepoint__cross_corr_matrix
 
 

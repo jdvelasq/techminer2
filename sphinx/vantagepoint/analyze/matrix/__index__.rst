@@ -16,7 +16,7 @@ Matrix
             auto_corr_matrix
 
         .. toctree::
-            vantagepoint__auto_corr_matrix_list
+            auto_corr_matrix_list
 
 
     * **Cross-correlation Matrix**:

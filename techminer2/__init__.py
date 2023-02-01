@@ -146,7 +146,7 @@ from .tm2__indicators_by_year import tm2__indicators_by_year
 from .tm2__most_cited_documents import tm2__most_cited_documents
 from .tm2__raw_document_types import tm2__raw_document_types
 from .tm2__replace import tm2__replace
-from .vantagepoint__auto_corr_matrix_list import vantagepoint__auto_corr_matrix_list
+from .vantagepoint.analyze.matrix.auto_corr_matrix_list import auto_corr_matrix_list
 from .vantagepoint__bar_chart import vantagepoint__bar_chart
 from .vantagepoint__bubble_chart import vantagepoint__bubble_chart
 from .vantagepoint__cleveland_chart import vantagepoint__cleveland_chart
