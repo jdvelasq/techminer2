@@ -80,11 +80,12 @@ from nltk.tokenize import sent_tokenize
 from textblob import TextBlob
 from tqdm import tqdm
 
-from ..._create_countries_thesaurus import create_countries_thesaurus
+from ...vantagepoint.refine._create_countries_thesaurus import (
+    create_countries_thesaurus,
+)
 from ..._create_keywords_thesaurus import create_keywords_thesaurus
 from ..._create_organizations_thesaurus import create_organizations_thesaurus
 from ... import vantagepoint
-from ...vantagepoint.refine.clean_organizations import clean_organizations
 
 
 def import_scopus_files(
