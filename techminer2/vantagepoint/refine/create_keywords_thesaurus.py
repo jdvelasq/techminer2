@@ -4,10 +4,8 @@ Create keywords thesaurus
 
 >>> directory = "data/regtech/"
 
->>> directory = "data/mateo/"
-
->>> from techminer2._create_keywords_thesaurus import create_keywords_thesaurus
->>> create_keywords_thesaurus(directory=directory)
+>>> from techminer2 import vantagepoint
+>>> vantagepoint.refine.create_keywords_thesaurus(directory=directory)
 --INFO-- Creating `keywords.txt` from author/index keywords, and abstract/title words
 
 """
