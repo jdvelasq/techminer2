@@ -46,7 +46,7 @@ Name: Document Type, dtype: int64
 import os
 import sys
 
-from techminer2.tm2__import_scopus_files import _concat_raw_csv_files
+from techminer2.tm2.data.import_scopus_files import _concat_raw_csv_files
 
 
 def tm2__raw_document_types(directory):

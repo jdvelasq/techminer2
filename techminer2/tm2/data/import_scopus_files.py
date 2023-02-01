@@ -6,10 +6,9 @@ Import a scopus file to a working directory.
 
 
 >>> directory = "data/regtech/"
->>> directory = "data/mateo/"
 
->>> from techminer2 import tm2__import_scopus_files
->>> tm2__import_scopus_files(
+>>> from techminer2.tm2.data import import_scopus_files
+>>> import_scopus_files(
 ...     directory, 
 ...     disable_progress_bar=True,
 ... )
@@ -79,15 +78,15 @@ from nltk.tokenize import sent_tokenize
 from textblob import TextBlob
 from tqdm import tqdm
 
-from ._create_countries_thesaurus import create_countries_thesaurus
-from ._create_keywords_thesaurus import create_keywords_thesaurus
-from ._create_organizations_thesaurus import create_organizations_thesaurus
-from .vantagepoint__clean_countries import vantagepoint__clean_countries
-from .vantagepoint__clean_keywords import vantagepoint__clean_keywords
-from .vantagepoint__clean_organizations import vantagepoint__clean_organizations
+from ..._create_countries_thesaurus import create_countries_thesaurus
+from ..._create_keywords_thesaurus import create_keywords_thesaurus
+from ..._create_organizations_thesaurus import create_organizations_thesaurus
+from ...vantagepoint__clean_countries import vantagepoint__clean_countries
+from ...vantagepoint__clean_keywords import vantagepoint__clean_keywords
+from ...vantagepoint__clean_organizations import vantagepoint__clean_organizations
 
 
-def tm2__import_scopus_files(
+def import_scopus_files(
     directory="./",
     disable_progress_bar=False,
     **document_types,
@@ -1051,7 +1050,7 @@ def _extract_keywords_roots_from_database_files(directory):
                 keywords_list.append(data[column])
 
     if len(keywords_list) == 0:
-        return  
+        return
 
     keywords_list = pd.concat(keywords_list)
     keywords_list = keywords_list.dropna()
