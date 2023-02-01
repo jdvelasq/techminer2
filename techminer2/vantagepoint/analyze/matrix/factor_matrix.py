@@ -5,10 +5,11 @@ Factor Matrix (TODO)
 Factor matrix obtained by appliying PCA to the co-occurrence matrix. 
 matrix.
 
->>> from techminer2 import *
 >>> directory = "data/regtech/"
->>> factor_matrix(
-...     co_occurrence_matrix(
+
+>>> from techminer2 import vantagepoint
+>>> vantagepoint.analyze.matrix.factor_matrix(
+...     vantagepoint.analyze.matrix.co_occurrence_matrix(
 ...         column='authors', 
 ...         min_occ=6,
 ...         directory=directory, 
@@ -23,7 +24,7 @@ import pandas as pd
 from sklearn.decomposition import PCA
 
 
-def vantagepoint__factor_matrix(
+def factor_matrix(
     similarity_matrix,
     pca=None,
 ):
