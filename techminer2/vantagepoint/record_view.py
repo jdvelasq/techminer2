@@ -6,8 +6,8 @@ VantagePoint / Record View
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import vantagepoint__record_view
->>> vantagepoint__record_view(
+>>> from techminer2 import vantagepoint
+>>> vantagepoint.record_view(
 ...     criterion='author_keywords',
 ...     search_for='regtech',
 ...     records_length=2,
@@ -16,7 +16,7 @@ VantagePoint / Record View
 AR Anagnostopoulos I, 2018, J ECON BUS, V100, P7
 TI Fintech and regtech: Impact on regulators and banks
 AU Anagnostopoulos I
-TC 110
+TC 153
 SO Journal of Economics and Business
 PY 2018
 AB the purpose of this paper is to develop an insight and review the effect of fintech
@@ -64,40 +64,33 @@ DE business models; financial services; fintech; future research direction; regt
    regulation
 ID nan
 ------------------------------------------------------------------------------------------
-AR Arner DW, 2020, EUR BUS ORG LAW REV, V21, P7
-TI Sustainability, FinTech and Financial Inclusion
-AU Arner DW; Buckley RP; Zetzsche DA; Veidt R
-TC 40
-SO European Business Organization Law Review
-PY 2020
-AB we argue financial technology (fintech) is the key driver for financial inclusion,
-   which in turn underlies sustainable balanced development, as embodied in the un
-   sustainable development goals (sdgs). the full potential of fintech to support the
-   sdgs may be realized with a progressive approach to the development of underlying
-   infrastructure to support digital financial transformation.  our research suggests
-   that the best way to think about such a strategy is to focus on four primary
-   pillars.  the first pillar requires the building of digital identity, simplified
-   account opening and e-kyc systems, supported by the second pillar of open
-   interoperable electronic payments systems.  the third pillar involves using the
-   infrastructure of the first and second pillars to underpin electronic provision of
-   government services and payments.  the fourth pillardesign of digital financial
-   markets and systemssupports broader access to finance and investment.  implementing
-   the four pillars is a major journey for any economy, but one which has tremendous
-   potential to transform not only finance but economies and societies, through
-   fintech, financial inclusion and sustainable balanced development.  2020, t.m.c.
-   asser press.
-DE e-kyc; electronic payment infrastructure; financial inclusion; fintech; regtech;
-   sustainability; sustainable development goals; sustainable investment
+AR Butler T/1, 2019, PALGRAVE STUD DIGIT BUS ENABLING TECHNOL, P85
+TI Understanding RegTech for Digital Regulatory Compliance
+AU Butler T/1; OBrien L
+TC 33
+SO Palgrave Studies in Digital Business and Enabling Technologies
+PY 2019
+AB this chapter explores the promise and potential of regulatory technologies
+   (regtech), a new and vital dimension to fintech.  it draws on the findings and
+   outcomes of a five-year research programme to highlight the role that regtech can
+   play in making regulatory compliance more efficient and effective.  the chapter
+   presents research on the bank of england/financial conduct authority (fca) regtech
+   sprint initiative, whose objective was to demonstrate how straight-through
+   processing of regulations and regulatory compliance reporting using semantically
+   enabled applications can be made possible by regtech.  the chapter notes that the
+   full benefits of regtech will only materialise if the pitfalls of a fragmented tower
+   of babel approach are avoided.  semantic standards, we argue, are the key to all
+   this.  2019, the author(s).
+DE fintech; regtech; semantic technologies; standards
 ID nan
 
 """
-## VantagePoint / Record View
 import textwrap
 
-from ._read_records import read_records
+from .._read_records import read_records
 
 
-def vantagepoint__record_view(
+def record_view(
     criterion,
     search_for,
     case=False,

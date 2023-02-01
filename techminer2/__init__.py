@@ -165,7 +165,6 @@ from .vantagepoint__matrix_viewer import vantagepoint__matrix_viewer
 from .vantagepoint__occ_matrix import vantagepoint__occ_matrix
 from .vantagepoint__occ_matrix_list import vantagepoint__occ_matrix_list
 from .vantagepoint__pie_chart import vantagepoint__pie_chart
-from .vantagepoint__record_view import vantagepoint__record_view
 from .vantagepoint__summary_view import vantagepoint__summary_view
 from .vantagepoint__terms_by_year import vantagepoint__terms_by_year
 from .vantagepoint__tf_idf_matrix import vantagepoint__tf_idf_matrix
