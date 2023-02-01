@@ -21,10 +21,10 @@ The following fnctions operate on a thesaurus.
     * **Generic Thesaurus**: Funtions to create and apply a generic thesaurus on a column.
     
         .. toctree::
-            vantagepoint__create_thesaurus
+            create_thesaurus
         
         .. toctree::
-            vantagepoint__apply_thesaurus
+            apply_thesaurus
 
             
     * Operations over thesaurus files:

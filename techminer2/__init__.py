@@ -146,16 +146,10 @@ from .tm2__indicators_by_year import tm2__indicators_by_year
 from .tm2__most_cited_documents import tm2__most_cited_documents
 from .tm2__raw_document_types import tm2__raw_document_types
 from .tm2__replace import tm2__replace
-from .vantagepoint__apply_thesaurus import vantagepoint__apply_thesaurus
 from .vantagepoint__auto_corr_matrix import vantagepoint__auto_corr_matrix
 from .vantagepoint__auto_corr_matrix_list import vantagepoint__auto_corr_matrix_list
 from .vantagepoint__bar_chart import vantagepoint__bar_chart
 from .vantagepoint__bubble_chart import vantagepoint__bubble_chart
-
-# from .vantagepoint.refine.clean_keywords import (
-#    clean_keywords,
-# )
-# from .vantagepoint.refine.clean_organizations import clean_organizations
 from .vantagepoint__cleveland_chart import vantagepoint__cleveland_chart
 from .vantagepoint__co_occ_matrix import vantagepoint__co_occ_matrix
 from .vantagepoint__co_occ_matrix_list import vantagepoint__co_occ_matrix_list
@@ -182,5 +176,3 @@ from .vantagepoint__tf_matrix import vantagepoint__tf_matrix
 from .vantagepoint__treemap import vantagepoint__treemap
 from .vantagepoint__word_cloud import vantagepoint__word_cloud
 from .vantagepoint__world_map import vantagepoint__world_map
-
-# from .vantagepoint__clean_countries import vantagepoint__clean_countries

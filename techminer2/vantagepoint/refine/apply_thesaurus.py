@@ -6,8 +6,8 @@ Apply Thesaurus
 >>> from techminer2 import *
 >>> directory = "data/regtech/"
 
->>> from techminer2 import vantagepoint__create_thesaurus
->>> vantagepoint__create_thesaurus(
+>>> from techminer2 import vantagepoint
+>>> vantagepoint.refine.create_thesaurus(
 ...     criterion="author_keywords",
 ...     output_file="test_keywords.txt",
 ...     directory=directory,
@@ -16,8 +16,7 @@ Apply Thesaurus
 --INFO-- The thesaurus file `test_keywords.txt` was created
 
 
->>> from techminer2 import vantagepoint__apply_thesaurus
->>> vantagepoint__apply_thesaurus(
+>>> vantagepoint.refine.apply_thesaurus(
 ...     thesaurus_file="test_keywords.txt",
 ...     input_criterion="author_keywords",
 ...     output_criterion="author_keywords_thesaurus",
@@ -33,10 +32,10 @@ import sys
 
 import pandas as pd
 
-from ._thesaurus import read_textfile
+from ..._thesaurus import read_textfile
 
 
-def vantagepoint__apply_thesaurus(
+def apply_thesaurus(
     thesaurus_file,
     input_criterion,
     output_criterion,
