@@ -4,10 +4,10 @@ Create Country Thesaurus
 
 Creates a country thesaurus from 'affiliations' column in the datasets.
 
->>> from techminer2.vantagepoint.refine._create_countries_thesaurus import create_countries_thesaurus
+>>> from techminer2 import vantagepoint
 >>> directory = "data/regtech/"
 
->>> create_countries_thesaurus(directory)
+>>> vantagepoint.refine.create_countries_thesaurus(directory)
 --INFO-- The data/regtech/processed/countries.txt thesaurus file was created
 
 
