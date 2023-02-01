@@ -7,8 +7,8 @@ Finds a string in the terms of a thesaurus.
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import vantagepoint__find_string
->>> vantagepoint__find_string(
+>>> from techminer2 import vantagepoint
+>>> vantagepoint.refine.find_string(
 ...     contains='artificial intelligence',
 ...     thesaurus_file="keywords.txt",
 ...     directory=directory,
@@ -21,10 +21,10 @@ import sys
 
 import pandas as pd
 
-from ._thesaurus import load_file_as_dict
+from ..._thesaurus import load_file_as_dict
 
 
-def vantagepoint__find_string(
+def find_string(
     contains=None,
     startswith=None,
     endswith=None,

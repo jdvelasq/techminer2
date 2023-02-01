@@ -30,7 +30,7 @@ The following fnctions operate on a thesaurus.
     * Operations over thesaurus files:
 
         .. toctree::
-            vantagepoint__find_string
+            find_string
 
         .. toctree::
             vantagepoint__fuzzy_search
