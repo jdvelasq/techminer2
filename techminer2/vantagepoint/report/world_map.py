@@ -19,7 +19,7 @@ World Map
 
 """
 from ..._plots.world_map_plot import world_map_plot
-from ...core.indicators.tm2__indicators_by_topic import tm2__indicators_by_topic
+from ...tm2.indicators.tm2__indicators_by_topic import tm2__indicators_by_topic
 
 TEXTLEN = 40
 

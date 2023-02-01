@@ -47,7 +47,7 @@ from dataclasses import dataclass
 from techminer2.scientopy.bar import _filter_indicators_by_custom_topics
 
 from .._px.bar_px import bar_px
-from ..core.indicators.tm2__growth_indicators_by_topic import (
+from ..tm2.indicators.tm2__growth_indicators_by_topic import (
     tm2__growth_indicators_by_topic,
 )
 

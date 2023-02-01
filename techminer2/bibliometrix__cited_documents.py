@@ -1,6 +1,6 @@
 import plotly.express as px
 
-from .core.indicators.tm2__bibliometric_indicators_by_document import (
+from .tm2.indicators.tm2__bibliometric_indicators_by_document import (
     tm2__indicators_by_document,
 )
 

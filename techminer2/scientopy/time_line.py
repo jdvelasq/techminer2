@@ -96,10 +96,10 @@ import numpy as np
 import pandas as pd
 import plotly.express as px
 
-from ..core.indicators.tm2__growth_indicators_by_topic import (
+from ..tm2.indicators.tm2__growth_indicators_by_topic import (
     tm2__growth_indicators_by_topic,
 )
-from ..core.indicators.tm2__indicators_by_topic_per_year import (
+from ..tm2.indicators.tm2__indicators_by_topic_per_year import (
     tm2__indicators_by_topic_per_year,
 )
 from .bar import _filter_indicators_by_custom_topics

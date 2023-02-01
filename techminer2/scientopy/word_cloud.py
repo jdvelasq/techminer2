@@ -133,7 +133,7 @@ otc reform                     1                 -0.5
 
 """
 from .._plots.word_cloud_for_indicators import word_cloud_for_indicators
-from ..core.indicators.tm2__growth_indicators_by_topic import (
+from ..tm2.indicators.tm2__growth_indicators_by_topic import (
     tm2__growth_indicators_by_topic,
 )
 from .bar import _filter_indicators_by_custom_topics

@@ -3,7 +3,7 @@ import glob
 import os
 
 from ._create_directory import create_directory
-from .core.reports.tm2__abstracts_report import tm2__abstracts_report
+from .tm2.reports.tm2__abstracts_report import tm2__abstracts_report
 
 
 def cluster_abstracts_report(
