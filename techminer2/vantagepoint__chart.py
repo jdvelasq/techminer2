@@ -1,12 +1,12 @@
 """Most frequent items in a databases"""
 
-from .tm2__indicators_by_topic import tm2__indicators_by_topic
 from ._plots.bar_plot import bar_plot
 from ._plots.cleveland_plot import cleveland_plot
 from ._plots.column_plot import column_plot
 from ._plots.line_plot import line_plot
 from ._plots.pie_plot import pie_plot
 from ._plots.treemap_plot import treemap_plot
+from .tm2__indicators_by_topic import tm2__indicators_by_topic
 from .vantagepoint__word_cloud import vantagepoint__word_cloud
 
 

@@ -52,7 +52,8 @@ crowdfunding 04:030               1     0.014529   0.678571  0.093745
 cryptocurrency 04:029             1     0.011062   0.655172  0.058653
 
 """
-from .bibliometrix__co_occurrence_network import bibliometrix__co_occurrence_network
+from .bibliometrix__co_occurrence_network import \
+    bibliometrix__co_occurrence_network
 
 
 def bibliometrix__thematic_map(

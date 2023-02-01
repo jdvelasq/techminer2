@@ -20,10 +20,8 @@ Co-citation Matrix List
 
 """
 from ._read_records import read_records
-from .vantagepoint__co_occ_matrix_list import (
-    _add_counters_to_items,
-    _create_matrix_list,
-)
+from .vantagepoint__co_occ_matrix_list import (_add_counters_to_items,
+                                               _create_matrix_list)
 
 
 def bibliometrix__co_citation_matrix_list(

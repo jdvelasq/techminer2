@@ -67,7 +67,8 @@ from ._get_network_graph_plot import get_network_graph_plot
 from ._matrix_2_matrix_list import matrix_2_matrix_list
 from ._matrix_list_2_network_graph import matrix_list_2_network_graph
 from ._network_community_detection import network_community_detection
-from .bibliometrix__coupling_matrix_list import bibliometrix__coupling_matrix_list
+from .bibliometrix__coupling_matrix_list import \
+    bibliometrix__coupling_matrix_list
 
 
 @dataclass(init=False)

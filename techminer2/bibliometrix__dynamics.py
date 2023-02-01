@@ -7,7 +7,8 @@ import pandas as pd
 import plotly.express as px
 
 from .tm2__indicators_by_topic import tm2__indicators_by_topic
-from .tm2__indicators_by_topic_per_year import tm2__indicators_by_topic_per_year
+from .tm2__indicators_by_topic_per_year import \
+    tm2__indicators_by_topic_per_year
 
 TEXTLEN = 40
 

@@ -98,7 +98,8 @@ import plotly.express as px
 
 from .scientopy__bar import _filter_indicators_by_custom_topics
 from .tm2__growth_indicators_by_topic import tm2__growth_indicators_by_topic
-from .tm2__indicators_by_topic_per_year import tm2__indicators_by_topic_per_year
+from .tm2__indicators_by_topic_per_year import \
+    tm2__indicators_by_topic_per_year
 
 TEXTLEN = 40
 

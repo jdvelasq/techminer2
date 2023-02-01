@@ -20,8 +20,8 @@ WordCloud
     :align: center
 
 """
-from .tm2__indicators_by_topic import tm2__indicators_by_topic
 from ._plots.word_cloud_for_indicators import word_cloud_for_indicators
+from .tm2__indicators_by_topic import tm2__indicators_by_topic
 
 
 def vantagepoint__word_cloud(

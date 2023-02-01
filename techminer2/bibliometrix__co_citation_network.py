@@ -58,7 +58,8 @@ from ._get_network_graph_indicators import get_network_graph_indicators
 from ._get_network_graph_plot import get_network_graph_plot
 from ._matrix_list_2_network_graph import matrix_list_2_network_graph
 from ._network_community_detection import network_community_detection
-from .bibliometrix__co_citation_matrix_list import bibliometrix__co_citation_matrix_list
+from .bibliometrix__co_citation_matrix_list import \
+    bibliometrix__co_citation_matrix_list
 
 
 class _Result:

@@ -21,7 +21,8 @@ financial regulation 08:091        8
 Name: OCC, dtype: int64
 
 """
-from .tlab__word_associations_for_all_items import tlab__word_associations_for_all_items
+from .tlab__word_associations_for_all_items import \
+    tlab__word_associations_for_all_items
 
 
 def tlab__word_associations_for_a_item(

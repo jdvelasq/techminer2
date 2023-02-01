@@ -80,9 +80,6 @@ from nltk.tokenize import sent_tokenize
 from textblob import TextBlob
 from tqdm import tqdm
 
-
-
-from ..._create_organizations_thesaurus import create_organizations_thesaurus
 from ... import vantagepoint
 
 
@@ -155,7 +152,7 @@ def import_scopus_files(
     _create__local_citations__column_in_documents_database(directory)
     #
     # Organizations ------------------------------------------------------------
-    create_organizations_thesaurus(directory=directory)
+    vantagepoint.refine.create_organizations_thesaurus(directory=directory)
     vantagepoint.refine.clean_organizations(directory=directory)
 
     sys.stdout.write("--INFO-- Process finished!!!\n")

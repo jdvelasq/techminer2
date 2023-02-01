@@ -20,8 +20,8 @@ Gantt Chart
 """
 import plotly.express as px
 
-from .tm2__indicators_by_topic import tm2__indicators_by_topic
 from ._read_records import read_records
+from .tm2__indicators_by_topic import tm2__indicators_by_topic
 
 
 def vantagepoint__gantt_chart(

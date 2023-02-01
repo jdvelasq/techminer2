@@ -5,7 +5,8 @@ import textwrap
 import plotly.express as px
 
 from .tm2__indicators_by_topic import tm2__indicators_by_topic
-from .tm2__indicators_by_topic_per_year import tm2__indicators_by_topic_per_year
+from .tm2__indicators_by_topic_per_year import \
+    tm2__indicators_by_topic_per_year
 from .vantagepoint__co_occ_matrix_list import _add_counters_to_items
 
 TEXTLEN = 40

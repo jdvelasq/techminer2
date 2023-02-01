@@ -1,6 +1,5 @@
 {
-    "python.sortImports.path": "/usr/local/bin/isort",
-    "python.sortImports.args": [
+    "isort.args": [
         "--profile=black",
     ],
     "[python]": {
@@ -22,5 +21,6 @@
         "**/*.html": true
     },
     "notebook.output.textLineLimit": 200,
-    "python.formatting.provider": "black"
+    "python.formatting.provider": "black",
+    "isort.check": true
 }

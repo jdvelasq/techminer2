@@ -18,8 +18,8 @@ World Map
 
 
 """
-from .tm2__indicators_by_topic import tm2__indicators_by_topic
 from ._plots.world_map_plot import world_map_plot
+from .tm2__indicators_by_topic import tm2__indicators_by_topic
 
 TEXTLEN = 40
 

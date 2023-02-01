@@ -1,7 +1,8 @@
 """Makes a pie plot from a dataframe."""
 
-from .format_dataset_to_plot_with_plotly import format_dataset_to_plot_with_plotly
 from .._px.pie_px import pie_px
+from .format_dataset_to_plot_with_plotly import \
+    format_dataset_to_plot_with_plotly
 
 
 def pie_plot(

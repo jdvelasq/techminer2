@@ -53,11 +53,8 @@ from dataclasses import dataclass
 import pandas as pd
 import plotly.express as px
 from sklearn.manifold import MDS, TSNE
-from sklearn.metrics.pairwise import (
-    cosine_distances,
-    euclidean_distances,
-    haversine_distances,
-)
+from sklearn.metrics.pairwise import (cosine_distances, euclidean_distances,
+                                      haversine_distances)
 
 from ._association_index import association_index
 from ._bubble_map import bubble_map

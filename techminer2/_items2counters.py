@@ -2,8 +2,8 @@
 
 import numpy as np
 
-from .tm2__indicators_by_topic import tm2__indicators_by_topic
 from ._load_stopwords import load_stopwords
+from .tm2__indicators_by_topic import tm2__indicators_by_topic
 
 
 def items2counters(
