@@ -12,7 +12,7 @@ internally in TheVantagePoint software, in order to facilitate comparison.
 
    .. toctree::
       record_view
-      vantagepoint__summary_view
+      summary_view
 
    .. toctree::
       :maxdepth: 1
