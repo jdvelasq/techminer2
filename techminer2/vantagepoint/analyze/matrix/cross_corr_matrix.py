@@ -6,31 +6,34 @@ Cross-correlation Matrix
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import vantagepoint__cross_corr_matrix
->>> vantagepoint__cross_corr_matrix(
+>>> from techminer2 import vantagepoint
+>>> vantagepoint.analyze.matrix.cross_corr_matrix(
 ...     criterion_for_columns = 'authors', 
 ...     criterion_for_rows='countries',
 ...     topics_length=10,
 ...     directory=directory,
 ... )
-                   Arner DW 7:220  ...  Das SR 2:028
-Arner DW 7:220           1.000000  ...           0.0
-Buckley RP 6:217         0.994244  ...           0.0
-Barberis JN 4:146        0.921304  ...           0.0
-Zetzsche DA 4:092        0.927105  ...           0.0
-Brennan R 3:008          0.000000  ...           0.0
-Ryan P 3:008             0.000000  ...           0.0
-Crane M 2:008            0.000000  ...           0.0
-Das SR 2:028             0.000000  ...           1.0
+                   Arner DW 3:185  ...  Turki M 2:018
+Arner DW 3:185           1.000000  ...            0.0
+Buckley RP 3:185         1.000000  ...            0.0
+Barberis JN 2:161        0.922664  ...            0.0
+Brennan R 2:014          0.000000  ...            0.0
+Butler T/1 2:041         0.000000  ...            0.0
+Crane M 2:014            0.000000  ...            0.0
+Hamdan A 2:018           0.000000  ...            1.0
+Lin W 2:017             -0.365858  ...            0.0
+Singh C 2:017           -0.365858  ...            0.0
+Turki M 2:018            0.000000  ...            1.0
 <BLANKLINE>
-[8 rows x 8 columns]
+[10 rows x 10 columns]
+
 
 """
-from .vantagepoint.analyze.matrix.auto_corr_matrix import _compute_corr_matrix
-from .vantagepoint__occ_matrix import vantagepoint__occ_matrix
+from ....vantagepoint__occ_matrix import vantagepoint__occ_matrix
+from .auto_corr_matrix import _compute_corr_matrix
 
 
-def vantagepoint__cross_corr_matrix(
+def cross_corr_matrix(
     criterion_for_columns=None,
     criterion_for_rows=None,
     method="pearson",

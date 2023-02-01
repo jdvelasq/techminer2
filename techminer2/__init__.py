@@ -147,13 +147,13 @@ from .tm2__most_cited_documents import tm2__most_cited_documents
 from .tm2__raw_document_types import tm2__raw_document_types
 from .tm2__replace import tm2__replace
 from .vantagepoint.analyze.matrix.auto_corr_matrix_list import auto_corr_matrix_list
+from .vantagepoint.analyze.matrix.cross_corr_matrix import cross_corr_matrix
+from .vantagepoint.analyze.matrix.cross_corr_matrix_list import cross_corr_matrix_list
+from .vantagepoint.analyze.matrix.factor_matrix import factor_matrix
 from .vantagepoint__bar_chart import vantagepoint__bar_chart
 from .vantagepoint__bubble_chart import vantagepoint__bubble_chart
 from .vantagepoint__cleveland_chart import vantagepoint__cleveland_chart
 from .vantagepoint__column_chart import vantagepoint__column_chart
-from .vantagepoint__cross_corr_matrix import vantagepoint__cross_corr_matrix
-from .vantagepoint__cross_corr_matrix_list import vantagepoint__cross_corr_matrix_list
-from .vantagepoint__factor_matrix import vantagepoint__factor_matrix
 from .vantagepoint__gantt_chart import vantagepoint__gantt_chart
 from .vantagepoint__heat_map import vantagepoint__heat_map
 from .vantagepoint__line_chart import vantagepoint__line_chart

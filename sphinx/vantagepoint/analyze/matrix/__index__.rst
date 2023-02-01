@@ -22,15 +22,15 @@ Matrix
     * **Cross-correlation Matrix**:
 
         .. toctree::
-            vantagepoint__cross_corr_matrix
+            cross_corr_matrix
 
         .. toctree::
-            vantagepoint__cross_corr_matrix_list
+            cross_corr_matrix_list
 
 
 
         
     .. toctree::
-        vantagepoint__factor_matrix 
+        factor_matrix 
 
 
