@@ -5,42 +5,41 @@ Terms by Year
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import vantagepoint__terms_by_year
->>> vantagepoint__terms_by_year(
+>>> from techminer2 import vantagepoint
+>>> vantagepoint.analyze.terms_by_year(
 ...    criterion='author_keywords',
 ...    topics_length=10,
 ...    directory=directory,
 ... ).head(20)
                    author_keywords  year  OCC  cum_OCC
-0   artificial intelligence 13:065  2018    2        2
-1   artificial intelligence 13:065  2019    1        3
-2   artificial intelligence 13:065  2020    5        8
-3   artificial intelligence 13:065  2021    3       11
-4   artificial intelligence 13:065  2022    2       13
-5                blockchain 18:109  2017    2        2
-6                blockchain 18:109  2018    2        4
-7                blockchain 18:109  2019    5        9
-8                blockchain 18:109  2020    4       13
-9                blockchain 18:109  2021    4       17
-10               blockchain 18:109  2022    1       18
-11               compliance 12:020  2018    2        2
-12               compliance 12:020  2019    3        5
-13               compliance 12:020  2020    5       10
-14               compliance 12:020  2021    2       12
-15     financial regulation 08:091  2016    1        1
-16     financial regulation 08:091  2017    1        2
-17     financial regulation 08:091  2018    1        3
-18     financial regulation 08:091  2019    1        4
-19     financial regulation 08:091  2020    3        7
+0     anti-money laundering 03:021  2020    1        1
+1     anti-money laundering 03:021  2021    2        3
+2   artificial intelligence 04:023  2019    1        1
+3   artificial intelligence 04:023  2020    2        3
+4   artificial intelligence 04:023  2022    1        4
+5                compliance 07:030  2019    1        1
+6                compliance 07:030  2020    3        4
+7                compliance 07:030  2021    1        5
+8                compliance 07:030  2022    1        6
+9                compliance 07:030  2023    1        7
+10     financial regulation 04:035  2017    1        1
+11     financial regulation 04:035  2020    1        2
+12     financial regulation 04:035  2022    2        4
+13       financial services 04:168  2017    1        1
+14       financial services 04:168  2018    1        2
+15       financial services 04:168  2020    1        3
+16       financial services 04:168  2022    1        4
+17                  fintech 12:249  2018    2        2
+18                  fintech 12:249  2019    4        6
+19                  fintech 12:249  2020    3        9
 
 """
-from .tm2__indicators_by_topic import tm2__indicators_by_topic
-from .tm2__indicators_by_topic_per_year import \
-    tm2__indicators_by_topic_per_year
-from .vantagepoint__co_occ_matrix_list import _add_counters_to_items
+from ...tm2__indicators_by_topic import tm2__indicators_by_topic
+from ...tm2__indicators_by_topic_per_year import tm2__indicators_by_topic_per_year
+from ...vantagepoint__co_occ_matrix_list import _add_counters_to_items
 
 
-def vantagepoint__terms_by_year(
+def terms_by_year(
     criterion,
     topics_length=50,
     topic_min_occ=None,
