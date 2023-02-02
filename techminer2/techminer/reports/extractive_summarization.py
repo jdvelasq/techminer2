@@ -26,7 +26,7 @@ from sumy.summarizers.lsa import LsaSummarizer
 from sumy.summarizers.luhn import LuhnSummarizer
 
 from ..._read_records import read_records
-from .tm2__abstracts_report import _sort_by_custom_terms, _write_report
+from .abstracts_report import _sort_by_custom_terms, _write_report
 
 
 def tm2__extractive_summarization(

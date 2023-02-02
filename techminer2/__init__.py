@@ -93,13 +93,11 @@ from .bibliometrix__treemap import bibliometrix__treemap
 from .bibliometrix__trend_topics import bibliometrix__trend_topics
 from .bibliometrix__word_cloud import bibliometrix__word_cloud
 from .bibliometrix__word_dynamics import bibliometrix__word_dynamics
-from .techminer.reports.tm2__abstracts_report import tm2__abstracts_report
-from .techminer.reports.tm2__coverage import tm2__coverage
-from .techminer.reports.tm2__extractive_summarization import (
-    tm2__extractive_summarization,
-)
-from .techminer.reports.tm2__most_cited_documents import tm2__most_cited_documents
-from .techminer.reports.tm2__raw_document_types import tm2__raw_document_types
+from .techminer.reports.abstracts_report import tm2__abstracts_report
+from .techminer.reports.coverage import tm2__coverage
+from .techminer.reports.extractive_summarization import tm2__extractive_summarization
+from .techminer.reports.most_cited_documents import tm2__most_cited_documents
+from .techminer.reports.raw_document_types import tm2__raw_document_types
 from .techminer.tm2__replace import tm2__replace
 from .tlab__co_occurrence_analysis__co_word_analysis import (
     tlab__co_occurrence_analysis__co_word_analysis,
