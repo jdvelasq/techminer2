@@ -1,5 +1,4 @@
-.. automodule:: techminer2.tm2__most_cited_documents
+.. automodule:: techminer2.techminer.tools.coverage
     :members:
     :undoc-members:
     :show-inheritance:
-
