@@ -25,7 +25,7 @@ Coupling Matrix List
 
 
 """
-from ..._read_records import read_records
+from ..._lib._read_records import read_records
 from ...vantagepoint.analyze.matrix.co_occ_matrix_list import _add_counters_to_items
 
 # from .records2documents import records2documents

@@ -48,7 +48,7 @@ import sys
 import pandas as pd
 from fuzzywuzzy import process
 
-from ..._thesaurus import load_file_as_dict
+from ..._lib._thesaurus import load_file_as_dict
 
 
 def fuzzy_search(

@@ -36,7 +36,7 @@ France       1  ...                  0.00
 import numpy as np
 import pandas as pd
 
-from ..._read_records import read_records
+from ..._lib._read_records import read_records
 
 
 def impact_indicators_by_topic(

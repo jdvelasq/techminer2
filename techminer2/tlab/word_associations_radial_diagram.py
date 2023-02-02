@@ -21,7 +21,7 @@ Radial Diagram
 """
 import networkx as nx
 
-from .._get_network_graph_plot import get_network_graph_plot
+from .._lib._get_network_graph_plot import get_network_graph_plot
 from ..vantagepoint.analyze.matrix.co_occ_matrix_list import co_occ_matrix_list
 
 

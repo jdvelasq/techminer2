@@ -21,7 +21,7 @@ import sys
 
 import pandas as pd
 
-from ..._thesaurus import load_file_as_dict
+from ..._lib._thesaurus import load_file_as_dict
 
 
 def find_string(

@@ -20,7 +20,7 @@ Most Global Cited Documents
 import os.path
 import textwrap
 
-from ...._read_records import read_records
+from ...._lib._read_records import read_records
 from ....techminer.indicators.indicators_by_document import indicators_by_document
 from ...cited_documents import bibiometrix_cited_documents
 

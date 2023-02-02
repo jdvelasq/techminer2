@@ -31,7 +31,7 @@ Sarea A       2  ...                             2
  'local_citations_per_document']
 
 """
-from ..._read_records import read_records
+from ..._lib._read_records import read_records
 
 
 def indicators_by_topic(

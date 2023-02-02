@@ -49,7 +49,7 @@ regulatory technology 12:047    0.602569  2.623255  ... -1.191997 -0.215982
 import pandas as pd
 from sklearn.decomposition import TruncatedSVD
 
-from ...map_chart import map_chart
+from ..._lib.map_chart import map_chart
 from ...vantagepoint.analyze.tfidf.tf_matrix import tf_matrix
 
 

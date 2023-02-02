@@ -30,7 +30,7 @@ Baxter LG, 2016, DUKE LAW J, V66, P567                            30  ...       
 
 """
 
-from ..._read_records import read_records
+from ..._lib._read_records import read_records
 
 
 def indicators_by_document(

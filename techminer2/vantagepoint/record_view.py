@@ -87,7 +87,7 @@ ID nan
 """
 import textwrap
 
-from .._read_records import read_records
+from .._lib._read_records import read_records
 
 
 def record_view(

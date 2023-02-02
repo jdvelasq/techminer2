@@ -44,7 +44,7 @@ Extract and plot the user custom topics of the selected column.
 
 """
 
-from ...stacked_bar_chart import stacked_bar_chart
+from ..._lib.stacked_bar_chart import stacked_bar_chart
 from ..indicators.growth_indicators_by_topic import growth_indicators_by_topic
 
 

@@ -15,7 +15,7 @@ Most Global Cited Documents
 import os.path
 import textwrap
 
-from ..._read_records import read_records
+from ..._lib._read_records import read_records
 
 
 def most_cited_documents(

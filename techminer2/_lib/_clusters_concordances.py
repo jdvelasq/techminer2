@@ -2,10 +2,10 @@
 import os
 import shutil
 
-from ._create_directory import create_directory
-from .tlab.co_occurrence_analysis.concordances import (
+from ..tlab.co_occurrence_analysis.concordances import (
     tlab__co_occurrence_analysis__concordances,
 )
+from ._create_directory import create_directory
 
 
 def clusters_concordances(

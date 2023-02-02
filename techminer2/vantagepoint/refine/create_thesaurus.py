@@ -24,7 +24,7 @@ import sys
 
 import pandas as pd
 
-from ..._thesaurus import Thesaurus, load_file_as_dict, text_clustering
+from ..._lib._thesaurus import Thesaurus, load_file_as_dict, text_clustering
 
 
 def create_thesaurus(

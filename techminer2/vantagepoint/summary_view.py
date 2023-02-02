@@ -17,7 +17,7 @@ Summary View
 """
 import pandas as pd
 
-from .._read_records import read_records
+from .._lib._read_records import read_records
 
 
 def summary_view(

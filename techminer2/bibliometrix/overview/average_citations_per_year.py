@@ -14,7 +14,7 @@ Average Citations per Year
     <iframe src="../../_static/bibliometrix__average_citations_per_year.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ..._time_plot import time_plot
+from ..._lib._time_plot import time_plot
 from ...techminer.indicators.indicators_by_year import indicators_by_year
 
 

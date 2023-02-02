@@ -48,7 +48,7 @@ compliance 12:020               13.045184 -5.500958
 import pandas as pd
 from sklearn.decomposition import TruncatedSVD
 
-from ..map_chart import map_chart
+from .._lib.map_chart import map_chart
 from ..vantagepoint.analyze.matrix.co_occ_matrix import co_occ_matrix
 
 

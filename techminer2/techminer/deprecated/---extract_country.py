@@ -13,7 +13,7 @@ import re
 
 import pandas as pd
 
-from ..._thesaurus import load_file_as_dict
+from ..._lib._thesaurus import load_file_as_dict
 
 
 def extract_country(directory, input_col, output_col):

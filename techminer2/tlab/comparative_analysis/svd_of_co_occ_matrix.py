@@ -52,7 +52,7 @@ artificial intelligence 19:071  25.652384  -5.882582  ... -1.169009 -0.405793
 import pandas as pd
 from sklearn.decomposition import TruncatedSVD
 
-from ...map_chart import map_chart
+from ..._lib.map_chart import map_chart
 from ...vantagepoint.analyze.matrix.co_occ_matrix import co_occ_matrix
 
 

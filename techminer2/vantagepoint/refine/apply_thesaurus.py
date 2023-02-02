@@ -32,7 +32,7 @@ import sys
 
 import pandas as pd
 
-from ..._thesaurus import read_textfile
+from ..._lib._thesaurus import read_textfile
 
 
 def apply_thesaurus(

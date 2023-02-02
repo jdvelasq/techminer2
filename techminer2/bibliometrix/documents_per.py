@@ -1,5 +1,5 @@
 """documents by each item in a column"""
-from .._read_records import read_records
+from .._lib._read_records import read_records
 
 
 def bibliometrix__documents_per(
