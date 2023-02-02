@@ -5,8 +5,8 @@ Clustering by coupling.
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import bibliometrix__coupling_network
->>> nnet = bibliometrix__coupling_network(
+>>> from techminer2 import bibliometrix
+>>> nnet = bibliometrix.clustering.coupling_network(
 ...     criterion="article",
 ...     coupling_measured_by='local_references',
 ...     topics_length=50,
@@ -26,15 +26,14 @@ Clustering by coupling.
     <iframe src="../../_static/bibliometrix_coupling_network_plot_by_references.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> nnet.communities_.head()
-                                               CL_00  ...                                              CL_19
-0       Das SR, 2019, FINANC MANAGE, V48, P981 1:024  ...  Thilakarathne DJ, 2020, LECT NOTES COMPUT SCI,...
-1  Arner DW, 2019, EUR BUS ORG LAW REV, V20, P55 ...  ...                                                   
-2     Buckley RP, 2020, J BANK REGUL, V21, P26 1:017  ...                                                   
-3  Kavassalis P, 2018, J RISK FINANC, V19, P39 1:014  ...                                                   
-4  Micheler E, 2020, EUR BUS ORG LAW REV, V21, P3...  ...                                                   
+                                               CL_00  ...                                       CL_07
+0         Muganyi T, 2022, FINANCIAL INNOV, V8 1:013  ...  Lan G, 2023, RES INT BUS FINANC, V64 1:000
+1  Ryan P, 2020, ICEIS - PROC INT CONF ENTERP INF...  ...                                            
+2                   Turki M, 2020, HELIYON, V6 1:011  ...                                            
+3   von Solms J, 2021, J BANK REGUL, V22, P152 1:011  ...                                            
+4                Kurum E, 2020, J FINANC CRIME 1:010  ...                                            
 <BLANKLINE>
-[5 rows x 20 columns]
-
+[5 rows x 8 columns]
 
 
 >>> file_name = "sphinx/_static/bibliometrix_coupling_network_plot_by_references_degree_plot.html"
@@ -47,27 +46,26 @@ Clustering by coupling.
 
 >>> nnet.indicators_.head()
                                                     group  ...  pagerank
-Birch DGW, 2017, HANDB OF BLOCKCHAIN, DIGIT FIN...      7  ...  0.003851
-Golubic G, 2019, INTEREULAWEAST, V6, P83 1:001          8  ...  0.003851
-Khabrieva TY, 2018, RUS J OF CRIM, V12, P459 1:002      9  ...  0.003851
-Scholz FJB, 2018, REV CHIL DERECHO TECNOL, V7, ...     10  ...  0.003851
-Arner DW, 2017, NORTHWEST J INTL LAW BUS, V37, ...      2  ...  0.044610
+Hee Jung JH, 2019, FINTECH: LAW AND REGULATION,...      1  ...  0.125258
+Mohamed H, 2021, STUD COMPUT INTELL, V935, P153...      1  ...  0.125258
+Arner DW, 2017, NORTHWEST J INTL LAW BUS, V37, ...      2  ...  0.004481
+Huang GKJ, 2017, PROC INT CONF ELECTRON BUS (IC...      4  ...  0.003521
+Waye V, 2020, ADELAIDE LAW REV, V40, P363 1:005         0  ...  0.006029
 <BLANKLINE>
 [5 rows x 4 columns]
-
 
 """
 from dataclasses import dataclass
 
-from ..._lib._association_index import association_index
-from ..._lib._get_network_graph_communities import get_network_graph_communities
-from ..._lib._get_network_graph_degree_plot import get_network_graph_degree_plot
-from ..._lib._get_network_graph_indicators import get_network_graph_indicators
-from ..._lib._get_network_graph_plot import get_network_graph_plot
-from ..._lib._matrix_2_matrix_list import matrix_2_matrix_list
-from ..._lib._matrix_list_2_network_graph import matrix_list_2_network_graph
-from ..._lib._network_community_detection import network_community_detection
-from .coupling_matrix_list import bibliometrix__coupling_matrix_list
+from ..._association_index import association_index
+from ..._get_network_graph_communities import get_network_graph_communities
+from ..._get_network_graph_degree_plot import get_network_graph_degree_plot
+from ..._get_network_graph_indicators import get_network_graph_indicators
+from ..._get_network_graph_plot import get_network_graph_plot
+from ..._matrix_2_matrix_list import matrix_2_matrix_list
+from ..._matrix_list_2_network_graph import matrix_list_2_network_graph
+from ..._network_community_detection import network_community_detection
+from .coupling_matrix_list import coupling_matrix_list
 
 
 @dataclass(init=False)
@@ -78,7 +76,7 @@ class _Results:
     degree_plot_: None
 
 
-def bibliometrix__coupling_network(
+def coupling_network(
     criterion,
     coupling_measured_by,
     topics_length=250,
@@ -96,7 +94,7 @@ def bibliometrix__coupling_network(
 ):
     """Clustering by coupling."""
 
-    matrix_list = bibliometrix__coupling_matrix_list(
+    matrix_list = coupling_matrix_list(
         criterion=criterion,
         coupling_measured_by=coupling_measured_by,
         topics_length=topics_length,

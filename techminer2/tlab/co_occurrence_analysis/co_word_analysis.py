@@ -59,7 +59,7 @@ from sklearn.metrics.pairwise import (
     haversine_distances,
 )
 
-from ..._lib._association_index import association_index
+from ..._association_index import association_index
 from ..._lib._bubble_map import bubble_map
 from ...vantagepoint.analyze.matrix.co_occ_matrix import co_occ_matrix
 

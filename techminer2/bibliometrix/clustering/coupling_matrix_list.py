@@ -5,8 +5,8 @@ Coupling Matrix List
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import bibliometrix__coupling_matrix_list
->>> bibliometrix__coupling_matrix_list(
+>>> from techminer2 import bibliometrix
+>>> bibliometrix.clustering.coupling_matrix_list(
 ...     criterion='article',
 ...     coupling_measured_by='local_references',
 ...     topics_length=15,
@@ -16,12 +16,11 @@ Coupling Matrix List
                                                  row  ... OCC
 0  Anagnostopoulos I, 2018, J ECON BUS, V100, P7 ...  ...  31
 1  Anagnostopoulos I, 2018, J ECON BUS, V100, P7 ...  ...   1
-2  Anagnostopoulos I, 2018, J ECON BUS, V100, P7 ...  ...   2
+2  Anagnostopoulos I, 2018, J ECON BUS, V100, P7 ...  ...   1
 3  Anagnostopoulos I, 2018, J ECON BUS, V100, P7 ...  ...   1
 4  Anagnostopoulos I, 2018, J ECON BUS, V100, P7 ...  ...   1
 <BLANKLINE>
 [5 rows x 3 columns]
-
 
 
 """
@@ -42,7 +41,7 @@ from ...vantagepoint.analyze.matrix.co_occ_matrix_list import _add_counters_to_i
 #
 
 
-def bibliometrix__coupling_matrix_list(
+def coupling_matrix_list(
     criterion,
     coupling_measured_by,
     topics_length=250,

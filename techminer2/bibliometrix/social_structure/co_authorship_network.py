@@ -69,14 +69,14 @@ Veidt R 1:040                0          0.0   0.168421  0.065063
 """
 from dataclasses import dataclass
 
-from ..._lib._association_index import association_index
-from ..._lib._get_network_graph_communities import get_network_graph_communities
-from ..._lib._get_network_graph_degree_plot import get_network_graph_degree_plot
-from ..._lib._get_network_graph_indicators import get_network_graph_indicators
-from ..._lib._get_network_graph_plot import get_network_graph_plot
-from ..._lib._matrix_2_matrix_list import matrix_2_matrix_list
-from ..._lib._matrix_list_2_network_graph import matrix_list_2_network_graph
-from ..._lib._network_community_detection import network_community_detection
+from ..._association_index import association_index
+from ..._get_network_graph_communities import get_network_graph_communities
+from ..._get_network_graph_degree_plot import get_network_graph_degree_plot
+from ..._get_network_graph_indicators import get_network_graph_indicators
+from ..._get_network_graph_plot import get_network_graph_plot
+from ..._matrix_2_matrix_list import matrix_2_matrix_list
+from ..._matrix_list_2_network_graph import matrix_list_2_network_graph
+from ..._network_community_detection import network_community_detection
 from ...vantagepoint.analyze.matrix.co_occ_matrix import co_occ_matrix
 
 
