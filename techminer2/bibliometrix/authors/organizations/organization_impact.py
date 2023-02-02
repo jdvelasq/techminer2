@@ -7,8 +7,8 @@ Organization Impact
 >>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__organization_impact.html"
 
->>> from techminer2 import bibliometrix__organization_impact
->>> bibliometrix__organization_impact(
+>>> from techminer2 import bibliometrix
+>>> bibliometrix.authors.organizations.organization_impact(
 ...     impact_measure='h_index', 
 ...     topics_length=20, 
 ...     directory=directory,
@@ -23,7 +23,7 @@ Organization Impact
 from ..._impact import _impact
 
 
-def bibliometrix__organization_impact(
+def organization_impact(
     impact_measure="h_index",
     topics_length=20,
     topic_min_occ=None,

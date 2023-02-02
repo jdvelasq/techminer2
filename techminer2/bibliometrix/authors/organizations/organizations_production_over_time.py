@@ -4,10 +4,10 @@ Organizations' Production over Time
 
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/bibliometrix.authors.organizations_production_over_time.html"
+>>> file_name = "sphinx/_static/bibliometrix__organizations_production_over_time.html"
 
->>> from techminer2 import bibliometrix__organizations_production_over_time
->>> pot = bibliometrix__organizations_production_over_time(
+>>> from techminer2 import bibliometrix
+>>> pot = bibliometrix.authors.organizations.organizations_production_over_time(
 ...    topics_length=10, 
 ...    directory=directory,
 ... )
@@ -19,26 +19,25 @@ Organizations' Production over Time
     <iframe src="../../../_static/bibliometrix__organizations_production_over_time.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> pot.documents_per_organization_.head()
-                               organizations  ...                           doi
-0                 University of Johannesburg  ...    10.1057/S41261-020-00134-0
-1  ---Indian Institute of Management Lucknow  ...    10.1057/S41261-020-00127-Z
-2                           Ahlia University  ...  10.1007/978-981-15-3383-9_32
-3                Conventional Wholesale Bank  ...  10.1007/978-981-15-3383-9_32
-4                  Mendel University in Brno  ...   10.1007/978-3-030-62796-6_9
+                                 organizations  ...                            doi
+0               ---Teichmann International  AG  ...  10.1016/J.TECHSOC.2022.102150
+1                           Harvard University  ...  10.1016/J.TECHSOC.2022.102150
+2                        University of Messina  ...  10.1016/J.TECHSOC.2022.102150
+3              Chinese University of Hong Kong  ...    10.1016/J.RIBAF.2022.101868
+4  Nottingham University Business School China  ...    10.1016/J.RIBAF.2022.101868
 <BLANKLINE>
 [5 rows x 7 columns]
 
 >>> pot.production_per_year_.head()
                                                          OCC  ...  local_citations_per_year
 organizations                                      year       ...                          
----3PB                                             2022    1  ...                     0.000
----ABES Engineering College                        2021    1  ...                     0.000
----AML Forensic library KPMG Luxembourg Societe... 2020    1  ...                     0.333
----Audencia PRES LUNAM                             2018    1  ...                     0.600
----BITS Pilani                                     2020    1  ...                     0.000
+---3PB                                             2022    1  ...                     0.500
+---AML Forensic library KPMG Luxembourg Societe... 2020    1  ...                     0.750
+---BITS Pilani                                     2020    1  ...                     0.750
+---Centre for Law                                  2017    1  ...                     0.000
+---Deloitte LLP                                    2018    1  ...                     0.833
 <BLANKLINE>
 [5 rows x 7 columns]
-
 
 """
 from dataclasses import dataclass
@@ -57,7 +56,7 @@ class _Results:
     documents_per_organization_ = None
 
 
-def bibliometrix__organizations_production_over_time(
+def organizations_production_over_time(
     topics_length=10,
     topic_min_occ=None,
     topic_min_citations=None,
