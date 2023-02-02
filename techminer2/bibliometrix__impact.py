@@ -7,9 +7,7 @@ from ._px.cleveland_px import cleveland_px
 from ._px.column_px import column_px
 from ._px.line_px import line_px
 from ._px.pie_px import pie_px
-from .techminer.indicators.tm2__impact_indicators_by_topic import (
-    tm2__impact_indicators_by_topic,
-)
+from .techminer.indicators.impact_indicators_by_topic import impact_indicators_by_topic
 
 TEXTLEN = 40
 
@@ -40,7 +38,7 @@ def bibliometrix__impact(
             "Impact measure must be one of: h_index, g_index, m_index, global_citations"
         )
 
-    indicators = tm2__impact_indicators_by_topic(
+    indicators = impact_indicators_by_topic(
         criterion=criterion,
         directory=directory,
         database=database,

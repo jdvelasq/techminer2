@@ -34,9 +34,9 @@ Terms by Year
 19                  fintech 12:249  2020    3        9
 
 """
-from ...techminer.indicators.tm2__indicators_by_topic import tm2__indicators_by_topic
-from ...techminer.indicators.tm2__indicators_by_topic_per_year import (
-    tm2__indicators_by_topic_per_year,
+from ...techminer.indicators.indicators_by_topic import indicators_by_topic
+from ...techminer.indicators.indicators_by_topic_per_year import (
+    indicators_by_topic_per_year,
 )
 from .matrix.co_occ_matrix_list import _add_counters_to_items
 
@@ -54,7 +54,7 @@ def terms_by_year(
 ):
     """Computes the number of terms by year."""
 
-    indicators_by_year = tm2__indicators_by_topic_per_year(
+    indicators_by_year = indicators_by_topic_per_year(
         criterion=criterion,
         directory=directory,
         database="documents",
@@ -68,7 +68,7 @@ def terms_by_year(
 
     ###
 
-    indicators = tm2__indicators_by_topic(
+    indicators = indicators_by_topic(
         criterion=criterion,
         directory=directory,
         database=database,

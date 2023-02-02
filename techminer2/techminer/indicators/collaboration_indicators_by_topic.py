@@ -5,20 +5,20 @@ Collaboration Indicators by Topic
 
 >>> directory = "data/regtech/"
 
->>> from techminer2.tm2__collaboration_indicators_by_topic import tm2__collaboration_indicators_by_topic
->>> tm2__collaboration_indicators_by_topic("countries", directory=directory).head()
+>>> from techminer2 import techminer
+>>> techminer.indicators.collaboration_indicators_by_topic("countries", directory=directory).head()
                 OCC  global_citations  ...  multiple_publication  mp_ratio
 countries                              ...                                
-United Kingdom   16               253  ...                     6      0.38
-Australia        13               236  ...                     9      0.69
-Germany          11               116  ...                     8      0.73
-United States    10               120  ...                     4      0.40
-Hong Kong         8               239  ...                     6      0.75
+United Kingdom    7               199  ...                     3      0.43
+Australia         7               199  ...                     3      0.43
+United States     6                59  ...                     2      0.33
+Ireland           5                55  ...                     1      0.20
+China             5                27  ...                     3      0.60
 <BLANKLINE>
 [5 rows x 6 columns]
 
 >>> from pprint import pprint
->>> pprint(sorted(tm2__collaboration_indicators_by_topic("countries", directory=directory).columns.to_list()))
+>>> pprint(sorted(techminer.indicators.collaboration_indicators_by_topic("countries", directory=directory).columns.to_list()))
 ['OCC',
  'global_citations',
  'local_citations',
@@ -35,7 +35,7 @@ import numpy as np
 from ..._read_records import read_records
 
 
-def tm2__collaboration_indicators_by_topic(
+def collaboration_indicators_by_topic(
     criterion,
     directory="./",
     database="documents",

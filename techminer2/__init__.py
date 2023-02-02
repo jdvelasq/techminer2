@@ -94,23 +94,17 @@ from .bibliometrix__trend_topics import bibliometrix__trend_topics
 from .bibliometrix__word_cloud import bibliometrix__word_cloud
 from .bibliometrix__word_dynamics import bibliometrix__word_dynamics
 from .techminer.indicators.annual_occurrence_matrix import annual_occurrence_matrix
-from .techminer.indicators.tm2__collaboration_indicators_by_topic import (
-    tm2__collaboration_indicators_by_topic,
+from .techminer.indicators.collaboration_indicators_by_topic import (
+    collaboration_indicators_by_topic,
 )
-from .techminer.indicators.tm2__growth_indicators_by_topic import (
-    tm2__growth_indicators_by_topic,
+from .techminer.indicators.growth_indicators_by_topic import growth_indicators_by_topic
+from .techminer.indicators.impact_indicators_by_topic import impact_indicators_by_topic
+from .techminer.indicators.indicators_by_document import indicators_by_document
+from .techminer.indicators.indicators_by_topic import indicators_by_topic
+from .techminer.indicators.indicators_by_topic_per_year import (
+    indicators_by_topic_per_year,
 )
-from .techminer.indicators.tm2__impact_indicators_by_topic import (
-    tm2__impact_indicators_by_topic,
-)
-from .techminer.indicators.tm2__indicators_by_document import (
-    tm2__indicators_by_document,
-)
-from .techminer.indicators.tm2__indicators_by_topic import tm2__indicators_by_topic
-from .techminer.indicators.tm2__indicators_by_topic_per_year import (
-    tm2__indicators_by_topic_per_year,
-)
-from .techminer.indicators.tm2__indicators_by_year import tm2__indicators_by_year
+from .techminer.indicators.indicators_by_year import indicators_by_year
 from .techminer.reports.tm2__abstracts_report import tm2__abstracts_report
 from .techminer.reports.tm2__coverage import tm2__coverage
 from .techminer.reports.tm2__extractive_summarization import (

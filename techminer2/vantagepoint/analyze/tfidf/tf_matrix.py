@@ -27,7 +27,7 @@ import pandas as pd
 from ...._items2counters import items2counters
 from ...._load_stopwords import load_stopwords
 from ...._read_records import read_records
-from ....techminer.indicators.tm2__indicators_by_topic import tm2__indicators_by_topic
+from ....techminer.indicators.indicators_by_topic import indicators_by_topic
 
 # pylint: disable=too-many-arguments
 
@@ -211,7 +211,7 @@ def _compute_filter(
     **filters,
 ):
     """apply filter to topics"""
-    indicators = tm2__indicators_by_topic(
+    indicators = indicators_by_topic(
         criterion=criterion,
         directory=directory,
         database=database,

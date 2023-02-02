@@ -15,7 +15,7 @@ Annual Scientific Production
 
 """
 from ..._time_plot import time_plot
-from ...techminer.indicators.tm2__indicators_by_year import tm2__indicators_by_year
+from ...techminer.indicators.indicators_by_year import indicators_by_year
 
 
 def bibliometrix__annual_scientific_production(
@@ -27,7 +27,7 @@ def bibliometrix__annual_scientific_production(
 ):
     """Computes annual scientific production (number of documents per year)."""
 
-    indicators = tm2__indicators_by_year(
+    indicators = indicators_by_year(
         directory=directory,
         database=database,
         start_year=start_year,

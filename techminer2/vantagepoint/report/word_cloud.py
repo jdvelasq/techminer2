@@ -21,7 +21,7 @@ WordCloud
 
 """
 from ..._plots.word_cloud_for_indicators import word_cloud_for_indicators
-from ...techminer.indicators.tm2__indicators_by_topic import tm2__indicators_by_topic
+from ...techminer.indicators.indicators_by_topic import indicators_by_topic
 
 
 def word_cloud(
@@ -41,7 +41,7 @@ def word_cloud(
 ):
     """Plots a word cloud from a dataframe."""
 
-    indicators = tm2__indicators_by_topic(
+    indicators = indicators_by_topic(
         criterion=criterion,
         directory=directory,
         database=database,

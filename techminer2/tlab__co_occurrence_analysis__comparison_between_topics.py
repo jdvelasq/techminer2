@@ -85,7 +85,7 @@ import plotly.express as px
 from ._items2counters import items2counters
 from ._load_stopwords import load_stopwords
 from ._read_records import read_records
-from .techminer.indicators.tm2__indicators_by_topic import tm2__indicators_by_topic
+from .techminer.indicators.indicators_by_topic import indicators_by_topic
 from .vantagepoint.report.matrix_viewer import (
     _color_node_points,
     _create_network_graph,
@@ -340,7 +340,7 @@ def _select_topics(
     end_year,
     **filters,
 ):
-    indicators = tm2__indicators_by_topic(
+    indicators = indicators_by_topic(
         criterion=criterion,
         directory=directory,
         database=database,

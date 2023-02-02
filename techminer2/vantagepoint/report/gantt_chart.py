@@ -21,7 +21,7 @@ Gantt Chart
 import plotly.express as px
 
 from ..._read_records import read_records
-from ...techminer.indicators.tm2__indicators_by_topic import tm2__indicators_by_topic
+from ...techminer.indicators.indicators_by_topic import indicators_by_topic
 
 
 def gantt_chart(
@@ -59,7 +59,7 @@ def gantt_chart(
     records["start"] = records["start"].astype(str) + "-01-01"
     records["finish"] = records["finish"].astype(str) + "-12-31"
 
-    indicators = tm2__indicators_by_topic(
+    indicators = indicators_by_topic(
         criterion=criterion,
         directory=directory,
         database=database,

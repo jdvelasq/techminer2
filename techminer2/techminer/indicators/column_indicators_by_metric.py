@@ -1,7 +1,7 @@
-from .tm2__indicators_by_topic import tm2__indicators_by_topic
+from .indicators_by_topic import indicators_by_topic
 
 
-def tm2__column_indicators_by_metric(
+def column_indicators_by_metric(
     column,
     min_occ=None,
     max_occ=None,
@@ -10,7 +10,7 @@ def tm2__column_indicators_by_metric(
     metric="num_documents",
     file_name="documents.csv",
 ):
-    indicators = tm2__indicators_by_topic(
+    indicators = indicators_by_topic(
         criterion=column, directory=directory, database=file_name
     )
     if min_occ is not None:

@@ -19,7 +19,7 @@ World Map
 
 """
 from ..._plots.world_map_plot import world_map_plot
-from ...techminer.indicators.tm2__indicators_by_topic import tm2__indicators_by_topic
+from ...techminer.indicators.indicators_by_topic import indicators_by_topic
 
 TEXTLEN = 40
 
@@ -37,7 +37,7 @@ def world_map(
 ):
     """Worldmap"""
 
-    indicators = tm2__indicators_by_topic(
+    indicators = indicators_by_topic(
         criterion=criterion,
         directory=directory,
         database=database,

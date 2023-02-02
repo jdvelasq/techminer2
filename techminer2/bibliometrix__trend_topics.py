@@ -80,7 +80,7 @@ import numpy as np
 import plotly.graph_objects as go
 
 from .techminer.indicators.annual_occurrence_matrix import annual_occurrence_matrix
-from .techminer.indicators.tm2__indicators_by_topic import tm2__indicators_by_topic
+from .techminer.indicators.indicators_by_topic import indicators_by_topic
 
 
 @dataclass(init=False)
@@ -139,7 +139,7 @@ def bibliometrix__trend_topics(
 
     words_by_year = words_by_year[["OCC", "year_q1", "year_med", "year_q3"]]
 
-    global_citations = tm2__indicators_by_topic(
+    global_citations = indicators_by_topic(
         criterion, directory=directory
     ).global_citations
 

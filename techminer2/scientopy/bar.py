@@ -110,9 +110,7 @@ Bar
 
 """
 from .._plots.bar_plot import bar_plot
-from ..techminer.indicators.tm2__growth_indicators_by_topic import (
-    tm2__growth_indicators_by_topic,
-)
+from ..techminer.indicators.growth_indicators_by_topic import growth_indicators_by_topic
 
 
 def bar(
@@ -130,7 +128,7 @@ def bar(
 ):
     """ScientoPy Bar Plot."""
 
-    growth_indicators = tm2__growth_indicators_by_topic(
+    growth_indicators = growth_indicators_by_topic(
         criterion=criterion,
         time_window=time_window,
         directory=directory,

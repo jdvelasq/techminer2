@@ -16,8 +16,8 @@ Buckley RP     2     1
 """
 
 
-from .tm2__indicators_by_topic import tm2__indicators_by_topic
-from .tm2__indicators_by_topic_per_year import tm2__indicators_by_topic_per_year
+from .indicators_by_topic import indicators_by_topic
+from .indicators_by_topic_per_year import indicators_by_topic_per_year
 
 
 def annual_occurrence_matrix(
@@ -30,7 +30,7 @@ def annual_occurrence_matrix(
     **filters,
 ):
 
-    indicators_by_year = tm2__indicators_by_topic_per_year(
+    indicators_by_year = indicators_by_topic_per_year(
         criterion=criterion,
         directory=directory,
         database=database,
@@ -38,7 +38,7 @@ def annual_occurrence_matrix(
         end_year=end_year,
         **filters,
     )
-    indicators = tm2__indicators_by_topic(
+    indicators = indicators_by_topic(
         criterion=criterion,
         directory=directory,
         database=database,

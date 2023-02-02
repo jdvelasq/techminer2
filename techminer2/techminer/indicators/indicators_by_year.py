@@ -6,48 +6,49 @@ Bibliometric Indicators by Year
 >>> directory = "data/regtech/"
 
 
->>> from techminer2 import tm2__indicators_by_year
->>> indicators_by_year(directory) # doctest: +NORMALIZE_WHITESPACE
+>>> from techminer2  import techminer
+>>> techminer.indicators.indicators_by_year(directory) # doctest: +NORMALIZE_WHITESPACE
       OCC  cum_OCC  ...  cum_local_citations  mean_local_citations_per_year
 year                ...                                                    
-2016    2        2  ...                  7.0                           0.50
-2017    5        7  ...                 27.0                           0.67
-2018   16       23  ...                 63.0                           0.45
-2019   14       37  ...                 76.0                           0.23
-2020   25       62  ...                 93.0                           0.23
-2021   22       84  ...                 96.0                           0.07
-2022   10       94  ...                 96.0                           0.00
+2016    1        1  ...                  0.0                           0.00
+2017    4        5  ...                  3.0                           0.11
+2018    3        8  ...                 33.0                           1.67
+2019    6       14  ...                 52.0                           0.63
+2020   14       28  ...                 81.0                           0.52
+2021   10       38  ...                 90.0                           0.30
+2022   12       50  ...                 93.0                           0.12
+2023    2       52  ...                 93.0                           0.00
 <BLANKLINE>
-[7 rows x 11 columns]
+[8 rows x 11 columns]
 
 
->>> tm2__indicators_by_year(directory, database="references").tail() # doctest: +NORMALIZE_WHITESPACE
+>>> techminer.indicators.indicators_by_year(directory, database="references").tail() # doctest: +NORMALIZE_WHITESPACE
       OCC  cum_OCC  ...  cum_local_citations  mean_local_citations_per_year
 year                ...                                                    
-2018  189      885  ...                994.0                           0.26
-2019  139     1024  ...               1141.0                           0.26
-2020  146     1170  ...               1292.0                           0.34
-2021   40     1210  ...               1331.0                           0.49
-2022    3     1213  ...               1334.0                           1.00
+2018   89      594  ...                732.0                           0.30
+2019   91      685  ...                840.0                           0.30
+2020  114      799  ...                985.0                           0.42
+2021   80      879  ...               1072.0                           0.54
+2022   30      909  ...               1104.0                           1.07
 <BLANKLINE>
 [5 rows x 11 columns]
 
 
->>> tm2__indicators_by_year(directory, database="cited_by").tail() # doctest: +NORMALIZE_WHITESPACE
+>>> techminer.indicators.indicators_by_year(directory, database="cited_by").tail() # doctest: +NORMALIZE_WHITESPACE
       OCC  cum_OCC  ...  cum_global_citations  mean_global_citations_per_year
 year                ...                                                      
-2018   11       14  ...                   385                            6.56
-2019   52       66  ...                  1677                            6.21
-2020  105      171  ...                  2516                            2.66
-2021  184      355  ...                  3113                            1.62
-2022  119      474  ...                  3198                            0.71
+2019   33       44  ...                  1764                            8.15
+2020   77      121  ...                  2879                            3.62
+2021  107      228  ...                  3511                            1.97
+2022  150      378  ...                  3871                            1.20
+2023   10      388  ...                  3871                            0.00
 <BLANKLINE>
 [5 rows x 7 columns]
 
 
 
 >>> from pprint import pprint
->>> pprint(sorted(tm2__indicators_by_year(directory=directory).columns.to_list()))
+>>> pprint(sorted(techminer.indicators.indicators_by_year(directory=directory).columns.to_list()))
 ['OCC',
  'citable_years',
  'cum_OCC',
@@ -66,7 +67,7 @@ import plotly.express as px
 from ..._read_records import read_records
 
 
-def tm2__indicators_by_year(
+def indicators_by_year(
     directory="./",
     database="documents",
     start_year=None,

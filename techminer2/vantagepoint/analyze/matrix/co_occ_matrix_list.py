@@ -105,7 +105,7 @@ Co-occurrence Matrix List
 from ...._items2counters import items2counters
 from ...._load_stopwords import load_stopwords
 from ...._read_records import read_records
-from ....techminer.indicators.tm2__indicators_by_topic import tm2__indicators_by_topic
+from ....techminer.indicators.indicators_by_topic import indicators_by_topic
 
 
 def co_occ_matrix_list(
@@ -221,7 +221,7 @@ def _select_topics_by_occ_and_citations_and_topic_length(
     end_year,
     **filters,
 ):
-    indicators = tm2__indicators_by_topic(
+    indicators = indicators_by_topic(
         criterion=criterion,
         directory=directory,
         database=database,

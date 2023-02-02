@@ -6,21 +6,21 @@ Impact Indicators by Topic
 >>> directory = "data/regtech/"
 
 
->>> from techminer2 import tm2__impact_indicators_by_topic
->>> tm2__impact_indicators_by_topic("countries", directory=directory).head()
-                   OCC  ...  avg_global_citations
-countries               ...                      
-Australia           13  ...                 18.15
-Austria              1  ...                  1.00
-Bahrain              5  ...                  2.20
-Belgium              1  ...                  0.00
-Brunei Darussalam    1  ...                  3.00
+>>> from techminer2  import techminer
+>>> techminer.indicators.impact_indicators_by_topic("countries", directory=directory).head()
+           OCC  ...  avg_global_citations
+countries       ...                      
+Australia    7  ...                 28.43
+Bahrain      4  ...                  4.75
+Belgium      1  ...                  0.00
+China        5  ...                  5.40
+France       1  ...                  0.00
 <BLANKLINE>
 [5 rows x 9 columns]
 
 
 >>> from pprint import pprint
->>> pprint(sorted(impact_indicators_by_topic("countries", directory=directory).columns.to_list()))
+>>> pprint(sorted(techminer.indicators.impact_indicators_by_topic("countries", directory=directory).columns.to_list()))
 ['OCC',
  'age',
  'avg_global_citations',
@@ -39,7 +39,7 @@ import pandas as pd
 from ..._read_records import read_records
 
 
-def tm2__impact_indicators_by_topic(
+def impact_indicators_by_topic(
     criterion,
     directory="./",
     database="documents",

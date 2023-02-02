@@ -47,9 +47,7 @@ from dataclasses import dataclass
 from techminer2.scientopy.bar import _filter_indicators_by_custom_topics
 
 from .._px.bar_px import bar_px
-from ..techminer.indicators.tm2__growth_indicators_by_topic import (
-    tm2__growth_indicators_by_topic,
-)
+from ..techminer.indicators.growth_indicators_by_topic import growth_indicators_by_topic
 
 
 @dataclass(init=False)
@@ -71,7 +69,7 @@ def top_trending_topics(
 ):
     """Top trending topics."""
 
-    growth_indicators = tm2__growth_indicators_by_topic(
+    growth_indicators = growth_indicators_by_topic(
         criterion=criterion,
         time_window=time_window,
         directory=directory,

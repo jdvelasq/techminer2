@@ -96,11 +96,9 @@ import numpy as np
 import pandas as pd
 import plotly.express as px
 
-from ..techminer.indicators.tm2__growth_indicators_by_topic import (
-    tm2__growth_indicators_by_topic,
-)
-from ..techminer.indicators.tm2__indicators_by_topic_per_year import (
-    tm2__indicators_by_topic_per_year,
+from ..techminer.indicators.growth_indicators_by_topic import growth_indicators_by_topic
+from ..techminer.indicators.indicators_by_topic_per_year import (
+    indicators_by_topic_per_year,
 )
 from .bar import _filter_indicators_by_custom_topics
 
@@ -130,7 +128,7 @@ def time_line(
 
     # compute basic growth indicators
 
-    growth_indicators = tm2__growth_indicators_by_topic(
+    growth_indicators = growth_indicators_by_topic(
         criterion=criterion,
         time_window=time_window,
         directory=directory,
@@ -166,7 +164,7 @@ def time_line(
     selected_topics = growth_indicators.index.to_list()
 
     ## data to plot
-    indicators = tm2__indicators_by_topic_per_year(
+    indicators = indicators_by_topic_per_year(
         directory=directory,
         criterion=criterion,
         start_year=start_year,

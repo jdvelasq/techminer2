@@ -3,7 +3,7 @@
 import numpy as np
 
 from ._load_stopwords import load_stopwords
-from .techminer.indicators.tm2__indicators_by_topic import tm2__indicators_by_topic
+from .techminer.indicators.indicators_by_topic import indicators_by_topic
 
 
 def items2counters(
@@ -16,7 +16,7 @@ def items2counters(
 ):
     """Creates a dictionary to transform a 'item' to a 'item counter:counter'."""
 
-    indicators = tm2__indicators_by_topic(
+    indicators = indicators_by_topic(
         criterion=column,
         directory=directory,
         database=database,

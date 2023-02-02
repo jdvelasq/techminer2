@@ -6,9 +6,9 @@ import numpy as np
 import pandas as pd
 import plotly.express as px
 
-from .techminer.indicators.tm2__indicators_by_topic import tm2__indicators_by_topic
-from .techminer.indicators.tm2__indicators_by_topic_per_year import (
-    tm2__indicators_by_topic_per_year,
+from .techminer.indicators.indicators_by_topic import indicators_by_topic
+from .techminer.indicators.indicators_by_topic_per_year import (
+    indicators_by_topic_per_year,
 )
 
 TEXTLEN = 40
@@ -29,7 +29,7 @@ def bibliometrix__dynamics(
 ):
     """Bibliometrix generic dynamics plot."""
 
-    indicators = tm2__indicators_by_topic_per_year(
+    indicators = indicators_by_topic_per_year(
         directory=directory,
         criterion=criterion,
         database=database,
@@ -56,7 +56,7 @@ def bibliometrix__dynamics(
     indicators = indicators.sort_index()
 
     # top items
-    selected_topics = tm2__indicators_by_topic(
+    selected_topics = indicators_by_topic(
         directory=directory,
         criterion=criterion,
         database=database,

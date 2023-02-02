@@ -4,25 +4,25 @@ Growth Indicators by Topic
 
 >>> directory = "data/regtech/"
 
->>> from techminer2.tm2__growth_indicators_by_topic import tm2__growth_indicators_by_topic
->>> tm2__growth_indicators_by_topic(
+>>> from techminer2  import techminer
+>>> techminer.indicators.growth_indicators_by_topic(
 ...     criterion="author_keywords", 
 ...     directory=directory,
 ... ).head()
-                         Before 2021  ...  average_growth_rate
-author_keywords                       ...                     
-regtech                           49  ...                 -6.0
-fintech                           32  ...                 -4.0
-blockchain                        13  ...                 -1.5
-artificial intelligence            8  ...                 -1.5
-regulatory technology              6  ...                 -0.5
+                       Before 2022  ...  average_growth_rate
+author_keywords                     ...                     
+regtech                         20  ...                 -0.5
+fintech                         10  ...                 -0.5
+compliance                       5  ...                  0.0
+regulatory technology            5  ...                 -1.5
+regulation                       4  ...                 -0.5
 <BLANKLINE>
 [5 rows x 6 columns]
 
 >>> from pprint import pprint
->>> pprint(sorted(growth_indicators_by_topic('author_keywords',directory=directory).columns.to_list()))
-['Before 2021',
- 'Between 2021-2022',
+>>> pprint(sorted(techminer.indicators.growth_indicators_by_topic('author_keywords',directory=directory).columns.to_list()))
+['Before 2022',
+ 'Between 2022-2023',
  'OCC',
  'average_documents_per_year',
  'average_growth_rate',
@@ -36,7 +36,7 @@ from ..._load_stopwords import load_stopwords
 from ..._read_records import read_records
 
 
-def tm2__growth_indicators_by_topic(
+def growth_indicators_by_topic(
     criterion,
     time_window=2,
     directory="./",

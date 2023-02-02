@@ -6,7 +6,7 @@ from ..._plots.column_plot import column_plot
 from ..._plots.line_plot import line_plot
 from ..._plots.pie_plot import pie_plot
 from ..._plots.treemap_plot import treemap_plot
-from ...techminer.indicators.tm2__indicators_by_topic import tm2__indicators_by_topic
+from ...techminer.indicators.indicators_by_topic import indicators_by_topic
 from .word_cloud import word_cloud
 
 
@@ -27,7 +27,7 @@ def chart(
 ):
     """Generic chart for list plotting."""
 
-    indicators = tm2__indicators_by_topic(
+    indicators = indicators_by_topic(
         criterion=criterion,
         directory=directory,
         database=database,

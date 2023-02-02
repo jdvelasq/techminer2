@@ -5,23 +5,23 @@ Bibliometric indicators by document
 
 >>> directory = "data/regtech/"
 
->>> from techminer2.tm2__indicators_by_document import tm2__indicators_by_document
->>> tm2__indicators_by_document(
+>>> from techminer2  import techminer
+>>> techminer.indicators.indicators_by_document(
 ...     directory=directory,
 ... ).head()
                                                     global_citations  ...                                 doi
 article                                                               ...                                    
-Abi-Lahoud E, 2018, CEUR WORKSHOP PROC, V2044                      0  ...                                 NaN
-Anagnostopoulos I, 2018, J ECON BUS, V100, P7                    110  ...      10.1016/J.JECONBUS.2018.07.003
-Arner DW, 2017, HANDB OF BLOCKCHAIN, DIGIT FINA...                 7  ...  10.1016/B978-0-12-810441-5.00016-6
-Arner DW, 2017, NORTHWEST J INTL LAW BUS, V37, ...               118  ...                                 NaN
-Arner DW, 2019, EUR BUS ORG LAW REV, V20, P55                     18  ...          10.1007/S40804-019-00135-1
+Anagnostopoulos I, 2018, J ECON BUS, V100, P7                    153  ...      10.1016/J.JECONBUS.2018.07.003
+Arner DW, 2017, HANDB OF BLOCKCHAIN, DIGIT FINA...                11  ...  10.1016/B978-0-12-810441-5.00016-6
+Arner DW, 2017, NORTHWEST J INTL LAW BUS, V37, ...               150  ...                                 NaN
+Battanta L, 2020, PROC EUR CONF INNOV ENTREPREN...                 1  ...                 10.34190/EIE.20.143
+Baxter LG, 2016, DUKE LAW J, V66, P567                            30  ...                                 NaN
 <BLANKLINE>
 [5 rows x 5 columns]
 
 
 >>> from pprint import pprint
->>> pprint(tm2__indicators_by_document(directory=directory).columns.to_list())
+>>> pprint(techminer.indicators.indicators_by_document(directory=directory).columns.to_list())
 ['global_citations',
  'local_citations',
  'global_citations_per_year',
@@ -33,7 +33,7 @@ Arner DW, 2019, EUR BUS ORG LAW REV, V20, P55                     18  ...       
 from ..._read_records import read_records
 
 
-def tm2__indicators_by_document(
+def indicators_by_document(
     directory="./",
     database="documents",
     start_year=None,

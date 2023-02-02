@@ -95,9 +95,7 @@ regulation                       4                  1
 
 import plotly.express as px
 
-from ..techminer.indicators.tm2__growth_indicators_by_topic import (
-    tm2__growth_indicators_by_topic,
-)
+from ..techminer.indicators.growth_indicators_by_topic import growth_indicators_by_topic
 from .bar import _filter_indicators_by_custom_topics
 
 
@@ -122,7 +120,7 @@ def bar_trends(
 ):
     """ScientoPy Bar Trend."""
 
-    indicators = tm2__growth_indicators_by_topic(
+    indicators = growth_indicators_by_topic(
         criterion=criterion,
         time_window=time_window,
         directory=directory,

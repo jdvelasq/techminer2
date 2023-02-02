@@ -50,8 +50,8 @@ from dataclasses import dataclass
 
 from .bibliometrix__documents_per import bibliometrix__documents_per
 from .bibliometrix__production_over_time import bibliometrix__production_over_time
-from .techminer.indicators.tm2__indicators_by_topic_per_year import (
-    tm2__indicators_by_topic_per_year,
+from .techminer.indicators.indicators_by_topic_per_year import (
+    indicators_by_topic_per_year,
 )
 
 
@@ -99,7 +99,7 @@ def bibliometrix__authors_production_over_time(
         **filters,
     )
 
-    results.production_per_year_ = tm2__indicators_by_topic_per_year(
+    results.production_per_year_ = indicators_by_topic_per_year(
         criterion="authors",
         directory=directory,
         database=database,

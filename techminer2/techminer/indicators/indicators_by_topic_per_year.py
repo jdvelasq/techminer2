@@ -5,39 +5,39 @@ Bibliometric Indicators by Topic per Year
 
 >>> directory = "data/regtech/"
 
->>> from techminer2.tm2__indicators_by_topic_per_year import tm2__indicators_by_topic_per_year
->>> tm2__indicators_by_topic_per_year(
+>>> from techminer2  import techminer
+>>> techminer.indicators.indicators_by_topic_per_year(
 ...     'authors',
 ...     directory=directory,
 ... ).head(20)
-                        OCC  ...  local_citations_per_year
+a                        OCC  ...  local_citations_per_year
 authors           year       ...                          
 Abdullah Y        2022    1  ...                     0.000
-Abi-Lahoud E      2018    1  ...                     0.000
-Ajmi JA           2021    1  ...                     0.500
-Al Haider N       2020    1  ...                     0.333
-Alam TM           2021    1  ...                     0.000
-Anagnostopoulos I 2018    1  ...                     3.000
-Anasweh M         2020    1  ...                     0.667
-Arner DW          2016    1  ...                     0.000
-                  2017    2  ...                     3.167
-                  2019    1  ...                     1.250
-                  2020    3  ...                     1.667
-Aubert J          2021    1  ...                     0.000
-Audrelia J        2022    1  ...                     0.000
-Barberis JN       2016    1  ...                     0.000
-                  2017    2  ...                     3.167
-                  2019    1  ...                     1.250
+Ajmi JA           2021    1  ...                     0.333
+Anagnostopoulos I 2018    1  ...                     2.833
+Anasweh M         2020    1  ...                     1.000
+Arman AA          2022    2  ...                     0.000
+Arner DW          2017    2  ...                     0.429
+                  2020    1  ...                     1.250
+Barberis JN       2017    2  ...                     0.429
 Battanta L        2020    1  ...                     0.000
-Baxter LG         2016    1  ...                     1.000
-Bayon PS          2018    1  ...                     0.000
-Becker M          2019    1  ...                     0.000
+Baxter LG         2016    1  ...                     0.000
+Becker M          2020    1  ...                     0.750
+Beheshti A/1      2021    1  ...                     0.000
+Boitan IA         2020    1  ...                     0.000
+Boticiu SR        2023    1  ...                     0.000
+Brand V           2020    1  ...                     0.750
+Brennan R         2020    1  ...                     0.750
+                  2021    1  ...                     0.000
+Breymann W        2018    1  ...                     1.333
+Brooks R          2018    1  ...                     0.833
+Buchkremer R      2020    1  ...                     0.750
 <BLANKLINE>
 [20 rows x 7 columns]
 
 
 >>> from pprint import pprint
->>> pprint(sorted(tm2__indicators_by_topic_per_year('authors',directory=directory).columns.to_list()))
+>>> pprint(sorted(techminer.indicators.indicators_by_topic_per_year('authors',directory=directory).columns.to_list()))
 ['OCC',
  'age',
  'cum_OCC',
@@ -52,7 +52,7 @@ import pandas as pd
 from ..._read_records import read_records
 
 
-def tm2__indicators_by_topic_per_year(
+def indicators_by_topic_per_year(
     criterion="authors",
     directory="./",
     database="documents",

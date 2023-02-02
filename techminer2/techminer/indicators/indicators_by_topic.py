@@ -6,24 +6,24 @@ Bibliometric Indicators by Topic
 >>> directory = "data/regtech/"
 
 
->>> from techminer2.tm2__indicators_by_topic import tm2__indicators_by_topic
->>> indicators_by_topic(
+>>> from techminer2  import techminer
+>>> techminer.indicators.indicators_by_topic(
 ...     criterion='authors',
 ...     directory=directory,
 ... ).head() # doctest: +NORMALIZE_WHITESPACE
-             OCC  ...  local_citations_per_document
-authors           ...                              
-Arner DW       7  ...                             4
-Buckley RP     6  ...                             4
-Zetzsche DA    4  ...                             2
-Barberis JN    4  ...                             6
-Ryan P         3  ...                             0
+            OCC  ...  local_citations_per_document
+authors          ...                              
+Arner DW      3  ...                             2
+Buckley RP    3  ...                             2
+Lin W         2  ...                             2
+Brennan R     2  ...                             1
+Sarea A       2  ...                             2
 <BLANKLINE>
 [5 rows x 5 columns]
 
 
 >>> from pprint import pprint
->>> pprint(sorted(tm2__indicators_by_topic('authors',directory=directory).columns.to_list()))
+>>> pprint(sorted(techminer.indicators.indicators_by_topic('authors',directory=directory).columns.to_list()))
 ['OCC',
  'global_citations',
  'global_citations_per_document',
@@ -34,7 +34,7 @@ Ryan P         3  ...                             0
 from ..._read_records import read_records
 
 
-def tm2__indicators_by_topic(
+def indicators_by_topic(
     criterion,
     directory="./",
     database="documents",

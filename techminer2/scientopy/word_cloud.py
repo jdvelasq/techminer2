@@ -133,9 +133,7 @@ otc reform                     1                 -0.5
 
 """
 from .._plots.word_cloud_for_indicators import word_cloud_for_indicators
-from ..techminer.indicators.tm2__growth_indicators_by_topic import (
-    tm2__growth_indicators_by_topic,
-)
+from ..techminer.indicators.growth_indicators_by_topic import growth_indicators_by_topic
 from .bar import _filter_indicators_by_custom_topics
 
 
@@ -157,7 +155,7 @@ def word_cloud(
 ):
     """Plots a word cloud from a dataframe."""
 
-    indicators = tm2__growth_indicators_by_topic(
+    indicators = growth_indicators_by_topic(
         criterion=criterion,
         time_window=time_window,
         directory=directory,
