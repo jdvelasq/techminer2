@@ -6,41 +6,39 @@ Trend Topics
 >>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__trend_topics.html"
 
->>> from techminer2 import bibliometrix__trend_topics
->>> bibliometrix__trend_topics(
+>>> from techminer2 import bibliometrix
+>>> bibliometrix.documents.words.trend_topics(
 ...     'author_keywords',
 ...     directory=directory, 
 ... ).table_.head(20)
-year                        OCC  year_q1  ...  global_citations  rn
-author_keywords                           ...                      
-regtech                      69     2016  ...               461   0
-fintech                      42     2016  ...               406   1
-regulatory technology        12     2016  ...                47   2
-financial technology          9     2016  ...                32   3
-financial regulation          8     2016  ...                91   4
-blockchain                   18     2017  ...               109   0
-financial services            5     2017  ...               135   1
-smart contracts               3     2017  ...                15   2
-sandboxes                     2     2017  ...                 7   3
-shared ledger technologies    1     2017  ...                 9   4
-artificial intelligence      13     2018  ...                65   0
-compliance                   12     2018  ...                20   1
-regulation                    6     2018  ...               120   2
-financial inclusion           5     2018  ...                68   3
-cryptocurrency                4     2018  ...                29   4
-machine learning              6     2019  ...                13   0
-anti-money laundering         4     2019  ...                30   1
-crowdfunding                  4     2019  ...                30   2
-suptech                       4     2019  ...                 3   3
-p2p lending                   3     2019  ...                26   4
-<BLANKLINE>
-[20 rows x 6 columns]
+year                     OCC  year_q1  year_med  year_q3  global_citations  rn
+author_keywords                                                               
+regtech                   28     2017      2017     2017               329   0
+financial services         4     2017      2017     2017               168   1
+financial regulation       4     2017      2017     2017                35   2
+blockchain                 3     2017      2017     2017                 5   3
+smart contracts            2     2017      2017     2017                22   4
+fintech                   12     2018      2018     2018               249   0
+regulation                 5     2018      2018     2018               164   1
+risk management            3     2018      2018     2018                14   2
+semantic technologies      2     2018      2018     2018                41   3
+business models            1     2018      2018     2018               153   4
+compliance                 7     2019      2019     2019                30   0
+artificial intelligence    4     2019      2019     2019                23   1
+suptech                    3     2019      2019     2019                 4   2
+standards                  1     2019      2019     2019                33   3
+dogmas                     1     2019      2019     2019                 5   4
+regulatory technology      7     2020      2020     2020                37   0
+anti-money laundering      3     2020      2020     2020                21   1
+innovation                 3     2020      2020     2020                12   2
+data protection            2     2020      2020     2020                27   3
+charitytech                2     2020      2020     2020                17   4
 
 
 
 
 
->>> bibliometrix__trend_topics(
+>>> bibliometrix.documents.words.trend_topics(
 ...     'author_keywords', 
 ...     directory=directory,
 ... ).plot_.write_html(file_name)
@@ -51,7 +49,7 @@ p2p lending                   3     2019  ...                26   4
 
 
 
->>> bibliometrix__trend_topics(
+>>> bibliometrix.documents.words.trend_topics(
 ...     'author_keywords',
 ...     custom_topics=[
 ...         "fintech",
@@ -59,18 +57,17 @@ p2p lending                   3     2019  ...                26   4
 ...         "blockchain",
 ...         "suptech",
 ...         "artificial intelligence",
-...         "financial inclusion",
 ...     ], 
 ...     directory=directory, 
 ... ).table_.head(10)
 year                     OCC  year_q1  year_med  year_q3  global_citations  rn
 author_keywords                                                               
-fintech                   42     2016      2016     2016               406   0
-regulatory technology     12     2016      2016     2016                47   1
-blockchain                18     2017      2017     2017               109   0
-artificial intelligence   13     2018      2018     2018                65   0
-financial inclusion        5     2018      2018     2018                68   1
-suptech                    4     2019      2019     2019                 3   0
+blockchain                 3     2017      2017     2017                 5   0
+fintech                   12     2018      2018     2018               249   0
+artificial intelligence    4     2019      2019     2019                23   0
+suptech                    3     2019      2019     2019                 4   1
+regulatory technology      7     2020      2020     2020                37   0
+
 
 
 """
@@ -89,7 +86,7 @@ class _Results:
     table_: None
 
 
-def bibliometrix__trend_topics(
+def trend_topics(
     criterion,
     n_words_per_year=5,
     custom_topics=None,

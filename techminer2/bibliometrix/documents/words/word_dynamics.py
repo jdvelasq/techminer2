@@ -6,8 +6,8 @@ Word Dynamics
 >>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__word_dynamics.html"
 
->>> from techminer2 import bibliometrix__word_dynamics
->>> bibliometrix__word_dynamics(
+>>> from techminer2 import bibliometrix
+>>> bibliometrix.documents.words.word_dynamics(
 ...     criterion="author_keywords",
 ...     topics_length=5,
 ...     directory=directory,
@@ -21,7 +21,7 @@ Word Dynamics
 from ..._dynamics import _dynamics
 
 
-def bibliometrix__word_dynamics(
+def word_dynamics(
     criterion="author_keywords",
     topics_length=5,
     topic_min_occ=None,

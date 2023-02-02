@@ -6,8 +6,8 @@ TreeMap
 >>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__treemap.html"
 
->>> from techminer2 import bibliometrix__treemap
->>> bibliometrix__treemap(
+>>> from techminer2 import bibliometrix
+>>> bibliometrix.documents.words.treemap(
 ...    criterion='author_keywords',
 ...    topics_length=20,
 ...    directory=directory,
@@ -22,7 +22,7 @@ from ...._plots.treemap_plot import treemap_plot
 from ....techminer.indicators.indicators_by_topic import indicators_by_topic
 
 
-def bibliometrix__treemap(
+def treemap(
     criterion,
     directory="./",
     metric="OCC",

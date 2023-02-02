@@ -7,8 +7,8 @@ WordCloud
 >>> file_name = "sphinx/images/bibliometrix__word_cloud.png"
 
 
->>> from techminer2 import bibliometrix__word_cloud
->>> bibliometrix__word_cloud(
+>>> from techminer2 import bibliometrix
+>>> bibliometrix.documents.words.word_cloud(
 ...     criterion='author_keywords',
 ...     title="Author Keywords",
 ...     topics_length=50,
@@ -20,10 +20,10 @@ WordCloud
     :align: center
 
 """
-from ....vantagepoint.report.word_cloud import word_cloud
+from .... import vantagepoint
 
 
-def bibliometrix__word_cloud(
+def word_cloud(
     criterion,
     topics_length=250,
     topic_min_occ=None,
@@ -41,7 +41,7 @@ def bibliometrix__word_cloud(
 ):
     """Plots a word cloud from a dataframe."""
 
-    return word_cloud(
+    return vantagepoint.report.word_cloud(
         criterion=criterion,
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,
