@@ -76,7 +76,7 @@ Topic View
 # regulation                       12                89               10
 
 """
-from ..techminer.indicators.tm2__indicators_by_topic import tm2__indicators_by_topic
+from ...techminer.indicators.tm2__indicators_by_topic import tm2__indicators_by_topic
 
 
 def topic_view(

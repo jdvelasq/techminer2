@@ -93,9 +93,7 @@ from .bibliometrix__treemap import bibliometrix__treemap
 from .bibliometrix__trend_topics import bibliometrix__trend_topics
 from .bibliometrix__word_cloud import bibliometrix__word_cloud
 from .bibliometrix__word_dynamics import bibliometrix__word_dynamics
-from .techminer.indicators.tm2__annual_occurrence_matrix import (
-    tm2__annual_occurrence_matrix,
-)
+from .techminer.indicators.annual_occurrence_matrix import annual_occurrence_matrix
 from .techminer.indicators.tm2__collaboration_indicators_by_topic import (
     tm2__collaboration_indicators_by_topic,
 )

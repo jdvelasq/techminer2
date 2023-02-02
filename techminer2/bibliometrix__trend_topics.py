@@ -79,9 +79,7 @@ from dataclasses import dataclass
 import numpy as np
 import plotly.graph_objects as go
 
-from .techminer.indicators.tm2__annual_occurrence_matrix import (
-    tm2__annual_occurrence_matrix,
-)
+from .techminer.indicators.annual_occurrence_matrix import annual_occurrence_matrix
 from .techminer.indicators.tm2__indicators_by_topic import tm2__indicators_by_topic
 
 
@@ -103,7 +101,7 @@ def bibliometrix__trend_topics(
 ):
     """Trend topics"""
 
-    words_by_year = tm2__annual_occurrence_matrix(
+    words_by_year = annual_occurrence_matrix(
         criterion=criterion,
         min_occ=1,
         directory=directory,

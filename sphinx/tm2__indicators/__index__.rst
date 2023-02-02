@@ -2,7 +2,7 @@ Indicators
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    .. toctree::
-      tm2__annual_occurrence_matrix
+      
       tm2__collaboration_indicators_by_topic
       tm2__growth_indicators_by_topic
       tm2__impact_indicators_by_topic

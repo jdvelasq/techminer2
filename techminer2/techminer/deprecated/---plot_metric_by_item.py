@@ -1,11 +1,11 @@
 """Make a plot of a metric by item."""
 
-from .._plots.bar_plot import bar_plot
-from .._plots.cleveland_plot import cleveland_plot
-from .._plots.column_plot import column_plot
-from .._plots.line_plot import line_plot
-from .._plots.pie_plot import pie_plot
-from ..vantagepoint.report.word_cloud import word_cloud
+from ..._plots.bar_plot import bar_plot
+from ..._plots.cleveland_plot import cleveland_plot
+from ..._plots.column_plot import column_plot
+from ..._plots.line_plot import line_plot
+from ..._plots.pie_plot import pie_plot
+from ...vantagepoint.report.word_cloud import word_cloud
 
 
 def plot_metric_by_item(

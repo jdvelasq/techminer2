@@ -26,7 +26,7 @@ import sys
 import pandas as pd
 
 # from .extract_country import extract_country_from_string
-from .._thesaurus import Thesaurus, load_file_as_dict
+from ..._thesaurus import Thesaurus, load_file_as_dict
 
 #
 # The algorithm searches in order until detect a match
