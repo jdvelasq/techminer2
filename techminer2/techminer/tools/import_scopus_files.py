@@ -1648,7 +1648,7 @@ def _apply_scopus2tags_to_database_files(directory):
 
 def _load_scopus2tags_as_dict():
     module_path = os.path.dirname(__file__)
-    file_path = os.path.join(module_path, "../../files/scopus2tags.csv")
+    file_path = os.path.join(module_path, "../../_files/scopus2tags.csv")
     names_dict = {}
     with open(file_path, "r", encoding="utf-8") as file:
         for line in file:

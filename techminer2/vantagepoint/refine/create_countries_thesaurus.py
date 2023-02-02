@@ -120,7 +120,7 @@ def _load_affiliations(directory):
 def _get_country_names():
 
     module_path = os.path.dirname(__file__)
-    file_name = os.path.join(module_path, "../../files", "country_codes.txt")
+    file_name = os.path.join(module_path, "../../_files", "country_codes.txt")
     country_codes = load_file_as_dict(file_name)
     country_names = list(country_codes.values())
     country_names = [name.lower() for w in country_names for name in w]

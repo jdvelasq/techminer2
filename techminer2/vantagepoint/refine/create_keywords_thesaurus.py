@@ -208,7 +208,7 @@ def _build_fingerprint(keywords_list):
         #
         def load_br2am_dict():
             module_path = os.path.dirname(__file__)
-            filename = os.path.join(module_path, "../../files/bg2am.txt")
+            filename = os.path.join(module_path, "../../_files/bg2am.txt")
             br2am_dict = load_thesaurus_as_dict(filename)
             br2am_dict = {key: value[0] for key, value in br2am_dict.items()}
             return br2am_dict
