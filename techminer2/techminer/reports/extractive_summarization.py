@@ -5,8 +5,8 @@ Abstracts Extractive Summarization
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import tm2__extractive_summarization
->>> tm2__extractive_summarization(
+>>> from techminer2 import techminer
+>>> techminer.reports.extractive_summarization(
 ...     criterion="author_keywords",
 ...     custom_topics=["blockchain", "artificial intelligence"],
 ...     n_abstracts=50,    
@@ -29,7 +29,7 @@ from ..._read_records import read_records
 from .abstracts_report import _sort_by_custom_terms, _write_report
 
 
-def tm2__extractive_summarization(
+def extractive_summarization(
     criterion,
     custom_topics,
     file_name="extractive_summarization.txt",

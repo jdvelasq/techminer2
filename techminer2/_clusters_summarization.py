@@ -2,7 +2,7 @@
 import os
 
 from ._create_directory import create_directory
-from .techminer.reports.extractive_summarization import tm2__extractive_summarization
+from .techminer.reports.extractive_summarization import extractive_summarization
 
 
 def clusters_summarization(
@@ -33,7 +33,7 @@ def clusters_summarization(
         community = [" ".join(x.split()[:-1]) for x in community]
 
         file_name = os.path.join(directory_for_summarization, community_name + ".txt")
-        tm2__extractive_summarization(
+        extractive_summarization(
             criterion,
             custom_topics=community,
             file_name=file_name,

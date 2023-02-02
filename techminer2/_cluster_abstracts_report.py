@@ -3,7 +3,7 @@ import glob
 import os
 
 from ._create_directory import create_directory
-from .techminer.reports.abstracts_report import tm2__abstracts_report
+from .techminer.reports.abstracts_report import abstracts_report
 
 
 def cluster_abstracts_report(
@@ -34,7 +34,7 @@ def cluster_abstracts_report(
 
         file_name = os.path.join(directory_for_abstracts, community_name + ".txt")
 
-        tm2__abstracts_report(
+        abstracts_report(
             criterion=criterion,
             custom_topics=community,
             file_name=file_name,

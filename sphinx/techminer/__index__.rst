@@ -10,4 +10,5 @@ TechMiner
     
     
     indicators/__index__
+    reports/__index__
     tools/__index__

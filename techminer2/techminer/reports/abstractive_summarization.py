@@ -3,10 +3,13 @@ Abstracts Summarization (NO --- requiere pytorch)
 ===============================================================================
 
 
-# >>> directory = "data/regtech/"
+>>> directory = "data/regtech/"
 
-# >>> from techminer2 import tm2__abstractive_summarization
-# >>> tm2__abstractive_summarization(
+>>> from techminer2 import techminer
+
+>>> techminer.reports.abstractive_summarization()
+
+
 # ...     criterion="author_keywords",
 # ...     custom_topics=["blockchain"],
 # ...     n_abstracts=20,    
@@ -21,6 +24,10 @@ Abstracts Summarization (NO --- requiere pytorch)
 # # from transformers import GPT2LMHeadModel, GPT2Tokenizer
 
 # from ._read_records import read_records
+
+
+def abstractive_summarization():
+    pass
 
 
 # def tm2__abstractive_summarization(

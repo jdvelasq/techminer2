@@ -7,25 +7,23 @@ Computes coverage of terms in a column discarding stopwords.
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import tm2__coverage
->>> tm2__coverage(
+>>> from techminer2 import techminer
+>>> techminer.reports.coverage(
 ...     "author_keywords",
 ...     directory=directory,
 ... ).head(10)
---INFO-- Number of documents : 94
---INFO-- Documents with NA: 9
---INFO-- Efective documents : 94
+--INFO-- Number of documents : 52
+--INFO-- Documents with NA: 11
+--INFO-- Efective documents : 52
    min_occ  cum_sum_documents coverage  cum num items
-0       69                 69  73.40 %              1
-1       42                 69  73.40 %              2
-2       18                 70  74.47 %              3
-3       13                 73  77.66 %              4
-4       12                 80  85.11 %              6
-5        9                 81  86.17 %              7
-6        8                 81  86.17 %              8
-7        6                 81  86.17 %             10
-8        5                 81  86.17 %             12
-9        4                 82  87.23 %             22
+0       28                 28  53.85 %              1
+1       12                 28  53.85 %              2
+2        7                 33  63.46 %              4
+3        5                 34  65.38 %              5
+4        4                 37  71.15 %              8
+5        3                 38  73.08 %             13
+6        2                 39  75.00 %             26
+7        1                 41  78.85 %            144
 
 
 """
@@ -36,7 +34,7 @@ from ..._load_stopwords import load_stopwords
 from ..._read_records import read_records
 
 
-def tm2__coverage(
+def coverage(
     column,
     directory="./",
     database="documents",

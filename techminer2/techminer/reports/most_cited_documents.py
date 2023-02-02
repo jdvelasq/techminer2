@@ -5,8 +5,8 @@ Most Global Cited Documents
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import tm2__most_cited_documents
->>> tm2__most_cited_documents(
+>>> from techminer2 import techminer
+>>> techminer.reports.most_cited_documents(
 ...     directory=directory,
 ... )
 
@@ -18,7 +18,7 @@ import textwrap
 from ..._read_records import read_records
 
 
-def tm2__most_cited_documents(
+def most_cited_documents(
     directory="./",
     file_name="most_cited_documents.txt",
     start_year=None,

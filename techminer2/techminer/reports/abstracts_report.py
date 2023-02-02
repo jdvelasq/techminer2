@@ -4,12 +4,11 @@ Abstracts Report
 
 
 >>> directory = "data/regtech/"
->>> directory = "data/mateo/"
 
 >>> # file generated in data/regtech/reports/abstracts_report.txt
->>> from techminer2 import tm2__abstracts_report
+>>> from techminer2 import techminer
 
->>> tm2__abstracts_report(
+>>> techminer.reports.abstracts_report(
 ...     criterion="author_keywords",
 ...     custom_topics=[""],
 ...     directory=directory,
@@ -33,7 +32,7 @@ import pandas as pd
 from ..._read_records import read_records
 
 
-def tm2__abstracts_report(
+def abstracts_report(
     criterion=None,
     custom_topics=None,
     file_name="abstracts_report.txt",

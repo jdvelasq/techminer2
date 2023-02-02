@@ -5,38 +5,34 @@ Document types in raw documents
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import tm2__raw_document_types
->>> tm2__raw_document_types(directory)
---INFO__ Document types in: cited_by
-Article             314
-Conference Paper     76
-Review               34
-Book Chapter         34
-Book                 11
-Editorial             5
+>>> from techminer2 import techminer
+>>> techminer.reports.raw_document_types(directory)
+--INFO-- Document types in: cited_by
+Article             248
+Book Chapter         49
+Conference Paper     41
+Review               30
+Book                 14
+Editorial             6
 Name: Document Type, dtype: int64
 <BLANKLINE>
 <BLANKLINE>
---INFO__ Document types in: references
-Article             828
-Conference Paper    196
-Review               88
-Book Chapter         46
-Book                 25
-Editorial            15
-Note                 11
-Short Survey          3
-Data Paper            1
-Letter                1
+--INFO-- Document types in: references
+Article             690
+Conference Paper     88
+Review               74
+Book Chapter         26
+Book                 16
+Editorial             8
+Note                  6
+Short Survey          2
 Name: Document Type, dtype: int64
 <BLANKLINE>
 <BLANKLINE>
---INFO__ Document types in: documents
-Article             51
-Conference Paper    22
-Book Chapter        14
-Review               4
-Editorial            2
+--INFO-- Document types in: documents
+Article             31
+Conference Paper    11
+Book Chapter         9
 Book                 1
 Name: Document Type, dtype: int64
 <BLANKLINE>
@@ -49,7 +45,7 @@ import sys
 from techminer2.techminer.tools.import_scopus_files import _concat_raw_csv_files
 
 
-def tm2__raw_document_types(directory):
+def raw_document_types(directory):
     """Document types in raw documents."""
     folders = os.listdir(os.path.join(directory, "raw"))
     folders = [f for f in folders if os.path.isdir(os.path.join(directory, "raw", f))]

@@ -2,16 +2,19 @@
 Replace text in column
 ===============================================================================
 
->>> from techminer2.tm2__replace import tm2__replace
->>> tm2__replace(
+>>> directory = "data/regtech/"
+
+>>> from techminer2 import techminer
+>>> techminer.tools.replace(
 ...     criterion="abstract", 
 ...     to_replace=[
 ...         "2015, the author(s).", 
 ...         "copyright  2014 by asme.",
 ...     ], 
 ...     value="", 
-...     directory='./',
+...     directory=directory,
 ... )
+
 
 """
 import os.path
@@ -19,7 +22,7 @@ import os.path
 import pandas as pd
 
 
-def tm2__replace(
+def replace(
     criterion,
     to_replace,
     value,
