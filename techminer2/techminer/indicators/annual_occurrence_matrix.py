@@ -6,15 +6,11 @@ Annual Occurrence Matrix
 >>> directory = "data/regtech/"
 
 >>> from techminer2  import techminer
->>> techminer.tools.annual_occurrence_matrix('authors',  min_occ=3, directory=directory).head(10)
-year         2016  2017  2019  2020  2021  2022
-authors                                        
-Arner DW        1     2     1     3     0     0
-Barberis JN     1     2     1     0     0     0
-Brennan R       0     0     0     1     1     1
-Buckley RP      0     2     1     3     0     0
-Ryan P          0     0     0     1     1     1
-Zetzsche DA     0     0     1     3     0     0
+>>> techminer.indicators.annual_occurrence_matrix('authors',  min_occ=3, directory=directory).head(10)
+year        2017  2020
+authors               
+Arner DW       2     1
+Buckley RP     2     1
 
 
 """

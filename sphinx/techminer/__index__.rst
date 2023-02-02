@@ -9,5 +9,5 @@ TechMiner
     :maxdepth: 1
     
     
-    indicaators/__index__
+    indicators/__index__
     tools/__index__
