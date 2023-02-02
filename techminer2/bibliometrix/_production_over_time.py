@@ -13,7 +13,7 @@ from ..vantagepoint.analyze.matrix.co_occ_matrix_list import _add_counters_to_it
 TEXTLEN = 40
 
 
-def bibliometrix__production_over_time(
+def _production_over_time(
     criterion,
     topics_length=10,
     topic_min_occ=None,

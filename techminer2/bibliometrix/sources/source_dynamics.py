@@ -6,8 +6,8 @@ Source Dynamics
 >>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__source_dynamics.html"
 
->>> from techminer2 import bibliometrix__source_dynamics
->>> bibliometrix__source_dynamics(
+>>> from techminer2 import bibliometrix
+>>> bibliometrix.sources.source_dynamics(
 ...     topics_length=10, 
 ...     directory=directory,
 ... ).write_html(file_name)
@@ -18,10 +18,10 @@ Source Dynamics
 
 
 """
-from ..dynamics import bibliometrix__dynamics
+from .._dynamics import _dynamics
 
 
-def bibliometrix__source_dynamics(
+def source_dynamics(
     topics_length=10,
     topic_min_occ=None,
     topic_min_citations=None,
@@ -35,7 +35,7 @@ def bibliometrix__source_dynamics(
 ):
     """Makes a dynamics chat for top sources."""
 
-    return bibliometrix__dynamics(
+    return _dynamics(
         criterion="source_abbr",
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,

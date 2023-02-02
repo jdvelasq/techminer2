@@ -18,7 +18,7 @@ Most Global Cited References
     <iframe src="../../../_static/bibliometrix__most_global_cited_references.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ...cited_documents import bibiometrix_cited_documents
+from ..cited_documents import bibiometrix_cited_documents
 
 
 def bibliometrix__most_global_cited_references(

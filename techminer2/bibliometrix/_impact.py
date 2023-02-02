@@ -12,7 +12,7 @@ from ..techminer.indicators.impact_indicators_by_topic import impact_indicators_
 TEXTLEN = 40
 
 
-def bibliometrix__impact(
+def _impact(
     criterion,
     impact_measure="h_index",
     topics_length=20,

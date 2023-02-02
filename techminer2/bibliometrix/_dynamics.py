@@ -14,7 +14,7 @@ from ..techminer.indicators.indicators_by_topic_per_year import (
 TEXTLEN = 40
 
 
-def bibliometrix__dynamics(
+def _dynamics(
     criterion,
     topics_length=10,
     topic_min_occ=None,

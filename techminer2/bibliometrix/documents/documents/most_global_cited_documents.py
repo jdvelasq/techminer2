@@ -22,7 +22,7 @@ import textwrap
 
 from ...._read_records import read_records
 from ....techminer.indicators.indicators_by_document import indicators_by_document
-from ...cited_documents import bibiometrix_cited_documents
+from ..cited_documents import bibiometrix_cited_documents
 
 
 def bibliometrix__most_global_cited_documents(

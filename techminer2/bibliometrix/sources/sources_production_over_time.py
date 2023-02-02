@@ -6,8 +6,8 @@ Sources' Production over Time
 >>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__sources_production_over_time.html"
 
->>> from techminer2 import bibliometrix__sources_production_over_time
->>> bibliometrix__sources_production_over_time(
+>>> from techminer2 import bibliometrix
+>>> bibliometrix.sources.sources_production_over_time(
 ...    topics_length=10,
 ...    directory=directory,
 ... ).plot_.write_html(file_name)
@@ -22,8 +22,8 @@ from dataclasses import dataclass
 from ...techminer.indicators.indicators_by_topic_per_year import (
     indicators_by_topic_per_year,
 )
-from ..documents_per import bibliometrix__documents_per
-from ..production_over_time import bibliometrix__production_over_time
+from .._documents_per import _documents_per
+from .._production_over_time import _production_over_time
 
 
 @dataclass(init=False)
@@ -33,7 +33,7 @@ class _Results:
     documents_per_source_ = None
 
 
-def bibliometrix__sources_production_over_time(
+def sources_production_over_time(
     topics_length=10,
     topic_min_occ=None,
     topic_min_citations=None,
@@ -47,7 +47,7 @@ def bibliometrix__sources_production_over_time(
 
     results = _Results()
 
-    results.plot_ = bibliometrix__production_over_time(
+    results.plot_ = _production_over_time(
         criterion="source_abbr",
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,
@@ -61,7 +61,7 @@ def bibliometrix__sources_production_over_time(
         **filters,
     )
 
-    results.documents_per_source_ = bibliometrix__documents_per(
+    results.documents_per_source_ = _documents_per(
         criterion="source_abbr",
         directory=directory,
         database=database,

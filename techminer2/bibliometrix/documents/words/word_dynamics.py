@@ -18,7 +18,7 @@ Word Dynamics
     <iframe src="../../../_static/bibliometrix__word_dynamics.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ...dynamics import bibliometrix__dynamics
+from ..._dynamics import _dynamics
 
 
 def bibliometrix__word_dynamics(
@@ -36,7 +36,7 @@ def bibliometrix__word_dynamics(
 ):
     """Makes a dynamics chat for top sources."""
 
-    return bibliometrix__dynamics(
+    return _dynamics(
         criterion=criterion,
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,

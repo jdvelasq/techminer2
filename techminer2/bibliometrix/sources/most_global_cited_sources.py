@@ -6,8 +6,8 @@ Most Global Cited Sources
 >>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__most_global_cited_sources.html"
 
->>> from techminer2 import bibliometrix__most_global_cited_sources
->>> bibliometrix__most_global_cited_sources(
+>>> from techminer2 import bibliometrix
+>>> bibliometrix.sources.most_global_cited_sources(
 ...     directory=directory,
 ...     topics_length=20,
 ...     plot="cleveland",
@@ -21,7 +21,7 @@ Most Global Cited Sources
 from ...vantagepoint.report.chart import chart
 
 
-def bibliometrix__most_global_cited_sources(
+def most_global_cited_sources(
     directory="./",
     topics_length=20,
     topic_min_occ=None,

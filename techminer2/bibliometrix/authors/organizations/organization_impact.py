@@ -20,7 +20,7 @@ Organization Impact
 
 
 """
-from ...impact import bibliometrix__impact
+from ..._impact import _impact
 
 
 def bibliometrix__organization_impact(
@@ -36,7 +36,7 @@ def bibliometrix__organization_impact(
 ):
     """Plots the selected impact measure by organizations."""
 
-    return bibliometrix__impact(
+    return _impact(
         criterion="organizations",
         impact_measure=impact_measure,
         topics_length=topics_length,

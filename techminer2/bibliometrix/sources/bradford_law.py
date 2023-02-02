@@ -7,8 +7,8 @@ Bradford's Law
 >>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__bradford_law.html"
 
->>> from techminer2 import bibliometrix__bradford_law
->>> bibliometrix__bradford_law(
+>>> from techminer2 import bibliometrix
+>>> bibliometrix.sources.bradford_law(
 ...     directory=directory,
 ... ).plot_.write_html(file_name)
 
@@ -17,30 +17,27 @@ Bradford's Law
     <iframe src="../../_static/bibliometrix__bradford_law.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
->>> bibliometrix__bradford_law(
+>>> bibliometrix.sources.bradford_law(
 ...     directory=directory,
 ... ).source_clustering_.head(5)
-                     no  OCC  cum_OCC  global_citations  zone
-source_abbr                                                  
-CEUR WORKSHOP PROC    1    5        5                 2     1
-STUD COMPUT INTELL    2    4        9                 3     1
-JUSLETTER IT          3    4       13                 0     1
-EUR BUS ORG LAW REV   4    3       16                65     1
-J BANK REGUL          5    3       19                29     1
+                                                    no  ...  zone
+source_abbr                                             ...      
+J BANK REGUL                                         1  ...     1
+J FINANC CRIME                                       2  ...     1
+FOSTER INNOV AND COMPET WITH FINTECH, REGTECH, ...   3  ...     1
+STUD COMPUT INTELL                                   4  ...     1
+INT CONF INF TECHNOL SYST INNOV, ICITSI - PROC       5  ...     1
+<BLANKLINE>
+[5 rows x 5 columns]
 
-
->>> bibliometrix__bradford_law(
+>>> bibliometrix.sources.bradford_law(
 ...     directory=directory,
 ... ).core_sources_.head(5)
    Num Sources        %  ...  Tot Documents Bradford's Group
-0            1   1.49 %  ...         5.32 %                1
-1            2   2.99 %  ...        13.83 %                1
-2            4   5.97 %  ...         26.6 %                1
-3            9  13.43 %  ...        45.74 %                2
-4           51  76.12 %  ...        100.0 %                3
+0            6  13.04 %  ...        23.08 %                1
+1           40  86.96 %  ...        100.0 %                3
 <BLANKLINE>
-[5 rows x 9 columns]
-
+[2 rows x 9 columns]
 
 """
 from dataclasses import dataclass
@@ -60,7 +57,7 @@ class _Result:
     core_sources_: None
 
 
-def bibliometrix__bradford_law(
+def bradford_law(
     directory="./",
     database="documents",
     start_year=None,

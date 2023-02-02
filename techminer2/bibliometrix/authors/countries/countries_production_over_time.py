@@ -23,8 +23,8 @@ from dataclasses import dataclass
 from ....techminer.indicators.indicators_by_topic_per_year import (
     indicators_by_topic_per_year,
 )
-from ...documents_per import bibliometrix__documents_per
-from ...production_over_time import bibliometrix__production_over_time
+from ..._documents_per import _documents_per
+from ..._production_over_time import _production_over_time
 
 
 @dataclass(init=False)
@@ -48,7 +48,7 @@ def bibliometrix__countries_production_over_time(
 
     results = _Results()
 
-    results.plot_ = bibliometrix__production_over_time(
+    results.plot_ = _production_over_time(
         criterion="countries",
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,
@@ -62,7 +62,7 @@ def bibliometrix__countries_production_over_time(
         **filters,
     )
 
-    results.documents_per_country_ = bibliometrix__documents_per(
+    results.documents_per_country_ = _documents_per(
         criterion="countries",
         directory=directory,
         database=database,

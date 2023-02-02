@@ -22,7 +22,7 @@ Country Impact
 
 
 """
-from ...impact import bibliometrix__impact
+from ..._impact import _impact
 
 
 def bibliometrix__country_impact(
@@ -38,7 +38,7 @@ def bibliometrix__country_impact(
 ):
     """Plots the selected impact measure by country."""
 
-    return bibliometrix__impact(
+    return _impact(
         criterion="countries",
         impact_measure=impact_measure,
         topics_length=topics_length,

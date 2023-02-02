@@ -21,7 +21,7 @@ Country Dynamics
 
 
 """
-from ...dynamics import bibliometrix__dynamics
+from ..._dynamics import _dynamics
 
 
 def bibliometrix__country_dynamics(
@@ -38,7 +38,7 @@ def bibliometrix__country_dynamics(
 ):
     """Makes a dynamics chat for top sources."""
 
-    return bibliometrix__dynamics(
+    return _dynamics(
         criterion="countries",
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,

@@ -7,8 +7,8 @@ Most Local Cited Sources (from reference lists)
 >>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__most_local_cited_sources.html"
 
->>> from techminer2 import bibliometrix__most_local_cited_sources
->>> bibliometrix__most_local_cited_sources(
+>>> from techminer2 import bibliometrix
+>>> bibliometrix.sources.most_local_cited_sources(
 ...     topics_length=20,
 ...     directory=directory,
 ... ).write_html(file_name)
@@ -21,7 +21,7 @@ Most Local Cited Sources (from reference lists)
 from ...vantagepoint.report.chart import chart
 
 
-def bibliometrix__most_local_cited_sources(
+def most_local_cited_sources(
     directory="./",
     topics_length=20,
     topic_min_occ=None,
