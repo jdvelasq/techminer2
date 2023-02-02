@@ -6,8 +6,8 @@ Most Local Cited References
 >>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__most_local_cited_references.html"
 
->>> from techminer2 import bibliometrix__most_local_cited_references
->>> bibliometrix__most_local_cited_references(
+>>> from techminer2 import bibliometrix
+>>> bibliometrix.documents.cited_references.most_local_cited_references(
 ...     topics_length=20,
 ...     directory=directory,
 ... ).write_html(file_name)
@@ -20,7 +20,7 @@ Most Local Cited References
 from ..cited_documents import bibiometrix_cited_documents
 
 
-def bibliometrix__most_local_cited_references(
+def most_local_cited_references(
     directory="./",
     topics_length=20,
     title="Most Local Cited References",
