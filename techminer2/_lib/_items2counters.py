@@ -2,8 +2,8 @@
 
 import numpy as np
 
+from .._load_stopwords import load_stopwords
 from ..techminer.indicators.indicators_by_topic import indicators_by_topic
-from ._load_stopwords import load_stopwords
 
 
 def items2counters(

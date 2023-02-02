@@ -50,7 +50,7 @@ import pandas as pd
 import plotly.express as px
 
 from ..._lib._explode import explode
-from ..._lib._read_records import read_records
+from ..._read_records import read_records
 
 
 @dataclass(init=False)

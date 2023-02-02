@@ -83,8 +83,8 @@ import networkx as nx
 import plotly.express as px
 
 from ..._lib._items2counters import items2counters
-from ..._lib._load_stopwords import load_stopwords
-from ..._lib._read_records import read_records
+from ..._load_stopwords import load_stopwords
+from ..._read_records import read_records
 from ...techminer.indicators.indicators_by_topic import indicators_by_topic
 from ...vantagepoint.report.matrix_viewer import (
     _color_node_points,

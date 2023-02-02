@@ -30,8 +30,8 @@ Computes coverage of terms in a column discarding stopwords.
 
 import sys
 
-from ..._lib._load_stopwords import load_stopwords
-from ..._lib._read_records import read_records
+from ..._load_stopwords import load_stopwords
+from ..._read_records import read_records
 
 
 def coverage(

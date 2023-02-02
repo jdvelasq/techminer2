@@ -25,8 +25,8 @@ import numpy as np
 import pandas as pd
 
 from ...._lib._items2counters import items2counters
-from ...._lib._load_stopwords import load_stopwords
-from ...._lib._read_records import read_records
+from ...._load_stopwords import load_stopwords
+from ...._read_records import read_records
 from ....techminer.indicators.indicators_by_topic import indicators_by_topic
 
 # pylint: disable=too-many-arguments

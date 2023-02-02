@@ -67,8 +67,8 @@ import textwrap
 
 from ..._lib._load_abstracts import load_abstracts
 from ..._lib._load_template import load_template
-from ..._lib._read_records import read_records
 from ..._lib._save_html_report import save_html_report
+from ..._read_records import read_records
 from ..co_occurrence_analysis.concordances import _select_abstracts
 
 

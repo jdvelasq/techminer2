@@ -50,7 +50,7 @@ import datetime
 import numpy as np
 import pandas as pd
 
-from ..._lib._read_records import read_records
+from ..._read_records import read_records
 
 
 class _MainInformation:

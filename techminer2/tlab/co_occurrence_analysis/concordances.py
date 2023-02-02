@@ -30,7 +30,7 @@ import os.path
 import textwrap
 
 from ..._lib._load_abstracts import load_abstracts
-from ..._lib._read_records import read_records
+from ..._read_records import read_records
 
 
 def tlab__co_occurrence_analysis__concordances(

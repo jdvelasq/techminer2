@@ -20,7 +20,7 @@ Gantt Chart
 """
 import plotly.express as px
 
-from ..._lib._read_records import read_records
+from ..._read_records import read_records
 from ...techminer.indicators.indicators_by_topic import indicators_by_topic
 
 

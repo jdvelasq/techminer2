@@ -32,7 +32,7 @@ China             5                27  ...                     3      0.60
 
 import numpy as np
 
-from ..._lib._read_records import read_records
+from ..._read_records import read_records
 
 
 def collaboration_indicators_by_topic(
