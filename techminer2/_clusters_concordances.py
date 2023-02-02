@@ -3,8 +3,9 @@ import os
 import shutil
 
 from ._create_directory import create_directory
-from .tlab__co_occurrence_analysis__concordances import \
-    tlab__co_occurrence_analysis__concordances
+from .tlab.co_occurrence_analysis.concordances import (
+    tlab__co_occurrence_analysis__concordances,
+)
 
 
 def clusters_concordances(
