@@ -10,7 +10,7 @@ Bibliometric Indicators by Topic per Year
 ...     'authors',
 ...     directory=directory,
 ... ).head(20)
-a                        OCC  ...  local_citations_per_year
+                        OCC  ...  local_citations_per_year
 authors           year       ...                          
 Abdullah Y        2022    1  ...                     0.000
 Ajmi JA           2021    1  ...                     0.333
