@@ -100,8 +100,8 @@ Word Cloud
 
 
 
->>> from techminer2.tm2__growth_indicators_by_topic import tm2__growth_indicators_by_topic
->>> tm2__growth_indicators_by_topic(
+>>> from techminer2 import techminer
+>>> techminer.indicators.growth_indicators_by_topic(
 ...     criterion="author_keywords", 
 ...     directory=directory,
 ... )[['OCC', 'average_growth_rate']].sort_values(['average_growth_rate', 'OCC'], ascending=False).head(20)
