@@ -6,8 +6,8 @@ Author Impact
 >>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__author_impact.html"
 
->>> from techminer2 import bibliometrix__author_impact
->>> bibliometrix__author_impact(
+>>> from techminer2 import bibliometrix
+>>> bibliometrix.authors.authors.author_impact(
 ...     impact_measure='h_index',
 ...     topics_length=20,
 ...     directory=directory,
@@ -22,7 +22,7 @@ Author Impact
 from ..._impact import _impact
 
 
-def bibliometrix__author_impact(
+def author_impact(
     impact_measure="h_index",
     topics_length=20,
     topic_min_occ=0,

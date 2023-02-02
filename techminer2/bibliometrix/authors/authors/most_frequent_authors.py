@@ -6,8 +6,8 @@ Most Frequent Authors
 >>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__most_frequent_authors.html"
 
->>> from techminer2 import bibliometrix__most_frequent_authors
->>> bibliometrix__most_frequent_authors(
+>>> from techminer2 import bibliometrix
+>>> bibliometrix.authors.authors.most_frequent_authors(
 ...     directory,
 ...     topics_length=20,
 ...     plot="cleveland",
@@ -22,7 +22,7 @@ Most Frequent Authors
 from ....vantagepoint.report.chart import chart
 
 
-def bibliometrix__most_frequent_authors(
+def most_frequent_authors(
     directory="./",
     topics_length=20,
     topic_min_occ=None,

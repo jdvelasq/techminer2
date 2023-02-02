@@ -7,8 +7,8 @@ Authors' Production over Time
 >>> file_name = "sphinx/_static/bibliometrix__authors_production_over_time.html"
 
 
->>> from techminer2 import bibliometrix__authors_production_over_time
->>> pot = bibliometrix__authors_production_over_time(
+>>> from techminer2 import bibliometrix
+>>> pot = bibliometrix.authors.authors.authors_production_over_time(
 ...    topics_length=10,
 ...    directory=directory,
 ... )
@@ -22,27 +22,25 @@ Authors' Production over Time
 
 
 >>> pot.documents_per_author_.head()
-        authors  ...                           doi
-0   von Solms J  ...    10.1057/S41261-020-00134-0
-1   Dashottar S  ...    10.1057/S41261-020-00127-Z
-2  Srivastava V  ...    10.1057/S41261-020-00127-Z
-3       Turki M  ...  10.1007/978-981-15-3383-9_32
-4      Hamdan A  ...  10.1007/978-981-15-3383-9_32
+       authors  ...                            doi
+0  Teichmann F  ...  10.1016/J.TECHSOC.2022.102150
+1   Boticiu SR  ...  10.1016/J.TECHSOC.2022.102150
+2     Sergi BS  ...  10.1016/J.TECHSOC.2022.102150
+3        Lan G  ...    10.1016/J.RIBAF.2022.101868
+4       Li D/1  ...    10.1016/J.RIBAF.2022.101868
 <BLANKLINE>
 [5 rows x 7 columns]
-
 
 >>> pot.production_per_year_.head()
-                   OCC  ...  local_citations_per_year
-authors      year       ...                          
-Abdullah Y   2022    1  ...                     0.000
-Abi-Lahoud E 2018    1  ...                     0.000
-Ajmi JA      2021    1  ...                     0.500
-Al Haider N  2020    1  ...                     0.333
-Alam TM      2021    1  ...                     0.000
+                        OCC  ...  local_citations_per_year
+authors           year       ...                          
+Abdullah Y        2022    1  ...                     0.000
+Ajmi JA           2021    1  ...                     0.333
+Anagnostopoulos I 2018    1  ...                     2.833
+Anasweh M         2020    1  ...                     1.000
+Arman AA          2022    2  ...                     0.000
 <BLANKLINE>
 [5 rows x 7 columns]
-
 
 
 """
@@ -62,7 +60,7 @@ class _Results:
     documents_per_author_ = None
 
 
-def bibliometrix__authors_production_over_time(
+def authors_production_over_time(
     topics_length=10,
     topic_min_occ=None,
     topic_min_citations=None,

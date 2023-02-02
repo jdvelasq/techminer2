@@ -7,24 +7,21 @@ Lotka's Law
 >>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__lotka_law.html"
 
->>> from techminer2 import bibliometrix__lotka_law
->>> bibliometrix__lotka_law(directory=directory).plot_.write_html(file_name)
+>>> from techminer2 import bibliometrix
+>>> bibliometrix.authors.authors.lotka_law(directory=directory).plot_.write_html(file_name)
 
 .. raw:: html
 
     <iframe src="../../../_static/bibliometrix__lotka_law.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
->>> bibliometrix__lotka_law(directory=directory).table_
+>>> bibliometrix.authors.authors.lotka_law(directory=directory).table_
    Documents Written  ...  Prop Theoretical Authors
-0                  1  ...                     0.679
-1                  2  ...                     0.170
-2                  3  ...                     0.075
-3                  4  ...                     0.042
-4                  6  ...                     0.019
-5                  7  ...                     0.014
+0                  1  ...                     0.735
+1                  2  ...                     0.184
+2                  3  ...                     0.082
 <BLANKLINE>
-[6 rows x 5 columns]
+[3 rows x 5 columns]
 
 """
 from dataclasses import dataclass
@@ -40,7 +37,7 @@ class _Results:
     table_: None
 
 
-def bibliometrix__lotka_law(
+def lotka_law(
     directory="./",
     database="documents",
     start_year=None,

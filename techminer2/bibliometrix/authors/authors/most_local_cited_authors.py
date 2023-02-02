@@ -9,8 +9,8 @@ Most Local Cited Authors
 >>> file_name = "sphinx/_static/bibliometrix__most_local_cited_authors.html"
 
 
->>> from techminer2 import bibliometrix__most_local_cited_authors
->>> bibliometrix__most_local_cited_authors(
+>>> from techminer2 import bibliometrix
+>>> bibliometrix.authors.authors.most_local_cited_authors(
 ...     topics_length=20,
 ...     directory=directory,
 ... ).write_html(file_name)
@@ -23,7 +23,7 @@ Most Local Cited Authors
 from ....vantagepoint.report.chart import chart
 
 
-def bibliometrix__most_local_cited_authors(
+def most_local_cited_authors(
     directory="./",
     topics_length=20,
     topic_min_occ=None,
