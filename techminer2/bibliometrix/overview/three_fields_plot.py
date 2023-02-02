@@ -6,8 +6,8 @@ Three Fields Plot
 >>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__three_fields_plot.html"
 
->>> from techminer2 import bibliometrix__three_fields_plot
->>> bibliometrix__three_fields_plot(
+>>> from techminer2 import bibliometrix
+>>> bibliometrix.overview.three_fields_plot(
 ...     directory=directory,
 ...     left_criterion='authors',
 ...     middle_criterion='countries',
@@ -26,7 +26,7 @@ import plotly.graph_objects as go
 from ...vantagepoint.analyze.matrix.occ_matrix import occ_matrix
 
 
-def bibliometrix__three_fields_plot(
+def three_fields_plot(
     left_criterion,
     middle_criterion,
     right_criterion,

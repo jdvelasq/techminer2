@@ -6,8 +6,8 @@ Annual Scientific Production
 >>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__annual_scientific_production.html"
 
->>> from techminer2 import bibliometrix__annual_scientific_production
->>> bibliometrix__annual_scientific_production(directory).write_html(file_name)
+>>> from techminer2 import bibliometrix
+>>> bibliometrix.overview.annual_scientific_production(directory).write_html(file_name)
 
 .. raw:: html
 
@@ -18,7 +18,7 @@ from ..._lib._time_plot import time_plot
 from ...techminer.indicators.indicators_by_year import indicators_by_year
 
 
-def bibliometrix__annual_scientific_production(
+def annual_scientific_production(
     directory="./",
     database="documents",
     start_year=None,

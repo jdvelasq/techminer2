@@ -5,44 +5,44 @@ Main information
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import bibliometrix__main_information
->>> bibliometrix__main_information(directory)
+>>> from techminer2 import bibliometrix
+>>> bibliometrix.overview.main_information(directory)
                                                             Value
 Category       Item                                              
-GENERAL        Timespan                                 2016:2022
-               Documents                                       94
-               Annual growth rate %                         73.33
-               Document average age                          2.29
-               References                                    4433
-               Average citations per document                6.73
-               Average citations per document per year       0.96
-               Average references per document              49.26
-               Sources                                         67
-               Average documents per source                   1.4
-DOCUMENT TYPES article                                         51
+GENERAL        Timespan                                 2016:2023
+               Documents                                       52
+               Annual growth rate %                         63.87
+               Document average age                          2.77
+               References                                    2968
+               Average citations per document               10.83
+               Average citations per document per year       1.35
+               Average references per document              59.36
+               Sources                                         46
+               Average documents per source                  1.13
+DOCUMENT TYPES article                                         31
                book                                             1
-               book_chapter                                    14
-               conference_paper                                22
-               editorial                                        2
-               review                                           4
-AUTHORS        Authors                                        193
-               Authors of single-authored documents            33
-               Single-authored documents                       33
-               Multi-authored documents                        61
-               Authors per document                          2.37
-               Co-authors per document                       3.11
-               International co-authorship %                25.81
-               Author appearances                             223
-               Documents per author                          0.42
+               book_chapter                                     9
+               conference_paper                                11
+AUTHORS        Authors                                      102.0
+               Authors of single-authored documents          19.0
+               Single-authored documents                     19.0
+               Multi-authored documents                      33.0
+               Authors per document                          2.29
+               Co-authors per document                       3.03
+               International co-authorship %                23.08
+               Author appearances                           119.0
+               Documents per author                          0.44
                Collaboration index                            1.0
-               Organizations                                  148
-               Organizations (1st author)                      82
-               Countries                                       40
-               Countries (1st author)                          35
-KEYWORDS       Raw author keywords                            303
-               Cleaned author keywords                        286
-               Raw index keywords                             259
-               Cleaned index keywords                         254
+               Organizations                                 80.0
+               Organizations (1st author)                    44.0
+               Countries                                     29.0
+               Countries (1st author)                        25.0
+KEYWORDS       Raw author keywords                            149
+               Cleaned author keywords                        144
+               Raw index keywords                             155
+               Cleaned index keywords                         150
+
+
 
 """
 import datetime
@@ -495,7 +495,7 @@ class _MainInformation:
         return len(records)
 
 
-def bibliometrix__main_information(
+def main_information(
     directory="./",
     database="documents",
     start_year=None,
