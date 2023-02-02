@@ -9,8 +9,8 @@ Country Impact
 >>> file_name = "sphinx/_static/bibliometrix__country_impact.html"
 
 
->>> from techminer2 import bibliometrix__country_impact
->>> bibliometrix__country_impact(
+>>> from techminer2 import bibliometrix
+>>> bibliometrix.authors.countries.country_impact(
 ...     impact_measure='h_index', 
 ...     topics_length=20, 
 ...     directory=directory,
@@ -25,7 +25,7 @@ Country Impact
 from ..._impact import _impact
 
 
-def bibliometrix__country_impact(
+def country_impact(
     impact_measure="h_index",
     topics_length=20,
     topic_min_occ=None,

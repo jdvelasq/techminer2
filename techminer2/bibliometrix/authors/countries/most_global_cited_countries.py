@@ -7,8 +7,8 @@ Most Global Cited Countries
 >>> file_name = "sphinx/_static/bibliometrix__most_global_cited_countries.html"
 
 
->>> from techminer2 import bibliometrix__most_global_cited_countries
->>> bibliometrix__most_global_cited_countries(
+>>> from techminer2 import bibliometrix
+>>> bibliometrix.authors.countries.most_global_cited_countries(
 ...     directory,
 ...     topics_length=20,
 ...     plot="cleveland",
@@ -22,7 +22,7 @@ Most Global Cited Countries
 from ....vantagepoint.report.chart import chart
 
 
-def bibliometrix__most_global_cited_countries(
+def most_global_cited_countries(
     directory="./",
     topics_length=20,
     plot="cleveland",

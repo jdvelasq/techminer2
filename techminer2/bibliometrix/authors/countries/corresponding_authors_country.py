@@ -7,8 +7,8 @@ Corresponding Author's Country
 >>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__corresponding_authors_country.html"
 
->>> from techminer2 import bibliometrix__corresponding_authors_country
->>> bibliometrix__corresponding_authors_country(
+>>> from techminer2 import bibliometrix
+>>> bibliometrix.authors.countries.corresponding_authors_country(
 ...     topics_length=20,
 ...     directory=directory,
 ... ).plot_.write_html(file_name)
@@ -18,18 +18,18 @@ Corresponding Author's Country
     <iframe src="../../../_static/bibliometrix__corresponding_authors_country.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
->>> bibliometrix__corresponding_authors_country(
+>>> from techminer2 import bibliometrix
+>>> bibliometrix.authors.countries.corresponding_authors_country(
 ...     directory=directory, 
 ...     topics_length=20,
 ... ).table_.head()
                 single_publication  multiple_publication  mcp_ratio
 countries                                                          
-United Kingdom                  10                     6   0.600000
-Australia                        4                     9   2.250000
-Germany                          3                     8   2.666667
-United States                    6                     4   0.666667
-Hong Kong                        2                     6   3.000000
-
+United Kingdom                   4                     3       0.75
+Australia                        4                     3       0.75
+United States                    4                     2       0.50
+Ireland                          4                     1       0.25
+China                            2                     3       1.50
 
 """
 from dataclasses import dataclass
@@ -47,7 +47,7 @@ class _Results:
     table_: None
 
 
-def bibliometrix__corresponding_authors_country(
+def corresponding_authors_country(
     topics_length=20,
     topic_min_occ=None,
     topic_min_citations=None,

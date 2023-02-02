@@ -7,8 +7,8 @@ Countries' Production over Time
 >>> file_name = "sphinx/_static/bibliometrix__countries_production_over_time.html"
 
 
->>> from techminer2 import bibliometrix__countries_production_over_time
->>> bibliometrix__countries_production_over_time(
+>>> from techminer2 import bibliometrix
+>>> bibliometrix.authors.countries.countries_production_over_time(
 ...    topics_length=10,
 ...    directory=directory,
 ... ).plot_.write_html(file_name)
@@ -34,7 +34,7 @@ class _Results:
     documents_per_country_ = None
 
 
-def bibliometrix__countries_production_over_time(
+def countries_production_over_time(
     topics_length=10,
     topic_min_occ=None,
     topic_min_citations=None,

@@ -4,7 +4,7 @@ Organizations' Production over Time
 
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/bibliometrix__organizations_production_over_time.html"
+>>> file_name = "sphinx/_static/bibliometrix.authors.organizations_production_over_time.html"
 
 >>> from techminer2 import bibliometrix__organizations_production_over_time
 >>> pot = bibliometrix__organizations_production_over_time(

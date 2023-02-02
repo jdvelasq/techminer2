@@ -9,8 +9,8 @@ Country Dynamics
 >>> file_name = "sphinx/_static/bibliometrix__country_dynamics.html"
 
 
->>> from techminer2 import bibliometrix__country_dynamics
->>> bibliometrix__country_dynamics(
+>>> from techminer2 import bibliometrix
+>>> bibliometrix.authors.countries.country_dynamics(
 ...     topics_length=5, 
 ...     directory=directory,
 ... ).write_html(file_name)
@@ -24,7 +24,7 @@ Country Dynamics
 from ..._dynamics import _dynamics
 
 
-def bibliometrix__country_dynamics(
+def country_dynamics(
     topics_length=5,
     topic_min_occ=None,
     topic_min_citations=None,

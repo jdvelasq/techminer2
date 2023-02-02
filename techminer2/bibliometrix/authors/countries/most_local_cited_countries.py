@@ -8,8 +8,8 @@ Most Local Cited Countries
 >>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__most_local_cited_countries.html"
 
->>> from techminer2 import bibliometrix__most_local_cited_countries
->>> bibliometrix__most_local_cited_countries(
+>>> from techminer2 import bibliometrix
+>>> bibliometrix.authors.countries.most_local_cited_countries(
 ...     topics_length=20,
 ...     directory=directory,
 ... ).write_html(file_name)
@@ -22,7 +22,7 @@ Most Local Cited Countries
 from ....vantagepoint.report.chart import chart
 
 
-def bibliometrix__most_local_cited_countries(
+def most_local_cited_countries(
     directory="./",
     topics_length=20,
     topic_min_occ=None,

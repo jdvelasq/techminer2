@@ -7,8 +7,8 @@ Country Scientific Production
 >>> file_name = "sphinx/_static/bibliometrix__country_scientific_production.html"
 
 
->>> from techminer2 import bibliometrix__country_scientific_production
->>> bibliometrix__country_scientific_production(
+>>> from techminer2 import bibliometrix
+>>> bibliometrix.authors.countries.country_scientific_production(
 ...     directory=directory
 ... ).write_html(file_name)
  
@@ -20,7 +20,7 @@ Country Scientific Production
 from ....vantagepoint.report.world_map import world_map
 
 
-def bibliometrix__country_scientific_production(
+def country_scientific_production(
     directory="./",
     metric="OCC",
     database="documents",
