@@ -3,9 +3,7 @@ import os
 import shutil
 
 from ._create_directory import create_directory
-from .tlab.co_occurrence_analysis.concordances import (
-    tlab__co_occurrence_analysis__concordances,
-)
+from .tlab.concordances.concordances import concordances
 
 
 def clusters_concordances(
@@ -41,7 +39,7 @@ def clusters_concordances(
         community = [" ".join(x.split()[:-1]) for x in community]
 
         for i_member, member in enumerate(community):
-            tlab__co_occurrence_analysis__concordances(
+            concordances(
                 search_for=member,
                 top_n=n_abstracts,
                 quiet=True,

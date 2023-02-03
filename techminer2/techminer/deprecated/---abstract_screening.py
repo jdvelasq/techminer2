@@ -31,10 +31,10 @@ Captures n-words around the keyword.
 
 """
 
-from ..._lib._load_abstracts import load_abstracts
 from ..._lib._load_template import load_template
 from ..._lib._save_html_report import save_html_report
-from ...tlab.co_occurrence_analysis.concordances import _select_abstracts
+from ..._load_abstracts import load_abstracts
+from ...tlab.concordances.concordances import _select_abstracts
 
 
 def abstract_screening(

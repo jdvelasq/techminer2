@@ -29,7 +29,7 @@ Network Map (Deprecated)
 #     :align: center
 
 """
-from ._bubble_map import bubble_map
+from .._bubble_map import bubble_map
 
 
 def network_map(
