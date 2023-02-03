@@ -4,10 +4,10 @@ Radial Diagram
 
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/tlab__word_associations_radial_diagram.html"
+>>> file_name = "sphinx/_static/tlab__word_associations__graphs__radial_diagram.html"
 
->>> from techminer2 import tlab__word_associations_radial_diagram
->>> tlab__word_associations_radial_diagram(
+>>> from techminer2 import tlab
+>>> tlab.word_associations.graphs__radial_diagram(
 ...     criterion='words',
 ...     topic="regtech",
 ...     topic_min_occ=4,
@@ -16,16 +16,16 @@ Radial Diagram
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/tlab__word_associations_radial_diagram.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../../_static/tlab__word_associations__graphs__radial_diagram.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 import networkx as nx
 
+from ... import vantagepoint
 from ..._get_network_graph_plot import get_network_graph_plot
-from ...vantagepoint.analyze.matrix.co_occ_matrix_list import co_occ_matrix_list
 
 
-def tlab__word_associations_radial_diagram(
+def graphs__radial_diagram(
     criterion,
     topic,
     topics_length=None,
@@ -39,7 +39,7 @@ def tlab__word_associations_radial_diagram(
 ):
     """Creates a radial diagram of term associations from a co-occurrence matrix."""
 
-    matrix_list = co_occ_matrix_list(
+    matrix_list = vantagepoint.analyze.matrix.co_occ_matrix_list(
         criterion=criterion,
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,
