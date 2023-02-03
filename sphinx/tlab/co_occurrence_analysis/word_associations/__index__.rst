@@ -8,13 +8,11 @@ Word Associations
         .. toctree::
             graphs__radial_diagram
             graphs__co_occurrences
+            graphs__mds_map
 
 
         * Cosine association
 
-        .. toctree::
-            
-            tlab__word_associations_mds_map
 
 
     * **Tables**

@@ -17,10 +17,10 @@ The plot is based on the SVD technique used in T-LAB's comparative analysis.
 
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/tlab__word_associations_mds_map.html"
+>>> file_name = "sphinx/_static/tlab__word_associations__graphs__mds_map.html"
 
->>> from techminer2 import tlab__word_associations_mds_map
->>> mds_map = tlab__word_associations_mds_map(
+>>> from techminer2 import tlab
+>>> mds_map = tlab.word_associations.graphs__mds_map(
 ...     criterion='author_keywords',
 ...     topic_min_occ=5,    
 ...     directory=directory,
@@ -31,34 +31,36 @@ The plot is based on the SVD technique used in T-LAB's comparative analysis.
 
 .. raw:: html
 
-    <iframe src="../../../_static/tlab__word_associations_mds_map.html" height="800px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/tlab__word_associations__graphs__mds_map.html" height="800px" width="100%" frameBorder="0"></iframe>
 
 
 >>> mds_map.table_.head()
-                                     dim0      dim1
-row                                                
-regtech 69:461                  84.928900 -2.721688
-fintech 42:406                  61.832611  2.278441
-blockchain 18:109               25.915631 -4.905159
-artificial intelligence 13:065  15.160618  6.382477
-compliance 12:020               13.045184 -5.500958
+                                   dim0      dim1
+row                                              
+regtech 28:329                31.434517 -2.152565
+fintech 12:249                16.709623  5.191047
+compliance 07:030              8.672894 -4.116138
+regulatory technology 07:037   3.119939 -0.566268
+regulation 05:164              6.324591  2.907691
 
 """
+
+from dataclasses import dataclass
 
 import pandas as pd
 from sklearn.decomposition import TruncatedSVD
 
+from ... import vantagepoint
 from ..._lib.map_chart import map_chart
-from ...vantagepoint.analyze.matrix.co_occ_matrix import co_occ_matrix
 
 
-class _Result:
-    def __init__(self):
-        self.table_ = None
-        self.plot_ = None
+@dataclass(init=False)
+class _Results:
+    plot_: None
+    table_: None
 
 
-def tlab__word_associations_mds_map(
+def graphs__mds_map(
     criterion,
     topics_length=50,
     topic_min_occ=None,
@@ -74,7 +76,7 @@ def tlab__word_associations_mds_map(
 ):
     """Co-occurrence SVD Map."""
 
-    matrix = co_occ_matrix(
+    matrix = vantagepoint.analyze.matrix.co_occ_matrix(
         criterion=criterion,
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,
@@ -100,7 +102,7 @@ def tlab__word_associations_mds_map(
         index=matrix.index,
     )
 
-    result = _Result()
+    result = _Results()
     result.table_ = decomposed_matrix
     result.plot_ = map_chart(
         dataframe=decomposed_matrix,
