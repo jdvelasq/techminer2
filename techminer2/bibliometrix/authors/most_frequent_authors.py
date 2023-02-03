@@ -1,29 +1,28 @@
 """
-Most Local Cited Authors
+Most Frequent Authors
 ===============================================================================
 
 
-
-
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/bibliometrix__most_local_cited_authors.html"
-
+>>> file_name = "sphinx/_static/bibliometrix__most_frequent_authors.html"
 
 >>> from techminer2 import bibliometrix
->>> bibliometrix.authors.authors.most_local_cited_authors(
+>>> bibliometrix.authors.most_frequent_authors(
+...     directory,
 ...     topics_length=20,
-...     directory=directory,
+...     plot="cleveland",
+...     database="documents",
 ... ).write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../_static/bibliometrix__most_local_cited_authors.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/bibliometrix__most_frequent_authors.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ....vantagepoint.report.chart import chart
+from ...vantagepoint.report.chart import chart
 
 
-def most_local_cited_authors(
+def most_frequent_authors(
     directory="./",
     topics_length=20,
     topic_min_occ=None,
@@ -34,20 +33,20 @@ def most_local_cited_authors(
     end_year=None,
     **filters,
 ):
-    """Most Local Cited Authors (from Reference Lists)."""
+    """Plots the number of documents by author using the specified plot."""
 
     return chart(
         criterion="authors",
         directory=directory,
         database=database,
-        metric="local_citations",
+        metric="OCC",
         start_year=start_year,
         end_year=end_year,
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,
         topic_min_citations=topic_min_citations,
         custom_topics=None,
-        title="Most Local Cited Authors (from Reference Lists)",
+        title="Most Frequent Authors",
         plot=plot,
         **filters,
     )

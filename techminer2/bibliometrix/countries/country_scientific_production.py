@@ -8,7 +8,7 @@ Country Scientific Production
 
 
 >>> from techminer2 import bibliometrix
->>> bibliometrix.authors.countries.country_scientific_production(
+>>> bibliometrix.countries.country_scientific_production(
 ...     directory=directory
 ... ).write_html(file_name)
  
@@ -17,7 +17,7 @@ Country Scientific Production
     <iframe src="../../../_static/bibliometrix__country_scientific_production.html" height="410px" width="100%" frameBorder="0"></iframe>
 
 """
-from ....vantagepoint.report.world_map import world_map
+from ...vantagepoint.report.world_map import world_map
 
 
 def country_scientific_production(

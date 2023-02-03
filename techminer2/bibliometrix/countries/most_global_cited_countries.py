@@ -8,7 +8,7 @@ Most Global Cited Countries
 
 
 >>> from techminer2 import bibliometrix
->>> bibliometrix.authors.countries.most_global_cited_countries(
+>>> bibliometrix.countries.most_global_cited_countries(
 ...     directory,
 ...     topics_length=20,
 ...     plot="cleveland",
@@ -19,7 +19,7 @@ Most Global Cited Countries
     <iframe src="../../../_static/bibliometrix__most_global_cited_countries.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ....vantagepoint.report.chart import chart
+from ...vantagepoint.report.chart import chart
 
 
 def most_global_cited_countries(

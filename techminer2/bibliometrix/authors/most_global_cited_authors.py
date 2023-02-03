@@ -1,28 +1,26 @@
-"""
-Most Local Cited Institutions
+"""Most Global Cited Authors
 ===============================================================================
 
 
-
-
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/bibliometrix__most_local_cited_organizations.html"
+>>> file_name = "sphinx/_static/bibliometrix__most_global_cited_authors.html"
 
 >>> from techminer2 import bibliometrix
->>> bibliometrix.authors.organizations.most_local_cited_organizations(
+>>> bibliometrix.authors.most_global_cited_authors(
+...     directory,
 ...     topics_length=20,
-...     directory=directory,
+...     plot="cleveland",
 ... ).write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../_static/bibliometrix__most_local_cited_organizations.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/bibliometrix__most_global_cited_authors.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ....vantagepoint.report.chart import chart
+from ...vantagepoint.report.chart import chart
 
 
-def most_local_cited_organizations(
+def most_global_cited_authors(
     directory="./",
     topics_length=20,
     topic_min_occ=None,
@@ -33,20 +31,20 @@ def most_local_cited_organizations(
     end_year=None,
     **filters,
 ):
-    """Most Local Cited Organizations (from Reference Lists)."""
+    """Most global cited authors."""
 
     return chart(
-        criterion="organizations",
+        criterion="authors",
         directory=directory,
         database=database,
-        metric="local_citations",
+        metric="global_citations",
         start_year=start_year,
         end_year=end_year,
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,
         topic_min_citations=topic_min_citations,
         custom_topics=None,
-        title="Most Local Cited Organizations (from Reference Lists)",
+        title="Most Global Cited Authors",
         plot=plot,
         **filters,
     )

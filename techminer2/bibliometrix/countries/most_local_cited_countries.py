@@ -9,7 +9,7 @@ Most Local Cited Countries
 >>> file_name = "sphinx/_static/bibliometrix__most_local_cited_countries.html"
 
 >>> from techminer2 import bibliometrix
->>> bibliometrix.authors.countries.most_local_cited_countries(
+>>> bibliometrix.countries.most_local_cited_countries(
 ...     topics_length=20,
 ...     directory=directory,
 ... ).write_html(file_name)
@@ -19,7 +19,7 @@ Most Local Cited Countries
     <iframe src="../../../_static/bibliometrix__most_local_cited_countries.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ....vantagepoint.report.chart import chart
+from ...vantagepoint.report.chart import chart
 
 
 def most_local_cited_countries(

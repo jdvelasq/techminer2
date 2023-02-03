@@ -8,7 +8,7 @@ Corresponding Author's Country
 >>> file_name = "sphinx/_static/bibliometrix__corresponding_authors_country.html"
 
 >>> from techminer2 import bibliometrix
->>> bibliometrix.authors.countries.corresponding_authors_country(
+>>> bibliometrix.countries.corresponding_authors_country(
 ...     topics_length=20,
 ...     directory=directory,
 ... ).plot_.write_html(file_name)
@@ -19,7 +19,7 @@ Corresponding Author's Country
 
 
 >>> from techminer2 import bibliometrix
->>> bibliometrix.authors.countries.corresponding_authors_country(
+>>> bibliometrix.countries.corresponding_authors_country(
 ...     directory=directory, 
 ...     topics_length=20,
 ... ).table_.head()
@@ -36,7 +36,7 @@ from dataclasses import dataclass
 
 import plotly.express as px
 
-from ....techminer.indicators.collaboration_indicators_by_topic import (
+from ...techminer.indicators.collaboration_indicators_by_topic import (
     collaboration_indicators_by_topic,
 )
 

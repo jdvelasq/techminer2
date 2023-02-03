@@ -7,7 +7,7 @@ Most Global Cited Organizations
 >>> file_name = "sphinx/_static/bibliometrix__most_global_cited_organizations.html"
 
 >>> from techminer2 import bibliometrix
->>> bibliometrix.authors.organizations.most_global_cited_organizations(
+>>> bibliometrix.organizations.most_global_cited_organizations(
 ...     directory,
 ...     topics_length=20,
 ...     plot="cleveland",
@@ -18,7 +18,7 @@ Most Global Cited Organizations
     <iframe src="../../../_static/bibliometrix__most_global_cited_organizations.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ....vantagepoint.report.chart import chart
+from ...vantagepoint.report.chart import chart
 
 
 def most_global_cited_organizations(

@@ -8,14 +8,14 @@ Lotka's Law
 >>> file_name = "sphinx/_static/bibliometrix__lotka_law.html"
 
 >>> from techminer2 import bibliometrix
->>> bibliometrix.authors.authors.lotka_law(directory=directory).plot_.write_html(file_name)
+>>> bibliometrix.authors.lotka_law(directory=directory).plot_.write_html(file_name)
 
 .. raw:: html
 
     <iframe src="../../../_static/bibliometrix__lotka_law.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
->>> bibliometrix.authors.authors.lotka_law(directory=directory).table_
+>>> bibliometrix.authors.lotka_law(directory=directory).table_
    Documents Written  ...  Prop Theoretical Authors
 0                  1  ...                     0.735
 1                  2  ...                     0.184
@@ -28,7 +28,7 @@ from dataclasses import dataclass
 
 import plotly.graph_objects as go
 
-from ....techminer.indicators.indicators_by_topic import indicators_by_topic
+from ...techminer.indicators.indicators_by_topic import indicators_by_topic
 
 
 @dataclass(init=False)

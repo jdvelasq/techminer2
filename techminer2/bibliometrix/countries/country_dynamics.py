@@ -10,7 +10,7 @@ Country Dynamics
 
 
 >>> from techminer2 import bibliometrix
->>> bibliometrix.authors.countries.country_dynamics(
+>>> bibliometrix.countries.country_dynamics(
 ...     topics_length=5, 
 ...     directory=directory,
 ... ).write_html(file_name)
@@ -21,7 +21,7 @@ Country Dynamics
 
 
 """
-from ..._dynamics import _dynamics
+from .._dynamics import _dynamics
 
 
 def country_dynamics(

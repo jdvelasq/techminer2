@@ -8,7 +8,7 @@ Countries' Production over Time
 
 
 >>> from techminer2 import bibliometrix
->>> bibliometrix.authors.countries.countries_production_over_time(
+>>> bibliometrix.countries.countries_production_over_time(
 ...    topics_length=10,
 ...    directory=directory,
 ... ).plot_.write_html(file_name)
@@ -20,11 +20,11 @@ Countries' Production over Time
 """
 from dataclasses import dataclass
 
-from ....techminer.indicators.indicators_by_topic_per_year import (
+from ...techminer.indicators.indicators_by_topic_per_year import (
     indicators_by_topic_per_year,
 )
-from ..._documents_per import _documents_per
-from ..._production_over_time import _production_over_time
+from .._documents_per import _documents_per
+from .._production_over_time import _production_over_time
 
 
 @dataclass(init=False)

@@ -8,7 +8,7 @@ Organization Impact
 >>> file_name = "sphinx/_static/bibliometrix__organization_impact.html"
 
 >>> from techminer2 import bibliometrix
->>> bibliometrix.authors.organizations.organization_impact(
+>>> bibliometrix.organizations.organization_impact(
 ...     impact_measure='h_index', 
 ...     topics_length=20, 
 ...     directory=directory,
@@ -20,7 +20,7 @@ Organization Impact
 
 
 """
-from ..._impact import _impact
+from .._impact import _impact
 
 
 def organization_impact(

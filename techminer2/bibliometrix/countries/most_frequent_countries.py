@@ -1,13 +1,14 @@
 """
-Most Frequent Authors
+Most Frequent Countries
 ===============================================================================
 
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/bibliometrix__most_frequent_authors.html"
+>>> file_name = "sphinx/_static/bibliometrix__most_frequent_countries.html"
+
 
 >>> from techminer2 import bibliometrix
->>> bibliometrix.authors.authors.most_frequent_authors(
+>>> bibliometrix.countries.most_frequent_countries(
 ...     directory,
 ...     topics_length=20,
 ...     plot="cleveland",
@@ -16,13 +17,13 @@ Most Frequent Authors
 
 .. raw:: html
 
-    <iframe src="../../../_static/bibliometrix__most_frequent_authors.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/bibliometrix__most_frequent_countries.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ....vantagepoint.report.chart import chart
+from ...vantagepoint.report.chart import chart
 
 
-def most_frequent_authors(
+def most_frequent_countries(
     directory="./",
     topics_length=20,
     topic_min_occ=None,
@@ -33,10 +34,10 @@ def most_frequent_authors(
     end_year=None,
     **filters,
 ):
-    """Plots the number of documents by author using the specified plot."""
+    """Plots the number of documents by country using the specified plot."""
 
     return chart(
-        criterion="authors",
+        criterion="countries",
         directory=directory,
         database=database,
         metric="OCC",
@@ -46,7 +47,7 @@ def most_frequent_authors(
         topic_min_occ=topic_min_occ,
         topic_min_citations=topic_min_citations,
         custom_topics=None,
-        title="Most Frequent Authors",
+        title="Most Frequent Countries",
         plot=plot,
         **filters,
     )

@@ -11,8 +11,8 @@ from . import (
     multiple_correspondence_analysis,
     sequence_analysis,
     singular_value_decomposition,
-    specifity_analysis,
+    specificity_analysis,
     text_and_discourses,
     thematic_analysis_of_contexts,
-    word_assoaciations,
+    word_associations,
 )

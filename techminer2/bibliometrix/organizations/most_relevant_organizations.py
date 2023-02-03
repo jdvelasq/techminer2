@@ -7,7 +7,7 @@ Most Relevant Organizations
 >>> file_name = "sphinx/_static/bibliometrix__most_relevant_organizations.html"
 
 >>> from techminer2 import bibliometrix
->>> bibliometrix.authors.organizations.most_relevant_organizations(
+>>> bibliometrix.organizations.most_relevant_organizations(
 ...     directory=directory,
 ...     topics_length=20,
 ...     plot="cleveland",
@@ -19,7 +19,7 @@ Most Relevant Organizations
     <iframe src="../../../_static/bibliometrix__most_relevant_organizations.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ....vantagepoint.report.chart import chart
+from ...vantagepoint.report.chart import chart
 
 
 def most_relevant_organizations(
