@@ -5,8 +5,8 @@ Co-citation Network
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import bibliometrix__co_citation_network
->>> nnet = bibliometrix__co_citation_network(
+>>> from techminer2 import bibliometrix
+>>> nnet = bibliometrix.intellectual_structure.co_citation_network(
 ...     topics_length=50,
 ...     directory=directory,
 ...     method="louvain",
@@ -23,14 +23,14 @@ Co-citation Network
     <iframe src="../../_static/bibliometrix__co_citation_network_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> nnet.communities_.head()
-                                               CL_00  ...                                   CL_05
-0       Gomber P, 2017, J BUS ECON, V87, P537 06:140  ...  Szabo N, 1997, FIRST MONDAY, V2 02:007
-1            Lee I, 2018, BUS HORIZ, V61, P35 06:027  ...                                        
-2  Arner DW, 2019, EUR BUS ORG LAW REV, V20, P55 ...  ...                                        
-3   Tsai C-H, 2017, ASIAN J LAW SOC, V4, P109 04:028  ...                                        
-4       Adhami S, 2018, J ECON BUS, V100, P64 04:027  ...                                        
+                                               CL_00  ...                                              CL_02
+0  Barrell R, 2011, NATL INST ECON REV, V216, PF4...  ...  Williams JW, 2013, ACCOUNT ORGAN SOC, V38, P54...
+1  Anagnostopoulos I, 2018, J ECON BUS, V100, P7 ...  ...   Currie WL, 2018, J INF TECHNOL, V33, P304 03:005
+2  Butler T/1, 2019, PALGRAVE STUD DIGIT BUS ENAB...  ...  Singh C, 2020, J MONEY LAUND CONTROL, V24, P46...
+3  Yang D, 2018, EMERG MARK FINANC TRADE, V54, P3...  ...       Bellamy RKE, 2019, IBM J RES DEV, V63 02:017
+4  Kavassalis P, 2018, J RISK FINANC, V19, P39 08...  ...   Smith KT, 2010, J STRATEG MARK, V18, P201 02:017
 <BLANKLINE>
-[5 rows x 6 columns]
+[5 rows x 3 columns]
 
 >>> file_name = "sphinx/_static/bibliometrix__co_citation_network_degree_plot.html"
 >>> nnet.degree_plot_.write_html(file_name)
@@ -42,23 +42,24 @@ Co-citation Network
 
 >>> nnet.indicators_.head()
                                                     group  ...  pagerank
-Adhami S, 2018, J ECON BUS, V100, P64 04:027            0  ...  0.035582
-Anagnostopoulos I, 2018, J ECON BUS, V100, P7 1...      1  ...  0.044167
-Antweiler W, 2004, J FINANC, V59, P1259 02:028          3  ...  0.017492
-Arner DW, 2017, NORTHWEST J INTL LAW BUS, V37, ...      2  ...  0.046950
-Arner DW, 2019, EUR BUS ORG LAW REV, V20, P55 0...      0  ...  0.027119
+Anagnostopoulos I, 2018, J ECON BUS, V100, P7 1...      0  ...  0.050024
+Arner DW, 2017, HANDB OF BLOCKCHAIN, DIGIT FINA...      1  ...  0.018383
+Arner DW, 2019, EUR BUS ORG LAW REV, V20, P55 0...      1  ...  0.021444
+Bamberger KA, 2010, TEX LAW REV, V88, P669 03:008       0  ...  0.005976
+Barrell R, 2011, NATL INST ECON REV, V216, PF4 ...      0  ...  0.150584
 <BLANKLINE>
 [5 rows x 4 columns]
 
+
 """
+from ..._check_references_csv import check_references_csv
 from ..._get_network_graph_communities import get_network_graph_communities
 from ..._get_network_graph_degree_plot import get_network_graph_degree_plot
 from ..._get_network_graph_indicators import get_network_graph_indicators
 from ..._get_network_graph_plot import get_network_graph_plot
-from ..._lib._check_references_csv import check_references_csv
 from ..._matrix_list_2_network_graph import matrix_list_2_network_graph
 from ..._network_community_detection import network_community_detection
-from .co_citation_matrix_list import bibliometrix__co_citation_matrix_list
+from .co_citation_matrix_list import co_citation_matrix_list
 
 
 class _Result:
@@ -71,7 +72,7 @@ class _Result:
         self.degree_plot_ = None
 
 
-def bibliometrix__co_citation_network(
+def co_citation_network(
     topics_length=50,
     directory="./",
     method="louvain",
@@ -87,7 +88,7 @@ def bibliometrix__co_citation_network(
     if not check_references_csv(directory):
         return
 
-    matrix_list = bibliometrix__co_citation_matrix_list(
+    matrix_list = co_citation_matrix_list(
         topics_length=topics_length,
         directory=directory,
         start_year=start_year,

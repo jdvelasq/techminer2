@@ -6,17 +6,16 @@ Co-citation Matrix List
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import bibliometrix__co_citation_matrix_list
->>> bibliometrix__co_citation_matrix_list(directory=directory).head()
-                                              row  ... OCC
-363  Adhami S, 2018, J ECON BUS, V100, P64 04:027  ...   4
-375  Adhami S, 2018, J ECON BUS, V100, P64 04:027  ...   2
-379  Adhami S, 2018, J ECON BUS, V100, P64 04:027  ...   2
-380  Adhami S, 2018, J ECON BUS, V100, P64 04:027  ...   2
-410  Adhami S, 2018, J ECON BUS, V100, P64 04:027  ...   2
+>>> from techminer2 import bibliometrix
+>>> bibliometrix.intellectual_structure.co_citation_matrix_list(directory=directory).head()
+                                                    row  ... OCC
+2365  Anagnostopoulos I, 2018, J ECON BUS, V100, P7 ...  ...  19
+2373  Anagnostopoulos I, 2018, J ECON BUS, V100, P7 ...  ...   3
+2374  Anagnostopoulos I, 2018, J ECON BUS, V100, P7 ...  ...   4
+2386  Anagnostopoulos I, 2018, J ECON BUS, V100, P7 ...  ...  35
+2396  Anagnostopoulos I, 2018, J ECON BUS, V100, P7 ...  ...   3
 <BLANKLINE>
 [5 rows x 3 columns]
-
 
 """
 from ..._read_records import read_records
@@ -26,7 +25,7 @@ from ...vantagepoint.analyze.matrix.co_occ_matrix_list import (
 )
 
 
-def bibliometrix__co_citation_matrix_list(
+def co_citation_matrix_list(
     topics_length=50,
     directory="./",
     start_year=None,
