@@ -7,11 +7,13 @@ Word Associations
 
         .. toctree::
             graphs__radial_diagram
+            graphs__co_occurrences
+
 
         * Cosine association
 
         .. toctree::
-            tlab__word_associations_co_occurrences_plot
+            
             tlab__word_associations_mds_map
 
 

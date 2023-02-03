@@ -1,1 +1,2 @@
+from .graphs__co_occurrences import graphs__co_occurrences
 from .graphs__radial_diagram import graphs__radial_diagram
