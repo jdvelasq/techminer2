@@ -12,4 +12,3 @@ Indicators
         indicators_by_topic
         indicators_by_topic_per_year
         indicators_by_year
-        most_cited_documents
