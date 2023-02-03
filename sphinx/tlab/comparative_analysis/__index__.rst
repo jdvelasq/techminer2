@@ -10,5 +10,5 @@ Comparative Analysis
         correspondence_analysis/__index__
         multiple_correspondence_analysis/__index__
         cluster_analysis/__index__
-        single_value_decomposition/__index__
+        singular_value_decomposition/__index__
 

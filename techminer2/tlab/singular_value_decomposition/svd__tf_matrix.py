@@ -17,12 +17,12 @@ The plot is based on the SVD technique used in T-LAB's comparative analysis.
 
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/tlab__svd_of_tf_matrix.html"
+>>> file_name = "sphinx/_static/tlab__singular_value_decomposition__svd__tf_matrix.html"
 
->>> from techminer2 import tlab__comparative_analysis__svd_of_tf_matrix
->>> svd = tlab__comparative_analysis__svd_of_tf_matrix(
+>>> from techminer2 import tlab
+>>> svd = tlab.singular_value_decomposition.svd__tf_matrix(
 ...     criterion='author_keywords',
-...     topic_min_occ=6,
+...     topic_min_occ=3,
 ...     directory=directory,
 ... )
 
@@ -30,36 +30,38 @@ The plot is based on the SVD technique used in T-LAB's comparative analysis.
 
 .. raw:: html
 
-    <iframe src="../../../_static/tlab__svd_of_tf_matrix.html" height="800px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/tlab__singular_value_decomposition__svd__tf_matrix.html" height="800px" width="100%" frameBorder="0"></iframe>
 
 
 
 >>> svd.table_.head()
-                                    dim0      dim1  ...      dim8      dim9
-author_keywords                                     ...                    
-regtech 69:461                  8.027279 -0.675318  ...  0.054604 -0.178393
-fintech 42:406                  5.832399  0.584421  ... -0.058765  0.034144
-blockchain 18:109               2.456070 -1.152906  ... -0.066790 -0.094229
-artificial intelligence 13:065  1.444791  1.461649  ...  0.116242 -0.692996
-regulatory technology 12:047    0.602569  2.623255  ... -1.191997 -0.215982
+                                  dim0      dim1  ...     dim11     dim12
+author_keywords                                   ...                    
+regtech 28:329                5.110503 -0.826361  ...  0.024196 -0.002287
+fintech 12:249                2.750827  0.355165  ...  0.106912  0.007621
+regulatory technology 07:037  0.568663  2.201471  ...  0.025344 -0.114681
+compliance 07:030             1.406428  0.046633  ... -0.026871 -0.002102
+regulation 05:164             1.076132  0.856966  ... -0.030314 -0.326806
 <BLANKLINE>
-[5 rows x 10 columns]
+[5 rows x 13 columns]
 
 """
+from dataclasses import dataclass
+
 import pandas as pd
 from sklearn.decomposition import TruncatedSVD
 
-from ..._lib.map_chart import map_chart
-from ...vantagepoint.analyze.tfidf.tf_matrix import tf_matrix
+from ... import vantagepoint
+from ..._map_chart import map_chart
 
 
-class _Result:
-    def __init__(self):
-        self.table_ = None
-        self.plot_ = None
+@dataclass(init=False)
+class _Results:
+    plot_: None
+    table_: None
 
 
-def tlab__comparative_analysis__svd_of_tf_matrix(
+def svd__tf_matrix(
     criterion,
     topics_length=None,
     topic_min_occ=None,
@@ -78,7 +80,7 @@ def tlab__comparative_analysis__svd_of_tf_matrix(
     **filters,
 ):
 
-    matrix = tf_matrix(
+    matrix = vantagepoint.analyze.tfidf.tf_matrix(
         criterion=criterion,
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,
@@ -108,7 +110,7 @@ def tlab__comparative_analysis__svd_of_tf_matrix(
         index=labels,
     )
 
-    result = _Result()
+    result = _Results()
     result.table_ = decomposed_matrix
     result.plot_ = map_chart(
         dataframe=decomposed_matrix,

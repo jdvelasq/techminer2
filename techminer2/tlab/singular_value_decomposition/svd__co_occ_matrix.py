@@ -8,7 +8,7 @@ The plot is based on the SVD technique used in T-LAB's comparative analysis.
 
 **Algorithm**
 
-1. Computes the  co-occurrence matrix normalized with the **salton** association index.
+1. Computes the co-occurrence matrix normalized with the **salton** association index.
 
 2. Apply SVD to the co-occurrence matrix with `n_components=20`.
 
@@ -17,10 +17,10 @@ The plot is based on the SVD technique used in T-LAB's comparative analysis.
 
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/tlab__svd_of_co_occ_matrix.html"
+>>> file_name = "sphinx/_static/tlab__singular_value_decomposition__svd__co_occ_matrix.html"
 
->>> from techminer2 import tlab__comparative_analysis__svd_of_co_occ_matrix
->>> svd = tlab__comparative_analysis__svd_of_co_occ_matrix(
+>>> from techminer2 import tlab
+>>> svd = tlab.singular_value_decomposition.svd__co_occ_matrix(
 ...     criterion='words',
 ...     topic_min_occ=4,    
 ...     topics_length=30,
@@ -32,37 +32,39 @@ The plot is based on the SVD technique used in T-LAB's comparative analysis.
 
 .. raw:: html
 
-    <iframe src="../../../_static/tlab__svd_of_co_occ_matrix.html" height="800px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/tlab__singular_value_decomposition__svd__co_occ_matrix.html" height="800px" width="100%" frameBorder="0"></iframe>
 
 
 >>> svd.table_.head()
-                                     dim0       dim1  ...     dim18     dim19
-row                                                   ...                    
-regtech 69:461                  96.128479  -5.992499  ... -0.256446  0.634847
-fintech 42:406                  70.447064  -6.502379  ... -0.253378 -1.142547
-regulatory technology 27:241    34.855736  17.837853  ... -0.170260 -0.245663
-financial technology 24:289     37.628786   9.002861  ...  0.429911  0.681598
-artificial intelligence 19:071  25.652384  -5.882582  ... -1.169009 -0.405793
+                                    dim0      dim1  ...     dim18     dim19
+row                                                 ...                    
+regtech 28:329                 40.984750 -5.825990  ...  0.155973  0.094078
+regulatory technology 20:274   29.043701  7.856001  ... -0.043433  0.051670
+financial institutions 16:198  20.398775 -3.811445  ... -0.208498  0.258354
+regulatory compliance 15:232   24.902161 -2.185884  ... -0.185359 -0.058335
+financial regulation 12:395    16.169054  7.859049  ...  0.382016 -0.036938
 <BLANKLINE>
 [5 rows x 20 columns]
 
 
 """
 
+from dataclasses import dataclass
+
 import pandas as pd
 from sklearn.decomposition import TruncatedSVD
 
-from ..._lib.map_chart import map_chart
-from ...vantagepoint.analyze.matrix.co_occ_matrix import co_occ_matrix
+from ... import vantagepoint
+from ..._map_chart import map_chart
 
 
-class _Result:
-    def __init__(self):
-        self.table_ = None
-        self.plot_ = None
+@dataclass(init=False)
+class _Results:
+    plot_: None
+    table_: None
 
 
-def tlab__comparative_analysis__svd_of_co_occ_matrix(
+def svd__co_occ_matrix(
     criterion,
     topics_length=50,
     topic_min_occ=None,
@@ -80,7 +82,7 @@ def tlab__comparative_analysis__svd_of_co_occ_matrix(
 ):
     """Co-occurrence SVD Map."""
 
-    matrix = co_occ_matrix(
+    matrix = vantagepoint.analyze.matrix.co_occ_matrix(
         criterion=criterion,
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,
@@ -106,7 +108,7 @@ def tlab__comparative_analysis__svd_of_co_occ_matrix(
         index=matrix.index,
     )
 
-    result = _Result()
+    result = _Results()
     result.table_ = decomposed_matrix
     result.plot_ = map_chart(
         dataframe=decomposed_matrix,
