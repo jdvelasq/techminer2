@@ -5,10 +5,10 @@ Thematic Map
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import bibliometrix__thematic_map
->>> nnet = bibliometrix__thematic_map(
+>>> from techminer2 import bibliometrix
+>>> nnet = bibliometrix.conceptual_structure.network_approach.thematic_map(
 ...     criterion="author_keywords",
-...     topics_length=20,
+...     topics_length=60,
 ...     directory=directory,
 ...     method="louvain",
 ...     nx_k=0.5,
@@ -25,15 +25,14 @@ Thematic Map
     <iframe src="../../../_static/bibliometrix__thematic_map_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> nnet.communities_.head()
-                          CL_00  ...                         CL_03
-0                regtech 69:461  ...     financial services 05:135
-1  regulatory technology 12:047  ...    financial inclusion 05:068
-2             compliance 12:020  ...  anti-money laundering 04:030
-3   financial technology 09:032  ...   financial innovation 04:007
-4   financial regulation 08:091  ...                              
+                            CL_00  ...                         CL_07
+0                  regtech 28:329  ...        smart contracts 02:022
+1                  fintech 12:249  ...  algorithmic standards 01:021
+2               regulation 05:164  ...   document engineering 01:021
+3       financial services 04:168  ...                              
+4  artificial intelligence 04:023  ...                              
 <BLANKLINE>
-[5 rows x 4 columns]
-
+[5 rows x 8 columns]
 
 >>> file_name = "sphinx/_static/bibliometrix__thematic_map_degree_plot.html"
 >>> nnet.degree_plot_.write_html(file_name)
@@ -45,17 +44,17 @@ Thematic Map
 
 >>> nnet.indicators_.head()
                               group  betweenness  closeness  pagerank
-accountability 04:022             0     0.002144   0.575758  0.028472
-anti-money laundering 04:030      3     0.002437   0.575758  0.024943
-big data 04:027                   1     0.006391   0.655172  0.067830
-crowdfunding 04:030               1     0.014529   0.678571  0.093745
-cryptocurrency 04:029             1     0.011062   0.655172  0.058653
+algorithmic standards 01:021      7          0.0   0.415325  0.018361
+bahrain 01:007                    5          0.0   0.371607  0.006982
+business management 01:011        1          0.0   0.377280  0.020363
+business models 01:153            0          0.0   0.422425  0.017482
+business policy 01:011            1          0.0   0.377280  0.020363
 
 """
-from .co_occurrence_network import bibliometrix__co_occurrence_network
+from .co_occurrence_network import co_occurrence_network
 
 
-def bibliometrix__thematic_map(
+def thematic_map(
     criterion,
     topics_length=None,
     topic_min_occ=None,
@@ -76,7 +75,7 @@ def bibliometrix__thematic_map(
 ):
     """Thematic map network analysis"""
 
-    return bibliometrix__co_occurrence_network(
+    return co_occurrence_network(
         criterion=criterion,
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,

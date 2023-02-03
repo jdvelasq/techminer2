@@ -3,7 +3,7 @@
 import pandas as pd
 import plotly.express as px
 
-from ._bubble_map import bubble_map
+from ._lib._bubble_map import bubble_map
 
 
 def get_network_graph_manifold_map(

@@ -5,10 +5,10 @@ Co-occurrence Network
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import bibliometrix__co_occurrence_network
->>> nnet = bibliometrix__co_occurrence_network(
+>>> from techminer2 import bibliometrix
+>>> nnet = bibliometrix.conceptual_structure.network_approach.co_occurrence_network(
 ...     criterion="author_keywords",
-...     topics_length=20,
+...     topics_length=100,
 ...     directory=directory,
 ...     method="louvain",
 ...     nx_k=0.5,
@@ -25,14 +25,14 @@ Co-occurrence Network
     <iframe src="../../../_static/bibliometrix__co_occurrence_network.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> nnet.communities_.head()
-                          CL_00  ...                         CL_03
-0                regtech 69:461  ...     financial services 05:135
-1  regulatory technology 12:047  ...    financial inclusion 05:068
-2             compliance 12:020  ...  anti-money laundering 04:030
-3   financial technology 09:032  ...   financial innovation 04:007
-4   financial regulation 08:091  ...                              
+                          CL_00  ...                          CL_12
+0                regtech 28:329  ...    electronic signature 01:001
+1                fintech 12:249  ...  electronic transaction 01:001
+2             regulation 05:164  ...                               
+3        risk management 03:014  ...                               
+4  semantic technologies 02:041  ...                               
 <BLANKLINE>
-[5 rows x 4 columns]
+[5 rows x 13 columns]
 
 >>> file_name = "sphinx/_static/bibliometrix__co_occurrence_network_degree_plot.html"
 >>> nnet.degree_plot_.write_html(file_name)
@@ -43,13 +43,12 @@ Co-occurrence Network
 
 
 >>> nnet.indicators_.head()
-                              group  betweenness  closeness  pagerank
-accountability 04:022             0     0.002144   0.575758  0.028472
-anti-money laundering 04:030      3     0.002437   0.575758  0.024943
-big data 04:027                   1     0.006391   0.655172  0.067830
-crowdfunding 04:030               1     0.014529   0.678571  0.093745
-cryptocurrency 04:029             1     0.011062   0.655172  0.058653
-
+                                   group  betweenness  closeness  pagerank
+algorithmic process 01:003             7          0.0   0.412052  0.012485
+algorithmic standards 01:021           8          0.0   0.404089  0.010534
+algorithmic transparency 01:003        2          0.0   0.406051  0.008777
+analytic hierarchy process 01:002      3          0.0   0.404089  0.008727
+anomaly detection 01:002               1          0.0   0.267241  0.009048
 
 
 >>> file_name = "sphinx/_static/bibliometrix__co_occurrence_network_mds_map.html"
@@ -75,14 +74,14 @@ from dataclasses import dataclass
 from sklearn.manifold import MDS, TSNE
 
 from ...._association_index import association_index
+from ...._cluster_abstracts_report import cluster_abstracts_report
+from ...._clusters_concordances import clusters_concordances
+from ...._create_directory import create_directory
 from ...._get_network_graph_communities import get_network_graph_communities
 from ...._get_network_graph_degree_plot import get_network_graph_degree_plot
 from ...._get_network_graph_indicators import get_network_graph_indicators
+from ...._get_network_graph_manifold_map import get_network_graph_manifold_map
 from ...._get_network_graph_plot import get_network_graph_plot
-from ...._lib._cluster_abstracts_report import cluster_abstracts_report
-from ...._lib._clusters_concordances import clusters_concordances
-from ...._lib._create_directory import create_directory
-from ...._lib._get_network_graph_manifold_map import get_network_graph_manifold_map
 from ...._matrix_2_matrix_list import matrix_2_matrix_list
 from ...._matrix_list_2_network_graph import matrix_list_2_network_graph
 from ...._network_community_detection import network_community_detection
@@ -99,7 +98,7 @@ class _Results:
     tsne_map_: None
 
 
-def bibliometrix__co_occurrence_network(
+def co_occurrence_network(
     criterion,
     topics_length=None,
     topic_min_occ=None,
@@ -207,7 +206,6 @@ def bibliometrix__co_occurrence_network(
         communities=results.communities_,
         directory_for_abstracts=directory_for_abstracts,
         n_keywords=n_keywords,
-        # n_abstracts=n_abstracts,
         directory=directory,
         database=database,
         start_year=start_year,
@@ -220,7 +218,6 @@ def bibliometrix__co_occurrence_network(
         communities=results.communities_,
         directory_for_concordances=directory_for_concordances,
         n_keywords=n_keywords,
-        # n_abstracts=n_abstracts,
         directory=directory,
         start_year=start_year,
         end_year=end_year,

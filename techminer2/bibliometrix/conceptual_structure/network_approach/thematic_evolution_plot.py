@@ -5,62 +5,46 @@ Thematic evolution plot
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import *
+>>> from techminer2 import bibliometrix
 
->>> tm1 = bibliometrix__thematic_map(
+>>> tm1 = bibliometrix.conceptual_structure.network_approach.thematic_map(
 ...     criterion="author_keywords",
-...     topic_min_occ=2,
+...     topics_length=100,
 ...     directory=directory,
 ...     start_year=2016,
-...     end_year=2018,
+...     end_year=2019,
 ... )
 >>> tm1.communities_.head()
-                         CL_00                           CL_01
-0               regtech 18:238  artificial intelligence 02:037
-1               fintech 12:211        financial markets 02:000
-2    financial services 04:133                      law 02:000
-3  financial technology 04:019        legal informatics 02:000
-4            blockchain 04:013            robo-advisors 02:000
-
-
->>> tm2 = bibliometrix__thematic_map(
-...     criterion="author_keywords",
-...     topic_min_occ=2,
-...     directory=directory,
-...     start_year=2019,
-...     end_year=2020,
-... )
->>> tm2.communities_.head()
-                            CL_00  ...                      CL_02
-0                  regtech 31:209  ...        crowdfunding 03:028
-1                  fintech 20:183  ...            big data 02:027
-2               blockchain 09:088  ...      cryptocurrency 02:024
-3  artificial intelligence 06:025  ...         p2p lending 02:024
-4     financial regulation 04:044  ...  regulatory sandbox 02:024
-<BLANKLINE>
-[5 rows x 3 columns]
-
-
->>> tm3 = bibliometrix__thematic_map(
-...     criterion="author_keywords",
-...     topic_min_occ=2,
-...     directory=directory,
-...     start_year=2021,
-...     end_year=2022,
-... )
->>> tm3.communities_.head()
-                           CL_00  ...                        CL_03
-0                  fintech 10:12  ...  regulatory technology 06:14
-1               blockchain 05:08  ...  anti-money laundering 02:05
-2  artificial intelligence 05:03  ...                             
-3                insurtech 03:00  ...                             
-4     financial technology 02:05  ...                             
+                         CL_00  ...                                CL_03
+0                regtech 9:236  ...            algorithmic process 1:003
+1                fintech 6:203  ...  artificial intelligence & law 1:003
+2     financial services 2:164  ...               equality of arms 1:003
+3             regulation 2:161  ...           knowledge impairment 1:003
+4  semantic technologies 2:041  ...                        suptech 1:003
 <BLANKLINE>
 [5 rows x 4 columns]
 
+>>> tm2 = bibliometrix.conceptual_structure.network_approach.thematic_map(
+...     criterion="author_keywords",
+...     topics_length=100,
+...     directory=directory,
+...     start_year=2020,
+...     end_year=2023,
+... )
+>>> tm2.communities_.head()
+                           CL_00  ...                             CL_11
+0    anti-money laundering 03:21  ...  analytic hierarchy process 01:02
+1  artificial intelligence 03:20  ...       regulatory monitoring 01:02
+2              charitytech 02:17  ...                                  
+3              english law 02:17  ...                                  
+4   counter-terror finance 01:14  ...                                  
+<BLANKLINE>
+[5 rows x 12 columns]
+
+
 >>> file_name = "sphinx/_static/bibliometrix__thematic_evolution_plot.html"
->>> bibliometrix__thematic_evolution_plot(
-...     indicators=[tm1, tm2, tm3],
+>>> bibliometrix.conceptual_structure.network_approach.thematic_evolution_plot(
+...     indicators=[tm1, tm2],
 ... ).write_html(file_name)
 
 .. raw:: html
@@ -72,7 +56,7 @@ Thematic evolution plot
 import plotly.graph_objects as go
 
 
-def bibliometrix__thematic_evolution_plot(
+def thematic_evolution_plot(
     indicators,
 ):
     """Thematic evolution plot"""

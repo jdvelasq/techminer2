@@ -12,51 +12,56 @@ Based on the bibliometrix/R/conceptualStructure.R code.
 **Algorithm**
 
 1. Compute the co-occurrence matrix
-2. Apply the dimensionality reduction (sklearn mainfold learning algorithms).
+2. Apply the dimensionality reduction (manifold learning or decomposition algorithms).
 3. Apply the clustering algorithm (sklearn clustering algorithms).
 4. Visualize the results.
 
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import bibliometrix__factorial_analysis_with_mds
->>> fa = bibliometrix__factorial_analysis_with_mds(
-...     'author_keywords', 
-...     min_occ=2, 
-...     n_clusters=4, 
+>>> from sklearn.manifold import MDS
+>>> mds = MDS(n_components=2, random_state=0)
+
+>>> from sklearn.cluster import AgglomerativeClustering
+>>> ac = AgglomerativeClustering(n_clusters=4)
+
+>>> from techminer2 import bibliometrix
+>>> fa = bibliometrix.conceptual_structure.factorial_approach.factorial_analysis(
+...     criterion='author_keywords', 
+...     manifold_method=mds,
+...     clustering_method=ac,
+...     topic_min_occ=2, 
 ...     directory=directory,
 ... )
 
 
+
 >>> fa.table_.head()
-                                    Dim-1      Dim-2  CLUSTER
-row                                                          
-regtech 70:462                 -80.333342   6.284539        3
-fintech 42:406                 -55.335972 -13.305144        1
-blockchain 18:109              -22.741891  -2.324244        0
-artificial intelligence 13:065  -8.019514 -11.869961        0
-compliance 12:020               -8.445413  10.321464        2
+                                  Dim-1     Dim-2  CLUSTER
+row                                                       
+regtech 28:329                28.268965  3.015757        3
+fintech 12:249                13.957324 -1.695197        1
+compliance 07:030              4.269020 -6.685674        0
+regulatory technology 07:037  -0.346827  6.995581        2
+regulation 05:164              4.150326  2.044916        2
 
 >>> fa.cluster_members_.head()
-                                      CL_00  ...           CL_03
-0                         blockchain 18:109  ...  regtech 70:462
-1            artificial intelligence 13:065  ...                
-2  regulatory technologies (regtech) 12:047  ...                
-3             financial technologies 09:032  ...                
-4               financial regulation 08:091  ...                
+                          CL_00  ...           CL_03
+0             compliance 07:030  ...  regtech 28:329
+1     financial services 04:168  ...                
+2   financial regulation 04:035  ...                
+3  anti-money laundering 03:021  ...                
+4  semantic technologies 02:041  ...                
 <BLANKLINE>
 [5 rows x 4 columns]
-
 
 
 """
 import matplotlib.pyplot as plt
 import pandas as pd
-from sklearn.cluster import AgglomerativeClustering
-from sklearn.manifold import MDS
 from sklearn.metrics import silhouette_score
 
-from ....vantagepoint.analyze.matrix.co_occ_matrix import co_occ_matrix
+from .... import vantagepoint
 
 
 class _FactorialAnalysis:
@@ -84,7 +89,7 @@ class _FactorialAnalysis:
 
         table = pd.DataFrame(
             matrix,
-            columns=["Dim-1", "Dim-2"],
+            columns=[f"Dim-{i}" for i in range(1, matrix.shape[1] + 1)],
             index=self.matrix.index,
         )
         table["CLUSTER"] = self.clustering_method.labels_
@@ -158,19 +163,6 @@ class _FactorialAnalysis:
 
         return fig
 
-    def map(
-        self,
-        top_n=5,
-        figsize=(7, 7),
-    ):
-        pass
-
-        # return conceptual_structure_map(
-        #     words_by_cluster=self._table,
-        #     top_n=top_n,
-        #     figsize=figsize,
-        # )
-
 
 class _Result:
     def __init__(self):
@@ -178,30 +170,28 @@ class _Result:
         self.cluster_members_ = None
 
 
-def bibliometrix__factorial_analysis_with_mds(
-    column,
-    top_n=50,
-    min_occ=2,
-    max_occ=None,
-    n_clusters=2,
-    random_state=0,
+def factorial_analysis(
+    criterion,
+    manifold_method,
+    clustering_method,
+    topics_length=50,
+    topic_min_occ=2,
+    topic_min_citations=None,
     directory="./",
+    start_year=None,
+    end_year=None,
+    **filters,
 ):
-    coc_matrix = co_occ_matrix(
-        column,
-        top_n=top_n,
-        min_occ=min_occ,
-        max_occ=max_occ,
+    coc_matrix = vantagepoint.analyze.matrix.co_occ_matrix(
+        criterion=criterion,
+        topics_length=topics_length,
+        topic_min_occ=topic_min_occ,
+        topic_min_citations=topic_min_citations,
         directory=directory,
         database="documents",
-    )
-
-    manifold_method = MDS(
-        n_components=2,
-        random_state=random_state,
-    )
-    clustering_method = AgglomerativeClustering(
-        n_clusters=n_clusters,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
     )
 
     estimator = _FactorialAnalysis(
