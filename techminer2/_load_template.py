@@ -20,6 +20,6 @@ def load_template(template_name):
 
     """
     module_path = os.path.dirname(__file__)
-    template_path = os.path.join(module_path, "templates", template_name)
+    template_path = os.path.join(module_path, "_templates", template_name)
     template = open(template_path, "r", encoding="utf-8").read()
     return Template(template)

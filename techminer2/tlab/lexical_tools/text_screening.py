@@ -5,8 +5,8 @@ Text Screening
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import tlab__lexical_tools__text_screening
->>> tlab__lexical_tools__text_screening(
+>>> from techminer2 import tlab
+>>> tlab.lexical_tools.text_screening(
 ...     search_for='regtech',
 ...     top_n=2,
 ...     directory=directory,
@@ -65,14 +65,14 @@ industries. 2017. all rights reserved.
 """
 import textwrap
 
-from ..._lib._load_template import load_template
-from ..._lib._save_html_report import save_html_report
 from ..._load_abstracts import load_abstracts
+from ..._load_template import load_template
 from ..._read_records import read_records
+from ..._save_html_report import save_html_report
 from ..concordances.concordances import _select_abstracts
 
 
-def tlab__lexical_tools__text_screening(
+def text_screening(
     search_for,
     top_n=5,
     directory="./",
