@@ -10,27 +10,27 @@ Co-Word Analysis
 
 
 >>> from techminer2 import tlab
->>> cwa = tlab.co_occurrence_analysis.co_word_analysis(
+>>> cwa = tlab.co_word_analysis.co_word_analysis(
 ...     criterion='words',
 ...     topics_length=50,
 ...     clustering_method=AgglomerativeClustering(n_clusters=5),
 ...     directory=directory,
 ... )
 
->>> file_name = "sphinx/_static/tlab__co_occ__co_word_analysis_mds_map.html"
+>>> file_name = "sphinx/_static/tlab__co_word_analysis__co_word_analysis_mds_map.html"
 >>> cwa.mds_map_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../_static/tlab__co_occ__co_word_analysis_mds_map.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/tlab__co_word_analysis__co_word_analysis_mds_map.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
->>> file_name = "sphinx/_static/tlab__co_occ__co_word_analysis_tsne_map.html"
+>>> file_name = "sphinx/_static/tlab__co_word_analysis__co_word_analysis_tsne_map.html"
 >>> cwa.tsne_map_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../_static/tlab__co_occ__co_word_analysis_tsne_map.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/tlab__co_word_analysis__co_word_analysis_tsne_map.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
 
