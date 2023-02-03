@@ -12,7 +12,13 @@ Selected Item
 ...     criterion='author_keywords',
 ...     directory=directory,
 ... ).head()
-
+author_keywords
+fintech 12:249               12
+compliance 07:030             7
+regulation 05:164             4
+financial services 04:168     3
+suptech 03:004                3
+Name: OCC, dtype: int64
 
 
 """

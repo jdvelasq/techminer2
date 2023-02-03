@@ -18,7 +18,7 @@ Word Associations
     * **Tables**
 
         .. toctree::
-            tlab__word_associations_for_a_item
+            tables__selected_item
             tables__all_items_co_occurrences
             
             
