@@ -1,4 +1,4 @@
-.. automodule:: techminer2.bibliometrix.documents.words.treemap
+.. automodule:: techminer2.bibliometrix.words.treemap
     :members:
     :undoc-members:
     :show-inheritance:

@@ -1,4 +1,4 @@
-.. automodule:: techminer2.bibliometrix.documents.words.trend_topics
+.. automodule:: techminer2.bibliometrix.words.trend_topics
     :members:
     :undoc-members:
     :show-inheritance:

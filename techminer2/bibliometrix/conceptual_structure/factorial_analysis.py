@@ -26,7 +26,7 @@ Based on the bibliometrix/R/conceptualStructure.R code.
 >>> ac = AgglomerativeClustering(n_clusters=4)
 
 >>> from techminer2 import bibliometrix
->>> fa = bibliometrix.conceptual_structure.factorial_approach.factorial_analysis(
+>>> fa = bibliometrix.conceptual_structure.factorial_analysis(
 ...     criterion='author_keywords', 
 ...     manifold_method=mds,
 ...     clustering_method=ac,
@@ -61,7 +61,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from sklearn.metrics import silhouette_score
 
-from .... import vantagepoint
+from ... import vantagepoint
 
 
 class _FactorialAnalysis:

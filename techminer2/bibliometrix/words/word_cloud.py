@@ -1,50 +1,58 @@
 """
-Word Dynamics
+WordCloud
 ===============================================================================
 
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/bibliometrix__word_dynamics.html"
+>>> file_name = "sphinx/images/bibliometrix__word_cloud.png"
+
 
 >>> from techminer2 import bibliometrix
->>> bibliometrix.documents.words.word_dynamics(
-...     criterion="author_keywords",
-...     topics_length=5,
+>>> bibliometrix.words.word_cloud(
+...     criterion='author_keywords',
+...     title="Author Keywords",
+...     topics_length=50,
 ...     directory=directory,
-... ).write_html(file_name)
+... ).savefig(file_name)
 
-.. raw:: html
-
-    <iframe src="../../../_static/bibliometrix__word_dynamics.html" height="600px" width="100%" frameBorder="0"></iframe>
+.. image:: ../../../images/bibliometrix__word_cloud.png
+    :width: 900px
+    :align: center
 
 """
-from ..._dynamics import _dynamics
+from ... import vantagepoint
 
 
-def word_dynamics(
-    criterion="author_keywords",
-    topics_length=5,
+def word_cloud(
+    criterion,
+    topics_length=250,
     topic_min_occ=None,
     topic_min_citations=None,
     directory="./",
-    title="Word Dynamics",
-    plot=True,
+    metric="OCC",
+    title=None,
     database="documents",
+    #
+    figsize=(12, 12),
+    #
     start_year=None,
     end_year=None,
     **filters,
 ):
-    """Makes a dynamics chat for top sources."""
+    """Plots a word cloud from a dataframe."""
 
-    return _dynamics(
+    return vantagepoint.report.word_cloud(
         criterion=criterion,
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,
         topic_min_citations=topic_min_citations,
         directory=directory,
-        plot=plot,
+        metric=metric,
         title=title,
         database=database,
+        #
+        figsize=figsize,
+        #
         start_year=start_year,
         end_year=end_year,
         **filters,

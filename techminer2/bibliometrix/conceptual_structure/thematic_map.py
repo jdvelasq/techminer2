@@ -6,7 +6,7 @@ Thematic Map
 >>> directory = "data/regtech/"
 
 >>> from techminer2 import bibliometrix
->>> nnet = bibliometrix.conceptual_structure.network_approach.thematic_map(
+>>> nnet = bibliometrix.conceptual_structure.thematic_map(
 ...     criterion="author_keywords",
 ...     topics_length=60,
 ...     directory=directory,

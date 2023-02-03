@@ -7,7 +7,7 @@ TreeMap
 >>> file_name = "sphinx/_static/bibliometrix__treemap.html"
 
 >>> from techminer2 import bibliometrix
->>> bibliometrix.documents.words.treemap(
+>>> bibliometrix.words.treemap(
 ...    criterion='author_keywords',
 ...    topics_length=20,
 ...    directory=directory,
@@ -18,8 +18,8 @@ TreeMap
     <iframe src="../../../_static/bibliometrix__treemap.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ...._plots.treemap_plot import treemap_plot
-from ....techminer.indicators.indicators_by_topic import indicators_by_topic
+from ..._plots.treemap_plot import treemap_plot
+from ...techminer.indicators.indicators_by_topic import indicators_by_topic
 
 
 def treemap(

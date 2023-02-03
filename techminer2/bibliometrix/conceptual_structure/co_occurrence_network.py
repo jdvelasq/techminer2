@@ -6,7 +6,7 @@ Co-occurrence Network
 >>> directory = "data/regtech/"
 
 >>> from techminer2 import bibliometrix
->>> nnet = bibliometrix.conceptual_structure.network_approach.co_occurrence_network(
+>>> nnet = bibliometrix.conceptual_structure.co_occurrence_network(
 ...     criterion="author_keywords",
 ...     topics_length=100,
 ...     directory=directory,
@@ -73,19 +73,19 @@ from dataclasses import dataclass
 
 from sklearn.manifold import MDS, TSNE
 
-from ...._association_index import association_index
-from ...._cluster_abstracts_report import cluster_abstracts_report
-from ...._clusters_concordances import clusters_concordances
-from ...._create_directory import create_directory
-from ...._get_network_graph_communities import get_network_graph_communities
-from ...._get_network_graph_degree_plot import get_network_graph_degree_plot
-from ...._get_network_graph_indicators import get_network_graph_indicators
-from ...._get_network_graph_manifold_map import get_network_graph_manifold_map
-from ...._get_network_graph_plot import get_network_graph_plot
-from ...._matrix_2_matrix_list import matrix_2_matrix_list
-from ...._matrix_list_2_network_graph import matrix_list_2_network_graph
-from ...._network_community_detection import network_community_detection
-from ....vantagepoint.analyze.matrix.co_occ_matrix import co_occ_matrix
+from ..._association_index import association_index
+from ..._cluster_abstracts_report import cluster_abstracts_report
+from ..._clusters_concordances import clusters_concordances
+from ..._create_directory import create_directory
+from ..._get_network_graph_communities import get_network_graph_communities
+from ..._get_network_graph_degree_plot import get_network_graph_degree_plot
+from ..._get_network_graph_indicators import get_network_graph_indicators
+from ..._get_network_graph_manifold_map import get_network_graph_manifold_map
+from ..._get_network_graph_plot import get_network_graph_plot
+from ..._matrix_2_matrix_list import matrix_2_matrix_list
+from ..._matrix_list_2_network_graph import matrix_list_2_network_graph
+from ..._network_community_detection import network_community_detection
+from ...vantagepoint.analyze.matrix.co_occ_matrix import co_occ_matrix
 
 
 @dataclass(init=False)

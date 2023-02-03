@@ -8,7 +8,7 @@ Most Frequent Words
 >>> file_name = "sphinx/_static/bibliometrix__most_frequent_words.html"
 
 >>> from techminer2 import bibliometrix
->>> bibliometrix.documents.words.most_frequent_words(
+>>> bibliometrix.words.most_frequent_words(
 ...     criterion="author_keywords",
 ...     directory=directory,
 ...     topics_length=20,
@@ -24,7 +24,7 @@ Most Frequent Words
 
 
 """
-from ....vantagepoint.report.chart import chart
+from ...vantagepoint.report.chart import chart
 
 
 def most_frequent_words(

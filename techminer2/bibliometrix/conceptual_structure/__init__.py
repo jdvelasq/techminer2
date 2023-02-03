@@ -1,0 +1,4 @@
+from .co_occurrence_network import co_occurrence_network
+from .factorial_analysis import factorial_analysis
+from .thematic_evolution_plot import thematic_evolution_plot
+from .thematic_map import thematic_map

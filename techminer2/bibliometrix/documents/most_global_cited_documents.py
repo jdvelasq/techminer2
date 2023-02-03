@@ -7,7 +7,7 @@ Most Global Cited Documents
 >>> file_name = "sphinx/_static/bibliometrix__most_global_cited_documents.html"
 
 >>> from techminer2 import bibliometrix
->>> bibliometrix.documents.documents.most_global_cited_documents(
+>>> bibliometrix.documents.most_global_cited_documents(
 ...     top_n=5,
 ...     directory=directory,
 ... ).write_html(file_name)
@@ -20,8 +20,8 @@ Most Global Cited Documents
 import os.path
 import textwrap
 
-from ...._read_records import read_records
-from ....techminer.indicators.indicators_by_document import indicators_by_document
+from ..._read_records import read_records
+from ...techminer.indicators.indicators_by_document import indicators_by_document
 from ..cited_documents import bibiometrix_cited_documents
 
 

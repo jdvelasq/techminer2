@@ -7,7 +7,7 @@ Thematic evolution plot
 
 >>> from techminer2 import bibliometrix
 
->>> tm1 = bibliometrix.conceptual_structure.network_approach.thematic_map(
+>>> tm1 = bibliometrix.conceptual_structure.thematic_map(
 ...     criterion="author_keywords",
 ...     topics_length=100,
 ...     directory=directory,
@@ -24,7 +24,7 @@ Thematic evolution plot
 <BLANKLINE>
 [5 rows x 4 columns]
 
->>> tm2 = bibliometrix.conceptual_structure.network_approach.thematic_map(
+>>> tm2 = bibliometrix.conceptual_structure.thematic_map(
 ...     criterion="author_keywords",
 ...     topics_length=100,
 ...     directory=directory,
@@ -43,7 +43,7 @@ Thematic evolution plot
 
 
 >>> file_name = "sphinx/_static/bibliometrix__thematic_evolution_plot.html"
->>> bibliometrix.conceptual_structure.network_approach.thematic_evolution_plot(
+>>> bibliometrix.conceptual_structure.thematic_evolution_plot(
 ...     indicators=[tm1, tm2],
 ... ).write_html(file_name)
 

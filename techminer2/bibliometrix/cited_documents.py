@@ -1,6 +1,6 @@
 import plotly.express as px
 
-from ...techminer.indicators.indicators_by_document import indicators_by_document
+from ..techminer.indicators.indicators_by_document import indicators_by_document
 
 
 def bibiometrix_cited_documents(

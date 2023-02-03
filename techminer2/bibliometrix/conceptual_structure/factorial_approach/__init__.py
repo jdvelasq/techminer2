@@ -1,1 +1,0 @@
-from .factorial_analysis import factorial_analysis

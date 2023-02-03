@@ -7,7 +7,7 @@ Trend Topics
 >>> file_name = "sphinx/_static/bibliometrix__trend_topics.html"
 
 >>> from techminer2 import bibliometrix
->>> bibliometrix.documents.words.trend_topics(
+>>> bibliometrix.words.trend_topics(
 ...     'author_keywords',
 ...     directory=directory, 
 ... ).table_.head(20)
@@ -38,7 +38,7 @@ charitytech                2     2020      2020     2020                17   4
 
 
 
->>> bibliometrix.documents.words.trend_topics(
+>>> bibliometrix.words.trend_topics(
 ...     'author_keywords', 
 ...     directory=directory,
 ... ).plot_.write_html(file_name)
@@ -49,7 +49,7 @@ charitytech                2     2020      2020     2020                17   4
 
 
 
->>> bibliometrix.documents.words.trend_topics(
+>>> bibliometrix.words.trend_topics(
 ...     'author_keywords',
 ...     custom_topics=[
 ...         "fintech",
@@ -76,8 +76,8 @@ from dataclasses import dataclass
 import numpy as np
 import plotly.graph_objects as go
 
-from ....techminer.indicators.annual_occurrence_matrix import annual_occurrence_matrix
-from ....techminer.indicators.indicators_by_topic import indicators_by_topic
+from ...techminer.indicators.annual_occurrence_matrix import annual_occurrence_matrix
+from ...techminer.indicators.indicators_by_topic import indicators_by_topic
 
 
 @dataclass(init=False)
