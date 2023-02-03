@@ -20,7 +20,7 @@ from os.path import isfile, join
 
 import pandas as pd
 
-from ..._lib._thesaurus import load_file_as_dict
+from ..._thesaurus import load_file_as_dict
 
 
 def find_abbreviations(

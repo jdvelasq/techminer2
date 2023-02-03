@@ -31,7 +31,7 @@ regulation               5  ...                             4
  'local_citations_per_document']
 
 """
-from ...techminer.indicators.indicators_by_topic import indicators_by_topic
+from ... import techminer
 
 
 def list_view(
@@ -44,7 +44,7 @@ def list_view(
 ):
     """Creates a list of terms with indicators."""
 
-    return indicators_by_topic(
+    return techminer.indicators.indicators_by_topic(
         criterion=criterion,
         directory=directory,
         database=database,

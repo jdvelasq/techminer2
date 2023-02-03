@@ -5,24 +5,19 @@ Occurrence Matrix
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import vantagepoint__occ_matrix
->>> vantagepoint__occ_matrix(
+>>> from techminer2 import vantagepoint
+>>> vantagepoint.analyze.matrix.occ_matrix(
 ...    criterion_for_columns='author_keywords',
 ...    criterion_for_rows='authors',
 ...    topic_min_occ=3,
 ...    directory=directory,
 ... )
-column             regtech 69:461  ...  semantic web 03:002
-row                                ...                     
-Arner DW 7:220                  6  ...                    0
-Buckley RP 6:217                5  ...                    0
-Barberis JN 4:146               3  ...                    0
-Zetzsche DA 4:092               4  ...                    0
-Brennan R 3:008                 3  ...                    1
-Ryan P 3:008                    3  ...                    1
+column            regtech 28:329  ...  financial services 04:168
+row                               ...                           
+Arner DW 3:185                 2  ...                          1
+Buckley RP 3:185               2  ...                          1
 <BLANKLINE>
-[6 rows x 16 columns]
-
+[2 rows x 4 columns]
 
 
 

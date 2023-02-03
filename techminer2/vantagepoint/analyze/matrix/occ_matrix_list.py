@@ -7,77 +7,52 @@ Occurrence Matrix List
 
 **Item selection by occurrence.**
 
->>> from techminer2 import vantagepoint__occ_matrix_list
->>> vantagepoint__occ_matrix_list(
+>>> from techminer2 import vantagepoint
+>>> vantagepoint.analyze.matrix.occ_matrix_list(
 ...    criterion_for_columns='author_keywords',
 ...    criterion_for_rows='authors',
-...    topic_min_occ=4,
+...    topic_min_occ=2,
 ...    directory=directory,
 ... )
-                  row                        column  OCC
-0      Arner DW 7:220                regtech 69:461    6
-1      Arner DW 7:220                fintech 42:406    5
-2      Arner DW 7:220             blockchain 18:109    1
-3      Arner DW 7:220  regulatory technology 12:047    1
-4      Arner DW 7:220   financial technology 09:032    1
-5      Arner DW 7:220   financial regulation 08:091    4
-6      Arner DW 7:220     financial services 05:135    1
-7      Arner DW 7:220    financial inclusion 05:068    2
-8      Arner DW 7:220  anti-money laundering 04:030    1
-9      Arner DW 7:220   financial innovation 04:007    1
-10   Buckley RP 6:217                regtech 69:461    5
-11   Buckley RP 6:217                fintech 42:406    4
-12   Buckley RP 6:217             blockchain 18:109    1
-13   Buckley RP 6:217   financial regulation 08:091    3
-14   Buckley RP 6:217     financial services 05:135    1
-15   Buckley RP 6:217    financial inclusion 05:068    2
-16   Buckley RP 6:217  anti-money laundering 04:030    1
-17  Barberis JN 4:146                regtech 69:461    3
-18  Barberis JN 4:146                fintech 42:406    2
-19  Barberis JN 4:146  regulatory technology 12:047    1
-20  Barberis JN 4:146   financial technology 09:032    1
-21  Barberis JN 4:146   financial regulation 08:091    2
-22  Barberis JN 4:146     financial services 05:135    1
-23  Barberis JN 4:146    financial inclusion 05:068    1
-24  Barberis JN 4:146  anti-money laundering 04:030    1
-25  Barberis JN 4:146   financial innovation 04:007    1
-26  Zetzsche DA 4:092                regtech 69:461    4
-27  Zetzsche DA 4:092                fintech 42:406    4
-28  Zetzsche DA 4:092             blockchain 18:109    1
-29  Zetzsche DA 4:092   financial regulation 08:091    2
-30  Zetzsche DA 4:092    financial inclusion 05:068    2
-31  Zetzsche DA 4:092  anti-money laundering 04:030    1
-
+                   row                       column  OCC
+0       Arner DW 3:185               regtech 28:329    2
+1       Arner DW 3:185               fintech 12:249    1
+2       Arner DW 3:185    financial services 04:168    1
+3       Arner DW 3:185  financial regulation 04:035    2
+4       Arner DW 3:185       data protection 02:027    1
+..                 ...                          ...  ...
+73  Lanfranchi D 2:002               finance 02:001    1
+74  Lanfranchi D 2:002             reporting 02:001    1
+75      Arman AA 2:000               regtech 28:329    2
+76      Arman AA 2:000               suptech 03:004    1
+77      Arman AA 2:000            technology 02:010    1
+<BLANKLINE>
+[78 rows x 3 columns]
 
 
 **Seleccition of top terms.**
 
->>> vantagepoint__occ_matrix_list(
+>>> vantagepoint.analyze.matrix.occ_matrix_list(
 ...    criterion_for_columns='author_keywords',
 ...    criterion_for_rows='authors',
 ...    topics_length=5,
 ...    directory=directory,
 ... )
-                  row                        column  OCC
-0      Arner DW 7:220                regtech 69:461    6
-1      Arner DW 7:220                fintech 42:406    5
-2      Arner DW 7:220             blockchain 18:109    1
-3      Arner DW 7:220  regulatory technology 12:047    1
-4    Buckley RP 6:217                regtech 69:461    5
-5    Buckley RP 6:217                fintech 42:406    4
-6    Buckley RP 6:217             blockchain 18:109    1
-7   Barberis JN 4:146                regtech 69:461    3
-8   Barberis JN 4:146                fintech 42:406    2
-9   Barberis JN 4:146  regulatory technology 12:047    1
-10  Zetzsche DA 4:092                regtech 69:461    4
-11  Zetzsche DA 4:092                fintech 42:406    4
-12  Zetzsche DA 4:092             blockchain 18:109    1
-13       Ryan P 3:008                regtech 69:461    3
+                 row                        column  OCC
+0     Arner DW 3:185                regtech 28:329    2
+1     Arner DW 3:185                fintech 12:249    1
+2   Buckley RP 3:185                regtech 28:329    2
+3   Buckley RP 3:185                fintech 12:249    1
+4  Barberis JN 2:161                regtech 28:329    1
+5   Butler T/1 2:041                regtech 28:329    2
+6   Butler T/1 2:041                fintech 12:249    2
+7   Butler T/1 2:041             regulation 05:164    1
+8     Hamdan A 2:018  regulatory technology 07:037    2
 
 
 
 """
-from ...._lib._items2counters import items2counters
+from ...._items2counters import items2counters
 from ...._load_stopwords import load_stopwords
 from ...._read_records import read_records
 from ....techminer.indicators.indicators_by_topic import indicators_by_topic

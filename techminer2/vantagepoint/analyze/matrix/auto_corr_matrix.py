@@ -31,7 +31,7 @@ Grassi L 2:002               0.0  ...             1.0
 """
 import pandas as pd
 
-from ..tfidf.tf_matrix import tf_matrix
+from .... import vantagepoint
 
 
 def auto_corr_matrix(
@@ -49,7 +49,7 @@ def auto_corr_matrix(
 ):
     """Returns an auto-correlation."""
 
-    data_matrix = tf_matrix(
+    data_matrix = vantagepoint.analyze.tfidf.tf_matrix(
         criterion=criterion,
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,

@@ -17,8 +17,8 @@ import sys
 import pandas as pd
 from nltk.stem import PorterStemmer
 
-from ..._lib._load_thesaurus_as_dict import load_thesaurus_as_dict
-from ..._lib._load_thesaurus_as_dict_r import load_thesaurus_as_dict_r
+from ..._load_thesaurus_as_dict import load_thesaurus_as_dict
+from ..._load_thesaurus_as_dict_r import load_thesaurus_as_dict_r
 
 
 def create_keywords_thesaurus(directory="./"):

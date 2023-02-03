@@ -22,7 +22,7 @@ import sys
 
 import pandas as pd
 
-from ..._lib._thesaurus import read_textfile
+from ..._thesaurus import read_textfile
 
 
 def clean_organizations(directory="./"):

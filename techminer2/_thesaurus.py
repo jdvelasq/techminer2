@@ -161,7 +161,7 @@ def text_clustering(x, name_strategy="mostfrequent", key="porter", transformer=N
     # British to american english
     #
     module_path = dirname(__file__)
-    filename = join(module_path, "files/bg2am.txt")
+    filename = join(module_path, "_files/bg2am.txt")
     bg2am_ = load_file_as_dict(filename)
     x["word_alt"] = x["word_alt"].map(translate)
 
