@@ -19,7 +19,7 @@ Word Associations
 
         .. toctree::
             tlab__word_associations_for_a_item
-            tlab__word_associations_for_all_items
+            tables__all_items_co_occurrences
             
             
         * Co-occurrence Matrix: See `Co-occurrence Matrix <../../co_occ_matrix_list.html>`__

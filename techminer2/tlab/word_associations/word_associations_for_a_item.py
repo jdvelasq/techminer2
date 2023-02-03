@@ -6,25 +6,20 @@ Selected Item
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import tlab__word_associations_for_a_item
->>> tlab__word_associations_for_a_item(
+>>> from techminer2 import tlab
+>>> tlab.word_associations.tables__selected_item(
 ...     item='regtech',
 ...     criterion='author_keywords',
 ...     directory=directory,
 ... ).head()
-author_keywords
-fintech 42:406                    42
-blockchain 18:109                 17
-compliance 12:020                 12
-artificial intelligence 13:065    10
-financial regulation 08:091        8
-Name: OCC, dtype: int64
+
+
 
 """
-from .word_associations_for_all_items import tlab__word_associations_for_all_items
+from .tables__all_items_co_occurrences import tables__all_items_co_occurrences
 
 
-def tlab__word_associations_for_a_item(
+def tables__selected_item(
     item,
     criterion,
     topics_length=None,
@@ -38,7 +33,7 @@ def tlab__word_associations_for_a_item(
 ):
     """Computes the co-occurrence matrix for a given column."""
 
-    word_associations = tlab__word_associations_for_all_items(
+    word_associations = tables__all_items_co_occurrences(
         criterion=criterion,
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,
