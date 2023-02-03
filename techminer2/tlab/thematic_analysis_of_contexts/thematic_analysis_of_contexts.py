@@ -1,5 +1,5 @@
 """
-Thematic Analysis of Documents
+Thematic Analysis of Contexts
 ===============================================================================
 
 The implemented methodology is based on the Thematic Analysis of Elementary
@@ -17,8 +17,8 @@ Contexts implemented in T-LAB.
 >>> from sklearn.cluster import AgglomerativeClustering
 >>> clustering_method = AgglomerativeClustering(n_clusters=5)
 
->>> from techminer2 import tlab__thematic_analysis__elementary_contexts
->>> analysis = tlab__thematic_analysis__elementary_contexts(
+>>> from techminer2 import tlab
+>>> analysis = tlab.thematic_analysis_of_contexts.thematic_analysis_of_contexts(
 ...     criterion="author_keywords",
 ...     topic_min_occ=4,
 ...     directory=directory,
@@ -26,12 +26,12 @@ Contexts implemented in T-LAB.
 ... )
 
 >>> analysis.themes_.head()
-                            TH_00  ...                  TH_04
-0                  fintech 42:406  ...      blockchain 18:109
-1                  regtech 69:461  ...         regtech 69:461
-2  artificial intelligence 13:065  ...         fintech 42:406
-3     financial regulation 08:091  ...      compliance 12:020
-4               regulation 06:120  ...  cryptocurrency 04:029
+                            TH_00  ...           TH_04
+0  artificial intelligence 04:023  ...  regtech 28:329
+1     financial regulation 04:035  ...                
+2       financial services 04:168  ...                
+3                  regtech 28:329  ...                
+4                  fintech 12:249  ...                
 <BLANKLINE>
 [5 rows x 5 columns]
 
@@ -43,7 +43,7 @@ Contexts implemented in T-LAB.
 """
 import pandas as pd
 
-from ...vantagepoint.analyze.tfidf.tfidf_matrix import tfidf_matrix
+from ... import vantagepoint
 
 
 class _ThematicAnalysis:
@@ -144,7 +144,7 @@ class _ThematicAnalysis:
 
     def _build_tf_idf_matrix(self):
 
-        self._tfidf_matrix = tfidf_matrix(
+        self._tfidf_matrix = vantagepoint.analyze.tfidf.tfidf_matrix(
             criterion=self.criterion,
             topics_length=self.topics_length,
             topic_min_occ=self.topic_min_occ,
@@ -175,7 +175,7 @@ class _ThematicAnalysis:
         return self._themes
 
 
-def tlab__thematic_analysis__elementary_contexts(
+def thematic_analysis_of_contexts(
     criterion,
     topic_min_occ=None,
     topic_min_citations=None,
@@ -199,120 +199,3 @@ def tlab__thematic_analysis__elementary_contexts(
         end_year=end_year,
         **filters,
     )
-
-
-#####
-
-# import pandas as pd
-# from sklearn.cluster import AgglomerativeClustering
-# from sklearn.manifold import MDS
-
-# from .bubble_map import bubble_map
-# from .tf_idf_matrix import tf_idf_matrix
-
-
-# class ThematicAnalysis_:
-#     def __init__(
-#         self,
-#         column,
-#         min_occ=None,
-#         norm="l2",
-#         use_idf=True,
-#         smooth_idf=True,
-#         sublinear_tf=False,
-#         n_clusters=6,
-#         linkage="ward",
-#         affinity="euclidean",
-#         directory="./",
-#         random_state=0,
-#     ):
-#         # -------------------------------------------------------------------------------
-#         tfidf = tf_idf_matrix(
-#             column=column,
-#             min_occ=min_occ,
-#             scheme="binary",
-#             norm=norm,
-#             use_idf=use_idf,
-#             smooth_idf=smooth_idf,
-#             sublinear_tf=sublinear_tf,
-#             directory=directory,
-#         )
-#         # -------------------------------------------------------------------------------
-#         mds = MDS(random_state=random_state)
-#         mds.fit(tfidf.transpose())
-#         self.mds_map = pd.DataFrame(
-#             mds.embedding_,
-#             columns=["DIM-0", "DIM-1"],
-#             index=tfidf.columns.tolist(),
-#         )
-
-#         # -------------------------------------------------------------------------------
-#         clustering = AgglomerativeClustering(
-#             n_clusters=n_clusters,
-#             linkage=linkage,
-#             affinity=affinity,
-#         )
-#         clustering.fit(tfidf)
-#         tfidf = tfidf.assign(CLUSTER=clustering.labels_)
-
-#         clusters = tfidf.groupby("CLUSTER").sum()
-#         format_str = "CL_{:02d}" if n_clusters > 9 else "CL_{:d}"
-#         clusters.index = [format_str.format(i) for i in range(n_clusters)]
-#         self.clusters = clusters.transpose()
-
-#         # -------------------------------------------------------------------------------
-
-#         # -------------------------------------------------------------------------------
-
-#         # -------------------------------------------------------------------------------
-#         partitions = documents.copy()
-#         partitions = partitions.assign(num_documents=partitions.record_no.apply(len))
-#         partitions = partitions["num_documents"]
-#         self._partitions = partitions
-
-#         # -------------------------------------------------------------------------------
-#         clusters = self.clusters.copy()
-#         clusters = clusters.transpose()
-#         mds = MDS(n_components=n_clusters - 1, random_state=random_state)
-#         mds_data = mds.fit_transform(clusters)
-#         mds_data = pd.DataFrame(
-#             mds_data,
-#             columns=[f"DIM-{i}" for i in range(n_clusters - 1)],
-#             index=clusters.index,
-#         )
-#         self.mds_data = mds_data
-
-#     @property
-#     def themes(self):
-#         return self._themes
-
-#     @property
-#     def documents(self):
-#         return self._documents
-
-#     @property
-#     def partitions(self):
-#         return self._partitions
-
-#     def map(
-#         self,
-#         dim_x=0,
-#         dim_y=1,
-#         color_scheme="clusters",
-#         figsize=(9, 9),
-#     ):
-
-#         return bubble_map(
-#             node_x=self.mds_data.loc[:, f"DIM-{dim_x}"],
-#             node_y=self.mds_data.loc[:, f"DIM-{dim_y}"],
-#             node_clusters=range(len(self.mds_data)),
-#             node_texts=self.mds_data.index.tolist(),
-#             node_sizes=self._partitions.tolist(),
-#             x_axis_at=0,
-#             y_axis_at=0,
-#             color_scheme=color_scheme,
-#             xlabel=f"X-Axis (Dim-{dim_x})",
-#             ylabel=f"Y-Axis (Dim-{dim_y})",
-#             figsize=figsize,
-#             fontsize=7,
-#         )
