@@ -8,7 +8,7 @@ Abstract concordances exploration tool.
 >>> directory = "data/regtech/"
 
 >>> from techminer2 import tlab
->>> tlab.co_occurrence_analysis.concordances(
+>>> tlab.concordances.concordances(
 ...     'regtech',
 ...     top_n=10,
 ...     directory=directory,
@@ -58,11 +58,6 @@ def concordances(
         ["global_citations", "article", "line_no"], ascending=[False, True, True]
     )
     abstracts = _select_abstracts(abstracts, search_for)
-
-    # abstracts.index = abstracts.article
-    # records.index = records.article
-    # abstracts["title"] = records.loc[abstracts.article, "title"]
-    # abstracts = abstracts.reset_index(drop=True)
 
     _write_report(directory, abstracts, start_year, end_year, **filters)
 
