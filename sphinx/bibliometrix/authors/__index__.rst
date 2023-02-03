@@ -2,6 +2,7 @@ Authors
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    .. toctree::
+      :maxdepth: 1
 
       authors/__index__
       organizations/__index__

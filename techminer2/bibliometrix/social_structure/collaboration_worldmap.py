@@ -5,8 +5,8 @@ Collaboration WorldMap
 >>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__collaboration_worldmap.html"
 
->>> from techminer2 import bibliometrix__collaboration_worldmap
->>> bibliometrix__collaboration_worldmap(
+>>> from techminer2 import bibliometrix
+>>> bibliometrix.social_structure.collaboration_worldmap(
 ...     directory=directory,
 ... ).write_html(file_name)
 
@@ -17,15 +17,15 @@ Collaboration WorldMap
 """
 import plotly.express as px
 
-from ...vantagepoint.analyze.matrix.co_occ_matrix_list import co_occ_matrix_list
+from ... import vantagepoint
 
 
-def bibliometrix__collaboration_worldmap(
+def collaboration_worldmap(
     directory="./",
 ):
     """Collaboration World Map"""
 
-    collaboration = co_occ_matrix_list(
+    collaboration = vantagepoint.analyze.matrix.co_occ_matrix_list(
         criterion="countries",
         topics_length=None,
         topic_min_occ=None,

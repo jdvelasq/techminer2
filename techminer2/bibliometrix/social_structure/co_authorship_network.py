@@ -19,8 +19,8 @@ Co-authorship (collaboration) Network
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import bibliometrix__co_authorship_network
->>> nnet = bibliometrix__co_authorship_network(
+>>> from techminer2 import bibliometrix
+>>> nnet = bibliometrix.social_structure.co_authorship_network(
 ...     criterion="authors",
 ...     topics_length=20,
 ...     directory=directory,
@@ -39,14 +39,14 @@ Co-authorship (collaboration) Network
     <iframe src="../../../../_static/bibliometrix__co_authorship_network_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> nnet.communities_.head()
-               CL_00            CL_01  ...         CL_08          CL_09
-0     Arner DW 7:220  Brennan R 3:008  ...  Das SR 2:028  Mayer N 2:002
-1   Buckley RP 6:217     Ryan P 3:008  ...                             
-2  Barberis JN 4:146    Crane M 2:008  ...                             
-3  Zetzsche DA 4:092                   ...                             
-4      Veidt R 1:040                   ...                             
+               CL_00            CL_01  ...            CL_07           CL_08
+0     Arner DW 3:185  Brennan R 2:014  ...  Baxter LG 1:030  Arman AA 2:000
+1   Buckley RP 3:185    Crane M 2:014  ...                                 
+2  Barberis JN 2:161     Ryan P 2:014  ...                                 
+3     Weber RH 1:024                   ...                                 
+4  Zetzsche DA 1:024                   ...                                 
 <BLANKLINE>
-[5 rows x 10 columns]
+[5 rows x 9 columns]
 
 
 >>> file_name = "sphinx/_static/bibliometrix__co_authorship_network_degree_plot.html"
@@ -59,12 +59,11 @@ Co-authorship (collaboration) Network
 
 >>> nnet.indicators_.head()
                          group  betweenness  closeness  pagerank
-Anagnostopoulos I 1:110      5          0.0   0.000000  0.009524
-Baxter LG 1:023              6          0.0   0.000000  0.009524
-Lamb GW 1:037                3          0.0   0.052632  0.063492
-Lui A 1:037                  3          0.0   0.052632  0.063492
-Veidt R 1:040                0          0.0   0.168421  0.065063
-
+Anagnostopoulos I 1:153      6          0.0   0.000000  0.008596
+Baxter LG 1:030              7          0.0   0.000000  0.008596
+OBrien L 1:033               3          0.0   0.052632  0.057307
+Weber RH 1:024               0          0.0   0.168421  0.068181
+Zetzsche DA 1:024            0          0.0   0.168421  0.068181
 
 """
 from dataclasses import dataclass
@@ -88,7 +87,7 @@ class _Results:
     degree_plot_: None
 
 
-def bibliometrix__co_authorship_network(
+def co_authorship_network(
     criterion,
     topics_length=None,
     topic_min_occ=None,
