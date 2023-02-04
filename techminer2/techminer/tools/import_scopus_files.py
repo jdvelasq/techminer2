@@ -7,6 +7,9 @@ Import a scopus file to a working directory.
 
 >>> directory = "data/regtech/"
 
+
+>>> directory = "data/dyna/"
+
 >>> from techminer2 import techminer
 >>> techminer.tools.import_scopus_files(
 ...     directory, 
@@ -589,21 +592,10 @@ def _create_referneces_from_references_csv_file(directory, disable_progress_bar=
             references.article,
             references.title,
         ):
+            if isinstance(title, str):
 
-            title = (
-                title.lower()
-                .replace(".", "")
-                .replace(",", "")
-                .replace(":", "")
-                .replace(";", "")
-                .replace("-", " ")
-                .replace("'", "")
-            )
-
-            for key in thesaurus.keys():
-                text = key
-                text = (
-                    text.lower()
+                title = (
+                    title.lower()
                     .replace(".", "")
                     .replace(",", "")
                     .replace(":", "")
@@ -612,9 +604,27 @@ def _create_referneces_from_references_csv_file(directory, disable_progress_bar=
                     .replace("'", "")
                 )
 
-                if title in text:
-                    thesaurus[key] = article
-                    references.found[references.article == article] = True
+                for key in thesaurus.keys():
+                    text = key
+                    text = (
+                        text.lower()
+                        .replace(".", "")
+                        .replace(",", "")
+                        .replace(":", "")
+                        .replace(";", "")
+                        .replace("-", " ")
+                        .replace("'", "")
+                    )
+
+                    # /Volumes/GitHub/techminer2/techminer2/techminer/tools/import_scopus_files.py:621: SettingWithCopyWarning:
+                    # A value is trying to be set on a copy of a slice from a DataFrame
+                    #
+                    # See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+                    #   references.found[references.article == article] = True
+
+                    if title in text:
+                        thesaurus[key] = article
+                        references.found[references.article == article] = True
 
             pbar.update(1)
     #
@@ -935,12 +945,12 @@ def _process__global_references__column(directory):
         if "global_references" in data.columns:
             data = data.assign(
                 global_references=data.global_references.str.replace(
-                    "https://doi.org/", ""
+                    "https://doi.org/", "", regex=False
                 )
             )
             data = data.assign(
                 global_references=data.global_references.str.replace(
-                    "http://dx.doi.org/", ""
+                    "http://dx.doi.org/", "", regex=False
                 )
             )
         data.to_csv(file, sep=",", index=False, encoding="utf-8")
@@ -1334,7 +1344,7 @@ def _process__source_abbr__column(directory):
         data = pd.read_csv(file, encoding="utf-8")
         if "source_abbr" in data.columns:
             data.source_abbr = data.source_abbr.str.upper()
-            data.source_abbr = data.source_abbr.str.replace(".", "")
+            data.source_abbr = data.source_abbr.str.replace(".", "", regex=False)
         data.to_csv(file, sep=",", encoding="utf-8", index=False)
 
 
@@ -1396,7 +1406,7 @@ def _process__raw_keywords__column(directory):
             raw_index_keywords = raw_index_keywords.map(
                 lambda x: [] if not isinstance(x, list) else x
             )
-            data.raw_keywords = raw_author_keywords + raw_index_keywords
+            data["raw_keywords"] = raw_author_keywords + raw_index_keywords
             data.raw_keywords = data.raw_keywords.map(lambda x: sorted(x))
             data.raw_keywords = data.raw_keywords.map(lambda x: pd.NA if x == [] else x)
             data.raw_keywords = data.raw_author_keywords.map(
@@ -1688,8 +1698,8 @@ def _concat_raw_csv_files(path, quiet=False):
             pd.read_csv(
                 os.path.join(path, file_name),
                 encoding="utf-8",
-                error_bad_lines=False,
-                warn_bad_lines=True,
+                on_bad_lines="skip",
+                # warn_bad_lines=True,
             )
         )
 

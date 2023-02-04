@@ -97,6 +97,7 @@ def _replace_sinonimous(affiliations, column):
         affiliations[column] = affiliations[column].str.replace(
             text_to_replace,
             new_text,
+            regex=False,
         )
 
     return affiliations
