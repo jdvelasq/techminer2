@@ -477,22 +477,28 @@ class _MainInformation:
         return len(records)
 
     def raw_index_keywords(self):
-        records = self.records.raw_index_keywords.copy()
-        records = records.dropna()
-        records = records.str.split(";")
-        records = records.explode()
-        records = records.str.strip()
-        records = records.drop_duplicates()
-        return len(records)
+        if "raw_index_keywords" in self.records.columns:
+            records = self.records.raw_index_keywords.copy()
+            records = records.dropna()
+            records = records.str.split(";")
+            records = records.explode()
+            records = records.str.strip()
+            records = records.drop_duplicates()
+            return len(records)
+        else:
+            return 0
 
     def index_keywords(self):
-        records = self.records.index_keywords.copy()
-        records = records.dropna()
-        records = records.str.split(";")
-        records = records.explode()
-        records = records.str.strip()
-        records = records.drop_duplicates()
-        return len(records)
+        if "index_keywords" in self.records.columns:
+            records = self.records.index_keywords.copy()
+            records = records.dropna()
+            records = records.str.split(";")
+            records = records.explode()
+            records = records.str.strip()
+            records = records.drop_duplicates()
+            return len(records)
+        else:
+            return 0
 
 
 def main_information(
