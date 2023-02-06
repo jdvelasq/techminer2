@@ -101,6 +101,8 @@ setup(
         #
         "techminer2.vantagepoint",
         "techminer2.vantagepoint.analyze",
+        "techminer2.vantagepoint.analyze.matrix",
+        "techminer2.vantagepoint.analyze.tfidf",
         "techminer2.vantagepoint.refine",
         "techminer2.vantagepoint.report",
     ],
