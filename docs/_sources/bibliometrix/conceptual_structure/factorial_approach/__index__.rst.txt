@@ -2,7 +2,7 @@ Factorial Approach
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    .. toctree::
-      bibliometrix__factorial_analysis
+      factorial_analysis
          
 
    * ``TODO: Factorial Approach / CA``

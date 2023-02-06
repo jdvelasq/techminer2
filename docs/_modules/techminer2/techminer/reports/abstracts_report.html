@@ -1,0 +1,406 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>techminer2.techminer.reports.abstracts_report &mdash; TechMiner2 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/copybutton.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../_static/copybutton.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> TechMiner2
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../introduction/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../introduction/release_info.html">Release Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../introduction/license.html">MIT License</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../techminer/__index__.html">TechMiner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bibliometrix/__index__.html">Bibliometrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../vantagepoint/__index__.html">VantagePoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tlab/__index__.html">T-LAB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../scientopy/__index__.html">ScientoPy</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">TechMiner2</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>techminer2.techminer.reports.abstracts_report</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for techminer2.techminer.reports.abstracts_report</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Abstracts Report</span>
+<span class="sd">===============================================================================</span>
+
+
+<span class="sd">&gt;&gt;&gt; directory = &quot;data/regtech/&quot;</span>
+
+<span class="sd">&gt;&gt;&gt; # file generated in data/regtech/reports/abstracts_report.txt</span>
+<span class="sd">&gt;&gt;&gt; from techminer2 import techminer</span>
+
+<span class="sd">&gt;&gt;&gt; techminer.reports.abstracts_report(</span>
+<span class="sd">...     criterion=&quot;author_keywords&quot;,</span>
+<span class="sd">...     custom_topics=[&quot;&quot;],</span>
+<span class="sd">...     directory=directory,</span>
+<span class="sd">... )</span>
+
+
+<span class="sd"># &gt;&gt;&gt; tm2__abstracts_report(</span>
+<span class="sd"># ...     criterion=&quot;author_keywords&quot;,</span>
+<span class="sd"># ...     custom_topics=[&quot;blockchain&quot; ,&quot;regtech&quot;],</span>
+<span class="sd"># ...     n_abstracts=10,    </span>
+<span class="sd"># ...     directory=directory,</span>
+<span class="sd"># ... )</span>
+
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">os.path</span>
+<span class="kn">import</span> <span class="nn">textwrap</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">..._read_records</span> <span class="kn">import</span> <span class="n">read_records</span>
+
+
+<div class="viewcode-block" id="abstracts_report"><a class="viewcode-back" href="../../../../techminer/reports/abstracts_report.html#techminer2.techminer.reports.abstracts_report.abstracts_report">[docs]</a><span class="k">def</span> <span class="nf">abstracts_report</span><span class="p">(</span>
+    <span class="n">criterion</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">custom_topics</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">file_name</span><span class="o">=</span><span class="s2">&quot;abstracts_report.txt&quot;</span><span class="p">,</span>
+    <span class="c1"># n_abstracts=10,</span>
+    <span class="n">use_textwrap</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">directory</span><span class="o">=</span><span class="s2">&quot;./&quot;</span><span class="p">,</span>
+    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;documents&quot;</span><span class="p">,</span>
+    <span class="n">start_year</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">end_year</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">filters</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Extracts abstracts of documents meeting the given criteria.&quot;&quot;&quot;</span>
+
+    <span class="n">records</span> <span class="o">=</span> <span class="n">read_records</span><span class="p">(</span>
+        <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
+        <span class="n">database</span><span class="o">=</span><span class="n">database</span><span class="p">,</span>
+        <span class="n">start_year</span><span class="o">=</span><span class="n">start_year</span><span class="p">,</span>
+        <span class="n">end_year</span><span class="o">=</span><span class="n">end_year</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">filters</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">criterion</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">records</span> <span class="o">=</span> <span class="n">_sort_by_custom_terms</span><span class="p">(</span><span class="n">criterion</span><span class="p">,</span> <span class="n">custom_topics</span><span class="p">,</span> <span class="n">records</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span>
+            <span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;global_citations&quot;</span><span class="p">,</span> <span class="s2">&quot;local_citations&quot;</span><span class="p">],</span>
+            <span class="n">ascending</span><span class="o">=</span><span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+        <span class="p">)</span>
+
+    <span class="c1"># records = records.head(n_abstracts)</span>
+
+    <span class="n">_write_report</span><span class="p">(</span><span class="n">criterion</span><span class="p">,</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">use_textwrap</span><span class="p">,</span> <span class="n">directory</span><span class="p">,</span> <span class="n">records</span><span class="p">)</span></div>
+
+
+<span class="k">def</span> <span class="nf">_sort_by_custom_terms</span><span class="p">(</span><span class="n">criterion</span><span class="p">,</span> <span class="n">custom_topics</span><span class="p">,</span> <span class="n">records</span><span class="p">):</span>
+    <span class="n">selected_records</span> <span class="o">=</span> <span class="n">records</span><span class="p">[[</span><span class="s2">&quot;article&quot;</span><span class="p">,</span> <span class="n">criterion</span><span class="p">]]</span>
+    <span class="n">selected_records</span><span class="p">[</span><span class="n">criterion</span><span class="p">]</span> <span class="o">=</span> <span class="n">selected_records</span><span class="p">[</span><span class="n">criterion</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
+    <span class="n">selected_records</span> <span class="o">=</span> <span class="n">selected_records</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span><span class="n">criterion</span><span class="p">)</span>
+    <span class="n">selected_records</span><span class="p">[</span><span class="n">criterion</span><span class="p">]</span> <span class="o">=</span> <span class="n">selected_records</span><span class="p">[</span><span class="n">criterion</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="n">selected_records</span> <span class="o">=</span> <span class="n">selected_records</span><span class="p">[</span><span class="n">selected_records</span><span class="p">[</span><span class="n">criterion</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">custom_topics</span><span class="p">)]</span>
+    <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="n">records</span><span class="p">[</span><span class="s2">&quot;article&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">selected_records</span><span class="p">[</span><span class="s2">&quot;article&quot;</span><span class="p">])]</span>
+
+    <span class="c1">##</span>
+    <span class="n">records</span><span class="p">[</span><span class="s2">&quot;TOPICS&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="n">criterion</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">records</span><span class="p">[</span><span class="s2">&quot;TOPICS&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="s2">&quot;TOPICS&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
+    <span class="n">records</span><span class="p">[</span><span class="s2">&quot;TOPICS&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="s2">&quot;TOPICS&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">[</span><span class="n">y</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">x</span><span class="p">])</span>
+
+    <span class="n">records</span><span class="p">[</span><span class="s2">&quot;POINTS&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">topic</span> <span class="ow">in</span> <span class="n">custom_topics</span><span class="p">:</span>
+        <span class="n">records</span><span class="p">[</span><span class="s2">&quot;POINTS&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">records</span><span class="p">[</span><span class="s2">&quot;TOPICS&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span> <span class="k">if</span> <span class="n">topic</span> <span class="ow">in</span> <span class="n">x</span> <span class="k">else</span> <span class="s2">&quot;0&quot;</span><span class="p">)</span>
+
+    <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span>
+        <span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;POINTS&quot;</span><span class="p">,</span> <span class="s2">&quot;global_citations&quot;</span><span class="p">,</span> <span class="s2">&quot;local_citations&quot;</span><span class="p">],</span>
+        <span class="n">ascending</span><span class="o">=</span><span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span>
+    <span class="p">)</span>
+
+    <span class="c1"># records[&quot;RNK&quot;] = records.groupby(&quot;POINTS&quot;)[&quot;global_citations&quot;].rank(</span>
+    <span class="c1">#     ascending=False, method=&quot;dense&quot;</span>
+    <span class="c1"># )</span>
+
+    <span class="c1"># records = records[records[&quot;RNK&quot;] &lt; 10]</span>
+
+    <span class="n">records</span><span class="p">[</span><span class="s2">&quot;TERMS&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="n">criterion</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
+    <span class="n">records</span><span class="p">[</span><span class="s2">&quot;TERMS&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="s2">&quot;TERMS&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">[</span><span class="n">y</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">x</span><span class="p">])</span>
+    <span class="n">records</span><span class="p">[</span><span class="s2">&quot;TERMS_1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="s2">&quot;TERMS&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+        <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;(*) &quot;</span> <span class="o">+</span> <span class="n">custom_topic</span> <span class="k">for</span> <span class="n">custom_topic</span> <span class="ow">in</span> <span class="n">custom_topics</span> <span class="k">if</span> <span class="n">custom_topic</span> <span class="ow">in</span> <span class="n">x</span>
+        <span class="p">],</span>
+        <span class="n">na_action</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">records</span><span class="p">[</span><span class="s2">&quot;TERMS_2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="s2">&quot;TERMS&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+        <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">[</span><span class="n">y</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">x</span> <span class="k">if</span> <span class="n">y</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">custom_topics</span><span class="p">],</span> <span class="n">na_action</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span>
+    <span class="p">)</span>
+    <span class="n">records</span><span class="p">[</span><span class="s2">&quot;TERMS&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="s2">&quot;TERMS_1&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">records</span><span class="p">[</span><span class="s2">&quot;TERMS_2&quot;</span><span class="p">]</span>
+    <span class="n">records</span><span class="p">[</span><span class="n">criterion</span><span class="p">]</span> <span class="o">=</span> <span class="n">records</span><span class="p">[</span><span class="s2">&quot;TERMS&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;; &quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">records</span>
+
+
+<span class="k">def</span> <span class="nf">_write_report</span><span class="p">(</span><span class="n">criterion</span><span class="p">,</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">use_textwrap</span><span class="p">,</span> <span class="n">directory</span><span class="p">,</span> <span class="n">records</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="s2">&quot;reports&quot;</span><span class="p">,</span> <span class="n">file_name</span><span class="p">),</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span>
+    <span class="p">)</span> <span class="k">as</span> <span class="n">out_file</span><span class="p">:</span>
+        <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">records</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">use_textwrap</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;article&quot;</span><span class="p">]):</span>
+                    <span class="n">text_article</span> <span class="o">=</span> <span class="n">textwrap</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span>
+                        <span class="n">row</span><span class="p">[</span><span class="s2">&quot;article&quot;</span><span class="p">],</span>
+                        <span class="n">width</span><span class="o">=</span><span class="mi">87</span><span class="p">,</span>
+                        <span class="n">initial_indent</span><span class="o">=</span><span class="s2">&quot; &quot;</span> <span class="o">*</span> <span class="mi">0</span><span class="p">,</span>
+                        <span class="n">subsequent_indent</span><span class="o">=</span><span class="s2">&quot; &quot;</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,</span>
+                        <span class="n">fix_sentence_endings</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                    <span class="p">)</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">]):</span>
+                    <span class="n">text_title</span> <span class="o">=</span> <span class="n">textwrap</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span>
+                        <span class="n">row</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">],</span>
+                        <span class="n">width</span><span class="o">=</span><span class="mi">87</span><span class="p">,</span>
+                        <span class="n">initial_indent</span><span class="o">=</span><span class="s2">&quot; &quot;</span> <span class="o">*</span> <span class="mi">0</span><span class="p">,</span>
+                        <span class="n">subsequent_indent</span><span class="o">=</span><span class="s2">&quot; &quot;</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,</span>
+                        <span class="n">fix_sentence_endings</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                    <span class="p">)</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="n">criterion</span><span class="p">]):</span>
+                    <span class="n">text_criterion</span> <span class="o">=</span> <span class="n">textwrap</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span>
+                        <span class="n">row</span><span class="p">[</span><span class="n">criterion</span><span class="p">],</span>
+                        <span class="n">width</span><span class="o">=</span><span class="mi">87</span><span class="p">,</span>
+                        <span class="n">initial_indent</span><span class="o">=</span><span class="s2">&quot; &quot;</span> <span class="o">*</span> <span class="mi">0</span><span class="p">,</span>
+                        <span class="n">subsequent_indent</span><span class="o">=</span><span class="s2">&quot; &quot;</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,</span>
+                        <span class="n">fix_sentence_endings</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                    <span class="p">)</span>
+                <span class="k">if</span> <span class="s2">&quot;abstract&quot;</span> <span class="ow">in</span> <span class="n">row</span><span class="o">.</span><span class="n">index</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;abstract&quot;</span><span class="p">]):</span>
+                    <span class="n">text_abstract</span> <span class="o">=</span> <span class="n">textwrap</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span>
+                        <span class="n">row</span><span class="p">[</span><span class="s2">&quot;abstract&quot;</span><span class="p">],</span>
+                        <span class="n">width</span><span class="o">=</span><span class="mi">87</span><span class="p">,</span>
+                        <span class="n">initial_indent</span><span class="o">=</span><span class="s2">&quot; &quot;</span> <span class="o">*</span> <span class="mi">0</span><span class="p">,</span>
+                        <span class="n">subsequent_indent</span><span class="o">=</span><span class="s2">&quot; &quot;</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,</span>
+                        <span class="n">fix_sentence_endings</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                    <span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">text_abstract</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">text_article</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;article&quot;</span><span class="p">]</span>
+                <span class="n">text_title</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">]</span>
+                <span class="n">text_criterion</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="n">criterion</span><span class="p">]</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;abstract&quot;</span><span class="p">]):</span>
+                    <span class="n">text_abstract</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;abstract&quot;</span><span class="p">]</span>
+
+            <span class="n">text_citation</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;global_citations&quot;</span><span class="p">])</span>
+
+            <span class="c1"># print(&quot;-&quot; * 90, file=out_file)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-- </span><span class="si">{:03d}</span><span class="s2"> &quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">counter</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">83</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">out_file</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;AR &quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">out_file</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">text_article</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">out_file</span><span class="p">)</span>
+
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;TI &quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">out_file</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">text_title</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">out_file</span><span class="p">)</span>
+
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;KW &quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">out_file</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">text_criterion</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">out_file</span><span class="p">)</span>
+
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;TC &quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">out_file</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">text_citation</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">out_file</span><span class="p">)</span>
+
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;AB &quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">out_file</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">text_abstract</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">out_file</span><span class="p">)</span>
+
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">out_file</span><span class="p">)</span>
+
+            <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="c1"># sys.stdout.write(&quot;--INFO-- Abstrats Report generated.\n&quot;)</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

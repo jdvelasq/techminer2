@@ -1,0 +1,373 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Word Cloud &mdash; TechMiner2 0.1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Top Trending Topics" href="top_trending_topics.html" />
+    <link rel="prev" title="Time Line" href="time_line.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> TechMiner2
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/release_info.html">Release Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/license.html">MIT License</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Software comparison</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../techminer/__index__.html">TechMiner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bibliometrix/__index__.html">Bibliometrix</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vantagepoint/__index__.html">VantagePoint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tlab/__index__.html">T-LAB</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="__index__.html">ScientoPy</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="bar.html">Bar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bar_trends.html">Bar Trends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="time_line.html">Time Line</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Word Cloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="top_trending_topics.html">Top Trending Topics</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">TechMiner2</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="__index__.html">ScientoPy</a> &raquo;</li>
+        
+      <li>Word Cloud</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/scientopy/word_cloud.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<span class="target" id="module-techminer2.scientopy.word_cloud"></span><section id="word-cloud">
+<h1>Word Cloud<a class="headerlink" href="#word-cloud" title="Permalink to this headline">¶</a></h1>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">directory</span> <span class="o">=</span> <span class="s2">&quot;data/regtech/&quot;</span>
+</pre></div>
+</div>
+<p><strong>Basic Usage.</strong></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2</span> <span class="kn">import</span> <span class="n">scientopy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;sphinx/images/scientopy__word_cloud-1.png&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">scientopy</span><span class="o">.</span><span class="n">word_cloud</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;author_keywords&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Author Keywords&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">topics_length</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/scientopy__word_cloud-1.png"><img alt="../_images/scientopy__word_cloud-1.png" class="align-center" src="../_images/scientopy__word_cloud-1.png" style="width: 900px;" /></a>
+<p><strong>Time Filter.</strong></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2</span> <span class="kn">import</span> <span class="n">scientopy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;sphinx/images/scientopy__word_cloud-3.png&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">scientopy</span><span class="o">.</span><span class="n">word_cloud</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;author_keywords&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Author Keywords&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">start_year</span><span class="o">=</span><span class="mi">2018</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">end_year</span><span class="o">=</span><span class="mi">2021</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/scientopy__word_cloud-3.png"><img alt="../_images/scientopy__word_cloud-3.png" class="align-center" src="../_images/scientopy__word_cloud-3.png" style="width: 900px;" /></a>
+<p><strong>Custom Topics Extraction.</strong></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2</span> <span class="kn">import</span> <span class="n">scientopy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;sphinx/images/scientopy__word_cloud-4.png&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">scientopy</span><span class="o">.</span><span class="n">word_cloud</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;author_keywords&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">custom_topics</span><span class="o">=</span><span class="p">[</span>
+<span class="gp">... </span>        <span class="s2">&quot;fintech&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;blockchain&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;financial regulation&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;machine learning&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;big data&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;cryptocurrency&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">],</span>
+<span class="gp">... </span>    <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/scientopy__word_cloud-4.png"><img alt="../_images/scientopy__word_cloud-4.png" class="align-center" src="../_images/scientopy__word_cloud-4.png" style="width: 900px;" /></a>
+<p><strong>Filters (previous search results).</strong></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2</span> <span class="kn">import</span> <span class="n">scientopy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;sphinx/images/scientopy__word_cloud-5.png&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">scientopy</span><span class="o">.</span><span class="n">word_cloud</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;author_keywords&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">custom_topics</span><span class="o">=</span><span class="p">[</span>
+<span class="gp">... </span>        <span class="s2">&quot;fintech&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;blockchain&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;financial regulation&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s2">&quot;innovation&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">],</span>
+<span class="gp">... </span>    <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">countries</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Australia&quot;</span><span class="p">,</span> <span class="s2">&quot;United Kingdom&quot;</span><span class="p">,</span> <span class="s2">&quot;United States&quot;</span><span class="p">],</span>
+<span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/scientopy__word_cloud-5.png"><img alt="../_images/scientopy__word_cloud-5.png" class="align-center" src="../_images/scientopy__word_cloud-5.png" style="width: 900px;" /></a>
+<p><strong>Trend Analysis.</strong></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2</span> <span class="kn">import</span> <span class="n">scientopy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;sphinx/images/scientopy__word_cloud-6.png&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">scientopy</span><span class="o">.</span><span class="n">word_cloud</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;author_keywords&#39;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">topics_length</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">trend_analysis</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/scientopy__word_cloud-6.png"><img alt="../_images/scientopy__word_cloud-6.png" class="align-center" src="../_images/scientopy__word_cloud-6.png" style="width: 900px;" /></a>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">techminer2</span> <span class="kn">import</span> <span class="n">techminer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">techminer</span><span class="o">.</span><span class="n">indicators</span><span class="o">.</span><span class="n">growth_indicators_by_topic</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">criterion</span><span class="o">=</span><span class="s2">&quot;author_keywords&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">directory</span><span class="o">=</span><span class="n">directory</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)[[</span><span class="s1">&#39;OCC&#39;</span><span class="p">,</span> <span class="s1">&#39;average_growth_rate&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;average_growth_rate&#39;</span><span class="p">,</span> <span class="s1">&#39;OCC&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="go">                             OCC  average_growth_rate</span>
+<span class="go">author_keywords</span>
+<span class="go">challenges                     1                  0.5</span>
+<span class="go">online shareholder voting      1                  0.5</span>
+<span class="go">mifid ii                       1                  0.5</span>
+<span class="go">shareholder monitoring         1                  0.5</span>
+<span class="go">annual general meetings        1                  0.5</span>
+<span class="go">costs of voting                1                  0.5</span>
+<span class="go">companies                      1                  0.5</span>
+<span class="go">benefit                        1                  0.5</span>
+<span class="go">compliance                     7                  0.0</span>
+<span class="go">regtech                       28                 -0.5</span>
+<span class="go">fintech                       12                 -0.5</span>
+<span class="go">regulation                     5                 -0.5</span>
+<span class="go">innovation                     3                 -0.5</span>
+<span class="go">blockchain                     3                 -0.5</span>
+<span class="go">sandbox                        2                 -0.5</span>
+<span class="go">gdpr                           2                 -0.5</span>
+<span class="go">data protection officer        2                 -0.5</span>
+<span class="go">accountability                 2                 -0.5</span>
+<span class="go">anti money laundering (aml)    2                 -0.5</span>
+<span class="go">otc reform                     1                 -0.5</span>
+</pre></div>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py" id="techminer2.scientopy.word_cloud.word_cloud">
+<span class="sig-prename descclassname"><span class="pre">techminer2.scientopy.word_cloud.</span></span><span class="sig-name descname"><span class="pre">word_cloud</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">criterion</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_window</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">topics_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">custom_topics</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trend_analysis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(12,</span> <span class="pre">12)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">database</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'documents'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_year</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_year</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">filters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/techminer2/scientopy/word_cloud.html#word_cloud"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#techminer2.scientopy.word_cloud.word_cloud" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plots a word cloud from a dataframe.</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="top_trending_topics.html" class="btn btn-neutral float-right" title="Top Trending Topics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="time_line.html" class="btn btn-neutral float-left" title="Time Line" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

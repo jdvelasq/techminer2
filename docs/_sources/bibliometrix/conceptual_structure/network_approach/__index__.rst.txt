@@ -2,6 +2,6 @@ Network Approach
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    .. toctree::
-      bibliometrix__co_occurrence_network
-      bibliometrix__thematic_map
-      bibliometrix__thematic_evolution
+      co_occurrence_network
+      thematic_map
+      thematic_evolution

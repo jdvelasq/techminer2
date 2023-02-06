@@ -35,33 +35,15 @@ package developed and tested in Python version 3.6.
 
 
 .. toctree::
-    :caption: TM-2
-    :hidden:
-    :maxdepth: 1
-
-    tm2__data/__index__
-    tm2__indicators/__index__
-    tm2__text_summarization/__index__
-
-
-
-.. toctree::
     :caption: Software comparison
     :maxdepth: 1
     :hidden:
     
+    techminer/__index__
     bibliometrix/__index__
     vantagepoint/__index__
     tlab/__index__
     scientopy/__index__
-
-
-
-
-
-
-
-
 
 
 

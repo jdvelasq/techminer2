@@ -16,8 +16,8 @@ based on the type of plots.
     .. toctree::
         :maxdepth: 1
 
-        scientopy__bar
-        scientopy__bar_trends
-        scientopy__time_line
-        scientopy__word_cloud
-        scientopy__top_trending_topics
+        bar
+        bar_trends
+        time_line
+        word_cloud
+        top_trending_topics
