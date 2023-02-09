@@ -1,6 +1,7 @@
 from . import (
     authors,
     cited_documents,
+    cited_references,
     clustering,
     conceptual_structure,
     countries,
