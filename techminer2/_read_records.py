@@ -50,4 +50,5 @@ def _get_records_from_file(directory, database):
     if not os.path.exists(file_path):
         raise FileNotFoundError(f"file '{file_path}' not found")
     records = pd.read_csv(file_path, sep=",", encoding="utf-8")
+    records = records.drop_duplicates()
     return records
