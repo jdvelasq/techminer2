@@ -27,9 +27,13 @@ def word_cloud_for_indicators(
     wc.recolor(color_func=_recolor)
 
     fig = plt.Figure(figsize=figsize)
-    axs = fig.subplots()
-    axs.imshow(wc, interpolation="bilinear")
-    axs.set_axis_off()
-    axs.set_title(title)
+    # axs = fig.subplots()
+    # axs.imshow(wc, interpolation="bilinear")
+    # axs.set_axis_off()
+    # axs.set_title(title)
+
+    plt.imshow(wc, interpolation="bilinear")
+    plt.axis("off")
+    plt.title(title)
 
     return fig
