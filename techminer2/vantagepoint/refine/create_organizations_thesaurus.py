@@ -198,7 +198,7 @@ def _clean_organization_names(affiliations):
     ]
     for pattern, text in repl:
         affiliations["affiliation"] = affiliations["affiliation"].str.replace(
-            pattern, text
+            pattern, text, regex=False
         )
 
     affiliations["affiliation"] = affiliations["affiliation"].str.replace(
