@@ -99,10 +99,12 @@ def import_scopus_files(
     #
     _apply_scopus2tags_to_database_files(directory)
     _format_columns_names_in_database_files(directory)
-    _remove_selected_docoument_types_from_documents(directory, **document_types)
+    _remove_selected_document_types_from_documents(directory, **document_types)
     _drop_na_columns_in_database_files(directory)
     _remove_accents_in_database_files(directory)
     _remove_stranger_chars_in_database_files(directory)
+    _remove_anonymous_authors(directory)
+    _repair_authors_id(directory)
     #
     _process__abstract__column(directory)
     _process__authors_id__column(directory)
@@ -161,6 +163,45 @@ def import_scopus_files(
     _report_records(directory)
 
 
+def _repair_authors_id(directory):
+    sys.stdout.write("--INFO-- Repairing authors ID\n")
+    files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
+    lenghts = []
+    for file in files:
+        data = pd.read_csv(file, encoding="utf-8")
+        ids = data["authors_id"].copy()
+        ids = ids.map(lambda x: x[:-1] if x[-1]==";" else x)
+        ids = ids.str.split(";")
+        ids = ids.explode()
+        ids = ids.drop_duplicates()
+        ids = ids.str.strip()
+        ids = ids.str.len()
+        lenghts.append(ids.max())
+
+    max_length = max(lenghts)
+
+    for file in files:
+        data = pd.read_csv(file, encoding="utf-8")
+        data["authors_id"] = data["authors_id"].map(lambda x: x[:-1] if x[-1]==";" else x)
+        data["authors_id"] = data["authors_id"].str.split(";")
+        data["authors_id"] = data["authors_id"].apply(lambda x: [i.strip() for i in x])
+        data["authors_id"] = data["authors_id"].apply(
+            lambda x: [i.ljust(max_length, "0") for i in x]
+        )
+        data["authors_id"] = data["authors_id"].apply(lambda x: ";".join(x))
+        data.to_csv(file, index=False, encoding="utf-8")
+
+
+def _remove_anonymous_authors(directory):
+    sys.stdout.write("--INFO-- Removing anonymous authors\n")
+    files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
+    for file in files:
+        data = pd.read_csv(file, encoding="utf-8")
+        data = data[data.raw_authors != "Anon"]
+        data = data[data.raw_authors != "[No author name available]"]
+        data.to_csv(file, index=False, encoding="utf-8")
+
+
 def _report_records(directory):
     files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
     for file in files:
@@ -168,7 +209,7 @@ def _report_records(directory):
         sys.stdout.write(f"--INFO-- {file}: {len(data.index)} imported records\n")
 
 
-def _remove_selected_docoument_types_from_documents(directory, **document_types):
+def _remove_selected_document_types_from_documents(directory, **document_types):
 
     discarded_document_types = [
         key.lower()
@@ -180,7 +221,7 @@ def _remove_selected_docoument_types_from_documents(directory, **document_types)
         return
 
     sys.stdout.write(
-        "--INFO-- Removing selecting document types in documents database\n"
+        "--INFO-- Removing selected document types in documents database\n"
     )
 
     files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
@@ -538,6 +579,7 @@ def _create_referneces_from_references_csv_file(directory, disable_progress_bar=
     # Busqueda por (año, autor y tttulo)
     sys.stdout.write("--INFO-- Searching `references` using (year, title, author)\n")
     with tqdm(total=len(references), disable=disable_progress_bar) as pbar:
+
         for article, year, authors, title in zip(
             references.article,
             references.year,
@@ -575,10 +617,10 @@ def _create_referneces_from_references_csv_file(directory, disable_progress_bar=
 
                     if author in text and str(year) in text and title[:29] in text:
                         thesaurus[key] = article
-                        references.found[references.article == article] = True
+                        references.loc[references.article == article, "found"] = True
                     elif author in text and str(year) in text and title[-29:] in text:
                         thesaurus[key] = article
-                        references.found[references.article == article] = True
+                        references.loc[references.article == article, "found"] = True
 
             pbar.update(1)
 
@@ -615,17 +657,9 @@ def _create_referneces_from_references_csv_file(directory, disable_progress_bar=
                         .replace("-", " ")
                         .replace("'", "")
                     )
-
-                    # /Volumes/GitHub/techminer2/techminer2/techminer/tools/import_scopus_files.py:621: SettingWithCopyWarning:
-                    # A value is trying to be set on a copy of a slice from a DataFrame
-                    #
-                    # See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-                    #   references.found[references.article == article] = True
-
                     if title in text:
                         thesaurus[key] = article
-                        # ***
-                        references.found[references.article == article] = True
+                        references.loc[references.article == article, "found"] = True
 
             pbar.update(1)
     #
@@ -1318,20 +1352,34 @@ def _create__authors__column(directory, disable_progress_bar):
         return author_id2name
 
     #
+    # def repair_names__(author_id2name, disable_progress_bar):
+    #     files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
+    #     total_items = len(files) * len(author_id2name)
+    #     with tqdm(total=total_items, disable=disable_progress_bar) as pbar:
+    #         for file in files:
+    #             data = pd.read_csv(file, encoding="utf-8")
+    #             data = data.assign(authors=data.authors_id.copy())
+    #             data = data.assign(authors=data.authors.str.replace(";", "; "))
+    #             for author_id, author in author_id2name.items():
+    #                 data = data.assign(
+    #                     authors=data.authors.str.replace(author_id, author)
+    #                 )
+    #                 pbar.update(1)
+    #             data.to_csv(file, sep=",", encoding="utf-8", index=False)
+    #
+
     def repair_names(author_id2name, disable_progress_bar):
         files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
-        total_items = len(files) * len(author_id2name)
-        with tqdm(total=total_items, disable=disable_progress_bar) as pbar:
-            for file in files:
-                data = pd.read_csv(file, encoding="utf-8")
-                data = data.assign(authors=data.authors_id.copy())
-                data = data.assign(authors=data.authors.str.replace(";", "; "))
-                for author_id, author in author_id2name.items():
-                    data = data.assign(
-                        authors=data.authors.str.replace(author_id, author)
-                    )
-                    pbar.update(1)
-                data.to_csv(file, sep=",", encoding="utf-8", index=False)
+        total_items = len(files)
+        for file in files:
+            data = pd.read_csv(file, encoding="utf-8")
+            data = data.assign(authors=data.authors_id.copy())
+            data["authors"] = data["authors"].str.split(";")
+            data["authors"] = data["authors"].map(
+                lambda x: [author_id2name[id] for id in x]
+            )
+            data["authors"] = data["authors"].map(lambda x: "; ".join(x))
+            data.to_csv(file, sep=",", encoding="utf-8", index=False)
 
     #
     sys.stdout.write("--INFO-- Creating `authors` column\n")
