@@ -651,22 +651,28 @@
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">records</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">raw_index_keywords</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">records</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">records</span><span class="o">.</span><span class="n">raw_index_keywords</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-        <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
-        <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
-        <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span>
-        <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-        <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
-        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">records</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s2">&quot;raw_index_keywords&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">records</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="n">records</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">records</span><span class="o">.</span><span class="n">raw_index_keywords</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+            <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
+            <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span>
+            <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+            <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">records</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
 
     <span class="k">def</span> <span class="nf">index_keywords</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">records</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">records</span><span class="o">.</span><span class="n">index_keywords</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-        <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
-        <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
-        <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span>
-        <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-        <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
-        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">records</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s2">&quot;index_keywords&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">records</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="n">records</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">records</span><span class="o">.</span><span class="n">index_keywords</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+            <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
+            <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span>
+            <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="n">records</span> <span class="o">=</span> <span class="n">records</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+            <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">records</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
 
 
 <div class="viewcode-block" id="main_information"><a class="viewcode-back" href="../../../../bibliometrix/overview/main_information.html#techminer2.bibliometrix.overview.main_information.main_information">[docs]</a><span class="k">def</span> <span class="nf">main_information</span><span class="p">(</span>

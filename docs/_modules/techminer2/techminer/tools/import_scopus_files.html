@@ -181,6 +181,9 @@
 
 <span class="sd">&gt;&gt;&gt; directory = &quot;data/regtech/&quot;</span>
 
+
+<span class="sd">&gt;&gt;&gt; directory = &quot;data/dyna/&quot;</span>
+
 <span class="sd">&gt;&gt;&gt; from techminer2 import techminer</span>
 <span class="sd">&gt;&gt;&gt; techminer.tools.import_scopus_files(</span>
 <span class="sd">...     directory, </span>
@@ -270,10 +273,12 @@
     <span class="c1">#</span>
     <span class="n">_apply_scopus2tags_to_database_files</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
     <span class="n">_format_columns_names_in_database_files</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
-    <span class="n">_remove_selected_docoument_types_from_documents</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="o">**</span><span class="n">document_types</span><span class="p">)</span>
+    <span class="n">_remove_selected_document_types_from_documents</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="o">**</span><span class="n">document_types</span><span class="p">)</span>
     <span class="n">_drop_na_columns_in_database_files</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
     <span class="n">_remove_accents_in_database_files</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
     <span class="n">_remove_stranger_chars_in_database_files</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
+    <span class="n">_remove_anonymous_authors</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
+    <span class="n">_repair_authors_id</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
     <span class="c1">#</span>
     <span class="n">_process__abstract__column</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
     <span class="n">_process__authors_id__column</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
@@ -289,7 +294,7 @@
     <span class="n">_process__source_name__column</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
     <span class="n">_process__global_references__column</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
     <span class="c1">#</span>
-    <span class="n">_create__authors__column</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
+    <span class="n">_create__authors__column</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="n">disable_progress_bar</span><span class="p">)</span>
     <span class="n">_create__num_authors__column</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
     <span class="n">_create__article__column</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
     <span class="c1">#</span>
@@ -332,6 +337,45 @@
     <span class="n">_report_records</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span></div>
 
 
+<span class="k">def</span> <span class="nf">_repair_authors_id</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;--INFO-- Repairing authors ID</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">files</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="s2">&quot;processed/_*.csv&quot;</span><span class="p">)))</span>
+    <span class="n">lenghts</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+        <span class="n">ids</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;authors_id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">ids</span> <span class="o">=</span> <span class="n">ids</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;;&quot;</span> <span class="k">else</span> <span class="n">x</span><span class="p">)</span>
+        <span class="n">ids</span> <span class="o">=</span> <span class="n">ids</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
+        <span class="n">ids</span> <span class="o">=</span> <span class="n">ids</span><span class="o">.</span><span class="n">explode</span><span class="p">()</span>
+        <span class="n">ids</span> <span class="o">=</span> <span class="n">ids</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+        <span class="n">ids</span> <span class="o">=</span> <span class="n">ids</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="n">ids</span> <span class="o">=</span> <span class="n">ids</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">len</span><span class="p">()</span>
+        <span class="n">lenghts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ids</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+
+    <span class="n">max_length</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">lenghts</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;authors_id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;authors_id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;;&quot;</span> <span class="k">else</span> <span class="n">x</span><span class="p">)</span>
+        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;authors_id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;authors_id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
+        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;authors_id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;authors_id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">])</span>
+        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;authors_id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;authors_id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+            <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="n">max_length</span><span class="p">,</span> <span class="s2">&quot;0&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;authors_id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;authors_id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s2">&quot;;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_remove_anonymous_authors</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;--INFO-- Removing anonymous authors</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">files</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="s2">&quot;processed/_*.csv&quot;</span><span class="p">)))</span>
+    <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">.</span><span class="n">raw_authors</span> <span class="o">!=</span> <span class="s2">&quot;Anon&quot;</span><span class="p">]</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">.</span><span class="n">raw_authors</span> <span class="o">!=</span> <span class="s2">&quot;[No author name available]&quot;</span><span class="p">]</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+
+
 <span class="k">def</span> <span class="nf">_report_records</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
     <span class="n">files</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="s2">&quot;processed/_*.csv&quot;</span><span class="p">)))</span>
     <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
@@ -339,7 +383,7 @@
         <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;--INFO-- </span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="p">)</span><span class="si">}</span><span class="s2"> imported records</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">_remove_selected_docoument_types_from_documents</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="o">**</span><span class="n">document_types</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_remove_selected_document_types_from_documents</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="o">**</span><span class="n">document_types</span><span class="p">):</span>
 
     <span class="n">discarded_document_types</span> <span class="o">=</span> <span class="p">[</span>
         <span class="n">key</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
@@ -351,7 +395,7 @@
         <span class="k">return</span>
 
     <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
-        <span class="s2">&quot;--INFO-- Removing selecting document types in documents database</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="s2">&quot;--INFO-- Removing selected document types in documents database</span><span class="se">\n</span><span class="s2">&quot;</span>
     <span class="p">)</span>
 
     <span class="n">files</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="s2">&quot;processed/_*.csv&quot;</span><span class="p">)))</span>
@@ -709,6 +753,7 @@
     <span class="c1"># Busqueda por (año, autor y tttulo)</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;--INFO-- Searching `references` using (year, title, author)</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="k">with</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">references</span><span class="p">),</span> <span class="n">disable</span><span class="o">=</span><span class="n">disable_progress_bar</span><span class="p">)</span> <span class="k">as</span> <span class="n">pbar</span><span class="p">:</span>
+
         <span class="k">for</span> <span class="n">article</span><span class="p">,</span> <span class="n">year</span><span class="p">,</span> <span class="n">authors</span><span class="p">,</span> <span class="n">title</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span>
             <span class="n">references</span><span class="o">.</span><span class="n">article</span><span class="p">,</span>
             <span class="n">references</span><span class="o">.</span><span class="n">year</span><span class="p">,</span>
@@ -746,10 +791,10 @@
 
                     <span class="k">if</span> <span class="n">author</span> <span class="ow">in</span> <span class="n">text</span> <span class="ow">and</span> <span class="nb">str</span><span class="p">(</span><span class="n">year</span><span class="p">)</span> <span class="ow">in</span> <span class="n">text</span> <span class="ow">and</span> <span class="n">title</span><span class="p">[:</span><span class="mi">29</span><span class="p">]</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
                         <span class="n">thesaurus</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">article</span>
-                        <span class="n">references</span><span class="o">.</span><span class="n">found</span><span class="p">[</span><span class="n">references</span><span class="o">.</span><span class="n">article</span> <span class="o">==</span> <span class="n">article</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+                        <span class="n">references</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">references</span><span class="o">.</span><span class="n">article</span> <span class="o">==</span> <span class="n">article</span><span class="p">,</span> <span class="s2">&quot;found&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
                     <span class="k">elif</span> <span class="n">author</span> <span class="ow">in</span> <span class="n">text</span> <span class="ow">and</span> <span class="nb">str</span><span class="p">(</span><span class="n">year</span><span class="p">)</span> <span class="ow">in</span> <span class="n">text</span> <span class="ow">and</span> <span class="n">title</span><span class="p">[</span><span class="o">-</span><span class="mi">29</span><span class="p">:]</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
                         <span class="n">thesaurus</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">article</span>
-                        <span class="n">references</span><span class="o">.</span><span class="n">found</span><span class="p">[</span><span class="n">references</span><span class="o">.</span><span class="n">article</span> <span class="o">==</span> <span class="n">article</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+                        <span class="n">references</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">references</span><span class="o">.</span><span class="n">article</span> <span class="o">==</span> <span class="n">article</span><span class="p">,</span> <span class="s2">&quot;found&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
 
             <span class="n">pbar</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
@@ -763,21 +808,10 @@
             <span class="n">references</span><span class="o">.</span><span class="n">article</span><span class="p">,</span>
             <span class="n">references</span><span class="o">.</span><span class="n">title</span><span class="p">,</span>
         <span class="p">):</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
 
-            <span class="n">title</span> <span class="o">=</span> <span class="p">(</span>
-                <span class="n">title</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-                <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-                <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-                <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-                <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-                <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
-                <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-            <span class="p">)</span>
-
-            <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">thesaurus</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-                <span class="n">text</span> <span class="o">=</span> <span class="n">key</span>
-                <span class="n">text</span> <span class="o">=</span> <span class="p">(</span>
-                    <span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+                <span class="n">title</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="n">title</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
                     <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
                     <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
                     <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
@@ -786,9 +820,20 @@
                     <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
                 <span class="p">)</span>
 
-                <span class="k">if</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
-                    <span class="n">thesaurus</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">article</span>
-                    <span class="n">references</span><span class="o">.</span><span class="n">found</span><span class="p">[</span><span class="n">references</span><span class="o">.</span><span class="n">article</span> <span class="o">==</span> <span class="n">article</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">thesaurus</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                    <span class="n">text</span> <span class="o">=</span> <span class="n">key</span>
+                    <span class="n">text</span> <span class="o">=</span> <span class="p">(</span>
+                        <span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+                        <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+                        <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+                        <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+                        <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+                        <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
+                        <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+                    <span class="p">)</span>
+                    <span class="k">if</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
+                        <span class="n">thesaurus</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">article</span>
+                        <span class="n">references</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">references</span><span class="o">.</span><span class="n">article</span> <span class="o">==</span> <span class="n">article</span><span class="p">,</span> <span class="s2">&quot;found&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
 
             <span class="n">pbar</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
     <span class="c1">#</span>
@@ -1109,12 +1154,12 @@
         <span class="k">if</span> <span class="s2">&quot;global_references&quot;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
             <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span>
                 <span class="n">global_references</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">global_references</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
-                    <span class="s2">&quot;https://doi.org/&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span>
+                    <span class="s2">&quot;https://doi.org/&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">False</span>
                 <span class="p">)</span>
             <span class="p">)</span>
             <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span>
                 <span class="n">global_references</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">global_references</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
-                    <span class="s2">&quot;http://dx.doi.org/&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span>
+                    <span class="s2">&quot;http://dx.doi.org/&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">False</span>
                 <span class="p">)</span>
             <span class="p">)</span>
         <span class="n">data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
@@ -1438,7 +1483,7 @@
         <span class="n">data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">_create__authors__column</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_create__authors__column</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="n">disable_progress_bar</span><span class="p">):</span>
     <span class="c1">#</span>
     <span class="k">def</span> <span class="nf">load_authors_names</span><span class="p">():</span>
         <span class="n">files</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="s2">&quot;processed/_*.csv&quot;</span><span class="p">)))</span>
@@ -1481,22 +1526,40 @@
         <span class="k">return</span> <span class="n">author_id2name</span>
 
     <span class="c1">#</span>
-    <span class="k">def</span> <span class="nf">repair_names</span><span class="p">(</span><span class="n">author_id2name</span><span class="p">):</span>
+    <span class="c1"># def repair_names__(author_id2name, disable_progress_bar):</span>
+    <span class="c1">#     files = list(glob.glob(os.path.join(directory, &quot;processed/_*.csv&quot;)))</span>
+    <span class="c1">#     total_items = len(files) * len(author_id2name)</span>
+    <span class="c1">#     with tqdm(total=total_items, disable=disable_progress_bar) as pbar:</span>
+    <span class="c1">#         for file in files:</span>
+    <span class="c1">#             data = pd.read_csv(file, encoding=&quot;utf-8&quot;)</span>
+    <span class="c1">#             data = data.assign(authors=data.authors_id.copy())</span>
+    <span class="c1">#             data = data.assign(authors=data.authors.str.replace(&quot;;&quot;, &quot;; &quot;))</span>
+    <span class="c1">#             for author_id, author in author_id2name.items():</span>
+    <span class="c1">#                 data = data.assign(</span>
+    <span class="c1">#                     authors=data.authors.str.replace(author_id, author)</span>
+    <span class="c1">#                 )</span>
+    <span class="c1">#                 pbar.update(1)</span>
+    <span class="c1">#             data.to_csv(file, sep=&quot;,&quot;, encoding=&quot;utf-8&quot;, index=False)</span>
+    <span class="c1">#</span>
+
+    <span class="k">def</span> <span class="nf">repair_names</span><span class="p">(</span><span class="n">author_id2name</span><span class="p">,</span> <span class="n">disable_progress_bar</span><span class="p">):</span>
         <span class="n">files</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span> <span class="s2">&quot;processed/_*.csv&quot;</span><span class="p">)))</span>
+        <span class="n">total_items</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
             <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
             <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">authors</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">authors_id</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
-            <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">authors</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">authors</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">,</span> <span class="s2">&quot;; &quot;</span><span class="p">))</span>
-            <span class="k">for</span> <span class="n">author_id</span><span class="p">,</span> <span class="n">author</span> <span class="ow">in</span> <span class="n">author_id2name</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">authors</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">authors</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">author_id</span><span class="p">,</span> <span class="n">author</span><span class="p">))</span>
+            <span class="n">data</span><span class="p">[</span><span class="s2">&quot;authors&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;authors&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>
+            <span class="n">data</span><span class="p">[</span><span class="s2">&quot;authors&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;authors&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+                <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">[</span><span class="n">author_id2name</span><span class="p">[</span><span class="nb">id</span><span class="p">]</span> <span class="k">for</span> <span class="nb">id</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+            <span class="p">)</span>
+            <span class="n">data</span><span class="p">[</span><span class="s2">&quot;authors&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;authors&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s2">&quot;; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
             <span class="n">data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
     <span class="c1">#</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;--INFO-- Creating `authors` column</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-
     <span class="n">data</span> <span class="o">=</span> <span class="n">load_authors_names</span><span class="p">()</span>
     <span class="n">author_id2name</span> <span class="o">=</span> <span class="n">build_dict_names</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-    <span class="n">repair_names</span><span class="p">(</span><span class="n">author_id2name</span><span class="p">)</span>
+    <span class="n">repair_names</span><span class="p">(</span><span class="n">author_id2name</span><span class="p">,</span> <span class="n">disable_progress_bar</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">_process__source_abbr__column</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
@@ -1508,7 +1571,7 @@
         <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="s2">&quot;source_abbr&quot;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
             <span class="n">data</span><span class="o">.</span><span class="n">source_abbr</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">source_abbr</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
-            <span class="n">data</span><span class="o">.</span><span class="n">source_abbr</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">source_abbr</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+            <span class="n">data</span><span class="o">.</span><span class="n">source_abbr</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">source_abbr</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="n">data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 
@@ -1570,7 +1633,7 @@
             <span class="n">raw_index_keywords</span> <span class="o">=</span> <span class="n">raw_index_keywords</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
                 <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">[]</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="k">else</span> <span class="n">x</span>
             <span class="p">)</span>
-            <span class="n">data</span><span class="o">.</span><span class="n">raw_keywords</span> <span class="o">=</span> <span class="n">raw_author_keywords</span> <span class="o">+</span> <span class="n">raw_index_keywords</span>
+            <span class="n">data</span><span class="p">[</span><span class="s2">&quot;raw_keywords&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">raw_author_keywords</span> <span class="o">+</span> <span class="n">raw_index_keywords</span>
             <span class="n">data</span><span class="o">.</span><span class="n">raw_keywords</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">raw_keywords</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
             <span class="n">data</span><span class="o">.</span><span class="n">raw_keywords</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">raw_keywords</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span> <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="p">[]</span> <span class="k">else</span> <span class="n">x</span><span class="p">)</span>
             <span class="n">data</span><span class="o">.</span><span class="n">raw_keywords</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">raw_author_keywords</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
@@ -1862,8 +1925,8 @@
             <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
                 <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">file_name</span><span class="p">),</span>
                 <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">,</span>
-                <span class="n">error_bad_lines</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                <span class="n">warn_bad_lines</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="n">on_bad_lines</span><span class="o">=</span><span class="s2">&quot;skip&quot;</span><span class="p">,</span>
+                <span class="c1"># warn_bad_lines=True,</span>
             <span class="p">)</span>
         <span class="p">)</span>
 
