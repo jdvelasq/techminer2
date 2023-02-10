@@ -118,7 +118,7 @@ def import_scopus_files(
     _process__source_name__column(directory)
     _process__global_references__column(directory)
     #
-    _create__authors__column(directory)
+    _create__authors__column(directory, disable_progress_bar)
     _create__num_authors__column(directory)
     _create__article__column(directory)
     #
@@ -624,6 +624,7 @@ def _create_referneces_from_references_csv_file(directory, disable_progress_bar=
 
                     if title in text:
                         thesaurus[key] = article
+                        # ***
                         references.found[references.article == article] = True
 
             pbar.update(1)
@@ -1274,7 +1275,7 @@ def _complete__source_abbr__column(directory):
         data.to_csv(file, sep=",", encoding="utf-8", index=False)
 
 
-def _create__authors__column(directory):
+def _create__authors__column(directory, disable_progress_bar):
     #
     def load_authors_names():
         files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
@@ -1317,22 +1318,26 @@ def _create__authors__column(directory):
         return author_id2name
 
     #
-    def repair_names(author_id2name):
+    def repair_names(author_id2name, disable_progress_bar):
         files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
-        for file in files:
-            data = pd.read_csv(file, encoding="utf-8")
-            data = data.assign(authors=data.authors_id.copy())
-            data = data.assign(authors=data.authors.str.replace(";", "; "))
-            for author_id, author in author_id2name.items():
-                data = data.assign(authors=data.authors.str.replace(author_id, author))
-            data.to_csv(file, sep=",", encoding="utf-8", index=False)
+        total_items = len(files) * len(author_id2name)
+        with tqdm(total=total_items, disable=disable_progress_bar) as pbar:
+            for file in files:
+                data = pd.read_csv(file, encoding="utf-8")
+                data = data.assign(authors=data.authors_id.copy())
+                data = data.assign(authors=data.authors.str.replace(";", "; "))
+                for author_id, author in author_id2name.items():
+                    data = data.assign(
+                        authors=data.authors.str.replace(author_id, author)
+                    )
+                    pbar.update(1)
+                data.to_csv(file, sep=",", encoding="utf-8", index=False)
 
     #
     sys.stdout.write("--INFO-- Creating `authors` column\n")
-
     data = load_authors_names()
     author_id2name = build_dict_names(data)
-    repair_names(author_id2name)
+    repair_names(author_id2name, disable_progress_bar)
 
 
 def _process__source_abbr__column(directory):
