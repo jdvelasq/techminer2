@@ -117,6 +117,8 @@ def _write_report(criterion, file_name, use_textwrap, directory, records):
     ) as out_file:
         counter = 0
 
+        text_article=""
+
         for _, row in records.iterrows():
             if use_textwrap:
                 if not pd.isna(row["article"]):
