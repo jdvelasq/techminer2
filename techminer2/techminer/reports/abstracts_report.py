@@ -15,14 +15,6 @@ Abstracts Report
 ... )
 
 
-# >>> tm2__abstracts_report(
-# ...     criterion="author_keywords",
-# ...     custom_topics=["blockchain" ,"regtech"],
-# ...     n_abstracts=10,    
-# ...     directory=directory,
-# ... )
-
-
 """
 import os.path
 import textwrap
@@ -36,7 +28,6 @@ def abstracts_report(
     criterion=None,
     custom_topics=None,
     file_name="abstracts_report.txt",
-    # n_abstracts=10,
     use_textwrap=True,
     directory="./",
     database="documents",
@@ -117,7 +108,7 @@ def _write_report(criterion, file_name, use_textwrap, directory, records):
     ) as out_file:
         counter = 0
 
-        text_article=""
+        text_article = ""
 
         for _, row in records.iterrows():
             if use_textwrap:
