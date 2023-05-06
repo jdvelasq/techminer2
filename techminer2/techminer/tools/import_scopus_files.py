@@ -91,6 +91,7 @@ def import_scopus_files(
 ):
     """Import Scopus files."""
 
+    _check_raw_keywords_len(directory)
     _create_working_directories(directory)
     _create_ignore_file(directory)
     _create_database_files(directory)
@@ -159,6 +160,46 @@ def import_scopus_files(
 
     sys.stdout.write("--INFO-- Process finished!!!\n")
     _report_records(directory)
+
+
+def _check_raw_keywords_len(directory):
+    folders = os.listdir(os.path.join(directory, "raw"))
+    folders = [f for f in folders if os.path.isdir(os.path.join(directory, "raw", f))]
+    for folder in folders:
+        path = os.path.join(directory, "raw", folder)
+        files = [f for f in os.listdir(path) if f.endswith(".csv")]
+        if len(files) == 0:
+            raise FileNotFoundError(f"No CSV files found in {path}")
+        for file_name in files:
+            raw_df = pd.read_csv(
+                os.path.join(path, file_name),
+                encoding="utf-8",
+                on_bad_lines="skip",
+            )
+
+            for column in ["Author Keywords", "Index Keywords"]:
+                if column in raw_df.columns:
+                    keywords = raw_df[column].dropna()
+                    keywords = keywords[keywords.map(lambda x: isinstance(x, str))]
+                    keywords = keywords.str.split(";")
+                    keywords = keywords.explode()
+                    keywords = keywords.reset_index(drop=True)
+                    keywords = keywords.str.strip()
+                    keywords = keywords[keywords.str.len() > 50]
+
+                    if len(keywords):
+                        newindex = keywords.str.len().sort_values(ascending=False).index
+                        keywords = keywords.reindex(newindex)
+                        for keyword in keywords:
+                            raw_df[column] = raw_df[column].replace(
+                                keyword, keyword.replace(",", ";")
+                            )
+
+                        raw_df.to_csv(
+                            os.path.join(path, file_name),
+                            encoding="utf-8",
+                            index=False,
+                        )
 
 
 def _repair_authors_id(directory):
