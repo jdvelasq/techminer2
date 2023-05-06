@@ -27,7 +27,7 @@ The following fnctions operate on a thesaurus.
             apply_thesaurus
 
             
-    * Operations over thesaurus files:
+    * **Operations over thesaurus files**:
 
         .. toctree::
             find_string
@@ -39,5 +39,7 @@ The following fnctions operate on a thesaurus.
             find_abbreviations
         
 
+        .. toctree::
+            misspelling_search
 
 

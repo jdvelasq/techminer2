@@ -9,3 +9,4 @@ from .create_thesaurus import create_thesaurus
 from .find_abbreviations import find_abbreviations
 from .find_string import find_string
 from .fuzzy_search import fuzzy_search
+from .misspelling_search import misspelling_search
