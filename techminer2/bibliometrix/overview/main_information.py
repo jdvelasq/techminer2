@@ -573,7 +573,7 @@ def main_information(
 ):
     """Returns main statistics of the dataset."""
 
-    main_information = _MainInformation(
+    obj = _MainInformation(
         directory=directory,
         database=database,
         start_year=start_year,
@@ -582,7 +582,7 @@ def main_information(
     )
 
     results = _Results()
-    results.table_ = main_information.report_
-    results.plot_ = make_plot(main_information.report_)
+    results.table_ = obj.report_
+    results.plot_ = make_plot(obj.report_)
 
     return results
