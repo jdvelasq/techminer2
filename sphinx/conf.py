@@ -34,8 +34,8 @@ extensions = [
     "sphinx.ext.napoleon",
     "sphinx.ext.todo",
     "sphinx.ext.viewcode",
-    "sphinx_toggleprompt",
     "sphinx_copybutton",
+    "sphinx_toggleprompt",
     "nbsphinx",
     "sphinx.ext.imgmath",
 ]
