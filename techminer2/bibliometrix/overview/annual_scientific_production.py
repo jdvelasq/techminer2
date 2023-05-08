@@ -16,13 +16,13 @@ Annual Scientific Production
 
     
 >>> r.table_.head()
-year
-2016     1
-2017     4
-2018     3
-2019     6
-2020    14
-Name: OCC, dtype: int64
+      OCC  cum_OCC
+year              
+2016    1        1
+2017    4        5
+2018    3        8
+2019    6       14
+2020   14       28
 
 """
 from dataclasses import dataclass
@@ -54,7 +54,7 @@ def annual_scientific_production(
     )
 
     results = _Results()
-    results.table_ = indicators["OCC"]
+    results.table_ = indicators[["OCC", "cum_OCC"]]
     results.plot_ = time_plot(
         indicators,
         metric="OCC",
