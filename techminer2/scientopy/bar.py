@@ -168,15 +168,22 @@ def bar(
 
 
 def _filter_indicators_by_custom_topics(indicators, topics_length, custom_topics):
-    indicators = indicators.copy()
+    # Copy the indicators dataframe to avoid mutating the original dataframe.
+    indicators_copy = indicators.copy()
+
+    # If custom topics are provided, only keep indicators that are in the custom
+    # topics list.
     if custom_topics is not None:
         custom_topics = [
             topic for topic in custom_topics if topic in indicators.index.tolist()
         ]
+    # If no custom topics are provided, keep the first n rows of the indicators
+    # dataframe, where n is the number of topics.
     else:
         custom_topics = indicators.index.copy()
         custom_topics = custom_topics[:topics_length]
 
-    indicators = indicators.loc[custom_topics, :]
+    # Filter the indicators dataframe by the custom topics.
+    indicators_copy = indicators_copy.loc[custom_topics, :]
 
-    return indicators
+    return indicators_copy

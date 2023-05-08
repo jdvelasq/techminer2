@@ -1,36 +1,50 @@
 def load_thesaurus_as_dict(filename):
-    #
-    dic = {}
-    key = None
-    values = None
-    #
-    file = open(filename, "r", encoding="utf-8")
-    for word in file:
-        word = word.replace("\n", "")
-        if len(word.strip()) == 0:
-            continue
-        if len(word) > 0:
-            if word[0] != " ":
-                if key is not None:
-                    if not values:
-                        raise Exception(
-                            "Key '"
-                            + key
-                            + "' in file '"
-                            + filename
-                            + "' without values associated"
+    """
+    Loads thesaurus data from a text file and returns a dictionary.
+
+    Parameters:
+        filename (str): The name of the file containing the thesaurus data.
+
+    Returns:
+        A dictionary object containing the thesaurus data.
+    """
+
+    thesaurus_dict = {}
+    current_key = None
+    current_values = None
+
+    with open(filename, "r", encoding="utf-8") as file:
+        for line in file:
+            line = line.strip()
+
+            if not line:
+                continue
+
+            # Check for a new key-value pair
+            if not line.startswith(" "):
+                # If we already have a key, add it to the dictionary
+                if current_key is not None:
+                    if not current_values:
+                        raise ValueError(
+                            f"Key '{current_key}' in file '{filename}' has no associated values."
                         )
-                    dic[key] = values
-                key = word.strip()
-                values = []
+
+                    thesaurus_dict[current_key] = current_values
+                    current_values = []
+
+                # Update the current key
+                current_key = line
             else:
-                if values is not None and len(word.strip()) > 0:
-                    values.append(word.strip())
-    # checks the exit
-    if key not in dic.keys():
-        if values == []:
-            raise Exception(
-                "Key '" + key + "' in file '" + filename + "' without values associated"
+                # Add a value to the current key
+                current_values.append(line)
+
+    # Add the last key-value pair
+    if current_key not in thesaurus_dict:
+        if not current_values:
+            raise ValueError(
+                f"Key '{current_key}' in file '{filename}' has no associated values."
             )
-        dic[key] = values
-    return dic
+
+        thesaurus_dict[current_key] = current_values
+
+    return thesaurus_dict

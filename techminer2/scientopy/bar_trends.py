@@ -175,7 +175,6 @@ def bar_trends(
 
 
 def _make_plot(indicators, criterion, col0, col1, title):
-
     fig = px.bar(
         indicators,
         x="Num Documents",
