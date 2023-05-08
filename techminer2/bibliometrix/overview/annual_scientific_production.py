@@ -25,9 +25,9 @@ year
 Name: OCC, dtype: int64
 
 """
+from dataclasses import dataclass
 from ..._lib._time_plot import time_plot
 from ...techminer.indicators.indicators_by_year import indicators_by_year
-from dataclasses import dataclass
 
 
 @dataclass(init=False)
