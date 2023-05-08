@@ -15,13 +15,15 @@ Average Citations per Year
     <iframe src="../../_static/bibliometrix__average_citations_per_year.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> r.table_.head()    
-year
-2016    30.000000
-2017    40.500000
-2018    60.666667
-2019     7.833333
-2020     6.642857
-Name: mean_global_citations, dtype: float64
+      local_citations  ...  mean_local_citations_per_year
+year                   ...                               
+2016              0.0  ...                           0.00
+2017              3.0  ...                           0.11
+2018             30.0  ...                           1.67
+2019             19.0  ...                           0.63
+2020             29.0  ...                           0.52
+<BLANKLINE>
+[5 rows x 9 columns]
 
 """
 from dataclasses import dataclass
@@ -53,7 +55,9 @@ def average_citations_per_year(
     )
 
     results = _Results()
-    results.table_ = indicators["mean_global_citations"]
+    results.table_ = indicators[
+        [col for col in indicators.columns if col not in ["OCC", "cum_OCC"]]
+    ]
     results.plot_ = time_plot(
         indicators,
         metric="mean_global_citations",
