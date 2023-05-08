@@ -1,12 +1,12 @@
-"""
-Main information
+"""Main information
 ===============================================================================
 
 
 >>> directory = "data/regtech/"
 
 >>> from techminer2 import bibliometrix
->>> bibliometrix.overview.main_information(directory)
+>>> result = bibliometrix.overview.main_information(directory)
+>>> result.table_
                                                             Value
 Category       Item                                              
 GENERAL        Timespan                                 2016:2023
@@ -43,6 +43,14 @@ KEYWORDS       Raw author keywords                            149
                Cleaned index keywords                         150
 
 
+               
+>>> file_name = "sphinx/_static/bibliometrix__main_info_plot.html"               
+>>> result.plot_.write_html(file_name)
+
+.. raw:: html
+
+    <iframe src="../../_static/bibliometrix__main_info_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
+
 
 """
 import datetime
@@ -51,6 +59,14 @@ import numpy as np
 import pandas as pd
 
 from ..._read_records import read_records
+from dataclasses import dataclass
+import plotly.graph_objects as go
+
+
+@dataclass(init=False)
+class _Results:
+    table__ = None
+    plot_ = None
 
 
 class _MainInformation:
@@ -372,7 +388,6 @@ class _MainInformation:
         return round(n_records / n_authors, 2)
 
     def collaboration_index(self):
-
         records = self.records[["authors", "num_authors"]].copy()
         records = records.dropna()
         records = records[records.num_authors > 1]
@@ -501,6 +516,54 @@ class _MainInformation:
             return 0
 
 
+from plotly.subplots import make_subplots
+
+
+def make_plot(report):
+    def add_text_trace(fig, category, caption, row, col):
+        text = (
+            f'<span style="font-size: 8px;">{caption}</span><br>'
+            f'<br><span style="font-size: 20px;">'
+            f"{report.loc[(category, caption)].values[0]}</span>"
+        )
+
+        fig.add_trace(
+            go.Scatter(
+                x=[0.5],
+                y=[0.5],
+                text=[text],
+                mode="text",
+            ),
+            row=row,
+            col=col,
+        )
+        fig.update_xaxes(visible=False, row=row, col=col)
+        fig.update_yaxes(visible=False, row=row, col=col)
+
+    fig = make_subplots(rows=4, cols=3)
+
+    add_text_trace(fig, "GENERAL", "Timespan", 1, 1)
+    add_text_trace(fig, "GENERAL", "Sources", 1, 2)
+    add_text_trace(fig, "GENERAL", "Documents", 1, 3)
+
+    add_text_trace(fig, "GENERAL", "Annual growth rate %", 2, 1)
+    add_text_trace(fig, "AUTHORS", "Authors", 2, 2)
+    add_text_trace(fig, "AUTHORS", "Authors of single-authored documents", 2, 3)
+
+    add_text_trace(fig, "AUTHORS", "International co-authorship %", 3, 1)
+    add_text_trace(fig, "AUTHORS", "Co-authors per document", 3, 2)
+    add_text_trace(fig, "KEYWORDS", "Raw author keywords", 3, 3)
+
+    add_text_trace(fig, "GENERAL", "References", 4, 1)
+    add_text_trace(fig, "GENERAL", "Document average age", 4, 2)
+    add_text_trace(fig, "GENERAL", "Average citations per document", 4, 3)
+
+    fig.update_layout(showlegend=False)
+    fig.update_layout(title="Main Information")
+
+    return fig
+
+
 def main_information(
     directory="./",
     database="documents",
@@ -517,4 +580,9 @@ def main_information(
         end_year=end_year,
         **filters,
     )
-    return main_information.report_
+
+    results = _Results()
+    results.table_ = main_information.report_
+    results.plot_ = make_plot(main_information.report_)
+
+    return results
