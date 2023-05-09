@@ -25,6 +25,34 @@ year                   ...
 <BLANKLINE>
 [5 rows x 9 columns]
 
+>>> print(r.prompt_)
+Act as a researcher. Analyze the following table, 
+which provides data corresponding to the average citations per year of a 
+bibliographic dataset. 
+<BLANKLINE>
+Column 'OCC' is the number of documents published in 
+a given year. Column 'cum_OCC' is the cumulative number of documents 
+published up to a given year. The information in the table is used to create 
+a line plot.
+<BLANKLINE>
+|   year |   mean_global_citations |
+|-------:|------------------------:|
+|   2016 |                30       |
+|   2017 |                40.5     |
+|   2018 |                60.6667  |
+|   2019 |                 7.83333 |
+|   2020 |                 6.64286 |
+|   2021 |                 2.7     |
+|   2022 |                 1.83333 |
+|   2023 |                 0       |
+<BLANKLINE>
+Write a clear and concise paragraph describing the main findings and any 
+important trends or patterns you notice. 
+<BLANKLINE>
+Limit your description to a paragraph with no more than 250 words.    
+<BLANKLINE>
+
+
 """
 from dataclasses import dataclass
 from ..._lib._time_plot import time_plot
@@ -35,6 +63,7 @@ from ...techminer.indicators.indicators_by_year import indicators_by_year
 class _Results:
     table_ = None
     plot_ = None
+    prompt_ = None
 
 
 def average_citations_per_year(
@@ -55,13 +84,29 @@ def average_citations_per_year(
     )
 
     results = _Results()
-    results.table_ = indicators[
-        [col for col in indicators.columns if col not in ["OCC", "cum_OCC"]]
-    ]
+
+    results.table_ = indicators.drop(columns=["OCC", "cum_OCC"])
     results.plot_ = time_plot(
         indicators,
         metric="mean_global_citations",
         title="Average Citations per Year",
     )
+
+    results.prompt_ = f"""Act as a researcher. Analyze the following table, 
+which provides data corresponding to the average citations per year of a 
+bibliographic dataset. 
+
+Column 'OCC' is the number of documents published in 
+a given year. Column 'cum_OCC' is the cumulative number of documents 
+published up to a given year. The information in the table is used to create 
+a line plot.
+
+{results.table_[["mean_global_citations"]].to_markdown()}
+
+Write a clear and concise paragraph describing the main findings and any 
+important trends or patterns you notice. 
+
+Limit your description to a paragraph with no more than 250 words.    
+"""
 
     return results
