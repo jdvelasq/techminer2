@@ -7,14 +7,38 @@ Sources' Production over Time
 >>> file_name = "sphinx/_static/bibliometrix__sources_production_over_time.html"
 
 >>> from techminer2 import bibliometrix
->>> bibliometrix.sources.sources_production_over_time(
+>>> r = bibliometrix.sources.sources_production_over_time(
 ...    topics_length=10,
 ...    directory=directory,
-... ).plot_.write_html(file_name)
+... )
+>>> r.plot_.write_html(file_name)
 
 .. raw:: html
 
     <iframe src="../../_static/bibliometrix__sources_production_over_time.html" height="600px" width="100%" frameBorder="0"></iframe>
+
+>>> r.documents_per_source_.head()
+          source_abbr  ...                             doi
+0         TECHNOL SOC  ...   10.1016/J.TECHSOC.2022.102150
+1  RES INT BUS FINANC  ...     10.1016/J.RIBAF.2022.101868
+2            COMPUTER  ...         10.1109/MC.2022.3176693
+3     FINANCIAL INNOV  ...      10.1186/S40854-021-00313-6
+4       J CORP FINANC  ...  10.1016/J.JCORPFIN.2022.102276
+<BLANKLINE>
+[5 rows x 7 columns]
+
+
+>>> r.production_per_year_.head()
+                            OCC  ...  local_citations_per_year
+source_abbr           year       ...                          
+ACM INT CONF PROC SER 2021    1  ...                     0.000
+ADELAIDE LAW REV      2020    1  ...                     0.250
+ADV INTELL SYS COMPUT 2021    1  ...                     0.333
+CEUR WORKSHOP PROC    2020    1  ...                     0.750
+COMPUTER              2022    1  ...                     0.000
+<BLANKLINE>
+[5 rows x 7 columns]
+
 
 """
 from dataclasses import dataclass
