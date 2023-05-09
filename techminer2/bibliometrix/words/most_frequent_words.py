@@ -8,19 +8,21 @@ Most Frequent Words
 >>> file_name = "sphinx/_static/bibliometrix__most_frequent_words.html"
 
 >>> from techminer2 import bibliometrix
->>> bibliometrix.words.most_frequent_words(
+>>> r = bibliometrix.words.most_frequent_words(
 ...     criterion="author_keywords",
 ...     directory=directory,
 ...     topics_length=20,
 ...     plot="cleveland",
 ...     database="documents",
-... ).write_html(file_name)
+... )
+>>> r.plot_.write_html(file_name)
 
 .. raw:: html
 
     <iframe src="../../../_static/bibliometrix__most_frequent_words.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
+>>> r.table_.head()
 
 
 """
