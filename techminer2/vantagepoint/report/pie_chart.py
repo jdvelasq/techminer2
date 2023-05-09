@@ -50,4 +50,4 @@ def pie_chart(
         title=title,
         plot="pie",
         **filters,
-    )
+    ).plot_
