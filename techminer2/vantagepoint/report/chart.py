@@ -1,5 +1,5 @@
 """Most frequent items in a databases"""
-
+from dataclasses import dataclass
 from ..._plots.bar_plot import bar_plot
 from ..._plots.cleveland_plot import cleveland_plot
 from ..._plots.column_plot import column_plot
@@ -8,6 +8,12 @@ from ..._plots.pie_plot import pie_plot
 from ..._plots.treemap_plot import treemap_plot
 from ...techminer.indicators.indicators_by_topic import indicators_by_topic
 from .word_cloud import word_cloud
+
+
+@dataclass(init=False)
+class _Results:
+    table_ = None
+    plot_ = None
 
 
 def chart(
@@ -79,8 +85,12 @@ def chart(
         "wordcloud": word_cloud,
     }[plot]
 
-    return plot_function(
+    result = _Results()
+    result.table_ = indicators[metric]
+    result.plot_ = plot_function(
         dataframe=indicators,
         metric=metric,
         title=title,
     )
+
+    return result
