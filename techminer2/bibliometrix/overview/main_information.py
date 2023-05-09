@@ -56,8 +56,7 @@ KEYWORDS       Raw author keywords                            149
     
 >>> print(r.prompt_)
 <BLANKLINE>
-As a researcher, please provide a clear paragraph describing the main characteristics 
-of the dataset using the following table as a guide:
+Imagine that you are a researcher analyzing a bibliographic dataset. The table below provides data on the main characteristics of the dataset. Use the the information in the table to draw conclusions. Limit your description to one paragraph with no more than 250 words.
 <BLANKLINE>
 |                                                        | Value     |
 |:-------------------------------------------------------|:----------|
@@ -94,8 +93,8 @@ of the dataset using the following table as a guide:
 | ('KEYWORDS', 'Raw index keywords')                     | 155       |
 | ('KEYWORDS', 'Cleaned index keywords')                 | 150       |
 <BLANKLINE>
-Limit your description to no more than 250 words.
 <BLANKLINE>
+
 
     
 """
@@ -607,14 +606,14 @@ def make_plot(report):
 def make_chatpgt_prompt(report):
     report = report.copy()
     prompt = f"""
-As a researcher, please provide a clear paragraph describing the main characteristics 
-of the dataset using the following table as a guide:
+Imagine that you are a researcher analyzing a bibliographic dataset. The table \
+below provides data on the main characteristics of the dataset. Use the the \
+information in the table to draw conclusions. Limit your description to one \
+paragraph with no more than 250 words.
 
 {report.to_markdown()}
 
-Limit your description to no more than 250 words.
 """
-
     return prompt
 
 

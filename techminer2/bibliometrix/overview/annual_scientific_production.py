@@ -26,12 +26,8 @@ year
 
 
 >>> print(r.prompt_)
-Act as a researcher. Analyze the following table, 
-which provides data corresponding to the annual scientific production of a 
-bibliographic dataset. Column 'OCC' is the number of documents published in 
-a given year. Column 'cum_OCC' is the cumulative number of documents 
-published up to a given year. The information in the table is used to create 
-a line plot.
+<BLANKLINE>
+Imagine that you are a researcher analyzing a bibliographic dataset. The table below provides data on the annual scientific production. Use the table to draw conclusions about annual research productivity and the cumulative productivity. The column 'OCC' is the number of documents published in a given year. The column 'cum_OCC' is the cumulative number of documents published up to a given year. The information in the table is used to create a line plot of number of publications per year. In your analysis, be sure to describe in a clear and concise way, any trends or patterns you observe, and identify any outliers or anomalies in the data. Limit your description to one paragraph with no more than 250 words.
 <BLANKLINE>
 |   year |   OCC |   cum_OCC |
 |-------:|------:|----------:|
@@ -44,10 +40,6 @@ a line plot.
 |   2022 |    12 |        50 |
 |   2023 |     2 |        52 |
 <BLANKLINE>
-Write a clear and concise paragraph describing the main findings and any 
-important trends or patterns you notice. 
-<BLANKLINE>
-Limit your description to a paragraph with no more than 250 words.    
 <BLANKLINE>
 
 
@@ -89,19 +81,20 @@ def annual_scientific_production(
         metric="OCC",
         title="Annual Scientific Production",
     )
-    results.prompt_ = f"""Act as a researcher. Analyze the following table, 
-which provides data corresponding to the annual scientific production of a 
-bibliographic dataset. Column 'OCC' is the number of documents published in 
-a given year. Column 'cum_OCC' is the cumulative number of documents 
-published up to a given year. The information in the table is used to create 
-a line plot.
+    results.prompt_ = f"""
+Imagine that you are a researcher analyzing a bibliographic dataset. The table \
+below provides data on the annual scientific production. Use the table to draw \
+conclusions about annual research productivity and the cumulative productivity. \
+The column 'OCC' is the number of documents published in a given year. The \
+column 'cum_OCC' is the cumulative number of documents published up to a given \
+year. The information in the table is used to create a line plot of number of \
+publications per year. In your analysis, be sure to describe in a clear and \
+concise way, any trends or patterns you observe, and identify any outliers or \
+anomalies in the data. Limit your description to one paragraph with no more than \
+250 words.
 
 {results.table_.to_markdown()}
 
-Write a clear and concise paragraph describing the main findings and any 
-important trends or patterns you notice. 
-
-Limit your description to a paragraph with no more than 250 words.    
 """
 
     return results

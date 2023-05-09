@@ -26,7 +26,7 @@ Average Citations per Year
 
 >>> print(r.plot_prompt_)
 <BLANKLINE>
-Imagine that you are a researcher analyzing a bibliographic dataset. The table below provides data on the average citations per year of the dataset. Use the the information in the table to draw conclusions about the impact per year. In your analysis, be sure to describe in a clear and concise way, any trends or patterns you observe, and identify any outliers or anomalies in the data. Limit your description to a paragraph with no more than 250 words.
+Imagine that you are a researcher analyzing a bibliographic dataset. The table below provides data on the average citations per year of the dataset. Use the the information in the table to draw conclusions about the impact per year. In your analysis, be sure to describe in a clear and concise way, any trends or patterns you observe, and identify any outliers or anomalies in the data. Limit your description to one paragraph with no more than 250 words.
 <BLANKLINE>
 |   year |   mean_global_citations |
 |-------:|------------------------:|
@@ -88,7 +88,7 @@ below provides data on the average citations per year of the dataset. Use the \
 the information in the table to draw conclusions about the impact per year. \
 In your analysis, be sure to describe in a clear and concise way, any trends \
 or patterns you observe, and identify any outliers or anomalies in the data. \
-Limit your description to a paragraph with no more than 250 words.
+Limit your description to one paragraph with no more than 250 words.
 
 {results.table_[["mean_global_citations"]].to_markdown()}
 
