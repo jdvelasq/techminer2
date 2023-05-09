@@ -1,6 +1,7 @@
 """Make impact indicators plot."""
 
 import textwrap
+from dataclasses import dataclass
 
 from .._px.bar_px import bar_px
 from .._px.cleveland_px import cleveland_px
@@ -8,6 +9,13 @@ from .._px.column_px import column_px
 from .._px.line_px import line_px
 from .._px.pie_px import pie_px
 from ..techminer.indicators.impact_indicators_by_topic import impact_indicators_by_topic
+
+
+@dataclass(init=False)
+class _Results:
+    table_ = None
+    plot_ = None
+
 
 TEXTLEN = 40
 
@@ -70,12 +78,16 @@ def _impact(
         "cleveland": cleveland_px,
     }[plot]
 
-    return plot_function(
+    results = _Results()
+    results.table_ = indicators
+    results.plot_ = plot_function(
         dataframe=indicators,
         x_label=impact_measure.replace("_", " ").title(),
         y_label=criterion.replace("_", " ").title(),
         title=title,
     )
+
+    return results
 
 
 def _shorten(text):
