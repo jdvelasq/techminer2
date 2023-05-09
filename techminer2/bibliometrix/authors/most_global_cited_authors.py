@@ -29,15 +29,7 @@ Name: global_citations, dtype: int64
 
 >>> print(r.prompt_)
 <BLANKLINE>
-Act as a researcher realizing a bibliometric analysis. Analyze the following 
-table, which provides data corresponding to the top 20
-authors with more global_citations in a given bibliographic dataset. 
-<BLANKLINE>
-- 'OCC' is the number of documents published.  
-<BLANKLINE>
-- 'local_citations' are the local citations in the dataset.
-<BLANKLINE>
-- 'global_citations' are the citations received 
+Imagine that you are a researcher analyzing a bibliographic dataset. The table below provides data on top 20 cited authors with highest number of total citations in the dataset ('global_citations' column). Use the information in the table to draw conclusions about the impact and relevance of the reseach published by the authors in the dataset. In your analysis, be sure to describe in a clear and concise way, any findings or any patterns you observe, and identify any outliers or anomalies in the data. Limit your description to one paragraph with no more than 250 words.
 <BLANKLINE>
 | authors           |   global_citations |
 |:------------------|-------------------:|
@@ -62,10 +54,6 @@ authors with more global_citations in a given bibliographic dataset.
 | Brennan R         |                 14 |
 | Crane M           |                 14 |
 <BLANKLINE>
-Write a clear and concise paragraph describing the main findings and any 
-important trends or patterns you notice. 
-<BLANKLINE>
-Limit your description to a paragraph with no more than 250 words.        
 <BLANKLINE>
 <BLANKLINE>
 
@@ -86,7 +74,7 @@ def most_global_cited_authors(
 ):
     """Most global cited authors."""
 
-    return chart(
+    obj = chart(
         criterion="authors",
         directory=directory,
         database=database,
@@ -101,3 +89,24 @@ def most_global_cited_authors(
         plot=plot,
         **filters,
     )
+
+    obj.prompt_ = _create_prompt(obj.table_)
+
+    return obj
+
+
+def _create_prompt(table):
+    return f"""
+Imagine that you are a researcher analyzing a bibliographic dataset. The table \
+below provides data on top {table.shape[0]} cited authors with highest \
+number of total citations in the dataset ('global_citations' column). Use the \
+information in the table to draw conclusions about the impact and relevance of \
+the reseach published by the authors in the dataset. In your analysis, be sure \
+to describe in a clear and concise way, any findings or any patterns you \
+observe, and identify any outliers or anomalies in the data. \
+Limit your description to one paragraph with no more than 250 words.
+
+{table.to_markdown()}
+
+
+"""
