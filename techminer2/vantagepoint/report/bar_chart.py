@@ -51,4 +51,4 @@ def bar_chart(
         title=title,
         plot="bar",
         **filters,
-    )
+    ).plot_
