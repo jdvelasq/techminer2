@@ -40,13 +40,21 @@ COMPUTER              2022    1  ...                     0.000
 [5 rows x 7 columns]
 
 >>> print(r.prompt_)
-Act as a researcher. Analyze a timeline plot build with the 
-following table, which provides data corresponding to the top 10 sources 
-with more documnets in a given bibliographic dataset. 
 <BLANKLINE>
-Column 'OCC' is the number of documents published in a given year by the source. 
-Column 'Year' is the year of publication.
-Column 'Source Abbr' is the source abbreviation.
+Act as a researcher realizing a bibliometric analysis. Analyze a timeline plot
+build with the following table, which provides data corresponding to the top 10
+sources with more documnets in a given bibliographic dataset. 
+<BLANKLINE>
+- Column 'OCC' is the number of documents published in a given year by the 
+  current source. 
+<BLANKLINE>
+- Column 'Year' is the year of publication.
+<BLANKLINE>
+- Column 'Source Abbr' is the source abbreviation.
+<BLANKLINE>
+- Numbers separated by a colon (:) are the total number of documents published
+  the total number of citations received by the current source during the 
+  period of analysis.
 <BLANKLINE>
 | Source Abbr                              |   OCC |   Year |
 |:-----------------------------------------|------:|-------:|
@@ -68,7 +76,6 @@ important trends or patterns you notice.
 <BLANKLINE>
 Limit your description to a paragraph with no more than 250 words.    
 <BLANKLINE>
-
 
 """
 from dataclasses import dataclass
@@ -135,16 +142,23 @@ def sources_production_over_time(
     prompt_table = results.table_[
         ["source_abbr".replace("_", " ").title(), "OCC", "Year"]
     ]
-    # prompt_table = prompt_table.reset_index()
     prompt_table = prompt_table.set_index("source_abbr".replace("_", " ").title())
 
-    results.prompt_ = f"""Act as a researcher. Analyze a timeline plot build with the 
-following table, which provides data corresponding to the top {topics_length} sources 
-with more documnets in a given bibliographic dataset. 
+    results.prompt_ = f"""
+Act as a researcher realizing a bibliometric analysis. Analyze a timeline plot
+build with the following table, which provides data corresponding to the top {topics_length}
+sources with more documnets in a given bibliographic dataset. 
 
-Column 'OCC' is the number of documents published in a given year by the source. 
-Column 'Year' is the year of publication.
-Column 'Source Abbr' is the source abbreviation.
+- Column 'OCC' is the number of documents published in a given year by the 
+  current source. 
+
+- Column 'Year' is the year of publication.
+
+- Column 'Source Abbr' is the source abbreviation.
+
+- Numbers separated by a colon (:) are the total number of documents published
+  the total number of citations received by the current source during the 
+  period of analysis.
 
 {prompt_table.to_markdown()}
 
