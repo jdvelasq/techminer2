@@ -7,16 +7,27 @@ Source Impact
 >>> file_name = "sphinx/_static/bibliometrix__source_impact.html"
 
 >>> from techminer2 import bibliometrix
->>> bibliometrix.sources.source_impact(
+>>> r = bibliometrix.sources.source_impact(
 ...     impact_measure='h_index',
 ...     topics_length=20, 
 ...     directory=directory,
-... ).write_html(file_name)
+... )
+>>> r.plot_.write_html(file_name)
 
 .. raw:: html
 
     <iframe src="../../_static/bibliometrix__source_impact.html" height="600px" width="100%" frameBorder="0"></iframe>
 
+
+>>> r.table_.head()
+                  Source Abbr  ...  Avg Global Citations
+0                J BANK REGUL  ...                  17.5
+1              J FINANC CRIME  ...                   6.5
+2  LECT NOTES BUS INF PROCESS  ...                   2.0
+3            ADELAIDE LAW REV  ...                   5.0
+4        J FINANCIAL DATA SCI  ...                   5.0
+<BLANKLINE>
+[5 rows x 10 columns]
 
 """
 from .._impact import _impact
