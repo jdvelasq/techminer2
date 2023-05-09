@@ -31,15 +31,7 @@ Name: OCC, dtype: int64
 
 >>> print(r.prompt_)
 <BLANKLINE>
-Act as a researcher realizing a bibliometric analysis. Analyze the following 
-table, which provides data corresponding to the top 20
-countries with more OCC in a given bibliographic dataset. 
-<BLANKLINE>
-- 'OCC' is the number of documents published.  
-<BLANKLINE>
-- 'local_citations' are the local citations in the dataset.
-<BLANKLINE>
-- 'global_citations' are the citations received 
+Imagine that you are a researcher analyzing a bibliographic dataset. The table below provides data on top 20 countries with highest number of documents published ('OCC' indicates 'occurrences'). Use the the information in the table to draw conclusions about the document production by source. In your analysis, be sure to describe in a clear and concise way, any findings or any patterns you observe, and identify any outliers or anomalies in the data. Limit your description to one paragraph with no more than 250 words.
 <BLANKLINE>
 | countries            |   OCC |
 |:---------------------|------:|
@@ -64,13 +56,7 @@ countries with more OCC in a given bibliographic dataset.
 | Ukraine              |     1 |
 | Malaysia             |     1 |
 <BLANKLINE>
-Write a clear and concise paragraph describing the main findings and any 
-important trends or patterns you notice. 
 <BLANKLINE>
-Limit your description to a paragraph with no more than 250 words.        
-<BLANKLINE>
-<BLANKLINE>
-
 
 
 """
@@ -90,7 +76,7 @@ def most_frequent_countries(
 ):
     """Plots the number of documents by country using the specified plot."""
 
-    return chart(
+    obj = chart(
         criterion="countries",
         directory=directory,
         database=database,
@@ -105,3 +91,23 @@ def most_frequent_countries(
         plot=plot,
         **filters,
     )
+
+    obj.prompt_ = _create_prompt(obj.table_)
+
+    return obj
+
+
+def _create_prompt(table):
+    return f"""
+Imagine that you are a researcher analyzing a bibliographic dataset. The table \
+below provides data on top {table.shape[0]} countries with highest \
+number of documents published ('OCC' indicates 'occurrences'). \
+Use the the information in the table to draw conclusions about the document \
+production by source. In your analysis, be sure to describe in a clear and \
+concise way, any findings or any patterns you observe, and identify any \
+outliers or anomalies in the data. Limit your description to one paragraph \
+with no more than 250 words.
+
+{table.to_markdown()}
+
+"""

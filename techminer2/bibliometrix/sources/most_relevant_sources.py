@@ -91,12 +91,12 @@ def most_relevant_sources(
         **filters,
     )
 
-    obj.prompt_ = _create_prompt("Source", obj.table_)
+    obj.prompt_ = _create_prompt(obj.table_)
 
     return obj
 
 
-def _create_prompt(criterion, table):
+def _create_prompt(table):
     return f"""
 Imagine that you are a researcher analyzing a bibliographic dataset. The table \
 below provides data on top {table.shape[0]} document sources with highest \
@@ -104,8 +104,7 @@ number of documents ('OCC' indicates 'occurrences'). Use the the information \
 in the table to draw conclusions about the document production by source. In \
 your analysis, be sure to describe in a clear and concise way, any findings or \
 any patterns you observe, and identify any outliers or anomalies in the data. \
-Limit your description to one \
-paragraph with no more than 250 words.
+Limit your description to one paragraph with no more than 250 words.
 
 {table.to_markdown()}
 
