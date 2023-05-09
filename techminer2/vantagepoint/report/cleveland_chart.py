@@ -51,4 +51,4 @@ def cleveland_chart(
         title=title,
         plot="cleveland",
         **filters,
-    )
+    ).plot_
