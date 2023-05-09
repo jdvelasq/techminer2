@@ -17,27 +17,28 @@ Bradford's Law
     <iframe src="../../_static/bibliometrix__bradford_law.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
->>> bibliometrix.sources.bradford_law(
+>>> print(bibliometrix.sources.bradford_law(
 ...     directory=directory,
-... ).source_clustering_.head(5)
-                                                    no  ...  zone
-source_abbr                                             ...      
-J BANK REGUL                                         1  ...     1
-J FINANC CRIME                                       2  ...     1
-FOSTER INNOV AND COMPET WITH FINTECH, REGTECH, ...   3  ...     1
-STUD COMPUT INTELL                                   4  ...     1
-INT CONF INF TECHNOL SYST INNOV, ICITSI - PROC       5  ...     1
-<BLANKLINE>
-[5 rows x 5 columns]
+... ).source_clustering_.head(5).to_markdown())
+| source_abbr                                                |   no |   OCC |   cum_OCC |   global_citations |   zone |
+|:-----------------------------------------------------------|-----:|------:|----------:|-------------------:|-------:|
+| J BANK REGUL                                               |    1 |     2 |         2 |                 35 |      1 |
+| J FINANC CRIME                                             |    2 |     2 |         4 |                 13 |      1 |
+| FOSTER INNOV AND COMPET WITH FINTECH, REGTECH, AND SUPTECH |    3 |     2 |         6 |                  1 |      1 |
+| STUD COMPUT INTELL                                         |    4 |     2 |         8 |                  1 |      1 |
+| INT CONF INF TECHNOL SYST INNOV, ICITSI - PROC             |    5 |     2 |        10 |                  0 |      1 |
 
->>> bibliometrix.sources.bradford_law(
+
+>>> print(bibliometrix.sources.bradford_law(
 ...     directory=directory,
-... ).core_sources_.head(5)
-   Num Sources        %  ...  Tot Documents Bradford's Group
-0            6  13.04 %  ...        23.08 %                1
-1           40  86.96 %  ...        100.0 %                3
-<BLANKLINE>
-[2 rows x 9 columns]
+... ).core_sources_.head(5).to_markdown())
+|    |   Num Sources | %       |   Acum Num Sources | % Acum   |   Documents published |   Tot Documents published |   Num Documents | Tot Documents   |   Bradford's Group |
+|---:|--------------:|:--------|-------------------:|:---------|----------------------:|--------------------------:|----------------:|:----------------|-------------------:|
+|  0 |             6 | 13.04 % |                  6 | 13.04 %  |                     2 |                        12 |              12 | 23.08 %         |                  1 |
+|  1 |            40 | 86.96 % |                 46 | 100.0 %  |                     1 |                        40 |              52 | 100.0 %         |                  3 |
+
+
+
 
 """
 from dataclasses import dataclass
@@ -226,7 +227,6 @@ def _source_clustering(
 def _bradford_law_plot(
     indicators,
 ):
-
     fig = px.line(
         indicators,
         x="no",
