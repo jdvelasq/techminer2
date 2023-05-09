@@ -50,4 +50,4 @@ def line_chart(
         title=title,
         plot="line",
         **filters,
-    )
+    ).plot_
