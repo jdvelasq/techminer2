@@ -7,15 +7,26 @@ Most Relevant Sources
 >>> file_name = "sphinx/_static/bibliometrix__most_relevant_sources.html"
 
 >>> from techminer2 import bibliometrix
->>> bibliometrix.sources.most_relevant_sources(
+>>> r = bibliometrix.sources.most_relevant_sources(
 ...     directory=directory,
 ...     topics_length=20,
 ...     plot="cleveland",
-... ).write_html(file_name)
+... )
+>>> r.plot_.write_html(file_name)
 
 .. raw:: html
 
     <iframe src="../../_static/bibliometrix__most_relevant_sources.html" height="600px" width="100%" frameBorder="0"></iframe>
+
+    
+>>> r.table_.head()
+source_abbr
+J BANK REGUL                                                  2
+J FINANC CRIME                                                2
+FOSTER INNOV AND COMPET WITH FINTECH, REGTECH, AND SUPTECH    2
+STUD COMPUT INTELL                                            2
+ROUTLEDGE HANDB OF FINANCIAL TECHNOLOGY AND LAW               2
+Name: OCC, dtype: int64
 
 """
 from ...vantagepoint.report.chart import chart

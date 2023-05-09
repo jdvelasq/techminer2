@@ -24,6 +24,34 @@ year
 2019    6       14
 2020   14       28
 
+
+>>> print(r.prompt_)
+Act as a researcher. Analyze the following table, 
+which provides data corresponding to the annual scientific production of a 
+bibliographic dataset. Column 'OCC' is the number of documents published in 
+a given year. Column 'cum_OCC' is the cumulative number of documents 
+published up to a given year. The information in the table is used to create 
+a line plot.
+<BLANKLINE>
+|   year |   OCC |   cum_OCC |
+|-------:|------:|----------:|
+|   2016 |     1 |         1 |
+|   2017 |     4 |         5 |
+|   2018 |     3 |         8 |
+|   2019 |     6 |        14 |
+|   2020 |    14 |        28 |
+|   2021 |    10 |        38 |
+|   2022 |    12 |        50 |
+|   2023 |     2 |        52 |
+<BLANKLINE>
+Write a clear and concise paragraph describing the main findings and any 
+important trends or patterns you notice. 
+<BLANKLINE>
+Limit your description to a paragraph with no more than 250 words.    
+<BLANKLINE>
+
+
+
 """
 from dataclasses import dataclass
 from ..._lib._time_plot import time_plot
@@ -34,6 +62,7 @@ from ...techminer.indicators.indicators_by_year import indicators_by_year
 class _Results:
     table_ = None
     plot_ = None
+    prompt_ = None
 
 
 def annual_scientific_production(
@@ -60,5 +89,19 @@ def annual_scientific_production(
         metric="OCC",
         title="Annual Scientific Production",
     )
+    results.prompt_ = f"""Act as a researcher. Analyze the following table, 
+which provides data corresponding to the annual scientific production of a 
+bibliographic dataset. Column 'OCC' is the number of documents published in 
+a given year. Column 'cum_OCC' is the cumulative number of documents 
+published up to a given year. The information in the table is used to create 
+a line plot.
+
+{results.table_.to_markdown()}
+
+Write a clear and concise paragraph describing the main findings and any 
+important trends or patterns you notice. 
+
+Limit your description to a paragraph with no more than 250 words.    
+"""
 
     return results

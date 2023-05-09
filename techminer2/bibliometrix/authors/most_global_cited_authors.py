@@ -6,15 +6,19 @@
 >>> file_name = "sphinx/_static/bibliometrix__most_global_cited_authors.html"
 
 >>> from techminer2 import bibliometrix
->>> bibliometrix.authors.most_global_cited_authors(
+>>> r = bibliometrix.authors.most_global_cited_authors(
 ...     directory,
 ...     topics_length=20,
 ...     plot="cleveland",
-... ).write_html(file_name)
+... )
+>>> r.plot_.write_html(file_name)
 
 .. raw:: html
 
     <iframe src="../../../_static/bibliometrix__most_global_cited_authors.html" height="600px" width="100%" frameBorder="0"></iframe>
+
+    
+>>> r.table_.head()
 
 """
 from ...vantagepoint.report.chart import chart

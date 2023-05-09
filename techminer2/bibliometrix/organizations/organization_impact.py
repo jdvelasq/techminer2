@@ -8,15 +8,19 @@ Organization Impact
 >>> file_name = "sphinx/_static/bibliometrix__organization_impact.html"
 
 >>> from techminer2 import bibliometrix
->>> bibliometrix.organizations.organization_impact(
+>>> r = bibliometrix.organizations.organization_impact(
 ...     impact_measure='h_index', 
 ...     topics_length=20, 
 ...     directory=directory,
-... ).write_html(file_name)
+... )
+>>> r.plot_.write_html(file_name)
 
 .. raw:: html
 
     <iframe src="../../../_static/bibliometrix__organization_impact.html" height="600px" width="100%" frameBorder="0"></iframe>
+
+
+>>> r.table_.head()
 
 
 """

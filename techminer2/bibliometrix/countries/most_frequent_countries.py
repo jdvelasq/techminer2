@@ -8,16 +8,20 @@ Most Frequent Countries
 
 
 >>> from techminer2 import bibliometrix
->>> bibliometrix.countries.most_frequent_countries(
+>>> r = bibliometrix.countries.most_frequent_countries(
 ...     directory,
 ...     topics_length=20,
 ...     plot="cleveland",
 ...     database="documents",
-... ).write_html(file_name)
+... )
+>>> r.plot_.write_html(file_name)
 
 .. raw:: html
 
     <iframe src="../../../_static/bibliometrix__most_frequent_countries.html" height="600px" width="100%" frameBorder="0"></iframe>
+
+>>> r.table_.head()
+
 
 """
 from ...vantagepoint.report.chart import chart

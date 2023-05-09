@@ -8,14 +8,25 @@ Most Local Cited Sources (from reference lists)
 >>> file_name = "sphinx/_static/bibliometrix__most_local_cited_sources.html"
 
 >>> from techminer2 import bibliometrix
->>> bibliometrix.sources.most_local_cited_sources(
+>>> r = bibliometrix.sources.most_local_cited_sources(
 ...     topics_length=20,
 ...     directory=directory,
-... ).write_html(file_name)
+... )
+>>> r.plot_.write_html(file_name)
 
 .. raw:: html
 
     <iframe src="../../_static/bibliometrix__most_local_cited_sources.html" height="600px" width="100%" frameBorder="0"></iframe>
+
+    
+>>> r.table_.head()
+source_abbr
+J ECON BUS                                  17
+PALGRAVE STUD DIGIT BUS ENABLING TECHNOL    14
+J BANK REGUL                                 9
+J RISK FINANC                                8
+J RISK MANG FINANCIAL INST                   5
+Name: local_citations, dtype: int64
 
 """
 from ...vantagepoint.report.chart import chart

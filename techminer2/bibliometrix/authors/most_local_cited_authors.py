@@ -10,15 +10,19 @@ Most Local Cited Authors
 
 
 >>> from techminer2 import bibliometrix
->>> bibliometrix.authors.most_local_cited_authors(
+>>> r = bibliometrix.authors.most_local_cited_authors(
 ...     topics_length=20,
 ...     directory=directory,
-... ).write_html(file_name)
+... )
+>>> r.plot_write_html(file_name)
 
 .. raw:: html
 
     <iframe src="../../../_static/bibliometrix__most_local_cited_authors.html" height="600px" width="100%" frameBorder="0"></iframe>
 
+
+>>> r.table.head()    
+    
 """
 from ...vantagepoint.report.chart import chart
 

@@ -7,15 +7,20 @@ Most Global Cited Sources
 >>> file_name = "sphinx/_static/bibliometrix__most_global_cited_sources.html"
 
 >>> from techminer2 import bibliometrix
->>> bibliometrix.sources.most_global_cited_sources(
+>>> r = bibliometrix.sources.most_global_cited_sources(
 ...     directory=directory,
 ...     topics_length=20,
 ...     plot="cleveland",
-... ).write_html(file_name)
+... )
+>>> r.plot_.write_html(file_name)
 
 .. raw:: html
 
     <iframe src="../../_static/bibliometrix__most_global_cited_sources.html" height="600px" width="100%" frameBorder="0"></iframe>
+
+    
+>>> r.table_.head()
+
 
 """
 from ...vantagepoint.report.chart import chart
