@@ -15,7 +15,6 @@ from ..techminer.indicators.impact_indicators_by_topic import impact_indicators_
 class _Results:
     table_ = None
     plot_ = None
-    prompt_ = None
 
 
 TEXTLEN = 40
@@ -61,7 +60,9 @@ def _impact(
     if topic_min_citations is not None:
         indicators = indicators[indicators["global_citations"] >= topic_min_citations]
 
-    indicators = indicators.sort_values(by=impact_measure, ascending=False)
+    indicators = indicators.sort_values(
+        by=[impact_measure, "global_citations"], ascending=[False, False]
+    )
     indicators = indicators.head(topics_length)
     indicators = indicators.reset_index()
     indicators[criterion] = indicators[criterion].apply(_shorten)
@@ -69,7 +70,17 @@ def _impact(
     column_names = {
         column: column.replace("_", " ").title() for column in indicators.columns
     }
+
     indicators = indicators.rename(columns=column_names)
+
+    indicators = indicators.rename(
+        columns={
+            "H Index": "H-Index",
+            "G Index": "G-Index",
+            "M Index": "M-Index",
+            "Occ": "OCC",
+        }
+    )
 
     plot_function = {
         "bar": bar_px,
@@ -83,28 +94,11 @@ def _impact(
     results.table_ = indicators
     results.plot_ = plot_function(
         dataframe=indicators,
-        x_label=impact_measure.replace("_", " ").title(),
+        x_label=impact_measure.replace("_", "-").title(),
         y_label=criterion.replace("_", " ").title(),
         title=title,
     )
 
-    table = results.table_.copy()
-    table = table.set_index(criterion.replace("_", " ").title())
-
-    results.prompt_ = f"""
-Act as a researcher realizing a bibliometric analysis. 
-
-The following table contains the top {topics_length} {criterion.replace("_", " ").title()} 
-with more {impact_measure.replace("_", " ").title()} in the given bibliographic dataset.
-
-{table.to_markdown()}
-
-Write a clear and concise paragraph describing the main findings and any 
-important trends or patterns you notice in the previous table. 
-
-Limit your description to a paragraph with no more than 250 words.    
-    
-"""
     return results
 
 
