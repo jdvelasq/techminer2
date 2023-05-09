@@ -39,6 +39,36 @@ COMPUTER              2022    1  ...                     0.000
 <BLANKLINE>
 [5 rows x 7 columns]
 
+>>> print(r.prompt_)
+Act as a researcher. Analyze a timeline plot build with the 
+following table, which provides data corresponding to the top 10 sources 
+with more documnets in a given bibliographic dataset. 
+<BLANKLINE>
+Column 'OCC' is the number of documents published in a given year by the source. 
+Column 'Year' is the year of publication.
+Column 'Source Abbr' is the source abbreviation.
+<BLANKLINE>
+| Source Abbr                              |   OCC |   Year |
+|:-----------------------------------------|------:|-------:|
+| J BANK REGUL 2:035                       |     1 |   2020 |
+| J BANK REGUL 2:035                       |     1 |   2021 |
+| J FINANC CRIME 2:013                     |     1 |   2020 |
+| J FINANC CRIME 2:013                     |     1 |   2022 |
+| FOSTER INNOV AND COMPET WITH FINTECH,... |     2 |   2020 |
+| STUD COMPUT INTELL 2:001                 |     2 |   2021 |
+| INT CONF INF TECHNOL SYST INNOV,...      |     2 |   2022 |
+| ROUTLEDGE HANDB OF FINANCIAL...          |     2 |   2021 |
+| J FINANCIAL DATA SCI 1:005               |     1 |   2019 |
+| J IND BUS ECON 1:001                     |     1 |   2022 |
+| PROC INT CONF ELECTRON BUS (ICEB) 1:001  |     1 |   2017 |
+| RES INT BUS FINANC 1:000                 |     1 |   2023 |
+<BLANKLINE>
+Write a clear and concise paragraph describing the main findings and any 
+important trends or patterns you notice. 
+<BLANKLINE>
+Limit your description to a paragraph with no more than 250 words.    
+<BLANKLINE>
+
 
 """
 from dataclasses import dataclass
@@ -53,6 +83,7 @@ from .._production_over_time import _production_over_time
 @dataclass(init=False)
 class _Results:
     plot_ = None
+    prompt_ = None
     production_per_year_ = None
     documents_per_source_ = None
 
@@ -69,9 +100,7 @@ def sources_production_over_time(
 ):
     """Sources production over time."""
 
-    results = _Results()
-
-    results.plot_ = _production_over_time(
+    results = _production_over_time(
         criterion="source_abbr",
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,
@@ -102,5 +131,27 @@ def sources_production_over_time(
         end_year=end_year,
         **filters,
     )
+
+    prompt_table = results.table_[
+        ["source_abbr".replace("_", " ").title(), "OCC", "Year"]
+    ]
+    # prompt_table = prompt_table.reset_index()
+    prompt_table = prompt_table.set_index("source_abbr".replace("_", " ").title())
+
+    results.prompt_ = f"""Act as a researcher. Analyze a timeline plot build with the 
+following table, which provides data corresponding to the top {topics_length} sources 
+with more documnets in a given bibliographic dataset. 
+
+Column 'OCC' is the number of documents published in a given year by the source. 
+Column 'Year' is the year of publication.
+Column 'Source Abbr' is the source abbreviation.
+
+{prompt_table.to_markdown()}
+
+Write a clear and concise paragraph describing the main findings and any 
+important trends or patterns you notice. 
+
+Limit your description to a paragraph with no more than 250 words.    
+"""
 
     return results

@@ -1,7 +1,7 @@
 """Production over time."""
 
 import textwrap
-
+from dataclasses import dataclass
 import plotly.express as px
 
 from ..techminer.indicators.indicators_by_topic import indicators_by_topic
@@ -11,6 +11,12 @@ from ..techminer.indicators.indicators_by_topic_per_year import (
 from ..vantagepoint.analyze.matrix.co_occ_matrix_list import _add_counters_to_items
 
 TEXTLEN = 40
+
+
+@dataclass(init=False)
+class _Results:
+    plot_ = None
+    table_ = None
 
 
 def _production_over_time(
@@ -116,7 +122,11 @@ def _production_over_time(
         griddash="dot",
     )
 
-    return fig
+    result = _Results()
+    result.plot_ = fig
+    result.table_ = indicators_by_year
+
+    return result
 
 
 def _compute_production_over_time(
@@ -130,7 +140,6 @@ def _compute_production_over_time(
     end_year,
     **filters,
 ):
-
     indicators_by_year = indicators_by_topic_per_year(
         criterion=criterion,
         directory=directory,
