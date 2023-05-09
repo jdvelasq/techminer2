@@ -30,15 +30,7 @@ Name: OCC, dtype: int64
 
 >>> print(r.prompt_)
 <BLANKLINE>
-Act as a researcher realizing a bibliometric analysis. Analyze the following 
-table, which provides data corresponding to the top 20
-source_abbr with more OCC in a given bibliographic dataset. 
-<BLANKLINE>
-- 'OCC' is the number of documents published.  
-<BLANKLINE>
-- 'local_citations' are the local citations in the dataset.
-<BLANKLINE>
-- 'global_citations' are the citations received 
+Imagine that you are a researcher analyzing a bibliographic dataset. The table below provides data on top 20 document sources with highest number of documents ('OCC' indicates 'occurrences'). Use the the information in the table to draw conclusions about the document production by source. In your analysis, be sure to describe in a clear and concise way, any findings or any patterns you observe, and identify any outliers or anomalies in the data. Limit your description to one paragraph with no more than 250 words.
 <BLANKLINE>
 | source_abbr                                                                                   |   OCC |
 |:----------------------------------------------------------------------------------------------|------:|
@@ -63,13 +55,8 @@ source_abbr with more OCC in a given bibliographic dataset.
 | INTELL SYST ACCOUNT FINANCE MANAG                                                             |     1 |
 | J FINANCIAL DATA SCI                                                                          |     1 |
 <BLANKLINE>
-Write a clear and concise paragraph describing the main findings and any 
-important trends or patterns you notice. 
-<BLANKLINE>
-Limit your description to a paragraph with no more than 250 words.        
 <BLANKLINE>
 <BLANKLINE>
-
 
 """
 from ...vantagepoint.report.chart import chart
@@ -88,7 +75,7 @@ def most_relevant_sources(
 ):
     """Most Relevant Sources."""
 
-    return chart(
+    obj = chart(
         criterion="source_abbr",
         directory=directory,
         database=database,
@@ -103,3 +90,24 @@ def most_relevant_sources(
         plot=plot,
         **filters,
     )
+
+    obj.prompt_ = _create_prompt("Source", obj.table_)
+
+    return obj
+
+
+def _create_prompt(criterion, table):
+    return f"""
+Imagine that you are a researcher analyzing a bibliographic dataset. The table \
+below provides data on top {table.shape[0]} document sources with highest \
+number of documents ('OCC' indicates 'occurrences'). Use the the information \
+in the table to draw conclusions about the document production by source. In \
+your analysis, be sure to describe in a clear and concise way, any findings or \
+any patterns you observe, and identify any outliers or anomalies in the data. \
+Limit your description to one \
+paragraph with no more than 250 words.
+
+{table.to_markdown()}
+
+
+"""

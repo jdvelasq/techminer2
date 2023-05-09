@@ -43,47 +43,7 @@ def chart(
         **filters,
     )
 
-    if metric == "OCC":
-        columns = []
-        ascending = []
-        if "OCC" in indicators.columns:
-            columns.append("OCC")
-            ascending.append(False)
-        if "global_citations" in indicators.columns:
-            columns.append("global_citations")
-            ascending.append(False)
-        if "local_citations" in indicators.columns:
-            columns.append("local_citations")
-            ascending.append(False)
-        indicators = indicators.sort_values(columns, ascending=ascending)
-
-    if metric == "global_citations":
-        columns = []
-        ascending = []
-        if "global_citations" in indicators.columns:
-            columns.append("global_citations")
-            ascending.append(False)
-        if "local_citations" in indicators.columns:
-            columns.append("local_citations")
-            ascending.append(False)
-        if "OCC" in indicators.columns:
-            columns.append("OCC")
-            ascending.append(False)
-        indicators = indicators.sort_values(columns, ascending=ascending)
-
-    if metric == "local_citations":
-        columns = []
-        ascending = []
-        if "local_citations" in indicators.columns:
-            columns.append("local_citations")
-            ascending.append(False)
-        if "global_citations" in indicators.columns:
-            columns.append("global_citations")
-            ascending.append(False)
-        if "OCC" in indicators.columns:
-            columns.append("OCC")
-            ascending.append(False)
-        indicators = indicators.sort_values(columns, ascending=ascending)
+    indicators = _sort_indicators(indicators, metric)
 
     if custom_topics is None:
         custom_topics = indicators.copy()
@@ -120,24 +80,41 @@ def chart(
         title=title,
     )
 
-    result.prompt_ = f"""
-Act as a researcher realizing a bibliometric analysis. Analyze the following 
-table, which provides data corresponding to the top {result.table_.shape[0]}
-{criterion} with more {metric} in a given bibliographic dataset. 
-
-- 'OCC' is the number of documents published.  
-
-- 'local_citations' are the local citations in the dataset.
-
-- 'global_citations' are the citations received 
-
-{result.table_.to_markdown()}
-
-Write a clear and concise paragraph describing the main findings and any 
-important trends or patterns you notice. 
-
-Limit your description to a paragraph with no more than 250 words.        
-    
-"""
+    # _create_prompt(criterion, metric, result)
 
     return result
+
+
+# def _create_prompt(criterion, metric, result):
+#     result.prompt_ = f"""
+# Imagine that you are a researcher analyzing a bibliographic dataset. The table \
+# below provides data on top {result.table_.shape[0]} {criterion} with highest {metric} \
+# metric. Use the the information in the table to draw conclusions \
+# about the metric. In your analysis, be sure to describe in a \
+# clear and concise way, any findings or any patterns you observe, and identify \
+# any outliers or anomalies in the data. Limit your description to one paragraph \
+# with no more than 250 words.
+
+# {result.table_.to_markdown()}
+
+
+# """
+
+
+# Sort the indicators dataframe based on the given metric (OCC, local_citations, or global_citations).
+def _sort_indicators(indicators, metric):
+    # Define the columns to sort by for each metric, and whether to sort ascending or descending.
+    if metric == "OCC":
+        columns = ["OCC", "global_citations", "local_citations"]
+        ascending = [False, False, False]
+    if metric == "global_citations":
+        columns = ["global_citations", "local_citations", "OCC"]
+        ascending = [False, False, False]
+    if metric == "local_citations":
+        columns = ["local_citations", "global_citations", "OCC"]
+        ascending = [False, False, False]
+
+    # Sort the indicators dataframe based on the given columns and sort order.
+    indicators = indicators.sort_values(columns, ascending=ascending)
+
+    return indicators

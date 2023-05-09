@@ -24,7 +24,7 @@ Average Citations per Year
 |   2020 |    14 |        28 |                29 |                 93 |               4 |                 6.64286 |                    514 |                             1.66 |                2.07143 |                    81 |                            0.52 |
 
 
->>> print(r.plot_prompt_)
+>>> print(r.prompt_)
 <BLANKLINE>
 Imagine that you are a researcher analyzing a bibliographic dataset. The table below provides data on the average citations per year of the dataset. Use the the information in the table to draw conclusions about the impact per year. In your analysis, be sure to describe in a clear and concise way, any trends or patterns you observe, and identify any outliers or anomalies in the data. Limit your description to one paragraph with no more than 250 words.
 <BLANKLINE>
@@ -53,7 +53,7 @@ from ...techminer.indicators.indicators_by_year import indicators_by_year
 class _Results:
     table_ = None
     plot_ = None
-    plot_prompt_ = None
+    prompt_ = None
 
 
 def average_citations_per_year(
@@ -76,13 +76,26 @@ def average_citations_per_year(
     results = _Results()
 
     results.table_ = indicators.copy()
-    results.plot_ = time_plot(
+    results.plot_ = _average_citations_per_year_plot(indicators)
+    results.prompt_ = _average_citations_per_year_prompt(results.table_)
+
+    return results
+
+
+def _average_citations_per_year_plot(indicators):
+    """Average citations per year plot."""
+
+    return time_plot(
         indicators,
         metric="mean_global_citations",
         title="Average Citations per Year",
     )
 
-    results.plot_prompt_ = f"""
+
+def _average_citations_per_year_prompt(table):
+    """Average citations per year prompt."""
+
+    return f"""
 Imagine that you are a researcher analyzing a bibliographic dataset. The table \
 below provides data on the average citations per year of the dataset. Use the \
 the information in the table to draw conclusions about the impact per year. \
@@ -90,8 +103,6 @@ In your analysis, be sure to describe in a clear and concise way, any trends \
 or patterns you observe, and identify any outliers or anomalies in the data. \
 Limit your description to one paragraph with no more than 250 words.
 
-{results.table_[["mean_global_citations"]].to_markdown()}
+{table[["mean_global_citations"]].to_markdown()}
 
 """
-
-    return results

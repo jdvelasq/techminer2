@@ -81,7 +81,15 @@ def annual_scientific_production(
         metric="OCC",
         title="Annual Scientific Production",
     )
-    results.prompt_ = f"""
+    results.prompt_ = _annual_scientific_production_prompt(results.table_)
+
+    return results
+
+
+def _annual_scientific_production_prompt(table):
+    """Generates the prompt for annual_scientific_production."""
+
+    prompt = f"""
 Imagine that you are a researcher analyzing a bibliographic dataset. The table \
 below provides data on the annual scientific production. Use the table to draw \
 conclusions about annual research productivity and the cumulative productivity. \
@@ -93,8 +101,8 @@ concise way, any trends or patterns you observe, and identify any outliers or \
 anomalies in the data. Limit your description to one paragraph with no more than \
 250 words.
 
-{results.table_.to_markdown()}
+{table.to_markdown()}
 
 """
 
-    return results
+    return prompt
