@@ -51,4 +51,4 @@ def treemap(
         title=title,
         plot="treemap",
         **filters,
-    )
+    ).plot_
