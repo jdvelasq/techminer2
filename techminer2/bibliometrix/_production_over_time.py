@@ -124,7 +124,7 @@ def _production_over_time(
 
     result = _Results()
     result.plot_ = fig
-    result.table_ = indicators_by_year
+    result.table_ = indicators_by_year.reset_index(drop=True)
 
     return result
 
