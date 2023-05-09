@@ -50,4 +50,4 @@ def column_chart(
         title=title,
         plot="column",
         **filters,
-    )
+    ).plot_
