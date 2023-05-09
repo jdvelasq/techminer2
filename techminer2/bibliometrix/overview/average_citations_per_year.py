@@ -14,26 +14,19 @@ Average Citations per Year
 
     <iframe src="../../_static/bibliometrix__average_citations_per_year.html" height="600px" width="100%" frameBorder="0"></iframe>
 
->>> r.table_.head()    
-      local_citations  ...  mean_local_citations_per_year
-year                   ...                               
-2016              0.0  ...                           0.00
-2017              3.0  ...                           0.11
-2018             30.0  ...                           1.67
-2019             19.0  ...                           0.63
-2020             29.0  ...                           0.52
-<BLANKLINE>
-[5 rows x 9 columns]
+>>> print(r.table_.head().to_markdown())
+|   year |   OCC |   cum_OCC |   local_citations |   global_citations |   citable_years |   mean_global_citations |   cum_global_citations |   mean_global_citations_per_year |   mean_local_citations |   cum_local_citations |   mean_local_citations_per_year |
+|-------:|------:|----------:|------------------:|-------------------:|----------------:|------------------------:|-----------------------:|---------------------------------:|-----------------------:|----------------------:|--------------------------------:|
+|   2016 |     1 |         1 |                 0 |                 30 |               8 |                30       |                     30 |                             3.75 |                0       |                     0 |                            0    |
+|   2017 |     4 |         5 |                 3 |                162 |               7 |                40.5     |                    192 |                             5.79 |                0.75    |                     3 |                            0.11 |
+|   2018 |     3 |         8 |                30 |                182 |               6 |                60.6667  |                    374 |                            10.11 |               10       |                    33 |                            1.67 |
+|   2019 |     6 |        14 |                19 |                 47 |               5 |                 7.83333 |                    421 |                             1.57 |                3.16667 |                    52 |                            0.63 |
+|   2020 |    14 |        28 |                29 |                 93 |               4 |                 6.64286 |                    514 |                             1.66 |                2.07143 |                    81 |                            0.52 |
 
->>> print(r.prompt_)
-Act as a researcher. Analyze the following table, 
-which provides data corresponding to the average citations per year of a 
-bibliographic dataset. 
+
+>>> print(r.plot_prompt_)
 <BLANKLINE>
-Column 'OCC' is the number of documents published in 
-a given year. Column 'cum_OCC' is the cumulative number of documents 
-published up to a given year. The information in the table is used to create 
-a line plot.
+Imagine that you are a researcher analyzing a bibliographic dataset. The table below provides data on the average citations per year of the dataset. Use the the information in the table to draw conclusions about the impact per year. In your analysis, be sure to describe in a clear and concise way, any trends or patterns you observe, and identify any outliers or anomalies in the data. Limit your description to a paragraph with no more than 250 words.
 <BLANKLINE>
 |   year |   mean_global_citations |
 |-------:|------------------------:|
@@ -46,11 +39,8 @@ a line plot.
 |   2022 |                 1.83333 |
 |   2023 |                 0       |
 <BLANKLINE>
-Write a clear and concise paragraph describing the main findings and any 
-important trends or patterns you notice. 
 <BLANKLINE>
-Limit your description to a paragraph with no more than 250 words.    
-<BLANKLINE>
+
 
 
 """
@@ -63,7 +53,7 @@ from ...techminer.indicators.indicators_by_year import indicators_by_year
 class _Results:
     table_ = None
     plot_ = None
-    prompt_ = None
+    plot_prompt_ = None
 
 
 def average_citations_per_year(
@@ -85,28 +75,23 @@ def average_citations_per_year(
 
     results = _Results()
 
-    results.table_ = indicators.drop(columns=["OCC", "cum_OCC"])
+    results.table_ = indicators.copy()
     results.plot_ = time_plot(
         indicators,
         metric="mean_global_citations",
         title="Average Citations per Year",
     )
 
-    results.prompt_ = f"""Act as a researcher. Analyze the following table, 
-which provides data corresponding to the average citations per year of a 
-bibliographic dataset. 
-
-Column 'OCC' is the number of documents published in 
-a given year. Column 'cum_OCC' is the cumulative number of documents 
-published up to a given year. The information in the table is used to create 
-a line plot.
+    results.plot_prompt_ = f"""
+Imagine that you are a researcher analyzing a bibliographic dataset. The table \
+below provides data on the average citations per year of the dataset. Use the \
+the information in the table to draw conclusions about the impact per year. \
+In your analysis, be sure to describe in a clear and concise way, any trends \
+or patterns you observe, and identify any outliers or anomalies in the data. \
+Limit your description to a paragraph with no more than 250 words.
 
 {results.table_[["mean_global_citations"]].to_markdown()}
 
-Write a clear and concise paragraph describing the main findings and any 
-important trends or patterns you notice. 
-
-Limit your description to a paragraph with no more than 250 words.    
 """
 
     return results

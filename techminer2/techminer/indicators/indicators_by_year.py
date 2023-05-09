@@ -8,43 +8,42 @@ Bibliometric Indicators by Year
 
 >>> from techminer2  import techminer
 >>> techminer.indicators.indicators_by_year(directory) # doctest: +NORMALIZE_WHITESPACE
-      OCC  cum_OCC  ...  cum_local_citations  mean_local_citations_per_year
-year                ...                                                    
-2016    1        1  ...                  0.0                           0.00
-2017    4        5  ...                  3.0                           0.11
-2018    3        8  ...                 33.0                           1.67
-2019    6       14  ...                 52.0                           0.63
-2020   14       28  ...                 81.0                           0.52
-2021   10       38  ...                 90.0                           0.30
-2022   12       50  ...                 93.0                           0.12
-2023    2       52  ...                 93.0                           0.00
+      OCC  cum_OCC  ...  cum_global_citations  mean_global_citations_per_year
+year                ...                                                      
+2016    1        1  ...                    30                            3.75
+2017    4        5  ...                   192                            5.79
+2018    3        8  ...                   374                           10.11
+2019    6       14  ...                   421                            1.57
+2020   14       28  ...                   514                            1.66
+2021   10       38  ...                   541                            0.90
+2022   12       50  ...                   563                            0.92
+2023    2       52  ...                   563                            0.00
 <BLANKLINE>
-[8 rows x 11 columns]
+[8 rows x 7 columns]
 
 
 >>> techminer.indicators.indicators_by_year(directory, database="references").tail() # doctest: +NORMALIZE_WHITESPACE
-      OCC  cum_OCC  ...  cum_local_citations  mean_local_citations_per_year
-year                ...                                                    
-2018   89      594  ...                732.0                           0.30
-2019   91      685  ...                840.0                           0.30
-2020  114      799  ...                985.0                           0.42
-2021   80      879  ...               1072.0                           0.54
-2022   30      909  ...               1104.0                           1.07
+      OCC  cum_OCC  ...  cum_global_citations  mean_global_citations_per_year
+year                ...                                                      
+2018   89      594  ...                305940                           15.27
+2019   91      685  ...                311537                           15.38
+2020  114      799  ...                314956                           10.00
+2021   80      879  ...                317253                           14.36
+2022   30      909  ...                317480                            7.57
 <BLANKLINE>
-[5 rows x 11 columns]
+[5 rows x 7 columns]
 
 
 >>> techminer.indicators.indicators_by_year(directory, database="cited_by").tail() # doctest: +NORMALIZE_WHITESPACE
       OCC  cum_OCC  ...  cum_global_citations  mean_global_citations_per_year
 year                ...                                                      
 2019   33       44  ...                  1764                            8.15
-2020   77      121  ...                  2879                            3.62
-2021  107      228  ...                  3511                            1.97
-2022  150      378  ...                  3871                            1.20
-2023   10      388  ...                  3871                            0.00
+2020   76      120  ...                  2879                            3.67
+2021  107      227  ...                  3511                            1.97
+2022  150      377  ...                  3871                            1.20
+2023   10      387  ...                  3871                            0.00
 <BLANKLINE>
 [5 rows x 7 columns]
-
 
 
 >>> from pprint import pprint
@@ -53,13 +52,10 @@ year                ...
  'citable_years',
  'cum_OCC',
  'cum_global_citations',
- 'cum_local_citations',
  'global_citations',
- 'local_citations',
  'mean_global_citations',
- 'mean_global_citations_per_year',
- 'mean_local_citations',
- 'mean_local_citations_per_year']
+ 'mean_global_citations_per_year']
+
 
 """
 import plotly.express as px

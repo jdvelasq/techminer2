@@ -14,6 +14,7 @@ from .word_cloud import word_cloud
 class _Results:
     table_ = None
     plot_ = None
+    prompt_ = None
 
 
 def chart(
@@ -43,20 +44,46 @@ def chart(
     )
 
     if metric == "OCC":
-        indicators = indicators.sort_values(
-            ["OCC", "global_citations", "local_citations"],
-            ascending=[False, False, False],
-        )
+        columns = []
+        ascending = []
+        if "OCC" in indicators.columns:
+            columns.append("OCC")
+            ascending.append(False)
+        if "global_citations" in indicators.columns:
+            columns.append("global_citations")
+            ascending.append(False)
+        if "local_citations" in indicators.columns:
+            columns.append("local_citations")
+            ascending.append(False)
+        indicators = indicators.sort_values(columns, ascending=ascending)
+
     if metric == "global_citations":
-        indicators = indicators.sort_values(
-            ["global_citations", "local_citations", "OCC"],
-            ascending=[False, False, False],
-        )
+        columns = []
+        ascending = []
+        if "global_citations" in indicators.columns:
+            columns.append("global_citations")
+            ascending.append(False)
+        if "local_citations" in indicators.columns:
+            columns.append("local_citations")
+            ascending.append(False)
+        if "OCC" in indicators.columns:
+            columns.append("OCC")
+            ascending.append(False)
+        indicators = indicators.sort_values(columns, ascending=ascending)
+
     if metric == "local_citations":
-        indicators = indicators.sort_values(
-            ["local_citations", "global_citations", "OCC"],
-            ascending=[False, False, False],
-        )
+        columns = []
+        ascending = []
+        if "local_citations" in indicators.columns:
+            columns.append("local_citations")
+            ascending.append(False)
+        if "global_citations" in indicators.columns:
+            columns.append("global_citations")
+            ascending.append(False)
+        if "OCC" in indicators.columns:
+            columns.append("OCC")
+            ascending.append(False)
+        indicators = indicators.sort_values(columns, ascending=ascending)
 
     if custom_topics is None:
         custom_topics = indicators.copy()
@@ -92,5 +119,25 @@ def chart(
         metric=metric,
         title=title,
     )
+
+    result.prompt_ = f"""
+Act as a researcher realizing a bibliometric analysis. Analyze the following 
+table, which provides data corresponding to the top {result.table_.shape[0]}
+{criterion} with more {metric} in a given bibliographic dataset. 
+
+- 'OCC' is the number of documents published.  
+
+- 'local_citations' are the local citations in the dataset.
+
+- 'global_citations' are the citations received 
+
+{result.table_.to_markdown()}
+
+Write a clear and concise paragraph describing the main findings and any 
+important trends or patterns you notice. 
+
+Limit your description to a paragraph with no more than 250 words.        
+    
+"""
 
     return result

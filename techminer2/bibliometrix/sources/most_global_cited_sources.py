@@ -20,6 +20,56 @@ Most Global Cited Sources
 
     
 >>> r.table_.head()
+source_abbr
+J ECON BUS                                  153
+NORTHWEST J INTL LAW BUS                    150
+J BANK REGUL                                 35
+PALGRAVE STUD DIGIT BUS ENABLING TECHNOL     33
+DUKE LAW J                                   30
+Name: global_citations, dtype: int64
+
+
+>>> print(r.prompt_)
+<BLANKLINE>
+Act as a researcher realizing a bibliometric analysis. Analyze the following 
+table, which provides data corresponding to the top 20
+source_abbr with more global_citations in a given bibliographic dataset. 
+<BLANKLINE>
+- 'OCC' is the number of documents published.  
+<BLANKLINE>
+- 'local_citations' are the local citations in the dataset.
+<BLANKLINE>
+- 'global_citations' are the citations received 
+<BLANKLINE>
+| source_abbr                                                                                   |   global_citations |
+|:----------------------------------------------------------------------------------------------|-------------------:|
+| J ECON BUS                                                                                    |                153 |
+| NORTHWEST J INTL LAW BUS                                                                      |                150 |
+| J BANK REGUL                                                                                  |                 35 |
+| PALGRAVE STUD DIGIT BUS ENABLING TECHNOL                                                      |                 33 |
+| DUKE LAW J                                                                                    |                 30 |
+| J RISK FINANC                                                                                 |                 21 |
+| J MONEY LAUND CONTROL                                                                         |                 14 |
+| J FINANC CRIME                                                                                |                 13 |
+| FINANCIAL INNOV                                                                               |                 13 |
+| ICEIS - PROC INT CONF ENTERP INF SYST                                                         |                 12 |
+| HELIYON                                                                                       |                 11 |
+| HANDB OF BLOCKCHAIN, DIGIT FINANC, AND INCL, VOL 1: CRYPTOCURR, FINTECH, INSURTECH, AND REGUL |                 11 |
+| J RISK MANG FINANCIAL INST                                                                    |                  8 |
+| ADV INTELL SYS COMPUT                                                                         |                  7 |
+| INTELL SYST ACCOUNT FINANCE MANAG                                                             |                  5 |
+| J FINANCIAL DATA SCI                                                                          |                  5 |
+| ADELAIDE LAW REV                                                                              |                  5 |
+| UNIV NEW SOUTH WALES LAW J                                                                    |                  4 |
+| LECTURE NOTES DATA ENG COMMUN TECH                                                            |                  4 |
+| J ANTITRUST ENFORC                                                                            |                  3 |
+<BLANKLINE>
+Write a clear and concise paragraph describing the main findings and any 
+important trends or patterns you notice. 
+<BLANKLINE>
+Limit your description to a paragraph with no more than 250 words.        
+<BLANKLINE>
+<BLANKLINE>
 
 
 """

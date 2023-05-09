@@ -21,6 +21,56 @@ Most Local Cited Countries
 
     
 >>> r.table_.head()
+countries
+United Kingdom    34
+Ireland           22
+Germany           17
+Australia         15
+Switzerland       13
+Name: local_citations, dtype: int64
+
+>>> print(r.prompt_)
+<BLANKLINE>
+Act as a researcher realizing a bibliometric analysis. Analyze the following 
+table, which provides data corresponding to the top 20
+countries with more local_citations in a given bibliographic dataset. 
+<BLANKLINE>
+- 'OCC' is the number of documents published.  
+<BLANKLINE>
+- 'local_citations' are the local citations in the dataset.
+<BLANKLINE>
+- 'global_citations' are the citations received 
+<BLANKLINE>
+| countries            |   local_citations |
+|:---------------------|------------------:|
+| United Kingdom       |                34 |
+| Ireland              |                22 |
+| Germany              |                17 |
+| Australia            |                15 |
+| Switzerland          |                13 |
+| United States        |                11 |
+| Hong Kong            |                 8 |
+| Luxembourg           |                 8 |
+| Greece               |                 8 |
+| United Arab Emirates |                 7 |
+| China                |                 5 |
+| Bahrain              |                 5 |
+| Jordan               |                 4 |
+| South Africa         |                 4 |
+| Italy                |                 2 |
+| Japan                |                 1 |
+| Palestine            |                 1 |
+| India                |                 1 |
+| Spain                |                 0 |
+| Ukraine              |                 0 |
+<BLANKLINE>
+Write a clear and concise paragraph describing the main findings and any 
+important trends or patterns you notice. 
+<BLANKLINE>
+Limit your description to a paragraph with no more than 250 words.        
+<BLANKLINE>
+<BLANKLINE>
+
 
 """
 from ...vantagepoint.report.chart import chart

@@ -15,6 +15,7 @@ from ..techminer.indicators.impact_indicators_by_topic import impact_indicators_
 class _Results:
     table_ = None
     plot_ = None
+    prompt_ = None
 
 
 TEXTLEN = 40
@@ -87,6 +88,23 @@ def _impact(
         title=title,
     )
 
+    table = results.table_.copy()
+    table = table.set_index(criterion.replace("_", " ").title())
+
+    results.prompt_ = f"""
+Act as a researcher realizing a bibliometric analysis. 
+
+The following table contains the top {topics_length} {criterion.replace("_", " ").title()} 
+with more {impact_measure.replace("_", " ").title()} in the given bibliographic dataset.
+
+{table.to_markdown()}
+
+Write a clear and concise paragraph describing the main findings and any 
+important trends or patterns you notice in the previous table. 
+
+Limit your description to a paragraph with no more than 250 words.    
+    
+"""
     return results
 
 

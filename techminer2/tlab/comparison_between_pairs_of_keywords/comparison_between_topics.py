@@ -7,7 +7,7 @@ Compararison between topics
 >>> directory = "data/regtech/"
 
 >>> from techminer2 import tlab
->>> cbt = tlab.co_occurrence_analysis.comparison_between_topics(
+>>> cbt = tlab.comparison_between_pairs_of_keywords.comparison_between_topics(
 ...     criterion="author_keywords",
 ...     topic_a="artificial intelligence",
 ...     topic_b="regtech",
@@ -35,7 +35,7 @@ Compararison between topics
 >>> directory = "data/regtech/"
 
 >>> from techminer2 import tlab
->>> cbt = tlab.co_occurrence_analysis.comparison_between_topics(
+>>> cbt = tlab.comparison_between_pairs_of_keywords.comparison_between_topics(
 ...     criterion="author_keywords",
 ...     topic_a="artificial intelligence",
 ...     topic_b="regtech",
@@ -186,7 +186,6 @@ def _create_radial_diagram(matrix_list, topic_a, topic_b, nx_k, nx_iterations, d
 
 
 def _create_edges(graph, matrix_list, topic_a, topic_b):
-
     edges_dict = {}
     for _, row in matrix_list.iterrows():
         if row[0] == topic_a or row[0] == topic_b:
@@ -208,7 +207,7 @@ def _create_edges(graph, matrix_list, topic_a, topic_b):
                 edges_dict[(keys[1], row[1])] += row[2]
 
     edges = []
-    for (key1, key2) in edges_dict:
+    for key1, key2 in edges_dict:
         edges += [(key1, key2, edges_dict[(key1, key2)])]
 
     graph.add_weighted_edges_from(edges)
@@ -216,7 +215,6 @@ def _create_edges(graph, matrix_list, topic_a, topic_b):
 
 
 def _create_nodes(graph, matrix_list, topic_a, topic_b):
-
     nodes = []
 
     indicators = matrix_list.copy()
@@ -240,7 +238,6 @@ def _create_nodes(graph, matrix_list, topic_a, topic_b):
 
     join_terms = " & ".join([topic_a, topic_b])
     if join_terms in topic_size.index:
-
         nodes += [
             (
                 topic_a,
@@ -264,7 +261,6 @@ def _create_nodes(graph, matrix_list, topic_a, topic_b):
         ]
 
     else:
-
         nodes += [
             (
                 topic_a,
@@ -290,7 +286,6 @@ def _create_nodes(graph, matrix_list, topic_a, topic_b):
 
 
 def _create_bart_chart(matrix_list, topic_a, topic_b):
-
     matrix_list = matrix_list.copy()
 
     fig = px.bar(
@@ -350,7 +345,6 @@ def _select_topics(
     )
 
     if custom_topics is None:
-
         if topic_min_occ is not None:
             indicators = indicators[indicators.OCC >= topic_min_occ]
         if topic_min_citations is not None:
@@ -387,7 +381,6 @@ def _create_comparison_matrix_list(
     end_year,
     **filters,
 ):
-
     records = read_records(
         directory=directory,
         database=database,
@@ -443,7 +436,6 @@ def _create_comparison_matrix_list(
 
 
 def _sort_matrix_list(matrix_list):
-
     indicators = matrix_list.copy()
     indicators = indicators[["column", "OCC"]]
     indicators = indicators.groupby("column", as_index=False).aggregate("sum")

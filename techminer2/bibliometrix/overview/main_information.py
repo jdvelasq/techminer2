@@ -56,9 +56,8 @@ KEYWORDS       Raw author keywords                            149
     
 >>> print(r.prompt_)
 <BLANKLINE>
-Act as a researcher and write a clear paragraph describing the 
-main characteristics of the dataset with no more than 250 words. Use the
-following table as a guide.
+As a researcher, please provide a clear paragraph describing the main characteristics 
+of the dataset using the following table as a guide:
 <BLANKLINE>
 |                                                        | Value     |
 |:-------------------------------------------------------|:----------|
@@ -95,8 +94,10 @@ following table as a guide.
 | ('KEYWORDS', 'Raw index keywords')                     | 155       |
 | ('KEYWORDS', 'Cleaned index keywords')                 | 150       |
 <BLANKLINE>
+Limit your description to no more than 250 words.
 <BLANKLINE>
 
+    
 """
 import datetime
 

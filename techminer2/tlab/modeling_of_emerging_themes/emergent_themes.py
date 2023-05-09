@@ -7,8 +7,8 @@ Topic extraction using non-negative matrix factorization.
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import tlab__thematic_analysis__emergent_themes_with_nmf
->>> nmf = tlab__thematic_analysis__emergent_themes_with_nmf(
+>>> from techminer2 import tlab
+>>> nmf = tlab.modeling_of_emerging_themes.emergent_themes_with_nmf(
 ...     criterion="author_keywords",
 ...     topics_length=4,
 ...     directory=directory,
@@ -19,21 +19,18 @@ Topic extraction using non-negative matrix factorization.
 ...     nmf__max_iter=200,
 ...     nmf__random_state=0,
 ...  )
-
-
 >>> nmf.themes_.head()
-                            TH_00  ...                           TH_05
-0                  regtech 69:461  ...                  fintech 42:406
-1                  fintech 42:406  ...                  regtech 69:461
-2               blockchain 18:109  ...               blockchain 18:109
-3  artificial intelligence 13:065  ...  artificial intelligence 13:065
+                          TH_00  ...                         TH_05
+0                regtech 28:329  ...                fintech 12:249
+1             compliance 07:030  ...                regtech 28:329
+2  regulatory technology 07:037  ...             compliance 07:030
+3                fintech 12:249  ...  regulatory technology 07:037
 <BLANKLINE>
 [4 rows x 6 columns]
 
 
 
->>> from techminer2 import tlab__thematic_analysis__emergent_themes_with_lda
->>> lda = tlab__thematic_analysis__emergent_themes_with_lda(
+>>> lda = tlab.modeling_of_emerging_themes.emergent_themes_with_lda(
 ...     criterion="author_keywords",
 ...     topics_length=4,
 ...     directory=directory,
@@ -42,13 +39,12 @@ Topic extraction using non-negative matrix factorization.
 ...     lda__learning_offset=50.0,
 ...     lda__random_state=0,
 ...  )    
-
 >>> lda.themes_.head()
-                            TH_00  ...                           TH_09
-0                  regtech 69:461  ...  artificial intelligence 13:065
-1               blockchain 18:109  ...               blockchain 18:109
-2                  fintech 42:406  ...                  fintech 42:406
-3  artificial intelligence 13:065  ...                  regtech 69:461
+                          TH_00  ...                         TH_09
+0                regtech 28:329  ...  regulatory technology 07:037
+1  regulatory technology 07:037  ...                fintech 12:249
+2             compliance 07:030  ...             compliance 07:030
+3                fintech 12:249  ...                regtech 28:329
 <BLANKLINE>
 [4 rows x 10 columns]
 
@@ -72,7 +68,7 @@ class _Result:
         self.mds_data_ = None
 
 
-def tlab__thematic_analysis__emergent_themes_with_nmf(
+def emergent_themes_with_nmf(
     criterion,
     topics_length=None,
     topic_min_occ=None,
@@ -132,7 +128,7 @@ def tlab__thematic_analysis__emergent_themes_with_nmf(
     return result
 
 
-def tlab__thematic_analysis__emergent_themes_with_lda(
+def emergent_themes_with_lda(
     criterion,
     topics_length=None,
     topic_min_occ=None,
@@ -191,7 +187,6 @@ def tlab__thematic_analysis__emergent_themes_with_lda(
 
 
 def _extract_themes(components, n_components):
-
     themes = components.copy()
     max_len = 0
     for i_cluster in range(n_components):

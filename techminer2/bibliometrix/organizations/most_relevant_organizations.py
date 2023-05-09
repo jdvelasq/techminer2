@@ -21,6 +21,56 @@ Most Relevant Organizations
 
     
 >>> r.table_.head()
+organizations
+University of Hong Kong      3
+University College Cork      3
+Ahlia University             3
+---FinTech HK                2
+University of Westminster    2
+Name: OCC, dtype: int64
+
+>>> print(r.prompt_)
+<BLANKLINE>
+Act as a researcher realizing a bibliometric analysis. Analyze the following 
+table, which provides data corresponding to the top 20
+organizations with more OCC in a given bibliographic dataset. 
+<BLANKLINE>
+- 'OCC' is the number of documents published.  
+<BLANKLINE>
+- 'local_citations' are the local citations in the dataset.
+<BLANKLINE>
+- 'global_citations' are the citations received 
+<BLANKLINE>
+| organizations                                                   |   OCC |
+|:----------------------------------------------------------------|------:|
+| University of Hong Kong                                         |     3 |
+| University College Cork                                         |     3 |
+| Ahlia University                                                |     3 |
+| ---FinTech HK                                                   |     2 |
+| University of Westminster                                       |     2 |
+| Coventry University                                             |     2 |
+| Dublin City University                                          |     2 |
+| Politecnico di Milano                                           |     2 |
+| ---School of Electrical Engineering and Informatics             |     2 |
+| ---Kingston Business School                                     |     1 |
+| ---Centre for Law                                               |     1 |
+| Duke University School of Law                                   |     1 |
+| Heinrich Heine University                                       |     1 |
+| University of Zurich                                            |     1 |
+| University of Luxembourg                                        |     1 |
+| ---UNSW Sydney                                                  |     1 |
+| Harvard University Weatherhead Center for International Affairs |     1 |
+| ---School of Engineering                                        |     1 |
+| ---Panepistemio Aigaiou                                         |     1 |
+| ---KS Strategic                                                 |     1 |
+<BLANKLINE>
+Write a clear and concise paragraph describing the main findings and any 
+important trends or patterns you notice. 
+<BLANKLINE>
+Limit your description to a paragraph with no more than 250 words.        
+<BLANKLINE>
+<BLANKLINE>
+
 
 """
 from ...vantagepoint.report.chart import chart

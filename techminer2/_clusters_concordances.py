@@ -19,13 +19,12 @@ def clusters_concordances(
     """Clusters summarization."""
 
     create_directory(
-        base_directory=directory,
-        target_directory=directory_for_concordances,
+        base_dir=directory,
+        target_dir=directory_for_concordances,
     )
 
     communities = communities.head(n_keywords)
     for i_community, community_name in enumerate(communities):
-
         path = os.path.join(
             directory,
             "reports",

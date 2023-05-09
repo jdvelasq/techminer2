@@ -20,6 +20,55 @@ Most Global Cited Countries
     <iframe src="../../../_static/bibliometrix__most_global_cited_countries.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> r.table_.head()
+countries
+United Kingdom    199
+Australia         199
+Hong Kong         185
+United States      59
+Ireland            55
+Name: global_citations, dtype: int64
+
+>>> print(r.prompt_)
+<BLANKLINE>
+Act as a researcher realizing a bibliometric analysis. Analyze the following 
+table, which provides data corresponding to the top 20
+countries with more global_citations in a given bibliographic dataset. 
+<BLANKLINE>
+- 'OCC' is the number of documents published.  
+<BLANKLINE>
+- 'local_citations' are the local citations in the dataset.
+<BLANKLINE>
+- 'global_citations' are the citations received 
+<BLANKLINE>
+| countries            |   global_citations |
+|:---------------------|-------------------:|
+| United Kingdom       |                199 |
+| Australia            |                199 |
+| Hong Kong            |                185 |
+| United States        |                 59 |
+| Ireland              |                 55 |
+| Germany              |                 51 |
+| Switzerland          |                 45 |
+| Luxembourg           |                 34 |
+| China                |                 27 |
+| Greece               |                 21 |
+| Bahrain              |                 19 |
+| United Arab Emirates |                 13 |
+| Japan                |                 13 |
+| Jordan               |                 11 |
+| South Africa         |                 11 |
+| Italy                |                  5 |
+| Spain                |                  4 |
+| Ukraine              |                  4 |
+| Malaysia             |                  3 |
+| Palestine            |                  1 |
+<BLANKLINE>
+Write a clear and concise paragraph describing the main findings and any 
+important trends or patterns you notice. 
+<BLANKLINE>
+Limit your description to a paragraph with no more than 250 words.        
+<BLANKLINE>
+<BLANKLINE>
 
 
 """

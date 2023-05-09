@@ -21,6 +21,56 @@ Most Frequent Countries
     <iframe src="../../../_static/bibliometrix__most_frequent_countries.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> r.table_.head()
+countries
+United Kingdom    7
+Australia         7
+United States     6
+Ireland           5
+China             5
+Name: OCC, dtype: int64
+
+>>> print(r.prompt_)
+<BLANKLINE>
+Act as a researcher realizing a bibliometric analysis. Analyze the following 
+table, which provides data corresponding to the top 20
+countries with more OCC in a given bibliographic dataset. 
+<BLANKLINE>
+- 'OCC' is the number of documents published.  
+<BLANKLINE>
+- 'local_citations' are the local citations in the dataset.
+<BLANKLINE>
+- 'global_citations' are the citations received 
+<BLANKLINE>
+| countries            |   OCC |
+|:---------------------|------:|
+| United Kingdom       |     7 |
+| Australia            |     7 |
+| United States        |     6 |
+| Ireland              |     5 |
+| China                |     5 |
+| Italy                |     5 |
+| Germany              |     4 |
+| Switzerland          |     4 |
+| Bahrain              |     4 |
+| Hong Kong            |     3 |
+| Luxembourg           |     2 |
+| United Arab Emirates |     2 |
+| Spain                |     2 |
+| Indonesia            |     2 |
+| Greece               |     1 |
+| Japan                |     1 |
+| Jordan               |     1 |
+| South Africa         |     1 |
+| Ukraine              |     1 |
+| Malaysia             |     1 |
+<BLANKLINE>
+Write a clear and concise paragraph describing the main findings and any 
+important trends or patterns you notice. 
+<BLANKLINE>
+Limit your description to a paragraph with no more than 250 words.        
+<BLANKLINE>
+<BLANKLINE>
+
 
 
 """

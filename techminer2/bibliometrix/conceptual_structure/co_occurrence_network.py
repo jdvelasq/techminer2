@@ -178,8 +178,8 @@ def co_occurrence_network(
     )
 
     create_directory(
-        base_directory=directory,
-        target_directory=directory_for_results,
+        base_dir=directory,
+        target_dir=directory_for_results,
     )
 
     # if summarize is True:

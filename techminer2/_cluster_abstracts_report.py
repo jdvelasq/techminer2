@@ -21,13 +21,12 @@ def cluster_abstracts_report(
     """Clusters summarization."""
 
     create_directory(
-        base_directory=directory,
-        target_directory=directory_for_abstracts,
+        base_dir=directory,
+        target_dir=directory_for_abstracts,
     )
 
     communities = communities.head(n_keywords)
     for community_name in communities:
-
         community = communities[community_name].tolist()
         community = [x for x in community if x != ""]
         community = [" ".join(x.split()[:-1]) for x in community]

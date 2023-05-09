@@ -5,7 +5,7 @@ Network Indicators
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import vantagepoint__co_occ_matrix_list
+>>> from .vantagepoint.analyze.matrix import co_occ_matrix_list
 >>> from techminer2._matrix_list_2_network_graph import matrix_list_2_network_graph
 >>> from techminer2._get_network_graph_indicators import get_network_graph_indicators
 >>> from techminer2._network_community_detection import network_community_detection

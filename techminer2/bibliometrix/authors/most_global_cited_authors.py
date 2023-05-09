@@ -19,6 +19,55 @@
 
     
 >>> r.table_.head()
+authors
+Arner DW             185
+Buckley RP           185
+Barberis JN          161
+Anagnostopoulos I    153
+Butler T/1            41
+Name: global_citations, dtype: int64
+
+>>> print(r.prompt_)
+<BLANKLINE>
+Act as a researcher realizing a bibliometric analysis. Analyze the following 
+table, which provides data corresponding to the top 20
+authors with more global_citations in a given bibliographic dataset. 
+<BLANKLINE>
+- 'OCC' is the number of documents published.  
+<BLANKLINE>
+- 'local_citations' are the local citations in the dataset.
+<BLANKLINE>
+- 'global_citations' are the citations received 
+<BLANKLINE>
+| authors           |   global_citations |
+|:------------------|-------------------:|
+| Arner DW          |                185 |
+| Buckley RP        |                185 |
+| Barberis JN       |                161 |
+| Anagnostopoulos I |                153 |
+| Butler T/1        |                 41 |
+| OBrien L          |                 33 |
+| Baxter LG         |                 30 |
+| Zetzsche DA       |                 24 |
+| Weber RH          |                 24 |
+| Stieber H         |                 21 |
+| Saxton K          |                 21 |
+| Breymann W        |                 21 |
+| Kavassalis P      |                 21 |
+| Gross FJ          |                 21 |
+| Hamdan A          |                 18 |
+| Turki M           |                 18 |
+| Lin W             |                 17 |
+| Singh C           |                 17 |
+| Brennan R         |                 14 |
+| Crane M           |                 14 |
+<BLANKLINE>
+Write a clear and concise paragraph describing the main findings and any 
+important trends or patterns you notice. 
+<BLANKLINE>
+Limit your description to a paragraph with no more than 250 words.        
+<BLANKLINE>
+<BLANKLINE>
 
 """
 from ...vantagepoint.report.chart import chart

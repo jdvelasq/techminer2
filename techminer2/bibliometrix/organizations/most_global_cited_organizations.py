@@ -19,7 +19,55 @@ Most Global Cited Organizations
     <iframe src="../../../_static/bibliometrix__most_global_cited_organizations.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> r.table_.head()
+organizations
+University of Hong Kong        185
+---FinTech HK                  161
+---Kingston Business School    153
+---Centre for Law              150
+University College Cork         41
+Name: global_citations, dtype: int64
 
+>>> print(r.prompt_)
+<BLANKLINE>
+Act as a researcher realizing a bibliometric analysis. Analyze the following 
+table, which provides data corresponding to the top 20
+organizations with more global_citations in a given bibliographic dataset. 
+<BLANKLINE>
+- 'OCC' is the number of documents published.  
+<BLANKLINE>
+- 'local_citations' are the local citations in the dataset.
+<BLANKLINE>
+- 'global_citations' are the citations received 
+<BLANKLINE>
+| organizations                                                   |   global_citations |
+|:----------------------------------------------------------------|-------------------:|
+| University of Hong Kong                                         |                185 |
+| ---FinTech HK                                                   |                161 |
+| ---Kingston Business School                                     |                153 |
+| ---Centre for Law                                               |                150 |
+| University College Cork                                         |                 41 |
+| Duke University School of Law                                   |                 30 |
+| Heinrich Heine University                                       |                 24 |
+| University of Zurich                                            |                 24 |
+| University of Luxembourg                                        |                 24 |
+| ---UNSW Sydney                                                  |                 24 |
+| Harvard University Weatherhead Center for International Affairs |                 21 |
+| ---School of Engineering                                        |                 21 |
+| ---Panepistemio Aigaiou                                         |                 21 |
+| ---KS Strategic                                                 |                 21 |
+| European Central Bank                                           |                 21 |
+| Ahlia University                                                |                 19 |
+| University of Westminster                                       |                 17 |
+| Coventry University                                             |                 17 |
+| Dublin City University                                          |                 14 |
+| Shanghai University                                             |                 13 |
+<BLANKLINE>
+Write a clear and concise paragraph describing the main findings and any 
+important trends or patterns you notice. 
+<BLANKLINE>
+Limit your description to a paragraph with no more than 250 words.        
+<BLANKLINE>
+<BLANKLINE>
 
 
 """
