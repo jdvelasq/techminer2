@@ -1,6 +1,7 @@
 """Bibliometrix generic dynamics plot."""
 
 import textwrap
+from dataclasses import dataclass
 
 import numpy as np
 import pandas as pd
@@ -12,6 +13,12 @@ from ..techminer.indicators.indicators_by_topic_per_year import (
 )
 
 TEXTLEN = 40
+
+
+@dataclass(init=False)
+class _Results:
+    plot_ = None
+    table_ = None
 
 
 def _dynamics(
@@ -112,8 +119,6 @@ def _dynamics(
     )
     fig.update_traces(
         marker=dict(size=10, line=dict(color="darkslategray", width=2)),
-        # marker_color="rgb(171,171,171)",
-        # line=dict(color="darkslategray"),
     )
     fig.update_layout(
         paper_bgcolor="white",
@@ -134,7 +139,12 @@ def _dynamics(
         tickangle=270,
         dtick=1,
     )
-    return fig
+
+    result = _Results()
+    result.plot_ = fig
+    result.table_ = indicators.reset_index(drop=True)
+
+    return result
 
 
 def _shorten(text):
