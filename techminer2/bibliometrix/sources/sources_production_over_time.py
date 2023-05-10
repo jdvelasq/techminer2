@@ -17,65 +17,45 @@ Sources' Production over Time
 
     <iframe src="../../_static/bibliometrix__sources_production_over_time.html" height="600px" width="100%" frameBorder="0"></iframe>
 
->>> r.documents_per_source_.head()
-          source_abbr  ...                             doi
-0         TECHNOL SOC  ...   10.1016/J.TECHSOC.2022.102150
-1  RES INT BUS FINANC  ...     10.1016/J.RIBAF.2022.101868
-2            COMPUTER  ...         10.1109/MC.2022.3176693
-3     FINANCIAL INNOV  ...      10.1186/S40854-021-00313-6
-4       J CORP FINANC  ...  10.1016/J.JCORPFIN.2022.102276
-<BLANKLINE>
-[5 rows x 7 columns]
+>>> print(r.documents_per_source_.head().to_markdown())
+|    | source_abbr        | title                                                                                               |   year | source_title                                   |   global_citations |   local_citations | doi                            |
+|---:|:-------------------|:----------------------------------------------------------------------------------------------------|-------:|:-----------------------------------------------|-------------------:|------------------:|:-------------------------------|
+|  0 | TECHNOL SOC        | RegTech  Potential benefits and challenges for businesses                                           |   2023 | Technology in Society                          |                  0 |                 0 | 10.1016/J.TECHSOC.2022.102150  |
+|  1 | RES INT BUS FINANC | Costs of voting and firm performance: Evidence from RegTech adoption in Chinese listed firms        |   2023 | Research in International Business and Finance |                  0 |                 0 | 10.1016/J.RIBAF.2022.101868    |
+|  2 | COMPUTER           | RegTech's Rise                                                                                      |   2022 | Computer                                       |                  0 |                 0 | 10.1109/MC.2022.3176693        |
+|  3 | FINANCIAL INNOV    | Fintech, regtech, and financial development: evidence from China                                    |   2022 | Financial Innovation                           |                 13 |                 1 | 10.1186/S40854-021-00313-6     |
+|  4 | J CORP FINANC      | Too much to learn? The (un)intended consequences of RegTech development on mergers and acquisitions |   2022 | Journal of Corporate Finance                   |                  0 |                 0 | 10.1016/J.JCORPFIN.2022.102276 |
 
+>>> print(r.production_per_year_.head().to_markdown())
+|                                 |   OCC |   cum_OCC |   global_citations |   local_citations |   age |   global_citations_per_year |   local_citations_per_year |
+|:--------------------------------|------:|----------:|-------------------:|------------------:|------:|----------------------------:|---------------------------:|
+| ('ACM INT CONF PROC SER', 2021) |     1 |         1 |                  2 |                 0 |     3 |                       0.667 |                      0     |
+| ('ADELAIDE LAW REV', 2020)      |     1 |         1 |                  5 |                 1 |     4 |                       1.25  |                      0.25  |
+| ('ADV INTELL SYS COMPUT', 2021) |     1 |         1 |                  7 |                 1 |     3 |                       2.333 |                      0.333 |
+| ('CEUR WORKSHOP PROC', 2020)    |     1 |         1 |                  2 |                 3 |     4 |                       0.5   |                      0.75  |
+| ('COMPUTER', 2022)              |     1 |         1 |                  0 |                 0 |     2 |                       0     |                      0     |
 
->>> r.production_per_year_.head()
-                            OCC  ...  local_citations_per_year
-source_abbr           year       ...                          
-ACM INT CONF PROC SER 2021    1  ...                     0.000
-ADELAIDE LAW REV      2020    1  ...                     0.250
-ADV INTELL SYS COMPUT 2021    1  ...                     0.333
-CEUR WORKSHOP PROC    2020    1  ...                     0.750
-COMPUTER              2022    1  ...                     0.000
-<BLANKLINE>
-[5 rows x 7 columns]
 
 >>> print(r.prompt_)
 <BLANKLINE>
-Act as a researcher realizing a bibliometric analysis. Analyze a timeline plot
-build with the following table, which provides data corresponding to the top 10
-sources with more documnets in a given bibliographic dataset. 
+Imagine that you are a researcher analyzing a bibliographic dataset. The table below provides data on document production by year per document source for the top 10 most productive sources in the dataset. Use the information in the table to draw conclusions about the productivity per year of the sources. The final part of the source name contains two numbers separated by a colon. The first is the total number of documents of the source, and the second is the total number of citations of the source. In your analysis, be sure to describe in a clear and concise way, any findings or any patterns you observe, and identify any outliers or anomalies in the data. Limit your description to one paragraph with no more than 250 words.
 <BLANKLINE>
-- Column 'OCC' is the number of documents published in a given year by the 
-  current source. 
+| Source Abbr                              |   2017 |   2019 |   2020 |   2021 |   2022 |   2023 |
+|:-----------------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|
+| FOSTER INNOV AND COMPET WITH FINTECH,... |      0 |      0 |      2 |      0 |      0 |      0 |
+| INT CONF INF TECHNOL SYST INNOV,...      |      0 |      0 |      0 |      0 |      2 |      0 |
+| J BANK REGUL 2:035                       |      0 |      0 |      1 |      1 |      0 |      0 |
+| J FINANC CRIME 2:013                     |      0 |      0 |      1 |      0 |      1 |      0 |
+| J FINANCIAL DATA SCI 1:005               |      0 |      1 |      0 |      0 |      0 |      0 |
+| J IND BUS ECON 1:001                     |      0 |      0 |      0 |      0 |      1 |      0 |
+| PROC INT CONF ELECTRON BUS (ICEB) 1:001  |      1 |      0 |      0 |      0 |      0 |      0 |
+| RES INT BUS FINANC 1:000                 |      0 |      0 |      0 |      0 |      0 |      1 |
+| ROUTLEDGE HANDB OF FINANCIAL...          |      0 |      0 |      0 |      2 |      0 |      0 |
+| STUD COMPUT INTELL 2:001                 |      0 |      0 |      0 |      2 |      0 |      0 |
 <BLANKLINE>
-- Column 'Year' is the year of publication.
 <BLANKLINE>
-- Column 'Source Abbr' is the source abbreviation.
 <BLANKLINE>
-- Numbers separated by a colon (:) are the total number of documents published
-  the total number of citations received by the current source during the 
-  period of analysis.
-<BLANKLINE>
-| Source Abbr                              |   OCC |   Year |
-|:-----------------------------------------|------:|-------:|
-| J BANK REGUL 2:035                       |     1 |   2020 |
-| J BANK REGUL 2:035                       |     1 |   2021 |
-| J FINANC CRIME 2:013                     |     1 |   2020 |
-| J FINANC CRIME 2:013                     |     1 |   2022 |
-| FOSTER INNOV AND COMPET WITH FINTECH,... |     2 |   2020 |
-| STUD COMPUT INTELL 2:001                 |     2 |   2021 |
-| INT CONF INF TECHNOL SYST INNOV,...      |     2 |   2022 |
-| ROUTLEDGE HANDB OF FINANCIAL...          |     2 |   2021 |
-| J FINANCIAL DATA SCI 1:005               |     1 |   2019 |
-| J IND BUS ECON 1:001                     |     1 |   2022 |
-| PROC INT CONF ELECTRON BUS (ICEB) 1:001  |     1 |   2017 |
-| RES INT BUS FINANC 1:000                 |     1 |   2023 |
-<BLANKLINE>
-Write a clear and concise paragraph describing the main findings and any 
-important trends or patterns you notice. 
-<BLANKLINE>
-Limit your description to a paragraph with no more than 250 words.    
-<BLANKLINE>
+
 
 """
 from dataclasses import dataclass
@@ -139,33 +119,29 @@ def sources_production_over_time(
         **filters,
     )
 
-    prompt_table = results.table_[
-        ["source_abbr".replace("_", " ").title(), "OCC", "Year"]
-    ]
-    prompt_table = prompt_table.set_index("source_abbr".replace("_", " ").title())
-
-    results.prompt_ = f"""
-Act as a researcher realizing a bibliometric analysis. Analyze a timeline plot
-build with the following table, which provides data corresponding to the top {topics_length}
-sources with more documnets in a given bibliographic dataset. 
-
-- Column 'OCC' is the number of documents published in a given year by the 
-  current source. 
-
-- Column 'Year' is the year of publication.
-
-- Column 'Source Abbr' is the source abbreviation.
-
-- Numbers separated by a colon (:) are the total number of documents published
-  the total number of citations received by the current source during the 
-  period of analysis.
-
-{prompt_table.to_markdown()}
-
-Write a clear and concise paragraph describing the main findings and any 
-important trends or patterns you notice. 
-
-Limit your description to a paragraph with no more than 250 words.    
-"""
+    table = results.table_.copy()
+    table = table[["Source Abbr", "Year", "OCC"]]
+    table = table.pivot(index="Source Abbr", columns="Year", values="OCC")
+    table = table.fillna(0)
+    results.prompt_ = _create_prompt(table)
 
     return results
+
+
+def _create_prompt(table):
+    return f"""
+Imagine that you are a researcher analyzing a bibliographic dataset. The table \
+below provides data on document production by year per document source for the top {table.shape[0]} \
+most productive sources in the dataset. Use the information in the table to \
+draw conclusions about the productivity per year of the sources. The final \
+part of the source name contains two numbers separated by a colon. The first \
+is the total number of documents of the source, and the second is the total \
+number of citations of the source. \
+In your analysis, be sure to describe in a clear and concise way, any findings \
+or any patterns you observe, and identify any outliers or anomalies in the \
+data. Limit your description to one paragraph with no more than 250 words.
+
+{table.to_markdown()}
+
+
+"""
