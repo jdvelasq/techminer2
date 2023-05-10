@@ -31,6 +31,34 @@ Buckley RP            8
 Name: local_citations, dtype: int64
 
 >>> print(r.prompt_)
+<BLANKLINE>
+Imagine that you are a researcher analyzing a bibliographic dataset. The table below provides data on top 20 most local cited authors in the references of the documents in the dataset ('local_citations' column). Use the information in the table to draw conclusions about the impact and relevance of the reseach published by the cited authors. In your analysis, be sure to describe in a clear and concise way, any findings or any patterns you observe, and identify any outliers or anomalies in the data. Limit your description to one paragraph with no more than 250 words.
+<BLANKLINE>
+| authors           |   local_citations |
+|:------------------|------------------:|
+| Butler T/1        |                19 |
+| Anagnostopoulos I |                17 |
+| OBrien L          |                14 |
+| Arner DW          |                 8 |
+| Buckley RP        |                 8 |
+| Stieber H         |                 8 |
+| Saxton K          |                 8 |
+| Breymann W        |                 8 |
+| Kavassalis P      |                 8 |
+| Gross FJ          |                 8 |
+| Zetzsche DA       |                 5 |
+| Weber RH          |                 5 |
+| Hamdan A          |                 5 |
+| Turki M           |                 5 |
+| Brooks R          |                 5 |
+| Lin W             |                 4 |
+| Singh C           |                 4 |
+| Sarea A           |                 4 |
+| Cummings RT       |                 4 |
+| Anasweh M         |                 4 |
+<BLANKLINE>
+<BLANKLINE>
+<BLANKLINE>
 
 
 """
@@ -50,7 +78,7 @@ def most_local_cited_authors(
 ):
     """Most Local Cited Authors (from Reference Lists)."""
 
-    return chart(
+    obj = chart(
         criterion="authors",
         directory=directory,
         database=database,
@@ -65,3 +93,24 @@ def most_local_cited_authors(
         plot=plot,
         **filters,
     )
+
+    obj.prompt_ = _create_prompt(obj.table_)
+
+    return obj
+
+
+def _create_prompt(table):
+    return f"""
+Imagine that you are a researcher analyzing a bibliographic dataset. The table \
+below provides data on top {table.shape[0]} most local cited authors in the \
+references of the documents in the dataset ('local_citations' column). Use the \
+information in the table to draw conclusions about the impact and relevance of \
+the reseach published by the cited authors. In your analysis, be sure \
+to describe in a clear and concise way, any findings or any patterns you \
+observe, and identify any outliers or anomalies in the data. \
+Limit your description to one paragraph with no more than 250 words.
+
+{table.to_markdown()}
+
+
+"""

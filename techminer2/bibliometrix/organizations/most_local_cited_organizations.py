@@ -31,15 +31,7 @@ Name: local_citations, dtype: int64
 
 >>> print(r.prompt_)
 <BLANKLINE>
-Act as a researcher realizing a bibliometric analysis. Analyze the following 
-table, which provides data corresponding to the top 20
-organizations with more local_citations in a given bibliographic dataset. 
-<BLANKLINE>
-- 'OCC' is the number of documents published.  
-<BLANKLINE>
-- 'local_citations' are the local citations in the dataset.
-<BLANKLINE>
-- 'global_citations' are the citations received 
+Imagine that you are a researcher analyzing a bibliographic dataset. The table below provides data on top 20 most local cited organizations in the references of the documents in the dataset ('local_citations' column). Use the information in the table to draw conclusions about the impact and relevance of the reseach published by the cited organizations. In your analysis, be sure to describe in a clear and concise way, any findings or any patterns you observe, and identify any outliers or anomalies in the data. Limit your description to one paragraph with no more than 250 words.
 <BLANKLINE>
 | organizations                                                   |   local_citations |
 |:----------------------------------------------------------------|------------------:|
@@ -64,13 +56,8 @@ organizations with more local_citations in a given bibliographic dataset.
 | Department of Finance and Banking                               |                 4 |
 | Zayed University                                                |                 4 |
 <BLANKLINE>
-Write a clear and concise paragraph describing the main findings and any 
-important trends or patterns you notice. 
-<BLANKLINE>
-Limit your description to a paragraph with no more than 250 words.        
 <BLANKLINE>
 <BLANKLINE>
-
     
 """
 from ...vantagepoint.report.chart import chart
@@ -89,7 +76,7 @@ def most_local_cited_organizations(
 ):
     """Most Local Cited Organizations (from Reference Lists)."""
 
-    return chart(
+    obj = chart(
         criterion="organizations",
         directory=directory,
         database=database,
@@ -104,3 +91,24 @@ def most_local_cited_organizations(
         plot=plot,
         **filters,
     )
+
+    obj.prompt_ = _create_prompt(obj.table_)
+
+    return obj
+
+
+def _create_prompt(table):
+    return f"""
+Imagine that you are a researcher analyzing a bibliographic dataset. The table \
+below provides data on top {table.shape[0]} most local cited organizations in the \
+references of the documents in the dataset ('local_citations' column). Use the \
+information in the table to draw conclusions about the impact and relevance of \
+the reseach published by the cited organizations. In your analysis, be sure \
+to describe in a clear and concise way, any findings or any patterns you \
+observe, and identify any outliers or anomalies in the data. \
+Limit your description to one paragraph with no more than 250 words.
+
+{table.to_markdown()}
+
+
+"""
