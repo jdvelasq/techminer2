@@ -20,9 +20,9 @@ Annual Scientific Production
 year              
 2016    1        1
 2017    4        5
-2021    5       10
-2022   12       22
-2023    2       24
+2018    3        8
+2019    6       14
+2020   14       28
 
 
 >>> print(r.prompt_)
@@ -33,9 +33,12 @@ Imagine that you are a researcher analyzing a bibliographic dataset. The table b
 |-------:|------:|----------:|
 |   2016 |     1 |         1 |
 |   2017 |     4 |         5 |
-|   2021 |     5 |        10 |
-|   2022 |    12 |        22 |
-|   2023 |     2 |        24 |
+|   2018 |     3 |         8 |
+|   2019 |     6 |        14 |
+|   2020 |    14 |        28 |
+|   2021 |    10 |        38 |
+|   2022 |    12 |        50 |
+|   2023 |     2 |        52 |
 <BLANKLINE>
 <BLANKLINE>
 
