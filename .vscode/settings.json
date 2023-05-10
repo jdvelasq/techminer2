@@ -1,12 +1,15 @@
 {
-    "isort.args": [
-        "--profile=black",
-    ],
     "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnSave": true,
         "editor.codeActionsOnSave": {
             "source.organizeImports": true
-        }
+        },
     },
+    "isort.args": [
+        "--profile",
+        "black"
+    ],
     "editor.formatOnSave": true,
     "debug.console.fontSize": 11,
     "python.testing.unittestEnabled": false,
