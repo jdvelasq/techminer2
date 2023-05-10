@@ -24,11 +24,11 @@ Most Frequent Words
 
 >>> r.table_.head()
 author_keywords
-regtech                  12
-regulatory technology     4
-fintech                   3
-financial regulation      3
-sandbox                   2
+regtech                  28
+fintech                  12
+regulatory technology     7
+compliance                7
+regulation                5
 Name: OCC, dtype: int64
 
 
@@ -36,28 +36,28 @@ Name: OCC, dtype: int64
 <BLANKLINE>
 Imagine that you are a researcher analyzing a bibliographic dataset. The table below provides data on top 20 author_keywords with highest frequency. The column 'OCC' represents the number of documents on which each item in 'author_keywords' appears. Use the the information in the table to draw conclusions about the frequency of the author_keywords. In your analysis, be sure to describe in a clear and concise way, any findings or any patterns you observe, and identify any outliers or anomalies in the data. Limit your description to one paragraph with no more than 250 words.
 <BLANKLINE>
-| author_keywords            |   OCC |
-|:---------------------------|------:|
-| regtech                    |    12 |
-| regulatory technology      |     4 |
-| fintech                    |     3 |
-| financial regulation       |     3 |
-| sandbox                    |     2 |
-| innovation                 |     2 |
-| financial services         |     2 |
-| regulation                 |     2 |
-| blockchain                 |     2 |
-| reporting                  |     2 |
-| suptech                    |     2 |
-| compliance                 |     2 |
-| china                      |     1 |
-| financial development      |     1 |
-| smart treasury             |     1 |
-| regulations and compliance |     1 |
-| coronavirus                |     1 |
-| digital technologies       |     1 |
-| resale price maintenance   |     1 |
-| competition law            |     1 |
+| author_keywords         |   OCC |
+|:------------------------|------:|
+| regtech                 |    28 |
+| fintech                 |    12 |
+| regulatory technology   |     7 |
+| compliance              |     7 |
+| regulation              |     5 |
+| financial services      |     4 |
+| financial regulation    |     4 |
+| artificial intelligence |     4 |
+| anti-money laundering   |     3 |
+| risk management         |     3 |
+| innovation              |     3 |
+| blockchain              |     3 |
+| suptech                 |     3 |
+| semantic technologies   |     2 |
+| data protection         |     2 |
+| smart contracts         |     2 |
+| charitytech             |     2 |
+| english law             |     2 |
+| gdpr                    |     2 |
+| data protection officer |     2 |
 <BLANKLINE>
 <BLANKLINE>
 
