@@ -20,20 +20,17 @@ def word_cloud_for_indicators(
     x_mask, y_mask = np.ogrid[:300, :300]
     mask = (x_mask - 150) ** 2 + (y_mask - 150) ** 2 > 130**2
     mask = 255 * mask.astype(int)
-    wc = WordCloud(background_color="white", repeat=True, mask=mask, colormap="Greys")
 
-    text = {key: value for key, value in zip(dataframe.index, dataframe[metric])}
-    wc.generate_from_frequencies(text)
-    wc.recolor(color_func=_recolor)
+    wordcloud = WordCloud(background_color="white", repeat=True, mask=mask)
 
-    fig = plt.Figure(figsize=figsize)
-    # axs = fig.subplots()
-    # axs.imshow(wc, interpolation="bilinear")
-    # axs.set_axis_off()
-    # axs.set_title(title)
+    text = dict(zip(dataframe.index, dataframe[metric]))
+    wordcloud.generate_from_frequencies(text)
+    wordcloud.recolor(color_func=_recolor)
 
-    plt.imshow(wc, interpolation="bilinear")
+    plt.Figure(figsize=figsize)
+    plt.imshow(wordcloud, interpolation="bilinear")
     plt.axis("off")
     plt.title(title)
+    plt.tight_layout(pad=0)
 
-    return fig
+    return plt.gcf()
