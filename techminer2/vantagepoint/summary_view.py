@@ -8,11 +8,11 @@ Summary View
 >>> from techminer2 import vantagepoint
 >>> vantagepoint.summary_view(directory).head()
            column  number of terms coverage (%)
-0        abstract               23       95.83%
-1  abstract_words               22       91.67%
-2    affiliations               24      100.00%
-3          art_no                5       20.83%
-4         article               24      100.00%
+0        abstract               48       92.31%
+1  abstract_words               47       90.38%
+2    affiliations               52      100.00%
+3          art_no                8       15.38%
+4         article               52      100.00%
 
 """
 import pandas as pd

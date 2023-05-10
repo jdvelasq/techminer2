@@ -34,30 +34,28 @@ Co-Word Analysis
 
 
 
->>> cwa.communities_
-                           CL_00  ...                         CL_04
-0   blockchain technology 02:021  ...  disruptive innovation 02:154
-1         data protection 02:027  ...    market participants 02:154
-2        digital identity 03:185  ...      regulatory system 02:154
-3      distributed ledger 02:022  ...                              
-4     financial stability 02:154  ...                              
-5        money laundering 02:017  ...                              
-6        operational risk 02:021  ...                              
-7   semantic technologies 02:041  ...                              
-8                                 ...                              
-9                                 ...                              
-10                                ...                              
-11                                ...                              
-12                                ...                              
-13                                ...                              
-14                                ...                              
-15                                ...                              
-16                                ...                              
-17                                ...                              
-18                                ...                              
-<BLANKLINE>
-[19 rows x 5 columns]
-
+>>> print(cwa.communities_.to_markdown())
+|    | CL_00                        | CL_01                               | CL_02                          | CL_03              | CL_04                        |
+|---:|:-----------------------------|:------------------------------------|:-------------------------------|:-------------------|:-----------------------------|
+|  0 | blockchain technology 02:021 | blockchain 03:005                   | anti-money laundering 05:024   | charitytech 02:017 | disruptive innovation 02:154 |
+|  1 | data protection 02:027       | business models 03:156              | artificial intelligence 08:036 | english law 02:017 | market participants 02:154   |
+|  2 | digital identity 03:185      | cost savings 03:014                 | compliance 07:030              |                    | regulatory system 02:154     |
+|  3 | distributed ledger 02:022    | digital innovation 04:165           | compliance costs 06:033        |                    |                              |
+|  4 | financial stability 02:154   | digital transformation 03:015       | finance 07:017                 |                    |                              |
+|  5 | money laundering 02:017      | financial markets 04:151            | financial crisis 07:058        |                    |                              |
+|  6 | operational risk 02:021      | financial services 06:195           | financial institutions 16:198  |                    |                              |
+|  7 | semantic technologies 02:041 | financial services industry 05:315  | financial regulation 12:395    |                    |                              |
+|  8 |                              | financial system 06:339             | financial sector 07:169        |                    |                              |
+|  9 |                              | financial technology 06:173         | fintech 12:249                 |                    |                              |
+| 10 |                              | innovation 03:012                   | global financial crisis 06:177 |                    |                              |
+| 11 |                              | regulation 05:164                   | information technology 06:177  |                    |                              |
+| 12 |                              | regulation technology 03:001        | machine learning 05:014        |                    |                              |
+| 13 |                              | regulatory framework 03:002         | new technologies 05:012        |                    |                              |
+| 14 |                              | regulatory requirements 03:002      | regtech 28:329                 |                    |                              |
+| 15 |                              | smart contracts 04:024              | regulatory compliance 15:232   |                    |                              |
+| 16 |                              | suptech 03:004                      | regulatory technology 20:274   |                    |                              |
+| 17 |                              | systematic literature review 03:004 | risk management 05:019         |                    |                              |
+| 18 |                              |                                     | technological solutions 06:016 |                    |                              |
 
 
 
@@ -182,7 +180,6 @@ def co_word_analysis(
 
 
 def _get_manifold_map(matrix, clustering_method, manifold_method):
-
     transformed_matrix = manifold_method.fit_transform(matrix)
 
     nodes = matrix.index.to_list()

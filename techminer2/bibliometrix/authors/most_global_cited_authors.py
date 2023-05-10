@@ -20,39 +20,39 @@
     
 >>> r.table_.head()
 authors
-Arner DW             185
-Buckley RP           185
-Barberis JN          161
-Anagnostopoulos I    153
-Butler T/1            41
+Arner DW       161
+Barberis JN    161
+Buckley RP     161
+Baxter LG       30
+Muganyi T       13
 Name: global_citations, dtype: int64
 
 >>> print(r.prompt_)
 <BLANKLINE>
 Imagine that you are a researcher analyzing a bibliographic dataset. The table below provides data on top 20 cited authors with highest number of total citations in the dataset ('global_citations' column). Use the information in the table to draw conclusions about the impact and relevance of the reseach published by the authors in the dataset. In your analysis, be sure to describe in a clear and concise way, any findings or any patterns you observe, and identify any outliers or anomalies in the data. Limit your description to one paragraph with no more than 250 words.
 <BLANKLINE>
-| authors           |   global_citations |
-|:------------------|-------------------:|
-| Arner DW          |                185 |
-| Buckley RP        |                185 |
-| Barberis JN       |                161 |
-| Anagnostopoulos I |                153 |
-| Butler T/1        |                 41 |
-| OBrien L          |                 33 |
-| Baxter LG         |                 30 |
-| Zetzsche DA       |                 24 |
-| Weber RH          |                 24 |
-| Stieber H         |                 21 |
-| Saxton K          |                 21 |
-| Breymann W        |                 21 |
-| Kavassalis P      |                 21 |
-| Gross FJ          |                 21 |
-| Hamdan A          |                 18 |
-| Turki M           |                 18 |
-| Lin W             |                 17 |
-| Singh C           |                 17 |
-| Brennan R         |                 14 |
-| Crane M           |                 14 |
+| authors             |   global_citations |
+|:--------------------|-------------------:|
+| Arner DW            |                161 |
+| Barberis JN         |                161 |
+| Buckley RP          |                161 |
+| Baxter LG           |                 30 |
+| Muganyi T           |                 13 |
+| Sun H-P             |                 13 |
+| Taghizadeh-Hesary F |                 13 |
+| Yan L               |                 13 |
+| Yin Y               |                 13 |
+| Gong X              |                 13 |
+| von Solms J         |                 11 |
+| Nicholls R          |                  3 |
+| Singh C             |                  3 |
+| Lin W               |                  3 |
+| Ye Z                |                  3 |
+| Zhao L              |                  3 |
+| Cruz Rambaud S      |                  3 |
+| Exposito Gazquez A  |                  3 |
+| Mousaeirad S        |                  2 |
+| Rouhollahi Z        |                  2 |
 <BLANKLINE>
 <BLANKLINE>
 <BLANKLINE>

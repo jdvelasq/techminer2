@@ -20,9 +20,9 @@ Annual Scientific Production
 year              
 2016    1        1
 2017    4        5
-2018    3        8
-2019    6       14
-2020   14       28
+2021    5       10
+2022   12       22
+2023    2       24
 
 
 >>> print(r.prompt_)
@@ -33,19 +33,43 @@ Imagine that you are a researcher analyzing a bibliographic dataset. The table b
 |-------:|------:|----------:|
 |   2016 |     1 |         1 |
 |   2017 |     4 |         5 |
-|   2018 |     3 |         8 |
-|   2019 |     6 |        14 |
-|   2020 |    14 |        28 |
-|   2021 |    10 |        38 |
-|   2022 |    12 |        50 |
-|   2023 |     2 |        52 |
+|   2021 |     5 |        10 |
+|   2022 |    12 |        22 |
+|   2023 |     2 |        24 |
 <BLANKLINE>
 <BLANKLINE>
+
+/Volumes/GitHub/techminer2/techminer2/bibliometrix/overview/annual_scientific_production.py:28: DocTestFailure
+019       OCC  cum_OCC
+020 year              
+021 2016    1        1
+022 2017    4        5
+023 2021    5       10
+024 2022   12       22
+025 2023    2       24
+026 
+027 
+028 >>> print(r.prompt_)
+Expected nothing
+Got:
+    <BLANKLINE>
+    Imagine that you are a researcher analyzing a bibliographic dataset. The table below provides data on the annual scientific production. Use the table to draw conclusions about annual research productivity and the cumulative productivity. The column 'OCC' is the number of documents published in a given year. The column 'cum_OCC' is the cumulative number of documents published up to a given year. The information in the table is used to create a line plot of number of publications per year. In your analysis, be sure to describe in a clear and concise way, any trends or patterns you observe, and identify any outliers or anomalies in the data. Limit your description to one paragraph with no more than 250 words.
+    <BLANKLINE>
+    |   year |   OCC |   cum_OCC |
+    |-------:|------:|----------:|
+    |   2016 |     1 |         1 |
+    |   2017 |     4 |         5 |
+    |   2021 |     5 |        10 |
+    |   2022 |    12 |        22 |
+    |   2023 |     2 |        24 |
+    <BLANKLINE>
+    <BLANKLINE>
 
 
 
 """
 from dataclasses import dataclass
+
 from ..._lib._time_plot import time_plot
 from ...techminer.indicators.indicators_by_year import indicators_by_year
 
