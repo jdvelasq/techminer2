@@ -18,42 +18,14 @@ Line Chart
 
     <iframe src="../../_static/vantagepoint__line_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
->>> print(r.prompt_)
-<BLANKLINE>
-Act as a researcher realizing a bibliometric analysis. Analyze the following 
-table, which provides data corresponding to the top 15
-author_keywords with more OCC in a given bibliographic dataset. 
-<BLANKLINE>
-- 'OCC' is the number of documents published.  
-<BLANKLINE>
-- 'local_citations' are the local citations in the dataset.
-<BLANKLINE>
-- 'global_citations' are the citations received 
-<BLANKLINE>
-| author_keywords         |   OCC |
-|:------------------------|------:|
-| regtech                 |    28 |
-| fintech                 |    12 |
-| regulatory technology   |     7 |
-| compliance              |     7 |
-| regulation              |     5 |
-| financial services      |     4 |
-| financial regulation    |     4 |
-| artificial intelligence |     4 |
-| anti-money laundering   |     3 |
-| risk management         |     3 |
-| innovation              |     3 |
-| blockchain              |     3 |
-| suptech                 |     3 |
-| semantic technologies   |     2 |
-| data protection         |     2 |
-<BLANKLINE>
-Write a clear and concise paragraph describing the main findings and any 
-important trends or patterns you notice. 
-<BLANKLINE>
-Limit your description to a paragraph with no more than 250 words.        
-<BLANKLINE>
-<BLANKLINE>
+>>> r.table_.head()
+author_keywords
+regtech                  28
+fintech                  12
+regulatory technology     7
+compliance                7
+regulation                5
+Name: OCC, dtype: int64
 
 
 """

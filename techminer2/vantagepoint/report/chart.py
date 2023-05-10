@@ -1,5 +1,6 @@
 """Most frequent items in a databases"""
 from dataclasses import dataclass
+
 from ..._plots.bar_plot import bar_plot
 from ..._plots.cleveland_plot import cleveland_plot
 from ..._plots.column_plot import column_plot
@@ -80,25 +81,7 @@ def chart(
         title=title,
     )
 
-    # _create_prompt(criterion, metric, result)
-
     return result
-
-
-# def _create_prompt(criterion, metric, result):
-#     result.prompt_ = f"""
-# Imagine that you are a researcher analyzing a bibliographic dataset. The table \
-# below provides data on top {result.table_.shape[0]} {criterion} with highest {metric} \
-# metric. Use the the information in the table to draw conclusions \
-# about the metric. In your analysis, be sure to describe in a \
-# clear and concise way, any findings or any patterns you observe, and identify \
-# any outliers or anomalies in the data. Limit your description to one paragraph \
-# with no more than 250 words.
-
-# {result.table_.to_markdown()}
-
-
-# """
 
 
 # Sort the indicators dataframe based on the given metric (OCC, local_citations, or global_citations).

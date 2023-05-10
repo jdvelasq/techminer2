@@ -8,15 +8,25 @@ Treemap
 >>> file_name = "sphinx/_static/vantagepoint__treemap.html"
 
 >>> from techminer2 import vantagepoint
->>> vantagepoint.report.treemap(
+>>> r = vantagepoint.report.treemap(
 ...    criterion='author_keywords',
 ...    topic_min_occ=3,
 ...    directory=directory,
-... ).write_html(file_name)
+... )
+>>> r.plot_.write_html(file_name)
 
 .. raw:: html
 
     <iframe src="../../_static/vantagepoint__treemap.html" height="600px" width="100%" frameBorder="0"></iframe>
+
+>>> r.table_.head()    
+author_keywords
+regtech                  28
+fintech                  12
+regulatory technology     7
+compliance                7
+regulation                5
+Name: OCC, dtype: int64
 
 """
 from .chart import chart
@@ -51,4 +61,4 @@ def treemap(
         title=title,
         plot="treemap",
         **filters,
-    ).plot_
+    )
