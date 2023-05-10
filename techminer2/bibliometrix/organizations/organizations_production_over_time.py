@@ -39,8 +39,7 @@ Organizations' Production over Time
 
 >>> print(r.prompt_)
 <BLANKLINE>
-Imagine that you are a researcher analyzing a bibliographic dataset. The table below provides data on document production by year per organization for the top 10 most productive organizations in the dataset. Use the information in the table to draw conclusions about the productivity per year of the organizations. The final part of the organization name contains two numbers separated by a colon. The first \ 
-is the total number of documents of the organization, and the second is the total number of citations of the organization. In your analysis, be sure to describe in a clear and concise way, any findings or any patterns you observe, and identify any outliers or anomalies in the data. Limit your description to one paragraph with no more than 250 words.
+Imagine that you are a researcher analyzing a bibliographic dataset. The table below provides data on document production by year per organization for the top 10 most productive organizations in the dataset. Use the information in the table to draw conclusions about the productivity per year of the organizations. The final part of the organization name contains two numbers separated by a colon. The first is the total number of documents of the organization, and the second is the total number of citations of the organization. In your analysis, be sure to describe in a clear and concise way, any findings or any patterns you observe, and identify any outliers or anomalies in the data. Limit your description to one paragraph with no more than 250 words.
 <BLANKLINE>
 | Organizations                          |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |
 |:---------------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|
@@ -136,7 +135,7 @@ Imagine that you are a researcher analyzing a bibliographic dataset. The table \
 below provides data on document production by year per organization for the top {table.shape[0]} \
 most productive organizations in the dataset. Use the information in the table to \
 draw conclusions about the productivity per year of the organizations. The final \
-part of the organization name contains two numbers separated by a colon. The first \ 
+part of the organization name contains two numbers separated by a colon. The first \
 is the total number of documents of the organization, and the second is the total \
 number of citations of the organization. \
 In your analysis, be sure to describe in a clear and concise way, any findings \
