@@ -6,43 +6,62 @@ ScientoPy Time Line Plot.
 
 
 >>> directory = "data/regtech/"
-
+>>> from techminer2 import scientopy
 
 >>> file_name = "sphinx/_static/scientopy__time_line-1.html"
->>> from techminer2 import scientopy
->>> time_line = scientopy.time_line(
+>>> r = scientopy.time_line(
 ...     criterion="author_keywords",
 ...     topics_length=5,
 ...     directory=directory,
 ... )
->>> time_line.plot_.write_html(file_name)
+>>> r.plot_.write_html(file_name)
 
 .. raw:: html
 
     <iframe src="../_static/scientopy__time_line-1.html" height="800px" width="100%" frameBorder="0"></iframe>
 
 
+>>> r.table_.head()
+   Year Author Keywords  OCC
+0  2017      compliance    0
+1  2018      compliance    0
+2  2019      compliance    1
+3  2020      compliance    3
+4  2021      compliance    1
 
+>>> print(r.prompt_)
+<BLANKLINE>
+Imagine that you are a researcher analyzing a bibliographic dataset. The table below provides data on top most frequent 5 author_keywords in the dataset. The columns in the table are the publication years. The table contains the number of documents in each year by item in 'author_keywords' .Use the information in the table to draw conclusions about importance and publication frequency of the 'author_keywords'. In your analysis, be sure to describe in a clear and concise way, any findings or any patterns you observe, and identify any outliers or anomalies in the data. Limit your description to one paragraph with no more than 250 words.
+<BLANKLINE>
+<BLANKLINE>
+| Author Keywords       |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
+|:----------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
+| compliance            |      0 |      0 |      1 |      3 |      1 |      1 |      1 |
+| fintech               |      0 |      2 |      4 |      3 |      1 |      2 |      0 |
+| regtech               |      2 |      3 |      4 |      8 |      3 |      6 |      2 |
+| regulation            |      0 |      2 |      0 |      1 |      1 |      1 |      0 |
+| regulatory technology |      0 |      0 |      0 |      2 |      3 |      2 |      0 |
+<BLANKLINE>
+<BLANKLINE>
 
 **Time Filter.**
 
 >>> file_name = "sphinx/_static/scientopy__time_line-3.html"
->>> from techminer2 import scientopy
->>> time_line = scientopy.time_line(
+>>> r = scientopy.time_line(
 ...     criterion="author_keywords",
 ...     topics_length=5,
 ...     start_year=2018,
 ...     end_year=2021,
 ...     directory=directory,
 ... )
->>> time_line.plot_.write_html(file_name)
+>>> r.plot_.write_html(file_name)
 
 .. raw:: html
 
     <iframe src="../_static/scientopy__time_line-3.html" height="800px" width="100%" frameBorder="0"></iframe>
 
 
->>> time_line.table_.head()
+>>> r.table_.head()
    Year Author Keywords  OCC
 0  2018      compliance    0
 1  2019      compliance    1
@@ -55,13 +74,12 @@ ScientoPy Time Line Plot.
 **Custom Topics Extraction.**
 
 >>> file_name = "sphinx/_static/scientopy__time_line-4.html"
->>> from techminer2 import scientopy
->>> time_line = scientopy.time_line(
+>>> r = scientopy.time_line(
 ...     criterion="author_keywords",
 ...     custom_topics=["fintech", "blockchain", "financial regulation", "machine learning"],
 ...     directory=directory,
 ... )
->>> time_line.plot_.write_html(file_name)
+>>> r.plot_.write_html(file_name)
 
 .. raw:: html
 
@@ -69,8 +87,7 @@ ScientoPy Time Line Plot.
 
 
 >>> file_name = "sphinx/_static/scientopy__time_line-5.html"
->>> from techminer2 import scientopy
->>> time_line = scientopy.time_line(
+>>> r = scientopy.time_line(
 ...     criterion="author_keywords",
 ...     topics_length=5,
 ...     trend_analysis=True,
@@ -78,19 +95,33 @@ ScientoPy Time Line Plot.
 ...     end_year=2021,
 ...     directory=directory,
 ... )
->>> time_line.plot_.write_html(file_name)
+>>> r.plot_.write_html(file_name)
 
 .. raw:: html
 
     <iframe src="../_static/scientopy__time_line-5.html" height="800px" width="100%" frameBorder="0"></iframe>
 
 
-
+>>> print(r.prompt_)
+<BLANKLINE>
+Imagine that you are a researcher analyzing a bibliographic dataset. The table below provides data on top 5 'author_keywords' with the highest average growth rate in the dataset. The columns in the table are the publication years. The table contains the number of documents in each year by item in 'author_keywords' .Use the information in the table to draw conclusions about importance and publication frequency of the 'author_keywords'. In your analysis, be sure to describe in a clear and concise way, any findings or any patterns you observe, and identify any outliers or anomalies in the data. Limit your description to one paragraph with no more than 250 words.
+<BLANKLINE>
+<BLANKLINE>
+| Author Keywords       |   2018 |   2019 |   2020 |   2021 |
+|:----------------------|-------:|-------:|-------:|-------:|
+| accountability        |      0 |      0 |      1 |      1 |
+| anti-money laundering |      0 |      0 |      1 |      2 |
+| gdpr                  |      0 |      0 |      1 |      1 |
+| regulation            |      2 |      0 |      1 |      1 |
+| regulatory technology |      0 |      0 |      2 |      3 |
+<BLANKLINE>
+<BLANKLINE>
 
 
 """
 ## ScientoPy // Time Line
 import textwrap
+from dataclasses import dataclass
 
 import numpy as np
 import pandas as pd
@@ -105,10 +136,11 @@ from .bar import _filter_indicators_by_custom_topics
 TEXTLEN = 40
 
 
+@dataclass(init=False)
 class _Results:
-    def __init__(self):
-        self.table_ = None
-        self.plot_ = None
+    plot_ = None
+    table_ = None
+    prompt_ = None
 
 
 def time_line(
@@ -214,9 +246,50 @@ def time_line(
 
     results = _Results()
     results.table_ = indicators
-
     results.plot_ = _make_plot(column_, results.table_, title)
+    results.prompt_ = _create_prompt(
+        indicators.pivot(index=column_, columns="Year", values="OCC"),
+        criterion,
+        trend_analysis,
+    )
+
     return results
+
+
+def _create_prompt(table, criterion, trend_analysis):
+    if trend_analysis is True:
+        return f"""
+Imagine that you are a researcher analyzing a bibliographic dataset. \
+The table below provides data on top {int(table.shape[0])} '{criterion}' \
+with the highest average growth rate in the dataset. \
+The columns in the table are the publication years. \
+The table contains the number of documents in each year by item in '{criterion}' .\
+Use the information in the table to draw conclusions about importance and \
+publication frequency of the '{criterion}'. \
+In your analysis, be sure to describe in a clear and concise way, any findings or any patterns you \
+observe, and identify any outliers or anomalies in the data. \
+Limit your description to one paragraph with no more than 250 words.
+
+
+{table.to_markdown()}
+
+"""
+    else:
+        return f"""
+Imagine that you are a researcher analyzing a bibliographic dataset. \
+The table below provides data on top most frequent {int(table.shape[0])} {criterion} in the dataset. \
+The columns in the table are the publication years. \
+The table contains the number of documents in each year by item in '{criterion}' .\
+Use the information in the table to draw conclusions about importance and \
+publication frequency of the '{criterion}'. \
+In your analysis, be sure to describe in a clear and concise way, any findings or any patterns you \
+observe, and identify any outliers or anomalies in the data. \
+Limit your description to one paragraph with no more than 250 words.
+
+
+{table.to_markdown()}
+
+"""
 
 
 # def _make_table(
@@ -289,7 +362,6 @@ def time_line(
 
 
 def _make_plot(criterion, indicators, title):
-
     fig = px.line(
         indicators,
         x="Year",
