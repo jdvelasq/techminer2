@@ -10,13 +10,14 @@ Abstracts Report
 
 >>> techminer.reports.abstracts_report(
 ...     criterion="author_keywords",
-...     custom_topics=[""],
+...     custom_topics=["regulatory technology", "regtech"],
 ...     directory=directory,
 ... )
-
+--INFO-- The file 'data/regtech/reports/abstracts_report.txt' was created
 
 """
 import os.path
+import sys
 import textwrap
 
 import pandas as pd
@@ -103,9 +104,9 @@ def _sort_by_custom_terms(criterion, custom_topics, records):
 
 
 def _write_report(criterion, file_name, use_textwrap, directory, records):
-    with open(
-        os.path.join(directory, "reports", file_name), "w", encoding="utf-8"
-    ) as out_file:
+    file_path = os.path.join(directory, "reports", file_name)
+
+    with open(file_path, "w", encoding="utf-8") as out_file:
         counter = 0
 
         text_article = ""
@@ -177,4 +178,4 @@ def _write_report(criterion, file_name, use_textwrap, directory, records):
 
             counter += 1
 
-    # sys.stdout.write("--INFO-- Abstrats Report generated.\n")
+    sys.stdout.write(f"--INFO-- The file '{file_path}' was created\n")
