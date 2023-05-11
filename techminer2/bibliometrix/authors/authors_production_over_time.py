@@ -67,6 +67,16 @@ Authors' Production over Time
 | 19 | Sarea A 2:012    |   2022 |     1 |         2 |                  1 |                 0 |     2 |                       0.5   |                      0     |
 
 
+>>> print(r.production_.head().to_markdown())
+| Authors          |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |
+|:-----------------|-------:|-------:|-------:|-------:|-------:|-------:|
+| Arner DW 3:185   |      2 |      0 |      0 |      1 |      0 |      0 |
+| Brennan R 2:014  |      0 |      0 |      0 |      1 |      1 |      0 |
+| Buckley RP 3:185 |      2 |      0 |      0 |      1 |      0 |      0 |
+| Butler T/1 2:041 |      0 |      1 |      1 |      0 |      0 |      0 |
+| Crane M 2:014    |      0 |      0 |      0 |      1 |      1 |      0 |
+
+
 
 >>> print(r.prompt_)
 <BLANKLINE>
@@ -90,21 +100,11 @@ is the total number of documents of the author, and the second is the total numb
 <BLANKLINE>
 
 """
-from dataclasses import dataclass
-
 from ...techminer.indicators.indicators_by_topic_per_year import (
     indicators_by_topic_per_year,
 )
 from .._documents_per import _documents_per
 from .._production_over_time import _production_over_time
-
-
-@dataclass(init=False)
-class _Results:
-    plot_ = None
-    prompt_ = None
-    production_per_year_ = None
-    documents_per_author_ = None
 
 
 def authors_production_over_time(
@@ -118,8 +118,6 @@ def authors_production_over_time(
     **filters,
 ):
     """Authors production over time."""
-
-    results = _Results()
 
     results = _production_over_time(
         criterion="authors",
@@ -157,6 +155,7 @@ def authors_production_over_time(
     table = table[["Authors", "Year", "OCC"]]
     table = table.pivot(index="Authors", columns="Year", values="OCC")
     table = table.fillna(0)
+    results.production_ = table
     results.prompt_ = _create_prompt(table)
 
     return results

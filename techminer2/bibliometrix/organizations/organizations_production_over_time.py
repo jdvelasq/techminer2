@@ -37,6 +37,25 @@ Organizations' Production over Time
 | ('---Deloitte LLP', 2018)                                             |     1 |         1 |                  8 |                 5 |     6 |                       1.333 |                      0.833 |
 
 
+>>> print(r.table_.head().to_markdown())
+|    | Organizations                 |   Year |   OCC |   cum_OCC |   Global Citations |   Local Citations |   Age |   Global Citations Per Year |   Local Citations Per Year |
+|---:|:------------------------------|-------:|------:|----------:|-------------------:|------------------:|------:|----------------------------:|---------------------------:|
+|  0 | University of Hong Kong 3:185 |   2017 |     2 |         2 |                161 |                 3 |     7 |                      23     |                      0.429 |
+|  1 | University College Cork 3:041 |   2019 |     1 |         2 |                 33 |                14 |     5 |                       6.6   |                      2.8   |
+|  2 | University of Hong Kong 3:185 |   2020 |     1 |         3 |                 24 |                 5 |     4 |                       6     |                      1.25  |
+|  3 | Ahlia University 3:019        |   2020 |     1 |         1 |                 11 |                 4 |     4 |                       2.75  |                      1     |
+|  4 | University College Cork 3:041 |   2018 |     1 |         1 |                  8 |                 5 |     6 |                       1.333 |                      0.833 |
+
+>>> print(r.production_.head().to_markdown())
+| Organizations                          |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |
+|:---------------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|
+| ---3PB 1:003                           |      0 |      0 |      0 |      0 |      0 |      1 |
+| ---FinTech HK 2:161                    |      2 |      0 |      0 |      0 |      0 |      0 |
+| ---School of Electrical Engineering... |      0 |      0 |      0 |      0 |      0 |      2 |
+| Ahlia University 3:019                 |      0 |      0 |      0 |      1 |      1 |      1 |
+| Coventry University 2:017              |      0 |      0 |      0 |      1 |      0 |      1 |
+
+
 >>> print(r.prompt_)
 <BLANKLINE>
 Imagine that you are a researcher analyzing a bibliographic dataset. The table below provides data on document production by year per organization for the top 10 most productive organizations in the dataset. Use the information in the table to draw conclusions about the productivity per year of the organizations. The final part of the organization name contains two numbers separated by a colon. The first is the total number of documents of the organization, and the second is the total number of citations of the organization. In your analysis, be sure to describe in a clear and concise way, any findings or any patterns you observe, and identify any outliers or anomalies in the data. Limit your description to one paragraph with no more than 250 words.
@@ -59,21 +78,11 @@ Imagine that you are a researcher analyzing a bibliographic dataset. The table b
 
 
 """
-from dataclasses import dataclass
-
 from ...techminer.indicators.indicators_by_topic_per_year import (
     indicators_by_topic_per_year,
 )
 from .._documents_per import _documents_per
 from .._production_over_time import _production_over_time
-
-
-@dataclass(init=False)
-class _Results:
-    plot_ = None
-    prompt_ = None
-    production_per_year_ = None
-    documents_per_organization_ = None
 
 
 def organizations_production_over_time(
@@ -124,6 +133,7 @@ def organizations_production_over_time(
     table = table[["Organizations", "Year", "OCC"]]
     table = table.pivot(index="Organizations", columns="Year", values="OCC")
     table = table.fillna(0)
+    results.production_ = table
     results.prompt_ = _create_prompt(table)
 
     return results

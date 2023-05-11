@@ -39,6 +39,27 @@ Countries' Production over Time
 | ('Bahrain', 2021)   |     2 |         3 |                  7 |                 1 |     3 |                       2.333 |                      0.333 |
 
 
+
+>>> print(r.production_.head().to_markdown())
+| Countries       |   2016 |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
+|:----------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
+| Australia 7:199 |      0 |      2 |      0 |      0 |      3 |      2 |      0 |      0 |
+| Bahrain 4:019   |      0 |      0 |      0 |      0 |      1 |      2 |      1 |      0 |
+| China 5:027     |      0 |      1 |      0 |      0 |      0 |      0 |      3 |      1 |
+| Germany 4:051   |      0 |      0 |      1 |      0 |      2 |      0 |      1 |      0 |
+| Hong Kong 3:185 |      0 |      2 |      0 |      0 |      1 |      0 |      0 |      0 |
+
+
+>>> print(r.table_.head().to_markdown())
+|    | Countries            |   Year |   OCC |   cum_OCC |   Global Citations |   Local Citations |   Age |   Global Citations Per Year |   Local Citations Per Year |
+|---:|:---------------------|-------:|------:|----------:|-------------------:|------------------:|------:|----------------------------:|---------------------------:|
+|  0 | United Kingdom 7:199 |   2018 |     3 |         3 |                182 |                30 |     6 |                      30.333 |                      5     |
+|  1 | Australia 7:199      |   2017 |     2 |         2 |                161 |                 3 |     7 |                      23     |                      0.429 |
+|  2 | Australia 7:199      |   2020 |     3 |         5 |                 33 |                 9 |     4 |                       8.25  |                      2.25  |
+|  3 | United Kingdom 7:199 |   2020 |     2 |         6 |                 14 |                 3 |     4 |                       3.5   |                      0.75  |
+|  4 | Australia 7:199      |   2021 |     2 |         7 |                  5 |                 3 |     3 |                       1.667 |                      1     |
+
+
 >>> print(r.prompt_)
 <BLANKLINE>
 Imagine that you are a researcher analyzing a bibliographic dataset. The table below provides data on document production by year per country for the top 10 most productive countries in the dataset. Use the information in the table to draw conclusions about the productivity per year of the countries. The final part of the country name contains two numbers separated by a colon. The first \ 
@@ -63,21 +84,11 @@ is the total number of documents of the country, and the second is the total num
 
 
 """
-from dataclasses import dataclass
-
 from ...techminer.indicators.indicators_by_topic_per_year import (
     indicators_by_topic_per_year,
 )
 from .._documents_per import _documents_per
 from .._production_over_time import _production_over_time
-
-
-@dataclass(init=False)
-class _Results:
-    plot_ = None
-    prompt_ = None
-    production_per_year_ = None
-    documents_per_country_ = None
 
 
 def countries_production_over_time(
@@ -128,6 +139,7 @@ def countries_production_over_time(
     table = table[["Countries", "Year", "OCC"]]
     table = table.pivot(index="Countries", columns="Year", values="OCC")
     table = table.fillna(0)
+    results.production_ = table
     results.prompt_ = _create_prompt(table)
 
     return results

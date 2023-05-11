@@ -36,7 +36,26 @@ Sources' Production over Time
 | ('COMPUTER', 2022)              |     1 |         1 |                  0 |                 0 |     2 |                       0     |                      0     |
 
 
+
+
 >>> print(r.table_.to_markdown())
+|    | Source Abbr                              |   Year |   OCC |   cum_OCC |   Global Citations |   Local Citations |   Age |   Global Citations Per Year |   Local Citations Per Year |
+|---:|:-----------------------------------------|-------:|------:|----------:|-------------------:|------------------:|------:|----------------------------:|---------------------------:|
+|  0 | J BANK REGUL 2:035                       |   2020 |     1 |         1 |                 24 |                 5 |     4 |                       6     |                      1.25  |
+|  1 | J BANK REGUL 2:035                       |   2021 |     1 |         2 |                 11 |                 4 |     3 |                       3.667 |                      1.333 |
+|  2 | J FINANC CRIME 2:013                     |   2020 |     1 |         1 |                 10 |                 3 |     4 |                       2.5   |                      0.75  |
+|  3 | J FINANC CRIME 2:013                     |   2022 |     1 |         2 |                  3 |                 1 |     2 |                       1.5   |                      0.5   |
+|  4 | FOSTER INNOV AND COMPET WITH FINTECH,... |   2020 |     2 |         2 |                  1 |                 1 |     4 |                       0.25  |                      0.25  |
+|  5 | STUD COMPUT INTELL 2:001                 |   2021 |     2 |         2 |                  1 |                 1 |     3 |                       0.333 |                      0.333 |
+|  6 | INT CONF INF TECHNOL SYST INNOV,...      |   2022 |     2 |         2 |                  0 |                 0 |     2 |                       0     |                      0     |
+|  7 | ROUTLEDGE HANDB OF FINANCIAL...          |   2021 |     2 |         2 |                  0 |                 0 |     3 |                       0     |                      0     |
+|  8 | J FINANCIAL DATA SCI 1:005               |   2019 |     1 |         1 |                  5 |                 1 |     5 |                       1     |                      0.2   |
+|  9 | J IND BUS ECON 1:001                     |   2022 |     1 |         1 |                  1 |                 0 |     2 |                       0.5   |                      0     |
+| 10 | PROC INT CONF ELECTRON BUS (ICEB) 1:001  |   2017 |     1 |         1 |                  1 |                 0 |     7 |                       0.143 |                      0     |
+| 11 | RES INT BUS FINANC 1:000                 |   2023 |     1 |         1 |                  0 |                 0 |     1 |                       0     |                      0     |
+
+
+>>> print(r.production_.to_markdown())
 | Source Abbr                              |   2017 |   2019 |   2020 |   2021 |   2022 |   2023 |
 |:-----------------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|
 | FOSTER INNOV AND COMPET WITH FINTECH,... |      0 |      0 |      2 |      0 |      0 |      0 |
@@ -72,22 +91,11 @@ Imagine that you are a researcher analyzing a bibliographic dataset. The table b
 
 
 """
-from dataclasses import dataclass
-
 from ...techminer.indicators.indicators_by_topic_per_year import (
     indicators_by_topic_per_year,
 )
 from .._documents_per import _documents_per
 from .._production_over_time import _production_over_time
-
-
-@dataclass(init=False)
-class _Results:
-    plot_ = None
-    prompt_ = None
-    table_ = None
-    production_per_year_ = None
-    documents_per_source_ = None
 
 
 def sources_production_over_time(
@@ -138,7 +146,7 @@ def sources_production_over_time(
     table = table[["Source Abbr", "Year", "OCC"]]
     table = table.pivot(index="Source Abbr", columns="Year", values="OCC")
     table = table.fillna(0)
-    results.table_ = table
+    results.production_ = table
     results.prompt_ = _create_prompt(table)
 
     return results
