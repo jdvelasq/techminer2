@@ -29,6 +29,16 @@ Country Dynamics
 |  3 |   2019 | United Kingdom |         4 |
 |  4 |   2020 | United Kingdom |         6 |
 
+>>> print(r.dynamics_.to_markdown())
+| countries      |   2016 |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
+|:---------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
+| Australia      |      0 |      2 |      2 |      2 |      5 |      7 |      7 |      7 |
+| China          |      0 |      1 |      1 |      1 |      1 |      1 |      4 |      5 |
+| Ireland        |      0 |      0 |      1 |      2 |      3 |      4 |      5 |      5 |
+| United Kingdom |      0 |      0 |      3 |      4 |      6 |      6 |      7 |      7 |
+| United States  |      1 |      1 |      2 |      4 |      4 |      4 |      5 |      6 |
+
+
 >>> print(r.prompt_)
 <BLANKLINE>
 Imagine that you are a researcher analyzing a bibliographic dataset. The table below provides data on cumulative document production by year per country for the top 5 most productive countries in the dataset. Use the information in the table to draw conclusions about the cumulative productivity per year of the countries. In your analysis, be sure to describe in a clear and concise way, any findings or any patterns you observe, and identify any outliers or anomalies in the data. Limit your description to one paragraph with no more than 250 words.
@@ -82,6 +92,7 @@ def country_dynamics(
     table = table[["countries", "year", "cum_OCC"]]
     table = table.pivot(index="countries", columns="year", values="cum_OCC")
     table = table.fillna(0)
+    results.dynamics_ = table
     results.prompt_ = _create_prompt(table)
 
     return results
