@@ -1,98 +1,51 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
   <title>techminer2.bibliometrix.sources.bradford_law &mdash; TechMiner2 0.1.0 documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../../_static/copybutton.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
-
-  
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/copybutton.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
         <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
         <script src="../../../../_static/jquery.js"></script>
         <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/doctools.js"></script>
         <script src="../../../../_static/clipboard.min.js"></script>
         <script src="../../../../_static/copybutton.js"></script>
+        <script src="../../../../_static/toggleprompt.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    
-    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
-
-    
+    <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
 
           
-            <a href="../../../../index.html" class="icon icon-home"> TechMiner2
           
-
-          
+          <a href="../../../../index.html" class="icon icon-home">
+            TechMiner2
           </a>
-
-          
-            
-            
               <div class="version">
                 0.1.0
               </div>
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../introduction/getting_started.html">Getting Started</a></li>
@@ -108,69 +61,30 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../scientopy/__index__.html">ScientoPy</a></li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../../index.html">TechMiner2</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
-        
-          <li><a href="../../../index.html">Module code</a> &raquo;</li>
-        
-      <li>techminer2.bibliometrix.sources.bradford_law</li>
-    
-    
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">techminer2.bibliometrix.sources.bradford_law</li>
       <li class="wy-breadcrumbs-aside">
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   <h1>Source code for techminer2.bibliometrix.sources.bradford_law</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Bradford&#39;s Law</span>
@@ -191,27 +105,28 @@
 <span class="sd">    &lt;iframe src=&quot;../../_static/bibliometrix__bradford_law.html&quot; height=&quot;600px&quot; width=&quot;100%&quot; frameBorder=&quot;0&quot;&gt;&lt;/iframe&gt;</span>
 
 
-<span class="sd">&gt;&gt;&gt; bibliometrix.sources.bradford_law(</span>
+<span class="sd">&gt;&gt;&gt; print(bibliometrix.sources.bradford_law(</span>
 <span class="sd">...     directory=directory,</span>
-<span class="sd">... ).source_clustering_.head(5)</span>
-<span class="sd">                                                    no  ...  zone</span>
-<span class="sd">source_abbr                                             ...      </span>
-<span class="sd">J BANK REGUL                                         1  ...     1</span>
-<span class="sd">J FINANC CRIME                                       2  ...     1</span>
-<span class="sd">FOSTER INNOV AND COMPET WITH FINTECH, REGTECH, ...   3  ...     1</span>
-<span class="sd">STUD COMPUT INTELL                                   4  ...     1</span>
-<span class="sd">INT CONF INF TECHNOL SYST INNOV, ICITSI - PROC       5  ...     1</span>
-<span class="sd">&lt;BLANKLINE&gt;</span>
-<span class="sd">[5 rows x 5 columns]</span>
+<span class="sd">... ).source_clustering_.head(5).to_markdown())</span>
+<span class="sd">| source_abbr                                                |   no |   OCC |   cum_OCC |   global_citations |   zone |</span>
+<span class="sd">|:-----------------------------------------------------------|-----:|------:|----------:|-------------------:|-------:|</span>
+<span class="sd">| J BANK REGUL                                               |    1 |     2 |         2 |                 35 |      1 |</span>
+<span class="sd">| J FINANC CRIME                                             |    2 |     2 |         4 |                 13 |      1 |</span>
+<span class="sd">| FOSTER INNOV AND COMPET WITH FINTECH, REGTECH, AND SUPTECH |    3 |     2 |         6 |                  1 |      1 |</span>
+<span class="sd">| STUD COMPUT INTELL                                         |    4 |     2 |         8 |                  1 |      1 |</span>
+<span class="sd">| INT CONF INF TECHNOL SYST INNOV, ICITSI - PROC             |    5 |     2 |        10 |                  0 |      1 |</span>
 
-<span class="sd">&gt;&gt;&gt; bibliometrix.sources.bradford_law(</span>
+
+<span class="sd">&gt;&gt;&gt; print(bibliometrix.sources.bradford_law(</span>
 <span class="sd">...     directory=directory,</span>
-<span class="sd">... ).core_sources_.head(5)</span>
-<span class="sd">   Num Sources        %  ...  Tot Documents Bradford&#39;s Group</span>
-<span class="sd">0            6  13.04 %  ...        23.08 %                1</span>
-<span class="sd">1           40  86.96 %  ...        100.0 %                3</span>
-<span class="sd">&lt;BLANKLINE&gt;</span>
-<span class="sd">[2 rows x 9 columns]</span>
+<span class="sd">... ).core_sources_.head(5).to_markdown())</span>
+<span class="sd">|    |   Num Sources | %       |   Acum Num Sources | % Acum   |   Documents published |   Tot Documents published |   Num Documents | Tot Documents   |   Bradford&#39;s Group |</span>
+<span class="sd">|---:|--------------:|:--------|-------------------:|:---------|----------------------:|--------------------------:|----------------:|:----------------|-------------------:|</span>
+<span class="sd">|  0 |             6 | 13.04 % |                  6 | 13.04 %  |                     2 |                        12 |              12 | 23.08 %         |                  1 |</span>
+<span class="sd">|  1 |            40 | 86.96 % |                 46 | 100.0 %  |                     1 |                        40 |              52 | 100.0 %         |                  3 |</span>
+
+
+
 
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
@@ -400,7 +315,6 @@
 <span class="k">def</span> <span class="nf">_bradford_law_plot</span><span class="p">(</span>
     <span class="n">indicators</span><span class="p">,</span>
 <span class="p">):</span>
-
     <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span>
         <span class="n">indicators</span><span class="p">,</span>
         <span class="n">x</span><span class="o">=</span><span class="s2">&quot;no&quot;</span><span class="p">,</span>
@@ -457,45 +371,30 @@
 </pre></div>
 
            </div>
-           
           </div>
           <footer>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-
-    </p>
+    <p></p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>
