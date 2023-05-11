@@ -9,10 +9,11 @@ Most Global Cited Documents
 >>> techminer.reports.most_cited_documents(
 ...     directory=directory,
 ... )
-
+--INFO-- The file 'data/regtech/reports/most_cited_documents.txt' was created
 
 """
 import os.path
+import sys
 import textwrap
 
 from ..._read_records import read_records
@@ -60,15 +61,12 @@ def most_cited_documents(
     file_path = os.path.join(directory, "reports", file_name)
 
     counter = 0
-    with (open(file_path, "w", encoding="utf-8")) as file:
-
+    with open(file_path, "w", encoding="utf-8") as file:
         for _, row in records.iterrows():
-
             print("---{:03d}".format(counter) + "-" * 86, file=file)
             counter += 1
 
             for criterion in reported_columns:
-
                 if criterion not in row.index:
                     continue
 
@@ -108,3 +106,5 @@ def most_cited_documents(
                     )[3:],
                     file=file,
                 )
+
+    sys.stdout.write(f"--INFO-- The file '{file_path}' was created\n")
