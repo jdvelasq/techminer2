@@ -80,8 +80,7 @@ Authors' Production over Time
 
 >>> print(r.prompt_)
 <BLANKLINE>
-Imagine that you are a researcher analyzing a bibliographic dataset. The table below provides data on document production by year per author for the top 10 most productive authors in the dataset. Use the information in the table to draw conclusions about the productivity per year of the authors. The final part of the author name contains two numbers separated by a colon. The first \ 
-is the total number of documents of the author, and the second is the total number of citations of the author. In your analysis, be sure to describe in a clear and concise way, any findings or any patterns you observe, and identify any outliers or anomalies in the data. Limit your description to one paragraph with no more than 250 words.
+Imagine that you are a researcher analyzing a bibliographic dataset. The table below provides data on document production by year per author for the top 10 most productive authors in the dataset. Use the information in the table to draw conclusions about the productivity per year of the authors. The final part of the author name contains two numbers separated by a colon. The first is the total number of documents of the author, and the second is the total number of citations of the author. In your analysis, be sure to describe in a clear and concise way, any findings or any patterns you observe, and identify any outliers or anomalies in the data. Limit your description to one paragraph with no more than 250 words.
 <BLANKLINE>
 | Authors          |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |
 |:-----------------|-------:|-------:|-------:|-------:|-------:|-------:|
@@ -167,7 +166,7 @@ Imagine that you are a researcher analyzing a bibliographic dataset. The table \
 below provides data on document production by year per author for the top {table.shape[0]} \
 most productive authors in the dataset. Use the information in the table to \
 draw conclusions about the productivity per year of the authors. The final \
-part of the author name contains two numbers separated by a colon. The first \ 
+part of the author name contains two numbers separated by a colon. The first \
 is the total number of documents of the author, and the second is the total \
 number of citations of the author. \
 In your analysis, be sure to describe in a clear and concise way, any findings \
