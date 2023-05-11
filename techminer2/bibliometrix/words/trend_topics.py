@@ -11,28 +11,30 @@ Trend Topics
 ...     'author_keywords',
 ...     directory=directory, 
 ... ).table_.head(20)
-year                     OCC  year_q1  year_med  year_q3  global_citations  rn
-author_keywords                                                               
-regtech                   28     2017      2017     2017               329   0
-financial services         4     2017      2017     2017               168   1
-financial regulation       4     2017      2017     2017                35   2
-blockchain                 3     2017      2017     2017                 5   3
-smart contracts            2     2017      2017     2017                22   4
-fintech                   12     2018      2018     2018               249   0
-regulation                 5     2018      2018     2018               164   1
-risk management            3     2018      2018     2018                14   2
-semantic technologies      2     2018      2018     2018                41   3
-business models            1     2018      2018     2018               153   4
-compliance                 7     2019      2019     2019                30   0
-artificial intelligence    4     2019      2019     2019                23   1
-suptech                    3     2019      2019     2019                 4   2
-standards                  1     2019      2019     2019                33   3
-dogmas                     1     2019      2019     2019                 5   4
-regulatory technology      7     2020      2020     2020                37   0
-anti-money laundering      3     2020      2020     2020                21   1
-innovation                 3     2020      2020     2020                12   2
-data protection            2     2020      2020     2020                27   3
-charitytech                2     2020      2020     2020                17   4
+year                             OCC  year_q1  ...  global_citations  rn
+author_keywords                                ...                      
+corporate social responsibility    1     2017  ...                 1   0
+credit                             1     2017  ...                 1   1
+semantic technologies              2     2018  ...                41   0
+smart contracts                    2     2017  ...                22   1
+business models                    1     2018  ...               153   2
+future research directions         1     2018  ...               153   3
+algorithmic standards              1     2018  ...                21   4
+financial services                 4     2018  ...               168   0
+blockchain                         3     2018  ...                 5   1
+sandbox                            2     2018  ...                12   2
+standards                          1     2019  ...                33   3
+dogmas                             1     2019  ...                 5   4
+regtech                           28     2019  ...               329   0
+fintech                           12     2019  ...               249   1
+compliance                         7     2020  ...                30   2
+regulation                         5     2018  ...               164   3
+artificial intelligence            4     2020  ...                23   4
+regulatory technology              7     2020  ...                37   0
+financial regulation               4     2019  ...                35   1
+anti-money laundering              3     2020  ...                21   2
+<BLANKLINE>
+[20 rows x 6 columns]
 
 
 
@@ -62,12 +64,11 @@ charitytech                2     2020      2020     2020                17   4
 ... ).table_.head(10)
 year                     OCC  year_q1  year_med  year_q3  global_citations  rn
 author_keywords                                                               
-blockchain                 3     2017      2017     2017                 5   0
-fintech                   12     2018      2018     2018               249   0
-artificial intelligence    4     2019      2019     2019                23   0
-suptech                    3     2019      2019     2019                 4   1
-regulatory technology      7     2020      2020     2020                37   0
-
+blockchain                 3     2018      2019     2020                 5   0
+fintech                   12     2019      2020     2020               249   0
+artificial intelligence    4     2020      2020     2020                23   1
+regulatory technology      7     2020      2021     2022                37   0
+suptech                    3     2020      2022     2022                 4   0
 
 
 """
@@ -116,15 +117,14 @@ def trend_topics(
     year_q3 = []
 
     for _, row in words_by_year.iterrows():
-
         sequence = []
         for item, year in zip(row, words_by_year.columns):
             if item > 0:
                 sequence.extend([year] * int(item))
 
-        year_q1.append(int(round(np.percentile(sequence, 0.25))))
-        year_med.append(int(round(np.percentile(sequence, 0.50))))
-        year_q3.append(int(round(np.percentile(sequence, 0.75))))
+        year_q1.append(int(round(np.percentile(sequence, 25))))
+        year_med.append(int(round(np.percentile(sequence, 50))))
+        year_q3.append(int(round(np.percentile(sequence, 75))))
 
     words_by_year["year_q1"] = year_q1
     words_by_year["year_med"] = year_med
