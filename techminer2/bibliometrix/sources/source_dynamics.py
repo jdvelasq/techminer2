@@ -26,6 +26,22 @@ Source Dynamics
 |  3 |   2019 | J BANK REGUL  |         0 |
 |  4 |   2020 | J BANK REGUL  |         1 |
 
+
+>>> print(r.dynamics_.to_markdown())
+| source_abbr                              |   2016 |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
+|:-----------------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
+| DUKE LAW J                               |      1 |      1 |      1 |      1 |      1 |      1 |      1 |      1 |
+| FOSTER INNOV AND COMPET WITH FINTECH,... |      0 |      0 |      0 |      0 |      2 |      2 |      2 |      2 |
+| INT CONF INF TECHNOL SYST INNOV,...      |      0 |      0 |      0 |      0 |      0 |      0 |      2 |      2 |
+| J BANK REGUL                             |      0 |      0 |      0 |      0 |      1 |      2 |      2 |      2 |
+| J ECON BUS                               |      0 |      0 |      1 |      1 |      1 |      1 |      1 |      1 |
+| J FINANC CRIME                           |      0 |      0 |      0 |      0 |      1 |      1 |      2 |      2 |
+| NORTHWEST J INTL LAW BUS                 |      0 |      1 |      1 |      1 |      1 |      1 |      1 |      1 |
+| PALGRAVE STUD DIGIT BUS ENABLING TECHNOL |      0 |      0 |      0 |      1 |      1 |      1 |      1 |      1 |
+| ROUTLEDGE HANDB OF FINANCIAL...          |      0 |      0 |      0 |      0 |      0 |      2 |      2 |      2 |
+| STUD COMPUT INTELL                       |      0 |      0 |      0 |      0 |      0 |      2 |      2 |      2 |
+
+
 >>> print(r.prompt_)
 <BLANKLINE>
 Imagine that you are a researcher analyzing a bibliographic dataset. The table below provides data on cumulative document production by year per document source for the top 10 most productive sources in the dataset. Use the information in the table to draw conclusions about the cumulative productivity per year of the sources. In your analysis, be sure to describe in a clear and concise way, any findings or any patterns you observe, and identify any outliers or anomalies in the data. Limit your description to one paragraph with no more than 250 words.
@@ -47,15 +63,9 @@ Imagine that you are a researcher analyzing a bibliographic dataset. The table b
 <BLANKLINE>    
 
 """
-from dataclasses import dataclass
+
 
 from .._dynamics import _dynamics
-
-
-@dataclass(init=False)
-class _Results:
-    plot_ = None
-    prompt_ = None
 
 
 def source_dynamics(
@@ -90,6 +100,7 @@ def source_dynamics(
     table = table[["source_abbr", "year", "cum_OCC"]]
     table = table.pivot(index="source_abbr", columns="year", values="cum_OCC")
     table = table.fillna(0)
+    results.dynamics_ = table
     results.prompt_ = _create_prompt(table)
 
     return results
