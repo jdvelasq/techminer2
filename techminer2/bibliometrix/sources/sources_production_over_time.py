@@ -36,6 +36,20 @@ Sources' Production over Time
 | ('COMPUTER', 2022)              |     1 |         1 |                  0 |                 0 |     2 |                       0     |                      0     |
 
 
+>>> print(r.table_.to_markdown())
+| Source Abbr                              |   2017 |   2019 |   2020 |   2021 |   2022 |   2023 |
+|:-----------------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|
+| FOSTER INNOV AND COMPET WITH FINTECH,... |      0 |      0 |      2 |      0 |      0 |      0 |
+| INT CONF INF TECHNOL SYST INNOV,...      |      0 |      0 |      0 |      0 |      2 |      0 |
+| J BANK REGUL 2:035                       |      0 |      0 |      1 |      1 |      0 |      0 |
+| J FINANC CRIME 2:013                     |      0 |      0 |      1 |      0 |      1 |      0 |
+| J FINANCIAL DATA SCI 1:005               |      0 |      1 |      0 |      0 |      0 |      0 |
+| J IND BUS ECON 1:001                     |      0 |      0 |      0 |      0 |      1 |      0 |
+| PROC INT CONF ELECTRON BUS (ICEB) 1:001  |      1 |      0 |      0 |      0 |      0 |      0 |
+| RES INT BUS FINANC 1:000                 |      0 |      0 |      0 |      0 |      0 |      1 |
+| ROUTLEDGE HANDB OF FINANCIAL...          |      0 |      0 |      0 |      2 |      0 |      0 |
+| STUD COMPUT INTELL 2:001                 |      0 |      0 |      0 |      2 |      0 |      0 |
+
 >>> print(r.prompt_)
 <BLANKLINE>
 Imagine that you are a researcher analyzing a bibliographic dataset. The table below provides data on document production by year per document source for the top 10 most productive sources in the dataset. Use the information in the table to draw conclusions about the productivity per year of the sources. The final part of the source name contains two numbers separated by a colon. The first is the total number of documents of the source, and the second is the total number of citations of the source. In your analysis, be sure to describe in a clear and concise way, any findings or any patterns you observe, and identify any outliers or anomalies in the data. Limit your description to one paragraph with no more than 250 words.
@@ -71,6 +85,7 @@ from .._production_over_time import _production_over_time
 class _Results:
     plot_ = None
     prompt_ = None
+    table_ = None
     production_per_year_ = None
     documents_per_source_ = None
 
@@ -123,6 +138,7 @@ def sources_production_over_time(
     table = table[["Source Abbr", "Year", "OCC"]]
     table = table.pivot(index="Source Abbr", columns="Year", values="OCC")
     table = table.fillna(0)
+    results.table_ = table
     results.prompt_ = _create_prompt(table)
 
     return results
