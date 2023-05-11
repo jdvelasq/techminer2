@@ -28,6 +28,17 @@ Word Dynamics
 |  3 |   2020 | regtech           |        17 |
 |  4 |   2021 | regtech           |        20 |
 
+
+>>> print(r.dynamics_.to_markdown())
+| author_keywords       |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
+|:----------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
+| compliance            |      0 |      0 |      1 |      4 |      5 |      6 |      7 |
+| fintech               |      0 |      2 |      6 |      9 |     10 |     12 |     12 |
+| regtech               |      2 |      5 |      9 |     17 |     20 |     26 |     28 |
+| regulation            |      0 |      2 |      2 |      3 |      4 |      5 |      5 |
+| regulatory technology |      0 |      0 |      0 |      2 |      5 |      7 |      7 |
+
+
 >>> print(r.prompt_)
 <BLANKLINE>
 Imagine that you are a researcher analyzing a bibliographic dataset. The table below provides data on cumulative occurrences of author keywords for the top 5 most frequent author keywords in the dataset. Use the information in the table to draw conclusions about the cumulative occurrence per year of the author keywords. In your analysis, be sure to describe in a clear and concise way, any findings or any patterns you observe, and identify any outliers or anomalies in the data. Limit your description to one paragraph with no more than 250 words.
@@ -81,6 +92,7 @@ def word_dynamics(
     table = table[[criterion, "year", "cum_OCC"]]
     table = table.pivot(index=criterion, columns="year", values="cum_OCC")
     table = table.fillna(0)
+    results.dynamics_ = table
     results.prompt_ = _create_prompt(table, criterion)
 
     return results
