@@ -13,7 +13,7 @@ Abstracts Extractive Summarization
 ...     n_phrases_per_algorithm=50,
 ...     directory=directory,
 ... )
-
+--INFO-- The file 'data/regtech/reports/extractive_summarization.txt' was created
 
 """
 
@@ -221,7 +221,6 @@ def _create_document(records):
 
 
 def _select_records(criterion, custom_topics, n_abstracts, records):
-
     records = _sort_by_custom_terms(criterion, custom_topics, records)
     records = records.head(n_abstracts)
     return records
