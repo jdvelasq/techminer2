@@ -7,17 +7,33 @@ Most Global Cited Documents
 >>> file_name = "sphinx/_static/bibliometrix__most_global_cited_documents.html"
 
 >>> from techminer2 import bibliometrix
->>> bibliometrix.documents.most_global_cited_documents(
+>>> r = bibliometrix.documents.most_global_cited_documents(
 ...     top_n=5,
 ...     directory=directory,
-... ).write_html(file_name)
+... )
+--INFO-- The file 'data/regtech/reports/most_global_cited_documents.txt' was created
+
+>>> r.plot_.write_html(file_name)
 
 .. raw:: html
 
     <iframe src="../../../_static/bibliometrix__most_global_cited_documents.html" height="600px" width="100%" frameBorder="0"></iframe>
 
+    
+>>> r.table_.head(5)
+                                                    global_citations  ...                                 doi
+article                                                               ...                                    
+Anagnostopoulos I, 2018, J ECON BUS, V100, P7                    153  ...      10.1016/J.JECONBUS.2018.07.003
+Arner DW, 2017, HANDB OF BLOCKCHAIN, DIGIT FINA...                11  ...  10.1016/B978-0-12-810441-5.00016-6
+Arner DW, 2017, NORTHWEST J INTL LAW BUS, V37, ...               150  ...                                 NaN
+Battanta L, 2020, PROC EUR CONF INNOV ENTREPREN...                 1  ...                 10.34190/EIE.20.143
+Baxter LG, 2016, DUKE LAW J, V66, P567                            30  ...                                 NaN
+<BLANKLINE>
+[5 rows x 5 columns]
+
 """
 import os.path
+import sys
 import textwrap
 
 from ..._read_records import read_records
@@ -73,7 +89,6 @@ def most_global_cited_documents(
 
 
 def _save_report(records, directory):
-
     column_list = []
 
     reported_columns = [
@@ -99,15 +114,12 @@ def _save_report(records, directory):
     file_path = os.path.join(directory, "reports/most_global_cited_documents.txt")
 
     counter = 0
-    with (open(file_path, "w", encoding="utf-8")) as file:
-
+    with open(file_path, "w", encoding="utf-8") as file:
         for _, row in records.iterrows():
-
             print("---{:03d}".format(counter) + "-" * 86, file=file)
             counter += 1
 
             for criterion in reported_columns:
-
                 if criterion not in row.index:
                     continue
 
@@ -137,13 +149,20 @@ def _save_report(records, directory):
                 if criterion == "index_keywords":
                     print("ID ", end="", file=file)
 
-                print(
-                    textwrap.fill(
-                        str(row[criterion]),
-                        width=87,
-                        initial_indent=" " * 3,
-                        subsequent_indent=" " * 3,
-                        fix_sentence_endings=True,
-                    )[3:],
-                    file=file,
-                )
+                text = textwrap.fill(
+                    str(row[criterion]),
+                    width=87,
+                    initial_indent=" " * 3,
+                    subsequent_indent=" " * 3,
+                    fix_sentence_endings=True,
+                )[3:]
+
+                if criterion == "abstract":
+                    text = text.split("\n")
+                    text = [x.strip() for x in text]
+                    text = " \\\n".join(text)
+                    text = '\n"""\n' + text + '\n"""'
+
+                print(text, file=file)
+
+    sys.stdout.write(f"--INFO-- The file '{file_path}' was created\n")

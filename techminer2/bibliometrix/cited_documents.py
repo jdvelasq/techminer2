@@ -1,6 +1,14 @@
+from dataclasses import dataclass
+
 import plotly.express as px
 
 from ..techminer.indicators.indicators_by_document import indicators_by_document
+
+
+@dataclass(init=False)
+class _Results:
+    plot_ = None
+    table_ = None
 
 
 def bibiometrix_cited_documents(
@@ -15,6 +23,8 @@ def bibiometrix_cited_documents(
 ):
     """Most cited documents."""
 
+    results = _Results()
+
     indicators = indicators_by_document(
         directory=directory,
         database=database,
@@ -22,6 +32,9 @@ def bibiometrix_cited_documents(
         end_year=end_year,
         **filters,
     )
+
+    results.table_ = indicators.copy()
+
     indicators = indicators.sort_values(by=metric, ascending=False)
     indicators = indicators.head(top_n)
     indicators = indicators.rename(
@@ -56,4 +69,6 @@ def bibiometrix_cited_documents(
         griddash="dot",
     )
 
-    return fig
+    results.plot_ = fig
+
+    return results

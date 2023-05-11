@@ -96,15 +96,20 @@ def most_cited_documents(
                 if criterion == "index_keywords":
                     print("ID ", end="", file=file)
 
-                print(
-                    textwrap.fill(
-                        str(row[criterion]),
-                        width=87,
-                        initial_indent=" " * 3,
-                        subsequent_indent=" " * 3,
-                        fix_sentence_endings=True,
-                    )[3:],
-                    file=file,
-                )
+                text = textwrap.fill(
+                    str(row[criterion]),
+                    width=87,
+                    initial_indent=" " * 3,
+                    subsequent_indent=" " * 3,
+                    fix_sentence_endings=True,
+                )[3:]
+
+                if criterion == "abstract":
+                    text = text.split("\n")
+                    text = [x.strip() for x in text]
+                    text = " \\\n".join(text)
+                    text = '\n"""\n' + text + '\n"""'
+
+                print(text, file=file)
 
     sys.stdout.write(f"--INFO-- The file '{file_path}' was created\n")
