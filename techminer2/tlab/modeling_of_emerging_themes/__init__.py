@@ -1,2 +1,1 @@
-from .emergent_themes import emergent_themes_with_nmf
-from .emergent_themes import emergent_themes_with_lda
+from .emergent_themes import emergent_themes_with_lda, emergent_themes_with_nmf
