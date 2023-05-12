@@ -6,8 +6,10 @@ Bubble Map.
 
 """
 
-
+import numpy as np
+import plotly.express as px
 import plotly.graph_objects as go
+from plotly.colors import sequential
 
 
 def bubble_map(
@@ -20,18 +22,10 @@ def bubble_map(
 ):
     """Makes a map chart."""
 
-    x_mean = node_x.mean()
-    y_mean = node_y.mean()
-    textposition = []
-    for x_pos, y_pos in zip(node_x, node_y):
-        if x_pos >= x_mean and y_pos >= y_mean:
-            textposition.append("top right")
-        if x_pos <= x_mean and y_pos >= y_mean:
-            textposition.append("top left")
-        if x_pos <= x_mean and y_pos <= y_mean:
-            textposition.append("bottom left")
-        if x_pos >= x_mean and y_pos <= y_mean:
-            textposition.append("bottom right")
+    textfont_size = _compute_textfont_size(node_size)
+    textfont_color = _compute_textfont_color(node_size)
+    node_text = _compute_node_text(node_text)
+    textposition = _compute_textposition(node_x, node_y)
 
     fig = go.Figure(
         layout=go.Layout(
@@ -56,11 +50,12 @@ def bubble_map(
     )
     fig.update_traces(
         marker=dict(
-            line=dict(color="darkslategray", width=2),
+            line=dict(color="darkslategray", width=1),
         ),
-        # marker_color="lightgrey",
         marker_color=node_color,
         marker_size=node_size,
+        textfont_size=textfont_size,
+        textfont_color=textfont_color,
     )
 
     x_max = node_x.max()
@@ -91,226 +86,54 @@ def bubble_map(
     return fig
 
 
-# import math
-
-# import matplotlib.pyplot as plt
-# from matplotlib.ticker import AutoMinorLocator
-
-# COLORS = [
-#     "tab:blue",
-#     "tab:orange",
-#     "tab:green",
-#     "tab:red",
-#     "tab:purple",
-#     "tab:brown",
-#     "tab:pink",
-#     "tab:gray",
-#     "tab:olive",
-#     "tab:cyan",
-#     "cornflowerblue",
-#     "lightsalmon",
-#     "limegreen",
-#     "tomato",
-#     "mediumvioletred",
-#     "darkgoldenrod",
-#     "lightcoral",
-#     "silver",
-#     "darkkhaki",
-#     "skyblue",
-#     "dodgerblue",
-#     "orangered",
-#     "turquoise",
-#     "crimson",
-#     "violet",
-#     "goldenrod",
-#     "thistle",
-#     "grey",
-#     "yellowgreen",
-#     "lightcyan",
-# ]
-
-# COLORS += COLORS * 4
-
-# #
-# # Check in order:
-# #   - latent semantic analysis module
-# #
-# #
-# def _get_quadrant(x, y, x_axis_at, y_axis_at):
-#     if x >= y_axis_at and y >= x_axis_at:
-#         return 0
-#     if x < y_axis_at and y >= x_axis_at:
-#         return 1
-#     if x < y_axis_at and y < x_axis_at:
-#         return 2
-#     return 3
+def _compute_node_text(node_text):
+    node_text = [" ".join(text.split(" ")[:-1]) for text in node_text]
+    return node_text
 
 
-# def bubble_map___(
-#     node_x,
-#     node_y,
-#     node_clusters,
-#     node_texts,
-#     node_sizes,
-#     x_axis_at,
-#     y_axis_at,
-#     color_scheme,
-#     xlabel,
-#     ylabel,
-#     figsize,
-#     fontsize,
-# ):
+def _compute_textposition(node_x, node_y):
+    x_mean = node_x.mean()
+    y_mean = node_y.mean()
+    textposition = []
+    for x_pos, y_pos in zip(node_x, node_y):
+        if x_pos >= x_mean and y_pos >= y_mean:
+            textposition.append("top right")
+        if x_pos <= x_mean and y_pos >= y_mean:
+            textposition.append("top left")
+        if x_pos <= x_mean and y_pos <= y_mean:
+            textposition.append("bottom left")
+        if x_pos >= x_mean and y_pos <= y_mean:
+            textposition.append("bottom right")
+    return textposition
 
-#     fig = plt.Figure(figsize=figsize)
-#     ax = fig.subplots()
 
-#     ax.yaxis.set_ticks_position("both")
-#     ax.xaxis.set_ticks_position("both")
+def _compute_textfont_color(node_size):
+    colors = px.colors.sequential.Greys
+    color_index = np.array(
+        [
+            0.4 + 0.60 * (size - node_size.min()) / (node_size.max() - node_size.min())
+            for size in node_size
+        ]
+    )
+    textfont_color = np.array(colors)[
+        np.round(color_index * (len(colors) - 1)).astype(int)
+    ]
 
-#     ax.tick_params(axis="x", labelsize=7)
-#     ax.tick_params(axis="y", labelsize=7)
+    return textfont_color
 
-#     ax.xaxis.set_minor_locator(AutoMinorLocator())
-#     ax.yaxis.set_minor_locator(AutoMinorLocator())
 
-#     ax.tick_params(which="major", color="k", length=5)
-#     ax.tick_params(which="minor", color="k", length=2)
+def _compute_textfont_size(node_size):
+    "Computes the textfont_size parameter."
 
-#     # quadrants
-#     quadrants = [
-#         _get_quadrant(x_, y_, x_axis_at, y_axis_at) for x_, y_ in zip(node_x, node_y)
-#     ]
+    max_textfont_size = 40
+    min_textfont_size = 2
 
-#     # Size of node proportional to number of documents
-#     max_node_size = max(node_sizes)
-#     min_node_size = min(node_sizes)
-#     if max_node_size == min_node_size:
-#         node_sizes = [1000 for _ in node_sizes]
-#     else:
-#         node_sizes = [
-#             400 + 5000 * (i - min_node_size) / (max_node_size - min_node_size)
-#             for i in node_sizes
-#         ]
+    textfont_size = [
+        min_textfont_size
+        + (max_textfont_size - min_textfont_size)
+        * (size - node_size.min())
+        / (node_size.max() - node_size.min())
+        for size in node_size
+    ]
 
-#     # Select node colors
-#     node_colors = None
-#     if color_scheme == "4q":
-#         node_colors = [COLORS[q] for q in quadrants]
-
-#     if color_scheme == "clusters":
-#         node_colors = [COLORS[i] for i in node_clusters]
-
-#     if node_colors is None:
-#         cmap = plt.cm.get_cmap(color_scheme)
-#         node_colors = [
-#             cmap(0.3 + 0.70 * (i - min_node_size) / (max_node_size - min_node_size))
-#             for i in node_sizes
-#         ]
-
-#     # plot bubbles
-#     ax.scatter(
-#         node_x,
-#         node_y,
-#         marker="o",
-#         s=node_sizes,
-#         c=node_colors,
-#         alpha=0.4,
-#         linewidths=1,
-#     )
-
-#     # plot centers as black dots
-#     ax.scatter(
-#         node_x,
-#         node_y,
-#         marker="o",
-#         s=20,
-#         c="k",
-#         alpha=1.0,
-#     )
-
-#     # plot node labels
-#     xlim = ax.get_xlim()
-#     #  ylim = ax.get_ylim()
-
-#     factor = 0.1
-
-#     for x_, y_, keyword, quadrant, color in zip(
-#         node_x, node_y, node_texts, quadrants, node_colors
-#     ):
-
-#         xlim = ax.get_xlim()
-
-#         ha = {
-#             0: "left",
-#             1: "right",
-#             2: "right",
-#             3: "left",
-#         }[quadrant]
-
-#         va = {
-#             0: "center",
-#             1: "center",
-#             2: "center",
-#             3: "center",
-#         }[quadrant]
-
-#         x_ = x_ - y_axis_at
-#         y_ = y_ - x_axis_at
-
-#         delta = factor * (xlim[1] - xlim[0])
-#         angle = math.atan(math.fabs(y_ / x_))
-#         radious = math.sqrt(x_**2 + y_**2) + delta
-#         x_label = math.copysign(radious * math.cos(angle), x_) + y_axis_at
-#         y_label = math.copysign(radious * math.sin(angle), y_) + x_axis_at
-
-#         ax.text(
-#             x_label,
-#             y_label,
-#             # s=" ".join(keyword.split(" ")[:-1]),
-#             s=keyword,
-#             fontsize=fontsize,
-#             bbox=dict(
-#                 facecolor="w",
-#                 alpha=0.7,
-#                 boxstyle="round,pad=0.5",
-#                 edgecolor="lightgray",
-#             ),
-#             horizontalalignment=ha,
-#             verticalalignment=va,
-#             c=color,
-#         )
-
-#         ax.plot(
-#             [x_ + y_axis_at, x_label],
-#             [y_ + x_axis_at, y_label],
-#             lw=1,
-#             ls="-",
-#             c="k",
-#             zorder=-1,
-#         )
-
-#     ## generic
-
-#     ax.axhline(
-#         y=x_axis_at,
-#         color="gray",
-#         linestyle="--",
-#         linewidth=1,
-#         zorder=-1,
-#     )
-#     ax.axvline(
-#         x=y_axis_at,
-#         color="gray",
-#         linestyle="--",
-#         linewidth=1,
-#         zorder=-1,
-#     )
-
-#     for side in ["top", "right", "bottom", "left"]:
-#         ax.spines[side].set_visible(False)
-
-#     ## adjust figure size
-#     ax.set_aspect("auto")
-#     fig.set_tight_layout(True)
-
-#     return fig
+    return textfont_size

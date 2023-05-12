@@ -15,7 +15,19 @@ Co-occurrence Network
 ...     nx_iterations=10,
 ...     delta=1.0,    
 ... )
-
+--INFO-- The file 'data/regtech/reports/co-occurrence_network/abstracts/CL_00.txt' was created
+--INFO-- The file 'data/regtech/reports/co-occurrence_network/abstracts/CL_01.txt' was created
+--INFO-- The file 'data/regtech/reports/co-occurrence_network/abstracts/CL_02.txt' was created
+--INFO-- The file 'data/regtech/reports/co-occurrence_network/abstracts/CL_03.txt' was created
+--INFO-- The file 'data/regtech/reports/co-occurrence_network/abstracts/CL_04.txt' was created
+--INFO-- The file 'data/regtech/reports/co-occurrence_network/abstracts/CL_05.txt' was created
+--INFO-- The file 'data/regtech/reports/co-occurrence_network/abstracts/CL_06.txt' was created
+--INFO-- The file 'data/regtech/reports/co-occurrence_network/abstracts/CL_07.txt' was created
+--INFO-- The file 'data/regtech/reports/co-occurrence_network/abstracts/CL_08.txt' was created
+--INFO-- The file 'data/regtech/reports/co-occurrence_network/abstracts/CL_09.txt' was created
+--INFO-- The file 'data/regtech/reports/co-occurrence_network/abstracts/CL_10.txt' was created
+--INFO-- The file 'data/regtech/reports/co-occurrence_network/abstracts/CL_11.txt' was created
+--INFO-- The file 'data/regtech/reports/co-occurrence_network/abstracts/CL_12.txt' was created
 
 >>> file_name = "sphinx/_static/bibliometrix__co_occurrence_network.html"
 >>> nnet.plot_.write_html(file_name)
@@ -201,6 +213,7 @@ def co_occurrence_network(
     #     )
 
     directory_for_abstracts = os.path.join(directory_for_results, "abstracts")
+
     cluster_abstracts_report(
         criterion=criterion,
         communities=results.communities_,

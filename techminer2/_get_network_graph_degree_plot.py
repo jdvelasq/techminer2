@@ -29,7 +29,7 @@ def get_network_graph_degree_plot(graph):
         hover_data=["Name"],
     )
     fig.update_traces(
-        marker=dict(size=8, line=dict(color="darkslategray", width=2)),
+        marker=dict(size=4, line=dict(color="darkslategray", width=1)),
         marker_color="rgb(171,171,171)",
         line=dict(color="darkslategray"),
     )
