@@ -83,7 +83,6 @@ def _create_network_graph(edge_trace, node_trace, delta=1.0):
 
 
 def _create_traces(graph):
-
     edge_x = []
     edge_y = []
     for edge in graph.edges():
@@ -124,16 +123,25 @@ def _create_traces(graph):
     text_size = []
     for node, adjacencies in enumerate(graph.adjacency()):
         node_size.append(1 + len(adjacencies[1]))
+
     max_size = max(node_size)
     min_size = min(node_size)
+
+    textfont_size_max = max_size if max_size < 20 else 20
+    textfont_size_min = min_size if min_size > 7 else 7
+
     if max_size == min_size:
         node_size = [13] * len(node_size)
         text_size = [10] * len(node_size)
     else:
-        text_size = [7 + 5 * (x - min_size) / (max_size - min_size) for x in node_size]
-        node_size = [
-            10 + 10 * (x - min_size) / (max_size - min_size) for x in node_size
+        text_size = [
+            textfont_size_min
+            + (textfont_size_max - textfont_size_min)
+            * (x - min_size)
+            / (max_size - min_size)
+            for x in node_size
         ]
+        node_size = [8 + 25 * (x - min_size) / (max_size - min_size) for x in node_size]
 
     x_mean = np.mean(node_x)
     y_mean = np.mean(node_y)
@@ -157,7 +165,7 @@ def _create_traces(graph):
         marker=dict(
             color=colors,
             size=node_size,
-            line=dict(width=2, color="DarkSlateGrey"),
+            line=dict(width=1, color="DarkSlateGrey"),
         ),
         textposition=textposition,
         textfont=dict(size=text_size),
