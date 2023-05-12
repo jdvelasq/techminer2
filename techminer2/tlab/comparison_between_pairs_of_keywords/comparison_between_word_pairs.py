@@ -1,5 +1,5 @@
 """
-Compararison between topics
+Compararison between word pairs
 ===============================================================================
 
 
@@ -7,7 +7,7 @@ Compararison between topics
 >>> directory = "data/regtech/"
 
 >>> from techminer2 import tlab
->>> cbt = tlab.comparison_between_pairs_of_keywords.comparison_between_topics(
+>>> cbt = tlab.comparison_between_pairs_of_keywords.comparison_between_word_pairs(
 ...     criterion="author_keywords",
 ...     topic_a="artificial intelligence",
 ...     topic_b="regtech",
@@ -22,12 +22,12 @@ Compararison between topics
 ...     directory=directory,
 ... )
 
->>> file_name = "sphinx/_static/tlab__co_occurrence_analysis__comparison_between_topics_bar_chart-1.html"
+>>> file_name = "sphinx/_static/tlab__co_occurrence_analysis__comparison_between_word_pairs_bar_chart-1.html"
 >>> cbt.bar_chart_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../../_static/tlab__co_occurrence_analysis__comparison_between_topics_bar_chart-1.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/tlab__co_occurrence_analysis__comparison_between_word_pairs_bar_chart-1.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
 
@@ -35,7 +35,7 @@ Compararison between topics
 >>> directory = "data/regtech/"
 
 >>> from techminer2 import tlab
->>> cbt = tlab.comparison_between_pairs_of_keywords.comparison_between_topics(
+>>> cbt = tlab.comparison_between_pairs_of_keywords.comparison_between_word_pairs(
 ...     criterion="author_keywords",
 ...     topic_a="artificial intelligence",
 ...     topic_b="regtech",
@@ -59,20 +59,20 @@ Compararison between topics
 9                            regtech  financial services 04:168    3
 
 
->>> file_name = "sphinx/_static/tlab__co_occurrence_analysis__comparison_between_topics_bar_chart.html"
+>>> file_name = "sphinx/_static/tlab__co_occurrence_analysis__comparison_between_word_pairs_bar_chart.html"
 >>> cbt.bar_chart_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../../_static/tlab__co_occurrence_analysis__comparison_between_topics_bar_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/tlab__co_occurrence_analysis__comparison_between_word_pairs_bar_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
->>> file_name = "sphinx/_static/tlab__co_occurrence_analysis__comparison_between_topics_radial_diagram.html"
+>>> file_name = "sphinx/_static/tlab__co_occurrence_analysis__comparison_between_word_pairs_radial_diagram.html"
 >>> cbt.radial_diagram_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../../_static/tlab__co_occurrence_analysis__comparison_between_topics_radial_diagram.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/tlab__co_occurrence_analysis__comparison_between_word_pairs_radial_diagram.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
 
@@ -101,7 +101,7 @@ class _Results:
     radial_diagram_: None
 
 
-def comparison_between_topics(
+def comparison_between_word_pairs(
     criterion,
     topic_a,
     topic_b,

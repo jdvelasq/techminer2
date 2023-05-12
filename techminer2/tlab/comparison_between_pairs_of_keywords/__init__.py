@@ -1,1 +1,1 @@
-from .comparison_between_topics import comparison_between_topics
+from .comparison_between_word_pairs import comparison_between_word_pairs
