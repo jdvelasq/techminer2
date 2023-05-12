@@ -15,7 +15,14 @@ Thematic Map
 ...     nx_iterations=10,
 ...     delta=1.0,    
 ... )
-
+--INFO-- The file 'data/regtech/reports/thematic_map/abstracts/CL_00.txt' was created
+--INFO-- The file 'data/regtech/reports/thematic_map/abstracts/CL_01.txt' was created
+--INFO-- The file 'data/regtech/reports/thematic_map/abstracts/CL_02.txt' was created
+--INFO-- The file 'data/regtech/reports/thematic_map/abstracts/CL_03.txt' was created
+--INFO-- The file 'data/regtech/reports/thematic_map/abstracts/CL_04.txt' was created
+--INFO-- The file 'data/regtech/reports/thematic_map/abstracts/CL_05.txt' was created
+--INFO-- The file 'data/regtech/reports/thematic_map/abstracts/CL_06.txt' was created
+--INFO-- The file 'data/regtech/reports/thematic_map/abstracts/CL_07.txt' was created
 
 >>> file_name = "sphinx/_static/bibliometrix__thematic_map_plot.html"
 >>> nnet.plot_.write_html(file_name)
@@ -49,6 +56,25 @@ bahrain 01:007                    5          0.0   0.371607  0.006982
 business management 01:011        1          0.0   0.377280  0.020363
 business models 01:153            0          0.0   0.422425  0.017482
 business policy 01:011            1          0.0   0.377280  0.020363
+
+
+>>> file_name = "sphinx/_static/bibliometrix__thematic_map_mds_map.html"
+>>> nnet.mds_map_.write_html(file_name)
+
+.. raw:: html
+
+    <iframe src="../../../_static/bibliometrix__thematic_map_mds_map.html" height="600px" width="100%" frameBorder="0"></iframe>
+
+
+>>> file_name = "sphinx/_static/bibliometrix__thematic_map_tsne_map.html"
+>>> nnet.tsne_map_.write_html(file_name)
+
+.. raw:: html
+
+    <iframe src="../../../_static/bibliometrix__co_occurrence_network_tsne_map.html" height="600px" width="100%" frameBorder="0"></iframe>
+
+
+
 
 """
 from .co_occurrence_network import co_occurrence_network
