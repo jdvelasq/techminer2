@@ -11,8 +11,8 @@ Thematic Map
 ...     topics_length=60,
 ...     directory=directory,
 ...     method="louvain",
-...     nx_k=0.5,
-...     nx_iterations=10,
+...     nx_k=0.8,
+...     nx_iterations=30,
 ...     delta=1.0,    
 ... )
 --INFO-- The file 'data/regtech/reports/thematic_map/abstracts/CL_00.txt' was created
