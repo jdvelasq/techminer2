@@ -12,6 +12,7 @@ Main Path Analysis
 
 """
 import copy
+import sys
 from dataclasses import dataclass
 from pprint import pprint
 
@@ -69,12 +70,15 @@ def main_path_analysis(directory="./"):
 
     # computes the paths between the start and end nodes
     paths = _compute_paths(links, start_nodes, end_nodes)
+    sys.stdout.write("--INFO-- Paths computed\n")
 
     # compute points per link in each path
     links = _compute_points_per_link(links, paths)
+    sys.stdout.write("--INFO-- Points per link computed\n")
 
     # compute points per path
     paths = _compute_points_per_path(links, paths)
+    sys.stdout.write("--INFO-- Points per computed\n")
 
     # sort paths by points (descending)
     paths = sorted(paths, key=lambda x: x[1], reverse=True)
@@ -100,8 +104,6 @@ def main_path_analysis(directory="./"):
         directory=directory,
         records=documents_in_main_path,
     )
-
-    pprint(best_path)
 
 
 def _compute_points_per_path(links, paths):
