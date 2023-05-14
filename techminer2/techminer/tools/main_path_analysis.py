@@ -78,7 +78,7 @@ def main_path_analysis(directory="./"):
 
     # compute points per path
     paths = _compute_points_per_path(links, paths)
-    sys.stdout.write("--INFO-- Points per computed\n")
+    sys.stdout.write("--INFO-- Points per path computed\n")
 
     # sort paths by points (descending)
     paths = sorted(paths, key=lambda x: x[1], reverse=True)
