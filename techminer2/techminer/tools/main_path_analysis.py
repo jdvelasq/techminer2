@@ -30,7 +30,7 @@ class _Results:
     plot_ = None
 
 
-def main_path_analysis(directory):
+def main_path_analysis(directory="./"):
     """
     This function computes the main path algorithm to found the path of
     cocited documents in the dataset.
