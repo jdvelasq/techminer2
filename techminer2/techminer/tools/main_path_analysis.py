@@ -238,7 +238,10 @@ def _create_links(documents):
         local_references=documents.local_references.str.split("; ")
     )
 
-    # for _, row in documents.dropna().iterrows():
+    for _, row in documents.dropna().iterrows():
+        if row.article in row.local_references:
+            row.local_references.remove(row.article)
+
     #     assert (
     #         row.article not in row.local_references
     #     ), "The article is in the local references"
