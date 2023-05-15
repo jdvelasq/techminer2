@@ -8,7 +8,7 @@ Most Global Cited Documents
 
 >>> from techminer2 import bibliometrix
 >>> r = bibliometrix.documents.most_global_cited_documents(
-...     top_n=5,
+...     top_n=20,
 ...     directory=directory,
 ... )
 --INFO-- The file 'data/regtech/reports/most_global_cited_documents.txt' was created
@@ -21,23 +21,24 @@ Most Global Cited Documents
 
     
 >>> r.table_.head(5)
-                                                    global_citations  ...                                 doi
-article                                                               ...                                    
-Anagnostopoulos I, 2018, J ECON BUS, V100, P7                    153  ...      10.1016/J.JECONBUS.2018.07.003
-Arner DW, 2017, HANDB OF BLOCKCHAIN, DIGIT FINA...                11  ...  10.1016/B978-0-12-810441-5.00016-6
-Arner DW, 2017, NORTHWEST J INTL LAW BUS, V37, ...               150  ...                                 NaN
-Battanta L, 2020, PROC EUR CONF INNOV ENTREPREN...                 1  ...                 10.34190/EIE.20.143
-Baxter LG, 2016, DUKE LAW J, V66, P567                            30  ...                                 NaN
+                                                    global_citations  ...                             doi
+article                                                               ...                                
+Anagnostopoulos I, 2018, J ECON BUS, V100, P7                    153  ...  10.1016/J.JECONBUS.2018.07.003
+Arner DW, 2017, NORTHWEST J INTL LAW BUS, V37, ...               150  ...                             NaN
+Butler T/1, 2019, PALGRAVE STUD DIGIT BUS ENABL...                33  ...     10.1007/978-3-030-02330-0_6
+Baxter LG, 2016, DUKE LAW J, V66, P567                            30  ...                             NaN
+Buckley RP, 2020, J BANK REGUL, V21, P26                          24  ...      10.1057/S41261-019-00104-1
 <BLANKLINE>
 [5 rows x 5 columns]
 
-"""
-import os.path
-import sys
-import textwrap
 
-from ..._read_records import read_records
-from ...techminer.indicators.indicators_by_document import indicators_by_document
+>>> print(r.prompts_[0])
+Summarize the following text in 30 words or less: 
+<BLANKLINE>
+the purpose of this paper is to develop an insight and review the effect of fintech development against the broader environment in financial technology. we further aim to offer various perspectives in order to aid the understanding of the disruptive potential of fintech, and its implications for the wider financial ecosystem. by drawing upon very recent and highly topical research on this area this study examines the implications for financial institutions, and regulation especially when technology poses a challenge to the global banking and regulatory system. it is driven by a wide-ranging overview of the development, the current state, and possible future of fintech. this paper attempts to connect practitioner-led and academic research. while it draws on academic research, the perspective it takes is also practice-oriented. it relies on the current academic literature as well as insights from industry sources, action research and other publicly available commentaries. it also draws on professional practitioners roundtable discussions, and think-tanks in which the author has been an active participant. we attempt to interpret banking, and regulatory issues from a behavioural perspective. the last crisis exposed significant failures in regulation and supervision. it has made the financial market law and compliance a key topic on the current agenda. disruptive technological change also seems to be important in investigating regulatory compliance followed by change. we contribute to the current literature review on financial and digital innovation by new entrants where this has also practical implications. we also provide for an updated review of the current regulatory issues addressing the contextual root causes of disruption within the financial services domain. the aim here is to assist market participants to improve effectiveness and collaboration. the difficulties arising from extensive regulation may suggest a more liberal and principled approach to financial regulation. disruptive innovation has the potential for welfare outcomes for consumers, regulatory, and supervisory gains as well as reputational gains for the financial services industry. it becomes even more important as the financial services industry evolves. for example, the preparedness of the regulators to instil culture change and harmonise technological advancements with regulation could likely achieve many desired outcomes. such results range from achieving an orderly market growth, further aiding systemic stability and restoring trust and confidence in the financial system. our action-led research results have implications for both research and practice. these should be of interest to regulatory standard setters, investors, international organisations and other academics who are researching regulatory and competition issues, and their manifestation within the financial and social contexts. as a perspective on a social construct, this study appeals to regulators and law makers, entrepreneurs, and investors who participate in technology applied within the innovative financial services domain. it is also of interest to bankers who might consider fintech and strategic partnerships as a prospective, future strategic direction.1  2018 elsevier inc.
+
+
+"""
 from ..cited_documents import bibiometrix_cited_documents
 
 
@@ -51,33 +52,9 @@ def most_global_cited_documents(
 ):
     """Plots the most global cited documents in the main collection."""
 
-    ## TODO: Review and extract
-
-    indicators = indicators_by_document(
-        directory=directory,
-        database="documents",
-        start_year=start_year,
-        end_year=end_year,
-        **filters,
-    )
-    indicators = indicators.sort_values(by="global_citations", ascending=False)
-    indicators = indicators.head(top_n)
-
-    records = read_records(
-        directory=directory,
-        database="documents",
-        start_year=start_year,
-        end_year=end_year,
-        **filters,
-    )
-
-    records.index = records.article
-    records = records.loc[indicators.index, :]
-
-    _save_report(records, directory)
-
     return bibiometrix_cited_documents(
         metric="global_citations",
+        file_name="most_global_cited_documents.txt",
         directory=directory,
         database="documents",
         top_n=top_n,
@@ -86,83 +63,3 @@ def most_global_cited_documents(
         end_year=end_year,
         **filters,
     )
-
-
-def _save_report(records, directory):
-    column_list = []
-
-    reported_columns = [
-        "article",
-        "title",
-        "authors",
-        "global_citations",
-        "source_title",
-        "year",
-        "abstract",
-        "author_keywords",
-        "index_keywords",
-    ]
-
-    for criterion in reported_columns:
-        if criterion in records.columns:
-            column_list.append(criterion)
-    records = records[column_list]
-
-    if "global_citations" in records.columns:
-        records = records.sort_values(by="global_citations", ascending=False)
-
-    file_path = os.path.join(directory, "reports/most_global_cited_documents.txt")
-
-    counter = 0
-    with open(file_path, "w", encoding="utf-8") as file:
-        for _, row in records.iterrows():
-            print("---{:03d}".format(counter) + "-" * 86, file=file)
-            counter += 1
-
-            for criterion in reported_columns:
-                if criterion not in row.index:
-                    continue
-
-                if row[criterion] is None:
-                    continue
-
-                if criterion == "article":
-                    print("AR ", end="", file=file)
-                if criterion == "title":
-                    print("TI ", end="", file=file)
-                if criterion == "authors":
-                    print("AU ", end="", file=file)
-                if criterion == "global_citations":
-                    print("TC ", end="", file=file)
-                if criterion == "source_title":
-                    print("SO ", end="", file=file)
-                if criterion == "year":
-                    print("PY ", end="", file=file)
-                if criterion == "abstract":
-                    print("AB ", end="", file=file)
-                if criterion == "raw_author_keywords":
-                    print("DE ", end="", file=file)
-                if criterion == "author_keywords":
-                    print("DE ", end="", file=file)
-                if criterion == "raw_index_keywords":
-                    print("ID ", end="", file=file)
-                if criterion == "index_keywords":
-                    print("ID ", end="", file=file)
-
-                text = textwrap.fill(
-                    str(row[criterion]),
-                    width=87,
-                    initial_indent=" " * 3,
-                    subsequent_indent=" " * 3,
-                    fix_sentence_endings=True,
-                )[3:]
-
-                if criterion == "abstract":
-                    text = text.split("\n")
-                    text = [x.strip() for x in text]
-                    text = " \\\n".join(text)
-                    text = '\n"""\n' + text + '\n"""'
-
-                print(text, file=file)
-
-    sys.stdout.write(f"--INFO-- The file '{file_path}' was created\n")
