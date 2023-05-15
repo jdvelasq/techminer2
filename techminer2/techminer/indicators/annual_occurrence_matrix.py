@@ -2,6 +2,10 @@
 Annual Occurrence Matrix
 ===============================================================================
 
+Computes the annual occurrence matrix of a given criterion.
+
+Examples
+--------
 
 >>> directory = "data/regtech/"
 
@@ -29,6 +33,42 @@ def annual_occurrence_matrix(
     end_year=None,
     **filters,
 ):
+    """Computes the annual occurrence matrix of a given criterion.
+
+    The columns are the years, the rows are the criterion values (topics).
+
+    Parameters
+    ----------
+    criterion : str
+        Criterion to be analyzed.
+
+    min_occ : int
+        Minimum number of occurrences. Topics with a number of occurrences below are ignored.
+
+    directory : str
+        The working directory.
+
+    database : str
+        The database name. It can be 'documents', 'cited_by' or 'references'.
+
+    start_year : int
+        The start year for filtering the data.
+
+    end_year : int
+        The end year for filtering the data.
+
+    filters : dict
+        A dictionary of filters. The keys are the field names and the values are the filter values.
+
+    Returns
+    -------
+    pandas.DataFrame
+        The annual occurrence matrix.
+
+
+
+
+    """
 
     indicators_by_year = indicators_by_topic_per_year(
         criterion=criterion,
@@ -49,9 +89,7 @@ def annual_occurrence_matrix(
     indicators = indicators.sort_values("OCC", ascending=False)
     indicators = indicators[indicators["OCC"] >= min_occ]
 
-    indicators_by_year = indicators_by_year.loc[
-        indicators.index,
-    ]
+    indicators_by_year = indicators_by_year.loc[indicators.index,]
 
     indicators_by_year = indicators_by_year.assign(
         year=indicators_by_year.index.get_level_values("year")
