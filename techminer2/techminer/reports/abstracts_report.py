@@ -171,13 +171,14 @@ def _write_report(criterion, file_name, use_textwrap, directory, records):
             print("TC ", end="", file=out_file)
             print(text_citation, file=out_file)
 
-            print("AB ", end="\n", file=out_file)
-            print('"""', end="", file=out_file)
-            text_abstract = text_abstract.split("\n")
-            text_abstract = [x.strip() for x in text_abstract]
-            text_abstract = " \\\n".join(text_abstract)
+            print("AB ", end="", file=out_file)
             print(text_abstract, file=out_file)
-            print('"""', end="\n", file=out_file)
+            # print('"""', end="", file=out_file)
+            # text_abstract = text_abstract.split("\n")
+            # text_abstract = [x.strip() for x in text_abstract]
+            # text_abstract = " \\\n".join(text_abstract)
+            # print(text_abstract, file=out_file)
+            # print('"""', end="\n", file=out_file)
 
             print("\n", file=out_file)
 

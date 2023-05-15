@@ -14,6 +14,11 @@ Thematic evolution plot
 ...     start_year=2016,
 ...     end_year=2019,
 ... )
+--INFO-- The file 'data/regtech/reports/thematic_map/abstracts/CL_00.txt' was created
+--INFO-- The file 'data/regtech/reports/thematic_map/abstracts/CL_01.txt' was created
+--INFO-- The file 'data/regtech/reports/thematic_map/abstracts/CL_02.txt' was created
+--INFO-- The file 'data/regtech/reports/thematic_map/abstracts/CL_03.txt' was created
+
 >>> tm1.communities_.head()
                          CL_00  ...                                CL_03
 0                regtech 9:236  ...            algorithmic process 1:003
@@ -74,7 +79,6 @@ def thematic_evolution_plot(
     n_clusters = 0
     n_clusters_previous = 0
     for indicator in indicators:
-
         cluster_table = _get_cluster_table(indicator)
 
         n_clusters_previous += n_clusters
@@ -94,13 +98,11 @@ def thematic_evolution_plot(
     values = {}
 
     for i in range(1, len(data)):
-
         left_data = data[i - 1]
         right_data = data[i]
 
         for left_keyword in left_data.index.to_list():
             if left_keyword in right_data.index.to_list():
-
                 # left_cluster = left_data.loc[left_keyword, "cluster"]
                 left_index = left_data.loc[left_keyword, "group_index"]
                 left_value = left_data.loc[left_keyword, "value"]
@@ -124,7 +126,6 @@ def thematic_evolution_plot(
 
 
 def _make_sankey_plot(labels, x, y, source, target, value):
-
     fig = go.Figure(
         go.Sankey(
             arrangement="snap",
@@ -151,7 +152,6 @@ def _make_sankey_plot(labels, x, y, source, target, value):
 
 
 def _get_cluster_table(results):
-
     cluster_table = results.indicators_.copy()
 
     cluster_table = cluster_table[["group"]]
