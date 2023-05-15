@@ -17,15 +17,15 @@ China             5                27  ...                     3      0.60
 <BLANKLINE>
 [5 rows x 6 columns]
 
->>> from pprint import pprint
->>> pprint(sorted(techminer.indicators.collaboration_indicators_by_topic("countries", directory=directory).columns.to_list()))
-['OCC',
- 'global_citations',
- 'local_citations',
- 'mp_ratio',
- 'multiple_publication',
- 'single_publication']
 
+>>> print(techminer.indicators.collaboration_indicators_by_topic("countries", directory=directory).head().to_markdown())
+| countries      |   OCC |   global_citations |   local_citations |   single_publication |   multiple_publication |   mp_ratio |
+|:---------------|------:|-------------------:|------------------:|---------------------:|-----------------------:|-----------:|
+| United Kingdom |     7 |                199 |                34 |                    4 |                      3 |       0.43 |
+| Australia      |     7 |                199 |                15 |                    4 |                      3 |       0.43 |
+| United States  |     6 |                 59 |                11 |                    4 |                      2 |       0.33 |
+| Ireland        |     5 |                 55 |                22 |                    4 |                      1 |       0.2  |
+| China          |     5 |                 27 |                 5 |                    2 |                      3 |       0.6  |
 
 """
 
@@ -43,8 +43,51 @@ def collaboration_indicators_by_topic(
     end_year=None,
     **filters,
 ):
-    """Collaboration indicators."""
+    """Collaboration indicators.
 
+    Parameters
+    ----------
+    criterion : str
+        Criterion to be analyzed.
+
+    directory : str
+        The working directory.
+
+    database : str
+        The database name. It can be 'documents', 'cited_by' or 'references'.
+
+    start_year : int
+        The start year for filtering the data.
+
+    end_year : int
+        The end year for filtering the data.
+
+    filters : dict
+        A dictionary with field/value pairs to be used in filtering the data.
+
+    Returns
+    -------
+    pandas.DataFrame
+        A dataframe with the following columns:
+
+        - criterion: the criterion value.
+
+        - OCC: the number of occurrences of the criterion value.
+
+        - global_citations: the number of citations received by the documents with the criterion value.
+
+        - local_citations: the number of citations received by the documents in the database.
+
+        - single_publication: the number of documents with a single publication.
+
+        - multiple_publication: the number of documents with multiple publications.
+
+        - mp_ratio: the ratio between multiple_publication and OCC.
+
+
+    """
+
+    # Read documents from the database
     documents = read_records(
         directory=directory,
         database=database,
@@ -52,7 +95,11 @@ def collaboration_indicators_by_topic(
         end_year=end_year,
         **filters,
     )
+
+    # Add a column to represent the number of occurrences of a document
     documents = documents.assign(OCC=1)
+
+    # Add columns to represent single and multiple publications for a document
     documents["single_publication"] = documents[criterion].map(
         lambda x: 1 if isinstance(x, str) and len(x.split(";")) == 1 else 0
     )
@@ -60,7 +107,7 @@ def collaboration_indicators_by_topic(
         lambda x: 1 if isinstance(x, str) and len(x.split(";")) > 1 else 0
     )
 
-    # ----< remove explode >-------------------------------------------------------------
+    # Split multi-topic documents into individual documents with one topic each
     exploded = documents[
         [
             criterion,
@@ -75,8 +122,8 @@ def collaboration_indicators_by_topic(
     exploded[criterion] = exploded[criterion].str.split(";")
     exploded = exploded.explode(criterion)
     exploded[criterion] = exploded[criterion].str.strip()
-    # ------------------------------------------------------------------------------------
 
+    # Compute collaboration indicators for each topic
     indicators = exploded.groupby(criterion, as_index=False).agg(
         {
             "OCC": np.sum,
@@ -86,15 +133,18 @@ def collaboration_indicators_by_topic(
             "multiple_publication": np.sum,
         }
     )
-    indicators["mp_ratio"] = [
-        round(mp / nd, 2)
-        for nd, mp in zip(indicators.OCC, indicators.multiple_publication)
-    ]
 
-    indicators = indicators.set_index(criterion)
+    # Compute the multiple publication ratio for each topic
+    indicators["mp_ratio"] = indicators["multiple_publication"] / indicators["OCC"]
+    indicators["mp_ratio"] = indicators["mp_ratio"].round(2)
+
+    # Sort the topics by number of occurrences, global citations, and local citations
     indicators = indicators.sort_values(
         by=["OCC", "global_citations", "local_citations"],
         ascending=[False, False, False],
     )
+
+    # Set the index to the criterion column
+    indicators = indicators.set_index(criterion)
 
     return indicators
