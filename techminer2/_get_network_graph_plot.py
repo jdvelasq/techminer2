@@ -127,8 +127,8 @@ def _create_traces(graph):
     max_size = max(node_size)
     min_size = min(node_size)
 
-    textfont_size_max = max_size if max_size < 20 else 20
-    textfont_size_min = min_size if min_size > 7 else 7
+    textfont_size_max = min(max(max_size, 8), 20)
+    textfont_size_min = min(max(min_size, 8), 20)
 
     if max_size == min_size:
         node_size = [13] * len(node_size)
