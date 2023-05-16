@@ -52,7 +52,56 @@ def extract_topics(
     custom_topics=None,
     **filters,
 ):
-    """Creates a list of terms with indicators."""
+    """Returns a dataframe with the topics extracted from the specified criterion.
+
+    Parameters
+    ----------
+    criterion : str
+        Criterion to be used to extract topics. Corresponds to one of columns of the database.
+
+    directory : str
+        Root directory of the project.
+
+    database : ``{"documents", "references", "cited_by"}``, default="documents"``
+        Name of the database to be used.
+
+    metric :  ``{"OCC", "global_citations", "local_citations"}``, default="documents"``
+        Metric to be used to sort the topics.
+
+    start_year : int, optional
+        Start year. Used to filter the database.
+
+    end_year : int, optional
+        End year. Used to filter the database.
+
+    topics_length : int, default=20
+        Number of topics to be extracted.
+
+    topic_min_occ : int, optional
+        Minimum number of occurrences of the topic.
+
+    topic_max_occ : int, optional
+        Maximum number of occurrences of the topic.
+
+    topic_min_citations : int, optional
+        Minimum number of citations of the topic.
+
+    topic_max_citations : int, optional
+        Maximum number of citations of the topic.
+
+    custom_topics : list of str, optional
+        List of topics to be extracted.
+
+    filters : dictionary of ``{criterion : list of values}``, optional
+        dictionary of filters to be applied to the database.
+
+    Returns
+    -------
+    pandas.DataFrame
+        A dataframe with the topics extracted from the specified
+        criterion and its associated bibliometric indicators.
+
+    """
 
     indicators = techminer.indicators.indicators_by_topic(
         criterion=criterion,
