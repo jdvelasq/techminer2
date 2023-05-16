@@ -66,26 +66,7 @@ Analyze the table below, which provides bibliographic indicators for a collectio
 """
 from dataclasses import dataclass
 
-from ... import techminer
-from ...chatgpt import generate_chatgpt_prompt
-
-
-@dataclass(init=False)
-class ExtractTopicsResult:
-    """Results of the extract_topics function.
-
-    Attributes
-    ----------
-    table_ : pandas.DataFrame
-        Table with the extracted topics.
-
-    prompt_ : str
-        ChatGPT prompt to be used to generate the analysis report.
-
-    """
-
-    table_: None  # pandas.DataFrame
-    prompt_: None  # str
+from ... import chatgpt, techminer
 
 
 def extract_topics(
@@ -148,9 +129,17 @@ def extract_topics(
 
     Returns
     -------
-    pandas.DataFrame
-        A dataframe with the topics extracted from the specified
-        criterion and its associated bibliometric indicators.
+    ExtractTopicsResult
+        A dataclass with the following attributes:
+
+        table_ : pandas.DataFrame
+            Table with the extracted topics.
+
+        prompt_ : str
+            ChatGPT prompt to be used to generate the analysis report.
+
+        metric_ : str
+            Metric used to sort the topics.
 
     """
 
@@ -179,9 +168,11 @@ def extract_topics(
 
     indicators = indicators.loc[custom_topics, :]
 
-    results = ExtractTopicsResult()
+    results = _ExtractTopicsResult()
     results.table_ = indicators
-    results.prompt_ = generate_chatgpt_prompt(results.table_)
+    results.prompt_ = chatgpt.generate_prompt(results.table_)
+    results.metric_ = metric
+    results.criterion_ = criterion
 
     return results
 
@@ -236,3 +227,13 @@ def _sort_indicators(indicators, metric):
     indicators = indicators.sort_values(columns, ascending=ascending)
 
     return indicators
+
+
+@dataclass(init=False)
+class _ExtractTopicsResult:
+    """Results of the extract_topics function."""
+
+    table_: None  # pandas.DataFrame
+    prompt_: None  # str
+    metric_: None  # str
+    criterion_: None  # str

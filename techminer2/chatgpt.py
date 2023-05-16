@@ -6,7 +6,7 @@
 #
 
 
-def generate_chatgpt_prompt(table):
+def generate_prompt(table):
     """Generate a prompt for bibliometric analysis.
 
     Parameters
