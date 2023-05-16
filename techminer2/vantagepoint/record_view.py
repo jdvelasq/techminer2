@@ -2,7 +2,9 @@
 Record View
 ===============================================================================
 
-VantagePoint / Record View
+Extracts documents from the databaase containing the text string specified by
+the parameter ``search_for`` in the column specified by the parameter ``criterion``.
+This functions allows the use of regular expressions for searching.
 
 >>> directory = "data/regtech/"
 
@@ -135,7 +137,6 @@ def record_view(
     ]
 
     for criterion in reported_columns:
-
         if criterion in records.columns:
             column_list.append(criterion)
 
@@ -146,9 +147,7 @@ def record_view(
     records = records.head(records_length)
 
     for index, row in records.iterrows():
-
         for criterion in reported_columns:
-
             if criterion not in row.index:
                 continue
 

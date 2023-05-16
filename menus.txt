@@ -1,0 +1,35 @@
+data
+   . import scopus files
+
+
+cleaning
+   . replace text in columns 
+   . thesaurus
+
+metrics
+   . techminer indicators
+
+
+reports   
+   . abstracts reports
+   . abstracts summarization
+   . cited documents
+   , bradfors law
+   . lotka law
+   . corresponding authors country
+   . rpys
+
+overview
+   . coverage
+   . record view
+   . summary view
+
+   . docuemnt types
+   . bibliometrix overview items
+      . main information
+      . annual scientific production
+      . average citations per year
+      . three fields plot
+
+
+   . main path analysis

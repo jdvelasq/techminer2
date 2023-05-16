@@ -2,6 +2,8 @@
 Summary View
 ===============================================================================
 
+This function returns a dataframe with the coverage (percentage of no nulls) 
+and the number of different terms (topics) of each column in the dataset.
 
 >>> directory = "data/regtech/"
 
