@@ -45,7 +45,9 @@ def terms_by_year(
     criterion,
     topics_length=50,
     topic_min_occ=None,
+    topic_max_occ=None,
     topic_min_citations=None,
+    topic_max_citations=None,
     directory="./",
     database="documents",
     start_year=None,
@@ -85,10 +87,17 @@ def terms_by_year(
     custom_topics = indicators.copy()
     if topic_min_occ is not None:
         custom_topics = custom_topics[custom_topics["OCC"] >= topic_min_occ]
+    if topic_max_occ is not None:
+        custom_topics = custom_topics[custom_topics["OCC"] <= topic_max_occ]
     if topic_min_citations is not None:
         custom_topics = custom_topics[
             custom_topics["global_citations"] >= topic_min_citations
         ]
+    if topic_max_citations is not None:
+        custom_topics = custom_topics[
+            custom_topics["global_citations"] <= topic_max_citations
+        ]
+
     custom_topics = custom_topics.index.copy()
     custom_topics = custom_topics[:topics_length]
 
@@ -97,7 +106,6 @@ def terms_by_year(
     indicators_by_year = indicators_by_year[
         indicators_by_year[criterion].isin(indicators.index)
     ]
-    ###
 
     indicators_by_year = _add_counters_to_items(
         matrix_list=indicators_by_year,
