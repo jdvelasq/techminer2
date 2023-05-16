@@ -1,3 +1,3 @@
 from . import matrix, tfidf
-from .list_view import list_view
+from .extract_topics import extract_topics
 from .terms_by_year import terms_by_year
