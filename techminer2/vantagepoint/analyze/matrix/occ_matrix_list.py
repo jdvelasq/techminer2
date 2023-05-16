@@ -64,7 +64,9 @@ def occ_matrix_list(
     criterion_for_rows,
     topics_length=None,
     topic_min_occ=None,
+    topic_max_occ=None,
     topic_min_citations=None,
+    topic_max_citations=None,
     directory="./",
     database="documents",
     start_year=None,
@@ -90,7 +92,9 @@ def occ_matrix_list(
     matrix_list = _select_topics_by_occ_and_citations_and_topic_length(
         matrix_list=matrix_list,
         topic_min_occ=topic_min_occ,
+        topic_max_occ=topic_max_occ,
         topic_min_citations=topic_min_citations,
+        topic_max_citations=topic_max_citations,
         topics_length=topics_length,
         criterion_for_columns=criterion_for_columns,
         criterion_for_rows=criterion_for_rows,
@@ -105,7 +109,6 @@ def occ_matrix_list(
         (criterion_for_columns, "column"),
         (criterion_for_rows, "row"),
     ]:
-
         matrix_list = _add_counters_to_items(
             column=criterion,
             name=name,
@@ -122,22 +125,6 @@ def occ_matrix_list(
     matrix_list = matrix_list.reset_index(drop=True)
 
     return matrix_list
-
-
-# def _select_top_n_items(top_n, matrix_list, column):
-
-#     table = pd.DataFrame({"term": matrix_list[column].drop_duplicates()})
-#     table["ranking"] = table.term.str.split()
-#     table["ranking"] = table["ranking"].map(lambda x: x[-1])
-#     table["name"] = table.term.str.split()
-#     table["name"] = table["name"].map(lambda x: x[:-1])
-#     table["name"] = table["name"].str.join(" ")
-#     table = table.sort_values(["ranking", "name"], ascending=[False, True])
-#     table = table.head(top_n)
-#     terms = table.term.tolist()
-
-#     matrix_list = matrix_list[matrix_list[column].isin(terms)]
-#     return matrix_list
 
 
 def _add_counters_to_items(
@@ -165,7 +152,9 @@ def _add_counters_to_items(
 def _select_topics_by_occ_and_citations_and_topic_length(
     matrix_list,
     topic_min_occ,
+    topic_max_occ,
     topic_min_citations,
+    topic_max_citations,
     topics_length,
     criterion_for_columns,
     criterion_for_rows,
@@ -176,7 +165,6 @@ def _select_topics_by_occ_and_citations_and_topic_length(
     **filters,
 ):
     for criterion in [criterion_for_columns, criterion_for_rows]:
-
         indicators = indicators_by_topic(
             criterion=criterion,
             directory=directory,
@@ -188,8 +176,12 @@ def _select_topics_by_occ_and_citations_and_topic_length(
 
         if topic_min_occ is not None:
             indicators = indicators[indicators.OCC >= topic_min_occ]
+        if topic_max_occ is not None:
+            indicators = indicators[indicators.OCC <= topic_max_occ]
         if topic_min_citations is not None:
             indicators = indicators[indicators.global_citations >= topic_min_citations]
+        if topic_max_citations is not None:
+            indicators = indicators[indicators.global_citations <= topic_max_citations]
 
         indicators = indicators.sort_values(
             ["OCC", "global_citations", "local_citations"],
@@ -225,7 +217,6 @@ def _create_matrix_list(
     end_year,
     **filters,
 ):
-
     records = read_records(
         directory,
         database=database,

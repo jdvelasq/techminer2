@@ -36,7 +36,9 @@ def tf_matrix(
     criterion,
     topics_length=None,
     topic_min_occ=None,
+    topic_max_occ=None,
     topic_min_citations=None,
+    topic_max_citations=None,
     custom_topics=None,
     scheme=None,
     directory="./",
@@ -52,7 +54,9 @@ def tf_matrix(
         criterion,
         topics_length,
         topic_min_occ,
+        topic_max_occ,
         topic_min_citations,
+        topic_max_citations,
         custom_topics,
         directory,
         database,
@@ -97,7 +101,6 @@ def tf_matrix(
 
 
 def _sort_columns(result):
-
     topics = pd.DataFrame({"topic": result.columns.tolist()})
 
     topics["OCC"] = topics.topic.str.split()
@@ -202,7 +205,9 @@ def _compute_filter(
     criterion,
     topics_length,
     topic_min_occ,
+    topic_max_occ,
     topic_min_citations,
+    topic_max_citations,
     custom_topics,
     directory,
     database,
@@ -224,9 +229,15 @@ def _compute_filter(
         custom_topics = indicators.copy()
         if topic_min_occ is not None:
             custom_topics = custom_topics[custom_topics["OCC"] >= topic_min_occ]
+        if topic_max_occ is not None:
+            custom_topics = custom_topics[custom_topics["OCC"] <= topic_max_occ]
         if topic_min_citations is not None:
             custom_topics = custom_topics[
                 custom_topics["global_citations"] >= topic_min_citations
+            ]
+        if topic_max_citations is not None:
+            custom_topics = custom_topics[
+                custom_topics["global_citations"] <= topic_max_citations
             ]
         custom_topics = custom_topics.index.copy()
         custom_topics = custom_topics[:topics_length]

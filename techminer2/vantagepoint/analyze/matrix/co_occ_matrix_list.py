@@ -112,7 +112,9 @@ def co_occ_matrix_list(
     criterion,
     topics_length=None,
     topic_min_occ=None,
+    tooic_max_occ=None,
     topic_min_citations=None,
+    topic_max_citations=None,
     directory="./",
     database="documents",
     start_year=None,
@@ -138,7 +140,9 @@ def co_occ_matrix_list(
     matrix_list = _select_topics_by_occ_and_citations_and_topic_length(
         matrix_list=matrix_list,
         topic_min_occ=topic_min_occ,
+        tooic_max_occ=tooic_max_occ,
         topic_min_citations=topic_min_citations,
+        topic_max_citations=topic_max_citations,
         topics_length=topics_length,
         criterion=criterion,
         directory=directory,
@@ -149,7 +153,6 @@ def co_occ_matrix_list(
     )
 
     for column_name in ["row", "column"]:
-
         matrix_list = _add_counters_to_items(
             matrix_list=matrix_list,
             column_name=column_name,
@@ -167,11 +170,9 @@ def co_occ_matrix_list(
 
 
 def _sort_matrix_list(matrix_list):
-
     matrix_list = matrix_list.copy()
 
     for col in ["row", "column"]:
-
         col_upper = col.upper()
         matrix_list[col_upper] = matrix_list[col]
         matrix_list[col_upper] = matrix_list[col_upper].str.split()
@@ -212,7 +213,9 @@ def _add_counters_to_items(
 def _select_topics_by_occ_and_citations_and_topic_length(
     matrix_list,
     topic_min_occ,
+    topic_max_occ,
     topic_min_citations,
+    topic_max_citations,
     topics_length,
     criterion,
     directory,
@@ -232,8 +235,12 @@ def _select_topics_by_occ_and_citations_and_topic_length(
 
     if topic_min_occ is not None:
         indicators = indicators[indicators.OCC >= topic_min_occ]
+    if topic_max_occ is not None:
+        indicators = indicators[indicators.OCC <= topic_max_occ]
     if topic_min_citations is not None:
         indicators = indicators[indicators.global_citations >= topic_min_citations]
+    if topic_max_citations is not None:
+        indicators = indicators[indicators.global_citations <= topic_max_citations]
 
     indicators = indicators.sort_values(
         ["OCC", "global_citations", "local_citations"],
@@ -266,7 +273,6 @@ def _create_matrix_list(
     end_year,
     **filters,
 ):
-
     records = read_records(
         directory=directory,
         database=database,

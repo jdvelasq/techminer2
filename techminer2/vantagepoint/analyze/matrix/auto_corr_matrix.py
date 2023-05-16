@@ -39,7 +39,9 @@ def auto_corr_matrix(
     method="pearson",
     topics_length=50,
     topic_min_occ=None,
+    topic_max_occ=None,
     topic_min_citations=None,
+    topic_max_citations=None,
     custom_topics=None,
     directory="./",
     database="documents",
@@ -53,7 +55,9 @@ def auto_corr_matrix(
         criterion=criterion,
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,
+        topic_max_occ=topic_max_occ,
         topic_min_citations=topic_min_citations,
+        topic_max_citations=topic_max_citations,
         custom_topics=custom_topics,
         directory=directory,
         database=database,
@@ -68,7 +72,6 @@ def auto_corr_matrix(
 
 
 def _compute_corr_matrix(method, data_matrix):
-
     corr_matrix = pd.DataFrame(
         0.0,
         columns=data_matrix.columns.to_list(),
