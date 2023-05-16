@@ -133,17 +133,6 @@ def _get_article(records, summary):
 
     # records.index = records.article
 
-    # summarization["global_citations"] = records.loc[
-    #     summarization.article, "global_citations"
-    # ].tolist()
-
-    # summarization["local_citations"] = records.loc[
-    #     summarization.article, "local_citations"
-    # ].tolist()
-
-    # summarization["title"] = records.loc[summarization.article, "title"].tolist()
-    # summarization[criterion] = records.loc[summarization.article, criterion].tolist()
-
     return summarization
 
 
