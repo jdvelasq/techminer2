@@ -9,8 +9,8 @@ Bar Chart (GPT)
 
 >>> from techminer2 import vantagepoint
 >>> obj = vantagepoint.analyze.extract_topics(
-...    criterion='author_keywords',
-...    directory=directory,
+...     criterion='author_keywords',
+...     directory=directory,
 ... )
 >>> chart = vantagepoint.report.bar_chart(obj, title="Most Frequent Author Keywords")
 >>> chart.plot_.write_html(file_name)
