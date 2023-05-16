@@ -94,7 +94,6 @@ def bar_chart(
     y_label : str, optional
         Label of the y-axis, by default None
 
-
     """
 
     result = _Chart()
