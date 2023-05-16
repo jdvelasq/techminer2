@@ -82,22 +82,3 @@ def chart(
     )
 
     return result
-
-
-# Sort the indicators dataframe based on the given metric (OCC, local_citations, or global_citations).
-def _sort_indicators(indicators, metric):
-    # Define the columns to sort by for each metric, and whether to sort ascending or descending.
-    if metric == "OCC":
-        columns = ["OCC", "global_citations", "local_citations"]
-        ascending = [False, False, False]
-    if metric == "global_citations":
-        columns = ["global_citations", "local_citations", "OCC"]
-        ascending = [False, False, False]
-    if metric == "local_citations":
-        columns = ["local_citations", "global_citations", "OCC"]
-        ascending = [False, False, False]
-
-    # Sort the indicators dataframe based on the given columns and sort order.
-    indicators = indicators.sort_values(columns, ascending=ascending)
-
-    return indicators

@@ -11,7 +11,7 @@ Extract topics (equivalent to `List View` in VantagePoint).
 ...    criterion='author_keywords',
 ...    directory=directory,
 ... )
->>> r.head()
+>>> r.table_.head()
                        OCC  ...  local_citations_per_document
 author_keywords             ...                              
 regtech                 28  ...                             2
@@ -24,7 +24,7 @@ regulation               5  ...                             4
 
 
 
->>> print(r.head().to_markdown())
+>>> print(r.table_.head().to_markdown())
 | author_keywords       |   OCC |   local_citations |   global_citations |   global_citations_per_document |   local_citations_per_document |
 |:----------------------|------:|------------------:|-------------------:|--------------------------------:|-------------------------------:|
 | regtech               |    28 |                74 |                329 |                              11 |                              2 |
@@ -33,8 +33,47 @@ regulation               5  ...                             4
 | compliance            |     7 |                 9 |                 30 |                               4 |                              1 |
 | regulation            |     5 |                22 |                164 |                              32 |                              4 |
 
+
+>>> print(r.prompt_)
+Analyze the table below, which provides bibliographic indicators for a collection of research articles. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
+<BLANKLINE>
+| author_keywords         |   OCC |   local_citations |   global_citations |   global_citations_per_document |   local_citations_per_document |
+|:------------------------|------:|------------------:|-------------------:|--------------------------------:|-------------------------------:|
+| regtech                 |    28 |                74 |                329 |                              11 |                              2 |
+| fintech                 |    12 |                49 |                249 |                              20 |                              4 |
+| regulatory technology   |     7 |                14 |                 37 |                               5 |                              2 |
+| compliance              |     7 |                 9 |                 30 |                               4 |                              1 |
+| regulation              |     5 |                22 |                164 |                              32 |                              4 |
+| financial services      |     4 |                20 |                168 |                              42 |                              5 |
+| financial regulation    |     4 |                 8 |                 35 |                               8 |                              2 |
+| artificial intelligence |     4 |                 6 |                 23 |                               5 |                              1 |
+| anti-money laundering   |     3 |                 4 |                 21 |                               7 |                              1 |
+| risk management         |     3 |                 8 |                 14 |                               4 |                              2 |
+| innovation              |     3 |                 4 |                 12 |                               4 |                              1 |
+| blockchain              |     3 |                 0 |                  5 |                               1 |                              0 |
+| suptech                 |     3 |                 2 |                  4 |                               1 |                              0 |
+| semantic technologies   |     2 |                19 |                 41 |                              20 |                              9 |
+| data protection         |     2 |                 5 |                 27 |                              13 |                              2 |
+| smart contracts         |     2 |                 8 |                 22 |                              11 |                              4 |
+| charitytech             |     2 |                 4 |                 17 |                               8 |                              2 |
+| english law             |     2 |                 4 |                 17 |                               8 |                              2 |
+| gdpr                    |     2 |                 3 |                 14 |                               7 |                              1 |
+| data protection officer |     2 |                 3 |                 14 |                               7 |                              1 |
+<BLANKLINE>
+<BLANKLINE>
+
+
 """
+from dataclasses import dataclass
+
 from ... import techminer
+from ...chatgpt import generate_chatgpt_prompt
+
+
+@dataclass(init=False)
+class _Results:
+    table_: None
+    prompt_: None
 
 
 def extract_topics(
@@ -128,7 +167,11 @@ def extract_topics(
 
     indicators = indicators.loc[custom_topics, :]
 
-    return indicators
+    results = _Results()
+    results.table_ = indicators
+    results.prompt_ = generate_chatgpt_prompt(results.table_)
+
+    return results
 
 
 def _filter_custom_topics(indicators, custom_topics):
