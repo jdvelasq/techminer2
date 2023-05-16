@@ -71,9 +71,21 @@ from ...chatgpt import generate_chatgpt_prompt
 
 
 @dataclass(init=False)
-class _Results:
-    table_: None
-    prompt_: None
+class ExtractTopicsResult:
+    """Results of the extract_topics function.
+
+    Attributes
+    ----------
+    table_ : pandas.DataFrame
+        Table with the extracted topics.
+
+    prompt_ : str
+        ChatGPT prompt to be used to generate the analysis report.
+
+    """
+
+    table_: None  # pandas.DataFrame
+    prompt_: None  # str
 
 
 def extract_topics(
@@ -167,7 +179,7 @@ def extract_topics(
 
     indicators = indicators.loc[custom_topics, :]
 
-    results = _Results()
+    results = ExtractTopicsResult()
     results.table_ = indicators
     results.prompt_ = generate_chatgpt_prompt(results.table_)
 
