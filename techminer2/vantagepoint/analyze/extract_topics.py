@@ -1,5 +1,5 @@
 """
-Extract topics (equivalent to `List View` in VantagePoint).
+Extract topics --- equivalent to `List View` in VantagePoint. (GPT)
 ===============================================================================
 
 

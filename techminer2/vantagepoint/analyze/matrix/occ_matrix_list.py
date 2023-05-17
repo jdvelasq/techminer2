@@ -8,27 +8,39 @@ Occurrence Matrix List
 **Item selection by occurrence.**
 
 >>> from techminer2 import vantagepoint
->>> vantagepoint.analyze.matrix.occ_matrix_list(
+>>> r = vantagepoint.analyze.matrix.occ_matrix_list(
 ...    criterion_for_columns='author_keywords',
 ...    criterion_for_rows='authors',
-...    topic_min_occ=2,
+...    topic_min_occ=3,
 ...    directory=directory,
 ... )
-                   row                       column  OCC
-0       Arner DW 3:185               regtech 28:329    2
-1       Arner DW 3:185               fintech 12:249    1
-2       Arner DW 3:185    financial services 04:168    1
-3       Arner DW 3:185  financial regulation 04:035    2
-4       Arner DW 3:185       data protection 02:027    1
-..                 ...                          ...  ...
-73  Lanfranchi D 2:002               finance 02:001    1
-74  Lanfranchi D 2:002             reporting 02:001    1
-75      Arman AA 2:000               regtech 28:329    2
-76      Arman AA 2:000               suptech 03:004    1
-77      Arman AA 2:000            technology 02:010    1
-<BLANKLINE>
-[78 rows x 3 columns]
+>>> r.matrix_list_
+                row                       column  OCC
+0    Arner DW 3:185               regtech 28:329    2
+1    Arner DW 3:185               fintech 12:249    1
+2    Arner DW 3:185    financial services 04:168    1
+3    Arner DW 3:185  financial regulation 04:035    2
+4  Buckley RP 3:185               regtech 28:329    2
+5  Buckley RP 3:185               fintech 12:249    1
+6  Buckley RP 3:185    financial services 04:168    1
+7  Buckley RP 3:185  financial regulation 04:035    2
 
+
+>>> print(r.prompt_)
+Analyze the table below, which contains the the metric OCC for author_keywords and authors. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
+<BLANKLINE>
+|    | row              | column                      |   OCC |
+|---:|:-----------------|:----------------------------|------:|
+|  0 | Arner DW 3:185   | regtech 28:329              |     2 |
+|  1 | Arner DW 3:185   | fintech 12:249              |     1 |
+|  2 | Arner DW 3:185   | financial services 04:168   |     1 |
+|  3 | Arner DW 3:185   | financial regulation 04:035 |     2 |
+|  4 | Buckley RP 3:185 | regtech 28:329              |     2 |
+|  5 | Buckley RP 3:185 | fintech 12:249              |     1 |
+|  6 | Buckley RP 3:185 | financial services 04:168   |     1 |
+|  7 | Buckley RP 3:185 | financial regulation 04:035 |     2 |
+<BLANKLINE>
+<BLANKLINE>
 
 **Seleccition of top terms.**
 
@@ -37,7 +49,7 @@ Occurrence Matrix List
 ...    criterion_for_rows='authors',
 ...    topics_length=5,
 ...    directory=directory,
-... )
+... ).matrix_list_
                  row                        column  OCC
 0     Arner DW 3:185                regtech 28:329    2
 1     Arner DW 3:185                fintech 12:249    1
@@ -50,13 +62,23 @@ Occurrence Matrix List
 8     Hamdan A 2:018  regulatory technology 07:037    2
 
 
-
 """
+from dataclasses import dataclass
+
+from .... import chatgpt
 from ...._items2counters import items2counters
 from ...._load_stopwords import load_stopwords
 from ...._read_records import read_records
 from ....techminer.indicators.indicators_by_topic import indicators_by_topic
-from .co_occ_matrix_list import _sort_matrix_list
+
+
+@dataclass(init=False)
+class _MatrixListResult:
+    matrix_list_: None
+    prompt_: None
+    metric_: None
+    criterion_for_columns_: None
+    criterion_for_rows_: None
 
 
 def occ_matrix_list(
@@ -73,11 +95,45 @@ def occ_matrix_list(
     end_year=None,
     **filters,
 ):
-    """Creates a list of the cells of a co-occurrence matrix."""
+    results = _MatrixListResult()
 
-    if criterion_for_rows == criterion_for_columns:
-        raise ValueError("The criterion for row and column must be different.")
+    results.criterion_for_columns_ = criterion_for_columns
+    results.criterion_for_rows_ = criterion_for_rows
+    results.metric_ = "OCC"
+    results.matrix_list_ = _make_matrix_list(
+        criterion_for_columns=criterion_for_columns,
+        criterion_for_rows=criterion_for_rows,
+        topics_length=topics_length,
+        topic_min_occ=topic_min_occ,
+        topic_max_occ=topic_max_occ,
+        topic_min_citations=topic_min_citations,
+        topic_max_citations=topic_max_citations,
+        directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
+    )
 
+    results.prompt_ = chatgpt.generate_prompt_for_matrix_list(results)
+
+    return results
+
+
+def _make_matrix_list(
+    criterion_for_columns,
+    criterion_for_rows,
+    topics_length,
+    topic_min_occ,
+    topic_max_occ,
+    topic_min_citations,
+    topic_max_citations,
+    directory,
+    database,
+    start_year,
+    end_year,
+    **filters,
+):
     matrix_list = _create_matrix_list(
         column=criterion_for_columns,
         row=criterion_for_rows,
@@ -146,6 +202,25 @@ def _add_counters_to_items(
         **filters,
     )
     matrix_list[name] = matrix_list[name].map(new_column_names)
+    return matrix_list
+
+
+def _sort_matrix_list(matrix_list):
+    matrix_list = matrix_list.copy()
+
+    for col in ["row", "column"]:
+        col_upper = col.upper()
+        matrix_list[col_upper] = matrix_list[col]
+        matrix_list[col_upper] = matrix_list[col_upper].str.split()
+        matrix_list[col_upper] = matrix_list[col_upper].map(lambda x: x[-1])
+
+    matrix_list = matrix_list.sort_values(
+        ["ROW", "row", "COLUMN", "column"], ascending=[False, True, False, True]
+    )
+
+    matrix_list = matrix_list.drop(columns=["ROW", "COLUMN"])
+    matrix_list = matrix_list.reset_index(drop=True)
+
     return matrix_list
 
 

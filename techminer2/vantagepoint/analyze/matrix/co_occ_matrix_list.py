@@ -102,10 +102,7 @@ Co-occurrence Matrix List
 
 
 """
-from ...._items2counters import items2counters
-from ...._load_stopwords import load_stopwords
-from ...._read_records import read_records
-from ....techminer.indicators.indicators_by_topic import indicators_by_topic
+from .occ_matrix_list import occ_matrix_list
 
 
 def co_occ_matrix_list(
@@ -123,176 +120,17 @@ def co_occ_matrix_list(
 ):
     """Creates a list of the cells of a co-occurrence matrix."""
 
-    matrix_list = _create_matrix_list(
-        criterion=criterion,
-        directory=directory,
-        database=database,
-        start_year=start_year,
-        end_year=end_year,
-        **filters,
-    )
-
-    matrix_list = _remove_stopwords(
-        directory,
-        matrix_list,
-    )
-
-    matrix_list = _select_topics_by_occ_and_citations_and_topic_length(
-        matrix_list=matrix_list,
+    return occ_matrix_list(
+        criterion_for_columns=criterion,
+        criterion_for_rows=criterion,
+        topics_length=topics_length,
         topic_min_occ=topic_min_occ,
         topic_max_occ=topic_max_occ,
         topic_min_citations=topic_min_citations,
         topic_max_citations=topic_max_citations,
-        topics_length=topics_length,
-        criterion=criterion,
         directory=directory,
         database=database,
         start_year=start_year,
         end_year=end_year,
         **filters,
     )
-
-    for column_name in ["row", "column"]:
-        matrix_list = _add_counters_to_items(
-            matrix_list=matrix_list,
-            column_name=column_name,
-            criterion=criterion,
-            directory=directory,
-            database=database,
-            start_year=start_year,
-            end_year=end_year,
-            **filters,
-        )
-
-    matrix_list = _sort_matrix_list(matrix_list)
-
-    return matrix_list
-
-
-def _sort_matrix_list(matrix_list):
-    matrix_list = matrix_list.copy()
-
-    for col in ["row", "column"]:
-        col_upper = col.upper()
-        matrix_list[col_upper] = matrix_list[col]
-        matrix_list[col_upper] = matrix_list[col_upper].str.split()
-        matrix_list[col_upper] = matrix_list[col_upper].map(lambda x: x[-1])
-
-    matrix_list = matrix_list.sort_values(
-        ["ROW", "row", "COLUMN", "column"], ascending=[False, True, False, True]
-    )
-
-    matrix_list = matrix_list.drop(columns=["ROW", "COLUMN"])
-    matrix_list = matrix_list.reset_index(drop=True)
-
-    return matrix_list
-
-
-def _add_counters_to_items(
-    matrix_list,
-    column_name,
-    criterion,
-    directory,
-    database,
-    start_year,
-    end_year,
-    **filters,
-):
-    new_column_names = items2counters(
-        column=criterion,
-        directory=directory,
-        database=database,
-        start_year=start_year,
-        end_year=end_year,
-        **filters,
-    )
-    matrix_list[column_name] = matrix_list[column_name].map(new_column_names)
-    return matrix_list
-
-
-def _select_topics_by_occ_and_citations_and_topic_length(
-    matrix_list,
-    topic_min_occ,
-    topic_max_occ,
-    topic_min_citations,
-    topic_max_citations,
-    topics_length,
-    criterion,
-    directory,
-    database,
-    start_year,
-    end_year,
-    **filters,
-):
-    indicators = indicators_by_topic(
-        criterion=criterion,
-        directory=directory,
-        database=database,
-        start_year=start_year,
-        end_year=end_year,
-        **filters,
-    )
-
-    if topic_min_occ is not None:
-        indicators = indicators[indicators.OCC >= topic_min_occ]
-    if topic_max_occ is not None:
-        indicators = indicators[indicators.OCC <= topic_max_occ]
-    if topic_min_citations is not None:
-        indicators = indicators[indicators.global_citations >= topic_min_citations]
-    if topic_max_citations is not None:
-        indicators = indicators[indicators.global_citations <= topic_max_citations]
-
-    indicators = indicators.sort_values(
-        ["OCC", "global_citations", "local_citations"],
-        ascending=[False, False, False],
-    )
-
-    if topics_length is not None:
-        indicators = indicators.head(topics_length)
-
-    topics = indicators.index.to_list()
-
-    matrix_list = matrix_list[matrix_list.column.isin(topics)]
-    matrix_list = matrix_list[matrix_list.row.isin(topics)]
-
-    return matrix_list
-
-
-def _remove_stopwords(directory, matrix_list):
-    stopwords = load_stopwords(directory)
-    matrix_list = matrix_list[~matrix_list["column"].isin(stopwords)]
-    matrix_list = matrix_list[~matrix_list["row"].isin(stopwords)]
-    return matrix_list
-
-
-def _create_matrix_list(
-    criterion,
-    directory,
-    database,
-    start_year,
-    end_year,
-    **filters,
-):
-    records = read_records(
-        directory=directory,
-        database=database,
-        start_year=start_year,
-        end_year=end_year,
-        **filters,
-    )
-
-    matrix_list = records[[criterion]].copy()
-    matrix_list = matrix_list.rename(columns={criterion: "column"})
-    matrix_list = matrix_list.assign(row=records[[criterion]])
-
-    for name in ["column", "row"]:
-        matrix_list[name] = matrix_list[name].str.split(";")
-        matrix_list = matrix_list.explode(name)
-        matrix_list[name] = matrix_list[name].str.strip()
-
-    matrix_list["OCC"] = 1
-    matrix_list = matrix_list.groupby(["row", "column"], as_index=False).aggregate(
-        "sum"
-    )
-
-    return matrix_list

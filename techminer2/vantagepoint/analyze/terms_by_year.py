@@ -38,7 +38,7 @@ from ...techminer.indicators.indicators_by_topic import indicators_by_topic
 from ...techminer.indicators.indicators_by_topic_per_year import (
     indicators_by_topic_per_year,
 )
-from .matrix.co_occ_matrix_list import _add_counters_to_items
+from .matrix.occ_matrix_list import _add_counters_to_items
 
 
 def terms_by_year(
