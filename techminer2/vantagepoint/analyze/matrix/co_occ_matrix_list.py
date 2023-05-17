@@ -8,71 +8,83 @@ Co-occurrence Matrix List
 **Item selection by occurrence.**
 
 >>> from techminer2 import vantagepoint
->>> vantagepoint.analyze.matrix.co_occ_matrix_list(
+>>> r = vantagepoint.analyze.matrix.co_occ_matrix_list(
 ...    criterion='author_keywords',
-...    topic_min_occ=4,
+...    topic_min_occ=5,
 ...    directory=directory,
 ... )
-                               row                          column  OCC
-0                   regtech 28:329                  regtech 28:329   28
-1                   regtech 28:329                  fintech 12:249   12
-2                   regtech 28:329    regulatory technology 07:037    2
-3                   regtech 28:329               compliance 07:030    7
-4                   regtech 28:329               regulation 05:164    4
-5                   regtech 28:329       financial services 04:168    3
-6                   regtech 28:329     financial regulation 04:035    2
-7                   regtech 28:329  artificial intelligence 04:023    2
-8                   fintech 12:249                  regtech 28:329   12
-9                   fintech 12:249                  fintech 12:249   12
-10                  fintech 12:249    regulatory technology 07:037    1
-11                  fintech 12:249               compliance 07:030    2
-12                  fintech 12:249               regulation 05:164    4
-13                  fintech 12:249       financial services 04:168    2
-14                  fintech 12:249     financial regulation 04:035    1
-15                  fintech 12:249  artificial intelligence 04:023    1
-16    regulatory technology 07:037                  regtech 28:329    2
-17    regulatory technology 07:037                  fintech 12:249    1
-18    regulatory technology 07:037    regulatory technology 07:037    7
-19    regulatory technology 07:037               compliance 07:030    1
-20    regulatory technology 07:037               regulation 05:164    1
-21    regulatory technology 07:037  artificial intelligence 04:023    1
-22               compliance 07:030                  regtech 28:329    7
-23               compliance 07:030                  fintech 12:249    2
-24               compliance 07:030    regulatory technology 07:037    1
-25               compliance 07:030               compliance 07:030    7
-26               compliance 07:030               regulation 05:164    1
-27               compliance 07:030  artificial intelligence 04:023    1
-28               regulation 05:164                  regtech 28:329    4
-29               regulation 05:164                  fintech 12:249    4
-30               regulation 05:164    regulatory technology 07:037    1
-31               regulation 05:164               compliance 07:030    1
-32               regulation 05:164               regulation 05:164    5
-33               regulation 05:164       financial services 04:168    1
-34       financial services 04:168                  regtech 28:329    3
-35       financial services 04:168                  fintech 12:249    2
-36       financial services 04:168               regulation 05:164    1
-37       financial services 04:168       financial services 04:168    4
-38       financial services 04:168     financial regulation 04:035    2
-39     financial regulation 04:035                  regtech 28:329    2
-40     financial regulation 04:035                  fintech 12:249    1
-41     financial regulation 04:035       financial services 04:168    2
-42     financial regulation 04:035     financial regulation 04:035    4
-43  artificial intelligence 04:023                  regtech 28:329    2
-44  artificial intelligence 04:023                  fintech 12:249    1
-45  artificial intelligence 04:023    regulatory technology 07:037    1
-46  artificial intelligence 04:023               compliance 07:030    1
-47  artificial intelligence 04:023  artificial intelligence 04:023    4
+>>> r.matrix_list_
+                             row                        column  OCC
+0                 regtech 28:329                regtech 28:329   28
+1                 regtech 28:329                fintech 12:249   12
+2                 regtech 28:329  regulatory technology 07:037    2
+3                 regtech 28:329             compliance 07:030    7
+4                 regtech 28:329             regulation 05:164    4
+5                 fintech 12:249                regtech 28:329   12
+6                 fintech 12:249                fintech 12:249   12
+7                 fintech 12:249  regulatory technology 07:037    1
+8                 fintech 12:249             compliance 07:030    2
+9                 fintech 12:249             regulation 05:164    4
+10  regulatory technology 07:037                regtech 28:329    2
+11  regulatory technology 07:037                fintech 12:249    1
+12  regulatory technology 07:037  regulatory technology 07:037    7
+13  regulatory technology 07:037             compliance 07:030    1
+14  regulatory technology 07:037             regulation 05:164    1
+15             compliance 07:030                regtech 28:329    7
+16             compliance 07:030                fintech 12:249    2
+17             compliance 07:030  regulatory technology 07:037    1
+18             compliance 07:030             compliance 07:030    7
+19             compliance 07:030             regulation 05:164    1
+20             regulation 05:164                regtech 28:329    4
+21             regulation 05:164                fintech 12:249    4
+22             regulation 05:164  regulatory technology 07:037    1
+23             regulation 05:164             compliance 07:030    1
+24             regulation 05:164             regulation 05:164    5
 
+
+>>> print(r.prompt_)
+Analyze the table below, which contains the the metric OCC for author_keywords and author_keywords. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
+<BLANKLINE>
+|    | row                          | column                       |   OCC |
+|---:|:-----------------------------|:-----------------------------|------:|
+|  0 | regtech 28:329               | regtech 28:329               |    28 |
+|  1 | regtech 28:329               | fintech 12:249               |    12 |
+|  2 | regtech 28:329               | regulatory technology 07:037 |     2 |
+|  3 | regtech 28:329               | compliance 07:030            |     7 |
+|  4 | regtech 28:329               | regulation 05:164            |     4 |
+|  5 | fintech 12:249               | regtech 28:329               |    12 |
+|  6 | fintech 12:249               | fintech 12:249               |    12 |
+|  7 | fintech 12:249               | regulatory technology 07:037 |     1 |
+|  8 | fintech 12:249               | compliance 07:030            |     2 |
+|  9 | fintech 12:249               | regulation 05:164            |     4 |
+| 10 | regulatory technology 07:037 | regtech 28:329               |     2 |
+| 11 | regulatory technology 07:037 | fintech 12:249               |     1 |
+| 12 | regulatory technology 07:037 | regulatory technology 07:037 |     7 |
+| 13 | regulatory technology 07:037 | compliance 07:030            |     1 |
+| 14 | regulatory technology 07:037 | regulation 05:164            |     1 |
+| 15 | compliance 07:030            | regtech 28:329               |     7 |
+| 16 | compliance 07:030            | fintech 12:249               |     2 |
+| 17 | compliance 07:030            | regulatory technology 07:037 |     1 |
+| 18 | compliance 07:030            | compliance 07:030            |     7 |
+| 19 | compliance 07:030            | regulation 05:164            |     1 |
+| 20 | regulation 05:164            | regtech 28:329               |     4 |
+| 21 | regulation 05:164            | fintech 12:249               |     4 |
+| 22 | regulation 05:164            | regulatory technology 07:037 |     1 |
+| 23 | regulation 05:164            | compliance 07:030            |     1 |
+| 24 | regulation 05:164            | regulation 05:164            |     5 |
+<BLANKLINE>
+<BLANKLINE>
 
 
 **Seleccition of top terms.**
 
 >>> from techminer2 import vantagepoint
->>> vantagepoint.analyze.matrix.co_occ_matrix_list(
+>>> r = vantagepoint.analyze.matrix.co_occ_matrix_list(
 ...    criterion='author_keywords',
 ...    topics_length=5,
 ...    directory=directory,
 ... )
+>>> r.matrix_list_
                              row                        column  OCC
 0                 regtech 28:329                regtech 28:329   28
 1                 regtech 28:329                fintech 12:249   12
@@ -118,8 +130,6 @@ def co_occ_matrix_list(
     end_year=None,
     **filters,
 ):
-    """Creates a list of the cells of a co-occurrence matrix."""
-
     return occ_matrix_list(
         criterion_for_columns=criterion,
         criterion_for_rows=criterion,
