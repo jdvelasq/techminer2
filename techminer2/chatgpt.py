@@ -6,7 +6,7 @@
 #
 
 
-def generate_prompt(table):
+def generate_prompt_bibliographic_indicators(table):
     """Generate a prompt for bibliometric analysis.
 
     Parameters
