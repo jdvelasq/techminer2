@@ -267,10 +267,15 @@ def _select_topics_by_occ_and_citations_and_topic_length(
 
         topics = indicators.index.to_list()
 
-        if criterion == criterion_for_columns:
+        if criterion_for_columns == criterion_for_rows:
             matrix_list = matrix_list[matrix_list.column.isin(topics)]
-        else:
             matrix_list = matrix_list[matrix_list.row.isin(topics)]
+            break
+        else:
+            if criterion == criterion_for_columns:
+                matrix_list = matrix_list[matrix_list.column.isin(topics)]
+            else:
+                matrix_list = matrix_list[matrix_list.row.isin(topics)]
 
     return matrix_list
 
