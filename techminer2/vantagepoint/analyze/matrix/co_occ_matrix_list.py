@@ -112,7 +112,7 @@ def co_occ_matrix_list(
     criterion,
     topics_length=None,
     topic_min_occ=None,
-    tooic_max_occ=None,
+    topic_max_occ=None,
     topic_min_citations=None,
     topic_max_citations=None,
     directory="./",
@@ -140,7 +140,7 @@ def co_occ_matrix_list(
     matrix_list = _select_topics_by_occ_and_citations_and_topic_length(
         matrix_list=matrix_list,
         topic_min_occ=topic_min_occ,
-        tooic_max_occ=tooic_max_occ,
+        topic_max_occ=topic_max_occ,
         topic_min_citations=topic_min_citations,
         topic_max_citations=topic_max_citations,
         topics_length=topics_length,

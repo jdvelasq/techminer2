@@ -173,7 +173,6 @@ def _color_node_points(G, node_trace):
 
 
 def _create_traces(G):
-
     edge_x = []
     edge_y = []
     for edge in G.edges():
@@ -189,7 +188,7 @@ def _create_traces(G):
     edge_trace = go.Scatter(
         x=edge_x,
         y=edge_y,
-        line=dict(width=0.7, color="#888"),
+        line=dict(width=1.2, color="#888"),
         hoverinfo="none",
         mode="lines",
     )
@@ -203,10 +202,15 @@ def _create_traces(G):
         node_x.append(x)
         node_y.append(y)
         text.append(node)
+        # if G.nodes[node]["group"] == 0:
+        #     colors.append("#F1948A")
+        # else:
+        #     colors.append("#5DADE2")
+
         if G.nodes[node]["group"] == 0:
-            colors.append("#F1948A")
+            colors.append("#1f77b4")
         else:
-            colors.append("#5DADE2")
+            colors.append("#FF7F0E")
 
     x_mean = np.mean(node_x)
     y_mean = np.mean(node_y)
@@ -229,8 +233,9 @@ def _create_traces(G):
         text=text,
         marker=dict(
             color=colors,
-            size=13,
-            line_width=2,
+            size=25,
+            line_width=1,
+            line_color="white",
         ),
         textposition=textposition,
     )
@@ -247,7 +252,6 @@ def _create_edges(G, flood_matrix):
 
 
 def _create_nodes(G, flood_matrix, col_index):
-
     nodes = []
 
     col = flood_matrix[flood_matrix.columns[col_index]]
