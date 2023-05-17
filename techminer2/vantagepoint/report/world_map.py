@@ -15,7 +15,6 @@ World Map (GPT)
 >>> chart = vantagepoint.report.world_map(
 ...     obj, 
 ...     title="Country scientific production",
-...     colormap="Blues",
 ... )
 >>> chart.plot_.write_html(file_name)
 
@@ -88,8 +87,9 @@ class _Chart:
 def world_map(
     obj,
     title=None,
-    colormap="Blues",
 ):
+    colormap = "Blues"
+
     result = _Chart()
     result.plot_ = _create_plot(
         obj,
@@ -108,10 +108,7 @@ def _create_plot(
     title,
     colormap,
 ):
-    worldmap_data = px.data.gapminder()[["country", "continent", "iso_alpha"]]
-    worldmap_data = worldmap_data.drop_duplicates()
-    worldmap_data = worldmap_data.reset_index(drop=True)
-    worldmap_data.index = worldmap_data.country
+    worldmap_data = _load_worldmap_data()
 
     dataframe = obj.table_.copy()
     dataframe.index = dataframe.index.rename("country")
@@ -128,10 +125,47 @@ def _create_plot(
         hover_data=[
             col for col in dataframe.columns if col not in ["country", "iso_alpha"]
         ],
+        range_color=(1, obj.table_[obj.metric_].max()),
         color_continuous_scale=colormap,
+        color_discrete_map={0: "gray"},
         scope="world",
     )
     fig.update_layout(coloraxis_showscale=False)
     fig.update_layout(title=title)
 
     return fig
+
+
+def _load_worldmap_data():
+    worldmap_data = px.data.gapminder()[["country", "continent", "iso_alpha"]]
+    worldmap_data = worldmap_data.drop_duplicates()
+
+    # adds to worldmap_data the Russia, Greenland, and Antarctica
+    worldmap_data = worldmap_data.append(
+        {
+            "country": "Russia",
+            "continent": "Asia",
+            "iso_alpha": "RUS",
+        },
+        ignore_index=True,
+    )
+    worldmap_data = worldmap_data.append(
+        {
+            "country": "Greenland",
+            "continent": "North America",
+            "iso_alpha": "GRL",
+        },
+        ignore_index=True,
+    )
+    worldmap_data = worldmap_data.append(
+        {
+            "country": "Antarctica",
+            "continent": "Antarctica",
+            "iso_alpha": "ATA",
+        },
+        ignore_index=True,
+    )
+
+    worldmap_data = worldmap_data.reset_index(drop=True)
+    worldmap_data.index = worldmap_data.country
+    return worldmap_data
