@@ -47,3 +47,19 @@ your findings in no more than 150 words.
 
 """
     return prompt
+
+
+def generate_prompt_for_matrix(obj):
+    """Generate a prompt for bibliometric analysis."""
+    prompt = f"""\
+Analyze the table below which contains values for the metric {obj.metric_}. \
+The columns of the table correspond to {obj.criterion_for_columns_}, and the \
+rows correspond to {obj.criterion_for_rows_}. Identify any notable patterns, \
+trends, or outliers in the data, and discuss their implications for the \
+research field. Be sure to provide a concise summary of your findings in no \
+more than 150 words.
+
+{obj.matrix_.to_markdown()}
+
+"""
+    return prompt

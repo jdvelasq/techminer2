@@ -65,11 +65,10 @@ Analyze the table below, which contains the the metric OCC for author_keywords a
 """
 from dataclasses import dataclass
 
-from .... import chatgpt
+from .... import chatgpt, techminer
 from ...._items2counters import items2counters
 from ...._load_stopwords import load_stopwords
 from ...._read_records import read_records
-from ....techminer.indicators.indicators_by_topic import indicators_by_topic
 
 
 @dataclass(init=False)
@@ -240,7 +239,7 @@ def _select_topics_by_occ_and_citations_and_topic_length(
     **filters,
 ):
     for criterion in [criterion_for_columns, criterion_for_rows]:
-        indicators = indicators_by_topic(
+        indicators = techminer.indicators.indicators_by_topic(
             criterion=criterion,
             directory=directory,
             database=database,
