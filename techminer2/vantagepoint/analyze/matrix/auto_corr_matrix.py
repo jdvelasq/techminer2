@@ -1,5 +1,5 @@
 """
-Auto-correlation Matrix
+Auto-correlation Matrix (GPT)
 ===============================================================================
 
 Returns an auto-correlation matrix.
@@ -8,11 +8,12 @@ Returns an auto-correlation matrix.
 >>> directory = "data/regtech/"
 
 >>> from techminer2 import vantagepoint
->>> vantagepoint.analyze.matrix.auto_corr_matrix(
+>>> r = vantagepoint.analyze.matrix.auto_corr_matrix(
 ...     criterion='authors',
 ...     topics_length=10,
 ...     directory=directory,
 ... )
+>>> r.matrix_
                   Arner DW 3:185  ...  Grassi L 2:002
 Arner DW 3:185               1.0  ...             0.0
 Buckley RP 3:185             1.0  ...             0.0
@@ -28,10 +29,40 @@ Grassi L 2:002               0.0  ...             1.0
 [10 rows x 10 columns]
 
 
+>>> print(r.prompt_)
+Analyze the table below which contains the auto-correlation values for the authors. High correlation values indicate that the topics tends to appear together in the same document and forms a group. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words. 
+<BLANKLINE>
+|                  |   Arner DW 3:185 |   Buckley RP 3:185 |   Butler T/1 2:041 |   Hamdan A 2:018 |   Lin W 2:017 |   Singh C 2:017 |   Brennan R 2:014 |   Crane M 2:014 |   Sarea A 2:012 |   Grassi L 2:002 |
+|:-----------------|-----------------:|-------------------:|-------------------:|-----------------:|--------------:|----------------:|------------------:|----------------:|----------------:|-----------------:|
+| Arner DW 3:185   |                1 |                  1 |                  0 |            0     |             0 |               0 |                 0 |               0 |           0     |                0 |
+| Buckley RP 3:185 |                1 |                  1 |                  0 |            0     |             0 |               0 |                 0 |               0 |           0     |                0 |
+| Butler T/1 2:041 |                0 |                  0 |                  1 |            0     |             0 |               0 |                 0 |               0 |           0     |                0 |
+| Hamdan A 2:018   |                0 |                  0 |                  0 |            1     |             0 |               0 |                 0 |               0 |           0.417 |                0 |
+| Lin W 2:017      |                0 |                  0 |                  0 |            0     |             1 |               1 |                 0 |               0 |           0     |                0 |
+| Singh C 2:017    |                0 |                  0 |                  0 |            0     |             1 |               1 |                 0 |               0 |           0     |                0 |
+| Brennan R 2:014  |                0 |                  0 |                  0 |            0     |             0 |               0 |                 1 |               1 |           0     |                0 |
+| Crane M 2:014    |                0 |                  0 |                  0 |            0     |             0 |               0 |                 1 |               1 |           0     |                0 |
+| Sarea A 2:012    |                0 |                  0 |                  0 |            0.417 |             0 |               0 |                 0 |               0 |           1     |                0 |
+| Grassi L 2:002   |                0 |                  0 |                  0 |            0     |             0 |               0 |                 0 |               0 |           0     |                1 |
+<BLANKLINE>
+<BLANKLINE>
+
+
 """
+from dataclasses import dataclass
+
 import pandas as pd
 
-from .... import vantagepoint
+from .... import chatgpt
+from ..tfidf import tf_matrix
+
+
+@dataclass(init=False)
+class _MatrixResult:
+    matrix_: None
+    prompt_: None
+    method_: None
+    criterion_: None
 
 
 def auto_corr_matrix(
@@ -51,7 +82,11 @@ def auto_corr_matrix(
 ):
     """Returns an auto-correlation."""
 
-    data_matrix = vantagepoint.analyze.tfidf.tf_matrix(
+    results = _MatrixResult()
+    results.criterion_ = criterion
+    results.method_ = method
+
+    data_matrix = tf_matrix(
         criterion=criterion,
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,
@@ -66,12 +101,19 @@ def auto_corr_matrix(
         **filters,
     )
 
-    corr_matrix = _compute_corr_matrix(method, data_matrix)
+    results.matrix_ = _compute_corr_matrix(
+        method=method,
+        data_matrix=data_matrix,
+    )
+    results.prompt_ = chatgpt.generate_prompt_for_auto_corr_matrix(results)
 
-    return corr_matrix
+    return results
 
 
-def _compute_corr_matrix(method, data_matrix):
+def _compute_corr_matrix(
+    method,
+    data_matrix,
+):
     corr_matrix = pd.DataFrame(
         0.0,
         columns=data_matrix.columns.to_list(),

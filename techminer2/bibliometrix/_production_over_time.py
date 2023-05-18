@@ -2,13 +2,14 @@
 
 import textwrap
 from dataclasses import dataclass
+
 import plotly.express as px
 
 from ..techminer.indicators.indicators_by_topic import indicators_by_topic
 from ..techminer.indicators.indicators_by_topic_per_year import (
     indicators_by_topic_per_year,
 )
-from ..vantagepoint.analyze.matrix.co_occ_matrix_list import _add_counters_to_items
+from ..vantagepoint.analyze.matrix.occ_matrix_list import _add_counters_to_items
 
 TEXTLEN = 40
 

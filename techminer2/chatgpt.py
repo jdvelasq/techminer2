@@ -63,3 +63,73 @@ more than 150 words.
 
 """
     return prompt
+
+
+def generate_prompt_for_auto_corr_matrix(obj):
+    prompt = f"""\
+Analyze the table below which contains the auto-correlation values for the \
+{obj.criterion_}. High correlation values indicate that the topics tends \
+to appear together in the same document and forms a group. Identify any \
+notable patterns, trends, or outliers in the data, and discuss their \
+implications for the research field. Be sure to provide a concise summary of \
+your findings in no more than 150 words. 
+
+{obj.matrix_.round(3).to_markdown()}
+
+"""
+    return prompt
+
+
+def generate_prompt_for_auto_corr_matrix_list(obj):
+    matrix = obj.matrix_.copy()
+    matrix = matrix[matrix.row != matrix.column]
+    matrix = matrix[matrix.row < matrix.column]
+
+    prompt = f"""\
+Analyze the table below which contains the auto-correlation values for the \
+{obj.criterion_}. High correlation values indicate that the topics tends \
+to appear together in the same document and forms a group. Identify any \
+notable patterns, trends, or outliers in the data, and discuss their \
+implications for the research field. Be sure to provide a concise summary of \
+your findings in no more than 150 words. 
+
+{matrix.round(3).to_markdown()}
+
+"""
+    return prompt
+
+
+def generate_prompt_for_cross_corr_matrix(obj):
+    prompt = f"""\
+Analyze the table below which contains the cross-correlation values for the \
+{obj.criterion_for_columns_} based on the values of the {obj.criterion_for_rows_}. \
+High correlation values indicate that the topics in {obj.criterion_for_columns_} \
+are related based on the values of the {obj.criterion_for_rows_}. Identify any \
+notable patterns, trends, or outliers in the data, and discuss their \
+implications for the research field. Be sure to provide a concise summary of \
+your findings in no more than 150 words.
+
+{obj.matrix_.round(3).to_markdown()}
+
+"""
+    return prompt
+
+
+def generate_prompt_for_cross_corr_matrix_list(obj):
+    matrix = obj.matrix_.copy()
+    matrix = matrix[matrix.row != matrix.column]
+    matrix = matrix[matrix.row < matrix.column]
+
+    prompt = f"""\
+Analyze the table below which contains the cross-correlation values for the \
+{obj.criterion_for_columns_} based on the values of the {obj.criterion_for_rows_}. \
+High correlation values indicate that the topics in {obj.criterion_for_columns_} \
+are related based on the values of the {obj.criterion_for_rows_}. Identify any \
+notable patterns, trends, or outliers in the data, and discuss their \
+implications for the research field. Be sure to provide a concise summary of \
+your findings in no more than 150 words.
+
+{matrix.round(3).to_markdown()}
+
+"""
+    return prompt
