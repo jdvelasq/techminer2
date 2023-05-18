@@ -6,9 +6,12 @@ Matrix
 
         .. toctree::
             co_occ_matrix
+            occ_matrix
+
 
         .. toctree::
             co_occ_matrix_list
+            occ_matrix_list
 
     * **Auto-correlation Matrix**:
 
