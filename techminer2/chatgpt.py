@@ -133,3 +133,16 @@ your findings in no more than 150 words.
 
 """
     return prompt
+
+
+def generate_prompt_for_terms_by_year_matrix(obj):
+    prompt = f"""\
+Analyze the table below which contains the {"cumulative" if obj.cumulative_ else ""} \
+occurrences by year for the {obj.criterion_for_rows_}. Identify any notable patterns, \
+trends, or outliers in the data, and discuss their implications for the research \
+field. Be sure to provide a concise summary of your findings in no more than 150 words.
+
+{obj.table_.to_markdown()}
+
+"""
+    return prompt
