@@ -62,7 +62,9 @@ class _MatrixResult:
     matrix_: None
     prompt_: None
     method_: None
-    criterion_: None
+    criterion_for_columns_: None
+    criterion_for_rows_: None
+    metric_: None
 
 
 def auto_corr_matrix(
@@ -83,8 +85,10 @@ def auto_corr_matrix(
     """Returns an auto-correlation."""
 
     results = _MatrixResult()
-    results.criterion_ = criterion
+    results.criterion_for_columns_ = criterion
+    results.criterion_for_rows_ = criterion
     results.method_ = method
+    results.metric_ = "CORR"
 
     data_matrix = tf_matrix(
         criterion=criterion,

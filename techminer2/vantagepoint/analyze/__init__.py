@@ -6,6 +6,7 @@ from .cross_corr_matrix import cross_corr_matrix
 from .cross_corr_matrix_list import cross_corr_matrix_list
 from .extract_topics import extract_topics
 from .factor_matrix import factor_matrix
+from .list_cells_in_matrix import list_cells_in_matrix
 from .occ_matrix import occ_matrix
 from .occ_matrix_list import occ_matrix_list
 from .terms_by_year import terms_by_year

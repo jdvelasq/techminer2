@@ -5,6 +5,10 @@ Analyze
         
         extract_topics
 
+    .. toctree::
+            
+        list_cells_in_matrix
+        
 
     .. toctree::
         
@@ -25,9 +29,6 @@ Analyze
 
     .. toctree::
         cross_corr_matrix
-
-
-    .. toctree::
         cross_corr_matrix_list
 
         

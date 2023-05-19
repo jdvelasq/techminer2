@@ -68,7 +68,7 @@ from dataclasses import dataclass
 
 from ... import chatgpt
 from .cross_corr_matrix import cross_corr_matrix
-from .matrix_to_matrix_list import matrix_to_matrix_list
+from .list_cells_in_matrix import list_cells_in_matrix
 
 
 @dataclass(init=False)
@@ -117,7 +117,7 @@ def cross_corr_matrix_list(
         end_year=end_year,
         **filters,
     )
-    results.matrix_ = matrix_to_matrix_list(obj.matrix_, value_name="CORR")
+    results.matrix_ = list_cells_in_matrix(obj.matrix_, value_name="CORR")
 
     results.prompt_ = chatgpt.generate_prompt_for_cross_corr_matrix_list(results)
 

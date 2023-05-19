@@ -38,7 +38,7 @@ from dataclasses import dataclass
 
 from ... import chatgpt
 from .auto_corr_matrix import auto_corr_matrix
-from .matrix_to_matrix_list import matrix_to_matrix_list
+from .list_cells_in_matrix import list_cells_in_matrix
 
 
 @dataclass(init=False)
@@ -121,6 +121,6 @@ def _compute_matrix(
         **filters,
     )
 
-    matrix = matrix_to_matrix_list(result.matrix_, value_name="CORR")
+    matrix = list_cells_in_matrix(result.matrix_, value_name="CORR")
 
     return matrix
