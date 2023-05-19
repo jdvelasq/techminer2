@@ -53,8 +53,8 @@ from dataclasses import dataclass
 
 import pandas as pd
 
-from .... import chatgpt
-from ..tfidf import tf_matrix
+from ... import chatgpt
+from .tf_matrix import tf_matrix
 
 
 @dataclass(init=False)

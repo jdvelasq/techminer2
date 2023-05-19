@@ -1,3 +1,13 @@
-from . import matrix, tfidf
+from .auto_corr_matrix import auto_corr_matrix
+from .auto_corr_matrix_list import auto_corr_matrix_list
+from .co_occ_matrix import co_occ_matrix
+from .co_occ_matrix_list import co_occ_matrix_list
+from .cross_corr_matrix import cross_corr_matrix
+from .cross_corr_matrix_list import cross_corr_matrix_list
 from .extract_topics import extract_topics
+from .factor_matrix import factor_matrix
+from .occ_matrix import occ_matrix
+from .occ_matrix_list import occ_matrix_list
 from .terms_by_year import terms_by_year
+from .tf_matrix import tf_matrix
+from .tfidf_matrix import tfidf_matrix

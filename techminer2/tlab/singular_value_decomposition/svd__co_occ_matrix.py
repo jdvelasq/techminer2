@@ -82,7 +82,7 @@ def svd__co_occ_matrix(
 ):
     """Co-occurrence SVD Map."""
 
-    matrix = vantagepoint.analyze.matrix.co_occ_matrix(
+    matrix = vantagepoint.analyze.analyze.co_occ_matrix(
         criterion=criterion,
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,

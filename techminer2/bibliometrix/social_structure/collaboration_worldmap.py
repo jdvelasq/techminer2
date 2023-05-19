@@ -25,7 +25,7 @@ def collaboration_worldmap(
 ):
     """Collaboration World Map"""
 
-    collaboration = vantagepoint.analyze.matrix.co_occ_matrix_list(
+    collaboration = vantagepoint.analyze.analyze.co_occ_matrix_list(
         criterion="countries",
         topics_length=None,
         topic_min_occ=None,

@@ -8,7 +8,7 @@ Occurrence Matrix List (GPT)
 **Item selection by occurrence.**
 
 >>> from techminer2 import vantagepoint
->>> r = vantagepoint.analyze.matrix.occ_matrix_list(
+>>> r = vantagepoint.analyze.occ_matrix_list(
 ...    criterion_for_columns='author_keywords',
 ...    criterion_for_rows='authors',
 ...    topic_min_occ=3,
@@ -44,7 +44,7 @@ Analyze the table below, which contains the the metric OCC for author_keywords a
 
 **Seleccition of top terms.**
 
->>> vantagepoint.analyze.matrix.occ_matrix_list(
+>>> vantagepoint.analyze.occ_matrix_list(
 ...    criterion_for_columns='author_keywords',
 ...    criterion_for_rows='authors',
 ...    topics_length=5,
@@ -65,10 +65,10 @@ Analyze the table below, which contains the the metric OCC for author_keywords a
 """
 from dataclasses import dataclass
 
-from .... import chatgpt, techminer
-from ...._items2counters import items2counters
-from ...._load_stopwords import load_stopwords
-from ...._read_records import read_records
+from ... import chatgpt, techminer
+from ..._items2counters import items2counters
+from ..._load_stopwords import load_stopwords
+from ..._read_records import read_records
 
 
 @dataclass(init=False)

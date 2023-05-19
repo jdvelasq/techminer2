@@ -23,7 +23,7 @@ Three Fields Plot
 """
 import plotly.graph_objects as go
 
-from ...vantagepoint.analyze.matrix.occ_matrix import occ_matrix
+from ...vantagepoint.analyze.occ_matrix import occ_matrix
 
 
 def three_fields_plot(
@@ -68,7 +68,6 @@ def three_fields_plot(
 
 
 def _make_sankey_plot(matrix_left, matrix_right):
-
     left_labels = matrix_left.index.to_list()
     middle_labels = list(
         set(matrix_left.columns.to_list() + matrix_right.index.to_list())

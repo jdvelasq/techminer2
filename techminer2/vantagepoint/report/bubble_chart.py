@@ -8,7 +8,7 @@ Bubble Chart
 
 
 >>> from techminer2 import vantagepoint
->>> matrix = vantagepoint.analyze.matrix.co_occ_matrix(
+>>> matrix = vantagepoint.analyze.co_occ_matrix(
 ...    criterion='author_keywords',
 ...    topic_min_occ=4,
 ...    directory=directory,

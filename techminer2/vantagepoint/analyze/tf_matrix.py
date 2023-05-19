@@ -24,10 +24,10 @@ Butler T/1, 2018, J RISK MANG FINANCIAL INST, V...               0  ...         
 import numpy as np
 import pandas as pd
 
-from ...._items2counters import items2counters
-from ...._load_stopwords import load_stopwords
-from ...._read_records import read_records
-from ....techminer.indicators.indicators_by_topic import indicators_by_topic
+from ..._items2counters import items2counters
+from ..._load_stopwords import load_stopwords
+from ..._read_records import read_records
+from ...techminer.indicators.indicators_by_topic import indicators_by_topic
 
 # pylint: disable=too-many-arguments
 

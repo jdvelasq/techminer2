@@ -8,7 +8,7 @@ Co-occurrence Matrix List (GPT)
 **Item selection by occurrence.**
 
 >>> from techminer2 import vantagepoint
->>> r = vantagepoint.analyze.matrix.co_occ_matrix_list(
+>>> r = vantagepoint.analyze.co_occ_matrix_list(
 ...    criterion='author_keywords',
 ...    topic_min_occ=5,
 ...    directory=directory,
@@ -79,7 +79,7 @@ Analyze the table below, which contains the the metric OCC for author_keywords a
 **Seleccition of top terms.**
 
 >>> from techminer2 import vantagepoint
->>> r = vantagepoint.analyze.matrix.co_occ_matrix_list(
+>>> r = vantagepoint.analyze.co_occ_matrix_list(
 ...    criterion='author_keywords',
 ...    topics_length=5,
 ...    directory=directory,

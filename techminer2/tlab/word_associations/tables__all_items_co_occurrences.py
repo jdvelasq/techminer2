@@ -37,7 +37,7 @@ def tables__all_items_co_occurrences(
 ):
     """Computes the co-occurrence matrix list."""
 
-    return vantagepoint.analyze.matrix.co_occ_matrix_list(
+    return vantagepoint.analyze.analyze.co_occ_matrix_list(
         criterion=criterion,
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,

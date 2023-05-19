@@ -9,7 +9,7 @@ matrix.
 
 >>> from techminer2 import vantagepoint
 >>> vantagepoint.analyze.matrix.factor_matrix(
-...     vantagepoint.analyze.matrix.co_occ_matrix(
+...     vantagepoint.analyze.co_occ_matrix(
 ...         criterion='authors', 
 ...         topic_min_occ=2,
 ...         directory=directory, 

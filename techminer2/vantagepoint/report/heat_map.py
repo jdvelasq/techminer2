@@ -6,7 +6,7 @@ Heat Map
 >>> directory = "data/regtech/"
 
 >>> from techminer2 import vantagepoint
->>> matrix = vantagepoint.analyze.matrix.co_occ_matrix(
+>>> matrix = vantagepoint.analyze.co_occ_matrix(
 ...    criterion='author_keywords',
 ...    topic_min_occ=3,
 ...    directory=directory,
@@ -32,7 +32,6 @@ import plotly.express as px
 
 
 def heat_map(matrix, colormap="Blues"):
-
     """Make a heat map."""
 
     fig = px.imshow(

@@ -12,7 +12,7 @@ Matrix Viwer
 >>> file_name = "sphinx/_static/vantagepoint__matrix_viewer-0.html"
 
 >>> from techminer2 import vantagepoint
->>> matrix = vantagepoint.analyze.matrix.occ_matrix_list(
+>>> matrix = vantagepoint.analyze.occ_matrix_list(
 ...    criterion_for_columns='author_keywords',
 ...    criterion_for_rows='authors',
 ...    topic_min_occ=3,
@@ -40,7 +40,7 @@ Matrix Viwer
 
 >>> file_name = "sphinx/_static/vantagepoint__matrix_viewer-1.html"
 
->>> matrix = vantagepoint.analyze.matrix.co_occ_matrix_list(
+>>> matrix = vantagepoint.analyze.co_occ_matrix_list(
 ...    criterion='author_keywords',
 ...    topic_min_occ=8,
 ...    directory=directory,

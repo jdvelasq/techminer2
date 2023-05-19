@@ -36,7 +36,7 @@ Analyze the table below which contains the auto-correlation values for the autho
 """
 from dataclasses import dataclass
 
-from .... import chatgpt
+from ... import chatgpt
 from .auto_corr_matrix import auto_corr_matrix
 from .matrix_to_matrix_list import matrix_to_matrix_list
 

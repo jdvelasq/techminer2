@@ -39,7 +39,7 @@ def graphs__radial_diagram(
 ):
     """Creates a radial diagram of term associations from a co-occurrence matrix."""
 
-    matrix_list = vantagepoint.analyze.matrix.co_occ_matrix_list(
+    matrix_list = vantagepoint.analyze.analyze.co_occ_matrix_list(
         criterion=criterion,
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,

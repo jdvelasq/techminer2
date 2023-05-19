@@ -57,7 +57,7 @@ from sklearn.decomposition import NMF, LatentDirichletAllocation
 from sklearn.manifold import MDS
 
 # from .bubble_map import bubble_map
-from ...vantagepoint.analyze.tfidf.tf_matrix import tf_matrix
+from ...vantagepoint.analyze.tf_matrix import tf_matrix
 
 ##################
 

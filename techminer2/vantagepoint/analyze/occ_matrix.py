@@ -6,7 +6,7 @@ Occurrence Matrix (GPT)
 >>> directory = "data/regtech/"
 
 >>> from techminer2 import vantagepoint
->>> r = vantagepoint.analyze.matrix.occ_matrix(
+>>> r = vantagepoint.analyze.occ_matrix(
 ...    criterion_for_columns='author_keywords',
 ...    criterion_for_rows='authors',
 ...    topic_min_occ=2,
@@ -59,7 +59,7 @@ Analyze the table below which contains values for the metric OCC. The columns of
 """
 from dataclasses import dataclass
 
-from .... import chatgpt
+from ... import chatgpt
 from .occ_matrix_list import occ_matrix_list
 
 

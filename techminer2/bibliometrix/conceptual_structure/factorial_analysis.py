@@ -138,7 +138,6 @@ class _FactorialAnalysis:
         return self._table.copy()
 
     def _silhouette_scores_plot(self, max_n_clusters=8, figsize=(7, 7)):
-
         matrix = self.matrix.copy()
         matrix = self.manifold_method.fit_transform(matrix)
 
@@ -182,7 +181,7 @@ def factorial_analysis(
     end_year=None,
     **filters,
 ):
-    coc_matrix = vantagepoint.analyze.matrix.co_occ_matrix(
+    coc_matrix = vantagepoint.analyze.analyze.co_occ_matrix(
         criterion=criterion,
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,

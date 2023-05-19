@@ -66,7 +66,7 @@ Analyze the table below which contains the cross-correlation values for the auth
 """
 from dataclasses import dataclass
 
-from .... import chatgpt
+from ... import chatgpt
 from .cross_corr_matrix import cross_corr_matrix
 from .matrix_to_matrix_list import matrix_to_matrix_list
 
