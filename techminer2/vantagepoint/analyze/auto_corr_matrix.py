@@ -8,7 +8,7 @@ Returns an auto-correlation matrix.
 >>> directory = "data/regtech/"
 
 >>> from techminer2 import vantagepoint
->>> r = vantagepoint.analyze.matrix.auto_corr_matrix(
+>>> r = vantagepoint.analyze.auto_corr_matrix(
 ...     criterion='authors',
 ...     topics_length=10,
 ...     directory=directory,

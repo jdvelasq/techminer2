@@ -24,7 +24,6 @@ Analyze
 
     .. toctree::
         auto_corr_matrix
-        auto_corr_matrix_list
 
 
     .. toctree::
