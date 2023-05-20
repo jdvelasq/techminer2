@@ -8,7 +8,7 @@ matrix.
 >>> directory = "data/regtech/"
 
 >>> from techminer2 import vantagepoint
->>> vantagepoint.analyze.matrix.factor_matrix(
+>>> vantagepoint.analyze.factor_matrix(
 ...     vantagepoint.analyze.co_occ_matrix(
 ...         criterion='authors', 
 ...         topic_min_occ=2,
@@ -49,6 +49,8 @@ def factor_matrix(
     similarity_matrix,
     pca=None,
 ):
+    similarity_matrix = similarity_matrix.matrix_
+
     if pca is None:
         pca = PCA(n_components=6)
     pca.fit(similarity_matrix)

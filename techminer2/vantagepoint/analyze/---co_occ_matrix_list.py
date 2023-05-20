@@ -114,7 +114,7 @@ Analyze the table below, which contains the the metric OCC for author_keywords a
 
 
 """
-from .occ_matrix_list import occ_matrix_list
+# from .occ_matrix_list import occ_matrix_list
 
 
 def co_occ_matrix_list(

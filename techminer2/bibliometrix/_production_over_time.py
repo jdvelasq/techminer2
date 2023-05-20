@@ -9,7 +9,9 @@ from ..techminer.indicators.indicators_by_topic import indicators_by_topic
 from ..techminer.indicators.indicators_by_topic_per_year import (
     indicators_by_topic_per_year,
 )
-from ..vantagepoint.analyze.occ_matrix_list import _add_counters_to_items
+
+# from ..vantagepoint.analyze.occ_matrix_list import _add_counters_to_items
+
 
 TEXTLEN = 40
 

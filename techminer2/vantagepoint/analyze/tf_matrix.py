@@ -5,7 +5,7 @@ TF Matrix
 >>> directory = "data/regtech/"
 
 >>> from techminer2 import vantagepoint
->>> vantagepoint.analyze.tfidf.tf_matrix(
+>>> vantagepoint.analyze.tf_matrix(
 ...     criterion='authors', 
 ...     topic_min_occ=2, 
 ...     directory=directory,

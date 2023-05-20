@@ -89,11 +89,13 @@ Analyze the table below which contains the cumulative occurrences by year for th
 from dataclasses import dataclass
 
 from ... import chatgpt
+from ...add_counters_to_items_in_table_column import (
+    add_counters_to_items_in_table_column,
+)
 from ...techminer.indicators.indicators_by_topic import indicators_by_topic
 from ...techminer.indicators.indicators_by_topic_per_year import (
     indicators_by_topic_per_year,
 )
-from .occ_matrix_list import _add_counters_to_items
 
 
 @dataclass(init=False)
@@ -190,12 +192,12 @@ def terms_by_year(
     indicators_by_year = indicators_by_year.loc[custom_topics, :]
 
     indicators_by_year = indicators_by_year.reset_index()
-    indicators_by_year = _add_counters_to_items(
+    indicators_by_year = add_counters_to_items_in_table_column(
         column=criterion,
         name=criterion,
         directory=directory,
         database=database,
-        matrix_list=indicators_by_year,
+        table=indicators_by_year,
         start_year=start_year,
         end_year=end_year,
         **filters,

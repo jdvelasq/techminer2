@@ -7,7 +7,7 @@ Cross-correlation Matrix (GPT)
 >>> directory = "data/regtech/"
 
 >>> from techminer2 import vantagepoint
->>> r = vantagepoint.analyze.matrix.cross_corr_matrix(
+>>> r = vantagepoint.analyze.cross_corr_matrix(
 ...     criterion_for_columns = 'authors', 
 ...     criterion_for_rows='countries',
 ...     topics_length=10,
@@ -50,7 +50,7 @@ Analyze the table below which contains the cross-correlation values for the auth
 from dataclasses import dataclass
 
 from ... import chatgpt
-from .auto_corr_matrix import _compute_corr_matrix
+from .compute_corr_matrix import compute_corr_matrix
 from .occ_matrix import occ_matrix
 
 
@@ -100,7 +100,7 @@ def cross_corr_matrix(
         **filters,
     ).matrix_
 
-    results.matrix_ = _compute_corr_matrix(method, data_matrix)
+    results.matrix_ = compute_corr_matrix(method, data_matrix)
 
     results.prompt_ = chatgpt.generate_prompt_for_cross_corr_matrix(results)
 

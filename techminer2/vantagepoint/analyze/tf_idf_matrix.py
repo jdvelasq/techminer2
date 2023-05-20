@@ -1,5 +1,5 @@
 """
-TFIDF Matrix
+TF-IDF Matrix
 ===============================================================================
 
 
@@ -7,7 +7,7 @@ TFIDF Matrix
 >>> directory = "data/regtech/"
 
 >>> from techminer2 import vantagepoint
->>> vantagepoint.analyze.tfidf.tfidf_matrix(
+>>> vantagepoint.analyze.tf_idf_matrix(
 ...     criterion='authors',
 ...     topic_min_occ=2,
 ...     directory=directory,
@@ -29,7 +29,7 @@ from sklearn.feature_extraction.text import TfidfTransformer
 from .tf_matrix import tf_matrix
 
 
-def tfidf_matrix(
+def tf_idf_matrix(
     criterion,
     topics_length=None,
     topic_min_occ=None,

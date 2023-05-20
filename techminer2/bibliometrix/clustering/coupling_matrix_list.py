@@ -25,7 +25,9 @@ Coupling Matrix List
 
 """
 from ..._read_records import read_records
-from ...vantagepoint.analyze.occ_matrix_list import _add_counters_to_items
+from ...add_counters_to_items_in_table_column import (
+    add_counters_to_items_in_table_column,
+)
 
 # from .records2documents import records2documents
 
@@ -116,8 +118,8 @@ def coupling_matrix_list(
     )
 
     for column_name in ["row", "column"]:
-        matrix_list = _add_counters_to_items(
-            matrix_list=matrix_list,
+        matrix_list = add_counters_to_items_in_table_column(
+            table=matrix_list,
             column_name=column_name,
             criterion=criterion,
             directory=directory,
