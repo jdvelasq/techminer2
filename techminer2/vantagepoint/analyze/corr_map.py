@@ -230,7 +230,7 @@ def _create_node_trace(graph):
             opacity=1,
         ),
         textposition=textposition,
-        textfont=dict(size=textfont_sizes),
+        textfont={"size": textfont_sizes},
     )
 
     return node_trace

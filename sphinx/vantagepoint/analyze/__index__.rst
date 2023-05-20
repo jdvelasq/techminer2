@@ -29,7 +29,7 @@ Analyze
     .. toctree::
 
         tf_matrix 
-        tfidf_matrix
+        tf_idf_matrix
 
 
     .. toctree::
