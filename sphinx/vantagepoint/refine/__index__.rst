@@ -1,4 +1,4 @@
-Refine (Thesaurus)
+Refine
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The following fnctions operate on a thesaurus.
