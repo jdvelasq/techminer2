@@ -132,7 +132,7 @@ def extract_topics(
     ExtractTopicsResult
         A dataclass with the following attributes:
 
-        table_ : pandas.DataFrame
+        table_: pandas.DataFrame.
             Table with the extracted topics.
 
         prompt_ : str
@@ -140,6 +140,9 @@ def extract_topics(
 
         metric_ : str
             Metric used to sort the topics.
+
+        criterion_ : str
+            Criterion used to extract the topics.
 
     """
 
@@ -233,7 +236,7 @@ def _sort_indicators(indicators, metric):
 class _ExtractTopicsResult:
     """Results of the extract_topics function."""
 
-    table_: None  # pandas.DataFrame
-    prompt_: None  # str
-    metric_: None  # str
-    criterion_: None  # str
+    table_: None
+    prompt_: None
+    metric_: None
+    criterion_: None
