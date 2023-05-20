@@ -24,6 +24,7 @@
         "**/*.html": true
     },
     "notebook.output.textLineLimit": 200,
-    "python.formatting.provider": "black",
-    "isort.check": true
+    "python.formatting.provider": "none",
+    "isort.check": true,
+    "notebook.formatOnSave.enabled": true
 }

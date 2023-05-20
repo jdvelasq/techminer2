@@ -1,5 +1,5 @@
 """
-Correlation Map
+Correlation Map (GPT)
 ===============================================================================
 
 Creates auto-correlation and cross-correlation maps.
@@ -99,12 +99,13 @@ import plotly.graph_objects as go
 def corr_map(
     obj,
     nx_k=0.5,
-    nx_iterations=50,
+    nx_iterations=20,
     delta=1.0,
     node_min_size=30,
     node_max_size=70,
     textfont_size_min=10,
     textfont_size_max=25,
+    seed=0,
 ):
     matrix_list = _melt_matrix(obj.matrix_)
 
@@ -119,17 +120,18 @@ def corr_map(
     graph = nx.Graph()
     graph = _create_nodes(graph, node_names, node_sizes, textfont_sizes)
     graph = _create_edges(graph, matrix_list)
-    graph = _compute_graph_layout(graph, nx_k, nx_iterations)
+    graph = _compute_graph_layout(graph, nx_k, nx_iterations, seed)
 
     edge_traces = _create_edge_traces(graph)
     node_trace = _create_node_trace(graph)
+    text_trace = _create_text_trace(graph)
 
-    fig = _create_network_graph(edge_traces, node_trace, delta)
+    fig = _create_network_graph(edge_traces, node_trace, text_trace, delta)
 
     return fig
 
 
-def _create_network_graph(edge_traces, node_trace, delta=1.0):
+def _create_network_graph(edge_traces, node_trace, text_trace, delta=1.0):
     layout = go.Layout(
         title="",
         titlefont=dict(size=16),
@@ -145,26 +147,99 @@ def _create_network_graph(edge_traces, node_trace, delta=1.0):
                 x=0.005,
                 y=-0.002,
                 align="left",
-                font=dict(size=10),
+                font={"size": 10},
             )
         ],
-        xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
-        yaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
+        xaxis={"showgrid": False, "zeroline": False, "showticklabels": False},
+        yaxis={"showgrid": False, "zeroline": False, "showticklabels": False},
     )
 
-    fig = go.Figure(data=edge_traces + [node_trace], layout=layout)
+    fig = go.Figure(
+        data=edge_traces + [node_trace] + [text_trace],
+        layout=layout,
+    )
 
     fig.update_layout(
-        hoverlabel=dict(
-            bgcolor="white",
-            font_family="monospace",
-        ),
+        hoverlabel={
+            "bgcolor": "white",
+            "font_family": "monospace",
+        },
         xaxis_range=[-1 - delta, 1 + delta],
         paper_bgcolor="white",
         plot_bgcolor="white",
     )
 
     return fig
+
+
+def _create_text_trace(graph):
+    def extract_node_coordinates(graph):
+        node_x = []
+        node_y = []
+        for node in graph.nodes():
+            x, y = graph.nodes[node]["pos"]
+            node_x.append(x)
+            node_y.append(y)
+        return node_x, node_y
+
+    def extract_node_sizes(graph):
+        node_sizes = []
+        for node in graph.nodes():
+            node_sizes.append(graph.nodes[node]["size"])
+        return node_sizes
+
+    def extract_node_names(graph):
+        node_names = []
+        for node in graph.nodes():
+            node_names.append(node)
+        return node_names
+
+    def extract_textfont_sizes(graph):
+        textfont_sizes = []
+        for node in graph.nodes():
+            textfont_sizes.append(graph.nodes[node]["textfont_size"])
+        return textfont_sizes
+
+    def compute_textposition(node_x, node_y):
+        x_mean = np.mean(node_x)
+        y_mean = np.mean(node_y)
+        textposition = []
+        for x_pos, y_pos in zip(node_x, node_y):
+            if x_pos >= x_mean and y_pos >= y_mean:
+                textposition.append("top right")
+            if x_pos <= x_mean and y_pos >= y_mean:
+                textposition.append("top left")
+            if x_pos <= x_mean and y_pos <= y_mean:
+                textposition.append("bottom left")
+            if x_pos >= x_mean and y_pos <= y_mean:
+                textposition.append("bottom right")
+        return textposition
+
+    node_x, node_y = extract_node_coordinates(graph)
+    node_names = extract_node_names(graph)
+    textfont_sizes = extract_textfont_sizes(graph)
+    textposition = compute_textposition(node_x, node_y)
+
+    node_sizes = extract_node_sizes(graph)
+    node_sizes = [size - 12 for size in node_sizes]
+
+    text_trace = go.Scatter(
+        x=node_x,
+        y=node_y,
+        mode="markers+text",
+        text=node_names,
+        hoverinfo="text",
+        marker={
+            "color": "#1f77b4",
+            "size": node_sizes,
+            "line": {"width": 0, "color": "#1f77b4"},
+            "opacity": 1,
+        },
+        textposition=textposition,
+        textfont={"size": textfont_sizes},
+    )
+
+    return text_trace
 
 
 def _create_node_trace(graph):
@@ -212,25 +287,26 @@ def _create_node_trace(graph):
         return textposition
 
     node_x, node_y = extract_node_coordinates(graph)
-    node_names = extract_node_names(graph)
+    # node_names = extract_node_names(graph)
     node_sizes = extract_node_sizes(graph)
-    textfont_sizes = extract_textfont_sizes(graph)
-    textposition = compute_textposition(node_x, node_y)
+    # textfont_sizes = extract_textfont_sizes(graph)
+    # textposition = compute_textposition(node_x, node_y)
 
     node_trace = go.Scatter(
         x=node_x,
         y=node_y,
-        mode="markers+text",
+        # mode="markers+text",
+        mode="markers",
         hoverinfo="text",
-        text=node_names,
+        # text=node_names,
         marker=dict(
-            color="dodgerblue",
+            color="#1f77b4",
             size=node_sizes,
-            line={"width": 1, "color": "white"},
+            line={"width": 1.5, "color": "white"},
             opacity=1,
         ),
-        textposition=textposition,
-        textfont={"size": textfont_sizes},
+        # textposition=textposition,
+        # textfont={"size": textfont_sizes},
     )
 
     return node_trace
@@ -242,7 +318,7 @@ def _create_edge_traces(graph):
         edge_trace = go.Scatter(
             x=[],
             y=[],
-            line={"color": "dodgerblue"},
+            line={"color": "#1f77b4"},
             hoverinfo="none",
             mode="lines",
         )
@@ -278,8 +354,8 @@ def _create_edge_traces(graph):
     return result
 
 
-def _compute_graph_layout(graph, k, iterations):
-    pos = nx.spring_layout(graph, k=k, iterations=iterations)
+def _compute_graph_layout(graph, k, iterations, seed):
+    pos = nx.spring_layout(graph, k=k, iterations=iterations, seed=seed)
     for node in graph.nodes():
         graph.nodes[node]["pos"] = pos[node]
     return graph
@@ -369,11 +445,6 @@ def _extract_node_occ(matrix_list):
     occ = [node.split(":")[0] for node in occ]
     occ = [int(node) for node in occ]
     return occ
-
-
-# def _compute_dissimilarity_matrix(corr_matrix):
-#     dissimilarity_matrix = np.sqrt(0.5 * (1 - corr_matrix))
-#     return dissimilarity_matrix
 
 
 def _melt_matrix(matrix):
