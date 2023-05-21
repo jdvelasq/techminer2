@@ -230,9 +230,9 @@ def _create_text_trace(graph):
         text=node_names,
         hoverinfo="text",
         marker={
-            "color": "#1f77b4",
+            "color": "#8da4b4",
             "size": node_sizes,
-            "line": {"width": 0, "color": "#1f77b4"},
+            "line": {"width": 0, "color": "#8da4b4"},
             "opacity": 1,
         },
         textposition=textposition,
@@ -300,7 +300,7 @@ def _create_node_trace(graph):
         hoverinfo="text",
         # text=node_names,
         marker=dict(
-            color="#1f77b4",
+            color="#8da4b4",
             size=node_sizes,
             line={"width": 1.5, "color": "white"},
             opacity=1,
@@ -318,7 +318,7 @@ def _create_edge_traces(graph):
         edge_trace = go.Scatter(
             x=[],
             y=[],
-            line={"color": "#1f77b4"},
+            line={"color": "#8da4b4"},
             hoverinfo="none",
             mode="lines",
         )
