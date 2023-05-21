@@ -207,11 +207,6 @@ def _create_traces(G):
         node_x.append(x)
         node_y.append(y)
         text.append(node)
-        # if G.nodes[node]["group"] == 0:
-        #     colors.append("#F1948A")
-        # else:
-        #     colors.append("#5DADE2")
-
         if G.nodes[node]["group"] == 0:
             colors.append("#8da4b4")
         else:
@@ -258,13 +253,11 @@ def _create_edges(G, flood_matrix):
 
 def _create_nodes(G, flood_matrix, col_index):
     nodes = []
-
     col = flood_matrix[flood_matrix.columns[col_index]]
     value_counts = col.value_counts()
     nodes += [
         (item, dict(size=value_counts[item], group=col_index))
         for item in value_counts.index
     ]
-
     G.add_nodes_from(nodes)
     return G

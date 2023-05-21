@@ -51,7 +51,8 @@ Creates auto-correlation and cross-correlation maps.
 | Turki M, 2021, ADV INTELL SYS COMPUT, V1141, P349                                                                   |                0 |                  0 |                  0 |                1 |             0 |               0 |                 0 |               0 |               0 |                0 |
 
 
->>> vantagepoint.analyze.corr_map(obj).write_html(file_name)
+>>> chart = vantagepoint.analyze.corr_map(obj)
+>>> chart.plot_.write_html(file_name)
 
 
 .. raw:: html
@@ -82,7 +83,8 @@ Creates auto-correlation and cross-correlation maps.
 | Singh C 2:017     |        -0.365858 |          -0.365858 |           -0.183387 |          0        |           0.225806 |        0        |                0 |      1        |        1        |               0 |
 | Turki M 2:018     |         0        |           0        |            0        |          0        |           0        |        0        |                1 |      0        |        0        |               1 |
 
->>> vantagepoint.analyze.corr_map(obj).write_html(file_name)
+>>> chart = vantagepoint.analyze.corr_map(obj)
+>>> chart.plot_.write_html(file_name)
 
 .. raw:: html
 
@@ -91,9 +93,18 @@ Creates auto-correlation and cross-correlation maps.
 
 
 """
+from dataclasses import dataclass
+
 import networkx as nx
 import numpy as np
 import plotly.graph_objects as go
+
+
+@dataclass(init=False)
+class _Chart:
+    plot_: None
+    table_: None
+    prompt_: None
 
 
 def corr_map(
@@ -128,7 +139,12 @@ def corr_map(
 
     fig = _create_network_graph(edge_traces, node_trace, text_trace, delta)
 
-    return fig
+    chart = _Chart()
+    chart.plot_ = fig
+    chart.table_ = obj.matrix_
+    chart.prompt_ = obj.prompt_
+
+    return chart
 
 
 def _create_network_graph(edge_traces, node_trace, text_trace, delta=1.0):
