@@ -43,7 +43,6 @@ def keyword_concordances(
     top_n=50,
     directory="./",
 ):
-
     # ---< Sort abstracts by importance >------------------------------------------------
     documents = read_records(directory)
     article2citation = dict(zip(documents["article"], documents["global_citations"]))
@@ -83,9 +82,7 @@ def keyword_concordances(
 
     # ---< Writes the report >-----------------------------------------------------------
     with open(join(directory, "keyword_concordances.txt"), "w") as out_file:
-
         for _, row in abstracts.iterrows():
-
             paragraph = textwrap.fill(
                 row["phrase"],
                 width=90,

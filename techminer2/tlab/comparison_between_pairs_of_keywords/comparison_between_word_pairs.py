@@ -82,6 +82,7 @@ from dataclasses import dataclass
 import networkx as nx
 import plotly.express as px
 
+from ... import network_utils
 from ..._items2counters import items2counters
 from ..._load_stopwords import load_stopwords
 from ..._read_records import read_records
@@ -90,7 +91,6 @@ from ...vantagepoint.report.matrix_viewer import (
     _color_node_points,
     _create_network_graph,
     _create_traces,
-    _make_layout,
 )
 
 
@@ -174,11 +174,11 @@ def comparison_between_word_pairs(
     return results
 
 
-def _create_radial_diagram(matrix_list, topic_a, topic_b, nx_k, nx_iterations, delta):
+def _create_radial_diagram(matrix_list, topic_a, topic_b, nx_k, nx_iterations, delta, seed):
     graph = nx.Graph()
     graph = _create_nodes(graph, matrix_list, topic_a, topic_b)
     graph = _create_edges(graph, matrix_list, topic_a, topic_b)
-    graph = _make_layout(graph, nx_k, nx_iterations)
+    graph = network_utils.compute_graph_layout(graph, nx_k, nx_iterations, seed)
     edge_trace, node_trace = _create_traces(graph)
     node_trace = _color_node_points(graph, node_trace)
     fig = _create_network_graph(edge_trace, node_trace, delta)

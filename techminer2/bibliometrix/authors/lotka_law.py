@@ -59,7 +59,6 @@ def lotka_law(
 
 
 def _plot_lotka_law(indicators):
-
     fig = go.Figure()
     fig.add_trace(
         go.Scatter(
@@ -118,7 +117,6 @@ def _core_authors(
     end_year,
     **filters,
 ):
-
     #
     # Part 1: Computes the number of written documents per number of authors.
     #         Read as: "178 authors write only 1 document and 1 author writes 7 documents"

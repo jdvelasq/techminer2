@@ -104,7 +104,6 @@ def _replace_sinonimous(affiliations, column):
 
 
 def _load_affiliations(directory):
-
     affiliations = []
     files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
     for file in files:
@@ -119,7 +118,6 @@ def _load_affiliations(directory):
 
 
 def _get_country_names():
-
     module_path = os.path.dirname(__file__)
     file_name = os.path.join(module_path, "../../_files", "country_codes.txt")
     country_codes = load_file_as_dict(file_name)

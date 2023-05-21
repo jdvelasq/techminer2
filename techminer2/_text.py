@@ -258,7 +258,6 @@ def remove_accents(text):
     """
 
     def translate(c):
-
         if c in [
             "\u0100",
             "\u0102",
@@ -597,7 +596,6 @@ def remove_accents(text):
 
 
 if __name__ == "__main__":
-
     import doctest
 
     doctest.testmod()

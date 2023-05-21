@@ -100,7 +100,6 @@ def fuzzy_search(
         th_dict.pop(key)
 
     with open(th_file, "w", encoding="utf-8") as file:
-
         for key in sorted(findings.keys()):
             file.write(key + "\n")
             for item in findings[key]:

@@ -24,7 +24,6 @@ def network(
     clustering_method="louvain",
     manifold_method=None,
 ):
-
     # -------------------------------------------------------------------------
     matrix.sort_index(axis="columns", level=[0, 1, 2], inplace=True)
     matrix.sort_index(axis="index", level=[0, 1, 2], inplace=True)

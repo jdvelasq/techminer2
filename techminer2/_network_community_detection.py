@@ -28,7 +28,6 @@ from cdlib import algorithms
 
 
 def network_community_detection(graph, method):
-
     """Network community detection."""
 
     algorithm = {

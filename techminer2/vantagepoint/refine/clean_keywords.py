@@ -52,7 +52,6 @@ def clean_keywords(directory="./"):
             ("raw_abstract_words", "abstract_words"),
             ("raw_words", "words"),
         ]:
-
             if raw_column in data.columns:
                 data[column] = data[raw_column].str.split(";")
                 data[column] = data[column].map(

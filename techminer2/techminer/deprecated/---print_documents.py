@@ -5,7 +5,6 @@ import pandas as pd
 
 
 def print_documents(documents, file=sys.stdout):
-
     column_list = []
 
     reported_columns = [
@@ -28,9 +27,7 @@ def print_documents(documents, file=sys.stdout):
         documents = documents.sort_values(by="global_citations", ascending=False)
 
     for index, row in documents.iterrows():
-
         for column in reported_columns:
-
             if column not in row.index:
                 continue
 

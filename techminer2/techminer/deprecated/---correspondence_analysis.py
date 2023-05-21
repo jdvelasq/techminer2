@@ -10,7 +10,6 @@ class CorrespondenceAnalysis:
         pass
 
     def fit(self, X):
-
         X = X.copy()
         #
         # 1.-- Observed proportions (P)

@@ -47,7 +47,6 @@ def impact_indicators_by_topic(
     end_year=None,
     **filters,
 ):
-
     """Impact indicators."""
 
     documents = read_records(

@@ -77,7 +77,6 @@ def extract_country(directory, input_col, output_col):
 
 
 def _get_country_names():
-
     module_path = os.path.dirname(__file__)
     file_name = os.path.join(module_path, "files", "country_codes.txt")
     country_codes = load_file_as_dict(file_name)
@@ -142,7 +141,6 @@ def extract_country_from_string(x):
     ## Name search in the affiliation (x)
     ##
     for z in reversed(x.split(",")):
-
         z = z.strip()
 
         ##

@@ -184,7 +184,6 @@ class ChordDiagram:
         """Plots the diagram"""
 
         def compute_node_properties():
-
             n_nodes = len(self._nodes)
 
             theta = np.linspace(0.0, 2 * np.pi, n_nodes, endpoint=False)
@@ -216,7 +215,6 @@ class ChordDiagram:
             """Draws node and label."""
 
             for node in self._nodes:
-
                 x = node_properties["node_x"][node]
                 y = node_properties["node_y"][node]
                 ax.scatter(
@@ -229,7 +227,6 @@ class ChordDiagram:
                 )
 
             for label in self._nodes:
-
                 x = node_properties["label_x"][label]
                 y = node_properties["label_y"][label]
                 rotation = node_properties["rotation"][label]
@@ -273,7 +270,6 @@ class ChordDiagram:
                 ax.plot(xb, yb, **kwargs)
 
             for edge in self._edges:
-
                 u, v = edge
 
                 x0, y0, a0 = (

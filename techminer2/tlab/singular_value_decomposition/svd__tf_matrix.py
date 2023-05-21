@@ -79,7 +79,6 @@ def svd__tf_matrix(
     end_year=None,
     **filters,
 ):
-
     matrix = vantagepoint.analyze.tfidf.tf_matrix(
         criterion=criterion,
         topics_length=topics_length,

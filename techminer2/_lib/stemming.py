@@ -93,7 +93,6 @@ def _stemming(
     database,
     sep,
 ):
-
     if stemmer == "porter":
         stemmer = PorterStemmer()
     elif stemmer == "snowball":

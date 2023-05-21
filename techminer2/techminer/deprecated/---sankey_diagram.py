@@ -24,7 +24,6 @@ def sankey_diagram(
     figsize=(6, 6),
 ):
     def compute_params(data):
-
         params = {}
         params["n_rows"] = data.shape[0]
         params["n_cols"] = data.shape[1]
@@ -56,7 +55,6 @@ def sankey_diagram(
         return xb, yb
 
     def plot_groups(ax, data, params):
-
         data = data.copy()
 
         row_values = data.sum(axis=1)
@@ -107,7 +105,6 @@ def sankey_diagram(
             base += col_value + params["space"]
 
     def plot_connections(ax, data, params):
-
         left_base = 0.0
         left_heights = data.sum(axis=1)
         right_heights = data.sum(axis=0)
@@ -133,9 +130,7 @@ def sankey_diagram(
 
         for index in data.index:
             for col in data.columns:
-
                 if data.loc[index, col] > 0:
-
                     p_left = (0.05, left_base)
                     p_right = (0.95, right_base[col])
                     lower_line = generate_curve(p_left, p_right)

@@ -72,12 +72,15 @@ import networkx as nx
 import numpy as np
 import plotly.graph_objects as go
 
+from ... import network_utils
+
 
 def matrix_viewer(
     matrix_list,
     nx_k=0.5,
     nx_iteratons=10,
     delta=1.0,
+    seed=0,
 ):
     """Makes cluster map from a ocurrence flooding matrix."""
 
@@ -86,38 +89,44 @@ def matrix_viewer(
     column = matrix_list["column"].drop_duplicates().sort_values()
     row = matrix_list["row"].drop_duplicates().sort_values()
     if row.equals(column):
-        return _matrix_viewer_for_co_occ_matrix(matrix_list, nx_k, nx_iteratons, delta)
-    return _matrix_viewer_for_occ_matrix(matrix_list, nx_k, nx_iteratons, delta)
+        return _matrix_viewer_for_co_occ_matrix(
+            matrix_list, nx_k, nx_iteratons, delta, seed
+        )
+    return _matrix_viewer_for_occ_matrix(
+        matrix_list,
+        nx_k,
+        nx_iteratons,
+        delta,
+        seed,
+    )
 
 
-def _matrix_viewer_for_co_occ_matrix(matrix_list, nx_k, nx_iteratons, delta):
+def _matrix_viewer_for_co_occ_matrix(matrix_list, nx_k, nx_iteratons, delta, seed):
     graph = nx.Graph()
     graph = _create_nodes(graph, matrix_list, 0)
     graph = _create_edges(graph, matrix_list)
-    graph = _make_layout(graph, nx_k, nx_iteratons)
+    graph = network_utils.compute_graph_layout(graph, nx_k, nx_iteratons, seed)
     edge_trace, node_trace = _create_traces(graph)
     node_trace = _color_node_points(graph, node_trace)
     fig = _create_network_graph(edge_trace, node_trace, delta)
     return fig
 
 
-def _matrix_viewer_for_occ_matrix(matrix_list, nx_k, nx_iteratons, delta):
+def _matrix_viewer_for_occ_matrix(matrix_list, nx_k, nx_iteratons, delta, seed):
     graph = nx.Graph()
     graph = _create_nodes(graph, matrix_list, 0)
     graph = _create_nodes(graph, matrix_list, 1)
     graph = _create_edges(graph, matrix_list)
-    graph = _make_layout(graph, nx_k, nx_iteratons)
+    graph = network_utils.compute_graph_layout(
+        graph,
+        nx_k,
+        nx_iteratons,
+        seed,
+    )
     edge_trace, node_trace = _create_traces(graph)
     node_trace = _color_node_points(graph, node_trace)
     fig = _create_network_graph(edge_trace, node_trace, delta)
     return fig
-
-
-def _make_layout(G, k=0.2, iteratons=50):
-    pos = nx.spring_layout(G, k=k, iterations=iteratons)
-    for node in G.nodes():
-        G.nodes[node]["pos"] = pos[node]
-    return G
 
 
 def _create_network_graph(edge_trace, node_trace, delta=1.0):
@@ -172,8 +181,28 @@ def _color_node_points(G, node_trace):
             text += fmt.format(key, value["weight"])
         node_hove_text.append(text)
 
-    # node_trace.marker.color = node_adjacencies
     node_trace.hovertext = node_hove_text
+    return node_trace
+
+
+def _create_node_traces(G):
+    #
+
+    node_trace = go.Scatter(
+        x=node_x,
+        y=node_y,
+        mode="markers+text",
+        hoverinfo="text",
+        text=text,
+        marker=dict(
+            color=colors,
+            size=25,
+            line_width=1,
+            line_color="white",
+        ),
+        textposition=textposition,
+    )
+
     return node_trace
 
 

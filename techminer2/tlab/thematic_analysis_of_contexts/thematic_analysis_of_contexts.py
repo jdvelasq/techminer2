@@ -91,7 +91,6 @@ class _ThematicAnalysis:
         self._run()
 
     def _run(self):
-
         self._build_tf_idf_matrix()
         self._apply_clustering()
         self._compute_clusters()
@@ -112,7 +111,6 @@ class _ThematicAnalysis:
         self._documents = documents
 
     def _compute_themes(self):
-
         themes = {}
         for cluster in self._clusters.columns:
             themes[cluster] = [
@@ -143,7 +141,6 @@ class _ThematicAnalysis:
         self.clustering_method.fit(self._tfidf_matrix)
 
     def _build_tf_idf_matrix(self):
-
         self._tfidf_matrix = vantagepoint.analyze.tfidf.tfidf_matrix(
             criterion=self.criterion,
             topics_length=self.topics_length,

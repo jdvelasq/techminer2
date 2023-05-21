@@ -27,7 +27,6 @@ def clusters_summarization(
 
     communities = communities.head(n_keywords)
     for community_name in communities:
-
         community = communities[community_name].tolist()
         community = [x for x in community if x != ""]
         community = [" ".join(x.split()[:-1]) for x in community]

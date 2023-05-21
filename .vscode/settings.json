@@ -6,6 +6,7 @@
             "source.organizeImports": true
         },
     },
+    "python.formatting.provider": "none",
     "isort.args": [
         "--profile",
         "black"
@@ -24,7 +25,6 @@
         "**/*.html": true
     },
     "notebook.output.textLineLimit": 200,
-    "python.formatting.provider": "none",
     "isort.check": true,
     "notebook.formatOnSave.enabled": true,
     "black-formatter.args": [

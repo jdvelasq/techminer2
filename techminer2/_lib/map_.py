@@ -4,7 +4,6 @@ import pandas as pd
 
 
 def map_(x, column, f):
-
     x = x.copy()
     if (
         x[column].dtype != "int64"

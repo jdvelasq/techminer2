@@ -25,7 +25,6 @@ import pandas as pd
 
 
 def _get_edges(matrix):
-
     # build network matrices for plotting with networkx
     matrix = matrix.copy()
 
@@ -60,7 +59,6 @@ def _get_edges(matrix):
 
 
 def _get_nodes(matrix):
-
     nodes = [(a, b, c) for a, b, c in matrix.columns]
     nodes = pd.DataFrame(nodes, columns=["name", "num_documents", "global_citations"])
 
@@ -84,7 +82,6 @@ def correlation_map(
     nx_random_state=None,
     figsize=(6, 6),
 ):
-
     # computos
     matrix = correlation_matrix.copy()
 
@@ -175,7 +172,6 @@ def correlation_map(
     radious = np.sqrt(rx**2 + ry**2)
 
     for label in nodes.name:
-
         x_point, y_point = pos[label]
 
         x_c = x_point - x_mean

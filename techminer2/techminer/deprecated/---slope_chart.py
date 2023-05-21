@@ -21,7 +21,6 @@ def slope_chart(
     cmap_by="Reds",
     fontsize=9,
 ):
-
     matrix = matrix.copy()
     if isinstance(matrix.columns, pd.MultiIndex):
         matrix.columns = multindex2text(matrix.columns)

@@ -60,7 +60,6 @@ def stacked_column_chart(
 
     bottom = data[data.columns[0]].map(lambda w: 0.0)
     for i_col, col in enumerate(data.columns):
-
         ax.bar(
             x=data.index,
             height=data[col],

@@ -99,6 +99,8 @@ import networkx as nx
 import numpy as np
 import plotly.graph_objects as go
 
+from ... import network_utils
+
 
 @dataclass(init=False)
 class _Chart:
@@ -121,8 +123,10 @@ def corr_map(
     matrix_list = _melt_matrix(obj.matrix_)
 
     node_occ = _extract_node_occ(matrix_list)
-    node_sizes = _compute_node_sizes(node_occ, node_min_size, node_max_size)
-    textfont_sizes = _compute_textfont_sizes(
+    node_sizes = network_utils.compute_node_sizes(
+        node_occ, node_min_size, node_max_size
+    )
+    textfont_sizes = network_utils.compute_textfont_sizes(
         node_occ, textfont_size_min, textfont_size_max
     )
     node_names = _extract_node_name(matrix_list)
@@ -131,7 +135,7 @@ def corr_map(
     graph = nx.Graph()
     graph = _create_nodes(graph, node_names, node_sizes, textfont_sizes)
     graph = _create_edges(graph, matrix_list)
-    graph = _compute_graph_layout(graph, nx_k, nx_iterations, seed)
+    graph = network_utils.compute_graph_layout(graph, nx_k, nx_iterations, seed)
 
     edge_traces = _create_edge_traces(graph)
     node_trace = _create_node_trace(graph)
@@ -189,54 +193,14 @@ def _create_network_graph(edge_traces, node_trace, text_trace, delta=1.0):
 
 
 def _create_text_trace(graph):
-    def extract_node_coordinates(graph):
-        node_x = []
-        node_y = []
-        for node in graph.nodes():
-            x, y = graph.nodes[node]["pos"]
-            node_x.append(x)
-            node_y.append(y)
-        return node_x, node_y
+    """Create text trace for network graph."""
 
-    def extract_node_sizes(graph):
-        node_sizes = []
-        for node in graph.nodes():
-            node_sizes.append(graph.nodes[node]["size"])
-        return node_sizes
+    node_x, node_y = network_utils.extract_node_coordinates(graph)
+    node_names = network_utils.extract_node_names(graph)
+    textfont_sizes = network_utils.extract_textfont_sizes(graph)
+    textposition = network_utils.compute_textposition(node_x, node_y)
 
-    def extract_node_names(graph):
-        node_names = []
-        for node in graph.nodes():
-            node_names.append(node)
-        return node_names
-
-    def extract_textfont_sizes(graph):
-        textfont_sizes = []
-        for node in graph.nodes():
-            textfont_sizes.append(graph.nodes[node]["textfont_size"])
-        return textfont_sizes
-
-    def compute_textposition(node_x, node_y):
-        x_mean = np.mean(node_x)
-        y_mean = np.mean(node_y)
-        textposition = []
-        for x_pos, y_pos in zip(node_x, node_y):
-            if x_pos >= x_mean and y_pos >= y_mean:
-                textposition.append("top right")
-            if x_pos <= x_mean and y_pos >= y_mean:
-                textposition.append("top left")
-            if x_pos <= x_mean and y_pos <= y_mean:
-                textposition.append("bottom left")
-            if x_pos >= x_mean and y_pos <= y_mean:
-                textposition.append("bottom right")
-        return textposition
-
-    node_x, node_y = extract_node_coordinates(graph)
-    node_names = extract_node_names(graph)
-    textfont_sizes = extract_textfont_sizes(graph)
-    textposition = compute_textposition(node_x, node_y)
-
-    node_sizes = extract_node_sizes(graph)
+    node_sizes = network_utils.extract_node_sizes(graph)
     node_sizes = [size - 12 for size in node_sizes]
 
     text_trace = go.Scatter(
@@ -259,70 +223,21 @@ def _create_text_trace(graph):
 
 
 def _create_node_trace(graph):
-    #
-    def extract_node_coordinates(graph):
-        node_x = []
-        node_y = []
-        for node in graph.nodes():
-            x, y = graph.nodes[node]["pos"]
-            node_x.append(x)
-            node_y.append(y)
-        return node_x, node_y
+    """Create node trace for network graph."""
 
-    def extract_node_names(graph):
-        node_names = []
-        for node in graph.nodes():
-            node_names.append(node)
-        return node_names
-
-    def extract_node_sizes(graph):
-        node_sizes = []
-        for node in graph.nodes():
-            node_sizes.append(graph.nodes[node]["size"])
-        return node_sizes
-
-    def extract_textfont_sizes(graph):
-        textfont_sizes = []
-        for node in graph.nodes():
-            textfont_sizes.append(graph.nodes[node]["textfont_size"])
-        return textfont_sizes
-
-    def compute_textposition(node_x, node_y):
-        x_mean = np.mean(node_x)
-        y_mean = np.mean(node_y)
-        textposition = []
-        for x_pos, y_pos in zip(node_x, node_y):
-            if x_pos >= x_mean and y_pos >= y_mean:
-                textposition.append("top right")
-            if x_pos <= x_mean and y_pos >= y_mean:
-                textposition.append("top left")
-            if x_pos <= x_mean and y_pos <= y_mean:
-                textposition.append("bottom left")
-            if x_pos >= x_mean and y_pos <= y_mean:
-                textposition.append("bottom right")
-        return textposition
-
-    node_x, node_y = extract_node_coordinates(graph)
-    # node_names = extract_node_names(graph)
-    node_sizes = extract_node_sizes(graph)
-    # textfont_sizes = extract_textfont_sizes(graph)
-    # textposition = compute_textposition(node_x, node_y)
-
+    node_x, node_y = network_utils.extract_node_coordinates(graph)
+    node_sizes = network_utils.extract_node_sizes(graph)
     node_trace = go.Scatter(
         x=node_x,
         y=node_y,
-        # mode="markers+text",
         mode="markers",
         hoverinfo="text",
-        # text=node_names,
         marker=dict(
             color="#8da4b4",
             size=node_sizes,
             line={"width": 1.5, "color": "white"},
             opacity=1,
         ),
-        # textposition=textposition,
-        # textfont={"size": textfont_sizes},
     )
 
     return node_trace
@@ -341,8 +256,8 @@ def _create_edge_traces(graph):
 
         found = False
         for edge in graph.edges():
-            x0, y0 = graph.nodes[edge[0]]["pos"]
-            x1, y1 = graph.nodes[edge[1]]["pos"]
+            pos_x0, pos_y0 = graph.nodes[edge[0]]["pos"]
+            pos_x1, pos_y1 = graph.nodes[edge[1]]["pos"]
 
             width = graph.edges[edge]["width"]
             dash = graph.edges[edge]["dash"]
@@ -350,12 +265,10 @@ def _create_edge_traces(graph):
 
             if type_ == edge_type:
                 found = True
-
                 edge_trace["line"]["width"] = width
                 edge_trace["line"]["dash"] = dash
-
-                edge_trace["x"] += (x0, x1, None)
-                edge_trace["y"] += (y0, y1, None)
+                edge_trace["x"] += (pos_x0, pos_x1, None)
+                edge_trace["y"] += (pos_y0, pos_y1, None)
 
         if found:
             return edge_trace
@@ -368,13 +281,6 @@ def _create_edge_traces(graph):
         if edge_trace:
             result.append(edge_trace)
     return result
-
-
-def _compute_graph_layout(graph, k, iterations, seed):
-    pos = nx.spring_layout(graph, k=k, iterations=iterations, seed=seed)
-    for node in graph.nodes():
-        graph.nodes[node]["pos"] = pos[node]
-    return graph
 
 
 def _create_edges(graph, matrix_list):
@@ -427,26 +333,6 @@ def _create_nodes(graph, node_names, node_sizes, textfont_sizes):
     ]
     graph.add_nodes_from(nodes)
     return graph
-
-
-def _compute_textfont_sizes(node_occ, textfont_size_min, textfont_size_max):
-    textfont_sizes = np.array(node_occ)
-    textfont_sizes = textfont_sizes - textfont_sizes.min() + textfont_size_min
-    if textfont_sizes.max() > textfont_size_max:
-        textfont_sizes = textfont_size_min + (textfont_sizes - textfont_size_min) / (
-            textfont_sizes.max() - textfont_size_min
-        ) * (textfont_size_max - textfont_size_min)
-    return textfont_sizes
-
-
-def _compute_node_sizes(node_occ, node_min_size, node_max_size):
-    node_sizes = np.array(node_occ)
-    node_sizes = node_sizes - node_sizes.min() + node_min_size
-    if node_sizes.max() > node_max_size:
-        node_sizes = node_min_size + (node_sizes - node_min_size) / (
-            node_sizes.max() - node_min_size
-        ) * (node_max_size - node_min_size)
-    return node_sizes
 
 
 def _extract_node_name(matrix_list):

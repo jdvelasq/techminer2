@@ -68,7 +68,6 @@ def concordances(
 
 
 def _write_report(directory, abstracts, start_year, end_year, **filters):
-
     abstracts = abstracts.copy()
     abstracts = abstracts[["global_citations", "article", "phrase"]]
     abstracts = abstracts.groupby(["article"], as_index=False).agg(list)

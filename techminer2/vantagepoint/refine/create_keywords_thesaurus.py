@@ -288,7 +288,6 @@ def _explode_keywords(keywords_list):
 
 
 def _load_keywords_from_databases(directory="./"):
-
     words_list = []
     files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
     for file in files:
@@ -300,7 +299,6 @@ def _load_keywords_from_databases(directory="./"):
             "raw_title_words",
             "raw_abstract_words",
         ]:
-
             if column in data.columns:
                 words_list.append(data[column])
     words_list = pd.concat(words_list, ignore_index=True)

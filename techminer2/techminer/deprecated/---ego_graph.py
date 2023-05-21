@@ -38,7 +38,6 @@ def ego_graph(
     max_labels=50,
     plot=True,
 ):
-
     matrix = co_occurrence_matrix(
         column,
         min_occ=min_occ,

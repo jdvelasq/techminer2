@@ -58,7 +58,6 @@ def abstract_screening(
 
 
 def _create_report(directory, abstracts):
-
     abstracts = abstracts.copy()
     abstracts = abstracts[["article", "phrase"]]
     abstracts = abstracts.groupby("article", as_index=False).aggregate(

@@ -2,7 +2,6 @@ import plotly.express as px
 
 
 def bibliometrix_scatter_plot(x, y, title, text, xlabel, ylabel):
-
     fig = px.scatter(
         x=x,
         y=y,

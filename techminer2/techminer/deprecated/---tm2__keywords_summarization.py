@@ -95,7 +95,6 @@ def tm2__keywords_summarization(
         return documents
 
     def write_report(documents, sufix):
-
         # ----< select columns to report >-----------------------------------------------
         documents = documents.copy()
         column_list = []
@@ -116,13 +115,10 @@ def tm2__keywords_summarization(
         filename = join(directory, "reports", f"keywords_summarization{sufix}.txt")
 
         with open(filename, "w") as out_file:
-
             sys.stdout.write("--INFO-- Generating " + filename + "\n")
 
             for index, row in documents.iterrows():
-
                 for column in reported_columns:
-
                     if column not in row.index:
                         continue
 
@@ -141,7 +137,6 @@ def tm2__keywords_summarization(
                         continue
 
                     if column == "abstract":
-
                         if not isinstance(row[column], float):
                             print("            abstract :", end="", file=out_file)
                             print(

@@ -6,7 +6,6 @@ colors = ["#FF6433", "#2E86C1", "#2EA405"] * 10
 
 
 def document_to_html(document):
-
     HTML = ""
     if "document_title" in document.index:
         HTML += "           document_title : " + document.document_title + "<br>"

@@ -70,7 +70,6 @@ def create_thesaurus(
         words_list = [word for word in words_list if word not in clustered_words]
 
         if len(words_list) > 0:
-
             th_ = text_clustering(pd.Series(words_list))
 
             th_ = Thesaurus(

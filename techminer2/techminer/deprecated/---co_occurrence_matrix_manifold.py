@@ -34,7 +34,6 @@ def co_occurrence_matrix_manifold(
     color_scheme="clusters",
     figsize=(7, 7),
 ):
-
     coc_matrix = co_occurrence_matrix(
         column=column,
         min_occ=min_occ,

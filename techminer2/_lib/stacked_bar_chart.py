@@ -54,7 +54,6 @@ def stacked_bar_chart(
 
     left = data[data.columns[0]].map(lambda w: 0.0)
     for i_col, col in enumerate(data.columns):
-
         ax.barh(
             y=data.index,
             width=data[col],

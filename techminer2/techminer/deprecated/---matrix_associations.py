@@ -8,7 +8,6 @@ import pandas as pd
 
 
 def matrix_associations(matrix):
-
     names_cols = matrix.columns.get_level_values(0)
     names_rows = matrix.index.get_level_values(0)
     n_rows = matrix.shape[0]

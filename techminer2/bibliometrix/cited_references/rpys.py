@@ -65,7 +65,6 @@ def rpys(
 
 
 def _plot_rpys(indicator):
-
     fig = go.Figure()
     fig.add_trace(
         go.Scatter(
@@ -117,7 +116,6 @@ def _plot_rpys(indicator):
 
 
 def _compute_rpys(references):
-
     references = references[["year"]]
     references = references.dropna()
     references_by_year = references["year"].value_counts()

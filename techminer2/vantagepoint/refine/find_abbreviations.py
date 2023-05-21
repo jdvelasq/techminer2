@@ -57,7 +57,6 @@ def find_abbreviations(
 
     results = []
     for abbreviation in abbreviations.to_list():
-
         try:
             keywords = df[
                 df.text.map(lambda x: x == abbreviation)
@@ -82,7 +81,6 @@ def find_abbreviations(
 
     # ----< save the thesaurus >--------------------------------------------------------------------
     with open(th_file, "w", encoding="utf-8") as file:
-
         for key in findings.keys():
             # print(key)
             file.write(key + "\n")

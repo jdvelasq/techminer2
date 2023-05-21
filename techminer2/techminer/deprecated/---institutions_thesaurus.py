@@ -134,6 +134,7 @@ def create_institutions_thesaurus(directory="./"):
     """
     Creates an insitutions thesaurus from the data in the database.
     """
+
     #
     def clean_name(w):
         w = w.replace(".", "").lower().strip()
@@ -164,7 +165,6 @@ def create_institutions_thesaurus(directory="./"):
 
     #
     def search_name(w):
-
         ##
         ## Searchs a exact match
         ##
@@ -182,14 +182,12 @@ def create_institutions_thesaurus(directory="./"):
         ##
         for name in NAMES:
             for elem in w.split(","):
-
                 if "-" in elem:
                     elem = elem.split("-")
                     elem = [e.strip() for e in elem]
                     elem = elem[0] if len(elem[0]) > len(elem[1]) else elem[1]
 
                 if name in elem:
-
                     selected_name = elem.strip().lower()
 
                     return selected_name.lower()
@@ -251,13 +249,11 @@ def create_institutions_thesaurus(directory="./"):
     # select only new affiliations
     #
     if os.path.isfile(thesaurus_file):
-
         dict_ = load_file_as_dict(thesaurus_file)
         clustered_text = [word for key in dict_.keys() for word in dict_[key]]
         x = [word for word in x if word not in clustered_text]
 
     else:
-
         dict_ = {}
 
     #
@@ -271,7 +267,6 @@ def create_institutions_thesaurus(directory="./"):
     #
     x["country"] = x.affiliation.map(extract_country_from_string, na_action="ignore")
     if any(x.country.isna()):
-
         sys.stdout.write(
             "--INFO-- Affiliations without country detected - check file "
             + os.path.join(directory, "processed", "ignored_affiliations.txt\n")
@@ -321,13 +316,11 @@ def create_institutions_thesaurus(directory="./"):
     institutions = institutions.tolist()
 
     for key, country in zip(x.key, x.country):
-
         if pd.isna(key) or pd.isna(country):
             continue
 
         aff = key.split(" ")
         if country in SPANISH:
-
             #
             # Rule: XXX university ---> universidad XXX
             #
@@ -340,7 +333,6 @@ def create_institutions_thesaurus(directory="./"):
                 ("institute of technology", "instituto tecnologico de "),
             ]:
                 if len(aff) > len(foreign.split(" ")):
-
                     proper_name = " ".join(aff[: len(aff) - len(foreign.split())])
                     local_name = local + proper_name
 
@@ -372,7 +364,6 @@ def create_institutions_thesaurus(directory="./"):
                     "pontificia universidad catolica de ",
                 ),
             ]:
-
                 foreign_len = len(foreign.split())
                 if " ".join(aff[:foreign_len]) == foreign:
                     new_name = spanish + " ".join(aff[foreign_len:])
@@ -391,9 +382,7 @@ def create_institutions_thesaurus(directory="./"):
                 ("university of", "universidad de el "),
                 ("university of", "universidad de la "),
             ]:
-
                 if " ".join(aff[:2]) == foreign:
-
                     new_name = spanish + " ".join(aff[2:])
                     if new_name in institutions + VALID_NAMES:
                         x["key"] = x.key.map(
@@ -401,7 +390,6 @@ def create_institutions_thesaurus(directory="./"):
                         )
 
         if country in PORTUGUES:
-
             #
             #
             #
@@ -432,7 +420,6 @@ def create_institutions_thesaurus(directory="./"):
                     "pontificia universidade catolica do ",
                 ),
             ]:
-
                 foreign_len = len(foreign.split())
                 if " ".join(aff[:foreign_len]) == foreign:
                     new_name = portugues + " ".join(aff[foreign_len:])
@@ -452,7 +439,6 @@ def create_institutions_thesaurus(directory="./"):
                 ("federal university", "universidade federal de "),
                 ("federal university", "universidade federal da "),
             ]:
-
                 if " ".join(aff[-2:]) == foreign:
                     new_name = portugues + " ".join(aff[:-2])
                     if new_name in institutions + VALID_NAMES:
@@ -468,9 +454,7 @@ def create_institutions_thesaurus(directory="./"):
                 ("universidad de", "universidade de "),
                 ("universidad de", "universidade da "),
             ]:
-
                 if " ".join(aff[:2]) == foreign:
-
                     new_name = portugues + " ".join(aff[2:])
                     if new_name in institutions + VALID_NAMES:
                         x["key"] = x.key.map(
@@ -482,7 +466,6 @@ def create_institutions_thesaurus(directory="./"):
                 ("university", "universidade de "),
                 ("university", "universidade da "),
             ]:
-
                 if aff[-1] == foreign:
                     new_name = portugues + " ".join(aff[:-1])
                     if new_name in institutions + VALID_NAMES:

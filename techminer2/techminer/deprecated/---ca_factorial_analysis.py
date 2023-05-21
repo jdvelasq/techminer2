@@ -34,7 +34,6 @@ class CA_factorial_analysis:
         self.run()
 
     def run(self):
-
         tf_idf_matrix = self.tf_idf_matrix.copy()
         correspondence_analysis = CorrespondenceAnalysis()
         correspondence_analysis.fit(tf_idf_matrix)
@@ -58,7 +57,6 @@ class CA_factorial_analysis:
         return self.words_by_cluster_.copy()
 
     def silhouette_scores_plot(self, max_n_clusters=8, figsize=(5, 5)):
-
         tf_idf_matrix = self.tf_idf_matrix.copy()
         correspondence_analysis = CorrespondenceAnalysis()
         correspondence_analysis.fit(tf_idf_matrix)
@@ -96,7 +94,6 @@ class CA_factorial_analysis:
         top_n=5,
         figsize=(7, 7),
     ):
-
         return conceptual_structure_map(
             words_by_cluster=self.words_by_cluster_,
             top_n=top_n,

@@ -125,7 +125,6 @@ def _color_node_points(G, node_trace):
 
 
 def _create_traces(G):
-
     edge_x = []
     edge_y = []
     for edge in G.edges():
@@ -178,7 +177,6 @@ def _create_traces(G):
 
 
 def _create_edges(G, flood_matrix):
-
     edges = []
 
     for _, row in flood_matrix.iterrows():
@@ -189,7 +187,6 @@ def _create_edges(G, flood_matrix):
 
 
 def _create_nodes(G, flood_matrix):
-
     nodes = []
 
     col0 = flood_matrix[flood_matrix.columns[0]]

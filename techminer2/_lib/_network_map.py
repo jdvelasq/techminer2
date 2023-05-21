@@ -36,7 +36,6 @@ def network_map(
     network,
     color_scheme="clusters",
 ):
-
     manifold = network["manifold_data"]
 
     return bubble_map(

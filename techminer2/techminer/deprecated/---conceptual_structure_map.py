@@ -61,7 +61,6 @@ def _encircle(x, y, ax, **kw):
 
 
 def conceptual_structure_map(words_by_cluster, top_n, figsize):
-
     # Creates the plot in memory
     matplotlib.rc("font", size=9)
     fig = plt.Figure(figsize=figsize)
@@ -74,7 +73,6 @@ def conceptual_structure_map(words_by_cluster, top_n, figsize):
     factor = 0.005
     n_clusters = len(set(words_by_cluster.Cluster))
     for i_cluster in range(n_clusters):
-
         words = words_by_cluster[words_by_cluster.Cluster == i_cluster].copy()
         words.sort_index(axis="index", level=1, ascending=False, inplace=True)
 
@@ -103,7 +101,6 @@ def conceptual_structure_map(words_by_cluster, top_n, figsize):
             y_points.head(top_n).tolist(),
             words.head(top_n).index.get_level_values(0).tolist(),
         ):
-
             quadrant = _get_quadrant(x=x_, y=y_, x_axis_at=0, y_axis_at=0)
 
             delta_x = {

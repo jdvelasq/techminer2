@@ -57,7 +57,6 @@ def extract_custom_topics(
     directory="./",
     plot=True,
 ):
-
     indicators = growth_indicators_by_topic(
         column, time_window=time_window, directory=directory
     )

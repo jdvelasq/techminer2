@@ -28,7 +28,6 @@ def network_strategic_diagram(
     network,
     figsize=(8, 8),
 ):
-
     strategic_diagram = network["strategic_diagram"]
 
     return bubble_map(

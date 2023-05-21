@@ -152,7 +152,6 @@ def _load_valid_names():
 
 
 def _group_and_save(affiliations, directory):
-
     affiliations = affiliations[["raw_affiliation", "organization"]]
 
     grp = affiliations.groupby(by="organization", as_index=False).agg(
@@ -173,7 +172,6 @@ def _group_and_save(affiliations, directory):
 
 
 def _clean_organization_names(affiliations):
-
     affiliations = affiliations.copy()
 
     repl = [
@@ -210,7 +208,6 @@ def _clean_organization_names(affiliations):
 
 
 def _load_affiliations_from_country_thesaurus(directory):
-
     file_name = os.path.join(directory, "processed", "countries.txt")
     th_dict = load_file_as_dict(file_name)
     country = [k for k, v in th_dict.items() for t in v]
@@ -226,7 +223,6 @@ def _load_affiliations_from_country_thesaurus(directory):
 
 
 def _convert_countries_to_codes(affiliations):
-
     module_path = os.path.dirname(__file__)
     filename = os.path.join(module_path, "../../_files/country_codes.txt")
     codes_dict = load_file_as_dict(filename)

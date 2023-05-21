@@ -30,7 +30,6 @@ import plotly.express as px
 
 
 def network_degree_plot(graph):
-
     degrees = []
     for _, adjacencies in enumerate(graph.adjacency()):
         degrees.append((adjacencies[0], len(adjacencies[1])))

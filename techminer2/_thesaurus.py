@@ -529,7 +529,6 @@ class Thesaurus:
         return result
 
     def apply_as_dict(self, x, strict=False):
-
         if pd.isna(x):
             return None
         if strict is True and x not in self._dict.keys():

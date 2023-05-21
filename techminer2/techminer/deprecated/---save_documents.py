@@ -3,7 +3,6 @@ import sys
 
 
 def save_documents(documents, directory="./"):
-
     filename = os.path.join(directory, "processed", "_documents.csv")
     documents.to_csv(
         filename,
