@@ -150,7 +150,7 @@ field. Be sure to provide a concise summary of your findings in no more than 150
 
 def generate_prompt_for_list_cells_in_matrix(obj):
     #
-    matrix = obj.matrix_.copy()
+    matrix = obj.matrix_list_.copy()
     matrix = matrix[matrix.row != matrix.column]
     matrix = matrix[matrix.row < matrix.column]
 

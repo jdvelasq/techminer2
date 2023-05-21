@@ -12,23 +12,24 @@ Matrix Viwer
 >>> file_name = "sphinx/_static/vantagepoint__matrix_viewer-0.html"
 
 >>> from techminer2 import vantagepoint
->>> matrix = vantagepoint.analyze.occ_matrix_list(
-...    criterion_for_columns='author_keywords',
-...    criterion_for_rows='authors',
-...    topic_min_occ=3,
-...    directory=directory,
+>>> occ_matrix = vantagepoint.analyze.occ_matrix(
+...     criterion_for_columns='author_keywords',
+...     criterion_for_rows='authors',
+...     topic_min_occ=3,
+...     directory=directory,
 ... )
->>> matrix.head()
+>>> occ_matrix_list = vantagepoint.analyze.list_cells_in_matrix(occ_matrix)
+>>> occ_matrix_list.matrix_list_.head()
                 row                       column  OCC
-0    Arner DW 3:185               regtech 28:329    2
-1    Arner DW 3:185               fintech 12:249    1
-2    Arner DW 3:185    financial services 04:168    1
-3    Arner DW 3:185  financial regulation 04:035    2
-4  Buckley RP 3:185               regtech 28:329    2
+0    Arner DW 3:185  financial regulation 04:035    2
+1    Arner DW 3:185               regtech 28:329    2
+2  Buckley RP 3:185  financial regulation 04:035    2
+3  Buckley RP 3:185               regtech 28:329    2
+4    Arner DW 3:185    financial services 04:168    1
 
 
 >>> vantagepoint.report.matrix_viewer(
-...     matrix,
+...     occ_matrix_list,
 ... ).write_html(file_name)
 
 .. raw:: html
@@ -40,20 +41,22 @@ Matrix Viwer
 
 >>> file_name = "sphinx/_static/vantagepoint__matrix_viewer-1.html"
 
->>> matrix = vantagepoint.analyze.co_occ_matrix_list(
-...    criterion='author_keywords',
-...    topic_min_occ=8,
-...    directory=directory,
+>>> co_occ_matrix = vantagepoint.analyze.co_occ_matrix(
+...     criterion='author_keywords',
+...     topic_min_occ=7,
+...     directory=directory,
 ... )
->>> matrix.head()
-              row          column  OCC
-0  regtech 28:329  regtech 28:329   28
-1  regtech 28:329  fintech 12:249   12
-2  fintech 12:249  regtech 28:329   12
-3  fintech 12:249  fintech 12:249   12
+>>> co_occ_matrix_list = vantagepoint.analyze.list_cells_in_matrix(co_occ_matrix)
+>>> co_occ_matrix_list.matrix_list_.head()
+                 row             column  OCC
+0     regtech 28:329     regtech 28:329   28
+1     fintech 12:249     fintech 12:249   12
+2     fintech 12:249     regtech 28:329   12
+3     regtech 28:329     fintech 12:249   12
+4  compliance 07:030  compliance 07:030    7
 
 >>> vantagepoint.report.matrix_viewer(
-...     matrix,
+...     co_occ_matrix_list,
 ...     nx_k=0.5,
 ...     nx_iteratons=5,
 ... ).write_html(file_name)
@@ -77,6 +80,8 @@ def matrix_viewer(
     delta=1.0,
 ):
     """Makes cluster map from a ocurrence flooding matrix."""
+
+    matrix_list = matrix_list.matrix_list_.copy()
 
     column = matrix_list["column"].drop_duplicates().sort_values()
     row = matrix_list["row"].drop_duplicates().sort_values()
@@ -208,9 +213,9 @@ def _create_traces(G):
         #     colors.append("#5DADE2")
 
         if G.nodes[node]["group"] == 0:
-            colors.append("#1f77b4")
+            colors.append("#8da4b4")
         else:
-            colors.append("#FF7F0E")
+            colors.append("#556f81")
 
     x_mean = np.mean(node_x)
     y_mean = np.mean(node_y)

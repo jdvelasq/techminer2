@@ -42,12 +42,12 @@ Analyze the table below which contains the auto-correlation values for the autho
 """
 from dataclasses import dataclass
 
-from ...chatgpt import generate_prompt_for_list_cells_in_matrix
+from ... import chatgpt
 
 
 @dataclass(init=False)
 class _MatrixListResult:
-    matrix_: None
+    matrix_list_: None
     prompt_: None
     metric_: None
     criterion_for_columns_: None
@@ -58,11 +58,11 @@ def list_cells_in_matrix(obj):
     """List the cells in a matrix."""
 
     results = _MatrixListResult()
-    results.matrix_ = _transform_matrix_to_matrix_list(obj)
+    results.matrix_list_ = _transform_matrix_to_matrix_list(obj)
     results.criterion_for_columns_ = obj.criterion_for_columns_
     results.criterion_for_rows_ = obj.criterion_for_rows_
     results.metric_ = obj.metric_
-    results.prompt_ = generate_prompt_for_list_cells_in_matrix(results)
+    results.prompt_ = chatgpt.generate_prompt_for_list_cells_in_matrix(results)
 
     return results
 
