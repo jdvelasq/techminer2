@@ -26,5 +26,8 @@
     "notebook.output.textLineLimit": 200,
     "python.formatting.provider": "none",
     "isort.check": true,
-    "notebook.formatOnSave.enabled": true
+    "notebook.formatOnSave.enabled": true,
+    "black-formatter.args": [
+        "--line-length 79"
+    ]
 }
