@@ -1,5 +1,5 @@
 """
-Countries' Production over Time
+Countries' Production over Time (GPT)
 ===============================================================================
 
 
@@ -40,61 +40,51 @@ Countries' Production over Time
 
 
 
->>> print(r.production_.head().to_markdown())
-| Countries       |   2016 |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
-|:----------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
-| Australia 7:199 |      0 |      2 |      0 |      0 |      3 |      2 |      0 |      0 |
-| Bahrain 4:019   |      0 |      0 |      0 |      0 |      1 |      2 |      1 |      0 |
-| China 5:027     |      0 |      1 |      0 |      0 |      0 |      0 |      3 |      1 |
-| Germany 4:051   |      0 |      0 |      1 |      0 |      2 |      0 |      1 |      0 |
-| Hong Kong 3:185 |      0 |      2 |      0 |      0 |      1 |      0 |      0 |      0 |
-
-
 >>> print(r.table_.head().to_markdown())
-|    | Countries            |   Year |   OCC |   cum_OCC |   Global Citations |   Local Citations |   Age |   Global Citations Per Year |   Local Citations Per Year |
-|---:|:---------------------|-------:|------:|----------:|-------------------:|------------------:|------:|----------------------------:|---------------------------:|
-|  0 | United Kingdom 7:199 |   2018 |     3 |         3 |                182 |                30 |     6 |                      30.333 |                      5     |
-|  1 | Australia 7:199      |   2017 |     2 |         2 |                161 |                 3 |     7 |                      23     |                      0.429 |
-|  2 | Australia 7:199      |   2020 |     3 |         5 |                 33 |                 9 |     4 |                       8.25  |                      2.25  |
-|  3 | United Kingdom 7:199 |   2020 |     2 |         6 |                 14 |                 3 |     4 |                       3.5   |                      0.75  |
-|  4 | Australia 7:199      |   2021 |     2 |         7 |                  5 |                 3 |     3 |                       1.667 |                      1     |
+| countries            |   2016 |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
+|:---------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
+| United Kingdom 7:199 |      0 |      0 |      3 |      1 |      2 |      0 |      1 |      0 |
+| Australia 7:199      |      0 |      2 |      0 |      0 |      3 |      2 |      0 |      0 |
+| United States 6:059  |      1 |      0 |      1 |      2 |      0 |      0 |      1 |      1 |
+| Ireland 5:055        |      0 |      0 |      1 |      1 |      1 |      1 |      1 |      0 |
+| China 5:027          |      0 |      1 |      0 |      0 |      0 |      0 |      3 |      1 |
 
 
 >>> print(r.prompt_)
+Analyze the table below which contains the  occurrences by year for the countries. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
-Imagine that you are a researcher analyzing a bibliographic dataset. The table below provides data on document production by year per country for the top 10 most productive countries in the dataset. Use the information in the table to draw conclusions about the productivity per year of the countries. The final part of the country name contains two numbers separated by a colon. The first \ 
-is the total number of documents of the country, and the second is the total number of citations of the country. In your analysis, be sure to describe in a clear and concise way, any findings or any patterns you observe, and identify any outliers or anomalies in the data. Limit your description to one paragraph with no more than 250 words.
-<BLANKLINE>
-| Countries            |   2016 |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
+| countries            |   2016 |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
 |:---------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
-| Australia 7:199      |      0 |      2 |      0 |      0 |      3 |      2 |      0 |      0 |
-| Bahrain 4:019        |      0 |      0 |      0 |      0 |      1 |      2 |      1 |      0 |
-| China 5:027          |      0 |      1 |      0 |      0 |      0 |      0 |      3 |      1 |
-| Germany 4:051        |      0 |      0 |      1 |      0 |      2 |      0 |      1 |      0 |
-| Hong Kong 3:185      |      0 |      2 |      0 |      0 |      1 |      0 |      0 |      0 |
-| Ireland 5:055        |      0 |      0 |      1 |      1 |      1 |      1 |      1 |      0 |
-| Italy 5:005          |      0 |      0 |      0 |      1 |      1 |      1 |      1 |      1 |
-| Switzerland 4:045    |      0 |      1 |      1 |      0 |      1 |      0 |      0 |      1 |
 | United Kingdom 7:199 |      0 |      0 |      3 |      1 |      2 |      0 |      1 |      0 |
+| Australia 7:199      |      0 |      2 |      0 |      0 |      3 |      2 |      0 |      0 |
 | United States 6:059  |      1 |      0 |      1 |      2 |      0 |      0 |      1 |      1 |
-<BLANKLINE>
+| Ireland 5:055        |      0 |      0 |      1 |      1 |      1 |      1 |      1 |      0 |
+| China 5:027          |      0 |      1 |      0 |      0 |      0 |      0 |      3 |      1 |
+| Italy 5:005          |      0 |      0 |      0 |      1 |      1 |      1 |      1 |      1 |
+| Germany 4:051        |      0 |      0 |      1 |      0 |      2 |      0 |      1 |      0 |
+| Switzerland 4:045    |      0 |      1 |      1 |      0 |      1 |      0 |      0 |      1 |
+| Bahrain 4:019        |      0 |      0 |      0 |      0 |      1 |      2 |      1 |      0 |
+| Hong Kong 3:185      |      0 |      2 |      0 |      0 |      1 |      0 |      0 |      0 |
 <BLANKLINE>
 <BLANKLINE>
 
 
 
 """
+from ... import vantagepoint
 from ...techminer.indicators.indicators_by_topic_per_year import (
     indicators_by_topic_per_year,
 )
-from .._documents_per import _documents_per
-from .._production_over_time import _production_over_time
+from ..documents_per_criterion import documents_per_criterion
 
 
 def countries_production_over_time(
     topics_length=10,
     topic_min_occ=None,
+    topic_max_occ=None,
     topic_min_citations=None,
+    topic_max_citations=None,
+    custom_topics=None,
     directory="./",
     database="documents",
     start_year=None,
@@ -103,21 +93,27 @@ def countries_production_over_time(
 ):
     """Country production over time."""
 
-    results = _production_over_time(
+    terms_by_year = vantagepoint.analyze.terms_by_year(
         criterion="countries",
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,
+        topic_max_occ=topic_max_occ,
         topic_min_citations=topic_min_citations,
+        topic_max_citations=topic_max_citations,
+        custom_topics=custom_topics,
         directory=directory,
-        title="Country' production over time",
-        metric="OCC",
         database=database,
         start_year=start_year,
         end_year=end_year,
         **filters,
     )
 
-    results.documents_per_country_ = _documents_per(
+    chart = vantagepoint.report.gantt_chart(
+        terms_by_year,
+        title="Contry' production over time",
+    )
+
+    chart.documents_per_country_ = documents_per_criterion(
         criterion="countries",
         directory=directory,
         database=database,
@@ -126,7 +122,7 @@ def countries_production_over_time(
         **filters,
     )
 
-    results.production_per_year_ = indicators_by_topic_per_year(
+    chart.production_per_year_ = indicators_by_topic_per_year(
         criterion="countries",
         directory=directory,
         database=database,
@@ -135,30 +131,6 @@ def countries_production_over_time(
         **filters,
     )
 
-    table = results.table_.copy()
-    table = table[["Countries", "Year", "OCC"]]
-    table = table.pivot(index="Countries", columns="Year", values="OCC")
-    table = table.fillna(0)
-    results.production_ = table
-    results.prompt_ = _create_prompt(table)
+    chart.table_ = terms_by_year.table_.copy()
 
-    return results
-
-
-def _create_prompt(table):
-    return f"""
-Imagine that you are a researcher analyzing a bibliographic dataset. The table \
-below provides data on document production by year per country for the top {table.shape[0]} \
-most productive countries in the dataset. Use the information in the table to \
-draw conclusions about the productivity per year of the countries. The final \
-part of the country name contains two numbers separated by a colon. The first \ 
-is the total number of documents of the country, and the second is the total \
-number of citations of the country. \
-In your analysis, be sure to describe in a clear and concise way, any findings \
-or any patterns you observe, and identify any outliers or anomalies in the \
-data. Limit your description to one paragraph with no more than 250 words.
-
-{table.to_markdown()}
-
-
-"""
+    return chart

@@ -115,6 +115,7 @@ def terms_by_year(
     topic_max_occ=None,
     topic_min_citations=None,
     topic_max_citations=None,
+    custom_topics=None,
     directory="./",
     database="documents",
     start_year=None,
@@ -156,21 +157,35 @@ def terms_by_year(
         ascending=[False, False, False],
     )
 
-    custom_topics = indicators.copy()
-    if topic_min_occ is not None:
-        custom_topics = custom_topics[custom_topics["OCC"] >= topic_min_occ]
-    if topic_max_occ is not None:
-        custom_topics = custom_topics[custom_topics["OCC"] <= topic_max_occ]
-    if topic_min_citations is not None:
-        custom_topics = custom_topics[
-            custom_topics["global_citations"] >= topic_min_citations
+    if custom_topics is None:
+        custom_topics = indicators.copy()
+
+        if topic_min_occ is not None:
+            custom_topics = custom_topics[
+                custom_topics["OCC"] >= topic_min_occ
+            ]
+        if topic_max_occ is not None:
+            custom_topics = custom_topics[
+                custom_topics["OCC"] <= topic_max_occ
+            ]
+        if topic_min_citations is not None:
+            custom_topics = custom_topics[
+                custom_topics["global_citations"] >= topic_min_citations
+            ]
+        if topic_max_citations is not None:
+            custom_topics = custom_topics[
+                custom_topics["global_citations"] <= topic_max_citations
+            ]
+
+        custom_topics = custom_topics.index.copy()
+        custom_topics = custom_topics[:topics_length]
+
+    else:
+        custom_topics = [
+            topic
+            for topic in custom_topics
+            if topic in indicators.index.tolist()
         ]
-    if topic_max_citations is not None:
-        custom_topics = custom_topics[
-            custom_topics["global_citations"] <= topic_max_citations
-        ]
-    custom_topics = custom_topics.index.copy()
-    custom_topics = custom_topics[:topics_length]
 
     indicators = indicators.loc[custom_topics, :]
 

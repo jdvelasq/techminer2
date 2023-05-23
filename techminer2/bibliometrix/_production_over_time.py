@@ -5,10 +5,10 @@ from dataclasses import dataclass
 
 import plotly.express as px
 
-from ..techminer.indicators.indicators_by_topic import indicators_by_topic
-from ..techminer.indicators.indicators_by_topic_per_year import (
-    indicators_by_topic_per_year,
-)
+# from ..techminer.indicators.indicators_by_topic import indicators_by_topic
+# from ..techminer.indicators.indicators_by_topic_per_year import (
+#     indicators_by_topic_per_year,
+# )
 
 TEXTLEN = 40
 

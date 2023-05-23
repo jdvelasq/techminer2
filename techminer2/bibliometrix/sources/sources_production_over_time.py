@@ -1,5 +1,5 @@
 """
-Sources' Production over Time
+Sources' Production over Time (GPT)
 ===============================================================================
 
 
@@ -26,6 +26,7 @@ Sources' Production over Time
 |  3 | FINANCIAL INNOV    | Fintech, regtech, and financial development: evidence from China                                    |   2022 | Financial Innovation                           |                 13 |                 1 | 10.1186/S40854-021-00313-6     |
 |  4 | J CORP FINANC      | Too much to learn? The (un)intended consequences of RegTech development on mergers and acquisitions |   2022 | Journal of Corporate Finance                   |                  0 |                 0 | 10.1016/J.JCORPFIN.2022.102276 |
 
+
 >>> print(r.production_per_year_.head().to_markdown())
 |                                 |   OCC |   cum_OCC |   global_citations |   local_citations |   age |   global_citations_per_year |   local_citations_per_year |
 |:--------------------------------|------:|----------:|-------------------:|------------------:|------:|----------------------------:|---------------------------:|
@@ -36,72 +37,54 @@ Sources' Production over Time
 | ('COMPUTER', 2022)              |     1 |         1 |                  0 |                 0 |     2 |                       0     |                      0     |
 
 
-
-
 >>> print(r.table_.to_markdown())
-|    | Source Abbr                              |   Year |   OCC |   cum_OCC |   Global Citations |   Local Citations |   Age |   Global Citations Per Year |   Local Citations Per Year |
-|---:|:-----------------------------------------|-------:|------:|----------:|-------------------:|------------------:|------:|----------------------------:|---------------------------:|
-|  0 | J BANK REGUL 2:035                       |   2020 |     1 |         1 |                 24 |                 5 |     4 |                       6     |                      1.25  |
-|  1 | J BANK REGUL 2:035                       |   2021 |     1 |         2 |                 11 |                 4 |     3 |                       3.667 |                      1.333 |
-|  2 | J FINANC CRIME 2:013                     |   2020 |     1 |         1 |                 10 |                 3 |     4 |                       2.5   |                      0.75  |
-|  3 | J FINANC CRIME 2:013                     |   2022 |     1 |         2 |                  3 |                 1 |     2 |                       1.5   |                      0.5   |
-|  4 | FOSTER INNOV AND COMPET WITH FINTECH,... |   2020 |     2 |         2 |                  1 |                 1 |     4 |                       0.25  |                      0.25  |
-|  5 | STUD COMPUT INTELL 2:001                 |   2021 |     2 |         2 |                  1 |                 1 |     3 |                       0.333 |                      0.333 |
-|  6 | INT CONF INF TECHNOL SYST INNOV,...      |   2022 |     2 |         2 |                  0 |                 0 |     2 |                       0     |                      0     |
-|  7 | ROUTLEDGE HANDB OF FINANCIAL...          |   2021 |     2 |         2 |                  0 |                 0 |     3 |                       0     |                      0     |
-|  8 | J FINANCIAL DATA SCI 1:005               |   2019 |     1 |         1 |                  5 |                 1 |     5 |                       1     |                      0.2   |
-|  9 | J IND BUS ECON 1:001                     |   2022 |     1 |         1 |                  1 |                 0 |     2 |                       0.5   |                      0     |
-| 10 | PROC INT CONF ELECTRON BUS (ICEB) 1:001  |   2017 |     1 |         1 |                  1 |                 0 |     7 |                       0.143 |                      0     |
-| 11 | RES INT BUS FINANC 1:000                 |   2023 |     1 |         1 |                  0 |                 0 |     1 |                       0     |                      0     |
+| source_abbr                                                      |   2016 |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |
+|:-----------------------------------------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
+| J BANK REGUL 2:035                                               |      0 |      0 |      0 |      0 |      1 |      1 |      0 |
+| J FINANC CRIME 2:013                                             |      0 |      0 |      0 |      0 |      1 |      0 |      1 |
+| FOSTER INNOV AND COMPET WITH FINTECH, REGTECH, AND SUPTECH 2:001 |      0 |      0 |      0 |      0 |      2 |      0 |      0 |
+| STUD COMPUT INTELL 2:001                                         |      0 |      0 |      0 |      0 |      0 |      2 |      0 |
+| ROUTLEDGE HANDB OF FINANCIAL TECHNOLOGY AND LAW 2:000            |      0 |      0 |      0 |      0 |      0 |      2 |      0 |
+| INT CONF INF TECHNOL SYST INNOV, ICITSI - PROC 2:000             |      0 |      0 |      0 |      0 |      0 |      0 |      2 |
+| J ECON BUS 1:153                                                 |      0 |      0 |      1 |      0 |      0 |      0 |      0 |
+| NORTHWEST J INTL LAW BUS 1:150                                   |      0 |      1 |      0 |      0 |      0 |      0 |      0 |
+| PALGRAVE STUD DIGIT BUS ENABLING TECHNOL 1:033                   |      0 |      0 |      0 |      1 |      0 |      0 |      0 |
+| DUKE LAW J 1:030                                                 |      1 |      0 |      0 |      0 |      0 |      0 |      0 |
 
-
->>> print(r.production_.to_markdown())
-| Source Abbr                              |   2017 |   2019 |   2020 |   2021 |   2022 |   2023 |
-|:-----------------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|
-| FOSTER INNOV AND COMPET WITH FINTECH,... |      0 |      0 |      2 |      0 |      0 |      0 |
-| INT CONF INF TECHNOL SYST INNOV,...      |      0 |      0 |      0 |      0 |      2 |      0 |
-| J BANK REGUL 2:035                       |      0 |      0 |      1 |      1 |      0 |      0 |
-| J FINANC CRIME 2:013                     |      0 |      0 |      1 |      0 |      1 |      0 |
-| J FINANCIAL DATA SCI 1:005               |      0 |      1 |      0 |      0 |      0 |      0 |
-| J IND BUS ECON 1:001                     |      0 |      0 |      0 |      0 |      1 |      0 |
-| PROC INT CONF ELECTRON BUS (ICEB) 1:001  |      1 |      0 |      0 |      0 |      0 |      0 |
-| RES INT BUS FINANC 1:000                 |      0 |      0 |      0 |      0 |      0 |      1 |
-| ROUTLEDGE HANDB OF FINANCIAL...          |      0 |      0 |      0 |      2 |      0 |      0 |
-| STUD COMPUT INTELL 2:001                 |      0 |      0 |      0 |      2 |      0 |      0 |
 
 >>> print(r.prompt_)
+Analyze the table below which contains the  occurrences by year for the source_abbr. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
-Imagine that you are a researcher analyzing a bibliographic dataset. The table below provides data on document production by year per document source for the top 10 most productive sources in the dataset. Use the information in the table to draw conclusions about the productivity per year of the sources. The final part of the source name contains two numbers separated by a colon. The first is the total number of documents of the source, and the second is the total number of citations of the source. In your analysis, be sure to describe in a clear and concise way, any findings or any patterns you observe, and identify any outliers or anomalies in the data. Limit your description to one paragraph with no more than 250 words.
-<BLANKLINE>
-| Source Abbr                              |   2017 |   2019 |   2020 |   2021 |   2022 |   2023 |
-|:-----------------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|
-| FOSTER INNOV AND COMPET WITH FINTECH,... |      0 |      0 |      2 |      0 |      0 |      0 |
-| INT CONF INF TECHNOL SYST INNOV,...      |      0 |      0 |      0 |      0 |      2 |      0 |
-| J BANK REGUL 2:035                       |      0 |      0 |      1 |      1 |      0 |      0 |
-| J FINANC CRIME 2:013                     |      0 |      0 |      1 |      0 |      1 |      0 |
-| J FINANCIAL DATA SCI 1:005               |      0 |      1 |      0 |      0 |      0 |      0 |
-| J IND BUS ECON 1:001                     |      0 |      0 |      0 |      0 |      1 |      0 |
-| PROC INT CONF ELECTRON BUS (ICEB) 1:001  |      1 |      0 |      0 |      0 |      0 |      0 |
-| RES INT BUS FINANC 1:000                 |      0 |      0 |      0 |      0 |      0 |      1 |
-| ROUTLEDGE HANDB OF FINANCIAL...          |      0 |      0 |      0 |      2 |      0 |      0 |
-| STUD COMPUT INTELL 2:001                 |      0 |      0 |      0 |      2 |      0 |      0 |
-<BLANKLINE>
+| source_abbr                                                      |   2016 |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |
+|:-----------------------------------------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
+| J BANK REGUL 2:035                                               |      0 |      0 |      0 |      0 |      1 |      1 |      0 |
+| J FINANC CRIME 2:013                                             |      0 |      0 |      0 |      0 |      1 |      0 |      1 |
+| FOSTER INNOV AND COMPET WITH FINTECH, REGTECH, AND SUPTECH 2:001 |      0 |      0 |      0 |      0 |      2 |      0 |      0 |
+| STUD COMPUT INTELL 2:001                                         |      0 |      0 |      0 |      0 |      0 |      2 |      0 |
+| ROUTLEDGE HANDB OF FINANCIAL TECHNOLOGY AND LAW 2:000            |      0 |      0 |      0 |      0 |      0 |      2 |      0 |
+| INT CONF INF TECHNOL SYST INNOV, ICITSI - PROC 2:000             |      0 |      0 |      0 |      0 |      0 |      0 |      2 |
+| J ECON BUS 1:153                                                 |      0 |      0 |      1 |      0 |      0 |      0 |      0 |
+| NORTHWEST J INTL LAW BUS 1:150                                   |      0 |      1 |      0 |      0 |      0 |      0 |      0 |
+| PALGRAVE STUD DIGIT BUS ENABLING TECHNOL 1:033                   |      0 |      0 |      0 |      1 |      0 |      0 |      0 |
+| DUKE LAW J 1:030                                                 |      1 |      0 |      0 |      0 |      0 |      0 |      0 |
 <BLANKLINE>
 <BLANKLINE>
-
 
 """
+from ... import vantagepoint
 from ...techminer.indicators.indicators_by_topic_per_year import (
     indicators_by_topic_per_year,
 )
-from .._documents_per import _documents_per
-from .._production_over_time import _production_over_time
+from ..documents_per_criterion import documents_per_criterion
 
 
 def sources_production_over_time(
     topics_length=10,
     topic_min_occ=None,
+    topic_max_occ=None,
     topic_min_citations=None,
+    topic_max_citations=None,
+    custom_topics=None,
     directory="./",
     database="documents",
     start_year=None,
@@ -110,21 +93,27 @@ def sources_production_over_time(
 ):
     """Sources production over time."""
 
-    results = _production_over_time(
+    terms_by_year = vantagepoint.analyze.terms_by_year(
         criterion="source_abbr",
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,
+        topic_max_occ=topic_max_occ,
         topic_min_citations=topic_min_citations,
+        topic_max_citations=topic_max_citations,
+        custom_topics=custom_topics,
         directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
+    )
+
+    chart = vantagepoint.report.gantt_chart(
+        terms_by_year,
         title="Sources' production over time",
-        metric="OCC",
-        database=database,
-        start_year=start_year,
-        end_year=end_year,
-        **filters,
     )
 
-    results.documents_per_source_ = _documents_per(
+    chart.documents_per_source_ = documents_per_criterion(
         criterion="source_abbr",
         directory=directory,
         database=database,
@@ -133,7 +122,7 @@ def sources_production_over_time(
         **filters,
     )
 
-    results.production_per_year_ = indicators_by_topic_per_year(
+    chart.production_per_year_ = indicators_by_topic_per_year(
         criterion="source_abbr",
         directory=directory,
         database=database,
@@ -142,30 +131,6 @@ def sources_production_over_time(
         **filters,
     )
 
-    table = results.table_.copy()
-    table = table[["Source Abbr", "Year", "OCC"]]
-    table = table.pivot(index="Source Abbr", columns="Year", values="OCC")
-    table = table.fillna(0)
-    results.production_ = table
-    results.prompt_ = _create_prompt(table)
+    chart.table_ = terms_by_year.table_.copy()
 
-    return results
-
-
-def _create_prompt(table):
-    return f"""
-Imagine that you are a researcher analyzing a bibliographic dataset. The table \
-below provides data on document production by year per document source for the top {table.shape[0]} \
-most productive sources in the dataset. Use the information in the table to \
-draw conclusions about the productivity per year of the sources. The final \
-part of the source name contains two numbers separated by a colon. The first \
-is the total number of documents of the source, and the second is the total \
-number of citations of the source. \
-In your analysis, be sure to describe in a clear and concise way, any findings \
-or any patterns you observe, and identify any outliers or anomalies in the \
-data. Limit your description to one paragraph with no more than 250 words.
-
-{table.to_markdown()}
-
-
-"""
+    return chart

@@ -2,7 +2,7 @@
 from .._read_records import read_records
 
 
-def _documents_per(
+def documents_per_criterion(
     criterion,
     directory="./",
     database="documents",
