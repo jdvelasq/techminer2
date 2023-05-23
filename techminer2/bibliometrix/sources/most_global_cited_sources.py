@@ -60,7 +60,7 @@ Imagine that you are a researcher analyzing a bibliographic dataset. The table b
 <BLANKLINE>
 
 """
-from ...vantagepoint.report.chart import chart
+# from ...vantagepoint.report.chart import chart
 
 
 def most_global_cited_sources(

@@ -61,7 +61,7 @@ Imagine that you are a researcher analyzing a bibliographic dataset. The table b
 
 
 """
-from ...vantagepoint.report.chart import chart
+# from ...vantagepoint.report.chart import chart
 
 
 def most_frequent_authors(

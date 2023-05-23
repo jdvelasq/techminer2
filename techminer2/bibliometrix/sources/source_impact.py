@@ -61,7 +61,7 @@ Imagine that you are a researcher analyzing a bibliographic dataset. The table b
 
 
 """
-from .._impact import _impact
+from ..criterion_impact import criterion_impact
 
 
 def source_impact(
@@ -77,14 +77,15 @@ def source_impact(
 ):
     """Plots the selected impact measure by source."""
 
-    obj = _impact(
+    obj = criterion_impact(
         criterion="source_abbr",
-        impact_measure=impact_measure,
+        metric=impact_measure,
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,
         topic_min_citations=topic_min_citations,
         directory=directory,
-        title="Source Local Impact by " + impact_measure.replace("_", " ").title(),
+        title="Source Local Impact by "
+        + impact_measure.replace("_", " ").title(),
         database=database,
         start_year=start_year,
         end_year=end_year,

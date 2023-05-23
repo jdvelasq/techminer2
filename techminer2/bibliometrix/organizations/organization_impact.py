@@ -62,7 +62,7 @@ Imagine that you are a researcher analyzing a bibliographic dataset. The table b
 
 
 """
-from .._impact import _impact
+from ..criterion_impact import criterion_impact
 
 
 def organization_impact(
@@ -78,9 +78,9 @@ def organization_impact(
 ):
     """Plots the selected impact measure by organizations."""
 
-    obj = _impact(
+    obj = criterion_impact(
         criterion="organizations",
-        impact_measure=impact_measure,
+        metric=impact_measure,
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,
         topic_min_citations=topic_min_citations,

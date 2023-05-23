@@ -63,7 +63,7 @@ Imagine that you are a researcher analyzing a bibliographic dataset. The table b
 <BLANKLINE>
 
 """
-from .._impact import _impact
+from ..criterion_impact import criterion_impact
 
 
 def country_impact(
@@ -79,14 +79,15 @@ def country_impact(
 ):
     """Plots the selected impact measure by country."""
 
-    obj = _impact(
+    obj = criterion_impact(
         criterion="countries",
-        impact_measure=impact_measure,
+        metric=impact_measure,
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,
         topic_min_citations=topic_min_citations,
         directory=directory,
-        title="Country Local Impact by " + impact_measure.replace("_", " ").title(),
+        title="Country Local Impact by "
+        + impact_measure.replace("_", " ").title(),
         database=database,
         start_year=start_year,
         end_year=end_year,
