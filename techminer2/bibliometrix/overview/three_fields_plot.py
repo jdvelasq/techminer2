@@ -51,7 +51,7 @@ def three_fields_plot(
         start_year=start_year,
         end_year=end_year,
         **filters,
-    )
+    ).matrix_
 
     matrix_right = occ_matrix(
         criterion_for_columns=right_criterion,
@@ -62,7 +62,7 @@ def three_fields_plot(
         database=database,
         start_year=start_year,
         end_year=end_year,
-    )
+    ).matrix_
 
     return _make_sankey_plot(matrix_left, matrix_right)
 
