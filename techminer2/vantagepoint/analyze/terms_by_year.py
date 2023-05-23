@@ -142,8 +142,6 @@ def terms_by_year(
     indicators_by_year = indicators_by_year[["OCC"]]
     indicators_by_year = indicators_by_year.reset_index()
 
-    ###
-
     indicators = indicators_by_topic(
         criterion=criterion,
         directory=directory,

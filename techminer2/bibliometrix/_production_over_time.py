@@ -10,9 +10,6 @@ from ..techminer.indicators.indicators_by_topic_per_year import (
     indicators_by_topic_per_year,
 )
 
-# from ..vantagepoint.analyze.occ_matrix_list import _add_counters_to_items
-
-
 TEXTLEN = 40
 
 
@@ -78,10 +75,15 @@ def _production_over_time(
         ascending=[False, False, True, True],
     )
 
-    if indicators_by_year[criterion.replace("_", " ").title()].dtype != "int64":
-        indicators_by_year[criterion.replace("_", " ").title()] = indicators_by_year[
+    if (
+        indicators_by_year[criterion.replace("_", " ").title()].dtype
+        != "int64"
+    ):
+        indicators_by_year[
             criterion.replace("_", " ").title()
-        ].apply(_shorten)
+        ] = indicators_by_year[criterion.replace("_", " ").title()].apply(
+            _shorten
+        )
 
     indicators_by_year.pop("global_occ")
 

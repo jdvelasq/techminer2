@@ -156,7 +156,10 @@ def generate_prompt_for_list_cells_in_matrix(obj):
 
     prompt = None
 
-    if obj.criterion_for_columns_ == obj.criterion_for_rows_ and obj.metric_ == "CORR":
+    if (
+        obj.criterion_for_columns_ == obj.criterion_for_rows_
+        and obj.metric_ == "CORR"
+    ):
         prompt = f"""\
 Analyze the table below which contains the auto-correlation values for the \
 {obj.criterion_for_columns_}. High correlation values indicate that the topics \
@@ -168,7 +171,10 @@ your findings in no more than 150 words.
 {matrix.round(3).to_markdown()}
 
 """
-    if obj.criterion_for_columns_ != obj.criterion_for_rows_ and obj.metric_ == "CORR":
+    if (
+        obj.criterion_for_columns_ != obj.criterion_for_rows_
+        and obj.metric_ == "CORR"
+    ):
         prompt = f"""\
 Analyze the table below which contains the cross-correlation values for the \
 {obj.criterion_for_columns_} based on the values of the {obj.criterion_for_rows_}. \
@@ -182,7 +188,10 @@ your findings in no more than 150 words.
 
 """
 
-    if obj.criterion_for_columns_ == obj.criterion_for_rows_ and obj.metric_ == "OCC":
+    if (
+        obj.criterion_for_columns_ == obj.criterion_for_rows_
+        and obj.metric_ == "OCC"
+    ):
         prompt = f"""\
 Analyze the table below, which contains the the co-occurrence values for \
 {obj.criterion_for_columns_}. Identify any notable patterns, trends, or outliers \
@@ -194,7 +203,10 @@ your findings in no more than 150 words.
 
 """
 
-    if obj.criterion_for_columns_ != obj.criterion_for_rows_ and obj.metric_ == "OCC":
+    if (
+        obj.criterion_for_columns_ != obj.criterion_for_rows_
+        and obj.metric_ == "OCC"
+    ):
         prompt = f"""\
 Analyze the table below, which contains the the occurrence values for \
 {obj.criterion_for_columns_} and {obj.criterion_for_rows_}. Identify any \
