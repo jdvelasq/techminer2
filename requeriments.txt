@@ -25,3 +25,4 @@ MarkupSafe
 pytest
 tabulate
 urllib3==1.26.6
+kaleido
