@@ -20,7 +20,7 @@ World Map (GPT)
 
 .. raw:: html
 
-    <iframe src="../../../../_static/vantagepoint__world_map.html" height="450px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/vantagepoint__world_map.html" height="400px" width="100%" frameBorder="0"></iframe>
 
     
 >>> chart.table_.head()
@@ -72,6 +72,7 @@ Analyze the table below, which provides bibliographic indicators for a collectio
 """
 from dataclasses import dataclass
 
+import pandas as pd
 import plotly.express as px
 
 from ... import chatgpt
@@ -98,7 +99,9 @@ def world_map(
     )
 
     result.table_ = obj.table_[obj.metric_]
-    result.prompt_ = chatgpt.generate_prompt_bibliographic_indicators(result.table_)
+    result.prompt_ = chatgpt.generate_prompt_bibliographic_indicators(
+        result.table_
+    )
 
     return result
 
@@ -123,7 +126,9 @@ def _create_plot(
         color=obj.metric_,
         hover_name="country",
         hover_data=[
-            col for col in dataframe.columns if col not in ["country", "iso_alpha"]
+            col
+            for col in dataframe.columns
+            if col not in ["country", "iso_alpha"]
         ],
         range_color=(1, obj.table_[obj.metric_].max()),
         color_continuous_scale=colormap,
@@ -141,28 +146,17 @@ def _load_worldmap_data():
     worldmap_data = worldmap_data.drop_duplicates()
 
     # adds to worldmap_data the Russia, Greenland, and Antarctica
-    worldmap_data = worldmap_data.append(
-        {
-            "country": "Russia",
-            "continent": "Asia",
-            "iso_alpha": "RUS",
-        },
-        ignore_index=True,
-    )
-    worldmap_data = worldmap_data.append(
-        {
-            "country": "Greenland",
-            "continent": "North America",
-            "iso_alpha": "GRL",
-        },
-        ignore_index=True,
-    )
-    worldmap_data = worldmap_data.append(
-        {
-            "country": "Antarctica",
-            "continent": "Antarctica",
-            "iso_alpha": "ATA",
-        },
+    worldmap_data = pd.concat(
+        [
+            worldmap_data,
+            pd.DataFrame(
+                {
+                    "country": ["Russia", "Greenland", "Antarctica"],
+                    "continent": ["Asia", "North America", "Antarctica"],
+                    "iso_alpha": ["RUS", "GRL", "ATA"],
+                }
+            ),
+        ],
         ignore_index=True,
     )
 

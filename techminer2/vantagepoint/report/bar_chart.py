@@ -15,7 +15,6 @@ Bar Chart (GPT)
 >>> chart = vantagepoint.report.bar_chart(obj, title="Most Frequent Author Keywords")
 >>> chart.plot_.write_html(file_name)
 
-
 .. raw:: html
 
     <iframe src="../../_static/vantagepoint__bar_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
@@ -105,7 +104,9 @@ def bar_chart(
     )
 
     result.table_ = obj.table_[obj.metric_]
-    result.prompt_ = chatgpt.generate_prompt_bibliographic_indicators(result.table_)
+    result.prompt_ = chatgpt.generate_prompt_bibliographic_indicators(
+        result.table_
+    )
 
     return result
 

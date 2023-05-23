@@ -105,7 +105,9 @@ def line_chart(
     )
 
     result.table_ = obj.table_[obj.metric_]
-    result.prompt_ = chatgpt.generate_prompt_bibliographic_indicators(result.table_)
+    result.prompt_ = chatgpt.generate_prompt_bibliographic_indicators(
+        result.table_
+    )
 
     return result
 

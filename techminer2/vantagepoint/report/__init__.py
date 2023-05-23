@@ -1,6 +1,5 @@
 from .bar_chart import bar_chart
 from .bubble_chart import bubble_chart
-from .chart import chart
 from .cleveland_chart import cleveland_chart
 from .column_chart import column_chart
 from .gantt_chart import gantt_chart
