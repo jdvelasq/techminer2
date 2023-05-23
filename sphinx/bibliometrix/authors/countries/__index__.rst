@@ -9,5 +9,4 @@ Countries
       most_local_cited_countries
       countries_production_over_time
       country_impact
-      country_dynamics
       country_scientific_production

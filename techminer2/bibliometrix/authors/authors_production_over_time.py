@@ -89,6 +89,7 @@ def authors_production_over_time(
     topic_min_citations=None,
     topic_max_citations=None,
     custom_topics=None,
+    cumulative=False,
     directory="./",
     database="documents",
     start_year=None,
@@ -109,6 +110,7 @@ def authors_production_over_time(
         database=database,
         start_year=start_year,
         end_year=end_year,
+        cummulative=cumulative,
         **filters,
     )
 

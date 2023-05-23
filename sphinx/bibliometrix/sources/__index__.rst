@@ -8,4 +8,3 @@ Sources
       bradford_law
       source_impact
       sources_production_over_time
-      source_dynamics
