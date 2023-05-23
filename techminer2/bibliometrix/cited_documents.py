@@ -6,7 +6,9 @@ from dataclasses import dataclass
 import plotly.express as px
 
 from .._read_records import read_records
-from ..techminer.indicators.indicators_by_document import indicators_by_document
+from ..techminer.indicators.indicators_by_document import (
+    indicators_by_document,
+)
 
 
 @dataclass(init=False)
@@ -74,7 +76,9 @@ def _prepare_indicators(metric, top_n, indicators):
     indicators = indicators.sort_values(by=metric, ascending=False)
     indicators = indicators.head(top_n)
     indicators = indicators.rename(
-        columns={col: col.replace("_", " ").title() for col in indicators.columns}
+        columns={
+            col: col.replace("_", " ").title() for col in indicators.columns
+        }
     )
     indicators = indicators.reset_index()
     indicators = indicators.rename(columns={"article": "Document"})
@@ -137,7 +141,9 @@ def _write_report(documents, directory, file_name):
     documents = documents[column_list]
 
     if "global_citations" in documents.columns:
-        documents = documents.sort_values(by="global_citations", ascending=False)
+        documents = documents.sort_values(
+            by="global_citations", ascending=False
+        )
 
     file_path = os.path.join(directory, "reports", file_name)
 
