@@ -1,4 +1,4 @@
-"""Most Global Cited Authors (GPT)
+"""Most Global Cited Authors
 ===============================================================================
 
 

@@ -1,5 +1,5 @@
 """
-Authors' Production over Time (GPT)
+Authors' Production over Time
 ===============================================================================
 
 

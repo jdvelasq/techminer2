@@ -1,5 +1,5 @@
 """
-Most Local Cited Authors (GPT)
+Most Local Cited Authors
 ===============================================================================
 
 
