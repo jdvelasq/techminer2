@@ -1,5 +1,5 @@
 """
-Word Dynamics
+Word Dynamics (GPT)
 ===============================================================================
 
 
@@ -20,50 +20,44 @@ Word Dynamics
 
     
 >>> print(r.table_.head().to_markdown())
-|    |   year | author_keywords   |   cum_OCC |
-|---:|-------:|:------------------|----------:|
-|  0 |   2017 | regtech           |         2 |
-|  1 |   2018 | regtech           |         5 |
-|  2 |   2019 | regtech           |         9 |
-|  3 |   2020 | regtech           |        17 |
-|  4 |   2021 | regtech           |        20 |
-
-
->>> print(r.dynamics_.to_markdown())
-| author_keywords       |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
-|:----------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
-| compliance            |      0 |      0 |      1 |      4 |      5 |      6 |      7 |
-| fintech               |      0 |      2 |      6 |      9 |     10 |     12 |     12 |
-| regtech               |      2 |      5 |      9 |     17 |     20 |     26 |     28 |
-| regulation            |      0 |      2 |      2 |      3 |      4 |      5 |      5 |
-| regulatory technology |      0 |      0 |      0 |      2 |      5 |      7 |      7 |
-
+| author_keywords              |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
+|:-----------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
+| regtech 28:329               |      2 |      3 |      4 |      8 |      3 |      6 |      2 |
+| fintech 12:249               |      0 |      2 |      4 |      3 |      1 |      2 |      0 |
+| regulatory technology 07:037 |      0 |      0 |      0 |      2 |      3 |      2 |      0 |
+| compliance 07:030            |      0 |      0 |      1 |      3 |      1 |      1 |      1 |
+| regulation 05:164            |      0 |      2 |      0 |      1 |      1 |      1 |      0 |
 
 >>> print(r.prompt_)
+Analyze the table below which contains the  occurrences by year for the author_keywords. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
-Imagine that you are a researcher analyzing a bibliographic dataset. The table below provides data on cumulative occurrences of author keywords for the top 5 most frequent author keywords in the dataset. Use the information in the table to draw conclusions about the cumulative occurrence per year of the author keywords. In your analysis, be sure to describe in a clear and concise way, any findings or any patterns you observe, and identify any outliers or anomalies in the data. Limit your description to one paragraph with no more than 250 words.
-<BLANKLINE>
-| author_keywords       |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
-|:----------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
-| compliance            |      0 |      0 |      1 |      4 |      5 |      6 |      7 |
-| fintech               |      0 |      2 |      6 |      9 |     10 |     12 |     12 |
-| regtech               |      2 |      5 |      9 |     17 |     20 |     26 |     28 |
-| regulation            |      0 |      2 |      2 |      3 |      4 |      5 |      5 |
-| regulatory technology |      0 |      0 |      0 |      2 |      5 |      7 |      7 |
-<BLANKLINE>
+| author_keywords              |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
+|:-----------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
+| regtech 28:329               |      2 |      3 |      4 |      8 |      3 |      6 |      2 |
+| fintech 12:249               |      0 |      2 |      4 |      3 |      1 |      2 |      0 |
+| regulatory technology 07:037 |      0 |      0 |      0 |      2 |      3 |      2 |      0 |
+| compliance 07:030            |      0 |      0 |      1 |      3 |      1 |      1 |      1 |
+| regulation 05:164            |      0 |      2 |      0 |      1 |      1 |      1 |      0 |
 <BLANKLINE>
 <BLANKLINE>
-
 
 """
-from .._dynamics import _dynamics
+from ... import vantagepoint
+from ...techminer.indicators.indicators_by_topic_per_year import (
+    indicators_by_topic_per_year,
+)
+from ..documents_per_criterion import documents_per_criterion
 
 
 def word_dynamics(
     criterion="author_keywords",
-    topics_length=5,
+    topics_length=50,
     topic_min_occ=None,
+    topic_max_occ=None,
     topic_min_citations=None,
+    topic_max_citations=None,
+    custom_topics=None,
+    cumulative=False,
     directory="./",
     title="Word Dynamics",
     plot=True,
@@ -72,7 +66,50 @@ def word_dynamics(
     end_year=None,
     **filters,
 ):
-    """Makes a dynamics chat for top sources."""
+    """Makes a dynamics chat for top words."""
+
+    terms_by_year = vantagepoint.analyze.terms_by_year(
+        criterion=criterion,
+        topics_length=topics_length,
+        topic_min_occ=topic_min_occ,
+        topic_max_occ=topic_max_occ,
+        topic_min_citations=topic_min_citations,
+        topic_max_citations=topic_max_citations,
+        custom_topics=custom_topics,
+        directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        cumulative=cumulative,
+        **filters,
+    )
+
+    chart = vantagepoint.report.gantt_chart(
+        terms_by_year,
+        title=criterion.replace("_", "").title() + " Dynamics",
+    )
+
+    chart.documents_per_keyword_ = documents_per_criterion(
+        criterion=criterion,
+        directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
+    )
+
+    chart.production_per_year_ = indicators_by_topic_per_year(
+        criterion=criterion,
+        directory=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
+        **filters,
+    )
+
+    chart.table_ = terms_by_year.table_.copy()
+
+    return chart
 
     results = _dynamics(
         criterion=criterion,
