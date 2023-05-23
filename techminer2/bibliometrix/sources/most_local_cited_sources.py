@@ -1,5 +1,5 @@
 """
-Most Local Cited Sources (from reference lists) GPT
+Most Local Cited Sources (from reference lists)
 ===============================================================================
 
 

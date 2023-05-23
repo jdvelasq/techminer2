@@ -1,5 +1,5 @@
 """
-Most Global Cited Sources (GPT)
+Most Global Cited Sources
 ===============================================================================
 
 

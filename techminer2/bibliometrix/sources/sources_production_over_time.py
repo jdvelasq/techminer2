@@ -1,5 +1,5 @@
 """
-Sources' Production over Time (GPT)
+Sources' Production over Time
 ===============================================================================
 
 
