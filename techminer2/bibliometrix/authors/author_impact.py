@@ -66,8 +66,11 @@ from ..criterion_impact import criterion_impact
 def author_impact(
     impact_measure="h_index",
     topics_length=20,
-    topic_min_occ=0,
+    topic_min_occ=None,
+    topic_max_occ=None,
     topic_min_citations=None,
+    topic_max_citations=None,
+    custom_topics=None,
     directory="./",
     database="documents",
     start_year=None,
@@ -81,7 +84,10 @@ def author_impact(
         metric=impact_measure,
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,
+        topic_max_occ=topic_max_occ,
         topic_min_citations=topic_min_citations,
+        topic_max_citations=topic_max_citations,
+        custom_topics=custom_topics,
         directory=directory,
         title="Author Local Impact by "
         + impact_measure.replace("_", " ").title(),
