@@ -1,5 +1,5 @@
 """
-Matrix Viwer
+Matrix Viwer (GPT)
 ===============================================================================
 
 
@@ -38,6 +38,23 @@ Matrix Viwer
     <iframe src="../../_static/vantagepoint__matrix_viewer-0.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
+>>> print(chart.prompt_)
+Analyze the table below, which contains the the occurrence values for author_keywords and authors. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
+<BLANKLINE>
+|    | row              | column                      |   OCC |
+|---:|:-----------------|:----------------------------|------:|
+|  0 | Arner DW 3:185   | financial regulation 04:035 |     2 |
+|  1 | Arner DW 3:185   | regtech 28:329              |     2 |
+|  2 | Buckley RP 3:185 | financial regulation 04:035 |     2 |
+|  3 | Buckley RP 3:185 | regtech 28:329              |     2 |
+|  4 | Arner DW 3:185   | financial services 04:168   |     1 |
+|  5 | Arner DW 3:185   | fintech 12:249              |     1 |
+|  6 | Buckley RP 3:185 | financial services 04:168   |     1 |
+|  7 | Buckley RP 3:185 | fintech 12:249              |     1 |
+<BLANKLINE>
+<BLANKLINE>
+
+
 **Matrix view for a co-occurrence matrix.**
 
 >>> file_name = "sphinx/_static/vantagepoint__matrix_viewer-1.html"
@@ -67,14 +84,37 @@ Matrix Viwer
 
     <iframe src="../../_static/vantagepoint__matrix_viewer-1.html" height="600px" width="100%" frameBorder="0"></iframe>
 
+    
+>>> print(chart.prompt_)
+Analyze the table below, which contains the the co-occurrence values for author_keywords. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
+<BLANKLINE>
+|    | row                          | column                       |   OCC |
+|---:|:-----------------------------|:-----------------------------|------:|
+|  0 | regtech 28:329               | regtech 28:329               |    28 |
+|  1 | fintech 12:249               | fintech 12:249               |    12 |
+|  2 | fintech 12:249               | regtech 28:329               |    12 |
+|  3 | regtech 28:329               | fintech 12:249               |    12 |
+|  4 | compliance 07:030            | compliance 07:030            |     7 |
+|  5 | compliance 07:030            | regtech 28:329               |     7 |
+|  6 | regtech 28:329               | compliance 07:030            |     7 |
+|  7 | regulatory technology 07:037 | regulatory technology 07:037 |     7 |
+|  8 | compliance 07:030            | fintech 12:249               |     2 |
+|  9 | fintech 12:249               | compliance 07:030            |     2 |
+| 10 | regtech 28:329               | regulatory technology 07:037 |     2 |
+| 11 | regulatory technology 07:037 | regtech 28:329               |     2 |
+| 12 | compliance 07:030            | regulatory technology 07:037 |     1 |
+| 13 | fintech 12:249               | regulatory technology 07:037 |     1 |
+| 14 | regulatory technology 07:037 | compliance 07:030            |     1 |
+| 15 | regulatory technology 07:037 | fintech 12:249               |     1 |
+<BLANKLINE>
+<BLANKLINE>
+    
 
 
 """
 from dataclasses import dataclass
 
 import networkx as nx
-import numpy as np
-import plotly.graph_objects as go
 
 from ... import network_utils
 from ..analyze.list_cells_in_matrix import list_cells_in_matrix

@@ -9,67 +9,67 @@ Creates auto-correlation and cross-correlation maps.
 >>> file_name = "sphinx/_static/vantagepoint__corr_map_1.html"
 
 >>> from techminer2 import vantagepoint
->>> obj = vantagepoint.analyze.auto_corr_matrix(
+>>> matrix = vantagepoint.analyze.auto_corr_matrix(
 ...     criterion='authors',
 ...     topics_length=10,
 ...     directory=directory,
 ... )
->>> print(obj.matrix_.to_markdown())
-|                  |   Arner DW 3:185 |   Buckley RP 3:185 |   Butler T/1 2:041 |   Hamdan A 2:018 |   Lin W 2:017 |   Singh C 2:017 |   Brennan R 2:014 |   Crane M 2:014 |   Sarea A 2:012 |   Grassi L 2:002 |
-|:-----------------|-----------------:|-------------------:|-------------------:|-----------------:|--------------:|----------------:|------------------:|----------------:|----------------:|-----------------:|
-| Arner DW 3:185   |                1 |                  1 |                  0 |         0        |             0 |               0 |                 0 |               0 |        0        |                0 |
-| Buckley RP 3:185 |                1 |                  1 |                  0 |         0        |             0 |               0 |                 0 |               0 |        0        |                0 |
-| Butler T/1 2:041 |                0 |                  0 |                  1 |         0        |             0 |               0 |                 0 |               0 |        0        |                0 |
-| Hamdan A 2:018   |                0 |                  0 |                  0 |         1        |             0 |               0 |                 0 |               0 |        0.416667 |                0 |
-| Lin W 2:017      |                0 |                  0 |                  0 |         0        |             1 |               1 |                 0 |               0 |        0        |                0 |
-| Singh C 2:017    |                0 |                  0 |                  0 |         0        |             1 |               1 |                 0 |               0 |        0        |                0 |
-| Brennan R 2:014  |                0 |                  0 |                  0 |         0        |             0 |               0 |                 1 |               1 |        0        |                0 |
-| Crane M 2:014    |                0 |                  0 |                  0 |         0        |             0 |               0 |                 1 |               1 |        0        |                0 |
-| Sarea A 2:012    |                0 |                  0 |                  0 |         0.416667 |             0 |               0 |                 0 |               0 |        1        |                0 |
-| Grassi L 2:002   |                0 |                  0 |                  0 |         0        |             0 |               0 |                 0 |               0 |        0        |                1 |
-
-
-
->>> chart = vantagepoint.analyze.corr_map(obj)
+>>> chart = vantagepoint.analyze.corr_map(matrix)
 >>> chart.plot_.write_html(file_name)
-
 
 .. raw:: html
 
-    <iframe src="../../_static/vantagepoint__corr_map_1.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/vantagepoint__corr_map_1.html" 
+    height="600px" width="100%" frameBorder="0"></iframe>
+
+
+>>> print(chart.prompt_)
+Analyze the table below which contains the auto-correlation values for the authors. High correlation values indicate that the topics tends to appear together in the same document and forms a group. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
+<BLANKLINE>
+|    | row             | column           |   CORR |
+|---:|:----------------|:-----------------|-------:|
+|  1 | Arner DW 3:185  | Buckley RP 3:185 |  1     |
+| 10 | Lin W 2:017     | Singh C 2:017    |  1     |
+| 14 | Brennan R 2:014 | Crane M 2:014    |  1     |
+| 16 | Hamdan A 2:018  | Sarea A 2:012    |  0.417 |
+<BLANKLINE>
+<BLANKLINE>
 
 
 >>> file_name = "sphinx/_static/vantagepoint__corr_map_2.html"
 
 >>> from techminer2 import vantagepoint
->>> obj = vantagepoint.analyze.cross_corr_matrix(
-...     criterion_for_columns = 'authors', 
+>>> matrix = vantagepoint.analyze.cross_corr_matrix(
+...     criterion_for_columns = 'authors',
 ...     criterion_for_rows='countries',
 ...     topics_length=10,
 ...     directory=directory,
 ... )
->>> print(obj.matrix_.to_markdown())
-|                   |   Arner DW 3:185 |   Buckley RP 3:185 |   Barberis JN 2:161 |   Brennan R 2:014 |   Butler T/1 2:041 |   Crane M 2:014 |   Hamdan A 2:018 |   Lin W 2:017 |   Singh C 2:017 |   Turki M 2:018 |
-|:------------------|-----------------:|-------------------:|--------------------:|------------------:|-------------------:|----------------:|-----------------:|--------------:|----------------:|----------------:|
-| Arner DW 3:185    |         1        |           1        |            0.922664 |          0        |           0        |        0        |                0 |     -0.365858 |       -0.365858 |               0 |
-| Buckley RP 3:185  |         1        |           1        |            0.922664 |          0        |           0        |        0        |                0 |     -0.365858 |       -0.365858 |               0 |
-| Barberis JN 2:161 |         0.922664 |           0.922664 |            1        |          0        |           0        |        0        |                0 |     -0.183387 |       -0.183387 |               0 |
-| Brennan R 2:014   |         0        |           0        |            0        |          1        |           0.882498 |        1        |                0 |      0        |        0        |               0 |
-| Butler T/1 2:041  |         0        |           0        |            0        |          0.882498 |           1        |        0.882498 |                0 |      0.225806 |        0.225806 |               0 |
-| Crane M 2:014     |         0        |           0        |            0        |          1        |           0.882498 |        1        |                0 |      0        |        0        |               0 |
-| Hamdan A 2:018    |         0        |           0        |            0        |          0        |           0        |        0        |                1 |      0        |        0        |               1 |
-| Lin W 2:017       |        -0.365858 |          -0.365858 |           -0.183387 |          0        |           0.225806 |        0        |                0 |      1        |        1        |               0 |
-| Singh C 2:017     |        -0.365858 |          -0.365858 |           -0.183387 |          0        |           0.225806 |        0        |                0 |      1        |        1        |               0 |
-| Turki M 2:018     |         0        |           0        |            0        |          0        |           0        |        0        |                1 |      0        |        0        |               1 |
-
->>> chart = vantagepoint.analyze.corr_map(obj)
+>>> chart = vantagepoint.analyze.corr_map(matrix)
 >>> chart.plot_.write_html(file_name)
 
 .. raw:: html
 
     <iframe src="../../_static/vantagepoint__corr_map_2.html" height="600px" width="100%" frameBorder="0"></iframe>
 
-
+    
+>>> print(chart.prompt_)
+Analyze the table below which contains the cross-correlation values for the authors based on the values of the countries. High correlation values indicate that the topics in authors are related based on the values of the countries. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
+<BLANKLINE>
+|    | row               | column            |   CORR |
+|---:|:------------------|:------------------|-------:|
+|  1 | Arner DW 3:185    | Buckley RP 3:185  |  1     |
+|  4 | Brennan R 2:014   | Crane M 2:014     |  1     |
+| 11 | Hamdan A 2:018    | Turki M 2:018     |  1     |
+| 16 | Lin W 2:017       | Singh C 2:017     |  1     |
+| 18 | Arner DW 3:185    | Barberis JN 2:161 |  0.923 |
+| 20 | Barberis JN 2:161 | Buckley RP 3:185  |  0.923 |
+| 22 | Brennan R 2:014   | Butler T/1 2:041  |  0.882 |
+| 24 | Butler T/1 2:041  | Crane M 2:014     |  0.882 |
+| 26 | Butler T/1 2:041  | Lin W 2:017       |  0.226 |
+| 27 | Butler T/1 2:041  | Singh C 2:017     |  0.226 |
+<BLANKLINE>
+<BLANKLINE>
 
 """
 from dataclasses import dataclass
