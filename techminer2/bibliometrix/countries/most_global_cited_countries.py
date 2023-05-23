@@ -1,5 +1,5 @@
 """
-Most Global Cited Countries (GPT)
+Most Global Cited Countries
 ===============================================================================
 
 

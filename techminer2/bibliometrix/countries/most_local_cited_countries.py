@@ -1,5 +1,5 @@
 """
-Most Local Cited Countries (GPT)
+Most Local Cited Countries
 ===============================================================================
 
 

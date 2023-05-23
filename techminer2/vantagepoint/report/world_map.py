@@ -88,9 +88,8 @@ class _Chart:
 def world_map(
     obj,
     title=None,
+    colormap="Blues",
 ):
-    colormap = "Blues"
-
     result = _Chart()
     result.plot_ = _create_plot(
         obj,

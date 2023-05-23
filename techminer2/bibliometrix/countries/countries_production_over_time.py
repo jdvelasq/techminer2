@@ -1,5 +1,5 @@
 """
-Countries' Production over Time (GPT)
+Countries' Production over Time
 ===============================================================================
 
 

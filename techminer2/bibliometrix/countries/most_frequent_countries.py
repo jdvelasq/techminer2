@@ -1,5 +1,5 @@
 """
-Most Frequent Countries (GPT)
+Most Frequent Countries
 ===============================================================================
 
 
