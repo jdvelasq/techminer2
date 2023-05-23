@@ -174,11 +174,15 @@ def comparison_between_word_pairs(
     return results
 
 
-def _create_radial_diagram(matrix_list, topic_a, topic_b, nx_k, nx_iterations, delta, seed):
+def _create_radial_diagram(
+    matrix_list, topic_a, topic_b, nx_k, nx_iterations, delta, seed
+):
     graph = nx.Graph()
     graph = _create_nodes(graph, matrix_list, topic_a, topic_b)
     graph = _create_edges(graph, matrix_list, topic_a, topic_b)
-    graph = network_utils.compute_graph_layout(graph, nx_k, nx_iterations, seed)
+    graph = network_utils.compute_spring_layout(
+        graph, nx_k, nx_iterations, seed
+    )
     edge_trace, node_trace = _create_traces(graph)
     node_trace = _color_node_points(graph, node_trace)
     fig = _create_network_graph(edge_trace, node_trace, delta)
@@ -223,7 +227,8 @@ def _create_nodes(graph, matrix_list, topic_a, topic_b):
     topic_size = indicators.sort_values(by=["OCC"], ascending=False)
 
     nodes += [
-        (topic, dict(size=topic_size.loc[topic], group=0)) for topic in topic_size.index
+        (topic, dict(size=topic_size.loc[topic], group=0))
+        for topic in topic_size.index
     ]
 
     indicators = matrix_list.copy()
@@ -232,7 +237,9 @@ def _create_nodes(graph, matrix_list, topic_a, topic_b):
     topic_size = indicators.sort_values(by=["OCC"], ascending=False)
 
     group_a = (
-        0 if topic_size.loc[topic_a]["OCC"] > topic_size.loc[topic_b]["OCC"] else 1
+        0
+        if topic_size.loc[topic_a]["OCC"] > topic_size.loc[topic_b]["OCC"]
+        else 1
     )
     group_b = 0 if group_a == 1 else 1
 
@@ -348,7 +355,9 @@ def _select_topics(
         if topic_min_occ is not None:
             indicators = indicators[indicators.OCC >= topic_min_occ]
         if topic_min_citations is not None:
-            indicators = indicators[indicators.global_citations >= topic_min_citations]
+            indicators = indicators[
+                indicators.global_citations >= topic_min_citations
+            ]
 
         indicators = indicators.sort_values(
             ["OCC", "global_citations", "local_citations"],
@@ -396,9 +405,13 @@ def _create_comparison_matrix_list(
 
     # Explode 'row' for topic_a and topic_b
     matrix_list["row"] = matrix_list["row"].str.split(";")
-    matrix_list["row"] = matrix_list["row"].map(lambda x: [y.strip() for y in x])
+    matrix_list["row"] = matrix_list["row"].map(
+        lambda x: [y.strip() for y in x]
+    )
     matrix_list = matrix_list[
-        matrix_list["row"].map(lambda x: any([y in [topic_a, topic_b] for y in x]))
+        matrix_list["row"].map(
+            lambda x: any([y in [topic_a, topic_b] for y in x])
+        )
     ]
 
     matrix_list["row"] = matrix_list["row"].map(
@@ -418,16 +431,18 @@ def _create_comparison_matrix_list(
 
     # count
     matrix_list["OCC"] = 1
-    matrix_list = matrix_list.groupby(["row", "column"], as_index=False).aggregate(
-        "sum"
-    )
+    matrix_list = matrix_list.groupby(
+        ["row", "column"], as_index=False
+    ).aggregate("sum")
 
     matrix = matrix_list.pivot(index="row", columns="column", values="OCC")
     matrix = matrix.fillna(0)
     if " & ".join([topic_a, topic_b]) not in matrix.index.to_list():
         matrix.loc[" & ".join(sorted([topic_a, topic_b]))] = 0
 
-    matrix_list = matrix.melt(value_name="OCC", var_name="column", ignore_index=False)
+    matrix_list = matrix.melt(
+        value_name="OCC", var_name="column", ignore_index=False
+    )
 
     matrix_list = matrix_list.reset_index()
     matrix_list["OCC"] = matrix_list["OCC"].astype(int)

@@ -11,23 +11,19 @@
         "--profile",
         "black"
     ],
-    "editor.formatOnSave": true,
-    "debug.console.fontSize": 11,
-    "python.testing.unittestEnabled": false,
+    "black-formatter.args": [
+        "--line-length=79"
+    ],
     "python.testing.pytestArgs": [
         "--doctest-glob=\"*.py\"",
-        "--doctest-modules"
+        "--doctest-modules",
+        "."
     ],
+    "python.testing.unittestEnabled": false,
     "python.testing.pytestEnabled": true,
-    "restructuredtext.syntaxHighlighting.disabled": true,
     "search.exclude": {
         "**./*.js": true,
         "**/*.html": true
     },
-    "notebook.output.textLineLimit": 200,
-    "isort.check": true,
     "notebook.formatOnSave.enabled": true,
-    "black-formatter.args": [
-        "--line-length 79"
-    ]
 }

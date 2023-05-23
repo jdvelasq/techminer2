@@ -1,3 +1,4 @@
+import nltk
 from setuptools import setup
 
 # from setuptools.command.build_py import build_py
@@ -16,8 +17,6 @@ from setuptools import setup
 
 
 def _post_install():
-    import nltk
-
     nltk.download("punkt")
     nltk.download("brown")
     nltk.download("stopwords")
@@ -41,12 +40,13 @@ setup(
         "cdlib",
         "fuzzywuzzy",
         "networkx",
-        "nltk==3.7",
+        "nltk",
         "pandas",
         "plotly",
         "python-Levenshtein",
         "PyYAML",
         "scikit-learn",
+        "pyspellchecker",
         "sumy",
         "textblob",
         "wordcloud",
@@ -101,8 +101,6 @@ setup(
         #
         "techminer2.vantagepoint",
         "techminer2.vantagepoint.analyze",
-        "techminer2.vantagepoint.analyze.matrix",
-        "techminer2.vantagepoint.analyze.tfidf",
         "techminer2.vantagepoint.refine",
         "techminer2.vantagepoint.report",
     ],

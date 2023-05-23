@@ -28,27 +28,6 @@ Creates auto-correlation and cross-correlation maps.
 | Sarea A 2:012    |                0 |                  0 |                  0 |         0.416667 |             0 |               0 |                 0 |               0 |        1        |                0 |
 | Grassi L 2:002   |                0 |                  0 |                  0 |         0        |             0 |               0 |                 0 |               0 |        0        |                1 |
 
->>> print(vantagepoint.analyze.tf_matrix(
-...     criterion='authors', 
-...     topics_length=10,
-...     directory=directory,
-... ).to_markdown())
-| article                                                                                                             |   Arner DW 3:185 |   Buckley RP 3:185 |   Butler T/1 2:041 |   Hamdan A 2:018 |   Lin W 2:017 |   Singh C 2:017 |   Brennan R 2:014 |   Crane M 2:014 |   Sarea A 2:012 |   Grassi L 2:002 |
-|:--------------------------------------------------------------------------------------------------------------------|-----------------:|-------------------:|-------------------:|-----------------:|--------------:|----------------:|------------------:|----------------:|----------------:|-----------------:|
-| Arner DW, 2017, HANDB OF BLOCKCHAIN, DIGIT FINANC, AND INCL, VOL 1: CRYPTOCURR, FINTECH, INSURTECH, AND REGUL, P359 |                1 |                  1 |                  0 |                0 |             0 |               0 |                 0 |               0 |               0 |                0 |
-| Arner DW, 2017, NORTHWEST J INTL LAW BUS, V37, P373                                                                 |                1 |                  1 |                  0 |                0 |             0 |               0 |                 0 |               0 |               0 |                0 |
-| Battanta L, 2020, PROC EUR CONF INNOV ENTREPREN, ECIE, V2020-September, P112                                        |                0 |                  0 |                  0 |                0 |             0 |               0 |                 0 |               0 |               0 |                1 |
-| Buckley RP, 2020, J BANK REGUL, V21, P26                                                                            |                1 |                  1 |                  0 |                0 |             0 |               0 |                 0 |               0 |               0 |                0 |
-| Butler T/1, 2018, J RISK MANG FINANCIAL INST, V11, P19                                                              |                0 |                  0 |                  1 |                0 |             0 |               0 |                 0 |               0 |               0 |                0 |
-| Butler T/1, 2019, PALGRAVE STUD DIGIT BUS ENABLING TECHNOL, P85                                                     |                0 |                  0 |                  1 |                0 |             0 |               0 |                 0 |               0 |               0 |                0 |
-| Grassi L, 2022, J IND BUS ECON, V49, P441                                                                           |                0 |                  0 |                  0 |                0 |             0 |               0 |                 0 |               0 |               0 |                1 |
-| Rabbani MR, 2022, LECT NOTES NETWORKS SYST, V423 LNNS, P381                                                         |                0 |                  0 |                  0 |                0 |             0 |               0 |                 0 |               0 |               1 |                0 |
-| Ryan P, 2020, ICEIS - PROC INT CONF ENTERP INF SYST, V2, P787                                                       |                0 |                  0 |                  0 |                0 |             0 |               0 |                 1 |               1 |               0 |                0 |
-| Ryan P, 2021, LECT NOTES BUS INF PROCESS, V417, P905                                                                |                0 |                  0 |                  0 |                0 |             0 |               0 |                 1 |               1 |               0 |                0 |
-| Singh C, 2020, J MONEY LAUND CONTROL, V24, P464                                                                     |                0 |                  0 |                  0 |                0 |             1 |               1 |                 0 |               0 |               0 |                0 |
-| Singh C, 2022, J FINANC CRIME, V29, P45                                                                             |                0 |                  0 |                  0 |                0 |             1 |               1 |                 0 |               0 |               0 |                0 |
-| Turki M, 2020, HELIYON, V6                                                                                          |                0 |                  0 |                  0 |                1 |             0 |               0 |                 0 |               0 |               1 |                0 |
-| Turki M, 2021, ADV INTELL SYS COMPUT, V1141, P349                                                                   |                0 |                  0 |                  0 |                1 |             0 |               0 |                 0 |               0 |               0 |                0 |
 
 
 >>> chart = vantagepoint.analyze.corr_map(obj)
@@ -96,10 +75,9 @@ Creates auto-correlation and cross-correlation maps.
 from dataclasses import dataclass
 
 import networkx as nx
-import numpy as np
-import plotly.graph_objects as go
 
 from ... import network_utils
+from .list_cells_in_matrix import list_cells_in_matrix
 
 
 @dataclass(init=False)
@@ -110,248 +88,242 @@ class _Chart:
 
 
 def corr_map(
-    obj,
+    matrix,
     nx_k=0.5,
-    nx_iterations=20,
+    nx_iterations=10,
     delta=1.0,
     node_min_size=30,
     node_max_size=70,
     textfont_size_min=10,
-    textfont_size_max=25,
+    textfont_size_max=20,
     seed=0,
 ):
-    matrix_list = _melt_matrix(obj.matrix_)
+    """Correlation map."""
 
-    node_occ = _extract_node_occ(matrix_list)
-    node_sizes = network_utils.compute_node_sizes(
-        node_occ, node_min_size, node_max_size
-    )
-    textfont_sizes = network_utils.compute_textfont_sizes(
-        node_occ, textfont_size_min, textfont_size_max
-    )
-    node_names = _extract_node_name(matrix_list)
-    matrix_list = _remove_node_names_from_matrix(matrix_list)
+    matrix_list = list_cells_in_matrix(matrix)
 
     graph = nx.Graph()
-    graph = _create_nodes(graph, node_names, node_sizes, textfont_sizes)
-    graph = _create_edges(graph, matrix_list)
-    graph = network_utils.compute_graph_layout(graph, nx_k, nx_iterations, seed)
+    graph = network_utils.create_graph_nodes(graph, matrix_list)
+    graph = network_utils.create_occ_node_property(graph)
+    graph = network_utils.compute_prop_sizes(
+        graph, "node_size", node_min_size, node_max_size
+    )
+    graph = network_utils.compute_prop_sizes(
+        graph, "textfont_size", textfont_size_min, textfont_size_max
+    )
+    graph = network_utils.create_graph_edges(graph, matrix_list)
 
-    edge_traces = _create_edge_traces(graph)
-    node_trace = _create_node_trace(graph)
-    text_trace = _create_text_trace(graph)
+    graph = network_utils.set_edge_properties_for_corr_maps(graph)
 
-    fig = _create_network_graph(edge_traces, node_trace, text_trace, delta)
+    graph = network_utils.compute_spring_layout(
+        graph, nx_k, nx_iterations, seed
+    )
+
+    node_trace = network_utils.create_node_trace(graph)
+    text_trace = network_utils.create_text_trace(graph)
+    edge_traces = network_utils.create_edge_traces(graph)
+
+    fig = network_utils.create_network_graph(
+        edge_traces, node_trace, text_trace, delta
+    )
 
     chart = _Chart()
     chart.plot_ = fig
-    chart.table_ = obj.matrix_
-    chart.prompt_ = obj.prompt_
+    chart.table_ = matrix_list.matrix_list_
+    chart.prompt_ = matrix_list.prompt_
 
     return chart
 
+    # nodes = network_utils.create_nodes_from_matrix(obj)
+    # nodes = network_utils.create_occ_from_index(nodes)
 
-def _create_network_graph(edge_traces, node_trace, text_trace, delta=1.0):
-    layout = go.Layout(
-        title="",
-        titlefont=dict(size=16),
-        showlegend=False,
-        hovermode="closest",
-        margin={"b": 0, "l": 0, "r": 0, "t": 0},
-        annotations=[
-            dict(
-                text="",
-                showarrow=False,
-                xref="paper",
-                yref="paper",
-                x=0.005,
-                y=-0.002,
-                align="left",
-                font={"size": 10},
-            )
-        ],
-        xaxis={"showgrid": False, "zeroline": False, "showticklabels": False},
-        yaxis={"showgrid": False, "zeroline": False, "showticklabels": False},
-    )
+    # matrix_list = network_utils.melt_matrix_obj(obj)
 
-    fig = go.Figure(
-        data=edge_traces + [node_trace] + [text_trace],
-        layout=layout,
-    )
+    # node_occ = _extract_node_occ(matrix_list)
+    # node_sizes = network_utils.compute_node_sizes(
+    #     node_occ, node_min_size, node_max_size
+    # )
+    # textfont_sizes = network_utils.compute_textfont_sizes(
+    #     node_occ, textfont_size_min, textfont_size_max
+    # )
+    # node_names = _extract_node_name(matrix_list)
+    # matrix_list = _remove_node_names_from_matrix(matrix_list)
 
-    fig.update_layout(
-        hoverlabel={
-            "bgcolor": "white",
-            "font_family": "monospace",
-        },
-        xaxis_range=[-1 - delta, 1 + delta],
-        paper_bgcolor="white",
-        plot_bgcolor="white",
-    )
+    # graph = nx.Graph()
+    # graph = _create_nodes(graph, node_names, node_sizes, textfont_sizes)
+    # graph = _create_edges(graph, matrix_list)
+    # graph = network_utils.compute_graph_layout(
+    #     graph, nx_k, nx_iterations, seed
+    # )
 
-    return fig
-
-
-def _create_text_trace(graph):
-    """Create text trace for network graph."""
-
-    node_x, node_y = network_utils.extract_node_coordinates(graph)
-    node_names = network_utils.extract_node_names(graph)
-    textfont_sizes = network_utils.extract_textfont_sizes(graph)
-    textposition = network_utils.compute_textposition(node_x, node_y)
-
-    node_sizes = network_utils.extract_node_sizes(graph)
-    node_sizes = [size - 12 for size in node_sizes]
-
-    text_trace = go.Scatter(
-        x=node_x,
-        y=node_y,
-        mode="markers+text",
-        text=node_names,
-        hoverinfo="text",
-        marker={
-            "color": "#8da4b4",
-            "size": node_sizes,
-            "line": {"width": 0, "color": "#8da4b4"},
-            "opacity": 1,
-        },
-        textposition=textposition,
-        textfont={"size": textfont_sizes},
-    )
-
-    return text_trace
-
-
-def _create_node_trace(graph):
-    """Create node trace for network graph."""
-
-    node_x, node_y = network_utils.extract_node_coordinates(graph)
-    node_sizes = network_utils.extract_node_sizes(graph)
-    node_trace = go.Scatter(
-        x=node_x,
-        y=node_y,
-        mode="markers",
-        hoverinfo="text",
-        marker=dict(
-            color="#8da4b4",
-            size=node_sizes,
-            line={"width": 1.5, "color": "white"},
-            opacity=1,
-        ),
-    )
-
-    return node_trace
-
-
-def _create_edge_traces(graph):
+    # edge_traces = _create_edge_traces(graph)
     #
-    def _create_edge_trace(graph, edge_type):
-        edge_trace = go.Scatter(
-            x=[],
-            y=[],
-            line={"color": "#8da4b4"},
-            hoverinfo="none",
-            mode="lines",
-        )
+    # text_trace = _create_text_trace(graph)
 
-        found = False
-        for edge in graph.edges():
-            pos_x0, pos_y0 = graph.nodes[edge[0]]["pos"]
-            pos_x1, pos_y1 = graph.nodes[edge[1]]["pos"]
+    # fig = _create_network_graph(edge_traces, node_trace, text_trace, delta)
 
-            width = graph.edges[edge]["width"]
-            dash = graph.edges[edge]["dash"]
-            type_ = graph.edges[edge]["edge_type"]
+    # chart = _Chart()
+    # chart.plot_ = fig
+    # chart.table_ = obj.matrix_
+    # chart.prompt_ = obj.prompt_
 
-            if type_ == edge_type:
-                found = True
-                edge_trace["line"]["width"] = width
-                edge_trace["line"]["dash"] = dash
-                edge_trace["x"] += (pos_x0, pos_x1, None)
-                edge_trace["y"] += (pos_y0, pos_y1, None)
-
-        if found:
-            return edge_trace
-        else:
-            return None
-
-    result = []
-    for edge_type in [0, 1, 2, 3]:
-        edge_trace = _create_edge_trace(graph, edge_type)
-        if edge_trace:
-            result.append(edge_trace)
-    return result
+    # return chart
 
 
-def _create_edges(graph, matrix_list):
-    matrix_list = matrix_list.copy()
-    matrix_list = matrix_list[matrix_list["row"] < matrix_list["column"]]
+# def _create_node_trace(graph):
+#     """Create node trace for network graph."""
 
-    matrix_list["edge_type"] = 0
-    matrix_list.loc[
-        (matrix_list.CORR > 0.25) & (matrix_list.CORR <= 0.5), "edge_type"
-    ] = 1
-    matrix_list.loc[
-        (matrix_list.CORR > 0.50) & (matrix_list.CORR <= 0.75), "edge_type"
-    ] = 2
-    matrix_list.loc[(matrix_list.CORR > 0.75), "edge_type"] = 3
+#     node_x, node_y = network_utils.extract_node_coordinates(graph)
+#     node_sizes = network_utils.extract_node_sizes(graph)
+#     node_trace = go.Scatter(
+#         x=node_x,
+#         y=node_y,
+#         mode="markers",
+#         hoverinfo="text",
+#         marker=dict(
+#             color="#8da4b4",
+#             size=node_sizes,
+#             line={"width": 1.5, "color": "white"},
+#             opacity=1,
+#         ),
+#     )
 
-    matrix_list["width"] = 2
-    matrix_list.loc[matrix_list.edge_type == 1, "width"] = 2
-    matrix_list.loc[matrix_list.edge_type == 2, "width"] = 4
-    matrix_list.loc[matrix_list.edge_type == 3, "width"] = 6
-
-    matrix_list["dash"] = "dot"
-    matrix_list.loc[matrix_list.edge_type == 1, "dash"] = "solid"
-    matrix_list.loc[matrix_list.edge_type == 2, "dash"] = "solid"
-    matrix_list.loc[matrix_list.edge_type == 3, "dash"] = "solid"
-
-    for _, row in matrix_list.iterrows():
-        graph.add_edges_from(
-            [(row.row, row.column)],
-            width=row.width,
-            edge_type=row.edge_type,
-            dash=row.dash,
-        )
-
-    return graph
+#     return node_trace
 
 
-def _remove_node_names_from_matrix(matrix_list):
-    matrix_list = matrix_list.copy()
-    matrix_list["row"] = matrix_list["row"].apply(lambda x: " ".join(x.split(" ")[:-1]))
-    matrix_list["column"] = matrix_list["column"].apply(
-        lambda x: " ".join(x.split(" ")[:-1])
-    )
-    return matrix_list
+# def _create_graph_edges(graph, matrix_list):
+#     matrix_list = matrix_list.copy()
+#     matrix_list = matrix_list[matrix_list["row"] < matrix_list["column"]]
+
+#     matrix_list["edge_type"] = 0
+#     matrix_list.loc[
+#         (matrix_list.CORR > 0.25) & (matrix_list.CORR <= 0.5), "edge_type"
+#     ] = 1
+#     matrix_list.loc[
+#         (matrix_list.CORR > 0.50) & (matrix_list.CORR <= 0.75), "edge_type"
+#     ] = 2
+#     matrix_list.loc[(matrix_list.CORR > 0.75), "edge_type"] = 3
+
+#     matrix_list["width"] = 2
+#     matrix_list.loc[matrix_list.edge_type == 1, "width"] = 2
+#     matrix_list.loc[matrix_list.edge_type == 2, "width"] = 4
+#     matrix_list.loc[matrix_list.edge_type == 3, "width"] = 6
+
+#     matrix_list["dash"] = "dot"
+#     matrix_list.loc[matrix_list.edge_type == 1, "dash"] = "solid"
+#     matrix_list.loc[matrix_list.edge_type == 2, "dash"] = "solid"
+#     matrix_list.loc[matrix_list.edge_type == 3, "dash"] = "solid"
+
+#     for _, row in matrix_list.iterrows():
+#         graph.add_edges_from(
+#             [(row.row, row.column)],
+#             width=row.width,
+#             edge_type=row.edge_type,
+#             dash=row.dash,
+#         )
+
+#     return graph
 
 
-def _create_nodes(graph, node_names, node_sizes, textfont_sizes):
-    nodes = [
-        (node, {"size": occ, "textfont_size": textsize})
-        for node, occ, textsize in zip(node_names, node_sizes, textfont_sizes)
-    ]
-    graph.add_nodes_from(nodes)
-    return graph
+# def _create_nodes(graph, node_names, node_sizes, textfont_sizes):
+#     nodes = [
+#         (node, {"size": occ, "textfont_size": textsize})
+#         for node, occ, textsize in zip(node_names, node_sizes, textfont_sizes)
+#     ]
+#     graph.add_nodes_from(nodes)
+#     return graph
 
 
-def _extract_node_name(matrix_list):
-    nodes = matrix_list["row"].drop_duplicates().to_list()
-    nodes = [" ".join(node.split(" ")[:-1]) for node in nodes]
-    return nodes
+# def _create_text_trace(graph):
+#     """Create text trace for network graph."""
+
+#     node_x, node_y = network_utils.extract_node_coordinates(graph)
+#     node_names = network_utils.extract_node_names(graph)
+#     textfont_sizes = network_utils.extract_textfont_sizes(graph)
+#     textposition = network_utils.compute_textposition(node_x, node_y)
+
+#     node_sizes = network_utils.extract_node_sizes(graph)
+#     node_sizes = [size - 12 for size in node_sizes]
+
+#     text_trace = go.Scatter(
+#         x=node_x,
+#         y=node_y,
+#         mode="markers+text",
+#         text=node_names,
+#         hoverinfo="text",
+#         marker={
+#             "color": "#8da4b4",
+#             "size": node_sizes,
+#             "line": {"width": 0, "color": "#8da4b4"},
+#             "opacity": 1,
+#         },
+#         textposition=textposition,
+#         textfont={"size": textfont_sizes},
+#     )
+
+#     return text_trace
 
 
-def _extract_node_occ(matrix_list):
-    nodes = matrix_list["row"].drop_duplicates().to_list()
-    occ = [node.split(" ")[-1] for node in nodes]
-    occ = [node.split(":")[0] for node in occ]
-    occ = [int(node) for node in occ]
-    return occ
+# def _create_edge_traces(graph):
+#     #
+#     def _create_edge_trace(graph, edge_type):
+#         edge_trace = go.Scatter(
+#             x=[],
+#             y=[],
+#             line={"color": "#8da4b4"},
+#             hoverinfo="none",
+#             mode="lines",
+#         )
+
+#         found = False
+#         for edge in graph.edges():
+#             pos_x0, pos_y0 = graph.nodes[edge[0]]["pos"]
+#             pos_x1, pos_y1 = graph.nodes[edge[1]]["pos"]
+
+#             width = graph.edges[edge]["width"]
+#             dash = graph.edges[edge]["dash"]
+#             type_ = graph.edges[edge]["edge_type"]
+
+#             if type_ == edge_type:
+#                 found = True
+#                 edge_trace["line"]["width"] = width
+#                 edge_trace["line"]["dash"] = dash
+#                 edge_trace["x"] += (pos_x0, pos_x1, None)
+#                 edge_trace["y"] += (pos_y0, pos_y1, None)
+
+#         if found:
+#             return edge_trace
+#         else:
+#             return None
+
+#     result = []
+#     for edge_type in [0, 1, 2, 3]:
+#         edge_trace = _create_edge_trace(graph, edge_type)
+#         if edge_trace:
+#             result.append(edge_trace)
+#     return result
 
 
-def _melt_matrix(matrix):
-    matrix = matrix.melt(value_name="CORR", var_name="column", ignore_index=False)
-    matrix = matrix.reset_index()
-    matrix = matrix.rename(columns={"index": "row"})
-    matrix = matrix[matrix.CORR > 0.0]
-    return matrix
+# def _remove_node_names_from_matrix(matrix_list):
+#     matrix_list = matrix_list.copy()
+#     matrix_list["row"] = matrix_list["row"].apply(
+#         lambda x: " ".join(x.split(" ")[:-1])
+#     )
+#     matrix_list["column"] = matrix_list["column"].apply(
+#         lambda x: " ".join(x.split(" ")[:-1])
+#     )
+#     return matrix_list
+
+
+# def _extract_node_name(matrix_list):
+#     nodes = matrix_list["row"].drop_duplicates().to_list()
+#     nodes = [" ".join(node.split(" ")[:-1]) for node in nodes]
+#     return nodes
+
+
+# def _extract_node_occ(matrix_list):
+#     nodes = matrix_list["row"].drop_duplicates().to_list()
+#     occ = [node.split(" ")[-1] for node in nodes]
+#     occ = [node.split(":")[0] for node in occ]
+#     occ = [int(node) for node in occ]
+#     return occ

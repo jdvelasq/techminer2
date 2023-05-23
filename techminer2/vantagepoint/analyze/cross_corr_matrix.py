@@ -61,6 +61,7 @@ class _MatrixResult:
     method_: None
     criterion_for_columns_: None
     criterion_for_rows_: None
+    metric_: None
 
 
 def cross_corr_matrix(
@@ -84,6 +85,7 @@ def cross_corr_matrix(
     results.criterion_for_columns_ = criterion_for_columns
     results.criterion_for_rows_ = criterion_for_rows
     results.method_ = method
+    results.metric_ = "CORR"
 
     data_matrix = occ_matrix(
         criterion_for_columns=criterion_for_columns,
