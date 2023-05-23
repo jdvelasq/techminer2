@@ -12,13 +12,14 @@ Three Fields Plot
 ...     left_criterion='authors',
 ...     middle_criterion='countries',
 ...     right_criterion='author_keywords',
-...     topics_length_left=2, 
+...     topics_length_left=2,
 ...     topics_length_right=8,
 ... ).write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../_static/bibliometrix__three_fields_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/bibliometrix__three_fields_plot.html"
+    height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 import plotly.graph_objects as go
@@ -110,14 +111,14 @@ def _make_sankey_plot(matrix_left, matrix_right):
             link={
                 "source": [key[0] for key in connections.keys()],
                 "target": [key[1] for key in connections.keys()],
-                "value": [value for value in connections.values()],
+                "value": list(connections.values()),
             },
         )
     )
 
     fig.update_layout(
         hovermode="x",
-        font=dict(size=10, color="black"),
+        font={"size": 10, "color": "black"},
     )
 
     return fig

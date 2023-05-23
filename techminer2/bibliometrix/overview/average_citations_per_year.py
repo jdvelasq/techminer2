@@ -25,8 +25,7 @@ Average Citations per Year
 
 
 >>> print(r.prompt_)
-<BLANKLINE>
-Imagine that you are a researcher analyzing a bibliographic dataset. The table below provides data on the average citations per year of the dataset. Use the the information in the table to draw conclusions about the impact per year. In your analysis, be sure to describe in a clear and concise way, any trends or patterns you observe, and identify any outliers or anomalies in the data. Limit your description to one paragraph with no more than 250 words.
+The table below provides data on the average citations per year of the dataset. Use the the information in the table to draw conclusions about the impact per year. In your analysis, be sure to describe in a clear and concise way, any trends or patterns you observe, and identify any outliers or anomalies in the data. Limit your description to one paragraph with no more than 250 words.
 <BLANKLINE>
 |   year |   mean_global_citations |
 |-------:|------------------------:|
@@ -45,6 +44,7 @@ Imagine that you are a researcher analyzing a bibliographic dataset. The table b
 
 """
 from dataclasses import dataclass
+
 from ..._lib._time_plot import time_plot
 from ...techminer.indicators.indicators_by_year import indicators_by_year
 
@@ -95,13 +95,13 @@ def _average_citations_per_year_plot(indicators):
 def _average_citations_per_year_prompt(table):
     """Average citations per year prompt."""
 
-    return f"""
-Imagine that you are a researcher analyzing a bibliographic dataset. The table \
-below provides data on the average citations per year of the dataset. Use the \
-the information in the table to draw conclusions about the impact per year. \
-In your analysis, be sure to describe in a clear and concise way, any trends \
-or patterns you observe, and identify any outliers or anomalies in the data. \
-Limit your description to one paragraph with no more than 250 words.
+    return f"""\
+The table below provides data on the average citations per year of the \
+dataset. Use the the information in the table to draw conclusions about the \
+impact per year. In your analysis, be sure to describe in a clear and concise \
+way, any trends or patterns you observe, and identify any outliers or \
+anomalies in the data. Limit your description to one paragraph with no more \
+than 250 words.
 
 {table[["mean_global_citations"]].to_markdown()}
 
