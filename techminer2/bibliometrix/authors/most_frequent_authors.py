@@ -1,5 +1,5 @@
 """
-Most Frequent Authors
+Most Frequent Authors (GPT)
 ===============================================================================
 
 
@@ -10,7 +10,6 @@ Most Frequent Authors
 >>> r = bibliometrix.authors.most_frequent_authors(
 ...     directory,
 ...     topics_length=20,
-...     plot="cleveland",
 ...     database="documents",
 ... )
 >>> r.plot_.write_html(file_name)
@@ -30,46 +29,20 @@ Hamdan A       2
 Name: OCC, dtype: int64
 
 >>> print(r.prompt_)
-<BLANKLINE>
-Imagine that you are a researcher analyzing a bibliographic dataset. The table below provides data on top 20 authors with highest number of documents ('OCC' indicates 'occurrences'). Use the the information in the table to draw conclusions about the document production by source. In your analysis, be sure to describe in a clear and concise way, any findings or any patterns you observe, and identify any outliers or anomalies in the data. Limit your description to one paragraph with no more than 250 words.
-<BLANKLINE>
-| authors           |   OCC |
-|:------------------|------:|
-| Arner DW          |     3 |
-| Buckley RP        |     3 |
-| Barberis JN       |     2 |
-| Butler T/1        |     2 |
-| Hamdan A          |     2 |
-| Turki M           |     2 |
-| Lin W             |     2 |
-| Singh C           |     2 |
-| Brennan R         |     2 |
-| Crane M           |     2 |
-| Ryan P            |     2 |
-| Sarea A           |     2 |
-| Grassi L          |     2 |
-| Lanfranchi D      |     2 |
-| Arman AA          |     2 |
-| Anagnostopoulos I |     1 |
-| OBrien L          |     1 |
-| Baxter LG         |     1 |
-| Zetzsche DA       |     1 |
-| Weber RH          |     1 |
-<BLANKLINE>
-<BLANKLINE>
-<BLANKLINE>
 
 
 """
-# from ...vantagepoint.report.chart import chart
+from ... import vantagepoint
 
 
 def most_frequent_authors(
     directory="./",
     topics_length=20,
     topic_min_occ=None,
+    topic_max_occ=None,
     topic_min_citations=None,
-    plot="cleveland",
+    topic_max_citations=None,
+    custom_topics=None,
     database="documents",
     start_year=None,
     end_year=None,
@@ -77,7 +50,7 @@ def most_frequent_authors(
 ):
     """Plots the number of documents by author using the specified plot."""
 
-    obj = chart(
+    obj = vantagepoint.analyze.extract_topics(
         criterion="authors",
         directory=directory,
         database=database,
@@ -86,29 +59,18 @@ def most_frequent_authors(
         end_year=end_year,
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,
+        topic_max_occ=topic_max_occ,
         topic_min_citations=topic_min_citations,
-        custom_topics=None,
-        title="Most Frequent Authors",
-        plot=plot,
+        topic_max_citations=topic_max_citations,
+        custom_topics=custom_topics,
         **filters,
     )
 
-    obj.prompt_ = _create_prompt(obj.table_)
+    chart = vantagepoint.report.cleveland_chart(
+        obj,
+        title="Most Frequent Authors",
+        x_label="OCC",
+        y_label="AUTHORS",
+    )
 
-    return obj
-
-
-def _create_prompt(table):
-    return f"""
-Imagine that you are a researcher analyzing a bibliographic dataset. The table \
-below provides data on top {table.shape[0]} authors with highest \
-number of documents ('OCC' indicates 'occurrences'). Use the the information \
-in the table to draw conclusions about the document production by source. In \
-your analysis, be sure to describe in a clear and concise way, any findings or \
-any patterns you observe, and identify any outliers or anomalies in the data. \
-Limit your description to one paragraph with no more than 250 words.
-
-{table.to_markdown()}
-
-
-"""
+    return chart

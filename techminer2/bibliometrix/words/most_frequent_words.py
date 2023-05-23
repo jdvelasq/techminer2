@@ -1,5 +1,5 @@
 """
-Most Frequent Words
+Most Frequent Words (GPT)
 ===============================================================================
 
 
@@ -12,7 +12,6 @@ Most Frequent Words
 ...     criterion="author_keywords",
 ...     directory=directory,
 ...     topics_length=20,
-...     plot="cleveland",
 ...     database="documents",
 ... )
 >>> r.plot_.write_html(file_name)
@@ -33,8 +32,7 @@ Name: OCC, dtype: int64
 
 
 >>> print(r.prompt_)
-<BLANKLINE>
-Imagine that you are a researcher analyzing a bibliographic dataset. The table below provides data on top 20 author_keywords with highest frequency. The column 'OCC' represents the number of documents on which each item in 'author_keywords' appears. Use the the information in the table to draw conclusions about the frequency of the author_keywords. In your analysis, be sure to describe in a clear and concise way, any findings or any patterns you observe, and identify any outliers or anomalies in the data. Limit your description to one paragraph with no more than 250 words.
+Analyze the table below, which provides bibliographic indicators for a collection of research articles. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
 | author_keywords         |   OCC |
 |:------------------------|------:|
@@ -63,7 +61,7 @@ Imagine that you are a researcher analyzing a bibliographic dataset. The table b
 
 
 """
-# from ...vantagepoint.report.chart import chart
+from ... import vantagepoint
 
 
 def most_frequent_words(
@@ -71,8 +69,10 @@ def most_frequent_words(
     directory="./",
     topics_length=20,
     topic_min_occ=None,
+    topic_max_occ=None,
     topic_min_citations=None,
-    plot="cleveland",
+    topic_max_citations=None,
+    custom_topics=None,
     database="documents",
     start_year=None,
     end_year=None,
@@ -80,7 +80,7 @@ def most_frequent_words(
 ):
     """Plots the number of documents by country using the specified plot."""
 
-    obj = chart(
+    obj = vantagepoint.analyze.extract_topics(
         criterion=criterion,
         directory=directory,
         database=database,
@@ -89,30 +89,18 @@ def most_frequent_words(
         end_year=end_year,
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,
+        topic_max_occ=topic_max_occ,
         topic_min_citations=topic_min_citations,
-        custom_topics=None,
-        title="Most Frequent Keywords",
-        plot=plot,
+        topic_max_citations=topic_max_citations,
+        custom_topics=custom_topics,
         **filters,
     )
 
-    obj.prompt_ = _create_prompt(obj.table_, criterion)
+    chart = vantagepoint.report.cleveland_chart(
+        obj,
+        title="Most Frequent " + criterion.replace("_", " ").title(),
+        x_label="OCC",
+        y_label=criterion.replace("_", " ").upper(),
+    )
 
-    return obj
-
-
-def _create_prompt(table, criterion):
-    return f"""
-Imagine that you are a researcher analyzing a bibliographic dataset. The table \
-below provides data on top {table.shape[0]} {criterion} with highest \
-frequency. The column 'OCC' represents the number of documents on which \
-each item in '{criterion}' appears. \
-Use the the information in the table to draw conclusions about the frequency \
-of the {criterion}. In your analysis, be sure to describe in a clear and \
-concise way, any findings or any patterns you observe, and identify any \
-outliers or anomalies in the data. Limit your description to one paragraph \
-with no more than 250 words.
-
-{table.to_markdown()}
-
-"""
+    return chart

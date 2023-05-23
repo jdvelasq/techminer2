@@ -1,16 +1,15 @@
 """
-Most Relevant Organizations
+Most Frequent Organizations (GPT)
 ===============================================================================
 
 
 >>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/bibliometrix__most_relevant_organizations.html"
+>>> file_name = "sphinx/_static/bibliometrix__most_frequent_organizations.html"
 
 >>> from techminer2 import bibliometrix
->>> r = bibliometrix.organizations.most_relevant_organizations(
+>>> r = bibliometrix.organizations.most_frequent_organizations(
 ...     directory=directory,
 ...     topics_length=20,
-...     plot="cleveland",
 ...     database="documents",
 ... )
 >>> r.plot_.write_html(file_name)
@@ -30,8 +29,7 @@ University of Westminster    2
 Name: OCC, dtype: int64
 
 >>> print(r.prompt_)
-<BLANKLINE>
-Imagine that you are a researcher analyzing a bibliographic dataset. The table below provides data on top 20 organizations with highest number of published documents ('OCC' indicates 'occurrences'). Use the the information in the table to draw conclusions about the document production by organization. In your analysis, be sure to describe in a clear and concise way, any findings or any patterns you observe, and identify any outliers or anomalies in the data. Limit your description to one paragraph with no more than 250 words.
+Analyze the table below, which provides bibliographic indicators for a collection of research articles. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
 | organizations                                                   |   OCC |
 |:----------------------------------------------------------------|------:|
@@ -57,19 +55,20 @@ Imagine that you are a researcher analyzing a bibliographic dataset. The table b
 | ---KS Strategic                                                 |     1 |
 <BLANKLINE>
 <BLANKLINE>
-<BLANKLINE>
 
 
 """
-# from ...vantagepoint.report.chart import chart
+from ... import vantagepoint
 
 
-def most_relevant_organizations(
+def most_frequent_organizations(
     directory="./",
     topics_length=20,
     topic_min_occ=None,
+    topic_max_occ=None,
     topic_min_citations=None,
-    plot="cleveland",
+    topic_max_citations=None,
+    custom_topics=None,
     database="documents",
     start_year=None,
     end_year=None,
@@ -77,7 +76,7 @@ def most_relevant_organizations(
 ):
     """Plots the number of documents by organizations using the specified plot."""
 
-    obj = chart(
+    obj = vantagepoint.analyze.extract_topics(
         criterion="organizations",
         directory=directory,
         database=database,
@@ -86,28 +85,18 @@ def most_relevant_organizations(
         end_year=end_year,
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,
+        topic_max_occ=topic_max_occ,
         topic_min_citations=topic_min_citations,
-        custom_topics=None,
-        title="Most Frequent Organizations",
-        plot=plot,
+        topic_max_citations=topic_max_citations,
+        custom_topics=custom_topics,
         **filters,
     )
-    obj.prompt_ = _create_prompt(obj.table_)
 
-    return obj
+    chart = vantagepoint.report.cleveland_chart(
+        obj,
+        title="Most Frequent Organizations",
+        x_label="OCC",
+        y_label="ORGANIZATIONS",
+    )
 
-
-def _create_prompt(table):
-    return f"""
-Imagine that you are a researcher analyzing a bibliographic dataset. The table \
-below provides data on top {table.shape[0]} organizations with highest \
-number of published documents ('OCC' indicates 'occurrences'). Use the the information \
-in the table to draw conclusions about the document production by organization. In \
-your analysis, be sure to describe in a clear and concise way, any findings or \
-any patterns you observe, and identify any outliers or anomalies in the data. \
-Limit your description to one paragraph with no more than 250 words.
-
-{table.to_markdown()}
-
-
-"""
+    return chart

@@ -1,4 +1,4 @@
-"""Most Global Cited Authors
+"""Most Global Cited Authors (GPT)
 ===============================================================================
 
 
@@ -9,7 +9,6 @@
 >>> r = bibliometrix.authors.most_global_cited_authors(
 ...     directory,
 ...     topics_length=20,
-...     plot="cleveland",
 ... )
 >>> r.plot_.write_html(file_name)
 
@@ -30,8 +29,7 @@ Name: global_citations, dtype: int64
 
 
 >>> print(r.prompt_)
-<BLANKLINE>
-Imagine that you are a researcher analyzing a bibliographic dataset. The table below provides data on top 20 cited authors with highest number of total citations in the dataset ('global_citations' column). Use the information in the table to draw conclusions about the impact and relevance of the reseach published by the authors in the dataset. In your analysis, be sure to describe in a clear and concise way, any findings or any patterns you observe, and identify any outliers or anomalies in the data. Limit your description to one paragraph with no more than 250 words.
+Analyze the table below, which provides bibliographic indicators for a collection of research articles. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
 | authors           |   global_citations |
 |:------------------|-------------------:|
@@ -57,18 +55,20 @@ Imagine that you are a researcher analyzing a bibliographic dataset. The table b
 | Crane M           |                 14 |
 <BLANKLINE>
 <BLANKLINE>
-<BLANKLINE>
+
 
 """
-# from ...vantagepoint.report.chart import chart
+from ... import vantagepoint
 
 
 def most_global_cited_authors(
     directory="./",
     topics_length=20,
     topic_min_occ=None,
+    topic_max_occ=None,
     topic_min_citations=None,
-    plot="cleveland",
+    topic_max_citations=None,
+    custom_topics=None,
     database="documents",
     start_year=None,
     end_year=None,
@@ -76,7 +76,7 @@ def most_global_cited_authors(
 ):
     """Most global cited authors."""
 
-    obj = chart(
+    obj = vantagepoint.analyze.extract_topics(
         criterion="authors",
         directory=directory,
         database=database,
@@ -85,30 +85,18 @@ def most_global_cited_authors(
         end_year=end_year,
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,
+        topic_max_occ=topic_max_occ,
         topic_min_citations=topic_min_citations,
-        custom_topics=None,
-        title="Most Global Cited Authors",
-        plot=plot,
+        topic_max_citations=topic_max_citations,
+        custom_topics=custom_topics,
         **filters,
     )
 
-    obj.prompt_ = _create_prompt(obj.table_)
+    chart = vantagepoint.report.cleveland_chart(
+        obj,
+        title="Most Global Cited Authors",
+        x_label="Global Citations",
+        y_label="AUTHORS",
+    )
 
-    return obj
-
-
-def _create_prompt(table):
-    return f"""
-Imagine that you are a researcher analyzing a bibliographic dataset. The table \
-below provides data on top {table.shape[0]} cited authors with highest \
-number of total citations in the dataset ('global_citations' column). Use the \
-information in the table to draw conclusions about the impact and relevance of \
-the reseach published by the authors in the dataset. In your analysis, be sure \
-to describe in a clear and concise way, any findings or any patterns you \
-observe, and identify any outliers or anomalies in the data. \
-Limit your description to one paragraph with no more than 250 words.
-
-{table.to_markdown()}
-
-
-"""
+    return chart
