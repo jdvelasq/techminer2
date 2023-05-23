@@ -50,6 +50,7 @@ setup(
         "sumy",
         "textblob",
         "wordcloud",
+        "kelaido",
     ],
     packages=[
         "techminer2",
