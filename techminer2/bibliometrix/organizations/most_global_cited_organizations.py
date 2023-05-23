@@ -1,5 +1,5 @@
 """
-Most Global Cited Organizations (GPT)
+Most Global Cited Organizations
 ===============================================================================
 
 

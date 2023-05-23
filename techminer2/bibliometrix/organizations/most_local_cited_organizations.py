@@ -1,5 +1,5 @@
 """
-Most Local Cited Institutions (GPT)
+Most Local Cited Institutions
 ===============================================================================
 
 

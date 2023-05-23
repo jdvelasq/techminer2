@@ -1,5 +1,5 @@
 """
-Organizations' Production over Time (GPT)
+Organizations' Production over Time
 ===============================================================================
 
 

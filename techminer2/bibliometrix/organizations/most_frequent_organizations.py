@@ -1,5 +1,5 @@
 """
-Most Frequent Organizations (GPT)
+Most Frequent Organizations
 ===============================================================================
 
 
