@@ -24,7 +24,7 @@ from ..._thesaurus import load_file_as_dict
 
 
 def find_abbreviations(
-    thesaurus_file="keywords.txt",
+    thesaurus_file,
     directory="./",
 ):
     """Find abbreviations and reorder the thesaurus to reflect the search."""
@@ -41,7 +41,9 @@ def find_abbreviations(
         th = load_file_as_dict(th_file)
     else:
         raise FileNotFoundError(f"The file {th_file} does not exist.")
-    reversed_th = {value: key for key, values in th.items() for value in values}
+    reversed_th = {
+        value: key for key, values in th.items() for value in values
+    }
 
     # ----< search for abbreviations >-------------------------------------------------------------
     df = pd.DataFrame(

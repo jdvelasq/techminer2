@@ -8,5 +8,11 @@ from .create_organizations_thesaurus import create_organizations_thesaurus
 from .create_thesaurus import create_thesaurus
 from .find_abbreviations import find_abbreviations
 from .find_string import find_string
+from .find_string_in_countries import find_string_in_countries
+from .find_string_in_keywords import find_string_in_keywords
+from .find_string_in_organizations import find_string_in_organizations
 from .fuzzy_search import fuzzy_search
+from .fuzzy_search_in_countries import fuzzy_search_in_countries
+from .fuzzy_search_in_keywords import fuzzy_search_in_keywords
+from .fuzzy_search_in_organizations import fuzzy_search_in_organizations
 from .misspelling_search import misspelling_search

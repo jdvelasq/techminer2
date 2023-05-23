@@ -17,15 +17,15 @@ Look for misspeling mistakes in the keywords of a thesaurus.
 """
 import sys
 from os.path import isfile, join
-from textblob import TextBlob
-from spellchecker import SpellChecker
 
+from spellchecker import SpellChecker
+from textblob import TextBlob
 
 from ..._thesaurus import load_file_as_dict
 
 
 def misspelling_search(
-    thesaurus_file="keywords.txt",
+    thesaurus_file,
     directory="./",
 ):
     """Look for misspeling mistakes in the keywords of a thesaurus."""
@@ -46,10 +46,14 @@ def misspelling_search(
     keywords = [word for word in keywords if word.isalpha()]
     misspelled_words = spell.unknown(keywords)
     misspelled_words = sorted(misspelled_words)
-    corrected_words = [str(TextBlob(word).correct()) for word in misspelled_words]
+    corrected_words = [
+        str(TextBlob(word).correct()) for word in misspelled_words
+    ]
     words = [
         (misspelled_word, corrected_word)
-        for misspelled_word, corrected_word in zip(misspelled_words, corrected_words)
+        for misspelled_word, corrected_word in zip(
+            misspelled_words, corrected_words
+        )
         if misspelled_word != corrected_word
     ]
 
@@ -59,4 +63,6 @@ def misspelling_search(
             file.write(misspelled + "\n")
             file.write("    " + corrected + "\n")
 
-    sys.stdout.write(f"--INFO-- The file {misspelled_file} has been generated.\n")
+    sys.stdout.write(
+        f"--INFO-- The file {misspelled_file} has been generated.\n"
+    )

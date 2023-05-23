@@ -65,7 +65,9 @@ def fuzzy_search(
     else:
         raise FileNotFoundError(f"The file {th_file} does not exist.")
 
-    reversed_th = {value: key for key, values in th_dict.items() for value in values}
+    reversed_th = {
+        value: key for key, values in th_dict.items() for value in values
+    }
 
     pdf = pd.DataFrame(
         {
@@ -86,7 +88,9 @@ def fuzzy_search(
                 result.append(pdf[pdf.text.str.contains(potential_match[0])])
 
     if len(result) == 0:
-        sys.stdout.write("--INFO-- No matches found for the current thresold\n")
+        sys.stdout.write(
+            "--INFO-- No matches found for the current thresold\n"
+        )
         return
 
     pdf = pd.concat(result)

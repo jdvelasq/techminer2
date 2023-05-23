@@ -1,45 +1,47 @@
 Refine
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The following fnctions operate on a thesaurus.
+Functions to create, search, and use thesaurus.
 
-    * **Specialized Thesaurus designed for TechMiner2**:
+
+    * **Countries**:
 
         .. toctree::
             clean_countries
+            find_string_in_countries
+            fuzzy_search_in_countries
+
+
+    * **Keywords**:
 
         .. toctree::
             clean_keywords
-
-        .. toctree::
-            clean_organizations
-
-
-
+            find_abbreviations_in_keywords
+            find_string_in_keywords
+            fuzzy_search_in_keywords
+            misspelling_search_in_keywords
 
 
-    * **Generic Thesaurus**: Funtions to create and apply a generic thesaurus on a column.
+    * **Organizations**:
     
         .. toctree::
-            create_thesaurus
-        
+            clean_organizations
+            find_string_in_organizations
+            fuzzy_search_in_organizations
+
+
+
+    * **Operations over custom thesaurus files**:
+
         .. toctree::
+            create_thesaurus
             apply_thesaurus
 
-            
-    * **Operations over thesaurus files**:
 
         .. toctree::
             find_string
-
-        .. toctree::
             fuzzy_search
-
-        .. toctree::
             find_abbreviations
-        
-
-        .. toctree::
             misspelling_search
 
 
