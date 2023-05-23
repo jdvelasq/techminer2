@@ -55,8 +55,7 @@ KEYWORDS       Raw author keywords                            149
 
     
 >>> print(r.prompt_)
-<BLANKLINE>
-Imagine that you are a researcher analyzing a bibliographic dataset. The table below provides data on the main characteristics of the dataset. Use the the information in the table to draw conclusions. Limit your description to one paragraph with no more than 250 words.
+The table below provides data on the main characteristics of the dataset. Use the the information in the table to draw conclusions. Limit your description to one paragraph with no more than 250 words.
 <BLANKLINE>
 |                                                        | Value     |
 |:-------------------------------------------------------|:----------|
@@ -99,13 +98,13 @@ Imagine that you are a researcher analyzing a bibliographic dataset. The table b
     
 """
 import datetime
+from dataclasses import dataclass
 
 import numpy as np
 import pandas as pd
+import plotly.graph_objects as go
 
 from ..._read_records import read_records
-from dataclasses import dataclass
-import plotly.graph_objects as go
 
 
 class _MainInformation:
@@ -144,7 +143,9 @@ class _MainInformation:
         index = pd.MultiIndex.from_arrays(
             [pdf.Category, pdf.Item], names=["Category", "Item"]
         )
-        self.report_ = pd.DataFrame(pdf.Value.tolist(), columns=["Value"], index=index)
+        self.report_ = pd.DataFrame(
+            pdf.Value.tolist(), columns=["Value"], index=index
+        )
 
     #####################################################################################
     def compute_general_information_stats(self):
@@ -212,7 +213,9 @@ class _MainInformation:
 
     def annual_growth_rate(self):
         n_years = max(self.records.year) - min(self.records.year) + 1
-        Po = len(self.records.year[self.records.year == min(self.records.year)])
+        Po = len(
+            self.records.year[self.records.year == min(self.records.year)]
+        )
         return round(100 * (np.power(self.n_records / Po, 1 / n_years) - 1), 2)
 
     def document_average_age(self):
@@ -281,7 +284,9 @@ class _MainInformation:
 
     #####################################################################################
     def compute_document_types_stats(self):
-        self.document_types_stats = pd.DataFrame(columns=["Category", "Item", "Value"])
+        self.document_types_stats = pd.DataFrame(
+            columns=["Category", "Item", "Value"]
+        )
         records = self.records[["document_type"]].dropna()
         document_types_count = (
             records[["document_type"]].groupby("document_type").size()
@@ -297,7 +302,9 @@ class _MainInformation:
 
     #####################################################################################
     def compute_authors_stats(self):
-        self.authors_stats = pd.DataFrame(columns=["Category", "Item", "Value"])
+        self.authors_stats = pd.DataFrame(
+            columns=["Category", "Item", "Value"]
+        )
         self.authors_stats.loc[0] = [
             "AUTHORS",
             "Authors",
@@ -488,7 +495,9 @@ class _MainInformation:
 
     #####################################################################################
     def compute_keywords_stats(self):
-        self.keywords_stats = pd.DataFrame(columns=["Category", "Item", "Value"])
+        self.keywords_stats = pd.DataFrame(
+            columns=["Category", "Item", "Value"]
+        )
         self.keywords_stats.loc[0] = [
             "KEYWORDS",
             "Raw author keywords",
@@ -587,7 +596,9 @@ def make_plot(report):
 
     add_text_trace(fig, "GENERAL", "Annual growth rate %", 2, 1)
     add_text_trace(fig, "AUTHORS", "Authors", 2, 2)
-    add_text_trace(fig, "AUTHORS", "Authors of single-authored documents", 2, 3)
+    add_text_trace(
+        fig, "AUTHORS", "Authors of single-authored documents", 2, 3
+    )
 
     add_text_trace(fig, "AUTHORS", "International co-authorship %", 3, 1)
     add_text_trace(fig, "AUTHORS", "Co-authors per document", 3, 2)
@@ -605,11 +616,10 @@ def make_plot(report):
 
 def make_chatpgt_prompt(report):
     report = report.copy()
-    prompt = f"""
-Imagine that you are a researcher analyzing a bibliographic dataset. The table \
-below provides data on the main characteristics of the dataset. Use the the \
-information in the table to draw conclusions. Limit your description to one \
-paragraph with no more than 250 words.
+    prompt = f"""\
+The table below provides data on the main characteristics of the dataset. \
+Use the the information in the table to draw conclusions. Limit your \
+description to one paragraph with no more than 250 words.
 
 {report.to_markdown()}
 

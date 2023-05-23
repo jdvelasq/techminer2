@@ -112,10 +112,14 @@ def coupling_network(
     matrix = matrix.astype(int)
 
     columns = sorted(
-        matrix.columns.tolist(), key=lambda x: x.split()[-1].split(":")[0], reverse=True
+        matrix.columns.tolist(),
+        key=lambda x: x.split()[-1].split(":")[0],
+        reverse=True,
     )
     indexes = sorted(
-        matrix.index.tolist(), key=lambda x: x.split()[-1].split(":")[0], reverse=True
+        matrix.index.tolist(),
+        key=lambda x: x.split()[-1].split(":")[0],
+        reverse=True,
     )
     matrix = matrix.loc[indexes, columns]
 

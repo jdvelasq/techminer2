@@ -90,7 +90,9 @@ def coupling_matrix_list(
         selected_columns = ["local_citations", "global_citations", criterion]
     else:
         selected_columns = ["global_citations", "local_citations", criterion]
-    records = records.sort_values(selected_columns, ascending=[False, False, True])
+    records = records.sort_values(
+        selected_columns, ascending=[False, False, True]
+    )
     records = records.head(topics_length)
     records = records.explode(coupling_measured_by)
 
@@ -113,17 +115,17 @@ def coupling_matrix_list(
         matrix_list[name] = matrix_list[name].str.strip()
 
     matrix_list["OCC"] = 1
-    matrix_list = matrix_list.groupby(["row", "column"], as_index=False).aggregate(
-        "sum"
-    )
+    matrix_list = matrix_list.groupby(
+        ["row", "column"], as_index=False
+    ).aggregate("sum")
 
     for column_name in ["row", "column"]:
         matrix_list = add_counters_to_items_in_table_column(
-            table=matrix_list,
-            column_name=column_name,
-            criterion=criterion,
+            column=criterion,
+            name=column_name,
             directory=directory,
             database=database,
+            table=matrix_list,
             start_year=start_year,
             end_year=end_year,
             **filters,
