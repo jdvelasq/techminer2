@@ -34,6 +34,7 @@ Import a scopus file to a working directory.
 --INFO-- Processing `raw_authors` column
 --INFO-- Processing `source_abbr` column
 --INFO-- Processing `source_name` column
+--INFO-- Complete `source_abbr` column
 --INFO-- Processing `global_references` column
 --INFO-- Creating `authors` column
 --INFO-- Creating `num_authors` column
@@ -52,7 +53,6 @@ Import a scopus file to a working directory.
 --INFO-- The data/regtech/processed/countries.txt thesaurus file was created
 --INFO-- The data/regtech/processed/countries.txt thesaurus file was applied to affiliations in all databases
 --INFO-- Creating `num_global_references` column
---INFO-- Complete `source_abbr` column
 --INFO-- Creating `abstract.csv` file from `documents` database
 --INFO-- Creating `bradford` column
 --INFO-- Searching `references` using DOI
@@ -117,6 +117,7 @@ def import_scopus_files(
     _process__raw_authors__column(directory)
     _process__source_abbr__column(directory)
     _process__source_name__column(directory)
+    _complete__source_abbr__column(directory)
     _process__global_references__column(directory)
     #
     _create__authors__column(directory, disable_progress_bar)
@@ -144,7 +145,7 @@ def import_scopus_files(
     vantagepoint.refine.clean_countries(directory)
     #
     _create__num_global_references__column(directory)
-    _complete__source_abbr__column(directory)
+
     _create__abstract_csv__file(directory)
     #
     _create__bradford__column(directory)

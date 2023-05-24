@@ -27,7 +27,7 @@ Anagnostopoulos I, 2018, J ECON BUS, V100, P7                    153  ...  10.10
 Butler T/1, 2019, PALGRAVE STUD DIGIT BUS ENABL...                33  ...     10.1007/978-3-030-02330-0_6
 Kavassalis P, 2018, J RISK FINANC, V19, P39                       21  ...        10.1108/JRF-07-2017-0111
 Buckley RP, 2020, J BANK REGUL, V21, P26                          24  ...      10.1057/S41261-019-00104-1
-Butler T/1, 2018, J RISK MANG FINANCIAL INST, V...                 8  ...                             NaN
+Butler T/1, 2018, J RISK MANG FIN INST, V11, P19                   8  ...                             NaN
 <BLANKLINE>
 [5 rows x 5 columns]
 
