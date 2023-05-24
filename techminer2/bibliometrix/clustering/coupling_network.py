@@ -6,7 +6,7 @@ Clustering by coupling.
 >>> directory = "data/regtech/"
 
 >>> from techminer2 import bibliometrix
->>> nnet = bibliometrix.clustering.coupling_network(
+>>> obj = bibliometrix.clustering.coupling_network(
 ...     criterion="article",
 ...     coupling_measured_by='local_references',
 ...     topics_length=50,
@@ -19,13 +19,14 @@ Clustering by coupling.
 ... )
 
 >>> file_name = "sphinx/_static/bibliometrix_coupling_network_plot_by_references.html"
->>> nnet.plot_.write_html(file_name)
+>>> obj.plot_.write_html(file_name)
 
 .. raw:: html
 
     <iframe src="../../_static/bibliometrix_coupling_network_plot_by_references.html" height="600px" width="100%" frameBorder="0"></iframe>
 
->>> nnet.communities_.head()
+
+>>obj.communities_.head()
                                                CL_00  ...                                       CL_07
 0         Muganyi T, 2022, FINANCIAL INNOV, V8 1:013  ...  Lan G, 2023, RES INT BUS FINANC, V64 1:000
 1  Ryan P, 2020, ICEIS - PROC INT CONF ENTERP INF...  ...                                            
@@ -36,15 +37,15 @@ Clustering by coupling.
 [5 rows x 8 columns]
 
 
->>> file_name = "sphinx/_static/bibliometrix_coupling_network_plot_by_references_degree_plot.html"
->>> nnet.degree_plot_.write_html(file_name)
+>>file_name = "sphinx/_static/bibliometrix_coupling_network_plot_by_references_degree_plot.html"
+>>obj.degree_plot_.write_html(file_name)
 
 .. raw:: html
 
     <iframe src="../../_static/bibliometrix_coupling_network_plot_by_references_degree_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
->>> nnet.indicators_.head()
+>>obj.indicators_.head()
                                                     group  ...  pagerank
 Hee Jung JH, 2019, FINTECH: LAW AND REGULATION,...      1  ...  0.125258
 Mohamed H, 2021, STUD COMPUT INTELL, V935, P153...      1  ...  0.125258
@@ -57,19 +58,22 @@ Waye V, 2020, ADELAIDE LAW REV, V40, P363 1:005         0  ...  0.006029
 """
 from dataclasses import dataclass
 
+import networkx as nx
+
+from ... import network_utils
 from ..._association_index import association_index
-from ..._get_network_graph_communities import get_network_graph_communities
+
+# from ..._get_network_graph_communities import get_network_graph_communities
 from ..._get_network_graph_degree_plot import get_network_graph_degree_plot
 from ..._get_network_graph_indicators import get_network_graph_indicators
 from ..._get_network_graph_plot import get_network_graph_plot
 from ..._matrix_2_matrix_list import matrix_2_matrix_list
 from ..._matrix_list_2_network_graph import matrix_list_2_network_graph
-from ..._network_community_detection import network_community_detection
 from .coupling_matrix_list import coupling_matrix_list
 
 
 @dataclass(init=False)
-class _Results:
+class _CouplingNetwork:
     communities_: None
     indicators_: None
     plot_: None
@@ -86,6 +90,11 @@ def coupling_network(
     nx_k=0.5,
     nx_iterations=10,
     delta=1.0,
+    node_min_size=30,
+    node_max_size=70,
+    textfont_size_min=10,
+    textfont_size_max=20,
+    seed=0,
     directory="./",
     database="documents",
     start_year=None,
@@ -94,8 +103,36 @@ def coupling_network(
 ):
     """Clustering by coupling."""
 
+    def apply_association_index(normalization, matrix_list):
+        matrix = matrix_list.pivot(index="row", columns="column", values="OCC")
+        matrix = matrix.fillna(0)
+        matrix = matrix.astype(int)
+
+        columns = sorted(
+            matrix.columns.tolist(),
+            key=lambda x: x.split()[-1].split(":")[0],
+            reverse=True,
+        )
+        indexes = sorted(
+            matrix.index.tolist(),
+            key=lambda x: x.split()[-1].split(":")[0],
+            reverse=True,
+        )
+        matrix = matrix.loc[indexes, columns]
+
+        # continue ...
+        matrix = association_index(matrix, association=normalization)
+        matrix_list = matrix_2_matrix_list(matrix)
+        return matrix_list
+
+    #
+    #
+    #  Main
+    #
+    #
+
     matrix_list = coupling_matrix_list(
-        criterion=criterion,
+        unit_of_analysis=criterion,
         coupling_measured_by=coupling_measured_by,
         topics_length=topics_length,
         metric=metric,
@@ -106,31 +143,45 @@ def coupling_network(
         **filters,
     )
 
-    # matrix list ---> matrix
-    matrix = matrix_list.pivot(index="row", columns="column", values="OCC")
-    matrix = matrix.fillna(0)
-    matrix = matrix.astype(int)
-
-    columns = sorted(
-        matrix.columns.tolist(),
-        key=lambda x: x.split()[-1].split(":")[0],
-        reverse=True,
+    matrix_list.matrix_list_ = apply_association_index(
+        normalization, matrix_list.matrix_list_
     )
-    indexes = sorted(
-        matrix.index.tolist(),
-        key=lambda x: x.split()[-1].split(":")[0],
-        reverse=True,
+
+    graph = nx.Graph()
+    graph = network_utils.create_graph_nodes(graph, matrix_list)
+    graph = network_utils.create_occ_node_property(graph)
+    graph = network_utils.compute_prop_sizes(
+        graph, "node_size", node_min_size, node_max_size
     )
-    matrix = matrix.loc[indexes, columns]
+    graph = network_utils.compute_prop_sizes(
+        graph, "textfont_size", textfont_size_min, textfont_size_max
+    )
+    graph = network_utils.create_graph_edges(graph, matrix_list)
+    graph = network_utils.compute_spring_layout(
+        graph, nx_k, nx_iterations, seed
+    )
 
-    # continue ...
-    matrix = association_index(matrix, association=normalization)
-    matrix_list = matrix_2_matrix_list(matrix)
+    graph = network_utils.apply_community_detection_method(
+        graph, method=method
+    )
 
+    node_trace = network_utils.create_node_trace(graph)
+    text_trace = network_utils.create_text_trace(graph)
+    edge_traces = network_utils.create_edge_traces(graph)
+
+    fig = network_utils.create_network_graph(
+        edge_traces, node_trace, text_trace, delta
+    )
+
+    chart = _CouplingNetwork()
+    chart.plot_ = fig
+
+    return chart
+
+    ###
     graph = matrix_list_2_network_graph(matrix_list)
-    graph = network_community_detection(graph, method=method)
 
-    result = _Results()
+    result = _CouplingNetwork()
 
     result.communities_ = get_network_graph_communities(graph)
     result.indicators_ = get_network_graph_indicators(graph)

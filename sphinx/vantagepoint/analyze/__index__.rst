@@ -1,36 +1,47 @@
 Analyze
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    .. toctree::
-        
-        extract_topics
 
-    .. toctree::
+    **Discover**
+
+        .. toctree::
+        
+            extract_topics
+            list_cells_in_matrix
+
+
+        .. toctree::
+
+            co_occ_matrix
+            occ_matrix
+
+
+        .. toctree::
+            auto_corr_matrix
+            cross_corr_matrix
+            corr_map
+
+        
+        .. toctree::
+            factor_matrix 
+
+
+        .. toctree::
+
+            tf_matrix 
+            tf_idf_matrix
+
+
+        .. toctree::
             
-        list_cells_in_matrix
-        
+            terms_by_year
 
-    .. toctree::
-        
-        co_occ_matrix
-        occ_matrix
+    **Explore**
 
+        .. toctree::    
 
-    .. toctree::
-        auto_corr_matrix
-        cross_corr_matrix
-        corr_map
-
-        
-    .. toctree::
-        factor_matrix 
+            matrix_viewer
+            create_grid_concepts
 
 
-    .. toctree::
-
-        tf_matrix 
-        tf_idf_matrix
-
-
-    .. toctree::
-        terms_by_year
+    **Calculate**

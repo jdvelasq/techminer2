@@ -89,14 +89,16 @@ from ..._association_index import association_index
 from ..._cluster_abstracts_report import cluster_abstracts_report
 from ..._clusters_concordances import clusters_concordances
 from ..._create_directory import create_directory
-from ..._get_network_graph_communities import get_network_graph_communities
+
+# from ..._get_network_graph_communities import get_network_graph_communities
 from ..._get_network_graph_degree_plot import get_network_graph_degree_plot
 from ..._get_network_graph_indicators import get_network_graph_indicators
 from ..._get_network_graph_manifold_map import get_network_graph_manifold_map
 from ..._get_network_graph_plot import get_network_graph_plot
 from ..._matrix_2_matrix_list import matrix_2_matrix_list
 from ..._matrix_list_2_network_graph import matrix_list_2_network_graph
-from ..._network_community_detection import network_community_detection
+
+# from ..._network_community_detection import network_community_detection
 from ...vantagepoint.analyze.co_occ_matrix import co_occ_matrix
 
 
@@ -226,7 +228,9 @@ def co_occurrence_network(
         **filters,
     )
 
-    directory_for_concordances = os.path.join(directory_for_results, "concordances")
+    directory_for_concordances = os.path.join(
+        directory_for_results, "concordances"
+    )
     clusters_concordances(
         communities=results.communities_,
         directory_for_concordances=directory_for_concordances,

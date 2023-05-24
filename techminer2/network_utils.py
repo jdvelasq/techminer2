@@ -5,9 +5,53 @@ several modules.
 """
 import networkx as nx
 import numpy as np
+import pandas as pd
 import plotly.graph_objects as go
+from cdlib import algorithms
 
-# from . import vantagepoint
+
+def apply_community_detection_method(graph, method):
+    """Network community detection."""
+
+    # applies the community detection method
+    algorithm = {
+        "label_propagation": algorithms.label_propagation,
+        "leiden": algorithms.leiden,
+        "louvain": algorithms.louvain,
+        "walktrap": algorithms.walktrap,
+    }[method]
+
+    # assigns the community to each node
+    communities = algorithm(graph, randomize=False).communities
+    for i_community, community in enumerate(communities):
+        for node in community:
+            graph.nodes[node]["group"] = i_community
+
+    return graph
+
+
+def create_graph(
+    matrix_list,
+    node_min_size=30,
+    node_max_size=70,
+    textfont_size_min=10,
+    textfont_size_max=20,
+):
+    """Creates a networkx graph from a matrix list."""
+
+    graph = nx.Graph()
+
+    graph = create_graph_nodes(graph, matrix_list)
+    graph = create_occ_node_property(graph)
+    graph = compute_prop_sizes(
+        graph, "node_size", node_min_size, node_max_size
+    )
+    graph = compute_prop_sizes(
+        graph, "textfont_size", textfont_size_min, textfont_size_max
+    )
+    graph = create_graph_edges(graph, matrix_list)
+
+    return graph
 
 
 def create_graph_edges(graph, matrix_list):
@@ -300,6 +344,52 @@ def extract_node_sizes(graph):
     return node_sizes
 
 
+def get_communities(graph):
+    """Gets communities from a networkx graph as a dataframe."""
+
+    def extract_communities(graph):
+        """Gets communities from a networkx graph as a dictionary."""
+
+        communities = {}
+
+        for node, data in graph.nodes(data=True):
+            text = f"CL_{data['group'] :02d}"
+            if text not in communities:
+                communities[text] = []
+            communities[text].append(node)
+
+        return communities
+
+    def sort_community_members(communities):
+        """Sorts community members in a dictionary."""
+
+        for key, items in communities.items():
+            pdf = pd.DataFrame({"members": items})
+            pdf = pdf.assign(
+                OCC=pdf.members.map(lambda x: x.split()[-1].split(":")[0])
+            )
+            pdf = pdf.assign(
+                gc=pdf.members.map(lambda x: x.split()[-1].split(":")[1])
+            )
+            pdf = pdf.sort_values(
+                by=["OCC", "gc", "members"], ascending=[False, False, True]
+            )
+            communities[key] = pdf.members.tolist()
+
+        return communities
+
+    #
+    # main:
+    #
+    communities = extract_communities(graph)
+    communities = sort_community_members(communities)
+    communities = pd.DataFrame.from_dict(communities, orient="index").T
+    communities = communities.fillna("")
+    communities = communities.sort_index(axis=1)
+
+    return communities
+
+
 def set_edge_properties_for_corr_maps(graph):
     """Sets edge properties for correlation maps."""
 
@@ -325,52 +415,3 @@ def set_edge_properties_for_corr_maps(graph):
             graph.edges[edge]["color"] = "#8da4b4"
 
     return graph
-
-
-# def compute_textfont_sizes(node_occ, textfont_size_min, textfont_size_max):
-#     """Computes the textfont sizes for a networkx graph."""
-#     textfont_sizes = np.array(node_occ)
-#     textfont_sizes = textfont_sizes - textfont_sizes.min() + textfont_size_min
-#     if textfont_sizes.max() > textfont_size_max:
-#         textfont_sizes = textfont_size_min + (
-#             textfont_sizes - textfont_size_min
-#         ) / (textfont_sizes.max() - textfont_size_min) * (
-#             textfont_size_max - textfont_size_min
-#         )
-#     return textfont_sizes
-
-
-# def create_nodes_from_matrix(obj):
-#     """Creates a nodes table from a matrix."""
-
-#     matrix_list = vantagepoint.analyze.list_cells_in_matrix(obj)
-#     nodes = matrix_list["row"].drop_duplicates().to_list()
-#     if obj.criterion_for_columns_ != obj.criterion_for_rows_:
-#         nodes += matrix_list["column"].drop_duplicates().to_list()
-#     nodes = sorted(list(set(nodes)))
-#     nodes_table = pd.DataFrame(index=nodes)
-#     return nodes_table
-
-
-# def create_occ_from_index(nodes_table):
-#     """Creates an occ column in a dataframe from index values."""
-
-#     nodes_table = nodes_table.copy()
-#     nodes_table["OCC"] = nodes_table.index.copy()
-#     nodes_table["OCC"] = nodes_table["OCC"].str.split(" ")[-1]
-#     nodes_table["OCC"] = nodes_table["OCC"].str.split(":")[0]
-#     nodes_table["OCC"] = nodes_table["OCC"].astype(int)
-#     return nodes_table
-
-
-# def melt_matrix_obj(matrix_obj):
-#     """Melt a matrix obj."""
-#     matrix = matrix_obj.matrix_.melt(
-#         value_name=matrix_obj.metric_,
-#         var_name="column",
-#         ignore_index=False,
-#     )
-#     matrix = matrix.reset_index()
-#     matrix = matrix.rename(columns={"index": "row"})
-#     matrix = matrix[matrix[matrix_obj.metric_] > 0.0]
-#     return matrix

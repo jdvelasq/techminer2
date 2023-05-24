@@ -102,16 +102,13 @@ def corr_map(
 
     matrix_list = list_cells_in_matrix(matrix)
 
-    graph = nx.Graph()
-    graph = network_utils.create_graph_nodes(graph, matrix_list)
-    graph = network_utils.create_occ_node_property(graph)
-    graph = network_utils.compute_prop_sizes(
-        graph, "node_size", node_min_size, node_max_size
+    graph = network_utils.create_graph(
+        matrix_list,
+        node_min_size,
+        node_max_size,
+        textfont_size_min,
+        textfont_size_max,
     )
-    graph = network_utils.compute_prop_sizes(
-        graph, "textfont_size", textfont_size_min, textfont_size_max
-    )
-    graph = network_utils.create_graph_edges(graph, matrix_list)
 
     graph = network_utils.set_edge_properties_for_corr_maps(graph)
 

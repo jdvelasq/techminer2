@@ -13,7 +13,6 @@ Report
     .. toctree::
         
         world_map
-        matrix_viewer
         heat_map
         bubble_chart
         gantt_chart
