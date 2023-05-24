@@ -20,38 +20,39 @@ Most Frequent Sources
     
 >>> r.table_.head()
 source_abbr
-J BANK REGUL                                                  2
-J FINANC CRIME                                                2
-FOSTER INNOV AND COMPET WITH FINTECH, REGTECH, AND SUPTECH    2
-STUD COMPUT INTELL                                            2
-ROUTLEDGE HANDB OF FINANCIAL TECHNOLOGY AND LAW               2
+J BANK REGUL                     2
+J FINANC CRIME                   2
+FOSTER INNOV AND COMPET WITH     2
+STUD COMPUT INTELL               2
+ROUTLEDGE HANDB OF FIN TECHNO    2
 Name: OCC, dtype: int64
+
 
 >>> print(r.prompt_)
 Analyze the table below, which provides bibliographic indicators for a collection of research articles. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
-| source_abbr                                                                                   |   OCC |
-|:----------------------------------------------------------------------------------------------|------:|
-| J BANK REGUL                                                                                  |     2 |
-| J FINANC CRIME                                                                                |     2 |
-| FOSTER INNOV AND COMPET WITH FINTECH, REGTECH, AND SUPTECH                                    |     2 |
-| STUD COMPUT INTELL                                                                            |     2 |
-| ROUTLEDGE HANDB OF FINANCIAL TECHNOLOGY AND LAW                                               |     2 |
-| INT CONF INF TECHNOL SYST INNOV, ICITSI - PROC                                                |     2 |
-| J ECON BUS                                                                                    |     1 |
-| NORTHWEST J INTL LAW BUS                                                                      |     1 |
-| PALGRAVE STUD DIGIT BUS ENABLING TECHNOL                                                      |     1 |
-| DUKE LAW J                                                                                    |     1 |
-| J RISK FINANC                                                                                 |     1 |
-| J MONEY LAUND CONTROL                                                                         |     1 |
-| FINANCIAL INNOV                                                                               |     1 |
-| ICEIS - PROC INT CONF ENTERP INF SYST                                                         |     1 |
-| HELIYON                                                                                       |     1 |
-| HANDB OF BLOCKCHAIN, DIGIT FINANC, AND INCL, VOL 1: CRYPTOCURR, FINTECH, INSURTECH, AND REGUL |     1 |
-| J RISK MANG FINANCIAL INST                                                                    |     1 |
-| ADV INTELL SYS COMPUT                                                                         |     1 |
-| INTELL SYST ACCOUNT FINANCE MANAG                                                             |     1 |
-| J FINANCIAL DATA SCI                                                                          |     1 |
+| source_abbr                   |   OCC |
+|:------------------------------|------:|
+| J BANK REGUL                  |     2 |
+| J FINANC CRIME                |     2 |
+| FOSTER INNOV AND COMPET WITH  |     2 |
+| STUD COMPUT INTELL            |     2 |
+| ROUTLEDGE HANDB OF FIN TECHNO |     2 |
+| INT CONF INF TECHNOL SYST INN |     2 |
+| J ECON BUS                    |     1 |
+| NORTHWEST J INTL LAW BUS      |     1 |
+| PALGRAVE STUD DIGIT BUS ENABL |     1 |
+| DUKE LAW J                    |     1 |
+| J RISK FINANC                 |     1 |
+| J MONEY LAUND CTRL            |     1 |
+| FIN INNOV                     |     1 |
+| ICEIS - PROC INT CONF ENTERP  |     1 |
+| HELIYON                       |     1 |
+| HANDB OF BLOCKCHAIN, DIGIT FI |     1 |
+| J RISK MANG FIN INST          |     1 |
+| ADV INTELL SYS COMPUT         |     1 |
+| INTELL SYST ACCOUNT FIN MANAG |     1 |
+| J FIN DATA SCI                |     1 |
 <BLANKLINE>
 <BLANKLINE>
 

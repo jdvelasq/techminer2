@@ -21,41 +21,40 @@ Most Local Cited Sources (from reference lists)
     
 >>> r.table_.head()
 source_abbr
-J ECON BUS                                  17
-PALGRAVE STUD DIGIT BUS ENABLING TECHNOL    14
-J BANK REGUL                                 9
-J RISK FINANC                                8
-J RISK MANG FINANCIAL INST                   5
+J ECON BUS                       17
+PALGRAVE STUD DIGIT BUS ENABL    14
+J BANK REGUL                      9
+J RISK FINANC                     8
+J RISK MANG FIN INST              5
 Name: local_citations, dtype: int64
 
 >>> print(r.prompt_)
 Analyze the table below, which provides bibliographic indicators for a collection of research articles. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
-| source_abbr                                                                                   |   local_citations |
-|:----------------------------------------------------------------------------------------------|------------------:|
-| J ECON BUS                                                                                    |                17 |
-| PALGRAVE STUD DIGIT BUS ENABLING TECHNOL                                                      |                14 |
-| J BANK REGUL                                                                                  |                 9 |
-| J RISK FINANC                                                                                 |                 8 |
-| J RISK MANG FINANCIAL INST                                                                    |                 5 |
-| J FINANC CRIME                                                                                |                 4 |
-| HELIYON                                                                                       |                 4 |
-| J MONEY LAUND CONTROL                                                                         |                 3 |
-| ICEIS - PROC INT CONF ENTERP INF SYST                                                         |                 3 |
-| HANDB OF BLOCKCHAIN, DIGIT FINANC, AND INCL, VOL 1: CRYPTOCURR, FINTECH, INSURTECH, AND REGUL |                 3 |
-| INTELL SYST ACCOUNT FINANCE MANAG                                                             |                 3 |
-| UNIV NEW SOUTH WALES LAW J                                                                    |                 3 |
-| J ANTITRUST ENFORC                                                                            |                 3 |
-| CEUR WORKSHOP PROC                                                                            |                 3 |
-| PROC - IEEE WORLD CONGR SERV, SERVICES                                                        |                 2 |
-| FRONTIER ARTIF INTELL                                                                         |                 2 |
-| FINANCIAL INNOV                                                                               |                 1 |
-| ADV INTELL SYS COMPUT                                                                         |                 1 |
-| J FINANCIAL DATA SCI                                                                          |                 1 |
-| ADELAIDE LAW REV                                                                              |                 1 |
+| source_abbr                   |   local_citations |
+|:------------------------------|------------------:|
+| J ECON BUS                    |                17 |
+| PALGRAVE STUD DIGIT BUS ENABL |                14 |
+| J BANK REGUL                  |                 9 |
+| J RISK FINANC                 |                 8 |
+| J RISK MANG FIN INST          |                 5 |
+| J FINANC CRIME                |                 4 |
+| HELIYON                       |                 4 |
+| J MONEY LAUND CTRL            |                 3 |
+| ICEIS - PROC INT CONF ENTERP  |                 3 |
+| HANDB OF BLOCKCHAIN, DIGIT FI |                 3 |
+| INTELL SYST ACCOUNT FIN MANAG |                 3 |
+| UNIV NEW SOUTH WALES LAW J    |                 3 |
+| J ANTITRUST ENFORC            |                 3 |
+| CEUR WKSHP PROC               |                 3 |
+| PROC - IEEE WORLD CONGR SERV, |                 2 |
+| FRONTIER ARTIF INTELL         |                 2 |
+| FIN INNOV                     |                 1 |
+| ADV INTELL SYS COMPUT         |                 1 |
+| J FIN DATA SCI                |                 1 |
+| ADELAIDE LAW REV              |                 1 |
 <BLANKLINE>
 <BLANKLINE>
-
 
 
 """

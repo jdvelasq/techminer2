@@ -30,6 +30,16 @@ Sarea A       2  ...                             2
  'local_citations',
  'local_citations_per_document']
 
+>>> x = techminer.indicators.indicators_by_topic(
+...     criterion='source_abbr',
+...     directory=directory,
+... ).index
+>>> with open("data.txt", "w") as f:
+...     for item in x:
+...         print(f"{item}", file=f)
+
+
+
 """
 from ..._read_records import read_records
 

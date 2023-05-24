@@ -20,41 +20,42 @@ Most Global Cited Sources
     
 >>> r.table_.head()
 source_abbr
-J ECON BUS                                  153
-NORTHWEST J INTL LAW BUS                    150
-J BANK REGUL                                 35
-PALGRAVE STUD DIGIT BUS ENABLING TECHNOL     33
-DUKE LAW J                                   30
+J ECON BUS                       153
+NORTHWEST J INTL LAW BUS         150
+J BANK REGUL                      35
+PALGRAVE STUD DIGIT BUS ENABL     33
+DUKE LAW J                        30
 Name: global_citations, dtype: int64
 
 
 >>> print(r.prompt_)
 Analyze the table below, which provides bibliographic indicators for a collection of research articles. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
-| source_abbr                                                                                   |   global_citations |
-|:----------------------------------------------------------------------------------------------|-------------------:|
-| J ECON BUS                                                                                    |                153 |
-| NORTHWEST J INTL LAW BUS                                                                      |                150 |
-| J BANK REGUL                                                                                  |                 35 |
-| PALGRAVE STUD DIGIT BUS ENABLING TECHNOL                                                      |                 33 |
-| DUKE LAW J                                                                                    |                 30 |
-| J RISK FINANC                                                                                 |                 21 |
-| J MONEY LAUND CONTROL                                                                         |                 14 |
-| J FINANC CRIME                                                                                |                 13 |
-| FINANCIAL INNOV                                                                               |                 13 |
-| ICEIS - PROC INT CONF ENTERP INF SYST                                                         |                 12 |
-| HELIYON                                                                                       |                 11 |
-| HANDB OF BLOCKCHAIN, DIGIT FINANC, AND INCL, VOL 1: CRYPTOCURR, FINTECH, INSURTECH, AND REGUL |                 11 |
-| J RISK MANG FINANCIAL INST                                                                    |                  8 |
-| ADV INTELL SYS COMPUT                                                                         |                  7 |
-| INTELL SYST ACCOUNT FINANCE MANAG                                                             |                  5 |
-| J FINANCIAL DATA SCI                                                                          |                  5 |
-| ADELAIDE LAW REV                                                                              |                  5 |
-| UNIV NEW SOUTH WALES LAW J                                                                    |                  4 |
-| LECTURE NOTES DATA ENG COMMUN TECH                                                            |                  4 |
-| J ANTITRUST ENFORC                                                                            |                  3 |
+| source_abbr                   |   global_citations |
+|:------------------------------|-------------------:|
+| J ECON BUS                    |                153 |
+| NORTHWEST J INTL LAW BUS      |                150 |
+| J BANK REGUL                  |                 35 |
+| PALGRAVE STUD DIGIT BUS ENABL |                 33 |
+| DUKE LAW J                    |                 30 |
+| J RISK FINANC                 |                 21 |
+| J MONEY LAUND CTRL            |                 14 |
+| J FINANC CRIME                |                 13 |
+| FIN INNOV                     |                 13 |
+| ICEIS - PROC INT CONF ENTERP  |                 12 |
+| HELIYON                       |                 11 |
+| HANDB OF BLOCKCHAIN, DIGIT FI |                 11 |
+| J RISK MANG FIN INST          |                  8 |
+| ADV INTELL SYS COMPUT         |                  7 |
+| INTELL SYST ACCOUNT FIN MANAG |                  5 |
+| J FIN DATA SCI                |                  5 |
+| ADELAIDE LAW REV              |                  5 |
+| UNIV NEW SOUTH WALES LAW J    |                  4 |
+| LECT NOTES DATA ENG COMMUN TE |                  4 |
+| J ANTITRUST ENFORC            |                  3 |
 <BLANKLINE>
 <BLANKLINE>
+
 
 
 

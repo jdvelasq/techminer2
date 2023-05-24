@@ -23,7 +23,7 @@ Sources' Production over Time
 |  0 | TECHNOL SOC        | RegTech  Potential benefits and challenges for businesses                                           |   2023 | Technology in Society                          |                  0 |                 0 | 10.1016/J.TECHSOC.2022.102150  |
 |  1 | RES INT BUS FINANC | Costs of voting and firm performance: Evidence from RegTech adoption in Chinese listed firms        |   2023 | Research in International Business and Finance |                  0 |                 0 | 10.1016/J.RIBAF.2022.101868    |
 |  2 | COMPUTER           | RegTech's Rise                                                                                      |   2022 | Computer                                       |                  0 |                 0 | 10.1109/MC.2022.3176693        |
-|  3 | FINANCIAL INNOV    | Fintech, regtech, and financial development: evidence from China                                    |   2022 | Financial Innovation                           |                 13 |                 1 | 10.1186/S40854-021-00313-6     |
+|  3 | FIN INNOV          | Fintech, regtech, and financial development: evidence from China                                    |   2022 | Financial Innovation                           |                 13 |                 1 | 10.1186/S40854-021-00313-6     |
 |  4 | J CORP FINANC      | Too much to learn? The (un)intended consequences of RegTech development on mergers and acquisitions |   2022 | Journal of Corporate Finance                   |                  0 |                 0 | 10.1016/J.JCORPFIN.2022.102276 |
 
 
@@ -33,40 +33,40 @@ Sources' Production over Time
 | ('ACM INT CONF PROC SER', 2021) |     1 |         1 |                  2 |                 0 |     3 |                       0.667 |                      0     |
 | ('ADELAIDE LAW REV', 2020)      |     1 |         1 |                  5 |                 1 |     4 |                       1.25  |                      0.25  |
 | ('ADV INTELL SYS COMPUT', 2021) |     1 |         1 |                  7 |                 1 |     3 |                       2.333 |                      0.333 |
-| ('CEUR WORKSHOP PROC', 2020)    |     1 |         1 |                  2 |                 3 |     4 |                       0.5   |                      0.75  |
+| ('CEUR WKSHP PROC', 2020)       |     1 |         1 |                  2 |                 3 |     4 |                       0.5   |                      0.75  |
 | ('COMPUTER', 2022)              |     1 |         1 |                  0 |                 0 |     2 |                       0     |                      0     |
 
 
 >>> print(r.table_.to_markdown())
-| source_abbr                                                      |   2016 |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |
-|:-----------------------------------------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
-| J BANK REGUL 2:035                                               |      0 |      0 |      0 |      0 |      1 |      1 |      0 |
-| J FINANC CRIME 2:013                                             |      0 |      0 |      0 |      0 |      1 |      0 |      1 |
-| FOSTER INNOV AND COMPET WITH FINTECH, REGTECH, AND SUPTECH 2:001 |      0 |      0 |      0 |      0 |      2 |      0 |      0 |
-| STUD COMPUT INTELL 2:001                                         |      0 |      0 |      0 |      0 |      0 |      2 |      0 |
-| ROUTLEDGE HANDB OF FINANCIAL TECHNOLOGY AND LAW 2:000            |      0 |      0 |      0 |      0 |      0 |      2 |      0 |
-| INT CONF INF TECHNOL SYST INNOV, ICITSI - PROC 2:000             |      0 |      0 |      0 |      0 |      0 |      0 |      2 |
-| J ECON BUS 1:153                                                 |      0 |      0 |      1 |      0 |      0 |      0 |      0 |
-| NORTHWEST J INTL LAW BUS 1:150                                   |      0 |      1 |      0 |      0 |      0 |      0 |      0 |
-| PALGRAVE STUD DIGIT BUS ENABLING TECHNOL 1:033                   |      0 |      0 |      0 |      1 |      0 |      0 |      0 |
-| DUKE LAW J 1:030                                                 |      1 |      0 |      0 |      0 |      0 |      0 |      0 |
+| source_abbr                         |   2016 |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |
+|:------------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
+| J BANK REGUL 2:035                  |      0 |      0 |      0 |      0 |      1 |      1 |      0 |
+| J FINANC CRIME 2:013                |      0 |      0 |      0 |      0 |      1 |      0 |      1 |
+| FOSTER INNOV AND COMPET WITH 2:001  |      0 |      0 |      0 |      0 |      2 |      0 |      0 |
+| STUD COMPUT INTELL 2:001            |      0 |      0 |      0 |      0 |      0 |      2 |      0 |
+| ROUTLEDGE HANDB OF FIN TECHNO 2:000 |      0 |      0 |      0 |      0 |      0 |      2 |      0 |
+| INT CONF INF TECHNOL SYST INN 2:000 |      0 |      0 |      0 |      0 |      0 |      0 |      2 |
+| J ECON BUS 1:153                    |      0 |      0 |      1 |      0 |      0 |      0 |      0 |
+| NORTHWEST J INTL LAW BUS 1:150      |      0 |      1 |      0 |      0 |      0 |      0 |      0 |
+| PALGRAVE STUD DIGIT BUS ENABL 1:033 |      0 |      0 |      0 |      1 |      0 |      0 |      0 |
+| DUKE LAW J 1:030                    |      1 |      0 |      0 |      0 |      0 |      0 |      0 |
 
 
 >>> print(r.prompt_)
 Analyze the table below which contains the  occurrences by year for the source_abbr. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
-| source_abbr                                                      |   2016 |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |
-|:-----------------------------------------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
-| J BANK REGUL 2:035                                               |      0 |      0 |      0 |      0 |      1 |      1 |      0 |
-| J FINANC CRIME 2:013                                             |      0 |      0 |      0 |      0 |      1 |      0 |      1 |
-| FOSTER INNOV AND COMPET WITH FINTECH, REGTECH, AND SUPTECH 2:001 |      0 |      0 |      0 |      0 |      2 |      0 |      0 |
-| STUD COMPUT INTELL 2:001                                         |      0 |      0 |      0 |      0 |      0 |      2 |      0 |
-| ROUTLEDGE HANDB OF FINANCIAL TECHNOLOGY AND LAW 2:000            |      0 |      0 |      0 |      0 |      0 |      2 |      0 |
-| INT CONF INF TECHNOL SYST INNOV, ICITSI - PROC 2:000             |      0 |      0 |      0 |      0 |      0 |      0 |      2 |
-| J ECON BUS 1:153                                                 |      0 |      0 |      1 |      0 |      0 |      0 |      0 |
-| NORTHWEST J INTL LAW BUS 1:150                                   |      0 |      1 |      0 |      0 |      0 |      0 |      0 |
-| PALGRAVE STUD DIGIT BUS ENABLING TECHNOL 1:033                   |      0 |      0 |      0 |      1 |      0 |      0 |      0 |
-| DUKE LAW J 1:030                                                 |      1 |      0 |      0 |      0 |      0 |      0 |      0 |
+| source_abbr                         |   2016 |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |
+|:------------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
+| J BANK REGUL 2:035                  |      0 |      0 |      0 |      0 |      1 |      1 |      0 |
+| J FINANC CRIME 2:013                |      0 |      0 |      0 |      0 |      1 |      0 |      1 |
+| FOSTER INNOV AND COMPET WITH 2:001  |      0 |      0 |      0 |      0 |      2 |      0 |      0 |
+| STUD COMPUT INTELL 2:001            |      0 |      0 |      0 |      0 |      0 |      2 |      0 |
+| ROUTLEDGE HANDB OF FIN TECHNO 2:000 |      0 |      0 |      0 |      0 |      0 |      2 |      0 |
+| INT CONF INF TECHNOL SYST INN 2:000 |      0 |      0 |      0 |      0 |      0 |      0 |      2 |
+| J ECON BUS 1:153                    |      0 |      0 |      1 |      0 |      0 |      0 |      0 |
+| NORTHWEST J INTL LAW BUS 1:150      |      0 |      1 |      0 |      0 |      0 |      0 |      0 |
+| PALGRAVE STUD DIGIT BUS ENABL 1:033 |      0 |      0 |      0 |      1 |      0 |      0 |      0 |
+| DUKE LAW J 1:030                    |      1 |      0 |      0 |      0 |      0 |      0 |      0 |
 <BLANKLINE>
 <BLANKLINE>
 
@@ -106,7 +106,7 @@ def sources_production_over_time(
         database=database,
         start_year=start_year,
         end_year=end_year,
-        cummulative=cumulative,
+        cumulative=cumulative,
         **filters,
     )
 
