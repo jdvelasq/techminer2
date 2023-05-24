@@ -44,31 +44,31 @@ Authors' Production over Time
 
 
 >>> print(r.table_.head().to_markdown())
-| author_keywords              |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
-|:-----------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
-| regtech 28:329               |      2 |      3 |      4 |      8 |      3 |      6 |      2 |
-| fintech 12:249               |      0 |      2 |      4 |      3 |      1 |      2 |      0 |
-| regulatory technology 07:037 |      0 |      0 |      0 |      2 |      3 |      2 |      0 |
-| compliance 07:030            |      0 |      0 |      1 |      3 |      1 |      1 |      1 |
-| regulation 05:164            |      0 |      2 |      0 |      1 |      1 |      1 |      0 |
+| authors           |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |
+|:------------------|-------:|-------:|-------:|-------:|-------:|-------:|
+| Arner DW 3:185    |      2 |      0 |      0 |      1 |      0 |      0 |
+| Buckley RP 3:185  |      2 |      0 |      0 |      1 |      0 |      0 |
+| Barberis JN 2:161 |      2 |      0 |      0 |      0 |      0 |      0 |
+| Butler T/1 2:041  |      0 |      1 |      1 |      0 |      0 |      0 |
+| Hamdan A 2:018    |      0 |      0 |      0 |      1 |      1 |      0 |
 
 
 
 >>> print(r.prompt_)
-Analyze the table below which contains the  occurrences by year for the author_keywords. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
+Analyze the table below which contains the  occurrences by year for the authors. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
-| author_keywords                |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
-|:-------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
-| regtech 28:329                 |      2 |      3 |      4 |      8 |      3 |      6 |      2 |
-| fintech 12:249                 |      0 |      2 |      4 |      3 |      1 |      2 |      0 |
-| regulatory technology 07:037   |      0 |      0 |      0 |      2 |      3 |      2 |      0 |
-| compliance 07:030              |      0 |      0 |      1 |      3 |      1 |      1 |      1 |
-| regulation 05:164              |      0 |      2 |      0 |      1 |      1 |      1 |      0 |
-| financial services 04:168      |      1 |      1 |      0 |      1 |      0 |      1 |      0 |
-| financial regulation 04:035    |      1 |      0 |      0 |      1 |      0 |      2 |      0 |
-| artificial intelligence 04:023 |      0 |      0 |      1 |      2 |      0 |      1 |      0 |
-| anti-money laundering 03:021   |      0 |      0 |      0 |      1 |      2 |      0 |      0 |
-| risk management 03:014         |      0 |      1 |      0 |      1 |      0 |      1 |      0 |
+| authors           |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |
+|:------------------|-------:|-------:|-------:|-------:|-------:|-------:|
+| Arner DW 3:185    |      2 |      0 |      0 |      1 |      0 |      0 |
+| Buckley RP 3:185  |      2 |      0 |      0 |      1 |      0 |      0 |
+| Barberis JN 2:161 |      2 |      0 |      0 |      0 |      0 |      0 |
+| Butler T/1 2:041  |      0 |      1 |      1 |      0 |      0 |      0 |
+| Hamdan A 2:018    |      0 |      0 |      0 |      1 |      1 |      0 |
+| Turki M 2:018     |      0 |      0 |      0 |      1 |      1 |      0 |
+| Lin W 2:017       |      0 |      0 |      0 |      1 |      0 |      1 |
+| Singh C 2:017     |      0 |      0 |      0 |      1 |      0 |      1 |
+| Brennan R 2:014   |      0 |      0 |      0 |      1 |      1 |      0 |
+| Crane M 2:014     |      0 |      0 |      0 |      1 |      1 |      0 |
 <BLANKLINE>
 <BLANKLINE>
 
@@ -99,7 +99,7 @@ def authors_production_over_time(
     """Authors production over time."""
 
     terms_by_year = vantagepoint.analyze.terms_by_year(
-        criterion="author_keywords",
+        criterion="authors",
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,
         topic_max_occ=topic_max_occ,
@@ -110,7 +110,7 @@ def authors_production_over_time(
         database=database,
         start_year=start_year,
         end_year=end_year,
-        cummulative=cumulative,
+        cumulative=cumulative,
         **filters,
     )
 

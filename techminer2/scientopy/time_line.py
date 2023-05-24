@@ -127,7 +127,9 @@ import numpy as np
 import pandas as pd
 import plotly.express as px
 
-from ..techminer.indicators.growth_indicators_by_topic import growth_indicators_by_topic
+from ..techminer.indicators.growth_indicators_by_topic import (
+    growth_indicators_by_topic,
+)
 from ..techminer.indicators.indicators_by_topic_per_year import (
     indicators_by_topic_per_year,
 )
@@ -211,18 +213,24 @@ def time_line(
     indicators = indicators[indicators[criterion].isin(selected_topics)]
 
     indicators = indicators.sort_values([criterion, "year"], ascending=True)
-    indicators = indicators.pivot(index="year", columns=criterion, values="OCC")
+    indicators = indicators.pivot(
+        index="year", columns=criterion, values="OCC"
+    )
     indicators = indicators.fillna(0)
 
     # complete missing years
-    year_range = list(range(indicators.index.min(), indicators.index.max() + 1))
-    missing_years = [year for year in year_range if year not in indicators.index]
+    year_range = list(
+        range(indicators.index.min(), indicators.index.max() + 1)
+    )
+    missing_years = [
+        year for year in year_range if year not in indicators.index
+    ]
     pdf = pd.DataFrame(
         np.zeros((len(missing_years), len(indicators.columns))),
         index=missing_years,
         columns=indicators.columns,
     )
-    indicators = indicators.append(pdf)
+    indicators = pd.concat([indicators, pdf], ignore_index=False)
     indicators = indicators.sort_index()
 
     indicators = indicators.astype(int)
@@ -240,7 +248,9 @@ def time_line(
     indicators[criterion] = indicators[criterion].apply(_shorten)
 
     column_ = criterion.replace("_", " ").title()
-    indicators = indicators.rename(columns={"year": "Year", criterion: column_})
+    indicators = indicators.rename(
+        columns={"year": "Year", criterion: column_}
+    )
 
     ###
 
