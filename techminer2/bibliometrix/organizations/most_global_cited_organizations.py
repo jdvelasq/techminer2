@@ -8,7 +8,7 @@ Most Global Cited Organizations
 
 >>> from techminer2 import bibliometrix
 >>> r = bibliometrix.organizations.most_global_cited_organizations(
-...     directory,
+...     directory=directory,
 ...     topics_length=20,
 ... )
 >>> r.plot_.write_html(file_name)
@@ -58,10 +58,13 @@ Analyze the table below, which provides bibliographic indicators for a collectio
 
 
 """
-from ... import vantagepoint
+from ..bibliometric_indicators_by_topic import bibliometric_indicators_by_topic
 
 
 def most_global_cited_organizations(
+    plot="cleveland_chart",
+    x_label=None,
+    y_label=None,
     directory="./",
     topics_length=20,
     topic_min_occ=None,
@@ -76,27 +79,22 @@ def most_global_cited_organizations(
 ):
     """Most global cited organizations."""
 
-    obj = vantagepoint.analyze.extract_topics(
+    return bibliometric_indicators_by_topic(
         criterion="organizations",
-        directory=directory,
-        database=database,
         metric="global_citations",
-        start_year=start_year,
-        end_year=end_year,
+        plot=plot,
+        x_label=x_label,
+        y_label=y_label,
+        title="Most Global Cited Organizations",
+        directory=directory,
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,
         topic_max_occ=topic_max_occ,
         topic_min_citations=topic_min_citations,
         topic_max_citations=topic_max_citations,
         custom_topics=custom_topics,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
         **filters,
     )
-
-    chart = vantagepoint.report.cleveland_chart(
-        obj,
-        title="Most Global Cited Organizations",
-        x_label="Global Citations",
-        y_label="ORGANIZATIONS",
-    )
-
-    return chart

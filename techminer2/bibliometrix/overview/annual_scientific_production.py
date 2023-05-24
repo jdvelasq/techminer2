@@ -14,7 +14,7 @@ Annual Scientific Production
 
     <iframe src="../../_static/bibliometrix__annual_scientific_production.html" height="600px" width="100%" frameBorder="0"></iframe>
 
-    
+
 >>> r.table_.head()
       OCC  cum_OCC
 year              

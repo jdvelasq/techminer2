@@ -58,10 +58,13 @@ Analyze the table below, which provides bibliographic indicators for a collectio
 
 
 """
-from ... import vantagepoint
+from ..bibliometric_indicators_by_topic import bibliometric_indicators_by_topic
 
 
 def most_frequent_organizations(
+    plot="cleveland_chart",
+    x_label=None,
+    y_label=None,
     directory="./",
     topics_length=20,
     topic_min_occ=None,
@@ -76,27 +79,22 @@ def most_frequent_organizations(
 ):
     """Plots the number of documents by organizations using the specified plot."""
 
-    obj = vantagepoint.analyze.extract_topics(
+    return bibliometric_indicators_by_topic(
         criterion="organizations",
-        directory=directory,
-        database=database,
         metric="OCC",
-        start_year=start_year,
-        end_year=end_year,
+        plot=plot,
+        x_label=x_label,
+        y_label=y_label,
+        title="Most Frequent Organizations",
+        directory=directory,
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,
         topic_max_occ=topic_max_occ,
         topic_min_citations=topic_min_citations,
         topic_max_citations=topic_max_citations,
         custom_topics=custom_topics,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
         **filters,
     )
-
-    chart = vantagepoint.report.cleveland_chart(
-        obj,
-        title="Most Frequent Organizations",
-        x_label="OCC",
-        y_label="ORGANIZATIONS",
-    )
-
-    return chart
