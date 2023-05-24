@@ -86,7 +86,7 @@ def word_dynamics(
 
     chart = vantagepoint.report.gantt_chart(
         terms_by_year,
-        title=criterion.replace("_", "").title() + " Dynamics",
+        title=criterion.replace("_", " ").title() + " Dynamics",
     )
 
     chart.documents_per_keyword_ = documents_per_criterion(

@@ -21,14 +21,13 @@ Most Local Cited References
 
     
 >>> print(r.table_.head(5).to_markdown())
-| article                                                         |   global_citations |   local_citations |   global_citations_per_year |   local_citations_per_year | doi                            |
-|:----------------------------------------------------------------|-------------------:|------------------:|----------------------------:|---------------------------:|:-------------------------------|
-| Barrell R, 2011, NATL INST ECON REV, V216, PF4                  |                  2 |                68 |                       0.167 |                      5.667 | 10.1177/0027950111411368       |
-| Anagnostopoulos I, 2018, J ECON BUS, V100, P7                   |                153 |                17 |                      30.6   |                      3.4   | 10.1016/J.JECONBUS.2018.07.003 |
-| Butler T/1, 2019, PALGRAVE STUD DIGIT BUS ENABLING TECHNOL, P85 |                 33 |                14 |                       8.25  |                      3.5   | 10.1007/978-3-030-02330-0_6    |
-| Yang D, 2018, EMERG MARK FINANC TRADE, V54, P3256               |                 32 |                 8 |                       6.4   |                      1.6   | 10.1080/1540496X.2018.1496422  |
-| Kavassalis P, 2018, J RISK FINANC, V19, P39                     |                 21 |                 8 |                       4.2   |                      1.6   | 10.1108/JRF-07-2017-0111       |
-
+| article                                              |   global_citations |   local_citations |   global_citations_per_year |   local_citations_per_year | doi                            |
+|:-----------------------------------------------------|-------------------:|------------------:|----------------------------:|---------------------------:|:-------------------------------|
+| Barrell R, 2011, NATL INST ECON REV, V216, PF4       |                  2 |                68 |                       0.167 |                      5.667 | 10.1177/0027950111411368       |
+| Anagnostopoulos I, 2018, J ECON BUS, V100, P7        |                153 |                17 |                      30.6   |                      3.4   | 10.1016/J.JECONBUS.2018.07.003 |
+| Butler T/1, 2019, PALGRAVE STUD DIGIT BUS ENABL, P85 |                 33 |                14 |                       8.25  |                      3.5   | 10.1007/978-3-030-02330-0_6    |
+| Kavassalis P, 2018, J RISK FINANC, V19, P39          |                 21 |                 8 |                       4.2   |                      1.6   | 10.1108/JRF-07-2017-0111       |
+| Yang D, 2018, EMERG MARK FINANC TRADE, V54, P3256    |                 32 |                 8 |                       6.4   |                      1.6   | 10.1080/1540496X.2018.1496422  |
 
 
 """
