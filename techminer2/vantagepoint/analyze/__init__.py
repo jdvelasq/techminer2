@@ -5,9 +5,9 @@ The following functions are available:
 
 - auto_corr_matrix: Computes the autocorrelation matrix of a network.
 - co_occ_matrix: Computes the co-occurrence matrix of a set of terms.
-- corr_map: Generates a correlation map of a network.
 - column_viewer: Generates a radial diagram of term associations from a \
     (co) occurrence matrix.
+- corr_map: Generates a correlation map of a network.
 - create_concept_grid: Creates a grid of concepts based on their co-occurrence.
 - cross_corr_matrix: Computes the cross-correlation matrix of a set of \
     networks.
@@ -45,6 +45,7 @@ from .tf_matrix import tf_matrix
 __all__ = [
     "auto_corr_matrix",
     "co_occ_matrix",
+    "column_viewer",
     "corr_map",
     "create_concept_grid",
     "cross_corr_matrix",

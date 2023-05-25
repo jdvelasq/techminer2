@@ -55,6 +55,7 @@ the data, and discuss their implications in the network.
 | technology 02:010                  |        2 |    0          |    0.510204 |  0.0143888 |
 <BLANKLINE>
 <BLANKLINE>
+
 # noqa: E501
 
 

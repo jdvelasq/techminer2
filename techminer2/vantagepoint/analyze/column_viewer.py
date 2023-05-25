@@ -13,19 +13,56 @@ Column viewer (*)
 ...     directory=directory,
 ... )
 
->>> vantagepoint.analyze.column_viewer(
+>>> chart = vantagepoint.analyze.column_viewer(
 ...     matrix=co_occ_matrix,
 ...     topic="regtech",
 ...     xaxes_range=(-2.5, 2.5),
-... ).write_html(file_name)
+... )
+>>> chart.plot_.write_html(file_name)
 
 .. raw:: html
 
     <iframe src="../../../../../_static/vantagepoint__analyze__column_viewer.html" height="600px" width="100%" frameBorder="0"></iframe>
 
+>>> chart.table_.head()
+                         row          column  OCC
+0             fintech 12:249  regtech 28:329   12
+1          compliance 07:030  regtech 28:329    7
+2          regulation 05:164  regtech 28:329    4
+3  financial services 04:168  regtech 28:329    3
+4             suptech 03:004  regtech 28:329    3
+
+>>> print(chart.prompt_)
+The following table contains de occurrences of the term 'regtech' with the \
+terms specified in the rows of the table of the table. The table is sorted \
+by the number of occurrences. Identify any notable patterns, trends, or \
+outliers in the data, and discuss their implications for the relationships \
+among the terms. Be sure to provide a concise summary of your findings in \
+no more than 30 words.
+<BLANKLINE>
+|    | row                            | column         |   OCC |
+|---:|:-------------------------------|:---------------|------:|
+|  0 | fintech 12:249                 | regtech 28:329 |    12 |
+|  1 | compliance 07:030              | regtech 28:329 |     7 |
+|  2 | regulation 05:164              | regtech 28:329 |     4 |
+|  3 | financial services 04:168      | regtech 28:329 |     3 |
+|  4 | suptech 03:004                 | regtech 28:329 |     3 |
+|  5 | artificial intelligence 04:023 | regtech 28:329 |     2 |
+|  6 | blockchain 03:005              | regtech 28:329 |     2 |
+|  7 | financial regulation 04:035    | regtech 28:329 |     2 |
+|  8 | regulatory technology 07:037   | regtech 28:329 |     2 |
+|  9 | risk management 03:014         | regtech 28:329 |     2 |
+| 10 | anti-money laundering 03:021   | regtech 28:329 |     1 |
+| 11 | innovation 03:012              | regtech 28:329 |     1 |
+<BLANKLINE>
+<BLANKLINE>
+
+# noqa: E501
+
 """
 
 from ... import network_utils
+from ...classes import ColumnViewer
 from .list_cells_in_matrix import list_cells_in_matrix
 
 
@@ -80,6 +117,19 @@ def column_viewer(
         ]
         return matrix_list
 
+    def generate_chatgpt_prompt(matrix_list, topic):
+        text = (
+            "The following table contains de occurrences of the term "
+            f"'{topic}' with the terms specified in the rows of the table "
+            "of the table. The table is sorted by the number of occurrences. "
+            "Identify any notable patterns, trends, or outliers in the data, "
+            "and discuss their implications for the relationships among the "
+            "terms. Be sure to provide a concise summary of your findings "
+            "in no more than 30 words."
+            f"\n\n{matrix_list.matrix_list_.to_markdown()}\n\n"
+        )
+        return text
+
     #
     #
     # Main:
@@ -115,4 +165,10 @@ def column_viewer(
         show_axes,
     )
 
-    return fig
+    obj = ColumnViewer()
+    obj.table_ = matrix_list.matrix_list_
+    obj.plot_ = fig
+    obj.prompt_ = generate_chatgpt_prompt(matrix_list, topic)
+    obj.topic_ = topic
+
+    return obj

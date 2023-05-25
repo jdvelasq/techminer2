@@ -21,3 +21,11 @@ class RecordStatistics:
     table_: pd.DataFrame
     plot_: go.Figure
     prompt_: str
+
+
+@dataclass(init=False)
+class ColumnViewer:
+    table_: pd.DataFrame
+    plot_: go.Figure
+    prompt_: str
+    topic_: str
