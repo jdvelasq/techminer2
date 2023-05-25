@@ -35,7 +35,7 @@ Matrix Viwer (GPT)
 
 .. raw:: html
 
-    <iframe src="../../_static/vantagepoint__matrix_viewer-0.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../../_static/vantagepoint__matrix_viewer-0.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
 >>> print(chart.prompt_)
@@ -82,7 +82,7 @@ Analyze the table below, which contains the the occurrence values for author_key
 
 .. raw:: html
 
-    <iframe src="../../_static/vantagepoint__matrix_viewer-1.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../../_static/vantagepoint__matrix_viewer-1.html" height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> print(chart.prompt_)

@@ -33,6 +33,7 @@ from .list_cells_in_matrix import list_cells_in_matrix
 from .network_degree_plot import network_degree_plot
 from .network_metrics import network_metrics
 from .occ_matrix import occ_matrix
+from .statistics import statistics
 from .terms_by_year import terms_by_year
 from .tf_idf_matrix import tf_idf_matrix
 from .tf_matrix import tf_matrix
@@ -49,6 +50,7 @@ __all__ = [
     "network_degree_plot",
     "network_metrics",
     "occ_matrix",
+    "statistics",
     "terms_by_year",
     "tf_idf_matrix",
     "tf_matrix",
