@@ -42,6 +42,7 @@ Analyze
 
             matrix_viewer
             create_grid_concepts
+            degree_plot
 
 
     **Calculate**

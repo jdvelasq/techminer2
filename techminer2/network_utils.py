@@ -73,6 +73,15 @@ def create_graph_edges(graph, matrix_list):
     return graph
 
 
+def compute_node_degree(graph):
+    """Computes the degree of each node in a networkx graph."""
+
+    for node, adjacencies in graph.adjacency():
+        graph.nodes[node]["degree"] = len(adjacencies)
+
+    return graph
+
+
 def compute_spring_layout(graph, k, iterations, seed):
     """Computes the layout of a networkx graph."""
     pos = nx.spring_layout(graph, k=k, iterations=iterations, seed=seed)

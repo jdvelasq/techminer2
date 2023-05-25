@@ -3,6 +3,7 @@ from .co_occ_matrix import co_occ_matrix
 from .corr_map import corr_map
 from .create_grid_concepts import create_grid_concepts
 from .cross_corr_matrix import cross_corr_matrix
+from .degree_plot import degree_plot
 from .extract_topics import extract_topics
 from .factor_matrix import factor_matrix
 from .list_cells_in_matrix import list_cells_in_matrix
