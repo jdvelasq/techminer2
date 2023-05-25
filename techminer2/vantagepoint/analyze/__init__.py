@@ -1,13 +1,52 @@
+"""
+This package provides the functions available in the Analyze menu.
+
+The following functions are available:
+
+- auto_corr_matrix: Computes the autocorrelation matrix of a network.
+- co_occ_matrix: Computes the co-occurrence matrix of a set of terms.
+- corr_map: Generates a correlation map of a network.
+- create_concept_grid: Creates a grid of concepts based on their co-occurrence.
+- cross_corr_matrix: Computes the cross-correlation matrix of a set of \
+    networks.
+- extract_topics: Extracts topics from a set of documents.
+- factor_matrix: Computes the factor matrix of a network.
+- list_cells_in_matrix: Lists the cells in a matrix that meet a certain \
+    criterion.
+- network_degree_plot: Generates a degree plot of a network.
+- occ_matrix: Computes the occurrence matrix of a set of terms.
+- terms_by_year: Computes the frequency of terms over time.
+- tf_idf_matrix: Computes the TF-IDF matrix of a set of documents.
+- tf_matrix: Computes the term frequency matrix of a set of documents.
+
+"""
+
 from .auto_corr_matrix import auto_corr_matrix
 from .co_occ_matrix import co_occ_matrix
 from .corr_map import corr_map
-from .create_grid_concepts import create_grid_concepts
+from .create_concept_grid import create_concept_grid
 from .cross_corr_matrix import cross_corr_matrix
-from .degree_plot import degree_plot
 from .extract_topics import extract_topics
 from .factor_matrix import factor_matrix
 from .list_cells_in_matrix import list_cells_in_matrix
+from .network_degree_plot import network_degree_plot
 from .occ_matrix import occ_matrix
 from .terms_by_year import terms_by_year
 from .tf_idf_matrix import tf_idf_matrix
 from .tf_matrix import tf_matrix
+
+__all__ = [
+    "auto_corr_matrix",
+    "co_occ_matrix",
+    "corr_map",
+    "create_concept_grid",
+    "cross_corr_matrix",
+    "extract_topics",
+    "factor_matrix",
+    "list_cells_in_matrix",
+    "network_degree_plot",
+    "occ_matrix",
+    "terms_by_year",
+    "tf_idf_matrix",
+    "tf_matrix",
+]

@@ -1,48 +1,33 @@
 Analyze
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. toctree::
+    :maxdepth: 1
 
-    **Discover**
-
-        .. toctree::
-        
-            extract_topics
-            list_cells_in_matrix
+    discover/__index__
 
 
-        .. toctree::
+.. toctree::
+    :maxdepth: 1
 
-            co_occ_matrix
-            occ_matrix
-
-
-        .. toctree::
-            auto_corr_matrix
-            cross_corr_matrix
-            corr_map
-
-        
-        .. toctree::
-            factor_matrix 
+    explore/__index__
 
 
-        .. toctree::
-
-            tf_matrix 
-            tf_idf_matrix
-
-
-        .. toctree::
-            
-            terms_by_year
-
-    **Explore**
-
-        .. toctree::    
-
-            matrix_viewer
-            create_grid_concepts
-            degree_plot
+.. toctree::
+    :maxdepth: 1    
+    
+    calculate/__index__
 
 
-    **Calculate**
+
+
+           
+
+
+
+
+
+
+
+
+

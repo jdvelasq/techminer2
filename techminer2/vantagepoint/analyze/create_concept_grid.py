@@ -10,7 +10,7 @@ Create grid concepts
 ...    topic_min_occ=3,
 ...    directory=directory,
 ... )
->>> grid_concepts = vantagepoint.analyze.create_grid_concepts(co_occ_matrix)
+>>> grid_concepts = vantagepoint.analyze.create_concept_grid(co_occ_matrix)
 >>> grid_concepts
                           CL_00  ...                        CL_02
 0  regulatory technology 07:037  ...               fintech 12:249
@@ -26,10 +26,10 @@ Create grid concepts
 
 
 from ... import network_utils
-from ..analyze.list_cells_in_matrix import list_cells_in_matrix
+from .list_cells_in_matrix import list_cells_in_matrix
 
 
-def create_grid_concepts(
+def create_concept_grid(
     matrix,
     method="louvain",
 ):

@@ -1,23 +1,23 @@
 """
-Deegre plot
+Network deegre plot
 ===============================================================================
 
 >>> directory = "data/regtech/"
 
 >>> from techminer2 import vantagepoint
->>> file_name = "sphinx/_static/vantagepoint__degree_plot.html"
+>>> file_name = "sphinx/_static/vantagepoint__network_degree_plot.html"
 >>> co_occ_matrix = vantagepoint.analyze.co_occ_matrix(
 ...    criterion='author_keywords',
 ...    topic_min_occ=2,
 ...    directory=directory,
 ... )
->>> chart = vantagepoint.analyze.degree_plot(co_occ_matrix)
+>>> chart = vantagepoint.analyze.network_degree_plot(co_occ_matrix)
 >>> chart.plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../_static/vantagepoint__degree_plot.html" height="600px" 
-    width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/vantagepoint__network_degree_plot.html"
+    height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> chart.table_.head()
                            Name  Degree  Node
@@ -28,7 +28,9 @@ Deegre plot
 4  regulatory technology 07:037      11     4
 
 >>> print(chart.prompt_)
-Analyze the table below, which provides the degree of nodes in a networkx graph of a co-ocurrence matrix. Identify any notable patterns, trends, or outliers in the data, and discuss their implications in the network.
+Analyze the table below, which provides the degree of nodes in a networkx \
+graph of a co-ocurrence matrix. Identify any notable patterns, trends, or \
+outliers in the data, and discuss their implications in the network.
 <BLANKLINE>
 |    | Name                               |   Degree |   Node |
 |---:|:-----------------------------------|---------:|-------:|
@@ -73,18 +75,18 @@ import plotly.express as px
 import plotly.graph_objs as go
 
 from ... import network_utils
-from ..analyze.list_cells_in_matrix import list_cells_in_matrix
+from .list_cells_in_matrix import list_cells_in_matrix
 
 
 @dataclass(init=False)
-class _DegreePlot:
+class _NetworkDegreePlot:
     graph_: nx.Graph
     plot_: go.Figure
     table_: pd.DataFrame
     prompt_: str
 
 
-def degree_plot(
+def network_degree_plot(
     matrix,
     textfont_size=8,
     yshift=3,
@@ -183,7 +185,7 @@ def degree_plot(
     dataframe = to_dataframe(degrees)
     fig = plot(dataframe, textfont_size, yshift)
 
-    obj = _DegreePlot()
+    obj = _NetworkDegreePlot()
     obj.plot_ = fig
     obj.graph_ = graph
     obj.table_ = dataframe

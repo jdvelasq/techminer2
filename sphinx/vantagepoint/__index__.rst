@@ -10,13 +10,29 @@ In this section, the library's functionalities are presented in the structure us
 internally in TheVantagePoint software, in order to facilitate comparison.
 
 
-   .. toctree::
-      record_view
-      summary_view
+.. toctree::
 
-   .. toctree::
-      :maxdepth: 1
+   record_view
+
+
+.. toctree::      
+
+   summary_view
+
+
+.. toctree::
+   :maxdepth: 1
       
-      refine/__index__
-      analyze/__index__
-      report/__index__
+   refine/__index__
+
+
+.. toctree::
+   :maxdepth: 1     
+
+   analyze/__index__
+
+
+.. toctree::
+   :maxdepth: 1
+
+   report/__index__
