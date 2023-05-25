@@ -14,7 +14,7 @@ The following functions are available:
 - list_cells_in_matrix: Lists the cells in a matrix that meet a certain \
     criterion.
 - network_degree_plot: Generates a degree plot of a network.
-- network_statistics: Computes the statistics of a network.
+- network_metrics: Computes the metrics of a network.
 - occ_matrix: Computes the occurrence matrix of a set of terms.
 - terms_by_year: Computes the frequency of terms over time.
 - tf_idf_matrix: Computes the TF-IDF matrix of a set of documents.
@@ -31,7 +31,7 @@ from .extract_topics import extract_topics
 from .factor_matrix import factor_matrix
 from .list_cells_in_matrix import list_cells_in_matrix
 from .network_degree_plot import network_degree_plot
-from .network_statistics import network_statistics
+from .network_metrics import network_metrics
 from .occ_matrix import occ_matrix
 from .terms_by_year import terms_by_year
 from .tf_idf_matrix import tf_idf_matrix
@@ -47,7 +47,7 @@ __all__ = [
     "factor_matrix",
     "list_cells_in_matrix",
     "network_degree_plot",
-    "network_statistics",
+    "network_metrics",
     "occ_matrix",
     "terms_by_year",
     "tf_idf_matrix",

@@ -1,5 +1,5 @@
 """
-Create grid concepts
+Create concept grid
 ===============================================================================
 
 >>> directory = "data/regtech/"
@@ -33,7 +33,7 @@ def create_concept_grid(
     matrix,
     method="louvain",
 ):
-    """Cluster a co-occurrence matrix using community detection methods."""
+    """Create a concept grid (communities) of a networkx graph."""
 
     matrix_list = list_cells_in_matrix(matrix)
     graph = network_utils.create_graph(matrix_list)

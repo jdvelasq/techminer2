@@ -1,6 +1,7 @@
 """
-Network deegre plot
+Network deegre plot (*)
 ===============================================================================
+
 
 >>> directory = "data/regtech/"
 

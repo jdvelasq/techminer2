@@ -1,17 +1,16 @@
 """
-Network statistics
+Network metrics
 ===============================================================================
 
 >>> directory = "data/regtech/"
 
 >>> from techminer2 import vantagepoint
->>> file_name = "sphinx/_static/vantagepoint__network_degree_plot.html"
 >>> co_occ_matrix = vantagepoint.analyze.co_occ_matrix(
 ...    criterion='author_keywords',
 ...    topic_min_occ=2,
 ...    directory=directory,
 ... )
->>> obj = vantagepoint.analyze.network_statistics(co_occ_matrix)
+>>> obj = vantagepoint.analyze.network_metrics(co_occ_matrix)
 >>> obj.table_.head()
                               Degree  Betweenness  Closeness  PageRank
 regtech 28:329                    24     0.462865   0.961538  0.120570
@@ -59,7 +58,6 @@ the data, and discuss their implications in the network.
 # noqa: E501
 
 
-
 """
 
 from ... import network_utils
@@ -67,10 +65,10 @@ from ...classes import NetworkStatistics
 from .list_cells_in_matrix import list_cells_in_matrix
 
 
-def network_statistics(
+def network_metrics(
     matrix,
 ):
-    """Compute and plots the degree of a co-occurrence matrix."""
+    """Compute network metrics a co-occurrence matrix."""
 
     def generate_chatgpt_prompt(table):
         """Generates a chatgpt prompt."""
