@@ -6,6 +6,8 @@ The following functions are available:
 - auto_corr_matrix: Computes the autocorrelation matrix of a network.
 - co_occ_matrix: Computes the co-occurrence matrix of a set of terms.
 - corr_map: Generates a correlation map of a network.
+- column_viewer: Generates a radial diagram of term associations from a \
+    (co) occurrence matrix.
 - create_concept_grid: Creates a grid of concepts based on their co-occurrence.
 - cross_corr_matrix: Computes the cross-correlation matrix of a set of \
     networks.
@@ -24,6 +26,7 @@ The following functions are available:
 
 from .auto_corr_matrix import auto_corr_matrix
 from .co_occ_matrix import co_occ_matrix
+from .column_viewer import column_viewer
 from .corr_map import corr_map
 from .create_concept_grid import create_concept_grid
 from .cross_corr_matrix import cross_corr_matrix

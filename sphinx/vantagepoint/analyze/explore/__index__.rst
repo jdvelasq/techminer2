@@ -4,6 +4,11 @@ Explore
 .. toctree::
     :maxdepth: 1
 
+    column_viewer
+
+.. toctree::
+    :maxdepth: 1
+
     matrix_viewer
 
 

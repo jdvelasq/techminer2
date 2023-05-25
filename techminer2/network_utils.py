@@ -58,7 +58,8 @@ def create_graph_edges(graph, matrix_list):
     """Creates edges from 'row' and 'column' columns in a matrix list."""
 
     table = matrix_list.matrix_list_.copy()
-    table = table[table["row"] < table["column"]]
+    if matrix_list.criterion_for_columns_ == matrix_list.criterion_for_rows_:
+        table = table[table["row"] < table["column"]]
     table = table[table[matrix_list.metric_] > 0]
 
     for _, row in table.iterrows():
@@ -69,6 +70,20 @@ def create_graph_edges(graph, matrix_list):
             dash="solid",
             color="#8da4b4",
         )
+
+    return graph
+
+
+def compute_circular_layout(graph):
+    """Computes a circular layout with the last node as center"""
+
+    pos = nx.circular_layout(graph)
+    last_node = list(graph.nodes())[-1]
+    for node in graph.nodes():
+        if node == last_node:
+            graph.nodes[node]["pos"] = [0, 0]
+        else:
+            graph.nodes[node]["pos"] = pos[node]
 
     return graph
 
@@ -214,7 +229,14 @@ def create_graph_nodes(graph, matrix_list):
     return graph
 
 
-def create_network_graph(edge_traces, node_trace, text_trace, delta=1.0):
+def create_network_graph(
+    edge_traces,
+    node_trace,
+    text_trace,
+    xaxes_range,
+    yaxes_range,
+    show_axes,
+):
     """Creates a network graph from edge traces, node trace and text trace using plotly express."""
 
     layout = go.Layout(
@@ -235,8 +257,6 @@ def create_network_graph(edge_traces, node_trace, text_trace, delta=1.0):
                 font={"size": 10},
             )
         ],
-        xaxis={"showgrid": False, "zeroline": False, "showticklabels": False},
-        yaxis={"showgrid": False, "zeroline": False, "showticklabels": False},
     )
 
     fig = go.Figure(
@@ -244,12 +264,32 @@ def create_network_graph(edge_traces, node_trace, text_trace, delta=1.0):
         layout=layout,
     )
 
+    if show_axes is False:
+        fig.update_layout(
+            xaxis={
+                "showgrid": False,
+                "zeroline": False,
+                "showticklabels": False,
+            },
+            yaxis={
+                "showgrid": False,
+                "zeroline": False,
+                "showticklabels": False,
+            },
+        )
+
+    if xaxes_range is not None:
+        fig.update_xaxes(range=xaxes_range)
+
+    if yaxes_range is not None:
+        fig.update_yaxes(range=yaxes_range)
+
     fig.update_layout(
         hoverlabel={
             "bgcolor": "white",
             "font_family": "monospace",
         },
-        xaxis_range=[-1 - delta, 1 + delta],
+        # xaxis_range=[-1 - delta, 1 + delta],
         paper_bgcolor="white",
         plot_bgcolor="white",
     )
