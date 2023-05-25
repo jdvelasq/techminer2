@@ -110,7 +110,7 @@ def main_information(
 ):
     """Returns main statistics of the dataset."""
 
-    return vantagepoint.analyze.main_information(
+    return vantagepoint.analyze.statistics(
         directory=directory,
         database=database,
         start_year=start_year,

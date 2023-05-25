@@ -30,6 +30,7 @@ from .cross_corr_matrix import cross_corr_matrix
 from .extract_topics import extract_topics
 from .factor_matrix import factor_matrix
 from .list_cells_in_matrix import list_cells_in_matrix
+from .matrix_viewer import matrix_viewer
 from .network_degree_plot import network_degree_plot
 from .network_metrics import network_metrics
 from .occ_matrix import occ_matrix
@@ -47,6 +48,7 @@ __all__ = [
     "extract_topics",
     "factor_matrix",
     "list_cells_in_matrix",
+    "matrix_viewer",
     "network_degree_plot",
     "network_metrics",
     "occ_matrix",

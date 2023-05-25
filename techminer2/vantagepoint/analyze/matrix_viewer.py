@@ -28,7 +28,7 @@ Matrix Viwer (GPT)
 4    Arner DW 3:185    financial services 04:168    1
 
 
->>> chart = vantagepoint.report.matrix_viewer(
+>>> chart = vantagepoint.analyze.matrix_viewer(
 ...     occ_matrix,
 ... )
 >>> chart.plot_.write_html(file_name)
@@ -73,10 +73,10 @@ Analyze the table below, which contains the the occurrence values for author_key
 3     regtech 28:329     fintech 12:249   12
 4  compliance 07:030  compliance 07:030    7
 
->>> chart = vantagepoint.report.matrix_viewer(
+>>> chart = vantagepoint.analyze.matrix_viewer(
 ...     co_occ_matrix,
 ...     nx_k=0.5,
-...     nx_iteratons=5,
+...     nx_iterations=5,
 ... )
 >>> chart.plot_.write_html(file_name)
 
@@ -115,7 +115,7 @@ Analyze the table below, which contains the the co-occurrence values for author_
 from dataclasses import dataclass
 
 from ... import network_utils
-from ..analyze.list_cells_in_matrix import list_cells_in_matrix
+from .list_cells_in_matrix import list_cells_in_matrix
 
 
 @dataclass(init=False)
@@ -163,7 +163,7 @@ def matrix_viewer(
 
     chart = _Chart()
     chart.plot_ = fig
-    char.graph_ = graph
+    chart.graph_ = graph
     chart.table_ = matrix_list.matrix_list_
     chart.prompt_ = matrix_list.prompt_
 
