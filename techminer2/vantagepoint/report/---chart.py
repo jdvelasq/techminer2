@@ -49,7 +49,9 @@ def chart(
     if custom_topics is None:
         custom_topics = indicators.copy()
         if topic_min_occ is not None:
-            custom_topics = custom_topics[custom_topics["OCC"] >= topic_min_occ]
+            custom_topics = custom_topics[
+                custom_topics["OCC"] >= topic_min_occ
+            ]
         if topic_min_citations is not None:
             custom_topics = custom_topics[
                 custom_topics["global_citations"] >= topic_min_citations
@@ -58,7 +60,9 @@ def chart(
         custom_topics = custom_topics[:topics_length]
     else:
         custom_topics = [
-            topic for topic in custom_topics if topic in indicators.index.tolist()
+            topic
+            for topic in custom_topics
+            if topic in indicators.index.tolist()
         ]
 
     indicators = indicators.loc[custom_topics, :]

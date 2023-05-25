@@ -73,6 +73,28 @@ def create_graph_edges(graph, matrix_list):
     return graph
 
 
+def compute_newtork_statistics(graph):
+    """Compute network statistics."""
+
+    nodes = list(graph.nodes())
+    degree = [graph.nodes[node]["degree"] for node in nodes]
+    betweenness = nx.betweenness_centrality(graph)
+    closeness = nx.closeness_centrality(graph)
+    pagerank = nx.pagerank(graph)
+
+    indicators = pd.DataFrame(
+        {
+            "Degree": degree,
+            "Betweenness": betweenness,
+            "Closeness": closeness,
+            "PageRank": pagerank,
+        },
+        index=nodes,
+    )
+
+    return indicators
+
+
 def compute_node_degree(graph):
     """Computes the degree of each node in a networkx graph."""
 
