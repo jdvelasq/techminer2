@@ -1,5 +1,5 @@
 """
-Text Screening --- ChatGPT
+Text screening --- ChatGPT
 ===============================================================================
 
 This funcion searchs for them specified in the parameter ``search_for`` in the
@@ -30,7 +30,8 @@ def text_screening(
     end_year=None,
     **filters,
 ):
-    """Generates the file ``text_screening.txt`` with the abstracts matching the search string.
+    """Generates the file ``text_screening.txt`` with the abstracts matching \
+    the search string.
 
     Parameters
     ----------
