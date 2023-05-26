@@ -21,7 +21,7 @@ import textwrap
 
 import pandas as pd
 
-from ...read_records import read_records
+from ...record_utils import read_records
 
 
 def abstracts_report(

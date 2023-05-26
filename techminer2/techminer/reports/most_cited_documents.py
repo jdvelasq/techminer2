@@ -16,7 +16,7 @@ import os.path
 import sys
 import textwrap
 
-from ...read_records import read_records
+from ...record_utils import read_records
 
 
 def most_cited_documents(

@@ -105,7 +105,7 @@ import pandas as pd
 import plotly.graph_objects as go
 
 from ...classes import RecordStatistics
-from ...read_records import read_records
+from ...record_utils import read_records
 
 
 class _Statistics:

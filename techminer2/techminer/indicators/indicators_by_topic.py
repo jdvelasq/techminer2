@@ -41,7 +41,7 @@ Sarea A       2  ...                             2
 
 
 """
-from ...read_records import read_records
+from ...record_utils import read_records
 
 
 def indicators_by_topic(

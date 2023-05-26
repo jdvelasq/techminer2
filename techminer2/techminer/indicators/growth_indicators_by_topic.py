@@ -33,7 +33,7 @@ import numpy as np
 import pandas as pd
 
 from ..._load_stopwords import load_stopwords
-from ...read_records import read_records
+from ...record_utils import read_records
 
 
 def growth_indicators_by_topic(

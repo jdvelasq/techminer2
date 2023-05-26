@@ -25,7 +25,7 @@ from sumy.summarizers.lex_rank import LexRankSummarizer
 from sumy.summarizers.lsa import LsaSummarizer
 from sumy.summarizers.luhn import LuhnSummarizer
 
-from ...read_records import read_records
+from ...record_utils import read_records
 from .abstracts_report import _sort_by_custom_terms, _write_report
 
 

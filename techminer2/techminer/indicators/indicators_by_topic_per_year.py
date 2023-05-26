@@ -49,7 +49,7 @@ Buchkremer R      2020    1  ...                     0.750
 """
 import pandas as pd
 
-from ...read_records import read_records
+from ...record_utils import read_records
 
 
 def indicators_by_topic_per_year(

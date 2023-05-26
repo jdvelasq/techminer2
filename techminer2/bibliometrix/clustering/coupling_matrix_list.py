@@ -29,7 +29,7 @@ from dataclasses import dataclass
 from ...add_counters_to_items_in_table_column import (
     add_counters_to_items_in_table_column,
 )
-from ...read_records import read_records
+from ...record_utils import read_records
 
 # from .records2documents import records2documents
 

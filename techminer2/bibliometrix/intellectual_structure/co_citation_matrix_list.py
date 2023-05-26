@@ -18,7 +18,7 @@ Co-citation Matrix List
 [5 rows x 3 columns]
 
 """
-from ...read_records import read_records
+from ...record_utils import read_records
 
 # from ...vantagepoint.analyze.occ_matrix_list import (
 #     _add_counters_to_items,

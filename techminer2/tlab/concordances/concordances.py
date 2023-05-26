@@ -30,7 +30,7 @@ import os.path
 import textwrap
 
 from ..._load_abstracts import load_abstracts
-from ...read_records import read_records
+from ...record_utils import read_records
 
 
 def concordances(

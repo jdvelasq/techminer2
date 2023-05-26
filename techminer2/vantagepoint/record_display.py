@@ -20,7 +20,7 @@ searching. The report is saved to the file ``processed/record_display.txt``.
 """
 
 from ..build_records_report import build_records_report
-from ..read_records import read_records
+from ..record_utils import read_records
 
 
 def record_display(

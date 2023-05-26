@@ -5,7 +5,7 @@ from dataclasses import dataclass
 
 import plotly.express as px
 
-from ..read_records import read_records
+from ..record_utils import read_records
 from ..techminer.indicators.indicators_by_document import (
     indicators_by_document,
 )

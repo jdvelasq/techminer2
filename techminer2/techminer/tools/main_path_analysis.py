@@ -42,7 +42,7 @@ import networkx as nx
 import pandas as pd
 
 from ..._get_network_graph_plot import get_network_graph_plot
-from ...read_records import read_records
+from ...record_utils import read_records
 from ..reports.abstracts_report import _write_report
 
 
