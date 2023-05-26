@@ -1,14 +1,14 @@
 """
-Bibliometric Indicators by Topic per Year
+Indicators by Topic per Year --- ChatGPT
 ===============================================================================
 
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 
 >>> from techminer2  import techminer
 >>> techminer.indicators.indicators_by_topic_per_year(
 ...     'authors',
-...     directory=directory,
+...     root_dir=root_dir,
 ... ).head(20)
                         OCC  ...  local_citations_per_year
 authors           year       ...                          
@@ -37,7 +37,12 @@ Buchkremer R      2020    1  ...                     0.750
 
 
 >>> from pprint import pprint
->>> pprint(sorted(techminer.indicators.indicators_by_topic_per_year('authors',directory=directory).columns.to_list()))
+>>> pprint(
+...     sorted(
+...         techminer.indicators.indicators_by_topic_per_year(
+...             'authors', root_dir=root_dir).columns.to_list()
+...     )
+... )
 ['OCC',
  'age',
  'cum_OCC',
@@ -46,15 +51,17 @@ Buchkremer R      2020    1  ...                     0.750
  'local_citations',
  'local_citations_per_year']
 
+# noqa: W291
 """
 import pandas as pd
 
-from ...record_utils import read_records
+from ... import record_utils
 
 
+# pylint: disable=too-many-arguments
 def indicators_by_topic_per_year(
     criterion="authors",
-    directory="./",
+    root_dir="./",
     database="documents",
     as_index=True,
     start_year=None,
@@ -63,8 +70,8 @@ def indicators_by_topic_per_year(
 ):
     """Computes indicators by topic per year."""
 
-    indicators = read_records(
-        root_dir=directory,
+    indicators = record_utils.read_records(
+        root_dir=root_dir,
         database=database,
         start_year=start_year,
         end_year=end_year,
@@ -120,10 +127,12 @@ def indicators_by_topic_per_year(
     if as_index is False:
         return indicators
 
-    index = [
-        (name, year)
-        for name, year in zip(indicators[criterion], indicators.year)
-    ]
+    # index = [
+    #     (name, year)
+    #     for name, year in zip(indicators[criterion], indicators.year)
+    # ]
+    index = list(zip(indicators[criterion], indicators.year))
+
     index = pd.MultiIndex.from_tuples(index, names=[criterion, "year"])
     indicators.index = index
 
