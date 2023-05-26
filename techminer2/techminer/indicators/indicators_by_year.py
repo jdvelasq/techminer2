@@ -3,6 +3,10 @@ Indicators by Year --- ChatGPT
 ===============================================================================
 
 
+
+Examples
+--------
+
 >>> root_dir = "data/regtech/"
 
 >>> from techminer2  import techminer
@@ -84,7 +88,20 @@ def indicators_by_year(
     end_year=None,
     **filters,
 ):
-    """Computes annual indicators,"""
+    """
+    Computes annual indicators.
+
+    Args:
+        root_dir (str): root directory.
+        database (str): database name.
+        start_year (int): start year.
+        end_year (int): end year.
+        **filters: filters.
+
+    Returns:
+        pandas.DataFrame: annual indicators.
+
+    """
 
     records = record_utils.read_records(
         root_dir=root_dir,
