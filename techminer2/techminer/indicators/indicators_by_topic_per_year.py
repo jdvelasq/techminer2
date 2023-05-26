@@ -2,6 +2,8 @@
 Indicators by Topic per Year --- ChatGPT
 ===============================================================================
 
+Examples
+--------
 
 >>> root_dir = "data/regtech/"
 
@@ -68,7 +70,21 @@ def indicators_by_topic_per_year(
     end_year=None,
     **filters,
 ):
-    """Computes indicators by topic per year."""
+    """Computes bibliometric indicators by topic per year.
+
+    Args:
+        criterion (str): column name to be used as criterion.
+        root_dir (str): root directory.
+        database (str): database name.
+        as_index (bool): if True, the criterion is used as index.
+        start_year (int): start year.
+        end_year (int): end year.
+        **filters: filters to be applied to the database.
+
+    Returns:
+        pandas.DataFrame: a dataframe containing the indicators.
+
+    """
 
     indicators = record_utils.read_records(
         root_dir=root_dir,
