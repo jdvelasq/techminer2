@@ -1,15 +1,15 @@
 """
-Extract topics --- equivalent to `List View` in VantagePoint.
+List View --- ChatGPT
 ===============================================================================
 
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 
 
 >>> from techminer2 import vantagepoint
->>> r = vantagepoint.analyze.extract_topics(
+>>> r = vantagepoint.analyze.list_view(
 ...    criterion='author_keywords',
-...    directory=directory,
+...    root_dir=root_dir,
 ... )
 >>> r.table_.head()
                        OCC  ...  local_citations_per_document
@@ -64,14 +64,15 @@ Analyze the table below, which provides bibliographic indicators for a collectio
 
 
 """
-from dataclasses import dataclass
+
 
 from ... import chatgpt, techminer
+from ...classes import ListView
 
 
-def extract_topics(
+def list_view(
     criterion,
-    directory="./",
+    root_dir="./",
     database="documents",
     metric="OCC",
     start_year=None,
@@ -84,12 +85,13 @@ def extract_topics(
     custom_topics=None,
     **filters,
 ):
-    """Returns a dataframe with the topics extracted from the specified criterion.
+    """Returns a dataframe with the extracted topics.
 
     Parameters
     ----------
     criterion : str
-        Criterion to be used to extract topics. Corresponds to one of columns of the database.
+        Criterion to be used to extract topics. Corresponds to one of columns \
+        of the database.
 
     directory : str
         Root directory of the project.
@@ -148,7 +150,7 @@ def extract_topics(
 
     indicators = techminer.indicators.indicators_by_topic(
         criterion=criterion,
-        directory=directory,
+        directory=root_dir,
         database=database,
         start_year=start_year,
         end_year=end_year,
@@ -171,7 +173,7 @@ def extract_topics(
 
     indicators = indicators.loc[custom_topics, :]
 
-    results = _ExtractTopicsResult()
+    results = ListView()
     results.table_ = indicators
     results.prompt_ = chatgpt.generate_prompt_bibliographic_indicators(
         results.table_
@@ -232,13 +234,3 @@ def _sort_indicators(indicators, metric):
     indicators = indicators.sort_values(columns, ascending=ascending)
 
     return indicators
-
-
-@dataclass(init=False)
-class _ExtractTopicsResult:
-    """Results of the extract_topics function."""
-
-    table_: None
-    prompt_: None
-    metric_: None
-    criterion_: None

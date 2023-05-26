@@ -9,6 +9,26 @@ import plotly.graph_objs as go
 
 
 @dataclass(init=False)
+class ColumnViewer:
+    """Column viewer."""
+
+    table_: pd.DataFrame
+    plot_: go.Figure
+    prompt_: str
+    topic_: str
+
+
+@dataclass(init=False)
+class ListView:
+    """List view."""
+
+    table_: pd.DataFrame
+    prompt_: str
+    metric_: str
+    criterion_: str
+
+
+@dataclass(init=False)
 class NetworkStatistics:
     """Network statistics."""
 
@@ -23,13 +43,3 @@ class RecordStatistics:
     table_: pd.DataFrame
     plot_: go.Figure
     prompt_: str
-
-
-@dataclass(init=False)
-class ColumnViewer:
-    """Column viewer."""
-
-    table_: pd.DataFrame
-    plot_: go.Figure
-    prompt_: str
-    topic_: str

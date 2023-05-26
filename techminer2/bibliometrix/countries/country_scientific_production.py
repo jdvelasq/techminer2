@@ -80,9 +80,9 @@ def country_scientific_production(
 ):
     """Worldmap plot with the number of documents per country."""
 
-    obj = vantagepoint.analyze.extract_topics(
+    obj = vantagepoint.analyze.list_view(
         criterion="countries",
-        directory=directory,
+        root_dir=directory,
         database=database,
         metric=metric,
         start_year=start_year,

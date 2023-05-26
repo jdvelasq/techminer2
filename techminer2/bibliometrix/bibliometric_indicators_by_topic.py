@@ -28,9 +28,9 @@ def bibliometric_indicators_by_topic(
 ):
     """Plots the number of documents by author using the specified plot."""
 
-    obj = vantagepoint.analyze.extract_topics(
+    obj = vantagepoint.analyze.list_view(
         criterion=criterion,
-        directory=directory,
+        root_dir=directory,
         database=database,
         metric=metric,
         start_year=start_year,

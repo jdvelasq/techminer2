@@ -30,9 +30,9 @@ from .column_viewer import column_viewer
 from .corr_map import corr_map
 from .create_concept_grid import create_concept_grid
 from .cross_corr_matrix import cross_corr_matrix
-from .extract_topics import extract_topics
 from .factor_matrix import factor_matrix
 from .list_cells_in_matrix import list_cells_in_matrix
+from .list_view import list_view
 from .matrix_viewer import matrix_viewer
 from .network_degree_plot import network_degree_plot
 from .network_metrics import network_metrics
@@ -49,7 +49,7 @@ __all__ = [
     "corr_map",
     "create_concept_grid",
     "cross_corr_matrix",
-    "extract_topics",
+    "list_view",
     "factor_matrix",
     "list_cells_in_matrix",
     "matrix_viewer",
