@@ -1,14 +1,26 @@
 Indicators
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    .. toctree::
-        :maxdepth: 1
+.. toctree::
+    collaboration_indicators_by_topic
 
-        annual_occurrence_matrix
-        collaboration_indicators_by_topic
-        growth_indicators_by_topic
-        impact_indicators_by_topic
-        indicators_by_document
-        indicators_by_topic
-        indicators_by_topic_per_year
-        indicators_by_year
+.. toctree::    
+    growth_indicators_by_topic
+
+.. toctree::    
+    impact_indicators_by_topic
+
+.. toctree::    
+    indicators_by_document
+
+.. toctree::    
+    indicators_by_topic
+
+.. toctree::    
+    indicators_by_topic_per_year
+
+.. toctree::    
+    indicators_by_year
+
+.. toctree::    
+    topics_occ_by_year
