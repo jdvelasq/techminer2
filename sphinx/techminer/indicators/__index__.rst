@@ -10,7 +10,7 @@ Indicators
 .. toctree::    
     impact_indicators_by_topic
 
-.. toctree::    
+.. toctree::
     indicators_by_document
 
 .. toctree::    
@@ -24,3 +24,20 @@ Indicators
 
 .. toctree::    
     topics_occ_by_year
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

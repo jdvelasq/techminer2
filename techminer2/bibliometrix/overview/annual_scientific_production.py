@@ -66,7 +66,7 @@ def annual_scientific_production(
     """Computes annual scientific production (number of documents per year)."""
 
     indicators = indicators_by_year(
-        directory=directory,
+        root_dir=directory,
         database=database,
         start_year=start_year,
         end_year=end_year,

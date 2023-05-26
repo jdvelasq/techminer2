@@ -66,7 +66,7 @@ def average_citations_per_year(
     """Average citations per year."""
 
     indicators = indicators_by_year(
-        directory=directory,
+        root_dir=directory,
         database=database,
         start_year=start_year,
         end_year=end_year,

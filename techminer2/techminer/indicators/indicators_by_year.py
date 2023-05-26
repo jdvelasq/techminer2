@@ -1,13 +1,13 @@
 """
-Bibliometric Indicators by Year
+Indicators by Year --- ChatGPT
 ===============================================================================
 
 
->>> directory = "data/regtech/"
-
+>>> root_dir = "data/regtech/"
 
 >>> from techminer2  import techminer
->>> techminer.indicators.indicators_by_year(directory) # doctest: +NORMALIZE_WHITESPACE
+>>> techminer.indicators.indicators_by_year(root_dir) # doctest: \
++NORMALIZE_WHITESPACE
       OCC  cum_OCC  ...  cum_local_citations  mean_local_citations_per_year
 year                ...                                                    
 2016    1        1  ...                  0.0                           0.00
@@ -21,19 +21,24 @@ year                ...
 <BLANKLINE>
 [8 rows x 11 columns]
 
->>> techminer.indicators.indicators_by_year(directory, database="references").tail() # doctest: +NORMALIZE_WHITESPACE
+
+>>> techminer.indicators.indicators_by_year(
+...     root_dir=root_dir, database="references"
+... ).tail() # doctest: +NORMALIZE_WHITESPACE
       OCC  cum_OCC  ...  cum_local_citations  mean_local_citations_per_year
 year                ...                                                    
-2018   89      594  ...                732.0                           0.30
-2019   91      685  ...                840.0                           0.30
-2020  114      799  ...                985.0                           0.42
-2021   80      879  ...               1072.0                           0.54
-2022   30      909  ...               1104.0                           1.07
+2018   89      594  ...                731.0                           0.30
+2019   91      685  ...                839.0                           0.30
+2020  114      799  ...                984.0                           0.42
+2021   80      879  ...               1070.0                           0.54
+2022   30      909  ...               1102.0                           1.07
 <BLANKLINE>
 [5 rows x 11 columns]
 
 
->>> techminer.indicators.indicators_by_year(directory, database="cited_by").tail() # doctest: +NORMALIZE_WHITESPACE
+>>> techminer.indicators.indicators_by_year(
+...     root_dir=root_dir, database="cited_by"
+... ).tail() # doctest: +NORMALIZE_WHITESPACE
       OCC  cum_OCC  ...  cum_global_citations  mean_global_citations_per_year
 year                ...                                                      
 2019   33       44  ...                  1764                            8.15
@@ -44,8 +49,15 @@ year                ...
 <BLANKLINE>
 [5 rows x 7 columns]
 
+
 >>> from pprint import pprint
->>> pprint(sorted(techminer.indicators.indicators_by_year(directory=directory).columns.to_list()))
+>>> pprint(
+...     sorted(
+...         techminer.indicators.indicators_by_year(
+...             root_dir=root_dir
+...         ).columns.to_list()
+...     )
+... )
 ['OCC',
  'citable_years',
  'cum_OCC',
@@ -58,15 +70,15 @@ year                ...
  'mean_local_citations',
  'mean_local_citations_per_year']
 
-
+# noqa: W291
 """
 import plotly.express as px
 
-from ...record_utils import read_records
+from ... import record_utils
 
 
 def indicators_by_year(
-    directory="./",
+    root_dir="./",
     database="documents",
     start_year=None,
     end_year=None,
@@ -74,8 +86,8 @@ def indicators_by_year(
 ):
     """Computes annual indicators,"""
 
-    records = read_records(
-        root_dir=directory,
+    records = record_utils.read_records(
+        root_dir=root_dir,
         database=database,
         start_year=start_year,
         end_year=end_year,
