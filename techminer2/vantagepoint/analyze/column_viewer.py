@@ -112,8 +112,8 @@ def column_viewer(
         """Returns a matrix list with the column specified by the topic and value > 0."""
 
         matrix_list = list_cells_in_matrix(matrix)
-        matrix_list.matrix_list_ = matrix_list.matrix_list_[
-            matrix_list.matrix_list_["OCC"] > 0
+        matrix_list.cells_list_ = matrix_list.cells_list_[
+            matrix_list.cells_list_["OCC"] > 0
         ]
         return matrix_list
 
@@ -166,7 +166,7 @@ def column_viewer(
     )
 
     obj = ColumnViewer()
-    obj.table_ = matrix_list.matrix_list_
+    obj.table_ = matrix_list.cells_list_
     obj.plot_ = fig
     obj.prompt_ = generate_chatgpt_prompt(matrix_list, topic)
     obj.topic_ = topic

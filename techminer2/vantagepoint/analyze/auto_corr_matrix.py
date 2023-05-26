@@ -5,13 +5,13 @@ Auto-correlation Matrix
 Returns an auto-correlation matrix.
 
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 
 >>> from techminer2 import vantagepoint
 >>> r = vantagepoint.analyze.auto_corr_matrix(
 ...     criterion='authors',
 ...     topics_length=10,
-...     directory=directory,
+...     root_dir=root_dir,
 ... )
 >>> r.matrix_
                   Arner DW 3:185  ...  Grassi L 2:002
@@ -51,8 +51,6 @@ Analyze the table below which contains the auto-correlation values for the autho
 """
 from dataclasses import dataclass
 
-import pandas as pd
-
 from ... import chatgpt
 from .compute_corr_matrix import compute_corr_matrix
 from .tf_matrix import tf_matrix
@@ -77,7 +75,7 @@ def auto_corr_matrix(
     topic_min_citations=None,
     topic_max_citations=None,
     custom_topics=None,
-    directory="./",
+    root_dir="./",
     database="documents",
     start_year=None,
     end_year=None,
@@ -99,7 +97,7 @@ def auto_corr_matrix(
         topic_min_citations=topic_min_citations,
         topic_max_citations=topic_max_citations,
         custom_topics=custom_topics,
-        directory=directory,
+        directory=root_dir,
         database=database,
         start_year=start_year,
         end_year=end_year,

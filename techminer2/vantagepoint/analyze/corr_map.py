@@ -126,7 +126,7 @@ def corr_map(
 
     chart = _Chart()
     chart.plot_ = fig
-    chart.table_ = matrix_list.matrix_list_
+    chart.table_ = matrix_list.cells_list_
     chart.prompt_ = matrix_list.prompt_
 
     return chart

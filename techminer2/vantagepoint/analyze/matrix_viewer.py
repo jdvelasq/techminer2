@@ -164,7 +164,7 @@ def matrix_viewer(
     chart = _Chart()
     chart.plot_ = fig
     chart.graph_ = graph
-    chart.table_ = matrix_list.matrix_list_
+    chart.table_ = matrix_list.cells_list_
     chart.prompt_ = matrix_list.prompt_
 
     return chart

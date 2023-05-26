@@ -19,6 +19,17 @@ class ColumnViewer:
 
 
 @dataclass(init=False)
+class ListCellsInMatrix:
+    """List cells in matrix."""
+
+    cells_list_: pd.DataFrame
+    prompt_: str
+    metric_: str
+    criterion_for_columns_: str
+    criterion_for_rows_: str
+
+
+@dataclass(init=False)
 class ListView:
     """List view."""
 
@@ -47,6 +58,8 @@ class RecordStatistics:
 
 @dataclass(init=False)
 class TermsByYear:
+    """Terms by year."""
+
     table_: pd.DataFrame
     prompt_: str
     metric_: str
