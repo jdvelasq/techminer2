@@ -43,3 +43,13 @@ class RecordStatistics:
     table_: pd.DataFrame
     plot_: go.Figure
     prompt_: str
+
+
+@dataclass(init=False)
+class TermsByYear:
+    table_: pd.DataFrame
+    prompt_: str
+    metric_: str
+    cumulative_: bool
+    criterion_for_columns_: str
+    criterion_for_rows_: str

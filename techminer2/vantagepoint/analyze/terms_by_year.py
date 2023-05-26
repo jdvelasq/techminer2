@@ -1,15 +1,15 @@
 """
-Terms by Year
+Terms by Year --- ChatGPT
 ===============================================================================
 
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 
 >>> from techminer2 import vantagepoint
 >>> r = vantagepoint.analyze.terms_by_year(
 ...    criterion='author_keywords',
 ...    topics_length=10,
-...    directory=directory,
+...    root_dir=root_dir,
 ... )
 >>> r.table_
 year                            2017  2018  2019  2020  2021  2022  2023
@@ -48,7 +48,7 @@ Analyze the table below which contains the  occurrences by year for the author_k
 >>> r = vantagepoint.analyze.terms_by_year(
 ...    criterion='author_keywords',
 ...    topics_length=10,
-...    directory=directory,
+...    root_dir=root_dir,
 ...    cumulative=True,
 ... )
 >>> r.table_
@@ -86,26 +86,15 @@ Analyze the table below which contains the cumulative occurrences by year for th
 
 
 """
-from dataclasses import dataclass
-
 from ... import chatgpt
 from ...add_counters_to_items_in_table_column import (
     add_counters_to_items_in_table_column,
 )
+from ...classes import TermsByYear
 from ...techminer.indicators.indicators_by_topic import indicators_by_topic
 from ...techminer.indicators.indicators_by_topic_per_year import (
     indicators_by_topic_per_year,
 )
-
-
-@dataclass(init=False)
-class _TableResult:
-    table_: None
-    prompt_: None
-    metric_: None
-    cumulative_: None
-    criterion_for_columns_: None
-    criterion_for_rows_: None
 
 
 def terms_by_year(
@@ -116,7 +105,7 @@ def terms_by_year(
     topic_min_citations=None,
     topic_max_citations=None,
     custom_topics=None,
-    directory="./",
+    root_dir="./",
     database="documents",
     start_year=None,
     end_year=None,
@@ -125,7 +114,7 @@ def terms_by_year(
 ):
     """Computes the number of terms by year."""
 
-    results = _TableResult()
+    results = TermsByYear()
     results.metric_ = "OCC"
     results.criterion_for_columns_ = "years"
     results.criterion_for_rows_ = criterion
@@ -133,7 +122,7 @@ def terms_by_year(
 
     indicators_by_year = indicators_by_topic_per_year(
         criterion=criterion,
-        directory=directory,
+        directory=root_dir,
         database="documents",
         start_year=start_year,
         end_year=end_year,
@@ -145,7 +134,7 @@ def terms_by_year(
 
     indicators = indicators_by_topic(
         criterion=criterion,
-        directory=directory,
+        directory=root_dir,
         database=database,
         start_year=start_year,
         end_year=end_year,
@@ -208,7 +197,7 @@ def terms_by_year(
     indicators_by_year = add_counters_to_items_in_table_column(
         column=criterion,
         name=criterion,
-        directory=directory,
+        directory=root_dir,
         database=database,
         table=indicators_by_year,
         start_year=start_year,

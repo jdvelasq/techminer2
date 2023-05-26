@@ -2,9 +2,7 @@ Discover
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
-    :maxdepth: 1
-    
-    extract_topics
+    list_view
 
 
 .. toctree::
@@ -20,6 +18,4 @@ Discover
 
 
 .. toctree::
-    :maxdepth: 1
-        
     terms_by_year

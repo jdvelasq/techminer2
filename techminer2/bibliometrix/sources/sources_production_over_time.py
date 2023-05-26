@@ -102,7 +102,7 @@ def sources_production_over_time(
         topic_min_citations=topic_min_citations,
         topic_max_citations=topic_max_citations,
         custom_topics=custom_topics,
-        directory=directory,
+        root_dir=directory,
         database=database,
         start_year=start_year,
         end_year=end_year,
