@@ -3,11 +3,14 @@ Impact Indicators by Topic
 ===============================================================================
 
 
->>> directory = "data/regtech/"
+Examples
+--------
 
+>>> root_dir = "data/regtech/"
 
 >>> from techminer2  import techminer
->>> techminer.indicators.impact_indicators_by_topic("countries", directory=directory).head()
+>>> techminer.indicators.impact_indicators_by_topic(
+...     "countries", root_dir=root_dir).head()
            OCC  ...  avg_global_citations
 countries       ...                      
 Australia    7  ...                 28.43
@@ -20,7 +23,8 @@ France       1  ...                  0.00
 
 
 >>> from pprint import pprint
->>> pprint(sorted(techminer.indicators.impact_indicators_by_topic("countries", directory=directory).columns.to_list()))
+>>> pprint(sorted(techminer.indicators.impact_indicators_by_topic(
+...     "countries", root_dir=root_dir).columns.to_list()))
 ['OCC',
  'age',
  'avg_global_citations',
@@ -31,6 +35,7 @@ France       1  ...                  0.00
  'h_index',
  'm_index']
 
+# noqa: W291
 """
 
 import numpy as np
@@ -39,18 +44,32 @@ import pandas as pd
 from ...record_utils import read_records
 
 
+# pylint: disable=too-many-locals
 def impact_indicators_by_topic(
     criterion,
-    directory="./",
+    root_dir="./",
     database="documents",
     start_year=None,
     end_year=None,
     **filters,
 ):
-    """Impact indicators."""
+    """Computes impact indicators by topic.
+
+    Args:
+        criterion (str): Criterion to be used to group documents.
+        root_dir (str): Root directory.
+        database (str): Database name.
+        start_year (int): Start year.
+        end_year (int): End year.
+        filters (dict): Filters.
+
+    Returns:
+        DataFrame: Impact indicators by topic.
+
+    """
 
     documents = read_records(
-        root_dir=directory,
+        root_dir=root_dir,
         database=database,
         start_year=start_year,
         end_year=end_year,
@@ -66,7 +85,8 @@ def impact_indicators_by_topic(
         "source_abbr",
     ]:
         raise ValueError(
-            'Impact indicators only works with "authors", "authors_id", "countries", "organizations", "source_title" or "source_abbr".'
+            'Impact indicators only works with "authors", "authors_id", '
+            '"countries", "organizations", "source_title" or "source_abbr".'
         )
 
     columns_to_explode = [
