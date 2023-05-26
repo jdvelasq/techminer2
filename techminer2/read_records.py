@@ -6,14 +6,14 @@ import pandas as pd
 
 
 def read_records(
-    directory="./",
+    root_dir="./",
     database="documents",
     start_year=None,
     end_year=None,
     **filters,
 ):
     """load filter records"""
-    records = _get_records_from_file(directory, database)
+    records = _get_records_from_file(root_dir, database)
     records = _filter_records_by_year(records, start_year, end_year)
     records = _apply_filters_to_records(records, **filters)
     return records

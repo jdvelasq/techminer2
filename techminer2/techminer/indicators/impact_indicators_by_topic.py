@@ -36,7 +36,7 @@ France       1  ...                  0.00
 import numpy as np
 import pandas as pd
 
-from ..._read_records import read_records
+from ...read_records import read_records
 
 
 def impact_indicators_by_topic(
@@ -50,7 +50,7 @@ def impact_indicators_by_topic(
     """Impact indicators."""
 
     documents = read_records(
-        directory=directory,
+        root_dir=directory,
         database=database,
         start_year=start_year,
         end_year=end_year,
@@ -76,35 +76,42 @@ def impact_indicators_by_topic(
         "year",
     ]
     detailed_citations = documents[columns_to_explode]
-    detailed_citations[criterion] = detailed_citations[criterion].str.split(";")
+    detailed_citations[criterion] = detailed_citations[criterion].str.split(
+        ";"
+    )
     detailed_citations = detailed_citations.explode(criterion)
     detailed_citations[criterion] = detailed_citations[criterion].str.strip()
     detailed_citations = detailed_citations.reset_index(drop=True)
     detailed_citations = detailed_citations.assign(
-        cumcount_=detailed_citations.sort_values("global_citations", ascending=False)
+        cumcount_=detailed_citations.sort_values(
+            "global_citations", ascending=False
+        )
         .groupby(criterion)
         .cumcount()
         + 1
     )
     detailed_citations = detailed_citations.sort_values(
-        [criterion, "global_citations", "cumcount_"], ascending=[True, False, True]
+        [criterion, "global_citations", "cumcount_"],
+        ascending=[True, False, True],
     )
     detailed_citations = detailed_citations.assign(
         cumcount_2=detailed_citations.cumcount_.map(lambda w: w * w)
     )
 
-    detailed_citations["first_pb_year"] = detailed_citations.groupby(criterion)[
-        "year"
-    ].transform("min")
+    detailed_citations["first_pb_year"] = detailed_citations.groupby(
+        criterion
+    )["year"].transform("min")
 
     detailed_citations["age"] = (
         documents.year.max() - detailed_citations["first_pb_year"] + 1
     )
-    ages = detailed_citations.groupby(criterion, as_index=True).agg({"age": np.max})
-
-    global_citations = detailed_citations.groupby(criterion, as_index=True).agg(
-        {"global_citations": np.sum}
+    ages = detailed_citations.groupby(criterion, as_index=True).agg(
+        {"age": np.max}
     )
+
+    global_citations = detailed_citations.groupby(
+        criterion, as_index=True
+    ).agg({"global_citations": np.sum})
 
     first_pb_year = detailed_citations.groupby(criterion, as_index=True).agg(
         {"first_pb_year": np.min}
@@ -113,11 +120,15 @@ def impact_indicators_by_topic(
     occ = detailed_citations.groupby(criterion, as_index=True).size()
 
     h_indexes = detailed_citations.query("global_citations >= cumcount_")
-    h_indexes = h_indexes.groupby(criterion, as_index=True).agg({"cumcount_": np.max})
+    h_indexes = h_indexes.groupby(criterion, as_index=True).agg(
+        {"cumcount_": np.max}
+    )
     h_indexes = h_indexes.rename(columns={"cumcount_": "h_index"})
 
     g_indexes = detailed_citations.query("global_citations >= cumcount_2")
-    g_indexes = g_indexes.groupby(criterion, as_index=True).agg({"cumcount_": np.max})
+    g_indexes = g_indexes.groupby(criterion, as_index=True).agg(
+        {"cumcount_": np.max}
+    )
     g_indexes = g_indexes.rename(columns={"cumcount_": "g_index"})
 
     indicators = pd.concat(

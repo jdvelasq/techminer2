@@ -63,7 +63,7 @@ import pandas as pd
 import plotly.express as px
 
 from ..._lib._explode import explode
-from ..._read_records import read_records
+from ...read_records import read_records
 
 
 @dataclass(init=False)
@@ -128,7 +128,7 @@ def _core_sources(
         Dataframe with the core sources of the records
     """
     documents = read_records(
-        directory=directory,
+        root_dir=directory,
         database=database,
         start_year=start_year,
         end_year=end_year,
@@ -216,7 +216,7 @@ def _source_clustering(
     """Source clustering throught Bradfors's Law."""
 
     records = read_records(
-        directory=directory,
+        root_dir=directory,
         database=database,
         start_year=start_year,
         end_year=end_year,

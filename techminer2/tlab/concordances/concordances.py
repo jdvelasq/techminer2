@@ -30,7 +30,7 @@ import os.path
 import textwrap
 
 from ..._load_abstracts import load_abstracts
-from ..._read_records import read_records
+from ...read_records import read_records
 
 
 def concordances(
@@ -45,7 +45,7 @@ def concordances(
     """Checks the occurrence contexts of a given text in the abstract's phrases."""
 
     records = read_records(
-        directory=directory,
+        root_dir=directory,
         database="documents",
         start_year=start_year,
         end_year=end_year,
@@ -55,7 +55,8 @@ def concordances(
     abstracts = load_abstracts(directory)
     abstracts = abstracts[abstracts.article.isin(records.article)]
     abstracts = abstracts.sort_values(
-        ["global_citations", "article", "line_no"], ascending=[False, True, True]
+        ["global_citations", "article", "line_no"],
+        ascending=[False, True, True],
     )
     abstracts = _select_abstracts(abstracts, search_for)
 
@@ -76,7 +77,7 @@ def _write_report(directory, abstracts, start_year, end_year, **filters):
     abstracts = abstracts.sort_values("global_citations", ascending=False)
 
     records = read_records(
-        directory=directory,
+        root_dir=directory,
         database="documents",
         start_year=start_year,
         end_year=end_year,
@@ -121,7 +122,9 @@ def _fill(text):
 def _print_concordances(contexts, text):
     """Prints the report."""
     for _, row in contexts.iterrows():
-        print(f"{row['left_context']:>60} {text.upper()} {row['right_context']}")
+        print(
+            f"{row['left_context']:>60} {text.upper()} {row['right_context']}"
+        )
 
 
 def _extract_contexts(abstracts, text):

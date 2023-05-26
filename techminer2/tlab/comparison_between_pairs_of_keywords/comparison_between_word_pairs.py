@@ -85,7 +85,7 @@ import plotly.express as px
 from ... import network_utils
 from ..._items2counters import items2counters
 from ..._load_stopwords import load_stopwords
-from ..._read_records import read_records
+from ...read_records import read_records
 from ...techminer.indicators.indicators_by_topic import indicators_by_topic
 
 # from ...vantagepoint.report.matrix_viewer import (
@@ -392,7 +392,7 @@ def _create_comparison_matrix_list(
     **filters,
 ):
     records = read_records(
-        directory=directory,
+        root_dir=directory,
         database=database,
         start_year=start_year,
         end_year=end_year,

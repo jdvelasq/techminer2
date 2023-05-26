@@ -31,7 +31,7 @@ Computes coverage of terms in a column discarding stopwords.
 import sys
 
 from ..._load_stopwords import load_stopwords
-from ..._read_records import read_records
+from ...read_records import read_records
 
 
 def coverage(
@@ -47,7 +47,7 @@ def coverage(
     stopwords = load_stopwords(directory)
 
     documents = read_records(
-        directory=directory,
+        root_dir=directory,
         database=database,
         start_year=start_year,
         end_year=end_year,
@@ -88,8 +88,12 @@ def coverage(
     )
 
     documents = documents.assign(cum_sum_documents=documents.article.cumsum())
-    documents = documents.assign(cum_sum_documents=documents.cum_sum_documents.map(set))
-    documents = documents.assign(cum_sum_documents=documents.cum_sum_documents.map(len))
+    documents = documents.assign(
+        cum_sum_documents=documents.cum_sum_documents.map(set)
+    )
+    documents = documents.assign(
+        cum_sum_documents=documents.cum_sum_documents.map(len)
+    )
 
     documents = documents.assign(
         coverage=documents.cum_sum_documents.map(
@@ -98,8 +102,12 @@ def coverage(
     )
 
     documents = documents.assign(cum_sum_items=documents[column].cumsum())
-    documents = documents.assign(cum_sum_items=documents.cum_sum_items.map(set))
-    documents = documents.assign(cum_sum_items=documents.cum_sum_items.map(len))
+    documents = documents.assign(
+        cum_sum_items=documents.cum_sum_items.map(set)
+    )
+    documents = documents.assign(
+        cum_sum_items=documents.cum_sum_items.map(len)
+    )
 
     documents.drop("article", axis=1, inplace=True)
     documents.drop(column, axis=1, inplace=True)

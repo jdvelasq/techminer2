@@ -21,7 +21,7 @@ import textwrap
 
 import pandas as pd
 
-from ..._read_records import read_records
+from ...read_records import read_records
 
 
 def abstracts_report(
@@ -38,7 +38,7 @@ def abstracts_report(
     """Extracts abstracts of documents meeting the given criteria."""
 
     records = read_records(
-        directory=directory,
+        root_dir=directory,
         database=database,
         start_year=start_year,
         end_year=end_year,

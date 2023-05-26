@@ -19,7 +19,7 @@ import textwrap
 from os.path import isfile, join
 
 from ..._load_thesaurus_as_dict import load_thesaurus_as_dict
-from ..._read_records import read_records
+from ...read_records import read_records
 
 
 def tm2__keywords_summarization(
@@ -42,7 +42,9 @@ def tm2__keywords_summarization(
             )
 
         # extract keys for thesaurus
-        reversed_th = {value: key for key, values in th.items() for value in values}
+        reversed_th = {
+            value: key for key, values in th.items() for value in values
+        }
         th_keys = []
         for keyword in keywords:
             th_keys.append(reversed_th[keyword])
@@ -62,17 +64,23 @@ def tm2__keywords_summarization(
 
         for keyword in expanded_keywords:
             documents.loc[
-                documents.abstract.str.contains(keyword, regex=False, na=False),
+                documents.abstract.str.contains(
+                    keyword, regex=False, na=False
+                ),
                 "_points_",
             ] += 1
 
         #
         documents[column] = documents[column].str.split(";")
         documents[column] = documents[column].map(
-            lambda x: [item.strip() for item in x] if isinstance(x, list) else x
+            lambda x: [item.strip() for item in x]
+            if isinstance(x, list)
+            else x
         )
         documents[column] = documents[column].map(
-            lambda x: len(set(expanded_keywords) & set(x)) if isinstance(x, list) else 0
+            lambda x: len(set(expanded_keywords) & set(x))
+            if isinstance(x, list)
+            else 0
         )
         documents["_points_"] = documents["_points_"] + documents[column]
         #
@@ -112,7 +120,9 @@ def tm2__keywords_summarization(
         documents = documents[column_list]
 
         # ----< report >-----------------------------------------------------------------
-        filename = join(directory, "reports", f"keywords_summarization{sufix}.txt")
+        filename = join(
+            directory, "reports", f"keywords_summarization{sufix}.txt"
+        )
 
         with open(filename, "w") as out_file:
             sys.stdout.write("--INFO-- Generating " + filename + "\n")
@@ -138,7 +148,9 @@ def tm2__keywords_summarization(
 
                     if column == "abstract":
                         if not isinstance(row[column], float):
-                            print("            abstract :", end="", file=out_file)
+                            print(
+                                "            abstract :", end="", file=out_file
+                            )
                             print(
                                 textwrap.fill(
                                     row[column],
@@ -151,7 +163,10 @@ def tm2__keywords_summarization(
                             )
                         continue
 
-                    print(" {:>19} : {}".format(column, row[column]), file=out_file)
+                    print(
+                        " {:>19} : {}".format(column, row[column]),
+                        file=out_file,
+                    )
 
                 if index != documents.index[-1]:
                     print(

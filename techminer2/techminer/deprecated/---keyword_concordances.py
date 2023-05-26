@@ -35,7 +35,7 @@ from os.path import isfile, join
 import pandas as pd
 
 from ..._load_thesaurus_as_dict import load_thesaurus_as_dict
-from ..._read_records import read_records
+from ...read_records import read_records
 
 
 def keyword_concordances(
@@ -45,7 +45,9 @@ def keyword_concordances(
 ):
     # ---< Sort abstracts by importance >------------------------------------------------
     documents = read_records(directory)
-    article2citation = dict(zip(documents["article"], documents["global_citations"]))
+    article2citation = dict(
+        zip(documents["article"], documents["global_citations"])
+    )
     abstracts = pd.read_csv(join(directory, "processed", "abstracts.csv"))
     abstracts["citations"] = abstracts["article"].map(article2citation)
     abstracts = abstracts.sort_values(
@@ -57,10 +59,14 @@ def keyword_concordances(
     if isfile(thesaurus_file):
         th = load_thesaurus_as_dict(thesaurus_file)
     else:
-        raise FileNotFoundError("The file {} does not exist.".format(thesaurus_file))
+        raise FileNotFoundError(
+            "The file {} does not exist.".format(thesaurus_file)
+        )
 
     # extract keys for thesaurus
-    reversed_th = {value: key for key, values in th.items() for value in values}
+    reversed_th = {
+        value: key for key, values in th.items() for value in values
+    }
     th_keys = []
 
     th_keys.append(reversed_th[keyword])
@@ -87,9 +93,9 @@ def keyword_concordances(
                 row["phrase"],
                 width=90,
             )
-            document_id = documents[documents.article == row.article].article.tolist()[
-                0
-            ]
+            document_id = documents[
+                documents.article == row.article
+            ].article.tolist()[0]
 
             print("*** " + document_id, file=out_file)
             print(paragraph, file=out_file)

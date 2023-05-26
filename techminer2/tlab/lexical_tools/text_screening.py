@@ -76,7 +76,7 @@ def text_screening(
         case=case,
         flags=flags,
         regex=regex,
-        directory=directory,
+        root_dir=directory,
         database=database,
         start_year=start_year,
         end_year=end_year,

@@ -1,5 +1,5 @@
 """documents by each item in a column"""
-from .._read_records import read_records
+from ..read_records import read_records
 
 
 def documents_per_criterion(
@@ -13,7 +13,7 @@ def documents_per_criterion(
     """Documents"""
 
     records = read_records(
-        directory=directory,
+        root_dir=directory,
         database=database,
         start_year=start_year,
         end_year=end_year,

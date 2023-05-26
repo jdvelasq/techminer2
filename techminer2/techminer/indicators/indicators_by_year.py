@@ -62,7 +62,7 @@ year                ...
 """
 import plotly.express as px
 
-from ..._read_records import read_records
+from ...read_records import read_records
 
 
 def indicators_by_year(
@@ -75,7 +75,7 @@ def indicators_by_year(
     """Computes annual indicators,"""
 
     records = read_records(
-        directory=directory,
+        root_dir=directory,
         database=database,
         start_year=start_year,
         end_year=end_year,
@@ -104,7 +104,9 @@ def indicators_by_year(
         records = records.assign(
             mean_global_citations=records.global_citations / records.OCC
         )
-        records = records.assign(cum_global_citations=records.global_citations.cumsum())
+        records = records.assign(
+            cum_global_citations=records.global_citations.cumsum()
+        )
         records = records.assign(
             mean_global_citations_per_year=records.mean_global_citations
             / records.citable_years
@@ -117,7 +119,9 @@ def indicators_by_year(
         records = records.assign(
             mean_local_citations=records.local_citations / records.OCC
         )
-        records = records.assign(cum_local_citations=records.local_citations.cumsum())
+        records = records.assign(
+            cum_local_citations=records.local_citations.cumsum()
+        )
         records = records.assign(
             mean_local_citations_per_year=records.mean_local_citations
             / records.citable_years

@@ -26,7 +26,7 @@ import pandas as pd
 
 from ..._items2counters import items2counters
 from ..._load_stopwords import load_stopwords
-from ..._read_records import read_records
+from ...read_records import read_records
 from ...techminer.indicators.indicators_by_topic import indicators_by_topic
 
 # pylint: disable=too-many-arguments
@@ -173,7 +173,7 @@ def _create_tf_matrix(
     **filters,
 ):
     records = read_records(
-        directory=directory,
+        root_dir=directory,
         database=database,
         start_year=start_year,
         end_year=end_year,

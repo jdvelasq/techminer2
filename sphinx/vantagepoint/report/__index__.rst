@@ -1,19 +1,60 @@
 Report
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    .. toctree::
+.. toctree::    
+    column_chart
 
-        bar_chart
-        cleveland_chart
-        column_chart
-        line_chart
-        pie_chart
-        treemap
+.. toctree::
+    bar_chart
 
-    .. toctree::
-        
-        world_map
-        heat_map
-        bubble_chart
-        gantt_chart
-        word_cloud
+.. toctree::    
+    cleveland_chart
+
+
+.. toctree::    
+    pie_chart
+
+.. toctree::    
+    line_chart
+
+.. toctree::    
+    word_cloud
+
+.. toctree::
+    bubble_chart
+
+.. toctree::    
+    heat_map
+
+.. toctree::    
+    gantt_chart
+
+
+* Butterfly chart (TODO)
+
+* Scatter plot (TODO)
+
+* Cluster map (TODO)
+
+
+.. toctree::
+    world_map
+
+.. toctree::    
+    treemap
+
+
+* Plot classifications (TODO)
+
+    * Circle pack
+
+    * treemap
+
+    * sunburst
+
+
+
+
+
+
+

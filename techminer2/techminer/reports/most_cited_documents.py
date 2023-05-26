@@ -16,7 +16,7 @@ import os.path
 import sys
 import textwrap
 
-from ..._read_records import read_records
+from ...read_records import read_records
 
 
 def most_cited_documents(
@@ -29,7 +29,7 @@ def most_cited_documents(
     """Prints ."""
 
     records = read_records(
-        directory=directory,
+        root_dir=directory,
         database="documents",
         start_year=start_year,
         end_year=end_year,

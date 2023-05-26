@@ -1,5 +1,5 @@
 """
-Auto-correlation Matrix (GPT)
+Auto-correlation Matrix
 ===============================================================================
 
 Returns an auto-correlation matrix.

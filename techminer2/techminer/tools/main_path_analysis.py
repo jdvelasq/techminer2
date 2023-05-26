@@ -42,7 +42,7 @@ import networkx as nx
 import pandas as pd
 
 from ..._get_network_graph_plot import get_network_graph_plot
-from ..._read_records import read_records
+from ...read_records import read_records
 from ..reports.abstracts_report import _write_report
 
 
@@ -122,9 +122,7 @@ def _create_edges(graph, nodes):
 def _create_prompts(documents):
     prompts = []
     for _, row in documents.iterrows():
-        prompt = (
-            f"Summarize the following text in 30 words or less:\n\n{row.abstract}\n\n"
-        )
+        prompt = f"Summarize the following text in 30 words or less:\n\n{row.abstract}\n\n"
         prompts.append(prompt)
     return prompts
 
@@ -198,7 +196,8 @@ def _compute_points_per_path(links, paths):
         for link in zip(path[0], path[0][1:]):
             path[1] += sum(
                 links.loc[
-                    (links.source == link[0]) & (links.target == link[1]), "points"
+                    (links.source == link[0]) & (links.target == link[1]),
+                    "points",
                 ]
             )
     return paths
@@ -270,7 +269,9 @@ def _get_start_nodes(links):
 
 def _compute_paths(links, start_nodes, end_nodes):
     current_paths = [[[node], 0] for node in start_nodes]
-    found_paths, current_paths = _expand_paths(links, end_nodes, [], current_paths)
+    found_paths, current_paths = _expand_paths(
+        links, end_nodes, [], current_paths
+    )
     return found_paths
 
 
@@ -297,7 +298,9 @@ def _expand_paths(links, end_nodes, found_paths, current_paths):
             new_paths.append(new_path)
 
     if len(new_paths) > 0:
-        found_paths, new_paths = _expand_paths(links, end_nodes, found_paths, new_paths)
+        found_paths, new_paths = _expand_paths(
+            links, end_nodes, found_paths, new_paths
+        )
 
     return found_paths, new_paths
 

@@ -26,10 +26,10 @@ Coupling Matrix List
 """
 from dataclasses import dataclass
 
-from ..._read_records import read_records
 from ...add_counters_to_items_in_table_column import (
     add_counters_to_items_in_table_column,
 )
+from ...read_records import read_records
 
 # from .records2documents import records2documents
 
@@ -113,7 +113,7 @@ def coupling_matrix_list(
         **filters,
     ):
         records = read_records(
-            directory=directory,
+            root_dir=directory,
             database=database,
             start_year=start_year,
             end_year=end_year,

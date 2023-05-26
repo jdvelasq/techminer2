@@ -18,7 +18,7 @@ Co-citation Matrix List
 [5 rows x 3 columns]
 
 """
-from ..._read_records import read_records
+from ...read_records import read_records
 
 # from ...vantagepoint.analyze.occ_matrix_list import (
 #     _add_counters_to_items,
@@ -46,7 +46,7 @@ def co_citation_matrix_list(
 
     # select most local cited references
     references = read_records(
-        directory=directory,
+        root_dir=directory,
         database="references",
         start_year=start_year,
         end_year=end_year,

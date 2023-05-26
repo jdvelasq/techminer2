@@ -30,7 +30,7 @@ Baxter LG, 2016, DUKE LAW J, V66, P567                            30  ...       
 
 """
 
-from ..._read_records import read_records
+from ...read_records import read_records
 
 
 def indicators_by_document(
@@ -43,7 +43,7 @@ def indicators_by_document(
     """Document indicators"""
 
     records = read_records(
-        directory=directory,
+        root_dir=directory,
         database=database,
         start_year=start_year,
         end_year=end_year,
@@ -63,14 +63,17 @@ def indicators_by_document(
 
     # -----------------------------------------------------------------------------------
     records = records.assign(
-        local_citations_per_year=records.local_citations / (max_year - records.year + 1)
+        local_citations_per_year=records.local_citations
+        / (max_year - records.year + 1)
     )
     records = records.assign(
         local_citations_per_year=records.local_citations_per_year.round(3)
     )
 
     # -----------------------------------------------------------------------------------
-    records["global_citations"] = records.global_citations.map(int, na_action="ignore")
+    records["global_citations"] = records.global_citations.map(
+        int, na_action="ignore"
+    )
 
     # -----------------------------------------------------------------------------------
     records = records.set_index("article")

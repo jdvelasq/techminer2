@@ -43,7 +43,7 @@ import string
 
 from nltk.stem import PorterStemmer, SnowballStemmer
 
-from .._read_records import read_records
+from ..read_records import read_records
 
 
 def stemming_and(
@@ -102,7 +102,7 @@ def _stemming(
 
     # explodes the column
     documents = read_records(
-        directory=directory,
+        root_dir=directory,
         database=database,
         use_filter=False,
     )
@@ -134,12 +134,16 @@ def _stemming(
 
     # operator
     if operator == "AND":
-        documents["words"] = documents["words"].map(lambda x: pattern.difference(x))
+        documents["words"] = documents["words"].map(
+            lambda x: pattern.difference(x)
+        )
         documents["words"] = documents["words"].map(len)
         documents = documents.query("words == 0")
         result = documents[column].copy()
     elif operator == "OR":
-        documents["words"] = documents["words"].map(lambda x: pattern.intersection(x))
+        documents["words"] = documents["words"].map(
+            lambda x: pattern.intersection(x)
+        )
         documents["words"] = documents["words"].map(len)
         documents = documents.query("words > 0")
         result = documents[column].copy()

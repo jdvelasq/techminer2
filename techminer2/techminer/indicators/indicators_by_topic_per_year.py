@@ -49,7 +49,7 @@ Buchkremer R      2020    1  ...                     0.750
 """
 import pandas as pd
 
-from ..._read_records import read_records
+from ...read_records import read_records
 
 
 def indicators_by_topic_per_year(
@@ -64,7 +64,7 @@ def indicators_by_topic_per_year(
     """Computes indicators by topic per year."""
 
     indicators = read_records(
-        directory=directory,
+        root_dir=directory,
         database=database,
         start_year=start_year,
         end_year=end_year,
@@ -120,7 +120,10 @@ def indicators_by_topic_per_year(
     if as_index is False:
         return indicators
 
-    index = [(name, year) for name, year in zip(indicators[criterion], indicators.year)]
+    index = [
+        (name, year)
+        for name, year in zip(indicators[criterion], indicators.year)
+    ]
     index = pd.MultiIndex.from_tuples(index, names=[criterion, "year"])
     indicators.index = index
 

@@ -62,10 +62,10 @@ from dataclasses import dataclass
 from ... import chatgpt, techminer
 from ..._items2counters import items2counters
 from ..._load_stopwords import load_stopwords
-from ..._read_records import read_records
 from ...add_counters_to_items_in_table_column import (
     add_counters_to_items_in_table_column,
 )
+from ...read_records import read_records
 
 
 @dataclass(init=False)

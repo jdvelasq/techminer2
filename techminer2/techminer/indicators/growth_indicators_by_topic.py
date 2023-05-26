@@ -33,7 +33,7 @@ import numpy as np
 import pandas as pd
 
 from ..._load_stopwords import load_stopwords
-from ..._read_records import read_records
+from ...read_records import read_records
 
 
 def growth_indicators_by_topic(
@@ -48,14 +48,16 @@ def growth_indicators_by_topic(
     """Computes growth indicators."""
 
     records = read_records(
-        directory=directory,
+        root_dir=directory,
         database=database,
         start_year=start_year,
         end_year=end_year,
         **filters,
     )
 
-    return _growth_indicators_from_records(criterion, time_window, directory, records)
+    return _growth_indicators_from_records(
+        criterion, time_window, directory, records
+    )
 
 
 def _growth_indicators_from_records(column, time_window, directory, records):
@@ -112,7 +114,9 @@ def _occ_per_period(
     result = result.explode(column)
     result[column] = result[column].str.strip()
 
-    result = result.assign(before=result.year.map(lambda x: 1 if x < year_limit else 0))
+    result = result.assign(
+        before=result.year.map(lambda x: 1 if x < year_limit else 0)
+    )
 
     result = result.assign(
         between=result.year.map(lambda x: 1 if x >= year_limit else 0)
@@ -159,11 +163,14 @@ def _average_growth_rate(
     result = result.assign(OCC=1)
 
     #
-    result = result.groupby([column, "year"], as_index=False).agg({"OCC": np.sum})
+    result = result.groupby([column, "year"], as_index=False).agg(
+        {"OCC": np.sum}
+    )
     result = result.pivot(index=column, columns="year", values="OCC")
     result = result.fillna(0)
     result = result.assign(
-        average_growth_rate=(result.iloc[:, 1] - result.iloc[:, 0]) / time_window
+        average_growth_rate=(result.iloc[:, 1] - result.iloc[:, 0])
+        / time_window
     )
     result = result[["average_growth_rate"]]
 
@@ -185,6 +192,8 @@ def _average_documents_per_year(
         column=column,
         time_window=time_window,
     )
-    result = result.assign(average_documents_per_year=result.between / time_window)
+    result = result.assign(
+        average_documents_per_year=result.between / time_window
+    )
     result = result[["average_documents_per_year"]]
     return result

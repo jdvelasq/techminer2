@@ -1,14 +1,14 @@
 """
-Summary View --- ChatGPT
+Summary view --- ChatGPT
 ===============================================================================
 
 This function returns a dataframe with the coverage (percentage of no nulls) 
 and the number of different terms (topics) of each column in the dataset.
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 
 >>> from techminer2 import vantagepoint
->>> vantagepoint.summary_view(directory).head()
+>>> vantagepoint.summary_view(root_dir).head()
            column  number of terms coverage (%)
 0        abstract               48       92.31%
 1  abstract_words               47       90.38%
@@ -19,11 +19,11 @@ and the number of different terms (topics) of each column in the dataset.
 """
 import pandas as pd
 
-from .._read_records import read_records
+from ..read_records import read_records
 
 
 def summary_view(
-    directory="./",
+    root_dir="./",
     database="documents",
     start_year=None,
     end_year=None,
@@ -34,8 +34,8 @@ def summary_view(
 
     Parameters
     ----------
-    directory: str
-        path to the directory
+    root_dir: str
+        path to the root directory of the project.
 
     Returns
     -------
@@ -43,7 +43,7 @@ def summary_view(
         Coverage statistcs
     """
     documents = read_records(
-        directory=directory,
+        root_dir=root_dir,
         database=database,
         start_year=start_year,
         end_year=end_year,

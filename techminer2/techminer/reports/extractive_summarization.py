@@ -25,7 +25,7 @@ from sumy.summarizers.lex_rank import LexRankSummarizer
 from sumy.summarizers.lsa import LsaSummarizer
 from sumy.summarizers.luhn import LuhnSummarizer
 
-from ..._read_records import read_records
+from ...read_records import read_records
 from .abstracts_report import _sort_by_custom_terms, _write_report
 
 
@@ -44,7 +44,7 @@ def extractive_summarization(
     """Abstract extractive summarization using sumy."""
 
     records = read_records(
-        directory=directory,
+        root_dir=directory,
         database=database,
         start_year=start_year,
         end_year=end_year,
@@ -52,7 +52,9 @@ def extractive_summarization(
     )
     records = records.dropna(subset=["abstract"])
 
-    selected_records = _select_records(criterion, custom_topics, n_abstracts, records)
+    selected_records = _select_records(
+        criterion, custom_topics, n_abstracts, records
+    )
     document = _create_document(selected_records)
     summary = _generate_summary(n_phrases_per_algorithm, document)
     summary = _get_article(selected_records, summary)
@@ -83,7 +85,9 @@ def _sort_summary(records, criterion, custom_topics):
 
     records["POINTS"] = ""
     for topic in custom_topics:
-        records["POINTS"] += records["TOPICS"].map(lambda x: "1" if topic in x else "0")
+        records["POINTS"] += records["TOPICS"].map(
+            lambda x: "1" if topic in x else "0"
+        )
 
     records = records.sort_values(
         by=["POINTS", "global_citations", "local_citations"],
@@ -94,7 +98,9 @@ def _sort_summary(records, criterion, custom_topics):
         ascending=False, method="dense"
     )
 
-    records = records.sort_values(by=["POINTS", "RNK"], ascending=[False, True])
+    records = records.sort_values(
+        by=["POINTS", "RNK"], ascending=[False, True]
+    )
 
     records = records[records["RNK"] < 10]
 
@@ -106,7 +112,9 @@ def _sort_criterion_field(records, criterion, custom_topics):
     records["TERMS"] = records["TERMS"].map(lambda x: [y.strip() for y in x])
     records["TERMS_1"] = records["TERMS"].map(
         lambda x: [
-            "(*) " + custom_topic for custom_topic in custom_topics if custom_topic in x
+            "(*) " + custom_topic
+            for custom_topic in custom_topics
+            if custom_topic in x
         ],
         na_action="ignore",
     )
@@ -147,7 +155,9 @@ def _select_phrases_with_keywords(custom_topics, summary):
 
 
 def _generate_summary(n_phrases_per_algorithm, document):
-    summary_with_lexrank = _summarize_with_lexrank(document, n_phrases_per_algorithm)
+    summary_with_lexrank = _summarize_with_lexrank(
+        document, n_phrases_per_algorithm
+    )
     summary_with_lsasummarizer = _summarize_with_lsasummarizer(
         document, n_phrases_per_algorithm
     )

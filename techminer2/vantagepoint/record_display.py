@@ -7,20 +7,20 @@ the parameter ``search_for`` in the column specified by the parameter
 ``criterion``. This functions allows the use of regular expressions for
 searching. The report is saved to the file ``processed/record_display.txt``.
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 
 >>> from techminer2 import vantagepoint
 >>> vantagepoint.record_display(
 ...     criterion='author_keywords',
 ...     search_for='regtech',
-...     directory=directory,
+...     root_dir=root_dir,
 ... )
 --INFO-- The file 'data/regtech/processed/record_display.txt' was created.
 
 """
 
-from .._read_records import read_records
 from ..build_records_report import build_records_report
+from ..read_records import read_records
 
 
 def record_display(
@@ -29,7 +29,7 @@ def record_display(
     case=False,
     flags=0,
     regex=True,
-    directory="./",
+    root_dir="./",
     database="documents",
     start_year=None,
     end_year=None,
@@ -94,7 +94,7 @@ def record_display(
         return records
 
     records = read_records(
-        directory=directory,
+        root_dir=root_dir,
         database=database,
         start_year=start_year,
         end_year=end_year,
@@ -106,7 +106,7 @@ def record_display(
     )
 
     build_records_report(
-        directory=directory,
+        root_dir=root_dir,
         target_dir="",
         records=records,
         report_filename=report_filename,

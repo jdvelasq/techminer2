@@ -5,7 +5,7 @@ from dataclasses import dataclass
 
 import plotly.express as px
 
-from .._read_records import read_records
+from ..read_records import read_records
 from ..techminer.indicators.indicators_by_document import (
     indicators_by_document,
 )
@@ -104,7 +104,7 @@ def _get_top_n_documents(
     indicators = indicators.head(top_n)
 
     records = read_records(
-        directory=directory,
+        root_dir=directory,
         database="documents",
         start_year=start_year,
         end_year=end_year,

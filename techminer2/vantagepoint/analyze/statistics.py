@@ -104,8 +104,8 @@ import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 
-from ..._read_records import read_records
 from ...classes import RecordStatistics
+from ...read_records import read_records
 
 
 class _Statistics:
@@ -119,7 +119,7 @@ class _Statistics:
     ):
         self.directory = directory
         self.records = read_records(
-            directory=directory,
+            root_dir=directory,
             database=database,
             start_year=start_year,
             end_year=end_year,

@@ -33,13 +33,13 @@ import textwrap
 from .create_directory import create_directory
 
 
-def build_records_report(directory, target_dir, records, report_filename):
+def build_records_report(root_dir, target_dir, records, report_filename):
     """Builds a report file with a given records subset.
 
     Parameters
     ----------
-    directory : str
-        The project directory.
+    root_dir : str
+        The root project directory.
 
     target_dir : str
         The target directory within the "processed" subdirectory.
@@ -174,8 +174,8 @@ def build_records_report(directory, target_dir, records, report_filename):
 
         sys.stdout.write(f"--INFO-- The file '{file_path}' was created.\n")
 
-    create_directory(base_dir=directory, target_dir=target_dir)
+    create_directory(base_dir=root_dir, target_dir=target_dir)
     reported_columns = get_reported_columns(records)
     records = filter_columns(records, reported_columns)
     records = sort_records(records)
-    write_report(records, directory, target_dir, report_filename)
+    write_report(records, root_dir, target_dir, report_filename)
