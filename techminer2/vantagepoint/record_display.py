@@ -33,9 +33,52 @@ def record_display(
     database="documents",
     start_year=None,
     end_year=None,
+    report_filename="record_display.txt",
     **filters,
 ):
-    """Record View."""
+    """Record display the documents matching the specied sarch criteria.
+
+    Parameters
+    ----------
+    criterion: str
+        The column name to be searched.
+
+    search_for: str
+        The string to be searched.
+
+    case: bool
+        If True, the search is case sensitive.
+
+    flags: int
+        Flags to be passed to the ``re`` module.
+
+    regex: bool
+        If True, the search string is a regular expression.
+
+    directory: str
+        The root directory of the project.
+
+    database: str ``{"documents", "references", "cited_by"}, by default "documents"``
+        The database name.
+
+    start_year: int or None, optional
+        The start year to be considered.
+
+    end_year: int or None, optional
+
+    filters: dict
+        The filters to be applied to the database.
+
+    Returns
+    -------
+    None
+
+
+
+
+
+
+    """
 
     def filter_records(criterion, search_for, case, flags, regex, records):
         """Filter records by the specified criteria."""
@@ -66,5 +109,5 @@ def record_display(
         directory=directory,
         target_dir="",
         records=records,
-        report_filename="record_display.txt",
+        report_filename=report_filename,
     )
