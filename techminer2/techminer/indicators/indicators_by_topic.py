@@ -3,13 +3,13 @@ Bibliometric Indicators by Topic
 ===============================================================================
 
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 
 
 >>> from techminer2  import techminer
 >>> techminer.indicators.indicators_by_topic(
 ...     criterion='authors',
-...     directory=directory,
+...     root_dir=root_dir,
 ... ).head() # doctest: +NORMALIZE_WHITESPACE
             OCC  ...  local_citations_per_document
 authors          ...                              
@@ -22,31 +22,25 @@ Sarea A       2  ...                             2
 [5 rows x 5 columns]
 
 
+
 >>> from pprint import pprint
->>> pprint(sorted(techminer.indicators.indicators_by_topic('authors',directory=directory).columns.to_list()))
+>>> pprint(sorted(techminer.indicators.indicators_by_topic('authors',
+...     root_dir=root_dir).columns.to_list()))
 ['OCC',
  'global_citations',
  'global_citations_per_document',
  'local_citations',
  'local_citations_per_document']
 
->>> x = techminer.indicators.indicators_by_topic(
-...     criterion='source_abbr',
-...     directory=directory,
-... ).index
->>> with open("data.txt", "w") as f:
-...     for item in x:
-...         print(f"{item}", file=f)
-
-
-
+# noga: W291
 """
-from ...record_utils import read_records
+
+from ... import record_utils
 
 
 def indicators_by_topic(
     criterion,
-    directory="./",
+    root_dir="./",
     database="documents",
     start_year=None,
     end_year=None,
@@ -54,8 +48,8 @@ def indicators_by_topic(
 ):
     """column indicators"""
 
-    records = read_records(
-        root_dir=directory,
+    records = record_utils.read_records(
+        root_dir=root_dir,
         database=database,
         start_year=start_year,
         end_year=end_year,
