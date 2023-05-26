@@ -3,6 +3,9 @@ Collaboration Indicators by Topic --- ChatGPT
 ===============================================================================
 
 
+Examples
+--------
+
 >>> root_dir = "data/regtech/"
 
 >>> from techminer2 import techminer
