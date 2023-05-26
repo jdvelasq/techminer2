@@ -2,7 +2,7 @@
 import glob
 import os
 
-from ._create_directory import create_directory
+from .create_directory import create_directory
 from .techminer.reports.abstracts_report import abstracts_report
 
 
@@ -31,7 +31,9 @@ def cluster_abstracts_report(
         community = [x for x in community if x != ""]
         community = [" ".join(x.split()[:-1]) for x in community]
 
-        file_name = os.path.join(directory_for_abstracts, community_name + ".txt")
+        file_name = os.path.join(
+            directory_for_abstracts, community_name + ".txt"
+        )
 
         abstracts_report(
             criterion=criterion,

@@ -11,12 +11,10 @@ internally in TheVantagePoint software, in order to facilitate comparison.
 
 
 .. toctree::
-
-   record_view
+   record_display
 
 
 .. toctree::      
-
    summary_view
 
 

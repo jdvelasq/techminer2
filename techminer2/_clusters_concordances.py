@@ -2,7 +2,7 @@
 import os
 import shutil
 
-from ._create_directory import create_directory
+from .create_directory import create_directory
 from .tlab.concordances.concordances import concordances
 
 
@@ -51,6 +51,7 @@ def clusters_concordances(
             src_file = os.path.join(directory, "reports/concordances.txt")
             member = member.replace("/", "_")
             dst_file = os.path.join(
-                path, "{:02d}_".format(i_member) + member.replace(" ", "_") + ".txt"
+                path,
+                "{:02d}_".format(i_member) + member.replace(" ", "_") + ".txt",
             )
             shutil.copyfile(src_file, dst_file)

@@ -1,8 +1,10 @@
 """Clusters summarization"""
 import os
 
-from .._create_directory import create_directory
-from ..techminer.reports.extractive_summarization import extractive_summarization
+from ..create_directory import create_directory
+from ..techminer.reports.extractive_summarization import (
+    extractive_summarization,
+)
 
 
 def clusters_summarization(
@@ -31,7 +33,9 @@ def clusters_summarization(
         community = [x for x in community if x != ""]
         community = [" ".join(x.split()[:-1]) for x in community]
 
-        file_name = os.path.join(directory_for_summarization, community_name + ".txt")
+        file_name = os.path.join(
+            directory_for_summarization, community_name + ".txt"
+        )
         extractive_summarization(
             criterion,
             custom_topics=community,

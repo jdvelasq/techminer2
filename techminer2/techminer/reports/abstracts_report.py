@@ -17,7 +17,6 @@ Abstracts Report
 
 """
 import os.path
-import sys
 import textwrap
 
 import pandas as pd
@@ -58,7 +57,9 @@ def _sort_by_custom_terms(criterion, custom_topics, records):
     def _filter_records_by_custom_topics(records):
         records = records.copy()
         selected_records = records[["article", criterion]]
-        selected_records[criterion] = selected_records[criterion].str.split(";")
+        selected_records[criterion] = selected_records[criterion].str.split(
+            ";"
+        )
         selected_records = selected_records.explode(criterion)
         selected_records[criterion] = selected_records[criterion].str.strip()
         selected_records = selected_records[
@@ -70,13 +71,17 @@ def _sort_by_custom_terms(criterion, custom_topics, records):
         records = records.copy()
         records["TOPICS"] = records[criterion].copy()
         records["TOPICS"] = records["TOPICS"].str.split(";")
-        records["TOPICS"] = records["TOPICS"].map(lambda x: [y.strip() for y in x])
+        records["TOPICS"] = records["TOPICS"].map(
+            lambda x: [y.strip() for y in x]
+        )
         return records
 
     def _compute_points(records):
         records = records.copy()
         records["POINTS"] = records["TOPICS"].apply(
-            lambda x: "".join(["1" if topic in x else "0" for topic in custom_topics])
+            lambda x: "".join(
+                ["1" if topic in x else "0" for topic in custom_topics]
+            )
         )
         return records
 
@@ -91,7 +96,9 @@ def _sort_by_custom_terms(criterion, custom_topics, records):
     def _reorder_terms(criterion, custom_topics, records):
         records = records.copy()
         records["TERMS"] = records[criterion].str.split(";")
-        records["TERMS"] = records["TERMS"].map(lambda x: [y.strip() for y in x])
+        records["TERMS"] = records["TERMS"].map(
+            lambda x: [y.strip() for y in x]
+        )
         records["TERMS_1"] = records["TERMS"].map(
             lambda x: [
                 "(*) " + custom_topic
@@ -101,7 +108,8 @@ def _sort_by_custom_terms(criterion, custom_topics, records):
             na_action="ignore",
         )
         records["TERMS_2"] = records["TERMS"].map(
-            lambda x: [y for y in x if y not in custom_topics], na_action="ignore"
+            lambda x: [y for y in x if y not in custom_topics],
+            na_action="ignore",
         )
         records["TERMS"] = records["TERMS_1"] + records["TERMS_2"]
         records[criterion] = records["TERMS"].str.join("; ")
