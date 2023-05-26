@@ -6,7 +6,7 @@ Growth Indicators by Topic
 
 >>> from techminer2  import techminer
 >>> techminer.indicators.growth_indicators_by_topic(
-...     criterion="author_keywords", 
+...     criterion="author_keywords",
 ...     directory=directory,
 ... ).head()
                        Before 2022  ...  average_growth_rate
@@ -19,8 +19,12 @@ regulation                       4  ...                 -0.5
 <BLANKLINE>
 [5 rows x 6 columns]
 
+# noqa: W291
+
 >>> from pprint import pprint
->>> pprint(sorted(techminer.indicators.growth_indicators_by_topic('author_keywords',directory=directory).columns.to_list()))
+>>> pprint(sorted(techminer.indicators.growth_indicators_by_topic(
+...     'author_keywords',directory=directory).columns.to_list()
+... ))
 ['Before 2022',
  'Between 2022-2023',
  'OCC',
@@ -28,12 +32,16 @@ regulation                       4  ...                 -0.5
  'average_growth_rate',
  'global_citations']
 
+
+# pylint: disable=line-too-long
+
+
 """
 import numpy as np
 import pandas as pd
 
+from ... import record_utils
 from ..._load_stopwords import load_stopwords
-from ...record_utils import read_records
 
 
 def growth_indicators_by_topic(
@@ -47,7 +55,7 @@ def growth_indicators_by_topic(
 ):
     """Computes growth indicators."""
 
-    records = read_records(
+    records = record_utils.read_records(
         root_dir=directory,
         database=database,
         start_year=start_year,
