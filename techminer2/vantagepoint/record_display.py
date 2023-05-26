@@ -19,8 +19,8 @@ searching. The report is saved to the file ``processed/record_display.txt``.
 
 """
 
-from ..build_records_report import build_records_report
-from ..record_utils import read_records
+
+from .. import record_utils
 
 
 def record_display(
@@ -35,7 +35,7 @@ def record_display(
     end_year=None,
     report_filename="record_display.txt",
     **filters,
-):
+):  # pylint: disable=too-many-arguments
     """Record display the documents matching the specied sarch criteria.
 
     Parameters
@@ -58,7 +58,8 @@ def record_display(
     directory: str
         The root directory of the project.
 
-    database: str ``{"documents", "references", "cited_by"}, by default "documents"``
+    database: str ``{"documents", "references", "cited_by"}, by default \
+        "documents"``
         The database name.
 
     start_year: int or None, optional
@@ -72,9 +73,6 @@ def record_display(
     Returns
     -------
     None
-
-
-
 
 
 
@@ -93,7 +91,7 @@ def record_display(
 
         return records
 
-    records = read_records(
+    records = record_utils.read_records(
         root_dir=root_dir,
         database=database,
         start_year=start_year,
@@ -105,7 +103,7 @@ def record_display(
         criterion, search_for, case, flags, regex, records
     )
 
-    build_records_report(
+    record_utils.create_records_report(
         root_dir=root_dir,
         target_dir="",
         records=records,

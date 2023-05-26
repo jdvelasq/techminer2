@@ -2,7 +2,7 @@
 Summary view --- ChatGPT
 ===============================================================================
 
-This function returns a dataframe with the coverage (percentage of no nulls) 
+This function returns a dataframe with the coverage (percentage of no nulls)
 and the number of different terms (topics) of each column in the dataset.
 
 >>> root_dir = "data/regtech/"
@@ -10,16 +10,16 @@ and the number of different terms (topics) of each column in the dataset.
 >>> from techminer2 import vantagepoint
 >>> vantagepoint.summary_view(root_dir).head()
            column  number of terms coverage (%)
-0        abstract               48       92.31%
-1  abstract_words               47       90.38%
-2    affiliations               52      100.00%
-3          art_no                8       15.38%
-4         article               52      100.00%
+0        abstract               48        0.92%
+1  abstract_words               47         0.9%
+2    affiliations               52         1.0%
+3          art_no                8        0.15%
+4         article               52         1.0%
 
 """
 import pandas as pd
 
-from ..record_utils import read_records
+from .. import record_utils
 
 
 def summary_view(
@@ -42,28 +42,27 @@ def summary_view(
     pandas.DataFrame
         Coverage statistcs
     """
-    documents = read_records(
+
+    documents = record_utils.read_records(
         root_dir=root_dir,
         database=database,
         start_year=start_year,
         end_year=end_year,
         **filters,
     )
+
     columns = sorted(documents.columns)
     n_documents = len(documents)
-    report = pd.DataFrame(
-        {
-            "column": columns,
-            "number of terms": [
-                n_documents - documents[col].isnull().sum() for col in columns
-            ],
-            "coverage (%)": [
-                "{:5.2%}".format(
-                    (n_documents - documents[col].isnull().sum()) / n_documents
-                )
-                for col in columns
-            ],
-        }
-    )
+
+    report = pd.DataFrame({"column": columns})
+
+    report["number of terms"] = [
+        n_documents - documents[col].isnull().sum() for col in columns
+    ]
+
+    report["coverage (%)"] = [
+        f"{ (n_documents - documents[col].isnull().sum()) / n_documents:5.2}%"
+        for col in columns
+    ]
 
     return report
