@@ -35,11 +35,8 @@ China             5                27  ...                     3      0.60
 | Ireland        |     5 |                 55 |                22 |                    4 |                      1 |       0.2  |
 | China          |     5 |                 27 |                 5 |                    2 |                      3 |       0.6  |
 
-
-
 # pylint: disable=line-too-long
-# noqa: E501
-
+# noqa: W291 E501
 """
 
 
@@ -56,52 +53,21 @@ def collaboration_indicators_by_topic(
     end_year=None,
     **filters,
 ):
-    """Collaboration indicators.
+    """
+    Collaboration indicators.
 
-    Parameters
-    ----------
-    criterion : str
-        Criterion to be analyzed.
+    Args:
+        criterion (str): Criterion to be analyzed.
+        directory (str): The working directory.
+        database (str):  The database name. It can be 'documents', 'cited_by' or 'references'.
+        start_year (int) : The start year for filtering the data.
+        end_year (int): The end year for filtering the data.
+        **filters: Additional filters to apply to the data.
 
-    directory : str
-        The working directory.
+    Returns:
+        A pandas.DataFrame with the collaboration indicators.
 
-    database : str
-        The database name. It can be 'documents', 'cited_by' or 'references'.
-
-    start_year : int
-        The start year for filtering the data.
-
-    end_year : int
-        The end year for filtering the data.
-
-    filters : dict
-        A dictionary with field/value pairs to be used in filtering the data.
-
-    Returns
-    -------
-    pandas.DataFrame
-        A dataframe with the following columns:
-
-        - criterion: the criterion value.
-
-        - OCC: the number of occurrences of the criterion value.
-
-        - global_citations: the number of citations received by the documents \
-        with the criterion value.
-
-        - local_citations: the number of citations received by the documents
-        in the database.
-
-        - single_publication: the number of documents with a single
-        publication.
-
-        - multiple_publication: the number of documents with multiple
-        publications.
-
-        - mp_ratio: the ratio between multiple_publication and OCC.
-
-
+    # noqa: E501
     """
 
     # Read documents from the database
