@@ -26,4 +26,10 @@
         "**/*.html": true
     },
     "notebook.formatOnSave.enabled": true,
+    "files.exclude": {
+        "**/*.js": true,
+        "**/docs/": true,
+        "**/docs/searchindex.js": true,
+        "**/searchindex.js": true
+    },
 }
