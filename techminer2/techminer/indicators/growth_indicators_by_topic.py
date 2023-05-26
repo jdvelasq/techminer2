@@ -2,6 +2,10 @@
 Growth Indicators by Topic
 ===============================================================================
 
+
+Examples
+--------
+
 >>> directory = "data/regtech/"
 
 >>> from techminer2  import techminer
@@ -44,6 +48,7 @@ from ... import record_utils
 from ..._load_stopwords import load_stopwords
 
 
+# pylint: disable=too-many-arguments
 def growth_indicators_by_topic(
     criterion,
     time_window=2,
