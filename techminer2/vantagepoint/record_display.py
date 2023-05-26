@@ -1,5 +1,5 @@
 """
-Record display --- ChatGPT
+Record Display --- ChatGPT
 ===============================================================================
 
 Extracts documents from the databaase containing the text string specified by
