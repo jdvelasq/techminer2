@@ -1,5 +1,5 @@
 """
-Extract topics --- equivalent to `List View` in VantagePoint. (GPT)
+Extract topics --- equivalent to `List View` in VantagePoint.
 ===============================================================================
 
 
@@ -173,7 +173,9 @@ def extract_topics(
 
     results = _ExtractTopicsResult()
     results.table_ = indicators
-    results.prompt_ = chatgpt.generate_prompt_bibliographic_indicators(results.table_)
+    results.prompt_ = chatgpt.generate_prompt_bibliographic_indicators(
+        results.table_
+    )
     results.metric_ = metric
     results.criterion_ = criterion
 

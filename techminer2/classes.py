@@ -18,6 +18,8 @@ class NetworkStatistics:
 
 @dataclass(init=False)
 class RecordStatistics:
+    """Record statistics."""
+
     table_: pd.DataFrame
     plot_: go.Figure
     prompt_: str
@@ -25,6 +27,8 @@ class RecordStatistics:
 
 @dataclass(init=False)
 class ColumnViewer:
+    """Column viewer."""
+
     table_: pd.DataFrame
     plot_: go.Figure
     prompt_: str

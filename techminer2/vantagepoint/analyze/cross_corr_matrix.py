@@ -1,5 +1,5 @@
 """
-Cross-correlation Matrix (GPT)
+Cross-correlation Matrix
 ===============================================================================
 
 

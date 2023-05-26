@@ -2,8 +2,6 @@ Lexical Tools Menu
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-    .. toctree::
-        :maxdepth: 1
-
-        text_screening
+.. toctree::
+    text_screening
 

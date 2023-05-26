@@ -1,5 +1,5 @@
 """
-Correlation Map (GPT)
+Correlation Map
 ===============================================================================
 
 Creates auto-correlation and cross-correlation maps.

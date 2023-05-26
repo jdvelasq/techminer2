@@ -1,7 +1,7 @@
 Co-Word Analysis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    .. toctree::
-        :maxdepth: 1
+.. toctree::
+    :maxdepth: 1
 
-        co_word_analysis
+    co_word_analysis

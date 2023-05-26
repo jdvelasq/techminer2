@@ -13,11 +13,17 @@ based on the type of plots.
 
     .. * `Bar Chart <../vantagepoint/report/bar_chart.html>`_
 
-    .. toctree::
-        :maxdepth: 1
+.. toctree::
+    bar
 
-        bar
-        bar_trends
-        time_line
-        word_cloud
-        top_trending_topics
+.. toctree::    
+    bar_trends
+
+.. toctree::    
+    time_line
+
+.. toctree::    
+    word_cloud
+
+.. toctree::    
+    top_trending_topics

@@ -2,10 +2,10 @@ Singular Value Decomposition
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-    .. toctree::
-        :maxdepth: 1
+.. toctree::
+    svd__co_occ_matrix
 
-        svd__co_occ_matrix
-        svd__tf_matrix
-        
+.. toctree::
+    svd__tf_matrix
+    
 

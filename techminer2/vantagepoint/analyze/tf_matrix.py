@@ -68,7 +68,9 @@ def tf_matrix(
 
     # apply stopwords
     custom_topics = [
-        topic for topic in custom_topics if topic not in load_stopwords(directory)
+        topic
+        for topic in custom_topics
+        if topic not in load_stopwords(directory)
     ]
 
     # compute TF matrix
@@ -187,9 +189,9 @@ def _create_tf_matrix(
     records[criterion] = records[criterion].str.strip()
     records = records[records[criterion].isin(custom_topics)]
 
-    grouped_records = records.groupby(["article", criterion], as_index=False).agg(
-        {"OCC": np.sum}
-    )
+    grouped_records = records.groupby(
+        ["article", criterion], as_index=False
+    ).agg({"OCC": np.sum})
 
     result = pd.pivot(
         index="article",
@@ -228,9 +230,13 @@ def _compute_filter(
     if custom_topics is None:
         custom_topics = indicators.copy()
         if topic_min_occ is not None:
-            custom_topics = custom_topics[custom_topics["OCC"] >= topic_min_occ]
+            custom_topics = custom_topics[
+                custom_topics["OCC"] >= topic_min_occ
+            ]
         if topic_max_occ is not None:
-            custom_topics = custom_topics[custom_topics["OCC"] <= topic_max_occ]
+            custom_topics = custom_topics[
+                custom_topics["OCC"] <= topic_max_occ
+            ]
         if topic_min_citations is not None:
             custom_topics = custom_topics[
                 custom_topics["global_citations"] >= topic_min_citations
@@ -243,7 +249,9 @@ def _compute_filter(
         custom_topics = custom_topics[:topics_length]
     else:
         custom_topics = [
-            topic for topic in custom_topics if topic in indicators.index.tolist()
+            topic
+            for topic in custom_topics
+            if topic in indicators.index.tolist()
         ]
 
     indicators = indicators.loc[custom_topics, :]

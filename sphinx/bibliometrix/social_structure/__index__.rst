@@ -1,10 +1,11 @@
 Social Structure
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-   .. toctree::
-      :maxdepth: 1
+.. toctree::
+   co_authorship_network
 
-      co_authorship_network
-      collaboration_worldmap
+
+.. toctree::   
+   collaboration_worldmap
 
       

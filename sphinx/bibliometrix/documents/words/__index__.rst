@@ -1,11 +1,19 @@
 Words
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-   .. toctree::
-      most_frequent_words
-      word_cloud
-      treemap
-      word_dynamics
-      trend_topics
+.. toctree::
+   most_frequent_words
+
+.. toctree::   
+   word_cloud
+
+.. toctree::   
+   treemap
+
+.. toctree::
+   word_dynamics
+
+.. toctree::   
+   trend_topics
 
    

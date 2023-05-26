@@ -1,5 +1,5 @@
 """
-Occurrence Matrix (GPT)
+Occurrence Matrix
 ===============================================================================
 
 
@@ -152,10 +152,14 @@ def _create_matrix(
     matrix = matrix.astype(int)
 
     columns = sorted(
-        matrix.columns.tolist(), key=lambda x: x.split()[-1].split(":")[0], reverse=True
+        matrix.columns.tolist(),
+        key=lambda x: x.split()[-1].split(":")[0],
+        reverse=True,
     )
     indexes = sorted(
-        matrix.index.tolist(), key=lambda x: x.split()[-1].split(":")[0], reverse=True
+        matrix.index.tolist(),
+        key=lambda x: x.split()[-1].split(":")[0],
+        reverse=True,
     )
     matrix = matrix.loc[indexes, columns]
 
@@ -257,7 +261,8 @@ def _sort_matrix_list(matrix_list):
         matrix_list[col_upper] = matrix_list[col_upper].map(lambda x: x[-1])
 
     matrix_list = matrix_list.sort_values(
-        ["ROW", "row", "COLUMN", "column"], ascending=[False, True, False, True]
+        ["ROW", "row", "COLUMN", "column"],
+        ascending=[False, True, False, True],
     )
 
     matrix_list = matrix_list.drop(columns=["ROW", "COLUMN"])
@@ -296,9 +301,13 @@ def _select_topics_by_occ_and_citations_and_topic_length(
         if topic_max_occ is not None:
             indicators = indicators[indicators.OCC <= topic_max_occ]
         if topic_min_citations is not None:
-            indicators = indicators[indicators.global_citations >= topic_min_citations]
+            indicators = indicators[
+                indicators.global_citations >= topic_min_citations
+            ]
         if topic_max_citations is not None:
-            indicators = indicators[indicators.global_citations <= topic_max_citations]
+            indicators = indicators[
+                indicators.global_citations <= topic_max_citations
+            ]
 
         indicators = indicators.sort_values(
             ["OCC", "global_citations", "local_citations"],
@@ -357,8 +366,8 @@ def _create_matrix_list(
         matrix_list[name] = matrix_list[name].str.strip()
 
     matrix_list["OCC"] = 1
-    matrix_list = matrix_list.groupby(["row", "column"], as_index=False).aggregate(
-        "sum"
-    )
+    matrix_list = matrix_list.groupby(
+        ["row", "column"], as_index=False
+    ).aggregate("sum")
 
     return matrix_list
