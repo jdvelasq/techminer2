@@ -1,5 +1,5 @@
 """
-Summary View
+Summary View --- ChatGPT
 ===============================================================================
 
 This function returns a dataframe with the coverage (percentage of no nulls) 
