@@ -1,5 +1,5 @@
 """
-Apply Countries Thesaurus
+Apply Countries Thesaurus --- ChatGPT
 ===============================================================================
 
 Cleans the country columns using the file countries.txt, located in

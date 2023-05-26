@@ -1,17 +1,17 @@
 """
-Find String (in a thesarus)
+Find String --- ChatGPT
 ===============================================================================
 
 Finds a string in the terms of a thesaurus.
 
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 
 >>> from techminer2 import vantagepoint
 >>> vantagepoint.refine.find_string(
 ...     thesaurus_file="keywords.txt",
 ...     contains='artificial intelligence',
-...     directory=directory,
+...     root_dir=root_dir,
 ... )
 --INFO-- The file data/regtech/processed/keywords.txt has been reordered.
 
@@ -29,11 +29,11 @@ def find_string(
     contains=None,
     startswith=None,
     endswith=None,
-    directory="./",
+    root_dir="./",
 ):
-    """Find the specified keyword and reorder the thesaurus to reflect the search."""
+    """Find the specified keyword and reorder the thesaurus file."""
 
-    th_file = os.path.join(directory, "processed", thesaurus_file)
+    th_file = os.path.join(root_dir, "processed", thesaurus_file)
     if os.path.isfile(th_file):
         th_dict = load_file_as_dict(th_file)
     else:

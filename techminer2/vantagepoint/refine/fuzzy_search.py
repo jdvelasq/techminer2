@@ -1,18 +1,18 @@
 """
-Fuzzy Search
+Fuzzy Search --- ChatGPT
 ===============================================================================
 
 Finds a string in the terms of a thesaurus using fuzzy search.
 
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 
 >>> from techminer2 import vantagepoint
 >>> vantagepoint.refine.fuzzy_search(
 ...     thesaurus_file="keywords.txt",
 ...     patterns='intelligencia',
 ...     threshold=80,
-...     directory=directory,
+...     root_dir=root_dir,
 ... )
 ambient intelligence
 artificial intelligence
@@ -55,11 +55,11 @@ def fuzzy_search(
     thesaurus_file,
     patterns,
     threshold=80,
-    directory="./",
+    root_dir="./",
 ):
-    """Find the specified keyword and reorder the thesaurus to reflect the search."""
+    """Find the specified keyword and reorder the thesaurus file."""
 
-    th_file = os.path.join(directory, "processed", thesaurus_file)
+    th_file = os.path.join(root_dir, "processed", thesaurus_file)
     if os.path.isfile(th_file):
         th_dict = load_file_as_dict(th_file)
     else:

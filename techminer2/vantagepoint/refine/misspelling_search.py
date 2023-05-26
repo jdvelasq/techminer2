@@ -1,15 +1,15 @@
 """
-Misspelling search
+Misspelling search --- ChatGPT
 ===============================================================================
 
 Look for misspeling mistakes in the keywords of a thesaurus.
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 
 >>> from techminer2 import vantagepoint
 >>> vantagepoint.refine.misspelling_search(
 ...     "keywords.txt",
-...     directory=directory,
+...     root_dir=root_dir,
 ... )
 --INFO-- The file data/regtech/processed/misspelled.txt has been generated.
 
@@ -26,12 +26,12 @@ from ..._thesaurus import load_file_as_dict
 
 def misspelling_search(
     thesaurus_file,
-    directory="./",
+    root_dir="./",
 ):
     """Look for misspeling mistakes in the keywords of a thesaurus."""
 
     # Load the thesaurus file
-    th_file = join(directory, "processed", thesaurus_file)
+    th_file = join(root_dir, "processed", thesaurus_file)
     if isfile(th_file):
         th = load_file_as_dict(th_file)
     else:
@@ -57,7 +57,7 @@ def misspelling_search(
         if misspelled_word != corrected_word
     ]
 
-    misspelled_file = join(directory, "processed", "misspelled.txt")
+    misspelled_file = join(root_dir, "processed", "misspelled.txt")
     with open(misspelled_file, "w", encoding="utf-8") as file:
         for misspelled, corrected in words:
             file.write(misspelled + "\n")

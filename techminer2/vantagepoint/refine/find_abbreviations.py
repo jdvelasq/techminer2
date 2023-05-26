@@ -1,15 +1,15 @@
 """
-Find Abbreviations
+Find Abbreviations --- ChatGPT
 ===============================================================================
 
 Finds string abbreviations in the keywords of a thesaurus.
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 
 >>> from techminer2 import vantagepoint
 >>> vantagepoint.refine.find_abbreviations(
 ...     "keywords.txt",
-...     directory=directory,
+...     root_dir=root_dir,
 ... )
 --INFO-- The file data/regtech/processed/keywords.txt has been reordered.
 
@@ -25,7 +25,7 @@ from ..._thesaurus import load_file_as_dict
 
 def find_abbreviations(
     thesaurus_file="keywords.txt",
-    directory="./",
+    root_dir="./",
 ):
     """Find abbreviations and reorder the thesaurus to reflect the search."""
 
@@ -36,7 +36,7 @@ def find_abbreviations(
         return None
 
     # ----< Load and reverse the thesaurus >------------------------------------------------------
-    th_file = join(directory, "processed", thesaurus_file)
+    th_file = join(root_dir, "processed", thesaurus_file)
     if isfile(th_file):
         th = load_file_as_dict(th_file)
     else:

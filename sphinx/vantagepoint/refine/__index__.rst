@@ -10,7 +10,7 @@ Refine
 
 
 .. toctree::
-    apply_organizatios_thesaurus
+    apply_organizations_thesaurus
 
 
 .. toctree::    
