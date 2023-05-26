@@ -1,15 +1,16 @@
 """
-Create 'organizations.txt' thesaurus file
+Create 'organizations.txt' thesaurus file --- ChatGPT
 ===============================================================================
 
 Creates a organizations thesaurus from the data in the database.
 
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 
 >>> from techminer2 import vantagepoint
->>> vantagepoint.refine.create_organizations_thesaurus(directory)
---INFO-- The data/regtech/processed/organizations.txt thesaurus file was created
+>>> vantagepoint.refine.create_organizations_thesaurus(root_dir)
+--INFO-- The data/regtech/processed/organizations.txt thesaurus file was \
+created
 
 
 """
@@ -98,10 +99,10 @@ NAMES = [
 ]
 
 
-def create_organizations_thesaurus(directory="./"):
+def create_organizations_thesaurus(root_dir="./"):
     """Creates organizations.txt thesaurus file."""
 
-    affiliations = _load_affiliations_from_country_thesaurus(directory)
+    affiliations = _load_affiliations_from_country_thesaurus(root_dir)
     affiliations = _convert_countries_to_codes(affiliations)
     affiliations["affiliation"] = affiliations["raw_affiliation"]
     affiliations = _clean_organization_names(affiliations)
@@ -110,7 +111,7 @@ def create_organizations_thesaurus(directory="./"):
         _select_organization
     )
 
-    _group_and_save(affiliations, directory)
+    _group_and_save(affiliations, root_dir)
 
 
 def _select_organization(affiliation):
@@ -168,7 +169,9 @@ def _group_and_save(affiliations, directory):
         use_re=False,
     ).to_textfile(thesaurus_file)
 
-    sys.stdout.write(f"--INFO-- The {thesaurus_file} thesaurus file was created\n")
+    sys.stdout.write(
+        f"--INFO-- The {thesaurus_file} thesaurus file was created\n"
+    )
 
 
 def _clean_organization_names(affiliations):

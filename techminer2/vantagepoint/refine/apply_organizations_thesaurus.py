@@ -1,16 +1,17 @@
 """
-Clean Organizations
+Apply Organizations Thesaurus --- ChatGPT
 ===============================================================================
 
 Cleans the organizations columns using the file organizations.txt, located in
 the same directory as the documents.csv file.
 
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 
 >>> from techminer2 import vantagepoint
->>> vantagepoint.refine.clean_organizations(directory)
---INFO-- The data/regtech/processed/organizations.txt thesaurus file was applied to affiliations in all databases
+>>> vantagepoint.refine.apply_organizations_thesaurus(root_dir)
+--INFO-- The data/regtech/processed/organizations.txt thesaurus file was \
+applied to affiliations in all databases
 
 
 
@@ -25,22 +26,24 @@ import pandas as pd
 from ..._thesaurus import read_textfile
 
 
-def clean_organizations(directory="./"):
+def apply_organizations_thesaurus(root_dir="./"):
     """Apply 'organizations.txt' thesaurus."""
 
     # Read the thesaurus
-    thesaurus_file = os.path.join(directory, "processed", "organizations.txt")
+    thesaurus_file = os.path.join(root_dir, "processed", "organizations.txt")
     thesaurus = read_textfile(thesaurus_file)
     thesaurus = thesaurus.compile_as_dict()
 
     # Apply thesaurus
-    files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
+    files = list(glob.glob(os.path.join(root_dir, "processed/_*.csv")))
 
     for file in files:
         records = pd.read_csv(file, encoding="utf-8")
         #
         #
-        records = records.assign(raw_organizations=records.affiliations.str.split(";"))
+        records = records.assign(
+            raw_organizations=records.affiliations.str.split(";")
+        )
         records = records.assign(
             raw_organizations=records.raw_organizations.map(
                 lambda x: [thesaurus.apply_as_dict(y.strip()) for y in x]
@@ -61,11 +64,14 @@ def clean_organizations(directory="./"):
         records = records.assign(
             raw_organizations=records.raw_organizations.str.join("; ")
         )
-        records = records.assign(organizations=records.organizations.str.join("; "))
+        records = records.assign(
+            organizations=records.organizations.str.join("; ")
+        )
         #
         #
         records.to_csv(file, sep=",", encoding="utf-8", index=False)
 
     sys.stdout.write(
-        f"--INFO-- The {thesaurus_file} thesaurus file was applied to affiliations in all databases\n"
+        f"--INFO-- The {thesaurus_file} thesaurus file was applied to "
+        "affiliations in all databases\n"
     )

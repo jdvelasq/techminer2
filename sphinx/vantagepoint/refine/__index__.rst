@@ -1,47 +1,37 @@
 Refine
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Functions to create, search, and use thesaurus.
+.. toctree::
+   apply_countries_thesaurus
 
 
-    * **Countries**:
-
-        .. toctree::
-            clean_countries
-            find_string_in_countries
-            fuzzy_search_in_countries
+.. toctree::
+   apply_keywords_thesaurus
 
 
-    * **Keywords**:
-
-        .. toctree::
-            clean_keywords
-            find_abbreviations_in_keywords
-            find_string_in_keywords
-            fuzzy_search_in_keywords
-            misspelling_search_in_keywords
+.. toctree::
+    apply_organizatios_thesaurus
 
 
-    * **Organizations**:
-    
-        .. toctree::
-            clean_organizations
-            find_string_in_organizations
-            fuzzy_search_in_organizations
+.. toctree::    
+    apply_thesaurus
 
 
-
-    * **Operations over custom thesaurus files**:
-
-        .. toctree::
-            create_thesaurus
-            apply_thesaurus
+.. toctree::
+    create_thesaurus
 
 
-        .. toctree::
-            find_string
-            fuzzy_search
-            find_abbreviations
-            misspelling_search
+.. toctree::    
+    find_abbreviations
 
 
+.. toctree::
+    find_string
+
+
+.. toctree::    
+    fuzzy_search
+
+
+.. toctree::    
+    misspelling_search

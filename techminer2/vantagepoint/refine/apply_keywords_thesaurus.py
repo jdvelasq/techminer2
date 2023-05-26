@@ -1,15 +1,16 @@
 """
-Clean Keywords
+Apply Keywords Thesaurus
 ===============================================================================
 
 Cleans the keywords columns using the `keywords.txt` file.
 
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 
 >>> from techminer2 import vantagepoint
->>> vantagepoint.refine.clean_keywords(directory)
---INFO-- Applying `keywords.txt` thesaurus to author/index keywords and abstract/title words
+>>> vantagepoint.refine.apply_keywords_thesaurus(root_dir)
+--INFO-- Applying `keywords.txt` thesaurus to author/index keywords and \
+abstract/title words
 
 """
 # pylint: disable=no-member
@@ -25,14 +26,16 @@ import pandas as pd
 from ..._thesaurus import read_textfile
 
 
-def clean_keywords(directory="./"):
-    """Clean all words columns in the records using a thesaurus (keywrords.txt)."""
+def apply_keywords_thesaurus(root_dir="./"):
+    """Clean all words columns in the records using a thesaurus \
+    (keywords.txt)."""
 
     sys.stdout.write(
-        "--INFO-- Applying `keywords.txt` thesaurus to author/index keywords and abstract/title words\n"
+        "--INFO-- Applying `keywords.txt` thesaurus to author/index keywords "
+        "and abstract/title words\n"
     )
 
-    thesaurus_file = os.path.join(directory, "processed", "keywords.txt")
+    thesaurus_file = os.path.join(root_dir, "processed", "keywords.txt")
     if os.path.isfile(thesaurus_file):
         thesaurus = read_textfile(thesaurus_file)
         thesaurus = thesaurus.compile_as_dict()
@@ -40,7 +43,7 @@ def clean_keywords(directory="./"):
         raise FileNotFoundError(f"The file {thesaurus_file} does not exist.")
     #
 
-    files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
+    files = list(glob.glob(os.path.join(root_dir, "processed/_*.csv")))
     for file in files:
         data = pd.read_csv(file, encoding="utf-8")
         #

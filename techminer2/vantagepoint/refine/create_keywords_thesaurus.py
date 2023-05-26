@@ -1,12 +1,13 @@
 """
-Create keywords thesaurus
+Create keywords thesaurus --- ChatGPT
 ===============================================================================
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 
 >>> from techminer2 import vantagepoint
->>> vantagepoint.refine.create_keywords_thesaurus(directory=directory)
---INFO-- Creating `keywords.txt` from author/index keywords, and abstract/title words
+>>> vantagepoint.refine.create_keywords_thesaurus(root_dir=root_dir)
+--INFO-- Creating `keywords.txt` from author/index keywords, and \
+abstract/title words
 
 """
 import glob
@@ -21,21 +22,22 @@ from ..._load_thesaurus_as_dict import load_thesaurus_as_dict
 from ..._load_thesaurus_as_dict_r import load_thesaurus_as_dict_r
 
 
-def create_keywords_thesaurus(directory="./"):
-    """Creates a words thesaurus from raw author/index keywords and title/abstact words."""
+def create_keywords_thesaurus(root_dir="./"):
+    """Creates a words thesaurus from raw keywords and title/abstact words."""
 
     sys.stdout.write(
-        "--INFO-- Creating `keywords.txt` from author/index keywords, and abstract/title words\n"
+        "--INFO-- Creating `keywords.txt` from author/index keywords, and "
+        "abstract/title words\n"
     )
 
-    keywords_list = _load_keywords_from_databases(directory=directory)
+    keywords_list = _load_keywords_from_databases(directory=root_dir)
     keywords_list = _explode_keywords(keywords_list)
     keywords_list = _remove_strange_characters(keywords_list)
     keywords_list = _build_occurrences_table(keywords_list)
     keywords_list = _build_fingerprint(keywords_list)
     keywords_list = _create_keyterm(keywords_list)
-    keywords_list = _merge_thesaurus(directory, keywords_list)
-    _save_thesaurus(keywords_list, directory)
+    keywords_list = _merge_thesaurus(root_dir, keywords_list)
+    _save_thesaurus(keywords_list, root_dir)
 
 
 def _save_thesaurus(keywords_list, directory):
@@ -56,7 +58,8 @@ def _merge_thesaurus(directory, keywords_list):
         return keywords_list
     old_th_dict = load_thesaurus_as_dict_r(thesaurus_file)
     new_th_dict = {
-        key: value for key, value in zip(keywords_list.word, keywords_list.keyterm)
+        key: value
+        for key, value in zip(keywords_list.word, keywords_list.keyterm)
     }
     new_th_dict = {**new_th_dict, **old_th_dict}
     keywords_list = pd.DataFrame(
@@ -95,7 +98,10 @@ def _build_fingerprint(keywords_list):
         if "(" in word:
             text_to_remove = word[word.find("(") + 1 : word.find(")")]
             meaning = word[: word.find("(")].strip()
-            if len(meaning) < len(text_to_remove) and len(text_to_remove.strip()) > 1:
+            if (
+                len(meaning) < len(text_to_remove)
+                and len(text_to_remove.strip()) > 1
+            ):
                 word = text_to_remove + " (" + meaning + ")"
         return word
 
@@ -241,9 +247,13 @@ def _build_fingerprint(keywords_list):
 
     keywords_list = keywords_list.copy()
     keywords_list = keywords_list.assign(fingerprint=keywords_list.word)
-    keywords_list.fingerprint = keywords_list.fingerprint.map(invert_parenthesis)
+    keywords_list.fingerprint = keywords_list.fingerprint.map(
+        invert_parenthesis
+    )
     keywords_list.fingerprint = keywords_list.fingerprint.map(remove_brackets)
-    keywords_list.fingerprint = keywords_list.fingerprint.map(remove_parenthesis)
+    keywords_list.fingerprint = keywords_list.fingerprint.map(
+        remove_parenthesis
+    )
     keywords_list = remove_initial_terms(keywords_list)
     keywords_list = replace_sinonimous(keywords_list)
     keywords_list = remove_hypen_from_know_keywords(keywords_list)

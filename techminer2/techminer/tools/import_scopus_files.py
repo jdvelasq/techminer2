@@ -137,12 +137,12 @@ def import_scopus_files(
     )
     #
     _create__raw_words__column(directory)
-    vantagepoint.refine.create_keywords_thesaurus(directory=directory)
-    vantagepoint.refine.clean_keywords(directory)
+    vantagepoint.refine.create_keywords_thesaurus(root_dir=directory)
+    vantagepoint.refine.apply_keywords_thesaurus(directory)
     #
     # -------------------------------------------------------------------------
     vantagepoint.refine.create_countries_thesaurus(directory)
-    vantagepoint.refine.clean_countries(directory)
+    vantagepoint.refine.apply_countries_thesaurus(directory)
     #
     _create__num_global_references__column(directory)
 
@@ -156,8 +156,8 @@ def import_scopus_files(
     _create__local_citations__column_in_documents_database(directory)
     #
     # Organizations ------------------------------------------------------------
-    vantagepoint.refine.create_organizations_thesaurus(directory=directory)
-    vantagepoint.refine.clean_organizations(directory=directory)
+    vantagepoint.refine.create_organizations_thesaurus(root_dir=directory)
+    vantagepoint.refine.apply_organizations_thesaurus(root_dir=directory)
 
     sys.stdout.write("--INFO-- Process finished!!!\n")
     _report_records(directory)

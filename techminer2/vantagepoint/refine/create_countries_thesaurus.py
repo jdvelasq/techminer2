@@ -1,13 +1,13 @@
 """
-Create Country Thesaurus
+Create Country Thesaurus --- ChatGPT
 ===============================================================================
 
 Creates a country thesaurus from 'affiliations' column in the datasets.
 
 >>> from techminer2 import vantagepoint
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 
->>> vantagepoint.refine.create_countries_thesaurus(directory)
+>>> vantagepoint.refine.create_countries_thesaurus(root_dir)
 --INFO-- The data/regtech/processed/countries.txt thesaurus file was created
 
 
@@ -22,7 +22,7 @@ import pandas as pd
 from ..._thesaurus import Thesaurus, load_file_as_dict
 
 
-def create_countries_thesaurus(directory):
+def create_countries_thesaurus(root_dir):
     """Creates a country thesaurus from 'affiliations' column in the datasets."""
 
     country_names = _get_country_names()
@@ -30,7 +30,7 @@ def create_countries_thesaurus(directory):
     country_names_as_regex = "|".join(country_names)
     country_names_as_regex = country_names_as_regex.lower()
 
-    affiliations = _load_affiliations(directory)
+    affiliations = _load_affiliations(root_dir)
     affiliations = affiliations.dropna()
     affiliations = affiliations.str.split(";")
     affiliations = affiliations.explode()
@@ -39,12 +39,16 @@ def create_countries_thesaurus(directory):
 
     affiliations = pd.DataFrame({"affiliation": affiliations.tolist()})
     affiliations = affiliations.assign(country=affiliations.affiliation)
-    affiliations = affiliations.assign(country=affiliations.country.str.split(","))
+    affiliations = affiliations.assign(
+        country=affiliations.country.str.split(",")
+    )
     affiliations = affiliations.assign(
         country=affiliations.country.map(lambda x: x[-1])
     )
 
-    affiliations = affiliations.assign(country=affiliations.country.str.lower())
+    affiliations = affiliations.assign(
+        country=affiliations.country.str.lower()
+    )
 
     affiliations = _replace_sinonimous(affiliations, "country")
 
@@ -56,23 +60,40 @@ def create_countries_thesaurus(directory):
     )
 
     affiliations["country"] = affiliations["country"].str.title()
-    affiliations["country"] = affiliations["country"].str.replace(" And ", " and ")
-    affiliations["country"] = affiliations["country"].str.replace(" Of ", " of ")
-    affiliations["country"] = affiliations["country"].str.replace("Unknown", "[UKN]")
+    affiliations["country"] = affiliations["country"].str.replace(
+        " And ", " and "
+    )
+    affiliations["country"] = affiliations["country"].str.replace(
+        " Of ", " of "
+    )
+    affiliations["country"] = affiliations["country"].str.replace(
+        "Unknown", "[UKN]"
+    )
 
-    countries_dict = affiliations.groupby(by="country").agg({"affiliation": list})
-    countries_dict = {
-        key: sorted(items)
-        for key, items in zip(countries_dict.index, countries_dict.affiliation)
-    }
+    countries_dict = affiliations.groupby(by=["country"]).agg(
+        {"affiliation": list}
+    )
+
+    countries_dict = dict(
+        zip(countries_dict.index, countries_dict.affiliation)
+    )
+    for country in countries_dict:
+        countries_dict[country] = sorted(countries_dict[country])
+
+    # countries_dict = {
+    #     key: sorted(items)
+    #     for key, items in zip(countries_dict.index, countries_dict.affiliation)
+    # }
 
     thesarurus = Thesaurus(
         x=countries_dict,
     )
-    output_file = os.path.join(directory, "processed", "countries.txt")
+    output_file = os.path.join(root_dir, "processed", "countries.txt")
     thesarurus.to_textfile(output_file)
 
-    sys.stdout.write(f"--INFO-- The {output_file} thesaurus file was created\n")
+    sys.stdout.write(
+        f"--INFO-- The {output_file} thesaurus file was created\n"
+    )
 
 
 def _replace_sinonimous(affiliations, column):

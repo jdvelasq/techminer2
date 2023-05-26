@@ -24,7 +24,7 @@ from ..._thesaurus import load_file_as_dict
 
 
 def find_abbreviations(
-    thesaurus_file,
+    thesaurus_file="keywords.txt",
     directory="./",
 ):
     """Find abbreviations and reorder the thesaurus to reflect the search."""
