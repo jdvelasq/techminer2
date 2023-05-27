@@ -1,8 +1,9 @@
+# flake8: noqa
 """
 Co-occurrence Matrix --- ChatGPT
 ===============================================================================
 
-Examples
+Example
 -------------------------------------------------------------------------------
 
 >>> root_dir = "data/regtech/"
@@ -63,8 +64,7 @@ your findings in no more than 150 words.
 <BLANKLINE>
 <BLANKLINE>
 
-# noga: E501 W291
-
+# pylint: disable=line-too-long
 """
 
 from ...classes import CoOccurrenceMatrix
@@ -74,6 +74,7 @@ from ...techminer.indicators import co_occ_matrix_list, indicators_by_topic
 from ...topics import filter_custom_topics_from_column, generate_custom_topics
 
 
+# pylint: disable=too-many-arguments disable=too-many-locals
 def co_occ_matrix(
     criterion,
     other_criterion=None,
