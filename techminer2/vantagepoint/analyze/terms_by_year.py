@@ -203,8 +203,8 @@ def terms_by_year(
 
     obj = TermsByYear()
     obj.metric_ = "OCC"
-    obj.criterion_for_columns_ = "years"
-    obj.criterion_for_rows_ = criterion
+    obj.criterion_ = "years"
+    obj.other_criterion_ = criterion
     obj.cumulative_ = cumulative
     obj.table_ = descriptors_by_year
     obj.prompt_ = generate_prompt(obj)
