@@ -30,12 +30,14 @@ Becker M              0     0     0     0     1     0     0     0
 # noqa: W291
 """
 
+from ... import load_utils
 from .indicators_by_topic_per_year import indicators_by_topic_per_year
 
 
 def topics_occ_by_year(
     criterion,
     root_dir="./",
+    cumulative=False,
     database="documents",
     start_year=None,
     end_year=None,
@@ -52,6 +54,9 @@ def topics_occ_by_year(
 
     root_dir : str
         The working directory.
+
+    cumulative : bool
+        If True, the cumulative occurrence matrix is computed.
 
     database : str
         The database name. It can be 'documents', 'cited_by' or 'references'.
@@ -92,5 +97,11 @@ def topics_occ_by_year(
     indicators_by_year.columns = indicators_by_year.columns.droplevel(0)
     indicators_by_year = indicators_by_year.fillna(0)
     indicators_by_year = indicators_by_year.astype(int)
+
+    stopwords = load_utils.load_stopwords(root_dir=root_dir)
+    indicators_by_year = indicators_by_year.drop(stopwords, axis=0)
+
+    if cumulative:
+        indicators_by_year = indicators_by_year.cumsum(axis=1)
 
     return indicators_by_year

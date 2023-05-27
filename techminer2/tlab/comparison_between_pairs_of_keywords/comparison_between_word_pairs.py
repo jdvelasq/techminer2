@@ -83,7 +83,8 @@ import networkx as nx
 import plotly.express as px
 
 from ... import network_utils
-from ..._items2counters import items2counters
+
+# from ..._items2counters import items2counters
 from ...load_utils import load_stopwords
 from ...record_utils import read_records
 from ...techminer.indicators.indicators_by_topic import indicators_by_topic
