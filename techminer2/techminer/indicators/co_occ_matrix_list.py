@@ -1,5 +1,5 @@
-""""
-Co-ocurrence Matrix List --- ChatGPT
+"""
+Co-ocurrence Matrix List
 ===============================================================================
 
 Creates a matrix list with all terms of the database, removing the terms in the
@@ -7,7 +7,7 @@ stopwords list.
 
 
 Example
--------------------------------------------------------------------------------
+-------
 
 >>> root_dir = "data/regtech/"
 
@@ -30,9 +30,12 @@ Example
 
 
 """
-from ... import load_utils, record_utils
+from ...load_utils import load_stopwords
+from ...record_utils import read_records
 
 
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-statements
 def co_occ_matrix_list(
     criterion,
     other_criterion,
@@ -42,8 +45,6 @@ def co_occ_matrix_list(
     end_year=None,
     **filters,
 ):
-    # pylint: disable=too-many-arguments
-    # pylint: disable=too-many-statements
     """Creates a matrix list with all terms of the database.
 
     Args:
@@ -60,7 +61,7 @@ def co_occ_matrix_list(
 
     """
 
-    records = record_utils.read_records(
+    records = read_records(
         root_dir,
         database=database,
         start_year=start_year,
@@ -72,7 +73,7 @@ def co_occ_matrix_list(
     matrix_list = matrix_list.rename(columns={criterion: "column"})
     matrix_list = matrix_list.assign(row=records[[other_criterion]])
 
-    stopwords = load_utils.load_stopwords(root_dir=root_dir)
+    stopwords = load_stopwords(root_dir=root_dir)
 
     for name in ["column", "row"]:
         matrix_list[name] = matrix_list[name].str.split(";")
