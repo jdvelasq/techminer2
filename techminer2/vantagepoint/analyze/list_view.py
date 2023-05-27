@@ -89,64 +89,23 @@ def list_view(
 ):
     """Returns a dataframe with the extracted topics.
 
-    Parameters
-    ----------
-    criterion : str
-        Criterion to be used to extract topics. Corresponds to one of columns \
-        of the database.
+    Args:
+        criterion (str): Criterion to be used to extract the topics.
+        root_dir (str): Root directory.
+        database (str): Database name.
+        metric (str): Metric to be used to sort the topics.
+        start_year (int): Start year.
+        end_year (int): End year.
+        topics_length (int): Number of topics to be extracted.
+        topic_min_occ (int): Minimum number of occurrences of the topic.
+        topic_max_occ (int): Maximum number of occurrences of the topic.
+        topic_min_citations (int): Minimum number of citations of the topic.
+        topic_max_citations (int): Maximum number of citations of the topic.
+        custom_topics (list): List of custom topics.
+        **filters: Filters.
 
-    directory : str
-        Root directory of the project.
-
-    database : ``{"documents", "references", "cited_by"}``, default="documents"``
-        Name of the database to be used.
-
-    metric :  ``{"OCC", "global_citations", "local_citations"}``, default="documents"``
-        Metric to be used to sort the topics.
-
-    start_year : int, optional
-        Start year. Used to filter the database.
-
-    end_year : int, optional
-        End year. Used to filter the database.
-
-    topics_length : int, default=20
-        Number of topics to be extracted.
-
-    topic_min_occ : int, optional
-        Minimum number of occurrences of the topic.
-
-    topic_max_occ : int, optional
-        Maximum number of occurrences of the topic.
-
-    topic_min_citations : int, optional
-        Minimum number of citations of the topic.
-
-    topic_max_citations : int, optional
-        Maximum number of citations of the topic.
-
-    custom_topics : list of str, optional
-        List of topics to be extracted.
-
-    filters : dictionary of ``{criterion : list of values}``, optional
-        dictionary of filters to be applied to the database.
-
-    Returns
-    -------
-    ExtractTopicsResult
-        A dataclass with the following attributes:
-
-        table_: pandas.DataFrame.
-            Table with the extracted topics.
-
-        prompt_ : str
-            ChatGPT prompt to be used to generate the analysis report.
-
-        metric_ : str
-            Metric used to sort the topics.
-
-        criterion_ : str
-            Criterion used to extract the topics.
+    Returns:
+        A ListView object.
 
     """
 
@@ -182,10 +141,3 @@ def list_view(
     results.criterion_ = criterion
 
     return results
-
-
-def _filter_custom_topics(indicators, custom_topics):
-    custom_topics = [
-        topic for topic in custom_topics if topic in indicators.index.tolist()
-    ]
-    return custom_topics
