@@ -7,7 +7,7 @@ Matrix Viewer --- ChatGPT
 Examples
 -------------------------------------------------------------------------------
 
-**Matrix view for a occurrence matrix.**
+* Matrix view for a occurrence matrix.
 
 >>> root_dir = "data/regtech/"
 
@@ -32,7 +32,7 @@ Examples
 
 
 >>> chart = vantagepoint.analyze.matrix_viewer(
-...     co_occ_matrix,
+...     co_occ_matrix, xaxes_range=(-2,2)
 ... )
 >>> chart.plot_.write_html(file_name)
 
@@ -64,7 +64,7 @@ field. Be sure to provide a concise summary of your findings in no more than \
 
 
 
-**Matrix view for a co-occurrence matrix.**
+* Matrix view for a co-occurrence matrix.
 
 >>> file_name = "sphinx/_static/vantagepoint__matrix_viewer-1.html"
 
@@ -87,6 +87,7 @@ field. Be sure to provide a concise summary of your findings in no more than \
 ...     co_occ_matrix,
 ...     nx_k=0.5,
 ...     nx_iterations=5,
+...     xaxes_range=(-2,2),
 ... )
 >>> chart.plot_.write_html(file_name)
 
