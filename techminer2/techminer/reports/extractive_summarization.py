@@ -1,5 +1,5 @@
 """
-Abstracts Extractive Summarization
+Abstracts Extractive Summarization --- ChatGPT
 ===============================================================================
 
 
@@ -25,7 +25,7 @@ from sumy.summarizers.lex_rank import LexRankSummarizer
 from sumy.summarizers.lsa import LsaSummarizer
 from sumy.summarizers.luhn import LuhnSummarizer
 
-from ...record_utils import read_records
+from ... import record_utils
 from .abstracts_report import _sort_by_custom_terms, _write_report
 
 
@@ -35,7 +35,7 @@ def extractive_summarization(
     file_name="extractive_summarization.txt",
     n_abstracts=50,
     n_phrases_per_algorithm=1000,
-    directory="./",
+    root_dir="./",
     database="documents",
     start_year=None,
     end_year=None,
@@ -43,8 +43,8 @@ def extractive_summarization(
 ):
     """Abstract extractive summarization using sumy."""
 
-    records = read_records(
-        root_dir=directory,
+    records = record_utils.read_records(
+        root_dir=root_dir,
         database=database,
         start_year=start_year,
         end_year=end_year,
@@ -73,7 +73,7 @@ def extractive_summarization(
         criterion=criterion,
         file_name=file_name,
         use_textwrap=True,
-        directory=directory,
+        directory=root_dir,
         records=records,
     )
 
