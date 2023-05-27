@@ -7,8 +7,17 @@ TechMiner
 
 .. toctree::
     :maxdepth: 1
-    
-    
+        
     indicators/__index__
+
+
+.. toctree::
+    :maxdepth: 1
+
     reports/__index__
+
+
+.. toctree::
+    :maxdepth: 1
+
     tools/__index__
