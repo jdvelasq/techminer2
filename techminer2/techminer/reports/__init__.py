@@ -1,4 +1,3 @@
-from .abstractive_summarization import abstractive_summarization
 from .abstracts_report import abstracts_report
 from .coverage import coverage
 from .extractive_summarization import extractive_summarization
