@@ -1,50 +1,61 @@
 """"
-Ocucrrence Matrix List
+Ocucrrence Matrix List --- ChatGPT
 ===============================================================================
 
+Creates a matrix list with all terms of the database, removing the terms in the
+stopwords list.
+
+
+Example
+-------------------------------------------------------------------------------
+
+>>> root_dir = "data/regtech/"
+
+>>> from techminer2  import techminer
+>>> techminer.indicators.occ_matrix_list(
+...     'authors', 'keywords', root_dir=root_dir
+... ).head(10)
+                         row     column  OCC
+0             accountability  Brennan R    2
+1             accountability    Crane M    2
+2             accountability     Ryan P    2
+93               charitytech      Lin W    2
+94               charitytech    Singh C    2
+112               compliance  Brennan R    2
+113               compliance    Crane M    2
+119               compliance     Ryan P    2
+163  data protection officer  Brennan R    2
+164  data protection officer    Crane M    2
+
+
+
 """
-from ... import record_utils
+from ... import load_utils, record_utils
 
 
 def occ_matrix_list(
     column_criterion,
     row_criterion,
-    root_dir,
-    database,
-    start_year,
-    end_year,
+    root_dir="./",
+    database="documents",
+    start_year=None,
+    end_year=None,
     **filters,
 ):
+    # pylint: disable=too-many-statements
     """Creates a matrix list with all terms of the database.
 
-    Parameters
-    ----------
-    column_criterion: str
-        Criterion to be used to extract the topics.
+    Args:
+        column_criterion (str) : column name to be used as column criterion.
+        row_criterion (str) : column name to be used as row criterion.
+        root_dir (str) : root directory.
+        database (str) : database name.
+        start_year (int) : start year.
+        end_year (int) : end year.
+        **filters : filters.
 
-    row_criterion: str
-        Criterion to be used to extract the topics.
-
-    root_dir: str
-        Path to the working directory.
-
-    database: str
-        Name of the database to be used.
-
-    start_year: int
-        Start year to be considered.
-
-    end_year: int
-        End year to be considered.
-
-    filters: dict
-        Dictionary of filters to be applied to the database.
-
-    Returns
-    -------
-    pandas.DataFrame
-
-
+    Returns:
+        A dataframe with the matrix list.
 
     """
 
@@ -60,14 +71,21 @@ def occ_matrix_list(
     matrix_list = matrix_list.rename(columns={column_criterion: "column"})
     matrix_list = matrix_list.assign(row=records[[row_criterion]])
 
+    stopwords = load_utils.load_stopwords(root_dir=root_dir)
+
     for name in ["column", "row"]:
         matrix_list[name] = matrix_list[name].str.split(";")
         matrix_list = matrix_list.explode(name)
         matrix_list[name] = matrix_list[name].str.strip()
+        matrix_list = matrix_list[~matrix_list[name].isin(stopwords)]
 
     matrix_list["OCC"] = 1
     matrix_list = matrix_list.groupby(
         ["row", "column"], as_index=False
     ).aggregate("sum")
+
+    matrix_list = matrix_list.sort_values(
+        ["OCC", "row", "column"], ascending=[False, True, True]
+    )
 
     return matrix_list
