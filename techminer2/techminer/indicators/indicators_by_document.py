@@ -1,5 +1,5 @@
 """
-Bibliometric indicators by document
+Indicators by Document --- ChatGPT
 ===============================================================================
 
 
