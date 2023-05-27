@@ -117,7 +117,26 @@ def terms_by_year(
     cumulative=False,
     **filters,
 ):
-    """Computes a table with the number of occurrences of each term by year."""
+    """Computes a table with the number of occurrences of each term by year.
+
+    Args:
+        criterion (str): Criterion to be used to generate the terms.
+        topics_length (int, optional): Number of terms to be included in the table. Defaults to 50.
+        topic_min_occ (int, optional): Minimum number of occurrences of the terms. Defaults to None.
+        topic_max_occ (int, optional): Maximum number of occurrences of the terms. Defaults to None.
+        topic_min_citations (int, optional): Minimum number of citations of the terms. Defaults to None.
+        topic_max_citations (int, optional): Maximum number of citations of the terms. Defaults to None.
+        custom_topics (list, optional): List of custom topics. Defaults to None.
+        root_dir (str, optional): Root directory. Defaults to "./".
+        database (str, optional): Database to be used. Defaults to "documents".
+        start_year (int, optional): Start year. Defaults to None.
+        end_year (int, optional): End year. Defaults to None.
+        cumulative (bool, optional): If True, the table contains the cumulative number of occurrences. Defaults to False.
+
+    Returns:
+        TermsByYear: A TermsByYear object.
+
+    """
 
     def generate_prompt(obj):
         return (
