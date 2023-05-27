@@ -2,7 +2,7 @@
 
 import numpy as np
 
-from ._load_stopwords import load_stopwords
+from .load_utils import load_stopwords
 from .techminer.indicators.indicators_by_topic import indicators_by_topic
 
 
@@ -18,7 +18,7 @@ def items2counters(
 
     indicators = indicators_by_topic(
         criterion=column,
-        directory=directory,
+        root_dir=directory,
         database=database,
         start_year=start_year,
         end_year=end_year,
@@ -43,10 +43,14 @@ def items2counters(
     n_zeros_docs = int(np.log10(max(num_docs))) + 1
     n_zeros_cited_by = int(np.log10(max(cited_by))) + 1
 
-    fmt = "{} {:0" + str(n_zeros_docs) + "d}:{:0" + str(n_zeros_cited_by) + "d}"
+    fmt = (
+        "{} {:0" + str(n_zeros_docs) + "d}:{:0" + str(n_zeros_cited_by) + "d}"
+    )
     return {
         name: fmt.format(name, int(nd), int(tc))
         for name, nd, tc in zip(
-            indicators.index, indicators.OCC.values, indicators.global_citations.values
+            indicators.index,
+            indicators.OCC.values,
+            indicators.global_citations.values,
         )
     }

@@ -43,11 +43,11 @@ def three_fields_plot(
     """Sankey plot"""
 
     matrix_left = occ_matrix(
-        criterion_for_columns=middle_criterion,
-        criterion_for_rows=left_criterion,
+        column_criterion=middle_criterion,
+        row_criterion=left_criterion,
         topics_length=topics_length_left,
         topic_min_citations=topic_min_citations,
-        directory=directory,
+        root_dir=directory,
         database=database,
         start_year=start_year,
         end_year=end_year,
@@ -55,11 +55,11 @@ def three_fields_plot(
     ).matrix_
 
     matrix_right = occ_matrix(
-        criterion_for_columns=right_criterion,
-        criterion_for_rows=middle_criterion,
+        column_criterion=right_criterion,
+        row_criterion=middle_criterion,
         topics_length=topics_length_right,
         topic_min_citations=topic_min_citations,
-        directory=directory,
+        root_dir=directory,
         database=database,
         start_year=start_year,
         end_year=end_year,

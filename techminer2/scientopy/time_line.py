@@ -199,7 +199,7 @@ def time_line(
 
     ## data to plot
     indicators = indicators_by_topic_per_year(
-        directory=directory,
+        root_dir=directory,
         criterion=criterion,
         start_year=start_year,
         end_year=end_year,

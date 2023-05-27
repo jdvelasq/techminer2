@@ -120,7 +120,7 @@ def organizations_production_over_time(
 
     chart.production_per_year_ = indicators_by_topic_per_year(
         criterion="organizations",
-        directory=directory,
+        root_dir=directory,
         database=database,
         start_year=start_year,
         end_year=end_year,

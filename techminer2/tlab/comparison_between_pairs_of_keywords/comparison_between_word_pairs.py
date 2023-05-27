@@ -84,7 +84,7 @@ import plotly.express as px
 
 from ... import network_utils
 from ..._items2counters import items2counters
-from ..._load_stopwords import load_stopwords
+from ...load_utils import load_stopwords
 from ...record_utils import read_records
 from ...techminer.indicators.indicators_by_topic import indicators_by_topic
 
@@ -345,7 +345,7 @@ def _select_topics(
 ):
     indicators = indicators_by_topic(
         criterion=criterion,
-        directory=directory,
+        root_dir=directory,
         database=database,
         start_year=start_year,
         end_year=end_year,

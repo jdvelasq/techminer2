@@ -77,8 +77,8 @@ from dataclasses import dataclass
 import numpy as np
 import plotly.graph_objects as go
 
-from ...techminer.indicators.annual_occurrence_matrix import annual_occurrence_matrix
 from ...techminer.indicators.indicators_by_topic import indicators_by_topic
+from ...techminer.indicators.topics_occ_by_year import topics_occ_by_year
 
 
 @dataclass(init=False)
@@ -99,10 +99,10 @@ def trend_topics(
 ):
     """Trend topics"""
 
-    words_by_year = annual_occurrence_matrix(
+    words_by_year = topics_occ_by_year(
         criterion=criterion,
         min_occ=1,
-        directory=directory,
+        root_dir=directory,
         database=database,
         start_year=start_year,
         end_year=end_year,
@@ -137,7 +137,7 @@ def trend_topics(
     words_by_year = words_by_year[["OCC", "year_q1", "year_med", "year_q3"]]
 
     global_citations = indicators_by_topic(
-        criterion, directory=directory
+        criterion, root_dir=directory
     ).global_citations
 
     word2citation = dict(zip(global_citations.index, global_citations.values))
@@ -162,7 +162,8 @@ def trend_topics(
     min_occ = words_by_year.OCC.min()
     max_occ = words_by_year.OCC.max()
     words_by_year = words_by_year.assign(
-        height=0.15 + 0.82 * (words_by_year.OCC - min_occ) / (max_occ - min_occ)
+        height=0.15
+        + 0.82 * (words_by_year.OCC - min_occ) / (max_occ - min_occ)
     )
     words_by_year = words_by_year.assign(
         width=words_by_year.year_q3 - words_by_year.year_q1 + 1

@@ -88,14 +88,14 @@ def cross_corr_matrix(
     results.metric_ = "CORR"
 
     data_matrix = occ_matrix(
-        criterion_for_columns=criterion_for_columns,
-        criterion_for_rows=criterion_for_rows,
+        column_criterion=criterion_for_columns,
+        row_criterion=criterion_for_rows,
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,
         topic_max_occ=topic_max_occ,
         topic_min_citations=topic_min_citations,
         topic_max_citations=topic_max_citations,
-        directory=directory,
+        root_dir=directory,
         database=database,
         start_year=start_year,
         end_year=end_year,

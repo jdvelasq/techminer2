@@ -1,7 +1,7 @@
 from ._items2counters import items2counters
 
 
-def add_counters_to_items_in_table_column(
+def add_counters(
     column,
     name,
     directory,

@@ -37,7 +37,7 @@ def chart(
 
     indicators = indicators_by_topic(
         criterion=criterion,
-        directory=directory,
+        root_dir=directory,
         database=database,
         start_year=start_year,
         end_year=end_year,

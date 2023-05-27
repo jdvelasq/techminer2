@@ -9,6 +9,7 @@ from .._px.cleveland_px import cleveland_px
 from .._px.column_px import column_px
 from .._px.line_px import line_px
 from .._px.pie_px import pie_px
+from ..custom_topics import generate_custom_topics
 from ..techminer.indicators.impact_indicators_by_topic import (
     impact_indicators_by_topic,
 )
@@ -62,35 +63,6 @@ def criterion_impact(
         ]
         return custom_topics
 
-    def generate_custom_topics(
-        topics_length,
-        topic_min_occ,
-        topic_max_occ,
-        topic_min_citations,
-        topic_max_citations,
-        indicators,
-    ):
-        custom_topics = indicators.copy()
-        if topic_min_occ is not None:
-            custom_topics = custom_topics[
-                custom_topics["OCC"] >= topic_min_occ
-            ]
-        if topic_max_occ is not None:
-            custom_topics = custom_topics[
-                custom_topics["OCC"] <= topic_max_occ
-            ]
-        if topic_min_citations is not None:
-            custom_topics = custom_topics[
-                custom_topics["global_citations"] >= topic_min_citations
-            ]
-        if topic_max_citations is not None:
-            custom_topics = custom_topics[
-                custom_topics["global_citations"] <= topic_max_citations
-            ]
-        custom_topics = custom_topics.index.copy()
-        custom_topics = custom_topics[:topics_length]
-        return custom_topics
-
     def sort_indicators(indicators, metric):
         return indicators.sort_values(
             by=[metric, "global_citations"], ascending=[False, False]
@@ -100,7 +72,7 @@ def criterion_impact(
 
     indicators = impact_indicators_by_topic(
         criterion=criterion,
-        directory=directory,
+        root_dir=directory,
         database=database,
         start_year=start_year,
         end_year=end_year,
@@ -123,19 +95,19 @@ def criterion_impact(
 
     indicators = indicators.loc[custom_topics, :]
 
-    if custom_topics is None:
-        custom_topics = generate_custom_topics(
-            topics_length,
-            topic_min_occ,
-            topic_max_occ,
-            topic_min_citations,
-            topic_max_citations,
-            indicators,
-        )
-    else:
-        custom_topics = filter_custom_topics(indicators, custom_topics)
+    # if custom_topics is None:
+    #     custom_topics = generate_custom_topics(
+    #         topics_length,
+    #         topic_min_occ,
+    #         topic_max_occ,
+    #         topic_min_citations,
+    #         topic_max_citations,
+    #         indicators,
+    #     )
+    # else:
+    #     custom_topics = filter_custom_topics(indicators, custom_topics)
 
-    indicators = indicators.loc[custom_topics, :]
+    # indicators = indicators.loc[custom_topics, :]
 
     # indicators[criterion] = indicators[criterion].apply(_shorten)
 

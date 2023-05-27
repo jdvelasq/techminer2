@@ -131,7 +131,7 @@ def co_word_analysis(
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,
         topic_min_citations=topic_min_citations,
-        directory=directory,
+        root_dir=directory,
         database=database,
         start_year=start_year,
         end_year=end_year,
@@ -184,7 +184,9 @@ def _get_manifold_map(matrix, clustering_method, manifold_method):
 
     nodes = matrix.index.to_list()
     node_occ = [int(name.split()[-1].split(":")[0]) for name in nodes]
-    node_global_citations = [int(name.split()[-1].split(":")[-1]) for name in nodes]
+    node_global_citations = [
+        int(name.split()[-1].split(":")[-1]) for name in nodes
+    ]
 
     manifold_data = pd.DataFrame(
         {

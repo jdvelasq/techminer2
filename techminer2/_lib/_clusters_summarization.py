@@ -42,7 +42,7 @@ def clusters_summarization(
             file_name=file_name,
             n_abstracts=n_abstracts,
             n_phrases_per_algorithm=n_phrases_per_algorithm,
-            directory=directory,
+            root_dir=directory,
             database=database,
             start_year=start_year,
             end_year=end_year,

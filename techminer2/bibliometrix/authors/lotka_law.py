@@ -131,7 +131,7 @@ def _core_authors(
     #
     indicators = indicators_by_topic(
         criterion="authors",
-        directory=directory,
+        root_dir=directory,
         database=database,
         start_year=start_year,
         end_year=end_year,

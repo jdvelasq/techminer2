@@ -41,7 +41,7 @@ def cluster_abstracts_report(
             file_name=file_name,
             # n_abstracts=n_abstracts,
             use_textwrap=True,
-            directory=directory,
+            root_dir=directory,
             database=database,
             start_year=start_year,
             end_year=end_year,

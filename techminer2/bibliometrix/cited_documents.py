@@ -34,7 +34,7 @@ def bibiometrix_cited_documents(
     results = _Results()
 
     results.table_ = indicators_by_document(
-        directory=directory,
+        root_dir=directory,
         database=database,
         start_year=start_year,
         end_year=end_year,
@@ -94,7 +94,7 @@ def _get_top_n_documents(
     **filters,
 ):
     indicators = indicators_by_document(
-        directory=directory,
+        root_dir=directory,
         database="documents",
         start_year=start_year,
         end_year=end_year,

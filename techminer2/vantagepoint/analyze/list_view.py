@@ -68,6 +68,8 @@ Analyze the table below, which provides bibliographic indicators for a collectio
 
 from ... import chatgpt, techminer
 from ...classes import ListView
+from ...custom_topics import generate_custom_topics
+from ...sort_indicators import sort_indicators_by_metric
 
 
 def list_view(
@@ -150,28 +152,26 @@ def list_view(
 
     indicators = techminer.indicators.indicators_by_topic(
         criterion=criterion,
-        directory=root_dir,
+        root_dir=root_dir,
         database=database,
         start_year=start_year,
         end_year=end_year,
         **filters,
     )
 
-    indicators = _sort_indicators(indicators, metric)
+    indicators = sort_indicators_by_metric(indicators, metric)
 
     if custom_topics is None:
-        custom_topics = _generate_custom_topics(
-            topics_length,
-            topic_min_occ,
-            topic_max_occ,
-            topic_min_citations,
-            topic_max_citations,
-            indicators,
+        custom_topics = generate_custom_topics(
+            indicators=indicators,
+            topics_length=topics_length,
+            topic_min_occ=topic_min_occ,
+            topic_max_occ=topic_max_occ,
+            topic_min_citations=topic_min_citations,
+            topic_max_citations=topic_max_citations,
         )
-    else:
-        custom_topics = _filter_custom_topics(indicators, custom_topics)
 
-    indicators = indicators.loc[custom_topics, :]
+    indicators = indicators[indicators.index.isin(custom_topics)]
 
     results = ListView()
     results.table_ = indicators
@@ -189,48 +189,3 @@ def _filter_custom_topics(indicators, custom_topics):
         topic for topic in custom_topics if topic in indicators.index.tolist()
     ]
     return custom_topics
-
-
-def _generate_custom_topics(
-    topics_length,
-    topic_min_occ,
-    topic_max_occ,
-    topic_min_citations,
-    topic_max_citations,
-    indicators,
-):
-    custom_topics = indicators.copy()
-    if topic_min_occ is not None:
-        custom_topics = custom_topics[custom_topics["OCC"] >= topic_min_occ]
-    if topic_max_occ is not None:
-        custom_topics = custom_topics[custom_topics["OCC"] <= topic_max_occ]
-    if topic_min_citations is not None:
-        custom_topics = custom_topics[
-            custom_topics["global_citations"] >= topic_min_citations
-        ]
-    if topic_max_citations is not None:
-        custom_topics = custom_topics[
-            custom_topics["global_citations"] <= topic_max_citations
-        ]
-    custom_topics = custom_topics.index.copy()
-    custom_topics = custom_topics[:topics_length]
-    return custom_topics
-
-
-# Sort the indicators dataframe based on the given metric (OCC, local_citations, or global_citations).
-def _sort_indicators(indicators, metric):
-    # Define the columns to sort by for each metric, and whether to sort ascending or descending.
-    if metric == "OCC":
-        columns = ["OCC", "global_citations", "local_citations"]
-        ascending = [False, False, False]
-    if metric == "global_citations":
-        columns = ["global_citations", "local_citations", "OCC"]
-        ascending = [False, False, False]
-    if metric == "local_citations":
-        columns = ["local_citations", "global_citations", "OCC"]
-        ascending = [False, False, False]
-
-    # Sort the indicators dataframe based on the given columns and sort order.
-    indicators = indicators.sort_values(columns, ascending=ascending)
-
-    return indicators

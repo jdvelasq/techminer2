@@ -37,7 +37,7 @@ def _dynamics(
     """Bibliometrix generic dynamics plot."""
 
     indicators = indicators_by_topic_per_year(
-        directory=directory,
+        root_dir=directory,
         criterion=criterion,
         database=database,
         start_year=start_year,
@@ -48,12 +48,18 @@ def _dynamics(
     indicators = indicators[["OCC"]]
     indicators = indicators.reset_index()
     indicators = indicators.sort_values([criterion, "year"], ascending=True)
-    indicators = indicators.pivot(index="year", columns=criterion, values="OCC")
+    indicators = indicators.pivot(
+        index="year", columns=criterion, values="OCC"
+    )
     indicators = indicators.fillna(0)
 
     # complete missing years
-    year_range = list(range(indicators.index.min(), indicators.index.max() + 1))
-    missing_years = [year for year in year_range if year not in indicators.index]
+    year_range = list(
+        range(indicators.index.min(), indicators.index.max() + 1)
+    )
+    missing_years = [
+        year for year in year_range if year not in indicators.index
+    ]
     pdf = pd.DataFrame(
         np.zeros((len(missing_years), len(indicators.columns))),
         index=missing_years,
@@ -64,7 +70,7 @@ def _dynamics(
 
     # top items
     selected_topics = indicators_by_topic(
-        directory=directory,
+        root_dir=directory,
         criterion=criterion,
         database=database,
         start_year=start_year,
@@ -77,7 +83,9 @@ def _dynamics(
     )
 
     if topic_min_occ is not None:
-        selected_topics = selected_topics[selected_topics["OCC"] >= topic_min_occ]
+        selected_topics = selected_topics[
+            selected_topics["OCC"] >= topic_min_occ
+        ]
     if topic_min_citations is not None:
         selected_topics = selected_topics[
             selected_topics["global_citations"] >= topic_min_citations

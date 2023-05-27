@@ -25,7 +25,8 @@ import numpy as np
 import pandas as pd
 
 from ..._items2counters import items2counters
-from ..._load_stopwords import load_stopwords
+from ...custom_topics import generate_custom_topics
+from ...load_utils import load_stopwords
 from ...record_utils import read_records
 from ...techminer.indicators.indicators_by_topic import indicators_by_topic
 
@@ -49,21 +50,27 @@ def tf_matrix(
 ):
     """Computes TF Matrix."""
 
-    # extracts filtered topics
-    indicators = _compute_filter(
-        criterion,
-        topics_length,
-        topic_min_occ,
-        topic_max_occ,
-        topic_min_citations,
-        topic_max_citations,
-        custom_topics,
-        directory,
-        database,
-        start_year,
-        end_year,
+    indicators = indicators_by_topic(
+        criterion=criterion,
+        root_dir=directory,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
         **filters,
     )
+
+    if custom_topics is None:
+        custom_topics = generate_custom_topics(
+            indicators=indicators,
+            topics_length=topics_length,
+            topic_min_occ=topic_min_occ,
+            topic_max_occ=topic_max_occ,
+            topic_min_citations=topic_min_citations,
+            topic_max_citations=topic_max_citations,
+        )
+
+    indicators = indicators[indicators.index.isin(custom_topics)]
+
     custom_topics = indicators.index.tolist()
 
     # apply stopwords
@@ -218,41 +225,3 @@ def _compute_filter(
     **filters,
 ):
     """apply filter to topics"""
-    indicators = indicators_by_topic(
-        criterion=criterion,
-        directory=directory,
-        database=database,
-        start_year=start_year,
-        end_year=end_year,
-        **filters,
-    )
-
-    if custom_topics is None:
-        custom_topics = indicators.copy()
-        if topic_min_occ is not None:
-            custom_topics = custom_topics[
-                custom_topics["OCC"] >= topic_min_occ
-            ]
-        if topic_max_occ is not None:
-            custom_topics = custom_topics[
-                custom_topics["OCC"] <= topic_max_occ
-            ]
-        if topic_min_citations is not None:
-            custom_topics = custom_topics[
-                custom_topics["global_citations"] >= topic_min_citations
-            ]
-        if topic_max_citations is not None:
-            custom_topics = custom_topics[
-                custom_topics["global_citations"] <= topic_max_citations
-            ]
-        custom_topics = custom_topics.index.copy()
-        custom_topics = custom_topics[:topics_length]
-    else:
-        custom_topics = [
-            topic
-            for topic in custom_topics
-            if topic in indicators.index.tolist()
-        ]
-
-    indicators = indicators.loc[custom_topics, :]
-    return indicators

@@ -19,45 +19,10 @@ Corresponding Author's Country
     <iframe src="../../../_static/bibliometrix__corresponding_authors_country.html"height="600px" width="100%" frameBorder="0"></iframe>
 
 
-
 >>> r.table_.head()
-                single_publication  multiple_publication mcp_ratio
-countries                                                         
-United Kingdom                   4                     3      0.75
-Australia                        4                     3      0.75
-United States                    4                     2       0.5
-Ireland                          4                     1      0.25
-China                            2                     3       1.5
+
 
 >>> print(r.prompt_)
-<BLANKLINE>
-Imagine that you are a researcher analyzing a bibliographic dataset. The table below provides data on top 20 most frequent countries in the dataset. 'single publication' is the number of documents in which all the authors are from the same country. 'multiple publication' is the number of documents in which the authors are from different countries. 'mcp ratio' is the ratio between 'multiple publication' and 'single publication'. The higher the ratio, the higher the collaboration between countries. Use the information in the table to draw conclusions about the level of collaboration between countries in the dataset. In your analysis, be sure to describe in a clear and concise way, any findings or any patterns you observe, and identify any outliers or anomalies in the data. Limit your description to one paragraph with no more than 250 words.
-<BLANKLINE>
-|    | countries            |   single_publication |   multiple_publication | mcp_ratio   |
-|---:|:---------------------|---------------------:|-----------------------:|:------------|
-|  0 | United Kingdom       |                    4 |                      3 | 0.75        |
-|  1 | Australia            |                    4 |                      3 | 0.75        |
-|  2 | United States        |                    4 |                      2 | 0.5         |
-|  3 | Ireland              |                    4 |                      1 | 0.25        |
-|  4 | China                |                    2 |                      3 | 1.5         |
-|  5 | Italy                |                    4 |                      1 | 0.25        |
-|  6 | Germany              |                    2 |                      2 | 1.0         |
-|  7 | Switzerland          |                    1 |                      3 | 3.0         |
-|  8 | Bahrain              |                    2 |                      2 | 1.0         |
-|  9 | Hong Kong            |                    0 |                      3 | -           |
-| 10 | Spain                |                    2 |                      0 | 0.0         |
-| 11 | Indonesia            |                    2 |                      0 | 0.0         |
-| 12 | Luxembourg           |                    1 |                      1 | 1.0         |
-| 13 | United Arab Emirates |                    1 |                      1 | 1.0         |
-| 14 | Palestine            |                    1 |                      0 | 0.0         |
-| 15 | Romania              |                    0 |                      1 | -           |
-| 16 | Poland               |                    0 |                      1 | -           |
-| 17 | Netherlands          |                    0 |                      1 | -           |
-| 18 | France               |                    0 |                      1 | -           |
-| 19 | Belgium              |                    1 |                      0 | 0.0         |
-<BLANKLINE>
-<BLANKLINE>
-<BLANKLINE>
 
 
 """
@@ -90,9 +55,9 @@ def corresponding_authors_country(
 ):
     """Corresponding Author's Country"""
 
-    results = _Results()
-    table = _make_table(
-        directory=directory,
+    table = collaboration_indicators_by_topic(
+        "countries",
+        root_dir=directory,
         database=database,
         start_year=start_year,
         end_year=end_year,
@@ -105,6 +70,7 @@ def corresponding_authors_country(
         table = table[table.global_citations >= topic_min_citations]
     table = table.head(topics_length)
 
+    results = _Results()
     results.table_ = table
     table = table.reset_index()
     results.plot_ = _make_plot(table)
@@ -140,19 +106,11 @@ def _make_table(
     end_year,
     **filters,
 ):
-    indicators = collaboration_indicators_by_topic(
-        "countries",
-        directory=directory,
-        database=database,
-        start_year=start_year,
-        end_year=end_year,
-        **filters,
-    )
-
     indicators = indicators.sort_values(by="OCC", ascending=False)
     indicators = indicators[["single_publication", "multiple_publication"]]
     indicators = indicators.assign(
-        mcp_ratio=indicators["multiple_publication"] / indicators["single_publication"]
+        mcp_ratio=indicators["multiple_publication"]
+        / indicators["single_publication"]
     )
     indicators = indicators.replace(np.inf, "-")
     return indicators
@@ -160,7 +118,8 @@ def _make_table(
 
 def _make_plot(indicators):
     indicators = indicators.melt(
-        id_vars="countries", value_vars=["single_publication", "multiple_publication"]
+        id_vars="countries",
+        value_vars=["single_publication", "multiple_publication"],
     )
     indicators = indicators.rename(
         columns={"variable": "publication", "value": "Num Documents"}

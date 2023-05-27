@@ -156,7 +156,7 @@ def co_occurrence_network(
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,
         topic_min_citations=0,
-        directory=directory,
+        root_dir=directory,
         database=database,
         start_year=start_year,
         end_year=end_year,
