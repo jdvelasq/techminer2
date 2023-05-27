@@ -1,5 +1,5 @@
 """
-Bibliometric Indicators by Topic
+Indicators by Topic --- ChatGPT
 ===============================================================================
 
 
@@ -22,7 +22,6 @@ Sarea A       2  ...                             2
 [5 rows x 5 columns]
 
 
-
 >>> from pprint import pprint
 >>> pprint(sorted(techminer.indicators.indicators_by_topic('authors',
 ...     root_dir=root_dir).columns.to_list()))
@@ -33,6 +32,7 @@ Sarea A       2  ...                             2
  'local_citations_per_document']
 
 # noga: W291
+
 """
 
 from ... import record_utils
