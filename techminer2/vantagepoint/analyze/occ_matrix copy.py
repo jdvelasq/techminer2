@@ -9,66 +9,60 @@ Examples
 
 >>> from techminer2 import vantagepoint
 >>> occ_matrix = vantagepoint.analyze.occ_matrix(
-...    column_criterion='author_keywords',
-...    row_criterion='authors',
+...    criterion_for_columns='author_keywords',
+...    criterion_for_rows='authors',
 ...    topic_min_occ=2,
 ...    root_dir=root_dir,
 ... )
 >>> occ_matrix.matrix_
-column              regtech 28:329  ...  reporting 02:001
-row                                 ...                  
-Arner DW 3:185                   2  ...                 0
-Buckley RP 3:185                 2  ...                 0
-Barberis JN 2:161                1  ...                 0
-Butler T/1 2:041                 2  ...                 0
-Hamdan A 2:018                   0  ...                 0
-Turki M 2:018                    0  ...                 0
-Lin W 2:017                      2  ...                 0
-Singh C 2:017                    2  ...                 0
-Brennan R 2:014                  2  ...                 0
-Crane M 2:014                    2  ...                 0
-Ryan P 2:014                     2  ...                 0
-Sarea A 2:012                    0  ...                 0
-Grassi L 2:002                   2  ...                 1
-Lanfranchi D 2:002               2  ...                 1
-Arman AA 2:000                   2  ...                 0
+column              regtech 28:329  ...  technology 02:010
+row                                 ...                   
+Arner DW 3:185                   2  ...                  0
+Buckley RP 3:185                 2  ...                  0
+Arman AA 2:000                   2  ...                  1
+Barberis JN 2:161                1  ...                  0
+Brennan R 2:014                  2  ...                  0
+Butler T/1 2:041                 2  ...                  0
+Crane M 2:014                    2  ...                  0
+Grassi L 2:002                   2  ...                  0
+Hamdan A 2:018                   0  ...                  0
+Lanfranchi D 2:002               2  ...                  0
+Lin W 2:017                      2  ...                  0
+Ryan P 2:014                     2  ...                  0
+Sarea A 2:012                    0  ...                  0
+Singh C 2:017                    2  ...                  0
+Turki M 2:018                    0  ...                  0
 <BLANKLINE>
 [15 rows x 24 columns]
 
-
 >>> print(occ_matrix.prompt_)
-Analyze the table below which contains values of co-occurrence (OCC) for the \
-'authors' and 'author_keywords' fields in a bibliographic dataset. Identify \
-any notable patterns, trends, or outliers in the data, and discuss their \
-implications for the research field. Be sure to provide a concise summary of \
-your findings in no more than 150 words.
+Analyze the table below which contains values for the metric OCC. The columns of the table correspond to author_keywords, and the rows correspond to authors. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
-| row                |   regtech 28:329 |   fintech 12:249 |   regulatory technology 07:037 |   compliance 07:030 |   regulation 05:164 |   financial services 04:168 |   financial regulation 04:035 |   artificial intelligence 04:023 |   anti-money laundering 03:021 |   risk management 03:014 |   innovation 03:012 |   suptech 03:004 |   semantic technologies 02:041 |   data protection 02:027 |   charitytech 02:017 |   english law 02:017 |   accountability 02:014 |   data protection officer 02:014 |   gdpr 02:014 |   anti money laundering (aml) 02:013 |   sandbox 02:012 |   technology 02:010 |   finance 02:001 |   reporting 02:001 |
-|:-------------------|-----------------:|-----------------:|-------------------------------:|--------------------:|--------------------:|----------------------------:|------------------------------:|---------------------------------:|-------------------------------:|-------------------------:|--------------------:|-----------------:|-------------------------------:|-------------------------:|---------------------:|---------------------:|------------------------:|---------------------------------:|--------------:|-------------------------------------:|-----------------:|--------------------:|-----------------:|-------------------:|
-| Arner DW 3:185     |                2 |                1 |                              0 |                   0 |                   0 |                           1 |                             2 |                                0 |                              0 |                        0 |                   0 |                0 |                              0 |                        1 |                    0 |                    0 |                       0 |                                0 |             0 |                                    0 |                1 |                   0 |                0 |                  0 |
-| Buckley RP 3:185   |                2 |                1 |                              0 |                   0 |                   0 |                           1 |                             2 |                                0 |                              0 |                        0 |                   0 |                0 |                              0 |                        1 |                    0 |                    0 |                       0 |                                0 |             0 |                                    0 |                1 |                   0 |                0 |                  0 |
-| Barberis JN 2:161  |                1 |                0 |                              0 |                   0 |                   0 |                           1 |                             1 |                                0 |                              0 |                        0 |                   0 |                0 |                              0 |                        0 |                    0 |                    0 |                       0 |                                0 |             0 |                                    0 |                1 |                   0 |                0 |                  0 |
-| Butler T/1 2:041   |                2 |                2 |                              0 |                   0 |                   1 |                           0 |                             0 |                                0 |                              0 |                        1 |                   0 |                0 |                              2 |                        0 |                    0 |                    0 |                       0 |                                0 |             0 |                                    0 |                0 |                   0 |                0 |                  0 |
-| Hamdan A 2:018     |                0 |                0 |                              2 |                   0 |                   0 |                           0 |                             0 |                                0 |                              1 |                        0 |                   0 |                0 |                              0 |                        0 |                    0 |                    0 |                       0 |                                0 |             0 |                                    1 |                0 |                   0 |                0 |                  0 |
-| Turki M 2:018      |                0 |                0 |                              2 |                   0 |                   0 |                           0 |                             0 |                                0 |                              1 |                        0 |                   0 |                0 |                              0 |                        0 |                    0 |                    0 |                       0 |                                0 |             0 |                                    1 |                0 |                   0 |                0 |                  0 |
-| Lin W 2:017        |                2 |                0 |                              0 |                   0 |                   0 |                           0 |                             0 |                                1 |                              1 |                        0 |                   0 |                0 |                              0 |                        0 |                    2 |                    2 |                       0 |                                0 |             0 |                                    0 |                0 |                   0 |                0 |                  0 |
-| Singh C 2:017      |                2 |                0 |                              0 |                   0 |                   0 |                           0 |                             0 |                                1 |                              1 |                        0 |                   0 |                0 |                              0 |                        0 |                    2 |                    2 |                       0 |                                0 |             0 |                                    0 |                0 |                   0 |                0 |                  0 |
-| Brennan R 2:014    |                2 |                0 |                              0 |                   2 |                   0 |                           0 |                             0 |                                0 |                              0 |                        0 |                   0 |                0 |                              0 |                        0 |                    0 |                    0 |                       2 |                                2 |             2 |                                    0 |                0 |                   0 |                0 |                  0 |
-| Crane M 2:014      |                2 |                0 |                              0 |                   2 |                   0 |                           0 |                             0 |                                0 |                              0 |                        0 |                   0 |                0 |                              0 |                        0 |                    0 |                    0 |                       2 |                                2 |             2 |                                    0 |                0 |                   0 |                0 |                  0 |
-| Ryan P 2:014       |                2 |                0 |                              0 |                   2 |                   0 |                           0 |                             0 |                                0 |                              0 |                        0 |                   0 |                0 |                              0 |                        0 |                    0 |                    0 |                       2 |                                2 |             2 |                                    0 |                0 |                   0 |                0 |                  0 |
-| Sarea A 2:012      |                0 |                0 |                              1 |                   0 |                   0 |                           0 |                             0 |                                1 |                              0 |                        0 |                   0 |                0 |                              0 |                        0 |                    0 |                    0 |                       0 |                                0 |             0 |                                    1 |                0 |                   0 |                0 |                  0 |
-| Grassi L 2:002     |                2 |                2 |                              1 |                   1 |                   2 |                           0 |                             0 |                                0 |                              0 |                        1 |                   1 |                1 |                              0 |                        0 |                    0 |                    0 |                       0 |                                0 |             0 |                                    0 |                0 |                   0 |                1 |                  1 |
-| Lanfranchi D 2:002 |                2 |                2 |                              1 |                   1 |                   2 |                           0 |                             0 |                                0 |                              0 |                        1 |                   1 |                1 |                              0 |                        0 |                    0 |                    0 |                       0 |                                0 |             0 |                                    0 |                0 |                   0 |                1 |                  1 |
-| Arman AA 2:000     |                2 |                0 |                              0 |                   0 |                   0 |                           0 |                             0 |                                0 |                              0 |                        0 |                   0 |                1 |                              0 |                        0 |                    0 |                    0 |                       0 |                                0 |             0 |                                    0 |                0 |                   1 |                0 |                  0 |
+| row                |   regtech 28:329 |   fintech 12:249 |   compliance 07:030 |   regulatory technology 07:037 |   regulation 05:164 |   artificial intelligence 04:023 |   financial regulation 04:035 |   financial services 04:168 |   anti-money laundering 03:021 |   innovation 03:012 |   risk management 03:014 |   suptech 03:004 |   accountability 02:014 |   anti money laundering (aml) 02:013 |   charitytech 02:017 |   data protection 02:027 |   data protection officer 02:014 |   english law 02:017 |   finance 02:001 |   gdpr 02:014 |   reporting 02:001 |   sandbox 02:012 |   semantic technologies 02:041 |   technology 02:010 |
+|:-------------------|-----------------:|-----------------:|--------------------:|-------------------------------:|--------------------:|---------------------------------:|------------------------------:|----------------------------:|-------------------------------:|--------------------:|-------------------------:|-----------------:|------------------------:|-------------------------------------:|---------------------:|-------------------------:|---------------------------------:|---------------------:|-----------------:|--------------:|-------------------:|-----------------:|-------------------------------:|--------------------:|
+| Arner DW 3:185     |                2 |                1 |                   0 |                              0 |                   0 |                                0 |                             2 |                           1 |                              0 |                   0 |                        0 |                0 |                       0 |                                    0 |                    0 |                        1 |                                0 |                    0 |                0 |             0 |                  0 |                1 |                              0 |                   0 |
+| Buckley RP 3:185   |                2 |                1 |                   0 |                              0 |                   0 |                                0 |                             2 |                           1 |                              0 |                   0 |                        0 |                0 |                       0 |                                    0 |                    0 |                        1 |                                0 |                    0 |                0 |             0 |                  0 |                1 |                              0 |                   0 |
+| Arman AA 2:000     |                2 |                0 |                   0 |                              0 |                   0 |                                0 |                             0 |                           0 |                              0 |                   0 |                        0 |                1 |                       0 |                                    0 |                    0 |                        0 |                                0 |                    0 |                0 |             0 |                  0 |                0 |                              0 |                   1 |
+| Barberis JN 2:161  |                1 |                0 |                   0 |                              0 |                   0 |                                0 |                             1 |                           1 |                              0 |                   0 |                        0 |                0 |                       0 |                                    0 |                    0 |                        0 |                                0 |                    0 |                0 |             0 |                  0 |                1 |                              0 |                   0 |
+| Brennan R 2:014    |                2 |                0 |                   2 |                              0 |                   0 |                                0 |                             0 |                           0 |                              0 |                   0 |                        0 |                0 |                       2 |                                    0 |                    0 |                        0 |                                2 |                    0 |                0 |             2 |                  0 |                0 |                              0 |                   0 |
+| Butler T/1 2:041   |                2 |                2 |                   0 |                              0 |                   1 |                                0 |                             0 |                           0 |                              0 |                   0 |                        1 |                0 |                       0 |                                    0 |                    0 |                        0 |                                0 |                    0 |                0 |             0 |                  0 |                0 |                              2 |                   0 |
+| Crane M 2:014      |                2 |                0 |                   2 |                              0 |                   0 |                                0 |                             0 |                           0 |                              0 |                   0 |                        0 |                0 |                       2 |                                    0 |                    0 |                        0 |                                2 |                    0 |                0 |             2 |                  0 |                0 |                              0 |                   0 |
+| Grassi L 2:002     |                2 |                2 |                   1 |                              1 |                   2 |                                0 |                             0 |                           0 |                              0 |                   1 |                        1 |                1 |                       0 |                                    0 |                    0 |                        0 |                                0 |                    0 |                1 |             0 |                  1 |                0 |                              0 |                   0 |
+| Hamdan A 2:018     |                0 |                0 |                   0 |                              2 |                   0 |                                0 |                             0 |                           0 |                              1 |                   0 |                        0 |                0 |                       0 |                                    1 |                    0 |                        0 |                                0 |                    0 |                0 |             0 |                  0 |                0 |                              0 |                   0 |
+| Lanfranchi D 2:002 |                2 |                2 |                   1 |                              1 |                   2 |                                0 |                             0 |                           0 |                              0 |                   1 |                        1 |                1 |                       0 |                                    0 |                    0 |                        0 |                                0 |                    0 |                1 |             0 |                  1 |                0 |                              0 |                   0 |
+| Lin W 2:017        |                2 |                0 |                   0 |                              0 |                   0 |                                1 |                             0 |                           0 |                              1 |                   0 |                        0 |                0 |                       0 |                                    0 |                    2 |                        0 |                                0 |                    2 |                0 |             0 |                  0 |                0 |                              0 |                   0 |
+| Ryan P 2:014       |                2 |                0 |                   2 |                              0 |                   0 |                                0 |                             0 |                           0 |                              0 |                   0 |                        0 |                0 |                       2 |                                    0 |                    0 |                        0 |                                2 |                    0 |                0 |             2 |                  0 |                0 |                              0 |                   0 |
+| Sarea A 2:012      |                0 |                0 |                   0 |                              1 |                   0 |                                1 |                             0 |                           0 |                              0 |                   0 |                        0 |                0 |                       0 |                                    1 |                    0 |                        0 |                                0 |                    0 |                0 |             0 |                  0 |                0 |                              0 |                   0 |
+| Singh C 2:017      |                2 |                0 |                   0 |                              0 |                   0 |                                1 |                             0 |                           0 |                              1 |                   0 |                        0 |                0 |                       0 |                                    0 |                    2 |                        0 |                                0 |                    2 |                0 |             0 |                  0 |                0 |                              0 |                   0 |
+| Turki M 2:018      |                0 |                0 |                   0 |                              2 |                   0 |                                0 |                             0 |                           0 |                              1 |                   0 |                        0 |                0 |                       0 |                                    1 |                    0 |                        0 |                                0 |                    0 |                0 |             0 |                  0 |                0 |                              0 |                   0 |
 <BLANKLINE>
 <BLANKLINE>
 
-
-# noga: E501
 """
 
 
-from ... import add_counters, classes, sort_utils, techminer, topics
+from ... import add_counters, chatgpt, classes, sort_utils, techminer, topics
+from ...load_utils import load_stopwords
 
 
 def occ_matrix(
@@ -128,16 +122,16 @@ def occ_matrix(
                 topic_max_citations=topic_max_citations,
             )
 
-        name = "row" if is_row_column else "column"
-
         custom_topics = topics.filter_custom_topics_from_column(
             dataframe=raw_matrix_list,
-            col_name=name,
+            col_name=criterion,
             custom_topics=custom_topics,
         )
 
+        name = "row" if is_row_column else "column"
+
         raw_matrix_list = raw_matrix_list[
-            raw_matrix_list[name].isin(custom_topics)
+            raw_matrix_list[name].isin(criterion)
         ]
 
         return raw_matrix_list
@@ -183,7 +177,7 @@ def occ_matrix(
     # Generates a matrix list with all descriptors in the database
     raw_matrix_list = techminer.indicators.occ_matrix_list(
         column_criterion=column_criterion,
-        row_criterion=row_criterion,
+        row_criterion=column_criterion,
         root_dir=root_dir,
         database=database,
         start_year=start_year,

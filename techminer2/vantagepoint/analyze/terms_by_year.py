@@ -97,9 +97,9 @@ provide a concise summary of your findings in no more than 150 words.
 from ... import techminer
 from ...add_counters import add_counters_to_axis
 from ...classes import TermsByYear
-from ...custom_topics import generate_custom_topics
-from ...sort_indicators import sort_indicators_by_metric
+from ...sort_utils import sort_indicators_by_metric
 from ...techminer.indicators.indicators_by_topic import indicators_by_topic
+from ...topics import generate_custom_topics
 
 
 def terms_by_year(

@@ -2,6 +2,10 @@
 Co-occurrence Matrix
 ===============================================================================
 
+Computes a co-occurrence matrix.
+
+Examples
+-------------------------------------------------------------------------------
 
 >>> root_dir = "data/regtech/"
 
@@ -65,45 +69,6 @@ def co_occ_matrix(
 ):
     """
     Computes a co-occurrence matrix.
-
-    Parameters
-    ----------
-    criterion: str
-        Criterion to be used to extract the topics. It can be any column of the
-        database, e.g., 'author_keywords', 'index_terms', 'abstract_words', etc.
-
-    topics_length: int or None, default None
-        Number of topics in the criterion. If None, all topics are considered.
-
-    topic_min_occ: int or None, default None
-        Minimum number of occurrences of a topic. If None, no filter is applied.
-
-    topic_max_occ: int or None, default None
-        Maximum number of occurrences of a topic. If None, no filter is applied.
-
-    topic_min_citations: int or None, default None
-        Minimum number of citations of a topic. If None, no filter is applied.
-
-    topic_max_citations: int or None, default None
-        Maximum number of citations of a topic. If None, no filter is applied.
-
-    root_dir: str, default './'
-        Path to the working directory.
-
-    database: str, default 'documents'
-        Name of the database to be used.
-
-    start_year: int or None, default None
-        Start year to be considered. If None, no filter is applied.
-
-    end_year: int or None, default None
-        End year to be considered. If None, no filter is applied.
-
-    filters: dict
-        Dictionary of filters to be applied to the database.
-
-    Returns
-    -------
 
 
 

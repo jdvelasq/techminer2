@@ -9,10 +9,10 @@ from .._px.cleveland_px import cleveland_px
 from .._px.column_px import column_px
 from .._px.line_px import line_px
 from .._px.pie_px import pie_px
-from ..custom_topics import generate_custom_topics
 from ..techminer.indicators.impact_indicators_by_topic import (
     impact_indicators_by_topic,
 )
+from ..topics import generate_custom_topics
 
 
 @dataclass(init=False)
@@ -54,14 +54,6 @@ def criterion_impact(
             raise ValueError(
                 "Impact measure must be one of: h_index, g_index, m_index, global_citations"
             )
-
-    def filter_custom_topics(indicators, custom_topics):
-        custom_topics = [
-            topic
-            for topic in custom_topics
-            if topic in indicators.index.tolist()
-        ]
-        return custom_topics
 
     def sort_indicators(indicators, metric):
         return indicators.sort_values(

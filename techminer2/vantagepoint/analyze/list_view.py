@@ -66,8 +66,8 @@ Analyze the table below, which provides bibliographic indicators for a collectio
 
 from ... import chatgpt, techminer
 from ...classes import ListView
-from ...custom_topics import generate_custom_topics
-from ...sort_indicators import sort_indicators_by_metric
+from ...sort_utils import sort_indicators_by_metric
+from ...topics import generate_custom_topics
 
 
 def list_view(
