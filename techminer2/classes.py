@@ -48,6 +48,17 @@ class NetworkStatistics:
 
 
 @dataclass(init=False)
+class OccurrenceMatrix:
+    """Occurrence matrix."""
+
+    matrix_: pd.DataFrame
+    prompt_: str
+    metric_: str
+    column_criterion_: str
+    row_criterion_: str
+
+
+@dataclass(init=False)
 class RecordStatistics:
     """Record statistics."""
 
