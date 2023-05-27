@@ -51,7 +51,7 @@ provide a concise summary of your findings in no more than 150 words.
 
 
 """
-from .occ_matrix import occ_matrix
+# from .co_occ_matrix import co_occ_matrix
 
 
 def co_occ_matrix(
@@ -75,7 +75,7 @@ def co_occ_matrix(
 
 
     """
-    return occ_matrix(
+    return co_occ_matrix(
         column_criterion=criterion,
         row_criterion=criterion,
         topics_length=topics_length,

@@ -50,8 +50,8 @@ Analyze the table below which contains the cross-correlation values for the auth
 from dataclasses import dataclass
 
 from ... import chatgpt
+from .co_occ_matrix import co_occ_matrix
 from .compute_corr_matrix import compute_corr_matrix
-from .occ_matrix import occ_matrix
 
 
 @dataclass(init=False)
@@ -87,7 +87,7 @@ def cross_corr_matrix(
     results.method_ = method
     results.metric_ = "CORR"
 
-    data_matrix = occ_matrix(
+    data_matrix = co_occ_matrix(
         column_criterion=criterion_for_columns,
         row_criterion=criterion_for_rows,
         topics_length=topics_length,

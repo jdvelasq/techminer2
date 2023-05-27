@@ -25,6 +25,7 @@ The following functions are available:
 """
 
 from .auto_corr_matrix import auto_corr_matrix
+from .co_occ_matrix import co_occ_matrix
 
 # from .co_occ_matrix import co_occ_matrix
 from .column_viewer import column_viewer
@@ -37,7 +38,6 @@ from .list_view import list_view
 from .matrix_viewer import matrix_viewer
 from .network_degree_plot import network_degree_plot
 from .network_metrics import network_metrics
-from .occ_matrix import occ_matrix
 from .statistics import statistics
 from .terms_by_year import terms_by_year
 from .tf_idf_matrix import tf_idf_matrix
@@ -56,7 +56,7 @@ __all__ = [
     "matrix_viewer",
     "network_degree_plot",
     "network_metrics",
-    "occ_matrix",
+    "co_occ_matrix",
     "statistics",
     "terms_by_year",
     "tf_idf_matrix",

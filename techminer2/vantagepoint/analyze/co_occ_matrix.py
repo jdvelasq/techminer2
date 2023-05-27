@@ -1,5 +1,5 @@
 """
-Occurrence Matrix
+Co-cccurrence Matrix
 ===============================================================================
 
 Examples
@@ -8,9 +8,9 @@ Examples
 >>> root_dir = "data/regtech/"
 
 >>> from techminer2 import vantagepoint
->>> occ_matrix = vantagepoint.analyze.occ_matrix(
-...    column_criterion='author_keywords',
-...    row_criterion='authors',
+>>> occ_matrix = vantagepoint.analyze.co_occ_matrix(
+...    criterion='author_keywords',
+...    other_criterion='authors',
 ...    topic_min_occ=2,
 ...    root_dir=root_dir,
 ... )
@@ -64,14 +64,14 @@ your findings in no more than 150 words.
 <BLANKLINE>
 
 
-# noga: E501
+# noga: E501 W291
 """
 
 
 from ... import add_counters, classes, sort_utils, techminer, topics
 
 
-def occ_matrix(
+def co_occ_matrix(
     column_criterion,
     row_criterion=None,
     topics_length=None,
@@ -182,8 +182,8 @@ def occ_matrix(
 
     # Generates a matrix list with all descriptors in the database
     raw_matrix_list = techminer.indicators.co_occ_matrix_list(
-        column_criterion=column_criterion,
-        row_criterion=row_criterion,
+        criterion=column_criterion,
+        other_criterion=row_criterion,
         root_dir=root_dir,
         database=database,
         start_year=start_year,

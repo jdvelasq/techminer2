@@ -1,5 +1,5 @@
 """"
-Co-ocurrence Matrix List 
+Co-ocurrence Matrix List  --- ChatGPT
 ===============================================================================
 
 Creates a matrix list with all terms of the database, removing the terms in the
@@ -34,20 +34,21 @@ from ... import load_utils, record_utils
 
 
 def co_occ_matrix_list(
-    column_criterion,
-    row_criterion,
+    criterion,
+    other_criterion,
     root_dir="./",
     database="documents",
     start_year=None,
     end_year=None,
     **filters,
 ):
+    # pylint: disable=too-many-arguments
     # pylint: disable=too-many-statements
     """Creates a matrix list with all terms of the database.
 
     Args:
-        column_criterion (str) : column name to be used as column criterion.
-        row_criterion (str) : column name to be used as row criterion.
+        criterion (str) : column name to be used as column criterion.
+        other_criterion (str) : column name to be used as row criterion.
         root_dir (str) : root directory.
         database (str) : database name.
         start_year (int) : start year.
@@ -67,9 +68,9 @@ def co_occ_matrix_list(
         **filters,
     )
 
-    matrix_list = records[[column_criterion]].copy()
-    matrix_list = matrix_list.rename(columns={column_criterion: "column"})
-    matrix_list = matrix_list.assign(row=records[[row_criterion]])
+    matrix_list = records[[criterion]].copy()
+    matrix_list = matrix_list.rename(columns={criterion: "column"})
+    matrix_list = matrix_list.assign(row=records[[other_criterion]])
 
     stopwords = load_utils.load_stopwords(root_dir=root_dir)
 

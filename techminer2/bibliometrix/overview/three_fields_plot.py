@@ -24,7 +24,7 @@ Three Fields Plot
 """
 import plotly.graph_objects as go
 
-from ...vantagepoint.analyze.occ_matrix import occ_matrix
+from ...vantagepoint.analyze.co_occ_matrix import co_occ_matrix
 
 
 def three_fields_plot(
@@ -42,7 +42,7 @@ def three_fields_plot(
 ):
     """Sankey plot"""
 
-    matrix_left = occ_matrix(
+    matrix_left = co_occ_matrix(
         column_criterion=middle_criterion,
         row_criterion=left_criterion,
         topics_length=topics_length_left,
@@ -54,7 +54,7 @@ def three_fields_plot(
         **filters,
     ).matrix_
 
-    matrix_right = occ_matrix(
+    matrix_right = co_occ_matrix(
         column_criterion=right_criterion,
         row_criterion=middle_criterion,
         topics_length=topics_length_right,
