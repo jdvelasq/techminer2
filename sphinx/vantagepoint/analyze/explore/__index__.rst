@@ -1,21 +1,23 @@
 Explore
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. toctree::
-    :maxdepth: 1
 
+.. toctree::
     column_viewer
 
-.. toctree::
-    :maxdepth: 1
 
+.. toctree::
+    create_concept_grid
+
+
+.. toctree::
+    matrix_subset
+
+
+.. toctree::
     matrix_viewer
 
 
-.. toctree::
-    :maxdepth: 1
-
-    create_concept_grid
 
 
 

@@ -1,5 +1,5 @@
 """"
-Co-ocurrence Matrix List  --- ChatGPT
+Co-ocurrence Matrix List --- ChatGPT
 ===============================================================================
 
 Creates a matrix list with all terms of the database, removing the terms in the

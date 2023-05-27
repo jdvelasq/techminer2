@@ -51,6 +51,18 @@ class ListView:
 
 
 @dataclass(init=False)
+class MatrixSubet:
+    """Matrix subset."""
+
+    matrix_: pd.DataFrame
+    criterion_: str
+    other_criterion_: str
+    prompt_: str
+    topics_: list
+    is_ego_matrix_: bool
+
+
+@dataclass(init=False)
 class NetworkStatistics:
     """Network statistics."""
 

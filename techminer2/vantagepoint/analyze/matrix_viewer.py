@@ -17,7 +17,8 @@ Examples
 >>> co_occ_matrix = vantagepoint.analyze.co_occ_matrix(
 ...     criterion='author_keywords',
 ...     other_criterion='authors',
-...     topic_min_occ=3,
+...     topic_min_occ=2,
+...     topics_length=10,
 ...     root_dir=root_dir,
 ... )
 >>> co_occ_matrix_list = vantagepoint.analyze.list_cells_in_matrix(
@@ -26,10 +27,9 @@ Examples
                 row                       column  OCC
 0    Arner DW 3:185  financial regulation 04:035    2
 1    Arner DW 3:185               regtech 28:329    2
-2  Buckley RP 3:185  financial regulation 04:035    2
-3  Buckley RP 3:185               regtech 28:329    2
-4    Arner DW 3:185    financial services 04:168    1
-
+2   Brennan R 2:014            compliance 07:030    2
+3   Brennan R 2:014               regtech 28:329    2
+4  Buckley RP 3:185  financial regulation 04:035    2
 
 >>> chart = vantagepoint.analyze.matrix_viewer(
 ...     co_occ_matrix, xaxes_range=(-2,2)
@@ -43,26 +43,41 @@ Examples
 
 
 >>> print(chart.prompt_)
-Analyze the table below, which contains the the occurrence values for \
-author_keywords and authors. Identify any notable patterns, trends, or \
-outliers in the data, and discuss their implications for the research \
-field. Be sure to provide a concise summary of your findings in no more than \
-150 words.
+Analyze the table below, which contains the the occurrence values for author_keywords and authors. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
-|    | row              | column                      |   OCC |
-|---:|:-----------------|:----------------------------|------:|
-|  0 | Arner DW 3:185   | financial regulation 04:035 |     2 |
-|  1 | Arner DW 3:185   | regtech 28:329              |     2 |
-|  2 | Buckley RP 3:185 | financial regulation 04:035 |     2 |
-|  3 | Buckley RP 3:185 | regtech 28:329              |     2 |
-|  4 | Arner DW 3:185   | financial services 04:168   |     1 |
-|  5 | Arner DW 3:185   | fintech 12:249              |     1 |
-|  6 | Buckley RP 3:185 | financial services 04:168   |     1 |
-|  7 | Buckley RP 3:185 | fintech 12:249              |     1 |
+|    | row               | column                         |   OCC |
+|---:|:------------------|:-------------------------------|------:|
+|  0 | Arner DW 3:185    | financial regulation 04:035    |     2 |
+|  1 | Arner DW 3:185    | regtech 28:329                 |     2 |
+|  2 | Brennan R 2:014   | compliance 07:030              |     2 |
+|  3 | Brennan R 2:014   | regtech 28:329                 |     2 |
+|  4 | Buckley RP 3:185  | financial regulation 04:035    |     2 |
+|  5 | Buckley RP 3:185  | regtech 28:329                 |     2 |
+|  6 | Butler T/1 2:041  | fintech 12:249                 |     2 |
+|  7 | Butler T/1 2:041  | regtech 28:329                 |     2 |
+|  8 | Crane M 2:014     | compliance 07:030              |     2 |
+|  9 | Crane M 2:014     | regtech 28:329                 |     2 |
+| 10 | Hamdan A 2:018    | regulatory technology 07:037   |     2 |
+| 11 | Lin W 2:017       | regtech 28:329                 |     2 |
+| 12 | Singh C 2:017     | regtech 28:329                 |     2 |
+| 13 | Turki M 2:018     | regulatory technology 07:037   |     2 |
+| 14 | Arner DW 3:185    | financial services 04:168      |     1 |
+| 15 | Arner DW 3:185    | fintech 12:249                 |     1 |
+| 16 | Barberis JN 2:161 | financial regulation 04:035    |     1 |
+| 17 | Barberis JN 2:161 | financial services 04:168      |     1 |
+| 18 | Barberis JN 2:161 | regtech 28:329                 |     1 |
+| 19 | Buckley RP 3:185  | financial services 04:168      |     1 |
+| 20 | Buckley RP 3:185  | fintech 12:249                 |     1 |
+| 21 | Butler T/1 2:041  | regulation 05:164              |     1 |
+| 22 | Butler T/1 2:041  | risk management 03:014         |     1 |
+| 23 | Hamdan A 2:018    | anti-money laundering 03:021   |     1 |
+| 24 | Lin W 2:017       | anti-money laundering 03:021   |     1 |
+| 25 | Lin W 2:017       | artificial intelligence 04:023 |     1 |
+| 26 | Singh C 2:017     | anti-money laundering 03:021   |     1 |
+| 27 | Singh C 2:017     | artificial intelligence 04:023 |     1 |
+| 28 | Turki M 2:018     | anti-money laundering 03:021   |     1 |
 <BLANKLINE>
 <BLANKLINE>
-
-
 
 * Matrix view for a co-occurrence matrix.
 

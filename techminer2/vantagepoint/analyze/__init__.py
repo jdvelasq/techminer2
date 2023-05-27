@@ -15,6 +15,8 @@ The following functions are available:
 - factor_matrix: Computes the factor matrix of a network.
 - list_cells_in_matrix: Lists the cells in a matrix that meet a certain \
     criterion.
+- list_view: Generates a list view of a matrix.
+- matrix_subset: Generates a subset of a matrix.
 - network_degree_plot: Generates a degree plot of a network.
 - network_metrics: Computes the metrics of a network.
 - occ_matrix: Computes the occurrence matrix of a set of terms.
@@ -33,6 +35,7 @@ from .cross_corr_matrix import cross_corr_matrix
 from .factor_matrix import factor_matrix
 from .list_cells_in_matrix import list_cells_in_matrix
 from .list_view import list_view
+from .matrix_subset import matrix_subset
 from .matrix_viewer import matrix_viewer
 from .network_degree_plot import network_degree_plot
 from .network_metrics import network_metrics
@@ -51,6 +54,7 @@ __all__ = [
     "factor_matrix",
     "list_cells_in_matrix",
     "list_view",
+    "matrix_subset",
     "matrix_viewer",
     "network_degree_plot",
     "network_metrics",

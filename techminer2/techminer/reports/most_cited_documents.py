@@ -1,9 +1,10 @@
 """
-Most Global Cited Documents 
+Most Global Cited Documents
 ===============================================================================
 
 Generates a report with the most global cited documents that meet the specified
 filters.
+
 
 Example
 -------------------------------------------------------------------------------
@@ -17,6 +18,7 @@ Example
 --INFO-- The file 'data/regtech/reports/most_cited_documents.txt' was created
 
 """
+
 from .abstracts_report import abstracts_report
 
 
@@ -27,17 +29,15 @@ def most_cited_documents(
     end_year=None,
     **filters,
 ):
-    """
-    Generates a report with records ordered by global and local citations.
+    """Generates a report with records ordered by global and local citations.
 
     Args:
         root_dir (str): root directory.
-        criterion=None,
-        custom_topics=None,
-        file_name="abstracts_report.txt",
-        start_year=None,
-        end_year=None,
+        file_name (str): output file name.
+        start_year (int): start year.
+        end_year (int): end year.
         **filters: filters.
+
 
     Returns:
         None.

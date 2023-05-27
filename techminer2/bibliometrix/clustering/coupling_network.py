@@ -26,7 +26,7 @@ Clustering by coupling.
     <iframe src="../../_static/bibliometrix_coupling_network_plot_by_references.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
->>obj.communities_.head()
+>>> # obj.communities_.head()
                                                CL_00  ...                                       CL_07
 0         Muganyi T, 2022, FINANCIAL INNOV, V8 1:013  ...  Lan G, 2023, RES INT BUS FINANC, V64 1:000
 1  Ryan P, 2020, ICEIS - PROC INT CONF ENTERP INF...  ...                                            
@@ -37,15 +37,15 @@ Clustering by coupling.
 [5 rows x 8 columns]
 
 
->>file_name = "sphinx/_static/bibliometrix_coupling_network_plot_by_references_degree_plot.html"
->>obj.degree_plot_.write_html(file_name)
+>>> file_name = "sphinx/_static/bibliometrix_coupling_network_plot_by_references_degree_plot.html"
+>>> obj.degree_plot_.write_html(file_name)
 
 .. raw:: html
 
     <iframe src="../../_static/bibliometrix_coupling_network_plot_by_references_degree_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
->>obj.indicators_.head()
+>>> obj.indicators_.head()
                                                     group  ...  pagerank
 Hee Jung JH, 2019, FINTECH: LAW AND REGULATION,...      1  ...  0.125258
 Mohamed H, 2021, STUD COMPUT INTELL, V935, P153...      1  ...  0.125258
