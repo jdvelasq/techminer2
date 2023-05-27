@@ -134,7 +134,6 @@ def matrix_viewer(
     obj,
     nx_k=0.5,
     nx_iterations=10,
-    delta=1.0,
     node_min_size=30,
     node_max_size=70,
     textfont_size_min=10,

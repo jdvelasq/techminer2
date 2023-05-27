@@ -67,8 +67,8 @@ your findings in no more than 150 words.
 
 """
 
-from ...add_counters import add_counters_to_axis
 from ...classes import CoOccurrenceMatrix
+from ...counters import add_counters_to_axis
 from ...sort_utils import sort_indicators_by_metric, sort_matrix_axis
 from ...techminer.indicators import co_occ_matrix_list, indicators_by_topic
 from ...topics import filter_custom_topics_from_column, generate_custom_topics

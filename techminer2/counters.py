@@ -58,7 +58,7 @@ def add_counters_to_axis(
     return dataframe
 
 
-def add_counters(
+def add_counters_to_column_values(
     column,
     name,
     directory,
@@ -114,3 +114,25 @@ def items2counters(
         name: fmt.format(name, int(nd), int(tc))
         for name, nd, tc in zip(names, occ, cited_by)
     }
+
+
+def remove_counters_from_axis(
+    dataframe,
+    axis,
+):
+    """Remove counters from axis."""
+
+    def remove_counters(text):
+        text = text.split(" ")
+        text = text[:-1]
+        text = " ".join(text)
+        return text
+
+    dataframe = dataframe.copy()
+
+    if axis == 0:
+        dataframe.index = dataframe.index.map(remove_counters)
+    else:
+        dataframe.columns = dataframe.columns.map(remove_counters)
+
+    return dataframe

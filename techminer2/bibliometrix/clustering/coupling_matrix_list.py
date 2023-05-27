@@ -26,7 +26,7 @@ Coupling Matrix List
 """
 from dataclasses import dataclass
 
-from ...add_counters import add_counters
+from ...counters import add_counters_to_column_values
 from ...record_utils import read_records
 
 # from .records2documents import records2documents
@@ -222,7 +222,7 @@ def coupling_matrix_list(
     ).aggregate("sum")
 
     for column_name in ["row", "column"]:
-        matrix_list = add_counters(
+        matrix_list = add_counters_to_column_values(
             column=unit_of_analysis,
             name=column_name,
             directory=directory,

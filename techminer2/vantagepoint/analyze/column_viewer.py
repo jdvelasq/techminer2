@@ -1,16 +1,19 @@
 """
-Column viewer
+Column Viewer --- ChatGPT
 ===============================================================================
 
 
->>> directory = "data/regtech/"
+Examples
+-------------------------------------------------------------------------------
+
+>>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/vantagepoint__analyze__column_viewer.html"
 
 >>> from techminer2 import vantagepoint
 >>> co_occ_matrix = vantagepoint.analyze.co_occ_matrix(
 ...     criterion='author_keywords',
 ...     topic_min_occ=3,
-...     directory=directory,
+...     root_dir=root_dir,
 ... )
 
 >>> chart = vantagepoint.analyze.column_viewer(
@@ -80,7 +83,29 @@ def column_viewer(
     yaxes_range=None,
     seed=0,
 ):
-    """Creates a radial diagram of term associations from a (co) occurrence matrix."""
+    """Creates a radial diagram of term associations from a cc-occurrence
+    matrix.
+
+    Args:
+        matrix (techminer.CoOccMatrix): a co-occurrence matrix.
+        topic (str): the topic to be analyzed.
+        nx_k (float): the optimal distance between nodes.
+        nx_iterations (int): the number of iterations to find the optimal
+            distance between nodes.
+        node_min_size (int): the minimum size of a node.
+        node_max_size (int): the maximum size of a node.
+        textfont_size_min (int): the minimum size of the text font.
+        textfont_size_max (int): the maximum size of the text font.
+        show_axes (bool): if True, shows the axes.
+        xaxes_range (tuple): the range of the x-axis.
+        yaxes_range (tuple): the range of the y-axis.
+        seed (int): the seed for the random number generator.
+
+    Returns:
+        A :class:`techminer.ColumnViewer` instance.
+
+
+    """
 
     def filter_matrix(matrix, topic):
         """Returns a matrix with the column specified by the topic."""
@@ -93,7 +118,7 @@ def column_viewer(
 
         # selects the column with the topic
         matrix.matrix_ = matrix.matrix_.iloc[:, [topic_position]]
-        matrix.criterion_for_columns_ = topic
+        matrix.criterion_ = topic
 
         # obtains the position of the topic in the rows
         rows = matrix.matrix_.index.tolist()
@@ -126,7 +151,7 @@ def column_viewer(
             "and discuss their implications for the relationships among the "
             "terms. Be sure to provide a concise summary of your findings "
             "in no more than 30 words."
-            f"\n\n{matrix_list.matrix_list_.to_markdown()}\n\n"
+            f"\n\n{matrix_list.cells_list_.to_markdown()}\n\n"
         )
         return text
 
