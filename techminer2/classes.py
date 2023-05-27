@@ -87,5 +87,5 @@ class TermsByYear:
     prompt_: str
     metric_: str
     cumulative_: bool
-    criterion_for_columns_: str
-    criterion_for_rows_: str
+    criterion_: str
+    other_criterion_: str
