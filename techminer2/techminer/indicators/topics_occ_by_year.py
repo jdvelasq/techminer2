@@ -47,34 +47,17 @@ def topics_occ_by_year(
 
     The columns are the years, the rows are the criterion values (topics).
 
-    Parameters
-    ----------
-    criterion : str
-        Criterion to be analyzed.
+    Args:
+        criterion (str): criterion to be used as rows.
+        root_dir (str, optional): root directory. Defaults to "./".
+        cumulative (bool, optional): if True, the matrix is cumulative. Defaults to False.
+        database (str, optional): database name. Defaults to "documents".
+        start_year (int, optional): start year. Defaults to None.
+        end_year (int, optional): end year. Defaults to None.
+        filters (dict, optional): filters. Defaults to {}.
 
-    root_dir : str
-        The working directory.
-
-    cumulative : bool
-        If True, the cumulative occurrence matrix is computed.
-
-    database : str
-        The database name. It can be 'documents', 'cited_by' or 'references'.
-
-    start_year : int
-        The start year for filtering the data.
-
-    end_year : int
-        The end year for filtering the data.
-
-    filters : dict
-        A dictionary of filters. The keys are the field names and the values \
-        are the filter values.
-
-    Returns
-    -------
-    pandas.DataFrame
-        The annual occurrence matrix.
+    Returns:
+        pandas.DataFrame: annual occurrence matrix.
 
     """
 
