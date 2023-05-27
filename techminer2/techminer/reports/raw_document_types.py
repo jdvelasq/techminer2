@@ -1,59 +1,82 @@
 """
-Document types in raw documents
+Document Types in Raw Documents --- ChatGPT
 ===============================================================================
 
+Return the number of records by document type in the databases.
 
->>> directory = "data/regtech/"
+Example
+-------------------------------------------------------------------------------
+
+>>> root_dir = "data/regtech/"
 
 >>> from techminer2 import techminer
->>> techminer.reports.raw_document_types(directory)
+>>> techminer.reports.raw_document_types(root_dir)
 --INFO-- Document types in: cited_by
-Article             248
-Book Chapter         49
-Conference Paper     41
-Review               30
-Book                 14
-Editorial             6
-Name: Document Type, dtype: int64
-<BLANKLINE>
+document_type
+article             248
+book_chapter         48
+conference_paper     41
+review               30
+book                 14
+editorial             6
+Name: OCC, dtype: int64
 <BLANKLINE>
 --INFO-- Document types in: references
-Article             690
-Conference Paper     88
-Review               74
-Book Chapter         26
-Book                 16
-Editorial             8
-Note                  6
-Short Survey          2
-Name: Document Type, dtype: int64
-<BLANKLINE>
+document_type
+article             689
+conference_paper     88
+review               74
+book_chapter         26
+book                 16
+editorial             8
+note                  6
+short_survey          2
+Name: OCC, dtype: int64
 <BLANKLINE>
 --INFO-- Document types in: documents
-Article             31
-Conference Paper    11
-Book Chapter         9
-Book                 1
-Name: Document Type, dtype: int64
+document_type
+article             31
+conference_paper    11
+book_chapter         9
+book                 1
+Name: OCC, dtype: int64
 <BLANKLINE>
-<BLANKLINE>
+
 
 """
 import os
 import sys
 
-from techminer2.techminer.tools.import_scopus_files import _concat_raw_csv_files
+from ..indicators import indicators_by_topic
 
 
-def raw_document_types(directory):
-    """Document types in raw documents."""
-    folders = os.listdir(os.path.join(directory, "raw"))
-    folders = [f for f in folders if os.path.isdir(os.path.join(directory, "raw", f))]
+def raw_document_types(root_dir):
+    """Document types in raw documents.
+
+    Args:
+        root_dir (str): root directory.
+
+    Returns:
+        None.
+
+    """
+
+    folders = os.listdir(os.path.join(root_dir, "raw"))
+
+    folders = [
+        f for f in folders if os.path.isdir(os.path.join(root_dir, "raw", f))
+    ]
+
     for folder in folders:
-        data = _concat_raw_csv_files(os.path.join(directory, "raw", folder), quiet=True)
-        document_types = data["Document Type"].dropna()
-        document_types = document_types.value_counts()
+        indicators = indicators_by_topic(
+            criterion="document_type",
+            root_dir=root_dir,
+            database=folder,
+            start_year=None,
+            end_year=None,
+        )
+
         sys.stdout.write(f"--INFO-- Document types in: {folder}\n")
-        print(document_types)
-        print("")
+
+        print(indicators["OCC"])
         print("")
