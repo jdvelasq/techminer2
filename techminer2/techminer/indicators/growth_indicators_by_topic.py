@@ -1,5 +1,5 @@
 """
-Growth Indicators by Topic
+Growth Indicators by Topic --- ChatGPT
 ===============================================================================
 
 
@@ -45,7 +45,7 @@ import numpy as np
 import pandas as pd
 
 from ... import record_utils
-from ..._load_stopwords import load_stopwords
+from ...load_utils import load_stopwords
 
 
 # pylint: disable=too-many-arguments
