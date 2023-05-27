@@ -5,7 +5,7 @@ Indicators by Year --- ChatGPT
 
 
 Examples
---------
+-------------------------------------------------------------------------------
 
 >>> root_dir = "data/regtech/"
 
