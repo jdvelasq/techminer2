@@ -1,3 +1,4 @@
+from .co_occ_matrix_list import co_occ_matrix_list
 from .collaboration_indicators_by_topic import (
     collaboration_indicators_by_topic,
 )
@@ -8,5 +9,4 @@ from .indicators_by_document import indicators_by_document
 from .indicators_by_topic import indicators_by_topic
 from .indicators_by_topic_per_year import indicators_by_topic_per_year
 from .indicators_by_year import indicators_by_year
-from .occ_matrix_list import occ_matrix_list
 from .topics_occ_by_year import topics_occ_by_year

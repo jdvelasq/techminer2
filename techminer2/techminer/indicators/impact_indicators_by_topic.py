@@ -1,5 +1,5 @@
 """
-Impact Indicators by Topic --- ChatGPT
+Impact Indicators by Topic 
 ===============================================================================
 
 

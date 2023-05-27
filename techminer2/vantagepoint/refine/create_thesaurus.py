@@ -1,5 +1,5 @@
 """
-Create Thesaurus --- ChatGPT
+Create Thesaurus 
 ===============================================================================
 
 >>> from techminer2 import *

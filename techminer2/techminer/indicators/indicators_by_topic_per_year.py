@@ -1,5 +1,5 @@
 """
-Indicators by Topic per Year --- ChatGPT
+Indicators by Topic per Year 
 ===============================================================================
 
 Examples

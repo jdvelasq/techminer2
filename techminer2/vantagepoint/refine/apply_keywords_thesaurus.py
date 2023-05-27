@@ -1,5 +1,5 @@
 """
-Apply Keywords Thesaurus --- ChatGPT
+Apply Keywords Thesaurus 
 ===============================================================================
 
 Cleans the keywords columns using the `keywords.txt` file.

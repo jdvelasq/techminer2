@@ -1,5 +1,5 @@
 """
-Create 'organizations.txt' thesaurus file --- ChatGPT
+Create 'organizations.txt' thesaurus file 
 ===============================================================================
 
 Creates a organizations thesaurus from the data in the database.

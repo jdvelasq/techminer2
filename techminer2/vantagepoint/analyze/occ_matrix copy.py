@@ -175,7 +175,7 @@ def occ_matrix(
     #
 
     # Generates a matrix list with all descriptors in the database
-    raw_matrix_list = techminer.indicators.occ_matrix_list(
+    raw_matrix_list = techminer.indicators.co_occ_matrix_list(
         column_criterion=column_criterion,
         row_criterion=column_criterion,
         root_dir=root_dir,

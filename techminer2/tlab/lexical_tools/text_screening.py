@@ -1,5 +1,5 @@
 """
-Text Screening --- ChatGPT
+Text Screening 
 ===============================================================================
 
 This funcion searchs for them specified in the parameter ``search_for`` in the

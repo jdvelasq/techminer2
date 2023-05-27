@@ -1,5 +1,5 @@
 """
-Fuzzy Search --- ChatGPT
+Fuzzy Search 
 ===============================================================================
 
 Finds a string in the terms of a thesaurus using fuzzy search.

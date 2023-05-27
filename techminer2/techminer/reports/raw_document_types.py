@@ -1,5 +1,5 @@
 """
-Document Types in Raw Documents --- ChatGPT
+Document Types in Raw Documents 
 ===============================================================================
 
 Return the number of records by document type in the databases.

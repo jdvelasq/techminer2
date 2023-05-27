@@ -1,5 +1,5 @@
 """
-Indicators by Document --- ChatGPT
+Indicators by Document 
 ===============================================================================
 
 

@@ -2,6 +2,9 @@ Indicators
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
+    co_occ_matrix_list
+
+.. toctree::
     collaboration_indicators_by_topic
 
 .. toctree::    
@@ -21,9 +24,6 @@ Indicators
 
 .. toctree::    
     indicators_by_year
-
-.. toctree::
-    occ_matrix_list
 
 .. toctree::    
     topics_occ_by_year

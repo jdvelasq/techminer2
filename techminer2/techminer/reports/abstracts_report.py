@@ -1,5 +1,5 @@
 """
-Abstracts Report --- ChatGPT
+Abstracts Report 
 ===============================================================================
 
 Generates a report for the records meeting the given criteria.

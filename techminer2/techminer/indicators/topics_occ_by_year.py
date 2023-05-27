@@ -1,5 +1,5 @@
 """
-Topics Occurrence by Year --- ChatGPT
+Topics Occurrence by Year 
 ===============================================================================
 
 Computes the annual occurrence matrix of a given criterion.

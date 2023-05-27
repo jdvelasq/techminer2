@@ -1,5 +1,5 @@
 """
-Growth Indicators by Topic --- ChatGPT
+Growth Indicators by Topic 
 ===============================================================================
 
 

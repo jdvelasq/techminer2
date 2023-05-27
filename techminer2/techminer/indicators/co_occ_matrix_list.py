@@ -1,5 +1,5 @@
 """"
-Ocurrence Matrix List --- ChatGPT
+Co-ocurrence Matrix List 
 ===============================================================================
 
 Creates a matrix list with all terms of the database, removing the terms in the
@@ -12,7 +12,7 @@ Example
 >>> root_dir = "data/regtech/"
 
 >>> from techminer2  import techminer
->>> techminer.indicators.occ_matrix_list(
+>>> techminer.indicators.co_occ_matrix_list(
 ...     'authors', 'keywords', root_dir=root_dir
 ... ).head(10)
                          row     column  OCC
@@ -33,7 +33,7 @@ Example
 from ... import load_utils, record_utils
 
 
-def occ_matrix_list(
+def co_occ_matrix_list(
     column_criterion,
     row_criterion,
     root_dir="./",

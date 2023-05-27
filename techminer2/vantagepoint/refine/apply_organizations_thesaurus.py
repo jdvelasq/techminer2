@@ -1,5 +1,5 @@
 """
-Apply Organizations Thesaurus --- ChatGPT
+Apply Organizations Thesaurus 
 ===============================================================================
 
 Cleans the organizations columns using the file organizations.txt, located in

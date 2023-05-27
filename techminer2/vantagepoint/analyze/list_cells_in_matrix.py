@@ -1,5 +1,5 @@
 """
-List Cells in Matrix --- ChatGPT
+List Cells in Matrix 
 ===============================================================================
 
 Creates a list that has a row for each cell in the original matrix. The list is

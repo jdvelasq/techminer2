@@ -1,5 +1,5 @@
 """
-Abstracts Extractive Summarization --- ChatGPT
+Abstracts Extractive Summarization 
 ===============================================================================
 
 

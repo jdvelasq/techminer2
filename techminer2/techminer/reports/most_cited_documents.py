@@ -1,5 +1,5 @@
 """
-Most Global Cited Documents --- ChatGPT
+Most Global Cited Documents 
 ===============================================================================
 
 Generates a report with the most global cited documents that meet the specified

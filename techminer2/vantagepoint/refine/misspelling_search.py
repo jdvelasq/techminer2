@@ -1,5 +1,5 @@
 """
-Misspelling search --- ChatGPT
+Misspelling search 
 ===============================================================================
 
 Look for misspeling mistakes in the keywords of a thesaurus.

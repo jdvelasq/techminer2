@@ -1,5 +1,5 @@
 """
-Create keywords thesaurus --- ChatGPT
+Create keywords thesaurus 
 ===============================================================================
 
 >>> root_dir = "data/regtech/"

@@ -1,5 +1,5 @@
 """
-Collaboration Indicators by Topic --- ChatGPT
+Collaboration Indicators by Topic 
 ===============================================================================
 
 

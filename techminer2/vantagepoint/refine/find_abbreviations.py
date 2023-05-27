@@ -1,5 +1,5 @@
 """
-Find Abbreviations --- ChatGPT
+Find Abbreviations 
 ===============================================================================
 
 Finds string abbreviations in the keywords of a thesaurus.

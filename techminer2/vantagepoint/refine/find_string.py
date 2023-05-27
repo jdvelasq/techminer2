@@ -1,5 +1,5 @@
 """
-Find String --- ChatGPT
+Find String 
 ===============================================================================
 
 Finds a string in the terms of a thesaurus.

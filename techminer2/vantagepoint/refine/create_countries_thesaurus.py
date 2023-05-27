@@ -1,5 +1,5 @@
 """
-Create Country Thesaurus --- ChatGPT
+Create Country Thesaurus 
 ===============================================================================
 
 Creates a country thesaurus from 'affiliations' column in the datasets.
