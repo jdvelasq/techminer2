@@ -54,8 +54,8 @@ class OccurrenceMatrix:
     matrix_: pd.DataFrame
     prompt_: str
     metric_: str
-    column_criterion_: str
-    row_criterion_: str
+    criterion_: str
+    other_criterion_: str
 
 
 @dataclass(init=False)

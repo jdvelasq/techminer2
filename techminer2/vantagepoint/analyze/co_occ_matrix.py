@@ -63,24 +63,27 @@ your findings in no more than 150 words.
 <BLANKLINE>
 <BLANKLINE>
 
-
 # noga: E501 W291
+
 """
 
-
-from ... import add_counters, classes, sort_utils, techminer, topics
+from ...add_counters import add_counters_to_axis
+from ...classes import OccurrenceMatrix
+from ...sort_utils import sort_indicators_by_metric, sort_matrix_axis
+from ...techminer.indicators import co_occ_matrix_list, indicators_by_topic
+from ...topics import filter_custom_topics_from_column, generate_custom_topics
 
 
 def co_occ_matrix(
-    column_criterion,
-    row_criterion=None,
+    criterion,
+    other_criterion=None,
     topics_length=None,
     topic_min_occ=None,
     topic_max_occ=None,
     topic_min_citations=None,
     topic_max_citations=None,
-    column_custom_topics=None,
-    row_custom_topics=None,
+    custom_topics=None,
+    other_custom_topics=None,
     root_dir="./",
     database="documents",
     start_year=None,
@@ -106,7 +109,7 @@ def co_occ_matrix(
         **filters,
     ):
         if custom_topics is None:
-            indicators_by_topic = techminer.indicators.indicators_by_topic(
+            indicators = indicators_by_topic(
                 criterion=criterion,
                 root_dir=root_dir,
                 database=database,
@@ -115,12 +118,10 @@ def co_occ_matrix(
                 **filters,
             )
 
-            indicators_by_topic = sort_utils.sort_indicators_by_metric(
-                indicators_by_topic, "OCC"
-            )
+            indicators = sort_indicators_by_metric(indicators, "OCC")
 
-            custom_topics = topics.generate_custom_topics(
-                indicators=indicators_by_topic,
+            custom_topics = generate_custom_topics(
+                indicators=indicators,
                 topics_length=topics_length,
                 topic_min_occ=topic_min_occ,
                 topic_max_occ=topic_max_occ,
@@ -130,7 +131,7 @@ def co_occ_matrix(
 
         name = "row" if is_row_column else "column"
 
-        custom_topics = topics.filter_custom_topics_from_column(
+        custom_topics = filter_custom_topics_from_column(
             dataframe=raw_matrix_list,
             col_name=name,
             custom_topics=custom_topics,
@@ -148,14 +149,12 @@ def co_occ_matrix(
         matrix = matrix.astype(int)
         return matrix
 
-    def generate_prompt_for_occ_matrix(
-        matrix, row_criterion, column_criterion
-    ):
+    def generate_prompt_for_occ_matrix(matrix, criterion, other_criterion):
         """Generates a ChatGPT prompt for a occurrence matrix."""
 
         return (
             "Analyze the table below which contains values of co-occurrence "
-            f"(OCC) for the '{row_criterion}' and '{column_criterion}' fields "
+            f"(OCC) for the '{criterion}' and '{other_criterion}' fields "
             "in a bibliographic dataset. Identify any notable patterns, "
             "trends, or outliers in the data, and discuss their implications "
             "for the research field. Be sure to provide a concise summary of "
@@ -180,10 +179,13 @@ def co_occ_matrix(
     # Main:
     #
 
+    if other_criterion is None:
+        other_criterion = criterion
+
     # Generates a matrix list with all descriptors in the database
-    raw_matrix_list = techminer.indicators.co_occ_matrix_list(
-        criterion=column_criterion,
-        other_criterion=row_criterion,
+    raw_matrix_list = co_occ_matrix_list(
+        criterion=criterion,
+        other_criterion=other_criterion,
         root_dir=root_dir,
         database=database,
         start_year=start_year,
@@ -194,14 +196,14 @@ def co_occ_matrix(
     # Filters the terms in the 'row' column of the matrix list
     raw_filterd_matrix_list = filter_terms(
         raw_matrix_list=raw_matrix_list,
-        criterion=row_criterion,
+        criterion=other_criterion,
         is_row_column=True,
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,
         topic_max_occ=topic_max_occ,
         topic_min_citations=topic_min_citations,
         topic_max_citations=topic_max_citations,
-        custom_topics=row_custom_topics,
+        custom_topics=other_custom_topics,
         root_dir=root_dir,
         database=database,
         start_year=start_year,
@@ -212,14 +214,14 @@ def co_occ_matrix(
     # Filters the terms in the 'column' column of the matrix list
     filtered_matrix_list = filter_terms(
         raw_matrix_list=raw_filterd_matrix_list,
-        criterion=column_criterion,
+        criterion=criterion,
         is_row_column=False,
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,
         topic_max_occ=topic_max_occ,
         topic_min_citations=topic_min_citations,
         topic_max_citations=topic_max_citations,
-        custom_topics=column_custom_topics,
+        custom_topics=custom_topics,
         root_dir=root_dir,
         database=database,
         start_year=start_year,
@@ -231,10 +233,10 @@ def co_occ_matrix(
     matrix = pivot(filtered_matrix_list)
 
     # sort the rows and columns of the matrix
-    matrix = sort_utils.sort_matrix_axis(
+    matrix = sort_matrix_axis(
         matrix,
         axis=0,
-        criterion=row_criterion,
+        criterion=other_criterion,
         root_dir=root_dir,
         database=database,
         start_year=start_year,
@@ -242,10 +244,10 @@ def co_occ_matrix(
         **filters,
     )
 
-    matrix = sort_utils.sort_matrix_axis(
+    matrix = sort_matrix_axis(
         matrix,
         axis=1,
-        criterion=column_criterion,
+        criterion=criterion,
         root_dir=root_dir,
         database=database,
         start_year=start_year,
@@ -253,10 +255,10 @@ def co_occ_matrix(
         **filters,
     )
 
-    matrix = add_counters.add_counters_to_axis(
+    matrix = add_counters_to_axis(
         dataframe=matrix,
         axis=0,
-        criterion=row_criterion,
+        criterion=other_criterion,
         root_dir=root_dir,
         database=database,
         start_year=start_year,
@@ -264,10 +266,10 @@ def co_occ_matrix(
         **filters,
     )
 
-    matrix = add_counters.add_counters_to_axis(
+    matrix = add_counters_to_axis(
         dataframe=matrix,
         axis=1,
-        criterion=column_criterion,
+        criterion=criterion,
         root_dir=root_dir,
         database=database,
         start_year=start_year,
@@ -275,22 +277,24 @@ def co_occ_matrix(
         **filters,
     )
 
-    if column_criterion == row_criterion:
+    if criterion == other_criterion:
         prompt = generate_prompt_for_co_occ_matrix(
             matrix,
-            criterion=column_criterion,
+            criterion=criterion,
         )
     else:
         prompt = generate_prompt_for_occ_matrix(
             matrix,
-            row_criterion=row_criterion,
-            column_criterion=column_criterion,
+            criterion=other_criterion,
+            other_criterion=criterion,
         )
 
-    occurrence_matrix = classes.OccurrenceMatrix()
+    occurrence_matrix = OccurrenceMatrix()
 
-    occurrence_matrix.column_criterion_ = column_criterion
-    occurrence_matrix.row_criterion_ = row_criterion
+    occurrence_matrix.criterion_ = criterion
+    occurrence_matrix.other_criterion_ = (
+        other_criterion if other_criterion else criterion
+    )
     occurrence_matrix.metric_ = "OCC"
     occurrence_matrix.matrix_ = matrix
     occurrence_matrix.prompt_ = prompt
