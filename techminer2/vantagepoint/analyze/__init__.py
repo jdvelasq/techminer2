@@ -26,8 +26,6 @@ The following functions are available:
 
 from .auto_corr_matrix import auto_corr_matrix
 from .co_occ_matrix import co_occ_matrix
-
-# from .co_occ_matrix import co_occ_matrix
 from .column_viewer import column_viewer
 from .corr_map import corr_map
 from .create_concept_grid import create_concept_grid
@@ -45,18 +43,17 @@ from .tf_matrix import tf_matrix
 
 __all__ = [
     "auto_corr_matrix",
-    #     "co_occ_matrix",
+    "co_occ_matrix",
     "column_viewer",
     "corr_map",
     "create_concept_grid",
     "cross_corr_matrix",
-    "list_view",
     "factor_matrix",
     "list_cells_in_matrix",
+    "list_view",
     "matrix_viewer",
     "network_degree_plot",
     "network_metrics",
-    "co_occ_matrix",
     "statistics",
     "terms_by_year",
     "tf_idf_matrix",

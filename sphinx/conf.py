@@ -58,7 +58,7 @@ master_doc = "index"
 
 # General information about the project.
 project = "TechMiner2"
-copyright = "2021, Juan D. Velasquez"
+copyright = "2023, Juan D. Velasquez"
 author = "Juan D. Velasquez"
 
 # The version info for the project you're documenting, acts as replacement for

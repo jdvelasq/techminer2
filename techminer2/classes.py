@@ -19,14 +19,25 @@ class ColumnViewer:
 
 
 @dataclass(init=False)
+class CoOccurrenceMatrix:
+    """Occurrence matrix."""
+
+    matrix_: pd.DataFrame
+    prompt_: str
+    metric_: str
+    criterion_: str
+    other_criterion_: str
+
+
+@dataclass(init=False)
 class ListCellsInMatrix:
     """List cells in matrix."""
 
     cells_list_: pd.DataFrame
     prompt_: str
     metric_: str
-    criterion_for_columns_: str
-    criterion_for_rows_: str
+    criterion_: str
+    other_criterion_: str
 
 
 @dataclass(init=False)
@@ -45,17 +56,6 @@ class NetworkStatistics:
 
     table_: pd.DataFrame
     prompt_: str
-
-
-@dataclass(init=False)
-class OccurrenceMatrix:
-    """Occurrence matrix."""
-
-    matrix_: pd.DataFrame
-    prompt_: str
-    metric_: str
-    criterion_: str
-    other_criterion_: str
 
 
 @dataclass(init=False)

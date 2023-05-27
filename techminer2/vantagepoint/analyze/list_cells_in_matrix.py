@@ -1,5 +1,5 @@
 """
-List Cells in Matrix 
+List Cells in Matrix
 ===============================================================================
 
 Creates a list that has a row for each cell in the original matrix. The list is
@@ -59,28 +59,16 @@ def list_cells_in_matrix(obj):
         matrix = matrix[matrix.row != matrix.column]
         matrix = matrix[matrix.row < matrix.column]
 
-        if (
-            obj.criterion_for_columns_ == obj.criterion_for_rows_
-            and obj.metric_ == "CORR"
-        ):
+        if obj.criterion_ == obj.other_criterion_ and obj.metric_ == "CORR":
             return prompt_for_auto_corr_matrix(obj, matrix)
 
-        if (
-            obj.criterion_for_columns_ != obj.criterion_for_rows_
-            and obj.metric_ == "CORR"
-        ):
+        if obj.criterion_ != obj.other_criterion_ and obj.metric_ == "CORR":
             return prompt_for_cross_corr_matrix(obj, matrix)
 
-        if (
-            obj.criterion_for_columns_ == obj.criterion_for_rows_
-            and obj.metric_ == "OCC"
-        ):
+        if obj.criterion_ == obj.other_criterion_ and obj.metric_ == "OCC":
             return prompt_for_co_occ_matrix(obj, matrix)
 
-        if (
-            obj.criterion_for_columns_ != obj.criterion_for_rows_
-            and obj.metric_ == "OCC"
-        ):
+        if obj.criterion_ != obj.other_criterion_ and obj.metric_ == "OCC":
             return prompt_for_occ_matrix(obj, matrix)
 
         raise ValueError("Invalid metric")
@@ -90,7 +78,7 @@ def list_cells_in_matrix(obj):
 
         return (
             "Analyze the table below which contains the auto-correlation "
-            f"values for the {obj.criterion_for_columns_}. High correlation "
+            f"values for the {obj.criterion_}. High correlation "
             "values indicate that the topics tends to appear together in the "
             "same document and forms a group. Identify any notable patterns, "
             "trends, or outliers in the data, and discuss their implications "
@@ -104,10 +92,10 @@ def list_cells_in_matrix(obj):
 
         return (
             "Analyze the table below which contains the cross-correlation "
-            f"values for the {obj.criterion_for_columns_} based on the values "
-            f"of the {obj.criterion_for_rows_}. High correlation values "
-            f"indicate that the topics in {obj.criterion_for_columns_} are "
-            f"related based on the values of the {obj.criterion_for_rows_}. "
+            f"values for the {obj.criterion_} based on the values "
+            f"of the {obj.other_criterion_}. High correlation values "
+            f"indicate that the topics in {obj.criterion_} are "
+            f"related based on the values of the {obj.other_criterion_}. "
             "Identify any notable patterns, trends, or outliers in the data, "
             "and discuss their implications for the research field. Be sure "
             "to provide a concise summary of your findings in no more than "
@@ -120,7 +108,7 @@ def list_cells_in_matrix(obj):
 
         return (
             "Analyze the table below, which contains the the co-occurrence "
-            f"values for {obj.criterion_for_columns_}. Identify any notable "
+            f"values for {obj.criterion_}. Identify any notable "
             "patterns, trends, or outliers in the data, and discuss their "
             "implications for the research field. Be sure to provide a "
             "concise summary of your findings in no more than 150 words."
@@ -132,8 +120,8 @@ def list_cells_in_matrix(obj):
 
         return (
             "Analyze the table below, which contains the the occurrence "
-            f"values for {obj.criterion_for_columns_} and "
-            f"{obj.criterion_for_rows_}. Identify any notable patterns, "
+            f"values for {obj.criterion_} and "
+            f"{obj.other_criterion_}. Identify any notable patterns, "
             "trends, or outliers in the data, and discuss their implications "
             "for the research field. Be sure to provide a concise summary of "
             "your findings in no more than 150 words."
@@ -167,8 +155,8 @@ def list_cells_in_matrix(obj):
 
     results = ListCellsInMatrix()
     results.cells_list_ = transform_matrix_to_matrix_list(obj)
-    results.criterion_for_columns_ = obj.criterion_for_columns_
-    results.criterion_for_rows_ = obj.criterion_for_rows_
+    results.criterion_ = obj.criterion_
+    results.other_criterion_ = obj.other_criterion_
     results.metric_ = obj.metric_
     results.prompt_ = generate_prompt(results)
 

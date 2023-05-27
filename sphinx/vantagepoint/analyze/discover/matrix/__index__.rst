@@ -4,13 +4,8 @@ Matrix
     .. toctree::
         list_cells_in_matrix
 
-
     .. toctree::
         co_occ_matrix
-
-    .. toctree::        
-        occ_matrix
-
 
     .. toctree::
         auto_corr_matrix

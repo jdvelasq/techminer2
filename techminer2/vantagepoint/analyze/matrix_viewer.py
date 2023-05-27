@@ -1,25 +1,28 @@
 """
-Matrix viewer (GPT)
+Matrix Viewer --- ChatGPT
 ===============================================================================
 
 
 
+Examples
+-------------------------------------------------------------------------------
+
 **Matrix view for a occurrence matrix.**
 
-
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 
 >>> file_name = "sphinx/_static/vantagepoint__matrix_viewer-0.html"
 
 >>> from techminer2 import vantagepoint
->>> occ_matrix = vantagepoint.analyze.occ_matrix(
-...     criterion_for_columns='author_keywords',
-...     criterion_for_rows='authors',
+>>> co_occ_matrix = vantagepoint.analyze.co_occ_matrix(
+...     criterion='author_keywords',
+...     other_criterion='authors',
 ...     topic_min_occ=3,
-...     directory=directory,
+...     root_dir=root_dir,
 ... )
->>> occ_matrix_list = vantagepoint.analyze.list_cells_in_matrix(occ_matrix)
->>> occ_matrix_list.matrix_list_.head()
+>>> co_occ_matrix_list = vantagepoint.analyze.list_cells_in_matrix(
+...     co_occ_matrix)
+>>> co_occ_matrix_list.cells_list_.head()
                 row                       column  OCC
 0    Arner DW 3:185  financial regulation 04:035    2
 1    Arner DW 3:185               regtech 28:329    2
@@ -29,17 +32,22 @@ Matrix viewer (GPT)
 
 
 >>> chart = vantagepoint.analyze.matrix_viewer(
-...     occ_matrix,
+...     co_occ_matrix,
 ... )
 >>> chart.plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/vantagepoint__matrix_viewer-0.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../../_static/vantagepoint__matrix_viewer-0.html"
+    height="600px" width="100%" frameBorder="0"></iframe>
 
 
 >>> print(chart.prompt_)
-Analyze the table below, which contains the the occurrence values for author_keywords and authors. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
+Analyze the table below, which contains the the occurrence values for \
+author_keywords and authors. Identify any notable patterns, trends, or \
+outliers in the data, and discuss their implications for the research \
+field. Be sure to provide a concise summary of your findings in no more than \
+150 words.
 <BLANKLINE>
 |    | row              | column                      |   OCC |
 |---:|:-----------------|:----------------------------|------:|
@@ -55,6 +63,7 @@ Analyze the table below, which contains the the occurrence values for author_key
 <BLANKLINE>
 
 
+
 **Matrix view for a co-occurrence matrix.**
 
 >>> file_name = "sphinx/_static/vantagepoint__matrix_viewer-1.html"
@@ -62,10 +71,11 @@ Analyze the table below, which contains the the occurrence values for author_key
 >>> co_occ_matrix = vantagepoint.analyze.co_occ_matrix(
 ...     criterion='author_keywords',
 ...     topic_min_occ=7,
-...     directory=directory,
+...     root_dir=root_dir,
 ... )
->>> co_occ_matrix_list = vantagepoint.analyze.list_cells_in_matrix(co_occ_matrix)
->>> co_occ_matrix_list.matrix_list_.head()
+>>> co_occ_matrix_list = vantagepoint.analyze.list_cells_in_matrix(
+...     co_occ_matrix)
+>>> co_occ_matrix_list.cells_list_.head()
                  row             column  OCC
 0     regtech 28:329     regtech 28:329   28
 1     fintech 12:249     fintech 12:249   12
@@ -82,33 +92,26 @@ Analyze the table below, which contains the the occurrence values for author_key
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/vantagepoint__matrix_viewer-1.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../../_static/vantagepoint__matrix_viewer-1.html"
+    height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> print(chart.prompt_)
-Analyze the table below, which contains the the co-occurrence values for author_keywords. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
+Analyze the table below, which contains the the co-occurrence values for \
+author_keywords. Identify any notable patterns, trends, or outliers in the \
+data, and discuss their implications for the research field. Be sure to \
+provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
-|    | row                          | column                       |   OCC |
-|---:|:-----------------------------|:-----------------------------|------:|
-|  0 | regtech 28:329               | regtech 28:329               |    28 |
-|  1 | fintech 12:249               | fintech 12:249               |    12 |
-|  2 | fintech 12:249               | regtech 28:329               |    12 |
-|  3 | regtech 28:329               | fintech 12:249               |    12 |
-|  4 | compliance 07:030            | compliance 07:030            |     7 |
-|  5 | compliance 07:030            | regtech 28:329               |     7 |
-|  6 | regtech 28:329               | compliance 07:030            |     7 |
-|  7 | regulatory technology 07:037 | regulatory technology 07:037 |     7 |
-|  8 | compliance 07:030            | fintech 12:249               |     2 |
-|  9 | fintech 12:249               | compliance 07:030            |     2 |
-| 10 | regtech 28:329               | regulatory technology 07:037 |     2 |
-| 11 | regulatory technology 07:037 | regtech 28:329               |     2 |
-| 12 | compliance 07:030            | regulatory technology 07:037 |     1 |
-| 13 | fintech 12:249               | regulatory technology 07:037 |     1 |
-| 14 | regulatory technology 07:037 | compliance 07:030            |     1 |
-| 15 | regulatory technology 07:037 | fintech 12:249               |     1 |
+|    | row               | column                       |   OCC |
+|---:|:------------------|:-----------------------------|------:|
+|  2 | fintech 12:249    | regtech 28:329               |    12 |
+|  5 | compliance 07:030 | regtech 28:329               |     7 |
+|  8 | compliance 07:030 | fintech 12:249               |     2 |
+| 10 | regtech 28:329    | regulatory technology 07:037 |     2 |
+| 12 | compliance 07:030 | regulatory technology 07:037 |     1 |
+| 13 | fintech 12:249    | regulatory technology 07:037 |     1 |
 <BLANKLINE>
 <BLANKLINE>
-    
 
 
 """
@@ -136,6 +139,9 @@ def matrix_viewer(
     textfont_size_min=10,
     textfont_size_max=20,
     seed=0,
+    xaxes_range=None,
+    yaxes_range=None,
+    show_axes=False,
 ):
     """Makes cluster map from a ocurrence flooding matrix."""
 
@@ -158,7 +164,12 @@ def matrix_viewer(
     edge_traces = network_utils.create_edge_traces(graph)
 
     fig = network_utils.create_network_graph(
-        edge_traces, node_trace, text_trace, delta
+        edge_traces=edge_traces,
+        node_trace=node_trace,
+        text_trace=text_trace,
+        xaxes_range=xaxes_range,
+        yaxes_range=yaxes_range,
+        show_axes=show_axes,
     )
 
     chart = _Chart()

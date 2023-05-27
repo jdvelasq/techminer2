@@ -57,8 +57,8 @@ def create_graph(
 def create_graph_edges(graph, matrix_list):
     """Creates edges from 'row' and 'column' columns in a matrix list."""
 
-    table = matrix_list.matrix_list_.copy()
-    if matrix_list.criterion_for_columns_ == matrix_list.criterion_for_rows_:
+    table = matrix_list.cells_list_.copy()
+    if matrix_list.criterion_ == matrix_list.other_criterion_:
         table = table[table["row"] < table["column"]]
     table = table[table[matrix_list.metric_] > 0]
 
@@ -215,13 +215,12 @@ def create_graph_nodes(graph, matrix_list):
             color = "#556f81"
             group = 1
 
-        nodes = matrix_list.matrix_list_[col].drop_duplicates().to_list()
+        nodes = matrix_list.cells_list_[col].drop_duplicates().to_list()
         nodes = [(node, {"color": color, "group": group}) for node in nodes]
         graph.add_nodes_from(nodes)
 
         if (
-            matrix_list.criterion_for_rows_
-            == matrix_list.criterion_for_columns_
+            matrix_list.criterion_ == matrix_list.other_criterion_
             or matrix_list.metric_ == "CORR"
         ):
             break

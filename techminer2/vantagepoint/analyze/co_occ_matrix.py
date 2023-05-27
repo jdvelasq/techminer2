@@ -1,5 +1,5 @@
 """
-Co-cccurrence Matrix
+Co-occurrence Matrix --- ChatGPT
 ===============================================================================
 
 Examples
@@ -68,7 +68,7 @@ your findings in no more than 150 words.
 """
 
 from ...add_counters import add_counters_to_axis
-from ...classes import OccurrenceMatrix
+from ...classes import CoOccurrenceMatrix
 from ...sort_utils import sort_indicators_by_metric, sort_matrix_axis
 from ...techminer.indicators import co_occ_matrix_list, indicators_by_topic
 from ...topics import filter_custom_topics_from_column, generate_custom_topics
@@ -289,7 +289,7 @@ def co_occ_matrix(
             other_criterion=criterion,
         )
 
-    occurrence_matrix = OccurrenceMatrix()
+    occurrence_matrix = CoOccurrenceMatrix()
 
     occurrence_matrix.criterion_ = criterion
     occurrence_matrix.other_criterion_ = (
