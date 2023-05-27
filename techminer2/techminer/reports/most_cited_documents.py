@@ -1,115 +1,56 @@
 """
-Most Global Cited Documents
+Most Global Cited Documents --- ChatGPT
 ===============================================================================
 
+Generates a report with the most global cited documents that meet the specified
+filters.
 
->>> directory = "data/regtech/"
+Example
+-------------------------------------------------------------------------------
+
+>>> root_dir = "data/regtech/"
 
 >>> from techminer2 import techminer
 >>> techminer.reports.most_cited_documents(
-...     directory=directory,
+...     root_dir=root_dir,
 ... )
 --INFO-- The file 'data/regtech/reports/most_cited_documents.txt' was created
 
 """
-import os.path
-import sys
-import textwrap
-
-from ...record_utils import read_records
+from .abstracts_report import abstracts_report
 
 
 def most_cited_documents(
-    directory="./",
+    root_dir="./",
     file_name="most_cited_documents.txt",
     start_year=None,
     end_year=None,
     **filters,
 ):
-    """Prints ."""
+    """
+    Generates a report with records ordered by global and local citations.
 
-    records = read_records(
-        root_dir=directory,
+    Args:
+        root_dir (str): root directory.
+        criterion=None,
+        custom_topics=None,
+        file_name="abstracts_report.txt",
+        start_year=None,
+        end_year=None,
+        **filters: filters.
+
+    Returns:
+        None.
+
+    """
+    return abstracts_report(
+        criterion=None,
+        custom_topics=None,
+        file_name=file_name,
+        use_textwrap=True,
+        root_dir=root_dir,
         database="documents",
         start_year=start_year,
         end_year=end_year,
         **filters,
     )
-
-    column_list = []
-
-    reported_columns = [
-        "article",
-        "title",
-        "authors",
-        "global_citations",
-        "source_title",
-        "year",
-        "abstract",
-        "author_keywords",
-        "index_keywords",
-    ]
-
-    for criterion in reported_columns:
-        if criterion in records.columns:
-            column_list.append(criterion)
-    records = records[column_list]
-
-    if "global_citations" in records.columns:
-        records = records.sort_values(by="global_citations", ascending=False)
-
-    file_path = os.path.join(directory, "reports", file_name)
-
-    counter = 0
-    with open(file_path, "w", encoding="utf-8") as file:
-        for _, row in records.iterrows():
-            print("---{:03d}".format(counter) + "-" * 86, file=file)
-            counter += 1
-
-            for criterion in reported_columns:
-                if criterion not in row.index:
-                    continue
-
-                if row[criterion] is None:
-                    continue
-
-                if criterion == "article":
-                    print("AR ", end="", file=file)
-                if criterion == "title":
-                    print("TI ", end="", file=file)
-                if criterion == "authors":
-                    print("AU ", end="", file=file)
-                if criterion == "global_citations":
-                    print("TC ", end="", file=file)
-                if criterion == "source_title":
-                    print("SO ", end="", file=file)
-                if criterion == "year":
-                    print("PY ", end="", file=file)
-                if criterion == "abstract":
-                    print("AB ", end="", file=file)
-                if criterion == "raw_author_keywords":
-                    print("DE ", end="", file=file)
-                if criterion == "author_keywords":
-                    print("DE ", end="", file=file)
-                if criterion == "raw_index_keywords":
-                    print("ID ", end="", file=file)
-                if criterion == "index_keywords":
-                    print("ID ", end="", file=file)
-
-                text = textwrap.fill(
-                    str(row[criterion]),
-                    width=87,
-                    initial_indent=" " * 3,
-                    subsequent_indent=" " * 3,
-                    fix_sentence_endings=True,
-                )[3:]
-
-                if criterion == "abstract":
-                    text = text.split("\n")
-                    text = [x.strip() for x in text]
-                    text = " \\\n".join(text)
-                    text = '\n"""\n' + text + '\n"""'
-
-                print(text, file=file)
-
-    sys.stdout.write(f"--INFO-- The file '{file_path}' was created\n")
