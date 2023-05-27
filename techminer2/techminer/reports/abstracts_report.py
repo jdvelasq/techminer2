@@ -1,17 +1,16 @@
 """
-Abstracts Report
+Abstracts Report --- ChatGPT
 ===============================================================================
 
+Generates a report for the records meeting the given criteria.
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 
->>> # file generated in data/regtech/reports/abstracts_report.txt
 >>> from techminer2 import techminer
-
 >>> techminer.reports.abstracts_report(
 ...     criterion="author_keywords",
 ...     custom_topics=["regulatory technology", "regtech"],
-...     directory=directory,
+...     root_dir=root_dir,
 ... )
 --INFO-- The file 'data/regtech/reports/abstracts_report.txt' was created
 
@@ -21,24 +20,42 @@ import textwrap
 
 import pandas as pd
 
-from ...record_utils import read_records
+from ... import record_utils
 
 
+# pylint: disable=too-many-arguments
 def abstracts_report(
     criterion=None,
     custom_topics=None,
     file_name="abstracts_report.txt",
     use_textwrap=True,
-    directory="./",
+    root_dir="./",
     database="documents",
     start_year=None,
     end_year=None,
     **filters,
 ):
-    """Extracts abstracts of documents meeting the given criteria."""
+    """
+    Extracts abstracts of documents meeting the given criteria.
 
-    records = read_records(
-        root_dir=directory,
+    Args:
+        criterion (str): name of the column to be used as criterion.
+        custom_topics (list): list of custom topics.
+        file_name (str): name of the output file.
+        use_textwrap (bool): if True, the text is wrapped.
+        root_dir (str): root directory.
+        database (str): name of the database.
+        start_year (int): start year.
+        end_year (int): end year.
+        **filters: filters.
+
+    Returns:
+        None.
+
+    """
+
+    records = record_utils.read_records(
+        root_dir=root_dir,
         database=database,
         start_year=start_year,
         end_year=end_year,
@@ -50,7 +67,7 @@ def abstracts_report(
     else:
         records = _sort_by_default_criteria(records)
 
-    _write_report(criterion, file_name, use_textwrap, directory, records)
+    _write_report(criterion, file_name, use_textwrap, root_dir, records)
 
 
 def _sort_by_custom_terms(criterion, custom_topics, records):
@@ -160,14 +177,18 @@ def _write_report(criterion, file_name, use_textwrap, directory, records):
         for _, row in records.iterrows():
             text_article = format_text(row["article"], use_textwrap)
             text_title = format_text(row["title"], use_textwrap)
-            text_criterion = format_text(row[criterion], use_textwrap)
+            if criterion:
+                text_criterion = format_text(row[criterion], use_textwrap)
+            else:
+                text_criterion = None
             text_abstract = format_text(row.get("abstract", ""), use_textwrap)
             text_citation = str(row["global_citations"])
 
             print(f"-- {counter:03d} " + "-" * 83, file=out_file)
             print_field("AR", text_article, out_file)
             print_field("TI", text_title, out_file)
-            print_field("KW", text_criterion, out_file)
+            if criterion:
+                print_field("KW", text_criterion, out_file)
             print_field("TC", text_citation, out_file)
             print_field("AB", text_abstract, out_file)
 
