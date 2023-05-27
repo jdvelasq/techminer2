@@ -23,6 +23,9 @@ Indicators
     indicators_by_year
 
 .. toctree::    
+    occ_matrix_list
+
+.. toctree::    
     topics_occ_by_year
 
 
