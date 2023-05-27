@@ -113,7 +113,7 @@ def topic_view(
 
     # -----------------------------------------------------------------------------------
 
-    indicators = indicators_by_topic(criterion=column, directory=directory)
+    indicators = indicators_by_topic(criterion=column, root_dir=directory)
     if min_occ is not None:
         indicators = indicators[indicators["num_documents"] >= min_occ]
     if max_occ is not None:
@@ -126,7 +126,9 @@ def topic_view(
     indicators = indicators.head(top_n)
 
     if sort_values is not None and sort_index is not None:
-        raise ValueError("Only one of sort_values and sort_index can be specified")
+        raise ValueError(
+            "Only one of sort_values and sort_index can be specified"
+        )
 
     if sort_values is not None:
         by = sort_values["by"]
