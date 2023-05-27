@@ -1,16 +1,16 @@
 """
-Coverage
+Coverage --- ChatGPT
 ===============================================================================
 
 Computes coverage of terms in a column discarding stopwords.
 
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 
 >>> from techminer2 import techminer
 >>> techminer.reports.coverage(
 ...     "author_keywords",
-...     directory=directory,
+...     root_dir=root_dir,
 ... ).head(10)
 --INFO-- Number of documents : 52
 --INFO-- Documents with NA: 11
@@ -30,48 +30,62 @@ Computes coverage of terms in a column discarding stopwords.
 
 import sys
 
-from ..._load_stopwords import load_stopwords
-from ...record_utils import read_records
+from ... import load_utils, record_utils
 
 
 def coverage(
-    column,
-    directory="./",
+    criterion,
+    root_dir="./",
     database="documents",
     start_year=None,
     end_year=None,
     **filters,
 ):
-    """Coverage of terms in a column discarding stopwords."""
+    """
+    Coverage of terms in a column discarding stopwords.
 
-    stopwords = load_stopwords(directory)
+    Args:
+        criterion (str): name of the column to be used as criterion.
+        root_dir (str): root directory.
+        database (str): name of the database.
+        start_year (int): start year.
+        end_year (int): end year.
+        **filters: filters.
 
-    documents = read_records(
-        root_dir=directory,
+    Returns:
+        None.
+
+    """
+
+    stopwords = load_utils.load_stopwords(root_dir)
+
+    documents = record_utils.read_records(
+        root_dir=root_dir,
         database=database,
         start_year=start_year,
         end_year=end_year,
         **filters,
     )
     documents = documents.reset_index()
-    documents = documents[[column, "article"]]
+    documents = documents[[criterion, "article"]]
 
     n_documents = len(documents)
     sys.stdout.write(f"--INFO-- Number of documents : {n_documents}\n")
     sys.stdout.write(
-        f"--INFO-- Documents with NA: {n_documents - len(documents.dropna())}\n"
+        "--INFO-- Documents with NA: "
+        f"{n_documents - len(documents.dropna())}\n"
     )
 
     documents = documents.dropna()
     sys.stdout.write(f"--INFO-- Efective documents : {n_documents}\n")
 
     documents = documents.assign(num_documents=1)
-    documents[column] = documents[column].str.split("; ")
-    documents = documents.explode(column)
+    documents[criterion] = documents[criterion].str.split("; ")
+    documents = documents.explode(criterion)
 
-    documents = documents[~documents[column].isin(stopwords)]
+    documents = documents[~documents[criterion].isin(stopwords)]
 
-    documents = documents.groupby(by=[column]).agg(
+    documents = documents.groupby(by=[criterion]).agg(
         {"num_documents": "count", "article": list}
     )
     documents = documents.sort_values(by=["num_documents"], ascending=False)
@@ -79,7 +93,7 @@ def coverage(
     documents = documents.reset_index()
 
     documents = documents.groupby(by="num_documents", as_index=False).agg(
-        {"article": list, column: list}
+        {"article": list, criterion: list}
     )
 
     documents = documents.sort_values(by=["num_documents"], ascending=False)
@@ -97,11 +111,11 @@ def coverage(
 
     documents = documents.assign(
         coverage=documents.cum_sum_documents.map(
-            lambda x: "{:5.2f} %".format(100 * x / n_documents)
+            lambda x: f"{100 * x / n_documents:5.2f} %"
         )
     )
 
-    documents = documents.assign(cum_sum_items=documents[column].cumsum())
+    documents = documents.assign(cum_sum_items=documents[criterion].cumsum())
     documents = documents.assign(
         cum_sum_items=documents.cum_sum_items.map(set)
     )
@@ -110,7 +124,7 @@ def coverage(
     )
 
     documents.drop("article", axis=1, inplace=True)
-    documents.drop(column, axis=1, inplace=True)
+    documents.drop(criterion, axis=1, inplace=True)
 
     documents = documents.rename(
         columns={
