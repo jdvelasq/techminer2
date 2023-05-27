@@ -37,7 +37,7 @@ def graphs__co_occurrences(
 ):
     """Word Association"""
 
-    matrix_list = vantagepoint.analyze.analyze.co_occ_matrix_list(
+    matrix_list = vantagepoint.analyze.co_occ_matrix_list(
         criterion=criterion,
         topics_length=topics_length,
         topic_min_occ=topic_min_occ,
@@ -59,7 +59,9 @@ def graphs__co_occurrences(
     total_occ_topic = int(total_occ_topic)
 
     matrix_list = matrix_list[matrix_list["row"] != matrix_list["column"]]
-    matrix_list = matrix_list.assign(OCC=100 * matrix_list["OCC"] / total_occ_topic)
+    matrix_list = matrix_list.assign(
+        OCC=100 * matrix_list["OCC"] / total_occ_topic
+    )
     matrix_list["OCC"] = matrix_list["OCC"].round(1)
     matrix_list = matrix_list[["column", "OCC"]]
     matrix_list = matrix_list.set_index("column")
