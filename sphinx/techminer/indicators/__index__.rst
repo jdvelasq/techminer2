@@ -22,7 +22,7 @@ Indicators
 .. toctree::    
     indicators_by_year
 
-.. toctree::    
+.. toctree::
     occ_matrix_list
 
 .. toctree::    
