@@ -14,54 +14,52 @@ List View --- ChatGPT
 >>> r.table_.head()
                        OCC  ...  local_citations_per_document
 author_keywords             ...                              
-regtech                 28  ...                             2
-fintech                 12  ...                             4
-regulatory technology    7  ...                             2
-compliance               7  ...                             1
-regulation               5  ...                             4
+regtech                 28  ...                          2.64
+fintech                 12  ...                          4.08
+regulatory technology    7  ...                          2.00
+compliance               7  ...                          1.29
+regulation               5  ...                          4.40
 <BLANKLINE>
 [5 rows x 5 columns]
 
 
 
 >>> print(r.table_.head().to_markdown())
-| author_keywords       |   OCC |   local_citations |   global_citations |   global_citations_per_document |   local_citations_per_document |
-|:----------------------|------:|------------------:|-------------------:|--------------------------------:|-------------------------------:|
-| regtech               |    28 |                74 |                329 |                              11 |                              2 |
-| fintech               |    12 |                49 |                249 |                              20 |                              4 |
-| regulatory technology |     7 |                14 |                 37 |                               5 |                              2 |
-| compliance            |     7 |                 9 |                 30 |                               4 |                              1 |
-| regulation            |     5 |                22 |                164 |                              32 |                              4 |
-
+| author_keywords       |   OCC |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |
+|:----------------------|------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|
+| regtech               |    28 |                329 |                74 |                           11.75 |                           2.64 |
+| fintech               |    12 |                249 |                49 |                           20.75 |                           4.08 |
+| regulatory technology |     7 |                 37 |                14 |                            5.29 |                           2    |
+| compliance            |     7 |                 30 |                 9 |                            4.29 |                           1.29 |
+| regulation            |     5 |                164 |                22 |                           32.8  |                           4.4  |
 
 >>> print(r.prompt_)
 Analyze the table below, which provides bibliographic indicators for a collection of research articles. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
-| author_keywords         |   OCC |   local_citations |   global_citations |   global_citations_per_document |   local_citations_per_document |
-|:------------------------|------:|------------------:|-------------------:|--------------------------------:|-------------------------------:|
-| regtech                 |    28 |                74 |                329 |                              11 |                              2 |
-| fintech                 |    12 |                49 |                249 |                              20 |                              4 |
-| regulatory technology   |     7 |                14 |                 37 |                               5 |                              2 |
-| compliance              |     7 |                 9 |                 30 |                               4 |                              1 |
-| regulation              |     5 |                22 |                164 |                              32 |                              4 |
-| financial services      |     4 |                20 |                168 |                              42 |                              5 |
-| financial regulation    |     4 |                 8 |                 35 |                               8 |                              2 |
-| artificial intelligence |     4 |                 6 |                 23 |                               5 |                              1 |
-| anti-money laundering   |     3 |                 4 |                 21 |                               7 |                              1 |
-| risk management         |     3 |                 8 |                 14 |                               4 |                              2 |
-| innovation              |     3 |                 4 |                 12 |                               4 |                              1 |
-| blockchain              |     3 |                 0 |                  5 |                               1 |                              0 |
-| suptech                 |     3 |                 2 |                  4 |                               1 |                              0 |
-| semantic technologies   |     2 |                19 |                 41 |                              20 |                              9 |
-| data protection         |     2 |                 5 |                 27 |                              13 |                              2 |
-| smart contracts         |     2 |                 8 |                 22 |                              11 |                              4 |
-| charitytech             |     2 |                 4 |                 17 |                               8 |                              2 |
-| english law             |     2 |                 4 |                 17 |                               8 |                              2 |
-| gdpr                    |     2 |                 3 |                 14 |                               7 |                              1 |
-| data protection officer |     2 |                 3 |                 14 |                               7 |                              1 |
+| author_keywords         |   OCC |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |
+|:------------------------|------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|
+| regtech                 |    28 |                329 |                74 |                           11.75 |                           2.64 |
+| fintech                 |    12 |                249 |                49 |                           20.75 |                           4.08 |
+| regulatory technology   |     7 |                 37 |                14 |                            5.29 |                           2    |
+| compliance              |     7 |                 30 |                 9 |                            4.29 |                           1.29 |
+| regulation              |     5 |                164 |                22 |                           32.8  |                           4.4  |
+| financial services      |     4 |                168 |                20 |                           42    |                           5    |
+| financial regulation    |     4 |                 35 |                 8 |                            8.75 |                           2    |
+| artificial intelligence |     4 |                 23 |                 6 |                            5.75 |                           1.5  |
+| anti-money laundering   |     3 |                 21 |                 4 |                            7    |                           1.33 |
+| risk management         |     3 |                 14 |                 8 |                            4.67 |                           2.67 |
+| innovation              |     3 |                 12 |                 4 |                            4    |                           1.33 |
+| blockchain              |     3 |                  5 |                 0 |                            1.67 |                           0    |
+| suptech                 |     3 |                  4 |                 2 |                            1.33 |                           0.67 |
+| semantic technologies   |     2 |                 41 |                19 |                           20.5  |                           9.5  |
+| data protection         |     2 |                 27 |                 5 |                           13.5  |                           2.5  |
+| smart contracts         |     2 |                 22 |                 8 |                           11    |                           4    |
+| charitytech             |     2 |                 17 |                 4 |                            8.5  |                           2    |
+| english law             |     2 |                 17 |                 4 |                            8.5  |                           2    |
+| gdpr                    |     2 |                 14 |                 3 |                            7    |                           1.5  |
+| data protection officer |     2 |                 14 |                 3 |                            7    |                           1.5  |
 <BLANKLINE>
 <BLANKLINE>
-
 
 """
 
