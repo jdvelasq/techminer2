@@ -4,6 +4,7 @@ Define classes for retorning the results of the functions.
 
 from dataclasses import dataclass
 
+import networkx as nx
 import pandas as pd
 import plotly.graph_objs as go
 
@@ -19,7 +20,7 @@ class ColumnViewer:
 
 
 @dataclass(init=False)
-class CoOccurrenceMatrix:
+class CooccurrenceMatrix:
     """Occurrence matrix."""
 
     matrix_: pd.DataFrame
@@ -51,15 +52,26 @@ class ListView:
 
 
 @dataclass(init=False)
-class MatrixSubet:
+class MatrixSubset:
     """Matrix subset."""
 
-    matrix_: pd.DataFrame
     criterion_: str
+    is_ego_matrix_: bool
+    matrix_: pd.DataFrame
+    metric_: str
     other_criterion_: str
     prompt_: str
     topics_: list
-    is_ego_matrix_: bool
+
+
+@dataclass(init=False)
+class MatrixViewer:
+    """Matrix viewer."""
+
+    plot_: go.Figure
+    graph_: nx.Graph
+    table_: pd.DataFrame
+    prompt_: str
 
 
 @dataclass(init=False)

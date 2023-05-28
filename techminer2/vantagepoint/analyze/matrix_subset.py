@@ -1,13 +1,13 @@
+# flake8: noqa
 """
 Matrix Subset --- ChatGPT
 ===============================================================================
 
 
 
-Examples
+Example: Matrix subset for a occurrence matrix.
 -------------------------------------------------------------------------------
 
-* Matrix subset for a occurrence matrix.
 
 >>> root_dir = "data/regtech/"
 
@@ -146,9 +146,9 @@ financial services 04:168                    3  ...                          4
 <BLANKLINE>
 [18 rows x 18 columns]
 
-
+# pylint: disable=line-too-long
 """
-from ...classes import MatrixSubet
+from ...classes import MatrixSubset
 
 
 def matrix_subset(
@@ -186,10 +186,10 @@ def matrix_subset(
 
         return matrix.iloc[:, topic_positions]
 
-    def select_rows(matrix):
+    def select_no_zero_rows(matrix):
         """selects the rows with row sum > 0"""
 
-        return matrix[matrix.sum(axis=1) > 0]
+        return matrix.loc[matrix.sum(axis=1) > 0, :]
 
     def generate_prompt_for_occ_matrix(matrix, criterion, other_criterion):
         """Generates a ChatGPT prompt for a occurrence matrix."""
@@ -221,13 +221,17 @@ def matrix_subset(
     # Main:
     #
 
+    if isinstance(topics, str):
+        topics = [topics]
+
     matrix = obj.matrix_.copy()
 
     topic_positions = extract_topic_positions(
         candidate_topics=matrix.columns.tolist(), topics=topics
     )
+    topics_ = [matrix.columns[pos] for pos in topic_positions]
     matrix = select_columns(matrix, topic_positions)
-    matrix = select_rows(matrix)
+    matrix = select_no_zero_rows(matrix)
 
     if is_ego_matrix:
         augmented_topics = matrix.index.tolist() + matrix.columns.tolist()
@@ -237,6 +241,8 @@ def matrix_subset(
             if topic in obj.matrix_.columns.tolist()
         ]
         matrix = obj.matrix_.loc[augmented_topics, augmented_topics]
+    else:
+        matrix = matrix.drop(labels=matrix.columns.tolist(), axis=0)
 
     if obj.criterion_ == obj.other_criterion_:
         prompt = generate_prompt_for_co_occ_matrix(matrix, obj.criterion_)
@@ -245,13 +251,18 @@ def matrix_subset(
             matrix, obj.criterion_, obj.other_criterion_
         )
 
-    matrix_subset_ = MatrixSubet()
+    matrix_subset_ = MatrixSubset()
 
-    matrix_subset_.criterion_ = obj.criterion_
-    matrix_subset_.other_criterion_ = obj.other_criterion_
-    matrix_subset_.matrix_ = matrix
-    matrix_subset_.topics_ = topics
+    if is_ego_matrix:
+        matrix_subset_.criterion_ = obj.criterion_
+    else:
+        matrix_subset_.criterion_ = repr(topics)
+
     matrix_subset_.is_ego_matrix_ = is_ego_matrix
+    matrix_subset_.matrix_ = matrix
+    matrix_subset_.metric_ = obj.metric_
+    matrix_subset_.other_criterion_ = obj.other_criterion_
     matrix_subset_.prompt_ = prompt
+    matrix_subset_.topics_ = topics_
 
     return matrix_subset_

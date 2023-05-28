@@ -236,7 +236,7 @@ def create_network_graph(
     yaxes_range,
     show_axes,
 ):
-    """Creates a network graph from edge traces, node trace and text trace using plotly express."""
+    """Creates a network graph from tracesusing plotly express."""
 
     layout = go.Layout(
         title="",
@@ -483,5 +483,15 @@ def set_edge_properties_for_corr_maps(graph):
             graph.edges[edge]["width"] = 6
             graph.edges[edge]["dash"] = "solid"
             graph.edges[edge]["color"] = "#8da4b4"
+
+    return graph
+
+
+def set_node_colors(graph, node_names, new_color):
+    """Sets node colors in a networkx graph."""
+
+    for node in graph.nodes():
+        if node in node_names:
+            graph.nodes[node]["color"] = new_color
 
     return graph
