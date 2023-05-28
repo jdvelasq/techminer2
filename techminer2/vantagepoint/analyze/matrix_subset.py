@@ -1,6 +1,6 @@
 # flake8: noqa
 """
-Matrix Subset --- ChatGPT
+Matrix Subset (*) --- ChatGPT
 ===============================================================================
 
 
