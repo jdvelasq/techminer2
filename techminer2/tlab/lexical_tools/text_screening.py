@@ -1,30 +1,31 @@
 """
-Text Screening 
+Text Screening --- ChatGPT
 ===============================================================================
 
 This funcion searchs for them specified in the parameter ``search_for`` in the
 abstracts of the records and creates a file with the report.
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 
 >>> from techminer2 import tlab
 >>> tlab.lexical_tools.text_screening(
 ...     search_for='regtech',
-...     directory=directory,
+...     root_dir=root_dir,
 ... )
 --INFO-- The file 'data/regtech/processed/text_screening.txt' was created.
 
 
 """
-from ... import vantagepoint
+from ...vantagepoint import record_display
 
 
+# pylint: disable=too-many-arguments
 def text_screening(
     search_for,
     case=False,
     flags=0,
     regex=True,
-    directory="./",
+    root_dir="./",
     database="documents",
     start_year=None,
     end_year=None,
@@ -33,51 +34,30 @@ def text_screening(
     """Generates the file ``text_screening.txt`` with the abstracts matching \
     the search string.
 
-    Parameters
-    ----------
+    Args:
+        search_for (str): string to be searched in the abstracts.
+        case (bool): if True, the search is case sensitive.
+        flags (int): flags for the regular expression search.
+        regex (bool): if True, the search string is a regular expression.
+        root_dir (str): root directory.
+        database (str): database name.
+        start_year (int): start year.
+        end_year (int): end year.
+        **filters: filters.
 
-    search_for: str
-        The string to be searched.
-
-    case: bool
-        If True, the search is case sensitive.
-
-    flags: int
-        Flags to be passed to the ``re`` module.
-
-    regex: bool
-        If True, the search string is a regular expression.
-
-    directory: str
-        The root directory of the project.
-
-    database: str ``{"documents", "references", "cited_by"}, by default \
-        "documents"``
-        The database name.
-
-    start_year: int or None, optional
-        The start year to be considered.
-
-    end_year: int or None, optional
-
-    filters: dict
-        The filters to be applied to the database.
-
-    Returns
-    -------
-    None
-
+    Returns:
+        None
 
     """
 
-    return vantagepoint.record_display(
+    return record_display(
         criterion="abstract",
         search_for=search_for,
         report_filename="text_screening.txt",
         case=case,
         flags=flags,
         regex=regex,
-        root_dir=directory,
+        root_dir=root_dir,
         database=database,
         start_year=start_year,
         end_year=end_year,

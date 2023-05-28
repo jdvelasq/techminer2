@@ -8,9 +8,7 @@ T-LAB
 
 
 .. toctree::
-   :maxdepth: 1
-   
-   lexical_tools/__index__
+   text_screening
 
 
 .. toctree::
