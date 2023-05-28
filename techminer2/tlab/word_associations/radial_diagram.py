@@ -9,14 +9,16 @@ is a network graph in which the nodes are the terms and the edges are the
 co-occurrence between the terms. The radial diagram is a useful tool for
 identifying the most relevant terms associated with a given term.
 
-It can be obtained directly using functions in the VantagePoint module as
+It can be obtained directly using functions in the **VantagePoint** module as
 is explained in the following example.
+
 
 * Step 1: Import the VantagePoint module.
 
 >>> from techminer2 import vantagepoint
 >>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/tlab__word_associations__radial_diagram.html"
+
 
 * Step 2: Create a co-occurrence matrix
 
@@ -25,6 +27,7 @@ is explained in the following example.
 ...    topic_min_occ=3,
 ...    root_dir=root_dir,
 ... )
+
 
 * Step 3: Create a subset of the co-occurrence matrix with the term to be analyzed.
 

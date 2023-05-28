@@ -1,4 +1,3 @@
 from .graphs__co_occurrences import graphs__co_occurrences
 from .graphs__mds_map import graphs__mds_map
-from .tables__all_items_co_occurrences import tables__all_items_co_occurrences
 from .tables__selected_item import tables__selected_item

@@ -22,7 +22,7 @@ Name: OCC, dtype: int64
 
 
 """
-from .tables__all_items_co_occurrences import tables__all_items_co_occurrences
+# from .co_ocurrence_matrix import tables__all_items_co_occurrences
 
 
 def tables__selected_item(

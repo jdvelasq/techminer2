@@ -21,7 +21,6 @@ Word Associations
     tables__selected_item
 
 .. toctree::    
-    tables__all_items_co_occurrences
+    co_occurrence_matrix
             
             
-* Co-occurrence Matrix: See `Co-occurrence Matrix <../../co_occ_matrix_list.html>`__
