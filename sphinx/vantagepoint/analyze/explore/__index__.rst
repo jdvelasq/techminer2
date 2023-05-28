@@ -3,10 +3,6 @@ Explore
 
 
 .. toctree::
-    column_viewer
-
-
-.. toctree::
     create_concept_grid
 
 
