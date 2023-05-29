@@ -2,15 +2,12 @@
 Singular Value Decomposition --- ChatGPT
 ===============================================================================
 
-Plots the SVD of the co-occurrence matrix normalized with the **mutualinfo**
-measure.
-
-The plot is based on the SVD technique used in T-LAB's comparative analysis.
+Plots the SVD of the normalized co-occurrence matrix. The plot is based on the 
+SVD technique used in T-LAB's comparative analysis.
 
 **Algorithm**
 
-1. Computes the co-occurrence matrix normalized with the **nutualinfo**
-    association index.
+1. Computes the normalized co-occurrence matrix.
 
 2. Apply SVD to the co-occurrence matrix with `n_components=20`.
 
@@ -69,6 +66,9 @@ def singular_value_decomposition(
     obj,
     dim_x=0,
     dim_y=1,
+    # Technique parameters
+    is_2d=False,
+    normalization="mutualinfo",
     # SVD parameters
     algorithm="randomized",
     n_iter=5,
@@ -100,7 +100,7 @@ def singular_value_decomposition(
     if isinstance(obj, CocMatrix):
         obj = matrix_normalization(
             obj,
-            normalization="mutualinfo",
+            normalization=normalization,
         )
     else:
         ValueError(
@@ -110,7 +110,10 @@ def singular_value_decomposition(
     node_occ = extract_occ(obj.matrix_.columns.tolist())
     matrix = obj.matrix_.copy()
 
-    max_dimensions = min(20, len(matrix.columns) - 1)
+    if is_2d:
+        max_dimensions = 2
+    else:
+        max_dimensions = min(20, len(matrix.columns) - 1)
 
     decomposed_matrix = TruncatedSVD(
         n_components=max_dimensions,

@@ -19,6 +19,12 @@ Word Associations
     mds_map
 
 
+.. toctree::
+    :maxdepth: 1
+
+    svd_map
+
+
 * Cosine association
 
 
