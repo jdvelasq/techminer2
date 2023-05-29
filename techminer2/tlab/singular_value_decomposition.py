@@ -1,5 +1,5 @@
 """
-Singular Value Decomposition
+Singular Value Decomposition --- ChatGPT
 ===============================================================================
 
 Plots the SVD of the co-occurrence matrix normalized with the **mutualinfo**
