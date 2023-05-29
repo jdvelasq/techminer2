@@ -1,14 +1,15 @@
 """
-MDS Map
+MDS Map --- ChatGPT
 ===============================================================================
 
-Plots the SVD of the co-occurrence matrix normalized with the **salton** measure.
+Plots the SVD of the co-occurrence matrix normalized with the **salton** \
+measure.
 
 The plot is based on the SVD technique used in T-LAB's comparative analysis.
 
 **Algorithm**
 
-1. Computes the  co-occurrence matrix normalized with the **salton** association index.
+1. Computes the co-occurrence matrix.
 
 2. Apply SVD to the co-occurrence matrix with `n_components=2`.
 
@@ -16,14 +17,14 @@ The plot is based on the SVD technique used in T-LAB's comparative analysis.
 
 
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/tlab__word_associations__graphs__mds_map.html"
 
 >>> from techminer2 import tlab
 >>> mds_map = tlab.word_associations.graphs__mds_map(
 ...     criterion='author_keywords',
 ...     topic_min_occ=5,    
-...     directory=directory,
+...     root_dir=root_dir,
 ...     delta=0.3,
 ... )
 
@@ -45,64 +46,43 @@ regulation 05:164              6.324591  2.907691
 
 """
 
-from dataclasses import dataclass
-
 import pandas as pd
 from sklearn.decomposition import TruncatedSVD
 
 from ... import vantagepoint
-from ..._map_chart import map_chart
+from ...classes import CocMatrix, ManifoldMap
+from ...map_chart import map_chart
+
+MAX_DIMENSIONS = 2
 
 
-@dataclass(init=False)
-class _Results:
-    plot_: None
-    table_: None
-
-
-def graphs__mds_map(
-    criterion,
-    topics_length=50,
-    topic_min_occ=None,
-    topic_min_citations=None,
+def mds_map(
+    obj,
     svd__n_iter=5,
     random_state=0,
-    delta=0.2,
-    directory="./",
-    database="documents",
-    start_year=None,
-    end_year=None,
-    **filters,
+    xaxes_range=None,
+    yaxes_range=None,
 ):
     """Co-occurrence SVD Map."""
 
-    matrix = vantagepoint.analyze.analyze.co_occ_matrix(
-        criterion=criterion,
-        topics_length=topics_length,
-        topic_min_occ=topic_min_occ,
-        topic_min_citations=topic_min_citations,
-        directory=directory,
-        database=database,
-        start_year=start_year,
-        end_year=end_year,
-        **filters,
-    )
+    if not isinstance(obj, CocMatrix):
+        raise TypeError("`obj` must be a CoceMatrix instance")
 
-    max_dimensions = 2
+    matrix = obj.matrix_.cop()
 
     decomposed_matrix = TruncatedSVD(
-        n_components=max_dimensions,
+        n_components=MAX_DIMENSIONS,
         n_iter=svd__n_iter,
         random_state=random_state,
     ).fit_transform(matrix)
 
     decomposed_matrix = pd.DataFrame(
         decomposed_matrix,
-        columns=[f"dim{dim}" for dim in range(max_dimensions)],
+        columns=[f"dim{dim}" for dim in range(MAX_DIMENSIONS)],
         index=matrix.index,
     )
 
-    result = _Results()
+    result = MDSmap()
     result.table_ = decomposed_matrix
     result.plot_ = map_chart(
         dataframe=decomposed_matrix,

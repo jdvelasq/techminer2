@@ -3,7 +3,7 @@
 import pandas as pd
 import plotly.express as px
 
-from ._bubble_map import bubble_map
+from .scatter_plot import scatter_plot
 
 
 def get_network_graph_manifold_map(
@@ -22,7 +22,9 @@ def get_network_graph_manifold_map(
     nodes = matrix.index.to_list()
     # node_names = [" ".join(name.split()[:-1]) for name in nodes]
     node_occ = [int(name.split()[-1].split(":")[0]) for name in nodes]
-    node_global_citations = [int(name.split()[-1].split(":")[-1]) for name in nodes]
+    node_global_citations = [
+        int(name.split()[-1].split(":")[-1]) for name in nodes
+    ]
 
     manifold_data = pd.DataFrame(
         {
@@ -46,7 +48,7 @@ def get_network_graph_manifold_map(
         else px.colors.qualitative.Light24[x]
     )
 
-    fig = bubble_map(
+    fig = scatter_plot(
         node_x=manifold_data["Dim-0"],
         node_y=manifold_data["Dim-1"],
         node_text=manifold_data["node"],

@@ -29,7 +29,7 @@ Network Map (Deprecated)
 #     :align: center
 
 """
-from .._bubble_map import bubble_map
+from ..scatter_plot import scatter_plot
 
 
 def network_map(
@@ -38,7 +38,7 @@ def network_map(
 ):
     manifold = network["manifold_data"]
 
-    return bubble_map(
+    return scatter_plot(
         node_x=manifold["Dim-0"],
         node_y=manifold["Dim-1"],
         node_clusters=manifold["cluster"],

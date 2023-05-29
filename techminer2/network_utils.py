@@ -6,6 +6,7 @@ several modules.
 import networkx as nx
 import numpy as np
 import pandas as pd
+import plotly.express as px
 import plotly.graph_objects as go
 from cdlib import algorithms
 
@@ -127,39 +128,84 @@ def compute_spring_layout(graph, k, iterations, seed):
     return graph
 
 
-def compute_prop_sizes(graph, prop, min_size, max_size):
-    """Compute key size for a networkx graph from OCC property of the node."""
+def compute_graph_textfont_color(graph):
+    """Computes the textfont color for each node in a networkx graph."""
 
-    # assign the OCC as value for the key property
-    for node in graph.nodes():
-        graph.nodes[node][prop] = graph.nodes[node]["OCC"]
+    occ = [graph.nodes[node]["OCC"] for node in graph.nodes()]
+    occ_scaled = scale_occ(occ, max_size=1.0, min_size=0.35)
+    colors = px.colors.sequential.Greys
+    textfont_color = np.array(colors)[
+        np.round(occ_scaled * (len(colors) - 1)).astype(int)
+    ]
 
-    # computes the min value of the key property
-    min_value = min([graph.nodes[node][prop] for node in graph.nodes()])
-
-    # adjust the key property for min_size as current value minus min value
-    for node in graph.nodes():
-        graph.nodes[node][prop] = (
-            graph.nodes[node][prop] - min_value + min_size
-        )
-
-    # computes the max value of the key property
-    max_value = max([graph.nodes[node][prop] for node in graph.nodes()])
-
-    # adjust the key property for max_size
-    if max_value > max_size:
-        for node in graph.nodes():
-            graph.nodes[node][prop] = min_size + (
-                graph.nodes[node][prop] - min_size
-            ) / (max_value - min_size) * (max_size - min_size)
+    for index, node in enumerate(graph.nodes()):
+        graph.nodes[node]["textfont_color"] = textfont_color[index]
 
     return graph
 
 
-def compute_textposition(graph):
-    """Computes the text position for a node in a networkx graph."""
+def occ_to_textfont_color(occ):
+    """Computes the textfont color from an OCC list."""
+    occ_scaled = scale_occ(occ, max_size=1.0, min_size=0.35)
+    colors = px.colors.sequential.Greys
+    textfont_color = np.array(colors)[
+        np.round(occ_scaled * (len(colors) - 1)).astype(int)
+    ]
+    return textfont_color
 
-    node_x, node_y = extract_node_coordinates(graph)
+
+def compute_prop_sizes(graph, prop, min_size, max_size):
+    """Compute key size for a networkx graph from OCC property of the node."""
+
+    occ = [graph.nodes[node]["OCC"] for node in graph.nodes()]
+
+    occ_scaled = scale_occ(occ, max_size, min_size)
+
+    for index, node in enumerate(graph.nodes()):
+        graph.nodes[node][prop] = occ_scaled[index]
+
+    # # assign the OCC as value for the key property
+    # for node in graph.nodes():
+    #     graph.nodes[node][prop] = graph.nodes[node]["OCC"]
+
+    # # computes the min value of the key property
+    # min_value = min([graph.nodes[node][prop] for node in graph.nodes()])
+
+    # # adjust the key property for min_size as current value minus min value
+    # for node in graph.nodes():
+    #     graph.nodes[node][prop] = (
+    #         graph.nodes[node][prop] - min_value + min_size
+    #     )
+
+    # # computes the max value of the key property
+    # max_value = max([graph.nodes[node][prop] for node in graph.nodes()])
+
+    # # adjust the key property for max_size
+    # if max_value > max_size:
+    #     for node in graph.nodes():
+    #         graph.nodes[node][prop] = min_size + (
+    #             graph.nodes[node][prop] - min_size
+    #         ) / (max_value - min_size) * (max_size - min_size)
+
+    return graph
+
+
+def scale_occ(occ, max_size, min_size):
+    """Scales the OCC values to a range of sizes."""
+
+    occ = np.array(occ)
+    min_occ = occ.min()
+    occ = occ - min_occ + min_size
+    max_value = occ.max()
+    if max_value > max_size:
+        occ = min_size + (occ - min_size) / (max_value - min_size) * (
+            max_size - min_size
+        )
+    return occ
+
+
+def compute_textposition_from_lists(node_x, node_y):
+    """Computes the text positon for a node from its x and y coordinates."""
 
     x_mean = np.mean(node_x)
     y_mean = np.mean(node_y)
@@ -177,6 +223,14 @@ def compute_textposition(graph):
             textposition.append("bottom right")
 
     return textposition
+
+
+def compute_textposition_from_nx_graph(graph):
+    """Computes the text position for a node in a networkx graph."""
+
+    node_x, node_y = extract_node_coordinates(graph)
+
+    return compute_textposition_from_lists(node_x, node_y)
 
 
 def create_edge_traces(graph):
@@ -336,7 +390,7 @@ def create_text_trace(graph):
     node_x, node_y = extract_node_coordinates(graph)
     node_names = extract_node_names(graph)
     textfont_sizes = extract_textfont_sizes(graph)
-    textposition = compute_textposition(graph)
+    textposition = compute_textposition_from_nx_graph(graph)
     node_colors = extract_node_colors(graph)
 
     node_sizes = extract_node_sizes(graph)

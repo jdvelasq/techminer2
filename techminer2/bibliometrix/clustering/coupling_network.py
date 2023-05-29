@@ -61,7 +61,6 @@ from dataclasses import dataclass
 import networkx as nx
 
 from ... import network_utils
-from ..._association_index import association_index
 
 # from ..._get_network_graph_communities import get_network_graph_communities
 from ..._get_network_graph_degree_plot import get_network_graph_degree_plot
@@ -70,6 +69,7 @@ from ..._get_network_graph_degree_plot import get_network_graph_degree_plot
 from ..._get_network_graph_plot import get_network_graph_plot
 from ..._matrix_2_matrix_list import matrix_2_matrix_list
 from ..._matrix_list_2_network_graph import matrix_list_2_network_graph
+from ...vantagepoint.analyze.association_index import association_index
 from .coupling_matrix_list import coupling_matrix_list
 
 

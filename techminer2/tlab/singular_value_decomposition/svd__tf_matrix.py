@@ -52,7 +52,7 @@ import pandas as pd
 from sklearn.decomposition import TruncatedSVD
 
 from ... import vantagepoint
-from ..._map_chart import map_chart
+from ...map_chart import map_chart
 
 
 @dataclass(init=False)

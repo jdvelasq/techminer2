@@ -2,11 +2,13 @@ Discover
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
+    :maxdepth: 1
+    
     list_view
 
 
 .. toctree::
-    :maxdepth: 1
+    
         
     matrix/__index__
 

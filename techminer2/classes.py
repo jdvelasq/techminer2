@@ -29,8 +29,19 @@ class ColumnViewer:
 
 
 @dataclass(init=False)
-class CooccurrenceMatrix:
-    """Occurrence matrix."""
+class CocMatrix:
+    """Co-cccurrence matrix."""
+
+    matrix_: pd.DataFrame
+    prompt_: str
+    metric_: str
+    criterion_: str
+    other_criterion_: str
+
+
+@dataclass(init=False)
+class NormCocMatrix:
+    """Normalized co-cccurrence matrix."""
 
     matrix_: pd.DataFrame
     prompt_: str
@@ -58,6 +69,13 @@ class ListView:
     prompt_: str
     metric_: str
     criterion_: str
+
+
+@dataclass(init=False)
+class ManifoldMap:
+    plot_: go.Figure
+    table_: pd.DataFrame
+    prompt_: str
 
 
 @dataclass(init=False)

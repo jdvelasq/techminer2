@@ -68,8 +68,6 @@ Zetzsche DA 1:024            0          0.0   0.168421  0.068181
 """
 from dataclasses import dataclass
 
-from ..._association_index import association_index
-
 # from ..._get_network_graph_communities import get_network_graph_communities
 from ..._get_network_graph_degree_plot import get_network_graph_degree_plot
 
@@ -77,6 +75,7 @@ from ..._get_network_graph_degree_plot import get_network_graph_degree_plot
 from ..._get_network_graph_plot import get_network_graph_plot
 from ..._matrix_2_matrix_list import matrix_2_matrix_list
 from ..._matrix_list_2_network_graph import matrix_list_2_network_graph
+from ...vantagepoint.analyze.association_index import association_index
 
 # from ..._network_community_detection import network_community_detection
 from ...vantagepoint.analyze.co_occ_matrix import co_occ_matrix

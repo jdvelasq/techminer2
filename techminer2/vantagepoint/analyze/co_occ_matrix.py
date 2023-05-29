@@ -67,7 +67,7 @@ your findings in no more than 150 words.
 # pylint: disable=line-too-long
 """
 
-from ...classes import CooccurrenceMatrix
+from ...classes import CocMatrix
 from ...counters import add_counters_to_axis
 from ...sort_utils import sort_indicators_by_metric, sort_matrix_axis
 from ...techminer.indicators import co_occ_matrix_list, indicators_by_topic
@@ -290,7 +290,7 @@ def co_occ_matrix(
             other_criterion=criterion,
         )
 
-    occurrence_matrix = CooccurrenceMatrix()
+    occurrence_matrix = CocMatrix()
 
     occurrence_matrix.criterion_ = criterion
     occurrence_matrix.other_criterion_ = (

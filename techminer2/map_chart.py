@@ -1,48 +1,6 @@
 """
-Map Chart
-===============================================================================
-
->>> import pandas as pd
->>> from sklearn.decomposition import TruncatedSVD
->>> from techminer2 import *
->>> directory = "data/regtech/"
-
->>> file_name = "sphinx/_static/map_chart.html"
-
->>> from techminer2 import vantagepoint__co_occ_matrix
->>> coc_matrix = vantagepoint__co_occ_matrix(
-...     criterion='author_keywords',
-...     topics_length=20,
-...     directory=directory,
-... )
-
->>> from techminer2._association_index import association_index
->>> coc_matrix = association_index(coc_matrix, "salton")
-
->>> decomposed_matrix = TruncatedSVD(
-...     n_components=2,
-...     random_state=0,
-... ).fit_transform(coc_matrix)
-
->>> decomposed_matrix = pd.DataFrame(
-...     decomposed_matrix,
-...     columns=['dim0', 'dim1'],
-...     index=coc_matrix.index,
-... )
-
->>> from techminer2.map_chart import map_chart
->>> map_chart(
-...     decomposed_matrix, 
-...     dim_x=0,
-...     dim_y=1,
-...     delta=0.4,
-... ).write_html(file_name)
-
-
-.. raw:: html
-
-    <iframe src="_static/map_chart.html" height="800px" width="100%" frameBorder="0"></iframe>
-
+Creates a SVD/MDS map used in T-LAB's comparative analysis (SVD map), 
+words associations .
 
 """
 import plotly.graph_objects as go

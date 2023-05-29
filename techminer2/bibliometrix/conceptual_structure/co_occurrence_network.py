@@ -85,7 +85,6 @@ from dataclasses import dataclass
 
 from sklearn.manifold import MDS, TSNE
 
-from ..._association_index import association_index
 from ..._cluster_abstracts_report import cluster_abstracts_report
 from ..._clusters_concordances import clusters_concordances
 
@@ -98,6 +97,7 @@ from ..._get_network_graph_plot import get_network_graph_plot
 from ..._matrix_2_matrix_list import matrix_2_matrix_list
 from ..._matrix_list_2_network_graph import matrix_list_2_network_graph
 from ...create_directory import create_directory
+from ...vantagepoint.analyze.association_index import association_index
 
 # from ..._network_community_detection import network_community_detection
 from ...vantagepoint.analyze.co_occ_matrix import co_occ_matrix

@@ -3,6 +3,8 @@ This package provides the functions available in the Analyze menu.
 
 The following functions are available:
 
+- association_index: Computes the association index of a co-occurrence \
+    matrix.
 - auto_corr_matrix: Computes the autocorrelation matrix of a network.
 - co_occ_matrix: Computes the co-occurrence matrix of a set of terms.
 - column_viewer: Generates a radial diagram of term associations from a \
@@ -17,6 +19,8 @@ The following functions are available:
     criterion.
 - list_view: Generates a list view of a matrix.
 - matrix_subset: Generates a subset of a matrix.
+- mds_map: Generates a MDS map of a network.
+- matrix_viewer: Generates a matrix viewer.
 - network_degree_plot: Generates a degree plot of a network.
 - network_metrics: Computes the metrics of a network.
 - occ_matrix: Computes the occurrence matrix of a set of terms.
@@ -26,6 +30,7 @@ The following functions are available:
 
 """
 
+from .association_index import association_index
 from .auto_corr_matrix import auto_corr_matrix
 from .co_occ_matrix import co_occ_matrix
 from .column_viewer import column_viewer
@@ -37,6 +42,7 @@ from .list_cells_in_matrix import list_cells_in_matrix
 from .list_view import list_view
 from .matrix_subset import matrix_subset
 from .matrix_viewer import matrix_viewer
+from .mds_map import mds_map
 from .network_degree_plot import network_degree_plot
 from .network_metrics import network_metrics
 from .statistics import statistics
@@ -45,6 +51,7 @@ from .tf_idf_matrix import tf_idf_matrix
 from .tf_matrix import tf_matrix
 
 __all__ = [
+    "association_index",
     "auto_corr_matrix",
     "co_occ_matrix",
     "column_viewer",
@@ -56,6 +63,7 @@ __all__ = [
     "list_view",
     "matrix_subset",
     "matrix_viewer",
+    "mds_map",
     "network_degree_plot",
     "network_metrics",
     "statistics",

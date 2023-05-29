@@ -73,8 +73,8 @@ from sklearn.metrics.pairwise import (
     haversine_distances,
 )
 
-from ..._association_index import association_index
-from ..._bubble_map import bubble_map
+from ...scatter_plot import scatter_plot
+from ...vantagepoint.analyze.association_index import association_index
 from ...vantagepoint.analyze.co_occ_matrix import co_occ_matrix
 
 
@@ -207,7 +207,7 @@ def _get_manifold_map(matrix, clustering_method, manifold_method):
         else px.colors.qualitative.Light24[x]
     )
 
-    fig = bubble_map(
+    fig = scatter_plot(
         node_x=manifold_data["Dim-0"],
         node_y=manifold_data["Dim-1"],
         node_text=manifold_data["node"],
