@@ -25,6 +25,12 @@ Word Associations
     svd_map
 
 
+.. toctree::
+    :maxdepth: 1
+
+    tsne_map
+    
+
 * Cosine association
 
 

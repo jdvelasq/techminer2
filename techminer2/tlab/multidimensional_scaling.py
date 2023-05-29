@@ -59,7 +59,7 @@ regulation 05:164              1.087510 -2.187925  ...  0.386630  1.466090
 import pandas as pd
 from sklearn.manifold import MDS
 
-from ..classes import CocMatrix, ManifoldMap
+from ..classes import CocMatrix, ManifoldMap, TFMatrix
 from ..matrix_normalization import matrix_normalization
 from ..scatter_plot import scatter_plot
 
@@ -100,18 +100,22 @@ def multidimensional_scaling(
     # Main:
     #
 
-    if isinstance(obj, CocMatrix):
+    if isinstance(obj, CocMatrix) and normalization is not None:
         obj = matrix_normalization(
             obj,
             normalization=normalization,
         )
+    elif isinstance(obj, TFMatrix) and obj.scheme_ != "binary":
+        raise ValueError("TFMatrix must be binary.")
     else:
-        ValueError(
-            "Invalid obj type. Must be a CocMatrix/TfidfMatrix instance."
+        raise ValueError(
+            "Invalid obj type. Must be a CocMatrix/TFMatrix instance."
         )
 
     node_occ = extract_occ(obj.matrix_.columns.tolist())
     matrix = obj.matrix_.copy()
+    if isinstance(obj, TFMatrix):
+        matrix = matrix.transpose()
 
     if is_2d:
         max_dimensions = 2
