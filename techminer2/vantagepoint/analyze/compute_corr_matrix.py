@@ -2,6 +2,8 @@
 
 import pandas as pd
 
+from ...classes import CocMatrix, TFMatrix
+
 
 def compute_corr_matrix(
     method,
@@ -18,18 +20,26 @@ def compute_corr_matrix(
         corr_matrix: pandas.DataFrame
             The correlation matrix.
     """
+
+    if isinstance(data_matrix, TFMatrix):
+        table = data_matrix.table_.copy()
+    elif isinstance(data_matrix, CocMatrix):
+        table = data_matrix.matrix_.copy()
+    else:
+        raise TypeError("data_matrix must be a TFMatrix or a CorrMatrix.")
+
     corr_matrix = pd.DataFrame(
         0.0,
-        columns=data_matrix.table_.columns.to_list(),
-        index=data_matrix.table_.columns.to_list(),
+        columns=table.columns.to_list(),
+        index=table.columns.to_list(),
     )
 
-    for col in data_matrix.table_.columns:
-        for row in data_matrix.table_.columns:
+    for col in table.columns:
+        for row in table.columns:
             if col == row:
                 corr_matrix.loc[row, col] = 1.0
             else:
-                matrix = data_matrix.table_[[col, row]].copy()
+                matrix = table[[col, row]].copy()
                 matrix = matrix.loc[(matrix != 0).any(axis=1)]
                 matrix = matrix.astype(float)
                 sumproduct = matrix[row].mul(matrix[col], axis=0).sum()
@@ -40,9 +50,7 @@ def compute_corr_matrix(
                 elif matrix.shape[0] == 1:
                     corr = 1.0
                 elif matrix.shape[0] > 1:
-                    corr = data_matrix.table_[col].corr(
-                        other=data_matrix.table_[row], method=method
-                    )
+                    corr = table[col].corr(other=table[row], method=method)
                 else:
                     corr = 0.0
                 corr_matrix.loc[row, col] = corr
