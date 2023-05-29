@@ -11,10 +11,10 @@ co-occurrence matrix.
 """
 import numpy as np
 
-from ...classes import CocMatrix, NormCocMatrix
+from .classes import CocMatrix, NormCocMatrix
 
 
-def association_index(obj, name):
+def matrix_normalization(obj, name):
     """
     Calculate the association index for a co-occurrence matrix.
 

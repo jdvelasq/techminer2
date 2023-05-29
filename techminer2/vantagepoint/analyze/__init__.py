@@ -30,7 +30,7 @@ The following functions are available:
 
 """
 
-from .association_index import association_index
+from ...matrix_normalization import matrix_normalization
 from .auto_corr_matrix import auto_corr_matrix
 from .co_occ_matrix import co_occ_matrix
 from .column_viewer import column_viewer
@@ -51,7 +51,7 @@ from .tf_idf_matrix import tf_idf_matrix
 from .tf_matrix import tf_matrix
 
 __all__ = [
-    "association_index",
+    "matrix_normalization",
     "auto_corr_matrix",
     "co_occ_matrix",
     "column_viewer",

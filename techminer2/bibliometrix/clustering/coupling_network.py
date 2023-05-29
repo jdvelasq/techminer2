@@ -69,7 +69,7 @@ from ..._get_network_graph_degree_plot import get_network_graph_degree_plot
 from ..._get_network_graph_plot import get_network_graph_plot
 from ..._matrix_2_matrix_list import matrix_2_matrix_list
 from ..._matrix_list_2_network_graph import matrix_list_2_network_graph
-from ...vantagepoint.analyze.association_index import association_index
+from ...matrix_normalization import matrix_normalization
 from .coupling_matrix_list import coupling_matrix_list
 
 
@@ -122,7 +122,7 @@ def coupling_network(
         matrix = matrix.loc[indexes, columns]
 
         # continue ...
-        matrix = association_index(matrix, association=normalization)
+        matrix = matrix_normalization(matrix, association=normalization)
         matrix_list = matrix_2_matrix_list(matrix)
         return matrix_list
 

@@ -73,8 +73,8 @@ from sklearn.metrics.pairwise import (
     haversine_distances,
 )
 
+from ...matrix_normalization import matrix_normalization
 from ...scatter_plot import scatter_plot
-from ...vantagepoint.analyze.association_index import association_index
 from ...vantagepoint.analyze.co_occ_matrix import co_occ_matrix
 
 
@@ -138,7 +138,7 @@ def co_word_analysis(
         **filters,
     )
 
-    matrix = association_index(matrix, association=normalization)
+    matrix = matrix_normalization(matrix, association=normalization)
 
     if distance_metric == "euclidean_distances":
         distance_metric_fn = euclidean_distances
