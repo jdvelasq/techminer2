@@ -31,7 +31,7 @@ Word Associations
 .. toctree::
     :maxdepth: 1
 
-    tables__selected_item
+    selected_item
 
 .. toctree::    
     :maxdepth: 1

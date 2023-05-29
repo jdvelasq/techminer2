@@ -1,94 +1,97 @@
 """
-MDS Map --- ChatGPT
+2D-MDS Map --- ChatGPT
 ===============================================================================
 
-Plots the SVD of the co-occurrence matrix normalized with the **salton** \
-measure.
-
-The plot is based on the SVD technique used in T-LAB's comparative analysis.
+Plots the 2D-MDS of the normalized co-occurrence. The plot is based on the
+MDS technique used in T-LAB's words associations.
 
 **Algorithm**
 
 1. Computes the co-occurrence matrix.
 
-2. Apply SVD to the co-occurrence matrix with `n_components=2`.
+2. Apply MDS to the co-occurrence matrix with `n_components=2`.
 
 3. Plot the decomposed matrix.
 
 
 
+>>> # working directory
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/tlab__word_associations__mds_map.html"
-
->>> from techminer2 import tlab
->>> mds_map = tlab.word_associations.mds_map(
+>>> # computes the co-occurrence matrix
+>>> from techminer2 import vantagepoint
+>>> co_occ_matrix = vantagepoint.analyze.co_occ_matrix(
 ...     criterion='author_keywords',
-...     topic_min_occ=5,    
+...     topics_length=20,
 ...     root_dir=root_dir,
-...     delta=0.3,
 ... )
-
+>>> # computes the MDS
+>>> from techminer2 import tlab
+>>> mds_map = tlab.word_associations.svd_map(co_occ_matrix)
+>>> file_name = "sphinx/_static/tlab__word_associations__mds_map.html"
 >>> mds_map.plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../_static/tlab__word_associations__mds_map.html" height="800px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/tlab__word_associations__mds_map.html"
+    height="800px" width="100%" frameBorder="0"></iframe>
 
 
 >>> mds_map.table_.head()
-                                   dim0      dim1
+                                 Dim_00    Dim_01
 row                                              
-regtech 28:329                31.434517 -2.152565
-fintech 12:249                16.709623  5.191047
-compliance 07:030              8.672894 -4.116138
-regulatory technology 07:037   3.119939 -0.566268
-regulation 05:164              6.324591  2.907691
+regtech 28:329                32.386508 -2.623531
+fintech 12:249                17.171575  5.275711
+regulatory technology 07:037   3.500129  1.437108
+compliance 07:030              8.945366 -4.175846
+regulation 05:164              6.700788  3.488011
 
 """
 
-import pandas as pd
-from sklearn.decomposition import TruncatedSVD
-
-from ... import vantagepoint
-from ...classes import CocMatrix, ManifoldMap
-from ...map_chart import map_chart
-
-MAX_DIMENSIONS = 2
+from ..multidimensional_scaling import multidimensional_scaling
 
 
 def mds_map(
     obj,
-    svd__n_iter=5,
+    # Technique parameters
+    normalization=None,
+    # MDS parameters
+    metric=True,
+    n_init=4,
+    max_iter=300,
+    eps=0.001,
+    n_jobs=None,
     random_state=0,
+    dissimilarity="euclidean",
+    # Map parameters
+    node_size_min=12,
+    node_size_max=50,
+    textfont_size_min=8,
+    textfont_size_max=20,
     xaxes_range=None,
     yaxes_range=None,
 ):
-    """Co-occurrence SVD Map."""
+    """2D SVD Map."""
 
-    if not isinstance(obj, CocMatrix):
-        raise TypeError("`obj` must be a CoceMatrix instance")
-
-    matrix = obj.matrix_.cop()
-
-    decomposed_matrix = TruncatedSVD(
-        n_components=MAX_DIMENSIONS,
-        n_iter=svd__n_iter,
-        random_state=random_state,
-    ).fit_transform(matrix)
-
-    decomposed_matrix = pd.DataFrame(
-        decomposed_matrix,
-        columns=[f"dim{dim}" for dim in range(MAX_DIMENSIONS)],
-        index=matrix.index,
-    )
-
-    result = MDSmap()
-    result.table_ = decomposed_matrix
-    result.plot_ = map_chart(
-        dataframe=decomposed_matrix,
+    return multidimensional_scaling(
+        obj,
         dim_x=0,
         dim_y=1,
-        delta=delta,
+        # Technique parameters
+        is_2d=True,
+        normalization=normalization,
+        # MDS parameters
+        metric=metric,
+        n_init=n_init,
+        max_iter=max_iter,
+        eps=eps,
+        n_jobs=n_jobs,
+        random_state=random_state,
+        dissimilarity=dissimilarity,
+        # Map parameters
+        node_size_min=node_size_min,
+        node_size_max=node_size_max,
+        textfont_size_min=textfont_size_min,
+        textfont_size_max=textfont_size_max,
+        xaxes_range=xaxes_range,
+        yaxes_range=yaxes_range,
     )
-
-    return result

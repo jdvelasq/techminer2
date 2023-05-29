@@ -1,5 +1,5 @@
 """
-SVD Map (*) --- ChatGPT
+2D-SVD Map (*) --- ChatGPT
 ===============================================================================
 
 Plots the 2D-SVD of the normalized co-occurrence. The plot is based on the
@@ -26,9 +26,9 @@ MDS technique used in T-LAB's words associations.
 ... )
 >>> # computes the SVD
 >>> from techminer2 import tlab
->>> mds_map = tlab.word_associations.svd_map(co_occ_matrix)
+>>> svd_map = tlab.word_associations.svd_map(co_occ_matrix)
 >>> file_name = "sphinx/_static/tlab__word_associations__svd_map.html"
->>> mds_map.plot_.write_html(file_name)
+>>> svd_map.plot_.write_html(file_name)
 
 .. raw:: html
 
@@ -36,7 +36,7 @@ MDS technique used in T-LAB's words associations.
     height="800px" width="100%" frameBorder="0"></iframe>
 
 
->>> mds_map.table_.head()
+>>> svd_map.table_.head()
                                  Dim_00    Dim_01
 row                                              
 regtech 28:329                32.386508 -2.623531

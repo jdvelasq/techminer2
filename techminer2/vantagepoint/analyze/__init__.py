@@ -19,7 +19,6 @@ The following functions are available:
     criterion.
 - list_view: Generates a list view of a matrix.
 - matrix_subset: Generates a subset of a matrix.
-- mds_map: Generates a MDS map of a network.
 - matrix_viewer: Generates a matrix viewer.
 - network_degree_plot: Generates a degree plot of a network.
 - network_metrics: Computes the metrics of a network.
@@ -42,7 +41,6 @@ from .list_cells_in_matrix import list_cells_in_matrix
 from .list_view import list_view
 from .matrix_subset import matrix_subset
 from .matrix_viewer import matrix_viewer
-from .mds_map import mds_map
 from .network_degree_plot import network_degree_plot
 from .network_metrics import network_metrics
 from .statistics import statistics
@@ -63,7 +61,6 @@ __all__ = [
     "list_view",
     "matrix_subset",
     "matrix_viewer",
-    "mds_map",
     "network_degree_plot",
     "network_metrics",
     "statistics",

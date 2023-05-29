@@ -15,4 +15,5 @@ from . import (
     thematic_analysis_of_contexts,
     word_associations,
 )
+from .multidimensional_scaling import multidimensional_scaling
 from .singular_value_decomposition import singular_value_decomposition

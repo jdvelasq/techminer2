@@ -1,5 +1,4 @@
-
-.. automodule:: techminer2.vantagepoint.analyze.mds_map
+.. automodule:: techminer2.tlab.multidimensional_scaling
     :members:
     :undoc-members:
     :show-inheritance:

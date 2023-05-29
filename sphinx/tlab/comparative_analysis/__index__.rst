@@ -31,3 +31,8 @@ Comparative Analysis
 
     singular_value_decomposition
 
+
+.. toctree::
+    :maxdepth: 1
+
+    multidimensional_scaling
