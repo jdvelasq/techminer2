@@ -14,7 +14,7 @@ import numpy as np
 from .classes import CocMatrix, NormCocMatrix
 
 
-def matrix_normalization(obj, name):
+def matrix_normalization(obj, normalization):
     """
     Calculate the association index for a co-occurrence matrix.
 
@@ -120,10 +120,10 @@ def matrix_normalization(obj, name):
     if not isinstance(obj, CocMatrix):
         raise TypeError("obj must be a CooccurrenceMatrix instance")
 
-    if isinstance(name, str) and name == "None":
-        name = None
+    if isinstance(normalization, str) and normalization == "None":
+        normalization = None
 
-    if name is None:
+    if normalization is None:
         return obj
 
     fnc = {
@@ -134,7 +134,7 @@ def matrix_normalization(obj, name):
         "inclusion": inclusion,
         "mutualinfo": mutualinfo,
         "association": association,
-    }[name]
+    }[normalization]
 
     matrix = obj.matrix_.copy()
     matrix = matrix.applymap(float)

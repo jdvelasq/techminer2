@@ -18,10 +18,10 @@ The plot is based on the SVD technique used in T-LAB's comparative analysis.
 
 
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/tlab__word_associations__graphs__mds_map.html"
+>>> file_name = "sphinx/_static/tlab__word_associations__mds_map.html"
 
 >>> from techminer2 import tlab
->>> mds_map = tlab.word_associations.graphs__mds_map(
+>>> mds_map = tlab.word_associations.mds_map(
 ...     criterion='author_keywords',
 ...     topic_min_occ=5,    
 ...     root_dir=root_dir,
@@ -32,7 +32,7 @@ The plot is based on the SVD technique used in T-LAB's comparative analysis.
 
 .. raw:: html
 
-    <iframe src="../../../_static/tlab__word_associations__graphs__mds_map.html" height="800px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/tlab__word_associations__mds_map.html" height="800px" width="100%" frameBorder="0"></iframe>
 
 
 >>> mds_map.table_.head()

@@ -16,7 +16,7 @@ Word Associations
 .. toctree::
     :maxdepth: 1
 
-    graphs__mds_map
+    mds_map
 
 
 * Cosine association

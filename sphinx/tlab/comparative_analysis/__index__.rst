@@ -29,5 +29,5 @@ Comparative Analysis
 .. toctree::
     :maxdepth: 1
 
-    singular_value_decomposition/__index__
+    singular_value_decomposition
 

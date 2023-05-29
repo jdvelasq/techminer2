@@ -80,7 +80,7 @@ def mds_map(
 
     node_occ = extract_occ(obj.matrix_.columns.tolist())
 
-    embedding = MDS(
+    decomposed_matrix = MDS(
         n_components=N_COMPONENTS,
         metric=metric,
         n_init=n_init,
@@ -89,19 +89,17 @@ def mds_map(
         n_jobs=n_jobs,
         random_state=random_state,
         dissimilarity=dissimilarity,
-    )
-
-    matrix_transformed = embedding.fit_transform(obj.matrix_)
+    ).fit_transform(obj.matrix_)
 
     table = pd.DataFrame(
-        matrix_transformed,
+        decomposed_matrix,
         columns=[f"Dim_{dim:02d}" for dim in range(N_COMPONENTS)],
         index=obj.matrix_.index,
     )
 
     fig = scatter_plot(
-        node_x=matrix_transformed[:, 0],
-        node_y=matrix_transformed[:, 1],
+        node_x=decomposed_matrix[:, 0],
+        node_y=decomposed_matrix[:, 1],
         node_text=obj.matrix_.index,
         node_occ=node_occ,
         node_color=None,

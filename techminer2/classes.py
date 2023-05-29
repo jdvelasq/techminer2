@@ -118,6 +118,14 @@ class RecordStatistics:
     prompt_: str
 
 
+# @dataclass(init=False)
+# class SvdMap:
+#     """Single value decomposition map."""
+#     plot_: go.Figure
+#     prompt_: str
+#     table_: pd.DataFrame
+
+
 @dataclass(init=False)
 class TermsByYear:
     """Terms by year."""
