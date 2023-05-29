@@ -8,6 +8,7 @@ def compute_corr_matrix(
     data_matrix,
 ):
     """Computes the correlation matrix for a given data matrix.
+
     INPUTS:
       method: str
         The correlation method. See pandas.DataFrame.corr for more information.
@@ -19,16 +20,16 @@ def compute_corr_matrix(
     """
     corr_matrix = pd.DataFrame(
         0.0,
-        columns=data_matrix.columns.to_list(),
-        index=data_matrix.columns.to_list(),
+        columns=data_matrix.table_.columns.to_list(),
+        index=data_matrix.table_.columns.to_list(),
     )
 
-    for col in data_matrix.columns:
-        for row in data_matrix.columns:
+    for col in data_matrix.table_.columns:
+        for row in data_matrix.table_.columns:
             if col == row:
                 corr_matrix.loc[row, col] = 1.0
             else:
-                matrix = data_matrix[[col, row]].copy()
+                matrix = data_matrix.table_[[col, row]].copy()
                 matrix = matrix.loc[(matrix != 0).any(axis=1)]
                 matrix = matrix.astype(float)
                 sumproduct = matrix[row].mul(matrix[col], axis=0).sum()
@@ -39,7 +40,9 @@ def compute_corr_matrix(
                 elif matrix.shape[0] == 1:
                     corr = 1.0
                 elif matrix.shape[0] > 1:
-                    corr = data_matrix[col].corr(other=data_matrix[row], method=method)
+                    corr = data_matrix.table_[col].corr(
+                        other=data_matrix.table_[row], method=method
+                    )
                 else:
                     corr = 0.0
                 corr_matrix.loc[row, col] = corr

@@ -14,17 +14,29 @@ class Chart:
     """VantagePointChart."""
 
     plot_: go.Figure
-    table_: pd.DataFrame
     prompt_: str
+    table_: pd.DataFrame
+
+
+@dataclass(init=False)
+class CorrMatrix:
+    """Correlation matrix."""
+
+    matrix_: pd.DataFrame
+    prompt_: str
+    method_: str
+    criterion_: str
+    other_criterion_: str
+    metric_: str
 
 
 @dataclass(init=False)
 class ColumnViewer:
     """Column viewer."""
 
-    table_: pd.DataFrame
     plot_: go.Figure
     prompt_: str
+    table_: pd.DataFrame
     topic_: str
 
 
@@ -32,22 +44,22 @@ class ColumnViewer:
 class CocMatrix:
     """Co-cccurrence matrix."""
 
-    matrix_: pd.DataFrame
-    prompt_: str
-    metric_: str
     criterion_: str
+    matrix_: pd.DataFrame
+    metric_: str
     other_criterion_: str
+    prompt_: str
 
 
 @dataclass(init=False)
 class NormCocMatrix:
     """Normalized co-cccurrence matrix."""
 
-    matrix_: pd.DataFrame
-    prompt_: str
-    metric_: str
     criterion_: str
+    matrix_: pd.DataFrame
+    metric_: str
     other_criterion_: str
+    prompt_: str
 
 
 @dataclass(init=False)
@@ -55,27 +67,29 @@ class ListCellsInMatrix:
     """List cells in matrix."""
 
     cells_list_: pd.DataFrame
-    prompt_: str
-    metric_: str
     criterion_: str
+    metric_: str
     other_criterion_: str
+    prompt_: str
 
 
 @dataclass(init=False)
 class ListView:
     """List view."""
 
-    table_: pd.DataFrame
-    prompt_: str
-    metric_: str
     criterion_: str
+    metric_: str
+    prompt_: str
+    table_: pd.DataFrame
 
 
 @dataclass(init=False)
 class ManifoldMap:
+    """Manifold map."""
+
     plot_: go.Figure
-    table_: pd.DataFrame
     prompt_: str
+    table_: pd.DataFrame
 
 
 @dataclass(init=False)
@@ -95,51 +109,55 @@ class MatrixSubset:
 class MatrixViewer:
     """Matrix viewer."""
 
-    plot_: go.Figure
     graph_: nx.Graph
-    table_: pd.DataFrame
+    plot_: go.Figure
     prompt_: str
+    table_: pd.DataFrame
 
 
 @dataclass(init=False)
 class NetworkStatistics:
     """Network statistics."""
 
-    table_: pd.DataFrame
     prompt_: str
+    table_: pd.DataFrame
 
 
 @dataclass(init=False)
 class RecordStatistics:
     """Record statistics."""
 
-    table_: pd.DataFrame
     plot_: go.Figure
     prompt_: str
+    table_: pd.DataFrame
 
 
 @dataclass(init=False)
 class TermsByYear:
     """Terms by year."""
 
-    table_: pd.DataFrame
-    prompt_: str
-    metric_: str
-    cumulative_: bool
     criterion_: str
+    cumulative_: bool
+    metric_: str
     other_criterion_: str
+    prompt_: str
+    table_: pd.DataFrame
 
 
 @dataclass(init=False)
 class TFMatrix:
-    table_: pd.DataFrame
+    """Term-frequency matrix."""
+
     criterion_: str
-    scheme_: str
     prompt_: str
+    scheme_: str
+    table_: pd.DataFrame
 
 
 @dataclass(init=False)
 class TFIDFMatrix:
-    table_: pd.DataFrame
+    """Term-frequency IDF matrix."""
+
     criterion_: str
     prompt_: str
+    table_: pd.DataFrame

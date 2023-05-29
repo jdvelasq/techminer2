@@ -1,5 +1,5 @@
 """
-List View 
+List View
 ===============================================================================
 
 
@@ -34,7 +34,11 @@ regulation               5  ...                          4.40
 | regulation            |     5 |                164 |                22 |                           32.8  |                           4.4  |
 
 >>> print(r.prompt_)
-Analyze the table below, which provides bibliographic indicators for a collection of research articles. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
+Analyze the table below, which provides bibliographic indicators for a \
+collection of research articles. Identify any notable patterns, trends, or \
+outliers in the data, and discuss their implications for the research field. \
+Be sure to provide a concise summary of your findings in no more than 150 \
+words.
 <BLANKLINE>
 | author_keywords         |   OCC |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |
 |:------------------------|------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|
@@ -56,11 +60,13 @@ Analyze the table below, which provides bibliographic indicators for a collectio
 | smart contracts         |     2 |                 22 |                 8 |                           11    |                           4    |
 | charitytech             |     2 |                 17 |                 4 |                            8.5  |                           2    |
 | english law             |     2 |                 17 |                 4 |                            8.5  |                           2    |
-| gdpr                    |     2 |                 14 |                 3 |                            7    |                           1.5  |
+| accountability          |     2 |                 14 |                 3 |                            7    |                           1.5  |
 | data protection officer |     2 |                 14 |                 3 |                            7    |                           1.5  |
 <BLANKLINE>
 <BLANKLINE>
 
+# pylint: disable=line-too-long
+# noqa: W291 E501
 """
 
 
@@ -78,10 +84,10 @@ def list_view(
     start_year=None,
     end_year=None,
     topics_length=20,
-    topic_min_occ=None,
-    topic_max_occ=None,
-    topic_min_citations=None,
-    topic_max_citations=None,
+    topic_occ_min=None,
+    topic_occ_max=None,
+    topic_citations_min=None,
+    topic_citations_max=None,
     custom_topics=None,
     **filters,
 ):
@@ -122,10 +128,10 @@ def list_view(
         custom_topics = generate_custom_topics(
             indicators=indicators,
             topics_length=topics_length,
-            topic_min_occ=topic_min_occ,
-            topic_max_occ=topic_max_occ,
-            topic_min_citations=topic_min_citations,
-            topic_max_citations=topic_max_citations,
+            topic_min_occ=topic_occ_min,
+            topic_max_occ=topic_occ_max,
+            topic_min_citations=topic_citations_min,
+            topic_max_citations=topic_citations_max,
         )
 
     indicators = indicators[indicators.index.isin(custom_topics)]
