@@ -10,6 +10,15 @@ import plotly.graph_objs as go
 
 
 @dataclass(init=False)
+class Chart:
+    """VantagePointChart."""
+
+    plot_: go.Figure
+    table_: pd.DataFrame
+    prompt_: str
+
+
+@dataclass(init=False)
 class ColumnViewer:
     """Column viewer."""
 

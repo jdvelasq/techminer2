@@ -1,3 +1,3 @@
-from .graphs__co_occurrences import graphs__co_occurrences
+from .co_occurrence_bar_plot import co_occurrence_bar_plot
 from .graphs__mds_map import graphs__mds_map
 from .tables__selected_item import tables__selected_item

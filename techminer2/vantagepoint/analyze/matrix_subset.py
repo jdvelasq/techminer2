@@ -257,6 +257,7 @@ def matrix_subset(
         matrix_subset_.criterion_ = obj.criterion_
     else:
         matrix_subset_.criterion_ = repr(topics)
+        matrix_subset_.criterion_ = obj.criterion_
 
     matrix_subset_.is_ego_matrix_ = is_ego_matrix
     matrix_subset_.matrix_ = matrix

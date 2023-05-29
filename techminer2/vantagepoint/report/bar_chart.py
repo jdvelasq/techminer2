@@ -60,97 +60,91 @@ Analyze the table below, which provides bibliographic indicators for a collectio
 
 
 """
-from dataclasses import dataclass
-
 import plotly.express as px
 
-from ... import chatgpt
-
-
-@dataclass(init=False)
-class _Chart:
-    plot_: None
-    table_: None
-    prompt_: None
+from ...classes import Chart, ListView
 
 
 def bar_chart(
     obj,
     title=None,
-    x_label=None,
-    y_label=None,
+    criterion_label=None,
+    metric_label=None,
 ):
     """Bar chart.
 
-    Parameters
-    ----------
-    obj : techminer2.vantagepoint.analyze.Analyze
-        An object of type Analyze.
-    title : str, optional
-        Title of the chart, by default None
-    x_label : str, optional
-        Label of the x-axis, by default None
-    y_label : str, optional
-        Label of the y-axis, by default None
+    Args:
+        obj: a data instance.
+        title (str): the title of the chart.
+        criterion_label (str): the label of the criterion.
+        values_label (str): the label of the values.
+
+    Returns:
+        A :class:`Chart` instance.
 
     """
 
-    result = _Chart()
-    result.plot_ = _create_plot(
-        obj,
-        title=title,
-        x_label=x_label,
-        y_label=y_label,
-    )
+    def chatgpt_default_prompt():
+        return (
+            "Analyze the table below which contains values for the metric "
+            f"{obj.metric_} for {obj.criterion_} "
+            f"Identify any notable patterns, "
+            "trends, or outliers in the data, and discuss their implications "
+            "for the research field. Be sure to provide a concise summary of "
+            "your findings in no more than 150 words."
+            f"\n\n{obj.table_.to_markdown()}\n\n"
+        )
 
-    result.table_ = obj.table_[obj.metric_]
-    result.prompt_ = chatgpt.generate_prompt_bibliographic_indicators(
-        result.table_
-    )
+    def create_fig(obj):
+        figure = px.bar(
+            obj.table_,
+            x=obj.metric_,
+            y=None,
+            hover_data=obj.table_.columns.to_list(),
+            orientation="h",
+        )
 
-    return result
+        figure.update_layout(
+            paper_bgcolor="white",
+            plot_bgcolor="white",
+            title_text=title if title is not None else "",
+        )
+        figure.update_traces(
+            marker_color="rgb(171,171,171)",
+            marker_line={"color": "darkslategray"},
+        )
+        figure.update_xaxes(
+            linecolor="gray",
+            linewidth=2,
+            gridcolor="lightgray",
+            griddash="dot",
+            title_text=metric_label
+            if metric_label is not None
+            else obj.metric_.replace("_", " ").upper(),
+        )
+        figure.update_yaxes(
+            linecolor="gray",
+            linewidth=2,
+            autorange="reversed",
+            gridcolor="lightgray",
+            griddash="dot",
+            title_text=criterion_label
+            if criterion_label is not None
+            else obj.criterion_.replace("_", " ").upper(),
+        )
+        return figure
 
+    #
+    #
+    # Main:
+    #
+    #
+    if not isinstance(obj, ListView):
+        raise TypeError("`obj` must be a ListView instance")
 
-def _create_plot(
-    obj,
-    title=None,
-    x_label=None,
-    y_label=None,
-):
-    figure = px.bar(
-        obj.table_,
-        x=obj.metric_,
-        y=None,
-        hover_data=obj.table_.columns.to_list(),
-        orientation="h",
-    )
+    chart = Chart()
+    chart.plot_ = create_fig(obj)
+    chart.table_ = obj.table_[obj.metric_]
+    chart.prompt_ = chatgpt_default_prompt()
 
-    figure.update_layout(
-        paper_bgcolor="white",
-        plot_bgcolor="white",
-        title_text=title if title is not None else "",
-    )
-    figure.update_traces(
-        marker_color="rgb(171,171,171)",
-        marker_line={"color": "darkslategray"},
-    )
-    figure.update_xaxes(
-        linecolor="gray",
-        linewidth=2,
-        gridcolor="lightgray",
-        griddash="dot",
-        title_text=x_label
-        if x_label is not None
-        else obj.metric_.replace("_", " ").upper(),
-    )
-    figure.update_yaxes(
-        linecolor="gray",
-        linewidth=2,
-        autorange="reversed",
-        gridcolor="lightgray",
-        griddash="dot",
-        title_text=y_label
-        if y_label is not None
-        else obj.criterion_.replace("_", " ").upper(),
-    )
-    return figure
+    return chart

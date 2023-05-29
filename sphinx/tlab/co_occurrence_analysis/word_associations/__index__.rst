@@ -1,16 +1,21 @@
 Word Associations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. toctree::
+    :maxdepth: 1
+
+    co_occurrence_bar_plot
+
 
 .. toctree::
+    :maxdepth: 1
+
     radial_diagram
 
 
 .. toctree::
-    graphs__co_occurrences
-        
-        
-.. toctree::
+    :maxdepth: 1
+
     graphs__mds_map
 
 
@@ -18,9 +23,13 @@ Word Associations
 
 
 .. toctree::
+    :maxdepth: 1
+
     tables__selected_item
 
 .. toctree::    
+    :maxdepth: 1
+    
     co_occurrence_matrix
             
             
