@@ -6,6 +6,8 @@ The following functions are available:
 - association_index: Computes the association index of a co-occurrence \
     matrix.
 - auto_corr_matrix: Computes the autocorrelation matrix of a network.
+- cluster_criterion: Computes the cluster criterion of a network.
+- cluster_records: Clusters records in the database file.
 - co_occ_matrix: Computes the co-occurrence matrix of a set of terms.
 - column_viewer: Generates a radial diagram of term associations from a \
     (co) occurrence matrix.
@@ -29,8 +31,10 @@ The following functions are available:
 
 """
 
-from ...matrix_normalization import matrix_normalization
+
 from .auto_corr_matrix import auto_corr_matrix
+from .cluster_criterion import cluster_criterion
+from .cluster_records import cluster_records
 from .co_occ_matrix import co_occ_matrix
 from .column_viewer import column_viewer
 from .corr_map import corr_map
@@ -49,8 +53,9 @@ from .tf_idf_matrix import tf_idf_matrix
 from .tf_matrix import tf_matrix
 
 __all__ = [
-    "matrix_normalization",
     "auto_corr_matrix",
+    "cluster_criterion",
+    "cluster_records",
     "co_occ_matrix",
     "column_viewer",
     "corr_map",
