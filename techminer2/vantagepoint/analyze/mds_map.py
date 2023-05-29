@@ -58,9 +58,9 @@ def mds_map(
     random_state=0,
     dissimilarity="euclidean",
     # Map parameters
-    node_size_min=30,
-    node_size_max=70,
-    textfont_size_min=10,
+    node_size_min=12,
+    node_size_max=50,
+    textfont_size_min=8,
     textfont_size_max=20,
     xaxes_range=None,
     yaxes_range=None,
