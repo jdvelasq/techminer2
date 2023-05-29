@@ -2,42 +2,73 @@
 Create concept grid
 ===============================================================================
 
->>> directory = "data/regtech/"
+
+
+Example:
+-------------------------------------------------------------------------------
+
+>>> root_dir = "data/regtech/"
 
 >>> from techminer2 import vantagepoint
->>> co_occ_matrix = vantagepoint.analyze.co_occ_matrix(
+>>> occ_matrix = vantagepoint.analyze.co_occ_matrix(
 ...    criterion='author_keywords',
-...    topic_min_occ=3,
-...    directory=directory,
+...    topic_min_occ=2,
+...    root_dir=root_dir,
 ... )
->>> concept_grid = vantagepoint.analyze.create_concept_grid(co_occ_matrix)
->>> concept_grid
-                          CL_00  ...                        CL_02
-0  regulatory technology 07:037  ...               fintech 12:249
-1             compliance 07:030  ...    financial services 04:168
-2             regulation 05:164  ...  financial regulation 04:035
-3        risk management 03:014  ...            innovation 03:012
-4                suptech 03:004  ...                             
-<BLANKLINE>
-[5 rows x 3 columns]
+>>> graph = vantagepoint.analyze.cluster_criterion(
+...    occ_matrix,
+...    community_clustering='louvain',
+... )
+>>> vantagepoint.analyze.create_concept_grid(graph)
+
 
 
 """
 
-
-from ... import network_utils
-from .list_cells_in_matrix import list_cells_in_matrix
+import pandas as pd
 
 
-def create_concept_grid(
-    matrix,
-    method="louvain",
-):
-    """Create a concept grid (communities) of a networkx graph."""
+def create_concept_grid(graph):
+    """Gets communities from a networkx graph as a dataframe."""
 
-    matrix_list = list_cells_in_matrix(matrix)
-    graph = network_utils.create_graph(matrix_list)
-    graph = network_utils.apply_community_detection_method(graph, method)
-    grid_concepts = network_utils.get_communities(graph)
+    def extract_communities(graph):
+        """Gets communities from a networkx graph as a dictionary."""
 
-    return grid_concepts
+        communities = {}
+
+        for node, data in graph.nodes(data=True):
+            text = f"CL_{data['group'] :02d}"
+            if text not in communities:
+                communities[text] = []
+            communities[text].append(node)
+
+        return communities
+
+    def sort_community_members(communities):
+        """Sorts community members in a dictionary."""
+
+        for key, items in communities.items():
+            pdf = pd.DataFrame({"members": items})
+            pdf = pdf.assign(
+                OCC=pdf.members.map(lambda x: x.split()[-1].split(":")[0])
+            )
+            pdf = pdf.assign(
+                gc=pdf.members.map(lambda x: x.split()[-1].split(":")[1])
+            )
+            pdf = pdf.sort_values(
+                by=["OCC", "gc", "members"], ascending=[False, False, True]
+            )
+            communities[key] = pdf.members.tolist()
+
+        return communities
+
+    #
+    # main:
+    #
+    communities = extract_communities(graph)
+    communities = sort_community_members(communities)
+    communities = pd.DataFrame.from_dict(communities, orient="index").T
+    communities = communities.fillna("")
+    communities = communities.sort_index(axis=1)
+
+    return communities
