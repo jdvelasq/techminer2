@@ -97,7 +97,7 @@ def auto_corr_matrix(
         topic_min_citations=topic_min_citations,
         topic_max_citations=topic_max_citations,
         custom_topics=custom_topics,
-        directory=root_dir,
+        root_dir=root_dir,
         database=database,
         start_year=start_year,
         end_year=end_year,

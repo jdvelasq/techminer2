@@ -118,14 +118,6 @@ class RecordStatistics:
     prompt_: str
 
 
-# @dataclass(init=False)
-# class SvdMap:
-#     """Single value decomposition map."""
-#     plot_: go.Figure
-#     prompt_: str
-#     table_: pd.DataFrame
-
-
 @dataclass(init=False)
 class TermsByYear:
     """Terms by year."""
@@ -136,3 +128,18 @@ class TermsByYear:
     cumulative_: bool
     criterion_: str
     other_criterion_: str
+
+
+@dataclass(init=False)
+class TFMatrix:
+    table_: pd.DataFrame
+    criterion_: str
+    scheme_: str
+    prompt_: str
+
+
+@dataclass(init=False)
+class TFIDFMatrix:
+    table_: pd.DataFrame
+    criterion_: str
+    prompt_: str

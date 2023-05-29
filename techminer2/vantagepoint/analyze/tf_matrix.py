@@ -1,39 +1,40 @@
 """
-TF Matrix
+TF Matrix --- ChatGPT
 ===============================================================================
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 
 >>> from techminer2 import vantagepoint
->>> vantagepoint.analyze.tf_matrix(
-...     criterion='authors', 
-...     topic_min_occ=2, 
-...     directory=directory,
-... ).head()
+>>> tf_matrix = vantagepoint.analyze.tf_matrix(
+...     criterion='authors',
+...     topic_min_occ=2,
+...     root_dir=root_dir,
+... )
+>>> tf_matrix.table_.head()
 authors                                             Arner DW 3:185  ...  Arman AA 2:000
 article                                                             ...                
-Arner DW, 2017, HANDB OF BLOCKCHAIN, DIGIT FINA...               1  ...               0
+Arner DW, 2017, HANDB OF BLOCKCHAIN, DIGIT FI, ...               1  ...               0
 Arner DW, 2017, NORTHWEST J INTL LAW BUS, V37, ...               1  ...               0
 Battanta L, 2020, PROC EUR CONF INNOV ENTREPREN...               0  ...               0
 Buckley RP, 2020, J BANK REGUL, V21, P26                         1  ...               0
-Butler T/1, 2018, J RISK MANG FINANCIAL INST, V...               0  ...               0
+Butler T/1, 2018, J RISK MANG FIN INST, V11, P19                 0  ...               0
 <BLANKLINE>
 [5 rows x 15 columns]
+
 
 """
 import numpy as np
 import pandas as pd
 
+from ...classes import TFMatrix
+from ...counters import add_counters_to_axis
 from ...load_utils import load_stopwords
 from ...record_utils import read_records
 from ...techminer.indicators.indicators_by_topic import indicators_by_topic
-
-# from ..._items2counters import items2counters
 from ...topics import generate_custom_topics
 
+
 # pylint: disable=too-many-arguments
-
-
 def tf_matrix(
     criterion,
     topics_length=None,
@@ -43,7 +44,7 @@ def tf_matrix(
     topic_max_citations=None,
     custom_topics=None,
     scheme=None,
-    directory="./",
+    root_dir="./",
     database="documents",
     start_year=None,
     end_year=None,
@@ -51,9 +52,12 @@ def tf_matrix(
 ):
     """Computes TF Matrix."""
 
+    if scheme is None:
+        scheme = "raw"
+
     indicators = indicators_by_topic(
         criterion=criterion,
-        root_dir=directory,
+        root_dir=root_dir,
         database=database,
         start_year=start_year,
         end_year=end_year,
@@ -78,36 +82,42 @@ def tf_matrix(
     custom_topics = [
         topic
         for topic in custom_topics
-        if topic not in load_stopwords(directory)
+        if topic not in load_stopwords(root_dir)
     ]
 
     # compute TF matrix
     result = _create_tf_matrix(
         criterion,
         custom_topics,
-        directory,
+        root_dir,
         database,
         start_year,
         end_year,
         **filters,
     )
 
-    result = _rename_columns(
-        result,
-        criterion,
-        directory,
-        database,
-        start_year,
-        end_year,
+    result = add_counters_to_axis(
+        dataframe=result,
+        axis=1,
+        criterion=criterion,
+        root_dir=root_dir,
+        database=database,
+        start_year=start_year,
+        end_year=end_year,
         **filters,
     )
 
     result = _remove_rows_of_zeros(result)
     result = _apply_scheme(scheme, result)
-
     result = _sort_columns(result)
 
-    return result
+    tfmatrix_ = TFMatrix()
+    tfmatrix_.table_ = result
+    tfmatrix_.criterion_ = criterion
+    tfmatrix_.scheme_ = scheme
+    tfmatrix_.prompt_ = "TODO"
+
+    return tfmatrix_
 
 
 def _sort_columns(result):
@@ -209,20 +219,3 @@ def _create_tf_matrix(
     )
     result = result.fillna(0)
     return result
-
-
-def _compute_filter(
-    criterion,
-    topics_length,
-    topic_min_occ,
-    topic_max_occ,
-    topic_min_citations,
-    topic_max_citations,
-    custom_topics,
-    directory,
-    database,
-    start_year,
-    end_year,
-    **filters,
-):
-    """apply filter to topics"""

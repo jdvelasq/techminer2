@@ -95,7 +95,7 @@ def emergent_themes_with_nmf(
         topic_min_citations=topic_min_citations,
         custom_topics=custom_topics,
         scheme="binary",
-        directory=directory,
+        root_dir=directory,
         database=database,
         start_year=start_year,
         end_year=end_year,
@@ -153,7 +153,7 @@ def emergent_themes_with_lda(
         topic_min_citations=topic_min_citations,
         custom_topics=custom_topics,
         scheme="binary",
-        directory=directory,
+        root_dir=directory,
         database=database,
         start_year=start_year,
         end_year=end_year,
@@ -194,7 +194,9 @@ def _extract_themes(components, n_components):
         themes_members = themes_members.sort_values(ascending=False)
         themes_members = [
             index if value > 0 else ""
-            for index, value in zip(themes_members.index, themes_members.values)
+            for index, value in zip(
+                themes_members.index, themes_members.values
+            )
         ]
         max_len = max(
             max_len, len([member for member in themes_members if member != ""])
