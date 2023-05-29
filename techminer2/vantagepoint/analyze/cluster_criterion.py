@@ -17,7 +17,7 @@ Example: Clustering using community detection algorithms.
 ...    co_occ_matrix,
 ...    community_clustering='louvain',
 ... )
->>> vantagepoint.analyze.create_concept_grid(graph)
+>>> vantagepoint.analyze.cluster_members(graph)
                          CL_00  ...                           CL_04
 0               fintech 12:249  ...  artificial intelligence 04:023
 1    financial services 04:168  ...    anti-money laundering 03:021
@@ -46,7 +46,7 @@ Example: Clustering using sklearn algoritms.
 ...    co_occ_matrix,
 ...    sklearn_clustering=kmeans,
 ... )
->>> vantagepoint.analyze.create_concept_grid(graph)
+>>> vantagepoint.analyze.cluster_members(graph)
                            CL_00  ...                               CL_04
 0                 regtech 28:329  ...  anti money laundering (aml) 02:013
 1                 fintech 12:249  ...                                    

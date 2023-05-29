@@ -7,6 +7,12 @@ Explore
 
     cluster_criterion
 
+.. toctree::
+    :maxdepth: 1
+
+    cluster_members
+
+
 
 .. toctree::
     :maxdepth: 1

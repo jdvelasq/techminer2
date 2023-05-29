@@ -7,6 +7,7 @@ The following functions are available:
     matrix.
 - auto_corr_matrix: Computes the autocorrelation matrix of a network.
 - cluster_criterion: Computes the cluster criterion of a network.
+- cluster_members: Gets communities from a networkx graph as a dataframe.
 - cluster_records: Clusters records in the database file.
 - co_occ_matrix: Computes the co-occurrence matrix of a set of terms.
 - column_viewer: Generates a radial diagram of term associations from a \
@@ -34,6 +35,7 @@ The following functions are available:
 
 from .auto_corr_matrix import auto_corr_matrix
 from .cluster_criterion import cluster_criterion
+from .cluster_members import cluster_members
 from .cluster_records import cluster_records
 from .co_occ_matrix import co_occ_matrix
 from .column_viewer import column_viewer
@@ -55,6 +57,7 @@ from .tf_matrix import tf_matrix
 __all__ = [
     "auto_corr_matrix",
     "cluster_criterion",
+    "cluster_members",
     "cluster_records",
     "co_occ_matrix",
     "column_viewer",
