@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 This module implements functions to add OCC:citations counters to topics 
 in the values or axis of a dataframe.
