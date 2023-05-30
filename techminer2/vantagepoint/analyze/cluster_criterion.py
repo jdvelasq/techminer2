@@ -150,6 +150,8 @@ def cluster_criterion(
     if sklearn_clustering is not None:
         return _cluster_by_sklearn(obj, sklearn_clustering)
 
+    raise ValueError("This should not happen.")
+
 
 def _cluster_by_sklearn(obj, estimator):
     """Cluster the matrix by sklearn cluster methods.

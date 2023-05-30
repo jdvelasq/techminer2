@@ -38,7 +38,6 @@ from .cluster_criterion import cluster_criterion
 from .cluster_members import cluster_members
 from .cluster_records import cluster_records
 from .co_occ_matrix import co_occ_matrix
-from .column_viewer import column_viewer
 from .corr_map import corr_map
 from .create_concept_grid import create_concept_grid
 from .cross_corr_matrix import cross_corr_matrix
@@ -61,7 +60,6 @@ __all__ = [
     "cluster_members",
     "cluster_records",
     "co_occ_matrix",
-    "column_viewer",
     "corr_map",
     "create_concept_grid",
     "cross_corr_matrix",
