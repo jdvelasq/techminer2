@@ -12,7 +12,7 @@ Example: Matrix subset for a occurrence matrix.
 >>> root_dir = "data/regtech/"
 
 >>> from techminer2 import vantagepoint
->>> occ_matrix = vantagepoint.analyze.co_occ_matrix(
+>>> co_occ_matrix = vantagepoint.analyze.co_occ_matrix(
 ...    criterion='author_keywords',
 ...    other_criterion='authors',
 ...    topic_min_occ=2,
@@ -20,7 +20,7 @@ Example: Matrix subset for a occurrence matrix.
 ...    root_dir=root_dir,
 ... )
 >>> matrix_subset = vantagepoint.analyze.matrix_subset(
-...    occ_matrix,
+...    co_occ_matrix,
 ...    topics=['regtech', 'fintech'],
 ... )
 >>> matrix_subset.matrix_
@@ -72,12 +72,7 @@ your findings in no more than 150 words.
 >>> matrix_subset.matrix_
 column                          regtech 28:329  ...  financial services 04:168
 row                                             ...                           
-regtech 28:329                              28  ...                          3
-fintech 12:249                              12  ...                          2
 regulatory technology 07:037                 2  ...                          0
-compliance 07:030                            7  ...                          0
-regulation 05:164                            4  ...                          1
-financial services 04:168                    3  ...                          4
 financial regulation 04:035                  2  ...                          2
 artificial intelligence 04:023               2  ...                          0
 anti-money laundering 03:021                 1  ...                          0
@@ -86,7 +81,7 @@ innovation 03:012                            1  ...                          0
 blockchain 03:005                            2  ...                          0
 suptech 03:004                               3  ...                          0
 <BLANKLINE>
-[13 rows x 5 columns]
+[8 rows x 5 columns]
 
 
 >>> print(matrix_subset.prompt_)
@@ -98,12 +93,7 @@ no more than 150 words.
 <BLANKLINE>
 | row                            |   regtech 28:329 |   fintech 12:249 |   compliance 07:030 |   regulation 05:164 |   financial services 04:168 |
 |:-------------------------------|-----------------:|-----------------:|--------------------:|--------------------:|----------------------------:|
-| regtech 28:329                 |               28 |               12 |                   7 |                   4 |                           3 |
-| fintech 12:249                 |               12 |               12 |                   2 |                   4 |                           2 |
 | regulatory technology 07:037   |                2 |                1 |                   1 |                   1 |                           0 |
-| compliance 07:030              |                7 |                2 |                   7 |                   1 |                           0 |
-| regulation 05:164              |                4 |                4 |                   1 |                   5 |                           1 |
-| financial services 04:168      |                3 |                2 |                   0 |                   1 |                           4 |
 | financial regulation 04:035    |                2 |                1 |                   0 |                   0 |                           2 |
 | artificial intelligence 04:023 |                2 |                1 |                   1 |                   0 |                           0 |
 | anti-money laundering 03:021   |                1 |                0 |                   0 |                   0 |                           0 |
@@ -145,6 +135,10 @@ regulation 05:164                            4  ...                          1
 financial services 04:168                    3  ...                          4
 <BLANKLINE>
 [18 rows x 18 columns]
+
+>>> matrix_subset.topics_
+['regtech 28:329', 'fintech 12:249', 'compliance 07:030', 'regulation 05:164', \
+'financial services 04:168']
 
 # pylint: disable=line-too-long
 """
@@ -242,7 +236,9 @@ def matrix_subset(
         ]
         matrix = obj.matrix_.loc[augmented_topics, augmented_topics]
     else:
-        matrix = matrix.drop(labels=matrix.columns.tolist(), axis=0)
+        matrix = matrix.drop(
+            labels=matrix.columns.tolist(), axis=0, errors="ignore"
+        )
 
     if obj.criterion_ == obj.other_criterion_:
         prompt = generate_prompt_for_co_occ_matrix(matrix, obj.criterion_)
