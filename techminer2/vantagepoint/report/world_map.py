@@ -58,17 +58,18 @@ Analyze the table below, which provides bibliographic indicators for a collectio
 | South Africa         |     1 |
 | Ukraine              |     1 |
 | Malaysia             |     1 |
-| Palestine            |     1 |
 | India                |     1 |
+| Palestine            |     1 |
 | Taiwan               |     1 |
+| Belgium              |     1 |
 | France               |     1 |
+| Netherlands          |     1 |
 | Poland               |     1 |
 | Romania              |     1 |
 | Singapore            |     1 |
-| Belgium              |     1 |
-| Netherlands          |     1 |
 <BLANKLINE>
 <BLANKLINE>
+
 
 """
 from dataclasses import dataclass
