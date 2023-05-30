@@ -12,7 +12,7 @@ Contexts implemented in T-LAB.
 3. Clustering using cosine distance
 4. Obtain the table of units by clusters
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 
 >>> from sklearn.cluster import AgglomerativeClustering
 >>> clustering_method = AgglomerativeClustering(n_clusters=5)
@@ -20,8 +20,8 @@ Contexts implemented in T-LAB.
 >>> from techminer2 import tlab
 >>> analysis = tlab.thematic_analysis_of_contexts(
 ...     criterion="author_keywords",
-...     topic_min_occ=4,
-...     directory=directory,
+...     topic_occ_min=4,
+...     root_dir=root_dir,
 ...     clustering_method=clustering_method,
 ... )
 
@@ -57,7 +57,7 @@ class _ThematicAnalysis:
         topics_length=None,
         custom_topics=None,
         clustering_method=None,
-        directory="./",
+        root_dir="./",
         database="documents",
         start_year=None,
         end_year=None,
@@ -76,7 +76,7 @@ class _ThematicAnalysis:
         self.topics_length = topics_length
         self.custom_topics = custom_topics
         self.clustering_method = clustering_method
-        self.directory = directory
+        self.root_dir = root_dir
         self.database = database
         self.start_year = start_year
         self.end_year = end_year
@@ -158,7 +158,7 @@ class _ThematicAnalysis:
             topic_min_citations=self.topic_min_citations,
             custom_topics=self.custom_topics,
             scheme="binary",
-            directory=self.directory,
+            directory=self.root_dir,
             database=self.database,
             start_year=self.start_year,
             end_year=self.end_year,
@@ -206,7 +206,7 @@ def thematic_analysis_of_contexts(
         topic_citations_max=topic_citations_max,
         topics_length=topics_length,
         clustering_method=clustering_method,
-        directory=root_dir,
+        root_dir=root_dir,
         database=database,
         start_year=start_year,
         end_year=end_year,
