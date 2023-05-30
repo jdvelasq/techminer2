@@ -22,7 +22,7 @@ Thematic Analysis
 .. toctree::
     :maxdepth: 1
 
-    dictionary_based_classification/__index__
+    dictionary_based_classification
 
 
 .. toctree::
