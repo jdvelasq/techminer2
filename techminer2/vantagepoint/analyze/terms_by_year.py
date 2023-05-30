@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 Terms by Year 
 ===============================================================================
@@ -28,9 +29,9 @@ risk management 03:014             0     1     0     1     0     1     0
 
 >>> print(r.prompt_)
 Analyze the table below which contains the  occurrences by year for the \
-author_keywords. Identify any notable patterns, trends, or outliers in the \
-data, and discuss their implications for the research field. Be sure to \
-provide a concise summary of your findings in no more than 150 words.
+years. Identify any notable patterns, trends, or outliers in the data, and \
+discuss their implications for the research field. Be sure to provide a \
+concise summary of your findings in no more than 150 words.
 <BLANKLINE>
 | author_keywords                |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
 |:-------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
@@ -71,9 +72,9 @@ risk management 03:014             0     1     1     2     2     3     3
 
 >>> print(r.prompt_)
 Analyze the table below which contains the cumulative occurrences by year for \
-the author_keywords. Identify any notable patterns, trends, or outliers in \
-the data, and discuss their implications for the research field. Be sure to \
-provide a concise summary of your findings in no more than 150 words.
+the years. Identify any notable patterns, trends, or outliers in the data, \
+and discuss their implications for the research field. Be sure to provide a \
+concise summary of your findings in no more than 150 words.
 <BLANKLINE>
 | author_keywords                |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
 |:-------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
@@ -90,6 +91,7 @@ provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
 <BLANKLINE>
 
+
 # noga: E501 W291
 
 """
@@ -102,13 +104,15 @@ from ...techminer.indicators.indicators_by_topic import indicators_by_topic
 from ...topics import generate_custom_topics
 
 
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
 def terms_by_year(
     criterion,
     topics_length=50,
-    topic_min_occ=None,
-    topic_max_occ=None,
-    topic_min_citations=None,
-    topic_max_citations=None,
+    topic_occ_min=None,
+    topic_occ_max=None,
+    topic_citations_min=None,
+    topic_citations_max=None,
     custom_topics=None,
     root_dir="./",
     database="documents",
@@ -121,17 +125,24 @@ def terms_by_year(
 
     Args:
         criterion (str): Criterion to be used to generate the terms.
-        topics_length (int, optional): Number of terms to be included in the table. Defaults to 50.
-        topic_min_occ (int, optional): Minimum number of occurrences of the terms. Defaults to None.
-        topic_max_occ (int, optional): Maximum number of occurrences of the terms. Defaults to None.
-        topic_min_citations (int, optional): Minimum number of citations of the terms. Defaults to None.
-        topic_max_citations (int, optional): Maximum number of citations of the terms. Defaults to None.
-        custom_topics (list, optional): List of custom topics. Defaults to None.
+        topics_length (int, optional): Number of terms to be included in the
+            table. Defaults to 50.
+        topic_occ_min (int, optional): Minimum number of occurrences of the
+            terms. Defaults to None.
+        topic_occ_max (int, optional): Maximum number of occurrences of the
+            terms. Defaults to None.
+        topic_citations_min (int, optional): Minimum number of citations of
+            the terms. Defaults to None.
+        topic_citations_max (int, optional): Maximum number of citations of
+            the terms. Defaults to None.
+        custom_topics (list, optional): List of custom topics. Defaults to
+            None.
         root_dir (str, optional): Root directory. Defaults to "./".
         database (str, optional): Database to be used. Defaults to "documents".
         start_year (int, optional): Start year. Defaults to None.
         end_year (int, optional): End year. Defaults to None.
-        cumulative (bool, optional): If True, the table contains the cumulative number of occurrences. Defaults to False.
+        cumulative (bool, optional): If True, the table contains the cumulative
+            number of occurrences. Defaults to False.
 
     Returns:
         TermsByYear: A TermsByYear object.
@@ -142,7 +153,7 @@ def terms_by_year(
         return (
             f"Analyze the table below which contains the "
             f"{'cumulative' if obj.cumulative_ else ''} occurrences by year "
-            f"for the {obj.criterion_for_rows_}. Identify any notable "
+            f"for the {obj.criterion_}. Identify any notable "
             "patterns, trends, or outliers in the data, and discuss their "
             "implications for the research field. Be sure to provide a "
             "concise summary of your findings in no more than 150 words."
@@ -178,10 +189,10 @@ def terms_by_year(
         custom_topics = generate_custom_topics(
             indicators=indicators,
             topics_length=topics_length,
-            topic_min_occ=topic_min_occ,
-            topic_max_occ=topic_max_occ,
-            topic_min_citations=topic_min_citations,
-            topic_max_citations=topic_max_citations,
+            topic_min_occ=topic_occ_min,
+            topic_max_occ=topic_occ_max,
+            topic_min_citations=topic_citations_min,
+            topic_max_citations=topic_citations_max,
         )
 
     descriptors_by_year = descriptors_by_year[
