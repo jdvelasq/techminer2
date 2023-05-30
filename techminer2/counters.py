@@ -59,9 +59,9 @@ def add_counters_to_axis(
 
 
 def add_counters_to_column_values(
-    column,
+    criterion,
     name,
-    directory,
+    root_dir,
     database,
     table,
     start_year,
@@ -69,8 +69,8 @@ def add_counters_to_column_values(
     **filters,
 ):
     new_column_names = items2counters(
-        criterion=column,
-        root_dir=directory,
+        criterion=criterion,
+        root_dir=root_dir,
         database=database,
         start_year=start_year,
         end_year=end_year,

@@ -223,9 +223,9 @@ def coupling_matrix_list(
 
     for column_name in ["row", "column"]:
         matrix_list = add_counters_to_column_values(
-            column=unit_of_analysis,
+            criterion=unit_of_analysis,
             name=column_name,
-            directory=directory,
+            root_dir=directory,
             database=database,
             table=matrix_list,
             start_year=start_year,

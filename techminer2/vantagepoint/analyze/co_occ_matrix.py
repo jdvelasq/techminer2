@@ -124,10 +124,10 @@ def co_occ_matrix(
             custom_topics = generate_custom_topics(
                 indicators=indicators,
                 topics_length=topics_length,
-                topic_min_occ=topic_min_occ,
-                topic_max_occ=topic_max_occ,
-                topic_min_citations=topic_min_citations,
-                topic_max_citations=topic_max_citations,
+                topic_occ_min=topic_min_occ,
+                topic_occ_max=topic_max_occ,
+                topic_citations_min=topic_min_citations,
+                topic_citations_max=topic_max_citations,
             )
 
         name = "row" if is_row_column else "column"

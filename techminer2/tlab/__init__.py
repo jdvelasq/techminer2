@@ -1,6 +1,5 @@
 from . import (
     cluster_analysis,
-    comparison_between_pairs_of_keywords,
     concordances,
     correspondence_analysis,
     dictionary_based_classification,
@@ -14,5 +13,6 @@ from . import (
     thematic_analysis_of_contexts,
     word_associations,
 )
+from .comparison_between_word_pairs import comparison_between_word_pairs
 from .multidimensional_scaling import multidimensional_scaling
 from .singular_value_decomposition import singular_value_decomposition

@@ -9,7 +9,7 @@ Co-occurrence Analysis
 .. toctree::
     :maxdepth: 1
 
-    comparison_between_pairs_of_keywords/__index__
+    comparison_between_word_pairs
 
 
 .. toctree::

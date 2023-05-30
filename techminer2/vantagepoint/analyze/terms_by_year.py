@@ -189,10 +189,10 @@ def terms_by_year(
         custom_topics = generate_custom_topics(
             indicators=indicators,
             topics_length=topics_length,
-            topic_min_occ=topic_occ_min,
-            topic_max_occ=topic_occ_max,
-            topic_min_citations=topic_citations_min,
-            topic_max_citations=topic_citations_max,
+            topic_occ_min=topic_occ_min,
+            topic_occ_max=topic_occ_max,
+            topic_citations_min=topic_citations_min,
+            topic_citations_max=topic_citations_max,
         )
 
     descriptors_by_year = descriptors_by_year[
