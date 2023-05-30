@@ -3,7 +3,7 @@ Abstracts Extractive Summarization
 ===============================================================================
 
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 
 >>> from techminer2 import techminer
 >>> techminer.reports.extractive_summarization(
@@ -11,7 +11,7 @@ Abstracts Extractive Summarization
 ...     custom_topics=["blockchain", "artificial intelligence"],
 ...     n_abstracts=50,    
 ...     n_phrases_per_algorithm=50,
-...     directory=directory,
+...     root_dir=root_dir,
 ... )
 --INFO-- The file 'data/regtech/reports/extractive_summarization.txt' was created
 
