@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 Factor Matrix (TODO)
 ===============================================================================
@@ -5,14 +6,14 @@ Factor Matrix (TODO)
 Factor matrix obtained by appliying PCA to the co-occurrence matrix. 
 matrix.
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 
 >>> from techminer2 import vantagepoint
 >>> vantagepoint.analyze.factor_matrix(
 ...     vantagepoint.analyze.co_occ_matrix(
-...         criterion='authors', 
-...         topic_min_occ=2,
-...         directory=directory, 
+...         criterion='authors',
+...         topic_occ_min=2,
+...         root_dir=root_dir,
 ...     )
 ... )
 component                 Factor 0  Factor 1  ...  Factor 4      Factor 5
@@ -62,7 +63,8 @@ def factor_matrix(
         )
     ]
     columns = pd.MultiIndex.from_tuples(
-        columns, names=["component", "explained_variance", "explained_variance_ratio"]
+        columns,
+        names=["component", "explained_variance", "explained_variance_ratio"],
     )
     matrix = pd.DataFrame(
         transformed_matrix,
