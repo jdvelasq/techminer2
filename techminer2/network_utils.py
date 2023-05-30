@@ -173,7 +173,7 @@ def compute_graph_textfont_color(graph):
     """Computes the textfont color for each node in a networkx graph."""
 
     occ = [graph.nodes[node]["OCC"] for node in graph.nodes()]
-    occ_scaled = scale_occ(occ, max_size=1.0, min_size=0.35)
+    occ_scaled = scale_occ(occ, max_size=1.0, min_size=0.40)
     colors = px.colors.sequential.Greys
     textfont_color = np.array(colors)[
         np.round(occ_scaled * (len(colors) - 1)).astype(int)
@@ -284,7 +284,10 @@ def create_graph_nodes(graph, matrix_list):
 
     # adds items in 'row' column as nodes
     nodes = matrix_list.cells_list_["row"].drop_duplicates().to_list()
-    nodes = [(node, {"group": 0, "color": "#8da4b4"}) for node in nodes]
+    nodes = [
+        (node, {"group": 0, "color": "#8da4b4", "textfont_color": "black"})
+        for node in nodes
+    ]
     graph.add_nodes_from(nodes)
 
     # adds items in 'column' column as nodes
@@ -294,7 +297,10 @@ def create_graph_nodes(graph, matrix_list):
         if candidate not in graph.nodes:
             nodes.append(candidate)
     if len(nodes) > 1:
-        nodes = [(node, {"group": 1, "color": "#556f81"}) for node in nodes]
+        nodes = [
+            (node, {"group": 1, "color": "#556f81", "textfont_color": "black"})
+            for node in nodes
+        ]
         graph.add_nodes_from(nodes)
 
     return graph
@@ -408,6 +414,7 @@ def create_text_trace(graph):
     node_x, node_y = extract_node_coordinates(graph)
     node_names = extract_node_names(graph)
     textfont_sizes = extract_textfont_sizes(graph)
+    textfont_colors = extract_textfont_colors(graph)
     textposition = compute_textposition_from_nx_graph(graph)
     node_colors = extract_node_colors(graph)
 
@@ -427,10 +434,20 @@ def create_text_trace(graph):
             "opacity": 1,
         },
         textposition=textposition,
-        textfont={"size": textfont_sizes},
+        textfont={"size": textfont_sizes, "color": textfont_colors},
     )
 
     return text_trace
+
+
+def extract_textfont_colors(graph):
+    """Extracts textfont colors from a networkx graph."""
+
+    textfont_colors = []
+    for node in graph.nodes():
+        textfont_colors.append(graph.nodes[node]["textfont_color"])
+
+    return textfont_colors
 
 
 def extract_textfont_sizes(graph):
@@ -517,12 +534,14 @@ def set_edge_properties_for_corr_maps(graph):
     return graph
 
 
-def set_edge_properties_for_co_occ_networks(graph):
+def set_properties_for_co_occ_networks(graph):
     """Sets edge properties for co-occurrence networks."""
 
     for edge in graph.edges():
         graph.edges[edge]["width"] = 1
         graph.edges[edge]["color"] = "lightgrey"
+
+    graph = compute_graph_textfont_color(graph)
 
     return graph
 

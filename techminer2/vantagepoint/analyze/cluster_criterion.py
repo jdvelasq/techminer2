@@ -222,6 +222,6 @@ def _cluster_by_commnunity_detection(obj, algorithm):
     graph = network_utils.create_graph(matrix_list)
     graph = network_utils.apply_community_detection_method(graph, algorithm)
     graph = network_utils.set_color_nodes_by_group(graph)
-    graph = network_utils.set_edge_properties_for_co_occ_networks(graph)
+    graph = network_utils.set_properties_for_co_occ_networks(graph)
 
     return graph
