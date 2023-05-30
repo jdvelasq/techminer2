@@ -57,7 +57,9 @@ KEYWORDS       Raw author keywords                            149
 
     
 >>> print(stats.prompt_)
-The table below provides data on the main characteristics of the dataset. Use the the information in the table to draw conclusions. Limit your description to one paragraph with no more than 250 words.
+The table below provides data on the main characteristics of the dataset. Use \
+the the information in the table to draw conclusions. Limit your description \
+to one paragraph with no more than 250 words.
 <BLANKLINE>
 |                                                        | Value     |
 |:-------------------------------------------------------|:----------|
@@ -97,7 +99,7 @@ The table below provides data on the main characteristics of the dataset. Use th
 <BLANKLINE>
 
 
-    
+# pylint: disable=line-too-long
 """
 import datetime
 

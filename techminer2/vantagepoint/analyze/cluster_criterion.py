@@ -201,6 +201,8 @@ def _cluster_by_sklearn(obj, estimator):
     for node in graph.nodes():
         graph.nodes[node]["group"] = names2cluster[node]
 
+    graph = network_utils.set_color_nodes_by_group(graph)
+
     return graph
 
 
@@ -219,5 +221,7 @@ def _cluster_by_commnunity_detection(obj, algorithm):
     matrix_list = list_cells_in_matrix(obj)
     graph = network_utils.create_graph(matrix_list)
     graph = network_utils.apply_community_detection_method(graph, algorithm)
+    graph = network_utils.set_color_nodes_by_group(graph)
+    graph = network_utils.set_edge_properties_for_co_occ_networks(graph)
 
     return graph

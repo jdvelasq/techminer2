@@ -313,6 +313,7 @@ Analyze the table below which contains values of co-occurrence (OCC) for the 'au
 from ... import network_utils
 from ...classes import MatrixSubset, MatrixViewer
 from .list_cells_in_matrix import list_cells_in_matrix
+from .network_viewer import network_viewer
 
 
 # pylint: disable=too-many-arguments disable=too-many-locals
@@ -348,18 +349,28 @@ def matrix_viewer(
         graph, nx_k, nx_iterations, random_state
     )
 
-    node_trace = network_utils.create_node_trace(graph)
-    text_trace = network_utils.create_text_trace(graph)
-    edge_traces = network_utils.create_edge_traces(graph)
-
-    fig = network_utils.create_network_graph(
-        edge_traces=edge_traces,
-        node_trace=node_trace,
-        text_trace=text_trace,
+    fig = network_viewer(
+        graph=graph,
+        nx_k=nx_k,
+        nx_iterations=nx_iterations,
+        random_state=random_state,
         xaxes_range=xaxes_range,
         yaxes_range=yaxes_range,
         show_axes=show_axes,
     )
+
+    # node_trace = network_utils.create_node_trace(graph)
+    # text_trace = network_utils.create_text_trace(graph)
+    # edge_traces = network_utils.create_edge_traces(graph)
+
+    # fig = network_utils.create_network_graph(
+    #     edge_traces=edge_traces,
+    #     node_trace=node_trace,
+    #     text_trace=text_trace,
+    #     xaxes_range=xaxes_range,
+    #     yaxes_range=yaxes_range,
+    #     show_axes=show_axes,
+    # )
 
     matrix_viewer_ = MatrixViewer()
     matrix_viewer_.plot_ = fig

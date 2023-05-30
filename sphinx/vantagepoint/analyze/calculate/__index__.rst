@@ -4,7 +4,7 @@ Calculate
 .. toctree::
     :maxdepth: 1
 
-    assocation_index
+    association_index
 
 .. toctree::
     :maxdepth: 1

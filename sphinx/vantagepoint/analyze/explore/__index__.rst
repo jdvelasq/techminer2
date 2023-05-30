@@ -32,6 +32,11 @@ Explore
     matrix_viewer
 
 
+.. toctree::
+    :maxdepth: 1
+    
+    network_viewer
+
 
 
 

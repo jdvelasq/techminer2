@@ -39,6 +39,35 @@ def apply_community_detection_method(graph, method):
     return graph
 
 
+COLORS = (
+    px.colors.qualitative.Dark24
+    + px.colors.qualitative.Light24
+    + px.colors.qualitative.Pastel1
+    + px.colors.qualitative.Pastel2
+    + px.colors.qualitative.Set1
+    + px.colors.qualitative.Set2
+    + px.colors.qualitative.Set3
+)
+
+
+def set_color_nodes_by_group(graph):
+    """Modifies the color of the nodes according to the group."""
+
+    groups = []
+    for node in graph.nodes():
+        groups.append(graph.nodes[node]["group"])
+    n_groups = len(set(groups))
+
+    if n_groups in [1, 2]:
+        return graph
+
+    for node in graph.nodes():
+        group = graph.nodes[node]["group"]
+        graph.nodes[node]["color"] = COLORS[group]
+
+    return graph
+
+
 def create_graph(
     matrix_list,
     node_size_min=30,
@@ -58,6 +87,7 @@ def create_graph(
     graph = compute_prop_sizes(
         graph, "textfont_size", textfont_size_min, textfont_size_max
     )
+
     graph = create_graph_edges(graph, matrix_list)
 
     return graph
@@ -168,6 +198,9 @@ def occ_to_textfont_color(occ):
 def compute_prop_sizes(graph, prop, min_size, max_size):
     """Compute key size for a networkx graph from OCC property of the node."""
 
+    if min_size == max_size:
+        return graph
+
     occ = [graph.nodes[node]["OCC"] for node in graph.nodes()]
 
     occ_scaled = scale_occ(occ, max_size, min_size)
@@ -260,27 +293,9 @@ def create_graph_nodes(graph, matrix_list):
     for candidate in candidates:
         if candidate not in graph.nodes:
             nodes.append(candidate)
-    if len(nodes):
+    if len(nodes) > 1:
         nodes = [(node, {"group": 1, "color": "#556f81"}) for node in nodes]
         graph.add_nodes_from(nodes)
-
-    # for col in ["row", "column"]:
-    #     if col == "row":
-    #         color = "#8da4b4"
-    #         group = 0
-    #     else:
-    #         color = "#556f81"
-    #         group = 1
-
-    #     nodes = matrix_list.cells_list_[col].drop_duplicates().to_list()
-    #     nodes = [(node, {"color": color, "group": group}) for node in nodes]
-    #     graph.add_nodes_from(nodes)
-
-    #     if (
-    #         matrix_list.criterion_ == matrix_list.other_criterion_
-    #         or matrix_list.metric_ == "CORR"
-    #     ):
-    #         break
 
     return graph
 
@@ -368,7 +383,7 @@ def create_node_trace(graph):
             "color": node_colors,
             "size": node_sizes,
             "line": {"width": 1.5, "color": "white"},
-            "opacity": 1,
+            "opacity": 1.0,
         },
     )
 
@@ -498,6 +513,16 @@ def set_edge_properties_for_corr_maps(graph):
             graph.edges[edge]["width"] = 6
             graph.edges[edge]["dash"] = "solid"
             graph.edges[edge]["color"] = "#8da4b4"
+
+    return graph
+
+
+def set_edge_properties_for_co_occ_networks(graph):
+    """Sets edge properties for co-occurrence networks."""
+
+    for edge in graph.edges():
+        graph.edges[edge]["width"] = 1
+        graph.edges[edge]["color"] = "lightgrey"
 
     return graph
 
