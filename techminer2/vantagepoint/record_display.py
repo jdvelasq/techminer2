@@ -1,5 +1,5 @@
 """
-Record Display 
+Record Display
 ===============================================================================
 
 Extracts documents from the databaase containing the text string specified by
@@ -23,6 +23,7 @@ searching. The report is saved to the file ``processed/record_display.txt``.
 from .. import record_utils
 
 
+# pylint: disable=too-many-arguments
 def record_display(
     criterion,
     search_for,
@@ -35,46 +36,28 @@ def record_display(
     end_year=None,
     report_filename="record_display.txt",
     **filters,
-):  # pylint: disable=too-many-arguments
+):
     """Record display the documents matching the specied sarch criteria.
 
-    Parameters
-    ----------
-    criterion: str
-        The column name to be searched.
+    Args:
+        criterion (str): Criterion to be used to generate the terms.
+        search_for (str): Text string to be searched.
+        case (bool, optional): If True, the search is case sensitive. Defaults
+            to False.
+        flags (int, optional): Flags to be used in the search. Defaults to 0.
+        regex (bool, optional): If True, the search is performed using regular
+            expressions. Defaults to True.
+        root_dir (str, optional): Root directory. Defaults to "./".
+        database (str, optional): Database to be used. Defaults to "documents".
+        start_year (int, optional): Start year. Defaults to None.
+        end_year (int, optional): End year. Defaults to None.
+        report_filename (str, optional): Name of the report file. Defaults to
+            "record_display.txt".
+        filters (dict, optional): Filters to be applied to the database.
+            Defaults to {}.
 
-    search_for: str
-        The string to be searched.
-
-    case: bool
-        If True, the search is case sensitive.
-
-    flags: int
-        Flags to be passed to the ``re`` module.
-
-    regex: bool
-        If True, the search string is a regular expression.
-
-    directory: str
-        The root directory of the project.
-
-    database: str ``{"documents", "references", "cited_by"}, by default \
-        "documents"``
-        The database name.
-
-    start_year: int or None, optional
-        The start year to be considered.
-
-    end_year: int or None, optional
-
-    filters: dict
-        The filters to be applied to the database.
-
-    Returns
-    -------
-    None
-
-
+    Returns:
+        None
 
     """
 
