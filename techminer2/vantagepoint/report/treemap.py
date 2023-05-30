@@ -1,16 +1,17 @@
+# flake8: noqa
 """
 Treemap
 ===============================================================================
 
 
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/vantagepoint__treemap.html"
 
 >>> from techminer2 import vantagepoint
->>> obj = vantagepoint.analyze.extract_topics(
+>>> obj = vantagepoint.analyze.list_view(
 ...    criterion='author_keywords',
-...    directory=directory,
+...    root_dir=root_dir,
 ... )
 >>> chart = vantagepoint.report.treemap(obj, title="Most Frequent Author Keywords")
 >>> chart.plot_.write_html(file_name)

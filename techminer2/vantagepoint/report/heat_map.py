@@ -1,15 +1,16 @@
+# flake8: noqa
 """
 Heat Map
 ===============================================================================
 
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 
 >>> from techminer2 import vantagepoint
 >>> matrix = vantagepoint.analyze.co_occ_matrix(
 ...    criterion='author_keywords',
-...    topic_min_occ=3,
-...    directory=directory,
+...    topic_occ_min=3,
+...    root_dir=root_dir,
 ... )
 >>> file_name = "sphinx/_static/vantagepoint__heat_map-1.html"
 

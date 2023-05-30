@@ -1,15 +1,16 @@
+# flake8: noqa
 """
 Pie Chart
 ===============================================================================
 
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/vantagepoint__pie_chart.html"
 
 >>> from techminer2 import vantagepoint
->>> obj = vantagepoint.analyze.extract_topics(
+>>> obj = vantagepoint.analyze.list_view(
 ...    criterion='author_keywords',
-...    directory=directory,
+...    root_dir=direcroot_dirtory,
 ...    topics_length=10,
 ... )
 >>> chart = vantagepoint.report.pie_chart(obj, title="Most Frequent Author Keywords")

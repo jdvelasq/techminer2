@@ -1,15 +1,16 @@
+# flake8: noqa
 """
 Word cloud
 ===============================================================================
 
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/images/vantagepoint__word_cloud.png"
 
 >>> from techminer2 import vantagepoint
->>> obj = vantagepoint.analyze.extract_topics(
+>>> obj = vantagepoint.analyze.list_view(
 ...     criterion='author_keywords',
-...     directory=directory,
+...     root_dir=root_dir,
 ... )
 >>> chart = vantagepoint.report.word_cloud(obj, title="Most Frequent Author Keywords")
 >>> chart.plot_.savefig(file_name)

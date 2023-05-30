@@ -1,15 +1,16 @@
+# flake8: noqa
 """
 World map
 ===============================================================================
 
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/vantagepoint__world_map.html"
 
 >>> from techminer2 import vantagepoint
->>> obj = vantagepoint.analyze.extract_topics(
+>>> obj = vantagepoint.analyze.list_view(
 ...     criterion='countries',
-...     directory=directory,
+...     root_dir=root_dir,
 ...     topics_length=None,
 ... )
 >>> chart = vantagepoint.report.world_map(

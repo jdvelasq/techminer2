@@ -1,17 +1,18 @@
+# flake8: noqa
 """
 Cleveland Chart (*)
 ===============================================================================
 
 
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/vantagepoint__cleveland_chart.html"
 
+
 >>> from techminer2 import vantagepoint
->>> from techminer2 import vantagepoint
->>> obj = vantagepoint.analyze.extract_topics(
+>>> obj = vantagepoint.analyze.list_view(
 ...    criterion='author_keywords',
-...    directory=directory,
+...    root_dir=root_dir,
 ... )
 
 >>> chart = vantagepoint.report.cleveland_chart(obj, title="Most Frequent Author Keywords")

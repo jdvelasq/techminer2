@@ -1,16 +1,17 @@
+# flake8: noqa
 """
 Gantt Chart
 ===============================================================================
 
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/vantagepoint__gantt_chart.html"
 
 >>> from techminer2 import vantagepoint
 >>> data = vantagepoint.analyze.terms_by_year(
 ...    criterion='author_keywords',
 ...    topics_length=20,
-...    directory=directory,
+...    root_dir=root_dir,
 ... )
 >>> chart = vantagepoint.report.gantt_chart(data)
 >>> chart.plot_.write_html(file_name)

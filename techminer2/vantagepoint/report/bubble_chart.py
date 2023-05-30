@@ -1,17 +1,18 @@
+# flake8: noqa
 """
 Bubble Chart
 ===============================================================================
 
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/vantagepoint__bubble_chart.html"
 
 
 >>> from techminer2 import vantagepoint
 >>> matrix = vantagepoint.analyze.co_occ_matrix(
 ...    criterion='author_keywords',
-...    topic_min_occ=4,
-...    directory=directory,
+...    topic_occ_min=4,
+...    root_dir=root_dir,
 ... )
 
 >>> chart = vantagepoint.report.bubble_chart(matrix)
