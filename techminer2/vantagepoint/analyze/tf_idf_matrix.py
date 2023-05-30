@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 TF-IDF Matrix --- ChatGPT
 ===============================================================================
@@ -9,7 +10,7 @@ TF-IDF Matrix --- ChatGPT
 >>> from techminer2 import vantagepoint
 >>> tf_matrix = vantagepoint.analyze.tf_matrix(
 ...     criterion='authors',
-...     topic_min_occ=2,
+...     topic_occ_min=2,
 ...     root_dir=root_dir,
 ... )
 >>> tfidf_matrix = vantagepoint.analyze.tf_idf_matrix(tf_matrix)
@@ -26,7 +27,10 @@ Butler T/1, 2018, J RISK MANG FIN INST, V11, P19          0.000000  ...         
 
 
 """
+from typing import Literal
+
 import pandas as pd
+from scipy.sparse import csr_matrix
 from sklearn.feature_extraction.text import TfidfTransformer
 
 from ...classes import TFIDFMatrix
@@ -35,7 +39,7 @@ from ...classes import TFIDFMatrix
 def tf_idf_matrix(
     obj,
     # TF-IDF parameters
-    norm="l2",
+    norm: Literal["l1", "l2", None] = "l2",
     use_idf=True,
     smooth_idf=True,
     sublinear_tf=False,
@@ -53,13 +57,17 @@ def tf_idf_matrix(
         sublinear_tf=sublinear_tf,
     )
 
-    transformed_matrix = transformer.fit_transform(obj.table_).toarray()
+    sparse_matrix = csr_matrix(obj.table_)
+
+    transformed_matrix = transformer.fit_transform(sparse_matrix)
 
     tf_idf_matrix_ = TFIDFMatrix()
     tf_idf_matrix_.criterion_ = obj.criterion_
     tf_idf_matrix_.prompt_ = obj.prompt_
     tf_idf_matrix_.table_ = pd.DataFrame(
-        transformed_matrix, columns=obj.table_.columns, index=obj.table_.index
+        transformed_matrix.toarray(),
+        columns=obj.table_.columns,
+        index=obj.table_.index,
     )
 
     return tf_idf_matrix_

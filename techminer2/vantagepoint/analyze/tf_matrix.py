@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 TF Matrix --- ChatGPT
 ===============================================================================
@@ -7,7 +8,7 @@ TF Matrix --- ChatGPT
 >>> from techminer2 import vantagepoint
 >>> tf_matrix = vantagepoint.analyze.tf_matrix(
 ...     criterion='authors',
-...     topic_min_occ=2,
+...     topic_occ_min=2,
 ...     root_dir=root_dir,
 ... )
 >>> tf_matrix.table_.head()
@@ -35,13 +36,14 @@ from ...topics import generate_custom_topics
 
 
 # pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
 def tf_matrix(
     criterion,
     topics_length=None,
-    topic_min_occ=None,
-    topic_max_occ=None,
-    topic_min_citations=None,
-    topic_max_citations=None,
+    topic_occ_min=None,
+    topic_occ_max=None,
+    topic_citations_min=None,
+    topic_citations_max=None,
     custom_topics=None,
     scheme=None,
     root_dir="./",
@@ -68,10 +70,10 @@ def tf_matrix(
         custom_topics = generate_custom_topics(
             indicators=indicators,
             topics_length=topics_length,
-            topic_min_occ=topic_min_occ,
-            topic_max_occ=topic_max_occ,
-            topic_min_citations=topic_min_citations,
-            topic_max_citations=topic_max_citations,
+            topic_min_occ=topic_occ_min,
+            topic_max_occ=topic_occ_max,
+            topic_min_citations=topic_citations_min,
+            topic_max_citations=topic_citations_max,
         )
 
     indicators = indicators[indicators.index.isin(custom_topics)]
@@ -157,27 +159,6 @@ def _apply_scheme(scheme, result):
 
 def _remove_rows_of_zeros(result):
     result = result.loc[(result != 0).any(axis=1)]
-    return result
-
-
-def _rename_columns(
-    result,
-    criterion,
-    directory,
-    database,
-    start_year,
-    end_year,
-    **filters,
-):
-    items_dict = items2counters(
-        column=criterion,
-        directory=directory,
-        database=database,
-        start_year=start_year,
-        end_year=end_year,
-        **filters,
-    )
-    result = result.rename(columns=items_dict)
     return result
 
 

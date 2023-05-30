@@ -91,8 +91,8 @@ def emergent_themes_with_nmf(
     _tf_matrix = tf_matrix(
         criterion=criterion,
         topics_length=topics_length,
-        topic_min_occ=topic_min_occ,
-        topic_min_citations=topic_min_citations,
+        topic_occ_min=topic_min_occ,
+        topic_citations_min=topic_min_citations,
         custom_topics=custom_topics,
         scheme="binary",
         root_dir=directory,
@@ -149,8 +149,8 @@ def emergent_themes_with_lda(
     _tf_matrix = tf_matrix(
         criterion=criterion,
         topics_length=topics_length,
-        topic_min_occ=topic_min_occ,
-        topic_min_citations=topic_min_citations,
+        topic_occ_min=topic_min_occ,
+        topic_citations_min=topic_min_citations,
         custom_topics=custom_topics,
         scheme="binary",
         root_dir=directory,
