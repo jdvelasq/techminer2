@@ -28,7 +28,7 @@ Thematic Analysis
 .. toctree::
     :maxdepth: 1
 
-    text_and_discourses/__index__
+    text_and_discourses
         
         
 
