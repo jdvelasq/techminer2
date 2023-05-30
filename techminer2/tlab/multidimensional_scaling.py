@@ -25,10 +25,13 @@ Examples
 ...     topics_length=20,
 ...     root_dir=root_dir,
 ... )
+>>> norm_co_occ_matrix = vantagepoint.analyze.association_index(
+...     co_occ_matrix, "association"
+... )
 >>> # computes the MDS
 >>> from techminer2 import tlab
 >>> mds = tlab.multidimensional_scaling(
-...     co_occ_matrix,
+...     norm_co_occ_matrix,
 ...     dim_x=0,
 ...     dim_y=1,
 ... )
@@ -43,16 +46,15 @@ Examples
 
     
 >>> mds.table_.head()
-                                 Dim_00    Dim_01  ...    Dim_17    Dim_18
-row                                                ...                    
-regtech 28:329                10.198203 -3.851393  ... -2.389078  5.170386
-fintech 12:249                 6.426608 -4.783149  ... -1.998105  0.965580
-regulatory technology 07:037  -2.151493 -0.192213  ... -2.136771 -1.372437
-compliance 07:030              1.665958  1.365657  ...  0.986733  1.106619
-regulation 05:164              1.087510 -2.187925  ...  0.386630  1.466090
+                                Dim_00    Dim_01  ...    Dim_17    Dim_18
+row                                               ...                    
+regtech 28:329                4.381408 -1.659299  ... -0.661378  3.283245
+fintech 12:249                3.650041 -3.621913  ... -1.166596 -1.080851
+regulatory technology 07:037 -0.724303  0.137573  ... -0.950386 -0.257020
+compliance 07:030             1.223766 -0.505317  ...  0.492759 -0.046778
+regulation 05:164             1.226895 -1.314099  ...  0.447964  1.214174
 <BLANKLINE>
 [5 rows x 19 columns]
-
 
 
 """
