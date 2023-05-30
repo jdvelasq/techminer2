@@ -23,7 +23,7 @@ is explained in the following example.
 
 >>> co_occ_matrix = vantagepoint.analyze.co_occ_matrix(
 ...    criterion='author_keywords',
-...    topic_min_occ=3,
+...    topic_occ_min=3,
 ...    root_dir=root_dir,
 ... )
 >>> co_occ_matrix.matrix_

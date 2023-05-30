@@ -3,10 +3,9 @@
 Matrix Viewer --- ChatGPT
 ===============================================================================
 
-
->>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/vantagepoint__matrix_viewer-3.html"
 >>> from techminer2 import vantagepoint
+>>> root_dir = "data/regtech/"
+>>> file_name = "sphinx/_static/vantagepoint__matrix_viewer-2.html"
 >>> co_occ_matrix = vantagepoint.analyze.co_occ_matrix(
 ...    criterion='author_keywords',
 ...    topic_occ_min=3,
@@ -14,7 +13,7 @@ Matrix Viewer --- ChatGPT
 ... )
 >>> matrix_subset = vantagepoint.analyze.matrix_subset(
 ...    co_occ_matrix,
-...    topics=['regtech', 'regulatory technology'],
+...    topics='regtech',
 ... )
 >>> chart = vantagepoint.analyze.matrix_viewer(
 ...     matrix_subset,
@@ -169,7 +168,6 @@ Example: Visulization of a radial diagram (T-LAB).
 ...    co_occ_matrix,
 ...    topics='regtech',
 ... )
-
 >>> chart = vantagepoint.analyze.matrix_viewer(
 ...     matrix_subset,
 ...     nx_k=0.5,
@@ -341,6 +339,9 @@ def matrix_viewer(
         textfont_size_min,
         textfont_size_max,
     )
+    ####
+    node_sizes = network_utils.extract_node_sizes(graph)
+    ####
 
     if isinstance(obj, MatrixSubset):
         graph = network_utils.set_node_colors(graph, obj.topics_, "#556f81")

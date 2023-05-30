@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 2D-MDS Map --- ChatGPT
 ===============================================================================
@@ -24,9 +25,13 @@ MDS technique used in T-LAB's words associations.
 ...     topics_length=20,
 ...     root_dir=root_dir,
 ... )
+>>> # normalizes the co-occurrence matrix
+>>> norm_co_occ_matrix = vantagepoint.analyze.association_index(
+...     co_occ_matrix, "mutualinfo"
+... )
 >>> # computes the MDS
 >>> from techminer2 import tlab
->>> mds_map = tlab.word_associations.svd_map(co_occ_matrix)
+>>> mds_map = tlab.word_associations.mds_map(norm_co_occ_matrix)
 >>> file_name = "sphinx/_static/tlab__word_associations__mds_map.html"
 >>> mds_map.plot_.write_html(file_name)
 
@@ -37,13 +42,13 @@ MDS technique used in T-LAB's words associations.
 
 
 >>> mds_map.table_.head()
-                                 Dim_00    Dim_01
+                                Dim_00     Dim_01
 row                                              
-regtech 28:329                32.386508 -2.623531
-fintech 12:249                17.171575  5.275711
-regulatory technology 07:037   3.500129  1.437108
-compliance 07:030              8.945366 -4.175846
-regulation 05:164              6.700788  3.488011
+regtech 28:329               -9.649067 -10.893458
+fintech 12:249               -7.548324   7.595860
+regulatory technology 07:037  0.497866  -2.003591
+compliance 07:030            -3.872383   3.112019
+regulation 05:164            -3.220647  -0.800004
 
 """
 
@@ -78,7 +83,6 @@ def mds_map(
         dim_y=1,
         # Technique parameters
         is_2d=True,
-        normalization=normalization,
         # MDS parameters
         metric=metric,
         n_init=n_init,

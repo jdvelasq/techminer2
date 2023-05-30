@@ -24,9 +24,13 @@ MDS technique used in T-LAB's words associations.
 ...     topics_length=20,
 ...     root_dir=root_dir,
 ... )
+>>> # normalizes the co-occurrence matrix
+>>> norm_co_occ_matrix = vantagepoint.analyze.association_index(
+...     co_occ_matrix, "mutualinfo"
+... )
 >>> # computes the SVD
 >>> from techminer2 import tlab
->>> svd_map = tlab.word_associations.svd_map(co_occ_matrix)
+>>> svd_map = tlab.word_associations.svd_map(norm_co_occ_matrix)
 >>> file_name = "sphinx/_static/tlab__word_associations__svd_map.html"
 >>> svd_map.plot_.write_html(file_name)
 
@@ -37,13 +41,14 @@ MDS technique used in T-LAB's words associations.
 
 
 >>> svd_map.table_.head()
-                                 Dim_00    Dim_01
-row                                              
-regtech 28:329                32.386508 -2.623531
-fintech 12:249                17.171575  5.275711
-regulatory technology 07:037   3.500129  1.437108
-compliance 07:030              8.945366 -4.175846
-regulation 05:164              6.700788  3.488011
+                                 Dim_00     Dim_01
+row                                               
+regtech 28:329                12.972062  10.391976
+fintech 12:249                10.874094  -7.841626
+regulatory technology 07:037   3.073117  -0.538119
+compliance 07:030              6.628352  -3.686916
+regulation 05:164              5.894711  -0.250128
+
 
 """
 

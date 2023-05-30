@@ -24,7 +24,7 @@ is explained in the following example.
 
 >>> co_occ_matrix = vantagepoint.analyze.co_occ_matrix(
 ...    criterion='author_keywords',
-...    topic_min_occ=3,
+...    topic_occ_min=3,
 ...    root_dir=root_dir,
 ... )
 
@@ -55,22 +55,22 @@ is explained in the following example.
 * Optional: ChatGPT prompt.
 
 >>> print(chart.prompt_)
-Analyze the table below, which contains the the occurrence values for \
-['regtech'] and author_keywords. Identify any notable patterns, trends, or \
-outliers in the data, and discuss their implications for the research field. \
-Be sure to provide a concise summary of your findings in no more than 150 \
-words.
+Analyze the table below which contains values of co-occurrence (OCC) for the ['regtech'] and 'author_keywords' fields in a bibliographic dataset. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
-|    | row                            | column         |   OCC |
-|---:|:-------------------------------|:---------------|------:|
-|  0 | fintech 12:249                 | regtech 28:329 |    12 |
-|  1 | compliance 07:030              | regtech 28:329 |     7 |
-|  3 | financial services 04:168      | regtech 28:329 |     3 |
-|  5 | artificial intelligence 04:023 | regtech 28:329 |     2 |
-|  6 | blockchain 03:005              | regtech 28:329 |     2 |
-|  7 | financial regulation 04:035    | regtech 28:329 |     2 |
-| 10 | anti-money laundering 03:021   | regtech 28:329 |     1 |
-| 11 | innovation 03:012              | regtech 28:329 |     1 |
+| row                            |   regtech 28:329 |
+|:-------------------------------|-----------------:|
+| fintech 12:249                 |               12 |
+| regulatory technology 07:037   |                2 |
+| compliance 07:030              |                7 |
+| regulation 05:164              |                4 |
+| financial services 04:168      |                3 |
+| financial regulation 04:035    |                2 |
+| artificial intelligence 04:023 |                2 |
+| anti-money laundering 03:021   |                1 |
+| risk management 03:014         |                2 |
+| innovation 03:012              |                1 |
+| blockchain 03:005              |                2 |
+| suptech 03:004                 |                3 |
 <BLANKLINE>
 <BLANKLINE>
 

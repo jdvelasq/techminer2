@@ -57,7 +57,7 @@ regulation 05:164              6.700788  3.488011  ... -0.152399  9.285094e-16
 import pandas as pd
 from sklearn.decomposition import TruncatedSVD
 
-from ..classes import CocMatrix, ManifoldMap, TFMatrix
+from ..classes import ManifoldMap, NormCocMatrix, TFMatrix
 from ..scatter_plot import scatter_plot
 from ..vantagepoint.analyze.association_index import association_index
 
@@ -96,18 +96,13 @@ def singular_value_decomposition(
     #
     # Main:
     #
-
-    if isinstance(obj, CocMatrix) and normalization is not None:
-        obj = association_index(
-            obj,
-            index_name=normalization,
-        )
-    elif isinstance(obj, TFMatrix) and obj.scheme_ != "binary":
-        raise ValueError("TFMatrix must be binary.")
-    else:
+    if not isinstance(obj, (NormCocMatrix, TFMatrix)):
         raise ValueError(
-            "Invalid obj type. Must be a CocMatrix/TFMatrix instance."
+            "Invalid obj type. Must be a NormCocMatrix/TFMatrix instance."
         )
+
+    if isinstance(obj, TFMatrix) and obj.scheme_ != "binary":
+        raise ValueError("TFMatrix must be binary.")
 
     node_occ = extract_occ(obj.matrix_.columns.tolist())
     matrix = obj.matrix_.copy()

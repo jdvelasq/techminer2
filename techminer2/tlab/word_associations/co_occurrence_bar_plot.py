@@ -17,7 +17,7 @@ Example:
 >>> # Step 2: Create a co-occurrence matrix
 >>> co_occ_matrix = vantagepoint.analyze.co_occ_matrix(
 ...    criterion='author_keywords',
-...    topic_min_occ=3,
+...    topic_occ_min=3,
 ...    root_dir=root_dir,
 ... )
 >>> #

@@ -199,6 +199,8 @@ def compute_prop_sizes(graph, prop, min_size, max_size):
     """Compute key size for a networkx graph from OCC property of the node."""
 
     if min_size == max_size:
+        for index, node in enumerate(graph.nodes()):
+            graph.nodes[node][prop] = min_size
         return graph
 
     occ = [graph.nodes[node]["OCC"] for node in graph.nodes()]
@@ -296,7 +298,7 @@ def create_graph_nodes(graph, matrix_list):
     for candidate in candidates:
         if candidate not in graph.nodes:
             nodes.append(candidate)
-    if len(nodes) > 1:
+    if len(nodes) > 0:
         nodes = [
             (node, {"group": 1, "color": "#556f81", "textfont_color": "black"})
             for node in nodes
@@ -539,7 +541,7 @@ def set_properties_for_co_occ_networks(graph):
 
     for edge in graph.edges():
         graph.edges[edge]["width"] = 1
-        graph.edges[edge]["color"] = "lightgrey"
+        graph.edges[edge]["color"] = "lightgray"
 
     graph = compute_graph_textfont_color(graph)
 

@@ -23,9 +23,13 @@ TSNE technique used in T-LAB's comparative analysis.
 ...     topics_length=50,
 ...     root_dir=root_dir,
 ... )
+>>> # normalizes the co-occurrence matrix
+>>> norm_co_occ_matrix = vantagepoint.analyze.association_index(
+...     co_occ_matrix, "mutualinfo"
+... )
 >>> # computes the tsne
 >>> from techminer2 import tlab
->>> tsne = tlab.word_associations.tsne_map(co_occ_matrix)
+>>> tsne = tlab.word_associations.tsne_map(norm_co_occ_matrix)
 >>> file_name = "sphinx/_static/tlab__word_associations__tsne_map.html"
 >>> tsne.plot_.write_html(file_name)
 
@@ -38,11 +42,11 @@ TSNE technique used in T-LAB's comparative analysis.
 >>> tsne.table_.head()
                                   Dim_00      Dim_01
 row                                                 
-regtech 28:329               -186.323090 -620.232178
-fintech 12:249                -40.896801 -616.620605
-regulatory technology 07:037 -395.161682  403.801147
-compliance 07:030            -596.121094  -64.094978
-regulation 05:164              99.364182 -542.671326
+regtech 28:329                656.460144 -160.212708
+fintech 12:249                338.662903 -546.714478
+regulatory technology 07:037 -146.625397  564.891052
+compliance 07:030             558.554077   31.211735
+regulation 05:164             -48.133255 -595.929932
 
 """
 
@@ -50,17 +54,14 @@ regulation 05:164              99.364182 -542.671326
 import pandas as pd
 from sklearn.manifold import TSNE
 
-from ...classes import CocMatrix, ManifoldMap
+from ...classes import ManifoldMap, NormCocMatrix
 from ...scatter_plot import scatter_plot
-from ...vantagepoint.analyze.association_index import association_index
 
 MAX_DIMENSIONS = 2
 
 
 def tsne_map(
     obj,
-    # Technique parameters
-    normalization="mutualinfo",
     # TSNE parameters
     perplexity=30.0,
     early_exaggeration=12.0,
@@ -96,13 +97,8 @@ def tsne_map(
     # Main:
     #
 
-    if isinstance(obj, CocMatrix) and normalization is not None:
-        obj = association_index(
-            obj,
-            index_name=normalization,
-        )
-    else:
-        raise ValueError("Invalid obj type. Must be a CocMatrix instance.")
+    if not isinstance(obj, NormCocMatrix):
+        raise ValueError("Invalid obj type. Must be a NormCocMatrix instance.")
 
     node_occ = extract_occ(obj.matrix_.columns.tolist())
     matrix = obj.matrix_.copy()
