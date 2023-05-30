@@ -29,6 +29,32 @@ regulation                5
 Name: OCC, dtype: int64
 
 >>> print(chart.prompt_)
+Analyze the table below, which provides bibliographic indicators for a collection of research articles. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
+<BLANKLINE>
+| author_keywords         |   OCC |
+|:------------------------|------:|
+| regtech                 |    28 |
+| fintech                 |    12 |
+| regulatory technology   |     7 |
+| compliance              |     7 |
+| regulation              |     5 |
+| financial services      |     4 |
+| financial regulation    |     4 |
+| artificial intelligence |     4 |
+| anti-money laundering   |     3 |
+| risk management         |     3 |
+| innovation              |     3 |
+| blockchain              |     3 |
+| suptech                 |     3 |
+| semantic technologies   |     2 |
+| data protection         |     2 |
+| smart contracts         |     2 |
+| charitytech             |     2 |
+| english law             |     2 |
+| accountability          |     2 |
+| data protection officer |     2 |
+<BLANKLINE>
+<BLANKLINE>
 
 
 
