@@ -65,7 +65,7 @@ def tf_idf_matrix(
     tf_idf_matrix_.criterion_ = obj.criterion_
     tf_idf_matrix_.prompt_ = obj.prompt_
     tf_idf_matrix_.table_ = pd.DataFrame(
-        transformed_matrix.toarray(),
+        transformed_matrix.reshape(sparse_matrix.shape),
         columns=obj.table_.columns,
         index=obj.table_.index,
     )
