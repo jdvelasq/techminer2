@@ -16,7 +16,7 @@ Thematic Analysis
 .. toctree::
     :maxdepth: 1
 
-    document_clustering/__index__
+    document_clustering
 
 
 .. toctree::
