@@ -33,8 +33,8 @@ def apply_community_detection_method(graph, method):
 
 def create_graph(
     matrix_list,
-    node_min_size=30,
-    node_max_size=70,
+    node_size_min=30,
+    node_size_max=70,
     textfont_size_min=10,
     textfont_size_max=20,
 ):
@@ -45,7 +45,7 @@ def create_graph(
     graph = create_graph_nodes(graph, matrix_list)
     graph = create_occ_node_property(graph)
     graph = compute_prop_sizes(
-        graph, "node_size", node_min_size, node_max_size
+        graph, "node_size", node_size_min, node_size_max
     )
     graph = compute_prop_sizes(
         graph, "textfont_size", textfont_size_min, textfont_size_max
@@ -59,7 +59,10 @@ def create_graph_edges(graph, matrix_list):
     """Creates edges from 'row' and 'column' columns in a matrix list."""
 
     table = matrix_list.cells_list_.copy()
-    if matrix_list.criterion_ == matrix_list.other_criterion_:
+    if (
+        matrix_list.criterion_ == matrix_list.other_criterion_
+        and matrix_list.is_matrix_subset_ is False
+    ):
         table = table[table["row"] < table["column"]]
     table = table[table[matrix_list.metric_] > 0]
 
@@ -164,29 +167,6 @@ def compute_prop_sizes(graph, prop, min_size, max_size):
     for index, node in enumerate(graph.nodes()):
         graph.nodes[node][prop] = occ_scaled[index]
 
-    # # assign the OCC as value for the key property
-    # for node in graph.nodes():
-    #     graph.nodes[node][prop] = graph.nodes[node]["OCC"]
-
-    # # computes the min value of the key property
-    # min_value = min([graph.nodes[node][prop] for node in graph.nodes()])
-
-    # # adjust the key property for min_size as current value minus min value
-    # for node in graph.nodes():
-    #     graph.nodes[node][prop] = (
-    #         graph.nodes[node][prop] - min_value + min_size
-    #     )
-
-    # # computes the max value of the key property
-    # max_value = max([graph.nodes[node][prop] for node in graph.nodes()])
-
-    # # adjust the key property for max_size
-    # if max_value > max_size:
-    #     for node in graph.nodes():
-    #         graph.nodes[node][prop] = min_size + (
-    #             graph.nodes[node][prop] - min_size
-    #         ) / (max_value - min_size) * (max_size - min_size)
-
     return graph
 
 
@@ -261,23 +241,47 @@ def create_edge_traces(graph):
 def create_graph_nodes(graph, matrix_list):
     """Creates nodes from 'row' and 'column' columns in a matrix list."""
 
-    for col in ["row", "column"]:
-        if col == "row":
-            color = "#8da4b4"
-            group = 0
+    node_names = []
+
+    nodes_in_rows = matrix_list.cells_list_["row"].drop_duplicates().to_list()
+    node_names.extend(nodes_in_rows)
+
+    nodes_in_columns = (
+        matrix_list.cells_list_["column"].drop_duplicates().to_list()
+    )
+    node_names.extend(nodes_in_columns)
+
+    node_names = list(set(node_names))
+
+    # Adds nodes to the graph
+    nodes = [(node, {}) for node in node_names]
+    graph.add_nodes_from(nodes)
+
+    for node in node_names:
+        if node in matrix_list.cells_list_["row"].to_list():
+            graph.nodes[node]["group"] = 0
+            graph.nodes[node]["color"] = "#8da4b4"
         else:
-            color = "#556f81"
-            group = 1
+            graph.nodes[node]["group"] = 1
+            graph.nodes[node]["color"] = "#556f81"
 
-        nodes = matrix_list.cells_list_[col].drop_duplicates().to_list()
-        nodes = [(node, {"color": color, "group": group}) for node in nodes]
-        graph.add_nodes_from(nodes)
+    # for col in ["row", "column"]:
+    #     if col == "row":
+    #         color = "#8da4b4"
+    #         group = 0
+    #     else:
+    #         color = "#556f81"
+    #         group = 1
 
-        if (
-            matrix_list.criterion_ == matrix_list.other_criterion_
-            or matrix_list.metric_ == "CORR"
-        ):
-            break
+    #     nodes = matrix_list.cells_list_[col].drop_duplicates().to_list()
+    #     nodes = [(node, {"color": color, "group": group}) for node in nodes]
+    #     graph.add_nodes_from(nodes)
+
+    #     if (
+    #         matrix_list.criterion_ == matrix_list.other_criterion_
+    #         or matrix_list.metric_ == "CORR"
+    #     ):
+    #         break
 
     return graph
 
@@ -463,6 +467,10 @@ def extract_node_sizes(graph):
 
     node_sizes = []
     for node in graph.nodes():
+        if "node_size" not in graph.nodes[node]:
+            raise ValueError(
+                f"Node {node} does not have a node_size property."
+            )
         node_sizes.append(graph.nodes[node]["node_size"])
 
     return node_sizes

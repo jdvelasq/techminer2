@@ -77,6 +77,7 @@ class ListCellsInMatrix:
 
     cells_list_: pd.DataFrame
     criterion_: str
+    is_matrix_subset_: bool
     metric_: str
     other_criterion_: str
     prompt_: str

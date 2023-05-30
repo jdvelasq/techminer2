@@ -46,7 +46,7 @@ no more than 150 words.
 
 """
 
-from ...classes import ListCellsInMatrix
+from ...classes import ListCellsInMatrix, MatrixSubset
 
 
 def list_cells_in_matrix(obj):
@@ -159,5 +159,10 @@ def list_cells_in_matrix(obj):
     results.other_criterion_ = obj.other_criterion_
     results.metric_ = obj.metric_
     results.prompt_ = generate_prompt(results)
+
+    if isinstance(obj, MatrixSubset):
+        results.is_matrix_subset_ = True
+    else:
+        results.is_matrix_subset_ = False
 
     return results

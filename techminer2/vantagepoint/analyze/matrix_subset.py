@@ -15,7 +15,7 @@ Example: Matrix subset for a occurrence matrix.
 >>> co_occ_matrix = vantagepoint.analyze.co_occ_matrix(
 ...    criterion='author_keywords',
 ...    other_criterion='authors',
-...    topic_min_occ=2,
+...    topic_occ_min=2,
 ...    topics_length=10,
 ...    root_dir=root_dir,
 ... )
@@ -36,11 +36,7 @@ Brennan R 2:014                 2               0
 Crane M 2:014                   2               0
 
 >>> print(matrix_subset.prompt_)
-Analyze the table below which contains values of co-occurrence (OCC) for the \
-'author_keywords' and 'authors' fields in a bibliographic dataset. Identify \
-any notable patterns, trends, or outliers in the data, and discuss their \
-implications for the research field. Be sure to provide a concise summary of \
-your findings in no more than 150 words.
+Analyze the table below which contains values of co-occurrence (OCC) for the ['regtech', 'fintech'] and 'authors' fields in a bibliographic dataset. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
 | row               |   regtech 28:329 |   fintech 12:249 |
 |:------------------|-----------------:|-----------------:|
@@ -56,12 +52,15 @@ your findings in no more than 150 words.
 <BLANKLINE>
 
 
-* Matrix subset for a co-occurrence matrix.
+
+Example: Matrix subset for a co-occurrence matrix.
+-------------------------------------------------------------------------------
+
 
 >>> from techminer2 import vantagepoint
 >>> co_occ_matrix = vantagepoint.analyze.co_occ_matrix(
 ...    criterion='author_keywords',
-...    topic_min_occ=3,
+...    topic_occ_min=3,
 ...    root_dir=root_dir,
 ... )
 >>> matrix_subset = vantagepoint.analyze.matrix_subset(
@@ -85,11 +84,7 @@ suptech 03:004                               3  ...                          0
 
 
 >>> print(matrix_subset.prompt_)
-Analyze the table below which contains values of co-occurrence (OCC) for the \
-'author_keywords' field in a bibliographic dataset. Identify any notable \
-patterns, trends, or outliers in the data, and discuss their implications for \
-the research field. Be sure to provide a concise summary of your findings in \
-no more than 150 words.
+Analyze the table below which contains values of co-occurrence (OCC) for the ['regtech', 'fintech', 'compliance', 'regulation', 'financial services'] and 'author_keywords' fields in a bibliographic dataset. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
 | row                            |   regtech 28:329 |   fintech 12:249 |   compliance 07:030 |   regulation 05:164 |   financial services 04:168 |
 |:-------------------------------|-----------------:|-----------------:|--------------------:|--------------------:|----------------------------:|
@@ -104,6 +99,8 @@ no more than 150 words.
 <BLANKLINE>
 <BLANKLINE>
 
+Example: Matrix subset for an ego matrix.
+-------------------------------------------------------------------------------
 
 
 >>> matrix_subset = vantagepoint.analyze.matrix_subset(
@@ -135,6 +132,33 @@ regulation 05:164                            4  ...                          1
 financial services 04:168                    3  ...                          4
 <BLANKLINE>
 [18 rows x 18 columns]
+
+>>> print(matrix_subset.prompt_)
+Analyze the table below which contains values of co-occurrence (OCC) for the 'author_keywords' fields in a bibliographic dataset. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
+<BLANKLINE>
+| row                            |   regtech 28:329 |   fintech 12:249 |   regulatory technology 07:037 |   compliance 07:030 |   regulation 05:164 |   financial services 04:168 |   financial regulation 04:035 |   artificial intelligence 04:023 |   anti-money laundering 03:021 |   risk management 03:014 |   innovation 03:012 |   blockchain 03:005 |   suptech 03:004 |   regtech 28:329 |   fintech 12:249 |   compliance 07:030 |   regulation 05:164 |   financial services 04:168 |
+|:-------------------------------|-----------------:|-----------------:|-------------------------------:|--------------------:|--------------------:|----------------------------:|------------------------------:|---------------------------------:|-------------------------------:|-------------------------:|--------------------:|--------------------:|-----------------:|-----------------:|-----------------:|--------------------:|--------------------:|----------------------------:|
+| regtech 28:329                 |               28 |               12 |                              2 |                   7 |                   4 |                           3 |                             2 |                                2 |                              1 |                        2 |                   1 |                   2 |                3 |               28 |               12 |                   7 |                   4 |                           3 |
+| fintech 12:249                 |               12 |               12 |                              1 |                   2 |                   4 |                           2 |                             1 |                                1 |                              0 |                        2 |                   1 |                   1 |                2 |               12 |               12 |                   2 |                   4 |                           2 |
+| regulatory technology 07:037   |                2 |                1 |                              7 |                   1 |                   1 |                           0 |                             0 |                                1 |                              1 |                        2 |                   1 |                   0 |                1 |                2 |                1 |                   1 |                   1 |                           0 |
+| compliance 07:030              |                7 |                2 |                              1 |                   7 |                   1 |                           0 |                             0 |                                1 |                              0 |                        1 |                   0 |                   1 |                1 |                7 |                2 |                   7 |                   1 |                           0 |
+| regulation 05:164              |                4 |                4 |                              1 |                   1 |                   5 |                           1 |                             0 |                                0 |                              0 |                        2 |                   1 |                   1 |                1 |                4 |                4 |                   1 |                   5 |                           1 |
+| financial services 04:168      |                3 |                2 |                              0 |                   0 |                   1 |                           4 |                             2 |                                0 |                              0 |                        0 |                   0 |                   0 |                0 |                3 |                2 |                   0 |                   1 |                           4 |
+| financial regulation 04:035    |                2 |                1 |                              0 |                   0 |                   0 |                           2 |                             4 |                                0 |                              0 |                        0 |                   1 |                   0 |                0 |                2 |                1 |                   0 |                   0 |                           2 |
+| artificial intelligence 04:023 |                2 |                1 |                              1 |                   1 |                   0 |                           0 |                             0 |                                4 |                              1 |                        1 |                   0 |                   1 |                0 |                2 |                1 |                   1 |                   0 |                           0 |
+| anti-money laundering 03:021   |                1 |                0 |                              1 |                   0 |                   0 |                           0 |                             0 |                                1 |                              3 |                        0 |                   0 |                   0 |                0 |                1 |                0 |                   0 |                   0 |                           0 |
+| risk management 03:014         |                2 |                2 |                              2 |                   1 |                   2 |                           0 |                             0 |                                1 |                              0 |                        3 |                   0 |                   0 |                1 |                2 |                2 |                   1 |                   2 |                           0 |
+| innovation 03:012              |                1 |                1 |                              1 |                   0 |                   1 |                           0 |                             1 |                                0 |                              0 |                        0 |                   3 |                   0 |                0 |                1 |                1 |                   0 |                   1 |                           0 |
+| blockchain 03:005              |                2 |                1 |                              0 |                   1 |                   1 |                           0 |                             0 |                                1 |                              0 |                        0 |                   0 |                   3 |                0 |                2 |                1 |                   1 |                   1 |                           0 |
+| suptech 03:004                 |                3 |                2 |                              1 |                   1 |                   1 |                           0 |                             0 |                                0 |                              0 |                        1 |                   0 |                   0 |                3 |                3 |                2 |                   1 |                   1 |                           0 |
+| regtech 28:329                 |               28 |               12 |                              2 |                   7 |                   4 |                           3 |                             2 |                                2 |                              1 |                        2 |                   1 |                   2 |                3 |               28 |               12 |                   7 |                   4 |                           3 |
+| fintech 12:249                 |               12 |               12 |                              1 |                   2 |                   4 |                           2 |                             1 |                                1 |                              0 |                        2 |                   1 |                   1 |                2 |               12 |               12 |                   2 |                   4 |                           2 |
+| compliance 07:030              |                7 |                2 |                              1 |                   7 |                   1 |                           0 |                             0 |                                1 |                              0 |                        1 |                   0 |                   1 |                1 |                7 |                2 |                   7 |                   1 |                           0 |
+| regulation 05:164              |                4 |                4 |                              1 |                   1 |                   5 |                           1 |                             0 |                                0 |                              0 |                        2 |                   1 |                   1 |                1 |                4 |                4 |                   1 |                   5 |                           1 |
+| financial services 04:168      |                3 |                2 |                              0 |                   0 |                   1 |                           4 |                             2 |                                0 |                              0 |                        0 |                   0 |                   0 |                0 |                3 |                2 |                   0 |                   1 |                           4 |
+<BLANKLINE>
+<BLANKLINE>
+
 
 >>> matrix_subset.topics_
 ['regtech 28:329', 'fintech 12:249', 'compliance 07:030', 'regulation 05:164', \
@@ -185,12 +209,12 @@ def matrix_subset(
 
         return matrix.loc[matrix.sum(axis=1) > 0, :]
 
-    def generate_prompt_for_occ_matrix(matrix, criterion, other_criterion):
+    def generate_default_prompt(matrix, topics, other_criterion):
         """Generates a ChatGPT prompt for a occurrence matrix."""
 
         return (
             "Analyze the table below which contains values of co-occurrence "
-            f"(OCC) for the '{criterion}' and '{other_criterion}' fields "
+            f"(OCC) for the {repr(topics)} and '{other_criterion}' fields "
             "in a bibliographic dataset. Identify any notable patterns, "
             "trends, or outliers in the data, and discuss their implications "
             "for the research field. Be sure to provide a concise summary of "
@@ -198,16 +222,16 @@ def matrix_subset(
             f"\n\n{matrix.to_markdown()}\n\n"
         )
 
-    def generate_prompt_for_co_occ_matrix(matrix, criterion):
-        """Generates a ChatGPT prompt for a co_occurrence matrix."""
+    def generate_prompt_for_ego_matrix(matrix, other_criterion):
+        """Generates a ChatGPT prompt for a occurrence matrix."""
 
         return (
             "Analyze the table below which contains values of co-occurrence "
-            f"(OCC) for the '{criterion}' field in a bibliographic "
-            "dataset. Identify any notable patterns, trends, or "
-            "outliers in the data, and discuss their implications for the "
-            "research field. Be sure to provide a concise summary of your "
-            "findings in no more than 150 words."
+            f"(OCC) for the '{other_criterion}' fields "
+            "in a bibliographic dataset. Identify any notable patterns, "
+            "trends, or outliers in the data, and discuss their implications "
+            "for the research field. Be sure to provide a concise summary of "
+            "your findings in no more than 150 words."
             f"\n\n{matrix.to_markdown()}\n\n"
         )
 
@@ -227,6 +251,7 @@ def matrix_subset(
     matrix = select_columns(matrix, topic_positions)
     matrix = select_no_zero_rows(matrix)
 
+    augmented_topics = None
     if is_ego_matrix:
         augmented_topics = matrix.index.tolist() + matrix.columns.tolist()
         augmented_topics = [
@@ -240,12 +265,17 @@ def matrix_subset(
             labels=matrix.columns.tolist(), axis=0, errors="ignore"
         )
 
-    if obj.criterion_ == obj.other_criterion_:
-        prompt = generate_prompt_for_co_occ_matrix(matrix, obj.criterion_)
+    if is_ego_matrix:
+        prompt = generate_prompt_for_ego_matrix(matrix, obj.other_criterion_)
     else:
-        prompt = generate_prompt_for_occ_matrix(
-            matrix, obj.criterion_, obj.other_criterion_
-        )
+        prompt = generate_default_prompt(matrix, topics, obj.other_criterion_)
+
+    # if obj.criterion_ == obj.other_criterion_:
+    #     prompt = generate_prompt_for_co_occ_matrix(matrix, obj.criterion_)
+    # else:
+    #     prompt = generate_prompt_for_occ_matrix(
+    #         matrix, obj.criterion_, obj.other_criterion_
+    #     )
 
     matrix_subset_ = MatrixSubset()
 
