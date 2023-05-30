@@ -10,7 +10,7 @@ Thematic Analysis
 .. toctree::
     :maxdepth: 1
 
-    modeling_of_emerging_themes/__index__
+    modeling_of_emerging_themes
 
 
 .. toctree::

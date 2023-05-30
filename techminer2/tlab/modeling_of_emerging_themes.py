@@ -1,5 +1,5 @@
 """
-Modeling of Emergent Themes
+Modeling of Emergent Themes --- TODO
 ===============================================================================
 
 Topic extraction using non-negative matrix factorization.
@@ -57,7 +57,7 @@ from sklearn.decomposition import NMF, LatentDirichletAllocation
 from sklearn.manifold import MDS
 
 # from .bubble_map import bubble_map
-from ...vantagepoint.analyze.tf_matrix import tf_matrix
+from ..vantagepoint.analyze.tf_matrix import tf_matrix
 
 ##################
 
