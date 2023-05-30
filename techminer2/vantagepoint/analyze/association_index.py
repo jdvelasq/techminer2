@@ -141,8 +141,8 @@ def association_index(obj, index_name):
     normalized_matrix = matrix.copy()
     normalized_matrix = fnc(matrix, normalized_matrix)
 
-    # for index in range(len(normalized_matrix)):
-    #     normalized_matrix.iloc[index, index] = 0.0
+    for index in range(len(normalized_matrix)):
+        normalized_matrix.iloc[index, index] = 0.0
 
     normcocmatrix = NormCocMatrix()
     normcocmatrix.matrix_ = normalized_matrix

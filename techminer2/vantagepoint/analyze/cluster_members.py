@@ -13,7 +13,7 @@ Example:
 >>> from techminer2 import vantagepoint
 >>> occ_matrix = vantagepoint.analyze.co_occ_matrix(
 ...    criterion='author_keywords',
-...    topic_min_occ=2,
+...    topic_occ_min=2,
 ...    root_dir=root_dir,
 ... )
 >>> graph = vantagepoint.analyze.cluster_criterion(

@@ -51,6 +51,8 @@ setup(
         "textblob",
         "wordcloud",
         "kelaido",
+        "igraph",
+        "leidenalg",
     ],
     packages=[
         "techminer2",

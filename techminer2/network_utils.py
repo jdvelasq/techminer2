@@ -14,7 +14,6 @@ from cdlib import algorithms
 def apply_community_detection_method(graph, method):
     """Network community detection."""
 
-    # applies the community detection method
     algorithm = {
         "label_propagation": algorithms.label_propagation,
         "leiden": algorithms.leiden,
@@ -22,8 +21,17 @@ def apply_community_detection_method(graph, method):
         "walktrap": algorithms.walktrap,
     }[method]
 
+    # applies the community detection method
+    if method == "label_propagation":
+        communities = algorithm(graph).communities
+    elif method == "leiden":
+        communities = algorithm(graph).communities
+    elif method == "louvain":
+        communities = algorithm(graph, randomize=False).communities
+    elif method == "walktrap":
+        communities = algorithm(graph).communities
+
     # assigns the community to each node
-    communities = algorithm(graph, randomize=False).communities
     for i_community, community in enumerate(communities):
         for node in community:
             graph.nodes[node]["group"] = i_community
@@ -241,29 +249,20 @@ def create_edge_traces(graph):
 def create_graph_nodes(graph, matrix_list):
     """Creates nodes from 'row' and 'column' columns in a matrix list."""
 
-    node_names = []
-
-    nodes_in_rows = matrix_list.cells_list_["row"].drop_duplicates().to_list()
-    node_names.extend(nodes_in_rows)
-
-    nodes_in_columns = (
-        matrix_list.cells_list_["column"].drop_duplicates().to_list()
-    )
-    node_names.extend(nodes_in_columns)
-
-    node_names = list(set(node_names))
-
-    # Adds nodes to the graph
-    nodes = [(node, {}) for node in node_names]
+    # adds items in 'row' column as nodes
+    nodes = matrix_list.cells_list_["row"].drop_duplicates().to_list()
+    nodes = [(node, {"group": 0, "color": "#8da4b4"}) for node in nodes]
     graph.add_nodes_from(nodes)
 
-    for node in node_names:
-        if node in matrix_list.cells_list_["row"].to_list():
-            graph.nodes[node]["group"] = 0
-            graph.nodes[node]["color"] = "#8da4b4"
-        else:
-            graph.nodes[node]["group"] = 1
-            graph.nodes[node]["color"] = "#556f81"
+    # adds items in 'column' column as nodes
+    candidates = matrix_list.cells_list_["column"].drop_duplicates().to_list()
+    nodes = []
+    for candidate in candidates:
+        if candidate not in graph.nodes:
+            nodes.append(candidate)
+    if len(nodes):
+        nodes = [(node, {"group": 1, "color": "#556f81"}) for node in nodes]
+        graph.add_nodes_from(nodes)
 
     # for col in ["row", "column"]:
     #     if col == "row":

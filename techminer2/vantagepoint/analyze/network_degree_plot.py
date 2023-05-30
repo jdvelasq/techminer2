@@ -27,13 +27,7 @@ Network deegre plot
     <iframe src="../../../_static/vantagepoint__network_degree_plot.html"
     height="600px" width="100%" frameBorder="0"></iframe>
 
->>> chart.table_.head()
-                           Name  Degree  Node
-0                regtech 28:329      12     0
-1                fintech 12:249      11     1
-2             regulation 05:164       9     2
-3  regulatory technology 07:037       9     3
-4             compliance 07:030       8     4
+
 
 
 >>> print(chart.prompt_)
@@ -43,8 +37,8 @@ Analyze the table below, which provides the degree of nodes in a networkx graph 
 |---:|:-------------------------------|---------:|-------:|
 |  0 | regtech 28:329                 |       12 |      0 |
 |  1 | fintech 12:249                 |       11 |      1 |
-|  2 | regulation 05:164              |        9 |      2 |
-|  3 | regulatory technology 07:037   |        9 |      3 |
+|  2 | regulatory technology 07:037   |        9 |      2 |
+|  3 | regulation 05:164              |        9 |      3 |
 |  4 | compliance 07:030              |        8 |      4 |
 |  5 | artificial intelligence 04:023 |        7 |      5 |
 |  6 | risk management 03:014         |        7 |      6 |
