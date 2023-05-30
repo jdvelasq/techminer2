@@ -13,6 +13,7 @@ import numpy as np
 from . import techminer
 
 
+# pylint: disable=too-many-arguments
 def add_counters_to_axis(
     dataframe,
     axis,
