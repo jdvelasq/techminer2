@@ -35,7 +35,7 @@ Gantt Chart
 9       risk management 03:014  2018    1
 
 >>> print(chart.prompt_)
-Analyze the table below which contains the  occurrences by year for the author_keywords. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
+Analyze the table below which contains the  occurrences by year for the years. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
 | author_keywords                |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
 |:-------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
@@ -57,11 +57,12 @@ Analyze the table below which contains the  occurrences by year for the author_k
 | smart contracts 02:022         |      1 |      1 |      0 |      0 |      0 |      0 |      0 |
 | charitytech 02:017             |      0 |      0 |      0 |      1 |      0 |      1 |      0 |
 | english law 02:017             |      0 |      0 |      0 |      1 |      0 |      1 |      0 |
-| gdpr 02:014                    |      0 |      0 |      0 |      1 |      1 |      0 |      0 |
+| accountability 02:014          |      0 |      0 |      0 |      1 |      1 |      0 |      0 |
 | data protection officer 02:014 |      0 |      0 |      0 |      1 |      1 |      0 |      0 |
 <BLANKLINE>
 <BLANKLINE>
 
+    
 """
 import textwrap
 from dataclasses import dataclass
@@ -93,7 +94,7 @@ def gantt_chart(
 
     fig = _create_fig(
         table,
-        obj.criterion_for_rows_,
+        obj.other_criterion_,
         obj.metric_,
         title,
     )
