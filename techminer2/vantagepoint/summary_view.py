@@ -1,5 +1,5 @@
 """
-Summary View 
+Summary View
 ===============================================================================
 
 This function returns a dataframe with the coverage (percentage of no nulls)
@@ -32,15 +32,17 @@ def summary_view(
     """
     Returns an coverage report of the dataset.
 
-    Parameters
-    ----------
-    root_dir: str
-        path to the root directory of the project.
+    Args:
+        root_dir (str, optional): Root directory. Defaults to "./".
+        database (str, optional): Database to be used. Defaults to "documents".
+        start_year (int, optional): Start year. Defaults to None.
+        end_year (int, optional): End year. Defaults to None.
+        filters (dict, optional): Filters to be applied to the database.
+            Defaults to {}.
 
-    Returns
-    -------
-    pandas.DataFrame
-        Coverage statistcs
+    Returns:
+        pd.DataFrame: Coverage report.
+
     """
 
     documents = record_utils.read_records(
