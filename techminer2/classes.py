@@ -31,6 +31,15 @@ class CorrMatrix:
 
 
 @dataclass(init=False)
+class CorrMap:
+    """Correlation map."""
+
+    plot_: go.Figure
+    table_: pd.DataFrame
+    prompt_: str
+
+
+@dataclass(init=False)
 class ColumnViewer:
     """Column viewer."""
 
