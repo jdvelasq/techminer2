@@ -52,7 +52,7 @@ Analyze the table below, which provides bibliographic indicators for a collectio
 | smart contracts         |     2 |
 | charitytech             |     2 |
 | english law             |     2 |
-| gdpr                    |     2 |
+| accountability          |     2 |
 | data protection officer |     2 |
 <BLANKLINE>
 <BLANKLINE>
