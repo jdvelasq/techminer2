@@ -6,13 +6,6 @@ Co-occurrence Analysis
 
     word_associations/__index__
 
-
-.. toctree::
-    :maxdepth: 1
-
-    co_word_analysis/__index__
-
-
 .. toctree::
     :maxdepth: 1
 

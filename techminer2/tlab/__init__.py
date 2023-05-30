@@ -1,6 +1,5 @@
 from . import (
     cluster_analysis,
-    co_word_analysis,
     comparison_between_pairs_of_keywords,
     concordances,
     correspondence_analysis,
