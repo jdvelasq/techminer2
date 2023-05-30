@@ -10,9 +10,9 @@ from . import (
     sequence_analysis,
     specificity_analysis,
     text_and_discourses,
-    thematic_analysis_of_contexts,
     word_associations,
 )
 from .comparison_between_word_pairs import comparison_between_word_pairs
 from .multidimensional_scaling import multidimensional_scaling
 from .singular_value_decomposition import singular_value_decomposition
+from .thematic_analysis_of_contexts import thematic_analysis_of_contexts

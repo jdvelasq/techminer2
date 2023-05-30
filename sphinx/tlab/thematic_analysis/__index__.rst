@@ -4,7 +4,7 @@ Thematic Analysis
 .. toctree::
     :maxdepth: 1
 
-    thematic_analysis_of_contexts/__index__
+    thematic_analysis_of_contexts
 
 
 .. toctree::

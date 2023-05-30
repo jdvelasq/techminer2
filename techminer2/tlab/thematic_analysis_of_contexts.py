@@ -1,5 +1,5 @@
 """
-Thematic Analysis of Contexts
+Thematic Analysis of Contexts --- TODO
 ===============================================================================
 
 The implemented methodology is based on the Thematic Analysis of Elementary
@@ -18,7 +18,7 @@ Contexts implemented in T-LAB.
 >>> clustering_method = AgglomerativeClustering(n_clusters=5)
 
 >>> from techminer2 import tlab
->>> analysis = tlab.thematic_analysis_of_contexts.thematic_analysis_of_contexts(
+>>> analysis = tlab.thematic_analysis_of_contexts(
 ...     criterion="author_keywords",
 ...     topic_min_occ=4,
 ...     directory=directory,
@@ -43,16 +43,18 @@ Contexts implemented in T-LAB.
 """
 import pandas as pd
 
-from ... import vantagepoint
+from .. import vantagepoint
 
 
 class _ThematicAnalysis:
     def __init__(
         self,
         criterion,
+        topic_occ_min=None,
+        topic_occ_max=None,
+        topic_citations_min=None,
+        topic_citations_max=None,
         topics_length=None,
-        topic_min_occ=None,
-        topic_min_citations=None,
         custom_topics=None,
         clustering_method=None,
         directory="./",
@@ -67,9 +69,11 @@ class _ThematicAnalysis:
     ):
         self.criterion = criterion
         self.criterion = criterion
+        self.topic_occ_min = topic_occ_min
+        self.topic_occ_max = topic_occ_max
+        self.topic_citations_min = topic_citations_min
+        self.topic_citations_max = topic_citations_max
         self.topics_length = topics_length
-        self.topic_min_occ = topic_min_occ
-        self.topic_min_citations = topic_min_citations
         self.custom_topics = custom_topics
         self.clustering_method = clustering_method
         self.directory = directory
@@ -100,7 +104,9 @@ class _ThematicAnalysis:
 
     def _compute_partitions(self):
         value_counts = self._tfidf_matrix.CLUSTER.value_counts()
-        value_counts.index = ["CL_{:>02d}".format(i) for i in range(len(value_counts))]
+        value_counts.index = [
+            "CL_{:>02d}".format(i) for i in range(len(value_counts))
+        ]
         self._partitions = value_counts
 
     def _obtain_documents(self):
@@ -115,7 +121,9 @@ class _ThematicAnalysis:
         for cluster in self._clusters.columns:
             themes[cluster] = [
                 (value, word)
-                for word, value in zip(self._clusters.index, self._clusters[cluster])
+                for word, value in zip(
+                    self._clusters.index, self._clusters[cluster]
+                )
                 if value > 0
             ]
 
@@ -134,7 +142,9 @@ class _ThematicAnalysis:
         )
         self._clusters = self._tfidf_matrix.groupby("CLUSTER").sum()
         n_clusters = self.clustering_method.n_clusters
-        self._clusters.index = ["TH_{:>02d}".format(i) for i in range(n_clusters)]
+        self._clusters.index = [
+            "TH_{:>02d}".format(i) for i in range(n_clusters)
+        ]
         self._clusters = self._clusters.transpose()
 
     def _apply_clustering(self):
@@ -174,10 +184,13 @@ class _ThematicAnalysis:
 
 def thematic_analysis_of_contexts(
     criterion,
-    topic_min_occ=None,
-    topic_min_citations=None,
+    topic_occ_min=None,
+    topic_occ_max=None,
+    topic_citations_min=None,
+    topic_citations_max=None,
+    topics_length=None,
     clustering_method=None,
-    directory="./",
+    root_dir="./",
     database="documents",
     start_year=None,
     end_year=None,
@@ -187,10 +200,13 @@ def thematic_analysis_of_contexts(
 
     return _ThematicAnalysis(
         criterion=criterion,
-        topic_min_occ=topic_min_occ,
-        topic_min_citations=topic_min_citations,
+        topic_occ_min=topic_occ_min,
+        topic_occ_max=topic_occ_max,
+        topic_citations_min=topic_citations_min,
+        topic_citations_max=topic_citations_max,
+        topics_length=topics_length,
         clustering_method=clustering_method,
-        directory=directory,
+        directory=root_dir,
         database=database,
         start_year=start_year,
         end_year=end_year,
