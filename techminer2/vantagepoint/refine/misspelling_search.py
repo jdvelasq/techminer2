@@ -6,12 +6,12 @@ Look for misspeling mistakes in the keywords of a thesaurus.
 
 >>> root_dir = "data/regtech/"
 
->>> from techminer2 import vantagepoint
->>> vantagepoint.refine.misspelling_search(
-...     "keywords.txt",
-...     root_dir=root_dir,
-... )
---INFO-- The file data/regtech/processed/misspelled.txt has been generated.
+# >>> from techminer2 import vantagepoint
+# >>> vantagepoint.refine.misspelling_search(
+# ...     "keywords.txt",
+# ...     root_dir=root_dir,
+# ... )
+# --INFO-- The file data/regtech/processed/misspelled.txt has been generated.
 
 
 """
