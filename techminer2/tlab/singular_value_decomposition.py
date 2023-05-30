@@ -23,10 +23,13 @@ SVD technique used in T-LAB's comparative analysis.
 ...     topics_length=20,
 ...     root_dir=root_dir,
 ... )
+>>> norm_co_occ_matrix = vantagepoint.analyze.association_index(
+...     co_occ_matrix, "association"
+... )
 >>> # computes the SVD
 >>> from techminer2 import tlab
 >>> svd = tlab.singular_value_decomposition(
-...     co_occ_matrix,
+...     norm_co_occ_matrix,
 ...     dim_x=0,
 ...     dim_y=1,
 ... )
@@ -40,16 +43,15 @@ SVD technique used in T-LAB's comparative analysis.
 
 
 >>> svd.table_.head()
-                                 Dim_00    Dim_01  ...    Dim_17        Dim_18
-row                                                ...                        
-regtech 28:329                32.386508 -2.623531  ...  0.017208 -1.110223e-16
-fintech 12:249                17.171575  5.275711  ... -0.005000 -1.103810e-16
-regulatory technology 07:037   3.500129  1.437108  ... -0.055078  8.428475e-16
-compliance 07:030              8.945366 -4.175846  ... -0.027151 -3.330669e-16
-regulation 05:164              6.700788  3.488011  ... -0.152399  9.285094e-16
+                                 Dim_00     Dim_01  ...    Dim_17    Dim_18
+row                                                 ...                    
+regtech 28:329                12.972062  10.391976  ...  0.012216  0.001943
+fintech 12:249                10.874094  -7.841626  ...  0.005265  0.000956
+regulatory technology 07:037   3.073117  -0.538119  ...  0.011494 -0.001101
+compliance 07:030              6.628352  -3.686916  ...  0.019177 -0.001415
+regulation 05:164              5.894711  -0.250128  ... -0.060850  0.002620
 <BLANKLINE>
 [5 rows x 19 columns]
-
 
 """
 
