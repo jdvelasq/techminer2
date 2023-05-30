@@ -10,7 +10,7 @@ Pie Chart
 >>> from techminer2 import vantagepoint
 >>> obj = vantagepoint.analyze.list_view(
 ...    criterion='author_keywords',
-...    root_dir=direcroot_dirtory,
+...    root_dir=root_dir,
 ...    topics_length=10,
 ... )
 >>> chart = vantagepoint.report.pie_chart(obj, title="Most Frequent Author Keywords")
