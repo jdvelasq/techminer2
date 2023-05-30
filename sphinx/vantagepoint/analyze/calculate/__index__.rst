@@ -1,6 +1,10 @@
 Calculate
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. toctree::
+    :maxdepth: 1
+
+    assocation_index
 
 .. toctree::
     :maxdepth: 1

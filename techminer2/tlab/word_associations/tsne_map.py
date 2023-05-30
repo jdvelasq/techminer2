@@ -51,8 +51,8 @@ import pandas as pd
 from sklearn.manifold import TSNE
 
 from ...classes import CocMatrix, ManifoldMap
-from ...matrix_normalization import matrix_normalization
 from ...scatter_plot import scatter_plot
+from ...vantagepoint.analyze.association_index import association_index
 
 MAX_DIMENSIONS = 2
 
@@ -97,9 +97,9 @@ def tsne_map(
     #
 
     if isinstance(obj, CocMatrix) and normalization is not None:
-        obj = matrix_normalization(
+        obj = association_index(
             obj,
-            normalization=normalization,
+            index_name=normalization,
         )
     else:
         raise ValueError("Invalid obj type. Must be a CocMatrix instance.")

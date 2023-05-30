@@ -1,13 +1,14 @@
+# flake8: noqa
 """
 Statistics
 ===============================================================================
 
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 
 >>> from techminer2 import vantagepoint
->>> r = vantagepoint.analyze.statistics(directory)
->>> r.table_
+>>> stats = vantagepoint.analyze.statistics(root_dir)
+>>> stats.table_
                                                             Value
 Category       Item                                              
 GENERAL        Timespan                                 2016:2023
@@ -47,7 +48,7 @@ KEYWORDS       Raw author keywords                            149
             
                
 >>> file_name = "sphinx/_static/bibliometrix__main_info_plot.html"               
->>> r.plot_.write_html(file_name)
+>>> stats.plot_.write_html(file_name)
 
 .. raw:: html
 
@@ -55,7 +56,7 @@ KEYWORDS       Raw author keywords                            149
 
 
     
->>> print(r.prompt_)
+>>> print(stats.prompt_)
 The table below provides data on the main characteristics of the dataset. Use the the information in the table to draw conclusions. Limit your description to one paragraph with no more than 250 words.
 <BLANKLINE>
 |                                                        | Value     |
@@ -111,15 +112,15 @@ from ...record_utils import read_records
 class _Statistics:
     def __init__(
         self,
-        directory,
+        root_dir,
         database="documents",
         start_year=None,
         end_year=None,
         **filters,
     ):
-        self.directory = directory
+        self.directory = root_dir
         self.records = read_records(
-            root_dir=directory,
+            root_dir=root_dir,
             database=database,
             start_year=start_year,
             end_year=end_year,
@@ -638,7 +639,7 @@ def statistics(
     """Returns main statistics of the dataset."""
 
     stats = _Statistics(
-        directory=directory,
+        root_dir=directory,
         database=database,
         start_year=start_year,
         end_year=end_year,

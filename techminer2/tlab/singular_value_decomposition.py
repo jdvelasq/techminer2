@@ -58,8 +58,8 @@ import pandas as pd
 from sklearn.decomposition import TruncatedSVD
 
 from ..classes import CocMatrix, ManifoldMap, TFMatrix
-from ..matrix_normalization import matrix_normalization
 from ..scatter_plot import scatter_plot
+from ..vantagepoint.analyze.association_index import association_index
 
 
 def singular_value_decomposition(
@@ -98,9 +98,9 @@ def singular_value_decomposition(
     #
 
     if isinstance(obj, CocMatrix) and normalization is not None:
-        obj = matrix_normalization(
+        obj = association_index(
             obj,
-            normalization=normalization,
+            index_name=normalization,
         )
     elif isinstance(obj, TFMatrix) and obj.scheme_ != "binary":
         raise ValueError("TFMatrix must be binary.")

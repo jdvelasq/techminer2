@@ -97,7 +97,7 @@ from ..._get_network_graph_plot import get_network_graph_plot
 from ..._matrix_2_matrix_list import matrix_2_matrix_list
 from ..._matrix_list_2_network_graph import matrix_list_2_network_graph
 from ...create_directory import create_directory
-from ...matrix_normalization import matrix_normalization
+from ...vantagepoint.analyze.association_index import association_index
 
 # from ..._network_community_detection import network_community_detection
 from ...vantagepoint.analyze.co_occ_matrix import co_occ_matrix
@@ -163,7 +163,7 @@ def co_occurrence_network(
         **filters,
     )
 
-    matrix = matrix_normalization(matrix, association=normalization)
+    matrix = association_index(matrix, association=normalization)
     matrix_list = matrix_2_matrix_list(matrix)
 
     graph = matrix_list_2_network_graph(matrix_list)

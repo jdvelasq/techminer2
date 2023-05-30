@@ -32,7 +32,7 @@ The following functions are available:
 
 """
 
-
+from .association_index import association_index
 from .auto_corr_matrix import auto_corr_matrix
 from .cluster_criterion import cluster_criterion
 from .cluster_members import cluster_members
@@ -55,6 +55,7 @@ from .tf_idf_matrix import tf_idf_matrix
 from .tf_matrix import tf_matrix
 
 __all__ = [
+    "association_index",
     "auto_corr_matrix",
     "cluster_criterion",
     "cluster_members",

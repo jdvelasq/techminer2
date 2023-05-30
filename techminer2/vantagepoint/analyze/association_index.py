@@ -1,8 +1,8 @@
 """
-Association Index / Similarity Coefficient (*) --- ChatGPT
+Association Index (*) --- ChatGPT
 ===============================================================================
 
-Association index is used to measure the similarity between two terms in a 
+Association index is used to measure the similarity between two terms in a
 co-occurrence matrix. The association index is a normalized version of the
 co-occurrence matrix.
 
@@ -11,16 +11,16 @@ co-occurrence matrix.
 """
 import numpy as np
 
-from .classes import CocMatrix, NormCocMatrix
+from ...classes import CocMatrix, NormCocMatrix
 
 
-def matrix_normalization(obj, normalization):
+def association_index(obj, index_name):
     """
     Calculate the association index for a co-occurrence matrix.
 
     Args:
-        obj: A :class:`CooccurrenceMatrix` instance.
-        association (str): The association index to be used. Available options
+        obj: A :class:`CocMatrix` instance.
+        index_name (str): The association index to be used. Available options
             are:
             - ``"jaccard"``: Jaccard index.
             - ``"dice"``: Dice index.
@@ -118,12 +118,12 @@ def matrix_normalization(obj, normalization):
     #
 
     if not isinstance(obj, CocMatrix):
-        raise TypeError("obj must be a CooccurrenceMatrix instance")
+        raise TypeError("obj must be a CocMatrix instance")
 
-    if isinstance(normalization, str) and normalization == "None":
-        normalization = None
+    if isinstance(index_name, str) and index_name == "None":
+        index_name = None
 
-    if normalization is None:
+    if index_name is None:
         return obj
 
     fnc = {
@@ -134,12 +134,15 @@ def matrix_normalization(obj, normalization):
         "inclusion": inclusion,
         "mutualinfo": mutualinfo,
         "association": association,
-    }[normalization]
+    }[index_name]
 
     matrix = obj.matrix_.copy()
     matrix = matrix.applymap(float)
     normalized_matrix = matrix.copy()
     normalized_matrix = fnc(matrix, normalized_matrix)
+
+    # for index in range(len(normalized_matrix)):
+    #     normalized_matrix.iloc[index, index] = 0.0
 
     normcocmatrix = NormCocMatrix()
     normcocmatrix.matrix_ = normalized_matrix
@@ -147,5 +150,6 @@ def matrix_normalization(obj, normalization):
     normcocmatrix.metric_ = obj.metric_
     normcocmatrix.criterion_ = obj.criterion_
     normcocmatrix.other_criterion_ = obj.other_criterion_
+    normcocmatrix.association_index_ = index_name
 
     return normcocmatrix

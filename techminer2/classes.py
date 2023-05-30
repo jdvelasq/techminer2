@@ -69,6 +69,7 @@ class NormCocMatrix:
     metric_: str
     other_criterion_: str
     prompt_: str
+    association_index_: str
 
 
 @dataclass(init=False)

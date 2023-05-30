@@ -3,16 +3,23 @@ Network deegre plot
 ===============================================================================
 
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 
 >>> from techminer2 import vantagepoint
 >>> file_name = "sphinx/_static/vantagepoint__network_degree_plot.html"
 >>> co_occ_matrix = vantagepoint.analyze.co_occ_matrix(
 ...    criterion='author_keywords',
-...    topic_min_occ=2,
-...    directory=directory,
+...    topic_occ_min=3,
+...    root_dir=root_dir,
 ... )
->>> chart = vantagepoint.analyze.network_degree_plot(co_occ_matrix)
+>>> normalized_co_occ_matrix = vantagepoint.analyze.association_index(
+...     co_occ_matrix, "association"
+... )
+>>> graph = vantagepoint.analyze.cluster_criterion(
+...    normalized_co_occ_matrix,
+...    community_clustering='louvain',
+... )
+>>> chart = vantagepoint.analyze.network_degree_plot(graph)
 >>> chart.plot_.write_html(file_name)
 
 .. raw:: html
@@ -22,48 +29,33 @@ Network deegre plot
 
 >>> chart.table_.head()
                            Name  Degree  Node
-0                regtech 28:329      24     0
-1                fintech 12:249      15     1
-2             compliance 07:030      13     2
-3             regulation 05:164      13     3
-4  regulatory technology 07:037      11     4
+0                regtech 28:329      12     0
+1                fintech 12:249      11     1
+2             regulation 05:164       9     2
+3  regulatory technology 07:037       9     3
+4             compliance 07:030       8     4
+
 
 >>> print(chart.prompt_)
-Analyze the table below, which provides the degree of nodes in a networkx \
-graph of a co-ocurrence matrix. Identify any notable patterns, trends, or \
-outliers in the data, and discuss their implications in the network.
+Analyze the table below, which provides the degree of nodes in a networkx graph of a co-ocurrence matrix. Identify any notable patterns, trends, or outliers in the data, and discuss their implications in the network.
 <BLANKLINE>
-|    | Name                               |   Degree |   Node |
-|---:|:-----------------------------------|---------:|-------:|
-|  0 | regtech 28:329                     |       24 |      0 |
-|  1 | fintech 12:249                     |       15 |      1 |
-|  2 | compliance 07:030                  |       13 |      2 |
-|  3 | regulation 05:164                  |       13 |      3 |
-|  4 | regulatory technology 07:037       |       11 |      4 |
-|  5 | reporting 02:001                   |       10 |      5 |
-|  6 | artificial intelligence 04:023     |        9 |      6 |
-|  7 | risk management 03:014             |        9 |      7 |
-|  8 | financial regulation 04:035        |        8 |      8 |
-|  9 | financial services 04:168          |        7 |      9 |
-| 10 | blockchain 03:005                  |        7 |     10 |
-| 11 | suptech 03:004                     |        7 |     11 |
-| 12 | finance 02:001                     |        7 |     12 |
-| 13 | innovation 03:012                  |        6 |     13 |
-| 14 | anti-money laundering 03:021       |        5 |     14 |
-| 15 | sandbox 02:012                     |        5 |     15 |
-| 16 | accountability 02:014              |        4 |     16 |
-| 17 | charitytech 02:017                 |        4 |     17 |
-| 18 | data protection officer 02:014     |        4 |     18 |
-| 19 | english law 02:017                 |        4 |     19 |
-| 20 | gdpr 02:014                        |        4 |     20 |
-| 21 | semantic technologies 02:041       |        4 |     21 |
-| 22 | data protection 02:027             |        3 |     22 |
-| 23 | smart contracts 02:022             |        2 |     23 |
-| 24 | technology 02:010                  |        2 |     24 |
-| 25 | anti money laundering (aml) 02:013 |        1 |     25 |
+|    | Name                           |   Degree |   Node |
+|---:|:-------------------------------|---------:|-------:|
+|  0 | regtech 28:329                 |       12 |      0 |
+|  1 | fintech 12:249                 |       11 |      1 |
+|  2 | regulation 05:164              |        9 |      2 |
+|  3 | regulatory technology 07:037   |        9 |      3 |
+|  4 | compliance 07:030              |        8 |      4 |
+|  5 | artificial intelligence 04:023 |        7 |      5 |
+|  6 | risk management 03:014         |        7 |      6 |
+|  7 | suptech 03:004                 |        6 |      7 |
+|  8 | blockchain 03:005              |        5 |      8 |
+|  9 | innovation 03:012              |        5 |      9 |
+| 10 | financial regulation 04:035    |        4 |     10 |
+| 11 | financial services 04:168      |        4 |     11 |
+| 12 | anti-money laundering 03:021   |        3 |     12 |
 <BLANKLINE>
 <BLANKLINE>
-
 
 
 
@@ -88,7 +80,7 @@ class _NetworkDegreePlot:
 
 
 def network_degree_plot(
-    matrix,
+    graph,
     textfont_size=8,
     yshift=3,
 ):
@@ -179,8 +171,6 @@ def network_degree_plot(
     #
     #
 
-    matrix_list = list_cells_in_matrix(matrix)
-    graph = network_utils.create_graph(matrix_list)
     graph = network_utils.compute_node_degree(graph)
     degrees = collect_degrees(graph)
     dataframe = to_dataframe(degrees)
