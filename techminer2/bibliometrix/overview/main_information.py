@@ -1,4 +1,6 @@
-"""Main information
+# flake8: noqa
+"""
+Main information
 ===============================================================================
 
 
@@ -43,17 +45,18 @@ KEYWORDS       Raw author keywords                            149
                Cleaned index keywords                         150
 
 
-            
-               
+
+
 >>> file_name = "sphinx/_static/bibliometrix__main_info_plot.html"               
 >>> r.plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../_static/bibliometrix__main_info_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/bibliometrix__main_info_plot.html" 
+    height="600px" width="100%" frameBorder="0"></iframe>
 
 
-    
+
 >>> print(r.prompt_)
 The table below provides data on the main characteristics of the dataset. Use the the information in the table to draw conclusions. Limit your description to one paragraph with no more than 250 words.
 <BLANKLINE>
@@ -94,15 +97,14 @@ The table below provides data on the main characteristics of the dataset. Use th
 <BLANKLINE>
 <BLANKLINE>
 
-
-    
+# pylint: disable=line-too-long
 """
 
 from ... import vantagepoint
 
 
 def main_information(
-    directory="./",
+    root_dir="./",
     database="documents",
     start_year=None,
     end_year=None,
@@ -111,7 +113,7 @@ def main_information(
     """Returns main statistics of the dataset."""
 
     return vantagepoint.analyze.statistics(
-        directory=directory,
+        root_dir=root_dir,
         database=database,
         start_year=start_year,
         end_year=end_year,
