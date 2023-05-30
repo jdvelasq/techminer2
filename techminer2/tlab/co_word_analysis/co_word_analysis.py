@@ -129,8 +129,8 @@ def co_word_analysis(
     matrix = co_occ_matrix(
         criterion=criterion,
         topics_length=topics_length,
-        topic_min_occ=topic_min_occ,
-        topic_min_citations=topic_min_citations,
+        topic_occ_min=topic_min_occ,
+        topic_citations_min=topic_min_citations,
         root_dir=directory,
         database=database,
         start_year=start_year,
