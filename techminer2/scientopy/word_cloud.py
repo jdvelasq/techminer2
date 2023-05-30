@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 Word Cloud
 ===============================================================================
@@ -133,7 +134,9 @@ otc reform                     1                 -0.5
 
 """
 from .._plots.word_cloud_for_indicators import word_cloud_for_indicators
-from ..techminer.indicators.growth_indicators_by_topic import growth_indicators_by_topic
+from ..techminer.indicators.growth_indicators_by_topic import (
+    growth_indicators_by_topic,
+)
 from .bar import _filter_indicators_by_custom_topics
 
 

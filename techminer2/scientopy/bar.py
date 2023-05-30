@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 Bar
 ===============================================================================
@@ -214,17 +215,13 @@ Imagine that you are a researcher analyzing a bibliographic dataset. The table b
 
 
 """
-from dataclasses import dataclass
+
 
 from .._plots.bar_plot import bar_plot
-from ..techminer.indicators.growth_indicators_by_topic import growth_indicators_by_topic
-
-
-@dataclass(init=False)
-class _Results:
-    plot_ = None
-    table_ = None
-    prompt_ = None
+from ..classes import ScientopyBar
+from ..techminer.indicators.growth_indicators_by_topic import (
+    growth_indicators_by_topic,
+)
 
 
 def bar(
@@ -277,10 +274,14 @@ def bar(
     col0 = growth_indicators.columns[0]
     col1 = growth_indicators.columns[1]
 
-    obj = _Results()
-    obj.plot_ = bar_plot(dataframe=growth_indicators, metric="OCC", title=title)
+    obj = ScientopyBar()
+    obj.plot_ = bar_plot(
+        dataframe=growth_indicators, metric="OCC", title=title
+    )
     obj.table_ = growth_indicators[["OCC", "average_growth_rate"]]
-    obj.prompt_ = _create_prompt(obj.table_, criterion, trend_analysis, col0, col1)
+    obj.prompt_ = _create_prompt(
+        obj.table_, criterion, trend_analysis, col0, col1
+    )
 
     return obj
 
@@ -323,7 +324,9 @@ Limit your description to one paragraph with no more than 250 words.
 """
 
 
-def _filter_indicators_by_custom_topics(indicators, topics_length, custom_topics):
+def _filter_indicators_by_custom_topics(
+    indicators, topics_length, custom_topics
+):
     # Copy the indicators dataframe to avoid mutating the original dataframe.
     indicators_copy = indicators.copy()
 
@@ -331,7 +334,9 @@ def _filter_indicators_by_custom_topics(indicators, topics_length, custom_topics
     # topics list.
     if custom_topics is not None:
         custom_topics = [
-            topic for topic in custom_topics if topic in indicators.index.tolist()
+            topic
+            for topic in custom_topics
+            if topic in indicators.index.tolist()
         ]
     # If no custom topics are provided, keep the first n rows of the indicators
     # dataframe, where n is the number of topics.

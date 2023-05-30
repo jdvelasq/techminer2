@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 Bar Trends
 ===============================================================================
@@ -212,7 +213,9 @@ from dataclasses import dataclass
 
 import plotly.express as px
 
-from ..techminer.indicators.growth_indicators_by_topic import growth_indicators_by_topic
+from ..techminer.indicators.growth_indicators_by_topic import (
+    growth_indicators_by_topic,
+)
 from .bar import _filter_indicators_by_custom_topics
 
 
@@ -289,7 +292,9 @@ def bar_trends(
     )
 
     results.plot_ = _make_plot(indicators, criterion, col0, col1, title)
-    results.prompt_ = _create_prompt(indicators, criterion, trend_analysis, col0, col1)
+    results.prompt_ = _create_prompt(
+        indicators, criterion, trend_analysis, col0, col1
+    )
 
     return results
 
@@ -326,7 +331,9 @@ Limit your description to one paragraph with no more than 250 words.
 """
 
 
-def _filter_indicators_by_custom_topics(indicators, topics_length, custom_topics):
+def _filter_indicators_by_custom_topics(
+    indicators, topics_length, custom_topics
+):
     # Copy the indicators dataframe to avoid mutating the original dataframe.
     indicators_copy = indicators.copy()
 
@@ -334,7 +341,9 @@ def _filter_indicators_by_custom_topics(indicators, topics_length, custom_topics
     # topics list.
     if custom_topics is not None:
         custom_topics = [
-            topic for topic in custom_topics if topic in indicators.index.tolist()
+            topic
+            for topic in custom_topics
+            if topic in indicators.index.tolist()
         ]
     # If no custom topics are provided, keep the first n rows of the indicators
     # dataframe, where n is the number of topics.

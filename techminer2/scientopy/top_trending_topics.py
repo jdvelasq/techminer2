@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 Top Trending Topics
 ===============================================================================
@@ -55,7 +56,9 @@ from dataclasses import dataclass
 from techminer2.scientopy.bar import _filter_indicators_by_custom_topics
 
 from .._px.bar_px import bar_px
-from ..techminer.indicators.growth_indicators_by_topic import growth_indicators_by_topic
+from ..techminer.indicators.growth_indicators_by_topic import (
+    growth_indicators_by_topic,
+)
 
 
 @dataclass(init=False)
