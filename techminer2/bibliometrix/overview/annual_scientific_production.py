@@ -48,17 +48,14 @@ The table below provides data on the annual scientific production. Use the table
 # pylint: disable=line-too-long
 """
 from ...classes import IndicatorByYearChart
-from ...techminer.indicators.indicators_by_year import indicators_by_year
-from ...techminer.indicators.indicators_by_year_plot import (
-    indicators_by_year_plot,
-)
+from ...techminer.indicators import indicators_by_year, indicators_by_year_plot
 
 
 def annual_scientific_production(
     root_dir="./",
     database="documents",
-    start_year=None,
-    end_year=None,
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
     """Computes annual scientific production (number of documents per year).
@@ -66,9 +63,9 @@ def annual_scientific_production(
     Args:
         root_dir (str, optional): Root directory. Defaults to "./".
         database (str, optional): Database name. Defaults to "documents".
-        start_year (int, optional): Start year. Defaults to None.
-        end_year (int, optional): End year. Defaults to None.
-        filters (dict, optional): Filters. Defaults to {}.
+        year_filter (tuple, optional): Year filter. Defaults to None.
+        cited_by_filter (tuple, optional): Cited by filter. Defaults to None.
+        **filters (dict, optional): Filters to be applied to the database. Defaults to {}.
 
     Returns:
         :class:`IndicatorByYearChart`: A :class:`IndicatorByYearChart` instance.
@@ -101,8 +98,8 @@ def annual_scientific_production(
     indicators = indicators_by_year(
         root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 

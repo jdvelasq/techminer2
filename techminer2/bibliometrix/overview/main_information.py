@@ -102,7 +102,7 @@ The table below provides data on the main characteristics of the dataset. Use th
 # pylint: disable=line-too-long
 """
 
-from ... import vantagepoint
+from ...vantagepoint.analyze import statistics
 
 
 def main_information(
@@ -112,9 +112,21 @@ def main_information(
     cited_by_filter=None,
     **filters,
 ):
-    """Returns main statistics of the dataset."""
+    """Returns main statistics of the dataset.
 
-    return vantagepoint.analyze.statistics(
+    Args:
+        root_dir (str, optional): root directory. Defaults to "./".
+        database (str, optional): database name. Defaults to "documents".
+        year_filter (tuple, optional): Year filter. Defaults to None.
+        cited_by_filter (tuple, optional): Cited by filter. Defaults to None.
+        **filters (dict, optional): Filters to be applied to the database. Defaults to {}.
+
+    Returns:
+        RecordStatistics: RecordStatistics object.
+
+    """
+
+    return statistics(
         root_dir=root_dir,
         database=database,
         year_filter=year_filter,

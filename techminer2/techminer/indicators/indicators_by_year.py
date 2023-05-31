@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 Indicators by Year 
 ===============================================================================
@@ -78,36 +79,36 @@ year                ...
 """
 import plotly.express as px
 
-from ... import record_utils
+from ...record_utils import read_records
 
 
 def indicators_by_year(
     root_dir="./",
     database="documents",
-    start_year=None,
-    end_year=None,
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
     """
     Computes annual indicators.
 
     Args:
-        root_dir (str): root directory.
-        database (str): database name.
-        start_year (int): start year.
-        end_year (int): end year.
-        **filters: filters.
+        root_dir (str, optional): root directory. Defaults to "./".
+        database (str, optional): database name. Defaults to "documents".
+        year_filter (tuple, optional): Year filter. Defaults to None.
+        cited_by_filter (tuple, optional): Cited by filter. Defaults to None.
+        **filters (dict, optional): Filters to be applied to the database. Defaults to {}.
 
     Returns:
         pandas.DataFrame: annual indicators.
 
     """
 
-    records = record_utils.read_records(
+    records = read_records(
         root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 
