@@ -107,6 +107,7 @@ def most_frequent_authors(
     Returns:
         BasicChart: A basic chart object.
 
+    # pylint: disable=line-too-long
     """
 
     return bbx_indicators_by_item(

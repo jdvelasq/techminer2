@@ -105,7 +105,7 @@ def most_frequent_sources(
     Returns:
         BasicChart: A basic chart object.
 
-
+    # pylint: disable=line-too-long
     """
 
     if title is None:
