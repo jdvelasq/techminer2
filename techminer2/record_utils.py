@@ -162,8 +162,8 @@ def create_records_report(root_dir, target_dir, records, report_filename):
 def read_records(
     root_dir="./",
     database="documents",
-    start_year=None,
-    end_year=None,
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
     """loads and filter records of main database text files."""
@@ -182,13 +182,55 @@ def read_records(
 
         return records
 
-    def _filter_records_by_year(records, start_year, end_year):
+    def _filter_records_by_year(records, year_filter):
         """Filter records by year."""
+
+        if year_filter is None:
+            return records
+
+        if not isinstance(year_filter, tuple):
+            raise TypeError(
+                "The year_range parameter must be a tuple of two values."
+            )
+
+        if len(year_filter) != 2:
+            raise ValueError(
+                "The year_range parameter must be a tuple of two values."
+            )
+
+        start_year, end_year = year_filter
 
         if start_year is not None:
             records = records[records.year >= start_year]
+
         if end_year is not None:
             records = records[records.year <= end_year]
+
+        return records
+
+    def _filter_records_by_citations(records, cited_by_filter):
+        """Filter records by year."""
+
+        if cited_by_filter is None:
+            return records
+
+        if not isinstance(cited_by_filter, tuple):
+            raise TypeError(
+                "The cited_by_range parameter must be a tuple of two values."
+            )
+
+        if len(cited_by_filter) != 2:
+            raise ValueError(
+                "The cited_by_range parameter must be a tuple of two values."
+            )
+
+        cited_by_min, cited_by_max = cited_by_filter
+
+        if cited_by_min is not None:
+            records = records[records.global_citations >= cited_by_min]
+
+        if cited_by_max is not None:
+            records = records[records.global_citations <= cited_by_max]
 
         return records
 
@@ -213,7 +255,8 @@ def read_records(
         return records
 
     records = _get_records_from_file(root_dir, database)
-    records = _filter_records_by_year(records, start_year, end_year)
+    records = _filter_records_by_year(records, year_filter)
+    records = _filter_records_by_citations(records, cited_by_filter)
     records = _apply_filters_to_records(records, **filters)
 
     return records
