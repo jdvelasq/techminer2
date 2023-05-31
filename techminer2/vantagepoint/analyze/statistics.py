@@ -212,6 +212,7 @@ class _Statistics:
 
     def compute_timespam(self):
         """Computes the timespan of the records"""
+
         return str(min(self.records.year)) + ":" + str(max(self.records.year))
 
     def documents(self):
@@ -675,7 +676,7 @@ def statistics(
         database (str, optional): Database name. Defaults to "documents".
         year_filter (tuple, optional): Year filter. Defaults to None.
         cited_by_filter (tuple, optional): Cited by filter. Defaults to None.
-        **filters: Filters.
+        **filters (dict, optional): Filters to be applied to the database. Defaults to {}.
 
     Returns:
         RecordStatistics: RecordStatistics object.
