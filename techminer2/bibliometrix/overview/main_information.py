@@ -108,8 +108,8 @@ from ... import vantagepoint
 def main_information(
     root_dir="./",
     database="documents",
-    start_year=None,
-    end_year=None,
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
     """Returns main statistics of the dataset."""
@@ -117,7 +117,7 @@ def main_information(
     return vantagepoint.analyze.statistics(
         root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
