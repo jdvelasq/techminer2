@@ -8,7 +8,7 @@ Report
     bar_chart
 
 .. toctree::    
-    cleveland_chart
+    cleveland_dot_chart
 
 
 .. toctree::    

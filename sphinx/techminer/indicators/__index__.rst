@@ -17,7 +17,7 @@ Indicators
     indicators_by_document
 
 .. toctree::    
-    indicators_by_topic
+    indicators_by_item
 
 .. toctree::    
     indicators_by_topic_per_year
