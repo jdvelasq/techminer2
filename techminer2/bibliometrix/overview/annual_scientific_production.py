@@ -18,13 +18,15 @@ Annual Scientific Production
 
 
 >>> r.table_.head()
-      OCC  cum_OCC
-year              
-2016    1        1
-2017    4        5
-2018    3        8
-2019    6       14
-2020   14       28
+      OCC  cum_OCC  ...  cum_local_citations  mean_local_citations_per_year
+year                ...                                                    
+2016    1        1  ...                  0.0                           0.00
+2017    4        5  ...                  3.0                           0.11
+2018    3        8  ...                 33.0                           1.67
+2019    6       14  ...                 52.0                           0.63
+2020   14       28  ...                 81.0                           0.52
+<BLANKLINE>
+[5 rows x 11 columns]
 
 
 >>> print(r.prompt_)
@@ -43,68 +45,76 @@ The table below provides data on the annual scientific production. Use the table
 <BLANKLINE>
 <BLANKLINE>
 
-
+# pylint: disable=line-too-long
 """
-from dataclasses import dataclass
-
+from ...classes import IndicatorByYearChart
 from ...techminer.indicators.indicators_by_year import indicators_by_year
 from ...techminer.indicators.indicators_by_year_plot import (
     indicators_by_year_plot,
 )
 
 
-@dataclass(init=False)
-class _Results:
-    table_ = None
-    plot_ = None
-    prompt_ = None
-
-
 def annual_scientific_production(
-    directory="./",
+    root_dir="./",
     database="documents",
     start_year=None,
     end_year=None,
     **filters,
 ):
-    """Computes annual scientific production (number of documents per year)."""
+    """Computes annual scientific production (number of documents per year).
+
+    Args:
+        root_dir (str, optional): Root directory. Defaults to "./".
+        database (str, optional): Database name. Defaults to "documents".
+        start_year (int, optional): Start year. Defaults to None.
+        end_year (int, optional): End year. Defaults to None.
+        filters (dict, optional): Filters. Defaults to {}.
+
+    Returns:
+        IndicatorByYearChart: A dataclass with the following attributes:
+
+            * plot_
+
+            * prompt_
+
+            * table_
+
+
+    """
+
+    def generate_chatgpt_prompt(table):
+        """Generates the prompt for annual_scientific_production."""
+
+        return (
+            "The table below provides data on the annual scientific "
+            "production. Use the table to draw conclusions about annual "
+            "research productivity and the cumulative productivity. The "
+            "column 'OCC' is the number of documents published in a given "
+            "year. The column 'cum_OCC' is the cumulative number of "
+            "documents published up to a given year. The information in the "
+            "table is used to create a line plot of number of publications "
+            "per year. In your analysis, be sure to describe in a clear and "
+            "concise way, any trends or patterns you observe, and identify "
+            "any outliers or anomalies in the data. Limit your description "
+            "to one paragraph with no more than 250 words."
+            f"\n\n{table.to_markdown()}\n\n"
+        )
 
     indicators = indicators_by_year(
-        root_dir=directory,
+        root_dir=root_dir,
         database=database,
         start_year=start_year,
         end_year=end_year,
         **filters,
     )
 
-    results = _Results()
-    results.table_ = indicators[["OCC", "cum_OCC"]]
+    results = IndicatorByYearChart()
+    results.table_ = indicators
     results.plot_ = indicators_by_year_plot(
         indicators,
         metric="OCC",
         title="Annual Scientific Production",
     )
-    results.prompt_ = _annual_scientific_production_prompt(results.table_)
+    results.prompt_ = generate_chatgpt_prompt(indicators[["OCC", "cum_OCC"]])
 
     return results
-
-
-def _annual_scientific_production_prompt(table):
-    """Generates the prompt for annual_scientific_production."""
-
-    prompt = f"""\
-The table below provides data on the annual scientific production. Use the \
-table to draw conclusions about annual research productivity and the \
-cumulative productivity. The column 'OCC' is the number of documents \
-published in a given year. The column 'cum_OCC' is the cumulative number of \
-documents published up to a given year. The information in the table is used \
-to create a line plot of number of publications per year. In your analysis, \
-be sure to describe in a clear and concise way, any trends or patterns you \
-observe, and identify any outliers or anomalies in the data. Limit your \
-description to one paragraph with no more than 250 words.
-
-{table.to_markdown()}
-
-"""
-
-    return prompt

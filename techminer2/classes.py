@@ -10,8 +10,17 @@ import plotly.graph_objs as go
 
 
 @dataclass(init=False)
-class Chart:
-    """VantagePointChart."""
+class IndicatorByYearChart:
+    """Indicator by year chart."""
+
+    plot_: go.Figure
+    prompt_: str
+    table_: pd.DataFrame
+
+
+@dataclass(init=False)
+class BasicChart:
+    """Basic chart."""
 
     plot_: go.Figure
     prompt_: str

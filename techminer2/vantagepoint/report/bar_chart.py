@@ -63,7 +63,7 @@ Analyze the table below which contains values for the metric OCC for author_keyw
 """
 import plotly.express as px
 
-from ...classes import Chart, ListView
+from ...classes import BasicChart, ListView
 
 
 def bar_chart(
@@ -143,7 +143,7 @@ def bar_chart(
     if not isinstance(obj, ListView):
         raise TypeError("`obj` must be a ListView instance")
 
-    chart = Chart()
+    chart = BasicChart()
     chart.plot_ = create_fig(obj)
     chart.table_ = obj.table_[obj.metric_]
     chart.prompt_ = chatgpt_default_prompt()
