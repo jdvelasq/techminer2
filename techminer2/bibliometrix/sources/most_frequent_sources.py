@@ -4,6 +4,10 @@ Most Frequent Sources
 ===============================================================================
 
 
+
+Example
+-------------------------------------------------------------------------------
+
 >>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__most_frequent_sources.html"
 
@@ -62,6 +66,7 @@ Analyze the table below, which provides bibliometric indicators for the field 's
 from ..utils import bbx_indicators_by_item
 
 
+# pylint: disable=too-many-arguments
 def most_frequent_sources(
     root_dir="./",
     database="documents",

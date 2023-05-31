@@ -1,17 +1,20 @@
+# flake8: noqa
 """
 Most Frequent Countries
 ===============================================================================
 
 
->>> directory = "data/regtech/"
+Example
+-------------------------------------------------------------------------------
+
+>>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__most_frequent_countries.html"
 
 
 >>> from techminer2 import bibliometrix
 >>> r = bibliometrix.countries.most_frequent_countries(
-...     directory=directory,
-...     topics_length=20,
-...     database="documents",
+...     root_dir=root_dir,
+...     top_n=20,
 ... )
 >>> r.plot_.write_html(file_name)
 
@@ -29,71 +32,81 @@ China             5
 Name: OCC, dtype: int64
 
 >>> print(r.prompt_)
-Analyze the table below, which provides bibliographic indicators for a collection of research articles. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
+Analyze the table below, which provides bibliometric indicators for the field 'countries' in a scientific bibliography database. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
-| countries            |   OCC |
-|:---------------------|------:|
-| United Kingdom       |     7 |
-| Australia            |     7 |
-| United States        |     6 |
-| Ireland              |     5 |
-| China                |     5 |
-| Italy                |     5 |
-| Germany              |     4 |
-| Switzerland          |     4 |
-| Bahrain              |     4 |
-| Hong Kong            |     3 |
-| Luxembourg           |     2 |
-| United Arab Emirates |     2 |
-| Spain                |     2 |
-| Indonesia            |     2 |
-| Greece               |     1 |
-| Japan                |     1 |
-| Jordan               |     1 |
-| South Africa         |     1 |
-| Ukraine              |     1 |
-| Malaysia             |     1 |
+| countries            |   OCC |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |
+|:---------------------|------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|
+| United Kingdom       |     7 |                199 |                34 |                           28.43 |                           4.86 |
+| Australia            |     7 |                199 |                15 |                           28.43 |                           2.14 |
+| United States        |     6 |                 59 |                11 |                            9.83 |                           1.83 |
+| Ireland              |     5 |                 55 |                22 |                           11    |                           4.4  |
+| China                |     5 |                 27 |                 5 |                            5.4  |                           1    |
+| Italy                |     5 |                  5 |                 2 |                            1    |                           0.4  |
+| Germany              |     4 |                 51 |                17 |                           12.75 |                           4.25 |
+| Switzerland          |     4 |                 45 |                13 |                           11.25 |                           3.25 |
+| Bahrain              |     4 |                 19 |                 5 |                            4.75 |                           1.25 |
+| Hong Kong            |     3 |                185 |                 8 |                           61.67 |                           2.67 |
+| Luxembourg           |     2 |                 34 |                 8 |                           17    |                           4    |
+| United Arab Emirates |     2 |                 13 |                 7 |                            6.5  |                           3.5  |
+| Spain                |     2 |                  4 |                 0 |                            2    |                           0    |
+| Indonesia            |     2 |                  0 |                 0 |                            0    |                           0    |
+| Greece               |     1 |                 21 |                 8 |                           21    |                           8    |
+| Japan                |     1 |                 13 |                 1 |                           13    |                           1    |
+| Jordan               |     1 |                 11 |                 4 |                           11    |                           4    |
+| South Africa         |     1 |                 11 |                 4 |                           11    |                           4    |
+| Ukraine              |     1 |                  4 |                 0 |                            4    |                           0    |
+| Malaysia             |     1 |                  3 |                 0 |                            3    |                           0    |
 <BLANKLINE>
 <BLANKLINE>
 
+    
+
+# pylint: disable=line-too-long
 """
 from ..utils import bbx_indicators_by_item
 
 
+# pylint: disable=too-many-arguments
 def most_frequent_countries(
-    plot="cleveland_chart",
-    x_label=None,
-    y_label=None,
-    directory="./",
-    topics_length=20,
-    topic_min_occ=None,
-    topic_max_occ=None,
-    topic_min_citations=None,
-    topic_max_citations=None,
-    custom_topics=None,
+    root_dir="./",
     database="documents",
-    start_year=None,
-    end_year=None,
+    # Plot options:
+    plot="cleveland_dot_chart",
+    metric_label=None,
+    field_label=None,
+    title=None,
+    # Item filters:
+    top_n=20,
+    occ_range=None,
+    gc_range=None,
+    custom_items=None,
+    # Database filters:
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
     """Plots the number of documents by country using the specified plot."""
 
+    if title is None:
+        title = "Most Frequent Countries"
+
     return bbx_indicators_by_item(
         field="countries",
-        metric="OCC",
-        plot=plot,
-        x_label=x_label,
-        y_label=y_label,
-        title="Most Frequent Countries",
-        root_dir=directory,
-        top_n=topics_length,
-        occ_range=topic_min_occ,
-        topic_max_occ=topic_max_occ,
-        gc_range=topic_min_citations,
-        topic_max_citations=topic_max_citations,
-        custom_items=custom_topics,
+        root_dir=root_dir,
         database=database,
-        year_filter=start_year,
-        cited_by_filter=end_year,
+        metric="OCC",
+        # Plot options:
+        plot=plot,
+        metric_label=metric_label,
+        field_label=field_label,
+        title=title,
+        # Item filters:
+        top_n=top_n,
+        occ_range=occ_range,
+        gc_range=gc_range,
+        custom_items=custom_items,
+        # Database filters:
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
