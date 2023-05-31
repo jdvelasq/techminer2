@@ -45,8 +45,10 @@ The table below provides data on the average citations per year of the dataset. 
 """
 from dataclasses import dataclass
 
-from ..._lib._time_plot import time_plot
 from ...techminer.indicators.indicators_by_year import indicators_by_year
+from ...techminer.indicators.indicators_by_year_plot import (
+    indicators_by_year_plot,
+)
 
 
 @dataclass(init=False)
@@ -85,7 +87,7 @@ def average_citations_per_year(
 def _average_citations_per_year_plot(indicators):
     """Average citations per year plot."""
 
-    return time_plot(
+    return indicators_by_year_plot(
         indicators,
         metric="mean_global_citations",
         title="Average Citations per Year",

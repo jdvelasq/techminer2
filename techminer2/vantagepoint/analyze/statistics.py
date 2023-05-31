@@ -632,7 +632,7 @@ description to one paragraph with no more than 250 words.
 
 
 def statistics(
-    directory="./",
+    root_dir="./",
     database="documents",
     start_year=None,
     end_year=None,
@@ -641,7 +641,7 @@ def statistics(
     """Returns main statistics of the dataset."""
 
     stats = _Statistics(
-        root_dir=directory,
+        root_dir=root_dir,
         database=database,
         start_year=start_year,
         end_year=end_year,

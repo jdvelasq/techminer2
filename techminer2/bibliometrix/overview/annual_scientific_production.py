@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 Annual Scientific Production
 ===============================================================================
@@ -12,7 +13,8 @@ Annual Scientific Production
 
 .. raw:: html
 
-    <iframe src="../../_static/bibliometrix__annual_scientific_production.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/bibliometrix__annual_scientific_production.html" 
+    height="600px" width="100%" frameBorder="0"></iframe>
 
 
 >>> r.table_.head()
@@ -45,8 +47,10 @@ The table below provides data on the annual scientific production. Use the table
 """
 from dataclasses import dataclass
 
-from ..._lib._time_plot import time_plot
 from ...techminer.indicators.indicators_by_year import indicators_by_year
+from ...techminer.indicators.indicators_by_year_plot import (
+    indicators_by_year_plot,
+)
 
 
 @dataclass(init=False)
@@ -75,7 +79,7 @@ def annual_scientific_production(
 
     results = _Results()
     results.table_ = indicators[["OCC", "cum_OCC"]]
-    results.plot_ = time_plot(
+    results.plot_ = indicators_by_year_plot(
         indicators,
         metric="OCC",
         title="Annual Scientific Production",

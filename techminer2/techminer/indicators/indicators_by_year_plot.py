@@ -1,34 +1,35 @@
+# flake8: noqa
 """
-Time Plot
+Indicators by Year Plot
 ===============================================================================
 
-See :doc:`annual indicators <annual_indicators>` to obtain a `pandas.Dataframe` 
-with the data.
+Creates a time line plot from a dataframe of indicators by year.
 
 
->>> directory = "data/regtech/"
+Example
+-------------------------------------------------------------------------------
+
+>>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/time_plot.html"
-
->>> from .tm2__indicators_by_year import tm2__indicators_by_year
->>> from techminer2._time_plot import time_plot
-
->>> indicators = tm2__indicators_by_year(directory=directory)
->>> time_plot(
+>>> from techminer2 import techminer
+>>> indicators = techminer.indicators.indicators_by_year(root_dir)
+>>> indicators_by_year_plot(
 ...     indicators,
-...     metric="OCC",
-...     title="Annual Scientific Production",
+...     metric="mean_global_citations",
+...     title="Average Citations per Year",
 ... ).write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="_static/time_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/time_plot.html" height="600px" width="100%" 
+    frameBorder="0"></iframe>
 
 """
 import plotly.express as px
 
 
-def time_plot(
-    indicators,
+def indicators_by_year_plot(
+    indicators_by_year,
     metric,
     title,
 ):
@@ -36,16 +37,16 @@ def time_plot(
 
     column_names = {
         column: column.replace("_", " ").title()
-        for column in indicators.columns
+        for column in indicators_by_year.columns
         if column not in ["OCC", "cum_OCC"]
     }
     column_names["OCC"] = "OCC"
     column_names["cum_OCC"] = "cum_OCC"
-    indicators = indicators.rename(columns=column_names)
+    indicators_by_year = indicators_by_year.rename(columns=column_names)
 
     fig = px.line(
-        indicators,
-        x=indicators.index,
+        indicators_by_year,
+        x=indicators_by_year.index,
         y=column_names[metric],
         title=title,
         markers=True,
