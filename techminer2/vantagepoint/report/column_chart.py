@@ -4,6 +4,10 @@ Column chart
 ===============================================================================
 
 
+
+Example
+-------------------------------------------------------------------------------
+
 >>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/vantagepoint__column_chart.html"
 
@@ -48,11 +52,12 @@ Analyze the table below, which provides bibliometric indicators for the field 'a
 
 
 
-
+# pylint: disable=line-too-long
 """
 import plotly.express as px
 
 from ...classes import BasicChart
+from ...utils import check_listview
 
 
 def column_chart(
@@ -63,16 +68,15 @@ def column_chart(
 ):
     """Column chart.
 
-    Parameters
-    ----------
-    obj : techminer2.vantagepoint.analyze.Analyze
-        An object of type Analyze.
-    title : str, optional
-        Title of the chart, by default None
-    x_label : str, optional
-        Label of the x-axis, by default None
-    y_label : str, optional
-        Label of the y-axis, by default None
+    Args:
+        obj (vantagepoint.analyze.list_view): A list view object.
+        title (str, optional): Title. Defaults to None.
+        metric_label (str, optional): Metric label. Defaults to None.
+        field_label (str, optional): Field label. Defaults to None.
+
+    Returns:
+        BasicChart: A basic chart object.
+
 
     """
 
@@ -118,6 +122,8 @@ def column_chart(
     #
     # Main code
     #
+
+    check_listview(obj)
 
     chart = BasicChart()
     chart.plot_ = create_plot()

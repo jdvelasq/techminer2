@@ -4,6 +4,8 @@ Cleveland Chart (*)
 ===============================================================================
 
 
+Example
+-------------------------------------------------------------------------------
 
 >>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/vantagepoint__cleveland_chart.html"
@@ -57,6 +59,7 @@ Analyze the table below, which provides bibliometric indicators for the field 'a
 import plotly.express as px
 
 from ...classes import BasicChart
+from ...utils import check_listview
 
 
 def cleveland_dot_chart(
@@ -70,9 +73,11 @@ def cleveland_dot_chart(
     Args:
         obj (vantagepoint.analyze.list_view): A list view object.
         title (str, optional): Title. Defaults to None.
-        x_label (str, optional): X label. Defaults to None.
-        y_label (str, optional): Y label. Defaults to None.
+        metric_label (str, optional): Metric label. Defaults to None.
+        field_label (str, optional): Field label. Defaults to None.
 
+    Returns:
+        BasicChart: A basic chart object.
 
     """
 
@@ -120,6 +125,8 @@ def cleveland_dot_chart(
     #
     # Main code
     #
+
+    check_listview(obj)
 
     chart = BasicChart()
     chart.plot_ = create_plot()

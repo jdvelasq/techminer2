@@ -4,13 +4,15 @@ Bar Chart
 ===============================================================================
 
 
+Example
+-------------------------------------------------------------------------------
 
 >>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/vantagepoint__bar_chart.html"
 
 >>> from techminer2 import vantagepoint
 >>> obj = vantagepoint.analyze.list_view(
-...     criterion='author_keywords',
+...     field='author_keywords',
 ...     root_dir=root_dir,
 ... )
 >>> chart = vantagepoint.report.bar_chart(obj, title="Most Frequent Author Keywords")
@@ -32,7 +34,7 @@ Name: OCC, dtype: int64
 
 
 >>> print(chart.prompt_)
-Analyze the table below which contains values for the metric OCC for author_keywords Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
+Analyze the table below, which provides bibliometric indicators for the field 'author_keywords' in a scientific bibliography database. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
 | author_keywords         |   OCC |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |
 |:------------------------|------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|
@@ -46,57 +48,38 @@ Analyze the table below which contains values for the metric OCC for author_keyw
 | artificial intelligence |     4 |                 23 |                 6 |                            5.75 |                           1.5  |
 | anti-money laundering   |     3 |                 21 |                 4 |                            7    |                           1.33 |
 | risk management         |     3 |                 14 |                 8 |                            4.67 |                           2.67 |
-| innovation              |     3 |                 12 |                 4 |                            4    |                           1.33 |
-| blockchain              |     3 |                  5 |                 0 |                            1.67 |                           0    |
-| suptech                 |     3 |                  4 |                 2 |                            1.33 |                           0.67 |
-| semantic technologies   |     2 |                 41 |                19 |                           20.5  |                           9.5  |
-| data protection         |     2 |                 27 |                 5 |                           13.5  |                           2.5  |
-| smart contracts         |     2 |                 22 |                 8 |                           11    |                           4    |
-| charitytech             |     2 |                 17 |                 4 |                            8.5  |                           2    |
-| english law             |     2 |                 17 |                 4 |                            8.5  |                           2    |
-| accountability          |     2 |                 14 |                 3 |                            7    |                           1.5  |
-| data protection officer |     2 |                 14 |                 3 |                            7    |                           1.5  |
 <BLANKLINE>
 <BLANKLINE>
 
 
+# pylint: disable=line-too-long
 """
 import plotly.express as px
 
-from ...classes import BasicChart, ListView
+from ...classes import BasicChart
+from ...utils import check_listview
 
 
 def bar_chart(
     obj,
     title=None,
-    criterion_label=None,
     metric_label=None,
+    field_label=None,
 ):
     """Bar chart.
 
     Args:
-        obj: a data instance.
-        title (str): the title of the chart.
-        criterion_label (str): the label of the criterion.
-        values_label (str): the label of the values.
+        obj (vantagepoint.analyze.list_view): A list view object.
+        title (str, optional): Title. Defaults to None.
+        metric_label (str, optional): Metric label. Defaults to None.
+        field_label (str, optional): Field label. Defaults to None.
 
     Returns:
-        A :class:`Chart` instance.
+        BasicChart: A basic chart object.
 
     """
 
-    def chatgpt_default_prompt():
-        return (
-            "Analyze the table below which contains values for the metric "
-            f"{obj.metric_} for {obj.criterion_} "
-            f"Identify any notable patterns, "
-            "trends, or outliers in the data, and discuss their implications "
-            "for the research field. Be sure to provide a concise summary of "
-            "your findings in no more than 150 words."
-            f"\n\n{obj.table_.to_markdown()}\n\n"
-        )
-
-    def create_fig(obj):
+    def create_plot():
         figure = px.bar(
             obj.table_,
             x=obj.metric_,
@@ -129,8 +112,8 @@ def bar_chart(
             autorange="reversed",
             gridcolor="lightgray",
             griddash="dot",
-            title_text=criterion_label
-            if criterion_label is not None
+            title_text=field_label
+            if field_label is not None
             else obj.criterion_.replace("_", " ").upper(),
         )
         return figure
@@ -140,12 +123,12 @@ def bar_chart(
     # Main:
     #
     #
-    if not isinstance(obj, ListView):
-        raise TypeError("`obj` must be a ListView instance")
+
+    check_listview(obj)
 
     chart = BasicChart()
-    chart.plot_ = create_fig(obj)
+    chart.plot_ = create_plot()
     chart.table_ = obj.table_[obj.metric_]
-    chart.prompt_ = chatgpt_default_prompt()
+    chart.prompt_ = obj.prompt_
 
     return chart

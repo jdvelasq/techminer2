@@ -105,7 +105,7 @@ def co_occurrence_bar_plot(
     chart = bar_chart(
         list_view,
         title=title,
-        criterion_label=criterion_label,
+        field_label=criterion_label,
         metric_label=metric_label,
     )
 
