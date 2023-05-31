@@ -1,5 +1,5 @@
 """documents by each item in a column"""
-from ..record_utils import read_records
+from ..utils.records import read_records
 
 
 def documents_per_criterion(

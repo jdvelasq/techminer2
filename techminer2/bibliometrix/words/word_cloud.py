@@ -46,18 +46,18 @@ def word_cloud(
     """Plots a word cloud from a dataframe."""
 
     topics = vantagepoint.analyze.list_view(
-        criterion=criterion,
-        topics_length=topics_length,
-        topic_occ_min=topic_min_occ,
+        field=criterion,
+        top_n=topics_length,
+        occ_range=topic_min_occ,
         topic_occ_max=topic_max_occ,
-        topic_citations_min=topic_min_citations,
+        gc_range=topic_min_citations,
         topic_citations_max=topic_max_citations,
-        custom_topics=custom_topics,
+        items=custom_topics,
         root_dir=directory,
         metric=metric,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=start_year,
+        cited_by_filter=end_year,
         **filters,
     )
 

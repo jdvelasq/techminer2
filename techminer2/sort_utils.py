@@ -69,11 +69,11 @@ def sort_matrix_axis(
     matrix = matrix.copy()
 
     indicators_by_topic = techminer.indicators.indicators_by_topic(
-        criterion=criterion,
+        field=criterion,
         root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=start_year,
+        cited_by_filter=end_year,
         **filters,
     )
 

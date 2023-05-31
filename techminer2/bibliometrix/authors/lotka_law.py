@@ -130,11 +130,11 @@ def _core_authors(
     # 5                  7            1
     #
     indicators = indicators_by_topic(
-        criterion="authors",
+        field="authors",
         root_dir=directory,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=start_year,
+        cited_by_filter=end_year,
         **filters,
     )
 

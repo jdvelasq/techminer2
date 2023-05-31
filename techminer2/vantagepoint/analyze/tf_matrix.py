@@ -29,10 +29,10 @@ import pandas as pd
 
 from ...classes import TFMatrix
 from ...counters import add_counters_to_axis
-from ...load_utils import load_stopwords
-from ...record_utils import read_records
+from ...item_utils import generate_custom_items
 from ...techminer.indicators.indicators_by_topic import indicators_by_topic
-from ...topics import generate_custom_topics
+from ...utils.load_utils import load_stopwords
+from ...utils.records import read_records
 
 
 # pylint: disable=too-many-arguments
@@ -58,21 +58,21 @@ def tf_matrix(
         scheme = "raw"
 
     indicators = indicators_by_topic(
-        criterion=criterion,
+        field=criterion,
         root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=start_year,
+        cited_by_filter=end_year,
         **filters,
     )
 
     if custom_topics is None:
-        custom_topics = generate_custom_topics(
+        custom_topics = generate_custom_items(
             indicators=indicators,
-            topics_length=topics_length,
-            topic_occ_min=topic_occ_min,
+            top_n=topics_length,
+            occ_range=topic_occ_min,
             topic_occ_max=topic_occ_max,
-            topic_citations_min=topic_citations_min,
+            gc_range=topic_citations_min,
             topic_citations_max=topic_citations_max,
         )
 

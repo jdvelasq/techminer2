@@ -1,17 +1,21 @@
+# flake8: noqa
 """
 List View
 ===============================================================================
 
 
+Example
+-------------------------------------------------------------------------------
+
 >>> root_dir = "data/regtech/"
 
 
 >>> from techminer2 import vantagepoint
->>> r = vantagepoint.analyze.list_view(
-...    criterion='author_keywords',
+>>> view = vantagepoint.analyze.list_view(
+...    field='author_keywords',
 ...    root_dir=root_dir,
 ... )
->>> r.table_.head()
+>>> view.table_.head()
                        OCC  ...  local_citations_per_document
 author_keywords             ...                              
 regtech                 28  ...                          2.64
@@ -24,7 +28,7 @@ regulation               5  ...                          4.40
 
 
 
->>> print(r.table_.head().to_markdown())
+>>> print(view.table_.head().to_markdown())
 | author_keywords       |   OCC |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |
 |:----------------------|------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|
 | regtech               |    28 |                329 |                74 |                           11.75 |                           2.64 |
@@ -33,12 +37,8 @@ regulation               5  ...                          4.40
 | compliance            |     7 |                 30 |                 9 |                            4.29 |                           1.29 |
 | regulation            |     5 |                164 |                22 |                           32.8  |                           4.4  |
 
->>> print(r.prompt_)
-Analyze the table below, which provides bibliographic indicators for a \
-collection of research articles. Identify any notable patterns, trends, or \
-outliers in the data, and discuss their implications for the research field. \
-Be sure to provide a concise summary of your findings in no more than 150 \
-words.
+>>> print(view.prompt_)
+Analyze the table below, which provides bibliometric indicators for the field 'author_keywords' in a scientific bibliography database. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
 | author_keywords         |   OCC |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |
 |:------------------------|------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|
@@ -52,96 +52,96 @@ words.
 | artificial intelligence |     4 |                 23 |                 6 |                            5.75 |                           1.5  |
 | anti-money laundering   |     3 |                 21 |                 4 |                            7    |                           1.33 |
 | risk management         |     3 |                 14 |                 8 |                            4.67 |                           2.67 |
-| innovation              |     3 |                 12 |                 4 |                            4    |                           1.33 |
-| blockchain              |     3 |                  5 |                 0 |                            1.67 |                           0    |
-| suptech                 |     3 |                  4 |                 2 |                            1.33 |                           0.67 |
-| semantic technologies   |     2 |                 41 |                19 |                           20.5  |                           9.5  |
-| data protection         |     2 |                 27 |                 5 |                           13.5  |                           2.5  |
-| smart contracts         |     2 |                 22 |                 8 |                           11    |                           4    |
-| charitytech             |     2 |                 17 |                 4 |                            8.5  |                           2    |
-| english law             |     2 |                 17 |                 4 |                            8.5  |                           2    |
-| accountability          |     2 |                 14 |                 3 |                            7    |                           1.5  |
-| data protection officer |     2 |                 14 |                 3 |                            7    |                           1.5  |
 <BLANKLINE>
 <BLANKLINE>
 
 # pylint: disable=line-too-long
-# noqa: W291 E501
 """
 
 
-from ... import chatgpt, techminer
 from ...classes import ListView
+from ...item_utils import generate_custom_items
 from ...sort_utils import sort_indicators_by_metric
-from ...topics import generate_custom_topics
+from ...techminer.indicators import indicators_by_topic
+from ...utils import check_integer, check_integer_range
 
 
+# pylint: disable=too-many-arguments
 def list_view(
-    criterion,
+    field,
     root_dir="./",
     database="documents",
     metric="OCC",
-    start_year=None,
-    end_year=None,
-    topics_length=20,
-    topic_occ_min=None,
-    topic_occ_max=None,
-    topic_citations_min=None,
-    topic_citations_max=None,
-    custom_topics=None,
+    # Item filters:
+    top_n=10,
+    occ_range=None,
+    gc_range=None,
+    custom_items=None,
+    # Database filters:
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
-    """Returns a dataframe with the extracted topics.
+    """Returns a dataframe with the extracted items.
 
     Args:
-        criterion (str): Criterion to be used to extract the topics.
+        field (str): Database field to be used to extract the items.
         root_dir (str): Root directory.
         database (str): Database name.
-        metric (str): Metric to be used to sort the topics.
-        start_year (int): Start year.
-        end_year (int): End year.
-        topics_length (int): Number of topics to be extracted.
-        topic_min_occ (int): Minimum number of occurrences of the topic.
-        topic_max_occ (int): Maximum number of occurrences of the topic.
-        topic_min_citations (int): Minimum number of citations of the topic.
-        topic_max_citations (int): Maximum number of citations of the topic.
-        custom_topics (list): List of custom topics.
-        **filters: Filters.
+        metric (str): Metric to be used to sort the items.
+        top_n (int): Number of top items to be returned.
+        occ_range (tuple): Range of occurrence of the items.
+        gc_range (tuple): Range of global citations of the items.
+        custom_items (list): List of items to be returned.
+        year_filter (tuple, optional): Year database filter. Defaults to None.
+        cited_by_filter (tuple, optional): Cited by database filter. Defaults to None.
+        **filters (dict, optional): Filters to be applied to the database. Defaults to {}.
 
     Returns:
         A ListView object.
 
     """
 
-    indicators = techminer.indicators.indicators_by_topic(
-        criterion=criterion,
+    def generate_prompt(field, table):
+        return (
+            "Analyze the table below, which provides bibliometric indicators "
+            f"for the field '{field}' in a scientific bibliography database. "
+            "Identify any notable patterns, trends, or outliers in the data, "
+            "and discuss their implications for the research field. Be sure "
+            "to provide a concise summary of your findings in no more than "
+            "150 words."
+            f"\n\n{table.to_markdown()}\n\n"
+        )
+
+    check_integer(top_n)
+    check_integer_range(occ_range)
+    check_integer_range(gc_range)
+
+    indicators = indicators_by_topic(
+        field=field,
         root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 
     indicators = sort_indicators_by_metric(indicators, metric)
 
-    if custom_topics is None:
-        custom_topics = generate_custom_topics(
+    if custom_items is None:
+        custom_items = generate_custom_items(
             indicators=indicators,
-            topics_length=topics_length,
-            topic_occ_min=topic_occ_min,
-            topic_occ_max=topic_occ_max,
-            topic_citations_min=topic_citations_min,
-            topic_citations_max=topic_citations_max,
+            top_n=top_n,
+            occ_range=occ_range,
+            gc_range=gc_range,
         )
 
-    indicators = indicators[indicators.index.isin(custom_topics)]
+    indicators = indicators[indicators.index.isin(custom_items)]
 
     results = ListView()
     results.table_ = indicators
-    results.prompt_ = chatgpt.generate_prompt_bibliographic_indicators(
-        results.table_
-    )
+    results.prompt_ = generate_prompt(field, indicators)
     results.metric_ = metric
-    results.criterion_ = criterion
+    results.criterion_ = field
 
     return results

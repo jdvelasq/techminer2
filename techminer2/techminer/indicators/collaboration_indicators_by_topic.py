@@ -45,7 +45,7 @@ China             5                27  ...                     3      0.60
 
 import numpy as np
 
-from ... import record_utils
+from ...utils import records
 
 
 def collaboration_indicators_by_topic(
@@ -74,7 +74,7 @@ def collaboration_indicators_by_topic(
     """
 
     # Read documents from the database
-    documents = record_utils.read_records(
+    documents = records.read_records(
         root_dir=root_dir,
         database=database,
         start_year=start_year,

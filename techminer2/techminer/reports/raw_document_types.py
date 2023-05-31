@@ -69,11 +69,11 @@ def raw_document_types(root_dir):
 
     for folder in folders:
         indicators = indicators_by_topic(
-            criterion="document_type",
+            field="document_type",
             root_dir=root_dir,
             database=folder,
-            start_year=None,
-            end_year=None,
+            year_filter=None,
+            cited_by_filter=None,
         )
 
         sys.stdout.write(f"--INFO-- Document types in: {folder}\n")

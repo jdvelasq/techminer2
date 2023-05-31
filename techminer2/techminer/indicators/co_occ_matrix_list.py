@@ -30,8 +30,8 @@ Example
 
 
 """
-from ...load_utils import load_stopwords
-from ...record_utils import read_records
+from ...utils.load_utils import load_stopwords
+from ...utils.records import read_records
 
 
 # pylint: disable=too-many-arguments

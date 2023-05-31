@@ -107,7 +107,7 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
 from ...classes import RecordStatistics
-from ...record_utils import read_records
+from ...utils.records import read_records
 
 
 class _Statistics:

@@ -1,5 +1,6 @@
+# flake8: noqa
 """
-Coverage 
+Coverage
 ===============================================================================
 
 Computes coverage of terms in a column discarding stopwords.
@@ -30,40 +31,41 @@ Computes coverage of terms in a column discarding stopwords.
 
 import sys
 
-from ... import load_utils, record_utils
+from ...utils import load_stopwords, read_records
 
 
 def coverage(
     criterion,
     root_dir="./",
     database="documents",
-    start_year=None,
-    end_year=None,
+    # Database filters:
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
     """
     Coverage of terms in a column discarding stopwords.
 
     Args:
-        criterion (str): name of the column to be used as criterion.
-        root_dir (str): root directory.
-        database (str): name of the database.
-        start_year (int): start year.
-        end_year (int): end year.
-        **filters: filters.
+        field (str): Database field to be used to extract the items.
+        root_dir (str): Root directory.
+        database (str): Database name.
+        year_filter (tuple, optional): Year database filter. Defaults to None.
+        cited_by_filter (tuple, optional): Cited by database filter. Defaults to None.
+        **filters (dict, optional): Filters to be applied to the database. Defaults to {}.
 
     Returns:
         None.
 
     """
 
-    stopwords = load_utils.load_stopwords(root_dir)
+    stopwords = load_stopwords(root_dir)
 
-    documents = record_utils.read_records(
+    documents = read_records(
         root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
     documents = documents.reset_index()

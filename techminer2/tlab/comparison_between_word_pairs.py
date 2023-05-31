@@ -77,11 +77,11 @@ import plotly.express as px
 
 from ..classes import WordComparison
 from ..counters import add_counters_to_column_values
-from ..load_utils import load_stopwords
-from ..record_utils import read_records
+from ..item_utils import generate_custom_items
 from ..sort_utils import sort_indicators_by_metric
 from ..techminer.indicators.indicators_by_topic import indicators_by_topic
-from ..topics import generate_custom_topics
+from ..utils.load_utils import load_stopwords
+from ..utils.records import read_records
 
 
 def comparison_between_word_pairs(
@@ -208,23 +208,23 @@ def _select_topics(
     **filters,
 ):
     indicators = indicators_by_topic(
-        criterion=criterion,
+        field=criterion,
         root_dir=directory,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=start_year,
+        cited_by_filter=end_year,
         **filters,
     )
 
     indicators = sort_indicators_by_metric(indicators, metric="OCC")
 
     if custom_topics is None:
-        custom_topics = generate_custom_topics(
+        custom_topics = generate_custom_items(
             indicators=indicators,
-            topics_length=topics_length,
-            topic_occ_min=topic_occ_min,
+            top_n=topics_length,
+            occ_range=topic_occ_min,
             topic_occ_max=topic_occ_max,
-            topic_citations_min=topic_citations_min,
+            gc_range=topic_citations_min,
             topic_citations_max=topic_citations_max,
         )
 

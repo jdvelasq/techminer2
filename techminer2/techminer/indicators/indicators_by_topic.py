@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 Indicators by Topic
 ===============================================================================
@@ -34,15 +35,15 @@ Sarea A       2  ...                          2.00
 
 """
 
-from ... import load_utils, record_utils
+from ...utils import load_stopwords, read_records
 
 
 def indicators_by_topic(
-    criterion,
+    field,
     root_dir="./",
     database="documents",
-    start_year=None,
-    end_year=None,
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
     """column indicators"""
@@ -83,24 +84,24 @@ def indicators_by_topic(
         )
         return indicators
 
-    records = record_utils.read_records(
+    records = read_records(
         root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 
-    records = select_columns(records, criterion)
-    records = explode_criterion(records, criterion)
+    records = select_columns(records, field)
+    records = explode_criterion(records, field)
 
     records["OCC"] = 1
 
-    indicators = compute_basic_indicators(records, criterion)
+    indicators = compute_basic_indicators(records, field)
     indicators = compute_global_citations_per_document(indicators)
     indicators = compute_local_citations_per_document(indicators)
 
-    stopwords = load_utils.load_stopwords(root_dir=root_dir)
+    stopwords = load_stopwords(root_dir=root_dir)
     indicators = indicators.drop(stopwords, axis=0)
 
     return indicators

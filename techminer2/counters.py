@@ -93,11 +93,11 @@ def items2counters(
     """Creates a dictionary to transform a 'item' to a 'item counter:counter'."""
 
     indicators = techminer.indicators.indicators_by_topic(
-        criterion=criterion,
+        field=criterion,
         root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=start_year,
+        cited_by_filter=end_year,
         **filters,
     )
 

@@ -30,7 +30,7 @@ Becker M              0     0     0     0     1     0     0     0
 # noqa: W291
 """
 
-from ... import load_utils
+from ...utils import load_utils
 from .indicators_by_topic_per_year import indicators_by_topic_per_year
 
 

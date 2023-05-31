@@ -36,11 +36,11 @@ def chart(
     """Generic chart for list plotting."""
 
     indicators = indicators_by_topic(
-        criterion=criterion,
+        field=criterion,
         root_dir=directory,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=start_year,
+        cited_by_filter=end_year,
         **filters,
     )
 

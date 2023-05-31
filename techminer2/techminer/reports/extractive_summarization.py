@@ -25,7 +25,7 @@ from sumy.summarizers.lex_rank import LexRankSummarizer
 from sumy.summarizers.lsa import LsaSummarizer
 from sumy.summarizers.luhn import LuhnSummarizer
 
-from ... import record_utils
+from ...utils import records
 from .abstracts_report import _sort_by_custom_terms, _write_report
 
 
@@ -43,7 +43,7 @@ def extractive_summarization(
 ):
     """Abstract extractive summarization using sumy."""
 
-    records = record_utils.read_records(
+    records = records.read_records(
         root_dir=root_dir,
         database=database,
         start_year=start_year,

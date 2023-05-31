@@ -20,7 +20,7 @@ import textwrap
 
 import pandas as pd
 
-from ... import record_utils
+from ...utils import records
 
 
 # pylint: disable=too-many-arguments
@@ -54,7 +54,7 @@ def abstracts_report(
 
     """
 
-    records = record_utils.read_records(
+    records = records.read_records(
         root_dir=root_dir,
         database=database,
         start_year=start_year,

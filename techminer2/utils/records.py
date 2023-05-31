@@ -7,7 +7,7 @@ import textwrap
 
 import pandas as pd
 
-from .create_directory import create_directory
+from ..create_directory import create_directory
 
 
 def create_records_report(root_dir, target_dir, records, report_filename):

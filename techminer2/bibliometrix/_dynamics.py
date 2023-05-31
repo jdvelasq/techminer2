@@ -71,10 +71,10 @@ def _dynamics(
     # top items
     selected_topics = indicators_by_topic(
         root_dir=directory,
-        criterion=criterion,
+        field=criterion,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=start_year,
+        cited_by_filter=end_year,
         **filters,
     )
     selected_topics = selected_topics.sort_values(

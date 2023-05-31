@@ -19,7 +19,7 @@ import textwrap
 from os.path import isfile, join
 
 from ..._load_thesaurus_as_dict import load_thesaurus_as_dict
-from ...record_utils import read_records
+from ...utils.records import read_records
 
 
 def tm2__keywords_summarization(

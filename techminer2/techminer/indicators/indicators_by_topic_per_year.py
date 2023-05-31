@@ -57,7 +57,7 @@ Buchkremer R      2020    1  ...                     0.750
 """
 import pandas as pd
 
-from ... import record_utils
+from ...utils import records
 
 
 # pylint: disable=too-many-arguments
@@ -86,7 +86,7 @@ def indicators_by_topic_per_year(
 
     """
 
-    indicators = record_utils.read_records(
+    indicators = records.read_records(
         root_dir=root_dir,
         database=database,
         start_year=start_year,

@@ -113,7 +113,7 @@ def topic_view(
 
     # -----------------------------------------------------------------------------------
 
-    indicators = indicators_by_topic(criterion=column, root_dir=directory)
+    indicators = indicators_by_topic(field=column, root_dir=directory)
     if min_occ is not None:
         indicators = indicators[indicators["num_documents"] >= min_occ]
     if max_occ is not None:

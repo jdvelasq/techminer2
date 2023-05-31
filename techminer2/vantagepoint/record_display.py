@@ -20,7 +20,7 @@ searching. The report is saved to the file ``processed/record_display.txt``.
 """
 
 
-from .. import record_utils
+from ..utils import records
 
 
 # pylint: disable=too-many-arguments
@@ -74,7 +74,7 @@ def record_display(
 
         return records
 
-    records = record_utils.read_records(
+    records = records.read_records(
         root_dir=root_dir,
         database=database,
         start_year=start_year,
@@ -86,7 +86,7 @@ def record_display(
         criterion, search_for, case, flags, regex, records
     )
 
-    record_utils.create_records_report(
+    records.create_records_report(
         root_dir=root_dir,
         target_dir="",
         records=records,

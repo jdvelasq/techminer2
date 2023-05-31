@@ -41,7 +41,7 @@ France       1  ...                  0.00
 import numpy as np
 import pandas as pd
 
-from ...record_utils import read_records
+from ...utils.records import read_records
 
 
 # pylint: disable=too-many-locals

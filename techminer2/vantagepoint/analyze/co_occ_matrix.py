@@ -69,9 +69,12 @@ your findings in no more than 150 words.
 
 from ...classes import CocMatrix
 from ...counters import add_counters_to_axis
+from ...item_utils import (
+    filter_custom_items_from_column,
+    generate_custom_items,
+)
 from ...sort_utils import sort_indicators_by_metric, sort_matrix_axis
 from ...techminer.indicators import co_occ_matrix_list, indicators_by_topic
-from ...topics import filter_custom_topics_from_column, generate_custom_topics
 
 
 # pylint: disable=too-many-arguments disable=too-many-locals
@@ -111,31 +114,31 @@ def co_occ_matrix(
     ):
         if custom_topics is None:
             indicators = indicators_by_topic(
-                criterion=criterion,
+                field=criterion,
                 root_dir=root_dir,
                 database=database,
-                start_year=start_year,
-                end_year=end_year,
+                year_filter=start_year,
+                cited_by_filter=end_year,
                 **filters,
             )
 
             indicators = sort_indicators_by_metric(indicators, "OCC")
 
-            custom_topics = generate_custom_topics(
+            custom_topics = generate_custom_items(
                 indicators=indicators,
-                topics_length=topics_length,
-                topic_occ_min=topic_min_occ,
+                top_n=topics_length,
+                occ_range=topic_min_occ,
                 topic_occ_max=topic_max_occ,
-                topic_citations_min=topic_min_citations,
+                gc_range=topic_min_citations,
                 topic_citations_max=topic_max_citations,
             )
 
         name = "row" if is_row_column else "column"
 
-        custom_topics = filter_custom_topics_from_column(
+        custom_topics = filter_custom_items_from_column(
             dataframe=raw_matrix_list,
             col_name=name,
-            custom_topics=custom_topics,
+            custom_items=custom_topics,
         )
 
         raw_matrix_list = raw_matrix_list[

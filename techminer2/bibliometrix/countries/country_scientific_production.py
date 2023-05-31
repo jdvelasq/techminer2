@@ -81,18 +81,18 @@ def country_scientific_production(
     """Worldmap plot with the number of documents per country."""
 
     obj = vantagepoint.analyze.list_view(
-        criterion="countries",
+        field="countries",
         root_dir=directory,
         database=database,
         metric=metric,
-        start_year=start_year,
-        end_year=end_year,
-        topics_length=topics_length,
-        topic_occ_min=topic_min_occ,
+        year_filter=start_year,
+        cited_by_filter=end_year,
+        top_n=topics_length,
+        occ_range=topic_min_occ,
         topic_occ_max=topic_max_occ,
-        topic_citations_min=topic_min_citations,
+        gc_range=topic_min_citations,
         topic_citations_max=topic_max_citations,
-        custom_topics=custom_topics,
+        items=custom_topics,
         **filters,
     )
 

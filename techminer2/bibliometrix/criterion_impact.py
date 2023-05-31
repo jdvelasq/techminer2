@@ -9,10 +9,10 @@ from .._px.cleveland_px import cleveland_px
 from .._px.column_px import column_px
 from .._px.line_px import line_px
 from .._px.pie_px import pie_px
+from ..item_utils import generate_custom_items
 from ..techminer.indicators.impact_indicators_by_topic import (
     impact_indicators_by_topic,
 )
-from ..topics import generate_custom_topics
 
 
 @dataclass(init=False)
@@ -74,7 +74,7 @@ def criterion_impact(
     indicators = sort_indicators(indicators, metric)
 
     if custom_topics is None:
-        custom_topics = generate_custom_topics(
+        custom_topics = generate_custom_items(
             topics_length,
             topic_min_occ,
             topic_max_occ,

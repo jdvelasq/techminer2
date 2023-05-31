@@ -45,8 +45,8 @@ regulation                       4  ...                 -0.5
 import numpy as np
 import pandas as pd
 
-from ... import record_utils
-from ...load_utils import load_stopwords
+from ...utils import records
+from ...utils.load_utils import load_stopwords
 
 
 # pylint: disable=too-many-arguments
@@ -61,7 +61,7 @@ def growth_indicators_by_topic(
 ):
     """Computes growth indicators."""
 
-    records = record_utils.read_records(
+    records = records.read_records(
         root_dir=directory,
         database=database,
         start_year=start_year,

@@ -32,7 +32,7 @@ Baxter LG, 2016, DUKE LAW J, V66, P567                            30  ...       
 # noqa: W291 E501
 """
 
-from ... import record_utils
+from ...utils import records
 
 
 def indicators_by_document(
@@ -44,7 +44,7 @@ def indicators_by_document(
 ):
     """Document indicators"""
 
-    records = record_utils.read_records(
+    records = records.read_records(
         root_dir=root_dir,
         database=database,
         start_year=start_year,

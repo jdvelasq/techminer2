@@ -20,7 +20,7 @@ and the number of different terms (topics) of each column in the dataset.
 """
 import pandas as pd
 
-from ..record_utils import read_records
+from ..utils.records import read_records
 
 
 def summary_view(
@@ -36,8 +36,8 @@ def summary_view(
     Args:
         root_dir (str, optional): Root directory. Defaults to "./".
         database (str, optional): Database to be used. Defaults to "documents".
-        year_filter (tuple, optional): Year filter. Defaults to None.
-        cited_by_filter (tuple, optional): Cited by filter. Defaults to None.
+        year_filter (tuple, optional): Year database filter. Defaults to None.
+        cited_by_filter (tuple, optional): Cited by database filter. Defaults to None.
         **filters (dict, optional): Filters to be applied to the database. Defaults to {}.
 
     Returns:

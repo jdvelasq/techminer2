@@ -99,9 +99,9 @@ concise summary of your findings in no more than 150 words.
 from ... import techminer
 from ...classes import TermsByYear
 from ...counters import add_counters_to_axis
+from ...item_utils import generate_custom_items
 from ...sort_utils import sort_indicators_by_metric
 from ...techminer.indicators.indicators_by_topic import indicators_by_topic
-from ...topics import generate_custom_topics
 
 
 # pylint: disable=too-many-arguments
@@ -176,22 +176,22 @@ def terms_by_year(
 
     if custom_topics is None:
         indicators = indicators_by_topic(
-            criterion=criterion,
+            field=criterion,
             root_dir=root_dir,
             database=database,
-            start_year=start_year,
-            end_year=end_year,
+            year_filter=start_year,
+            cited_by_filter=end_year,
             **filters,
         )
 
         indicators = sort_indicators_by_metric(indicators, metric="OCC")
 
-        custom_topics = generate_custom_topics(
+        custom_topics = generate_custom_items(
             indicators=indicators,
-            topics_length=topics_length,
-            topic_occ_min=topic_occ_min,
+            top_n=topics_length,
+            occ_range=topic_occ_min,
             topic_occ_max=topic_occ_max,
-            topic_citations_min=topic_citations_min,
+            gc_range=topic_citations_min,
             topic_citations_max=topic_citations_max,
         )
 
