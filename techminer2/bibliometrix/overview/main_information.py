@@ -25,24 +25,25 @@ DOCUMENT TYPES article                                         31
                book                                             1
                book_chapter                                     9
                conference_paper                                11
-AUTHORS        Authors                                      102.0
-               Authors of single-authored documents          19.0
-               Single-authored documents                     19.0
-               Multi-authored documents                      33.0
+AUTHORS        Authors                                        102
+               Authors of single-authored documents            19
+               Single-authored documents                       19
+               Multi-authored documents                        33
                Authors per document                          2.29
                Co-authors per document                       3.03
                International co-authorship %                23.08
-               Author appearances                           119.0
+               Author appearances                             119
                Documents per author                          0.44
                Collaboration index                            1.0
-               Organizations                                 80.0
-               Organizations (1st author)                    44.0
-               Countries                                     29.0
-               Countries (1st author)                        25.0
+               Organizations                                   80
+               Organizations (1st author)                      44
+               Countries                                       29
+               Countries (1st author)                          25
 KEYWORDS       Raw author keywords                            149
                Cleaned author keywords                        144
                Raw index keywords                             155
                Cleaned index keywords                         150
+
 
 
 
@@ -76,26 +77,27 @@ The table below provides data on the main characteristics of the dataset. Use th
 | ('DOCUMENT TYPES', 'book')                             | 1         |
 | ('DOCUMENT TYPES', 'book_chapter')                     | 9         |
 | ('DOCUMENT TYPES', 'conference_paper')                 | 11        |
-| ('AUTHORS', 'Authors')                                 | 102.0     |
-| ('AUTHORS', 'Authors of single-authored documents')    | 19.0      |
-| ('AUTHORS', 'Single-authored documents')               | 19.0      |
-| ('AUTHORS', 'Multi-authored documents')                | 33.0      |
+| ('AUTHORS', 'Authors')                                 | 102       |
+| ('AUTHORS', 'Authors of single-authored documents')    | 19        |
+| ('AUTHORS', 'Single-authored documents')               | 19        |
+| ('AUTHORS', 'Multi-authored documents')                | 33        |
 | ('AUTHORS', 'Authors per document')                    | 2.29      |
 | ('AUTHORS', 'Co-authors per document')                 | 3.03      |
 | ('AUTHORS', 'International co-authorship %')           | 23.08     |
-| ('AUTHORS', 'Author appearances')                      | 119.0     |
+| ('AUTHORS', 'Author appearances')                      | 119       |
 | ('AUTHORS', 'Documents per author')                    | 0.44      |
 | ('AUTHORS', 'Collaboration index')                     | 1.0       |
-| ('AUTHORS', 'Organizations')                           | 80.0      |
-| ('AUTHORS', 'Organizations (1st author)')              | 44.0      |
-| ('AUTHORS', 'Countries')                               | 29.0      |
-| ('AUTHORS', 'Countries (1st author)')                  | 25.0      |
+| ('AUTHORS', 'Organizations')                           | 80        |
+| ('AUTHORS', 'Organizations (1st author)')              | 44        |
+| ('AUTHORS', 'Countries')                               | 29        |
+| ('AUTHORS', 'Countries (1st author)')                  | 25        |
 | ('KEYWORDS', 'Raw author keywords')                    | 149       |
 | ('KEYWORDS', 'Cleaned author keywords')                | 144       |
 | ('KEYWORDS', 'Raw index keywords')                     | 155       |
 | ('KEYWORDS', 'Cleaned index keywords')                 | 150       |
 <BLANKLINE>
 <BLANKLINE>
+
 
 # pylint: disable=line-too-long
 """
