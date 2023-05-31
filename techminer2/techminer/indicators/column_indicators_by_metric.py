@@ -1,4 +1,4 @@
-from .indicators_by_topic import indicators_by_topic
+from .indicators_by_item import indicators_by_item
 
 
 def column_indicators_by_metric(
@@ -10,7 +10,7 @@ def column_indicators_by_metric(
     metric="num_documents",
     file_name="documents.csv",
 ):
-    indicators = indicators_by_topic(
+    indicators = indicators_by_item(
         field=column, root_dir=directory, database=file_name
     )
     if min_occ is not None:

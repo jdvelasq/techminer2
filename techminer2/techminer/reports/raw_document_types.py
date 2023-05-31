@@ -47,7 +47,7 @@ Name: OCC, dtype: int64
 import os
 import sys
 
-from ..indicators import indicators_by_topic
+from ..indicators import indicators_by_item
 
 
 def raw_document_types(root_dir):
@@ -68,7 +68,7 @@ def raw_document_types(root_dir):
     ]
 
     for folder in folders:
-        indicators = indicators_by_topic(
+        indicators = indicators_by_item(
             field="document_type",
             root_dir=root_dir,
             database=folder,

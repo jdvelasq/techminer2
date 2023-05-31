@@ -30,7 +30,7 @@ import pandas as pd
 from ...classes import TFMatrix
 from ...counters import add_counters_to_axis
 from ...item_utils import generate_custom_items
-from ...techminer.indicators.indicators_by_topic import indicators_by_topic
+from ...techminer.indicators.indicators_by_item import indicators_by_item
 from ...utils.load_utils import load_stopwords
 from ...utils.records import read_records
 
@@ -57,7 +57,7 @@ def tf_matrix(
     if scheme is None:
         scheme = "raw"
 
-    indicators = indicators_by_topic(
+    indicators = indicators_by_item(
         field=criterion,
         root_dir=root_dir,
         database=database,

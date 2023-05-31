@@ -77,7 +77,7 @@ from dataclasses import dataclass
 import numpy as np
 import plotly.graph_objects as go
 
-from ...techminer.indicators.indicators_by_topic import indicators_by_topic
+from ...techminer.indicators.indicators_by_item import indicators_by_item
 from ...techminer.indicators.topics_occ_by_year import topics_occ_by_year
 
 
@@ -136,7 +136,7 @@ def trend_topics(
 
     words_by_year = words_by_year[["OCC", "year_q1", "year_med", "year_q3"]]
 
-    global_citations = indicators_by_topic(
+    global_citations = indicators_by_item(
         criterion, root_dir=directory
     ).global_citations
 

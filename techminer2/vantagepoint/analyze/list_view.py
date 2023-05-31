@@ -62,7 +62,7 @@ Analyze the table below, which provides bibliometric indicators for the field 'a
 from ...classes import ListView
 from ...item_utils import generate_custom_items
 from ...sort_utils import sort_indicators_by_metric
-from ...techminer.indicators import indicators_by_topic
+from ...techminer.indicators import indicators_by_item
 from ...utils import check_integer, check_integer_range
 
 
@@ -117,7 +117,7 @@ def list_view(
     check_integer_range(occ_range)
     check_integer_range(gc_range)
 
-    indicators = indicators_by_topic(
+    indicators = indicators_by_item(
         field=field,
         root_dir=root_dir,
         database=database,

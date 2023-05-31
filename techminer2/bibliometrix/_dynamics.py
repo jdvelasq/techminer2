@@ -7,7 +7,7 @@ import numpy as np
 import pandas as pd
 import plotly.express as px
 
-from ..techminer.indicators.indicators_by_topic import indicators_by_topic
+from ..techminer.indicators.indicators_by_item import indicators_by_item
 from ..techminer.indicators.indicators_by_topic_per_year import (
     indicators_by_topic_per_year,
 )
@@ -69,7 +69,7 @@ def _dynamics(
     indicators = indicators.sort_index()
 
     # top items
-    selected_topics = indicators_by_topic(
+    selected_topics = indicators_by_item(
         root_dir=directory,
         field=criterion,
         database=database,

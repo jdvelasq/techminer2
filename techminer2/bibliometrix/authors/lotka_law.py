@@ -28,7 +28,7 @@ from dataclasses import dataclass
 
 import plotly.graph_objects as go
 
-from ...techminer.indicators.indicators_by_topic import indicators_by_topic
+from ...techminer.indicators.indicators_by_item import indicators_by_item
 
 
 @dataclass(init=False)
@@ -129,7 +129,7 @@ def _core_authors(
     # 4                  6            1
     # 5                  7            1
     #
-    indicators = indicators_by_topic(
+    indicators = indicators_by_item(
         field="authors",
         root_dir=directory,
         database=database,

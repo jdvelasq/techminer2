@@ -1,6 +1,6 @@
 # flake8: noqa
 """
-Indicators by Topic
+Indicators by Item
 ===============================================================================
 
 
@@ -38,7 +38,7 @@ Sarea A       2  ...                          2.00
 from ...utils import load_stopwords, read_records
 
 
-def indicators_by_topic(
+def indicators_by_item(
     field,
     root_dir="./",
     database="documents",

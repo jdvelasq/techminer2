@@ -19,7 +19,7 @@ TreeMap
 
 """
 from ..._plots.treemap_plot import treemap_plot
-from ...techminer.indicators.indicators_by_topic import indicators_by_topic
+from ...techminer.indicators.indicators_by_item import indicators_by_item
 
 
 def treemap(
@@ -35,7 +35,7 @@ def treemap(
 ):
     """Makes a treemap."""
 
-    indicators = indicators_by_topic(
+    indicators = indicators_by_item(
         field=criterion,
         root_dir=directory,
         database=database,

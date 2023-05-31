@@ -68,7 +68,7 @@ def sort_matrix_axis(
 
     matrix = matrix.copy()
 
-    indicators_by_topic = techminer.indicators.indicators_by_topic(
+    indicators_by_topic = techminer.indicators.indicators_by_item(
         field=criterion,
         root_dir=root_dir,
         database=database,

@@ -74,7 +74,7 @@ from ...item_utils import (
     generate_custom_items,
 )
 from ...sort_utils import sort_indicators_by_metric, sort_matrix_axis
-from ...techminer.indicators import co_occ_matrix_list, indicators_by_topic
+from ...techminer.indicators import co_occ_matrix_list, indicators_by_item
 
 
 # pylint: disable=too-many-arguments disable=too-many-locals
@@ -113,7 +113,7 @@ def co_occ_matrix(
         **filters,
     ):
         if custom_topics is None:
-            indicators = indicators_by_topic(
+            indicators = indicators_by_item(
                 field=criterion,
                 root_dir=root_dir,
                 database=database,
