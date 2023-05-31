@@ -132,7 +132,7 @@ def criterion_impact(
         obj,
         title=title,
         metric_label=x_label,
-        item_label=y_label,
+        field_label=y_label,
     )
 
     chart.table_ = indicators

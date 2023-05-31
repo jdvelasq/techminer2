@@ -54,8 +54,6 @@ Analyze the table below, which provides bibliometric indicators for the field 'a
 
 # pylint: disable=line-too-long
 """
-
-
 import plotly.express as px
 
 from ...classes import BasicChart
@@ -65,7 +63,7 @@ def cleveland_dot_chart(
     obj,
     title=None,
     metric_label=None,
-    item_label=None,
+    field_label=None,
 ):
     """Creates a cleveland doc chart.
 
@@ -113,8 +111,8 @@ def cleveland_dot_chart(
             autorange="reversed",
             gridcolor="lightgray",
             griddash="dot",
-            title_text=item_label
-            if item_label is not None
+            title_text=field_label
+            if field_label is not None
             else obj.criterion_.replace("_", " ").upper(),
         )
         return fig
