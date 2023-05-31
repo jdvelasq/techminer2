@@ -8,6 +8,12 @@ Discover
 
 
 .. toctree::
+    :maxdepth: 1
+    
+    impact_view
+
+
+.. toctree::
     
         
     matrix/__index__

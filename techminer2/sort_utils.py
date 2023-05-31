@@ -27,29 +27,59 @@ def sort_indicators_by_metric(indicators, metric):
     """
 
     indicators = indicators.copy()
-    indicators["name"] = indicators.index.tolist()
+    indicators["_name_"] = indicators.index.tolist()
 
     columns = {
-        "OCC": ["OCC", "global_citations", "local_citations", "name"],
+        # -------------------------------------------
+        "OCC": [
+            "OCC",
+            "global_citations",
+            "local_citations",
+            "_name_",
+        ],
+        # -------------------------------------------
         "global_citations": [
             "global_citations",
             "local_citations",
             "OCC",
-            "name",
+            "_name_",
         ],
+        # -------------------------------------------
         "local_citations": [
             "local_citations",
             "global_citations",
             "OCC",
-            "name",
+            "_name_",
         ],
+        # -------------------------------------------
+        "h_index": [
+            "h_index",
+            "global_citations",
+            "OCC",
+            "_name_",
+        ],
+        # -------------------------------------------
+        "g_index": [
+            "g_index",
+            "global_citations",
+            "OCC",
+            "_name_",
+        ],
+        # -------------------------------------------
+        "m_index": [
+            "m_index",
+            "global_citations",
+            "OCC",
+            "_name_",
+        ],
+        # -------------------------------------------
     }[metric]
 
     indicators = indicators.sort_values(
         columns, ascending=[False, False, False, True]
     )
 
-    indicators = indicators.drop(columns=["name"])
+    indicators = indicators.drop(columns=["_name_"])
 
     return indicators
 

@@ -60,7 +60,7 @@ The table below provides data on top 20 sources with the highest H-Index. 'OCC' 
 
 
 """
-from ..criterion_impact import criterion_impact
+# from ..criterion_impact import criterion_impact
 
 
 def source_impact(

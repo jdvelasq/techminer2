@@ -42,6 +42,7 @@ from .corr_map import corr_map
 from .create_concept_grid import create_concept_grid
 from .cross_corr_matrix import cross_corr_matrix
 from .factor_matrix import factor_matrix
+from .impact_view import impact_view
 from .list_cells_in_matrix import list_cells_in_matrix
 from .list_view import list_view
 from .matrix_subset import matrix_subset
@@ -65,6 +66,7 @@ __all__ = [
     "create_concept_grid",
     "cross_corr_matrix",
     "factor_matrix",
+    "impact_view",
     "list_cells_in_matrix",
     "list_view",
     "matrix_subset",

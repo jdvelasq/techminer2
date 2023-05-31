@@ -99,7 +99,7 @@ def co_occurrence_bar_plot(
     list_view.table_.columns = ["OCC"]
     list_view.table_ = list_view.table_.sort_values("OCC", ascending=False)
     list_view.metric_ = "OCC"
-    list_view.criterion_ = obj.criterion_
+    list_view.field_ = obj.criterion_
     list_view.prompt_ = obj.prompt_
 
     chart = bar_chart(
@@ -110,7 +110,7 @@ def co_occurrence_bar_plot(
     )
 
     chart.prompt_ = create_chatgpt_prompt(
-        list_view.criterion_, term, list_view.table_
+        list_view.field_, term, list_view.table_
     )
 
     return chart

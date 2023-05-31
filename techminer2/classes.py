@@ -117,7 +117,7 @@ class ListCellsInMatrix:
 class ListView:
     """List view."""
 
-    criterion_: str
+    field_: str
     metric_: str
     prompt_: str
     table_: pd.DataFrame

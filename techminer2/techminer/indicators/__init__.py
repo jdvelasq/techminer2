@@ -12,7 +12,7 @@ from .collaboration_indicators_by_topic import (
 )
 from .column_indicators_by_metric import column_indicators_by_metric
 from .growth_indicators_by_topic import growth_indicators_by_topic
-from .impact_indicators_by_topic import impact_indicators_by_topic
+from .impact_indicators_by_item import impact_indicators_by_item
 from .indicators_by_document import indicators_by_document
 from .indicators_by_item import indicators_by_item
 from .indicators_by_topic_per_year import indicators_by_topic_per_year
@@ -25,7 +25,7 @@ __all__ = [
     "collaboration_indicators_by_topic",
     "column_indicators_by_metric",
     "growth_indicators_by_topic",
-    "impact_indicators_by_topic",
+    "impact_indicators_by_item",
     "indicators_by_document",
     "indicators_by_item",
     "indicators_by_topic_per_year",

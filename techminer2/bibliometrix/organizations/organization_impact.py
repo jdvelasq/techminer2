@@ -60,7 +60,7 @@ The table below provides data on top 20 organizations with the highest H-Index. 
 
 
 """
-from ..criterion_impact import criterion_impact
+# from ..criterion_impact import criterion_impact
 
 
 def organization_impact(

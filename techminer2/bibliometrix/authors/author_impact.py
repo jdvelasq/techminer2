@@ -3,14 +3,18 @@ Author Impact
 ===============================================================================
 
 
->>> directory = "data/regtech/"
+
+Example
+-------------------------------------------------------------------------------
+
+>>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__author_impact.html"
 
 >>> from techminer2 import bibliometrix
 >>> r = bibliometrix.authors.author_impact(
 ...     impact_measure='h_index',
-...     topics_length=20,
-...     directory=directory,
+...     top_n=20,
+...     root_dir=root_dir,
 ... )
 >>> r.plot_.write_html(file_name)
 
@@ -20,80 +24,62 @@ Author Impact
 
 
 >>> print(r.table_.head().to_markdown())
-| authors     |   OCC |   Global Citations |   First Pb Year |   Age |   H-Index |   G-Index |   M-Index |   Global Citations Per Year |   Avg Global Citations |
-|:------------|------:|-------------------:|----------------:|------:|----------:|----------:|----------:|----------------------------:|-----------------------:|
-| Arner DW    |     3 |                185 |            2017 |     7 |         3 |         3 |      0.43 |                       26.43 |                  61.67 |
-| Buckley RP  |     3 |                185 |            2017 |     7 |         3 |         3 |      0.43 |                       26.43 |                  61.67 |
-| Barberis JN |     2 |                161 |            2017 |     7 |         2 |         2 |      0.29 |                       23    |                  80.5  |
-| Butler T/1  |     2 |                 41 |            2018 |     6 |         2 |         2 |      0.33 |                        6.83 |                  20.5  |
-| Hamdan A    |     2 |                 18 |            2020 |     4 |         2 |         2 |      0.5  |                        4.5  |                   9    |
 
 
 
 >>> print(r.prompt_)
-The table below provides data on top 20 authors with the highest H-Index. 'OCC' represents the number of documents published by the author in the dataset. Use the information in the table to draw conclusions about the impact and productivity of the author. In your analysis, be sure to describe in a clear and concise way, any findings or any patterns you observe, and identify any outliers or anomalies in the data. Limit your description to one paragraph with no more than 250 words.
-<BLANKLINE>
-| authors           |   OCC |   Global Citations |   First Pb Year |   Age |   H-Index |   G-Index |   M-Index |   Global Citations Per Year |   Avg Global Citations |
-|:------------------|------:|-------------------:|----------------:|------:|----------:|----------:|----------:|----------------------------:|-----------------------:|
-| Arner DW          |     3 |                185 |            2017 |     7 |         3 |         3 |      0.43 |                       26.43 |                  61.67 |
-| Buckley RP        |     3 |                185 |            2017 |     7 |         3 |         3 |      0.43 |                       26.43 |                  61.67 |
-| Barberis JN       |     2 |                161 |            2017 |     7 |         2 |         2 |      0.29 |                       23    |                  80.5  |
-| Butler T/1        |     2 |                 41 |            2018 |     6 |         2 |         2 |      0.33 |                        6.83 |                  20.5  |
-| Hamdan A          |     2 |                 18 |            2020 |     4 |         2 |         2 |      0.5  |                        4.5  |                   9    |
-| Turki M           |     2 |                 18 |            2020 |     4 |         2 |         2 |      0.5  |                        4.5  |                   9    |
-| Lin W             |     2 |                 17 |            2020 |     4 |         2 |         1 |      0.5  |                        4.25 |                   8.5  |
-| Singh C           |     2 |                 17 |            2020 |     4 |         2 |         1 |      0.5  |                        4.25 |                   8.5  |
-| Brennan R         |     2 |                 14 |            2020 |     4 |         2 |         1 |      0.5  |                        3.5  |                   7    |
-| Crane M           |     2 |                 14 |            2020 |     4 |         2 |         1 |      0.5  |                        3.5  |                   7    |
-| Ryan P            |     2 |                 14 |            2020 |     4 |         2 |         1 |      0.5  |                        3.5  |                   7    |
-| Anagnostopoulos I |     1 |                153 |            2018 |     6 |         1 |         1 |      0.17 |                       25.5  |                 153    |
-| OBrien L          |     1 |                 33 |            2019 |     5 |         1 |         1 |      0.2  |                        6.6  |                  33    |
-| Baxter LG         |     1 |                 30 |            2016 |     8 |         1 |         1 |      0.12 |                        3.75 |                  30    |
-| Weber RH          |     1 |                 24 |            2020 |     4 |         1 |         1 |      0.25 |                        6    |                  24    |
-| Zetzsche DA       |     1 |                 24 |            2020 |     4 |         1 |         1 |      0.25 |                        6    |                  24    |
-| Breymann W        |     1 |                 21 |            2018 |     6 |         1 |         1 |      0.17 |                        3.5  |                  21    |
-| Gross FJ          |     1 |                 21 |            2018 |     6 |         1 |         1 |      0.17 |                        3.5  |                  21    |
-| Kavassalis P      |     1 |                 21 |            2018 |     6 |         1 |         1 |      0.17 |                        3.5  |                  21    |
-| Saxton K          |     1 |                 21 |            2018 |     6 |         1 |         1 |      0.17 |                        3.5  |                  21    |
-<BLANKLINE>
-<BLANKLINE>
-<BLANKLINE>
 
+
+
+
+# pylint: disable=line-too-long
 """
-from ..criterion_impact import criterion_impact
+from ..utils import item_impact
 
 
+# pylint: disable=too-many-arguments
 def author_impact(
     impact_measure="h_index",
-    topics_length=20,
-    topic_min_occ=None,
-    topic_max_occ=None,
-    topic_min_citations=None,
-    topic_max_citations=None,
-    custom_topics=None,
-    directory="./",
+    root_dir="./",
     database="documents",
-    start_year=None,
-    end_year=None,
+    # Plot options:
+    plot="cleveland_dot_chart",
+    title=None,
+    impact_measure_label=None,
+    field_label=None,
+    # Item filters:
+    top_n=20,
+    occ_range=None,
+    gc_range=None,
+    custom_items=None,
+    # Database filters:
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
     """Plots the selected impact measure by author."""
 
-    obj = criterion_impact(
-        criterion="authors",
-        metric=impact_measure,
-        topics_length=topics_length,
-        topic_min_occ=topic_min_occ,
-        topic_max_occ=topic_max_occ,
-        topic_min_citations=topic_min_citations,
-        topic_max_citations=topic_max_citations,
-        custom_topics=custom_topics,
-        directory=directory,
-        title="Author Local Impact by "
-        + impact_measure.replace("_", " ").title(),
+    if title is None:
+        "Author Local Impact by " + impact_measure.replace("_", " ").title()
+
+    obj = item_impact(
+        field="authors",
+        impact_measure=impact_measure,
+        root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        # Plot options:
+        plot=plot,
+        title=title,
+        impact_measure_label=impact_measure_label,
+        field_label=field_label,
+        # Item filters:
+        top_n=top_n,
+        occ_range=occ_range,
+        gc_range=gc_range,
+        custom_items=custom_items,
+        # Database filters:
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 

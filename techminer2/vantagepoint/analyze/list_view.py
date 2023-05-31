@@ -142,6 +142,6 @@ def list_view(
     results.table_ = indicators
     results.prompt_ = generate_prompt(field, indicators)
     results.metric_ = metric
-    results.criterion_ = field
+    results.field_ = field
 
     return results

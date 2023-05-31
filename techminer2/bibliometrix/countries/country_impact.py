@@ -60,7 +60,7 @@ The table below provides data on top 20 countries with the highest H-Index. 'OCC
 
 
 """
-from ..criterion_impact import criterion_impact
+# from ..criterion_impact import criterion_impact
 
 
 def country_impact(
