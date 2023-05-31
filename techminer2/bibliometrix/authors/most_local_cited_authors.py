@@ -67,6 +67,7 @@ Analyze the table below, which provides bibliometric indicators for the field 'a
 from ..utils import bbx_indicators_by_item
 
 
+# pylint: disable=too-many-arguments
 def most_local_cited_authors(
     root_dir="./",
     database="documents",
