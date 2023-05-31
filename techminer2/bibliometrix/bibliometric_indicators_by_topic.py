@@ -46,7 +46,7 @@ def bibliometric_indicators_by_topic(
 
     vantagepoint_chart = {
         "bar_chart": vantagepoint.report.bar_chart,
-        "cleveland_chart": vantagepoint.report.cleveland_chart,
+        "cleveland_chart": vantagepoint.report.cleveland_dot_chart,
         "column_chart": vantagepoint.report.column_chart,
         "line_chart": vantagepoint.report.line_chart,
     }[plot]

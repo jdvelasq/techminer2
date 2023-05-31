@@ -128,11 +128,11 @@ def criterion_impact(
         .replace("Occ", "OCC")
     )
 
-    chart = vantagepoint.report.cleveland_chart(
+    chart = vantagepoint.report.cleveland_dot_chart(
         obj,
         title=title,
-        x_label=x_label,
-        y_label=y_label,
+        metric_label=x_label,
+        item_label=y_label,
     )
 
     chart.table_ = indicators

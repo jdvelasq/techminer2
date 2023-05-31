@@ -101,7 +101,7 @@ from ...classes import TermsByYear
 from ...counters import add_counters_to_axis
 from ...item_utils import generate_custom_items
 from ...sort_utils import sort_indicators_by_metric
-from ...techminer.indicators.indicators_by_item import indicators_by_item
+from ...techminer.indicators import indicators_by_item
 
 
 # pylint: disable=too-many-arguments
