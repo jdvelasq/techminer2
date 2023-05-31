@@ -1,4 +1,4 @@
-# flake8: noqa
+# flake8: noqa# flake8: noqa
 """
 Import Scopus Files
 ===============================================================================
@@ -66,7 +66,7 @@ Import a scopus file to a working directory.
 --INFO-- data/regtech/processed/_references.csv: 909 imported records
 --INFO-- data/regtech/processed/_cited_by.csv: 387 imported records
 
-
+# pylint: disable=line-too-long
 """
 import glob
 import os
