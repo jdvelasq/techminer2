@@ -62,6 +62,19 @@ def pie_chart(
     title=None,
     hole=0.4,
 ):
+    """Creates a pie chart.
+
+    Args:
+        obj (vantagepoint.analyze.list_view): A list view object.
+        title (str, optional): Title. Defaults to None.
+        hole (float, optional): Hole size. Defaults to 0.4.
+
+    Returns:
+        BasicChart: A BasicChart object.
+
+
+    """
+
     def create_plot():
         """Creates plotly figure"""
 
