@@ -25,20 +25,20 @@ DOCUMENT TYPES article                                         31
                book                                             1
                book_chapter                                     9
                conference_paper                                11
-AUTHORS        Authors                                      102.0
-               Authors of single-authored documents          19.0
-               Single-authored documents                     19.0
-               Multi-authored documents                      33.0
+AUTHORS        Authors                                        102
+               Authors of single-authored documents            19
+               Single-authored documents                       19
+               Multi-authored documents                        33
                Authors per document                          2.29
                Co-authors per document                       3.03
                International co-authorship %                23.08
-               Author appearances                           119.0
+               Author appearances                             119
                Documents per author                          0.44
                Collaboration index                            1.0
-               Organizations                                 80.0
-               Organizations (1st author)                    44.0
-               Countries                                     29.0
-               Countries (1st author)                        25.0
+               Organizations                                   80
+               Organizations (1st author)                      44
+               Countries                                       29
+               Countries (1st author)                          25
 KEYWORDS       Raw author keywords                            149
                Cleaned author keywords                        144
                Raw index keywords                             155
@@ -57,9 +57,7 @@ KEYWORDS       Raw author keywords                            149
 
     
 >>> print(stats.prompt_)
-The table below provides data on the main characteristics of the dataset. Use \
-the the information in the table to draw conclusions. Limit your description \
-to one paragraph with no more than 250 words.
+The table below provides data on the main characteristics of the dataset. Use the the information in the table to draw conclusions. Limit your description to one paragraph with no more than 250 words.
 <BLANKLINE>
 |                                                        | Value     |
 |:-------------------------------------------------------|:----------|
@@ -77,20 +75,20 @@ to one paragraph with no more than 250 words.
 | ('DOCUMENT TYPES', 'book')                             | 1         |
 | ('DOCUMENT TYPES', 'book_chapter')                     | 9         |
 | ('DOCUMENT TYPES', 'conference_paper')                 | 11        |
-| ('AUTHORS', 'Authors')                                 | 102.0     |
-| ('AUTHORS', 'Authors of single-authored documents')    | 19.0      |
-| ('AUTHORS', 'Single-authored documents')               | 19.0      |
-| ('AUTHORS', 'Multi-authored documents')                | 33.0      |
+| ('AUTHORS', 'Authors')                                 | 102       |
+| ('AUTHORS', 'Authors of single-authored documents')    | 19        |
+| ('AUTHORS', 'Single-authored documents')               | 19        |
+| ('AUTHORS', 'Multi-authored documents')                | 33        |
 | ('AUTHORS', 'Authors per document')                    | 2.29      |
 | ('AUTHORS', 'Co-authors per document')                 | 3.03      |
 | ('AUTHORS', 'International co-authorship %')           | 23.08     |
-| ('AUTHORS', 'Author appearances')                      | 119.0     |
+| ('AUTHORS', 'Author appearances')                      | 119       |
 | ('AUTHORS', 'Documents per author')                    | 0.44      |
 | ('AUTHORS', 'Collaboration index')                     | 1.0       |
-| ('AUTHORS', 'Organizations')                           | 80.0      |
-| ('AUTHORS', 'Organizations (1st author)')              | 44.0      |
-| ('AUTHORS', 'Countries')                               | 29.0      |
-| ('AUTHORS', 'Countries (1st author)')                  | 25.0      |
+| ('AUTHORS', 'Organizations')                           | 80        |
+| ('AUTHORS', 'Organizations (1st author)')              | 44        |
+| ('AUTHORS', 'Countries')                               | 29        |
+| ('AUTHORS', 'Countries (1st author)')                  | 25        |
 | ('KEYWORDS', 'Raw author keywords')                    | 149       |
 | ('KEYWORDS', 'Cleaned author keywords')                | 144       |
 | ('KEYWORDS', 'Raw index keywords')                     | 155       |
@@ -106,6 +104,7 @@ import datetime
 import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
+from plotly.subplots import make_subplots
 
 from ...classes import RecordStatistics
 from ...record_utils import read_records
@@ -136,6 +135,7 @@ class _Statistics:
         self.make_report()
 
     def make_report(self):
+        """Make a report of the statistics."""
         pdf = pd.concat(
             [
                 self.general_information_stats,
@@ -153,55 +153,56 @@ class _Statistics:
 
     #####################################################################################
     def compute_general_information_stats(self):
+        """Compute general information statistics."""
         self.general_information_stats = pd.DataFrame(
             columns=["Category", "Item", "Value"]
         )
-        self.general_information_stats.loc[0] = [
+        self.general_information_stats.loc[(0,)] = [
             "GENERAL",
             "Timespan",
             self.compute_timespam(),
         ]
-        self.general_information_stats.loc[1] = [
+        self.general_information_stats.loc[(1,)] = [
             "GENERAL",
             "Documents",
             self.documents(),
         ]
-        self.general_information_stats.loc[2] = [
+        self.general_information_stats.loc[(2,)] = [
             "GENERAL",
             "Annual growth rate %",
             self.annual_growth_rate(),
         ]
-        self.general_information_stats.loc[3] = [
+        self.general_information_stats.loc[(3,)] = [
             "GENERAL",
             "Document average age",
             self.document_average_age(),
         ]
-        self.general_information_stats.loc[4] = [
+        self.general_information_stats.loc[(4,)] = [
             "GENERAL",
             "References",
             self.cited_references(),
         ]
-        self.general_information_stats.loc[5] = [
+        self.general_information_stats.loc[(5,)] = [
             "GENERAL",
             "Average citations per document",
             self.average_citations_per_document(),
         ]
-        self.general_information_stats.loc[6] = [
+        self.general_information_stats.loc[(6,)] = [
             "GENERAL",
             "Average citations per document per year",
             self.average_citations_per_document_per_year(),
         ]
-        self.general_information_stats.loc[7] = [
+        self.general_information_stats.loc[(7,)] = [
             "GENERAL",
             "Average references per document",
             self.average_references_per_document(),
         ]
-        self.general_information_stats.loc[8] = [
+        self.general_information_stats.loc[(8,)] = [
             "GENERAL",
             "Sources",
             self.sources(),
         ]
-        self.general_information_stats.loc[9] = [
+        self.general_information_stats.loc[(9,)] = [
             "GENERAL",
             "Average documents per source",
             self.average_documents_per_source(),
@@ -210,19 +211,25 @@ class _Statistics:
     # -----------------------------------------------------------------------------------
 
     def compute_timespam(self):
+        """Computes the timespan of the records"""
         return str(min(self.records.year)) + ":" + str(max(self.records.year))
 
     def documents(self):
+        """Computes the number of documents"""
         return len(self.records)
 
     def annual_growth_rate(self):
+        """Computes the annual growth rate"""
         n_years = max(self.records.year) - min(self.records.year) + 1
-        Po = len(
+        po_ = len(
             self.records.year[self.records.year == min(self.records.year)]
         )
-        return round(100 * (np.power(self.n_records / Po, 1 / n_years) - 1), 2)
+        return round(
+            100 * (np.power(self.n_records / po_, 1 / n_years) - 1), 2
+        )
 
     def document_average_age(self):
+        """Computes the average age of the documents"""
         mean_years = self.records.year.copy()
         mean_years = mean_years.dropna()
         mean_years = mean_years.mean()
@@ -230,6 +237,7 @@ class _Statistics:
         return round(int(current_year) - mean_years, 2)
 
     def cited_references(self):
+        """Computes the number of cited references"""
         if "global_references" in self.records.columns:
             records = self.records.global_references.copy()
             records = records.dropna()
@@ -241,12 +249,14 @@ class _Statistics:
             return pd.NA
 
     def average_citations_per_document(self):
+        """Computes the average number of citations per document"""
         if "global_citations" in self.records.columns:
             return round(self.records.global_citations.mean(), 2)
         else:
             return pd.NA
 
     def average_citations_per_document_per_year(self):
+        """Computes the average number of citations per document per year"""
         if "global_citations" in self.records.columns:
             return round(
                 self.records.global_citations.mean()
@@ -257,6 +267,7 @@ class _Statistics:
             return pd.NA
 
     def average_references_per_document(self):
+        """Computes the average number of references per document"""
         if "global_references" in self.records.columns:
             num_references = self.records.global_references.copy()
             num_references = num_references.dropna()
@@ -267,6 +278,7 @@ class _Statistics:
             return pd.NA
 
     def sources(self):
+        """Computes the number of sources"""
         if "source_title" in self.records.columns:
             records = self.records.source_title.copy()
             records = records.dropna()
@@ -276,6 +288,7 @@ class _Statistics:
             return pd.NA
 
     def average_documents_per_source(self):
+        """Computes the average number of documents per source"""
         if "source_title" in self.records.columns:
             sources = self.records.source_title.copy()
             sources = sources.dropna()
@@ -288,6 +301,7 @@ class _Statistics:
 
     #####################################################################################
     def compute_document_types_stats(self):
+        """Computes the document types statistics"""
         self.document_types_stats = pd.DataFrame(
             columns=["Category", "Item", "Value"]
         )
@@ -298,7 +312,7 @@ class _Statistics:
         for index, (document_type, count) in enumerate(
             zip(document_types_count.index, document_types_count)
         ):
-            self.document_types_stats.loc[index] = [
+            self.document_types_stats.loc[(index,)] = [
                 "DOCUMENT TYPES",
                 document_type,
                 count,
@@ -306,76 +320,77 @@ class _Statistics:
 
     #####################################################################################
     def compute_authors_stats(self):
+        """Computes the authors statistics"""
         self.authors_stats = pd.DataFrame(
             columns=["Category", "Item", "Value"]
         )
-        self.authors_stats.loc[0] = [
+        self.authors_stats.loc[(0,)] = [
             "AUTHORS",
             "Authors",
             self.authors(),
         ]
-        self.authors_stats.loc[1] = [
+        self.authors_stats.loc[(1,)] = [
             "AUTHORS",
             "Authors of single-authored documents",
             self.authors_of_single_authored_documents(),
         ]
-        self.authors_stats.loc[2] = [
+        self.authors_stats.loc[(2,)] = [
             "AUTHORS",
             "Single-authored documents",
             self.count_single_authored_documents(),
         ]
-        self.authors_stats.loc[3] = [
+        self.authors_stats.loc[(3,)] = [
             "AUTHORS",
             "Multi-authored documents",
             self.count_multi_authored_documents(),
         ]
-        self.authors_stats.loc[4] = [
+        self.authors_stats.loc[(4,)] = [
             "AUTHORS",
             "Authors per document",
             self.average_authors_per_document(),
         ]
-        self.authors_stats.loc[5] = [
+        self.authors_stats.loc[(5,)] = [
             "AUTHORS",
             "Co-authors per document",
             self.co_authors_per_document(),
         ]
-        self.authors_stats.loc[6] = [
+        self.authors_stats.loc[(6,)] = [
             "AUTHORS",
             "International co-authorship %",
             self.international_co_authorship(),
         ]
-        self.authors_stats.loc[7] = [
+        self.authors_stats.loc[(7,)] = [
             "AUTHORS",
             "Author appearances",
             self.author_appearances(),
         ]
-        self.authors_stats.loc[8] = [
+        self.authors_stats.loc[(8,)] = [
             "AUTHORS",
             "Documents per author",
             self.average_documents_per_author(),
         ]
 
-        self.authors_stats.loc[9] = [
+        self.authors_stats.loc[(9,)] = [
             "AUTHORS",
             "Collaboration index",
             self.collaboration_index(),
         ]
-        self.authors_stats.loc[10] = [
+        self.authors_stats.loc[(10,)] = [
             "AUTHORS",
             "Organizations",
             self.organizations(),
         ]
-        self.authors_stats.loc[11] = [
+        self.authors_stats.loc[(11,)] = [
             "AUTHORS",
             "Organizations (1st author)",
             self.organizations_1st_author(),
         ]
-        self.authors_stats.loc[12] = [
+        self.authors_stats.loc[(12,)] = [
             "AUTHORS",
             "Countries",
             self.countries(),
         ]
-        self.authors_stats.loc[13] = [
+        self.authors_stats.loc[(13,)] = [
             "AUTHORS",
             "Countries (1st author)",
             self.countries_1st_author(),
@@ -384,6 +399,7 @@ class _Statistics:
     # -----------------------------------------------------------------------------------
 
     def authors(self):
+        """Computes the number of authors"""
         records = self.records.authors.copy()
         records = records.dropna()
         records = records.str.split(";")
@@ -393,27 +409,33 @@ class _Statistics:
         return len(records)
 
     def authors_of_single_authored_documents(self):
+        """Computes the number of authors of single-authored documents"""
         records = self.records[self.records["num_authors"] == 1]
         authors = records.authors.dropna()
         authors = authors.drop_duplicates()
         return len(authors)
 
     def count_single_authored_documents(self):
+        """Computes the number of single-authored documents"""
         return len(self.records[self.records["num_authors"] == 1])
 
     def count_multi_authored_documents(self):
+        """Computes the number of multi-authored documents"""
         return len(self.records[self.records["num_authors"] > 1])
 
     def average_authors_per_document(self):
+        """Computes the average number of authors per document"""
         num_authors = self.records["num_authors"].dropna()
         return round(num_authors.mean(), 2)
 
     def co_authors_per_document(self):
+        """Computes the average number of co-authors per document"""
         records = self.records.copy()
         num_authors = records[records.num_authors > 1].num_authors
         return round(num_authors.mean(), 2)
 
     def international_co_authorship(self):
+        """Computes the percentage of international co-authorship"""
         countries = self.records.countries.copy()
         countries = countries.dropna()
         countries = countries.str.split(";")
@@ -421,6 +443,7 @@ class _Statistics:
         return round(len(countries[countries > 1]) / len(countries) * 100, 2)
 
     def author_appearances(self):
+        """Computes the number of author appearances"""
         records = self.records.authors.copy()
         records = records.dropna()
         records = records.str.split(";")
@@ -429,6 +452,7 @@ class _Statistics:
         return len(records)
 
     def average_documents_per_author(self):
+        """Computes the average number of documents per author"""
         records = self.records.authors.copy()
         records = records.dropna()
         n_records = len(records)
@@ -438,6 +462,7 @@ class _Statistics:
         return round(n_records / n_authors, 2)
 
     def collaboration_index(self):
+        """Computes the collaboration index"""
         records = self.records[["authors", "num_authors"]].copy()
         records = records.dropna()
         records = records[records.num_authors > 1]
@@ -450,6 +475,7 @@ class _Statistics:
         return round(n_authors / n_records, 2)
 
     def organizations(self):
+        """Computes the number of organizations"""
         if "organizations" in self.records.columns:
             records = self.records.organizations.copy()
             records = records.dropna()
@@ -462,6 +488,7 @@ class _Statistics:
             return pd.NA
 
     def organizations_1st_author(self):
+        """Computes the number of organizations of 1st authors"""
         if "organization_1st_author" in self.records.columns:
             records = self.records.organization_1st_author.copy()
             records = records.dropna()
@@ -474,6 +501,7 @@ class _Statistics:
             return pd.NA
 
     def countries(self):
+        """Computes the number of countries"""
         if "countries" in self.records.columns:
             records = self.records.countries.copy()
             records = records.dropna()
@@ -486,6 +514,7 @@ class _Statistics:
             return pd.NA
 
     def countries_1st_author(self):
+        """Computes the number of countries of 1st authors"""
         if "country_1st_author" in self.records.columns:
             records = self.records.country_1st_author.copy()
             records = records.dropna()
@@ -499,25 +528,26 @@ class _Statistics:
 
     #####################################################################################
     def compute_keywords_stats(self):
+        """Computes the keywords stats"""
         self.keywords_stats = pd.DataFrame(
             columns=["Category", "Item", "Value"]
         )
-        self.keywords_stats.loc[0] = [
+        self.keywords_stats.loc[(0,)] = [
             "KEYWORDS",
             "Raw author keywords",
             self.raw_author_keywords(),
         ]
-        self.keywords_stats.loc[1] = [
+        self.keywords_stats.loc[(1,)] = [
             "KEYWORDS",
             "Cleaned author keywords",
             self.author_keywords(),
         ]
-        self.keywords_stats.loc[2] = [
+        self.keywords_stats.loc[(2,)] = [
             "KEYWORDS",
             "Raw index keywords",
             self.raw_index_keywords(),
         ]
-        self.keywords_stats.loc[3] = [
+        self.keywords_stats.loc[(3,)] = [
             "KEYWORDS",
             "Cleaned index keywords",
             self.index_keywords(),
@@ -526,6 +556,7 @@ class _Statistics:
     # -----------------------------------------------------------------------------------
 
     def raw_author_keywords(self):
+        """Computes the number of raw author keywords"""
         records = self.records.raw_author_keywords.copy()
         records = records.dropna()
         records = records.str.split(";")
@@ -535,6 +566,7 @@ class _Statistics:
         return len(records)
 
     def author_keywords(self):
+        """Computes the number of cleaned author keywords"""
         records = self.records.author_keywords.copy()
         records = records.dropna()
         records = records.str.split(";")
@@ -544,6 +576,7 @@ class _Statistics:
         return len(records)
 
     def raw_index_keywords(self):
+        """Computes the number of raw index keywords"""
         if "raw_index_keywords" in self.records.columns:
             records = self.records.raw_index_keywords.copy()
             records = records.dropna()
@@ -556,6 +589,7 @@ class _Statistics:
             return 0
 
     def index_keywords(self):
+        """Computes the number of cleaned index keywords"""
         if "index_keywords" in self.records.columns:
             records = self.records.index_keywords.copy()
             records = records.dropna()
@@ -568,10 +602,9 @@ class _Statistics:
             return 0
 
 
-from plotly.subplots import make_subplots
-
-
 def make_plot(report):
+    """Makes the plot"""
+
     def add_text_trace(fig, category, caption, row, col):
         text = (
             f'<span style="font-size: 8px;">{caption}</span><br>'
@@ -619,16 +652,13 @@ def make_plot(report):
 
 
 def make_chatpgt_prompt(report):
-    report = report.copy()
-    prompt = f"""\
-The table below provides data on the main characteristics of the dataset. \
-Use the the information in the table to draw conclusions. Limit your \
-description to one paragraph with no more than 250 words.
-
-{report.to_markdown()}
-
-"""
-    return prompt
+    """Makes the chatpgt prompt"""
+    return (
+        "The table below provides data on the main characteristics of the "
+        "dataset. Use the the information in the table to draw conclusions. "
+        "Limit your description to one paragraph with no more than 250 words."
+        f"\n\n{report.to_markdown()}\n\n"
+    )
 
 
 def statistics(
@@ -638,7 +668,19 @@ def statistics(
     end_year=None,
     **filters,
 ):
-    """Returns main statistics of the dataset."""
+    """Returns main statistics of the dataset.
+
+    Args:
+        root_dir (str, optional): Root directory. Defaults to "./".
+        database (str, optional): Database name. Defaults to "documents".
+        start_year (int, optional): Start year. Defaults to None.
+        end_year (int, optional): End year. Defaults to None.
+        filters: Filters to apply to the dataset.
+
+    Returns:
+        RecordStatistics: RecordStatistics object.
+
+    """
 
     stats = _Statistics(
         root_dir=root_dir,
