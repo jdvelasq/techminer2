@@ -45,27 +45,29 @@ The table below provides data on the average citations per year of the dataset. 
 # pylint: disable=line-too-long
 """
 from ...classes import IndicatorByYearChart
-from ...techminer.indicators.indicators_by_year import indicators_by_year
-from ...techminer.indicators.indicators_by_year_plot import (
-    indicators_by_year_plot,
-)
+from ...techminer.indicators import indicators_by_year, indicators_by_year_plot
 
 
 def average_citations_per_year(
     root_dir="./",
     database="documents",
-    start_year=None,
-    end_year=None,
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
     """Average citations per year.
 
     Args:
-        root_dir (str, optional): Root directory. Defaults to "./".
-        database (str, optional): Database name. Defaults to "documents".
-        start_year (int, optional): Start year. Defaults to None.
-        end_year (int, optional): End year. Defaults to None.
-        filters (dict, optional): filters to be applied to the database.
+        root_dir (str, optional): root directory. Defaults to "./".
+        database (str, optional): database name. Defaults to "documents".
+        year_filter (tuple, optional): Year filter. Defaults to None.
+        cited_by_filter (tuple, optional): Cited by filter. Defaults to None.
+        **filters (dict, optional): Filters to be applied to the database. Defaults to {}.
+
+
+    Returns:
+        IndicatorByYearChart: A chart containing the average citations per year.
+
     """
 
     def generate_chatgpt_prompt(table):
@@ -89,8 +91,8 @@ def average_citations_per_year(
     indicators = indicators_by_year(
         root_dir=root_dir,
         database=database,
-        year_filter=start_year,
-        cited_by_filter=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 
