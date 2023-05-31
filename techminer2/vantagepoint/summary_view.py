@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 Summary View
 ===============================================================================
@@ -19,14 +20,14 @@ and the number of different terms (topics) of each column in the dataset.
 """
 import pandas as pd
 
-from .. import record_utils
+from ..record_utils import read_records
 
 
 def summary_view(
     root_dir="./",
     database="documents",
-    start_year=None,
-    end_year=None,
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
     """
@@ -35,21 +36,20 @@ def summary_view(
     Args:
         root_dir (str, optional): Root directory. Defaults to "./".
         database (str, optional): Database to be used. Defaults to "documents".
-        start_year (int, optional): Start year. Defaults to None.
-        end_year (int, optional): End year. Defaults to None.
-        filters (dict, optional): Filters to be applied to the database.
-            Defaults to {}.
+        year_filter (tuple, optional): Year filter. Defaults to None.
+        cited_by_filter (tuple, optional): Cited by filter. Defaults to None.
+        **filters (dict, optional): Filters to be applied to the database. Defaults to {}.
 
     Returns:
         pd.DataFrame: Coverage report.
 
     """
 
-    documents = record_utils.read_records(
+    documents = read_records(
         root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 
