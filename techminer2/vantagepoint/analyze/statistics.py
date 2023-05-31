@@ -115,16 +115,16 @@ class _Statistics:
         self,
         root_dir,
         database="documents",
-        start_year=None,
-        end_year=None,
+        year_filter=None,
+        cited_by_filter=None,
         **filters,
     ):
         self.directory = root_dir
         self.records = read_records(
             root_dir=root_dir,
             database=database,
-            start_year=start_year,
-            end_year=end_year,
+            year_filter=year_filter,
+            cited_by_filter=cited_by_filter,
             **filters,
         )
         self.n_records = len(self.records)
@@ -664,8 +664,8 @@ def make_chatpgt_prompt(report):
 def statistics(
     root_dir="./",
     database="documents",
-    start_year=None,
-    end_year=None,
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
     """Returns main statistics of the dataset.
@@ -673,9 +673,9 @@ def statistics(
     Args:
         root_dir (str, optional): Root directory. Defaults to "./".
         database (str, optional): Database name. Defaults to "documents".
-        start_year (int, optional): Start year. Defaults to None.
-        end_year (int, optional): End year. Defaults to None.
-        filters: Filters to apply to the dataset.
+        year_filter (tuple, optional): Year filter. Defaults to None.
+        cited_by_filter (tuple, optional): Cited by filter. Defaults to None.
+        **filters: Filters.
 
     Returns:
         RecordStatistics: RecordStatistics object.
@@ -685,8 +685,8 @@ def statistics(
     stats = _Statistics(
         root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 
