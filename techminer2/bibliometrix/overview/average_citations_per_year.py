@@ -4,11 +4,11 @@ Average Citations per Year
 ===============================================================================
 
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__average_citations_per_year.html"
 
 >>> from techminer2 import bibliometrix
->>> r = bibliometrix.overview.average_citations_per_year(directory)
+>>> r = bibliometrix.overview.average_citations_per_year(root_dir)
 >>> r.plot_.write_html(file_name)
 
 .. raw:: html
