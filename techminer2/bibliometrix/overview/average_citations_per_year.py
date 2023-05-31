@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 Average Citations per Year
 ===============================================================================
@@ -41,70 +42,67 @@ The table below provides data on the average citations per year of the dataset. 
 <BLANKLINE>
 
 
-
+# pylint: disable=line-too-long
 """
-from dataclasses import dataclass
-
+from ...classes import IndicatorByYearChart
 from ...techminer.indicators.indicators_by_year import indicators_by_year
 from ...techminer.indicators.indicators_by_year_plot import (
     indicators_by_year_plot,
 )
 
 
-@dataclass(init=False)
-class _Results:
-    table_ = None
-    plot_ = None
-    prompt_ = None
-
-
 def average_citations_per_year(
-    directory="./",
+    root_dir="./",
     database="documents",
     start_year=None,
     end_year=None,
     **filters,
 ):
-    """Average citations per year."""
+    """Average citations per year.
+
+    Args:
+        root_dir (str, optional): Root directory. Defaults to "./".
+        database (str, optional): Database name. Defaults to "documents".
+        start_year (int, optional): Start year. Defaults to None.
+        end_year (int, optional): End year. Defaults to None.
+        filters (dict, optional): filters to be applied to the database.
+    """
+
+    def generate_chatgpt_prompt(table):
+        """Generates prompt for analysis of the average citations per year."""
+
+        return (
+            "The table below provides data on the average citations per year "
+            "of the dataset. Use the the information in the table to draw "
+            "conclusions about the impact per year. In your analysis, be "
+            "sure to describe in a clear and concise way, any trends or "
+            "patterns you observe, and identify any outliers or anomalies "
+            "in the data. Limit your description to one paragraph with no "
+            "more than 250 words."
+            f"\n\n{table[['mean_global_citations']].to_markdown()}\n\n"
+        )
+
+    #
+    # Main code
+    #
 
     indicators = indicators_by_year(
-        root_dir=directory,
+        root_dir=root_dir,
         database=database,
         start_year=start_year,
         end_year=end_year,
         **filters,
     )
 
-    results = _Results()
-
-    results.table_ = indicators.copy()
-    results.plot_ = _average_citations_per_year_plot(indicators)
-    results.prompt_ = _average_citations_per_year_prompt(results.table_)
-
-    return results
-
-
-def _average_citations_per_year_plot(indicators):
-    """Average citations per year plot."""
-
-    return indicators_by_year_plot(
+    results = IndicatorByYearChart()
+    results.table_ = indicators
+    results.plot_ = indicators_by_year_plot(
         indicators,
         metric="mean_global_citations",
         title="Average Citations per Year",
     )
+    results.prompt_ = generate_chatgpt_prompt(
+        indicators[["mean_global_citations", "global_citations"]]
+    )
 
-
-def _average_citations_per_year_prompt(table):
-    """Average citations per year prompt."""
-
-    return f"""\
-The table below provides data on the average citations per year of the \
-dataset. Use the the information in the table to draw conclusions about the \
-impact per year. In your analysis, be sure to describe in a clear and concise \
-way, any trends or patterns you observe, and identify any outliers or \
-anomalies in the data. Limit your description to one paragraph with no more \
-than 250 words.
-
-{table[["mean_global_citations"]].to_markdown()}
-
-"""
+    return results

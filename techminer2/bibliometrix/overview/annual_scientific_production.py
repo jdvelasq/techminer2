@@ -71,13 +71,7 @@ def annual_scientific_production(
         filters (dict, optional): Filters. Defaults to {}.
 
     Returns:
-        IndicatorByYearChart: A dataclass with the following attributes:
-
-            * plot_
-
-            * prompt_
-
-            * table_
+        :class:`IndicatorByYearChart`: A :class:`IndicatorByYearChart` instance.
 
 
     """
@@ -99,6 +93,10 @@ def annual_scientific_production(
             "to one paragraph with no more than 250 words."
             f"\n\n{table.to_markdown()}\n\n"
         )
+
+    #
+    # Main code
+    #
 
     indicators = indicators_by_year(
         root_dir=root_dir,

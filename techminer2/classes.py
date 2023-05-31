@@ -1,5 +1,11 @@
 """
-Define classes for retorning the results of the functions.
+Classes
+=======
+
+This module define the classes used by the :mod:`techminer2` package
+for returning results.
+
+
 """
 
 from dataclasses import dataclass
@@ -11,7 +17,14 @@ import plotly.graph_objs as go
 
 @dataclass(init=False)
 class IndicatorByYearChart:
-    """Indicator by year chart."""
+    """Indicator by year chart.
+
+    Attributes:
+        plot_ (go.Figure): Plotly figure.
+        prompt_ (str): Prompt.
+        table_ (pd.DataFrame): Table.
+
+    """
 
     plot_: go.Figure
     prompt_: str
