@@ -58,7 +58,7 @@ Analyze the table below, which provides bibliographic indicators for a collectio
 
 
 """
-from ..bibliometric_indicators_by_topic import bibliometric_indicators_by_topic
+from ..utils import bbx_indicators_by_item
 
 
 def most_frequent_authors(
@@ -79,22 +79,22 @@ def most_frequent_authors(
 ):
     """Plots the number of documents by author using the specified plot."""
 
-    return bibliometric_indicators_by_topic(
-        criterion="authors",
+    return bbx_indicators_by_item(
+        field="authors",
         metric="OCC",
         plot=plot,
         x_label=x_label,
         y_label=y_label,
         title="Most Frequent Authors",
-        directory=directory,
-        topics_length=topics_length,
-        topic_min_occ=topic_min_occ,
+        root_dir=directory,
+        top_n=topics_length,
+        occ_range=topic_min_occ,
         topic_max_occ=topic_max_occ,
-        topic_min_citations=topic_min_citations,
+        gc_range=topic_min_citations,
         topic_max_citations=topic_max_citations,
-        custom_topics=custom_topics,
+        custom_items=custom_topics,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=start_year,
+        cited_by_filter=end_year,
         **filters,
     )

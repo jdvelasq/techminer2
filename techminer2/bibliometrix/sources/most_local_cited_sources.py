@@ -58,7 +58,7 @@ Analyze the table below, which provides bibliographic indicators for a collectio
 
 
 """
-from ..bibliometric_indicators_by_topic import bibliometric_indicators_by_topic
+from ..utils import bbx_indicators_by_item
 
 
 def most_local_cited_sources(
@@ -79,22 +79,22 @@ def most_local_cited_sources(
 ):
     """Most local cited sources."""
 
-    return bibliometric_indicators_by_topic(
-        criterion="source_abbr",
+    return bbx_indicators_by_item(
+        field="source_abbr",
         metric="local_citations",
         plot=plot,
         x_label=x_label,
         y_label=y_label,
         title="Most Local Cited Sources",
-        directory=directory,
-        topics_length=topics_length,
-        topic_min_occ=topic_min_occ,
+        root_dir=directory,
+        top_n=topics_length,
+        occ_range=topic_min_occ,
         topic_max_occ=topic_max_occ,
-        topic_min_citations=topic_min_citations,
+        gc_range=topic_min_citations,
         topic_max_citations=topic_max_citations,
-        custom_topics=custom_topics,
+        custom_items=custom_topics,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=start_year,
+        cited_by_filter=end_year,
         **filters,
     )
