@@ -33,7 +33,14 @@ class IndicatorByYearChart:
 
 @dataclass(init=False)
 class BasicChart:
-    """Basic chart."""
+    """Basic chart.
+
+    Attributes:
+        plot_ (go.Figure): Plotly figure.
+        prompt_ (str): Prompt.
+        table_ (pd.DataFrame): Table.
+
+    """
 
     plot_: go.Figure
     prompt_: str
