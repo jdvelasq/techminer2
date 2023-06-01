@@ -74,7 +74,11 @@ def most_global_cited_countries(
     root_dir="./",
     database="documents",
     # Plot options:
-    plot="cleveland_dot_chart",
+    textfont_size=10,
+    marker_size=7,
+    line_color="black",
+    line_width=1.5,
+    yshift=4,
     metric_label=None,
     field_label=None,
     title=None,
@@ -93,7 +97,11 @@ def most_global_cited_countries(
     Args:
         root_dir (str): path to the database directory.
         database (str): name of the database.
-        plot (str): plot type. Options: 'bar_chart', 'cleveland_dot_chart', 'column_chart', 'line_chart'.
+        textfont_size (int, optional): Font size. Defaults to 10.
+        marker_size (int, optional): Marker size. Defaults to 6.
+        line_color (str, optional): Line color. Defaults to "black".
+        line_width (int, optional): Line width. Defaults to 1.
+        yshift (int, optional): Y shift. Defaults to 4.
         metric_label (str): metric label.
         field_label (str): field label.
         title (str): plot title.
@@ -122,7 +130,11 @@ def most_global_cited_countries(
         database=database,
         metric="global_citations",
         # Plot options:
-        plot=plot,
+        textfont_size=textfont_size,
+        marker_size=marker_size,
+        line_color=line_color,
+        line_width=line_width,
+        yshift=yshift,
         metric_label=metric_label,
         field_label=field_label,
         title=title,

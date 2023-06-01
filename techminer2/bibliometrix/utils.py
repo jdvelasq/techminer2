@@ -5,12 +5,7 @@
 """
 
 
-from ..vantagepoint.report import (
-    bar_chart,
-    cleveland_dot_chart,
-    column_chart,
-    line_chart,
-)
+from ..vantagepoint.report import ranking_chart
 
 
 # pylint: disable=too-many-arguments
@@ -21,7 +16,11 @@ def bbx_generic_indicators_by_item(
     database="documents",
     metric="OCC",
     # Plot options:
-    plot="cleveland_dot_chart",
+    textfont_size=10,
+    marker_size=7,
+    line_color="black",
+    line_width=1.5,
+    yshift=4,
     metric_label=None,
     field_label=None,
     title=None,
@@ -53,18 +52,16 @@ def bbx_generic_indicators_by_item(
         **filters,
     )
 
-    vantagepoint_chart = {
-        "bar_chart": bar_chart,
-        "cleveland_dot_chart": cleveland_dot_chart,
-        "column_chart": column_chart,
-        "line_chart": line_chart,
-    }[plot]
-
-    chart = vantagepoint_chart(
+    chart = ranking_chart(
         obj,
         title=title,
         metric_label=metric_label,
         field_label=field_label,
+        textfont_size=textfont_size,
+        marker_size=marker_size,
+        line_color=line_color,
+        line_width=line_width,
+        yshift=yshift,
     )
 
     return chart

@@ -77,7 +77,11 @@ def author_impact(
     root_dir="./",
     database="documents",
     # Plot options:
-    plot="cleveland_dot_chart",
+    textfont_size=10,
+    marker_size=7,
+    line_color="black",
+    line_width=1.5,
+    yshift=4,
     title=None,
     metric_label=None,
     field_label=None,
@@ -91,7 +95,34 @@ def author_impact(
     cited_by_filter=None,
     **filters,
 ):
-    """Plots the selected impact measure by author."""
+    """Plots the selected impact measure by author.
+
+    Args:
+        metric (str, optional): Impact metric. Defaults to "h_index".
+        root_dir (str): path to the database directory.
+        database (str): name of the database.
+        textfont_size (int, optional): Font size. Defaults to 10.
+        marker_size (int, optional): Marker size. Defaults to 6.
+        line_color (str, optional): Line color. Defaults to "black".
+        line_width (int, optional): Line width. Defaults to 1.
+        yshift (int, optional): Y shift. Defaults to 4.
+        metric_label (str): metric label.
+        field_label (str): field label.
+        title (str): plot title.
+        top_n (int): number of items to be plotted.
+        occ_range (tuple): range of occurrences.
+        gc_range (tuple): range of global citations.
+        custom_items (list): list of items to be plotted.
+        year_filter (tuple): range of years.
+        cited_by_filter (tuple): range of citations.
+        **filters (dict, optional): Filters to be applied to the database. Defaults to {}.
+
+    Returns:
+        BasicChart: A basic chart object.
+
+    # pylint: disable=line-too-long
+
+    """
 
     if title is None:
         title = f"Author Impact by {metric.replace('_', ' ').title()}"
@@ -103,7 +134,11 @@ def author_impact(
         database=database,
         metric=metric,
         # Plot options:
-        plot=plot,
+        textfont_size=textfont_size,
+        marker_size=marker_size,
+        line_color=line_color,
+        line_width=line_width,
+        yshift=yshift,
         metric_label=metric_label,
         field_label=field_label,
         title=title,
