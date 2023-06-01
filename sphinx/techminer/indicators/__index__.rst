@@ -11,7 +11,7 @@ Indicators
     growth_indicators_by_topic
 
 .. toctree::    
-    impact_indicators_by_topic
+    impact_indicators_by_item
 
 .. toctree::
     indicators_by_document

@@ -11,6 +11,7 @@ from .gantt_chart import gantt_chart
 from .heat_map import heat_map
 from .line_chart import line_chart
 from .pie_chart import pie_chart
+from .ranking_chart import ranking_chart
 from .treemap import treemap
 from .word_cloud import word_cloud
 from .world_map import world_map
@@ -24,6 +25,7 @@ __all__ = [
     "heat_map",
     "line_chart",
     "pie_chart",
+    "ranking_chart",
     "treemap",
     "word_cloud",
     "world_map",

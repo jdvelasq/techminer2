@@ -1,27 +1,27 @@
 # flake8: noqa
 """
-Line Chart
+Ranking Chart (*)
 ===============================================================================
 
-
+Default visualization chart for Bibliometrix.
 
 Example
 -------------------------------------------------------------------------------
 
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/vantagepoint__line_chart.html"
+>>> file_name = "sphinx/_static/vantagepoint__ranking_chart.html"
 
 >>> from techminer2 import vantagepoint
 >>> obj = vantagepoint.analyze.list_view(
 ...    field='author_keywords',
 ...    root_dir=root_dir,
 ... )
->>> chart = vantagepoint.report.line_chart(obj, title="Most Frequent Author Keywords")
+>>> chart = vantagepoint.report.ranking_chart(obj, title="Most Frequent Author Keywords")
 >>> chart.plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../_static/vantagepoint__line_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/vantagepoint__ranking_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
 >>> chart.table_.head()
@@ -62,19 +62,30 @@ from ...classes import BasicChart
 from ...utils import check_listview
 
 
-def line_chart(
+# pylint: disable=too-many-arguments
+def ranking_chart(
     obj,
     title=None,
     field_label=None,
     metric_label=None,
+    textfont_size=10,
+    marker_size=7,
+    line_color="black",
+    line_width=1.5,
+    yshift=4,
 ):
-    """Creates a line chart.
+    """Creates a rank chart.
 
     Args:
         obj (vantagepoint.analyze.list_view): A list view object.
         title (str, optional): Title. Defaults to None.
         metric_label (str, optional): Metric label. Defaults to None.
         field_label (str, optional): Field label. Defaults to None.
+        textfont_size (int, optional): Font size. Defaults to 10.
+        marker_size (int, optional): Marker size. Defaults to 6.
+        line_color (str, optional): Line color. Defaults to "black".
+        line_width (int, optional): Line width. Defaults to 1.
+        yshift (int, optional): Y shift. Defaults to 4.
 
     Returns:
         BasicChart: A basic chart object.
@@ -82,40 +93,59 @@ def line_chart(
     """
 
     def create_plot():
-        figure = px.line(
-            obj.table_,
-            x=None,
+        """Plots the degree of a co-occurrence matrix."""
+
+        table = obj.table_.copy()
+        table["Rank"] = list(range(1, len(table) + 1))
+
+        fig = px.line(
+            table,
+            x="Rank",
             y=obj.metric_,
             hover_data=obj.table_.columns.to_list(),
             markers=True,
         )
 
-        figure.update_layout(
+        fig.update_traces(
+            marker={
+                "size": marker_size,
+                "line": {"color": line_color, "width": 0},
+            },
+            marker_color=line_color,
+            line={"color": line_color, "width": line_width},
+        )
+        fig.update_layout(
             paper_bgcolor="white",
             plot_bgcolor="white",
-            title_text=title,
         )
-        figure.update_traces(
-            marker=dict(size=9, line=dict(color="darkslategray", width=2)),
-            marker_color="rgb(171,171,171)",
-            line=dict(color="darkslategray"),
-        )
-        figure.update_xaxes(
+        fig.update_yaxes(
             linecolor="gray",
-            linewidth=2,
+            linewidth=1,
             gridcolor="lightgray",
             griddash="dot",
-            tickangle=270,
-            title_text=field_label,
+            title=obj.metric_.replace("_", " ").upper(),
         )
-        figure.update_yaxes(
+        fig.update_xaxes(
             linecolor="gray",
-            linewidth=2,
+            linewidth=1,
             gridcolor="lightgray",
             griddash="dot",
-            title_text=metric_label,
+            title=field_label,
         )
-        return figure
+
+        for name, row in table.iterrows():
+            fig.add_annotation(
+                x=row["Rank"],
+                y=row[obj.metric_],
+                text=name,
+                showarrow=False,
+                textangle=-90,
+                yanchor="bottom",
+                font={"size": textfont_size},
+                yshift=yshift,
+            )
+
+        return fig
 
     #
     # Main code
@@ -130,7 +160,7 @@ def line_chart(
         metric_label = obj.metric_.replace("_", " ").upper()
 
     if field_label is None:
-        field_label = obj.field_.replace("_", " ").upper()
+        field_label = obj.field_.replace("_", " ").upper() + " RANKING"
 
     chart = BasicChart()
     chart.plot_ = create_plot()

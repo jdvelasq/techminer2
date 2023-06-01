@@ -53,10 +53,6 @@ setup(
         "kelaido",
         "igraph",
         "leidenalg",
-        "wurlitzer",
-        "karateclub",
-        "infomap",
-        "ASLPAw",
     ],
     packages=[
         "techminer2",
