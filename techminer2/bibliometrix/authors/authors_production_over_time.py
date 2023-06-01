@@ -4,6 +4,9 @@ Authors' Production over Time
 ===============================================================================
 
 
+Example
+-------------------------------------------------------------------------------
+
 >>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__authors_production_over_time.html"
 
