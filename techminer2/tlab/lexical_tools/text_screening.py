@@ -51,7 +51,7 @@ def text_screening(
     """
 
     return record_display(
-        criterion="abstract",
+        field="abstract",
         search_for=search_for,
         report_filename="text_screening.txt",
         case=case,

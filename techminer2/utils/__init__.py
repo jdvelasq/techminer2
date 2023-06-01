@@ -8,7 +8,7 @@ from .check_params import (
     check_listview,
 )
 from .load_utils import load_stopwords
-from .records import read_records
+from .records import create_records_report, read_records
 
 __all__ = [
     "check_bibliometric_metric",
@@ -16,6 +16,7 @@ __all__ = [
     "check_integer_range",
     "check_integer",
     "check_listview",
+    "create_records_report",
     "load_stopwords",
     "read_records",
 ]

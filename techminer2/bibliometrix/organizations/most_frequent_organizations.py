@@ -19,7 +19,7 @@ Example
 
 .. raw:: html
 
-    <iframe src="../../../_static/bibliometrix__most_relevant_organizations.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/bibliometrix__most_frequent_organizations.html" height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> r.table_.head()
@@ -69,6 +69,7 @@ from ...vantagepoint.analyze import list_view
 from ..utils import bbx_generic_indicators_by_item
 
 
+# pylint: disable=too-many-locals
 # pylint: disable=too-many-arguments
 def most_frequent_organizations(
     root_dir="./",
