@@ -1,30 +1,22 @@
+# flake8: noqa
 """
 Multidimensional Scaling (*) --- ChatGPT
 ===============================================================================
 
 Plots the MDS of the co-occurrence matrix.
 
-**Algorithm**
-
-1. Computes the normalized co-occurrence matrix.
-
-2. Apply MDS to the co-occurrence matrix with `n_components=20`.
-
-3. Plot the decomposed matrix.
 
 
-Examples
--------------------------------------------------------------------------------
-
->>> # working directory
 >>> root_dir = "data/regtech/"
+>>> # ------------------------- Algorithm -------------------------
 >>> # computes the co-occurrence matrix
 >>> from techminer2 import vantagepoint
 >>> co_occ_matrix = vantagepoint.analyze.co_occ_matrix(
-...     criterion='author_keywords',
-...     topics_length=20,
+...     columns='author_keywords',
+...     col_top_n=20,
 ...     root_dir=root_dir,
 ... )
+>>> # normalizes the co-occurrence matrix
 >>> norm_co_occ_matrix = vantagepoint.analyze.association_index(
 ...     co_occ_matrix, "association"
 ... )
@@ -56,7 +48,7 @@ regulation 05:164             1.226895 -1.314099  ...  0.447964  1.214174
 <BLANKLINE>
 [5 rows x 19 columns]
 
-
+# pylint: disable=line-too-long
 """
 import pandas as pd
 from sklearn.manifold import MDS
