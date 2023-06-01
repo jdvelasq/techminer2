@@ -64,4 +64,6 @@ Analyze the table below which contains values of co-occurrence (OCC) for the ['r
 <BLANKLINE>
 <BLANKLINE>
 
+
+# pylint: disable=line-too-long
 """
