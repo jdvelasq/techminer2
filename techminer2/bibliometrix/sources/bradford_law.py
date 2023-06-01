@@ -1,24 +1,31 @@
+# flake8: noqa
 """
 Bradford's Law
 ===============================================================================
 
 
 
->>> directory = "data/regtech/"
+Example
+-------------------------------------------------------------------------------
+
+
+>>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__bradford_law.html"
 
 >>> from techminer2 import bibliometrix
->>> bibliometrix.sources.bradford_law(
-...     directory=directory,
-... ).plot_.write_html(file_name)
+>>> bibliometrix.sources.bradford_law(root_dir=root_dir).plot_.write_html(file_name)
 
 .. raw:: html
 
     <iframe src="../../_static/bibliometrix__bradford_law.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
+    
+Example
+-------------------------------------------------------------------------------
+
 >>> print(bibliometrix.sources.bradford_law(
-...     directory=directory,
+...     root_dir=root_dir,
 ... ).source_clustering_.head(20).to_markdown())
 | source_abbr                   |   no |   OCC |   cum_OCC |   global_citations |   zone |
 |:------------------------------|-----:|------:|----------:|-------------------:|-------:|
@@ -45,7 +52,7 @@ Bradford's Law
 
 
 >>> print(bibliometrix.sources.bradford_law(
-...     directory=directory,
+...     root_dir=root_dir,
 ... ).core_sources_.head(5).to_markdown())
 |    |   Num Sources | %       |   Acum Num Sources | % Acum   |   Documents published |   Tot Documents published |   Num Documents | Tot Documents   |   Bradford's Group |
 |---:|--------------:|:--------|-------------------:|:---------|----------------------:|--------------------------:|----------------:|:----------------|-------------------:|
@@ -54,41 +61,35 @@ Bradford's Law
 
 
 
-
+# pylint: disable=line-too-long
 """
-from dataclasses import dataclass
 
 import numpy as np
 import pandas as pd
 import plotly.express as px
 
 from ..._lib._explode import explode
-from ...utils.records import read_records
-
-
-@dataclass(init=False)
-class _Result:
-    plot_: None
-    source_clustering_: None
-    core_sources_: None
+from ...classes import BradfordLaw
+from ...utils import read_records
 
 
 def bradford_law(
-    directory="./",
+    root_dir="./",
     database="documents",
-    start_year=None,
-    end_year=None,
+    # Database filters:
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
     """Bradfor's Law"""
 
-    results = _Result()
+    results = BradfordLaw()
 
     results.source_clustering_ = _source_clustering(
-        directory=directory,
+        root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 
@@ -97,10 +98,10 @@ def bradford_law(
     )
 
     results.core_sources_ = _core_sources(
-        directory=directory,
+        root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 
@@ -108,10 +109,10 @@ def bradford_law(
 
 
 def _core_sources(
-    directory,
+    root_dir,
     database,
-    start_year,
-    end_year,
+    year_filter,
+    cited_by_filter,
     **filters,
 ):
     """
@@ -128,10 +129,10 @@ def _core_sources(
         Dataframe with the core sources of the records
     """
     documents = read_records(
-        root_dir=directory,
+        root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 
@@ -207,19 +208,19 @@ def _core_sources(
 
 
 def _source_clustering(
-    directory="./",
+    root_dir="./",
     database="documents",
-    start_year=None,
-    end_year=None,
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
     """Source clustering throught Bradfors's Law."""
 
     records = read_records(
-        root_dir=directory,
+        root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 

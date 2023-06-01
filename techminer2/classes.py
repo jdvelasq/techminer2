@@ -17,6 +17,15 @@ import plotly.graph_objs as go
 
 
 @dataclass(init=False)
+class BradfordLaw:
+    """Bradford's Law."""
+
+    plot_: go.Figure
+    source_clustering_: pd.DataFrame
+    core_sources_: pd.DataFrame
+
+
+@dataclass(init=False)
 class ProductionOverTimeChart:
     """Production over time chart.
 
