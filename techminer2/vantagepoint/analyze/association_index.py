@@ -148,8 +148,8 @@ def association_index(obj, index_name):
     normcocmatrix.matrix_ = normalized_matrix
     normcocmatrix.prompt_ = obj.prompt_
     normcocmatrix.metric_ = obj.metric_
-    normcocmatrix.criterion_ = obj.criterion_
-    normcocmatrix.other_criterion_ = obj.other_criterion_
+    normcocmatrix.columns_ = obj.columns_
+    normcocmatrix.rows_ = obj.rows_
     normcocmatrix.association_index_ = index_name
 
     return normcocmatrix

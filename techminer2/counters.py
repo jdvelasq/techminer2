@@ -5,7 +5,7 @@ in the values or axis of a dataframe.
 
 
 
-
+# pylint: disable=line-too-long
 """
 
 import numpy as np
@@ -17,11 +17,12 @@ from . import techminer
 def add_counters_to_axis(
     dataframe,
     axis,
-    criterion,
+    field,
+    # Database params:
     root_dir,
     database,
-    start_year,
-    end_year,
+    year_filter,
+    cited_by_filter,
     **filters,
 ):
     """Adds OCC:citations counters to topics in the axis of a dataframe.
@@ -32,9 +33,10 @@ def add_counters_to_axis(
         criterion (str): The criterion to be analyzed.
         root_dir (str): The working directory.
         database (str): The database name. It can be 'documents', 'cited_by' or 'references'.
-        start_year (int): The start year for filtering the data.
-        end_year (int): The end year for filtering the data.
-        filters (dict): A dictionary of filters. The keys are the field names and the values are the filter values.
+        year_filter (tuple, optional): Year database filter. Defaults to None.
+        cited_by_filter (tuple, optional): Cited by database filter. Defaults to None.
+        **filters (dict, optional): Filters to be applied to the database. Defaults to {}.
+
 
     Returns:
         pandas.DataFrame: The dataframe with OCC:citations counters added to topics in the axis.
@@ -44,11 +46,11 @@ def add_counters_to_axis(
     dataframe = dataframe.copy()
 
     new_column_names = items2counters(
-        criterion=criterion,
+        criterion=field,
         root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        start_year=year_filter,
+        end_year=cited_by_filter,
         **filters,
     )
 

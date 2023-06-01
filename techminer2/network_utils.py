@@ -98,7 +98,7 @@ def create_graph_edges(graph, matrix_list):
 
     table = matrix_list.cells_list_.copy()
     if (
-        matrix_list.criterion_ == matrix_list.other_criterion_
+        matrix_list.columns_ == matrix_list.rows_
         and matrix_list.is_matrix_subset_ is False
     ):
         table = table[table["row"] < table["column"]]

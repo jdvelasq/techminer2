@@ -134,10 +134,10 @@ class ColumnViewer:
 class CocMatrix:
     """Co-cccurrence matrix."""
 
-    criterion_: str
+    columns_: str
+    rows_: str
     matrix_: pd.DataFrame
     metric_: str
-    other_criterion_: str
     prompt_: str
 
 
@@ -145,10 +145,10 @@ class CocMatrix:
 class NormCocMatrix:
     """Normalized co-cccurrence matrix."""
 
-    criterion_: str
+    columns_: str
+    rows_: str
     matrix_: pd.DataFrame
     metric_: str
-    other_criterion_: str
     prompt_: str
     association_index_: str
 
@@ -158,10 +158,10 @@ class ListCellsInMatrix:
     """List cells in matrix."""
 
     cells_list_: pd.DataFrame
-    criterion_: str
+    columns_: str
     is_matrix_subset_: bool
     metric_: str
-    other_criterion_: str
+    rows_: str
     prompt_: str
 
 

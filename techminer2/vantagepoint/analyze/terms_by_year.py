@@ -197,11 +197,11 @@ def terms_by_year(
     descriptors_by_year = add_counters_to_axis(
         descriptors_by_year,
         axis=0,
-        criterion=field,
+        field=field,
         root_dir=root_dir,
         database=database,
-        start_year=year_filter,
-        end_year=cited_by_filter,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 

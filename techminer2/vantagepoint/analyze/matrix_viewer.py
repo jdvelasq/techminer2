@@ -14,21 +14,20 @@ Example: Visulization of an occurrence matrix.
 
 >>> from techminer2 import vantagepoint
 >>> co_occ_matrix = vantagepoint.analyze.co_occ_matrix(
-...     criterion='author_keywords',
-...     other_criterion='authors',
-...     topic_occ_min=2,
-...     topics_length=10,
+...     columns='author_keywords',
+...     rows='authors',
+...     col_occ_range=(2, None),
+...     row_occ_range=(2, None),
 ...     root_dir=root_dir,
 ... )
->>> co_occ_matrix_list = vantagepoint.analyze.list_cells_in_matrix(
-...     co_occ_matrix)
->>> co_occ_matrix_list.cells_list_.head()
-                row                       column  OCC
-0    Arner DW 3:185  financial regulation 04:035    2
-1    Arner DW 3:185               regtech 28:329    2
-2   Brennan R 2:014            compliance 07:030    2
-3   Brennan R 2:014               regtech 28:329    2
-4  Buckley RP 3:185  financial regulation 04:035    2
+>>> vantagepoint.analyze.list_cells_in_matrix(co_occ_matrix).cells_list_.head()
+                 row          column  OCC
+0     Arner DW 3:185  regtech 28:329    2
+1   Buckley RP 3:185  regtech 28:329    2
+2  Barberis JN 2:161  regtech 28:329    1
+3   Butler T/1 2:041  regtech 28:329    2
+4        Lin W 2:017  regtech 28:329    2
+
 
 >>> chart = vantagepoint.analyze.matrix_viewer(
 ...     co_occ_matrix, xaxes_range=(-2,2)
@@ -42,43 +41,88 @@ Example: Visulization of an occurrence matrix.
 
 
 >>> print(chart.prompt_)
-Analyze the table below, which contains the the occurrence values for \
-author_keywords and authors. Identify any notable patterns, trends, or \
-outliers in the data, and discuss their implications for the research field. \
-Be sure to provide a concise summary of your findings in no more than 150 \
-words.
+Analyze the table below, which contains the the occurrence values for author_keywords and authors. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
-|    | row               | column                         |   OCC |
-|---:|:------------------|:-------------------------------|------:|
-|  0 | Arner DW 3:185    | financial regulation 04:035    |     2 |
-|  1 | Arner DW 3:185    | regtech 28:329                 |     2 |
-|  2 | Brennan R 2:014   | compliance 07:030              |     2 |
-|  3 | Brennan R 2:014   | regtech 28:329                 |     2 |
-|  4 | Buckley RP 3:185  | financial regulation 04:035    |     2 |
-|  5 | Buckley RP 3:185  | regtech 28:329                 |     2 |
-|  6 | Butler T/1 2:041  | fintech 12:249                 |     2 |
-|  7 | Butler T/1 2:041  | regtech 28:329                 |     2 |
-|  8 | Crane M 2:014     | compliance 07:030              |     2 |
-|  9 | Crane M 2:014     | regtech 28:329                 |     2 |
-| 10 | Hamdan A 2:018    | regulatory technology 07:037   |     2 |
-| 11 | Lin W 2:017       | regtech 28:329                 |     2 |
-| 12 | Singh C 2:017     | regtech 28:329                 |     2 |
-| 13 | Turki M 2:018     | regulatory technology 07:037   |     2 |
-| 14 | Arner DW 3:185    | financial services 04:168      |     1 |
-| 15 | Arner DW 3:185    | fintech 12:249                 |     1 |
-| 16 | Barberis JN 2:161 | financial regulation 04:035    |     1 |
-| 17 | Barberis JN 2:161 | financial services 04:168      |     1 |
-| 18 | Barberis JN 2:161 | regtech 28:329                 |     1 |
-| 19 | Buckley RP 3:185  | financial services 04:168      |     1 |
-| 20 | Buckley RP 3:185  | fintech 12:249                 |     1 |
-| 21 | Butler T/1 2:041  | regulation 05:164              |     1 |
-| 22 | Butler T/1 2:041  | risk management 03:014         |     1 |
-| 23 | Hamdan A 2:018    | anti-money laundering 03:021   |     1 |
-| 24 | Lin W 2:017       | anti-money laundering 03:021   |     1 |
-| 25 | Lin W 2:017       | artificial intelligence 04:023 |     1 |
-| 26 | Singh C 2:017     | anti-money laundering 03:021   |     1 |
-| 27 | Singh C 2:017     | artificial intelligence 04:023 |     1 |
-| 28 | Turki M 2:018     | anti-money laundering 03:021   |     1 |
+|    | row                | column                             |   OCC |
+|---:|:-------------------|:-----------------------------------|------:|
+|  0 | Arner DW 3:185     | regtech 28:329                     |     2 |
+|  1 | Buckley RP 3:185   | regtech 28:329                     |     2 |
+|  2 | Barberis JN 2:161  | regtech 28:329                     |     1 |
+|  3 | Butler T/1 2:041   | regtech 28:329                     |     2 |
+|  4 | Lin W 2:017        | regtech 28:329                     |     2 |
+|  5 | Singh C 2:017      | regtech 28:329                     |     2 |
+|  6 | Brennan R 2:014    | regtech 28:329                     |     2 |
+|  7 | Crane M 2:014      | regtech 28:329                     |     2 |
+|  8 | Ryan P 2:014       | regtech 28:329                     |     2 |
+|  9 | Grassi L 2:002     | regtech 28:329                     |     2 |
+| 10 | Lanfranchi D 2:002 | regtech 28:329                     |     2 |
+| 11 | Arman AA 2:000     | regtech 28:329                     |     2 |
+| 12 | Arner DW 3:185     | fintech 12:249                     |     1 |
+| 13 | Buckley RP 3:185   | fintech 12:249                     |     1 |
+| 14 | Butler T/1 2:041   | fintech 12:249                     |     2 |
+| 15 | Grassi L 2:002     | fintech 12:249                     |     2 |
+| 16 | Lanfranchi D 2:002 | fintech 12:249                     |     2 |
+| 17 | Hamdan A 2:018     | regulatory technology 07:037       |     2 |
+| 18 | Turki M 2:018      | regulatory technology 07:037       |     2 |
+| 19 | Sarea A 2:012      | regulatory technology 07:037       |     1 |
+| 20 | Grassi L 2:002     | regulatory technology 07:037       |     1 |
+| 21 | Lanfranchi D 2:002 | regulatory technology 07:037       |     1 |
+| 22 | Brennan R 2:014    | compliance 07:030                  |     2 |
+| 23 | Crane M 2:014      | compliance 07:030                  |     2 |
+| 24 | Ryan P 2:014       | compliance 07:030                  |     2 |
+| 25 | Grassi L 2:002     | compliance 07:030                  |     1 |
+| 26 | Lanfranchi D 2:002 | compliance 07:030                  |     1 |
+| 27 | Butler T/1 2:041   | regulation 05:164                  |     1 |
+| 28 | Grassi L 2:002     | regulation 05:164                  |     2 |
+| 29 | Lanfranchi D 2:002 | regulation 05:164                  |     2 |
+| 30 | Arner DW 3:185     | financial services 04:168          |     1 |
+| 31 | Buckley RP 3:185   | financial services 04:168          |     1 |
+| 32 | Barberis JN 2:161  | financial services 04:168          |     1 |
+| 33 | Arner DW 3:185     | financial regulation 04:035        |     2 |
+| 34 | Buckley RP 3:185   | financial regulation 04:035        |     2 |
+| 35 | Barberis JN 2:161  | financial regulation 04:035        |     1 |
+| 36 | Lin W 2:017        | artificial intelligence 04:023     |     1 |
+| 37 | Singh C 2:017      | artificial intelligence 04:023     |     1 |
+| 38 | Sarea A 2:012      | artificial intelligence 04:023     |     1 |
+| 39 | Hamdan A 2:018     | anti-money laundering 03:021       |     1 |
+| 40 | Turki M 2:018      | anti-money laundering 03:021       |     1 |
+| 41 | Lin W 2:017        | anti-money laundering 03:021       |     1 |
+| 42 | Singh C 2:017      | anti-money laundering 03:021       |     1 |
+| 43 | Butler T/1 2:041   | risk management 03:014             |     1 |
+| 44 | Grassi L 2:002     | risk management 03:014             |     1 |
+| 45 | Lanfranchi D 2:002 | risk management 03:014             |     1 |
+| 46 | Grassi L 2:002     | innovation 03:012                  |     1 |
+| 47 | Lanfranchi D 2:002 | innovation 03:012                  |     1 |
+| 48 | Grassi L 2:002     | suptech 03:004                     |     1 |
+| 49 | Lanfranchi D 2:002 | suptech 03:004                     |     1 |
+| 50 | Arman AA 2:000     | suptech 03:004                     |     1 |
+| 51 | Butler T/1 2:041   | semantic technologies 02:041       |     2 |
+| 52 | Arner DW 3:185     | data protection 02:027             |     1 |
+| 53 | Buckley RP 3:185   | data protection 02:027             |     1 |
+| 54 | Lin W 2:017        | charitytech 02:017                 |     2 |
+| 55 | Singh C 2:017      | charitytech 02:017                 |     2 |
+| 56 | Lin W 2:017        | english law 02:017                 |     2 |
+| 57 | Singh C 2:017      | english law 02:017                 |     2 |
+| 58 | Brennan R 2:014    | accountability 02:014              |     2 |
+| 59 | Crane M 2:014      | accountability 02:014              |     2 |
+| 60 | Ryan P 2:014       | accountability 02:014              |     2 |
+| 61 | Brennan R 2:014    | data protection officer 02:014     |     2 |
+| 62 | Crane M 2:014      | data protection officer 02:014     |     2 |
+| 63 | Ryan P 2:014       | data protection officer 02:014     |     2 |
+| 64 | Brennan R 2:014    | gdpr 02:014                        |     2 |
+| 65 | Crane M 2:014      | gdpr 02:014                        |     2 |
+| 66 | Ryan P 2:014       | gdpr 02:014                        |     2 |
+| 67 | Hamdan A 2:018     | anti money laundering (aml) 02:013 |     1 |
+| 68 | Turki M 2:018      | anti money laundering (aml) 02:013 |     1 |
+| 69 | Sarea A 2:012      | anti money laundering (aml) 02:013 |     1 |
+| 70 | Arner DW 3:185     | sandbox 02:012                     |     1 |
+| 71 | Buckley RP 3:185   | sandbox 02:012                     |     1 |
+| 72 | Barberis JN 2:161  | sandbox 02:012                     |     1 |
+| 73 | Arman AA 2:000     | technology 02:010                  |     1 |
+| 74 | Grassi L 2:002     | finance 02:001                     |     1 |
+| 75 | Lanfranchi D 2:002 | finance 02:001                     |     1 |
+| 76 | Grassi L 2:002     | reporting 02:001                   |     1 |
+| 77 | Lanfranchi D 2:002 | reporting 02:001                   |     1 |
 <BLANKLINE>
 <BLANKLINE>
 
@@ -89,13 +133,11 @@ Example: Visulization of a co-occurrence matrix.
 >>> file_name = "sphinx/_static/vantagepoint__matrix_viewer-1.html"
 
 >>> co_occ_matrix = vantagepoint.analyze.co_occ_matrix(
-...     criterion='author_keywords',
-...     topic_occ_min=7,
-...     root_dir=root_dir,
+...    columns='author_keywords',
+...    col_top_n=10,
+...    root_dir=root_dir,
 ... )
->>> co_occ_matrix_list = vantagepoint.analyze.list_cells_in_matrix(
-...     co_occ_matrix)
->>> co_occ_matrix_list.cells_list_.head()
+>>> vantagepoint.analyze.list_cells_in_matrix(co_occ_matrix).cells_list_.head()
                  row             column  OCC
 0     regtech 28:329     regtech 28:329   28
 1     fintech 12:249     fintech 12:249   12
@@ -142,8 +184,8 @@ Example: Visulization of a radial diagram (T-LAB).
 >>> file_name = "sphinx/_static/vantagepoint__matrix_viewer-2.html"
 
 >>> co_occ_matrix = vantagepoint.analyze.co_occ_matrix(
-...    criterion='author_keywords',
-...    topic_occ_min=3,
+...    columns='author_keywords',
+...    col_top_n=3,
 ...    root_dir=root_dir,
 ... )
 >>> matrix_subset = vantagepoint.analyze.matrix_subset(
@@ -192,8 +234,8 @@ Example: Comparison between pairs of keywords (T-LAB).
 >>> file_name = "sphinx/_static/vantagepoint__matrix_viewer-3.html"
 
 >>> co_occ_matrix = vantagepoint.analyze.co_occ_matrix(
-...    criterion='author_keywords',
-...    topic_occ_min=3,
+...    columns='author_keywords',
+...    col_top_n=3,
 ...    root_dir=root_dir,
 ... )
 >>> matrix_subset = vantagepoint.analyze.matrix_subset(
@@ -241,8 +283,8 @@ Example: Ego-Network (T-LAB).
 >>> file_name = "sphinx/_static/vantagepoint__matrix_viewer-4.html"
 
 >>> co_occ_matrix = vantagepoint.analyze.co_occ_matrix(
-...    criterion='author_keywords',
-...    topic_occ_min=3,
+...    columns='author_keywords',
+...    col_top_n=10,
 ...    root_dir=root_dir,
 ... )
 >>> matrix_subset = vantagepoint.analyze.matrix_subset(
@@ -290,8 +332,12 @@ Analyze the table below which contains values of co-occurrence (OCC) for the 'au
 
 """
 
-from ... import network_utils
 from ...classes import MatrixSubset, MatrixViewer
+from ...network_utils import (
+    compute_spring_layout,
+    create_graph,
+    set_node_colors,
+)
 from .list_cells_in_matrix import list_cells_in_matrix
 from .network_viewer import network_viewer
 
@@ -314,7 +360,7 @@ def matrix_viewer(
 
     matrix_list = list_cells_in_matrix(obj)
 
-    graph = network_utils.create_graph(
+    graph = create_graph(
         matrix_list,
         node_size_min,
         node_size_max,
@@ -322,15 +368,13 @@ def matrix_viewer(
         textfont_size_max,
     )
     ####
-    node_sizes = network_utils.extract_node_sizes(graph)
+    # node_sizes = network_utils.extract_node_sizes(graph)
     ####
 
     if isinstance(obj, MatrixSubset):
-        graph = network_utils.set_node_colors(graph, obj.topics_, "#556f81")
+        graph = set_node_colors(graph, obj.topics_, "#556f81")
 
-    graph = network_utils.compute_spring_layout(
-        graph, nx_k, nx_iterations, random_state
-    )
+    graph = compute_spring_layout(graph, nx_k, nx_iterations, random_state)
 
     fig = network_viewer(
         graph=graph,

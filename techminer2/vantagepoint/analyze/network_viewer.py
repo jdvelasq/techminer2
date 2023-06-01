@@ -9,8 +9,8 @@ Example:
 >>> root_dir = "data/regtech/"
 >>> from techminer2 import vantagepoint
 >>> co_occ_matrix = vantagepoint.analyze.co_occ_matrix(
-...    criterion='author_keywords',
-...    topic_occ_min=2,
+...    columns='author_keywords',
+...    col_occ_range=(2, None),
 ...    root_dir=root_dir,
 ... )
 >>> normalized_co_occ_matrix = vantagepoint.analyze.association_index(

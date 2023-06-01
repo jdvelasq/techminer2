@@ -1,9 +1,10 @@
+# flake8: noqa
 """
 Sorts the indicators dataframe by the given metric.
 
 """
 
-from . import techminer
+from .techminer.indicators import indicators_by_item
 
 
 def sort_indicators_by_metric(indicators, metric):
@@ -87,23 +88,28 @@ def sort_indicators_by_metric(indicators, metric):
 def sort_matrix_axis(
     matrix,
     axis,
-    criterion,
+    field,
+    # Database params:
     root_dir,
     database,
-    start_year,
-    end_year,
+    year_filter,
+    cited_by_filter,
     **filters,
 ):
-    """Sorts the axis of the matrix by 'OCC', 'global_citations', and 'local_citations'."""
+    """Sorts the axis of the matrix by 'OCC', 'global_citations', and 'local_citations'.
+
+    # pylint: disable=line-too-long
+    """
 
     matrix = matrix.copy()
 
-    indicators_by_topic = techminer.indicators.indicators_by_item(
-        field=criterion,
+    indicators_by_topic = indicators_by_item(
+        field=field,
+        # Database params:
         root_dir=root_dir,
         database=database,
-        year_filter=start_year,
-        cited_by_filter=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 

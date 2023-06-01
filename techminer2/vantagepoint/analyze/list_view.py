@@ -73,15 +73,15 @@ from ...utils import (
 # pylint: disable=too-many-arguments
 def list_view(
     field,
-    root_dir="./",
-    database="documents",
     metric="OCC",
     # Item filters:
     top_n=10,
     occ_range=None,
     gc_range=None,
     custom_items=None,
-    # Database filters:
+    # Database params:
+    root_dir="./",
+    database="documents",
     year_filter=None,
     cited_by_filter=None,
     **filters,

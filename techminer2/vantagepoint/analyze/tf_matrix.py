@@ -101,11 +101,11 @@ def tf_matrix(
     result = add_counters_to_axis(
         dataframe=result,
         axis=1,
-        criterion=criterion,
+        field=criterion,
         root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=start_year,
+        cited_by_filter=end_year,
         **filters,
     )
 

@@ -9,13 +9,14 @@ Example
 >>> root_dir = "data/regtech/"
 
 >>> from techminer2 import vantagepoint
->>> occ_matrix = vantagepoint.analyze.co_occ_matrix(
-...    criterion='author_keywords',
-...    other_criterion='authors',
-...    topic_occ_min=2,
-...    root_dir=root_dir,
+>>> co_occ_matrix = vantagepoint.analyze.co_occ_matrix(
+...     columns='author_keywords',
+...     rows='authors',
+...     col_occ_range=(2, None),
+...     row_occ_range=(2, None),
+...     root_dir=root_dir,
 ... )
->>> occ_matrix.matrix_
+>>> co_occ_matrix.matrix_
 column              regtech 28:329  ...  reporting 02:001
 row                                 ...                  
 Arner DW 3:185                   2  ...                 0
@@ -37,7 +38,7 @@ Arman AA 2:000                   2  ...                 0
 [15 rows x 24 columns]
 
 
->>> print(occ_matrix.prompt_)
+>>> print(co_occ_matrix.prompt_)
 Analyze the table below which contains values of co-occurrence (OCC) for the \
 'authors' and 'author_keywords' fields in a bibliographic dataset. Identify \
 any notable patterns, trends, or outliers in the data, and discuss their \
@@ -64,6 +65,49 @@ your findings in no more than 150 words.
 <BLANKLINE>
 <BLANKLINE>
 
+
+
+>>> co_occ_matrix = vantagepoint.analyze.co_occ_matrix(
+...    columns='author_keywords',
+...    col_top_n=10,
+...    root_dir=root_dir,
+... )
+>>> co_occ_matrix.matrix_
+column                          regtech 28:329  ...  risk management 03:014
+row                                             ...                        
+regtech 28:329                              28  ...                       2
+fintech 12:249                              12  ...                       2
+regulatory technology 07:037                 2  ...                       2
+compliance 07:030                            7  ...                       1
+regulation 05:164                            4  ...                       2
+financial services 04:168                    3  ...                       0
+financial regulation 04:035                  2  ...                       0
+artificial intelligence 04:023               2  ...                       1
+anti-money laundering 03:021                 1  ...                       0
+risk management 03:014                       2  ...                       3
+<BLANKLINE>
+[10 rows x 10 columns]
+
+>>> print(co_occ_matrix.prompt_)
+Analyze the table below which contains values of co-occurrence (OCC) for the 'author_keywords' field in a bibliographic dataset. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
+<BLANKLINE>
+| row                            |   regtech 28:329 |   fintech 12:249 |   regulatory technology 07:037 |   compliance 07:030 |   regulation 05:164 |   financial services 04:168 |   financial regulation 04:035 |   artificial intelligence 04:023 |   anti-money laundering 03:021 |   risk management 03:014 |
+|:-------------------------------|-----------------:|-----------------:|-------------------------------:|--------------------:|--------------------:|----------------------------:|------------------------------:|---------------------------------:|-------------------------------:|-------------------------:|
+| regtech 28:329                 |               28 |               12 |                              2 |                   7 |                   4 |                           3 |                             2 |                                2 |                              1 |                        2 |
+| fintech 12:249                 |               12 |               12 |                              1 |                   2 |                   4 |                           2 |                             1 |                                1 |                              0 |                        2 |
+| regulatory technology 07:037   |                2 |                1 |                              7 |                   1 |                   1 |                           0 |                             0 |                                1 |                              1 |                        2 |
+| compliance 07:030              |                7 |                2 |                              1 |                   7 |                   1 |                           0 |                             0 |                                1 |                              0 |                        1 |
+| regulation 05:164              |                4 |                4 |                              1 |                   1 |                   5 |                           1 |                             0 |                                0 |                              0 |                        2 |
+| financial services 04:168      |                3 |                2 |                              0 |                   0 |                   1 |                           4 |                             2 |                                0 |                              0 |                        0 |
+| financial regulation 04:035    |                2 |                1 |                              0 |                   0 |                   0 |                           2 |                             4 |                                0 |                              0 |                        0 |
+| artificial intelligence 04:023 |                2 |                1 |                              1 |                   1 |                   0 |                           0 |                             0 |                                4 |                              1 |                        1 |
+| anti-money laundering 03:021   |                1 |                0 |                              1 |                   0 |                   0 |                           0 |                             0 |                                1 |                              3 |                        0 |
+| risk management 03:014         |                2 |                2 |                              2 |                   1 |                   2 |                           0 |                             0 |                                1 |                              0 |                        3 |
+<BLANKLINE>
+<BLANKLINE>
+
+
+
 # pylint: disable=line-too-long
 """
 
@@ -79,14 +123,14 @@ from ...techminer.indicators import co_occ_matrix_list, indicators_by_item
 
 # pylint: disable=too-many-arguments disable=too-many-locals
 def co_occ_matrix(
-    # Columns:
     columns,
+    rows=None,
+    # Columns item filters:
     col_top_n=None,
     col_occ_range=None,
     col_gc_range=None,
     col_custom_items=None,
-    # Rows:
-    rows=None,
+    # Rows item filters :
     row_top_n=None,
     row_occ_range=None,
     row_gc_range=None,
@@ -104,6 +148,7 @@ def co_occ_matrix(
         raw_matrix_list,
         name,
         field,
+        # Item filters:
         top_n,
         occ_range,
         gc_range,
@@ -128,13 +173,11 @@ def co_occ_matrix(
                 gc_range=gc_range,
             )
 
-        # name = "row" if name else "column"
-
-        custom_items = filter_custom_items_from_column(
-            dataframe=raw_matrix_list,
-            col_name=name,
-            custom_items=custom_items,
-        )
+        # custom_items = filter_custom_items_from_column(
+        #     dataframe=raw_matrix_list,
+        #     col_name=name,
+        #     custom_items=custom_items,
+        # )
 
         raw_matrix_list = raw_matrix_list[
             raw_matrix_list[name].isin(custom_items)
@@ -148,12 +191,12 @@ def co_occ_matrix(
         matrix = matrix.astype(int)
         return matrix
 
-    def generate_prompt_for_occ_matrix(matrix, criterion, other_criterion):
+    def generate_prompt_for_occ_matrix(matrix, columns, rows):
         """Generates a ChatGPT prompt for a occurrence matrix."""
 
         return (
             "Analyze the table below which contains values of co-occurrence "
-            f"(OCC) for the '{criterion}' and '{other_criterion}' fields "
+            f"(OCC) for the '{columns}' and '{rows}' fields "
             "in a bibliographic dataset. Identify any notable patterns, "
             "trends, or outliers in the data, and discuss their implications "
             "for the research field. Be sure to provide a concise summary of "
@@ -161,12 +204,12 @@ def co_occ_matrix(
             f"\n\n{matrix.to_markdown()}\n\n"
         )
 
-    def generate_prompt_for_co_occ_matrix(matrix, criterion):
+    def generate_prompt_for_co_occ_matrix(matrix, columns):
         """Generates a ChatGPT prompt for a co_occurrence matrix."""
 
         return (
             "Analyze the table below which contains values of co-occurrence "
-            f"(OCC) for the '{criterion}' field in a bibliographic "
+            f"(OCC) for the '{columns}' field in a bibliographic "
             "dataset. Identify any notable patterns, trends, or "
             "outliers in the data, and discuss their implications for the "
             "research field. Be sure to provide a concise summary of your "
@@ -180,11 +223,16 @@ def co_occ_matrix(
 
     if rows is None:
         rows = columns
+        row_top_n = col_top_n
+        row_occ_range = col_occ_range
+        row_gc_range = col_gc_range
+        row_custom_items = col_custom_items
 
     # Generates a matrix list with all descriptors in the database
     raw_matrix_list = co_occ_matrix_list(
         columns=columns,
         rows=rows,
+        # Database params:
         root_dir=root_dir,
         database=database,
         year_filter=year_filter,
@@ -197,16 +245,11 @@ def co_occ_matrix(
         raw_matrix_list=raw_matrix_list,
         field=rows,
         name="row",
+        # Item filters:
         top_n=row_top_n,
         occ_range=row_occ_range,
         gc_range=row_gc_range,
         custom_items=row_custom_items,
-        # Database params:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
     )
 
     # Filters the terms in the 'column' column of the matrix list
@@ -214,16 +257,11 @@ def co_occ_matrix(
         raw_matrix_list=raw_filterd_matrix_list,
         field=columns,
         name="column",
+        # Item filters:
         top_n=col_top_n,
         occ_range=col_occ_range,
         gc_range=col_gc_range,
         custom_items=col_custom_items,
-        # Database params:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
     )
 
     # Creates a matrix
@@ -233,65 +271,69 @@ def co_occ_matrix(
     matrix = sort_matrix_axis(
         matrix,
         axis=0,
-        criterion=rows,
+        field=rows,
+        # Database params:
         root_dir=root_dir,
         database=database,
-        start_year=year_filter,
-        end_year=cited_by_filter,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 
     matrix = sort_matrix_axis(
         matrix,
         axis=1,
-        criterion=columns,
+        field=columns,
+        # Database params:
         root_dir=root_dir,
         database=database,
-        start_year=year_filter,
-        end_year=cited_by_filter,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 
     matrix = add_counters_to_axis(
         dataframe=matrix,
         axis=0,
-        criterion=rows,
+        field=rows,
+        # Database params:
         root_dir=root_dir,
         database=database,
-        start_year=year_filter,
-        end_year=cited_by_filter,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 
     matrix = add_counters_to_axis(
         dataframe=matrix,
         axis=1,
-        criterion=columns,
+        field=columns,
+        # Database params:
         root_dir=root_dir,
         database=database,
-        start_year=year_filter,
-        end_year=cited_by_filter,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 
     if columns == rows:
         prompt = generate_prompt_for_co_occ_matrix(
             matrix,
-            criterion=columns,
+            columns=columns,
         )
     else:
         prompt = generate_prompt_for_occ_matrix(
             matrix,
-            criterion=rows,
-            other_criterion=columns,
+            columns=rows,
+            rows=columns,
         )
 
-    occurrence_matrix = CocMatrix()
+    coc_matrix = CocMatrix()
 
-    occurrence_matrix.criterion_ = columns
-    occurrence_matrix.other_criterion_ = rows if rows else columns
-    occurrence_matrix.metric_ = "OCC"
-    occurrence_matrix.matrix_ = matrix
-    occurrence_matrix.prompt_ = prompt
+    coc_matrix.columns_ = columns
+    coc_matrix.rows_ = rows if rows else columns
+    coc_matrix.metric_ = "OCC"
+    coc_matrix.matrix_ = matrix
+    coc_matrix.prompt_ = prompt
 
-    return occurrence_matrix
+    return coc_matrix

@@ -54,16 +54,22 @@ def generate_custom_items(
         return indicators.index[:top_n].tolist()
 
     def filter_by_occ_range(indicators, occ_range):
-        return indicators[
-            (indicators["OCC"] >= occ_range[0])
-            & (indicators["OCC"] <= occ_range[1])
-        ].index.tolist()
+        if occ_range[0] is not None:
+            indicators = indicators[indicators["OCC"] >= occ_range[0]]
+        if occ_range[1] is not None:
+            indicators = indicators[indicators["OCC"] <= occ_range[1]]
+        return indicators.index.tolist()
 
     def filter_by_gc_range(indicators, gc_range):
-        return indicators[
-            (indicators["global_citations"] >= gc_range[0])
-            & (indicators["global_citations"] <= gc_range[1])
-        ].index.tolist()
+        if gc_range[0] is not None:
+            indicators = indicators[
+                indicators["global_citations"] >= gc_range[0]
+            ]
+        if gc_range[1] is not None:
+            indicators = indicators[
+                indicators["global_citations"] <= gc_range[1]
+            ]
+        return indicators.index.tolist()
 
     #
     # Main code
