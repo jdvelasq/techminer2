@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 2D-SVD Map (*) --- ChatGPT
 ===============================================================================
@@ -7,21 +8,14 @@ MDS technique used in T-LAB's words associations.
 
 **Algorithm**
 
-1. Computes the co-occurrence matrix.
 
-2. Apply SVD to the co-occurrence matrix with `n_components=2`.
-
-3. Plot the decomposed matrix.
-
-
-
->>> # working directory
 >>> root_dir = "data/regtech/"
+>>> # ------------------------- Algorithm -------------------------
 >>> # computes the co-occurrence matrix
 >>> from techminer2 import vantagepoint
 >>> co_occ_matrix = vantagepoint.analyze.co_occ_matrix(
-...     criterion='author_keywords',
-...     topics_length=20,
+...     columns='author_keywords',
+...     col_top_n=20,
 ...     root_dir=root_dir,
 ... )
 >>> # normalizes the co-occurrence matrix
@@ -49,12 +43,13 @@ regulatory technology 07:037   3.073117  -0.538119
 compliance 07:030              6.628352  -3.686916
 regulation 05:164              5.894711  -0.250128
 
-
+# pylint: disable=line-too-long
 """
 
 from ..singular_value_decomposition import singular_value_decomposition
 
 
+# pylint: disable=too-many-arguments
 def svd_map(
     obj,
     # Technique parameters

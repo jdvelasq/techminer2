@@ -13,32 +13,22 @@ It can be obtained directly using functions in the **VantagePoint** module as
 is explained in the following example.
 
 
-* Step 1: Import the VantagePoint module.
 
 >>> from techminer2 import vantagepoint
 >>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/tlab__word_associations__radial_diagram.html"
-
-
-* Step 2: Create a co-occurrence matrix
-
+>>> # Create a co-occurrence matrix
 >>> co_occ_matrix = vantagepoint.analyze.co_occ_matrix(
-...    criterion='author_keywords',
-...    topic_occ_min=3,
+...    columns='author_keywords',
+...    col_occ_range=(3, None),
 ...    root_dir=root_dir,
 ... )
-
-
-* Step 3: Create a subset of the co-occurrence matrix with the term to be analyzed.
-
+>>> # Create a subset of the co-occurrence matrix with the term to be analyzed.
 >>> matrix_subset = vantagepoint.analyze.matrix_subset(
 ...    co_occ_matrix,
-...    topics='regtech',
+...    custom_items='regtech',
 ... )
-
-
-* Step 4: Visualize the radial diagram using the matrix viewer.
-
+>>> # Visualize the radial diagram using the matrix viewer.
 >>> chart = vantagepoint.analyze.matrix_viewer(
 ...     matrix_subset,
 ...     nx_k=0.5,
