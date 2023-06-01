@@ -7,13 +7,13 @@ Most Global Cited Sources
 Example
 -------------------------------------------------------------------------------
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__most_global_cited_sources.html"
 
 >>> from techminer2 import bibliometrix
 >>> r = bibliometrix.sources.most_global_cited_sources(
-...     directory=directory,
-...     topics_length=20,
+...     root_dir=root_dir,
+...     top_n=20,
 ... )
 >>> r.plot_.write_html(file_name)
 
@@ -33,33 +33,32 @@ Name: global_citations, dtype: int64
 
 
 >>> print(r.prompt_)
-Analyze the table below, which provides bibliographic indicators for a collection of research articles. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
+Analyze the table below, which provides bibliometric indicators for the field 'source_abbr' in a scientific bibliography database. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
-| source_abbr                   |   global_citations |
-|:------------------------------|-------------------:|
-| J ECON BUS                    |                153 |
-| NORTHWEST J INTL LAW BUS      |                150 |
-| J BANK REGUL                  |                 35 |
-| PALGRAVE STUD DIGIT BUS ENABL |                 33 |
-| DUKE LAW J                    |                 30 |
-| J RISK FINANC                 |                 21 |
-| J MONEY LAUND CTRL            |                 14 |
-| J FINANC CRIME                |                 13 |
-| FIN INNOV                     |                 13 |
-| ICEIS - PROC INT CONF ENTERP  |                 12 |
-| HELIYON                       |                 11 |
-| HANDB OF BLOCKCHAIN, DIGIT FI |                 11 |
-| J RISK MANG FIN INST          |                  8 |
-| ADV INTELL SYS COMPUT         |                  7 |
-| INTELL SYST ACCOUNT FIN MANAG |                  5 |
-| J FIN DATA SCI                |                  5 |
-| ADELAIDE LAW REV              |                  5 |
-| UNIV NEW SOUTH WALES LAW J    |                  4 |
-| LECT NOTES DATA ENG COMMUN TE |                  4 |
-| J ANTITRUST ENFORC            |                  3 |
+| source_abbr                   |   OCC |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |
+|:------------------------------|------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|
+| J ECON BUS                    |     1 |                153 |                17 |                           153   |                           17   |
+| NORTHWEST J INTL LAW BUS      |     1 |                150 |                 0 |                           150   |                            0   |
+| J BANK REGUL                  |     2 |                 35 |                 9 |                            17.5 |                            4.5 |
+| PALGRAVE STUD DIGIT BUS ENABL |     1 |                 33 |                14 |                            33   |                           14   |
+| DUKE LAW J                    |     1 |                 30 |                 0 |                            30   |                            0   |
+| J RISK FINANC                 |     1 |                 21 |                 8 |                            21   |                            8   |
+| J MONEY LAUND CTRL            |     1 |                 14 |                 3 |                            14   |                            3   |
+| J FINANC CRIME                |     2 |                 13 |                 4 |                             6.5 |                            2   |
+| FIN INNOV                     |     1 |                 13 |                 1 |                            13   |                            1   |
+| ICEIS - PROC INT CONF ENTERP  |     1 |                 12 |                 3 |                            12   |                            3   |
+| HELIYON                       |     1 |                 11 |                 4 |                            11   |                            4   |
+| HANDB OF BLOCKCHAIN, DIGIT FI |     1 |                 11 |                 3 |                            11   |                            3   |
+| J RISK MANG FIN INST          |     1 |                  8 |                 5 |                             8   |                            5   |
+| ADV INTELL SYS COMPUT         |     1 |                  7 |                 1 |                             7   |                            1   |
+| INTELL SYST ACCOUNT FIN MANAG |     1 |                  5 |                 3 |                             5   |                            3   |
+| ADELAIDE LAW REV              |     1 |                  5 |                 1 |                             5   |                            1   |
+| J FIN DATA SCI                |     1 |                  5 |                 1 |                             5   |                            1   |
+| UNIV NEW SOUTH WALES LAW J    |     1 |                  4 |                 3 |                             4   |                            3   |
+| LECT NOTES DATA ENG COMMUN TE |     1 |                  4 |                 0 |                             4   |                            0   |
+| J ANTITRUST ENFORC            |     1 |                  3 |                 3 |                             3   |                            3   |
 <BLANKLINE>
 <BLANKLINE>
-
 
 
 # pylint: disable=line-too-long
@@ -116,7 +115,7 @@ def most_global_cited_sources(
 
     return bbx_generic_indicators_by_item(
         fnc_view=list_view,
-        field="authors",
+        field="source_abbr",
         root_dir=root_dir,
         database=database,
         metric="global_citations",

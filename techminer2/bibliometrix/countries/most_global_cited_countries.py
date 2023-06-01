@@ -8,14 +8,14 @@ Most Global Cited Countries
 Example
 -------------------------------------------------------------------------------
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__most_global_cited_countries.html"
 
 
 >>> from techminer2 import bibliometrix
 >>> r = bibliometrix.countries.most_global_cited_countries(
-...     directory=directory,
-...     topics_length=20,
+...     root_dir=root_dir,
+...     top_n=20,
 ... )
 >>> r.plot_.write_html(file_name)
 
@@ -24,41 +24,44 @@ Example
     <iframe src="../../../_static/bibliometrix__most_global_cited_countries.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> r.table_.head()
-countries
-United Kingdom    199
-Australia         199
-Hong Kong         185
-United States      59
-Ireland            55
+authors
+Arner DW             185
+Buckley RP           185
+Barberis JN          161
+Anagnostopoulos I    153
+Butler T/1            41
 Name: global_citations, dtype: int64
 
+
+
 >>> print(r.prompt_)
-Analyze the table below, which provides bibliographic indicators for a collection of research articles. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
+Analyze the table below, which provides bibliometric indicators for the field 'authors' in a scientific bibliography database. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
-| countries            |   global_citations |
-|:---------------------|-------------------:|
-| United Kingdom       |                199 |
-| Australia            |                199 |
-| Hong Kong            |                185 |
-| United States        |                 59 |
-| Ireland              |                 55 |
-| Germany              |                 51 |
-| Switzerland          |                 45 |
-| Luxembourg           |                 34 |
-| China                |                 27 |
-| Greece               |                 21 |
-| Bahrain              |                 19 |
-| United Arab Emirates |                 13 |
-| Japan                |                 13 |
-| Jordan               |                 11 |
-| South Africa         |                 11 |
-| Italy                |                  5 |
-| Spain                |                  4 |
-| Ukraine              |                  4 |
-| Malaysia             |                  3 |
-| Palestine            |                  1 |
+| authors           |   OCC |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |
+|:------------------|------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|
+| Arner DW          |     3 |                185 |                 8 |                           61.67 |                           2.67 |
+| Buckley RP        |     3 |                185 |                 8 |                           61.67 |                           2.67 |
+| Barberis JN       |     2 |                161 |                 3 |                           80.5  |                           1.5  |
+| Anagnostopoulos I |     1 |                153 |                17 |                          153    |                          17    |
+| Butler T/1        |     2 |                 41 |                19 |                           20.5  |                           9.5  |
+| OBrien L          |     1 |                 33 |                14 |                           33    |                          14    |
+| Baxter LG         |     1 |                 30 |                 0 |                           30    |                           0    |
+| Weber RH          |     1 |                 24 |                 5 |                           24    |                           5    |
+| Zetzsche DA       |     1 |                 24 |                 5 |                           24    |                           5    |
+| Breymann W        |     1 |                 21 |                 8 |                           21    |                           8    |
+| Gross FJ          |     1 |                 21 |                 8 |                           21    |                           8    |
+| Kavassalis P      |     1 |                 21 |                 8 |                           21    |                           8    |
+| Saxton K          |     1 |                 21 |                 8 |                           21    |                           8    |
+| Stieber H         |     1 |                 21 |                 8 |                           21    |                           8    |
+| Hamdan A          |     2 |                 18 |                 5 |                            9    |                           2.5  |
+| Turki M           |     2 |                 18 |                 5 |                            9    |                           2.5  |
+| Lin W             |     2 |                 17 |                 4 |                            8.5  |                           2    |
+| Singh C           |     2 |                 17 |                 4 |                            8.5  |                           2    |
+| Brennan R         |     2 |                 14 |                 3 |                            7    |                           1.5  |
+| Crane M           |     2 |                 14 |                 3 |                            7    |                           1.5  |
 <BLANKLINE>
 <BLANKLINE>
+
 
 # pylint: disable=line-too-long
 """
