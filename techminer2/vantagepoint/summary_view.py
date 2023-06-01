@@ -20,7 +20,7 @@ and the number of different terms (topics) of each column in the dataset.
 """
 import pandas as pd
 
-from ..utils.records import read_records
+from ..utils import read_records
 
 
 def summary_view(
