@@ -101,12 +101,12 @@ def trend_topics(
     """Trend topics"""
 
     words_by_year = items_occ_by_year(
-        criterion=criterion,
+        field=criterion,
         min_occ=1,
         root_dir=directory,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=start_year,
+        cited_by_filter=end_year,
         **filters,
     )
 

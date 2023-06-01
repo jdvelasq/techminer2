@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 Indicators by Item per Year 
 ===============================================================================
@@ -85,6 +86,7 @@ def indicators_by_item_per_year(
     Returns:
         pandas.DataFrame: a dataframe containing the indicators.
 
+    # pylint: disable=line-too-long
     """
 
     indicators = read_records(

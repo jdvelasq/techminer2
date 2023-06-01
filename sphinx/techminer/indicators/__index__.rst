@@ -20,7 +20,7 @@ Indicators
     indicators_by_item
 
 .. toctree::    
-    indicators_by_topic_per_year
+    indicators_by_item_per_year
 
 .. toctree::    
     indicators_by_year
@@ -29,7 +29,7 @@ Indicators
     indicators_by_year_plot
 
 .. toctree::    
-    topics_occ_by_year
+    items_occ_by_year
 
 
 

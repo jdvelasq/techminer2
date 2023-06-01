@@ -37,38 +37,40 @@ from .indicators_by_item_per_year import indicators_by_item_per_year
 
 # pylint: disable=too-many-arguments
 def items_occ_by_year(
-    criterion,
+    field,
     root_dir="./",
     cumulative=False,
     database="documents",
-    start_year=None,
-    end_year=None,
+    # Database filters:
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
-    """Computes the annual occurrence matrix of a given criterion.
+    """Computes the annual occurrence matrix of a given field.
 
-    The columns are the years, the rows are the criterion values (topics).
+    The columns are the years, the rows are the criterion values (field).
 
     Args:
-        criterion (str): criterion to be used as rows.
+        field (str): field to be used as rows.
         root_dir (str, optional): root directory. Defaults to "./".
         cumulative (bool, optional): if True, the matrix is cumulative. Defaults to False.
         database (str, optional): database name. Defaults to "documents".
-        start_year (int, optional): start year. Defaults to None.
-        end_year (int, optional): end year. Defaults to None.
-        filters (dict, optional): filters. Defaults to {}.
+        year_filter (tuple, optional): Year database filter. Defaults to None.
+        cited_by_filter (tuple, optional): Cited by database filter. Defaults to None.
+        **filters (dict, optional): Filters to be applied to the database. Defaults to {}.
 
     Returns:
         pandas.DataFrame: annual occurrence matrix.
 
+    # pylint: disable=line-too-long
     """
 
     indicators_by_year = indicators_by_item_per_year(
-        field=criterion,
+        field=field,
         root_dir=root_dir,
         database=database,
-        year_filter=start_year,
-        cited_by_filter=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 
