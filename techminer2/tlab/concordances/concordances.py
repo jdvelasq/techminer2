@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 Concordances
 =========================================================================================
@@ -5,13 +6,13 @@ Concordances
 Abstract concordances exploration tool.
 
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 
 >>> from techminer2 import tlab
 >>> tlab.concordances.concordances(
 ...     'regtech',
 ...     top_n=10,
-...     directory=directory,
+...     root_dir=root_dir,
 ... )
 <<< l systems requires increasing the use of and reliance on REGTECH .
                                                              REGTECH developments are leading towards a paradigm shift necess >>>
@@ -24,7 +25,7 @@ Abstract concordances exploration tool.
                  The chapter notes that the full benefits of REGTECH will only materialise if the pitfalls of a fragmented to >>>
            Although also not a panacea, the development of " REGTECH " solutions will help clear away volumes of work that un >>>
 
-
+# pylint: disable=line-too-long
 """
 import os.path
 import textwrap
@@ -37,22 +38,22 @@ def concordances(
     search_for,
     top_n=50,
     quiet=False,
-    directory="./",
-    start_year=None,
-    end_year=None,
+    root_dir="./",
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
     """Checks the occurrence contexts of a given text in the abstract's phrases."""
 
     records = read_records(
-        root_dir=directory,
+        root_dir=root_dir,
         database="documents",
-        start_year=start_year,
-        end_year=end_year,
+        start_year=year_filter,
+        end_year=cited_by_filter,
         **filters,
     )
 
-    abstracts = load_abstracts(directory)
+    abstracts = load_abstracts(root_dir)
     abstracts = abstracts[abstracts.article.isin(records.article)]
     abstracts = abstracts.sort_values(
         ["global_citations", "article", "line_no"],
@@ -60,7 +61,7 @@ def concordances(
     )
     abstracts = _select_abstracts(abstracts, search_for)
 
-    _write_report(directory, abstracts, start_year, end_year, **filters)
+    _write_report(root_dir, abstracts, year_filter, cited_by_filter, **filters)
 
     if not quiet:
         abstracts = abstracts.head(top_n)
