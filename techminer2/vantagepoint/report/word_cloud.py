@@ -20,9 +20,7 @@ Example
 >>> chart = vantagepoint.report.word_cloud(obj, title="Most Frequent Author Keywords")
 >>> chart.plot_.savefig(file_name)
 
-.. image:: ../../images/vantagepoint__word_cloud.png
-    :width: 900px
-    :align: center
+
 
 
 >>> chart.table_.head()

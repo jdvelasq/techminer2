@@ -5,8 +5,7 @@ WordCloud
 
 
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/bibliometrix__word_cloud.html"
-
+>>> file_name = "sphinx/images/bibliometrix__word_cloud.png"
 
 >>> from techminer2 import bibliometrix
 >>> chart = bibliometrix.words.word_cloud(
@@ -15,12 +14,11 @@ WordCloud
 ...     top_n=50,
 ...     root_dir=root_dir,
 ... )
->>> chart.plot_.write_html(file_name)
+>>> chart.plot_.savefig(file_name)
 
-.. raw:: html
-
-    <iframe src="../../../_static/bibliometrix__word_cloud.html" 
-    height="400px" width="100%" frameBorder="0"></iframe>
+.. image:: ../../../images/bibliometrix__word_cloud.png
+    :width: 900px
+    :align: center
 
 
 """

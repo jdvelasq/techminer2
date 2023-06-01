@@ -9,7 +9,7 @@ Indicators by Item
 
 >>> from techminer2  import techminer
 >>> techminer.indicators.indicators_by_topic(
-...     criterion='authors',
+...     field='authors',
 ...     root_dir=root_dir,
 ... ).head() # doctest: +NORMALIZE_WHITESPACE
             OCC  ...  local_citations_per_document
