@@ -35,7 +35,7 @@ from ...utils import load_stopwords, read_records
 
 
 def coverage(
-    criterion,
+    field,
     root_dir="./",
     database="documents",
     # Database filters:
@@ -69,7 +69,7 @@ def coverage(
         **filters,
     )
     documents = documents.reset_index()
-    documents = documents[[criterion, "article"]]
+    documents = documents[[field, "article"]]
 
     n_documents = len(documents)
     sys.stdout.write(f"--INFO-- Number of documents : {n_documents}\n")
@@ -82,12 +82,12 @@ def coverage(
     sys.stdout.write(f"--INFO-- Efective documents : {n_documents}\n")
 
     documents = documents.assign(num_documents=1)
-    documents[criterion] = documents[criterion].str.split("; ")
-    documents = documents.explode(criterion)
+    documents[field] = documents[field].str.split("; ")
+    documents = documents.explode(field)
 
-    documents = documents[~documents[criterion].isin(stopwords)]
+    documents = documents[~documents[field].isin(stopwords)]
 
-    documents = documents.groupby(by=[criterion]).agg(
+    documents = documents.groupby(by=[field]).agg(
         {"num_documents": "count", "article": list}
     )
     documents = documents.sort_values(by=["num_documents"], ascending=False)
@@ -95,7 +95,7 @@ def coverage(
     documents = documents.reset_index()
 
     documents = documents.groupby(by="num_documents", as_index=False).agg(
-        {"article": list, criterion: list}
+        {"article": list, field: list}
     )
 
     documents = documents.sort_values(by=["num_documents"], ascending=False)
@@ -117,7 +117,7 @@ def coverage(
         )
     )
 
-    documents = documents.assign(cum_sum_items=documents[criterion].cumsum())
+    documents = documents.assign(cum_sum_items=documents[field].cumsum())
     documents = documents.assign(
         cum_sum_items=documents.cum_sum_items.map(set)
     )
@@ -126,7 +126,7 @@ def coverage(
     )
 
     documents.drop("article", axis=1, inplace=True)
-    documents.drop(criterion, axis=1, inplace=True)
+    documents.drop(field, axis=1, inplace=True)
 
     documents = documents.rename(
         columns={
