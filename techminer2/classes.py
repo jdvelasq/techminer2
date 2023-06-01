@@ -188,13 +188,13 @@ class ManifoldMap:
 class MatrixSubset:
     """Matrix subset."""
 
-    criterion_: str
-    is_ego_matrix_: bool
+    columns_: str
+    rows_: str
     matrix_: pd.DataFrame
     metric_: str
-    other_criterion_: str
+    is_ego_matrix_: bool
     prompt_: str
-    topics_: list
+    custom_items_: list
 
 
 @dataclass(init=False)
