@@ -42,9 +42,9 @@ def clusters_concordances(
                 search_for=member,
                 top_n=n_abstracts,
                 quiet=True,
-                directory=directory,
-                start_year=start_year,
-                end_year=end_year,
+                root_dir=directory,
+                year_filter=start_year,
+                cited_by_filter=end_year,
                 **filters,
             )
 
