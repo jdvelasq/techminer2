@@ -26,6 +26,14 @@ class BradfordLaw:
 
 
 @dataclass(init=False)
+class LotkaLaw:
+    """Lotka's Law."""
+
+    plot_: go.Figure
+    table_: pd.DataFrame
+
+
+@dataclass(init=False)
 class ProductionOverTimeChart:
     """Production over time chart.
 

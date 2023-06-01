@@ -3,19 +3,22 @@ RPYS (Reference Publication Year Spectroscopy)
 ===============================================================================
 
 
+Example
+-------------------------------------------------------------------------------
 
->>> directory = "data/regtech/"
+
+>>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__rpys.html"
 
 >>> from techminer2 import bibliometrix
->>> bibliometrix.cited_references.rpys(directory=directory).plot_.write_html(file_name)
+>>> bibliometrix.cited_references.rpys(root_dir=root_dir).plot_.write_html(file_name)
 
 .. raw:: html
 
     <iframe src="../../../_static/bibliometrix__rpys.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
->>> bibliometrix.cited_references.rpys(directory=directory).table_.head()
+>>> bibliometrix.cited_references.rpys(root_dir=root_dir).table_.head()
       Num References  Median
 1937               1    -1.0
 1938               0     0.0
@@ -26,39 +29,34 @@ RPYS (Reference Publication Year Spectroscopy)
 
 """
 import os.path
-from dataclasses import dataclass
 
 import pandas as pd
 import plotly.graph_objects as go
 
-
-@dataclass(init=False)
-class _Results:
-    plot_: None
-    table_: None
+from ...classes import BasicChart
 
 
 def rpys(
-    directory="./",
-    starting_year=None,
-    ending_year=None,
+    root_dir="./",
+    year_filter=None,
+    cited_by_filter=None,
 ):
     """Reference Publication Year Spectroscopy."""
 
     references = pd.read_csv(
-        os.path.join(directory, "processed", "_references.csv"),
+        os.path.join(root_dir, "processed", "_references.csv"),
         sep=",",
         encoding="utf-8",
     )
     indicator = _compute_rpys(references)
-    if starting_year is not None:
-        indicator = indicator.loc[starting_year:]
-    if ending_year is not None:
-        indicator = indicator.loc[:ending_year]
+    if year_filter is not None:
+        indicator = indicator.loc[year_filter:]
+    if cited_by_filter is not None:
+        indicator = indicator.loc[:cited_by_filter]
 
     fig = _plot_rpys(indicator)
 
-    result = _Results()
+    result = BasicChart()
     result.table_ = indicator
     result.plot_ = fig
     return result
@@ -131,7 +129,9 @@ def _compute_rpys(references):
         index=years,
     )
 
-    indicator.loc[references_by_year.index, "Num References"] = references_by_year
+    indicator.loc[
+        references_by_year.index, "Num References"
+    ] = references_by_year
     indicator = indicator.sort_index(axis=0, ascending=True)
     indicator["Median"] = (
         indicator["Num References"].rolling(window=5).median().fillna(0)

@@ -4,18 +4,21 @@ Lotka's Law
 
 
 
->>> directory = "data/regtech/"
+Example
+-------------------------------------------------------------------------------
+
+>>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__lotka_law.html"
 
 >>> from techminer2 import bibliometrix
->>> bibliometrix.authors.lotka_law(directory=directory).plot_.write_html(file_name)
+>>> bibliometrix.authors.lotka_law(root_dir=root_dir).plot_.write_html(file_name)
 
 .. raw:: html
 
     <iframe src="../../../_static/bibliometrix__lotka_law.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
->>> bibliometrix.authors.lotka_law(directory=directory).table_
+>>> bibliometrix.authors.lotka_law(root_dir=root_dir).table_
    Documents Written  ...  Prop Theoretical Authors
 0                  1  ...                     0.735
 1                  2  ...                     0.184
@@ -24,34 +27,28 @@ Lotka's Law
 [3 rows x 5 columns]
 
 """
-from dataclasses import dataclass
-
 import plotly.graph_objects as go
 
+from ...classes import LotkaLaw
 from ...techminer.indicators.indicators_by_item import indicators_by_item
 
 
-@dataclass(init=False)
-class _Results:
-    plot_: None
-    table_: None
-
-
 def lotka_law(
-    directory="./",
+    root_dir="./",
     database="documents",
-    start_year=None,
-    end_year=None,
+    # Database filters:
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
     """Lotka's Law"""
 
-    results = _Results()
+    results = LotkaLaw()
     results.table_ = _core_authors(
-        directory=directory,
+        root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
     results.plot_ = _plot_lotka_law(results.table_)
@@ -111,10 +108,11 @@ def _plot_lotka_law(indicators):
 
 
 def _core_authors(
-    directory,
+    root_dir,
     database,
-    start_year,
-    end_year,
+    # Database filters:
+    year_filter,
+    cited_by_filter,
     **filters,
 ):
     #
@@ -131,10 +129,10 @@ def _core_authors(
     #
     indicators = indicators_by_item(
         field="authors",
-        root_dir=directory,
+        root_dir=root_dir,
         database=database,
-        year_filter=start_year,
-        cited_by_filter=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 
