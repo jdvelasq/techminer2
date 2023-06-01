@@ -22,44 +22,42 @@ Example
     <iframe src="../../../_static/bibliometrix__most_global_cited_organizations.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> r.table_.head()
-authors
-Arner DW             185
-Buckley RP           185
-Barberis JN          161
-Anagnostopoulos I    153
-Butler T/1            41
+organizations
+University of Hong Kong        185
+---FinTech HK                  161
+---Kingston Business School    153
+---Centre for Law              150
+University College Cork         41
 Name: global_citations, dtype: int64
 
 
-
 >>> print(r.prompt_)
-Analyze the table below, which provides bibliometric indicators for the field 'authors' in a scientific bibliography database. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
+Analyze the table below, which provides bibliometric indicators for the field 'organizations' in a scientific bibliography database. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
-| authors           |   OCC |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |
-|:------------------|------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|
-| Arner DW          |     3 |                185 |                 8 |                           61.67 |                           2.67 |
-| Buckley RP        |     3 |                185 |                 8 |                           61.67 |                           2.67 |
-| Barberis JN       |     2 |                161 |                 3 |                           80.5  |                           1.5  |
-| Anagnostopoulos I |     1 |                153 |                17 |                          153    |                          17    |
-| Butler T/1        |     2 |                 41 |                19 |                           20.5  |                           9.5  |
-| OBrien L          |     1 |                 33 |                14 |                           33    |                          14    |
-| Baxter LG         |     1 |                 30 |                 0 |                           30    |                           0    |
-| Weber RH          |     1 |                 24 |                 5 |                           24    |                           5    |
-| Zetzsche DA       |     1 |                 24 |                 5 |                           24    |                           5    |
-| Breymann W        |     1 |                 21 |                 8 |                           21    |                           8    |
-| Gross FJ          |     1 |                 21 |                 8 |                           21    |                           8    |
-| Kavassalis P      |     1 |                 21 |                 8 |                           21    |                           8    |
-| Saxton K          |     1 |                 21 |                 8 |                           21    |                           8    |
-| Stieber H         |     1 |                 21 |                 8 |                           21    |                           8    |
-| Hamdan A          |     2 |                 18 |                 5 |                            9    |                           2.5  |
-| Turki M           |     2 |                 18 |                 5 |                            9    |                           2.5  |
-| Lin W             |     2 |                 17 |                 4 |                            8.5  |                           2    |
-| Singh C           |     2 |                 17 |                 4 |                            8.5  |                           2    |
-| Brennan R         |     2 |                 14 |                 3 |                            7    |                           1.5  |
-| Crane M           |     2 |                 14 |                 3 |                            7    |                           1.5  |
+| organizations                                                   |   OCC |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |
+|:----------------------------------------------------------------|------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|
+| University of Hong Kong                                         |     3 |                185 |                 8 |                           61.67 |                           2.67 |
+| ---FinTech HK                                                   |     2 |                161 |                 3 |                           80.5  |                           1.5  |
+| ---Kingston Business School                                     |     1 |                153 |                17 |                          153    |                          17    |
+| ---Centre for Law                                               |     1 |                150 |                 0 |                          150    |                           0    |
+| University College Cork                                         |     3 |                 41 |                19 |                           13.67 |                           6.33 |
+| Duke University School of Law                                   |     1 |                 30 |                 0 |                           30    |                           0    |
+| ---UNSW Sydney                                                  |     1 |                 24 |                 5 |                           24    |                           5    |
+| Heinrich Heine University                                       |     1 |                 24 |                 5 |                           24    |                           5    |
+| University of Luxembourg                                        |     1 |                 24 |                 5 |                           24    |                           5    |
+| University of Zurich                                            |     1 |                 24 |                 5 |                           24    |                           5    |
+| ---KS Strategic                                                 |     1 |                 21 |                 8 |                           21    |                           8    |
+| ---Panepistemio Aigaiou                                         |     1 |                 21 |                 8 |                           21    |                           8    |
+| ---School of Engineering                                        |     1 |                 21 |                 8 |                           21    |                           8    |
+| European Central Bank                                           |     1 |                 21 |                 8 |                           21    |                           8    |
+| Harvard University Weatherhead Center for International Affairs |     1 |                 21 |                 8 |                           21    |                           8    |
+| Ahlia University                                                |     3 |                 19 |                 5 |                            6.33 |                           1.67 |
+| Coventry University                                             |     2 |                 17 |                 4 |                            8.5  |                           2    |
+| University of Westminster                                       |     2 |                 17 |                 4 |                            8.5  |                           2    |
+| Dublin City University                                          |     2 |                 14 |                 3 |                            7    |                           1.5  |
+| Hebei University of Technology                                  |     1 |                 13 |                 1 |                           13    |                           1    |
 <BLANKLINE>
 <BLANKLINE>
-
 
 
 
@@ -116,7 +114,7 @@ def most_global_cited_organizations(
 
     return bbx_generic_indicators_by_item(
         fnc_view=list_view,
-        field="authors",
+        field="organizations",
         root_dir=root_dir,
         database=database,
         metric="global_citations",

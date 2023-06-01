@@ -24,41 +24,41 @@ Example
     <iframe src="../../../_static/bibliometrix__most_global_cited_countries.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> r.table_.head()
-authors
-Arner DW             185
-Buckley RP           185
-Barberis JN          161
-Anagnostopoulos I    153
-Butler T/1            41
+countries
+United Kingdom    199
+Australia         199
+Hong Kong         185
+United States      59
+Ireland            55
 Name: global_citations, dtype: int64
 
 
 
 >>> print(r.prompt_)
-Analyze the table below, which provides bibliometric indicators for the field 'authors' in a scientific bibliography database. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
+Analyze the table below, which provides bibliometric indicators for the field 'countries' in a scientific bibliography database. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
-| authors           |   OCC |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |
-|:------------------|------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|
-| Arner DW          |     3 |                185 |                 8 |                           61.67 |                           2.67 |
-| Buckley RP        |     3 |                185 |                 8 |                           61.67 |                           2.67 |
-| Barberis JN       |     2 |                161 |                 3 |                           80.5  |                           1.5  |
-| Anagnostopoulos I |     1 |                153 |                17 |                          153    |                          17    |
-| Butler T/1        |     2 |                 41 |                19 |                           20.5  |                           9.5  |
-| OBrien L          |     1 |                 33 |                14 |                           33    |                          14    |
-| Baxter LG         |     1 |                 30 |                 0 |                           30    |                           0    |
-| Weber RH          |     1 |                 24 |                 5 |                           24    |                           5    |
-| Zetzsche DA       |     1 |                 24 |                 5 |                           24    |                           5    |
-| Breymann W        |     1 |                 21 |                 8 |                           21    |                           8    |
-| Gross FJ          |     1 |                 21 |                 8 |                           21    |                           8    |
-| Kavassalis P      |     1 |                 21 |                 8 |                           21    |                           8    |
-| Saxton K          |     1 |                 21 |                 8 |                           21    |                           8    |
-| Stieber H         |     1 |                 21 |                 8 |                           21    |                           8    |
-| Hamdan A          |     2 |                 18 |                 5 |                            9    |                           2.5  |
-| Turki M           |     2 |                 18 |                 5 |                            9    |                           2.5  |
-| Lin W             |     2 |                 17 |                 4 |                            8.5  |                           2    |
-| Singh C           |     2 |                 17 |                 4 |                            8.5  |                           2    |
-| Brennan R         |     2 |                 14 |                 3 |                            7    |                           1.5  |
-| Crane M           |     2 |                 14 |                 3 |                            7    |                           1.5  |
+| countries            |   OCC |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |
+|:---------------------|------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|
+| United Kingdom       |     7 |                199 |                34 |                           28.43 |                           4.86 |
+| Australia            |     7 |                199 |                15 |                           28.43 |                           2.14 |
+| Hong Kong            |     3 |                185 |                 8 |                           61.67 |                           2.67 |
+| United States        |     6 |                 59 |                11 |                            9.83 |                           1.83 |
+| Ireland              |     5 |                 55 |                22 |                           11    |                           4.4  |
+| Germany              |     4 |                 51 |                17 |                           12.75 |                           4.25 |
+| Switzerland          |     4 |                 45 |                13 |                           11.25 |                           3.25 |
+| Luxembourg           |     2 |                 34 |                 8 |                           17    |                           4    |
+| China                |     5 |                 27 |                 5 |                            5.4  |                           1    |
+| Greece               |     1 |                 21 |                 8 |                           21    |                           8    |
+| Bahrain              |     4 |                 19 |                 5 |                            4.75 |                           1.25 |
+| United Arab Emirates |     2 |                 13 |                 7 |                            6.5  |                           3.5  |
+| Japan                |     1 |                 13 |                 1 |                           13    |                           1    |
+| Jordan               |     1 |                 11 |                 4 |                           11    |                           4    |
+| South Africa         |     1 |                 11 |                 4 |                           11    |                           4    |
+| Italy                |     5 |                  5 |                 2 |                            1    |                           0.4  |
+| Spain                |     2 |                  4 |                 0 |                            2    |                           0    |
+| Ukraine              |     1 |                  4 |                 0 |                            4    |                           0    |
+| Malaysia             |     1 |                  3 |                 0 |                            3    |                           0    |
+| India                |     1 |                  1 |                 1 |                            1    |                           1    |
 <BLANKLINE>
 <BLANKLINE>
 
@@ -117,7 +117,7 @@ def most_global_cited_countries(
 
     return bbx_generic_indicators_by_item(
         fnc_view=list_view,
-        field="authors",
+        field="countries",
         root_dir=root_dir,
         database=database,
         metric="global_citations",

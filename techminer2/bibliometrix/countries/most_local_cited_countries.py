@@ -115,7 +115,7 @@ def most_local_cited_countries(
 
     return bbx_generic_indicators_by_item(
         fnc_view=list_view,
-        field="authors",
+        field="countries",
         root_dir=root_dir,
         database=database,
         metric="local_citations",
