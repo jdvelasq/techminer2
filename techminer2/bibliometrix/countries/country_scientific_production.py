@@ -1,15 +1,16 @@
+# flake8: noqa
 """
 Country Scientific Production
 ===============================================================================
 
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__country_scientific_production.html"
 
 
 >>> from techminer2 import bibliometrix
 >>> chart = bibliometrix.countries.country_scientific_production(
-...     directory=directory
+...     root_dir=root_dir
 ... )
 >>> chart.plot_.write_html(file_name)
  
@@ -29,74 +30,78 @@ Name: OCC, dtype: int64
 
 
 >>> print(chart.prompt_)
-Analyze the table below, which provides bibliographic indicators for a collection of research articles. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
+Analyze the table below, which provides bibliometric indicators for the field 'countries' in a scientific bibliography database. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
-| countries            |   OCC |
-|:---------------------|------:|
-| United Kingdom       |     7 |
-| Australia            |     7 |
-| United States        |     6 |
-| Ireland              |     5 |
-| China                |     5 |
-| Italy                |     5 |
-| Germany              |     4 |
-| Switzerland          |     4 |
-| Bahrain              |     4 |
-| Hong Kong            |     3 |
-| Luxembourg           |     2 |
-| United Arab Emirates |     2 |
-| Spain                |     2 |
-| Indonesia            |     2 |
-| Greece               |     1 |
-| Japan                |     1 |
-| Jordan               |     1 |
-| South Africa         |     1 |
-| Ukraine              |     1 |
-| Malaysia             |     1 |
+| countries      |   OCC |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |
+|:---------------|------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|
+| United Kingdom |     7 |                199 |                34 |                           28.43 |                           4.86 |
+| Australia      |     7 |                199 |                15 |                           28.43 |                           2.14 |
+| United States  |     6 |                 59 |                11 |                            9.83 |                           1.83 |
+| Ireland        |     5 |                 55 |                22 |                           11    |                           4.4  |
+| China          |     5 |                 27 |                 5 |                            5.4  |                           1    |
+| Italy          |     5 |                  5 |                 2 |                            1    |                           0.4  |
+| Germany        |     4 |                 51 |                17 |                           12.75 |                           4.25 |
+| Switzerland    |     4 |                 45 |                13 |                           11.25 |                           3.25 |
+| Bahrain        |     4 |                 19 |                 5 |                            4.75 |                           1.25 |
+| Hong Kong      |     3 |                185 |                 8 |                           61.67 |                           2.67 |
 <BLANKLINE>
 <BLANKLINE>
 
 
 
+# pylint: disable=line-too-long
 """
-from ... import vantagepoint
+from ...vantagepoint.analyze import list_view
+from ...vantagepoint.report import world_map
 
 
+# pylint: disable=too-many-arguments
 def country_scientific_production(
-    directory="./",
+    root_dir="./",
     database="documents",
     metric="OCC",
-    start_year=None,
-    end_year=None,
-    topics_length=20,
-    topic_min_occ=None,
-    topic_max_occ=None,
-    topic_min_citations=None,
-    topic_max_citations=None,
-    custom_topics=None,
+    # Chart options:
     colormap="Blues",
-    title="Country Scientific Production",
+    title=None,
+    # Item filters:
+    top_n=10,
+    occ_range=None,
+    gc_range=None,
+    custom_items=None,
+    # Database filters:
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
-    """Worldmap plot with the number of documents per country."""
+    """Worldmap plot
 
-    obj = vantagepoint.analyze.list_view(
+    Args:
+
+
+    Returns:
+        BasicChart: A basic chart object.
+    """
+
+    obj = list_view(
         field="countries",
-        root_dir=directory,
+        root_dir=root_dir,
         database=database,
         metric=metric,
-        year_filter=start_year,
-        cited_by_filter=end_year,
-        top_n=topics_length,
-        occ_range=topic_min_occ,
-        topic_occ_max=topic_max_occ,
-        gc_range=topic_min_citations,
-        topic_citations_max=topic_max_citations,
-        items=custom_topics,
+        # Item filters:
+        top_n=top_n,
+        occ_range=occ_range,
+        gc_range=gc_range,
+        custom_items=custom_items,
+        # Database filters:
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 
-    return vantagepoint.report.world_map(
+    if title is None:
+        title = "Country scientific production"
+
+    return world_map(
         obj,
         title=title,
         colormap=colormap,

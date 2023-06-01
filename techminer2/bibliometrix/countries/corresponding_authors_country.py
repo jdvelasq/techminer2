@@ -9,7 +9,7 @@ Corresponding Author's Country
 
 >>> from techminer2 import bibliometrix
 >>> r = bibliometrix.countries.corresponding_authors_country(
-...     topics_length=20,
+...     top_n=20,
 ...     directory=directory,
 ... )
 >>> r.plot_.write_html(file_name)
