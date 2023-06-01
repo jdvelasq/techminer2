@@ -13,14 +13,14 @@ is explained in the following example.
 >>> # Step 1: Compute the co-occurrence matrix.
 >>> from techminer2 import vantagepoint
 >>> co_occ_matrix = vantagepoint.analyze.co_occ_matrix(
-...    criterion='author_keywords',
-...    topics_length=20,
+...    columns='author_keywords',
+...    col_top_n=20,
 ...    root_dir=root_dir,
 ... )
->>> # Step 2: Extracts the topics for the desired term.
+>>> # Step 2: Extracts the custom items for the desired term.
 >>> matrix_subset = vantagepoint.analyze.matrix_subset(
 ...    co_occ_matrix,
-...    topics='fintech',
+...    custom_items='fintech',
 ... )
 >>> # Step 3: Visualize the radial diagram using the matrix viewer.
 >>> chart = vantagepoint.analyze.matrix_viewer(
@@ -62,5 +62,5 @@ Analyze the table below which contains values of co-occurrence (OCC) for the ['f
 
 
 
-
+# pylint: disable=line-too-long
 """

@@ -372,7 +372,7 @@ def matrix_viewer(
     ####
 
     if isinstance(obj, MatrixSubset):
-        graph = set_node_colors(graph, obj.topics_, "#556f81")
+        graph = set_node_colors(graph, obj.custom_items_, "#556f81")
 
     graph = compute_spring_layout(graph, nx_k, nx_iterations, random_state)
 
