@@ -8,7 +8,7 @@ Indicators by Item
 
 
 >>> from techminer2  import techminer
->>> techminer.indicators.indicators_by_topic(
+>>> techminer.indicators.indicators_by_item(
 ...     field='authors',
 ...     root_dir=root_dir,
 ... ).head() # doctest: +NORMALIZE_WHITESPACE
@@ -23,7 +23,7 @@ Sarea A       2  ...                          2.00
 [5 rows x 5 columns]
 
 >>> from pprint import pprint
->>> pprint(sorted(techminer.indicators.indicators_by_topic('authors',
+>>> pprint(sorted(techminer.indicators.indicators_by_item('authors',
 ...     root_dir=root_dir).columns.to_list()))
 ['OCC',
  'global_citations',

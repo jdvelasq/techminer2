@@ -95,17 +95,17 @@ def countries_production_over_time(
     """Country production over time."""
 
     terms_by_year = vantagepoint.analyze.terms_by_year(
-        criterion="countries",
-        topics_length=topics_length,
-        topic_occ_min=topic_min_occ,
+        field="countries",
+        top_n=topics_length,
+        occ_range=topic_min_occ,
         topic_occ_max=topic_max_occ,
-        topic_citations_min=topic_min_citations,
+        gc_range=topic_min_citations,
         topic_citations_max=topic_max_citations,
-        custom_topics=custom_topics,
+        custom_items=custom_topics,
         root_dir=directory,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=start_year,
+        cited_by_filter=end_year,
         cummulative=cumulative,
         **filters,
     )
@@ -116,11 +116,11 @@ def countries_production_over_time(
     )
 
     chart.documents_per_country_ = documents_per_criterion(
-        criterion="countries",
-        directory=directory,
+        field="countries",
+        root_dir=directory,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=start_year,
+        cited_by_filter=end_year,
         **filters,
     )
 

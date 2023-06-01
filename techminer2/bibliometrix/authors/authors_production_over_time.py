@@ -1,16 +1,17 @@
+# flake8: noqa
 """
 Authors' Production over Time
 ===============================================================================
 
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__authors_production_over_time.html"
 
 
 >>> from techminer2 import bibliometrix
 >>> r = bibliometrix.authors.authors_production_over_time(
-...    topics_length=10,
-...    directory=directory,
+...    top_n=10,
+...    root_dir=root_dir,
 ... )
 
 >>> r.plot_.write_html(file_name)
@@ -21,7 +22,7 @@ Authors' Production over Time
 
 
 
->>> print(r.documents_per_author_.head().to_markdown())
+>>> print(r.documents_per_item_.head().to_markdown())
 |    | authors     | title                                                                                        |   year | source_title                                   |   global_citations |   local_citations | doi                           |
 |---:|:------------|:---------------------------------------------------------------------------------------------|-------:|:-----------------------------------------------|-------------------:|------------------:|:------------------------------|
 |  0 | Teichmann F | RegTech  Potential benefits and challenges for businesses                                    |   2023 | Technology in Society                          |                  0 |                 0 | 10.1016/J.TECHSOC.2022.102150 |
@@ -44,99 +45,104 @@ Authors' Production over Time
 
 
 >>> print(r.table_.head().to_markdown())
-| authors           |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |
-|:------------------|-------:|-------:|-------:|-------:|-------:|-------:|
-| Arner DW 3:185    |      2 |      0 |      0 |      1 |      0 |      0 |
-| Buckley RP 3:185  |      2 |      0 |      0 |      1 |      0 |      0 |
-| Barberis JN 2:161 |      2 |      0 |      0 |      0 |      0 |      0 |
-| Butler T/1 2:041  |      0 |      1 |      1 |      0 |      0 |      0 |
-| Hamdan A 2:018    |      0 |      0 |      0 |      1 |      1 |      0 |
-
+| authors           |   2016 |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
+|:------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
+| Arner DW 3:185    |      0 |      2 |      0 |      0 |      1 |      0 |      0 |      0 |
+| Buckley RP 3:185  |      0 |      2 |      0 |      0 |      1 |      0 |      0 |      0 |
+| Barberis JN 2:161 |      0 |      2 |      0 |      0 |      0 |      0 |      0 |      0 |
+| Butler T/1 2:041  |      0 |      0 |      1 |      1 |      0 |      0 |      0 |      0 |
+| Hamdan A 2:018    |      0 |      0 |      0 |      0 |      1 |      1 |      0 |      0 |
 
 
 >>> print(r.prompt_)
-Analyze the table below which contains the  occurrences by year for the authors. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
+Analyze the table below which contains the  occurrences by year for the years. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
-| authors           |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |
-|:------------------|-------:|-------:|-------:|-------:|-------:|-------:|
-| Arner DW 3:185    |      2 |      0 |      0 |      1 |      0 |      0 |
-| Buckley RP 3:185  |      2 |      0 |      0 |      1 |      0 |      0 |
-| Barberis JN 2:161 |      2 |      0 |      0 |      0 |      0 |      0 |
-| Butler T/1 2:041  |      0 |      1 |      1 |      0 |      0 |      0 |
-| Hamdan A 2:018    |      0 |      0 |      0 |      1 |      1 |      0 |
-| Turki M 2:018     |      0 |      0 |      0 |      1 |      1 |      0 |
-| Lin W 2:017       |      0 |      0 |      0 |      1 |      0 |      1 |
-| Singh C 2:017     |      0 |      0 |      0 |      1 |      0 |      1 |
-| Brennan R 2:014   |      0 |      0 |      0 |      1 |      1 |      0 |
-| Crane M 2:014     |      0 |      0 |      0 |      1 |      1 |      0 |
+| authors           |   2016 |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
+|:------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
+| Arner DW 3:185    |      0 |      2 |      0 |      0 |      1 |      0 |      0 |      0 |
+| Buckley RP 3:185  |      0 |      2 |      0 |      0 |      1 |      0 |      0 |      0 |
+| Barberis JN 2:161 |      0 |      2 |      0 |      0 |      0 |      0 |      0 |      0 |
+| Butler T/1 2:041  |      0 |      0 |      1 |      1 |      0 |      0 |      0 |      0 |
+| Hamdan A 2:018    |      0 |      0 |      0 |      0 |      1 |      1 |      0 |      0 |
+| Turki M 2:018     |      0 |      0 |      0 |      0 |      1 |      1 |      0 |      0 |
+| Lin W 2:017       |      0 |      0 |      0 |      0 |      1 |      0 |      1 |      0 |
+| Singh C 2:017     |      0 |      0 |      0 |      0 |      1 |      0 |      1 |      0 |
+| Brennan R 2:014   |      0 |      0 |      0 |      0 |      1 |      1 |      0 |      0 |
+| Crane M 2:014     |      0 |      0 |      0 |      0 |      1 |      1 |      0 |      0 |
 <BLANKLINE>
 <BLANKLINE>
 
-
-
+# pylint: disable=line-too-long
 """
-from ... import vantagepoint
+from ...classes import ProductionOverTimeChart
 from ...techminer.indicators.indicators_by_item_per_year import (
     indicators_by_item_per_year,
 )
+from ...vantagepoint.analyze import terms_by_year
+from ...vantagepoint.report import gantt_chart
 from ..documents_per_criterion import documents_per_criterion
 
 
 def authors_production_over_time(
-    topics_length=50,
-    topic_min_occ=None,
-    topic_max_occ=None,
-    topic_min_citations=None,
-    topic_max_citations=None,
-    custom_topics=None,
-    cumulative=False,
-    directory="./",
+    root_dir="./",
     database="documents",
-    start_year=None,
-    end_year=None,
+    # Table params:
+    cumulative=False,
+    # Item filters:
+    top_n=50,
+    occ_range=None,
+    gc_range=None,
+    custom_items=None,
+    # Database filters:
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
     """Authors production over time."""
 
-    terms_by_year = vantagepoint.analyze.terms_by_year(
-        criterion="authors",
-        topics_length=topics_length,
-        topic_occ_min=topic_min_occ,
-        topic_occ_max=topic_max_occ,
-        topic_citations_min=topic_min_citations,
-        topic_citations_max=topic_max_citations,
-        custom_topics=custom_topics,
-        root_dir=directory,
+    items_by_year = terms_by_year(
+        field="authors",
+        root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        # Table params:
         cumulative=cumulative,
+        # Item filters:
+        top_n=top_n,
+        occ_range=occ_range,
+        gc_range=gc_range,
+        custom_items=custom_items,
+        # Database filters:
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 
-    chart = vantagepoint.report.gantt_chart(
-        terms_by_year,
+    chart = gantt_chart(
+        items_by_year,
         title="Authors' production over time",
     )
 
-    chart.documents_per_author_ = documents_per_criterion(
-        criterion="authors",
-        directory=directory,
-        database=database,
-        start_year=start_year,
-        end_year=end_year,
-        **filters,
-    )
+    obj = ProductionOverTimeChart()
+    obj.plot_ = chart.plot_
+    obj.table_ = items_by_year.table_.copy()
+    obj.prompt_ = chart.prompt_
 
-    chart.production_per_year_ = indicators_by_item_per_year(
+    obj.documents_per_item_ = documents_per_criterion(
         field="authors",
-        root_dir=directory,
+        root_dir=root_dir,
         database=database,
-        year_filter=start_year,
-        cited_by_filter=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 
-    chart.table_ = terms_by_year.table_.copy()
+    obj.production_per_year_ = indicators_by_item_per_year(
+        field="authors",
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
+    )
 
-    return chart
+    return obj

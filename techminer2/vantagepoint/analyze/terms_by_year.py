@@ -8,8 +8,8 @@ Terms by Year
 
 >>> from techminer2 import vantagepoint
 >>> r = vantagepoint.analyze.terms_by_year(
-...    criterion='author_keywords',
-...    topics_length=10,
+...    field='author_keywords',
+...    top_n=10,
 ...    root_dir=root_dir,
 ... )
 >>> r.table_
@@ -50,8 +50,8 @@ concise summary of your findings in no more than 150 words.
 
 
 >>> r = vantagepoint.analyze.terms_by_year(
-...    criterion='author_keywords',
-...    topics_length=10,
+...    field='author_keywords',
+...    top_n=10,
 ...    root_dir=root_dir,
 ...    cumulative=True,
 ... )
@@ -95,58 +95,53 @@ concise summary of your findings in no more than 150 words.
 # noga: E501 W291
 
 """
-
-from ... import techminer
 from ...classes import TermsByYear
 from ...counters import add_counters_to_axis
 from ...item_utils import generate_custom_items
 from ...sort_utils import sort_indicators_by_metric
-from ...techminer.indicators import indicators_by_item
+from ...techminer.indicators import indicators_by_item, items_occ_by_year
 
 
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 def terms_by_year(
-    criterion,
-    topics_length=50,
-    topic_occ_min=None,
-    topic_occ_max=None,
-    topic_citations_min=None,
-    topic_citations_max=None,
-    custom_topics=None,
+    field,
     root_dir="./",
     database="documents",
-    start_year=None,
-    end_year=None,
+    # Table params:
     cumulative=False,
+    # Item filters:
+    top_n=50,
+    occ_range=None,
+    gc_range=None,
+    custom_items=None,
+    # Database filters:
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
     """Computes a table with the number of occurrences of each term by year.
 
     Args:
-        criterion (str): Criterion to be used to generate the terms.
-        topics_length (int, optional): Number of terms to be included in the
-            table. Defaults to 50.
-        topic_occ_min (int, optional): Minimum number of occurrences of the
-            terms. Defaults to None.
-        topic_occ_max (int, optional): Maximum number of occurrences of the
-            terms. Defaults to None.
-        topic_citations_min (int, optional): Minimum number of citations of
-            the terms. Defaults to None.
-        topic_citations_max (int, optional): Maximum number of citations of
-            the terms. Defaults to None.
-        custom_topics (list, optional): List of custom topics. Defaults to
-            None.
-        root_dir (str, optional): Root directory. Defaults to "./".
-        database (str, optional): Database to be used. Defaults to "documents".
-        start_year (int, optional): Start year. Defaults to None.
-        end_year (int, optional): End year. Defaults to None.
-        cumulative (bool, optional): If True, the table contains the cumulative
-            number of occurrences. Defaults to False.
+        field (str): Database field to be used to extract the items.
+        root_dir (str): Root directory.
+        database (str): Database name.
+        cumulative (bool, optional): If True, the table contains the cumulative number of occurrences. Defaults to False.
+        metric (str): Metric to be used to sort the items.
+        top_n (int): Number of top items to be returned.
+        occ_range (tuple): Range of occurrence of the items.
+        gc_range (tuple): Range of global citations of the items.
+        custom_items (list): List of items to be returned.
+        year_filter (tuple, optional): Year database filter. Defaults to None.
+        cited_by_filter (tuple, optional): Cited by database filter. Defaults to None.
+        **filters (dict, optional): Filters to be applied to the database. Defaults to {}.
+
 
     Returns:
         TermsByYear: A TermsByYear object.
 
+
+    # pylint: disable=line-too-long
     """
 
     def generate_prompt(obj):
@@ -164,58 +159,56 @@ def terms_by_year(
     # Main:
     #
 
-    descriptors_by_year = techminer.indicators.items_occ_by_year(
-        field=criterion,
+    descriptors_by_year = items_occ_by_year(
+        field=field,
         root_dir=root_dir,
         cumulative=cumulative,
         database=database,
-        year_filter=start_year,
-        cited_by_filter=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 
-    if custom_topics is None:
+    if custom_items is None:
         indicators = indicators_by_item(
-            field=criterion,
+            field=field,
             root_dir=root_dir,
             database=database,
-            year_filter=start_year,
-            cited_by_filter=end_year,
+            year_filter=year_filter,
+            cited_by_filter=cited_by_filter,
             **filters,
         )
 
         indicators = sort_indicators_by_metric(indicators, metric="OCC")
 
-        custom_topics = generate_custom_items(
+        custom_items = generate_custom_items(
             indicators=indicators,
-            top_n=topics_length,
-            occ_range=topic_occ_min,
-            topic_occ_max=topic_occ_max,
-            gc_range=topic_citations_min,
-            topic_citations_max=topic_citations_max,
+            top_n=top_n,
+            occ_range=occ_range,
+            gc_range=gc_range,
         )
 
     descriptors_by_year = descriptors_by_year[
-        descriptors_by_year.index.isin(custom_topics)
+        descriptors_by_year.index.isin(custom_items)
     ]
 
-    descriptors_by_year = descriptors_by_year.loc[custom_topics, :]
+    descriptors_by_year = descriptors_by_year.loc[custom_items, :]
 
     descriptors_by_year = add_counters_to_axis(
         descriptors_by_year,
         axis=0,
-        criterion=criterion,
+        criterion=field,
         root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        start_year=year_filter,
+        end_year=cited_by_filter,
         **filters,
     )
 
     obj = TermsByYear()
     obj.metric_ = "OCC"
     obj.criterion_ = "years"
-    obj.other_criterion_ = criterion
+    obj.other_criterion_ = field
     obj.cumulative_ = cumulative
     obj.table_ = descriptors_by_year
     obj.prompt_ = generate_prompt(obj)

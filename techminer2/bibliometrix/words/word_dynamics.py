@@ -69,17 +69,17 @@ def word_dynamics(
     """Makes a dynamics chat for top words."""
 
     terms_by_year = vantagepoint.analyze.terms_by_year(
-        criterion=criterion,
-        topics_length=topics_length,
-        topic_occ_min=topic_min_occ,
+        field=criterion,
+        top_n=topics_length,
+        occ_range=topic_min_occ,
         topic_occ_max=topic_max_occ,
-        topic_citations_min=topic_min_citations,
+        gc_range=topic_min_citations,
         topic_citations_max=topic_max_citations,
-        custom_topics=custom_topics,
+        custom_items=custom_topics,
         root_dir=directory,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=start_year,
+        cited_by_filter=end_year,
         cumulative=cumulative,
         **filters,
     )
@@ -90,11 +90,11 @@ def word_dynamics(
     )
 
     chart.documents_per_keyword_ = documents_per_criterion(
-        criterion=criterion,
-        directory=directory,
+        field=criterion,
+        root_dir=directory,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=start_year,
+        cited_by_filter=end_year,
         **filters,
     )
 

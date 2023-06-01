@@ -17,6 +17,24 @@ import plotly.graph_objs as go
 
 
 @dataclass(init=False)
+class ProductionOverTimeChart:
+    """Production over time chart.
+
+    Attributes:
+        plot_ (go.Figure): Plotly figure.
+        prompt_ (str): Prompt.
+        table_ (pd.DataFrame): Table.
+
+    """
+
+    plot_: go.Figure
+    prompt_: str
+    table_: pd.DataFrame
+    documents_per_item_: pd.DataFrame
+    production_per_year_: pd.DataFrame
+
+
+@dataclass(init=False)
 class WordCloudChart:
     """WordCloud.
 

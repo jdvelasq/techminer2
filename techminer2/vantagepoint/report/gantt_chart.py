@@ -9,8 +9,8 @@ Gantt Chart
 
 >>> from techminer2 import vantagepoint
 >>> data = vantagepoint.analyze.terms_by_year(
-...    criterion='author_keywords',
-...    topics_length=20,
+...    field='author_keywords',
+...    top_n=20,
 ...    root_dir=root_dir,
 ... )
 >>> chart = vantagepoint.report.gantt_chart(data)
@@ -62,21 +62,16 @@ Analyze the table below which contains the  occurrences by year for the years. I
 <BLANKLINE>
 <BLANKLINE>
 
-    
+# pylint: disable=line-too-long    
 """
 import textwrap
-from dataclasses import dataclass
 
 import plotly.express as px
 
+from ...classes import BasicChart
+
 COLOR = "#556f81"
 TEXTLEN = 40
-
-
-@dataclass(init=False)
-class _Chart:
-    plot_ = None
-    table_ = None
 
 
 def gantt_chart(
@@ -99,7 +94,7 @@ def gantt_chart(
         title,
     )
 
-    chart = _Chart()
+    chart = BasicChart()
     chart.plot_ = fig
     chart.table_ = table
     chart.prompt_ = obj.prompt_

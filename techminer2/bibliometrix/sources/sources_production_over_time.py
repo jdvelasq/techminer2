@@ -95,17 +95,17 @@ def sources_production_over_time(
     """Sources production over time."""
 
     terms_by_year = vantagepoint.analyze.terms_by_year(
-        criterion="source_abbr",
-        topics_length=topics_length,
-        topic_occ_min=topic_min_occ,
+        field="source_abbr",
+        top_n=topics_length,
+        occ_range=topic_min_occ,
         topic_occ_max=topic_max_occ,
-        topic_citations_min=topic_min_citations,
+        gc_range=topic_min_citations,
         topic_citations_max=topic_max_citations,
-        custom_topics=custom_topics,
+        custom_items=custom_topics,
         root_dir=directory,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=start_year,
+        cited_by_filter=end_year,
         cumulative=cumulative,
         **filters,
     )
@@ -116,11 +116,11 @@ def sources_production_over_time(
     )
 
     chart.documents_per_source_ = documents_per_criterion(
-        criterion="source_abbr",
-        directory=directory,
+        field="source_abbr",
+        root_dir=directory,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=start_year,
+        cited_by_filter=end_year,
         **filters,
     )
 

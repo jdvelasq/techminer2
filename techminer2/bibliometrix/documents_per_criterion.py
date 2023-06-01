@@ -3,30 +3,31 @@ from ..utils.records import read_records
 
 
 def documents_per_criterion(
-    criterion,
-    directory="./",
+    field,
+    root_dir="./",
     database="documents",
-    start_year=None,
-    end_year=None,
+    # Database filters:
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
     """Documents"""
 
     records = read_records(
-        root_dir=directory,
+        root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 
-    records[criterion] = records[criterion].str.split(";")
-    records = records.explode(criterion)
-    records[criterion] = records[criterion].str.strip()
+    records[field] = records[field].str.split(";")
+    records = records.explode(field)
+    records[field] = records[field].str.strip()
 
     records = records[
         [
-            criterion,
+            field,
             "title",
             "year",
             "source_title",
