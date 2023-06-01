@@ -79,7 +79,7 @@ def world_map(
         colormap (str, optional): Color map. Defaults to "Blues".
 
     Returns:
-
+        BasicChart: A basic chart object.
 
 
     """
@@ -138,7 +138,7 @@ def world_map(
         )
 
         worldmap_data = worldmap_data.reset_index(drop=True)
-        worldmap_data.index = worldmap_data.country
+        worldmap_data.index = pd.Index(worldmap_data.country.to_list())
         return worldmap_data
 
     #
