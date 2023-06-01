@@ -7,27 +7,24 @@ Plots the co-occurrences of a given descriptor with the remaining descriptors.
 
 
 
-Example:
--------------------------------------------------------------------------------
 
->>> # Step 1: Import the VantagePoint module.
+
 >>> from techminer2 import vantagepoint
 >>> root_dir = "data/regtech/"
->>> #
->>> # Step 2: Create a co-occurrence matrix
+>>> # ------------------------- Algorithm -------------------------
+>>> # Create a co-occurrence matrix
 >>> co_occ_matrix = vantagepoint.analyze.co_occ_matrix(
-...    criterion='author_keywords',
-...    topic_occ_min=3,
+...    columns='author_keywords',
+...    col_occ_range=(3, None),
 ...    root_dir=root_dir,
 ... )
->>> #
->>> # Step 3: Create a subset of the co-occurrence matrix with the term to be
+>>> # Create a subset of the co-occurrence matrix with the term to be
 >>> # analyzed.
 >>> matrix_subset = vantagepoint.analyze.matrix_subset(
 ...    co_occ_matrix,
-...    topics='regtech',
+...    custom_items='regtech',
 ... )
->>> # Step 4: Visualize the co-occurrences as a bar plot.
+>>> # Visualize the co-occurrences as a bar plot.
 >>> from techminer2 import tlab
 >>> file_name = "sphinx/_static/tlab__word_associations__co_occurrences_bar_plot.html"
 >>> chart = tlab.word_associations.co_occurrence_bar_plot(matrix_subset)
@@ -70,15 +67,15 @@ from ...vantagepoint.report import bar_chart
 def co_occurrence_bar_plot(
     obj,
     title=None,
-    criterion_label=None,
+    field_label=None,
     metric_label=None,
 ):
     """Co-occurrence bar plot"""
 
-    def create_chatgpt_prompt(criterion, term, table):
+    def create_chatgpt_prompt(field, item, table):
         return (
             "Analyze the table below which contains values of co-occurrence"
-            f"(OCC) of the '{term}' with the '{criterion}' field in a "
+            f"(OCC) of the '{item}' with the '{field}' field in a "
             "bibliographic dataset. Identify any notable patterns, trends, "
             "or outliers in the data, and discuss their implications for "
             "the research field. Be sure to provide a concise summary of "
@@ -89,7 +86,7 @@ def co_occurrence_bar_plot(
     #
     # Main:
     #
-    term = " ".join(obj.topics_[0].split(" ")[:-1])
+    term = " ".join(obj.custom_items_[0].split(" ")[:-1])
 
     if title is None:
         title = f"Co-occurrence with '{term}'"
@@ -99,13 +96,13 @@ def co_occurrence_bar_plot(
     list_view.table_.columns = ["OCC"]
     list_view.table_ = list_view.table_.sort_values("OCC", ascending=False)
     list_view.metric_ = "OCC"
-    list_view.field_ = obj.criterion_
+    list_view.field_ = obj.rows_
     list_view.prompt_ = obj.prompt_
 
     chart = bar_chart(
         list_view,
         title=title,
-        field_label=criterion_label,
+        field_label=field_label,
         metric_label=metric_label,
     )
 
