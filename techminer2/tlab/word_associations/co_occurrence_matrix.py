@@ -1,6 +1,6 @@
 # flake8: noqa
 """
-Co-occurrence Matrix --- ChatGPT
+Co-occurrence Matrix
 ===============================================================================
 
 A co-occurrence matrix is a square matrix that contains the co-occurrence 

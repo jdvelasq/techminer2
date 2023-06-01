@@ -97,17 +97,17 @@ def cross_corr_matrix(
     # Main:
     #
     data_matrix = co_occ_matrix(
-        criterion=criterion,
-        other_criterion=other_criterion,
-        topics_length=topics_length,
-        topic_occ_min=topic_occ_min,
+        columns=criterion,
+        rows=other_criterion,
+        col_top_n=topics_length,
+        col_occ_range=topic_occ_min,
         topic_occ_max=topic_occ_max,
-        topic_citations_min=topic_citations_min,
+        col_gc_range=topic_citations_min,
         topic_citations_max=topic_citations_max,
         root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=start_year,
+        cited_by_filter=end_year,
         **filters,
     )
 

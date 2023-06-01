@@ -43,26 +43,26 @@ def three_fields_plot(
     """Sankey plot"""
 
     matrix_left = co_occ_matrix(
-        criterion=middle_criterion,
-        other_criterion=left_criterion,
-        topics_length=topics_length_left,
-        topic_citations_min=topic_min_citations,
+        columns=middle_criterion,
+        rows=left_criterion,
+        col_top_n=topics_length_left,
+        col_gc_range=topic_min_citations,
         root_dir=directory,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=start_year,
+        cited_by_filter=end_year,
         **filters,
     ).matrix_
 
     matrix_right = co_occ_matrix(
-        criterion=right_criterion,
-        other_criterion=middle_criterion,
-        topics_length=topics_length_right,
-        topic_citations_min=topic_min_citations,
+        columns=right_criterion,
+        rows=middle_criterion,
+        col_top_n=topics_length_right,
+        col_gc_range=topic_min_citations,
         root_dir=directory,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=start_year,
+        cited_by_filter=end_year,
     ).matrix_
 
     return _make_sankey_plot(matrix_left, matrix_right)

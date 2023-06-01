@@ -79,70 +79,65 @@ from ...techminer.indicators import co_occ_matrix_list, indicators_by_item
 
 # pylint: disable=too-many-arguments disable=too-many-locals
 def co_occ_matrix(
-    criterion,
-    other_criterion=None,
-    topics_length=None,
-    topic_occ_min=None,
-    topic_occ_max=None,
-    topic_citations_min=None,
-    topic_citations_max=None,
-    custom_topics=None,
-    other_custom_topics=None,
+    # Columns:
+    columns,
+    col_top_n=None,
+    col_occ_range=None,
+    col_gc_range=None,
+    col_custom_items=None,
+    # Rows:
+    rows=None,
+    row_top_n=None,
+    row_occ_range=None,
+    row_gc_range=None,
+    row_custom_items=None,
+    # Database params:
     root_dir="./",
     database="documents",
-    start_year=None,
-    end_year=None,
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
     """Creates a co-occurrence matrix."""
 
     def filter_terms(
         raw_matrix_list,
-        is_row_column,
-        criterion,
-        topics_length,
-        topic_min_occ,
-        topic_max_occ,
-        topic_min_citations,
-        topic_max_citations,
-        custom_topics,
-        root_dir,
-        database,
-        start_year,
-        end_year,
-        **filters,
+        name,
+        field,
+        top_n,
+        occ_range,
+        gc_range,
+        custom_items,
     ):
-        if custom_topics is None:
+        if custom_items is None:
             indicators = indicators_by_item(
-                field=criterion,
+                field=field,
                 root_dir=root_dir,
                 database=database,
-                year_filter=start_year,
-                cited_by_filter=end_year,
+                year_filter=year_filter,
+                cited_by_filter=cited_by_filter,
                 **filters,
             )
 
             indicators = sort_indicators_by_metric(indicators, "OCC")
 
-            custom_topics = generate_custom_items(
+            custom_items = generate_custom_items(
                 indicators=indicators,
-                top_n=topics_length,
-                occ_range=topic_min_occ,
-                topic_occ_max=topic_max_occ,
-                gc_range=topic_min_citations,
-                topic_citations_max=topic_max_citations,
+                top_n=top_n,
+                occ_range=occ_range,
+                gc_range=gc_range,
             )
 
-        name = "row" if is_row_column else "column"
+        # name = "row" if name else "column"
 
-        custom_topics = filter_custom_items_from_column(
+        custom_items = filter_custom_items_from_column(
             dataframe=raw_matrix_list,
             col_name=name,
-            custom_items=custom_topics,
+            custom_items=custom_items,
         )
 
         raw_matrix_list = raw_matrix_list[
-            raw_matrix_list[name].isin(custom_topics)
+            raw_matrix_list[name].isin(custom_items)
         ]
 
         return raw_matrix_list
@@ -180,56 +175,54 @@ def co_occ_matrix(
         )
 
     #
-    # Main:
+    # Main code:
     #
 
-    if other_criterion is None:
-        other_criterion = criterion
+    if rows is None:
+        rows = columns
 
     # Generates a matrix list with all descriptors in the database
     raw_matrix_list = co_occ_matrix_list(
-        criterion=criterion,
-        other_criterion=other_criterion,
+        columns=columns,
+        rows=rows,
         root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 
     # Filters the terms in the 'row' column of the matrix list
     raw_filterd_matrix_list = filter_terms(
         raw_matrix_list=raw_matrix_list,
-        criterion=other_criterion,
-        is_row_column=True,
-        topics_length=topics_length,
-        topic_min_occ=topic_occ_min,
-        topic_max_occ=topic_occ_max,
-        topic_min_citations=topic_citations_min,
-        topic_max_citations=topic_citations_max,
-        custom_topics=other_custom_topics,
+        field=rows,
+        name="row",
+        top_n=row_top_n,
+        occ_range=row_occ_range,
+        gc_range=row_gc_range,
+        custom_items=row_custom_items,
+        # Database params:
         root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 
     # Filters the terms in the 'column' column of the matrix list
     filtered_matrix_list = filter_terms(
         raw_matrix_list=raw_filterd_matrix_list,
-        criterion=criterion,
-        is_row_column=False,
-        topics_length=topics_length,
-        topic_min_occ=topic_occ_min,
-        topic_max_occ=topic_occ_max,
-        topic_min_citations=topic_citations_min,
-        topic_max_citations=topic_citations_max,
-        custom_topics=custom_topics,
+        field=columns,
+        name="column",
+        top_n=col_top_n,
+        occ_range=col_occ_range,
+        gc_range=col_gc_range,
+        custom_items=col_custom_items,
+        # Database params:
         root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 
@@ -240,277 +233,65 @@ def co_occ_matrix(
     matrix = sort_matrix_axis(
         matrix,
         axis=0,
-        criterion=other_criterion,
+        criterion=rows,
         root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        start_year=year_filter,
+        end_year=cited_by_filter,
         **filters,
     )
 
     matrix = sort_matrix_axis(
         matrix,
         axis=1,
-        criterion=criterion,
+        criterion=columns,
         root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        start_year=year_filter,
+        end_year=cited_by_filter,
         **filters,
     )
 
     matrix = add_counters_to_axis(
         dataframe=matrix,
         axis=0,
-        criterion=other_criterion,
+        criterion=rows,
         root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        start_year=year_filter,
+        end_year=cited_by_filter,
         **filters,
     )
 
     matrix = add_counters_to_axis(
         dataframe=matrix,
         axis=1,
-        criterion=criterion,
+        criterion=columns,
         root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        start_year=year_filter,
+        end_year=cited_by_filter,
         **filters,
     )
 
-    if criterion == other_criterion:
+    if columns == rows:
         prompt = generate_prompt_for_co_occ_matrix(
             matrix,
-            criterion=criterion,
+            criterion=columns,
         )
     else:
         prompt = generate_prompt_for_occ_matrix(
             matrix,
-            criterion=other_criterion,
-            other_criterion=criterion,
+            criterion=rows,
+            other_criterion=columns,
         )
 
     occurrence_matrix = CocMatrix()
 
-    occurrence_matrix.criterion_ = criterion
-    occurrence_matrix.other_criterion_ = (
-        other_criterion if other_criterion else criterion
-    )
+    occurrence_matrix.criterion_ = columns
+    occurrence_matrix.other_criterion_ = rows if rows else columns
     occurrence_matrix.metric_ = "OCC"
     occurrence_matrix.matrix_ = matrix
     occurrence_matrix.prompt_ = prompt
 
     return occurrence_matrix
-
-
-#     ####################################################################
-
-#     matrix_ = _create_matrix(
-#         criterion_for_columns=column_criterion,
-#         criterion_for_rows=row_criterion,
-#         topics_length=topics_length,
-#         topic_min_occ=topic_min_occ,
-#         topic_max_occ=topic_max_occ,
-#         topic_min_citations=topic_min_citations,
-#         topic_max_citations=topic_max_citations,
-#         directory=root_dir,
-#         database=database,
-#         start_year=start_year,
-#         end_year=end_year,
-#         **filters,
-#     )
-
-
-# def _create_matrix(
-#     criterion_for_columns,
-#     criterion_for_rows,
-#     topics_length,
-#     topic_min_occ,
-#     topic_max_occ,
-#     topic_min_citations,
-#     topic_max_citations,
-#     directory,
-#     database,
-#     start_year,
-#     end_year,
-#     **filters,
-# ):
-#     matrix_list = _create_occ_matrix_list(
-#         column_criterion=criterion_for_columns,
-#         row_criterion=criterion_for_rows,
-#         topics_length=topics_length,
-#         topic_min_occ=topic_min_occ,
-#         topic_max_occ=topic_max_occ,
-#         topic_min_citations=topic_min_citations,
-#         topic_max_citations=topic_max_citations,
-#         root_directory=directory,
-#         database=database,
-#         start_year=start_year,
-#         end_year=end_year,
-#         **filters,
-#     )
-
-#     matrix = matrix_list.pivot(index="row", columns="column", values="OCC")
-#     matrix = matrix.fillna(0)
-#     matrix = matrix.astype(int)
-
-#     columns = sorted(
-#         matrix.columns.tolist(),
-#         key=lambda x: x.split()[-1].split(":")[0],
-#         reverse=True,
-#     )
-#     indexes = sorted(
-#         matrix.index.tolist(),
-#         key=lambda x: x.split()[-1].split(":")[0],
-#         reverse=True,
-#     )
-#     matrix = matrix.loc[indexes, columns]
-
-#     return matrix
-
-
-# def _create_occ_matrix_list(
-#     column_criterion,
-#     row_criterion,
-#     topics_length,
-#     topic_min_occ,
-#     topic_max_occ,
-#     topic_min_citations,
-#     topic_max_citations,
-#     root_directory,
-#     database,
-#     start_year,
-#     end_year,
-#     **filters,
-# ):
-#     matrix_list = techminer.indicators.occ_matrix_list(
-#         column_criterion=column_criterion,
-#         row_criterion=column_criterion,
-#         directory=root_directory,
-#         database=database,
-#         start_year=start_year,
-#         end_year=end_year,
-#         **filters,
-#     )
-#     matrix_list = _remove_stopwords(root_directory, matrix_list)
-
-#     matrix_list = _select_topics_by_occ_and_citations_and_topic_length(
-#         matrix_list=matrix_list,
-#         topic_min_occ=topic_min_occ,
-#         topic_max_occ=topic_max_occ,
-#         topic_min_citations=topic_min_citations,
-#         topic_max_citations=topic_max_citations,
-#         topics_length=topics_length,
-#         criterion_for_columns=column_criterion,
-#         criterion_for_rows=row_criterion,
-#         directory=root_directory,
-#         database=database,
-#         start_year=start_year,
-#         end_year=end_year,
-#         **filters,
-#     )
-
-#     for criterion, name in [
-#         (column_criterion, "column"),
-#         (row_criterion, "row"),
-#     ]:
-#         matrix_list = add_counters(
-#             column=criterion,
-#             name=name,
-#             directory=root_directory,
-#             database=database,
-#             table=matrix_list,
-#             start_year=start_year,
-#             end_year=end_year,
-#             **filters,
-#         )
-
-#     matrix_list = _sort_matrix_list(matrix_list)
-
-#     matrix_list = matrix_list.reset_index(drop=True)
-
-#     return matrix_list
-
-
-# def _sort_matrix_list(matrix_list):
-#     matrix_list = matrix_list.copy()
-
-#     for col in ["row", "column"]:
-#         col_upper = col.upper()
-#         matrix_list[col_upper] = matrix_list[col]
-#         matrix_list[col_upper] = matrix_list[col_upper].str.split()
-#         matrix_list[col_upper] = matrix_list[col_upper].map(lambda x: x[-1])
-
-#     matrix_list = matrix_list.sort_values(
-#         ["ROW", "row", "COLUMN", "column"],
-#         ascending=[False, True, False, True],
-#     )
-
-#     matrix_list = matrix_list.drop(columns=["ROW", "COLUMN"])
-#     matrix_list = matrix_list.reset_index(drop=True)
-
-#     return matrix_list
-
-
-# def _select_topics_by_occ_and_citations_and_topic_length(
-#     matrix_list,
-#     topic_min_occ,
-#     topic_max_occ,
-#     topic_min_citations,
-#     topic_max_citations,
-#     topics_length,
-#     criterion_for_columns,
-#     criterion_for_rows,
-#     directory,
-#     database,
-#     start_year,
-#     end_year,
-#     **filters,
-# ):
-#     for criterion in [criterion_for_columns, criterion_for_rows]:
-#         indicators = techminer.indicators.indicators_by_topic(
-#             criterion=criterion,
-#             root_dir=directory,
-#             database=database,
-#             start_year=start_year,
-#             end_year=end_year,
-#             **filters,
-#         )
-
-#         if topic_min_occ is not None:
-#             indicators = indicators[indicators.OCC >= topic_min_occ]
-#         if topic_max_occ is not None:
-#             indicators = indicators[indicators.OCC <= topic_max_occ]
-#         if topic_min_citations is not None:
-#             indicators = indicators[
-#                 indicators.global_citations >= topic_min_citations
-#             ]
-#         if topic_max_citations is not None:
-#             indicators = indicators[
-#                 indicators.global_citations <= topic_max_citations
-#             ]
-
-#         indicators = indicators.sort_values(
-#             ["OCC", "global_citations", "local_citations"],
-#             ascending=[False, False, False],
-#         )
-
-#         if topics_length is not None:
-#             indicators = indicators.head(topics_length)
-
-#         topics = indicators.index.to_list()
-
-#         if criterion_for_columns == criterion_for_rows:
-#             matrix_list = matrix_list[matrix_list.column.isin(topics)]
-#             matrix_list = matrix_list[matrix_list.row.isin(topics)]
-#             break
-#         else:
-#             if criterion == criterion_for_columns:
-#                 matrix_list = matrix_list[matrix_list.column.isin(topics)]
-#             else:
-#                 matrix_list = matrix_list[matrix_list.row.isin(topics)]
-
-#     return matrix_list

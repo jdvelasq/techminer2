@@ -1,26 +1,8 @@
 # flake8: noqa
 """
-Matrix Viewer --- ChatGPT
+Matrix Viewer
 ===============================================================================
 
->>> from techminer2 import vantagepoint
->>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/vantagepoint__matrix_viewer-2.html"
->>> co_occ_matrix = vantagepoint.analyze.co_occ_matrix(
-...    criterion='author_keywords',
-...    topic_occ_min=3,
-...    root_dir=root_dir,
-... )
->>> matrix_subset = vantagepoint.analyze.matrix_subset(
-...    co_occ_matrix,
-...    topics='regtech',
-... )
->>> chart = vantagepoint.analyze.matrix_viewer(
-...     matrix_subset,
-...     nx_k=0.5,
-...     nx_iterations=5,
-...     xaxes_range=(-2,2),
-... )
 
 
 Example: Visulization of an occurrence matrix.

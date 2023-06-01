@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 Co-ocurrence Matrix List
 ===============================================================================
@@ -7,13 +8,13 @@ stopwords list.
 
 
 Example
--------
+-------------------------------------------------------------------------------
 
 >>> root_dir = "data/regtech/"
 
 >>> from techminer2  import techminer
 >>> techminer.indicators.co_occ_matrix_list(
-...     'authors', 'keywords', root_dir=root_dir
+...     columns='authors', rows='keywords', root_dir=root_dir
 ... ).head(10)
                          row     column  OCC
 0             accountability  Brennan R    2
@@ -28,50 +29,53 @@ Example
 164  data protection officer    Crane M    2
 
 
-
+# pylint: disable=line-too-long
 """
-from ...utils.load_utils import load_stopwords
-from ...utils.records import read_records
+from ...utils import load_stopwords, read_records
 
 
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-statements
 def co_occ_matrix_list(
-    criterion,
-    other_criterion,
+    columns,
+    rows,
+    # Database params:
     root_dir="./",
     database="documents",
-    start_year=None,
-    end_year=None,
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
     """Creates a matrix list with all terms of the database.
 
     Args:
-        criterion (str) : column name to be used as column criterion.
-        other_criterion (str) : column name to be used as row criterion.
+        columns (str) : column name to be used as column criterion.
+        rows (str) : column name to be used as row criterion.
         root_dir (str) : root directory.
         database (str) : database name.
-        start_year (int) : start year.
-        end_year (int) : end year.
-        **filters : filters.
+        year_filter (tuple, optional): Year database filter. Defaults to None.
+        cited_by_filter (tuple, optional): Cited by database filter. Defaults to None.
+        **filters (dict, optional): Filters to be applied to the database. Defaults to {}.
+
 
     Returns:
         A dataframe with the matrix list.
 
+    # pylint: disable=line-too-long
     """
 
     records = read_records(
+        # Database params:
         root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 
-    matrix_list = records[[criterion]].copy()
-    matrix_list = matrix_list.rename(columns={criterion: "column"})
-    matrix_list = matrix_list.assign(row=records[[other_criterion]])
+    matrix_list = records[[columns]].copy()
+    matrix_list = matrix_list.rename(columns={columns: "column"})
+    matrix_list = matrix_list.assign(row=records[[rows]])
 
     stopwords = load_stopwords(root_dir=root_dir)
 

@@ -152,14 +152,14 @@ def co_occurrence_network(
         )
 
     matrix = co_occ_matrix(
-        criterion=criterion,
-        topics_length=topics_length,
-        topic_occ_min=topic_min_occ,
-        topic_citations_min=0,
+        columns=criterion,
+        col_top_n=topics_length,
+        col_occ_range=topic_min_occ,
+        col_gc_range=0,
         root_dir=directory,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=start_year,
+        cited_by_filter=end_year,
         **filters,
     )
 
