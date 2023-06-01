@@ -106,18 +106,14 @@ def line_chart(
             gridcolor="lightgray",
             griddash="dot",
             tickangle=270,
-            title_text=field_label
-            if field_label is not None
-            else obj.criterion_.replace("_", " ").upper(),
+            title_text=field_label,
         )
         figure.update_yaxes(
             linecolor="gray",
             linewidth=2,
             gridcolor="lightgray",
             griddash="dot",
-            title_text=metric_label
-            if metric_label is not None
-            else obj.metric_.replace("_", " ").upper(),
+            title_text=metric_label,
         )
         return figure
 
@@ -126,6 +122,12 @@ def line_chart(
     #
 
     check_listview(obj)
+
+    if metric_label is None:
+        metric_label = obj.metric_.replace("_", " ").upper()
+
+    if field_label is None:
+        field_label = obj.field_.replace("_", " ").upper()
 
     chart = BasicChart()
     chart.plot_ = create_plot()

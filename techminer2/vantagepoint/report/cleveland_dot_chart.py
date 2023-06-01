@@ -106,9 +106,7 @@ def cleveland_dot_chart(
             linewidth=2,
             gridcolor="lightgray",
             griddash="dot",
-            title_text=metric_label
-            if metric_label is not None
-            else obj.metric_.replace("_", " ").upper(),
+            title_text=metric_label,
         )
         fig.update_yaxes(
             linecolor="gray",
@@ -116,9 +114,7 @@ def cleveland_dot_chart(
             autorange="reversed",
             gridcolor="lightgray",
             griddash="dot",
-            title_text=field_label
-            if field_label is not None
-            else obj.criterion_.replace("_", " ").upper(),
+            title_text=field_label,
         )
         return fig
 
@@ -127,6 +123,12 @@ def cleveland_dot_chart(
     #
 
     check_listview(obj)
+
+    if metric_label is None:
+        metric_label = obj.metric_.replace("_", " ").upper()
+
+    if field_label is None:
+        field_label = obj.field_.replace("_", " ").upper()
 
     chart = BasicChart()
     chart.plot_ = create_plot()

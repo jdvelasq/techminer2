@@ -2,13 +2,13 @@
 ===============================================================================
 
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__most_global_cited_authors.html"
 
 >>> from techminer2 import bibliometrix
 >>> r = bibliometrix.authors.most_global_cited_authors(
-...     directory=directory,
-...     topics_length=20,
+...     root_dir=root_dir,
+...     top_n=20,
 ... )
 >>> r.plot_.write_html(file_name)
 
@@ -58,7 +58,8 @@ Analyze the table below, which provides bibliographic indicators for a collectio
 
 
 """
-from ..utils import bbx_indicators_by_item
+from ...vantagepoint.analyze import list_view
+from ..utils import bbx_generic_indicators_by_item
 
 
 def most_global_cited_authors(
@@ -79,7 +80,8 @@ def most_global_cited_authors(
 ):
     """Most global cited authors."""
 
-    return bbx_indicators_by_item(
+    return bbx_generic_indicators_by_item(
+        fnc_view=list_view,
         field="authors",
         metric="global_citations",
         plot=plot,

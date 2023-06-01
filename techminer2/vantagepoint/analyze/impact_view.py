@@ -64,7 +64,7 @@ from ...classes import ListView
 from ...item_utils import generate_custom_items
 from ...sort_utils import sort_indicators_by_metric
 from ...techminer.indicators import impact_indicators_by_item
-from ...utils import check_integer, check_integer_range
+from ...utils import check_impact_metric, check_integer, check_integer_range
 
 
 # pylint: disable=too-many-arguments
@@ -114,9 +114,10 @@ def impact_view(
             f"\n\n{table.to_markdown()}\n\n"
         )
 
-    check_integer(top_n)
-    check_integer_range(occ_range)
+    check_impact_metric(metric)
     check_integer_range(gc_range)
+    check_integer_range(occ_range)
+    check_integer(top_n)
 
     indicators = impact_indicators_by_item(
         field=field,

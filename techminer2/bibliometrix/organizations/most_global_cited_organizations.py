@@ -58,7 +58,8 @@ Analyze the table below, which provides bibliographic indicators for a collectio
 
 
 """
-from ..utils import bbx_indicators_by_item
+from ...vantagepoint.analyze import list_view
+from ..utils import bbx_generic_indicators_by_item
 
 
 def most_global_cited_organizations(
@@ -79,7 +80,8 @@ def most_global_cited_organizations(
 ):
     """Most global cited organizations."""
 
-    return bbx_indicators_by_item(
+    return bbx_generic_indicators_by_item(
+        fnc_view=list_view,
         field="organizations",
         metric="global_citations",
         plot=plot,

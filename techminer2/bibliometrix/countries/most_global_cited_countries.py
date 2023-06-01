@@ -57,7 +57,8 @@ Analyze the table below, which provides bibliographic indicators for a collectio
 
 
 """
-from ..utils import bbx_indicators_by_item
+from ...vantagepoint.analyze import list_view
+from ..utils import bbx_generic_indicators_by_item
 
 
 def most_global_cited_countries(
@@ -78,7 +79,8 @@ def most_global_cited_countries(
 ):
     """Most global cited countries."""
 
-    return bbx_indicators_by_item(
+    return bbx_generic_indicators_by_item(
+        fnc_view=list_view,
         field="countries",
         metric="global_citations",
         plot=plot,

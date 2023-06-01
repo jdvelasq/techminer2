@@ -34,7 +34,7 @@ Example
 
 # pylint: disable=line-too-long
 """
-from ..utils import item_impact
+# from ..utils import bbx_impact_by_item
 
 
 # pylint: disable=too-many-arguments
@@ -62,15 +62,15 @@ def author_impact(
     if title is None:
         "Author Local Impact by " + impact_measure.replace("_", " ").title()
 
-    obj = item_impact(
+    obj = bbx_impact_by_item(
         field="authors",
-        impact_measure=impact_measure,
+        metric=impact_measure,
         root_dir=root_dir,
         database=database,
         # Plot options:
         plot=plot,
         title=title,
-        impact_measure_label=impact_measure_label,
+        metric_label=impact_measure_label,
         field_label=field_label,
         # Item filters:
         top_n=top_n,

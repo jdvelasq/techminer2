@@ -65,7 +65,8 @@ Analyze the table below, which provides bibliometric indicators for the field 'a
 
 # pylint: disable=line-too-long
 """
-from ..utils import bbx_indicators_by_item
+from ...vantagepoint.analyze import list_view
+from ..utils import bbx_generic_indicators_by_item
 
 
 # pylint: disable=too-many-arguments
@@ -110,7 +111,8 @@ def most_frequent_authors(
     # pylint: disable=line-too-long
     """
 
-    return bbx_indicators_by_item(
+    return bbx_generic_indicators_by_item(
+        fnc_view=list_view,
         field="authors",
         root_dir=root_dir,
         database=database,
