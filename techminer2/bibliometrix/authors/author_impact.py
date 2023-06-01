@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 Author Impact
 ===============================================================================
@@ -91,6 +92,9 @@ def author_impact(
     **filters,
 ):
     """Plots the selected impact measure by author."""
+
+    if title is None:
+        title = f"Author Impact by {metric.replace('_', ' ').title()}"
 
     return bbx_generic_indicators_by_item(
         fnc_view=impact_view,

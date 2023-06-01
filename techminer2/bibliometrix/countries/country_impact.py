@@ -1,19 +1,23 @@
+# flake8: noqa
 """
-Country Impact
+Country Impact (*)
 ===============================================================================
 
 
 
+Example
+-------------------------------------------------------------------------------
 
->>> directory = "data/regtech/"
+
+>>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__country_impact.html"
 
 
 >>> from techminer2 import bibliometrix
 >>> r = bibliometrix.countries.country_impact(
-...     impact_measure='h_index',
-...     topics_length=20,
-...     directory=directory,
+...     metric='h_index',
+...     top_n=20,
+...     root_dir=root_dir,
 ... )
 >>> r.plot_.write_html(file_name)
 
@@ -23,18 +27,20 @@ Country Impact
 
 
 >>> print(r.table_.head().to_markdown())
-| countries      |   OCC |   Global Citations |   First Pb Year |   Age |   H-Index |   G-Index |   M-Index |   Global Citations Per Year |   Avg Global Citations |
-|:---------------|------:|-------------------:|----------------:|------:|----------:|----------:|----------:|----------------------------:|-----------------------:|
-| Australia      |     7 |                199 |            2017 |     7 |         4 |         3 |      0.57 |                       28.43 |                  28.43 |
-| United Kingdom |     7 |                199 |            2018 |     6 |         4 |         3 |      0.67 |                       33.17 |                  28.43 |
-| Hong Kong      |     3 |                185 |            2017 |     7 |         3 |         3 |      0.43 |                       26.43 |                  61.67 |
-| United States  |     6 |                 59 |            2016 |     8 |         3 |         2 |      0.38 |                        7.38 |                   9.83 |
-| Ireland        |     5 |                 55 |            2018 |     6 |         3 |         2 |      0.5  |                        9.17 |                  11    |
+| countries      |   h_index |
+|:---------------|----------:|
+| Australia      |         4 |
+| United Kingdom |         4 |
+| Hong Kong      |         3 |
+| United States  |         3 |
+| Ireland        |         3 |
+
+
 
 >>> print(r.prompt_)
-The table below provides data on top 20 countries with the highest H-Index. 'OCC' represents the number of documents published by the country in the dataset. Use the information in the table to draw conclusions about the impact and productivity of the country. In your analysis, be sure to describe in a clear and concise way, any findings or any patterns you observe, and identify any outliers or anomalies in the data. Limit your description to one paragraph with no more than 250 words.
+Analyze the table below, which provides impact indicators for the field 'countries' in a scientific bibliography database. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
-| countries            |   OCC |   Global Citations |   First Pb Year |   Age |   H-Index |   G-Index |   M-Index |   Global Citations Per Year |   Avg Global Citations |
+| countries            |   OCC |   global_citations |   first_pb_year |   age |   h_index |   g_index |   m_index |   global_citations_per_year |   avg_global_citations |
 |:---------------------|------:|-------------------:|----------------:|------:|----------:|----------:|----------:|----------------------------:|-----------------------:|
 | Australia            |     7 |                199 |            2017 |     7 |         4 |         3 |      0.57 |                       28.43 |                  28.43 |
 | United Kingdom       |     7 |                199 |            2018 |     6 |         4 |         3 |      0.67 |                       33.17 |                  28.43 |
@@ -57,61 +63,59 @@ The table below provides data on top 20 countries with the highest H-Index. 'OCC
 | Malaysia             |     1 |                  3 |            2019 |     5 |         1 |         1 |      0.2  |                        0.6  |                   3    |
 | India                |     1 |                  1 |            2020 |     4 |         1 |         1 |      0.25 |                        0.25 |                   1    |
 <BLANKLINE>
+<BLANKLINE>
 
 
+
+# pylint: disable=line-too-long
 """
-# from ..criterion_impact import criterion_impact
+from ...vantagepoint.analyze import impact_view
+from ..utils import bbx_generic_indicators_by_item
 
 
+# pylint: disable=too-many-arguments
 def country_impact(
-    impact_measure="h_index",
-    topics_length=20,
-    topic_min_occ=None,
-    topic_max_occ=None,
-    topic_min_citations=None,
-    topic_max_citations=None,
-    custom_topics=None,
-    directory="./",
+    metric="h_index",
+    root_dir="./",
     database="documents",
-    start_year=None,
-    end_year=None,
+    # Plot options:
+    plot="cleveland_dot_chart",
+    title=None,
+    metric_label=None,
+    field_label=None,
+    # Item filters:
+    top_n=20,
+    occ_range=None,
+    gc_range=None,
+    custom_items=None,
+    # Database filters:
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
     """Plots the selected impact measure by country."""
 
-    obj = criterion_impact(
-        criterion="countries",
-        metric=impact_measure,
-        topics_length=topics_length,
-        topic_min_occ=topic_min_occ,
-        topic_max_occ=topic_max_occ,
-        topic_min_citations=topic_min_citations,
-        topic_max_citations=topic_max_citations,
-        custom_topics=custom_topics,
-        directory=directory,
-        title="Country Local Impact by "
-        + impact_measure.replace("_", " ").title(),
+    if title is None:
+        title = f"Country Impact by {metric.replace('_', ' ').title()}"
+
+    return bbx_generic_indicators_by_item(
+        fnc_view=impact_view,
+        field="countries",
+        root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        metric=metric,
+        # Plot options:
+        plot=plot,
+        metric_label=metric_label,
+        field_label=field_label,
+        title=title,
+        # Item filters:
+        top_n=top_n,
+        occ_range=occ_range,
+        gc_range=gc_range,
+        custom_items=custom_items,
+        # Database filters:
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
-
-    obj.prompt_ = _create_prompt(obj.table_, impact_measure)
-
-    return obj
-
-
-def _create_prompt(table, impact_measure):
-    return f"""\
-The table below provides data on top {table.shape[0]} countries with the \
-highest {impact_measure.replace("_", "-").title()}. 'OCC' represents the \
-number of documents published by the country in the dataset. Use the \
-information in the table to draw conclusions about the impact and \
-productivity of the country. In your analysis, be sure to describe in a clear \
-and concise way, any findings or any patterns you observe, and identify any \
-outliers or anomalies in the data. Limit your description to one paragraph \
-with no more than 250 words.
-
-{table.to_markdown()}
-"""

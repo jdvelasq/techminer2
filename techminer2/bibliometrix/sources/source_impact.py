@@ -1,16 +1,21 @@
+# flake8: noqa
 """
 Source Impact
 ===============================================================================
 
 
->>> directory = "data/regtech/"
+
+Example
+-------------------------------------------------------------------------------
+
+>>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__source_impact.html"
 
 >>> from techminer2 import bibliometrix
 >>> r = bibliometrix.sources.source_impact(
-...     impact_measure='h_index',
-...     topics_length=20, 
-...     directory=directory,
+...     metric='h_index',
+...     top_n=20, 
+...     root_dir=root_dir,
 ... )
 >>> r.plot_.write_html(file_name)
 
@@ -20,19 +25,19 @@ Source Impact
 
 
 >>> print(r.table_.head().to_markdown())
-| source_abbr                   |   OCC |   Global Citations |   First Pb Year |   Age |   H-Index |   G-Index |   M-Index |   Global Citations Per Year |   Avg Global Citations |
-|:------------------------------|------:|-------------------:|----------------:|------:|----------:|----------:|----------:|----------------------------:|-----------------------:|
-| J BANK REGUL                  |     2 |                 35 |            2020 |     4 |         2 |         2 |      0.5  |                        8.75 |                   17.5 |
-| J FINANC CRIME                |     2 |                 13 |            2020 |     4 |         2 |         1 |      0.5  |                        3.25 |                    6.5 |
-| J ECON BUS                    |     1 |                153 |            2018 |     6 |         1 |         1 |      0.17 |                       25.5  |                  153   |
-| NORTHWEST J INTL LAW BUS      |     1 |                150 |            2017 |     7 |         1 |         1 |      0.14 |                       21.43 |                  150   |
-| PALGRAVE STUD DIGIT BUS ENABL |     1 |                 33 |            2019 |     5 |         1 |         1 |      0.2  |                        6.6  |                   33   |
+| source_abbr                   |   h_index |
+|:------------------------------|----------:|
+| J BANK REGUL                  |         2 |
+| J FINANC CRIME                |         2 |
+| J ECON BUS                    |         1 |
+| NORTHWEST J INTL LAW BUS      |         1 |
+| PALGRAVE STUD DIGIT BUS ENABL |         1 |
 
 
 >>> print(r.prompt_)
-The table below provides data on top 20 sources with the highest H-Index. 'OCC' represents the number of documents published by the source in the dataset. Use the information in the table to draw conclusions about the impact and productivity of the document source. In your analysis, be sure to describe in a clear and concise way, any findings or any patterns you observe, and identify any outliers or anomalies in the data. Limit your description to one paragraph with no more than 250 words.
+Analyze the table below, which provides impact indicators for the field 'source_abbr' in a scientific bibliography database. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
-| source_abbr                   |   OCC |   Global Citations |   First Pb Year |   Age |   H-Index |   G-Index |   M-Index |   Global Citations Per Year |   Avg Global Citations |
+| source_abbr                   |   OCC |   global_citations |   first_pb_year |   age |   h_index |   g_index |   m_index |   global_citations_per_year |   avg_global_citations |
 |:------------------------------|------:|-------------------:|----------------:|------:|----------:|----------:|----------:|----------------------------:|-----------------------:|
 | J BANK REGUL                  |     2 |                 35 |            2020 |     4 |         2 |         2 |      0.5  |                        8.75 |                   17.5 |
 | J FINANC CRIME                |     2 |                 13 |            2020 |     4 |         2 |         1 |      0.5  |                        3.25 |                    6.5 |
@@ -56,64 +61,58 @@ The table below provides data on top 20 sources with the highest H-Index. 'OCC' 
 | EUR J RISK REGUL              |     1 |                  3 |            2022 |     2 |         1 |         1 |      0.5  |                        1.5  |                    3   |
 <BLANKLINE>
 <BLANKLINE>
-<BLANKLINE>
 
 
+
+# pylint: disable=line-too-long
 """
-# from ..criterion_impact import criterion_impact
+from ...vantagepoint.analyze import impact_view
+from ..utils import bbx_generic_indicators_by_item
 
 
+# pylint: disable=too-many-arguments
 def source_impact(
-    impact_measure="h_index",
-    topics_length=20,
-    topic_min_occ=None,
-    topic_max_occ=None,
-    topic_min_citations=None,
-    topic_max_citations=None,
-    custom_topics=None,
-    directory="./",
+    metric="h_index",
+    root_dir="./",
     database="documents",
-    start_year=None,
-    end_year=None,
+    # Plot options:
+    plot="cleveland_dot_chart",
+    title=None,
+    metric_label=None,
+    field_label=None,
+    # Item filters:
+    top_n=20,
+    occ_range=None,
+    gc_range=None,
+    custom_items=None,
+    # Database filters:
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
     """Plots the selected impact measure by source."""
 
-    obj = criterion_impact(
-        criterion="source_abbr",
-        metric=impact_measure,
-        topics_length=topics_length,
-        topic_min_occ=topic_min_occ,
-        topic_max_occ=topic_max_occ,
-        topic_min_citations=topic_min_citations,
-        topic_max_citations=topic_max_citations,
-        custom_topics=custom_topics,
-        directory=directory,
-        title="Source Local Impact by "
-        + impact_measure.replace("_", " ").title(),
+    if title is None:
+        title = f"Source Impact by {metric.replace('_', ' ').title()}"
+
+    return bbx_generic_indicators_by_item(
+        fnc_view=impact_view,
+        field="source_abbr",
+        root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        metric=metric,
+        # Plot options:
+        plot=plot,
+        metric_label=metric_label,
+        field_label=field_label,
+        title=title,
+        # Item filters:
+        top_n=top_n,
+        occ_range=occ_range,
+        gc_range=gc_range,
+        custom_items=custom_items,
+        # Database filters:
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
-
-    obj.prompt_ = _create_prompt(obj.table_, impact_measure)
-
-    return obj
-
-
-def _create_prompt(table, impact_measure):
-    return f"""\
-The table \
-below provides data on top {table.shape[0]} sources with the highest \
-{impact_measure.replace("_", "-").title()}. 'OCC' represents the number of \
-documents published by the source in the dataset. Use the information in the \
-table to draw conclusions about the impact and productivity of the document \
-source. In your analysis, be sure to describe in a clear and concise way, any \
-findings or any patterns you observe, and identify any outliers or anomalies in \
-the data. Limit your description to one paragraph with no more than 250 words.
-
-{table.to_markdown()}
-
-
-"""
