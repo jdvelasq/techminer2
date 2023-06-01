@@ -164,7 +164,7 @@ def terms_by_year(
     # Main:
     #
 
-    descriptors_by_year = techminer.indicators.topics_occ_by_year(
+    descriptors_by_year = techminer.indicators.items_occ_by_year(
         criterion=criterion,
         root_dir=root_dir,
         cumulative=cumulative,

@@ -72,8 +72,8 @@ Analyze the table below which contains the  occurrences by year for the source_a
 
 """
 from ... import vantagepoint
-from ...techminer.indicators.indicators_by_topic_per_year import (
-    indicators_by_topic_per_year,
+from ...techminer.indicators.indicators_by_item_per_year import (
+    indicators_by_item_per_year,
 )
 from ..documents_per_criterion import documents_per_criterion
 
@@ -124,12 +124,12 @@ def sources_production_over_time(
         **filters,
     )
 
-    chart.production_per_year_ = indicators_by_topic_per_year(
-        criterion="source_abbr",
+    chart.production_per_year_ = indicators_by_item_per_year(
+        field="source_abbr",
         root_dir=directory,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=start_year,
+        cited_by_filter=end_year,
         **filters,
     )
 

@@ -131,8 +131,8 @@ import plotly.express as px
 from ..techminer.indicators.growth_indicators_by_topic import (
     growth_indicators_by_topic,
 )
-from ..techminer.indicators.indicators_by_topic_per_year import (
-    indicators_by_topic_per_year,
+from ..techminer.indicators.indicators_by_item_per_year import (
+    indicators_by_item_per_year,
 )
 from .bar import _filter_indicators_by_custom_topics
 
@@ -199,11 +199,11 @@ def time_line(
     selected_topics = growth_indicators.index.to_list()
 
     ## data to plot
-    indicators = indicators_by_topic_per_year(
+    indicators = indicators_by_item_per_year(
         root_dir=directory,
-        criterion=criterion,
-        start_year=start_year,
-        end_year=end_year,
+        field=criterion,
+        year_filter=start_year,
+        cited_by_filter=end_year,
         **filters,
     )
 

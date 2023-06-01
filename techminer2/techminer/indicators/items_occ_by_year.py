@@ -1,17 +1,18 @@
+# flake8: noqa
 """
-Topics Occurrence by Year 
+Items Occurrence by Year 
 ===============================================================================
 
-Computes the annual occurrence matrix of a given criterion.
+Computes the annual occurrence matrix for the items in a given field.
 
 
-Examples
---------
+Example
+-------------------------------------------------------------------------------
 
 >>> root_dir = "data/regtech/"
 
 >>> from techminer2  import techminer
->>> techminer.indicators.topics_occ_by_year(
+>>> techminer.indicators.items_occ_by_year(
 ...     'authors',  root_dir=root_dir
 ... ).head(10)
 year               2016  2017  2018  2019  2020  2021  2022  2023
@@ -27,14 +28,15 @@ Battanta L            0     0     0     0     1     0     0     0
 Baxter LG             1     0     0     0     0     0     0     0
 Becker M              0     0     0     0     1     0     0     0
 
-# noqa: W291
+
 """
 
-from ...utils import load_utils
-from .indicators_by_topic_per_year import indicators_by_topic_per_year
+from ...utils import load_stopwords
+from .indicators_by_item_per_year import indicators_by_item_per_year
 
 
-def topics_occ_by_year(
+# pylint: disable=too-many-arguments
+def items_occ_by_year(
     criterion,
     root_dir="./",
     cumulative=False,
@@ -61,12 +63,12 @@ def topics_occ_by_year(
 
     """
 
-    indicators_by_year = indicators_by_topic_per_year(
-        criterion=criterion,
+    indicators_by_year = indicators_by_item_per_year(
+        field=criterion,
         root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=start_year,
+        cited_by_filter=end_year,
         **filters,
     )
 
@@ -81,7 +83,7 @@ def topics_occ_by_year(
     indicators_by_year = indicators_by_year.fillna(0)
     indicators_by_year = indicators_by_year.astype(int)
 
-    stopwords = load_utils.load_stopwords(root_dir=root_dir)
+    stopwords = load_stopwords(root_dir=root_dir)
     indicators_by_year = indicators_by_year.drop(stopwords, axis=0)
 
     if cumulative:

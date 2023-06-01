@@ -42,11 +42,25 @@ def indicators_by_item(
     field,
     root_dir="./",
     database="documents",
+    # Database filters:
     year_filter=None,
     cited_by_filter=None,
     **filters,
 ):
-    """column indicators"""
+    """Bibliometric column indicators.
+
+    Args:
+        field (str): column name to be used as criterion.
+        root_dir (str): root directory.
+        database (str): database name.
+        year_filter (tuple, optional): Year database filter. Defaults to None.
+        cited_by_filter (tuple, optional): Cited by database filter. Defaults to None.
+        **filters (dict, optional): Filters to be applied to the database. Defaults to {}.
+
+    Returns:
+        pandas.DataFrame: a dataframe containing the indicators.
+
+    """
 
     def select_columns(records, criterion):
         return records[[criterion, "global_citations", "local_citations"]]

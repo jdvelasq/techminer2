@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 Trend Topics
 ===============================================================================
@@ -78,7 +79,7 @@ import numpy as np
 import plotly.graph_objects as go
 
 from ...techminer.indicators.indicators_by_item import indicators_by_item
-from ...techminer.indicators.topics_occ_by_year import topics_occ_by_year
+from ...techminer.indicators.items_occ_by_year import items_occ_by_year
 
 
 @dataclass(init=False)
@@ -99,7 +100,7 @@ def trend_topics(
 ):
     """Trend topics"""
 
-    words_by_year = topics_occ_by_year(
+    words_by_year = items_occ_by_year(
         criterion=criterion,
         min_occ=1,
         root_dir=directory,

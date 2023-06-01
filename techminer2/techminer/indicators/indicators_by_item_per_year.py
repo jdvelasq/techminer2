@@ -1,5 +1,5 @@
 """
-Indicators by Topic per Year 
+Indicators by Item per Year 
 ===============================================================================
 
 Examples
@@ -8,7 +8,7 @@ Examples
 >>> root_dir = "data/regtech/"
 
 >>> from techminer2  import techminer
->>> techminer.indicators.indicators_by_topic_per_year(
+>>> techminer.indicators.indicators_by_item_per_year(
 ...     'authors',
 ...     root_dir=root_dir,
 ... ).head(20)
@@ -41,7 +41,7 @@ Buchkremer R      2020    1  ...                     0.750
 >>> from pprint import pprint
 >>> pprint(
 ...     sorted(
-...         techminer.indicators.indicators_by_topic_per_year(
+...         techminer.indicators.indicators_by_item_per_year(
 ...             'authors', root_dir=root_dir).columns.to_list()
 ...     )
 ... )
@@ -57,61 +57,62 @@ Buchkremer R      2020    1  ...                     0.750
 """
 import pandas as pd
 
-from ...utils import records
+from ...utils import read_records
 
 
 # pylint: disable=too-many-arguments
-def indicators_by_topic_per_year(
-    criterion="authors",
+def indicators_by_item_per_year(
+    field="authors",
     root_dir="./",
     database="documents",
     as_index=True,
-    start_year=None,
-    end_year=None,
+    # Database filters:
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
     """Computes bibliometric indicators by topic per year.
 
     Args:
-        criterion (str): column name to be used as criterion.
+        field (str): column name to be used as criterion.
         root_dir (str): root directory.
         database (str): database name.
         as_index (bool): if True, the criterion is used as index.
-        start_year (int): start year.
-        end_year (int): end year.
-        **filters: filters to be applied to the database.
+        year_filter (tuple, optional): Year database filter. Defaults to None.
+        cited_by_filter (tuple, optional): Cited by database filter. Defaults to None.
+        **filters (dict, optional): Filters to be applied to the database. Defaults to {}.
 
     Returns:
         pandas.DataFrame: a dataframe containing the indicators.
 
     """
 
-    indicators = records.read_records(
+    indicators = read_records(
         root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 
     indicators = indicators.assign(OCC=1)
-    indicators[criterion] = indicators[criterion].str.split(";")
-    indicators = indicators.explode(criterion)
-    indicators[criterion] = indicators[criterion].str.strip()
+    indicators[field] = indicators[field].str.split(";")
+    indicators = indicators.explode(field)
+    indicators[field] = indicators[field].str.strip()
     indicators = indicators.reset_index(drop=True)
     indicators = indicators[
-        [criterion, "OCC", "global_citations", "local_citations", "year"]
+        [field, "OCC", "global_citations", "local_citations", "year"]
     ].copy()
     indicators = indicators.dropna()
     max_pub_year = indicators.year.max()
     indicators = (
-        indicators.groupby([criterion, "year"], as_index=False)
+        indicators.groupby([field, "year"], as_index=False)
         .sum()
-        .sort_values(by=["year", criterion], ascending=True)
+        .sort_values(by=["year", field], ascending=True)
     )
-    indicators = indicators.sort_values([criterion, "year"], ascending=True)
+    indicators = indicators.sort_values([field, "year"], ascending=True)
 
-    indicators["cum_OCC"] = indicators.groupby([criterion]).OCC.cumsum()
+    indicators["cum_OCC"] = indicators.groupby([field]).OCC.cumsum()
 
     indicators.insert(3, "cum_OCC", indicators.pop("cum_OCC"))
 
@@ -138,7 +139,7 @@ def indicators_by_topic_per_year(
     indicators["local_citations"] = indicators.local_citations.astype(int)
     # indicators = indicators.dropna()
 
-    indicators = indicators.sort_values(by=[criterion, "year"], ascending=True)
+    indicators = indicators.sort_values(by=[field, "year"], ascending=True)
 
     if as_index is False:
         return indicators
@@ -147,12 +148,12 @@ def indicators_by_topic_per_year(
     #     (name, year)
     #     for name, year in zip(indicators[criterion], indicators.year)
     # ]
-    index = list(zip(indicators[criterion], indicators.year))
+    index = list(zip(indicators[field], indicators.year))
 
-    index = pd.MultiIndex.from_tuples(index, names=[criterion, "year"])
+    index = pd.MultiIndex.from_tuples(index, names=[field, "year"])
     indicators.index = index
 
-    indicators.pop(criterion)
+    indicators.pop(field)
     indicators.pop("year")
 
     return indicators

@@ -8,8 +8,8 @@ import pandas as pd
 import plotly.express as px
 
 from ..techminer.indicators.indicators_by_item import indicators_by_item
-from ..techminer.indicators.indicators_by_topic_per_year import (
-    indicators_by_topic_per_year,
+from ..techminer.indicators.indicators_by_item_per_year import (
+    indicators_by_item_per_year,
 )
 
 TEXTLEN = 40
@@ -36,12 +36,12 @@ def _dynamics(
 ):
     """Bibliometrix generic dynamics plot."""
 
-    indicators = indicators_by_topic_per_year(
+    indicators = indicators_by_item_per_year(
         root_dir=directory,
-        criterion=criterion,
+        field=criterion,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=start_year,
+        cited_by_filter=end_year,
         **filters,
     )
 
