@@ -1,7 +1,12 @@
+# flake8: noqa
 """
 Most Global Cited Countries
 ===============================================================================
 
+
+
+Example
+-------------------------------------------------------------------------------
 
 >>> directory = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__most_global_cited_countries.html"
@@ -55,47 +60,76 @@ Analyze the table below, which provides bibliographic indicators for a collectio
 <BLANKLINE>
 <BLANKLINE>
 
-
+# pylint: disable=line-too-long
 """
 from ...vantagepoint.analyze import list_view
 from ..utils import bbx_generic_indicators_by_item
 
 
+# pylint: disable=too-many-arguments
 def most_global_cited_countries(
-    plot="cleveland_chart",
-    x_label=None,
-    y_label=None,
-    directory="./",
-    topics_length=20,
-    topic_min_occ=None,
-    topic_max_occ=None,
-    topic_min_citations=None,
-    topic_max_citations=None,
-    custom_topics=None,
+    root_dir="./",
     database="documents",
-    start_year=None,
-    end_year=None,
+    # Plot options:
+    plot="cleveland_dot_chart",
+    metric_label=None,
+    field_label=None,
+    title=None,
+    # Item filters:
+    top_n=20,
+    occ_range=None,
+    gc_range=None,
+    custom_items=None,
+    # Database filters:
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
-    """Most global cited countries."""
+    """Most global cited countries.
+
+    Args:
+        root_dir (str): path to the database directory.
+        database (str): name of the database.
+        plot (str): plot type. Options: 'bar_chart', 'cleveland_dot_chart', 'column_chart', 'line_chart'.
+        metric_label (str): metric label.
+        field_label (str): field label.
+        title (str): plot title.
+        top_n (int): number of items to be plotted.
+        occ_range (tuple): range of occurrences.
+        gc_range (tuple): range of global citations.
+        custom_items (list): list of items to be plotted.
+        year_filter (tuple): range of years.
+        cited_by_filter (tuple): range of citations.
+        **filters (dict, optional): Filters to be applied to the database. Defaults to {}.
+
+    Returns:
+        BasicChart: A basic chart object.
+
+    # pylint: disable=line-too-long
+
+    """
+
+    if title is None:
+        title = "Most Global Cited Countries"
 
     return bbx_generic_indicators_by_item(
         fnc_view=list_view,
-        field="countries",
-        metric="global_citations",
-        plot=plot,
-        x_label=x_label,
-        y_label=y_label,
-        title="Most Global Cited Countries",
-        root_dir=directory,
-        top_n=topics_length,
-        occ_range=topic_min_occ,
-        topic_max_occ=topic_max_occ,
-        gc_range=topic_min_citations,
-        topic_max_citations=topic_max_citations,
-        custom_items=custom_topics,
+        field="authors",
+        root_dir=root_dir,
         database=database,
-        year_filter=start_year,
-        cited_by_filter=end_year,
+        metric="global_citations",
+        # Plot options:
+        plot=plot,
+        metric_label=metric_label,
+        field_label=field_label,
+        title=title,
+        # Item filters:
+        top_n=top_n,
+        occ_range=occ_range,
+        gc_range=gc_range,
+        custom_items=custom_items,
+        # Database filters:
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
