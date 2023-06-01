@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 Singular Value Decomposition --- ChatGPT
 ===============================================================================
@@ -5,24 +6,18 @@ Singular Value Decomposition --- ChatGPT
 Plots the SVD of the normalized co-occurrence matrix. The plot is based on the 
 SVD technique used in T-LAB's comparative analysis.
 
-**Algorithm**
-
-1. Computes the normalized co-occurrence matrix.
-
-2. Apply SVD to the co-occurrence matrix with `n_components=20`.
-
-3. Plot the decomposed matrix.
 
 
->>> # working directory
 >>> root_dir = "data/regtech/"
+>>> # ------------------------- Algorithm -------------------------
 >>> # computes the co-occurrence matrix
 >>> from techminer2 import vantagepoint
 >>> co_occ_matrix = vantagepoint.analyze.co_occ_matrix(
-...     criterion='author_keywords',
-...     topics_length=20,
+...     columns='author_keywords',
+...     col_top_n=20,
 ...     root_dir=root_dir,
 ... )
+>>> # normalizes the co-occurrence matrix
 >>> norm_co_occ_matrix = vantagepoint.analyze.association_index(
 ...     co_occ_matrix, "association"
 ... )
@@ -53,6 +48,7 @@ regulation 05:164              5.894711  -0.250128  ... -0.060850  0.002620
 <BLANKLINE>
 [5 rows x 19 columns]
 
+# pylint: disable=line-too-long
 """
 
 
