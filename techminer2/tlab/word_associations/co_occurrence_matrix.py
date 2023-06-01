@@ -13,17 +13,15 @@ It can be obtained directly using functions in the **VantagePoint** module as
 is explained in the following example.
 
 
-* Step 1: Import the VantagePoint module.
 
->>> from techminer2 import vantagepoint
+
+
 >>> root_dir = "data/regtech/"
-
-
-* Step 2: Create a co-occurrence matrix
-
+>>> # Create a co-occurrence matrix
+>>> from techminer2 import vantagepoint
 >>> co_occ_matrix = vantagepoint.analyze.co_occ_matrix(
-...    criterion='author_keywords',
-...    topic_occ_min=3,
+...    columns='author_keywords',
+...    col_occ_range=(3, None),
 ...    root_dir=root_dir,
 ... )
 >>> co_occ_matrix.matrix_
