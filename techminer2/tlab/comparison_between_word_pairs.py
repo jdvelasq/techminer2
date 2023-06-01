@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 Compararison between word pairs
 ===============================================================================
@@ -5,15 +6,13 @@ Compararison between word pairs
 
 
 >>> root_dir = "data/regtech/"
-
 >>> from techminer2 import tlab
 >>> cwp = tlab.comparison_between_word_pairs(
-...     criterion="author_keywords",
-...     topic_a="artificial intelligence",
-...     topic_b="regtech",
+...     field="author_keywords",
+...     item_a="artificial intelligence",
+...     item_b="regtech",
 ...     root_dir=root_dir,
 ... )
-
 >>> file_name = "sphinx/_static/tlab__co_occurrence_analysis__comparison_between_word_pairs_bar_chart-1.html"
 >>> cwp.plot_.write_html(file_name)
 
@@ -38,10 +37,10 @@ Compararison between word pairs
 
 >>> from techminer2 import tlab
 >>> cwp = tlab.comparison_between_word_pairs(
-...     criterion="author_keywords",
-...     topic_a="artificial intelligence",
-...     topic_b="regtech",
-...     custom_topics=[
+...     field="author_keywords",
+...     item_a="artificial intelligence",
+...     item_b="regtech",
+...     custom_items=[
 ...         "fintech",
 ...         "blockchain",
 ...         "machine learning",
@@ -69,7 +68,7 @@ Compararison between word pairs
 7  artificial intelligence & regtech  machine learning 01:003    0
 8                            regtech  machine learning 01:003    1
 
-
+# pylint: disable=line-too-long
 """
 
 
@@ -85,31 +84,31 @@ from ..utils.records import read_records
 
 
 def comparison_between_word_pairs(
-    criterion,
-    topic_a,
-    topic_b,
-    topics_length=20,
-    topic_occ_min=None,
-    topic_occ_max=None,
-    topic_citations_min=None,
-    topic_citations_max=None,
-    custom_topics=None,
+    field,
+    item_a,
+    item_b,
+    # Item filters:
+    top_n=20,
+    occ_range=None,
+    gc_range=None,
+    custom_items=None,
+    # Database params:
     root_dir="./",
     database="documents",
-    start_year=None,
-    end_year=None,
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
     """Comparison between topics."""
 
     matrix_list = _create_comparison_matrix_list(
-        topic_a=topic_a,
-        topic_b=topic_b,
-        criterion=criterion,
+        item_a=item_a,
+        item_b=item_b,
+        field=field,
         root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 
@@ -120,28 +119,26 @@ def comparison_between_word_pairs(
 
     matrix_list = _select_topics(
         matrix_list=matrix_list,
-        topic_occ_min=topic_occ_min,
-        topic_occ_max=topic_occ_max,
-        topic_citations_min=topic_citations_min,
-        topic_citations_max=topic_citations_max,
-        topics_length=topics_length,
-        custom_topics=custom_topics,
-        criterion=criterion,
-        directory=root_dir,
+        occ_range=occ_range,
+        gc_range=gc_range,
+        top_n=top_n,
+        custom_items=custom_items,
+        field=field,
+        root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 
     matrix_list = add_counters_to_column_values(
-        criterion=criterion,
+        criterion=field,
         name="column",
         root_dir=root_dir,
         database=database,
         table=matrix_list,
-        start_year=start_year,
-        end_year=end_year,
+        start_year=year_filter,
+        end_year=cited_by_filter,
         **filters,
     )
 
@@ -150,7 +147,7 @@ def comparison_between_word_pairs(
 
     wordcomparison = WordComparison()
     wordcomparison.table_ = matrix_list
-    wordcomparison.plot_ = _create_bart_chart(matrix_list, topic_a, topic_b)
+    wordcomparison.plot_ = _create_bart_chart(matrix_list, item_a, item_b)
 
     return wordcomparison
 
@@ -194,41 +191,37 @@ def _create_bart_chart(matrix_list, topic_a, topic_b):
 
 def _select_topics(
     matrix_list,
-    topic_occ_min,
-    topic_occ_max,
-    topic_citations_min,
-    topic_citations_max,
-    topics_length,
-    custom_topics,
-    criterion,
-    directory,
+    occ_range,
+    gc_range,
+    top_n,
+    custom_items,
+    field,
+    root_dir,
     database,
-    start_year,
-    end_year,
+    year_filter,
+    cited_by_filter,
     **filters,
 ):
     indicators = indicators_by_item(
-        field=criterion,
-        root_dir=directory,
+        field=field,
+        root_dir=root_dir,
         database=database,
-        year_filter=start_year,
-        cited_by_filter=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 
     indicators = sort_indicators_by_metric(indicators, metric="OCC")
 
-    if custom_topics is None:
-        custom_topics = generate_custom_items(
+    if custom_items is None:
+        custom_items = generate_custom_items(
             indicators=indicators,
-            top_n=topics_length,
-            occ_range=topic_occ_min,
-            topic_occ_max=topic_occ_max,
-            gc_range=topic_citations_min,
-            topic_citations_max=topic_citations_max,
+            top_n=top_n,
+            occ_range=occ_range,
+            gc_range=gc_range,
         )
 
-    matrix_list = matrix_list.loc[matrix_list.column.isin(custom_topics), :]
+    matrix_list = matrix_list.loc[matrix_list.column.isin(custom_items), :]
 
     return matrix_list
 
@@ -240,27 +233,27 @@ def _remove_stopwords(directory, matrix_list):
 
 
 def _create_comparison_matrix_list(
-    topic_a,
-    topic_b,
-    criterion,
+    item_a,
+    item_b,
+    field,
     root_dir,
     database,
-    start_year,
-    end_year,
+    year_filter,
+    cited_by_filter,
     **filters,
 ):
     records = read_records(
         root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 
-    matrix_list = records[[criterion]].copy()
+    matrix_list = records[[field]].copy()
     matrix_list = matrix_list.dropna()
-    matrix_list = matrix_list.rename(columns={criterion: "column"})
-    matrix_list = matrix_list.assign(row=records[[criterion]])
+    matrix_list = matrix_list.rename(columns={field: "column"})
+    matrix_list = matrix_list.assign(row=records[[field]])
 
     # Explode 'row' for topic_a and topic_b
     matrix_list["row"] = matrix_list["row"].str.split(";")
@@ -269,12 +262,12 @@ def _create_comparison_matrix_list(
     )
     matrix_list = matrix_list[
         matrix_list["row"].map(
-            lambda x: any([y in [topic_a, topic_b] for y in x])
+            lambda x: any([y in [item_a, item_b] for y in x])
         )
     ]
 
     matrix_list["row"] = matrix_list["row"].map(
-        lambda x: sorted([y for y in x if y in [topic_a, topic_b]])
+        lambda x: sorted([y for y in x if y in [item_a, item_b]])
     )
     matrix_list["row"] = matrix_list["row"].str.join(" & ")
     matrix_list = matrix_list.explode("row")
@@ -285,7 +278,7 @@ def _create_comparison_matrix_list(
     matrix_list = matrix_list.explode("column")
     matrix_list["column"] = matrix_list["column"].str.strip()
     matrix_list = matrix_list[
-        matrix_list["column"].map(lambda x: x not in [topic_a, topic_b])
+        matrix_list["column"].map(lambda x: x not in [item_a, item_b])
     ]
 
     # count
@@ -296,8 +289,8 @@ def _create_comparison_matrix_list(
 
     matrix = matrix_list.pivot(index="row", columns="column", values="OCC")
     matrix = matrix.fillna(0)
-    if " & ".join([topic_a, topic_b]) not in matrix.index.to_list():
-        matrix.loc[" & ".join(sorted([topic_a, topic_b]))] = 0
+    if " & ".join([item_a, item_b]) not in matrix.index.to_list():
+        matrix.loc[" & ".join(sorted([item_a, item_b]))] = 0
 
     matrix_list = matrix.melt(
         value_name="OCC", var_name="column", ignore_index=False
