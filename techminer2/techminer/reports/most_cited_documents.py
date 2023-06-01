@@ -23,10 +23,11 @@ from .abstracts_report import abstracts_report
 
 
 def most_cited_documents(
-    root_dir="./",
     file_name="most_cited_documents.txt",
-    start_year=None,
-    end_year=None,
+    root_dir="./",
+    # Database filters:
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
     """Generates a report with records ordered by global and local citations.
@@ -44,13 +45,13 @@ def most_cited_documents(
 
     """
     return abstracts_report(
-        criterion=None,
+        field=None,
         custom_topics=None,
         file_name=file_name,
         use_textwrap=True,
         root_dir=root_dir,
         database="documents",
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )

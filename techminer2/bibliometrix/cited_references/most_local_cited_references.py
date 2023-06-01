@@ -1,15 +1,20 @@
+# flake8: noqa
 """
 Most Local Cited References
 ===============================================================================
 
 
->>> directory = "data/regtech/"
+Example
+-------------------------------------------------------------------------------
+
+
+>>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__most_local_cited_references.html"
 
 >>> from techminer2 import bibliometrix
 >>> r = bibliometrix.cited_references.most_local_cited_references(
-...     topics_length=20,
-...     directory=directory,
+...     top_n=20,
+...     root_dir=root_dir,
 ... )
 --INFO-- The file 'data/regtech/reports/most_local_cited_references.txt' was created
 
@@ -29,29 +34,29 @@ Most Local Cited References
 | Kavassalis P, 2018, J RISK FINANC, V19, P39          |                 21 |                 8 |                       4.2   |                      1.6   | 10.1108/JRF-07-2017-0111       |
 | Yang D, 2018, EMERG MARK FINANC TRADE, V54, P3256    |                 32 |                 8 |                       6.4   |                      1.6   | 10.1080/1540496X.2018.1496422  |
 
-
+# pylint: disable=line-too-long
 """
 from ..cited_documents import bibiometrix_cited_documents
 
 
 def most_local_cited_references(
-    directory="./",
-    topics_length=20,
+    root_dir="./",
+    top_n=20,
     title="Most Local Cited References",
-    start_year=None,
-    end_year=None,
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
     """Plots the most local cited references."""
 
     return bibiometrix_cited_documents(
         metric="local_citations",
-        directory=directory,
+        root_dir=root_dir,
         database="references",
-        top_n=topics_length,
+        top_n=top_n,
         title=title,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         file_name="most_local_cited_references.txt",
         **filters,
     )

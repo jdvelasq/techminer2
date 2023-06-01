@@ -4,13 +4,13 @@ Trend Topics
 ===============================================================================
 
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__trend_topics.html"
 
 >>> from techminer2 import bibliometrix
 >>> bibliometrix.words.trend_topics(
 ...     'author_keywords',
-...     directory=directory, 
+...     root_dir=root_dir, 
 ... ).table_.head(20)
 year                             OCC  year_q1  ...  global_citations  rn
 author_keywords                                ...                      
@@ -43,7 +43,7 @@ anti-money laundering              3     2020  ...                21   2
 
 >>> bibliometrix.words.trend_topics(
 ...     'author_keywords', 
-...     directory=directory,
+...     root_dir=root_dir,
 ... ).plot_.write_html(file_name)
 
 .. raw:: html
@@ -61,7 +61,7 @@ anti-money laundering              3     2020  ...                21   2
 ...         "suptech",
 ...         "artificial intelligence",
 ...     ], 
-...     directory=directory, 
+...     root_dir=root_dir, 
 ... ).table_.head(10)
 year                     OCC  year_q1  year_med  year_q3  global_citations  rn
 author_keywords                                                               
@@ -71,42 +71,37 @@ artificial intelligence    4     2020      2020     2020                23   1
 regulatory technology      7     2020      2021     2022                37   0
 suptech                    3     2020      2022     2022                 4   0
 
-
+# pylint: disable=line-too-long
 """
-from dataclasses import dataclass
-
 import numpy as np
 import plotly.graph_objects as go
 
+from ...classes import BasicChart
 from ...techminer.indicators.indicators_by_item import indicators_by_item
 from ...techminer.indicators.items_occ_by_year import items_occ_by_year
 
 
-@dataclass(init=False)
-class _Results:
-    plot_: None
-    table_: None
-
-
 def trend_topics(
-    criterion,
+    field,
+    root_dir="./",
+    database="documents",
+    # Parameters:
     n_words_per_year=5,
     custom_topics=None,
-    directory="./",
-    database="documents",
-    start_year=None,
-    end_year=None,
+    # Database filters:
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
     """Trend topics"""
 
     words_by_year = items_occ_by_year(
-        field=criterion,
-        min_occ=1,
-        root_dir=directory,
+        field=field,
+        # min_occ=1,
+        root_dir=root_dir,
         database=database,
-        year_filter=start_year,
-        cited_by_filter=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 
@@ -138,7 +133,7 @@ def trend_topics(
     words_by_year = words_by_year[["OCC", "year_q1", "year_med", "year_q3"]]
 
     global_citations = indicators_by_item(
-        criterion, root_dir=directory
+        field, root_dir=root_dir
     ).global_citations
 
     word2citation = dict(zip(global_citations.index, global_citations.values))
@@ -157,7 +152,7 @@ def trend_topics(
 
     words_by_year = words_by_year.query(f"rn < {n_words_per_year}")
 
-    results = _Results()
+    results = BasicChart()
     results.table_ = words_by_year
 
     min_occ = words_by_year.OCC.min()

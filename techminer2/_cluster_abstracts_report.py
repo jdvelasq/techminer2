@@ -36,14 +36,14 @@ def cluster_abstracts_report(
         )
 
         abstracts_report(
-            criterion=criterion,
+            field=criterion,
             custom_topics=community,
             file_name=file_name,
             # n_abstracts=n_abstracts,
             use_textwrap=True,
             root_dir=directory,
             database=database,
-            start_year=start_year,
-            end_year=end_year,
+            year_filter=start_year,
+            cited_by_filter=end_year,
             **filters,
         )

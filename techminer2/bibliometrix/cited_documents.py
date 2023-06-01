@@ -1,3 +1,6 @@
+"""Most cited cited documents.
+
+"""
 import os
 import sys
 import textwrap
@@ -8,7 +11,7 @@ import plotly.express as px
 from ..techminer.indicators.indicators_by_document import (
     indicators_by_document,
 )
-from ..utils.records import read_records
+from ..utils import read_records
 
 
 @dataclass(init=False)
@@ -20,13 +23,14 @@ class _Results:
 
 def bibiometrix_cited_documents(
     metric,
-    directory="./",
+    root_dir="./",
     database="documents",
     top_n=20,
     title=None,
     file_name=None,
-    start_year=None,
-    end_year=None,
+    # Database filters:
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
     """Most cited documents."""
@@ -34,23 +38,23 @@ def bibiometrix_cited_documents(
     results = _Results()
 
     results.table_ = indicators_by_document(
-        root_dir=directory,
+        root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     ).sort_values(by=metric, ascending=False)
 
     top_n_documents = _get_top_n_documents(
         metric,
-        directory=directory,
+        root_dir=root_dir,
         top_n=top_n,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 
-    _write_report(top_n_documents, directory, file_name)
+    _write_report(top_n_documents, root_dir, file_name)
 
     results.prompts_ = _get_prompts(top_n_documents)
 
@@ -87,27 +91,27 @@ def _prepare_indicators(metric, top_n, indicators):
 
 def _get_top_n_documents(
     metric,
-    directory="./",
+    root_dir="./",
     top_n=20,
-    start_year=None,
-    end_year=None,
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
     indicators = indicators_by_document(
-        root_dir=directory,
+        root_dir=root_dir,
         database="documents",
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
     indicators = indicators.sort_values(by=metric, ascending=False)
     indicators = indicators.head(top_n)
 
     records = read_records(
-        root_dir=directory,
+        root_dir=root_dir,
         database="documents",
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 

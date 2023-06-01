@@ -1,16 +1,20 @@
+# flake8: noqa
 """
 Most Global Cited References
 ===============================================================================
 
 
+Example
+-------------------------------------------------------------------------------
 
->>> directory = "data/regtech/"
+
+>>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__most_global_cited_references.html"
 
 >>> from techminer2 import bibliometrix
 >>> r = bibliometrix.cited_references.most_global_cited_references(
-...     topics_length=20,
-...     directory=directory,
+...     top_n=20,
+...     root_dir=root_dir,
 ... )
 --INFO-- The file 'data/regtech/reports/most_global_cited_references.txt' was created
 
@@ -32,29 +36,29 @@ Most Global Cited References
 | Pan SJ, 2010, IEEE TRANS KNOWL DATA ENG, V22, P1345 |              12506 |                 1 |                     962     |                      0.077 | 10.1109/TKDE.2009.191              |
 
 
-
+# pylint: disable=line-too-long
 """
 from ..cited_documents import bibiometrix_cited_documents
 
 
 def most_global_cited_references(
-    directory="./",
-    topics_length=20,
+    root_dir="./",
+    top_n=20,
     title="Most Global Cited References",
-    start_year=None,
-    end_year=None,
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
     """Plots the most global cited references."""
 
     return bibiometrix_cited_documents(
         metric="global_citations",
-        directory=directory,
+        root_dir=root_dir,
         database="references",
-        top_n=topics_length,
+        top_n=top_n,
         title=title,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         file_name="most_global_cited_references.txt",
         **filters,
     )

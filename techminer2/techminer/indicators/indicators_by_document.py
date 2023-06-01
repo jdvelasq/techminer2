@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 Indicators by Document 
 ===============================================================================
@@ -29,26 +30,26 @@ Baxter LG, 2016, DUKE LAW J, V66, P567                            30  ...       
  'doi']
 
 # pylint: disable=line-too-long
-# noqa: W291 E501
 """
 
-from ...utils import records
+from ...utils import read_records
 
 
 def indicators_by_document(
     root_dir="./",
     database="documents",
-    start_year=None,
-    end_year=None,
+    # Database filters:
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
     """Document indicators"""
 
-    records = records.read_records(
+    records = read_records(
         root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 

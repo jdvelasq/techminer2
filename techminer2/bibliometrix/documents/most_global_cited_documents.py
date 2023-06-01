@@ -3,13 +3,13 @@ Most Global Cited Documents
 ===============================================================================
 
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__most_global_cited_documents.html"
 
 >>> from techminer2 import bibliometrix
 >>> r = bibliometrix.documents.most_global_cited_documents(
 ...     top_n=20,
-...     directory=directory,
+...     root_dir=root_dir,
 ... )
 --INFO-- The file 'data/regtech/reports/most_global_cited_documents.txt' was created
 
@@ -43,11 +43,12 @@ from ..cited_documents import bibiometrix_cited_documents
 
 
 def most_global_cited_documents(
-    directory="./",
+    root_dir="./",
     top_n=20,
     title="Most Global Cited Documents",
-    start_year=None,
-    end_year=None,
+    # Database filters:
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
     """Plots the most global cited documents in the main collection."""
@@ -55,11 +56,12 @@ def most_global_cited_documents(
     return bibiometrix_cited_documents(
         metric="global_citations",
         file_name="most_global_cited_documents.txt",
-        directory=directory,
+        root_dir=root_dir,
         database="documents",
         top_n=top_n,
         title=title,
-        start_year=start_year,
-        end_year=end_year,
+        # Database filters:
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )

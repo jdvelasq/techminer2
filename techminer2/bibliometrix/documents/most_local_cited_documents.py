@@ -55,12 +55,12 @@ def most_local_cited_documents(
 
     return bibiometrix_cited_documents(
         metric="local_citations",
-        directory=directory,
+        root_dir=directory,
         file_name="most_local_cited_documents.txt",
         database="documents",
         top_n=topics_length,
         title=title,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=start_year,
+        cited_by_filter=end_year,
         **filters,
     )

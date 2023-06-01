@@ -20,19 +20,22 @@ import textwrap
 
 import pandas as pd
 
-from ...utils import records
+from ...utils import read_records
 
 
 # pylint: disable=too-many-arguments
 def abstracts_report(
-    criterion=None,
+    # Specific parameters:
     custom_topics=None,
     file_name="abstracts_report.txt",
     use_textwrap=True,
+    # Database parameters:
+    field=None,
     root_dir="./",
     database="documents",
-    start_year=None,
-    end_year=None,
+    # Database filters:
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
     """
@@ -54,20 +57,20 @@ def abstracts_report(
 
     """
 
-    records = records.read_records(
+    records = read_records(
         root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 
-    if criterion:
-        records = _sort_by_custom_terms(criterion, custom_topics, records)
+    if field:
+        records = _sort_by_custom_terms(field, custom_topics, records)
     else:
         records = _sort_by_default_criteria(records)
 
-    _write_report(criterion, file_name, use_textwrap, root_dir, records)
+    _write_report(field, file_name, use_textwrap, root_dir, records)
 
 
 def _sort_by_custom_terms(criterion, custom_topics, records):
@@ -142,6 +145,7 @@ def _sort_by_custom_terms(criterion, custom_topics, records):
 
 
 def _sort_by_default_criteria(records):
+    records = records.copy()
     records = records.sort_values(
         by=["global_citations", "local_citations"],
         ascending=[False, False],
