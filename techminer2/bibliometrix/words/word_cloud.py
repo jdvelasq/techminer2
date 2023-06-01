@@ -1,68 +1,71 @@
+# flake8: noqa
 """
 WordCloud
 ===============================================================================
 
 
->>> directory = "data/regtech/"
->>> file_name = "sphinx/images/bibliometrix__word_cloud.png"
+>>> root_dir = "data/regtech/"
+>>> file_name = "sphinx/_static/bibliometrix__word_cloud.html"
 
 
 >>> from techminer2 import bibliometrix
 >>> chart = bibliometrix.words.word_cloud(
-...     criterion='author_keywords',
+...     field='author_keywords',
 ...     title="Author Keywords",
-...     topics_length=50,
-...     directory=directory,
+...     top_n=50,
+...     root_dir=root_dir,
 ... )
->>> chart.plot_.savefig(file_name)
+>>> chart.plot_.write_html(file_name)
 
-.. image:: ../../../images/bibliometrix__word_cloud.png
-    :width: 900px
-    :align: center
+.. raw:: html
+
+    <iframe src="../../../_static/bibliometrix__word_cloud.html" 
+    height="400px" width="100%" frameBorder="0"></iframe>
+
 
 """
-from ... import vantagepoint
+from ...vantagepoint.analyze import list_view
+from ...vantagepoint.report import word_cloud as vp_word_cloud
 
 
 def word_cloud(
-    criterion,
-    topics_length=250,
-    topic_min_occ=None,
-    topic_max_occ=None,
-    topic_min_citations=None,
-    topic_max_citations=None,
-    custom_topics=None,
-    directory="./",
-    metric="OCC",
-    title=None,
+    field,
+    root_dir="./",
     database="documents",
-    #
+    metric="OCC",
+    # Plot options:
+    title=None,
     figsize=(12, 12),
-    #
-    start_year=None,
-    end_year=None,
+    # Item filters:
+    top_n=250,
+    occ_range=None,
+    gc_range=None,
+    custom_items=None,
+    # Database filters:
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
     """Plots a word cloud from a dataframe."""
 
-    topics = vantagepoint.analyze.list_view(
-        field=criterion,
-        top_n=topics_length,
-        occ_range=topic_min_occ,
-        topic_occ_max=topic_max_occ,
-        gc_range=topic_min_citations,
-        topic_citations_max=topic_max_citations,
-        items=custom_topics,
-        root_dir=directory,
-        metric=metric,
+    obj = list_view(
+        field=field,
+        root_dir=root_dir,
         database=database,
-        year_filter=start_year,
-        cited_by_filter=end_year,
+        metric=metric,
+        # Item filters:
+        top_n=top_n,
+        occ_range=occ_range,
+        gc_range=gc_range,
+        custom_items=custom_items,
+        # Database filters:
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 
-    return vantagepoint.report.word_cloud(
-        topics,
+    return vp_word_cloud(
+        obj,
         title=title,
         figsize=figsize,
     )

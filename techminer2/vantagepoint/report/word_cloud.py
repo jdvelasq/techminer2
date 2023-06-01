@@ -10,7 +10,7 @@ Example
 -------------------------------------------------------------------------------
 
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/vantagepoint__word_cloud.html"
+>>> file_name = "sphinx/images/vantagepoint__word_cloud.png"
 
 >>> from techminer2 import vantagepoint
 >>> obj = vantagepoint.analyze.list_view(
@@ -18,11 +18,12 @@ Example
 ...     root_dir=root_dir,
 ... )
 >>> chart = vantagepoint.report.word_cloud(obj, title="Most Frequent Author Keywords")
->>> chart.plot_.write_html(file_name)
+>>> chart.plot_.savefig(file_name)
 
 .. image:: ../../images/vantagepoint__word_cloud.png
     :width: 900px
     :align: center
+
 
 >>> chart.table_.head()
 author_keywords
@@ -57,12 +58,12 @@ Analyze the table below, which provides bibliometric indicators for the field 'a
 # pylint: disable=line-too-long
 """
 
-import matplotlib.pyplot as plt
+
 import numpy as np
-import plotly.tools as tls
+from matplotlib.figure import Figure
 from wordcloud import WordCloud
 
-from ...classes import BasicChart
+from ...classes import WordCloudChart
 
 
 def word_cloud(
@@ -94,14 +95,16 @@ def word_cloud(
         wordcloud.generate_from_frequencies(text)
         wordcloud.recolor(color_func=_recolor)
 
-        plt.Figure(figsize=figsize)
-        plt.imshow(wordcloud, interpolation="bilinear")
-        plt.axis("off")
-        if title is not None:
-            plt.title(title)
-        plt.tight_layout(pad=0)
+        fig = Figure(figsize=figsize)
+        ax_ = fig.add_subplot(111)
+        ax_.imshow(wordcloud, interpolation="bilinear")
 
-        fig = tls.mpl_to_plotly(plt.gcf())
+        ax_.axis("off")
+
+        if title is not None:
+            ax_.set_title(title)
+
+        fig.tight_layout(pad=0)
 
         return fig
 
@@ -113,7 +116,7 @@ def word_cloud(
     # Main code:
     #
 
-    chart = BasicChart()
+    chart = WordCloudChart()
     chart.plot_ = create_plot()
     chart.table_ = obj.table_[obj.metric_]
     chart.prompt_ = obj.prompt_

@@ -10,9 +10,26 @@ for returning results.
 
 from dataclasses import dataclass
 
+import matplotlib.figure
 import networkx as nx
 import pandas as pd
 import plotly.graph_objs as go
+
+
+@dataclass(init=False)
+class WordCloudChart:
+    """WordCloud.
+
+    Attributes:
+        plot_ (matplotlib): Plotly figure.
+        prompt_ (str): Prompt.
+        table_ (pd.DataFrame): Table.
+
+    """
+
+    plot_: matplotlib.figure.Figure
+    prompt_: str
+    table_: pd.DataFrame
 
 
 @dataclass(init=False)

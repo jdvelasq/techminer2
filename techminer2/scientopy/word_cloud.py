@@ -4,7 +4,7 @@ Word Cloud
 ===============================================================================
 
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 
 
 **Basic Usage.**
