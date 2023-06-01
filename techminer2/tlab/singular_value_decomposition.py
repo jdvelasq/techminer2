@@ -70,7 +70,6 @@ def singular_value_decomposition(
     dim_y=1,
     # Technique parameters
     is_2d=False,
-    normalization="mutualinfo",
     # SVD parameters
     algorithm="randomized",
     n_iter=5,

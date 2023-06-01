@@ -52,8 +52,6 @@ from ..singular_value_decomposition import singular_value_decomposition
 # pylint: disable=too-many-arguments
 def svd_map(
     obj,
-    # Technique parameters
-    normalization=None,
     # SVD parameters
     algorithm="randomized",
     n_iter=5,
@@ -77,7 +75,6 @@ def svd_map(
         dim_y=1,
         # Technique parameters
         is_2d=True,
-        normalization=normalization,
         # SVD parameters
         algorithm=algorithm,
         n_iter=n_iter,

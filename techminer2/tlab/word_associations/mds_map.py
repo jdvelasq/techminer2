@@ -6,23 +6,15 @@
 Plots the 2D-MDS of the normalized co-occurrence. The plot is based on the
 MDS technique used in T-LAB's words associations.
 
-**Algorithm**
-
-1. Computes the co-occurrence matrix.
-
-2. Apply MDS to the co-occurrence matrix with `n_components=2`.
-
-3. Plot the decomposed matrix.
 
 
-
->>> # working directory
 >>> root_dir = "data/regtech/"
+>>> # ------------------------- Algorithm -------------------------
 >>> # computes the co-occurrence matrix
 >>> from techminer2 import vantagepoint
 >>> co_occ_matrix = vantagepoint.analyze.co_occ_matrix(
-...     criterion='author_keywords',
-...     topics_length=20,
+...     columns='author_keywords',
+...     col_top_n=20,
 ...     root_dir=root_dir,
 ... )
 >>> # normalizes the co-occurrence matrix
@@ -50,15 +42,15 @@ regulatory technology 07:037  0.497866  -2.003591
 compliance 07:030            -3.872383   3.112019
 regulation 05:164            -3.220647  -0.800004
 
+# pylint: disable=line-too-long
 """
 
 from ..multidimensional_scaling import multidimensional_scaling
 
 
+# pylint: disable=too-many-arguments
 def mds_map(
     obj,
-    # Technique parameters
-    normalization=None,
     # MDS parameters
     metric=True,
     n_init=4,
