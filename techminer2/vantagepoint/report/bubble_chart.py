@@ -10,8 +10,8 @@ Bubble Chart
 
 >>> from techminer2 import vantagepoint
 >>> matrix = vantagepoint.analyze.co_occ_matrix(
-...    criterion='author_keywords',
-...    topic_occ_min=4,
+...    columns='author_keywords',
+...    col_occ_range=(4, None),
 ...    root_dir=root_dir,
 ... )
 
@@ -47,16 +47,9 @@ Analyze the table below which contains values of co-occurrence (OCC) for the 'au
 <BLANKLINE>
 
 """
-from dataclasses import dataclass
-
 import plotly.express as px
 
-
-@dataclass(init=False)
-class _Chart:
-    plot_: None
-    table_: None
-    prompt_: None
+from ...classes import BasicChart
 
 
 def bubble_chart(
@@ -119,7 +112,7 @@ def bubble_chart(
         autorange="reversed",
     )
 
-    result = _Chart()
+    result = BasicChart()
     result.plot_ = fig
     result.table_ = matrix
     result.prompt_ = obj.prompt_
