@@ -4,6 +4,29 @@
 from ..classes import ListView
 
 
+def check_keywords(param):
+    """Check if param is a valid bibliometric metric."""
+
+    valid_fields = [
+        "raw_author_keywords",
+        "raw_index_keywords",
+        "raw_title_words",
+        "raw_abstract_words",
+        "raw_words",
+        "author_keywords",
+        "index_keywords",
+        "title_words",
+        "abstract_words",
+        "words",
+    ]
+
+    if param not in valid_fields:
+        raise ValueError(
+            f"Invalid field. Must be one of {', '.join(valid_fields)}."
+        )
+    return param
+
+
 def check_integer(param, nullable=True):
     """Check if param is integer."""
     if param is None and nullable:

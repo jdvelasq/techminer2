@@ -5,6 +5,7 @@ from .check_params import (
     check_impact_metric,
     check_integer,
     check_integer_range,
+    check_keywords,
     check_listview,
 )
 from .load_utils import load_stopwords
@@ -16,6 +17,7 @@ __all__ = [
     "check_integer_range",
     "check_integer",
     "check_listview",
+    "check_keywords",
     "create_records_report",
     "load_stopwords",
     "read_records",

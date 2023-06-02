@@ -102,8 +102,8 @@ def thematic_map(
     """Thematic map network analysis"""
 
     return co_occurrence_network(
-        criterion=criterion,
-        topics_length=topics_length,
+        field=criterion,
+        top_n=topics_length,
         topic_min_occ=topic_min_occ,
         normalization="association",
         # summarize=summarize,
@@ -111,13 +111,13 @@ def thematic_map(
         n_keywords=n_keywords,
         # n_abstracts=n_abstracts,
         # n_phrases_per_algorithm=n_phrases_per_algorithm,
-        method=method,
+        community_clustering=method,
         nx_k=nx_k,
         nx_iterations=nx_iterations,
         delta=delta,
-        directory=directory,
+        root_dir=directory,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_range=start_year,
+        cited_by_range=end_year,
         **filters,
     )
