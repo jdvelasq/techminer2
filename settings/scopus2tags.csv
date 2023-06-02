@@ -1,0 +1,11 @@
+scopus,techminer
+Abbreviated Source Title,source_abbr
+Author Keywords,raw_author_keywords
+Author(s) ID,authors_id
+Authors,raw_authors
+Cited by,global_citations
+Index Keywords,raw_index_keywords
+References,global_references
+Source title,source_title
+Title,title
+Year,year
