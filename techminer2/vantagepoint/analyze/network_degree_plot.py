@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 Network Deegre Plot
 ===============================================================================
@@ -33,26 +34,26 @@ Network Deegre Plot
 >>> print(chart.prompt_)
 Analyze the table below, which provides the degree of nodes in a networkx graph of a co-ocurrence matrix. Identify any notable patterns, trends, or outliers in the data, and discuss their implications in the network.
 <BLANKLINE>
-|    | Name                           |   Degree |   Node |
-|---:|:-------------------------------|---------:|-------:|
-|  0 | regtech 28:329                 |       12 |      0 |
-|  1 | fintech 12:249                 |       11 |      1 |
-|  2 | regulatory technology 07:037   |        9 |      2 |
-|  3 | regulation 05:164              |        9 |      3 |
-|  4 | compliance 07:030              |        8 |      4 |
-|  5 | artificial intelligence 04:023 |        7 |      5 |
-|  6 | risk management 03:014         |        7 |      6 |
-|  7 | suptech 03:004                 |        6 |      7 |
-|  8 | blockchain 03:005              |        5 |      8 |
-|  9 | innovation 03:012              |        5 |      9 |
-| 10 | financial regulation 04:035    |        4 |     10 |
-| 11 | financial services 04:168      |        4 |     11 |
-| 12 | anti-money laundering 03:021   |        3 |     12 |
+|    |   Node | Name                           |   Degree |
+|---:|-------:|:-------------------------------|---------:|
+|  0 |      0 | regtech 28:329                 |       12 |
+|  1 |      1 | fintech 12:249                 |       11 |
+|  2 |      2 | regulatory technology 07:037   |        9 |
+|  3 |      3 | regulation 05:164              |        9 |
+|  4 |      4 | compliance 07:030              |        8 |
+|  5 |      5 | artificial intelligence 04:023 |        7 |
+|  6 |      6 | risk management 03:014         |        7 |
+|  7 |      7 | suptech 03:004                 |        6 |
+|  8 |      8 | innovation 03:012              |        5 |
+|  9 |      9 | blockchain 03:005              |        5 |
+| 10 |     10 | financial services 04:168      |        4 |
+| 11 |     11 | financial regulation 04:035    |        4 |
+| 12 |     12 | anti-money laundering 03:021   |        3 |
 <BLANKLINE>
 <BLANKLINE>
 
 
-
+# pylint: disable=line-too-long
 """
 
 import pandas as pd
@@ -163,6 +164,7 @@ def network_degree_plot(
     graph = compute_node_degree(graph)
     degrees = collect_degrees(graph)
     dataframe = to_dataframe(degrees)
+    dataframe = dataframe[["Node", "Name", "Degree"]]
     fig = plot(dataframe, textfont_size, yshift)
 
     obj = NetworkDegreePlot()
