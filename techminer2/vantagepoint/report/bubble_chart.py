@@ -46,6 +46,8 @@ Analyze the table below which contains values of co-occurrence (OCC) for the 'au
 <BLANKLINE>
 <BLANKLINE>
 
+
+# pylint: disable=line-too-long
 """
 import plotly.express as px
 
