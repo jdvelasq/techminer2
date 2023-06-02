@@ -95,7 +95,7 @@ def co_occurrence_network(
     method="louvain",
     # report:
     directory_for_results="co-occurrence_network/",
-    #
+    # Results params:
     network_viewer_dict=None,
     network_degree_plot_dict=None,
     # Database params:
@@ -132,17 +132,15 @@ def co_occurrence_network(
     norm_coc_matrix = association_index(coc_matrix, index_name=normalization)
     graph = cluster_field(norm_coc_matrix, community_clustering=method)
 
-    coc_keywords_network = CoWordsNetwork()
-    coc_keywords_network.degree_plot_ = network_degree_plot(
+    network = CoWordsNetwork()
+    network.degree_plot_ = network_degree_plot(
         graph=graph, **network_degree_plot_dict
     )
 
-    coc_keywords_network.communities_ = cluster_items(graph=graph)
-    coc_keywords_network.metrics_ = network_metrics(graph=graph)
+    network.communities_ = cluster_items(graph=graph)
+    network.metrics_ = network_metrics(graph=graph)
 
-    coc_keywords_network.plot_ = network_viewer(
-        graph=graph, **network_viewer_dict
-    )
+    network.plot_ = network_viewer(graph=graph, **network_viewer_dict)
 
     ###
 
@@ -190,4 +188,4 @@ def co_occurrence_network(
     #     **filters,
     # )
 
-    return coc_keywords_network
+    return network

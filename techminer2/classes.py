@@ -416,7 +416,18 @@ class CoWordsNetwork:
 # Intellectual Structure / Co-citation Network
 # Intellectual Structure / Historiograph
 
+
 # Social Structure / Collaboration Network
+@dataclass(init=False)
+class CollaborationNetwork:
+    """Collaboration Network."""
+
+    degree_plot_: NetworkDegreePlot
+    communities_: pd.DataFrame
+    metrics_: NetworkStatistics
+    plot_: go.Figure
+
+
 # Social Structure / Collaboration World Map
 
 

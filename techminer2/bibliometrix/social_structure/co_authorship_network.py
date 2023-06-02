@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 Co-authorship (collaboration) Network
 ===============================================================================
@@ -17,17 +18,15 @@ Co-authorship (collaboration) Network
 
 
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 
 >>> from techminer2 import bibliometrix
 >>> nnet = bibliometrix.social_structure.co_authorship_network(
-...     criterion="authors",
-...     topics_length=20,
-...     directory=directory,
+...     field="authors",
+...     top_n=20,
+...     root_dir=root_dir,
 ...     method="louvain",
-...     nx_k=0.5,
-...     nx_iterations=10,
-...     delta=1.0,    
+...     network_viewer_dict={'nx_k': 0.5, 'nx_iterations': 10},
 ... )
 
 
@@ -39,75 +38,70 @@ Co-authorship (collaboration) Network
     <iframe src="../../../../_static/bibliometrix__co_authorship_network_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> nnet.communities_.head()
-               CL_00            CL_01  ...            CL_07           CL_08
-0     Arner DW 3:185  Brennan R 2:014  ...  Baxter LG 1:030  Arman AA 2:000
-1   Buckley RP 3:185    Crane M 2:014  ...                                 
-2  Barberis JN 2:161     Ryan P 2:014  ...                                 
-3     Weber RH 1:024                   ...                                 
-4  Zetzsche DA 1:024                   ...                                 
+               CL_00           CL_01  ...          CL_04               CL_05
+0     Arner DW 3:185  Hamdan A 2:018  ...    Lin W 2:017      Grassi L 2:002
+1   Buckley RP 3:185   Turki M 2:018  ...  Singh C 2:017  Lanfranchi D 2:002
+2  Barberis JN 2:161   Sarea A 2:012  ...                                   
+3     Weber RH 1:024                  ...                                   
+4  Zetzsche DA 1:024                  ...                                   
 <BLANKLINE>
-[5 rows x 9 columns]
-
+[5 rows x 6 columns]
 
 >>> file_name = "sphinx/_static/bibliometrix__co_authorship_network_degree_plot.html"
->>> nnet.degree_plot_.write_html(file_name)
+>>> nnet.degree_plot_.plot_.write_html(file_name)
 
 .. raw:: html
 
     <iframe src="../../../../_static/bibliometrix__co_authorship_network_degree_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
->>> nnet.indicators_.head()
-                         group  betweenness  closeness  pagerank
-Anagnostopoulos I 1:153      6          0.0   0.000000  0.008596
-Baxter LG 1:030              7          0.0   0.000000  0.008596
-OBrien L 1:033               3          0.0   0.052632  0.057307
-Weber RH 1:024               0          0.0   0.168421  0.068181
-Zetzsche DA 1:024            0          0.0   0.168421  0.068181
+>>> nnet.metrics_.table_.head()
+                   Degree  Betweenness  Closeness  PageRank
+Arner DW 3:185          4     0.008333   0.250000  0.072188
+Buckley RP 3:185        4     0.008333   0.250000  0.072188
+Weber RH 1:024          3     0.000000   0.200000  0.055120
+Zetzsche DA 1:024       3     0.000000   0.200000  0.055120
+Barberis JN 2:161       2     0.000000   0.166667  0.039502
 
+
+# pylint: disable=line-too-long
 """
-from dataclasses import dataclass
 
-# from ..._get_network_graph_communities import get_network_graph_communities
-from ..._get_network_graph_degree_plot import get_network_graph_degree_plot
-
-# from ..._get_network_graph_indicators import get_network_graph_indicators
-from ..._get_network_graph_plot import get_network_graph_plot
-from ..._matrix_2_matrix_list import matrix_2_matrix_list
-from ..._matrix_list_2_network_graph import matrix_list_2_network_graph
-from ...vantagepoint.analyze.association_index import association_index
-
-# from ..._network_community_detection import network_community_detection
-from ...vantagepoint.analyze.co_occ_matrix import co_occ_matrix
-
-
-@dataclass(init=False)
-class _Results:
-    communities_: None
-    indicators_: None
-    plot_: None
-    degree_plot_: None
+from ...classes import CollaborationNetwork
+from ...vantagepoint.analyze import (
+    association_index,
+    cluster_field,
+    cluster_items,
+    co_occ_matrix,
+    network_degree_plot,
+    network_metrics,
+    network_viewer,
+)
 
 
 def co_authorship_network(
-    criterion,
-    topics_length=None,
-    topic_min_occ=None,
-    topic_min_citations=None,
+    # 'co_occ_matrix' params:
+    field,
+    top_n=None,
+    occ_range=None,
+    gc_range=None,
+    custom_items=None,
+    # 'cluster_field' params:
     normalization="association",
     method="louvain",
-    nx_k=0.5,
-    nx_iterations=10,
-    delta=1.0,
-    directory="./",
+    # Results params:
+    network_viewer_dict=None,
+    network_degree_plot_dict=None,
+    # Database params:
+    root_dir="./",
     database="documents",
-    start_year=None,
-    end_year=None,
+    year_range=None,
+    cited_by_range=None,
     **filters,
 ):
     """Co-authorship network"""
 
-    if criterion not in [
+    if field not in [
         "authors",
         "organizations",
         "countries",
@@ -117,33 +111,38 @@ def co_authorship_network(
             "{'authors', 'organizations', 'countries'}"
         )
 
-    matrix = co_occ_matrix(
-        columns=criterion,
-        col_top_n=topics_length,
-        col_occ_range=topic_min_occ,
-        col_gc_range=topic_min_citations,
-        root_dir=directory,
+    if network_degree_plot_dict is None:
+        network_degree_plot_dict = {}
+
+    if network_viewer_dict is None:
+        network_viewer_dict = {}
+
+    coc_matrix = co_occ_matrix(
+        columns=field,
+        col_top_n=top_n,
+        col_occ_range=occ_range,
+        col_gc_range=gc_range,
+        col_custom_items=custom_items,
+        # Database params:
+        root_dir=root_dir,
         database=database,
-        year_filter=start_year,
-        cited_by_filter=end_year,
+        year_filter=year_range,
+        cited_by_filter=cited_by_range,
         **filters,
     )
 
-    matrix = association_index(matrix, association=normalization)
-    matrix_list = matrix_2_matrix_list(matrix)
+    norm_coc_matrix = association_index(coc_matrix, index_name=normalization)
+    graph = cluster_field(norm_coc_matrix, community_clustering=method)
 
-    graph = matrix_list_2_network_graph(matrix_list)
-    graph = network_community_detection(graph, method=method)
+    network = CollaborationNetwork()
 
-    results = _Results()
-    results.communities_ = get_network_graph_communities(graph)
-    results.indicators_ = get_network_graph_indicators(graph)
-    results.plot_ = get_network_graph_plot(
-        graph,
-        nx_k=nx_k,
-        nx_iterations=nx_iterations,
-        delta=delta,
+    network.degree_plot_ = network_degree_plot(
+        graph=graph, **network_degree_plot_dict
     )
-    results.degree_plot_ = get_network_graph_degree_plot(graph)
 
-    return results
+    network.communities_ = cluster_items(graph=graph)
+    network.metrics_ = network_metrics(graph=graph)
+
+    network.plot_ = network_viewer(graph=graph, **network_viewer_dict)
+
+    return network
