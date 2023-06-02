@@ -34,8 +34,8 @@ The following functions are available:
 
 from .association_index import association_index
 from .auto_corr_matrix import auto_corr_matrix
-from .cluster_criterion import cluster_criterion
-from .cluster_members import cluster_members
+from .cluster_field import cluster_field
+from .cluster_items import cluster_items
 from .cluster_records import cluster_records
 from .co_occ_matrix import co_occ_matrix
 from .corr_map import corr_map
@@ -58,8 +58,8 @@ from .tf_matrix import tf_matrix
 __all__ = [
     "association_index",
     "auto_corr_matrix",
-    "cluster_criterion",
-    "cluster_members",
+    "cluster_field",
+    "cluster_items",
     "cluster_records",
     "co_occ_matrix",
     "corr_map",

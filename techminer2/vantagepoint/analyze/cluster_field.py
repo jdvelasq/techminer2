@@ -1,6 +1,6 @@
 # flake8: noqa
 """
-Cluster Criterion --- ChatGPT
+Cluster Field --- ChatGPT
 ===============================================================================
 
 Example: Clustering using community detection algorithms.
@@ -9,19 +9,19 @@ Example: Clustering using community detection algorithms.
 >>> root_dir = "data/regtech/"
 >>> from techminer2 import vantagepoint
 >>> co_occ_matrix = vantagepoint.analyze.co_occ_matrix(
-...    criterion='author_keywords',
-...    topic_occ_min=2,
+...    columns='author_keywords',
+...    col_occ_range=(2, None),
 ...    root_dir=root_dir,
 ... )
 >>> normalized_co_occ_matrix = vantagepoint.analyze.association_index(
 ...     co_occ_matrix, "association"
 ... )
 
->>> graph = vantagepoint.analyze.cluster_criterion(
+>>> graph = vantagepoint.analyze.cluster_field(
 ...    normalized_co_occ_matrix,
 ...    community_clustering='label_propagation',
 ... )
->>> print(vantagepoint.analyze.cluster_members(graph).to_markdown())
+>>> print(vantagepoint.analyze.cluster_items(graph).to_markdown())
 |    | CL_00                              |
 |---:|:-----------------------------------|
 |  0 | regtech 28:329                     |
@@ -52,28 +52,29 @@ Example: Clustering using community detection algorithms.
 | 25 | reporting 02:001                   |
 
 
->>> graph = vantagepoint.analyze.cluster_criterion(
+>>> graph = vantagepoint.analyze.cluster_field(
 ...    normalized_co_occ_matrix,
 ...    community_clustering='louvain',
 ... )
->>> print(vantagepoint.analyze.cluster_members(graph).to_markdown())
-|    | CL_00                          | CL_01                       | CL_02                              | CL_03                          |
-|---:|:-------------------------------|:----------------------------|:-----------------------------------|:-------------------------------|
-|  0 | regtech 28:329                 | fintech 12:249              | regulatory technology 07:037       | artificial intelligence 04:023 |
-|  1 | compliance 07:030              | financial services 04:168   | regulation 05:164                  | anti-money laundering 03:021   |
-|  2 | blockchain 03:005              | financial regulation 04:035 | risk management 03:014             | charitytech 02:017             |
-|  3 | smart contracts 02:022         | innovation 03:012           | suptech 03:004                     | english law 02:017             |
-|  4 | accountability 02:014          | data protection 02:027      | semantic technologies 02:041       |                                |
-|  5 | data protection officer 02:014 | sandbox 02:012              | anti money laundering (aml) 02:013 |                                |
-|  6 | gdpr 02:014                    | finance 02:001              | reporting 02:001                   |                                |
-|  7 | technology 02:010              |                             |                                    |                                |
+>>> print(vantagepoint.analyze.cluster_items(graph).to_markdown())
+|    | CL_00                        | CL_01                          | CL_02                              | CL_03                          |
+|---:|:-----------------------------|:-------------------------------|:-----------------------------------|:-------------------------------|
+|  0 | fintech 12:249               | regtech 28:329                 | regulatory technology 07:037       | artificial intelligence 04:023 |
+|  1 | regulation 05:164            | compliance 07:030              | risk management 03:014             | anti-money laundering 03:021   |
+|  2 | financial services 04:168    | blockchain 03:005              | suptech 03:004                     | charitytech 02:017             |
+|  3 | financial regulation 04:035  | smart contracts 02:022         | anti money laundering (aml) 02:013 | english law 02:017             |
+|  4 | innovation 03:012            | accountability 02:014          | reporting 02:001                   |                                |
+|  5 | semantic technologies 02:041 | data protection officer 02:014 |                                    |                                |
+|  6 | data protection 02:027       | gdpr 02:014                    |                                    |                                |
+|  7 | sandbox 02:012               | technology 02:010              |                                    |                                |
+|  8 | finance 02:001               |                                |                                    |                                |
 
 
->>> graph = vantagepoint.analyze.cluster_criterion(
+>>> graph = vantagepoint.analyze.cluster_field(
 ...    normalized_co_occ_matrix,
 ...    community_clustering='walktrap',
 ... )
->>> print(vantagepoint.analyze.cluster_members(graph).to_markdown())
+>>> print(vantagepoint.analyze.cluster_items(graph).to_markdown())
 |    | CL_00                        | CL_01                       | CL_02                  | CL_03                          | CL_04                          | CL_05                              |
 |---:|:-----------------------------|:----------------------------|:-----------------------|:-------------------------------|:-------------------------------|:-----------------------------------|
 |  0 | fintech 12:249               | financial services 04:168   | regtech 28:329         | artificial intelligence 04:023 | accountability 02:014          | anti money laundering (aml) 02:013 |
@@ -92,17 +93,17 @@ Example: Clustering using sklearn algoritms.
 >>> root_dir = "data/regtech/"
 >>> from techminer2 import vantagepoint
 >>> co_occ_matrix = vantagepoint.analyze.co_occ_matrix(
-...    criterion='author_keywords',
-...    topic_occ_min=2,
+...    columns='author_keywords',
+...    col_occ_range=(2, None),
 ...    root_dir=root_dir,
 ... )
 >>> from sklearn.cluster import KMeans
 >>> kmeans = KMeans(n_clusters=4, random_state=1)
->>> graph = vantagepoint.analyze.cluster_criterion(
+>>> graph = vantagepoint.analyze.cluster_field(
 ...    co_occ_matrix,
 ...    sklearn_clustering=kmeans,
 ... )
->>> print(vantagepoint.analyze.cluster_members(graph).to_markdown())
+>>> print(vantagepoint.analyze.cluster_items(graph).to_markdown())
 |    | CL_00                        | CL_01                          | CL_02                          | CL_03                              |
 |---:|:-----------------------------|:-------------------------------|:-------------------------------|:-----------------------------------|
 |  0 | fintech 12:249               | regtech 28:329                 | artificial intelligence 04:023 | anti money laundering (aml) 02:013 |
@@ -127,7 +128,7 @@ from ... import network_utils
 from .list_cells_in_matrix import list_cells_in_matrix
 
 
-def cluster_criterion(
+def cluster_field(
     obj,
     sklearn_clustering=None,
     community_clustering=None,

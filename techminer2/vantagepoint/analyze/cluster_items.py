@@ -1,8 +1,9 @@
 # flake8: noqa
 """
-Cluster Members --- ChatGPT
+Cluster Items --- ChatGPT
 ===============================================================================
 
+Extracts the communities from a networkx graph as a dataframe.
 
 
 Example:
@@ -11,26 +12,27 @@ Example:
 >>> root_dir = "data/regtech/"
 
 >>> from techminer2 import vantagepoint
->>> occ_matrix = vantagepoint.analyze.co_occ_matrix(
-...    criterion='author_keywords',
-...    topic_occ_min=2,
+>>> co_occ_matrix = vantagepoint.analyze.co_occ_matrix(
+...    columns='author_keywords',
+...    col_occ_range=(2, None),
 ...    root_dir=root_dir,
 ... )
->>> graph = vantagepoint.analyze.cluster_criterion(
-...    occ_matrix,
+>>> graph = vantagepoint.analyze.cluster_field(
+...    co_occ_matrix,
 ...    community_clustering='louvain',
 ... )
->>> vantagepoint.analyze.cluster_members(graph)
-                         CL_00  ...                           CL_04
-0               fintech 12:249  ...  artificial intelligence 04:023
-1    financial services 04:168  ...    anti-money laundering 03:021
-2  financial regulation 04:035  ...              charitytech 02:017
-3            innovation 03:012  ...              english law 02:017
-4       data protection 02:027  ...                                
-5               finance 02:001  ...                                
-6             reporting 02:001  ...                                
+>>> vantagepoint.analyze.cluster_items(graph)
+                            CL_00  ...                           CL_03
+0                  regtech 28:329  ...  artificial intelligence 04:023
+1               compliance 07:030  ...    anti-money laundering 03:021
+2               blockchain 03:005  ...              charitytech 02:017
+3          smart contracts 02:022  ...              english law 02:017
+4           accountability 02:014  ...                                
+5  data protection officer 02:014  ...                                
+6                     gdpr 02:014  ...                                
+7               technology 02:010  ...                                
 <BLANKLINE>
-[7 rows x 5 columns]
+[8 rows x 4 columns]
 
 
 """
@@ -38,7 +40,7 @@ Example:
 import pandas as pd
 
 
-def cluster_members(graph):
+def cluster_items(graph):
     """Gets communities from a networkx graph as a dataframe."""
 
     def extract_communities(graph):
