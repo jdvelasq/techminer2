@@ -1,5 +1,5 @@
 """
-Network deegre plot
+Network Deegre Plot
 ===============================================================================
 
 
@@ -8,8 +8,8 @@ Network deegre plot
 >>> from techminer2 import vantagepoint
 >>> file_name = "sphinx/_static/vantagepoint__network_degree_plot.html"
 >>> co_occ_matrix = vantagepoint.analyze.co_occ_matrix(
-...    criterion='author_keywords',
-...    topic_occ_min=3,
+...    columns='author_keywords',
+...    col_occ_range=(3, None),
 ...    root_dir=root_dir,
 ... )
 >>> normalized_co_occ_matrix = vantagepoint.analyze.association_index(
@@ -54,29 +54,21 @@ Analyze the table below, which provides the degree of nodes in a networkx graph 
 
 
 """
-from dataclasses import dataclass
 
-import networkx as nx
 import pandas as pd
 import plotly.express as px
-import plotly.graph_objs as go
 
-from ... import network_utils
-from .list_cells_in_matrix import list_cells_in_matrix
-
-
-@dataclass(init=False)
-class _NetworkDegreePlot:
-    graph_: nx.Graph
-    plot_: go.Figure
-    table_: pd.DataFrame
-    prompt_: str
+from ...classes import NetworkDegreePlot
+from ...network_utils import compute_node_degree
 
 
 def network_degree_plot(
     graph,
-    textfont_size=8,
-    yshift=3,
+    textfont_size=10,
+    marker_size=7,
+    line_color="black",
+    line_width=1.5,
+    yshift=4,
 ):
     """Compute and plots the degree of a co-occurrence matrix."""
 
@@ -109,9 +101,12 @@ def network_degree_plot(
             markers=True,
         )
         fig.update_traces(
-            marker=dict(size=5, line={"color": "black", "width": 1}),
-            marker_color="black",
-            line=dict(color="black", width=1),
+            marker={
+                "size": marker_size,
+                "line": {"color": line_color, "width": 0},
+            },
+            marker_color=line_color,
+            line={"color": line_color, "width": line_width},
         )
         fig.update_layout(
             paper_bgcolor="white",
@@ -165,12 +160,12 @@ def network_degree_plot(
     #
     #
 
-    graph = network_utils.compute_node_degree(graph)
+    graph = compute_node_degree(graph)
     degrees = collect_degrees(graph)
     dataframe = to_dataframe(degrees)
     fig = plot(dataframe, textfont_size, yshift)
 
-    obj = _NetworkDegreePlot()
+    obj = NetworkDegreePlot()
     obj.plot_ = fig
     obj.graph_ = graph
     obj.table_ = dataframe

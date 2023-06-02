@@ -22,11 +22,12 @@ Network metrics
 >>> metrics = vantagepoint.analyze.network_metrics(graph)
 >>> metrics.table_.head()
                               Degree  Betweenness  Closeness  PageRank
+regtech 28:329                    12     0.195960   1.000000  0.128111
 fintech 12:249                    11     0.120202   0.923077  0.117019
 regulatory technology 07:037       9     0.059848   0.800000  0.097098
-compliance 07:030                  8     0.015404   0.750000  0.085818
 regulation 05:164                  9     0.055303   0.800000  0.096790
-financial services 04:168          4     0.003788   0.600000  0.049449
+compliance 07:030                  8     0.015404   0.750000  0.085818
+
 
 
 >>> print(metrics.prompt_)
@@ -34,28 +35,29 @@ Analyze the table below, which provides the degree centrality, betweeness centra
 <BLANKLINE>
 |                                |   Degree |   Betweenness |   Closeness |   PageRank |
 |:-------------------------------|---------:|--------------:|------------:|-----------:|
+| regtech 28:329                 |       12 |    0.19596    |    1        |  0.128111  |
 | fintech 12:249                 |       11 |    0.120202   |    0.923077 |  0.117019  |
 | regulatory technology 07:037   |        9 |    0.0598485  |    0.8      |  0.0970981 |
-| compliance 07:030              |        8 |    0.015404   |    0.75     |  0.085818  |
 | regulation 05:164              |        9 |    0.055303   |    0.8      |  0.0967905 |
-| financial services 04:168      |        4 |    0.00378788 |    0.6      |  0.0494494 |
-| financial regulation 04:035    |        4 |    0.00378788 |    0.6      |  0.0501285 |
+| compliance 07:030              |        8 |    0.015404   |    0.75     |  0.085818  |
 | artificial intelligence 04:023 |        7 |    0.0287879  |    0.705882 |  0.0780476 |
-| anti-money laundering 03:021   |        3 |    0          |    0.571429 |  0.0392607 |
 | risk management 03:014         |        7 |    0.00555556 |    0.705882 |  0.0759564 |
+| suptech 03:004                 |        6 |    0          |    0.666667 |  0.0663087 |
 | innovation 03:012              |        5 |    0.00883838 |    0.631579 |  0.0586198 |
 | blockchain 03:005              |        5 |    0.00252525 |    0.631579 |  0.0573923 |
-| suptech 03:004                 |        6 |    0          |    0.666667 |  0.0663087 |
-| regtech 28:329                 |       12 |    0.19596    |    1        |  0.128111  |
+| financial services 04:168      |        4 |    0.00378788 |    0.6      |  0.0494494 |
+| financial regulation 04:035    |        4 |    0.00378788 |    0.6      |  0.0501285 |
+| anti-money laundering 03:021   |        3 |    0          |    0.571429 |  0.0392607 |
 <BLANKLINE>
 <BLANKLINE>
+
 
 
 # pylint: disable=line-too-long
 """
 
-from ... import network_utils
 from ...classes import NetworkStatistics
+from ...network_utils import compute_newtork_statistics, compute_node_degree
 
 
 def network_metrics(
@@ -82,8 +84,8 @@ def network_metrics(
     # Main:
     #
     #
-    graph = network_utils.compute_node_degree(graph)
-    table = network_utils.compute_newtork_statistics(graph)
+    graph = compute_node_degree(graph)
+    table = compute_newtork_statistics(graph)
 
     obj = NetworkStatistics()
 

@@ -208,6 +208,14 @@ class MatrixViewer:
 
 
 @dataclass(init=False)
+class NetworkDegreePlot:
+    graph_: nx.Graph
+    plot_: go.Figure
+    table_: pd.DataFrame
+    prompt_: str
+
+
+@dataclass(init=False)
 class NetworkStatistics:
     """Network statistics."""
 

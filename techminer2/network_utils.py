@@ -135,6 +135,9 @@ def compute_newtork_statistics(graph):
 
     nodes = list(graph.nodes())
     degree = [graph.nodes[node]["degree"] for node in nodes]
+    occ = [graph.nodes[node]["OCC"] for node in nodes]
+    occ_gc = [node.split(" ")[-1] for node in nodes]
+    gc = [int(text.split(":")[-1]) for text in occ_gc]
     betweenness = nx.betweenness_centrality(graph)
     closeness = nx.closeness_centrality(graph)
     pagerank = nx.pagerank(graph)
@@ -145,9 +148,19 @@ def compute_newtork_statistics(graph):
             "Betweenness": betweenness,
             "Closeness": closeness,
             "PageRank": pagerank,
+            "_occ_": occ,
+            "_gc_": gc,
+            "_name_": nodes,
         },
         index=nodes,
     )
+
+    indicators = indicators.sort_values(
+        by=["Degree", "_occ_", "_gc_", "_name_"],
+        ascending=[False, False, False, True],
+    )
+
+    indicators = indicators.drop(columns=["_occ_", "_gc_", "_name_"])
 
     return indicators
 
