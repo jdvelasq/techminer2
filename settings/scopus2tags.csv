@@ -1,7 +1,7 @@
 scopus,techminer
 Abbreviated Source Title,source_abbr
 Author Keywords,raw_author_keywords
-Author(s) ID,authors_id
+Author(s) ID,raw_authors_id
 Authors,raw_authors
 Cited by,global_citations
 Index Keywords,raw_index_keywords
