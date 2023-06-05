@@ -1,11 +1,11 @@
 """
-Create keywords thesaurus 
+Create keywords thesaurus
 ===============================================================================
 
 >>> root_dir = "data/regtech/"
 
->>> from techminer2 import vantagepoint
->>> vantagepoint.refine.create_keywords_thesaurus(root_dir=root_dir)
+>>> from techminer2 import techminer
+>>> techminer.data.create_keywords_thesaurus(root_dir=root_dir)
 --INFO-- Creating `keywords.txt` from author/index keywords, and \
 abstract/title words
 
@@ -13,13 +13,13 @@ abstract/title words
 import glob
 import os
 import os.path
+import pathlib
 import sys
 
 import pandas as pd
 from nltk.stem import PorterStemmer
 
-from ..._load_thesaurus_as_dict import load_thesaurus_as_dict
-from ..._load_thesaurus_as_dict_r import load_thesaurus_as_dict_r
+from ...thesaurus_utils import load_existent_thesaurus_as_frame
 
 
 def create_keywords_thesaurus(root_dir="./"):
@@ -30,288 +30,388 @@ def create_keywords_thesaurus(root_dir="./"):
         "abstract/title words\n"
     )
 
-    keywords_list = _load_keywords_from_databases(directory=root_dir)
-    keywords_list = _explode_keywords(keywords_list)
-    keywords_list = _remove_strange_characters(keywords_list)
-    keywords_list = _build_occurrences_table(keywords_list)
-    keywords_list = _build_fingerprint(keywords_list)
-    keywords_list = _create_keyterm(keywords_list)
-    keywords_list = _merge_thesaurus(root_dir, keywords_list)
-    _save_thesaurus(keywords_list, root_dir)
-
-
-def _save_thesaurus(keywords_list, directory):
-    thesaurus_file = os.path.join(directory, "processed", "keywords.txt")
-    keywords_list = keywords_list.copy()
-    keywords_list = keywords_list.groupby(["keyterm"]).agg(list)
-    keywords_list = keywords_list.sort_index(axis=0)
-    with open(thesaurus_file, "w", encoding="utf-8") as file:
-        for key in keywords_list.index.tolist():
-            file.write(key + "\n")
-            for word in keywords_list.word[key]:
-                file.write("    " + word + "\n")
-
-
-def _merge_thesaurus(directory, keywords_list):
-    thesaurus_file = os.path.join(directory, "processed", "keywords.txt")
-    if not os.path.isfile(thesaurus_file):
-        return keywords_list
-    old_th_dict = load_thesaurus_as_dict_r(thesaurus_file)
-    new_th_dict = {
-        key: value
-        for key, value in zip(keywords_list.word, keywords_list.keyterm)
-    }
-    new_th_dict = {**new_th_dict, **old_th_dict}
-    keywords_list = pd.DataFrame(
-        {
-            "word": list(new_th_dict.keys()),
-            "keyterm": list(new_th_dict.values()),
-        }
-    )
-    return keywords_list
-
-
-def _create_keyterm(keywords_list):
-    keywords_list = keywords_list.copy()
-    keywords_list = keywords_list.sort_values(
-        ["fingerprint", "OCC", "word"], ascending=[True, False, True]
-    )
-    keywords_list = keywords_list.assign(
-        rnk=keywords_list.groupby(["fingerprint"])["OCC"].rank(
-            method="first", ascending=False
-        )
-    )
-    keyterms = keywords_list.loc[keywords_list["rnk"] == 1]
-    keyterms_dict = {
-        key: value for key, value in zip(keyterms.fingerprint, keyterms.word)
-    }
-    keywords_list = keywords_list.assign(
-        keyterm=keywords_list.fingerprint.map(keyterms_dict)
-    )
-    keywords_list = keywords_list[["word", "keyterm"]]
-    return keywords_list
-
-
-def _build_fingerprint(keywords_list):
+    series = load_value_phrases_from_databases(root_dir=root_dir)
+    series = explode_raw_noun_phrases(series)
+    series = remove_strange_characters(series)
+    frame = build_occurrences_table(series)
     #
-    def invert_parenthesis(word):
-        if "(" in word:
-            text_to_remove = word[word.find("(") + 1 : word.find(")")]
-            meaning = word[: word.find("(")].strip()
-            if (
-                len(meaning) < len(text_to_remove)
-                and len(text_to_remove.strip()) > 1
-            ):
-                word = text_to_remove + " (" + meaning + ")"
-        return word
+    frame = process_frame(frame)
+    #
+    frame = create_key_phrase(frame)
 
-    def remove_brackets(word):
-        if "[" in word:
-            text_to_remove = word[word.find("[") : word.find("]") + 1]
-            word = word.replace(text_to_remove, "")
-            word = " ".join([w.strip() for w in word.split()])
-        return word
-
-    def remove_parenthesis(word):
-        if "(" in word:
-            text_to_remove = word[word.find("(") : word.find(")") + 1]
-            word = word.replace(text_to_remove, "")
-            word = " ".join([w.strip() for w in word.split()])
-        return word
-
-    def remove_initial_terms(keywords_list):
-        keywords_list = keywords_list.copy()
-        for word in ["^and ", "^the ", "^a ", "^an "]:
-            keywords_list.fingerprint = keywords_list.fingerprint.str.replace(
-                word, "", regex=True
-            )
-        return keywords_list
-
-    def replace_sinonimous(keywords_list):
-        keywords_list = keywords_list.copy()
-        replacements = [
-            ("&", "and"),
-            (r"\bof\b", ""),
-            (r"-based\b", " "),
-            (r"\bbased\b", " "),
-            (r"\bfor\b", " "),
-            (r"\btype-i\b", "type-1 "),
-            (r"\btype i\b", "type-1 "),
-            (r"\btype 1\b", "type-1 "),
-            (r"\btype-ii\b", "type-2 "),
-            (r"\btype ii\b", "type-2 "),
-            (r"\btype 2\b", "type-2 "),
-            (r"\btype2\b", "type-2 "),
-            (r"\binterval type\b", "type "),
-            (r"\bforecasting\b", "prediction"),
-            (r"\bforecast\b", "prediction"),
-            (r"\btype2-fuzzy\b", "type-2 fuzzy"),
-            (r"\b1-dimensional\b", "one-dimensional "),
-            (r"\bneural-net\b", " neural network "),
-            (r"\boptimisation\b", "optimization"),
-            (r"\bartificial neural network\b", "neural network"),
-            (r"\bsolar irradiance\b", "solar radiation"),
-            (r"\bsolar irradiation\b", "solar radiation"),
-        ]
-        for to_replace, value in replacements:
-            keywords_list.fingerprint = keywords_list.fingerprint.str.replace(
-                to_replace, value, regex=False
-            )
-        return keywords_list
-
-    def remove_hypen_from_know_keywords(keywords_list):
-        keywords_list = keywords_list.copy()
-        keywords_with_hypen = [
-            "auto-associative",
-            "auto-encoder",
-            "back-propagation",
-            "big-data",
-            "feed-forward",
-            "lithium-ion",
-            "micro-grid",
-            "micro-grids",
-            "multi-layer",
-            "multi-step",
-            "non-linear",
-            "photo-voltaic",
-            "power-point",
-            "radial-basis",
-            "smart-grid",
-            "smart-grids",
-            "stand-alone",
-        ]
-        for word in keywords_with_hypen:
-            keywords_list.fingerprint = keywords_list.fingerprint.str.replace(
-                r"\b" + word + r"\b", word.replace("-", ""), regex=True
-            )
-        return keywords_list
-
-    def remove_ending_terms(keywords_list):
-        keywords_list = keywords_list.copy()
-        replacements = [
-            "techniques",
-            "technique",
-            "algorithms",
-            "algorithm",
-            "methods",
-            "method",
-            "approaches",
-            "approach",
-            "strategies",
-            "strategy",
-            "models",
-            "model",
-            "methodologies",
-            "methodology",
-        ]
-        for to_replace in replacements:
-            keywords_list.fingerprint = keywords_list.fingerprint.str.replace(
-                " " + to_replace + "$", "", regex=True
-            )
-        return keywords_list
-
-    def _british_to_american_spelling(keywords_list):
-        #
-        def load_br2am_dict():
-            module_path = os.path.dirname(__file__)
-            filename = os.path.join(module_path, "../../_files/bg2am.txt")
-            br2am_dict = load_thesaurus_as_dict(filename)
-            br2am_dict = {key: value[0] for key, value in br2am_dict.items()}
-            return br2am_dict
-
-        def translate(phrase):
-            nonlocal br2am_dict
-            british = [br2am_dict.get(word, word) for word in phrase.split()]
-            return " ".join(british)
+    existent_frame = load_existent_thesaurus(root_dir)
+    if existent_frame is not None:
+        existent_frame = process_frame(existent_frame)
+        key2value = dict(
+            zip(existent_frame.value_fingerprint, existent_frame.key_phrase)
+        )
+        frame["key_phrase"] = frame["value_fingerprint"].map(
+            lambda x: key2value.get(x, x)
+        )
+        frame = frame[["key_phrase", "value_phrase"]]
+        existent_frame = existent_frame[["key_phrase", "value_phrase"]]
+        frame = pd.concat([existent_frame, frame])
+        # frame["key_phrase"] = frame["key_phrase"].str.lower()
+        frame = frame.drop_duplicates(subset=["value_phrase"])
 
         #
-        br2am_dict = load_br2am_dict()
-        keywords_list = keywords_list.copy()
-        keywords_list.fingerprint = keywords_list.fingerprint.apply(translate)
-        return keywords_list
+        # Intelligent merging
+        #
+    else:
+        frame = frame[["key_phrase", "value_phrase"]]
 
-    def _apply_porter_stemmer(keywords_list):
-        keywords_list = keywords_list.copy()
-        stemmer = PorterStemmer()
-        keywords_list.fingerprint = keywords_list.fingerprint.apply(
-            lambda x: " ".join([stemmer.stem(word) for word in x.split()])
-        )
-        return keywords_list
-
-    def _create_fingerprint(keywords_list):
-        keywords_list = keywords_list.copy()
-        keywords_list.fingerprint = keywords_list.fingerprint.apply(
-            lambda x: " ".join(sorted(set(x.split())))
-        )
-        return keywords_list
-
-    keywords_list = keywords_list.copy()
-    keywords_list = keywords_list.assign(fingerprint=keywords_list.word)
-    keywords_list.fingerprint = keywords_list.fingerprint.map(
-        invert_parenthesis
+    frame["key_phrase"] = (
+        frame["key_phrase"]
+        .str.replace(" ", "_")
+        .str.replace("_(", " (", regex=False)
+        .str.upper()
     )
-    keywords_list.fingerprint = keywords_list.fingerprint.map(remove_brackets)
-    keywords_list.fingerprint = keywords_list.fingerprint.map(
-        remove_parenthesis
+    frame["value_phrase"] = (
+        frame["value_phrase"]
+        .str.replace(" ", "_")
+        .str.replace("_(", " (", regex=False)
+        .str.upper()
     )
-    keywords_list = remove_initial_terms(keywords_list)
-    keywords_list = replace_sinonimous(keywords_list)
-    keywords_list = remove_hypen_from_know_keywords(keywords_list)
-    keywords_list = remove_ending_terms(keywords_list)
-    keywords_list = _british_to_american_spelling(keywords_list)
-    keywords_list = _apply_porter_stemmer(keywords_list)
-    keywords_list = _create_fingerprint(keywords_list)
-    return keywords_list
 
-
-def _build_occurrences_table(keywords_list):
-    keywords_list = keywords_list.copy()
-    keywords_list = keywords_list.value_counts()
-    keywords_list = keywords_list.to_frame()
-    keywords_list = keywords_list.reset_index()
-    keywords_list.columns = ["word", "OCC"]
-
-    return keywords_list
-
-
-def _remove_strange_characters(keywords_list):
-    keywords_list = keywords_list.copy()
-    keywords_list = keywords_list.str.replace('"', "")
-    keywords_list = keywords_list.str.replace(chr(8212), "")
-    keywords_list = keywords_list.str.replace(chr(8220), "")
-    keywords_list = keywords_list.str.replace(chr(8221), "")
-    keywords_list = keywords_list.mask(
-        (keywords_list.str[0] == "-") & keywords_list.str.len() > 1,
-        keywords_list.str.replace("^-", "", regex=True),
+    frame = frame.groupby("key_phrase", as_index=False).agg(
+        {"value_phrase": list}
     )
-    return keywords_list
+    frame["value_phrase"] = frame["value_phrase"].map(set).map(sorted)
+    file_path = pathlib.Path(root_dir) / "processed/keywords.txt"
+
+    with open(file_path, "w", encoding="utf-8") as file:
+        for _, row in frame.iterrows():
+            file.write(row.key_phrase + "\n")
+            for aff in row.value_phrase:
+                file.write("    " + aff + "\n")
 
 
-def _explode_keywords(keywords_list):
-    keywords_list = keywords_list.copy()
-    keywords_list = keywords_list.dropna()
-    keywords_list = keywords_list.str.lower()
-    keywords_list = keywords_list.str.split(";")
-    keywords_list = keywords_list.explode()
-    keywords_list = keywords_list.str.strip()
-    return keywords_list
+def process_frame(frame):
+    """Group techniques for preprocessing"""
+
+    frame = frame.copy()
+    frame = create_fingerprint_column(frame)
+    frame["value_fingerprint"] = invert_parenthesis(frame["value_fingerprint"])
+    frame["value_fingerprint"] = remove_brackets(frame["value_fingerprint"])
+    frame["value_fingerprint"] = remove_parenthesis(frame["value_fingerprint"])
+    frame["value_fingerprint"] = remove_initial_articles(
+        frame["value_fingerprint"]
+    )
+    frame["value_fingerprint"] = replace_sinonimous(frame["value_fingerprint"])
+    frame["value_fingerprint"] = remove_hypen_from_know_keywords(
+        frame["value_fingerprint"]
+    )
+    frame["value_fingerprint"] = remove_ending_terms(
+        frame["value_fingerprint"]
+    )
+    frame["value_fingerprint"] = british_to_american_spelling(
+        frame["value_fingerprint"]
+    )
+    frame["value_fingerprint"] = apply_porter_stemmer(
+        frame["value_fingerprint"]
+    )
+
+    return frame
 
 
-def _load_keywords_from_databases(directory="./"):
+def load_existent_thesaurus(root_dir):
+    """Load existence thesaurus."""
+
+    file_path = pathlib.Path(root_dir) / "processed/keywords.txt"
+
+    if not file_path.exists():
+        return None
+
+    existent_thesaurus = load_existent_thesaurus_as_frame(file_path)
+    existent_thesaurus = existent_thesaurus.rename(
+        columns={"key": "key_phrase", "value": "value_phrase"}
+    )
+
+    existent_thesaurus["key_phrase"] = (
+        existent_thesaurus["key_phrase"].str.replace("_", " ").str.upper()
+    )
+    existent_thesaurus["value_phrase"] = (
+        existent_thesaurus["value_phrase"].str.replace("_", " ").str.upper()
+    )
+
+    return existent_thesaurus
+
+
+def load_value_phrases_from_databases(root_dir="./"):
+    """Loads keywords from author/index keywords, and abstract/title words."""
+
     words_list = []
-    files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
+
+    files = list(glob.glob(os.path.join(root_dir, "processed/_*.csv")))
     for file in files:
         data = pd.read_csv(file, encoding="utf-8")
+        if "raw_noun_phrases" in data.columns:
+            words_list.append(data["raw_noun_phrases"])
 
-        for column in [
-            "raw_author_keywords",
-            "raw_index_keywords",
-            "raw_title_words",
-            "raw_abstract_words",
-        ]:
-            if column in data.columns:
-                words_list.append(data[column])
     words_list = pd.concat(words_list, ignore_index=True)
     words_list = words_list.str.strip()
     words_list = words_list[words_list.str.len() > 0]
+    words_list = words_list.rename("value_phrase")
+    words_list = words_list.str.replace("_", " ").str.upper()
     return words_list
+
+
+def explode_raw_noun_phrases(frame):
+    """Explodes the raw noun phrases column."""
+
+    frame = frame.copy()
+    frame = frame.dropna()
+    frame = frame.str.upper()
+    frame = frame.str.split(";")
+    frame = frame.explode()
+    frame = frame.str.strip()
+    return frame
+
+
+def remove_strange_characters(series):
+    """Removes strange characters from the series."""
+
+    series = series.copy()
+    series = series.str.replace('"', "")
+    series = series.str.replace(chr(8212), "")
+    series = series.str.replace(chr(8220), "")
+    series = series.str.replace(chr(8221), "")
+    series = series.mask(
+        (series.str[0] == "-") & series.str.len() > 1,
+        series.str.replace("^-", "", regex=True),
+    )
+    return series
+
+
+def build_occurrences_table(series):
+    """Builds the occurrences table."""
+
+    series = series.copy()
+    series = series.value_counts()
+    frame = series.to_frame()
+    frame = frame.reset_index()
+    frame.columns = ["value_phrase", "OCC"]
+
+    return frame
+
+
+def create_fingerprint_column(frame):
+    """Creates the fingerprint column."""
+
+    frame = frame.copy()
+    frame = frame.assign(value_fingerprint=frame.value_phrase)
+    return frame
+
+
+def invert_parenthesis(word):
+    """Transforms `word (meaning)` into `meaning (word)`.
+
+    "regtech (regulatory technology)" -> "regulatory technology (regtech)"
+
+    """
+    if "(" in word:
+        text_to_remove = word[word.find("(") + 1 : word.find(")")]
+        meaning = word[: word.find("(")].strip()
+        if (
+            len(meaning) < len(text_to_remove)
+            and len(text_to_remove.strip()) > 1
+        ):
+            word = text_to_remove + " (" + meaning + ")"
+    return word
+
+
+def remove_brackets(word):
+    """Removes brackets from the word.
+
+    "regtech [regulatory technology]" -> "regtech"
+
+    """
+    if "[" in word:
+        text_to_remove = word[word.find("[") : word.find("]") + 1]
+        word = word.replace(text_to_remove, "")
+        word = " ".join([w.strip() for w in word.split()])
+    return word
+
+
+def remove_parenthesis(word):
+    """Removes parenthesis from the word.
+
+    "regtech (regulatory technology)" -> "regtech"
+
+    """
+    if "(" in word:
+        text_to_remove = word[word.find("(") : word.find(")") + 1]
+        word = word.replace(text_to_remove, "")
+        word = " ".join([w.strip() for w in word.split()])
+    return word
+
+
+def remove_initial_articles(series):
+    """Removes initial terms from the keywords list.
+
+    "and regtech" -> "regtech"
+    "the regtech" -> "regtech"
+    "a regtech" -> "regtech"
+    "an regtech" -> "regtech"
+
+    """
+    series = series.copy()
+    for word in ["^and ", "^the ", "^a ", "^an "]:
+        series = series.str.replace(word, "", regex=True)
+    return series
+
+
+def replace_sinonimous(series):
+    """Replaces sinonimous terms."""
+
+    series = series.copy()
+    replacements = [
+        ("&", "and"),
+        (r"\bof\b", ""),
+        (r"-based\b", " "),
+        (r"\bbased\b", " "),
+        (r"\bfor\b", " "),
+        (r"\btype-i\b", "type-1 "),
+        (r"\btype i\b", "type-1 "),
+        (r"\btype 1\b", "type-1 "),
+        (r"\btype-ii\b", "type-2 "),
+        (r"\btype ii\b", "type-2 "),
+        (r"\btype 2\b", "type-2 "),
+        (r"\btype2\b", "type-2 "),
+        (r"\binterval type\b", "type "),
+        (r"\bforecasting\b", "prediction"),
+        (r"\bforecast\b", "prediction"),
+        (r"\btype2-fuzzy\b", "type-2 fuzzy"),
+        (r"\b1-dimensional\b", "one-dimensional "),
+        (r"\bneural-net\b", " neural network "),
+        (r"\boptimisation\b", "optimization"),
+        (r"\bartificial neural network\b", "neural network"),
+        (r"\bsolar irradiance\b", "solar radiation"),
+        (r"\bsolar irradiation\b", "solar radiation"),
+    ]
+    for to_replace, value in replacements:
+        series = series.str.replace(to_replace, value, regex=False)
+    return series
+
+
+def remove_hypen_from_know_keywords(series):
+    """Removes hypen from known keywords."""
+
+    series = series.copy()
+    keywords_with_hypen = [
+        "auto-associative",
+        "auto-encoder",
+        "back-propagation",
+        "big-data",
+        "feed-forward",
+        "lithium-ion",
+        "micro-grid",
+        "micro-grids",
+        "multi-layer",
+        "multi-step",
+        "non-linear",
+        "photo-voltaic",
+        "power-point",
+        "radial-basis",
+        "smart-grid",
+        "smart-grids",
+        "stand-alone",
+    ]
+    for word in keywords_with_hypen:
+        series = series.str.replace(
+            r"\b" + word + r"\b", word.replace("-", ""), regex=True
+        )
+    return series
+
+
+def remove_ending_terms(series):
+    """Removes ending terms from the keywords list."""
+    series = series.copy()
+    replacements = [
+        "techniques",
+        "technique",
+        "algorithms",
+        "algorithm",
+        "methods",
+        "method",
+        "approaches",
+        "approach",
+        "strategies",
+        "strategy",
+        "models",
+        "model",
+        "methodologies",
+        "methodology",
+    ]
+    for to_replace in replacements:
+        series = series.str.replace(" " + to_replace + "$", "", regex=True)
+    return series
+
+
+def british_to_american_spelling(series):
+    """Translates British to American spelling."""
+
+    def load_br2am_dict():
+        module_path = os.path.dirname(__file__)
+        file_path = os.path.join(module_path, "../../_files/bg2am.txt")
+        frame = load_existent_thesaurus_as_frame(file_path)
+        br2am = dict(zip(frame.key.to_list(), frame.value.to_list()))
+        return br2am
+
+    #
+    # Main code:
+    #
+    br2am = load_br2am_dict()
+    series = series.copy()
+    series = (
+        series.astype(str)
+        .str.split(" ")
+        .map(lambda x: [br2am.get(z, z) for z in x])
+        .str.join(" ")
+    )
+    return series
+
+
+def apply_porter_stemmer(series):
+    """Applies Porter Stemmer to the keywords list."""
+
+    series = series.copy()
+    stemmer = PorterStemmer()
+    series = series.apply(
+        lambda x: " ".join(
+            sorted(set(stemmer.stem(word) for word in x.split()))
+        )
+    )
+    return series
+
+
+def create_key_phrase(frame):
+    """Creates a keyterm column."""
+
+    frame = frame.copy()
+    frame = frame.sort_values(
+        ["value_fingerprint", "OCC", "value_phrase"],
+        ascending=[True, False, True],
+    )
+    frame = frame.assign(
+        rnk=frame.groupby(["value_fingerprint"])["OCC"].rank(
+            method="first", ascending=False
+        )
+    )
+    #
+    key_frame = frame.loc[frame["rnk"] == 1]
+    frame = pd.merge(
+        frame,
+        key_frame[["value_fingerprint", "value_phrase"]],
+        on="value_fingerprint",
+        how="left",
+    )
+
+    frame = frame.rename(
+        columns={
+            "value_phrase_x": "value_phrase",
+            "value_phrase_y": "key_phrase",
+        }
+    )
+
+    return frame

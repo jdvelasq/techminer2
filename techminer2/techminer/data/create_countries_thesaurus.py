@@ -8,10 +8,6 @@ Creates a country thesaurus from 'affiliations' column in the datasets.
 >>> root_dir = "data/regtech/"
 
 >>> techminer.data.create_countries_thesaurus(root_dir)
-
-
-
-
 --INFO-- The data/regtech/processed/countries.txt thesaurus file was created
 
 
@@ -22,7 +18,7 @@ import pathlib
 import re
 
 import pandas as pd
-import requests
+import requests  # type: ignore
 
 
 def create_countries_thesaurus(root_dir):
@@ -40,6 +36,10 @@ def create_countries_thesaurus(root_dir):
     )
     affiliations = format_country_names(affiliations)
     save_countries_thesaurus(affiliations, root_dir)
+    print(
+        f"--INFO-- The {pathlib.Path(root_dir) / 'processed/countries.txt'} "
+        "thesaurus file was created"
+    )
 
 
 def load_affiliations_frame(directory):
@@ -172,6 +172,17 @@ def format_country_names(affiliations):
 def save_countries_thesaurus(affiliations, root_dir):
     """Saves the thesaurus."""
 
+    affiliations = affiliations.copy()
+
+    existent_affiliations = read_existent_coutries_txt_thesaurus(root_dir)
+
+    if existent_affiliations is not None:
+        affiliations = pd.concat(
+            [existent_affiliations, affiliations], ignore_index=True
+        )
+        affiliations = affiliations.drop_duplicates(subset=["affiliations"])
+        affiliations = affiliations.reset_index(drop=True)
+
     affiliations = affiliations.sort_values(["country", "affiliations"])
     affiliations = affiliations.groupby("country", as_index=False).agg(
         {"affiliations": list}
@@ -184,3 +195,34 @@ def save_countries_thesaurus(affiliations, root_dir):
             file.write(row.country + "\n")
             for aff in row.affiliations:
                 file.write("    " + aff + "\n")
+
+
+def read_existent_coutries_txt_thesaurus(root_dir):
+    """Read the existent thesaurus if exists."""
+    file_path = pathlib.Path(root_dir) / "processed/countries.txt"
+
+    country = None
+    countries = []
+    affiliations = []
+
+    if not file_path.exists():
+        return None
+
+    # collects the countries and the respective affiliations
+    with open(file_path, "r", encoding="utf-8") as file:
+        for line in file:
+            if not line.startswith(" "):
+                country = line.strip()
+            else:
+                affiliation = line.strip()
+                countries.append(country)
+                affiliations.append(affiliation)
+
+    frame = pd.DataFrame(
+        {
+            "affiliations": affiliations,
+            "country": countries,
+        }
+    )
+
+    return frame

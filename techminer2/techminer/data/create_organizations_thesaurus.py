@@ -18,7 +18,7 @@ import pathlib
 import re
 
 import pandas as pd
-import requests
+import requests  # type: ignore
 
 
 def create_organizations_thesaurus(root_dir="./"):
@@ -34,7 +34,8 @@ def create_organizations_thesaurus(root_dir="./"):
     frame = format_organization_names(frame)
     save_organizations_thesaurus(frame, root_dir)
     print(
-        f"--INFO-- The {pathlib.Path(root_dir) / 'processed/organizations.txt'} thesaurus file was created"
+        f"--INFO-- The {pathlib.Path(root_dir) / 'processed/organizations.txt'} "
+        "thesaurus file was created"
     )
 
 
@@ -257,6 +258,18 @@ def format_organization_names(frame):
 def save_organizations_thesaurus(frame, root_dir):
     """Saves the thesaurus."""
 
+    frame = frame.copy()
+
+    existent_organizations = read_existent_organizations_txt_thesaurus(
+        root_dir
+    )
+
+    if existent_organizations is not None:
+        frame = pd.concat([existent_organizations, frame], ignore_index=True)
+        frame = frame.drop_duplicates(subset=["raw_affiliation"])
+        frame = frame.reset_index(drop=True)
+
+    ##
     frame = frame.sort_values(["organization", "raw_affiliation"])
     frame = frame.groupby("organization", as_index=False).agg(
         {"raw_affiliation": list}
@@ -269,3 +282,34 @@ def save_organizations_thesaurus(frame, root_dir):
             file.write(row.organization + "\n")
             for aff in row.raw_affiliation:
                 file.write("    " + aff + "\n")
+
+
+def read_existent_organizations_txt_thesaurus(root_dir):
+    """Read the existent thesaurus if exists."""
+    file_path = pathlib.Path(root_dir) / "processed/organizations.txt"
+
+    organization = None
+    organizations = []
+    affiliations = []
+
+    if not file_path.exists():
+        return None
+
+    # collects the countries and the respective affiliations
+    with open(file_path, "r", encoding="utf-8") as file:
+        for line in file:
+            if not line.startswith(" "):
+                organization = line.strip()
+            else:
+                affiliation = line.strip()
+                organizations.append(organization)
+                affiliations.append(affiliation)
+
+    frame = pd.DataFrame(
+        {
+            "raw_affiliation": affiliations,
+            "organization": organizations,
+        }
+    )
+
+    return frame

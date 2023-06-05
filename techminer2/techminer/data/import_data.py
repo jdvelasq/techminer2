@@ -45,13 +45,13 @@ Import a scopus data file in the working directory.
 --INFO-- Concatenating `raw_author_keywords` and `raw_index_keywords` columns to `raw_keywords`
 --INFO-- Processing `abstract` column
 --INFO-- Processing `title` column
---INFO-- Copying `title` column to `raw_title_phrases`
---INFO-- Processing `raw_title_phrases` column
---INFO-- Copying `abstract` column to `raw_abstract_phrases`
---INFO-- Processing `raw_abstract_phrases` column
---INFO-- Concatenating `raw_title_phrases` and `raw_abstract_phrases` columns to `raw_phrases`
---INFO-- Concatenating `raw_phrases` and `raw_keywords` columns to `raw_phrases`
---INFO-- Processing `raw_phrases` column
+--INFO-- Copying `title` column to `raw_title_noun_phrases`
+--INFO-- Processing `raw_title_noun_phrases` column
+--INFO-- Copying `abstract` column to `raw_abstract_noun_phrases`
+--INFO-- Processing `raw_abstract_noun_phrases` column
+--INFO-- Concatenating `raw_title_noun_phrases` and `raw_abstract_noun_phrases` columns to `raw_noun_phrases`
+--INFO-- Concatenating `raw_noun_phrases` and `raw_keywords` columns to `raw_noun_phrases`
+--INFO-- Processing `raw_noun_phrases` column
 --INFO-- Searching `references` using DOI
 --INFO-- Searching `references` using (year, title, author)
 --INFO-- Searching `references` using (title)
@@ -83,9 +83,9 @@ country_1st_author, document_type, doi, eid, global_citations,
 global_references, index_keywords, isbn, issn, issue, keywords, link,
 local_citations, local_references, num_authors, num_global_references,
 open_access, organization_1st_author, organizations, page_end, page_start,
-publication_stage, raw_abstract_phrases, raw_author_keywords, raw_authors,
+publication_stage, raw_abstract_noun_phrases, raw_author_keywords, raw_authors,
 raw_authors_id, raw_countries, raw_index_keywords, raw_keywords,
-raw_organizations, raw_phrases, raw_title_phrases, source, source_abbr,
+raw_organizations, raw_noun_phrases, raw_title_noun_phrases, source, source_abbr,
 source_title, title, volume, year
 
 
@@ -374,10 +374,10 @@ def import_data(root_dir="./", disable_progress_bar=False, **document_types):
         .str.lower(),
     )
 
-    copy_to_column(root_dir, "title", "raw_title_phrases")
+    copy_to_column(root_dir, "title", "raw_title_noun_phrases")
     process_column(
         root_dir,
-        "raw_title_phrases",
+        "raw_title_noun_phrases",
         lambda x: x.astype(str)
         .map(lambda z: TextBlob(z).noun_phrases)
         .map(set, na_action="ignore")
@@ -388,10 +388,10 @@ def import_data(root_dir="./", disable_progress_bar=False, **document_types):
         .str.replace(";_", "; "),
     )
 
-    copy_to_column(root_dir, "abstract", "raw_abstract_phrases")
+    copy_to_column(root_dir, "abstract", "raw_abstract_noun_phrases")
     process_column(
         root_dir,
-        "raw_abstract_phrases",
+        "raw_abstract_noun_phrases",
         lambda x: x.astype(str)
         .map(lambda z: TextBlob(z).noun_phrases)
         .map(set, na_action="ignore")
@@ -404,21 +404,21 @@ def import_data(root_dir="./", disable_progress_bar=False, **document_types):
 
     concatenate_columns(
         root_dir,
-        "raw_phrases",
-        "raw_title_phrases",
-        "raw_abstract_phrases",
+        "raw_noun_phrases",
+        "raw_title_noun_phrases",
+        "raw_abstract_noun_phrases",
     )
 
     concatenate_columns(
         root_dir,
-        "raw_phrases",
-        "raw_phrases",
+        "raw_noun_phrases",
+        "raw_noun_phrases",
         "raw_keywords",
     )
 
     process_column(
         root_dir,
-        "raw_phrases",
+        "raw_noun_phrases",
         lambda x: x.astype(str)
         .str.split("; ")
         .apply(lambda x: "; ".join(sorted(set(x)))),
@@ -915,7 +915,7 @@ def disambiguate_author_names(root_dir):
             data["authors"] = data["authors"].map(
                 lambda x: [author_id2name[id] for id in x]
             )
-            data["authors"] = data["authors"].map(lambda x: "; ".join(x))
+            data["authors"] = data["authors"].str.join("; ")
             data.to_csv(file, sep=",", encoding="utf-8", index=False)
 
     #
@@ -1437,9 +1437,9 @@ def transform_abstract_keywords_to_underscore(root_dir):
         nlp_phrases = []
         for file in files:
             data = pd.read_csv(file, encoding="utf-8")
-            if "raw_phrases" not in data.columns:
+            if "raw_noun_phrases" not in data.columns:
                 continue
-            candidate_nlp_phrases = data["raw_phrases"].copy()
+            candidate_nlp_phrases = data["raw_noun_phrases"].copy()
             candidate_nlp_phrases = (
                 candidate_nlp_phrases.dropna()
                 .str.replace("_", " ")
