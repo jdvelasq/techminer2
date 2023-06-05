@@ -1,4 +1,5 @@
 pat,repl
+"\"",""
 ".",""
 "“",""
 "”",""
@@ -52,7 +53,7 @@ pat,repl
 "gobierno","gov"
 "goverment","gov"
 "organization","org"
-"organizacion","org
+"organizacion","org"
 "fundation","found"
 "fundacion","fund"
 "national","n"
