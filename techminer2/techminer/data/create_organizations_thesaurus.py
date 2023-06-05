@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 Create 'organizations.txt' thesaurus file 
 ===============================================================================
@@ -7,230 +8,264 @@ Creates a organizations thesaurus from the data in the database.
 
 >>> root_dir = "data/regtech/"
 
->>> from techminer2 import vantagepoint
->>> vantagepoint.refine.create_organizations_thesaurus(root_dir)
---INFO-- The data/regtech/processed/organizations.txt thesaurus file was \
-created
+>>> from techminer2 import techminer
+>>> techminer.data.create_organizations_thesaurus(root_dir)
+--INFO-- The data/regtech/processed/organizations.txt thesaurus file was created
 
 
 """
-import os.path
-import sys
+import pathlib
+import re
 
 import pandas as pd
-
-from ..._thesaurus import Thesaurus, load_file_as_dict
-
-SPANISH = [
-    "ARG",
-    "CHL",
-    "COL",
-    "CUB",
-    "ECU",
-    "ESP",
-    "GTM",
-    "HND",
-    "MEX",
-    "NIC",
-    "PAN",
-    "PER",
-    "VEN",
-]
-
-PORTUGUES = [
-    "BRA",
-    "PRT",
-]
-
-NAMES = [
-    "ministry",
-    "ministerio",
-    #
-    "universidad",
-    "universidade",
-    "universita",
-    "universite",
-    "universiti",
-    "universiteit",
-    "university",
-    "univerza",
-    "unversitat",
-    #
-    "bank",
-    "banco",
-    #
-    "agency",
-    "agencia",
-    #
-    "council",
-    "commission",
-    "comision",
-    "consejo",
-    "consortium",
-    #
-    "politec",
-    "polytechnic",
-    "politecnico",
-    #
-    "hospital",
-    #
-    "association",
-    "asociacion",
-    #
-    "sociedad",
-    "society",
-    #
-    "consorcio",
-    #
-    "company",
-    "organization",
-    #
-    "inc.",
-    "ltd.",
-    "office",
-    "oficina",
-    "corporation",
-    "corporacion",
-    #
-    "government",
-    #
-    "fundacion",
-    "foundation",
-]
+import requests
 
 
 def create_organizations_thesaurus(root_dir="./"):
     """Creates organizations.txt thesaurus file."""
 
-    affiliations = _load_affiliations_from_country_thesaurus(root_dir)
-    affiliations = _convert_countries_to_codes(affiliations)
-    affiliations["affiliation"] = affiliations["raw_affiliation"]
-    affiliations = _clean_organization_names(affiliations)
-    affiliations["organization"] = affiliations["affiliation"]
-    affiliations["organization"] = affiliations["organization"].map(
-        _select_organization
-    )
-
-    _group_and_save(affiliations, root_dir)
-
-
-def _select_organization(affiliation):
-    """Selects the organization from the affiliation."""
-
-    affiliation = affiliation.split(",")
-    affiliation = [a.strip() for a in affiliation]
-
-    # --------------------------------------------------------------------------------
-    valid_names = _load_valid_names()
-    for name in valid_names:
-        for aff in affiliation:
-            if name in aff.lower():
-                return aff
-
-    # --------------------------------------------------------------------------------
-    for aff in affiliation:
-        for name in NAMES:
-            if name in aff.lower():
-                if aff[:4].lower() == "the ":
-                    aff = aff.replace("The ", "", 1)
-                    return aff
-                return aff
-
-    # Regla por defecto: la primera componente de la afiliación
-    return "---" + affiliation[0]
-
-
-def _load_valid_names():
-    module_path = os.path.dirname(__file__)
-    with open(
-        os.path.join(module_path, "../../_files/organizations.txt"),
-        "rt",
-        encoding="utf-8",
-    ) as file:
-        valid_names = file.readlines()
-    valid_names = [w.replace("\n", "").lower() for w in valid_names]
-    return valid_names
-
-
-def _group_and_save(affiliations, directory):
-    affiliations = affiliations[["raw_affiliation", "organization"]]
-
-    grp = affiliations.groupby(by="organization", as_index=False).agg(
-        {"raw_affiliation": list}
-    )
-    th_dict = {k: v for k, v in zip(grp.organization, grp.raw_affiliation)}
-
-    thesaurus_file = os.path.join(directory, "processed", "organizations.txt")
-
-    Thesaurus(
-        th_dict,
-        ignore_case=False,
-        full_match=True,
-        use_re=False,
-    ).to_textfile(thesaurus_file)
-
-    sys.stdout.write(
-        f"--INFO-- The {thesaurus_file} thesaurus file was created\n"
+    frame = load_affiliations_from_country_thesaurus(root_dir)
+    frame = add_country_code_column(frame)
+    frame = add_candidate_organization_column(frame)
+    frame = clean_candidate_organization_column(frame)
+    knwon_orgs = load_known_orgs()
+    frame = assigns_from_kwown_organizations(frame, knwon_orgs)
+    frame = assings_names_by_priority(frame)
+    frame = format_organization_names(frame)
+    save_organizations_thesaurus(frame, root_dir)
+    print(
+        f"--INFO-- The {pathlib.Path(root_dir) / 'processed/organizations.txt'} thesaurus file was created"
     )
 
 
-def _clean_organization_names(affiliations):
-    affiliations = affiliations.copy()
+def load_affiliations_from_country_thesaurus(root_dir):
+    """Loads data from countries.txt file."""
 
-    repl = [
-        (".", ""),
-        ("&", " and "),
-        (" aandm ", " a and m "),
-        ("The University of ", "University of "),
-        (" Univ. Nacional de ", " Universidad Nacional de "),
-        (" Univ. de la ", " Universidad de la "),
-        (" Univ. del ", " Universidad del "),
-        (" Univ. do ", " Universidade do "),
-        (" Univ. of ", " University of "),
-        (" Univ,", " University,"),
-        (" U. de ", " Universidad de "),
-        ("'", ""),
+    file_path = pathlib.Path(root_dir) / "processed/countries.txt"
+
+    country = None
+    countries = []
+    affiliations = []
+
+    # collects the countries and the respective affiliations
+    with open(file_path, "r", encoding="utf-8") as file:
+        for line in file:
+            if not line.startswith(" "):
+                country = line.strip()
+            else:
+                affiliation = line.strip()
+                countries.append(country)
+                affiliations.append(affiliation)
+
+    frame = pd.DataFrame(
+        {
+            "raw_affiliation": affiliations,
+            "country": countries,
+        }
+    )
+    return frame
+
+
+def add_country_code_column(frame):
+    """Add 'code' column to the frame."""
+
+    owner = "jdvelasq"
+    repo = "techminer2"
+    path = "settings/country_codes.txt"
+    url = f"https://raw.githubusercontent.com/{owner}/{repo}/main/{path}"
+
+    response = requests.get(url, timeout=5)
+    country_codes = response.text.split("\n")
+
+    countries = []
+    codes = []
+    code = None
+    for line in country_codes:
+        if line[0] != " ":
+            code = line.strip()
+        else:
+            countries.append(line.strip())
+            codes.append(code)
+
+    frame = frame.copy()
+    frame["code"] = "unknown"
+    for country, code in zip(countries, codes):
+        frame.loc[frame.country.str.lower() == country.lower(), "code"] = code
+
+    return frame
+
+
+def add_candidate_organization_column(frame):
+    """Adds raw candidate organizations.
+
+    The raw candidate organizations are the two first components
+    of the raw affiliations in lower case.
+
+    """
+    frame = frame.copy()
+    frame["organization"] = frame.raw_affiliation
+    return frame
+
+
+def clean_candidate_organization_column(frame):
+    """Cleans the candidate organizations column."""
+
+    owner = "jdvelasq"
+    repo = "techminer2"
+    path = "settings/organizations_abbr.csv"
+    url = f"https://raw.githubusercontent.com/{owner}/{repo}/main/{path}"
+
+    repl_frame = pd.read_csv(url)
+    frame = frame.copy()
+
+    for pat, repl in [
         ('"', ""),
+        (".", ""),
         ("“", ""),
         ("”", ""),
         ("’", ""),
-        ("-", " "),
-        (" UNAM,", " Universidad Nacional Autonoma de Mexico,"),
-    ]
-    for pattern, text in repl:
-        affiliations["affiliation"] = affiliations["affiliation"].str.replace(
-            pattern, text, regex=False
+        # ("-", " "),
+    ]:
+        frame["organization"] = frame["organization"].str.replace(
+            pat, repl, regex=False
         )
 
-    affiliations["affiliation"] = affiliations["affiliation"].str.replace(
-        r"\([A-Za-z\-]+\)", "", regex=True
+    for _, row in repl_frame.iterrows():
+        frame["organization"] = frame["organization"].str.replace(
+            r"\b" + row.pat + r"\b", row.repl, regex=True
+        )
+
+    frame["organization"] = frame["organization"].str.strip()
+
+    return frame
+
+
+def add_a_empty_organization_column(frame):
+    """Adds empty organizations."""
+
+    frame = frame.copy()
+    frame["organizations"] = pd.NA
+    return frame
+
+
+def load_known_orgs():
+    """Loads known organizations from GitHub repo."""
+
+    owner = "jdvelasq"
+    repo = "techminer2"
+    path = "settings/known_organizations.txt"
+    url = f"https://raw.githubusercontent.com/{owner}/{repo}/main/{path}"
+
+    response = requests.get(url, timeout=5)
+    known_organizations = response.text.split("\n")
+    known_organizations = [org.strip() for org in known_organizations]
+    return known_organizations
+
+
+def assigns_from_kwown_organizations(frame, knwon_orgs):
+    """Adds organizations from known organizations."""
+
+    frame = frame.copy()
+    for org in knwon_orgs:
+        frame.loc[
+            frame.raw_affiliation.astype(str).str.contains(org, case=False),
+            "organization",
+        ] = org
+    return frame
+
+
+# names sorted by proirity
+NAMES = [
+    "Min",  # ministry, ministerio
+    "Univ",  # university, universidad, univedade, ...
+    "B",  # bank, banco
+    "AG",  # agency, agencia
+    "Counc",  # council, concilio, consejo
+    "Conc",  # concilio, consejo
+    "Com",  # comission, comision
+    "Consortium",
+    "Politec",  # polytechnic, politecnico
+    "Hosp",  # hospital
+    "Assn",  # association
+    "Asoc",  # asociacion
+    "Soc",
+    "Consor",
+    "Co",
+    "Org",
+    "Inc",
+    "Ltd",
+    "Off",
+    "Corp",
+    "Gob",
+    "Gov",
+    "Found",
+    "Fund",
+    "Inst",
+    "Coll",
+    "Sch",
+]
+
+
+def assings_names_by_priority(frame):
+    """Assigns the organization name by priority."""
+
+    def select_name(affiliation):
+        for name in NAMES:
+            regex = r"\b" + name + r"\b"
+
+            if re.search(regex, affiliation, re.IGNORECASE):
+                parts = affiliation.split(",")
+                for part in parts:
+                    if re.search(regex, part, re.IGNORECASE):
+                        return part.strip()
+        return affiliation
+
+    #
+    # Main code:
+    #
+    frame = frame.copy()
+    for index, row in frame.iterrows():
+        if row.organization is pd.NA:
+            frame.loc[index, "organization"] = select_name(
+                frame.loc[index, "affiliation"]
+            )
+
+    frame["organization"] = frame["organization"].map(select_name)
+    return frame
+
+
+def format_organization_names(frame):
+    """Formats the organization names."""
+
+    frame = frame.copy()
+    frame["organization"] = (
+        frame["organization"].astype(str) + " (" + frame["code"] + ")"
     )
-    affiliations["affiliation"] = affiliations["affiliation"].str.strip()
+    return frame
 
-    return affiliations
+    # frame["organization"] = (
+    #     frame["organization"]
+    #     .str.title()
+    #     .str.replace(" Of ", " of ")
+    #     .str.replace(" And ", " and ")
+    #     .str.replace(" For ", " for ")
+    # )
+
+    # return frame
 
 
-def _load_affiliations_from_country_thesaurus(directory):
-    file_name = os.path.join(directory, "processed", "countries.txt")
-    th_dict = load_file_as_dict(file_name)
-    country = [k for k, v in th_dict.items() for t in v]
-    aff = [t for k, v in th_dict.items() for t in v]
+def save_organizations_thesaurus(frame, root_dir):
+    """Saves the thesaurus."""
 
-    affiliations = pd.DataFrame(
-        {
-            "raw_affiliation": aff,
-            "country": country,
-        }
+    frame = frame.sort_values(["organization", "raw_affiliation"])
+    frame = frame.groupby("organization", as_index=False).agg(
+        {"raw_affiliation": list}
     )
-    return affiliations
 
+    file_path = pathlib.Path(root_dir) / "processed/organizations.txt"
 
-def _convert_countries_to_codes(affiliations):
-    module_path = os.path.dirname(__file__)
-    filename = os.path.join(module_path, "../../_files/country_codes.txt")
-    codes_dict = load_file_as_dict(filename)
-    codes_dict = {t: k for k, v in codes_dict.items() for t in v}
-
-    affiliations["country"] = affiliations["country"].str.lower()
-    affiliations["country"] = affiliations["country"].map(codes_dict)
-    return affiliations
+    with open(file_path, "w", encoding="utf-8") as file:
+        for _, row in frame.iterrows():
+            file.write(row.organization + "\n")
+            for aff in row.raw_affiliation:
+                file.write("    " + aff + "\n")

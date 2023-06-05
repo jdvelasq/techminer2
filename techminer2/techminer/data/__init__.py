@@ -1,3 +1,4 @@
 from .create_countries_thesaurus import create_countries_thesaurus
+from .create_organizations_thesaurus import create_organizations_thesaurus
 from .import_data import import_data
 from .import_scopus_files import import_scopus_files

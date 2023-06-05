@@ -67,7 +67,9 @@ def load_affiliations_frame(directory):
             "or it is empty."
         )
 
-    return affiliations.to_frame()
+    frame = pd.DataFrame({"affiliations": affiliations})
+
+    return frame
 
 
 def copy_affiliations_to_contry_column(affiliations):
