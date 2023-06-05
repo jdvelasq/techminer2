@@ -13,7 +13,7 @@ import re
 
 import pandas as pd
 
-from ..._thesaurus import load_file_as_dict
+# from ..._thesaurus import load_file_as_dict
 
 
 def extract_country(directory, input_col, output_col):
@@ -64,10 +64,14 @@ def extract_country(directory, input_col, output_col):
             )
 
             data[output_col] = data[output_col].map(
-                lambda x: [y for y in x if not pd.isna(y)] if isinstance(x, list) else x
+                lambda x: [y for y in x if not pd.isna(y)]
+                if isinstance(x, list)
+                else x
             )
             data[output_col] = data[output_col].str.join("; ")
-            data[output_col] = data[output_col].map(lambda x: pd.NA if x == "" else x)
+            data[output_col] = data[output_col].map(
+                lambda x: pd.NA if x == "" else x
+            )
             data[output_col] = data[output_col].str.title()
             data[output_col] = data[output_col].str.replace(" Of ", " of ")
             data[output_col] = data[output_col].str.replace(" And ", " and ")

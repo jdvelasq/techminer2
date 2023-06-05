@@ -21,7 +21,7 @@ from os.path import isfile, join
 from spellchecker import SpellChecker
 from textblob import TextBlob
 
-from ..._thesaurus import load_file_as_dict
+# from ..._thesaurus import load_file_as_dict
 
 
 def misspelling_search(

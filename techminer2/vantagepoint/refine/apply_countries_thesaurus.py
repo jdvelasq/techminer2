@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 Apply Countries Thesaurus 
 ===============================================================================
@@ -10,9 +11,10 @@ the same directory as the documents.csv file.
 
 >>> from techminer2 import vantagepoint
 >>> vantagepoint.refine.apply_countries_thesaurus(root_dir)
---INFO-- The data/regtech/processed/countries.txt thesaurus file was applied \
-to affiliations in all databases
+--INFO-- The data/regtech/processed/countries.txt thesaurus file was applied to affiliations in all databases
 
+
+# pylint: disable=line-too-long
 """
 import glob
 import os
@@ -21,7 +23,7 @@ import sys
 
 import pandas as pd
 
-from ..._thesaurus import read_textfile
+from ...thesaurus_utils import load_thesaurus_as_dict_reversed
 
 
 def apply_countries_thesaurus(root_dir="./"):
@@ -29,24 +31,31 @@ def apply_countries_thesaurus(root_dir="./"):
 
     # thesaurus preparation
     thesaurus_file = os.path.join(root_dir, "processed", "countries.txt")
-    thesaurus = read_textfile(thesaurus_file)
-    thesaurus = thesaurus.compile_as_dict()
+    thesaurus = load_thesaurus_as_dict_reversed(thesaurus_file)
 
     # apply thesaurus
     files = list(glob.glob(os.path.join(root_dir, "processed/_*.csv")))
     for file in files:
         records = pd.read_csv(file, encoding="utf-8")
         #
-        records = records.assign(
-            raw_countries=records.affiliations.str.split(";")
-        )
-        records = records.assign(
-            raw_countries=records.raw_countries.map(
-                lambda x: [thesaurus.apply_as_dict(y.strip()) for y in x]
-                if isinstance(x, list)
-                else x
+        records["raw_countries"] = (
+            records.astype(str)
+            .affiliations.str.split(";")
+            .map(
+                lambda affiliations: [
+                    thesaurus.get(affiliation.strip(), affiliation.strip())
+                    for affiliation in affiliations
+                ]
             )
         )
+
+        # records = records.assign(
+        #     raw_countries=records.raw_countries.map(
+        #         lambda affiliations: [thesaurus[affiliation] for affiliation in affiliations]
+        #         if isinstance(x, list)
+        #         else x
+        #     )
+        # )
         #
         records["country_1st_author"] = records.raw_countries.map(
             lambda w: w[0], na_action="ignore"

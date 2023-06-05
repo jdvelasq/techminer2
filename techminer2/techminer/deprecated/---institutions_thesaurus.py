@@ -26,7 +26,7 @@ import sys
 import pandas as pd
 
 # from .extract_country import extract_country_from_string
-from ..._thesaurus import Thesaurus, load_file_as_dict
+# from ..._thesaurus import Thesaurus, load_file_as_dict
 
 #
 # The algorithm searches in order until detect a match
@@ -203,7 +203,9 @@ def create_institutions_thesaurus(directory="./"):
     #
     module_path = os.path.dirname(__file__)
     with open(
-        os.path.join(module_path, "files/institutions.txt"), "rt", encoding="utf-8"
+        os.path.join(module_path, "files/institutions.txt"),
+        "rt",
+        encoding="utf-8",
     ) as f:
         VALID_NAMES = f.readlines()
     VALID_NAMES = [w.replace("\n", "").lower() for w in VALID_NAMES]
@@ -218,7 +220,9 @@ def create_institutions_thesaurus(directory="./"):
     country_names = list(country_codes.values())
     country_names = [w[0].lower() for w in country_names]
     country_names_to_codes = {
-        item: code for code in country_codes.keys() for item in country_codes[code]
+        item: code
+        for code in country_codes.keys()
+        for item in country_codes[code]
     }
 
     # --------------------------------------------------------------------------[]
@@ -265,11 +269,15 @@ def create_institutions_thesaurus(directory="./"):
     # Extracts the country and drop rows
     # without country
     #
-    x["country"] = x.affiliation.map(extract_country_from_string, na_action="ignore")
+    x["country"] = x.affiliation.map(
+        extract_country_from_string, na_action="ignore"
+    )
     if any(x.country.isna()):
         sys.stdout.write(
             "--INFO-- Affiliations without country detected - check file "
-            + os.path.join(directory, "processed", "ignored_affiliations.txt\n")
+            + os.path.join(
+                directory, "processed", "ignored_affiliations.txt\n"
+            )
         )
 
     #
@@ -333,12 +341,15 @@ def create_institutions_thesaurus(directory="./"):
                 ("institute of technology", "instituto tecnologico de "),
             ]:
                 if len(aff) > len(foreign.split(" ")):
-                    proper_name = " ".join(aff[: len(aff) - len(foreign.split())])
+                    proper_name = " ".join(
+                        aff[: len(aff) - len(foreign.split())]
+                    )
                     local_name = local + proper_name
 
                     if local_name in institutions + VALID_NAMES:
                         x["key"] = x.key.map(
-                            lambda w: local_name if w == key else w, na_action="ignore"
+                            lambda w: local_name if w == key else w,
+                            na_action="ignore",
                         )
 
             #
@@ -355,7 +366,10 @@ def create_institutions_thesaurus(directory="./"):
                 ("polytechnic university of", "universidad politecnica de "),
                 ("politechnic university of", "universidad politecnica de "),
                 ("universitat politecnica de", "universidad politecnica de "),
-                ("metropolitan university of", "universidad metropolitana de "),
+                (
+                    "metropolitan university of",
+                    "universidad metropolitana de ",
+                ),
                 ("politechnic school of", "escuela politecnica de "),
                 ("polytechnic school of", "escuela politecnica de "),
                 ("industrial university of", "universidad industrial de "),
@@ -369,7 +383,8 @@ def create_institutions_thesaurus(directory="./"):
                     new_name = spanish + " ".join(aff[foreign_len:])
                     if new_name in institutions + VALID_NAMES:
                         x["key"] = x.key.map(
-                            lambda w: new_name if w == key else w, na_action="ignore"
+                            lambda w: new_name if w == key else w,
+                            na_action="ignore",
                         )
 
             #
@@ -386,7 +401,8 @@ def create_institutions_thesaurus(directory="./"):
                     new_name = spanish + " ".join(aff[2:])
                     if new_name in institutions + VALID_NAMES:
                         x["key"] = x.key.map(
-                            lambda w: new_name if w == key else w, na_action="ignore"
+                            lambda w: new_name if w == key else w,
+                            na_action="ignore",
                         )
 
         if country in PORTUGUES:
@@ -425,7 +441,8 @@ def create_institutions_thesaurus(directory="./"):
                     new_name = portugues + " ".join(aff[foreign_len:])
                     if new_name in institutions + VALID_NAMES:
                         x["key"] = x.key.map(
-                            lambda w: new_name if w == key else w, na_action="ignore"
+                            lambda w: new_name if w == key else w,
+                            na_action="ignore",
                         )
 
             #
@@ -443,7 +460,8 @@ def create_institutions_thesaurus(directory="./"):
                     new_name = portugues + " ".join(aff[:-2])
                     if new_name in institutions + VALID_NAMES:
                         x["key"] = x.key.map(
-                            lambda w: new_name if w == key else w, na_action="ignore"
+                            lambda w: new_name if w == key else w,
+                            na_action="ignore",
                         )
 
             for foreign, portugues in [
@@ -458,7 +476,8 @@ def create_institutions_thesaurus(directory="./"):
                     new_name = portugues + " ".join(aff[2:])
                     if new_name in institutions + VALID_NAMES:
                         x["key"] = x.key.map(
-                            lambda w: new_name if w == key else w, na_action="ignore"
+                            lambda w: new_name if w == key else w,
+                            na_action="ignore",
                         )
 
             for foreign, portugues in [
@@ -470,23 +489,42 @@ def create_institutions_thesaurus(directory="./"):
                     new_name = portugues + " ".join(aff[:-1])
                     if new_name in institutions + VALID_NAMES:
                         x["key"] = x.key.map(
-                            lambda w: new_name if w == key else w, na_action="ignore"
+                            lambda w: new_name if w == key else w,
+                            na_action="ignore",
                         )
 
     #
     # Format key string
     #
     x["key"] = x.key.map(lambda w: w.title(), na_action="ignore")
-    x["key"] = x.key.map(lambda w: w.replace(" Of ", " of "), na_action="ignore")
-    x["key"] = x.key.map(lambda w: w.replace(" And ", " and "), na_action="ignore")
-    x["key"] = x.key.map(lambda w: w.replace(" For ", " for "), na_action="ignore")
-    x["key"] = x.key.map(lambda w: w.replace(" At ", " at "), na_action="ignore")
-    x["key"] = x.key.map(lambda w: w.replace(" De ", " de "), na_action="ignore")
-    x["key"] = x.key.map(lambda w: w.replace(" La ", " la "), na_action="ignore")
-    x["key"] = x.key.map(lambda w: w.replace(" Del ", " del "), na_action="ignore")
-    x["key"] = x.key.map(lambda w: w.replace(" Do ", " do "), na_action="ignore")
+    x["key"] = x.key.map(
+        lambda w: w.replace(" Of ", " of "), na_action="ignore"
+    )
+    x["key"] = x.key.map(
+        lambda w: w.replace(" And ", " and "), na_action="ignore"
+    )
+    x["key"] = x.key.map(
+        lambda w: w.replace(" For ", " for "), na_action="ignore"
+    )
+    x["key"] = x.key.map(
+        lambda w: w.replace(" At ", " at "), na_action="ignore"
+    )
+    x["key"] = x.key.map(
+        lambda w: w.replace(" De ", " de "), na_action="ignore"
+    )
+    x["key"] = x.key.map(
+        lambda w: w.replace(" La ", " la "), na_action="ignore"
+    )
+    x["key"] = x.key.map(
+        lambda w: w.replace(" Del ", " del "), na_action="ignore"
+    )
+    x["key"] = x.key.map(
+        lambda w: w.replace(" Do ", " do "), na_action="ignore"
+    )
     x["key"] = x.key.map(lambda w: w.replace(" Y ", " y "), na_action="ignore")
-    x["key"] = x.key.map(lambda w: w.replace(" Em ", " em "), na_action="ignore")
+    x["key"] = x.key.map(
+        lambda w: w.replace(" Em ", " em "), na_action="ignore"
+    )
 
     #
     # Adds the country to the key
@@ -505,8 +543,8 @@ def create_institutions_thesaurus(directory="./"):
     if os.path.isfile(thesaurus_file):
         result = {**result, **dict_}
 
-    Thesaurus(result, ignore_case=False, full_match=True, use_re=False).to_textfile(
-        thesaurus_file
-    )
+    Thesaurus(
+        result, ignore_case=False, full_match=True, use_re=False
+    ).to_textfile(thesaurus_file)
 
     sys.stdout.write(f"--INFO-- Thesaurus file '{thesaurus_file}' created\n")

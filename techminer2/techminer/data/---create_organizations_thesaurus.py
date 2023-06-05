@@ -19,7 +19,7 @@ import sys
 
 import pandas as pd
 
-from ..._thesaurus import Thesaurus, load_file_as_dict
+# from ..._thesaurus import Thesaurus, load_file_as_dict
 
 SPANISH = [
     "ARG",

@@ -19,7 +19,7 @@ import sys
 
 import pandas as pd
 
-from ..._thesaurus import read_textfile
+# from ..._thesaurus import read_textfile
 
 
 def apply_author_keywords_thesaurus(directory="./"):
@@ -27,7 +27,9 @@ def apply_author_keywords_thesaurus(directory="./"):
 
     sys.stdout.write("--INFO-- Applying `author_keywords.txt` thesaurus\n")
 
-    thesaurus_file = os.path.join(directory, "processed", "author_keywords.txt")
+    thesaurus_file = os.path.join(
+        directory, "processed", "author_keywords.txt"
+    )
     if os.path.isfile(thesaurus_file):
         thesaurus = read_textfile(thesaurus_file)
         thesaurus = thesaurus.compile_as_dict()
@@ -40,7 +42,9 @@ def apply_author_keywords_thesaurus(directory="./"):
         data = pd.read_csv(file, encoding="utf-8")
         #
         if "raw_author_keywords" in data.columns:
-            data = data.assign(author_keywords=data.raw_author_keywords.str.split(";"))
+            data = data.assign(
+                author_keywords=data.raw_author_keywords.str.split(";")
+            )
             data = data.assign(
                 author_keywords=data.author_keywords.map(
                     lambda x: [thesaurus.apply_as_dict(y.strip()) for y in x]
@@ -53,7 +57,9 @@ def apply_author_keywords_thesaurus(directory="./"):
                     lambda x: sorted(set(x)) if isinstance(x, list) else x
                 )
             )
-            data = data.assign(author_keywords=data.author_keywords.str.join("; "))
+            data = data.assign(
+                author_keywords=data.author_keywords.str.join("; ")
+            )
 
         #
         data.to_csv(file, sep=",", encoding="utf-8", index=False)

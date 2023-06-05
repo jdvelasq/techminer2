@@ -9,7 +9,9 @@ from ._snowball_stemmer import snowball_stemmer
 from ._text import find_string, fingerprint, one_gram, two_gram
 
 
-def text_clustering(x, name_strategy="mostfrequent", key="porter", transformer=None):
+def text_clustering(
+    x, name_strategy="mostfrequent", key="porter", transformer=None
+):
     #
     def remove_parenthesis(x):
         if "(" in x:
@@ -22,7 +24,10 @@ def text_clustering(x, name_strategy="mostfrequent", key="porter", transformer=N
         if "(" in x:
             text_to_remove = x[x.find("(") + 1 : x.find(")")]
             meaning = x[: x.find("(")].strip()
-            if len(meaning) < len(text_to_remove) and len(text_to_remove.split()) > 1:
+            if (
+                len(meaning) < len(text_to_remove)
+                and len(text_to_remove.split()) > 1
+            ):
                 x = text_to_remove + " (" + meaning + ")"
         return x
 
@@ -86,7 +91,9 @@ def text_clustering(x, name_strategy="mostfrequent", key="porter", transformer=N
         ("solar irradiation", "solar radiation"),
     ]
     for to_replace, value in replacements:
-        x["word_alt"] = x["word_alt"].map(lambda w: w.replace(to_replace, value))
+        x["word_alt"] = x["word_alt"].map(
+            lambda w: w.replace(to_replace, value)
+        )
 
     #
     # endswith
@@ -152,7 +159,9 @@ def text_clustering(x, name_strategy="mostfrequent", key="porter", transformer=N
     # Search for joined terms
     #
     keywords_with_2_words = x.word_alt[x.word_alt.map(lambda w: len(w) == 2)]
-    keywords_with_1_word = keywords_with_2_words.map(lambda w: w.replace(" ", ""))
+    keywords_with_1_word = keywords_with_2_words.map(
+        lambda w: w.replace(" ", "")
+    )
     for w1, w2 in zip(keywords_with_1_word, keywords_with_2_words):
         if w1 in x.word_alt.tolist():
             x["word_alt"] = x["word_alt"].map(lambda w: w.replace(w2, w1))
@@ -197,7 +206,9 @@ def text_clustering(x, name_strategy="mostfrequent", key="porter", transformer=N
         name_strategy = "mostfrequent"
     if name_strategy == "mostfrequent":
         grp["groupname"] = grp.word.map(
-            lambda w: w.value_counts()[w.value_counts() == w.value_counts().max()]
+            lambda w: w.value_counts()[
+                w.value_counts() == w.value_counts().max()
+            ]
             .sort_index()
             .index[0]
         )
@@ -214,10 +225,14 @@ def text_clustering(x, name_strategy="mostfrequent", key="porter", transformer=N
     # Preffer names with '-'
     #
     names_with_hyphen = grp.word.map(lambda w: [i for i in w if "-" in i])
-    names_with_hyphen = names_with_hyphen.map(lambda w: w[0] if len(w) > 0 else None)
+    names_with_hyphen = names_with_hyphen.map(
+        lambda w: w[0] if len(w) > 0 else None
+    )
     grp["groupname"] = [
         hyphen_name if hyphen_name is not None else original_name
-        for original_name, hyphen_name in zip(grp["groupname"], names_with_hyphen)
+        for original_name, hyphen_name in zip(
+            grp["groupname"], names_with_hyphen
+        )
     ]
 
     #
@@ -230,7 +245,8 @@ def text_clustering(x, name_strategy="mostfrequent", key="porter", transformer=N
     # Thesaurus building
     #
     result = {
-        key: sorted(value.tolist()) for key, value in zip(grp.groupname, grp.word)
+        key: sorted(value.tolist())
+        for key, value in zip(grp.groupname, grp.word)
     }
     result = {**result, **{value[0]: value for value in grp_isolated.word}}
     return Thesaurus(result, ignore_case=False, full_match=True, use_re=False)
@@ -267,7 +283,11 @@ def load_file_as_dict(filename):
     if key not in dic.keys():
         if values == []:
             raise Exception(
-                "Key '" + key + "' in file '" + filename + "' without values associated"
+                "Key '"
+                + key
+                + "' in file '"
+                + filename
+                + "' without values associated"
             )
         dic[key] = values
     return dic
@@ -280,7 +300,9 @@ def read_textfile(filename):
 
 
 class Thesaurus:
-    def __init__(self, x=None, ignore_case=True, full_match=False, use_re=False):
+    def __init__(
+        self, x=None, ignore_case=True, full_match=False, use_re=False
+    ):
         if x == None:
             x = {}
         self._thesaurus = x
@@ -303,7 +325,12 @@ class Thesaurus:
                     file.write("    " + item + "\n")
 
     def find_key(
-        self, patterns, ignore_case=True, full_match=False, use_re=False, explode=True
+        self,
+        patterns,
+        ignore_case=True,
+        full_match=False,
+        use_re=False,
+        explode=True,
     ):
         return find_string(
             patterns=patterns,
@@ -317,11 +344,13 @@ class Thesaurus:
     def __repr__(self):
         """Returns a json representation of the Thesaurus."""
         text = json.dumps(self._thesaurus, indent=2, sort_keys=True)
-        text += "\nignore_case={}, full_match={}, use_re={}, compiled={}".format(
-            self._ignore_case.__repr__(),
-            self._full_match.__repr__(),
-            self._use_re.__repr__(),
-            self._compiled is not None,
+        text += (
+            "\nignore_case={}, full_match={}, use_re={}, compiled={}".format(
+                self._ignore_case.__repr__(),
+                self._full_match.__repr__(),
+                self._use_re.__repr__(),
+                self._compiled is not None,
+            )
         )
         return text
 
@@ -502,10 +531,14 @@ class Thesaurus:
         """Adds the strings associated to popkey to key and delete popkey."""
         if isinstance(popkey, list):
             for k in popkey:
-                self._thesaurus[key] = self._thesaurus[key] + self._thesaurus[k]
+                self._thesaurus[key] = (
+                    self._thesaurus[key] + self._thesaurus[k]
+                )
                 self._thesaurus.pop(k)
         else:
-            self._thesaurus[key] = self._thesaurus[key] + self._thesaurus[popkey]
+            self._thesaurus[key] = (
+                self._thesaurus[key] + self._thesaurus[popkey]
+            )
             self._thesaurus.pop(popkey)
 
     def merge_keys_from_textfile(self, filename):

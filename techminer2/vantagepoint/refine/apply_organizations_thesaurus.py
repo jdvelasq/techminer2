@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 Apply Organizations Thesaurus 
 ===============================================================================
@@ -14,7 +15,7 @@ the same directory as the documents.csv file.
 applied to affiliations in all databases
 
 
-
+# pylint: disable=line-too-long
 """
 import glob
 import os
@@ -23,7 +24,7 @@ import sys
 
 import pandas as pd
 
-from ..._thesaurus import read_textfile
+from ...thesaurus_utils import load_thesaurus_as_dict_reversed
 
 
 def apply_organizations_thesaurus(root_dir="./"):
@@ -31,8 +32,7 @@ def apply_organizations_thesaurus(root_dir="./"):
 
     # Read the thesaurus
     thesaurus_file = os.path.join(root_dir, "processed", "organizations.txt")
-    thesaurus = read_textfile(thesaurus_file)
-    thesaurus = thesaurus.compile_as_dict()
+    thesaurus = load_thesaurus_as_dict_reversed(thesaurus_file)
 
     # Apply thesaurus
     files = list(glob.glob(os.path.join(root_dir, "processed/_*.csv")))
@@ -46,7 +46,7 @@ def apply_organizations_thesaurus(root_dir="./"):
         )
         records = records.assign(
             raw_organizations=records.raw_organizations.map(
-                lambda x: [thesaurus.apply_as_dict(y.strip()) for y in x]
+                lambda x: [thesaurus.get(y.strip(), y.strip()) for y in x]
                 if isinstance(x, list)
                 else x
             )

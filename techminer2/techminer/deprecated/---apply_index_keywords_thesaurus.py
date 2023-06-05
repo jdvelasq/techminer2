@@ -19,7 +19,7 @@ import sys
 
 import pandas as pd
 
-from ..._thesaurus import read_textfile
+# from ..._thesaurus import read_textfile
 
 
 def apply_index_keywords_thesaurus(directory="./"):
@@ -47,7 +47,9 @@ def apply_index_keywords_thesaurus(directory="./"):
         data = pd.read_csv(file, encoding="utf-8")
         #
         if "raw_index_keywords" in data.columns:
-            data = data.assign(index_keywords=data.raw_index_keywords.str.split(";"))
+            data = data.assign(
+                index_keywords=data.raw_index_keywords.str.split(";")
+            )
             data = data.assign(
                 index_keywords=data.index_keywords.map(
                     lambda x: [thesaurus.apply_as_dict(y.strip()) for y in x]
@@ -60,7 +62,9 @@ def apply_index_keywords_thesaurus(directory="./"):
                     lambda x: sorted(set(x)) if isinstance(x, list) else x
                 )
             )
-            data = data.assign(index_keywords=data.index_keywords.str.join("; "))
+            data = data.assign(
+                index_keywords=data.index_keywords.str.join("; ")
+            )
 
         #
         data.to_csv(file, sep=",", encoding="utf-8", index=False)

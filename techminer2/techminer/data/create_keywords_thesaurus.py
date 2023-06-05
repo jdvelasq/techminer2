@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 Create keywords thesaurus
 ===============================================================================
@@ -9,6 +10,7 @@ Create keywords thesaurus
 --INFO-- Creating `keywords.txt` from author/index keywords, and \
 abstract/title words
 
+# pylint: disable=line-too-long
 """
 import glob
 import os
@@ -19,7 +21,7 @@ import sys
 import pandas as pd
 from nltk.stem import PorterStemmer
 
-from ...thesaurus_utils import load_existent_thesaurus_as_frame
+from ...thesaurus_utils import load_thesaurus_as_frame
 
 
 def create_keywords_thesaurus(root_dir="./"):
@@ -122,7 +124,7 @@ def load_existent_thesaurus(root_dir):
     if not file_path.exists():
         return None
 
-    existent_thesaurus = load_existent_thesaurus_as_frame(file_path)
+    existent_thesaurus = load_thesaurus_as_frame(file_path)
     existent_thesaurus = existent_thesaurus.rename(
         columns={"key": "key_phrase", "value": "value_phrase"}
     )
@@ -354,7 +356,7 @@ def british_to_american_spelling(series):
     def load_br2am_dict():
         module_path = os.path.dirname(__file__)
         file_path = os.path.join(module_path, "../../_files/bg2am.txt")
-        frame = load_existent_thesaurus_as_frame(file_path)
+        frame = load_thesaurus_as_frame(file_path)
         br2am = dict(zip(frame.key.to_list(), frame.value.to_list()))
         return br2am
 
