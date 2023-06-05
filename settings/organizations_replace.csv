@@ -1,5 +1,4 @@
 pat,repl
-"\"",""
 ".",""
 "“",""
 "”",""
@@ -7,7 +6,7 @@ pat,repl
 "-"," "
 "&"," and "
 " aandm "," a and m "
-"the university of ","univ OF "
+"the university of ","univ of "
 "univ. nacional de ","univ n de "
 "univ. de la ","univ de la "
 "univ. del ","univ del "
