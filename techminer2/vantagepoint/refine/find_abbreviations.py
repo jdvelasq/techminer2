@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 Find Abbreviations 
 ===============================================================================
@@ -13,14 +14,13 @@ Finds string abbreviations in the keywords of a thesaurus.
 ... )
 --INFO-- The file data/regtech/processed/keywords.txt has been reordered.
 
-
+# pylint: disable=line-too-long
 """
-import sys
-from os.path import isfile, join
+import os.path
 
 import pandas as pd
 
-# from ..._thesaurus import load_file_as_dict
+from ...thesaurus_utils import load_thesaurus_as_dict, load_thesaurus_as_frame
 
 
 def find_abbreviations(
@@ -29,70 +29,53 @@ def find_abbreviations(
 ):
     """Find abbreviations and reorder the thesaurus to reflect the search."""
 
-    def extract_abbreviation(x):
-        if "(" in x:
-            abbreviation = x[x.find("(") + 1 : x.find(")")]
-            return abbreviation
-        return None
+    ###
 
-    # ----< Load and reverse the thesaurus >------------------------------------------------------
-    th_file = join(root_dir, "processed", thesaurus_file)
-    if isfile(th_file):
-        th = load_file_as_dict(th_file)
-    else:
-        raise FileNotFoundError(f"The file {th_file} does not exist.")
-    reversed_th = {
-        value: key for key, values in th.items() for value in values
-    }
+    file_path = os.path.join(root_dir, "processed", thesaurus_file)
+    frame = load_thesaurus_as_frame(file_path)
+    frame["value"] = frame["value"].str.replace("_", " ")
 
-    # ----< search for abbreviations >-------------------------------------------------------------
-    df = pd.DataFrame(
-        {
-            "text": reversed_th.keys(),
-            "key": reversed_th.values(),
-        }
-    )
-    df["abbreviation"] = df["text"].map(extract_abbreviation)
+    frame["abbreviation"] = frame["value"].map(_extract_abbreviation)
+    abbreviations = frame["abbreviation"].dropna().drop_duplicates().to_list()
 
-    # ----< filter by each abbreviation >----------------------------------------------------------
-    abbreviations = df.abbreviation.dropna().drop_duplicates()
+    for abbr in abbreviations:
+        frame["found"] = False
+        frame["found"] = frame["found"] | frame["value"].map(
+            lambda x: x == abbr
+        )
+        frame["found"] = frame["found"] | frame["value"].map(
+            lambda x: "(" + abbr + ")" in x
+        )
+        frame["found"] = frame["found"] | frame["value"].str.contains(
+            r"\b" + abbr + r"\b", regex=True
+        )
+        frame.loc[frame["found"], "abbreviation"] = abbr
 
-    results = []
-    for abbreviation in abbreviations.to_list():
-        try:
-            keywords = df[
-                df.text.map(lambda x: x == abbreviation)
-                | df.text.str.contains("(" + abbreviation + ")", regex=False)
-                | df.text.map(lambda x: x == "(" + abbreviation + ")")
-                | df.text.str.contains("\b" + abbreviation + "\b", regex=True)
-            ]
+    frame = frame[~frame.abbreviation.isna()]
+    frame = frame.sort_values(["abbreviation", "key", "value"])
 
-            keywords = keywords.key.drop_duplicates()
+    keys_with_abbr = frame.key.drop_duplicates().to_list()
+    thesaurus = load_thesaurus_as_dict(file_path)
 
-            if len(keywords) > 1:
-                results.append(keywords.to_list())
-
-        except:
-            print("Manual check: " + abbreviation)
-
-    # ----< remove found keywords >-----------------------------------------------------------------
-    results = [value for result in results for value in result]
-    findings = {key: th[key] for key in results}
-    for key in findings.keys():
-        th.pop(key)
-
-    # ----< save the thesaurus >--------------------------------------------------------------------
-    with open(th_file, "w", encoding="utf-8") as file:
-        for key in findings.keys():
-            # print(key)
+    with open(file_path, "w", encoding="utf-8") as file:
+        for key in keys_with_abbr:
             file.write(key + "\n")
-            for item in findings[key]:
-                file.write("    " + item + "\n")
-                # print("    " + item)
-
-        for key in sorted(th.keys()):
-            file.write(key + "\n")
-            for item in th[key]:
+            for item in thesaurus[key]:
                 file.write("    " + item + "\n")
 
-    sys.stdout.write(f"--INFO-- The file {th_file} has been reordered.\n")
+        for key, items in thesaurus.items():
+            if key not in keys_with_abbr:
+                file.write(key + "\n")
+                for item in items:
+                    file.write("    " + item + "\n")
+
+    print(f"--INFO-- The file {file_path} has been reordered.")
+
+
+def _extract_abbreviation(x):
+    """Extracts the abbreviation."""
+
+    if "(" in x:
+        abbreviation = x[x.find("(") + 1 : x.find(")")]
+        return abbreviation
+    return pd.NA

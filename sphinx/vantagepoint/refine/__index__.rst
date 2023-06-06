@@ -13,12 +13,6 @@ Refine
     apply_organizations_thesaurus
 
 
-.. toctree::    
-    apply_thesaurus
-
-
-.. toctree::
-    create_thesaurus
 
 
 .. toctree::    
