@@ -58,7 +58,7 @@ Buchkremer R      2020    1  ...                     0.750
 """
 import pandas as pd
 
-from ...utils import read_records
+from ...record_utils import read_records
 
 
 # pylint: disable=too-many-arguments

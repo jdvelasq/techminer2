@@ -60,11 +60,15 @@ Analyze the table below, which provides impact indicators for the field 'authors
 """
 
 
+from ...check_params import (
+    check_impact_metric,
+    check_integer,
+    check_integer_range,
+)
 from ...classes import ListView
 from ...item_utils import generate_custom_items
 from ...sort_utils import sort_indicators_by_metric
 from ...techminer.indicators import impact_indicators_by_item
-from ...utils import check_impact_metric, check_integer, check_integer_range
 
 
 # pylint: disable=too-many-arguments

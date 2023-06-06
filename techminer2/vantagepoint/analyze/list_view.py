@@ -59,15 +59,15 @@ Analyze the table below, which provides bibliometric indicators for the field 'a
 """
 
 
-from ...classes import ListView
-from ...item_utils import generate_custom_items
-from ...sort_utils import sort_indicators_by_metric
-from ...techminer.indicators import indicators_by_item
-from ...utils import (
+from ...check_params import (
     check_bibliometric_metric,
     check_integer,
     check_integer_range,
 )
+from ...classes import ListView
+from ...item_utils import generate_custom_items
+from ...sort_utils import sort_indicators_by_metric
+from ...techminer.indicators import indicators_by_item
 
 
 # pylint: disable=too-many-arguments

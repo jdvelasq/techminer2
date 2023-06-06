@@ -1,7 +1,7 @@
 """Check utils.
 """
 
-from ..classes import ListView
+from .classes import ListView
 
 
 def check_keywords(param):

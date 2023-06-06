@@ -70,7 +70,7 @@ import plotly.express as px
 
 from ..._lib._explode import explode
 from ...classes import BradfordLaw
-from ...utils import read_records
+from ...record_utils import read_records
 
 
 def bradford_law(

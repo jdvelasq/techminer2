@@ -61,15 +61,14 @@ compliance 07:030                 14     0.042971   0.583333  0.034957
 # from ..._get_network_graph_communities import get_network_graph_communities
 # from ..._get_network_graph_degree_plot import get_network_graph_degree_plot
 
-from ...classes import CoWordsNetwork
-
 # from ..._get_network_graph_indicators import get_network_graph_indicators
 # from ..._get_network_graph_manifold_map import get_network_graph_manifold_map
 # from ..._get_network_graph_plot import get_network_graph_plot
 # from ..._matrix_2_matrix_list import matrix_2_matrix_list
 # from ..._matrix_list_2_network_graph import matrix_list_2_network_graph
 # from ...create_directory import create_directory
-from ...utils import check_keywords
+from ...check_params import check_keywords
+from ...classes import CoWordsNetwork
 
 # from ..._network_community_detection import network_community_detection
 from ...vantagepoint.analyze import (

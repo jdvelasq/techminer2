@@ -57,8 +57,8 @@ Analyze the table below, which provides bibliometric indicators for the field 'a
 """
 import plotly.graph_objs as go
 
+from ...check_params import check_listview
 from ...classes import BasicChart
-from ...utils import check_listview
 
 
 def treemap(

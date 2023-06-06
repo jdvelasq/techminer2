@@ -16,10 +16,13 @@ abstracts of the records and creates a file with the report.
 
 
 """
+import inspect
+
 from ...vantagepoint import record_display
 
 
 # pylint: disable=too-many-arguments
+# pylint: disable=W0613
 def text_screening(
     search_for,
     case=False,
@@ -27,8 +30,8 @@ def text_screening(
     regex=True,
     root_dir="./",
     database="documents",
-    start_year=None,
-    end_year=None,
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
     """Generates the file ``text_screening.txt`` with the abstracts matching \
@@ -50,16 +53,36 @@ def text_screening(
 
     """
 
-    return record_display(
-        field="abstract",
-        search_for=search_for,
-        report_filename="text_screening.txt",
-        case=case,
-        flags=flags,
-        regex=regex,
-        root_dir=root_dir,
-        database=database,
-        start_year=start_year,
-        end_year=end_year,
-        **filters,
+    param_names = [
+        key
+        for key in inspect.signature(text_screening).parameters.keys()
+        if key not in ["self", "filters"]
+    ]
+
+    local_vars = locals()
+    params = {key: local_vars[key] for key in param_names}
+
+    record_display(
+        **{
+            **{
+                "field": "abstract",
+                "report_filename": "text_screening.txt",
+            },
+            **params,
+            **filters,
+        }
     )
+
+    # return record_display(
+    #     field="abstract",
+    #     search_for=search_for,
+    #     report_filename="text_screening.txt",
+    #     case=case,
+    #     flags=flags,
+    #     regex=regex,
+    #     root_dir=root_dir,
+    #     database=database,
+    #     start_year=start_year,
+    #     end_year=end_year,
+    #     **filters,
+    # )

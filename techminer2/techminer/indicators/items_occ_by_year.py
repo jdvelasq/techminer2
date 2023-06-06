@@ -31,7 +31,7 @@ Becker M              0     0     0     0     1     0     0     0
 
 """
 
-from ...utils import load_stopwords
+from ...load_utils import load_stopwords
 from .indicators_by_item_per_year import indicators_by_item_per_year
 
 

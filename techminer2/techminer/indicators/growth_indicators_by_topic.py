@@ -45,8 +45,8 @@ regulation                       4  ...                 -0.5
 import numpy as np
 import pandas as pd
 
-from ...utils import records
-from ...utils.load_utils import load_stopwords
+from ... import record_utils
+from ...load_utils import load_stopwords
 
 
 # pylint: disable=too-many-arguments

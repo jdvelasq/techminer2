@@ -35,7 +35,8 @@ Sarea A       2  ...                          2.00
 
 """
 
-from ...utils import load_stopwords, read_records
+from ...load_utils import load_stopwords
+from ...record_utils import read_records
 
 
 def indicators_by_item(

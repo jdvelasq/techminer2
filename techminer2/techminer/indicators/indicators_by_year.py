@@ -79,7 +79,7 @@ year                ...
 """
 import plotly.express as px
 
-from ...utils.records import read_records
+from ...record_utils import read_records
 
 
 def indicators_by_year(

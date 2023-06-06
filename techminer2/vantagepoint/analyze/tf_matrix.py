@@ -30,9 +30,9 @@ import pandas as pd
 from ...classes import TFMatrix
 from ...counters import add_counters_to_axis
 from ...item_utils import generate_custom_items
+from ...load_utils import load_stopwords
+from ...record_utils import read_records
 from ...techminer.indicators.indicators_by_item import indicators_by_item
-from ...utils.load_utils import load_stopwords
-from ...utils.records import read_records
 
 
 # pylint: disable=too-many-arguments

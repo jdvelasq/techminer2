@@ -27,7 +27,7 @@ Coupling Matrix List
 from dataclasses import dataclass
 
 from ...counters import add_counters_to_column_values
-from ...utils.records import read_records
+from ...record_utils import read_records
 
 # from .records2documents import records2documents
 

@@ -7,7 +7,7 @@ import textwrap
 
 import pandas as pd
 
-from ..create_directory import create_directory
+from .create_directory import create_directory
 
 
 def create_records_report(root_dir, target_dir, records, report_filename):
@@ -47,8 +47,8 @@ def create_records_report(root_dir, target_dir, records, report_filename):
             "source_title",
             "year",
             "abstract",
-            "author_keywords",
-            "index_keywords",
+            # "author_keywords",
+            # "index_keywords",
             "raw_author_keywords",
             "raw_index_keywords",
         ]
@@ -125,16 +125,19 @@ def create_records_report(root_dir, target_dir, records, report_filename):
                         print("AB ", end="", file=file)
 
                     if criterion == "raw_author_keywords":
-                        print("de ", end="", file=file)
-
-                    if criterion == "author_keywords":
                         print("DE ", end="", file=file)
 
-                    if criterion == "raw_index_keywords":
-                        print("id ", end="", file=file)
+                    # if criterion == "author_keywords":
+                    #     print("DE ", end="", file=file)
 
-                    if criterion == "index_keywords":
+                    if criterion == "raw_index_keywords":
                         print("ID ", end="", file=file)
+
+                    # if criterion == "index_keywords":
+                    #     print("ID ", end="", file=file)
+
+                    if str(row[criterion]) == "nan":
+                        continue
 
                     print(
                         textwrap.fill(

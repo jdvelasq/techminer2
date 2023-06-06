@@ -35,7 +35,7 @@ from os.path import isfile, join
 import pandas as pd
 
 from ..._load_thesaurus_as_dict import load_thesaurus_as_dict
-from ...utils.records import read_records
+from ...record_utils import read_records
 
 
 def keyword_concordances(

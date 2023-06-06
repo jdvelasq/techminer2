@@ -62,8 +62,8 @@ Analyze the table below, which provides bibliometric indicators for the field 'c
 import pandas as pd
 import plotly.express as px
 
+from ...check_params import check_listview
 from ...classes import BasicChart
-from ...utils import check_listview
 
 
 def world_map(

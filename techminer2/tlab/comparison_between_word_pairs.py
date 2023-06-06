@@ -77,10 +77,10 @@ import plotly.express as px
 from ..classes import WordComparison
 from ..counters import add_counters_to_column_values
 from ..item_utils import generate_custom_items
+from ..load_utils import load_stopwords
+from ..record_utils import read_records
 from ..sort_utils import sort_indicators_by_metric
 from ..techminer.indicators.indicators_by_item import indicators_by_item
-from ..utils.load_utils import load_stopwords
-from ..utils.records import read_records
 
 
 def comparison_between_word_pairs(

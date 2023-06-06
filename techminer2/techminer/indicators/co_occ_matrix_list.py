@@ -31,7 +31,8 @@ Example
 
 # pylint: disable=line-too-long
 """
-from ...utils import load_stopwords, read_records
+from ...load_utils import load_stopwords
+from ...record_utils import read_records
 
 
 # pylint: disable=too-many-arguments

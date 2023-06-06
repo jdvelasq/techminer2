@@ -23,7 +23,7 @@ searching. The report is saved to the file ``processed/record_display.txt``.
 """
 
 
-from ..utils import create_records_report, read_records
+from ..record_utils import create_records_report, read_records
 
 
 # pylint: disable=too-many-arguments
