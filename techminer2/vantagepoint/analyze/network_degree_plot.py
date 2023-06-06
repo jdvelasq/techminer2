@@ -16,7 +16,7 @@ Network Deegre Plot (*)
 >>> normalized_co_occ_matrix = vantagepoint.analyze.association_index(
 ...     co_occ_matrix, "association"
 ... )
->>> graph = vantagepoint.analyze.cluster_criterion(
+>>> graph = vantagepoint.analyze.cluster_column(
 ...    normalized_co_occ_matrix,
 ...    community_clustering='louvain',
 ... )
@@ -34,23 +34,26 @@ Network Deegre Plot (*)
 >>> print(chart.prompt_)
 Analyze the table below, which provides the degree of nodes in a networkx graph of a co-ocurrence matrix. Identify any notable patterns, trends, or outliers in the data, and discuss their implications in the network.
 <BLANKLINE>
-|    |   Node | Name                           |   Degree |
-|---:|-------:|:-------------------------------|---------:|
-|  0 |      0 | regtech 28:329                 |       12 |
-|  1 |      1 | fintech 12:249                 |       11 |
-|  2 |      2 | regulatory technology 07:037   |        9 |
-|  3 |      3 | regulation 05:164              |        9 |
-|  4 |      4 | compliance 07:030              |        8 |
-|  5 |      5 | artificial intelligence 04:023 |        7 |
-|  6 |      6 | risk management 03:014         |        7 |
-|  7 |      7 | suptech 03:004                 |        6 |
-|  8 |      8 | innovation 03:012              |        5 |
-|  9 |      9 | blockchain 03:005              |        5 |
-| 10 |     10 | financial services 04:168      |        4 |
-| 11 |     11 | financial regulation 04:035    |        4 |
-| 12 |     12 | anti-money laundering 03:021   |        3 |
+|    |   Node | Name                                   |   Degree |
+|---:|-------:|:---------------------------------------|---------:|
+|  0 |      0 | REGTECH 28:329                         |       12 |
+|  1 |      1 | FINTECH 12:249                         |       11 |
+|  2 |      2 | REGULATION 05:164                      |        9 |
+|  3 |      3 | COMPLIANCE 07:030                      |        8 |
+|  4 |      4 | ARTIFICIAL_INTELLIGENCE 04:023         |        7 |
+|  5 |      5 | RISK_MANAGEMENT 03:014                 |        7 |
+|  6 |      6 | REGULATORY_TECHNOLOGY 03:007           |        7 |
+|  7 |      7 | SUPTECH 03:004                         |        6 |
+|  8 |      8 | INNOVATION 03:012                      |        5 |
+|  9 |      9 | BLOCKCHAIN 03:005                      |        5 |
+| 10 |     10 | FINANCIAL_SERVICES 04:168              |        4 |
+| 11 |     11 | FINANCIAL_REGULATION 04:035            |        4 |
+| 12 |     12 | ANTI-MONEY_LAUNDERING 03:021           |        3 |
+| 13 |     13 | REGULATORY_TECHNOLOGY (REGTECH) 04:030 |        2 |
 <BLANKLINE>
 <BLANKLINE>
+
+
 
 
 # pylint: disable=line-too-long
@@ -63,6 +66,7 @@ from ...classes import NetworkDegreePlot
 from ...network_utils import compute_node_degree
 
 
+# pylint: disable=too-many-arguments
 def network_degree_plot(
     graph,
     textfont_size=10,

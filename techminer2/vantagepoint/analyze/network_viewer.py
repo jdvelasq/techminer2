@@ -20,7 +20,7 @@ Example:
 >>> normalized_co_occ_matrix = vantagepoint.analyze.association_index(
 ...     co_occ_matrix, "association"
 ... )
->>> graph = vantagepoint.analyze.cluster_criterion(
+>>> graph = vantagepoint.analyze.cluster_column(
 ...    normalized_co_occ_matrix,
 ...    community_clustering='louvain',
 ... )
@@ -48,6 +48,7 @@ Example:
 from ... import network_utils
 
 
+# pylint: disable=too-many-arguments
 def network_viewer(
     graph,
     n_labels=None,
