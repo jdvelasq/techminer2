@@ -23,7 +23,7 @@ Example: Auto-correlation map
 
 .. raw:: html
 
-    <iframe src="../../_static/vantagepoint__corr_map_1.html"
+    <iframe src="../../../../_static/vantagepoint__corr_map_1.html"
     height="600px" width="100%" frameBorder="0"></iframe>
 
 
@@ -57,7 +57,7 @@ Example: Cross-correlation map
 
 .. raw:: html
 
-    <iframe src="../../_static/vantagepoint__corr_map_2.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/vantagepoint__corr_map_2.html" height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> print(chart.prompt_)
@@ -89,7 +89,7 @@ from .list_cells_in_matrix import list_cells_in_matrix
 
 
 # pylint: disable=too-many-arguments
-# pylint: disable=too-many-local-variables
+# pylint: disable=too-many-locals
 def corr_map(
     matrix,
     nx_k=0.5,
