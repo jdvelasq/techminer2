@@ -3,7 +3,7 @@ import os
 import shutil
 
 from .create_directory import create_directory
-from .tlab.concordances.concordances import concordances
+from .tlab.concordances import concordances
 
 
 def clusters_concordances(

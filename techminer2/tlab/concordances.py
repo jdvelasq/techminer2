@@ -121,8 +121,8 @@ Write a clear and concise paragraph of 30 words about 'REGTECH' using the follow
 # import os.path
 # import textwrap
 
-from ...classes import Concordances
-from ...record_utils import read_records
+from ..classes import Concordances
+from ..record_utils import read_records
 
 
 # pylint: disable=too-many-arguments

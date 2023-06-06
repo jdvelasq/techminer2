@@ -21,4 +21,4 @@ Co-occurrence Analysis
 .. toctree::
     :maxdepth: 1
 
-    concordances/__index__
+    concordances
