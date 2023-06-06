@@ -375,12 +375,12 @@ def import_data(root_dir="./", disable_progress_bar=False, **document_types):
     )
 
     copy_to_column(root_dir, "title", "raw_title_noun_phrases")
+    # .map(set, na_action="ignore")
     process_column(
         root_dir,
         "raw_title_noun_phrases",
         lambda x: x.astype(str)
         .map(lambda z: TextBlob(z).noun_phrases)
-        .map(set, na_action="ignore")
         .map(sorted, na_action="ignore")
         .str.join("; ")
         .str.upper()
@@ -389,12 +389,12 @@ def import_data(root_dir="./", disable_progress_bar=False, **document_types):
     )
 
     copy_to_column(root_dir, "abstract", "raw_abstract_noun_phrases")
+    # .map(set, na_action="ignore")
     process_column(
         root_dir,
         "raw_abstract_noun_phrases",
         lambda x: x.astype(str)
         .map(lambda z: TextBlob(z).noun_phrases)
-        .map(set, na_action="ignore")
         .map(sorted, na_action="ignore")
         .str.join("; ")
         .str.upper()
