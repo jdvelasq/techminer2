@@ -10,7 +10,7 @@ Returns an auto-correlation matrix.
 
 >>> from techminer2 import vantagepoint
 >>> corr_matrix = vantagepoint.analyze.auto_corr_matrix(
-...     field='authors',
+...     rows_and_columns='authors',
 ...     top_n=10,
 ...     root_dir=root_dir,
 ... )
@@ -62,7 +62,7 @@ from .tf_matrix import tf_matrix
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 def auto_corr_matrix(
-    field,
+    rows_and_columns,
     method="pearson",
     # Item filters:
     top_n=50,
@@ -82,9 +82,9 @@ def auto_corr_matrix(
         prompt = (
             "Your task is to generate a short paragraph of a research paper "
             "analyzing the auto-correlation values between the items of the "
-            f"column '{obj.columns_}' of a bibliographic dataset.\n\n"
+            f"column '{obj.rows_and_columns_}' of a bibliographic dataset.\n\n"
             "Analyze the table below which contains the auto-correlation "
-            f"values for the '{obj.columns_}'. High correlation values "
+            f"values for the '{obj.rows_and_columns_}'. High correlation values "
             "indicate that the items tends to appear together in the same "
             "document and forms a group. Identify any notable patterns, "
             "trends, or outliers in the data, and discuss their implications "
@@ -98,7 +98,7 @@ def auto_corr_matrix(
     # Main:
     #
     data_matrix = tf_matrix(
-        field=field,
+        field=rows_and_columns,
         # Item filters:
         top_n=top_n,
         occ_range=occ_range,
@@ -113,8 +113,8 @@ def auto_corr_matrix(
     )
 
     corr_matrix = CorrMatrix()
-    corr_matrix.columns_ = field
-    corr_matrix.rows_ = field
+    corr_matrix.rows_and_columns_ = rows_and_columns
+    corr_matrix.cross_with_ = None
     corr_matrix.method_ = method
     corr_matrix.metric_ = "CORR"
     corr_matrix.matrix_ = compute_corr_matrix(
