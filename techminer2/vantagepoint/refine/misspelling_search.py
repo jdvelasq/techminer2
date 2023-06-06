@@ -1,5 +1,5 @@
 """
-Misspelling search 
+Misspelling Search 
 ===============================================================================
 
 Look for misspeling mistakes in the keywords of a thesaurus.
@@ -21,7 +21,7 @@ from os.path import isfile, join
 from spellchecker import SpellChecker
 from textblob import TextBlob
 
-# from ..._thesaurus import load_file_as_dict
+from ...thesaurus_utils import load_thesaurus_as_dict
 
 
 def misspelling_search(
@@ -32,16 +32,17 @@ def misspelling_search(
 
     # Load the thesaurus file
     th_file = join(root_dir, "processed", thesaurus_file)
-    if isfile(th_file):
-        th = load_file_as_dict(th_file)
-    else:
+
+    if not isfile(th_file):
         raise FileNotFoundError(f"The file {th_file} does not exist.")
+
+    th = load_thesaurus_as_dict(th_file)
 
     spell = SpellChecker()
 
     keywords = th.values()
     keywords = [word for keyword in keywords for word in keyword]
-    keywords = [word for keyword in keywords for word in keyword.split(" ")]
+    keywords = [word for keyword in keywords for word in keyword.split("_")]
     keywords = set(keywords)
     keywords = [word for word in keywords if word.isalpha()]
     misspelled_words = spell.unknown(keywords)
@@ -60,8 +61,8 @@ def misspelling_search(
     misspelled_file = join(root_dir, "processed", "misspelled.txt")
     with open(misspelled_file, "w", encoding="utf-8") as file:
         for misspelled, corrected in words:
-            file.write(misspelled + "\n")
-            file.write("    " + corrected + "\n")
+            file.write(misspelled.upper() + "\n")
+            file.write("    " + corrected.upper() + "\n")
 
     sys.stdout.write(
         f"--INFO-- The file {misspelled_file} has been generated.\n"

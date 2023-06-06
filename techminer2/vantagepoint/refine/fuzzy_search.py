@@ -10,45 +10,27 @@ Finds a string in the terms of a thesaurus using fuzzy search.
 >>> from techminer2 import vantagepoint
 >>> vantagepoint.refine.fuzzy_search(
 ...     thesaurus_file="keywords.txt",
-...     patterns='intelligencia',
-...     threshold=80,
+...     patterns='INTELLI',
+...     threshold=65,
 ...     root_dir=root_dir,
 ... )
-ambient intelligence
-artificial intelligence
-     artificial intelligence
-     artificial intelligence (ai)
-artificial intelligence & law
-artificial intelligence course
-     artificial intelligence course
-     artificial intelligence courses
-artificial intelligence systems
-artificial intelligence technologies
-     artificial intelligence technologies
-     artificial intelligence technology
-augmented intelligence collaboration
-business intelligence
-collective intelligence
-competitive intelligence
-computational and artificial intelligence
-     computational and artificial intelligence
-     computational and artificial intelligences
-computational intelligence
-financial intelligence units
-intelligence
-intelligence activities
-regulatory intelligence
-responsible artificial intelligence
+AMBIENT_INTELLIGENCE
+ARTIFICIAL_INTELLIGENCE
+ARTIFICIAL_INTELLIGENCE_TECHNOLOGIES
+     ARTIFICIAL_INTELLIGENCE_TECHNOLOGIES
+     ARTIFICIAL_INTELLIGENCE_TECHNOLOGY
+INTELLIGENT_MECHANISM
+     INTELLIGENT_MECHANISM
+     INTELLIGENT_MECHANISMS
 
 
 """
 import os.path
-import sys
 
 import pandas as pd
 from fuzzywuzzy import process
 
-# from ..._thesaurus import load_file_as_dict
+from ...thesaurus_utils import load_thesaurus_as_dict
 
 
 def fuzzy_search(
@@ -60,10 +42,10 @@ def fuzzy_search(
     """Find the specified keyword and reorder the thesaurus file."""
 
     th_file = os.path.join(root_dir, "processed", thesaurus_file)
-    if os.path.isfile(th_file):
-        th_dict = load_file_as_dict(th_file)
-    else:
+    if not os.path.isfile(th_file):
         raise FileNotFoundError(f"The file {th_file} does not exist.")
+
+    th_dict = load_thesaurus_as_dict(th_file)
 
     reversed_th = {
         value: key for key, values in th_dict.items() for value in values
@@ -76,10 +58,14 @@ def fuzzy_search(
         }
     )
 
+    pdf["text"] = pdf.text.str.replace("_", " ").str.lower()
+
     result = []
 
     if isinstance(patterns, str):
         patterns = [patterns]
+
+    patterns = [pattern.lower() for pattern in patterns]
 
     for pattern in patterns:
         potential_matches = process.extract(pattern, pdf.text, limit=None)
@@ -88,9 +74,7 @@ def fuzzy_search(
                 result.append(pdf[pdf.text.str.contains(potential_match[0])])
 
     if len(result) == 0:
-        sys.stdout.write(
-            "--INFO-- No matches found for the current thresold\n"
-        )
+        print("--INFO-- No matches found for the current thresold")
         return
 
     pdf = pd.concat(result)
