@@ -56,7 +56,9 @@ KEYWORDS       Raw author keywords                            149
 
     
 >>> print(stats.prompt_)
-The table below provides data on the main characteristics of the dataset. Use the the information in the table to draw conclusions. Limit your description to one paragraph with no more than 250 words.
+Your task is to generate a short summary for a research paper of a table with record and field statistics for a dataset of scientific publications.
+<BLANKLINE>
+The table below provides data on the main characteristics of the records and fields of the bibliographic dataset. Use the the information in the table to draw conclusions. Limit your description to one paragraph in at most 60 words.
 <BLANKLINE>
 |                                                        | Value     |
 |:-------------------------------------------------------|:----------|
@@ -94,6 +96,7 @@ The table below provides data on the main characteristics of the dataset. Use th
 | ('KEYWORDS', 'Cleaned index keywords')                 | 150       |
 <BLANKLINE>
 <BLANKLINE>
+
 
 
 # pylint: disable=line-too-long
@@ -654,9 +657,13 @@ def make_plot(report):
 def make_chatpgt_prompt(report):
     """Makes the chatpgt prompt"""
     return (
+        "Your task is to generate a short summary for a research paper "
+        "of a table with record and field statistics for a dataset of "
+        "scientific publications.\n\n"
         "The table below provides data on the main characteristics of the "
-        "dataset. Use the the information in the table to draw conclusions. "
-        "Limit your description to one paragraph with no more than 250 words."
+        "records and fields of the bibliographic dataset. Use the the "
+        "information in the table to draw conclusions. Limit your "
+        "description to one paragraph in at most 60 words."
         f"\n\n{report.to_markdown()}\n\n"
     )
 
