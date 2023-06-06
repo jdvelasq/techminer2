@@ -13,38 +13,37 @@ Terms by Year
 ...    root_dir=root_dir,
 ... )
 >>> r.table_
-year                            2017  2018  2019  2020  2021  2022  2023
-author_keywords                                                         
-regtech 28:329                     2     3     4     8     3     6     2
-fintech 12:249                     0     2     4     3     1     2     0
-regulatory technology 07:037       0     0     0     2     3     2     0
-compliance 07:030                  0     0     1     3     1     1     1
-regulation 05:164                  0     2     0     1     1     1     0
-financial services 04:168          1     1     0     1     0     1     0
-financial regulation 04:035        1     0     0     1     0     2     0
-artificial intelligence 04:023     0     0     1     2     0     1     0
-anti-money laundering 03:021       0     0     0     1     2     0     0
-risk management 03:014             0     1     0     1     0     1     0
+year                                    2017  2018  2019  ...  2021  2022  2023
+author_keywords                                           ...                  
+REGTECH 28:329                             2     3     4  ...     3     6     2
+FINTECH 12:249                             0     2     4  ...     1     2     0
+COMPLIANCE 07:030                          0     0     1  ...     1     1     1
+REGULATION 05:164                          0     2     0  ...     1     1     0
+FINANCIAL_SERVICES 04:168                  1     1     0  ...     0     1     0
+FINANCIAL_REGULATION 04:035                1     0     0  ...     0     2     0
+REGULATORY_TECHNOLOGY (REGTECH) 04:030     0     0     0  ...     2     1     0
+ARTIFICIAL_INTELLIGENCE 04:023             0     0     1  ...     0     1     0
+ANTI-MONEY_LAUNDERING 03:021               0     0     0  ...     2     0     0
+RISK_MANAGEMENT 03:014                     0     1     0  ...     0     1     0
+<BLANKLINE>
+[10 rows x 7 columns]
 
 
 >>> print(r.prompt_)
-Analyze the table below which contains the  occurrences by year for the \
-years. Identify any notable patterns, trends, or outliers in the data, and \
-discuss their implications for the research field. Be sure to provide a \
-concise summary of your findings in no more than 150 words.
+Analyze the table below which contains the  occurrences by year for the years. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
-| author_keywords                |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
-|:-------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
-| regtech 28:329                 |      2 |      3 |      4 |      8 |      3 |      6 |      2 |
-| fintech 12:249                 |      0 |      2 |      4 |      3 |      1 |      2 |      0 |
-| regulatory technology 07:037   |      0 |      0 |      0 |      2 |      3 |      2 |      0 |
-| compliance 07:030              |      0 |      0 |      1 |      3 |      1 |      1 |      1 |
-| regulation 05:164              |      0 |      2 |      0 |      1 |      1 |      1 |      0 |
-| financial services 04:168      |      1 |      1 |      0 |      1 |      0 |      1 |      0 |
-| financial regulation 04:035    |      1 |      0 |      0 |      1 |      0 |      2 |      0 |
-| artificial intelligence 04:023 |      0 |      0 |      1 |      2 |      0 |      1 |      0 |
-| anti-money laundering 03:021   |      0 |      0 |      0 |      1 |      2 |      0 |      0 |
-| risk management 03:014         |      0 |      1 |      0 |      1 |      0 |      1 |      0 |
+| author_keywords                        |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
+|:---------------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
+| REGTECH 28:329                         |      2 |      3 |      4 |      8 |      3 |      6 |      2 |
+| FINTECH 12:249                         |      0 |      2 |      4 |      3 |      1 |      2 |      0 |
+| COMPLIANCE 07:030                      |      0 |      0 |      1 |      3 |      1 |      1 |      1 |
+| REGULATION 05:164                      |      0 |      2 |      0 |      1 |      1 |      1 |      0 |
+| FINANCIAL_SERVICES 04:168              |      1 |      1 |      0 |      1 |      0 |      1 |      0 |
+| FINANCIAL_REGULATION 04:035            |      1 |      0 |      0 |      1 |      0 |      2 |      0 |
+| REGULATORY_TECHNOLOGY (REGTECH) 04:030 |      0 |      0 |      0 |      1 |      2 |      1 |      0 |
+| ARTIFICIAL_INTELLIGENCE 04:023         |      0 |      0 |      1 |      2 |      0 |      1 |      0 |
+| ANTI-MONEY_LAUNDERING 03:021           |      0 |      0 |      0 |      1 |      2 |      0 |      0 |
+| RISK_MANAGEMENT 03:014                 |      0 |      1 |      0 |      1 |      0 |      1 |      0 |
 <BLANKLINE>
 <BLANKLINE>
 
@@ -56,44 +55,42 @@ concise summary of your findings in no more than 150 words.
 ...    cumulative=True,
 ... )
 >>> r.table_
-year                            2017  2018  2019  2020  2021  2022  2023
-author_keywords                                                         
-regtech 28:329                     2     5     9    17    20    26    28
-fintech 12:249                     0     2     6     9    10    12    12
-regulatory technology 07:037       0     0     0     2     5     7     7
-compliance 07:030                  0     0     1     4     5     6     7
-regulation 05:164                  0     2     2     3     4     5     5
-financial services 04:168          1     2     2     3     3     4     4
-financial regulation 04:035        1     1     1     2     2     4     4
-artificial intelligence 04:023     0     0     1     3     3     4     4
-anti-money laundering 03:021       0     0     0     1     3     3     3
-risk management 03:014             0     1     1     2     2     3     3
+year                                    2017  2018  2019  ...  2021  2022  2023
+author_keywords                                           ...                  
+REGTECH 28:329                             2     5     9  ...    20    26    28
+FINTECH 12:249                             0     2     6  ...    10    12    12
+COMPLIANCE 07:030                          0     0     1  ...     5     6     7
+REGULATION 05:164                          0     2     2  ...     4     5     5
+FINANCIAL_SERVICES 04:168                  1     2     2  ...     3     4     4
+FINANCIAL_REGULATION 04:035                1     1     1  ...     2     4     4
+REGULATORY_TECHNOLOGY (REGTECH) 04:030     0     0     0  ...     3     4     4
+ARTIFICIAL_INTELLIGENCE 04:023             0     0     1  ...     3     4     4
+ANTI-MONEY_LAUNDERING 03:021               0     0     0  ...     3     3     3
+RISK_MANAGEMENT 03:014                     0     1     1  ...     2     3     3
+<BLANKLINE>
+[10 rows x 7 columns]
 
 
 >>> print(r.prompt_)
-Analyze the table below which contains the cumulative occurrences by year for \
-the years. Identify any notable patterns, trends, or outliers in the data, \
-and discuss their implications for the research field. Be sure to provide a \
-concise summary of your findings in no more than 150 words.
+Analyze the table below which contains the cumulative occurrences by year for the years. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
-| author_keywords                |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
-|:-------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
-| regtech 28:329                 |      2 |      5 |      9 |     17 |     20 |     26 |     28 |
-| fintech 12:249                 |      0 |      2 |      6 |      9 |     10 |     12 |     12 |
-| regulatory technology 07:037   |      0 |      0 |      0 |      2 |      5 |      7 |      7 |
-| compliance 07:030              |      0 |      0 |      1 |      4 |      5 |      6 |      7 |
-| regulation 05:164              |      0 |      2 |      2 |      3 |      4 |      5 |      5 |
-| financial services 04:168      |      1 |      2 |      2 |      3 |      3 |      4 |      4 |
-| financial regulation 04:035    |      1 |      1 |      1 |      2 |      2 |      4 |      4 |
-| artificial intelligence 04:023 |      0 |      0 |      1 |      3 |      3 |      4 |      4 |
-| anti-money laundering 03:021   |      0 |      0 |      0 |      1 |      3 |      3 |      3 |
-| risk management 03:014         |      0 |      1 |      1 |      2 |      2 |      3 |      3 |
+| author_keywords                        |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
+|:---------------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
+| REGTECH 28:329                         |      2 |      5 |      9 |     17 |     20 |     26 |     28 |
+| FINTECH 12:249                         |      0 |      2 |      6 |      9 |     10 |     12 |     12 |
+| COMPLIANCE 07:030                      |      0 |      0 |      1 |      4 |      5 |      6 |      7 |
+| REGULATION 05:164                      |      0 |      2 |      2 |      3 |      4 |      5 |      5 |
+| FINANCIAL_SERVICES 04:168              |      1 |      2 |      2 |      3 |      3 |      4 |      4 |
+| FINANCIAL_REGULATION 04:035            |      1 |      1 |      1 |      2 |      2 |      4 |      4 |
+| REGULATORY_TECHNOLOGY (REGTECH) 04:030 |      0 |      0 |      0 |      1 |      3 |      4 |      4 |
+| ARTIFICIAL_INTELLIGENCE 04:023         |      0 |      0 |      1 |      3 |      3 |      4 |      4 |
+| ANTI-MONEY_LAUNDERING 03:021           |      0 |      0 |      0 |      1 |      3 |      3 |      3 |
+| RISK_MANAGEMENT 03:014                 |      0 |      1 |      1 |      2 |      2 |      3 |      3 |
 <BLANKLINE>
 <BLANKLINE>
 
 
 # noga: E501 W291
-
 """
 from ...classes import TermsByYear
 from ...counters import add_counters_to_axis

@@ -35,15 +35,14 @@ AUTHORS        Authors                                        102
                Author appearances                             119
                Documents per author                          0.44
                Collaboration index                            1.0
-               Organizations                                   80
-               Organizations (1st author)                      44
+               Organizations                                   81
+               Organizations (1st author)                      45
                Countries                                       29
                Countries (1st author)                          25
 KEYWORDS       Raw author keywords                            149
-               Cleaned author keywords                        144
+               Cleaned author keywords                        147
                Raw index keywords                             155
                Cleaned index keywords                         150
-
 
             
                
@@ -85,12 +84,12 @@ The table below provides data on the main characteristics of the dataset. Use th
 | ('AUTHORS', 'Author appearances')                      | 119       |
 | ('AUTHORS', 'Documents per author')                    | 0.44      |
 | ('AUTHORS', 'Collaboration index')                     | 1.0       |
-| ('AUTHORS', 'Organizations')                           | 80        |
-| ('AUTHORS', 'Organizations (1st author)')              | 44        |
+| ('AUTHORS', 'Organizations')                           | 81        |
+| ('AUTHORS', 'Organizations (1st author)')              | 45        |
 | ('AUTHORS', 'Countries')                               | 29        |
 | ('AUTHORS', 'Countries (1st author)')                  | 25        |
 | ('KEYWORDS', 'Raw author keywords')                    | 149       |
-| ('KEYWORDS', 'Cleaned author keywords')                | 144       |
+| ('KEYWORDS', 'Cleaned author keywords')                | 147       |
 | ('KEYWORDS', 'Raw index keywords')                     | 155       |
 | ('KEYWORDS', 'Cleaned index keywords')                 | 150       |
 <BLANKLINE>
