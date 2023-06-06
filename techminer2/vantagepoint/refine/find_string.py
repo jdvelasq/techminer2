@@ -10,18 +10,17 @@ Finds a string in the terms of a thesaurus.
 >>> from techminer2 import vantagepoint
 >>> vantagepoint.refine.find_string(
 ...     thesaurus_file="keywords.txt",
-...     contains='artificial intelligence',
+...     contains='ARTIFICIAL_INTELLIGENCE',
 ...     root_dir=root_dir,
 ... )
 --INFO-- The file data/regtech/processed/keywords.txt has been reordered.
 
 """
 import os.path
-import sys
 
 import pandas as pd
 
-# from ..._thesaurus import load_file_as_dict
+from ...thesaurus_utils import load_thesaurus_as_dict
 
 
 def find_string(
@@ -34,10 +33,10 @@ def find_string(
     """Find the specified keyword and reorder the thesaurus file."""
 
     th_file = os.path.join(root_dir, "processed", thesaurus_file)
-    if os.path.isfile(th_file):
-        th_dict = load_file_as_dict(th_file)
-    else:
+    if not os.path.isfile(th_file):
         raise FileNotFoundError(f"The file {th_file} does not exist.")
+
+    th_dict = load_thesaurus_as_dict(th_file)
 
     reversed_th = {
         value: key for key, values in th_dict.items() for value in values
@@ -89,10 +88,4 @@ def find_string(
             for item in th_dict[key]:
                 file.write("    " + item + "\n")
 
-    sys.stdout.write(f"--INFO-- The file {th_file} has been reordered.\n")
-
-    # for key, items in sorted(findings.items()):
-    #     print(key)
-    #     if len(items) > 1:
-    #         for item in sorted(items):
-    #             print("    ", item)
+    print(f"--INFO-- The file {th_file} has been reordered.")
