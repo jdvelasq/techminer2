@@ -24,68 +24,74 @@ Example: Clustering using community detection algorithms.
 ...    community_clustering='label_propagation',
 ... )
 >>> print(vantagepoint.analyze.cluster_items(graph).to_markdown())
-|    | CL_00                              |
-|---:|:-----------------------------------|
-|  0 | regtech 28:329                     |
-|  1 | fintech 12:249                     |
-|  2 | regulatory technology 07:037       |
-|  3 | compliance 07:030                  |
-|  4 | regulation 05:164                  |
-|  5 | financial services 04:168          |
-|  6 | financial regulation 04:035        |
-|  7 | artificial intelligence 04:023     |
-|  8 | anti-money laundering 03:021       |
-|  9 | risk management 03:014             |
-| 10 | innovation 03:012                  |
-| 11 | blockchain 03:005                  |
-| 12 | suptech 03:004                     |
-| 13 | semantic technologies 02:041       |
-| 14 | data protection 02:027             |
-| 15 | smart contracts 02:022             |
-| 16 | charitytech 02:017                 |
-| 17 | english law 02:017                 |
-| 18 | accountability 02:014              |
-| 19 | data protection officer 02:014     |
-| 20 | gdpr 02:014                        |
-| 21 | anti money laundering (aml) 02:013 |
-| 22 | sandbox 02:012                     |
-| 23 | technology 02:010                  |
-| 24 | finance 02:001                     |
-| 25 | reporting 02:001                   |
+|    | CL_00                                  |
+|---:|:---------------------------------------|
+|  0 | REGTECH 28:329                         |
+|  1 | FINTECH 12:249                         |
+|  2 | COMPLIANCE 07:030                      |
+|  3 | REGULATION 05:164                      |
+|  4 | FINANCIAL_SERVICES 04:168              |
+|  5 | FINANCIAL_REGULATION 04:035            |
+|  6 | REGULATORY_TECHNOLOGY (REGTECH) 04:030 |
+|  7 | ARTIFICIAL_INTELLIGENCE 04:023         |
+|  8 | ANTI-MONEY_LAUNDERING 03:021           |
+|  9 | RISK_MANAGEMENT 03:014                 |
+| 10 | INNOVATION 03:012                      |
+| 11 | REGULATORY_TECHNOLOGY 03:007           |
+| 12 | BLOCKCHAIN 03:005                      |
+| 13 | SUPTECH 03:004                         |
+| 14 | DATA_PROTECTION 02:027                 |
+| 15 | SMART_CONTRACT 02:022                  |
+| 16 | CHARITYTECH 02:017                     |
+| 17 | ENGLISH_LAW 02:017                     |
+| 18 | ACCOUNTABILITY 02:014                  |
+| 19 | DATA_PROTECTION_OFFICER 02:014         |
+| 20 | GDPR 02:014                            |
+| 21 | SANDBOXES 02:012                       |
+| 22 | TECHNOLOGY 02:010                      |
+| 23 | FINANCE 02:001                         |
+| 24 | REPORTING 02:001                       |
 
 
->>> graph = vantagepoint.analyze.cluster_field(
+
+
+>>> graph = vantagepoint.analyze.cluster_column(
 ...    normalized_co_occ_matrix,
 ...    community_clustering='louvain',
 ... )
 >>> print(vantagepoint.analyze.cluster_items(graph).to_markdown())
-|    | CL_00                        | CL_01                          | CL_02                              | CL_03                          |
-|---:|:-----------------------------|:-------------------------------|:-----------------------------------|:-------------------------------|
-|  0 | fintech 12:249               | regtech 28:329                 | regulatory technology 07:037       | artificial intelligence 04:023 |
-|  1 | regulation 05:164            | compliance 07:030              | risk management 03:014             | anti-money laundering 03:021   |
-|  2 | financial services 04:168    | blockchain 03:005              | suptech 03:004                     | charitytech 02:017             |
-|  3 | financial regulation 04:035  | smart contracts 02:022         | anti money laundering (aml) 02:013 | english law 02:017             |
-|  4 | innovation 03:012            | accountability 02:014          | reporting 02:001                   |                                |
-|  5 | semantic technologies 02:041 | data protection officer 02:014 |                                    |                                |
-|  6 | data protection 02:027       | gdpr 02:014                    |                                    |                                |
-|  7 | sandbox 02:012               | technology 02:010              |                                    |                                |
-|  8 | finance 02:001               |                                |                                    |                                |
+|    | CL_00                          | CL_01                       | CL_02                        | CL_03                                  |
+|---:|:-------------------------------|:----------------------------|:-----------------------------|:---------------------------------------|
+|  0 | REGTECH 28:329                 | FINTECH 12:249              | REGULATION 05:164            | REGULATORY_TECHNOLOGY (REGTECH) 04:030 |
+|  1 | COMPLIANCE 07:030              | FINANCIAL_SERVICES 04:168   | RISK_MANAGEMENT 03:014       | ARTIFICIAL_INTELLIGENCE 04:023         |
+|  2 | BLOCKCHAIN 03:005              | FINANCIAL_REGULATION 04:035 | REGULATORY_TECHNOLOGY 03:007 | ANTI-MONEY_LAUNDERING 03:021           |
+|  3 | SMART_CONTRACT 02:022          | INNOVATION 03:012           | SUPTECH 03:004               | CHARITYTECH 02:017                     |
+|  4 | ACCOUNTABILITY 02:014          | DATA_PROTECTION 02:027      | REPORTING 02:001             | ENGLISH_LAW 02:017                     |
+|  5 | DATA_PROTECTION_OFFICER 02:014 | FINANCE 02:001              |                              |                                        |
+|  6 | GDPR 02:014                    |                             |                              |                                        |
+|  7 | SANDBOXES 02:012               |                             |                              |                                        |
+|  8 | TECHNOLOGY 02:010              |                             |                              |                                        |
 
 
->>> graph = vantagepoint.analyze.cluster_field(
+>>> graph = vantagepoint.analyze.cluster_column(
 ...    normalized_co_occ_matrix,
 ...    community_clustering='walktrap',
 ... )
 >>> print(vantagepoint.analyze.cluster_items(graph).to_markdown())
-|    | CL_00                        | CL_01                       | CL_02                  | CL_03                          | CL_04                          | CL_05                              |
-|---:|:-----------------------------|:----------------------------|:-----------------------|:-------------------------------|:-------------------------------|:-----------------------------------|
-|  0 | fintech 12:249               | financial services 04:168   | regtech 28:329         | artificial intelligence 04:023 | accountability 02:014          | anti money laundering (aml) 02:013 |
-|  1 | regulatory technology 07:037 | financial regulation 04:035 | compliance 07:030      | anti-money laundering 03:021   | data protection officer 02:014 |                                    |
-|  2 | regulation 05:164            | innovation 03:012           | blockchain 03:005      | charitytech 02:017             | gdpr 02:014                    |                                    |
-|  3 | risk management 03:014       | data protection 02:027      | smart contracts 02:022 | english law 02:017             |                                |                                    |
-|  4 | suptech 03:004               | sandbox 02:012              | technology 02:010      |                                |                                |                                    |
-|  5 | semantic technologies 02:041 | finance 02:001              |                        |                                |                                |                                    |
-|  6 | reporting 02:001             |                             |                        |                                |                                |                                    |
+|    | CL_00                        | CL_01                          | CL_02                                  | CL_03                          |
+|---:|:-----------------------------|:-------------------------------|:---------------------------------------|:-------------------------------|
+|  0 | FINTECH 12:249               | REGTECH 28:329                 | REGULATORY_TECHNOLOGY (REGTECH) 04:030 | ACCOUNTABILITY 02:014          |
+|  1 | REGULATION 05:164            | COMPLIANCE 07:030              | ANTI-MONEY_LAUNDERING 03:021           | DATA_PROTECTION_OFFICER 02:014 |
+|  2 | FINANCIAL_SERVICES 04:168    | ARTIFICIAL_INTELLIGENCE 04:023 | CHARITYTECH 02:017                     | GDPR 02:014                    |
+|  3 | FINANCIAL_REGULATION 04:035  | BLOCKCHAIN 03:005              | ENGLISH_LAW 02:017                     |                                |
+|  4 | RISK_MANAGEMENT 03:014       | SMART_CONTRACT 02:022          |                                        |                                |
+|  5 | INNOVATION 03:012            | TECHNOLOGY 02:010              |                                        |                                |
+|  6 | REGULATORY_TECHNOLOGY 03:007 |                                |                                        |                                |
+|  7 | SUPTECH 03:004               |                                |                                        |                                |
+|  8 | DATA_PROTECTION 02:027       |                                |                                        |                                |
+|  9 | SANDBOXES 02:012             |                                |                                        |                                |
+| 10 | FINANCE 02:001               |                                |                                        |                                |
+| 11 | REPORTING 02:001             |                                |                                        |                                |
 
 
 
@@ -101,25 +107,30 @@ Example: Clustering using sklearn algoritms.
 ... )
 >>> from sklearn.cluster import KMeans
 >>> kmeans = KMeans(n_clusters=4, random_state=1)
->>> graph = vantagepoint.analyze.cluster_field(
+>>> graph = vantagepoint.analyze.cluster_column(
 ...    co_occ_matrix,
 ...    sklearn_clustering=kmeans,
 ... )
 >>> print(vantagepoint.analyze.cluster_items(graph).to_markdown())
-|    | CL_00                        | CL_01                          | CL_02                          | CL_03                              |
-|---:|:-----------------------------|:-------------------------------|:-------------------------------|:-----------------------------------|
-|  0 | fintech 12:249               | regtech 28:329                 | artificial intelligence 04:023 | anti money laundering (aml) 02:013 |
-|  1 | regulatory technology 07:037 | compliance 07:030              | anti-money laundering 03:021   |                                    |
-|  2 | regulation 05:164            | blockchain 03:005              | charitytech 02:017             |                                    |
-|  3 | financial services 04:168    | data protection 02:027         | english law 02:017             |                                    |
-|  4 | financial regulation 04:035  | smart contracts 02:022         |                                |                                    |
-|  5 | risk management 03:014       | accountability 02:014          |                                |                                    |
-|  6 | innovation 03:012            | data protection officer 02:014 |                                |                                    |
-|  7 | suptech 03:004               | gdpr 02:014                    |                                |                                    |
-|  8 | semantic technologies 02:041 | technology 02:010              |                                |                                    |
-|  9 | sandbox 02:012               |                                |                                |                                    |
-| 10 | finance 02:001               |                                |                                |                                    |
-| 11 | reporting 02:001             |                                |                                |                                    |
+|    | CL_00                        | CL_01                          | CL_02                          | CL_03                                  |
+|---:|:-----------------------------|:-------------------------------|:-------------------------------|:---------------------------------------|
+|  0 | REGTECH 28:329               | COMPLIANCE 07:030              | ARTIFICIAL_INTELLIGENCE 04:023 | REGULATORY_TECHNOLOGY (REGTECH) 04:030 |
+|  1 | FINTECH 12:249               | ACCOUNTABILITY 02:014          | ANTI-MONEY_LAUNDERING 03:021   |                                        |
+|  2 | REGULATION 05:164            | DATA_PROTECTION_OFFICER 02:014 | CHARITYTECH 02:017             |                                        |
+|  3 | FINANCIAL_SERVICES 04:168    | GDPR 02:014                    | ENGLISH_LAW 02:017             |                                        |
+|  4 | FINANCIAL_REGULATION 04:035  | TECHNOLOGY 02:010              |                                |                                        |
+|  5 | RISK_MANAGEMENT 03:014       |                                |                                |                                        |
+|  6 | INNOVATION 03:012            |                                |                                |                                        |
+|  7 | REGULATORY_TECHNOLOGY 03:007 |                                |                                |                                        |
+|  8 | BLOCKCHAIN 03:005            |                                |                                |                                        |
+|  9 | SUPTECH 03:004               |                                |                                |                                        |
+| 10 | DATA_PROTECTION 02:027       |                                |                                |                                        |
+| 11 | SMART_CONTRACT 02:022        |                                |                                |                                        |
+| 12 | SANDBOXES 02:012             |                                |                                |                                        |
+| 13 | FINANCE 02:001               |                                |                                |                                        |
+| 14 | REPORTING 02:001             |                                |                                |                                        |
+
+
 
 
 # pylint: disable=line-too-long
