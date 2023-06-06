@@ -21,10 +21,10 @@ Example: Matrix subset for a occurrence matrix.
 ... )
 >>> matrix_subset = vantagepoint.analyze.matrix_subset(
 ...    co_occ_matrix,
-...    custom_items=['regtech', 'fintech'],
+...    custom_items=['REGTECH', 'FINTECH'],
 ... )
 >>> matrix_subset.matrix_
-column             regtech 28:329  fintech 12:249
+column             REGTECH 28:329  FINTECH 12:249
 row                                              
 Arner DW 3:185                  2               1
 Buckley RP 3:185                2               1
@@ -35,14 +35,16 @@ Singh C 2:017                   2               0
 Brennan R 2:014                 2               0
 Crane M 2:014                   2               0
 
+
+
 >>> matrix_subset.custom_items_
-['regtech 28:329', 'fintech 12:249']
+['REGTECH 28:329', 'FINTECH 12:249']
 
 
 >>> print(matrix_subset.prompt_)
-Analyze the table below which contains values of co-occurrence (OCC) for the ['regtech', 'fintech'] and 'authors' fields in a bibliographic dataset. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
+Analyze the table below which contains values of co-occurrence (OCC) for the ['REGTECH', 'FINTECH'] and 'authors' fields in a bibliographic dataset. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
-| row               |   regtech 28:329 |   fintech 12:249 |
+| row               |   REGTECH 28:329 |   FINTECH 12:249 |
 |:------------------|-----------------:|-----------------:|
 | Arner DW 3:185    |                2 |                1 |
 | Buckley RP 3:185  |                2 |                1 |
@@ -71,41 +73,44 @@ Example: Matrix subset for a co-occurrence matrix.
 ... )
 >>> matrix_subset = vantagepoint.analyze.matrix_subset(
 ...    co_occ_matrix,
-...    custom_items=['regtech', 'fintech', "compliance", 'regulation', 
-...        'financial services'],
+...    custom_items=['REGTECH', 'FINTECH', "COMPLIANCE", 'REGULATION', 
+...        'FINANCIAL_SERVICES'],
 ... )
 >>> matrix_subset.matrix_
-column                          regtech 28:329  ...  financial services 04:168
+column                          REGTECH 28:329  ...  FINANCIAL_SERVICES 04:168
 row                                             ...                           
-regulatory technology 07:037                 2  ...                          0
-financial regulation 04:035                  2  ...                          2
-artificial intelligence 04:023               2  ...                          0
-anti-money laundering 03:021                 1  ...                          0
-risk management 03:014                       2  ...                          0
-innovation 03:012                            1  ...                          0
-blockchain 03:005                            2  ...                          0
-suptech 03:004                               3  ...                          0
+FINANCIAL_REGULATION 04:035                  2  ...                          2
+ARTIFICIAL_INTELLIGENCE 04:023               2  ...                          0
+ANTI-MONEY_LAUNDERING 03:021                 1  ...                          0
+RISK_MANAGEMENT 03:014                       2  ...                          0
+INNOVATION 03:012                            1  ...                          0
+REGULATORY_TECHNOLOGY 03:007                 2  ...                          0
+BLOCKCHAIN 03:005                            2  ...                          0
+SUPTECH 03:004                               3  ...                          0
 <BLANKLINE>
 [8 rows x 5 columns]
 
+
 >>> matrix_subset.custom_items_
-['regtech 28:329', 'fintech 12:249', 'compliance 07:030', 'regulation 05:164', 'financial services 04:168']
+['REGTECH 28:329', 'FINTECH 12:249', 'COMPLIANCE 07:030', 'REGULATION 05:164', 'FINANCIAL_SERVICES 04:168']
 
 >>> print(matrix_subset.prompt_)
-Analyze the table below which contains values of co-occurrence (OCC) for the ['regtech', 'fintech', 'compliance', 'regulation', 'financial services'] and 'author_keywords' fields in a bibliographic dataset. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
+Analyze the table below which contains values of co-occurrence (OCC) for the ['REGTECH', 'FINTECH', 'COMPLIANCE', 'REGULATION', 'FINANCIAL_SERVICES'] and 'author_keywords' fields in a bibliographic dataset. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
-| row                            |   regtech 28:329 |   fintech 12:249 |   compliance 07:030 |   regulation 05:164 |   financial services 04:168 |
+| row                            |   REGTECH 28:329 |   FINTECH 12:249 |   COMPLIANCE 07:030 |   REGULATION 05:164 |   FINANCIAL_SERVICES 04:168 |
 |:-------------------------------|-----------------:|-----------------:|--------------------:|--------------------:|----------------------------:|
-| regulatory technology 07:037   |                2 |                1 |                   1 |                   1 |                           0 |
-| financial regulation 04:035    |                2 |                1 |                   0 |                   0 |                           2 |
-| artificial intelligence 04:023 |                2 |                1 |                   1 |                   0 |                           0 |
-| anti-money laundering 03:021   |                1 |                0 |                   0 |                   0 |                           0 |
-| risk management 03:014         |                2 |                2 |                   1 |                   2 |                           0 |
-| innovation 03:012              |                1 |                1 |                   0 |                   1 |                           0 |
-| blockchain 03:005              |                2 |                1 |                   1 |                   1 |                           0 |
-| suptech 03:004                 |                3 |                2 |                   1 |                   1 |                           0 |
+| FINANCIAL_REGULATION 04:035    |                2 |                1 |                   0 |                   0 |                           2 |
+| ARTIFICIAL_INTELLIGENCE 04:023 |                2 |                1 |                   1 |                   0 |                           0 |
+| ANTI-MONEY_LAUNDERING 03:021   |                1 |                0 |                   0 |                   0 |                           0 |
+| RISK_MANAGEMENT 03:014         |                2 |                2 |                   1 |                   2 |                           0 |
+| INNOVATION 03:012              |                1 |                1 |                   0 |                   1 |                           0 |
+| REGULATORY_TECHNOLOGY 03:007   |                2 |                1 |                   1 |                   1 |                           0 |
+| BLOCKCHAIN 03:005              |                2 |                1 |                   1 |                   1 |                           0 |
+| SUPTECH 03:004                 |                3 |                2 |                   1 |                   1 |                           0 |
 <BLANKLINE>
 <BLANKLINE>
+
+
 
 
 
@@ -115,51 +120,55 @@ Example: Matrix subset for an ego matrix.
 
 >>> matrix_subset = vantagepoint.analyze.matrix_subset(
 ...    co_occ_matrix,
-...    custom_items=['regtech', 'fintech', "compliance", 'regulation',
-...        'financial services'],
+...    custom_items=['REGTECH', 'FINTECH', "COMPLIANCE", 'REGULATION',
+...        'FINANCIAL_SERVICES'],
 ...    is_ego_matrix=True,
 ... )
 >>> matrix_subset.matrix_
-column                          regtech 28:329  ...  suptech 03:004
+column                          REGTECH 28:329  ...  SUPTECH 03:004
 row                                             ...                
-regtech 28:329                              28  ...               3
-fintech 12:249                              12  ...               2
-regulatory technology 07:037                 2  ...               1
-compliance 07:030                            7  ...               1
-regulation 05:164                            4  ...               1
-financial services 04:168                    3  ...               0
-financial regulation 04:035                  2  ...               0
-artificial intelligence 04:023               2  ...               0
-anti-money laundering 03:021                 1  ...               0
-risk management 03:014                       2  ...               1
-innovation 03:012                            1  ...               0
-blockchain 03:005                            2  ...               0
-suptech 03:004                               3  ...               3
+REGTECH 28:329                              28  ...               3
+FINTECH 12:249                              12  ...               2
+COMPLIANCE 07:030                            7  ...               1
+REGULATION 05:164                            4  ...               1
+FINANCIAL_SERVICES 04:168                    3  ...               0
+FINANCIAL_REGULATION 04:035                  2  ...               0
+ARTIFICIAL_INTELLIGENCE 04:023               2  ...               0
+ANTI-MONEY_LAUNDERING 03:021                 1  ...               0
+RISK_MANAGEMENT 03:014                       2  ...               1
+INNOVATION 03:012                            1  ...               0
+REGULATORY_TECHNOLOGY 03:007                 2  ...               1
+BLOCKCHAIN 03:005                            2  ...               0
+SUPTECH 03:004                               3  ...               3
 <BLANKLINE>
 [13 rows x 13 columns]
 
+
+
 >>> matrix_subset.custom_items_
-['regtech 28:329', 'fintech 12:249', 'compliance 07:030', 'regulation 05:164', 'financial services 04:168']
+['REGTECH 28:329', 'FINTECH 12:249', 'COMPLIANCE 07:030', 'REGULATION 05:164', 'FINANCIAL_SERVICES 04:168']
+
+
 
 
 >>> print(matrix_subset.prompt_)
 Analyze the table below which contains values of co-occurrence (OCC) for the 'author_keywords' fields in a bibliographic dataset. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
-| row                            |   regtech 28:329 |   fintech 12:249 |   regulatory technology 07:037 |   compliance 07:030 |   regulation 05:164 |   financial services 04:168 |   financial regulation 04:035 |   artificial intelligence 04:023 |   anti-money laundering 03:021 |   risk management 03:014 |   innovation 03:012 |   blockchain 03:005 |   suptech 03:004 |
-|:-------------------------------|-----------------:|-----------------:|-------------------------------:|--------------------:|--------------------:|----------------------------:|------------------------------:|---------------------------------:|-------------------------------:|-------------------------:|--------------------:|--------------------:|-----------------:|
-| regtech 28:329                 |               28 |               12 |                              2 |                   7 |                   4 |                           3 |                             2 |                                2 |                              1 |                        2 |                   1 |                   2 |                3 |
-| fintech 12:249                 |               12 |               12 |                              1 |                   2 |                   4 |                           2 |                             1 |                                1 |                              0 |                        2 |                   1 |                   1 |                2 |
-| regulatory technology 07:037   |                2 |                1 |                              7 |                   1 |                   1 |                           0 |                             0 |                                1 |                              1 |                        2 |                   1 |                   0 |                1 |
-| compliance 07:030              |                7 |                2 |                              1 |                   7 |                   1 |                           0 |                             0 |                                1 |                              0 |                        1 |                   0 |                   1 |                1 |
-| regulation 05:164              |                4 |                4 |                              1 |                   1 |                   5 |                           1 |                             0 |                                0 |                              0 |                        2 |                   1 |                   1 |                1 |
-| financial services 04:168      |                3 |                2 |                              0 |                   0 |                   1 |                           4 |                             2 |                                0 |                              0 |                        0 |                   0 |                   0 |                0 |
-| financial regulation 04:035    |                2 |                1 |                              0 |                   0 |                   0 |                           2 |                             4 |                                0 |                              0 |                        0 |                   1 |                   0 |                0 |
-| artificial intelligence 04:023 |                2 |                1 |                              1 |                   1 |                   0 |                           0 |                             0 |                                4 |                              1 |                        1 |                   0 |                   1 |                0 |
-| anti-money laundering 03:021   |                1 |                0 |                              1 |                   0 |                   0 |                           0 |                             0 |                                1 |                              3 |                        0 |                   0 |                   0 |                0 |
-| risk management 03:014         |                2 |                2 |                              2 |                   1 |                   2 |                           0 |                             0 |                                1 |                              0 |                        3 |                   0 |                   0 |                1 |
-| innovation 03:012              |                1 |                1 |                              1 |                   0 |                   1 |                           0 |                             1 |                                0 |                              0 |                        0 |                   3 |                   0 |                0 |
-| blockchain 03:005              |                2 |                1 |                              0 |                   1 |                   1 |                           0 |                             0 |                                1 |                              0 |                        0 |                   0 |                   3 |                0 |
-| suptech 03:004                 |                3 |                2 |                              1 |                   1 |                   1 |                           0 |                             0 |                                0 |                              0 |                        1 |                   0 |                   0 |                3 |
+| row                            |   REGTECH 28:329 |   FINTECH 12:249 |   COMPLIANCE 07:030 |   REGULATION 05:164 |   FINANCIAL_SERVICES 04:168 |   FINANCIAL_REGULATION 04:035 |   ARTIFICIAL_INTELLIGENCE 04:023 |   ANTI-MONEY_LAUNDERING 03:021 |   RISK_MANAGEMENT 03:014 |   INNOVATION 03:012 |   REGULATORY_TECHNOLOGY 03:007 |   BLOCKCHAIN 03:005 |   SUPTECH 03:004 |
+|:-------------------------------|-----------------:|-----------------:|--------------------:|--------------------:|----------------------------:|------------------------------:|---------------------------------:|-------------------------------:|-------------------------:|--------------------:|-------------------------------:|--------------------:|-----------------:|
+| REGTECH 28:329                 |               28 |               12 |                   7 |                   4 |                           3 |                             2 |                                2 |                              1 |                        2 |                   1 |                              2 |                   2 |                3 |
+| FINTECH 12:249                 |               12 |               12 |                   2 |                   4 |                           2 |                             1 |                                1 |                              0 |                        2 |                   1 |                              1 |                   1 |                2 |
+| COMPLIANCE 07:030              |                7 |                2 |                   7 |                   1 |                           0 |                             0 |                                1 |                              0 |                        1 |                   0 |                              1 |                   1 |                1 |
+| REGULATION 05:164              |                4 |                4 |                   1 |                   5 |                           1 |                             0 |                                0 |                              0 |                        2 |                   1 |                              1 |                   1 |                1 |
+| FINANCIAL_SERVICES 04:168      |                3 |                2 |                   0 |                   1 |                           4 |                             2 |                                0 |                              0 |                        0 |                   0 |                              0 |                   0 |                0 |
+| FINANCIAL_REGULATION 04:035    |                2 |                1 |                   0 |                   0 |                           2 |                             4 |                                0 |                              0 |                        0 |                   1 |                              0 |                   0 |                0 |
+| ARTIFICIAL_INTELLIGENCE 04:023 |                2 |                1 |                   1 |                   0 |                           0 |                             0 |                                4 |                              1 |                        1 |                   0 |                              1 |                   1 |                0 |
+| ANTI-MONEY_LAUNDERING 03:021   |                1 |                0 |                   0 |                   0 |                           0 |                             0 |                                1 |                              3 |                        0 |                   0 |                              0 |                   0 |                0 |
+| RISK_MANAGEMENT 03:014         |                2 |                2 |                   1 |                   2 |                           0 |                             0 |                                1 |                              0 |                        3 |                   0 |                              2 |                   0 |                1 |
+| INNOVATION 03:012              |                1 |                1 |                   0 |                   1 |                           0 |                             1 |                                0 |                              0 |                        0 |                   3 |                              0 |                   0 |                0 |
+| REGULATORY_TECHNOLOGY 03:007   |                2 |                1 |                   1 |                   1 |                           0 |                             0 |                                1 |                              0 |                        2 |                   0 |                              3 |                   0 |                1 |
+| BLOCKCHAIN 03:005              |                2 |                1 |                   1 |                   1 |                           0 |                             0 |                                1 |                              0 |                        0 |                   0 |                              0 |                   3 |                0 |
+| SUPTECH 03:004                 |                3 |                2 |                   1 |                   1 |                           0 |                             0 |                                0 |                              0 |                        1 |                   0 |                              1 |                   0 |                3 |
 <BLANKLINE>
 <BLANKLINE>
 

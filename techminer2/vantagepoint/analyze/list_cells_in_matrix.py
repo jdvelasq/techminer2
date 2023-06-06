@@ -22,27 +22,27 @@ the 'value' column of the list.
 >>> matrix_list.cells_list_.head()
                 row            column  CORR
 0    Arner DW 3:185    Arner DW 3:185   1.0
-1    Arner DW 3:185  Buckley RP 3:185   1.0
-2   Brennan R 2:014   Brennan R 2:014   1.0
-3  Buckley RP 3:185    Arner DW 3:185   1.0
-4  Buckley RP 3:185  Buckley RP 3:185   1.0
+1  Buckley RP 3:185    Arner DW 3:185   1.0
+2    Arner DW 3:185  Buckley RP 3:185   1.0
+3  Buckley RP 3:185  Buckley RP 3:185   1.0
+4  Butler T/1 2:041  Butler T/1 2:041   1.0
+
+
 
 >>> print(matrix_list.prompt_)
-Analyze the table below which contains the auto-correlation values for the \
-authors. High correlation values indicate that the topics tends to appear \
-together in the same document and forms a group. Identify any notable \
-patterns, trends, or outliers in the data, and discuss their implications for \
-the research field. Be sure to provide a concise summary of your findings in \
-no more than 150 words.
+Analyze the table below which contains the auto-correlation values for the authors. High correlation values indicate that the topics tends to appear together in the same document and forms a group. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
 |    | row             | column           |   CORR |
 |---:|:----------------|:-----------------|-------:|
-|  1 | Arner DW 3:185  | Buckley RP 3:185 |  1     |
-| 10 | Lin W 2:017     | Singh C 2:017    |  1     |
-| 14 | Brennan R 2:014 | Crane M 2:014    |  1     |
-| 16 | Hamdan A 2:018  | Sarea A 2:012    |  0.417 |
+|  2 | Arner DW 3:185  | Buckley RP 3:185 |  1     |
+|  9 | Lin W 2:017     | Singh C 2:017    |  1     |
+| 13 | Brennan R 2:014 | Crane M 2:014    |  1     |
+| 15 | Hamdan A 2:018  | Sarea A 2:012    |  0.417 |
 <BLANKLINE>
 <BLANKLINE>
+
+
+
 
 """
 

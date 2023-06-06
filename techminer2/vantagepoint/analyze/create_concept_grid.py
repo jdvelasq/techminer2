@@ -11,11 +11,11 @@ Example:
 
 >>> from techminer2 import vantagepoint
 >>> occ_matrix = vantagepoint.analyze.co_occ_matrix(
-...    criterion='author_keywords',
-...    topic_min_occ=2,
+...    columns='author_keywords',
+...    col_occ_range=(2, None),
 ...    root_dir=root_dir,
 ... )
->>> graph = vantagepoint.analyze.cluster_criterion(
+>>> graph = vantagepoint.analyze.cluster_column(
 ...    occ_matrix,
 ...    community_clustering='louvain',
 ... )

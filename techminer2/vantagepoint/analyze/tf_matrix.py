@@ -7,20 +7,21 @@ TF Matrix --- ChatGPT
 
 >>> from techminer2 import vantagepoint
 >>> tf_matrix = vantagepoint.analyze.tf_matrix(
-...     criterion='authors',
-...     topic_occ_min=2,
+...     field='authors',
+...     occ_range=(2, None),
 ...     root_dir=root_dir,
 ... )
 >>> tf_matrix.table_.head()
 authors                                             Arner DW 3:185  ...  Arman AA 2:000
 article                                                             ...                
-Arner DW, 2017, HANDB OF BLOCKCHAIN, DIGIT FI, ...               1  ...               0
+Arner DW, 2017, HANDBBLOCKCHAIN, DIGIT FINANC, ...               1  ...               0
 Arner DW, 2017, NORTHWEST J INTL LAW BUS, V37, ...               1  ...               0
 Battanta L, 2020, PROC EUR CONF INNOV ENTREPREN...               0  ...               0
 Buckley RP, 2020, J BANK REGUL, V21, P26                         1  ...               0
-Butler T/1, 2018, J RISK MANG FIN INST, V11, P19                 0  ...               0
+Butler T/1, 2018, J RISK MANG FINANCIAL INST, V...               0  ...               0
 <BLANKLINE>
 [5 rows x 15 columns]
+
 
 # pylint: disable=line-too-long
 """

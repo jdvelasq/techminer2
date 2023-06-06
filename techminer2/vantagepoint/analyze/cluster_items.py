@@ -17,22 +17,24 @@ Example:
 ...    col_occ_range=(2, None),
 ...    root_dir=root_dir,
 ... )
->>> graph = vantagepoint.analyze.cluster_field(
+>>> graph = vantagepoint.analyze.cluster_column(
 ...    co_occ_matrix,
 ...    community_clustering='louvain',
 ... )
 >>> vantagepoint.analyze.cluster_items(graph)
-                            CL_00  ...                           CL_03
-0                  regtech 28:329  ...  artificial intelligence 04:023
-1               compliance 07:030  ...    anti-money laundering 03:021
-2               blockchain 03:005  ...              charitytech 02:017
-3          smart contracts 02:022  ...              english law 02:017
-4           accountability 02:014  ...                                
-5  data protection officer 02:014  ...                                
-6                     gdpr 02:014  ...                                
-7               technology 02:010  ...                                
+                            CL_00  ...                                   CL_03
+0                  REGTECH 28:329  ...  REGULATORY_TECHNOLOGY (REGTECH) 04:030
+1               COMPLIANCE 07:030  ...          ARTIFICIAL_INTELLIGENCE 04:023
+2               BLOCKCHAIN 03:005  ...            ANTI-MONEY_LAUNDERING 03:021
+3           SMART_CONTRACT 02:022  ...                      CHARITYTECH 02:017
+4           ACCOUNTABILITY 02:014  ...                      ENGLISH_LAW 02:017
+5  DATA_PROTECTION_OFFICER 02:014  ...                                        
+6                     GDPR 02:014  ...                                        
+7                SANDBOXES 02:012  ...                                        
+8               TECHNOLOGY 02:010  ...                                        
 <BLANKLINE>
-[8 rows x 4 columns]
+[9 rows x 4 columns]
+
 
 
 """
