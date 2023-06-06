@@ -379,7 +379,7 @@ def process_column(root_dir, column_name, process_func):
     Returns:
         None
 
-    .. ignore::
+    :meta private:
     """
     sys.stdout.write(f"--INFO-- Processing `{column_name}` column\n")
 
@@ -394,7 +394,7 @@ def process_column(root_dir, column_name, process_func):
 def copy_to_column(root_dir, src, dest):
     """Copy a column in all database files.
 
-    .. ignore::
+    :meta private:
     """
     sys.stdout.write(f"--INFO-- Copying `{src}` column to `{dest}`\n")
 
@@ -409,7 +409,7 @@ def copy_to_column(root_dir, src, dest):
 def mask_columna(root_dir, masked_col, rep_col):
     """Mask a column in all database files.
 
-    .. ignore::
+    :meta private:
     """
     sys.stdout.write(f"--INFO-- Mask `{masked_col}` column with `{rep_col}`\n")
 
@@ -424,7 +424,7 @@ def mask_columna(root_dir, masked_col, rep_col):
 def concatenate_columns(root_dir, dest, column_name1, column_name2):
     """Concatenate two columns in all database files.
 
-    .. ignore::
+    :meta private:
     """
     sys.stdout.write(
         f"--INFO-- Concatenating `{column_name1}` and `{column_name2}` columns to `{dest}`\n"
@@ -453,7 +453,7 @@ def process_text_columns(root_dir, process_func):
         root_dir (str): root directory.
         process_func (function): function to be applied to each column.
 
-    .. ignore::
+    :meta private:
     """
     sys.stdout.write("--INFO-- Processing text columns\n")
 
@@ -473,7 +473,7 @@ def create_emtpy_stopwords_txt_file(root_dir):
     Args:
         root_dir (str): The root directory containing the processed directory.
 
-    .. ignore::
+    :meta private:
     """
     file_path = os.path.join(root_dir, "processed/stopwords.txt")
     if not os.path.exists(file_path):
@@ -487,7 +487,7 @@ def report_imported_records_per_file(root_dir):
     Args:
         root_dir (str): root directory.
 
-    .. ignore::
+    :meta private:
     """
 
     files = list(glob.glob(os.path.join(root_dir, "processed/_*.csv")))
@@ -505,7 +505,7 @@ def create_working_directories(root_dir):
     Args:
         root_dir (str): The root directory for the working directories.
 
-    .. ignore::
+    :meta private:
     """
     processed_dir = os.path.join(root_dir, "processed")
     reports_dir = os.path.join(root_dir, "reports")
@@ -520,7 +520,7 @@ def create_directory(directory):
     Args:
         directory (str): The directory to create.
 
-    .. ignore::
+    :meta private:
     """
     if not os.path.exists(directory):
         os.makedirs(directory)
@@ -534,7 +534,7 @@ def remove_records(root_dir, col_name, values_to_remove):
         col_name (str): column name.
         values_to_remove (list): values to remove.
 
-    .. ignore::
+    :meta private:
     """
     if len(values_to_remove) == 0:
         return
@@ -552,7 +552,7 @@ def remove_records(root_dir, col_name, values_to_remove):
 def create_database_files(root_dir):
     """Create the database files.
 
-    .. ignore::
+    :meta private:
     """
 
     folders = os.listdir(os.path.join(root_dir, "raw"))
@@ -572,7 +572,7 @@ def create_database_files(root_dir):
 def concat_raw_csv_files(path, quiet=False):
     """Load raw csv files in a directory.
 
-    .. ignore::
+    :meta private:
     """
 
     if quiet is False:
@@ -603,7 +603,7 @@ def rename_scopus_columns_in_database_files(root_dir):
 
     The name equivalences are stored in a repository file.
 
-    .. ignore::
+    :meta private:
     """
 
     sys.stdout.write("--INFO-- Applying scopus tags to database files\n")
@@ -628,7 +628,7 @@ def rename_scopus_columns_in_database_files(root_dir):
 def format_columns_names_in_database_files(root_dir):
     """Format column names in database files.
 
-    .. ignore::
+    :meta private:
     """
 
     sys.stdout.write("--INFO-- Formating column names in database files\n")
@@ -648,7 +648,7 @@ def format_columns_names_in_database_files(root_dir):
 def drop_empty_columns_in_database_files(root_dir):
     """Drop NA columns in database files.
 
-    .. ignore::
+    :meta private:
     """
 
     sys.stdout.write("--INFO-- Dropping NA columns in database files\n")
@@ -663,7 +663,7 @@ def drop_empty_columns_in_database_files(root_dir):
 def repair_authors_id(directory):
     """Repair authors ID.
 
-    .. ignore::
+    :meta private:
     """
 
     def compute_max_key_length():
@@ -705,7 +705,7 @@ def repair_authors_id(directory):
 def create__authors__column(directory, disable_progress_bar):
     """Create the authors column.
 
-    .. ignore::
+    :meta private:
     """
 
     #
@@ -773,7 +773,7 @@ def create__authors__column(directory, disable_progress_bar):
 def create__article__column(directory):
     """Create a WoS style reference column.
 
-    .. ignore::
+    :meta private:
     """
     #
     # First Author, year, source_abbr, 'V'volumne, 'P'page_start, ' DOI ' doi

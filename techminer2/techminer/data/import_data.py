@@ -487,7 +487,7 @@ def create_stopword_txt_file(root_dir):
     Returns:
         None
 
-    .. ignore::
+    :meta private:
     """
     file_path = os.path.join(root_dir, "processed", "stopwords.txt")
 
@@ -588,7 +588,7 @@ def rename_scopus_columns_in_database_files(root_dir):
 
 
 
-    .. ignore::
+    :meta private:
     """
     print("--INFO-- Applying scopus tags to database files")
 
@@ -763,7 +763,7 @@ def remove_records(root_dir, col_name, values_to_remove):
         col_name (str): column name.
         values_to_remove (list): values to remove.
 
-    .. ignore::
+    :meta private:
     """
     if len(values_to_remove) == 0:
         return
@@ -783,7 +783,7 @@ def remove_records(root_dir, col_name, values_to_remove):
 def drop_empty_columns_in_database_files(root_dir):
     """Drop NA columns in database files.
 
-    .. ignore::
+    :meta private:
     """
 
     print("--INFO-- Dropping NA columns in database files")
@@ -806,7 +806,7 @@ def process_text_columns(root_dir, process_func, msg):
         root_dir (str): root directory.
         process_func (function): function to be applied to each column.
 
-    .. ignore::
+    :meta private:
     """
     print(f"--INFO-- Processing text columns ({msg})")
 
@@ -830,7 +830,7 @@ def process_column(root_dir, column_name, process_func):
     Returns:
         None
 
-    .. ignore::
+    :meta private:
     """
     print(f"--INFO-- Processing `{column_name}` column")
 
@@ -845,7 +845,7 @@ def process_column(root_dir, column_name, process_func):
 def mask_column(root_dir, masked_col, rep_col):
     """Mask a column in all database files.
 
-    .. ignore::
+    :meta private:
     """
     print(f"--INFO-- Mask `{masked_col}` column with `{rep_col}`")
 
@@ -860,7 +860,7 @@ def mask_column(root_dir, masked_col, rep_col):
 def disambiguate_author_names(root_dir):
     """Create the authors column.
 
-    .. ignore::
+    :meta private:
     """
 
     #
@@ -928,7 +928,7 @@ def disambiguate_author_names(root_dir):
 def copy_to_column(root_dir, src, dest):
     """Copy a column in all database files.
 
-    .. ignore::
+    :meta private:
     """
     print(f"--INFO-- Copying `{src}` column to `{dest}`")
 
@@ -943,7 +943,7 @@ def copy_to_column(root_dir, src, dest):
 def concatenate_columns(root_dir, dest, column_name1, column_name2):
     """Concatenate two columns in all database files.
 
-    .. ignore::
+    :meta private:
     """
     print(
         f"--INFO-- Concatenating `{column_name1}` and `{column_name2}` columns to `{dest}`"
@@ -968,7 +968,7 @@ def concatenate_columns(root_dir, dest, column_name1, column_name2):
 def create__article__column(root_dir):
     """Create a WoS style reference column.
 
-    .. ignore::
+    :meta private:
     """
     #
     # First Author, year, source_abbr, 'V'volumne, 'P'page_start, ' DOI ' doi
@@ -1418,7 +1418,7 @@ def report_imported_records_per_file(root_dir):
     Args:
         root_dir (str): root directory.
 
-    .. ignore::
+    :meta private:
     """
 
     files = list(glob.glob(os.path.join(root_dir, "processed/_*.csv")))
