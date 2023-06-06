@@ -6,7 +6,7 @@ The following functions are available:
 - association_index: Computes the association index of a co-occurrence \
     matrix.
 - auto_corr_matrix: Computes the autocorrelation matrix of a network.
-- cluster_criterion: Computes the cluster criterion of a network.
+- cluster_column: Cluster .
 - cluster_members: Gets communities from a networkx graph as a dataframe.
 - cluster_records: Clusters records in the database file.
 - co_occ_matrix: Computes the co-occurrence matrix of a set of terms.
@@ -34,7 +34,7 @@ The following functions are available:
 
 from .association_index import association_index
 from .auto_corr_matrix import auto_corr_matrix
-from .cluster_field import cluster_field
+from .cluster_column import cluster_column
 from .cluster_items import cluster_items
 from .cluster_records import cluster_records
 from .co_occ_matrix import co_occ_matrix
@@ -58,7 +58,7 @@ from .tf_matrix import tf_matrix
 __all__ = [
     "association_index",
     "auto_corr_matrix",
-    "cluster_field",
+    "cluster_column",
     "cluster_items",
     "cluster_records",
     "co_occ_matrix",

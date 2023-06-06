@@ -1,7 +1,9 @@
 # flake8: noqa
 """
-Cluster Field --- ChatGPT
+Cluster Column --- ChatGPT
 ===============================================================================
+
+
 
 Example: Clustering using community detection algorithms.
 -------------------------------------------------------------------------------
@@ -17,7 +19,7 @@ Example: Clustering using community detection algorithms.
 ...     co_occ_matrix, "association"
 ... )
 
->>> graph = vantagepoint.analyze.cluster_field(
+>>> graph = vantagepoint.analyze.cluster_column(
 ...    normalized_co_occ_matrix,
 ...    community_clustering='label_propagation',
 ... )
@@ -128,7 +130,7 @@ from ... import network_utils
 from .list_cells_in_matrix import list_cells_in_matrix
 
 
-def cluster_field(
+def cluster_column(
     obj,
     sklearn_clustering=None,
     community_clustering=None,

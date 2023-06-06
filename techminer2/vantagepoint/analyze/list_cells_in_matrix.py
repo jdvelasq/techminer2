@@ -46,7 +46,13 @@ no more than 150 words.
 
 """
 
-from ...classes import CocMatrix, CorrMatrix, ListCellsInMatrix, MatrixSubset
+from ...classes import (
+    CocMatrix,
+    CorrMatrix,
+    ListCellsInMatrix,
+    MatrixSubset,
+    NormCocMatrix,
+)
 
 
 def list_cells_in_matrix(obj):
@@ -159,7 +165,10 @@ def list_cells_in_matrix(obj):
     if isinstance(obj, CorrMatrix):
         results.columns_ = obj.rows_and_columns_
         results.rows_ = obj.rows_and_columns_
-    elif isinstance(obj, (CocMatrix, MatrixSubset)):
+    elif isinstance(
+        obj,
+        (CocMatrix, MatrixSubset, NormCocMatrix),
+    ):
         results.columns_ = obj.columns_
         results.rows_ = obj.rows_
     else:
