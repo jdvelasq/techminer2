@@ -13,8 +13,8 @@ the 'value' column of the list.
 
 >>> from techminer2 import vantagepoint
 >>> matrix = vantagepoint.analyze.auto_corr_matrix(
-...     criterion='authors',
-...     topics_length=10,
+...     rows_and_columns='authors',
+...     top_n=10,
 ...     root_dir=root_dir,
 ... )
 
@@ -46,7 +46,7 @@ no more than 150 words.
 
 """
 
-from ...classes import ListCellsInMatrix, MatrixSubset
+from ...classes import CocMatrix, CorrMatrix, ListCellsInMatrix, MatrixSubset
 
 
 def list_cells_in_matrix(obj):
@@ -129,7 +129,7 @@ def list_cells_in_matrix(obj):
         )
 
     def transform_matrix_to_matrix_list(obj):
-        """Transoform a matrix object to a matrix list object."""
+        """Transform a matrix object to a matrix list object."""
 
         matrix = obj.matrix_
         value_name = obj.metric_
@@ -155,8 +155,16 @@ def list_cells_in_matrix(obj):
 
     results = ListCellsInMatrix()
     results.cells_list_ = transform_matrix_to_matrix_list(obj)
-    results.columns_ = obj.columns_
-    results.rows_ = obj.rows_
+
+    if isinstance(obj, CorrMatrix):
+        results.columns_ = obj.rows_and_columns_
+        results.rows_ = obj.rows_and_columns_
+    elif isinstance(obj, CocMatrix):
+        results.columns_ = obj.columns_
+        results.rows_ = obj.rows_
+    else:
+        raise ValueError("Invalid matrix type")
+
     results.metric_ = obj.metric_
     results.prompt_ = generate_prompt(results)
 

@@ -57,7 +57,7 @@ from .compute_corr_matrix import compute_corr_matrix
 
 
 def cross_corr_matrix(
-    row_and_columns,
+    rows_and_columns,
     cross_with,
     method="pearson",
     # Item filters:
@@ -93,7 +93,7 @@ def cross_corr_matrix(
     # Main:
     #
     data_matrix = co_occ_matrix(
-        columns=row_and_columns,
+        columns=rows_and_columns,
         rows=cross_with,
         # Columns item filters:
         col_top_n=top_n,
@@ -109,7 +109,7 @@ def cross_corr_matrix(
     )
 
     results = CorrMatrix()
-    results.rows_and_columns_ = row_and_columns
+    results.rows_and_columns_ = rows_and_columns
     results.cross_with_ = cross_with
     results.method_ = method
     results.metric_ = "CORR"
