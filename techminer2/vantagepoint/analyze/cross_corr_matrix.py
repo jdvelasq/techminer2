@@ -112,8 +112,8 @@ def cross_corr_matrix(
     )
 
     results = CorrMatrix()
-    results.criterion_ = criterion
-    results.other_criterion_ = other_criterion
+    results.columns_ = criterion
+    results.rows_ = other_criterion
     results.method_ = method
     results.metric_ = "CORR"
     results.matrix_ = compute_corr_matrix(method, data_matrix)

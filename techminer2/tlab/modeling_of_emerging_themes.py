@@ -89,16 +89,16 @@ def emergent_themes_with_nmf(
     """Emergent Themes with NMF"""
 
     _tf_matrix = tf_matrix(
-        criterion=criterion,
-        topics_length=topics_length,
-        topic_occ_min=topic_min_occ,
-        topic_citations_min=topic_min_citations,
-        custom_topics=custom_topics,
+        field=criterion,
+        top_n=topics_length,
+        occ_range=topic_min_occ,
+        gc_range=topic_min_citations,
+        custom_items=custom_topics,
         scheme="binary",
         root_dir=directory,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=start_year,
+        cited_by_filter=end_year,
         **filters,
     )
 
@@ -147,16 +147,16 @@ def emergent_themes_with_lda(
     """Emergent Themes with LDA"""
 
     _tf_matrix = tf_matrix(
-        criterion=criterion,
-        topics_length=topics_length,
-        topic_occ_min=topic_min_occ,
-        topic_citations_min=topic_min_citations,
-        custom_topics=custom_topics,
+        field=criterion,
+        top_n=topics_length,
+        occ_range=topic_min_occ,
+        gc_range=topic_min_citations,
+        custom_items=custom_topics,
         scheme="binary",
         root_dir=directory,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=start_year,
+        cited_by_filter=end_year,
         **filters,
     )
 

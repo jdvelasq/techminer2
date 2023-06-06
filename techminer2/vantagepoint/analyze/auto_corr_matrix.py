@@ -10,8 +10,8 @@ Returns an auto-correlation matrix.
 
 >>> from techminer2 import vantagepoint
 >>> corr_matrix = vantagepoint.analyze.auto_corr_matrix(
-...     criterion='authors',
-...     topics_length=10,
+...     field='authors',
+...     top_n=10,
 ...     root_dir=root_dir,
 ... )
 >>> corr_matrix.matrix_
@@ -31,12 +31,9 @@ Grassi L 2:002               0.0  ...             1.0
 
 
 >>> print(corr_matrix.prompt_)
-Analyze the table below which contains the auto-correlation values for the \
-authors. High correlation values indicate that the topics tends to appear \
-together in the same document and forms a group. Identify any notable \
-patterns, trends, or outliers in the data, and discuss their implications \
-for the research field. Be sure to provide a concise summary of your \
-findings in no more than 150 words.
+Your task is to generate a short paragraph of a research paper analyzing the auto-correlation values between the items of the column 'authors' of a bibliographic dataset.
+<BLANKLINE>
+Analyze the table below which contains the auto-correlation values for the 'authors'. High correlation values indicate that the items tends to appear together in the same document and forms a group. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings, in at most 50 words.
 <BLANKLINE>
 |                  |   Arner DW 3:185 |   Buckley RP 3:185 |   Butler T/1 2:041 |   Hamdan A 2:018 |   Lin W 2:017 |   Singh C 2:017 |   Brennan R 2:014 |   Crane M 2:014 |   Sarea A 2:012 |   Grassi L 2:002 |
 |:-----------------|-----------------:|-------------------:|-------------------:|-----------------:|--------------:|----------------:|------------------:|----------------:|----------------:|-----------------:|
@@ -53,6 +50,7 @@ findings in no more than 150 words.
 <BLANKLINE>
 <BLANKLINE>
 
+
 # pylint: disable=line-too-long
 """
 
@@ -61,32 +59,37 @@ from .compute_corr_matrix import compute_corr_matrix
 from .tf_matrix import tf_matrix
 
 
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
 def auto_corr_matrix(
-    criterion,
+    field,
     method="pearson",
-    topics_length=50,
-    topic_occ_min=None,
-    topic_occ_max=None,
-    topic_citations_min=None,
-    topic_citations_max=None,
-    custom_topics=None,
+    # Item filters:
+    top_n=50,
+    occ_range=None,
+    gc_range=None,
+    custom_items=None,
+    # Database params:
     root_dir="./",
     database="documents",
-    start_year=None,
-    end_year=None,
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
     """Returns an auto-correlation."""
 
     def generate_prompt(obj):
         prompt = (
+            "Your task is to generate a short paragraph of a research paper "
+            "analyzing the auto-correlation values between the items of the "
+            f"column '{obj.columns_}' of a bibliographic dataset.\n\n"
             "Analyze the table below which contains the auto-correlation "
-            f"values for the {obj.criterion_}. High correlation values "
-            "indicate that the topics tends to appear together in the same "
+            f"values for the '{obj.columns_}'. High correlation values "
+            "indicate that the items tends to appear together in the same "
             "document and forms a group. Identify any notable patterns, "
             "trends, or outliers in the data, and discuss their implications "
             "for the research field. Be sure to provide a concise summary of "
-            "your findings in no more than 150 words."
+            "your findings, in at most 50 words."
             f"\n\n{obj.matrix_.round(3).to_markdown()}\n\n"
         )
         return prompt
@@ -95,23 +98,23 @@ def auto_corr_matrix(
     # Main:
     #
     data_matrix = tf_matrix(
-        criterion=criterion,
-        topics_length=topics_length,
-        topic_occ_min=topic_occ_min,
-        topic_occ_max=topic_occ_max,
-        topic_citations_min=topic_citations_min,
-        topic_citations_max=topic_citations_max,
-        custom_topics=custom_topics,
+        field=field,
+        # Item filters:
+        top_n=top_n,
+        occ_range=occ_range,
+        gc_range=gc_range,
+        custom_items=custom_items,
+        # Database params:
         root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 
     corr_matrix = CorrMatrix()
-    corr_matrix.criterion_ = criterion
-    corr_matrix.other_criterion_ = criterion
+    corr_matrix.columns_ = field
+    corr_matrix.rows_ = field
     corr_matrix.method_ = method
     corr_matrix.metric_ = "CORR"
     corr_matrix.matrix_ = compute_corr_matrix(

@@ -67,8 +67,8 @@ class CorrMatrix:
     matrix_: pd.DataFrame
     prompt_: str
     method_: str
-    criterion_: str
-    other_criterion_: str
+    columns_: str
+    rows_: str
     metric_: str
 
 

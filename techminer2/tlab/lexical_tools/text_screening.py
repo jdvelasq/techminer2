@@ -22,7 +22,6 @@ from ...vantagepoint import record_display
 
 
 # pylint: disable=too-many-arguments
-# pylint: disable=W0613
 def text_screening(
     search_for,
     case=False,
