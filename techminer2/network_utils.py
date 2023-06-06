@@ -324,7 +324,6 @@ def create_graph_nodes(graph, matrix_list):
 def create_network_graph(
     edge_traces,
     node_trace,
-    text_trace,
     xaxes_range,
     yaxes_range,
     show_axes,
@@ -338,21 +337,21 @@ def create_network_graph(
         hovermode="closest",
         margin={"b": 0, "l": 0, "r": 0, "t": 0},
         annotations=[
-            dict(
-                text="",
-                showarrow=False,
-                xref="paper",
-                yref="paper",
-                x=0.005,
-                y=-0.002,
-                align="left",
-                font={"size": 10},
-            )
+            {
+                "text": "",
+                "showarrow": False,
+                "xref": "paper",
+                "yref": "paper",
+                "x": 0.005,
+                "y": -0.002,
+                "align": "left",
+                "font": {"size": 10},
+            }
         ],
     )
 
     fig = go.Figure(
-        data=edge_traces + [node_trace] + [text_trace],
+        data=edge_traces + [node_trace],
         layout=layout,
     )
 
@@ -381,7 +380,6 @@ def create_network_graph(
             "bgcolor": "white",
             "font_family": "monospace",
         },
-        # xaxis_range=[-1 - delta, 1 + delta],
         paper_bgcolor="white",
         plot_bgcolor="white",
     )
@@ -395,10 +393,12 @@ def create_node_trace(graph):
     node_x, node_y = extract_node_coordinates(graph)
     node_colors = extract_node_colors(graph)
     node_sizes = extract_node_sizes(graph)
+    node_names = extract_node_names(graph)
     node_trace = go.Scatter(
         x=node_x,
         y=node_y,
         mode="markers",
+        text=node_names,
         hoverinfo="text",
         marker={
             "color": node_colors,
@@ -423,36 +423,74 @@ def create_occ_node_property(graph):
     return graph
 
 
-def create_text_trace(graph):
-    """Create text trace for network graph."""
+# pylint: disable=too-many-locals
+def add_names_to_fig_nodes(fig, graph, n_labels):
+    """Adds node names to a network figure."""
 
     node_x, node_y = extract_node_coordinates(graph)
     node_names = extract_node_names(graph)
     textfont_sizes = extract_textfont_sizes(graph)
-    textfont_colors = extract_textfont_colors(graph)
     textposition = compute_textposition_from_nx_graph(graph)
-    node_colors = extract_node_colors(graph)
+    node_occs = extract_node_occ(graph)
 
-    node_sizes = extract_node_sizes(graph)
-    node_sizes = [size - 12 for size in node_sizes]
+    occ_min = min(sorted(node_occs, reverse=True)[:n_labels])
 
-    text_trace = go.Scatter(
-        x=node_x,
-        y=node_y,
-        mode="markers+text",
-        text=node_names,
-        hoverinfo="text",
-        marker={
-            "color": node_colors,
-            "size": node_sizes,
-            "line": {"width": 0, "color": "red"},
-            "opacity": 1,
-        },
-        textposition=textposition,
-        textfont={"size": textfont_sizes, "color": textfont_colors},
-    )
+    if n_labels is None:
+        n_labels = len(node_names)
 
-    return text_trace
+    i_label = 0
+    for pos_x, pos_y, name, textfont_size, textpos, node_occ in zip(
+        node_x, node_y, node_names, textfont_sizes, textposition, node_occs
+    ):
+        if node_occ >= occ_min:
+            if i_label >= n_labels:
+                break
+            i_label += 1
+        else:
+            continue
+
+        if textpos == "top right":
+            xanchor = "left"
+            yanchor = "bottom"
+            xshift = 4
+            yshift = 4
+        elif textpos == "top left":
+            xanchor = "right"
+            yanchor = "bottom"
+            xshift = -4
+            yshift = 4
+        elif textpos == "bottom right":
+            xanchor = "left"
+            yanchor = "top"
+            xshift = 4
+            yshift = -4
+        elif textpos == "bottom left":
+            xanchor = "right"
+            yanchor = "top"
+            xshift = -4
+            yshift = -4
+        else:
+            xanchor = "center"
+            yanchor = "center"
+
+        fig.add_annotation(
+            x=pos_x,
+            y=pos_y,
+            text=name,
+            showarrow=False,
+            # textangle=-90,
+            # yanchor="bottom",
+            font={"size": textfont_size},
+            # yshift=yshift,
+            bordercolor="grey",
+            bgcolor="white",
+            xanchor=xanchor,
+            yanchor=yanchor,
+            xshift=xshift,
+            yshift=yshift,
+        )
+
+    return fig
 
 
 def extract_textfont_colors(graph):
@@ -520,6 +558,20 @@ def extract_node_sizes(graph):
         node_sizes.append(graph.nodes[node]["node_size"])
 
     return node_sizes
+
+
+def extract_node_occ(graph):
+    """Extracts node sizes from a networkx graph."""
+
+    occ = []
+    for node in graph.nodes():
+        if "OCC" not in graph.nodes[node]:
+            raise ValueError(
+                f"Node {node} does not have a node_size property."
+            )
+        occ.append(graph.nodes[node]["OCC"])
+
+    return occ
 
 
 def set_edge_properties_for_corr_maps(graph):

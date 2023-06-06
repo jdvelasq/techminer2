@@ -22,15 +22,22 @@ Example: Visulization of an occurrence matrix.
 ... )
 >>> vantagepoint.analyze.list_cells_in_matrix(co_occ_matrix).cells_list_.head()
                  row          column  OCC
-0     Arner DW 3:185  regtech 28:329    2
-1   Buckley RP 3:185  regtech 28:329    2
-2  Barberis JN 2:161  regtech 28:329    1
-3   Butler T/1 2:041  regtech 28:329    2
-4        Lin W 2:017  regtech 28:329    2
+0     Arner DW 3:185  REGTECH 28:329    2
+1   Buckley RP 3:185  REGTECH 28:329    2
+2  Barberis JN 2:161  REGTECH 28:329    1
+3   Butler T/1 2:041  REGTECH 28:329    2
+4        Lin W 2:017  REGTECH 28:329    2
+
 
 
 >>> chart = vantagepoint.analyze.matrix_viewer(
-...     co_occ_matrix, xaxes_range=(-2,2)
+...     co_occ_matrix, 
+...     n_labels=15,
+...     node_size_min=20,
+...     node_size_max=70,
+...     textfont_size_min=8,
+...     textfont_size_max=20,
+...     xaxes_range=(-2,2)
 ... )
 >>> chart.plot_.write_html(file_name)
 
@@ -43,89 +50,55 @@ Example: Visulization of an occurrence matrix.
 >>> print(chart.prompt_)
 Analyze the table below, which contains the the occurrence values for author_keywords and authors. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
-|    | row                | column                             |   OCC |
-|---:|:-------------------|:-----------------------------------|------:|
-|  0 | Arner DW 3:185     | regtech 28:329                     |     2 |
-|  1 | Buckley RP 3:185   | regtech 28:329                     |     2 |
-|  2 | Barberis JN 2:161  | regtech 28:329                     |     1 |
-|  3 | Butler T/1 2:041   | regtech 28:329                     |     2 |
-|  4 | Lin W 2:017        | regtech 28:329                     |     2 |
-|  5 | Singh C 2:017      | regtech 28:329                     |     2 |
-|  6 | Brennan R 2:014    | regtech 28:329                     |     2 |
-|  7 | Crane M 2:014      | regtech 28:329                     |     2 |
-|  8 | Ryan P 2:014       | regtech 28:329                     |     2 |
-|  9 | Grassi L 2:002     | regtech 28:329                     |     2 |
-| 10 | Lanfranchi D 2:002 | regtech 28:329                     |     2 |
-| 11 | Arman AA 2:000     | regtech 28:329                     |     2 |
-| 12 | Arner DW 3:185     | fintech 12:249                     |     1 |
-| 13 | Buckley RP 3:185   | fintech 12:249                     |     1 |
-| 14 | Butler T/1 2:041   | fintech 12:249                     |     2 |
-| 15 | Grassi L 2:002     | fintech 12:249                     |     2 |
-| 16 | Lanfranchi D 2:002 | fintech 12:249                     |     2 |
-| 17 | Hamdan A 2:018     | regulatory technology 07:037       |     2 |
-| 18 | Turki M 2:018      | regulatory technology 07:037       |     2 |
-| 19 | Sarea A 2:012      | regulatory technology 07:037       |     1 |
-| 20 | Grassi L 2:002     | regulatory technology 07:037       |     1 |
-| 21 | Lanfranchi D 2:002 | regulatory technology 07:037       |     1 |
-| 22 | Brennan R 2:014    | compliance 07:030                  |     2 |
-| 23 | Crane M 2:014      | compliance 07:030                  |     2 |
-| 24 | Ryan P 2:014       | compliance 07:030                  |     2 |
-| 25 | Grassi L 2:002     | compliance 07:030                  |     1 |
-| 26 | Lanfranchi D 2:002 | compliance 07:030                  |     1 |
-| 27 | Butler T/1 2:041   | regulation 05:164                  |     1 |
-| 28 | Grassi L 2:002     | regulation 05:164                  |     2 |
-| 29 | Lanfranchi D 2:002 | regulation 05:164                  |     2 |
-| 30 | Arner DW 3:185     | financial services 04:168          |     1 |
-| 31 | Buckley RP 3:185   | financial services 04:168          |     1 |
-| 32 | Barberis JN 2:161  | financial services 04:168          |     1 |
-| 33 | Arner DW 3:185     | financial regulation 04:035        |     2 |
-| 34 | Buckley RP 3:185   | financial regulation 04:035        |     2 |
-| 35 | Barberis JN 2:161  | financial regulation 04:035        |     1 |
-| 36 | Lin W 2:017        | artificial intelligence 04:023     |     1 |
-| 37 | Singh C 2:017      | artificial intelligence 04:023     |     1 |
-| 38 | Sarea A 2:012      | artificial intelligence 04:023     |     1 |
-| 39 | Hamdan A 2:018     | anti-money laundering 03:021       |     1 |
-| 40 | Turki M 2:018      | anti-money laundering 03:021       |     1 |
-| 41 | Lin W 2:017        | anti-money laundering 03:021       |     1 |
-| 42 | Singh C 2:017      | anti-money laundering 03:021       |     1 |
-| 43 | Butler T/1 2:041   | risk management 03:014             |     1 |
-| 44 | Grassi L 2:002     | risk management 03:014             |     1 |
-| 45 | Lanfranchi D 2:002 | risk management 03:014             |     1 |
-| 46 | Grassi L 2:002     | innovation 03:012                  |     1 |
-| 47 | Lanfranchi D 2:002 | innovation 03:012                  |     1 |
-| 48 | Grassi L 2:002     | suptech 03:004                     |     1 |
-| 49 | Lanfranchi D 2:002 | suptech 03:004                     |     1 |
-| 50 | Arman AA 2:000     | suptech 03:004                     |     1 |
-| 51 | Butler T/1 2:041   | semantic technologies 02:041       |     2 |
-| 52 | Arner DW 3:185     | data protection 02:027             |     1 |
-| 53 | Buckley RP 3:185   | data protection 02:027             |     1 |
-| 54 | Lin W 2:017        | charitytech 02:017                 |     2 |
-| 55 | Singh C 2:017      | charitytech 02:017                 |     2 |
-| 56 | Lin W 2:017        | english law 02:017                 |     2 |
-| 57 | Singh C 2:017      | english law 02:017                 |     2 |
-| 58 | Brennan R 2:014    | accountability 02:014              |     2 |
-| 59 | Crane M 2:014      | accountability 02:014              |     2 |
-| 60 | Ryan P 2:014       | accountability 02:014              |     2 |
-| 61 | Brennan R 2:014    | data protection officer 02:014     |     2 |
-| 62 | Crane M 2:014      | data protection officer 02:014     |     2 |
-| 63 | Ryan P 2:014       | data protection officer 02:014     |     2 |
-| 64 | Brennan R 2:014    | gdpr 02:014                        |     2 |
-| 65 | Crane M 2:014      | gdpr 02:014                        |     2 |
-| 66 | Ryan P 2:014       | gdpr 02:014                        |     2 |
-| 67 | Hamdan A 2:018     | anti money laundering (aml) 02:013 |     1 |
-| 68 | Turki M 2:018      | anti money laundering (aml) 02:013 |     1 |
-| 69 | Sarea A 2:012      | anti money laundering (aml) 02:013 |     1 |
-| 70 | Arner DW 3:185     | sandbox 02:012                     |     1 |
-| 71 | Buckley RP 3:185   | sandbox 02:012                     |     1 |
-| 72 | Barberis JN 2:161  | sandbox 02:012                     |     1 |
-| 73 | Arman AA 2:000     | technology 02:010                  |     1 |
-| 74 | Grassi L 2:002     | finance 02:001                     |     1 |
-| 75 | Lanfranchi D 2:002 | finance 02:001                     |     1 |
-| 76 | Grassi L 2:002     | reporting 02:001                   |     1 |
-| 77 | Lanfranchi D 2:002 | reporting 02:001                   |     1 |
+|    | row                | column                                 |   OCC |
+|---:|:-------------------|:---------------------------------------|------:|
+|  0 | Arner DW 3:185     | REGTECH 28:329                         |     2 |
+|  1 | Buckley RP 3:185   | REGTECH 28:329                         |     2 |
+|  2 | Barberis JN 2:161  | REGTECH 28:329                         |     1 |
+|  3 | Butler T/1 2:041   | REGTECH 28:329                         |     2 |
+|  4 | Lin W 2:017        | REGTECH 28:329                         |     2 |
+|  6 | Brennan R 2:014    | REGTECH 28:329                         |     2 |
+|  7 | Crane M 2:014      | REGTECH 28:329                         |     2 |
+|  9 | Grassi L 2:002     | REGTECH 28:329                         |     2 |
+| 10 | Lanfranchi D 2:002 | REGTECH 28:329                         |     2 |
+| 11 | Arman AA 2:000     | REGTECH 28:329                         |     2 |
+| 12 | Arner DW 3:185     | FINTECH 12:249                         |     1 |
+| 13 | Buckley RP 3:185   | FINTECH 12:249                         |     1 |
+| 14 | Butler T/1 2:041   | FINTECH 12:249                         |     2 |
+| 17 | Brennan R 2:014    | COMPLIANCE 07:030                      |     2 |
+| 22 | Butler T/1 2:041   | REGULATION 05:164                      |     1 |
+| 23 | Grassi L 2:002     | REGULATION 05:164                      |     2 |
+| 24 | Lanfranchi D 2:002 | REGULATION 05:164                      |     2 |
+| 25 | Arner DW 3:185     | FINANCIAL_SERVICES 04:168              |     1 |
+| 26 | Buckley RP 3:185   | FINANCIAL_SERVICES 04:168              |     1 |
+| 27 | Barberis JN 2:161  | FINANCIAL_SERVICES 04:168              |     1 |
+| 28 | Arner DW 3:185     | FINANCIAL_REGULATION 04:035            |     2 |
+| 29 | Buckley RP 3:185   | FINANCIAL_REGULATION 04:035            |     2 |
+| 30 | Barberis JN 2:161  | FINANCIAL_REGULATION 04:035            |     1 |
+| 31 | Hamdan A 2:018     | REGULATORY_TECHNOLOGY (REGTECH) 04:030 |     2 |
+| 41 | Butler T/1 2:041   | RISK_MANAGEMENT 03:014                 |     1 |
+| 42 | Grassi L 2:002     | RISK_MANAGEMENT 03:014                 |     1 |
+| 43 | Lanfranchi D 2:002 | RISK_MANAGEMENT 03:014                 |     1 |
+| 44 | Grassi L 2:002     | INNOVATION 03:012                      |     1 |
+| 46 | Grassi L 2:002     | REGULATORY_TECHNOLOGY 03:007           |     1 |
+| 47 | Lanfranchi D 2:002 | REGULATORY_TECHNOLOGY 03:007           |     1 |
+| 48 | Grassi L 2:002     | SUPTECH 03:004                         |     1 |
+| 49 | Lanfranchi D 2:002 | SUPTECH 03:004                         |     1 |
+| 50 | Arman AA 2:000     | SUPTECH 03:004                         |     1 |
+| 51 | Arner DW 3:185     | DATA_PROTECTION 02:027                 |     1 |
+| 52 | Buckley RP 3:185   | DATA_PROTECTION 02:027                 |     1 |
+| 60 | Brennan R 2:014    | DATA_PROTECTION_OFFICER 02:014         |     2 |
+| 61 | Crane M 2:014      | DATA_PROTECTION_OFFICER 02:014         |     2 |
+| 63 | Brennan R 2:014    | GDPR 02:014                            |     2 |
+| 64 | Crane M 2:014      | GDPR 02:014                            |     2 |
+| 66 | Arner DW 3:185     | SANDBOXES 02:012                       |     1 |
+| 67 | Buckley RP 3:185   | SANDBOXES 02:012                       |     1 |
+| 68 | Barberis JN 2:161  | SANDBOXES 02:012                       |     1 |
+| 69 | Arman AA 2:000     | TECHNOLOGY 02:010                      |     1 |
+| 72 | Grassi L 2:002     | REPORTING 02:001                       |     1 |
+| 73 | Lanfranchi D 2:002 | REPORTING 02:001                       |     1 |
 <BLANKLINE>
 <BLANKLINE>
-
 
 Example: Visulization of a co-occurrence matrix.
 -------------------------------------------------------------------------------
@@ -139,12 +112,12 @@ Example: Visulization of a co-occurrence matrix.
 ...    root_dir=root_dir,
 ... )
 >>> vantagepoint.analyze.list_cells_in_matrix(co_occ_matrix).cells_list_.head()
-                            row          column  OCC
-0                regtech 28:329  regtech 28:329   28
-1                fintech 12:249  regtech 28:329   12
-2  regulatory technology 07:037  regtech 28:329    2
-3             compliance 07:030  regtech 28:329    7
-4             regulation 05:164  regtech 28:329    4
+                         row          column  OCC
+0             REGTECH 28:329  REGTECH 28:329   28
+1             FINTECH 12:249  REGTECH 28:329   12
+2          COMPLIANCE 07:030  REGTECH 28:329    7
+3          REGULATION 05:164  REGTECH 28:329    4
+4  FINANCIAL_SERVICES 04:168  REGTECH 28:329    3
 
 
 
@@ -165,37 +138,31 @@ Example: Visulization of a co-occurrence matrix.
 >>> print(chart.prompt_)
 Analyze the table below, which contains the the co-occurrence values for author_keywords. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
-|    | row                            | column                         |   OCC |
-|---:|:-------------------------------|:-------------------------------|------:|
-|  1 | fintech 12:249                 | regtech 28:329                 |    12 |
-|  3 | compliance 07:030              | regtech 28:329                 |     7 |
-|  5 | financial services 04:168      | regtech 28:329                 |     3 |
-|  6 | financial regulation 04:035    | regtech 28:329                 |     2 |
-|  7 | artificial intelligence 04:023 | regtech 28:329                 |     2 |
-|  8 | anti-money laundering 03:021   | regtech 28:329                 |     1 |
-| 13 | compliance 07:030              | fintech 12:249                 |     2 |
-| 15 | financial services 04:168      | fintech 12:249                 |     2 |
-| 16 | financial regulation 04:035    | fintech 12:249                 |     1 |
-| 17 | artificial intelligence 04:023 | fintech 12:249                 |     1 |
-| 19 | regtech 28:329                 | regulatory technology 07:037   |     2 |
-| 20 | fintech 12:249                 | regulatory technology 07:037   |     1 |
-| 22 | compliance 07:030              | regulatory technology 07:037   |     1 |
-| 23 | regulation 05:164              | regulatory technology 07:037   |     1 |
-| 24 | artificial intelligence 04:023 | regulatory technology 07:037   |     1 |
-| 25 | anti-money laundering 03:021   | regulatory technology 07:037   |     1 |
-| 32 | artificial intelligence 04:023 | compliance 07:030              |     1 |
-| 34 | regtech 28:329                 | regulation 05:164              |     4 |
-| 35 | fintech 12:249                 | regulation 05:164              |     4 |
-| 37 | compliance 07:030              | regulation 05:164              |     1 |
-| 39 | financial services 04:168      | regulation 05:164              |     1 |
-| 45 | financial regulation 04:035    | financial services 04:168      |     2 |
-| 55 | anti-money laundering 03:021   | artificial intelligence 04:023 |     1 |
-| 61 | regtech 28:329                 | risk management 03:014         |     2 |
-| 62 | fintech 12:249                 | risk management 03:014         |     2 |
-| 63 | regulatory technology 07:037   | risk management 03:014         |     2 |
-| 64 | compliance 07:030              | risk management 03:014         |     1 |
-| 65 | regulation 05:164              | risk management 03:014         |     2 |
-| 66 | artificial intelligence 04:023 | risk management 03:014         |     1 |
+|    | row                            | column                                 |   OCC |
+|---:|:-------------------------------|:---------------------------------------|------:|
+|  1 | FINTECH 12:249                 | REGTECH 28:329                         |    12 |
+|  2 | COMPLIANCE 07:030              | REGTECH 28:329                         |     7 |
+|  4 | FINANCIAL_SERVICES 04:168      | REGTECH 28:329                         |     3 |
+|  5 | FINANCIAL_REGULATION 04:035    | REGTECH 28:329                         |     2 |
+|  6 | ARTIFICIAL_INTELLIGENCE 04:023 | REGTECH 28:329                         |     2 |
+|  7 | ANTI-MONEY_LAUNDERING 03:021   | REGTECH 28:329                         |     1 |
+| 11 | COMPLIANCE 07:030              | FINTECH 12:249                         |     2 |
+| 13 | FINANCIAL_SERVICES 04:168      | FINTECH 12:249                         |     2 |
+| 14 | FINANCIAL_REGULATION 04:035    | FINTECH 12:249                         |     1 |
+| 15 | ARTIFICIAL_INTELLIGENCE 04:023 | FINTECH 12:249                         |     1 |
+| 21 | ARTIFICIAL_INTELLIGENCE 04:023 | COMPLIANCE 07:030                      |     1 |
+| 23 | REGTECH 28:329                 | REGULATION 05:164                      |     4 |
+| 24 | FINTECH 12:249                 | REGULATION 05:164                      |     4 |
+| 25 | COMPLIANCE 07:030              | REGULATION 05:164                      |     1 |
+| 27 | FINANCIAL_SERVICES 04:168      | REGULATION 05:164                      |     1 |
+| 33 | FINANCIAL_REGULATION 04:035    | FINANCIAL_SERVICES 04:168              |     2 |
+| 39 | ANTI-MONEY_LAUNDERING 03:021   | REGULATORY_TECHNOLOGY (REGTECH) 04:030 |     1 |
+| 44 | ANTI-MONEY_LAUNDERING 03:021   | ARTIFICIAL_INTELLIGENCE 04:023         |     1 |
+| 50 | REGTECH 28:329                 | RISK_MANAGEMENT 03:014                 |     2 |
+| 51 | FINTECH 12:249                 | RISK_MANAGEMENT 03:014                 |     2 |
+| 52 | COMPLIANCE 07:030              | RISK_MANAGEMENT 03:014                 |     1 |
+| 53 | REGULATION 05:164              | RISK_MANAGEMENT 03:014                 |     2 |
+| 54 | ARTIFICIAL_INTELLIGENCE 04:023 | RISK_MANAGEMENT 03:014                 |     1 |
 <BLANKLINE>
 <BLANKLINE>
 
@@ -214,7 +181,7 @@ Example: Visulization of a radial diagram (T-LAB).
 ... )
 >>> matrix_subset = vantagepoint.analyze.matrix_subset(
 ...    co_occ_matrix,
-...    custom_items='regtech',
+...    custom_items='REGTECH',
 ... )
 >>> chart = vantagepoint.analyze.matrix_viewer(
 ...     matrix_subset,
@@ -231,24 +198,25 @@ Example: Visulization of a radial diagram (T-LAB).
 
     
 >>> print(chart.prompt_)
-Analyze the table below which contains values of co-occurrence (OCC) for the ['regtech'] and 'author_keywords' fields in a bibliographic dataset. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
+Analyze the table below which contains values of co-occurrence (OCC) for the ['REGTECH'] and 'author_keywords' fields in a bibliographic dataset. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
-| row                            |   regtech 28:329 |
+| row                            |   REGTECH 28:329 |
 |:-------------------------------|-----------------:|
-| fintech 12:249                 |               12 |
-| regulatory technology 07:037   |                2 |
-| compliance 07:030              |                7 |
-| regulation 05:164              |                4 |
-| financial services 04:168      |                3 |
-| financial regulation 04:035    |                2 |
-| artificial intelligence 04:023 |                2 |
-| anti-money laundering 03:021   |                1 |
-| risk management 03:014         |                2 |
-| innovation 03:012              |                1 |
-| blockchain 03:005              |                2 |
-| suptech 03:004                 |                3 |
+| FINTECH 12:249                 |               12 |
+| COMPLIANCE 07:030              |                7 |
+| REGULATION 05:164              |                4 |
+| FINANCIAL_SERVICES 04:168      |                3 |
+| FINANCIAL_REGULATION 04:035    |                2 |
+| ARTIFICIAL_INTELLIGENCE 04:023 |                2 |
+| ANTI-MONEY_LAUNDERING 03:021   |                1 |
+| RISK_MANAGEMENT 03:014         |                2 |
+| INNOVATION 03:012              |                1 |
+| REGULATORY_TECHNOLOGY 03:007   |                2 |
+| BLOCKCHAIN 03:005              |                2 |
+| SUPTECH 03:004                 |                3 |
 <BLANKLINE>
 <BLANKLINE>
+
 
 
 
@@ -264,7 +232,7 @@ Example: Comparison between pairs of keywords (T-LAB).
 ... )
 >>> matrix_subset = vantagepoint.analyze.matrix_subset(
 ...    co_occ_matrix,
-...    custom_items=['regtech', 'regulatory technology'],
+...    custom_items=['REGTECH', 'REGULATORY_TECHNOLOGY'],
 ... )
 
 >>> chart = vantagepoint.analyze.matrix_viewer(
@@ -282,23 +250,25 @@ Example: Comparison between pairs of keywords (T-LAB).
 
     
 >>> print(chart.prompt_)
-Analyze the table below which contains values of co-occurrence (OCC) for the ['regtech', 'regulatory technology'] and 'author_keywords' fields in a bibliographic dataset. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
+Analyze the table below which contains values of co-occurrence (OCC) for the ['REGTECH', 'REGULATORY_TECHNOLOGY'] and 'author_keywords' fields in a bibliographic dataset. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
-| row                            |   regtech 28:329 |   regulatory technology 07:037 |
+| row                            |   REGTECH 28:329 |   REGULATORY_TECHNOLOGY 03:007 |
 |:-------------------------------|-----------------:|-------------------------------:|
-| fintech 12:249                 |               12 |                              1 |
-| compliance 07:030              |                7 |                              1 |
-| regulation 05:164              |                4 |                              1 |
-| financial services 04:168      |                3 |                              0 |
-| financial regulation 04:035    |                2 |                              0 |
-| artificial intelligence 04:023 |                2 |                              1 |
-| anti-money laundering 03:021   |                1 |                              1 |
-| risk management 03:014         |                2 |                              2 |
-| innovation 03:012              |                1 |                              1 |
-| blockchain 03:005              |                2 |                              0 |
-| suptech 03:004                 |                3 |                              1 |
+| FINTECH 12:249                 |               12 |                              1 |
+| COMPLIANCE 07:030              |                7 |                              1 |
+| REGULATION 05:164              |                4 |                              1 |
+| FINANCIAL_SERVICES 04:168      |                3 |                              0 |
+| FINANCIAL_REGULATION 04:035    |                2 |                              0 |
+| ARTIFICIAL_INTELLIGENCE 04:023 |                2 |                              1 |
+| ANTI-MONEY_LAUNDERING 03:021   |                1 |                              0 |
+| RISK_MANAGEMENT 03:014         |                2 |                              2 |
+| INNOVATION 03:012              |                1 |                              0 |
+| BLOCKCHAIN 03:005              |                2 |                              0 |
+| SUPTECH 03:004                 |                3 |                              1 |
 <BLANKLINE>
 <BLANKLINE>
+
+
 
 
 Example: Ego-Network (T-LAB).
@@ -313,7 +283,7 @@ Example: Ego-Network (T-LAB).
 ... )
 >>> matrix_subset = vantagepoint.analyze.matrix_subset(
 ...    co_occ_matrix,
-...    custom_items='regtech',
+...    custom_items='REGTECH',
 ...    is_ego_matrix=True,
 ... )
 
@@ -334,20 +304,21 @@ Example: Ego-Network (T-LAB).
 >>> print(chart.prompt_)
 Analyze the table below which contains values of co-occurrence (OCC) for the 'author_keywords' fields in a bibliographic dataset. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
-| row                            |   regtech 28:329 |   fintech 12:249 |   regulatory technology 07:037 |   compliance 07:030 |   regulation 05:164 |   financial services 04:168 |   financial regulation 04:035 |   artificial intelligence 04:023 |   anti-money laundering 03:021 |   risk management 03:014 |
-|:-------------------------------|-----------------:|-----------------:|-------------------------------:|--------------------:|--------------------:|----------------------------:|------------------------------:|---------------------------------:|-------------------------------:|-------------------------:|
-| regtech 28:329                 |               28 |               12 |                              2 |                   7 |                   4 |                           3 |                             2 |                                2 |                              1 |                        2 |
-| fintech 12:249                 |               12 |               12 |                              1 |                   2 |                   4 |                           2 |                             1 |                                1 |                              0 |                        2 |
-| regulatory technology 07:037   |                2 |                1 |                              7 |                   1 |                   1 |                           0 |                             0 |                                1 |                              1 |                        2 |
-| compliance 07:030              |                7 |                2 |                              1 |                   7 |                   1 |                           0 |                             0 |                                1 |                              0 |                        1 |
-| regulation 05:164              |                4 |                4 |                              1 |                   1 |                   5 |                           1 |                             0 |                                0 |                              0 |                        2 |
-| financial services 04:168      |                3 |                2 |                              0 |                   0 |                   1 |                           4 |                             2 |                                0 |                              0 |                        0 |
-| financial regulation 04:035    |                2 |                1 |                              0 |                   0 |                   0 |                           2 |                             4 |                                0 |                              0 |                        0 |
-| artificial intelligence 04:023 |                2 |                1 |                              1 |                   1 |                   0 |                           0 |                             0 |                                4 |                              1 |                        1 |
-| anti-money laundering 03:021   |                1 |                0 |                              1 |                   0 |                   0 |                           0 |                             0 |                                1 |                              3 |                        0 |
-| risk management 03:014         |                2 |                2 |                              2 |                   1 |                   2 |                           0 |                             0 |                                1 |                              0 |                        3 |
+| row                            |   REGTECH 28:329 |   FINTECH 12:249 |   COMPLIANCE 07:030 |   REGULATION 05:164 |   FINANCIAL_SERVICES 04:168 |   FINANCIAL_REGULATION 04:035 |   ARTIFICIAL_INTELLIGENCE 04:023 |   ANTI-MONEY_LAUNDERING 03:021 |   RISK_MANAGEMENT 03:014 |
+|:-------------------------------|-----------------:|-----------------:|--------------------:|--------------------:|----------------------------:|------------------------------:|---------------------------------:|-------------------------------:|-------------------------:|
+| REGTECH 28:329                 |               28 |               12 |                   7 |                   4 |                           3 |                             2 |                                2 |                              1 |                        2 |
+| FINTECH 12:249                 |               12 |               12 |                   2 |                   4 |                           2 |                             1 |                                1 |                              0 |                        2 |
+| COMPLIANCE 07:030              |                7 |                2 |                   7 |                   1 |                           0 |                             0 |                                1 |                              0 |                        1 |
+| REGULATION 05:164              |                4 |                4 |                   1 |                   5 |                           1 |                             0 |                                0 |                              0 |                        2 |
+| FINANCIAL_SERVICES 04:168      |                3 |                2 |                   0 |                   1 |                           4 |                             2 |                                0 |                              0 |                        0 |
+| FINANCIAL_REGULATION 04:035    |                2 |                1 |                   0 |                   0 |                           2 |                             4 |                                0 |                              0 |                        0 |
+| ARTIFICIAL_INTELLIGENCE 04:023 |                2 |                1 |                   1 |                   0 |                           0 |                             0 |                                4 |                              1 |                        1 |
+| ANTI-MONEY_LAUNDERING 03:021   |                1 |                0 |                   0 |                   0 |                           0 |                             0 |                                1 |                              3 |                        0 |
+| RISK_MANAGEMENT 03:014         |                2 |                2 |                   1 |                   2 |                           0 |                             0 |                                1 |                              0 |                        3 |
 <BLANKLINE>
 <BLANKLINE>
+
+
 
 # pylint: disable=line-too-long
 """
@@ -365,6 +336,7 @@ from .network_viewer import network_viewer
 # pylint: disable=too-many-arguments disable=too-many-locals
 def matrix_viewer(
     obj,
+    n_labels=None,
     nx_k=0.5,
     nx_iterations=10,
     node_size_min=30,
@@ -387,9 +359,6 @@ def matrix_viewer(
         textfont_size_min,
         textfont_size_max,
     )
-    ####
-    # node_sizes = network_utils.extract_node_sizes(graph)
-    ####
 
     if isinstance(obj, MatrixSubset):
         graph = set_node_colors(graph, obj.custom_items_, "#556f81")
@@ -398,6 +367,7 @@ def matrix_viewer(
 
     fig = network_viewer(
         graph=graph,
+        n_labels=n_labels,
         nx_k=nx_k,
         nx_iterations=nx_iterations,
         random_state=random_state,
@@ -405,19 +375,6 @@ def matrix_viewer(
         yaxes_range=yaxes_range,
         show_axes=show_axes,
     )
-
-    # node_trace = network_utils.create_node_trace(graph)
-    # text_trace = network_utils.create_text_trace(graph)
-    # edge_traces = network_utils.create_edge_traces(graph)
-
-    # fig = network_utils.create_network_graph(
-    #     edge_traces=edge_traces,
-    #     node_trace=node_trace,
-    #     text_trace=text_trace,
-    #     xaxes_range=xaxes_range,
-    #     yaxes_range=yaxes_range,
-    #     show_axes=show_axes,
-    # )
 
     matrix_viewer_ = MatrixViewer()
     matrix_viewer_.plot_ = fig

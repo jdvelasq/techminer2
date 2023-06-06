@@ -159,7 +159,7 @@ def list_cells_in_matrix(obj):
     if isinstance(obj, CorrMatrix):
         results.columns_ = obj.rows_and_columns_
         results.rows_ = obj.rows_and_columns_
-    elif isinstance(obj, CocMatrix):
+    elif isinstance(obj, (CocMatrix, MatrixSubset)):
         results.columns_ = obj.columns_
         results.rows_ = obj.rows_
     else:

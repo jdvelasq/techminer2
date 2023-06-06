@@ -3,6 +3,10 @@
 Network Viewer --- ChatGPT
 ===============================================================================
 
+
+
+
+
 Example: 
 -------------------------------------------------------------------------------
 
@@ -22,7 +26,8 @@ Example:
 ... )
 >>> fig = vantagepoint.analyze.network_viewer(
 ...     graph,
-...     node_size_min=15,
+...     n_labels=15,
+...     node_size_min=8,
 ...     node_size_max=45,
 ...     textfont_size_min=8,
 ...     textfont_size_max=20,
@@ -45,6 +50,7 @@ from ... import network_utils
 
 def network_viewer(
     graph,
+    n_labels=None,
     nx_k=0.5,
     nx_iterations=10,
     random_state=0,
@@ -73,16 +79,18 @@ def network_viewer(
         )
 
     node_trace = network_utils.create_node_trace(graph)
-    text_trace = network_utils.create_text_trace(graph)
+    # text_trace = network_utils.create_text_trace(graph)
     edge_traces = network_utils.create_edge_traces(graph)
 
     fig = network_utils.create_network_graph(
         edge_traces=edge_traces,
         node_trace=node_trace,
-        text_trace=text_trace,
+        # text_trace=text_trace,
         xaxes_range=xaxes_range,
         yaxes_range=yaxes_range,
         show_axes=show_axes,
     )
+
+    fig = network_utils.add_names_to_fig_nodes(fig, graph, n_labels)
 
     return fig

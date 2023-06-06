@@ -92,6 +92,7 @@ from .list_cells_in_matrix import list_cells_in_matrix
 # pylint: disable=too-many-locals
 def corr_map(
     matrix,
+    n_labels=None,
     nx_k=0.5,
     nx_iterations=10,
     nx_random_state=0,
@@ -122,17 +123,19 @@ def corr_map(
     )
 
     node_trace = network_utils.create_node_trace(graph)
-    text_trace = network_utils.create_text_trace(graph)
+    # text_trace = network_utils.create_text_trace(graph)
     edge_traces = network_utils.create_edge_traces(graph)
 
     fig = network_utils.create_network_graph(
         edge_traces,
         node_trace,
-        text_trace,
+        # text_trace,
         xaxes_range,
         yaxes_range,
         show_axes,
     )
+
+    fig = network_utils.add_names_to_fig_nodes(fig, graph, n_labels)
 
     corrmap = CorrMap()
     corrmap.plot_ = fig
