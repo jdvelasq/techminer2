@@ -470,6 +470,8 @@ def create_working_directories(root_dir):
 
     Returns:
         None
+
+    :meta private:
     """
     for directory in ["processed", "reports"]:
         directory_path = os.path.join(root_dir, directory)
@@ -505,6 +507,8 @@ def create_database_files(root_dir):
 
     Returns:
         None
+
+    :meta private:
     """
     raw_dir = os.path.join(root_dir, "raw")
     processed_dir = os.path.join(root_dir, "processed")
@@ -526,6 +530,8 @@ def get_subdirectories(directory):
 
     Returns:
         A list of subdirectories.
+
+    :meta private:
     """
     subdirectories = os.listdir(directory)
     subdirectories = [
@@ -544,6 +550,8 @@ def concat_raw_csv_files(path, quiet=False):
 
     Returns:
         A pandas DataFrame containing the concatenated data.
+
+    :meta private:
     """
     if not quiet:
         print(f"--INFO-- Concatenating raw files in {path}/")
@@ -574,6 +582,8 @@ def get_csv_files(directory):
 
     Returns:
         A list of CSV files.
+
+    :meta private:
     """
     csv_files = os.listdir(directory)
     csv_files = [f for f in csv_files if f.endswith(".csv")]
@@ -619,6 +629,8 @@ def format_columns_names_in_database_files(root_dir: str) -> None:
 
     Returns:
         None
+
+    :meta private:
     """
     print("--INFO-- Formatting column names in database files")
 
@@ -639,6 +651,8 @@ def format_column_names(data: pd.DataFrame) -> pd.DataFrame:
 
     Returns:
         The pandas DataFrame with formatted column names.
+
+    :meta private:
     """
     return data.rename(
         columns={
@@ -657,6 +671,8 @@ def repair_authors_id_in_database_files(root_dir: str) -> None:
 
     Returns:
         None
+
+    :meta private:
     """
     print("--INFO-- Repairing authors ID")
 
@@ -680,6 +696,8 @@ def get_max_authors_id_length(files: list) -> int:
 
     Returns:
         The maximum length of authors IDs.
+
+    :meta private:
     """
     lengths = []
     for file in files:
@@ -705,7 +723,10 @@ def repair_authors_id(authors_id: pd.Series, max_length: int) -> pd.Series:
 
     Returns:
         The pandas Series with repaired authors IDs.
+
+    :meta private:
     """
+
     return (
         authors_id.str.rstrip(";")
         .str.split(";")
@@ -728,6 +749,7 @@ def repair_bad_separators_in_keywords(root_dir):
     Returns:
         None
 
+    :meta private:
     """
     print("--INFO-- Repairing bad separators in keywords")
     processed_dir = pathlib.Path(root_dir) / "processed"
@@ -741,7 +763,11 @@ def repair_bad_separators_in_keywords(root_dir):
 
 
 def repair_keywords_in_column(raw_keywords: pd.Series) -> pd.Series:
-    """Repair keywords in a pandas Series."""
+    """Repair keywords in a pandas Series.
+
+
+    :meta private:
+    """
     keywords = raw_keywords.copy()
     keywords = keywords.dropna()
     keywords = keywords.str.split("; ").explode().str.strip().drop_duplicates()
@@ -1003,7 +1029,11 @@ def create__article__column(root_dir):
 
 
 def create_references(directory, disable_progress_bar=False):
-    """Create references from `documents.csv` or `_references.csv` file."""
+    """Create references from `documents.csv` or `_references.csv` file.
+
+    :meta private:
+    """
+
     references_path = os.path.join(directory, "processed/_references.csv")
     if os.path.exists(references_path):
         create_referneces_from_references_csv_file(
@@ -1018,7 +1048,10 @@ def create_references(directory, disable_progress_bar=False):
 def create_references_from_documents_csv_file(
     directory, disable_progress_bar=False
 ):
-    """Create references from `documents.csv` file."""
+    """Create references from `documents.csv` file.
+
+    :meta private:
+    """
 
     print("--INFO-- Creating references from  `documents.csv` file.")
 
@@ -1178,7 +1211,10 @@ def create_references_from_documents_csv_file(
 def create_referneces_from_references_csv_file(
     directory, disable_progress_bar=False
 ):
-    """Create the references from the references.csv file."""
+    """Create the references from the references.csv file.
+
+    :meta private:
+    """
 
     references_path = os.path.join(directory, "processed/_references.csv")
 
@@ -1354,7 +1390,10 @@ def create_referneces_from_references_csv_file(
 
 
 def create__local_citations__column_in_references_database(directory):
-    """Create `local_citations` column in references database"""
+    """Create `local_citations` column in references database
+
+    :meta private:
+    """
 
     references_path = os.path.join(directory, "processed", "_references.csv")
     if not os.path.exists(references_path):
@@ -1387,7 +1426,11 @@ def create__local_citations__column_in_references_database(directory):
 
 
 def create__local_citations__column_in_documents_database(root_dir):
-    """Create `local_citations` column in documents database"""
+    """Create `local_citations` column in documents database
+
+    :meta private:
+    """
+
     print("--INFO-- Creating `local_citations` column in documents database")
 
     # counts the number of citations for each local reference
@@ -1428,7 +1471,10 @@ def report_imported_records_per_file(root_dir):
 
 
 def transform_abstract_keywords_to_underscore(root_dir):
-    """Transform keywords in abstracts to uppercase"""
+    """Transform keywords in abstracts to uppercase
+
+    :meta private:
+    """
 
     def get_nlp_phrases():
         """Returns a pandas Series with all NLP phrases in the database files"""
