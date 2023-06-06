@@ -118,8 +118,8 @@ Write a clear and concise paragraph of 30 words about 'REGTECH' using the follow
 
 # pylint: disable=line-too-long
 """
-# import os.path
-# import textwrap
+import os.path
+import textwrap
 
 from ..classes import Concordances
 from ..record_utils import read_records
@@ -146,6 +146,8 @@ def concordances(
             cited_by_filter=cited_by_filter,
             **filters,
         )
+
+        records.index = records.title
 
         records = records.sort_values(
             ["global_citations", "local_citations", "year"],
@@ -211,33 +213,6 @@ def concordances(
 
         return "\n".join(texts)
 
-    def _select_abstracts(abstracts, text):
-        """Selects the abstracts."""
-
-        regex = r"\b" + text + r"\b"
-        abstracts = abstracts[abstracts.phrase.str.contains(regex, regex=True)]
-        abstracts["phrase"] = abstracts["phrase"].str.capitalize()
-        abstracts["phrase"] = abstracts["phrase"].str.replace(
-            r"\b" + text + r"\b", text.upper(), regex=True
-        )
-        abstracts["phrase"] = abstracts["phrase"].str.replace(
-            r"\b" + text.capitalize() + r"\b", text.upper(), regex=True
-        )
-
-        return abstracts
-
-    # def fill(text):
-    #     if isinstance(text, str):
-    #         return textwrap.fill(
-    #             text,
-    #             width=87,
-    #             initial_indent=" " * 0,
-    #             subsequent_indent=" " * 3,
-    #             fix_sentence_endings=True,
-    #         )
-    #     else:
-    #         return ""
-
     def generate_chatgpt_prompt(contexts_table):
         """Generates the chatgpt prompt."""
 
@@ -259,12 +234,41 @@ def concordances(
 
         return text
 
+    def fill(text):
+        if isinstance(text, str):
+            return textwrap.fill(
+                text,
+                width=87,
+                initial_indent=" " * 0,
+                subsequent_indent=" " * 0,
+                fix_sentence_endings=True,
+            )
+        else:
+            return ""
+
+    def write_report(phrases):
+        """Writes the report."""
+
+        file_path = os.path.join(root_dir, "reports", "concordances.txt")
+        with open(file_path, "w", encoding="utf-8") as file:
+            counter = 0
+            for title, phrase in zip(phrases.index, phrases):
+                print("-- {:03d} ".format(counter) + "-" * 83, file=file)
+                print("*  ", end="", file=file)
+                print(fill(title), file=file)
+                print("", file=file)
+                # print("   ", end="", file=file)
+                print(fill(phrase), file=file)
+                print("\n", file=file)
+                counter += 1
+
     #
     # Main code:
     #
     phrases = get_phrases()
     contexts_table = create_contexts_table(phrases)
     texts = transform_context_to_text(contexts_table)
+    write_report(phrases)
 
     obj = Concordances()
     obj.contexts_ = texts
@@ -272,17 +276,6 @@ def concordances(
     obj.prompt_ = generate_chatgpt_prompt(contexts_table)
 
     return obj
-
-    # file_path = os.path.join(root_dir, "reports", "concordances.txt")
-    # with open(file_path, "w", encoding="utf-8") as file:
-    #     counter = 0
-    #     for abstract in abstracts:
-    #         print("-- {:03d} ".format(counter) + "-" * 83, file=file)
-    #         print("AR ", end="", file=file)
-    #         print(fill(abstract), file=file)
-    #         print(fill(row.phrase), file=file)
-    #         print("\n", file=file)
-    #         counter += 1
 
     # ###
 
