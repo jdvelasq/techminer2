@@ -23,44 +23,48 @@ Gantt Chart
     
 >>> chart.table_.head(10)
                author_keywords  Year  OCC
-0               regtech 28:329  2017    2
-1    financial services 04:168  2017    1
-2  financial regulation 04:035  2017    1
-3            blockchain 03:005  2017    1
-4       smart contracts 02:022  2017    1
-5               regtech 28:329  2018    3
-6               fintech 12:249  2018    2
-7            regulation 05:164  2018    2
-8    financial services 04:168  2018    1
-9       risk management 03:014  2018    1
+0               REGTECH 28:329  2017    2
+1    FINANCIAL_SERVICES 04:168  2017    1
+2  FINANCIAL_REGULATION 04:035  2017    1
+3            BLOCKCHAIN 03:005  2017    1
+4        SMART_CONTRACT 02:022  2017    1
+5               REGTECH 28:329  2018    3
+6               FINTECH 12:249  2018    2
+7            REGULATION 05:164  2018    2
+8    FINANCIAL_SERVICES 04:168  2018    1
+9       RISK_MANAGEMENT 03:014  2018    1
+
+
 
 >>> print(chart.prompt_)
 Analyze the table below which contains the  occurrences by year for the years. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
-| author_keywords                |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
-|:-------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
-| regtech 28:329                 |      2 |      3 |      4 |      8 |      3 |      6 |      2 |
-| fintech 12:249                 |      0 |      2 |      4 |      3 |      1 |      2 |      0 |
-| regulatory technology 07:037   |      0 |      0 |      0 |      2 |      3 |      2 |      0 |
-| compliance 07:030              |      0 |      0 |      1 |      3 |      1 |      1 |      1 |
-| regulation 05:164              |      0 |      2 |      0 |      1 |      1 |      1 |      0 |
-| financial services 04:168      |      1 |      1 |      0 |      1 |      0 |      1 |      0 |
-| financial regulation 04:035    |      1 |      0 |      0 |      1 |      0 |      2 |      0 |
-| artificial intelligence 04:023 |      0 |      0 |      1 |      2 |      0 |      1 |      0 |
-| anti-money laundering 03:021   |      0 |      0 |      0 |      1 |      2 |      0 |      0 |
-| risk management 03:014         |      0 |      1 |      0 |      1 |      0 |      1 |      0 |
-| innovation 03:012              |      0 |      0 |      0 |      1 |      1 |      1 |      0 |
-| blockchain 03:005              |      1 |      0 |      1 |      0 |      1 |      0 |      0 |
-| suptech 03:004                 |      0 |      0 |      1 |      0 |      0 |      2 |      0 |
-| semantic technologies 02:041   |      0 |      1 |      1 |      0 |      0 |      0 |      0 |
-| data protection 02:027         |      0 |      0 |      0 |      1 |      0 |      1 |      0 |
-| smart contracts 02:022         |      1 |      1 |      0 |      0 |      0 |      0 |      0 |
-| charitytech 02:017             |      0 |      0 |      0 |      1 |      0 |      1 |      0 |
-| english law 02:017             |      0 |      0 |      0 |      1 |      0 |      1 |      0 |
-| accountability 02:014          |      0 |      0 |      0 |      1 |      1 |      0 |      0 |
-| data protection officer 02:014 |      0 |      0 |      0 |      1 |      1 |      0 |      0 |
+| author_keywords                        |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
+|:---------------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
+| REGTECH 28:329                         |      2 |      3 |      4 |      8 |      3 |      6 |      2 |
+| FINTECH 12:249                         |      0 |      2 |      4 |      3 |      1 |      2 |      0 |
+| COMPLIANCE 07:030                      |      0 |      0 |      1 |      3 |      1 |      1 |      1 |
+| REGULATION 05:164                      |      0 |      2 |      0 |      1 |      1 |      1 |      0 |
+| FINANCIAL_SERVICES 04:168              |      1 |      1 |      0 |      1 |      0 |      1 |      0 |
+| FINANCIAL_REGULATION 04:035            |      1 |      0 |      0 |      1 |      0 |      2 |      0 |
+| REGULATORY_TECHNOLOGY (REGTECH) 04:030 |      0 |      0 |      0 |      1 |      2 |      1 |      0 |
+| ARTIFICIAL_INTELLIGENCE 04:023         |      0 |      0 |      1 |      2 |      0 |      1 |      0 |
+| ANTI-MONEY_LAUNDERING 03:021           |      0 |      0 |      0 |      1 |      2 |      0 |      0 |
+| RISK_MANAGEMENT 03:014                 |      0 |      1 |      0 |      1 |      0 |      1 |      0 |
+| INNOVATION 03:012                      |      0 |      0 |      0 |      1 |      1 |      1 |      0 |
+| REGULATORY_TECHNOLOGY 03:007           |      0 |      0 |      0 |      1 |      1 |      1 |      0 |
+| BLOCKCHAIN 03:005                      |      1 |      0 |      1 |      0 |      1 |      0 |      0 |
+| SUPTECH 03:004                         |      0 |      0 |      1 |      0 |      0 |      2 |      0 |
+| DATA_PROTECTION 02:027                 |      0 |      0 |      0 |      1 |      0 |      1 |      0 |
+| SMART_CONTRACT 02:022                  |      1 |      1 |      0 |      0 |      0 |      0 |      0 |
+| CHARITYTECH 02:017                     |      0 |      0 |      0 |      1 |      0 |      1 |      0 |
+| ENGLISH_LAW 02:017                     |      0 |      0 |      0 |      1 |      0 |      1 |      0 |
+| ACCOUNTABILITY 02:014                  |      0 |      0 |      0 |      1 |      1 |      0 |      0 |
+| DATA_PROTECTION_OFFICER 02:014         |      0 |      0 |      0 |      1 |      1 |      0 |      0 |
 <BLANKLINE>
 <BLANKLINE>
+
+
 
 # pylint: disable=line-too-long    
 """
