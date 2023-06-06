@@ -49,70 +49,10 @@ Abstract concordances exploration tool.
                         
 
 >>> print(concordances.prompt_)                        
-Write a clear and concise paragraph of 30 words about 'REGTECH' using the following bullets:
+Your task is to generate a short summary of a term for a research paper. Summarize the text below, delimited by triple backticks, in at most 30 words, focusing on the any aspect contributing to the definition and characteristics of the term 'REGTECH'.
 <BLANKLINE>
-* regulating rapidly transforming FINANCIAL_SYSTEMS requires increasing the use of and reliance on REGTECH 
+Text: ```regulating rapidly transforming FINANCIAL_SYSTEMS requires increasing the use of and reliance on 'REGTECH' .  'REGTECH' developments are leading towards a paradigm shift necessitating the reconceptualization of FINANCIAL_REGULATION.  'REGTECH' to date has focused on the DIGITIZATION of manual reporting and COMPLIANCE_PROCESSES. however, the potential of 'REGTECH' is far greater  IT has the potential to enable a nearly real-time and PROPORTIONATE_REGULATORY_REGIME that identifies and ADDRESSES_RISK while facilitating more EFFICIENT_REGULATORY_COMPLIANCE. this paper seeks to expose the inadequacy of digitizing ANALOGUE_PROCESSES in a digital FINANCIAL_WORLD, sets the foundation for a practical understanding of 'REGTECH' , and proposes sequenced reforms that could BENEFIT regulators, industry, and entrepreneurs in the FINANCIAL_SECTOR and other industries. this chapter explores the promise and potential of regulatory TECHNOLOGIES ( 'REGTECH' ), a new and vital dimension to FINTECH. IT draws on the findings and outcomes of a five-year research programme to highlight the role that 'REGTECH' can play in making REGULATORY_COMPLIANCE more efficient and effective. the chapter presents research on the bank of england/financial conduct authority (fca) REGTECH sprint initiative, whose objective was to demonstrate how straight-through processing of REGULATIONS and REGULATORY_COMPLIANCE reporting using semantically enabled applications can be made possible by 'REGTECH' . the chapter notes that the full BENEFITS of 'REGTECH' will only materialise if the pitfalls of a fragmented tower of babel approach are avoided. although also not a panacea, the development of " 'REGTECH' " solutions will help clear away volumes of work that understaffed and underfunded regulators cannot keep up with.  'REGTECH' will not eliminate policy considerations, nor will IT render regulatory decisions noncontroversial. nevertheless, a sophisticated deployment of 'REGTECH' should help focus regulatory discretion and public-policy debate on the elements of REGULATION where choices really matter. europes road to 'REGTECH' has rested upon four apparently unrelated pillars: (1) extensive reporting requirements imposed after the GLOBAL_FINANCIAL_CRISIS to control SYSTEMIC_RISK and change in FINANCIAL_SECTOR behaviour. the PAPER_ANALYSES these four pillars and suggests that together they are underpinning the development of a 'REGTECH' ecosystem in EUROPE and will continue to do so. we argue that the european unions FINANCIAL_SERVICES and DATA_PROTECTION regulatory reforms have unintentionally driven the use of regulatory TECHNOLOGIES (REGTECH) by intermediaries, supervisors and regulators, and provided an environment within which 'REGTECH' can flourish. the experiences of EUROPE in this process will provide insights for other societies in developing their own 'REGTECH' ECOSYSTEMS in order to support more efficient, stable, inclusive FINANCIAL_SYSTEMS. DESIGN/METHODOLOGY/APPROACH: in this paper, the authors propose a novel, regular TECHNOLOGY ( 'REGTECH' ) cum automated legal text approach for financial TRANSACTION as well as FINANCIAL_RISK reporting that is based on cutting-edge distributed computing and decentralised data management TECHNOLOGIES such as DISTRIBUTED_LEDGER (swanson, 2015), distributed storage (arner et al. the purpose of this paper is to explore the solutions that ai, 'REGTECH' and charitytech provide to charities in navigating the vast amount of ANTI-MONEY_LAUNDERING and counter-terror FINANCE legislation in the uk. we also show that the emergence of FINTECH in the area of FINANCIAL_REGULATION (REGULATORY_TECHNOLOGY: 'REGTECH' ) can significantly improve FINANCIAL_DEVELOPMENT outcomes. in contrast, 'REGTECH' has recently brought GREAT_SUCCESS to FINANCIAL_COMPLIANCE, resulting in reduced RISK, COST_SAVING and enhanced FINANCIAL_REGULATORY_COMPLIANCE. a PROOF_OF_CONCEPT prototype was explored using a regulator based SELF-ASSESSMENT_CHECKLIST to establish if 'REGTECH' best practice could improve the demonstration of GDPR_COMPLIANCE. the application of a REGTECH_APPROACH provides OPPORTUNITIES for demonstrable and validated GDPR_COMPLIANCE, notwithstanding the RISK_REDUCTIONS and COST_SAVINGS that 'REGTECH' can deliver. this STUDY_AIMS to illustrate the impact of adopting REGULATORY_TECHNOLOGY ( 'REGTECH' ) INNOVATIONS in BANKS on MONEY_LAUNDERING prevention effectiveness using BAHRAIN as a CASE_STUDY. the results of MULTIVARIATE_ANALYSIS indicate that transactions MONITORING through REGTECH and cost- and time-saving aspects of 'REGTECH' , drive MONEY_LAUNDERING prevention effectiveness to a highly statistically significant extent. this research not only sheds light on the efficacy of REGTECH but also raises general awareness concerning the adoption and integration of 'REGTECH' platforms for fighting MONEY_LAUNDERING. 2020 the authorsregulatory TECHNOLOGY ( 'REGTECH' ). REGULATORY_TECHNOLOGY ( 'REGTECH' ) is an emerging TECHNOLOGY trend leveraging INFORMATION_TECHNOLOGY and DIGITAL_INNOVATIONS that can greatly assist with a BANKS regulatory management process. an option is to incorporate 'REGTECH' into the DIGITAL_TRANSFORMATION STRATEGY of a management function such as treasury.  'REGTECH' can provide an invaluable tool, in a BUSINESS-as-usual environment, as well as in real-life stress events, such as the recent coronavirus outbreak. this paper explores the potential of 'REGTECH' and the merit of incorporating IT into a smart treasury department. ```
 <BLANKLINE>
-*  REGTECH developments are leading towards a paradigm shift necessitating the reconceptualization of FINANCIAL_REGULATION
-<BLANKLINE>
-*  REGTECH to date has focused on the DIGITIZATION of manual reporting and COMPLIANCE_PROCESSES
-<BLANKLINE>
-* however, the potential of REGTECH is far greater  IT has the potential to enable a nearly real-time and PROPORTIONATE_REGULATORY_REGIME that identifies and ADDRESSES_RISK while facilitating more EFFICIENT_REGULATORY_COMPLIANCE
-<BLANKLINE>
-* this paper seeks to expose the inadequacy of digitizing ANALOGUE_PROCESSES in a digital FINANCIAL_WORLD, sets the foundation for a practical understanding of REGTECH , and proposes sequenced reforms that could BENEFIT regulators, industry, and entrepreneurs in the FINANCIAL_SECTOR and other industries
-<BLANKLINE>
-* this chapter explores the promise and potential of regulatory TECHNOLOGIES ( REGTECH ), a new and vital dimension to FINTECH
-<BLANKLINE>
-* IT draws on the findings and outcomes of a five-year research programme to highlight the role that REGTECH can play in making REGULATORY_COMPLIANCE more efficient and effective
-<BLANKLINE>
-* the chapter presents research on the bank of england/financial conduct authority (fca) REGTECH sprint initiative, whose objective was to demonstrate how straight-through processing of REGULATIONS and REGULATORY_COMPLIANCE reporting using semantically enabled applications can be made possible by REGTECH 
-<BLANKLINE>
-* the chapter notes that the full BENEFITS of REGTECH will only materialise if the pitfalls of a fragmented tower of babel approach are avoided
-<BLANKLINE>
-* although also not a panacea, the development of " REGTECH " solutions will help clear away volumes of work that understaffed and underfunded regulators cannot keep up with
-<BLANKLINE>
-*  REGTECH will not eliminate policy considerations, nor will IT render regulatory decisions noncontroversial
-<BLANKLINE>
-* nevertheless, a sophisticated deployment of REGTECH should help focus regulatory discretion and public-policy debate on the elements of REGULATION where choices really matter
-<BLANKLINE>
-* europes road to REGTECH has rested upon four apparently unrelated pillars: (1) extensive reporting requirements imposed after the GLOBAL_FINANCIAL_CRISIS to control SYSTEMIC_RISK and change in FINANCIAL_SECTOR behaviour
-<BLANKLINE>
-* the PAPER_ANALYSES these four pillars and suggests that together they are underpinning the development of a REGTECH ecosystem in EUROPE and will continue to do so
-<BLANKLINE>
-* we argue that the european unions FINANCIAL_SERVICES and DATA_PROTECTION regulatory reforms have unintentionally driven the use of regulatory TECHNOLOGIES (REGTECH) by intermediaries, supervisors and regulators, and provided an environment within which REGTECH can flourish
-<BLANKLINE>
-* the experiences of EUROPE in this process will provide insights for other societies in developing their own REGTECH ECOSYSTEMS in order to support more efficient, stable, inclusive FINANCIAL_SYSTEMS
-<BLANKLINE>
-* DESIGN/METHODOLOGY/APPROACH: in this paper, the authors propose a novel, regular TECHNOLOGY ( REGTECH ) cum automated legal text approach for financial TRANSACTION as well as FINANCIAL_RISK reporting that is based on cutting-edge distributed computing and decentralised data management TECHNOLOGIES such as DISTRIBUTED_LEDGER (swanson, 2015), distributed storage (arner et al
-<BLANKLINE>
-* the purpose of this paper is to explore the solutions that ai, REGTECH and charitytech provide to charities in navigating the vast amount of ANTI-MONEY_LAUNDERING and counter-terror FINANCE legislation in the uk
-<BLANKLINE>
-* we also show that the emergence of FINTECH in the area of FINANCIAL_REGULATION (REGULATORY_TECHNOLOGY: REGTECH ) can significantly improve FINANCIAL_DEVELOPMENT outcomes
-<BLANKLINE>
-* in contrast, REGTECH has recently brought GREAT_SUCCESS to FINANCIAL_COMPLIANCE, resulting in reduced RISK, COST_SAVING and enhanced FINANCIAL_REGULATORY_COMPLIANCE
-<BLANKLINE>
-* a PROOF_OF_CONCEPT prototype was explored using a regulator based SELF-ASSESSMENT_CHECKLIST to establish if REGTECH best practice could improve the demonstration of GDPR_COMPLIANCE
-<BLANKLINE>
-* the application of a REGTECH_APPROACH provides OPPORTUNITIES for demonstrable and validated GDPR_COMPLIANCE, notwithstanding the RISK_REDUCTIONS and COST_SAVINGS that REGTECH can deliver
-<BLANKLINE>
-* this STUDY_AIMS to illustrate the impact of adopting REGULATORY_TECHNOLOGY ( REGTECH ) INNOVATIONS in BANKS on MONEY_LAUNDERING prevention effectiveness using BAHRAIN as a CASE_STUDY
-<BLANKLINE>
-* the results of MULTIVARIATE_ANALYSIS indicate that transactions MONITORING through REGTECH and cost- and time-saving aspects of REGTECH , drive MONEY_LAUNDERING prevention effectiveness to a highly statistically significant extent
-<BLANKLINE>
-* this research not only sheds light on the efficacy of REGTECH but also raises general awareness concerning the adoption and integration of REGTECH platforms for fighting MONEY_LAUNDERING
-<BLANKLINE>
-* 2020 the authorsregulatory TECHNOLOGY ( REGTECH )
-<BLANKLINE>
-* REGULATORY_TECHNOLOGY ( REGTECH ) is an emerging TECHNOLOGY trend leveraging INFORMATION_TECHNOLOGY and DIGITAL_INNOVATIONS that can greatly assist with a BANKS regulatory management process
-<BLANKLINE>
-* an option is to incorporate REGTECH into the DIGITAL_TRANSFORMATION STRATEGY of a management function such as treasury
-<BLANKLINE>
-*  REGTECH can provide an invaluable tool, in a BUSINESS-as-usual environment, as well as in real-life stress events, such as the recent coronavirus outbreak
-<BLANKLINE>
-* this paper explores the potential of REGTECH and the merit of incorporating IT into a smart treasury department
-<BLANKLINE>
-<BLANKLINE>
-
 
 
 
@@ -216,21 +156,21 @@ def concordances(
     def generate_chatgpt_prompt(contexts_table):
         """Generates the chatgpt prompt."""
 
-        text = (
-            "Write a clear and concise paragraph of 30 words about "
-            f"'{search_for}' using the following bullets:\n\n"
-        )
+        text_to_summarize = ""
 
         for _, row in contexts_table.iterrows():
-            text += (
-                "* "
-                + row["left_context"]
-                + " "
-                + search_for.upper()
-                + " "
-                + row["right_context"]
-                + "\n\n"
-            )
+            left = row["left_context"]
+            right = row["right_context"]
+            text_to_summarize += f"{left} '{search_for.upper()}' {right}. "
+
+        text = (
+            "Your task is to generate a short summary of a term for a "
+            "research paper. Summarize the text below, delimited by "
+            "triple backticks, in at most 30 words, focusing on the "
+            "any aspect contributing to the definition and "
+            f"characteristics of the term '{search_for}'.\n\n"
+            f"Text: ```{text_to_summarize}```\n"
+        )
 
         return text
 
