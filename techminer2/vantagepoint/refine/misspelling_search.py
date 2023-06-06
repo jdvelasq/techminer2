@@ -1,5 +1,6 @@
+# flake8: noqa
 """
-Misspelling Search 
+Misspelling Search
 ===============================================================================
 
 Look for misspeling mistakes in the keywords of a thesaurus.
@@ -36,11 +37,11 @@ def misspelling_search(
     if not isfile(th_file):
         raise FileNotFoundError(f"The file {th_file} does not exist.")
 
-    th = load_thesaurus_as_dict(th_file)
+    th_current = load_thesaurus_as_dict(th_file)
 
     spell = SpellChecker()
 
-    keywords = th.values()
+    keywords = th_current.values()
     keywords = [word for keyword in keywords for word in keyword]
     keywords = [word for keyword in keywords for word in keyword.split("_")]
     keywords = set(keywords)
