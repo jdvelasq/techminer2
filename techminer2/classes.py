@@ -269,6 +269,17 @@ class WordComparison:
 # Co-occurrence Analysis / Sequences and Network Analysis / Ego Network : None
 # Co-occurrence Analysis / Concordances
 
+
+@dataclass(init=False)
+class Concordances:
+    """Concordances."""
+
+    plot_: go.Figure
+    prompt_: str
+    table_: pd.DataFrame
+    contexts_: str
+
+
 # Thematic Analysis / Thematic Analysis of Context
 # Thematic Analysis / Modeling of Emergent Themes
 # Thematic Analysis / Thematic Document Classification

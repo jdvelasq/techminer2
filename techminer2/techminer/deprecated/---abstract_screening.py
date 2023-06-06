@@ -31,10 +31,10 @@ Captures n-words around the keyword.
 
 """
 
-from ..._load_abstracts import load_abstracts
-from ..._load_template import load_template
-from ..._save_html_report import save_html_report
-from ...tlab.concordances.concordances import _select_abstracts
+# from ..._load_abstracts import load_abstracts
+# from ..._load_template import load_template
+# from ..._save_html_report import save_html_report
+# from ...tlab.concordances.concordances import _select_abstracts
 
 
 def abstract_screening(
@@ -48,7 +48,8 @@ def abstract_screening(
 
     abstracts = load_abstracts(directory)
     abstracts = abstracts.sort_values(
-        ["global_citations", "article", "line_no"], ascending=[False, True, True]
+        ["global_citations", "article", "line_no"],
+        ascending=[False, True, True],
     )
     abstracts = _select_abstracts(abstracts, text)
     contexts = _extract_contexts(abstracts, text, left, right)
@@ -77,7 +78,9 @@ def _extract_contexts(abstracts, text, left, right):
     regex = r"\b" + text + r"\b"
 
     left_context_regex = r"(?P<left_context>(?:\w+\W+){1," + str(left) + "})"
-    right_context_regex = r"(?P<right_context>(?:\W+\w+){1," + str(right) + "})"
+    right_context_regex = (
+        r"(?P<right_context>(?:\W+\w+){1," + str(right) + "})"
+    )
     contexts = abstracts["phrase"].str.extract(
         left_context_regex + regex + right_context_regex
     )
