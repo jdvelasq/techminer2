@@ -74,6 +74,7 @@ REGULATORY_TECHNOLOGY (REGTECH) 04:030      14  ...  0.031678
 from .co_occurrence_network import co_occurrence_network
 
 
+# pylint: disable=too-many-arguments
 def thematic_map(
     # 'co_occ_matrix' params:
     field,
