@@ -45,8 +45,6 @@ Example:
 # pylint: disable=line-too-long
 """
 
-import pandas as pd
-
 from ... import network_utils
 from ...classes import FactorMap
 from .co_occurrence_matrix import co_occurrence_matrix
@@ -54,6 +52,8 @@ from .concept_grid import concept_grid
 from .list_cells_in_matrix import list_cells_in_matrix
 
 
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
 def factor_map(
     # Specific params:
     field,
