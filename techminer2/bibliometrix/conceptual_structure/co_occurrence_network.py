@@ -4,6 +4,9 @@ Co-occurrence Network
 ===============================================================================
 
 
+Example
+-------------------------------------------------------------------------------
+
 >>> root_dir = "data/regtech/"
 
 >>> from techminer2 import bibliometrix
@@ -24,12 +27,12 @@ Co-occurrence Network
     <iframe src="../../../_static/bibliometrix__co_occurrence_network.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> nnet.communities_.head()
-                            CL_00  ...                              CL_04
-0                  regtech 28:329  ...                  innovation 03:012
-1               compliance 07:030  ...                 coronavirus 01:011
-2  artificial intelligence 04:023  ...        digital technologies 01:011
-3    anti-money laundering 03:021  ...  regulations and compliance 01:011
-4               blockchain 03:005  ...              smart treasury 01:011
+                            CL_00  ...                           CL_04
+0                  REGTECH 28:329  ...  ARTIFICIAL_INTELLIGENCE 04:023
+1               BLOCKCHAIN 03:005  ...    ANTI-MONEY_LAUNDERING 03:021
+2           SMART_CONTRACT 02:022  ...              CHARITYTECH 02:017
+3           ACCOUNTABILITY 02:014  ...              ENGLISH_LAW 02:017
+4  DATA_PROTECTION_OFFICER 02:014  ...   COUNTER-TERROR_FINANCE 01:014
 <BLANKLINE>
 [5 rows x 5 columns]
 
@@ -42,31 +45,18 @@ Co-occurrence Network
 
 
 >>> nnet.metrics_.table_.head()
-                              Degree  Betweenness  Closeness  PageRank
-regtech 28:329                    38     0.478025   0.816667  0.091289
-fintech 12:249                    25     0.131540   0.671233  0.056730
-regulatory technology 07:037      21     0.327307   0.636364  0.049180
-regulation 05:164                 15     0.032893   0.590361  0.034642
-compliance 07:030                 14     0.042971   0.583333  0.034957
+                             Degree  Betweenness  Closeness  PageRank
+REGTECH 28:329                   37     0.503565   0.720588  0.090497
+FINTECH 12:249                   25     0.135708   0.612500  0.058191
+REGULATION 05:164                14     0.036919   0.538462  0.032902
+COMPLIANCE 07:030                13     0.016128   0.471154  0.032819
+FINANCIAL_REGULATION 04:035      13     0.034042   0.532609  0.029943
+
+
 
 # pylint: disable=line-too-long
 """
-# import os.path
 
-# from sklearn.manifold import MDS, TSNE
-
-# from ..._cluster_abstracts_report import cluster_abstracts_report
-# from ..._clusters_concordances import clusters_concordances
-
-# from ..._get_network_graph_communities import get_network_graph_communities
-# from ..._get_network_graph_degree_plot import get_network_graph_degree_plot
-
-# from ..._get_network_graph_indicators import get_network_graph_indicators
-# from ..._get_network_graph_manifold_map import get_network_graph_manifold_map
-# from ..._get_network_graph_plot import get_network_graph_plot
-# from ..._matrix_2_matrix_list import matrix_2_matrix_list
-# from ..._matrix_list_2_network_graph import matrix_list_2_network_graph
-# from ...create_directory import create_directory
 from ...check_params import check_keywords
 from ...classes import CoWordsNetwork
 
