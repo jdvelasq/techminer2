@@ -7,8 +7,8 @@ Creates a country thesaurus from 'affiliations' column in the datasets.
 >>> from techminer2 import techminer
 >>> root_dir = "data/regtech/"
 
->>> techminer.data.create_countries_thesaurus(root_dir)
---INFO-- The data/regtech/processed/countries.txt thesaurus file was created
+# >>> techminer.data.create_countries_thesaurus(root_dir)
+# --INFO-- The data/regtech/processed/countries.txt thesaurus file was created
 
 
 """

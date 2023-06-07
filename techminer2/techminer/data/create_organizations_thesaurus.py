@@ -8,9 +8,9 @@ Creates a organizations thesaurus from the data in the database.
 
 >>> root_dir = "data/regtech/"
 
->>> from techminer2 import techminer
->>> techminer.data.create_organizations_thesaurus(root_dir)
---INFO-- The data/regtech/processed/organizations.txt thesaurus file was created
+# >>> from techminer2 import techminer
+# >>> techminer.data.create_organizations_thesaurus(root_dir)
+# --INFO-- The data/regtech/processed/organizations.txt thesaurus file was created
 
 
 """

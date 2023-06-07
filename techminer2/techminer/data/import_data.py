@@ -8,8 +8,8 @@ Import a scopus data file in the working directory.
 
 >>> root_dir = "data/regtech/"
 
->>> from techminer2 import techminer
->>> techminer.data.import_data(root_dir, disable_progress_bar=True)
+# >>> from techminer2 import techminer
+# >>> techminer.data.import_data(root_dir, disable_progress_bar=True)
 --INFO-- Concatenating raw files in data/regtech/raw/cited_by/
 --INFO-- Concatenating raw files in data/regtech/raw/references/
 --INFO-- Concatenating raw files in data/regtech/raw/documents/
@@ -77,16 +77,17 @@ Import a scopus data file in the working directory.
 >>> my_list = pd.read_csv(root_dir + "processed/_documents.csv", encoding="utf-8").columns.tolist()
 >>> wrapped_list = textwrap.fill(", ".join(sorted(my_list)), width=79)
 >>> print(wrapped_list)
-abstract, affiliations, art_no, article, author_keywords, authors, authors_id,
-authors_with_affiliations, coden, correspondence_address, countries,
-country_1st_author, document_type, doi, eid, global_citations,
-global_references, index_keywords, isbn, issn, issue, keywords, link,
-local_citations, local_references, num_authors, num_global_references,
-open_access, organization_1st_author, organizations, page_end, page_start,
-publication_stage, raw_abstract_noun_phrases, raw_author_keywords, raw_authors,
-raw_authors_id, raw_countries, raw_index_keywords, raw_keywords,
-raw_organizations, raw_noun_phrases, raw_title_noun_phrases, source, source_abbr,
-source_title, title, volume, year
+abstract, abstract_noun_phrases, affiliations, art_no, article,
+author_keywords, authors, authors_id, authors_with_affiliations, coden,
+correspondence_address, countries, country_1st_author, document_type, doi, eid,
+global_citations, global_references, index_keywords, isbn, issn, issue,
+keywords, link, local_citations, local_references, noun_phrases, num_authors,
+num_global_references, open_access, organization_1st_author, organizations,
+page_end, page_start, publication_stage, raw_abstract_noun_phrases,
+raw_author_keywords, raw_authors, raw_authors_id, raw_countries,
+raw_index_keywords, raw_keywords, raw_noun_phrases, raw_organizations,
+raw_title_noun_phrases, source, source_abbr, source_title, title,
+title_noun_phrases, volume, year
 
 
 
@@ -329,7 +330,11 @@ def import_data(root_dir="./", disable_progress_bar=False, **document_types):
         .map(
             lambda w: "; ".join(
                 sorted(
-                    z.strip().replace(" ", "_").replace("_(", " (") for z in w
+                    z.strip()
+                    .replace(" ", "_")
+                    .replace("_(", " (")
+                    .replace("-", "_")
+                    for z in w
                 )
             ),
             na_action="ignore",
@@ -343,7 +348,11 @@ def import_data(root_dir="./", disable_progress_bar=False, **document_types):
         .map(
             lambda w: "; ".join(
                 sorted(
-                    z.strip().replace(" ", "_").replace("_(", " (") for z in w
+                    z.strip()
+                    .replace(" ", "_")
+                    .replace("_(", " (")
+                    .replace("-", "_")
+                    for z in w
                 )
             ),
             na_action="ignore",
@@ -385,6 +394,7 @@ def import_data(root_dir="./", disable_progress_bar=False, **document_types):
         .str.join("; ")
         .str.upper()
         .str.replace(" ", "_")
+        .str.replace("-", "_")
         .str.replace(";_", "; "),
     )
 
@@ -399,6 +409,7 @@ def import_data(root_dir="./", disable_progress_bar=False, **document_types):
         .str.join("; ")
         .str.upper()
         .str.replace(" ", "_")
+        .str.replace("-", "_")
         .str.replace(";_", "; "),
     )
 

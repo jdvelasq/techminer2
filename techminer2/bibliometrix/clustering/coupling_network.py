@@ -68,7 +68,8 @@ from ..._get_network_graph_degree_plot import get_network_graph_degree_plot
 # from ..._get_network_graph_indicators import get_network_graph_indicators
 from ..._get_network_graph_plot import get_network_graph_plot
 from ..._matrix_2_matrix_list import matrix_2_matrix_list
-from ..._matrix_list_2_network_graph import matrix_list_2_network_graph
+
+# from ..._matrix_list_2_network_graph import matrix_list_2_network_graph
 from ...vantagepoint.analyze.association_index import association_index
 from .coupling_matrix_list import coupling_matrix_list
 

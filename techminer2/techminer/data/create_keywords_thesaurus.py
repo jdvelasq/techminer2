@@ -5,10 +5,9 @@ Create keywords thesaurus
 
 >>> root_dir = "data/regtech/"
 
->>> from techminer2 import techminer
->>> techminer.data.create_keywords_thesaurus(root_dir=root_dir)
---INFO-- Creating `keywords.txt` from author/index keywords, and \
-abstract/title words
+# >>> from techminer2 import techminer
+# >>> techminer.data.create_keywords_thesaurus(root_dir=root_dir)
+# --INFO-- Creating `keywords.txt` from author/index keywords, and abstract/title words
 
 # pylint: disable=line-too-long
 """

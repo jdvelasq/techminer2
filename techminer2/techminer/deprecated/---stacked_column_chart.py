@@ -1,105 +1,105 @@
-"""
-Stacked column chart
-===============================================================================
+# """
+# Stacked column chart
+# ===============================================================================
 
-# >>> from techminer2 import *
-# >>> directory = "data/regtech/"
-# >>> file_name = "sphinx/images/stacked_column_chart.png"
-# >>> from techminer2.indicators_api.collaboration_indicators import collaboration_indicators
-# >>> data = collaboration_indicators("countries", directory=directory)
-# >>> data = data.sort_values(by="num_documents", ascending=False)
-# >>> data = data[["single_publication", "multiple_publication"]].head(20)
-# >>> title = "Country collaboration indicators"
-# >>> stacked_column_chart(data, title=title).savefig(file_name)
+# # >>> from techminer2 import *
+# # >>> directory = "data/regtech/"
+# # >>> file_name = "sphinx/images/stacked_column_chart.png"
+# # >>> from techminer2.indicators_api.collaboration_indicators import collaboration_indicators
+# # >>> data = collaboration_indicators("countries", directory=directory)
+# # >>> data = data.sort_values(by="num_documents", ascending=False)
+# # >>> data = data[["single_publication", "multiple_publication"]].head(20)
+# # >>> title = "Country collaboration indicators"
+# # >>> stacked_column_chart(data, title=title).savefig(file_name)
 
-# .. image:: images/stacked_column_chart.png
-#     :width: 700px
-#     :align: center
-
-
-"""
+# # .. image:: images/stacked_column_chart.png
+# #     :width: 700px
+# #     :align: center
 
 
-import matplotlib.pyplot as plt
-
-_colors = [
-    "tab:blue",
-    "tab:orange",
-    "tab:green",
-    "tab:red",
-    "tab:purple",
-    "tab:brow",
-    "tab:pink",
-    "tab:gray",
-    "tab:olive",
-    "tab:cyan",
-]
+# """
 
 
-def stacked_column_chart(
-    data,
-    width=0.7,
-    colors=None,
-    figsize=(7, 5),
-    edgecolor="k",
-    linewidth=0.5,
-    title=None,
-    xlabel=None,
-    ylabel=None,
-):
-    """Make a horizontal stacked bar plot."""
+# import matplotlib.pyplot as plt
 
-    if colors is None:
-        colors = _colors
+# _colors = [
+#     "tab:blue",
+#     "tab:orange",
+#     "tab:green",
+#     "tab:red",
+#     "tab:purple",
+#     "tab:brow",
+#     "tab:pink",
+#     "tab:gray",
+#     "tab:olive",
+#     "tab:cyan",
+# ]
 
-    data = data.copy()
-    data.index = data.index.str.title()
 
-    fig = plt.Figure(figsize=figsize)
-    ax = fig.subplots()
+# def stacked_column_chart(
+#     data,
+#     width=0.7,
+#     colors=None,
+#     figsize=(7, 5),
+#     edgecolor="k",
+#     linewidth=0.5,
+#     title=None,
+#     xlabel=None,
+#     ylabel=None,
+# ):
+#     """Make a horizontal stacked bar plot."""
 
-    bottom = data[data.columns[0]].map(lambda w: 0.0)
-    for i_col, col in enumerate(data.columns):
-        ax.bar(
-            x=data.index,
-            height=data[col],
-            width=width,
-            bottom=bottom,
-            label=col.replace("_", " ").title(),
-            color=colors[i_col],
-            alpha=0.8,
-            edgecolor=edgecolor,
-            linewidth=linewidth,
-        )
-        bottom = bottom + data[col]
+#     if colors is None:
+#         colors = _colors
 
-    if xlabel is not None:
-        ax.set_xlabel(xlabel, fontsize=9)
+#     data = data.copy()
+#     data.index = data.index.str.title()
 
-    if ylabel is not None:
-        ax.set_ylabel(ylabel, fontsize=9)
+#     fig = plt.Figure(figsize=figsize)
+#     ax = fig.subplots()
 
-    if title is not None:
-        ax.set_title(
-            title,
-            fontsize=10,
-            color="dimgray",
-            loc="left",
-        )
+#     bottom = data[data.columns[0]].map(lambda w: 0.0)
+#     for i_col, col in enumerate(data.columns):
+#         ax.bar(
+#             x=data.index,
+#             height=data[col],
+#             width=width,
+#             bottom=bottom,
+#             label=col.replace("_", " ").title(),
+#             color=colors[i_col],
+#             alpha=0.8,
+#             edgecolor=edgecolor,
+#             linewidth=linewidth,
+#         )
+#         bottom = bottom + data[col]
 
-    # ax.invert_yaxis()
+#     if xlabel is not None:
+#         ax.set_xlabel(xlabel, fontsize=9)
 
-    for x in ["top", "right", "left"]:
-        ax.spines[x].set_visible(False)
+#     if ylabel is not None:
+#         ax.set_ylabel(ylabel, fontsize=9)
 
-    ax.grid(axis="y", color="gray", linestyle=":")
+#     if title is not None:
+#         ax.set_title(
+#             title,
+#             fontsize=10,
+#             color="dimgray",
+#             loc="left",
+#         )
 
-    ax.spines["left"].set_color("dimgray")
-    ax.tick_params(axis="x", labelsize=7)
-    ax.tick_params(axis="y", labelsize=7)
-    ax.tick_params(axis="x", labelrotation=90)
-    ax.legend(fontsize=7)
+#     # ax.invert_yaxis()
 
-    fig.set_tight_layout(True)
+#     for x in ["top", "right", "left"]:
+#         ax.spines[x].set_visible(False)
 
-    return fig
+#     ax.grid(axis="y", color="gray", linestyle=":")
+
+#     ax.spines["left"].set_color("dimgray")
+#     ax.tick_params(axis="x", labelsize=7)
+#     ax.tick_params(axis="y", labelsize=7)
+#     ax.tick_params(axis="x", labelrotation=90)
+#     ax.legend(fontsize=7)
+
+#     fig.set_tight_layout(True)
+
+#     return fig
