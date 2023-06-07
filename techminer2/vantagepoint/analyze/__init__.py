@@ -1,46 +1,19 @@
 """
 This package provides the functions available in the Analyze menu.
 
-The following functions are available:
 
-- association_index: Computes the association index of a co-occurrence \
-    matrix.
-- auto_corr_matrix: Computes the autocorrelation matrix of a network.
-- cluster_column: Cluster .
-- cluster_members: Gets communities from a networkx graph as a dataframe.
-- cluster_records: Clusters records in the database file.
-- co_occ_matrix: Computes the co-occurrence matrix of a set of terms.
-- column_viewer: Generates a radial diagram of term associations from a \
-    (co) occurrence matrix.
-- corr_map: Generates a correlation map of a network.
-- create_concept_grid: Creates a grid of concepts based on their co-occurrence.
-- cross_corr_matrix: Computes the cross-correlation matrix of a set of \
-    networks.
-- extract_topics: Extracts topics from a set of documents.
-- factor_matrix: Computes the factor matrix of a network.
-- list_cells_in_matrix: Lists the cells in a matrix that meet a certain \
-    criterion.
-- list_view: Generates a list view of a matrix.
-- matrix_subset: Generates a subset of a matrix.
-- matrix_viewer: Generates a matrix viewer.
-- network_degree_plot: Generates a degree plot of a network.
-- network_metrics: Computes the metrics of a network.
-- occ_matrix: Computes the occurrence matrix of a set of terms.
-- terms_by_year: Computes the frequency of terms over time.
-- tf_idf_matrix: Computes the TF-IDF matrix of a set of documents.
-- tf_matrix: Computes the term frequency matrix of a set of documents.
 
 """
-
 from .association_index import association_index
 from .auto_corr_matrix import auto_corr_matrix
+from .auto_correlation_map import auto_correlation_map
 from .cluster_column import cluster_column
 from .cluster_items import cluster_items
 from .cluster_records import cluster_records
 from .co_occ_matrix import co_occ_matrix
-from .corr_map import corr_map
 from .create_concept_grid import create_concept_grid
 from .cross_corr_matrix import cross_corr_matrix
+from .cross_correlation_map import cross_correlation_map
 from .factor_matrix import factor_matrix
 from .impact_view import impact_view
 from .list_cells_in_matrix import list_cells_in_matrix
@@ -58,13 +31,14 @@ from .tf_matrix import tf_matrix
 __all__ = [
     "association_index",
     "auto_corr_matrix",
+    "auto_correlation_map",
     "cluster_column",
     "cluster_items",
     "cluster_records",
     "co_occ_matrix",
-    "corr_map",
     "create_concept_grid",
     "cross_corr_matrix",
+    "cross_correlation_map",
     "factor_matrix",
     "impact_view",
     "list_cells_in_matrix",

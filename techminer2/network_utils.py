@@ -130,6 +130,7 @@ def compute_circular_layout(graph):
     return graph
 
 
+# pylint: disable=invalid-name
 def compute_newtork_statistics(graph):
     """Compute network statistics."""
 
@@ -574,29 +575,29 @@ def extract_node_occ(graph):
     return occ
 
 
-def set_edge_properties_for_corr_maps(graph):
+def set_edge_properties_for_corr_maps(graph, color):
     """Sets edge properties for correlation maps."""
 
     for edge in graph.edges():
         if graph.edges[edge]["value"] < 0.25:
             graph.edges[edge]["width"] = 2
             graph.edges[edge]["dash"] = "dot"
-            graph.edges[edge]["color"] = "#8da4b4"
+            graph.edges[edge]["color"] = color
 
         elif graph.edges[edge]["value"] < 0.5:
             graph.edges[edge]["width"] = 2
             graph.edges[edge]["dash"] = "solid"
-            graph.edges[edge]["color"] = "#8da4b4"
+            graph.edges[edge]["color"] = color
 
         elif graph.edges[edge]["value"] < 0.75:
             graph.edges[edge]["width"] = 4
             graph.edges[edge]["dash"] = "solid"
-            graph.edges[edge]["color"] = "#8da4b4"
+            graph.edges[edge]["color"] = color
 
         else:
             graph.edges[edge]["width"] = 6
             graph.edges[edge]["dash"] = "solid"
-            graph.edges[edge]["color"] = "#8da4b4"
+            graph.edges[edge]["color"] = color
 
     return graph
 

@@ -1,0 +1,142 @@
+# flake8: noqa
+"""
+Auto-correlation Map
+===============================================================================
+
+Creates an Auto-correlation Map.
+
+
+Example
+-------------------------------------------------------------------------------
+
+>>> root_dir = "data/regtech/"
+
+>>> file_name = "sphinx/_static/vantagepoint__auto_correlation_map.html"
+
+>>> from techminer2 import vantagepoint
+>>> chart =  vantagepoint.analyze.auto_correlation_map(
+...     rows_and_columns='authors',
+...     top_n=10,
+...     root_dir=root_dir,
+...     color="#1f77b4", # tab:blue
+... )
+>>> chart.plot_.write_html(file_name)
+
+.. raw:: html
+
+    <iframe src="../../../../_static/vantagepoint__auto_correlation_map.html"
+    height="600px" width="100%" frameBorder="0"></iframe>
+
+
+>>> print(chart.prompt_)
+Analyze the table below which contains the auto-correlation values for the authors. High correlation values indicate that the topics tends to appear together in the same document and forms a group. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
+<BLANKLINE>
+|    | row             | column           |   CORR |
+|---:|:----------------|:-----------------|-------:|
+|  2 | Arner DW 3:185  | Buckley RP 3:185 |  1     |
+|  9 | Lin W 2:017     | Singh C 2:017    |  1     |
+| 13 | Brennan R 2:014 | Crane M 2:014    |  1     |
+| 15 | Hamdan A 2:018  | Sarea A 2:012    |  0.417 |
+<BLANKLINE>
+<BLANKLINE>
+
+
+
+
+# pylint: disable=line-too-long
+"""
+
+from ... import network_utils
+from ...classes import CorrMap
+from .auto_corr_matrix import auto_corr_matrix
+from .list_cells_in_matrix import list_cells_in_matrix
+
+
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
+def auto_correlation_map(
+    # Matrix params:
+    rows_and_columns,
+    method="pearson",
+    # Map params:
+    n_labels=None,
+    color="#8da4b4",
+    nx_k=0.5,
+    nx_iterations=10,
+    nx_random_state=0,
+    node_size_min=30,
+    node_size_max=70,
+    textfont_size_min=10,
+    textfont_size_max=20,
+    xaxes_range=None,
+    yaxes_range=None,
+    show_axes=False,
+    # Item filters:
+    top_n=50,
+    occ_range=None,
+    gc_range=None,
+    custom_items=None,
+    # Database params:
+    root_dir="./",
+    database="documents",
+    year_filter=None,
+    cited_by_filter=None,
+    **filters,
+):
+    """Auto-correlation Map."""
+
+    matrix = auto_corr_matrix(
+        rows_and_columns=rows_and_columns,
+        method=method,
+        # Item filters:
+        top_n=top_n,
+        occ_range=occ_range,
+        gc_range=gc_range,
+        custom_items=custom_items,
+        # Database params:
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
+    )
+
+    matrix_list = list_cells_in_matrix(matrix)
+
+    graph = network_utils.create_graph(
+        matrix_list,
+        node_size_min,
+        node_size_max,
+        textfont_size_min,
+        textfont_size_max,
+    )
+
+    for node in graph.nodes():
+        graph.nodes[node]["color"] = color
+
+    graph = network_utils.set_edge_properties_for_corr_maps(graph, color)
+
+    graph = network_utils.compute_spring_layout(
+        graph, nx_k, nx_iterations, nx_random_state
+    )
+
+    node_trace = network_utils.create_node_trace(graph)
+    edge_traces = network_utils.create_edge_traces(graph)
+
+    fig = network_utils.create_network_graph(
+        edge_traces,
+        node_trace,
+        # text_trace,
+        xaxes_range,
+        yaxes_range,
+        show_axes,
+    )
+
+    fig = network_utils.add_names_to_fig_nodes(fig, graph, n_labels)
+
+    corrmap = CorrMap()
+    corrmap.plot_ = fig
+    corrmap.table_ = matrix_list.cells_list_
+    corrmap.prompt_ = matrix_list.prompt_
+
+    return corrmap
