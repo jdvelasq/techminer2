@@ -25,12 +25,11 @@ Example
 >>> print(r.documents_per_item_.head().to_markdown())
 |    | source_abbr        | title                                                                                               |   year | source_title                                   |   global_citations |   local_citations | doi                            |
 |---:|:-------------------|:----------------------------------------------------------------------------------------------------|-------:|:-----------------------------------------------|-------------------:|------------------:|:-------------------------------|
-|  0 | TECHNOL SOC        | RegTech  Potential benefits and challenges for businesses                                           |   2023 | Technology in Society                          |                  0 |                 0 | 10.1016/J.TECHSOC.2022.102150  |
-|  1 | RES INT BUS FINANC | Costs of voting and firm performance: Evidence from RegTech adoption in Chinese listed firms        |   2023 | Research in International Business and Finance |                  0 |                 0 | 10.1016/J.RIBAF.2022.101868    |
-|  2 | COMPUTER           | RegTech's Rise                                                                                      |   2022 | Computer                                       |                  0 |                 0 | 10.1109/MC.2022.3176693        |
-|  3 | FIN INNOV          | Fintech, regtech, and financial development: evidence from China                                    |   2022 | Financial Innovation                           |                 13 |                 1 | 10.1186/S40854-021-00313-6     |
-|  4 | J CORP FINANC      | Too much to learn? The (un)intended consequences of RegTech development on mergers and acquisitions |   2022 | Journal of Corporate Finance                   |                  0 |                 0 | 10.1016/J.JCORPFIN.2022.102276 |
-
+|  0 | TECHNOL SOC        | REGTECH  POTENTIAL_BENEFITS and CHALLENGES for businesses                                           |   2023 | Technology in Society                          |                  0 |                 0 | 10.1016/J.TECHSOC.2022.102150  |
+|  1 | RES INT BUS FINANC | costs of voting and firm PERFORMANCE: evidence from REGTECH adoption in chinese listed firms        |   2023 | Research in International Business and Finance |                  0 |                 0 | 10.1016/J.RIBAF.2022.101868    |
+|  2 | COMPUTER           | REGTECH's rise                                                                                      |   2022 | Computer                                       |                  0 |                 0 | 10.1109/MC.2022.3176693        |
+|  3 | FINANCIAL INNOV    | FINTECH, REGTECH, and FINANCIAL_DEVELOPMENT: evidence from CHINA                                    |   2022 | Financial Innovation                           |                 13 |                 1 | 10.1186/S40854-021-00313-6     |
+|  4 | J CORP FINANC      | too much to learn? the (un)intended consequences of REGTECH development on mergers and acquisitions |   2022 | Journal of Corporate Finance                   |                  0 |                 0 | 10.1016/J.JCORPFIN.2022.102276 |
 
 >>> print(r.production_per_year_.head().to_markdown())
 |                                 |   OCC |   cum_OCC |   global_citations |   local_citations |   age |   global_citations_per_year |   local_citations_per_year |
@@ -38,7 +37,7 @@ Example
 | ('ACM INT CONF PROC SER', 2021) |     1 |         1 |                  2 |                 0 |     3 |                       0.667 |                      0     |
 | ('ADELAIDE LAW REV', 2020)      |     1 |         1 |                  5 |                 1 |     4 |                       1.25  |                      0.25  |
 | ('ADV INTELL SYS COMPUT', 2021) |     1 |         1 |                  7 |                 1 |     3 |                       2.333 |                      0.333 |
-| ('CEUR WKSHP PROC', 2020)       |     1 |         1 |                  2 |                 3 |     4 |                       0.5   |                      0.75  |
+| ('CEUR WORKSHOP PROC', 2020)    |     1 |         1 |                  2 |                 3 |     4 |                       0.5   |                      0.75  |
 | ('COMPUTER', 2022)              |     1 |         1 |                  0 |                 0 |     2 |                       0     |                      0     |
 
 
@@ -47,10 +46,10 @@ Example
 |:------------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
 | J BANK REGUL 2:035                  |      0 |      0 |      0 |      0 |      1 |      1 |      0 |      0 |
 | J FINANC CRIME 2:013                |      0 |      0 |      0 |      0 |      1 |      0 |      1 |      0 |
-| FOSTER INNOV AND COMPET WITH 2:001  |      0 |      0 |      0 |      0 |      2 |      0 |      0 |      0 |
+| FOSTER INNOVCOMPET WITH FINTE 2:001 |      0 |      0 |      0 |      0 |      2 |      0 |      0 |      0 |
 | STUD COMPUT INTELL 2:001            |      0 |      0 |      0 |      0 |      0 |      2 |      0 |      0 |
 | INT CONF INF TECHNOL SYST INN 2:000 |      0 |      0 |      0 |      0 |      0 |      0 |      2 |      0 |
-| ROUTLEDGE HANDB OF FIN TECHNO 2:000 |      0 |      0 |      0 |      0 |      0 |      2 |      0 |      0 |
+| ROUTLEDGE HANDBFINANCIAL TECH 2:000 |      0 |      0 |      0 |      0 |      0 |      2 |      0 |      0 |
 | J ECON BUS 1:153                    |      0 |      0 |      1 |      0 |      0 |      0 |      0 |      0 |
 | NORTHWEST J INTL LAW BUS 1:150      |      0 |      1 |      0 |      0 |      0 |      0 |      0 |      0 |
 | PALGRAVE STUD DIGIT BUS ENABL 1:033 |      0 |      0 |      0 |      1 |      0 |      0 |      0 |      0 |
@@ -64,16 +63,17 @@ Analyze the table below which contains the  occurrences by year for the years. I
 |:------------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
 | J BANK REGUL 2:035                  |      0 |      0 |      0 |      0 |      1 |      1 |      0 |      0 |
 | J FINANC CRIME 2:013                |      0 |      0 |      0 |      0 |      1 |      0 |      1 |      0 |
-| FOSTER INNOV AND COMPET WITH 2:001  |      0 |      0 |      0 |      0 |      2 |      0 |      0 |      0 |
+| FOSTER INNOVCOMPET WITH FINTE 2:001 |      0 |      0 |      0 |      0 |      2 |      0 |      0 |      0 |
 | STUD COMPUT INTELL 2:001            |      0 |      0 |      0 |      0 |      0 |      2 |      0 |      0 |
 | INT CONF INF TECHNOL SYST INN 2:000 |      0 |      0 |      0 |      0 |      0 |      0 |      2 |      0 |
-| ROUTLEDGE HANDB OF FIN TECHNO 2:000 |      0 |      0 |      0 |      0 |      0 |      2 |      0 |      0 |
+| ROUTLEDGE HANDBFINANCIAL TECH 2:000 |      0 |      0 |      0 |      0 |      0 |      2 |      0 |      0 |
 | J ECON BUS 1:153                    |      0 |      0 |      1 |      0 |      0 |      0 |      0 |      0 |
 | NORTHWEST J INTL LAW BUS 1:150      |      0 |      1 |      0 |      0 |      0 |      0 |      0 |      0 |
 | PALGRAVE STUD DIGIT BUS ENABL 1:033 |      0 |      0 |      0 |      1 |      0 |      0 |      0 |      0 |
 | DUKE LAW J 1:030                    |      1 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |
 <BLANKLINE>
 <BLANKLINE>
+
 
 
 

@@ -31,24 +31,26 @@ Example
 |:------------------------------|-----:|------:|----------:|-------------------:|-------:|
 | J BANK REGUL                  |    1 |     2 |         2 |                 35 |      1 |
 | J FINANC CRIME                |    2 |     2 |         4 |                 13 |      1 |
-| FOSTER INNOV AND COMPET WITH  |    3 |     2 |         6 |                  1 |      1 |
+| FOSTER INNOVCOMPET WITH FINTE |    3 |     2 |         6 |                  1 |      1 |
 | STUD COMPUT INTELL            |    4 |     2 |         8 |                  1 |      1 |
 | INT CONF INF TECHNOL SYST INN |    5 |     2 |        10 |                  0 |      1 |
-| ROUTLEDGE HANDB OF FIN TECHNO |    6 |     2 |        12 |                  0 |      1 |
+| ROUTLEDGE HANDBFINANCIAL TECH |    6 |     2 |        12 |                  0 |      1 |
 | J ECON BUS                    |    7 |     1 |        13 |                153 |      1 |
 | NORTHWEST J INTL LAW BUS      |    8 |     1 |        14 |                150 |      1 |
 | PALGRAVE STUD DIGIT BUS ENABL |    9 |     1 |        15 |                 33 |      1 |
 | DUKE LAW J                    |   10 |     1 |        16 |                 30 |      1 |
 | J RISK FINANC                 |   11 |     1 |        17 |                 21 |      2 |
-| J MONEY LAUND CTRL            |   12 |     1 |        18 |                 14 |      2 |
-| FIN INNOV                     |   13 |     1 |        19 |                 13 |      2 |
+| J MONEY LAUND CONTROL         |   12 |     1 |        18 |                 14 |      2 |
+| FINANCIAL INNOV               |   13 |     1 |        19 |                 13 |      2 |
 | ICEIS - PROC INT CONF ENTERP  |   14 |     1 |        20 |                 12 |      2 |
-| HANDB OF BLOCKCHAIN, DIGIT FI |   15 |     1 |        21 |                 11 |      2 |
+| HANDBBLOCKCHAIN, DIGIT FINANC |   15 |     1 |        21 |                 11 |      2 |
 | HELIYON                       |   16 |     1 |        22 |                 11 |      2 |
-| J RISK MANG FIN INST          |   17 |     1 |        23 |                  8 |      2 |
+| J RISK MANG FINANCIAL INST    |   17 |     1 |        23 |                  8 |      2 |
 | ADV INTELL SYS COMPUT         |   18 |     1 |        24 |                  7 |      2 |
 | ADELAIDE LAW REV              |   19 |     1 |        25 |                  5 |      2 |
-| INTELL SYST ACCOUNT FIN MANAG |   20 |     1 |        26 |                  5 |      2 |
+| INTELL SYST ACCOUNT FINANCE M |   20 |     1 |        26 |                  5 |      2 |
+
+
 
 
 >>> print(bibliometrix.sources.bradford_law(
@@ -58,6 +60,7 @@ Example
 |---:|--------------:|:--------|-------------------:|:---------|----------------------:|--------------------------:|----------------:|:----------------|-------------------:|
 |  0 |             6 | 13.04 % |                  6 | 13.04 %  |                     2 |                        12 |              12 | 23.08 %         |                  1 |
 |  1 |            40 | 86.96 % |                 46 | 100.0 %  |                     1 |                        40 |              52 | 100.0 %         |                  3 |
+
 
 
 

@@ -29,7 +29,7 @@ J ECON BUS                       17
 PALGRAVE STUD DIGIT BUS ENABL    14
 J BANK REGUL                      9
 J RISK FINANC                     8
-J RISK MANG FIN INST              5
+J RISK MANG FINANCIAL INST        5
 Name: local_citations, dtype: int64
 
 >>> print(r.prompt_)
@@ -41,22 +41,22 @@ Analyze the table below, which provides bibliometric indicators for the field 's
 | PALGRAVE STUD DIGIT BUS ENABL |     1 |                 33 |                14 |                            33   |                           14   |
 | J BANK REGUL                  |     2 |                 35 |                 9 |                            17.5 |                            4.5 |
 | J RISK FINANC                 |     1 |                 21 |                 8 |                            21   |                            8   |
-| J RISK MANG FIN INST          |     1 |                  8 |                 5 |                             8   |                            5   |
+| J RISK MANG FINANCIAL INST    |     1 |                  8 |                 5 |                             8   |                            5   |
 | J FINANC CRIME                |     2 |                 13 |                 4 |                             6.5 |                            2   |
 | HELIYON                       |     1 |                 11 |                 4 |                            11   |                            4   |
-| J MONEY LAUND CTRL            |     1 |                 14 |                 3 |                            14   |                            3   |
+| J MONEY LAUND CONTROL         |     1 |                 14 |                 3 |                            14   |                            3   |
 | ICEIS - PROC INT CONF ENTERP  |     1 |                 12 |                 3 |                            12   |                            3   |
-| HANDB OF BLOCKCHAIN, DIGIT FI |     1 |                 11 |                 3 |                            11   |                            3   |
-| INTELL SYST ACCOUNT FIN MANAG |     1 |                  5 |                 3 |                             5   |                            3   |
+| HANDBBLOCKCHAIN, DIGIT FINANC |     1 |                 11 |                 3 |                            11   |                            3   |
+| INTELL SYST ACCOUNT FINANCE M |     1 |                  5 |                 3 |                             5   |                            3   |
 | UNIV NEW SOUTH WALES LAW J    |     1 |                  4 |                 3 |                             4   |                            3   |
 | J ANTITRUST ENFORC            |     1 |                  3 |                 3 |                             3   |                            3   |
-| CEUR WKSHP PROC               |     1 |                  2 |                 3 |                             2   |                            3   |
+| CEUR WORKSHOP PROC            |     1 |                  2 |                 3 |                             2   |                            3   |
 | FRONTIER ARTIF INTELL         |     1 |                  3 |                 2 |                             3   |                            2   |
 | PROC - IEEE WORLD CONGR SERV, |     1 |                  3 |                 2 |                             3   |                            2   |
-| FIN INNOV                     |     1 |                 13 |                 1 |                            13   |                            1   |
+| FINANCIAL INNOV               |     1 |                 13 |                 1 |                            13   |                            1   |
 | ADV INTELL SYS COMPUT         |     1 |                  7 |                 1 |                             7   |                            1   |
 | ADELAIDE LAW REV              |     1 |                  5 |                 1 |                             5   |                            1   |
-| J FIN DATA SCI                |     1 |                  5 |                 1 |                             5   |                            1   |
+| J FINANCIAL DATA SCI          |     1 |                  5 |                 1 |                             5   |                            1   |
 <BLANKLINE>
 <BLANKLINE>
 

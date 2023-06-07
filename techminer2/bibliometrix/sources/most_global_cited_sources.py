@@ -43,22 +43,24 @@ Analyze the table below, which provides bibliometric indicators for the field 's
 | PALGRAVE STUD DIGIT BUS ENABL |     1 |                 33 |                14 |                            33   |                           14   |
 | DUKE LAW J                    |     1 |                 30 |                 0 |                            30   |                            0   |
 | J RISK FINANC                 |     1 |                 21 |                 8 |                            21   |                            8   |
-| J MONEY LAUND CTRL            |     1 |                 14 |                 3 |                            14   |                            3   |
+| J MONEY LAUND CONTROL         |     1 |                 14 |                 3 |                            14   |                            3   |
 | J FINANC CRIME                |     2 |                 13 |                 4 |                             6.5 |                            2   |
-| FIN INNOV                     |     1 |                 13 |                 1 |                            13   |                            1   |
+| FINANCIAL INNOV               |     1 |                 13 |                 1 |                            13   |                            1   |
 | ICEIS - PROC INT CONF ENTERP  |     1 |                 12 |                 3 |                            12   |                            3   |
 | HELIYON                       |     1 |                 11 |                 4 |                            11   |                            4   |
-| HANDB OF BLOCKCHAIN, DIGIT FI |     1 |                 11 |                 3 |                            11   |                            3   |
-| J RISK MANG FIN INST          |     1 |                  8 |                 5 |                             8   |                            5   |
+| HANDBBLOCKCHAIN, DIGIT FINANC |     1 |                 11 |                 3 |                            11   |                            3   |
+| J RISK MANG FINANCIAL INST    |     1 |                  8 |                 5 |                             8   |                            5   |
 | ADV INTELL SYS COMPUT         |     1 |                  7 |                 1 |                             7   |                            1   |
-| INTELL SYST ACCOUNT FIN MANAG |     1 |                  5 |                 3 |                             5   |                            3   |
+| INTELL SYST ACCOUNT FINANCE M |     1 |                  5 |                 3 |                             5   |                            3   |
 | ADELAIDE LAW REV              |     1 |                  5 |                 1 |                             5   |                            1   |
-| J FIN DATA SCI                |     1 |                  5 |                 1 |                             5   |                            1   |
+| J FINANCIAL DATA SCI          |     1 |                  5 |                 1 |                             5   |                            1   |
 | UNIV NEW SOUTH WALES LAW J    |     1 |                  4 |                 3 |                             4   |                            3   |
-| LECT NOTES DATA ENG COMMUN TE |     1 |                  4 |                 0 |                             4   |                            0   |
+| LECTURE NOTES DATA ENG COMMUN |     1 |                  4 |                 0 |                             4   |                            0   |
 | J ANTITRUST ENFORC            |     1 |                  3 |                 3 |                             3   |                            3   |
 <BLANKLINE>
 <BLANKLINE>
+
+
 
 
 # pylint: disable=line-too-long
