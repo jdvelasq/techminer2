@@ -26,12 +26,11 @@ Example
 >>> print(r.documents_per_item_.head().to_markdown())
 |    | countries     | title                                                                                        |   year | source_title                                   |   global_citations |   local_citations | doi                           |
 |---:|:--------------|:---------------------------------------------------------------------------------------------|-------:|:-----------------------------------------------|-------------------:|------------------:|:------------------------------|
-|  0 | Italy         | RegTech  Potential benefits and challenges for businesses                                    |   2023 | Technology in Society                          |                  0 |                 0 | 10.1016/J.TECHSOC.2022.102150 |
-|  1 | Switzerland   | RegTech  Potential benefits and challenges for businesses                                    |   2023 | Technology in Society                          |                  0 |                 0 | 10.1016/J.TECHSOC.2022.102150 |
-|  2 | United States | RegTech  Potential benefits and challenges for businesses                                    |   2023 | Technology in Society                          |                  0 |                 0 | 10.1016/J.TECHSOC.2022.102150 |
-|  3 | China         | Costs of voting and firm performance: Evidence from RegTech adoption in Chinese listed firms |   2023 | Research in International Business and Finance |                  0 |                 0 | 10.1016/J.RIBAF.2022.101868   |
-|  4 | United States | RegTech's Rise                                                                               |   2022 | Computer                                       |                  0 |                 0 | 10.1109/MC.2022.3176693       |
-
+|  0 | Italy         | REGTECH  POTENTIAL_BENEFITS and CHALLENGES for businesses                                    |   2023 | Technology in Society                          |                  0 |                 0 | 10.1016/J.TECHSOC.2022.102150 |
+|  1 | Switzerland   | REGTECH  POTENTIAL_BENEFITS and CHALLENGES for businesses                                    |   2023 | Technology in Society                          |                  0 |                 0 | 10.1016/J.TECHSOC.2022.102150 |
+|  2 | United States | REGTECH  POTENTIAL_BENEFITS and CHALLENGES for businesses                                    |   2023 | Technology in Society                          |                  0 |                 0 | 10.1016/J.TECHSOC.2022.102150 |
+|  3 | China         | costs of voting and firm PERFORMANCE: evidence from REGTECH adoption in chinese listed firms |   2023 | Research in International Business and Finance |                  0 |                 0 | 10.1016/J.RIBAF.2022.101868   |
+|  4 | United States | REGTECH's rise                                                                               |   2022 | Computer                                       |                  0 |                 0 | 10.1109/MC.2022.3176693       |
 
 >>> print(r.production_per_year_.head().to_markdown())
 |                     |   OCC |   cum_OCC |   global_citations |   local_citations |   age |   global_citations_per_year |   local_citations_per_year |
@@ -71,7 +70,6 @@ Analyze the table below which contains the  occurrences by year for the years. I
 | Hong Kong 3:185      |      0 |      2 |      0 |      0 |      1 |      0 |      0 |      0 |
 <BLANKLINE>
 <BLANKLINE>
-
 
 
 

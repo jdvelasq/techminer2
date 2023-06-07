@@ -381,6 +381,15 @@ class LotkaLaw:
 
 
 # Authors / Countries / Corresponding Author Country
+@dataclass(init=False)
+class CorresponingAuthorCountry:
+    """Corresponding author country."""
+
+    plot_: go.Figure
+    table_: pd.DataFrame
+    prompt__: str
+
+
 # Authors / Countries / Most Frequent Countries
 # Authors / Countries / Most Global Cited Countries
 # Authors / Countries / Most Local Cited Countries

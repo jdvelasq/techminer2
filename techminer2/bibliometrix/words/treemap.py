@@ -1,46 +1,48 @@
+# flake8: noqa
 """
 TreeMap
 ===============================================================================
 
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__treemap.html"
 
 >>> from techminer2 import bibliometrix
 >>> bibliometrix.words.treemap(
-...    criterion='author_keywords',
-...    topics_length=20,
-...    directory=directory,
+...    field='author_keywords',
+...    top_n=20,
+...    root_dir=root_dir,
 ... ).write_html(file_name)
 
 .. raw:: html
 
     <iframe src="../../../_static/bibliometrix__treemap.html" height="600px" width="100%" frameBorder="0"></iframe>
 
+# pylint: disable=line-too-long
 """
 from ..._plots.treemap_plot import treemap_plot
 from ...techminer.indicators.indicators_by_item import indicators_by_item
 
 
 def treemap(
-    criterion,
-    directory="./",
+    field,
+    root_dir="./",
     metric="OCC",
-    topics_length=20,
+    top_n=20,
     title=None,
     database="documents",
-    start_year=None,
-    end_year=None,
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
     """Makes a treemap."""
 
     indicators = indicators_by_item(
-        field=criterion,
-        root_dir=directory,
+        field=field,
+        root_dir=root_dir,
         database=database,
-        year_filter=start_year,
-        cited_by_filter=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 
@@ -48,7 +50,7 @@ def treemap(
         by=["OCC", "global_citations", "local_citations"],
         ascending=False,
     )
-    indicators = indicators.head(topics_length)
+    indicators = indicators.head(top_n)
 
     return treemap_plot(
         dataframe=indicators,

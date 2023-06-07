@@ -4,7 +4,7 @@ Collaboration Indicators by Topic
 
 
 Examples
---------
+-------------------------------------------------------------------------------
 
 >>> root_dir = "data/regtech/"
 
@@ -49,11 +49,11 @@ from ... import record_utils
 
 
 def collaboration_indicators_by_topic(
-    criterion,
+    field,
     root_dir="./",
     database="documents",
-    start_year=None,
-    end_year=None,
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
     """
@@ -77,8 +77,8 @@ def collaboration_indicators_by_topic(
     documents = record_utils.read_records(
         root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 
@@ -86,17 +86,17 @@ def collaboration_indicators_by_topic(
     documents = documents.assign(OCC=1)
 
     # Add columns to represent single and multiple publications for a document
-    documents["single_publication"] = documents[criterion].map(
+    documents["single_publication"] = documents[field].map(
         lambda x: 1 if isinstance(x, str) and len(x.split(";")) == 1 else 0
     )
-    documents["multiple_publication"] = documents[criterion].map(
+    documents["multiple_publication"] = documents[field].map(
         lambda x: 1 if isinstance(x, str) and len(x.split(";")) > 1 else 0
     )
 
     # Split multi-topic documents into individual documents with one topic each
     exploded = documents[
         [
-            criterion,
+            field,
             "OCC",
             "global_citations",
             "local_citations",
@@ -106,12 +106,12 @@ def collaboration_indicators_by_topic(
         ]
     ].copy()
 
-    exploded[criterion] = exploded[criterion].str.split(";")
-    exploded = exploded.explode(criterion)
-    exploded[criterion] = exploded[criterion].str.strip()
+    exploded[field] = exploded[field].str.split(";")
+    exploded = exploded.explode(field)
+    exploded[field] = exploded[field].str.strip()
 
     # Compute collaboration indicators for each topic
-    indicators = exploded.groupby(criterion, as_index=False).agg(
+    indicators = exploded.groupby(field, as_index=False).agg(
         {
             "OCC": np.sum,
             "global_citations": np.sum,
@@ -135,6 +135,6 @@ def collaboration_indicators_by_topic(
     )
 
     # Set the index to the criterion column
-    indicators = indicators.set_index(criterion)
+    indicators = indicators.set_index(field)
 
     return indicators
