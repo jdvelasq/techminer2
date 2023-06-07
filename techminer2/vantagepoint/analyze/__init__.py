@@ -24,6 +24,7 @@ from .matrix_viewer import matrix_viewer
 from .network_degree_plot import network_degree_plot
 from .network_metrics import network_metrics
 from .network_viewer import network_viewer
+from .sankey_plot import sankey_plot
 from .statistics import statistics
 from .terms_by_year import terms_by_year
 from .tf_idf_matrix import tf_idf_matrix
@@ -50,6 +51,7 @@ __all__ = [
     "network_degree_plot",
     "network_metrics",
     "network_viewer",
+    "sankey_plot",
     "statistics",
     "terms_by_year",
     "tf_idf_matrix",

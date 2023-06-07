@@ -13,6 +13,12 @@ Explore
     cluster_members
 
 
+.. toctree::
+    :maxdepth: 1
+
+    sankey_plot
+
+
 
 .. toctree::
     :maxdepth: 1
