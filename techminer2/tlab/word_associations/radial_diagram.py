@@ -26,7 +26,7 @@ is explained in the following example.
 >>> # Create a subset of the co-occurrence matrix with the term to be analyzed.
 >>> matrix_subset = vantagepoint.analyze.matrix_subset(
 ...    co_occ_matrix,
-...    custom_items='regtech',
+...    custom_items='REGTECH',
 ... )
 >>> # Visualize the radial diagram using the matrix viewer.
 >>> chart = vantagepoint.analyze.matrix_viewer(
@@ -45,24 +45,25 @@ is explained in the following example.
 * Optional: ChatGPT prompt.
 
 >>> print(chart.prompt_)
-Analyze the table below which contains values of co-occurrence (OCC) for the ['regtech'] and 'author_keywords' fields in a bibliographic dataset. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
+Analyze the table below which contains values of co-occurrence (OCC) for the ['REGTECH'] and 'author_keywords' fields in a bibliographic dataset. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
-| row                            |   regtech 28:329 |
+| row                            |   REGTECH 28:329 |
 |:-------------------------------|-----------------:|
-| fintech 12:249                 |               12 |
-| regulatory technology 07:037   |                2 |
-| compliance 07:030              |                7 |
-| regulation 05:164              |                4 |
-| financial services 04:168      |                3 |
-| financial regulation 04:035    |                2 |
-| artificial intelligence 04:023 |                2 |
-| anti-money laundering 03:021   |                1 |
-| risk management 03:014         |                2 |
-| innovation 03:012              |                1 |
-| blockchain 03:005              |                2 |
-| suptech 03:004                 |                3 |
+| FINTECH 12:249                 |               12 |
+| COMPLIANCE 07:030              |                7 |
+| REGULATION 05:164              |                4 |
+| FINANCIAL_SERVICES 04:168      |                3 |
+| FINANCIAL_REGULATION 04:035    |                2 |
+| ARTIFICIAL_INTELLIGENCE 04:023 |                2 |
+| ANTI-MONEY_LAUNDERING 03:021   |                1 |
+| RISK_MANAGEMENT 03:014         |                2 |
+| INNOVATION 03:012              |                1 |
+| REGULATORY_TECHNOLOGY 03:007   |                2 |
+| BLOCKCHAIN 03:005              |                2 |
+| SUPTECH 03:004                 |                3 |
 <BLANKLINE>
 <BLANKLINE>
+
 
 
 # pylint: disable=line-too-long

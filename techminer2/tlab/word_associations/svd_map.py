@@ -35,13 +35,15 @@ MDS technique used in T-LAB's words associations.
 
 
 >>> svd_map.table_.head()
-                                 Dim_00     Dim_01
-row                                               
-regtech 28:329                12.972062  10.391976
-fintech 12:249                10.874094  -7.841626
-regulatory technology 07:037   3.073117  -0.538119
-compliance 07:030              6.628352  -3.686916
-regulation 05:164              5.894711  -0.250128
+                              Dim_00     Dim_01
+row                                            
+REGTECH 28:329             12.838699  10.370912
+FINTECH 12:249             10.707965  -7.875859
+COMPLIANCE 07:030           6.678769  -3.670698
+REGULATION 05:164           5.799039  -0.255470
+FINANCIAL_SERVICES 04:168   3.325509  -0.983070
+
+
 
 # pylint: disable=line-too-long
 """

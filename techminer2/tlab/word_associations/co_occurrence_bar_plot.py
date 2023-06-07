@@ -22,7 +22,7 @@ Plots the co-occurrences of a given descriptor with the remaining descriptors.
 >>> # analyzed.
 >>> matrix_subset = vantagepoint.analyze.matrix_subset(
 ...    co_occ_matrix,
-...    custom_items='regtech',
+...    custom_items='REGTECH',
 ... )
 >>> # Visualize the co-occurrences as a bar plot.
 >>> from techminer2 import tlab
@@ -37,27 +37,25 @@ Plots the co-occurrences of a given descriptor with the remaining descriptors.
  
     
 >>> print(chart.prompt_)
-Analyze the table below which contains values of co-occurrence(OCC) of the \
-'regtech' with the 'author_keywords' field in a bibliographic dataset. \
-Identify any notable patterns, trends, or outliers in the data, and discuss \
-their implications for the research field. Be sure to provide a concise \
-summary of your findings in no more than 150 words.
+Analyze the table below which contains values of co-occurrence(OCC) of the 'REGTECH' with the 'author_keywords' field in a bibliographic dataset. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
 | row                            |   OCC |
 |:-------------------------------|------:|
-| fintech 12:249                 |    12 |
-| compliance 07:030              |     7 |
-| regulation 05:164              |     4 |
-| financial services 04:168      |     3 |
-| suptech 03:004                 |     3 |
-| regulatory technology 07:037   |     2 |
-| financial regulation 04:035    |     2 |
-| artificial intelligence 04:023 |     2 |
-| risk management 03:014         |     2 |
-| blockchain 03:005              |     2 |
-| anti-money laundering 03:021   |     1 |
-| innovation 03:012              |     1 |
+| FINTECH 12:249                 |    12 |
+| COMPLIANCE 07:030              |     7 |
+| REGULATION 05:164              |     4 |
+| FINANCIAL_SERVICES 04:168      |     3 |
+| SUPTECH 03:004                 |     3 |
+| FINANCIAL_REGULATION 04:035    |     2 |
+| ARTIFICIAL_INTELLIGENCE 04:023 |     2 |
+| RISK_MANAGEMENT 03:014         |     2 |
+| REGULATORY_TECHNOLOGY 03:007   |     2 |
+| BLOCKCHAIN 03:005              |     2 |
+| ANTI-MONEY_LAUNDERING 03:021   |     1 |
+| INNOVATION 03:012              |     1 |
 
+
+# pylint: disable=line-too-long
 """
 
 from ...classes import ListView

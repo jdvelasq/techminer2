@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 2D-TSNE map --- ChatGPT
 ===============================================================================
@@ -19,8 +20,8 @@ TSNE technique used in T-LAB's comparative analysis.
 >>> # computes the co-occurrence matrix
 >>> from techminer2 import vantagepoint
 >>> co_occ_matrix = vantagepoint.analyze.co_occ_matrix(
-...     criterion='author_keywords',
-...     topics_length=50,
+...     columns='author_keywords',
+...     col_top_n=50,
 ...     root_dir=root_dir,
 ... )
 >>> # normalizes the co-occurrence matrix
@@ -40,14 +41,15 @@ TSNE technique used in T-LAB's comparative analysis.
 
 
 >>> tsne.table_.head()
-                                  Dim_00      Dim_01
-row                                                 
-regtech 28:329                656.460144 -160.212708
-fintech 12:249                338.662903 -546.714478
-regulatory technology 07:037 -146.625397  564.891052
-compliance 07:030             558.554077   31.211735
-regulation 05:164             -48.133255 -595.929932
+                               Dim_00      Dim_01
+row                                              
+REGTECH 28:329            -565.610596  154.330948
+FINTECH 12:249             -46.307095  732.800598
+COMPLIANCE 07:030         -131.156677  595.111938
+REGULATION 05:164          103.274330  594.175415
+FINANCIAL_SERVICES 04:168  576.698486  179.674149
 
+# pylint: disable=line-too-long
 """
 
 
