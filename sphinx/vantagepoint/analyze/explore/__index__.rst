@@ -5,12 +5,12 @@ Explore
 .. toctree::
     :maxdepth: 1
 
-    cluster_column
+    cluster_field
 
 .. toctree::
     :maxdepth: 1
 
-    cluster_items
+    cluster_members
 
 
 

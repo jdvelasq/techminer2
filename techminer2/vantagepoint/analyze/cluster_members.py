@@ -1,9 +1,9 @@
 # flake8: noqa
 """
-Cluster Items --- ChatGPT
+Cluster Members --- ChatGPT
 ===============================================================================
 
-Extracts the communities from a networkx graph as a dataframe.
+Extracts the community (cluster) members from a networkx graph as a dataframe.
 
 
 Example:
@@ -21,7 +21,7 @@ Example:
 ...    co_occ_matrix,
 ...    community_clustering='louvain',
 ... )
->>> vantagepoint.analyze.cluster_items(graph)
+>>> vantagepoint.analyze.cluster_members(graph)
                             CL_00  ...                                   CL_03
 0                  REGTECH 28:329  ...  REGULATORY_TECHNOLOGY (REGTECH) 04:030
 1               COMPLIANCE 07:030  ...            ANTI_MONEY_LAUNDERING 04:023
@@ -43,7 +43,7 @@ Example:
 import pandas as pd
 
 
-def cluster_items(graph):
+def cluster_members(graph):
     """Gets communities from a networkx graph as a dataframe."""
 
     def extract_communities(graph):

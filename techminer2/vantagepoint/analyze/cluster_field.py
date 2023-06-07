@@ -1,8 +1,9 @@
 # flake8: noqa
 """
-Cluster Column --- ChatGPT
+Cluster Field --- ChatGPT
 ===============================================================================
 
+Clusters a database field using community detection algorithms or scikit-learn methods.
 
 
 Example: Clustering using community detection algorithms.
@@ -19,11 +20,11 @@ Example: Clustering using community detection algorithms.
 ...     co_occ_matrix, "association"
 ... )
 
->>> graph = vantagepoint.analyze.cluster_column(
+>>> graph = vantagepoint.analyze.cluster_field(
 ...    normalized_co_occ_matrix,
 ...    community_clustering='label_propagation',
 ... )
->>> print(vantagepoint.analyze.cluster_items(graph).to_markdown())
+>>> print(vantagepoint.analyze.cluster_members(graph).to_markdown())
 |    | CL_00                                  |
 |---:|:---------------------------------------|
 |  0 | REGTECH 28:329                         |
@@ -55,11 +56,11 @@ Example: Clustering using community detection algorithms.
 
 
 
->>> graph = vantagepoint.analyze.cluster_column(
+>>> graph = vantagepoint.analyze.cluster_field(
 ...    normalized_co_occ_matrix,
 ...    community_clustering='louvain',
 ... )
->>> print(vantagepoint.analyze.cluster_items(graph).to_markdown())
+>>> print(vantagepoint.analyze.cluster_members(graph).to_markdown())
 |    | CL_00                          | CL_01                       | CL_02                        | CL_03                                  |
 |---:|:-------------------------------|:----------------------------|:-----------------------------|:---------------------------------------|
 |  0 | REGTECH 28:329                 | FINTECH 12:249              | REGULATION 05:164            | REGULATORY_TECHNOLOGY (REGTECH) 04:030 |
@@ -75,11 +76,11 @@ Example: Clustering using community detection algorithms.
 
 
 
->>> graph = vantagepoint.analyze.cluster_column(
+>>> graph = vantagepoint.analyze.cluster_field(
 ...    normalized_co_occ_matrix,
 ...    community_clustering='walktrap',
 ... )
->>> print(vantagepoint.analyze.cluster_items(graph).to_markdown())
+>>> print(vantagepoint.analyze.cluster_members(graph).to_markdown())
 |    | CL_00                        | CL_01                          | CL_02                                  | CL_03                          |
 |---:|:-----------------------------|:-------------------------------|:---------------------------------------|:-------------------------------|
 |  0 | FINTECH 12:249               | REGTECH 28:329                 | REGULATORY_TECHNOLOGY (REGTECH) 04:030 | ACCOUNTABILITY 02:014          |
@@ -108,11 +109,11 @@ Example: Clustering using sklearn algoritms.
 ... )
 >>> from sklearn.cluster import KMeans
 >>> kmeans = KMeans(n_clusters=4, random_state=1)
->>> graph = vantagepoint.analyze.cluster_column(
+>>> graph = vantagepoint.analyze.cluster_field(
 ...    co_occ_matrix,
 ...    sklearn_clustering=kmeans,
 ... )
->>> print(vantagepoint.analyze.cluster_items(graph).to_markdown())
+>>> print(vantagepoint.analyze.cluster_members(graph).to_markdown())
 |    | CL_00                        | CL_01                          | CL_02                          | CL_03                                  |
 |---:|:-----------------------------|:-------------------------------|:-------------------------------|:---------------------------------------|
 |  0 | REGTECH 28:329               | COMPLIANCE 07:030              | ANTI_MONEY_LAUNDERING 04:023   | REGULATORY_TECHNOLOGY (REGTECH) 04:030 |
@@ -140,7 +141,7 @@ from ... import network_utils
 from .list_cells_in_matrix import list_cells_in_matrix
 
 
-def cluster_column(
+def cluster_field(
     obj,
     sklearn_clustering=None,
     community_clustering=None,

@@ -7,8 +7,8 @@ This package provides the functions available in the Analyze menu.
 from .association_index import association_index
 from .auto_corr_matrix import auto_corr_matrix
 from .auto_correlation_map import auto_correlation_map
-from .cluster_column import cluster_column
-from .cluster_items import cluster_items
+from .cluster_field import cluster_field
+from .cluster_members import cluster_members
 from .cluster_records import cluster_records
 from .co_occ_matrix import co_occ_matrix
 from .create_concept_grid import create_concept_grid
@@ -32,8 +32,8 @@ __all__ = [
     "association_index",
     "auto_corr_matrix",
     "auto_correlation_map",
-    "cluster_column",
-    "cluster_items",
+    "cluster_field",
+    "cluster_members",
     "cluster_records",
     "co_occ_matrix",
     "create_concept_grid",

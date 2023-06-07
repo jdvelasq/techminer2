@@ -70,8 +70,8 @@ Barberis JN 2:161       2     0.000000   0.166667  0.039502
 from ...classes import CollaborationNetwork
 from ...vantagepoint.analyze import (
     association_index,
-    cluster_column,
-    cluster_items,
+    cluster_field,
+    cluster_members,
     co_occ_matrix,
     network_degree_plot,
     network_metrics,
@@ -132,7 +132,7 @@ def collaboration_network(
     )
 
     norm_coc_matrix = association_index(coc_matrix, index_name=normalization)
-    graph = cluster_column(
+    graph = cluster_field(
         norm_coc_matrix, community_clustering=community_clustering
     )
 
@@ -142,7 +142,7 @@ def collaboration_network(
         graph=graph, **network_degree_plot_dict
     )
 
-    network.communities_ = cluster_items(graph=graph)
+    network.communities_ = cluster_members(graph=graph)
     network.metrics_ = network_metrics(graph=graph)
 
     network.plot_ = network_viewer(graph=graph, **network_viewer_dict)
