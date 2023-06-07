@@ -72,7 +72,7 @@ from ...vantagepoint.analyze import (
     association_index,
     cluster_field,
     cluster_members,
-    co_occ_matrix,
+    co_occurrence_matrix,
     network_degree_plot,
     network_metrics,
     network_viewer,
@@ -80,7 +80,7 @@ from ...vantagepoint.analyze import (
 
 
 def collaboration_network(
-    # 'co_occ_matrix' params:
+    # 'co_occurrence_matrix' params:
     field,
     top_n=None,
     occ_range=None,
@@ -117,7 +117,7 @@ def collaboration_network(
     if network_viewer_dict is None:
         network_viewer_dict = {}
 
-    coc_matrix = co_occ_matrix(
+    coc_matrix = co_occurrence_matrix(
         columns=field,
         col_top_n=top_n,
         col_occ_range=occ_range,

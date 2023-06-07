@@ -56,7 +56,7 @@ from ..documents_per_criterion import documents_per_criterion
 
 def word_dynamics(
     field="author_keywords",
-    top_n=50,
+    top_n=None,
     occ_range=None,
     gc_range=None,
     custom_items=None,

@@ -16,7 +16,7 @@ Example
 >>> from techminer2 import vantagepoint
 >>> chart =  vantagepoint.analyze.auto_correlation_map(
 ...     rows_and_columns='authors',
-...     top_n=10,
+...     occ_range=(2, None),
 ...     root_dir=root_dir,
 ...     color="#1f77b4", # tab:blue
 ... )
@@ -31,12 +31,19 @@ Example
 >>> print(chart.prompt_)
 Analyze the table below which contains the auto-correlation values for the authors. High correlation values indicate that the topics tends to appear together in the same document and forms a group. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
-|    | row             | column           |   CORR |
-|---:|:----------------|:-----------------|-------:|
-|  2 | Arner DW 3:185  | Buckley RP 3:185 |  1     |
-|  9 | Lin W 2:017     | Singh C 2:017    |  1     |
-| 13 | Brennan R 2:014 | Crane M 2:014    |  1     |
-| 15 | Hamdan A 2:018  | Sarea A 2:012    |  0.417 |
+|    | row               | column             |   CORR |
+|---:|:------------------|:-------------------|-------:|
+|  3 | Arner DW 3:185    | Buckley RP 3:185   |  1     |
+|  5 | Barberis JN 2:161 | Buckley RP 3:185   |  0.787 |
+|  6 | Arner DW 3:185    | Barberis JN 2:161  |  0.787 |
+| 13 | Hamdan A 2:018    | Turki M 2:018      |  1     |
+| 15 | Sarea A 2:012     | Turki M 2:018      |  0.429 |
+| 18 | Lin W 2:017       | Singh C 2:017      |  1     |
+| 23 | Brennan R 2:014   | Crane M 2:014      |  1     |
+| 26 | Brennan R 2:014   | Ryan P 2:014       |  1     |
+| 27 | Crane M 2:014     | Ryan P 2:014       |  1     |
+| 29 | Hamdan A 2:018    | Sarea A 2:012      |  0.429 |
+| 34 | Grassi L 2:002    | Lanfranchi D 2:002 |  1     |
 <BLANKLINE>
 <BLANKLINE>
 
@@ -72,7 +79,7 @@ def auto_correlation_map(
     yaxes_range=None,
     show_axes=False,
     # Item filters:
-    top_n=50,
+    top_n=None,
     occ_range=None,
     gc_range=None,
     custom_items=None,

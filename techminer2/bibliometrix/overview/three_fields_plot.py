@@ -24,7 +24,7 @@ Three Fields Plot
 """
 import plotly.graph_objects as go
 
-from ...vantagepoint.analyze.co_occ_matrix import co_occ_matrix
+from ...vantagepoint.analyze.co_occurrence_matrix import co_occurrence_matrix
 
 
 def three_fields_plot(
@@ -42,7 +42,7 @@ def three_fields_plot(
 ):
     """Sankey plot"""
 
-    matrix_left = co_occ_matrix(
+    matrix_left = co_occurrence_matrix(
         columns=middle_criterion,
         rows=left_criterion,
         col_top_n=topics_length_left,

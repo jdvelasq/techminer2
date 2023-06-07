@@ -9,7 +9,7 @@ Example
 >>> root_dir = "data/regtech/"
 
 >>> from techminer2 import vantagepoint
->>> co_occ_matrix = vantagepoint.analyze.co_occ_matrix(
+>>> co_occ_matrix = vantagepoint.analyze.co_occurrence_matrix(
 ...     columns='author_keywords',
 ...     rows='authors',
 ...     col_occ_range=(2, None),
@@ -65,7 +65,7 @@ Analyze the table below which contains values of co-occurrence (OCC) for the 'au
 
 
 
->>> co_occ_matrix = vantagepoint.analyze.co_occ_matrix(
+>>> co_occ_matrix = vantagepoint.analyze.co_occurrence_matrix(
 ...    columns='author_keywords',
 ...    col_top_n=10,
 ...    root_dir=root_dir,
@@ -121,7 +121,7 @@ from ...techminer.indicators import co_occ_matrix_list, indicators_by_item
 
 
 # pylint: disable=too-many-arguments disable=too-many-locals
-def co_occ_matrix(
+def co_occurrence_matrix(
     columns,
     rows=None,
     # Columns item filters:

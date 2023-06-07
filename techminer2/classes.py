@@ -85,6 +85,15 @@ class NormCocMatrix:
 
 
 # Analyze / Discover / Matrix / Factor Matrix
+@dataclass(init=False)
+class FactorMatrix:
+    """Term-frequency matrix."""
+
+    field_: str
+    table_: pd.DataFrame
+    prompt_: str
+
+
 # Analyze / Discover / Matrix / TF Matrix
 @dataclass(init=False)
 class TFMatrix:

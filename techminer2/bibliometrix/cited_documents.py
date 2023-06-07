@@ -25,7 +25,7 @@ def bibiometrix_cited_documents(
     metric,
     root_dir="./",
     database="documents",
-    top_n=20,
+    top_n=None,
     title=None,
     file_name=None,
     # Database filters:
@@ -92,7 +92,7 @@ def _prepare_indicators(metric, top_n, indicators):
 def _get_top_n_documents(
     metric,
     root_dir="./",
-    top_n=20,
+    top_n=None,
     year_filter=None,
     cited_by_filter=None,
     **filters,

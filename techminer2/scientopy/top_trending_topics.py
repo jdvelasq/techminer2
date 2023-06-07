@@ -77,7 +77,7 @@ def top_trending_topics(
     # Specific params:
     time_window=2,
     # Item filters:
-    top_n=20,
+    top_n=None,
     custom_items=None,
     # Database params:
     root_dir="./",

@@ -10,7 +10,7 @@ from .auto_correlation_matrix import auto_correlation_matrix
 from .cluster_field import cluster_field
 from .cluster_members import cluster_members
 from .cluster_records import cluster_records
-from .co_occ_matrix import co_occ_matrix
+from .co_occurrence_matrix import co_occurrence_matrix
 from .create_concept_grid import create_concept_grid
 from .cross_correlation_map import cross_correlation_map
 from .cross_correlation_matrix import cross_correlation_matrix
@@ -35,7 +35,7 @@ __all__ = [
     "cluster_field",
     "cluster_members",
     "cluster_records",
-    "co_occ_matrix",
+    "co_occurrence_matrix",
     "create_concept_grid",
     "cross_correlation_matrix",
     "cross_correlation_map",

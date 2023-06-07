@@ -186,7 +186,7 @@ def _create_tf_matrix(
     records[field] = records[field].str.split(";")
     records = records.explode(field)
     records[field] = records[field].str.strip()
-    records = records[records[field].isin(custom_items)]
+    # records = records[records[field].isin(custom_items)]
 
     grouped_records = records.groupby(["article", field], as_index=False).agg(
         {"OCC": np.sum}
@@ -198,5 +198,6 @@ def _create_tf_matrix(
         columns=field,
         values="OCC",
     )
+    result = result.loc[:, result.columns.isin(custom_items)]
     result = result.fillna(0)
     return result

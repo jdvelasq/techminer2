@@ -163,7 +163,7 @@ def time_line(
     trend_analysis=False,
     title="Time Line",
     # Item filters:
-    top_n=5,
+    top_n=None,
     custom_items=None,
     # Database params:
     root_dir="./",

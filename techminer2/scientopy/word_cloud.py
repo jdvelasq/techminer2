@@ -150,7 +150,7 @@ def word_cloud(
     title=None,
     figsize=(12, 12),
     # Item filters:
-    top_n=50,
+    top_n=None,
     custom_items=None,
     #
     # Database params:

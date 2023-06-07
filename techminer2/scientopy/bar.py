@@ -231,7 +231,7 @@ def bar(
     trend_analysis=False,
     title=None,
     # Item filters:
-    top_n=20,
+    top_n=None,
     custom_items=None,
     # Database params:
     root_dir="./",

@@ -41,7 +41,7 @@ from ..cited_documents import bibiometrix_cited_documents
 
 def most_local_cited_references(
     root_dir="./",
-    top_n=20,
+    top_n=None,
     title="Most Local Cited References",
     year_filter=None,
     cited_by_filter=None,

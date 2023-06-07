@@ -5,7 +5,7 @@ Matrix
         list_cells_in_matrix
 
     .. toctree::
-        co_occ_matrix
+        co_occurrence_matrix
 
     .. toctree::
         auto_correlation_matrix

@@ -82,7 +82,7 @@ def most_local_cited_authors(
     field_label=None,
     title=None,
     # Item filters:
-    top_n=20,
+    top_n=None,
     occ_range=None,
     gc_range=None,
     custom_items=None,

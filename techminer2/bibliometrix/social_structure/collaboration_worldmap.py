@@ -20,7 +20,7 @@ Collaboration WorldMap
 """
 import plotly.express as px
 
-from ...vantagepoint.analyze import co_occ_matrix, list_cells_in_matrix
+from ...vantagepoint.analyze import co_occurrence_matrix, list_cells_in_matrix
 
 
 def collaboration_worldmap(
@@ -33,7 +33,7 @@ def collaboration_worldmap(
 ):
     """Collaboration World Map"""
 
-    matrix = co_occ_matrix(
+    matrix = co_occurrence_matrix(
         columns="countries",
         # Database params:
         root_dir=root_dir,

@@ -54,7 +54,7 @@ Analyze the table below which contains the cross-correlation values for the auth
 """
 
 from ...classes import CorrMatrix
-from .co_occ_matrix import co_occ_matrix
+from .co_occurrence_matrix import co_occurrence_matrix
 from .compute_corr_matrix import compute_corr_matrix
 
 
@@ -94,7 +94,7 @@ def cross_correlation_matrix(
     #
     # Main:
     #
-    data_matrix = co_occ_matrix(
+    data_matrix = co_occurrence_matrix(
         columns=rows_and_columns,
         rows=cross_with,
         # Columns item filters:

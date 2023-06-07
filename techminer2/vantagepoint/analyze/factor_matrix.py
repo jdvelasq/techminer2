@@ -1,24 +1,31 @@
 # flake8: noqa
 """
-Factor Matrix (TODO)
+Factor Matrix
 ===============================================================================
 
 Factor matrix obtained by appliying PCA to the co-occurrence matrix. 
-matrix.
+
+**Algorithm:**
+
+1. Computes the co-occurrence matrix of the specified field.
+
+2. Applies PCA to the co-occurrence matrix.
+
+3. Returns the factor matrix.
+
 
 >>> root_dir = "data/regtech/"
 
 >>> from techminer2 import vantagepoint
->>> vantagepoint.analyze.factor_matrix(
-...     vantagepoint.analyze.co_occ_matrix(
-...         columns='authors',
-...         col_occ_range=(2, None),
-...         root_dir=root_dir,
-...     )
+>>> factor_matrix = vantagepoint.analyze.factor_matrix(
+...     field="authors",
+...     occ_range=(2, None),
+...     root_dir=root_dir,
 ... )
-component                 Factor 0  Factor 1  ...  Factor 4      Factor 5
-explained_variance        3.551365  2.201479  ...  0.474565      0.285714
-explained_variance_ratio  0.386418  0.239539  ...  0.051637      0.031088
+>>> factor_matrix.table_
+component                Factor_00 Factor_01  ... Factor_04     Factor_05
+explained_variance          3.5514    2.2015  ...    0.4746        0.2857
+explained_variance_ratio    0.3864    0.2395  ...    0.0516        0.0311
 row                                           ...                        
 Arner DW 3:185            3.920561  0.600934  ... -0.148250 -7.455683e-17
 Buckley RP 3:185          3.920561  0.600934  ... -0.148250 -7.455683e-17
@@ -38,26 +45,65 @@ Arman AA 2:000           -0.472960 -0.489055  ...  1.643183  1.414214e+00
 <BLANKLINE>
 [15 rows x 6 columns]
 
-
-
+# pylint: disable=line-too-long
 """
 
 import pandas as pd
 from sklearn.decomposition import PCA
 
+from ...classes import FactorMatrix
+from .co_occurrence_matrix import co_occurrence_matrix
+
 
 def factor_matrix(
-    similarity_matrix,
+    # Specific params:
+    field,
     pca=None,
+    # Item filters:
+    top_n=None,
+    occ_range=None,
+    gc_range=None,
+    custom_items=None,
+    # Database params:
+    root_dir="./",
+    database="documents",
+    year_filter=None,
+    cited_by_filter=None,
+    **filters,
 ):
-    similarity_matrix = similarity_matrix.matrix_
+    """Creates a Factor Matrix.
+
+
+
+
+    # pylint: disable=line-too-long
+    """
+
+    coc_matrix = co_occurrence_matrix(
+        columns=field,
+        # Columns item filters:
+        col_top_n=top_n,
+        col_occ_range=occ_range,
+        col_gc_range=gc_range,
+        col_custom_items=custom_items,
+        # Database params:
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
+    )
+
+    matrix = coc_matrix.matrix_
 
     if pca is None:
         pca = PCA(n_components=6)
-    pca.fit(similarity_matrix)
-    transformed_matrix = pca.transform(similarity_matrix)
+
+    pca.fit(matrix)
+
+    transformed_matrix = pca.transform(matrix)
     columns = [
-        (f"Factor {i_component}", ev, evratio)
+        (f"Factor_{i_component:>02d}", round(ev, 4), round(evratio, 4))
         for i_component, (ev, evratio) in enumerate(
             zip(pca.explained_variance_, pca.explained_variance_ratio_)
         )
@@ -68,7 +114,13 @@ def factor_matrix(
     )
     matrix = pd.DataFrame(
         transformed_matrix,
-        index=similarity_matrix.index,
+        index=matrix.index,
         columns=columns,
     )
-    return matrix
+
+    fmatrix = FactorMatrix()
+    fmatrix.table_ = matrix
+    fmatrix.field_ = field
+    fmatrix.prompt_ = "TODO"
+
+    return fmatrix

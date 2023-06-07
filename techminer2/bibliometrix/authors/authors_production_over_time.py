@@ -91,7 +91,7 @@ def authors_production_over_time(
     # Table params:
     cumulative=False,
     # Item filters:
-    top_n=50,
+    top_n=None,
     occ_range=None,
     gc_range=None,
     custom_items=None,

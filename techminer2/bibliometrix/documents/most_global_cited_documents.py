@@ -46,7 +46,7 @@ from ..cited_documents import bibiometrix_cited_documents
 
 def most_global_cited_documents(
     root_dir="./",
-    top_n=20,
+    top_n=None,
     title="Most Global Cited Documents",
     # Database filters:
     year_filter=None,
