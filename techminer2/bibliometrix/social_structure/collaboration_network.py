@@ -25,7 +25,7 @@ Collaboration Network
 ...     field="authors",
 ...     top_n=20,
 ...     root_dir=root_dir,
-...     method="louvain",
+...     community_clustering="louvain",
 ...     network_viewer_dict={'nx_k': 0.5, 'nx_iterations': 10},
 ... )
 
@@ -88,15 +88,15 @@ def collaboration_network(
     custom_items=None,
     # 'cluster_field' params:
     normalization="association",
-    method="louvain",
+    community_clustering="louvain",
     # Results params:
     network_viewer_dict=None,
     network_degree_plot_dict=None,
     # Database params:
     root_dir="./",
     database="documents",
-    year_range=None,
-    cited_by_range=None,
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
     """Co-authorship network"""
@@ -126,13 +126,15 @@ def collaboration_network(
         # Database params:
         root_dir=root_dir,
         database=database,
-        year_filter=year_range,
-        cited_by_filter=cited_by_range,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 
     norm_coc_matrix = association_index(coc_matrix, index_name=normalization)
-    graph = cluster_column(norm_coc_matrix, community_clustering=method)
+    graph = cluster_column(
+        norm_coc_matrix, community_clustering=community_clustering
+    )
 
     network = CollaborationNetwork()
 

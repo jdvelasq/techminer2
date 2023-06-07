@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 Thematic Map
 ===============================================================================
@@ -7,22 +8,13 @@ Thematic Map
 
 >>> from techminer2 import bibliometrix
 >>> nnet = bibliometrix.conceptual_structure.thematic_map(
-...     criterion="author_keywords",
-...     topics_length=60,
+...     field="author_keywords",
+...     top_n=60,
 ...     directory=directory,
-...     method="louvain",
-...     nx_k=0.8,
-...     nx_iterations=30,
-...     delta=1.0,    
+...     community_clustering="louvain",
+...     network_viewer_dict={'nx_k': 0.5, 'nx_iterations': 10},
 ... )
---INFO-- The file 'data/regtech/reports/thematic_map/abstracts/CL_00.txt' was created
---INFO-- The file 'data/regtech/reports/thematic_map/abstracts/CL_01.txt' was created
---INFO-- The file 'data/regtech/reports/thematic_map/abstracts/CL_02.txt' was created
---INFO-- The file 'data/regtech/reports/thematic_map/abstracts/CL_03.txt' was created
---INFO-- The file 'data/regtech/reports/thematic_map/abstracts/CL_04.txt' was created
---INFO-- The file 'data/regtech/reports/thematic_map/abstracts/CL_05.txt' was created
---INFO-- The file 'data/regtech/reports/thematic_map/abstracts/CL_06.txt' was created
---INFO-- The file 'data/regtech/reports/thematic_map/abstracts/CL_07.txt' was created
+
 
 >>> file_name = "sphinx/_static/bibliometrix__thematic_map_plot.html"
 >>> nnet.plot_.write_html(file_name)
@@ -32,92 +24,99 @@ Thematic Map
     <iframe src="../../../_static/bibliometrix__thematic_map_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> nnet.communities_.head()
-                            CL_00  ...                         CL_07
-0                  regtech 28:329  ...        smart contracts 02:022
-1                  fintech 12:249  ...  algorithmic standards 01:021
-2               regulation 05:164  ...   document engineering 01:021
-3       financial services 04:168  ...                              
-4  artificial intelligence 04:023  ...                              
+                   CL_00  ...           CL_05
+0         REGTECH 28:329  ...   DOGMAS 01:005
+1      COMPLIANCE 07:030  ...    MILES 01:005
+2      BLOCKCHAIN 03:005  ...  NEOLOGY 01:005
+3  SMART_CONTRACT 02:022  ...                
+4  ACCOUNTABILITY 02:014  ...                
 <BLANKLINE>
-[5 rows x 8 columns]
+[5 rows x 6 columns]
 
 >>> file_name = "sphinx/_static/bibliometrix__thematic_map_degree_plot.html"
->>> nnet.degree_plot_.write_html(file_name)
+>>> nnet.degree_plot_.plot_.write_html(file_name)
 
 .. raw:: html
 
     <iframe src="../../../_static/bibliometrix__thematic_map_degree_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
->>> nnet.indicators_.head()
-                              group  betweenness  closeness  pagerank
-algorithmic standards 01:021      7          0.0   0.415325  0.018361
-bahrain 01:007                    5          0.0   0.371607  0.006982
-business management 01:011        1          0.0   0.377280  0.020363
-business models 01:153            0          0.0   0.422425  0.017482
-business policy 01:011            1          0.0   0.377280  0.020363
+>>> nnet.metrics_.table_.head()
+                                        Degree  ...  PageRank
+REGTECH 28:329                              41  ...  0.083245
+FINTECH 12:249                              27  ...  0.052162
+REGULATION 05:164                           16  ...  0.031134
+COMPLIANCE 07:030                           15  ...  0.031375
+REGULATORY_TECHNOLOGY (REGTECH) 04:030      14  ...  0.031678
+<BLANKLINE>
+[5 rows x 4 columns]
 
 
->>> file_name = "sphinx/_static/bibliometrix__thematic_map_mds_map.html"
->>> nnet.mds_map_.write_html(file_name)
+# >>> file_name = "sphinx/_static/bibliometrix__thematic_map_mds_map.html"
+# >>> nnet.mds_map_.write_html(file_name)
 
-.. raw:: html
+# .. raw:: html
 
-    <iframe src="../../../_static/bibliometrix__thematic_map_mds_map.html" height="600px" width="100%" frameBorder="0"></iframe>
-
-
->>> file_name = "sphinx/_static/bibliometrix__thematic_map_tsne_map.html"
->>> nnet.tsne_map_.write_html(file_name)
-
-.. raw:: html
-
-    <iframe src="../../../_static/bibliometrix__co_occurrence_network_tsne_map.html" height="600px" width="100%" frameBorder="0"></iframe>
+#     <iframe src="../../../_static/bibliometrix__thematic_map_mds_map.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
+# >>> file_name = "sphinx/_static/bibliometrix__thematic_map_tsne_map.html"
+# >>> nnet.tsne_map_.write_html(file_name)
+
+# .. raw:: html
+
+#     <iframe src="../../../_static/bibliometrix__co_occurrence_network_tsne_map.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
+
+# pylint: disable=line-too-long
 """
 from .co_occurrence_network import co_occurrence_network
 
 
 def thematic_map(
-    criterion,
-    topics_length=None,
-    topic_min_occ=None,
-    # summarize=False,
+    # 'co_occ_matrix' params:
+    field,
+    top_n=None,
+    occ_range=None,
+    gc_range=None,
+    custom_items=None,
+    # 'cluster_field' params:
+    community_clustering="louvain",
+    # report:
     directory_for_results="thematic_map/",
     n_keywords=10,
-    # n_abstracts=50,
-    # n_phrases_per_algorithm=5,
-    method="louvain",
-    nx_k=0.5,
-    nx_iterations=10,
-    delta=1.0,
+    # Results params:
+    network_viewer_dict=None,
+    network_degree_plot_dict=None,
+    # Database params:
     directory="./",
     database="documents",
-    start_year=None,
-    end_year=None,
+    year_filter=None,
+    citer_by_filter=None,
     **filters,
 ):
     """Thematic map network analysis"""
 
     return co_occurrence_network(
-        field=criterion,
-        top_n=topics_length,
-        topic_min_occ=topic_min_occ,
+        # 'co_occ_matrix' params:
+        field=field,
+        top_n=top_n,
+        occ_range=occ_range,
+        gc_range=gc_range,
+        custom_items=custom_items,
+        # 'cluster_column' params:
         normalization="association",
-        # summarize=summarize,
+        community_clustering=community_clustering,
+        # report:
         directory_for_results=directory_for_results,
-        n_keywords=n_keywords,
-        # n_abstracts=n_abstracts,
-        # n_phrases_per_algorithm=n_phrases_per_algorithm,
-        community_clustering=method,
-        nx_k=nx_k,
-        nx_iterations=nx_iterations,
-        delta=delta,
+        # Results params:
+        network_viewer_dict=network_viewer_dict,
+        network_degree_plot_dict=network_degree_plot_dict,
+        # Database params:
         root_dir=directory,
         database=database,
-        year_range=start_year,
-        cited_by_range=end_year,
+        year_filter=year_filter,
+        cited_by_filter=citer_by_filter,
         **filters,
     )

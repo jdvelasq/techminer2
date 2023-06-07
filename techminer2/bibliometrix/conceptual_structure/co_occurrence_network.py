@@ -14,7 +14,7 @@ Example
 ...     field="author_keywords",
 ...     top_n=50,
 ...     root_dir=root_dir,
-...     method="louvain",
+...     community_clustering="louvain",
 ...     network_viewer_dict={'nx_k': 0.5, 'nx_iterations': 10},
 ... )
 
@@ -81,7 +81,7 @@ def co_occurrence_network(
     custom_items=None,
     # 'cluster_column' params:
     normalization="association",
-    method="louvain",
+    community_clustering="louvain",
     # report:
     directory_for_results="co-occurrence_network/",
     # Results params:
@@ -90,8 +90,8 @@ def co_occurrence_network(
     # Database params:
     root_dir="./",
     database="documents",
-    year_range=None,
-    cited_by_range=None,
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
     """Co-occurrence network."""
@@ -113,13 +113,15 @@ def co_occurrence_network(
         # Database params:
         root_dir=root_dir,
         database=database,
-        year_filter=year_range,
-        cited_by_filter=cited_by_range,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 
     norm_coc_matrix = association_index(coc_matrix, index_name=normalization)
-    graph = cluster_column(norm_coc_matrix, community_clustering=method)
+    graph = cluster_column(
+        norm_coc_matrix, community_clustering=community_clustering
+    )
 
     network = CoWordsNetwork()
     network.degree_plot_ = network_degree_plot(
