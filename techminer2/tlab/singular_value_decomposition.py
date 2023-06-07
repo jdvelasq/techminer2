@@ -57,9 +57,10 @@ from sklearn.decomposition import TruncatedSVD
 
 from ..classes import ManifoldMap, NormCocMatrix, TFMatrix
 from ..scatter_plot import scatter_plot
-from ..vantagepoint.analyze.association_index import association_index
 
 
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
 def singular_value_decomposition(
     obj,
     dim_x=0,

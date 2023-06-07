@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 List Cells in Matrix
 ===============================================================================
@@ -43,7 +44,7 @@ Analyze the table below which contains the auto-correlation values for the autho
 
 
 
-
+# pylint: disable=line-too-long
 """
 
 from ...classes import (

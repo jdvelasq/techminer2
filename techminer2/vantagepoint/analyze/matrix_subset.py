@@ -81,7 +81,7 @@ column                          REGTECH 28:329  ...  FINANCIAL_SERVICES 04:168
 row                                             ...                           
 FINANCIAL_REGULATION 04:035                  2  ...                          2
 ARTIFICIAL_INTELLIGENCE 04:023               2  ...                          0
-ANTI-MONEY_LAUNDERING 03:021                 1  ...                          0
+ANTI_MONEY_LAUNDERING 04:023                 1  ...                          0
 RISK_MANAGEMENT 03:014                       2  ...                          0
 INNOVATION 03:012                            1  ...                          0
 REGULATORY_TECHNOLOGY 03:007                 2  ...                          0
@@ -94,6 +94,9 @@ SUPTECH 03:004                               3  ...                          0
 >>> matrix_subset.custom_items_
 ['REGTECH 28:329', 'FINTECH 12:249', 'COMPLIANCE 07:030', 'REGULATION 05:164', 'FINANCIAL_SERVICES 04:168']
 
+
+
+
 >>> print(matrix_subset.prompt_)
 Analyze the table below which contains values of co-occurrence (OCC) for the ['REGTECH', 'FINTECH', 'COMPLIANCE', 'REGULATION', 'FINANCIAL_SERVICES'] and 'author_keywords' fields in a bibliographic dataset. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
@@ -101,7 +104,7 @@ Analyze the table below which contains values of co-occurrence (OCC) for the ['R
 |:-------------------------------|-----------------:|-----------------:|--------------------:|--------------------:|----------------------------:|
 | FINANCIAL_REGULATION 04:035    |                2 |                1 |                   0 |                   0 |                           2 |
 | ARTIFICIAL_INTELLIGENCE 04:023 |                2 |                1 |                   1 |                   0 |                           0 |
-| ANTI-MONEY_LAUNDERING 03:021   |                1 |                0 |                   0 |                   0 |                           0 |
+| ANTI_MONEY_LAUNDERING 04:023   |                1 |                0 |                   0 |                   0 |                           0 |
 | RISK_MANAGEMENT 03:014         |                2 |                2 |                   1 |                   2 |                           0 |
 | INNOVATION 03:012              |                1 |                1 |                   0 |                   1 |                           0 |
 | REGULATORY_TECHNOLOGY 03:007   |                2 |                1 |                   1 |                   1 |                           0 |
@@ -109,6 +112,7 @@ Analyze the table below which contains values of co-occurrence (OCC) for the ['R
 | SUPTECH 03:004                 |                3 |                2 |                   1 |                   1 |                           0 |
 <BLANKLINE>
 <BLANKLINE>
+
 
 
 
@@ -134,7 +138,7 @@ REGULATION 05:164                            4  ...               1
 FINANCIAL_SERVICES 04:168                    3  ...               0
 FINANCIAL_REGULATION 04:035                  2  ...               0
 ARTIFICIAL_INTELLIGENCE 04:023               2  ...               0
-ANTI-MONEY_LAUNDERING 03:021                 1  ...               0
+ANTI_MONEY_LAUNDERING 04:023                 1  ...               0
 RISK_MANAGEMENT 03:014                       2  ...               1
 INNOVATION 03:012                            1  ...               0
 REGULATORY_TECHNOLOGY 03:007                 2  ...               1
@@ -154,7 +158,7 @@ SUPTECH 03:004                               3  ...               3
 >>> print(matrix_subset.prompt_)
 Analyze the table below which contains values of co-occurrence (OCC) for the 'author_keywords' fields in a bibliographic dataset. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
-| row                            |   REGTECH 28:329 |   FINTECH 12:249 |   COMPLIANCE 07:030 |   REGULATION 05:164 |   FINANCIAL_SERVICES 04:168 |   FINANCIAL_REGULATION 04:035 |   ARTIFICIAL_INTELLIGENCE 04:023 |   ANTI-MONEY_LAUNDERING 03:021 |   RISK_MANAGEMENT 03:014 |   INNOVATION 03:012 |   REGULATORY_TECHNOLOGY 03:007 |   BLOCKCHAIN 03:005 |   SUPTECH 03:004 |
+| row                            |   REGTECH 28:329 |   FINTECH 12:249 |   COMPLIANCE 07:030 |   REGULATION 05:164 |   FINANCIAL_SERVICES 04:168 |   FINANCIAL_REGULATION 04:035 |   ARTIFICIAL_INTELLIGENCE 04:023 |   ANTI_MONEY_LAUNDERING 04:023 |   RISK_MANAGEMENT 03:014 |   INNOVATION 03:012 |   REGULATORY_TECHNOLOGY 03:007 |   BLOCKCHAIN 03:005 |   SUPTECH 03:004 |
 |:-------------------------------|-----------------:|-----------------:|--------------------:|--------------------:|----------------------------:|------------------------------:|---------------------------------:|-------------------------------:|-------------------------:|--------------------:|-------------------------------:|--------------------:|-----------------:|
 | REGTECH 28:329                 |               28 |               12 |                   7 |                   4 |                           3 |                             2 |                                2 |                              1 |                        2 |                   1 |                              2 |                   2 |                3 |
 | FINTECH 12:249                 |               12 |               12 |                   2 |                   4 |                           2 |                             1 |                                1 |                              0 |                        2 |                   1 |                              1 |                   1 |                2 |
@@ -163,7 +167,7 @@ Analyze the table below which contains values of co-occurrence (OCC) for the 'au
 | FINANCIAL_SERVICES 04:168      |                3 |                2 |                   0 |                   1 |                           4 |                             2 |                                0 |                              0 |                        0 |                   0 |                              0 |                   0 |                0 |
 | FINANCIAL_REGULATION 04:035    |                2 |                1 |                   0 |                   0 |                           2 |                             4 |                                0 |                              0 |                        0 |                   1 |                              0 |                   0 |                0 |
 | ARTIFICIAL_INTELLIGENCE 04:023 |                2 |                1 |                   1 |                   0 |                           0 |                             0 |                                4 |                              1 |                        1 |                   0 |                              1 |                   1 |                0 |
-| ANTI-MONEY_LAUNDERING 03:021   |                1 |                0 |                   0 |                   0 |                           0 |                             0 |                                1 |                              3 |                        0 |                   0 |                              0 |                   0 |                0 |
+| ANTI_MONEY_LAUNDERING 04:023   |                1 |                0 |                   0 |                   0 |                           0 |                             0 |                                1 |                              4 |                        0 |                   0 |                              0 |                   0 |                0 |
 | RISK_MANAGEMENT 03:014         |                2 |                2 |                   1 |                   2 |                           0 |                             0 |                                1 |                              0 |                        3 |                   0 |                              2 |                   0 |                1 |
 | INNOVATION 03:012              |                1 |                1 |                   0 |                   1 |                           0 |                             1 |                                0 |                              0 |                        0 |                   3 |                              0 |                   0 |                0 |
 | REGULATORY_TECHNOLOGY 03:007   |                2 |                1 |                   1 |                   1 |                           0 |                             0 |                                1 |                              0 |                        2 |                   0 |                              3 |                   0 |                1 |
@@ -171,7 +175,6 @@ Analyze the table below which contains values of co-occurrence (OCC) for the 'au
 | SUPTECH 03:004                 |                3 |                2 |                   1 |                   1 |                           0 |                             0 |                                0 |                              0 |                        1 |                   0 |                              1 |                   0 |                3 |
 <BLANKLINE>
 <BLANKLINE>
-
 
 
 

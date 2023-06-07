@@ -9,7 +9,7 @@ Cross-correlation Matrix
 
 >>> from techminer2 import vantagepoint
 >>> corr_matrix = vantagepoint.analyze.cross_corr_matrix(
-...     row_and_columns='authors', 
+...     rows_and_columns='authors', 
 ...     cross_with='countries',
 ...     top_n=10,
 ...     root_dir=root_dir,

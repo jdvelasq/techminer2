@@ -37,23 +37,10 @@ Based on the bibliometrix/R/conceptualStructure.R code.
 
 
 >>> fa.table_.head()
-                                  Dim-1     Dim-2  CLUSTER
-row                                                       
-regtech 28:329                28.268965  3.015757        3
-fintech 12:249                13.957324 -1.695197        1
-compliance 07:030              4.269020 -6.685674        0
-regulatory technology 07:037  -0.346827  6.995581        2
-regulation 05:164              4.150326  2.044916        2
+
 
 >>> fa.cluster_members_.head()
-                          CL_00  ...           CL_03
-0             compliance 07:030  ...  regtech 28:329
-1     financial services 04:168  ...                
-2   financial regulation 04:035  ...                
-3  anti-money laundering 03:021  ...                
-4  semantic technologies 02:041  ...                
-<BLANKLINE>
-[5 rows x 4 columns]
+
 
 
 """
@@ -106,22 +93,26 @@ class _FactorialAnalysis:
             lambda x: "CL_{:>02d}".format(x)
         )
 
-        cluster_members = cluster_members.groupby("CLUSTER", as_index=False).agg(
-            {"ITEM": list}
-        )
+        cluster_members = cluster_members.groupby(
+            "CLUSTER", as_index=False
+        ).agg({"ITEM": list})
 
         members = {
             cluster: item
-            for cluster, item in zip(cluster_members.CLUSTER, cluster_members.ITEM)
+            for cluster, item in zip(
+                cluster_members.CLUSTER, cluster_members.ITEM
+            )
         }
 
         for cluster in members:
             members[cluster] = [
-                y.split()[-1] + " " + " ".join(y.split()[:-1]) for y in members[cluster]
+                y.split()[-1] + " " + " ".join(y.split()[:-1])
+                for y in members[cluster]
             ]
             members[cluster] = sorted(members[cluster], reverse=True)
             members[cluster] = [
-                " ".join(y.split()[1:]) + " " + y.split()[0] for y in members[cluster]
+                " ".join(y.split()[1:]) + " " + y.split()[0]
+                for y in members[cluster]
             ]
 
         cluster_members = pd.DataFrame.from_dict(members, orient="index").T

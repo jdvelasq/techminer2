@@ -145,7 +145,7 @@ Analyze the table below, which contains the the co-occurrence values for author_
 |  4 | FINANCIAL_SERVICES 04:168      | REGTECH 28:329                         |     3 |
 |  5 | FINANCIAL_REGULATION 04:035    | REGTECH 28:329                         |     2 |
 |  6 | ARTIFICIAL_INTELLIGENCE 04:023 | REGTECH 28:329                         |     2 |
-|  7 | ANTI-MONEY_LAUNDERING 03:021   | REGTECH 28:329                         |     1 |
+|  7 | ANTI_MONEY_LAUNDERING 04:023   | REGTECH 28:329                         |     1 |
 | 11 | COMPLIANCE 07:030              | FINTECH 12:249                         |     2 |
 | 13 | FINANCIAL_SERVICES 04:168      | FINTECH 12:249                         |     2 |
 | 14 | FINANCIAL_REGULATION 04:035    | FINTECH 12:249                         |     1 |
@@ -156,8 +156,8 @@ Analyze the table below, which contains the the co-occurrence values for author_
 | 25 | COMPLIANCE 07:030              | REGULATION 05:164                      |     1 |
 | 27 | FINANCIAL_SERVICES 04:168      | REGULATION 05:164                      |     1 |
 | 33 | FINANCIAL_REGULATION 04:035    | FINANCIAL_SERVICES 04:168              |     2 |
-| 39 | ANTI-MONEY_LAUNDERING 03:021   | REGULATORY_TECHNOLOGY (REGTECH) 04:030 |     1 |
-| 44 | ANTI-MONEY_LAUNDERING 03:021   | ARTIFICIAL_INTELLIGENCE 04:023         |     1 |
+| 39 | ANTI_MONEY_LAUNDERING 04:023   | REGULATORY_TECHNOLOGY (REGTECH) 04:030 |     1 |
+| 44 | ANTI_MONEY_LAUNDERING 04:023   | ARTIFICIAL_INTELLIGENCE 04:023         |     1 |
 | 50 | REGTECH 28:329                 | RISK_MANAGEMENT 03:014                 |     2 |
 | 51 | FINTECH 12:249                 | RISK_MANAGEMENT 03:014                 |     2 |
 | 52 | COMPLIANCE 07:030              | RISK_MANAGEMENT 03:014                 |     1 |
@@ -208,7 +208,7 @@ Analyze the table below which contains values of co-occurrence (OCC) for the ['R
 | FINANCIAL_SERVICES 04:168      |                3 |
 | FINANCIAL_REGULATION 04:035    |                2 |
 | ARTIFICIAL_INTELLIGENCE 04:023 |                2 |
-| ANTI-MONEY_LAUNDERING 03:021   |                1 |
+| ANTI_MONEY_LAUNDERING 04:023   |                1 |
 | RISK_MANAGEMENT 03:014         |                2 |
 | INNOVATION 03:012              |                1 |
 | REGULATORY_TECHNOLOGY 03:007   |                2 |
@@ -260,7 +260,7 @@ Analyze the table below which contains values of co-occurrence (OCC) for the ['R
 | FINANCIAL_SERVICES 04:168      |                3 |                              0 |
 | FINANCIAL_REGULATION 04:035    |                2 |                              0 |
 | ARTIFICIAL_INTELLIGENCE 04:023 |                2 |                              1 |
-| ANTI-MONEY_LAUNDERING 03:021   |                1 |                              0 |
+| ANTI_MONEY_LAUNDERING 04:023   |                1 |                              0 |
 | RISK_MANAGEMENT 03:014         |                2 |                              2 |
 | INNOVATION 03:012              |                1 |                              0 |
 | BLOCKCHAIN 03:005              |                2 |                              0 |
@@ -304,7 +304,7 @@ Example: Ego-Network (T-LAB).
 >>> print(chart.prompt_)
 Analyze the table below which contains values of co-occurrence (OCC) for the 'author_keywords' fields in a bibliographic dataset. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
-| row                            |   REGTECH 28:329 |   FINTECH 12:249 |   COMPLIANCE 07:030 |   REGULATION 05:164 |   FINANCIAL_SERVICES 04:168 |   FINANCIAL_REGULATION 04:035 |   ARTIFICIAL_INTELLIGENCE 04:023 |   ANTI-MONEY_LAUNDERING 03:021 |   RISK_MANAGEMENT 03:014 |
+| row                            |   REGTECH 28:329 |   FINTECH 12:249 |   COMPLIANCE 07:030 |   REGULATION 05:164 |   FINANCIAL_SERVICES 04:168 |   FINANCIAL_REGULATION 04:035 |   ARTIFICIAL_INTELLIGENCE 04:023 |   ANTI_MONEY_LAUNDERING 04:023 |   RISK_MANAGEMENT 03:014 |
 |:-------------------------------|-----------------:|-----------------:|--------------------:|--------------------:|----------------------------:|------------------------------:|---------------------------------:|-------------------------------:|-------------------------:|
 | REGTECH 28:329                 |               28 |               12 |                   7 |                   4 |                           3 |                             2 |                                2 |                              1 |                        2 |
 | FINTECH 12:249                 |               12 |               12 |                   2 |                   4 |                           2 |                             1 |                                1 |                              0 |                        2 |
@@ -313,7 +313,7 @@ Analyze the table below which contains values of co-occurrence (OCC) for the 'au
 | FINANCIAL_SERVICES 04:168      |                3 |                2 |                   0 |                   1 |                           4 |                             2 |                                0 |                              0 |                        0 |
 | FINANCIAL_REGULATION 04:035    |                2 |                1 |                   0 |                   0 |                           2 |                             4 |                                0 |                              0 |                        0 |
 | ARTIFICIAL_INTELLIGENCE 04:023 |                2 |                1 |                   1 |                   0 |                           0 |                             0 |                                4 |                              1 |                        1 |
-| ANTI-MONEY_LAUNDERING 03:021   |                1 |                0 |                   0 |                   0 |                           0 |                             0 |                                1 |                              3 |                        0 |
+| ANTI_MONEY_LAUNDERING 04:023   |                1 |                0 |                   0 |                   0 |                           0 |                             0 |                                1 |                              4 |                        0 |
 | RISK_MANAGEMENT 03:014         |                2 |                2 |                   1 |                   2 |                           0 |                             0 |                                1 |                              0 |                        3 |
 <BLANKLINE>
 <BLANKLINE>

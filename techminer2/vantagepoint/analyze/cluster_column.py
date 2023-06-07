@@ -33,8 +33,8 @@ Example: Clustering using community detection algorithms.
 |  4 | FINANCIAL_SERVICES 04:168              |
 |  5 | FINANCIAL_REGULATION 04:035            |
 |  6 | REGULATORY_TECHNOLOGY (REGTECH) 04:030 |
-|  7 | ARTIFICIAL_INTELLIGENCE 04:023         |
-|  8 | ANTI-MONEY_LAUNDERING 03:021           |
+|  7 | ANTI_MONEY_LAUNDERING 04:023           |
+|  8 | ARTIFICIAL_INTELLIGENCE 04:023         |
 |  9 | RISK_MANAGEMENT 03:014                 |
 | 10 | INNOVATION 03:012                      |
 | 11 | REGULATORY_TECHNOLOGY 03:007           |
@@ -63,14 +63,16 @@ Example: Clustering using community detection algorithms.
 |    | CL_00                          | CL_01                       | CL_02                        | CL_03                                  |
 |---:|:-------------------------------|:----------------------------|:-----------------------------|:---------------------------------------|
 |  0 | REGTECH 28:329                 | FINTECH 12:249              | REGULATION 05:164            | REGULATORY_TECHNOLOGY (REGTECH) 04:030 |
-|  1 | COMPLIANCE 07:030              | FINANCIAL_SERVICES 04:168   | RISK_MANAGEMENT 03:014       | ARTIFICIAL_INTELLIGENCE 04:023         |
-|  2 | BLOCKCHAIN 03:005              | FINANCIAL_REGULATION 04:035 | REGULATORY_TECHNOLOGY 03:007 | ANTI-MONEY_LAUNDERING 03:021           |
+|  1 | COMPLIANCE 07:030              | FINANCIAL_SERVICES 04:168   | RISK_MANAGEMENT 03:014       | ANTI_MONEY_LAUNDERING 04:023           |
+|  2 | BLOCKCHAIN 03:005              | FINANCIAL_REGULATION 04:035 | REGULATORY_TECHNOLOGY 03:007 | ARTIFICIAL_INTELLIGENCE 04:023         |
 |  3 | SMART_CONTRACT 02:022          | INNOVATION 03:012           | SUPTECH 03:004               | CHARITYTECH 02:017                     |
 |  4 | ACCOUNTABILITY 02:014          | DATA_PROTECTION 02:027      | REPORTING 02:001             | ENGLISH_LAW 02:017                     |
 |  5 | DATA_PROTECTION_OFFICER 02:014 | FINANCE 02:001              |                              |                                        |
 |  6 | GDPR 02:014                    |                             |                              |                                        |
 |  7 | SANDBOXES 02:012               |                             |                              |                                        |
 |  8 | TECHNOLOGY 02:010              |                             |                              |                                        |
+
+
 
 
 >>> graph = vantagepoint.analyze.cluster_column(
@@ -81,7 +83,7 @@ Example: Clustering using community detection algorithms.
 |    | CL_00                        | CL_01                          | CL_02                                  | CL_03                          |
 |---:|:-----------------------------|:-------------------------------|:---------------------------------------|:-------------------------------|
 |  0 | FINTECH 12:249               | REGTECH 28:329                 | REGULATORY_TECHNOLOGY (REGTECH) 04:030 | ACCOUNTABILITY 02:014          |
-|  1 | REGULATION 05:164            | COMPLIANCE 07:030              | ANTI-MONEY_LAUNDERING 03:021           | DATA_PROTECTION_OFFICER 02:014 |
+|  1 | REGULATION 05:164            | COMPLIANCE 07:030              | ANTI_MONEY_LAUNDERING 04:023           | DATA_PROTECTION_OFFICER 02:014 |
 |  2 | FINANCIAL_SERVICES 04:168    | ARTIFICIAL_INTELLIGENCE 04:023 | CHARITYTECH 02:017                     | GDPR 02:014                    |
 |  3 | FINANCIAL_REGULATION 04:035  | BLOCKCHAIN 03:005              | ENGLISH_LAW 02:017                     |                                |
 |  4 | RISK_MANAGEMENT 03:014       | SMART_CONTRACT 02:022          |                                        |                                |
@@ -92,7 +94,6 @@ Example: Clustering using community detection algorithms.
 |  9 | SANDBOXES 02:012             |                                |                                        |                                |
 | 10 | FINANCE 02:001               |                                |                                        |                                |
 | 11 | REPORTING 02:001             |                                |                                        |                                |
-
 
 
 Example: Clustering using sklearn algoritms.
@@ -114,22 +115,20 @@ Example: Clustering using sklearn algoritms.
 >>> print(vantagepoint.analyze.cluster_items(graph).to_markdown())
 |    | CL_00                        | CL_01                          | CL_02                          | CL_03                                  |
 |---:|:-----------------------------|:-------------------------------|:-------------------------------|:---------------------------------------|
-|  0 | REGTECH 28:329               | COMPLIANCE 07:030              | ARTIFICIAL_INTELLIGENCE 04:023 | REGULATORY_TECHNOLOGY (REGTECH) 04:030 |
-|  1 | FINTECH 12:249               | ACCOUNTABILITY 02:014          | ANTI-MONEY_LAUNDERING 03:021   |                                        |
+|  0 | REGTECH 28:329               | COMPLIANCE 07:030              | ANTI_MONEY_LAUNDERING 04:023   | REGULATORY_TECHNOLOGY (REGTECH) 04:030 |
+|  1 | FINTECH 12:249               | ACCOUNTABILITY 02:014          | ARTIFICIAL_INTELLIGENCE 04:023 | INNOVATION 03:012                      |
 |  2 | REGULATION 05:164            | DATA_PROTECTION_OFFICER 02:014 | CHARITYTECH 02:017             |                                        |
 |  3 | FINANCIAL_SERVICES 04:168    | GDPR 02:014                    | ENGLISH_LAW 02:017             |                                        |
 |  4 | FINANCIAL_REGULATION 04:035  | TECHNOLOGY 02:010              |                                |                                        |
 |  5 | RISK_MANAGEMENT 03:014       |                                |                                |                                        |
-|  6 | INNOVATION 03:012            |                                |                                |                                        |
-|  7 | REGULATORY_TECHNOLOGY 03:007 |                                |                                |                                        |
-|  8 | BLOCKCHAIN 03:005            |                                |                                |                                        |
-|  9 | SUPTECH 03:004               |                                |                                |                                        |
-| 10 | DATA_PROTECTION 02:027       |                                |                                |                                        |
-| 11 | SMART_CONTRACT 02:022        |                                |                                |                                        |
-| 12 | SANDBOXES 02:012             |                                |                                |                                        |
-| 13 | FINANCE 02:001               |                                |                                |                                        |
-| 14 | REPORTING 02:001             |                                |                                |                                        |
-
+|  6 | REGULATORY_TECHNOLOGY 03:007 |                                |                                |                                        |
+|  7 | BLOCKCHAIN 03:005            |                                |                                |                                        |
+|  8 | SUPTECH 03:004               |                                |                                |                                        |
+|  9 | DATA_PROTECTION 02:027       |                                |                                |                                        |
+| 10 | SMART_CONTRACT 02:022        |                                |                                |                                        |
+| 11 | SANDBOXES 02:012             |                                |                                |                                        |
+| 12 | FINANCE 02:001               |                                |                                |                                        |
+| 13 | REPORTING 02:001             |                                |                                |                                        |
 
 
 

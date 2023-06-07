@@ -23,7 +23,7 @@ FINANCIAL_SERVICES 04:168                  1     1     0  ...     0     1     0
 FINANCIAL_REGULATION 04:035                1     0     0  ...     0     2     0
 REGULATORY_TECHNOLOGY (REGTECH) 04:030     0     0     0  ...     2     1     0
 ARTIFICIAL_INTELLIGENCE 04:023             0     0     1  ...     0     1     0
-ANTI-MONEY_LAUNDERING 03:021               0     0     0  ...     2     0     0
+ANTI_MONEY_LAUNDERING 04:023               0     0     0  ...     3     0     0
 RISK_MANAGEMENT 03:014                     0     1     0  ...     0     1     0
 <BLANKLINE>
 [10 rows x 7 columns]
@@ -42,10 +42,11 @@ Analyze the table below which contains the  occurrences by year for the years. I
 | FINANCIAL_REGULATION 04:035            |      1 |      0 |      0 |      1 |      0 |      2 |      0 |
 | REGULATORY_TECHNOLOGY (REGTECH) 04:030 |      0 |      0 |      0 |      1 |      2 |      1 |      0 |
 | ARTIFICIAL_INTELLIGENCE 04:023         |      0 |      0 |      1 |      2 |      0 |      1 |      0 |
-| ANTI-MONEY_LAUNDERING 03:021           |      0 |      0 |      0 |      1 |      2 |      0 |      0 |
+| ANTI_MONEY_LAUNDERING 04:023           |      0 |      0 |      0 |      1 |      3 |      0 |      0 |
 | RISK_MANAGEMENT 03:014                 |      0 |      1 |      0 |      1 |      0 |      1 |      0 |
 <BLANKLINE>
 <BLANKLINE>
+
 
 
 >>> r = vantagepoint.analyze.terms_by_year(
@@ -65,7 +66,7 @@ FINANCIAL_SERVICES 04:168                  1     2     2  ...     3     4     4
 FINANCIAL_REGULATION 04:035                1     1     1  ...     2     4     4
 REGULATORY_TECHNOLOGY (REGTECH) 04:030     0     0     0  ...     3     4     4
 ARTIFICIAL_INTELLIGENCE 04:023             0     0     1  ...     3     4     4
-ANTI-MONEY_LAUNDERING 03:021               0     0     0  ...     3     3     3
+ANTI_MONEY_LAUNDERING 04:023               0     0     0  ...     4     4     4
 RISK_MANAGEMENT 03:014                     0     1     1  ...     2     3     3
 <BLANKLINE>
 [10 rows x 7 columns]
@@ -84,13 +85,14 @@ Analyze the table below which contains the cumulative occurrences by year for th
 | FINANCIAL_REGULATION 04:035            |      1 |      1 |      1 |      2 |      2 |      4 |      4 |
 | REGULATORY_TECHNOLOGY (REGTECH) 04:030 |      0 |      0 |      0 |      1 |      3 |      4 |      4 |
 | ARTIFICIAL_INTELLIGENCE 04:023         |      0 |      0 |      1 |      3 |      3 |      4 |      4 |
-| ANTI-MONEY_LAUNDERING 03:021           |      0 |      0 |      0 |      1 |      3 |      3 |      3 |
+| ANTI_MONEY_LAUNDERING 04:023           |      0 |      0 |      0 |      1 |      4 |      4 |      4 |
 | RISK_MANAGEMENT 03:014                 |      0 |      1 |      1 |      2 |      2 |      3 |      3 |
 <BLANKLINE>
 <BLANKLINE>
 
 
-# noga: E501 W291
+
+# pylint: disable=line-too-long
 """
 from ...classes import TermsByYear
 from ...counters import add_counters_to_axis
@@ -103,8 +105,6 @@ from ...techminer.indicators import indicators_by_item, items_occ_by_year
 # pylint: disable=too-many-locals
 def terms_by_year(
     field,
-    root_dir="./",
-    database="documents",
     # Table params:
     cumulative=False,
     # Item filters:
@@ -113,6 +113,8 @@ def terms_by_year(
     gc_range=None,
     custom_items=None,
     # Database filters:
+    root_dir="./",
+    database="documents",
     year_filter=None,
     cited_by_filter=None,
     **filters,

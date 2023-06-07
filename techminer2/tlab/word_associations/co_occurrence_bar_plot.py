@@ -51,7 +51,7 @@ Analyze the table below which contains values of co-occurrence(OCC) of the 'REGT
 | RISK_MANAGEMENT 03:014         |     2 |
 | REGULATORY_TECHNOLOGY 03:007   |     2 |
 | BLOCKCHAIN 03:005              |     2 |
-| ANTI-MONEY_LAUNDERING 03:021   |     1 |
+| ANTI_MONEY_LAUNDERING 04:023   |     1 |
 | INNOVATION 03:012              |     1 |
 
 

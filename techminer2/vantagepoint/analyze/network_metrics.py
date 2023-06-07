@@ -29,7 +29,6 @@ COMPLIANCE 07:030                    8     0.013034   0.684211  0.083308
 ARTIFICIAL_INTELLIGENCE 04:023       7     0.047436   0.684211  0.077037
 
 
-
 >>> print(metrics.prompt_)
 Analyze the table below, which provides the degree centrality, betweeness centrality, closeness centrality, and pagerank of nodes in a networkx graph of a co-ocurrence matrix. Identify any notable patterns, trends, or outliers in the data, and discuss their implications in the network.
 <BLANKLINE>
@@ -47,11 +46,10 @@ Analyze the table below, which provides the degree centrality, betweeness centra
 | BLOCKCHAIN 03:005                      |        5 |    0.00213675 |    0.590909 |  0.0556851 |
 | FINANCIAL_SERVICES 04:168              |        4 |    0.00320513 |    0.565217 |  0.0479574 |
 | FINANCIAL_REGULATION 04:035            |        4 |    0.00576923 |    0.590909 |  0.0493095 |
-| ANTI-MONEY_LAUNDERING 03:021           |        3 |    0.0455128  |    0.565217 |  0.0433084 |
+| ANTI_MONEY_LAUNDERING 04:023           |        3 |    0.0455128  |    0.565217 |  0.0433084 |
 | REGULATORY_TECHNOLOGY (REGTECH) 04:030 |        2 |    0.00641026 |    0.433333 |  0.0335623 |
 <BLANKLINE>
 <BLANKLINE>
-
 
 
 # pylint: disable=line-too-long

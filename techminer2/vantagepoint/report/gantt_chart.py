@@ -49,7 +49,7 @@ Analyze the table below which contains the  occurrences by year for the years. I
 | FINANCIAL_REGULATION 04:035            |      1 |      0 |      0 |      1 |      0 |      2 |      0 |
 | REGULATORY_TECHNOLOGY (REGTECH) 04:030 |      0 |      0 |      0 |      1 |      2 |      1 |      0 |
 | ARTIFICIAL_INTELLIGENCE 04:023         |      0 |      0 |      1 |      2 |      0 |      1 |      0 |
-| ANTI-MONEY_LAUNDERING 03:021           |      0 |      0 |      0 |      1 |      2 |      0 |      0 |
+| ANTI_MONEY_LAUNDERING 04:023           |      0 |      0 |      0 |      1 |      3 |      0 |      0 |
 | RISK_MANAGEMENT 03:014                 |      0 |      1 |      0 |      1 |      0 |      1 |      0 |
 | INNOVATION 03:012                      |      0 |      0 |      0 |      1 |      1 |      1 |      0 |
 | REGULATORY_TECHNOLOGY 03:007           |      0 |      0 |      0 |      1 |      1 |      1 |      0 |

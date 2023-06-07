@@ -48,7 +48,7 @@ Analyze the table below, which provides bibliometric indicators for the field 'a
 | FINANCIAL_REGULATION            |     4 |                 35 |                 8 |                            8.75 |                           2    |
 | REGULATORY_TECHNOLOGY (REGTECH) |     4 |                 30 |                10 |                            7.5  |                           2.5  |
 | ARTIFICIAL_INTELLIGENCE         |     4 |                 23 |                 6 |                            5.75 |                           1.5  |
-| ANTI-MONEY_LAUNDERING           |     3 |                 21 |                 4 |                            7    |                           1.33 |
+| ANTI_MONEY_LAUNDERING           |     4 |                 23 |                 4 |                            5.75 |                           1    |
 | RISK_MANAGEMENT                 |     3 |                 14 |                 8 |                            4.67 |                           2.67 |
 <BLANKLINE>
 <BLANKLINE>

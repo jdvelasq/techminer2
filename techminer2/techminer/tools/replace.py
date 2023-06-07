@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 Replace text in column
 ===============================================================================
@@ -20,7 +21,6 @@ Replace text in column
 import os.path
 
 import pandas as pd
-
 
 # Replace text in columns
 # INPUTS:

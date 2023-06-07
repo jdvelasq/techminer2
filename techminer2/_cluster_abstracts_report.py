@@ -37,7 +37,7 @@ def cluster_abstracts_report(
 
         abstracts_report(
             field=criterion,
-            custom_topics=community,
+            custom_items=community,
             file_name=file_name,
             # n_abstracts=n_abstracts,
             use_textwrap=True,

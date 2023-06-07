@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 Create Concept Grid (TODO)
 ===============================================================================
@@ -22,7 +23,7 @@ Example:
 >>> vantagepoint.analyze.create_concept_grid(graph)
 
 
-
+# pylint: disable=line-too-long
 """
 
 import pandas as pd

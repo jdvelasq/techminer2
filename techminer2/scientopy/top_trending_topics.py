@@ -8,16 +8,15 @@ average growth rate.
 
 
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 >>> from techminer2 import scientopy
 
 >>> file_name = "sphinx/_static/scientopy__top_trending_topics.html"
 >>> r = scientopy.top_trending_topics(
-...     criterion="author_keywords",
-...     topics_length=5,
-...     directory=directory,
-...     start_year=2018,
-...     end_year=2021,
+...     field="author_keywords",
+...     top_n=5,
+...     root_dir=root_dir,
+...     year_filter=(2018, 2021),
 ... )
 >>> r.plot_.write_html(file_name)
 
@@ -28,28 +27,31 @@ average growth rate.
 
 
 >>> r.table_.head()
-         author_keywords  Average Growth Rate
-0  regulatory technology                  1.5
-1  anti-money laundering                  1.0
-2             regulation                  0.5
-3         accountability                  0.5
-4                   gdpr                  0.5
+                   author_keywords  Average Growth Rate
+0            ANTI_MONEY_LAUNDERING                  1.5
+1  REGULATORY_TECHNOLOGY (REGTECH)                  1.0
+2                       REGULATION                  0.5
+3                   ACCOUNTABILITY                  0.5
+4                             GDPR                  0.5
 
 
 >>> print(r.prompt_)
 <BLANKLINE>
 Imagine that you are a researcher analyzing a bibliographic dataset. The table below provides data on top 5 'author_keywords' with the highest average growth rate in the dataset. Use the information in the table to draw conclusions about growth trends of the 'author_keywords'. In your analysis, be sure to describe in a clear and concise way, any findings or any patterns you observe, and identify any outliers or anomalies in the data. Limit your description to one paragraph with no more than 250 words.
 <BLANKLINE>
-|    | author_keywords       |   Average Growth Rate |
-|---:|:----------------------|----------------------:|
-|  0 | regulatory technology |                   1.5 |
-|  1 | anti-money laundering |                   1   |
-|  2 | regulation            |                   0.5 |
-|  3 | accountability        |                   0.5 |
-|  4 | gdpr                  |                   0.5 |
+|    | author_keywords                 |   Average Growth Rate |
+|---:|:--------------------------------|----------------------:|
+|  0 | ANTI_MONEY_LAUNDERING           |                   1.5 |
+|  1 | REGULATORY_TECHNOLOGY (REGTECH) |                   1   |
+|  2 | REGULATION                      |                   0.5 |
+|  3 | ACCOUNTABILITY                  |                   0.5 |
+|  4 | GDPR                            |                   0.5 |
 <BLANKLINE>
 <BLANKLINE>
 
+
+
+# pylint: disable=line-too-long
 """
 from dataclasses import dataclass
 
@@ -68,26 +70,31 @@ class _Results:
     prompt_: None
 
 
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
 def top_trending_topics(
-    criterion,
-    topics_length=20,
+    field,
+    # Specific params:
     time_window=2,
-    directory="./",
+    # Item filters:
+    top_n=20,
+    custom_items=None,
+    # Database params:
+    root_dir="./",
     database="documents",
-    custom_topics=None,
-    start_year=None,
-    end_year=None,
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
     """Top trending topics."""
 
     growth_indicators = growth_indicators_by_topic(
-        criterion=criterion,
+        field=field,
         time_window=time_window,
-        directory=directory,
+        root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 
@@ -98,8 +105,8 @@ def top_trending_topics(
 
     growth_indicators = _filter_indicators_by_custom_topics(
         indicators=growth_indicators,
-        topics_length=topics_length,
-        custom_topics=custom_topics,
+        topics_length=top_n,
+        custom_topics=custom_items,
     )
 
     growth_indicators = growth_indicators.sort_values(
@@ -108,7 +115,7 @@ def top_trending_topics(
     )
 
     growth_indicators = growth_indicators.reset_index()
-    growth_indicators = growth_indicators[[criterion, "average_growth_rate"]]
+    growth_indicators = growth_indicators[[field, "average_growth_rate"]]
     growth_indicators = growth_indicators.sort_values(
         "average_growth_rate", ascending=False
     )
@@ -118,14 +125,14 @@ def top_trending_topics(
     )
 
     results = _Results()
-    results.table_ = growth_indicators.head(topics_length)
+    results.table_ = growth_indicators.head(top_n)
     results.plot_ = bar_px(
         dataframe=results.table_,
         x_label="Average Growth Rate",
-        y_label=criterion,
+        y_label=field,
         title="Top Trending Topics",
     )
-    results.prompt_ = _create_prompt(results.table_, criterion)
+    results.prompt_ = _create_prompt(results.table_, field)
 
     return results
 

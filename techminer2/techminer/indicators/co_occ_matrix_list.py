@@ -17,16 +17,16 @@ Example
 ...     columns='authors', rows='keywords', root_dir=root_dir
 ... ).head(10)
                          row     column  OCC
-0             accountability  Brennan R    2
-1             accountability    Crane M    2
-2             accountability     Ryan P    2
-93               charitytech      Lin W    2
-94               charitytech    Singh C    2
-112               compliance  Brennan R    2
-113               compliance    Crane M    2
-119               compliance     Ryan P    2
-163  data protection officer  Brennan R    2
-164  data protection officer    Crane M    2
+0             ACCOUNTABILITY  Brennan R    2
+1             ACCOUNTABILITY    Crane M    2
+2             ACCOUNTABILITY     Ryan P    2
+98                COMPLIANCE  Brennan R    2
+99                COMPLIANCE    Crane M    2
+101               COMPLIANCE     Ryan P    2
+149  DATA_PROTECTION_OFFICER  Brennan R    2
+150  DATA_PROTECTION_OFFICER    Crane M    2
+151  DATA_PROTECTION_OFFICER     Ryan P    2
+206                  FINANCE   Arman AA    2
 
 
 # pylint: disable=line-too-long

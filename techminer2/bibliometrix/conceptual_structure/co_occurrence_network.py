@@ -28,13 +28,14 @@ Example
 
 >>> nnet.communities_.head()
                             CL_00  ...                           CL_04
-0                  REGTECH 28:329  ...  ARTIFICIAL_INTELLIGENCE 04:023
-1               BLOCKCHAIN 03:005  ...    ANTI-MONEY_LAUNDERING 03:021
+0                  REGTECH 28:329  ...    ANTI_MONEY_LAUNDERING 04:023
+1               BLOCKCHAIN 03:005  ...  ARTIFICIAL_INTELLIGENCE 04:023
 2           SMART_CONTRACT 02:022  ...              CHARITYTECH 02:017
 3           ACCOUNTABILITY 02:014  ...              ENGLISH_LAW 02:017
-4  DATA_PROTECTION_OFFICER 02:014  ...   COUNTER-TERROR_FINANCE 01:014
+4  DATA_PROTECTION_OFFICER 02:014  ...   COUNTER_TERROR_FINANCE 01:014
 <BLANKLINE>
 [5 rows x 5 columns]
+
 
 >>> file_name = "sphinx/_static/bibliometrix__co_occurrence_network_degree_plot.html"
 >>> nnet.degree_plot_.plot_.write_html(file_name)

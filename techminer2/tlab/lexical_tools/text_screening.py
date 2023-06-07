@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 Text Screening --- ChatGPT
 ===============================================================================
@@ -22,6 +23,7 @@ from ...vantagepoint import record_display
 
 
 # pylint: disable=too-many-arguments
+# pylint: disable=unused-argument
 def text_screening(
     search_for,
     case=False,

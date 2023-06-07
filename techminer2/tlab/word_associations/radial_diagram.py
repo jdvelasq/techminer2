@@ -55,7 +55,7 @@ Analyze the table below which contains values of co-occurrence (OCC) for the ['R
 | FINANCIAL_SERVICES 04:168      |                3 |
 | FINANCIAL_REGULATION 04:035    |                2 |
 | ARTIFICIAL_INTELLIGENCE 04:023 |                2 |
-| ANTI-MONEY_LAUNDERING 03:021   |                1 |
+| ANTI_MONEY_LAUNDERING 04:023   |                1 |
 | RISK_MANAGEMENT 03:014         |                2 |
 | INNOVATION 03:012              |                1 |
 | REGULATORY_TECHNOLOGY 03:007   |                2 |

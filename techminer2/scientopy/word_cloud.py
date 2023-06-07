@@ -12,10 +12,10 @@ Word Cloud
 >>> from techminer2 import scientopy
 >>> file_name = "sphinx/images/scientopy__word_cloud-1.png"
 >>> scientopy.word_cloud(
-...     criterion='author_keywords',
+...     field='author_keywords',
 ...     title="Author Keywords",
-...     topics_length=50,
-...     directory=directory,
+...     top_n=50,
+...     root_dir=root_dir,
 ... ).savefig(file_name)
 
 .. image:: ../images/scientopy__word_cloud-1.png
@@ -29,11 +29,10 @@ Word Cloud
 >>> from techminer2 import scientopy
 >>> file_name = "sphinx/images/scientopy__word_cloud-3.png"
 >>> scientopy.word_cloud(
-...     criterion='author_keywords',
+...     field='author_keywords',
 ...     title="Author Keywords",
-...     start_year=2018,
-...     end_year=2021,
-...     directory=directory,
+...     year_filter=(2018, 2021),
+...     root_dir=root_dir,
 ... ).savefig(file_name)
 
 .. image:: ../images/scientopy__word_cloud-3.png
@@ -46,16 +45,16 @@ Word Cloud
 >>> from techminer2 import scientopy
 >>> file_name = "sphinx/images/scientopy__word_cloud-4.png"
 >>> scientopy.word_cloud(
-...     criterion='author_keywords',
-...     custom_topics=[
-...         "fintech",
-...         "blockchain",
-...         "financial regulation",
-...         "machine learning",
-...         "big data",
-...         "cryptocurrency",
+...     field='author_keywords',
+...     custom_items=[
+...         "FINTECH",
+...         "BLOCKCHAIN",
+...         "FINANCIAL_REGULATION",
+...         "MACHINE_LEARNING",
+...         "BIG_DATA",
+...         "CRYPTOCURRENCY",
 ...     ],
-...     directory=directory,
+...     root_dir=root_dir,
 ... ).savefig(file_name)
 
 .. image:: ../images/scientopy__word_cloud-4.png
@@ -68,14 +67,16 @@ Word Cloud
 >>> from techminer2 import scientopy
 >>> file_name = "sphinx/images/scientopy__word_cloud-5.png"
 >>> scientopy.word_cloud(
-...     criterion='author_keywords',
-...     custom_topics=[
-...         "fintech",
-...         "blockchain",
-...         "financial regulation",
-...         "innovation",
+...     field='author_keywords',
+...     custom_items=[
+...         "FINTECH",
+...         "BLOCKCHAIN",
+...         "FINANCIAL_REGULATION",
+...         "MACHINE_LEARNING",
+...         "BIG_DATA",
+...         "CRYPTOCURRENCY",
 ...     ],
-...     directory=directory,
+...     root_dir=root_dir,
 ...     countries=["Australia", "United Kingdom", "United States"],
 ... ).savefig(file_name)
 
@@ -89,10 +90,10 @@ Word Cloud
 >>> from techminer2 import scientopy
 >>> file_name = "sphinx/images/scientopy__word_cloud-6.png"
 >>> scientopy.word_cloud(
-...     criterion='author_keywords',
-...     topics_length=20,
+...     field='author_keywords',
+...     top_n=20,
 ...     trend_analysis=True,
-...     directory=directory,
+...     root_dir=root_dir,
 ... ).savefig(file_name)
 
 .. image:: ../images/scientopy__word_cloud-6.png
@@ -103,35 +104,34 @@ Word Cloud
 
 >>> from techminer2 import techminer
 >>> techminer.indicators.growth_indicators_by_topic(
-...     criterion="author_keywords", 
-...     directory=directory,
+...     field="author_keywords", 
+...     root_dir=root_dir,
 ... )[['OCC', 'average_growth_rate']].sort_values(['average_growth_rate', 'OCC'], ascending=False).head(20)
-                             OCC  average_growth_rate
-author_keywords                                      
-challenges                     1                  0.5
-online shareholder voting      1                  0.5
-mifid ii                       1                  0.5
-shareholder monitoring         1                  0.5
-annual general meetings        1                  0.5
-costs of voting                1                  0.5
-companies                      1                  0.5
-benefit                        1                  0.5
-compliance                     7                  0.0
-regtech                       28                 -0.5
-fintech                       12                 -0.5
-regulation                     5                 -0.5
-innovation                     3                 -0.5
-blockchain                     3                 -0.5
-sandbox                        2                 -0.5
-gdpr                           2                 -0.5
-data protection officer        2                 -0.5
-accountability                 2                 -0.5
-anti money laundering (aml)    2                 -0.5
-otc reform                     1                 -0.5
+                           OCC  average_growth_rate
+author_keywords                                    
+MIFID_II                     1                  0.5
+SHAREHOLDER_MONITORING       1                  0.5
+ONLINE_SHAREHOLDER_VOTING    1                  0.5
+CHALLENGES                   1                  0.5
+COMPANIES                    1                  0.5
+BENEFIT                      1                  0.5
+ANNUAL_GENERAL_MEETINGS      1                  0.5
+COSTS_OF_VOTING              1                  0.5
+COMPLIANCE                   7                  0.0
+REGTECH                     28                 -0.5
+FINTECH                     12                 -0.5
+REGULATION                   5                 -0.5
+REGULATORY_TECHNOLOGY        3                 -0.5
+INNOVATION                   3                 -0.5
+BLOCKCHAIN                   3                 -0.5
+SANDBOXES                    2                 -0.5
+DATA_PROTECTION_OFFICER      2                 -0.5
+GDPR                         2                 -0.5
+ACCOUNTABILITY               2                 -0.5
+TRUST                        1                 -0.5
 
 
-
-
+# pylint: disable=line-too-long
 """
 from .._plots.word_cloud_for_indicators import word_cloud_for_indicators
 from ..techminer.indicators.growth_indicators_by_topic import (
@@ -140,31 +140,35 @@ from ..techminer.indicators.growth_indicators_by_topic import (
 from .bar import _filter_indicators_by_custom_topics
 
 
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
 def word_cloud(
-    criterion,
+    field,
+    # Specific params:
     time_window=2,
-    topics_length=50,
-    custom_topics=None,
     trend_analysis=False,
-    #
     title=None,
     figsize=(12, 12),
+    # Item filters:
+    top_n=50,
+    custom_items=None,
     #
-    directory="./",
+    # Database params:
+    root_dir="./",
     database="documents",
-    start_year=None,
-    end_year=None,
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
     """Plots a word cloud from a dataframe."""
 
     indicators = growth_indicators_by_topic(
-        criterion=criterion,
+        field=field,
         time_window=time_window,
-        directory=directory,
+        root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 
@@ -181,8 +185,8 @@ def word_cloud(
 
     indicators = _filter_indicators_by_custom_topics(
         indicators=indicators,
-        topics_length=topics_length,
-        custom_topics=custom_topics,
+        topics_length=top_n,
+        custom_topics=custom_items,
     )
 
     return word_cloud_for_indicators(

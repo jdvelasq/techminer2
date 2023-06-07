@@ -1,15 +1,15 @@
 """
-Impact Indicators by Topic 
+Impact Indicators by Item 
 ===============================================================================
 
 
 Examples
---------
+-------------------------------------------------------------------------------
 
 >>> root_dir = "data/regtech/"
 
 >>> from techminer2  import techminer
->>> techminer.indicators.impact_indicators_by_topic(
+>>> techminer.indicators.impact_indicators_by_item(
 ...     "countries", root_dir=root_dir).head()
            OCC  ...  avg_global_citations
 countries       ...                      
@@ -23,7 +23,7 @@ France       1  ...                  0.00
 
 
 >>> from pprint import pprint
->>> pprint(sorted(techminer.indicators.impact_indicators_by_topic(
+>>> pprint(sorted(techminer.indicators.impact_indicators_by_item(
 ...     "countries", root_dir=root_dir).columns.to_list()))
 ['OCC',
  'age',

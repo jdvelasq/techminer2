@@ -9,12 +9,12 @@ ScientoPy Bar Trends
 **Basic Usage.**
 
 >>> from techminer2 import scientopy
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 
 >>> file_name = "sphinx/_static/scientpy__bar_trends-1.html"
 >>> r = scientopy.bar_trends(
-...     criterion="author_keywords",
-...     directory=directory,
+...     field="author_keywords",
+...     root_dir=root_dir,
 ... )
 >>> r.plot_.write_html(file_name)
 
@@ -24,74 +24,72 @@ ScientoPy Bar Trends
 
 
 >>> r.table_.head()
-                       Before 2022  Between 2022-2023
-author_keywords                                      
-regtech                         20                  8
-fintech                         10                  2
-regulatory technology            5                  2
-compliance                       5                  2
-regulation                       4                  1
+                    Before 2022  Between 2022-2023
+author_keywords                                   
+REGTECH                      20                  8
+FINTECH                      10                  2
+COMPLIANCE                    5                  2
+REGULATION                    4                  1
+FINANCIAL_SERVICES            3                  1
 
 
 >>> print(r.prompt_)
 <BLANKLINE>
 Imagine that you are a researcher analyzing a bibliographic dataset. The table below provides data on top most frequent 20 author_keywords in the dataset. The terms 'Before 2022' and 'Between 2022-2023' in the column 'Period' represent the time windows. The column 'Num Documents' represents the number of documents in the time window. Use the information in the table to draw conclusions about growth trends of the 'author_keywords'. In your analysis, be sure to describe in a clear and concise way, any findings or any patterns you observe, and identify any outliers or anomalies in the data. Limit your description to one paragraph with no more than 250 words.
 <BLANKLINE>
-|    | Author Keywords         | Period            |   Num Documents |
-|---:|:------------------------|:------------------|----------------:|
-|  0 | regtech                 | Before 2022       |              20 |
-|  1 | fintech                 | Before 2022       |              10 |
-|  2 | regulatory technology   | Before 2022       |               5 |
-|  3 | compliance              | Before 2022       |               5 |
-|  4 | regulation              | Before 2022       |               4 |
-|  5 | financial services      | Before 2022       |               3 |
-|  6 | financial regulation    | Before 2022       |               2 |
-|  7 | artificial intelligence | Before 2022       |               3 |
-|  8 | anti-money laundering   | Before 2022       |               3 |
-|  9 | risk management         | Before 2022       |               2 |
-| 10 | innovation              | Before 2022       |               2 |
-| 11 | blockchain              | Before 2022       |               3 |
-| 12 | suptech                 | Before 2022       |               1 |
-| 13 | semantic technologies   | Before 2022       |               2 |
-| 14 | data protection         | Before 2022       |               1 |
-| 15 | smart contracts         | Before 2022       |               2 |
-| 16 | charitytech             | Before 2022       |               1 |
-| 17 | english law             | Before 2022       |               1 |
-| 18 | gdpr                    | Before 2022       |               2 |
-| 19 | data protection officer | Before 2022       |               2 |
-| 20 | regtech                 | Between 2022-2023 |               8 |
-| 21 | fintech                 | Between 2022-2023 |               2 |
-| 22 | regulatory technology   | Between 2022-2023 |               2 |
-| 23 | compliance              | Between 2022-2023 |               2 |
-| 24 | regulation              | Between 2022-2023 |               1 |
-| 25 | financial services      | Between 2022-2023 |               1 |
-| 26 | financial regulation    | Between 2022-2023 |               2 |
-| 27 | artificial intelligence | Between 2022-2023 |               1 |
-| 28 | anti-money laundering   | Between 2022-2023 |               0 |
-| 29 | risk management         | Between 2022-2023 |               1 |
-| 30 | innovation              | Between 2022-2023 |               1 |
-| 31 | blockchain              | Between 2022-2023 |               0 |
-| 32 | suptech                 | Between 2022-2023 |               2 |
-| 33 | semantic technologies   | Between 2022-2023 |               0 |
-| 34 | data protection         | Between 2022-2023 |               1 |
-| 35 | smart contracts         | Between 2022-2023 |               0 |
-| 36 | charitytech             | Between 2022-2023 |               1 |
-| 37 | english law             | Between 2022-2023 |               1 |
-| 38 | gdpr                    | Between 2022-2023 |               0 |
-| 39 | data protection officer | Between 2022-2023 |               0 |
+|    | Author Keywords                 | Period            |   Num Documents |
+|---:|:--------------------------------|:------------------|----------------:|
+|  0 | REGTECH                         | Before 2022       |              20 |
+|  1 | FINTECH                         | Before 2022       |              10 |
+|  2 | COMPLIANCE                      | Before 2022       |               5 |
+|  3 | REGULATION                      | Before 2022       |               4 |
+|  4 | FINANCIAL_SERVICES              | Before 2022       |               3 |
+|  5 | FINANCIAL_REGULATION            | Before 2022       |               2 |
+|  6 | REGULATORY_TECHNOLOGY (REGTECH) | Before 2022       |               3 |
+|  7 | ANTI_MONEY_LAUNDERING           | Before 2022       |               4 |
+|  8 | ARTIFICIAL_INTELLIGENCE         | Before 2022       |               3 |
+|  9 | RISK_MANAGEMENT                 | Before 2022       |               2 |
+| 10 | INNOVATION                      | Before 2022       |               2 |
+| 11 | REGULATORY_TECHNOLOGY           | Before 2022       |               2 |
+| 12 | BLOCKCHAIN                      | Before 2022       |               3 |
+| 13 | SUPTECH                         | Before 2022       |               1 |
+| 14 | DATA_PROTECTION                 | Before 2022       |               1 |
+| 15 | SMART_CONTRACT                  | Before 2022       |               2 |
+| 16 | ENGLISH_LAW                     | Before 2022       |               1 |
+| 17 | CHARITYTECH                     | Before 2022       |               1 |
+| 18 | DATA_PROTECTION_OFFICER         | Before 2022       |               2 |
+| 19 | GDPR                            | Before 2022       |               2 |
+| 20 | REGTECH                         | Between 2022-2023 |               8 |
+| 21 | FINTECH                         | Between 2022-2023 |               2 |
+| 22 | COMPLIANCE                      | Between 2022-2023 |               2 |
+| 23 | REGULATION                      | Between 2022-2023 |               1 |
+| 24 | FINANCIAL_SERVICES              | Between 2022-2023 |               1 |
+| 25 | FINANCIAL_REGULATION            | Between 2022-2023 |               2 |
+| 26 | REGULATORY_TECHNOLOGY (REGTECH) | Between 2022-2023 |               1 |
+| 27 | ANTI_MONEY_LAUNDERING           | Between 2022-2023 |               0 |
+| 28 | ARTIFICIAL_INTELLIGENCE         | Between 2022-2023 |               1 |
+| 29 | RISK_MANAGEMENT                 | Between 2022-2023 |               1 |
+| 30 | INNOVATION                      | Between 2022-2023 |               1 |
+| 31 | REGULATORY_TECHNOLOGY           | Between 2022-2023 |               1 |
+| 32 | BLOCKCHAIN                      | Between 2022-2023 |               0 |
+| 33 | SUPTECH                         | Between 2022-2023 |               2 |
+| 34 | DATA_PROTECTION                 | Between 2022-2023 |               1 |
+| 35 | SMART_CONTRACT                  | Between 2022-2023 |               0 |
+| 36 | ENGLISH_LAW                     | Between 2022-2023 |               1 |
+| 37 | CHARITYTECH                     | Between 2022-2023 |               1 |
+| 38 | DATA_PROTECTION_OFFICER         | Between 2022-2023 |               0 |
+| 39 | GDPR                            | Between 2022-2023 |               0 |
 <BLANKLINE>
 <BLANKLINE>
-
 
 
 **Time Filter.**
 
 >>> file_name = "sphinx/_static/scientpy__bar_trends-3.html"
 >>> r = scientopy.bar_trends(
-...     criterion="author_keywords",
-...     start_year=2018,
-...     end_year=2021,
-...     directory=directory,
+...     field="author_keywords",
+...     year_filter=(2018, 2021),
+...     root_dir=root_dir,
 ... )
 >>> r.plot_.write_html(file_name)
 
@@ -102,11 +100,11 @@ Imagine that you are a researcher analyzing a bibliographic dataset. The table b
 >>> r.table_.head()
                        Before 2020  Between 2020-2021
 author_keywords                                      
-regtech                          7                 11
-fintech                          6                  4
-regulatory technology            0                  5
-compliance                       1                  4
-regulation                       2                  2
+REGTECH                          7                 11
+FINTECH                          6                  4
+COMPLIANCE                       1                  4
+REGULATION                       2                  2
+ANTI_MONEY_LAUNDERING            0                  4
 
 
 **Custom Topics Extraction.**
@@ -114,16 +112,16 @@ regulation                       2                  2
 >>> file_name = "sphinx/_static/scientpy__bar_trends-4.html"
 >>> from techminer2 import scientopy
 >>> r = scientopy.bar_trends(
-...     criterion="author_keywords",
-...     custom_topics=[
-...         "fintech", 
-...         "blockchain", 
-...         "financial regulation", 
-...         "machine learning",
-...         "big data",
-...         "cryptocurrency",
+...     field="author_keywords",
+...     custom_items=[
+...         "FINTECH",
+...         "BLOCKCHAIN",
+...         "FINANCIAL_REGULATION",
+...         "MACHINE_LEARNING",
+...         "BIG_DATA",
+...         "CRYPTOCURRENCY",
 ...     ],
-...     directory=directory,
+...     root_dir=root_dir,
 ... )
 >>> r.plot_.write_html(file_name)
 
@@ -136,11 +134,10 @@ regulation                       2                  2
 
 >>> file_name = "sphinx/_static/scientpy__bar_trends-5.html"
 >>> r = scientopy.bar_trends(
-...     criterion="author_keywords",
+...     field="author_keywords",
 ...     trend_analysis=True,
-...     start_year=2018,
-...     end_year=2021,
-...     directory=directory,
+...     year_filter=(2018, 2021),
+...     root_dir=root_dir,
 ... )
 >>> r.plot_.write_html(file_name)
 
@@ -150,13 +147,16 @@ regulation                       2                  2
 
 
 >>> r.table_.head()    
-                       Before 2020  Between 2020-2021
-author_keywords                                      
-regulatory technology            0                  5
-regulation                       2                  2
-anti-money laundering            0                  3
-accountability                   0                  2
-gdpr                             0                  2
+                                 Before 2020  Between 2020-2021
+author_keywords                                                
+REGULATION                                 2                  2
+ANTI_MONEY_LAUNDERING                      0                  4
+REGULATORY_TECHNOLOGY (REGTECH)            0                  3
+ACCOUNTABILITY                             0                  2
+GDPR                                       0                  2
+
+
+
 
 >>> print(r.prompt_)
 <BLANKLINE>
@@ -164,50 +164,51 @@ Imagine that you are a researcher analyzing a bibliographic dataset. The table b
 <BLANKLINE>
 |    | Author Keywords                 | Period            |   Num Documents |
 |---:|:--------------------------------|:------------------|----------------:|
-|  0 | regulatory technology           | Before 2020       |               0 |
-|  1 | regulation                      | Before 2020       |               2 |
-|  2 | anti-money laundering           | Before 2020       |               0 |
-|  3 | accountability                  | Before 2020       |               0 |
-|  4 | gdpr                            | Before 2020       |               0 |
-|  5 | data protection officer         | Before 2020       |               0 |
-|  6 | anti money laundering (aml)     | Before 2020       |               0 |
-|  7 | innovation                      | Before 2020       |               0 |
-|  8 | smart treasury                  | Before 2020       |               0 |
-|  9 | regulations and compliance      | Before 2020       |               0 |
-| 10 | coronavirus                     | Before 2020       |               0 |
-| 11 | digital technologies            | Before 2020       |               0 |
-| 12 | bahrain                         | Before 2020       |               0 |
-| 13 | resale price maintenance        | Before 2020       |               0 |
-| 14 | competition law                 | Before 2020       |               0 |
-| 15 | antitrust                       | Before 2020       |               0 |
-| 16 | vertical price fixing           | Before 2020       |               0 |
-| 17 | financial fraud detection       | Before 2020       |               0 |
-| 18 | classification (of information) | Before 2020       |               0 |
-| 19 | anomaly detection               | Before 2020       |               0 |
-| 20 | regulatory technology           | Between 2020-2021 |               5 |
-| 21 | regulation                      | Between 2020-2021 |               2 |
-| 22 | anti-money laundering           | Between 2020-2021 |               3 |
-| 23 | accountability                  | Between 2020-2021 |               2 |
-| 24 | gdpr                            | Between 2020-2021 |               2 |
-| 25 | data protection officer         | Between 2020-2021 |               2 |
-| 26 | anti money laundering (aml)     | Between 2020-2021 |               2 |
-| 27 | innovation                      | Between 2020-2021 |               2 |
-| 28 | smart treasury                  | Between 2020-2021 |               1 |
-| 29 | regulations and compliance      | Between 2020-2021 |               1 |
-| 30 | coronavirus                     | Between 2020-2021 |               1 |
-| 31 | digital technologies            | Between 2020-2021 |               1 |
-| 32 | bahrain                         | Between 2020-2021 |               1 |
-| 33 | resale price maintenance        | Between 2020-2021 |               1 |
-| 34 | competition law                 | Between 2020-2021 |               1 |
-| 35 | antitrust                       | Between 2020-2021 |               1 |
-| 36 | vertical price fixing           | Between 2020-2021 |               1 |
-| 37 | financial fraud detection       | Between 2020-2021 |               1 |
-| 38 | classification (of information) | Between 2020-2021 |               1 |
-| 39 | anomaly detection               | Between 2020-2021 |               1 |
+|  0 | REGULATION                      | Before 2020       |               2 |
+|  1 | ANTI_MONEY_LAUNDERING           | Before 2020       |               0 |
+|  2 | REGULATORY_TECHNOLOGY (REGTECH) | Before 2020       |               0 |
+|  3 | ACCOUNTABILITY                  | Before 2020       |               0 |
+|  4 | GDPR                            | Before 2020       |               0 |
+|  5 | DATA_PROTECTION_OFFICER         | Before 2020       |               0 |
+|  6 | INNOVATION                      | Before 2020       |               0 |
+|  7 | REGULATORY_TECHNOLOGY           | Before 2020       |               0 |
+|  8 | SMART_TREASURY                  | Before 2020       |               0 |
+|  9 | REGULATIONS_AND_COMPLIANCE      | Before 2020       |               0 |
+| 10 | CORONAVIRUS                     | Before 2020       |               0 |
+| 11 | DIGITAL_TECHNOLOGIES            | Before 2020       |               0 |
+| 12 | BAHRAIN                         | Before 2020       |               0 |
+| 13 | RESALE_PRICE_MAINTENANCE        | Before 2020       |               0 |
+| 14 | COMPETITION_LAW                 | Before 2020       |               0 |
+| 15 | ANTITRUST                       | Before 2020       |               0 |
+| 16 | VERTICAL_PRICE_FIXING           | Before 2020       |               0 |
+| 17 | FINANCIAL_FRAUD_DETECTION       | Before 2020       |               0 |
+| 18 | CLASSIFICATION                  | Before 2020       |               0 |
+| 19 | ANOMALY_DETECTION               | Before 2020       |               0 |
+| 20 | REGULATION                      | Between 2020-2021 |               2 |
+| 21 | ANTI_MONEY_LAUNDERING           | Between 2020-2021 |               4 |
+| 22 | REGULATORY_TECHNOLOGY (REGTECH) | Between 2020-2021 |               3 |
+| 23 | ACCOUNTABILITY                  | Between 2020-2021 |               2 |
+| 24 | GDPR                            | Between 2020-2021 |               2 |
+| 25 | DATA_PROTECTION_OFFICER         | Between 2020-2021 |               2 |
+| 26 | INNOVATION                      | Between 2020-2021 |               2 |
+| 27 | REGULATORY_TECHNOLOGY           | Between 2020-2021 |               2 |
+| 28 | SMART_TREASURY                  | Between 2020-2021 |               1 |
+| 29 | REGULATIONS_AND_COMPLIANCE      | Between 2020-2021 |               1 |
+| 30 | CORONAVIRUS                     | Between 2020-2021 |               1 |
+| 31 | DIGITAL_TECHNOLOGIES            | Between 2020-2021 |               1 |
+| 32 | BAHRAIN                         | Between 2020-2021 |               1 |
+| 33 | RESALE_PRICE_MAINTENANCE        | Between 2020-2021 |               1 |
+| 34 | COMPETITION_LAW                 | Between 2020-2021 |               1 |
+| 35 | ANTITRUST                       | Between 2020-2021 |               1 |
+| 36 | VERTICAL_PRICE_FIXING           | Between 2020-2021 |               1 |
+| 37 | FINANCIAL_FRAUD_DETECTION       | Between 2020-2021 |               1 |
+| 38 | CLASSIFICATION                  | Between 2020-2021 |               1 |
+| 39 | ANOMALY_DETECTION               | Between 2020-2021 |               1 |
 <BLANKLINE>
 <BLANKLINE>
 
 
+# pylint: disable=line-too-long
 """
 from dataclasses import dataclass
 
@@ -226,28 +227,33 @@ class _Results:
     prompt_ = None
 
 
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
 def bar_trends(
-    criterion,
+    field,
+    # Specific params:
     time_window=2,
-    topics_length=20,
-    custom_topics=None,
     trend_analysis=False,
     title="Trend",
-    directory="./",
+    # Item filters:
+    top_n=20,
+    custom_items=None,
+    # Database params:
+    root_dir="./",
     database="documents",
-    start_year=None,
-    end_year=None,
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
     """ScientoPy Bar Trend."""
 
     indicators = growth_indicators_by_topic(
-        criterion=criterion,
+        field=field,
         time_window=time_window,
-        directory=directory,
+        root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 
@@ -264,8 +270,8 @@ def bar_trends(
 
     indicators = _filter_indicators_by_custom_topics(
         indicators=indicators,
-        topics_length=topics_length,
-        custom_topics=custom_topics,
+        topics_length=top_n,
+        custom_topics=custom_items,
     )
 
     indicators = indicators.sort_values(
@@ -282,18 +288,18 @@ def bar_trends(
     results.table_ = indicators.copy()
 
     indicators = indicators.reset_index()
-    indicators = indicators.melt(id_vars=criterion, value_vars=[col0, col1])
+    indicators = indicators.melt(id_vars=field, value_vars=[col0, col1])
     indicators = indicators.rename(
         columns={
-            criterion: criterion.replace("_", " ").title(),
+            field: field.replace("_", " ").title(),
             "variable": "Period",
             "value": "Num Documents",
         }
     )
 
-    results.plot_ = _make_plot(indicators, criterion, col0, col1, title)
+    results.plot_ = _make_plot(indicators, field, col0, col1, title)
     results.prompt_ = _create_prompt(
-        indicators, criterion, trend_analysis, col0, col1
+        indicators, field, trend_analysis, col0, col1
     )
 
     return results

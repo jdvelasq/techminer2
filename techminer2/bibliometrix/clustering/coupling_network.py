@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 Clustering by coupling.
 ===============================================================================
@@ -55,6 +56,8 @@ Waye V, 2020, ADELAIDE LAW REV, V40, P363 1:005         0  ...  0.006029
 <BLANKLINE>
 [5 rows x 4 columns]
 
+
+# pylint: disable=too-many-arguments
 """
 from dataclasses import dataclass
 

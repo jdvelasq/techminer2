@@ -39,11 +39,10 @@ AUTHORS        Authors                                        102
                Organizations (1st author)                      45
                Countries                                       29
                Countries (1st author)                          25
-KEYWORDS       Raw author keywords                            149
-               Cleaned author keywords                        147
+KEYWORDS       Raw author keywords                            148
+               Cleaned author keywords                        146
                Raw index keywords                             155
                Cleaned index keywords                         150
-
             
                
 >>> file_name = "sphinx/_static/bibliometrix__main_info_plot.html"               
@@ -90,13 +89,12 @@ The table below provides data on the main characteristics of the records and fie
 | ('AUTHORS', 'Organizations (1st author)')              | 45        |
 | ('AUTHORS', 'Countries')                               | 29        |
 | ('AUTHORS', 'Countries (1st author)')                  | 25        |
-| ('KEYWORDS', 'Raw author keywords')                    | 149       |
-| ('KEYWORDS', 'Cleaned author keywords')                | 147       |
+| ('KEYWORDS', 'Raw author keywords')                    | 148       |
+| ('KEYWORDS', 'Cleaned author keywords')                | 146       |
 | ('KEYWORDS', 'Raw index keywords')                     | 155       |
 | ('KEYWORDS', 'Cleaned index keywords')                 | 150       |
 <BLANKLINE>
 <BLANKLINE>
-
 
 
 # pylint: disable=line-too-long

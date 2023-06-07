@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 Main Path Analysis
 ===============================================================================
@@ -26,7 +27,7 @@ the purpose of this paper is to develop an insight and review the effect of fint
 
     <iframe src="../../../../_static/techminer__tools__main_path.html" height="600px" width="100%" frameBorder="0"></iframe>
 
-
+# pylint: disable=line-too-long
 """
 import copy
 import sys

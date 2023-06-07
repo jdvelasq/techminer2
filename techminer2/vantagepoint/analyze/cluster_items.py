@@ -24,8 +24,8 @@ Example:
 >>> vantagepoint.analyze.cluster_items(graph)
                             CL_00  ...                                   CL_03
 0                  REGTECH 28:329  ...  REGULATORY_TECHNOLOGY (REGTECH) 04:030
-1               COMPLIANCE 07:030  ...          ARTIFICIAL_INTELLIGENCE 04:023
-2               BLOCKCHAIN 03:005  ...            ANTI-MONEY_LAUNDERING 03:021
+1               COMPLIANCE 07:030  ...            ANTI_MONEY_LAUNDERING 04:023
+2               BLOCKCHAIN 03:005  ...          ARTIFICIAL_INTELLIGENCE 04:023
 3           SMART_CONTRACT 02:022  ...                      CHARITYTECH 02:017
 4           ACCOUNTABILITY 02:014  ...                      ENGLISH_LAW 02:017
 5  DATA_PROTECTION_OFFICER 02:014  ...                                        
@@ -34,6 +34,7 @@ Example:
 8               TECHNOLOGY 02:010  ...                                        
 <BLANKLINE>
 [9 rows x 4 columns]
+
 
 
 

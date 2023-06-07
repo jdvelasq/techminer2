@@ -43,7 +43,7 @@ Your task is to generate a short paragraph for a research paper analyzing the co
 <BLANKLINE>
 Analyze the table below which contains values of co-occurrence (OCC) for the 'authors' and 'author_keywords' fields in a bibliographic dataset. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
-| row                |   REGTECH 28:329 |   FINTECH 12:249 |   COMPLIANCE 07:030 |   REGULATION 05:164 |   FINANCIAL_SERVICES 04:168 |   FINANCIAL_REGULATION 04:035 |   REGULATORY_TECHNOLOGY (REGTECH) 04:030 |   ARTIFICIAL_INTELLIGENCE 04:023 |   ANTI-MONEY_LAUNDERING 03:021 |   RISK_MANAGEMENT 03:014 |   INNOVATION 03:012 |   REGULATORY_TECHNOLOGY 03:007 |   SUPTECH 03:004 |   DATA_PROTECTION 02:027 |   CHARITYTECH 02:017 |   ENGLISH_LAW 02:017 |   ACCOUNTABILITY 02:014 |   DATA_PROTECTION_OFFICER 02:014 |   GDPR 02:014 |   SANDBOXES 02:012 |   TECHNOLOGY 02:010 |   FINANCE 02:001 |   REPORTING 02:001 |
+| row                |   REGTECH 28:329 |   FINTECH 12:249 |   COMPLIANCE 07:030 |   REGULATION 05:164 |   FINANCIAL_SERVICES 04:168 |   FINANCIAL_REGULATION 04:035 |   REGULATORY_TECHNOLOGY (REGTECH) 04:030 |   ARTIFICIAL_INTELLIGENCE 04:023 |   ANTI_MONEY_LAUNDERING 04:023 |   RISK_MANAGEMENT 03:014 |   INNOVATION 03:012 |   REGULATORY_TECHNOLOGY 03:007 |   SUPTECH 03:004 |   DATA_PROTECTION 02:027 |   CHARITYTECH 02:017 |   ENGLISH_LAW 02:017 |   ACCOUNTABILITY 02:014 |   DATA_PROTECTION_OFFICER 02:014 |   GDPR 02:014 |   SANDBOXES 02:012 |   TECHNOLOGY 02:010 |   FINANCE 02:001 |   REPORTING 02:001 |
 |:-------------------|-----------------:|-----------------:|--------------------:|--------------------:|----------------------------:|------------------------------:|-----------------------------------------:|---------------------------------:|-------------------------------:|-------------------------:|--------------------:|-------------------------------:|-----------------:|-------------------------:|---------------------:|---------------------:|------------------------:|---------------------------------:|--------------:|-------------------:|--------------------:|-----------------:|-------------------:|
 | Arner DW 3:185     |                2 |                1 |                   0 |                   0 |                           1 |                             2 |                                        0 |                                0 |                              0 |                        0 |                   0 |                              0 |                0 |                        1 |                    0 |                    0 |                       0 |                                0 |             0 |                  1 |                   0 |                0 |                  0 |
 | Buckley RP 3:185   |                2 |                1 |                   0 |                   0 |                           1 |                             2 |                                        0 |                                0 |                              0 |                        0 |                   0 |                              0 |                0 |                        1 |                    0 |                    0 |                       0 |                                0 |             0 |                  1 |                   0 |                0 |                  0 |
@@ -64,6 +64,7 @@ Analyze the table below which contains values of co-occurrence (OCC) for the 'au
 <BLANKLINE>
 
 
+
 >>> co_occ_matrix = vantagepoint.analyze.co_occ_matrix(
 ...    columns='author_keywords',
 ...    col_top_n=10,
@@ -80,10 +81,11 @@ FINANCIAL_SERVICES 04:168                            3  ...                     
 FINANCIAL_REGULATION 04:035                          2  ...                       0
 REGULATORY_TECHNOLOGY (REGTECH) 04:030               0  ...                       0
 ARTIFICIAL_INTELLIGENCE 04:023                       2  ...                       1
-ANTI-MONEY_LAUNDERING 03:021                         1  ...                       0
+ANTI_MONEY_LAUNDERING 04:023                         1  ...                       0
 RISK_MANAGEMENT 03:014                               2  ...                       3
 <BLANKLINE>
 [10 rows x 10 columns]
+
 
 
 >>> print(co_occ_matrix.prompt_)
@@ -91,7 +93,7 @@ Your task is to generate a short paragraph for a research paper analyzing the co
 <BLANKLINE>
 Analyze the table below which contains values of co-occurrence (OCC) for the 'author_keywords' field in a bibliographic dataset. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
-| row                                    |   REGTECH 28:329 |   FINTECH 12:249 |   COMPLIANCE 07:030 |   REGULATION 05:164 |   FINANCIAL_SERVICES 04:168 |   FINANCIAL_REGULATION 04:035 |   REGULATORY_TECHNOLOGY (REGTECH) 04:030 |   ARTIFICIAL_INTELLIGENCE 04:023 |   ANTI-MONEY_LAUNDERING 03:021 |   RISK_MANAGEMENT 03:014 |
+| row                                    |   REGTECH 28:329 |   FINTECH 12:249 |   COMPLIANCE 07:030 |   REGULATION 05:164 |   FINANCIAL_SERVICES 04:168 |   FINANCIAL_REGULATION 04:035 |   REGULATORY_TECHNOLOGY (REGTECH) 04:030 |   ARTIFICIAL_INTELLIGENCE 04:023 |   ANTI_MONEY_LAUNDERING 04:023 |   RISK_MANAGEMENT 03:014 |
 |:---------------------------------------|-----------------:|-----------------:|--------------------:|--------------------:|----------------------------:|------------------------------:|-----------------------------------------:|---------------------------------:|-------------------------------:|-------------------------:|
 | REGTECH 28:329                         |               28 |               12 |                   7 |                   4 |                           3 |                             2 |                                        0 |                                2 |                              1 |                        2 |
 | FINTECH 12:249                         |               12 |               12 |                   2 |                   4 |                           2 |                             1 |                                        0 |                                1 |                              0 |                        2 |
@@ -101,7 +103,7 @@ Analyze the table below which contains values of co-occurrence (OCC) for the 'au
 | FINANCIAL_REGULATION 04:035            |                2 |                1 |                   0 |                   0 |                           2 |                             4 |                                        0 |                                0 |                              0 |                        0 |
 | REGULATORY_TECHNOLOGY (REGTECH) 04:030 |                0 |                0 |                   0 |                   0 |                           0 |                             0 |                                        4 |                                0 |                              1 |                        0 |
 | ARTIFICIAL_INTELLIGENCE 04:023         |                2 |                1 |                   1 |                   0 |                           0 |                             0 |                                        0 |                                4 |                              1 |                        1 |
-| ANTI-MONEY_LAUNDERING 03:021           |                1 |                0 |                   0 |                   0 |                           0 |                             0 |                                        1 |                                1 |                              3 |                        0 |
+| ANTI_MONEY_LAUNDERING 04:023           |                1 |                0 |                   0 |                   0 |                           0 |                             0 |                                        1 |                                1 |                              4 |                        0 |
 | RISK_MANAGEMENT 03:014                 |                2 |                2 |                   1 |                   2 |                           0 |                             0 |                                        0 |                                1 |                              0 |                        3 |
 <BLANKLINE>
 <BLANKLINE>

@@ -48,11 +48,10 @@ Analyze the table below, which provides the degree of nodes in a networkx graph 
 |  9 |      9 | BLOCKCHAIN 03:005                      |        5 |
 | 10 |     10 | FINANCIAL_SERVICES 04:168              |        4 |
 | 11 |     11 | FINANCIAL_REGULATION 04:035            |        4 |
-| 12 |     12 | ANTI-MONEY_LAUNDERING 03:021           |        3 |
+| 12 |     12 | ANTI_MONEY_LAUNDERING 04:023           |        3 |
 | 13 |     13 | REGULATORY_TECHNOLOGY (REGTECH) 04:030 |        2 |
 <BLANKLINE>
 <BLANKLINE>
-
 
 
 

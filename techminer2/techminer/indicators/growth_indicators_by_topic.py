@@ -5,30 +5,30 @@ Growth Indicators by Topic
 
 
 Examples
---------
+-------------------------------------------------------------------------------
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 
 >>> from techminer2  import techminer
 >>> techminer.indicators.growth_indicators_by_topic(
-...     criterion="author_keywords",
-...     directory=directory,
+...     field="author_keywords",
+...     root_dir=root_dir,
 ... ).head()
-                       Before 2022  ...  average_growth_rate
-author_keywords                     ...                     
-regtech                         20  ...                 -0.5
-fintech                         10  ...                 -0.5
-compliance                       5  ...                  0.0
-regulatory technology            5  ...                 -1.5
-regulation                       4  ...                 -0.5
+                         Before 2022  ...  average_growth_rate
+author_keywords                       ...                     
+REGTECH                           20  ...                 -0.5
+FINTECH                           10  ...                 -0.5
+COMPLIANCE                         5  ...                  0.0
+REGULATION                         4  ...                 -0.5
+ARTIFICIAL_INTELLIGENCE            3  ...                  NaN
 <BLANKLINE>
 [5 rows x 6 columns]
 
-# noqa: W291
+
 
 >>> from pprint import pprint
 >>> pprint(sorted(techminer.indicators.growth_indicators_by_topic(
-...     'author_keywords',directory=directory).columns.to_list()
+...     'author_keywords', root_dir=root_dir).columns.to_list()
 ... ))
 ['Before 2022',
  'Between 2022-2023',
@@ -39,38 +39,38 @@ regulation                       4  ...                 -0.5
 
 
 # pylint: disable=line-too-long
-
-
 """
 import numpy as np
 import pandas as pd
 
-from ... import record_utils
 from ...load_utils import load_stopwords
+from ...record_utils import read_records
 
 
 # pylint: disable=too-many-arguments
 def growth_indicators_by_topic(
-    criterion,
+    field,
+    # Specific params:
     time_window=2,
-    directory="./",
+    # Database params:
+    root_dir="./",
     database="documents",
-    start_year=None,
-    end_year=None,
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
     """Computes growth indicators."""
 
-    records = records.read_records(
-        root_dir=directory,
+    records = read_records(
+        root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 
     return _growth_indicators_from_records(
-        criterion, time_window, directory, records
+        field, time_window, root_dir, records
     )
 
 

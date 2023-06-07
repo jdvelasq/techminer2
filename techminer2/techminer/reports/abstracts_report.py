@@ -9,8 +9,8 @@ Generates a report for the records meeting the given criteria.
 
 >>> from techminer2 import techminer
 >>> techminer.reports.abstracts_report(
-...     criterion="author_keywords",
-...     custom_topics=["regulatory technology", "regtech"],
+...     field="author_keywords",
+...     custom_items=["REGULATORY_TECHONOLOGY", "REGTECH"],
 ...     root_dir=root_dir,
 ... )
 --INFO-- The file 'data/regtech/reports/abstracts_report.txt' was created
@@ -26,15 +26,14 @@ from ...record_utils import read_records
 
 # pylint: disable=too-many-arguments
 def abstracts_report(
+    field=None,
     # Specific parameters:
-    custom_topics=None,
     file_name="abstracts_report.txt",
     use_textwrap=True,
+    custom_items=None,
     # Database parameters:
-    field=None,
     root_dir="./",
     database="documents",
-    # Database filters:
     year_filter=None,
     cited_by_filter=None,
     **filters,
@@ -67,7 +66,7 @@ def abstracts_report(
     )
 
     if field:
-        records = _sort_by_custom_terms(field, custom_topics, records)
+        records = _sort_by_custom_terms(field, custom_items, records)
     else:
         records = _sort_by_default_criteria(records)
 

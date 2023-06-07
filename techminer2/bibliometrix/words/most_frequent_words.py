@@ -46,7 +46,7 @@ Analyze the table below, which provides bibliometric indicators for the field 'a
 | FINANCIAL_REGULATION            |     4 |                 35 |                 8 |                            8.75 |                           2    |
 | REGULATORY_TECHNOLOGY (REGTECH) |     4 |                 30 |                10 |                            7.5  |                           2.5  |
 | ARTIFICIAL_INTELLIGENCE         |     4 |                 23 |                 6 |                            5.75 |                           1.5  |
-| ANTI-MONEY_LAUNDERING           |     3 |                 21 |                 4 |                            7    |                           1.33 |
+| ANTI_MONEY_LAUNDERING           |     4 |                 23 |                 4 |                            5.75 |                           1    |
 | RISK_MANAGEMENT                 |     3 |                 14 |                 8 |                            4.67 |                           2.67 |
 | INNOVATION                      |     3 |                 12 |                 4 |                            4    |                           1.33 |
 | REGULATORY_TECHNOLOGY           |     3 |                  7 |                 4 |                            2.33 |                           1.33 |
@@ -60,7 +60,6 @@ Analyze the table below, which provides bibliometric indicators for the field 'a
 | DATA_PROTECTION_OFFICER         |     2 |                 14 |                 3 |                            7    |                           1.5  |
 <BLANKLINE>
 <BLANKLINE>
-
 
 
 # pylint: disable=line-too-long

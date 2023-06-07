@@ -33,7 +33,7 @@ REGULATION                         5     2018  ...               164   3
 ARTIFICIAL_INTELLIGENCE            4     2020  ...                23   4
 FINANCIAL_REGULATION               4     2019  ...                35   0
 REGULATORY_TECHNOLOGY (REGTECH)    4     2021  ...                30   1
-ANTI-MONEY_LAUNDERING              3     2020  ...                21   2
+ANTI_MONEY_LAUNDERING              4     2021  ...                23   2
 <BLANKLINE>
 [20 rows x 6 columns]
 

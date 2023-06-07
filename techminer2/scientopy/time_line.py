@@ -6,14 +6,14 @@ Time Line
 ScientoPy Time Line Plot.
 
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 >>> from techminer2 import scientopy
 
 >>> file_name = "sphinx/_static/scientopy__time_line-1.html"
 >>> r = scientopy.time_line(
-...     criterion="author_keywords",
-...     topics_length=5,
-...     directory=directory,
+...     field="author_keywords",
+...     top_n=5,
+...     root_dir=root_dir,
 ... )
 >>> r.plot_.write_html(file_name)
 
@@ -24,36 +24,37 @@ ScientoPy Time Line Plot.
 
 >>> r.table_.head()
    Year Author Keywords  OCC
-0  2017      compliance    0
-1  2018      compliance    0
-2  2019      compliance    1
-3  2020      compliance    3
-4  2021      compliance    1
+0  2017      COMPLIANCE    0
+1  2018      COMPLIANCE    0
+2  2019      COMPLIANCE    1
+3  2020      COMPLIANCE    3
+4  2021      COMPLIANCE    1
 
 >>> print(r.prompt_)
 <BLANKLINE>
 Imagine that you are a researcher analyzing a bibliographic dataset. The table below provides data on top most frequent 5 author_keywords in the dataset. The columns in the table are the publication years. The table contains the number of documents in each year by item in 'author_keywords' .Use the information in the table to draw conclusions about importance and publication frequency of the 'author_keywords'. In your analysis, be sure to describe in a clear and concise way, any findings or any patterns you observe, and identify any outliers or anomalies in the data. Limit your description to one paragraph with no more than 250 words.
 <BLANKLINE>
 <BLANKLINE>
-| Author Keywords       |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
-|:----------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
-| compliance            |      0 |      0 |      1 |      3 |      1 |      1 |      1 |
-| fintech               |      0 |      2 |      4 |      3 |      1 |      2 |      0 |
-| regtech               |      2 |      3 |      4 |      8 |      3 |      6 |      2 |
-| regulation            |      0 |      2 |      0 |      1 |      1 |      1 |      0 |
-| regulatory technology |      0 |      0 |      0 |      2 |      3 |      2 |      0 |
+| Author Keywords    |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
+|:-------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
+| COMPLIANCE         |      0 |      0 |      1 |      3 |      1 |      1 |      1 |
+| FINANCIAL_SERVICES |      1 |      1 |      0 |      1 |      0 |      1 |      0 |
+| FINTECH            |      0 |      2 |      4 |      3 |      1 |      2 |      0 |
+| REGTECH            |      2 |      3 |      4 |      8 |      3 |      6 |      2 |
+| REGULATION         |      0 |      2 |      0 |      1 |      1 |      1 |      0 |
 <BLANKLINE>
 <BLANKLINE>
+
+
 
 **Time Filter.**
 
 >>> file_name = "sphinx/_static/scientopy__time_line-3.html"
 >>> r = scientopy.time_line(
-...     criterion="author_keywords",
-...     topics_length=5,
-...     start_year=2018,
-...     end_year=2021,
-...     directory=directory,
+...     field="author_keywords",
+...     top_n=5,
+...     root_dir=root_dir,
+...     year_filter=(2018, 2021),
 ... )
 >>> r.plot_.write_html(file_name)
 
@@ -63,12 +64,12 @@ Imagine that you are a researcher analyzing a bibliographic dataset. The table b
 
 
 >>> r.table_.head()
-   Year Author Keywords  OCC
-0  2018      compliance    0
-1  2019      compliance    1
-2  2020      compliance    3
-3  2021      compliance    1
-4  2018         fintech    2
+   Year        Author Keywords  OCC
+0  2018  ANTI_MONEY_LAUNDERING    0
+1  2019  ANTI_MONEY_LAUNDERING    0
+2  2020  ANTI_MONEY_LAUNDERING    1
+3  2021  ANTI_MONEY_LAUNDERING    3
+4  2018             COMPLIANCE    0
 
 
 
@@ -76,9 +77,16 @@ Imagine that you are a researcher analyzing a bibliographic dataset. The table b
 
 >>> file_name = "sphinx/_static/scientopy__time_line-4.html"
 >>> r = scientopy.time_line(
-...     criterion="author_keywords",
-...     custom_topics=["fintech", "blockchain", "financial regulation", "machine learning"],
-...     directory=directory,
+...     field="author_keywords",
+...     custom_items=[
+...         "FINTECH",
+...         "BLOCKCHAIN",
+...         "FINANCIAL_REGULATION",
+...         "MACHINE_LEARNING",
+...         "BIG_DATA",
+...         "CRYPTOCURRENCY",
+...     ],
+...     root_dir=root_dir,
 ... )
 >>> r.plot_.write_html(file_name)
 
@@ -89,12 +97,11 @@ Imagine that you are a researcher analyzing a bibliographic dataset. The table b
 
 >>> file_name = "sphinx/_static/scientopy__time_line-5.html"
 >>> r = scientopy.time_line(
-...     criterion="author_keywords",
-...     topics_length=5,
+...     field="author_keywords",
+...     top_n=5,
 ...     trend_analysis=True,
-...     start_year=2018,
-...     end_year=2021,
-...     directory=directory,
+...     year_filter=(2018, 2021),
+...     root_dir=root_dir,
 ... )
 >>> r.plot_.write_html(file_name)
 
@@ -108,17 +115,18 @@ Imagine that you are a researcher analyzing a bibliographic dataset. The table b
 Imagine that you are a researcher analyzing a bibliographic dataset. The table below provides data on top 5 'author_keywords' with the highest average growth rate in the dataset. The columns in the table are the publication years. The table contains the number of documents in each year by item in 'author_keywords' .Use the information in the table to draw conclusions about importance and publication frequency of the 'author_keywords'. In your analysis, be sure to describe in a clear and concise way, any findings or any patterns you observe, and identify any outliers or anomalies in the data. Limit your description to one paragraph with no more than 250 words.
 <BLANKLINE>
 <BLANKLINE>
-| Author Keywords       |   2018 |   2019 |   2020 |   2021 |
-|:----------------------|-------:|-------:|-------:|-------:|
-| accountability        |      0 |      0 |      1 |      1 |
-| anti-money laundering |      0 |      0 |      1 |      2 |
-| gdpr                  |      0 |      0 |      1 |      1 |
-| regulation            |      2 |      0 |      1 |      1 |
-| regulatory technology |      0 |      0 |      2 |      3 |
+| Author Keywords                 |   2018 |   2019 |   2020 |   2021 |
+|:--------------------------------|-------:|-------:|-------:|-------:|
+| ACCOUNTABILITY                  |      0 |      0 |      1 |      1 |
+| ANTI_MONEY_LAUNDERING           |      0 |      0 |      1 |      3 |
+| GDPR                            |      0 |      0 |      1 |      1 |
+| REGULATION                      |      2 |      0 |      1 |      1 |
+| REGULATORY_TECHNOLOGY (REGTECH) |      0 |      0 |      1 |      2 |
 <BLANKLINE>
 <BLANKLINE>
 
 
+# pylint: disable=line-too-long
 """
 ## ScientoPy // Time Line
 import textwrap
@@ -146,17 +154,22 @@ class _Results:
     prompt_ = None
 
 
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
 def time_line(
-    criterion,
+    field,
+    # Specific params:
     time_window=2,
-    topics_length=5,
-    custom_topics=None,
     trend_analysis=False,
     title="Time Line",
-    directory="./",
+    # Item filters:
+    top_n=5,
+    custom_items=None,
+    # Database params:
+    root_dir="./",
     database="documents",
-    start_year=None,
-    end_year=None,
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
     """ScientoPy Bar Trend."""
@@ -164,12 +177,12 @@ def time_line(
     # compute basic growth indicators
 
     growth_indicators = growth_indicators_by_topic(
-        criterion=criterion,
+        field=field,
         time_window=time_window,
-        directory=directory,
+        root_dir=root_dir,
         database=database,
-        start_year=start_year,
-        end_year=end_year,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 
@@ -186,8 +199,8 @@ def time_line(
 
     growth_indicators = _filter_indicators_by_custom_topics(
         indicators=growth_indicators,
-        topics_length=topics_length,
-        custom_topics=custom_topics,
+        topics_length=top_n,
+        custom_topics=custom_items,
     )
 
     growth_indicators = growth_indicators.sort_values(
@@ -200,10 +213,10 @@ def time_line(
 
     ## data to plot
     indicators = indicators_by_item_per_year(
-        root_dir=directory,
-        field=criterion,
-        year_filter=start_year,
-        cited_by_filter=end_year,
+        root_dir=root_dir,
+        field=field,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 
@@ -211,12 +224,10 @@ def time_line(
     indicators = indicators.reset_index()
 
     # the magic!
-    indicators = indicators[indicators[criterion].isin(selected_topics)]
+    indicators = indicators[indicators[field].isin(selected_topics)]
 
-    indicators = indicators.sort_values([criterion, "year"], ascending=True)
-    indicators = indicators.pivot(
-        index="year", columns=criterion, values="OCC"
-    )
+    indicators = indicators.sort_values([field, "year"], ascending=True)
+    indicators = indicators.pivot(index="year", columns=field, values="OCC")
     indicators = indicators.fillna(0)
 
     # complete missing years
@@ -243,15 +254,13 @@ def time_line(
     indicators = indicators.melt(
         id_vars="year",
         value_vars=indicators.columns,
-        var_name=criterion,
+        var_name=field,
         value_name="OCC",
     )
-    indicators[criterion] = indicators[criterion].apply(_shorten)
+    indicators[field] = indicators[field].apply(_shorten)
 
-    column_ = criterion.replace("_", " ").title()
-    indicators = indicators.rename(
-        columns={"year": "Year", criterion: column_}
-    )
+    column_ = field.replace("_", " ").title()
+    indicators = indicators.rename(columns={"year": "Year", field: column_})
 
     ###
 
@@ -260,7 +269,7 @@ def time_line(
     results.plot_ = _make_plot(column_, results.table_, title)
     results.prompt_ = _create_prompt(
         indicators.pivot(index=column_, columns="Year", values="OCC"),
-        criterion,
+        field,
         trend_analysis,
     )
 

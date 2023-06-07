@@ -19,12 +19,12 @@ Computes coverage of terms in a column discarding stopwords.
    min_occ  cum_sum_documents coverage  cum num items
 0       28                 28  53.85 %              1
 1       12                 28  53.85 %              2
-2        7                 33  63.46 %              4
-3        5                 34  65.38 %              5
-4        4                 37  71.15 %              8
-5        3                 38  73.08 %             13
-6        2                 39  75.00 %             26
-7        1                 41  78.85 %            144
+2        7                 28  53.85 %              3
+3        5                 29  55.77 %              4
+4        4                 39  75.00 %              9
+5        3                 39  75.00 %             14
+6        2                 39  75.00 %             25
+7        1                 41  78.85 %            146
 
 
 """
@@ -37,9 +37,9 @@ from ...record_utils import read_records
 
 def coverage(
     field,
+    # Database params:
     root_dir="./",
     database="documents",
-    # Database filters:
     year_filter=None,
     cited_by_filter=None,
     **filters,

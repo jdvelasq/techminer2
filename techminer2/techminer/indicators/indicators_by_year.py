@@ -11,8 +11,7 @@ Examples
 >>> root_dir = "data/regtech/"
 
 >>> from techminer2  import techminer
->>> techminer.indicators.indicators_by_year(root_dir) # doctest: \
-+NORMALIZE_WHITESPACE
+>>> techminer.indicators.indicators_by_year(root_dir) # doctest: +NORMALIZE_WHITESPACE
       OCC  cum_OCC  ...  cum_local_citations  mean_local_citations_per_year
 year                ...                                                    
 2016    1        1  ...                  0.0                           0.00
@@ -32,27 +31,29 @@ year                ...
 ... ).tail() # doctest: +NORMALIZE_WHITESPACE
       OCC  cum_OCC  ...  cum_local_citations  mean_local_citations_per_year
 year                ...                                                    
-2018   89      594  ...                731.0                           0.30
-2019   91      685  ...                839.0                           0.30
-2020  114      799  ...                984.0                           0.42
-2021   80      879  ...               1070.0                           0.54
-2022   30      909  ...               1102.0                           1.07
+2017    6      142  ...                153.0                           0.37
+2018    6      148  ...                161.0                           0.33
+2019    5      153  ...                166.0                           0.33
+2020    4      157  ...                168.0                           0.25
+2021    2      159  ...                170.0                           1.00
 <BLANKLINE>
 [5 rows x 11 columns]
+
 
 
 >>> techminer.indicators.indicators_by_year(
 ...     root_dir=root_dir, database="cited_by"
 ... ).tail() # doctest: +NORMALIZE_WHITESPACE
-      OCC  cum_OCC  ...  cum_global_citations  mean_global_citations_per_year
-year                ...                                                      
-2019   33       44  ...                  1764                            8.15
-2020   76      120  ...                  2879                            3.67
-2021  107      227  ...                  3511                            1.97
-2022  150      377  ...                  3871                            1.20
-2023   10      387  ...                  3871                            0.00
+        OCC  cum_OCC  ...  cum_global_citations  mean_global_citations_per_year
+year                  ...                                                      
+2019.0   33       44  ...                1764.0                            8.15
+2020.0   76      120  ...                2879.0                            3.67
+2021.0  107      227  ...                3511.0                            1.97
+2022.0  150      377  ...                3871.0                            1.20
+2023.0   10      387  ...                3871.0                            0.00
 <BLANKLINE>
 [5 rows x 7 columns]
+
 
 
 >>> from pprint import pprint
@@ -75,7 +76,8 @@ year                ...
  'mean_local_citations',
  'mean_local_citations_per_year']
 
-# noqa: W291
+
+# pylint: disable=line-too-long 
 """
 import plotly.express as px
 

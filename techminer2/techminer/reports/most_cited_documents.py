@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 Most Global Cited Documents
 ===============================================================================
@@ -46,7 +47,7 @@ def most_cited_documents(
     """
     return abstracts_report(
         field=None,
-        custom_topics=None,
+        custom_items=None,
         file_name=file_name,
         use_textwrap=True,
         root_dir=root_dir,
