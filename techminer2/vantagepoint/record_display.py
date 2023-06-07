@@ -19,6 +19,23 @@ searching. The report is saved to the file ``processed/record_display.txt``.
 --INFO-- The file 'data/regtech/processed/record_display.txt' was created.
 
 
+>>> vantagepoint.record_display(
+...     field='abstract',
+...     search_for='five-year',
+...     root_dir=root_dir,
+... )
+--INFO-- The file 'data/regtech/processed/record_display.txt' was created.
+
+
+
+>>> vantagepoint.record_display(
+...     field='abstract',
+...     search_for='anti',
+...     root_dir=root_dir,
+... )
+--INFO-- The file 'data/regtech/processed/record_display.txt' was created.
+
+
 # pylint: disable=line-too-long
 """
 

@@ -8,8 +8,8 @@ Import a scopus data file in the working directory.
 
 >>> root_dir = "data/regtech/"
 
-# >>> from techminer2 import techminer
-# >>> techminer.data.import_data(root_dir, disable_progress_bar=True)
+>>> from techminer2 import techminer
+>>> techminer.data.import_data(root_dir, disable_progress_bar=True)
 --INFO-- Concatenating raw files in data/regtech/raw/cited_by/
 --INFO-- Concatenating raw files in data/regtech/raw/references/
 --INFO-- Concatenating raw files in data/regtech/raw/documents/
@@ -1549,14 +1549,25 @@ def transform_abstract_keywords_to_underscore(root_dir):
 
         nlp_phrases = nlp_phrases.copy()
         nlp_phrases = "|".join(nlp_phrases.values)
+        regex = r"\b(" + nlp_phrases + r")\b"
 
         documents_path = pathlib.Path(root_dir) / "processed/_documents.csv"
         documents = pd.read_csv(documents_path, encoding="utf-8")
-        regex = r"\b(" + nlp_phrases + r")\b"
         for col in ["abstract", "title"]:
-            documents[col] = documents[col].str.replace(
-                regex, lambda x: x.group().upper().replace(" ", "_")
+            hyphenated_words = documents[col].str.findall(r"\b\w+-\w+\b").sum()
+            hyphenated_words = r"\b(" + "|".join(hyphenated_words) + r")\b"
+            documents[col] = (
+                documents[col]
+                .str.replace("-", " ")
+                .str.replace(
+                    regex, lambda x: x.group().upper().replace(" ", "_")
+                )
             )
+            documents[col] = documents[col].str.replace(
+                hyphenated_words.replace("-", " "),
+                lambda x: x.group().replace(" ", "-"),
+            )
+
         documents.to_csv(documents_path, index=False)
 
     #
