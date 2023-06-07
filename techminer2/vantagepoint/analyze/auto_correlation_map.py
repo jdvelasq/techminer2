@@ -68,7 +68,7 @@ def auto_correlation_map(
     # Map params:
     n_labels=None,
     color="#8da4b4",
-    nx_k=0.5,
+    nx_k=0.1,
     nx_iterations=10,
     nx_random_state=0,
     node_size_min=30,

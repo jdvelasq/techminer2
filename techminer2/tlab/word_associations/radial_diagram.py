@@ -31,7 +31,7 @@ is explained in the following example.
 >>> # Visualize the radial diagram using the matrix viewer.
 >>> chart = vantagepoint.analyze.matrix_viewer(
 ...     matrix_subset,
-...     nx_k=0.5,
+...     nx_k=0.1,
 ...     nx_iterations=5,
 ...     xaxes_range=(-2,2),
 ... )

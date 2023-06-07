@@ -14,7 +14,7 @@ Clustering by coupling.
 ...     metric="local_citations",
 ...     directory=directory,
 ...     method="louvain",
-...     nx_k=0.5,
+...     nx_k=0.1,
 ...     nx_iterations=10,
 ...     delta=1.0,    
 ... )
@@ -92,7 +92,7 @@ def coupling_network(
     metric="local_citations",
     normalization="association",
     method="louvain",
-    nx_k=0.5,
+    nx_k=0.1,
     nx_iterations=10,
     delta=1.0,
     node_min_size=30,

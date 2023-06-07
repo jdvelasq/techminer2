@@ -28,7 +28,7 @@
 #     directory="./",
 #     database="documents",
 #     method="louvain",
-#     nx_k=0.5,
+#     nx_k=0.1,
 #     nx_iteratons=10,
 #     delta=1.0,
 # ):

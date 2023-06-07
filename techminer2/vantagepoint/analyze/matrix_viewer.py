@@ -123,7 +123,7 @@ Example: Visulization of a co-occurrence matrix.
 
 >>> chart = vantagepoint.analyze.matrix_viewer(
 ...     co_occ_matrix,
-...     nx_k=0.5,
+...     nx_k=0.1,
 ...     nx_iterations=5,
 ...     xaxes_range=(-2,2),
 ... )
@@ -185,7 +185,7 @@ Example: Visulization of a radial diagram (T-LAB).
 ... )
 >>> chart = vantagepoint.analyze.matrix_viewer(
 ...     matrix_subset,
-...     nx_k=0.5,
+...     nx_k=0.1,
 ...     nx_iterations=5,
 ...     xaxes_range=(-2,2),
 ... )
@@ -237,7 +237,7 @@ Example: Comparison between pairs of keywords (T-LAB).
 
 >>> chart = vantagepoint.analyze.matrix_viewer(
 ...     matrix_subset,
-...     nx_k=0.5,
+...     nx_k=0.1,
 ...     nx_iterations=5,
 ...     xaxes_range=(-2,2),
 ... )
@@ -289,7 +289,7 @@ Example: Ego-Network (T-LAB).
 
 >>> chart = vantagepoint.analyze.matrix_viewer(
 ...     matrix_subset,
-...     nx_k=0.5,
+...     nx_k=0.1,
 ...     nx_iterations=5,
 ...     xaxes_range=(-2,2),
 ... )
@@ -337,7 +337,7 @@ from .network_viewer import network_viewer
 def matrix_viewer(
     obj,
     n_labels=None,
-    nx_k=0.5,
+    nx_k=0.1,
     nx_iterations=10,
     node_size_min=30,
     node_size_max=70,

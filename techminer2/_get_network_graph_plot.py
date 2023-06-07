@@ -8,7 +8,7 @@ import plotly.graph_objects as go
 
 def get_network_graph_plot(
     graph,
-    nx_k=0.5,
+    nx_k=0.2,
     nx_iterations=10,
     delta=1.0,
 ):
@@ -141,7 +141,9 @@ def _create_traces(graph):
             / (max_size - min_size)
             for x in node_size
         ]
-        node_size = [8 + 25 * (x - min_size) / (max_size - min_size) for x in node_size]
+        node_size = [
+            8 + 25 * (x - min_size) / (max_size - min_size) for x in node_size
+        ]
 
     x_mean = np.mean(node_x)
     y_mean = np.mean(node_y)

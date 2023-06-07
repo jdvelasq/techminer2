@@ -10,7 +10,7 @@ Co-citation Network
 ...     topics_length=50,
 ...     directory=directory,
 ...     method="louvain",
-...     nx_k=0.5,
+...     nx_k=0.1,
 ...     nx_iterations=10,
 ...     delta=1.0,    
 ... )
@@ -79,7 +79,7 @@ def co_citation_network(
     topics_length=50,
     directory="./",
     method="louvain",
-    nx_k=0.5,
+    nx_k=0.1,
     nx_iterations=10,
     delta=1.0,
     start_year=None,

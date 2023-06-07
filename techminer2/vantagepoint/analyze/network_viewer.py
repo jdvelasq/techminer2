@@ -52,7 +52,7 @@ from ... import network_utils
 def network_viewer(
     graph,
     n_labels=None,
-    nx_k=0.5,
+    nx_k=0.1,
     nx_iterations=10,
     random_state=0,
     node_size_min=None,
