@@ -9,8 +9,8 @@ Compararison between word pairs
 >>> from techminer2 import tlab
 >>> cwp = tlab.comparison_between_word_pairs(
 ...     field="author_keywords",
-...     item_a="artificial intelligence",
-...     item_b="regtech",
+...     item_a="ARTIFICIAL_INTELLIGENCE",
+...     item_b="REGTECH",
 ...     root_dir=root_dir,
 ... )
 >>> file_name = "sphinx/_static/tlab__co_occurrence_analysis__comparison_between_word_pairs_bar_chart-1.html"
@@ -22,28 +22,28 @@ Compararison between word pairs
 
 
 >>> cwp.table_.head(10)
-                                 row                     column  OCC
-0            artificial intelligence             fintech 12:249    0
-1  artificial intelligence & regtech             fintech 12:249    1
-2                            regtech             fintech 12:249   11
-3            artificial intelligence          compliance 07:030    0
-4                            regtech          compliance 07:030    6
-5  artificial intelligence & regtech          compliance 07:030    1
-6            artificial intelligence          regulation 05:164    0
-7                            regtech          regulation 05:164    4
-8  artificial intelligence & regtech          regulation 05:164    0
-9                            regtech  financial services 04:168    3
+                                 row             column  OCC
+0            ARTIFICIAL_INTELLIGENCE     FINTECH 12:249    0
+1  ARTIFICIAL_INTELLIGENCE & REGTECH     FINTECH 12:249    1
+2                            REGTECH     FINTECH 12:249   11
+3                            REGTECH  COMPLIANCE 07:030    6
+4  ARTIFICIAL_INTELLIGENCE & REGTECH  COMPLIANCE 07:030    1
+5            ARTIFICIAL_INTELLIGENCE  COMPLIANCE 07:030    0
+6                            REGTECH  REGULATION 05:164    4
+7            ARTIFICIAL_INTELLIGENCE  REGULATION 05:164    0
+8  ARTIFICIAL_INTELLIGENCE & REGTECH  REGULATION 05:164    0
+9                            REGTECH     SUPTECH 03:004    3
 
 
 >>> from techminer2 import tlab
 >>> cwp = tlab.comparison_between_word_pairs(
 ...     field="author_keywords",
-...     item_a="artificial intelligence",
-...     item_b="regtech",
+...     item_a="ARTIFICIAL_INTELLIGENCE",
+...     item_b="REGTECH",
 ...     custom_items=[
-...         "fintech",
-...         "blockchain",
-...         "machine learning",
+...         "FINTECH",
+...         "BLOCKCHAIN",
+...         "MACHINE_LEARNING",
 ...     ],
 ...     root_dir=root_dir,
 ... )
@@ -58,15 +58,18 @@ Compararison between word pairs
 
 >>> cwp.table_.head(10)
                                  row                   column  OCC
-0            artificial intelligence           fintech 12:249    0
-1  artificial intelligence & regtech           fintech 12:249    1
-2                            regtech           fintech 12:249   11
-3            artificial intelligence        blockchain 03:005    0
-4  artificial intelligence & regtech        blockchain 03:005    1
-5                            regtech        blockchain 03:005    1
-6            artificial intelligence  machine learning 01:003    0
-7  artificial intelligence & regtech  machine learning 01:003    0
-8                            regtech  machine learning 01:003    1
+0            ARTIFICIAL_INTELLIGENCE           FINTECH 12:249    0
+1  ARTIFICIAL_INTELLIGENCE & REGTECH           FINTECH 12:249    1
+2                            REGTECH           FINTECH 12:249   11
+3            ARTIFICIAL_INTELLIGENCE        BLOCKCHAIN 03:005    0
+4  ARTIFICIAL_INTELLIGENCE & REGTECH        BLOCKCHAIN 03:005    1
+5                            REGTECH        BLOCKCHAIN 03:005    1
+6            ARTIFICIAL_INTELLIGENCE  MACHINE_LEARNING 01:003    0
+7  ARTIFICIAL_INTELLIGENCE & REGTECH  MACHINE_LEARNING 01:003    0
+8                            REGTECH  MACHINE_LEARNING 01:003    1
+
+
+
 
 # pylint: disable=line-too-long
 """
