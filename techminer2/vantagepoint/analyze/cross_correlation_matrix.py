@@ -10,7 +10,7 @@ Example
 >>> root_dir = "data/regtech/"
 
 >>> from techminer2 import vantagepoint
->>> corr_matrix = vantagepoint.analyze.cross_corr_matrix(
+>>> corr_matrix = vantagepoint.analyze.cross_correlation_matrix(
 ...     rows_and_columns='authors', 
 ...     cross_with='countries',
 ...     top_n=10,
@@ -58,7 +58,7 @@ from .co_occ_matrix import co_occ_matrix
 from .compute_corr_matrix import compute_corr_matrix
 
 
-def cross_corr_matrix(
+def cross_correlation_matrix(
     rows_and_columns,
     cross_with,
     method="pearson",

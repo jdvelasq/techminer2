@@ -53,7 +53,7 @@ Analyze the table below which contains the auto-correlation values for the autho
 
 from ... import network_utils
 from ...classes import CorrMap
-from .cross_corr_matrix import cross_corr_matrix
+from .cross_correlation_matrix import cross_correlation_matrix
 from .list_cells_in_matrix import list_cells_in_matrix
 
 
@@ -91,7 +91,7 @@ def cross_correlation_map(
 ):
     """Correlation map."""
 
-    matrix = cross_corr_matrix(
+    matrix = cross_correlation_matrix(
         rows_and_columns=rows_and_columns,
         cross_with=cross_with,
         method=method,

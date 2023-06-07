@@ -8,10 +8,10 @@ Matrix
         co_occ_matrix
 
     .. toctree::
-        auto_corr_matrix
+        auto_correlation_matrix
 
     .. toctree::
-        cross_corr_matrix
+        cross_correlation_matrix
 
     .. toctree::
         factor_matrix         

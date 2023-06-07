@@ -9,7 +9,7 @@ Returns an auto-correlation matrix.
 >>> root_dir = "data/regtech/"
 
 >>> from techminer2 import vantagepoint
->>> corr_matrix = vantagepoint.analyze.auto_corr_matrix(
+>>> corr_matrix = vantagepoint.analyze.auto_correlation_matrix(
 ...     rows_and_columns='authors',
 ...     top_n=10,
 ...     root_dir=root_dir,
@@ -61,7 +61,7 @@ from .tf_matrix import tf_matrix
 
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
-def auto_corr_matrix(
+def auto_correlation_matrix(
     rows_and_columns,
     method="pearson",
     # Item filters:

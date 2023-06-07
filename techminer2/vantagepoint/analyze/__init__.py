@@ -5,15 +5,15 @@ This package provides the functions available in the Analyze menu.
 
 """
 from .association_index import association_index
-from .auto_corr_matrix import auto_corr_matrix
 from .auto_correlation_map import auto_correlation_map
+from .auto_correlation_matrix import auto_correlation_matrix
 from .cluster_field import cluster_field
 from .cluster_members import cluster_members
 from .cluster_records import cluster_records
 from .co_occ_matrix import co_occ_matrix
 from .create_concept_grid import create_concept_grid
-from .cross_corr_matrix import cross_corr_matrix
 from .cross_correlation_map import cross_correlation_map
+from .cross_correlation_matrix import cross_correlation_matrix
 from .factor_matrix import factor_matrix
 from .impact_view import impact_view
 from .list_cells_in_matrix import list_cells_in_matrix
@@ -30,14 +30,14 @@ from .tf_matrix import tf_matrix
 
 __all__ = [
     "association_index",
-    "auto_corr_matrix",
+    "auto_correlation_matrix",
     "auto_correlation_map",
     "cluster_field",
     "cluster_members",
     "cluster_records",
     "co_occ_matrix",
     "create_concept_grid",
-    "cross_corr_matrix",
+    "cross_correlation_matrix",
     "cross_correlation_map",
     "factor_matrix",
     "impact_view",

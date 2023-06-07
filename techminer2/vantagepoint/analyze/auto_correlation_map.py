@@ -48,7 +48,7 @@ Analyze the table below which contains the auto-correlation values for the autho
 
 from ... import network_utils
 from ...classes import CorrMap
-from .auto_corr_matrix import auto_corr_matrix
+from .auto_correlation_matrix import auto_correlation_matrix
 from .list_cells_in_matrix import list_cells_in_matrix
 
 
@@ -85,7 +85,7 @@ def auto_correlation_map(
 ):
     """Auto-correlation Map."""
 
-    matrix = auto_corr_matrix(
+    matrix = auto_correlation_matrix(
         rows_and_columns=rows_and_columns,
         method=method,
         # Item filters:
