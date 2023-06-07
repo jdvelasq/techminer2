@@ -54,7 +54,7 @@ class _Results:
     prompts_ = None
 
 
-def main_path_analysis(directory="./", nx_k=0.5, nx_iterations=10, delta=1.0):
+def main_path_analysis(directory="./", nx_k=0.1, nx_iterations=10, delta=1.0):
     """
     This function computes the main path algorithm to found the path of
     cocited documents in the dataset.
@@ -91,7 +91,7 @@ def main_path_analysis(directory="./", nx_k=0.5, nx_iterations=10, delta=1.0):
     return results
 
 
-def _create_main_path_graph(documents, nx_k=0.5, nx_iterations=10, delta=1.0):
+def _create_main_path_graph(documents, nx_k=0.1, nx_iterations=10, delta=1.0):
     graph = _build_graph(documents.short_name.to_list())
     return get_network_graph_plot(
         graph,

@@ -125,6 +125,16 @@ class CorrMap:
     prompt_: str
 
 
+# Analyze / Discover / Map / Factor Map
+@dataclass(init=False)
+class FactorMap:
+    """Factor Map."""
+
+    plot_: go.Figure
+    table_: pd.DataFrame
+    prompt_: str
+
+
 # Analyze / Discover / Terms by Year
 @dataclass(init=False)
 class TermsByYear:
@@ -141,6 +151,14 @@ class TermsByYear:
 # Analyze / Explore / Cluster Field
 # Analyze / Explore / Cluster Items
 # Analyze / Explore / Create Concept Grid
+@dataclass(init=False)
+class ConceptGrid:
+    """Concept grid from PCA."""
+
+    table_: pd.DataFrame
+    promt_: str
+
+
 # Analyze / Explore / Matrix Subset
 @dataclass(init=False)
 class MatrixSubset:

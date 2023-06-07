@@ -17,7 +17,7 @@ Explore
 .. toctree::
     :maxdepth: 1
 
-    create_concept_grid
+    concept_grid
 
 
 .. toctree::
