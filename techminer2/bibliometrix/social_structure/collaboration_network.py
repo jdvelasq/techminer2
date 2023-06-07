@@ -1,10 +1,10 @@
 # flake8: noqa
 """
-Co-authorship (collaboration) Network
+Collaboration Network
 ===============================================================================
 
 .. note:: 
-    A co-authorship network is a generic co-occurrence network where the analized column
+    A collaboration network is a generic co-occurrence network where the analized column
     is restricted to the following columns in the dataset:
 
     * Authors.
@@ -21,7 +21,7 @@ Co-authorship (collaboration) Network
 >>> root_dir = "data/regtech/"
 
 >>> from techminer2 import bibliometrix
->>> nnet = bibliometrix.social_structure.co_authorship_network(
+>>> nnet = bibliometrix.social_structure.collaboration_network(
 ...     field="authors",
 ...     top_n=20,
 ...     root_dir=root_dir,
@@ -79,7 +79,7 @@ from ...vantagepoint.analyze import (
 )
 
 
-def co_authorship_network(
+def collaboration_network(
     # 'co_occ_matrix' params:
     field,
     top_n=None,

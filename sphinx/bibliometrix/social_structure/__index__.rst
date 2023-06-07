@@ -2,7 +2,7 @@ Social Structure
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
-   co_authorship_network
+   collaboration_network
 
 
 .. toctree::   

@@ -1,38 +1,49 @@
+# flake8: noqa
 """
 Collaboration WorldMap
 ===============================================================================
 
->>> directory = "data/regtech/"
+>>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__collaboration_worldmap.html"
 
 >>> from techminer2 import bibliometrix
 >>> bibliometrix.social_structure.collaboration_worldmap(
-...     directory=directory,
+...     root_dir=root_dir,
 ... ).write_html(file_name)
 
 .. raw:: html
 
     <iframe src="../../../../_static/bibliometrix__collaboration_worldmap.html" height="410px" width="100%" frameBorder="0"></iframe>
 
+
+# pylint: disable=line-too-long
 """
 import plotly.express as px
 
-from ... import vantagepoint
+from ...vantagepoint.analyze import co_occ_matrix, list_cells_in_matrix
 
 
 def collaboration_worldmap(
-    directory="./",
+    # Database params:
+    root_dir="./",
+    database="documents",
+    year_filter=None,
+    cited_by_filter=None,
+    **filters,
 ):
     """Collaboration World Map"""
 
-    collaboration = vantagepoint.analyze.co_occ_matrix_list(
-        criterion="countries",
-        topics_length=None,
-        topic_min_occ=None,
-        topic_min_citations=None,
-        directory=directory,
-        database="documents",
+    matrix = co_occ_matrix(
+        columns="countries",
+        # Database params:
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
     )
+    collaboration = list_cells_in_matrix(matrix).cells_list_
+
     collaboration = collaboration[collaboration.row != collaboration.column]
     collaboration["row"] = collaboration["row"].map(
         lambda x: " ".join(x.split()[:-1])
