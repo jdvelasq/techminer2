@@ -23,42 +23,41 @@ Example
 
 >>> r.table_.head()
 organizations
-University of Hong Kong        185
----FinTech HK                  161
----Kingston Business School    153
----Centre for Law              150
-University College Cork         41
+Univ of Hong Kong (HKG)                                               185
+Kingston Bus Sch (GBR)                                                153
+FinTech HK, Hong Kong (HKG)                                           150
+ctr for Law, Markets & Regulation, UNSW Australia, Australia (AUS)    150
+Univ Coll Cork (IRL)                                                   41
 Name: global_citations, dtype: int64
 
 
 >>> print(r.prompt_)
 Analyze the table below, which provides bibliometric indicators for the field 'organizations' in a scientific bibliography database. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
-| organizations                                                   |   OCC |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |
-|:----------------------------------------------------------------|------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|
-| University of Hong Kong                                         |     3 |                185 |                 8 |                           61.67 |                           2.67 |
-| ---FinTech HK                                                   |     2 |                161 |                 3 |                           80.5  |                           1.5  |
-| ---Kingston Business School                                     |     1 |                153 |                17 |                          153    |                          17    |
-| ---Centre for Law                                               |     1 |                150 |                 0 |                          150    |                           0    |
-| University College Cork                                         |     3 |                 41 |                19 |                           13.67 |                           6.33 |
-| Duke University School of Law                                   |     1 |                 30 |                 0 |                           30    |                           0    |
-| ---UNSW Sydney                                                  |     1 |                 24 |                 5 |                           24    |                           5    |
-| Heinrich Heine University                                       |     1 |                 24 |                 5 |                           24    |                           5    |
-| University of Luxembourg                                        |     1 |                 24 |                 5 |                           24    |                           5    |
-| University of Zurich                                            |     1 |                 24 |                 5 |                           24    |                           5    |
-| ---KS Strategic                                                 |     1 |                 21 |                 8 |                           21    |                           8    |
-| ---Panepistemio Aigaiou                                         |     1 |                 21 |                 8 |                           21    |                           8    |
-| ---School of Engineering                                        |     1 |                 21 |                 8 |                           21    |                           8    |
-| European Central Bank                                           |     1 |                 21 |                 8 |                           21    |                           8    |
-| Harvard University Weatherhead Center for International Affairs |     1 |                 21 |                 8 |                           21    |                           8    |
-| Ahlia University                                                |     3 |                 19 |                 5 |                            6.33 |                           1.67 |
-| Coventry University                                             |     2 |                 17 |                 4 |                            8.5  |                           2    |
-| University of Westminster                                       |     2 |                 17 |                 4 |                            8.5  |                           2    |
-| Dublin City University                                          |     2 |                 14 |                 3 |                            7    |                           1.5  |
-| Hebei University of Technology                                  |     1 |                 13 |                 1 |                           13    |                           1    |
+| organizations                                                      |   OCC |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |
+|:-------------------------------------------------------------------|------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|
+| Univ of Hong Kong (HKG)                                            |     3 |                185 |                 8 |                           61.67 |                           2.67 |
+| Kingston Bus Sch (GBR)                                             |     1 |                153 |                17 |                          153    |                          17    |
+| FinTech HK, Hong Kong (HKG)                                        |     1 |                150 |                 0 |                          150    |                           0    |
+| ctr for Law, Markets & Regulation, UNSW Australia, Australia (AUS) |     1 |                150 |                 0 |                          150    |                           0    |
+| Univ Coll Cork (IRL)                                               |     3 |                 41 |                19 |                           13.67 |                           6.33 |
+| Duke Univ Sch of Law (USA)                                         |     1 |                 30 |                 0 |                           30    |                           0    |
+| Heinrich-Heine-Univ (DEU)                                          |     1 |                 24 |                 5 |                           24    |                           5    |
+| UNSW Sydney, Kensington, Australia (AUS)                           |     1 |                 24 |                 5 |                           24    |                           5    |
+| Univ of Luxembourg (LUX)                                           |     1 |                 24 |                 5 |                           24    |                           5    |
+| Univ of Zurich (CHE)                                               |     1 |                 24 |                 5 |                           24    |                           5    |
+| European Central B (DEU)                                           |     1 |                 21 |                 8 |                           21    |                           8    |
+| Harvard Univ Weatherhead ctr for International Affairs (USA)       |     1 |                 21 |                 8 |                           21    |                           8    |
+| KS Strategic, London, United Kingdom (GBR)                         |     1 |                 21 |                 8 |                           21    |                           8    |
+| Panepistemio Aigaiou, Chios, Greece (GRC)                          |     1 |                 21 |                 8 |                           21    |                           8    |
+| Sch of Eng (CHE)                                                   |     1 |                 21 |                 8 |                           21    |                           8    |
+| Ahlia Univ (BHR)                                                   |     3 |                 19 |                 5 |                            6.33 |                           1.67 |
+| Coventry Univ (GBR)                                                |     2 |                 17 |                 4 |                            8.5  |                           2    |
+| Univ of Westminster (GBR)                                          |     2 |                 17 |                 4 |                            8.5  |                           2    |
+| Dublin City Univ (IRL)                                             |     2 |                 14 |                 3 |                            7    |                           1.5  |
+| Hebei Univ of Technol (CHN)                                        |     1 |                 13 |                 1 |                           13    |                           1    |
 <BLANKLINE>
 <BLANKLINE>
-
 
 
 # pylint: disable=line-too-long

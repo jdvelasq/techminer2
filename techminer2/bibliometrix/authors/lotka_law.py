@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 Lotka's Law
 ===============================================================================
@@ -26,6 +27,8 @@ Example
 <BLANKLINE>
 [3 rows x 5 columns]
 
+
+# pylint: disable=line-too-long
 """
 import plotly.graph_objects as go
 

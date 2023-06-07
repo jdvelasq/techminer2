@@ -24,51 +24,56 @@ Example
     <iframe src="../../../_static/bibliometrix__organizations_production_over_time.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> print(r.documents_per_item_.head().to_markdown())
-|    | organizations                               | title                                                                                        |   year | source_title                                   |   global_citations |   local_citations | doi                           |
-|---:|:--------------------------------------------|:---------------------------------------------------------------------------------------------|-------:|:-----------------------------------------------|-------------------:|------------------:|:------------------------------|
-|  0 | ---Teichmann International  AG              | RegTech  Potential benefits and challenges for businesses                                    |   2023 | Technology in Society                          |                  0 |                 0 | 10.1016/J.TECHSOC.2022.102150 |
-|  1 | Harvard University                          | RegTech  Potential benefits and challenges for businesses                                    |   2023 | Technology in Society                          |                  0 |                 0 | 10.1016/J.TECHSOC.2022.102150 |
-|  2 | University of Messina                       | RegTech  Potential benefits and challenges for businesses                                    |   2023 | Technology in Society                          |                  0 |                 0 | 10.1016/J.TECHSOC.2022.102150 |
-|  3 | Chinese University of Hong Kong             | Costs of voting and firm performance: Evidence from RegTech adoption in Chinese listed firms |   2023 | Research in International Business and Finance |                  0 |                 0 | 10.1016/J.RIBAF.2022.101868   |
-|  4 | Nottingham University Business School China | Costs of voting and firm performance: Evidence from RegTech adoption in Chinese listed firms |   2023 | Research in International Business and Finance |                  0 |                 0 | 10.1016/J.RIBAF.2022.101868   |
+|    | organizations                              | title                                                                                        |   year | source_title                                   |   global_citations |   local_citations | doi                           |
+|---:|:-------------------------------------------|:---------------------------------------------------------------------------------------------|-------:|:-----------------------------------------------|-------------------:|------------------:|:------------------------------|
+|  0 | Harvard Univ (USA)                         | REGTECH  POTENTIAL_BENEFITS and CHALLENGES for businesses                                    |   2023 | Technology in Society                          |                  0 |                 0 | 10.1016/J.TECHSOC.2022.102150 |
+|  1 | Teichmann International (Schweiz) AG (CHE) | REGTECH  POTENTIAL_BENEFITS and CHALLENGES for businesses                                    |   2023 | Technology in Society                          |                  0 |                 0 | 10.1016/J.TECHSOC.2022.102150 |
+|  2 | Univ of Messina (ITA)                      | REGTECH  POTENTIAL_BENEFITS and CHALLENGES for businesses                                    |   2023 | Technology in Society                          |                  0 |                 0 | 10.1016/J.TECHSOC.2022.102150 |
+|  3 | Nottingham Univ Bus Sch China (CHN)        | costs of voting and firm PERFORMANCE: evidence from REGTECH adoption in chinese listed firms |   2023 | Research in International Business and Finance |                  0 |                 0 | 10.1016/J.RIBAF.2022.101868   |
+|  4 | Shenzhen Univ (CHN)                        | costs of voting and firm PERFORMANCE: evidence from REGTECH adoption in chinese listed firms |   2023 | Research in International Business and Finance |                  0 |                 0 | 10.1016/J.RIBAF.2022.101868   |
+
+
+
 
 >>> print(r.production_per_year_.head().to_markdown())
-|                                                                       |   OCC |   cum_OCC |   global_citations |   local_citations |   age |   global_citations_per_year |   local_citations_per_year |
-|:----------------------------------------------------------------------|------:|----------:|-------------------:|------------------:|------:|----------------------------:|---------------------------:|
-| ('---3PB', 2022)                                                      |     1 |         1 |                  3 |                 1 |     2 |                       1.5   |                      0.5   |
-| ('---AML Forensic library KPMG Luxembourg Societe Cooperative', 2020) |     1 |         1 |                 10 |                 3 |     4 |                       2.5   |                      0.75  |
-| ('---BITS Pilani', 2020)                                              |     1 |         1 |                  2 |                 3 |     4 |                       0.5   |                      0.75  |
-| ('---Centre for Law', 2017)                                           |     1 |         1 |                150 |                 0 |     7 |                      21.429 |                      0     |
-| ('---Deloitte LLP', 2018)                                             |     1 |         1 |                  8 |                 5 |     6 |                       1.333 |                      0.833 |
+|                                                                                                  |   OCC |   cum_OCC |   global_citations |   local_citations |   age |   global_citations_per_year |   local_citations_per_year |
+|:-------------------------------------------------------------------------------------------------|------:|----------:|-------------------:|------------------:|------:|----------------------------:|---------------------------:|
+| ('3PB, London, United Kingdom (GBR)', 2022)                                                      |     1 |         1 |                  3 |                 1 |     2 |                       1.5   |                      0.5   |
+| ('AML Forensic library KPMG Luxembourg Societe Cooperative, Luxembourg, Luxembourg (LUX)', 2020) |     1 |         1 |                 10 |                 3 |     4 |                       2.5   |                      0.75  |
+| ('Ahlia Univ (BHR)', 2020)                                                                       |     1 |         1 |                 11 |                 4 |     4 |                       2.75  |                      1     |
+| ('Ahlia Univ (BHR)', 2021)                                                                       |     1 |         2 |                  7 |                 1 |     3 |                       2.333 |                      0.333 |
+| ('Ahlia Univ (BHR)', 2022)                                                                       |     1 |         3 |                  1 |                 0 |     2 |                       0.5   |                      0     |
+
 
 
 >>> print(r.table_.head().to_markdown())
-| organizations                 |   2016 |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
-|:------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
-| University of Hong Kong 3:185 |      0 |      2 |      0 |      0 |      1 |      0 |      0 |      0 |
-| University College Cork 3:041 |      0 |      0 |      1 |      1 |      0 |      0 |      1 |      0 |
-| Ahlia University 3:019        |      0 |      0 |      0 |      0 |      1 |      1 |      1 |      0 |
-| ---FinTech HK 2:161           |      0 |      2 |      0 |      0 |      0 |      0 |      0 |      0 |
-| Coventry University 2:017     |      0 |      0 |      0 |      0 |      1 |      0 |      1 |      0 |
+| organizations                   |   2016 |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
+|:--------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
+| Univ of Hong Kong (HKG) 3:185   |      0 |      2 |      0 |      0 |      1 |      0 |      0 |      0 |
+| Univ Coll Cork (IRL) 3:041      |      0 |      0 |      1 |      1 |      0 |      0 |      1 |      0 |
+| Ahlia Univ (BHR) 3:019          |      0 |      0 |      0 |      0 |      1 |      1 |      1 |      0 |
+| Coventry Univ (GBR) 2:017       |      0 |      0 |      0 |      0 |      1 |      0 |      1 |      0 |
+| Univ of Westminster (GBR) 2:017 |      0 |      0 |      0 |      0 |      1 |      0 |      1 |      0 |
 
 
 >>> print(r.prompt_)
 Analyze the table below which contains the  occurrences by year for the years. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
-| organizations                                             |   2016 |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
-|:----------------------------------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
-| University of Hong Kong 3:185                             |      0 |      2 |      0 |      0 |      1 |      0 |      0 |      0 |
-| University College Cork 3:041                             |      0 |      0 |      1 |      1 |      0 |      0 |      1 |      0 |
-| Ahlia University 3:019                                    |      0 |      0 |      0 |      0 |      1 |      1 |      1 |      0 |
-| ---FinTech HK 2:161                                       |      0 |      2 |      0 |      0 |      0 |      0 |      0 |      0 |
-| Coventry University 2:017                                 |      0 |      0 |      0 |      0 |      1 |      0 |      1 |      0 |
-| University of Westminster 2:017                           |      0 |      0 |      0 |      0 |      1 |      0 |      1 |      0 |
-| Dublin City University 2:014                              |      0 |      0 |      0 |      0 |      1 |      1 |      0 |      0 |
-| Politecnico di Milano 2:002                               |      0 |      0 |      0 |      0 |      1 |      0 |      1 |      0 |
-| ---School of Electrical Engineering and Informatics 2:000 |      0 |      0 |      0 |      0 |      0 |      0 |      2 |      0 |
-| ---Kingston Business School 1:153                         |      0 |      0 |      1 |      0 |      0 |      0 |      0 |      0 |
+| organizations                                                            |   2016 |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
+|:-------------------------------------------------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
+| Univ of Hong Kong (HKG) 3:185                                            |      0 |      2 |      0 |      0 |      1 |      0 |      0 |      0 |
+| Univ Coll Cork (IRL) 3:041                                               |      0 |      0 |      1 |      1 |      0 |      0 |      1 |      0 |
+| Ahlia Univ (BHR) 3:019                                                   |      0 |      0 |      0 |      0 |      1 |      1 |      1 |      0 |
+| Coventry Univ (GBR) 2:017                                                |      0 |      0 |      0 |      0 |      1 |      0 |      1 |      0 |
+| Univ of Westminster (GBR) 2:017                                          |      0 |      0 |      0 |      0 |      1 |      0 |      1 |      0 |
+| Dublin City Univ (IRL) 2:014                                             |      0 |      0 |      0 |      0 |      1 |      1 |      0 |      0 |
+| Politec di Milano (ITA) 2:002                                            |      0 |      0 |      0 |      0 |      1 |      0 |      1 |      0 |
+| Kingston Bus Sch (GBR) 1:153                                             |      0 |      0 |      1 |      0 |      0 |      0 |      0 |      0 |
+| FinTech HK, Hong Kong (HKG) 1:150                                        |      0 |      1 |      0 |      0 |      0 |      0 |      0 |      0 |
+| ctr for Law, Markets & Regulation, UNSW Australia, Australia (AUS) 1:150 |      0 |      1 |      0 |      0 |      0 |      0 |      0 |      0 |
 <BLANKLINE>
 <BLANKLINE>
+
 
 
 
