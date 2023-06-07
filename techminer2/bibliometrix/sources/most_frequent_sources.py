@@ -27,7 +27,7 @@ Example
 source_abbr
 J BANK REGUL                     2
 J FINANC CRIME                   2
-FOSTER INNOV AND COMPET WITH     2
+FOSTER INNOVCOMPET WITH FINTE    2
 STUD COMPUT INTELL               2
 INT CONF INF TECHNOL SYST INN    2
 Name: OCC, dtype: int64
@@ -40,26 +40,29 @@ Analyze the table below, which provides bibliometric indicators for the field 's
 |:------------------------------|------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|
 | J BANK REGUL                  |     2 |                 35 |                 9 |                            17.5 |                            4.5 |
 | J FINANC CRIME                |     2 |                 13 |                 4 |                             6.5 |                            2   |
-| FOSTER INNOV AND COMPET WITH  |     2 |                  1 |                 1 |                             0.5 |                            0.5 |
+| FOSTER INNOVCOMPET WITH FINTE |     2 |                  1 |                 1 |                             0.5 |                            0.5 |
 | STUD COMPUT INTELL            |     2 |                  1 |                 1 |                             0.5 |                            0.5 |
 | INT CONF INF TECHNOL SYST INN |     2 |                  0 |                 0 |                             0   |                            0   |
-| ROUTLEDGE HANDB OF FIN TECHNO |     2 |                  0 |                 0 |                             0   |                            0   |
+| ROUTLEDGE HANDBFINANCIAL TECH |     2 |                  0 |                 0 |                             0   |                            0   |
 | J ECON BUS                    |     1 |                153 |                17 |                           153   |                           17   |
 | NORTHWEST J INTL LAW BUS      |     1 |                150 |                 0 |                           150   |                            0   |
 | PALGRAVE STUD DIGIT BUS ENABL |     1 |                 33 |                14 |                            33   |                           14   |
 | DUKE LAW J                    |     1 |                 30 |                 0 |                            30   |                            0   |
 | J RISK FINANC                 |     1 |                 21 |                 8 |                            21   |                            8   |
-| J MONEY LAUND CTRL            |     1 |                 14 |                 3 |                            14   |                            3   |
-| FIN INNOV                     |     1 |                 13 |                 1 |                            13   |                            1   |
+| J MONEY LAUND CONTROL         |     1 |                 14 |                 3 |                            14   |                            3   |
+| FINANCIAL INNOV               |     1 |                 13 |                 1 |                            13   |                            1   |
 | ICEIS - PROC INT CONF ENTERP  |     1 |                 12 |                 3 |                            12   |                            3   |
 | HELIYON                       |     1 |                 11 |                 4 |                            11   |                            4   |
-| HANDB OF BLOCKCHAIN, DIGIT FI |     1 |                 11 |                 3 |                            11   |                            3   |
-| J RISK MANG FIN INST          |     1 |                  8 |                 5 |                             8   |                            5   |
+| HANDBBLOCKCHAIN, DIGIT FINANC |     1 |                 11 |                 3 |                            11   |                            3   |
+| J RISK MANG FINANCIAL INST    |     1 |                  8 |                 5 |                             8   |                            5   |
 | ADV INTELL SYS COMPUT         |     1 |                  7 |                 1 |                             7   |                            1   |
-| INTELL SYST ACCOUNT FIN MANAG |     1 |                  5 |                 3 |                             5   |                            3   |
+| INTELL SYST ACCOUNT FINANCE M |     1 |                  5 |                 3 |                             5   |                            3   |
 | ADELAIDE LAW REV              |     1 |                  5 |                 1 |                             5   |                            1   |
 <BLANKLINE>
 <BLANKLINE>
+
+
+
 
 # pylint: disable=line-too-long
 """
@@ -68,6 +71,7 @@ from ..utils import bbx_generic_indicators_by_item
 
 
 # pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
 def most_frequent_sources(
     root_dir="./",
     database="documents",

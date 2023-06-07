@@ -5,7 +5,7 @@ Explore
 .. toctree::
     :maxdepth: 1
 
-    cluster_field
+    cluster_column
 
 .. toctree::
     :maxdepth: 1
