@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 Three Fields Plot
 ===============================================================================
@@ -25,6 +26,7 @@ Example
     <iframe src="../../../../_static/bibliometrix_three_fields_plot.html"
     height="800px" width="100%" frameBorder="0"></iframe>
 
+# pylint: disable=line-too-long
 """
 from ...vantagepoint.analyze import sankey_plot
 
