@@ -21,7 +21,7 @@ TreeMap
 # pylint: disable=line-too-long
 """
 from ..._plots.treemap_plot import treemap_plot
-from ...techminer.indicators.indicators_by_item import indicators_by_item
+from ...techminer.indicators.indicators_by_field import indicators_by_field
 
 
 def treemap(
@@ -37,7 +37,7 @@ def treemap(
 ):
     """Makes a treemap."""
 
-    indicators = indicators_by_item(
+    indicators = indicators_by_field(
         field=field,
         root_dir=root_dir,
         database=database,

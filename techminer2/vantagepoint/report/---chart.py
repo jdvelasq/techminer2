@@ -7,7 +7,7 @@ from ..._plots.column_plot import column_plot
 from ..._plots.line_plot import line_plot
 from ..._plots.pie_plot import pie_plot
 from ..._plots.treemap_plot import treemap_plot
-from ...techminer.indicators.indicators_by_item import indicators_by_item
+from ...techminer.indicators.indicators_by_field import indicators_by_field
 from .word_cloud import word_cloud
 
 
@@ -35,7 +35,7 @@ def chart(
 ):
     """Generic chart for list plotting."""
 
-    indicators = indicators_by_item(
+    indicators = indicators_by_field(
         field=criterion,
         root_dir=directory,
         database=database,

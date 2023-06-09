@@ -1,4 +1,4 @@
-.. automodule:: techminer2.scientopy.top_trending_topics
+.. automodule:: techminer2.scientopy.word_cloud_graph 
     :members:
     :undoc-members:
     :show-inheritance:

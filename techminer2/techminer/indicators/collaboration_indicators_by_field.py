@@ -1,5 +1,5 @@
 """
-Collaboration Indicators by Topic 
+Collaboration Indicators by Field 
 ===============================================================================
 
 
@@ -9,7 +9,7 @@ Examples
 >>> root_dir = "data/regtech/"
 
 >>> from techminer2 import techminer
->>> techminer.indicators.collaboration_indicators_by_topic(
+>>> techminer.indicators.collaboration_indicators_by_field(
 ...     "countries",
 ...     root_dir=root_dir,
 ... ).head()
@@ -25,7 +25,7 @@ China             5                27  ...                     3      0.60
 
 
 >>> print(
-...     techminer.indicators.collaboration_indicators_by_topic(
+...     techminer.indicators.collaboration_indicators_by_field(
 ...         "countries",
 ...         root_dir=root_dir,
 ...     ).head().to_markdown()
@@ -48,7 +48,7 @@ import numpy as np
 from ... import record_utils
 
 
-def collaboration_indicators_by_topic(
+def collaboration_indicators_by_field(
     field,
     root_dir="./",
     database="documents",

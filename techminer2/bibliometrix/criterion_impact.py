@@ -43,7 +43,7 @@ TEXTLEN = 40
 
 #     check_impact_metric(metric)
 
-#     indicators = impact_indicators_by_item(
+#     indicators = impact_indicators_by_field(
 #         field=criterion,
 #         root_dir=directory,
 #         database=database,

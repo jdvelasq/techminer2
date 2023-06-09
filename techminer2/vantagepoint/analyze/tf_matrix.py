@@ -33,7 +33,7 @@ from ...counters import add_counters_to_axis
 from ...item_utils import generate_custom_items
 from ...load_utils import load_stopwords
 from ...record_utils import read_records
-from ...techminer.indicators.indicators_by_item import indicators_by_item
+from ...techminer.indicators.indicators_by_field import indicators_by_field
 
 
 # pylint: disable=too-many-arguments
@@ -58,7 +58,7 @@ def tf_matrix(
     if scheme is None:
         scheme = "raw"
 
-    indicators = indicators_by_item(
+    indicators = indicators_by_field(
         field=field,
         root_dir=root_dir,
         database=database,

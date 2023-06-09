@@ -1,9 +1,30 @@
+"""
+This module define the texts for the prompts used in the ChatGPT model 
+for the analysis of the data extracted by the techminer2 package.
+
+
+"""
+
+HEADER = "Your task is generate a short analysis for a research paper. "
+
 #
-# ChatGPT prompts for bibliometric analysis
+#  PROMPTS
 #
-# This file contains functions for generating prompts for bibliometric analysis
-# using ChatGPT.
-#
+SCIENTPY_BAR_GRAPH_TREND_ANALYSIS = (
+    HEADER
+    + """\
+Your task is to generate a short analysis of top {n_rows} terms with the \
+highest average growth rate for a research paper. The average growth rate \
+is calculated comparing the number of documents published {period1} with the \
+number of documents published {period2} for each item in the field \
+'{field}'. Analyze the table below, delimited by triple backticks, in at \
+most 30 words. In the table, the column 'OCC' indicates the number of \
+documents in which each item of the field '{field}'appears. Use the \
+information in the table to draw conclusions about average growth rate and \
+relevante of each item in the field. In your analysis, be sure to describe \
+in a clear and concise way, any findings or any patterns you observe, and \
+identify any outliers or anomalies in the table."""
+)
 
 
 def generate_prompt_bibliographic_indicators(table):

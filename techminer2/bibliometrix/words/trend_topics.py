@@ -81,7 +81,7 @@ import numpy as np
 import plotly.graph_objects as go
 
 from ...classes import BasicChart
-from ...techminer.indicators.indicators_by_item import indicators_by_item
+from ...techminer.indicators.indicators_by_field import indicators_by_field
 from ...techminer.indicators.items_occ_by_year import items_occ_by_year
 
 
@@ -136,7 +136,7 @@ def trend_topics(
 
     words_by_year = words_by_year[["OCC", "year_q1", "year_med", "year_q3"]]
 
-    global_citations = indicators_by_item(
+    global_citations = indicators_by_field(
         field, root_dir=root_dir
     ).global_citations
 

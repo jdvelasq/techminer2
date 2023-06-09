@@ -74,7 +74,7 @@ from ...check_params import (
 from ...classes import ListView
 from ...item_utils import generate_custom_items
 from ...sort_utils import sort_indicators_by_metric
-from ...techminer.indicators import indicators_by_item
+from ...techminer.indicators import indicators_by_field
 
 
 # pylint: disable=too-many-arguments
@@ -129,7 +129,7 @@ def list_view(
     check_integer_range(occ_range)
     check_integer(top_n)
 
-    indicators = indicators_by_item(
+    indicators = indicators_by_field(
         field=field,
         root_dir=root_dir,
         database=database,

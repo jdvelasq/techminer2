@@ -1,6 +1,6 @@
 # flake8: noqa
 """
-Indicators by Item per Year 
+Indicators by Field per Year 
 ===============================================================================
 
 Examples
@@ -9,7 +9,7 @@ Examples
 >>> root_dir = "data/regtech/"
 
 >>> from techminer2  import techminer
->>> techminer.indicators.indicators_by_item_per_year(
+>>> techminer.indicators.indicators_by_field_per_year(
 ...     'authors',
 ...     root_dir=root_dir,
 ... ).head(20)
@@ -42,7 +42,7 @@ Buchkremer R      2020    1  ...                     0.750
 >>> from pprint import pprint
 >>> pprint(
 ...     sorted(
-...         techminer.indicators.indicators_by_item_per_year(
+...         techminer.indicators.indicators_by_field_per_year(
 ...             'authors', root_dir=root_dir).columns.to_list()
 ...     )
 ... )
@@ -62,7 +62,7 @@ from ...record_utils import read_records
 
 
 # pylint: disable=too-many-arguments
-def indicators_by_item_per_year(
+def indicators_by_field_per_year(
     field="authors",
     root_dir="./",
     database="documents",

@@ -1,7 +1,7 @@
 """Check utils.
 """
 
-from .classes import ListView
+from .classes import ListView, ScientoPyGraph
 
 
 def check_keywords(param):
@@ -50,8 +50,8 @@ def check_integer_range(param, nullable=True):
 
 def check_listview(obj):
     """Check if obj is a ListView instance."""
-    if not isinstance(obj, ListView):
-        raise TypeError("`obj` must be a ListView instance")
+    if not isinstance(obj, (ListView, ScientoPyGraph)):
+        raise TypeError("`obj` must be a ListView/ScientPy instance")
     return obj
 
 
@@ -76,6 +76,7 @@ def check_bibliometric_metric(param):
         "local_citations",
     ]:
         raise ValueError(
-            "Impact measure must be one of: OCC, global_citations, local_citations"
+            "Impact measure must be one of: OCC, global_citations, "
+            "local_citations"
         )
     return param

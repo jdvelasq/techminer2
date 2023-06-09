@@ -33,7 +33,7 @@ Example
 import plotly.graph_objects as go
 
 from ...classes import LotkaLaw
-from ...techminer.indicators.indicators_by_item import indicators_by_item
+from ...techminer.indicators.indicators_by_field import indicators_by_field
 
 
 def lotka_law(
@@ -130,7 +130,7 @@ def _core_authors(
     # 4                  6            1
     # 5                  7            1
     #
-    indicators = indicators_by_item(
+    indicators = indicators_by_field(
         field="authors",
         root_dir=root_dir,
         database=database,

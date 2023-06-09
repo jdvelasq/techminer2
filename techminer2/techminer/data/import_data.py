@@ -118,7 +118,11 @@ import pandas as pd
 from textblob import TextBlob
 from tqdm import tqdm
 
-from ... import vantagepoint
+from ...vantagepoint.refine import (
+    apply_countries_thesaurus,
+    apply_keywords_thesaurus,
+    apply_organizations_thesaurus,
+)
 from ..reports import abstracts_report
 from .create_countries_thesaurus import create_countries_thesaurus
 from .create_keywords_thesaurus import create_keywords_thesaurus
@@ -455,9 +459,9 @@ def import_data(root_dir="./", disable_progress_bar=False, **document_types):
     create_keywords_thesaurus(root_dir)
     create_organizations_thesaurus(root_dir)
 
-    vantagepoint.refine.apply_countries_thesaurus(root_dir)
-    vantagepoint.refine.apply_keywords_thesaurus(root_dir)
-    vantagepoint.refine.apply_organizations_thesaurus(root_dir)
+    apply_countries_thesaurus(root_dir)
+    apply_keywords_thesaurus(root_dir)
+    apply_organizations_thesaurus(root_dir)
 
     print("--INFO-- Process finished!!!")
 

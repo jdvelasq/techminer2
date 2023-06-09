@@ -32,7 +32,7 @@ Becker M              0     0     0     0     1     0     0     0
 """
 
 from ...load_utils import load_stopwords
-from .indicators_by_item_per_year import indicators_by_item_per_year
+from .indicators_by_field_per_year import indicators_by_field_per_year
 
 
 # pylint: disable=too-many-arguments
@@ -65,7 +65,7 @@ def items_occ_by_year(
     # pylint: disable=line-too-long
     """
 
-    indicators_by_year = indicators_by_item_per_year(
+    indicators_by_year = indicators_by_field_per_year(
         field=field,
         root_dir=root_dir,
         database=database,

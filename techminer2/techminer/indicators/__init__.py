@@ -4,31 +4,29 @@ the entire dataset.
 
 
 """
-
-
 from .co_occ_matrix_list import co_occ_matrix_list
-from .collaboration_indicators_by_topic import (
-    collaboration_indicators_by_topic,
+from .collaboration_indicators_by_field import (
+    collaboration_indicators_by_field,
 )
 from .column_indicators_by_metric import column_indicators_by_metric
-from .growth_indicators_by_topic import growth_indicators_by_topic
-from .impact_indicators_by_item import impact_indicators_by_item
+from .growth_indicators_by_field import growth_indicators_by_field
+from .impact_indicators_by_field import impact_indicators_by_field
 from .indicators_by_document import indicators_by_document
-from .indicators_by_item import indicators_by_item
-from .indicators_by_item_per_year import indicators_by_item_per_year
+from .indicators_by_field import indicators_by_field
+from .indicators_by_field_per_year import indicators_by_field_per_year
 from .indicators_by_year import indicators_by_year
 from .indicators_by_year_plot import indicators_by_year_plot
 from .items_occ_by_year import items_occ_by_year
 
 __all__ = [
     "co_occ_matrix_list",
-    "collaboration_indicators_by_topic",
+    "collaboration_indicators_by_field",
     "column_indicators_by_metric",
-    "growth_indicators_by_topic",
-    "impact_indicators_by_item",
+    "growth_indicators_by_field",
+    "impact_indicators_by_field",
     "indicators_by_document",
-    "indicators_by_item",
-    "indicators_by_item_per_year",
+    "indicators_by_field",
+    "indicators_by_field_per_year",
     "indicators_by_year",
     "indicators_by_year_plot",
     "items_occ_by_year",

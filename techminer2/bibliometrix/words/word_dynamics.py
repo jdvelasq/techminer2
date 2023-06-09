@@ -48,8 +48,8 @@ Analyze the table below which contains the  occurrences by year for the years. I
 # pylint: disable=line-too-long
 """
 from ... import vantagepoint
-from ...techminer.indicators.indicators_by_item_per_year import (
-    indicators_by_item_per_year,
+from ...techminer.indicators.indicators_by_field_per_year import (
+    indicators_by_field_per_year,
 )
 from ..documents_per_criterion import documents_per_criterion
 
@@ -97,7 +97,7 @@ def word_dynamics(
         **filters,
     )
 
-    chart.production_per_year_ = indicators_by_item_per_year(
+    chart.production_per_year_ = indicators_by_field_per_year(
         field=field,
         root_dir=root_dir,
         database=database,

@@ -98,7 +98,7 @@ from ...classes import TermsByYear
 from ...counters import add_counters_to_axis
 from ...item_utils import generate_custom_items
 from ...sort_utils import sort_indicators_by_metric
-from ...techminer.indicators import indicators_by_item, items_occ_by_year
+from ...techminer.indicators import indicators_by_field, items_occ_by_year
 
 
 # pylint: disable=too-many-arguments
@@ -169,7 +169,7 @@ def terms_by_year(
     )
 
     if custom_items is None:
-        indicators = indicators_by_item(
+        indicators = indicators_by_field(
             field=field,
             root_dir=root_dir,
             database=database,

@@ -51,9 +51,13 @@ def generate_custom_items(
     """
 
     def filter_by_top_n(indicators, top_n):
-        return indicators.index[:top_n].tolist()
+        """Returns the table of indicators filtered by top_n."""
+
+        return indicators.head(top_n)
 
     def filter_by_occ_range(indicators, occ_range):
+        """Returns the table of indicators filtered by occurrence range."""
+
         if occ_range[0] is not None:
             indicators = indicators[indicators["OCC"] >= occ_range[0]]
         if occ_range[1] is not None:
@@ -61,6 +65,8 @@ def generate_custom_items(
         return indicators.index.tolist()
 
     def filter_by_gc_range(indicators, gc_range):
+        """Returns the table of indicators filtered by global citations range."""
+
         if gc_range[0] is not None:
             indicators = indicators[
                 indicators["global_citations"] >= gc_range[0]
@@ -69,19 +75,22 @@ def generate_custom_items(
             indicators = indicators[
                 indicators["global_citations"] <= gc_range[1]
             ]
-        return indicators.index.tolist()
+        return indicators
 
     #
-    # Main code
+    # Main code:
     #
-
-    if top_n is not None:
-        return filter_by_top_n(indicators, top_n)
-
-    if occ_range is not None:
-        return filter_by_occ_range(indicators, occ_range)
+    # This is a complex filter for the indicators dataframe. It is based on
+    # the requirements of ScientoPy for calculating the top trending items.
+    #
 
     if gc_range is not None:
-        return filter_by_gc_range(indicators, gc_range)
+        indicators = filter_by_gc_range(indicators, gc_range)
+
+    if occ_range is not None:
+        indicators = filter_by_occ_range(indicators, occ_range)
+
+    if top_n is not None:
+        indicators = filter_by_top_n(indicators, top_n)
 
     return indicators.index.tolist()

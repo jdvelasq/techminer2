@@ -31,26 +31,25 @@ year                ...
 ... ).tail() # doctest: +NORMALIZE_WHITESPACE
       OCC  cum_OCC  ...  cum_local_citations  mean_local_citations_per_year
 year                ...                                                    
-2017    6      142  ...                153.0                           0.37
-2018    6      148  ...                161.0                           0.33
-2019    5      153  ...                166.0                           0.33
-2020    4      157  ...                168.0                           0.25
-2021    2      159  ...                170.0                           1.00
+2018   89      594  ...                729.0                           0.30
+2019   91      685  ...                837.0                           0.30
+2020  114      799  ...                982.0                           0.42
+2021   80      879  ...               1068.0                           0.54
+2022   30      909  ...               1100.0                           1.07
 <BLANKLINE>
 [5 rows x 11 columns]
-
 
 
 >>> techminer.indicators.indicators_by_year(
 ...     root_dir=root_dir, database="cited_by"
 ... ).tail() # doctest: +NORMALIZE_WHITESPACE
-        OCC  cum_OCC  ...  cum_global_citations  mean_global_citations_per_year
-year                  ...                                                      
-2019.0   33       44  ...                1764.0                            8.15
-2020.0   76      120  ...                2879.0                            3.67
-2021.0  107      227  ...                3511.0                            1.97
-2022.0  150      377  ...                3871.0                            1.20
-2023.0   10      387  ...                3871.0                            0.00
+      OCC  cum_OCC  ...  cum_global_citations  mean_global_citations_per_year
+year                ...                                                      
+2019   33       44  ...                  1764                            8.15
+2020   76      120  ...                  2879                            3.67
+2021  107      227  ...                  3511                            1.97
+2022  150      377  ...                  3871                            1.20
+2023   10      387  ...                  3871                            0.00
 <BLANKLINE>
 [5 rows x 7 columns]
 
@@ -124,6 +123,7 @@ def indicators_by_year(
         columns.append("global_citations")
     records = records[columns]
 
+    records["year"] = records["year"].astype(int)
     records = records.groupby("year", as_index=True).sum()
     records = records.sort_index(ascending=True, axis=0)
     records = records.assign(cum_OCC=records.OCC.cumsum())

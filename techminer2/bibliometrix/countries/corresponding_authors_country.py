@@ -69,8 +69,8 @@ import plotly.express as px
 from ...classes import CorresponingAuthorCountry
 from ...item_utils import generate_custom_items
 from ...sort_utils import sort_indicators_by_metric
-from ...techminer.indicators.collaboration_indicators_by_topic import (
-    collaboration_indicators_by_topic,
+from ...techminer.indicators.collaboration_indicators_by_field import (
+    collaboration_indicators_by_field,
 )
 
 
@@ -89,7 +89,7 @@ def corresponding_authors_country(
 ):
     """Corresponding Author's Country"""
 
-    indicators = collaboration_indicators_by_topic(
+    indicators = collaboration_indicators_by_field(
         "countries",
         root_dir=root_dir,
         database=database,

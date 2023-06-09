@@ -117,7 +117,7 @@ from ...classes import CocMatrix
 from ...counters import add_counters_to_axis
 from ...item_utils import generate_custom_items
 from ...sort_utils import sort_indicators_by_metric, sort_matrix_axis
-from ...techminer.indicators import co_occ_matrix_list, indicators_by_item
+from ...techminer.indicators import co_occ_matrix_list, indicators_by_field
 
 
 # pylint: disable=too-many-arguments disable=too-many-locals
@@ -154,7 +154,7 @@ def co_occurrence_matrix(
         custom_items,
     ):
         if custom_items is None:
-            indicators = indicators_by_item(
+            indicators = indicators_by_field(
                 field=field,
                 root_dir=root_dir,
                 database=database,

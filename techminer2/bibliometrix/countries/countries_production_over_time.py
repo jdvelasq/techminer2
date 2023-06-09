@@ -76,8 +76,8 @@ Analyze the table below which contains the  occurrences by year for the years. I
 # pylint: disable=line-too-long
 """
 from ...classes import ProductionOverTimeChart
-from ...techminer.indicators.indicators_by_item_per_year import (
-    indicators_by_item_per_year,
+from ...techminer.indicators.indicators_by_field_per_year import (
+    indicators_by_field_per_year,
 )
 from ...vantagepoint.analyze import terms_by_year
 from ...vantagepoint.report import gantt_chart
@@ -137,7 +137,7 @@ def countries_production_over_time(
         **filters,
     )
 
-    obj.production_per_year_ = indicators_by_item_per_year(
+    obj.production_per_year_ = indicators_by_field_per_year(
         field="countries",
         root_dir=root_dir,
         database=database,

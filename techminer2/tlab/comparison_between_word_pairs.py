@@ -83,7 +83,7 @@ from ..item_utils import generate_custom_items
 from ..load_utils import load_stopwords
 from ..record_utils import read_records
 from ..sort_utils import sort_indicators_by_metric
-from ..techminer.indicators.indicators_by_item import indicators_by_item
+from ..techminer.indicators.indicators_by_field import indicators_by_field
 
 
 def comparison_between_word_pairs(
@@ -205,7 +205,7 @@ def _select_topics(
     cited_by_filter,
     **filters,
 ):
-    indicators = indicators_by_item(
+    indicators = indicators_by_field(
         field=field,
         root_dir=root_dir,
         database=database,

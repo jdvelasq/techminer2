@@ -1,4 +1,4 @@
-.. automodule:: techminer2.scientopy.word_cloud
+.. automodule:: techminer2.scientopy.time_line_graph
     :members:
     :undoc-members:
     :show-inheritance:

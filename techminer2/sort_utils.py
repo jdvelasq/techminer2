@@ -4,8 +4,6 @@ Sorts the indicators dataframe by the given metric.
 
 """
 
-from .techminer.indicators import indicators_by_item
-
 
 def sort_indicators_by_metric(indicators, metric):
     """
@@ -85,6 +83,7 @@ def sort_indicators_by_metric(indicators, metric):
     return indicators
 
 
+# pylint: disable=import-outside-toplevel
 def sort_matrix_axis(
     matrix,
     axis,
@@ -101,9 +100,11 @@ def sort_matrix_axis(
     # pylint: disable=line-too-long
     """
 
+    from .techminer.indicators.indicators_by_field import indicators_by_field
+
     matrix = matrix.copy()
 
-    indicators_by_topic = indicators_by_item(
+    indicators_by_topic = indicators_by_field(
         field=field,
         # Database params:
         root_dir=root_dir,

@@ -1,26 +1,26 @@
-Indicators
+Indicators by Database Field
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
     co_occ_matrix_list
 
 .. toctree::
-    collaboration_indicators_by_topic
+    collaboration_indicators_by_field
 
 .. toctree::    
-    growth_indicators_by_topic
+    growth_indicators_by_field
 
 .. toctree::    
-    impact_indicators_by_item
+    impact_indicators_by_field
 
 .. toctree::
     indicators_by_document
 
 .. toctree::    
-    indicators_by_item
+    indicators_by_field
 
 .. toctree::    
-    indicators_by_item_per_year
+    indicators_by_field_per_year
 
 .. toctree::    
     indicators_by_year

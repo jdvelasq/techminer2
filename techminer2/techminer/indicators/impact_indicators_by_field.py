@@ -1,5 +1,5 @@
 """
-Impact Indicators by Item 
+Impact Indicators by Field 
 ===============================================================================
 
 
@@ -9,7 +9,7 @@ Examples
 >>> root_dir = "data/regtech/"
 
 >>> from techminer2  import techminer
->>> techminer.indicators.impact_indicators_by_item(
+>>> techminer.indicators.impact_indicators_by_field(
 ...     "countries", root_dir=root_dir).head()
            OCC  ...  avg_global_citations
 countries       ...                      
@@ -23,7 +23,7 @@ France       1  ...                  0.00
 
 
 >>> from pprint import pprint
->>> pprint(sorted(techminer.indicators.impact_indicators_by_item(
+>>> pprint(sorted(techminer.indicators.impact_indicators_by_field(
 ...     "countries", root_dir=root_dir).columns.to_list()))
 ['OCC',
  'age',
@@ -45,7 +45,7 @@ from ...record_utils import read_records
 
 
 # pylint: disable=too-many-locals
-def impact_indicators_by_item(
+def impact_indicators_by_field(
     field,
     root_dir="./",
     database="documents",

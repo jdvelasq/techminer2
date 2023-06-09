@@ -14,16 +14,16 @@ based on the type of plots.
     .. * `Bar Chart <../vantagepoint/report/bar_chart.html>`_
 
 .. toctree::
-    bar
+    bar_graph
 
 .. toctree::    
-    bar_trends
+    bar_trends_graph
 
 .. toctree::    
-    time_line
+    time_line_graph
 
 .. toctree::    
-    word_cloud
+    word_cloud_graph
 
 .. toctree::    
-    top_trending_topics
+    top_trending_topics_graph

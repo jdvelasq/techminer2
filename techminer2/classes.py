@@ -484,9 +484,9 @@ class CollaborationNetwork:
 #
 
 
-# Bar
+# Bar Graph
 @dataclass(init=False)
-class ScientopyBar:
+class ScientoPyGraph:
     """Scientopy bar."""
 
     plot_: go.Figure

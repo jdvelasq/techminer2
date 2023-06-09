@@ -1,6 +1,6 @@
 # flake8: noqa
 """
-Indicators by Item
+Indicators by Field
 ===============================================================================
 
 
@@ -8,7 +8,7 @@ Indicators by Item
 
 
 >>> from techminer2  import techminer
->>> techminer.indicators.indicators_by_item(
+>>> techminer.indicators.indicators_by_field(
 ...     field='authors',
 ...     root_dir=root_dir,
 ... ).head() # doctest: +NORMALIZE_WHITESPACE
@@ -23,7 +23,7 @@ Sarea A       2  ...                          2.00
 [5 rows x 5 columns]
 
 >>> from pprint import pprint
->>> pprint(sorted(techminer.indicators.indicators_by_item('authors',
+>>> pprint(sorted(techminer.indicators.indicators_by_field('authors',
 ...     root_dir=root_dir).columns.to_list()))
 ['OCC',
  'global_citations',
@@ -39,7 +39,7 @@ from ...load_utils import load_stopwords
 from ...record_utils import read_records
 
 
-def indicators_by_item(
+def indicators_by_field(
     field,
     root_dir="./",
     database="documents",
