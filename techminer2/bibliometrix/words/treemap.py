@@ -30,7 +30,7 @@ def treemap(
     metric="OCC",
     top_n=20,
     title=None,
-    database="documents",
+    database="main",
     year_filter=None,
     cited_by_filter=None,
     **filters,

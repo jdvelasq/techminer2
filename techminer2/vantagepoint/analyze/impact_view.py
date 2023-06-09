@@ -75,7 +75,7 @@ from ...techminer.indicators import impact_indicators_by_field
 def impact_view(
     field,
     root_dir="./",
-    database="documents",
+    database="main",
     metric="h_index",
     # Item filters:
     top_n=None,

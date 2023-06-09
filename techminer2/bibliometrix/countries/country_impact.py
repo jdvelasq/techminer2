@@ -77,7 +77,7 @@ from ..utils import bbx_generic_indicators_by_item
 def country_impact(
     metric="h_index",
     root_dir="./",
-    database="documents",
+    database="main",
     # Plot options:
     textfont_size=10,
     marker_size=7,

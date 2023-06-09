@@ -58,7 +58,7 @@ def coupling_matrix_list(
     metric="local_citations",
     topics_length=250,
     directory="./",
-    database="documents",
+    database="main",
     start_year=None,
     end_year=None,
     **filters,

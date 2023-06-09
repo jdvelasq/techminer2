@@ -50,7 +50,7 @@ from ...techminer.indicators import indicators_by_year, indicators_by_year_plot
 
 def average_citations_per_year(
     root_dir="./",
-    database="documents",
+    database="main",
     year_filter=None,
     cited_by_filter=None,
     **filters,

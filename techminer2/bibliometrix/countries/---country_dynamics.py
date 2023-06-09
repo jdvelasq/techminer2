@@ -65,7 +65,7 @@
 #     directory="./",
 #     title="Country Dynamics",
 #     plot=True,
-#     database="documents",
+#     database="main",
 #     start_year=None,
 #     end_year=None,
 #     **filters,

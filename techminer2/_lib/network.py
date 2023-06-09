@@ -26,7 +26,7 @@
 #     column,
 #     top_n=None,
 #     directory="./",
-#     database="documents",
+#     database="main",
 #     method="louvain",
 #     nx_k=0.1,
 #     nx_iteratons=10,

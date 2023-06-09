@@ -90,7 +90,7 @@ from ..documents_per_criterion import documents_per_criterion
 
 def organizations_production_over_time(
     root_dir="./",
-    database="documents",
+    database="main",
     # Table params:
     cumulative=False,
     # Item filters:

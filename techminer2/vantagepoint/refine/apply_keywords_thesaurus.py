@@ -36,10 +36,10 @@ def apply_keywords_thesaurus(root_dir="./"):
         "and abstract/title words\n"
     )
 
-    thesaurus_file = os.path.join(root_dir, "processed", "keywords.txt")
+    thesaurus_file = os.path.join(root_dir, "keywords.txt")
     thesaurus = load_thesaurus_as_dict_reversed(thesaurus_file)
 
-    files = list(glob.glob(os.path.join(root_dir, "processed/_*.csv")))
+    files = list(glob.glob(os.path.join(root_dir, "databases/_*.csv")))
     for file in files:
         data = pd.read_csv(file, encoding="utf-8")
         #
@@ -47,9 +47,9 @@ def apply_keywords_thesaurus(root_dir="./"):
             ("raw_author_keywords", "author_keywords"),
             ("raw_index_keywords", "index_keywords"),
             ("raw_keywords", "keywords"),
-            ("raw_title_noun_phrases", "title_noun_phrases"),
-            ("raw_abstract_noun_phrases", "abstract_noun_phrases"),
-            ("raw_noun_phrases", "noun_phrases"),
+            ("raw_title_nlp_phrases", "title_nlp_phrases"),
+            ("raw_abstract_nlp_phrases", "abstract_nlp_phrases"),
+            ("raw_nlp_phrases", "nlp_phrases"),
         ]:
             if raw_column in data.columns:
                 data[column] = data[raw_column].str.split(";")

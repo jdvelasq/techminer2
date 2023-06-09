@@ -21,7 +21,7 @@ class _Results:
 def chart(
     criterion,
     directory="./",
-    database="documents",
+    database="main",
     metric="OCC",
     start_year=None,
     end_year=None,

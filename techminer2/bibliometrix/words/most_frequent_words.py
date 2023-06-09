@@ -73,7 +73,7 @@ from ..utils import bbx_generic_indicators_by_item
 def most_frequent_words(
     field="author_keywords",
     root_dir="./",
-    database="documents",
+    database="main",
     # Plot options:
     textfont_size=10,
     marker_size=7,

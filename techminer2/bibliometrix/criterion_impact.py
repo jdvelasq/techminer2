@@ -19,7 +19,7 @@ TEXTLEN = 40
 # def criterion_impact(
 #     criterion,
 #     directory="./",
-#     database="documents",
+#     database="main",
 #     metric="h_index",
 #     topics_length=20,
 #     topic_min_occ=None,

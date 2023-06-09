@@ -11,7 +11,7 @@ the same directory as the documents.csv file.
 
 >>> from techminer2 import vantagepoint
 >>> vantagepoint.refine.apply_countries_thesaurus(root_dir)
---INFO-- The data/regtech/processed/countries.txt thesaurus file was applied to affiliations in all databases
+--INFO-- The data/regtech/countries.txt thesaurus file was applied to affiliations in all databases
 
 
 # pylint: disable=line-too-long
@@ -30,11 +30,11 @@ def apply_countries_thesaurus(root_dir="./"):
     """Apply country thesaurus."""
 
     # thesaurus preparation
-    thesaurus_file = os.path.join(root_dir, "processed", "countries.txt")
+    thesaurus_file = os.path.join(root_dir, "countries.txt")
     thesaurus = load_thesaurus_as_dict_reversed(thesaurus_file)
 
     # apply thesaurus
-    files = list(glob.glob(os.path.join(root_dir, "processed/_*.csv")))
+    files = list(glob.glob(os.path.join(root_dir, "databases/_*.csv")))
     for file in files:
         records = pd.read_csv(file, encoding="utf-8")
         #

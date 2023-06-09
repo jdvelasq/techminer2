@@ -62,7 +62,7 @@ def word_dynamics(
     custom_items=None,
     cumulative=False,
     root_dir="./",
-    database="documents",
+    database="main",
     year_filter=None,
     cited_by_filter=None,
     **filters,

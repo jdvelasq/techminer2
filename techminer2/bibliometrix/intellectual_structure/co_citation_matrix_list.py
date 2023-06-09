@@ -38,7 +38,7 @@ def co_citation_matrix_list(
     matrix_list = _create_matrix_list(
         criterion="local_references",
         directory=directory,
-        database="documents",
+        database="main",
         start_year=start_year,
         end_year=end_year,
         **filters,
@@ -69,7 +69,7 @@ def co_citation_matrix_list(
             column_name=column_name,
             criterion="local_references",
             directory=directory,
-            database="documents",
+            database="main",
             start_year=start_year,
             end_year=end_year,
         )

@@ -40,7 +40,7 @@ def items_occ_by_year(
     field,
     root_dir="./",
     cumulative=False,
-    database="documents",
+    database="main",
     # Database filters:
     year_filter=None,
     cited_by_filter=None,

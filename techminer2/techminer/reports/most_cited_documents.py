@@ -51,7 +51,7 @@ def most_cited_documents(
         file_name=file_name,
         use_textwrap=True,
         root_dir=root_dir,
-        database="documents",
+        database="main",
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
         **filters,

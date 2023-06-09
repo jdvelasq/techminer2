@@ -33,7 +33,7 @@ def abstracts_report(
     custom_items=None,
     # Database parameters:
     root_dir="./",
-    database="documents",
+    database="main",
     year_filter=None,
     cited_by_filter=None,
     **filters,

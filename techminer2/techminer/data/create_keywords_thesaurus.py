@@ -5,9 +5,9 @@ Create keywords thesaurus
 
 >>> root_dir = "data/regtech/"
 
-# >>> from techminer2 import techminer
-# >>> techminer.data.create_keywords_thesaurus(root_dir=root_dir)
-# --INFO-- Creating `keywords.txt` from author/index keywords, and abstract/title words
+>>> from techminer2 import techminer
+>>> techminer.data.create_keywords_thesaurus(root_dir=root_dir)
+--INFO-- Creating `keywords.txt` from author/index keywords, and abstract/title words
 
 # pylint: disable=line-too-long
 """
@@ -32,7 +32,7 @@ def create_keywords_thesaurus(root_dir="./"):
     )
 
     series = load_value_phrases_from_databases(root_dir=root_dir)
-    series = explode_raw_noun_phrases(series)
+    series = explode_raw_nlp_phrases(series)
     series = remove_strange_characters(series)
     frame = build_occurrences_table(series)
     #
@@ -78,7 +78,7 @@ def create_keywords_thesaurus(root_dir="./"):
         {"value_phrase": list}
     )
     frame["value_phrase"] = frame["value_phrase"].map(set).map(sorted)
-    file_path = pathlib.Path(root_dir) / "processed/keywords.txt"
+    file_path = pathlib.Path(root_dir) / "keywords.txt"
 
     with open(file_path, "w", encoding="utf-8") as file:
         for _, row in frame.iterrows():
@@ -99,9 +99,9 @@ def process_frame(frame):
         frame["value_fingerprint"]
     )
     frame["value_fingerprint"] = replace_sinonimous(frame["value_fingerprint"])
-    frame["value_fingerprint"] = remove_hypen_from_know_keywords(
-        frame["value_fingerprint"]
-    )
+    # frame["value_fingerprint"] = remove_hypen_from_know_keywords(
+    #     frame["value_fingerprint"]
+    # )
     frame["value_fingerprint"] = remove_ending_terms(
         frame["value_fingerprint"]
     )
@@ -118,7 +118,7 @@ def process_frame(frame):
 def load_existent_thesaurus(root_dir):
     """Load existence thesaurus."""
 
-    file_path = pathlib.Path(root_dir) / "processed/keywords.txt"
+    file_path = pathlib.Path(root_dir) / "keywords.txt"
 
     if not file_path.exists():
         return None
@@ -143,11 +143,11 @@ def load_value_phrases_from_databases(root_dir="./"):
 
     words_list = []
 
-    files = list(glob.glob(os.path.join(root_dir, "processed/_*.csv")))
+    files = list(glob.glob(os.path.join(root_dir, "databases/_*.csv")))
     for file in files:
         data = pd.read_csv(file, encoding="utf-8")
-        if "raw_noun_phrases" in data.columns:
-            words_list.append(data["raw_noun_phrases"])
+        if "raw_nlp_phrases" in data.columns:
+            words_list.append(data["raw_nlp_phrases"])
 
     words_list = pd.concat(words_list, ignore_index=True)
     words_list = words_list.str.strip()
@@ -157,7 +157,7 @@ def load_value_phrases_from_databases(root_dir="./"):
     return words_list
 
 
-def explode_raw_noun_phrases(frame):
+def explode_raw_nlp_phrases(frame):
     """Explodes the raw noun phrases column."""
 
     frame = frame.copy()
@@ -204,47 +204,62 @@ def create_fingerprint_column(frame):
     return frame
 
 
-def invert_parenthesis(word):
+def invert_parenthesis(column):
     """Transforms `word (meaning)` into `meaning (word)`.
 
     "regtech (regulatory technology)" -> "regulatory technology (regtech)"
 
     """
-    if "(" in word:
-        text_to_remove = word[word.find("(") + 1 : word.find(")")]
-        meaning = word[: word.find("(")].strip()
-        if (
-            len(meaning) < len(text_to_remove)
-            and len(text_to_remove.strip()) > 1
-        ):
-            word = text_to_remove + " (" + meaning + ")"
-    return word
+
+    def invert_parenthesis_in_text(text):
+        if "(" in text:
+            text_to_remove = text[text.find("(") + 1 : text.find(")")]
+            meaning = text[: text.find("(")].strip()
+            if (
+                len(meaning) < len(text_to_remove)
+                and len(text_to_remove.strip()) > 1
+            ):
+                text = text_to_remove + " (" + meaning + ")"
+        return text
+
+    column = column.astype(str).map(invert_parenthesis_in_text)
+    return column
 
 
-def remove_brackets(word):
+def remove_brackets(column):
     """Removes brackets from the word.
 
     "regtech [regulatory technology]" -> "regtech"
 
     """
-    if "[" in word:
-        text_to_remove = word[word.find("[") : word.find("]") + 1]
-        word = word.replace(text_to_remove, "")
-        word = " ".join([w.strip() for w in word.split()])
-    return word
+
+    def remove_brackets_from_text(text):
+        if "[" in text:
+            text_to_remove = text[text.find("[") : text.find("]") + 1]
+            text = text.replace(text_to_remove, "")
+            text = " ".join([w.strip() for w in text.split()])
+        return text
+
+    column = column.astype(str).map(remove_brackets_from_text)
+    return column
 
 
-def remove_parenthesis(word):
-    """Removes parenthesis from the word.
+def remove_parenthesis(column):
+    """Removes parenthesis from the column.
 
     "regtech (regulatory technology)" -> "regtech"
 
     """
-    if "(" in word:
-        text_to_remove = word[word.find("(") : word.find(")") + 1]
-        word = word.replace(text_to_remove, "")
-        word = " ".join([w.strip() for w in word.split()])
-    return word
+
+    def remove_parenthesis_from_text(text):
+        if "(" in text:
+            text_to_remove = text[text.find("(") : text.find(")") + 1]
+            text = text.replace(text_to_remove, "")
+            text = " ".join([w.strip() for w in text.split()])
+        return text
+
+    column = column.astype(str).map(remove_parenthesis_from_text)
+    return column
 
 
 def remove_initial_articles(series):
@@ -257,7 +272,7 @@ def remove_initial_articles(series):
 
     """
     series = series.copy()
-    for word in ["^and ", "^the ", "^a ", "^an "]:
+    for word in ["^AND ", "^THE ", "^A ", "^AN "]:
         series = series.str.replace(word, "", regex=True)
     return series
 
@@ -265,84 +280,73 @@ def remove_initial_articles(series):
 def replace_sinonimous(series):
     """Replaces sinonimous terms."""
 
-    series = series.copy()
-    replacements = [
-        ("&", "and"),
-        (r"\bof\b", ""),
-        (r"-based\b", " "),
-        (r"\bbased\b", " "),
-        (r"\bfor\b", " "),
-        (r"\btype-i\b", "type-1 "),
-        (r"\btype i\b", "type-1 "),
-        (r"\btype 1\b", "type-1 "),
-        (r"\btype-ii\b", "type-2 "),
-        (r"\btype ii\b", "type-2 "),
-        (r"\btype 2\b", "type-2 "),
-        (r"\btype2\b", "type-2 "),
-        (r"\binterval type\b", "type "),
-        (r"\bforecasting\b", "prediction"),
-        (r"\bforecast\b", "prediction"),
-        (r"\btype2-fuzzy\b", "type-2 fuzzy"),
-        (r"\b1-dimensional\b", "one-dimensional "),
-        (r"\bneural-net\b", " neural network "),
-        (r"\boptimisation\b", "optimization"),
-        (r"\bartificial neural network\b", "neural network"),
-        (r"\bsolar irradiance\b", "solar radiation"),
-        (r"\bsolar irradiation\b", "solar radiation"),
-    ]
-    for to_replace, value in replacements:
-        series = series.str.replace(to_replace, value, regex=False)
-    return series
+    owner = "jdvelasq"
+    repo = "techminer2"
+    path = "settings/keywords_replacements.csv"
+    url = f"https://raw.githubusercontent.com/{owner}/{repo}/main/{path}"
 
-
-def remove_hypen_from_know_keywords(series):
-    """Removes hypen from known keywords."""
+    replacements = pd.read_csv(url, encoding="utf-8")
 
     series = series.copy()
-    keywords_with_hypen = [
-        "auto-associative",
-        "auto-encoder",
-        "back-propagation",
-        "big-data",
-        "feed-forward",
-        "lithium-ion",
-        "micro-grid",
-        "micro-grids",
-        "multi-layer",
-        "multi-step",
-        "non-linear",
-        "photo-voltaic",
-        "power-point",
-        "radial-basis",
-        "smart-grid",
-        "smart-grids",
-        "stand-alone",
-    ]
-    for word in keywords_with_hypen:
+    for _, row in replacements.iterrows():
         series = series.str.replace(
-            r"\b" + word + r"\b", word.replace("-", ""), regex=True
+            r"\b" + row.to_replace + r"\b", row.value, regex=True
         )
+
+    for _ in range(3):
+        series = series.str.replace("  ", " ", regex=False)
+
     return series
+
+
+# def remove_hypen_from_know_keywords(series):
+#     """Removes hypen from known keywords."""
+
+#     series = series.copy()
+#     keywords_with_hypen = [
+#         "auto-associative",
+#         "auto-encoder",
+#         "back-propagation",
+#         "big-data",
+#         "feed-forward",
+#         "lithium-ion",
+#         "micro-grid",
+#         "micro-grids",
+#         "multi-layer",
+#         "multi-step",
+#         "non-linear",
+#         "photo-voltaic",
+#         "power-point",
+#         "radial-basis",
+#         "smart-grid",
+#         "smart-grids",
+#         "stand-alone",
+#     ]
+#     for word in keywords_with_hypen:
+#         series = series.str.replace(
+#             r"\b" + word + r"\b", word.replace("-", ""), regex=True
+#         )
+#     return series
 
 
 def remove_ending_terms(series):
     """Removes ending terms from the keywords list."""
     series = series.copy()
     replacements = [
-        "techniques",
-        "technique",
-        "algorithms",
-        "algorithm",
-        "methods",
-        "method",
-        "approaches",
-        "approach",
-        "strategies",
-        "strategy",
-        "models",
-        "model",
-        "methodologies",
-        "methodology",
+        "TECHNIQUES",
+        "TECHNIQUE",
+        "ALGORITHMS",
+        "ALGORITHM",
+        "METHODS",
+        "METHOD",
+        "APPROACHES",
+        "APPROACH",
+        "STRATEGIES",
+        "STRATEGY",
+        "MODELS",
+        "MODEL",
+        "METHODOLOGIES",
+        "METHODOLOGY",
     ]
     for to_replace in replacements:
         series = series.str.replace(" " + to_replace + "$", "", regex=True)

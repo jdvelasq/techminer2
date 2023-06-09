@@ -11,7 +11,7 @@ the same directory as the documents.csv file.
 
 >>> from techminer2 import vantagepoint
 >>> vantagepoint.refine.apply_organizations_thesaurus(root_dir)
---INFO-- The data/regtech/processed/organizations.txt thesaurus file was \
+--INFO-- The data/regtech/organizations.txt thesaurus file was \
 applied to affiliations in all databases
 
 
@@ -31,11 +31,11 @@ def apply_organizations_thesaurus(root_dir="./"):
     """Apply 'organizations.txt' thesaurus."""
 
     # Read the thesaurus
-    thesaurus_file = os.path.join(root_dir, "processed", "organizations.txt")
+    thesaurus_file = os.path.join(root_dir, "organizations.txt")
     thesaurus = load_thesaurus_as_dict_reversed(thesaurus_file)
 
     # Apply thesaurus
-    files = list(glob.glob(os.path.join(root_dir, "processed/_*.csv")))
+    files = list(glob.glob(os.path.join(root_dir, "databases/_*.csv")))
 
     for file in files:
         records = pd.read_csv(file, encoding="utf-8")

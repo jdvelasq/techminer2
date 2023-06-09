@@ -13,7 +13,7 @@ def cluster_abstracts_report(
     n_keywords=10,
     # n_abstracts=50,
     directory="./",
-    database="documents",
+    database="main",
     start_year=None,
     end_year=None,
     **filters,

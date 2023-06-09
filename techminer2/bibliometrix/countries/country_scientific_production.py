@@ -58,7 +58,7 @@ from ...vantagepoint.report import world_map
 # pylint: disable=too-many-arguments
 def country_scientific_production(
     root_dir="./",
-    database="documents",
+    database="main",
     metric="OCC",
     # Chart options:
     colormap="Blues",

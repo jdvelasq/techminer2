@@ -88,7 +88,7 @@ from ...techminer.indicators.items_occ_by_year import items_occ_by_year
 def trend_topics(
     field,
     root_dir="./",
-    database="documents",
+    database="main",
     # Parameters:
     n_words_per_year=5,
     custom_items=None,

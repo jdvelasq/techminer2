@@ -78,7 +78,7 @@ from ...record_utils import read_records
 
 def bradford_law(
     root_dir="./",
-    database="documents",
+    database="main",
     # Database filters:
     year_filter=None,
     cited_by_filter=None,
@@ -212,7 +212,7 @@ def _core_sources(
 
 def _source_clustering(
     root_dir="./",
-    database="documents",
+    database="main",
     year_filter=None,
     cited_by_filter=None,
     **filters,

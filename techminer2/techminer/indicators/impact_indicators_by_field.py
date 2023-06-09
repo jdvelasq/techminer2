@@ -48,7 +48,7 @@ from ...record_utils import read_records
 def impact_indicators_by_field(
     field,
     root_dir="./",
-    database="documents",
+    database="main",
     # Database filters:
     year_filter=None,
     cited_by_filter=None,

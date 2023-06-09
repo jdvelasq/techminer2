@@ -59,7 +59,7 @@ def most_local_cited_documents(
         metric="local_citations",
         root_dir=root_dir,
         file_name="most_local_cited_documents.txt",
-        database="documents",
+        database="main",
         top_n=top_n,
         title=title,
         year_filter=year_filter,

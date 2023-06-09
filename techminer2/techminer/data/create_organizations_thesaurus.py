@@ -10,7 +10,7 @@ Creates a organizations thesaurus from the data in the database.
 
 # >>> from techminer2 import techminer
 # >>> techminer.data.create_organizations_thesaurus(root_dir)
-# --INFO-- The data/regtech/processed/organizations.txt thesaurus file was created
+# --INFO-- The data/regtech/organizations.txt thesaurus file was created
 
 
 """
@@ -34,7 +34,7 @@ def create_organizations_thesaurus(root_dir="./"):
     frame = format_organization_names(frame)
     save_organizations_thesaurus(frame, root_dir)
     print(
-        f"--INFO-- The {pathlib.Path(root_dir) / 'processed/organizations.txt'} "
+        f"--INFO-- The {pathlib.Path(root_dir) / 'organizations.txt'} "
         "thesaurus file was created"
     )
 
@@ -42,7 +42,7 @@ def create_organizations_thesaurus(root_dir="./"):
 def load_affiliations_from_country_thesaurus(root_dir):
     """Loads data from countries.txt file."""
 
-    file_path = pathlib.Path(root_dir) / "processed/countries.txt"
+    file_path = pathlib.Path(root_dir) / "countries.txt"
 
     country = None
     countries = []
@@ -275,7 +275,7 @@ def save_organizations_thesaurus(frame, root_dir):
         {"raw_affiliation": list}
     )
 
-    file_path = pathlib.Path(root_dir) / "processed/organizations.txt"
+    file_path = pathlib.Path(root_dir) / "organizations.txt"
 
     with open(file_path, "w", encoding="utf-8") as file:
         for _, row in frame.iterrows():
@@ -286,7 +286,7 @@ def save_organizations_thesaurus(frame, root_dir):
 
 def read_existent_organizations_txt_thesaurus(root_dir):
     """Read the existent thesaurus if exists."""
-    file_path = pathlib.Path(root_dir) / "processed/organizations.txt"
+    file_path = pathlib.Path(root_dir) / "organizations.txt"
 
     organization = None
     organizations = []

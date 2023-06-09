@@ -59,7 +59,7 @@ def most_global_cited_documents(
         metric="global_citations",
         file_name="most_global_cited_documents.txt",
         root_dir=root_dir,
-        database="documents",
+        database="main",
         top_n=top_n,
         title=title,
         # Database filters:

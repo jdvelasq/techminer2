@@ -29,7 +29,7 @@ def _dynamics(
     directory="./",
     plot=True,
     title=None,
-    database="documents",
+    database="main",
     start_year=None,
     end_year=None,
     **filters,

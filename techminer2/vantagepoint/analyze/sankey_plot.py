@@ -44,7 +44,7 @@ def sankey_plot(
     color=None,
     # Database params:
     root_dir="./",
-    database="documents",
+    database="main",
     year_filter=None,
     cited_by_filter=None,
     **filters,

@@ -27,7 +27,7 @@ def _production_over_time(
     directory="./",
     title=None,
     metric="OCC",
-    database="documents",
+    database="main",
     start_year=None,
     end_year=None,
     **filters,

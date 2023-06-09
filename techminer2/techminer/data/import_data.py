@@ -10,9 +10,9 @@ Import a scopus data file in the working directory.
 
 >>> from techminer2 import techminer
 >>> techminer.data.import_data(root_dir, disable_progress_bar=True)
---INFO-- Concatenating raw files in data/regtech/raw/cited_by/
---INFO-- Concatenating raw files in data/regtech/raw/references/
---INFO-- Concatenating raw files in data/regtech/raw/documents/
+--INFO-- Concatenating raw files in data/regtech/raw-data/cited_by/
+--INFO-- Concatenating raw files in data/regtech/raw-data/references/
+--INFO-- Concatenating raw files in data/regtech/raw-data/main/
 --INFO-- Applying scopus tags to database files
 --INFO-- Formatting column names in database files
 --INFO-- Repairing authors ID
@@ -43,59 +43,56 @@ Import a scopus data file in the working directory.
 --INFO-- Processing `raw_author_keywords` column
 --INFO-- Processing `raw_index_keywords` column
 --INFO-- Concatenating `raw_author_keywords` and `raw_index_keywords` columns to `raw_keywords`
---INFO-- Processing `abstract` column
 --INFO-- Processing `title` column
---INFO-- Copying `title` column to `raw_title_noun_phrases`
---INFO-- Processing `raw_title_noun_phrases` column
---INFO-- Copying `abstract` column to `raw_abstract_noun_phrases`
---INFO-- Processing `raw_abstract_noun_phrases` column
---INFO-- Concatenating `raw_title_noun_phrases` and `raw_abstract_noun_phrases` columns to `raw_noun_phrases`
---INFO-- Concatenating `raw_noun_phrases` and `raw_keywords` columns to `raw_noun_phrases`
---INFO-- Processing `raw_noun_phrases` column
+--INFO-- Copying `title` column to `raw_title_nlp_phrases`
+--INFO-- Processing `raw_title_nlp_phrases` column
+--INFO-- Processing `abstract` column
+--INFO-- Copying `abstract` column to `raw_abstract_nlp_phrases`
+--INFO-- Processing `raw_abstract_nlp_phrases` column
+--INFO-- Concatenating `raw_title_nlp_phrases` and `raw_abstract_nlp_phrases` columns to `raw_nlp_phrases`
+--INFO-- Concatenating `raw_nlp_phrases` and `raw_keywords` columns to `raw_nlp_phrases`
+--INFO-- Processing `raw_nlp_phrases` column
 --INFO-- Searching `references` using DOI
 --INFO-- Searching `references` using (year, title, author)
 --INFO-- Searching `references` using (title)
 --INFO-- Creating `local_citations` column in references database
 --INFO-- Creating `local_citations` column in documents database
---INFO-- The data/regtech/processed/countries.txt thesaurus file was created
+--INFO-- The data/regtech/countries.txt thesaurus file was created
 --INFO-- Creating `keywords.txt` from author/index keywords, and abstract/title words
---INFO-- The data/regtech/processed/organizations.txt thesaurus file was created
---INFO-- The data/regtech/processed/countries.txt thesaurus file was applied to affiliations in all databases
+--INFO-- The data/regtech/organizations.txt thesaurus file was created
+--INFO-- The data/regtech/countries.txt thesaurus file was applied to affiliations in all databases
 --INFO-- Applying `keywords.txt` thesaurus to author/index keywords and abstract/title words
---INFO-- The data/regtech/processed/organizations.txt thesaurus file was applied to affiliations in all databases
+--INFO-- The data/regtech/organizations.txt thesaurus file was applied to affiliations in all databases
 --INFO-- Process finished!!!
---INFO-- The file 'data/regtech/reports/imported_records.txt' was created
---INFO-- data/regtech/processed/_documents.csv: 52 imported records
---INFO-- data/regtech/processed/_references.csv: 909 imported records
---INFO-- data/regtech/processed/_cited_by.csv: 387 imported records
-
+--INFO-- data/regtech/databases/_references.csv: 909 imported records
+--INFO-- data/regtech/databases/_main.csv: 52 imported records
+--INFO-- data/regtech/databases/_cited_by.csv: 387 imported records
 
 
 >>> import pandas as pd
 >>> from pprint import pprint
 >>> import textwrap
->>> my_list = pd.read_csv(root_dir + "processed/_documents.csv", encoding="utf-8").columns.tolist()
+>>> my_list = pd.read_csv(root_dir + "databases/_main.csv", encoding="utf-8").columns.tolist()
 >>> wrapped_list = textwrap.fill(", ".join(sorted(my_list)), width=79)
 >>> print(wrapped_list)
-abstract, abstract_noun_phrases, affiliations, art_no, article,
-author_keywords, authors, authors_id, authors_with_affiliations, coden,
-correspondence_address, countries, country_1st_author, document_type, doi, eid,
-global_citations, global_references, index_keywords, isbn, issn, issue,
-keywords, link, local_citations, local_references, noun_phrases, num_authors,
+abstract, abstract_nlp_phrases, affiliations, art_no, article, author_keywords,
+authors, authors_id, authors_with_affiliations, coden, correspondence_address,
+countries, country_1st_author, document_type, doi, eid, global_citations,
+global_references, index_keywords, isbn, issn, issue, keywords, link,
+local_citations, local_references, nlp_phrases, num_authors,
 num_global_references, open_access, organization_1st_author, organizations,
-page_end, page_start, publication_stage, raw_abstract_noun_phrases,
+page_end, page_start, publication_stage, raw_abstract_nlp_phrases,
 raw_author_keywords, raw_authors, raw_authors_id, raw_countries,
-raw_index_keywords, raw_keywords, raw_noun_phrases, raw_organizations,
-raw_title_noun_phrases, source, source_abbr, source_title, title,
-title_noun_phrases, volume, year
+raw_index_keywords, raw_keywords, raw_nlp_phrases, raw_organizations,
+raw_title_nlp_phrases, source, source_abbr, source_title, title,
+title_nlp_phrases, volume, year
 
 
 
 
 
 
-
->>> recors = pd.read_csv(root_dir + "processed/_documents.csv", encoding="utf-8")
+>>> recors = pd.read_csv(root_dir + "databases/_main.csv", encoding="utf-8")
 >>> print(recors[["raw_authors_id", "authors_id"]].head().to_markdown())
 |    | raw_authors_id                                                           | authors_id                                                                                                                                            |
 |---:|:-------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -324,7 +321,10 @@ def import_data(root_dir="./", disable_progress_bar=False, **document_types):
     #
 
     #
-    # Prepare keywords: to lowercase() and replace spaces with underscores
+    #
+    # Prepare author/index keywords:
+    # To upper() and replace spaces with underscores
+    # Merge author/index keywords into a single column
     #
     process_column(
         root_dir,
@@ -335,9 +335,18 @@ def import_data(root_dir="./", disable_progress_bar=False, **document_types):
             lambda w: "; ".join(
                 sorted(
                     z.strip()
+                    .replace("&", "AND")
+                    .replace("   ", "  ")
+                    .replace("  ", " ")
                     .replace(" ", "_")
-                    .replace("_(", " (")
+                    .replace("/", "_")
+                    .replace("\\", "_")
+                    .replace(".", "_")
+                    .replace(",", "_")
+                    .replace("'", "_")
                     .replace("-", "_")
+                    .replace("__", "_")
+                    .replace("_(", " (")
                     for z in w
                 )
             ),
@@ -353,9 +362,18 @@ def import_data(root_dir="./", disable_progress_bar=False, **document_types):
             lambda w: "; ".join(
                 sorted(
                     z.strip()
+                    .replace("&", "AND")
+                    .replace("   ", "  ")
+                    .replace("  ", " ")
                     .replace(" ", "_")
-                    .replace("_(", " (")
+                    .replace("/", "_")
+                    .replace("\\", "_")
+                    .replace(".", "_")
+                    .replace(",", "_")
+                    .replace("'", "_")
                     .replace("-", "_")
+                    .replace("__", "_")
+                    .replace("_(", " (")
                     for z in w
                 )
             ),
@@ -370,8 +388,59 @@ def import_data(root_dir="./", disable_progress_bar=False, **document_types):
     )
 
     #
-    # Prepare abstracts and titles: to lowercase() and mask
-    # "[no abstract available]"
+    # Prepare title:
+    # To lower() & remove brackets & remove multiple spaces & strip
+    #
+    process_column(
+        root_dir,
+        "title",
+        lambda x: x.str.replace(r"\[.*", "", regex=True)
+        .str.replace("   ", "  ")
+        .str.replace("  ", " ")
+        .str.strip()
+        .str.lower(),
+    )
+
+    #
+    # Technological Emergence Indicators using Emergence Score
+    # Garner et al. 2017.
+    # ------------------------------------------------------------------------
+    #
+    # Suitable terms for determining emergence are presented both in title and
+    # the abstract. This allows to augment the list of terms given by the
+    # authors/index keywords
+    #
+
+    #
+    # Step 1: Create a candidate list of title nlp phrases
+    #
+    copy_to_column(root_dir, "title", "raw_title_nlp_phrases")
+    process_column(
+        root_dir,
+        "raw_title_nlp_phrases",
+        lambda x: x.astype(str)
+        .map(lambda z: TextBlob(z).noun_phrases)
+        .map(set, na_action="ignore")
+        .map(sorted, na_action="ignore")
+        .map(lambda x: [z for z in x if z != "nan"])
+        .str.join("; ")
+        .str.upper()
+        .replace("   ", "  ")
+        .replace("  ", " ")
+        .str.replace(" ", "_")
+        .str.replace("/", "_")
+        .str.replace("\\", "_")
+        .str.replace(".", "_")
+        .str.replace(",", "_")
+        .str.replace("'", "_")
+        .str.replace("-", "_")
+        .str.replace("__", "_")
+        .str.replace(";_", "; ")
+        .map(lambda x: pd.NA if x == "" else x),
+    )
+
+    #
+    # Step 2: Create a candidate list of abstract nlp phrases
     #
     process_column(
         root_dir,
@@ -379,64 +448,62 @@ def import_data(root_dir="./", disable_progress_bar=False, **document_types):
         lambda x: x.mask(x == "[no abstract available]", pd.NA).str.lower(),
     )
 
+    copy_to_column(root_dir, "abstract", "raw_abstract_nlp_phrases")
     process_column(
         root_dir,
-        "title",
-        lambda x: x.str.replace(r"\[.*", "", regex=True)
-        .str.strip()
-        .str.lower(),
-    )
-
-    copy_to_column(root_dir, "title", "raw_title_noun_phrases")
-    # .map(set, na_action="ignore")
-    process_column(
-        root_dir,
-        "raw_title_noun_phrases",
+        "raw_abstract_nlp_phrases",
         lambda x: x.astype(str)
         .map(lambda z: TextBlob(z).noun_phrases)
         .map(sorted, na_action="ignore")
+        .map(set, na_action="ignore")
+        .map(lambda x: [z for z in x if z != "nan"])
         .str.join("; ")
         .str.upper()
+        .replace("   ", "  ")
+        .replace("  ", " ")
         .str.replace(" ", "_")
+        .str.replace("/", "_")
+        .str.replace("\\", "_")
+        .str.replace(".", "_")
+        .str.replace(",", "_")
+        .str.replace("'", "_")
         .str.replace("-", "_")
-        .str.replace(";_", "; "),
+        .str.replace("__", "_")
+        .str.replace(";_", "; ")
+        .map(lambda x: pd.NA if x == "" else x),
     )
 
-    copy_to_column(root_dir, "abstract", "raw_abstract_noun_phrases")
-    # .map(set, na_action="ignore")
-    process_column(
+    #
+    # Step 3: Filter terms in title and abstract nlp phrases
+    #
+    filter_nlp_phrases(root_dir)
+
+    #
+    # Continue normal processing ....
+    #
+    concatenate_columns(
         root_dir,
-        "raw_abstract_noun_phrases",
-        lambda x: x.astype(str)
-        .map(lambda z: TextBlob(z).noun_phrases)
-        .map(sorted, na_action="ignore")
-        .str.join("; ")
-        .str.upper()
-        .str.replace(" ", "_")
-        .str.replace("-", "_")
-        .str.replace(";_", "; "),
+        "raw_nlp_phrases",
+        "raw_title_nlp_phrases",
+        "raw_abstract_nlp_phrases",
     )
 
     concatenate_columns(
         root_dir,
-        "raw_noun_phrases",
-        "raw_title_noun_phrases",
-        "raw_abstract_noun_phrases",
-    )
-
-    concatenate_columns(
-        root_dir,
-        "raw_noun_phrases",
-        "raw_noun_phrases",
+        "raw_nlp_phrases",
+        "raw_nlp_phrases",
         "raw_keywords",
     )
 
     process_column(
         root_dir,
-        "raw_noun_phrases",
+        "raw_nlp_phrases",
         lambda x: x.astype(str)
         .str.split("; ")
-        .apply(lambda x: "; ".join(sorted(set(x)))),
+        .apply(lambda x: sorted(set(x)))
+        .apply(lambda x: [z for z in x if z != "nan"])
+        .str.join("; ")
+        .apply(lambda x: pd.NA if x == "" else x),
     )
 
     transform_abstract_keywords_to_underscore(root_dir)
@@ -465,7 +532,7 @@ def import_data(root_dir="./", disable_progress_bar=False, **document_types):
 
     print("--INFO-- Process finished!!!")
 
-    abstracts_report(root_dir=root_dir, file_name="imported_records.txt")
+    ## abstracts_report(root_dir=root_dir, file_name="imported_records.txt")
     report_imported_records_per_file(root_dir)
 
 
@@ -488,7 +555,7 @@ def create_working_directories(root_dir):
 
     :meta private:
     """
-    for directory in ["processed", "reports"]:
+    for directory in ["databases", "reports"]:
         directory_path = os.path.join(root_dir, directory)
         if not os.path.exists(directory_path):
             os.makedirs(directory_path)
@@ -506,7 +573,7 @@ def create_stopword_txt_file(root_dir):
 
     :meta private:
     """
-    file_path = os.path.join(root_dir, "processed", "stopwords.txt")
+    file_path = os.path.join(root_dir, "stopwords.txt")
 
     if not os.path.exists(file_path):
         with open(file_path, "w", encoding="utf-8"):
@@ -525,8 +592,8 @@ def create_database_files(root_dir):
 
     :meta private:
     """
-    raw_dir = os.path.join(root_dir, "raw")
-    processed_dir = os.path.join(root_dir, "processed")
+    raw_dir = os.path.join(root_dir, "raw-data")
+    processed_dir = os.path.join(root_dir, "databases")
 
     folders = get_subdirectories(raw_dir)
     for folder in folders:
@@ -534,6 +601,10 @@ def create_database_files(root_dir):
         file_name = f"_{folder}.csv"
         file_path = os.path.join(processed_dir, file_name)
         data.to_csv(file_path, sep=",", encoding="utf-8", index=False)
+
+    file_path = os.path.join(root_dir, "databases/_DO_NOT_TOUCH_.txt")
+    with open(file_path, "w", encoding="utf-8"):
+        pass
 
 
 def get_subdirectories(directory):
@@ -627,12 +698,83 @@ def rename_scopus_columns_in_database_files(root_dir):
     tags["techminer"] = tags["techminer"].str.strip()
     scopus2tags = dict(zip(tags["scopus"], tags["techminer"]))
 
-    processed_dir = pathlib.Path(root_dir) / "processed"
+    processed_dir = pathlib.Path(root_dir) / "databases"
     files = list(processed_dir.glob("_*.csv"))
     for file in files:
         data = pd.read_csv(file, encoding="utf-8")
         data.rename(columns=scopus2tags, inplace=True)
         data.to_csv(file, sep=",", encoding="utf-8", index=False)
+
+
+def filter_nlp_phrases(root_dir):
+    """Filter nlp phrases in abstract and title"""
+
+    def get_nlp_phrases(column):
+        databases_dir = pathlib.Path(root_dir) / "databases"
+        files = list(databases_dir.glob("_*.csv"))
+        nlp_phrases = set()
+        for file in files:
+            data = pd.read_csv(file, encoding="utf-8")
+            if column not in data.columns:
+                continue
+            file_nlp_phrases = data[column].dropna()
+            file_nlp_phrases = (
+                file_nlp_phrases.dropna()
+                .str.split(";")
+                .explode()
+                .str.strip()
+                .drop_duplicates()
+                .to_list()
+            )
+            nlp_phrases.update(file_nlp_phrases)
+        return nlp_phrases
+
+    def apply_filter_to_nlp_phrases(column, selected_nlp_phrases):
+        """Apply filter to nlp phrases to the specicied column"""
+
+        databases_dir = pathlib.Path(root_dir) / "databases"
+        files = list(databases_dir.glob("_*.csv"))
+
+        for file in files:
+            data = pd.read_csv(file, encoding="utf-8")
+            if column not in data.columns:
+                continue
+            data[column] = (
+                data[column]
+                .astype(str)
+                .str.split("; ")
+                .map(lambda x: [w.strip() for w in x])
+                .map(lambda x: [w for w in x if w in selected_nlp_phrases])
+                .map(lambda x: [w for w in x if w != "nan"])
+                .map(lambda x: "; ".join(sorted(x)))
+                .map(lambda x: pd.NA if x == "" else x)
+            )
+            data.to_csv(file, sep=",", encoding="utf-8", index=False)
+
+    #
+    # Main code:
+    #
+
+    # Obtain the raw nlp phrases
+    raw_keywords = get_nlp_phrases("raw_keywords")
+    raw_title_nlp_phrases = get_nlp_phrases("raw_title_nlp_phrases")
+    raw_abstract_nlp_phrases = get_nlp_phrases("raw_abstract_nlp_phrases")
+
+    # nlp phrases appearing in the title and abstract
+    selected_nlp_phrases = raw_title_nlp_phrases & raw_abstract_nlp_phrases
+
+    # adds raw keywords
+    selected_nlp_phrases.update(raw_keywords)
+
+    apply_filter_to_nlp_phrases(
+        "raw_title_nlp_phrases",
+        selected_nlp_phrases,
+    )
+
+    apply_filter_to_nlp_phrases(
+        "raw_abstract_nlp_phrases",
+        selected_nlp_phrases,
+    )
 
 
 def format_columns_names_in_database_files(root_dir: str) -> None:
@@ -649,7 +791,7 @@ def format_columns_names_in_database_files(root_dir: str) -> None:
     """
     print("--INFO-- Formatting column names in database files")
 
-    processed_dir = pathlib.Path(root_dir) / "processed"
+    processed_dir = pathlib.Path(root_dir) / "databases"
     files = list(processed_dir.glob("_*.csv"))
     for file in files:
         data = pd.read_csv(file, encoding="utf-8")
@@ -691,7 +833,7 @@ def repair_authors_id_in_database_files(root_dir: str) -> None:
     """
     print("--INFO-- Repairing authors ID")
 
-    processed_dir = pathlib.Path(root_dir) / "processed"
+    processed_dir = pathlib.Path(root_dir) / "databases"
     files = list(processed_dir.glob("_*.csv"))
     max_length = get_max_authors_id_length(files)
     for file in files:
@@ -767,7 +909,7 @@ def repair_bad_separators_in_keywords(root_dir):
     :meta private:
     """
     print("--INFO-- Repairing bad separators in keywords")
-    processed_dir = pathlib.Path(root_dir) / "processed"
+    processed_dir = pathlib.Path(root_dir) / "databases"
     files = list(processed_dir.glob("_*.csv"))
     for file in files:
         data = pd.read_csv(file, encoding="utf-8")
@@ -810,7 +952,7 @@ def remove_records(root_dir, col_name, values_to_remove):
         return
     print(f"--INFO-- Removing records with `{col_name}` in {values_to_remove}")
 
-    files = list(glob.glob(os.path.join(root_dir, "processed/_*.csv")))
+    files = list(glob.glob(os.path.join(root_dir, "databases/_*.csv")))
     for file in files:
         data = pd.read_csv(file, encoding="utf-8")
         org_length = len(data)
@@ -829,7 +971,7 @@ def drop_empty_columns_in_database_files(root_dir):
 
     print("--INFO-- Dropping NA columns in database files")
 
-    files = list(glob.glob(os.path.join(root_dir, "processed/_*.csv")))
+    files = list(glob.glob(os.path.join(root_dir, "databases/_*.csv")))
     for file in files:
         data = pd.read_csv(file, encoding="utf-8")
         original_cols = data.columns.copy()
@@ -851,7 +993,7 @@ def process_text_columns(root_dir, process_func, msg):
     """
     print(f"--INFO-- Processing text columns ({msg})")
 
-    files = list(glob.glob(os.path.join(root_dir, "processed/_*.csv")))
+    files = list(glob.glob(os.path.join(root_dir, "databases/_*.csv")))
     for file in files:
         data = pd.read_csv(file, encoding="utf-8")
         cols = data.select_dtypes(include=["object"]).columns
@@ -875,7 +1017,7 @@ def process_column(root_dir, column_name, process_func):
     """
     print(f"--INFO-- Processing `{column_name}` column")
 
-    files = list(glob.glob(os.path.join(root_dir, "processed/_*.csv")))
+    files = list(glob.glob(os.path.join(root_dir, "databases/_*.csv")))
     for file in files:
         data = pd.read_csv(file, encoding="utf-8")
         if column_name in data.columns:
@@ -890,7 +1032,7 @@ def mask_column(root_dir, masked_col, rep_col):
     """
     print(f"--INFO-- Mask `{masked_col}` column with `{rep_col}`")
 
-    files = list(glob.glob(os.path.join(root_dir, "processed/_*.csv")))
+    files = list(glob.glob(os.path.join(root_dir, "databases/_*.csv")))
     for file in files:
         data = pd.read_csv(file, encoding="utf-8")
         if masked_col in data.columns and rep_col in data.columns:
@@ -906,7 +1048,7 @@ def disambiguate_author_names(root_dir):
 
     #
     def load_authors_names():
-        files = list(glob.glob(os.path.join(root_dir, "processed/_*.csv")))
+        files = list(glob.glob(os.path.join(root_dir, "databases/_*.csv")))
         data = [
             pd.read_csv(file, encoding="utf-8")[["raw_authors", "authors_id"]]
             for file in files
@@ -947,7 +1089,7 @@ def disambiguate_author_names(root_dir):
         return author_id2name
 
     def repair_names(author_id2name):
-        files = list(glob.glob(os.path.join(root_dir, "processed/_*.csv")))
+        files = list(glob.glob(os.path.join(root_dir, "databases/_*.csv")))
         # total_items = len(files)
         for file in files:
             data = pd.read_csv(file, encoding="utf-8")
@@ -973,7 +1115,7 @@ def copy_to_column(root_dir, src, dest):
     """
     print(f"--INFO-- Copying `{src}` column to `{dest}`")
 
-    files = list(glob.glob(os.path.join(root_dir, "processed/_*.csv")))
+    files = list(glob.glob(os.path.join(root_dir, "databases/_*.csv")))
     for file in files:
         data = pd.read_csv(file, encoding="utf-8")
         if src in data.columns:
@@ -990,19 +1132,19 @@ def concatenate_columns(root_dir, dest, column_name1, column_name2):
         f"--INFO-- Concatenating `{column_name1}` and `{column_name2}` columns to `{dest}`"
     )
 
-    files = list(glob.glob(os.path.join(root_dir, "processed/_*.csv")))
+    files = list(glob.glob(os.path.join(root_dir, "databases/_*.csv")))
     for file in files:
         data = pd.read_csv(file, encoding="utf-8")
         if column_name1 in data.columns and column_name2 in data.columns:
-            data[dest] = data[column_name1].str.split("; ") + data[
-                column_name2
-            ].str.split("; ")
-            data[dest] = data[dest].map(
-                lambda x: sorted(set(x)), na_action="ignore"
-            )
-            data[dest] = data[dest].map(
-                lambda x: "; ".join(x), na_action="ignore"
-            )
+            src = data[column_name1].astype(str).str.split("; ")
+            dst = data[column_name2].astype(str).str.split("; ")
+            con = src + dst
+            con = con.map(lambda x: [z for z in x if z != "nan"])
+            con = con.map(lambda x: sorted(set(x)), na_action="ignore")
+            con = con.map(lambda x: "; ".join(x), na_action="ignore")
+            con = con.map(lambda x: x if x != "" else pd.NA)
+            data[dest] = con
+
         data.to_csv(file, sep=",", encoding="utf-8", index=False)
 
 
@@ -1016,7 +1158,7 @@ def create__article__column(root_dir):
     #
     print("--INFO-- Creating `article` column")
 
-    files = list(glob.glob(os.path.join(root_dir, "processed/_*.csv")))
+    files = list(glob.glob(os.path.join(root_dir, "databases/_*.csv")))
     for file in files:
         data = pd.read_csv(file, encoding="utf-8")
         #
@@ -1049,7 +1191,7 @@ def create_references(directory, disable_progress_bar=False):
     :meta private:
     """
 
-    references_path = os.path.join(directory, "processed/_references.csv")
+    references_path = os.path.join(directory, "databases/_references.csv")
     if os.path.exists(references_path):
         create_referneces_from_references_csv_file(
             directory, disable_progress_bar
@@ -1068,9 +1210,9 @@ def create_references_from_documents_csv_file(
     :meta private:
     """
 
-    print("--INFO-- Creating references from  `documents.csv` file.")
+    print("--INFO-- Creating references from  `_main.csv` file.")
 
-    documents_path = os.path.join(directory, "processed/_documents.csv")
+    documents_path = os.path.join(directory, "databases/_main.csv")
     documents = pd.read_csv(documents_path)
 
     # references como aparecen en los articulos
@@ -1231,7 +1373,7 @@ def create_referneces_from_references_csv_file(
     :meta private:
     """
 
-    references_path = os.path.join(directory, "processed/_references.csv")
+    references_path = os.path.join(directory, "databases/_references.csv")
 
     if not os.path.exists(references_path):
         print(f"--WARN-- The  file {references_path} does not exists.")
@@ -1240,7 +1382,7 @@ def create_referneces_from_references_csv_file(
 
     references = pd.read_csv(references_path)
 
-    documents_path = os.path.join(directory, "processed/_documents.csv")
+    documents_path = os.path.join(directory, "databases/_main.csv")
     documents = pd.read_csv(documents_path)
 
     # references como aparecen en los articulos
@@ -1410,14 +1552,14 @@ def create__local_citations__column_in_references_database(directory):
     :meta private:
     """
 
-    references_path = os.path.join(directory, "processed", "_references.csv")
+    references_path = os.path.join(directory, "databases", "_references.csv")
     if not os.path.exists(references_path):
         return
 
     print("--INFO-- Creating `local_citations` column in references database")
 
     # counts the number of citations for each local reference
-    documents_path = os.path.join(directory, "processed", "_documents.csv")
+    documents_path = os.path.join(directory, "databases", "_main.csv")
     documents = pd.read_csv(documents_path)
     local_references = documents.local_references.copy()
     local_references = local_references.dropna()
@@ -1449,7 +1591,7 @@ def create__local_citations__column_in_documents_database(root_dir):
     print("--INFO-- Creating `local_citations` column in documents database")
 
     # counts the number of citations for each local reference
-    documents_path = os.path.join(root_dir, "processed", "_documents.csv")
+    documents_path = os.path.join(root_dir, "databases", "_main.csv")
     documents = pd.read_csv(documents_path)
     local_references = documents.local_references.copy()
     local_references = local_references.dropna()
@@ -1479,7 +1621,7 @@ def report_imported_records_per_file(root_dir):
     :meta private:
     """
 
-    files = list(glob.glob(os.path.join(root_dir, "processed/_*.csv")))
+    files = list(glob.glob(os.path.join(root_dir, "databases/_*.csv")))
     for file in files:
         data = pd.read_csv(file, encoding="utf-8")
         print(f"--INFO-- {file}: {len(data.index)} imported records")
@@ -1493,14 +1635,14 @@ def transform_abstract_keywords_to_underscore(root_dir):
 
     def get_nlp_phrases():
         """Returns a pandas Series with all NLP phrases in the database files"""
-        processed_dir = pathlib.Path(root_dir) / "processed"
+        processed_dir = pathlib.Path(root_dir) / "databases"
         files = list(processed_dir.glob("_*.csv"))
         nlp_phrases = []
         for file in files:
             data = pd.read_csv(file, encoding="utf-8")
-            if "raw_noun_phrases" not in data.columns:
+            if "raw_nlp_phrases" not in data.columns:
                 continue
-            candidate_nlp_phrases = data["raw_noun_phrases"].copy()
+            candidate_nlp_phrases = data["raw_nlp_phrases"].copy()
             candidate_nlp_phrases = (
                 candidate_nlp_phrases.dropna()
                 .str.replace("_", " ")
@@ -1555,7 +1697,7 @@ def transform_abstract_keywords_to_underscore(root_dir):
         nlp_phrases = "|".join(nlp_phrases.values)
         regex = r"\b(" + nlp_phrases + r")\b"
 
-        documents_path = pathlib.Path(root_dir) / "processed/_documents.csv"
+        documents_path = pathlib.Path(root_dir) / "databases/_main.csv"
         documents = pd.read_csv(documents_path, encoding="utf-8")
         for col in ["abstract", "title"]:
             hyphenated_words = documents[col].str.findall(r"\b\w+-\w+\b").sum()

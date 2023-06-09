@@ -108,7 +108,7 @@ from ...vantagepoint.analyze import statistics
 # pylint: disable=unused-argument
 def main_information(
     root_dir="./",
-    database="documents",
+    database="main",
     year_filter=None,
     cited_by_filter=None,
     **filters,

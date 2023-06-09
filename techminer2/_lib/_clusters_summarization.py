@@ -15,7 +15,7 @@ def clusters_summarization(
     n_abstracts=50,
     n_phrases_per_algorithm=50,
     directory="./",
-    database="documents",
+    database="main",
     start_year=None,
     end_year=None,
     **filters,

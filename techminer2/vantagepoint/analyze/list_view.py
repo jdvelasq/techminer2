@@ -88,7 +88,7 @@ def list_view(
     custom_items=None,
     # Database params:
     root_dir="./",
-    database="documents",
+    database="main",
     year_filter=None,
     cited_by_filter=None,
     **filters,

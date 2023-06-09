@@ -38,7 +38,7 @@ from ...techminer.indicators.indicators_by_field import indicators_by_field
 
 def lotka_law(
     root_dir="./",
-    database="documents",
+    database="main",
     # Database filters:
     year_filter=None,
     cited_by_filter=None,

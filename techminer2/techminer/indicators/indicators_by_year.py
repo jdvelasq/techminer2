@@ -85,7 +85,7 @@ from ...record_utils import read_records
 
 def indicators_by_year(
     root_dir="./",
-    database="documents",
+    database="main",
     year_filter=None,
     cited_by_filter=None,
     **filters,

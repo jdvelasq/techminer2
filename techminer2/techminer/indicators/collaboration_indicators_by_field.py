@@ -51,7 +51,7 @@ from ... import record_utils
 def collaboration_indicators_by_field(
     field,
     root_dir="./",
-    database="documents",
+    database="main",
     year_filter=None,
     cited_by_filter=None,
     **filters,

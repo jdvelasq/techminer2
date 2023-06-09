@@ -5,7 +5,7 @@ from ..record_utils import read_records
 def documents_per_criterion(
     field,
     root_dir="./",
-    database="documents",
+    database="main",
     # Database filters:
     year_filter=None,
     cited_by_filter=None,

@@ -13,7 +13,7 @@ def bbx_generic_indicators_by_item(
     fnc_view,
     field,
     root_dir="./",
-    database="documents",
+    database="main",
     metric="OCC",
     # Plot options:
     textfont_size=10,

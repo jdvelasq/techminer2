@@ -53,7 +53,7 @@ from ...techminer.indicators import indicators_by_year, indicators_by_year_plot
 
 def annual_scientific_production(
     root_dir="./",
-    database="documents",
+    database="main",
     year_filter=None,
     cited_by_filter=None,
     **filters,

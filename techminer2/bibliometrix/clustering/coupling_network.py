@@ -101,7 +101,7 @@ def coupling_network(
     textfont_size_max=20,
     seed=0,
     directory="./",
-    database="documents",
+    database="main",
     start_year=None,
     end_year=None,
     **filters,

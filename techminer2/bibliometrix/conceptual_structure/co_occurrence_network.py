@@ -90,7 +90,7 @@ def co_occurrence_network(
     network_degree_plot_dict=None,
     # Database params:
     root_dir="./",
-    database="documents",
+    database="main",
     year_filter=None,
     cited_by_filter=None,
     **filters,

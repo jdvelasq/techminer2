@@ -79,7 +79,7 @@ def concordances(
 
         records = read_records(
             root_dir=root_dir,
-            database="documents",
+            database="main",
             year_filter=year_filter,
             cited_by_filter=cited_by_filter,
             **filters,
@@ -243,7 +243,7 @@ def concordances(
 
 #     records = read_records(
 #         root_dir=directory,
-#         database="documents",
+#         database="main",
 #         start_year=start_year,
 #         end_year=end_year,
 #         **filters,

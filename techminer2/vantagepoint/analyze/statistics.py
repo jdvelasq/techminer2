@@ -114,7 +114,7 @@ class _Statistics:
     def __init__(
         self,
         root_dir,
-        database="documents",
+        database="main",
         year_filter=None,
         cited_by_filter=None,
         **filters,
@@ -668,7 +668,7 @@ def make_chatpgt_prompt(report):
 
 def statistics(
     root_dir="./",
-    database="documents",
+    database="main",
     year_filter=None,
     cited_by_filter=None,
     **filters,

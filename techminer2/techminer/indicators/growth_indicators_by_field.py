@@ -94,7 +94,7 @@ def growth_indicators_by_field(
     time_window=2,
     # Database params:
     root_dir="./",
-    database="documents",
+    database="main",
     year_filter=None,
     cited_by_filter=None,
     **filters,

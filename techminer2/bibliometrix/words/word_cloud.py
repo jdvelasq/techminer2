@@ -29,7 +29,7 @@ from ...vantagepoint.report import word_cloud as vp_word_cloud
 def word_cloud(
     field,
     root_dir="./",
-    database="documents",
+    database="main",
     metric="OCC",
     # Plot options:
     title=None,

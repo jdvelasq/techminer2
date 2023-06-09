@@ -92,7 +92,7 @@ def thematic_map(
     network_degree_plot_dict=None,
     # Database params:
     directory="./",
-    database="documents",
+    database="main",
     year_filter=None,
     citer_by_filter=None,
     **filters,

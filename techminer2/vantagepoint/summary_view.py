@@ -10,12 +10,7 @@ and the number of different terms (topics) of each column in the dataset.
 
 >>> from techminer2 import vantagepoint
 >>> vantagepoint.summary_view(root_dir).head()
-                  column  number of terms coverage (%)
-0               abstract               52         1.0%
-1  abstract_noun_phrases               52         1.0%
-2           affiliations               52         1.0%
-3                 art_no                8        0.15%
-4                article               52         1.0%
+
 
 """
 import pandas as pd
@@ -25,7 +20,7 @@ from ..record_utils import read_records
 
 def summary_view(
     root_dir="./",
-    database="documents",
+    database="main",
     year_filter=None,
     cited_by_filter=None,
     **filters,

@@ -37,7 +37,7 @@ def create_countries_thesaurus(root_dir):
     affiliations = format_country_names(affiliations)
     save_countries_thesaurus(affiliations, root_dir)
     print(
-        f"--INFO-- The {pathlib.Path(root_dir) / 'processed/countries.txt'} "
+        f"--INFO-- The {pathlib.Path(root_dir) / 'countries.txt'} "
         "thesaurus file was created"
     )
 
@@ -47,7 +47,7 @@ def load_affiliations_frame(directory):
 
     affiliations = []
 
-    files = list(glob.glob(os.path.join(directory, "processed/_*.csv")))
+    files = list(glob.glob(os.path.join(directory, "databases/_*.csv")))
     for file in files:
         data = pd.read_csv(file, encoding="utf-8")
         if "affiliations" in data.columns:
@@ -188,7 +188,7 @@ def save_countries_thesaurus(affiliations, root_dir):
         {"affiliations": list}
     )
 
-    file_path = pathlib.Path(root_dir) / "processed/countries.txt"
+    file_path = pathlib.Path(root_dir) / "countries.txt"
 
     with open(file_path, "w", encoding="utf-8") as file:
         for _, row in affiliations.iterrows():
@@ -199,7 +199,7 @@ def save_countries_thesaurus(affiliations, root_dir):
 
 def read_existent_coutries_txt_thesaurus(root_dir):
     """Read the existent thesaurus if exists."""
-    file_path = pathlib.Path(root_dir) / "processed/countries.txt"
+    file_path = pathlib.Path(root_dir) / "countries.txt"
 
     country = None
     countries = []

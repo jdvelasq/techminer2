@@ -65,7 +65,7 @@ from ...record_utils import read_records
 def indicators_by_field_per_year(
     field="authors",
     root_dir="./",
-    database="documents",
+    database="main",
     as_index=True,
     # Database filters:
     year_filter=None,

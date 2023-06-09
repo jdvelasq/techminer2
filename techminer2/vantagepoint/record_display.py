@@ -53,7 +53,7 @@ def record_display(
     report_filename="record_display.txt",
     # Database options:
     root_dir="./",
-    database="documents",
+    database="main",
     # Database filters:
     year_filter=None,
     cited_by_filter=None,

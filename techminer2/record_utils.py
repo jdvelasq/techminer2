@@ -164,7 +164,7 @@ def create_records_report(root_dir, target_dir, records, report_filename):
 
 def read_records(
     root_dir="./",
-    database="documents",
+    database="main",
     year_filter=None,
     cited_by_filter=None,
     **filters,
@@ -175,11 +175,11 @@ def read_records(
         """Read raw records from a file."""
 
         file_name = {
-            "documents": "_documents.csv",
+            "main": "_main.csv",
             "references": "_references.csv",
             "cited_by": "_cited_by.csv",
         }[database]
-        file_path = os.path.join(directory, "processed", file_name)
+        file_path = os.path.join(directory, "databases", file_name)
         records = pd.read_csv(file_path, sep=",", encoding="utf-8")
         records = records.drop_duplicates()
 

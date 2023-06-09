@@ -73,7 +73,7 @@ from ..utils import bbx_generic_indicators_by_item
 # pylint: disable=too-many-arguments
 def most_frequent_organizations(
     root_dir="./",
-    database="documents",
+    database="main",
     # Plot options:
     textfont_size=10,
     marker_size=7,

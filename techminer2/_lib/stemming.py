@@ -52,7 +52,7 @@
 #     directory="./",
 #     stemmer="porter",
 #     sep=";",
-#     database="documents",
+#     database="main",
 # ):
 #     return _stemming(
 #         directory=directory,
@@ -71,7 +71,7 @@
 #     directory="./",
 #     stemmer="porter",
 #     sep=";",
-#     database="documents",
+#     database="main",
 # ):
 #     return _stemming(
 #         directory=directory,

@@ -39,7 +39,7 @@ from ...record_utils import read_records
 
 def indicators_by_document(
     root_dir="./",
-    database="documents",
+    database="main",
     # Database filters:
     year_filter=None,
     cited_by_filter=None,
