@@ -4,8 +4,12 @@ data/sustainability/
 data/mateo/
 
 
-data/regtech/processed/
+data/regtech/databases/
 data/regtech/reports/
+data/regtech/stopwords.txt
+data/regtech/organizations.txt
+data/regtech/keywords.txt
+data/regtech/countries.txt
 data/dyna/
 
 
