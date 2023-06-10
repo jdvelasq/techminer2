@@ -14,7 +14,7 @@ Discover
 
 
 .. toctree::
-    
+    :maxdepth: 1
         
     matrix/__index__
 
@@ -26,4 +26,6 @@ Discover
 
 
 .. toctree::
+    :maxdepth: 1
+    
     terms_by_year
