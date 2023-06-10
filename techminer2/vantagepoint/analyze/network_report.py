@@ -45,6 +45,13 @@ Example:
 --INFO-- The file 'data/regtech/reports/network_report/CL_01_abstracts_report.txt' was created.
 --INFO-- The file 'data/regtech/reports/network_report/CL_02_abstracts_report.txt' was created.
 --INFO-- The file 'data/regtech/reports/network_report/CL_03_abstracts_report.txt' was created.
+--INFO-- The file 'data/regtech/reports/network_report/CL_00_gpt_prompt.txt' was created.
+--INFO-- The file 'data/regtech/reports/network_report/CL_01_gpt_prompt.txt' was created.
+--INFO-- The file 'data/regtech/reports/network_report/CL_02_gpt_prompt.txt' was created.
+--INFO-- The file 'data/regtech/reports/network_report/CL_03_gpt_prompt.txt' was created.
+
+
+
 
 # pylint: disable=line-too-long
 """
@@ -171,6 +178,8 @@ def generate_chatgpt_prompt(
                     file=file,
                 )
                 print(f"```\n{abstract}\n```\n\n", file=file)
+
+            print(f"--INFO-- The file '{file_path}' was created.")
 
 
 def generate_abstracts_report(
