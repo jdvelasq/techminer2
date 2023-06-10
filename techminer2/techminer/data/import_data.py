@@ -120,7 +120,8 @@ from ...vantagepoint.refine import (
     apply_keywords_thesaurus,
     apply_organizations_thesaurus,
 )
-from ..reports import abstracts_report
+
+# from ..reports import abstracts_report
 from .create_countries_thesaurus import create_countries_thesaurus
 from .create_keywords_thesaurus import create_keywords_thesaurus
 from .create_organizations_thesaurus import create_organizations_thesaurus

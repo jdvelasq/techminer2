@@ -21,4 +21,10 @@ Calculate
 .. toctree::
     :maxdepth: 1
 
+    network_report
+
+
+.. toctree::
+    :maxdepth: 1
+
     statistics    

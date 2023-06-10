@@ -1,6 +1,6 @@
 # flake8: noqa
 """
-Network metrics
+Network Metrics
 ===============================================================================
 
 >>> root_dir = "data/regtech/"

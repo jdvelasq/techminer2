@@ -29,6 +29,7 @@ def text_screening(
     case=False,
     flags=0,
     regex=True,
+    # Database params:
     root_dir="./",
     database="main",
     year_filter=None,
@@ -73,17 +74,3 @@ def text_screening(
             **filters,
         }
     )
-
-    # return record_display(
-    #     field="abstract",
-    #     search_for=search_for,
-    #     report_filename="text_screening.txt",
-    #     case=case,
-    #     flags=flags,
-    #     regex=regex,
-    #     root_dir=root_dir,
-    #     database=database,
-    #     start_year=start_year,
-    #     end_year=end_year,
-    #     **filters,
-    # )

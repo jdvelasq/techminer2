@@ -91,7 +91,7 @@ def create_records_report(root_dir, target_dir, records, report_filename):
         """Writes the report to the file."""
 
         file_path = os.path.join(
-            directory, "processed", target_dir, report_filename
+            directory, "reports", target_dir, report_filename
         )
 
         with open(file_path, "w", encoding="utf-8") as file:
@@ -155,7 +155,7 @@ def create_records_report(root_dir, target_dir, records, report_filename):
 
         sys.stdout.write(f"--INFO-- The file '{file_path}' was created.\n")
 
-    create_directory(base_dir=root_dir, target_dir=target_dir)
+    # create_directory(base_dir=root_dir, target_dir=target_dir)
     reported_columns = get_reported_columns(records)
     records = filter_columns(records, reported_columns)
     records = sort_records(records)
@@ -174,11 +174,15 @@ def read_records(
     def _get_records_from_file(directory, database):
         """Read raw records from a file."""
 
-        file_name = {
-            "main": "_main.csv",
-            "references": "_references.csv",
-            "cited_by": "_cited_by.csv",
-        }[database]
+        if not database.startswith("_CLUSTER_"):
+            file_name = {
+                "main": "_main.csv",
+                "references": "_references.csv",
+                "cited_by": "_cited_by.csv",
+            }[database]
+        else:
+            file_name = database + ".csv"
+
         file_path = os.path.join(directory, "databases", file_name)
         records = pd.read_csv(file_path, sep=",", encoding="utf-8")
         records = records.drop_duplicates()

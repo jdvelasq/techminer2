@@ -23,6 +23,7 @@ from .matrix_subset import matrix_subset
 from .matrix_viewer import matrix_viewer
 from .network_degree_plot import network_degree_plot
 from .network_metrics import network_metrics
+from .network_report import network_report
 from .network_viewer import network_viewer
 from .sankey_plot import sankey_plot
 from .statistics import statistics
@@ -32,15 +33,15 @@ from .tf_matrix import tf_matrix
 
 __all__ = [
     "association_index",
-    "auto_correlation_matrix",
     "auto_correlation_map",
+    "auto_correlation_matrix",
     "cluster_field",
     "cluster_members",
     "cluster_records",
     "co_occurrence_matrix",
     "concept_grid",
-    "cross_correlation_matrix",
     "cross_correlation_map",
+    "cross_correlation_matrix",
     "factor_map",
     "factor_matrix",
     "impact_view",
@@ -50,6 +51,7 @@ __all__ = [
     "matrix_viewer",
     "network_degree_plot",
     "network_metrics",
+    "network_report",
     "network_viewer",
     "sankey_plot",
     "statistics",

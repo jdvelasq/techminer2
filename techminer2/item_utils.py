@@ -62,7 +62,7 @@ def generate_custom_items(
             indicators = indicators[indicators["OCC"] >= occ_range[0]]
         if occ_range[1] is not None:
             indicators = indicators[indicators["OCC"] <= occ_range[1]]
-        return indicators.index.tolist()
+        return indicators
 
     def filter_by_gc_range(indicators, gc_range):
         """Returns the table of indicators filtered by global citations range."""
@@ -93,4 +93,4 @@ def generate_custom_items(
     if top_n is not None:
         indicators = filter_by_top_n(indicators, top_n)
 
-    return indicators.index.tolist()
+    return indicators.index.to_list()

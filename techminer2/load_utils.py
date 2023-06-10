@@ -17,7 +17,7 @@ def load_stopwords(root_dir):
 
     """
 
-    stopwords_file_path = os.path.join(root_dir, "processed", "stopwords.txt")
+    stopwords_file_path = os.path.join(root_dir, "stopwords.txt")
 
     if not os.path.isfile(stopwords_file_path):
         raise FileNotFoundError(

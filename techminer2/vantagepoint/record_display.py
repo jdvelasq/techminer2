@@ -51,10 +51,9 @@ def record_display(
     flags=0,
     regex=True,
     report_filename="record_display.txt",
-    # Database options:
+    # Database params:
     root_dir="./",
     database="main",
-    # Database filters:
     year_filter=None,
     cited_by_filter=None,
     **filters,
