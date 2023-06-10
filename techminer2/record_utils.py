@@ -174,14 +174,19 @@ def read_records(
     def _get_records_from_file(directory, database):
         """Read raw records from a file."""
 
-        if not database.startswith("_CLUSTER_"):
+        file_name = None
+
+        if database.startswith("_CLUSTER_"):
+            file_name = database + ".csv"
+        if database.startswith("_CLUSTERS_"):
+            file_name = database + ".csv"
+
+        if file_name is None:
             file_name = {
                 "main": "_main.csv",
                 "references": "_references.csv",
                 "cited_by": "_cited_by.csv",
             }[database]
-        else:
-            file_name = database + ".csv"
 
         file_path = os.path.join(directory, "databases", file_name)
         records = pd.read_csv(file_path, sep=",", encoding="utf-8")

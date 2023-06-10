@@ -63,7 +63,11 @@ from collections import defaultdict
 
 import pandas as pd
 
-from ...network_utils import extract_communities_from_graph
+from ...network_utils import (
+    extract_communities_from_graph,
+    generate_clusters_database,
+    generate_databases_per_cluster,
+)
 from ...record_utils import create_records_report, read_records
 from ...tlab.concordances import concordances
 
@@ -89,7 +93,7 @@ def network_report(
         graph, conserve_counters=False
     )
 
-    assign_records_to_clusters(
+    generate_clusters_database(
         communities=communities,
         field=field,
         # Database params:
@@ -99,6 +103,8 @@ def network_report(
         cited_by_filter=cited_by_filter,
         **filters,
     )
+
+    generate_databases_per_cluster(root_dir)
 
     genereate_concordances_report(
         communities=communities,
@@ -276,125 +282,126 @@ def make_report_dir(root_dir, report_dir):
         if not os.path.exists(directory_path):
             os.makedirs(directory_path)
 
+        # def assign_records_to_clusters(
+        #     communities,
+        #     field,
+        #     # Database params:
+        #     root_dir,
+        #     database,
+        #     year_filter,
+        #     cited_by_filter,
+        #     **filters,
+        # ):
+        #     """Assigns records to clusters."""
 
-def assign_records_to_clusters(
-    communities,
-    field,
-    # Database params:
-    root_dir="./",
-    database="main",
-    year_filter=None,
-    cited_by_filter=None,
-    **filters,
-):
-    """Assigns records to clusters."""
+        #
+        # clusters is a dict of lists with terms in each cluster
+        #
 
-    #
-    # clusters is a dict of lists with terms in each cluster
-    #
+        # def convert_cluster_to_items_dict(communities):
+        #     """Converts the cluster to items dict."""
 
-    def convert_cluster_to_items_dict(communities):
-        """Converts the cluster to items dict."""
+        #     items2cluster = {}
+        #     for cluster, items in communities.items():
+        #         for item in items:
+        #             items2cluster[item] = cluster
 
-        items2cluster = {}
-        for cluster, items in communities.items():
-            for item in items:
-                items2cluster[item] = cluster
+        #     return items2cluster
 
-        return items2cluster
+        # def explode_field(records, field):
+        #     """Explodes records."""
 
-    def explode_field(records, field):
-        """Explodes records."""
+        #     records = records.copy()
+        #     records = records[field]
+        #     records = records.dropna()
+        #     records = records.str.split("; ").explode().map(lambda w: w.strip())
 
-        records = records.copy()
-        records = records[field]
-        records = records.dropna()
-        records = records.str.split("; ").explode().map(lambda w: w.strip())
+        #     return records
 
-        return records
+        # def select_valid_records(records, clusters):
+        #     """Selects valid records."""
 
-    def select_valid_records(records, clusters):
-        """Selects valid records."""
+        #     community_terms = []
+        #     for cluster in clusters.values():
+        #         community_terms.extend(cluster)
 
-        community_terms = []
-        for cluster in clusters.values():
-            community_terms.extend(cluster)
+        #     records = records.copy()
+        #     records = records[records.isin(community_terms)]
 
-        records = records.copy()
-        records = records[records.isin(community_terms)]
+        #     return records
 
-        return records
+        # def assign_points_to_records(records, field, clusters):
+        #     """Assigns points to records."""
 
-    def assign_points_to_records(records, field, clusters):
-        """Assigns points to records."""
+        #     def compute_cluster(data):
+        #         """Computes the cluster most frequent in a list."""
 
-        def compute_cluster(data):
-            """Computes the cluster most frequent in a list."""
+        #         counter = defaultdict(int)
+        #         for cluster in data:
+        #             counter[cluster] += 1
+        #         return max(counter, key=counter.get)
 
-            counter = defaultdict(int)
-            for cluster in data:
-                counter[cluster] += 1
-            return max(counter, key=counter.get)
+        #     records = records.to_frame()
+        #     records["clusters"] = records[field].map(clusters)
+        #     # records["article"] = records.index.to_list()
+        #     records = records.groupby("article").agg({"clusters": list})
+        #     records["clusters"] = records["clusters"].apply(lambda x: sorted(x))
+        #     records["cluster"] = records["clusters"].map(compute_cluster)
 
-        records = records.to_frame()
-        records["clusters"] = records[field].map(clusters)
-        # records["article"] = records.index.to_list()
-        records = records.groupby("article").agg({"clusters": list})
-        records["clusters"] = records["clusters"].apply(lambda x: sorted(x))
-        records["cluster"] = records["clusters"].map(compute_cluster)
-
-        return records
+        # return records
 
     #
     # Main code:
     #
 
-    records = read_records(
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )
-    records.index = records.article
+    # records = read_records(
+    #     root_dir=root_dir,
+    #     database=database,
+    #     year_filter=year_filter,
+    #     cited_by_filter=cited_by_filter,
+    #     **filters,
+    # )
+    # records.index = records.article
 
-    items2cluster = convert_cluster_to_items_dict(communities)
-    exploded_records = explode_field(records, field)
-    selected_records = select_valid_records(exploded_records, communities)
-    selected_records = assign_points_to_records(
-        selected_records, field, items2cluster
-    )
+    # items2cluster = convert_cluster_to_items_dict(communities)
+    # exploded_records = explode_field(records, field)
+    # selected_records = select_valid_records(exploded_records, communities)
+    # selected_records = assign_points_to_records(
+    #     selected_records, field, items2cluster
+    # )
 
-    # not include more parameters to avoid destroy the database.
-    records = read_records(
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )
-    records.index = records.article
+    # # not include more parameters to avoid destroy the database.
+    # records = read_records(
+    #     root_dir=root_dir,
+    #     database=database,
+    #     year_filter=year_filter,
+    #     cited_by_filter=cited_by_filter,
+    #     **filters,
+    # )
+    # records.index = records.article
 
-    records["_CLUSTER_"] = pd.NA
-    records.loc[selected_records.index, "_CLUSTER_"] = selected_records[
-        "cluster"
-    ]
+    # records["_CLUSTER_"] = pd.NA
+    # records.loc[selected_records.index, "_CLUSTER_"] = selected_records[
+    #     "cluster"
+    # ]
 
-    database_dir = pathlib.Path(root_dir) / "databases"
-    files = list(database_dir.glob("_CLUSTER_*_.csv"))
-    for file in files:
-        os.remove(file)
+    # Generates the root_dir/databases/_CLUSTER_.csv files
 
-    n_clusters = len(communities)
-    for i_cluster in range(n_clusters):
-        clustered_records = records[
-            records._CLUSTER_ == f"CL_{i_cluster:>02d}"
-        ]
-        clustered_records = clustered_records.sort_values(
-            ["global_citations", "local_citations"],
-            ascending=[False, False],
-        )
+    # database_dir = pathlib.Path(root_dir) / "databases"
+    # files = list(database_dir.glob("_CLUSTER_*_.csv"))
+    # for file in files:
+    #     os.remove(file)
 
-        file_name = f"_CLUSTER_{i_cluster:>02d}_.csv"
-        file_path = os.path.join(root_dir, "databases", file_name)
-        clustered_records.to_csv(file_path, index=False, encoding="utf-8")
+    # n_clusters = len(communities)
+    # for i_cluster in range(n_clusters):
+    #     clustered_records = records[
+    #         records._CLUSTER_ == f"CL_{i_cluster:>02d}"
+    #     ]
+    #     clustered_records = clustered_records.sort_values(
+    #         ["global_citations", "local_citations"],
+    #         ascending=[False, False],
+    #     )
+
+    #     file_name = f"_CLUSTER_{i_cluster:>02d}_.csv"
+    #     file_path = os.path.join(root_dir, "databases", file_name)
+    #     clustered_records.to_csv(file_path, index=False, encoding="utf-8")

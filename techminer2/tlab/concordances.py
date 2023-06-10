@@ -166,12 +166,15 @@ def concordances(
             right = row["right_context"]
             text_to_summarize += f"{left} '{search_for.upper()}' {right}. "
 
+        text_to_summarize = textwrap.fill(text_to_summarize, width=70).replace(
+            "\n", " \\\n"
+        )
+
         text = (
-            "Your task is to generate a short summary of a term for a "
-            "research paper. Summarize the text below, delimited by "
-            "triple backticks, in at most 30 words, focusing on the "
-            "any aspect contributing to the definition and "
-            f"characteristics of the term '{search_for}'.\n\n"
+            "Your task is to generate a short summary of a term for a research \\\n"
+            "paper. Summarize the text below, delimited by triple backticks, \\\n"
+            "in at most 30 words, focusing on the any aspect contributing \\\n"
+            f"to the definition and characteristics of the term '{search_for}'.\n\n"
             f"Text: ```{text_to_summarize}```\n"
         )
 
@@ -231,58 +234,3 @@ def concordances(
     write_prompt(obj.prompt_, prompt_file)
 
     return obj
-
-    # ###
-
-    # abstracts = load_abstracts(root_dir)
-    # abstracts = abstracts[abstracts.article.isin(records.article)]
-    # abstracts = abstracts.sort_values(
-    #     ["global_citations", "article", "line_no"],
-    #     ascending=[False, True, True],
-    # )
-    # abstracts = _select_abstracts(abstracts, search_for)
-
-    # _write_report(root_dir, abstracts, year_filter, cited_by_filter, **filters)
-
-    # if not quiet:
-    #     abstracts = abstracts.head(top_n)
-    #     contexts = _extract_contexts(abstracts, search_for)
-    #     _print_concordances(contexts, search_for)
-
-
-# def _write_report(directory, abstracts, start_year, end_year, **filters):
-#     abstracts = abstracts.copy()
-#     abstracts = abstracts[["global_citations", "article", "phrase"]]
-#     abstracts = abstracts.groupby(["article"], as_index=False).agg(list)
-#     abstracts["phrase"] = abstracts["phrase"].str.join("  ")
-#     abstracts["global_citations"] = abstracts["global_citations"].map(max)
-#     abstracts = abstracts.sort_values("global_citations", ascending=False)
-
-#     records = read_records(
-#         root_dir=directory,
-#         database="main",
-#         start_year=start_year,
-#         end_year=end_year,
-#         **filters,
-#     )
-#     records.index = records.article
-#     abstracts.index = abstracts.article
-#     abstracts["title"] = records.loc[abstracts.article, "title"]
-
-#     file_name = os.path.join(directory, "reports", "concordances.txt")
-#     with open(file_name, "w", encoding="utf-8") as out_file:
-#         counter = 0
-
-#         for _, row in abstracts.iterrows():
-#             print("-- {:03d} ".format(counter) + "-" * 83, file=out_file)
-#             print("AR ", end="", file=out_file)
-#             print(_fill(row["article"]), file=out_file)
-#             print("TI ", end="", file=out_file)
-#             print(_fill(row["title"]), file=out_file)
-#             print("TC ", end="", file=out_file)
-#             print(str(row.global_citations), file=out_file)
-#             print("AB ", end="", file=out_file)
-#             print(_fill(row.phrase), file=out_file)
-#             print("\n", file=out_file)
-
-#             counter += 1
