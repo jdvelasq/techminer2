@@ -63,6 +63,7 @@ from collections import defaultdict
 
 import pandas as pd
 
+from ...network_utils import extract_communities_from_graph
 from ...record_utils import create_records_report, read_records
 from ...tlab.concordances import concordances
 
@@ -84,7 +85,9 @@ def network_report(
 
     make_report_dir(root_dir, report_dir)
 
-    communities = extract_communities(graph)
+    communities = extract_communities_from_graph(
+        graph, conserve_counters=False
+    )
 
     assign_records_to_clusters(
         communities=communities,
@@ -272,21 +275,6 @@ def make_report_dir(root_dir, report_dir):
         directory_path = os.path.join(root_dir, directory)
         if not os.path.exists(directory_path):
             os.makedirs(directory_path)
-
-
-def extract_communities(graph):
-    """Gets communities from a networkx graph as a dictionary."""
-
-    communities = {}
-
-    for node, data in graph.nodes(data=True):
-        text = f"CL_{data['group'] :02d}"
-        if text not in communities:
-            communities[text] = []
-        node = " ".join(node.split(" ")[:-1])
-        communities[text].append(node)
-
-    return communities
 
 
 def assign_records_to_clusters(

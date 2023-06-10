@@ -11,6 +11,22 @@ import plotly.graph_objects as go
 from cdlib import algorithms
 
 
+def extract_communities_from_graph(graph, conserve_counters):
+    """Gets communities from a networkx graph as a dictionary."""
+
+    communities = {}
+
+    for node, data in graph.nodes(data=True):
+        text = f"CL_{data['group'] :02d}"
+        if text not in communities:
+            communities[text] = []
+        if conserve_counters is False:
+            node = " ".join(node.split(" ")[:-1])
+        communities[text].append(node)
+
+    return communities
+
+
 def apply_community_detection_method(graph, method):
     """Network community detection."""
 
