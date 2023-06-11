@@ -1,10 +1,10 @@
 Calculate
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. toctree::
-    :maxdepth: 1
+* Emergence indicators (TODO)
 
-    association_index
+
+
 
 .. toctree::
     :maxdepth: 1
@@ -15,16 +15,28 @@ Calculate
 .. toctree::
     :maxdepth: 1
 
-    network_degree_plot
-
-
-.. toctree::
-    :maxdepth: 1
-
-    network_report
-
-
-.. toctree::
-    :maxdepth: 1
-
     statistics    
+
+.. note::
+
+    Options added by TechMiner2:
+
+    .. toctree::
+        :maxdepth: 1
+
+        association_index
+
+
+
+    .. toctree::
+        :maxdepth: 1
+
+        network_degree_plot
+
+
+    .. toctree::
+        :maxdepth: 1
+
+        network_report
+
+

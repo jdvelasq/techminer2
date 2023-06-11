@@ -27,5 +27,17 @@ Discover
 
 .. toctree::
     :maxdepth: 1
-    
+
     terms_by_year
+
+
+.. toctree::
+    factor_matrix         
+
+.. toctree::
+    :maxdepth: 1
+
+    tfidf/__index__
+
+ 
+* TODO: PCD
