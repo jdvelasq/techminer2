@@ -29,9 +29,10 @@ COMPLIANCE 07:030                  8     0.015404  ...         7.0     15.0
 
 
 >>> print(metrics.prompt_)
-Your task is to generate a short analysis of the indicators of a network for a \
-research paper. Summarize the text below, delimited by triple backticks, in at \
-most 30 words, identifiying any notable patterns, trends, or outliers in the data, 
+Your task is to generate a short analysis of the indicators of a network for a \\
+research paper. Summarize the text below, delimited by triple backticks, in at \\
+most 30 words, identifiying any notable patterns, trends, or outliers in the data.
+<BLANKLINE>
 Table:
 ```
 |                                |   Degree |   Betweenness |   Closeness |   PageRank |   Centrality |   Density |
@@ -75,7 +76,7 @@ def network_metrics(
         prompt = (
             "Your task is to generate a short analysis of the indicators of a network for a \\\n"
             "research paper. Summarize the text below, delimited by triple backticks, in at \\\n"
-            "most 30 words, identifiying any notable patterns, trends, or outliers in the data. \n"
+            "most 30 words, identifiying any notable patterns, trends, or outliers in the data.\n\n"
             f"Table:\n```\n{table.to_markdown()}\n```\n"
         )
 
