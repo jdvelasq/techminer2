@@ -17,6 +17,23 @@ from cdlib import algorithms
 from .record_utils import read_records
 
 
+def graph_to_co_occ_matrix(graph):
+    """Reconstructs the co-occurrence matrix from a graph."""
+
+    matrix = nx.to_pandas_adjacency(graph)
+    matrix = matrix.astype(int)
+    matrix.loc[:, :] = 0
+
+    for node in graph.nodes():
+        matrix.loc[node, node] = graph.nodes[node]["OCC"]
+
+    for edge in graph.edges():
+        matrix.loc[edge[0], edge[1]] = graph.edges[edge]["value"]
+        matrix.loc[edge[1], edge[0]] = graph.edges[edge]["value"]
+
+    return matrix
+
+
 def generate_clusters_database(
     communities,
     field,
@@ -317,12 +334,22 @@ def compute_newtork_statistics(graph):
     closeness = nx.closeness_centrality(graph)
     pagerank = nx.pagerank(graph)
 
+    # Callon centrality  - density
+    callon_matrix = graph_to_co_occ_matrix(graph).astype(float)
+    callon_centrality = callon_matrix.values.diagonal()
+    callon_density = callon_matrix.sum() - callon_centrality
+
+    # strategic_diagram["callon_centrality"] *= 10
+    # strategic_diagram["callon_density"] *= 100
+
     indicators = pd.DataFrame(
         {
             "Degree": degree,
             "Betweenness": betweenness,
             "Closeness": closeness,
             "PageRank": pagerank,
+            "Centrality": callon_centrality,
+            "Density": callon_density,
             "_occ_": occ,
             "_gc_": gc,
             "_name_": nodes,

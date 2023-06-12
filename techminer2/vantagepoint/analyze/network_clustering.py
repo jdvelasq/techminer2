@@ -6,8 +6,7 @@ Network Clustering by Community Detection
 Clusters a database field using community detection algorithms
 
 
-Example
--------------------------------------------------------------------------------
+* **Example:** Clustering using Label Propagation
 
 >>> root_dir = "data/regtech/"
 >>> from techminer2 import vantagepoint
@@ -22,7 +21,7 @@ Example
 
 >>> graph = vantagepoint.analyze.network_clustering(
 ...    normalized_co_occ_matrix,
-...    community_clustering='label_propagation',
+...    algorithm='label_propagation',
 ... )
 >>> print(vantagepoint.analyze.network_communities(graph).to_markdown())
 |    | CL_00                                  |
@@ -55,6 +54,8 @@ Example
 
 
 
+* **Example:** Clustering using Louvain
+
 
 >>> graph = vantagepoint.analyze.network_clustering(
 ...    normalized_co_occ_matrix,
@@ -74,7 +75,7 @@ Example
 |  8 | TECHNOLOGY 02:010              |                             |                              |                                        |
 
 
-
+* **Example:** Clustering using Walktrap
 
 >>> graph = vantagepoint.analyze.network_clustering(
 ...    normalized_co_occ_matrix,

@@ -6,8 +6,8 @@ Matrix Clustering by ML Methods
 Clusters a database field using clustering methods based on machine learning.
 
 
-Example
--------------------------------------------------------------------------------
+* **Example**
+
 
 >>> root_dir = "data/regtech/"
 >>> from techminer2 import vantagepoint
