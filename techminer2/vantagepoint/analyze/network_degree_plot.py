@@ -1,6 +1,6 @@
 # flake8: noqa
 """
-Network Deegre Plot (*)
+(NEW) Network Deegre Plot
 ===============================================================================
 
 

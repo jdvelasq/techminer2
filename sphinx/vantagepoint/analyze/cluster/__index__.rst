@@ -1,16 +1,21 @@
-Calculate
+Cluster
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* Emergence indicators (TODO)
+.. toctree::
+    :maxdepth: 1
+    
+    matrix_clustering
 
 
 .. toctree::
     :maxdepth: 1
+    
+    network_clustering
 
-    network_metrics
+
 
 .. toctree::
     :maxdepth: 1
-
-    statistics    
+    
+    topic_modeling
 

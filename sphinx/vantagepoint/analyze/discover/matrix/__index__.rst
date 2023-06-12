@@ -15,6 +15,10 @@ Matrix
 
 
 .. toctree::
+    matrix_normalization
+
+
+.. toctree::
     :maxdepth: 1
 
     matrix_subset

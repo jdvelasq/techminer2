@@ -1,6 +1,6 @@
 # flake8: noqa
 """
-Network Report
+(MEW) Network Report
 ===============================================================================
 
 
@@ -17,11 +17,11 @@ Example:
 ...    col_occ_range=(2, None),
 ...    root_dir=root_dir,
 ... )
->>> graph = vantagepoint.analyze.cluster_field(
+>>> graph = vantagepoint.analyze.network_clustering(
 ...    co_occ_matrix,
 ...    community_clustering='louvain',
 ... )
->>> print(vantagepoint.analyze.cluster_members(graph).to_markdown())
+>>> print(vantagepoint.analyze.network_communities(graph).to_markdown())
 |    | CL_00                          | CL_01                       | CL_02                        | CL_03                          |
 |---:|:-------------------------------|:----------------------------|:-----------------------------|:-------------------------------|
 |  0 | REGTECH 28:329                 | FINTECH 12:249              | REGULATORY_TECHNOLOGY 07:037 | ANTI_MONEY_LAUNDERING 05:034   |

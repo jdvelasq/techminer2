@@ -1,5 +1,5 @@
 """
-Association Index (*) --- ChatGPT
+(NEW) Matrix Normalization
 ===============================================================================
 
 Association index is used to measure the similarity between two terms in a
@@ -14,7 +14,7 @@ import numpy as np
 from ...classes import CocMatrix, NormCocMatrix
 
 
-def association_index(obj, index_name):
+def matrix_normalization(obj, index_name):
     """
     Calculate the association index for a co-occurrence matrix.
 

@@ -63,10 +63,10 @@ from ...classes import CoWordsNetwork
 
 # from ..._network_community_detection import network_community_detection
 from ...vantagepoint.analyze import (
-    association_index,
-    cluster_field,
-    cluster_members,
     co_occurrence_matrix,
+    matrix_normalization,
+    network_clustering,
+    network_communities,
     network_degree_plot,
     network_metrics,
     network_viewer,
@@ -119,8 +119,10 @@ def co_occurrence_network(
         **filters,
     )
 
-    norm_coc_matrix = association_index(coc_matrix, index_name=normalization)
-    graph = cluster_field(
+    norm_coc_matrix = matrix_normalization(
+        coc_matrix, index_name=normalization
+    )
+    graph = network_clustering(
         norm_coc_matrix, community_clustering=community_clustering
     )
 
@@ -129,7 +131,7 @@ def co_occurrence_network(
         graph=graph, **network_degree_plot_dict
     )
 
-    network.communities_ = cluster_members(graph=graph)
+    network.communities_ = network_communities(graph=graph)
     network.metrics_ = network_metrics(graph=graph)
 
     network.plot_ = network_viewer(graph=graph, **network_viewer_dict)
