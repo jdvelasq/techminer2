@@ -62,9 +62,6 @@ For example, VantagePoint module depends on the functions of the
 TM2 module.
 
 
- relationship between **TechMiner2** and other
-software tools for bibliographic data analysis. 
-
 .. code::
 
     +--------------+    +--------------+         +--------------+
