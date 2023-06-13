@@ -40,6 +40,9 @@ objectives behind its development are:
 - Experimenting with data product design strategies, focusing on data-related 
   challenges.
 
+- Experiment with our interpretation of the thecniques implemented in the 
+  aforementioned software tools.
+
 - Facilitating the design and experimentation with new algorithms for 
   bibliographic data analysis.
 
@@ -54,6 +57,27 @@ software tools, along with additional functionalities inspired by their
 comparison. It is an open-source package distributed under the MIT license 
 and is user-friendly, developed and tested in Python version 3.6.
 
+The following figure shows the hierarchical dependencies of the functions.
+For example, VantagePoint module depends on the functions of the 
+TM2 module.
+
+
+ relationship between **TechMiner2** and other
+software tools for bibliographic data analysis. 
+
+.. code::
+
+    +--------------+    +--------------+         +--------------+
+    |      TM2     |--->| VantagePoint |-------->| Bibliometrix |
+    +--------------+    +--------------+         +--------------+
+                                |                        |
+                                |    +--------------+    | 
+                                +--->|    T-LAB     |--->|
+                                |    +--------------+    |
+                                |                        |
+                                |    +--------------+    |
+                                +--->|   ScientoPy  |--->+
+                                     +--------------+ 
 
 
 .. toctree::
@@ -72,8 +96,10 @@ and is user-friendly, developed and tested in Python version 3.6.
     :hidden:
     
     techminer/__index__
-    bibliometrix/__index__
     vantagepoint/__index__
+
+    bibliometrix/__index__
+    
     tlab/__index__
     scientopy/__index__
 
