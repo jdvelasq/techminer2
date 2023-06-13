@@ -1,7 +1,7 @@
 TechMiner
 |
 +- Data
-|  +- Load Data
+|  +- Import Data
 |  +- Summary View
 |
 +- Refine
