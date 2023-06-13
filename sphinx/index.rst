@@ -1,27 +1,59 @@
 Techminer2: A package for the analysis of bibliographic datasets using Python
-#########################################################################################
+################################################################################
 
-**TechMiner2** is a package for mining relevant information about topics related to Research and 
-Development (R&D) literature extracted from bibliographical databases as Scopus. **TechMiner2**
-facilitates studies of systematic mapping of literature and Tech mining studies. The package can 
-be used by users with basic knowledge of Python programming. However, users with advanced 
-knowledge in programming and text mining can easily incorporate their codes to maximize the power 
-of the library and develop advanced analysis. The package can be used to:
+Bibliographic data can be analyzed in various ways, including science mapping 
+analysis, technology mining, systematic mapping of literature, bibliometric 
+analysis, and scientometric analysis.
 
-* Realize analyzes based on document-by-term pattern, for example, number of documents by author, by source or by keyword. 
+To perform these studies, several software tools are available for analyzing 
+bibliographic databases. Common options include Bibliometrix, VantagePoint, 
+T-LAB, and ScientoPy. However, each tool has its strengths and weaknesses. For 
+instance, VantagePoint is powerful for data cleaning but is not open source, 
+while Bibliometrix has a friendly user interface but lacks options for data 
+cleaning and disambiguation. Similarly, T-LAB excels in text mining but is not 
+specifically designed for bibliographic data analysis by fields. The problem 
+arises when attempting to conduct a study that combines the strengths of 
+multiple software tools. For instance:
 
-* Calculate and plot the number of documents or citations by year.
+* VantagePoint can be used to clean and disambiguate terms.
 
-* Realize analyzes based on term-by-term pattern, for example, number of documents by keywords and by author, by keyword and by year and so on.
+* Bibliometrix enables the creation of a thematic map using the cleaned author 
+  keywords.
 
-* Compute and plot co-ocurrence, correlation and autocorrelation matrices.
 
-* Realize Principal Component Analysis to detect and analyze clusters of data.
+* ScientoPy can help identify the cleaned author keywords with a higher average 
+  growth rate.
 
-* Plot heatmaps, networks and many other types of plots for analyzing data.
 
-**TechMiner2** is an open source (distributed under the MIT license) and friendly-user
-package developed and tested in Python version 3.6. 
+* Lastly, T-LAB can be utilized for topic modeling using the cleaned NLP 
+  phrases.
+
+However, in this scenario, a significant amount of time is wasted on exporting 
+data from one software to another.
+
+
+**TechMiner2** is an experimental package designed to facilitate the 
+analysis of bibliographic datasets. It aims to support various analysis tasks 
+performed by the aforementioned software tools without replacing them. The 
+objectives behind its development are:
+
+- Experimenting with data product design strategies, focusing on data-related 
+  challenges.
+
+- Facilitating the design and experimentation with new algorithms for 
+  bibliographic data analysis.
+
+- Assisting in the preparation of MSc and PhD theses, as well as scientific 
+  papers based on bibliographic data.
+
+- Providing a platform for the combination and integration of various 
+  algorithms available separately in different software tools.
+
+**TechMiner2** features modules that resemble the user interfaces of existing 
+software tools, along with additional functionalities inspired by their 
+comparison. It is an open-source package distributed under the MIT license 
+and is user-friendly, developed and tested in Python version 3.6.
+
 
 
 .. toctree::
