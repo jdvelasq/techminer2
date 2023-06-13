@@ -116,9 +116,7 @@ from ..classes import TermsByYear
 from ..counters import add_counters_to_axis
 from ..item_utils import generate_custom_items
 from ..sort_utils import sort_indicators_by_metric
-from ..techminer.indicators.growth_indicators_by_field import (
-    growth_indicators_by_field,
-)
+from ..techminer.indicators.indicators_by_field import indicators_by_field
 from ..techminer.indicators.indicators_by_field_per_year import (
     indicators_by_field_per_year,
 )

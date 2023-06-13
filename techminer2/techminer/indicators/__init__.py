@@ -9,8 +9,6 @@ from .collaboration_indicators_by_field import (
     collaboration_indicators_by_field,
 )
 from .column_indicators_by_metric import column_indicators_by_metric
-from .growth_indicators_by_field import growth_indicators_by_field
-from .impact_indicators_by_field import impact_indicators_by_field
 from .indicators_by_document import indicators_by_document
 from .indicators_by_field import indicators_by_field
 from .indicators_by_field_per_year import indicators_by_field_per_year
@@ -22,12 +20,10 @@ __all__ = [
     "co_occ_matrix_list",
     "collaboration_indicators_by_field",
     "column_indicators_by_metric",
-    "growth_indicators_by_field",
-    "impact_indicators_by_field",
     "indicators_by_document",
-    "indicators_by_field",
     "indicators_by_field_per_year",
-    "indicators_by_year",
+    "indicators_by_field",
     "indicators_by_year_plot",
+    "indicators_by_year",
     "items_occ_by_year",
 ]

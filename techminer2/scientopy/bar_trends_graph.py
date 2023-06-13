@@ -179,9 +179,7 @@ import plotly.express as px
 from ..classes import ScientoPyGraph
 from ..item_utils import generate_custom_items
 from ..sort_utils import sort_indicators_by_metric
-from ..techminer.indicators.growth_indicators_by_field import (
-    growth_indicators_by_field,
-)
+from ..techminer.indicators.indicators_by_field import indicators_by_field
 from ..vantagepoint.report import bar_chart
 from .common import PROMPT, get_default_indicators, get_trend_indicators
 

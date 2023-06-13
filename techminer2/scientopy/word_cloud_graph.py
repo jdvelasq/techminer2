@@ -103,7 +103,7 @@ Word Cloud Graph
 
 
 >>> from techminer2 import techminer
->>> techminer.indicators.growth_indicators_by_field(
+>>> techminer.indicators.indicators_by_field(
 ...     field="author_keywords", 
 ...     root_dir=root_dir,
 ... )[['OCC', 'average_growth_rate']].sort_values(['average_growth_rate', 'OCC'], ascending=False).head(20)
@@ -136,9 +136,7 @@ SMART_CONTRACT               2                  0.0
 from .._plots.word_cloud_for_indicators import word_cloud_for_indicators
 from ..item_utils import generate_custom_items
 from ..sort_utils import sort_indicators_by_metric
-from ..techminer.indicators.growth_indicators_by_field import (
-    growth_indicators_by_field,
-)
+from ..techminer.indicators.indicators_by_field import indicators_by_field
 from .common import PROMPT, get_default_indicators, get_trend_indicators
 
 

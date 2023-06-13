@@ -7,11 +7,6 @@ Indicators by Database Field
 .. toctree::
     collaboration_indicators_by_field
 
-.. toctree::    
-    growth_indicators_by_field
-
-.. toctree::    
-    impact_indicators_by_field
 
 .. toctree::
     indicators_by_document

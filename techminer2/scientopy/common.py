@@ -2,9 +2,7 @@
 
 from ..item_utils import generate_custom_items
 from ..sort_utils import sort_indicators_by_metric
-from ..techminer.indicators.growth_indicators_by_field import (
-    growth_indicators_by_field,
-)
+from ..techminer.indicators.indicators_by_field import indicators_by_field
 
 PROMPT = """\
 Your task is to generate a short analysis for a scientific research paper. \
@@ -33,7 +31,7 @@ def get_default_indicators(
     **filters,
 ):
     # compute growth indicators for all items in the database
-    indicators = growth_indicators_by_field(
+    indicators = indicators_by_field(
         field=field,
         time_window=time_window,
         root_dir=root_dir,
@@ -85,7 +83,7 @@ def get_trend_indicators(
     **filters,
 ):
     # compute growth indicators for all items in the database
-    indicators = growth_indicators_by_field(
+    indicators = indicators_by_field(
         field=field,
         time_window=time_window,
         root_dir=root_dir,
