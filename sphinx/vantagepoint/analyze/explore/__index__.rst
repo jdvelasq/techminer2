@@ -37,6 +37,10 @@ Explore
     sankey_plot
 
 
+.. toctree::
+    :maxdepth: 1
+
+    trending_terms
 
 .. toctree::
     :maxdepth: 1

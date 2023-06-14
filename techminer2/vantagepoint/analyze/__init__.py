@@ -32,6 +32,7 @@ from .terms_by_year import terms_by_year
 from .tf_idf_matrix import tf_idf_matrix
 from .tf_matrix import tf_matrix
 from .topic_modeling import topic_modeling
+from .trending_terms import trending_terms
 
 __all__ = [
     "auto_correlation_map",
@@ -62,4 +63,5 @@ __all__ = [
     "tf_idf_matrix",
     "tf_matrix",
     "topic_modeling",
+    "trending_terms",
 ]

@@ -1,19 +1,36 @@
 Words
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. toctree::
-   most_frequent_words
+   .. toctree::
+      :maxdepth: 1
+        
+      author_keywords/__index__
 
-.. toctree::   
-   word_cloud
 
-.. toctree::   
-   treemap
+   .. toctree::
+      :maxdepth: 1
 
-.. toctree::
-   word_dynamics
+      index_keywords/__index__
 
-.. toctree::   
-   trend_topics
 
-   
+   .. toctree::
+      :maxdepth: 1
+
+      keywords/__index__
+
+   .. toctree::
+      :maxdepth: 1
+
+      title_nlp_phrases/__index__
+
+
+   .. toctree::
+      :maxdepth: 1
+
+      abstract_nlp_phrases/__index__
+
+
+   .. toctree::
+      :maxdepth: 1
+
+      nlp_phrases/__index__      

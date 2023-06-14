@@ -1,0 +1,102 @@
+# flake8: noqa
+"""
+Trend Topics
+===============================================================================
+
+
+>>> root_dir = "data/regtech/"
+>>> file_name = "sphinx/_static/bibliometrix__abstract_nlp_phrases_trending_topics.html"
+
+>>> from techminer2 import bibliometrix
+>>> bibliometrix.abstract_nlp_phrases.trending_topics(
+...     root_dir=root_dir, 
+... ).table_.head(20)
+year                         OCC  year_q1  ...  global_citations  rn
+abstract_nlp_phrases                       ...                      
+ECONOMIC_CONDITIONS            1     2016  ...                30   0
+DIGITAL_IDENTITY               2     2017  ...               161   0
+NEW_APPROACH                   2     2017  ...               161   1
+CONSUMER_PROTECTION            1     2017  ...               150   2
+MARKET_INTEGRITY               1     2017  ...               150   3
+REGULATORY_SANDBOXES           1     2017  ...                11   4
+FINANCIAL_SERVICES_INDUSTRY    5     2017  ...               315   0
+FINANCIAL_STABILITY            2     2018  ...               154   1
+OPERATIONAL_RISK               2     2018  ...                21   2
+ACTION_RESEARCH                1     2018  ...               153   3
+CURRENT_STATE                  1     2018  ...               153   4
+FINANCIAL_TECHNOLOGY           5     2018  ...               173   0
+FINANCIAL_SYSTEM               4     2018  ...               178   1
+REGULATORY_SYSTEM              2     2018  ...               154   2
+BLOCKCHAIN_TECHNOLOGY          2     2018  ...                21   3
+ADDITIONAL_KNOWLEDGE           1     2019  ...                 3   4
+REGULATORY_TECHNOLOGY         17     2020  ...               266   0
+FINANCIAL_INSTITUTIONS        15     2020  ...               194   1
+REGULATORY_COMPLIANCE          7     2018  ...               198   2
+FINANCIAL_REGULATION           6     2018  ...               330   3
+<BLANKLINE>
+[20 rows x 6 columns]
+
+
+
+
+>>> bibliometrix.abstract_nlp_phrases.trending_topics(
+...     root_dir=root_dir,
+... ).plot_.write_html(file_name)
+
+.. raw:: html
+
+    <iframe src="../../../../_static/bibliometrix__abstract_nlp_phrases_trending_topics.html" height="900px" width="100%" frameBorder="0"></iframe>
+
+
+
+>>> bibliometrix.abstract_nlp_phrases.trending_topics(
+...     custom_items=[
+...         "FINANCIAL_REGULATION",
+...         "REGULATORY_TECHNOLOGY",
+...         "FINANCIAL_CRIME",
+...         "FINANCIAL_SYSTEM",
+...         "ARTIFICIAL_INTELLIGENCE",
+...     ], 
+...     root_dir=root_dir, 
+... ).table_.head(10)
+year                     OCC  year_q1  year_med  year_q3  global_citations  rn
+abstract_nlp_phrases                                                          
+FINANCIAL_SYSTEM           4     2018      2019     2020               178   0
+REGULATORY_TECHNOLOGY     17     2020      2020     2022               266   0
+FINANCIAL_REGULATION       6     2018      2020     2021               330   1
+FINANCIAL_CRIME            1     2020      2020     2020                10   2
+ARTIFICIAL_INTELLIGENCE    7     2020      2021     2022                33   0
+
+# pylint: disable=line-too-long
+"""
+from ...vantagepoint.analyze.trending_terms import trending_terms
+
+FIELD = "abstract_nlp_phrases"
+
+
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
+def trending_topics(
+    # Parameters:
+    n_words_per_year=5,
+    custom_items=None,
+    # Database params:
+    root_dir="./",
+    database="main",
+    year_filter=None,
+    cited_by_filter=None,
+    **filters,
+):
+    """Trend topics"""
+
+    return trending_terms(
+        field=FIELD,
+        n_words_per_year=n_words_per_year,
+        custom_items=custom_items,
+        # Database params:
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
+    )
