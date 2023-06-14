@@ -16,21 +16,22 @@ import pandas as pd
 import plotly.graph_objs as go
 
 #
-# VantatePoint
-# =============================================================================
+#
+# -------------------------- V a n t a g e P o i n t -------------------------
+#
 #
 
 
-# Analyze / Discover / List View
-# Analyze / Discover / Impact View
+# Analyze / Discover / List Items
 @dataclass(init=False)
-class ListView:
+class ItemsList:
     """List view."""
 
     field_: str
     metric_: str
     prompt_: str
     table_: pd.DataFrame
+    custom_items_: list
 
 
 # Analyze / Discover / Matrix / List Cells in Matrix

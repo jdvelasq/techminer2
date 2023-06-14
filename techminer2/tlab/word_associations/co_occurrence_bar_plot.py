@@ -58,7 +58,7 @@ Analyze the table below which contains values of co-occurrence(OCC) of the 'REGT
 # pylint: disable=line-too-long
 """
 
-from ...classes import ListView
+from ...classes import ItemsList
 from ...vantagepoint.report import bar_chart
 
 
@@ -89,7 +89,7 @@ def co_occurrence_bar_plot(
     if title is None:
         title = f"Co-occurrence with '{term}'"
 
-    list_view = ListView()
+    list_view = ItemsList()
     list_view.table_ = obj.matrix_.copy()
     list_view.table_.columns = ["OCC"]
     list_view.table_ = list_view.table_.sort_values("OCC", ascending=False)

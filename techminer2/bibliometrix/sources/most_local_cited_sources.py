@@ -64,7 +64,7 @@ Analyze the table below, which provides bibliometric indicators for the field 's
 
 # pylint: disable=line-too-long
 """
-from ...vantagepoint.analyze import list_view
+from ...vantagepoint.analyze import list_items
 from ..utils import bbx_generic_indicators_by_item
 
 
@@ -119,7 +119,7 @@ def most_local_cited_sources(
     """
 
     return bbx_generic_indicators_by_item(
-        fnc_view=list_view,
+        fnc_view=list_items,
         field="source_abbr",
         root_dir=root_dir,
         database=database,

@@ -65,7 +65,7 @@ from ...check_params import (
     check_integer,
     check_integer_range,
 )
-from ...classes import ListView
+from ...classes import ItemsList
 from ...item_utils import generate_custom_items
 from ...sort_utils import sort_indicators_by_metric
 from ...techminer.indicators import indicators_by_field
@@ -145,7 +145,7 @@ def impact_view(
 
     indicators = indicators[indicators.index.isin(custom_items)]
 
-    results = ListView()
+    results = ItemsList()
     results.table_ = indicators
     results.prompt_ = generate_prompt(field, indicators)
     results.metric_ = metric

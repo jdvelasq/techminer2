@@ -12,7 +12,7 @@ Example
 >>> file_name = "sphinx/_static/vantagepoint__column_chart.html"
 
 >>> from techminer2 import vantagepoint
->>> obj = vantagepoint.analyze.list_view(
+>>> obj = vantagepoint.analyze.list_items(
 ...    field='author_keywords',
 ...    root_dir=root_dir,
 ... )

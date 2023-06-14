@@ -65,7 +65,7 @@ Analyze the table below, which provides bibliometric indicators for the field 'o
 
 # pylint: disable=line-too-long
 """
-from ...vantagepoint.analyze import list_view
+from ...vantagepoint.analyze import list_items
 from ..utils import bbx_generic_indicators_by_item
 
 
@@ -126,7 +126,7 @@ def most_frequent_organizations(
         title = "Most Frequent Organizations"
 
     return bbx_generic_indicators_by_item(
-        fnc_view=list_view,
+        fnc_view=list_items,
         field="organizations",
         root_dir=root_dir,
         database=database,

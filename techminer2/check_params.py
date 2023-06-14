@@ -1,7 +1,7 @@
 """Check utils.
 """
 
-from .classes import ListView, ScientoPyGraph
+from .classes import ItemsList, ScientoPyGraph
 
 
 def check_keywords(param):
@@ -50,7 +50,7 @@ def check_integer_range(param, nullable=True):
 
 def check_listview(obj):
     """Check if obj is a ListView instance."""
-    if not isinstance(obj, (ListView, ScientoPyGraph)):
+    if not isinstance(obj, (ItemsList, ScientoPyGraph)):
         raise TypeError("`obj` must be a ListView/ScientPy instance")
     return obj
 

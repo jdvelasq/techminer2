@@ -13,7 +13,7 @@ Example
 >>> file_name = "sphinx/images/vantagepoint__word_cloud.png"
 
 >>> from techminer2 import vantagepoint
->>> obj = vantagepoint.analyze.list_view(
+>>> obj = vantagepoint.analyze.list_items(
 ...     field='author_keywords',
 ...     root_dir=root_dir,
 ... )

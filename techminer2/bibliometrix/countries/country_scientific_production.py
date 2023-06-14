@@ -51,7 +51,7 @@ Analyze the table below, which provides bibliometric indicators for the field 'c
 
 # pylint: disable=line-too-long
 """
-from ...vantagepoint.analyze import list_view
+from ...vantagepoint.analyze import list_items
 from ...vantagepoint.report import world_map
 
 
@@ -82,7 +82,7 @@ def country_scientific_production(
         BasicChart: A basic chart object.
     """
 
-    obj = list_view(
+    obj = list_items(
         field="countries",
         root_dir=root_dir,
         database=database,

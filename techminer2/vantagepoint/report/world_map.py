@@ -13,7 +13,7 @@ Example
 >>> file_name = "sphinx/_static/vantagepoint__world_map.html"
 
 >>> from techminer2 import vantagepoint
->>> obj = vantagepoint.analyze.list_view(
+>>> obj = vantagepoint.analyze.list_items(
 ...     field='countries',
 ...     root_dir=root_dir,
 ... )
