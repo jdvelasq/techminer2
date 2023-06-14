@@ -13,39 +13,46 @@ Terms by Year
 ...    root_dir=root_dir,
 ... )
 >>> r.table_
-year                                    2017  2018  2019  ...  2021  2022  2023
-author_keywords                                           ...                  
-REGTECH 28:329                             2     3     4  ...     3     6     2
-FINTECH 12:249                             0     2     4  ...     1     2     0
-COMPLIANCE 07:030                          0     0     1  ...     1     1     1
-REGULATION 05:164                          0     2     0  ...     1     1     0
-FINANCIAL_SERVICES 04:168                  1     1     0  ...     0     1     0
-FINANCIAL_REGULATION 04:035                1     0     0  ...     0     2     0
-REGULATORY_TECHNOLOGY (REGTECH) 04:030     0     0     0  ...     2     1     0
-ARTIFICIAL_INTELLIGENCE 04:023             0     0     1  ...     0     1     0
-ANTI_MONEY_LAUNDERING 04:023               0     0     0  ...     3     0     0
-RISK_MANAGEMENT 03:014                     0     1     0  ...     0     1     0
-<BLANKLINE>
-[10 rows x 7 columns]
+year                            2017  2018  2019  2020  2021  2022  2023
+author_keywords                                                         
+REGTECH 28:329                     2     3     4     8     3     6     2
+FINTECH 12:249                     0     2     4     3     1     2     0
+REGULATORY_TECHNOLOGY 07:037       0     0     0     2     3     2     0
+COMPLIANCE 07:030                  0     0     1     3     1     1     1
+REGULATION 05:164                  0     2     0     1     1     1     0
+ANTI_MONEY_LAUNDERING 05:034       0     0     0     2     3     0     0
+FINANCIAL_SERVICES 04:168          1     1     0     1     0     1     0
+FINANCIAL_REGULATION 04:035        1     0     0     1     0     2     0
+ARTIFICIAL_INTELLIGENCE 04:023     0     0     1     2     0     1     0
+RISK_MANAGEMENT 03:014             0     1     0     1     0     1     0
+
 
 
 >>> print(r.prompt_)
-Analyze the table below which contains the  occurrences by year for the years. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
+Your task is to generate an analysis about the  occurrences \\
+by year of the 'author_keywords' in a scientific bibliography database. Summarize the table \\
+below, delimited by triple backticks, identify any notable patterns, trends, or \\
+outliers in the data, and discuss their implications for the research field. Be sure \\
+to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
-| author_keywords                        |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
-|:---------------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
-| REGTECH 28:329                         |      2 |      3 |      4 |      8 |      3 |      6 |      2 |
-| FINTECH 12:249                         |      0 |      2 |      4 |      3 |      1 |      2 |      0 |
-| COMPLIANCE 07:030                      |      0 |      0 |      1 |      3 |      1 |      1 |      1 |
-| REGULATION 05:164                      |      0 |      2 |      0 |      1 |      1 |      1 |      0 |
-| FINANCIAL_SERVICES 04:168              |      1 |      1 |      0 |      1 |      0 |      1 |      0 |
-| FINANCIAL_REGULATION 04:035            |      1 |      0 |      0 |      1 |      0 |      2 |      0 |
-| REGULATORY_TECHNOLOGY (REGTECH) 04:030 |      0 |      0 |      0 |      1 |      2 |      1 |      0 |
-| ARTIFICIAL_INTELLIGENCE 04:023         |      0 |      0 |      1 |      2 |      0 |      1 |      0 |
-| ANTI_MONEY_LAUNDERING 04:023           |      0 |      0 |      0 |      1 |      3 |      0 |      0 |
-| RISK_MANAGEMENT 03:014                 |      0 |      1 |      0 |      1 |      0 |      1 |      0 |
+Table:
+```
+| author_keywords                |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
+|:-------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
+| REGTECH 28:329                 |      2 |      3 |      4 |      8 |      3 |      6 |      2 |
+| FINTECH 12:249                 |      0 |      2 |      4 |      3 |      1 |      2 |      0 |
+| REGULATORY_TECHNOLOGY 07:037   |      0 |      0 |      0 |      2 |      3 |      2 |      0 |
+| COMPLIANCE 07:030              |      0 |      0 |      1 |      3 |      1 |      1 |      1 |
+| REGULATION 05:164              |      0 |      2 |      0 |      1 |      1 |      1 |      0 |
+| ANTI_MONEY_LAUNDERING 05:034   |      0 |      0 |      0 |      2 |      3 |      0 |      0 |
+| FINANCIAL_SERVICES 04:168      |      1 |      1 |      0 |      1 |      0 |      1 |      0 |
+| FINANCIAL_REGULATION 04:035    |      1 |      0 |      0 |      1 |      0 |      2 |      0 |
+| ARTIFICIAL_INTELLIGENCE 04:023 |      0 |      0 |      1 |      2 |      0 |      1 |      0 |
+| RISK_MANAGEMENT 03:014         |      0 |      1 |      0 |      1 |      0 |      1 |      0 |
+```
 <BLANKLINE>
-<BLANKLINE>
+
+
 
 
 
@@ -56,40 +63,42 @@ Analyze the table below which contains the  occurrences by year for the years. I
 ...    cumulative=True,
 ... )
 >>> r.table_
-year                                    2017  2018  2019  ...  2021  2022  2023
-author_keywords                                           ...                  
-REGTECH 28:329                             2     5     9  ...    20    26    28
-FINTECH 12:249                             0     2     6  ...    10    12    12
-COMPLIANCE 07:030                          0     0     1  ...     5     6     7
-REGULATION 05:164                          0     2     2  ...     4     5     5
-FINANCIAL_SERVICES 04:168                  1     2     2  ...     3     4     4
-FINANCIAL_REGULATION 04:035                1     1     1  ...     2     4     4
-REGULATORY_TECHNOLOGY (REGTECH) 04:030     0     0     0  ...     3     4     4
-ARTIFICIAL_INTELLIGENCE 04:023             0     0     1  ...     3     4     4
-ANTI_MONEY_LAUNDERING 04:023               0     0     0  ...     4     4     4
-RISK_MANAGEMENT 03:014                     0     1     1  ...     2     3     3
-<BLANKLINE>
-[10 rows x 7 columns]
-
+year                            2017  2018  2019  2020  2021  2022  2023
+author_keywords                                                         
+REGTECH 28:329                     2     5     9    17    20    26    28
+FINTECH 12:249                     0     2     6     9    10    12    12
+REGULATORY_TECHNOLOGY 07:037       0     0     0     2     5     7     7
+COMPLIANCE 07:030                  0     0     1     4     5     6     7
+REGULATION 05:164                  0     2     2     3     4     5     5
+ANTI_MONEY_LAUNDERING 05:034       0     0     0     2     5     5     5
+FINANCIAL_SERVICES 04:168          1     2     2     3     3     4     4
+FINANCIAL_REGULATION 04:035        1     1     1     2     2     4     4
+ARTIFICIAL_INTELLIGENCE 04:023     0     0     1     3     3     4     4
+RISK_MANAGEMENT 03:014             0     1     1     2     2     3     3
 
 >>> print(r.prompt_)
-Analyze the table below which contains the cumulative occurrences by year for the years. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
+Your task is to generate an analysis about the cumulative occurrences \\
+by year of the 'author_keywords' in a scientific bibliography database. Summarize the table \\
+below, delimited by triple backticks, identify any notable patterns, trends, or \\
+outliers in the data, and discuss their implications for the research field. Be sure \\
+to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
-| author_keywords                        |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
-|:---------------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
-| REGTECH 28:329                         |      2 |      5 |      9 |     17 |     20 |     26 |     28 |
-| FINTECH 12:249                         |      0 |      2 |      6 |      9 |     10 |     12 |     12 |
-| COMPLIANCE 07:030                      |      0 |      0 |      1 |      4 |      5 |      6 |      7 |
-| REGULATION 05:164                      |      0 |      2 |      2 |      3 |      4 |      5 |      5 |
-| FINANCIAL_SERVICES 04:168              |      1 |      2 |      2 |      3 |      3 |      4 |      4 |
-| FINANCIAL_REGULATION 04:035            |      1 |      1 |      1 |      2 |      2 |      4 |      4 |
-| REGULATORY_TECHNOLOGY (REGTECH) 04:030 |      0 |      0 |      0 |      1 |      3 |      4 |      4 |
-| ARTIFICIAL_INTELLIGENCE 04:023         |      0 |      0 |      1 |      3 |      3 |      4 |      4 |
-| ANTI_MONEY_LAUNDERING 04:023           |      0 |      0 |      0 |      1 |      4 |      4 |      4 |
-| RISK_MANAGEMENT 03:014                 |      0 |      1 |      1 |      2 |      2 |      3 |      3 |
+Table:
+```
+| author_keywords                |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
+|:-------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
+| REGTECH 28:329                 |      2 |      5 |      9 |     17 |     20 |     26 |     28 |
+| FINTECH 12:249                 |      0 |      2 |      6 |      9 |     10 |     12 |     12 |
+| REGULATORY_TECHNOLOGY 07:037   |      0 |      0 |      0 |      2 |      5 |      7 |      7 |
+| COMPLIANCE 07:030              |      0 |      0 |      1 |      4 |      5 |      6 |      7 |
+| REGULATION 05:164              |      0 |      2 |      2 |      3 |      4 |      5 |      5 |
+| ANTI_MONEY_LAUNDERING 05:034   |      0 |      0 |      0 |      2 |      5 |      5 |      5 |
+| FINANCIAL_SERVICES 04:168      |      1 |      2 |      2 |      3 |      3 |      4 |      4 |
+| FINANCIAL_REGULATION 04:035    |      1 |      1 |      1 |      2 |      2 |      4 |      4 |
+| ARTIFICIAL_INTELLIGENCE 04:023 |      0 |      0 |      1 |      3 |      3 |      4 |      4 |
+| RISK_MANAGEMENT 03:014         |      0 |      1 |      1 |      2 |      2 |      3 |      3 |
+```
 <BLANKLINE>
-<BLANKLINE>
-
 
 
 # pylint: disable=line-too-long
@@ -123,14 +132,15 @@ def terms_by_year(
 
     Args:
         field (str): Database field to be used to extract the items.
-        root_dir (str): Root directory.
-        database (str): Database name.
         cumulative (bool, optional): If True, the table contains the cumulative number of occurrences. Defaults to False.
-        metric (str): Metric to be used to sort the items.
+
         top_n (int): Number of top items to be returned.
         occ_range (tuple): Range of occurrence of the items.
         gc_range (tuple): Range of global citations of the items.
         custom_items (list): List of items to be returned.
+
+        root_dir (str): Root directory.
+        database (str): Database name.
         year_filter (tuple, optional): Year database filter. Defaults to None.
         cited_by_filter (tuple, optional): Cited by database filter. Defaults to None.
         **filters (dict, optional): Filters to be applied to the database. Defaults to {}.
@@ -145,13 +155,12 @@ def terms_by_year(
 
     def generate_prompt(obj):
         return (
-            f"Analyze the table below which contains the "
-            f"{'cumulative' if obj.cumulative_ else ''} occurrences by year "
-            f"for the {obj.criterion_}. Identify any notable "
-            "patterns, trends, or outliers in the data, and discuss their "
-            "implications for the research field. Be sure to provide a "
-            "concise summary of your findings in no more than 150 words."
-            f"\n\n{obj.table_.to_markdown()}\n\n"
+            f"Your task is to generate an analysis about the {'cumulative' if obj.cumulative_ else ''} occurrences \\\n"
+            f"by year of the '{obj.field_}' in a scientific bibliography database. Summarize the table \\\n"
+            "below, delimited by triple backticks, identify any notable patterns, trends, or \\\n"
+            "outliers in the data, and discuss their implications for the research field. Be sure \\\n"
+            "to provide a concise summary of your findings in no more than 150 words.\n\n"
+            f"Table:\n```\n{obj.table_.to_markdown()}\n```\n"
         )
 
     #
@@ -206,8 +215,7 @@ def terms_by_year(
 
     obj = TermsByYear()
     obj.metric_ = "OCC"
-    obj.criterion_ = "years"
-    obj.other_criterion_ = field
+    obj.field_ = field
     obj.cumulative_ = cumulative
     obj.table_ = descriptors_by_year
     obj.prompt_ = generate_prompt(obj)

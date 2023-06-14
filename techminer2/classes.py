@@ -141,10 +141,9 @@ class FactorMap:
 class TermsByYear:
     """Terms by year."""
 
-    criterion_: str
+    field_: str
     cumulative_: bool
     metric_: str
-    other_criterion_: str
     prompt_: str
     table_: pd.DataFrame
 

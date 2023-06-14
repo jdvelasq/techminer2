@@ -253,7 +253,7 @@ def default_time_line_graph(
 
     obj = TermsByYear()
     obj.metric_ = "OCC"
-    obj.criterion_ = "years"
+    obj.field_ = "years"
     obj.other_criterion_ = field
     obj.cumulative_ = False
     obj.table_ = items_by_year
@@ -322,7 +322,7 @@ def trend_analysis_time_line_graph(
 
     obj = TermsByYear()
     obj.metric_ = "OCC"
-    obj.criterion_ = "years"
+    obj.field_ = "years"
     obj.other_criterion_ = field
     obj.cumulative_ = False
     obj.table_ = items_by_year
