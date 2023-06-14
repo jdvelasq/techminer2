@@ -89,8 +89,6 @@ from ..documents_per_criterion import documents_per_criterion
 
 
 def organizations_production_over_time(
-    root_dir="./",
-    database="main",
     # Table params:
     cumulative=False,
     # Item filters:
@@ -98,7 +96,9 @@ def organizations_production_over_time(
     occ_range=None,
     gc_range=None,
     custom_items=None,
-    # Database filters:
+    # Database params:
+    root_dir="./",
+    database="main",
     year_filter=None,
     cited_by_filter=None,
     **filters,

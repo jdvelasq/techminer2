@@ -4,8 +4,6 @@ Most Frequent Organizations
 ===============================================================================
 
 
-Example
--------------------------------------------------------------------------------
 
 >>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__most_frequent_organizations.html"
@@ -34,31 +32,38 @@ Name: OCC, dtype: int64
 
 
 >>> print(r.prompt_)
-Analyze the table below, which provides bibliometric indicators for the field 'organizations' in a scientific bibliography database. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
+Your task is to generate an analysis about the bibliometric indicators of the \\
+'organizations' field in a scientific bibliography database. Summarize the table below, \\
+sorted by the 'OCC' metric, and delimited by triple backticks, identify \\
+any notable patterns, trends, or outliers in the data, and discuss their \\
+implications for the research field. Be sure to provide a concise summary \\
+of your findings in no more than 150 words.
 <BLANKLINE>
-| organizations                                                      |   OCC |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |
-|:-------------------------------------------------------------------|------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|
-| Univ of Hong Kong (HKG)                                            |     3 |                185 |                 8 |                           61.67 |                           2.67 |
-| Univ Coll Cork (IRL)                                               |     3 |                 41 |                19 |                           13.67 |                           6.33 |
-| Ahlia Univ (BHR)                                                   |     3 |                 19 |                 5 |                            6.33 |                           1.67 |
-| Coventry Univ (GBR)                                                |     2 |                 17 |                 4 |                            8.5  |                           2    |
-| Univ of Westminster (GBR)                                          |     2 |                 17 |                 4 |                            8.5  |                           2    |
-| Dublin City Univ (IRL)                                             |     2 |                 14 |                 3 |                            7    |                           1.5  |
-| Politec di Milano (ITA)                                            |     2 |                  2 |                 0 |                            1    |                           0    |
-| Kingston Bus Sch (GBR)                                             |     1 |                153 |                17 |                          153    |                          17    |
-| FinTech HK, Hong Kong (HKG)                                        |     1 |                150 |                 0 |                          150    |                           0    |
-| ctr for Law, Markets & Regulation, UNSW Australia, Australia (AUS) |     1 |                150 |                 0 |                          150    |                           0    |
-| Duke Univ Sch of Law (USA)                                         |     1 |                 30 |                 0 |                           30    |                           0    |
-| Heinrich-Heine-Univ (DEU)                                          |     1 |                 24 |                 5 |                           24    |                           5    |
-| UNSW Sydney, Kensington, Australia (AUS)                           |     1 |                 24 |                 5 |                           24    |                           5    |
-| Univ of Luxembourg (LUX)                                           |     1 |                 24 |                 5 |                           24    |                           5    |
-| Univ of Zurich (CHE)                                               |     1 |                 24 |                 5 |                           24    |                           5    |
-| European Central B (DEU)                                           |     1 |                 21 |                 8 |                           21    |                           8    |
-| Harvard Univ Weatherhead ctr for International Affairs (USA)       |     1 |                 21 |                 8 |                           21    |                           8    |
-| KS Strategic, London, United Kingdom (GBR)                         |     1 |                 21 |                 8 |                           21    |                           8    |
-| Panepistemio Aigaiou, Chios, Greece (GRC)                          |     1 |                 21 |                 8 |                           21    |                           8    |
-| Sch of Eng (CHE)                                                   |     1 |                 21 |                 8 |                           21    |                           8    |
-<BLANKLINE>
+Table:
+```
+| organizations                                                      |   OCC |   Before 2022 |   Between 2022-2023 |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |   average_growth_rate |   average_docs_per_year |   percentage_docs_last_year |   first_publication_year |   age |   global_citations_per_year |   h_index |   g_index |   m_index |
+|:-------------------------------------------------------------------|------:|--------------:|--------------------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|----------------------:|------------------------:|----------------------------:|-------------------------:|------:|----------------------------:|----------:|----------:|----------:|
+| Univ of Hong Kong (HKG)                                            |     3 |             3 |                   0 |                185 |                 8 |                           61.67 |                           2.67 |                   0   |                     0   |                    0        |                     2017 |     7 |                       26.43 |         3 |         3 |      0.43 |
+| Univ Coll Cork (IRL)                                               |     3 |             2 |                   1 |                 41 |                19 |                           13.67 |                           6.33 |                   0   |                     0.5 |                    0.166667 |                     2018 |     6 |                        6.83 |         2 |         2 |      0.33 |
+| Ahlia Univ (BHR)                                                   |     3 |             2 |                   1 |                 19 |                 5 |                            6.33 |                           1.67 |                  -0.5 |                     0.5 |                    0.166667 |                     2020 |     4 |                        4.75 |         2 |         2 |      0.5  |
+| Coventry Univ (GBR)                                                |     2 |             1 |                   1 |                 17 |                 4 |                            8.5  |                           2    |                   0   |                     0.5 |                    0.25     |                     2020 |     4 |                        4.25 |         2 |         1 |      0.5  |
+| Univ of Westminster (GBR)                                          |     2 |             1 |                   1 |                 17 |                 4 |                            8.5  |                           2    |                   0   |                     0.5 |                    0.25     |                     2020 |     4 |                        4.25 |         2 |         1 |      0.5  |
+| Dublin City Univ (IRL)                                             |     2 |             2 |                   0 |                 14 |                 3 |                            7    |                           1.5  |                  -0.5 |                     0   |                    0        |                     2020 |     4 |                        3.5  |         2 |         1 |      0.5  |
+| Politec di Milano (ITA)                                            |     2 |             1 |                   1 |                  2 |                 0 |                            1    |                           0    |                   0   |                     0.5 |                    0.25     |                     2020 |     4 |                        0.5  |         1 |         1 |      0.25 |
+| Kingston Bus Sch (GBR)                                             |     1 |             1 |                   0 |                153 |                17 |                          153    |                          17    |                   0   |                     0   |                    0        |                     2018 |     6 |                       25.5  |         1 |         1 |      0.17 |
+| FinTech HK, Hong Kong (HKG)                                        |     1 |             1 |                   0 |                150 |                 0 |                          150    |                           0    |                   0   |                     0   |                    0        |                     2017 |     7 |                       21.43 |         1 |         1 |      0.14 |
+| ctr for Law, Markets & Regulation, UNSW Australia, Australia (AUS) |     1 |             1 |                   0 |                150 |                 0 |                          150    |                           0    |                   0   |                     0   |                    0        |                     2017 |     7 |                       21.43 |         1 |         1 |      0.14 |
+| Duke Univ Sch of Law (USA)                                         |     1 |             1 |                   0 |                 30 |                 0 |                           30    |                           0    |                   0   |                     0   |                    0        |                     2016 |     8 |                        3.75 |         1 |         1 |      0.12 |
+| Heinrich-Heine-Univ (DEU)                                          |     1 |             1 |                   0 |                 24 |                 5 |                           24    |                           5    |                   0   |                     0   |                    0        |                     2020 |     4 |                        6    |         1 |         1 |      0.25 |
+| UNSW Sydney, Kensington, Australia (AUS)                           |     1 |             1 |                   0 |                 24 |                 5 |                           24    |                           5    |                   0   |                     0   |                    0        |                     2020 |     4 |                        6    |         1 |         1 |      0.25 |
+| Univ of Luxembourg (LUX)                                           |     1 |             1 |                   0 |                 24 |                 5 |                           24    |                           5    |                   0   |                     0   |                    0        |                     2020 |     4 |                        6    |         1 |         1 |      0.25 |
+| Univ of Zurich (CHE)                                               |     1 |             1 |                   0 |                 24 |                 5 |                           24    |                           5    |                   0   |                     0   |                    0        |                     2020 |     4 |                        6    |         1 |         1 |      0.25 |
+| European Central B (DEU)                                           |     1 |             1 |                   0 |                 21 |                 8 |                           21    |                           8    |                   0   |                     0   |                    0        |                     2018 |     6 |                        3.5  |         1 |         1 |      0.17 |
+| Harvard Univ Weatherhead ctr for International Affairs (USA)       |     1 |             1 |                   0 |                 21 |                 8 |                           21    |                           8    |                   0   |                     0   |                    0        |                     2018 |     6 |                        3.5  |         1 |         1 |      0.17 |
+| KS Strategic, London, United Kingdom (GBR)                         |     1 |             1 |                   0 |                 21 |                 8 |                           21    |                           8    |                   0   |                     0   |                    0        |                     2018 |     6 |                        3.5  |         1 |         1 |      0.17 |
+| Panepistemio Aigaiou, Chios, Greece (GRC)                          |     1 |             1 |                   0 |                 21 |                 8 |                           21    |                           8    |                   0   |                     0   |                    0        |                     2018 |     6 |                        3.5  |         1 |         1 |      0.17 |
+| Sch of Eng (CHE)                                                   |     1 |             1 |                   0 |                 21 |                 8 |                           21    |                           8    |                   0   |                     0   |                    0        |                     2018 |     6 |                        3.5  |         1 |         1 |      0.17 |
+```
 <BLANKLINE>
 
 
@@ -66,14 +71,12 @@ Analyze the table below, which provides bibliometric indicators for the field 'o
 # pylint: disable=line-too-long
 """
 from ...vantagepoint.analyze import list_items
-from ..utils import bbx_generic_indicators_by_item
+from ...vantagepoint.report import ranking_chart
 
 
-# pylint: disable=too-many-locals
 # pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
 def most_frequent_organizations(
-    root_dir="./",
-    database="main",
     # Plot options:
     textfont_size=10,
     marker_size=7,
@@ -89,6 +92,8 @@ def most_frequent_organizations(
     gc_range=None,
     custom_items=None,
     # Database filters:
+    root_dir="./",
+    database="main",
     year_filter=None,
     cited_by_filter=None,
     **filters,
@@ -125,28 +130,30 @@ def most_frequent_organizations(
     if title is None:
         title = "Most Frequent Organizations"
 
-    return bbx_generic_indicators_by_item(
-        fnc_view=list_items,
+    item_list = list_items(
         field="organizations",
-        root_dir=root_dir,
-        database=database,
         metric="OCC",
-        # Plot options:
-        textfont_size=textfont_size,
-        marker_size=marker_size,
-        line_color=line_color,
-        line_width=line_width,
-        yshift=yshift,
-        metric_label=metric_label,
-        field_label=field_label,
-        title=title,
         # Item filters:
         top_n=top_n,
         occ_range=occ_range,
         gc_range=gc_range,
         custom_items=custom_items,
         # Database filters:
+        root_dir=root_dir,
+        database=database,
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
         **filters,
+    )
+
+    return ranking_chart(
+        obj=item_list,
+        title=title,
+        field_label=field_label,
+        metric_label=metric_label,
+        textfont_size=textfont_size,
+        marker_size=marker_size,
+        line_color=line_color,
+        line_width=line_width,
+        yshift=yshift,
     )
