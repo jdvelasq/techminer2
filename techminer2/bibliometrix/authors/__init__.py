@@ -1,4 +1,6 @@
-from .author_impact import author_impact
+from .author_g_index import author_g_index
+from .author_h_index import author_h_index
+from .author_m_index import author_m_index
 from .authors_production_over_time import authors_production_over_time
 from .lotka_law import lotka_law
 from .most_frequent_authors import most_frequent_authors

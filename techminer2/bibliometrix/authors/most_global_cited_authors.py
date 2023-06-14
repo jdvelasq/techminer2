@@ -3,8 +3,7 @@
 ===============================================================================
 
 
-Example
--------------------------------------------------------------------------------
+
 
 >>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__most_global_cited_authors.html"
@@ -27,47 +26,56 @@ Arner DW             185
 Buckley RP           185
 Barberis JN          161
 Anagnostopoulos I    153
-Butler T/1            41
+Butler T              41
 Name: global_citations, dtype: int64
 
 
-
 >>> print(r.prompt_)
-Analyze the table below, which provides bibliometric indicators for the field 'authors' in a scientific bibliography database. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
+Your task is to generate an analysis about the bibliometric indicators of the \\
+'authors' field in a scientific bibliography database. Summarize the table below, \\
+sorted by the 'global_citations' metric, and delimited by triple backticks, identify \\
+any notable patterns, trends, or outliers in the data, and discuss their \\
+implications for the research field. Be sure to provide a concise summary \\
+of your findings in no more than 150 words.
 <BLANKLINE>
-| authors           |   OCC |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |
-|:------------------|------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|
-| Arner DW          |     3 |                185 |                 8 |                           61.67 |                           2.67 |
-| Buckley RP        |     3 |                185 |                 8 |                           61.67 |                           2.67 |
-| Barberis JN       |     2 |                161 |                 3 |                           80.5  |                           1.5  |
-| Anagnostopoulos I |     1 |                153 |                17 |                          153    |                          17    |
-| Butler T/1        |     2 |                 41 |                19 |                           20.5  |                           9.5  |
-| OBrien L          |     1 |                 33 |                14 |                           33    |                          14    |
-| Baxter LG         |     1 |                 30 |                 0 |                           30    |                           0    |
-| Weber RH          |     1 |                 24 |                 5 |                           24    |                           5    |
-| Zetzsche DA       |     1 |                 24 |                 5 |                           24    |                           5    |
-| Breymann W        |     1 |                 21 |                 8 |                           21    |                           8    |
-| Gross FJ          |     1 |                 21 |                 8 |                           21    |                           8    |
-| Kavassalis P      |     1 |                 21 |                 8 |                           21    |                           8    |
-| Saxton K          |     1 |                 21 |                 8 |                           21    |                           8    |
-| Stieber H         |     1 |                 21 |                 8 |                           21    |                           8    |
-| Hamdan A          |     2 |                 18 |                 5 |                            9    |                           2.5  |
-| Turki M           |     2 |                 18 |                 5 |                            9    |                           2.5  |
-| Lin W             |     2 |                 17 |                 4 |                            8.5  |                           2    |
-| Singh C           |     2 |                 17 |                 4 |                            8.5  |                           2    |
-| Brennan R         |     2 |                 14 |                 3 |                            7    |                           1.5  |
-| Crane M           |     2 |                 14 |                 3 |                            7    |                           1.5  |
+Table:
+```
+| authors           |   OCC |   Before 2022 |   Between 2022-2023 |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |   average_growth_rate |   average_docs_per_year |   percentage_docs_last_year |   first_publication_year |   age |   global_citations_per_year |   h_index |   g_index |   m_index |
+|:------------------|------:|--------------:|--------------------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|----------------------:|------------------------:|----------------------------:|-------------------------:|------:|----------------------------:|----------:|----------:|----------:|
+| Arner DW          |     3 |             3 |                   0 |                185 |                 8 |                           61.67 |                           2.67 |                   0   |                     0   |                        0    |                     2017 |     7 |                       26.43 |         3 |         3 |      0.43 |
+| Buckley RP        |     3 |             3 |                   0 |                185 |                 8 |                           61.67 |                           2.67 |                   0   |                     0   |                        0    |                     2017 |     7 |                       26.43 |         3 |         3 |      0.43 |
+| Barberis JN       |     2 |             2 |                   0 |                161 |                 3 |                           80.5  |                           1.5  |                   0   |                     0   |                        0    |                     2017 |     7 |                       23    |         2 |         2 |      0.29 |
+| Anagnostopoulos I |     1 |             1 |                   0 |                153 |                17 |                          153    |                          17    |                   0   |                     0   |                        0    |                     2018 |     6 |                       25.5  |         1 |         1 |      0.17 |
+| Butler T          |     2 |             2 |                   0 |                 41 |                19 |                           20.5  |                           9.5  |                   0   |                     0   |                        0    |                     2018 |     6 |                        6.83 |         2 |         2 |      0.33 |
+| OBrien L          |     1 |             1 |                   0 |                 33 |                14 |                           33    |                          14    |                   0   |                     0   |                        0    |                     2019 |     5 |                        6.6  |         1 |         1 |      0.2  |
+| Baxter LG         |     1 |             1 |                   0 |                 30 |                 0 |                           30    |                           0    |                   0   |                     0   |                        0    |                     2016 |     8 |                        3.75 |         1 |         1 |      0.12 |
+| Weber RH          |     1 |             1 |                   0 |                 24 |                 5 |                           24    |                           5    |                   0   |                     0   |                        0    |                     2020 |     4 |                        6    |         1 |         1 |      0.25 |
+| Zetzsche DA       |     1 |             1 |                   0 |                 24 |                 5 |                           24    |                           5    |                   0   |                     0   |                        0    |                     2020 |     4 |                        6    |         1 |         1 |      0.25 |
+| Breymann W        |     1 |             1 |                   0 |                 21 |                 8 |                           21    |                           8    |                   0   |                     0   |                        0    |                     2018 |     6 |                        3.5  |         1 |         1 |      0.17 |
+| Gross FJ          |     1 |             1 |                   0 |                 21 |                 8 |                           21    |                           8    |                   0   |                     0   |                        0    |                     2018 |     6 |                        3.5  |         1 |         1 |      0.17 |
+| Kavassalis P      |     1 |             1 |                   0 |                 21 |                 8 |                           21    |                           8    |                   0   |                     0   |                        0    |                     2018 |     6 |                        3.5  |         1 |         1 |      0.17 |
+| Saxton K          |     1 |             1 |                   0 |                 21 |                 8 |                           21    |                           8    |                   0   |                     0   |                        0    |                     2018 |     6 |                        3.5  |         1 |         1 |      0.17 |
+| Stieber H         |     1 |             1 |                   0 |                 21 |                 8 |                           21    |                           8    |                   0   |                     0   |                        0    |                     2018 |     6 |                        3.5  |         1 |         1 |      0.17 |
+| Hamdan A          |     2 |             2 |                   0 |                 18 |                 5 |                            9    |                           2.5  |                  -0.5 |                     0   |                        0    |                     2020 |     4 |                        4.5  |         2 |         2 |      0.5  |
+| Turki M           |     2 |             2 |                   0 |                 18 |                 5 |                            9    |                           2.5  |                  -0.5 |                     0   |                        0    |                     2020 |     4 |                        4.5  |         2 |         2 |      0.5  |
+| Lin W             |     2 |             1 |                   1 |                 17 |                 4 |                            8.5  |                           2    |                   0   |                     0.5 |                        0.25 |                     2020 |     4 |                        4.25 |         2 |         1 |      0.5  |
+| Singh C           |     2 |             1 |                   1 |                 17 |                 4 |                            8.5  |                           2    |                   0   |                     0.5 |                        0.25 |                     2020 |     4 |                        4.25 |         2 |         1 |      0.5  |
+| Brennan R         |     2 |             2 |                   0 |                 14 |                 3 |                            7    |                           1.5  |                  -0.5 |                     0   |                        0    |                     2020 |     4 |                        3.5  |         2 |         1 |      0.5  |
+| Crane M           |     2 |             2 |                   0 |                 14 |                 3 |                            7    |                           1.5  |                  -0.5 |                     0   |                        0    |                     2020 |     4 |                        3.5  |         2 |         1 |      0.5  |
+```
 <BLANKLINE>
-<BLANKLINE>
+
+
 
 
 # pylint: disable=line-too-long
 """
 from ...vantagepoint.analyze import list_items
-from ..utils import bbx_generic_indicators_by_item
+from ...vantagepoint.report import ranking_chart
 
 
 # pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
 def most_global_cited_authors(
     root_dir="./",
     database="main",
@@ -121,28 +129,30 @@ def most_global_cited_authors(
     if title is None:
         title = "Most Global Cited Authors"
 
-    return bbx_generic_indicators_by_item(
-        fnc_view=list_items,
+    item_list = list_items(
         field="authors",
-        root_dir=root_dir,
-        database=database,
         metric="global_citations",
-        # Plot options:
-        textfont_size=textfont_size,
-        marker_size=marker_size,
-        line_color=line_color,
-        line_width=line_width,
-        yshift=yshift,
-        metric_label=metric_label,
-        field_label=field_label,
-        title=title,
         # Item filters:
         top_n=top_n,
         occ_range=occ_range,
         gc_range=gc_range,
         custom_items=custom_items,
         # Database filters:
+        root_dir=root_dir,
+        database=database,
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
         **filters,
+    )
+
+    return ranking_chart(
+        obj=item_list,
+        title=title,
+        field_label=field_label,
+        metric_label=metric_label,
+        textfont_size=textfont_size,
+        marker_size=marker_size,
+        line_color=line_color,
+        line_width=line_width,
+        yshift=yshift,
     )

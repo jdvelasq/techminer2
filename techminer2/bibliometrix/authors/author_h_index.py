@@ -1,38 +1,39 @@
 # flake8: noqa
 """
-Most Frequent Authors
+Author H-Index
 ===============================================================================
 
 
+
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/bibliometrix__most_frequent_authors.html"
+>>> file_name = "sphinx/_static/bibliometrix__author_h_index.html"
 
 >>> from techminer2 import bibliometrix
->>> r = bibliometrix.authors.most_frequent_authors(
-...     root_dir=root_dir,
+>>> r = bibliometrix.authors.author_h_index(
 ...     top_n=20,
+...     root_dir=root_dir,
 ... )
 >>> r.plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../_static/bibliometrix__most_frequent_authors.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/bibliometrix__author_h_index.html" height="600px" width="100%" frameBorder="0"></iframe>
 
-    
->>> r.table_.head()
-authors
-Arner DW       3
-Buckley RP     3
-Barberis JN    2
-Butler T       2
-Hamdan A       2
-Name: OCC, dtype: int64
+
+>>> print(r.table_.head().to_markdown())
+| authors     |   h_index |
+|:------------|----------:|
+| Arner DW    |         3 |
+| Buckley RP  |         3 |
+| Barberis JN |         2 |
+| Butler T    |         2 |
+| Hamdan A    |         2 |
 
 
 >>> print(r.prompt_)
 Your task is to generate an analysis about the bibliometric indicators of the \\
 'authors' field in a scientific bibliography database. Summarize the table below, \\
-sorted by the 'OCC' metric, and delimited by triple backticks, identify \\
+sorted by the 'h_index' metric, and delimited by triple backticks, identify \\
 any notable patterns, trends, or outliers in the data, and discuss their \\
 implications for the research field. Be sure to provide a concise summary \\
 of your findings in no more than 150 words.
@@ -52,17 +53,18 @@ Table:
 | Brennan R         |     2 |             2 |                   0 |                 14 |                 3 |                            7    |                           1.5  |                  -0.5 |                     0   |                        0    |                     2020 |     4 |                        3.5  |         2 |         1 |      0.5  |
 | Crane M           |     2 |             2 |                   0 |                 14 |                 3 |                            7    |                           1.5  |                  -0.5 |                     0   |                        0    |                     2020 |     4 |                        3.5  |         2 |         1 |      0.5  |
 | Ryan P            |     2 |             2 |                   0 |                 14 |                 3 |                            7    |                           1.5  |                  -0.5 |                     0   |                        0    |                     2020 |     4 |                        3.5  |         2 |         1 |      0.5  |
-| Sarea A           |     2 |             1 |                   1 |                 12 |                 4 |                            6    |                           2    |                   0   |                     0.5 |                        0.25 |                     2020 |     4 |                        3    |         1 |         1 |      0.25 |
-| Grassi L          |     2 |             1 |                   1 |                  2 |                 0 |                            1    |                           0    |                   0   |                     0.5 |                        0.25 |                     2020 |     4 |                        0.5  |         1 |         1 |      0.25 |
-| Lanfranchi D      |     2 |             1 |                   1 |                  2 |                 0 |                            1    |                           0    |                   0   |                     0.5 |                        0.25 |                     2020 |     4 |                        0.5  |         1 |         1 |      0.25 |
-| Arman AA          |     2 |             0 |                   2 |                  0 |                 0 |                            0    |                           0    |                   0   |                     1   |                        0.5  |                     2022 |     2 |                        0    |         0 |         0 |      0    |
 | Anagnostopoulos I |     1 |             1 |                   0 |                153 |                17 |                          153    |                          17    |                   0   |                     0   |                        0    |                     2018 |     6 |                       25.5  |         1 |         1 |      0.17 |
 | OBrien L          |     1 |             1 |                   0 |                 33 |                14 |                           33    |                          14    |                   0   |                     0   |                        0    |                     2019 |     5 |                        6.6  |         1 |         1 |      0.2  |
 | Baxter LG         |     1 |             1 |                   0 |                 30 |                 0 |                           30    |                           0    |                   0   |                     0   |                        0    |                     2016 |     8 |                        3.75 |         1 |         1 |      0.12 |
 | Weber RH          |     1 |             1 |                   0 |                 24 |                 5 |                           24    |                           5    |                   0   |                     0   |                        0    |                     2020 |     4 |                        6    |         1 |         1 |      0.25 |
 | Zetzsche DA       |     1 |             1 |                   0 |                 24 |                 5 |                           24    |                           5    |                   0   |                     0   |                        0    |                     2020 |     4 |                        6    |         1 |         1 |      0.25 |
+| Breymann W        |     1 |             1 |                   0 |                 21 |                 8 |                           21    |                           8    |                   0   |                     0   |                        0    |                     2018 |     6 |                        3.5  |         1 |         1 |      0.17 |
+| Gross FJ          |     1 |             1 |                   0 |                 21 |                 8 |                           21    |                           8    |                   0   |                     0   |                        0    |                     2018 |     6 |                        3.5  |         1 |         1 |      0.17 |
+| Kavassalis P      |     1 |             1 |                   0 |                 21 |                 8 |                           21    |                           8    |                   0   |                     0   |                        0    |                     2018 |     6 |                        3.5  |         1 |         1 |      0.17 |
+| Saxton K          |     1 |             1 |                   0 |                 21 |                 8 |                           21    |                           8    |                   0   |                     0   |                        0    |                     2018 |     6 |                        3.5  |         1 |         1 |      0.17 |
 ```
 <BLANKLINE>
+
 
 
 
@@ -77,7 +79,8 @@ from ...vantagepoint.report import ranking_chart
 
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
-def most_frequent_authors(
+def author_h_index(
+    metric="h_index",
     root_dir="./",
     database="main",
     # Plot options:
@@ -86,9 +89,9 @@ def most_frequent_authors(
     line_color="black",
     line_width=1.5,
     yshift=4,
+    title=None,
     metric_label=None,
     field_label=None,
-    title=None,
     # Item filters:
     top_n=None,
     occ_range=None,
@@ -99,9 +102,10 @@ def most_frequent_authors(
     cited_by_filter=None,
     **filters,
 ):
-    """Plots the number of documents by author.
+    """Plots the selected impact measure by author.
 
     Args:
+        metric (str, optional): Impact metric. Defaults to "h_index".
         root_dir (str): path to the database directory.
         database (str): name of the database.
         textfont_size (int, optional): Font size. Defaults to 10.
@@ -124,11 +128,15 @@ def most_frequent_authors(
         BasicChart: A basic chart object.
 
     # pylint: disable=line-too-long
+
     """
+
+    if title is None:
+        title = f"Author Impact by {metric.replace('_', ' ').title()}"
 
     item_list = list_items(
         field="authors",
-        metric="OCC",
+        metric="h_index",
         # Item filters:
         top_n=top_n,
         occ_range=occ_range,

@@ -39,9 +39,10 @@ REGULATION               5            4  ...      2.0     0.33
 >>> print(view.prompt_)
 Your task is to generate an analysis about the bibliometric indicators of the \\
 'author_keywords' field in a scientific bibliography database. Summarize the table below, \\
-delimited by triple backticks, identify any notable patterns, trends, or outliers in \\
-the data, and discuss their implications for the research field. Be sure to provide a \\
-concise summary of your findings in no more than 150 words.
+sorted by the 'OCC' metric, and delimited by triple backticks, identify \\
+any notable patterns, trends, or outliers in the data, and discuss their \\
+implications for the research field. Be sure to provide a concise summary \\
+of your findings in no more than 150 words.
 <BLANKLINE>
 Table:
 ```
@@ -118,14 +119,15 @@ def list_items(
 
     """
 
-    def generate_prompt(field, table):
+    def generate_prompt(field, table, metric):
         # pylint: disable=line-too-long
         return (
             "Your task is to generate an analysis about the bibliometric indicators of the \\\n"
             f"'{field}' field in a scientific bibliography database. Summarize the table below, \\\n"
-            "delimited by triple backticks, identify any notable patterns, trends, or outliers in \\\n"
-            "the data, and discuss their implications for the research field. Be sure to provide a \\\n"
-            "concise summary of your findings in no more than 150 words.\n\n"
+            f"sorted by the '{metric}' metric, and delimited by triple backticks, identify \\\n"
+            "any notable patterns, trends, or outliers in the data, and discuss their \\\n"
+            "implications for the research field. Be sure to provide a concise summary \\\n"
+            "of your findings in no more than 150 words.\n\n"
             f"Table:\n```\n{table.to_markdown()}\n```\n"
         )
 
@@ -157,7 +159,7 @@ def list_items(
 
     results = ItemsList()
     results.table_ = indicators
-    results.prompt_ = generate_prompt(field, indicators)
+    results.prompt_ = generate_prompt(field, indicators, metric)
     results.metric_ = metric
     results.field_ = field
     results.custom_items_ = indicators.index.tolist()

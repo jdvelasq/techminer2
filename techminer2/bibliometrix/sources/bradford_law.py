@@ -5,10 +5,6 @@ Bradford's Law
 
 
 
-Example
--------------------------------------------------------------------------------
-
-
 >>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__bradford_law.html"
 
@@ -77,9 +73,9 @@ from ...record_utils import read_records
 
 
 def bradford_law(
+    # Database params:
     root_dir="./",
     database="main",
-    # Database filters:
     year_filter=None,
     cited_by_filter=None,
     **filters,

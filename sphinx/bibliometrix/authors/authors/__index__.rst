@@ -17,5 +17,6 @@ Authors
    lotka_law
 
 .. toctree::   
-   author_impact
-      
+   author_h_index
+   author_g_index
+   author_m_index
