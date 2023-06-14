@@ -22,22 +22,55 @@ Gantt Chart
 
     
 >>> chart.table_.head(10)
-               author_keywords  Year  OCC
-0               REGTECH 28:329  2017    2
-1    FINANCIAL_SERVICES 04:168  2017    1
-2  FINANCIAL_REGULATION 04:035  2017    1
-3            BLOCKCHAIN 03:005  2017    1
-4        SMART_CONTRACT 02:022  2017    1
-5               REGTECH 28:329  2018    3
-6               FINTECH 12:249  2018    2
-7            REGULATION 05:164  2018    2
-8    FINANCIAL_SERVICES 04:168  2018    1
-9       RISK_MANAGEMENT 03:014  2018    1
+year                            2017  2018  2019  2020  2021  2022  2023
+author_keywords                                                         
+REGTECH 28:329                     2     3     4     8     3     6     2
+FINTECH 12:249                     0     2     4     3     1     2     0
+REGULATORY_TECHNOLOGY 07:037       0     0     0     2     3     2     0
+COMPLIANCE 07:030                  0     0     1     3     1     1     1
+REGULATION 05:164                  0     2     0     1     1     1     0
+ANTI_MONEY_LAUNDERING 05:034       0     0     0     2     3     0     0
+FINANCIAL_SERVICES 04:168          1     1     0     1     0     1     0
+FINANCIAL_REGULATION 04:035        1     0     0     1     0     2     0
+ARTIFICIAL_INTELLIGENCE 04:023     0     0     1     2     0     1     0
+RISK_MANAGEMENT 03:014             0     1     0     1     0     1     0
+
 
 
 
 >>> print(chart.prompt_)
-
+Your task is to generate an analysis about the  occurrences \\
+by year of the 'author_keywords' in a scientific bibliography database. Summarize the table \\
+below, delimited by triple backticks, identify any notable patterns, trends, or \\
+outliers in the data, and discuss their implications for the research field. Be sure \\
+to provide a concise summary of your findings in no more than 150 words.
+<BLANKLINE>
+Table:
+```
+| author_keywords                |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
+|:-------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
+| REGTECH 28:329                 |      2 |      3 |      4 |      8 |      3 |      6 |      2 |
+| FINTECH 12:249                 |      0 |      2 |      4 |      3 |      1 |      2 |      0 |
+| REGULATORY_TECHNOLOGY 07:037   |      0 |      0 |      0 |      2 |      3 |      2 |      0 |
+| COMPLIANCE 07:030              |      0 |      0 |      1 |      3 |      1 |      1 |      1 |
+| REGULATION 05:164              |      0 |      2 |      0 |      1 |      1 |      1 |      0 |
+| ANTI_MONEY_LAUNDERING 05:034   |      0 |      0 |      0 |      2 |      3 |      0 |      0 |
+| FINANCIAL_SERVICES 04:168      |      1 |      1 |      0 |      1 |      0 |      1 |      0 |
+| FINANCIAL_REGULATION 04:035    |      1 |      0 |      0 |      1 |      0 |      2 |      0 |
+| ARTIFICIAL_INTELLIGENCE 04:023 |      0 |      0 |      1 |      2 |      0 |      1 |      0 |
+| RISK_MANAGEMENT 03:014         |      0 |      1 |      0 |      1 |      0 |      1 |      0 |
+| INNOVATION 03:012              |      0 |      0 |      0 |      1 |      1 |      1 |      0 |
+| BLOCKCHAIN 03:005              |      1 |      0 |      1 |      0 |      1 |      0 |      0 |
+| SUPTECH 03:004                 |      0 |      0 |      1 |      0 |      0 |      2 |      0 |
+| SEMANTIC_TECHNOLOGIES 02:041   |      0 |      1 |      1 |      0 |      0 |      0 |      0 |
+| DATA_PROTECTION 02:027         |      0 |      0 |      0 |      1 |      0 |      1 |      0 |
+| SMART_CONTRACTS 02:022         |      1 |      1 |      0 |      0 |      0 |      0 |      0 |
+| CHARITYTECH 02:017             |      0 |      0 |      0 |      1 |      0 |      1 |      0 |
+| ENGLISH_LAW 02:017             |      0 |      0 |      0 |      1 |      0 |      1 |      0 |
+| ACCOUNTABILITY 02:014          |      0 |      0 |      0 |      1 |      1 |      0 |      0 |
+| DATA_PROTECTION_OFFICER 02:014 |      0 |      0 |      0 |      1 |      1 |      0 |      0 |
+```
+<BLANKLINE>
 
 
 # pylint: disable=line-too-long    
@@ -67,14 +100,14 @@ def gantt_chart(
 
     fig = _create_fig(
         table,
-        obj.other_criterion_,
+        obj.field_,
         obj.metric_,
         title,
     )
 
     chart = BasicChart()
     chart.plot_ = fig
-    chart.table_ = table
+    chart.table_ = obj.table_
     chart.prompt_ = obj.prompt_
 
     return chart
