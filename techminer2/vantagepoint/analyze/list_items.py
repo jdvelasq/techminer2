@@ -1,11 +1,9 @@
 # flake8: noqa
 """
-List View
+List Items
 ===============================================================================
 
 
-Example
--------------------------------------------------------------------------------
 
 >>> root_dir = "data/regtech/"
 
@@ -17,6 +15,7 @@ Example
 ... )
 >>> view.table_.head()
                        OCC  Before 2022  ...  g_index  m_index
+author_keywords                          ...                  
 REGTECH                 28           20  ...      4.0     1.29
 FINTECH                 12           10  ...      3.0     0.83
 REGULATORY_TECHNOLOGY    7            5  ...      2.0     1.00
@@ -27,7 +26,7 @@ REGULATION               5            4  ...      2.0     0.33
 
 
 >>> print(view.table_.head().to_markdown())
-|                       |   OCC |   Before 2022 |   Between 2022-2023 |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |   average_growth_rate |   average_docs_per_year |   percentage_docs_last_year |   first_publication_year |   age |   global_citations_per_year |   h_index |   g_index |   m_index |
+| author_keywords       |   OCC |   Before 2022 |   Between 2022-2023 |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |   average_growth_rate |   average_docs_per_year |   percentage_docs_last_year |   first_publication_year |   age |   global_citations_per_year |   h_index |   g_index |   m_index |
 |:----------------------|------:|--------------:|--------------------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|----------------------:|------------------------:|----------------------------:|-------------------------:|------:|----------------------------:|----------:|----------:|----------:|
 | REGTECH               |    28 |            20 |                   8 |                329 |                74 |                           11.75 |                           2.64 |                  -0.5 |                     4   |                   0.142857  |                     2017 |     7 |                       47    |         9 |         4 |      1.29 |
 | FINTECH               |    12 |            10 |                   2 |                249 |                49 |                           20.75 |                           4.08 |                  -0.5 |                     1   |                   0.0833333 |                     2018 |     6 |                       41.5  |         5 |         3 |      0.83 |
@@ -37,18 +36,16 @@ REGULATION               5            4  ...      2.0     0.33
 
 
 
-
-
 >>> print(view.prompt_)
-Your task is to generate an analysis about the bibliometric indicators of the '{field}' \\
-field in a scientific bibliography database. Summarize the table below, delimited by triple \\
-backticks, identify any notable patterns, trends, or outliers in the data, and discuss their \\
-implications for the research field. Be sure to provide a concise summary of your findings in \\
-no more than 150 words.
+Your task is to generate an analysis about the bibliometric indicators of the \\
+'author_keywords' field in a scientific bibliography database. Summarize the table below, \\
+delimited by triple backticks, identify any notable patterns, trends, or outliers in \\
+the data, and discuss their implications for the research field. Be sure to provide a \\
+concise summary of your findings in no more than 150 words.
 <BLANKLINE>
 Table:
 ```
-|                         |   OCC |   Before 2022 |   Between 2022-2023 |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |   average_growth_rate |   average_docs_per_year |   percentage_docs_last_year |   first_publication_year |   age |   global_citations_per_year |   h_index |   g_index |   m_index |
+| author_keywords         |   OCC |   Before 2022 |   Between 2022-2023 |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |   average_growth_rate |   average_docs_per_year |   percentage_docs_last_year |   first_publication_year |   age |   global_citations_per_year |   h_index |   g_index |   m_index |
 |:------------------------|------:|--------------:|--------------------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|----------------------:|------------------------:|----------------------------:|-------------------------:|------:|----------------------------:|----------:|----------:|----------:|
 | REGTECH                 |    28 |            20 |                   8 |                329 |                74 |                           11.75 |                           2.64 |                  -0.5 |                     4   |                   0.142857  |                     2017 |     7 |                       47    |         9 |         4 |      1.29 |
 | FINTECH                 |    12 |            10 |                   2 |                249 |                49 |                           20.75 |                           4.08 |                  -0.5 |                     1   |                   0.0833333 |                     2018 |     6 |                       41.5  |         5 |         3 |      0.83 |
@@ -99,19 +96,19 @@ def list_items(
 ):
     """Returns a ItemList object with the extracted items of database field.
 
-    Args (Specific):
+
+
+    Args:
         field (str): Database field to be used to extract the items.
         metric (str): Metric to be used to sort the items.
 
-    Args (Item filters):
-        root_dir (str): Root directory.
-        database (str): Database name.
         top_n (int): Number of top items to be returned.
         occ_range (tuple): Range of occurrence of the items.
         gc_range (tuple): Range of global citations of the items.
         custom_items (list): List of items to be returned.
 
-    Args (Database params):
+        root_dir (str): Root directory.
+        database (str): Database name.
         year_filter (tuple, optional): Year database filter. Defaults to None.
         cited_by_filter (tuple, optional): Cited by database filter. Defaults to None.
         **filters (dict, optional): Filters to be applied to the database. Defaults to {}.
@@ -123,11 +120,11 @@ def list_items(
 
     def generate_prompt(field, table):
         return (
-            "Your task is to generate an analysis about the bibliometric indicators of the '{field}' \\\n"
-            "field in a scientific bibliography database. Summarize the table below, delimited by triple \\\n"
-            "backticks, identify any notable patterns, trends, or outliers in the data, and discuss their \\\n"
-            "implications for the research field. Be sure to provide a concise summary of your findings in \\\n"
-            "no more than 150 words.\n\n"
+            "Your task is to generate an analysis about the bibliometric indicators of the \\\n"
+            f"'{field}' field in a scientific bibliography database. Summarize the table below, \\\n"
+            "delimited by triple backticks, identify any notable patterns, trends, or outliers in \\\n"
+            "the data, and discuss their implications for the research field. Be sure to provide a \\\n"
+            "concise summary of your findings in no more than 150 words.\n\n"
             f"Table:\n```\n{table.to_markdown()}\n```\n"
         )
 

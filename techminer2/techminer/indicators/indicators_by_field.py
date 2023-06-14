@@ -57,7 +57,7 @@ If ``Y_end = 2018`` and ``time_window = 2``, then ``Y_start = 2017``.
 ...     root_dir=root_dir,
 ... )
 >>> print(indicators.head(10).to_markdown())
-|                             |   OCC |   Before 2022 |   Between 2022-2023 |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |   average_growth_rate |   average_docs_per_year |   percentage_docs_last_year |   first_publication_year |   age |   global_citations_per_year |   h_index |   g_index |   m_index |
+| author_keywords             |   OCC |   Before 2022 |   Between 2022-2023 |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |   average_growth_rate |   average_docs_per_year |   percentage_docs_last_year |   first_publication_year |   age |   global_citations_per_year |   h_index |   g_index |   m_index |
 |:----------------------------|------:|--------------:|--------------------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|----------------------:|------------------------:|----------------------------:|-------------------------:|------:|----------------------------:|----------:|----------:|----------:|
 | ACCOUNTABILITY              |     2 |             2 |                   0 |                 14 |                 3 |                             7   |                            1.5 |                  -0.5 |                     0   |                         0   |                     2020 |     4 |                        3.5  |         2 |         1 |      0.5  |
 | ALGORITHMIC_DECISION_MAKING |     1 |             1 |                   0 |                  0 |                 0 |                             0   |                            0   |                   0   |                     0   |                         0   |                     2020 |     4 |                        0    |         0 |         0 |      0    |
@@ -69,9 +69,6 @@ If ``Y_end = 2018`` and ``time_window = 2``, then ``Y_start = 2017``.
 | ANOMALY_DETECTION           |     1 |             1 |                   0 |                  2 |                 0 |                             2   |                            0   |                  -0.5 |                     0   |                         0   |                     2021 |     3 |                        0.67 |         1 |         1 |      0.33 |
 | ANTITRUST                   |     1 |             1 |                   0 |                  3 |                 3 |                             3   |                            3   |                  -0.5 |                     0   |                         0   |                     2021 |     3 |                        1    |         1 |         1 |      0.33 |
 | ANTI_MONEY_LAUNDERING       |     5 |             5 |                   0 |                 34 |                 8 |                             6.8 |                            1.6 |                  -1.5 |                     0   |                         0   |                     2020 |     4 |                        8.5  |         3 |         2 |      0.75 |
-
-
-
 
 
 
@@ -127,9 +124,9 @@ def indicators_by_field(
             .to_frame()
         )
 
-        unique_items.columns = ["_name_"]
+        unique_items.columns = [field]
         unique_items = unique_items.reset_index(drop=True)
-        unique_items.index = unique_items["_name_"].to_list()
+        unique_items.index = unique_items[field]
 
         return unique_items
 
@@ -352,7 +349,7 @@ def indicators_by_field(
     stopwords = load_stopwords(root_dir=root_dir)
     indicators = indicators.drop(stopwords, axis=0)
 
-    indicators = indicators.drop("_name_", axis=1)
+    indicators = indicators.drop(field, axis=1)
     indicators = indicators.sort_index(axis=0, ascending=True)
 
     # indicators = indicators.sort_values("OCC", ascending=False)

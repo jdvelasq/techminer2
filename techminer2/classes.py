@@ -228,12 +228,13 @@ class RecordStatistics:
 # Report / Treemap
 @dataclass(init=False)
 class BasicChart:
-    """Basic chart.
+    """Basic Chart.
 
     Attributes:
         plot_ (go.Figure): Plotly figure.
         prompt_ (str): Prompt.
         table_ (pd.DataFrame): Table.
+        custom_items_ (list): Custom items.
 
     """
 

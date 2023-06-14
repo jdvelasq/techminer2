@@ -4,7 +4,7 @@ Discover
 .. toctree::
     :maxdepth: 1
     
-    list_view
+    list_items
 
 
 .. toctree::
