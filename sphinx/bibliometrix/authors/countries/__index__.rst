@@ -18,7 +18,9 @@ Countries
    countries_production_over_time
 
 .. toctree::   
-   country_impact
+   country_g_index
+   country_h_index
+   country_m_index
 
 .. toctree::   
    country_scientific_production

@@ -1,6 +1,8 @@
+# flake8: noqa
 """
 This module contains functions for computing organization-level bibliometric indicators.
 
+# pylint: disable=line-too-long
 """
 from .most_frequent_organizations import most_frequent_organizations
 from .most_global_cited_organizations import most_global_cited_organizations
