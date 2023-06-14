@@ -94,7 +94,7 @@ def gantt_chart(
     table = obj.table_.melt(
         value_name="OCC", var_name="column", ignore_index=False
     )
-    table = table[table.OCC > 0]
+    # table = table[table.OCC > 0]
     table = table.rename(columns={"column": "Year"})
     table = table.reset_index()
 

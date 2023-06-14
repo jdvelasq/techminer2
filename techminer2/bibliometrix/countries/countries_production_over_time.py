@@ -5,9 +5,6 @@ Countries' Production over Time
 
 
 
-Example
--------------------------------------------------------------------------------
-
 >>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__countries_production_over_time.html"
 
@@ -26,11 +23,13 @@ Example
 >>> print(r.documents_per_item_.head().to_markdown())
 |    | countries     | title                                                                                        |   year | source_title                                   |   global_citations |   local_citations | doi                           |
 |---:|:--------------|:---------------------------------------------------------------------------------------------|-------:|:-----------------------------------------------|-------------------:|------------------:|:------------------------------|
-|  0 | Italy         | REGTECH  POTENTIAL_BENEFITS and CHALLENGES for businesses                                    |   2023 | Technology in Society                          |                  0 |                 0 | 10.1016/J.TECHSOC.2022.102150 |
-|  1 | Switzerland   | REGTECH  POTENTIAL_BENEFITS and CHALLENGES for businesses                                    |   2023 | Technology in Society                          |                  0 |                 0 | 10.1016/J.TECHSOC.2022.102150 |
-|  2 | United States | REGTECH  POTENTIAL_BENEFITS and CHALLENGES for businesses                                    |   2023 | Technology in Society                          |                  0 |                 0 | 10.1016/J.TECHSOC.2022.102150 |
-|  3 | China         | costs of voting and firm PERFORMANCE: evidence from REGTECH adoption in chinese listed firms |   2023 | Research in International Business and Finance |                  0 |                 0 | 10.1016/J.RIBAF.2022.101868   |
+|  0 | Italy         | REGTECH POTENTIAL_BENEFITS and CHALLENGES for businesses                                     |   2023 | Technology in Society                          |                  0 |                 0 | 10.1016/J.TECHSOC.2022.102150 |
+|  1 | Switzerland   | REGTECH POTENTIAL_BENEFITS and CHALLENGES for businesses                                     |   2023 | Technology in Society                          |                  0 |                 0 | 10.1016/J.TECHSOC.2022.102150 |
+|  2 | United States | REGTECH POTENTIAL_BENEFITS and CHALLENGES for businesses                                     |   2023 | Technology in Society                          |                  0 |                 0 | 10.1016/J.TECHSOC.2022.102150 |
+|  3 | China         | COSTS_OF_VOTING and FIRM_PERFORMANCE: evidence from REGTECH ADOPTION in chinese listed firms |   2023 | Research in International Business and Finance |                  0 |                 0 | 10.1016/J.RIBAF.2022.101868   |
 |  4 | United States | REGTECH's rise                                                                               |   2022 | Computer                                       |                  0 |                 0 | 10.1109/MC.2022.3176693       |
+
+
 
 >>> print(r.production_per_year_.head().to_markdown())
 |                     |   OCC |   cum_OCC |   global_citations |   local_citations |   age |   global_citations_per_year |   local_citations_per_year |
@@ -54,8 +53,14 @@ Example
 
 
 >>> print(r.prompt_)
-Analyze the table below which contains the  occurrences by year for the years. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
+Your task is to generate an analysis about the  occurrences \\
+by year of the 'countries' in a scientific bibliography database. Summarize the table \\
+below, delimited by triple backticks, identify any notable patterns, trends, or \\
+outliers in the data, and discuss their implications for the research field. Be sure \\
+to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
+Table:
+```
 | countries            |   2016 |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
 |:---------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
 | United Kingdom 7:199 |      0 |      0 |      3 |      1 |      2 |      0 |      1 |      0 |
@@ -68,9 +73,8 @@ Analyze the table below which contains the  occurrences by year for the years. I
 | Switzerland 4:045    |      0 |      1 |      1 |      0 |      1 |      0 |      0 |      1 |
 | Bahrain 4:019        |      0 |      0 |      0 |      0 |      1 |      2 |      1 |      0 |
 | Hong Kong 3:185      |      0 |      2 |      0 |      0 |      1 |      0 |      0 |      0 |
+```
 <BLANKLINE>
-<BLANKLINE>
-
 
 
 # pylint: disable=line-too-long
