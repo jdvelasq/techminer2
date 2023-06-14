@@ -28,11 +28,12 @@ Example
 >>> print(r.documents_per_item_.head().to_markdown())
 |    | authors     | title                                                                                        |   year | source_title                                   |   global_citations |   local_citations | doi                           |
 |---:|:------------|:---------------------------------------------------------------------------------------------|-------:|:-----------------------------------------------|-------------------:|------------------:|:------------------------------|
-|  0 | Teichmann F | REGTECH  POTENTIAL_BENEFITS and CHALLENGES for businesses                                    |   2023 | Technology in Society                          |                  0 |                 0 | 10.1016/J.TECHSOC.2022.102150 |
-|  1 | Boticiu SR  | REGTECH  POTENTIAL_BENEFITS and CHALLENGES for businesses                                    |   2023 | Technology in Society                          |                  0 |                 0 | 10.1016/J.TECHSOC.2022.102150 |
-|  2 | Sergi BS    | REGTECH  POTENTIAL_BENEFITS and CHALLENGES for businesses                                    |   2023 | Technology in Society                          |                  0 |                 0 | 10.1016/J.TECHSOC.2022.102150 |
-|  3 | Lan G       | costs of voting and firm PERFORMANCE: evidence from REGTECH adoption in chinese listed firms |   2023 | Research in International Business and Finance |                  0 |                 0 | 10.1016/J.RIBAF.2022.101868   |
-|  4 | Li D/1      | costs of voting and firm PERFORMANCE: evidence from REGTECH adoption in chinese listed firms |   2023 | Research in International Business and Finance |                  0 |                 0 | 10.1016/J.RIBAF.2022.101868   |
+|  0 | Teichmann F | REGTECH POTENTIAL_BENEFITS and CHALLENGES for businesses                                     |   2023 | Technology in Society                          |                  0 |                 0 | 10.1016/J.TECHSOC.2022.102150 |
+|  1 | Boticiu SR  | REGTECH POTENTIAL_BENEFITS and CHALLENGES for businesses                                     |   2023 | Technology in Society                          |                  0 |                 0 | 10.1016/J.TECHSOC.2022.102150 |
+|  2 | Sergi BS    | REGTECH POTENTIAL_BENEFITS and CHALLENGES for businesses                                     |   2023 | Technology in Society                          |                  0 |                 0 | 10.1016/J.TECHSOC.2022.102150 |
+|  3 | Lan G       | COSTS_OF_VOTING and FIRM_PERFORMANCE: evidence from REGTECH ADOPTION in chinese listed firms |   2023 | Research in International Business and Finance |                  0 |                 0 | 10.1016/J.RIBAF.2022.101868   |
+|  4 | Li D/1      | COSTS_OF_VOTING and FIRM_PERFORMANCE: evidence from REGTECH ADOPTION in chinese listed firms |   2023 | Research in International Business and Finance |                  0 |                 0 | 10.1016/J.RIBAF.2022.101868   |
+
 
 
 >>> print(r.production_per_year_.head().to_markdown())
@@ -52,27 +53,36 @@ Example
 | Arner DW 3:185    |      0 |      2 |      0 |      0 |      1 |      0 |      0 |      0 |
 | Buckley RP 3:185  |      0 |      2 |      0 |      0 |      1 |      0 |      0 |      0 |
 | Barberis JN 2:161 |      0 |      2 |      0 |      0 |      0 |      0 |      0 |      0 |
-| Butler T/1 2:041  |      0 |      0 |      1 |      1 |      0 |      0 |      0 |      0 |
+| Butler T 2:041    |      0 |      0 |      1 |      1 |      0 |      0 |      0 |      0 |
 | Hamdan A 2:018    |      0 |      0 |      0 |      0 |      1 |      1 |      0 |      0 |
 
 
+
 >>> print(r.prompt_)
-Analyze the table below which contains the  occurrences by year for the years. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
+Your task is to generate an analysis about the  occurrences \\
+by year of the 'authors' in a scientific bibliography database. Summarize the table \\
+below, delimited by triple backticks, identify any notable patterns, trends, or \\
+outliers in the data, and discuss their implications for the research field. Be sure \\
+to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
+Table:
+```
 | authors           |   2016 |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
 |:------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
 | Arner DW 3:185    |      0 |      2 |      0 |      0 |      1 |      0 |      0 |      0 |
 | Buckley RP 3:185  |      0 |      2 |      0 |      0 |      1 |      0 |      0 |      0 |
 | Barberis JN 2:161 |      0 |      2 |      0 |      0 |      0 |      0 |      0 |      0 |
-| Butler T/1 2:041  |      0 |      0 |      1 |      1 |      0 |      0 |      0 |      0 |
+| Butler T 2:041    |      0 |      0 |      1 |      1 |      0 |      0 |      0 |      0 |
 | Hamdan A 2:018    |      0 |      0 |      0 |      0 |      1 |      1 |      0 |      0 |
 | Turki M 2:018     |      0 |      0 |      0 |      0 |      1 |      1 |      0 |      0 |
 | Lin W 2:017       |      0 |      0 |      0 |      0 |      1 |      0 |      1 |      0 |
 | Singh C 2:017     |      0 |      0 |      0 |      0 |      1 |      0 |      1 |      0 |
 | Brennan R 2:014   |      0 |      0 |      0 |      0 |      1 |      1 |      0 |      0 |
 | Crane M 2:014     |      0 |      0 |      0 |      0 |      1 |      1 |      0 |      0 |
+```
 <BLANKLINE>
-<BLANKLINE>
+
+
 
 # pylint: disable=line-too-long
 """
@@ -86,8 +96,6 @@ from ..documents_per_criterion import documents_per_criterion
 
 
 def authors_production_over_time(
-    root_dir="./",
-    database="main",
     # Table params:
     cumulative=False,
     # Item filters:
@@ -95,7 +103,9 @@ def authors_production_over_time(
     occ_range=None,
     gc_range=None,
     custom_items=None,
-    # Database filters:
+    # Database params:
+    root_dir="./",
+    database="main",
     year_filter=None,
     cited_by_filter=None,
     **filters,
