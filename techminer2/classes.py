@@ -406,6 +406,14 @@ class LotkaLaw:
 # Authors / Organizations / Most Local Cited Organizations
 # Authors / Organizations / Organizations Production over Time
 # Authors / Organizations / Organization Impact
+# Authors / Organizations / Corresponding Author Organization
+@dataclass(init=False)
+class CorresponingAuthorOrganization:
+    """Corresponding author organization."""
+
+    plot_: go.Figure
+    table_: pd.DataFrame
+    prompt__: str
 
 
 # Authors / Countries / Corresponding Author Country

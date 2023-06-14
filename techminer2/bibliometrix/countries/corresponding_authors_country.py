@@ -88,6 +88,7 @@ from ...techminer.indicators.collaboration_indicators_by_field import (
 )
 
 
+# pylint: disable=too-many-arguments
 def corresponding_authors_country(
     # Item filters:
     top_n=None,

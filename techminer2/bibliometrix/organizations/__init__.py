@@ -4,6 +4,9 @@ This module contains functions for computing organization-level bibliometric ind
 
 # pylint: disable=line-too-long
 """
+from .corresponding_authors_organization import (
+    corresponding_authors_organization,
+)
 from .most_frequent_organizations import most_frequent_organizations
 from .most_global_cited_organizations import most_global_cited_organizations
 from .most_local_cited_organizations import most_local_cited_organizations
@@ -15,6 +18,7 @@ from .organizations_production_over_time import (
 )
 
 __all__ = [
+    "corresponding_authors_organization",
     "most_frequent_organizations",
     "most_global_cited_organizations",
     "most_local_cited_organizations",

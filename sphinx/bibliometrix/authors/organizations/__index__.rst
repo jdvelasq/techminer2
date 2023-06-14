@@ -14,6 +14,9 @@ Organizations
    organizations_production_over_time
 
 .. toctree::   
+   corresponding_authors_organization
+
+.. toctree::   
    organization_g_index
    organization_h_index
    organization_m_index
