@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 Corresponding Author's Country
 ===============================================================================
@@ -31,9 +32,21 @@ China             5                27  ...                     3      0.60
 [5 rows x 6 columns]
 
 >>> print(r.prompt_)
+Your task is to generate an analysis about the collaboration between countries \\
+according to the data in a scientific bibliography database. Summarize the table \\
+below, delimited by triple backticks, where the column 'single publication' is the \\
+number of documents in which all the authors belongs to the same country, and the  \\
+column 'multiple publication' is the number of documents in which the authors are \\
+from different countries. The column 'mcp ratio' is the ratio between the columns \\
+'multiple publication' and 'single publication'. The higher the ratio, the higher \\
+the collaboration between countries. Use the information in the table to draw \\
+conclusions about the level of collaboration between countries in the dataset. In \\
+your analysis, be sure to describe in a clear and concise way, any findings or any \\
+patterns you observe, and identify any outliers or anomalies in the data. Limit your \\
+description to one paragraph with no more than 250 words.
 <BLANKLINE>
-Imagine that you are a researcher analyzing a bibliographic dataset. The table below provides data on top 20 most frequent countries in the dataset. 'single publication' is the number of documents in which all the authors are from the same country. 'multiple publication' is the number of documents in which the authors are from different countries. 'mcp ratio' is the ratio between 'multiple publication' and 'single publication'. The higher the ratio, the higher the collaboration between countries. Use the information in the table to draw conclusions about the level of collaboration between countries in the dataset. In your analysis, be sure to describe in a clear and concise way, any findings or any patterns you observe, and identify any outliers or anomalies in the data. Limit your description to one paragraph with no more than 250 words.
-<BLANKLINE>
+Table:
+```
 |    | countries            |   OCC |   global_citations |   local_citations |   single_publication |   multiple_publication |   mp_ratio |
 |---:|:---------------------|------:|-------------------:|------------------:|---------------------:|-----------------------:|-----------:|
 |  0 | United Kingdom       |     7 |                199 |                34 |                    4 |                      3 |       0.43 |
@@ -56,11 +69,12 @@ Imagine that you are a researcher analyzing a bibliographic dataset. The table b
 | 17 | South Africa         |     1 |                 11 |                 4 |                    1 |                      0 |       0    |
 | 18 | Ukraine              |     1 |                  4 |                 0 |                    1 |                      0 |       0    |
 | 19 | Malaysia             |     1 |                  3 |                 0 |                    1 |                      0 |       0    |
-<BLANKLINE>
-<BLANKLINE>
+```
 <BLANKLINE>
 
 
+
+# pylint: disable=line-too-long   
 """
 
 
@@ -119,41 +133,22 @@ def corresponding_authors_country(
 
 
 def _create_prompt(table):
-    return f"""
-Imagine that you are a researcher analyzing a bibliographic dataset. The table \
-below provides data on top {table.shape[0]} most frequent countries in the \
-dataset. 'single publication' is the number of documents in which all the \
-authors are from the same country. 'multiple publication' is the number \
-of documents in which the authors are from different countries. \
-'mcp ratio' is the ratio between 'multiple publication' and 'single publication'. \
-The higher the ratio, the higher the collaboration between countries. \
-Use the information in the table to draw conclusions about the level of \
-collaboration between countries in the dataset. In your analysis, be sure to \
-describe in a clear and concise way, any findings or any patterns you \
-observe, and identify any outliers or anomalies in the data. \
-Limit your description to one paragraph with no more than 250 words.
-
-{table.to_markdown()}
-
-
-"""
-
-
-# def _make_table(
-#     directory,
-#     database,
-#     start_year,
-#     end_year,
-#     **filters,
-# ):
-#     indicators = indicators.sort_values(by="OCC", ascending=False)
-#     indicators = indicators[["single_publication", "multiple_publication"]]
-#     indicators = indicators.assign(
-#         mcp_ratio=indicators["multiple_publication"]
-#         / indicators["single_publication"]
-#     )
-#     indicators = indicators.replace(np.inf, "-")
-#     return indicators
+    # pylint: disable=line-too-long
+    return (
+        "Your task is to generate an analysis about the collaboration between countries \\\n"
+        "according to the data in a scientific bibliography database. Summarize the table \\\n"
+        "below, delimited by triple backticks, where the column 'single publication' is the \\\n"
+        "number of documents in which all the authors belongs to the same country, and the  \\\n"
+        "column 'multiple publication' is the number of documents in which the authors are \\\n"
+        "from different countries. The column 'mcp ratio' is the ratio between the columns \\\n"
+        "'multiple publication' and 'single publication'. The higher the ratio, the higher \\\n"
+        "the collaboration between countries. Use the information in the table to draw \\\n"
+        "conclusions about the level of collaboration between countries in the dataset. In \\\n"
+        "your analysis, be sure to describe in a clear and concise way, any findings or any \\\n"
+        "patterns you observe, and identify any outliers or anomalies in the data. Limit your \\\n"
+        "description to one paragraph with no more than 250 words.\n\n"
+        f"Table:\n```\n{table.to_markdown()}\n```\n"
+    )
 
 
 def _make_plot(indicators):
