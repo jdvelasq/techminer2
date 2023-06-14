@@ -40,9 +40,17 @@ AUTHORS        Authors                                        102
                Countries                                       29
                Countries (1st author)                          25
 KEYWORDS       Raw author keywords                            148
-               Cleaned author keywords                        146
+               Cleaned author keywords                        143
                Raw index keywords                             155
-               Cleaned index keywords                         150
+               Cleaned index keywords                         149
+               Raw keywords                                   273
+               Cleaned keywords                               252
+NLP PHRASES    Raw title NLP phrases                           40
+               Cleaned title NLP phrases                       40
+               Raw abstract NLP phrases                       157
+               Cleaned abstract nlp phrases                   149
+               Raw (NLP phrases + keywords)                   373
+               Cleaned (NLP phrases + keywords)               338
             
                
 >>> file_name = "sphinx/_static/bibliometrix__main_info_plot.html"               
@@ -90,12 +98,19 @@ The table below provides data on the main characteristics of the records and fie
 | ('AUTHORS', 'Countries')                               | 29        |
 | ('AUTHORS', 'Countries (1st author)')                  | 25        |
 | ('KEYWORDS', 'Raw author keywords')                    | 148       |
-| ('KEYWORDS', 'Cleaned author keywords')                | 146       |
+| ('KEYWORDS', 'Cleaned author keywords')                | 143       |
 | ('KEYWORDS', 'Raw index keywords')                     | 155       |
-| ('KEYWORDS', 'Cleaned index keywords')                 | 150       |
+| ('KEYWORDS', 'Cleaned index keywords')                 | 149       |
+| ('KEYWORDS', 'Raw keywords')                           | 273       |
+| ('KEYWORDS', 'Cleaned keywords')                       | 252       |
+| ('NLP PHRASES', 'Raw title NLP phrases')               | 40        |
+| ('NLP PHRASES', 'Cleaned title NLP phrases')           | 40        |
+| ('NLP PHRASES', 'Raw abstract NLP phrases')            | 157       |
+| ('NLP PHRASES', 'Cleaned abstract nlp phrases')        | 149       |
+| ('NLP PHRASES', 'Raw (NLP phrases + keywords)')        | 373       |
+| ('NLP PHRASES', 'Cleaned (NLP phrases + keywords)')    | 338       |
 <BLANKLINE>
 <BLANKLINE>
-
 
 # pylint: disable=line-too-long
 """
@@ -132,6 +147,7 @@ class _Statistics:
         self.compute_document_types_stats()
         self.compute_authors_stats()
         self.compute_keywords_stats()
+        self.compute_nlp_phrases_stats()
         self.make_report()
 
     def make_report(self):
@@ -142,6 +158,7 @@ class _Statistics:
                 self.document_types_stats,
                 self.authors_stats,
                 self.keywords_stats,
+                self.nlp_phrases_stats,
             ]
         )
         index = pd.MultiIndex.from_arrays(
@@ -553,6 +570,16 @@ class _Statistics:
             "Cleaned index keywords",
             self.index_keywords(),
         ]
+        self.keywords_stats.loc[(4,)] = [
+            "KEYWORDS",
+            "Raw keywords",
+            self.raw_keywords(),
+        ]
+        self.keywords_stats.loc[(5,)] = [
+            "KEYWORDS",
+            "Cleaned keywords",
+            self.keywords(),
+        ]
 
     # -----------------------------------------------------------------------------------
 
@@ -602,6 +629,143 @@ class _Statistics:
         else:
             return 0
 
+    def raw_keywords(self):
+        """Computes the number of raw keywords"""
+        if "raw_keywords" in self.records.columns:
+            records = self.records.raw_keywords.copy()
+            records = records.dropna()
+            records = records.str.split(";")
+            records = records.explode()
+            records = records.str.strip()
+            records = records.drop_duplicates()
+            return len(records)
+        else:
+            return 0
+
+    def keywords(self):
+        """Computes the number of cleaned keywords"""
+        if "keywords" in self.records.columns:
+            records = self.records.keywords.copy()
+            records = records.dropna()
+            records = records.str.split(";")
+            records = records.explode()
+            records = records.str.strip()
+            records = records.drop_duplicates()
+            return len(records)
+        else:
+            return 0
+
+    #####################################################################################
+    def compute_nlp_phrases_stats(self):
+        """Computes the nlp phrases stats"""
+        self.nlp_phrases_stats = pd.DataFrame(
+            columns=["Category", "Item", "Value"]
+        )
+        self.nlp_phrases_stats.loc[(0,)] = [
+            "NLP PHRASES",
+            "Raw title NLP phrases",
+            self.raw_title_nlp_phrases(),
+        ]
+        self.nlp_phrases_stats.loc[(1,)] = [
+            "NLP PHRASES",
+            "Cleaned title NLP phrases",
+            self.title_nlp_phrases(),
+        ]
+        self.nlp_phrases_stats.loc[(2,)] = [
+            "NLP PHRASES",
+            "Raw abstract NLP phrases",
+            self.raw_abstract_nlp_phrases(),
+        ]
+        self.nlp_phrases_stats.loc[(3,)] = [
+            "NLP PHRASES",
+            "Cleaned abstract nlp phrases",
+            self.abstract_nlp_phrases(),
+        ]
+        self.nlp_phrases_stats.loc[(4,)] = [
+            "NLP PHRASES",
+            "Raw (NLP phrases + keywords)",
+            self.raw_nlp_phrases(),
+        ]
+        self.nlp_phrases_stats.loc[(5,)] = [
+            "NLP PHRASES",
+            "Cleaned (NLP phrases + keywords)",
+            self.nlp_phrases(),
+        ]
+
+    # -----------------------------------------------------------------------------------
+
+    def raw_title_nlp_phrases(self):
+        """Computes the number of raw author keywords"""
+        records = self.records.raw_title_nlp_phrases.copy()
+        records = records.dropna()
+        records = records.str.split(";")
+        records = records.explode()
+        records = records.str.strip()
+        records = records.drop_duplicates()
+        return len(records)
+
+    def title_nlp_phrases(self):
+        """Computes the number of cleaned author keywords"""
+        records = self.records.title_nlp_phrases.copy()
+        records = records.dropna()
+        records = records.str.split(";")
+        records = records.explode()
+        records = records.str.strip()
+        records = records.drop_duplicates()
+        return len(records)
+
+    def raw_abstract_nlp_phrases(self):
+        """Computes the number of raw index keywords"""
+        if "raw_abstract_nlp_phrases" in self.records.columns:
+            records = self.records.raw_abstract_nlp_phrases.copy()
+            records = records.dropna()
+            records = records.str.split(";")
+            records = records.explode()
+            records = records.str.strip()
+            records = records.drop_duplicates()
+            return len(records)
+        else:
+            return 0
+
+    def abstract_nlp_phrases(self):
+        """Computes the number of cleaned index keywords"""
+        if "abstract_nlp_phrases" in self.records.columns:
+            records = self.records.abstract_nlp_phrases.copy()
+            records = records.dropna()
+            records = records.str.split(";")
+            records = records.explode()
+            records = records.str.strip()
+            records = records.drop_duplicates()
+            return len(records)
+        else:
+            return 0
+
+    def raw_nlp_phrases(self):
+        """Computes the number of raw index keywords"""
+        if "raw_nlp_phrases" in self.records.columns:
+            records = self.records.raw_nlp_phrases.copy()
+            records = records.dropna()
+            records = records.str.split(";")
+            records = records.explode()
+            records = records.str.strip()
+            records = records.drop_duplicates()
+            return len(records)
+        else:
+            return 0
+
+    def nlp_phrases(self):
+        """Computes the number of cleaned index keywords"""
+        if "nlp_phrases" in self.records.columns:
+            records = self.records.nlp_phrases.copy()
+            records = records.dropna()
+            records = records.str.split(";")
+            records = records.explode()
+            records = records.str.strip()
+            records = records.drop_duplicates()
+            return len(records)
+        else:
+            return 0
+
 
 def make_plot(report):
     """Makes the plot"""
@@ -626,7 +790,7 @@ def make_plot(report):
         fig.update_xaxes(visible=False, row=row, col=col)
         fig.update_yaxes(visible=False, row=row, col=col)
 
-    fig = make_subplots(rows=4, cols=3)
+    fig = make_subplots(rows=6, cols=3)
 
     add_text_trace(fig, "GENERAL", "Timespan", 1, 1)
     add_text_trace(fig, "GENERAL", "Sources", 1, 2)
@@ -640,11 +804,25 @@ def make_plot(report):
 
     add_text_trace(fig, "AUTHORS", "International co-authorship %", 3, 1)
     add_text_trace(fig, "AUTHORS", "Co-authors per document", 3, 2)
-    add_text_trace(fig, "KEYWORDS", "Raw author keywords", 3, 3)
+    add_text_trace(fig, "GENERAL", "References", 3, 3)
 
-    add_text_trace(fig, "GENERAL", "References", 4, 1)
-    add_text_trace(fig, "GENERAL", "Document average age", 4, 2)
-    add_text_trace(fig, "GENERAL", "Average citations per document", 4, 3)
+    add_text_trace(fig, "KEYWORDS", "Raw author keywords", 4, 1)
+    add_text_trace(fig, "KEYWORDS", "Cleaned author keywords", 4, 2)
+    add_text_trace(fig, "KEYWORDS", "Raw index keywords", 4, 3)
+
+    add_text_trace(fig, "KEYWORDS", "Raw keywords", 5, 1)
+    add_text_trace(fig, "KEYWORDS", "Cleaned keywords", 5, 2)
+    add_text_trace(fig, "NLP PHRASES", "Raw (NLP phrases + keywords)", 5, 3)
+
+    add_text_trace(
+        fig,
+        "NLP PHRASES",
+        "Cleaned (NLP phrases + keywords)",
+        6,
+        1,
+    )
+    add_text_trace(fig, "GENERAL", "Document average age", 6, 2)
+    add_text_trace(fig, "GENERAL", "Average citations per document", 6, 3)
 
     fig.update_layout(showlegend=False)
     fig.update_layout(title="Main Information")

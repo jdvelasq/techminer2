@@ -7,7 +7,7 @@ Create keywords thesaurus
 
 >>> from techminer2 import techminer
 >>> techminer.data.create_keywords_thesaurus(root_dir=root_dir)
---INFO-- Creating `keywords.txt` from author/index keywords, and abstract/title words
+--INFO-- Creating `keywords.txt` from author/index keywords, and abstract/title nlp phrases
 
 # pylint: disable=line-too-long
 """
@@ -27,8 +27,7 @@ def create_keywords_thesaurus(root_dir="./"):
     """Creates a words thesaurus from raw keywords and title/abstact words."""
 
     sys.stdout.write(
-        "--INFO-- Creating `keywords.txt` from author/index keywords, and "
-        "abstract/title words\n"
+        "--INFO-- Creating `keywords.txt` from author/index keywords, and abstract/title nlp phrases\n"
     )
 
     series = load_value_phrases_from_databases(root_dir=root_dir)
@@ -143,11 +142,16 @@ def load_value_phrases_from_databases(root_dir="./"):
 
     words_list = []
 
-    files = list(glob.glob(os.path.join(root_dir, "databases/_*.csv")))
-    for file in files:
-        data = pd.read_csv(file, encoding="utf-8")
-        if "raw_nlp_phrases" in data.columns:
-            words_list.append(data["raw_nlp_phrases"])
+    # files = list(glob.glob(os.path.join(root_dir, "databases/_*.csv")))
+    # for file in files:
+    #     data = pd.read_csv(file, encoding="utf-8")
+    #     if "raw_nlp_phrases" in data.columns:
+    #         words_list.append(data["raw_nlp_phrases"])
+
+    file = os.path.join(root_dir, "databases/_main.csv")
+    data = pd.read_csv(file, encoding="utf-8")
+    if "raw_nlp_phrases" in data.columns:
+        words_list.append(data["raw_nlp_phrases"])
 
     words_list = pd.concat(words_list, ignore_index=True)
     words_list = words_list.str.strip()

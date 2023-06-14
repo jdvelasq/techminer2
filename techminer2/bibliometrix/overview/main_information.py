@@ -43,6 +43,14 @@ KEYWORDS       Raw author keywords                            148
                Cleaned author keywords                        143
                Raw index keywords                             155
                Cleaned index keywords                         149
+               Raw keywords                                   273
+               Cleaned keywords                               252
+NLP PHRASES    Raw title NLP phrases                           40
+               Cleaned title NLP phrases                       40
+               Raw abstract NLP phrases                       157
+               Cleaned abstract nlp phrases                   149
+               Raw (NLP phrases + keywords)                   373
+               Cleaned (NLP phrases + keywords)               338
 
 >>> file_name = "sphinx/_static/bibliometrix__main_info_plot.html"               
 >>> r.plot_.write_html(file_name)
@@ -93,6 +101,14 @@ The table below provides data on the main characteristics of the records and fie
 | ('KEYWORDS', 'Cleaned author keywords')                | 143       |
 | ('KEYWORDS', 'Raw index keywords')                     | 155       |
 | ('KEYWORDS', 'Cleaned index keywords')                 | 149       |
+| ('KEYWORDS', 'Raw keywords')                           | 273       |
+| ('KEYWORDS', 'Cleaned keywords')                       | 252       |
+| ('NLP PHRASES', 'Raw title NLP phrases')               | 40        |
+| ('NLP PHRASES', 'Cleaned title NLP phrases')           | 40        |
+| ('NLP PHRASES', 'Raw abstract NLP phrases')            | 157       |
+| ('NLP PHRASES', 'Cleaned abstract nlp phrases')        | 149       |
+| ('NLP PHRASES', 'Raw (NLP phrases + keywords)')        | 373       |
+| ('NLP PHRASES', 'Cleaned (NLP phrases + keywords)')    | 338       |
 <BLANKLINE>
 <BLANKLINE>
 
@@ -139,11 +155,3 @@ def main_information(
         **params,
         **filters,
     )
-
-    # return statistics(
-    #     root_dir=root_dir,
-    #     database=database,
-    #     year_filter=year_filter,
-    #     cited_by_filter=cited_by_filter,
-    #     **filters,
-    # )

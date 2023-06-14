@@ -58,7 +58,7 @@ Import a scopus data file in the working directory.
 --INFO-- Creating `local_citations` column in references database
 --INFO-- Creating `local_citations` column in documents database
 --INFO-- The data/regtech/countries.txt thesaurus file was created
---INFO-- Creating `keywords.txt` from author/index keywords, and abstract/title words
+--INFO-- Creating `keywords.txt` from author/index keywords, and abstract/title nlp phrases
 --INFO-- The data/regtech/organizations.txt thesaurus file was created
 --INFO-- The data/regtech/countries.txt thesaurus file was applied to affiliations in all databases
 --INFO-- Applying `keywords.txt` thesaurus to author/index keywords and abstract/title words
