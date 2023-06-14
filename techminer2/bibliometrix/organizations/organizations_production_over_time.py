@@ -1,12 +1,9 @@
 # flake8: noqa
 """
-Organizations' Production over Time
+(NEW) Organizations' Production over Time
 ===============================================================================
 
 
-
-Example
--------------------------------------------------------------------------------
 
 >>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__organizations_production_over_time.html"
@@ -26,11 +23,11 @@ Example
 >>> print(r.documents_per_item_.head().to_markdown())
 |    | organizations                              | title                                                                                        |   year | source_title                                   |   global_citations |   local_citations | doi                           |
 |---:|:-------------------------------------------|:---------------------------------------------------------------------------------------------|-------:|:-----------------------------------------------|-------------------:|------------------:|:------------------------------|
-|  0 | Harvard Univ (USA)                         | REGTECH  POTENTIAL_BENEFITS and CHALLENGES for businesses                                    |   2023 | Technology in Society                          |                  0 |                 0 | 10.1016/J.TECHSOC.2022.102150 |
-|  1 | Teichmann International (Schweiz) AG (CHE) | REGTECH  POTENTIAL_BENEFITS and CHALLENGES for businesses                                    |   2023 | Technology in Society                          |                  0 |                 0 | 10.1016/J.TECHSOC.2022.102150 |
-|  2 | Univ of Messina (ITA)                      | REGTECH  POTENTIAL_BENEFITS and CHALLENGES for businesses                                    |   2023 | Technology in Society                          |                  0 |                 0 | 10.1016/J.TECHSOC.2022.102150 |
-|  3 | Nottingham Univ Bus Sch China (CHN)        | costs of voting and firm PERFORMANCE: evidence from REGTECH adoption in chinese listed firms |   2023 | Research in International Business and Finance |                  0 |                 0 | 10.1016/J.RIBAF.2022.101868   |
-|  4 | Shenzhen Univ (CHN)                        | costs of voting and firm PERFORMANCE: evidence from REGTECH adoption in chinese listed firms |   2023 | Research in International Business and Finance |                  0 |                 0 | 10.1016/J.RIBAF.2022.101868   |
+|  0 | Harvard Univ (USA)                         | REGTECH POTENTIAL_BENEFITS and CHALLENGES for businesses                                     |   2023 | Technology in Society                          |                  0 |                 0 | 10.1016/J.TECHSOC.2022.102150 |
+|  1 | Teichmann International (Schweiz) AG (CHE) | REGTECH POTENTIAL_BENEFITS and CHALLENGES for businesses                                     |   2023 | Technology in Society                          |                  0 |                 0 | 10.1016/J.TECHSOC.2022.102150 |
+|  2 | Univ of Messina (ITA)                      | REGTECH POTENTIAL_BENEFITS and CHALLENGES for businesses                                     |   2023 | Technology in Society                          |                  0 |                 0 | 10.1016/J.TECHSOC.2022.102150 |
+|  3 | Nottingham Univ Bus Sch China (CHN)        | COSTS_OF_VOTING and FIRM_PERFORMANCE: evidence from REGTECH ADOPTION in chinese listed firms |   2023 | Research in International Business and Finance |                  0 |                 0 | 10.1016/J.RIBAF.2022.101868   |
+|  4 | Shenzhen Univ (CHN)                        | COSTS_OF_VOTING and FIRM_PERFORMANCE: evidence from REGTECH ADOPTION in chinese listed firms |   2023 | Research in International Business and Finance |                  0 |                 0 | 10.1016/J.RIBAF.2022.101868   |
 
 
 
@@ -57,8 +54,14 @@ Example
 
 
 >>> print(r.prompt_)
-Analyze the table below which contains the  occurrences by year for the years. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
+Your task is to generate an analysis about the  occurrences \\
+by year of the 'organizations' in a scientific bibliography database. Summarize the table \\
+below, delimited by triple backticks, identify any notable patterns, trends, or \\
+outliers in the data, and discuss their implications for the research field. Be sure \\
+to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
+Table:
+```
 | organizations                                                            |   2016 |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
 |:-------------------------------------------------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
 | Univ of Hong Kong (HKG) 3:185                                            |      0 |      2 |      0 |      0 |      1 |      0 |      0 |      0 |
@@ -71,7 +74,7 @@ Analyze the table below which contains the  occurrences by year for the years. I
 | Kingston Bus Sch (GBR) 1:153                                             |      0 |      0 |      1 |      0 |      0 |      0 |      0 |      0 |
 | FinTech HK, Hong Kong (HKG) 1:150                                        |      0 |      1 |      0 |      0 |      0 |      0 |      0 |      0 |
 | ctr for Law, Markets & Regulation, UNSW Australia, Australia (AUS) 1:150 |      0 |      1 |      0 |      0 |      0 |      0 |      0 |      0 |
-<BLANKLINE>
+```
 <BLANKLINE>
 
 
@@ -107,8 +110,6 @@ def organizations_production_over_time(
 
     items_by_year = terms_by_year(
         field="organizations",
-        root_dir=root_dir,
-        database=database,
         # Table params:
         cumulative=cumulative,
         # Item filters:
@@ -116,7 +117,9 @@ def organizations_production_over_time(
         occ_range=occ_range,
         gc_range=gc_range,
         custom_items=custom_items,
-        # Database filters:
+        # Database params:
+        root_dir=root_dir,
+        database=database,
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
         **filters,
