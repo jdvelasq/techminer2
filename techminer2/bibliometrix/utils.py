@@ -9,11 +9,10 @@ from ..vantagepoint.report import ranking_chart
 
 
 # pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
 def bbx_generic_indicators_by_item(
     fnc_view,
     field,
-    root_dir="./",
-    database="main",
     metric="OCC",
     # Plot options:
     textfont_size=10,
@@ -30,6 +29,8 @@ def bbx_generic_indicators_by_item(
     gc_range=None,
     custom_items=None,
     # Database filters:
+    root_dir="./",
+    database="main",
     year_filter=None,
     cited_by_filter=None,
     **filters,
@@ -38,8 +39,6 @@ def bbx_generic_indicators_by_item(
 
     obj = fnc_view(
         field=field,
-        root_dir=root_dir,
-        database=database,
         metric=metric,
         # Item filters:
         top_n=top_n,
@@ -47,6 +46,8 @@ def bbx_generic_indicators_by_item(
         gc_range=gc_range,
         custom_items=custom_items,
         # Database filters:
+        root_dir=root_dir,
+        database=database,
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
         **filters,

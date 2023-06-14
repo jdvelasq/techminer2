@@ -352,7 +352,4 @@ def indicators_by_field(
     indicators = indicators.drop(field, axis=1)
     indicators = indicators.sort_index(axis=0, ascending=True)
 
-    # indicators = indicators.sort_values("OCC", ascending=False)
-    # average_growth_rate |   average_docs_per_year |   percentage_docs_last_year |   first_publication_year |   age |   global_citations_per_year |   h_index |   g_index |   m_index |
-
     return indicators

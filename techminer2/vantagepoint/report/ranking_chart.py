@@ -1,6 +1,6 @@
 # flake8: noqa
 """
-Ranking Chart (*)
+(NEW) Ranking Chart
 ===============================================================================
 
 Default visualization chart for Bibliometrix.

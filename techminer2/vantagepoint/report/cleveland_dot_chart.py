@@ -1,6 +1,6 @@
 # flake8: noqa
 """
-Cleveland Dot Chart (*)
+(NEW) Cleveland Dot Chart
 ===============================================================================
 
 

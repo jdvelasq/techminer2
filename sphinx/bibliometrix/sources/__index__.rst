@@ -14,7 +14,9 @@ Sources
    bradford_law
 
 .. toctree::   
-   source_impact
+   source_g_index
+   source_h_index
+   source_m_index
 
 .. toctree::   
    sources_production_over_time

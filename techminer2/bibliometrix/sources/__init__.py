@@ -2,5 +2,7 @@ from .bradford_law import bradford_law
 from .most_frequent_sources import most_frequent_sources
 from .most_global_cited_sources import most_global_cited_sources
 from .most_local_cited_sources import most_local_cited_sources
-from .source_impact import source_impact
+from .source_g_index import source_g_index
+from .source_h_index import source_h_index
+from .source_m_index import source_m_index
 from .sources_production_over_time import sources_production_over_time

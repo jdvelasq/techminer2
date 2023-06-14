@@ -74,9 +74,12 @@ def check_bibliometric_metric(param):
         "OCC",
         "global_citations",
         "local_citations",
+        "h_index",
+        "g_index",
+        "m_index",
     ]:
         raise ValueError(
-            "Impact measure must be one of: OCC, global_citations, "
-            "local_citations"
+            "Impact measure must be one of: 'OCC', 'global_citations', "
+            "'local_citations', 'h_index', 'g_index', 'm_index'"
         )
     return param

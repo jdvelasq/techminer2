@@ -1,36 +1,34 @@
 # flake8: noqa
 """
-Most Frequent Sources
+Source M-Index
 ===============================================================================
 
 
 
 
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/bibliometrix__most_frequent_sources.html"
+>>> file_name = "sphinx/_static/bibliometrix__source_m_index.html"
 
 >>> from techminer2 import bibliometrix
->>> r = bibliometrix.sources.most_frequent_sources(
+>>> r = bibliometrix.sources.source_m_index(
+...     top_n=20, 
 ...     root_dir=root_dir,
-...     top_n=20,
 ... )
 >>> r.plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../_static/bibliometrix__most_frequent_sources.html" height="600px" width="100%" frameBorder="0"></iframe>
-
-    
->>> r.table_.head()
-source_abbr
-J BANK REGUL                     2
-J FINANC CRIME                   2
-FOSTER INNOVCOMPET WITH FINTE    2
-STUD COMPUT INTELL               2
-INT CONF INF TECHNOL SYST INN    2
-Name: OCC, dtype: int64
+    <iframe src="../../_static/bibliometrix__source_m_index.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
+>>> print(r.table_.head().to_markdown())
+| source_abbr        |   m_index |
+|:-------------------|----------:|
+| J BANK REGUL       |       0.5 |
+| J FINANC CRIME     |       0.5 |
+| FINANCIAL INNOV    |       0.5 |
+| EUR J RISK REGUL   |       0.5 |
+| DECIS SUPPORT SYST |       0.5 |
 
 >>> print(r.prompt_)
 Your task is to generate an analysis about the bibliometric indicators of the \\
@@ -45,28 +43,26 @@ Table:
 |:------------------------------|------:|--------------:|--------------------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|----------------------:|------------------------:|----------------------------:|-------------------------:|------:|----------------------------:|----------:|----------:|----------:|
 | J BANK REGUL                  |     2 |             2 |                   0 |                 35 |                 9 |                            17.5 |                            4.5 |                  -0.5 |                     0   |                        0    |                     2020 |     4 |                        8.75 |         2 |         2 |      0.5  |
 | J FINANC CRIME                |     2 |             1 |                   1 |                 13 |                 4 |                             6.5 |                            2   |                   0   |                     0.5 |                        0.25 |                     2020 |     4 |                        3.25 |         2 |         1 |      0.5  |
-| FOSTER INNOVCOMPET WITH FINTE |     2 |             2 |                   0 |                  1 |                 1 |                             0.5 |                            0.5 |                   0   |                     0   |                        0    |                     2020 |     4 |                        0.25 |         1 |         1 |      0.25 |
-| STUD COMPUT INTELL            |     2 |             2 |                   0 |                  1 |                 1 |                             0.5 |                            0.5 |                  -1   |                     0   |                        0    |                     2021 |     3 |                        0.33 |         1 |         1 |      0.33 |
-| INT CONF INF TECHNOL SYST INN |     2 |             0 |                   2 |                  0 |                 0 |                             0   |                            0   |                   0   |                     1   |                        0.5  |                     2022 |     2 |                        0    |         0 |         0 |      0    |
-| ROUTLEDGE HANDBFINANCIAL TECH |     2 |             2 |                   0 |                  0 |                 0 |                             0   |                            0   |                  -1   |                     0   |                        0    |                     2021 |     3 |                        0    |         0 |         0 |      0    |
-| J ECON BUS                    |     1 |             1 |                   0 |                153 |                17 |                           153   |                           17   |                   0   |                     0   |                        0    |                     2018 |     6 |                       25.5  |         1 |         1 |      0.17 |
-| NORTHWEST J INTL LAW BUS      |     1 |             1 |                   0 |                150 |                 0 |                           150   |                            0   |                   0   |                     0   |                        0    |                     2017 |     7 |                       21.43 |         1 |         1 |      0.14 |
-| PALGRAVE STUD DIGIT BUS ENABL |     1 |             1 |                   0 |                 33 |                14 |                            33   |                           14   |                   0   |                     0   |                        0    |                     2019 |     5 |                        6.6  |         1 |         1 |      0.2  |
-| DUKE LAW J                    |     1 |             1 |                   0 |                 30 |                 0 |                            30   |                            0   |                   0   |                     0   |                        0    |                     2016 |     8 |                        3.75 |         1 |         1 |      0.12 |
-| J RISK FINANC                 |     1 |             1 |                   0 |                 21 |                 8 |                            21   |                            8   |                   0   |                     0   |                        0    |                     2018 |     6 |                        3.5  |         1 |         1 |      0.17 |
-| J MONEY LAUND CONTROL         |     1 |             1 |                   0 |                 14 |                 3 |                            14   |                            3   |                   0   |                     0   |                        0    |                     2020 |     4 |                        3.5  |         1 |         1 |      0.25 |
 | FINANCIAL INNOV               |     1 |             0 |                   1 |                 13 |                 1 |                            13   |                            1   |                   0   |                     0.5 |                        0.5  |                     2022 |     2 |                        6.5  |         1 |         1 |      0.5  |
+| EUR J RISK REGUL              |     1 |             0 |                   1 |                  3 |                 0 |                             3   |                            0   |                   0   |                     0.5 |                        0.5  |                     2022 |     2 |                        1.5  |         1 |         1 |      0.5  |
+| DECIS SUPPORT SYST            |     1 |             0 |                   1 |                  1 |                 1 |                             1   |                            1   |                   0   |                     0.5 |                        0.5  |                     2022 |     2 |                        0.5  |         1 |         1 |      0.5  |
+| J IND BUS ECON                |     1 |             0 |                   1 |                  1 |                 0 |                             1   |                            0   |                   0   |                     0.5 |                        0.5  |                     2022 |     2 |                        0.5  |         1 |         1 |      0.5  |
+| LECT NOTES NETWORKS SYST      |     1 |             0 |                   1 |                  1 |                 0 |                             1   |                            0   |                   0   |                     0.5 |                        0.5  |                     2022 |     2 |                        0.5  |         1 |         1 |      0.5  |
+| ADV INTELL SYS COMPUT         |     1 |             1 |                   0 |                  7 |                 1 |                             7   |                            1   |                  -0.5 |                     0   |                        0    |                     2021 |     3 |                        2.33 |         1 |         1 |      0.33 |
+| J ANTITRUST ENFORC            |     1 |             1 |                   0 |                  3 |                 3 |                             3   |                            3   |                  -0.5 |                     0   |                        0    |                     2021 |     3 |                        1    |         1 |         1 |      0.33 |
+| ACM INT CONF PROC SER         |     1 |             1 |                   0 |                  2 |                 0 |                             2   |                            0   |                  -0.5 |                     0   |                        0    |                     2021 |     3 |                        0.67 |         1 |         1 |      0.33 |
+| LECT NOTES BUS INF PROCESS    |     1 |             1 |                   0 |                  2 |                 0 |                             2   |                            0   |                  -0.5 |                     0   |                        0    |                     2021 |     3 |                        0.67 |         1 |         1 |      0.33 |
+| STUD COMPUT INTELL            |     2 |             2 |                   0 |                  1 |                 1 |                             0.5 |                            0.5 |                  -1   |                     0   |                        0    |                     2021 |     3 |                        0.33 |         1 |         1 |      0.33 |
+| EAI/SPRINGER INNO COMM COMP   |     1 |             1 |                   0 |                  1 |                 0 |                             1   |                            0   |                  -0.5 |                     0   |                        0    |                     2021 |     3 |                        0.33 |         1 |         1 |      0.33 |
+| J MONEY LAUND CONTROL         |     1 |             1 |                   0 |                 14 |                 3 |                            14   |                            3   |                   0   |                     0   |                        0    |                     2020 |     4 |                        3.5  |         1 |         1 |      0.25 |
 | ICEIS - PROC INT CONF ENTERP  |     1 |             1 |                   0 |                 12 |                 3 |                            12   |                            3   |                   0   |                     0   |                        0    |                     2020 |     4 |                        3    |         1 |         1 |      0.25 |
 | HELIYON                       |     1 |             1 |                   0 |                 11 |                 4 |                            11   |                            4   |                   0   |                     0   |                        0    |                     2020 |     4 |                        2.75 |         1 |         1 |      0.25 |
-| HANDBBLOCKCHAIN, DIGIT FINANC |     1 |             1 |                   0 |                 11 |                 3 |                            11   |                            3   |                   0   |                     0   |                        0    |                     2017 |     7 |                        1.57 |         1 |         1 |      0.14 |
-| J RISK MANG FINANCIAL INST    |     1 |             1 |                   0 |                  8 |                 5 |                             8   |                            5   |                   0   |                     0   |                        0    |                     2018 |     6 |                        1.33 |         1 |         1 |      0.17 |
-| ADV INTELL SYS COMPUT         |     1 |             1 |                   0 |                  7 |                 1 |                             7   |                            1   |                  -0.5 |                     0   |                        0    |                     2021 |     3 |                        2.33 |         1 |         1 |      0.33 |
-| INTELL SYST ACCOUNT FINANCE M |     1 |             1 |                   0 |                  5 |                 3 |                             5   |                            3   |                   0   |                     0   |                        0    |                     2020 |     4 |                        1.25 |         1 |         1 |      0.25 |
 | ADELAIDE LAW REV              |     1 |             1 |                   0 |                  5 |                 1 |                             5   |                            1   |                   0   |                     0   |                        0    |                     2020 |     4 |                        1.25 |         1 |         1 |      0.25 |
+| INTELL SYST ACCOUNT FINANCE M |     1 |             1 |                   0 |                  5 |                 3 |                             5   |                            3   |                   0   |                     0   |                        0    |                     2020 |     4 |                        1.25 |         1 |         1 |      0.25 |
+| LECTURE NOTES DATA ENG COMMUN |     1 |             1 |                   0 |                  4 |                 0 |                             4   |                            0   |                   0   |                     0   |                        0    |                     2020 |     4 |                        1    |         1 |         1 |      0.25 |
+| UNIV NEW SOUTH WALES LAW J    |     1 |             1 |                   0 |                  4 |                 3 |                             4   |                            3   |                   0   |                     0   |                        0    |                     2020 |     4 |                        1    |         1 |         1 |      0.25 |
 ```
 <BLANKLINE>
-
-
 
 # pylint: disable=line-too-long
 """
@@ -76,32 +72,31 @@ from ...vantagepoint.report import ranking_chart
 
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
-def most_frequent_sources(
+def source_m_index(
     # Plot options:
     textfont_size=10,
     marker_size=7,
     line_color="black",
     line_width=1.5,
     yshift=4,
+    title=None,
     metric_label=None,
     field_label=None,
-    title=None,
     # Item filters:
     top_n=None,
     occ_range=None,
     gc_range=None,
     custom_items=None,
-    # Database params:
+    # Database filters:
     root_dir="./",
     database="main",
     year_filter=None,
     cited_by_filter=None,
     **filters,
 ):
-    """Most Relevant Sources.
+    """Plots the selected impact measure by source.
 
     Args:
-
         textfont_size (int, optional): Font size. Defaults to 10.
         marker_size (int, optional): Marker size. Defaults to 6.
         line_color (str, optional): Line color. Defaults to "black".
@@ -123,17 +118,17 @@ def most_frequent_sources(
         **filters (dict, optional): Filters to be applied to the database. Defaults to {}.
 
     Returns:
-        A BasicChart object.
+        BasicChart: A basic chart object.
 
     # pylint: disable=line-too-long
     """
 
     if title is None:
-        title = "Most Frequent Sources"
+        title = "Source Impact by M-Index"
 
     item_list = list_items(
         field="source_abbr",
-        metric="OCC",
+        metric="m_index",
         # Item filters:
         top_n=top_n,
         occ_range=occ_range,

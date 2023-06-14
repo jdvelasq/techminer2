@@ -119,6 +119,7 @@ def list_items(
     """
 
     def generate_prompt(field, table):
+        # pylint: disable=line-too-long
         return (
             "Your task is to generate an analysis about the bibliometric indicators of the \\\n"
             f"'{field}' field in a scientific bibliography database. Summarize the table below, \\\n"
