@@ -35,9 +35,10 @@ Name: OCC, dtype: int64
 >>> print(r.prompt_)
 Your task is to generate an analysis about the bibliometric indicators of the \\
 'source_abbr' field in a scientific bibliography database. Summarize the table below, \\
-delimited by triple backticks, identify any notable patterns, trends, or outliers in \\
-the data, and discuss their implications for the research field. Be sure to provide a \\
-concise summary of your findings in no more than 150 words.
+sorted by the 'OCC' metric, and delimited by triple backticks, identify \\
+any notable patterns, trends, or outliers in the data, and discuss their \\
+implications for the research field. Be sure to provide a concise summary \\
+of your findings in no more than 150 words.
 <BLANKLINE>
 Table:
 ```
@@ -65,8 +66,6 @@ Table:
 | ADELAIDE LAW REV              |     1 |             1 |                   0 |                  5 |                 1 |                             5   |                            1   |                   0   |                     0   |                        0    |                     2020 |     4 |                        1.25 |         1 |         1 |      0.25 |
 ```
 <BLANKLINE>
-
-
 
 # pylint: disable=line-too-long
 """
