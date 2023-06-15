@@ -49,6 +49,7 @@ def create_records_report(root_dir, target_dir, records, report_filename):
             # "index_keywords",
             "raw_author_keywords",
             "raw_index_keywords",
+            "raw_nlp_phrases",
         ]
 
         for criterion in reported_columns:
@@ -64,27 +65,6 @@ def create_records_report(root_dir, target_dir, records, report_filename):
         records = records[column_list]
         return records
 
-    def sort_records(records):
-        """Sorts the dataframe by global citations"""
-
-        records = records.copy()
-
-        columns = []
-
-        if "global_citations" in records.columns:
-            columns.append("global_citations")
-
-        if "local_citations" in records.columns:
-            columns.append("local_citations")
-
-        if "year" in records.columns:
-            columns.append("year")
-
-        if columns:
-            records = records.sort_values(by=columns, ascending=False)
-
-        return records
-
     def write_report(records, directory, target_dir, report_filename):
         """Writes the report to the file."""
 
@@ -93,7 +73,9 @@ def create_records_report(root_dir, target_dir, records, report_filename):
         )
 
         with open(file_path, "w", encoding="utf-8") as file:
-            for index, row in records.iterrows():
+            for i_record, (index, row) in enumerate(records.iterrows()):
+                print(f"--- {i_record+1:>03d} ", "-" * 75, sep="", file=file)
+
                 for criterion in reported_columns:
                     if criterion not in row.index:
                         continue
@@ -125,16 +107,14 @@ def create_records_report(root_dir, target_dir, records, report_filename):
                     if criterion == "raw_author_keywords":
                         print("DE ", end="", file=file)
 
-                    # if criterion == "author_keywords":
-                    #     print("DE ", end="", file=file)
-
                     if criterion == "raw_index_keywords":
                         print("ID ", end="", file=file)
 
-                    # if criterion == "index_keywords":
-                    #     print("ID ", end="", file=file)
+                    if criterion == "raw_nlp_phrases":
+                        print("** ", end="", file=file)
 
                     if str(row[criterion]) == "nan":
+                        print("", file=file)
                         continue
 
                     print(
@@ -149,14 +129,14 @@ def create_records_report(root_dir, target_dir, records, report_filename):
                     )
 
                 if index != records.index[-1]:
-                    print("-" * 79, file=file)
+                    print("", file=file)
 
         sys.stdout.write(f"--INFO-- The file '{file_path}' was created.\n")
 
     # create_directory(base_dir=root_dir, target_dir=target_dir)
     reported_columns = get_reported_columns(records)
     records = filter_columns(records, reported_columns)
-    records = sort_records(records)
+    # records = sort_records(records)
     write_report(records, root_dir, target_dir, report_filename)
 
 

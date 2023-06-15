@@ -4,8 +4,6 @@ Most Local Cited References
 ===============================================================================
 
 
-Example
--------------------------------------------------------------------------------
 
 
 >>> root_dir = "data/regtech/"
@@ -36,7 +34,7 @@ Example
 
 # pylint: disable=line-too-long
 """
-from ..cited_documents import bibiometrix_cited_documents
+from ..most_cited_documents import most_cited_documents
 
 
 def most_local_cited_references(

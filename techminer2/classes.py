@@ -433,8 +433,14 @@ class CorresponingAuthorCountry:
 # Authors / Countries / Country Impact
 # Authors / Countries / Scientific Production
 
+
 # Documents / Documents / Most Global Cited Documents
 # Documents / Documents / Most Local Cited Documents
+@dataclass(init=False)
+class MostCitedDocuments:
+    plot_ = None
+    table_ = None
+
 
 # Documents / Cited References / Most Local Cited References
 # Documents / Cited References / Most Global Cited References

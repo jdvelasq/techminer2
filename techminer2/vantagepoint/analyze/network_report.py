@@ -214,6 +214,10 @@ def generate_abstracts_report(
             # **filters,
         )
 
+        records = records.sort_values(
+            ["global_citations", "local_citations", "year"], ascending=False
+        )
+
         file_name = f"{cluster}_abstracts_report.txt"
         create_records_report(
             root_dir=root_dir,

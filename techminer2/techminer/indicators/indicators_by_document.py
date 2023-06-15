@@ -82,6 +82,7 @@ def indicators_by_document(
 
     records = records[
         [
+            "year",
             "global_citations",
             "local_citations",
             "global_citations_per_year",

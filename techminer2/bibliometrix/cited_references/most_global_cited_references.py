@@ -4,9 +4,6 @@ Most Global Cited References
 ===============================================================================
 
 
-Example
--------------------------------------------------------------------------------
-
 
 >>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__most_global_cited_references.html"
@@ -38,7 +35,7 @@ Example
 
 # pylint: disable=line-too-long
 """
-from ..cited_documents import bibiometrix_cited_documents
+from ..most_cited_documents import most_cited_documents
 
 
 def most_global_cited_references(

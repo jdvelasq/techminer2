@@ -12,7 +12,9 @@ Most Global Cited Documents
 ...     top_n=20,
 ...     root_dir=root_dir,
 ... )
---INFO-- The file 'data/regtech/reports/most_global_cited_documents.txt' was created
+--INFO-- The file 'data/regtech/reports/most_global_cited_documents__abstracts.txt' was created.
+--INFO-- The file 'data/regtech/reports/most_global_cited_documents__gpt_prompt.txt' was created.
+
 
 >>> r.plot_.write_html(file_name)
 
@@ -21,48 +23,74 @@ Most Global Cited Documents
     <iframe src="../../../_static/bibliometrix__most_global_cited_documents.html" height="600px" width="100%" frameBorder="0"></iframe>
 
     
->>> r.table_.head(5)
-                                                    global_citations  ...                             doi
-article                                                               ...                                
-Anagnostopoulos I, 2018, J ECON BUS, V100, P7                    153  ...  10.1016/J.JECONBUS.2018.07.003
-Arner DW, 2017, NORTHWEST J INTL LAW BUS, V37, ...               150  ...                             NaN
-Butler T/1, 2019, PALGRAVE STUD DIGIT BUS ENABL...                33  ...     10.1007/978-3-030-02330-0_6
-Baxter LG, 2016, DUKE LAW J, V66, P567                            30  ...                             NaN
-Buckley RP, 2020, J BANK REGUL, V21, P26                          24  ...      10.1057/S41261-019-00104-1
-<BLANKLINE>
-[5 rows x 5 columns]
+>>> print(r.table_.to_markdown())
+| article                                                       |   year |   global_citations |   local_citations |   global_citations_per_year |   local_citations_per_year | doi                                |
+|:--------------------------------------------------------------|-------:|-------------------:|------------------:|----------------------------:|---------------------------:|:-----------------------------------|
+| Anagnostopoulos I, 2018, J ECON BUS, V100, P7                 |   2018 |                153 |                17 |                      25.5   |                      2.833 | 10.1016/J.JECONBUS.2018.07.003     |
+| Arner DW, 2017, NORTHWEST J INTL LAW BUS, V37, P373           |   2017 |                150 |                 0 |                      21.429 |                      0     | nan                                |
+| Butler T, 2019, PALGRAVE STUD DIGIT BUS ENABL, P85            |   2019 |                 33 |                14 |                       6.6   |                      2.8   | 10.1007/978-3-030-02330-0_6        |
+| Baxter LG, 2016, DUKE LAW J, V66, P567                        |   2016 |                 30 |                 0 |                       3.75  |                      0     | nan                                |
+| Buckley RP, 2020, J BANK REGUL, V21, P26                      |   2020 |                 24 |                 5 |                       6     |                      1.25  | 10.1057/S41261-019-00104-1         |
+| Kavassalis P, 2018, J RISK FINANC, V19, P39                   |   2018 |                 21 |                 8 |                       3.5   |                      1.333 | 10.1108/JRF-07-2017-0111           |
+| Singh C, 2020, J MONEY LAUND CONTROL, V24, P464               |   2020 |                 14 |                 3 |                       3.5   |                      0.75  | 10.1108/JMLC-09-2020-0100          |
+| Muganyi T, 2022, FINANCIAL INNOV, V8                          |   2022 |                 13 |                 1 |                       6.5   |                      0.5   | 10.1186/S40854-021-00313-6         |
+| Ryan P, 2020, ICEIS - PROC INT CONF ENTERP , V2, P787         |   2020 |                 12 |                 3 |                       3     |                      0.75  | nan                                |
+| von Solms J, 2021, J BANK REGUL, V22, P152                    |   2021 |                 11 |                 4 |                       3.667 |                      1.333 | 10.1057/S41261-020-00134-0         |
+| Turki M, 2020, HELIYON, V6                                    |   2020 |                 11 |                 4 |                       2.75  |                      1     | 10.1016/J.HELIYON.2020.E04949      |
+| Arner DW, 2017, HANDBBLOCKCHAIN, DIGIT FINANC, P359           |   2017 |                 11 |                 3 |                       1.571 |                      0.429 | 10.1016/B978-0-12-810441-5.00016-6 |
+| Kurum E, 2020, J FINANC CRIME                                 |   2020 |                 10 |                 3 |                       2.5   |                      0.75  | 10.1108/JFC-04-2020-0051           |
+| Butler T, 2018, J RISK MANG FINANCIAL INST, V11, P19          |   2018 |                  8 |                 5 |                       1.333 |                      0.833 | nan                                |
+| Turki M, 2021, ADV INTELL SYS COMPUT, V1141, P349             |   2021 |                  7 |                 1 |                       2.333 |                      0.333 | 10.1007/978-981-15-3383-9_32       |
+| Becker M, 2020, INTELL SYST ACCOUNT FINANCE M, V27, P161      |   2020 |                  5 |                 3 |                       1.25  |                      0.75  | 10.1002/ISAF.1479                  |
+| Waye V, 2020, ADELAIDE LAW REV, V40, P363                     |   2020 |                  5 |                 1 |                       1.25  |                      0.25  | nan                                |
+| Das SR, 2019, J FINANCIAL DATA SCI, V1, P8                    |   2019 |                  5 |                 1 |                       1     |                      0.2   | 10.3905/JFDS.2019.1.2.008          |
+| Brand V, 2020, UNIV NEW SOUTH WALES LAW J, V43, P801          |   2020 |                  4 |                 3 |                       1     |                      0.75  | nan                                |
+| Pantielieieva N, 2020, LECTURE NOTES DATA ENG COMMUN, V42, P1 |   2020 |                  4 |                 0 |                       1     |                      0     | 10.1007/978-3-030-35649-1_1        |
 
 
->>> print(r.prompts_[0])
-Summarize the following text in 30 words or less: 
-<BLANKLINE>
-the purpose of this paper is to develop an insight and review the effect of FINTECH_DEVELOPMENT against the broader environment in FINANCIAL_TECHNOLOGY. we further aim to offer various perspectives in order to aid the understanding of the disruptive potential of FINTECH, and its implications for the wider financial ecosystem. by drawing upon very recent and highly topical research on this area this study examines the implications for FINANCIAL_INSTITUTIONS, and REGULATION especially when TECHNOLOGY poses a CHALLENGE to the global BANKING and regulatory system. IT is driven by a wide-ranging overview of the development, the CURRENT state, and possible future of FINTECH. this paper attempts to connect practitioner-led and academic research. while IT draws on academic research, the perspective IT takes is also practice-oriented. IT relies on the CURRENT_ACADEMIC_LITERATURE as well as insights from industry sources, action research and other publicly available commentaries. IT also draws on professional practitioners roundtable discussions, and think-tanks in which the author has been an active participant. we attempt to interpret BANKING, and REGULATORY_ISSUES from a behavioural perspective. the last crisis exposed significant failures in REGULATION and supervision. IT has made the FINANCIAL_MARKET law and COMPLIANCE a key topic on the CURRENT agenda. disruptive TECHNOLOGICAL_CHANGE also seems to be important in investigating REGULATORY_COMPLIANCE followed by change. we contribute to the CURRENT LITERATURE_REVIEW on financial and DIGITAL_INNOVATION by NEW_ENTRANTS where this has also practical implications. we also provide for an updated review of the CURRENT REGULATORY_ISSUES addressing the contextual root causes of disruption within the FINANCIAL_SERVICES domain. the aim here is to assist market participants to improve effectiveness and collaboration. the difficulties arising from extensive REGULATION may suggest a more liberal and principled approach to FINANCIAL_REGULATION. DISRUPTIVE_INNOVATION has the potential for welfare outcomes for consumers, regulatory, and supervisory gains as well as reputational gains for the FINANCIAL_SERVICES_INDUSTRY. IT becomes even more important as the FINANCIAL_SERVICES_INDUSTRY evolves. for example, the preparedness of the regulators to instil CULTURE change and harmonise technological advancements with REGULATION could likely achieve many desired outcomes. such results range from achieving an orderly market growth, further aiding systemic STABILITY and restoring TRUST and confidence in the FINANCIAL_SYSTEM. our action-led research results have implications for both research and practice. these should be of interest to regulatory standard setters, INVESTORS, INTERNATIONAL_ORGANISATIONS and other academics who are researching regulatory and COMPETITION issues, and their manifestation within the financial and social contexts. as a perspective on a social construct, this study appeals to regulators and law makers, entrepreneurs, and INVESTORS who participate in TECHNOLOGY applied within the innovative FINANCIAL_SERVICES domain. IT is also of interest to bankers who might consider FINTECH and strategic partnerships as a prospective, future strategic direction.1  2018 ELSEVIER_INC.
 
 
 # pylint: disable=line-too-long
 """
-from ..cited_documents import bibiometrix_cited_documents
+from ..most_cited_documents import most_cited_documents
 
 
+# pylint: disable=too-many-arguments
 def most_global_cited_documents(
-    root_dir="./",
     top_n=None,
+    # Figure params:
     title="Most Global Cited Documents",
+    field_label=None,
+    metric_label=None,
+    textfont_size=10,
+    marker_size=7,
+    line_color="black",
+    line_width=1.5,
+    yshift=4,
     # Database filters:
+    root_dir="./",
+    database="main",
     year_filter=None,
     cited_by_filter=None,
     **filters,
 ):
     """Plots the most global cited documents in the main collection."""
 
-    return bibiometrix_cited_documents(
+    return most_cited_documents(
         metric="global_citations",
-        file_name="most_global_cited_documents.txt",
-        root_dir=root_dir,
-        database="main",
         top_n=top_n,
+        # Figure params:
         title=title,
+        field_label=field_label,
+        metric_label=metric_label,
+        textfont_size=textfont_size,
+        marker_size=marker_size,
+        line_color=line_color,
+        line_width=line_width,
+        yshift=yshift,
         # Database filters:
+        root_dir=root_dir,
+        database=database,
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
         **filters,
