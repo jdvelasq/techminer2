@@ -1,6 +1,6 @@
 # flake8: noqa
 """
-Main information
+Main Information
 ===============================================================================
 
 
@@ -40,17 +40,19 @@ AUTHORS        Authors                                        102
                Countries                                       29
                Countries (1st author)                          25
 KEYWORDS       Raw author keywords                            148
-               Cleaned author keywords                        143
+               Cleaned author keywords                        148
                Raw index keywords                             155
-               Cleaned index keywords                         149
+               Cleaned index keywords                         155
                Raw keywords                                   273
-               Cleaned keywords                               252
+               Cleaned keywords                               271
 NLP PHRASES    Raw title NLP phrases                           40
                Cleaned title NLP phrases                       40
                Raw abstract NLP phrases                       157
-               Cleaned abstract nlp phrases                   149
-               Raw (NLP phrases + keywords)                   373
-               Cleaned (NLP phrases + keywords)               338
+               Cleaned abstract NLP phrases                   149
+               Raw NLP phrases                                167
+               Cleaned NLP phrases                            158
+KEY CONCEPTS   Raw key concepts                               373
+               Cleaned key concepts                           364
 
 >>> file_name = "sphinx/_static/bibliometrix__main_info_plot.html"               
 >>> r.plot_.write_html(file_name)
@@ -58,15 +60,20 @@ NLP PHRASES    Raw title NLP phrases                           40
 .. raw:: html
 
     <iframe src="../../_static/bibliometrix__main_info_plot.html" 
-    height="600px" width="100%" frameBorder="0"></iframe>
+    height="800px" width="100%" frameBorder="0"></iframe>
 
 
 
 >>> print(r.prompt_)
-Your task is to generate a short summary for a research paper of a table with record and field statistics for a dataset of scientific publications.
+Your task is to generate a short summary for a research paper of a table with record \\
+and field statistics for a dataset of scientific publications.
 <BLANKLINE>
-The table below provides data on the main characteristics of the records and fields of the bibliographic dataset. Use the the information in the table to draw conclusions. Limit your description to one paragraph in at most 60 words.
+The table below, delimited by triple backticks, provides data on the main characteristics \\
+of the records and fields of the bibliographic dataset. Use the the information in the \\
+table to draw conclusions. Limit your description to one paragraph in at most 60 words.
 <BLANKLINE>
+Table:
+```
 |                                                        | Value     |
 |:-------------------------------------------------------|:----------|
 | ('GENERAL', 'Timespan')                                | 2016:2023 |
@@ -98,20 +105,21 @@ The table below provides data on the main characteristics of the records and fie
 | ('AUTHORS', 'Countries')                               | 29        |
 | ('AUTHORS', 'Countries (1st author)')                  | 25        |
 | ('KEYWORDS', 'Raw author keywords')                    | 148       |
-| ('KEYWORDS', 'Cleaned author keywords')                | 143       |
+| ('KEYWORDS', 'Cleaned author keywords')                | 148       |
 | ('KEYWORDS', 'Raw index keywords')                     | 155       |
-| ('KEYWORDS', 'Cleaned index keywords')                 | 149       |
+| ('KEYWORDS', 'Cleaned index keywords')                 | 155       |
 | ('KEYWORDS', 'Raw keywords')                           | 273       |
-| ('KEYWORDS', 'Cleaned keywords')                       | 252       |
+| ('KEYWORDS', 'Cleaned keywords')                       | 271       |
 | ('NLP PHRASES', 'Raw title NLP phrases')               | 40        |
 | ('NLP PHRASES', 'Cleaned title NLP phrases')           | 40        |
 | ('NLP PHRASES', 'Raw abstract NLP phrases')            | 157       |
-| ('NLP PHRASES', 'Cleaned abstract nlp phrases')        | 149       |
-| ('NLP PHRASES', 'Raw (NLP phrases + keywords)')        | 373       |
-| ('NLP PHRASES', 'Cleaned (NLP phrases + keywords)')    | 338       |
+| ('NLP PHRASES', 'Cleaned abstract NLP phrases')        | 149       |
+| ('NLP PHRASES', 'Raw NLP phrases')                     | 167       |
+| ('NLP PHRASES', 'Cleaned NLP phrases')                 | 158       |
+| ('KEY CONCEPTS', 'Raw key concepts')                   | 373       |
+| ('KEY CONCEPTS', 'Cleaned key concepts')               | 364       |
+```
 <BLANKLINE>
-<BLANKLINE>
-
 
 # pylint: disable=line-too-long
 """

@@ -40,17 +40,19 @@ AUTHORS        Authors                                        102
                Countries                                       29
                Countries (1st author)                          25
 KEYWORDS       Raw author keywords                            148
-               Cleaned author keywords                        143
+               Cleaned author keywords                        148
                Raw index keywords                             155
-               Cleaned index keywords                         149
+               Cleaned index keywords                         155
                Raw keywords                                   273
-               Cleaned keywords                               252
+               Cleaned keywords                               271
 NLP PHRASES    Raw title NLP phrases                           40
                Cleaned title NLP phrases                       40
                Raw abstract NLP phrases                       157
-               Cleaned abstract nlp phrases                   149
-               Raw (NLP phrases + keywords)                   373
-               Cleaned (NLP phrases + keywords)               338
+               Cleaned abstract NLP phrases                   149
+               Raw NLP phrases                                167
+               Cleaned NLP phrases                            158
+KEY CONCEPTS   Raw key concepts                               373
+               Cleaned key concepts                           364
             
                
 >>> file_name = "sphinx/_static/bibliometrix__main_info_plot.html"               
@@ -58,15 +60,20 @@ NLP PHRASES    Raw title NLP phrases                           40
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/bibliometrix__main_info_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../../_static/bibliometrix__main_info_plot.html" height="800px" width="100%" frameBorder="0"></iframe>
 
 
     
 >>> print(stats.prompt_)
-Your task is to generate a short summary for a research paper of a table with record and field statistics for a dataset of scientific publications.
+Your task is to generate a short summary for a research paper of a table with record \\
+and field statistics for a dataset of scientific publications.
 <BLANKLINE>
-The table below provides data on the main characteristics of the records and fields of the bibliographic dataset. Use the the information in the table to draw conclusions. Limit your description to one paragraph in at most 60 words.
+The table below, delimited by triple backticks, provides data on the main characteristics \\
+of the records and fields of the bibliographic dataset. Use the the information in the \\
+table to draw conclusions. Limit your description to one paragraph in at most 60 words.
 <BLANKLINE>
+Table:
+```
 |                                                        | Value     |
 |:-------------------------------------------------------|:----------|
 | ('GENERAL', 'Timespan')                                | 2016:2023 |
@@ -98,19 +105,22 @@ The table below provides data on the main characteristics of the records and fie
 | ('AUTHORS', 'Countries')                               | 29        |
 | ('AUTHORS', 'Countries (1st author)')                  | 25        |
 | ('KEYWORDS', 'Raw author keywords')                    | 148       |
-| ('KEYWORDS', 'Cleaned author keywords')                | 143       |
+| ('KEYWORDS', 'Cleaned author keywords')                | 148       |
 | ('KEYWORDS', 'Raw index keywords')                     | 155       |
-| ('KEYWORDS', 'Cleaned index keywords')                 | 149       |
+| ('KEYWORDS', 'Cleaned index keywords')                 | 155       |
 | ('KEYWORDS', 'Raw keywords')                           | 273       |
-| ('KEYWORDS', 'Cleaned keywords')                       | 252       |
+| ('KEYWORDS', 'Cleaned keywords')                       | 271       |
 | ('NLP PHRASES', 'Raw title NLP phrases')               | 40        |
 | ('NLP PHRASES', 'Cleaned title NLP phrases')           | 40        |
 | ('NLP PHRASES', 'Raw abstract NLP phrases')            | 157       |
-| ('NLP PHRASES', 'Cleaned abstract nlp phrases')        | 149       |
-| ('NLP PHRASES', 'Raw (NLP phrases + keywords)')        | 373       |
-| ('NLP PHRASES', 'Cleaned (NLP phrases + keywords)')    | 338       |
+| ('NLP PHRASES', 'Cleaned abstract NLP phrases')        | 149       |
+| ('NLP PHRASES', 'Raw NLP phrases')                     | 167       |
+| ('NLP PHRASES', 'Cleaned NLP phrases')                 | 158       |
+| ('KEY CONCEPTS', 'Raw key concepts')                   | 373       |
+| ('KEY CONCEPTS', 'Cleaned key concepts')               | 364       |
+```
 <BLANKLINE>
-<BLANKLINE>
+
 
 # pylint: disable=line-too-long
 """
@@ -148,6 +158,7 @@ class _Statistics:
         self.compute_authors_stats()
         self.compute_keywords_stats()
         self.compute_nlp_phrases_stats()
+        self.compute_key_concepts_stats()
         self.make_report()
 
     def make_report(self):
@@ -159,6 +170,7 @@ class _Statistics:
                 self.authors_stats,
                 self.keywords_stats,
                 self.nlp_phrases_stats,
+                self.key_concepts_stats,
             ]
         )
         index = pd.MultiIndex.from_arrays(
@@ -678,17 +690,17 @@ class _Statistics:
         ]
         self.nlp_phrases_stats.loc[(3,)] = [
             "NLP PHRASES",
-            "Cleaned abstract nlp phrases",
+            "Cleaned abstract NLP phrases",
             self.abstract_nlp_phrases(),
         ]
         self.nlp_phrases_stats.loc[(4,)] = [
             "NLP PHRASES",
-            "Raw (NLP phrases + keywords)",
+            "Raw NLP phrases",
             self.raw_nlp_phrases(),
         ]
         self.nlp_phrases_stats.loc[(5,)] = [
             "NLP PHRASES",
-            "Cleaned (NLP phrases + keywords)",
+            "Cleaned NLP phrases",
             self.nlp_phrases(),
         ]
 
@@ -754,8 +766,8 @@ class _Statistics:
             return 0
 
     def nlp_phrases(self):
-        """Computes the number of cleaned index keywords"""
-        if "nlp_phrases" in self.records.columns:
+        """Computes the number of raw index keywords"""
+        if "raw_nlp_phrases" in self.records.columns:
             records = self.records.nlp_phrases.copy()
             records = records.dropna()
             records = records.str.split(";")
@@ -765,6 +777,45 @@ class _Statistics:
             return len(records)
         else:
             return 0
+
+    #####################################################################################
+    def compute_key_concepts_stats(self):
+        """Computes the key concepts stats"""
+        self.key_concepts_stats = pd.DataFrame(
+            columns=["Category", "Item", "Value"]
+        )
+        self.key_concepts_stats.loc[(0,)] = [
+            "KEY CONCEPTS",
+            "Raw key concepts",
+            self.raw_key_concepts(),
+        ]
+        self.key_concepts_stats.loc[(1,)] = [
+            "KEY CONCEPTS",
+            "Cleaned key concepts",
+            self.cleaned_key_concepts(),
+        ]
+
+    # -----------------------------------------------------------------------------------
+
+    def raw_key_concepts(self):
+        """Computes the number of raw author keywords"""
+        records = self.records.raw_key_concepts.copy()
+        records = records.dropna()
+        records = records.str.split(";")
+        records = records.explode()
+        records = records.str.strip()
+        records = records.drop_duplicates()
+        return len(records)
+
+    def cleaned_key_concepts(self):
+        """Computes the number of cleaned author keywords"""
+        records = self.records.key_concepts.copy()
+        records = records.dropna()
+        records = records.str.split(";")
+        records = records.explode()
+        records = records.str.strip()
+        records = records.drop_duplicates()
+        return len(records)
 
 
 def make_plot(report):
@@ -790,7 +841,7 @@ def make_plot(report):
         fig.update_xaxes(visible=False, row=row, col=col)
         fig.update_yaxes(visible=False, row=row, col=col)
 
-    fig = make_subplots(rows=6, cols=3)
+    fig = make_subplots(rows=7, cols=3)
 
     add_text_trace(fig, "GENERAL", "Timespan", 1, 1)
     add_text_trace(fig, "GENERAL", "Sources", 1, 2)
@@ -812,35 +863,52 @@ def make_plot(report):
 
     add_text_trace(fig, "KEYWORDS", "Raw keywords", 5, 1)
     add_text_trace(fig, "KEYWORDS", "Cleaned keywords", 5, 2)
-    add_text_trace(fig, "NLP PHRASES", "Raw (NLP phrases + keywords)", 5, 3)
+    add_text_trace(fig, "NLP PHRASES", "Raw NLP phrases", 5, 3)
 
     add_text_trace(
         fig,
         "NLP PHRASES",
-        "Cleaned (NLP phrases + keywords)",
+        "Cleaned NLP phrases",
         6,
         1,
     )
-    add_text_trace(fig, "GENERAL", "Document average age", 6, 2)
-    add_text_trace(fig, "GENERAL", "Average citations per document", 6, 3)
+
+    add_text_trace(
+        fig,
+        "KEY CONCEPTS",
+        "Raw key concepts",
+        6,
+        2,
+    )
+
+    add_text_trace(
+        fig,
+        "KEY CONCEPTS",
+        "Cleaned key concepts",
+        6,
+        3,
+    )
+
+    add_text_trace(fig, "GENERAL", "Document average age", 7, 1)
+    add_text_trace(fig, "GENERAL", "Average citations per document", 7, 2)
 
     fig.update_layout(showlegend=False)
     fig.update_layout(title="Main Information")
+    fig.update_layout(height=800)
 
     return fig
 
 
 def make_chatpgt_prompt(report):
     """Makes the chatpgt prompt"""
+    # pylint: disable=line-too-long
     return (
-        "Your task is to generate a short summary for a research paper "
-        "of a table with record and field statistics for a dataset of "
-        "scientific publications.\n\n"
-        "The table below provides data on the main characteristics of the "
-        "records and fields of the bibliographic dataset. Use the the "
-        "information in the table to draw conclusions. Limit your "
-        "description to one paragraph in at most 60 words."
-        f"\n\n{report.to_markdown()}\n\n"
+        "Your task is to generate a short summary for a research paper of a table with record \\\n"
+        "and field statistics for a dataset of scientific publications.\n\n"
+        "The table below, delimited by triple backticks, provides data on the main characteristics \\\n"
+        "of the records and fields of the bibliographic dataset. Use the the information in the \\\n"
+        "table to draw conclusions. Limit your description to one paragraph in at most 60 words.\n\n"
+        f"Table:\n```\n{report.to_markdown()}\n```\n"
     )
 
 
