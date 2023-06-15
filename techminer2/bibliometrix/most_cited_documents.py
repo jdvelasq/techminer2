@@ -58,18 +58,19 @@ def most_cited_documents(
     records = records.sort_values(columns, ascending=ascending)
     records = records.head(top_n)
 
-    create_records_report(
-        root_dir=root_dir,
-        target_dir="",
-        records=records,
-        report_filename=report_filename,
-    )
+    if "abstract" in records.columns:
+        create_records_report(
+            root_dir=root_dir,
+            target_dir="",
+            records=records,
+            report_filename=report_filename,
+        )
 
-    generate_chatgpt_prompt(
-        records=records,
-        prompt_filename=prompt_filename,
-        root_dir=root_dir,
-    )
+        generate_chatgpt_prompt(
+            records=records,
+            prompt_filename=prompt_filename,
+            root_dir=root_dir,
+        )
 
     indicators = indicators_by_document(
         root_dir=root_dir,
