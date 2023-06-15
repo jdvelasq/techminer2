@@ -1,7 +1,12 @@
 Network Approach
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-   .. toctree::
-      co_occurrence_network
-      thematic_map
-      thematic_evolution
+.. toctree::
+   :maxdepth: 1
+   
+   co_occurrence_network/__index__
+
+.. toctree::
+   :maxdepth: 1
+
+   thematic_map/__index__

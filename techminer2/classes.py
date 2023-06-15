@@ -461,12 +461,16 @@ class MostCitedDocuments:
 class CoWordsNetwork:
     """Bibliometrix co-occurrence keywords network."""
 
-    degree_plot_: NetworkDegreePlot
+    degree_plot__plot_: go.Figure
+    degree_plot__table_: pd.DataFrame
+    degree_plot__prompt_: str
+
+    network_metrics__prompt_: str
+    network_metrics__table_: pd.DataFrame
+
     communities_: pd.DataFrame
-    metrics_: NetworkStatistics
+    graph_ = nx.Graph
     plot_: go.Figure
-    # mds_map_: None
-    # tsne_map_: None
 
 
 # Conceptual Structure / Network Approach / Thematic Map

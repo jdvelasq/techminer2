@@ -149,11 +149,11 @@ def network_degree_plot(
         """Generates a chatgpt prompt."""
 
         prompt = (
-            "Analyze the table below, which provides the degree of nodes in a "
-            "networkx graph of a co-ocurrence matrix. Identify any notable "
-            "patterns, trends, or outliers in the data, and discuss their "
-            "implications in the network."
-            f"\n\n{table.to_markdown()}\n\n"
+            "Your task is to generate an analysis about the degree of the nodes in a networkx \\\n"
+            "graph of a co-ocurrence matrix. Analyze the table below, delimited by triple  \\\n"
+            "backticks, identifying any notable patterns, trends, or outliers in the data, and  \\\n"
+            "discuss their implications in the network. \n\n"
+            f"Table:\n```\n{table.to_markdown()}\n```\n"
         )
 
         return prompt
