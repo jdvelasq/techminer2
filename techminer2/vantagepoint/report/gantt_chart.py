@@ -91,10 +91,19 @@ def gantt_chart(
 ):
     """Creates a Gantt Chart from a terms by year table."""
 
-    table = obj.table_.melt(
-        value_name="OCC", var_name="column", ignore_index=False
+    table = obj.table_.copy()
+    table["RANKING"] = range(1, len(table) + 1)
+    table = table.melt(
+        value_name="OCC",
+        var_name="column",
+        ignore_index=False,
+        id_vars=["RANKING"],
     )
-    # table = table[table.OCC > 0]
+
+    table = table[table.OCC > 0]
+    table = table.sort_values(by=["RANKING"], ascending=True)
+    table = table.drop(columns=["RANKING"])
+
     table = table.rename(columns={"column": "Year"})
     table = table.reset_index()
 
@@ -134,7 +143,8 @@ def _create_fig(table, criterion, metric, title):
     )
     fig.update_traces(
         marker={
-            "line": {"color": COLOR, "width": 1},
+            # "line": {"color": COLOR, "width": 1},
+            "line": {"color": "white", "width": 0.5},
             "opacity": 1.0,
         },
         marker_color=COLOR,
