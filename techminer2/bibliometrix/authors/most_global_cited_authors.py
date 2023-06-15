@@ -77,8 +77,6 @@ from ...vantagepoint.report import ranking_chart
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 def most_global_cited_authors(
-    root_dir="./",
-    database="main",
     # Plot options:
     textfont_size=10,
     marker_size=7,
@@ -93,7 +91,9 @@ def most_global_cited_authors(
     occ_range=None,
     gc_range=None,
     custom_items=None,
-    # Database filters:
+    # Database options:
+    root_dir="./",
+    database="main",
     year_filter=None,
     cited_by_filter=None,
     **filters,

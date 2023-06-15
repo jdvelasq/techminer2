@@ -1,3 +1,4 @@
+# flake8: noqa
 """
 RPYS (Reference Publication Year Spectroscopy)
 ===============================================================================
@@ -26,7 +27,7 @@ Example
 1940               0     0.0
 1941               0     0.0
 
-
+# pylint: disable=line-too-long
 """
 import os.path
 
@@ -34,20 +35,27 @@ import pandas as pd
 import plotly.graph_objects as go
 
 from ...classes import BasicChart
+from ...record_utils import read_records
 
 
 def rpys(
+    # Database options:
     root_dir="./",
+    database="references",
     year_filter=None,
     cited_by_filter=None,
+    **filters,
 ):
     """Reference Publication Year Spectroscopy."""
 
-    references = pd.read_csv(
-        os.path.join(root_dir, "processed", "_references.csv"),
-        sep=",",
-        encoding="utf-8",
+    references = read_records(
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
     )
+
     indicator = _compute_rpys(references)
     if year_filter is not None:
         indicator = indicator.loc[year_filter:]
