@@ -5,10 +5,10 @@ Topic Dynamics
 
 
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/bibliometrix__nlp_phrases_dynamics.html"
+>>> file_name = "sphinx/_static/bibliometrix__key_concepts_dynamics.html"
 
 >>> from techminer2 import bibliometrix
->>> r = bibliometrix.nlp_phrases.topic_dynamics(
+>>> r = bibliometrix.key_concepts.topic_dynamics(
 ...     top_n=5,
 ...     root_dir=root_dir,
 ... )
@@ -16,36 +16,35 @@ Topic Dynamics
 
 .. raw:: html
 
-    <iframe src="../../../../_static/bibliometrix__nlp_phrases_dynamics.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/bibliometrix__key_concepts_dynamics.html" height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> print(r.table_.head().to_markdown())
-| nlp_phrases                   |   2016 |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
+| key_concepts                  |   2016 |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
 |:------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
-| REGULATORY_TECHNOLOGY 18:273  |      0 |      2 |      0 |      2 |      6 |      3 |      5 |      0 |
+| REGTECH 28:329                |      0 |      2 |      3 |      4 |      8 |      3 |      6 |      2 |
+| REGULATORY_TECHNOLOGY 20:274  |      0 |      2 |      0 |      2 |      6 |      4 |      5 |      1 |
+| REGULATORY_COMPLIANCE 15:232  |      0 |      1 |      2 |      2 |      5 |      2 |      2 |      1 |
 | FINANCIAL_INSTITUTIONS 15:194 |      0 |      0 |      2 |      2 |      4 |      3 |      4 |      0 |
-| FINANCIAL_REGULATION 07:360   |      1 |      1 |      1 |      1 |      0 |      2 |      1 |      0 |
-| REGULATORY_COMPLIANCE 07:198  |      0 |      0 |      2 |      1 |      2 |      1 |      1 |      0 |
-| FINANCIAL_SECTOR 07:169       |      0 |      1 |      0 |      0 |      1 |      3 |      2 |      0 |
-
+| FINANCIAL_REGULATION 12:395   |      1 |      2 |      1 |      1 |      1 |      2 |      4 |      0 |
 
 
 >>> print(r.prompt_)
 Your task is to generate an analysis about the  occurrences \\
-by year of the 'nlp_phrases' in a scientific bibliography database. Summarize the table \\
+by year of the 'key_concepts' in a scientific bibliography database. Summarize the table \\
 below, delimited by triple backticks, identify any notable patterns, trends, or \\
 outliers in the data, and discuss their implications for the research field. Be sure \\
 to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
 Table:
 ```
-| nlp_phrases                   |   2016 |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
+| key_concepts                  |   2016 |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
 |:------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
-| REGULATORY_TECHNOLOGY 18:273  |      0 |      2 |      0 |      2 |      6 |      3 |      5 |      0 |
+| REGTECH 28:329                |      0 |      2 |      3 |      4 |      8 |      3 |      6 |      2 |
+| REGULATORY_TECHNOLOGY 20:274  |      0 |      2 |      0 |      2 |      6 |      4 |      5 |      1 |
+| REGULATORY_COMPLIANCE 15:232  |      0 |      1 |      2 |      2 |      5 |      2 |      2 |      1 |
 | FINANCIAL_INSTITUTIONS 15:194 |      0 |      0 |      2 |      2 |      4 |      3 |      4 |      0 |
-| FINANCIAL_REGULATION 07:360   |      1 |      1 |      1 |      1 |      0 |      2 |      1 |      0 |
-| REGULATORY_COMPLIANCE 07:198  |      0 |      0 |      2 |      1 |      2 |      1 |      1 |      0 |
-| FINANCIAL_SECTOR 07:169       |      0 |      1 |      0 |      0 |      1 |      3 |      2 |      0 |
+| FINANCIAL_REGULATION 12:395   |      1 |      2 |      1 |      1 |      1 |      2 |      4 |      0 |
 ```
 <BLANKLINE>
 
@@ -58,7 +57,7 @@ from ...techminer.indicators.indicators_by_field_per_year import (
 )
 from ..documents_per_criterion import documents_per_criterion
 
-FIELD = "nlp_phrases"
+FIELD = "key_concepts"
 
 
 # pylint: disable=too-many-arguments
