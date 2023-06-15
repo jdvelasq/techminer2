@@ -1,2 +1,6 @@
-from .collaboration_network import collaboration_network
+from .authors_collaboration_network import authors_collaboration_network
 from .collaboration_worldmap import collaboration_worldmap
+from .countries_collaboration_network import countries_collaboration_network
+from .organizations_collaboration_network import (
+    organizations_collaboration_network,
+)

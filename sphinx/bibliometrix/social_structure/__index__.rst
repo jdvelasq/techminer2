@@ -2,7 +2,9 @@ Social Structure
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
-   collaboration_network
+   :maxdepth: 1
+   
+   collaboration_network/__index__
 
 
 .. toctree::   
