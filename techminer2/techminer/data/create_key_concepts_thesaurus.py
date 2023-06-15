@@ -1,17 +1,17 @@
 # flake8: noqa
 """
-Create keywords thesaurus
+Create key-concepts thesaurus
 ===============================================================================
 
 >>> root_dir = "data/regtech/"
 
 >>> from techminer2 import techminer
->>> techminer.data.create_keywords_thesaurus(root_dir=root_dir)
---INFO-- Creating `keywords.txt` from author/index keywords, and abstract/title nlp phrases
+>>> techminer.data.create_key_concepts_thesaurus(root_dir=root_dir)
+--INFO-- Creating `key_concepts.txt` from author/index keywords, and abstract/title nlp phrases
 
 # pylint: disable=line-too-long
 """
-import glob
+
 import os
 import os.path
 import pathlib
@@ -23,11 +23,11 @@ from nltk.stem import PorterStemmer
 from ...thesaurus_utils import load_thesaurus_as_frame
 
 
-def create_keywords_thesaurus(root_dir="./"):
-    """Creates a words thesaurus from raw keywords and title/abstact words."""
+def create_key_concepts_thesaurus(root_dir="./"):
+    """Creates a thesaurus from raw keywords and title/abstact words."""
 
     sys.stdout.write(
-        "--INFO-- Creating `keywords.txt` from author/index keywords, and abstract/title nlp phrases\n"
+        "--INFO-- Creating `key_concepts.txt` from author/index keywords, and abstract/title nlp phrases\n"
     )
 
     series = load_value_phrases_from_databases(root_dir=root_dir)
@@ -77,7 +77,7 @@ def create_keywords_thesaurus(root_dir="./"):
         {"value_phrase": list}
     )
     frame["value_phrase"] = frame["value_phrase"].map(set).map(sorted)
-    file_path = pathlib.Path(root_dir) / "keywords.txt"
+    file_path = pathlib.Path(root_dir) / "key_concepts.txt"
 
     with open(file_path, "w", encoding="utf-8") as file:
         for _, row in frame.iterrows():
@@ -117,7 +117,7 @@ def process_frame(frame):
 def load_existent_thesaurus(root_dir):
     """Load existence thesaurus."""
 
-    file_path = pathlib.Path(root_dir) / "keywords.txt"
+    file_path = pathlib.Path(root_dir) / "key_concepts.txt"
 
     if not file_path.exists():
         return None

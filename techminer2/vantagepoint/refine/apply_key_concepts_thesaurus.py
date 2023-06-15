@@ -1,6 +1,6 @@
 # flake8: noqa
 """
-Apply Keywords Thesaurus 
+Apply Key Concepts Thesaurus 
 ===============================================================================
 
 Cleans the keywords columns using the `keywords.txt` file.
@@ -28,15 +28,14 @@ import pandas as pd
 from ...thesaurus_utils import load_thesaurus_as_dict_reversed
 
 
-def apply_keywords_thesaurus(root_dir="./"):
-    """Clean all words columns in the records using a keywords.txt."""
+def apply_key_concepts_thesaurus(root_dir="./"):
+    """Clean all words columns in the records using a key_concepts.txt."""
 
     sys.stdout.write(
-        "--INFO-- Applying `keywords.txt` thesaurus to author/index keywords "
-        "and abstract/title words\n"
+        "--INFO-- Applying `key_concepts.txt` thesaurus to author/index keywords and abstract/title words\n"
     )
 
-    thesaurus_file = os.path.join(root_dir, "keywords.txt")
+    thesaurus_file = os.path.join(root_dir, "key_concepts.txt")
     thesaurus = load_thesaurus_as_dict_reversed(thesaurus_file)
 
     files = list(glob.glob(os.path.join(root_dir, "databases/_*.csv")))
@@ -50,6 +49,7 @@ def apply_keywords_thesaurus(root_dir="./"):
             ("raw_title_nlp_phrases", "title_nlp_phrases"),
             ("raw_abstract_nlp_phrases", "abstract_nlp_phrases"),
             ("raw_nlp_phrases", "nlp_phrases"),
+            ("raw_key_concepts", "key_concepts"),
         ]:
             if raw_column in data.columns:
                 data[column] = data[raw_column].str.split(";")

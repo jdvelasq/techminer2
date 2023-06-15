@@ -1,5 +1,5 @@
 from .create_countries_thesaurus import create_countries_thesaurus
-from .create_keywords_thesaurus import create_keywords_thesaurus
+from .create_key_concepts_thesaurus import create_key_concepts_thesaurus
 from .create_organizations_thesaurus import create_organizations_thesaurus
 from .import_data import import_data
 

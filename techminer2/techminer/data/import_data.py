@@ -50,24 +50,24 @@ Import a scopus data file in the working directory.
 --INFO-- Copying `abstract` column to `raw_abstract_nlp_phrases`
 --INFO-- Processing `raw_abstract_nlp_phrases` column
 --INFO-- Concatenating `raw_title_nlp_phrases` and `raw_abstract_nlp_phrases` columns to `raw_nlp_phrases`
---INFO-- Concatenating `raw_nlp_phrases` and `raw_keywords` columns to `raw_nlp_phrases`
 --INFO-- Processing `raw_nlp_phrases` column
+--INFO-- Concatenating `raw_nlp_phrases` and `raw_keywords` columns to `raw_key_concepts`
+--INFO-- Processing `raw_key_concepts` column
 --INFO-- Searching `references` using DOI
 --INFO-- Searching `references` using (year, title, author)
 --INFO-- Searching `references` using (title)
 --INFO-- Creating `local_citations` column in references database
 --INFO-- Creating `local_citations` column in documents database
 --INFO-- The data/regtech/countries.txt thesaurus file was created
---INFO-- Creating `keywords.txt` from author/index keywords, and abstract/title nlp phrases
+--INFO-- Creating `key_concepts.txt` from author/index keywords, and abstract/title nlp phrases
 --INFO-- The data/regtech/organizations.txt thesaurus file was created
 --INFO-- The data/regtech/countries.txt thesaurus file was applied to affiliations in all databases
---INFO-- Applying `keywords.txt` thesaurus to author/index keywords and abstract/title words
+--INFO-- Applying `key_concepts.txt` thesaurus to author/index keywords and abstract/title words
 --INFO-- The data/regtech/organizations.txt thesaurus file was applied to affiliations in all databases
 --INFO-- Process finished!!!
 --INFO-- data/regtech/databases/_references.csv: 909 imported records
 --INFO-- data/regtech/databases/_main.csv: 52 imported records
 --INFO-- data/regtech/databases/_cited_by.csv: 387 imported records
-
 
 >>> import pandas as pd
 >>> from pprint import pprint
@@ -78,14 +78,14 @@ Import a scopus data file in the working directory.
 abstract, abstract_nlp_phrases, affiliations, art_no, article, author_keywords,
 authors, authors_id, authors_with_affiliations, coden, correspondence_address,
 countries, country_1st_author, document_type, doi, eid, global_citations,
-global_references, index_keywords, isbn, issn, issue, keywords, link,
-local_citations, local_references, nlp_phrases, num_authors,
+global_references, index_keywords, isbn, issn, issue, key_concepts, keywords,
+link, local_citations, local_references, nlp_phrases, num_authors,
 num_global_references, open_access, organization_1st_author, organizations,
 page_end, page_start, publication_stage, raw_abstract_nlp_phrases,
 raw_author_keywords, raw_authors, raw_authors_id, raw_countries,
-raw_index_keywords, raw_keywords, raw_nlp_phrases, raw_organizations,
-raw_title_nlp_phrases, source, source_abbr, source_title, title,
-title_nlp_phrases, volume, year
+raw_index_keywords, raw_key_concepts, raw_keywords, raw_nlp_phrases,
+raw_organizations, raw_title_nlp_phrases, source, source_abbr, source_title,
+title, title_nlp_phrases, volume, year
 
 
 
@@ -117,13 +117,13 @@ from tqdm import tqdm
 
 from ...vantagepoint.refine import (
     apply_countries_thesaurus,
-    apply_keywords_thesaurus,
+    apply_key_concepts_thesaurus,
     apply_organizations_thesaurus,
 )
 
 # from ..reports import abstracts_report
 from .create_countries_thesaurus import create_countries_thesaurus
-from .create_keywords_thesaurus import create_keywords_thesaurus
+from .create_key_concepts_thesaurus import create_key_concepts_thesaurus
 from .create_organizations_thesaurus import create_organizations_thesaurus
 
 KEYWORDS_MAX_LENGTH = 50
@@ -489,16 +489,27 @@ def import_data(root_dir="./", disable_progress_bar=False, **document_types):
         "raw_abstract_nlp_phrases",
     )
 
-    concatenate_columns(
+    process_column(
         root_dir,
         "raw_nlp_phrases",
+        lambda x: x.astype(str)
+        .str.split("; ")
+        .apply(lambda x: sorted(set(x)))
+        .apply(lambda x: [z for z in x if z != "nan"])
+        .str.join("; ")
+        .apply(lambda x: pd.NA if x == "" else x),
+    )
+
+    concatenate_columns(
+        root_dir,
+        "raw_key_concepts",
         "raw_nlp_phrases",
         "raw_keywords",
     )
 
     process_column(
         root_dir,
-        "raw_nlp_phrases",
+        "raw_key_concepts",
         lambda x: x.astype(str)
         .str.split("; ")
         .apply(lambda x: sorted(set(x)))
@@ -524,11 +535,11 @@ def import_data(root_dir="./", disable_progress_bar=False, **document_types):
     #
     #
     create_countries_thesaurus(root_dir)
-    create_keywords_thesaurus(root_dir)
+    create_key_concepts_thesaurus(root_dir)
     create_organizations_thesaurus(root_dir)
 
     apply_countries_thesaurus(root_dir)
-    apply_keywords_thesaurus(root_dir)
+    apply_key_concepts_thesaurus(root_dir)
     apply_organizations_thesaurus(root_dir)
 
     print("--INFO-- Process finished!!!")
@@ -1634,69 +1645,72 @@ def transform_abstract_keywords_to_underscore(root_dir):
     :meta private:
     """
 
-    def get_nlp_phrases():
+    def get_raw_key_concepts():
         """Returns a pandas Series with all NLP phrases in the database files"""
         processed_dir = pathlib.Path(root_dir) / "databases"
         files = list(processed_dir.glob("_*.csv"))
-        nlp_phrases = []
+        key_concepts = []
         for file in files:
             data = pd.read_csv(file, encoding="utf-8")
             if "raw_nlp_phrases" not in data.columns:
                 continue
-            candidate_nlp_phrases = data["raw_nlp_phrases"].copy()
-            candidate_nlp_phrases = (
-                candidate_nlp_phrases.dropna()
+            candidate_key_concepts = data["raw_key_concepts"].copy()
+            candidate_key_concepts = (
+                candidate_key_concepts.dropna()
                 .str.replace("_", " ")
                 .str.lower()
             )
-            nlp_phrases.append(candidate_nlp_phrases)
-        nlp_phrases = pd.concat(nlp_phrases)
-        nlp_phrases = (
-            nlp_phrases.str.split("; ").explode().str.strip().drop_duplicates()
+            key_concepts.append(candidate_key_concepts)
+        key_concepts = pd.concat(key_concepts)
+        key_concepts = (
+            key_concepts.str.split("; ")
+            .explode()
+            .str.strip()
+            .drop_duplicates()
         )
         # nlp_phrases = nlp_phrases[nlp_phrases.str.contains(" ")]
-        return nlp_phrases
+        return key_concepts
 
-    def clean(nlp_phrases):
+    def clean(key_concepts):
         """Remove abbreviations from NLP phrases"""
 
-        nlp_phrases = nlp_phrases.copy()
+        key_concepts = key_concepts.copy()
 
         # remove abbreviations
-        nlp_phrases = nlp_phrases.str.replace(
+        key_concepts = key_concepts.str.replace(
             r"\(.*\)", "", regex=True
         ).replace(r"\[].*\]", "", regex=True)
 
         # strage characters
-        nlp_phrases = (
-            nlp_phrases.str.replace(r'"', "", regex=True)
+        key_concepts = (
+            key_concepts.str.replace(r'"', "", regex=True)
             .str.replace("'", "", regex=False)
             .str.replace("#", "", regex=False)
             .str.replace("!", "", regex=False)
             .str.strip()
         )
 
-        nlp_phrases = nlp_phrases[nlp_phrases != ""]
-        return nlp_phrases
+        key_concepts = key_concepts[key_concepts != ""]
+        return key_concepts
 
-    def sort_by_num_words(nlp_phrases):
+    def sort_by_num_words(key_concepts):
         """Sort keywords by number of words"""
 
-        nlp_phrases = nlp_phrases.copy()
-        frame = nlp_phrases.to_frame()
-        frame["length"] = frame[nlp_phrases.name].str.split(" ").map(len)
+        key_concepts = key_concepts.copy()
+        frame = key_concepts.to_frame()
+        frame["length"] = frame[key_concepts.name].str.split(" ").map(len)
         frame = frame.sort_values(
-            ["length", nlp_phrases.name], ascending=[False, True]
+            ["length", key_concepts.name], ascending=[False, True]
         )
-        nlp_phrases = frame[nlp_phrases.name].copy()
-        return nlp_phrases
+        key_concepts = frame[key_concepts.name].copy()
+        return key_concepts
 
-    def replace_in_abstracts_and_titles(root_dir, nlp_phrases):
+    def replace_in_abstracts_and_titles(root_dir, key_concepts):
         """Replace keywords in abstracts"""
 
-        nlp_phrases = nlp_phrases.copy()
-        nlp_phrases = "|".join(nlp_phrases.values)
-        regex = r"\b(" + nlp_phrases + r")\b"
+        key_concepts = key_concepts.copy()
+        key_concepts = "|".join(key_concepts.values)
+        regex = r"\b(" + key_concepts + r")\b"
 
         documents_path = pathlib.Path(root_dir) / "databases/_main.csv"
         documents = pd.read_csv(documents_path, encoding="utf-8")
@@ -1720,7 +1734,7 @@ def transform_abstract_keywords_to_underscore(root_dir):
     #
     # Main code:
     #
-    nlp_phrases = get_nlp_phrases()
-    nlp_phrases = clean(nlp_phrases)
-    nlp_phrases = sort_by_num_words(nlp_phrases)
-    replace_in_abstracts_and_titles(root_dir, nlp_phrases)
+    key_concepts = get_raw_key_concepts()
+    key_concepts = clean(key_concepts)
+    key_concepts = sort_by_num_words(key_concepts)
+    replace_in_abstracts_and_titles(root_dir, key_concepts)

@@ -94,11 +94,11 @@ TM2 module.
     
     techminer/__index__
     vantagepoint/__index__
-
-    bibliometrix/__index__
-    
     tlab/__index__
     scientopy/__index__
+    bibliometrix/__index__
+    
+    
 
 
 

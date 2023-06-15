@@ -13,7 +13,7 @@ abstracts of the records and creates a file with the report.
 ...     search_for='regtech',
 ...     root_dir=root_dir,
 ... )
---INFO-- The file 'data/regtech/processed/text_screening.txt' was created.
+--INFO-- The file 'data/regtech/reports/text_screening.txt' was created.
 
 
 """
