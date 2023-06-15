@@ -1,13 +1,22 @@
 from .abstract_nlp_phrases_co_occ_network import (
     abstract_nlp_phrases_co_occ_network,
 )
+from .abstract_nlp_phrases_thematic_map import (
+    abstract_nlp_phrases_thematic_map,
+)
 from .author_keywords_co_occ_network import author_keywords_co_occ_network
+from .author_keywords_thematic_map import author_keywords_thematic_map
 from .co_occurrence_network import co_occurrence_network
 from .factorial_analysis import factorial_analysis
 from .index_keywords_co_occ_network import index_keywords_co_occ_network
+from .index_keywords_thematic_map import index_keywords_thematic_map
 from .key_concepts_co_occ_network import key_concepts_co_occ_network
+from .key_concepts_thematic_map import key_concepts_thematic_map
 from .keywords_co_occ_network import keywords_co_occ_network
+from .keywords_thematic_map import keywords_thematic_map
 from .nlp_phrases_co_occ_network import nlp_phrases_co_occ_network
+from .nlp_phrases_thematic_map import nlp_phrases_thematic_map
 from .thematic_evolution_plot import thematic_evolution_plot
 from .thematic_map import thematic_map
 from .title_nlp_phrases_co_occ_network import title_nlp_phrases_co_occ_network
+from .title_nlp_phrases_thematic_map import title_nlp_phrases_thematic_map
