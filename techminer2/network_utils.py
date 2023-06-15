@@ -626,7 +626,7 @@ def create_occ_node_property(graph):
 
 
 # pylint: disable=too-many-locals
-def add_names_to_fig_nodes(fig, graph, n_labels):
+def add_names_to_fig_nodes(fig, graph, n_labels, is_article):
     """Adds node names to a network figure."""
 
     node_x, node_y = extract_node_coordinates(graph)
@@ -639,6 +639,15 @@ def add_names_to_fig_nodes(fig, graph, n_labels):
 
     if n_labels is None:
         n_labels = len(node_names)
+
+    #
+    node_x.reverse()
+    node_y.reverse()
+    node_names.reverse()
+    textfont_sizes.reverse()
+    textposition.reverse()
+    node_occs.reverse()
+    #
 
     i_label = 0
     for pos_x, pos_y, name, textfont_size, textpos, node_occ in zip(
@@ -674,6 +683,9 @@ def add_names_to_fig_nodes(fig, graph, n_labels):
         else:
             xanchor = "center"
             yanchor = "center"
+
+        if is_article is True:
+            name = ", ".join(name.split(", ")[:2])
 
         fig.add_annotation(
             x=pos_x,

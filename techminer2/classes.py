@@ -480,6 +480,24 @@ class CoWordsNetwork:
 
 # Intellectual Structure / Co-citation Matrix List
 # Intellectual Structure / Co-citation Network
+
+
+@dataclass(init=False)
+class CocitationNetwork:
+    """Co-citation Network."""
+
+    degree_plot__plot_: go.Figure
+    degree_plot__table_: pd.DataFrame
+    degree_plot__prompt_: str
+
+    network_metrics__prompt_: str
+    network_metrics__table_: pd.DataFrame
+
+    communities_: pd.DataFrame
+    graph_ = nx.Graph
+    plot_: go.Figure
+
+
 # Intellectual Structure / Historiograph
 
 

@@ -52,6 +52,7 @@ from ... import network_utils
 def network_viewer(
     graph,
     n_labels=None,
+    is_article=False,
     nx_k=0.1,
     nx_iterations=10,
     random_state=0,
@@ -80,18 +81,18 @@ def network_viewer(
         )
 
     node_trace = network_utils.create_node_trace(graph)
-    # text_trace = network_utils.create_text_trace(graph)
     edge_traces = network_utils.create_edge_traces(graph)
 
     fig = network_utils.create_network_graph(
         edge_traces=edge_traces,
         node_trace=node_trace,
-        # text_trace=text_trace,
         xaxes_range=xaxes_range,
         yaxes_range=yaxes_range,
         show_axes=show_axes,
     )
 
-    fig = network_utils.add_names_to_fig_nodes(fig, graph, n_labels)
+    fig = network_utils.add_names_to_fig_nodes(
+        fig, graph, n_labels, is_article
+    )
 
     return fig
