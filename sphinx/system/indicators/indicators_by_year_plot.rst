@@ -1,4 +1,4 @@
-.. automodule:: techminer2plus.indicators.indicators_by_year_plot
+.. automodule:: techminer2plus.system.indicators.indicators_by_year_plot
     :members:
     :undoc-members:
     :show-inheritance:

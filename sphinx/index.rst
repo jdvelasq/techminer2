@@ -94,6 +94,7 @@ TM2 module.
 
     user/data/__index__
     user/refine/__index__
+    user/overview/__index__
 
 
 .. toctree::
@@ -101,7 +102,7 @@ TM2 module.
     :hidden:
     :maxdepth: 1
 
-    indicators/__index__
+    system/indicators/__index__
 
 
 
