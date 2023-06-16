@@ -15,16 +15,16 @@ year                                        OCC  year_q1  ...  global_citations 
 index_keywords                                            ...                      
 CUSTOMER_REQUIREMENTS                         1     2017  ...                11   0
 ELECTRONIC_DOCUMENT_IDENTIFICATION_SYSTEMS    1     2017  ...                11   1
-FINANCIAL_SERVICES                            1     2017  ...                11   2
+FINANCIAL_SERVICE                             1     2017  ...                11   2
 REAL_TIME_MONITORING                          1     2017  ...                11   3
 REGULATORY_REGIME                             1     2017  ...                11   4
 REGTECH                                       5     2017  ...                15   0
-SANDBOXES                                     2     2018  ...                12   1
-BLOCKCHAIN                                    2     2018  ...                 2   2
-SMART_CONTRACTS                               2     2018  ...                 2   3
-ADDITIONAL_KNOWLEDGE                          1     2019  ...                 3   4
+BLOCKCHAIN                                    2     2018  ...                 2   1
+ADDITIONAL_KNOWLEDGE                          1     2019  ...                 3   2
+CONTRACTS                                     1     2019  ...                 3   3
+FINANCIAL_PRINCIPLES                          1     2019  ...                 3   4
 REGULATORY_COMPLIANCE                         9     2020  ...                34   0
-FINANCIAL_INSTITUTIONS                        6     2020  ...                 9   1
+FINANCIAL_INSTITUTION                         5     2020  ...                 7   1
 FINTECH                                       3     2020  ...                 8   2
 INFORMATION_SYSTEMS                           2     2020  ...                14   3
 INFORMATION_USE                               2     2020  ...                14   4
@@ -35,7 +35,6 @@ BANKING_INDUSTRY                              1     2021  ...                 7 
 COMPLIANCE_COSTS                              1     2021  ...                 7   4
 <BLANKLINE>
 [20 rows x 6 columns]
-
 
 
 
@@ -68,6 +67,7 @@ REGULATORY_COMPLIANCE      9     2020      2020     2022                34   0
 FINTECH                    3     2020      2020     2020                 8   1
 ARTIFICIAL_INTELLIGENCE    2     2021      2022     2022                 2   0
 REGULATORY_TECHNOLOGY      2     2022      2022     2023                 1   1
+
 
 
 

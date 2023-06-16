@@ -25,9 +25,8 @@ Topic Dynamics
 | REGTECH 28:329               |      2 |      3 |      4 |      8 |      3 |      6 |      2 |
 | FINTECH 12:249               |      0 |      2 |      4 |      3 |      1 |      2 |      0 |
 | REGULATORY_COMPLIANCE 09:034 |      1 |      0 |      1 |      3 |      1 |      2 |      1 |
-| REGULATORY_TECHNOLOGY 08:037 |      0 |      0 |      0 |      2 |      3 |      2 |      1 |
 | COMPLIANCE 07:030            |      0 |      0 |      1 |      3 |      1 |      1 |      1 |
-
+| FINANCE 07:017               |      1 |      0 |      1 |      1 |      1 |      3 |      0 |
 
 
 >>> print(r.prompt_)
@@ -44,11 +43,10 @@ Table:
 | REGTECH 28:329               |      2 |      3 |      4 |      8 |      3 |      6 |      2 |
 | FINTECH 12:249               |      0 |      2 |      4 |      3 |      1 |      2 |      0 |
 | REGULATORY_COMPLIANCE 09:034 |      1 |      0 |      1 |      3 |      1 |      2 |      1 |
-| REGULATORY_TECHNOLOGY 08:037 |      0 |      0 |      0 |      2 |      3 |      2 |      1 |
 | COMPLIANCE 07:030            |      0 |      0 |      1 |      3 |      1 |      1 |      1 |
+| FINANCE 07:017               |      1 |      0 |      1 |      1 |      1 |      3 |      0 |
 ```
 <BLANKLINE>
-
 
 
 # pylint: disable=line-too-long

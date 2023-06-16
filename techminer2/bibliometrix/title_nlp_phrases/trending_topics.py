@@ -31,7 +31,7 @@ FINANCIAL_DEVELOPMENT            1     2022  ...                13   0
 CHARITABLE_ORGANISATIONS         1     2022  ...                 3   1
 FINTECH_SUSTAINABILITY           1     2022  ...                 3   2
 MACHINE_LEARNING                 1     2022  ...                 3   3
-REGTECH                          1     2022  ...                 3   4
+REGTECH_APPROACH                 1     2022  ...                 3   4
 FIRM_PERFORMANCE                 1     2023  ...                 0   0
 <BLANKLINE>
 [20 rows x 6 columns]
@@ -67,7 +67,6 @@ FINANCIAL_SYSTEM           1     2017      2017     2017                11   0
 FINANCIAL_CRIME            2     2020      2020     2021                12   0
 REGULATORY_TECHNOLOGY      3     2020      2021     2021                20   0
 ARTIFICIAL_INTELLIGENCE    3     2020      2021     2022                17   1
-
 
 # pylint: disable=line-too-long
 """

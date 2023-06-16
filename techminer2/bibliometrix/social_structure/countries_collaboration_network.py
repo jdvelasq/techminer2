@@ -90,8 +90,13 @@ Table:
 
 
 >>> print(nnet.degree_plot__prompt_)
-Analyze the table below, which provides the degree of nodes in a networkx graph of a co-ocurrence matrix. Identify any notable patterns, trends, or outliers in the data, and discuss their implications in the network.
+Your task is to generate an analysis about the degree of the nodes in a networkx \\
+graph of a co-ocurrence matrix. Analyze the table below, delimited by triple  \\
+backticks, identifying any notable patterns, trends, or outliers in the data, and  \\
+discuss their implications in the network. 
 <BLANKLINE>
+Table:
+```
 |    |   Node | Name                       |   Degree |
 |---:|-------:|:---------------------------|---------:|
 |  0 |      0 | Switzerland 4:045          |        8 |
@@ -109,9 +114,8 @@ Analyze the table below, which provides the degree of nodes in a networkx graph 
 | 12 |     12 | Bahrain 4:019              |        2 |
 | 13 |     13 | Ireland 5:055              |        1 |
 | 14 |     14 | Japan 1:013                |        1 |
+```
 <BLANKLINE>
-<BLANKLINE>
-
 
 
 

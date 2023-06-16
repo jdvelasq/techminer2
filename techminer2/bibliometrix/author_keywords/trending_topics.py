@@ -11,28 +11,28 @@ Trend Topics
 >>> bibliometrix.author_keywords.trending_topics(
 ...     root_dir=root_dir, 
 ... ).table_.head(20)
-year                                     OCC  year_q1  ...  global_citations  rn
-author_keywords                                        ...                      
-CORPORATE_SOCIAL_RESPONSIBILITIES (CSR)    1     2017  ...                 1   0
-CREDIT                                     1     2017  ...                 1   1
-SEMANTIC_TECHNOLOGIES                      2     2018  ...                41   0
-SMART_CONTRACTS                            2     2017  ...                22   1
-BUSINESS_MODELS                            1     2018  ...               153   2
-FUTURE_RESEARCH_DIRECTION                  1     2018  ...               153   3
-ALGORITHMIC_STANDARDS                      1     2018  ...                21   4
-FINANCIAL_SERVICES                         4     2018  ...               168   0
-BLOCKCHAIN                                 3     2018  ...                 5   1
-SANDBOXES                                  2     2018  ...                12   2
-STANDARDS                                  1     2019  ...                33   3
-DOGMAS                                     1     2019  ...                 5   4
-REGTECH                                   28     2019  ...               329   0
-FINTECH                                   12     2019  ...               249   1
-COMPLIANCE                                 7     2020  ...                30   2
-REGULATION                                 5     2018  ...               164   3
-ARTIFICIAL_INTELLIGENCE                    4     2020  ...                23   4
-REGULATORY_TECHNOLOGY                      7     2020  ...                37   0
-ANTI_MONEY_LAUNDERING                      5     2020  ...                34   1
-FINANCIAL_REGULATION                       4     2019  ...                35   2
+year                             OCC  year_q1  ...  global_citations  rn
+author_keywords                                ...                      
+CORPORATE_SOCIAL_RESPONSIBILITY    1     2017  ...                 1   0
+CREDIT                             1     2017  ...                 1   1
+SMART_CONTRACT                     1     2017  ...                 1   2
+BUSINESS_MODELS                    1     2018  ...               153   0
+FUTURE_RESEARCH_DIRECTION          1     2018  ...               153   1
+ALGORITHMIC_STANDARDS              1     2018  ...                21   2
+DOCUMENT_ENGINEERING               1     2018  ...                21   3
+SMART_CONTRACTS                    1     2018  ...                21   4
+FINANCIAL_SERVICES                 4     2018  ...               168   0
+BLOCKCHAIN                         3     2018  ...                 5   1
+SANDBOXES                          2     2018  ...                12   2
+SEMANTIC_TECHNOLOGIES              1     2019  ...                33   3
+STANDARDS                          1     2019  ...                33   4
+REGTECH                           28     2019  ...               329   0
+FINTECH                           12     2019  ...               249   1
+COMPLIANCE                         7     2020  ...                30   2
+REGULATION                         5     2018  ...               164   3
+ARTIFICIAL_INTELLIGENCE            4     2020  ...                23   4
+FINANCIAL_REGULATION               4     2019  ...                35   0
+REGULATORY_TECHNOLOGY (REGTECH)    4     2021  ...                30   1
 <BLANKLINE>
 [20 rows x 6 columns]
 
@@ -66,9 +66,8 @@ author_keywords
 BLOCKCHAIN                 3     2018      2019     2020                 5   0
 FINTECH                   12     2019      2020     2020               249   0
 ARTIFICIAL_INTELLIGENCE    4     2020      2020     2020                23   1
-REGULATORY_TECHNOLOGY      7     2020      2021     2022                37   0
+REGULATORY_TECHNOLOGY      3     2020      2021     2022                 7   0
 SUPTECH                    3     2020      2022     2022                 4   0
-
 
 
 

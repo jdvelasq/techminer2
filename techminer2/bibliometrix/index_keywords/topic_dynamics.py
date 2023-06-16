@@ -20,13 +20,14 @@ Topic Dynamics
 
     
 >>> print(r.table_.head().to_markdown())
-| index_keywords              |   2017 |   2019 |   2020 |   2021 |   2022 |   2023 |
-|:----------------------------|-------:|-------:|-------:|-------:|-------:|-------:|
-| REGULATORY_COMPLIANCE 9:34  |      1 |      1 |      3 |      1 |      2 |      1 |
-| FINANCIAL_INSTITUTIONS 6:09 |      0 |      0 |      3 |      1 |      2 |      0 |
-| FINANCE 5:16                |      1 |      1 |      0 |      1 |      2 |      0 |
-| REGTECH 5:15                |      2 |      1 |      0 |      0 |      2 |      0 |
-| ANTI_MONEY_LAUNDERING 3:10  |      0 |      0 |      1 |      2 |      0 |      0 |
+| index_keywords             |   2017 |   2019 |   2020 |   2021 |   2022 |   2023 |
+|:---------------------------|-------:|-------:|-------:|-------:|-------:|-------:|
+| REGULATORY_COMPLIANCE 9:34 |      1 |      1 |      3 |      1 |      2 |      1 |
+| FINANCE 5:16               |      1 |      1 |      0 |      1 |      2 |      0 |
+| REGTECH 5:15               |      2 |      1 |      0 |      0 |      2 |      0 |
+| FINANCIAL_INSTITUTION 5:07 |      0 |      0 |      3 |      0 |      2 |      0 |
+| ANTI_MONEY_LAUNDERING 3:10 |      0 |      0 |      1 |      2 |      0 |      0 |
+
 
 >>> print(r.prompt_)
 Your task is to generate an analysis about the  occurrences \\
@@ -37,15 +38,16 @@ to provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
 Table:
 ```
-| index_keywords              |   2017 |   2019 |   2020 |   2021 |   2022 |   2023 |
-|:----------------------------|-------:|-------:|-------:|-------:|-------:|-------:|
-| REGULATORY_COMPLIANCE 9:34  |      1 |      1 |      3 |      1 |      2 |      1 |
-| FINANCIAL_INSTITUTIONS 6:09 |      0 |      0 |      3 |      1 |      2 |      0 |
-| FINANCE 5:16                |      1 |      1 |      0 |      1 |      2 |      0 |
-| REGTECH 5:15                |      2 |      1 |      0 |      0 |      2 |      0 |
-| ANTI_MONEY_LAUNDERING 3:10  |      0 |      0 |      1 |      2 |      0 |      0 |
+| index_keywords             |   2017 |   2019 |   2020 |   2021 |   2022 |   2023 |
+|:---------------------------|-------:|-------:|-------:|-------:|-------:|-------:|
+| REGULATORY_COMPLIANCE 9:34 |      1 |      1 |      3 |      1 |      2 |      1 |
+| FINANCE 5:16               |      1 |      1 |      0 |      1 |      2 |      0 |
+| REGTECH 5:15               |      2 |      1 |      0 |      0 |      2 |      0 |
+| FINANCIAL_INSTITUTION 5:07 |      0 |      0 |      3 |      0 |      2 |      0 |
+| ANTI_MONEY_LAUNDERING 3:10 |      0 |      0 |      1 |      2 |      0 |      0 |
 ```
 <BLANKLINE>
+
 
 
 

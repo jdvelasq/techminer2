@@ -98,7 +98,9 @@ Table:
 Your task is to generate an analysis about the degree of the nodes in a networkx \\
 graph of a co-ocurrence matrix. Analyze the table below, delimited by triple  \\
 backticks, identifying any notable patterns, trends, or outliers in the data, and  \\
-discuss their implications in the network.Table:
+discuss their implications in the network. 
+<BLANKLINE>
+Table:
 ```
 |    |   Node | Name                                   |   Degree |
 |---:|-------:|:---------------------------------------|---------:|
