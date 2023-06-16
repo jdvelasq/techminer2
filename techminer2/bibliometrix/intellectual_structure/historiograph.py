@@ -32,9 +32,23 @@ Historiograph
 15         von Solms J, 2021, J BANK REGUL, V22, P152      Anagnostopoulos I, 2018, J ECON BUS, V100, P7
 35                      Kurum E, 2020, J FINANC CRIME      Anagnostopoulos I, 2018, J ECON BUS, V100, P7
 
+>>> nnet.articles_.head(10)    
+0        Anagnostopoulos I, 2018, J ECON BUS, V100, P7
+1    Becker M, 2020, INTELL SYST ACCOUNT FINANCE M,...
+2    Butler T, 2018, J RISK MANG FINANCIAL INST, V1...
+3    Butler T, 2019, PALGRAVE STUD DIGIT BUS ENABL,...
+4          Kavassalis P, 2018, J RISK FINANC, V19, P39
+5                        Kurum E, 2020, J FINANC CRIME
+6                 Muganyi T, 2022, FINANCIAL INNOV, V8
+7    Ryan P, 2020, ICEIS - PROC INT CONF ENTERP , V...
+8                           Turki M, 2020, HELIYON, V6
+9            Waye V, 2020, ADELAIDE LAW REV, V40, P363
+dtype: object
+
 # pylint: disable=line-too-long
 """
 import networkx as nx
+import pandas as pd
 
 from ...classes import Historiograph
 from ...network_utils import (
@@ -57,10 +71,10 @@ def historiograph(
     n_labels=None,
     color="#8da4b4",
     textfont_size=10,
-    # Items params:
     nx_k=None,
     nx_iterations=50,
     nx_seed=0,
+    # Items params:
 ):
     """Historiograph network."""
 
@@ -188,5 +202,11 @@ def historiograph(
     histograph.nx_graph_ = graph
     histograph.plot_ = fig
     histograph.links_ = links
+    histograph.articles_ = (
+        pd.concat([links.citing_article, links.cited_article])
+        .drop_duplicates()
+        .sort_values()
+        .reset_index(drop=True)
+    )
 
     return histograph
