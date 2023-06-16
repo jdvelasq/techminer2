@@ -88,6 +88,23 @@ TM2 module.
 
 
 .. toctree::
+    :caption: TechMiner 2+ / User
+    :hidden:
+    :maxdepth: 1
+
+    data/__index__
+
+
+.. toctree::
+    :caption: TechMiner 2+ / System
+    :hidden:
+    :maxdepth: 1
+
+    indicators/__index__
+
+
+
+.. toctree::
     :caption: Software comparison
     :maxdepth: 1
     :hidden:
