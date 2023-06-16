@@ -33,9 +33,10 @@ Source G-Index
 >>> print(r.prompt_)
 Your task is to generate an analysis about the bibliometric indicators of the \\
 'source_abbr' field in a scientific bibliography database. Summarize the table below, \\
-delimited by triple backticks, identify any notable patterns, trends, or outliers in \\
-the data, and discuss their implications for the research field. Be sure to provide a \\
-concise summary of your findings in no more than 150 words.
+sorted by the 'g_index' metric, and delimited by triple backticks, identify \\
+any notable patterns, trends, or outliers in the data, and discuss their \\
+implications for the research field. Be sure to provide a concise summary \\
+of your findings in no more than 150 words.
 <BLANKLINE>
 Table:
 ```
