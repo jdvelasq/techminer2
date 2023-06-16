@@ -438,6 +438,8 @@ class CorresponingAuthorCountry:
 # Documents / Documents / Most Local Cited Documents
 @dataclass(init=False)
 class MostCitedDocuments:
+    """Most cited documents"""
+
     plot_ = None
     table_ = None
 
