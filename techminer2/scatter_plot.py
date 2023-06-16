@@ -9,9 +9,9 @@ Scatter plot.
 import plotly.graph_objects as go
 
 from .network_utils import (
-    compute_textposition_from_lists,
-    occ_to_textfont_color,
-    scale_occ,
+    nx_compute_node_textposition_from_node_coordinates,
+    nx_node_occ_to_node_textfont_color,
+    nx_scale_node_occ,
 )
 
 
@@ -34,20 +34,22 @@ def scatter_plot(
         node_text = [" ".join(text.split(" ")[:-1]) for text in node_text]
         return node_text
 
-    textfont_size = scale_occ(
+    textfont_size = nx_scale_node_occ(
         occ=node_occ,
         max_size=textfont_size_max,
         min_size=textfont_size_min,
     )
 
-    node_size = scale_occ(
+    node_size = nx_scale_node_occ(
         occ=node_occ,
         max_size=node_size_max,
         min_size=node_size_min,
     )
 
-    textposition = compute_textposition_from_lists(node_x, node_y)
-    textfont_color = occ_to_textfont_color(node_occ)
+    textposition = nx_compute_node_textposition_from_node_coordinates(
+        node_x, node_y
+    )
+    textfont_color = nx_node_occ_to_node_textfont_color(node_occ)
 
     node_text = remove_counters(node_text)
 

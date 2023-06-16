@@ -62,7 +62,7 @@ import pandas as pd
 import plotly.express as px
 
 from ...classes import NetworkDegreePlot
-from ...network_utils import compute_node_degree
+from ...network_utils import nx_compute_node_degree
 
 
 # pylint: disable=too-many-arguments
@@ -164,7 +164,7 @@ def network_degree_plot(
     #
     #
 
-    graph = compute_node_degree(graph)
+    graph = nx_compute_node_degree(graph)
     degrees = collect_degrees(graph)
     dataframe = to_dataframe(degrees)
     dataframe = dataframe[["Node", "Name", "Degree"]]

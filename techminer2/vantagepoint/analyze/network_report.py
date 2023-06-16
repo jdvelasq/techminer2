@@ -64,9 +64,9 @@ from collections import defaultdict
 import pandas as pd
 
 from ...network_utils import (
-    extract_communities_from_graph,
     generate_clusters_database,
     generate_databases_per_cluster,
+    nx_extract_communities,
 )
 from ...record_utils import create_records_report, read_records
 from ...tlab.concordances import concordances
@@ -89,9 +89,7 @@ def network_report(
 
     make_report_dir(root_dir, report_dir)
 
-    communities = extract_communities_from_graph(
-        graph, conserve_counters=False
-    )
+    communities = nx_extract_communities(graph, conserve_counters=False)
 
     generate_clusters_database(
         communities=communities,

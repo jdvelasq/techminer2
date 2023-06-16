@@ -325,9 +325,9 @@ Analyze the table below which contains values of co-occurrence (OCC) for the 'au
 
 from ...classes import MatrixSubset, MatrixViewer
 from ...network_utils import (
-    compute_spring_layout,
-    create_graph,
-    set_node_colors,
+    nx_compute_spring_layout,
+    nx_create_graph_from_matrix_list,
+    nx_set_node_colors,
 )
 from .list_cells_in_matrix import list_cells_in_matrix
 from .network_viewer import network_viewer
@@ -352,7 +352,7 @@ def matrix_viewer(
 
     matrix_list = list_cells_in_matrix(obj)
 
-    graph = create_graph(
+    graph = nx_create_graph_from_matrix_list(
         matrix_list,
         node_size_min,
         node_size_max,
@@ -361,9 +361,9 @@ def matrix_viewer(
     )
 
     if isinstance(obj, MatrixSubset):
-        graph = set_node_colors(graph, obj.custom_items_, "#556f81")
+        graph = nx_set_node_colors(graph, obj.custom_items_, "#556f81")
 
-    graph = compute_spring_layout(graph, nx_k, nx_iterations, random_state)
+    graph = nx_compute_spring_layout(graph, nx_k, nx_iterations, random_state)
 
     fig = network_viewer(
         graph=graph,

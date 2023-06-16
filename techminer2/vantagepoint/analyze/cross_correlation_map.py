@@ -110,7 +110,7 @@ def cross_correlation_map(
 
     matrix_list = list_cells_in_matrix(matrix)
 
-    graph = network_utils.create_graph(
+    graph = network_utils.nx_create_graph_from_matrix_list(
         matrix_list,
         node_size_min,
         node_size_max,
@@ -121,17 +121,17 @@ def cross_correlation_map(
     for node in graph.nodes():
         graph.nodes[node]["color"] = color
 
-    graph = network_utils.set_edge_properties_for_corr_maps(graph, color)
+    graph = network_utils.nx_set_edge_properties_for_corr_maps(graph, color)
 
-    graph = network_utils.compute_spring_layout(
+    graph = network_utils.nx_compute_spring_layout(
         graph, nx_k, nx_iterations, nx_random_state
     )
 
-    node_trace = network_utils.create_node_trace(graph)
+    node_trace = network_utils.px_create_node_trace(graph)
     # text_trace = network_utils.create_text_trace(graph)
-    edge_traces = network_utils.create_edge_traces(graph)
+    edge_traces = network_utils.px_create_edge_traces(graph)
 
-    fig = network_utils.create_network_graph(
+    fig = network_utils.px_create_network_fig(
         edge_traces,
         node_trace,
         # text_trace,
@@ -140,7 +140,7 @@ def cross_correlation_map(
         show_axes,
     )
 
-    fig = network_utils.add_names_to_fig_nodes(fig, graph, n_labels)
+    fig = network_utils.px_add_names_to_fig_nodes(fig, graph, n_labels)
 
     corrmap = CorrMap()
     corrmap.plot_ = fig

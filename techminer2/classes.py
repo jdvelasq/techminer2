@@ -499,6 +499,13 @@ class CocitationNetwork:
 
 
 # Intellectual Structure / Historiograph
+@dataclass(init=False)
+class Historiograph:
+    """Historiograph."""
+
+    nx_graph_ = nx.Graph
+    plot_: go.Figure
+    links_: pd.DataFrame
 
 
 # Social Structure / Collaboration Network

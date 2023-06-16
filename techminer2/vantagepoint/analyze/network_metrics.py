@@ -59,9 +59,9 @@ Table:
 
 from ...classes import NetworkStatistics
 from ...network_utils import (
-    compute_newtork_statistics,
-    compute_node_degree,
-    graph_to_co_occ_matrix,
+    nx_compute_node_degree,
+    nx_compute_node_statistics,
+    nx_graph_to_co_occ_matrix,
 )
 
 
@@ -88,8 +88,8 @@ def network_metrics(
     #
     #
 
-    graph = compute_node_degree(graph)
-    table = compute_newtork_statistics(graph)
+    graph = nx_compute_node_degree(graph)
+    table = nx_compute_node_statistics(graph)
 
     obj = NetworkStatistics()
 

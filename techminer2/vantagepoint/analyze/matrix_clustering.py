@@ -93,7 +93,7 @@ def matrix_clustering(
 
     # create a graph
     matrix_list = list_cells_in_matrix(obj)
-    graph = network_utils.create_graph(matrix_list)
+    graph = network_utils.nx_create_graph_from_matrix_list(matrix_list)
 
     columns = obj.matrix_.columns.tolist()
     names2cluster = dict(zip(columns, labels))
@@ -101,6 +101,6 @@ def matrix_clustering(
     for node in graph.nodes():
         graph.nodes[node]["group"] = names2cluster[node]
 
-    graph = network_utils.set_color_nodes_by_group(graph)
+    graph = network_utils.nx_set_node_color_by_group(graph)
 
     return graph

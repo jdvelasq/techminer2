@@ -66,24 +66,24 @@ def network_viewer(
 ):
     """Plots a network"""
 
-    graph = network_utils.compute_spring_layout(
+    graph = network_utils.nx_compute_spring_layout(
         graph, nx_k, nx_iterations, random_state
     )
 
     if node_size_max is not None and node_size_min is not None:
-        graph = network_utils.compute_prop_sizes(
+        graph = network_utils.nx_compute_node_property_from_occ(
             graph, "node_size", node_size_min, node_size_max
         )
 
     if textfont_size_max is not None and textfont_size_min is not None:
-        graph = network_utils.compute_prop_sizes(
+        graph = network_utils.nx_compute_node_property_from_occ(
             graph, "textfont_size", textfont_size_min, textfont_size_max
         )
 
-    node_trace = network_utils.create_node_trace(graph)
-    edge_traces = network_utils.create_edge_traces(graph)
+    node_trace = network_utils.px_create_node_trace(graph)
+    edge_traces = network_utils.px_create_edge_traces(graph)
 
-    fig = network_utils.create_network_graph(
+    fig = network_utils.px_create_network_fig(
         edge_traces=edge_traces,
         node_trace=node_trace,
         xaxes_range=xaxes_range,
@@ -91,7 +91,7 @@ def network_viewer(
         show_axes=show_axes,
     )
 
-    fig = network_utils.add_names_to_fig_nodes(
+    fig = network_utils.px_add_names_to_fig_nodes(
         fig, graph, n_labels, is_article
     )
 

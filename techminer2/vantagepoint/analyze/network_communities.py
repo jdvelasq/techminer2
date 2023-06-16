@@ -41,7 +41,7 @@ Example:
 
 import pandas as pd
 
-from ...network_utils import extract_communities_from_graph
+from ...network_utils import nx_extract_communities
 
 
 def network_communities(graph):
@@ -68,7 +68,7 @@ def network_communities(graph):
     #
     # main:
     #
-    communities = extract_communities_from_graph(graph, conserve_counters=True)
+    communities = nx_extract_communities(graph, conserve_counters=True)
     communities = sort_community_members(communities)
     communities = pd.DataFrame.from_dict(communities, orient="index").T
     communities = communities.fillna("")

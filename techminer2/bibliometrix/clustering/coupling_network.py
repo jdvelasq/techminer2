@@ -153,28 +153,32 @@ def coupling_network(
     )
 
     graph = nx.Graph()
-    graph = network_utils.create_graph_nodes(graph, matrix_list)
-    graph = network_utils.create_occ_node_property(graph)
-    graph = network_utils.compute_prop_sizes(
+    graph = network_utils.nx_add_nodes__to_graph_from_matrix_list(
+        graph, matrix_list
+    )
+    graph = network_utils.nx_create_node_occ_property_from_node_name(graph)
+    graph = network_utils.nx_compute_node_property_from_occ(
         graph, "node_size", node_min_size, node_max_size
     )
-    graph = network_utils.compute_prop_sizes(
+    graph = network_utils.nx_compute_node_property_from_occ(
         graph, "textfont_size", textfont_size_min, textfont_size_max
     )
-    graph = network_utils.create_graph_edges(graph, matrix_list)
-    graph = network_utils.compute_spring_layout(
+    graph = network_utils.nx_add_edges_to_graph_from_matrix_list(
+        graph, matrix_list
+    )
+    graph = network_utils.nx_compute_spring_layout(
         graph, nx_k, nx_iterations, seed
     )
 
-    graph = network_utils.apply_community_detection_method(
+    graph = network_utils.nx_apply_community_detection_method(
         graph, method=method
     )
 
-    node_trace = network_utils.create_node_trace(graph)
+    node_trace = network_utils.px_create_node_trace(graph)
     text_trace = network_utils.create_text_trace(graph)
-    edge_traces = network_utils.create_edge_traces(graph)
+    edge_traces = network_utils.px_create_edge_traces(graph)
 
-    fig = network_utils.create_network_graph(
+    fig = network_utils.px_create_network_fig(
         edge_traces, node_trace, text_trace, delta
     )
 
