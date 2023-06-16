@@ -1,3 +1,9 @@
+"""
+Stopwords
+"""
+import os
+
+
 def load_stopwords(root_dir):
     """Load user stopwords from the specified directory.
 

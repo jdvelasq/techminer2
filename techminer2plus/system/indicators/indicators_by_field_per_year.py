@@ -8,8 +8,8 @@ Examples
 
 >>> root_dir = "data/regtech/"
 
->>> from techminer2  import techminer
->>> techminer.indicators.indicators_by_field_per_year(
+>>> import techminer2plus
+>>> techminer2plus.system.indicators.indicators_by_field_per_year(
 ...     'authors',
 ...     root_dir=root_dir,
 ... ).head(20)
@@ -42,7 +42,7 @@ Buchkremer R      2020    1  ...                     0.750
 >>> from pprint import pprint
 >>> pprint(
 ...     sorted(
-...         techminer.indicators.indicators_by_field_per_year(
+...         techminer2plus.system.indicators.indicators_by_field_per_year(
 ...             'authors', root_dir=root_dir).columns.to_list()
 ...     )
 ... )
@@ -58,7 +58,7 @@ Buchkremer R      2020    1  ...                     0.750
 """
 import pandas as pd
 
-from ..records import read_records
+from ...records import read_records
 
 
 # pylint: disable=too-many-arguments

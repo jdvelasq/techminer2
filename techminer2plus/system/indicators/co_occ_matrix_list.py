@@ -7,32 +7,28 @@ Creates a matrix list with all terms of the database, removing the terms in the
 stopwords list.
 
 
-Example
--------------------------------------------------------------------------------
-
 >>> root_dir = "data/regtech/"
 
 >>> import techminer2plus
->>> techminer2plus.indicators.co_occ_matrix_list(
+>>> techminer2plus.system.indicators.co_occ_matrix_list(
 ...     columns='authors', rows='keywords', root_dir=root_dir
 ... ).head(10)
                          row     column  OCC
 0             ACCOUNTABILITY  Brennan R    2
 1             ACCOUNTABILITY    Crane M    2
 2             ACCOUNTABILITY     Ryan P    2
-98                COMPLIANCE  Brennan R    2
-99                COMPLIANCE    Crane M    2
-101               COMPLIANCE     Ryan P    2
-149  DATA_PROTECTION_OFFICER  Brennan R    2
-150  DATA_PROTECTION_OFFICER    Crane M    2
-151  DATA_PROTECTION_OFFICER     Ryan P    2
-206                  FINANCE   Arman AA    2
-
+136              CHARITYTECH      Lin W    2
+137              CHARITYTECH    Singh C    2
+174               COMPLIANCE  Brennan R    2
+175               COMPLIANCE    Crane M    2
+181               COMPLIANCE     Ryan P    2
+262  DATA_PROTECTION_OFFICER  Brennan R    2
+263  DATA_PROTECTION_OFFICER    Crane M    2
 
 # pylint: disable=line-too-long
 """
-from ..records import read_records
-from ..stopwords import load_stopwords
+from ...records import read_records
+from ...stopwords import load_stopwords
 
 
 # pylint: disable=too-many-arguments

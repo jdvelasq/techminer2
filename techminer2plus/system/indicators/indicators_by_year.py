@@ -10,8 +10,8 @@ Examples
 
 >>> root_dir = "data/regtech/"
 
->>> from techminer2  import techminer
->>> techminer.indicators.indicators_by_year(root_dir) # doctest: +NORMALIZE_WHITESPACE
+>>> import techminer2plus
+>>> techminer2plus.system.indicators.indicators_by_year(root_dir) # doctest: +NORMALIZE_WHITESPACE
       OCC  cum_OCC  ...  cum_local_citations  mean_local_citations_per_year
 year                ...                                                    
 2016    1        1  ...                  0.0                           0.00
@@ -26,7 +26,7 @@ year                ...
 [8 rows x 11 columns]
 
 
->>> techminer.indicators.indicators_by_year(
+>>> techminer2plus.system.indicators.indicators_by_year(
 ...     root_dir=root_dir, database="references"
 ... ).tail() # doctest: +NORMALIZE_WHITESPACE
       OCC  cum_OCC  ...  cum_local_citations  mean_local_citations_per_year
@@ -34,13 +34,13 @@ year                ...
 2018   89      594  ...                729.0                           0.30
 2019   91      685  ...                837.0                           0.30
 2020  114      799  ...                982.0                           0.42
-2021   80      879  ...               1068.0                           0.54
-2022   30      909  ...               1100.0                           1.07
+2021   80      879  ...               1067.0                           0.53
+2022   30      909  ...               1099.0                           1.07
 <BLANKLINE>
 [5 rows x 11 columns]
 
 
->>> techminer.indicators.indicators_by_year(
+>>> techminer2plus.system.indicators.indicators_by_year(
 ...     root_dir=root_dir, database="cited_by"
 ... ).tail() # doctest: +NORMALIZE_WHITESPACE
       OCC  cum_OCC  ...  cum_global_citations  mean_global_citations_per_year
@@ -58,7 +58,7 @@ year                ...
 >>> from pprint import pprint
 >>> pprint(
 ...     sorted(
-...         techminer.indicators.indicators_by_year(
+...         techminer2plus.system.indicators.indicators_by_year(
 ...             root_dir=root_dir
 ...         ).columns.to_list()
 ...     )
@@ -80,7 +80,7 @@ year                ...
 """
 import plotly.express as px
 
-from ..records import read_records
+from ...records import read_records
 
 
 def indicators_by_year(

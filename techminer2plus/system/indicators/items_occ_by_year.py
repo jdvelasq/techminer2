@@ -11,8 +11,8 @@ Example
 
 >>> root_dir = "data/regtech/"
 
->>> from techminer2  import techminer
->>> techminer.indicators.items_occ_by_year(
+>>> import techminer2plus
+>>> techminer2plus.system.indicators.items_occ_by_year(
 ...     'authors',  root_dir=root_dir
 ... ).head(10)
 year               2016  2017  2018  2019  2020  2021  2022  2023
@@ -31,7 +31,7 @@ Becker M              0     0     0     0     1     0     0     0
 
 """
 
-from ..stopwords import load_stopwords
+from ...stopwords import load_stopwords
 from .indicators_by_field_per_year import indicators_by_field_per_year
 
 

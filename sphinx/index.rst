@@ -92,7 +92,8 @@ TM2 module.
     :hidden:
     :maxdepth: 1
 
-    data/__index__
+    user/data/__index__
+    user/refine/__index__
 
 
 .. toctree::

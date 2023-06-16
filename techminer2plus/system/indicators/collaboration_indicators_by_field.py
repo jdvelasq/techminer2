@@ -8,8 +8,8 @@ Examples
 
 >>> root_dir = "data/regtech/"
 
->>> from techminer2 import techminer
->>> techminer.indicators.collaboration_indicators_by_field(
+>>> import techminer2plus
+>>> techminer2plus.system.indicators.collaboration_indicators_by_field(
 ...     "countries",
 ...     root_dir=root_dir,
 ... ).head()
@@ -25,7 +25,7 @@ China             5                27  ...                     3      0.60
 
 
 >>> print(
-...     techminer.indicators.collaboration_indicators_by_field(
+...     techminer2plus.system.indicators.collaboration_indicators_by_field(
 ...         "countries",
 ...         root_dir=root_dir,
 ...     ).head().to_markdown()
@@ -45,7 +45,7 @@ China             5                27  ...                     3      0.60
 
 import numpy as np
 
-from ..records import read_records
+from ...records import read_records
 
 
 def collaboration_indicators_by_field(

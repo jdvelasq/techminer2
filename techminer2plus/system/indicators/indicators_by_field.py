@@ -51,24 +51,24 @@ If ``Y_end = 2018`` and ``time_window = 2``, then ``Y_start = 2017``.
 >>> root_dir = "data/regtech/"
 
 
->>> from techminer2  import techminer
->>> indicators = techminer.indicators.indicators_by_field(
+>>> import techminer2plus
+>>> indicators = techminer2plus.system.indicators.indicators_by_field(
 ...     field='author_keywords',
 ...     root_dir=root_dir,
 ... )
 >>> print(indicators.head(10).to_markdown())
-| author_keywords             |   OCC |   Before 2022 |   Between 2022-2023 |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |   average_growth_rate |   average_docs_per_year |   percentage_docs_last_year |   first_publication_year |   age |   global_citations_per_year |   h_index |   g_index |   m_index |
-|:----------------------------|------:|--------------:|--------------------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|----------------------:|------------------------:|----------------------------:|-------------------------:|------:|----------------------------:|----------:|----------:|----------:|
-| ACCOUNTABILITY              |     2 |             2 |                   0 |                 14 |                 3 |                             7   |                            1.5 |                  -0.5 |                     0   |                         0   |                     2020 |     4 |                        3.5  |         2 |         1 |      0.5  |
-| ALGORITHMIC_DECISION_MAKING |     1 |             1 |                   0 |                  0 |                 0 |                             0   |                            0   |                   0   |                     0   |                         0   |                     2020 |     4 |                        0    |         0 |         0 |      0    |
-| ALGORITHMIC_PROCESS         |     1 |             1 |                   0 |                  3 |                 2 |                             3   |                            2   |                   0   |                     0   |                         0   |                     2019 |     5 |                        0.6  |         1 |         1 |      0.2  |
-| ALGORITHMIC_STANDARDS       |     1 |             1 |                   0 |                 21 |                 8 |                            21   |                            8   |                   0   |                     0   |                         0   |                     2018 |     6 |                        3.5  |         1 |         1 |      0.17 |
-| ALGORITHMIC_TRANSPARENCY    |     1 |             0 |                   1 |                  3 |                 0 |                             3   |                            0   |                   0   |                     0.5 |                         0.5 |                     2022 |     2 |                        1.5  |         1 |         1 |      0.5  |
-| ANALYTIC_HIERARCHY_PROCESS  |     1 |             1 |                   0 |                  2 |                 3 |                             2   |                            3   |                   0   |                     0   |                         0   |                     2020 |     4 |                        0.5  |         1 |         1 |      0.25 |
-| ANNUAL_GENERAL_MEETINGS     |     1 |             0 |                   1 |                  0 |                 0 |                             0   |                            0   |                   0.5 |                     0.5 |                         0.5 |                     2023 |     1 |                        0    |         0 |         0 |      0    |
-| ANOMALY_DETECTION           |     1 |             1 |                   0 |                  2 |                 0 |                             2   |                            0   |                  -0.5 |                     0   |                         0   |                     2021 |     3 |                        0.67 |         1 |         1 |      0.33 |
-| ANTITRUST                   |     1 |             1 |                   0 |                  3 |                 3 |                             3   |                            3   |                  -0.5 |                     0   |                         0   |                     2021 |     3 |                        1    |         1 |         1 |      0.33 |
-| ANTI_MONEY_LAUNDERING       |     5 |             5 |                   0 |                 34 |                 8 |                             6.8 |                            1.6 |                  -1.5 |                     0   |                         0   |                     2020 |     4 |                        8.5  |         3 |         2 |      0.75 |
+| author_keywords              |   OCC |   Before 2022 |   Between 2022-2023 |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |   average_growth_rate |   average_docs_per_year |   percentage_docs_last_year |   first_publication_year |   age |   global_citations_per_year |   h_index |   g_index |   m_index |
+|:-----------------------------|------:|--------------:|--------------------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|----------------------:|------------------------:|----------------------------:|-------------------------:|------:|----------------------------:|----------:|----------:|----------:|
+| ACCOUNTABILITY               |     2 |             2 |                   0 |                 14 |                 3 |                            7    |                            1.5 |                  -0.5 |                     0   |                         0   |                     2020 |     4 |                        3.5  |         2 |         1 |      0.5  |
+| ALGORITHMIC_DECISION_MAKING  |     1 |             1 |                   0 |                  0 |                 0 |                            0    |                            0   |                   0   |                     0   |                         0   |                     2020 |     4 |                        0    |         0 |         0 |      0    |
+| ALGORITHMIC_PROCESS          |     1 |             1 |                   0 |                  3 |                 2 |                            3    |                            2   |                   0   |                     0   |                         0   |                     2019 |     5 |                        0.6  |         1 |         1 |      0.2  |
+| ALGORITHMIC_STANDARDS        |     1 |             1 |                   0 |                 21 |                 8 |                           21    |                            8   |                   0   |                     0   |                         0   |                     2018 |     6 |                        3.5  |         1 |         1 |      0.17 |
+| ALGORITHMIC_TRANSPARENCY     |     1 |             0 |                   1 |                  3 |                 0 |                            3    |                            0   |                   0   |                     0.5 |                         0.5 |                     2022 |     2 |                        1.5  |         1 |         1 |      0.5  |
+| ANALYTICAL_HIERARCHY_PROCESS |     1 |             1 |                   0 |                  2 |                 3 |                            2    |                            3   |                   0   |                     0   |                         0   |                     2020 |     4 |                        0.5  |         1 |         1 |      0.25 |
+| ANNUAL_GENERAL_MEETINGS      |     1 |             0 |                   1 |                  0 |                 0 |                            0    |                            0   |                   0.5 |                     0.5 |                         0.5 |                     2023 |     1 |                        0    |         0 |         0 |      0    |
+| ANOMALY_DETECTION            |     1 |             1 |                   0 |                  2 |                 0 |                            2    |                            0   |                  -0.5 |                     0   |                         0   |                     2021 |     3 |                        0.67 |         1 |         1 |      0.33 |
+| ANTITRUST                    |     1 |             1 |                   0 |                  3 |                 3 |                            3    |                            3   |                  -0.5 |                     0   |                         0   |                     2021 |     3 |                        1    |         1 |         1 |      0.33 |
+| ANTI_MONEY_LAUNDERING        |     4 |             4 |                   0 |                 23 |                 4 |                            5.75 |                            1   |                  -1.5 |                     0   |                         0   |                     2020 |     4 |                        5.75 |         2 |         2 |      0.5  |
 
 
 
@@ -79,8 +79,8 @@ If ``Y_end = 2018`` and ``time_window = 2``, then ``Y_start = 2017``.
 
 import numpy as np
 
-from ..records import read_records
-from ..stopwords import load_stopwords
+from ...records import read_records
+from ...stopwords import load_stopwords
 from .items_occ_by_year import items_occ_by_year
 
 

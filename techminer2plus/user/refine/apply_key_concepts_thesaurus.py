@@ -25,7 +25,7 @@ import sys
 
 import pandas as pd
 
-from ..thesaurus import load_system_thesaurus_as_dict_reversed
+from ...thesaurus import load_system_thesaurus_as_dict_reversed
 
 
 def apply_key_concepts_thesaurus(root_dir="./"):
