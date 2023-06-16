@@ -502,12 +502,24 @@ class CocitationNetwork:
 
 # Intellectual Structure / Historiograph
 @dataclass(init=False)
-class Historiograph:
+class HistoriographResults:
     """Historiograph."""
 
     nx_graph_ = nx.Graph
     plot_: go.Figure
     links_: pd.DataFrame
+    articles_: list
+
+
+# Intellectual Structure / Main Path Analysis
+# @dataclass(init=False)
+# class MainPathAnalysisResults:
+#     """Main path."""
+
+#     nx_graph_ = nx.Graph
+#     plot_: go.Figure
+#     links_: pd.DataFrame
+#     articles_: list
 
 
 # Social Structure / Collaboration Network

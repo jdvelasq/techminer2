@@ -12,7 +12,7 @@ Historiograph
 ...     top_n=20,
 ...     root_dir=root_dir,
 ...     nx_k=None,
-...     nx_iterations=10,
+...     nx_iterations=40,
 ...     nx_seed=0,
 ... )
 
@@ -50,8 +50,9 @@ dtype: object
 import networkx as nx
 import pandas as pd
 
-from ...classes import Historiograph
+from ...classes import HistoriographResults
 from ...network_utils import (
+    nx_compute_spectral_layout,
     nx_compute_spring_layout,
     px_add_names_to_fig_nodes,
     px_create_edge_traces,
@@ -66,6 +67,8 @@ from ...record_utils import read_records
 def historiograph(
     top_n=50,
     root_dir="./",
+    # Parameter used for main_path:
+    selected_articles=None,
     # Graph params:
     node_size=10,
     n_labels=None,
@@ -88,7 +91,11 @@ def historiograph(
             ascending=[False, False, True],
         )
 
-        records = records.head(top_n)
+        if selected_articles is None:
+            records = records.head(top_n)
+        else:
+            records = records[records.article.isin(selected_articles)]
+
         valid_articles = records.article.tolist()
 
         records["local_references"] = records.local_references.str.split("; ")
@@ -198,7 +205,7 @@ def historiograph(
         fig, graph, n_labels=n_labels, is_article=True
     )
 
-    histograph = Historiograph()
+    histograph = HistoriographResults()
     histograph.nx_graph_ = graph
     histograph.plot_ = fig
     histograph.links_ = links

@@ -161,6 +161,14 @@ def nx_compute_circular_layout(graph):
     return graph
 
 
+def nx_compute_spectral_layout(graph, scale):
+    """Computes the layout of a networkx graph."""
+    pos = nx.spectral_layout(graph, scale=scale)
+    for node in graph.nodes():
+        graph.nodes[node]["pos"] = pos[node]
+    return graph
+
+
 def nx_compute_spring_layout(graph, k, iterations, seed):
     """Computes the layout of a networkx graph."""
     pos = nx.spring_layout(graph, k=k, iterations=iterations, seed=seed)
