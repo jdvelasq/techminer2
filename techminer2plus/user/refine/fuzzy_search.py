@@ -8,21 +8,15 @@ Finds a string in the terms of a thesaurus using fuzzy search.
 
 >>> root_dir = "data/regtech/"
 
->>> from techminer2 import vantagepoint
->>> vantagepoint.refine.fuzzy_search(
-...     thesaurus_file="keywords.txt",
-...     patterns='INTELLI',
-...     threshold=65,
+>>> import techminer2plus
+>>> techminer2plus.user.refine.fuzzy_search(
+...     patterns='INTELIGEN',
+...     threshold=70,
 ...     root_dir=root_dir,
 ... )
-AMBIENT_INTELLIGENCE
 ARTIFICIAL_INTELLIGENCE
-ARTIFICIAL_INTELLIGENCE_TECHNOLOGIES
-     ARTIFICIAL_INTELLIGENCE_TECHNOLOGIES
-     ARTIFICIAL_INTELLIGENCE_TECHNOLOGY
-INTELLIGENT_MECHANISM
-     INTELLIGENT_MECHANISM
-     INTELLIGENT_MECHANISMS
+ARTIFICIAL_INTELLIGENCE_AND_LAW
+INTELLIGENT_SYSTEMS
 
 
 """
@@ -35,14 +29,14 @@ from ...thesaurus import load_system_thesaurus_as_dict
 
 
 def fuzzy_search(
-    thesaurus_file,
     patterns,
+    thesaurus_file="key_concepts.txt",
     threshold=80,
     root_dir="./",
 ):
     """Find the specified keyword and reorder the thesaurus file."""
 
-    th_file = os.path.join(root_dir, "processed", thesaurus_file)
+    th_file = os.path.join(root_dir, thesaurus_file)
     if not os.path.isfile(th_file):
         raise FileNotFoundError(f"The file {th_file} does not exist.")
 

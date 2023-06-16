@@ -150,8 +150,8 @@ def load_value_phrases_from_databases(root_dir="./"):
 
     file = os.path.join(root_dir, "databases/_main.csv")
     data = pd.read_csv(file, encoding="utf-8")
-    if "raw_nlp_phrases" in data.columns:
-        words_list.append(data["raw_nlp_phrases"])
+    if "raw_key_concepts" in data.columns:
+        words_list.append(data["raw_key_concepts"])
 
     words_list = pd.concat(words_list, ignore_index=True)
     words_list = words_list.str.strip()

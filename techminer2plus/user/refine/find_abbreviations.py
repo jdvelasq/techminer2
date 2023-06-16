@@ -7,12 +7,12 @@ Finds string abbreviations in the keywords of a thesaurus.
 
 >>> root_dir = "data/regtech/"
 
->>> from techminer2 import vantagepoint
->>> vantagepoint.refine.find_abbreviations(
-...     "keywords.txt",
+>>> import techminer2plus
+>>> techminer2plus.user.refine.find_abbreviations(
 ...     root_dir=root_dir,
 ... )
---INFO-- The file data/regtech/processed/keywords.txt has been reordered.
+--INFO-- The file data/regtech/key_concepts.txt has been reordered.
+
 
 # pylint: disable=line-too-long
 """
@@ -27,14 +27,14 @@ from ...thesaurus import (
 
 
 def find_abbreviations(
-    thesaurus_file="keywords.txt",
+    thesaurus_file="key_concepts.txt",
     root_dir="./",
 ):
     """Find abbreviations and reorder the thesaurus to reflect the search."""
 
     ###
 
-    file_path = os.path.join(root_dir, "processed", thesaurus_file)
+    file_path = os.path.join(root_dir, thesaurus_file)
     frame = load_system_thesaurus_as_frame(file_path)
     frame["value"] = frame["value"].str.replace("_", " ")
 

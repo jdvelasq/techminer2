@@ -9,10 +9,9 @@ the same directory as the documents.csv file.
 
 >>> root_dir = "data/regtech/"
 
->>> from techminer2 import vantagepoint
->>> vantagepoint.refine.apply_organizations_thesaurus(root_dir)
---INFO-- The data/regtech/organizations.txt thesaurus file was \
-applied to affiliations in all databases
+>>> import techminer2plus
+>>> techminer2plus.user.refine.apply_organizations_thesaurus(root_dir)
+--INFO-- The data/regtech/organizations.txt thesaurus file was applied to affiliations in all databases
 
 
 # pylint: disable=line-too-long

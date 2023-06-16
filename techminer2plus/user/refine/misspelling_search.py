@@ -7,12 +7,11 @@ Look for misspeling mistakes in the keywords of a thesaurus.
 
 >>> root_dir = "data/regtech/"
 
-# >>> from techminer2 import vantagepoint
-# >>> vantagepoint.refine.misspelling_search(
-# ...     "keywords.txt",
-# ...     root_dir=root_dir,
-# ... )
-# --INFO-- The file data/regtech/processed/misspelled.txt has been generated.
+>>> import techminer2plus
+>>> techminer2plus.user.refine.misspelling_search(
+...     root_dir=root_dir,
+... )
+--INFO-- The file data/regtech/misspelled.txt has been generated.
 
 
 """
@@ -26,13 +25,13 @@ from ...thesaurus import load_system_thesaurus_as_dict
 
 
 def misspelling_search(
-    thesaurus_file,
+    thesaurus_file="key_concepts.txt",
     root_dir="./",
 ):
     """Look for misspeling mistakes in the keywords of a thesaurus."""
 
     # Load the thesaurus file
-    th_file = join(root_dir, "processed", thesaurus_file)
+    th_file = join(root_dir, thesaurus_file)
 
     if not isfile(th_file):
         raise FileNotFoundError(f"The file {th_file} does not exist.")
@@ -59,7 +58,7 @@ def misspelling_search(
         if misspelled_word != corrected_word
     ]
 
-    misspelled_file = join(root_dir, "processed", "misspelled.txt")
+    misspelled_file = join(root_dir, "misspelled.txt")
     with open(misspelled_file, "w", encoding="utf-8") as file:
         for misspelled, corrected in words:
             file.write(misspelled.upper() + "\n")

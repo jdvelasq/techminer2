@@ -9,8 +9,8 @@ the same directory as the documents.csv file.
 
 >>> root_dir = "data/regtech/"
 
->>> from techminer2 import vantagepoint
->>> vantagepoint.refine.apply_countries_thesaurus(root_dir)
+>>> import techminer2plus
+>>> techminer2plus.user.refine.apply_countries_thesaurus(root_dir)
 --INFO-- The data/regtech/countries.txt thesaurus file was applied to affiliations in all databases
 
 

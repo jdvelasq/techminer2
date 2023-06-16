@@ -8,13 +8,12 @@ Finds a string in the terms of a thesaurus.
 
 >>> root_dir = "data/regtech/"
 
->>> from techminer2 import vantagepoint
->>> vantagepoint.refine.find_string(
-...     thesaurus_file="keywords.txt",
+>>> import techminer2plus
+>>> techminer2plus.user.refine.find_string(
 ...     contains='ARTIFICIAL_INTELLIGENCE',
 ...     root_dir=root_dir,
 ... )
---INFO-- The file data/regtech/processed/keywords.txt has been reordered.
+--INFO-- The file data/regtech/key_concepts.txt has been reordered.
 
 """
 import os.path
@@ -25,7 +24,7 @@ from ...thesaurus import load_system_thesaurus_as_dict
 
 
 def find_string(
-    thesaurus_file,
+    thesaurus_file="key_concepts.txt",
     contains=None,
     startswith=None,
     endswith=None,
@@ -33,7 +32,7 @@ def find_string(
 ):
     """Find the specified keyword and reorder the thesaurus file."""
 
-    th_file = os.path.join(root_dir, "processed", thesaurus_file)
+    th_file = os.path.join(root_dir, thesaurus_file)
     if not os.path.isfile(th_file):
         raise FileNotFoundError(f"The file {th_file} does not exist.")
 

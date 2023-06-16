@@ -8,10 +8,10 @@ Cleans the keywords columns using the `keywords.txt` file.
 
 >>> root_dir = "data/regtech/"
 
->>> from techminer2 import vantagepoint
->>> vantagepoint.refine.apply_keywords_thesaurus(root_dir)
---INFO-- Applying `keywords.txt` thesaurus to author/index keywords and \
-abstract/title words
+>>> import techminer2plus
+>>> techminer2plus.user.refine.apply_key_concepts_thesaurus(root_dir)
+--INFO-- Applying `key_concepts.txt` thesaurus to author/index keywords and abstract/title words
+
 
 # pylint: disable=line-too-long
 """

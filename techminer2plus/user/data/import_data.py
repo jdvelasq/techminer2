@@ -9,7 +9,7 @@ Import a scopus data file in the working directory.
 >>> root_dir = "data/regtech/"
 
 >>> import techminer2plus 
->>> techminer2plus.data.import_data(root_dir, disable_progress_bar=True)
+>>> techminer2plus.user.data.import_data(root_dir, disable_progress_bar=True)
 --INFO-- Concatenating raw files in data/regtech/raw-data/cited_by/
 --INFO-- Concatenating raw files in data/regtech/raw-data/references/
 --INFO-- Concatenating raw files in data/regtech/raw-data/main/
