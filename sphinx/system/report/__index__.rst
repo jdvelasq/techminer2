@@ -1,33 +1,24 @@
 Report
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. toctree::    
-    column_chart
 
 .. toctree::
-    bar_chart
+    :maxdepth: 1
 
-.. toctree::    
-    cleveland_dot_chart
+    basic_charts/__index__
 
-.. toctree::    
-    pie_chart
-
-.. toctree::    
-    line_chart
-
-.. toctree::    
-    ranking_chart
-
-
-.. toctree::    
-    word_cloud
 
 .. toctree::
-    bubble_chart
+    :maxdepth: 1
 
-.. toctree::    
-    heat_map
+    matrix/__index__
+    
+
+.. toctree::
+    :maxdepth: 1
+
+    network/__index__
+
 
 .. toctree::    
     gantt_chart
@@ -40,11 +31,6 @@ Report
 * Cluster map (TODO)
 
 
-.. toctree::
-    world_map
-
-.. toctree::    
-    treemap
 
 
 * Plot classifications (TODO)
@@ -54,6 +40,7 @@ Report
     * treemap
 
     * sunburst
+
 
 
 

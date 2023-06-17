@@ -1,21 +1,20 @@
-Cluster
+Matrix
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. toctree::
-    :maxdepth: 1
-    
-    matrix_clustering
-
 
 .. toctree::
     :maxdepth: 1
     
-    network_clustering
-
+    matrix_viewer
 
 
 .. toctree::
     :maxdepth: 1
     
-    topic_modeling
+    heat_map
 
+
+.. toctree::
+    :maxdepth: 1
+    
+    bubble_chart

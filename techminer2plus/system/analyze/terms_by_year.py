@@ -110,6 +110,7 @@ import textwrap
 from ...classes import TermsByYear
 from ...counters import add_counters_to_axis
 from ...items import generate_custom_items
+from ...prompts import format_prompt_for_tables
 from ...sorting import sort_indicators_by_metric
 from ..indicators import indicators_by_field, items_occ_by_year
 
@@ -159,7 +160,7 @@ def terms_by_year(
 
     def generate_prompt(obj):
         # pylint: disable=line-too-long
-        prompt = (
+        main_text = (
             "Your task is to generate an analysis about the "
             f"{'cumulative' if obj.cumulative_ else ''} occurrences by year "
             f"of the '{obj.field_}' in a scientific bibliography database. "
@@ -169,10 +170,7 @@ def terms_by_year(
             "to provide a concise summary of your findings in no more than "
             "150 words."
         )
-        text = textwrap.fill(prompt, width=75)
-        text = text.replace("\n", " \\\n")
-
-        return text + f"\n\nTable:\n```\n{obj.table_.to_markdown()}\n```\n"
+        return format_prompt_for_tables(main_text, obj.table_.to_markdown())
 
     #
     # Main:

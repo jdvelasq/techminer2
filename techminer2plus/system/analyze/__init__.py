@@ -15,13 +15,8 @@ from .list_items import list_items
 from .matrix_clustering import matrix_clustering
 from .matrix_normalization import matrix_normalization
 from .matrix_subset import matrix_subset
-from .matrix_viewer import matrix_viewer
 from .network_clustering import network_clustering
 from .network_communities import network_communities
-from .network_degree_plot import network_degree_plot
-from .network_metrics import network_metrics
-from .network_report import network_report
-from .network_viewer import network_viewer
 from .terms_by_year import terms_by_year
 from .tf_idf_matrix import tf_idf_matrix
 from .tf_matrix import tf_matrix
@@ -43,12 +38,6 @@ __all__ = [
     "matrix_clustering",
     "matrix_normalization",
     "matrix_subset",
-    "matrix_viewer",
-    "network_communities",
-    "network_degree_plot",
-    "network_metrics",
-    "network_report",
-    "network_viewer",
     "newtwork_clustering",
     "terms_by_year",
     "tf_idf_matrix",

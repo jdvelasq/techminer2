@@ -42,7 +42,7 @@ the 'author_keywords' field in a scientific bibliography database. \\
 Summarize the table below, sorted by the 'OCC' metric, and delimited by \\
 triple backticks, identify any notable patterns, trends, or outliers in the \\
 data, and discuss their implications for the research field. Be sure to \\
-provide a concise summary of your findings in no more than 150 word.
+provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
 Table:
 ```
@@ -61,9 +61,10 @@ Table:
 ```
 <BLANKLINE>
 
+
 # pylint: disable=line-too-long
 """
-import textwrap
+
 
 from ...check_params import (
     check_bibliometric_metric,
@@ -72,6 +73,7 @@ from ...check_params import (
 )
 from ...classes import ItemsList
 from ...items import generate_custom_items
+from ...prompts import format_prompt_for_tables
 from ...sorting import sort_indicators_by_metric
 from ..indicators import indicators_by_field
 
@@ -118,7 +120,7 @@ def list_items(
 
     def generate_prompt(field, table, metric):
         # pylint: disable=line-too-long
-        prompt = (
+        main_text = (
             "Your task is to generate an analysis about the bibliometric indicators of the "
             f"'{field}' field in a scientific bibliography database. Summarize the table below, "
             f"sorted by the '{metric}' metric, and delimited by triple backticks, identify "
@@ -126,10 +128,7 @@ def list_items(
             "implications for the research field. Be sure to provide a concise summary "
             "of your findings in no more than 150 words."
         )
-        text = textwrap.fill(prompt, width=75)
-        text = text.replace("\n", " \\\n")
-        text = text[:-2] + ".\n\n"
-        return text + f"Table:\n```\n{table.to_markdown()}\n```\n"
+        return format_prompt_for_tables(main_text, table.to_markdown())
 
     check_bibliometric_metric(metric)
     check_integer_range(gc_range)

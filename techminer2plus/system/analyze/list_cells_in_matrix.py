@@ -13,7 +13,7 @@ the 'value' column of the list.
 >>> root_dir = "data/regtech/"
 
 >>> import techminer2plus
->>> matrix = techminer2plus.system.analyze.auto_corr_matrix(
+>>> matrix = techminer2plus.system.analyze.auto_correlation_matrix(
 ...     rows_and_columns='authors',
 ...     top_n=10,
 ...     root_dir=root_dir,
@@ -21,32 +21,34 @@ the 'value' column of the list.
 
 >>> matrix_list = techminer2plus.system.analyze.list_cells_in_matrix(matrix)
 >>> matrix_list.cells_list_.head()
-                row            column  CORR
-0    Arner DW 3:185    Arner DW 3:185   1.0
-1  Buckley RP 3:185    Arner DW 3:185   1.0
-2    Arner DW 3:185  Buckley RP 3:185   1.0
-3  Buckley RP 3:185  Buckley RP 3:185   1.0
-4  Butler T/1 2:041  Butler T/1 2:041   1.0
+                 row             column      CORR
+0     Arner DW 3:185     Arner DW 3:185  1.000000
+1  Barberis JN 2:161     Arner DW 3:185  0.774597
+2     Arner DW 3:185  Barberis JN 2:161  0.774597
+3  Barberis JN 2:161  Barberis JN 2:161  1.000000
+4     Arman AA 2:000     Arman AA 2:000  1.000000
 
 
 
 >>> print(matrix_list.prompt_)
-Analyze the table below which contains the auto-correlation values for the authors. High correlation values indicate that the topics tends to appear together in the same document and forms a group. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
+Analyze the table below which contains the auto-correlation values for the \\
+authors. High correlation values indicate that the topics tends to appear \\
+together in the same document and forms a group. Identify any notable \\
+patterns, trends, or outliers in the data, and discuss their implications \\
+for the research field. Be sure to provide a concise summary of your \\
+findings in no more than 150 words.
 <BLANKLINE>
-|    | row             | column           |   CORR |
-|---:|:----------------|:-----------------|-------:|
-|  2 | Arner DW 3:185  | Buckley RP 3:185 |  1     |
-|  9 | Lin W 2:017     | Singh C 2:017    |  1     |
-| 13 | Brennan R 2:014 | Crane M 2:014    |  1     |
-| 15 | Hamdan A 2:018  | Sarea A 2:012    |  0.417 |
+Table:
+```
+|    | row            | column            |   CORR |
+|---:|:---------------|:------------------|-------:|
+|  2 | Arner DW 3:185 | Barberis JN 2:161 |  0.775 |
+```
 <BLANKLINE>
-<BLANKLINE>
-
 
 
 # pylint: disable=line-too-long
 """
-
 from ...classes import (
     CocMatrix,
     CorrMatrix,
@@ -54,6 +56,7 @@ from ...classes import (
     MatrixSubset,
     NormCocMatrix,
 )
+from ...prompts import format_prompt_for_tables
 
 
 def list_cells_in_matrix(obj):
@@ -83,7 +86,7 @@ def list_cells_in_matrix(obj):
     def prompt_for_auto_corr_matrix(obj, matrix):
         """Prompt for auto-correlation matrix."""
 
-        return (
+        main_text = (
             "Analyze the table below which contains the auto-correlation "
             f"values for the {obj.columns_}. High correlation "
             "values indicate that the topics tends to appear together in the "
@@ -91,13 +94,14 @@ def list_cells_in_matrix(obj):
             "trends, or outliers in the data, and discuss their implications "
             "for the research field. Be sure to provide a concise summary of "
             "your findings in no more than 150 words."
-            f"\n\n{matrix.round(3).to_markdown()}\n\n"
         )
+        table_text = matrix.round(3).to_markdown()
+        return format_prompt_for_tables(main_text, table_text)
 
     def prompt_for_cross_corr_matrix(obj, matrix):
         """Prompt for cross-correlation matrix."""
 
-        return (
+        main_text = (
             "Analyze the table below which contains the cross-correlation "
             f"values for the {obj.columns_} based on the values "
             f"of the {obj.rows_}. High correlation values "
@@ -109,31 +113,36 @@ def list_cells_in_matrix(obj):
             "150 words."
             f"\n\n{matrix.round(3).to_markdown()}\n\n"
         )
+        table_text = matrix.round(3).to_markdown()
+        return format_prompt_for_tables(main_text, table_text)
 
     def prompt_for_co_occ_matrix(obj, matrix):
         """Prompt for co-occurrence matrix."""
 
-        return (
+        main_text = (
             "Analyze the table below, which contains the the co-occurrence "
             f"values for {obj.columns_}. Identify any notable "
             "patterns, trends, or outliers in the data, and discuss their "
             "implications for the research field. Be sure to provide a "
             "concise summary of your findings in no more than 150 words."
-            f"\n\n{matrix.to_markdown()}\n\n"
         )
+
+        table_text = matrix.to_markdown()
+        return format_prompt_for_tables(main_text, table_text)
 
     def prompt_for_occ_matrix(obj, matrix):
         """Prompt for co-occurrence matrix."""
 
-        return (
+        main_text = (
             "Analyze the table below, which contains the the occurrence "
             f"values for {obj.columns_} and "
             f"{obj.rows_}. Identify any notable patterns, "
             "trends, or outliers in the data, and discuss their implications "
             "for the research field. Be sure to provide a concise summary of "
             "your findings in no more than 150 words."
-            f"\n\n{matrix.to_markdown()}\n\n"
         )
+        table_text = matrix.to_markdown()
+        return format_prompt_for_tables(main_text, table_text)
 
     def transform_matrix_to_matrix_list(obj):
         """Transform a matrix object to a matrix list object."""

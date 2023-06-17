@@ -3,8 +3,39 @@ Analyze
 
 .. toctree::
     :maxdepth: 1
+    
+    list_items
 
-    discover/__index__
+
+.. toctree::
+    :maxdepth: 1
+        
+    matrix/__index__
+
+
+.. toctree::
+    :maxdepth: 1
+        
+    map/__index__
+
+
+.. toctree::
+    :maxdepth: 1
+
+    terms_by_year
+
+
+.. toctree::
+    factor_matrix         
+
+.. toctree::
+    :maxdepth: 1
+
+    tfidf/__index__
+
+ 
+* TODO: PCD
+
 
 
 .. toctree::
@@ -18,19 +49,47 @@ Analyze
 
     classify/__index__
 
+
+
+
+
+* Emergence indicators (TODO)
+
+
 .. toctree::
     :maxdepth: 1
 
-    explore/__index__
+    network_metrics
+  
+
+.. toctree::
+    :maxdepth: 1
+    
+    matrix_clustering
 
 
 .. toctree::
-    :maxdepth: 1    
+    :maxdepth: 1
     
-    calculate/__index__
+    network_clustering
 
 
 
+.. toctree::
+    :maxdepth: 1
+    
+    topic_modeling
+
+
+.. toctree::
+    :maxdepth: 1
+
+    trending_terms
+
+.. toctree::
+    :maxdepth: 1
+
+    concept_grid    
 
 
 

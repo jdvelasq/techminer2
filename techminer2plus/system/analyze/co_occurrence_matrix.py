@@ -125,6 +125,7 @@ import textwrap
 from ...classes import CocMatrix
 from ...counters import add_counters_to_axis
 from ...items import generate_custom_items
+from ...prompts import format_prompt_for_tables
 from ...sorting import sort_indicators_by_metric, sort_matrix_axis
 from ..indicators import co_occ_matrix_list, indicators_by_field
 
@@ -202,23 +203,22 @@ def co_occurrence_matrix(
     def generate_prompt_for_occ_matrix(matrix, columns, rows):
         """Generates a ChatGPT prompt for a occurrence matrix."""
 
-        prompt = (
-            "Your task is to generate a short paragraph for a research paper analyzing the "
-            "co-occurrence between the values of different columns in a bibliographic dataset. "
-            "Analyze the table below, and delimited by triple backticks, which contains values of "
-            f"co-occurrence (OCC) for the '{columns}' and '{rows}' fields in a "
-            "bibliographic dataset. Identify any notable patterns, trends, or outliers in the "
-            "data, and discuss their implications for the research field. Be sure to provide a "
-            "concise summary of your findings in no more than 150 words."
+        main_text = (
+            "Your task is to generate a short paragraph for a research paper analyzing "
+            "the co-occurrence between the values of different columns in a bibliographic "
+            "dataset. Analyze the table below, and delimited by triple backticks, which "
+            f"contains values of co-occurrence (OCC) for the '{columns}' and '{rows}' "
+            "fields in a bibliographic dataset. Identify any notable patterns, trends, "
+            "or outliers in the data, and discuss their implications for the research "
+            "field. Be sure to provide a concise summary of your findings in no more "
+            "than 150 words."
         )
-        text = textwrap.fill(prompt, width=75)
-        text = text.replace("\n", " \\\n")
-        return text + f"\n\nTable:\n```\n{matrix.to_markdown()}\n```\n"
+        return format_prompt_for_tables(main_text, matrix.to_markdown())
 
     def generate_prompt_for_co_occ_matrix(matrix, columns):
         """Generates a ChatGPT prompt for a co_occurrence matrix."""
 
-        prompt = (
+        main_text = (
             "Your task is to generate a short paragraph for a research paper analyzing the "
             "co-occurrence between the items of the same column in a bibliographic dataset. "
             "Analyze the table below which contains values of co-occurrence (OCC) for the "
@@ -227,9 +227,7 @@ def co_occurrence_matrix(
             "field. Be sure to provide a concise summary of your findings in no more than 150 "
             "words."
         )
-        text = textwrap.fill(prompt, width=75)
-        text = text.replace("\n", " \\\n")
-        return text + f"\n\nTable:\n```\n{matrix.to_markdown()}\n```\n"
+        return format_prompt_for_tables(main_text, matrix.to_markdown())
 
     #
     # Main code:

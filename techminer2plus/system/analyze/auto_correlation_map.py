@@ -11,7 +11,7 @@ Example
 
 >>> root_dir = "data/regtech/"
 
->>> file_name = "sphinx/_static/techminer2plus__auto_correlation_map.html"
+>>> file_name = "sphinx/_static/system/analyze/auto_correlation_map.html"
 
 >>> import techminer2plus
 >>> chart =  techminer2plus.system.analyze.auto_correlation_map(
@@ -24,13 +24,19 @@ Example
 
 .. raw:: html
 
-    <iframe src="../../../../_static/techminer2plus__auto_correlation_map.html"
-    height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/system/analyze/auto_correlation_map.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
 >>> print(chart.prompt_)
-Analyze the table below which contains the auto-correlation values for the authors. High correlation values indicate that the topics tends to appear together in the same document and forms a group. Identify any notable patterns, trends, or outliers in the data, and discuss their implications for the research field. Be sure to provide a concise summary of your findings in no more than 150 words.
+Analyze the table below which contains the auto-correlation values for the \\
+authors. High correlation values indicate that the topics tends to appear \\
+together in the same document and forms a group. Identify any notable \\
+patterns, trends, or outliers in the data, and discuss their implications \\
+for the research field. Be sure to provide a concise summary of your \\
+findings in no more than 150 words.
 <BLANKLINE>
+Table:
+```
 |    | row               | column             |   CORR |
 |---:|:------------------|:-------------------|-------:|
 |  3 | Arner DW 3:185    | Buckley RP 3:185   |  1     |
@@ -44,9 +50,8 @@ Analyze the table below which contains the auto-correlation values for the autho
 | 27 | Crane M 2:014     | Ryan P 2:014       |  1     |
 | 29 | Hamdan A 2:018    | Sarea A 2:012      |  0.429 |
 | 34 | Grassi L 2:002    | Lanfranchi D 2:002 |  1     |
+```
 <BLANKLINE>
-<BLANKLINE>
-
 
 
 
@@ -148,7 +153,7 @@ def auto_correlation_map(
         show_axes,
     )
 
-    fig = px_add_names_to_fig_nodes(fig, graph, n_labels)
+    fig = px_add_names_to_fig_nodes(fig, graph, n_labels, is_article=False)
 
     corrmap = CorrMap()
     corrmap.plot_ = fig

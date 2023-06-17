@@ -30,7 +30,7 @@ Example: Visulization of an occurrence matrix.
 
 
 
->>> chart = techminer2plus.system.analyze.matrix_viewer(
+>>> chart = techminer2plus.system.report.matrix_viewer(
 ...     co_occ_matrix, 
 ...     n_labels=15,
 ...     node_size_min=20,
@@ -329,7 +329,7 @@ from ...network import (
     nx_create_graph_from_matrix_list,
     nx_set_node_colors,
 )
-from .list_cells_in_matrix import list_cells_in_matrix
+from ..analyze.list_cells_in_matrix import list_cells_in_matrix
 from .network_viewer import network_viewer
 
 

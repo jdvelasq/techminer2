@@ -15,24 +15,7 @@ Returns an auto-correlation matrix.
 ...     root_dir=root_dir,
 ... )
 >>> corr_matrix.matrix_
-                    Arner DW 3:185  ...  Arman AA 2:000
-Arner DW 3:185            1.000000  ...             0.0
-Buckley RP 3:185          1.000000  ...             0.0
-Barberis JN 2:161         0.786796  ...             0.0
-Butler T/1 2:041          0.000000  ...             0.0
-Hamdan A 2:018            0.000000  ...             0.0
-Turki M 2:018             0.000000  ...             0.0
-Lin W 2:017               0.000000  ...             0.0
-Singh C 2:017             0.000000  ...             0.0
-Brennan R 2:014           0.000000  ...             0.0
-Crane M 2:014             0.000000  ...             0.0
-Ryan P 2:014              0.000000  ...             0.0
-Sarea A 2:012             0.000000  ...             0.0
-Grassi L 2:002            0.000000  ...             0.0
-Lanfranchi D 2:002        0.000000  ...             0.0
-Arman AA 2:000            0.000000  ...             1.0
-<BLANKLINE>
-[15 rows x 15 columns]
+
 
 
 >>> print(corr_matrix.prompt_)
@@ -41,6 +24,7 @@ Arman AA 2:000            0.000000  ...             1.0
 """
 
 from ...classes import CorrMatrix
+from ...prompts import format_prompt_for_tables
 from .compute_corr_matrix import compute_corr_matrix
 from .tf_matrix import tf_matrix
 
