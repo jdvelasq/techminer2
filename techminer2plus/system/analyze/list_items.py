@@ -37,12 +37,12 @@ REGULATION               5            4  ...      2.0     0.33
 
 
 >>> print(view.prompt_)
-Your task is to generate an analysis about the bibliometric indicators of the \\
-'author_keywords' field in a scientific bibliography database. Summarize the table below, \\
-sorted by the 'OCC' metric, and delimited by triple backticks, identify \\
-any notable patterns, trends, or outliers in the data, and discuss their \\
-implications for the research field. Be sure to provide a concise summary \\
-of your findings in no more than 150 words.
+Your task is to generate an analysis about the bibliometric indicators of \\
+the 'author_keywords' field in a scientific bibliography database. \\
+Summarize the table below, sorted by the 'OCC' metric, and delimited by \\
+triple backticks, identify any notable patterns, trends, or outliers in the \\
+data, and discuss their implications for the research field. Be sure to \\
+provide a concise summary of your findings in no more than 150 word.
 <BLANKLINE>
 Table:
 ```
@@ -61,12 +61,9 @@ Table:
 ```
 <BLANKLINE>
 
-
-
-
 # pylint: disable=line-too-long
 """
-
+import textwrap
 
 from ...check_params import (
     check_bibliometric_metric,
@@ -121,15 +118,18 @@ def list_items(
 
     def generate_prompt(field, table, metric):
         # pylint: disable=line-too-long
-        return (
-            "Your task is to generate an analysis about the bibliometric indicators of the \\\n"
-            f"'{field}' field in a scientific bibliography database. Summarize the table below, \\\n"
-            f"sorted by the '{metric}' metric, and delimited by triple backticks, identify \\\n"
-            "any notable patterns, trends, or outliers in the data, and discuss their \\\n"
-            "implications for the research field. Be sure to provide a concise summary \\\n"
-            "of your findings in no more than 150 words.\n\n"
-            f"Table:\n```\n{table.to_markdown()}\n```\n"
+        prompt = (
+            "Your task is to generate an analysis about the bibliometric indicators of the "
+            f"'{field}' field in a scientific bibliography database. Summarize the table below, "
+            f"sorted by the '{metric}' metric, and delimited by triple backticks, identify "
+            "any notable patterns, trends, or outliers in the data, and discuss their "
+            "implications for the research field. Be sure to provide a concise summary "
+            "of your findings in no more than 150 words."
         )
+        text = textwrap.fill(prompt, width=75)
+        text = text.replace("\n", " \\\n")
+        text = text[:-2] + ".\n\n"
+        return text + f"Table:\n```\n{table.to_markdown()}\n```\n"
 
     check_bibliometric_metric(metric)
     check_integer_range(gc_range)

@@ -100,7 +100,7 @@ def sort_matrix_axis(
     # pylint: disable=line-too-long
     """
 
-    from .techminer.indicators.indicators_by_field import indicators_by_field
+    from .system.indicators.indicators_by_field import indicators_by_field
 
     matrix = matrix.copy()
 

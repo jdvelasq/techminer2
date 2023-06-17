@@ -103,6 +103,8 @@ TM2 module.
     :maxdepth: 1
 
     system/indicators/__index__
+    system/analyze/__index__
+    system/report/__index__
 
 
 
