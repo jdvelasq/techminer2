@@ -6,8 +6,6 @@ This module implement generic thesaurus functions.
 
 import os.path
 
-import pandas as pd
-
 
 def load_system_thesaurus_as_dict(file_path):
     """Load existence thesaurus as a dataframe."""
