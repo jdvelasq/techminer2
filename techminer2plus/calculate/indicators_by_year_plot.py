@@ -12,7 +12,7 @@ Example
 >>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/time_plot.html"
 >>> import techminer2plus
->>> indicators = techminer2plus.system.indicators.indicators_by_year(root_dir)
+>>> indicators = techminer2plus.calculate.indicators_by_year(root_dir)
 >>> indicators_by_year_plot(
 ...     indicators,
 ...     metric="mean_global_citations",

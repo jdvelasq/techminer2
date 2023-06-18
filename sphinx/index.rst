@@ -95,9 +95,9 @@ TM2 module.
     raw_data/__index__
     refine/__index__
     database/__index__
-    indicators/__index__
     analyze/__index__
-    charts/__index__
+    calculate/__index__
+    visualization/__index__
 
 
 .. toctree::

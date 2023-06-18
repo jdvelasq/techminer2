@@ -9,7 +9,7 @@ Examples
 >>> root_dir = "data/regtech/"
 
 >>> import techminer2plus
->>> techminer2plus.system.indicators.indicators_by_field_per_year(
+>>> techminer2plus.calculate.indicators_by_field_per_year(
 ...     'authors',
 ...     root_dir=root_dir,
 ... ).head(20)
@@ -42,7 +42,7 @@ Buchkremer R      2020    1  ...                     0.750
 >>> from pprint import pprint
 >>> pprint(
 ...     sorted(
-...         techminer2plus.system.indicators.indicators_by_field_per_year(
+...         techminer2plus.calculate.indicators_by_field_per_year(
 ...             'authors', root_dir=root_dir).columns.to_list()
 ...     )
 ... )

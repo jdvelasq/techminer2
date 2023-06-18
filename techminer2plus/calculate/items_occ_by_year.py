@@ -12,7 +12,7 @@ Example
 >>> root_dir = "data/regtech/"
 
 >>> import techminer2plus
->>> techminer2plus.system.indicators.items_occ_by_year(
+>>> techminer2plus.calculate.items_occ_by_year(
 ...     'authors',  root_dir=root_dir
 ... ).head(10)
 year               2016  2017  2018  2019  2020  2021  2022  2023
