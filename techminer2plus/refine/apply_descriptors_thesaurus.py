@@ -9,7 +9,7 @@ Cleans the keywords columns using the `keywords.txt` file.
 >>> root_dir = "data/regtech/"
 
 >>> import techminer2plus
->>> techminer2plus.user.refine.apply_descriptors_thesaurus(root_dir)
+>>> techminer2plus.refine.apply_descriptors_thesaurus(root_dir)
 --INFO-- Applying `descriptors.txt` thesaurus to author/index keywords and abstract/title words
 
 
@@ -31,8 +31,8 @@ from ..thesaurus import load_system_thesaurus_as_dict_reversed
 def apply_descriptors_thesaurus(root_dir="./"):
     """Clean all words columns in the records using a descriptors.txt."""
 
-    sys.stdout.write(
-        "--INFO-- Applying `descriptors.txt` thesaurus to author/index keywords and abstract/title words\n"
+    print(
+        "--INFO-- Applying `descriptors.txt` thesaurus to author/index keywords and abstract/title words"
     )
 
     thesaurus_file = os.path.join(root_dir, "descriptors.txt")

@@ -8,7 +8,7 @@ Look for misspeling mistakes in the keywords of a thesaurus.
 >>> root_dir = "data/regtech/"
 
 >>> import techminer2plus
->>> techminer2plus.user.refine.misspelling_search(
+>>> techminer2plus.refine.misspelling_search(
 ...     root_dir=root_dir,
 ... )
 --INFO-- The file data/regtech/misspelled.txt has been generated.

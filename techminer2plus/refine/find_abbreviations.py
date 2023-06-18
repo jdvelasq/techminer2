@@ -8,7 +8,7 @@ Finds string abbreviations in the keywords of a thesaurus.
 >>> root_dir = "data/regtech/"
 
 >>> import techminer2plus
->>> techminer2plus.user.refine.find_abbreviations(
+>>> techminer2plus.refine.find_abbreviations(
 ...     root_dir=root_dir,
 ... )
 --INFO-- The file data/regtech/descriptors.txt has been reordered.

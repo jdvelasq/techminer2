@@ -10,7 +10,7 @@ the same directory as the documents.csv file.
 >>> root_dir = "data/regtech/"
 
 >>> import techminer2plus
->>> techminer2plus.user.refine.apply_organizations_thesaurus(root_dir)
+>>> techminer2plus.refine.apply_organizations_thesaurus(root_dir)
 --INFO-- The data/regtech/organizations.txt thesaurus file was applied to affiliations in all databases
 
 
@@ -19,7 +19,6 @@ the same directory as the documents.csv file.
 import glob
 import os
 import os.path
-import sys
 
 import pandas as pd
 
@@ -70,7 +69,6 @@ def apply_organizations_thesaurus(root_dir="./"):
         #
         records.to_csv(file, sep=",", encoding="utf-8", index=False)
 
-    sys.stdout.write(
-        f"--INFO-- The {thesaurus_file} thesaurus file was applied to "
-        "affiliations in all databases\n"
+    print(
+        f"--INFO-- The {thesaurus_file} thesaurus file was applied to affiliations in all databases"
     )

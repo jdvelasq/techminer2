@@ -9,7 +9,7 @@ Finds a string in the terms of a thesaurus.
 >>> root_dir = "data/regtech/"
 
 >>> import techminer2plus
->>> techminer2plus.user.refine.find_string(
+>>> techminer2plus.refine.find_string(
 ...     contains='ARTIFICIAL_INTELLIGENCE',
 ...     root_dir=root_dir,
 ... )

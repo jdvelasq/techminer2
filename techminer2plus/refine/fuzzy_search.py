@@ -9,7 +9,7 @@ Finds a string in the terms of a thesaurus using fuzzy search.
 >>> root_dir = "data/regtech/"
 
 >>> import techminer2plus
->>> techminer2plus.user.refine.fuzzy_search(
+>>> techminer2plus.refine.fuzzy_search(
 ...     patterns='INTELIGEN',
 ...     threshold=70,
 ...     root_dir=root_dir,
