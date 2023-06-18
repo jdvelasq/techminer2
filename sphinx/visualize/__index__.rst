@@ -1,5 +1,9 @@
-Visualization
+Visualize
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+   <hr style="height:4px;border-width:0;color:gray;background-color:black">
 
 .. toctree::    
     column_chart
@@ -19,9 +23,13 @@ Visualization
 .. toctree::    
     ranking_chart
 
-
 .. toctree::    
     word_cloud
+
+
+.. raw:: html
+
+   <hr style="height:4px;border-width:0;color:gray;background-color:black">
 
 .. toctree::
     bubble_chart

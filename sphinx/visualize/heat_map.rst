@@ -1,4 +1,4 @@
-.. automodule:: techminer2.vantagepoint.report.world_map
+.. automodule:: techminer2plus.visualize.report.heat_map
     :members:
     :undoc-members:
     :show-inheritance:

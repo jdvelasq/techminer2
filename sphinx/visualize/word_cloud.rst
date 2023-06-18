@@ -1,4 +1,4 @@
-.. automodule:: techminer2.vantagepoint.report.heat_map
+.. automodule:: techminer2plus.visualize.word_cloud
     :members:
     :undoc-members:
     :show-inheritance:

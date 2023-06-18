@@ -1,4 +1,4 @@
-.. automodule:: techminer2.vantagepoint.report.treemap
+.. automodule:: techminer2plus.visualize.gantt_chart
     :members:
     :undoc-members:
     :show-inheritance:

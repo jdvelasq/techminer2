@@ -10,7 +10,7 @@ Example
 -------------------------------------------------------------------------------
 
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/time_plot.html"
+>>> file_name = "sphinx/_static/query/time_plot.html"
 >>> import techminer2plus
 >>> indicators = techminer2plus.query.indicators_by_year(root_dir)
 >>> indicators_by_year_plot(
@@ -21,7 +21,7 @@ Example
 
 .. raw:: html
 
-    <iframe src="../../_static/time_plot.html" height="600px" width="100%" 
+    <iframe src="../../../_static/query/time_plot.html" height="600px" width="100%" 
     frameBorder="0"></iframe>
 
 """
