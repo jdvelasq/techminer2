@@ -71,7 +71,7 @@ REGULATORY_TECHNOLOGY      5     2021      2022     2022                 8   0
 
 # pylint: disable=line-too-long
 """
-from ...vantagepoint.analyze.trending_terms import trending_terms
+# from ...vantagepoint.analyze.trending_terms import trending_terms
 
 FIELD = "keywords"
 

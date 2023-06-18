@@ -5,12 +5,12 @@
 import os
 import textwrap
 
-from ..classes import ItemsList, MostCitedDocuments
-from ..record_utils import create_records_report, read_records
-from ..techminer.indicators.indicators_by_document import (
-    indicators_by_document,
-)
-from ..vantagepoint.report import ranking_chart
+# from ..classes import ItemsList, MostCitedDocuments
+# from ..record_utils import create_records_report, read_records
+# from ..techminer.indicators.indicators_by_document import (
+#     indicators_by_document,
+# )
+# from ..vantagepoint.charts import ranking_chart
 
 
 # pylint: disable=too-many-locals

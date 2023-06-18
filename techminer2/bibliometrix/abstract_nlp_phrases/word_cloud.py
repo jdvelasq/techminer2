@@ -21,8 +21,8 @@ WordCloud
 
 
 """
-from ...vantagepoint.analyze import list_items
-from ...vantagepoint.report import word_cloud as vp_word_cloud
+# from ...vantagepoint.analyze import list_items
+# from ...vantagepoint.charts import word_cloud as vp_word_cloud
 
 FIELD = "abstract_nlp_phrases"
 

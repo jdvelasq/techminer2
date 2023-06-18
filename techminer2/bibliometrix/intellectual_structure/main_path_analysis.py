@@ -32,8 +32,8 @@ import copy
 
 import networkx as nx
 
-from ...record_utils import read_records
-from .historiograph import historiograph
+# from ...records import read_records
+# from .historiograph import historiograph
 
 #
 # The function main_path_analysis apply the main path algorithm to the documents

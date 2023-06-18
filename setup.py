@@ -104,7 +104,7 @@ setup(
         #
         "techminer2.vantagepoint",
         "techminer2.vantagepoint.analyze",
-        "techminer2.vantagepoint.refine",
+        "techminer2.refine",
         "techminer2.vantagepoint.report",
     ],
     package_dir={"techminer2": "techminer2"},

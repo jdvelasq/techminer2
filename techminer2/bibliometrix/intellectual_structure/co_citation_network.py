@@ -213,15 +213,15 @@ Table:
 
 
 """
-from ...classes import CocitationNetwork
-from ...vantagepoint.analyze import (
-    co_occurrence_matrix,
-    network_clustering,
-    network_communities,
-    network_degree_plot,
-    network_metrics,
-    network_viewer,
-)
+# from ...classes import CocitationNetwork
+# from ...vantagepoint.analyze import (
+#     co_occurrence_matrix,
+#     network_clustering,
+#     network_communities,
+#     network_degree_plot,
+#     network_metrics,
+#     network_viewer,
+# )
 
 FIELD = "local_references"
 

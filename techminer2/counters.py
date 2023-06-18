@@ -10,7 +10,7 @@ in the values or axis of a dataframe.
 
 import numpy as np
 
-from . import techminer
+# from . import techminer
 
 
 # pylint: disable=too-many-arguments

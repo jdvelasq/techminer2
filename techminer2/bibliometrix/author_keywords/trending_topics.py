@@ -74,7 +74,7 @@ SUPTECH                    3     2020      2022     2022                 4   0
 
 # pylint: disable=line-too-long
 """
-from ...vantagepoint.analyze.trending_terms import trending_terms
+# from ...vantagepoint.analyze.trending_terms import trending_terms
 
 FIELD = "author_keywords"
 

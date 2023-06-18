@@ -47,8 +47,8 @@ The table below provides data on the annual scientific production. Use the table
 
 # pylint: disable=line-too-long
 """
-from ...classes import IndicatorByYearChart
-from ...techminer.indicators import indicators_by_year, indicators_by_year_plot
+# from ...classes import IndicatorByYearChart
+# from ...techminer.indicators import indicators_by_year, indicators_by_year_plot
 
 
 def annual_scientific_production(

@@ -93,6 +93,8 @@ TM2 module.
     :maxdepth: 1
 
     data/__index__
+    refine/__index__
+
     vantagepoint/__index__
     bibliometrix/__index__
     indicators/__index__

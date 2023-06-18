@@ -58,19 +58,19 @@ FINANCIAL_REGULATION 04:035      13     0.034042   0.532609  0.029943
 # pylint: disable=line-too-long
 """
 
-from ...check_params import check_keywords
-from ...classes import CoWordsNetwork
+# from ...check_params import check_keywords
+# from ...classes import CoWordsNetwork
 
-# from ..._network_community_detection import network_community_detection
-from ...vantagepoint.analyze import (
-    co_occurrence_matrix,
-    matrix_normalization,
-    network_clustering,
-    network_communities,
-    network_degree_plot,
-    network_metrics,
-    network_viewer,
-)
+# # from ..._network_community_detection import network_community_detection
+# from ...vantagepoint.analyze import (
+#     co_occurrence_matrix,
+#     matrix_normalization,
+#     network_clustering,
+#     network_communities,
+#     network_degree_plot,
+#     network_metrics,
+#     network_viewer,
+# )
 
 
 def co_occurrence_network(

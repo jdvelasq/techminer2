@@ -20,7 +20,7 @@ Collaboration WorldMap
 """
 import plotly.express as px
 
-from ...vantagepoint.analyze import co_occurrence_matrix, list_cells_in_matrix
+# from ...vantagepoint.analyze import co_occurrence_matrix, list_cells_in_matrix
 
 
 def collaboration_worldmap(

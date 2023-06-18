@@ -48,7 +48,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from sklearn.metrics import silhouette_score
 
-from ... import vantagepoint
+# from ... import vantagepoint
 
 
 class _FactorialAnalysis:

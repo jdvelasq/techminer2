@@ -51,11 +51,11 @@ Table:
 
 # pylint: disable=line-too-long
 """
-from ... import vantagepoint
-from ...techminer.indicators.indicators_by_field_per_year import (
-    indicators_by_field_per_year,
-)
-from ..documents_per_criterion import documents_per_criterion
+# from ... import vantagepoint
+# from ...techminer.indicators.indicators_by_field_per_year import (
+#     indicators_by_field_per_year,
+# )
+# from ..documents_per_criterion import documents_per_criterion
 
 FIELD = "title_nlp_phrases"
 
@@ -90,7 +90,7 @@ def topic_dynamics(
         **filters,
     )
 
-    chart = vantagepoint.report.gantt_chart(
+    chart = vantagepoint.charts.gantt_chart(
         terms_by_year,
         title=FIELD.replace("_", " ").title() + " Dynamics",
     )

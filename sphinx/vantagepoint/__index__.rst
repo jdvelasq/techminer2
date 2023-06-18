@@ -18,11 +18,6 @@ internally in TheVantagePoint software, in order to facilitate comparison.
    summary_view
 
 
-.. toctree::
-   :maxdepth: 1
-      
-   refine/__index__
-
 
 .. toctree::
    :maxdepth: 1     

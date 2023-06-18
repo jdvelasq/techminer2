@@ -35,7 +35,7 @@ import pandas as pd
 import plotly.graph_objects as go
 
 from ...classes import BasicChart
-from ...record_utils import read_records
+from ...records import read_records
 
 
 def rpys(

@@ -69,7 +69,7 @@ ARTIFICIAL_INTELLIGENCE    7     2020      2021     2022                33   0
 
 # pylint: disable=line-too-long
 """
-from ...vantagepoint.analyze.trending_terms import trending_terms
+# from ...vantagepoint.analyze.trending_terms import trending_terms
 
 FIELD = "abstract_nlp_phrases"
 

@@ -90,13 +90,13 @@ Table:
 
 # pylint: disable=line-too-long
 """
-from ...classes import ProductionOverTimeChart
-from ...techminer.indicators.indicators_by_field_per_year import (
-    indicators_by_field_per_year,
-)
-from ...vantagepoint.analyze import terms_by_year
-from ...vantagepoint.report import gantt_chart
-from ..documents_per_criterion import documents_per_criterion
+# from ...classes import ProductionOverTimeChart
+# from ...techminer.indicators.indicators_by_field_per_year import (
+#     indicators_by_field_per_year,
+# )
+# from ...vantagepoint.analyze import terms_by_year
+# from ...vantagepoint.charts import gantt_chart
+# from ..documents_per_criterion import documents_per_criterion
 
 
 # pylint: disable=too-many-arguments

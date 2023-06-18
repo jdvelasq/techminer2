@@ -3,8 +3,8 @@
 import textwrap
 from dataclasses import dataclass
 
-from .. import vantagepoint
-from ..item_utils import generate_custom_items
+# from .. import vantagepoint
+# from ..item_utils import generate_custom_items
 
 
 @dataclass(init=False)

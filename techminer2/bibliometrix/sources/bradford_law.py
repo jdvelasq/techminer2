@@ -67,9 +67,9 @@ import numpy as np
 import pandas as pd
 import plotly.express as px
 
-from ..._lib._explode import explode
-from ...classes import BradfordLaw
-from ...record_utils import read_records
+# from ..._lib._explode import explode
+# from ...classes import BradfordLaw
+# from ...records import read_records
 
 
 def bradford_law(

@@ -5,7 +5,7 @@
 """
 
 
-from ..vantagepoint.report import ranking_chart
+# from ..vantagepoint.charts import ranking_chart
 
 
 # pylint: disable=too-many-arguments

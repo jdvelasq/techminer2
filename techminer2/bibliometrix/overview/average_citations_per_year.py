@@ -44,8 +44,8 @@ The table below provides data on the average citations per year of the dataset. 
 
 # pylint: disable=line-too-long
 """
-from ...classes import IndicatorByYearChart
-from ...techminer.indicators import indicators_by_year, indicators_by_year_plot
+# from ...classes import IndicatorByYearChart
+# from ...techminer.indicators import indicators_by_year, indicators_by_year_plot
 
 
 def average_citations_per_year(

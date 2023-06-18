@@ -1,10 +1,10 @@
 """Clusters summarization"""
 import os
 
-from ..create_directory import create_directory
-from ..techminer.reports.extractive_summarization import (
-    extractive_summarization,
-)
+# from ..create_directory import create_directory
+# from ..techminer.reports.extractive_summarization import (
+#     extractive_summarization,
+# )
 
 
 def clusters_summarization(

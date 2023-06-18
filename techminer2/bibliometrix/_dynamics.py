@@ -7,10 +7,10 @@ import numpy as np
 import pandas as pd
 import plotly.express as px
 
-from ..techminer.indicators.indicators_by_field import indicators_by_field
-from ..techminer.indicators.indicators_by_field_per_year import (
-    indicators_by_field_per_year,
-)
+# from ..techminer.indicators.indicators_by_field import indicators_by_field
+# from ..techminer.indicators.indicators_by_field_per_year import (
+#     indicators_by_field_per_year,
+# )
 
 TEXTLEN = 40
 

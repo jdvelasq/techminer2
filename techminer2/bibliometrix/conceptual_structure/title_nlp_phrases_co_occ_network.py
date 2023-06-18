@@ -116,16 +116,16 @@ Table:
 # pylint: disable=line-too-long
 """
 
-from ...classes import CoWordsNetwork
-from ...vantagepoint.analyze import (
-    co_occurrence_matrix,
-    matrix_normalization,
-    network_clustering,
-    network_communities,
-    network_degree_plot,
-    network_metrics,
-    network_viewer,
-)
+# from ...classes import CoWordsNetwork
+# from ...vantagepoint.analyze import (
+#     co_occurrence_matrix,
+#     matrix_normalization,
+#     network_clustering,
+#     network_communities,
+#     network_degree_plot,
+#     network_metrics,
+#     network_viewer,
+# )
 
 FIELD = "title_nlp_phrases"
 

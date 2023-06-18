@@ -2,8 +2,8 @@
 import glob
 import os
 
-from .create_directory import create_directory
-from .techminer.reports.abstracts_report import abstracts_report
+# from .create_directory import create_directory
+# from .techminer.reports.abstracts_report import abstracts_report
 
 
 def cluster_abstracts_report(

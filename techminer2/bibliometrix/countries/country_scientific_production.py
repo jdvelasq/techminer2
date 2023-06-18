@@ -77,8 +77,8 @@ Table:
 
 # pylint: disable=line-too-long
 """
-from ...vantagepoint.analyze import list_items
-from ...vantagepoint.report import world_map
+# from ...vantagepoint.analyze import list_items
+# from ...vantagepoint.charts import world_map
 
 
 # pylint: disable=too-many-arguments

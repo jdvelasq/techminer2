@@ -80,12 +80,12 @@ Table:
 
 import plotly.express as px
 
-from ...classes import CorresponingAuthorOrganization
-from ...item_utils import generate_custom_items
-from ...sort_utils import sort_indicators_by_metric
-from ...techminer.indicators.collaboration_indicators_by_field import (
-    collaboration_indicators_by_field,
-)
+# from ...classes import CorresponingAuthorOrganization
+# from ...item_utils import generate_custom_items
+# from ...sort_utils import sort_indicators_by_metric
+# from ...techminer.indicators.collaboration_indicators_by_field import (
+#     collaboration_indicators_by_field,
+# )
 
 
 def corresponding_authors_organization(

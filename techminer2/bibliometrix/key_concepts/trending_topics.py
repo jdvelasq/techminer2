@@ -68,7 +68,7 @@ FINANCIAL_CRIME            2     2020      2020     2021                12   3
 
 # pylint: disable=line-too-long
 """
-from ...vantagepoint.analyze.trending_terms import trending_terms
+# from ...vantagepoint.analyze.trending_terms import trending_terms
 
 FIELD = "key_concepts"
 

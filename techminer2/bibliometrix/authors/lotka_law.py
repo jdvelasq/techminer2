@@ -32,8 +32,8 @@ Example
 """
 import plotly.graph_objects as go
 
-from ...classes import LotkaLaw
-from ...techminer.indicators.indicators_by_field import indicators_by_field
+# from ...classes import LotkaLaw
+# from ...techminer.indicators.indicators_by_field import indicators_by_field
 
 
 def lotka_law(
