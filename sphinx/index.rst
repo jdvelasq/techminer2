@@ -92,12 +92,19 @@ TM2 module.
     :hidden:
     :maxdepth: 1
 
-    data/__index__
+    raw_data/__index__
     refine/__index__
-
-    vantagepoint/__index__
-    bibliometrix/__index__
+    database/__index__
     indicators/__index__
+    analyze/__index__
+    charts/__index__
+
+
+.. toctree::
+    :caption: Old
+    :hidden:
+    :maxdepth: 1
+
     techminer/__index__
     tlab/__index__
     scientopy/__index__

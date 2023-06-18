@@ -6,7 +6,7 @@ Refine
 
 
 .. toctree::
-   apply_key_concepts_thesaurus
+   apply_descriptor_thesaurus
 
 
 .. toctree::

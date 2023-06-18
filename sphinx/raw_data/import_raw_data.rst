@@ -1,4 +1,4 @@
-.. automodule:: techminer2plus.refine.misspelling_search
+.. automodule:: techminer2plus.raw_data.import_raw_data
     :members:
     :undoc-members:
     :show-inheritance:

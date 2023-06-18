@@ -1,4 +1,4 @@
-.. automodule:: techminer2.refine.apply_organizations_thesaurus
+.. automodule:: techminer2plus.refine.apply_organizations_thesaurus
     :members:
     :undoc-members:
     :show-inheritance:
