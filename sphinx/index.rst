@@ -92,11 +92,11 @@ TM2 module.
     :hidden:
     :maxdepth: 1
 
-    raw_data/__index__
+    ingest/__index__
     refine/__index__
+    query/__index__
     database/__index__
     analyze/__index__
-    calculate/__index__
     visualization/__index__
 
 
