@@ -1,6 +1,6 @@
 # flake8: noqa# flake8: noqa
 """
-Import Raw Data
+Ingest Raw Data
 ===============================================================================
 
 Import a scopus data file in the working directory.
