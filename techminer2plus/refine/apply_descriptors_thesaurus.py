@@ -21,7 +21,6 @@ Cleans the keywords columns using the `keywords.txt` file.
 import glob
 import os
 import os.path
-import sys
 
 import pandas as pd
 
@@ -31,6 +30,7 @@ from ..thesaurus import load_system_thesaurus_as_dict_reversed
 def apply_descriptors_thesaurus(root_dir="./"):
     """Clean all words columns in the records using a descriptors.txt."""
 
+    # pylint: disable=line-too-long
     print(
         "--INFO-- Applying `descriptors.txt` thesaurus to author/index keywords and abstract/title words"
     )

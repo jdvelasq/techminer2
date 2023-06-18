@@ -23,6 +23,8 @@ import pandas as pd
 from ..thesaurus import load_system_thesaurus_as_dict
 
 
+# pylint: disable=too-many-locals
+# pylint: disable=too-many-branches
 def find_string(
     thesaurus_file="descriptors.txt",
     contains=None,

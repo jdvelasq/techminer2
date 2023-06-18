@@ -28,6 +28,8 @@ from fuzzywuzzy import process
 from ..thesaurus import load_system_thesaurus_as_dict
 
 
+# pylint: disable=too-many-locals
+# pylint: disable=too-many-bramcbes
 def fuzzy_search(
     patterns,
     thesaurus_file="descriptors.txt",
