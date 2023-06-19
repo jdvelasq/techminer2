@@ -1,27 +1,28 @@
 # flake8: noqa
 """
-Column chart
+Bar Chart
 ===============================================================================
 
-Displays a vertical bar graph of the selected items in a ItemLlist object. 
-Items in your list are the X-axis, and the number of records are the Y-axis.
+Displays a horizontal bar graph of the selected items in a ItemLlist object. 
+Items in your list are the Y-axis, and the number of records are the X-axis.
 
 
 
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/system/report/column_chart.html"
+>>> file_name = "sphinx/_static/visualize/bar_chart.html"
 
 >>> import techminer2plus
->>> obj = techminer2plus.system.analyze.list_items(
-...    field='author_keywords',
-...    root_dir=root_dir,
+>>> itemslist = techminer2plus.analyze.list_items(
+...     field='author_keywords',
+...     root_dir=root_dir,
 ... )
->>> chart = techminer2plus.system.report.column_chart(obj, title="Most Frequent Author Keywords")
+>>> chart = techminer2plus.visualize.bar_chart(itemslist, title="Most Frequent Author Keywords")
 >>> chart.plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../_static/system/report/column_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/visualize/bar_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+
 
 >>> chart.table_.head()
 author_keywords
@@ -59,21 +60,24 @@ Table:
 
 
 
+
+
+
 # pylint: disable=line-too-long
 """
 import plotly.express as px
 
-from ...check_params import check_listview
-from ...classes import BasicChart
+from ..check_params import check_listview
+from ..classes import BasicChart
 
 
-def column_chart(
+def bar_chart(
     obj,
     title=None,
     metric_label=None,
     field_label=None,
 ):
-    """Column chart.
+    """Bar chart.
 
     Args:
         obj (vantagepoint.analyze.list_view): A list view object.
@@ -84,16 +88,15 @@ def column_chart(
     Returns:
         BasicChart: A basic chart object.
 
-
     """
 
     def create_plot():
         figure = px.bar(
             obj.table_,
-            x=None,
-            y=obj.metric_,
+            x=obj.metric_,
+            y=None,
             hover_data=obj.table_.columns.to_list(),
-            orientation="v",
+            orientation="h",
         )
 
         figure.update_layout(
@@ -110,20 +113,22 @@ def column_chart(
             linewidth=2,
             gridcolor="lightgray",
             griddash="dot",
-            tickangle=270,
-            title_text=field_label,
+            title_text=metric_label,
         )
         figure.update_yaxes(
             linecolor="gray",
             linewidth=2,
+            autorange="reversed",
             gridcolor="lightgray",
             griddash="dot",
-            title_text=metric_label,
+            title_text=field_label,
         )
         return figure
 
     #
-    # Main code
+    #
+    # Main:
+    #
     #
 
     check_listview(obj)
@@ -138,5 +143,6 @@ def column_chart(
     chart.plot_ = create_plot()
     chart.table_ = obj.table_[obj.metric_]
     chart.prompt_ = obj.prompt_
+    chart.custom_items_ = obj.custom_items_
 
     return chart

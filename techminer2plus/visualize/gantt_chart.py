@@ -13,7 +13,7 @@ Gantt Chart
 ...    top_n=20,
 ...    root_dir=root_dir,
 ... )
->>> chart = techminer2plus.system.report.gantt_chart(data)
+>>> chart = techminer2plus.visualize.gantt_chart(data)
 >>> chart.plot_.write_html(file_name)
 
 .. raw:: html
@@ -79,7 +79,7 @@ import textwrap
 
 import plotly.express as px
 
-# from ...classes import BasicChart
+from ..classes import BasicChart
 
 COLOR = "#556f81"
 TEXTLEN = 40

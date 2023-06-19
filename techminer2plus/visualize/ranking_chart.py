@@ -1,27 +1,25 @@
 # flake8: noqa
 """
-Bar Chart
+Ranking Chart
 ===============================================================================
 
-Displays a horizontal bar graph of the selected items in a ItemLlist object. 
-Items in your list are the Y-axis, and the number of records are the X-axis.
-
+Default visualization chart for Bibliometrix.
 
 
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/system/report/bar_chart.html"
+>>> file_name = "sphinx/_static/visualize/ranking_chart.html"
 
 >>> import techminer2plus
->>> obj = techminer2plus.system.analyze.list_items(
-...     field='author_keywords',
-...     root_dir=root_dir,
+>>> itemslist = techminer2plus.analyze.list_items(
+...    field='author_keywords',
+...    root_dir=root_dir,
 ... )
->>> chart = techminer2plus.system.report.bar_chart(obj, title="Most Frequent Author Keywords")
+>>> chart = techminer2plus.visualize.ranking_chart(itemslist, title="Most Frequent Author Keywords")
 >>> chart.plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../_static/system/report/bar_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/visualize/ranking_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
 >>> chart.table_.head()
@@ -60,30 +58,38 @@ Table:
 
 
 
-
-
-
 # pylint: disable=line-too-long
 """
 import plotly.express as px
 
-from ...check_params import check_listview
-from ...classes import BasicChart
+from ..check_params import check_listview
+from ..classes import BasicChart
 
 
-def bar_chart(
+# pylint: disable=too-many-arguments
+def ranking_chart(
     obj,
     title=None,
-    metric_label=None,
     field_label=None,
+    metric_label=None,
+    textfont_size=10,
+    marker_size=7,
+    line_color="black",
+    line_width=1.5,
+    yshift=4,
 ):
-    """Bar chart.
+    """Creates a rank chart.
 
     Args:
         obj (vantagepoint.analyze.list_view): A list view object.
         title (str, optional): Title. Defaults to None.
         metric_label (str, optional): Metric label. Defaults to None.
         field_label (str, optional): Field label. Defaults to None.
+        textfont_size (int, optional): Font size. Defaults to 10.
+        marker_size (int, optional): Marker size. Defaults to 6.
+        line_color (str, optional): Line color. Defaults to "black".
+        line_width (int, optional): Line width. Defaults to 1.
+        yshift (int, optional): Y shift. Defaults to 4.
 
     Returns:
         BasicChart: A basic chart object.
@@ -91,58 +97,78 @@ def bar_chart(
     """
 
     def create_plot():
-        figure = px.bar(
-            obj.table_,
-            x=obj.metric_,
-            y=None,
+        """Plots the degree of a co-occurrence matrix."""
+
+        table = obj.table_.copy()
+        table["Rank"] = list(range(1, len(table) + 1))
+
+        fig = px.line(
+            table,
+            x="Rank",
+            y=obj.metric_,
             hover_data=obj.table_.columns.to_list(),
-            orientation="h",
+            markers=True,
         )
 
-        figure.update_layout(
+        fig.update_traces(
+            marker={
+                "size": marker_size,
+                "line": {"color": line_color, "width": 0},
+            },
+            marker_color=line_color,
+            line={"color": line_color, "width": line_width},
+        )
+        fig.update_layout(
             paper_bgcolor="white",
             plot_bgcolor="white",
-            title_text=title if title is not None else "",
         )
-        figure.update_traces(
-            marker_color="rgb(171,171,171)",
-            marker_line={"color": "darkslategray"},
-        )
-        figure.update_xaxes(
+        fig.update_yaxes(
             linecolor="gray",
-            linewidth=2,
+            linewidth=1,
             gridcolor="lightgray",
             griddash="dot",
-            title_text=metric_label,
+            title=obj.metric_.replace("_", " ").upper(),
         )
-        figure.update_yaxes(
+        fig.update_xaxes(
             linecolor="gray",
-            linewidth=2,
-            autorange="reversed",
+            linewidth=1,
             gridcolor="lightgray",
             griddash="dot",
-            title_text=field_label,
+            title=field_label,
         )
-        return figure
+
+        for name, row in table.iterrows():
+            fig.add_annotation(
+                x=row["Rank"],
+                y=row[obj.metric_],
+                text=name,
+                showarrow=False,
+                textangle=-90,
+                yanchor="bottom",
+                font={"size": textfont_size},
+                yshift=yshift,
+            )
+
+        return fig
 
     #
-    #
-    # Main:
-    #
+    # Main code
     #
 
     check_listview(obj)
+
+    if title is None:
+        title = ""
 
     if metric_label is None:
         metric_label = obj.metric_.replace("_", " ").upper()
 
     if field_label is None:
-        field_label = obj.field_.replace("_", " ").upper()
+        field_label = obj.field_.replace("_", " ").upper() + " RANKING"
 
     chart = BasicChart()
     chart.plot_ = create_plot()
     chart.table_ = obj.table_[obj.metric_]
     chart.prompt_ = obj.prompt_
-    chart.custom_items_ = obj.custom_items_
 
     return chart

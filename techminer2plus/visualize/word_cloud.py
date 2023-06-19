@@ -8,17 +8,17 @@ Word cloud
 
 
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/images/system/report/word_cloud.png"
+>>> file_name = "sphinx/_static/visualize/word_cloud.png"
 
 >>> import techminer2plus
->>> obj = techminer2plus.system.analyze.list_items(
+>>> itemslist = techminer2plus.analyze.list_items(
 ...     field='author_keywords',
 ...     root_dir=root_dir,
 ... )
->>> chart = techminer2plus.system.report.word_cloud(obj, title="Most Frequent Author Keywords")
+>>> chart = techminer2plus.visualize.word_cloud(itemslist, title="Most Frequent Author Keywords")
 >>> chart.plot_.savefig(file_name)
 
-.. image:: ../../images/system/report/word_cloud.png
+.. image:: ../../_static/visualize/word_cloud.png
     :width: 900px
     :align: center
 
@@ -67,7 +67,7 @@ import numpy as np
 from matplotlib.figure import Figure
 from wordcloud import WordCloud
 
-from ...classes import WordCloudChart
+from ..classes import WordCloudChart
 
 
 def word_cloud(

@@ -1,24 +1,26 @@
 # flake8: noqa
 """
-Pie Chart
+Treemap
 ===============================================================================
 
 
+
+
+
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/system/report/pie_chart.html"
+>>> file_name = "sphinx/_static/visualize/treemap.html"
 
 >>> import techminer2plus
->>> obj = techminer2plus.system.analyze.list_items(
+>>> itemslist = techminer2plus.analyze.list_items(
 ...    field='author_keywords',
 ...    root_dir=root_dir,
-...    top_n=10,
 ... )
->>> chart = techminer2plus.system.report.pie_chart(obj, title="Most Frequent Author Keywords")
+>>> chart = techminer2plus.visualize.treemap(itemslist, title="Most Frequent Author Keywords")
 >>> chart.plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../_static/system/report/pie_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/visualize/treemap.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> chart.table_.head()
 author_keywords
@@ -56,45 +58,58 @@ Table:
 
 
 
+
 # pylint: disable=line-too-long
 """
-import plotly.express as px
+import plotly.graph_objs as go
 
-from ...check_params import check_listview
-from ...classes import BasicChart
+from ..check_params import check_listview
+from ..classes import BasicChart
 
 
-def pie_chart(
+def treemap(
     obj,
     title=None,
-    hole=0.4,
 ):
-    """Creates a pie chart.
+    """Creates a treemap.
 
     Args:
         obj (vantagepoint.analyze.list_view): A list view object.
         title (str, optional): Title. Defaults to None.
-        hole (float, optional): Hole size. Defaults to 0.4.
 
     Returns:
-        BasicChart: A BasicChart object.
+        BasicChart: A basic chart object.
 
 
     """
 
     def create_plot():
-        """Creates plotly figure"""
+        """Creates a plotly treemap."""
 
-        fig = px.pie(
-            obj.table_,
-            values=obj.metric_,
-            names=obj.table_.index.to_list(),
-            hole=hole,
-            hover_data=obj.table_.columns.to_list(),
+        fig = go.Figure()
+        fig.add_trace(
+            go.Treemap(
+                labels=obj.table_.index,
+                parents=[""] * len(obj.table_),
+                values=obj.table_[obj.metric_],
+                textinfo="label+value",
+            )
+        )
+        fig.update_traces(marker={"cornerradius": 5})
+        fig.update_layout(
+            showlegend=False,
+            margin={"t": 30, "l": 0, "r": 0, "b": 0},
             title=title if title is not None else "",
         )
-        fig.update_traces(textinfo="percent+value")
-        fig.update_layout(legend={"y": 0.5})
+
+        # Change the colors of the treemap white
+        fig.update_traces(
+            marker={"line": {"color": "darkslategray", "width": 1}},
+            marker_colors=["white"] * len(obj.table_),
+        )
+
+        # Change the font size of the labels
+        fig.update_traces(textfont_size=12)
 
         return fig
 

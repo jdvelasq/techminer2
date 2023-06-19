@@ -1,27 +1,28 @@
 # flake8: noqa
 """
-Treemap
+Cleveland Dot Chart
 ===============================================================================
 
 
 
-
-
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/system/report/treemap.html"
+>>> file_name = "sphinx/_static/visualize/cleveland_chart.html"
+
 
 >>> import techminer2plus
->>> obj = techminer2plus.system.analyze.list_items(
+>>> itemslist = techminer2plus.analyze.list_items(
 ...    field='author_keywords',
 ...    root_dir=root_dir,
 ... )
->>> chart = techminer2plus.system.report.treemap(obj, title="Most Frequent Author Keywords")
+
+>>> chart = techminer2plus.visualize.cleveland_dot_chart(itemslist, title="Most Frequent Author Keywords")
 >>> chart.plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../_static/system/report/treemap.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/visualize/cleveland_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
+    
 >>> chart.table_.head()
 author_keywords
 REGTECH                  28
@@ -61,63 +62,79 @@ Table:
 
 # pylint: disable=line-too-long
 """
-import plotly.graph_objs as go
+import plotly.express as px
 
-from ...check_params import check_listview
-from ...classes import BasicChart
+from ..check_params import check_listview
+from ..classes import BasicChart
 
 
-def treemap(
+def cleveland_dot_chart(
     obj,
     title=None,
+    metric_label=None,
+    field_label=None,
 ):
-    """Creates a treemap.
+    """Creates a cleveland doc chart.
 
     Args:
         obj (vantagepoint.analyze.list_view): A list view object.
         title (str, optional): Title. Defaults to None.
+        metric_label (str, optional): Metric label. Defaults to None.
+        field_label (str, optional): Field label. Defaults to None.
 
     Returns:
         BasicChart: A basic chart object.
 
-
     """
 
     def create_plot():
-        """Creates a plotly treemap."""
-
-        fig = go.Figure()
-        fig.add_trace(
-            go.Treemap(
-                labels=obj.table_.index,
-                parents=[""] * len(obj.table_),
-                values=obj.table_[obj.metric_],
-                textinfo="label+value",
-            )
+        fig = px.scatter(
+            obj.table_,
+            x=obj.metric_,
+            y=None,
+            hover_data=obj.table_.columns.to_list(),
+            size=obj.metric_,
         )
-        fig.update_traces(marker={"cornerradius": 5})
         fig.update_layout(
-            showlegend=False,
-            margin={"t": 30, "l": 0, "r": 0, "b": 0},
-            title=title if title is not None else "",
+            paper_bgcolor="white",
+            plot_bgcolor="white",
+            title_text=title if title is not None else "",
         )
-
-        # Change the colors of the treemap white
         fig.update_traces(
-            marker={"line": {"color": "darkslategray", "width": 1}},
-            marker_colors=["white"] * len(obj.table_),
+            marker=dict(
+                size=12,
+                line=dict(color="black", width=2),
+            ),
+            marker_color="slategray",
         )
-
-        # Change the font size of the labels
-        fig.update_traces(textfont_size=12)
-
+        fig.update_xaxes(
+            linecolor="gray",
+            linewidth=2,
+            gridcolor="lightgray",
+            griddash="dot",
+            title_text=metric_label,
+        )
+        fig.update_yaxes(
+            linecolor="gray",
+            linewidth=2,
+            autorange="reversed",
+            gridcolor="gray",
+            griddash="solid",
+            title_text=field_label,
+        )
         return fig
 
     #
-    # Main code:
+    # Main code
     #
 
     check_listview(obj)
+
+    if metric_label is None:
+        metric_label = obj.metric_.replace("_", " ").upper()
+
+    if field_label is None:
+        field_label = obj.field_.replace("_", " ").upper()
 
     chart = BasicChart()
     chart.plot_ = create_plot()

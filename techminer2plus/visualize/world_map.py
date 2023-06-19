@@ -8,22 +8,22 @@ World map
 
 
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/system/report/world_map.html"
+>>> file_name = "sphinx/_static/visualize/world_map.html"
 
 >>> import techminer2plus
->>> obj = techminer2plus.system.analyze.list_items(
+>>> itemslist = techminer2plus.analyze.list_items(
 ...     field='countries',
 ...     root_dir=root_dir,
 ... )
->>> chart = techminer2plus.system.report.world_map(
-...     obj, 
+>>> chart = techminer2plus.visualize.world_map(
+...     itemslist, 
 ...     title="Country scientific production",
 ... )
 >>> chart.plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../../_static/system/report/world_map.html" height="400px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/visualize/world_map.html" height="400px" width="100%" frameBorder="0"></iframe>
 
     
 >>> chart.table_.head()
@@ -67,8 +67,8 @@ Table:
 import pandas as pd
 import plotly.express as px
 
-from ...check_params import check_listview
-from ...classes import BasicChart
+from ..check_params import check_listview
+from ..classes import BasicChart
 
 
 def world_map(

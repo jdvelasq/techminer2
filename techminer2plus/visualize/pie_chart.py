@@ -1,26 +1,24 @@
 # flake8: noqa
 """
-Ranking Chart
+Pie Chart
 ===============================================================================
-
-Default visualization chart for Bibliometrix.
 
 
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/system/report/ranking_chart.html"
+>>> file_name = "sphinx/_static/visualize/pie_chart.html"
 
 >>> import techminer2plus
->>> obj = techminer2plus.system.analyze.list_items(
+>>> itemslist = techminer2plus.analyze.list_items(
 ...    field='author_keywords',
 ...    root_dir=root_dir,
+...    top_n=10,
 ... )
->>> chart = techminer2plus.system.report.ranking_chart(obj, title="Most Frequent Author Keywords")
+>>> chart = techminer2plus.visualize.pie_chart(itemslist, title="Most Frequent Author Keywords")
 >>> chart.plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../_static/system/report/ranking_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
-
+    <iframe src="../../../_static/visualize/pie_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> chart.table_.head()
 author_keywords
@@ -62,109 +60,49 @@ Table:
 """
 import plotly.express as px
 
-from ...check_params import check_listview
-from ...classes import BasicChart
+from ..check_params import check_listview
+from ..classes import BasicChart
 
 
-# pylint: disable=too-many-arguments
-def ranking_chart(
+def pie_chart(
     obj,
     title=None,
-    field_label=None,
-    metric_label=None,
-    textfont_size=10,
-    marker_size=7,
-    line_color="black",
-    line_width=1.5,
-    yshift=4,
+    hole=0.4,
 ):
-    """Creates a rank chart.
+    """Creates a pie chart.
 
     Args:
         obj (vantagepoint.analyze.list_view): A list view object.
         title (str, optional): Title. Defaults to None.
-        metric_label (str, optional): Metric label. Defaults to None.
-        field_label (str, optional): Field label. Defaults to None.
-        textfont_size (int, optional): Font size. Defaults to 10.
-        marker_size (int, optional): Marker size. Defaults to 6.
-        line_color (str, optional): Line color. Defaults to "black".
-        line_width (int, optional): Line width. Defaults to 1.
-        yshift (int, optional): Y shift. Defaults to 4.
+        hole (float, optional): Hole size. Defaults to 0.4.
 
     Returns:
-        BasicChart: A basic chart object.
+        BasicChart: A BasicChart object.
+
 
     """
 
     def create_plot():
-        """Plots the degree of a co-occurrence matrix."""
+        """Creates plotly figure"""
 
-        table = obj.table_.copy()
-        table["Rank"] = list(range(1, len(table) + 1))
-
-        fig = px.line(
-            table,
-            x="Rank",
-            y=obj.metric_,
+        fig = px.pie(
+            obj.table_,
+            values=obj.metric_,
+            names=obj.table_.index.to_list(),
+            hole=hole,
             hover_data=obj.table_.columns.to_list(),
-            markers=True,
+            title=title if title is not None else "",
         )
-
-        fig.update_traces(
-            marker={
-                "size": marker_size,
-                "line": {"color": line_color, "width": 0},
-            },
-            marker_color=line_color,
-            line={"color": line_color, "width": line_width},
-        )
-        fig.update_layout(
-            paper_bgcolor="white",
-            plot_bgcolor="white",
-        )
-        fig.update_yaxes(
-            linecolor="gray",
-            linewidth=1,
-            gridcolor="lightgray",
-            griddash="dot",
-            title=obj.metric_.replace("_", " ").upper(),
-        )
-        fig.update_xaxes(
-            linecolor="gray",
-            linewidth=1,
-            gridcolor="lightgray",
-            griddash="dot",
-            title=field_label,
-        )
-
-        for name, row in table.iterrows():
-            fig.add_annotation(
-                x=row["Rank"],
-                y=row[obj.metric_],
-                text=name,
-                showarrow=False,
-                textangle=-90,
-                yanchor="bottom",
-                font={"size": textfont_size},
-                yshift=yshift,
-            )
+        fig.update_traces(textinfo="percent+value")
+        fig.update_layout(legend={"y": 0.5})
 
         return fig
 
     #
-    # Main code
+    # Main code:
     #
 
     check_listview(obj)
-
-    if title is None:
-        title = ""
-
-    if metric_label is None:
-        metric_label = obj.metric_.replace("_", " ").upper()
-
-    if field_label is None:
-        field_label = obj.field_.replace("_", " ").upper() + " RANKING"
 
     chart = BasicChart()
     chart.plot_ = create_plot()

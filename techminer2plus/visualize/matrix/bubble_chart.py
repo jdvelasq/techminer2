@@ -15,7 +15,7 @@ Bubble Chart
 ...    root_dir=root_dir,
 ... )
 
->>> chart = techminer2plus.system.report.bubble_chart(matrix)
+>>> chart = techminer2plus.visualize.bubble_chart(matrix)
 >>> chart.plot_.write_html(file_name)
 
 .. raw:: html

@@ -1,28 +1,28 @@
 # flake8: noqa
 """
-Cleveland Dot Chart
+Column chart
 ===============================================================================
+
+Displays a vertical bar graph of the selected items in a ItemLlist object. 
+Items in your list are the X-axis, and the number of records are the Y-axis.
 
 
 
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/system/report/cleveland_chart.html"
-
+>>> file_name = "sphinx/_static/visualize/column_chart.html"
 
 >>> import techminer2plus
->>> obj = techminer2plus.system.analyze.list_items(
+>>> itemslist = techminer2plus.analyze.list_items(
 ...    field='author_keywords',
 ...    root_dir=root_dir,
 ... )
-
->>> chart = techminer2plus.system.report.cleveland_dot_chart(obj, title="Most Frequent Author Keywords")
+>>> chart = techminer2plus.visualize.column_chart(itemslist, title="Most Frequent Author Keywords")
 >>> chart.plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../_static/system/report/cleveland_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/visualize/column_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
-    
 >>> chart.table_.head()
 author_keywords
 REGTECH                  28
@@ -59,22 +59,21 @@ Table:
 
 
 
-
 # pylint: disable=line-too-long
 """
 import plotly.express as px
 
-from ...check_params import check_listview
-from ...classes import BasicChart
+from ..check_params import check_listview
+from ..classes import BasicChart
 
 
-def cleveland_dot_chart(
+def column_chart(
     obj,
     title=None,
     metric_label=None,
     field_label=None,
 ):
-    """Creates a cleveland doc chart.
+    """Column chart.
 
     Args:
         obj (vantagepoint.analyze.list_view): A list view object.
@@ -85,44 +84,43 @@ def cleveland_dot_chart(
     Returns:
         BasicChart: A basic chart object.
 
+
     """
 
     def create_plot():
-        fig = px.scatter(
+        figure = px.bar(
             obj.table_,
-            x=obj.metric_,
-            y=None,
+            x=None,
+            y=obj.metric_,
             hover_data=obj.table_.columns.to_list(),
-            size=obj.metric_,
+            orientation="v",
         )
-        fig.update_layout(
+
+        figure.update_layout(
             paper_bgcolor="white",
             plot_bgcolor="white",
             title_text=title if title is not None else "",
         )
-        fig.update_traces(
-            marker=dict(
-                size=12,
-                line=dict(color="black", width=2),
-            ),
-            marker_color="slategray",
+        figure.update_traces(
+            marker_color="rgb(171,171,171)",
+            marker_line={"color": "darkslategray"},
         )
-        fig.update_xaxes(
+        figure.update_xaxes(
+            linecolor="gray",
+            linewidth=2,
+            gridcolor="lightgray",
+            griddash="dot",
+            tickangle=270,
+            title_text=field_label,
+        )
+        figure.update_yaxes(
             linecolor="gray",
             linewidth=2,
             gridcolor="lightgray",
             griddash="dot",
             title_text=metric_label,
         )
-        fig.update_yaxes(
-            linecolor="gray",
-            linewidth=2,
-            autorange="reversed",
-            gridcolor="gray",
-            griddash="solid",
-            title_text=field_label,
-        )
-        return fig
+        return figure
 
     #
     # Main code

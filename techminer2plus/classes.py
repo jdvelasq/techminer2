@@ -240,6 +240,7 @@ class BasicChart:
     plot_: go.Figure
     prompt_: str
     table_: pd.DataFrame
+    custom_items_: list
 
 
 # Report / Word Cloud

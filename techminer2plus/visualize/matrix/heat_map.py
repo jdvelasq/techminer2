@@ -14,7 +14,7 @@ Heat Map
 ... )
 >>> file_name = "sphinx/_static/system/report/heat_map_1.html"
 
->>> chart = techminer2plus.system.report.heat_map(
+>>> chart = techminer2plus.visualize.heat_map(
 ...     matrix,
 ... )
 >>> chart.plot_.write_html(file_name)

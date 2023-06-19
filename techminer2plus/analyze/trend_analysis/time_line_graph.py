@@ -259,7 +259,7 @@ ScientoPy Time Line Plot.
 #     obj.table_ = items_by_year
 #     obj.prompt_ = ""
 
-#     return gantt_chart(obj, title)
+#     return gantt_chart(itemslist, title)
 
 
 # def trend_analysis_time_line_graph(
@@ -328,4 +328,4 @@ ScientoPy Time Line Plot.
 #     obj.table_ = items_by_year
 #     obj.prompt_ = ""
 
-#     return gantt_chart(obj, title)
+#     return gantt_chart(itemslist, title)

@@ -3,7 +3,9 @@ Visualize
 
 .. raw:: html
 
-   <hr style="height:4px;border-width:0;color:gray;background-color:black">
+    <hr style="height:2px;border-width:0;color:gray;background-color:black">
+    <p><center><strong>Basic Charts</strong></center></p>
+
 
 .. toctree::    
     column_chart
@@ -29,7 +31,7 @@ Visualize
 
 .. raw:: html
 
-   <hr style="height:4px;border-width:0;color:gray;background-color:black">
+   <hr style="height:2px;border-width:0;color:gray;background-color:black">
 
 .. toctree::
     bubble_chart
