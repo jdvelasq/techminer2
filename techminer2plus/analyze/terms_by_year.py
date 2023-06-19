@@ -7,7 +7,7 @@ Terms by Year
 >>> root_dir = "data/regtech/"
 
 >>> import techminer2plus
->>> r = techminer2plus.system.analyze.terms_by_year(
+>>> r = techminer2plus.analyze.terms_by_year(
 ...    field='author_keywords',
 ...    top_n=10,
 ...    root_dir=root_dir,
@@ -57,7 +57,7 @@ Table:
 
 
 
->>> r = techminer2plus.system.analyze.terms_by_year(
+>>> r = techminer2plus.analyze.terms_by_year(
 ...    field='author_keywords',
 ...    top_n=10,
 ...    root_dir=root_dir,
@@ -107,12 +107,12 @@ Table:
 """
 # import textwrap
 
-# from ..classes import TermsByYear
-# from ..counters import add_counters_to_axis
-# from ..indicators import indicators_by_field, items_occ_by_year
-# from ..items import generate_custom_items
-# from ..prompts import format_prompt_for_tables
-# from ..sorting import sort_indicators_by_metric
+from ..classes import TermsByYear
+from ..counters import add_counters_to_axis
+from ..items import generate_custom_items
+from ..prompts import format_prompt_for_tables
+from ..query import indicators_by_field, items_occ_by_year
+from ..sorting import sort_indicators_by_metric
 
 
 # pylint: disable=too-many-arguments

@@ -3,7 +3,47 @@ Analyze
 
 .. raw:: html
 
-   <hr style="height:4px;border-width:0;color:gray;background-color:black">
+    <hr style="height:2px;border-width:0;color:gray;background-color:black">
+    <p><center><strong>Main Functions</strong></center></p>
+
+
+.. toctree::
+    :maxdepth: 1
+    
+    list_items
+
+
+.. toctree::
+    :maxdepth: 1
+        
+    matrix/__index__
+
+
+.. toctree::
+    :maxdepth: 1
+        
+    map/__index__
+
+
+.. toctree::
+    :maxdepth: 1
+
+    terms_by_year
+
+
+
+.. toctree::
+    :maxdepth: 1
+
+    tfidf/__index__
+
+
+
+.. raw:: html
+
+    <hr style="height:2px;border-width:0;color:gray;background-color:black">
+    <p><center><strong>Auxiliary Functions</strong></center></p>
+
 
 
 .. toctree::
@@ -76,10 +116,6 @@ Analyze
 
     statistics    
 
-.. toctree::
-    :maxdepth: 1
-    
-    list_items
 
 
 .. toctree::
@@ -88,31 +124,8 @@ Analyze
     impact_view
 
 
-.. toctree::
-    :maxdepth: 1
-        
-    matrix/__index__
 
 
-.. toctree::
-    :maxdepth: 1
-        
-    map/__index__
-
-
-.. toctree::
-    :maxdepth: 1
-
-    terms_by_year
-
-
-.. toctree::
-    factor_matrix         
-
-.. toctree::
-    :maxdepth: 1
-
-    tfidf/__index__
 
  
 * TODO: PCD
