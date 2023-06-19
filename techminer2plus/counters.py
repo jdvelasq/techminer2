@@ -10,7 +10,7 @@ in the values or axis of a dataframe.
 
 import numpy as np
 
-# from . import techminer
+from .query import indicators_by_field
 
 
 # pylint: disable=too-many-arguments
@@ -94,7 +94,7 @@ def items2counters(
 ):
     """Creates a dictionary to transform a 'item' to a 'item counter:counter'."""
 
-    indicators = techminer.indicators.indicators_by_field(
+    indicators = indicators_by_field(
         field=criterion,
         root_dir=root_dir,
         database=database,

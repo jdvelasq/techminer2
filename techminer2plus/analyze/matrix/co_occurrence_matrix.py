@@ -7,7 +7,7 @@ Co-occurrence Matrix
 >>> root_dir = "data/regtech/"
 
 >>> import techminer2plus
->>> co_occ_matrix = techminer2plus.system.analyze.co_occurrence_matrix(
+>>> co_occ_matrix = techminer2plus.analyze.matrix.co_occurrence_matrix(
 ...     columns='author_keywords',
 ...     rows='authors',
 ...     col_occ_range=(2, None),
@@ -68,7 +68,7 @@ Table:
 ```
 <BLANKLINE>
 
->>> co_occ_matrix = techminer2plus.system.analyze.co_occurrence_matrix(
+>>> co_occ_matrix = techminer2plus.analyze.matrix.co_occurrence_matrix(
 ...    columns='author_keywords',
 ...    col_top_n=10,
 ...    root_dir=root_dir,
@@ -120,232 +120,230 @@ Table:
 
 # pylint: disable=line-too-long
 """
-# import textwrap
-
-# from ...classes import CocMatrix
-# from ...counters import add_counters_to_axis
-# from ...indicators import co_occ_matrix_list, indicators_by_field
-# from ...items import generate_custom_items
-# from ...prompts import format_prompt_for_tables
-# from ...sorting import sort_indicators_by_metric, sort_matrix_axis
+from ...classes import CocMatrix
+from ...counters import add_counters_to_axis
+from ...items import generate_custom_items
+from ...prompts import format_prompt_for_tables
+from ...query import co_occ_matrix_list, indicators_by_field
+from ...sorting import sort_indicators_by_metric, sort_matrix_axis
 
 
-# # pylint: disable=too-many-arguments disable=too-many-locals
-# def co_occurrence_matrix(
-#     columns,
-#     rows=None,
-#     # Columns item filters:
-#     col_top_n=None,
-#     col_occ_range=None,
-#     col_gc_range=None,
-#     col_custom_items=None,
-#     # Rows item filters :
-#     row_top_n=None,
-#     row_occ_range=None,
-#     row_gc_range=None,
-#     row_custom_items=None,
-#     # Database params:
-#     root_dir="./",
-#     database="main",
-#     year_filter=None,
-#     cited_by_filter=None,
-#     **filters,
-# ):
-#     """Creates a co-occurrence matrix."""
+# pylint: disable=too-many-arguments disable=too-many-locals
+def co_occurrence_matrix(
+    columns,
+    rows=None,
+    # Columns item filters:
+    col_top_n=None,
+    col_occ_range=None,
+    col_gc_range=None,
+    col_custom_items=None,
+    # Rows item filters :
+    row_top_n=None,
+    row_occ_range=None,
+    row_gc_range=None,
+    row_custom_items=None,
+    # Database params:
+    root_dir="./",
+    database="main",
+    year_filter=None,
+    cited_by_filter=None,
+    **filters,
+):
+    """Creates a co-occurrence matrix."""
 
-#     def filter_terms(
-#         raw_matrix_list,
-#         name,
-#         field,
-#         # Item filters:
-#         top_n,
-#         occ_range,
-#         gc_range,
-#         custom_items,
-#     ):
-#         if custom_items is None:
-#             indicators = indicators_by_field(
-#                 field=field,
-#                 root_dir=root_dir,
-#                 database=database,
-#                 year_filter=year_filter,
-#                 cited_by_filter=cited_by_filter,
-#                 **filters,
-#             )
+    def filter_terms(
+        raw_matrix_list,
+        name,
+        field,
+        # Item filters:
+        top_n,
+        occ_range,
+        gc_range,
+        custom_items,
+    ):
+        if custom_items is None:
+            indicators = indicators_by_field(
+                field=field,
+                root_dir=root_dir,
+                database=database,
+                year_filter=year_filter,
+                cited_by_filter=cited_by_filter,
+                **filters,
+            )
 
-#             indicators = sort_indicators_by_metric(indicators, "OCC")
+            indicators = sort_indicators_by_metric(indicators, "OCC")
 
-#             custom_items = generate_custom_items(
-#                 indicators=indicators,
-#                 top_n=top_n,
-#                 occ_range=occ_range,
-#                 gc_range=gc_range,
-#             )
+            custom_items = generate_custom_items(
+                indicators=indicators,
+                top_n=top_n,
+                occ_range=occ_range,
+                gc_range=gc_range,
+            )
 
-#         # custom_items = filter_custom_items_from_column(
-#         #     dataframe=raw_matrix_list,
-#         #     col_name=name,
-#         #     custom_items=custom_items,
-#         # )
+        # custom_items = filter_custom_items_from_column(
+        #     dataframe=raw_matrix_list,
+        #     col_name=name,
+        #     custom_items=custom_items,
+        # )
 
-#         raw_matrix_list = raw_matrix_list[
-#             raw_matrix_list[name].isin(custom_items)
-#         ]
+        raw_matrix_list = raw_matrix_list[
+            raw_matrix_list[name].isin(custom_items)
+        ]
 
-#         return raw_matrix_list
+        return raw_matrix_list
 
-#     def pivot(matrix_list):
-#         matrix = matrix_list.pivot(index="row", columns="column", values="OCC")
-#         matrix = matrix.fillna(0)
-#         matrix = matrix.astype(int)
-#         return matrix
+    def pivot(matrix_list):
+        matrix = matrix_list.pivot(index="row", columns="column", values="OCC")
+        matrix = matrix.fillna(0)
+        matrix = matrix.astype(int)
+        return matrix
 
-#     def generate_prompt_for_occ_matrix(matrix, columns, rows):
-#         """Generates a ChatGPT prompt for a occurrence matrix."""
+    def generate_prompt_for_occ_matrix(matrix, columns, rows):
+        """Generates a ChatGPT prompt for a occurrence matrix."""
 
-#         main_text = (
-#             "Your task is to generate a short paragraph for a research paper analyzing "
-#             "the co-occurrence between the values of different columns in a bibliographic "
-#             "dataset. Analyze the table below, and delimited by triple backticks, which "
-#             f"contains values of co-occurrence (OCC) for the '{columns}' and '{rows}' "
-#             "fields in a bibliographic dataset. Identify any notable patterns, trends, "
-#             "or outliers in the data, and discuss their implications for the research "
-#             "field. Be sure to provide a concise summary of your findings in no more "
-#             "than 150 words."
-#         )
-#         return format_prompt_for_tables(main_text, matrix.to_markdown())
+        main_text = (
+            "Your task is to generate a short paragraph for a research paper analyzing "
+            "the co-occurrence between the values of different columns in a bibliographic "
+            "dataset. Analyze the table below, and delimited by triple backticks, which "
+            f"contains values of co-occurrence (OCC) for the '{columns}' and '{rows}' "
+            "fields in a bibliographic dataset. Identify any notable patterns, trends, "
+            "or outliers in the data, and discuss their implications for the research "
+            "field. Be sure to provide a concise summary of your findings in no more "
+            "than 150 words."
+        )
+        return format_prompt_for_tables(main_text, matrix.to_markdown())
 
-#     def generate_prompt_for_co_occ_matrix(matrix, columns):
-#         """Generates a ChatGPT prompt for a co_occurrence matrix."""
+    def generate_prompt_for_co_occ_matrix(matrix, columns):
+        """Generates a ChatGPT prompt for a co_occurrence matrix."""
 
-#         main_text = (
-#             "Your task is to generate a short paragraph for a research paper analyzing the "
-#             "co-occurrence between the items of the same column in a bibliographic dataset. "
-#             "Analyze the table below which contains values of co-occurrence (OCC) for the "
-#             f"'{columns}' field in a bibliographic dataset. Identify any notable patterns, "
-#             "trends, or outliers in the data, and discuss their implications for the research "
-#             "field. Be sure to provide a concise summary of your findings in no more than 150 "
-#             "words."
-#         )
-#         return format_prompt_for_tables(main_text, matrix.to_markdown())
+        main_text = (
+            "Your task is to generate a short paragraph for a research paper analyzing the "
+            "co-occurrence between the items of the same column in a bibliographic dataset. "
+            "Analyze the table below which contains values of co-occurrence (OCC) for the "
+            f"'{columns}' field in a bibliographic dataset. Identify any notable patterns, "
+            "trends, or outliers in the data, and discuss their implications for the research "
+            "field. Be sure to provide a concise summary of your findings in no more than 150 "
+            "words."
+        )
+        return format_prompt_for_tables(main_text, matrix.to_markdown())
 
-#     #
-#     # Main code:
-#     #
+    #
+    # Main code:
+    #
 
-#     if rows is None:
-#         rows = columns
-#         row_top_n = col_top_n
-#         row_occ_range = col_occ_range
-#         row_gc_range = col_gc_range
-#         row_custom_items = col_custom_items
+    if rows is None:
+        rows = columns
+        row_top_n = col_top_n
+        row_occ_range = col_occ_range
+        row_gc_range = col_gc_range
+        row_custom_items = col_custom_items
 
-#     # Generates a matrix list with all descriptors in the database
-#     raw_matrix_list = co_occ_matrix_list(
-#         columns=columns,
-#         rows=rows,
-#         # Database params:
-#         root_dir=root_dir,
-#         database=database,
-#         year_filter=year_filter,
-#         cited_by_filter=cited_by_filter,
-#         **filters,
-#     )
+    # Generates a matrix list with all descriptors in the database
+    raw_matrix_list = co_occ_matrix_list(
+        columns=columns,
+        rows=rows,
+        # Database params:
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
+    )
 
-#     # Filters the terms in the 'row' column of the matrix list
-#     raw_filterd_matrix_list = filter_terms(
-#         raw_matrix_list=raw_matrix_list,
-#         field=rows,
-#         name="row",
-#         # Item filters:
-#         top_n=row_top_n,
-#         occ_range=row_occ_range,
-#         gc_range=row_gc_range,
-#         custom_items=row_custom_items,
-#     )
+    # Filters the terms in the 'row' column of the matrix list
+    raw_filterd_matrix_list = filter_terms(
+        raw_matrix_list=raw_matrix_list,
+        field=rows,
+        name="row",
+        # Item filters:
+        top_n=row_top_n,
+        occ_range=row_occ_range,
+        gc_range=row_gc_range,
+        custom_items=row_custom_items,
+    )
 
-#     # Filters the terms in the 'column' column of the matrix list
-#     filtered_matrix_list = filter_terms(
-#         raw_matrix_list=raw_filterd_matrix_list,
-#         field=columns,
-#         name="column",
-#         # Item filters:
-#         top_n=col_top_n,
-#         occ_range=col_occ_range,
-#         gc_range=col_gc_range,
-#         custom_items=col_custom_items,
-#     )
+    # Filters the terms in the 'column' column of the matrix list
+    filtered_matrix_list = filter_terms(
+        raw_matrix_list=raw_filterd_matrix_list,
+        field=columns,
+        name="column",
+        # Item filters:
+        top_n=col_top_n,
+        occ_range=col_occ_range,
+        gc_range=col_gc_range,
+        custom_items=col_custom_items,
+    )
 
-#     # Creates a matrix
-#     matrix = pivot(filtered_matrix_list)
+    # Creates a matrix
+    matrix = pivot(filtered_matrix_list)
 
-#     # sort the rows and columns of the matrix
-#     matrix = sort_matrix_axis(
-#         matrix,
-#         axis=0,
-#         field=rows,
-#         # Database params:
-#         root_dir=root_dir,
-#         database=database,
-#         year_filter=year_filter,
-#         cited_by_filter=cited_by_filter,
-#         **filters,
-#     )
+    # sort the rows and columns of the matrix
+    matrix = sort_matrix_axis(
+        matrix,
+        axis=0,
+        field=rows,
+        # Database params:
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
+    )
 
-#     matrix = sort_matrix_axis(
-#         matrix,
-#         axis=1,
-#         field=columns,
-#         # Database params:
-#         root_dir=root_dir,
-#         database=database,
-#         year_filter=year_filter,
-#         cited_by_filter=cited_by_filter,
-#         **filters,
-#     )
+    matrix = sort_matrix_axis(
+        matrix,
+        axis=1,
+        field=columns,
+        # Database params:
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
+    )
 
-#     matrix = add_counters_to_axis(
-#         dataframe=matrix,
-#         axis=0,
-#         field=rows,
-#         # Database params:
-#         root_dir=root_dir,
-#         database=database,
-#         year_filter=year_filter,
-#         cited_by_filter=cited_by_filter,
-#         **filters,
-#     )
+    matrix = add_counters_to_axis(
+        dataframe=matrix,
+        axis=0,
+        field=rows,
+        # Database params:
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
+    )
 
-#     matrix = add_counters_to_axis(
-#         dataframe=matrix,
-#         axis=1,
-#         field=columns,
-#         # Database params:
-#         root_dir=root_dir,
-#         database=database,
-#         year_filter=year_filter,
-#         cited_by_filter=cited_by_filter,
-#         **filters,
-#     )
+    matrix = add_counters_to_axis(
+        dataframe=matrix,
+        axis=1,
+        field=columns,
+        # Database params:
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
+    )
 
-#     if columns == rows:
-#         prompt = generate_prompt_for_co_occ_matrix(
-#             matrix,
-#             columns=columns,
-#         )
-#     else:
-#         prompt = generate_prompt_for_occ_matrix(
-#             matrix,
-#             columns=rows,
-#             rows=columns,
-#         )
+    if columns == rows:
+        prompt = generate_prompt_for_co_occ_matrix(
+            matrix,
+            columns=columns,
+        )
+    else:
+        prompt = generate_prompt_for_occ_matrix(
+            matrix,
+            columns=rows,
+            rows=columns,
+        )
 
-#     coc_matrix = CocMatrix()
+    coc_matrix = CocMatrix()
 
-#     coc_matrix.columns_ = columns
-#     coc_matrix.rows_ = rows if rows else columns
-#     coc_matrix.metric_ = "OCC"
-#     coc_matrix.matrix_ = matrix
-#     coc_matrix.prompt_ = prompt
+    coc_matrix.columns_ = columns
+    coc_matrix.rows_ = rows if rows else columns
+    coc_matrix.metric_ = "OCC"
+    coc_matrix.matrix_ = matrix
+    coc_matrix.prompt_ = prompt
 
-#     return coc_matrix
+    return coc_matrix

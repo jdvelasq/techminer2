@@ -1,8 +1,12 @@
 Matrix
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. toctree::
-    list_cells_in_matrix
+.. raw:: html
+
+    <hr style="height:2px;border-width:0;color:gray;background-color:black">
+    <p><center><strong>Main Matrix Analyzers</strong></center></p>
+
+
 
 .. toctree::
     co_occurrence_matrix
@@ -12,6 +16,15 @@ Matrix
 
 .. toctree::
     cross_correlation_matrix
+
+.. raw:: html
+
+    <hr style="height:2px;border-width:0;color:gray;background-color:black">
+    <p><center><strong>Secundary Matrix Functions</strong></center></p>
+
+
+.. toctree::
+    list_cells_in_matrix
 
 
 .. toctree::
@@ -24,6 +37,4 @@ Matrix
     matrix_subset
 
 
-.. toctree::
-    list_cells_in_matrix
 

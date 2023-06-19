@@ -9,19 +9,6 @@ def sort_indicators_by_metric(indicators, metric):
     """
     Sorts the indicators dataframe by the given metric.
 
-    Parameters
-    ----------
-    indicators : pandas.DataFrame
-        Indicators dataframe.
-
-    metric : str
-        Metric used to sort the indicators dataframe.
-
-    Returns
-    -------
-    indicators : pandas.DataFrame
-        Indicators dataframe sorted by the given metric.
-
 
     """
 
@@ -100,7 +87,7 @@ def sort_matrix_axis(
     # pylint: disable=line-too-long
     """
 
-    from .system.indicators.indicators_by_field import indicators_by_field
+    from .query.indicators_by_field import indicators_by_field
 
     matrix = matrix.copy()
 
