@@ -54,7 +54,7 @@ Analyze
 .. raw:: html
 
     <hr style="height:2px;border-width:0;color:gray;background-color:black">
-    <p><center><strong>EXPLORE</strong></center></p>
+    <p><center><strong>E X P L O R E</strong></center></p>
 
 
 .. toctree::
@@ -70,11 +70,18 @@ Analyze
 
 
 
+.. toctree::
+    :maxdepth: 1
+
+    associations/__index__
+
+
+
 
 .. raw:: html
 
     <hr style="height:2px;border-width:0;color:gray;background-color:black">
-    <p><center><strong>OTHERS</strong></center></p>
+    <p><center><strong>O T H E RS</strong></center></p>
 
 
 

@@ -210,6 +210,7 @@ def concordances(
     cited_by_filter=None,
     **filters,
 ):
+    """Extracts concordances from abstracts."""
     #
     # Main code:
     #
@@ -231,6 +232,8 @@ def concordances(
     )
 
 
+# pylint: disable=too-many-statements
+# pylint: disable=too-many-locals
 def concordances_from_records(
     records,
     search_for,
