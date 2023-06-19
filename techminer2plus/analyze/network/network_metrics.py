@@ -6,16 +6,16 @@ Network Metrics
 >>> root_dir = "data/regtech/"
 
 >>> import techminer2plus
->>> co_occ_matrix = techminer2plus.system.analyze.co_occurrence_matrix(
+>>> co_occ_matrix = techminer2plus.analyze.matrix.co_occurrence_matrix(
 ...    columns='author_keywords',
 ...    col_occ_range=(3, None),
 ...    root_dir=root_dir,
 ... )
->>> graph = techminer2plus.system.analyze.network_clustering(
+>>> graph = techminer2plus.analyze.network.cluster_network(
 ...    co_occ_matrix,
-...    algorithm='louvain',
+...    algorithm_or_estimator='louvain',
 ... )
->>> metrics = techminer2plus.system.analyze.network_metrics(graph)
+>>> metrics = techminer2plus.analyze.network.network_metrics(graph)
 >>> metrics.table_.head()
                               Degree  Betweenness  ...  Centrality  Density
 REGTECH 28:329                    12     0.195960  ...        28.0     41.0
@@ -28,9 +28,10 @@ COMPLIANCE 07:030                  8     0.015404  ...         7.0     15.0
 
 
 >>> print(metrics.prompt_)
-Your task is to generate a short analysis of the indicators of a network for a \\
-research paper. Summarize the text below, delimited by triple backticks, in at \\
-most 30 words, identifiying any notable patterns, trends, or outliers in the data.
+Your task is to generate a short analysis of the indicators of a network \\
+for a research paper. Summarize the text below, delimited by triple \\
+backticks, in at most 30 words, identifiying any notable patterns, trends, \\
+or outliers in the data.
 <BLANKLINE>
 Table:
 ```
@@ -52,16 +53,12 @@ Table:
 ```
 <BLANKLINE>
 
-
 # pylint: disable=line-too-long
 """
 
-from ...classes import NetworkStatistics
-from ...network import (
-    nx_compute_node_degree,
-    nx_compute_node_statistics,
-    nx_graph_to_co_occ_matrix,
-)
+from ...classes import NetworkMetrics
+from ...network import nx_compute_node_degree, nx_compute_node_statistics
+from ...prompts import format_prompt_for_tables
 
 
 def network_metrics(
@@ -72,14 +69,13 @@ def network_metrics(
     def generate_chatgpt_prompt(table):
         """Generates a chatgpt prompt."""
 
-        prompt = (
-            "Your task is to generate a short analysis of the indicators of a network for a \\\n"
-            "research paper. Summarize the text below, delimited by triple backticks, in at \\\n"
-            "most 30 words, identifiying any notable patterns, trends, or outliers in the data.\n\n"
-            f"Table:\n```\n{table.to_markdown()}\n```\n"
+        main_text = (
+            "Your task is to generate a short analysis of the indicators of a network for a "
+            "research paper. Summarize the text below, delimited by triple backticks, in at "
+            "most 30 words, identifiying any notable patterns, trends, or outliers in the data."
         )
 
-        return prompt
+        return format_prompt_for_tables(main_text, table.to_markdown())
 
     #
     #
@@ -90,7 +86,7 @@ def network_metrics(
     graph = nx_compute_node_degree(graph)
     table = nx_compute_node_statistics(graph)
 
-    obj = NetworkStatistics()
+    obj = NetworkMetrics()
 
     obj.table_ = table
     obj.prompt_ = generate_chatgpt_prompt(table)

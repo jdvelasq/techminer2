@@ -1,6 +1,6 @@
 # flake8: noqa
 """
-(NEW) Network Communities
+Network Communities
 ===============================================================================
 
 Extracts the community (cluster) members from a networkx graph as a dataframe.
@@ -10,16 +10,16 @@ Extracts the community (cluster) members from a networkx graph as a dataframe.
 >>> root_dir = "data/regtech/"
 
 >>> import techminer2plus
->>> co_occ_matrix = techminer2plus.system.analyze.co_occurrence_matrix(
+>>> co_occ_matrix = techminer2plus.analyze.matrix.co_occurrence_matrix(
 ...    columns='author_keywords',
 ...    col_occ_range=(2, None),
 ...    root_dir=root_dir,
 ... )
->>> graph = techminer2plus.system.analyze.network_clustering(
+>>> graph = techminer2plus.analyze.network.cluster_network(
 ...    co_occ_matrix,
-...    community_clustering='louvain',
+...    algorithm_or_estimator='louvain',
 ... )
->>> techminer2plus.system.analyze.cluster_members(graph)
+>>> techminer2plus.analyze.network.network_communities(graph)
                             CL_00  ...                           CL_03
 0                  REGTECH 28:329  ...    ANTI_MONEY_LAUNDERING 05:034
 1               COMPLIANCE 07:030  ...  ARTIFICIAL_INTELLIGENCE 04:023

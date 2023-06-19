@@ -1,6 +1,6 @@
 # flake8: noqa
 """
-(NEW) Network Viewer
+Network Viewer
 ===============================================================================
 
 
@@ -9,19 +9,16 @@
 
 >>> root_dir = "data/regtech/"
 >>> import techminer2plus
->>> co_occ_matrix = techminer2plus.system.analyze.co_occ_matrix(
+>>> co_occ_matrix = techminer2plus.analyze.matrix.co_occurrence_matrix(
 ...    columns='author_keywords',
 ...    col_occ_range=(2, None),
 ...    root_dir=root_dir,
 ... )
->>> normalized_co_occ_matrix = techminer2plus.system.analyze.association_index(
-...     co_occ_matrix, "association"
+>>> graph = techminer2plus.analyze.network.cluster_network(
+...    co_occ_matrix,
+...    algorithm_or_estimator='louvain',
 ... )
->>> graph = techminer2plus.system.analyze.cluster_column(
-...    normalized_co_occ_matrix,
-...    community_clustering='louvain',
-... )
->>> fig = techminer2plus.system.analyze.network_viewer(
+>>> fig = techminer2plus.analyze.network.network_viewer(
 ...     graph,
 ...     n_labels=15,
 ...     node_size_min=8,
@@ -29,12 +26,12 @@
 ...     textfont_size_min=8,
 ...     textfont_size_max=20,
 ... )
->>> file_name = "sphinx/_static/techminer2plus__network_viewer.html"
+>>> file_name = "sphinx/_static/analyze/network/network_viewer.html"
 >>> fig.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/techminer2plus__network_viewer.html"
+    <iframe src="../../../../_static/analyze/network/network_viewer.html"
     height="600px" width="100%" frameBorder="0"></iframe>
 
 
@@ -53,6 +50,7 @@ from ...network import (
 
 
 # pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
 def network_viewer(
     graph,
     n_labels=None,

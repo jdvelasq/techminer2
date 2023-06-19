@@ -188,7 +188,7 @@ class MatrixViewer:
 # Analyze / Calculate / Association Index
 # Analyze / Calculate / Network Metrics
 @dataclass(init=False)
-class NetworkStatistics:
+class NetworkMetrics:
     """Network statistics."""
 
     prompt_: str

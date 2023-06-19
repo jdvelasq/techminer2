@@ -1,56 +1,57 @@
 # flake8: noqa
 """
-(NEW) Network Deegre Plot
+Network Deegre Plot
 ===============================================================================
 
 
 >>> root_dir = "data/regtech/"
 
 >>> import techminer2plus
->>> file_name = "sphinx/_static/techminer2plus__network_degree_plot.html"
->>> co_occ_matrix = techminer2plus.system.analyze.co_occ_matrix(
+>>> file_name = "sphinx/_static/analyze/network/network_degree_plot.html"
+>>> co_occ_matrix = techminer2plus.analyze.matrix.co_occurrence_matrix(
 ...    columns='author_keywords',
 ...    col_occ_range=(3, None),
 ...    root_dir=root_dir,
 ... )
->>> normalized_co_occ_matrix = techminer2plus.system.analyze.association_index(
-...     co_occ_matrix, "association"
+>>> graph = techminer2plus.analyze.network.cluster_network(
+...    co_occ_matrix,
+...    algorithm_or_estimator='louvain',
 ... )
->>> graph = techminer2plus.system.analyze.cluster_column(
-...    normalized_co_occ_matrix,
-...    community_clustering='louvain',
-... )
->>> chart = techminer2plus.system.analyze.network_degree_plot(graph)
+>>> chart = techminer2plus.analyze.network.network_degree_plot(graph)
 >>> chart.plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../_static/techminer2plus__network_degree_plot.html"
+    <iframe src="../../../../_static/analyze/network/network_degree_plot.html"
     height="600px" width="100%" frameBorder="0"></iframe>
 
 
 
 
 >>> print(chart.prompt_)
-Analyze the table below, which provides the degree of nodes in a networkx graph of a co-ocurrence matrix. Identify any notable patterns, trends, or outliers in the data, and discuss their implications in the network.
+Your task is to generate an analysis about the degree of the nodes in a \\
+networkx graph of a co-ocurrence matrix. Analyze the table below, delimited \\
+by triple backticks, identifying any notable patterns, trends, or outliers \\
+in the data, and discuss their implications in the network.
 <BLANKLINE>
-|    |   Node | Name                                   |   Degree |
-|---:|-------:|:---------------------------------------|---------:|
-|  0 |      0 | REGTECH 28:329                         |       12 |
-|  1 |      1 | FINTECH 12:249                         |       11 |
-|  2 |      2 | REGULATION 05:164                      |        9 |
-|  3 |      3 | COMPLIANCE 07:030                      |        8 |
-|  4 |      4 | ARTIFICIAL_INTELLIGENCE 04:023         |        7 |
-|  5 |      5 | RISK_MANAGEMENT 03:014                 |        7 |
-|  6 |      6 | REGULATORY_TECHNOLOGY 03:007           |        7 |
-|  7 |      7 | SUPTECH 03:004                         |        6 |
-|  8 |      8 | INNOVATION 03:012                      |        5 |
-|  9 |      9 | BLOCKCHAIN 03:005                      |        5 |
-| 10 |     10 | FINANCIAL_SERVICES 04:168              |        4 |
-| 11 |     11 | FINANCIAL_REGULATION 04:035            |        4 |
-| 12 |     12 | ANTI_MONEY_LAUNDERING 04:023           |        3 |
-| 13 |     13 | REGULATORY_TECHNOLOGY (REGTECH) 04:030 |        2 |
-<BLANKLINE>
+Table:
+```
+|    |   Node | Name                           |   Degree |
+|---:|-------:|:-------------------------------|---------:|
+|  0 |      0 | REGTECH 28:329                 |       12 |
+|  1 |      1 | FINTECH 12:249                 |       11 |
+|  2 |      2 | REGULATORY_TECHNOLOGY 07:037   |        9 |
+|  3 |      3 | REGULATION 05:164              |        9 |
+|  4 |      4 | COMPLIANCE 07:030              |        8 |
+|  5 |      5 | ARTIFICIAL_INTELLIGENCE 04:023 |        7 |
+|  6 |      6 | RISK_MANAGEMENT 03:014         |        7 |
+|  7 |      7 | SUPTECH 03:004                 |        6 |
+|  8 |      8 | INNOVATION 03:012              |        5 |
+|  9 |      9 | BLOCKCHAIN 03:005              |        5 |
+| 10 |     10 | FINANCIAL_SERVICES 04:168      |        4 |
+| 11 |     11 | FINANCIAL_REGULATION 04:035    |        4 |
+| 12 |     12 | ANTI_MONEY_LAUNDERING 05:034   |        3 |
+```
 <BLANKLINE>
 
 
@@ -63,6 +64,7 @@ import plotly.express as px
 
 from ...classes import NetworkDegreePlot
 from ...network import nx_compute_node_degree
+from ...prompts import format_prompt_for_tables
 
 
 # pylint: disable=too-many-arguments
@@ -148,15 +150,14 @@ def network_degree_plot(
     def generate_chatgpt_prompt(table):
         """Generates a chatgpt prompt."""
 
-        prompt = (
-            "Your task is to generate an analysis about the degree of the nodes in a networkx \\\n"
-            "graph of a co-ocurrence matrix. Analyze the table below, delimited by triple  \\\n"
-            "backticks, identifying any notable patterns, trends, or outliers in the data, and  \\\n"
-            "discuss their implications in the network. \n\n"
-            f"Table:\n```\n{table.to_markdown()}\n```\n"
+        main_text = (
+            "Your task is to generate an analysis about the degree of the nodes in a networkx "
+            "graph of a co-ocurrence matrix. Analyze the table below, delimited by triple "
+            "backticks, identifying any notable patterns, trends, or outliers in the data, and "
+            "discuss their implications in the network."
         )
 
-        return prompt
+        return format_prompt_for_tables(main_text, table.to_markdown())
 
     #
     #
