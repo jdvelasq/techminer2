@@ -63,6 +63,10 @@ Analyze
     sankey_plot
 
 
+.. toctree::
+    :maxdepth: 1
+
+    concordances
 
 
 
@@ -85,27 +89,6 @@ Analyze
 
 
 
-.. toctree::
-    :maxdepth: 1
-    
-    network_viewer
-
-
-.. toctree::
-    :maxdepth: 1
-
-    network_degree_plot    
-
-.. toctree::
-    :maxdepth: 1
-
-    network_report
-
-
-.. toctree::
-    :maxdepth: 1
-
-    network_communities
 
 
 
@@ -121,10 +104,6 @@ Analyze
 * Emergence indicators (TODO)
 
 
-.. toctree::
-    :maxdepth: 1
-
-    network_metrics
 
 .. toctree::
     :maxdepth: 1
@@ -132,11 +111,6 @@ Analyze
     statistics    
 
 
-
-.. toctree::
-    :maxdepth: 1
-    
-    impact_view
 
 
 

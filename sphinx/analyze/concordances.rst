@@ -1,4 +1,4 @@
-.. automodule:: techminer2.tlab.concordances
+.. automodule:: techminer2plus.analyze.concordances
     :members:
     :undoc-members:
     :show-inheritance:
