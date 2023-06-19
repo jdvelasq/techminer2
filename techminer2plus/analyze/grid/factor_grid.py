@@ -1,6 +1,6 @@
 # flake8: noqa
 """
-Concept Grid
+Factor Grid
 ===============================================================================
 
 Creates a concept grid from a Factor Matrix.
@@ -13,7 +13,7 @@ Example:
 >>> root_dir = "data/regtech/"
 
 >>> import techminer2plus
->>> c_grid = techminer2plus.analyze.concept_grid(
+>>> c_grid = techminer2plus.analyze.grid.factor_grid(
 ...    field='authors',
 ...    occ_range=(2, None),
 ...    root_dir=root_dir,
@@ -54,11 +54,13 @@ Example:
 
 import pandas as pd
 
-from ..classes import ConceptGrid
-from .matrix.factor_matrix import factor_matrix
+from ...classes import ConceptGrid
+from ..matrix.factor_matrix import factor_matrix
 
 
-def concept_grid(
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
+def factor_grid(
     obj=None,
     #
     # Specific params:

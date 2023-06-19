@@ -27,6 +27,12 @@ Analyze
 
 .. toctree::
     :maxdepth: 1
+        
+    grid/__index__
+
+
+.. toctree::
+    :maxdepth: 1
 
     terms_by_year
 
@@ -41,16 +47,23 @@ Analyze
 .. raw:: html
 
     <hr style="height:2px;border-width:0;color:gray;background-color:black">
-    <p><center><strong>E X P L O R E</strong></center></p>
+    <p><center><strong>EXPLORE</strong></center></p>
 
 
 .. toctree::
     :maxdepth: 1
 
-    concept_grid
+    sankey_plot
 
 
 
+
+
+
+.. raw:: html
+
+    <hr style="height:2px;border-width:0;color:gray;background-color:black">
+    <p><center><strong>OTHERS</strong></center></p>
 
 
 
@@ -63,10 +76,6 @@ Analyze
 
 
 
-.. toctree::
-    :maxdepth: 1
-    
-    matrix_viewer
 
 
 .. toctree::
@@ -91,11 +100,6 @@ Analyze
 
     network_communities
 
-
-.. toctree::
-    :maxdepth: 1
-
-    sankey_plot
 
 
 .. toctree::

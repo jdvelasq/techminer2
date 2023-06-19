@@ -13,7 +13,7 @@ Creates a Factor Map.
 
 >>> import techminer2plus
 
->>> c_grid = techminer2plus.analyze.concept_grid(
+>>> c_grid = techminer2plus.analyze.grid.factor_grid(
 ...    field='authors',
 ...    occ_range=(2, None),
 ...    root_dir=root_dir,
@@ -53,7 +53,7 @@ from ...network import (
     px_create_network_fig,
     px_create_node_trace,
 )
-from ..concept_grid import concept_grid
+from ..grid.factor_grid import factor_grid
 from ..matrix.co_occurrence_matrix import co_occurrence_matrix
 from ..matrix.list_cells_in_matrix import list_cells_in_matrix
 
@@ -92,7 +92,7 @@ def factor_map(
 ):
     """Create a Factor Map from the clusters of a Factor Matrix."""
 
-    concept_grid_ = concept_grid(
+    concept_grid_ = factor_grid(
         field=field,
         threshold=threshold,
         pca=pca,

@@ -44,6 +44,12 @@ Visualize
     gantt_chart
 
 
+.. toctree::
+    :maxdepth: 1
+    
+    matrix_viewer
+
+
 * Butterfly chart (TODO)
 
 * Scatter plot (TODO)

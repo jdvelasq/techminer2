@@ -1,4 +1,4 @@
-.. automodule:: techminer2plus.analyze.sankey_plot
+.. automodule:: techminer2plus.visualize.matrix_viewer
     :members:
     :undoc-members:
     :show-inheritance:

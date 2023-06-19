@@ -1,4 +1,4 @@
-.. automodule:: techminer2plus.analyze.concept_grid
+.. automodule:: techminer2plus.analyze.grid.factor_grid
     :members:
     :undoc-members:
     :show-inheritance:

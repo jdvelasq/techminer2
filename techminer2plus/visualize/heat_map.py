@@ -85,6 +85,8 @@ class _Chart:
     prompt_: None
 
 
+# pylint: disable=too-many-arguments
+# pylint: disable=too-local_variables
 def heat_map(
     obj=None,
     colormap="Blues",
