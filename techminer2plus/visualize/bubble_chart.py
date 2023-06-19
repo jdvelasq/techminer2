@@ -63,7 +63,7 @@ Table:
 """
 import plotly.express as px
 
-from ...classes import BasicChart
+from ..classes import BasicChart
 
 
 def bubble_chart(

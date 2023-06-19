@@ -323,14 +323,14 @@ Analyze the table below which contains values of co-occurrence (OCC) for the 'au
 # pylint: disable=line-too-long
 """
 
-# from ...analyze.list_cells_in_matrix import list_cells_in_matrix
-# from ...analyze.network_viewer import network_viewer
-# from ...classes import MatrixSubset, MatrixViewer
-# from ..network_utils import (
-#     nx_compute_spring_layout,
-#     nx_create_graph_from_matrix_list,
-#     nx_set_node_colors,
-# )
+from ..analyze.list_cells_in_matrix import list_cells_in_matrix
+from ..analyze.network_viewer import network_viewer
+from ..classes import MatrixSubset, MatrixViewer
+from .network import (
+    nx_compute_spring_layout,
+    nx_create_graph_from_matrix_list,
+    nx_set_node_colors,
+)
 
 
 # pylint: disable=too-many-arguments disable=too-many-locals

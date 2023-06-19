@@ -132,16 +132,19 @@ from ...sorting import sort_indicators_by_metric, sort_matrix_axis
 def co_occurrence_matrix(
     columns,
     rows=None,
+    #
     # Columns item filters:
     col_top_n=None,
     col_occ_range=None,
     col_gc_range=None,
     col_custom_items=None,
+    #
     # Rows item filters :
     row_top_n=None,
     row_occ_range=None,
     row_gc_range=None,
     row_custom_items=None,
+    #
     # Database params:
     root_dir="./",
     database="main",

@@ -7,13 +7,13 @@ Heat Map
 >>> root_dir = "data/regtech/"
 
 >>> import techminer2plus
->>> matrix = techminer2plus.system.analyze.co_occurrence_matrix(
+>>> matrix = techminer2plus.analyze.matrix.co_occurrence_matrix(
 ...    columns='author_keywords',
 ...    col_occ_range=(4, None),
 ...    root_dir=root_dir,
 ... )
->>> file_name = "sphinx/_static/system/report/heat_map_1.html"
 
+>>> file_name = "sphinx/_static/visualize/heat_map.html"
 >>> chart = techminer2plus.visualize.heat_map(
 ...     matrix,
 ... )
@@ -21,7 +21,7 @@ Heat Map
 
 .. raw:: html
 
-    <iframe src="../../_static/system/report/heat_map_1.html" height="800px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/visualize/heat_map.html" height="800px" width="100%" frameBorder="0"></iframe>
 
 
 >>> chart.table_
@@ -75,6 +75,8 @@ from dataclasses import dataclass
 import numpy as np
 import plotly.express as px
 
+from ..analyze.matrix import co_occurrence_matrix
+
 
 @dataclass(init=False)
 class _Chart:
@@ -83,8 +85,56 @@ class _Chart:
     prompt_: None
 
 
-def heat_map(obj, colormap="Blues"):
+def heat_map(
+    obj=None,
+    colormap="Blues",
+    #
+    # Co-occurrence matrix params:
+    columns=None,
+    rows=None,
+    # Columns item filters:
+    col_top_n=None,
+    col_occ_range=None,
+    col_gc_range=None,
+    col_custom_items=None,
+    # Rows item filters :
+    row_top_n=None,
+    row_occ_range=None,
+    row_gc_range=None,
+    row_custom_items=None,
+    # Database params:
+    root_dir="./",
+    database="main",
+    year_filter=None,
+    cited_by_filter=None,
+    **filters,
+):
     """Make a heat map."""
+
+    if obj is None:
+        obj = co_occurrence_matrix(
+            columns=columns,
+            rows=rows,
+            #
+            # Columns item filters:
+            col_top_n=col_top_n,
+            col_occ_range=col_occ_range,
+            col_gc_range=col_gc_range,
+            col_custom_items=col_custom_items,
+            #
+            # Rows item filters :
+            row_top_n=row_top_n,
+            row_occ_range=row_occ_range,
+            row_gc_range=row_gc_range,
+            row_custom_items=row_custom_items,
+            #
+            # Database params:
+            root_dir=root_dir,
+            database=database,
+            year_filter=year_filter,
+            cited_by_filter=cited_by_filter,
+            **filters,
+        )
 
     matrix = obj.matrix_.copy()
 
