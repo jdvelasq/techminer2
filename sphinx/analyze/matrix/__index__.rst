@@ -17,6 +17,10 @@ Matrix
 .. toctree::
     cross_correlation_matrix
 
+
+.. toctree::
+    factor_matrix
+
 .. raw:: html
 
     <hr style="height:2px;border-width:0;color:gray;background-color:black">

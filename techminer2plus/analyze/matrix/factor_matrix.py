@@ -17,108 +17,110 @@ Factor matrix obtained by appliying PCA to the co-occurrence matrix.
 >>> root_dir = "data/regtech/"
 
 >>> import techminer2plus
->>> factor_matrix = techminer2plus.system.analyze.factor_matrix(
+>>> factor_matrix = techminer2plus.analyze.matrix.factor_matrix(
 ...     field="authors",
 ...     occ_range=(2, None),
 ...     root_dir=root_dir,
 ... )
->>> factor_matrix.table_
-component                Factor_00 Factor_01  ... Factor_04     Factor_05
-explained_variance          3.5514    2.2015  ...    0.4746        0.2857
-explained_variance_ratio    0.3864    0.2395  ...    0.0516        0.0311
-row                                           ...                        
-Arner DW 3:185            3.920561  0.600934  ... -0.148250 -7.455683e-17
-Buckley RP 3:185          3.920561  0.600934  ... -0.148250 -7.455683e-17
-Barberis JN 2:161         2.752839  0.324807  ...  0.074600 -1.904568e-17
-Butler T/1 2:041         -0.472960 -0.489055  ...  1.643183 -1.414214e+00
-Hamdan A 2:018           -0.817727 -1.641907  ... -0.363928 -3.521126e-16
-Turki M 2:018            -0.817727 -1.641907  ... -0.363928 -3.521126e-16
-Lin W 2:017              -0.641277 -0.885031  ... -0.464342 -1.023124e-16
-Singh C 2:017            -0.641277 -0.885031  ... -0.464342 -1.023124e-16
-Brennan R 2:014          -1.576144  2.532547  ... -0.147991  2.446323e-16
-Crane M 2:014            -1.576144  2.532547  ... -0.147991  2.446323e-16
-Ryan P 2:014             -1.576144  2.532547  ... -0.147991  2.446323e-16
-Sarea A 2:012            -0.719045 -1.322270  ... -0.035271  8.709897e-18
-Grassi L 2:002           -0.641277 -0.885031  ... -0.464342 -4.492571e-16
-Lanfranchi D 2:002       -0.641277 -0.885031  ... -0.464342 -4.492571e-16
-Arman AA 2:000           -0.472960 -0.489055  ...  1.643183  1.414214e+00
+>>> factor_matrix.table_.round(3)
+component                Factor_00 Factor_01  ... Factor_04 Factor_05
+explained_variance          3.5514    2.2015  ...    0.4746    0.2857
+explained_variance_ratio    0.3864    0.2395  ...    0.0516    0.0311
+row                                           ...                    
+Arner DW 3:185               3.921     0.601  ...    -0.148    -0.000
+Buckley RP 3:185             3.921     0.601  ...    -0.148    -0.000
+Barberis JN 2:161            2.753     0.325  ...     0.075    -0.000
+Butler T 2:041              -0.473    -0.489  ...     1.643    -1.414
+Hamdan A 2:018              -0.818    -1.642  ...    -0.364    -0.000
+Turki M 2:018               -0.818    -1.642  ...    -0.364    -0.000
+Lin W 2:017                 -0.641    -0.885  ...    -0.464    -0.000
+Singh C 2:017               -0.641    -0.885  ...    -0.464    -0.000
+Brennan R 2:014             -1.576     2.533  ...    -0.148     0.000
+Crane M 2:014               -1.576     2.533  ...    -0.148     0.000
+Ryan P 2:014                -1.576     2.533  ...    -0.148     0.000
+Sarea A 2:012               -0.719    -1.322  ...    -0.035     0.000
+Grassi L 2:002              -0.641    -0.885  ...    -0.464    -0.000
+Lanfranchi D 2:002          -0.641    -0.885  ...    -0.464    -0.000
+Arman AA 2:000              -0.473    -0.489  ...     1.643     1.414
 <BLANKLINE>
 [15 rows x 6 columns]
+
+
 
 # pylint: disable=line-too-long
 """
 
-# import pandas as pd
-# from sklearn.decomposition import PCA
+import pandas as pd
+from sklearn.decomposition import PCA
 
-# from ...classes import FactorMatrix
-# from .co_occurrence_matrix import co_occurrence_matrix
-
-
-# def factor_matrix(
-#     # Specific params:
-#     field,
-#     pca=None,
-#     # Item filters:
-#     top_n=None,
-#     occ_range=None,
-#     gc_range=None,
-#     custom_items=None,
-#     # Database params:
-#     root_dir="./",
-#     database="main",
-#     year_filter=None,
-#     cited_by_filter=None,
-#     **filters,
-# ):
-#     """Creates a Factor Matrix.
+from ...classes import FactorMatrix
+from .co_occurrence_matrix import co_occurrence_matrix
 
 
-#     # pylint: disable=line-too-long
-#     """
+def factor_matrix(
+    # Specific params:
+    field,
+    pca=None,
+    # Item filters:
+    top_n=None,
+    occ_range=None,
+    gc_range=None,
+    custom_items=None,
+    # Database params:
+    root_dir="./",
+    database="main",
+    year_filter=None,
+    cited_by_filter=None,
+    **filters,
+):
+    """Creates a Factor Matrix.
 
-#     coc_matrix = co_occurrence_matrix(
-#         columns=field,
-#         # Columns item filters:
-#         col_top_n=top_n,
-#         col_occ_range=occ_range,
-#         col_gc_range=gc_range,
-#         col_custom_items=custom_items,
-#         # Database params:
-#         root_dir=root_dir,
-#         database=database,
-#         year_filter=year_filter,
-#         cited_by_filter=cited_by_filter,
-#         **filters,
-#     )
 
-#     matrix = coc_matrix.matrix_
+    # pylint: disable=line-too-long
+    """
 
-#     if pca is None:
-#         pca = PCA(n_components=6)
+    coc_matrix = co_occurrence_matrix(
+        columns=field,
+        # Columns item filters:
+        col_top_n=top_n,
+        col_occ_range=occ_range,
+        col_gc_range=gc_range,
+        col_custom_items=custom_items,
+        # Database params:
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
+    )
 
-#     pca.fit(matrix)
+    matrix = coc_matrix.matrix_
 
-#     transformed_matrix = pca.transform(matrix)
-#     columns = [
-#         (f"Factor_{i_component:>02d}", round(ev, 4), round(evratio, 4))
-#         for i_component, (ev, evratio) in enumerate(
-#             zip(pca.explained_variance_, pca.explained_variance_ratio_)
-#         )
-#     ]
-#     columns = pd.MultiIndex.from_tuples(
-#         columns,
-#         names=["component", "explained_variance", "explained_variance_ratio"],
-#     )
-#     matrix = pd.DataFrame(
-#         transformed_matrix,
-#         index=matrix.index,
-#         columns=columns,
-#     )
+    if pca is None:
+        pca = PCA(n_components=6)
 
-#     fmatrix = FactorMatrix()
-#     fmatrix.table_ = matrix
-#     fmatrix.field_ = field
-#     fmatrix.prompt_ = "TODO"
+    pca.fit(matrix)
 
-#     return fmatrix
+    transformed_matrix = pca.transform(matrix)
+    columns = [
+        (f"Factor_{i_component:>02d}", round(ev, 4), round(evratio, 4))
+        for i_component, (ev, evratio) in enumerate(
+            zip(pca.explained_variance_, pca.explained_variance_ratio_)
+        )
+    ]
+    columns = pd.MultiIndex.from_tuples(
+        columns,
+        names=["component", "explained_variance", "explained_variance_ratio"],
+    )
+    matrix = pd.DataFrame(
+        transformed_matrix,
+        index=matrix.index,
+        columns=columns,
+    )
+
+    fmatrix = FactorMatrix()
+    fmatrix.table_ = matrix
+    fmatrix.field_ = field
+    fmatrix.prompt_ = "TODO"
+
+    return fmatrix
