@@ -210,18 +210,43 @@ def concordances(
     cited_by_filter=None,
     **filters,
 ):
-    """Checks the occurrence contexts of a given text in the abstract's phrases."""
+    #
+    # Main code:
+    #
+    records = read_records(
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
+    )
 
-    def get_phrases():
+    return concordances_from_records(
+        records=records,
+        search_for=search_for,
+        top_n=top_n,
+        report_file=report_file,
+        prompt_file=prompt_file,
+        root_dir=root_dir,
+    )
+
+
+def concordances_from_records(
+    records,
+    search_for,
+    top_n,
+    report_file,
+    prompt_file,
+    root_dir,
+):
+    """Checks the occurrence contexts of a given text in the abstract's phrases.
+
+    :meta private:
+    """
+
+    def get_phrases(records):
         """Gets the phrases with the searched text."""
 
-        records = read_records(
-            root_dir=root_dir,
-            database=database,
-            year_filter=year_filter,
-            cited_by_filter=cited_by_filter,
-            **filters,
-        )
         records = records.set_index(
             pd.Index(records.article + " / " + records.title)
         )
@@ -351,7 +376,7 @@ def concordances(
     #
     # Main code:
     #
-    phrases = get_phrases()
+    phrases = get_phrases(records)
     contexts_table = create_contexts_table(phrases)
     texts = transform_context_to_text(contexts_table)
     write_report(phrases, report_file)
