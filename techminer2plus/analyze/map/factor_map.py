@@ -14,17 +14,17 @@ Example:
 
 >>> import techminer2plus
 
-# >>> c_grid = techminer2plus.system.analyze.concept_grid(
-# ...    field='authors',
-# ...    occ_range=(2, None),
-# ...    root_dir=root_dir,
-# ... )
-# >>> print(c_grid.table_.to_markdown())
-# |    | CL_00             | CL_01           | CL_02          | CL_03         | CL_04              | CL_05            |
-# |---:|:------------------|:----------------|:---------------|:--------------|:-------------------|:-----------------|
-# |  0 | Arner DW 3:185    | Brennan R 2:014 | Hamdan A 2:018 | Lin W 2:017   | Grassi L 2:002     | Butler T/1 2:041 |
-# |  1 | Buckley RP 3:185  | Crane M 2:014   | Turki M 2:018  | Singh C 2:017 | Lanfranchi D 2:002 | Arman AA 2:000   |
-# |  2 | Barberis JN 2:161 | Ryan P 2:014    | Sarea A 2:012  |               |                    |                  |
+>>> c_grid = techminer2plus.analyze.concept_grid(
+...    field='authors',
+...    occ_range=(2, None),
+...    root_dir=root_dir,
+... )
+>>> print(c_grid.table_.to_markdown())
+|    | CL_00             | CL_01           | CL_02          | CL_03         | CL_04              | CL_05          |
+|---:|:------------------|:----------------|:---------------|:--------------|:-------------------|:---------------|
+|  0 | Arner DW 3:185    | Brennan R 2:014 | Hamdan A 2:018 | Lin W 2:017   | Grassi L 2:002     | Butler T 2:041 |
+|  1 | Buckley RP 3:185  | Crane M 2:014   | Turki M 2:018  | Singh C 2:017 | Lanfranchi D 2:002 | Arman AA 2:000 |
+|  2 | Barberis JN 2:161 | Ryan P 2:014    | Sarea A 2:012  |               |                    |                |
 
 
 >>> file_name = "sphinx/_static/analyze/map/factor_map.html"
@@ -54,8 +54,7 @@ from ...network import (
     px_create_network_fig,
     px_create_node_trace,
 )
-
-# from ..concept_grid import concept_grid
+from ..concept_grid import concept_grid
 from ..matrix.co_occurrence_matrix import co_occurrence_matrix
 from ..matrix.list_cells_in_matrix import list_cells_in_matrix
 
@@ -181,7 +180,7 @@ def factor_map(
         show_axes,
     )
 
-    fig = px_add_names_to_fig_nodes(fig, graph, n_labels)
+    fig = px_add_names_to_fig_nodes(fig, graph, n_labels, is_article=False)
 
     factormap = FactorMap()
     factormap.plot_ = fig

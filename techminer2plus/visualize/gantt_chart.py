@@ -5,10 +5,10 @@ Gantt Chart
 
 
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/system/report/gantt_chart.html"
+>>> file_name = "sphinx/_static/visualize/gantt_chart.html"
 
 >>> import techminer2plus
->>> data = techminer2plus.system.analyze.terms_by_year(
+>>> data = techminer2plus.analyze.terms_by_year(
 ...    field='author_keywords',
 ...    top_n=20,
 ...    root_dir=root_dir,
@@ -18,7 +18,7 @@ Gantt Chart
 
 .. raw:: html
 
-    <iframe src="../../_static/system/report/gantt_chart.html" height="800px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/visualize/gantt_chart.html" height="800px" width="100%" frameBorder="0"></iframe>
 
     
 >>> chart.table_.head(10)
@@ -79,6 +79,7 @@ import textwrap
 
 import plotly.express as px
 
+from ..analyze import terms_by_year
 from ..classes import BasicChart
 
 COLOR = "#556f81"
@@ -87,9 +88,45 @@ TEXTLEN = 40
 
 def gantt_chart(
     obj,
+    #
+    # Gantt params:
     title="",
+    #
+    # Terms by year params:
+    field=None,
+    # Table params:
+    cumulative=False,
+    # Item filters:
+    top_n=None,
+    occ_range=None,
+    gc_range=None,
+    custom_items=None,
+    # Database filters:
+    root_dir="./",
+    database="main",
+    year_filter=None,
+    cited_by_filter=None,
+    **filters,
 ):
     """Creates a Gantt Chart from a terms by year table."""
+
+    if obj is None:
+        obj = terms_by_year(
+            field=field,
+            # Table params:
+            cumulative=cumulative,
+            # Item filters:
+            top_n=top_n,
+            occ_range=occ_range,
+            gc_range=gc_range,
+            custom_items=custom_items,
+            # Database filters:
+            root_dir=root_dir,
+            database=database,
+            year_filter=year_filter,
+            cited_by_filter=cited_by_filter,
+            **filters,
+        )
 
     table = obj.table_.copy()
     table["RANKING"] = range(1, len(table) + 1)

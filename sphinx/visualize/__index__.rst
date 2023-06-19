@@ -32,6 +32,7 @@ Visualize
 .. raw:: html
 
    <hr style="height:2px;border-width:0;color:gray;background-color:black">
+   <p><center><strong>A D V A N C E D   C H A R T S</strong></center></p>
 
 .. toctree::
     bubble_chart

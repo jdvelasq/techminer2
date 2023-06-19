@@ -77,10 +77,8 @@ from ..matrix.list_cells_in_matrix import list_cells_in_matrix
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 def cross_correlation_map(
-    # Matrix params:
-    rows_and_columns,
-    cross_with,
-    method="pearson",
+    obj=None,
+    #
     # Map params:
     n_labels=None,
     color="#8da4b4",
@@ -94,6 +92,12 @@ def cross_correlation_map(
     xaxes_range=None,
     yaxes_range=None,
     show_axes=False,
+    #
+    # Matrix params:
+    rows_and_columns=None,
+    cross_with=None,
+    method="pearson",
+    #
     # Item filters:
     top_n=None,
     occ_range=None,
@@ -108,24 +112,25 @@ def cross_correlation_map(
 ):
     """Correlation map."""
 
-    matrix = cross_correlation_matrix(
-        rows_and_columns=rows_and_columns,
-        cross_with=cross_with,
-        method=method,
-        # Item filters:
-        top_n=top_n,
-        occ_range=occ_range,
-        gc_range=gc_range,
-        custom_items=custom_items,
-        # Database params:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )
+    if obj is None:
+        obj = cross_correlation_matrix(
+            rows_and_columns=rows_and_columns,
+            cross_with=cross_with,
+            method=method,
+            # Item filters:
+            top_n=top_n,
+            occ_range=occ_range,
+            gc_range=gc_range,
+            custom_items=custom_items,
+            # Database params:
+            root_dir=root_dir,
+            database=database,
+            year_filter=year_filter,
+            cited_by_filter=cited_by_filter,
+            **filters,
+        )
 
-    matrix_list = list_cells_in_matrix(matrix)
+    matrix_list = list_cells_in_matrix(obj)
 
     graph = nx_create_graph_from_matrix_list(
         matrix_list,

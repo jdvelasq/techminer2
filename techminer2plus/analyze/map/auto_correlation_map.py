@@ -76,9 +76,10 @@ from ..matrix.list_cells_in_matrix import list_cells_in_matrix
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 def auto_correlation_map(
+    obj=None,
     #
     # Matrix params:
-    rows_and_columns,
+    rows_and_columns=None,
     method="pearson",
     #
     # Map params:
@@ -110,23 +111,24 @@ def auto_correlation_map(
 ):
     """Auto-correlation Map."""
 
-    matrix = auto_correlation_matrix(
-        rows_and_columns=rows_and_columns,
-        method=method,
-        # Item filters:
-        top_n=top_n,
-        occ_range=occ_range,
-        gc_range=gc_range,
-        custom_items=custom_items,
-        # Database params:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )
+    if obj is None:
+        obj = auto_correlation_matrix(
+            rows_and_columns=rows_and_columns,
+            method=method,
+            # Item filters:
+            top_n=top_n,
+            occ_range=occ_range,
+            gc_range=gc_range,
+            custom_items=custom_items,
+            # Database params:
+            root_dir=root_dir,
+            database=database,
+            year_filter=year_filter,
+            cited_by_filter=cited_by_filter,
+            **filters,
+        )
 
-    matrix_list = list_cells_in_matrix(matrix)
+    matrix_list = list_cells_in_matrix(obj)
 
     graph = nx_create_graph_from_matrix_list(
         matrix_list,
