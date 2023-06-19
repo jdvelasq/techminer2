@@ -7,8 +7,7 @@ Creates a Factor Map.
 
 * **Note:** The number of factors affects the number of columns in the concept grid.
 
-Example:
--------------------------------------------------------------------------------
+
 
 >>> root_dir = "data/regtech/"
 
