@@ -1,5 +1,5 @@
 
-.. automodule:: techminer2.vantagepoint.analyze.auto_correlation_map
+.. automodule:: techminer2plus.analyze.map.auto_correlation_map
     :members:
     :undoc-members:
     :show-inheritance:

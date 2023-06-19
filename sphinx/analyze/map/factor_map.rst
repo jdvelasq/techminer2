@@ -1,5 +1,5 @@
 
-.. automodule:: techminer2.vantagepoint.analyze.factor_map
+.. automodule:: techminer2plus.analyze.map.factor_map
     :members:
     :undoc-members:
     :show-inheritance:
