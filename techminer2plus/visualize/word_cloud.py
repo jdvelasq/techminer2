@@ -67,13 +67,34 @@ import numpy as np
 from matplotlib.figure import Figure
 from wordcloud import WordCloud
 
+from ..analyze import list_items
+from ..check_params import check_listview
 from ..classes import WordCloudChart
 
 
 def word_cloud(
-    obj,
+    obj=None,
+    #
+    # Chart params:
     title=None,
     figsize=(10, 10),
+    #
+    # list_items params:
+    field=None,
+    metric="OCC",
+    #
+    # Item filters:
+    top_n=10,
+    occ_range=None,
+    gc_range=None,
+    custom_items=None,
+    #
+    # Database params:
+    root_dir="./",
+    database="main",
+    year_filter=None,
+    cited_by_filter=None,
+    **filters,
 ):
     """Creates a word cloud.
 
@@ -119,6 +140,26 @@ def word_cloud(
     #
     # Main code:
     #
+    if obj is not None:
+        check_listview(obj)
+    else:
+        obj = list_items(
+            field=field,
+            metric=metric,
+            #
+            # Item filters:
+            top_n=top_n,
+            occ_range=occ_range,
+            gc_range=gc_range,
+            custom_items=custom_items,
+            #
+            # Database params:
+            root_dir=root_dir,
+            database=database,
+            year_filter=year_filter,
+            cited_by_filter=cited_by_filter,
+            **filters,
+        )
 
     chart = WordCloudChart()
     chart.plot_ = create_plot()

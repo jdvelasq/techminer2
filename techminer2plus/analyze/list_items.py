@@ -82,11 +82,13 @@ from ..sorting import sort_indicators_by_metric
 def list_items(
     field,
     metric="OCC",
+    #
     # Item filters:
     top_n=10,
     occ_range=None,
     gc_range=None,
     custom_items=None,
+    #
     # Database params:
     root_dir="./",
     database="main",

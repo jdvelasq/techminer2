@@ -67,14 +67,34 @@ Table:
 import pandas as pd
 import plotly.express as px
 
+from ..analyze import list_items
 from ..check_params import check_listview
 from ..classes import BasicChart
 
 
 def world_map(
-    obj,
+    obj=None,
+    #
+    # Chart params:
     title=None,
     colormap="Blues",
+    #
+    # list_items params:
+    field=None,
+    metric="OCC",
+    #
+    # Item filters:
+    top_n=10,
+    occ_range=None,
+    gc_range=None,
+    custom_items=None,
+    #
+    # Database params:
+    root_dir="./",
+    database="main",
+    year_filter=None,
+    cited_by_filter=None,
+    **filters,
 ):
     """Creates a world map.
 
@@ -150,7 +170,26 @@ def world_map(
     # Main code
     #
 
-    check_listview(obj)
+    if obj is not None:
+        check_listview(obj)
+    else:
+        obj = list_items(
+            field=field,
+            metric=metric,
+            #
+            # Item filters:
+            top_n=top_n,
+            occ_range=occ_range,
+            gc_range=gc_range,
+            custom_items=custom_items,
+            #
+            # Database params:
+            root_dir=root_dir,
+            database=database,
+            year_filter=year_filter,
+            cited_by_filter=cited_by_filter,
+            **filters,
+        )
 
     chart = BasicChart()
     chart.plot_ = create_plot()

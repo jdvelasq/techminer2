@@ -4,7 +4,7 @@ Analyze
 .. raw:: html
 
     <hr style="height:2px;border-width:0;color:gray;background-color:black">
-    <p><center><strong>Main Functions</strong></center></p>
+    <p><center><strong>D I S C O V E R</strong></center></p>
 
 
 .. toctree::

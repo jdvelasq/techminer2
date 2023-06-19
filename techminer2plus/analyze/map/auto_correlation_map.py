@@ -76,9 +76,11 @@ from ..matrix.list_cells_in_matrix import list_cells_in_matrix
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 def auto_correlation_map(
+    #
     # Matrix params:
     rows_and_columns,
     method="pearson",
+    #
     # Map params:
     n_labels=None,
     color="#8da4b4",
@@ -92,11 +94,13 @@ def auto_correlation_map(
     xaxes_range=None,
     yaxes_range=None,
     show_axes=False,
+    #
     # Item filters:
     top_n=None,
     occ_range=None,
     gc_range=None,
     custom_items=None,
+    #
     # Database params:
     root_dir="./",
     database="main",

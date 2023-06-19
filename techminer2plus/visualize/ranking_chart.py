@@ -62,13 +62,16 @@ Table:
 """
 import plotly.express as px
 
+from ..analyze import list_items
 from ..check_params import check_listview
 from ..classes import BasicChart
 
 
 # pylint: disable=too-many-arguments
 def ranking_chart(
-    obj,
+    obj=None,
+    #
+    # Chart params:
     title=None,
     field_label=None,
     metric_label=None,
@@ -77,6 +80,23 @@ def ranking_chart(
     line_color="black",
     line_width=1.5,
     yshift=4,
+    #
+    # list_items params:
+    field=None,
+    metric="OCC",
+    #
+    # Item filters:
+    top_n=10,
+    occ_range=None,
+    gc_range=None,
+    custom_items=None,
+    #
+    # Database params:
+    root_dir="./",
+    database="main",
+    year_filter=None,
+    cited_by_filter=None,
+    **filters,
 ):
     """Creates a rank chart.
 
@@ -155,7 +175,26 @@ def ranking_chart(
     # Main code
     #
 
-    check_listview(obj)
+    if obj is not None:
+        check_listview(obj)
+    else:
+        obj = list_items(
+            field=field,
+            metric=metric,
+            #
+            # Item filters:
+            top_n=top_n,
+            occ_range=occ_range,
+            gc_range=gc_range,
+            custom_items=custom_items,
+            #
+            # Database params:
+            root_dir=root_dir,
+            database=database,
+            year_filter=year_filter,
+            cited_by_filter=cited_by_filter,
+            **filters,
+        )
 
     if title is None:
         title = ""

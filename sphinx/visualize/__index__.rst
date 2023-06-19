@@ -4,7 +4,7 @@ Visualize
 .. raw:: html
 
     <hr style="height:2px;border-width:0;color:gray;background-color:black">
-    <p><center><strong>Basic Charts</strong></center></p>
+    <p><center><strong>B A S I C   C H A R T S</strong></center></p>
 
 
 .. toctree::    
