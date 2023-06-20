@@ -4,16 +4,16 @@ Annual Scientific Production
 ===============================================================================
 
 
->>> directory = "data/regtech/"
->>> file_name = "sphinx/_static/bibliometrix__annual_scientific_production.html"
+>>> root_dir = "data/regtech/"
 
->>> from techminer2 import bibliometrix
->>> r = bibliometrix.overview.annual_scientific_production(directory)
+>>> import techminer2plus
+>>> r = techminer2plus.report.overview.annual_scientific_production(root_dir)
+>>> file_name = "sphinx/_static/report/overview/annual_scientific_production.html"
 >>> r.plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../_static/bibliometrix__annual_scientific_production.html" 
+    <iframe src="../../_static/report/overview/annual_scientific_production.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 
@@ -30,8 +30,19 @@ year                ...
 
 
 >>> print(r.prompt_)
-The table below provides data on the annual scientific production. Use the table to draw conclusions about annual research productivity and the cumulative productivity. The column 'OCC' is the number of documents published in a given year. The column 'cum_OCC' is the cumulative number of documents published up to a given year. The information in the table is used to create a line plot of number of publications per year. In your analysis, be sure to describe in a clear and concise way, any trends or patterns you observe, and identify any outliers or anomalies in the data. Limit your description to one paragraph with no more than 250 words.
+The table below, delimited by triple backticks, provides data on the annual \\
+scientific production in a bibliographic database. Use the table to draw \\
+conclusions about annual research productivity and the cumulative \\
+productivity. The column 'OCC' is the number of documents published in a \\
+given year. The column 'cum_OCC' is the cumulative number of documents \\
+published up to a given year. The information in the table is used to \\
+create a line plot of number of publications per year. In your analysis, be \\
+sure to describe in a clear and concise way, any trends or patterns you \\
+observe, and identify any outliers or anomalies in the data. Limit your \\
+description to one paragraph with no more than 250 words.
 <BLANKLINE>
+Table:
+```
 |   year |   OCC |   cum_OCC |
 |-------:|------:|----------:|
 |   2016 |     1 |         1 |
@@ -42,13 +53,15 @@ The table below provides data on the annual scientific production. Use the table
 |   2021 |    10 |        38 |
 |   2022 |    12 |        50 |
 |   2023 |     2 |        52 |
+```
 <BLANKLINE>
-<BLANKLINE>
+
 
 # pylint: disable=line-too-long
 """
-# from ...classes import IndicatorByYearChart
-# from ...techminer.indicators import indicators_by_year, indicators_by_year_plot
+from ...classes import IndicatorByYearChart
+from ...prompts import format_prompt_for_tables
+from ...query import indicators_by_year, indicators_by_year_plot
 
 
 def annual_scientific_production(
@@ -76,9 +89,9 @@ def annual_scientific_production(
     def generate_chatgpt_prompt(table):
         """Generates the prompt for annual_scientific_production."""
 
-        return (
-            "The table below provides data on the annual scientific "
-            "production. Use the table to draw conclusions about annual "
+        main_text = (
+            "The table below, delimited by triple backticks, provides data on the annual scientific "
+            "production in a bibliographic database. Use the table to draw conclusions about annual "
             "research productivity and the cumulative productivity. The "
             "column 'OCC' is the number of documents published in a given "
             "year. The column 'cum_OCC' is the cumulative number of "
@@ -88,8 +101,10 @@ def annual_scientific_production(
             "concise way, any trends or patterns you observe, and identify "
             "any outliers or anomalies in the data. Limit your description "
             "to one paragraph with no more than 250 words."
-            f"\n\n{table.to_markdown()}\n\n"
         )
+
+        table_text = table.to_markdown()
+        return format_prompt_for_tables(main_text, table_text)
 
     #
     # Main code

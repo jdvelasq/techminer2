@@ -1,3 +1,3 @@
-.. automodule:: techminer2.bibliometrix.overview.annual_scientific_production
+.. automodule:: techminer2plus.report.overview.annual_scientific_production
     :members:
     :show-inheritance:
