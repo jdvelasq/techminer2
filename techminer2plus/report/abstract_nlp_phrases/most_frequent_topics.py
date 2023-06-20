@@ -70,7 +70,7 @@ Table:
 # pylint: disable=line-too-long
 """
 # from ...analyze import list_items
-# from ...vantagepoint.charts import ranking_chart
+from ...visualize import ranking_chart
 
 FIELD = "abstract_nlp_phrases"
 

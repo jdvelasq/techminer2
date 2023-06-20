@@ -68,8 +68,8 @@ Table:
 
 # pylint: disable=line-too-long
 """
-# from ...vantagepoint.analyze import list_items
-# from ...vantagepoint.charts import ranking_chart
+from ...analyze import list_items
+from ...visualize import ranking_chart
 
 FIELD = "author_keywords"
 

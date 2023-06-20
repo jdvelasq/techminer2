@@ -6,7 +6,7 @@ Corresponding Author's Country
 
 
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/bibliometrix__corresponding_authors_country.html"
+>>> file_name = "sphinx/_static/report/countries/corresponding_authors_country.html"
 
 >>> import techminer2plus
 >>> r = techminer2plus.report.countries.corresponding_authors_country(
@@ -17,7 +17,7 @@ Corresponding Author's Country
 
 .. raw:: html
 
-    <iframe src="../../../_static/bibliometrix__corresponding_authors_country.html"height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/report/countries/corresponding_authors_country.html"height="600px" width="100%" frameBorder="0"></iframe>
 
 
 >>> r.table_.head()
@@ -80,12 +80,10 @@ Table:
 
 import plotly.express as px
 
-# from ...classes import CorresponingAuthorCountry
-# from ...item_utils import generate_custom_items
-# from ...sort_utils import sort_indicators_by_metric
-# from ...techminer.indicators.collaboration_indicators_by_field import (
-#     collaboration_indicators_by_field,
-# )
+from ...classes import CorresponingAuthorCountry
+from ...items import generate_custom_items
+from ...query import collaboration_indicators_by_field
+from ...sorting import sort_indicators_by_metric
 
 
 # pylint: disable=too-many-arguments

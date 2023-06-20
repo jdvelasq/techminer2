@@ -21,7 +21,8 @@ WordCloud
 
 
 """
-# from ...vantagepoint.analyze import list_items
+from ...analyze import list_items
+
 # from ...vantagepoint.charts import word_cloud as vp_word_cloud
 
 FIELD = "key_concepts"

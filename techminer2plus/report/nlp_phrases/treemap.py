@@ -58,7 +58,8 @@ Table:
 
 # pylint: disable=line-too-long
 """
-# from ...vantagepoint.analyze import list_items
+from ...analyze import list_items
+
 # from ...vantagepoint.charts import treemap as vp_treemap
 
 FIELD = "nlp_phrases"
