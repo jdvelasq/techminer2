@@ -7,7 +7,7 @@ Most Frequent Sources
 
 
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/bibliometrix__most_frequent_sources.html"
+>>> file_name = "sphinx/_static/report/sources/most_frequent_sources.html"
 
 >>> import techminer2plus
 >>> r = techminer2plus.report.sources.most_frequent_sources(
@@ -18,7 +18,7 @@ Most Frequent Sources
 
 .. raw:: html
 
-    <iframe src="../../_static/bibliometrix__most_frequent_sources.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/report/sources/most_frequent_sources.html" height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> r.table_.head()
@@ -33,12 +33,12 @@ Name: OCC, dtype: int64
 
 
 >>> print(r.prompt_)
-Your task is to generate an analysis about the bibliometric indicators of the \\
-'source_abbr' field in a scientific bibliography database. Summarize the table below, \\
-sorted by the 'OCC' metric, and delimited by triple backticks, identify \\
-any notable patterns, trends, or outliers in the data, and discuss their \\
-implications for the research field. Be sure to provide a concise summary \\
-of your findings in no more than 150 words.
+Your task is to generate an analysis about the bibliometric indicators of \\
+the 'source_abbr' field in a scientific bibliography database. Summarize \\
+the table below, sorted by the 'OCC' metric, and delimited by triple \\
+backticks, identify any notable patterns, trends, or outliers in the data, \\
+and discuss their implications for the research field. Be sure to provide a \\
+concise summary of your findings in no more than 150 words.
 <BLANKLINE>
 Table:
 ```
@@ -67,10 +67,13 @@ Table:
 ```
 <BLANKLINE>
 
+
+
 # pylint: disable=line-too-long
 """
-# from ...vantagepoint.analyze import list_items
-# from ...vantagepoint.charts import ranking_chart
+
+from ...analyze import list_items
+from ...visualize import ranking_chart
 
 
 # pylint: disable=too-many-arguments
@@ -128,7 +131,7 @@ def most_frequent_sources(
     """
 
     if title is None:
-        title = "Most Frequent Sources"
+        "Most Frequent Sources"
 
     item_list = list_items(
         field="source_abbr",

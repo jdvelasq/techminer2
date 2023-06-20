@@ -31,12 +31,12 @@ Name: global_citations, dtype: int64
 
 
 >>> print(r.prompt_)
-Your task is to generate an analysis about the bibliometric indicators of the \\
-'authors' field in a scientific bibliography database. Summarize the table below, \\
-sorted by the 'global_citations' metric, and delimited by triple backticks, identify \\
-any notable patterns, trends, or outliers in the data, and discuss their \\
-implications for the research field. Be sure to provide a concise summary \\
-of your findings in no more than 150 words.
+Your task is to generate an analysis about the bibliometric indicators of \\
+the 'authors' field in a scientific bibliography database. Summarize the \\
+table below, sorted by the 'global_citations' metric, and delimited by \\
+triple backticks, identify any notable patterns, trends, or outliers in the \\
+data, and discuss their implications for the research field. Be sure to \\
+provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
 Table:
 ```
@@ -70,8 +70,8 @@ Table:
 
 # pylint: disable=line-too-long
 """
-# from ...vantagepoint.analyze import list_items
-# from ...vantagepoint.charts import ranking_chart
+from ...analyze import list_items
+from ...visualize import ranking_chart
 
 
 # pylint: disable=too-many-arguments

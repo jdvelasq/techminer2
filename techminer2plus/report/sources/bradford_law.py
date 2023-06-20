@@ -6,23 +6,18 @@ Bradford's Law
 
 
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/bibliometrix__bradford_law.html"
+>>> file_name = "sphinx/_static/report/sources/bradford_law.html"
 
 >>> import techminer2plus
->>> bibliometrix.sources.bradford_law(root_dir=root_dir).plot_.write_html(file_name)
+>>> bradford = techminer2plus.report.sources.bradford_law(root_dir=root_dir)
+>>> bradford.plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../_static/bibliometrix__bradford_law.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/report/sources/bradford_law.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
-    
-Example
--------------------------------------------------------------------------------
-
->>> print(bibliometrix.sources.bradford_law(
-...     root_dir=root_dir,
-... ).source_clustering_.head(20).to_markdown())
+>>> print(bradford.source_clustering_.head(20).to_markdown())
 | source_abbr                   |   no |   OCC |   cum_OCC |   global_citations |   zone |
 |:------------------------------|-----:|------:|----------:|-------------------:|-------:|
 | J BANK REGUL                  |    1 |     2 |         2 |                 35 |      1 |
@@ -49,9 +44,7 @@ Example
 
 
 
->>> print(bibliometrix.sources.bradford_law(
-...     root_dir=root_dir,
-... ).core_sources_.head(5).to_markdown())
+>>> print(bradford.core_sources_.head(5).to_markdown())
 |    |   Num Sources | %       |   Acum Num Sources | % Acum   |   Documents published |   Tot Documents published |   Num Documents | Tot Documents   |   Bradford's Group |
 |---:|--------------:|:--------|-------------------:|:---------|----------------------:|--------------------------:|----------------:|:----------------|-------------------:|
 |  0 |             6 | 13.04 % |                  6 | 13.04 %  |                     2 |                        12 |              12 | 23.08 %         |                  1 |
@@ -67,9 +60,8 @@ import numpy as np
 import pandas as pd
 import plotly.express as px
 
-# from ..._lib._explode import explode
-# from ...classes import BradfordLaw
-# from ...records import read_records
+from ...classes import BradfordLaw
+from ...records import read_records
 
 
 def bradford_law(
@@ -127,7 +119,7 @@ def _core_sources(
     pandas.DataFrame
         Dataframe with the core sources of the records
     """
-    documents = read_records(
+    records = read_records(
         root_dir=root_dir,
         database=database,
         year_filter=year_filter,
@@ -135,20 +127,21 @@ def _core_sources(
         **filters,
     )
 
-    documents["num_documents"] = 1
-    documents = explode(
-        documents[
-            [
-                "source_title",
-                "num_documents",
-                "article",
-            ]
-        ],
-        "source_title",
-        sep="; ",
-    )
+    records["num_documents"] = 1
 
-    sources = documents.groupby("source_title", as_index=True).agg(
+    # records = explode(
+    #     records[
+    #         [
+    #             "source_title",
+    #             "num_documents",
+    #             "article",
+    #         ]
+    #     ],
+    #     "source_title",
+    #     sep="; ",
+    # )
+
+    sources = records.groupby("source_title", as_index=True).agg(
         {
             "num_documents": np.sum,
         }
@@ -180,7 +173,7 @@ def _core_sources(
         + " %"
     )
 
-    bradford1 = int(len(documents) / 3)
+    bradford1 = int(len(records) / 3)
     bradford2 = 2 * bradford1
 
     sources["Bradford's Group"] = sources["Num Documents"].map(

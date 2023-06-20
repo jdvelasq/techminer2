@@ -9,17 +9,17 @@ Example
 -------------------------------------------------------------------------------
 
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/bibliometrix__lotka_law.html"
+>>> file_name = "sphinx/_static/report/authors/lotka_law.html"
 
 >>> import techminer2plus
->>> bibliometrix.authors.lotka_law(root_dir=root_dir).plot_.write_html(file_name)
+>>> techminer2plus.report.authors.lotka_law(root_dir=root_dir).plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../_static/bibliometrix__lotka_law.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/report/authors/lotka_law.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
->>> bibliometrix.authors.lotka_law(root_dir=root_dir).table_
+>>> techminer2plus.report.authors.lotka_law(root_dir=root_dir).table_
    Documents Written  ...  Prop Theoretical Authors
 0                  1  ...                     0.735
 1                  2  ...                     0.184
@@ -32,8 +32,8 @@ Example
 """
 import plotly.graph_objects as go
 
-# from ...classes import LotkaLaw
-# from ...techminer.indicators.indicators_by_field import indicators_by_field
+from ...classes import LotkaLaw
+from ...query import indicators_by_field
 
 
 def lotka_law(

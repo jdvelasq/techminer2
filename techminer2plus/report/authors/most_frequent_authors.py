@@ -5,7 +5,7 @@ Most Frequent Authors
 
 
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/bibliometrix__most_frequent_authors.html"
+>>> file_name = "sphinx/_static/report/authors/most_frequent_authors.html"
 
 >>> import techminer2plus
 >>> r = techminer2plus.report.authors.most_frequent_authors(
@@ -16,7 +16,7 @@ Most Frequent Authors
 
 .. raw:: html
 
-    <iframe src="../../../_static/bibliometrix__most_frequent_authors.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/report/authors/most_frequent_authors.html" height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> r.table_.head()
@@ -30,12 +30,12 @@ Name: OCC, dtype: int64
 
 
 >>> print(r.prompt_)
-Your task is to generate an analysis about the bibliometric indicators of the \\
-'authors' field in a scientific bibliography database. Summarize the table below, \\
-sorted by the 'OCC' metric, and delimited by triple backticks, identify \\
-any notable patterns, trends, or outliers in the data, and discuss their \\
-implications for the research field. Be sure to provide a concise summary \\
-of your findings in no more than 150 words.
+Your task is to generate an analysis about the bibliometric indicators of \\
+the 'authors' field in a scientific bibliography database. Summarize the \\
+table below, sorted by the 'OCC' metric, and delimited by triple backticks, \\
+identify any notable patterns, trends, or outliers in the data, and discuss \\
+their implications for the research field. Be sure to provide a concise \\
+summary of your findings in no more than 150 words.
 <BLANKLINE>
 Table:
 ```
@@ -71,8 +71,8 @@ Table:
 
 # pylint: disable=line-too-long
 """
-# from ...vantagepoint.analyze import list_items
-# from ...vantagepoint.charts import ranking_chart
+from ...analyze import list_items
+from ...visualize import ranking_chart
 
 
 # pylint: disable=too-many-arguments
