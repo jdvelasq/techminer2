@@ -5,12 +5,11 @@
 import os
 import textwrap
 
-# from ..classes import ItemsList, MostCitedDocuments
-# from ..record_utils import create_records_report, read_records
-# from ..techminer.indicators.indicators_by_document import (
-#     indicators_by_document,
-# )
-# from ..vantagepoint.charts import ranking_chart
+from ..classes import ItemsList, MostCitedDocuments
+from ..prompts import format_prompt_for_records
+from ..query import indicators_by_document
+from ..records import create_records_report, read_records
+from ..visualize import ranking_chart
 
 
 # pylint: disable=too-many-locals
@@ -115,27 +114,16 @@ def generate_chatgpt_prompt(
 ):
     """ChatGPT prompt."""
 
-    abstracts = records["abstract"].dropna()
-    abstracts = abstracts.map(
-        lambda x: textwrap.fill(x, width=70).replace("\n", " \\\n")
+    main_text = (
+        "Your task is to summarize in each abstract of the following text. "
+        "Abstracts are delimited in triple backticks. "
+        "Your summary should capture the central idea of the each abstract, "
+        "in at most 40 words."
     )
-    abstracts = abstracts.to_list()
+
+    prompt = format_prompt_for_records(main_text, records, weight=None)
 
     file_path = os.path.join(root_dir, "reports", prompt_filename)
     with open(file_path, "w", encoding="utf-8") as file:
-        print(
-            # pylint: disable=line-too-long
-            "Your task is to summarize in each abstract of the following text. Your summary \\\n"
-            "should capture the central idea of the each abstract, in at most 40 words.\n\n"
-            "Summarize the text below, delimited by triple backticks:\n\n",
-            file=file,
-        )
-
-        for i_abstract, abstract in enumerate(abstracts):
-            print(
-                f"Abstract {i_abstract + 1}: ",
-                file=file,
-            )
-            print(f"```\n{abstract}\n```\n\n", file=file)
-
-        print(f"--INFO-- The file '{file_path}' was created.")
+        print(prompt, file=file)
+    print(f"--INFO-- The file '{file_path}' was created.")

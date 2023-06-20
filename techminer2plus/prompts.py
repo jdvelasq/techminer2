@@ -66,6 +66,6 @@ def format_prompt_for_records(main_text, records, weight=None):
             text += f"Record {i_record+1}:\n"
 
         text += f"{record_id}\n"
-        text += f"```\n{abstract}\n```\n\n"
+        text += f"Abstract:\n```\n{abstract}\n```\n\n"
 
     return prompt + text

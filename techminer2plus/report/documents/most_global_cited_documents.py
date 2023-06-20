@@ -5,7 +5,7 @@ Most Global Cited Documents
 
 
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/bibliometrix__most_global_cited_documents.html"
+>>> file_name = "sphinx/_static/report/documents/most_global_cited_documents.html"
 
 >>> import techminer2plus
 >>> r = techminer2plus.report.documents.most_global_cited_documents(
@@ -20,7 +20,7 @@ Most Global Cited Documents
 
 .. raw:: html
 
-    <iframe src="../../../_static/bibliometrix__most_global_cited_documents.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/report/documents/most_global_cited_documents.html" height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> print(r.table_.to_markdown())
