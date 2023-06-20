@@ -6,7 +6,7 @@ Most Global Cited Organizations
 
 
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/bibliometrix__most_global_cited_organizations.html"
+>>> file_name = "sphinx/_static/report/organizations/most_global_cited_organizations.html"
 
 >>> import techminer2plus
 >>> r = techminer2plus.report.organizations.most_global_cited_organizations(
@@ -17,7 +17,7 @@ Most Global Cited Organizations
 
 .. raw:: html
 
-    <iframe src="../../../_static/bibliometrix__most_global_cited_organizations.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/report/organizations/most_global_cited_organizations.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> r.table_.head()
 organizations
@@ -30,12 +30,12 @@ Name: global_citations, dtype: int64
 
 
 >>> print(r.prompt_)
-Your task is to generate an analysis about the bibliometric indicators of the \\
-'organizations' field in a scientific bibliography database. Summarize the table below, \\
-sorted by the 'global_citations' metric, and delimited by triple backticks, identify \\
-any notable patterns, trends, or outliers in the data, and discuss their \\
-implications for the research field. Be sure to provide a concise summary \\
-of your findings in no more than 150 words.
+Your task is to generate an analysis about the bibliometric indicators of \\
+the 'organizations' field in a scientific bibliography database. Summarize \\
+the table below, sorted by the 'global_citations' metric, and delimited by \\
+triple backticks, identify any notable patterns, trends, or outliers in the \\
+data, and discuss their implications for the research field. Be sure to \\
+provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
 Table:
 ```
@@ -67,8 +67,8 @@ Table:
 
 # pylint: disable=line-too-long
 """
-# from ...vantagepoint.analyze import list_items
-# from ...vantagepoint.charts import ranking_chart
+from ...analyze import list_items
+from ...visualize import ranking_chart
 
 
 # pylint: disable=too-many-arguments

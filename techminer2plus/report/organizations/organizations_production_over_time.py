@@ -1,12 +1,12 @@
 # flake8: noqa
 """
-(NEW) Organizations' Production over Time
+Organizations' Production over Time
 ===============================================================================
 
 
 
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/bibliometrix__organizations_production_over_time.html"
+>>> file_name = "sphinx/_static/report/organizations/organizations_production_over_time.html"
 
 >>> import techminer2plus
 >>> r = techminer2plus.report.organizations.organizations_production_over_time(
@@ -18,7 +18,7 @@
 
 .. raw:: html
 
-    <iframe src="../../../_static/bibliometrix__organizations_production_over_time.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/report/organizations/organizations_production_over_time.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> print(r.documents_per_item_.head().to_markdown())
 |    | organizations                              | title                                                                                        |   year | source_title                                   |   global_citations |   local_citations | doi                           |
@@ -54,11 +54,12 @@
 
 
 >>> print(r.prompt_)
-Your task is to generate an analysis about the  occurrences \\
-by year of the 'organizations' in a scientific bibliography database. Summarize the table \\
-below, delimited by triple backticks, identify any notable patterns, trends, or \\
-outliers in the data, and discuss their implications for the research field. Be sure \\
-to provide a concise summary of your findings in no more than 150 words.
+Your task is to generate an analysis about the  occurrences by year of the \\
+'organizations' in a scientific bibliography database. Summarize the table \\
+below, delimited by triple backticks, identify any notable patterns, \\
+trends, or outliers in the data, and disc  uss their implications for the \\
+research field. Be sure to provide a concise summary of your findings in no \\
+more than 150 words.
 <BLANKLINE>
 Table:
 ```
@@ -82,13 +83,11 @@ Table:
 
 # pylint: disable=line-too-long
 """
-# from ...classes import ProductionOverTimeChart
-# from ...techminer.indicators.indicators_by_field_per_year import (
-#     indicators_by_field_per_year,
-# )
-# from ...vantagepoint.analyze import terms_by_year
-# from ...vantagepoint.charts import gantt_chart
-# from ..documents_per_criterion import documents_per_criterion
+from ...analyze import terms_by_year
+from ...classes import ProductionOverTimeChart
+from ...query import indicators_by_field_per_year
+from ...visualize import gantt_chart
+from ..documents_per_criterion import documents_per_criterion
 
 
 def organizations_production_over_time(

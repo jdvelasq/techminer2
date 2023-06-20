@@ -6,7 +6,7 @@ Corresponding Author's Organization
 
 
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/bibliometrix__corresponding_authors_organization.html"
+>>> file_name = "sphinx/_static/report/organizations/corresponding_authors_organization.html"
 
 >>> import techminer2plus
 >>> r = techminer2plus.report.organizations.corresponding_authors_organization(
@@ -17,7 +17,7 @@ Corresponding Author's Organization
 
 .. raw:: html
 
-    <iframe src="../../../_static/bibliometrix__corresponding_authors_organization.html"height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/report/organizations/corresponding_authors_organization.html"height="600px" width="100%" frameBorder="0"></iframe>
 
 
 >>> r.table_.head()
@@ -76,18 +76,15 @@ Table:
 
 # pylint: disable=line-too-long   
 """
-
-
 import plotly.express as px
 
-# from ...classes import CorresponingAuthorOrganization
-# from ...item_utils import generate_custom_items
-# from ...sort_utils import sort_indicators_by_metric
-# from ...techminer.indicators.collaboration_indicators_by_field import (
-#     collaboration_indicators_by_field,
-# )
+from ...classes import CorresponingAuthorOrganization
+from ...items import generate_custom_items
+from ...query import collaboration_indicators_by_field
+from ...sorting import sort_indicators_by_metric
 
 
+# pylint: disable=too-many-arguments
 def corresponding_authors_organization(
     # Item filters:
     top_n=None,
