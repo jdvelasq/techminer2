@@ -1,4 +1,4 @@
-.. automodule:: techminer2.bibliometrix.intellectual_structure.historiograph
+.. automodule:: techminer2plus.report.intellectual_structure.historiograph
     :members:
     :undoc-members:
     :show-inheritance:

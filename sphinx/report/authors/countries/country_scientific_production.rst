@@ -1,4 +1,4 @@
-.. automodule:: techminer2.bibliometrix.countries.country_scientific_production
+.. automodule:: techminer2plus.report.countries.country_scientific_production
     :members:
     :undoc-members:
     :show-inheritance:

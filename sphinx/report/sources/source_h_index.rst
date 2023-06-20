@@ -1,4 +1,4 @@
-.. automodule:: techminer2.bibliometrix.sources.source_h_index
+.. automodule:: techminer2plus.report.sources.source_h_index
     :members:
     :undoc-members:
     :show-inheritance:

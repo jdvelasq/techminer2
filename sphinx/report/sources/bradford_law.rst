@@ -1,4 +1,4 @@
-.. automodule:: techminer2.bibliometrix.sources.bradford_law
+.. automodule:: techminer2plus.report.sources.bradford_law
     :members:
     :undoc-members:
     :show-inheritance:

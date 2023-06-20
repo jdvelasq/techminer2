@@ -1,4 +1,4 @@
-.. automodule:: techminer2.bibliometrix.countries.country_m_index
+.. automodule:: techminer2plus.report.countries.country_m_index
     :members:
     :undoc-members:
     :show-inheritance:

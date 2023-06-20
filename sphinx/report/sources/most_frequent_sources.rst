@@ -1,4 +1,4 @@
-.. automodule:: techminer2.bibliometrix.sources.most_frequent_sources
+.. automodule:: techminer2plus.report.sources.most_frequent_sources
     :members:
     :undoc-members:
     :show-inheritance:

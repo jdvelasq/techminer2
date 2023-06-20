@@ -1,4 +1,4 @@
-.. automodule:: techminer2.bibliometrix.organizations.organization_h_index
+.. automodule:: techminer2plus.report.organizations.organization_h_index
     :members:
     :undoc-members:
     :show-inheritance:

@@ -1,4 +1,4 @@
-.. automodule:: techminer2.bibliometrix.keywords.word_cloud
+.. automodule:: techminer2plus.report.keywords.word_cloud
     :members:
     :undoc-members:
     :show-inheritance:

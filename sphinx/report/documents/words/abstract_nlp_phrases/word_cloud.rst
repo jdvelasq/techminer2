@@ -1,4 +1,4 @@
-.. automodule:: techminer2.bibliometrix.abstract_nlp_phrases.word_cloud
+.. automodule:: techminer2plus.report.abstract_nlp_phrases.word_cloud
     :members:
     :undoc-members:
     :show-inheritance:

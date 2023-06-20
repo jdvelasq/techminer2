@@ -1,4 +1,4 @@
-.. automodule:: techminer2.bibliometrix.author_keywords.trending_topics
+.. automodule:: techminer2plus.report.author_keywords.trending_topics
     :members:
     :undoc-members:
     :show-inheritance:

@@ -1,4 +1,4 @@
-.. automodule:: techminer2.bibliometrix.clustering.coupling_matrix_list
+.. automodule:: techminer2plus.report.clustering.coupling_matrix_list
     :members:
     :undoc-members:
     :show-inheritance:
