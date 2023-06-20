@@ -1,13 +1,15 @@
 # flake8: noqa
 """
-Statistics
+.. _analyze.main_information:
+
+Main Information
 ===============================================================================
 
 
 >>> root_dir = "data/regtech/"
 
->>> from techminer2 import vantagepoint
->>> stats = vantagepoint.analyze.statistics(root_dir)
+>>> import techminer2plus
+>>> stats = techminer2plus.analyze.main_information(root_dir)
 >>> stats.table_
                                                             Value
 Category       Item                                              
@@ -40,37 +42,38 @@ AUTHORS        Authors                                        102
                Countries                                       29
                Countries (1st author)                          25
 KEYWORDS       Raw author keywords                            148
-               Cleaned author keywords                        148
+               Cleaned author keywords                        143
                Raw index keywords                             155
-               Cleaned index keywords                         155
+               Cleaned index keywords                         149
                Raw keywords                                   273
-               Cleaned keywords                               271
+               Cleaned keywords                               252
 NLP PHRASES    Raw title NLP phrases                           40
                Cleaned title NLP phrases                       40
                Raw abstract NLP phrases                       157
                Cleaned abstract NLP phrases                   149
                Raw NLP phrases                                167
                Cleaned NLP phrases                            158
-KEY CONCEPTS   Raw key concepts                               373
-               Cleaned key concepts                           364
-            
+DESCRIPTORS    Raw descriptors                                373
+               Cleaned descriptors                            338
+
+
                
->>> file_name = "sphinx/_static/bibliometrix__main_info_plot.html"               
+>>> file_name = "sphinx/_static/analyze/main_info.html"               
 >>> stats.plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/bibliometrix__main_info_plot.html" height="800px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/analyze/main_info.html" height="800px" width="100%" frameBorder="0"></iframe>
 
 
     
 >>> print(stats.prompt_)
-Your task is to generate a short summary for a research paper of a table with record \\
-and field statistics for a dataset of scientific publications.
-<BLANKLINE>
-The table below, delimited by triple backticks, provides data on the main characteristics \\
-of the records and fields of the bibliographic dataset. Use the the information in the \\
-table to draw conclusions. Limit your description to one paragraph in at most 60 words.
+Your task is to generate a short summary for a research paper of a table \\
+with record and field statistics for a dataset of scientific publications. \\
+The table below, delimited by triple backticks, provides data on the main \\
+characteristics of the records and fields of the bibliographic dataset. Use \\
+the the information in the table to draw conclusions. Limit your \\
+description to one paragraph in at most 100 words.
 <BLANKLINE>
 Table:
 ```
@@ -105,34 +108,38 @@ Table:
 | ('AUTHORS', 'Countries')                               | 29        |
 | ('AUTHORS', 'Countries (1st author)')                  | 25        |
 | ('KEYWORDS', 'Raw author keywords')                    | 148       |
-| ('KEYWORDS', 'Cleaned author keywords')                | 148       |
+| ('KEYWORDS', 'Cleaned author keywords')                | 143       |
 | ('KEYWORDS', 'Raw index keywords')                     | 155       |
-| ('KEYWORDS', 'Cleaned index keywords')                 | 155       |
+| ('KEYWORDS', 'Cleaned index keywords')                 | 149       |
 | ('KEYWORDS', 'Raw keywords')                           | 273       |
-| ('KEYWORDS', 'Cleaned keywords')                       | 271       |
+| ('KEYWORDS', 'Cleaned keywords')                       | 252       |
 | ('NLP PHRASES', 'Raw title NLP phrases')               | 40        |
 | ('NLP PHRASES', 'Cleaned title NLP phrases')           | 40        |
 | ('NLP PHRASES', 'Raw abstract NLP phrases')            | 157       |
 | ('NLP PHRASES', 'Cleaned abstract NLP phrases')        | 149       |
 | ('NLP PHRASES', 'Raw NLP phrases')                     | 167       |
 | ('NLP PHRASES', 'Cleaned NLP phrases')                 | 158       |
-| ('KEY CONCEPTS', 'Raw key concepts')                   | 373       |
-| ('KEY CONCEPTS', 'Cleaned key concepts')               | 364       |
+| ('DESCRIPTORS', 'Raw descriptors')                     | 373       |
+| ('DESCRIPTORS', 'Cleaned descriptors')                 | 338       |
 ```
 <BLANKLINE>
+
+    
+
 
 
 # pylint: disable=line-too-long
 """
-# import datetime
+import datetime
 
-# import numpy as np
-# import pandas as pd
-# import plotly.graph_objects as go
-# from plotly.subplots import make_subplots
+import numpy as np
+import pandas as pd
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
 
-# from ..classes import RecordStatistics
-# from ..records import read_records
+from ..classes import MainInformation
+from ..prompts import format_prompt_for_tables
+from ..records import read_records
 
 
 class _Statistics:
@@ -158,7 +165,7 @@ class _Statistics:
         self.compute_authors_stats()
         self.compute_keywords_stats()
         self.compute_nlp_phrases_stats()
-        self.compute_key_concepts_stats()
+        self.compute_descriptors_stats()
         self.make_report()
 
     def make_report(self):
@@ -779,27 +786,27 @@ class _Statistics:
             return 0
 
     #####################################################################################
-    def compute_key_concepts_stats(self):
+    def compute_descriptors_stats(self):
         """Computes the key concepts stats"""
         self.key_concepts_stats = pd.DataFrame(
             columns=["Category", "Item", "Value"]
         )
         self.key_concepts_stats.loc[(0,)] = [
-            "KEY CONCEPTS",
-            "Raw key concepts",
-            self.raw_key_concepts(),
+            "DESCRIPTORS",
+            "Raw descriptors",
+            self.raw_descriptors(),
         ]
         self.key_concepts_stats.loc[(1,)] = [
-            "KEY CONCEPTS",
-            "Cleaned key concepts",
-            self.cleaned_key_concepts(),
+            "DESCRIPTORS",
+            "Cleaned descriptors",
+            self.cleaned_descriptors(),
         ]
 
     # -----------------------------------------------------------------------------------
 
-    def raw_key_concepts(self):
+    def raw_descriptors(self):
         """Computes the number of raw author keywords"""
-        records = self.records.raw_key_concepts.copy()
+        records = self.records.raw_descriptors.copy()
         records = records.dropna()
         records = records.str.split(";")
         records = records.explode()
@@ -807,9 +814,9 @@ class _Statistics:
         records = records.drop_duplicates()
         return len(records)
 
-    def cleaned_key_concepts(self):
+    def cleaned_descriptors(self):
         """Computes the number of cleaned author keywords"""
-        records = self.records.key_concepts.copy()
+        records = self.records.descriptors.copy()
         records = records.dropna()
         records = records.str.split(";")
         records = records.explode()
@@ -875,16 +882,16 @@ def make_plot(report):
 
     add_text_trace(
         fig,
-        "KEY CONCEPTS",
-        "Raw key concepts",
+        "DESCRIPTORS",
+        "Raw descriptors",
         6,
         2,
     )
 
     add_text_trace(
         fig,
-        "KEY CONCEPTS",
-        "Cleaned key concepts",
+        "DESCRIPTORS",
+        "Cleaned descriptors",
         6,
         3,
     )
@@ -902,17 +909,18 @@ def make_plot(report):
 def make_chatpgt_prompt(report):
     """Makes the chatpgt prompt"""
     # pylint: disable=line-too-long
-    return (
-        "Your task is to generate a short summary for a research paper of a table with record \\\n"
-        "and field statistics for a dataset of scientific publications.\n\n"
-        "The table below, delimited by triple backticks, provides data on the main characteristics \\\n"
-        "of the records and fields of the bibliographic dataset. Use the the information in the \\\n"
-        "table to draw conclusions. Limit your description to one paragraph in at most 60 words.\n\n"
-        f"Table:\n```\n{report.to_markdown()}\n```\n"
+    main_text = (
+        "Your task is to generate a short summary for a research paper of a table with record "
+        "and field statistics for a dataset of scientific publications. "
+        "The table below, delimited by triple backticks, provides data on the main characteristics "
+        "of the records and fields of the bibliographic dataset. Use the the information in the "
+        "table to draw conclusions. Limit your description to one paragraph in at most 100 words."
     )
 
+    return format_prompt_for_tables(main_text, report.to_markdown())
 
-def statistics(
+
+def main_information(
     root_dir="./",
     database="main",
     year_filter=None,
@@ -929,7 +937,7 @@ def statistics(
         **filters (dict, optional): Filters to be applied to the database. Defaults to {}.
 
     Returns:
-        RecordStatistics: RecordStatistics object.
+        MainInformation: MainInformation object.
 
     """
 
@@ -941,7 +949,7 @@ def statistics(
         **filters,
     )
 
-    obj = RecordStatistics()
+    obj = MainInformation()
     obj.table_ = stats.report_
     obj.plot_ = make_plot(stats.report_)
     obj.prompt_ = make_chatpgt_prompt(stats.report_)

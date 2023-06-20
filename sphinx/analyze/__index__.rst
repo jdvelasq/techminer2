@@ -76,6 +76,10 @@ Analyze
     associations/__index__
 
 
+.. toctree::
+    :maxdepth: 1
+
+    main_information
 
 
 .. raw:: html

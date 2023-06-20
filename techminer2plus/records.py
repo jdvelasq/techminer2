@@ -124,27 +124,7 @@ def read_records(
 
 def create_records_report(root_dir, target_dir, records, report_filename):
     # pylint: disable=too-many-statements
-    """Builds a report file with a given records subset.
-
-    Parameters
-    ----------
-    root_dir : str
-        The root project directory.
-
-    target_dir : str
-        The target directory within the "processed" subdirectory.
-
-    records : pandas.DataFrame
-        The records to be reported.
-
-    report_filename : str
-        The report filename.
-
-    Returns
-    -------
-    None
-
-    """
+    """Builds a report file with a given records subset."""
 
     def get_reported_columns(records):
         """Obtains the columns present in the records."""
@@ -179,7 +159,7 @@ def create_records_report(root_dir, target_dir, records, report_filename):
         records = records[column_list]
         return records
 
-    def write_report(records, directory, target_dir, report_filename):
+    def write_report_to_file(records, directory, target_dir, report_filename):
         """Writes the report to the file."""
 
         file_path = os.path.join(
@@ -245,10 +225,8 @@ def create_records_report(root_dir, target_dir, records, report_filename):
                 if index != records.index[-1]:
                     print("", file=file)
 
-        sys.stdout.write(f"--INFO-- The file '{file_path}' was created.\n")
+        print(f"--INFO-- The file '{file_path}' was created.")
 
-    # create_directory(base_dir=root_dir, target_dir=target_dir)
     reported_columns = get_reported_columns(records)
     records = filter_columns(records, reported_columns)
-    # records = sort_records(records)
-    write_report(records, root_dir, target_dir, report_filename)
+    write_report_to_file(records, root_dir, target_dir, report_filename)

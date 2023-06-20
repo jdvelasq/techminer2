@@ -1,56 +1,56 @@
 # flake8: noqa
 """
-Record Display
+Find records
 ===============================================================================
 
 Extracts documents from the databaase containing the text string specified by
 the parameter ``search_for`` in the column specified by the parameter
 ``field``. This functions allows the use of regular expressions for
-searching. The report is saved to the file ``processed/record_display.txt``.
+searching. The report is saved to the file ``reports/find_records.txt``.
 
 >>> root_dir = "data/regtech/"
 
->>> from techminer2 import vantagepoint
->>> vantagepoint.record_display(
+>>> import techminer2plus
+>>> techminer2plus.find.find_records(
 ...     field='author_keywords',
 ...     search_for='regtech',
 ...     root_dir=root_dir,
 ... )
---INFO-- The file 'data/regtech/processed/record_display.txt' was created.
+--INFO-- The file 'data/regtech/reports/find_records.txt' was created.
 
 
->>> vantagepoint.record_display(
+>>> techminer2plus.find.find_records(
 ...     field='abstract',
 ...     search_for='five-year',
 ...     root_dir=root_dir,
 ... )
---INFO-- The file 'data/regtech/processed/record_display.txt' was created.
+--INFO-- The file 'data/regtech/reports/find_records.txt' was created.
 
 
 
->>> vantagepoint.record_display(
+>>> techminer2plus.find.find_records(
 ...     field='abstract',
 ...     search_for='anti',
 ...     root_dir=root_dir,
 ... )
---INFO-- The file 'data/regtech/processed/record_display.txt' was created.
+--INFO-- The file 'data/regtech/reports/find_records.txt' was created.
 
 
 # pylint: disable=line-too-long
 """
 
 
-from .records import create_records_report, read_records
+from ..records import create_records_report, read_records
 
 
 # pylint: disable=too-many-arguments
-def record_display(
+def find_records(
     field,
     search_for,
     case=False,
     flags=0,
     regex=True,
-    report_filename="record_display.txt",
+    report_filename="find_records.txt",
     # Database params:
     root_dir="./",
     database="main",

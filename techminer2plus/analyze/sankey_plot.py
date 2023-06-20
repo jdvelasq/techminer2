@@ -1,11 +1,11 @@
 """
+.. _analyze.sankey_plot:
+
 Sankey Plot
 ===============================================================================
 
 
 
-Example
--------------------------------------------------------------------------------
 
 >>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/analyze/sankey_plot.html"

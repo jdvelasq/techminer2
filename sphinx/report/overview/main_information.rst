@@ -1,3 +1,3 @@
-.. automodule:: techminer2.bibliometrix.overview.main_information
+.. automodule:: techminer2plus.report.overview.main_information
     :members:
     :show-inheritance:

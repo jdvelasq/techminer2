@@ -206,10 +206,19 @@ class NetworkDegreePlot:
     prompt_: str
 
 
-# Analyze / Calculate / Statistics
+# Analyze / Main information
+@dataclass(init=False)
+class MainInformation:
+    """Record information."""
+
+    plot_: go.Figure
+    prompt_: str
+    table_: pd.DataFrame
+
+
 @dataclass(init=False)
 class RecordStatistics:
-    """Record statistics."""
+    """Record information."""
 
     plot_: go.Figure
     prompt_: str

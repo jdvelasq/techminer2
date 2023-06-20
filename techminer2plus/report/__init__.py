@@ -1,6 +1,4 @@
-"""
-This 
-"""
+"""Report module."""
 
 from . import (
     abstract_nlp_phrases,
