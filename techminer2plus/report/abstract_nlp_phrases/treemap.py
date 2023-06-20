@@ -5,7 +5,7 @@ TreeMap
 
 
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/bibliometrix__abstract_nlp_phrases_treemap.html"
+>>> file_name = "sphinx/_static/report/abstract_nlp_phrases/treemap.html"
 
 >>> import techminer2plus
 >>> chart = techminer2plus.report.abstract_nlp_phrases.treemap(
@@ -16,16 +16,16 @@ TreeMap
 
 .. raw:: html
 
-    <iframe src="../../../../_static/bibliometrix__abstract_nlp_phrases_treemap.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/report/abstract_nlp_phrases/treemap.html" height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> print(chart.prompt_)
-Your task is to generate an analysis about the bibliometric indicators of the \\
-'abstract_nlp_phrases' field in a scientific bibliography database. Summarize the table below, \\
-sorted by the 'OCC' metric, and delimited by triple backticks, identify \\
-any notable patterns, trends, or outliers in the data, and discuss their \\
-implications for the research field. Be sure to provide a concise summary \\
-of your findings in no more than 150 words.
+Your task is to generate an analysis about the bibliometric indicators of \\
+the 'abstract_nlp_phrases' field in a scientific bibliography database. \\
+Summarize the table below, sorted by the 'OCC' metric, and delimited by \\
+triple backticks, identify any notable patterns, trends, or outliers in the \\
+data, and discuss their implications for the research field. Be sure to \\
+provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
 Table:
 ```
@@ -49,16 +49,17 @@ Table:
 | MACHINE_LEARNING            |     4 |             1 |                   3 |                  7 |                 4 |                            1.75 |                           1    |                  -0.5 |                     1.5 |                   0.375     |                     2021 |     3 |                        2.33 |         2 |         1 |      0.67 |
 | DIGITAL_INNOVATION          |     3 |             2 |                   1 |                164 |                21 |                           54.67 |                           7    |                  -0.5 |                     0.5 |                   0.166667  |                     2018 |     6 |                       27.33 |         2 |         2 |      0.33 |
 | FINANCIAL_MARKETS           |     3 |             1 |                   2 |                151 |                 0 |                           50.33 |                           0    |                   0   |                     1   |                   0.333333  |                     2017 |     7 |                       21.57 |         1 |         1 |      0.14 |
-| REGTECH_APPROACH            |     3 |             2 |                   1 |                 34 |                12 |                           11.33 |                           4    |                   0   |                     0.5 |                   0.166667  |                     2018 |     6 |                        5.67 |         2 |         2 |      0.33 |
+| REGTECH                     |     3 |             2 |                   1 |                 34 |                12 |                           11.33 |                           4    |                   0   |                     0.5 |                   0.166667  |                     2018 |     6 |                        5.67 |         2 |         2 |      0.33 |
 | COMPLIANCE_COSTS            |     3 |             2 |                   1 |                  2 |                 0 |                            0.67 |                           0    |                   0   |                     0.5 |                   0.166667  |                     2020 |     4 |                        0.5  |         1 |         1 |      0.25 |
 ```
 <BLANKLINE>
 
+
+
 # pylint: disable=line-too-long
 """
 from ...analyze import list_items
-
-# from ...vantagepoint.charts import treemap as vp_treemap
+from ...visualize import treemap as visualize_treemap
 
 FIELD = "abstract_nlp_phrases"
 
@@ -97,7 +98,7 @@ def treemap(
         **filters,
     )
 
-    return vp_treemap(
+    return visualize_treemap(
         obj,
         title=title,
     )

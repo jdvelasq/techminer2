@@ -6,7 +6,7 @@
 
 
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/bibliometrix__most_global_cited_authors.html"
+>>> file_name = "sphinx/_static/report/most_global_cited_authors.html"
 
 >>> import techminer2plus
 >>> r = techminer2plus.report.authors.most_global_cited_authors(
@@ -17,7 +17,7 @@
 
 .. raw:: html
 
-    <iframe src="../../../_static/bibliometrix__most_global_cited_authors.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/report/most_global_cited_authors.html" height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> r.table_.head()

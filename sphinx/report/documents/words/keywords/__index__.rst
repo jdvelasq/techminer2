@@ -2,18 +2,17 @@ Keywords (Author + Index Keywords)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
-   most_frequent_topics
+   most_frequent_words
+
+.. toctree::
+   treemap
+
+.. toctree::
+   trending_words_per_year
 
 .. toctree::   
    word_cloud
 
 .. toctree::   
-   treemap
+   words_frequency_over_time
 
-.. toctree::
-   topic_dynamics
-
-.. toctree::   
-   trending_topics
-
-   

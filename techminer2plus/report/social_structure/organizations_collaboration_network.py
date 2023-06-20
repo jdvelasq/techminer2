@@ -15,12 +15,12 @@ Organizations Collaboration Network
 ... )
 
 
->>> file_name = "sphinx/_static/bibliometrix__organizations_collaboration_network_plot.html"
+>>> file_name = "sphinx/_static/report/organizations_collaboration_network_plot.html"
 >>> nnet.plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/bibliometrix__organizations_collaboration_network_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../../_static/report/organizations_collaboration_network_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> print(nnet.communities_.to_markdown())
@@ -71,12 +71,12 @@ Table:
 <BLANKLINE>
 
 
->>> file_name = "sphinx/_static/bibliometrix__organizations_collaboration_network_degree_plot.html"
+>>> file_name = "sphinx/_static/report/organizations_collaboration_network_degree_plot.html"
 >>> nnet.degree_plot__plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/bibliometrix__organizations_collaboration_network_degree_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../../_static/report/organizations_collaboration_network_degree_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
     

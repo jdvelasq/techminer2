@@ -5,27 +5,26 @@ WordCloud
 
 
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/images/bibliometrix__key_concepts_cloud.png"
+>>> file_name = "sphinx/images/report/descriptors/word_cloud.png"
 
 >>> import techminer2plus
->>> chart = techminer2plus.report.key_concepts.word_cloud(
+>>> chart = techminer2plus.report.descriptors.word_cloud(
 ...     title="Title NLP Phrases",
 ...     top_n=50,
 ...     root_dir=root_dir,
 ... )
 >>> chart.plot_.savefig(file_name)
 
-.. image:: ../../../../images/bibliometrix__key_concepts_cloud.png
+.. image:: ../../../../images/report/descriptors/word_cloud.png
     :width: 900px
     :align: center
 
 
 """
 from ...analyze import list_items
+from ...visualize import word_cloud as visualize_word_cloud
 
-# from ...vantagepoint.charts import word_cloud as vp_word_cloud
-
-FIELD = "key_concepts"
+FIELD = "descriptors"
 
 
 # pylint: disable=too-many-arguments
@@ -64,7 +63,7 @@ def word_cloud(
         **filters,
     )
 
-    return vp_word_cloud(
+    return visualize_word_cloud(
         obj,
         title=title,
         figsize=figsize,

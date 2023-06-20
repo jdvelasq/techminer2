@@ -17,12 +17,12 @@ Historiograph
 ... )
 
 
->>> file_name = "sphinx/_static/bibliometrix__historiograph_plot.html"
+>>> file_name = "sphinx/_static/report/historiograph_plot.html"
 >>> nnet.plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../_static/bibliometrix__historiograph_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/report/historiograph_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> nnet.links_.head()    
                                        citing_article                                      cited_article

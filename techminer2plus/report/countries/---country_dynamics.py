@@ -4,7 +4,7 @@
 
 
 # >>> directory = "data/regtech/"
-# >>> file_name = "sphinx/_static/bibliometrix__country_dynamics.html"
+# >>> file_name = "sphinx/_static/report/country_dynamics.html"
 
 # >>> import techminer2plus
 # >>> r = techminer2plus.report.countries.country_dynamics(
@@ -15,7 +15,7 @@
 
 # .. raw:: html
 
-#     <iframe src="../../../_static/bibliometrix__country_dynamics.html" height="600px" width="100%" frameBorder="0"></iframe>
+#     <iframe src="../../../_static/report/country_dynamics.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
 # >>> print(r.table_.head().to_markdown())

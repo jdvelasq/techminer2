@@ -39,4 +39,4 @@ Words
    .. toctree::
       :maxdepth: 1
 
-      key_concepts/__index__            
+      descriptors/__index__            

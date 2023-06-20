@@ -5,7 +5,7 @@ TreeMap
 
 
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/bibliometrix__title_nlp_phrases_treemap.html"
+>>> file_name = "sphinx/_static/report/title_nlp_phrases/treemap.html"
 
 >>> import techminer2plus
 >>> chart = techminer2plus.report.title_nlp_phrases.treemap(
@@ -16,16 +16,16 @@ TreeMap
 
 .. raw:: html
 
-    <iframe src="../../../../_static/bibliometrix__title_nlp_phrases_treemap.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/report/title_nlp_phrases/treemap.html" height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> print(chart.prompt_)
-Your task is to generate an analysis about the bibliometric indicators of the \\
-'title_nlp_phrases' field in a scientific bibliography database. Summarize the table below, \\
-sorted by the 'OCC' metric, and delimited by triple backticks, identify \\
-any notable patterns, trends, or outliers in the data, and discuss their \\
-implications for the research field. Be sure to provide a concise summary \\
-of your findings in no more than 150 words.
+Your task is to generate an analysis about the bibliometric indicators of \\
+the 'title_nlp_phrases' field in a scientific bibliography database. \\
+Summarize the table below, sorted by the 'OCC' metric, and delimited by \\
+triple backticks, identify any notable patterns, trends, or outliers in the \\
+data, and discuss their implications for the research field. Be sure to \\
+provide a concise summary of your findings in no more than 150 words.
 <BLANKLINE>
 Table:
 ```
@@ -56,11 +56,11 @@ Table:
 
 
 
+
 # pylint: disable=line-too-long
 """
 from ...analyze import list_items
-
-# from ...vantagepoint.charts import treemap as vp_treemap
+from ...visualize import treemap as visualize_treemap
 
 FIELD = "title_nlp_phrases"
 
@@ -99,7 +99,7 @@ def treemap(
         **filters,
     )
 
-    return vp_treemap(
+    return visualize_treemap(
         obj,
         title=title,
     )

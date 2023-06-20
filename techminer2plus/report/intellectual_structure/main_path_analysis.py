@@ -17,13 +17,13 @@ Main Path Analysis
 --INFO-- Points per path computed
 
 
->>> file_name = "sphinx/_static/bibliometrix__main_path.html"
+>>> file_name = "sphinx/_static/report/main_path.html"
 >>> results.plot_.write_html(file_name)
 
 
 .. raw:: html
 
-    <iframe src="../../../../_static/bibliometrix__main_path.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/report/main_path.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 # pylint: disable=line-too-long
 """

@@ -4,7 +4,7 @@ Collaboration WorldMap
 ===============================================================================
 
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/bibliometrix__collaboration_worldmap.html"
+>>> file_name = "sphinx/_static/report/collaboration_worldmap.html"
 
 >>> import techminer2plus
 >>> bibliometrix.social_structure.collaboration_worldmap(
@@ -13,7 +13,7 @@ Collaboration WorldMap
 
 .. raw:: html
 
-    <iframe src="../../../../_static/bibliometrix__collaboration_worldmap.html" height="410px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/report/collaboration_worldmap.html" height="410px" width="100%" frameBorder="0"></iframe>
 
 
 # pylint: disable=line-too-long

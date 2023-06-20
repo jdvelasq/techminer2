@@ -2,16 +2,16 @@
 This module contains functions for computing keywords indicators.
 
 """
-from .most_frequent_topics import most_frequent_topics
-from .topic_dynamics import topic_dynamics
+from .most_frequent_words import most_frequent_words
 from .treemap import treemap
-from .trending_topics import trending_topics
+from .trending_words_per_year import trending_words_per_year
 from .word_cloud import word_cloud
+from .words_frequency_over_time import words_frequency_over_time
 
 __all__ = [
-    "most_frequent_topics",
-    "topic_dynamics",
+    "most_frequent_words",
     "treemap",
-    "trending_topics",
+    "trending_words_per_year",
     "word_cloud",
+    "words_frequency_over_time",
 ]

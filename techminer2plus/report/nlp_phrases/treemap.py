@@ -5,7 +5,7 @@ TreeMap
 
 
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/bibliometrix__nlp_phrases_treemap.html"
+>>> file_name = "sphinx/_static/report/nlp_phrases/treemap.html"
 
 >>> import techminer2plus
 >>> chart = techminer2plus.report.nlp_phrases.treemap(
@@ -16,16 +16,16 @@ TreeMap
 
 .. raw:: html
 
-    <iframe src="../../../../_static/bibliometrix__nlp_phrases_treemap.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/report/nlp_phrases/treemap.html" height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> print(chart.prompt_)
-Your task is to generate an analysis about the bibliometric indicators of the \\
-'nlp_phrases' field in a scientific bibliography database. Summarize the table below, \\
-sorted by the 'OCC' metric, and delimited by triple backticks, identify \\
-any notable patterns, trends, or outliers in the data, and discuss their \\
-implications for the research field. Be sure to provide a concise summary \\
-of your findings in no more than 150 words.
+Your task is to generate an analysis about the bibliometric indicators of \\
+the 'nlp_phrases' field in a scientific bibliography database. Summarize \\
+the table below, sorted by the 'OCC' metric, and delimited by triple \\
+backticks, identify any notable patterns, trends, or outliers in the data, \\
+and discuss their implications for the research field. Be sure to provide a \\
+concise summary of your findings in no more than 150 words.
 <BLANKLINE>
 Table:
 ```
@@ -45,7 +45,7 @@ Table:
 | FINANCIAL_TECHNOLOGY         |     5 |             4 |                   1 |                173 |                25 |                           34.6  |                           5    |                  -0.5 |                     0.5 |                   0.1       |                     2017 |     7 |                       24.71 |         3 |         2 |      0.43 |
 | REGTECH_SOLUTIONS            |     5 |             4 |                   1 |                 18 |                 4 |                            3.6  |                           0.8  |                   0   |                     0.5 |                   0.1       |                     2020 |     4 |                        4.5  |         2 |         2 |      0.5  |
 | FINANCIAL_MARKETS            |     4 |             2 |                   2 |                151 |                 0 |                           37.75 |                           0    |                  -0.5 |                     1   |                   0.25      |                     2017 |     7 |                       21.57 |         1 |         1 |      0.14 |
-| REGTECH_APPROACH             |     4 |             2 |                   2 |                 37 |                12 |                            9.25 |                           3    |                   0   |                     1   |                   0.25      |                     2018 |     6 |                        6.17 |         3 |         2 |      0.5  |
+| REGTECH                      |     4 |             2 |                   2 |                 37 |                12 |                            9.25 |                           3    |                   0   |                     1   |                   0.25      |                     2018 |     6 |                        6.17 |         3 |         2 |      0.5  |
 | RISK_MANAGEMENT              |     4 |             3 |                   1 |                 15 |                 8 |                            3.75 |                           2    |                   0   |                     0.5 |                   0.125     |                     2018 |     6 |                        2.5  |         2 |         2 |      0.33 |
 | NEW_TECHNOLOGIES             |     4 |             3 |                   1 |                 12 |                 1 |                            3    |                           0.25 |                  -1   |                     0.5 |                   0.125     |                     2019 |     5 |                        2.4  |         2 |         1 |      0.4  |
 | MACHINE_LEARNING             |     4 |             1 |                   3 |                  7 |                 4 |                            1.75 |                           1    |                  -0.5 |                     1.5 |                   0.375     |                     2021 |     3 |                        2.33 |         2 |         1 |      0.67 |
@@ -59,8 +59,7 @@ Table:
 # pylint: disable=line-too-long
 """
 from ...analyze import list_items
-
-# from ...vantagepoint.charts import treemap as vp_treemap
+from ...visualize import treemap as visualize_treemap
 
 FIELD = "nlp_phrases"
 
@@ -99,7 +98,7 @@ def treemap(
         **filters,
     )
 
-    return vp_treemap(
+    return visualize_treemap(
         obj,
         title=title,
     )

@@ -16,12 +16,12 @@ Thematic Map
 ... )
 
 
->>> file_name = "sphinx/_static/bibliometrix__thematic_map_plot.html"
+>>> file_name = "sphinx/_static/report/thematic_map_plot.html"
 >>> nnet.plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../_static/bibliometrix__thematic_map_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/report/thematic_map_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> nnet.communities_.head()
                    CL_00  ...           CL_05
@@ -33,12 +33,12 @@ Thematic Map
 <BLANKLINE>
 [5 rows x 6 columns]
 
->>> file_name = "sphinx/_static/bibliometrix__thematic_map_degree_plot.html"
+>>> file_name = "sphinx/_static/report/thematic_map_degree_plot.html"
 >>> nnet.degree_plot_.plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../_static/bibliometrix__thematic_map_degree_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/report/thematic_map_degree_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
 >>> nnet.metrics_.table_.head()
@@ -52,20 +52,20 @@ REGULATORY_TECHNOLOGY (REGTECH) 04:030      14  ...  0.031678
 [5 rows x 4 columns]
 
 
-# >>> file_name = "sphinx/_static/bibliometrix__thematic_map_mds_map.html"
+# >>> file_name = "sphinx/_static/report/thematic_map_mds_map.html"
 # >>> nnet.mds_map_.write_html(file_name)
 
 # .. raw:: html
 
-#     <iframe src="../../../_static/bibliometrix__thematic_map_mds_map.html" height="600px" width="100%" frameBorder="0"></iframe>
+#     <iframe src="../../../_static/report/thematic_map_mds_map.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
-# >>> file_name = "sphinx/_static/bibliometrix__thematic_map_tsne_map.html"
+# >>> file_name = "sphinx/_static/report/thematic_map_tsne_map.html"
 # >>> nnet.tsne_map_.write_html(file_name)
 
 # .. raw:: html
 
-#     <iframe src="../../../_static/bibliometrix__co_occurrence_network_tsne_map.html" height="600px" width="100%" frameBorder="0"></iframe>
+#     <iframe src="../../../_static/report/co_occurrence_network_tsne_map.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
 

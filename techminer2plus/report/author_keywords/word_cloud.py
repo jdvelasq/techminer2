@@ -5,7 +5,7 @@ WordCloud
 
 
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/images/bibliometrix__author_keywords_cloud.png"
+>>> file_name = "sphinx/images/report/author_keywords/word_cloud.png"
 
 >>> import techminer2plus
 >>> chart = techminer2plus.report.author_keywords.word_cloud(
@@ -15,15 +15,14 @@ WordCloud
 ... )
 >>> chart.plot_.savefig(file_name)
 
-.. image:: ../../../../images/bibliometrix__author_keywords_cloud.png
+.. image:: ../../../../images/report/author_keywords/word_cloud.png
     :width: 900px
     :align: center
 
 
 """
 from ...analyze import list_items
-
-# from ...vantagepoint.charts import word_cloud as vp_word_cloud
+from ...visualize import word_cloud as visualize_word_cloud
 
 FIELD = "author_keywords"
 
@@ -64,7 +63,7 @@ def word_cloud(
         **filters,
     )
 
-    return vp_word_cloud(
+    return visualize_word_cloud(
         obj,
         title=title,
         figsize=figsize,

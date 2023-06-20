@@ -47,14 +47,14 @@ Thematic evolution plot
 [5 rows x 12 columns]
 
 
->>> file_name = "sphinx/_static/bibliometrix__thematic_evolution_plot.html"
+>>> file_name = "sphinx/_static/report/thematic_evolution_plot.html"
 >>> bibliometrix.conceptual_structure.thematic_evolution_plot(
 ...     indicators=[tm1, tm2],
 ... ).write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../_static/bibliometrix__thematic_evolution_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/report/thematic_evolution_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
 """

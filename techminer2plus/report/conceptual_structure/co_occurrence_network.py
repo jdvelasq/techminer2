@@ -19,12 +19,12 @@ Example
 ... )
 
 
->>> file_name = "sphinx/_static/bibliometrix__co_occurrence_network.html"
+>>> file_name = "sphinx/_static/report/co_occurrence_network.html"
 >>> nnet.plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../_static/bibliometrix__co_occurrence_network.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/report/co_occurrence_network.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> nnet.communities_.head()
                             CL_00  ...                           CL_04
@@ -37,12 +37,12 @@ Example
 [5 rows x 5 columns]
 
 
->>> file_name = "sphinx/_static/bibliometrix__co_occurrence_network_degree_plot.html"
+>>> file_name = "sphinx/_static/report/co_occurrence_network_degree_plot.html"
 >>> nnet.degree_plot_.plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../_static/bibliometrix__co_occurrence_network_degree_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/report/rrence_network_degree_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
 >>> nnet.metrics_.table_.head()

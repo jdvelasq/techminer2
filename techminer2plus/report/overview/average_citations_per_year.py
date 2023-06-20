@@ -5,7 +5,7 @@ Average Citations per Year
 
 
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/bibliometrix__average_citations_per_year.html"
+>>> file_name = "sphinx/_static/report/average_citations_per_year.html"
 
 >>> import techminer2plus
 >>> r = techminer2plus.report.overview.average_citations_per_year(root_dir)
@@ -13,7 +13,7 @@ Average Citations per Year
 
 .. raw:: html
 
-    <iframe src="../../_static/bibliometrix__average_citations_per_year.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/report/average_citations_per_year.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> print(r.table_.head().to_markdown())
 |   year |   OCC |   cum_OCC |   local_citations |   global_citations |   citable_years |   mean_global_citations |   cum_global_citations |   mean_global_citations_per_year |   mean_local_citations |   cum_local_citations |   mean_local_citations_per_year |
