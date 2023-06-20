@@ -6,7 +6,7 @@ Collaboration WorldMap
 >>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__collaboration_worldmap.html"
 
->>> from techminer2 import bibliometrix
+>>> import techminer2plus
 >>> bibliometrix.social_structure.collaboration_worldmap(
 ...     root_dir=root_dir,
 ... ).write_html(file_name)

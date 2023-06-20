@@ -7,7 +7,7 @@ Trend Topics
 >>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__nlp_phrases_trending_topics.html"
 
->>> from techminer2 import bibliometrix
+>>> import techminer2plus
 >>> bibliometrix.nlp_phrases.trending_topics(
 ...     root_dir=root_dir, 
 ... ).table_.head(20)

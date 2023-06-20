@@ -9,8 +9,8 @@ Example
 
 >>> root_dir = "data/regtech/"
 
->>> from techminer2 import bibliometrix
->>> nnet = bibliometrix.conceptual_structure.co_occurrence_network(
+>>> import techminer2plus
+>>> nnet = techminer2plus.report.conceptual_structure.co_occurrence_network(
 ...     field="author_keywords",
 ...     top_n=50,
 ...     root_dir=root_dir,

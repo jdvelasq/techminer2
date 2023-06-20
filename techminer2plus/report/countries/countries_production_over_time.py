@@ -8,8 +8,8 @@ Countries' Production over Time
 >>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__countries_production_over_time.html"
 
->>> from techminer2 import bibliometrix
->>> r = bibliometrix.countries.countries_production_over_time(
+>>> import techminer2plus
+>>> r = techminer2plus.report.countries.countries_production_over_time(
 ...    top_n=10,
 ...    root_dir=root_dir,
 ... )

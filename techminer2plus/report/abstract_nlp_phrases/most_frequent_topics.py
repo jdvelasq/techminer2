@@ -8,8 +8,8 @@ Most Frequent Topics
 >>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__abstract_nlp_phrases_most_frequent_topics.html"
 
->>> from techminer2 import bibliometrix
->>> r = bibliometrix.abstract_nlp_phrases.most_frequent_topics(
+>>> import techminer2plus
+>>> r = techminer2plus.report.abstract_nlp_phrases.most_frequent_topics(
 ...     root_dir=root_dir,
 ...     top_n=20,
 ... )

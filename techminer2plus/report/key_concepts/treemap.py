@@ -7,8 +7,8 @@ TreeMap
 >>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__key_concepts_treemap.html"
 
->>> from techminer2 import bibliometrix
->>> chart = bibliometrix.key_concepts.treemap(
+>>> import techminer2plus
+>>> chart = techminer2plus.report.key_concepts.treemap(
 ...    top_n=20,
 ...    root_dir=root_dir,
 ... )

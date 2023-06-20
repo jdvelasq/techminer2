@@ -8,8 +8,8 @@ Corresponding Author's Country
 >>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__corresponding_authors_country.html"
 
->>> from techminer2 import bibliometrix
->>> r = bibliometrix.countries.corresponding_authors_country(
+>>> import techminer2plus
+>>> r = techminer2plus.report.countries.corresponding_authors_country(
 ...     top_n=20,
 ...     root_dir=root_dir,
 ... )

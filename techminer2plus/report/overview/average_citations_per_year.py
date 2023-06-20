@@ -7,8 +7,8 @@ Average Citations per Year
 >>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__average_citations_per_year.html"
 
->>> from techminer2 import bibliometrix
->>> r = bibliometrix.overview.average_citations_per_year(root_dir)
+>>> import techminer2plus
+>>> r = techminer2plus.report.overview.average_citations_per_year(root_dir)
 >>> r.plot_.write_html(file_name)
 
 .. raw:: html
@@ -26,26 +26,35 @@ Average Citations per Year
 
 
 >>> print(r.prompt_)
-The table below provides data on the average citations per year of the dataset. Use the the information in the table to draw conclusions about the impact per year. In your analysis, be sure to describe in a clear and concise way, any trends or patterns you observe, and identify any outliers or anomalies in the data. Limit your description to one paragraph with no more than 250 words.
+The table below provides data on the average citations per year of the \\
+dataset. Use the the information in the table to draw conclusions about the \\
+impact per year. In your analysis, be sure to describe in a clear and \\
+concise way, any trends or patterns you observe, and identify any outliers \\
+or anomalies in the data. Limit your description to one paragraph with no \\
+more than 250 words.
 <BLANKLINE>
-|   year |   mean_global_citations |
-|-------:|------------------------:|
-|   2016 |                30       |
-|   2017 |                40.5     |
-|   2018 |                60.6667  |
-|   2019 |                 7.83333 |
-|   2020 |                 6.64286 |
-|   2021 |                 2.7     |
-|   2022 |                 1.83333 |
-|   2023 |                 0       |
+Table:
+```
+|   year |   mean_global_citations |   global_citations |
+|-------:|------------------------:|-------------------:|
+|   2016 |                30       |                 30 |
+|   2017 |                40.5     |                162 |
+|   2018 |                60.6667  |                182 |
+|   2019 |                 7.83333 |                 47 |
+|   2020 |                 6.64286 |                 93 |
+|   2021 |                 2.7     |                 27 |
+|   2022 |                 1.83333 |                 22 |
+|   2023 |                 0       |                  0 |
+```
 <BLANKLINE>
-<BLANKLINE>
+
 
 
 # pylint: disable=line-too-long
 """
-# from ...classes import IndicatorByYearChart
-# from ...techminer.indicators import indicators_by_year, indicators_by_year_plot
+from ...classes import IndicatorByYearChart
+from ...prompts import format_prompt_for_tables
+from ...query import indicators_by_year, indicators_by_year_plot
 
 
 def average_citations_per_year(
@@ -73,7 +82,7 @@ def average_citations_per_year(
     def generate_chatgpt_prompt(table):
         """Generates prompt for analysis of the average citations per year."""
 
-        return (
+        main_text = (
             "The table below provides data on the average citations per year "
             "of the dataset. Use the the information in the table to draw "
             "conclusions about the impact per year. In your analysis, be "
@@ -81,8 +90,9 @@ def average_citations_per_year(
             "patterns you observe, and identify any outliers or anomalies "
             "in the data. Limit your description to one paragraph with no "
             "more than 250 words."
-            f"\n\n{table[['mean_global_citations']].to_markdown()}\n\n"
         )
+        table_text = table.to_markdown()
+        return format_prompt_for_tables(main_text, table_text)
 
     #
     # Main code

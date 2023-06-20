@@ -6,8 +6,8 @@ Organizations Collaboration Network
 
 >>> root_dir = "data/regtech/"
 
->>> from techminer2 import bibliometrix
->>> nnet = bibliometrix.social_structure.organizations_collaboration_network(
+>>> import techminer2plus
+>>> nnet = techminer2plus.report.social_structure.organizations_collaboration_network(
 ...     top_n=20,
 ...     root_dir=root_dir,
 ...     algorithm="louvain",

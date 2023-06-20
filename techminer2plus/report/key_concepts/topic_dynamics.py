@@ -7,8 +7,8 @@ Topic Dynamics
 >>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__key_concepts_dynamics.html"
 
->>> from techminer2 import bibliometrix
->>> r = bibliometrix.key_concepts.topic_dynamics(
+>>> import techminer2plus
+>>> r = techminer2plus.report.key_concepts.topic_dynamics(
 ...     top_n=5,
 ...     root_dir=root_dir,
 ... )

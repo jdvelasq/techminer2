@@ -6,8 +6,8 @@
 # >>> directory = "data/regtech/"
 # >>> file_name = "sphinx/_static/bibliometrix__country_dynamics.html"
 
-# >>> from techminer2 import bibliometrix
-# >>> r = bibliometrix.countries.country_dynamics(
+# >>> import techminer2plus
+# >>> r = techminer2plus.report.countries.country_dynamics(
 # ...     topics_length=5,
 # ...     directory=directory,
 # ... )

@@ -9,8 +9,8 @@ Most Global Cited Countries
 >>> file_name = "sphinx/_static/bibliometrix__most_global_cited_countries.html"
 
 
->>> from techminer2 import bibliometrix
->>> r = bibliometrix.countries.most_global_cited_countries(
+>>> import techminer2plus
+>>> r = techminer2plus.report.countries.most_global_cited_countries(
 ...     root_dir=root_dir,
 ...     top_n=20,
 ... )

@@ -7,8 +7,8 @@ WordCloud
 >>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/images/bibliometrix__author_keywords_cloud.png"
 
->>> from techminer2 import bibliometrix
->>> chart = bibliometrix.author_keywords.word_cloud(
+>>> import techminer2plus
+>>> chart = techminer2plus.report.author_keywords.word_cloud(
 ...     title="Author Keywords",
 ...     top_n=50,
 ...     root_dir=root_dir,

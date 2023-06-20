@@ -9,8 +9,8 @@ Source H-Index
 >>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__source_h_index.html"
 
->>> from techminer2 import bibliometrix
->>> r = bibliometrix.sources.source_h_index(
+>>> import techminer2plus
+>>> r = techminer2plus.report.sources.source_h_index(
 ...     top_n=20, 
 ...     root_dir=root_dir,
 ... )

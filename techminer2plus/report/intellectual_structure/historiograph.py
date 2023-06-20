@@ -7,8 +7,8 @@ Historiograph
 
 >>> root_dir = "data/regtech/"
 
->>> from techminer2 import bibliometrix
->>> nnet = bibliometrix.intellectual_structure.historiograph(
+>>> import techminer2plus
+>>> nnet = techminer2plus.report.intellectual_structure.historiograph(
 ...     top_n=20,
 ...     root_dir=root_dir,
 ...     nx_k=None,

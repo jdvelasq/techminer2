@@ -9,8 +9,8 @@ Author G-Index
 >>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__author_g_index.html"
 
->>> from techminer2 import bibliometrix
->>> r = bibliometrix.authors.author_g_index(
+>>> import techminer2plus
+>>> r = techminer2plus.report.authors.author_g_index(
 ...     top_n=20,
 ...     root_dir=root_dir,
 ... )

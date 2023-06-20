@@ -9,8 +9,8 @@ Source G-Index
 >>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__source_g_index.html"
 
->>> from techminer2 import bibliometrix
->>> r = bibliometrix.sources.source_g_index(
+>>> import techminer2plus
+>>> r = techminer2plus.report.sources.source_g_index(
 ...     top_n=20, 
 ...     root_dir=root_dir,
 ... )

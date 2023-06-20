@@ -8,8 +8,8 @@ Author H-Index
 >>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__author_h_index.html"
 
->>> from techminer2 import bibliometrix
->>> r = bibliometrix.authors.author_h_index(
+>>> import techminer2plus
+>>> r = techminer2plus.report.authors.author_h_index(
 ...     top_n=20,
 ...     root_dir=root_dir,
 ... )

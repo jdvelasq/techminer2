@@ -5,8 +5,8 @@ Main Path Analysis
 
 >>> root_dir = "data/regtech/"
 
->>> from techminer2 import bibliometrix
->>> results = bibliometrix.intellectual_structure.main_path_analysis(
+>>> import techminer2plus
+>>> results = techminer2plus.report.intellectual_structure.main_path_analysis(
 ...     root_dir,
 ...     nx_k=None,
 ...     nx_iterations=30,

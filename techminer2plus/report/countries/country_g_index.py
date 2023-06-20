@@ -10,8 +10,8 @@ Country G-Index
 >>> file_name = "sphinx/_static/bibliometrix__country_g_index.html"
 
 
->>> from techminer2 import bibliometrix
->>> r = bibliometrix.countries.country_g_index(
+>>> import techminer2plus
+>>> r = techminer2plus.report.countries.country_g_index(
 ...     top_n=20,
 ...     root_dir=root_dir,
 ... )

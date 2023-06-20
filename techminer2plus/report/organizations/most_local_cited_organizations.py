@@ -8,8 +8,8 @@ Most Local Cited Institutions
 >>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__most_local_cited_organizations.html"
 
->>> from techminer2 import bibliometrix
->>> r = bibliometrix.organizations.most_local_cited_organizations(
+>>> import techminer2plus
+>>> r = techminer2plus.report.organizations.most_local_cited_organizations(
 ...     top_n=20,
 ...     root_dir=root_dir,
 ... )

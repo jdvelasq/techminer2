@@ -6,8 +6,8 @@ Clustering by coupling.
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import bibliometrix
->>> obj = bibliometrix.clustering.coupling_network(
+>>> import techminer2plus
+>>> obj = techminer2plus.report.clustering.coupling_network(
 ...     criterion="article",
 ...     coupling_measured_by='local_references',
 ...     topics_length=50,

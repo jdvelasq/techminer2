@@ -6,8 +6,8 @@ Key Concepts Thematic Map
 
 >>> root_dir = "data/regtech/"
 
->>> from techminer2 import bibliometrix
->>> nnet = bibliometrix.conceptual_structure.key_concepts_thematic_map(
+>>> import techminer2plus
+>>> nnet = techminer2plus.report.conceptual_structure.key_concepts_thematic_map(
 ...     top_n=20,
 ...     root_dir=root_dir,
 ...     algorithm="louvain",

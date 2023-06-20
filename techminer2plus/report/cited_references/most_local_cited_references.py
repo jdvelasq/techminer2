@@ -9,8 +9,8 @@ Most Local Cited References
 >>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__most_local_cited_references.html"
 
->>> from techminer2 import bibliometrix
->>> r = bibliometrix.cited_references.most_local_cited_references(
+>>> import techminer2plus
+>>> r = techminer2plus.report.cited_references.most_local_cited_references(
 ...     top_n=20,
 ...     root_dir=root_dir,
 ... )

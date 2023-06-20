@@ -7,8 +7,8 @@ Co-citation Network
 
 >>> root_dir = "data/regtech/"
 
->>> from techminer2 import bibliometrix
->>> nnet = bibliometrix.intellectual_structure.co_citation_network(
+>>> import techminer2plus
+>>> nnet = techminer2plus.report.intellectual_structure.co_citation_network(
 ...     top_n=50,
 ...     root_dir=root_dir,
 ...     algorithm="louvain",

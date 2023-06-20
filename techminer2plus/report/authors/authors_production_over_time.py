@@ -11,8 +11,8 @@ Example
 >>> file_name = "sphinx/_static/bibliometrix__authors_production_over_time.html"
 
 
->>> from techminer2 import bibliometrix
->>> r = bibliometrix.authors.authors_production_over_time(
+>>> import techminer2plus
+>>> r = techminer2plus.report.authors.authors_production_over_time(
 ...    top_n=10,
 ...    root_dir=root_dir,
 ... )

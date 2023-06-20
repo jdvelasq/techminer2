@@ -7,7 +7,7 @@ Trend Topics
 >>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__index_keywords_trending_topics.html"
 
->>> from techminer2 import bibliometrix
+>>> import techminer2plus
 >>> bibliometrix.index_keywords.trending_topics(
 ...     root_dir=root_dir, 
 ... ).table_.head(20)

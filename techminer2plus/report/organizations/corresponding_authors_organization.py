@@ -8,8 +8,8 @@ Corresponding Author's Organization
 >>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__corresponding_authors_organization.html"
 
->>> from techminer2 import bibliometrix
->>> r = bibliometrix.organizations.corresponding_authors_organization(
+>>> import techminer2plus
+>>> r = techminer2plus.report.organizations.corresponding_authors_organization(
 ...     top_n=20,
 ...     root_dir=root_dir,
 ... )

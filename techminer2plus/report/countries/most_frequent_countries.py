@@ -9,8 +9,8 @@
 >>> file_name = "sphinx/_static/bibliometrix__most_frequent_countries.html"
 
 
->>> from techminer2 import bibliometrix
->>> r = bibliometrix.countries.most_frequent_countries(
+>>> import techminer2plus
+>>> r = techminer2plus.report.countries.most_frequent_countries(
 ...     root_dir=root_dir,
 ...     top_n=20,
 ... )

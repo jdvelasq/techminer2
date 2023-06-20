@@ -11,7 +11,7 @@ Example
 >>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__lotka_law.html"
 
->>> from techminer2 import bibliometrix
+>>> import techminer2plus
 >>> bibliometrix.authors.lotka_law(root_dir=root_dir).plot_.write_html(file_name)
 
 .. raw:: html

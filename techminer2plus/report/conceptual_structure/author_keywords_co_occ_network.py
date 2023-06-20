@@ -6,8 +6,8 @@ Author Keywords Co-occurrence Network
 
 >>> root_dir = "data/regtech/"
 
->>> from techminer2 import bibliometrix
->>> nnet = bibliometrix.conceptual_structure.author_keywords_co_occ_network(
+>>> import techminer2plus
+>>> nnet = techminer2plus.report.conceptual_structure.author_keywords_co_occ_network(
 ...     top_n=20,
 ...     root_dir=root_dir,
 ...     algorithm="louvain",

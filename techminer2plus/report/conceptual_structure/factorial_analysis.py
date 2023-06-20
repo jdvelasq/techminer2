@@ -25,8 +25,8 @@ Based on the bibliometrix/R/conceptualStructure.R code.
 >>> from sklearn.cluster import AgglomerativeClustering
 >>> ac = AgglomerativeClustering(n_clusters=4)
 
->>> from techminer2 import bibliometrix
->>> fa = bibliometrix.conceptual_structure.factorial_analysis(
+>>> import techminer2plus
+>>> fa = techminer2plus.report.conceptual_structure.factorial_analysis(
 ...     criterion='author_keywords', 
 ...     manifold_method=mds,
 ...     clustering_method=ac,

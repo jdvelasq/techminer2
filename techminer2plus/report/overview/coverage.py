@@ -9,7 +9,7 @@ Computes coverage of terms in a column discarding stopwords.
 >>> root_dir = "data/regtech/"
 
 >>> import techminer2plus
->>> techminer2plus.user.overview.coverage(
+>>> techminer2plus.report.overview.coverage(
 ...     "author_keywords",
 ...     root_dir=root_dir,
 ... ).head(10)

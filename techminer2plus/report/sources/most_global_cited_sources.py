@@ -8,8 +8,8 @@ Most Global Cited Sources
 >>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix__most_global_cited_sources.html"
 
->>> from techminer2 import bibliometrix
->>> r = bibliometrix.sources.most_global_cited_sources(
+>>> import techminer2plus
+>>> r = techminer2plus.report.sources.most_global_cited_sources(
 ...     root_dir=root_dir,
 ...     top_n=20,
 ... )

@@ -5,9 +5,9 @@ Thematic evolution plot
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import bibliometrix
+>>> import techminer2plus
 
->>> tm1 = bibliometrix.conceptual_structure.thematic_map(
+>>> tm1 = techminer2plus.report.conceptual_structure.thematic_map(
 ...     criterion="author_keywords",
 ...     topics_length=100,
 ...     directory=directory,
@@ -29,7 +29,7 @@ Thematic evolution plot
 <BLANKLINE>
 [5 rows x 4 columns]
 
->>> tm2 = bibliometrix.conceptual_structure.thematic_map(
+>>> tm2 = techminer2plus.report.conceptual_structure.thematic_map(
 ...     criterion="author_keywords",
 ...     topics_length=100,
 ...     directory=directory,
@@ -91,7 +91,9 @@ def thematic_evolution_plot(
 
         labels += cluster_table[cluster_table.rnk == 1].index.tolist()
 
-        cluster_table["group_index"] = cluster_table["group"] + n_clusters_previous
+        cluster_table["group_index"] = (
+            cluster_table["group"] + n_clusters_previous
+        )
         counter += len(cluster_table)
         data.append(cluster_table)
 
@@ -169,6 +171,8 @@ def _get_cluster_table(results):
     cluster_table["rnk"] = cluster_table.groupby("group")["value"].rank(
         method="first", ascending=False
     )
-    cluster_table = cluster_table.sort_values(["group", "rnk"], ascending=[True, False])
+    cluster_table = cluster_table.sort_values(
+        ["group", "rnk"], ascending=[True, False]
+    )
 
     return cluster_table

@@ -8,8 +8,8 @@ Country Scientific Production
 >>> file_name = "sphinx/_static/bibliometrix__country_scientific_production.html"
 
 
->>> from techminer2 import bibliometrix
->>> chart = bibliometrix.countries.country_scientific_production(
+>>> import techminer2plus
+>>> chart = techminer2plus.report.countries.country_scientific_production(
 ...     root_dir=root_dir
 ... )
 >>> chart.plot_.write_html(file_name)

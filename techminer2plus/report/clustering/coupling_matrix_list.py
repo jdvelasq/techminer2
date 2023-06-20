@@ -5,7 +5,7 @@ Coupling Matrix List
 
 >>> directory = "data/regtech/"
 
->>> from techminer2 import bibliometrix
+>>> import techminer2plus
 >>> bibliometrix.clustering.coupling_matrix_list(
 ...     unit_of_analysis='article',
 ...     coupling_measured_by='global_references',
