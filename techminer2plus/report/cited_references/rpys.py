@@ -4,22 +4,18 @@ RPYS (Reference Publication Year Spectroscopy)
 ===============================================================================
 
 
-Example
--------------------------------------------------------------------------------
-
-
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/bibliometrix__rpys.html"
+>>> file_name = "sphinx/_static/report/cited_references/rpys.html"
 
 >>> import techminer2plus
->>> bibliometrix.cited_references.rpys(root_dir=root_dir).plot_.write_html(file_name)
+>>> techminer2plus.report.cited_references.rpys(root_dir=root_dir).plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../_static/bibliometrix__rpys.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/report/cited_references/rpys.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
->>> bibliometrix.cited_references.rpys(root_dir=root_dir).table_.head()
+>>> techminer2plus.report.cited_references.rpys(root_dir=root_dir).table_.head()
       Num References  Median
 1937               1    -1.0
 1938               0     0.0

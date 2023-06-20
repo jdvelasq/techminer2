@@ -7,7 +7,7 @@ Most Local Cited References
 
 
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/bibliometrix__most_local_cited_references.html"
+>>> file_name = "sphinx/_static/report/cited_references/most_local_cited_references.html"
 
 >>> import techminer2plus
 >>> r = techminer2plus.report.cited_references.most_local_cited_references(
@@ -19,7 +19,7 @@ Most Local Cited References
 
 .. raw:: html
 
-    <iframe src="../../../_static/bibliometrix__most_local_cited_references.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/report/cited_references/most_local_cited_references.html" height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> print(r.table_.head(5).to_markdown())
