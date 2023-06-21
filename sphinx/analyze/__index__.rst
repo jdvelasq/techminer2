@@ -95,6 +95,12 @@ Analyze
 
 
 .. toctree::
+    :maxdepth: 1
+
+    bradford_law
+
+
+.. toctree::
    record_display
 
 
