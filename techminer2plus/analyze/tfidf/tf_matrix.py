@@ -31,7 +31,7 @@ import pandas as pd
 from ...classes import TFMatrix
 from ...counters import add_counters_to_axis
 from ...items import generate_custom_items
-from ...query import indicators_by_field
+from ...metrics import indicators_by_field
 from ...records import read_records
 from ...stopwords import load_stopwords
 

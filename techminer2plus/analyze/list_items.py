@@ -73,8 +73,8 @@ from ..check_params import (
 )
 from ..classes import ItemsList
 from ..items import generate_custom_items
+from ..metrics import indicators_by_field
 from ..prompts import format_prompt_for_tables
-from ..query import indicators_by_field
 from ..sorting import sort_indicators_by_metric
 
 

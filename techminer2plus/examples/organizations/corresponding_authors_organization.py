@@ -80,7 +80,7 @@ import plotly.express as px
 
 from ...classes import CorresponingAuthorOrganization
 from ...items import generate_custom_items
-from ...query import collaboration_indicators_by_field
+from ...metrics import collaboration_indicators_by_field
 from ...sorting import sort_indicators_by_metric
 
 

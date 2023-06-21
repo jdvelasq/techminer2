@@ -123,8 +123,8 @@ Table:
 from ...classes import CocMatrix
 from ...counters import add_counters_to_axis
 from ...items import generate_custom_items
+from ...metrics import co_occ_matrix_list, indicators_by_field
 from ...prompts import format_prompt_for_tables
-from ...query import co_occ_matrix_list, indicators_by_field
 from ...sorting import sort_indicators_by_metric, sort_matrix_axis
 
 

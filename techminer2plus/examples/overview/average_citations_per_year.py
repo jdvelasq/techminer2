@@ -53,8 +53,8 @@ Table:
 # pylint: disable=line-too-long
 """
 from ...classes import IndicatorByYearChart
+from ...metrics import indicators_by_year, indicators_by_year_plot
 from ...prompts import format_prompt_for_tables
-from ...query import indicators_by_year, indicators_by_year_plot
 
 
 def average_citations_per_year(

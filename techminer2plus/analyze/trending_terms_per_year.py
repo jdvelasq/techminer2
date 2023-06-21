@@ -78,7 +78,7 @@ import numpy as np
 import plotly.graph_objects as go
 
 from ..classes import BasicChart
-from ..query import indicators_by_field, items_occ_by_year
+from ..metrics import indicators_by_field, items_occ_by_year
 
 
 # pylint: disable=too-many-arguments

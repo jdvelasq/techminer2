@@ -110,8 +110,8 @@ Table:
 from ..classes import TermsByYear
 from ..counters import add_counters_to_axis
 from ..items import generate_custom_items
+from ..metrics import indicators_by_field, items_occ_by_year
 from ..prompts import format_prompt_for_tables
-from ..query import indicators_by_field, items_occ_by_year
 from ..sorting import sort_indicators_by_metric
 
 

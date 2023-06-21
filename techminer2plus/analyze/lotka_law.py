@@ -34,7 +34,7 @@ Example
 import plotly.graph_objects as go
 
 from ..classes import LotkaLaw
-from ..query import indicators_by_field
+from ..metrics import indicators_by_field
 
 
 def lotka_law(
