@@ -14,7 +14,7 @@ Bradford's Law
 
 .. raw:: html
 
-    <iframe src="../../_static/analyze/bradford_law.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/analyze/bradford_law.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
 >>> print(bradford.source_clustering_.head(20).to_markdown())
