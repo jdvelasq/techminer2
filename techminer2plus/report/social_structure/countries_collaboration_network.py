@@ -122,16 +122,16 @@ Table:
 # pylint: disable=line-too-long
 """
 
-# from ...classes import CollaborationNetwork
-# from ...vantagepoint.analyze import (
-#     co_occurrence_matrix,
-#     matrix_normalization,
-#     network_clustering,
-#     network_communities,
-#     network_degree_plot,
-#     network_metrics,
-#     network_viewer,
-# )
+from ...analyze.matrix import co_occurrence_matrix
+from ...analyze.network import (
+    cluster_network,
+    matrix_normalization,
+    network_communities,
+    network_degree_plot,
+    network_metrics,
+    network_viewer,
+)
+from ...classes import CollaborationNetwork
 
 FIELD = "countries"
 
@@ -140,7 +140,7 @@ FIELD = "countries"
 # pylint: disable=too-many-locals
 def countries_collaboration_network(
     normalization="association",
-    algorithm="louvain",
+    algorithm_or_estimator="louvain",
     network_viewer_dict=None,
     network_degree_plot_dict=None,
     # Items params:
@@ -181,7 +181,9 @@ def countries_collaboration_network(
         coc_matrix, index_name=normalization
     )
 
-    graph = network_clustering(norm_coc_matrix, algorithm=algorithm)
+    graph = cluster_network(
+        norm_coc_matrix, algorithm_or_estimator=algorithm_or_estimator
+    )
 
     degree_plot = network_degree_plot(graph=graph, **network_degree_plot_dict)
 
