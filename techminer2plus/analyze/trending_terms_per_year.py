@@ -46,7 +46,7 @@ FINANCIAL_REGULATION                       4     2019  ...                35   2
 
 .. raw:: html
 
-    <iframe src="../../../_static/report/analyze/trending_terms_per_year.html" height="900px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/examples/analyze/trending_terms_per_year.html" height="900px" width="100%" frameBorder="0"></iframe>
 
 
 

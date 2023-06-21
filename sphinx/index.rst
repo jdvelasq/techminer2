@@ -98,7 +98,7 @@ TM2 module.
     query/__index__
     analyze/__index__
     visualize/__index__
-    report/__index__
+    examples/__index__
     
     
 
