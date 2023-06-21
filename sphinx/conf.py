@@ -39,9 +39,14 @@ extensions = [
     "nbsphinx",
     "sphinx.ext.imgmath",
 ]
+
 toggleprompt_offset_right = 25
 copybutton_prompt_text = r">>> |\.\.\. "
 copybutton_prompt_is_regexp = True
+
+
+nbsphinx_allow_errors = True
+nbsphinx_execute = "never"
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
@@ -94,6 +99,8 @@ exclude_patterns = [
     "**.ipynb_checkpoints",
     "*.pdf",
     "*.key",
+    ".venv",
+    "-*.ipynb",
 ]
 
 # The reST default role (used for this markup: `text`) to use for all
@@ -270,7 +277,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, "TechMiner2", "TechMiner2 Documentation", [author], 1)
+    (master_doc, "TechMiner2+", "TechMiner2+ Documentation", [author], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -285,10 +292,10 @@ man_pages = [
 texinfo_documents = [
     (
         master_doc,
-        "TechMiner2",
-        "TechMiner2 Documentation",
+        "TechMiner2+",
+        "TechMiner2+ Documentation",
         author,
-        "TechMiner2",
+        "TechMiner2+",
         "A Package for Analysing Bibliographical Information using Python",
         "Miscellaneous",
     ),

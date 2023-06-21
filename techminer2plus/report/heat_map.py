@@ -13,15 +13,15 @@ Heat Map
 ...    root_dir=root_dir,
 ... )
 
->>> file_name = "sphinx/_static/visualize/heat_map.html"
->>> chart = techminer2plus.visualize.heat_map(
+>>> file_name = "sphinx/_static/report/heat_map.html"
+>>> chart = techminer2plus.report.heat_map(
 ...     matrix,
 ... )
 >>> chart.plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../_static/visualize/heat_map.html" height="800px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/report/heat_map.html" height="800px" width="100%" frameBorder="0"></iframe>
 
 
 >>> chart.table_

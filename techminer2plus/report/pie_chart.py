@@ -5,7 +5,7 @@ Pie Chart
 
 
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/visualize/pie_chart.html"
+>>> file_name = "sphinx/_static/report/pie_chart.html"
 
 >>> import techminer2plus
 >>> itemslist = techminer2plus.analyze.list_items(
@@ -13,12 +13,12 @@ Pie Chart
 ...    root_dir=root_dir,
 ...    top_n=10,
 ... )
->>> chart = techminer2plus.visualize.pie_chart(itemslist, title="Most Frequent Author Keywords")
+>>> chart = techminer2plus.report.pie_chart(itemslist, title="Most Frequent Author Keywords")
 >>> chart.plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../_static/visualize/pie_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/report/pie_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> chart.table_.head()
 author_keywords

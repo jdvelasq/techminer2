@@ -6,7 +6,7 @@ Cleveland Dot Chart
 
 
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/visualize/cleveland_chart.html"
+>>> file_name = "sphinx/_static/report/cleveland_chart.html"
 
 
 >>> import techminer2plus
@@ -15,12 +15,12 @@ Cleveland Dot Chart
 ...    root_dir=root_dir,
 ... )
 
->>> chart = techminer2plus.visualize.cleveland_dot_chart(itemslist, title="Most Frequent Author Keywords")
+>>> chart = techminer2plus.report.cleveland_dot_chart(itemslist, title="Most Frequent Author Keywords")
 >>> chart.plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../_static/visualize/cleveland_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/report/cleveland_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> chart.table_.head()

@@ -8,19 +8,19 @@ Treemap
 
 
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/visualize/treemap.html"
+>>> file_name = "sphinx/_static/report/treemap.html"
 
 >>> import techminer2plus
 >>> itemslist = techminer2plus.analyze.list_items(
 ...    field='author_keywords',
 ...    root_dir=root_dir,
 ... )
->>> chart = techminer2plus.visualize.treemap(itemslist, title="Most Frequent Author Keywords")
+>>> chart = techminer2plus.report.treemap(itemslist, title="Most Frequent Author Keywords")
 >>> chart.plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../_static/visualize/treemap.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/report/treemap.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> chart.table_.head()
 author_keywords

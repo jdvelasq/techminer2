@@ -8,14 +8,14 @@ World map
 
 
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/visualize/world_map.html"
+>>> file_name = "sphinx/_static/report/world_map.html"
 
 >>> import techminer2plus
 >>> itemslist = techminer2plus.analyze.list_items(
 ...     field='countries',
 ...     root_dir=root_dir,
 ... )
->>> chart = techminer2plus.visualize.world_map(
+>>> chart = techminer2plus.report.world_map(
 ...     itemslist, 
 ...     title="Country scientific production",
 ... )
@@ -23,7 +23,7 @@ World map
 
 .. raw:: html
 
-    <iframe src="../../../_static/visualize/world_map.html" height="400px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/report/world_map.html" height="400px" width="100%" frameBorder="0"></iframe>
 
     
 >>> chart.table_.head()

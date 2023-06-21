@@ -5,7 +5,7 @@ Gantt Chart
 
 
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/visualize/gantt_chart.html"
+>>> file_name = "sphinx/_static/report/gantt_chart.html"
 
 >>> import techminer2plus
 >>> data = techminer2plus.analyze.terms_by_year(
@@ -13,12 +13,12 @@ Gantt Chart
 ...    top_n=20,
 ...    root_dir=root_dir,
 ... )
->>> chart = techminer2plus.visualize.gantt_chart(data)
+>>> chart = techminer2plus.report.gantt_chart(data)
 >>> chart.plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../_static/visualize/gantt_chart.html" height="800px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/report/gantt_chart.html" height="800px" width="100%" frameBorder="0"></iframe>
 
     
 >>> chart.table_.head(10)
@@ -86,11 +86,13 @@ COLOR = "#556f81"
 TEXTLEN = 40
 
 
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
 def gantt_chart(
-    obj,
+    obj=None,
     #
     # Gantt params:
-    title="",
+    title=None,
     #
     # Terms by year params:
     field=None,
@@ -110,46 +112,104 @@ def gantt_chart(
 ):
     """Creates a Gantt Chart from a terms by year table."""
 
-    if obj is None:
-        obj = terms_by_year(
-            field=field,
-            # Table params:
-            cumulative=cumulative,
-            # Item filters:
-            top_n=top_n,
-            occ_range=occ_range,
-            gc_range=gc_range,
-            custom_items=custom_items,
-            # Database filters:
-            root_dir=root_dir,
-            database=database,
-            year_filter=year_filter,
-            cited_by_filter=cited_by_filter,
-            **filters,
+    def compute_obj(obj):
+        """Compute the object if it is not already computed."""
+        if obj is None:
+            return terms_by_year(
+                field=field,
+                # Table params:
+                cumulative=cumulative,
+                # Item filters:
+                top_n=top_n,
+                occ_range=occ_range,
+                gc_range=gc_range,
+                custom_items=custom_items,
+                # Database filters:
+                root_dir=root_dir,
+                database=database,
+                year_filter=year_filter,
+                cited_by_filter=cited_by_filter,
+                **filters,
+            )
+        else:
+            return obj
+
+    def compute_table(obj):
+        """Melt the data"""
+
+        table = obj.table_.copy()
+        table["RANKING"] = range(1, len(table) + 1)
+        table = table.melt(
+            value_name="OCC",
+            var_name="column",
+            ignore_index=False,
+            id_vars=["RANKING"],
         )
 
-    table = obj.table_.copy()
-    table["RANKING"] = range(1, len(table) + 1)
-    table = table.melt(
-        value_name="OCC",
-        var_name="column",
-        ignore_index=False,
-        id_vars=["RANKING"],
-    )
+        table = table[table.OCC > 0]
+        table = table.sort_values(by=["RANKING"], ascending=True)
+        table = table.drop(columns=["RANKING"])
 
-    table = table[table.OCC > 0]
-    table = table.sort_values(by=["RANKING"], ascending=True)
-    table = table.drop(columns=["RANKING"])
+        table = table.rename(columns={"column": "Year"})
+        table = table.reset_index()
 
-    table = table.rename(columns={"column": "Year"})
-    table = table.reset_index()
+        return table
 
-    fig = _create_fig(
-        table,
-        obj.field_,
-        obj.metric_,
-        title,
-    )
+    def create_fig(table, criterion, metric, title):
+        """Create the figure"""
+
+        fig = px.scatter(
+            table,
+            x="Year",
+            y=criterion,
+            size=metric,
+            hover_data=table.columns.to_list(),
+            title=title,
+            color=criterion,
+        )
+        fig.update_layout(
+            paper_bgcolor="white",
+            plot_bgcolor="white",
+            showlegend=False,
+            xaxis_title=None,
+            yaxis_title=criterion.replace("_", " ").upper(),
+        )
+        fig.update_traces(
+            marker={
+                # "line": {"color": COLOR, "width": 1},
+                "line": {"color": "white", "width": 0.5},
+                "opacity": 1.0,
+            },
+            marker_color=COLOR,
+            mode="lines+markers",
+            line={"width": 2, "color": COLOR},
+        )
+        fig.update_xaxes(
+            linecolor="white",
+            linewidth=1,
+            gridcolor="gray",
+            griddash="dot",
+            tickangle=270,
+            dtick=1.0,
+        )
+        fig.update_yaxes(
+            linecolor="white",
+            linewidth=1,
+            gridcolor="gray",
+            griddash="dot",
+        )
+
+        return fig
+
+    #
+    # Main code:
+    #
+    if title is None:
+        title = "Gantt Chart"
+
+    obj = compute_obj(obj)
+    table = compute_table(obj)
+    fig = create_fig(table, obj.field_, obj.metric_, title)
 
     chart = BasicChart()
     chart.plot_ = fig
@@ -157,59 +217,3 @@ def gantt_chart(
     chart.prompt_ = obj.prompt_
 
     return chart
-
-
-def _create_fig(table, criterion, metric, title):
-    """Creates a figure."""
-
-    fig = px.scatter(
-        table,
-        x="Year",
-        y=criterion,
-        size=metric,
-        hover_data=table.columns.to_list(),
-        title=title,
-        color=criterion,
-    )
-    fig.update_layout(
-        paper_bgcolor="white",
-        plot_bgcolor="white",
-        showlegend=False,
-        xaxis_title=None,
-        yaxis_title=criterion.replace("_", " ").upper(),
-    )
-    fig.update_traces(
-        marker={
-            # "line": {"color": COLOR, "width": 1},
-            "line": {"color": "white", "width": 0.5},
-            "opacity": 1.0,
-        },
-        marker_color=COLOR,
-        mode="lines+markers",
-        line={"width": 2, "color": COLOR},
-    )
-    fig.update_xaxes(
-        linecolor="white",
-        linewidth=1,
-        gridcolor="gray",
-        griddash="dot",
-        tickangle=270,
-        dtick=1.0,
-    )
-    fig.update_yaxes(
-        linecolor="white",
-        linewidth=1,
-        gridcolor="gray",
-        griddash="dot",
-    )
-
-    return fig
-
-
-def _shorten(text):
-    return textwrap.shorten(
-        text=text,
-        width=TEXTLEN,
-        placeholder="...",
-        break_long_words=False,
-    )

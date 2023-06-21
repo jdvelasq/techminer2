@@ -7,7 +7,7 @@ Matrix Viewer
 
 >>> root_dir = "data/regtech/"
 
->>> file_name = "sphinx/_static/visualize/matrix_viewer_0.html"
+>>> file_name = "sphinx/_static/report/matrix_viewer_0.html"
 
 >>> import techminer2plus 
 >>> co_occ_matrix = techminer2plus.analyze.matrix.co_occurrence_matrix(
@@ -18,7 +18,7 @@ Matrix Viewer
 ...     root_dir=root_dir,
 ... )
 
->>> chart = techminer2plus.visualize.matrix_viewer(
+>>> chart = techminer2plus.report.matrix_viewer(
 ...     co_occ_matrix, 
 ...     n_labels=15,
 ...     node_size_min=20,
@@ -31,7 +31,7 @@ Matrix Viewer
 
 .. raw:: html
 
-    <iframe src="../../../_static/visualize/matrix_viewer_0.html"
+    <iframe src="../../../_static/report/matrix_viewer_0.html"
     height="600px" width="100%" frameBorder="0"></iframe>
 
 
@@ -98,7 +98,7 @@ Table:
 
 
 
->>> file_name = "sphinx/_static/visualize/matrix_viewer_1.html"
+>>> file_name = "sphinx/_static/report/matrix_viewer_1.html"
 
 >>> co_occ_matrix = techminer2plus.analyze.matrix.co_occurrence_matrix(
 ...    columns='author_keywords',
@@ -108,7 +108,7 @@ Table:
 ... )
 
 
->>> chart = techminer2plus.visualize.matrix_viewer(
+>>> chart = techminer2plus.report.matrix_viewer(
 ...     co_occ_matrix,
 ...     nx_iterations=5,
 ...     xaxes_range=(-2,2),
@@ -117,7 +117,7 @@ Table:
 
 .. raw:: html
 
-    <iframe src="../../../_static/visualize/matrix_viewer_1.html"
+    <iframe src="../../../_static/report/matrix_viewer_1.html"
     height="600px" width="100%" frameBorder="0"></iframe>
 
     

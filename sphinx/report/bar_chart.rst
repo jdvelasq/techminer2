@@ -1,4 +1,4 @@
-.. automodule:: techminer2plus.visualize.bar_chart
+.. automodule:: techminer2plus.report.bar_chart
     :members:
     :undoc-members:
     :show-inheritance:

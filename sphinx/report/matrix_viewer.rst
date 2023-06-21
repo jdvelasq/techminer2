@@ -1,4 +1,4 @@
-.. automodule:: techminer2plus.visualize.matrix_viewer
+.. automodule:: techminer2plus.report.matrix_viewer
     :members:
     :undoc-members:
     :show-inheritance:

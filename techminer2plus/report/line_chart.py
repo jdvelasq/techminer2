@@ -6,19 +6,19 @@ Line Chart
 
 
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/visualize/line_chart.html"
+>>> file_name = "sphinx/_static/report/line_chart.html"
 
 >>> import techminer2plus
 >>> itemslist = techminer2plus.analyze.list_items(
 ...    field='author_keywords',
 ...    root_dir=root_dir,
 ... )
->>> chart = techminer2plus.visualize.line_chart(itemslist, title="Most Frequent Author Keywords")
+>>> chart = techminer2plus.report.line_chart(itemslist, title="Most Frequent Author Keywords")
 >>> chart.plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../_static/visualize/line_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/report/line_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
 >>> chart.table_.head()

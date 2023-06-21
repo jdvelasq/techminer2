@@ -1,4 +1,4 @@
-.. automodule:: techminer2plus.visualize.column_chart
+.. automodule:: techminer2plus.report.column_chart
     :members:
     :undoc-members:
     :show-inheritance:

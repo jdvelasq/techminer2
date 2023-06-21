@@ -12,13 +12,13 @@ Bubble Chart
 ...    root_dir=root_dir,
 ... )
 
->>> file_name = "sphinx/_static/visualize/bubble_chart.html"
->>> chart = techminer2plus.visualize.bubble_chart(matrix)
+>>> file_name = "sphinx/_static/report/bubble_chart.html"
+>>> chart = techminer2plus.report.bubble_chart(matrix)
 >>> chart.plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../_static/visualize/bubble_chart.html" height="800px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/report/bubble_chart.html" height="800px" width="100%" frameBorder="0"></iframe>
 
 >>> chart.table_.head()
                  row             column  VALUE
