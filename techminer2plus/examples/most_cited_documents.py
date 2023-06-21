@@ -9,7 +9,7 @@ from ..classes import ItemsList, MostCitedDocuments
 from ..metrics import indicators_by_document
 from ..prompts import format_prompt_for_records
 from ..records import create_records_report, read_records
-from ..visualize import ranking_chart
+from ..report import ranking_chart
 
 
 # pylint: disable=too-many-locals

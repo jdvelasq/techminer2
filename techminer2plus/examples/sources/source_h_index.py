@@ -69,7 +69,7 @@ Table:
 # pylint: disable=line-too-long
 """
 from ...analyze import list_items
-from ...visualize import ranking_chart
+from ...report import ranking_chart
 
 
 # pylint: disable=too-many-arguments

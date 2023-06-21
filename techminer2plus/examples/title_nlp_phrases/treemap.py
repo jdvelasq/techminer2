@@ -60,7 +60,7 @@ Table:
 # pylint: disable=line-too-long
 """
 from ...analyze import list_items
-from ...visualize import treemap as visualize_treemap
+from ...report import treemap as visualize_treemap
 
 FIELD = "title_nlp_phrases"
 

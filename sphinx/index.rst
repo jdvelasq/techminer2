@@ -95,9 +95,9 @@ TM2 module.
     ingest/__index__
     refine/__index__
     find/__index__
-    query/__index__
+    metrics/__index__
     analyze/__index__
-    visualize/__index__
+    report/__index__
     examples/__index__
     
     

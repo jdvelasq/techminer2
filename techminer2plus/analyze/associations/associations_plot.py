@@ -62,7 +62,7 @@ Table:
 
 from ...classes import ItemsList
 from ...prompts import format_prompt_for_tables
-from ...visualize import ranking_chart
+from ...report import ranking_chart
 from ..matrix import co_occurrence_matrix
 
 

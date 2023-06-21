@@ -22,7 +22,7 @@ WordCloud
 
 """
 from ...analyze import list_items
-from ...visualize import word_cloud as visualize_word_cloud
+from ...report import word_cloud as visualize_word_cloud
 
 FIELD = "abstract_nlp_phrases"
 
