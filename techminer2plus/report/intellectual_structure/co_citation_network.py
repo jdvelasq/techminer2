@@ -11,7 +11,7 @@ Co-citation Network
 >>> nnet = techminer2plus.report.intellectual_structure.co_citation_network(
 ...     top_n=50,
 ...     root_dir=root_dir,
-...     algorithm="louvain",
+...     algorithm_or_estimator="louvain",
 ...     network_viewer_dict={'nx_k': 0.2, 'nx_iterations': 10},
 ... )
 
@@ -64,9 +64,10 @@ Co-citation Network
 
 
 >>> print(nnet.network_metrics__prompt_)
-Your task is to generate a short analysis of the indicators of a network for a \\
-research paper. Summarize the text below, delimited by triple backticks, in at \\
-most 30 words, identifiying any notable patterns, trends, or outliers in the data.
+Your task is to generate a short analysis of the indicators of a network \\
+for a research paper. Summarize the text below, delimited by triple \\
+backticks, in at most 30 words, identifiying any notable patterns, trends, \\
+or outliers in the data.
 <BLANKLINE>
 Table:
 ```
@@ -144,10 +145,10 @@ Table:
 4     4  Yang D, 2018, EMERG MARK FINANC TRADE, V54, P3...      30
 
 >>> print(nnet.degree_plot__prompt_)
-Your task is to generate an analysis about the degree of the nodes in a networkx \\
-graph of a co-ocurrence matrix. Analyze the table below, delimited by triple  \\
-backticks, identifying any notable patterns, trends, or outliers in the data, and  \\
-discuss their implications in the network. 
+Your task is to generate an analysis about the degree of the nodes in a \\
+networkx graph of a co-ocurrence matrix. Analyze the table below, delimited \\
+by triple backticks, identifying any notable patterns, trends, or outliers \\
+in the data, and discuss their implications in the network.
 <BLANKLINE>
 Table:
 ```
@@ -213,15 +214,15 @@ Table:
 
 
 """
-# from ...classes import CocitationNetwork
-# from ...vantagepoint.analyze import (
-#     co_occurrence_matrix,
-#     network_clustering,
-#     network_communities,
-#     network_degree_plot,
-#     network_metrics,
-#     network_viewer,
-# )
+from ...analyze.matrix import co_occurrence_matrix
+from ...analyze.network import (
+    cluster_network,
+    network_communities,
+    network_degree_plot,
+    network_metrics,
+    network_viewer,
+)
+from ...classes import CocitationNetwork
 
 FIELD = "local_references"
 
@@ -229,7 +230,7 @@ FIELD = "local_references"
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 def co_citation_network(
-    algorithm="louvain",
+    algorithm_or_estimator="louvain",
     network_viewer_dict=None,
     network_degree_plot_dict=None,
     # Items params:
@@ -266,7 +267,9 @@ def co_citation_network(
         **filters,
     )
 
-    graph = network_clustering(coc_matrix, algorithm=algorithm)
+    graph = cluster_network(
+        coc_matrix, algorithm_or_estimator=algorithm_or_estimator
+    )
 
     degree_plot = network_degree_plot(graph=graph, **network_degree_plot_dict)
 
