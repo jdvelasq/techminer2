@@ -88,6 +88,11 @@ Analyze
     <p><center><strong>O T H E RS</strong></center></p>
 
 
+.. toctree::
+    :maxdepth: 1
+
+    lotka_law
+
 
 .. toctree::
    record_display
