@@ -10,7 +10,7 @@ stopwords list.
 >>> root_dir = "data/regtech/"
 
 >>> import techminer2plus
->>> techminer2plus.query.co_occ_matrix_list(
+>>> techminer2plus.metrics.co_occ_matrix_list(
 ...     columns='authors', rows='keywords', root_dir=root_dir
 ... ).head(10)
                        row     column  OCC

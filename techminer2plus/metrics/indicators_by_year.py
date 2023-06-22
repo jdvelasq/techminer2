@@ -11,7 +11,7 @@ Examples
 >>> root_dir = "data/regtech/"
 
 >>> import techminer2plus
->>> techminer2plus.query.indicators_by_year(root_dir) # doctest: +NORMALIZE_WHITESPACE
+>>> techminer2plus.metrics.indicators_by_year(root_dir) # doctest: +NORMALIZE_WHITESPACE
       OCC  cum_OCC  ...  cum_local_citations  mean_local_citations_per_year
 year                ...                                                    
 2016    1        1  ...                  0.0                           0.00
@@ -26,7 +26,7 @@ year                ...
 [8 rows x 11 columns]
 
 
->>> techminer2plus.query.indicators_by_year(
+>>> techminer2plus.metrics.indicators_by_year(
 ...     root_dir=root_dir, database="references"
 ... ).tail() # doctest: +NORMALIZE_WHITESPACE
       OCC  cum_OCC  ...  cum_local_citations  mean_local_citations_per_year
@@ -40,7 +40,7 @@ year                ...
 [5 rows x 11 columns]
 
 
->>> techminer2plus.query.indicators_by_year(
+>>> techminer2plus.metrics.indicators_by_year(
 ...     root_dir=root_dir, database="cited_by"
 ... ).tail() # doctest: +NORMALIZE_WHITESPACE
       OCC  cum_OCC  ...  cum_global_citations  mean_global_citations_per_year
@@ -58,7 +58,7 @@ year                ...
 >>> from pprint import pprint
 >>> pprint(
 ...     sorted(
-...         techminer2plus.query.indicators_by_year(
+...         techminer2plus.metrics.indicators_by_year(
 ...             root_dir=root_dir
 ...         ).columns.to_list()
 ...     )

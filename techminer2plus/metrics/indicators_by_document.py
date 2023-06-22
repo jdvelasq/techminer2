@@ -7,7 +7,7 @@ Indicators by Document
 >>> root_dir = "data/regtech/"
 
 >>> import techminer2plus
->>> techminer2plus.query.indicators_by_document(
+>>> techminer2plus.metrics.indicators_by_document(
 ...     root_dir=root_dir,
 ... ).head()
                                                     year  ...                                 doi
@@ -22,7 +22,7 @@ Baxter LG, 2016, DUKE LAW J, V66, P567              2016  ...                   
 
 
 >>> from pprint import pprint
->>> pprint(techminer2plus.query.indicators_by_document(
+>>> pprint(techminer2plus.metrics.indicators_by_document(
 ...     root_dir=root_dir).columns.to_list())
 ['year',
  'global_citations',

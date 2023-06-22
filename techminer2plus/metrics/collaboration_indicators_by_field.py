@@ -9,7 +9,7 @@ Examples
 >>> root_dir = "data/regtech/"
 
 >>> import techminer2plus
->>> techminer2plus.query.collaboration_indicators_by_field(
+>>> techminer2plus.metrics.collaboration_indicators_by_field(
 ...     "countries",
 ...     root_dir=root_dir,
 ... ).head()
@@ -25,7 +25,7 @@ China             5                27  ...                     3      0.60
 
 
 >>> print(
-...     techminer2plus.query.collaboration_indicators_by_field(
+...     techminer2plus.metrics.collaboration_indicators_by_field(
 ...         "countries",
 ...         root_dir=root_dir,
 ...     ).head().to_markdown()

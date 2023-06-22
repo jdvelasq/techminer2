@@ -6,13 +6,10 @@ Items Occurrence by Year
 Computes the annual occurrence matrix for the items in a given field.
 
 
-Example
--------------------------------------------------------------------------------
-
 >>> root_dir = "data/regtech/"
 
 >>> import techminer2plus
->>> techminer2plus.query.items_occ_by_year(
+>>> techminer2plus.metrics.items_occ_by_year(
 ...     'authors',  root_dir=root_dir
 ... ).head(10)
 year               2016  2017  2018  2019  2020  2021  2022  2023
