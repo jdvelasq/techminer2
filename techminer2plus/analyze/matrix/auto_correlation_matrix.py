@@ -83,11 +83,13 @@ from .compute_corr_matrix import compute_corr_matrix
 def auto_correlation_matrix(
     rows_and_columns,
     method="pearson",
+    #
     # Item filters:
     top_n=None,
     occ_range=None,
     gc_range=None,
     custom_items=None,
+    #
     # Database params:
     root_dir="./",
     database="main",

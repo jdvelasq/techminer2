@@ -58,14 +58,17 @@ from .co_occurrence_matrix import co_occurrence_matrix
 
 
 def factor_matrix(
+    #
     # Specific params:
     field,
     pca=None,
+    #
     # Item filters:
     top_n=None,
     occ_range=None,
     gc_range=None,
     custom_items=None,
+    #
     # Database params:
     root_dir="./",
     database="main",
@@ -81,11 +84,13 @@ def factor_matrix(
 
     coc_matrix = co_occurrence_matrix(
         columns=field,
+        #
         # Columns item filters:
         col_top_n=top_n,
         col_occ_range=occ_range,
         col_gc_range=gc_range,
         col_custom_items=custom_items,
+        #
         # Database params:
         root_dir=root_dir,
         database=database,

@@ -1,6 +1,6 @@
 # flake8: noqa
 """
-List Cells in Matrix
+List Cells In Matrix
 ===============================================================================
 
 Creates a list that has a row for each cell in the original matrix. The list is
