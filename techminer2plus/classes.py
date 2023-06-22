@@ -291,6 +291,7 @@ class RadialDiagram:
     nx_graph_: nx.Graph
     series_: pd.Series
     item_name_: str
+    prompt_: str
 
 
 @dataclass(init=False)

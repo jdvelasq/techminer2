@@ -49,6 +49,35 @@ BLOCKCHAIN 03:005                  2
 SUPTECH 03:004                     3
 Name: REGTECH 28:329, dtype: int64
 
+>>> print(chart.prompt_)
+Your task is to generate a short analysis of a table for a research paper. \\
+Summarize the table below, delimited by triple backticks, in one unique \\
+paragraph with at most 30 words. The table contains the values of co- \\
+occurrence (OCC) of the 'REGTECH' with the 'author_keywords' field in a \\
+bibliographic dataset. Identify any notable patterns, trends, or outliers \\
+in the data, and discuss their implications for the research field. Be sure \\
+to provide a concise summary of your findings.
+<BLANKLINE>
+Table:
+```
+| author_keywords                |   REGTECH 28:329 |
+|:-------------------------------|-----------------:|
+| FINTECH 12:249                 |               12 |
+| REGULATORY_TECHNOLOGY 07:037   |                2 |
+| COMPLIANCE 07:030              |                7 |
+| REGULATION 05:164              |                4 |
+| ANTI_MONEY_LAUNDERING 05:034   |                1 |
+| FINANCIAL_SERVICES 04:168      |                3 |
+| FINANCIAL_REGULATION 04:035    |                2 |
+| ARTIFICIAL_INTELLIGENCE 04:023 |                2 |
+| RISK_MANAGEMENT 03:014         |                2 |
+| INNOVATION 03:012              |                1 |
+| BLOCKCHAIN 03:005              |                2 |
+| SUPTECH 03:004                 |                3 |
+```
+<BLANKLINE>
+
+
 # pylint: disable=line-too-long
 """
 import networkx as nx
@@ -63,7 +92,7 @@ from ...network import (
     px_create_network_fig,
     px_create_node_trace,
 )
-from ..matrix import co_occurrence_matrix
+from .item_associations import item_associations
 
 
 # pylint: disable=too-many-arguments
@@ -109,51 +138,6 @@ def radial_diagram(
     **filters,
 ):
     """Plots a radial diagram."""
-
-    def compute_obj(obj):
-        if obj is not None:
-            return obj
-        return co_occurrence_matrix(
-            columns=columns,
-            rows=rows,
-            #
-            # Columns item filters:
-            col_top_n=col_top_n,
-            col_occ_range=col_occ_range,
-            col_gc_range=col_gc_range,
-            col_custom_items=col_custom_items,
-            #
-            # Rows item filters :
-            row_top_n=row_top_n,
-            row_occ_range=row_occ_range,
-            row_gc_range=row_gc_range,
-            row_custom_items=row_custom_items,
-            #
-            # Database params:
-            root_dir=root_dir,
-            database=database,
-            year_filter=year_filter,
-            cited_by_filter=cited_by_filter,
-            **filters,
-        )
-
-    def extract_item_position_and_name(candidate_items, item):
-        """Obtains the positions of topics in a list."""
-
-        org_candidate_items = candidate_items[:]
-        candidate_items = [col.split(" ")[:-1] for col in candidate_items]
-        candidate_items = [" ".join(col) for col in candidate_items]
-        pos = candidate_items.index(item)
-        name = org_candidate_items[pos]
-        return pos, name
-
-    def extract_item_column_from_coc_matrix(obj, pos, name):
-        matrix = obj.matrix_.copy()
-        series = matrix.iloc[:, pos]
-        series = series.drop(labels=[name], axis=0, errors="ignore")
-        series = series[series > 0]
-        series.index.name = obj.rows_
-        return series
 
     def create_graph(
         name,
@@ -204,9 +188,33 @@ def radial_diagram(
     #
     # Main code:
     #
-    obj = compute_obj(obj)
-    pos, name = extract_item_position_and_name(obj.matrix_.columns, item)
-    series = extract_item_column_from_coc_matrix(obj, pos, name)
+    name, series, _, prompt = item_associations(
+        item=item,
+        obj=obj,
+        #
+        # Co-occ matrix params:
+        columns=columns,
+        rows=rows,
+        #
+        # Columns item filters:
+        col_top_n=col_top_n,
+        col_occ_range=col_occ_range,
+        col_gc_range=col_gc_range,
+        col_custom_items=col_custom_items,
+        #
+        # Rows item filters:
+        row_top_n=row_top_n,
+        row_occ_range=row_occ_range,
+        row_gc_range=row_gc_range,
+        row_custom_items=row_custom_items,
+        #
+        # Database params:
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
+    )
 
     graph = create_graph(
         name=name,
@@ -239,5 +247,6 @@ def radial_diagram(
     radial_diagram_.graph_ = graph
     radial_diagram_.series_ = series.copy()
     radial_diagram_.item_name_ = name
+    radial_diagram_.prompt_ = prompt
 
     return radial_diagram_
