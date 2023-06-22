@@ -21,9 +21,9 @@ Matrix Viewer
 >>> chart = techminer2plus.report.matrix_viewer(
 ...     co_occ_matrix, 
 ...     n_labels=15,
-...     node_size_min=20,
+...     node_size_min=12,
 ...     node_size_max=70,
-...     textfont_size_min=8,
+...     textfont_size_min=7,
 ...     textfont_size_max=20,
 ...     xaxes_range=(-2,2)
 ... )
@@ -171,12 +171,10 @@ Table:
 """
 from ..analyze.matrix.co_occurrence_matrix import co_occurrence_matrix
 from ..analyze.matrix.list_cells_in_matrix import list_cells_in_matrix
-
-# from ..analyze.network_viewer import network_viewer
 from ..classes import MatrixViewer
 from ..network import (
     nx_compute_spring_layout,
-    nx_create_graph_from_matrix_list,
+    nx_create_graph_from_matrix,
     px_add_names_to_fig_nodes,
     px_create_edge_traces,
     px_create_network_fig,
@@ -227,8 +225,14 @@ def matrix_viewer(
 ):
     """Makes cluster map from a ocurrence flooding matrix."""
 
-    if obj is None:
-        obj = co_occurrence_matrix(
+    # ---------------------------------------------------------------------------
+    def compute_obj_if_necessary(obj):
+        """Computes the co-occurrence matrix if not suministred as argument."""
+
+        if obj is not None:
+            return obj
+
+        return co_occurrence_matrix(
             columns=columns,
             rows=rows,
             #
@@ -252,10 +256,18 @@ def matrix_viewer(
             **filters,
         )
 
-    matrix_list = list_cells_in_matrix(obj)
+    # ---------------------------------------------------------------------------
 
-    graph = nx_create_graph_from_matrix_list(
-        matrix_list,
+    #
+    #
+    # Main code:
+    #
+    #
+
+    obj = compute_obj_if_necessary(obj)
+
+    graph = nx_create_graph_from_matrix(
+        obj,
         node_size_min,
         node_size_max,
         textfont_size_min,
@@ -282,7 +294,7 @@ def matrix_viewer(
     matrix_viewer_ = MatrixViewer()
     matrix_viewer_.plot_ = fig
     matrix_viewer_.graph_ = graph
-    matrix_viewer_.table_ = matrix_list.cells_list_
-    matrix_viewer_.prompt_ = matrix_list.prompt_
+    matrix_viewer_.table_ = list_cells_in_matrix(obj).cells_list_
+    matrix_viewer_.prompt_ = list_cells_in_matrix(obj).prompt_
 
     return matrix_viewer_

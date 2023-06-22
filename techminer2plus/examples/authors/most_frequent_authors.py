@@ -64,11 +64,6 @@ Table:
 ```
 <BLANKLINE>
 
-
-
-
-
-
 # pylint: disable=line-too-long
 """
 from ...analyze import list_items

@@ -14,6 +14,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 from cdlib import algorithms
 
+from .analyze.matrix.list_cells_in_matrix import list_cells_in_matrix
 from .records import read_records
 
 CLUSTER_COLORS = (
@@ -27,13 +28,9 @@ CLUSTER_COLORS = (
 )
 
 
-#
-#
-# Functions for manipulating networkx graphs
-#
-#
-def nx_create_graph_from_matrix_list(
-    matrix_list,
+# =============================================================================
+def nx_create_graph_from_matrix(
+    matrix,
     node_size_min=30,
     node_size_max=70,
     textfont_size_min=10,
@@ -43,7 +40,7 @@ def nx_create_graph_from_matrix_list(
 
     graph = nx.Graph()
 
-    graph = nx_add_nodes__to_graph_from_matrix_list(graph, matrix_list)
+    graph = nx_add_nodes__to_graph_from_matrix(graph, matrix)
     graph = nx_create_node_occ_property_from_node_name(graph)
     graph = nx_compute_node_property_from_occ(
         graph, "node_size", node_size_min, node_size_max
@@ -52,9 +49,39 @@ def nx_create_graph_from_matrix_list(
         graph, "textfont_size", textfont_size_min, textfont_size_max
     )
 
-    graph = nx_add_edges_to_graph_from_matrix_list(graph, matrix_list)
+    graph = nx_add_edges_to_graph_from_matrix(graph, matrix)
 
     return graph
+
+
+def nx_add_nodes__to_graph_from_matrix(graph, matrix):
+    """Creates nodes from 'row' and 'column' columns in a matrix list."""
+
+    # Adds the items in 'row' column as nodes
+    nodes = matrix.matrix_.index.to_list()
+    nodes = [
+        (node, {"group": 0, "color": "#8da4b4", "textfont_color": "black"})
+        for node in nodes
+    ]
+    graph.add_nodes_from(nodes)
+
+    if matrix.rows_ != matrix.columns_:
+        # Adds the items in 'column' column as nodes
+        nodes = matrix.matrix_.columns.to_list()
+        nodes = [
+            (node, {"group": 1, "color": "#556f81", "textfont_color": "black"})
+            for node in nodes
+        ]
+        graph.add_nodes_from(nodes)
+
+    return graph
+
+
+def nx_add_edges_to_graph_from_matrix(graph, matrix):
+    """Creates edges from 'row' and 'column' columns in a matrix list."""
+
+    matrix_list = list_cells_in_matrix(matrix)
+    return nx_add_edges_to_graph_from_matrix_list(graph, matrix_list)
 
 
 def nx_add_edges_to_graph_from_matrix_list(graph, matrix_list):
@@ -76,6 +103,39 @@ def nx_add_edges_to_graph_from_matrix_list(graph, matrix_list):
             dash="solid",
             color="#8da4b4",
         )
+
+    return graph
+
+
+# =============================================================================
+#
+#
+# Functions for manipulating networkx graphs
+#
+#
+
+
+def nx_create_graph_from_matrix_list(
+    matrix_list,
+    node_size_min=30,
+    node_size_max=70,
+    textfont_size_min=10,
+    textfont_size_max=20,
+):
+    """Creates a networkx graph from a matrix list."""
+
+    graph = nx.Graph()
+
+    graph = nx_add_nodes__to_graph_from_matrix_list(graph, matrix_list)
+    graph = nx_create_node_occ_property_from_node_name(graph)
+    graph = nx_compute_node_property_from_occ(
+        graph, "node_size", node_size_min, node_size_max
+    )
+    graph = nx_compute_node_property_from_occ(
+        graph, "textfont_size", textfont_size_min, textfont_size_max
+    )
+
+    graph = nx_add_edges_to_graph_from_matrix_list(graph, matrix_list)
 
     return graph
 
@@ -628,7 +688,17 @@ def px_add_names_to_fig_nodes(fig, graph, n_labels, is_article):
     textposition = nx_compute_textposition_from_graph(graph)
     node_occs = nx_extract_node_occ(graph)
 
-    occ_min = min(sorted(node_occs, reverse=True)[:n_labels])
+    node_citations = [int(name.split(":")[1]) for name in node_names]
+
+    frame = pd.DataFrame(
+        {
+            "name": node_names,
+            "occ": node_occs,
+            "citation": node_citations,
+        }
+    )
+    frame = frame.sort_values(["occ", "citation", "name"], ascending=False)
+    selected_names = frame["name"].tolist()[:n_labels]
 
     if n_labels is None:
         n_labels = len(node_names)
@@ -642,15 +712,18 @@ def px_add_names_to_fig_nodes(fig, graph, n_labels, is_article):
     node_occs.reverse()
     #
 
-    i_label = 0
+    # i_label = 0
     for pos_x, pos_y, name, textfont_size, textpos, node_occ in zip(
         node_x, node_y, node_names, textfont_sizes, textposition, node_occs
     ):
-        if node_occ >= occ_min:
-            if i_label >= n_labels:
-                break
-            i_label += 1
-        else:
+        # if node_occ >= occ_min:
+        #     if i_label >= n_labels:
+        #         break
+        #     i_label += 1
+        # else:
+        #     continue
+
+        if name not in selected_names:
             continue
 
         if textpos == "top right":

@@ -4,7 +4,7 @@ Co-occurrence Matrix
 ===============================================================================
 
 
->>> root_dir = "data/regtech/"
+>>> ROOT_DIR = "data/regtech/"
 
 >>> import techminer2plus
 >>> co_occ_matrix = techminer2plus.analyze.matrix.co_occurrence_matrix(
@@ -12,7 +12,7 @@ Co-occurrence Matrix
 ...     rows='authors',
 ...     col_occ_range=(2, None),
 ...     row_occ_range=(2, None),
-...     root_dir=root_dir,
+...     root_dir=ROOT_DIR,
 ... )
 >>> co_occ_matrix.matrix_
 column              REGTECH 28:329  ...  REPORTING 02:001
@@ -71,7 +71,7 @@ Table:
 >>> co_occ_matrix = techminer2plus.analyze.matrix.co_occurrence_matrix(
 ...    columns='author_keywords',
 ...    col_top_n=10,
-...    root_dir=root_dir,
+...    root_dir=ROOT_DIR,
 ... )
 >>> co_occ_matrix.matrix_
 column                          REGTECH 28:329  ...  RISK_MANAGEMENT 03:014

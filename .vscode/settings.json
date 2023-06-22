@@ -35,4 +35,8 @@
     "python.linting.pylintEnabled": true,
     "python.linting.enabled": true,
     "editor.fontSize": 11,
+    "debug.console.fontSize": 11,
+    "scm.inputFontSize": 11,
+    "terminal.integrated.fontSize": 11,
+    "chat.editor.fontSize": 11,
 }
