@@ -1,5 +1,6 @@
 """Analyze module."""
 
+from . import associations
 from .bradford_law import bradford_law
 from .concordances import concordances
 from .coverage import coverage

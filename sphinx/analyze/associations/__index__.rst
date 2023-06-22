@@ -7,3 +7,8 @@ Associations
     
     associations_plot
 
+
+.. toctree::
+    :maxdepth: 1
+    
+    radial_diagram

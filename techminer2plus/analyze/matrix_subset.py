@@ -184,141 +184,141 @@ Analyze the table below which contains values of co-occurrence (OCC) for the 'au
 # from ..classes import MatrixSubset
 
 
-# def matrix_subset(
-#     obj,
-#     custom_items,
-#     is_ego_matrix=False,
-# ):
-#     """Extracts a subset of columns and associated rows from a matrix.
+def matrix_subset(
+    obj,
+    custom_items,
+    is_ego_matrix=False,
+):
+    """Extracts a subset of columns and associated rows from a matrix.
 
-#     Args:
-#         obj (Matrix): A co-occurrnce matrix object.
-#         custom_items (list): A list of items to extract.
-#         is_ego_matrix (bool): Whether the matrix is an ego matrix.
+    Args:
+        obj (Matrix): A co-occurrnce matrix object.
+        custom_items (list): A list of items to extract.
+        is_ego_matrix (bool): Whether the matrix is an ego matrix.
 
-#     Returns:
-#         MatrixSubset: A MatrixSubset object.
+    Returns:
+        MatrixSubset: A MatrixSubset object.
 
-#     """
+    """
 
-#     def extract_custom_item_positions(candidate_items, custom_items):
-#         """Obtains the positions of topics in a list."""
+    def extract_custom_item_positions(candidate_items, custom_items):
+        """Obtains the positions of topics in a list."""
 
-#         item_positions = []
-#         candidate_items = [col.split(" ")[:-1] for col in candidate_items]
-#         candidate_items = [" ".join(col) for col in candidate_items]
-#         for item in custom_items:
-#             if item in candidate_items:
-#                 item_positions.append(candidate_items.index(item))
-#         item_positions = sorted(item_positions)
+        item_positions = []
+        candidate_items = [col.split(" ")[:-1] for col in candidate_items]
+        candidate_items = [" ".join(col) for col in candidate_items]
+        for item in custom_items:
+            if item in candidate_items:
+                item_positions.append(candidate_items.index(item))
+        item_positions = sorted(item_positions)
 
-#         return item_positions
+        return item_positions
 
-#     def generate_default_prompt(matrix, topics, other_criterion):
-#         """Generates a ChatGPT prompt for a occurrence matrix."""
+    def generate_default_prompt(matrix, topics, other_criterion):
+        """Generates a ChatGPT prompt for a occurrence matrix."""
 
-#         return (
-#             "Analyze the table below which contains values of co-occurrence "
-#             f"(OCC) for the {repr(topics)} and '{other_criterion}' fields "
-#             "in a bibliographic dataset. Identify any notable patterns, "
-#             "trends, or outliers in the data, and discuss their implications "
-#             "for the research field. Be sure to provide a concise summary of "
-#             "your findings in no more than 150 words."
-#             f"\n\n{matrix.to_markdown()}\n\n"
-#         )
+        return (
+            "Analyze the table below which contains values of co-occurrence "
+            f"(OCC) for the {repr(topics)} and '{other_criterion}' fields "
+            "in a bibliographic dataset. Identify any notable patterns, "
+            "trends, or outliers in the data, and discuss their implications "
+            "for the research field. Be sure to provide a concise summary of "
+            "your findings in no more than 150 words."
+            f"\n\n{matrix.to_markdown()}\n\n"
+        )
 
-#     def generate_prompt_for_ego_matrix(matrix, columns):
-#         """Generates a ChatGPT prompt for a occurrence matrix."""
+    def generate_prompt_for_ego_matrix(matrix, columns):
+        """Generates a ChatGPT prompt for a occurrence matrix."""
 
-#         return (
-#             "Analyze the table below which contains values of co-occurrence "
-#             f"(OCC) for the '{columns}' fields "
-#             "in a bibliographic dataset. Identify any notable patterns, "
-#             "trends, or outliers in the data, and discuss their implications "
-#             "for the research field. Be sure to provide a concise summary of "
-#             "your findings in no more than 150 words."
-#             f"\n\n{matrix.to_markdown()}\n\n"
-#         )
+        return (
+            "Analyze the table below which contains values of co-occurrence "
+            f"(OCC) for the '{columns}' fields "
+            "in a bibliographic dataset. Identify any notable patterns, "
+            "trends, or outliers in the data, and discuss their implications "
+            "for the research field. Be sure to provide a concise summary of "
+            "your findings in no more than 150 words."
+            f"\n\n{matrix.to_markdown()}\n\n"
+        )
 
-#     def matrix_subset_for_non_ego_matrix(obj, custom_items):
-#         """Non-ego matrix subset."""
+    def matrix_subset_for_non_ego_matrix(obj, custom_items):
+        """Non-ego matrix subset."""
 
-#         if isinstance(custom_items, str):
-#             custom_items = [custom_items]
+        if isinstance(custom_items, str):
+            custom_items = [custom_items]
 
-#         matrix = obj.matrix_.copy()
+        matrix = obj.matrix_.copy()
 
-#         item_positions = extract_custom_item_positions(
-#             candidate_items=matrix.columns.tolist(), custom_items=custom_items
-#         )
-#         selected_items_ = matrix.columns[item_positions].tolist()
+        item_positions = extract_custom_item_positions(
+            candidate_items=matrix.columns.tolist(), custom_items=custom_items
+        )
+        selected_items_ = matrix.columns[item_positions].tolist()
 
-#         matrix = matrix.iloc[:, item_positions]
-#         matrix = matrix.loc[matrix.sum(axis=1) > 0, :]
+        matrix = matrix.iloc[:, item_positions]
+        matrix = matrix.loc[matrix.sum(axis=1) > 0, :]
 
-#         matrix = matrix.drop(
-#             labels=matrix.columns.tolist(), axis=0, errors="ignore"
-#         )
+        matrix = matrix.drop(
+            labels=matrix.columns.tolist(), axis=0, errors="ignore"
+        )
 
-#         prompt = generate_default_prompt(matrix, custom_items, obj.rows_)
+        prompt = generate_default_prompt(matrix, custom_items, obj.rows_)
 
-#         matrix_subset_ = MatrixSubset()
-#         matrix_subset_.columns_ = obj.columns_
-#         matrix_subset_.rows_ = obj.rows_
-#         matrix_subset_.matrix_ = matrix
-#         matrix_subset_.metric_ = obj.metric_
-#         matrix_subset_.is_ego_matrix_ = is_ego_matrix
-#         matrix_subset_.prompt_ = prompt
-#         matrix_subset_.custom_items_ = selected_items_
+        matrix_subset_ = MatrixSubset()
+        matrix_subset_.columns_ = obj.columns_
+        matrix_subset_.rows_ = obj.rows_
+        matrix_subset_.matrix_ = matrix
+        matrix_subset_.metric_ = obj.metric_
+        matrix_subset_.is_ego_matrix_ = is_ego_matrix
+        matrix_subset_.prompt_ = prompt
+        matrix_subset_.custom_items_ = selected_items_
 
-#         return matrix_subset_
+        return matrix_subset_
 
-#     def matrix_subset_for_ego_matrix(obj, custom_items):
-#         """Ego matrix subset."""
+    def matrix_subset_for_ego_matrix(obj, custom_items):
+        """Ego matrix subset."""
 
-#         if isinstance(custom_items, str):
-#             custom_items = [custom_items]
+        if isinstance(custom_items, str):
+            custom_items = [custom_items]
 
-#         matrix = obj.matrix_.copy()
+        matrix = obj.matrix_.copy()
 
-#         item_positions = extract_custom_item_positions(
-#             candidate_items=matrix.columns.tolist(), custom_items=custom_items
-#         )
-#         selected_items_ = matrix.columns[item_positions].tolist()
+        item_positions = extract_custom_item_positions(
+            candidate_items=matrix.columns.tolist(), custom_items=custom_items
+        )
+        selected_items_ = matrix.columns[item_positions].tolist()
 
-#         matrix = matrix.iloc[:, item_positions]
-#         matrix = matrix.loc[matrix.sum(axis=1) > 0, :]
+        matrix = matrix.iloc[:, item_positions]
+        matrix = matrix.loc[matrix.sum(axis=1) > 0, :]
 
-#         candidates = matrix.index.tolist()
-#         candidates = [col.split(" ")[:-1] for col in candidates]
-#         candidates = [" ".join(col) for col in candidates]
+        candidates = matrix.index.tolist()
+        candidates = [col.split(" ")[:-1] for col in candidates]
+        candidates = [" ".join(col) for col in candidates]
 
-#         matrix = obj.matrix_.copy()
+        matrix = obj.matrix_.copy()
 
-#         item_positions = extract_custom_item_positions(
-#             candidate_items=matrix.columns.tolist(), custom_items=candidates
-#         )
+        item_positions = extract_custom_item_positions(
+            candidate_items=matrix.columns.tolist(), custom_items=candidates
+        )
 
-#         matrix = matrix.iloc[:, item_positions]
-#         matrix = matrix.iloc[item_positions, :]
+        matrix = matrix.iloc[:, item_positions]
+        matrix = matrix.iloc[item_positions, :]
 
-#         prompt = generate_prompt_for_ego_matrix(matrix, obj.columns_)
+        prompt = generate_prompt_for_ego_matrix(matrix, obj.columns_)
 
-#         matrix_subset_ = MatrixSubset()
-#         matrix_subset_.columns_ = obj.columns_
-#         matrix_subset_.rows_ = obj.rows_
-#         matrix_subset_.matrix_ = matrix
-#         matrix_subset_.metric_ = obj.metric_
-#         matrix_subset_.is_ego_matrix_ = is_ego_matrix
-#         matrix_subset_.prompt_ = prompt
-#         matrix_subset_.custom_items_ = selected_items_
+        matrix_subset_ = MatrixSubset()
+        matrix_subset_.columns_ = obj.columns_
+        matrix_subset_.rows_ = obj.rows_
+        matrix_subset_.matrix_ = matrix
+        matrix_subset_.metric_ = obj.metric_
+        matrix_subset_.is_ego_matrix_ = is_ego_matrix
+        matrix_subset_.prompt_ = prompt
+        matrix_subset_.custom_items_ = selected_items_
 
-#         return matrix_subset_
+        return matrix_subset_
 
-#     #
-#     # Main code:
-#     #
-#     if is_ego_matrix:
-#         return matrix_subset_for_ego_matrix(obj, custom_items)
+    #
+    # Main code:
+    #
+    if is_ego_matrix:
+        return matrix_subset_for_ego_matrix(obj, custom_items)
 
-#     return matrix_subset_for_non_ego_matrix(obj, custom_items)
+    return matrix_subset_for_non_ego_matrix(obj, custom_items)
