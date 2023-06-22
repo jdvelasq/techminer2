@@ -1,6 +1,6 @@
 # flake8: noqa
 """
-Multidimensional Scaling (*) --- ChatGPT
+Multidimensional Scaling (*)
 ===============================================================================
 
 Plots the MDS of the co-occurrence matrix.
@@ -50,99 +50,99 @@ FINANCIAL_SERVICES 04:168  0.040366 -0.356867  ...  0.333825  0.426246
 
 # pylint: disable=line-too-long
 """
-# import pandas as pd
-# from sklearn.manifold import MDS
+import pandas as pd
+from sklearn.manifold import MDS
 
 # from ...classes import ManifoldMap, NormCocMatrix, TFMatrix
 # from ...scatter_plot import scatter_plot
 
 
-# def multidimensional_scaling(
-#     obj,
-#     dim_x=0,
-#     dim_y=1,
-#     # Technique parameters
-#     is_2d=False,
-#     # MDS parameters
-#     metric=True,
-#     n_init=4,
-#     max_iter=300,
-#     eps=0.001,
-#     n_jobs=None,
-#     random_state=0,
-#     dissimilarity="euclidean",
-#     # Map parameters
-#     node_size_min=12,
-#     node_size_max=50,
-#     textfont_size_min=8,
-#     textfont_size_max=20,
-#     xaxes_range=None,
-#     yaxes_range=None,
-# ):
-#     """MDS map of a co-occurrence network."""
+def multidimensional_scaling(
+    obj,
+    dim_x=0,
+    dim_y=1,
+    # Technique parameters
+    is_2d=False,
+    # MDS parameters
+    metric=True,
+    n_init=4,
+    max_iter=300,
+    eps=0.001,
+    n_jobs=None,
+    random_state=0,
+    dissimilarity="euclidean",
+    # Map parameters
+    node_size_min=12,
+    node_size_max=50,
+    textfont_size_min=8,
+    textfont_size_max=20,
+    xaxes_range=None,
+    yaxes_range=None,
+):
+    """MDS map of a co-occurrence network."""
 
-#     def extract_occ(axis_values):
-#         "Extracts occurrence values from axis values."
-#         occ = [x.split(" ")[-1] for x in axis_values]
-#         occ = [x.split(":")[1] for x in occ]
-#         occ = [int(x) for x in occ]
-#         return occ
+    def extract_occ(axis_values):
+        "Extracts occurrence values from axis values."
+        occ = [x.split(" ")[-1] for x in axis_values]
+        occ = [x.split(":")[1] for x in occ]
+        occ = [int(x) for x in occ]
+        return occ
 
-#     #
-#     # Main:
-#     #
-#     if not isinstance(obj, (NormCocMatrix, TFMatrix)):
-#         raise ValueError(
-#             "Invalid obj type. Must be a NormCocMatrix/TFMatrix instance."
-#         )
+    #
+    # Main:
+    #
+    if not isinstance(obj, (NormCocMatrix, TFMatrix)):
+        raise ValueError(
+            "Invalid obj type. Must be a NormCocMatrix/TFMatrix instance."
+        )
 
-#     if isinstance(obj, TFMatrix) and obj.scheme_ != "binary":
-#         raise ValueError("TFMatrix must be binary.")
+    if isinstance(obj, TFMatrix) and obj.scheme_ != "binary":
+        raise ValueError("TFMatrix must be binary.")
 
-#     node_occ = extract_occ(obj.matrix_.columns.tolist())
-#     matrix = obj.matrix_.copy()
-#     if isinstance(obj, TFMatrix):
-#         matrix = matrix.transpose()
+    node_occ = extract_occ(obj.matrix_.columns.tolist())
+    matrix = obj.matrix_.copy()
+    if isinstance(obj, TFMatrix):
+        matrix = matrix.transpose()
 
-#     if is_2d:
-#         max_dimensions = 2
-#     else:
-#         max_dimensions = min(20, len(matrix.columns) - 1)
+    if is_2d:
+        max_dimensions = 2
+    else:
+        max_dimensions = min(20, len(matrix.columns) - 1)
 
-#     decomposed_matrix = MDS(
-#         n_components=max_dimensions,
-#         metric=metric,
-#         n_init=n_init,
-#         max_iter=max_iter,
-#         eps=eps,
-#         n_jobs=n_jobs,
-#         random_state=random_state,
-#         dissimilarity=dissimilarity,
-#     ).fit_transform(obj.matrix_)
+    decomposed_matrix = MDS(
+        n_components=max_dimensions,
+        metric=metric,
+        n_init=n_init,
+        max_iter=max_iter,
+        eps=eps,
+        n_jobs=n_jobs,
+        random_state=random_state,
+        dissimilarity=dissimilarity,
+    ).fit_transform(obj.matrix_)
 
-#     table = pd.DataFrame(
-#         decomposed_matrix,
-#         columns=[f"Dim_{dim:02d}" for dim in range(max_dimensions)],
-#         index=obj.matrix_.index,
-#     )
+    table = pd.DataFrame(
+        decomposed_matrix,
+        columns=[f"Dim_{dim:02d}" for dim in range(max_dimensions)],
+        index=obj.matrix_.index,
+    )
 
-#     fig = scatter_plot(
-#         node_x=decomposed_matrix[:, dim_x],
-#         node_y=decomposed_matrix[:, dim_y],
-#         node_text=obj.matrix_.index,
-#         node_occ=node_occ,
-#         node_color=None,
-#         node_size_min=node_size_min,
-#         node_size_max=node_size_max,
-#         textfont_size_min=textfont_size_min,
-#         textfont_size_max=textfont_size_max,
-#         xaxes_range=xaxes_range,
-#         yaxes_range=yaxes_range,
-#     )
+    fig = scatter_plot(
+        node_x=decomposed_matrix[:, dim_x],
+        node_y=decomposed_matrix[:, dim_y],
+        node_text=obj.matrix_.index,
+        node_occ=node_occ,
+        node_color=None,
+        node_size_min=node_size_min,
+        node_size_max=node_size_max,
+        textfont_size_min=textfont_size_min,
+        textfont_size_max=textfont_size_max,
+        xaxes_range=xaxes_range,
+        yaxes_range=yaxes_range,
+    )
 
-#     manifoldmap = ManifoldMap()
-#     manifoldmap.plot_ = fig
-#     manifoldmap.table_ = table
-#     manifoldmap.prompt_ = "TODO"
+    manifoldmap = ManifoldMap()
+    manifoldmap.plot_ = fig
+    manifoldmap.table_ = table
+    manifoldmap.prompt_ = "TODO"
 
-#     return manifoldmap
+    return manifoldmap

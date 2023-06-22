@@ -138,12 +138,6 @@ def most_relevant_items(
         **filters,
     )
 
-    indicators = sort_indicators_by_metric(indicators, "global_citations")
-    indicators.insert(0, "rank_gc", range(1, len(indicators) + 1))
-
-    indicators = sort_indicators_by_metric(indicators, "OCC")
-    indicators.insert(0, "rank_occ", range(1, len(indicators) + 1))
-
     indicators = indicators[
         (indicators.rank_occ <= top_n) | (indicators.rank_gc <= top_n)
     ]

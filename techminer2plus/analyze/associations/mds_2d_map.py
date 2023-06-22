@@ -51,46 +51,46 @@ FINANCIAL_SERVICES 04:168   0.070459  1.912509
 # from ..comparison.multidimensional_scaling import multidimensional_scaling
 
 
-# # pylint: disable=too-many-arguments
-# def mds_map(
-#     obj,
-#     # MDS parameters
-#     metric=True,
-#     n_init=4,
-#     max_iter=300,
-#     eps=0.001,
-#     n_jobs=None,
-#     random_state=0,
-#     dissimilarity="euclidean",
-#     # Map parameters
-#     node_size_min=12,
-#     node_size_max=50,
-#     textfont_size_min=8,
-#     textfont_size_max=20,
-#     xaxes_range=None,
-#     yaxes_range=None,
-# ):
-#     """2D SVD Map."""
+# pylint: disable=too-many-arguments
+def mds_map(
+    obj,
+    # MDS parameters
+    metric=True,
+    n_init=4,
+    max_iter=300,
+    eps=0.001,
+    n_jobs=None,
+    random_state=0,
+    dissimilarity="euclidean",
+    # Map parameters
+    node_size_min=12,
+    node_size_max=50,
+    textfont_size_min=8,
+    textfont_size_max=20,
+    xaxes_range=None,
+    yaxes_range=None,
+):
+    """2D SVD Map."""
 
-#     return multidimensional_scaling(
-#         obj,
-#         dim_x=0,
-#         dim_y=1,
-#         # Technique parameters
-#         is_2d=True,
-#         # MDS parameters
-#         metric=metric,
-#         n_init=n_init,
-#         max_iter=max_iter,
-#         eps=eps,
-#         n_jobs=n_jobs,
-#         random_state=random_state,
-#         dissimilarity=dissimilarity,
-#         # Map parameters
-#         node_size_min=node_size_min,
-#         node_size_max=node_size_max,
-#         textfont_size_min=textfont_size_min,
-#         textfont_size_max=textfont_size_max,
-#         xaxes_range=xaxes_range,
-#         yaxes_range=yaxes_range,
-#     )
+    return multidimensional_scaling(
+        obj,
+        dim_x=0,
+        dim_y=1,
+        # Technique parameters
+        is_2d=True,
+        # MDS parameters
+        metric=metric,
+        n_init=n_init,
+        max_iter=max_iter,
+        eps=eps,
+        n_jobs=n_jobs,
+        random_state=random_state,
+        dissimilarity=dissimilarity,
+        # Map parameters
+        node_size_min=node_size_min,
+        node_size_max=node_size_max,
+        textfont_size_min=textfont_size_min,
+        textfont_size_max=textfont_size_max,
+        xaxes_range=xaxes_range,
+        yaxes_range=yaxes_range,
+    )
