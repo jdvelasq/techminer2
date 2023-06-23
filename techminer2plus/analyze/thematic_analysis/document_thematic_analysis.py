@@ -1,10 +1,7 @@
 # flake8: noqa
 """
-Thematic Analysis of Contexts --- TODO
-===============================================================================
-
-The implemented methodology is based on the Thematic Analysis of Elementary
-Contexts implemented in T-LAB.
+Document Thematic Analysis
+==================================
 
 **Algortihm:**
 
@@ -13,31 +10,36 @@ Contexts implemented in T-LAB.
 3. Clustering using cosine distance
 4. Obtain the table of units by clusters
 
+
+>>> import techminer2plus
 >>> root_dir = "data/regtech/"
-
+>>> # 1. Define the clustering method and number of clusters
 >>> from sklearn.cluster import AgglomerativeClustering
->>> clustering_method = AgglomerativeClustering(n_clusters=5)
-
->>> from techminer2 import tlab
->>> analysis = tlab.thematic_analysis_of_contexts(
-...     criterion="author_keywords",
-...     topic_occ_min=4,
+>>> estimator = AgglomerativeClustering(
+...     n_clusters=5,
+... ) 
+>>> # 2. Compute the TF-IDF matrix
+>>> tf_matrix = techminer2plus.analyze.tfidf.tf_matrix(
+...     field='author_keywords',
+...     top_n=50,
 ...     root_dir=root_dir,
-...     clustering_method=clustering_method,
 ... )
+>>> tf_idf_matrix = techminer2plus.analyze.tfidf.tf_idf_matrix(tf_matrix)
+>>> # 3. Cluster the documents 
+>>> analysis = techminer2plus.analyze.thematic_analysis.document_thematic_analysis(
+...     tf_idf_matrix=tf_idf_matrix,
+...     estimator=estimator,
+...     report_dir="document_thematic_analysis",
+...     root_dir=root_dir,
+... )
+--INFO-- The file 'data/regtech/reports/document_thematic_analysis/CL_00_abstracts_report.txt' was created.
+--INFO-- The file 'data/regtech/reports/document_thematic_analysis/CL_01_abstracts_report.txt' was created.
+--INFO-- The file 'data/regtech/reports/document_thematic_analysis/CL_02_abstracts_report.txt' was created.
+--INFO-- The file 'data/regtech/reports/document_thematic_analysis/CL_03_abstracts_report.txt' was created.
+--INFO-- The file 'data/regtech/reports/document_thematic_analysis/CL_04_abstracts_report.txt' was created.
+
 
 >>> analysis.themes_.head()
-                            TH_00  ...           TH_04
-0  artificial intelligence 04:023  ...  regtech 28:329
-1     financial regulation 04:035  ...                
-2       financial services 04:168  ...                
-3                  regtech 28:329  ...                
-4                  fintech 12:249  ...                
-<BLANKLINE>
-[5 rows x 5 columns]
-
-
-
 
 
 
@@ -45,6 +47,69 @@ Contexts implemented in T-LAB.
 # import pandas as pd
 
 # from ... import vantagepoint
+from ...make_report_dir import make_report_dir
+from ...records import create_records_report, read_records
+from ..matrix import co_occurrence_matrix
+
+
+def document_thematic_analysis(
+    tf_idf_matrix,
+    estimator,
+    report_dir,
+    root_dir="./",
+):
+    """Document Thematic Analysis."""
+
+    def extract_records_per_cluster(dt_matrix):
+        """Creates a dict of records per cluster."""
+
+        clusters = dt_matrix["CLUSTER"].drop_duplicates().to_list()
+
+        records_main = read_records(
+            root_dir=root_dir,
+        )
+
+        records_per_cluster = {}
+
+        for cluster in clusters:
+            articles_in_cluster = dt_matrix[
+                dt_matrix.CLUSTER == cluster
+            ].index.to_list()
+            clustered_records = records_main[
+                records_main.article.isin(articles_in_cluster)
+            ].copy()
+            clustered_records = clustered_records.sort_values(
+                ["global_citations", "local_citations"],
+                ascending=[False, False],
+            )
+
+            records_per_cluster[cluster] = clustered_records.copy()
+
+        return records_per_cluster
+
+    def create_report(records_per_cluster):
+        """Creates the report."""
+
+        for cluster in sorted(records_per_cluster.keys()):
+            records = records_per_cluster[cluster]
+            report_filename = f"{cluster}_abstracts_report.txt"
+            create_records_report(
+                root_dir=root_dir,
+                target_dir=report_dir,
+                records=records,
+                report_filename=report_filename,
+            )
+
+    dt_matrix = tf_idf_matrix.table_.copy()
+    estimator.fit(dt_matrix)
+    dt_matrix["CLUSTER"] = [f"CL_{label:>02d}" for label in estimator.labels_]
+
+    make_report_dir(root_dir, report_dir)
+
+    records_per_cluster = extract_records_per_cluster(dt_matrix)
+    create_report(records_per_cluster)
+
+    cooc_matrix = co_occurrence_matrix()
 
 
 # class _ThematicAnalysis:

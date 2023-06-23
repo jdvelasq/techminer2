@@ -55,6 +55,7 @@ import os
 import os.path
 import textwrap
 
+from ...make_report_dir import make_report_dir
 from ...network import extract_records_per_cluster, nx_extract_communities
 from ...prompts import format_prompt_for_records
 from ...records import create_records_report
@@ -206,21 +207,3 @@ def genereate_concordances_report(
                 prompt_file=prompt_file,
                 root_dir=root_dir,
             )
-
-
-def make_report_dir(root_dir, report_dir):
-    """Make report directory."""
-
-    report_path = os.path.join(root_dir, "reports", report_dir)
-
-    if os.path.exists(report_path):
-        for root, dirs, files in os.walk(report_path, topdown=False):
-            for filename in files:
-                if filename.endswith(""):
-                    os.remove(os.path.join(root, filename))
-            for dirname in dirs:
-                if dirname.endswith(""):
-                    os.rmdir(os.path.join(root, dirname))
-        os.rmdir(report_path)
-
-    os.makedirs(report_path)

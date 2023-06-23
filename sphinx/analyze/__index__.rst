@@ -103,5 +103,9 @@ Analyze
 
     trending_terms
 
+.. toctree::
+    :maxdepth: 1
+
+    thematic_analysis/__index__
 
 
