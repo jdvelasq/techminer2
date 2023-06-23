@@ -1,6 +1,6 @@
 # flake8: noqa
 """
-TF Matrix --- ChatGPT
+TF Matrix
 ===============================================================================
 
 >>> root_dir = "data/regtech/"
@@ -122,13 +122,13 @@ def tf_matrix(
     result = _apply_scheme(scheme, result)
     result = _sort_columns(result)
 
-    tfmatrix_ = TFMatrix()
-    tfmatrix_.table_ = result
-    tfmatrix_.field_ = field
-    tfmatrix_.scheme_ = scheme
-    tfmatrix_.prompt_ = "TODO"
+    tf_matrix_ = TFMatrix()
+    tf_matrix_.table_ = result
+    tf_matrix_.field_ = field
+    tf_matrix_.scheme_ = scheme
+    tf_matrix_.prompt_ = "TODO"
 
-    return tfmatrix_
+    return tf_matrix_
 
 
 def _sort_columns(result):
