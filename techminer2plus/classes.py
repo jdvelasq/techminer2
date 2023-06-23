@@ -23,15 +23,30 @@ import plotly.graph_objs as go
 #
 
 
+# pylint: disable=too-many-instance-attributes
 @dataclass(init=False)
 class ItemsList:
     """List view."""
 
-    field_: str
-    metric_: str
-    prompt_: str
     table_: pd.DataFrame
+    prompt_: str
+    #
+    # Params:
+    field: str
+    metric: str
+    #
+    # Item filters:
+    top_n_: int
+    occ_range_: tuple
+    gc_range_: tuple
     custom_items_: list
+    #
+    # Database params:
+    root_dir_: str
+    database_: str
+    year_filter_: tuple
+    cited_by_filter_: tuple
+    filters_: dict
 
 
 @dataclass(init=False)

@@ -157,11 +157,27 @@ def list_items(
 
     indicators = indicators[indicators.index.isin(custom_items)]
 
-    results = ItemsList()
-    results.table_ = indicators
-    results.prompt_ = generate_prompt(field, indicators, metric)
-    results.metric_ = metric
-    results.field_ = field
-    results.custom_items_ = indicators.index.tolist()
+    #
+    # Create the itemlist object:
+    itemlist = ItemsList()
+    # Results:
+    itemlist.table_ = indicators
+    itemlist.prompt_ = generate_prompt(field, indicators, metric)
+    # Params:
+    itemlist.field_ = field
+    itemlist.metric_ = metric
+    #
+    # Item filters:
+    itemlist.top_n_ = top_n
+    itemlist.occ_range_ = occ_range
+    itemlist.gc_range_ = gc_range
+    itemlist.custom_items_ = indicators.index.tolist()
+    #
+    # Database params:
+    itemlist.root_dir_ = root_dir
+    itemlist.database_ = database
+    itemlist.year_filter_ = year_filter
+    itemlist.cited_by_filter_ = cited_by_filter
+    itemlist.filters_ = filters
 
-    return results
+    return itemlist
