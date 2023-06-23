@@ -7,13 +7,13 @@ Cross-correlation Matrix
 >>> root_dir = "data/regtech/"
 
 >>> import techminer2plus
->>> corr_matrix = techminer2plus.analyze.matrix.cross_correlation_matrix(
+>>> cross_corr_matrix = techminer2plus.analyze.matrix.cross_correlation_matrix(
 ...     rows_and_columns='authors', 
 ...     cross_with='countries',
 ...     top_n=10,
 ...     root_dir=root_dir,
 ... )
->>> corr_matrix.matrix_.round(3)
+>>> cross_corr_matrix.matrix_.round(3)
                    Arner DW 3:185  ...  Crane M 2:014
 Arner DW 3:185              1.000  ...          0.000
 Buckley RP 3:185            1.000  ...          0.000
@@ -30,7 +30,7 @@ Crane M 2:014               0.000  ...          1.000
 
 
 
->>> print(corr_matrix.prompt_)
+>>> print(cross_corr_matrix.prompt_)
 Analyze the table below which contains the cross-correlation values for the \\
 authors based on the values of the countries. High correlation values \\
 indicate that the topics in authors are related based on the values of the \\
@@ -61,7 +61,7 @@ Matrix:
 # pylint: disable=line-too-long
 """
 
-from ...classes import CorrMatrix
+from ...classes import CrossCorrMatrix
 from ...prompts import format_prompt_for_matrices
 from .co_occurrence_matrix import co_occurrence_matrix
 from .compute_corr_matrix import compute_corr_matrix
@@ -120,7 +120,7 @@ def cross_correlation_matrix(
         **filters,
     )
 
-    results = CorrMatrix()
+    results = CrossCorrMatrix()
     results.rows_and_columns_ = rows_and_columns
     results.cross_with_ = cross_with
     results.method_ = method

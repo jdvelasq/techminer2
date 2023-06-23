@@ -56,11 +56,12 @@ Table:
 # pylint: disable=line-too-long
 """
 from ...classes import (
-    CocMatrix,
-    CorrMatrix,
+    AutoCorrMatrix,
+    CoocMatrix,
+    CrossCorrMatrix,
     ListCellsInMatrix,
     MatrixSubset,
-    NormCocMatrix,
+    NormCoocMatrix,
 )
 from ...prompts import format_prompt_for_tables
 
@@ -178,12 +179,12 @@ def list_cells_in_matrix(obj):
     results = ListCellsInMatrix()
     results.cells_list_ = transform_matrix_to_matrix_list(obj)
 
-    if isinstance(obj, CorrMatrix):
+    if isinstance(obj, (AutoCorrMatrix, CrossCorrMatrix)):
         results.columns_ = obj.rows_and_columns_
         results.rows_ = obj.rows_and_columns_
     elif isinstance(
         obj,
-        (CocMatrix, MatrixSubset, NormCocMatrix),
+        (CoocMatrix, MatrixSubset, NormCoocMatrix),
     ):
         results.columns_ = obj.columns_
         results.rows_ = obj.rows_

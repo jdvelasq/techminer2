@@ -8,13 +8,13 @@ Network Deegre Plot
 
 >>> import techminer2plus
 >>> file_name = "sphinx/_static/analyze/network/network_degree_plot.html"
->>> co_occ_matrix = techminer2plus.analyze.matrix.co_occurrence_matrix(
+>>> cooc_matrix = techminer2plus.analyze.matrix.co_occurrence_matrix(
 ...    columns='author_keywords',
 ...    col_occ_range=(3, None),
 ...    root_dir=root_dir,
 ... )
 >>> graph = techminer2plus.analyze.network.cluster_network(
-...    co_occ_matrix,
+...    cooc_matrix,
 ...    algorithm_or_estimator='louvain',
 ... )
 >>> chart = techminer2plus.analyze.network.network_degree_plot(graph)

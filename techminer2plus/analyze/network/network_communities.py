@@ -10,13 +10,13 @@ Extracts the community (cluster) members from a networkx graph as a dataframe.
 >>> root_dir = "data/regtech/"
 
 >>> import techminer2plus
->>> co_occ_matrix = techminer2plus.analyze.matrix.co_occurrence_matrix(
+>>> cooc_matrix = techminer2plus.analyze.matrix.co_occurrence_matrix(
 ...    columns='author_keywords',
 ...    col_occ_range=(2, None),
 ...    root_dir=root_dir,
 ... )
 >>> graph = techminer2plus.analyze.network.cluster_network(
-...    co_occ_matrix,
+...    cooc_matrix,
 ...    algorithm_or_estimator='louvain',
 ... )
 >>> techminer2plus.analyze.network.network_communities(graph)

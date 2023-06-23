@@ -10,14 +10,14 @@ Clusters a co-occurrence network using community detection algorithm or sklearn 
 
 >>> root_dir = "data/regtech/"
 >>> import techminer2plus
->>> co_occ_matrix = techminer2plus.analyze.matrix.co_occurrence_matrix(
+>>> cooc_matrix = techminer2plus.analyze.matrix.co_occurrence_matrix(
 ...    columns='author_keywords',
 ...    col_occ_range=(2, None),
 ...    root_dir=root_dir,
 ... )
 
 >>> graph = techminer2plus.analyze.network.cluster_network(
-...    co_occ_matrix,
+...    cooc_matrix,
 ...    normalization_index='association',
 ...    algorithm_or_estimator='label_propagation',
 ... )
@@ -56,21 +56,22 @@ Clusters a co-occurrence network using community detection algorithm or sklearn 
 
 
 >>> graph = techminer2plus.analyze.network.cluster_network(
-...    co_occ_matrix,
+...    cooc_matrix,
 ...    normalization_index='association',
 ...    algorithm_or_estimator='louvain',
 ... )
 >>> print(techminer2plus.analyze.network.network_communities(graph).to_markdown())
-|    | CL_00                          | CL_01                       | CL_02                        | CL_03                          |
-|---:|:-------------------------------|:----------------------------|:-----------------------------|:-------------------------------|
-|  0 | REGTECH 28:329                 | FINTECH 12:249              | REGULATORY_TECHNOLOGY 07:037 | ANTI_MONEY_LAUNDERING 05:034   |
-|  1 | COMPLIANCE 07:030              | FINANCIAL_SERVICES 04:168   | REGULATION 05:164            | ARTIFICIAL_INTELLIGENCE 04:023 |
-|  2 | BLOCKCHAIN 03:005              | FINANCIAL_REGULATION 04:035 | RISK_MANAGEMENT 03:014       | CHARITYTECH 02:017             |
-|  3 | SMART_CONTRACTS 02:022         | INNOVATION 03:012           | SUPTECH 03:004               | ENGLISH_LAW 02:017             |
-|  4 | ACCOUNTABILITY 02:014          | DATA_PROTECTION 02:027      | SEMANTIC_TECHNOLOGIES 02:041 |                                |
-|  5 | DATA_PROTECTION_OFFICER 02:014 | SANDBOXES 02:012            | REPORTING 02:001             |                                |
-|  6 | GDPR 02:014                    | FINANCE 02:001              |                              |                                |
-|  7 | TECHNOLOGY 02:010              |                             |                              |                                |
+|    | CL_00                        | CL_01                          | CL_02                          | CL_03                       |
+|---:|:-----------------------------|:-------------------------------|:-------------------------------|:----------------------------|
+|  0 | FINTECH 12:249               | REGTECH 28:329                 | ANTI_MONEY_LAUNDERING 05:034   | FINANCIAL_SERVICES 04:168   |
+|  1 | REGULATORY_TECHNOLOGY 07:037 | COMPLIANCE 07:030              | ARTIFICIAL_INTELLIGENCE 04:023 | FINANCIAL_REGULATION 04:035 |
+|  2 | REGULATION 05:164            | BLOCKCHAIN 03:005              | CHARITYTECH 02:017             | DATA_PROTECTION 02:027      |
+|  3 | RISK_MANAGEMENT 03:014       | SMART_CONTRACTS 02:022         | ENGLISH_LAW 02:017             | SANDBOXES 02:012            |
+|  4 | INNOVATION 03:012            | ACCOUNTABILITY 02:014          |                                |                             |
+|  5 | SUPTECH 03:004               | DATA_PROTECTION_OFFICER 02:014 |                                |                             |
+|  6 | SEMANTIC_TECHNOLOGIES 02:041 | GDPR 02:014                    |                                |                             |
+|  7 | FINANCE 02:001               | TECHNOLOGY 02:010              |                                |                             |
+|  8 | REPORTING 02:001             |                                |                                |                             |
 
     
 
@@ -78,7 +79,7 @@ Clusters a co-occurrence network using community detection algorithm or sklearn 
 * **Example:** Clustering using Walktrap
 
 >>> graph = techminer2plus.analyze.network.cluster_network(
-...    co_occ_matrix,
+...    cooc_matrix,
 ...    normalization_index='association',
 ...    algorithm_or_estimator='walktrap',
 ... )
@@ -101,12 +102,12 @@ Clusters a co-occurrence network using community detection algorithm or sklearn 
 
 
 
-* **Example**
+* **Example:** K-means clustering
 
 >>> from sklearn.cluster import KMeans
 >>> kmeans = KMeans(n_clusters=4, random_state=1)
 >>> graph = techminer2plus.analyze.network.cluster_network(
-...    co_occ_matrix,
+...    cooc_matrix,
 ...    algorithm_or_estimator=kmeans,
 ... )
 >>> print(techminer2plus.analyze.network.network_communities(graph).to_markdown())
@@ -140,60 +141,30 @@ from ...network import (
 )
 from ..matrix.co_occurrence_matrix import co_occurrence_matrix
 from ..matrix.list_cells_in_matrix import list_cells_in_matrix
-from .matrix_normalization import matrix_normalization
+from ..matrix.matrix_normalization import matrix_normalization
 
 
 def cluster_network(
-    obj=None,
+    cooc_matrix=None,
     algorithm_or_estimator=None,
-    #
-    # Co-occurrente matrix params:
     normalization_index=None,
-    rows_and_columns=None,
-    #
-    # Item filters:
-    top_n=None,
-    occ_range=None,
-    gc_range=None,
-    custom_items=None,
-    #
-    # Database params:
-    root_dir="./",
-    database="main",
-    year_filter=None,
-    cited_by_filter=None,
-    **filters,
 ):
     """Cluster a co-occurrence matrix"""
 
-    if obj is None:
-        obj = co_occurrence_matrix(
-            columns=rows_and_columns,
-            #
-            # Columns item filters:
-            col_top_n=top_n,
-            col_occ_range=occ_range,
-            col_gc_range=gc_range,
-            col_custom_items=custom_items,
-            #
-            # Database params:
-            root_dir=root_dir,
-            database=database,
-            year_filter=year_filter,
-            cited_by_filter=cited_by_filter,
-            **filters,
-        )
-        obj = matrix_normalization(obj, normalization_index)
+    cooc_matrix = matrix_normalization(cooc_matrix, normalization_index)
 
     if isinstance(algorithm_or_estimator, str):
         return cluster_network_with_community_deteccion(
-            obj, algorithm_or_estimator
+            cooc_matrix, algorithm_or_estimator
         )
-    return cluster_network_with_sklearn_estimators(obj, algorithm_or_estimator)
+
+    return cluster_network_with_sklearn_estimators(
+        cooc_matrix, algorithm_or_estimator
+    )
 
 
 def cluster_network_with_community_deteccion(
-    obj=None,
+    cooc_matrix=None,
     algorithm=None,
 ):
     """Cluster a co-occurrence matrix
@@ -201,7 +172,7 @@ def cluster_network_with_community_deteccion(
     :meta private:
     """
 
-    matrix_list = list_cells_in_matrix(obj)
+    matrix_list = list_cells_in_matrix(cooc_matrix)
     graph = nx_create_graph_from_matrix_list(matrix_list)
     graph = nx_apply_community_detection_method(graph, algorithm)
     graph = nx_set_node_color_by_group(graph)
@@ -211,7 +182,7 @@ def cluster_network_with_community_deteccion(
 
 
 def cluster_network_with_sklearn_estimators(
-    obj,
+    cooc_matrix,
     estimator,
 ):
     """Cluster the matrix by sklearn cluster methods.
@@ -220,7 +191,7 @@ def cluster_network_with_sklearn_estimators(
     """
 
     # compute the dissimilarity matrix
-    values = obj.matrix_.values
+    values = cooc_matrix.matrix_.values
     dissimilarity_matrix = values / values.sum(axis=1, keepdims=True)
 
     # perform clustering using the specified estimator
@@ -243,10 +214,10 @@ def cluster_network_with_sklearn_estimators(
     labels = [new_labels[label] for label in labels]
 
     # create a graph
-    matrix_list = list_cells_in_matrix(obj)
+    matrix_list = list_cells_in_matrix(cooc_matrix)
     graph = nx_create_graph_from_matrix_list(matrix_list)
 
-    columns = obj.matrix_.columns.tolist()
+    columns = cooc_matrix.matrix_.columns.tolist()
     names2cluster = dict(zip(columns, labels))
 
     for node in graph.nodes():

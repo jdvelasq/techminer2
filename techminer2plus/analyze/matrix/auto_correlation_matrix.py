@@ -9,12 +9,12 @@ Returns an auto-correlation matrix.
 >>> root_dir = "data/regtech/"
 
 >>> import techminer2plus
->>> corr_matrix = techminer2plus.analyze.matrix.auto_correlation_matrix(
+>>> auto_corr_matrix = techminer2plus.analyze.matrix.auto_correlation_matrix(
 ...     rows_and_columns='authors',
 ...     occ_range=(2, None),
 ...     root_dir=root_dir,
 ... )
->>> corr_matrix.matrix_.round(3)
+>>> auto_corr_matrix.matrix_.round(3)
                     Arner DW 3:185  ...  Arman AA 2:000
 Arner DW 3:185               1.000  ...             0.0
 Buckley RP 3:185             1.000  ...             0.0
@@ -35,7 +35,7 @@ Arman AA 2:000               0.000  ...             1.0
 [15 rows x 15 columns]
 
 
->>> print(corr_matrix.prompt_)
+>>> print(auto_corr_matrix.prompt_)
 Your task is to generate a short paragraph of a research paper analyzing \\
 the auto-correlation values between the items of the column 'authors' of a \\
 bibliographic dataset.  Analyze the table below which contains the auto- \\
@@ -72,7 +72,7 @@ Matrix:
 # pylint: disable=line-too-long
 """
 
-from ...classes import CorrMatrix
+from ...classes import AutoCorrMatrix
 from ...prompts import format_prompt_for_matrices
 from ..tfidf import tf_matrix
 from .compute_corr_matrix import compute_corr_matrix
@@ -134,9 +134,8 @@ def auto_correlation_matrix(
         **filters,
     )
 
-    corr_matrix = CorrMatrix()
+    corr_matrix = AutoCorrMatrix()
     corr_matrix.rows_and_columns_ = rows_and_columns
-    corr_matrix.cross_with_ = None
     corr_matrix.method_ = method
     corr_matrix.metric_ = "CORR"
     corr_matrix.matrix_ = compute_corr_matrix(

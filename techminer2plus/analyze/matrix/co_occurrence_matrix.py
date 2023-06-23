@@ -120,7 +120,7 @@ Table:
 
 # pylint: disable=line-too-long
 """
-from ...classes import CocMatrix
+from ...classes import CoocMatrix
 from ...counters import add_counters_to_axis
 from ...items import generate_custom_items
 from ...metrics import co_occ_matrix_list, indicators_by_field
@@ -341,7 +341,7 @@ def co_occurrence_matrix(
             rows=columns,
         )
 
-    coc_matrix = CocMatrix()
+    coc_matrix = CoocMatrix()
 
     coc_matrix.columns_ = columns
     coc_matrix.rows_ = rows if rows else columns

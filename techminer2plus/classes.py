@@ -12,17 +12,17 @@ from dataclasses import dataclass
 
 import matplotlib.figure
 import networkx as nx
+import numpy as np
 import pandas as pd
 import plotly.graph_objs as go
 
 #
 #
-# -------------------------- V a n t a g e P o i n t -------------------------
+# -------------------------------- A N A L Y Z E --------------------------------
 #
 #
 
 
-# Analyze / Discover / List Items
 @dataclass(init=False)
 class ItemsList:
     """List view."""
@@ -34,7 +34,90 @@ class ItemsList:
     custom_items_: list
 
 
-# Analyze / Discover / Matrix / List Cells in Matrix
+@dataclass(init=False)
+class CoocMatrix:
+    """Co-cccurrence matrix."""
+
+    columns_: str
+    rows_: str
+    matrix_: pd.DataFrame
+    metric_: str
+    prompt_: str
+
+
+@dataclass(init=False)
+class NormCoocMatrix:
+    """Normalized co-cccurrence matrix."""
+
+    columns_: str
+    rows_: str
+    matrix_: pd.DataFrame
+    metric_: str
+    prompt_: str
+    association_index_: str
+
+
+@dataclass(init=False)
+class AutoCorrMatrix:
+    """Auto-correlation matrix."""
+
+    rows_and_columns_: str
+    method_: str
+    matrix_: pd.DataFrame
+    prompt_: str
+    metric_: str
+
+
+@dataclass(init=False)
+class CrossCorrMatrix:
+    """Cross-correlation matrix."""
+
+    rows_and_columns_: str
+    cross_with_: str
+    method_: str
+    matrix_: pd.DataFrame
+    prompt_: str
+    metric_: str
+
+
+@dataclass(init=False)
+class PcaFactorMatrix:
+    """PCA factor matrix."""
+
+    field_: str
+    table_: pd.DataFrame
+    prompt_: str
+    explained_variance_: np.ndarray
+    explained_variance_ratio_: np.ndarray
+
+
+@dataclass(init=False)
+class KernelPcaFactorMatrix:
+    """KernelPCA factor matrix."""
+
+    field_: str
+    table_: pd.DataFrame
+    prompt_: str
+
+
+@dataclass(init=False)
+class SvdFactorMatrix:
+    """PCA factor matrix."""
+
+    field_: str
+    table_: pd.DataFrame
+    prompt_: str
+
+
+@dataclass(init=False)
+class MdsFactorMatrix:
+    """MDS factor matrix."""
+
+    field_: str
+    table_: pd.DataFrame
+    prompt_: str
+
+
 @dataclass(init=False)
 class ListCellsInMatrix:
     """List cells in matrix."""
@@ -47,52 +130,22 @@ class ListCellsInMatrix:
     prompt_: str
 
 
-# Analyze / Discover / Matrix / Co-occurrence Matrix
 @dataclass(init=False)
-class CocMatrix:
-    """Co-cccurrence matrix."""
+class ManifoldMap:
+    """Manifold map."""
 
-    columns_: str
-    rows_: str
-    matrix_: pd.DataFrame
-    metric_: str
-    prompt_: str
-
-
-# Analyze / Discover / Matrix / Auto-correlation Matrix
-# Analyze / Discover / Matrix / Cross-correlation Matrix
-@dataclass(init=False)
-class CorrMatrix:
-    """Correlation matrix."""
-
-    matrix_: pd.DataFrame
-    prompt_: str
+    plot_: go.Figure
+    table_: pd.DataFrame
     method_: str
-    rows_and_columns_: str
-    cross_with_: str
-    metric_: str
 
 
-@dataclass(init=False)
-class NormCocMatrix:
-    """Normalized co-cccurrence matrix."""
+################################
 
-    columns_: str
-    rows_: str
-    matrix_: pd.DataFrame
-    metric_: str
-    prompt_: str
-    association_index_: str
+
+# Analyze / Discover / Matrix / Co-occurrence Matrix
 
 
 # Analyze / Discover / Matrix / Factor Matrix
-@dataclass(init=False)
-class FactorMatrix:
-    """Term-frequency matrix."""
-
-    field_: str
-    table_: pd.DataFrame
-    prompt_: str
 
 
 # Analyze / Discover / Matrix / TF Matrix
@@ -292,15 +345,6 @@ class RadialDiagram:
     series_: pd.Series
     item_name_: str
     prompt_: str
-
-
-@dataclass(init=False)
-class ManifoldMap:
-    """Manifold map."""
-
-    plot_: go.Figure
-    prompt_: str
-    table_: pd.DataFrame
 
 
 # Co-occurrence Analysis / Word Associations / Co-occurrence Matrix: None

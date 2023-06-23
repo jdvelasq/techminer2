@@ -1,62 +1,104 @@
 # flake8: noqa
 """
-Singular Value Decomposition --- ChatGPT
+SVD Factor Matrix
 ===============================================================================
 
-Plots the SVD of the normalized co-occurrence matrix. The plot is based on the 
-SVD technique used in T-LAB's comparative analysis.
+Factor matrix obtained by appliying SVD to the co-occurrence matrix. 
+
+**Algorithm:**
+
+1. Computes the co-occurrence matrix of the specified field.
+
+2. Optionally, normalize the co-occurrence matrix.
+
+3. Applies SVD to the co-occurrence matrix.
+
+4. Returns the factor matrix.
 
 
-
->>> root_dir = "data/regtech/"
->>> # ------------------------- Algorithm -------------------------
->>> # computes the co-occurrence matrix
->>> from techminer2 import vantagepoint
->>> co_occ_matrix = vantagepoint.analyze.co_occ_matrix(
+>>> import techminer2plus
+>>> cooc_matrix = techminer2plus.analyze.matrix.co_occurrence_matrix(
+...     root_dir="data/regtech/",
 ...     columns='author_keywords',
 ...     col_top_n=20,
-...     root_dir=root_dir,
 ... )
->>> # normalizes the co-occurrence matrix
->>> norm_co_occ_matrix = vantagepoint.analyze.association_index(
-...     co_occ_matrix, "association"
+
+>>> svd_factor_matrix = techminer2plus.analyze.matrix.svd_factor_matrix(
+...     cooc_matrix,
 ... )
->>> # computes the SVD
->>> from techminer2 import tlab
->>> svd = tlab.singular_value_decomposition(
-...     norm_co_occ_matrix,
-...     dim_x=0,
-...     dim_y=1,
-... )
->>> file_name = "sphinx/_static/tlab__singular_value_decomposition.html"
->>> svd.plot_.write_html(file_name)
+>>> svd_factor_matrix.table_.round(3)
+                                DIM_00  DIM_01
+author_keywords                               
+REGTECH 28:329                  32.386  -2.485
+FINTECH 12:249                  17.168   5.393
+REGULATORY_TECHNOLOGY 07:037     3.545   0.616
+COMPLIANCE 07:030                8.944  -4.299
+REGULATION 05:164                6.700   3.392
+ANTI_MONEY_LAUNDERING 05:034     1.327  -1.020
+FINANCIAL_SERVICES 04:168        3.996   1.500
+FINANCIAL_REGULATION 04:035      2.615   0.848
+ARTIFICIAL_INTELLIGENCE 04:023   2.957  -0.974
+RISK_MANAGEMENT 03:014           3.757   1.615
+INNOVATION 03:012                1.692   1.174
+BLOCKCHAIN 03:005                2.774  -0.325
+SUPTECH 03:004                   4.187   0.704
+SEMANTIC_TECHNOLOGIES 02:041     2.892   1.421
+DATA_PROTECTION 02:027           2.232   0.167
+SMART_CONTRACTS 02:022           1.783  -0.695
+CHARITYTECH 02:017               1.924  -1.240
+ENGLISH_LAW 02:017               1.924  -1.240
+ACCOUNTABILITY 02:014            2.303  -2.416
+DATA_PROTECTION_OFFICER 02:014   2.303  -2.416
 
-.. raw:: html
 
-    <iframe src="../../_static/tlab__singular_value_decomposition.html"
-    height="800px" width="100%" frameBorder="0"></iframe>
-
-
->>> svd.table_.head()
-                              Dim_00     Dim_01  ...    Dim_17    Dim_18
-row                                              ...                    
-REGTECH 28:329             12.838699  10.370912  ... -0.018717 -0.008665
-FINTECH 12:249             10.707965  -7.875859  ... -0.046276  0.006178
-COMPLIANCE 07:030           6.678769  -3.670698  ...  0.014592  0.002402
-REGULATION 05:164           5.799039  -0.255470  ... -0.082547  0.049420
-FINANCIAL_SERVICES 04:168   3.325509  -0.983070  ...  0.010637 -0.091859
-<BLANKLINE>
-[5 rows x 19 columns]
 
 # pylint: disable=line-too-long
 """
+import pandas as pd
+from sklearn.decomposition import TruncatedSVD
+
+from ...classes import SvdFactorMatrix
+from .matrix_normalization import matrix_normalization
 
 
-# import pandas as pd
-# from sklearn.decomposition import TruncatedSVD
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
+def svd_factor_matrix(
+    #
+    # Specific params:
+    cooc_matrix,
+    estimator=None,
+    association_index=None,
+):
+    """Creates a SVD factor matrix from the co-occurrence matrix.
 
-# from ...classes import ManifoldMap, NormCocMatrix, TFMatrix
-# from ...scatter_plot import scatter_plot
+
+    # pylint: disable=line-too-long
+    """
+    cooc_matrix = matrix_normalization(cooc_matrix, association_index)
+    matrix = cooc_matrix.matrix_
+
+    if estimator is None:
+        estimator = TruncatedSVD()
+
+    estimator.fit(matrix)
+
+    transformed_matrix = estimator.transform(matrix)
+    columns = [f"DIM_{i:>02d}" for i in range(transformed_matrix.shape[1])]
+
+    matrix = pd.DataFrame(
+        transformed_matrix,
+        index=matrix.index,
+        columns=columns,
+    )
+    matrix.index.name = cooc_matrix.rows_
+
+    factor_matrix = SvdFactorMatrix()
+    factor_matrix.table_ = matrix
+    factor_matrix.field_ = cooc_matrix.columns_
+    factor_matrix.prompt_ = "TODO"
+
+    return factor_matrix
 
 
 # # pylint: disable=too-many-arguments

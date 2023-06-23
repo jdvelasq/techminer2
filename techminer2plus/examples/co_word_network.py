@@ -76,10 +76,9 @@ REGULATION 05:164                 15     0.028463  ...         5.0     22.0
 # pylint: disable=line-too-long
 """
 
-from ..analyze.matrix import co_occurrence_matrix
+from ..analyze.matrix import co_occurrence_matrix, matrix_normalization
 from ..analyze.network import (
     cluster_network,
-    matrix_normalization,
     network_communities,
     network_degree_plot,
     network_metrics,

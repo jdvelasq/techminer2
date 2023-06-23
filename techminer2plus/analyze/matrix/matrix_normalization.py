@@ -11,10 +11,10 @@ co-occurrence matrix.
 """
 # import numpy as np
 
-from ...classes import CocMatrix, NormCocMatrix
+from ...classes import CoocMatrix, NormCoocMatrix
 
 
-def matrix_normalization(obj, index_name):
+def matrix_normalization(cooc_matrix, association_index):
     """
     Calculate the association index for a co-occurrence matrix.
 
@@ -117,14 +117,14 @@ def matrix_normalization(obj, index_name):
     # Main:
     #
 
-    if not isinstance(obj, CocMatrix):
-        raise TypeError("obj must be a CocMatrix instance")
+    if not isinstance(cooc_matrix, CoocMatrix):
+        raise TypeError("cooc_matrix must be a CoocMatrix instance")
 
-    if isinstance(index_name, str) and index_name == "None":
-        index_name = None
+    if isinstance(association_index, str) and association_index == "None":
+        association_index = None
 
-    if index_name is None:
-        return obj
+    if association_index is None:
+        return cooc_matrix
 
     fnc = {
         "jaccard": jaccard,
@@ -134,9 +134,9 @@ def matrix_normalization(obj, index_name):
         "inclusion": inclusion,
         "mutualinfo": mutualinfo,
         "association": association,
-    }[index_name]
+    }[association_index]
 
-    matrix = obj.matrix_.copy()
+    matrix = cooc_matrix.matrix_.copy()
     matrix = matrix.applymap(float)
     normalized_matrix = matrix.copy()
     normalized_matrix = fnc(matrix, normalized_matrix)
@@ -144,12 +144,12 @@ def matrix_normalization(obj, index_name):
     for index in range(len(normalized_matrix)):
         normalized_matrix.iloc[index, index] = 0.0
 
-    normcocmatrix = NormCocMatrix()
-    normcocmatrix.matrix_ = normalized_matrix
-    normcocmatrix.prompt_ = obj.prompt_
-    normcocmatrix.metric_ = obj.metric_
-    normcocmatrix.columns_ = obj.columns_
-    normcocmatrix.rows_ = obj.rows_
-    normcocmatrix.association_index_ = index_name
+    norm_cooc_matrix = NormCoocMatrix()
+    norm_cooc_matrix.matrix_ = normalized_matrix
+    norm_cooc_matrix.prompt_ = cooc_matrix.prompt_
+    norm_cooc_matrix.metric_ = cooc_matrix.metric_
+    norm_cooc_matrix.columns_ = cooc_matrix.columns_
+    norm_cooc_matrix.rows_ = cooc_matrix.rows_
+    norm_cooc_matrix.association_index_ = association_index
 
-    return normcocmatrix
+    return norm_cooc_matrix

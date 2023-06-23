@@ -10,13 +10,13 @@ Plots the co-occurrences of a given descriptor with the remaining descriptors.
 
 >>> ROOT_DIR = "data/regtech/"
 >>> import techminer2plus
->>> co_occ_matrix = techminer2plus.analyze.matrix.co_occurrence_matrix(
+>>> cooc_matrix = techminer2plus.analyze.matrix.co_occurrence_matrix(
 ...    columns='author_keywords',
 ...    col_occ_range=(3, None),
 ...    root_dir=ROOT_DIR,
 ... )
 >>> file_name = "sphinx/_static/analyze/associations/associations_plot.html"
->>> chart = techminer2plus.analyze.associations.associations_plot(item="REGTECH", obj=co_occ_matrix)
+>>> chart = techminer2plus.analyze.associations.associations_plot(item="REGTECH", cooc_matrix=cooc_matrix)
 >>> chart.plot_.write_html(file_name)
 
 .. raw:: html
@@ -65,35 +65,10 @@ from .item_associations import item_associations
 
 def associations_plot(
     item,
-    obj=None,
-    #
-    # Function params:
+    cooc_matrix,
     title=None,
     field_label=None,
     metric_label=None,
-    #
-    # Co-occ matrix params:
-    columns=None,
-    rows=None,
-    #
-    # Columns item filters:
-    col_top_n=None,
-    col_occ_range=None,
-    col_gc_range=None,
-    col_custom_items=None,
-    #
-    # Rows item filters :
-    row_top_n=None,
-    row_occ_range=None,
-    row_gc_range=None,
-    row_custom_items=None,
-    #
-    # Database params:
-    root_dir="./",
-    database="main",
-    year_filter=None,
-    cited_by_filter=None,
-    **filters,
 ):
     """association plot"""
 
@@ -102,30 +77,7 @@ def associations_plot(
     #
     _, series, _, prompt = item_associations(
         item=item,
-        obj=obj,
-        #
-        # Co-occ matrix params:
-        columns=columns,
-        rows=rows,
-        #
-        # Columns item filters:
-        col_top_n=col_top_n,
-        col_occ_range=col_occ_range,
-        col_gc_range=col_gc_range,
-        col_custom_items=col_custom_items,
-        #
-        # Rows item filters:
-        row_top_n=row_top_n,
-        row_occ_range=row_occ_range,
-        row_gc_range=row_gc_range,
-        row_custom_items=row_custom_items,
-        #
-        # Database params:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
+        cooc_matrix=cooc_matrix,
     )
 
     if title is None:
@@ -138,7 +90,7 @@ def associations_plot(
     list_view = ItemsList()
     list_view.table_ = frame
     list_view.metric_ = "OCC"
-    list_view.field_ = obj.rows_
+    list_view.field_ = cooc_matrix.rows_
     list_view.prompt_ = prompt
 
     chart = ranking_chart(

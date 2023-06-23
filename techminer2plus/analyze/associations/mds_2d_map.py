@@ -1,60 +1,56 @@
 # flake8: noqa
 """
-2D-MDS Map --- ChatGPT
+MDS 2D Map 
 ===============================================================================
 
-Plots the 2D-MDS of the normalized co-occurrence. The plot is based on the
-MDS technique used in T-LAB's words associations.
+Plots the MDS (with 2 components) of the normalized co-occurrence matrix.
 
 
 
->>> root_dir = "data/regtech/"
->>> # ------------------------- Algorithm -------------------------
->>> # computes the co-occurrence matrix
->>> from techminer2 import vantagepoint
->>> co_occ_matrix = vantagepoint.analyze.co_occ_matrix(
+>>> import techminer2plus
+>>> cooc_matrix = techminer2plus.analyze.matrix.co_occurrence_matrix(
 ...     columns='author_keywords',
-...     col_top_n=20,
-...     root_dir=root_dir,
+...     col_top_n=30,
+...     root_dir="data/regtech/",
 ... )
->>> # normalizes the co-occurrence matrix
->>> norm_co_occ_matrix = vantagepoint.analyze.association_index(
-...     co_occ_matrix, "mutualinfo"
-... )
->>> # computes the MDS
->>> from techminer2 import tlab
->>> mds_map = tlab.word_associations.mds_map(norm_co_occ_matrix)
->>> file_name = "sphinx/_static/tlab__word_associations__mds_map.html"
->>> mds_map.plot_.write_html(file_name)
+>>> file_name = "sphinx/_static/analyze/map/mds_2d_map.html"
+>>> chart = techminer2plus.analyze.map.mds_2d_map(cooc_matrix)
+>>> chart.plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../_static/tlab__word_associations__mds_map.html"
-    height="800px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static//analyze/map/mds_2d_map.html" height="800px" width="100%" frameBorder="0"></iframe>
 
 
->>> mds_map.table_.head()
-                              Dim_00    Dim_01
-row                                           
-REGTECH 28:329            -10.779058  9.743817
-FINTECH 12:249             -6.773880 -8.215191
-COMPLIANCE 07:030          -3.922014 -3.169216
-REGULATION 05:164          -3.313712  0.581496
-FINANCIAL_SERVICES 04:168   0.070459  1.912509
+>>> chart.table_.head()
+                                 Dim_01     Dim_02
+author_keywords                                   
+REGTECH 28:329               -17.158842 -23.166553
+FINTECH 12:249                -4.770553 -13.727826
+REGULATORY_TECHNOLOGY 07:037  -6.482699   2.450538
+COMPLIANCE 07:030              2.580874  -7.547167
+REGULATION 05:164             -3.354086  -3.505347
 
 
 
 
 # pylint: disable=line-too-long
 """
+import pandas as pd
+from sklearn.manifold import MDS
 
-# from ..comparison.multidimensional_scaling import multidimensional_scaling
+from ...classes import ManifoldMap
+from ...manifold_2d_map import manifold_2d_map
+from ..matrix.matrix_normalization import matrix_normalization
 
 
 # pylint: disable=too-many-arguments
-def mds_map(
-    obj,
-    # MDS parameters
+# pylint: disable=too-many-locals
+def mds_2d_map(
+    cooc_matrix,
+    association_index=None,
+    #
+    # MDS params:
     metric=True,
     n_init=4,
     max_iter=300,
@@ -62,7 +58,9 @@ def mds_map(
     n_jobs=None,
     random_state=0,
     dissimilarity="euclidean",
-    # Map parameters
+    #
+    # Plot params:
+    node_color="#8da4b4",
     node_size_min=12,
     node_size_max=50,
     textfont_size_min=8,
@@ -70,15 +68,12 @@ def mds_map(
     xaxes_range=None,
     yaxes_range=None,
 ):
-    """2D SVD Map."""
+    """MDS 2D map."""
 
-    return multidimensional_scaling(
-        obj,
-        dim_x=0,
-        dim_y=1,
-        # Technique parameters
-        is_2d=True,
-        # MDS parameters
+    cooc_matrix = matrix_normalization(cooc_matrix, association_index)
+    matrix = cooc_matrix.matrix_
+    estimator = MDS(
+        n_components=2,
         metric=metric,
         n_init=n_init,
         max_iter=max_iter,
@@ -86,7 +81,29 @@ def mds_map(
         n_jobs=n_jobs,
         random_state=random_state,
         dissimilarity=dissimilarity,
-        # Map parameters
+    )
+
+    transformed_matrix = estimator.fit_transform(matrix)
+    columns = ["Dim_01", "Dim_02"]
+
+    frame = pd.DataFrame(
+        transformed_matrix,
+        index=matrix.index,
+        columns=columns,
+    )
+    frame.index.name = cooc_matrix.rows_
+
+    node_occ = [
+        int(text.split(" ")[-1].split(":")[0])
+        for text in matrix.index.to_list()
+    ]
+
+    fig = manifold_2d_map(
+        node_x=frame.Dim_01,
+        node_y=frame.Dim_02,
+        node_text=frame.index.to_list(),
+        node_occ=node_occ,
+        node_color=node_color,
         node_size_min=node_size_min,
         node_size_max=node_size_max,
         textfont_size_min=textfont_size_min,
@@ -94,3 +111,10 @@ def mds_map(
         xaxes_range=xaxes_range,
         yaxes_range=yaxes_range,
     )
+
+    manifold_map = ManifoldMap()
+    manifold_map.plot_ = fig
+    manifold_map.table_ = frame
+    manifold_map.method_ = "MDS"
+
+    return manifold_map

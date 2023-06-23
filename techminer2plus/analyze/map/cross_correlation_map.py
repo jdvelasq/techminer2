@@ -6,20 +6,21 @@ Cross-correlation Map
 Creates an Cross-correlation Map.
 
 
-Example
--------------------------------------------------------------------------------
 
 >>> root_dir = "data/regtech/"
 
 >>> file_name = "sphinx/_static/analyze/map/cross_correlation_map.html"
 
 >>> import techminer2plus
->>> chart = techminer2plus.analyze.map.cross_correlation_map(
-...     rows_and_columns='authors',
+>>> cross_corr_matrix = techminer2plus.analyze.matrix.cross_correlation_matrix(
+...     rows_and_columns='authors', 
 ...     cross_with='countries',
 ...     top_n=10,
-...     color="#1f77b4", # tab:blue
 ...     root_dir=root_dir,
+... )
+>>> chart = techminer2plus.analyze.map.cross_correlation_map(
+...     cross_corr_matrix,
+...     color="#1f77b4", # tab:blue
 ... )
 >>> chart.plot_.write_html(file_name)
 
@@ -70,14 +71,13 @@ from ...network import (
     px_create_network_fig,
     px_create_node_trace,
 )
-from ..matrix.cross_correlation_matrix import cross_correlation_matrix
 from ..matrix.list_cells_in_matrix import list_cells_in_matrix
 
 
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 def cross_correlation_map(
-    obj=None,
+    cross_corr_matrix,
     #
     # Map params:
     n_labels=None,
@@ -92,45 +92,10 @@ def cross_correlation_map(
     xaxes_range=None,
     yaxes_range=None,
     show_axes=False,
-    #
-    # Matrix params:
-    rows_and_columns=None,
-    cross_with=None,
-    method="pearson",
-    #
-    # Item filters:
-    top_n=None,
-    occ_range=None,
-    gc_range=None,
-    custom_items=None,
-    # Database params:
-    root_dir="./",
-    database="main",
-    year_filter=None,
-    cited_by_filter=None,
-    **filters,
 ):
     """Correlation map."""
 
-    if obj is None:
-        obj = cross_correlation_matrix(
-            rows_and_columns=rows_and_columns,
-            cross_with=cross_with,
-            method=method,
-            # Item filters:
-            top_n=top_n,
-            occ_range=occ_range,
-            gc_range=gc_range,
-            custom_items=custom_items,
-            # Database params:
-            root_dir=root_dir,
-            database=database,
-            year_filter=year_filter,
-            cited_by_filter=cited_by_filter,
-            **filters,
-        )
-
-    matrix_list = list_cells_in_matrix(obj)
+    matrix_list = list_cells_in_matrix(cross_corr_matrix)
 
     graph = nx_create_graph_from_matrix_list(
         matrix_list,

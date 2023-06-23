@@ -10,7 +10,7 @@ Matrix Viewer
 >>> file_name = "sphinx/_static/report/matrix_viewer_0.html"
 
 >>> import techminer2plus 
->>> co_occ_matrix = techminer2plus.analyze.matrix.co_occurrence_matrix(
+>>> cooc_matrix = techminer2plus.analyze.matrix.co_occurrence_matrix(
 ...     columns='author_keywords',
 ...     rows='authors',
 ...     col_occ_range=(2, None),
@@ -19,7 +19,7 @@ Matrix Viewer
 ... )
 
 >>> chart = techminer2plus.report.matrix_viewer(
-...     co_occ_matrix, 
+...     cooc_matrix, 
 ...     n_labels=15,
 ...     node_size_min=12,
 ...     node_size_max=70,
@@ -100,7 +100,7 @@ Table:
 
 >>> file_name = "sphinx/_static/report/matrix_viewer_1.html"
 
->>> co_occ_matrix = techminer2plus.analyze.matrix.co_occurrence_matrix(
+>>> cooc_matrix = techminer2plus.analyze.matrix.co_occurrence_matrix(
 ...    columns='author_keywords',
 ...    col_top_n=10,
 ...    row_top_n=10,
@@ -109,7 +109,7 @@ Table:
 
 
 >>> chart = techminer2plus.report.matrix_viewer(
-...     co_occ_matrix,
+...     cooc_matrix,
 ...     nx_iterations=5,
 ...     xaxes_range=(-2,2),
 ... )
@@ -169,7 +169,6 @@ Table:
 
 # pylint: disable=line-too-long
 """
-from ..analyze.matrix.co_occurrence_matrix import co_occurrence_matrix
 from ..analyze.matrix.list_cells_in_matrix import list_cells_in_matrix
 from ..classes import MatrixViewer
 from ..network import (
@@ -185,7 +184,7 @@ from ..network import (
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 def matrix_viewer(
-    obj=None,
+    cooc_matrix,
     #
     # Figure params:
     n_labels=None,
@@ -199,75 +198,11 @@ def matrix_viewer(
     xaxes_range=None,
     yaxes_range=None,
     show_axes=False,
-    #
-    # Co-occurrence matrix params:
-    columns=None,
-    rows=None,
-    #
-    # Columns item filters:
-    col_top_n=None,
-    col_occ_range=None,
-    col_gc_range=None,
-    col_custom_items=None,
-    #
-    # Rows item filters :
-    row_top_n=None,
-    row_occ_range=None,
-    row_gc_range=None,
-    row_custom_items=None,
-    #
-    # Database params:
-    root_dir="./",
-    database="main",
-    year_filter=None,
-    cited_by_filter=None,
-    **filters,
 ):
     """Makes cluster map from a ocurrence flooding matrix."""
 
-    # ---------------------------------------------------------------------------
-    def compute_obj_if_necessary(obj):
-        """Computes the co-occurrence matrix if not suministred as argument."""
-
-        if obj is not None:
-            return obj
-
-        return co_occurrence_matrix(
-            columns=columns,
-            rows=rows,
-            #
-            # Columns item filters:
-            col_top_n=col_top_n,
-            col_occ_range=col_occ_range,
-            col_gc_range=col_gc_range,
-            col_custom_items=col_custom_items,
-            #
-            # Rows item filters :
-            row_top_n=row_top_n,
-            row_occ_range=row_occ_range,
-            row_gc_range=row_gc_range,
-            row_custom_items=row_custom_items,
-            #
-            # Database params:
-            root_dir=root_dir,
-            database=database,
-            year_filter=year_filter,
-            cited_by_filter=cited_by_filter,
-            **filters,
-        )
-
-    # ---------------------------------------------------------------------------
-
-    #
-    #
-    # Main code:
-    #
-    #
-
-    obj = compute_obj_if_necessary(obj)
-
     graph = nx_create_graph_from_matrix(
-        obj,
+        cooc_matrix,
         node_size_min,
         node_size_max,
         textfont_size_min,
@@ -294,7 +229,7 @@ def matrix_viewer(
     matrix_viewer_ = MatrixViewer()
     matrix_viewer_.plot_ = fig
     matrix_viewer_.graph_ = graph
-    matrix_viewer_.table_ = list_cells_in_matrix(obj).cells_list_
-    matrix_viewer_.prompt_ = list_cells_in_matrix(obj).prompt_
+    matrix_viewer_.table_ = list_cells_in_matrix(cooc_matrix).cells_list_
+    matrix_viewer_.prompt_ = list_cells_in_matrix(cooc_matrix).prompt_
 
     return matrix_viewer_

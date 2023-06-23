@@ -2,7 +2,7 @@
 
 import pandas as pd
 
-from ...classes import CocMatrix, TFMatrix
+from ...classes import CoocMatrix, TFMatrix
 
 
 def compute_corr_matrix(
@@ -23,7 +23,7 @@ def compute_corr_matrix(
 
     if isinstance(data_matrix, TFMatrix):
         table = data_matrix.table_.copy()
-    elif isinstance(data_matrix, CocMatrix):
+    elif isinstance(data_matrix, CoocMatrix):
         table = data_matrix.matrix_.copy()
     else:
         raise TypeError("data_matrix must be a TFMatrix or a CorrMatrix.")

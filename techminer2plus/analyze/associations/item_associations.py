@@ -12,59 +12,9 @@ from ..matrix import co_occurrence_matrix
 # pylint: disable=too-many-locals
 def item_associations(
     item,
-    obj=None,
-    #
-    # Co-occ matrix params:
-    columns=None,
-    rows=None,
-    #
-    # Columns item filters:
-    col_top_n=None,
-    col_occ_range=None,
-    col_gc_range=None,
-    col_custom_items=None,
-    #
-    # Rows item filters :
-    row_top_n=None,
-    row_occ_range=None,
-    row_gc_range=None,
-    row_custom_items=None,
-    #
-    # Database params:
-    root_dir="./",
-    database="main",
-    year_filter=None,
-    cited_by_filter=None,
-    **filters,
+    cooc_matrix=None,
 ):
     """Computes the associations of a item in a co-occurrence matrix."""
-
-    def compute_obj(obj):
-        if obj is not None:
-            return obj
-        return co_occurrence_matrix(
-            columns=columns,
-            rows=rows,
-            #
-            # Columns item filters:
-            col_top_n=col_top_n,
-            col_occ_range=col_occ_range,
-            col_gc_range=col_gc_range,
-            col_custom_items=col_custom_items,
-            #
-            # Rows item filters :
-            row_top_n=row_top_n,
-            row_occ_range=row_occ_range,
-            row_gc_range=row_gc_range,
-            row_custom_items=row_custom_items,
-            #
-            # Database params:
-            root_dir=root_dir,
-            database=database,
-            year_filter=year_filter,
-            cited_by_filter=cited_by_filter,
-            **filters,
-        )
 
     def extract_item_position_and_name(candidate_items, item):
         """Obtains the positions of topics in a list."""
@@ -101,9 +51,10 @@ def item_associations(
     #
     # Main code:
     #
-    obj = compute_obj(obj)
-    pos, name = extract_item_position_and_name(obj.matrix_.columns, item)
-    series = extract_item_column_from_coc_matrix(obj, pos, name)
-    prompt = create_prompt(obj.rows_, item, series)
+    pos, name = extract_item_position_and_name(
+        cooc_matrix.matrix_.columns, item
+    )
+    series = extract_item_column_from_coc_matrix(cooc_matrix, pos, name)
+    prompt = create_prompt(cooc_matrix.rows_, item, series)
 
     return name, series, pos, prompt

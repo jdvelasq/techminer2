@@ -55,7 +55,7 @@ Example:
 import pandas as pd
 
 from ...classes import ConceptGrid
-from ..matrix.factor_matrix import factor_matrix
+from ..matrix.pca_factor_matrix import pca_factor_matrix
 
 
 # pylint: disable=too-many-arguments

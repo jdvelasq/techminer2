@@ -10,15 +10,18 @@ co-occurrence between the terms. The radial diagram is a useful tool for
 identifying the most relevant terms associated with a given term.
 
 
->>> ROOT_DIR = "data/regtech/"
->>> file_name = "sphinx/_static/analyze/associations/radial_diagram.html"
 
->>> import techminer2plus 
->>> chart = techminer2plus.analyze.associations.radial_diagram(
-...     root_dir=ROOT_DIR,
-...     item="REGTECH",
+>>> import techminer2plus
+>>> cooc_matrix = techminer2plus.analyze.matrix.co_occurrence_matrix(
+...     root_dir="data/regtech/",
 ...     columns='author_keywords',
-...     col_occ_range=(3, None),
+...     col_top_n=20,
+... )
+
+>>> file_name = "sphinx/_static/analyze/associations/radial_diagram.html"
+>>> chart = techminer2plus.analyze.associations.radial_diagram(
+...     item="REGTECH",
+...     cooc_matrix=cooc_matrix,
 ...     nx_k=None,
 ...     nx_iterations=20,
 ... )
@@ -47,6 +50,13 @@ RISK_MANAGEMENT 03:014             2
 INNOVATION 03:012                  1
 BLOCKCHAIN 03:005                  2
 SUPTECH 03:004                     3
+SEMANTIC_TECHNOLOGIES 02:041       2
+DATA_PROTECTION 02:027             2
+SMART_CONTRACTS 02:022             2
+CHARITYTECH 02:017                 2
+ENGLISH_LAW 02:017                 2
+ACCOUNTABILITY 02:014              2
+DATA_PROTECTION_OFFICER 02:014     2
 Name: REGTECH 28:329, dtype: int64
 
 >>> print(chart.prompt_)
@@ -74,8 +84,16 @@ Table:
 | INNOVATION 03:012              |                1 |
 | BLOCKCHAIN 03:005              |                2 |
 | SUPTECH 03:004                 |                3 |
+| SEMANTIC_TECHNOLOGIES 02:041   |                2 |
+| DATA_PROTECTION 02:027         |                2 |
+| SMART_CONTRACTS 02:022         |                2 |
+| CHARITYTECH 02:017             |                2 |
+| ENGLISH_LAW 02:017             |                2 |
+| ACCOUNTABILITY 02:014          |                2 |
+| DATA_PROTECTION_OFFICER 02:014 |                2 |
 ```
 <BLANKLINE>
+
 
 
 # pylint: disable=line-too-long
@@ -99,7 +117,7 @@ from .item_associations import item_associations
 # pylint: disable=too-many-locals
 def radial_diagram(
     item,
-    obj=None,
+    cooc_matrix,
     #
     # Figure params:
     n_labels=None,
@@ -113,29 +131,6 @@ def radial_diagram(
     xaxes_range=None,
     yaxes_range=None,
     show_axes=False,
-    #
-    # Co-occ matrix params:
-    columns=None,
-    rows=None,
-    #
-    # Columns item filters:
-    col_top_n=None,
-    col_occ_range=None,
-    col_gc_range=None,
-    col_custom_items=None,
-    #
-    # Rows item filters :
-    row_top_n=None,
-    row_occ_range=None,
-    row_gc_range=None,
-    row_custom_items=None,
-    #
-    # Database params:
-    root_dir="./",
-    database="main",
-    year_filter=None,
-    cited_by_filter=None,
-    **filters,
 ):
     """Plots a radial diagram."""
 
@@ -189,31 +184,7 @@ def radial_diagram(
     # Main code:
     #
     name, series, _, prompt = item_associations(
-        item=item,
-        obj=obj,
-        #
-        # Co-occ matrix params:
-        columns=columns,
-        rows=rows,
-        #
-        # Columns item filters:
-        col_top_n=col_top_n,
-        col_occ_range=col_occ_range,
-        col_gc_range=col_gc_range,
-        col_custom_items=col_custom_items,
-        #
-        # Rows item filters:
-        row_top_n=row_top_n,
-        row_occ_range=row_occ_range,
-        row_gc_range=row_gc_range,
-        row_custom_items=row_custom_items,
-        #
-        # Database params:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
+        item=item, cooc_matrix=cooc_matrix
     )
 
     graph = create_graph(
