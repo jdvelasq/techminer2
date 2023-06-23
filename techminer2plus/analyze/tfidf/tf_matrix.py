@@ -7,20 +7,36 @@ TF Matrix --- ChatGPT
 
 >>> import techminer2plus
 >>> tf_matrix = techminer2plus.analyze.tfidf.tf_matrix(
-...     field='authors',
-...     occ_range=(2, None),
+...     field='author_keywords',
+...     top_n=50,
 ...     root_dir=root_dir,
 ... )
->>> tf_matrix.table_.head()
-authors                                             Arner DW 3:185  ...  Arman AA 2:000
-article                                                             ...                
-Arner DW, 2017, HANDBBLOCKCHAIN, DIGIT FINANC, ...               1  ...               0
-Arner DW, 2017, NORTHWEST J INTL LAW BUS, V37, ...               1  ...               0
-Battanta L, 2020, PROC EUR CONF INNOV ENTREPREN...               0  ...               0
-Buckley RP, 2020, J BANK REGUL, V21, P26                         1  ...               0
-Butler T, 2018, J RISK MANG FINANCIAL INST, V11...               0  ...               0
+>>> tf_matrix.table_.head(20)
+author_keywords                                     REGTECH 28:329  ...  MONEY_LAUNDERING 01:010
+article                                                             ...                         
+Anagnostopoulos I, 2018, J ECON BUS, V100, P7                    1  ...                        0
+Arner DW, 2017, HANDBBLOCKCHAIN, DIGIT FINANC, ...               1  ...                        0
+Battanta L, 2020, PROC EUR CONF INNOV ENTREPREN...               1  ...                        0
+Becker M, 2020, INTELL SYST ACCOUNT FINANCE M, ...               0  ...                        0
+Buckley RP, 2020, J BANK REGUL, V21, P26                         1  ...                        0
+Butler T, 2018, J RISK MANG FINANCIAL INST, V11...               1  ...                        0
+Butler T, 2019, PALGRAVE STUD DIGIT BUS ENABL, P85               1  ...                        0
+Campbell-Verduyn M, 2022, NEW POLIT ECON                         0  ...                        0
+Cruz Rambaud S, 2022, EUR J RISK REGUL, V13, P333                1  ...                        0
+Firmansyah B, 2022, INT CONF INF TECHNOL SYST I...               1  ...                        0
+Gasparri G, 2019, FRONTIER ARTIF INTELL, V2                      1  ...                        0
+Ghanem S, 2021, STUD COMPUT INTELL, V954, P139                   1  ...                        0
+Goul M, 2019, PROC - IEEE WORLD CONGR SERV,, P219                1  ...                        0
+Grassi L, 2022, J IND BUS ECON, V49, P441                        1  ...                        0
+Huang GKJ, 2017, PROC INT CONF ELECTRON BUS (I,...               1  ...                        0
+Kavassalis P, 2018, J RISK FINANC, V19, P39                      1  ...                        0
+Kera DR, 2021, EAI/SPRINGER INNO COMM COMP, P67                  0  ...                        0
+Kristanto AD, 2022, INT CONF INF TECHNOL SYST I...               1  ...                        0
+Kurum E, 2020, J FINANC CRIME                                    1  ...                        1
+Lan G, 2023, RES INT BUS FINANC, V64                             1  ...                        0
 <BLANKLINE>
-[5 rows x 15 columns]
+[20 rows x 50 columns]
+
 
 
 # pylint: disable=line-too-long
@@ -33,7 +49,6 @@ from ...counters import add_counters_to_axis
 from ...items import generate_custom_items
 from ...metrics import indicators_by_field
 from ...records import read_records
-from ...stopwords import load_stopwords
 
 
 # pylint: disable=too-many-arguments
@@ -41,6 +56,7 @@ from ...stopwords import load_stopwords
 def tf_matrix(
     field,
     scheme=None,
+    cooc_within=1,
     # Item filters:
     top_n=None,
     occ_range=None,
@@ -79,21 +95,15 @@ def tf_matrix(
 
     custom_items = indicators.index.tolist()
 
-    # apply stopwords
-    custom_items = [
-        topic
-        for topic in custom_items
-        if topic not in load_stopwords(root_dir)
-    ]
-
     # compute TF matrix
     result = _create_tf_matrix(
-        field,
-        custom_items,
-        root_dir,
-        database,
-        year_filter,
-        cited_by_filter,
+        field=field,
+        cooc_within=cooc_within,
+        custom_items=custom_items,
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 
@@ -114,7 +124,7 @@ def tf_matrix(
 
     tfmatrix_ = TFMatrix()
     tfmatrix_.table_ = result
-    tfmatrix_.criterion_ = field
+    tfmatrix_.field_ = field
     tfmatrix_.scheme_ = scheme
     tfmatrix_.prompt_ = "TODO"
 
@@ -163,6 +173,7 @@ def _remove_rows_of_zeros(result):
 
 def _create_tf_matrix(
     field,
+    cooc_within,
     custom_items,
     # Database params:
     root_dir,
@@ -186,7 +197,6 @@ def _create_tf_matrix(
     records[field] = records[field].str.split(";")
     records = records.explode(field)
     records[field] = records[field].str.strip()
-    # records = records[records[field].isin(custom_items)]
 
     grouped_records = records.groupby(["article", field], as_index=False).agg(
         {"OCC": np.sum}
@@ -200,4 +210,6 @@ def _create_tf_matrix(
     )
     result = result.loc[:, result.columns.isin(custom_items)]
     result = result.fillna(0)
+    result = result.loc[(result.sum(axis=1) >= cooc_within)]
+
     return result

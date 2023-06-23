@@ -80,6 +80,25 @@ class CrossCorrMatrix:
     metric_: str
 
 
+class TFMatrix:
+    """Term-frequency matrix."""
+
+    field_: str
+    prompt_: str
+    scheme_: str
+    table_: pd.DataFrame
+
+
+# Analyze / Discover / Matrix / TF-IDF Matrix
+@dataclass(init=False)
+class TFIDFMatrix:
+    """Term-frequency IDF matrix."""
+
+    field_: str
+    prompt_: str
+    table_: pd.DataFrame
+
+
 @dataclass(init=False)
 class PcaFactorMatrix:
     """PCA factor matrix."""
@@ -150,24 +169,6 @@ class ManifoldMap:
 
 # Analyze / Discover / Matrix / TF Matrix
 @dataclass(init=False)
-class TFMatrix:
-    """Term-frequency matrix."""
-
-    criterion_: str
-    prompt_: str
-    scheme_: str
-    table_: pd.DataFrame
-
-
-# Analyze / Discover / Matrix / TF-IDF Matrix
-@dataclass(init=False)
-class TFIDFMatrix:
-    """Term-frequency IDF matrix."""
-
-    criterion_: str
-    prompt_: str
-    table_: pd.DataFrame
-
 
 # Analyze / Discover / Map / Correlation Map
 @dataclass(init=False)

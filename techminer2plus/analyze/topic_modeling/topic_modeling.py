@@ -8,6 +8,10 @@ Topic extraction using non-negative matrix factorization.
 >>> directory = "data/regtech/"
 
 >>> import techminer2plus
+
+
+
+
 >>> nmf = techminer2plus.system.modeling_of_emerging_themes.emergent_themes_with_nmf(
 ...     criterion="author_keywords",
 ...     topics_length=4,

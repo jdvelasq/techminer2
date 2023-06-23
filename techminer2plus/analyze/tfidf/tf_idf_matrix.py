@@ -1,6 +1,6 @@
 # flake8: noqa
 """
-TF-IDF Matrix --- ChatGPT
+TF-IDF Matrix
 ===============================================================================
 
 
@@ -8,7 +8,7 @@ TF-IDF Matrix --- ChatGPT
 >>> root_dir = "data/regtech/"
 
 >>> import techminer2plus
->>> tf_matrix = techminer2plus.system.analyze.tf_matrix(
+>>> tf_matrix = techminer2plus.analyze.tfidf.tf_matrix(
 ...     field='authors',
 ...     occ_range=(2, None),
 ...     root_dir=root_dir,
