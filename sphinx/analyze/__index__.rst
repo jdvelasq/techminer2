@@ -18,6 +18,12 @@ Analyze
 
     concordances
 
+
+.. toctree::
+    :maxdepth: 1
+
+    coupling/__index__
+
 .. toctree::
     :maxdepth: 1
 
@@ -68,25 +74,13 @@ Analyze
 
 * pcd (TODO)
 
-.. toctree::
-    :maxdepth: 1
-
-    record_display
 
 .. toctree::
     :maxdepth: 1
 
     sankey_plot
 
-.. toctree::
-    :maxdepth: 1
 
-    statistics    
-
-.. toctree::
-    :maxdepth: 1
-
-    summary_view
 
 .. toctree::
     :maxdepth: 1
@@ -98,14 +92,7 @@ Analyze
 
     tfidf/__index__
 
-.. toctree::
-    :maxdepth: 1
 
-    trending_terms
 
-.. toctree::
-    :maxdepth: 1
-
-    thematic_analysis/__index__
 
 

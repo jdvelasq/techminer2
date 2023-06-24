@@ -57,11 +57,13 @@ def tf_matrix(
     field,
     scheme=None,
     cooc_within=1,
+    #
     # Item filters:
     top_n=None,
     occ_range=None,
     gc_range=None,
     custom_items=None,
+    #
     # Database params:
     root_dir="./",
     database="main",
@@ -123,10 +125,28 @@ def tf_matrix(
     result = _sort_columns(result)
 
     tf_matrix_ = TFMatrix()
+    #
+    # Results:
     tf_matrix_.table_ = result
+    tf_matrix_.prompt_ = "TODO"
+    #
+    # Params:
     tf_matrix_.field_ = field
     tf_matrix_.scheme_ = scheme
-    tf_matrix_.prompt_ = "TODO"
+    tf_matrix_.cooc_within_ = cooc_within
+    #
+    # Item filters:
+    tf_matrix_.top_n_ = top_n
+    tf_matrix_.occ_range_ = occ_range
+    tf_matrix_.gc_range_ = gc_range
+    tf_matrix_.custom_items_ = custom_items
+    #
+    # Database params:
+    tf_matrix_.root_dir_ = root_dir
+    tf_matrix_.database_ = database
+    tf_matrix_.year_filter_ = year_filter
+    tf_matrix_.cited_by_filter_ = cited_by_filter
+    tf_matrix_.filters_ = filters
 
     return tf_matrix_
 

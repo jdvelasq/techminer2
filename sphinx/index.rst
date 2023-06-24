@@ -98,19 +98,9 @@ TM2 module.
     metrics/__index__
     analyze/__index__
     report/__index__
-    examples/__index__
+    publish/__index__
     
     
-
-
-.. toctree::
-    :caption: Old
-    :hidden:
-    :maxdepth: 1
-
-    techminer/__index__
-    tlab/__index__
-    scientopy/__index__
 
 
     

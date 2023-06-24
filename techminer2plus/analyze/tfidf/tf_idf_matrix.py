@@ -76,14 +76,34 @@ def tf_idf_matrix(
     )
 
     transformed_matrix = transformer.fit_transform(tf_matrix.table_)
-
-    tf_idf_matrix_ = TFIDFMatrix()
-    tf_idf_matrix_.field_ = tf_matrix.field_
-    tf_idf_matrix_.prompt_ = tf_matrix.prompt_
-    tf_idf_matrix_.table_ = pd.DataFrame(
+    table = pd.DataFrame(
         transformed_matrix.toarray(),
         columns=tf_matrix.table_.columns,
         index=tf_matrix.table_.index,
     )
+
+    tf_idf_matrix_ = TFIDFMatrix()
+    #
+    # Results:
+    tf_idf_matrix_.prompt_ = tf_matrix.prompt_
+    tf_idf_matrix_.table_ = table
+    #
+    # Params:
+    tf_idf_matrix_.field_ = tf_matrix.field_
+    tf_idf_matrix_.scheme_ = tf_matrix.scheme_
+    tf_idf_matrix_.cooc_within_ = tf_matrix.cooc_within_
+    #
+    # Item filters:
+    tf_idf_matrix_.top_n_ = tf_matrix.top_n_
+    tf_idf_matrix_.occ_range_ = tf_matrix.occ_range_
+    tf_idf_matrix_.gc_range_ = tf_matrix.gc_range_
+    tf_idf_matrix_.custom_items_ = tf_matrix.custom_items_
+    #
+    # Database params:
+    tf_idf_matrix_.root_dir_ = tf_matrix.root_dir_
+    tf_idf_matrix_.database_ = tf_matrix.database_
+    tf_idf_matrix_.year_filter_ = tf_matrix.year_filter_
+    tf_idf_matrix_.cited_by_filter_ = tf_matrix.cited_by_filter_
+    tf_idf_matrix_.filters_ = tf_matrix.filters_
 
     return tf_idf_matrix_

@@ -117,8 +117,8 @@ def matrix_normalization(cooc_matrix, association_index):
     # Main:
     #
 
-    if not isinstance(cooc_matrix, CoocMatrix):
-        raise TypeError("cooc_matrix must be a CoocMatrix instance")
+    # if not isinstance(cooc_matrix, CoocMatrix):
+    #     raise TypeError("cooc_matrix must be a CoocMatrix instance")
 
     if isinstance(association_index, str) and association_index == "None":
         association_index = None

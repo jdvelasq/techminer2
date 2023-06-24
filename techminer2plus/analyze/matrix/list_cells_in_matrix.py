@@ -58,6 +58,7 @@ Table:
 from ...classes import (
     AutoCorrMatrix,
     CoocMatrix,
+    CouplingMatrix,
     CrossCorrMatrix,
     ListCellsInMatrix,
     MatrixSubset,
@@ -188,6 +189,9 @@ def list_cells_in_matrix(obj):
     ):
         results.columns_ = obj.columns_
         results.rows_ = obj.rows_
+    elif isinstance(obj, CouplingMatrix):
+        results.columns_ = obj.field_
+        results.rows_ = obj.field_
     else:
         raise ValueError("Invalid matrix type")
 

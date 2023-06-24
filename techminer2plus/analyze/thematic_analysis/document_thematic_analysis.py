@@ -25,6 +25,8 @@ Document Thematic Analysis
 ...     root_dir=root_dir,
 ... )
 >>> tf_idf_matrix = techminer2plus.analyze.tfidf.tf_idf_matrix(tf_matrix)
+
+
 >>> # 3. Cluster the documents 
 >>> analysis = techminer2plus.analyze.thematic_analysis.document_thematic_analysis(
 ...     tf_idf_matrix=tf_idf_matrix,

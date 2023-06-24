@@ -19,7 +19,10 @@ Matrix
 
 
 .. toctree::
-    factor_matrix
+    pca_factor_matrix
+
+.. toctree::
+    svd_factor_matrix
 
 .. raw:: html
 
@@ -34,11 +37,6 @@ Matrix
 .. toctree::
     matrix_normalization
 
-
-.. toctree::
-    :maxdepth: 1
-
-    matrix_subset
 
 
 

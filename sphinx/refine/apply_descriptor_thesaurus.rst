@@ -1,4 +1,4 @@
-.. automodule:: techminer2plus.refine.apply_key_concepts_thesaurus
+.. automodule:: techminer2plus.refine.apply_descriptors_thesaurus
     :members:
     :undoc-members:
     :show-inheritance:

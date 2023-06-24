@@ -32,8 +32,8 @@ class ItemsList:
     prompt_: str
     #
     # Params:
-    field: str
-    metric: str
+    field_: str
+    metric_: str
     #
     # Item filters:
     top_n_: int
@@ -49,15 +49,64 @@ class ItemsList:
     filters_: dict
 
 
+# pylint: disable=too-many-instance-attributes
 @dataclass(init=False)
 class CoocMatrix:
     """Co-cccurrence matrix."""
 
+    matrix_: pd.DataFrame
+    prompt_: str
+    metric_: str
+    #
+    # Params:
     columns_: str
     rows_: str
+    #
+    # Columns item filters:
+    col_top_n_: int
+    col_occ_range_: tuple
+    col_gc_range_: tuple
+    col_custom_items_: list
+    #
+    # Rows item filters:
+    row_top_n_: int
+    row_occ_range_: tuple
+    row_gc_range_: tuple
+    row_custom_items_: list
+    #
+    # Database params:
+    root_dir_: str
+    database_: str
+    year_filter_: tuple
+    cited_by_filter_: tuple
+    filters_: dict
+
+
+# pylint: disable=too-many-instance-attributes
+@dataclass(init=False)
+class CouplingMatrix:
+    """Document coupling matrix."""
+
     matrix_: pd.DataFrame
-    metric_: str
     prompt_: str
+    metric_: str
+    topics_: list
+    #
+    # Params:
+    field_: str
+    #
+    # Item filters:
+    top_n_: int
+    occ_range_: tuple
+    gc_range_: tuple
+    custom_items_: list
+    #
+    # Database params:
+    root_dir_: str
+    database_: str
+    year_filter_: tuple
+    cited_by_filter_: tuple
+    filters_: dict
 
 
 @dataclass(init=False)
@@ -98,10 +147,26 @@ class CrossCorrMatrix:
 class TFMatrix:
     """Term-frequency matrix."""
 
-    field_: str
-    prompt_: str
-    scheme_: str
     table_: pd.DataFrame
+    prompt_: str
+    #
+    # Params:
+    field_: str
+    scheme_: str
+    cooc_within_: int
+    #
+    # Item filters:
+    top_n_: int
+    occ_range_: tuple
+    gc_range_: tuple
+    custom_items_: list
+    #
+    # Database params:
+    root_dir_: str
+    database_: str
+    year_filter_: tuple
+    cited_by_filter_: tuple
+    filters_: dict
 
 
 # Analyze / Discover / Matrix / TF-IDF Matrix
@@ -109,9 +174,26 @@ class TFMatrix:
 class TFIDFMatrix:
     """Term-frequency IDF matrix."""
 
-    field_: str
-    prompt_: str
     table_: pd.DataFrame
+    prompt_: str
+    #
+    # Params:
+    field_: str
+    scheme_: str
+    cooc_within_: int
+    #
+    # Item filters:
+    top_n_: int
+    occ_range_: tuple
+    gc_range_: tuple
+    custom_items_: list
+    #
+    # Database params:
+    root_dir_: str
+    database_: str
+    year_filter_: tuple
+    cited_by_filter_: tuple
+    filters_: dict
 
 
 @dataclass(init=False)

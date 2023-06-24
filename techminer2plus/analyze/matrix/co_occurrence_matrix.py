@@ -139,7 +139,7 @@ def co_occurrence_matrix(
     col_gc_range=None,
     col_custom_items=None,
     #
-    # Rows item filters :
+    # Rows item filters:
     row_top_n=None,
     row_occ_range=None,
     row_gc_range=None,
@@ -341,12 +341,37 @@ def co_occurrence_matrix(
             rows=columns,
         )
 
-    coc_matrix = CoocMatrix()
+    #
+    # Creates a CoocMatrix object
+    #
+    cooc_matrix = CoocMatrix()
+    #
+    # Results:
+    cooc_matrix.matrix_ = matrix
+    cooc_matrix.prompt_ = prompt
+    cooc_matrix.metric_ = "OCC"
+    #
+    # Params:
+    cooc_matrix.columns_ = columns
+    cooc_matrix.rows_ = rows if rows else columns
+    #
+    # Columns item filters:
+    cooc_matrix.col_top_n_ = col_top_n
+    cooc_matrix.col_occ_range_ = col_occ_range
+    cooc_matrix.col_gc_range_ = col_gc_range
+    cooc_matrix.col_custom_items_ = col_custom_items
+    #
+    # Rows item filters:
+    cooc_matrix.row_top_n_ = row_top_n
+    cooc_matrix.row_occ_range_ = row_occ_range
+    cooc_matrix.row_gc_range_ = row_gc_range
+    cooc_matrix.row_custom_items_ = row_custom_items
+    #
+    # Database params:
+    cooc_matrix.root_dir_ = root_dir
+    cooc_matrix.database_ = database
+    cooc_matrix.year_filter_ = year_filter
+    cooc_matrix.cited_by_filter_ = cited_by_filter
+    cooc_matrix.filters_ = filters
 
-    coc_matrix.columns_ = columns
-    coc_matrix.rows_ = rows if rows else columns
-    coc_matrix.metric_ = "OCC"
-    coc_matrix.matrix_ = matrix
-    coc_matrix.prompt_ = prompt
-
-    return coc_matrix
+    return cooc_matrix
