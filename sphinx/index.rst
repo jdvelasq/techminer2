@@ -95,10 +95,10 @@ TM2 module.
     ingest/__index__
     refine/__index__
     find/__index__
-    metrics/__index__
+    describe/__index__
     analyze/__index__
-    report/__index__
-    publish/__index__
+    
+    
     
     
 
