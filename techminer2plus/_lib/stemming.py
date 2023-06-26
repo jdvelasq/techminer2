@@ -43,7 +43,7 @@
 
 # from nltk.stem import PorterStemmer, SnowballStemmer
 
-# from ...records import read_records
+# from ...records_lib import read_records
 
 
 # def stemming_and(

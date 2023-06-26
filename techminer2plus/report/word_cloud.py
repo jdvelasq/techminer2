@@ -67,9 +67,9 @@ import numpy as np
 from matplotlib.figure import Figure
 from wordcloud import WordCloud
 
-from ..analyze import list_items
-from ..check_params import check_listview
+# from ..analyze import list_items
 from ..classes import WordCloudChart
+from ..params_check_lib import check_listview
 
 
 def word_cloud(

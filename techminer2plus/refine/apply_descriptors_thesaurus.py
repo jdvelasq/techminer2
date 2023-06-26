@@ -24,7 +24,7 @@ import os.path
 
 import pandas as pd
 
-from ..thesaurus import load_system_thesaurus_as_dict_reversed
+from ..thesaurus_lib import load_system_thesaurus_as_dict_reversed
 
 
 def apply_descriptors_thesaurus(root_dir="./"):

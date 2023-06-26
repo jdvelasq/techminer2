@@ -78,7 +78,7 @@ TM2 module.
 
 
 .. toctree::
-    :caption: Introduction
+    :caption: INTRODUCTION
     :hidden:
     :maxdepth: 1
 
@@ -88,7 +88,7 @@ TM2 module.
 
 
 .. toctree::
-    :caption: TechMiner 2+
+    :caption: USE CASES
     :hidden:
     :maxdepth: 1
 

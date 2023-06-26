@@ -171,7 +171,7 @@ Table:
 """
 from ..analyze.matrix.list_cells_in_matrix import list_cells_in_matrix
 from ..classes import MatrixViewer
-from ..network import (
+from ..network_lib import (
     nx_compute_spring_layout,
     nx_create_graph_from_matrix,
     px_add_names_to_fig_nodes,

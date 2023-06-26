@@ -34,7 +34,7 @@
 # import pandas as pd
 
 # from ..._load_thesaurus_as_dict import load_thesaurus_as_dict
-# from ...records import read_records
+# from ...records_lib import read_records
 
 
 # def keyword_concordances(

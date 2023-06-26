@@ -8,7 +8,7 @@ Manifold 2D map
 
 import plotly.graph_objects as go
 
-from .network import (
+from .network_lib import (
     nx_compute_node_textposition_from_node_coordinates,
     nx_node_occ_to_node_textfont_color,
     nx_scale_node_occ,

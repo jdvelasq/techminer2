@@ -25,7 +25,7 @@ import os.path
 import pandas as pd
 from fuzzywuzzy import process
 
-from ..thesaurus import load_system_thesaurus_as_dict
+from ..thesaurus_lib import load_system_thesaurus_as_dict
 
 
 # pylint: disable=too-many-locals

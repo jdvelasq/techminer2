@@ -19,7 +19,7 @@ import pandas as pd
 import requests
 from nltk.stem import PorterStemmer
 
-from ..thesaurus import load_system_thesaurus_as_frame
+from ..thesaurus_lib import load_system_thesaurus_as_frame
 
 
 def create_descriptors_thesaurus(root_dir="./"):

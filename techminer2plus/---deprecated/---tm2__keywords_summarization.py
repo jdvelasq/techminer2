@@ -19,7 +19,7 @@
 # from os.path import isfile, join
 
 # from ..._load_thesaurus_as_dict import load_thesaurus_as_dict
-# from ...records import read_records
+# from ...records_lib import read_records
 
 
 # def tm2__keywords_summarization(

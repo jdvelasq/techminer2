@@ -40,7 +40,7 @@ searching. The report is saved to the file ``reports/find_records.txt``.
 """
 
 
-from ..records import create_records_report, read_records
+from ..records_lib import create_records_report, read_records
 
 
 # pylint: disable=too-many-arguments

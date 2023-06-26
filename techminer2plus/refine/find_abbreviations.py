@@ -20,7 +20,7 @@ import os.path
 
 import pandas as pd
 
-from ..thesaurus import (
+from ..thesaurus_lib import (
     load_system_thesaurus_as_dict,
     load_system_thesaurus_as_frame,
 )
