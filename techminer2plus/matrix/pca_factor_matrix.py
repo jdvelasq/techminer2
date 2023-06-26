@@ -59,8 +59,8 @@ DATA_PROTECTION_OFFICER 02:014  -2.981  -2.413  -0.973  ...    -0.0     0.0    -
 import pandas as pd
 from sklearn.decomposition import PCA
 
-from ...classes import PcaFactorMatrix
-from .matrix_normalization import matrix_normalization
+# from ...classes import PcaFactorMatrix
+# from .matrix_normalization import matrix_normalization
 
 
 # pylint: disable=too-many-arguments

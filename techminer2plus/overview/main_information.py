@@ -137,9 +137,9 @@ import pandas as pd
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
-from ..chatbot_prompts import format_chatbot_prompt_for_tables
-from ..classes import MainInformation
-from ..records_lib import read_records
+# from ..chatbot_prompts import format_chatbot_prompt_for_tables
+# from ..classes import MainInformation
+# from ..records_lib import read_records
 
 
 class _Statistics:

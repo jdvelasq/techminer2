@@ -11,7 +11,7 @@ co-occurrence matrix.
 """
 # import numpy as np
 
-from ...classes import CoocMatrix, NormCoocMatrix
+# from ...classes import CoocMatrix, NormCoocMatrix
 
 
 def matrix_normalization(cooc_matrix, association_index):

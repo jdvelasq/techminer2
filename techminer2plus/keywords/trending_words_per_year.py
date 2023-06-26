@@ -73,9 +73,9 @@ REGULATORY_TECHNOLOGY      8     2021      2021     2022                37   0
 
 # pylint: disable=line-too-long
 """
-from ...analyze import (
-    trending_terms_per_year as analyze_trending_terms_per_year,
-)
+# from ...analyze import (
+#     trending_terms_per_year as analyze_trending_terms_per_year,
+# )
 
 FIELD = "keywords"
 

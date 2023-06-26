@@ -60,8 +60,8 @@ import numpy as np
 import pandas as pd
 import plotly.express as px
 
-from ...classes import BradfordLaw
-from ...records_lib import read_records
+# from ...classes import BradfordLaw
+# from ...records_lib import read_records
 
 
 def bradford_law(

@@ -36,8 +36,8 @@ Factor matrix obtained by appliying MDS to the co-occurrence matrix.
 import pandas as pd
 from sklearn.manifold import MDS
 
-from ...classes import MdsFactorMatrix
-from .matrix_normalization import matrix_normalization
+# from ...classes import MdsFactorMatrix
+# from .matrix_normalization import matrix_normalization
 
 
 # pylint: disable=too-many-arguments

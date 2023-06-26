@@ -1,28 +1,28 @@
 # flake8: noqa
 """
-Column chart
+Word cloud
 ===============================================================================
 
-Displays a vertical bar graph of the selected items in a ItemLlist object. 
-Items in your list are the X-axis, and the number of records are the Y-axis.
+
 
 
 
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/report/column_chart.html"
+>>> file_name = "sphinx/_static/report/word_cloud.png"
 
 >>> import techminer2plus
 >>> itemslist = techminer2plus.analyze.list_items(
-...    field='author_keywords',
-...    root_dir=root_dir,
+...     field='author_keywords',
+...     root_dir=root_dir,
 ... )
->>> chart = techminer2plus.report.column_chart(itemslist, title="Most Frequent Author Keywords")
->>> chart.plot_.write_html(file_name)
+>>> chart = techminer2plus.report.word_cloud(itemslist, title="Most Frequent Author Keywords")
+>>> chart.plot_.savefig(file_name)
 
-.. raw:: html
+.. image:: ../../_static/report/word_cloud.png
+    :width: 900px
+    :align: center
 
-    <iframe src="../../../_static/report/column_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
-
+    
 >>> chart.table_.head()
 author_keywords
 REGTECH                  28
@@ -61,20 +61,23 @@ Table:
 
 # pylint: disable=line-too-long
 """
-import plotly.express as px
+
+
+import numpy as np
+from matplotlib.figure import Figure
+from wordcloud import WordCloud
 
 # from ..analyze import list_items
-from ..classes import BasicChart
-from ..params_check_lib import check_listview
+# from ..classes import WordCloudChart
+# from ..params_check_lib import check_listview
 
 
-def column_chart(
+def word_cloud(
     obj=None,
     #
     # Chart params:
     title=None,
-    metric_label=None,
-    field_label=None,
+    figsize=(10, 10),
     #
     # list_items params:
     field=None,
@@ -93,13 +96,12 @@ def column_chart(
     cited_by_filter=None,
     **filters,
 ):
-    """Column chart.
+    """Creates a word cloud.
 
     Args:
         obj (vantagepoint.analyze.list_view): A list view object.
         title (str, optional): Title. Defaults to None.
-        metric_label (str, optional): Metric label. Defaults to None.
-        field_label (str, optional): Field label. Defaults to None.
+        figsize (tuple, optional): Figure size. Defaults to (10, 10).
 
     Returns:
         BasicChart: A basic chart object.
@@ -108,42 +110,35 @@ def column_chart(
     """
 
     def create_plot():
-        figure = px.bar(
-            obj.table_,
-            x=None,
-            y=obj.metric_,
-            hover_data=obj.table_.columns.to_list(),
-            orientation="v",
-        )
+        x_mask, y_mask = np.ogrid[:300, :300]
+        mask = (x_mask - 150) ** 2 + (y_mask - 150) ** 2 > 130**2
+        mask = 255 * mask.astype(int)
 
-        figure.update_layout(
-            paper_bgcolor="white",
-            plot_bgcolor="white",
-            title_text=title if title is not None else "",
-        )
-        figure.update_traces(
-            marker_color="rgb(171,171,171)",
-            marker_line={"color": "darkslategray"},
-        )
-        figure.update_xaxes(
-            linecolor="gray",
-            linewidth=2,
-            gridcolor="lightgray",
-            griddash="dot",
-            tickangle=270,
-            title_text=field_label,
-        )
-        figure.update_yaxes(
-            linecolor="gray",
-            linewidth=2,
-            gridcolor="lightgray",
-            griddash="dot",
-            title_text=metric_label,
-        )
-        return figure
+        wordcloud = WordCloud(background_color="white", repeat=True, mask=mask)
+
+        text = dict(zip(obj.table_.index, obj.table_[obj.metric_]))
+        wordcloud.generate_from_frequencies(text)
+        wordcloud.recolor(color_func=_recolor)
+
+        fig = Figure(figsize=figsize)
+        ax_ = fig.add_subplot(111)
+        ax_.imshow(wordcloud, interpolation="bilinear")
+
+        ax_.axis("off")
+
+        if title is not None:
+            ax_.set_title(title)
+
+        fig.tight_layout(pad=0)
+
+        return fig
+
+    def _recolor(word, **kwargs):
+        # pylint: disable=unused-argument
+        return "black"
 
     #
-    # Main code
+    # Main code:
     #
     if obj is not None:
         check_listview(obj)
@@ -166,13 +161,7 @@ def column_chart(
             **filters,
         )
 
-    if metric_label is None:
-        metric_label = obj.metric_.replace("_", " ").upper()
-
-    if field_label is None:
-        field_label = obj.field_.replace("_", " ").upper()
-
-    chart = BasicChart()
+    chart = WordCloudChart()
     chart.plot_ = create_plot()
     chart.table_ = obj.table_[obj.metric_]
     chart.prompt_ = obj.prompt_

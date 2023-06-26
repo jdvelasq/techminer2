@@ -55,13 +55,13 @@ import os
 import os.path
 import textwrap
 
-from ...chatbot_prompts import format_prompt_for_records
-from ...make_report_dir import make_report_dir
-from ...network_lib import extract_records_per_cluster, nx_extract_communities
-from ...records_lib import create_records_report
+# from ...chatbot_prompts import format_prompt_for_records
+# from ...make_report_dir import make_report_dir
+# from ...network_lib import extract_records_per_cluster, nx_extract_communities
+# from ...records_lib import create_records_report
 
-# from ...user.abstract.concordances import concordances
-from ...use_cases.abstract.concordances import concordances_from_records
+# # from ...user.abstract.concordances import concordances
+# from ...use_cases.abstract.concordances import concordances_from_records
 
 
 # pylint: disable=too-many-arguments

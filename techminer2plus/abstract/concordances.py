@@ -192,9 +192,9 @@ import textwrap
 
 import pandas as pd
 
-from ...classes import Concordances
-from ...records_lib import read_records
-from ..chatbot_prompts import format_prompt_for_paragraphs
+# from ...classes import Concordances
+# from ...records_lib import read_records
+# from ..chatbot_prompts import format_prompt_for_paragraphs
 
 
 # pylint: disable=too-many-arguments

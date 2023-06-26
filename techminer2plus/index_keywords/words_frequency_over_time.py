@@ -53,10 +53,10 @@ Table:
 
 # pylint: disable=line-too-long
 """
-from ...analyze import terms_by_year as analyze_terms_by_year
-from ...metrics import indicators_by_field_per_year
-from ...report import gantt_chart
-from ..documents_per_criterion import documents_per_criterion
+# from ...analyze import terms_by_year as analyze_terms_by_year
+# from ...metrics import indicators_by_field_per_year
+# from ...report import gantt_chart
+# from ..documents_per_criterion import documents_per_criterion
 
 FIELD = "index_keywords"
 

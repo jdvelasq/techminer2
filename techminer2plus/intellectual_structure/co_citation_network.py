@@ -214,15 +214,15 @@ Table:
 
 
 """
-from ...analyze.matrix import co_occurrence_matrix
-from ...analyze.network import (
-    cluster_network,
-    network_communities,
-    network_degree_plot,
-    network_metrics,
-    network_viewer,
-)
-from ...classes import CocitationNetwork
+# from ...analyze.matrix import co_occurrence_matrix
+# from ...analyze.network import (
+#     cluster_network,
+#     network_communities,
+#     network_degree_plot,
+#     network_metrics,
+#     network_viewer,
+# )
+# from ...classes import CocitationNetwork
 
 FIELD = "local_references"
 

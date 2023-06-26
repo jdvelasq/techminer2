@@ -49,9 +49,9 @@ Document Thematic Analysis
 # import pandas as pd
 
 # from ... import vantagepoint
-from ...make_report_dir import make_report_dir
-from ...records_lib import create_records_report, read_records
-from ..matrix import co_occurrence_matrix
+# from ...make_report_dir import make_report_dir
+# from ...records_lib import create_records_report, read_records
+# from ..matrix import co_occurrence_matrix
 
 
 def document_thematic_analysis(

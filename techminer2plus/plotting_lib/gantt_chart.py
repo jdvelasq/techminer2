@@ -79,8 +79,8 @@ import textwrap
 
 import plotly.express as px
 
-from ..analyze import terms_by_year
-from ..classes import BasicChart
+# from ..analyze import terms_by_year
+# from ..classes import BasicChart
 
 COLOR = "#556f81"
 TEXTLEN = 40

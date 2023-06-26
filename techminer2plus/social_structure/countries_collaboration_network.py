@@ -122,15 +122,15 @@ Table:
 # pylint: disable=line-too-long
 """
 
-from ...analyze.matrix import co_occurrence_matrix, matrix_normalization
-from ...analyze.network import (
-    cluster_network,
-    network_communities,
-    network_degree_plot,
-    network_metrics,
-    network_viewer,
-)
-from ...classes import CollaborationNetwork
+# from ...analyze.matrix import co_occurrence_matrix, matrix_normalization
+# from ...analyze.network import (
+#     cluster_network,
+#     network_communities,
+#     network_degree_plot,
+#     network_metrics,
+#     network_viewer,
+# )
+# from ...classes import CollaborationNetwork
 
 FIELD = "countries"
 

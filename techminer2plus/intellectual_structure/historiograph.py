@@ -50,15 +50,15 @@ dtype: object
 import networkx as nx
 import pandas as pd
 
-from ...classes import HistoriographResults
-from ...network_lib import (
-    nx_compute_spring_layout,
-    px_add_names_to_fig_nodes,
-    px_create_edge_traces,
-    px_create_network_fig,
-    px_create_node_trace,
-)
-from ...records_lib import read_records
+# from ...classes import HistoriographResults
+# from ...network_lib import (
+#     nx_compute_spring_layout,
+#     px_add_names_to_fig_nodes,
+#     px_create_edge_traces,
+#     px_create_network_fig,
+#     px_create_node_trace,
+# )
+# from ...records_lib import read_records
 
 
 # pylint: disable=too-many-arguments

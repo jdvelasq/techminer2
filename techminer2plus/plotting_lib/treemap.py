@@ -64,8 +64,8 @@ Table:
 import plotly.graph_objs as go
 
 # from ..analyze import list_items
-from ..classes import BasicChart
-from ..params_check_lib import check_listview
+# from ..classes import BasicChart
+# from ..params_check_lib import check_listview
 
 
 def treemap(

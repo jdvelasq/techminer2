@@ -47,7 +47,7 @@ from typing import Literal
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfTransformer
 
-from ...classes import TFIDFMatrix
+# from ...classes import TFIDFMatrix
 
 # from scipy.sparse import csr_matrix
 

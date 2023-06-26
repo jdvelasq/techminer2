@@ -26,7 +26,7 @@ Sankey Plot
 """
 import plotly.graph_objects as go
 
-from ...analyze.matrix.co_occurrence_matrix import co_occurrence_matrix
+# from ...analyze.matrix.co_occurrence_matrix import co_occurrence_matrix
 
 
 # pylint: disable=too-many-arguments

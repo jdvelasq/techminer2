@@ -2,7 +2,7 @@
 
 import pandas as pd
 
-from ...classes import CoocMatrix, TFMatrix
+# from ...classes import CoocMatrix, TFMatrix
 
 
 def compute_corr_matrix(

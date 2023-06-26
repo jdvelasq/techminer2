@@ -88,7 +88,7 @@ TM2 module.
 
 
 .. toctree::
-    :caption: PREPARATION
+    :caption: USE CASES
     :hidden:
     :maxdepth: 1
 
@@ -98,18 +98,20 @@ TM2 module.
 
 
 .. toctree::
-    :caption: ANALYSIS
+    :caption: COMPARISON
     :hidden:
     :maxdepth: 1
 
-    overview/__index__
-    sources/__index__
-    authors/__index__
-    documents/__index__
-    clustering/__index__
-    conceptual_structure/__index__
-    intellectual_structure/__index__      
-    social_structure/__index__    
+    bibliometrix/__index__
+
+
+.. toctree::
+    :caption: API
+    :hidden:
+    :maxdepth: 1
+
+    list_items
+  
 
 
 

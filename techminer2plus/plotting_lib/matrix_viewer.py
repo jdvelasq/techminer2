@@ -169,16 +169,16 @@ Table:
 
 # pylint: disable=line-too-long
 """
-from ..analyze.matrix.list_cells_in_matrix import list_cells_in_matrix
-from ..classes import MatrixViewer
-from ..network_lib import (
-    nx_compute_spring_layout,
-    nx_create_graph_from_matrix,
-    px_add_names_to_fig_nodes,
-    px_create_edge_traces,
-    px_create_network_fig,
-    px_create_node_trace,
-)
+# from ..analyze.matrix.list_cells_in_matrix import list_cells_in_matrix
+# from ..classes import MatrixViewer
+# from ..network_lib import (
+#     nx_compute_spring_layout,
+#     nx_create_graph_from_matrix,
+#     px_add_names_to_fig_nodes,
+#     px_create_edge_traces,
+#     px_create_network_fig,
+#     px_create_node_trace,
+# )
 
 
 # pylint: disable=too-many-arguments

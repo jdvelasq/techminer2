@@ -1,26 +1,28 @@
 # flake8: noqa
 """
-Line Chart
+Cleveland Dot Chart
 ===============================================================================
 
 
 
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/report/line_chart.html"
+>>> file_name = "sphinx/_static/report/cleveland_chart.html"
+
 
 >>> import techminer2plus
 >>> itemslist = techminer2plus.analyze.list_items(
 ...    field='author_keywords',
 ...    root_dir=root_dir,
 ... )
->>> chart = techminer2plus.report.line_chart(itemslist, title="Most Frequent Author Keywords")
+
+>>> chart = techminer2plus.report.cleveland_dot_chart(itemslist, title="Most Frequent Author Keywords")
 >>> chart.plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../_static/report/line_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/report/cleveland_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
-
+    
 >>> chart.table_.head()
 author_keywords
 REGTECH                  28
@@ -57,22 +59,23 @@ Table:
 
 
 
+
 # pylint: disable=line-too-long
 """
 import plotly.express as px
 
 # from ..analyze import list_items
-from ..classes import BasicChart
-from ..params_check_lib import check_listview
+# from ..classes import BasicChart
+# from ..params_check_lib import check_listview
 
 
-def line_chart(
+def cleveland_dot_chart(
     obj=None,
     #
     # Chart params:
     title=None,
-    field_label=None,
     metric_label=None,
+    field_label=None,
     #
     # list_items params:
     field=None,
@@ -91,7 +94,7 @@ def line_chart(
     cited_by_filter=None,
     **filters,
 ):
-    """Creates a line chart.
+    """Creates a cleveland doc chart.
 
     Args:
         obj (vantagepoint.analyze.list_view): A list view object.
@@ -105,40 +108,41 @@ def line_chart(
     """
 
     def create_plot():
-        figure = px.line(
+        fig = px.scatter(
             obj.table_,
-            x=None,
-            y=obj.metric_,
+            x=obj.metric_,
+            y=None,
             hover_data=obj.table_.columns.to_list(),
-            markers=True,
+            size=obj.metric_,
         )
-
-        figure.update_layout(
+        fig.update_layout(
             paper_bgcolor="white",
             plot_bgcolor="white",
-            title_text=title,
+            title_text=title if title is not None else "",
         )
-        figure.update_traces(
-            marker=dict(size=9, line=dict(color="darkslategray", width=2)),
-            marker_color="rgb(171,171,171)",
-            line=dict(color="darkslategray"),
+        fig.update_traces(
+            marker=dict(
+                size=12,
+                line=dict(color="black", width=2),
+            ),
+            marker_color="slategray",
         )
-        figure.update_xaxes(
-            linecolor="gray",
-            linewidth=2,
-            gridcolor="lightgray",
-            griddash="dot",
-            tickangle=270,
-            title_text=field_label,
-        )
-        figure.update_yaxes(
+        fig.update_xaxes(
             linecolor="gray",
             linewidth=2,
             gridcolor="lightgray",
             griddash="dot",
             title_text=metric_label,
         )
-        return figure
+        fig.update_yaxes(
+            linecolor="gray",
+            linewidth=2,
+            autorange="reversed",
+            gridcolor="gray",
+            griddash="solid",
+            title_text=field_label,
+        )
+        return fig
 
     #
     # Main code
@@ -164,9 +168,6 @@ def line_chart(
             cited_by_filter=cited_by_filter,
             **filters,
         )
-
-    if title is None:
-        title = ""
 
     if metric_label is None:
         metric_label = obj.metric_.replace("_", " ").upper()

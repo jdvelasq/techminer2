@@ -68,8 +68,8 @@ import pandas as pd
 import plotly.express as px
 
 # from ..analyze import list_items
-from ..classes import BasicChart
-from ..params_check_lib import check_listview
+# from ..classes import BasicChart
+# from ..params_check_lib import check_listview
 
 
 def world_map(

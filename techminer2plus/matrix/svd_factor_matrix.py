@@ -57,8 +57,8 @@ DATA_PROTECTION_OFFICER 02:014   2.303  -2.416
 import pandas as pd
 from sklearn.decomposition import TruncatedSVD
 
-from ...classes import SvdFactorMatrix
-from .matrix_normalization import matrix_normalization
+# from ...classes import SvdFactorMatrix
+# from .matrix_normalization import matrix_normalization
 
 
 # pylint: disable=too-many-arguments

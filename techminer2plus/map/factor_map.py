@@ -44,18 +44,18 @@ Creates a Factor Map.
 # pylint: disable=line-too-long
 """
 
-from ...classes import FactorMap
-from ...network_lib import (
-    nx_compute_spring_layout,
-    nx_create_graph_from_matrix_list,
-    px_add_names_to_fig_nodes,
-    px_create_edge_traces,
-    px_create_network_fig,
-    px_create_node_trace,
-)
-from ..grid.factor_grid import factor_grid
-from ..matrix.co_occurrence_matrix import co_occurrence_matrix
-from ..matrix.list_cells_in_matrix import list_cells_in_matrix
+# from ...classes import FactorMap
+# from ...network_lib import (
+#     nx_compute_spring_layout,
+#     nx_create_graph_from_matrix_list,
+#     px_add_names_to_fig_nodes,
+#     px_create_edge_traces,
+#     px_create_network_fig,
+#     px_create_node_trace,
+# )
+# from ..grid.factor_grid import factor_grid
+# from ..matrix.co_occurrence_matrix import co_occurrence_matrix
+# from ..matrix.list_cells_in_matrix import list_cells_in_matrix
 
 
 # pylint: disable=too-many-arguments

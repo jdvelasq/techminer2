@@ -72,10 +72,10 @@ Matrix:
 # pylint: disable=line-too-long
 """
 
-from ...chatbot_prompts import format_prompt_for_matrices
-from ...classes import AutoCorrMatrix
-from ..tfidf import tf_matrix
-from .compute_corr_matrix import compute_corr_matrix
+# from ...chatbot_prompts import format_prompt_for_matrices
+# from ...classes import AutoCorrMatrix
+# from ..tfidf import tf_matrix
+# from .compute_corr_matrix import compute_corr_matrix
 
 
 # pylint: disable=too-many-arguments

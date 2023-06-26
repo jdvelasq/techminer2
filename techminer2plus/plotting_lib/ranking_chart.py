@@ -1,24 +1,28 @@
 # flake8: noqa
 """
-Pie Chart
+.. _report.ranking_chart:
+
+Ranking Chart
 ===============================================================================
+
+Default visualization chart for Bibliometrix.
 
 
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/report/pie_chart.html"
+>>> file_name = "sphinx/_static/report/ranking_chart.html"
 
 >>> import techminer2plus
 >>> itemslist = techminer2plus.analyze.list_items(
 ...    field='author_keywords',
 ...    root_dir=root_dir,
-...    top_n=10,
 ... )
->>> chart = techminer2plus.report.pie_chart(itemslist, title="Most Frequent Author Keywords")
+>>> chart = techminer2plus.report.ranking_chart(itemslist, title="Most Frequent Author Keywords")
 >>> chart.plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../_static/report/pie_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/report/ranking_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+
 
 >>> chart.table_.head()
 author_keywords
@@ -61,91 +65,83 @@ Table:
 import plotly.express as px
 
 # from ..analyze import list_items
-from ..classes import BasicChart
-from ..params_check_lib import check_listview
+# from ..classes import BasicChart
+# from ..params_check_lib import check_listview
 
 
-def pie_chart(
-    obj=None,
-    #
-    # Chart params:
+# pylint: disable=too-many-arguments
+def ranking_chart(
+    itemslist=None,
     title=None,
-    hole=0.4,
-    #
-    # list_items params:
-    field=None,
-    metric="OCC",
-    #
-    # Item filters:
-    top_n=10,
-    occ_range=None,
-    gc_range=None,
-    custom_items=None,
-    #
-    # Database params:
-    root_dir="./",
-    database="main",
-    year_filter=None,
-    cited_by_filter=None,
-    **filters,
+    field_label=None,
+    metric_label=None,
+    textfont_size=10,
+    marker_size=7,
+    line_color="black",
+    line_width=1.5,
+    yshift=4,
 ):
-    """Creates a pie chart.
-
-    Args:
-        obj (vantagepoint.analyze.list_view): A list view object.
-        title (str, optional): Title. Defaults to None.
-        hole (float, optional): Hole size. Defaults to 0.4.
-
-    Returns:
-        BasicChart: A BasicChart object.
-
-
-    """
-
-    def create_plot():
-        """Creates plotly figure"""
-
-        fig = px.pie(
-            obj.table_,
-            values=obj.metric_,
-            names=obj.table_.index.to_list(),
-            hole=hole,
-            hover_data=obj.table_.columns.to_list(),
-            title=title if title is not None else "",
-        )
-        fig.update_traces(textinfo="percent+value")
-        fig.update_layout(legend={"y": 0.5})
-
-        return fig
+    """Creates a rank chart."""
 
     #
-    # Main code:
+    # Main code
     #
 
-    if obj is not None:
-        check_listview(obj)
-    else:
-        obj = list_items(
-            field=field,
-            metric=metric,
-            #
-            # Item filters:
-            top_n=top_n,
-            occ_range=occ_range,
-            gc_range=gc_range,
-            custom_items=custom_items,
-            #
-            # Database params:
-            root_dir=root_dir,
-            database=database,
-            year_filter=year_filter,
-            cited_by_filter=cited_by_filter,
-            **filters,
+    table = itemslist.items_list_.copy()
+    table["Rank"] = list(range(1, len(table) + 1))
+
+    if metric_label is None:
+        metric_label = itemslist.metric_.replace("_", " ").upper()
+
+    if field_label is None:
+        field_label = itemslist.field_.replace("_", " ").upper() + " RANKING"
+
+    fig = px.line(
+        table,
+        x="Rank",
+        y=itemslist.metric_,
+        hover_data=itemslist.items_list_.columns.to_list(),
+        markers=True,
+    )
+
+    fig.update_traces(
+        marker={
+            "size": marker_size,
+            "line": {"color": line_color, "width": 0},
+        },
+        marker_color=line_color,
+        line={"color": line_color, "width": line_width},
+    )
+    fig.update_layout(
+        paper_bgcolor="white",
+        plot_bgcolor="white",
+        title_text=title if title is not None else "",
+    )
+    fig.update_yaxes(
+        linecolor="gray",
+        linewidth=1,
+        gridcolor="lightgray",
+        griddash="dot",
+        title=metric_label,
+    )
+    fig.update_xaxes(
+        linecolor="gray",
+        linewidth=1,
+        gridcolor="lightgray",
+        griddash="dot",
+        title=field_label,
+    )
+
+    for name, row in table.iterrows():
+        fig.add_annotation(
+            x=row["Rank"],
+            y=row[itemslist.metric_],
+            text=name,
+            showarrow=False,
+            textangle=-90,
+            yanchor="bottom",
+            font={"size": textfont_size},
+            yshift=yshift,
         )
 
-    chart = BasicChart()
-    chart.plot_ = create_plot()
-    chart.table_ = obj.table_[obj.metric_]
-    chart.prompt_ = obj.prompt_
-
-    return chart
+    return fig

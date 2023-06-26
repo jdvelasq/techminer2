@@ -55,16 +55,16 @@ Table:
 
 # pylint: disable=line-too-long
 """
-from ...chatbot_prompts import format_chatbot_prompt_for_tables
-from ...classes import (
-    AutoCorrMatrix,
-    CoocMatrix,
-    CouplingMatrix,
-    CrossCorrMatrix,
-    ListCellsInMatrix,
-    MatrixSubset,
-    NormCoocMatrix,
-)
+# from ...chatbot_prompts import format_chatbot_prompt_for_tables
+# from ...classes import (
+#     AutoCorrMatrix,
+#     CoocMatrix,
+#     CouplingMatrix,
+#     CrossCorrMatrix,
+#     ListCellsInMatrix,
+#     MatrixSubset,
+#     NormCoocMatrix,
+# )
 
 
 def list_cells_in_matrix(obj):

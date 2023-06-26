@@ -120,12 +120,12 @@ Table:
 
 # pylint: disable=line-too-long
 """
-from ...chatbot_prompts import format_chatbot_prompt_for_tables
-from ...classes import CoocMatrix
-from ...counters_lib import add_counters_to_axis
-from ...filtering_lib import generate_custom_items
-from ...metrics import co_occ_matrix_list, indicators_by_field
-from ...sorting_lib import sort_indicators_by_metric, sort_matrix_axis
+# from ...chatbot_prompts import format_chatbot_prompt_for_tables
+# from ...classes import CoocMatrix
+# from ...counters_lib import add_counters_to_axis
+# from ...filtering_lib import generate_custom_items
+# from ...metrics import co_occ_matrix_list, indicators_by_field
+# from ...sorting_lib import sort_indicators_by_metric, sort_matrix_axis
 
 
 # pylint: disable=too-many-arguments disable=too-many-locals

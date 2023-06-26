@@ -61,10 +61,10 @@ Matrix:
 # pylint: disable=line-too-long
 """
 
-from ...chatbot_prompts import format_prompt_for_matrices
-from ...classes import CrossCorrMatrix
-from .co_occurrence_matrix import co_occurrence_matrix
-from .compute_corr_matrix import compute_corr_matrix
+# from ...chatbot_prompts import format_prompt_for_matrices
+# from ...classes import CrossCorrMatrix
+# from .co_occurrence_matrix import co_occurrence_matrix
+# from .compute_corr_matrix import compute_corr_matrix
 
 
 def cross_correlation_matrix(

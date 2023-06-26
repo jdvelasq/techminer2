@@ -9,11 +9,19 @@ List Items
 
 
 >>> import techminer2plus
->>> itemslist = techminer2plus.analyze.list_items(
+>>> itemslist = techminer2plus.list_items(
 ...    field='author_keywords',
 ...    root_dir=root_dir,
 ... )
->>> itemslist.table_.head()
+
+>>> itemslist
+ItemsList(field='author_keywords', top_n='10', custom_items='['REGTECH',
+    'FINTECH', 'REGULATORY_TECHNOLOGY', 'COMPLIANCE', 'REGULATION',
+    'ANTI_MONEY_LAUNDERING', 'FINANCIAL_SERVICES', 'FINANCIAL_REGULATION',
+    'ARTIFICIAL_INTELLIGENCE', 'RISK_MANAGEMENT']')
+
+
+>>> itemslist.items_list_.head()
                        rank_occ  rank_gc  OCC  ...  h_index  g_index  m_index
 author_keywords                                ...                           
 REGTECH                       1        1   28  ...      9.0      4.0     1.29
@@ -25,17 +33,8 @@ REGULATION                    5        4    5  ...      2.0      2.0     0.33
 [5 rows x 18 columns]
 
 
->>> print(itemslist.table_.head().to_markdown())
-| author_keywords       |   rank_occ |   rank_gc |   OCC |   Before 2022 |   Between 2022-2023 |   global_citations |   local_citations |   global_citations_per_document |   local_citations_per_document |   average_growth_rate |   average_docs_per_year |   percentage_docs_last_year |   first_publication_year |   age |   global_citations_per_year |   h_index |   g_index |   m_index |
-|:----------------------|-----------:|----------:|------:|--------------:|--------------------:|-------------------:|------------------:|--------------------------------:|-------------------------------:|----------------------:|------------------------:|----------------------------:|-------------------------:|------:|----------------------------:|----------:|----------:|----------:|
-| REGTECH               |          1 |         1 |    28 |            20 |                   8 |                329 |                74 |                           11.75 |                           2.64 |                  -0.5 |                     4   |                   0.142857  |                     2017 |     7 |                       47    |         9 |         4 |      1.29 |
-| FINTECH               |          2 |         2 |    12 |            10 |                   2 |                249 |                49 |                           20.75 |                           4.08 |                  -0.5 |                     1   |                   0.0833333 |                     2018 |     6 |                       41.5  |         5 |         3 |      0.83 |
-| REGULATORY_TECHNOLOGY |          3 |         8 |     7 |             5 |                   2 |                 37 |                14 |                            5.29 |                           2    |                  -1.5 |                     1   |                   0.142857  |                     2020 |     4 |                        9.25 |         4 |         2 |      1    |
-| COMPLIANCE            |          4 |        12 |     7 |             5 |                   2 |                 30 |                 9 |                            4.29 |                           1.29 |                   0   |                     1   |                   0.142857  |                     2019 |     5 |                        6    |         3 |         2 |      0.6  |
-| REGULATION            |          5 |         4 |     5 |             4 |                   1 |                164 |                22 |                           32.8  |                           4.4  |                  -0.5 |                     0.5 |                   0.1       |                     2018 |     6 |                       27.33 |         2 |         2 |      0.33 |
 
-
->>> print(itemslist.prompt_)
+>>> print(itemslist.chatbot_prompt_)
 Your task is to generate an analysis about the bibliometric indicators of \\
 the 'author_keywords' field in a scientific bibliography database. \\
 Summarize the table below, sorted by the 'OCC' metric, and delimited by \\
@@ -64,13 +63,14 @@ Table:
 
 # pylint: disable=line-too-long
 """
+import textwrap
 from dataclasses import dataclass
 
 import pandas as pd
 
 from .chatbot_prompts import format_chatbot_prompt_for_tables
 from .filtering_lib import generate_custom_items
-from .metrics import indicators_by_field
+from .metrics_lib import indicators_by_field
 from .params_check_lib import (
     check_bibliometric_metric,
     check_integer,
@@ -82,7 +82,10 @@ from .sorting_lib import sort_indicators_by_metric
 # pylint: disable=too-many-instance-attributes
 @dataclass
 class ItemsList:
-    """List view."""
+    """List view.
+
+    :meta private:
+    """
 
     items_list_: pd.DataFrame
     chatbot_prompt_: str
@@ -103,6 +106,21 @@ class ItemsList:
     year_filter_: tuple
     cited_by_filter_: tuple
     filters_: dict
+
+    def __repr__(self):
+        text = "ItemsList("
+        text += f"field='{self.field_}'"
+        if self.top_n_ is not None:
+            text += f", top_n='{self.top_n_}'"
+        if self.occ_range_ is not None:
+            text += f", occ_range='{str(self.occ_range_)}'"
+        if self.gc_range_ is not None:
+            text += f", gc_range='{str(self.gc_range_)}'"
+        if self.custom_items_ is not None:
+            text += f", custom_items='{str(self.custom_items_)}'"
+        text += ")"
+        text = textwrap.fill(text, width=75, subsequent_indent="    ")
+        return text
 
 
 # pylint: disable=too-many-arguments
@@ -207,7 +225,10 @@ def list_items(
 
 # pylint: disable=line-too-long
 def chatbot_prompt(field, metric, table):
-    """Returns the prompt to be used in the chatbot."""
+    """Returns the prompt to be used in the chatbot.
+
+    :meta private:
+    """
 
     main_text = (
         "Your task is to generate an analysis about the bibliometric indicators of the "

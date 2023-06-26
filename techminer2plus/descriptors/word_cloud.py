@@ -21,8 +21,8 @@ WordCloud
 
 
 """
-from ... import list_items
-from ...report import word_cloud as visualize_word_cloud
+# from ... import list_items
+# from ...report import word_cloud as visualize_word_cloud
 
 FIELD = "descriptors"
 

@@ -61,8 +61,8 @@ Table:
 """
 import plotly.express as px
 
-from ..analyze.matrix import co_occurrence_matrix
-from ..classes import BasicChart
+# from ..analyze.matrix import co_occurrence_matrix
+# from ..classes import BasicChart
 
 
 def bubble_chart(

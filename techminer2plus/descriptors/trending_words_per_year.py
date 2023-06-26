@@ -68,9 +68,9 @@ FINANCIAL_CRIME            2     2020      2020     2021                12   3
 
 # pylint: disable=line-too-long
 """
-from ...analyze import (
-    trending_terms_per_year as analyze_trending_terms_per_year,
-)
+# from ...analyze import (
+#     trending_terms_per_year as analyze_trending_terms_per_year,
+# )
 
 FIELD = "descriptors"
 

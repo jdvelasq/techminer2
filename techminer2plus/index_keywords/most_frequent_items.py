@@ -67,8 +67,8 @@ Table:
 
 # pylint: disable=line-too-long
 """
-from ... import list_items
-from ...graphing_lib import ranking_chart
+# from ... import list_items
+# from ...graphing_lib import ranking_chart
 
 FIELD = "index_keywords"
 METRIC = "OCC"

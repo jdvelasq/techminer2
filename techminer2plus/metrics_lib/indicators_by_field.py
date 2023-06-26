@@ -283,8 +283,10 @@ def indicators_by_field(
         indicators.loc[ady.index, "average_docs_per_year"] = ady
 
         # pdly: percentage of documents in last year
-        indicators["percentage_docs_last_year"] = (
-            indicators.average_docs_per_year.copy() / indicators.OCC.copy()
+        indicators = indicators.assign(
+            percentage_docs_last_year=(
+                indicators.average_docs_per_year.copy() / indicators.OCC.copy()
+            )
         )
 
         return indicators

@@ -75,7 +75,7 @@ from dataclasses import dataclass
 import numpy as np
 import plotly.express as px
 
-from ..analyze.matrix import co_occurrence_matrix
+# from ..analyze.matrix import co_occurrence_matrix
 
 
 @dataclass(init=False)

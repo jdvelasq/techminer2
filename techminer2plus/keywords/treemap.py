@@ -58,8 +58,8 @@ Table:
 
 # pylint: disable=line-too-long
 """
-from ... import list_items
-from ...report import treemap as visualize_treemap
+# from ... import list_items
+# from ...report import treemap as visualize_treemap
 
 FIELD = "keywords"
 
