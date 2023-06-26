@@ -88,25 +88,28 @@ TM2 module.
 
 
 .. toctree::
-    :caption: USE CASES
+    :caption: PREPARATION
     :hidden:
     :maxdepth: 1
 
     ingest/__index__
     refine/__index__
     find/__index__
-    describe/__index__
-    analyze/__index__
-    
-    
-    
-    
 
 
-    
-    
-    
-    
+.. toctree::
+    :caption: ANALYSIS
+    :hidden:
+    :maxdepth: 1
+
+    overview/__index__
+    sources/__index__
+    authors/__index__
+    documents/__index__
+    clustering/__index__
+    conceptual_structure/__index__
+    intellectual_structure/__index__      
+    social_structure/__index__    
 
 
 

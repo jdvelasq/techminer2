@@ -1,4 +1,4 @@
-.. automodule:: techminer2plus.analyze.list_items
+.. automodule:: techminer2plus.list_items
     :members:
     :undoc-members:
     :show-inheritance:

@@ -1,4 +1,4 @@
-.. automodule:: techminer2plus.analyze.sankey_plot
+.. automodule:: techminer2plus.overview.sankey_plot
     :members:
     :undoc-members:
     :show-inheritance:
