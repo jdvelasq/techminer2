@@ -94,7 +94,7 @@ def sort_matrix_axis(
     # pylint: disable=line-too-long
     """
 
-    from .metrics_ib.indicators_by_field import indicators_by_field
+    from .metrics_lib.indicators_by_field import indicators_by_field
 
     matrix = matrix.copy()
 

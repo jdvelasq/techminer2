@@ -13,8 +13,12 @@ import plotly.express as px
 import plotly.graph_objects as go
 from cdlib import algorithms
 
-# from .analyze.matrix.list_cells_in_matrix import list_cells_in_matrix
-# from .records_lib import read_records
+from .list_cells_in_matrix import (
+    AutoCorrCellsList,
+    CoocCellsList,
+    list_cells_in_matrix,
+)
+from .records_lib import read_records
 
 CLUSTER_COLORS = (
     px.colors.qualitative.Dark24
@@ -87,12 +91,17 @@ def nx_add_edges_to_graph_from_matrix_list(graph, matrix_list):
     """Creates edges from 'row' and 'column' columns in a matrix list."""
 
     table = matrix_list.cells_list_.copy()
-    if (
-        matrix_list.columns_ == matrix_list.rows_
-        and matrix_list.is_matrix_subset_ is False
-    ):
+
+    if isinstance(matrix_list, AutoCorrCellsList):
         table = table[table["row"] < table["column"]]
-    table = table[table[matrix_list.metric_] > 0]
+        table = table.loc[table.CORR > 0, :]
+
+    elif isinstance(matrix_list, CoocCellsList):
+        table = table[table["row"] < table["column"]]
+        table = table.loc[table.OCC > 0, :]
+
+    else:
+        table = table[table[matrix_list.metric_] > 0]
 
     for _, row in table.iterrows():
         graph.add_edges_from(

@@ -1,5 +1,7 @@
 # flake8: noqa
 """
+.. _list_items:
+
 List Items
 ===============================================================================
 
@@ -129,7 +131,7 @@ def list_items(
     metric="OCC",
     #
     # Item filters:
-    top_n=10,
+    top_n=None,
     occ_range=None,
     gc_range=None,
     custom_items=None,

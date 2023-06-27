@@ -1,4 +1,4 @@
-.. automodule:: techminer2plus.report.treemap
+.. automodule:: techminer2plus.treemap
     :members:
     :undoc-members:
     :show-inheritance:

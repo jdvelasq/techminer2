@@ -5,7 +5,7 @@ This module contains functions for computing bibliometric indicators for sources
 # pylint: disable=line-too-long
 """
 
-from .bradford_law import bradford_law
+from ..bradford_law import bradford_law
 from .g_index import g_index
 from .h_index import h_index
 from .m_index import m_index

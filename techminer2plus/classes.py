@@ -24,36 +24,6 @@ import plotly.graph_objs as go
 
 
 # pylint: disable=too-many-instance-attributes
-@dataclass(init=False)
-class CoocMatrix:
-    """Co-cccurrence matrix."""
-
-    matrix_: pd.DataFrame
-    prompt_: str
-    metric_: str
-    #
-    # Params:
-    columns_: str
-    rows_: str
-    #
-    # Columns item filters:
-    col_top_n_: int
-    col_occ_range_: tuple
-    col_gc_range_: tuple
-    col_custom_items_: list
-    #
-    # Rows item filters:
-    row_top_n_: int
-    row_occ_range_: tuple
-    row_gc_range_: tuple
-    row_custom_items_: list
-    #
-    # Database params:
-    root_dir_: str
-    database_: str
-    year_filter_: tuple
-    cited_by_filter_: tuple
-    filters_: dict
 
 
 # pylint: disable=too-many-instance-attributes
@@ -96,101 +66,6 @@ class NormCoocMatrix:
 
 
 @dataclass(init=False)
-class AutoCorrMatrix:
-    """Auto-correlation matrix."""
-
-    rows_and_columns_: str
-    method_: str
-    matrix_: pd.DataFrame
-    prompt_: str
-    metric_: str
-
-
-@dataclass(init=False)
-class CrossCorrMatrix:
-    """Cross-correlation matrix."""
-
-    rows_and_columns_: str
-    cross_with_: str
-    method_: str
-    matrix_: pd.DataFrame
-    prompt_: str
-    metric_: str
-
-
-class TFMatrix:
-    """Term-frequency matrix."""
-
-    table_: pd.DataFrame
-    prompt_: str
-    #
-    # Params:
-    field_: str
-    scheme_: str
-    cooc_within_: int
-    #
-    # Item filters:
-    top_n_: int
-    occ_range_: tuple
-    gc_range_: tuple
-    custom_items_: list
-    #
-    # Database params:
-    root_dir_: str
-    database_: str
-    year_filter_: tuple
-    cited_by_filter_: tuple
-    filters_: dict
-
-
-# Analyze / Discover / Matrix / TF-IDF Matrix
-@dataclass(init=False)
-class TFIDFMatrix:
-    """Term-frequency IDF matrix."""
-
-    table_: pd.DataFrame
-    prompt_: str
-    #
-    # Params:
-    field_: str
-    scheme_: str
-    cooc_within_: int
-    #
-    # Item filters:
-    top_n_: int
-    occ_range_: tuple
-    gc_range_: tuple
-    custom_items_: list
-    #
-    # Database params:
-    root_dir_: str
-    database_: str
-    year_filter_: tuple
-    cited_by_filter_: tuple
-    filters_: dict
-
-
-@dataclass(init=False)
-class PcaFactorMatrix:
-    """PCA factor matrix."""
-
-    field_: str
-    table_: pd.DataFrame
-    prompt_: str
-    explained_variance_: np.ndarray
-    explained_variance_ratio_: np.ndarray
-
-
-@dataclass(init=False)
-class KernelPcaFactorMatrix:
-    """KernelPCA factor matrix."""
-
-    field_: str
-    table_: pd.DataFrame
-    prompt_: str
-
-
-@dataclass(init=False)
 class SvdFactorMatrix:
     """PCA factor matrix."""
 
@@ -205,18 +80,6 @@ class MdsFactorMatrix:
 
     field_: str
     table_: pd.DataFrame
-    prompt_: str
-
-
-@dataclass(init=False)
-class ListCellsInMatrix:
-    """List cells in matrix."""
-
-    cells_list_: pd.DataFrame
-    columns_: str
-    is_matrix_subset_: bool
-    metric_: str
-    rows_: str
     prompt_: str
 
 
@@ -262,15 +125,6 @@ class FactorMap:
 
 
 # Analyze / Discover / Terms by Year
-@dataclass(init=False)
-class TermsByYear:
-    """Terms by year."""
-
-    field_: str
-    cumulative_: bool
-    metric_: str
-    prompt_: str
-    table_: pd.DataFrame
 
 
 # Analyze / Explore / Cluster Field
@@ -299,14 +153,6 @@ class MatrixSubset:
 
 
 # Analyze / Explore / Matrix Viewer
-@dataclass(init=False)
-class MatrixViewer:
-    """Matrix viewer."""
-
-    graph_: nx.Graph
-    plot_: go.Figure
-    prompt_: str
-    table_: pd.DataFrame
 
 
 # Analyze / Explore / Network Viewer
@@ -378,20 +224,6 @@ class BasicChart:
 
 
 # Report / Word Cloud
-@dataclass(init=False)
-class WordCloudChart:
-    """WordCloud.
-
-    Attributes:
-        plot_ (matplotlib): Plotly figure.
-        prompt_ (str): Prompt.
-        table_ (pd.DataFrame): Table.
-
-    """
-
-    plot_: matplotlib.figure.Figure
-    prompt_: str
-    table_: pd.DataFrame
 
 
 # Report / Bubble Chart
@@ -433,16 +265,6 @@ class WordComparison:
 # Co-occurrence Analysis / Sequences and Network Analysis / Ego Graph : None
 # Co-occurrence Analysis / Sequences and Network Analysis / Ego Network : None
 # Co-occurrence Analysis / Concordances
-
-
-@dataclass(init=False)
-class Concordances:
-    """Concordances."""
-
-    plot_: go.Figure
-    prompt_: str
-    table_: pd.DataFrame
-    contexts_: str
 
 
 # Thematic Analysis / Thematic Analysis of Context

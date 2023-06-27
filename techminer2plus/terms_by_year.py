@@ -1,5 +1,7 @@
 # flake8: noqa
 """
+.. _terms_by_year:
+
 Terms by Year 
 ===============================================================================
 
@@ -7,7 +9,7 @@ Terms by Year
 >>> root_dir = "data/regtech/"
 
 >>> import techminer2plus
->>> r = techminer2plus.analyze.terms_by_year(
+>>> r = techminer2plus.terms_by_year(
 ...    field='author_keywords',
 ...    top_n=10,
 ...    root_dir=root_dir,
@@ -57,7 +59,7 @@ Table:
 
 
 
->>> r = techminer2plus.analyze.terms_by_year(
+>>> r = techminer2plus.terms_by_year(
 ...    field='author_keywords',
 ...    top_n=10,
 ...    root_dir=root_dir,
@@ -105,14 +107,29 @@ Table:
 
 # pylint: disable=line-too-long
 """
-# import textwrap
+from dataclasses import dataclass
 
-# from ..chatbot_prompts import format_chatbot_prompt_for_tables
-# from ..classes import TermsByYear
-# from ..counters_lib import add_counters_to_axis
-# from ..filtering_lib import generate_custom_items
-# from ..metrics import indicators_by_field, items_occ_by_year
-# from ..sorting_lib import sort_indicators_by_metric
+import pandas as pd
+
+from .chatbot_prompts import format_chatbot_prompt_for_tables
+from .counters_lib import add_counters_to_axis
+from .filtering_lib import generate_custom_items
+from .metrics_lib import indicators_by_field, items_occ_by_year
+from .sorting_lib import sort_indicators_by_metric
+
+
+@dataclass
+class TermsByYear:
+    """Terms by year.
+
+    :meta private:
+    """
+
+    field_: str
+    cumulative_: bool
+    metric_: str
+    prompt_: str
+    table_: pd.DataFrame
 
 
 # pylint: disable=too-many-arguments
@@ -158,21 +175,19 @@ def terms_by_year(
     # pylint: disable=line-too-long
     """
 
-    def generate_prompt(obj):
+    def generate_prompt(cumulative, field, table):
         # pylint: disable=line-too-long
         main_text = (
             "Your task is to generate an analysis about the "
-            f"{'cumulative' if obj.cumulative_ else ''} occurrences by year "
-            f"of the '{obj.field_}' in a scientific bibliography database. "
+            f"{'cumulative' if cumulative else ''} occurrences by year "
+            f"of the '{field}' in a scientific bibliography database. "
             "Summarize the table below, delimited by triple backticks, "
             "identify any notable patterns, trends, or outliers in the data, "
             "and disc  uss their implications for the research field. Be sure "
             "to provide a concise summary of your findings in no more than "
             "150 words."
         )
-        return format_chatbot_prompt_for_tables(
-            main_text, obj.table_.to_markdown()
-        )
+        return format_chatbot_prompt_for_tables(main_text, table.to_markdown())
 
     #
     # Main:
@@ -224,11 +239,10 @@ def terms_by_year(
         **filters,
     )
 
-    obj = TermsByYear()
-    obj.metric_ = "OCC"
-    obj.field_ = field
-    obj.cumulative_ = cumulative
-    obj.table_ = descriptors_by_year
-    obj.prompt_ = generate_prompt(obj)
-
-    return obj
+    return TermsByYear(
+        metric_="OCC",
+        field_=field,
+        cumulative_=cumulative,
+        table_=descriptors_by_year,
+        prompt_=generate_prompt(cumulative, field, descriptors_by_year),
+    )
