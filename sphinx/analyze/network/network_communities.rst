@@ -1,4 +1,4 @@
-.. automodule:: techminer2plus.network.network_communities
+.. automodule:: techminer2plus.network_communities
     :members:
     :undoc-members:
     :show-inheritance:

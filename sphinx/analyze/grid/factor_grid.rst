@@ -1,4 +1,4 @@
-.. automodule:: techminer2plus.grid.factor_grid
+.. automodule:: techminer2plus.factor_grid
     :members:
     :undoc-members:
     :show-inheritance:

@@ -1,4 +1,4 @@
-.. automodule:: techminer2plus.factor_matrix.svd_factor_matrix
+.. automodule:: techminer2plus.svd_factor_matrix
     :members:
     :undoc-members:
     :show-inheritance:

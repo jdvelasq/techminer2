@@ -1,4 +1,4 @@
-.. automodule:: techminer2plus.associations.radial_diagram
+.. automodule:: techminer2plus.radial_diagram
     :members:
     :undoc-members:
     :show-inheritance:

@@ -1,4 +1,4 @@
-.. automodule:: techminer2plus.ingest.summary_view
+.. automodule:: techminer2plus.summary_view
     :members:
     :undoc-members:
     :show-inheritance:

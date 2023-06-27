@@ -1,4 +1,4 @@
-.. automodule:: techminer2plus.refine.find_abbreviations
+.. automodule:: techminer2plus.find_abbreviations
     :members:
     :undoc-members:
     :show-inheritance:
