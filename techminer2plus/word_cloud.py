@@ -46,7 +46,8 @@ import matplotlib
 import numpy as np
 import pandas as pd
 from matplotlib.figure import Figure
-from wordcloud import WordCloud
+
+# from wordcloud import WordCloud
 
 # from ..analyze import list_items
 # from ..classes import WordCloudChart

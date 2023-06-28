@@ -57,14 +57,14 @@ class Records(Field):
     def read_records(self):
         """loads and filter records of main database text files."""
 
-        self._get_records_from_file()
-        self._filter_records_by_year()
-        self._filter_records_by_citations()
-        self._apply_filters_to_records()
+        self.__get_records_from_file()
+        self.__filter_records_by_year()
+        self.__filter_records_by_citations()
+        self.__apply_filters_to_records()
 
         return self.records
 
-    def _get_records_from_file(self):
+    def __get_records_from_file(self):
         """Read raw records from a file."""
 
         file_name = {
@@ -77,7 +77,7 @@ class Records(Field):
         self.records = pd.read_csv(file_path, sep=",", encoding="utf-8")
         self.records = self.records.drop_duplicates()
 
-    def _filter_records_by_year(self):
+    def __filter_records_by_year(self):
         """Filter records by year."""
 
         if self.year_filter is None:
@@ -101,7 +101,7 @@ class Records(Field):
         if end_year is not None:
             self.records = self.records[self.records.year <= end_year]
 
-    def _filter_records_by_citations(self):
+    def __filter_records_by_citations(self):
         """Filter records by year."""
 
         if self.cited_by_filter is None:
@@ -129,7 +129,7 @@ class Records(Field):
                 self.records.global_citations <= cited_by_max
             ]
 
-    def _apply_filters_to_records(self):
+    def __apply_filters_to_records(self):
         """Apply user filters in order."""
 
         for filter_name, filter_value in self.filters.items():

@@ -16,7 +16,7 @@ Co-occurrence Analysis
         tsne_2d_map
 
     .. toctree::
-        co_occurrence_matrix
+        co_occ_matrix
 
  
 

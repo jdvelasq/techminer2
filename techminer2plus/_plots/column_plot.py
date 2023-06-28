@@ -1,28 +1,28 @@
-"""Make a  bar plot from a dataframe."""
+# """Make a  bar plot from a dataframe."""
 
-from .._px.column_px import column_px
-from .format_dataset_to_plot_with_plotly import format_dataset_to_plot_with_plotly
+# from .._px.column_px import column_px
+# from .format_dataset_to_plot_with_plotly import format_dataset_to_plot_with_plotly
 
 
-def column_plot(
-    dataframe,
-    metric="OCC",
-    title=None,
-):
-    """
-    Make a  bar plot from a dataframe.
+# def column_plot(
+#     dataframe,
+#     metric="OCC",
+#     title=None,
+# ):
+#     """
+#     Make a  bar plot from a dataframe.
 
-    :param dataframe: Dataframe
-    :param column: Column to plot
-    :param title: Title of the plot
-    :return: Plotly figure
-    """
+#     :param dataframe: Dataframe
+#     :param column: Column to plot
+#     :param title: Title of the plot
+#     :return: Plotly figure
+#     """
 
-    metric, column, dataframe = format_dataset_to_plot_with_plotly(dataframe, metric)
+#     metric, column, dataframe = format_dataset_to_plot_with_plotly(dataframe, metric)
 
-    return column_px(
-        dataframe=dataframe,
-        x_label=column,
-        y_label=metric,
-        title=title,
-    )
+#     return column_px(
+#         dataframe=dataframe,
+#         x_label=column,
+#         y_label=metric,
+#         title=title,
+#     )

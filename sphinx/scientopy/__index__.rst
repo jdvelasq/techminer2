@@ -21,7 +21,7 @@ based on the type of plots.
     time_line
 
 .. toctree::    
-    word_cloud
+    word_cloud_graph
 
 .. toctree::    
     top_trending_topics
