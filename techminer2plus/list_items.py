@@ -13,6 +13,7 @@ List Items
 >>> import techminer2plus
 >>> itemslist = techminer2plus.list_items(
 ...    field='author_keywords',
+...    top_n=10,
 ...    root_dir=root_dir,
 ... )
 
@@ -23,7 +24,7 @@ ItemsList(field='author_keywords', top_n='10', custom_items='['REGTECH',
     'ARTIFICIAL_INTELLIGENCE', 'RISK_MANAGEMENT']')
 
 
->>> itemslist.items_list_.head()
+>>> itemslist.df_.head()
                        rank_occ  rank_gc  OCC  ...  h_index  g_index  m_index
 author_keywords                                ...                           
 REGTECH                       1        1   28  ...      9.0      4.0     1.29
@@ -70,7 +71,7 @@ from dataclasses import dataclass
 
 import pandas as pd
 
-from .chatbot_prompts import format_chatbot_prompt_for_tables
+from .chatbot_prompts import format_chatbot_prompt_for_df
 from .filtering_lib import generate_custom_items
 from .metrics_lib import indicators_by_field
 from .params_check_lib import (
@@ -89,7 +90,7 @@ class ItemsList:
     :meta private:
     """
 
-    items_list_: pd.DataFrame
+    df_: pd.DataFrame
     chatbot_prompt_: str
     #
     # Params:
@@ -203,7 +204,7 @@ def list_items(
     return ItemsList(
         #
         # Results:
-        items_list_=indicators,
+        df_=indicators,
         chatbot_prompt_=chatbot_prompt(field, metric, indicators),
         #
         # Params:
@@ -240,4 +241,4 @@ def chatbot_prompt(field, metric, table):
         "implications for the research field. Be sure to provide a concise summary "
         "of your findings in no more than 150 words."
     )
-    return format_chatbot_prompt_for_tables(main_text, table.to_markdown())
+    return format_chatbot_prompt_for_df(main_text, table.to_markdown())

@@ -12,7 +12,7 @@ Matrix Viewer
 >>> file_name = "sphinx/_static/matrix_viewer_0.html"
 
 >>> import techminer2plus 
->>> cooc_matrix = techminer2plus.matrix.co_occurrence_matrix(
+>>> cooc_matrix = techminer2plus.co_occurrence_matrix(
 ...     columns='author_keywords',
 ...     rows='authors',
 ...     col_occ_range=(2, None),
@@ -30,7 +30,7 @@ Matrix Viewer
 ...     textfont_size_max=20,
 ...     xaxes_range=(-2,2)
 ... )
->>> chart.plot_.write_html(file_name)
+>>> chart.fig_.write_html(file_name)
 
 .. raw:: html
 
@@ -43,10 +43,9 @@ Matrix Viewer
 
 >>> file_name = "sphinx/_static/matrix_viewer_1.html"
 
->>> cooc_matrix = techminer2plus.matrix.co_occurrence_matrix(
+>>> cooc_matrix = techminer2plus.co_occurrence_matrix(
 ...    columns='author_keywords',
 ...    col_top_n=10,
-...    row_top_n=10,
 ...    root_dir=root_dir,
 ... )
 
@@ -56,11 +55,11 @@ Matrix Viewer
 ...     nx_iterations=5,
 ...     xaxes_range=(-2,2),
 ... )
->>> chart.plot_.write_html(file_name)
+>>> chart.fig_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../_static/report/matrix_viewer_1.html"
+    <iframe src="../_static/matrix_viewer_1.html"
     height="600px" width="100%" frameBorder="0"></iframe>
 
     
@@ -92,9 +91,9 @@ from .network_lib import (
 class MatrixViewer:
     """Matrix viewer."""
 
-    graph_: nx.Graph
-    plot_: go.Figure
-    table_: pd.DataFrame
+    nx_graph_: nx.Graph
+    fig_: go.Figure
+    df_: pd.DataFrame
 
 
 # pylint: disable=too-many-arguments
@@ -143,7 +142,7 @@ def matrix_viewer(
     fig = px_add_names_to_fig_nodes(fig, graph, n_labels, is_article=False)
 
     return MatrixViewer(
-        plot_=fig,
-        graph_=graph,
-        table_=list_cells_in_matrix(cooc_matrix).cells_list_,
+        fig_=fig,
+        nx_graph_=graph,
+        df_=list_cells_in_matrix(cooc_matrix).df_,
     )

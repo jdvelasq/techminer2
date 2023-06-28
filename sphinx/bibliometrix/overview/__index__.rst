@@ -11,10 +11,8 @@ Overview
    average_citations_per_year
 
 .. toctree::   
-   sankey_plot
+   three_fields_plot
 
-.. toctree::   
-   coverage
 
 
 

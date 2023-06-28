@@ -17,14 +17,14 @@ Line Chart
 ...     root_dir=root_dir,
 ... )
 >>> chart = techminer2plus.line_chart(itemslist, title="Most Frequent Author Keywords")
->>> chart.plot_.write_html(file_name)
+>>> chart.fig_.write_html(file_name)
 
 .. raw:: html
 
     <iframe src="../_static/line_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
->>> chart.table_.head()
+>>> chart.df_.head()
 author_keywords
 REGTECH                  28
 FINTECH                  12
@@ -51,12 +51,12 @@ class LineChart:
     :meta private:
     """
 
-    plot_: go.Figure
-    table_: pd.DataFrame
+    fig_: go.Figure
+    df_: pd.DataFrame
 
 
 def line_chart(
-    itemslist=None,
+    data=None,
     title=None,
     field_label=None,
     metric_label=None,
@@ -74,22 +74,22 @@ def line_chart(
 
     """
     metric_label = (
-        itemslist.metric_.replace("_", " ").upper()
+        data.metric_.replace("_", " ").upper()
         if metric_label is None
         else metric_label
     )
 
     field_label = (
-        itemslist.field_.replace("_", " ").upper()
+        data.field_.replace("_", " ").upper()
         if field_label is None
         else field_label
     )
 
     fig = px.line(
-        itemslist.items_list_,
+        data.df_,
         x=None,
-        y=itemslist.metric_,
-        hover_data=itemslist.items_list_.columns.to_list(),
+        y=data.metric_,
+        hover_data=data.df_.columns.to_list(),
         markers=True,
     )
 
@@ -120,6 +120,6 @@ def line_chart(
     )
 
     return LineChart(
-        plot_=fig,
-        table_=itemslist.items_list_[itemslist.metric_],
+        fig_=fig,
+        df_=data.df_[data.metric_],
     )

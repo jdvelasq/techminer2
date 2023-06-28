@@ -19,13 +19,24 @@ Cleveland Dot Chart
 ... )
 
 >>> chart = techminer2plus.cleveland_dot_chart(itemslist, title="Most Frequent Author Keywords")
->>> chart.plot_.write_html(file_name)
+>>> chart.fig_.write_html(file_name)
 
 .. raw:: html
 
     <iframe src="../_static/cleveland_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
-    
+>>> chart.df_.head()
+author_keywords
+REGTECH                  28
+FINTECH                  12
+REGULATORY_TECHNOLOGY     7
+COMPLIANCE                7
+REGULATION                5
+Name: OCC, dtype: int64
+
+
+
+
 
 # pylint: disable=line-too-long
 """
@@ -43,12 +54,12 @@ class ClevelandDotChart:
     :meta private:
     """
 
-    plot_: go.Figure
-    table_: pd.DataFrame
+    fig_: go.Figure
+    df_: pd.DataFrame
 
 
 def cleveland_dot_chart(
-    itemslist=None,
+    data=None,
     title=None,
     metric_label=None,
     field_label=None,
@@ -66,23 +77,23 @@ def cleveland_dot_chart(
 
     """
     metric_label = (
-        itemslist.metric_.replace("_", " ").upper()
+        data.metric_.replace("_", " ").upper()
         if metric_label is None
         else metric_label
     )
 
     field_label = (
-        itemslist.field_.replace("_", " ").upper()
+        data.field_.replace("_", " ").upper()
         if field_label is None
         else field_label
     )
 
     fig = px.scatter(
-        itemslist.items_list_,
-        x=itemslist.metric_,
+        data.df_,
+        x=data.metric_,
         y=None,
-        hover_data=itemslist.items_list_.columns.to_list(),
-        size=itemslist.metric_,
+        hover_data=data.df_.columns.to_list(),
+        size=data.metric_,
     )
     fig.update_layout(
         paper_bgcolor="white",
@@ -113,6 +124,6 @@ def cleveland_dot_chart(
     )
 
     return ClevelandDotChart(
-        plot_=fig,
-        table_=itemslist.items_list_[itemslist.metric_],
+        fig_=fig,
+        df_=data.df_[data.metric_],
     )

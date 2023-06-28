@@ -61,7 +61,7 @@ class WorldMap:
 
 
 def world_map(
-    itemslist=None,
+    data=None,
     colormap="Blues",
     title=None,
 ):
@@ -83,7 +83,7 @@ def world_map(
 
         worldmap_data = load_worldmap_data()
 
-        dataframe = itemslist.items_list_.copy()
+        dataframe = data.df_.copy()
         dataframe.index = dataframe.index.rename("country")
         dataframe = dataframe.sort_index()
 
@@ -93,14 +93,14 @@ def world_map(
         fig = px.choropleth(
             worldmap_data,
             locations="iso_alpha",
-            color=itemslist.metric_,
+            color=data.metric_,
             hover_name="country",
             hover_data=[
                 col
                 for col in dataframe.columns
                 if col not in ["country", "iso_alpha"]
             ],
-            range_color=(1, itemslist.items_list_[itemslist.metric_].max()),
+            range_color=(1, data.df_[data.metric_].max()),
             color_continuous_scale=colormap,
             color_discrete_map={0: "gray"},
             scope="world",
@@ -141,5 +141,5 @@ def world_map(
 
     return WorldMap(
         plot_=create_plot(),
-        table_=itemslist.items_list_[itemslist.metric_],
+        table_=data.df_[data.metric_],
     )

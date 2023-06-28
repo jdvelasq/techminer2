@@ -11,7 +11,7 @@ Returns an auto-correlation matrix.
 >>> root_dir = "data/regtech/"
 
 >>> import techminer2plus
->>> auto_corr_matrix = techminer2plus.matrix.auto_correlation_matrix(
+>>> auto_corr_matrix = techminer2plus.auto_correlation_matrix(
 ...     rows_and_columns='authors',
 ...     occ_range=(2, None),
 ...     root_dir=root_dir,
@@ -20,7 +20,7 @@ Returns an auto-correlation matrix.
 AutoCorrMatrix(rows-and-columns='authors', method='pearson', shape=(15,
     15))
 
->>> auto_corr_matrix.matrix_.round(3)
+>>> auto_corr_matrix.df_.round(3)
                     Arner DW 3:185  ...  Arman AA 2:000
 Arner DW 3:185               1.000  ...             0.0
 Buckley RP 3:185             1.000  ...             0.0
@@ -51,7 +51,7 @@ Identify any notable patterns, trends, or outliers in the data, and discuss \\
 their implications for the research field. Be sure to provide a concise \\
 summary of your findings, in at most 50 words.
 <BLANKLINE>
-Matrix:
+Table:
 ```
 |                    |   Arner DW 3:185 |   Buckley RP 3:185 |   Barberis JN 2:161 |   Butler T 2:041 |   Hamdan A 2:018 |   Turki M 2:018 |   Lin W 2:017 |   Singh C 2:017 |   Brennan R 2:014 |   Crane M 2:014 |   Ryan P 2:014 |   Sarea A 2:012 |   Grassi L 2:002 |   Lanfranchi D 2:002 |   Arman AA 2:000 |
 |:-------------------|-----------------:|-------------------:|--------------------:|-----------------:|-----------------:|----------------:|--------------:|----------------:|------------------:|----------------:|---------------:|----------------:|-----------------:|---------------------:|-----------------:|
@@ -82,7 +82,7 @@ from dataclasses import dataclass
 
 import pandas as pd
 
-from .chatbot_prompts import format_prompt_for_matrices
+from .chatbot_prompts import format_chatbot_prompt_for_df
 from .compute_corr_matrix import compute_corr_matrix
 from .tf_matrix import tf_matrix
 
@@ -93,7 +93,7 @@ class AutoCorrMatrix:
 
     rows_and_columns_: str
     method_: str
-    matrix_: pd.DataFrame
+    df_: pd.DataFrame
     prompt_: str
     metric_: str
 
@@ -101,7 +101,7 @@ class AutoCorrMatrix:
         text = "AutoCorrMatrix("
         text += f"rows-and-columns='{self.rows_and_columns_}'"
         text += f", method='{self.method_}'"
-        text += f", shape={self.matrix_.shape}"
+        text += f", shape={self.df_.shape}"
         text += ")"
         text = textwrap.fill(text, width=75, subsequent_indent="    ")
         return text
@@ -141,7 +141,7 @@ def auto_correlation_matrix(
             "for the research field. Be sure to provide a concise summary of "
             "your findings, in at most 50 words."
         )
-        return format_prompt_for_matrices(
+        return format_chatbot_prompt_for_df(
             main_text, corr_matrix.round(3).to_markdown()
         )
 
@@ -169,6 +169,6 @@ def auto_correlation_matrix(
         rows_and_columns_=rows_and_columns,
         method_=method,
         metric_="CORR",
-        matrix_=corr_matrix,
+        df_=corr_matrix,
         prompt_=generate_prompt(rows_and_columns, corr_matrix),
     )

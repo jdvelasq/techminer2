@@ -9,9 +9,10 @@ co-occurrence matrix.
 
 
 """
-# import numpy as np
+import numpy as np
+import pandas as pd
 
-# from ...classes import CoocMatrix, NormCoocMatrix
+from .co_occurrence_matrix import CoocMatrix
 
 
 def matrix_normalization(cooc_matrix, association_index):
@@ -136,7 +137,7 @@ def matrix_normalization(cooc_matrix, association_index):
         "association": association,
     }[association_index]
 
-    matrix = cooc_matrix.matrix_.copy()
+    matrix = cooc_matrix.df_.copy()
     matrix = matrix.applymap(float)
     normalized_matrix = matrix.copy()
     normalized_matrix = fnc(matrix, normalized_matrix)
@@ -144,12 +145,10 @@ def matrix_normalization(cooc_matrix, association_index):
     for index in range(len(normalized_matrix)):
         normalized_matrix.iloc[index, index] = 0.0
 
-    norm_cooc_matrix = NormCoocMatrix()
-    norm_cooc_matrix.matrix_ = normalized_matrix
-    norm_cooc_matrix.prompt_ = cooc_matrix.prompt_
-    norm_cooc_matrix.metric_ = cooc_matrix.metric_
-    norm_cooc_matrix.columns_ = cooc_matrix.columns_
-    norm_cooc_matrix.rows_ = cooc_matrix.rows_
-    norm_cooc_matrix.association_index_ = association_index
-
-    return norm_cooc_matrix
+    return CoocMatrix(
+        df_=normalized_matrix,
+        prompt_=cooc_matrix.prompt_,
+        metric_=cooc_matrix.metric_,
+        columns_=cooc_matrix.columns_,
+        rows_=cooc_matrix.rows_,
+    )

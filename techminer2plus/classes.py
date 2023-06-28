@@ -240,15 +240,6 @@ class BasicChart:
 # Co-occurrence Analysis / Word Associations / 2D MDS map
 # Co-occurrence Analysis / Word Associations / 2D SVD map
 # Co-occurrence Analysis / Word Associations / 2D TSNE map
-@dataclass(init=False)
-class RadialDiagram:
-    """Radial diagram."""
-
-    plot_: go.Figure
-    nx_graph_: nx.Graph
-    series_: pd.Series
-    item_name_: str
-    prompt_: str
 
 
 # Co-occurrence Analysis / Word Associations / Co-occurrence Matrix: None

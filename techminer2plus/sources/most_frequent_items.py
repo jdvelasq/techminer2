@@ -18,7 +18,7 @@ Most Frequent Items
     <iframe src="../../_static/use_cases/sources/most_frequent_items.html" height="600px" width="100%" frameBorder="0"></iframe>
 
     
->>> result.items_list_.head()
+>>> result.df_.head()
                                rank_occ  rank_gc  ...  g_index  m_index
 source_abbr                                       ...                  
 J BANK REGUL                          1        3  ...      2.0     0.50

@@ -183,7 +183,7 @@ def factor_map(
 
     factormap = FactorMap()
     factormap.plot_ = fig
-    factormap.table_ = matrix_list.cells_list_
+    factormap.table_ = matrix_list.df_
     factormap.prompt_ = matrix_list.prompt_
 
     return factormap

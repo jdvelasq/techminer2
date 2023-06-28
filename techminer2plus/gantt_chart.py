@@ -16,14 +16,14 @@ Gantt Chart
 ...    root_dir=root_dir,
 ... )
 >>> chart = techminer2plus.gantt_chart(data)
->>> chart.plot_.write_html(file_name)
+>>> chart.fig_.write_html(file_name)
 
 .. raw:: html
 
     <iframe src="../_static/gantt_chart.html" height="800px" width="100%" frameBorder="0"></iframe>
 
     
->>> chart.table_.head(10)
+>>> chart.df_.head(10)
 year                            2017  2018  2019  2020  2021  2022  2023
 author_keywords                                                         
 REGTECH 28:329                     2     3     4     8     3     6     2
@@ -49,9 +49,6 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objs as go
 
-# from ..analyze import terms_by_year
-# from ..classes import BasicChart
-
 
 @dataclass
 class GanttChart:
@@ -60,8 +57,8 @@ class GanttChart:
     :meta private:
     """
 
-    plot_: go.Figure
-    table_: pd.DataFrame
+    fig_: go.Figure
+    df_: pd.DataFrame
 
 
 COLOR = "#556f81"
@@ -153,6 +150,6 @@ def gantt_chart(
     fig = create_fig(table, terms_by_year.field_, terms_by_year.metric_, title)
 
     return GanttChart(
-        plot_=fig,
-        table_=terms_by_year.table_,
+        fig_=fig,
+        df_=terms_by_year.table_,
     )

@@ -25,7 +25,7 @@ def compute_corr_matrix(
     if isinstance(data_matrix, TFMatrix):
         table = data_matrix.table_.copy()
     elif isinstance(data_matrix, CoocMatrix):
-        table = data_matrix.matrix_.copy()
+        table = data_matrix.df_.copy()
     else:
         raise TypeError("data_matrix must be a TFMatrix or a CorrMatrix.")
 

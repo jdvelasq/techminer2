@@ -13,17 +13,17 @@ the 'value' column of the list.
 >>> root_dir = "data/regtech/"
 
 >>> import techminer2plus
->>> matrix = techminer2plus.matrix.auto_correlation_matrix(
+>>> matrix = techminer2plus.auto_correlation_matrix(
 ...     rows_and_columns='authors',
 ...     top_n=10,
 ...     root_dir=root_dir,
 ... )
 
->>> cells_list = techminer2plus.matrix.list_cells_in_matrix(matrix)
+>>> cells_list = techminer2plus.list_cells_in_matrix(matrix)
 >>> cells_list
-CellsList(from='AutoCorrMatrix', shape=(22, 3))
+AutoCorrCellsList(, shape=(22, 3))
 
->>> cells_list.cells_list_.head()
+>>> cells_list.df_.head()
                  row            column    CORR
 0     Arner DW 3:185    Arner DW 3:185  1.0000
 1   Buckley RP 3:185    Arner DW 3:185  1.0000
@@ -45,6 +45,7 @@ import pandas as pd
 
 from .auto_correlation_matrix import AutoCorrMatrix
 from .co_occurrence_matrix import CoocMatrix
+from .cross_correlation_matrix import CrossCorrMatrix
 
 
 @dataclass
@@ -52,14 +53,19 @@ class AutoCorrCellsList:
     """List cells from an auto-correlation matrix."""
 
     rows_and_columns_: str
-    cells_list_: pd.DataFrame
+    df_: pd.DataFrame
 
     def __repr__(self):
         text = "AutoCorrCellsList("
-        text += f", shape={self.cells_list_.shape}"
+        text += f", shape={self.df_.shape}"
         text += ")"
         text = textwrap.fill(text, width=75, subsequent_indent="    ")
         return text
+
+
+@dataclass
+class CrossCorrCellsList(AutoCorrCellsList):
+    """Cross-correlation cells list."""
 
 
 @dataclass
@@ -68,11 +74,11 @@ class CoocCellsList:
 
     rows_: str
     columns_: str
-    cells_list_: pd.DataFrame
+    df_: pd.DataFrame
 
     def __repr__(self):
         text = "CoocCellsList("
-        text += f", shape={self.cells_list_.shape}"
+        text += f", shape={self.df_.shape}"
         text += ")"
         text = textwrap.fill(text, width=75, subsequent_indent="    ")
         return text
@@ -84,14 +90,14 @@ def list_cells_in_matrix(obj):
     def transform_matrix_to_matrix_list(obj):
         """Transform a matrix object to a matrix list object."""
 
-        matrix = obj.matrix_
+        matrix = obj.df_
         value_name = obj.metric_
 
         matrix = matrix.melt(
             value_name=value_name, var_name="column", ignore_index=False
         )
         matrix = matrix.reset_index()
-        matrix = matrix.rename(columns={"index": "row"})
+        matrix = matrix.rename(columns={matrix.columns[0]: "row"})
         # matrix = matrix.sort_values(
         #     by=[value_name, "row", "column"], ascending=[False, True, True]
         # )
@@ -109,19 +115,25 @@ def list_cells_in_matrix(obj):
 
     if isinstance(obj, AutoCorrMatrix):
         return AutoCorrCellsList(
-            cells_list_=cells_list,
+            df_=cells_list,
+            rows_and_columns_=obj.rows_and_columns_,
+        )
+
+    if isinstance(obj, CrossCorrMatrix):
+        return CrossCorrCellsList(
+            df_=cells_list,
             rows_and_columns_=obj.rows_and_columns_,
         )
 
     if isinstance(obj, CoocMatrix):
         return CoocCellsList(
-            cells_list_=cells_list,
+            df_=cells_list,
             columns_=obj.columns_,
             rows_=obj.rows_,
         )
 
     return CellsList(
-        cells_list_=cells_list,
+        df_=cells_list,
         from_=repr(type(obj)).split(".")[-1][:-2],
         rows_=obj.rows_,
         columns_=obj.columns_,

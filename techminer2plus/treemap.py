@@ -75,9 +75,9 @@ def treemap(
     fig = go.Figure()
     fig.add_trace(
         go.Treemap(
-            labels=itemslist.items_list_.index,
-            parents=[""] * len(itemslist.items_list_),
-            values=itemslist.items_list_[itemslist.metric_],
+            labels=itemslist.df_.index,
+            parents=[""] * len(itemslist.df_),
+            values=itemslist.df_[itemslist.metric_],
             textinfo="label+value",
         )
     )
@@ -91,7 +91,7 @@ def treemap(
     # Change the colors of the treemap white
     fig.update_traces(
         marker={"line": {"color": "darkslategray", "width": 1}},
-        marker_colors=["white"] * len(itemslist.items_list_),
+        marker_colors=["white"] * len(itemslist.df_),
     )
 
     # Change the font size of the labels
@@ -99,5 +99,5 @@ def treemap(
 
     return Treemap(
         plot_=fig,
-        table_=itemslist.items_list_[itemslist.metric_],
+        table_=itemslist.df_[itemslist.metric_],
     )

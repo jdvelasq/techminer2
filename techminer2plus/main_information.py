@@ -58,12 +58,12 @@ DESCRIPTORS    Raw descriptors                                373
 
 
                
->>> file_name = "sphinx/_static/analyze/main_info.html"               
+>>> file_name = "sphinx/_static/main_info.html"               
 >>> stats.plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../_static/analyze/main_info.html" height="800px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../_static/main_info.html" height="800px" width="100%" frameBorder="0"></iframe>
 
 
     
@@ -138,7 +138,7 @@ import pandas as pd
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
-from .chatbot_prompts import format_chatbot_prompt_for_tables
+from .chatbot_prompts import format_chatbot_prompt_for_df
 from .records_lib import read_records
 
 
@@ -926,7 +926,7 @@ def make_chatpgt_prompt(report):
         "table to draw conclusions. Limit your description to one paragraph in at most 100 words."
     )
 
-    return format_chatbot_prompt_for_tables(main_text, report.to_markdown())
+    return format_chatbot_prompt_for_df(main_text, report.to_markdown())
 
 
 def main_information(

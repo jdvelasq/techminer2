@@ -42,7 +42,7 @@ def collaboration_worldmap(
         cited_by_filter=cited_by_filter,
         **filters,
     )
-    collaboration = list_cells_in_matrix(matrix).cells_list_
+    collaboration = list_cells_in_matrix(matrix).df_
 
     collaboration = collaboration[collaboration.row != collaboration.column]
     collaboration["row"] = collaboration["row"].map(

@@ -20,14 +20,14 @@ Items in your list are the Y-axis, and the number of records are the X-axis.
 ...     root_dir=root_dir,
 ... )
 >>> chart = techminer2plus.bar_chart(itemslist, title="Most Frequent Author Keywords")
->>> chart.plot_.write_html(file_name)
+>>> chart.fig_.write_html(file_name)
 
 .. raw:: html
 
     <iframe src="../_static/bar_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
->>> chart.table_.head()
+>>> chart.df_.head()
 author_keywords
 REGTECH                  28
 FINTECH                  12
@@ -53,12 +53,12 @@ class BarChart:
     :meta private:
     """
 
-    plot_: go.Figure
-    table_: pd.DataFrame
+    fig_: go.Figure
+    df_: pd.DataFrame
 
 
 def bar_chart(
-    itemslist=None,
+    data=None,
     #
     # Chart params:
     title=None,
@@ -78,22 +78,22 @@ def bar_chart(
 
     """
     metric_label = (
-        itemslist.metric_.replace("_", " ").upper()
+        data.metric_.replace("_", " ").upper()
         if metric_label is None
         else metric_label
     )
 
     field_label = (
-        itemslist.field_.replace("_", " ").upper()
+        data.field_.replace("_", " ").upper()
         if field_label is None
         else field_label
     )
 
     fig = px.bar(
-        itemslist.items_list_,
-        x=itemslist.metric_,
+        data.df_,
+        x=data.metric_,
         y=None,
-        hover_data=itemslist.items_list_.columns.to_list(),
+        hover_data=data.df_.columns.to_list(),
         orientation="h",
     )
 
@@ -123,6 +123,6 @@ def bar_chart(
     )
 
     return BarChart(
-        plot_=fig,
-        table_=itemslist.items_list_[itemslist.metric_],
+        fig_=fig,
+        df_=data.df_[data.metric_],
     )

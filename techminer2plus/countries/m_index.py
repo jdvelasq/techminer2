@@ -18,7 +18,7 @@ M-Index
     <iframe src="../../_static/use_cases/countries/m_index.html" height="600px" width="100%" frameBorder="0"></iframe>
 
     
->>> items.items_list_.head()
+>>> items.df_.head()
                 rank_occ  rank_gc  OCC  ...  h_index  g_index  m_index
 countries                               ...                           
 United Kingdom         1        1    7  ...      4.0      3.0     0.67

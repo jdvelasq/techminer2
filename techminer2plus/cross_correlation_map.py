@@ -11,69 +11,72 @@ Creates an Cross-correlation Map.
 
 >>> root_dir = "data/regtech/"
 
->>> file_name = "sphinx/_static/analyze/map/cross_correlation_map.html"
+>>> file_name = "sphinx/_static/cross_correlation_map.html"
 
 >>> import techminer2plus
->>> cross_corr_matrix = techminer2plus.analyze.matrix.cross_correlation_matrix(
+>>> cross_corr_matrix = techminer2plus.cross_correlation_matrix(
 ...     rows_and_columns='authors', 
 ...     cross_with='countries',
 ...     top_n=10,
 ...     root_dir=root_dir,
 ... )
->>> chart = techminer2plus.analyze.map.cross_correlation_map(
+>>> corr_map = techminer2plus.cross_correlation_map(
 ...     cross_corr_matrix,
 ...     color="#1f77b4", # tab:blue
 ... )
->>> chart.plot_.write_html(file_name)
+>>> corr_map
+CrossCorrMap(rows-and-columns='authors'cross-wtih='countries')
+
+>>> corr_map.plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../../_static/analyze/map/cross_correlation_map.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/cross_correlation_map.html" height="600px" width="100%" frameBorder="0"></iframe>
 
     
->>> print(chart.prompt_)
-Analyze the table below which contains the auto-correlation values for the \\
-authors. High correlation values indicate that the topics tends to appear \\
-together in the same document and forms a group. Identify any notable \\
-patterns, trends, or outliers in the data, and discuss their implications \\
-for the research field. Be sure to provide a concise summary of your \\
-findings in no more than 150 words.
-<BLANKLINE>
-Table:
-```
-|    | row               | column            |   CORR |
-|---:|:------------------|:------------------|-------:|
-|  3 | Arner DW 3:185    | Buckley RP 3:185  |  1     |
-|  5 | Barberis JN 2:161 | Buckley RP 3:185  |  0.907 |
-|  6 | Arner DW 3:185    | Barberis JN 2:161 |  0.907 |
-| 12 | Brennan R 2:014   | Butler T 2:041    |  0.886 |
-| 16 | Hamdan A 2:018    | Turki M 2:018     |  1     |
-| 18 | Butler T 2:041    | Lin W 2:017       |  0.283 |
-| 21 | Butler T 2:041    | Singh C 2:017     |  0.283 |
-| 22 | Lin W 2:017       | Singh C 2:017     |  1     |
-| 27 | Butler T 2:041    | Crane M 2:014     |  0.886 |
-| 28 | Brennan R 2:014   | Crane M 2:014     |  1     |
-```
-<BLANKLINE>
-
 
 
 
 
 # pylint: disable=line-too-long
 """
+import textwrap
+from dataclasses import dataclass
 
-# from ...classes import CorrMap
-# from ...network_lib import (
-#     nx_compute_spring_layout,
-#     nx_create_graph_from_matrix_list,
-#     nx_set_edge_properties_for_corr_maps,
-#     px_add_names_to_fig_nodes,
-#     px_create_edge_traces,
-#     px_create_network_fig,
-#     px_create_node_trace,
-# )
-# from ..matrix.list_cells_in_matrix import list_cells_in_matrix
+import pandas as pd
+import plotly.graph_objs as go
+
+from .list_cells_in_matrix import list_cells_in_matrix
+from .network_lib import (
+    nx_compute_spring_layout,
+    nx_create_graph_from_matrix_list,
+    nx_set_edge_properties_for_corr_maps,
+    px_add_names_to_fig_nodes,
+    px_create_edge_traces,
+    px_create_network_fig,
+    px_create_node_trace,
+)
+
+
+@dataclass
+class CrossCorrMap:
+    """Auto-correlation map.
+
+    :meta private:
+    """
+
+    plot_: go.Figure
+    table_: pd.DataFrame
+    rows_and_columns_: str
+    cross_with_: str
+
+    def __repr__(self):
+        text = "CrossCorrMap("
+        text += f"rows-and-columns='{self.rows_and_columns_}'"
+        text += f"cross-wtih='{self.cross_with_}'"
+        text += ")"
+        text = textwrap.fill(text, width=75, subsequent_indent="    ")
+        return text
 
 
 # pylint: disable=too-many-arguments
@@ -131,9 +134,9 @@ def cross_correlation_map(
 
     fig = px_add_names_to_fig_nodes(fig, graph, n_labels, is_article=False)
 
-    corrmap = CorrMap()
-    corrmap.plot_ = fig
-    corrmap.table_ = matrix_list.cells_list_
-    corrmap.prompt_ = matrix_list.prompt_
-
-    return corrmap
+    return CrossCorrMap(
+        plot_=fig,
+        table_=matrix_list.df_,
+        rows_and_columns_=cross_corr_matrix.rows_and_columns_,
+        cross_with_=cross_corr_matrix.cross_with_,
+    )

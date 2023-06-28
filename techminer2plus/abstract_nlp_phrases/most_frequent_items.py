@@ -17,7 +17,7 @@ Most Frequent Items
     <iframe src="../../_static/use_cases/abstract_nlp_phrases/most_frequent_items.html" height="600px" width="100%" frameBorder="0"></iframe>
 
     
->>> items.items_list_.head()
+>>> items.df_.head()
                          rank_occ  rank_gc  OCC  ...  h_index  g_index  m_index
 abstract_nlp_phrases                             ...                           
 REGULATORY_TECHNOLOGY           1        3   17  ...      7.0      3.0     1.00

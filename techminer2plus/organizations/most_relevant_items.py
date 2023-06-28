@@ -18,7 +18,7 @@ Most Relevant Organizations
     <iframe src="../../_static/use_cases/organizations/most_relevant_items.html" height="600px" width="100%" frameBorder="0"></iframe>
 
     
->>> items.items_list_.head()
+>>> items.df_.head()
                            rank_occ  rank_gc  OCC  ...  h_index  g_index  m_index
 organizations                                      ...                           
 Univ of Hong Kong (HKG)           1        1    3  ...      3.0      3.0     0.43

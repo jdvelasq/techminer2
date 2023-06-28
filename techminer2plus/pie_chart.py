@@ -16,13 +16,13 @@ Pie Chart
 ...    top_n=20,
 ... )
 >>> chart = techminer2plus.pie_chart(itemslist, title="Most Frequent Author Keywords")
->>> chart.plot_.write_html(file_name)
+>>> chart.fig_.write_html(file_name)
 
 .. raw:: html
 
     <iframe src="../_static/pie_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
->>> chart.table_.head()
+>>> chart.df_.head()
 author_keywords
 REGTECH                  28
 FINTECH                  12
@@ -50,12 +50,12 @@ class PieChart:
     :meta private:
     """
 
-    plot_: go.Figure
-    table_: pd.DataFrame
+    fig_: go.Figure
+    df_: pd.DataFrame
 
 
 def pie_chart(
-    itemslist=None,
+    data=None,
     title=None,
     hole=0.4,
 ):
@@ -73,17 +73,17 @@ def pie_chart(
     """
 
     fig = px.pie(
-        itemslist.items_list_,
-        values=itemslist.metric_,
-        names=itemslist.items_list_.index.to_list(),
+        data.df_,
+        values=data.metric_,
+        names=data.df_.index.to_list(),
         hole=hole,
-        hover_data=itemslist.items_list_.columns.to_list(),
+        hover_data=data.df_.columns.to_list(),
         title=title if title is not None else "",
     )
     fig.update_traces(textinfo="percent+value")
     fig.update_layout(legend={"y": 0.5})
 
     return PieChart(
-        plot_=fig,
-        table_=itemslist.items_list_[itemslist.metric_],
+        fig_=fig,
+        df_=data.df_[data.metric_],
     )

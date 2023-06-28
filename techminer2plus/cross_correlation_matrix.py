@@ -9,7 +9,7 @@ Cross-correlation Matrix
 >>> root_dir = "data/regtech/"
 
 >>> import techminer2plus
->>> cross_corr_matrix = techminer2plus.matrix.cross_correlation_matrix(
+>>> cross_corr_matrix = techminer2plus.cross_correlation_matrix(
 ...     rows_and_columns='authors', 
 ...     cross_with='countries',
 ...     top_n=10,
@@ -19,7 +19,7 @@ Cross-correlation Matrix
 CrossCorrMatrix(rows-and-columns='authors', cross-with='countries',
     method='pearson', shape=(10, 10))
 
->>> cross_corr_matrix.matrix_.round(3)
+>>> cross_corr_matrix.df_.round(3)
                    Arner DW 3:185  ...  Crane M 2:014
 Arner DW 3:185              1.000  ...          0.000
 Buckley RP 3:185            1.000  ...          0.000
@@ -44,7 +44,7 @@ countries. Identify any notable patterns, trends, or outliers in the data, \\
 and discuss their implications for the research field. Be sure to provide a \\
 concise summary of your findings in no more than 150 words.
 <BLANKLINE>
-Matrix:
+Table:
 ```
 |                   |   Arner DW 3:185 |   Buckley RP 3:185 |   Barberis JN 2:161 |   Butler T 2:041 |   Hamdan A 2:018 |   Turki M 2:018 |   Lin W 2:017 |   Singh C 2:017 |   Brennan R 2:014 |   Crane M 2:014 |
 |:------------------|-----------------:|-------------------:|--------------------:|-----------------:|-----------------:|----------------:|--------------:|----------------:|------------------:|----------------:|
@@ -71,7 +71,7 @@ from dataclasses import dataclass
 
 import pandas as pd
 
-from .chatbot_prompts import format_prompt_for_matrices
+from .chatbot_prompts import format_chatbot_prompt_for_df
 from .co_occurrence_matrix import co_occurrence_matrix
 from .compute_corr_matrix import compute_corr_matrix
 
@@ -83,7 +83,7 @@ class CrossCorrMatrix:
     rows_and_columns_: str
     cross_with_: str
     method_: str
-    matrix_: pd.DataFrame
+    df_: pd.DataFrame
     prompt_: str
     metric_: str
 
@@ -92,7 +92,7 @@ class CrossCorrMatrix:
         text += f"rows-and-columns='{self.rows_and_columns_}'"
         text += f", cross-with='{self.cross_with_}'"
         text += f", method='{self.method_}'"
-        text += f", shape={self.matrix_.shape}"
+        text += f", shape={self.df_.shape}"
         text += ")"
         text = textwrap.fill(text, width=75, subsequent_indent="    ")
         return text
@@ -128,7 +128,7 @@ def cross_correlation_matrix(
             "to provide a concise summary of your findings in no more than "
             "150 words."
         )
-        return format_prompt_for_matrices(
+        return format_chatbot_prompt_for_df(
             main_text, corr_matrix.round(3).to_markdown()
         )
 
@@ -159,6 +159,6 @@ def cross_correlation_matrix(
         cross_with_=cross_with,
         method_=method,
         metric_="CORR",
-        matrix_=corr_matrix,
+        df_=corr_matrix,
         prompt_=prompt,
     )

@@ -9,7 +9,7 @@ Co-occurrence Matrix
 >>> ROOT_DIR = "data/regtech/"
 
 >>> import techminer2plus
->>> co_occ_matrix = techminer2plus.matrix.co_occurrence_matrix(
+>>> co_occ_matrix = techminer2plus.co_occurrence_matrix(
 ...     columns='author_keywords',
 ...     rows='authors',
 ...     col_occ_range=(2, None),
@@ -19,7 +19,7 @@ Co-occurrence Matrix
 >>> print(co_occ_matrix)
 CoocMatrix(columns='author_keywords', rows='authors', dims=(15, 23))
 
->>> co_occ_matrix.matrix_
+>>> co_occ_matrix.df_
 column              REGTECH 28:329  ...  REPORTING 02:001
 row                                 ...                  
 Arner DW 3:185                   2  ...                 0
@@ -73,7 +73,7 @@ Table:
 ```
 <BLANKLINE>
 
->>> co_occ_matrix = techminer2plus.matrix.co_occurrence_matrix(
+>>> co_occ_matrix = techminer2plus.co_occurrence_matrix(
 ...    columns='author_keywords',
 ...    col_top_n=10,
 ...    root_dir=ROOT_DIR,
@@ -82,7 +82,7 @@ Table:
 CoocMatrix(columns='author_keywords', rows='author_keywords', dims=(10,
     10))
 
->>> co_occ_matrix.matrix_
+>>> co_occ_matrix.df_
 column                          REGTECH 28:329  ...  RISK_MANAGEMENT 03:014
 row                                             ...                        
 REGTECH 28:329                              28  ...                       2
@@ -134,7 +134,7 @@ from dataclasses import dataclass
 
 import pandas as pd
 
-from .chatbot_prompts import format_chatbot_prompt_for_tables
+from .chatbot_prompts import format_chatbot_prompt_for_df
 from .counters_lib import add_counters_to_axis
 from .filtering_lib import generate_custom_items
 from .metrics_lib import co_occ_matrix_list, indicators_by_field
@@ -150,38 +150,17 @@ class CoocMatrix:
     :meta private:
     """
 
-    matrix_: pd.DataFrame
+    df_: pd.DataFrame
     prompt_: str
     metric_: str
-    #
-    # Params:
     columns_: str
     rows_: str
-    #
-    # Columns item filters:
-    col_top_n_: int
-    col_occ_range_: tuple
-    col_gc_range_: tuple
-    col_custom_items_: list
-    #
-    # Rows item filters:
-    row_top_n_: int
-    row_occ_range_: tuple
-    row_gc_range_: tuple
-    row_custom_items_: list
-    #
-    # Database params:
-    root_dir_: str
-    database_: str
-    year_filter_: tuple
-    cited_by_filter_: tuple
-    filters_: dict
 
     def __repr__(self):
         text = "CoocMatrix("
         text += f"columns='{self.columns_}'"
         text += f", rows='{self.rows_}'"
-        text += f", dims={self.matrix_.shape}"
+        text += f", dims={self.df_.shape}"
         text += ")"
         text = textwrap.fill(text, width=75, subsequent_indent="    ")
         return text
@@ -273,9 +252,7 @@ def co_occurrence_matrix(
             "field. Be sure to provide a concise summary of your findings in no more "
             "than 150 words."
         )
-        return format_chatbot_prompt_for_tables(
-            main_text, matrix.to_markdown()
-        )
+        return format_chatbot_prompt_for_df(main_text, matrix.to_markdown())
 
     def generate_prompt_for_co_occ_matrix(matrix, columns):
         """Generates a ChatGPT prompt for a co_occurrence matrix."""
@@ -289,9 +266,7 @@ def co_occurrence_matrix(
             "field. Be sure to provide a concise summary of your findings in no more than 150 "
             "words."
         )
-        return format_chatbot_prompt_for_tables(
-            main_text, matrix.to_markdown()
-        )
+        return format_chatbot_prompt_for_df(main_text, matrix.to_markdown())
 
     #
     # Main code:
@@ -368,6 +343,9 @@ def co_occurrence_matrix(
         **filters,
     )
 
+    row_custom_items = matrix.index.tolist()
+    col_custom_items = matrix.columns.tolist()
+
     matrix = add_counters_to_axis(
         dataframe=matrix,
         axis=0,
@@ -405,32 +383,9 @@ def co_occurrence_matrix(
         )
 
     return CoocMatrix(
-        #
-        # Results:
-        matrix_=matrix,
+        df_=matrix,
         prompt_=prompt,
         metric_="OCC",
-        #
-        # Params:
         columns_=columns,
         rows_=rows if rows else columns,
-        #
-        # Columns item filters:
-        col_top_n_=col_top_n,
-        col_occ_range_=col_occ_range,
-        col_gc_range_=col_gc_range,
-        col_custom_items_=col_custom_items,
-        #
-        # Rows item filters:
-        row_top_n_=row_top_n,
-        row_occ_range_=row_occ_range,
-        row_gc_range_=row_gc_range,
-        row_custom_items_=row_custom_items,
-        #
-        # Database params:
-        root_dir_=root_dir,
-        database_=database,
-        year_filter_=year_filter,
-        cited_by_filter_=cited_by_filter,
-        filters_=filters,
     )

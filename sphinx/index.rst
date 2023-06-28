@@ -88,25 +88,32 @@ TM2 module.
 
 
 .. toctree::
-    :caption: TECHMINER 2+
+    :caption: DATA
     :hidden:
     :maxdepth: 1
 
     ingest/__index__
     refine/__index__
-    find/__index__
-    analyze/__index__
-    report/__index__
+
 
 .. toctree::
-    :caption: COMPARE
+    :caption: EXAMPLES
     :hidden:
     :maxdepth: 1
 
     bibliometrix/__index__
     vantagepoint/__index__
+    tlab/__index__
+    scientopy/__index__
 
 
+
+.. toctree::
+    :caption: API
+    :hidden:
+    :maxdepth: 1
+
+    api/records
 
 
 

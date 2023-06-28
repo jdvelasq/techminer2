@@ -10,27 +10,27 @@ Creates an Auto-correlation Map.
 
 >>> root_dir = "data/regtech/"
 
->>> file_name = "sphinx/_static/map/auto_correlation_map.html"
+>>> file_name = "sphinx/_static/auto_correlation_map.html"
 
 >>> import techminer2plus
->>> auto_corr_matrix = techminer2plus.matrix.auto_correlation_matrix(
+>>> auto_corr_matrix = techminer2plus.auto_correlation_matrix(
 ...     rows_and_columns='authors',
 ...     occ_range=(2, None),
 ...     root_dir=root_dir,
 ... )
 
->>> corr_map =  techminer2plus.map.auto_correlation_map(
+>>> corr_map =  techminer2plus.auto_correlation_map(
 ...     auto_corr_matrix,
 ...     color="#1f77b4", # tab:blue
 ... )
 >>> corr_map
 AutoCorrMap(rows-and-columns='authors')
 
->>> corr_map.plot_.write_html(file_name)
+>>> corr_map.fig_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../_static/map/auto_correlation_map.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/auto_correlation_map.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
 
@@ -63,8 +63,8 @@ class AutoCorrMap:
     :meta private:
     """
 
-    plot_: go.Figure
-    table_: pd.DataFrame
+    fig_: go.Figure
+    df_: pd.DataFrame
     rows_and_columns_: str
 
     def __repr__(self):
@@ -130,7 +130,7 @@ def auto_correlation_map(
     fig = px_add_names_to_fig_nodes(fig, graph, n_labels, is_article=False)
 
     return AutoCorrMap(
-        plot_=fig,
-        table_=matrix_list.cells_list_,
+        fig_=fig,
+        df_=matrix_list.df_,
         rows_and_columns_=auto_corr_matrix.rows_and_columns_,
     )

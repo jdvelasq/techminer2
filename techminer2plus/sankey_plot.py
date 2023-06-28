@@ -20,7 +20,7 @@ Sankey Plot
 
 .. raw:: html
 
-    <iframe src="_static/sankey_plot.html" height="800px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../_static/sankey_plot.html" height="800px" width="100%" frameBorder="0"></iframe>
 
 """
 import plotly.graph_objects as go
@@ -86,7 +86,7 @@ def sankey_plot(
                 matrices.append(coc_matrix)
 
             else:
-                curr_custom_items = matrices[-1].matrix_.columns.to_list()
+                curr_custom_items = matrices[-1].df_.columns.to_list()
                 curr_custom_items = [
                     " ".join(item.split(" ")[:-1])
                     for item in curr_custom_items
@@ -117,9 +117,9 @@ def sankey_plot(
         node_names = []
         for i_matrix, matrix in enumerate(matrices):
             if i_matrix == 0:
-                node_names.extend(matrix.matrix_.index.to_list())
+                node_names.extend(matrix.df_.index.to_list())
 
-            node_names.extend(matrix.matrix_.columns.to_list())
+            node_names.extend(matrix.df_.columns.to_list())
 
         return node_names
 
@@ -135,7 +135,7 @@ def sankey_plot(
         value = []
 
         for coc_matrix in matrices:
-            matrix = coc_matrix.matrix_
+            matrix = coc_matrix.df_
 
             for row in matrix.index:
                 for col in matrix.columns:

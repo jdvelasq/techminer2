@@ -21,7 +21,7 @@ Word cloud
 >>> chart = techminer2plus.word_cloud(itemslist, title="Most Frequent Author Keywords")
 >>> chart.plot_.savefig(file_name)
 
-.. image:: ../_static/report/word_cloud.png
+.. image:: ../_static/word_cloud.png
     :width: 900px
     :align: center
 
@@ -68,7 +68,7 @@ class WordCloudChart:
 
 
 def word_cloud(
-    itemslist=None,
+    data=None,
     title=None,
     figsize=(10, 10),
 ):
@@ -94,8 +94,8 @@ def word_cloud(
 
         text = dict(
             zip(
-                itemslist.items_list_.index,
-                itemslist.items_list_[itemslist.metric_],
+                data.df_.index,
+                data.df_[data.metric_],
             )
         )
         wordcloud.generate_from_frequencies(text)
@@ -119,6 +119,6 @@ def word_cloud(
         return "black"
 
     return WordCloudChart(
-        table_=itemslist.items_list_[itemslist.metric_],
+        table_=data.df_[data.metric_],
         plot_=create_plot(),
     )

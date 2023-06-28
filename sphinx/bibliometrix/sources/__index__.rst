@@ -2,12 +2,19 @@ Sources
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
-   most_relevant_items
-
+   most_frequent_sources
 
 .. toctree::
-   most_frequent_items
+   most_cited_sources
 
+.. toctree::
+   bradford_law
+
+.. toctree::
+   sources_local_impact
+
+.. toctree::
+   sources_production_over_time 
 
 
 

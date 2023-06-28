@@ -111,7 +111,7 @@ from dataclasses import dataclass
 
 import pandas as pd
 
-from .chatbot_prompts import format_chatbot_prompt_for_tables
+from .chatbot_prompts import format_chatbot_prompt_for_df
 from .counters_lib import add_counters_to_axis
 from .filtering_lib import generate_custom_items
 from .metrics_lib import indicators_by_field, items_occ_by_year
@@ -187,7 +187,7 @@ def terms_by_year(
             "to provide a concise summary of your findings in no more than "
             "150 words."
         )
-        return format_chatbot_prompt_for_tables(main_text, table.to_markdown())
+        return format_chatbot_prompt_for_df(main_text, table.to_markdown())
 
     #
     # Main:

@@ -11,19 +11,17 @@ most relevant topics or for a group of user-defined topics. The presented compar
 based on the type of plots.
 
 
-    .. * `Bar Chart <../vantagepoint/report/bar_chart.html>`_
-
 .. toctree::
-    bar_graph
+    bar
 
 .. toctree::    
-    bar_trends_graph
+    bar_trends
 
 .. toctree::    
-    time_line_graph
+    time_line
 
 .. toctree::    
-    word_cloud_graph
+    word_cloud
 
 .. toctree::    
-    top_trending_topics_graph
+    top_trending_topics
