@@ -1,28 +1,16 @@
+# flake8: noqa
 """
 Records
 ==============================================================================
 
->>> root_dir = "data/regtech/"
+
+
 
 >>> import techminer2plus as tm2p
+>>> root_dir = "data/regtech/"
 
->>> tm2p.Records(root_dir=root_dir).field("authors", top_n=10).df_
-             rank_occ  rank_gc  OCC  ...  h_index  g_index  m_index
-authors                              ...                           
-Arner DW            1        1    3  ...      3.0      3.0     0.43
-Buckley RP          2        2    3  ...      3.0      3.0     0.43
-Barberis JN         3        3    2  ...      2.0      2.0     0.29
-Butler T            4        5    2  ...      2.0      2.0     0.33
-Hamdan A            5       15    2  ...      2.0      2.0     0.50
-Turki M             6       16    2  ...      2.0      2.0     0.50
-Lin W               7       17    2  ...      2.0      1.0     0.50
-Singh C             8       18    2  ...      2.0      1.0     0.50
-Brennan R           9       19    2  ...      2.0      1.0     0.50
-Crane M            10       20    2  ...      2.0      1.0     0.50
-<BLANKLINE>
-[10 rows x 18 columns]
-
-
+>>> tm2p.Records(root_dir=root_dir)
+Records(root_dir='data/regtech/', database='main')
 
 
 """
@@ -31,10 +19,11 @@ import os.path
 
 import pandas as pd
 
+from .coverage import Coverage
 from .field import Field
 
 
-class Records(Field):
+class Records(Field, Coverage):
     """loads and filter records of main database text files."""
 
     def __init__(
@@ -53,6 +42,24 @@ class Records(Field):
         self.filters = filters
         self.cited_by_filter = cited_by_filter
         self.records = None
+
+    def __repr__(self):
+        text = "Records("
+        text += f"root_dir='{self.root_dir}'"
+        text += f", database='{self.database}'"
+        text += (
+            f", year_filter={self.year_filter}"
+            if self.year_filter is not None
+            else ""
+        )
+        text += (
+            f", cited_by_filter={self.cited_by_filter}"
+            if self.cited_by_filter is not None
+            else ""
+        )
+        text += f", filters={self.filters}" if len(self.filters) > 0 else ""
+        text += ")"
+        return text
 
     def read_records(self):
         """loads and filter records of main database text files."""
