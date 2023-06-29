@@ -114,6 +114,7 @@ TM2 module.
     :maxdepth: 1
 
     api/coverage
+    api/field
     api/main_information
     api/records
 
