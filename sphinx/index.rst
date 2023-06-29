@@ -113,6 +113,7 @@ TM2 module.
     :hidden:
     :maxdepth: 1
 
+    api/concordances
     api/coverage
     api/field
     api/main_information

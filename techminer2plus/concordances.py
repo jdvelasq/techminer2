@@ -1,19 +1,26 @@
 # flake8: noqa
 """
+.. _concordances:
+
 Concordances
 =========================================================================================
 
 Abstract concordances exploration tool.
 
 
+>>> import techminer2plus as tm2p
 >>> root_dir = "data/regtech/"
-
->>> import techminer2plus
->>> concordances = techminer2plus.concordances(
-...     'REGTECH',
-...     top_n=10,
-...     root_dir=root_dir,
+>>> concordances = (
+...     tm2p.Records(root_dir=root_dir)
+...     .concordances(
+...         'REGTECH',
+...         top_n=10,
+...     ) 
 ... )
+>>> concordances
+Concordances(root_dir='data/regtech/', database='main', search_for='REGTECH',
+    top_n='10')
+
 >>> print(concordances.contexts_)
                                                              REGTECH can provide an invaluable tool, in a BUSINESS as usual E >>>
                                                              REGTECH developments are leading towards a paradigm shift necess >>>
@@ -189,7 +196,6 @@ SMART_TREASURY department
 """
 import os.path
 import textwrap
-from dataclasses import dataclass
 
 import pandas as pd
 
@@ -197,16 +203,75 @@ from .chatbot_prompts import format_prompt_for_paragraphs
 from .records_lib import read_records
 
 
-@dataclass
 class Concordances:
-    """Concordances.
+    """Computes text concodances for a given search term."""
 
-    :meta private:
-    """
+    # pylint: disable=too-many-arguments
+    def __init__(
+        self,
+        records,
+        search_for,
+        top_n=50,
+        report_file="concordances_report.txt",
+        prompt_file="concordances_prompt.txt",
+    ):
+        """Computes text concodances for a given search term."""
+        #
+        # Params:
+        #
+        self.__records = records
+        self.__search_for = search_for
+        self.__top_n = top_n
 
-    prompt_: str
-    table_: pd.DataFrame
-    contexts_: str
+        contexts, frame, prompt = concordances_from_records(
+            records=records.records_,
+            search_for=search_for,
+            top_n=top_n,
+            report_file=report_file,
+            prompt_file=prompt_file,
+            root_dir=records.root_dir_,
+        )
+
+        self.__contexts = contexts
+        self.__frame = frame
+        self.__prompt = prompt
+
+    #
+    #
+    # PROPERTIES
+    #
+    #
+    def __repr__(self):
+        """String representation."""
+
+        params = ", ".join(self.repr_params_)
+        text = f"{self.__class__.__name__}({params})"
+        text = textwrap.fill(text, width=80, subsequent_indent=" " * 4)
+
+        return text
+
+    @property
+    def repr_params_(self):
+        """Returns the parameters used for the string representation as a list."""
+        return self.__records.repr_params_ + [
+            f"search_for='{self.__search_for}'",
+            f"top_n='{self.__top_n}'",
+        ]
+
+    @property
+    def contexts_(self):
+        """Returns the contexts."""
+        return self.__contexts
+
+    @property
+    def frame_(self):
+        """Returns the dataframe."""
+        return self.__frame
+
+    @property
+    def prompt_(self):
+        """Returns the chatbot prompt."""
+        return self.__prompt
 
 
 # pylint: disable=too-many-arguments
@@ -402,14 +467,12 @@ def concordances_from_records(
     texts = transform_context_to_text(contexts_table)
     write_report(phrases, report_file)
 
-    obj = Concordances(
-        contexts_=texts,
-        table_=contexts_table.copy(),
-        prompt_=generate_prompt(contexts_table),
-    )
+    contexts_ = texts
+    frame_ = contexts_table.copy()
+    prompt_ = generate_prompt(contexts_table)
 
     file_path = os.path.join(root_dir, "reports", prompt_file)
     with open(file_path, "w", encoding="utf-8") as file:
-        print(obj.prompt_, file=file)
+        print(prompt_, file=file)
 
-    return obj
+    return contexts_, frame_, prompt_

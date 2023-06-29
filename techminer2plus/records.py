@@ -14,11 +14,12 @@ Records(root_dir='data/regtech/', database='main')
 
 
 """
-
 import os.path
+import textwrap
 
 import pandas as pd
 
+from .concordances import Concordances
 from .counters_lib import add_counters_to_frame_axis
 from .coverage import coverage
 from .field import Field
@@ -57,10 +58,10 @@ class Records:
         """Returns the database records as a dataframe."""
         return self.__records.copy()
 
-    # @property
-    # def root_dir_(self):
-    #     """Returns the root directory."""
-    #     return self.__root_dir
+    @property
+    def root_dir_(self):
+        """Returns the root directory."""
+        return self.__root_dir
 
     # @property
     # def database_(self):
@@ -82,6 +83,21 @@ class Records:
     # INTEFACE METHODS
     #
     #
+    def concordances(
+        self,
+        search_for,
+        top_n=50,
+        report_file="concordances_report.txt",
+        prompt_file="concordances_prompt.txt",
+    ):
+        """Returns a Concordances object."""
+        return Concordances(
+            self,
+            search_for=search_for,
+            top_n=top_n,
+            report_file=report_file,
+            prompt_file=prompt_file,
+        )
 
     def coverage(self, column):
         """Returns a MainInformation object."""
@@ -100,6 +116,7 @@ class Records:
         gc_range=None,
         custom_items=None,
     ):
+        """Field"""
         return Field(
             records=self,
             field=field,
@@ -189,9 +206,30 @@ class Records:
         if self.__filters:
             params.append(f", filters={self.__filters}")
 
-        params = ", ".join(params)
+        params = ", ".join(self.repr_params_)
+        text = f"{self.__class__.__name__}({params})"
+        text = textwrap.fill(text, width=80, subsequent_indent=" " * 4)
+        return text
 
-        return f"{self.__class__.__name__}({params})"
+    @property
+    def repr_params_(self):
+        """Returns the parameters used for the string representation as a list."""
+
+        params = [
+            f"root_dir='{self.__root_dir}'",
+            f"database='{self.__database}'",
+        ]
+
+        if self.__year_filter is not None:
+            params.append(f", year_filter={self.__year_filter}")
+
+        if self.__cited_by_filter is not None:
+            params.append(f", cited_by_filter={self.__cited_by_filter}")
+
+        if self.__filters:
+            params.append(f", filters={self.__filters}")
+
+        return params
 
     def __read_records(self):
         """loads and filter records of main database text files."""
