@@ -62,9 +62,11 @@ Table:
 """
 import textwrap
 
+from .bar_chart import bar_chart
 from .chatbot_prompts import format_chatbot_prompt_for_df
 from .filtering_lib import generate_custom_items
 from .sorting_lib import sort_indicators_by_metric
+from .terms_by_year import TermsByYear
 
 
 # pylint: disable=too-many-instance-attributes
@@ -74,7 +76,7 @@ class Field:
 
     def __init__(
         self,
-        parent,
+        records,
         field,
         metric="OCC",
         top_n=None,
@@ -87,7 +89,7 @@ class Field:
         #
         # Inputs:
         #
-        self.__parent = parent
+        self.__records = records
         self.__field = field
         self.__metric = metric
         self.__top_n = top_n
@@ -119,6 +121,16 @@ class Field:
     def __repr__(self):
         """String representation."""
 
+        params = ", ".join(self.repr_params_)
+        text = f"{self.__class__.__name__}({params})"
+        text = textwrap.fill(text, width=80, subsequent_indent=" " * 4)
+
+        return text
+
+    @property
+    def repr_params_(self):
+        """Returns the parameters used for the string representation as a list."""
+
         params = [
             f"field='{self.__field}'",
             f"metric='{self.__metric}'",
@@ -132,11 +144,7 @@ class Field:
         if self.__custom_items is not None:
             params.append(f"custom_items={self.__custom_items}")
 
-        params = ", ".join(params)
-        text = f"{self.__class__.__name__}({params})"
-        text = textwrap.fill(text, width=80, subsequent_indent=" " * 4)
-
-        return text
+        return params
 
     @property
     def frame_(self):
@@ -148,11 +156,50 @@ class Field:
         """Returns the chatbot prompt."""
         return self.__prompt
 
+    @property
+    def metric_(self):
+        """Returns the used metric."""
+        return self.__metric
+
+    @property
+    def field_(self):
+        """Returns the field."""
+        return self.__field
+
+    @property
+    def custom_items_(self):
+        """Returns the custom items."""
+        return self.__custom_items
+
     #
     #
-    # PUBLIC METHODS
+    # PUBLIC METHODS FOR VISUALIZATION
     #
     #
+    def bar_chart(
+        self,
+        title=None,
+        metric_label=None,
+        field_label=None,
+    ):
+        """Returns a bar chart."""
+        return bar_chart(
+            data=self,
+            title=title,
+            metric_label=metric_label,
+            field_label=field_label,
+        )
+
+    #
+    #
+    # PUBLIC METHODS FOR INTERFACING
+    #
+    #
+    def terms_by_year(self, cumulative=False):
+        """Returns the terms by year."""
+        return TermsByYear(
+            records=self.__records, field=self, cumulative=cumulative
+        )
 
     #
     #
@@ -178,7 +225,7 @@ class Field:
 
         :meta private:
         """
-        self.__frame = self.__parent.indicators_by_field(self.__field)
+        self.__frame = self.__records.indicators_by_field(self.__field)
 
     def __sort_indicators_by_metric(self):
         """Sort indicators by metric.

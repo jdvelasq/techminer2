@@ -19,10 +19,11 @@ import os.path
 
 import pandas as pd
 
+from .counters_lib import add_counters_to_frame_axis
 from .coverage import coverage
 from .field import Field
 from .main_information import MainInformation
-from .metrics_lib import indicators_by_field
+from .metrics_lib import indicators_by_field, items_occ_by_year
 
 
 class Records:
@@ -32,16 +33,16 @@ class Records:
         self,
         root_dir="./",
         database="main",
-        year_range=None,
-        cited_by_range=None,
+        year_filter=None,
+        cited_by_filter=None,
         **filters,
     ):
         self.__root_dir = root_dir
         self.__database = database
-        self.__year_range = year_range
-
+        self.__year_filter = year_filter
+        self.__cited_by_filter = cited_by_filter
         self.__filters = filters
-        self.__cited_by_range = cited_by_range
+
         self.__records = None
 
         self.__read_records()
@@ -100,7 +101,7 @@ class Records:
         custom_items=None,
     ):
         return Field(
-            parent=self,
+            records=self,
             field=field,
             metric=metric,
             top_n=top_n,
@@ -115,6 +116,7 @@ class Records:
     #
     #
     def indicators_by_field(self, field, time_window=2):
+        """Returns a dataframe with indicators by field."""
         return indicators_by_field(
             field=field,
             time_window=time_window,
@@ -122,8 +124,46 @@ class Records:
             # Database params:
             root_dir=self.__root_dir,
             database=self.__database,
-            year_range=self.__year_range,
-            cited_by_range=self.__cited_by_range,
+            year_filter=self.__year_filter,
+            cited_by_filter=self.__cited_by_filter,
+            **self.__filters,
+        )
+
+    def items_occ_by_year(self, field, cumulative=False):
+        """Returns a dataframe with items by year."""
+        return items_occ_by_year(
+            field=field,
+            cumulative=cumulative,
+            #
+            # Database params:
+            root_dir=self.__root_dir,
+            database=self.__database,
+            year_filter=self.__year_filter,
+            cited_by_filter=self.__cited_by_filter,
+            **self.__filters,
+        )
+
+    #
+    #
+    # AUXILIARY METHODS
+    #
+    #
+    def add_counters_to_frame_axis(
+        self,
+        dataframe,
+        axis,
+        field,
+    ):
+        return add_counters_to_frame_axis(
+            dataframe=dataframe,
+            axis=axis,
+            field=field,
+            #
+            # Database params:
+            root_dir=self.__root_dir,
+            database=self.__database,
+            year_filter=self.__year_filter,
+            cited_by_filter=self.__cited_by_filter,
             **self.__filters,
         )
 
@@ -140,11 +180,11 @@ class Records:
             f"database='{self.__database}'",
         ]
 
-        if self.__year_range is not None:
-            params.append(f", year_filter={self.__year_range}")
+        if self.__year_filter is not None:
+            params.append(f", year_filter={self.__year_filter}")
 
-        if self.__cited_by_range is not None:
-            params.append(f", cited_by_filter={self.__cited_by_range}")
+        if self.__cited_by_filter is not None:
+            params.append(f", cited_by_filter={self.__cited_by_filter}")
 
         if self.__filters:
             params.append(f", filters={self.__filters}")
@@ -177,20 +217,20 @@ class Records:
     def __filter_records_by_year_range(self):
         """Filter records by year."""
 
-        if self.__year_range is None:
+        if self.__year_filter is None:
             return
 
-        if not isinstance(self.__year_range, tuple):
+        if not isinstance(self.__year_filter, tuple):
             raise TypeError(
                 "The year_range parameter must be a tuple of two values."
             )
 
-        if len(self.__year_range) != 2:
+        if len(self.__year_filter) != 2:
             raise ValueError(
                 "The year_range parameter must be a tuple of two values."
             )
 
-        start_year, end_year = self.__year_range
+        start_year, end_year = self.__year_filter
 
         if start_year is not None:
             self.__records = self.__records[self.__records.year >= start_year]
@@ -201,20 +241,20 @@ class Records:
     def __filter_records_by_citations_range(self):
         """Filter records by year."""
 
-        if self.__cited_by_range is None:
+        if self.__cited_by_filter is None:
             return
 
-        if not isinstance(self.__cited_by_range, tuple):
+        if not isinstance(self.__cited_by_filter, tuple):
             raise TypeError(
                 "The cited_by_range parameter must be a tuple of two values."
             )
 
-        if len(self.__cited_by_range) != 2:
+        if len(self.__cited_by_filter) != 2:
             raise ValueError(
                 "The cited_by_range parameter must be a tuple of two values."
             )
 
-        cited_by_min, cited_by_max = self.__cited_by_range
+        cited_by_min, cited_by_max = self.__cited_by_filter
 
         if cited_by_min is not None:
             self.__records = self.__records[

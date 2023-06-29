@@ -109,7 +109,7 @@ TM2 module.
 
 
 .. toctree::
-    :caption: API
+    :caption: COMPUTATIONAL API
     :hidden:
     :maxdepth: 1
 
@@ -117,8 +117,15 @@ TM2 module.
     api/field
     api/main_information
     api/records
+    api/terms_by_year
 
+.. toctree::
+    :caption: VISUALIZATION API
+    :hidden:
+    :maxdepth: 1
 
+    api/bar_chart
+    api/gantt_chart
 
 **Author**:
 

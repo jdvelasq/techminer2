@@ -51,7 +51,7 @@ from dataclasses import dataclass
 import numpy as np
 import pandas as pd
 
-from .counters_lib import add_counters_to_axis
+from .counters_lib import add_counters_to_frame_axis
 from .filtering_lib import generate_custom_items
 from .metrics_lib import indicators_by_field
 from .records_lib import read_records
@@ -126,8 +126,8 @@ def tf_matrix(
         field=field,
         root_dir=root_dir,
         database=database,
-        year_range=year_filter,
-        cited_by_range=cited_by_filter,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 
@@ -155,7 +155,7 @@ def tf_matrix(
         **filters,
     )
 
-    result = add_counters_to_axis(
+    result = add_counters_to_frame_axis(
         dataframe=result,
         axis=1,
         field=field,

@@ -1,4 +1,5 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 .. _terms_by_year:
 
@@ -6,15 +7,21 @@ Terms by Year
 ===============================================================================
 
 
+>>> import techminer2plus as tm2p
 >>> root_dir = "data/regtech/"
-
->>> import techminer2plus
->>> r = techminer2plus.terms_by_year(
-...    field='author_keywords',
-...    top_n=10,
-...    root_dir=root_dir,
+>>> terms_by_year = (
+...     tm2p.Records(root_dir=root_dir)
+...     .field("author_keywords", top_n=10)
+...     .terms_by_year()
 ... )
->>> r.table_
+>>> terms_by_year
+TermsByYear(field='author_keywords', metric='OCC', top_n=10,
+    custom_items=['REGTECH', 'FINTECH', 'REGULATORY_TECHNOLOGY', 'COMPLIANCE',
+    'REGULATION', 'ANTI_MONEY_LAUNDERING', 'FINANCIAL_SERVICES',
+    'FINANCIAL_REGULATION', 'ARTIFICIAL_INTELLIGENCE', 'RISK_MANAGEMENT'],
+    cumulative=False)
+
+>>> terms_by_year.frame_
 year                            2017  2018  2019  2020  2021  2022  2023
 author_keywords                                                         
 REGTECH 28:329                     2     3     4     8     3     6     2
@@ -30,7 +37,7 @@ RISK_MANAGEMENT 03:014             0     1     0     1     0     1     0
 
 
 
->>> print(r.prompt_)
+>>> print(terms_by_year.prompt_)
 Your task is to generate an analysis about the  occurrences by year of the \\
 'author_keywords' in a scientific bibliography database. Summarize the \\
 table below, delimited by triple backticks, identify any notable patterns, \\
@@ -58,14 +65,12 @@ Table:
 
 
 
-
->>> r = techminer2plus.terms_by_year(
-...    field='author_keywords',
-...    top_n=10,
-...    root_dir=root_dir,
-...    cumulative=True,
+>>> terms_by_year = (
+...     tm2p.Records(root_dir=root_dir)
+...     .field("author_keywords", top_n=10)
+...     .terms_by_year(cumulative=True)
 ... )
->>> r.table_
+>>> terms_by_year.frame_
 year                            2017  2018  2019  2020  2021  2022  2023
 author_keywords                                                         
 REGTECH 28:329                     2     5     9    17    20    26    28
@@ -79,7 +84,7 @@ FINANCIAL_REGULATION 04:035        1     1     1     2     2     4     4
 ARTIFICIAL_INTELLIGENCE 04:023     0     0     1     3     3     4     4
 RISK_MANAGEMENT 03:014             0     1     1     2     2     3     3
 
->>> print(r.prompt_)
+>>> print(terms_by_year.prompt_)
 Your task is to generate an analysis about the cumulative occurrences by \\
 year of the 'author_keywords' in a scientific bibliography database. \\
 Summarize the table below, delimited by triple backticks, identify any \\
@@ -105,144 +110,127 @@ Table:
 <BLANKLINE>
 
 
-# pylint: disable=line-too-long
-"""
-from dataclasses import dataclass
 
-import pandas as pd
+"""
+
+import textwrap
 
 from .chatbot_prompts import format_chatbot_prompt_for_df
-from .counters_lib import add_counters_to_axis
-from .filtering_lib import generate_custom_items
-from .metrics_lib import indicators_by_field, items_occ_by_year
-from .sorting_lib import sort_indicators_by_metric
+from .gantt_chart import gantt_chart
 
 
-@dataclass
 class TermsByYear:
-    """Terms by year.
+    """Terms by year."""
 
-    :meta private:
-    """
+    def __init__(self, records, field, cumulative=False):
+        """Constructor."""
 
-    field_: str
-    cumulative_: bool
-    metric_: str
-    prompt_: str
-    table_: pd.DataFrame
+        #
+        # Inputs:
+        #
+        self.__records = records
+        self.__field = field
+        self.__cumulative = cumulative
 
+        #
+        # Params:
+        #
+        self.__frame = None
+        self.__prompt = None
 
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-def terms_by_year(
-    field,
-    # Table params:
-    cumulative=False,
-    # Item filters:
-    top_n=None,
-    occ_range=None,
-    gc_range=None,
-    custom_items=None,
-    # Database filters:
-    root_dir="./",
-    database="main",
-    year_filter=None,
-    cited_by_filter=None,
-    **filters,
-):
-    """Computes a table with the number of occurrences of each term by year.
+        #
+        # Computations:
+        #
+        self.__compute_terms_by_year()
+        self.__generate_prompt()
 
-    Args:
-        field (str): Database field to be used to extract the items.
-        cumulative (bool, optional): If True, the table contains the cumulative number of occurrences. Defaults to False.
+    #
+    #
+    # PROPERTIES
+    #
+    #
+    def __repr__(self):
+        """String representation."""
+        params = ", ".join(self.repr_params_)
+        text = f"{self.__class__.__name__}({params})"
+        text = textwrap.fill(text, width=80, subsequent_indent=" " * 4)
+        return text
 
-        top_n (int): Number of top items to be returned.
-        occ_range (tuple): Range of occurrence of the items.
-        gc_range (tuple): Range of global citations of the items.
-        custom_items (list): List of items to be returned.
+    @property
+    def repr_params_(self):
+        """Returns the parameters used for the string representation as a list."""
+        return self.__field.repr_params_ + [
+            f"cumulative={self.__cumulative}",
+        ]
 
-        root_dir (str): Root directory.
-        database (str): Database name.
-        year_filter (tuple, optional): Year database filter. Defaults to None.
-        cited_by_filter (tuple, optional): Cited by database filter. Defaults to None.
-        **filters (dict, optional): Filters to be applied to the database. Defaults to {}.
+    @property
+    def frame_(self):
+        """Returns the dataframe."""
+        return self.__frame
 
+    @property
+    def prompt_(self):
+        """Returns the chatbot prompt."""
+        return self.__prompt
 
-    Returns:
-        TermsByYear: A TermsByYear object.
+    @property
+    def cumulative_(self):
+        """Returns the cumulative param."""
+        return self.__cumulative
 
+    @property
+    def field_(self):
+        """Returns the field name."""
+        return self.__field.field_
 
-    # pylint: disable=line-too-long
-    """
+    #
+    #
+    # PUBLIC METHODS FOR VISUALIZATION
+    #
+    #
+    def gantt_chart(self, title=None):
+        """Returns a Gantt chart."""
+        return gantt_chart(self, title=title)
 
-    def generate_prompt(cumulative, field, table):
+    #
+    #
+    # INTERNAL METHODS
+    #
+    #
+    def __compute_terms_by_year(self):
+        """Computes terms by year."""
+
+        descriptors_by_year = self.__records.items_occ_by_year(
+            field=self.__field.field_,
+            cumulative=self.__cumulative,
+        )
+
+        descriptors_by_year = descriptors_by_year[
+            descriptors_by_year.index.isin(self.__field.custom_items_)
+        ]
+
+        descriptors_by_year = descriptors_by_year.loc[
+            self.__field.custom_items_, :
+        ]
+
+        self.__frame = self.__records.add_counters_to_frame_axis(
+            descriptors_by_year,
+            axis=0,
+            field=self.__field.field_,
+        )
+
+    def __generate_prompt(self):
         # pylint: disable=line-too-long
         main_text = (
             "Your task is to generate an analysis about the "
-            f"{'cumulative' if cumulative else ''} occurrences by year "
-            f"of the '{field}' in a scientific bibliography database. "
+            f"{'cumulative' if self.cumulative_ else ''} occurrences by year "
+            f"of the '{self.field_}' in a scientific bibliography database. "
             "Summarize the table below, delimited by triple backticks, "
             "identify any notable patterns, trends, or outliers in the data, "
             "and disc  uss their implications for the research field. Be sure "
             "to provide a concise summary of your findings in no more than "
             "150 words."
         )
-        return format_chatbot_prompt_for_df(main_text, table.to_markdown())
-
-    #
-    # Main:
-    #
-
-    descriptors_by_year = items_occ_by_year(
-        field=field,
-        root_dir=root_dir,
-        cumulative=cumulative,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )
-
-    if custom_items is None:
-        indicators = indicators_by_field(
-            field=field,
-            root_dir=root_dir,
-            database=database,
-            year_range=year_filter,
-            cited_by_range=cited_by_filter,
-            **filters,
+        self.__prompt = format_chatbot_prompt_for_df(
+            main_text, self.frame_.to_markdown()
         )
-
-        indicators = sort_indicators_by_metric(indicators, metric="OCC")
-
-        custom_items = generate_custom_items(
-            indicators=indicators,
-            top_n=top_n,
-            occ_range=occ_range,
-            gc_range=gc_range,
-        )
-
-    descriptors_by_year = descriptors_by_year[
-        descriptors_by_year.index.isin(custom_items)
-    ]
-
-    descriptors_by_year = descriptors_by_year.loc[custom_items, :]
-
-    descriptors_by_year = add_counters_to_axis(
-        descriptors_by_year,
-        axis=0,
-        field=field,
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )
-
-    return TermsByYear(
-        metric_="OCC",
-        field_=field,
-        cumulative_=cumulative,
-        table_=descriptors_by_year,
-        prompt_=generate_prompt(cumulative, field, descriptors_by_year),
-    )

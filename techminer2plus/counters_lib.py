@@ -14,7 +14,7 @@ from .metrics_lib import indicators_by_field
 
 
 # pylint: disable=too-many-arguments
-def add_counters_to_axis(
+def add_counters_to_frame_axis(
     dataframe,
     axis,
     field,
@@ -98,8 +98,8 @@ def items2counters(
         field=criterion,
         root_dir=root_dir,
         database=database,
-        year_range=start_year,
-        cited_by_range=end_year,
+        year_filter=start_year,
+        cited_by_filter=end_year,
         **filters,
     )
 

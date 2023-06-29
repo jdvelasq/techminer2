@@ -113,8 +113,8 @@ def indicators_by_field(
     # Database params:
     root_dir="./",
     database="main",
-    year_range=None,
-    cited_by_range=None,
+    year_filter=None,
+    cited_by_filter=None,
     **filters,
 ):
     """Bibliometric column indicators.
@@ -244,8 +244,8 @@ def indicators_by_field(
             # Database params:
             root_dir=root_dir,
             database=database,
-            year_filter=year_range,
-            cited_by_filter=cited_by_range,
+            year_filter=year_filter,
+            cited_by_filter=cited_by_filter,
             **filters,
         )
 
@@ -348,8 +348,8 @@ def indicators_by_field(
     records = read_records(
         root_dir=root_dir,
         database=database,
-        year_filter=year_range,
-        cited_by_filter=cited_by_range,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
         **filters,
     )
 

@@ -38,9 +38,10 @@ from ..records_lib import read_records
 
 
 def indicators_by_document(
+    #
+    # Database filters:
     root_dir="./",
     database="main",
-    # Database filters:
     year_filter=None,
     cited_by_filter=None,
     **filters,

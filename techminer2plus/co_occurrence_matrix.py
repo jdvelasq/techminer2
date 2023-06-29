@@ -135,7 +135,7 @@ from dataclasses import dataclass
 import pandas as pd
 
 from .chatbot_prompts import format_chatbot_prompt_for_df
-from .counters_lib import add_counters_to_axis
+from .counters_lib import add_counters_to_frame_axis
 from .filtering_lib import generate_custom_items
 from .metrics_lib import co_occ_matrix_list, indicators_by_field
 from .sorting_lib import sort_indicators_by_metric, sort_matrix_axis
@@ -207,8 +207,8 @@ def co_occurrence_matrix(
                 field=field,
                 root_dir=root_dir,
                 database=database,
-                year_range=year_filter,
-                cited_by_range=cited_by_filter,
+                year_filter=year_filter,
+                cited_by_filter=cited_by_filter,
                 **filters,
             )
 
@@ -346,7 +346,7 @@ def co_occurrence_matrix(
     row_custom_items = matrix.index.tolist()
     col_custom_items = matrix.columns.tolist()
 
-    matrix = add_counters_to_axis(
+    matrix = add_counters_to_frame_axis(
         dataframe=matrix,
         axis=0,
         field=rows,
@@ -358,7 +358,7 @@ def co_occurrence_matrix(
         **filters,
     )
 
-    matrix = add_counters_to_axis(
+    matrix = add_counters_to_frame_axis(
         dataframe=matrix,
         axis=1,
         field=columns,

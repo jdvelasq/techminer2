@@ -50,12 +50,12 @@ def read_records(
 
         if not isinstance(year_filter, tuple):
             raise TypeError(
-                "The year_range parameter must be a tuple of two values."
+                "The year_filter parameter must be a tuple of two values."
             )
 
         if len(year_filter) != 2:
             raise ValueError(
-                "The year_range parameter must be a tuple of two values."
+                "The year_filter parameter must be a tuple of two values."
             )
 
         start_year, end_year = year_filter

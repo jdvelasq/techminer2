@@ -1,4 +1,5 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 .. _gantt_chart:
 
@@ -10,56 +11,22 @@ Gantt Chart
 >>> file_name = "sphinx/_static/gantt_chart.html"
 
 >>> import techminer2plus
->>> data = techminer2plus.terms_by_year(
-...    field='author_keywords',
-...    top_n=20,
-...    root_dir=root_dir,
+>>> import techminer2plus as tm2p
+>>> root_dir = "data/regtech/"
+>>> (
+...     tm2p.Records(root_dir=root_dir)
+...     .field("author_keywords", top_n=10)
+...     .terms_by_year()
+...     .gantt_chart()
+...     .write_html(file_name)
 ... )
->>> chart = techminer2plus.gantt_chart(data)
->>> chart.fig_.write_html(file_name)
 
 .. raw:: html
 
     <iframe src="../_static/gantt_chart.html" height="800px" width="100%" frameBorder="0"></iframe>
 
-    
->>> chart.df_.head(10)
-year                            2017  2018  2019  2020  2021  2022  2023
-author_keywords                                                         
-REGTECH 28:329                     2     3     4     8     3     6     2
-FINTECH 12:249                     0     2     4     3     1     2     0
-REGULATORY_TECHNOLOGY 07:037       0     0     0     2     3     2     0
-COMPLIANCE 07:030                  0     0     1     3     1     1     1
-REGULATION 05:164                  0     2     0     1     1     1     0
-ANTI_MONEY_LAUNDERING 05:034       0     0     0     2     3     0     0
-FINANCIAL_SERVICES 04:168          1     1     0     1     0     1     0
-FINANCIAL_REGULATION 04:035        1     0     0     1     0     2     0
-ARTIFICIAL_INTELLIGENCE 04:023     0     0     1     2     0     1     0
-RISK_MANAGEMENT 03:014             0     1     0     1     0     1     0
-
-
-
-
-
-# pylint: disable=line-too-long    
 """
-from dataclasses import dataclass
-
-import pandas as pd
 import plotly.express as px
-import plotly.graph_objs as go
-
-
-@dataclass
-class GanttChart:
-    """Gantt Chart.
-
-    :meta private:
-    """
-
-    fig_: go.Figure
-    df_: pd.DataFrame
-
 
 COLOR = "#556f81"
 TEXTLEN = 40
@@ -76,7 +43,7 @@ def gantt_chart(
     def compute_table(obj):
         """Melt the data"""
 
-        table = obj.table_.copy()
+        table = obj.frame_.copy()
         table["RANKING"] = range(1, len(table) + 1)
         table = table.melt(
             value_name="OCC",
@@ -147,9 +114,6 @@ def gantt_chart(
     title = "Gantt Chart" if title is None else title
 
     table = compute_table(terms_by_year)
-    fig = create_fig(table, terms_by_year.field_, terms_by_year.metric_, title)
+    fig = create_fig(table, terms_by_year.field_, "OCC", title)
 
-    return GanttChart(
-        fig_=fig,
-        df_=terms_by_year.table_,
-    )
+    return fig
