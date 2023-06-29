@@ -22,6 +22,7 @@ import pandas as pd
 from .coverage import coverage
 from .field import Field
 from .main_information import MainInformation
+from .metrics_lib import indicators_by_field
 
 
 class Records:
@@ -55,24 +56,25 @@ class Records:
         """Returns the database records as a dataframe."""
         return self.__records.copy()
 
-    @property
-    def root_dir_(self):
-        """Returns the root directory."""
-        return self.__root_dir
+    # @property
+    # def root_dir_(self):
+    #     """Returns the root directory."""
+    #     return self.__root_dir
 
-    @property
-    def database_(self):
-        return self.__database
+    # @property
+    # def database_(self):
 
-    @property
-    def year_range_(self):
-        """Returns the year range filter."""
-        return self.__year_range
+    #     return self.__database
 
-    @property
-    def cited_by_range_(self):
-        """Returns the cited by range filter."""
-        return self.__cited_by_range
+    # @property
+    # def year_range_(self):
+    #     """Returns the year range filter."""
+    #     return self.__year_range
+
+    # @property
+    # def cited_by_range_(self):
+    #     """Returns the cited by range filter."""
+    #     return self.__cited_by_range
 
     #
     #
@@ -87,6 +89,43 @@ class Records:
     def main_information(self):
         """Returns a MainInformation object."""
         return MainInformation(parent=self)
+
+    def field(
+        self,
+        field,
+        metric="OCC",
+        top_n=None,
+        occ_range=None,
+        gc_range=None,
+        custom_items=None,
+    ):
+        return Field(
+            parent=self,
+            field=field,
+            metric=metric,
+            top_n=top_n,
+            occ_range=occ_range,
+            gc_range=gc_range,
+            custom_items=custom_items,
+        )
+
+    #
+    #
+    # DATABASE COMPUTATIONS
+    #
+    #
+    def indicators_by_field(self, field, time_window=2):
+        return indicators_by_field(
+            field=field,
+            time_window=time_window,
+            #
+            # Database params:
+            root_dir=self.__root_dir,
+            database=self.__database,
+            year_range=self.__year_range,
+            cited_by_range=self.__cited_by_range,
+            **self.__filters,
+        )
 
     #
     #

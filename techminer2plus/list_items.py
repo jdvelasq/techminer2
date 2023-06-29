@@ -155,8 +155,8 @@ def list_items(
         field=field,
         root_dir=root_dir,
         database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
+        year_range=year_filter,
+        cited_by_range=cited_by_filter,
         **filters,
     )
 

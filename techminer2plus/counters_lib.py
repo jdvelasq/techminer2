@@ -98,8 +98,8 @@ def items2counters(
         field=criterion,
         root_dir=root_dir,
         database=database,
-        year_filter=start_year,
-        cited_by_filter=end_year,
+        year_range=start_year,
+        cited_by_range=end_year,
         **filters,
     )
 

@@ -109,11 +109,12 @@ from .items_occ_by_year import items_occ_by_year
 def indicators_by_field(
     field,
     time_window=2,
+    #
     # Database params:
     root_dir="./",
     database="main",
-    year_filter=None,
-    cited_by_filter=None,
+    year_range=None,
+    cited_by_range=None,
     **filters,
 ):
     """Bibliometric column indicators.
@@ -243,8 +244,8 @@ def indicators_by_field(
             # Database params:
             root_dir=root_dir,
             database=database,
-            year_filter=year_filter,
-            cited_by_filter=cited_by_filter,
+            year_filter=year_range,
+            cited_by_filter=cited_by_range,
             **filters,
         )
 
@@ -347,8 +348,8 @@ def indicators_by_field(
     records = read_records(
         root_dir=root_dir,
         database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
+        year_filter=year_range,
+        cited_by_filter=cited_by_range,
         **filters,
     )
 
