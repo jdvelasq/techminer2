@@ -7,10 +7,8 @@ Coverage
 
 Computes coverage of terms in a column discarding stopwords.
 
-
->>> root_dir = "data/regtech/"
-
 >>> import techminer2plus as tm2p
+>>> root_dir = "data/regtech/"
 >>> tm2p.Records(root_dir=root_dir).coverage("author_keywords")
 --INFO-- Number of documents : 52
 --INFO--   Documents with NA : 11
@@ -31,88 +29,77 @@ from .stopwords_lib import load_stopwords
 
 
 # pylint: disable=too-few-public-methods
-class Coverage:
+def coverage(parent, column):
     """Computes the terms coverage of documents based on the OCC value."""
 
-    root_dir: str
+    records = parent.records_
+    root_dir = parent.root_dir_
 
-    def __init__(self):
-        """Constructor"""
+    stopwords = load_stopwords(root_dir)
 
-        self.stopwords = None
+    records = records.reset_index()
+    records = records[[column, "article"]]
 
-    def coverage(self, column):
-        """Computes the terms coverage of documents based on the OCC value."""
+    n_raw_documents = len(records)
+    records = records.dropna()
+    n_documents = len(records)
+    n_na_documents = n_raw_documents - n_documents
 
-        self.__load_stopwords()
-        records = self.read_records()  # pylint: disable=no-member
+    print(f"--INFO-- Number of documents : {n_raw_documents}")
+    print(f"--INFO--   Documents with NA : {n_na_documents}")
+    print(f"--INFO--  Efective documents : {n_documents}")
 
-        records = records.reset_index()
-        records = records[[column, "article"]]
+    records = records.assign(num_documents=1)
+    records[column] = records[column].str.split("; ")
+    records = records.explode(column)
+    records = records[~records[column].isin(stopwords)]
+    records = records.groupby(by=[column]).agg(
+        {"num_documents": "count", "article": list}
+    )
+    records = records.sort_values(by=["num_documents"], ascending=False)
 
-        n_raw_documents = len(records)
-        records = records.dropna()
-        n_documents = len(records)
-        n_na_documents = n_raw_documents - n_documents
+    records = records.reset_index()
 
-        print(f"--INFO-- Number of documents : {n_raw_documents}")
-        print(f"--INFO--   Documents with NA : {n_na_documents}")
-        print(f"--INFO--  Efective documents : {n_documents}")
+    records = records.groupby(by="num_documents", as_index=False).agg(
+        {"article": list, column: list}
+    )
 
-        records = records.assign(num_documents=1)
-        records[column] = records[column].str.split("; ")
-        records = records.explode(column)
-        records = records[~records[column].isin(self.stopwords)]
-        records = records.groupby(by=[column]).agg(
-            {"num_documents": "count", "article": list}
+    records = records.sort_values(by=["num_documents"], ascending=False)
+    records["article"] = records.article.map(
+        lambda x: [term for sublist in x for term in sublist]
+    )
+
+    records = records.assign(cum_sum_documents=records.article.cumsum())
+    records = records.assign(
+        cum_sum_documents=records.cum_sum_documents.map(set)
+    )
+    records = records.assign(
+        cum_sum_documents=records.cum_sum_documents.map(len)
+    )
+
+    records = records.assign(
+        coverage=records.cum_sum_documents.map(
+            lambda x: f"{100 * x / n_documents:5.2f} %"
         )
-        records = records.sort_values(by=["num_documents"], ascending=False)
+    )
 
-        records = records.reset_index()
+    records = records.assign(cum_sum_items=records[column].cumsum())
+    records = records.assign(cum_sum_items=records.cum_sum_items.map(set))
+    records = records.assign(cum_sum_items=records.cum_sum_items.map(len))
 
-        records = records.groupby(by="num_documents", as_index=False).agg(
-            {"article": list, column: list}
-        )
+    records.drop("article", axis=1, inplace=True)
+    records.drop(column, axis=1, inplace=True)
 
-        records = records.sort_values(by=["num_documents"], ascending=False)
-        records["article"] = records.article.map(
-            lambda x: [term for sublist in x for term in sublist]
-        )
+    records = records.rename(
+        columns={
+            "num_documents": "min_occ",
+            "cum_sum": "cum num documents",
+            "cum_sum_items": "cum num items",
+        }
+    )
+    records = records.reset_index(drop=True)
 
-        records = records.assign(cum_sum_documents=records.article.cumsum())
-        records = records.assign(
-            cum_sum_documents=records.cum_sum_documents.map(set)
-        )
-        records = records.assign(
-            cum_sum_documents=records.cum_sum_documents.map(len)
-        )
-
-        records = records.assign(
-            coverage=records.cum_sum_documents.map(
-                lambda x: f"{100 * x / n_documents:5.2f} %"
-            )
-        )
-
-        records = records.assign(cum_sum_items=records[column].cumsum())
-        records = records.assign(cum_sum_items=records.cum_sum_items.map(set))
-        records = records.assign(cum_sum_items=records.cum_sum_items.map(len))
-
-        records.drop("article", axis=1, inplace=True)
-        records.drop(column, axis=1, inplace=True)
-
-        records = records.rename(
-            columns={
-                "num_documents": "min_occ",
-                "cum_sum": "cum num documents",
-                "cum_sum_items": "cum num items",
-            }
-        )
-        records = records.reset_index(drop=True)
-
-        return records
-
-    def __load_stopwords(self):
-        self.stopwords = load_stopwords(self.root_dir)
+    return records
 
 
 # def coverage(

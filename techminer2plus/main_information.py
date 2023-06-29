@@ -5,12 +5,15 @@
 Main Information
 ===============================================================================
 
+TODO: check organizations_1st_author, countries_1st_author
 
+>>> import techminer2plus as tm2p
 >>> root_dir = "data/regtech/"
+>>> info = tm2p.Records(root_dir=root_dir).main_information()
+>>> info
+MainInformation(n_records=52)
 
->>> import techminer2plus
->>> stats = techminer2plus.main_information(root_dir)
->>> stats.table_
+>>> info.frame_
                                                             Value
 Category       Item                                              
 GENERAL        Timespan                                 2016:2023
@@ -38,9 +41,9 @@ AUTHORS        Authors                                        102
                Documents per author                          0.44
                Collaboration index                            1.0
                Organizations                                   81
-               Organizations (1st author)                      45
+               Organizations (1st author)                       0
                Countries                                       29
-               Countries (1st author)                          25
+               Countries (1st author)                           0
 KEYWORDS       Raw author keywords                            148
                Cleaned author keywords                        143
                Raw index keywords                             155
@@ -55,11 +58,11 @@ NLP PHRASES    Raw title NLP phrases                           40
                Cleaned NLP phrases                            158
 DESCRIPTORS    Raw descriptors                                373
                Cleaned descriptors                            338
-
+                                                            
 
                
 >>> file_name = "sphinx/_static/main_info.html"               
->>> stats.plot_.write_html(file_name)
+>>> info.fig_.write_html(file_name)
 
 .. raw:: html
 
@@ -67,7 +70,7 @@ DESCRIPTORS    Raw descriptors                                373
 
 
     
->>> print(stats.prompt_)
+>>> print(info.prompt_)
 Your task is to generate a short summary for a research paper of a table \\
 with record and field statistics for a dataset of scientific publications. \\
 The table below, delimited by triple backticks, provides data on the main \\
@@ -104,9 +107,9 @@ Table:
 | ('AUTHORS', 'Documents per author')                    | 0.44      |
 | ('AUTHORS', 'Collaboration index')                     | 1.0       |
 | ('AUTHORS', 'Organizations')                           | 81        |
-| ('AUTHORS', 'Organizations (1st author)')              | 45        |
+| ('AUTHORS', 'Organizations (1st author)')              | 0         |
 | ('AUTHORS', 'Countries')                               | 29        |
-| ('AUTHORS', 'Countries (1st author)')                  | 25        |
+| ('AUTHORS', 'Countries (1st author)')                  | 0         |
 | ('KEYWORDS', 'Raw author keywords')                    | 148       |
 | ('KEYWORDS', 'Cleaned author keywords')                | 143       |
 | ('KEYWORDS', 'Raw index keywords')                     | 155       |
@@ -131,7 +134,6 @@ Table:
 # pylint: disable=line-too-long
 """
 import datetime
-from dataclasses import dataclass
 
 import numpy as np
 import pandas as pd
@@ -139,130 +141,269 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
 from .chatbot_prompts import format_chatbot_prompt_for_df
-from .records_lib import read_records
 
 
-@dataclass
+# pylint: disable=too-many-public-methods
+# pylint: disable=too-many-instance-attributes
 class MainInformation:
-    """Main information"""
+    """Main information about the dataset."""
 
-    table_: pd.DataFrame
-    prompt_: str
-    plot_: go.Figure
+    def __init__(self, parent):
+        """Constructor"""
 
-
-class _Statistics:
-    def __init__(
-        self,
-        root_dir,
-        database="main",
-        year_filter=None,
-        cited_by_filter=None,
-        **filters,
-    ):
-        self.directory = root_dir
-        self.records = read_records(
-            root_dir=root_dir,
-            database=database,
-            year_filter=year_filter,
-            cited_by_filter=cited_by_filter,
-            **filters,
-        )
+        self.records = parent.records_
         self.n_records = len(self.records)
-        self.compute_general_information_stats()
-        self.compute_document_types_stats()
-        self.compute_authors_stats()
-        self.compute_keywords_stats()
-        self.compute_nlp_phrases_stats()
-        self.compute_descriptors_stats()
-        self.make_report()
 
-    def make_report(self):
+        self.category = []
+        self.item = []
+        self.value = []
+
+        self.prompt = None
+        self.frame = None
+        self.fig = None
+
+        self.__compute_general_information_stats()
+        self.__compute_document_types_stats()
+        self.__compute_authors_stats()
+        self.__compute_keywords_stats()
+        self.__compute_nlp_phrases_stats()
+        self.__compute_descriptors_stats()
+        self.__make_report()
+        self.__generate_chatbot_prompt()
+        self.__make_plot()
+
+    #
+    #
+    # PROPERTIES
+    #
+    #
+    def __repr__(self):
+        """String representation."""
+        return f"MainInformation(n_records={self.n_records})"
+
+    @property
+    def prompt_(self):
+        """Returns the chatbot prompt."""
+        return self.prompt
+
+    @property
+    def fig_(self):
+        """Returns the figure."""
+        return self.fig
+
+    @property
+    def frame_(self):
+        """Returns the dataframe."""
+        return self.frame
+
+    #
+    #
+    # INTERNAL METHODS
+    #
+    #
+
+    def __make_report(self):
         """Make a report of the statistics."""
-        pdf = pd.concat(
-            [
-                self.general_information_stats,
-                self.document_types_stats,
-                self.authors_stats,
-                self.keywords_stats,
-                self.nlp_phrases_stats,
-                self.key_concepts_stats,
-            ]
+
+        frame = pd.DataFrame(
+            {
+                "Category": self.category,
+                "Item": self.item,
+                "Value": self.value,
+            }
         )
-        index = pd.MultiIndex.from_arrays(
-            [pdf.Category, pdf.Item], names=["Category", "Item"]
-        )
-        self.report_ = pd.DataFrame(
-            pdf.Value.tolist(), columns=["Value"], index=index
+        frame = frame.set_index(["Category", "Item"])
+        self.frame = frame
+
+    def __generate_chatbot_prompt(self):
+        """Generates the chatbot prompt"""
+
+        main_text = (
+            "Your task is to generate a short summary for a research paper of a "
+            "table with record and field statistics for a dataset of scientific "
+            "publications. The table below, delimited by triple backticks, "
+            "provides data on the main characteristics of the records and fields "
+            "of the bibliographic dataset. Use the the information in the table "
+            "to draw conclusions. Limit your description to one paragraph in at "
+            "most 100 words. "
         )
 
-    #####################################################################################
-    def compute_general_information_stats(self):
-        """Compute general information statistics."""
-        self.general_information_stats = pd.DataFrame(
-            columns=["Category", "Item", "Value"]
+        self.prompt = format_chatbot_prompt_for_df(
+            main_text, self.frame.to_markdown()
         )
-        self.general_information_stats.loc[(0,)] = [
+
+    def __make_plot(self):
+        """Makes the plot"""
+
+        def add_text_trace(fig, category, caption, row, col):
+            text = (
+                f'<span style="font-size: 8px;">{caption}</span><br>'
+                f'<br><span style="font-size: 20px;">'
+                f"{self.frame.loc[(category, caption)].values[0]}</span>"
+            )
+
+            fig.add_trace(
+                go.Scatter(
+                    x=[0.5],
+                    y=[0.5],
+                    text=[text],
+                    mode="text",
+                ),
+                row=row,
+                col=col,
+            )
+            fig.update_xaxes(visible=False, row=row, col=col)
+            fig.update_yaxes(visible=False, row=row, col=col)
+
+        fig = make_subplots(rows=7, cols=3)
+
+        add_text_trace(fig, "GENERAL", "Timespan", 1, 1)
+        add_text_trace(fig, "GENERAL", "Sources", 1, 2)
+        add_text_trace(fig, "GENERAL", "Documents", 1, 3)
+
+        add_text_trace(fig, "GENERAL", "Annual growth rate %", 2, 1)
+        add_text_trace(fig, "AUTHORS", "Authors", 2, 2)
+        add_text_trace(
+            fig, "AUTHORS", "Authors of single-authored documents", 2, 3
+        )
+
+        add_text_trace(fig, "AUTHORS", "International co-authorship %", 3, 1)
+        add_text_trace(fig, "AUTHORS", "Co-authors per document", 3, 2)
+        add_text_trace(fig, "GENERAL", "References", 3, 3)
+
+        add_text_trace(fig, "KEYWORDS", "Raw author keywords", 4, 1)
+        add_text_trace(fig, "KEYWORDS", "Cleaned author keywords", 4, 2)
+        add_text_trace(fig, "KEYWORDS", "Raw index keywords", 4, 3)
+
+        add_text_trace(fig, "KEYWORDS", "Raw keywords", 5, 1)
+        add_text_trace(fig, "KEYWORDS", "Cleaned keywords", 5, 2)
+        add_text_trace(fig, "NLP PHRASES", "Raw NLP phrases", 5, 3)
+
+        add_text_trace(
+            fig,
+            "NLP PHRASES",
+            "Cleaned NLP phrases",
+            6,
+            1,
+        )
+
+        add_text_trace(
+            fig,
+            "DESCRIPTORS",
+            "Raw descriptors",
+            6,
+            2,
+        )
+
+        add_text_trace(
+            fig,
+            "DESCRIPTORS",
+            "Cleaned descriptors",
+            6,
+            3,
+        )
+
+        add_text_trace(fig, "GENERAL", "Document average age", 7, 1)
+        add_text_trace(fig, "GENERAL", "Average citations per document", 7, 2)
+
+        fig.update_layout(showlegend=False)
+        fig.update_layout(title="Main Information")
+        fig.update_layout(height=800)
+
+        self.fig = fig
+
+    def insert_stats(self, category, item, value):
+        """Inserts stats"""
+
+        self.category.append(category)
+        self.item.append(item)
+        self.value.append(value)
+
+    def count_unique_items(self, field):
+        """Computes the number of unique items in a field."""
+
+        if field not in self.records:
+            return 0
+
+        records = self.records[field].copy()
+        records = records.dropna()
+        records = records.str.split(";")
+        records = records.explode()
+        records = records.str.strip()
+        records = records.drop_duplicates()
+
+        return len(records)
+
+    #
+    #
+    # COMPUTE GENERAL STATS
+    #
+    #
+    def __compute_general_information_stats(self):
+        """Compute general information statistics."""
+
+        self.insert_stats(
             "GENERAL",
             "Timespan",
             self.compute_timespam(),
-        ]
-        self.general_information_stats.loc[(1,)] = [
+        )
+
+        self.insert_stats(
             "GENERAL",
             "Documents",
-            self.documents(),
-        ]
-        self.general_information_stats.loc[(2,)] = [
+            len(self.records),
+        )
+
+        self.insert_stats(
             "GENERAL",
             "Annual growth rate %",
             self.annual_growth_rate(),
-        ]
-        self.general_information_stats.loc[(3,)] = [
+        )
+
+        self.insert_stats(
             "GENERAL",
             "Document average age",
             self.document_average_age(),
-        ]
-        self.general_information_stats.loc[(4,)] = [
+        )
+
+        self.insert_stats(
             "GENERAL",
             "References",
             self.cited_references(),
-        ]
-        self.general_information_stats.loc[(5,)] = [
+        )
+        self.insert_stats(
             "GENERAL",
             "Average citations per document",
             self.average_citations_per_document(),
-        ]
-        self.general_information_stats.loc[(6,)] = [
+        )
+
+        self.insert_stats(
             "GENERAL",
             "Average citations per document per year",
             self.average_citations_per_document_per_year(),
-        ]
-        self.general_information_stats.loc[(7,)] = [
+        )
+
+        self.insert_stats(
             "GENERAL",
             "Average references per document",
             self.average_references_per_document(),
-        ]
-        self.general_information_stats.loc[(8,)] = [
+        )
+
+        self.insert_stats(
             "GENERAL",
             "Sources",
             self.sources(),
-        ]
-        self.general_information_stats.loc[(9,)] = [
+        )
+
+        self.insert_stats(
             "GENERAL",
             "Average documents per source",
             self.average_documents_per_source(),
-        ]
-
-    # -----------------------------------------------------------------------------------
+        )
 
     def compute_timespam(self):
         """Computes the timespan of the records"""
-
         return str(min(self.records.year)) + ":" + str(max(self.records.year))
-
-    def documents(self):
-        """Computes the number of documents"""
-        return len(self.records)
 
     def annual_growth_rate(self):
         """Computes the annual growth rate"""
@@ -291,15 +432,13 @@ class _Statistics:
             records = records.explode()
             records = records.str.strip()
             return len(records)
-        else:
-            return pd.NA
+        return pd.NA
 
     def average_citations_per_document(self):
         """Computes the average number of citations per document"""
         if "global_citations" in self.records.columns:
             return round(self.records.global_citations.mean(), 2)
-        else:
-            return pd.NA
+        return pd.NA
 
     def average_citations_per_document_per_year(self):
         """Computes the average number of citations per document per year"""
@@ -309,19 +448,18 @@ class _Statistics:
                 / (self.records.year.max() - self.records.year.min() + 1),
                 2,
             )
-        else:
-            return pd.NA
+        return pd.NA
 
     def average_references_per_document(self):
         """Computes the average number of references per document"""
+
         if "global_references" in self.records.columns:
             num_references = self.records.global_references.copy()
             num_references = num_references.dropna()
             num_references = num_references.str.split(";")
             num_references = num_references.map(len)
             return round(num_references.mean(), 2)
-        else:
-            return pd.NA
+        return pd.NA
 
     def sources(self):
         """Computes the number of sources"""
@@ -330,8 +468,7 @@ class _Statistics:
             records = records.dropna()
             records = records.drop_duplicates()
             return len(records)
-        else:
-            return pd.NA
+        return pd.NA
 
     def average_documents_per_source(self):
         """Computes the average number of documents per source"""
@@ -342,117 +479,119 @@ class _Statistics:
             sources = sources.drop_duplicates()
             n_sources = len(sources)
             return round(n_records / n_sources, 2)
-        else:
-            return pd.NA
+        return pd.NA
 
-    #####################################################################################
-    def compute_document_types_stats(self):
+    #
+    #
+    # COMPUTE DOCUMENT TYPE STATS
+    #
+    #
+    def __compute_document_types_stats(self):
         """Computes the document types statistics"""
-        self.document_types_stats = pd.DataFrame(
-            columns=["Category", "Item", "Value"]
-        )
+
         records = self.records[["document_type"]].dropna()
+
         document_types_count = (
             records[["document_type"]].groupby("document_type").size()
         )
-        for index, (document_type, count) in enumerate(
-            zip(document_types_count.index, document_types_count)
+
+        for document_type, count in zip(
+            document_types_count.index, document_types_count
         ):
-            self.document_types_stats.loc[(index,)] = [
+            self.insert_stats(
                 "DOCUMENT TYPES",
                 document_type,
                 count,
-            ]
+            )
 
-    #####################################################################################
-    def compute_authors_stats(self):
+    #
+    #
+    # COMPUTE AUTHOR STATS
+    #
+    #
+    def __compute_authors_stats(self):
         """Computes the authors statistics"""
-        self.authors_stats = pd.DataFrame(
-            columns=["Category", "Item", "Value"]
-        )
-        self.authors_stats.loc[(0,)] = [
+
+        self.insert_stats(
             "AUTHORS",
             "Authors",
-            self.authors(),
-        ]
-        self.authors_stats.loc[(1,)] = [
+            self.count_unique_items("authors"),
+        )
+
+        self.insert_stats(
             "AUTHORS",
             "Authors of single-authored documents",
             self.authors_of_single_authored_documents(),
-        ]
-        self.authors_stats.loc[(2,)] = [
+        )
+
+        self.insert_stats(
             "AUTHORS",
             "Single-authored documents",
             self.count_single_authored_documents(),
-        ]
-        self.authors_stats.loc[(3,)] = [
+        )
+
+        self.insert_stats(
             "AUTHORS",
             "Multi-authored documents",
             self.count_multi_authored_documents(),
-        ]
-        self.authors_stats.loc[(4,)] = [
+        )
+        self.insert_stats(
             "AUTHORS",
             "Authors per document",
             self.average_authors_per_document(),
-        ]
-        self.authors_stats.loc[(5,)] = [
+        )
+        self.insert_stats(
             "AUTHORS",
             "Co-authors per document",
             self.co_authors_per_document(),
-        ]
-        self.authors_stats.loc[(6,)] = [
+        )
+
+        self.insert_stats(
             "AUTHORS",
             "International co-authorship %",
             self.international_co_authorship(),
-        ]
-        self.authors_stats.loc[(7,)] = [
+        )
+
+        self.insert_stats(
             "AUTHORS",
             "Author appearances",
             self.author_appearances(),
-        ]
-        self.authors_stats.loc[(8,)] = [
+        )
+        self.insert_stats(
             "AUTHORS",
             "Documents per author",
             self.average_documents_per_author(),
-        ]
+        )
 
-        self.authors_stats.loc[(9,)] = [
+        self.insert_stats(
             "AUTHORS",
             "Collaboration index",
             self.collaboration_index(),
-        ]
-        self.authors_stats.loc[(10,)] = [
+        )
+
+        self.insert_stats(
             "AUTHORS",
             "Organizations",
-            self.organizations(),
-        ]
-        self.authors_stats.loc[(11,)] = [
+            self.count_unique_items("organizations"),
+        )
+
+        self.insert_stats(
             "AUTHORS",
             "Organizations (1st author)",
-            self.organizations_1st_author(),
-        ]
-        self.authors_stats.loc[(12,)] = [
+            self.count_unique_items("organizations_1st_author"),
+        )
+
+        self.insert_stats(
             "AUTHORS",
             "Countries",
-            self.countries(),
-        ]
-        self.authors_stats.loc[(13,)] = [
+            self.count_unique_items("countries"),
+        )
+
+        self.insert_stats(
             "AUTHORS",
             "Countries (1st author)",
-            self.countries_1st_author(),
-        ]
-
-    # -----------------------------------------------------------------------------------
-
-    def authors(self):
-        """Computes the number of authors"""
-        records = self.records.authors.copy()
-        records = records.dropna()
-        records = records.str.split(";")
-        records = records.explode()
-        records = records.str.strip()
-        records = records.drop_duplicates()
-        return len(records)
+            self.count_unique_items("countries_1st_author"),
+        )
 
     def authors_of_single_authored_documents(self):
         """Computes the number of authors of single-authored documents"""
@@ -520,446 +659,102 @@ class _Statistics:
         n_authors = len(records)
         return round(n_authors / n_records, 2)
 
-    def organizations(self):
-        """Computes the number of organizations"""
-        if "organizations" in self.records.columns:
-            records = self.records.organizations.copy()
-            records = records.dropna()
-            records = records.str.split(";")
-            records = records.explode()
-            records = records.str.strip()
-            records = records.drop_duplicates()
-            return len(records)
-        else:
-            return pd.NA
-
-    def organizations_1st_author(self):
-        """Computes the number of organizations of 1st authors"""
-        if "organization_1st_author" in self.records.columns:
-            records = self.records.organization_1st_author.copy()
-            records = records.dropna()
-            records = records.str.split(";")
-            records = records.explode()
-            records = records.str.strip()
-            records = records.drop_duplicates()
-            return len(records)
-        else:
-            return pd.NA
-
-    def countries(self):
-        """Computes the number of countries"""
-        if "countries" in self.records.columns:
-            records = self.records.countries.copy()
-            records = records.dropna()
-            records = records.str.split(";")
-            records = records.explode()
-            records = records.str.strip()
-            records = records.drop_duplicates()
-            return len(records)
-        else:
-            return pd.NA
-
-    def countries_1st_author(self):
-        """Computes the number of countries of 1st authors"""
-        if "country_1st_author" in self.records.columns:
-            records = self.records.country_1st_author.copy()
-            records = records.dropna()
-            records = records.str.split(";")
-            records = records.explode()
-            records = records.str.strip()
-            records = records.drop_duplicates()
-            return len(records)
-        else:
-            return pd.NA
-
-    #####################################################################################
-    def compute_keywords_stats(self):
+    #
+    #
+    # COMPUTE KEYWORDS STATS
+    #
+    #
+    def __compute_keywords_stats(self):
         """Computes the keywords stats"""
-        self.keywords_stats = pd.DataFrame(
-            columns=["Category", "Item", "Value"]
-        )
-        self.keywords_stats.loc[(0,)] = [
+
+        self.insert_stats(
             "KEYWORDS",
             "Raw author keywords",
-            self.raw_author_keywords(),
-        ]
-        self.keywords_stats.loc[(1,)] = [
+            self.count_unique_items("raw_author_keywords"),
+        )
+
+        self.insert_stats(
             "KEYWORDS",
             "Cleaned author keywords",
-            self.author_keywords(),
-        ]
-        self.keywords_stats.loc[(2,)] = [
+            self.count_unique_items("author_keywords"),
+        )
+        self.insert_stats(
             "KEYWORDS",
             "Raw index keywords",
-            self.raw_index_keywords(),
-        ]
-        self.keywords_stats.loc[(3,)] = [
+            self.count_unique_items("raw_index_keywords"),
+        )
+        self.insert_stats(
             "KEYWORDS",
             "Cleaned index keywords",
-            self.index_keywords(),
-        ]
-        self.keywords_stats.loc[(4,)] = [
+            self.count_unique_items("index_keywords"),
+        )
+        self.insert_stats(
             "KEYWORDS",
             "Raw keywords",
-            self.raw_keywords(),
-        ]
-        self.keywords_stats.loc[(5,)] = [
+            self.count_unique_items("raw_keywords"),
+        )
+        self.insert_stats(
             "KEYWORDS",
             "Cleaned keywords",
-            self.keywords(),
-        ]
-
-    # -----------------------------------------------------------------------------------
-
-    def raw_author_keywords(self):
-        """Computes the number of raw author keywords"""
-        records = self.records.raw_author_keywords.copy()
-        records = records.dropna()
-        records = records.str.split(";")
-        records = records.explode()
-        records = records.str.strip()
-        records = records.drop_duplicates()
-        return len(records)
-
-    def author_keywords(self):
-        """Computes the number of cleaned author keywords"""
-        records = self.records.author_keywords.copy()
-        records = records.dropna()
-        records = records.str.split(";")
-        records = records.explode()
-        records = records.str.strip()
-        records = records.drop_duplicates()
-        return len(records)
-
-    def raw_index_keywords(self):
-        """Computes the number of raw index keywords"""
-        if "raw_index_keywords" in self.records.columns:
-            records = self.records.raw_index_keywords.copy()
-            records = records.dropna()
-            records = records.str.split(";")
-            records = records.explode()
-            records = records.str.strip()
-            records = records.drop_duplicates()
-            return len(records)
-        else:
-            return 0
-
-    def index_keywords(self):
-        """Computes the number of cleaned index keywords"""
-        if "index_keywords" in self.records.columns:
-            records = self.records.index_keywords.copy()
-            records = records.dropna()
-            records = records.str.split(";")
-            records = records.explode()
-            records = records.str.strip()
-            records = records.drop_duplicates()
-            return len(records)
-        else:
-            return 0
-
-    def raw_keywords(self):
-        """Computes the number of raw keywords"""
-        if "raw_keywords" in self.records.columns:
-            records = self.records.raw_keywords.copy()
-            records = records.dropna()
-            records = records.str.split(";")
-            records = records.explode()
-            records = records.str.strip()
-            records = records.drop_duplicates()
-            return len(records)
-        else:
-            return 0
-
-    def keywords(self):
-        """Computes the number of cleaned keywords"""
-        if "keywords" in self.records.columns:
-            records = self.records.keywords.copy()
-            records = records.dropna()
-            records = records.str.split(";")
-            records = records.explode()
-            records = records.str.strip()
-            records = records.drop_duplicates()
-            return len(records)
-        else:
-            return 0
-
-    #####################################################################################
-    def compute_nlp_phrases_stats(self):
-        """Computes the nlp phrases stats"""
-        self.nlp_phrases_stats = pd.DataFrame(
-            columns=["Category", "Item", "Value"]
+            self.count_unique_items("keywords"),
         )
-        self.nlp_phrases_stats.loc[(0,)] = [
+
+    #
+    #
+    # COMPUTE NLP PHRASES STATS
+    #
+    #
+    def __compute_nlp_phrases_stats(self):
+        """Computes the nlp phrases stats"""
+
+        self.insert_stats(
             "NLP PHRASES",
             "Raw title NLP phrases",
-            self.raw_title_nlp_phrases(),
-        ]
-        self.nlp_phrases_stats.loc[(1,)] = [
+            self.count_unique_items("raw_title_nlp_phrases"),
+        )
+        self.insert_stats(
             "NLP PHRASES",
             "Cleaned title NLP phrases",
-            self.title_nlp_phrases(),
-        ]
-        self.nlp_phrases_stats.loc[(2,)] = [
+            self.count_unique_items("title_nlp_phrases"),
+        )
+        self.insert_stats(
             "NLP PHRASES",
             "Raw abstract NLP phrases",
-            self.raw_abstract_nlp_phrases(),
-        ]
-        self.nlp_phrases_stats.loc[(3,)] = [
+            self.count_unique_items("raw_abstract_nlp_phrases"),
+        )
+        self.insert_stats(
             "NLP PHRASES",
             "Cleaned abstract NLP phrases",
-            self.abstract_nlp_phrases(),
-        ]
-        self.nlp_phrases_stats.loc[(4,)] = [
+            self.count_unique_items("abstract_nlp_phrases"),
+        )
+        self.insert_stats(
             "NLP PHRASES",
             "Raw NLP phrases",
-            self.raw_nlp_phrases(),
-        ]
-        self.nlp_phrases_stats.loc[(5,)] = [
+            self.count_unique_items("raw_nlp_phrases"),
+        )
+        self.insert_stats(
             "NLP PHRASES",
             "Cleaned NLP phrases",
-            self.nlp_phrases(),
-        ]
-
-    # -----------------------------------------------------------------------------------
-
-    def raw_title_nlp_phrases(self):
-        """Computes the number of raw author keywords"""
-        records = self.records.raw_title_nlp_phrases.copy()
-        records = records.dropna()
-        records = records.str.split(";")
-        records = records.explode()
-        records = records.str.strip()
-        records = records.drop_duplicates()
-        return len(records)
-
-    def title_nlp_phrases(self):
-        """Computes the number of cleaned author keywords"""
-        records = self.records.title_nlp_phrases.copy()
-        records = records.dropna()
-        records = records.str.split(";")
-        records = records.explode()
-        records = records.str.strip()
-        records = records.drop_duplicates()
-        return len(records)
-
-    def raw_abstract_nlp_phrases(self):
-        """Computes the number of raw index keywords"""
-        if "raw_abstract_nlp_phrases" in self.records.columns:
-            records = self.records.raw_abstract_nlp_phrases.copy()
-            records = records.dropna()
-            records = records.str.split(";")
-            records = records.explode()
-            records = records.str.strip()
-            records = records.drop_duplicates()
-            return len(records)
-        else:
-            return 0
-
-    def abstract_nlp_phrases(self):
-        """Computes the number of cleaned index keywords"""
-        if "abstract_nlp_phrases" in self.records.columns:
-            records = self.records.abstract_nlp_phrases.copy()
-            records = records.dropna()
-            records = records.str.split(";")
-            records = records.explode()
-            records = records.str.strip()
-            records = records.drop_duplicates()
-            return len(records)
-        else:
-            return 0
-
-    def raw_nlp_phrases(self):
-        """Computes the number of raw index keywords"""
-        if "raw_nlp_phrases" in self.records.columns:
-            records = self.records.raw_nlp_phrases.copy()
-            records = records.dropna()
-            records = records.str.split(";")
-            records = records.explode()
-            records = records.str.strip()
-            records = records.drop_duplicates()
-            return len(records)
-        else:
-            return 0
-
-    def nlp_phrases(self):
-        """Computes the number of raw index keywords"""
-        if "raw_nlp_phrases" in self.records.columns:
-            records = self.records.nlp_phrases.copy()
-            records = records.dropna()
-            records = records.str.split(";")
-            records = records.explode()
-            records = records.str.strip()
-            records = records.drop_duplicates()
-            return len(records)
-        else:
-            return 0
-
-    #####################################################################################
-    def compute_descriptors_stats(self):
-        """Computes the key concepts stats"""
-        self.key_concepts_stats = pd.DataFrame(
-            columns=["Category", "Item", "Value"]
+            self.count_unique_items("nlp_phrases"),
         )
-        self.key_concepts_stats.loc[(0,)] = [
+
+    #
+    #
+    # COMPUTE DESCRIPTOR STATS
+    #
+    #
+    def __compute_descriptors_stats(self):
+        """Computes the key concepts stats"""
+
+        self.insert_stats(
             "DESCRIPTORS",
             "Raw descriptors",
-            self.raw_descriptors(),
-        ]
-        self.key_concepts_stats.loc[(1,)] = [
+            self.count_unique_items("raw_descriptors"),
+        )
+        self.insert_stats(
             "DESCRIPTORS",
             "Cleaned descriptors",
-            self.cleaned_descriptors(),
-        ]
-
-    # -----------------------------------------------------------------------------------
-
-    def raw_descriptors(self):
-        """Computes the number of raw author keywords"""
-        records = self.records.raw_descriptors.copy()
-        records = records.dropna()
-        records = records.str.split(";")
-        records = records.explode()
-        records = records.str.strip()
-        records = records.drop_duplicates()
-        return len(records)
-
-    def cleaned_descriptors(self):
-        """Computes the number of cleaned author keywords"""
-        records = self.records.descriptors.copy()
-        records = records.dropna()
-        records = records.str.split(";")
-        records = records.explode()
-        records = records.str.strip()
-        records = records.drop_duplicates()
-        return len(records)
-
-
-def make_plot(report):
-    """Makes the plot"""
-
-    def add_text_trace(fig, category, caption, row, col):
-        text = (
-            f'<span style="font-size: 8px;">{caption}</span><br>'
-            f'<br><span style="font-size: 20px;">'
-            f"{report.loc[(category, caption)].values[0]}</span>"
+            self.count_unique_items("descriptors"),
         )
 
-        fig.add_trace(
-            go.Scatter(
-                x=[0.5],
-                y=[0.5],
-                text=[text],
-                mode="text",
-            ),
-            row=row,
-            col=col,
-        )
-        fig.update_xaxes(visible=False, row=row, col=col)
-        fig.update_yaxes(visible=False, row=row, col=col)
-
-    fig = make_subplots(rows=7, cols=3)
-
-    add_text_trace(fig, "GENERAL", "Timespan", 1, 1)
-    add_text_trace(fig, "GENERAL", "Sources", 1, 2)
-    add_text_trace(fig, "GENERAL", "Documents", 1, 3)
-
-    add_text_trace(fig, "GENERAL", "Annual growth rate %", 2, 1)
-    add_text_trace(fig, "AUTHORS", "Authors", 2, 2)
-    add_text_trace(
-        fig, "AUTHORS", "Authors of single-authored documents", 2, 3
-    )
-
-    add_text_trace(fig, "AUTHORS", "International co-authorship %", 3, 1)
-    add_text_trace(fig, "AUTHORS", "Co-authors per document", 3, 2)
-    add_text_trace(fig, "GENERAL", "References", 3, 3)
-
-    add_text_trace(fig, "KEYWORDS", "Raw author keywords", 4, 1)
-    add_text_trace(fig, "KEYWORDS", "Cleaned author keywords", 4, 2)
-    add_text_trace(fig, "KEYWORDS", "Raw index keywords", 4, 3)
-
-    add_text_trace(fig, "KEYWORDS", "Raw keywords", 5, 1)
-    add_text_trace(fig, "KEYWORDS", "Cleaned keywords", 5, 2)
-    add_text_trace(fig, "NLP PHRASES", "Raw NLP phrases", 5, 3)
-
-    add_text_trace(
-        fig,
-        "NLP PHRASES",
-        "Cleaned NLP phrases",
-        6,
-        1,
-    )
-
-    add_text_trace(
-        fig,
-        "DESCRIPTORS",
-        "Raw descriptors",
-        6,
-        2,
-    )
-
-    add_text_trace(
-        fig,
-        "DESCRIPTORS",
-        "Cleaned descriptors",
-        6,
-        3,
-    )
-
-    add_text_trace(fig, "GENERAL", "Document average age", 7, 1)
-    add_text_trace(fig, "GENERAL", "Average citations per document", 7, 2)
-
-    fig.update_layout(showlegend=False)
-    fig.update_layout(title="Main Information")
-    fig.update_layout(height=800)
-
-    return fig
-
-
-def make_chatpgt_prompt(report):
-    """Makes the chatpgt prompt"""
-    # pylint: disable=line-too-long
-    main_text = (
-        "Your task is to generate a short summary for a research paper of a table with record "
-        "and field statistics for a dataset of scientific publications. "
-        "The table below, delimited by triple backticks, provides data on the main characteristics "
-        "of the records and fields of the bibliographic dataset. Use the the information in the "
-        "table to draw conclusions. Limit your description to one paragraph in at most 100 words."
-    )
-
-    return format_chatbot_prompt_for_df(main_text, report.to_markdown())
-
-
-def main_information(
-    root_dir="./",
-    database="main",
-    year_filter=None,
-    cited_by_filter=None,
-    **filters,
-):
-    """Returns main statistics of the dataset.
-
-    Args:
-        root_dir (str, optional): Root directory. Defaults to "./".
-        database (str, optional): Database name. Defaults to "documents".
-        year_filter (tuple, optional): Year filter. Defaults to None.
-        cited_by_filter (tuple, optional): Cited by filter. Defaults to None.
-        **filters (dict, optional): Filters to be applied to the database. Defaults to {}.
-
-    Returns:
-        MainInformation: MainInformation object.
-
-    """
-
-    stats = _Statistics(
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )
-
-    return MainInformation(
-        table_=stats.report_,
-        plot_=make_plot(stats.report_),
-        prompt_=make_chatpgt_prompt(stats.report_),
-    )
+    #####################################################################################

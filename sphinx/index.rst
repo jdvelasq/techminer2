@@ -113,9 +113,9 @@ TM2 module.
     :hidden:
     :maxdepth: 1
 
-    api/records
     api/coverage
-
+    api/main_information
+    api/records
 
 
 

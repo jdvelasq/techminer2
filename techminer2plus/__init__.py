@@ -18,7 +18,6 @@ from .item_associations import item_associations
 from .line_chart import line_chart
 from .list_cells_in_matrix import list_cells_in_matrix
 from .list_items import list_items
-from .main_information import main_information
 from .matrix_viewer import matrix_viewer
 from .network_clustering import network_clustering
 from .network_communities import network_communities
