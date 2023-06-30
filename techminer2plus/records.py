@@ -35,7 +35,7 @@ from .concordances import Concordances
 from .coverage import coverage
 
 # from .counters_lib import add_counters_to_frame_axis
-# from .field import Field
+from .list_items import ListItems
 from .main_information import MainInformation
 from .summary_view import summary_view
 
@@ -153,6 +153,8 @@ class Records:
     def coverage(self, field):
         """Returns a coverage of the database."""
         return coverage(
+            #
+            # FUNCTION PARAMS:
             field=field,
             #
             # DATABASE PARAMS:
@@ -163,23 +165,32 @@ class Records:
             **self.filters,
         )
 
-    # # pylint: disable=too-many-arguments
-    # def field(
-    #     self,
-    #     field,
-    #     metric="OCC",
-    #     top_n=None,
-    #     occ_range=None,
-    #     gc_range=None,
-    #     custom_items=None,
-    # ):
-    #     """Field"""
-    #     return Field(
-    #         records_instance=self,
-    #         field=field,
-    #         metric=metric,
-    #         top_n=top_n,
-    #         occ_range=occ_range,
-    #         gc_range=gc_range,
-    #         custom_items=custom_items,
-    #     )
+    # pylint: disable=too-many-arguments
+    def list_items(
+        self,
+        field,
+        metric="OCC",
+        top_n=None,
+        occ_range=(None, None),
+        gc_range=(None, None),
+        custom_items=None,
+    ):
+        """Field"""
+        return ListItems(
+            #
+            # FUNCTION PARAMS:
+            field=field,
+            metric=metric,
+            top_n=top_n,
+            occ_range=occ_range,
+            gc_range=gc_range,
+            custom_items=custom_items if custom_items is not None else [],
+            #
+            # DATABASE PARAMS:
+            #
+            root_dir=self.root_dir,
+            database=self.database,
+            year_filter=self.year_filter,
+            cited_by_filter=self.cited_by_filter,
+            **self.filters,
+        )

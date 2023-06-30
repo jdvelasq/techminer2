@@ -115,7 +115,7 @@ TM2 module.
 
     api/concordances
     api/coverage
-    api/field
+    api/list_items
     api/main_information
     api/records
     api/summary_view

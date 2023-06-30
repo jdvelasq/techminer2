@@ -215,7 +215,7 @@ class MainInformation:
     """Main Information."""
 
     #
-    # FROM RECORDS:
+    # DATABASE PARAMS:
     #
     root_dir: str = "./"
     database: str = "main"

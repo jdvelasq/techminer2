@@ -5,7 +5,7 @@ from dataclasses import dataclass
 import plotly.express as px
 import plotly.graph_objs as go
 
-from .list_items import ItemsList
+# from .list_items import ItemsList
 
 
 def bar_chart(
