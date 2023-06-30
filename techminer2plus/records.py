@@ -7,6 +7,7 @@ Records
 
 
 
+* **USER COMPUTATIONAL INTERFACE:**
 
 >>> import techminer2plus as tm2p
 >>> root_dir = "data/regtech/"
