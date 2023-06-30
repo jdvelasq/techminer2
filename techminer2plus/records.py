@@ -32,9 +32,9 @@ from dataclasses import dataclass
 from dataclasses import field as datafield
 
 from .concordances import Concordances
+from .coverage import coverage
 
 # from .counters_lib import add_counters_to_frame_axis
-# from .coverage import coverage
 # from .field import Field
 from .main_information import MainInformation
 from .summary_view import summary_view
@@ -150,9 +150,18 @@ class Records:
             **self.filters,
         )
 
-    # def coverage(self, column):
-    #     """Returns a MainInformation object."""
-    #     return coverage(parent=self, column=column)
+    def coverage(self, field):
+        """Returns a coverage of the database."""
+        return coverage(
+            field=field,
+            #
+            # DATABASE PARAMS:
+            root_dir=self.root_dir,
+            database=self.database,
+            year_filter=self.year_filter,
+            cited_by_filter=self.cited_by_filter,
+            **self.filters,
+        )
 
     # # pylint: disable=too-many-arguments
     # def field(

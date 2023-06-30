@@ -7,6 +7,7 @@ from .cleveland_dot_chart import cleveland_dot_chart
 from .co_occurrence_matrix import co_occurrence_matrix
 from .column_chart import column_chart
 from .concordances import Concordances
+from .coverage import coverage
 from .cross_correlation_map import cross_correlation_map
 from .cross_correlation_matrix import cross_correlation_matrix
 from .factor_matrix_clustering import factor_matrix_clustering

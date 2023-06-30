@@ -6,6 +6,8 @@ import pandas as pd
 
 
 def read_records(
+    #
+    # DATABASE_PARAMS
     root_dir: str = "./",
     database: str = "main",
     year_filter: tuple = (None, None),
