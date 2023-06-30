@@ -34,13 +34,12 @@ from dataclasses import field as datafield
 import pandas as pd
 
 from .concordances import Concordances
-from .read_records import read_records
 
 # from .counters_lib import add_counters_to_frame_axis
 # from .coverage import coverage
 # from .field import Field
-# from .main_information import MainInformation
-
+from .main_information import MainInformation
+from .read_records import read_records
 
 # =============================================================================
 #
@@ -126,9 +125,9 @@ class Records:
             filters=self.filters,
         )
 
-    # def main_information(self):
-    #     """Returns a MainInformation object."""
-    #     return MainInformation(records=self.records_.copy())
+    def main_information(self):
+        """Returns a MainInformation object."""
+        return MainInformation(records=self.records_.copy())
 
     # def coverage(self, column):
     #     """Returns a MainInformation object."""

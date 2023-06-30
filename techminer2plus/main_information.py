@@ -9,11 +9,15 @@ TODO: check organizations_1st_author, countries_1st_author
 
 >>> import techminer2plus as tm2p
 >>> root_dir = "data/regtech/"
->>> info = tm2p.Records(root_dir=root_dir).main_information()
->>> info
-MainInformation(n_records=52)
 
->>> info.frame_
+* **USER COMPUTATIONAL INTERFACE:**
+
+>>> main_info = tm2p.Records(root_dir=root_dir).main_information()
+>>> main_info
+MainInformation(root_dir='./', database='main', year_filter=(None, None),
+    cited_by_filter=(None, None), filters={}, n_records=52)
+
+>>> main_info.frame_
                                                             Value
 Category       Item                                              
 GENERAL        Timespan                                 2016:2023
@@ -62,7 +66,7 @@ DESCRIPTORS    Raw descriptors                                373
 
                
 >>> file_name = "sphinx/_static/main_info.html"               
->>> info.fig_.write_html(file_name)
+>>> main_info.fig_.write_html(file_name)
 
 .. raw:: html
 
@@ -70,7 +74,7 @@ DESCRIPTORS    Raw descriptors                                373
 
 
     
->>> print(info.prompt_)
+>>> print(main_info.prompt_)
 Your task is to generate a short summary for a research paper of a table \\
 with record and field statistics for a dataset of scientific publications. \\
 The table below, delimited by triple backticks, provides data on the main \\
@@ -128,12 +132,66 @@ Table:
 <BLANKLINE>
 
     
+* **COMPUTATIONAL API:**
+
+>>> frame_, prompt_, fig_ = main_information(
+...     root_dir=root_dir,
+... )
+>>> frame_
+                                                            Value
+Category       Item                                              
+GENERAL        Timespan                                 2016:2023
+               Documents                                       52
+               Annual growth rate %                         63.87
+               Document average age                          2.77
+               References                                    2968
+               Average citations per document               10.83
+               Average citations per document per year       1.35
+               Average references per document              59.36
+               Sources                                         46
+               Average documents per source                  1.13
+DOCUMENT TYPES article                                         31
+               book                                             1
+               book_chapter                                     9
+               conference_paper                                11
+AUTHORS        Authors                                        102
+               Authors of single-authored documents            19
+               Single-authored documents                       19
+               Multi-authored documents                        33
+               Authors per document                          2.29
+               Co-authors per document                       3.03
+               International co-authorship %                23.08
+               Author appearances                             119
+               Documents per author                          0.44
+               Collaboration index                            1.0
+               Organizations                                   81
+               Organizations (1st author)                       0
+               Countries                                       29
+               Countries (1st author)                           0
+KEYWORDS       Raw author keywords                            148
+               Cleaned author keywords                        143
+               Raw index keywords                             155
+               Cleaned index keywords                         149
+               Raw keywords                                   273
+               Cleaned keywords                               252
+NLP PHRASES    Raw title NLP phrases                           40
+               Cleaned title NLP phrases                       40
+               Raw abstract NLP phrases                       157
+               Cleaned abstract NLP phrases                   149
+               Raw NLP phrases                                167
+               Cleaned NLP phrases                            158
+DESCRIPTORS    Raw descriptors                                373
+               Cleaned descriptors                            338
 
 
 
 # pylint: disable=line-too-long
 """
 import datetime
+import textwrap
+from dataclasses import dataclass
+from dataclasses import field as datafield
+from typing import Optional
 
 import numpy as np
 import pandas as pd
@@ -141,12 +199,92 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
 from .chatbot_prompts import format_chatbot_prompt_for_df
+from .read_records import read_records
+
+# =============================================================================
+#
+#
+#  USER COMPUTATIONAL INTERFACE:
+#
+#
+# =============================================================================
+
+
+@dataclass
+class MainInformation:
+    """Main Information."""
+
+    #
+    # FROM RECORDS:
+    #
+    root_dir: str = "./"
+    database: str = "main"
+    year_filter: tuple = (None, None)
+    cited_by_filter: tuple = (None, None)
+    filters: dict = datafield(default_factory=dict)
+
+    records: Optional[pd.DataFrame] = None
+
+    #
+    # RESULTS:
+    #
+    frame_: pd.DataFrame = pd.DataFrame()
+    prompt_: str = ""
+    fig: go.Figure = go.Figure()
+
+    def __post_init__(self):
+        #
+        # COMPUTATIONS:
+        #
+        if self.filters is None:
+            self.filters = {}
+
+        if self.records is None:
+            self.records = read_records(
+                root_dir=str(self.root_dir),
+                database=str(self.database),
+                year_filter=self.year_filter,
+                cited_by_filter=self.cited_by_filter,
+                **self.filters,
+            )
+
+        main_info = MainInformationComputattion(records=self.records)
+        self.frame_ = main_info.frame_
+        self.fig_ = main_info.fig_
+        self.prompt_ = main_info.prompt_
+
+    def __repr__(self):
+        """String representation."""
+        text = (
+            "MainInformation("
+            f"root_dir='{self.root_dir}'"
+            f", database='{self.database}'"
+            f", year_filter={self.year_filter}"
+            f", cited_by_filter={self.cited_by_filter}"
+            f", filters={self.filters}"
+            f", n_records={len(self.records)}"
+            ")"
+        )
+
+        return textwrap.fill(text, width=80, subsequent_indent="    ")
+
+
+# =============================================================================
+#
+#
+#  COMPUTATIONAL API:
+#
+#
+# =============================================================================
 
 
 # pylint: disable=too-many-public-methods
 # pylint: disable=too-many-instance-attributes
-class MainInformation:
-    """Main information about the dataset."""
+class MainInformationComputattion:
+    """Main information about the dataset.
+
+    :meta private:
+    """
 
     def __init__(self, records):
         """Constructor"""
@@ -184,9 +322,6 @@ class MainInformation:
     # PROPERTIES
     #
     #
-    def __repr__(self):
-        """String representation."""
-        return f"MainInformation(n_records={self.n_records})"
 
     @property
     def prompt_(self):
@@ -763,3 +898,23 @@ class MainInformation:
             "Cleaned descriptors",
             self.count_unique_items("descriptors"),
         )
+
+
+def main_information(
+    root_dir: str = "./",
+    database: str = "main",
+    year_filter: tuple = (None, None),
+    cited_by_filter: tuple = (None, None),
+    **filters,
+):
+    records = read_records(
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
+    )
+
+    main_info = MainInformationComputattion(records)
+
+    return main_info.frame_, main_info.fig_, main_info.prompt_
