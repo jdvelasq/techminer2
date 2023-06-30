@@ -29,7 +29,7 @@ stopwords list.
 
 # pylint: disable=line-too-long
 """
-from ..records_lib import read_records
+from ..records import read_records
 from ..stopwords_lib import load_stopwords
 
 

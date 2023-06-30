@@ -148,10 +148,17 @@ from .chatbot_prompts import format_chatbot_prompt_for_df
 class MainInformation:
     """Main information about the dataset."""
 
-    def __init__(self, parent):
+    def __init__(self, records):
         """Constructor"""
 
-        self.records = parent.records_
+        #
+        # PARAMETERS:
+        #
+        self.records = records.copy()
+
+        #
+        # COMPUATIONS:
+        #
         self.n_records = len(self.records)
 
         self.category = []
@@ -159,7 +166,7 @@ class MainInformation:
         self.value = []
 
         self.prompt = None
-        self.frame = None
+        self.frame = pd.DataFrame()
         self.fig = None
 
         self.__compute_general_information_stats()
@@ -756,5 +763,3 @@ class MainInformation:
             "Cleaned descriptors",
             self.count_unique_items("descriptors"),
         )
-
-    #####################################################################################

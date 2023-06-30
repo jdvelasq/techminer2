@@ -1,5 +1,6 @@
 # flake8: noqa
 # pylint: disable=line-too-long
+# pylint: disable=missing-docstring
 """
 .. _field:
 
@@ -61,50 +62,58 @@ Table:
 
 """
 import textwrap
+from collections import defaultdict
+from dataclasses import dataclass
+from dataclasses import field as datafield
+from typing import Dict, Optional
+
+import pandas as pd
 
 from .bar_chart import bar_chart
 from .chatbot_prompts import format_chatbot_prompt_for_df
 from .filtering_lib import generate_custom_items
+from .metrics_lib import indicators_by_field
 from .sorting_lib import sort_indicators_by_metric
 from .terms_by_year import TermsByYear
 
 
 # pylint: disable=too-many-instance-attributes
 # pylint: disable=too-many-arguments
+@dataclass
 class Field:
-    """Class for field computations."""
+    """Database field."""
 
-    def __init__(
-        self,
-        records,
-        field,
-        metric="OCC",
-        top_n=None,
-        occ_range=None,
-        gc_range=None,
-        custom_items=None,
-    ):
-        """Constructor"""
+    #
+    # PARAMETERS:
+    #
+    records: pd.DataFrame
+    field: str
+    metric: str = "OCC"
+    top_n: Optional[int] = None
+    occ_range: Optional[tuple] = None
+    gc_range: Optional[tuple] = None
+    custom_items: Optional[list] = None
 
-        #
-        # Inputs:
-        #
-        self.__records = records
-        self.__field = field
-        self.__metric = metric
-        self.__top_n = top_n
-        self.__occ_range = occ_range
-        self.__gc_range = gc_range
-        self.__custom_items = custom_items
+    #
+    # FROM RECORDS:
+    #
+    root_dir: str = "./"
+    database: str = "main"
+    year_filter: tuple = (None, None)
+    cited_by_filter: tuple = (None, None)
+    filters: Dict[str, str] = datafield(
+        default_factory=lambda: defaultdict(str)
+    )
 
-        #
-        # Params:
-        #
-        self.__frame = None
-        self.__prompt = None
+    #
+    # RESULTS:
+    #
+    frame_: pd.DataFrame = pd.DataFrame()
+    prompt_: str = "TODO"
 
+    def __post_init__(self):
         #
-        # Computations:
+        # COMPUTATIONS:
         #
         self.__compute_indicators_by_field()
         self.__sort_indicators_by_metric()
@@ -119,105 +128,70 @@ class Field:
     #
     #
     def __repr__(self):
-        """String representation."""
+        text = (
+            "Field("
+            f"file='{self.field}'"
+            f", metric='{self.metric}'"
+            f", top_n={self.top_n}"
+            f", occ_range={self.occ_range}"
+            f", gc_range={self.gc_range}"
+            f", custom_items={self.custom_items}"
+            ")"
+        )
 
-        params = ", ".join(self.repr_params_)
-        text = f"{self.__class__.__name__}({params})"
-        text = textwrap.fill(text, width=80, subsequent_indent=" " * 4)
-
-        return text
-
-    @property
-    def repr_params_(self):
-        """Returns the parameters used for the string representation as a list."""
-
-        params = [
-            f"field='{self.__field}'",
-            f"metric='{self.__metric}'",
-        ]
-        if self.__top_n is not None:
-            params.append(f"top_n={self.__top_n}")
-        if self.__occ_range is not None:
-            params.append(f"occ_range={self.__occ_range}")
-        if self.__gc_range is not None:
-            params.append(f"gc_range={self.__gc_range}")
-        if self.__custom_items is not None:
-            params.append(f"custom_items={self.__custom_items}")
-
-        return params
-
-    @property
-    def frame_(self):
-        """Returns the dataframe."""
-        return self.__frame
-
-    @property
-    def prompt_(self):
-        """Returns the chatbot prompt."""
-        return self.__prompt
-
-    @property
-    def metric_(self):
-        """Returns the used metric."""
-        return self.__metric
-
-    @property
-    def field_(self):
-        """Returns the field."""
-        return self.__field
-
-    @property
-    def custom_items_(self):
-        """Returns the custom items."""
-        return self.__custom_items
+        return textwrap.fill(text, width=80, subsequent_indent="    ")
 
     #
     #
     # PUBLIC METHODS FOR VISUALIZATION
     #
     #
-    def bar_chart(
-        self,
-        title=None,
-        metric_label=None,
-        field_label=None,
-    ):
-        """Returns a bar chart."""
-        return bar_chart(
-            data=self,
-            title=title,
-            metric_label=metric_label,
-            field_label=field_label,
-        )
+    # def bar_chart(
+    #     self,
+    #     title=None,
+    #     metric_label=None,
+    #     field_label=None,
+    # ):
+    #     """Returns a bar chart."""
+    #     return bar_chart(
+    #         data_frame=self.frame_,
+    #         x=self.metric,
+    #         y=None,
+    #         title=title,
+    #         x_title=metric_label if metric_label is not None else self.field,
+    #         y_title=field_label if field_label is not None else self.metric,
+    #     )
 
     #
     #
     # PUBLIC METHODS FOR INTERFACING
     #
     #
-    def terms_by_year(self, cumulative=False):
-        """Returns the terms by year."""
-        return TermsByYear(
-            records=self.__records, field=self, cumulative=cumulative
-        )
+    # def terms_by_year(self, cumulative=False):
+    #     """Returns the terms by year."""
+    #     return TermsByYear(
+    #         records_instance=self.__records_instance,
+    #         field_instance=self,
+    #         cumulative=cumulative,
+    #     )
 
     #
     #
-    # INTERNAL METHODS
+    # COMPUTATIONS:
     #
     #
     def __geneate_chatbot_prompt(self):
         """Chat GPT prompt."""
         main_text = (
             "Your task is to generate an analysis about the bibliometric indicators of the "
-            f"'{self.__field}' field in a scientific bibliography database. Summarize the table below, "
-            f"sorted by the '{self.__metric}' metric, and delimited by triple backticks, identify "
+            f"'{self.field}' field in a scientific bibliography database. Summarize the table below, "
+            f"sorted by the '{self.metric}' metric, and delimited by triple backticks, identify "
             "any notable patterns, trends, or outliers in the data, and discuss their "
             "implications for the research field. Be sure to provide a concise summary "
             "of your findings in no more than 150 words."
         )
-        self.__prompt = format_chatbot_prompt_for_df(
-            main_text, self.__frame.to_markdown()
+        self.prompt_ = format_chatbot_prompt_for_df(
+            main_text, self.frame_.to_markdown()
         )
 
     def __compute_indicators_by_field(self):
@@ -225,7 +199,17 @@ class Field:
 
         :meta private:
         """
-        self.__frame = self.__records.indicators_by_field(self.__field)
+        self.frame_ = indicators_by_field(
+            field=self.field,
+            #
+            # Database params:
+            records=self.records,
+            root_dir=self.root_dir,
+            database=self.database,
+            year_filter=self.year_filter,
+            cited_by_filter=self.cited_by_filter,
+            **self.filters,
+        )
 
     def __sort_indicators_by_metric(self):
         """Sort indicators by metric.

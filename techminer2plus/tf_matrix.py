@@ -54,7 +54,7 @@ import pandas as pd
 from .counters_lib import add_counters_to_frame_axis
 from .filtering_lib import generate_custom_items
 from .metrics_lib import indicators_by_field
-from .records_lib import read_records
+from .records import read_records
 
 
 # pylint: disable=too-many-instance-attributes

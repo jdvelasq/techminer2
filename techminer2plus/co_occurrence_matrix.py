@@ -6,9 +6,23 @@ Co-occurrence Matrix
 ===============================================================================
 
 
->>> ROOT_DIR = "data/regtech/"
 
->>> import techminer2plus
+
+>>> import techminer2plus as tm2p
+>>> root_dir = "data/regtech/"
+>>> co_occ_matrix = (
+...     tm2p.Records(root_dir=root_dir)
+...     .co_occurrence_matrix(
+...         columns='author_keywords',
+...         rows='authors',
+...         col_occ_range=(2, None),
+...         row_occ_range=(2, None),
+...     )
+... )
+>>> co_occ_matrix
+
+
+
 >>> co_occ_matrix = techminer2plus.co_occurrence_matrix(
 ...     columns='author_keywords',
 ...     rows='authors',

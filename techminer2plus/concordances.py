@@ -10,6 +10,49 @@ Abstract concordances exploration tool.
 
 >>> import techminer2plus as tm2p
 >>> root_dir = "data/regtech/"
+
+
+* Computational interface:
+
+>>> contexts_, frame_, prompt_ = concordances(
+...     root_dir=root_dir,
+...     search_for='REGTECH',
+...     top_n=10,
+... )
+>>> print(contexts_)
+                                                             REGTECH can provide an invaluable tool, in a BUSINESS as usual E >>>
+                                                             REGTECH developments are leading towards a paradigm shift necess >>>
+                                                             REGTECH to date has focused on the DIGITIZATION of manual REPORT >>>
+                                                             REGTECH will not eliminate policy considerations, nor will IT re >>>
+           although also not a panacea, the DEVELOPMENT of " REGTECH " solutions will help clear away volumes of work that un >>>
+<<< s the promise and potential of REGULATORY_TECHNOLOGIES ( REGTECH ), a new and vital dimension to FINTECH
+<<< paper, the authors propose a novel, regular TECHNOLOGY ( REGTECH ) cum automated legal text approach for financial TRANSA >>>
+                     2020 the authorsregulatory TECHNOLOGY ( REGTECH )
+                                     REGULATORY_TECHNOLOGY ( REGTECH ) is an emerging TECHNOLOGY trend leveraging INFORMATION >>>
+<<< llustrate the impact of adopting REGULATORY_TECHNOLOGY ( REGTECH ) INNOVATIONS in BANKS on MONEY_LAUNDERING prevention ef >>>
+<<< rpose of this paper is to explore the solutions that AI, REGTECH and CHARITYTECH provide to charities in navigating the v >>>
+                                                in contrast, REGTECH has recently brought great SUCCESS to financial COMPLIAN >>>
+<<< the area of FINANCIAL_REGULATION (REGULATORY_TECHNOLOGY: REGTECH ) can significantly improve FINANCIAL_DEVELOPMENT outcomes
+<<< that together they are underpinning the DEVELOPMENT of a REGTECH ECOSYSTEM in EUROPE and will continue to do so
+                                 an option is to incorporate REGTECH into the DIGITAL_TRANSFORMATION STRATEGY of a MANAGEMENT >>>
+<<< egulator based SELF_ASSESSMENT checklist to establish if REGTECH best practice could improve the demonstration of GDPR_CO >>>
+                 the chapter notes that the full BENEFITS of REGTECH will only materialise if the pitfalls of a fragmented to >>>
+<<< ld, sets the foundation for a practical understanding of REGTECH , and proposes sequenced reforms that could BENEFIT regu >>>
+                                   however, the potential of REGTECH is far greater  IT has the potential to enable a nearly  >>>
+                        this paper explores the potential of REGTECH and the merit of incorporating IT into a SMART_TREASURY  >>>
+<<< ral awareness concerning the ADOPTION and integration of REGTECH PLATFORMS for fighting MONEY_LAUNDERING
+<<< ING through REGTECH and cost  and time-saving aspects of REGTECH , drive MONEY_LAUNDERING prevention effectiveness to a h >>>
+                 nevertheless, a sophisticated deployment of REGTECH should help focus regulatory discretion and PUBLIC_POLIC >>>
+<<< ndings provide specific insights about the deployment of REGTECH capabilities in BANKS in regional BANKING centers of mod >>>
+<<< and regulators, and provided an ENVIRONMENT within which REGTECH can flourish
+<<< l systems requires increasing the use of and reliance on REGTECH 
+<<< ide insights for other societies in developing their own REGTECH ECOSYSTEMS in order to support more efficient, stable, i >>>
+                                             europes road to REGTECH has rested upon four apparently unrelated pillars: (1) e >>>
+<<<  five-year research programme to highlight the role that REGTECH can play in making REGULATORY_COMPLIANCE more efficient  >>>
+<<< otwithstanding the RISK_REDUCTIONS and cost savings that REGTECH can deliver
+<<< emantically enabled applications can be made possible by REGTECH 
+
+
 >>> concordances = (
 ...     tm2p.Records(root_dir=root_dir)
 ...     .concordances(
@@ -19,7 +62,9 @@ Abstract concordances exploration tool.
 ... )
 >>> concordances
 Concordances(root_dir='data/regtech/', database='main', search_for='REGTECH',
-    top_n='10')
+    top_n=10)
+
+    
 
 >>> print(concordances.contexts_)
                                                              REGTECH can provide an invaluable tool, in a BUSINESS as usual E >>>
@@ -196,129 +241,101 @@ SMART_TREASURY department
 """
 import os.path
 import textwrap
+from dataclasses import dataclass
+from dataclasses import field as datafield
+from typing import Dict, Optional
 
 import pandas as pd
 
 from .chatbot_prompts import format_prompt_for_paragraphs
-from .records_lib import read_records
+from .read_records import read_records
 
 
+# pylint: disable=too-many-instance-attributes
+@dataclass
 class Concordances:
-    """Computes text concodances for a given search term."""
+    """Concordances."""
 
-    # pylint: disable=too-many-arguments
-    def __init__(
-        self,
-        records,
-        search_for,
-        top_n=50,
-        report_file="concordances_report.txt",
-        prompt_file="concordances_prompt.txt",
-    ):
-        """Computes text concodances for a given search term."""
-        #
-        # Params:
-        #
-        self.__records = records
-        self.__search_for = search_for
-        self.__top_n = top_n
+    #
+    # PARAMETERS:
+    #
+    search_for: str
+    top_n: int = 50
+    report_file: str = "concordances_report.txt"
+    prompt_file: str = "concordances_prompt.txt"
 
-        contexts, frame, prompt = concordances_from_records(
-            records=records.records_,
-            search_for=search_for,
-            top_n=top_n,
-            report_file=report_file,
-            prompt_file=prompt_file,
-            root_dir=records.root_dir_,
+    records: Optional[pd.DataFrame] = None
+
+    #
+    # FROM RECORDS:
+    #
+    root_dir: str = "./"
+    database: str = "main"
+    year_filter: tuple = (None, None)
+    cited_by_filter: tuple = (None, None)
+    filters: dict = datafield(default_factory=dict)
+
+    #
+    # RESULTS:
+    #
+    contexts_: str = ""
+    frame_: pd.DataFrame = pd.DataFrame()
+    prompt_: str = ""
+
+    def __post_init__(self):
+        #
+        # COMPUTATIONS:
+        #
+        if self.filters is None:
+            self.filters = {}
+
+        if self.records is None:
+            self.records = read_records(
+                root_dir=str(self.root_dir),
+                database=str(self.database),
+                year_filter=self.year_filter,
+                cited_by_filter=self.cited_by_filter,
+                **self.filters,
+            )
+
+        self.contexts_, self.frame_, self.prompt_ = concordances(
+            records=self.records,
+            search_for=self.search_for,
+            top_n=self.top_n,
+            report_file=self.report_file,
+            prompt_file=self.prompt_file,
+            root_dir=self.root_dir,
         )
 
-        self.__contexts = contexts
-        self.__frame = frame
-        self.__prompt = prompt
-
-    #
-    #
-    # PROPERTIES
-    #
-    #
     def __repr__(self):
-        """String representation."""
+        text = (
+            "Concordances("
+            f"root_dir='{self.root_dir}'"
+            f", database='{self.database}'"
+            f", search_for='{self.search_for}'"
+            f", top_n={self.top_n}"
+            ")"
+        )
 
-        params = ", ".join(self.repr_params_)
-        text = f"{self.__class__.__name__}({params})"
-        text = textwrap.fill(text, width=80, subsequent_indent=" " * 4)
-
-        return text
-
-    @property
-    def repr_params_(self):
-        """Returns the parameters used for the string representation as a list."""
-        return self.__records.repr_params_ + [
-            f"search_for='{self.__search_for}'",
-            f"top_n='{self.__top_n}'",
-        ]
-
-    @property
-    def contexts_(self):
-        """Returns the contexts."""
-        return self.__contexts
-
-    @property
-    def frame_(self):
-        """Returns the dataframe."""
-        return self.__frame
-
-    @property
-    def prompt_(self):
-        """Returns the chatbot prompt."""
-        return self.__prompt
+        return textwrap.fill(text, width=80, subsequent_indent="    ")
 
 
 # pylint: disable=too-many-arguments
+# pylint: disable=too-many-statements
+# pylint: disable=too-many-locals
 def concordances(
     search_for,
-    top_n=50,
+    top_n,
     report_file="concordances_report.txt",
     prompt_file="concordances_prompt.txt",
     #
     # Database params:
-    root_dir="./",
-    database="main",
-    year_filter=None,
-    cited_by_filter=None,
+    records: Optional[pd.DataFrame] = None,
+    root_dir: str = "./",
+    database: str = "main",
+    year_filter: tuple = (None, None),
+    cited_by_filter: tuple = (None, None),
     **filters,
-):
-    """Extracts concordances from abstracts."""
-    #
-    # Main code:
-    #
-    records = read_records(
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )
-
-    return concordances_from_records(
-        records=records,
-        search_for=search_for,
-        top_n=top_n,
-        report_file=report_file,
-        prompt_file=prompt_file,
-        root_dir=root_dir,
-    )
-
-
-# pylint: disable=too-many-statements
-# pylint: disable=too-many-locals
-def concordances_from_records(
-    records,
-    search_for,
-    top_n,
-    report_file,
-    prompt_file,
-    root_dir,
 ):
     """Checks the occurrence contexts of a given text in the abstract's phrases.
 
@@ -435,8 +452,7 @@ def concordances_from_records(
                 subsequent_indent=" " * 0,
                 fix_sentence_endings=True,
             )
-        else:
-            return ""
+        return ""
 
     def write_report(phrases, report_file):
         """Writes the report."""
@@ -445,13 +461,14 @@ def concordances_from_records(
         phrases = phrases.to_frame()
         phrases["doc"] = phrases.index
         phrases = phrases.groupby("doc")["abstract"].apply(list)
-        phrases = phrases.map(lambda x: ".  ".join(x))
+        # phrases = phrases.map(lambda x: ".  ".join(x))
+        phrases = phrases.str.join(".  ")
 
         file_path = os.path.join(root_dir, "reports", report_file)
         with open(file_path, "w", encoding="utf-8") as file:
             counter = 0
             for title, phrase in zip(phrases.index, phrases):
-                print("-- {:03d} ".format(counter) + "-" * 83, file=file)
+                print(f"-- {counter:03d} " + "-" * 83, file=file)
                 print("AR: ", end="", file=file)
                 print(fill(title), file=file)
                 print("", file=file)
@@ -459,20 +476,29 @@ def concordances_from_records(
                 print("\n", file=file)
                 counter += 1
 
+    def write_prompt_file():
+        file_path = os.path.join(root_dir, "reports", prompt_file)
+        with open(file_path, "w", encoding="utf-8") as file:
+            print(prompt_, file=file)
+
     #
     # Main code:
     #
+    if records is None:
+        records = read_records(
+            root_dir=root_dir,
+            database=database,
+            year_filter=year_filter,
+            cited_by_filter=cited_by_filter,
+            **filters,
+        )
+
     phrases = get_phrases(records)
-    contexts_table = create_contexts_table(phrases)
-    texts = transform_context_to_text(contexts_table)
+    frame_ = create_contexts_table(phrases)
+    contexts_ = transform_context_to_text(frame_)
+    prompt_ = generate_prompt(frame_)
+
     write_report(phrases, report_file)
-
-    contexts_ = texts
-    frame_ = contexts_table.copy()
-    prompt_ = generate_prompt(contexts_table)
-
-    file_path = os.path.join(root_dir, "reports", prompt_file)
-    with open(file_path, "w", encoding="utf-8") as file:
-        print(prompt_, file=file)
+    write_prompt_file()
 
     return contexts_, frame_, prompt_

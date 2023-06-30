@@ -115,6 +115,8 @@ Table:
 
 import textwrap
 
+import pandas as pd
+
 from .chatbot_prompts import format_chatbot_prompt_for_df
 from .gantt_chart import gantt_chart
 
@@ -122,20 +124,20 @@ from .gantt_chart import gantt_chart
 class TermsByYear:
     """Terms by year."""
 
-    def __init__(self, records, field, cumulative=False):
+    def __init__(self, records_instance, field_instance, cumulative=False):
         """Constructor."""
 
         #
         # Inputs:
         #
-        self.__records = records
-        self.__field = field
+        self.__records_instance = records_instance
+        self.__field_instance = field_instance
         self.__cumulative = cumulative
 
         #
         # Params:
         #
-        self.__frame = None
+        self.__frame = pd.DataFrame()
         self.__prompt = None
 
         #
@@ -159,7 +161,7 @@ class TermsByYear:
     @property
     def repr_params_(self):
         """Returns the parameters used for the string representation as a list."""
-        return self.__field.repr_params_ + [
+        return self.__field_instance.repr_params_ + [
             f"cumulative={self.__cumulative}",
         ]
 
@@ -181,7 +183,7 @@ class TermsByYear:
     @property
     def field_(self):
         """Returns the field name."""
-        return self.__field.field_
+        return self.__field_instance.field_
 
     #
     #
@@ -200,23 +202,23 @@ class TermsByYear:
     def __compute_terms_by_year(self):
         """Computes terms by year."""
 
-        descriptors_by_year = self.__records.items_occ_by_year(
-            field=self.__field.field_,
+        descriptors_by_year = self.__records_instance.items_occ_by_year(
+            field=self.__field_instance.field_,
             cumulative=self.__cumulative,
         )
 
         descriptors_by_year = descriptors_by_year[
-            descriptors_by_year.index.isin(self.__field.custom_items_)
+            descriptors_by_year.index.isin(self.__field_instance.custom_items_)
         ]
 
         descriptors_by_year = descriptors_by_year.loc[
-            self.__field.custom_items_, :
+            self.__field_instance.custom_items_, :
         ]
 
-        self.__frame = self.__records.add_counters_to_frame_axis(
+        self.__frame = self.__records_instance.add_counters_to_frame_axis(
             descriptors_by_year,
             axis=0,
-            field=self.__field.field_,
+            field=self.__field_instance.field_,
         )
 
     def __generate_prompt(self):

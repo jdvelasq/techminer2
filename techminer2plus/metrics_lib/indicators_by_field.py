@@ -97,7 +97,7 @@ If ``Y_end = 2018`` and ``time_window = 2``, then ``Y_start = 2017``.
 
 import numpy as np
 
-from ..records_lib import read_records
+from ..records import read_records
 from ..sorting_lib import sort_indicators_by_metric
 from ..stopwords_lib import load_stopwords
 from .items_occ_by_year import items_occ_by_year
@@ -111,6 +111,7 @@ def indicators_by_field(
     time_window=2,
     #
     # Database params:
+    records=None,
     root_dir="./",
     database="main",
     year_filter=None,
@@ -345,13 +346,14 @@ def indicators_by_field(
     # Main code:
     #
     #
-    records = read_records(
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )
+    if records is None:
+        records = read_records(
+            root_dir=root_dir,
+            database=database,
+            year_filter=year_filter,
+            cited_by_filter=cited_by_filter,
+            **filters,
+        )
 
     records["OCC"] = 1
 

@@ -31,33 +31,26 @@ Items in your list are the Y-axis, and the number of records are the X-axis.
 import plotly.express as px
 
 
+# pylint: disable=too-many-arguments
+# pylint: disable=invalid-name
 def bar_chart(
-    data,
-    #
-    # Chart params:
+    data_frame,
+    x,
+    y,
+    x_title,
+    y_title,
     title=None,
-    metric_label=None,
-    field_label=None,
 ):
     """Bar chart."""
 
-    metric_label = (
-        data.metric_.replace("_", " ").upper()
-        if metric_label is None
-        else metric_label
-    )
-
-    field_label = (
-        data.field_.replace("_", " ").upper()
-        if field_label is None
-        else field_label
-    )
+    y_title = y_title.replace("_", " ").upper()
+    x_title = x_title.replace("_", " ").upper()
 
     fig = px.bar(
-        data.frame_,
-        x=data.metric_,
-        y=None,
-        hover_data=data.frame_.columns.to_list(),
+        data_frame,
+        x,
+        y,
+        hover_data=data_frame.columns.to_list(),
         orientation="h",
     )
 
@@ -75,7 +68,7 @@ def bar_chart(
         linewidth=2,
         gridcolor="lightgray",
         griddash="dot",
-        title_text=metric_label,
+        title_text=x_title,
     )
     fig.update_yaxes(
         linecolor="gray",
@@ -83,7 +76,65 @@ def bar_chart(
         autorange="reversed",
         gridcolor="lightgray",
         griddash="dot",
-        title_text=field_label,
+        title_text=y_title,
     )
 
     return fig
+
+
+# def bar_chart(
+#     data,
+#     #
+#     # Chart params:
+#     title=None,
+#     metric_label=None,
+#     field_label=None,
+# ):
+#     """Bar chart."""
+
+#     metric_label = (
+#         data.metric_.replace("_", " ").upper()
+#         if metric_label is None
+#         else metric_label
+#     )
+
+#     field_label = (
+#         data.field_.replace("_", " ").upper()
+#         if field_label is None
+#         else field_label
+#     )
+
+#     fig = px.bar(
+#         data.frame_,
+#         x=data.metric_,
+#         y=None,
+#         hover_data=data.frame_.columns.to_list(),
+#         orientation="h",
+#     )
+
+#     fig.update_layout(
+#         paper_bgcolor="white",
+#         plot_bgcolor="white",
+#         title_text=title if title is not None else "",
+#     )
+#     fig.update_traces(
+#         marker_color="rgb(171,171,171)",
+#         marker_line={"color": "darkslategray"},
+#     )
+#     fig.update_xaxes(
+#         linecolor="gray",
+#         linewidth=2,
+#         gridcolor="lightgray",
+#         griddash="dot",
+#         title_text=metric_label,
+#     )
+#     fig.update_yaxes(
+#         linecolor="gray",
+#         linewidth=2,
+#         autorange="reversed",
+#         gridcolor="lightgray",
+#         griddash="dot",
+#         title_text=field_label,
+#     )
+
+#     return fig
