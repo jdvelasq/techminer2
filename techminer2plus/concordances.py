@@ -250,6 +250,14 @@ import pandas as pd
 from .chatbot_prompts import format_prompt_for_paragraphs
 from .read_records import read_records
 
+# =============================================================================
+#
+#
+#  USER COMPUTATIONAL INTERFACE:
+#
+#
+# =============================================================================
+
 
 # pylint: disable=too-many-instance-attributes
 @dataclass
@@ -318,6 +326,15 @@ class Concordances:
         )
 
         return textwrap.fill(text, width=80, subsequent_indent="    ")
+
+
+# =============================================================================
+#
+#
+#  COMPUTATIONAL API:
+#
+#
+# =============================================================================
 
 
 # pylint: disable=too-many-arguments
