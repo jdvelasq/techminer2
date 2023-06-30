@@ -243,7 +243,7 @@ import os.path
 import textwrap
 from dataclasses import dataclass
 from dataclasses import field as datafield
-from typing import Dict, Optional
+from typing import Optional
 
 import pandas as pd
 
