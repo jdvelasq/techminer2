@@ -200,7 +200,7 @@ SMART_TREASURY department
 
 * **COMPUTATIONAL API:**
 
->>> contexts_, frame_, prompt_ = concordances(
+>>> contexts_, frame_, prompt_ = tm2p.concordances(
 ...     root_dir=root_dir,
 ...     search_for='REGTECH',
 ...     top_n=10,
@@ -275,7 +275,7 @@ class Concordances:
     records: Optional[pd.DataFrame] = None
 
     #
-    # FROM RECORDS:
+    # DATABASE PARAMS:
     #
     root_dir: str = "./"
     database: str = "main"

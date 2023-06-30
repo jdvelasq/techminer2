@@ -34,7 +34,7 @@ Baxter LG, 2016, DUKE LAW J, V66, P567              2016  ...                   
 # pylint: disable=line-too-long
 """
 
-from ..records import read_records
+from ..read_records import read_records
 
 
 def indicators_by_document(

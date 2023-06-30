@@ -97,7 +97,7 @@ If ``Y_end = 2018`` and ``time_window = 2``, then ``Y_start = 2017``.
 
 import numpy as np
 
-from ..records import read_records
+from ..read_records import read_records
 from ..sorting_lib import sort_indicators_by_metric
 from ..stopwords_lib import load_stopwords
 from .items_occ_by_year import items_occ_by_year

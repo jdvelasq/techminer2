@@ -6,6 +6,9 @@ VantagePoint / Derwent
    home
 
 .. toctree::
+   summary_view
+
+.. toctree::
    :maxdepth: 1
 
    analyze/__index__

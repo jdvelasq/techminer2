@@ -118,6 +118,7 @@ TM2 module.
     api/field
     api/main_information
     api/records
+    api/summary_view
     api/terms_by_year
 
 .. toctree::

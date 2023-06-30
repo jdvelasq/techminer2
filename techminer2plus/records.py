@@ -14,7 +14,7 @@ Records
 
 >>> tm2p.Records(root_dir=root_dir)
 Records(root_dir='data/regtech/', database='main', year_filter=(None, None),
-    cited_by_filter=(None, None), filters={}, n_records=52)
+    cited_by_filter=(None, None), filters={})
 
     
 >>> tm2p.Records(root_dir=root_dir, filters={
@@ -22,7 +22,7 @@ Records(root_dir='data/regtech/', database='main', year_filter=(None, None),
 ... })
 Records(root_dir='data/regtech/', database='main', year_filter=(None, None),
     cited_by_filter=(None, None), filters={'countries': ['Australia', 'United
-    Kingdom', 'United States']}, n_records=19)
+    Kingdom', 'United States']})
 
 
 """
@@ -31,15 +31,13 @@ import textwrap
 from dataclasses import dataclass
 from dataclasses import field as datafield
 
-import pandas as pd
-
 from .concordances import Concordances
 
 # from .counters_lib import add_counters_to_frame_axis
 # from .coverage import coverage
 # from .field import Field
 from .main_information import MainInformation
-from .read_records import read_records
+from .summary_view import summary_view
 
 # =============================================================================
 #
@@ -66,7 +64,7 @@ class Records:
     #
     # RESULTS:
     #
-    records_: pd.DataFrame = pd.DataFrame()
+    # records_: pd.DataFrame = pd.DataFrame()
 
     # def __init__(self, root_dir, database, **filters):
     #     self.filters = filters
@@ -77,14 +75,14 @@ class Records:
 
         #  if records_ is an empty dataframe print a message
 
-        if len(self.records_) == 0:
-            self.records_ = read_records(
-                root_dir=self.root_dir,
-                database=self.database,
-                year_filter=self.year_filter,
-                cited_by_filter=self.cited_by_filter,
-                **self.filters,
-            )
+        # if len(self.records_) == 0:
+        #     self.records_ = read_records(
+        #         root_dir=self.root_dir,
+        #         database=self.database,
+        #         year_filter=self.year_filter,
+        #         cited_by_filter=self.cited_by_filter,
+        #         **self.filters,
+        #     )
 
     def __repr__(self):
         text = (
@@ -94,12 +92,16 @@ class Records:
             f", year_filter={self.year_filter}"
             f", cited_by_filter={self.cited_by_filter}"
             f", filters={self.filters}"
-            f", n_records={len(self.records_)}"
             ")"
         )
 
         return textwrap.fill(text, width=80, subsequent_indent="    ")
 
+    #
+    #
+    # USER INTERFACE:
+    #
+    #
     def concordances(
         self,
         search_for,
@@ -115,9 +117,8 @@ class Records:
             top_n=top_n,
             report_file=report_file,
             prompt_file=prompt_file,
-            records=self.records_,
             #
-            # Parent class:
+            # DATABASE PARAMS:
             root_dir=self.root_dir,
             database=self.database,
             year_filter=self.year_filter,
@@ -127,7 +128,27 @@ class Records:
 
     def main_information(self):
         """Returns a MainInformation object."""
-        return MainInformation(records=self.records_.copy())
+        return MainInformation(
+            #
+            # DATABASE PARAMS:
+            root_dir=self.root_dir,
+            database=self.database,
+            year_filter=self.year_filter,
+            cited_by_filter=self.cited_by_filter,
+            **self.filters,
+        )
+
+    def summary_view(self):
+        """Returns a summary sheet of the database."""
+        return summary_view(
+            #
+            # DATABASE PARAMS:
+            root_dir=self.root_dir,
+            database=self.database,
+            year_filter=self.year_filter,
+            cited_by_filter=self.cited_by_filter,
+            **self.filters,
+        )
 
     # def coverage(self, column):
     #     """Returns a MainInformation object."""

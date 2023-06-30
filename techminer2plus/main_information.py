@@ -191,7 +191,6 @@ import datetime
 import textwrap
 from dataclasses import dataclass
 from dataclasses import field as datafield
-from typing import Optional
 
 import numpy as np
 import pandas as pd
@@ -210,6 +209,7 @@ from .read_records import read_records
 # =============================================================================
 
 
+# pylint: disable=too-many-instance-attributes
 @dataclass
 class MainInformation:
     """Main Information."""
@@ -223,7 +223,7 @@ class MainInformation:
     cited_by_filter: tuple = (None, None)
     filters: dict = datafield(default_factory=dict)
 
-    records: Optional[pd.DataFrame] = None
+    records: pd.DataFrame = pd.DataFrame()
 
     #
     # RESULTS:
@@ -239,7 +239,7 @@ class MainInformation:
         if self.filters is None:
             self.filters = {}
 
-        if self.records is None:
+        if len(self.records) == 0:
             self.records = read_records(
                 root_dir=str(self.root_dir),
                 database=str(self.database),
@@ -251,7 +251,7 @@ class MainInformation:
         main_info = MainInformationComputattion(records=self.records)
         self.frame_ = main_info.frame_
         self.fig_ = main_info.fig_
-        self.prompt_ = main_info.prompt_
+        self.prompt_ = str(main_info.prompt_)
 
     def __repr__(self):
         """String representation."""
@@ -262,7 +262,7 @@ class MainInformation:
             f", year_filter={self.year_filter}"
             f", cited_by_filter={self.cited_by_filter}"
             f", filters={self.filters}"
-            f", n_records={len(self.records)}"
+            f", n_records={self.records.shape[0]}"
             ")"
         )
 
@@ -907,6 +907,7 @@ def main_information(
     cited_by_filter: tuple = (None, None),
     **filters,
 ):
+    """Main information"""
     records = read_records(
         root_dir=root_dir,
         database=database,

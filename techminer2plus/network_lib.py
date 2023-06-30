@@ -18,7 +18,7 @@ from .list_cells_in_matrix import (
     CoocCellsList,
     list_cells_in_matrix,
 )
-from .records import read_records
+from .read_records import read_records
 
 CLUSTER_COLORS = (
     px.colors.qualitative.Dark24

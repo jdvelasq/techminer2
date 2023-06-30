@@ -29,6 +29,7 @@ from .pie_chart import pie_chart
 from .ranking_chart import ranking_chart
 from .records import Records
 from .sankey_plot import sankey_plot
+from .summary_view import summary_view
 from .treemap import treemap
 from .word_cloud import word_cloud
 from .world_map import world_map

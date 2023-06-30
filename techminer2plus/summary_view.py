@@ -1,15 +1,20 @@
 # flake8: noqa
 """
+.. _summary_view:
+
 Summary View
 ===============================================================================
 
 This function returns a dataframe with the coverage (percentage of no nulls)
 and the number of different terms (topics) of each column in the dataset.
 
+>>> import techminer2plus as tm2p
 >>> root_dir = "data/regtech/"
 
->>> import techminer2plus
->>> techminer2plus.summary_view(root_dir).head()
+
+* **USER COMPUTATIONAL INTERFACE:**
+
+>>> tm2p.Records(root_dir=root_dir).summary_view().head()
                  column  number of terms coverage (%)
 0              abstract               52         1.0%
 1  abstract_nlp_phrases               47         0.9%
@@ -17,17 +22,38 @@ and the number of different terms (topics) of each column in the dataset.
 3                art_no                8        0.15%
 4               article               52         1.0%
 
+* **COMPUTATIONAL API:**
+
+>>> tm2p.summary_view(
+...     root_dir=root_dir,
+... ).head()
+                 column  number of terms coverage (%)
+0              abstract               52         1.0%
+1  abstract_nlp_phrases               47         0.9%
+2          affiliations               52         1.0%
+3                art_no                8        0.15%
+4               article               52         1.0%
+
+
+
 """
 import pandas as pd
 
-from .records import read_records
+from .read_records import read_records
 
 
+# =============================================================================
+#
+#
+#  COMPUTATIONAL API:
+#
+#
+# =============================================================================
 def summary_view(
-    root_dir="./",
-    database="main",
-    year_filter=None,
-    cited_by_filter=None,
+    root_dir: str = "./",
+    database: str = "main",
+    year_filter: tuple = (None, None),
+    cited_by_filter: tuple = (None, None),
     **filters,
 ):
     """
