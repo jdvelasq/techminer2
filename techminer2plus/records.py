@@ -43,7 +43,9 @@ from .read_records import read_records
 
 # =============================================================================
 #
-#  USER:
+#
+#  USER COMPUTATIONAL INTERFACE:
+#
 #
 # =============================================================================
 
@@ -98,11 +100,6 @@ class Records:
 
         return textwrap.fill(text, width=80, subsequent_indent="    ")
 
-    #
-    #
-    # INTEFACE::
-    #
-    #
     def concordances(
         self,
         search_for,
@@ -156,12 +153,3 @@ class Records:
     #         gc_range=gc_range,
     #         custom_items=custom_items,
     #     )
-
-
-# =============================================================================
-#
-#
-#  COMPUTATIONAL API:
-#
-#
-# =============================================================================
