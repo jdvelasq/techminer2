@@ -109,25 +109,14 @@ TM2 module.
 
 
 .. toctree::
-    :caption: COMPUTATIONAL API
+    :caption: TECHMINER 2+ / CORE
     :hidden:
     :maxdepth: 1
 
-    api/concordances
-    api/coverage
-    api/list_items
-    api/main_information
-    api/records
-    api/summary_view
-    api/terms_by_year
+    user/__index__
+    api/__index__
+    
 
-.. toctree::
-    :caption: VISUALIZATION API
-    :hidden:
-    :maxdepth: 1
-
-    api/bar_chart
-    api/gantt_chart
 
 **Author**:
 

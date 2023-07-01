@@ -13,12 +13,12 @@ import plotly.express as px
 import plotly.graph_objects as go
 from cdlib import algorithms
 
-from .list_cells_in_matrix import (
+from .api.read_records import read_records
+from .api.records.matrix.co_occurrence_matrix.list_cells_in_matrix import (
     AutoCorrCellsList,
     CoocCellsList,
     list_cells_in_matrix,
 )
-from .read_records import read_records
 
 CLUSTER_COLORS = (
     px.colors.qualitative.Dark24

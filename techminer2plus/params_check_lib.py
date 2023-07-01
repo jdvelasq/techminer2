@@ -50,7 +50,7 @@ def check_integer_range(param, nullable=True):
 
 def check_listview(obj):
     """Check if obj is a ListView instance."""
-    from .list_items import ItemsList
+    from .api.records.list_items import ItemsList
 
     if not isinstance(obj, ItemsList):
         raise TypeError("`obj` must be a ItemsList instance")

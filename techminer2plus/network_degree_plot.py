@@ -69,7 +69,7 @@ Table:
 import pandas as pd
 import plotly.express as px
 
-from .chatbot_prompts import format_chatbot_prompt_for_df
+from .api.chatbot_prompts import format_chatbot_prompt_for_df
 from .classes import NetworkDegreePlot
 from .network_lib import nx_compute_node_degree
 

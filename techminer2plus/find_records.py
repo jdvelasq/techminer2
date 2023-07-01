@@ -40,8 +40,8 @@ searching. The report is saved to the file ``reports/find_records.txt``.
 """
 
 
+from .api.read_records import read_records
 from .create_records_report import create_records_report
-from .read_records import read_records
 
 
 # pylint: disable=too-many-arguments

@@ -28,7 +28,7 @@ No document types found
 """
 import os
 
-from .ingest_raw_data import concat_raw_csv_files, get_subdirectories
+from .ingest.ingest_raw_data import concat_raw_csv_files, get_subdirectories
 
 
 def raw_document_types(root_dir):
