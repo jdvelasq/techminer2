@@ -8,13 +8,10 @@ Displays a horizontal bar graph of the selected items in a ItemLlist object.
 Items in your list are the Y-axis, and the number of records are the X-axis.
 
 
-* **COMPUTATIONAL API:**
-
->>> import techminer2plus.api as api
+>>> import techminer2plus.api as tm2p
 >>> root_dir = "data/regtech/"
-
->>> file_name = "sphinx/_static/bar_chart_1.html"
->>> api.bar_chart(
+>>> file_name = "sphinx/_static/api/records/list_items/bar_chart.html"
+>>> tm2p.bar_chart(
 ...    field='author_keywords',
 ...    top_n=10,
 ...    root_dir=root_dir,
@@ -24,7 +21,7 @@ Items in your list are the Y-axis, and the number of records are the X-axis.
 
 .. raw:: html
 
-    <iframe src="../_static/bar_chart_1.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../../_static/api/records/list_items/bar_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 import plotly.express as px
