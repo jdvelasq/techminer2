@@ -1,11 +1,7 @@
 # flake8: noqa
 """
-.. _list_items:
-
 List Items
 ===============================================================================
-
-* **COMPUTATIONAL API:**
 
 >>> import techminer2plus as tm2p
 >>> root_dir = "data/regtech/"
@@ -58,10 +54,6 @@ Table:
 
 # pylint: disable=line-too-long
 """
-import textwrap
-
-import pandas as pd
-
 from ...chatbot_prompts import format_chatbot_prompt_for_df
 from ...filtering_lib import generate_custom_items
 from ...metrics_lib import indicators_by_field

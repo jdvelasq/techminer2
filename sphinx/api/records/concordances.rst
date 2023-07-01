@@ -1,3 +1,3 @@
-.. automodule:: techminer2plus.api.concordances
+.. automodule:: techminer2plus.api.records.concordances
     :members:
 

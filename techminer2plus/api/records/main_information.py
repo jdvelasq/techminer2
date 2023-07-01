@@ -6,7 +6,7 @@ Main Information
 
 TODO: check organizations_1st_author, countries_1st_author
 
->>> import techminer2plus as tm2p
+>>> import techminer2plus.api as tm2p
 >>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/main_info_api.html"               
 >>> frame_, fig_, prompt_ = main_information(

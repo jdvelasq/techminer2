@@ -1,8 +1,6 @@
 # flake8: noqa
 # pylint: disable=line-too-long
 """
-.. _bar_chart:
-
 Bar Chart
 ===============================================================================
 
@@ -31,7 +29,7 @@ Items in your list are the Y-axis, and the number of records are the X-axis.
 """
 import plotly.express as px
 
-from . import list_items
+from .list_items import list_items
 
 
 # pylint: disable=too-many-arguments

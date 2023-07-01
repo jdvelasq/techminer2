@@ -6,9 +6,6 @@
 List Items
 ===============================================================================
 
-
-* **USER COMPUTATIONAL INTERFACE:**
-
 >>> import techminer2plus as tm2p
 >>> root_dir = "data/regtech/"
 
@@ -68,19 +65,8 @@ from typing import Optional
 
 import pandas as pd
 
-from ...api.chatbot_prompts import format_chatbot_prompt_for_df
-from ...api.filtering_lib import generate_custom_items
-from ...api.records.list_items import list_items
 from ...api.records.list_items.bar_chart import bar_chart
-from ...api.sorting_lib import sort_indicators_by_metric
-
-# =============================================================================
-#
-#
-#  USER COMPUTATIONAL INTERFACE:
-#
-#
-# =============================================================================
+from ...api.records.list_items.list_items import list_items
 
 
 # pylint: disable=too-many-instance-attributes

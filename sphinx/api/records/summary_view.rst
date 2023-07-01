@@ -1,3 +1,3 @@
-.. automodule:: techminer2plus.summary_view
+.. automodule:: techminer2plus.api.records.summary_view
     :members:
 

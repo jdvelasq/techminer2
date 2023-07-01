@@ -1,4 +1,4 @@
-.. automodule:: techminer2plus.find_string
+.. automodule:: techminer2plus.refine.find_string
     :members:
     :undoc-members:
     :show-inheritance:

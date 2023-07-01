@@ -1,3 +1,3 @@
-.. automodule:: techminer2plus.api.coverage
+.. automodule:: techminer2plus.api.records.coverage
     :members:
 
