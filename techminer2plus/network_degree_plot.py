@@ -69,9 +69,9 @@ Table:
 import pandas as pd
 import plotly.express as px
 
-from .api.chatbot_prompts import format_chatbot_prompt_for_df
+from ._chatbot_prompts import format_chatbot_prompt_for_df
+from ._network_lib import nx_compute_node_degree
 from .classes import NetworkDegreePlot
-from .network_lib import nx_compute_node_degree
 
 
 # pylint: disable=too-many-arguments

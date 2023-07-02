@@ -114,18 +114,14 @@ Clusters a co-occurrence network using community detection algorithm or sklearn 
 """
 import numpy as np
 
-from .api.records.matrix.co_occurrence_matrix.list_cells_in_matrix import (
-    list_cells_in_matrix,
-)
-from .api.records.matrix.co_occurrence_matrix.matrix_normalization import (
-    matrix_normalization,
-)
-from .network_lib import (
+from ._network_lib import (
     nx_apply_community_detection_method,
     nx_create_graph_from_matrix_list,
     nx_set_edge_properties_for_co_occ_networks,
     nx_set_node_color_by_group,
 )
+from .list_cells_in_matrix import list_cells_in_matrix
+from .matrix_normalization import matrix_normalization
 
 
 def network_clustering(

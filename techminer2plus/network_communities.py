@@ -37,7 +37,7 @@ Extracts the community (cluster) members from a networkx graph as a dataframe.
 
 import pandas as pd
 
-from .network_lib import nx_extract_communities
+from ._network_lib import nx_extract_communities
 
 
 def network_communities(graph):

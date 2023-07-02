@@ -63,9 +63,9 @@ Table:
 # pylint: disable=line-too-long
 """
 
-from .api.chatbot_prompts import format_chatbot_prompt_for_df
+from ._chatbot_prompts import format_chatbot_prompt_for_df
+from ._network_lib import nx_compute_node_degree, nx_compute_node_statistics
 from .classes import NetworkMetrics
-from .network_lib import nx_compute_node_degree, nx_compute_node_statistics
 
 
 def network_metrics(

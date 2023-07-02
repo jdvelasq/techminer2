@@ -191,7 +191,7 @@ from dataclasses import field as datafield
 import pandas as pd
 import plotly.graph_objects as go
 
-from ..api.records.main_information import main_information
+# from ..api.records.main_information import main_information
 
 # =============================================================================
 #

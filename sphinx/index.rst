@@ -88,12 +88,13 @@ TM2 module.
 
 
 .. toctree::
-    :caption: DATA
+    :caption: TECHMINER 2+
     :hidden:
     :maxdepth: 1
 
     ingest/__index__
     refine/__index__
+    explore/__index__
 
 
 .. toctree::
@@ -107,14 +108,6 @@ TM2 module.
     scientopy/__index__
 
 
-
-.. toctree::
-    :caption: TECHMINER 2+ / CORE
-    :hidden:
-    :maxdepth: 1
-
-    user/__index__
-    api/__index__
     
 
 

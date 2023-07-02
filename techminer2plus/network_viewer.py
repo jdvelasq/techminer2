@@ -39,7 +39,7 @@ Network Viewer
 # pylint: disable=line-too-long
 """
 
-from .network_lib import (
+from ._network_lib import (
     nx_compute_node_property_from_occ,
     nx_compute_spring_layout,
     px_add_names_to_fig_nodes,
