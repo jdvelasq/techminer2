@@ -1,4 +1,5 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 Collaboration WorldMap
 ===============================================================================
@@ -16,7 +17,7 @@ Collaboration WorldMap
     <iframe src="../../../../_static/examples/social_structure/collaboration_worldmap.html" height="410px" width="100%" frameBorder="0"></iframe>
 
 
-# pylint: disable=line-too-long
+
 """
 import plotly.express as px
 

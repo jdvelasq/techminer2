@@ -1,4 +1,5 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 Co-word Network
 ===============================================================================
@@ -72,8 +73,6 @@ REGULATION 05:164                 15     0.028463  ...         5.0     22.0
 [5 rows x 6 columns]
 
 
-
-# pylint: disable=line-too-long
 """
 
 # from ..matrix import co_occurrence_matrix, matrix_normalization

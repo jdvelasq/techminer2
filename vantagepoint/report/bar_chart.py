@@ -6,10 +6,4 @@ Bar Chart
 
 See :ref:`bar_chart`.
 
-
-
-
-
-
-
 """

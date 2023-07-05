@@ -1,4 +1,5 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 .. _auto_correlation_matrix:
 
@@ -7,11 +8,27 @@ Auto-correlation Matrix
 
 Returns an auto-correlation matrix.
 
+* Preparation
 
 >>> root_dir = "data/regtech/"
+>>> import techminer2plus as tm2p
 
->>> import techminer2plus
->>> auto_corr_matrix = techminer2plus.auto_correlation_matrix(
+* Object oriented interface
+
+>>> auto_corr_matrix = (
+...     tm2p.records(root_dir=root_dir)
+...     .auto_correlation_matrix(
+...         rows_and_columns='authors',
+...         occ_range=(2, None),
+...     )
+... )
+>>> auto_corr_matrix
+AutoCorrMatrix(rows-and-columns='authors', method='pearson', shape=(15,
+    15))
+
+* Functional interface
+
+>>> auto_corr_matrix = tm2p.auto_correlation_matrix(
 ...     rows_and_columns='authors',
 ...     occ_range=(2, None),
 ...     root_dir=root_dir,
@@ -20,6 +37,8 @@ Returns an auto-correlation matrix.
 AutoCorrMatrix(rows-and-columns='authors', method='pearson', shape=(15,
     15))
 
+* Results    
+    
 >>> auto_corr_matrix.df_.round(3)
                     Arner DW 3:185  ...  Arman AA 2:000
 Arner DW 3:185               1.000  ...             0.0
@@ -75,55 +94,122 @@ Table:
 
     
 
-# pylint: disable=line-too-long
 """
 import textwrap
 from dataclasses import dataclass
+from dataclasses import field as datafield
+from typing import Optional
 
 import pandas as pd
 
-from ._chatbot_prompts import format_chatbot_prompt_for_df
+from ._chatbot import format_chatbot_prompt_for_df
+from .auto_correlation_map import auto_correlation_map
 from .compute_corr_matrix import compute_corr_matrix
-from .tf_matrix import tf_matrix
+from .heat_map import heat_map
+from .list_cells_in_matrix import list_cells_in_matrix
+from .tfidf import tfidf
 
 
+# pylint: disable=too-many-instance-attributes
 @dataclass
 class AutoCorrMatrix:
     """Auto-correlation matrix."""
 
-    rows_and_columns_: str
-    method_: str
-    df_: pd.DataFrame
-    prompt_: str
-    metric_: str
+    #
+    # FUNCTION PARAMS:
+    rows_and_columns: str
+    method: str = "pearson"
+    #
+    # ITEM FILTERS:
+    top_n: Optional[int] = None
+    occ_range: tuple = (None, None)
+    gc_range: tuple = (None, None)
+    custom_items: list = datafield(default_factory=list)
+    #
+    # DATABASE PARAMS:
+    root_dir: str = "./"
+    database: str = "main"
+    year_filter: tuple = (None, None)
+    cited_by_filter: tuple = (None, None)
+    filters: dict = datafield(default_factory=dict)
+    #
+    # RESULTS:
+    df_: pd.DataFrame = pd.DataFrame()
+    prompt_: str = ""
+    metric: str = "CORR"
 
     def __repr__(self):
         text = "AutoCorrMatrix("
-        text += f"rows-and-columns='{self.rows_and_columns_}'"
-        text += f", method='{self.method_}'"
+        text += f"rows-and-columns='{self.rows_and_columns}'"
+        text += f", method='{self.method}'"
         text += f", shape={self.df_.shape}"
         text += ")"
         text = textwrap.fill(text, width=75, subsequent_indent="    ")
         return text
 
+    def auto_correlation_map(
+        self,
+        #
+        # FUNCTION PARAMS:
+        n_labels=None,
+        color="#8da4b4",
+        nx_k=None,
+        nx_iterations=10,
+        nx_random_state=0,
+        node_size_min=30,
+        node_size_max=70,
+        textfont_size_min=10,
+        textfont_size_max=20,
+        xaxes_range=None,
+        yaxes_range=None,
+        show_axes=False,
+    ):
+        return auto_correlation_map(
+            #
+            # FUNCTION PARAMS:
+            auto_corr_matrix=self,
+            n_labels=n_labels,
+            color=color,
+            nx_k=nx_k,
+            nx_iterations=nx_iterations,
+            nx_random_state=nx_random_state,
+            node_size_min=node_size_min,
+            node_size_max=node_size_max,
+            textfont_size_min=textfont_size_min,
+            textfont_size_max=textfont_size_max,
+            xaxes_range=xaxes_range,
+            yaxes_range=yaxes_range,
+            show_axes=show_axes,
+        )
+
+    def list_cells_in_matrix(self):
+        """Returns a list of cells in the matrix."""
+        return list_cells_in_matrix(self)
+
+    def heat_map(self, colormap="Blues"):
+        """Returns a heat map."""
+        return heat_map(self, colormap=colormap)
+
 
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 def auto_correlation_matrix(
+    #
+    # FUNCTION PARAMS:
     rows_and_columns,
     method="pearson",
     #
-    # Item filters:
+    # ITEM PARAMS:
     top_n=None,
-    occ_range=None,
-    gc_range=None,
+    occ_range=(None, None),
+    gc_range=(None, None),
     custom_items=None,
     #
-    # Database params:
+    # DATABASE PARAMS:
     root_dir="./",
     database="main",
-    year_filter=None,
-    cited_by_filter=None,
+    year_filter=(None, None),
+    cited_by_filter=(None, None),
     **filters,
 ):
     """Returns an auto-correlation."""
@@ -148,7 +234,7 @@ def auto_correlation_matrix(
     #
     # Main:
     #
-    data_matrix = tf_matrix(
+    data_matrix = tfidf(
         field=rows_and_columns,
         # Item filters:
         top_n=top_n,
@@ -162,13 +248,33 @@ def auto_correlation_matrix(
         cited_by_filter=cited_by_filter,
         **filters,
     )
-
+    custom_items = [
+        " ".join(col.split(" ")[:-1])
+        for col in data_matrix.df_.columns.tolist()
+    ]
     corr_matrix = compute_corr_matrix(method=method, data_matrix=data_matrix)
+    prompt = generate_prompt(rows_and_columns, corr_matrix)
 
     return AutoCorrMatrix(
-        rows_and_columns_=rows_and_columns,
-        method_=method,
-        metric_="CORR",
+        #
+        # PARAMS:
+        rows_and_columns=rows_and_columns,
+        method=method,
+        #
+        # ITEM FILTERS:
+        top_n=top_n,
+        occ_range=occ_range,
+        gc_range=gc_range,
+        custom_items=custom_items,
+        #
+        # RESULTS:
         df_=corr_matrix,
-        prompt_=generate_prompt(rows_and_columns, corr_matrix),
+        prompt_=prompt,
+        #
+        # DATABASE PARAMS:
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
     )

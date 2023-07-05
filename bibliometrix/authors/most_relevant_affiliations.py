@@ -1,4 +1,5 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 Most Relevant Affiliations
 ==============================================================================
@@ -7,8 +8,4 @@ Most Relevant Affiliations
 
 
 
-
-
-
-# pylint: disable=line-too-long
 """

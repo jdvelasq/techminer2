@@ -9,14 +9,13 @@ Concordances
 Abstract concordances exploration tool.
 
 
->>> import techminer2plus.api as api
+>>> import techminer2plus as tm2p
 >>> root_dir = "data/regtech/"
->>> contexts_, frame_, prompt_ = api.concordances(
-...     root_dir=root_dir,
+>>> concordances = tm2p.records(root_dir=root_dir).concordances(
 ...     search_for='REGTECH',
 ...     top_n=10,
 ... )
->>> print(contexts_)
+>>> print(concordances.contexts_)
                                                              REGTECH can provide an invaluable tool, in a BUSINESS as usual E >>>
                                                              REGTECH developments are leading towards a paradigm shift necess >>>
                                                              REGTECH to date has focused on the DIGITIZATION of manual REPORT >>>
@@ -51,7 +50,47 @@ Abstract concordances exploration tool.
 
 
 
->>> print(prompt_)                        
+>>> concordances = tm2p.concordances(
+...     root_dir=root_dir,
+...     search_for='REGTECH',
+...     top_n=10,
+... )
+>>> print(concordances.contexts_)
+                                                             REGTECH can provide an invaluable tool, in a BUSINESS as usual E >>>
+                                                             REGTECH developments are leading towards a paradigm shift necess >>>
+                                                             REGTECH to date has focused on the DIGITIZATION of manual REPORT >>>
+                                                             REGTECH will not eliminate policy considerations, nor will IT re >>>
+           although also not a panacea, the DEVELOPMENT of " REGTECH " solutions will help clear away volumes of work that un >>>
+<<< s the promise and potential of REGULATORY_TECHNOLOGIES ( REGTECH ), a new and vital dimension to FINTECH
+<<< paper, the authors propose a novel, regular TECHNOLOGY ( REGTECH ) cum automated legal text approach for financial TRANSA >>>
+                     2020 the authorsregulatory TECHNOLOGY ( REGTECH )
+                                     REGULATORY_TECHNOLOGY ( REGTECH ) is an emerging TECHNOLOGY trend leveraging INFORMATION >>>
+<<< llustrate the impact of adopting REGULATORY_TECHNOLOGY ( REGTECH ) INNOVATIONS in BANKS on MONEY_LAUNDERING prevention ef >>>
+<<< rpose of this paper is to explore the solutions that AI, REGTECH and CHARITYTECH provide to charities in navigating the v >>>
+                                                in contrast, REGTECH has recently brought great SUCCESS to financial COMPLIAN >>>
+<<< the area of FINANCIAL_REGULATION (REGULATORY_TECHNOLOGY: REGTECH ) can significantly improve FINANCIAL_DEVELOPMENT outcomes
+<<< that together they are underpinning the DEVELOPMENT of a REGTECH ECOSYSTEM in EUROPE and will continue to do so
+                                 an option is to incorporate REGTECH into the DIGITAL_TRANSFORMATION STRATEGY of a MANAGEMENT >>>
+<<< egulator based SELF_ASSESSMENT checklist to establish if REGTECH best practice could improve the demonstration of GDPR_CO >>>
+                 the chapter notes that the full BENEFITS of REGTECH will only materialise if the pitfalls of a fragmented to >>>
+<<< ld, sets the foundation for a practical understanding of REGTECH , and proposes sequenced reforms that could BENEFIT regu >>>
+                                   however, the potential of REGTECH is far greater  IT has the potential to enable a nearly  >>>
+                        this paper explores the potential of REGTECH and the merit of incorporating IT into a SMART_TREASURY  >>>
+<<< ral awareness concerning the ADOPTION and integration of REGTECH PLATFORMS for fighting MONEY_LAUNDERING
+<<< ING through REGTECH and cost  and time-saving aspects of REGTECH , drive MONEY_LAUNDERING prevention effectiveness to a h >>>
+                 nevertheless, a sophisticated deployment of REGTECH should help focus regulatory discretion and PUBLIC_POLIC >>>
+<<< ndings provide specific insights about the deployment of REGTECH capabilities in BANKS in regional BANKING centers of mod >>>
+<<< and regulators, and provided an ENVIRONMENT within which REGTECH can flourish
+<<< l systems requires increasing the use of and reliance on REGTECH 
+<<< ide insights for other societies in developing their own REGTECH ECOSYSTEMS in order to support more efficient, stable, i >>>
+                                             europes road to REGTECH has rested upon four apparently unrelated pillars: (1) e >>>
+<<<  five-year research programme to highlight the role that REGTECH can play in making REGULATORY_COMPLIANCE more efficient  >>>
+<<< otwithstanding the RISK_REDUCTIONS and cost savings that REGTECH can deliver
+<<< emantically enabled applications can be made possible by REGTECH 
+
+
+
+>>> print(concordances.prompt_)                        
 Your task is to generate a short summary of a term for a research paper. \\
 Summarize the paragraphs below, delimited by triple backticks, in one \\
 unique paragraph, in at most 30 words, focusing on the any aspect \\
@@ -187,12 +226,62 @@ SMART_TREASURY department
 """
 import os.path
 import textwrap
-from typing import Optional
+from dataclasses import dataclass
+from dataclasses import field as datafield
 
 import pandas as pd
 
-from ._chatbot_prompts import format_prompt_for_paragraphs
+from ._chatbot import format_prompt_for_paragraphs
 from ._read_records import read_records
+
+
+# pylint: disable=too-many-instance-attributes
+@dataclass
+class Concordances:
+    """Concordances."""
+
+    #
+    # PARAMETERS:
+    #
+    search_for: str
+    top_n: int = 50
+    report_file: str = "concordances_report.txt"
+    prompt_file: str = "concordances_prompt.txt"
+
+    #
+    # DATABASE PARAMS:
+    #
+    root_dir: str = "./"
+    database: str = "main"
+    year_filter: tuple = (None, None)
+    cited_by_filter: tuple = (None, None)
+    filters: dict = datafield(default_factory=dict)
+
+    #
+    # RESULTS:
+    #
+    contexts_: str = ""
+    frame_: pd.DataFrame = pd.DataFrame()
+    prompt_: str = ""
+
+    def __post_init__(self):
+        #
+        # COMPUTATIONS:
+        #
+        if self.filters is None:
+            self.filters = {}
+
+    def __repr__(self):
+        text = (
+            "Concordances("
+            f"root_dir='{self.root_dir}'"
+            f", database='{self.database}'"
+            f", search_for='{self.search_for}'"
+            f", top_n={self.top_n}"
+            ")"
+        )
+
+        return textwrap.fill(text, width=80, subsequent_indent="    ")
 
 
 # pylint: disable=too-many-arguments
@@ -207,7 +296,6 @@ def concordances(
     prompt_file="concordances_prompt.txt",
     #
     # DATABASE PARAMS:
-    records: Optional[pd.DataFrame] = None,
     root_dir: str = "./",
     database: str = "main",
     year_filter: tuple = (None, None),
@@ -216,6 +304,54 @@ def concordances(
 ):
     """Checks the occurrence contexts of a given text in the abstract's phrases."""
 
+    records = read_records(
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
+    )
+
+    contexts_, frame_, prompt_ = concordances_from_records(
+        search_for=search_for,
+        top_n=top_n,
+        report_file=report_file,
+        prompt_file=prompt_file,
+        root_dir=root_dir,
+        records=records,
+    )
+
+    return Concordances(
+        #
+        # PARAMETERS:
+        search_for=search_for,
+        top_n=top_n,
+        report_file=report_file,
+        prompt_file=prompt_file,
+        #
+        # RESULTS:
+        #
+        contexts_=contexts_,
+        frame_=frame_,
+        prompt_=prompt_,
+        #       #
+        # DATABASE PARAMS:
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
+    )
+
+
+def concordances_from_records(
+    search_for,
+    top_n,
+    report_file,
+    prompt_file,
+    root_dir,
+    records,
+):
     def get_phrases(records):
         """Gets the phrases with the searched text."""
 
@@ -358,15 +494,6 @@ def concordances(
     #
     # Main code:
     #
-    if records is None:
-        records = read_records(
-            root_dir=root_dir,
-            database=database,
-            year_filter=year_filter,
-            cited_by_filter=cited_by_filter,
-            **filters,
-        )
-
     phrases = get_phrases(records)
     frame_ = create_contexts_table(phrases)
     contexts_ = transform_context_to_text(frame_)

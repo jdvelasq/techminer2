@@ -1,3 +1,5 @@
+# flake8: noqa
+# pylint: disable=line-too-long
 """
 Most Local Cited Documents
 ==============================================================================
@@ -9,5 +11,5 @@ Most Local Cited Documents
 
 
 
-# pylint: disable=line-too-long
+
 """

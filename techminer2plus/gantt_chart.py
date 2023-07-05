@@ -6,24 +6,42 @@
 Gantt Chart
 ===============================================================================
 
+* Preparation
 
->>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/gantt_chart.html"
-
->>> import techminer2plus
 >>> import techminer2plus as tm2p
 >>> root_dir = "data/regtech/"
+
+
+* Object oriented interface
+
+>>> file_name = "sphinx/_static/explore/gantt_chart_0.html"
 >>> (
-...     tm2p.Records(root_dir=root_dir)
-...     .field("author_keywords", top_n=10)
-...     .terms_by_year()
+...     tm2p.records(root_dir=root_dir)
+...     .terms_by_year("author_keywords", top_n=10)
 ...     .gantt_chart()
 ...     .write_html(file_name)
 ... )
 
 .. raw:: html
 
-    <iframe src="../_static/gantt_chart.html" height="800px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/explore/gantt_chart_0.html" height="800px" width="100%" frameBorder="0"></iframe>
+
+* Functional interface
+
+>>> file_name = "sphinx/_static/explore/gantt_chart_1.html"
+>>> terms_by_year = tm2p.terms_by_year(
+...     root_dir=root_dir,
+...     field="author_keywords",
+...     top_n=10,
+... )
+>>> tm2p.gantt_chart(
+...     terms_by_year=terms_by_year,
+...     title="Author Keywords Occurrences by Year",
+... ).write_html(file_name)
+
+.. raw:: html
+
+    <iframe src="../../../_static/explore/gantt_chart_1.html" height="800px" width="100%" frameBorder="0"></iframe>
 
 """
 import plotly.express as px
@@ -35,7 +53,7 @@ TEXTLEN = 40
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 def gantt_chart(
-    terms_by_year=None,
+    terms_by_year,
     title=None,
 ):
     """Creates a Gantt Chart from a terms by year table."""
@@ -43,7 +61,7 @@ def gantt_chart(
     def compute_table(obj):
         """Melt the data"""
 
-        table = obj.frame_.copy()
+        table = obj.df_.copy()
         table["RANKING"] = range(1, len(table) + 1)
         table = table.melt(
             value_name="OCC",
@@ -114,6 +132,6 @@ def gantt_chart(
     title = "Gantt Chart" if title is None else title
 
     table = compute_table(terms_by_year)
-    fig = create_fig(table, terms_by_year.field_, "OCC", title)
+    fig = create_fig(table, terms_by_year.field, "OCC", title)
 
     return fig

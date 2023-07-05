@@ -1,4 +1,5 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 Countries Production Over Time
 ==============================================================================
@@ -7,8 +8,4 @@ Countries Production Over Time
 
 
 
-
-
-
-# pylint: disable=line-too-long
 """

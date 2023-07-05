@@ -1,4 +1,5 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 Lotka's Law
 ==============================================================================
@@ -6,9 +7,4 @@ Lotka's Law
 
 
 
-
-
-
-
-# pylint: disable=line-too-long
 """

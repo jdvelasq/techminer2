@@ -1,4 +1,5 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 Factor Matrix Clustering
 ===============================================================================
@@ -42,7 +43,6 @@ Clusters a factor matrix using sklearn algorithms.
 | 11 | DATA_PROTECTION_OFFICER 02:014 |                                |                   |                   |
 
 
-# pylint: disable=line-too-long
 """
 import numpy as np
 

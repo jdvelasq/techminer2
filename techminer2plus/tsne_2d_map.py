@@ -1,4 +1,5 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 2D-TSNE map --- ChatGPT
 ===============================================================================
@@ -49,7 +50,7 @@ COMPLIANCE 07:030         -131.156677  595.111938
 REGULATION 05:164          103.274330  594.175415
 FINANCIAL_SERVICES 04:168  576.698486  179.674149
 
-# pylint: disable=line-too-long
+
 """
 
 

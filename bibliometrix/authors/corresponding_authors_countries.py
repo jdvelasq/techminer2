@@ -1,4 +1,5 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 Corresponding Authors' Countries
 ==============================================================================
@@ -6,9 +7,4 @@ Corresponding Authors' Countries
 
 
 
-
-
-
-
-# pylint: disable=line-too-long
 """

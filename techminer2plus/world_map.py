@@ -1,4 +1,5 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 .. _world_map:
 
@@ -6,62 +7,51 @@ World map
 ===============================================================================
 
 
+* Preparation
 
-
-
+>>> import techminer2plus as tm2p
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/world_map.html"
 
->>> import techminer2plus
->>> itemslist = techminer2plus.list_items(
-...     field='countries',
-...     top_n=20,
-...     root_dir=root_dir,
+* Object oriented interface
+
+>>> (
+...     tm2p.records(root_dir=root_dir)
+...     .list_items(
+...         field='countries',
+...     )
+...     .world_map(
+...         title="Country scientific production",
+...     )
+...     .write_html("sphinx/_static/world_map_0.html")
 ... )
->>> chart = techminer2plus.world_map(
-...     itemslist, 
-...     title="Country scientific production",
-... )
->>> chart.plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../_static/world_map.html" height="400px" width="100%" frameBorder="0"></iframe>
-
-    
->>> chart.table_.head()
-countries
-United Kingdom    7
-Australia         7
-United States     6
-Ireland           5
-China             5
-Name: OCC, dtype: int64
+    <iframe src="../_static/world_map_0.html" height="400px" width="100%" frameBorder="0"></iframe>
 
 
+* Functional interface
 
-# pylint: disable=line-too-long
+>>> itemslist = tm2p.list_items(
+...     field='countries',
+...     root_dir=root_dir,
+... )
+>>> tm2p.world_map(
+...     itemslist, 
+...     title="Country scientific production",
+... ).write_html("sphinx/_static/world_map_1.html")
+
+.. raw:: html
+
+    <iframe src="../_static/world_map_1.html" height="400px" width="100%" frameBorder="0"></iframe>
+
 """
-from dataclasses import dataclass
-
 import pandas as pd
 import plotly.express as px
-import plotly.graph_objs as go
-
-
-@dataclass
-class WorldMap:
-    """World Map.
-
-    :meta private:
-    """
-
-    plot_: go.Figure
-    table_: pd.DataFrame
 
 
 def world_map(
-    data=None,
+    list_items=None,
     colormap="Blues",
     title=None,
 ):
@@ -83,7 +73,7 @@ def world_map(
 
         worldmap_data = load_worldmap_data()
 
-        dataframe = data.df_.copy()
+        dataframe = list_items.df_.copy()
         dataframe.index = dataframe.index.rename("country")
         dataframe = dataframe.sort_index()
 
@@ -93,14 +83,14 @@ def world_map(
         fig = px.choropleth(
             worldmap_data,
             locations="iso_alpha",
-            color=data.metric_,
+            color=list_items.metric,
             hover_name="country",
             hover_data=[
                 col
                 for col in dataframe.columns
                 if col not in ["country", "iso_alpha"]
             ],
-            range_color=(1, data.df_[data.metric_].max()),
+            range_color=(1, list_items.df_[list_items.metric].max()),
             color_continuous_scale=colormap,
             color_discrete_map={0: "gray"},
             scope="world",
@@ -138,8 +128,4 @@ def world_map(
     #
     # Main code
     #
-
-    return WorldMap(
-        plot_=create_plot(),
-        table_=data.df_[data.metric_],
-    )
+    return create_plot()

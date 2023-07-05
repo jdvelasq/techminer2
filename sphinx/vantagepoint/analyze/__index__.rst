@@ -1,7 +1,7 @@
 Analyze
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* **Discover:**
+* **Analyze v10:**
 
     .. toctree::
         list
@@ -22,14 +22,32 @@ Analyze
     .. toctree::
         record_classifications
 
-    .. toctree::  
-        find_similar_records
-
     .. toctree::
         terms_by_year
 
+    .. toctree::
+        factor_matrix
 
-* **Classify:**
+    .. toctree::
+        pcd
+
+    .. toctree::
+        tfidf
+
+    .. toctree::
+        emergence_indicators
+
+    .. toctree::
+        browse_classification_tree
+
+    .. toctree::
+        patent_vital_signs
+
+
+* **Analyze v15.2:**
+
+    .. toctree::  
+        find_similar_records
 
     .. toctree::
         build_classifications
@@ -40,17 +58,11 @@ Analyze
     .. toctree::
         auto_classifier_settings
 
-
-* **Explore:**
-
     .. toctree::
         vizlink_chart
 
     .. toctree::
         pivot_table
-
-    .. toctree::
-        matrix_viewer
 
     .. toctree::
         cluster_records
@@ -61,15 +73,6 @@ Analyze
     .. toctree::
         create_concept_grid
 
-
-* **Calculate:**
-
-    .. toctree::
-        emergence_indicators
-
-    .. toctree::
-        patent_vital_signs
-
     .. toctree::
         date_difference
 
@@ -77,14 +80,5 @@ Analyze
         network_metrics
 
     .. toctree::
-        factor_matrix
-
-    .. toctree::
-        tfidf
-
-    .. toctree::
-        statistics    
-
-    .. toctree::
-        browse_classification_tree
+        statistics
 

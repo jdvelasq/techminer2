@@ -1,4 +1,5 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 .. _auto_correlation_map:
 
@@ -7,80 +8,64 @@ Auto-correlation Map
 
 Creates an Auto-correlation Map.
 
+* Preparation
 
 >>> root_dir = "data/regtech/"
+>>> import techminer2plus as tm2p
 
->>> file_name = "sphinx/_static/auto_correlation_map.html"
 
->>> import techminer2plus
->>> auto_corr_matrix = techminer2plus.auto_correlation_matrix(
+* Object oriented interface
+
+>>> fig = (
+...     tm2p.records(root_dir=root_dir)
+...     .auto_correlation_matrix(
+...         rows_and_columns='authors',
+...         occ_range=(2, None),
+...     )
+...     .auto_correlation_map()
+... )
+
+
+* Functional interface
+
+>>> auto_corr_matrix = tm2p.auto_correlation_matrix(
 ...     rows_and_columns='authors',
 ...     occ_range=(2, None),
 ...     root_dir=root_dir,
 ... )
-
->>> corr_map =  techminer2plus.auto_correlation_map(
+>>> fig =  tm2p.auto_correlation_map(
 ...     auto_corr_matrix,
 ...     color="#1f77b4", # tab:blue
 ... )
->>> corr_map
-AutoCorrMap(rows-and-columns='authors')
 
->>> corr_map.fig_.write_html(file_name)
+* Results    
+
+>>> file_name = "sphinx/_static/auto_correlation_map.html"
+>>> fig.write_html(file_name)
 
 .. raw:: html
 
     <iframe src="../../_static/auto_correlation_map.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
-
-
-
-# pylint: disable=line-too-long
 """
-import textwrap
-from dataclasses import dataclass
-
-import pandas as pd
-import plotly.graph_objs as go
-
 from ._network_lib import (
     nx_compute_spring_layout,
-    nx_create_graph_from_matrix_list,
+    nx_create_graph_from_matrix,
     nx_set_edge_properties_for_corr_maps,
     px_add_names_to_fig_nodes,
     px_create_edge_traces,
     px_create_network_fig,
     px_create_node_trace,
 )
-from .list_cells_in_matrix import list_cells_in_matrix
-
-
-@dataclass
-class AutoCorrMap:
-    """Auto-correlation map.
-
-    :meta private:
-    """
-
-    fig_: go.Figure
-    df_: pd.DataFrame
-    rows_and_columns_: str
-
-    def __repr__(self):
-        text = "AutoCorrMap("
-        text += f"rows-and-columns='{self.rows_and_columns_}'"
-        text += ")"
-        text = textwrap.fill(text, width=75, subsequent_indent="    ")
-        return text
 
 
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 def auto_correlation_map(
-    auto_corr_matrix,
     #
-    # Map params:
+    # FUNCTION PARAMS:
+    auto_corr_matrix,
     n_labels=None,
     color="#8da4b4",
     nx_k=None,
@@ -96,10 +81,8 @@ def auto_correlation_map(
 ):
     """Auto-correlation Map."""
 
-    matrix_list = list_cells_in_matrix(auto_corr_matrix)
-
-    graph = nx_create_graph_from_matrix_list(
-        matrix_list,
+    graph = nx_create_graph_from_matrix(
+        auto_corr_matrix,
         node_size_min,
         node_size_max,
         textfont_size_min,
@@ -121,7 +104,6 @@ def auto_correlation_map(
     fig = px_create_network_fig(
         edge_traces,
         node_trace,
-        # text_trace,
         xaxes_range,
         yaxes_range,
         show_axes,
@@ -129,8 +111,4 @@ def auto_correlation_map(
 
     fig = px_add_names_to_fig_nodes(fig, graph, n_labels, is_article=False)
 
-    return AutoCorrMap(
-        fig_=fig,
-        df_=matrix_list.df_,
-        rows_and_columns_=auto_corr_matrix.rows_and_columns_,
-    )
+    return fig

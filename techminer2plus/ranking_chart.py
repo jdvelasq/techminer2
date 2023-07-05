@@ -1,4 +1,5 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 .. _ranking_chart:
 
@@ -8,58 +9,55 @@ Ranking Chart
 Default visualization chart for Bibliometrix.
 
 
->>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/ranking_chart.html"
+* Preparation
 
->>> import techminer2plus
->>> itemslist = techminer2plus.list_items(
+>>> import techminer2plus as tm2p
+>>> root_dir = "data/regtech/"
+
+
+* Object oriented interface
+
+>>> (
+...     tm2p.records(root_dir=root_dir)
+...     .list_items(
+...         field='author_keywords',
+...         top_n=20,
+...     )
+...     .ranking_chart(
+...         title="Most Frequent Author Keywords",
+...     )
+...     .write_html("sphinx/_static/ranking_chart_0.html")
+... )
+
+.. raw:: html
+
+    <iframe src="../_static/ranking_chart_0.html" height="600px" width="100%" frameBorder="0"></iframe>
+
+* Functional interface
+
+>>> list_items = tm2p.list_items(
 ...    field='author_keywords',
 ...    top_n=20,
 ...    root_dir=root_dir,
 ... )
->>> chart = techminer2plus.ranking_chart(itemslist, title="Most Frequent Author Keywords")
->>> chart.fig_.write_html(file_name)
+>>> tm2p.ranking_chart(
+...    list_items=list_items,
+...    title="Most Frequent Author Keywords"
+... ).write_html("sphinx/_static/ranking_chart_1.html")
+
+
 
 .. raw:: html
 
-    <iframe src="../_static/ranking_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../_static/ranking_chart_1.html" height="600px" width="100%" frameBorder="0"></iframe>
 
-
->>> chart.df_.head()
-author_keywords
-REGTECH                  28
-FINTECH                  12
-REGULATORY_TECHNOLOGY     7
-COMPLIANCE                7
-REGULATION                5
-Name: OCC, dtype: int64
-
-
-
-
-# pylint: disable=line-too-long
 """
-from dataclasses import dataclass
-
-import pandas as pd
 import plotly.express as px
-import plotly.graph_objs as go
-
-
-@dataclass
-class RankingChart:
-    """Bar Chart.
-
-    :meta private:
-    """
-
-    fig_: go.Figure
-    df_: pd.DataFrame
 
 
 # pylint: disable=too-many-arguments
 def ranking_chart(
-    data=None,
+    list_items,
     title=None,
     field_label=None,
     metric_label=None,
@@ -72,25 +70,25 @@ def ranking_chart(
     """Creates a rank chart."""
 
     metric_label = (
-        data.metric_.replace("_", " ").upper()
+        list_items.metric.replace("_", " ").upper()
         if metric_label is None
         else metric_label
     )
 
     field_label = (
-        data.field_.replace("_", " ").upper() + " RANKING"
+        list_items.field.replace("_", " ").upper() + " RANKING"
         if field_label is None
         else field_label
     )
 
-    table = data.df_.copy()
+    table = list_items.df_.copy()
     table["Rank"] = list(range(1, len(table) + 1))
 
     fig = px.line(
         table,
         x="Rank",
-        y=data.metric_,
-        hover_data=data.df_.columns.to_list(),
+        y=list_items.metric,
+        hover_data=list_items.df_.columns.to_list(),
         markers=True,
     )
 
@@ -125,7 +123,7 @@ def ranking_chart(
     for name, row in table.iterrows():
         fig.add_annotation(
             x=row["Rank"],
-            y=row[data.metric_],
+            y=row[list_items.metric],
             text=name,
             showarrow=False,
             textangle=-90,
@@ -134,7 +132,4 @@ def ranking_chart(
             yshift=yshift,
         )
 
-    return RankingChart(
-        fig_=fig,
-        df_=data.df_[data.metric_],
-    )
+    return fig

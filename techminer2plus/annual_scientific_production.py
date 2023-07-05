@@ -1,23 +1,50 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
+.. _annual_scientific_production:
+
 Annual Scientific Production
 ===============================================================================
 
 
+* Preparation
+
+>>> import techminer2plus as tm2p
 >>> root_dir = "data/regtech/"
 
->>> import techminer2plus
->>> r = techminer2plus.publish.overview.annual_scientific_production(root_dir)
->>> file_name = "sphinx/_static/examples/overview/annual_scientific_production.html"
->>> r.plot_.write_html(file_name)
+* Object oriented interface
+
+
+>>> annual_scientific_production = (
+...     tm2p.records(root_dir=root_dir)
+...     .annual_scientific_production()
+... )
+>>> annual_scientific_production
+AnnualScientificProduction(root_dir='data/regtech/', database='main',
+    year_filter=(None, None), cited_by_filter=(None, None), filters={})
+
+
+* Functional interface
+
+>>> annual_scientific_production = tm2p.annual_scientific_production(
+...     root_dir=root_dir,
+... )
+>>> annual_scientific_production
+AnnualScientificProduction(root_dir='data/regtech/', database='main',
+    year_filter=(None, None), cited_by_filter=(None, None), filters={})
+
+
+
+* Results
+
+>>> annual_scientific_production.fig_.write_html("sphinx/_static/annual_scientific_production.html")
 
 .. raw:: html
 
-    <iframe src="../../_static/examples/overview/annual_scientific_production.html" 
-    height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/annual_scientific_production.html"  height="600px" width="100%" frameBorder="0"></iframe>
 
 
->>> r.table_.head()
+>>> annual_scientific_production.df_.head()
       OCC  cum_OCC  ...  cum_local_citations  mean_local_citations_per_year
 year                ...                                                    
 2016    1        1  ...                  0.0                           0.00
@@ -29,7 +56,7 @@ year                ...
 [5 rows x 11 columns]
 
 
->>> print(r.prompt_)
+>>> print(annual_scientific_production.prompt_)
 The table below, delimited by triple backticks, provides data on the annual \\
 scientific production in a bibliographic database. Use the table to draw \\
 conclusions about annual research productivity and the cumulative \\
@@ -57,18 +84,60 @@ Table:
 <BLANKLINE>
 
 
-# pylint: disable=line-too-long
 """
-# from ...chatbot_prompts import format_chatbot_prompt_for_tables
-# from ...classes import IndicatorByYearChart
-# from ...metrics import indicators_by_year, indicators_by_year_plot
+import textwrap
+from dataclasses import dataclass
+from dataclasses import field as datafield
+
+import pandas as pd
+import plotly.graph_objects as go
+
+from ._chatbot import format_chatbot_prompt_for_df
+from ._metrics_lib import indicators_by_year, indicators_by_year_plot
+
+
+# pylint: disable=too-many-instance-attributes
+@dataclass
+class AnnualScientificProduction:
+    """Annual scientific production."""
+
+    #
+    # RESULTS:
+    df_: pd.DataFrame
+    fig_: go.Figure
+    prompt_: str
+    #
+    # PARAMS:
+    root_dir: str = "./"
+    database: str = "main"
+    year_filter: tuple = (None, None)
+    cited_by_filter: tuple = (None, None)
+    filters: dict = datafield(default_factory=dict)
+
+    def __post_init__(self):
+        if self.filters is None:
+            self.filters = {}
+
+    def __repr__(self):
+        text = (
+            "AnnualScientificProduction("
+            f"root_dir='{self.root_dir}'"
+            f", database='{self.database}'"
+            f", year_filter={self.year_filter}"
+            f", cited_by_filter={self.cited_by_filter}"
+            f", filters={self.filters}"
+            ")"
+        )
+        text = textwrap.fill(text, width=75, subsequent_indent="    ")
+        return text
 
 
 def annual_scientific_production(
-    root_dir="./",
-    database="main",
-    year_filter=None,
-    cited_by_filter=None,
+    title: str = "Annual Scientific Production",
+    root_dir: str = "./",
+    database: str = "main",
+    year_filter: tuple = (None, None),
+    cited_by_filter: tuple = (None, None),
     **filters,
 ):
     """Computes annual scientific production (number of documents per year).
@@ -104,7 +173,7 @@ def annual_scientific_production(
         )
 
         table_text = table.to_markdown()
-        return format_chatbot_prompt_for_tables(main_text, table_text)
+        return format_chatbot_prompt_for_df(main_text, table_text)
 
     #
     # Main code
@@ -118,13 +187,25 @@ def annual_scientific_production(
         **filters,
     )
 
-    results = IndicatorByYearChart()
-    results.table_ = indicators
-    results.plot_ = indicators_by_year_plot(
+    fig = indicators_by_year_plot(
         indicators,
         metric="OCC",
-        title="Annual Scientific Production",
+        title=title,
     )
-    results.prompt_ = generate_chatgpt_prompt(indicators[["OCC", "cum_OCC"]])
 
-    return results
+    prompt = generate_chatgpt_prompt(indicators[["OCC", "cum_OCC"]])
+
+    return AnnualScientificProduction(
+        #
+        # RESULTS:
+        df_=indicators,
+        fig_=fig,
+        prompt_=prompt,
+        #
+        # PARAMS:
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
+    )

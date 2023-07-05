@@ -1,4 +1,5 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 RPYS (Reference Publication Year Spectroscopy)
 ===============================================================================
@@ -23,7 +24,6 @@ RPYS (Reference Publication Year Spectroscopy)
 1940               0     0.0
 1941               0     0.0
 
-# pylint: disable=line-too-long
 """
 import os.path
 

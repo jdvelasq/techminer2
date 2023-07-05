@@ -1,4 +1,5 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 Modeling of Emergent Themes --- TODO
 ===============================================================================

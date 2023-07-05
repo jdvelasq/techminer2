@@ -94,7 +94,9 @@ TM2 module.
 
     ingest/__index__
     refine/__index__
-    explore/__index__
+    overview/__index__
+    analyze/__index__
+    report/__index__
 
 
 .. toctree::

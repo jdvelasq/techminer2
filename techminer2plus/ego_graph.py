@@ -1,4 +1,5 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 Ego Graph --- ChatGPT
 ===============================================================================
@@ -60,7 +61,4 @@ Analyze the table below which contains values of co-occurrence (OCC) for the ['F
 <BLANKLINE>
 
 
-
-
-# pylint: disable=line-too-long
 """

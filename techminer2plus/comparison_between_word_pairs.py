@@ -1,4 +1,5 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 Compararison between word pairs
 ===============================================================================
@@ -69,9 +70,6 @@ Compararison between word pairs
 8                            REGTECH  MACHINE_LEARNING 01:003    1
 
 
-
-
-# pylint: disable=line-too-long
 """
 
 

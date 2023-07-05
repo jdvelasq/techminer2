@@ -1,4 +1,5 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 Most Cited Sources
 ==============================================================================
@@ -10,5 +11,5 @@ Most Cited Sources
 
 
 
-# pylint: disable=line-too-long
+
 """

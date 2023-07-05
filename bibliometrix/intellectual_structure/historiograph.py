@@ -1,4 +1,5 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 Historiograph
 ==============================================================================
@@ -7,8 +8,4 @@ Historiograph
 
 
 
-
-
-
-# pylint: disable=line-too-long
 """

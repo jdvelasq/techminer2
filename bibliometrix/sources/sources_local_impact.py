@@ -1,4 +1,5 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 Source's Local Impact
 ==============================================================================
@@ -10,5 +11,5 @@ Source's Local Impact
 
 
 
-# pylint: disable=line-too-long
+
 """

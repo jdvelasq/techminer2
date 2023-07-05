@@ -2,8 +2,6 @@
 
 import pandas as pd
 
-from .tf_matrix import TFMatrix
-
 # from .co_occurrence_matrix import CoocMatrix
 
 
@@ -23,25 +21,20 @@ def compute_corr_matrix(
             The correlation matrix.
     """
 
-    if isinstance(data_matrix, TFMatrix):
-        table = data_matrix.table_.copy()
-    elif isinstance(data_matrix, CoocMatrix):
-        table = data_matrix.df_.copy()
-    else:
-        raise TypeError("data_matrix must be a TFMatrix or a CorrMatrix.")
+    df_ = data_matrix.df_.copy()
 
     corr_matrix = pd.DataFrame(
         0.0,
-        columns=table.columns.to_list(),
-        index=table.columns.to_list(),
+        columns=df_.columns.to_list(),
+        index=df_.columns.to_list(),
     )
 
-    for col in table.columns:
-        for row in table.columns:
+    for col in df_.columns:
+        for row in df_.columns:
             if col == row:
                 corr_matrix.loc[row, col] = 1.0
             else:
-                matrix = table[[col, row]].copy()
+                matrix = df_[[col, row]].copy()
                 matrix = matrix.loc[(matrix != 0).any(axis=1)]
                 matrix = matrix.astype(float)
                 sumproduct = matrix[row].mul(matrix[col], axis=0).sum()
@@ -52,7 +45,7 @@ def compute_corr_matrix(
                 elif matrix.shape[0] == 1:
                     corr = 1.0
                 elif matrix.shape[0] > 1:
-                    corr = table[col].corr(other=table[row], method=method)
+                    corr = df_[col].corr(other=df_[row], method=method)
                 else:
                     corr = 0.0
                 corr_matrix.loc[row, col] = corr

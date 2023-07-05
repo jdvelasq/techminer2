@@ -1,4 +1,5 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 Data
 ==============================================================================
@@ -6,9 +7,4 @@ Data
 
 
 
-
-
-
-
-# pylint: disable=line-too-long
 """

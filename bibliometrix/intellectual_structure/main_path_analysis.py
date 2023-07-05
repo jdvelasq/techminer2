@@ -1,4 +1,5 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 Main Path Analysis
 ==============================================================================
@@ -6,9 +7,4 @@ Main Path Analysis
 
 
 
-
-
-
-
-# pylint: disable=line-too-long
 """

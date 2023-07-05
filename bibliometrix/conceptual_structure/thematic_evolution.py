@@ -1,14 +1,9 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 Thematic Evolution
 ==============================================================================
 
 
 
-
-
-
-
-
-# pylint: disable=line-too-long
 """

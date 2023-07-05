@@ -1,4 +1,5 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 .. _item_associations:
 
@@ -7,14 +8,41 @@ Item Associations
 
 Computes the associations of a item in a co-occurrence matrix.
 
+* Preparation
+
+>>> import techminer2plus as tm2p
 >>> root_dir = "data/regtech/"
->>> import techminer2plus
->>> cooc_matrix = techminer2plus.co_occurrence_matrix(
+
+* Object oriented interface
+
+>>> associations = (
+...     tm2p.records(root_dir=root_dir)
+...     .co_occurrence_matrix(
+...         columns='author_keywords',
+...         col_top_n=20,
+...     )
+...     .item_associations("REGTECH")
+... )
+>>> associations
+ItemAssociations(item='REGTECH',
+    cooc_matrix='CoocMatrix(columns='author_keywords',
+    rows='author_keywords', dims=(20,  20))')
+
+* Functional interface
+
+>>> cooc_matrix = tm2p.co_occurrence_matrix(
 ...    columns='author_keywords',
 ...    col_top_n=20,
 ...    root_dir=root_dir,
 ... )
->>> associations = techminer2plus.item_associations("REGTECH", cooc_matrix)
+>>> associations = tm2p.item_associations("REGTECH", cooc_matrix)
+>>> associations
+ItemAssociations(item='REGTECH',
+    cooc_matrix='CoocMatrix(columns='author_keywords',
+    rows='author_keywords', dims=(20,  20))')
+
+* Results
+
 >>> associations.df_
                                 REGTECH 28:329
 author_keywords                               
@@ -75,32 +103,99 @@ Table:
 <BLANKLINE>
 
 
-# pylint: disable=line-too-long
 """
+import textwrap
 from dataclasses import dataclass
 
 import pandas as pd
 
-from ._chatbot_prompts import format_chatbot_prompt_for_df
+from ._chatbot import format_chatbot_prompt_for_df
+from .associations_plot import associations_plot
+from .radial_diagram import radial_diagram
 
 
 @dataclass
 class ItemAssociations:
     """Item associations."""
 
+    #
+    # PARAMS:
+    item: str
+    cooc_matrix: pd.DataFrame
+    #
+    # RESULTS:
     df_: pd.DataFrame
-    item_: str
-    metric_: str
-    field_: str
     prompt_: str
     item_name_: str
+    #
+    # COMPATIBILITY:
+    field: str = ""
+    metric: str = "OCC"  # compatibility for plotting
+
+    def __repr__(self):
+        text = "ItemAssociations("
+        text += f"item='{self.item}'"
+        text += f", cooc_matrix='{self.cooc_matrix.__repr__().replace('    ', '   ').replace('   ', '  ').replace('  ', ' ')}'"
+        text += ")"
+        text = textwrap.fill(text, width=75, subsequent_indent="    ")
+        return text
+
+    # pylint: disable=too-many-arguments
+    def radial_diagram(
+        self,
+        #
+        # Figure params:
+        n_labels=None,
+        nx_k=None,
+        nx_iterations=30,
+        nx_random_state=0,
+        node_size_min=30,
+        node_size_max=70,
+        textfont_size_min=10,
+        textfont_size_max=20,
+        xaxes_range=None,
+        yaxes_range=None,
+        show_axes=False,
+    ):
+        """Radial diagram of the item associations."""
+        return radial_diagram(
+            item_associations=self,
+            #
+            # Figure params:
+            n_labels=n_labels,
+            nx_k=nx_k,
+            nx_iterations=nx_iterations,
+            nx_random_state=nx_random_state,
+            node_size_min=node_size_min,
+            node_size_max=node_size_max,
+            textfont_size_min=textfont_size_min,
+            textfont_size_max=textfont_size_max,
+            xaxes_range=xaxes_range,
+            yaxes_range=yaxes_range,
+            show_axes=show_axes,
+        )
+
+    def associations_plot(
+        self,
+        title=None,
+        field_label=None,
+        metric_label=None,
+    ):
+        """Associations plot"""
+
+        return associations_plot(
+            item_associations=self,
+            title=title,
+            field_label=field_label,
+            metric_label=metric_label,
+        )
 
 
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 def item_associations(
     item,
-    cooc_matrix=None,
+    cooc_matrix,
 ):
     """Computes the associations of a item in a co-occurrence matrix."""
 
@@ -119,7 +214,7 @@ def item_associations(
         series = matrix.iloc[:, pos]
         series = series.drop(labels=[name], axis=0, errors="ignore")
         series = series[series > 0]
-        series.index.name = obj.rows_
+        series.index.name = obj.rows
         return series
 
     def create_prompt(field, item, table):
@@ -148,14 +243,14 @@ def item_associations(
     frame = frame.sort_values(
         by=[name, "OCC", "GC", "NAME"], ascending=[False, False, False, True]
     )
-    series = frame[name]
-    prompt = create_prompt(item, cooc_matrix.rows_, series)
+    series = frame[[name]]
+    prompt = create_prompt(item, cooc_matrix.rows, series)
 
     return ItemAssociations(
-        df_=series.to_frame(),
-        item_=item,
-        metric_="OCC",
-        field_=cooc_matrix.rows_,
+        item=item,
+        cooc_matrix=cooc_matrix,
+        df_=series,
         prompt_=prompt,
         item_name_=name,
+        field=cooc_matrix.df_.index.name,
     )

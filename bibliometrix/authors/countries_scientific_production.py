@@ -1,4 +1,5 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 Countries' Scientific Production
 ==============================================================================
@@ -8,7 +9,4 @@ Countries' Scientific Production
 
 
 
-
-
-# pylint: disable=line-too-long
 """

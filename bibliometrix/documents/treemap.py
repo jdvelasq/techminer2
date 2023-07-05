@@ -1,4 +1,5 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 Treemap
 ==============================================================================
@@ -6,9 +7,4 @@ Treemap
 
 
 
-
-
-
-
-# pylint: disable=line-too-long
 """

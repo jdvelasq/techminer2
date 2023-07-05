@@ -4,12 +4,7 @@
 Auto-correlation Matrix
 ==============================================================================
 
-
-
-
-
-
-
+See :ref:`auto_correlation_matrix`
 
 
 """

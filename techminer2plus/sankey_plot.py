@@ -1,3 +1,5 @@
+# flake8: noqa
+# pylint: disable=line-too-long
 """
 .. _sankey_plot:
 
@@ -5,13 +7,33 @@ Sankey Plot
 ===============================================================================
 
 
+* Preparation
 
-
+>>> import techminer2plus as tm2p
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/sankey_plot.html"
 
->>> import techminer2plus
->>> techminer2plus.sankey_plot(
+* Object oriented interface
+
+>>> file_name = "sphinx/_static/sankey_plot_0.html"
+>>> (
+...     tm2p.records(root_dir=root_dir)
+...     .sankey_plot(
+...         fields=["authors", "countries", "author_keywords"],
+...         top_n=10,
+...         max_n=20,
+...     )
+... ).write_html(file_name)
+
+.. raw:: html
+
+    <iframe src="../../../_static/sankey_plot_0.html" height="800px" width="100%" frameBorder="0"></iframe>
+
+
+
+* Functional interface
+
+>>> file_name = "sphinx/_static/sankey_plot_1.html"
+>>> tm2p.sankey_plot(
 ...     root_dir=root_dir,
 ...     fields=["authors", "countries", "author_keywords"],
 ...     top_n=10,
@@ -20,7 +42,7 @@ Sankey Plot
 
 .. raw:: html
 
-    <iframe src="../_static/sankey_plot.html" height="800px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/sankey_plot_1.html" height="800px" width="100%" frameBorder="0"></iframe>
 
 """
 import plotly.graph_objects as go
@@ -32,22 +54,22 @@ from .co_occurrence_matrix import co_occurrence_matrix
 # pylint: disable=too-many-locals
 def sankey_plot(
     #
-    # Specific params:
+    # PARAMS:
     fields,
     max_n=50,
     #
-    # Item filters:
+    # ITEM FILTERS:
     top_n=None,
     occ_range=None,
     gc_range=None,
     custom_items=None,
     #
-    # Plot params:
+    # PARAMS:
     font_size=8,
     title=None,
     color=None,
     #
-    # Database params:
+    # DATABASE PARAMS:
     root_dir="./",
     database="main",
     year_filter=None,

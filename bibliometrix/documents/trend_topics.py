@@ -1,4 +1,5 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 Trend Topics
 ==============================================================================
@@ -6,9 +7,4 @@ Trend Topics
 
 
 
-
-
-
-
-# pylint: disable=line-too-long
 """

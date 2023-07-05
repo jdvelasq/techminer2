@@ -1,4 +1,5 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 Thematic Map
 ==============================================================================
@@ -6,9 +7,4 @@ Thematic Map
 
 
 
-
-
-
-
-# pylint: disable=line-too-long
 """

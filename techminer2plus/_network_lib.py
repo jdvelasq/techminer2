@@ -19,6 +19,7 @@ from cdlib import algorithms
 #     list_cells_in_matrix,
 # )
 from ._read_records import read_records
+from .list_cells_in_matrix import list_cells_in_matrix
 
 CLUSTER_COLORS = (
     px.colors.qualitative.Dark24
@@ -32,29 +33,29 @@ CLUSTER_COLORS = (
 
 
 # =============================================================================
-def nx_create_graph_from_matrix(
-    matrix,
-    node_size_min=30,
-    node_size_max=70,
-    textfont_size_min=10,
-    textfont_size_max=20,
-):
-    """Creates a networkx graph from a matrix list."""
+# def nx_create_graph_from_matrix(
+#     matrix,
+#     node_size_min=30,
+#     node_size_max=70,
+#     textfont_size_min=10,
+#     textfont_size_max=20,
+# ):
+#     """Creates a networkx graph from a matrix list."""
 
-    graph = nx.Graph()
+#     graph = nx.Graph()
 
-    graph = nx_add_nodes__to_graph_from_matrix(graph, matrix)
-    graph = nx_create_node_occ_property_from_node_name(graph)
-    graph = nx_compute_node_property_from_occ(
-        graph, "node_size", node_size_min, node_size_max
-    )
-    graph = nx_compute_node_property_from_occ(
-        graph, "textfont_size", textfont_size_min, textfont_size_max
-    )
+#     graph = nx_add_nodes__to_graph_from_matrix(graph, matrix)
+#     graph = nx_create_node_occ_property_from_node_name(graph)
+#     graph = nx_compute_node_property_from_occ(
+#         graph, "node_size", node_size_min, node_size_max
+#     )
+#     graph = nx_compute_node_property_from_occ(
+#         graph, "textfont_size", textfont_size_min, textfont_size_max
+#     )
 
-    graph = nx_add_edges_to_graph_from_matrix(graph, matrix)
+#     graph = nx_add_edges_to_graph_from_matrix(graph, matrix)
 
-    return graph
+#     return graph
 
 
 def nx_add_nodes__to_graph_from_matrix(graph, matrix):
@@ -90,27 +91,30 @@ def nx_add_edges_to_graph_from_matrix(graph, matrix):
 def nx_add_edges_to_graph_from_matrix_list(graph, matrix_list):
     """Creates edges from 'row' and 'column' columns in a matrix list."""
 
-    table = matrix_list.df_.copy()
+    # table = matrix_list.df_.copy()
 
-    if isinstance(matrix_list, AutoCorrCellsList):
-        table = table[table["row"] < table["column"]]
-        table = table.loc[table.CORR > 0, :]
+    # if isinstance(matrix_list, AutoCorrCellsList):
+    #     table = table[table["row"] < table["column"]]
+    #     table = table.loc[table.CORR > 0, :]
 
-    elif isinstance(matrix_list, CoocCellsList):
-        table = table[table["row"] < table["column"]]
-        table = table.loc[table.OCC > 0, :]
+    # elif isinstance(matrix_list, CoocCellsList):
+    #     table = table[table["row"] < table["column"]]
+    #     table = table.loc[table.OCC > 0, :]
 
-    else:
-        table = table[table[matrix_list.metric_] > 0]
+    # else:
+    #     table = table[table[matrix_list.metric_] > 0]
+
+    table = matrix_list.copy()
 
     for _, row in table.iterrows():
-        graph.add_edges_from(
-            [(row[0], row[1])],
-            value=row[2],
-            width=2,
-            dash="solid",
-            color="#8da4b4",
-        )
+        if row[2] != 0 and row[0] != row[1]:
+            graph.add_edges_from(
+                [(row[0], row[1])],
+                value=row[2],
+                width=2,
+                dash="solid",
+                color="#8da4b4",
+            )
 
     return graph
 
@@ -121,6 +125,56 @@ def nx_add_edges_to_graph_from_matrix_list(graph, matrix_list):
 # Functions for manipulating networkx graphs
 #
 #
+def nx_create_graph_from_matrix(
+    matrix,
+    node_size_min=30,
+    node_size_max=70,
+    textfont_size_min=10,
+    textfont_size_max=20,
+):
+    """Creates a networkx graph from a matrix list."""
+
+    graph = nx.Graph()
+
+    graph = nx_add_nodes_to_graph_from_matrix(graph, matrix)
+    graph = nx_create_node_occ_property_from_node_name(graph)
+    graph = nx_compute_node_property_from_occ(
+        graph, "node_size", node_size_min, node_size_max
+    )
+    graph = nx_compute_node_property_from_occ(
+        graph, "textfont_size", textfont_size_min, textfont_size_max
+    )
+
+    graph = nx_add_edges_to_graph_from_matrix(graph, matrix)
+
+    return graph
+
+
+def nx_add_nodes_to_graph_from_matrix(graph, matrix):
+    """Creates nodes from 'row' and 'column' columns in a matrix list."""
+
+    # adds items in 'row' column as nodes
+    nodes = matrix.df_.index.to_list()
+    nodes = [
+        (node, {"group": 0, "color": "#8da4b4", "textfont_color": "black"})
+        for node in nodes
+    ]
+    graph.add_nodes_from(nodes)
+
+    # adds items in 'column' column as nodes
+    candidates = matrix.df_.columns.to_list()
+    nodes = []
+    for candidate in candidates:
+        if candidate not in graph.nodes:
+            nodes.append(candidate)
+    if len(nodes) > 0:
+        nodes = [
+            (node, {"group": 1, "color": "#556f81", "textfont_color": "black"})
+            for node in nodes
+        ]
+        graph.add_nodes_from(nodes)
+
+    return graph
 
 
 def nx_create_graph_from_matrix_list(

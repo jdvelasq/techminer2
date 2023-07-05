@@ -1,4 +1,6 @@
 """Reporting module for records."""
+import os.path
+import textwrap
 
 
 def create_records_report(root_dir, target_dir, records, report_filename):

@@ -1,4 +1,5 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 Factorial Analysis
 ==============================================================================
@@ -6,9 +7,4 @@ Factorial Analysis
 
 
 
-
-
-
-
-# pylint: disable=line-too-long
 """

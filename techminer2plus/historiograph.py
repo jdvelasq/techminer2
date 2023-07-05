@@ -1,4 +1,5 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 Historiograph
 ===============================================================================
@@ -45,7 +46,6 @@ Historiograph
 9            Waye V, 2020, ADELAIDE LAW REV, V40, P363
 dtype: object
 
-# pylint: disable=line-too-long
 """
 import networkx as nx
 import pandas as pd

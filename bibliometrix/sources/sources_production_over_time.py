@@ -1,4 +1,5 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 Sources' Production over Time
 ==============================================================================
@@ -10,5 +11,5 @@ Sources' Production over Time
 
 
 
-# pylint: disable=line-too-long
+
 """

@@ -1,65 +1,58 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 .. _cleveland_dot_chart:
 
 Cleveland Dot Chart
 ===============================================================================
 
+* Preparation
 
-
+>>> import techminer2plus as tm2p
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/cleveland_chart.html"
 
 
->>> import techminer2plus
->>> itemslist = techminer2plus.list_items(
-...    field='author_keywords',
-...    top_n=20,
-...    root_dir=root_dir,
+* Object oriented interface
+
+>>> (
+...     tm2p.records(root_dir=root_dir)
+...     .list_items(
+...         field='author_keywords',
+...         top_n=20,
+...     )
+...     .cleveland_dot_chart(
+...         title="Most Frequent Author Keywords",
+...     )
+...     .write_html("sphinx/_static/cleveland_chart_0.html")
 ... )
-
->>> chart = techminer2plus.cleveland_dot_chart(itemslist, title="Most Frequent Author Keywords")
->>> chart.fig_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../_static/cleveland_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../_static/cleveland_chart_0.html" height="600px" width="100%" frameBorder="0"></iframe>
 
->>> chart.df_.head()
-author_keywords
-REGTECH                  28
-FINTECH                  12
-REGULATORY_TECHNOLOGY     7
-COMPLIANCE                7
-REGULATION                5
-Name: OCC, dtype: int64
+    
+* Functional interface
 
+>>> list_items = tm2p.list_items(
+...    field='author_keywords',
+...    top_n=10,
+...    root_dir=root_dir,
+... )
+>>> tm2p.cleveland_dot_chart(
+...    list_items=list_items,
+...    title="Most Frequent Author Keywords"
+... ).write_html("sphinx/_static/cleveland_chart_1.html")
 
+.. raw:: html
 
+    <iframe src="../_static/cleveland_chart_1.html" height="600px" width="100%" frameBorder="0"></iframe>
 
-
-# pylint: disable=line-too-long
 """
-from dataclasses import dataclass
-
-import pandas as pd
 import plotly.express as px
-import plotly.graph_objs as go
-
-
-@dataclass
-class ClevelandDotChart:
-    """Bar Chart.
-
-    :meta private:
-    """
-
-    fig_: go.Figure
-    df_: pd.DataFrame
 
 
 def cleveland_dot_chart(
-    data=None,
+    list_items=None,
     title=None,
     metric_label=None,
     field_label=None,
@@ -77,23 +70,23 @@ def cleveland_dot_chart(
 
     """
     metric_label = (
-        data.metric_.replace("_", " ").upper()
+        list_items.metric.replace("_", " ").upper()
         if metric_label is None
         else metric_label
     )
 
     field_label = (
-        data.field_.replace("_", " ").upper()
+        list_items.field.replace("_", " ").upper()
         if field_label is None
         else field_label
     )
 
     fig = px.scatter(
-        data.df_,
-        x=data.metric_,
+        list_items.df_,
+        x=list_items.metric,
         y=None,
-        hover_data=data.df_.columns.to_list(),
-        size=data.metric_,
+        hover_data=list_items.df_.columns.to_list(),
+        size=list_items.metric,
     )
     fig.update_layout(
         paper_bgcolor="white",
@@ -123,7 +116,4 @@ def cleveland_dot_chart(
         title_text=field_label,
     )
 
-    return ClevelandDotChart(
-        fig_=fig,
-        df_=data.df_[data.metric_],
-    )
+    return fig

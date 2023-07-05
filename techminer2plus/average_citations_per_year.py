@@ -1,21 +1,49 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
+.. _average_citations_per_year:
+
 Average Citations per Year
 ===============================================================================
 
 
->>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/examples/average_citations_per_year.html"
+* Preparation
 
->>> import techminer2plus
->>> r = techminer2plus.publish.overview.average_citations_per_year(root_dir)
->>> r.plot_.write_html(file_name)
+>>> import techminer2plus as tm2p
+>>> root_dir = "data/regtech/"
+
+* Object oriented interface
+
+>>> average_citations_per_year = (
+...     tm2p.records(root_dir=root_dir)
+...     .average_citations_per_year()
+... )
+>>> average_citations_per_year
+AverageCitationsPerYear(root_dir='data/regtech/', database='main',
+    year_filter=(None, None), cited_by_filter=(None, None), filters={})
+
+
+* Functional interface
+
+>>> average_citations_per_year = tm2p.average_citations_per_year(
+...     root_dir=root_dir,
+... )
+>>> average_citations_per_year
+AverageCitationsPerYear(root_dir='data/regtech/', database='main',
+    year_filter=(None, None), cited_by_filter=(None, None), filters={})
+
+
+* Results
+
+>>> average_citations_per_year.fig_.write_html("sphinx/_static/average_citations_per_year.html")
 
 .. raw:: html
 
-    <iframe src="../../_static/examples/average_citations_per_year.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/average_citations_per_year.html"  height="600px" width="100%" frameBorder="0"></iframe>
 
->>> print(r.table_.head().to_markdown())
+    
+
+>>> print(average_citations_per_year.df_.head().to_markdown())
 |   year |   OCC |   cum_OCC |   local_citations |   global_citations |   citable_years |   mean_global_citations |   cum_global_citations |   mean_global_citations_per_year |   mean_local_citations |   cum_local_citations |   mean_local_citations_per_year |
 |-------:|------:|----------:|------------------:|-------------------:|----------------:|------------------------:|-----------------------:|---------------------------------:|-----------------------:|----------------------:|--------------------------------:|
 |   2016 |     1 |         1 |                 0 |                 30 |               8 |                30       |                     30 |                             3.75 |                0       |                     0 |                            0    |
@@ -25,7 +53,7 @@ Average Citations per Year
 |   2020 |    14 |        28 |                29 |                 93 |               4 |                 6.64286 |                    514 |                             1.66 |                2.07143 |                    81 |                            0.52 |
 
 
->>> print(r.prompt_)
+>>> print(average_citations_per_year.prompt_)
 The table below provides data on the average citations per year of the \\
 dataset. Use the the information in the table to draw conclusions about the \\
 impact per year. In your analysis, be sure to describe in a clear and \\
@@ -48,36 +76,66 @@ Table:
 ```
 <BLANKLINE>
 
-
-
-# pylint: disable=line-too-long
 """
-# from ...chatbot_prompts import format_chatbot_prompt_for_tables
-# from ...classes import IndicatorByYearChart
-# from ...metrics import indicators_by_year, indicators_by_year_plot
+import textwrap
+from dataclasses import dataclass
+from dataclasses import field as datafield
+
+import pandas as pd
+import plotly.graph_objects as go
+
+from ._chatbot import format_chatbot_prompt_for_df
+from ._metrics_lib import indicators_by_year, indicators_by_year_plot
+
+
+# pylint: disable=too-many-instance-attributes
+@dataclass
+class AverageCitationsPerYear:
+    """Average Citations per Year.
+
+    :meta private:
+    """
+
+    #
+    # RESULTS:
+    df_: pd.DataFrame
+    fig_: go.Figure
+    prompt_: str
+    #
+    # PARAMS:
+    root_dir: str = "./"
+    database: str = "main"
+    year_filter: tuple = (None, None)
+    cited_by_filter: tuple = (None, None)
+    filters: dict = datafield(default_factory=dict)
+
+    def __post_init__(self):
+        if self.filters is None:
+            self.filters = {}
+
+    def __repr__(self):
+        text = (
+            "AverageCitationsPerYear("
+            f"root_dir='{self.root_dir}'"
+            f", database='{self.database}'"
+            f", year_filter={self.year_filter}"
+            f", cited_by_filter={self.cited_by_filter}"
+            f", filters={self.filters}"
+            ")"
+        )
+        text = textwrap.fill(text, width=75, subsequent_indent="    ")
+        return text
 
 
 def average_citations_per_year(
-    root_dir="./",
-    database="main",
-    year_filter=None,
-    cited_by_filter=None,
+    title: str = "Average Citations per Year",
+    root_dir: str = "./",
+    database: str = "main",
+    year_filter: tuple = (None, None),
+    cited_by_filter: tuple = (None, None),
     **filters,
 ):
-    """Average citations per year.
-
-    Args:
-        root_dir (str, optional): root directory. Defaults to "./".
-        database (str, optional): database name. Defaults to "documents".
-        year_filter (tuple, optional): Year filter. Defaults to None.
-        cited_by_filter (tuple, optional): Cited by filter. Defaults to None.
-        **filters (dict, optional): Filters to be applied to the database. Defaults to {}.
-
-
-    Returns:
-        IndicatorByYearChart: A chart containing the average citations per year.
-
-    """
+    """Average citations per year."""
 
     def generate_chatgpt_prompt(table):
         """Generates prompt for analysis of the average citations per year."""
@@ -92,7 +150,7 @@ def average_citations_per_year(
             "more than 250 words."
         )
         table_text = table.to_markdown()
-        return format_chatbot_prompt_for_tables(main_text, table_text)
+        return format_chatbot_prompt_for_df(main_text, table_text)
 
     #
     # Main code
@@ -106,15 +164,27 @@ def average_citations_per_year(
         **filters,
     )
 
-    results = IndicatorByYearChart()
-    results.table_ = indicators
-    results.plot_ = indicators_by_year_plot(
+    fig = indicators_by_year_plot(
         indicators,
         metric="mean_global_citations",
-        title="Average Citations per Year",
+        title=title,
     )
-    results.prompt_ = generate_chatgpt_prompt(
+
+    prompt = generate_chatgpt_prompt(
         indicators[["mean_global_citations", "global_citations"]]
     )
 
-    return results
+    return AverageCitationsPerYear(
+        #
+        # RESULTS:
+        df_=indicators,
+        fig_=fig,
+        prompt_=prompt,
+        #
+        # PARAMS:
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
+    )

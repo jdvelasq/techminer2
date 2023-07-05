@@ -1,34 +1,64 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 Network Deegre Plot
 ===============================================================================
 
+* Preparation
 
+>>> import techminer2plus as tm2p
 >>> root_dir = "data/regtech/"
 
->>> import techminer2plus
->>> file_name = "sphinx/_static/network_degree_plot.html"
->>> cooc_matrix = techminer2plus.co_occurrence_matrix(
+* Object oriented interface
+
+>>> degree_plot = (
+...     tm2p.records(root_dir=root_dir)
+...     .co_occurrence_matrix(
+...         columns='author_keywords',
+...         col_top_n=20,
+...     )
+...     .network_create(
+...         algorithm_or_estimator="louvain"
+...     )
+...     .network_degree_plot()
+... )
+>>> degree_plot
+NetworkDegreePlot()
+
+
+* Functional interface
+
+>>> cooc_matrix = tm2p.co_occurrence_matrix(
 ...    columns='author_keywords',
 ...    col_top_n=20,
 ...    root_dir=root_dir,
 ... )
->>> graph = techminer2plus.network_clustering(
-...    cooc_matrix,
-...    algorithm_or_estimator='louvain',
+>>> network = tm2p.network_create(
+...     cooc_matrix,
+...     algorithm_or_estimator='louvain',
 ... )
->>> chart = techminer2plus.network_degree_plot(graph)
->>> chart.plot_.write_html(file_name)
+>>> degree_plot = network_degree_plot(network)
+>>> degree_plot
+NetworkDegreePlot()
+
+
+* Results
+
+>>> degree_plot.fig_.write_html("sphinx/_static/network_degree_plot.html")
 
 .. raw:: html
 
-    <iframe src="../../_static/network_degree_plot.html"
-    height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/network_degree_plot.html"   height="600px" width="100%" frameBorder="0"></iframe>
 
+>>> degree_plot.df_.head()
+   Node                          Name  Degree
+0     0                REGTECH 28:329      19
+1     1                FINTECH 12:249      13
+2     2             COMPLIANCE 07:030      10
+3     3             REGULATION 05:164      10
+4     4  REGULATORY_TECHNOLOGY 07:037       9
 
-
-
->>> print(chart.prompt_)
+>>> print(degree_plot.prompt_)
 Your task is to generate an analysis about the degree of the nodes in a \\
 networkx graph of a co-ocurrence matrix. Analyze the table below, delimited \\
 by triple backticks, identifying any notable patterns, trends, or outliers \\
@@ -62,21 +92,33 @@ Table:
 <BLANKLINE>
 
 
-
-# pylint: disable=line-too-long
 """
+from dataclasses import dataclass
 
 import pandas as pd
 import plotly.express as px
+import plotly.graph_objects as go
 
-from ._chatbot_prompts import format_chatbot_prompt_for_df
+from ._chatbot import format_chatbot_prompt_for_df
 from ._network_lib import nx_compute_node_degree
-from .classes import NetworkDegreePlot
+
+
+# pylint: disable=too-many-instance-attributes
+@dataclass
+class NetworkDegreePlot:
+    """Network degree plot."""
+
+    fig_: go.Figure
+    df_: pd.DataFrame
+    prompt_: str
+
+    def __repr__(self):
+        return "NetworkDegreePlot()"
 
 
 # pylint: disable=too-many-arguments
 def network_degree_plot(
-    graph,
+    network,
     textfont_size=10,
     marker_size=7,
     line_color="black",
@@ -172,16 +214,16 @@ def network_degree_plot(
     #
     #
 
-    graph = nx_compute_node_degree(graph)
-    degrees = collect_degrees(graph)
+    nx_graph = network.nx_graph
+    nx_graph = nx_compute_node_degree(nx_graph)
+    degrees = collect_degrees(nx_graph)
     dataframe = to_dataframe(degrees)
     dataframe = dataframe[["Node", "Name", "Degree"]]
     fig = plot(dataframe, textfont_size, yshift)
+    prompt = generate_chatgpt_prompt(dataframe)
 
-    obj = NetworkDegreePlot()
-    obj.plot_ = fig
-    obj.graph_ = graph
-    obj.table_ = dataframe
-    obj.prompt_ = generate_chatgpt_prompt(dataframe)
-
-    return obj
+    return NetworkDegreePlot(
+        fig_=fig,
+        df_=dataframe,
+        prompt_=prompt,
+    )

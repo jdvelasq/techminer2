@@ -1,4 +1,5 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 .. _co_occurrence_matrix:
 
@@ -6,12 +7,15 @@ Co-occurrence Matrix
 ===============================================================================
 
 
-
+* Preparation
 
 >>> import techminer2plus as tm2p
 >>> root_dir = "data/regtech/"
+
+* Object oriented interface
+
 >>> co_occ_matrix = (
-...     tm2p.Records(root_dir=root_dir)
+...     tm2p.records(root_dir=root_dir)
 ...     .co_occurrence_matrix(
 ...         columns='author_keywords',
 ...         rows='authors',
@@ -20,18 +24,21 @@ Co-occurrence Matrix
 ...     )
 ... )
 >>> co_occ_matrix
+CoocMatrix(columns='author_keywords', rows='authors', dims=(15, 23))
 
+* Functional interface
 
-
->>> co_occ_matrix = techminer2plus.co_occurrence_matrix(
+>>> co_occ_matrix = tm2p.co_occurrence_matrix(
 ...     columns='author_keywords',
 ...     rows='authors',
 ...     col_occ_range=(2, None),
 ...     row_occ_range=(2, None),
-...     root_dir=ROOT_DIR,
+...     root_dir=root_dir,
 ... )
 >>> print(co_occ_matrix)
 CoocMatrix(columns='author_keywords', rows='authors', dims=(15, 23))
+
+* Results
 
 >>> co_occ_matrix.df_
 column              REGTECH 28:329  ...  REPORTING 02:001
@@ -87,10 +94,10 @@ Table:
 ```
 <BLANKLINE>
 
->>> co_occ_matrix = techminer2plus.co_occurrence_matrix(
+>>> co_occ_matrix = tm2p.co_occurrence_matrix(
 ...    columns='author_keywords',
 ...    col_top_n=10,
-...    root_dir=ROOT_DIR,
+...    root_dir=root_dir,
 ... )
 >>> co_occ_matrix
 CoocMatrix(columns='author_keywords', rows='author_keywords', dims=(10,
@@ -139,20 +146,27 @@ Table:
 ```
 <BLANKLINE>
 
-
-
-# pylint: disable=line-too-long
 """
 import textwrap
 from dataclasses import dataclass
+from dataclasses import field as datafield
+from typing import Optional
 
 import pandas as pd
 
-from ._chatbot_prompts import format_chatbot_prompt_for_df
+from ._chatbot import format_chatbot_prompt_for_df
 from ._counters_lib import add_counters_to_frame_axis
 from ._filtering_lib import generate_custom_items
 from ._metrics_lib import co_occ_matrix_list, indicators_by_field
 from ._sorting_lib import sort_indicators_by_metric, sort_matrix_axis
+from .bubble_chart import bubble_chart
+from .factor_matrix_pca import factor_matrix_pca
+from .heat_map import heat_map
+from .item_associations import item_associations
+from .list_cells_in_matrix import list_cells_in_matrix
+from .matrix_viewer import matrix_viewer
+from .mds_2d_map import mds_2d_map
+from .network_create import network_create
 
 
 # pylint: disable=too-many-instance-attributes
@@ -160,48 +174,215 @@ from ._sorting_lib import sort_indicators_by_metric, sort_matrix_axis
 class CoocMatrix:
     """Co-cccurrence matrix.
 
-
     :meta private:
     """
 
-    df_: pd.DataFrame
-    prompt_: str
-    metric_: str
-    columns_: str
-    rows_: str
+    #
+    # PARAMS:
+    columns: str
+    rows: Optional[str] = None
+    #
+    # COLUMN PARAMS:
+    col_top_n: Optional[int] = None
+    col_occ_range: tuple = (None, None)
+    col_gc_range: tuple = (None, None)
+    col_custom_items: list = datafield(default_factory=list)
+    #
+    # ROW PARAMS:
+    row_top_n: Optional[int] = None
+    row_occ_range: tuple = (None, None)
+    row_gc_range: tuple = (None, None)
+    row_custom_items: list = datafield(default_factory=list)
+    #
+    # DATABASE PARAMS:
+    root_dir: str = "./"
+    database: str = "main"
+    year_filter: tuple = (None, None)
+    cited_by_filter: tuple = (None, None)
+    filters: dict = datafield(default_factory=dict)
+    #
+    # RESULTS:
+    df_: pd.DataFrame = pd.DataFrame()
+    prompt_: str = ""
 
     def __repr__(self):
         text = "CoocMatrix("
-        text += f"columns='{self.columns_}'"
-        text += f", rows='{self.rows_}'"
+        text += f"columns='{self.columns}'"
+        text += f", rows='{self.rows}'"
         text += f", dims={self.df_.shape}"
         text += ")"
         text = textwrap.fill(text, width=75, subsequent_indent="    ")
         return text
 
+    def list_cells_in_matrix(self):
+        """Lists all cells in the matrix."""
+        return list_cells_in_matrix(self)
 
-# pylint: disable=too-many-arguments disable=too-many-locals
+    def heat_map(self, colormap="Blues"):
+        """Creates a heat map."""
+        return heat_map(self, colormap=colormap)
+
+    def bubble_chart(self, title=None):
+        """Creates a bubble chart."""
+        return bubble_chart(self, title=title)
+
+    def factor_matrix_pca(
+        self,
+        association_index=None,
+        n_components=None,
+        whiten=False,
+        svd_solver="auto",
+        tol=0.0,
+        iterated_power="auto",
+        n_oversamples=10,
+        power_iteration_normalizer="auto",
+        random_state=0,
+    ):
+        """Creates a PCA factor matrix."""
+        return factor_matrix_pca(
+            cooc_matrix=self,
+            association_index=association_index,
+            n_components=n_components,
+            whiten=whiten,
+            svd_solver=svd_solver,
+            tol=tol,
+            iterated_power=iterated_power,
+            n_oversamples=n_oversamples,
+            power_iteration_normalizer=power_iteration_normalizer,
+            random_state=random_state,
+        )
+
+    def matrix_viewer(
+        self,
+        #
+        # Figure params:
+        n_labels=None,
+        nx_k=None,
+        nx_iterations=30,
+        nx_random_state=0,
+        node_size_min=30,
+        node_size_max=70,
+        textfont_size_min=10,
+        textfont_size_max=20,
+        xaxes_range=None,
+        yaxes_range=None,
+        show_axes=False,
+    ):
+        """Creates a network representation."""
+        return matrix_viewer(
+            cooc_matrix=self,
+            #
+            # Figure params:
+            n_labels=n_labels,
+            nx_k=nx_k,
+            nx_iterations=nx_iterations,
+            nx_random_state=nx_random_state,
+            node_size_min=node_size_min,
+            node_size_max=node_size_max,
+            textfont_size_min=textfont_size_min,
+            textfont_size_max=textfont_size_max,
+            xaxes_range=xaxes_range,
+            yaxes_range=yaxes_range,
+            show_axes=show_axes,
+        )
+
+    def item_associations(self, item):
+        """Item associations table"""
+
+        return item_associations(
+            item=item,
+            cooc_matrix=self,
+        )
+
+    def mds_2d_map(
+        self,
+        association_index=None,
+        #
+        # MDS params:
+        metric=True,
+        n_init=4,
+        max_iter=300,
+        eps=0.001,
+        n_jobs=None,
+        random_state=0,
+        dissimilarity="euclidean",
+        #
+        # Plot params:
+        node_color="#8da4b4",
+        node_size_min=12,
+        node_size_max=50,
+        textfont_size_min=8,
+        textfont_size_max=20,
+        xaxes_range=None,
+        yaxes_range=None,
+    ):
+        return mds_2d_map(
+            cooc_matrix=self,
+            association_index=association_index,
+            #
+            # MDS params:
+            metric=metric,
+            n_init=n_init,
+            max_iter=max_iter,
+            eps=eps,
+            n_jobs=n_jobs,
+            random_state=random_state,
+            dissimilarity=dissimilarity,
+            #
+            # Plot params:
+            node_color=node_color,
+            node_size_min=node_size_min,
+            node_size_max=node_size_max,
+            textfont_size_min=textfont_size_min,
+            textfont_size_max=textfont_size_max,
+            xaxes_range=xaxes_range,
+            yaxes_range=yaxes_range,
+        )
+
+    def network_create(
+        self,
+        algorithm_or_estimator,
+        normalization_index=None,
+    ):
+        return network_create(
+            cooc_matrix=self,
+            algorithm_or_estimator=algorithm_or_estimator,
+            normalization_index=normalization_index,
+            #
+            # DATABASE PARAMS:
+            root_dir=self.root_dir,
+            database=self.database,
+            year_filter=self.year_filter,
+            cited_by_filter=self.cited_by_filter,
+            **self.filters,
+        )
+
+
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
 def co_occurrence_matrix(
+    #
+    # FUNCTION PARAMS:
     columns,
     rows=None,
     #
-    # Columns item filters:
+    # COLUMN PARAMS:
     col_top_n=None,
-    col_occ_range=None,
-    col_gc_range=None,
+    col_occ_range=(None, None),
+    col_gc_range=(None, None),
     col_custom_items=None,
     #
-    # Rows item filters:
+    # ROW PARAMS:
     row_top_n=None,
-    row_occ_range=None,
-    row_gc_range=None,
+    row_occ_range=(None, None),
+    row_gc_range=(None, None),
     row_custom_items=None,
     #
-    # Database params:
+    # DATABASE PARAMS:
     root_dir="./",
     database="main",
-    year_filter=None,
-    cited_by_filter=None,
+    year_filter=(None, None),
+    cited_by_filter=(None, None),
     **filters,
 ):
     """Creates a co-occurrence matrix."""
@@ -283,9 +464,8 @@ def co_occurrence_matrix(
         return format_chatbot_prompt_for_df(main_text, matrix.to_markdown())
 
     #
-    # Main code:
+    # MAIN CODE:
     #
-
     if rows is None:
         rows = columns
         row_top_n = col_top_n
@@ -310,7 +490,8 @@ def co_occurrence_matrix(
         raw_matrix_list=raw_matrix_list,
         field=rows,
         name="row",
-        # Item filters:
+        #
+        # ROW PARAMS:
         top_n=row_top_n,
         occ_range=row_occ_range,
         gc_range=row_gc_range,
@@ -322,7 +503,8 @@ def co_occurrence_matrix(
         raw_matrix_list=raw_filterd_matrix_list,
         field=columns,
         name="column",
-        # Item filters:
+        #
+        # ROW PARAMS:
         top_n=col_top_n,
         occ_range=col_occ_range,
         gc_range=col_gc_range,
@@ -337,7 +519,8 @@ def co_occurrence_matrix(
         matrix,
         axis=0,
         field=rows,
-        # Database params:
+        #
+        # DATABASE PARAMS:
         root_dir=root_dir,
         database=database,
         year_filter=year_filter,
@@ -349,7 +532,8 @@ def co_occurrence_matrix(
         matrix,
         axis=1,
         field=columns,
-        # Database params:
+        #
+        # DATABASE PARAMS:
         root_dir=root_dir,
         database=database,
         year_filter=year_filter,
@@ -364,7 +548,8 @@ def co_occurrence_matrix(
         dataframe=matrix,
         axis=0,
         field=rows,
-        # Database params:
+        #
+        # DATABASE PARAMS:
         root_dir=root_dir,
         database=database,
         year_filter=year_filter,
@@ -397,9 +582,31 @@ def co_occurrence_matrix(
         )
 
     return CoocMatrix(
+        #
+        # PARAMS:
+        columns=columns,
+        rows=rows,
+        #
+        # COLUMN PARAMS:
+        col_top_n=col_top_n,
+        col_occ_range=col_occ_range,
+        col_gc_range=col_gc_range,
+        col_custom_items=col_custom_items,
+        #
+        # ROW PARAMS:
+        row_top_n=row_top_n,
+        row_occ_range=row_occ_range,
+        row_gc_range=row_gc_range,
+        row_custom_items=row_custom_items,
+        #
+        # RESULTS:
         df_=matrix,
         prompt_=prompt,
-        metric_="OCC",
-        columns_=columns,
-        rows_=rows if rows else columns,
+        #
+        # DATABASE PARAMS:
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
     )

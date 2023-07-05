@@ -1,4 +1,5 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 .. _treemap:
 
@@ -25,19 +26,6 @@ Treemap
 
     <iframe src="../_static/treemap.html" height="600px" width="100%" frameBorder="0"></iframe>
 
->>> chart.table_.head()
-author_keywords
-REGTECH                  28
-FINTECH                  12
-REGULATORY_TECHNOLOGY     7
-COMPLIANCE                7
-REGULATION                5
-Name: OCC, dtype: int64
-
-
-
-
-# pylint: disable=line-too-long
 """
 from dataclasses import dataclass
 

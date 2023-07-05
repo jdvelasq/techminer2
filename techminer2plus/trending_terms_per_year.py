@@ -1,4 +1,5 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 Trending Terms per Year
 ===============================================================================
@@ -70,9 +71,6 @@ REGULATORY_TECHNOLOGY      7     2020      2021     2022                37   0
 SUPTECH                    3     2020      2022     2022                 4   0
 
 
-
-
-# pylint: disable=line-too-long
 """
 import numpy as np
 import plotly.graph_objects as go

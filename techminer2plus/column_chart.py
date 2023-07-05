@@ -1,4 +1,5 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 .. _column_chart:
 
@@ -8,57 +9,62 @@ Column chart
 Displays a vertical bar graph of the selected items in a ItemLlist object. 
 Items in your list are the X-axis, and the number of records are the Y-axis.
 
+* Preparation
 
-
+>>> import techminer2plus as tm2p
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/column_chart.html"
 
->>> import techminer2plus
->>> itemslist = techminer2plus.list_items(
+* Object oriented interface
+
+>>> (
+...     tm2p.records(root_dir=root_dir)
+...     .list_items(
+...         field='author_keywords',
+...         top_n=20,
+...     )
+...     .column_chart(
+...         title="Most Frequent Author Keywords",
+...     )
+...     .write_html("sphinx/_static/column_chart_0.html")
+... )
+
+
+.. raw:: html
+
+    <iframe src="../_static/column_chart_0.html" height="600px" width="100%" frameBorder="0"></iframe>
+
+
+
+* Functional interface
+
+
+>>> itemslist = tm2p.list_items(
 ...    field='author_keywords',
 ...    top_n=20,
 ...    root_dir=root_dir,
 ... )
->>> chart = techminer2plus.column_chart(itemslist, title="Most Frequent Author Keywords")
->>> chart.fig_.write_html(file_name)
+>>> tm2p.column_chart(
+...     itemslist, 
+...     title="Most Frequent Author Keywords",
+... ).write_html("sphinx/_static/column_chart_1.html")
+
 
 .. raw:: html
 
-    <iframe src="../_static/column_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
-
->>> chart.df_.head()
-author_keywords
-REGTECH                  28
-FINTECH                  12
-REGULATORY_TECHNOLOGY     7
-COMPLIANCE                7
-REGULATION                5
-Name: OCC, dtype: int64
+    <iframe src="../_static/column_chart_1.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
-
-# pylint: disable=line-too-long
 """
-from dataclasses import dataclass
 
-import pandas as pd
+
 import plotly.express as px
 import plotly.graph_objs as go
 
 
-@dataclass
-class ColumnChart:
-    """Column Chart.
-
-    :meta private:
-    """
-
-    fig_: go.Figure
-    df_: pd.DataFrame
-
-
 def column_chart(
-    data=None,
+    #
+    # CHART PARAMS:
+    list_items,
     title=None,
     metric_label=None,
     field_label=None,
@@ -77,22 +83,22 @@ def column_chart(
 
     """
     metric_label = (
-        data.metric_.replace("_", " ").upper()
+        list_items.metric.replace("_", " ").upper()
         if metric_label is None
         else metric_label
     )
 
     field_label = (
-        data.field_.replace("_", " ").upper()
+        list_items.field.replace("_", " ").upper()
         if field_label is None
         else field_label
     )
 
     fig = px.bar(
-        data.df_,
+        list_items.df_,
         x=None,
-        y=data.metric_,
-        hover_data=data.df_.columns.to_list(),
+        y=list_items.metric,
+        hover_data=list_items.df_.columns.to_list(),
         orientation="v",
     )
 
@@ -121,7 +127,4 @@ def column_chart(
         title_text=metric_label,
     )
 
-    return ColumnChart(
-        fig_=fig,
-        df_=data.df_[data.metric_],
-    )
+    return fig

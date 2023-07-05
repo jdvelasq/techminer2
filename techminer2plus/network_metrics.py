@@ -1,22 +1,50 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 Network Metrics
 ===============================================================================
 
+
+* Preparation
+
+>>> import techminer2plus as tm2p
 >>> root_dir = "data/regtech/"
 
->>> import techminer2plus
->>> cooc_matrix = techminer2plus.co_occurrence_matrix(
+* Object oriented interface
+
+>>> metrics = (
+...     tm2p.records(root_dir=root_dir)
+...     .co_occurrence_matrix(
+...         columns='author_keywords',
+...         col_top_n=20,
+...     )
+...     .network_create(
+...         algorithm_or_estimator="louvain"
+...     )
+...     .network_metrics()
+... )
+>>> metrics
+NetworkMetrics()
+
+
+* Functional interface
+
+>>> cooc_matrix = tm2p.co_occurrence_matrix(
 ...    columns='author_keywords',
 ...    col_top_n=20,
 ...    root_dir=root_dir,
 ... )
->>> graph = techminer2plus.network_clustering(
-...    cooc_matrix,
-...    algorithm_or_estimator='louvain',
+>>> network = tm2p.network_create(
+...     cooc_matrix,
+...     algorithm_or_estimator='louvain',
 ... )
->>> metrics = techminer2plus.network_metrics(graph)
->>> metrics.table_.head()
+>>> metrics = network_metrics(network)
+>>> metrics
+NetworkMetrics()
+
+* Results
+
+>>> metrics.df_.head()
                               Degree  Betweenness  ...  Centrality  Density
 REGTECH 28:329                    19     0.461111  ...        28.0     55.0
 FINTECH 12:249                    13     0.088791  ...        12.0     32.0
@@ -60,16 +88,29 @@ Table:
 ```
 <BLANKLINE>
 
-# pylint: disable=line-too-long
-"""
 
-from ._chatbot_prompts import format_chatbot_prompt_for_df
+"""
+from dataclasses import dataclass
+
+import pandas as pd
+
+from ._chatbot import format_chatbot_prompt_for_df
 from ._network_lib import nx_compute_node_degree, nx_compute_node_statistics
-from .classes import NetworkMetrics
+
+
+@dataclass
+class NetworkMetrics:
+    """Network statistics."""
+
+    df_: pd.DataFrame
+    prompt_: str
+
+    def __repr__(self):
+        return "NetworkMetrics()"
 
 
 def network_metrics(
-    graph,
+    network,
 ):
     """Compute network metrics a co-occurrence matrix."""
 
@@ -89,13 +130,12 @@ def network_metrics(
     # Main:
     #
     #
+    nx_graph = network.nx_graph
+    nx_graph = nx_compute_node_degree(nx_graph)
+    table = nx_compute_node_statistics(nx_graph)
+    prompt = generate_chatgpt_prompt(table)
 
-    graph = nx_compute_node_degree(graph)
-    table = nx_compute_node_statistics(graph)
-
-    obj = NetworkMetrics()
-
-    obj.table_ = table
-    obj.prompt_ = generate_chatgpt_prompt(table)
-
-    return obj
+    return NetworkMetrics(
+        df_=table,
+        prompt_=prompt,
+    )

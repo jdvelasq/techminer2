@@ -1,47 +1,59 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
+.. _mds_2d_map:
+
 MDS 2D Map 
 ===============================================================================
 
 Plots the MDS (with 2 components) of the normalized co-occurrence matrix.
 
 
+* Preparation
 
->>> import techminer2plus
->>> cooc_matrix = techminer2plus.analyze.matrix.co_occurrence_matrix(
-...     columns='author_keywords',
-...     col_top_n=30,
-...     root_dir="data/regtech/",
+>>> import techminer2plus as tm2p
+>>> root_dir = "data/regtech/"
+
+* Object oriented interface
+
+>>> fig = (
+...     tm2p.records(root_dir=root_dir)
+...     .co_occurrence_matrix(
+...         columns='author_keywords',
+...         col_top_n=20,
+...     )
+...     .mds_2d_map()
 ... )
->>> file_name = "sphinx/_static/analyze/map/mds_2d_map.html"
->>> chart = techminer2plus.analyze.map.mds_2d_map(cooc_matrix)
->>> chart.plot_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../_static//analyze/map/mds_2d_map.html" height="800px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/mds_2d_map.html" height="800px" width="100%" frameBorder="0"></iframe>
+
+    
+* Functional interface
+
+>>> cooc_matrix = tm2p.co_occurrence_matrix(
+...    columns='author_keywords',
+...    col_top_n=20,
+...    root_dir=root_dir,
+... )
+>>> fig = tm2p.mds_2d_map(cooc_matrix)
+
+* Results:
+
+>>> fig.write_html("sphinx/_static/mds_2d_map.html")
+
+.. raw:: html
+
+    <iframe src="../../_static/mds_2d_map.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
->>> chart.table_.head()
-                                 Dim_01     Dim_02
-author_keywords                                   
-REGTECH 28:329               -17.158842 -23.166553
-FINTECH 12:249                -4.770553 -13.727826
-REGULATORY_TECHNOLOGY 07:037  -6.482699   2.450538
-COMPLIANCE 07:030              2.580874  -7.547167
-REGULATION 05:164             -3.354086  -3.505347
-
-
-
-
-# pylint: disable=line-too-long
 """
 import pandas as pd
 from sklearn.manifold import MDS
 
-# from ...classes import ManifoldMap
-# from ...manifold_2d_map import manifold_2d_map
-# from ..matrix.matrix_normalization import matrix_normalization
+from .manifold_2d_map import manifold_2d_map
+from .matrix_normalization import matrix_normalization
 
 
 # pylint: disable=too-many-arguments
@@ -71,7 +83,7 @@ def mds_2d_map(
     """MDS 2D map."""
 
     cooc_matrix = matrix_normalization(cooc_matrix, association_index)
-    matrix = cooc_matrix.matrix_
+    matrix = cooc_matrix.df_
     estimator = MDS(
         n_components=2,
         metric=metric,
@@ -91,7 +103,7 @@ def mds_2d_map(
         index=matrix.index,
         columns=columns,
     )
-    frame.index.name = cooc_matrix.rows_
+    frame.index.name = cooc_matrix.rows
 
     node_occ = [
         int(text.split(" ")[-1].split(":")[0])
@@ -112,9 +124,4 @@ def mds_2d_map(
         yaxes_range=yaxes_range,
     )
 
-    manifold_map = ManifoldMap()
-    manifold_map.plot_ = fig
-    manifold_map.table_ = frame
-    manifold_map.method_ = "MDS"
-
-    return manifold_map
+    return fig

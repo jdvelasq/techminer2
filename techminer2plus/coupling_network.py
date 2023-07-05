@@ -1,4 +1,5 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 Documents Network
 ===============================================================================
@@ -45,9 +46,6 @@ Documents Network
 >>> print(techminer2plus.analyze.network.network_communities(graph).to_markdown())
 
 
-
-
-# pylint: disable=line-too-long
 """
 # from ..coupling import coupling_matrix
 

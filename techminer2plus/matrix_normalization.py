@@ -145,10 +145,6 @@ def matrix_normalization(cooc_matrix, association_index):
     for index in range(len(normalized_matrix)):
         normalized_matrix.iloc[index, index] = 0.0
 
-    return CoocMatrix(
-        df_=normalized_matrix,
-        prompt_=cooc_matrix.prompt_,
-        metric_=cooc_matrix.metric_,
-        columns_=cooc_matrix.columns_,
-        rows_=cooc_matrix.rows_,
-    )
+    cooc_matrix.df_ = normalized_matrix
+
+    return cooc_matrix

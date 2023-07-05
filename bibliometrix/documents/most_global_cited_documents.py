@@ -1,3 +1,5 @@
+# flake8: noqa
+# pylint: disable=line-too-long
 """
 Most Global Cited Documents
 ==============================================================================
@@ -5,9 +7,4 @@ Most Global Cited Documents
 
 
 
-
-
-
-
-# pylint: disable=line-too-long
 """

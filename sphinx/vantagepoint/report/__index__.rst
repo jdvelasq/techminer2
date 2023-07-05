@@ -1,6 +1,8 @@
 Report
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+**VantagePoint v15.2:**
+
 .. toctree::
     column_chart 
 
@@ -21,6 +23,9 @@ Report
 
 .. toctree::
     gantt_chart
+
+.. toctree::
+    matrix_viewer
 
 .. toctree::
     butterfly_chart

@@ -1,4 +1,5 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 Clustering by Coupling
 ==============================================================================
@@ -10,5 +11,5 @@ Clustering by Coupling
 
 
 
-# pylint: disable=line-too-long
+
 """

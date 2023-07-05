@@ -1,4 +1,5 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 2D-SVD Map (*) --- ChatGPT
 ===============================================================================
@@ -45,7 +46,6 @@ FINANCIAL_SERVICES 04:168   3.325509  -0.983070
 
 
 
-# pylint: disable=line-too-long
 """
 
 # from ..comparison.singular_value_decomposition import (

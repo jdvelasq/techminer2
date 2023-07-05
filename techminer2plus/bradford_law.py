@@ -1,23 +1,47 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
+.. _bradford_law:
+
 Bradford's Law
 ===============================================================================
 
+* Preparation
 
-
+>>> import techminer2plus as tm2p
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/examples/sources/bradford_law.html"
 
->>> import techminer2plus
->>> bradford = techminer2plus.publish.sources.bradford_law(root_dir=root_dir)
->>> bradford.plot_.write_html(file_name)
+* Object oriented interface
+
+>>> bradford_law = (
+...     tm2p.records(root_dir=root_dir)
+...     .bradford_law()
+... )
+>>> bradford_law
+BradfordLaw(root_dir='data/regtech/', database='main', year_filter=(None, None),
+    cited_by_filter=(None, None), filters={})
+
+* Functional interface
+
+>>> bradford_law = tm2p.bradford_law(
+...     root_dir=root_dir,
+... )
+>>> bradford_law
+BradfordLaw(root_dir='data/regtech/', database='main', year_filter=(None, None),
+    cited_by_filter=(None, None), filters={})
+
+
+* Results
+
+
+>>> bradford_law.fig_.write_html("sphinx/_static/bradford_law.html")
 
 .. raw:: html
 
-    <iframe src="../../_static/examples/sources/bradford_law.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../_static/bradford_law.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
->>> print(bradford.source_clustering_.head(20).to_markdown())
+>>> print(bradford_law.source_clustering_.head(20).to_markdown())
 | source_abbr                   |   no |   OCC |   cum_OCC |   global_citations |   zone |
 |:------------------------------|-----:|------:|----------:|-------------------:|-------:|
 | J BANK REGUL                  |    1 |     2 |         2 |                 35 |      1 |
@@ -44,39 +68,71 @@ Bradford's Law
 
 
 
->>> print(bradford.core_sources_.head(5).to_markdown())
+>>> print(bradford_law.core_sources_.head(5).to_markdown())
 |    |   Num Sources | %       |   Acum Num Sources | % Acum   |   Documents published |   Tot Documents published |   Num Documents | Tot Documents   |   Bradford's Group |
 |---:|--------------:|:--------|-------------------:|:---------|----------------------:|--------------------------:|----------------:|:----------------|-------------------:|
 |  0 |             6 | 13.04 % |                  6 | 13.04 %  |                     2 |                        12 |              12 | 23.08 %         |                  1 |
 |  1 |            40 | 86.96 % |                 46 | 100.0 %  |                     1 |                        40 |              52 | 100.0 %         |                  3 |
 
 
-
-
-# pylint: disable=line-too-long
 """
+
+import textwrap
+from dataclasses import dataclass
+from dataclasses import field as datafield
 
 import numpy as np
 import pandas as pd
 import plotly.express as px
+import plotly.graph_objects as go
 
-# from ...classes import BradfordLaw
-# from ...records_lib import read_records
+from ._read_records import read_records
+
+
+# pylint: disable=too-many-instance-attributes
+@dataclass
+class BradfordLaw:
+    """Bradford's Law."""
+
+    #
+    # RESULTS:
+    fig_: go.Figure
+    source_clustering_: pd.DataFrame
+    core_sources_: pd.DataFrame
+    #
+    # DATABASE PARAMS:
+    root_dir: str = "./"
+    database: str = "main"
+    year_filter: tuple = (None, None)
+    cited_by_filter: tuple = (None, None)
+    filters: dict = datafield(default_factory=dict)
+
+    def __repr__(self):
+        text = (
+            "BradfordLaw("
+            f"root_dir='{self.root_dir}'"
+            f", database='{self.database}'"
+            f", year_filter={self.year_filter}"
+            f", cited_by_filter={self.cited_by_filter}"
+            f", filters={self.filters}"
+            ")"
+        )
+
+        return textwrap.fill(text, width=80, subsequent_indent="    ")
 
 
 def bradford_law(
-    # Database params:
+    #
+    # DATABASE PARAMS:
     root_dir="./",
     database="main",
-    year_filter=None,
-    cited_by_filter=None,
+    year_filter=(None, None),
+    cited_by_filter=(None, None),
     **filters,
 ):
     """Bradfor's Law"""
 
-    results = BradfordLaw()
-
-    results.source_clustering_ = _source_clustering(
+    source_clustering = _source_clustering(
         root_dir=root_dir,
         database=database,
         year_filter=year_filter,
@@ -84,11 +140,11 @@ def bradford_law(
         **filters,
     )
 
-    results.plot_ = _bradford_law_plot(
-        indicators=results.source_clustering_,
+    fig = _bradford_law_plot(
+        indicators=source_clustering,
     )
 
-    results.core_sources_ = _core_sources(
+    core_sources = _core_sources(
         root_dir=root_dir,
         database=database,
         year_filter=year_filter,
@@ -96,7 +152,18 @@ def bradford_law(
         **filters,
     )
 
-    return results
+    return BradfordLaw(
+        fig_=fig,
+        source_clustering_=source_clustering,
+        core_sources_=core_sources,
+        #
+        # DATABASE PARAMS:
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
+    )
 
 
 def _core_sources(

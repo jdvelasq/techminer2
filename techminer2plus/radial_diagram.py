@@ -1,4 +1,5 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 Radial Diagram
 ===============================================================================
@@ -10,55 +11,50 @@ co-occurrence between the terms. The radial diagram is a useful tool for
 identifying the most relevant terms associated with a given term.
 
 
+* Preparation
 
+>>> import techminer2plus as tm2p
 >>> root_dir = "data/regtech/"
->>> import techminer2plus
->>> cooc_matrix = techminer2plus.co_occurrence_matrix(
+
+
+* Object oriented interface
+
+>>> fig = (
+...     tm2p.records(root_dir=root_dir)
+...     .co_occurrence_matrix(
+...         columns='author_keywords',
+...         col_top_n=20,
+...     )
+...     .item_associations(item="REGTECH") 
+...     .radial_diagram()
+... )
+
+* Functional interface
+
+>>> cooc_matrix = tm2p.co_occurrence_matrix(
 ...    columns='author_keywords',
 ...    col_top_n=20,
 ...    root_dir=root_dir,
 ... )
->>> associations = techminer2plus.item_associations("REGTECH", cooc_matrix)
+>>> associations = tm2p.item_associations(
+...     item="REGTECH", 
+...     cooc_matrix=cooc_matrix,
+... )
+>>> fig = tm2p.radial_diagram(associations)
 
->>> file_name = "sphinx/_static/radial_diagram.html"
->>> chart = techminer2plus.radial_diagram(item_associations)
 
->>> chart.item_name_
-'REGTECH 28:329'
+* Results:
 
->>> chart.plot_.write_html(file_name)
+>>> fig.write_html("sphinx/_static/radial_diagram.html")
 
 .. raw:: html
 
     <iframe src="../../_static/radial_diagram.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
-
-
-
-# pylint: disable=line-too-long
 """
-from dataclasses import dataclass
-
-import networkx as nx
-import pandas as pd
-import plotly.graph_objs as go
-
-
-@dataclass
-class RadialDiagram:
-    """Radial diagram."""
-
-    plot_: go.Figure
-    nx_graph_: nx.Graph
-    series_: pd.Series
-    item_name_: str
-    prompt_: str
-
-
 import networkx as nx
 
-# from ...classes import RadialDiagram
 from ._network_lib import (
     nx_compute_node_property_from_occ,
     nx_compute_spring_layout,
@@ -68,8 +64,6 @@ from ._network_lib import (
     px_create_network_fig,
     px_create_node_trace,
 )
-
-# from .item_associations import item_associations
 
 
 # pylint: disable=too-many-arguments
@@ -139,11 +133,10 @@ def radial_diagram(
         return graph
 
     #
-    # Main code:
+    # MAIN CODE:
     #
-    name, series, _, prompt = item_associations(
-        item=item, cooc_matrix=cooc_matrix
-    )
+    series = item_associations.df_.iloc[:, 0].copy()
+    name = series.name
 
     graph = create_graph(
         name=name,
@@ -171,9 +164,4 @@ def radial_diagram(
 
     fig = px_add_names_to_fig_nodes(fig, graph, n_labels, is_article=False)
 
-    radial_diagram_ = RadialDiagram()
-    radial_diagram_.plot_ = fig
-    radial_diagram_.graph_ = graph
-    radial_diagram_.series_ = series.copy()
-
-    return radial_diagram_
+    return fig

@@ -1,4 +1,5 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 List Cells In Matrix
 ===============================================================================
@@ -9,133 +10,126 @@ to the 'column' column of the list, and the rows of the original matrix
 correspond to the 'row' column of the list. The value of the cell is stored in
 the 'value' column of the list.
 
+* Preparation
 
 >>> root_dir = "data/regtech/"
+>>> import techminer2plus as tm2p
 
->>> import techminer2plus
->>> matrix = techminer2plus.auto_correlation_matrix(
+* Object oriented interface
+
+>>> (
+...     tm2p.records(root_dir=root_dir)
+...     .co_occurrence_matrix(
+...         columns='author_keywords',
+...         col_top_n=10,
+...     )
+...     .list_cells_in_matrix()
+... ).head()
+              row                        column  matrix_value
+0  REGTECH 28:329                REGTECH 28:329            28
+1  REGTECH 28:329                FINTECH 12:249            12
+2  REGTECH 28:329  REGULATORY_TECHNOLOGY 07:037             2
+3  REGTECH 28:329             COMPLIANCE 07:030             7
+4  REGTECH 28:329             REGULATION 05:164             4
+
+>>> (
+...     tm2p.records(root_dir=root_dir)
+...     .auto_correlation_matrix(
+...         rows_and_columns='authors',
+...         top_n=10,
+...     )
+...     .list_cells_in_matrix()
+... ).head()
+              row             column  matrix_value
+0  Arner DW 3:185     Arner DW 3:185        1.0000
+1  Arner DW 3:185   Buckley RP 3:185        1.0000
+2  Arner DW 3:185  Barberis JN 2:161        0.7698
+3  Arner DW 3:185     Butler T 2:041        0.0000
+4  Arner DW 3:185     Hamdan A 2:018        0.0000
+
+
+>>> (
+...     tm2p.records(root_dir=root_dir)
+...     .cross_correlation_matrix(
+...         rows_and_columns='authors',
+...         cross_with='countries',
+...         top_n=10,
+...     )
+...     .list_cells_in_matrix()
+... ).head()
+              row             column  matrix_value
+0  Arner DW 3:185     Arner DW 3:185      1.000000
+1  Arner DW 3:185   Buckley RP 3:185      1.000000
+2  Arner DW 3:185  Barberis JN 2:161      0.907242
+3  Arner DW 3:185     Butler T 2:041      0.000000
+4  Arner DW 3:185     Hamdan A 2:018      0.000000
+
+* Functional interface
+
+
+>>> matrix = tm2p.co_occurrence_matrix(
+...     columns='author_keywords',
+...     col_top_n=10,
+...     root_dir=root_dir,
+... )
+>>> tm2p.list_cells_in_matrix(matrix).head()
+              row                        column  matrix_value
+0  REGTECH 28:329                REGTECH 28:329            28
+1  REGTECH 28:329                FINTECH 12:249            12
+2  REGTECH 28:329  REGULATORY_TECHNOLOGY 07:037             2
+3  REGTECH 28:329             COMPLIANCE 07:030             7
+4  REGTECH 28:329             REGULATION 05:164             4
+
+>>> matrix = tm2p.auto_correlation_matrix(
 ...     rows_and_columns='authors',
 ...     top_n=10,
 ...     root_dir=root_dir,
 ... )
-
->>> cells_list = techminer2plus.list_cells_in_matrix(matrix)
->>> cells_list
-AutoCorrCellsList(, shape=(22, 3))
-
->>> cells_list.df_.head()
-                 row            column    CORR
-0     Arner DW 3:185    Arner DW 3:185  1.0000
-1   Buckley RP 3:185    Arner DW 3:185  1.0000
-2  Barberis JN 2:161    Arner DW 3:185  0.7698
-3     Arner DW 3:185  Buckley RP 3:185  1.0000
-4   Buckley RP 3:185  Buckley RP 3:185  1.0000
+>>> tm2p.list_cells_in_matrix(matrix).head()
+              row             column  matrix_value
+0  Arner DW 3:185     Arner DW 3:185        1.0000
+1  Arner DW 3:185   Buckley RP 3:185        1.0000
+2  Arner DW 3:185  Barberis JN 2:161        0.7698
+3  Arner DW 3:185     Butler T 2:041        0.0000
+4  Arner DW 3:185     Hamdan A 2:018        0.0000
 
 
 
-
+>>> matrix = tm2p.cross_correlation_matrix(
+...     rows_and_columns='authors', 
+...     cross_with='countries',
+...     top_n=10,
+...     root_dir=root_dir,
+... )
+>>> tm2p.list_cells_in_matrix(matrix).head()
+              row             column  matrix_value
+0  Arner DW 3:185     Arner DW 3:185      1.000000
+1  Arner DW 3:185   Buckley RP 3:185      1.000000
+2  Arner DW 3:185  Barberis JN 2:161      0.907242
+3  Arner DW 3:185     Butler T 2:041      0.000000
+4  Arner DW 3:185     Hamdan A 2:018      0.000000
     
 
-# pylint: disable=line-too-long
 """
-import textwrap
-from dataclasses import dataclass
-
-import pandas as pd
-
-from .auto_correlation_matrix import AutoCorrMatrix
-from .cross_correlation_matrix import CrossCorrMatrix
-
-# from . import CoocMatrix
-
-
-@dataclass
-class AutoCorrCellsList:
-    """List cells from an auto-correlation matrix."""
-
-    rows_and_columns_: str
-    df_: pd.DataFrame
-
-    def __repr__(self):
-        text = "AutoCorrCellsList("
-        text += f", shape={self.df_.shape}"
-        text += ")"
-        text = textwrap.fill(text, width=75, subsequent_indent="    ")
-        return text
-
-
-@dataclass
-class CrossCorrCellsList(AutoCorrCellsList):
-    """Cross-correlation cells list."""
-
-
-@dataclass
-class CoocCellsList:
-    """List cells from an co-occurrence matrix."""
-
-    rows_: str
-    columns_: str
-    df_: pd.DataFrame
-
-    def __repr__(self):
-        text = "CoocCellsList("
-        text += f", shape={self.df_.shape}"
-        text += ")"
-        text = textwrap.fill(text, width=75, subsequent_indent="    ")
-        return text
 
 
 def list_cells_in_matrix(obj):
     """List the cells in a matrix."""
 
-    def transform_matrix_to_matrix_list(obj):
-        """Transform a matrix object to a matrix list object."""
-
-        matrix = obj.df_
-        value_name = obj.metric_
-
-        matrix = matrix.melt(
-            value_name=value_name, var_name="column", ignore_index=False
-        )
-        matrix = matrix.reset_index()
-        matrix = matrix.rename(columns={matrix.columns[0]: "row"})
-        # matrix = matrix.sort_values(
-        #     by=[value_name, "row", "column"], ascending=[False, True, True]
-        # )
-        matrix = matrix[matrix[value_name] > 0.0]
-        matrix = matrix.reset_index(drop=True)
-
-        return matrix
-
     #
     #
-    # Main:
+    # MAIN CODE:
     #
     #
-    cells_list = transform_matrix_to_matrix_list(obj)
 
-    if isinstance(obj, AutoCorrMatrix):
-        return AutoCorrCellsList(
-            df_=cells_list,
-            rows_and_columns_=obj.rows_and_columns_,
-        )
-
-    if isinstance(obj, CrossCorrMatrix):
-        return CrossCorrCellsList(
-            df_=cells_list,
-            rows_and_columns_=obj.rows_and_columns_,
-        )
-
-    if isinstance(obj, CoocMatrix):
-        return CoocCellsList(
-            df_=cells_list,
-            columns_=obj.columns_,
-            rows_=obj.rows_,
-        )
-
-    return CellsList(
-        df_=cells_list,
-        from_=repr(type(obj)).split(".")[-1][:-2],
-        rows_=obj.rows_,
-        columns_=obj.columns_,
+    matrix = obj.df_
+    matrix = matrix.melt(
+        value_name="matrix_value",
+        var_name="row",
+        ignore_index=False,
     )
+    matrix["column"] = matrix.index.to_list()
+    matrix = matrix.reset_index(drop=True)
+    matrix = matrix[["row", "column", "matrix_value"]]
+
+    return matrix

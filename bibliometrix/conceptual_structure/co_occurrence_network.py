@@ -1,4 +1,5 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 Co-occurrence Network
 ==============================================================================
@@ -7,8 +8,4 @@ Co-occurrence Network
 
 
 
-
-
-
-# pylint: disable=line-too-long
 """

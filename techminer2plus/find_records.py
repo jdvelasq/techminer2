@@ -1,4 +1,5 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 Find records
 ===============================================================================
@@ -36,7 +37,6 @@ searching. The report is saved to the file ``reports/find_records.txt``.
 --INFO-- The file 'data/regtech/reports/find_records.txt' was created.
 
 
-# pylint: disable=line-too-long
 """
 
 

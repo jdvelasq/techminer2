@@ -102,7 +102,8 @@ class ManifoldMap:
 
 
 # Analyze / Discover / Matrix / TF Matrix
-@dataclass(init=False)
+# @dataclass(init=False)
+
 
 # Analyze / Discover / Map / Correlation Map
 @dataclass(init=False)
@@ -167,14 +168,6 @@ class NetworkMetrics:
 
 
 # Analyze / Calculate / Network Degree Plot
-@dataclass(init=False)
-class NetworkDegreePlot:
-    """Network degree plot."""
-
-    graph_: nx.Graph
-    plot_: go.Figure
-    table_: pd.DataFrame
-    prompt_: str
 
 
 # Analyze / Main information
@@ -304,13 +297,6 @@ class IndicatorByYearChart:
 # Sources / Most Global Cited Sources
 # Sources / Most Local Cited Sources
 # Sources / Bradow's Law: BradfordLaw
-@dataclass(init=False)
-class BradfordLaw:
-    """Bradford's Law."""
-
-    plot_: go.Figure
-    source_clustering_: pd.DataFrame
-    core_sources_: pd.DataFrame
 
 
 # Sources / Source Impact

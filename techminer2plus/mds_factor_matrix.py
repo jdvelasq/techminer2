@@ -1,4 +1,5 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 MDS Factor Matrix
 ===============================================================================
@@ -31,7 +32,6 @@ Factor matrix obtained by appliying MDS to the co-occurrence matrix.
 
 
 
-# pylint: disable=line-too-long
 """
 import pandas as pd
 from sklearn.manifold import MDS

@@ -6,10 +6,4 @@ Auto Classifier Settings
 
 
 
-
-
-
-
-
-
 """

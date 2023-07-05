@@ -1,56 +1,55 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
+.. _bubble_chart:
+
 Bubble Chart
 ===============================================================================
 
+* Preparation
 
+>>> import techminer2plus as tm2p
 >>> root_dir = "data/regtech/"
->>> import techminer2plus
->>> matrix = techminer2plus.co_occurrence_matrix(
+
+
+* Object oriented interface
+
+>>> (
+...     tm2p.records(root_dir=root_dir)
+...     .co_occurrence_matrix(
+...         columns='author_keywords',
+...         col_top_n=10,
+...     )
+...     .bubble_chart()
+...     .write_html("sphinx/_static/bubble_chart_0.html")
+... )
+
+.. raw:: html
+
+    <iframe src="../_static/bubble_chart_0.html" height="800px" width="100%" frameBorder="0"></iframe>
+
+
+* Functional interface
+
+>>> cooc_matrix = tm2p.co_occurrence_matrix(
 ...    columns='author_keywords',
 ...    col_top_n=10,
 ...    root_dir=root_dir,
 ... )
-
->>> file_name = "sphinx/_static/bubble_chart.html"
->>> chart = techminer2plus.bubble_chart(matrix)
->>> chart.fig_.write_html(file_name)
+>>> tm2p.bubble_chart(
+...     cooc_matrix,
+... ).write_html("sphinx/_static/bubble_chart_1.html")
 
 .. raw:: html
 
-    <iframe src="../_static/bubble_chart.html" height="800px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../_static/bubble_chart_1.html" height="800px" width="100%" frameBorder="0"></iframe>
 
->>> chart.df_.head()
-                 row             column  VALUE
-0     REGTECH 28:329     REGTECH 28:329     28
-1     FINTECH 12:249     FINTECH 12:249     12
-2     FINTECH 12:249     REGTECH 28:329     12
-3     REGTECH 28:329     FINTECH 12:249     12
-4  COMPLIANCE 07:030  COMPLIANCE 07:030      7
-
-
-
-
-
-# pylint: disable=line-too-long
 """
-from dataclasses import dataclass
-
-import pandas as pd
 import plotly.express as px
-import plotly.graph_objs as go
-
-
-@dataclass
-class BubbleChart:
-    """Bubble Chart."""
-
-    fig_: go.Figure
-    df_: pd.DataFrame
 
 
 def bubble_chart(
-    cooc_matrix=None,
+    cooc_matrix,
     title=None,
 ):
     """Makes a bubble chart."""
@@ -109,7 +108,4 @@ def bubble_chart(
         autorange="reversed",
     )
 
-    return BubbleChart(
-        fig_=fig,
-        df_=matrix,
-    )
+    return fig

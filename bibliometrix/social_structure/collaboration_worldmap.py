@@ -1,4 +1,5 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 Collaboration World Map
 ==============================================================================
@@ -6,9 +7,4 @@ Collaboration World Map
 
 
 
-
-
-
-
-# pylint: disable=line-too-long
 """

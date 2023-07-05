@@ -1,4 +1,5 @@
 # flake8: noqa
+# pylint: disable=line-too-long
 """
 Co-citation Network
 ===============================================================================
@@ -206,11 +207,6 @@ Table:
 | 49 |     49 | Dutta A, 2016, WIPDA - IEEE WORKSHOP WIDE BA, P11 03:099         |        1 |
 ```
 <BLANKLINE>
-
-
-# pylint: disable=line-too-long
-
-
 
 
 """

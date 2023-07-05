@@ -4,12 +4,6 @@
 Cross-correlation Matrix
 ==============================================================================
 
-
-
-
-
-
-
-
+See :ref:`cross_correlation_matrix`
 
 """

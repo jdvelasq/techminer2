@@ -7,5 +7,4 @@ List
 See :ref:`list_items`.
 
 
-
 """

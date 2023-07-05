@@ -8,13 +8,34 @@ Main Information
 
 TODO: check organizations_1st_author, countries_1st_author
 
->>> import techminer2plus.api as tm2p
+* Preparation
+
+>>> import techminer2plus as tm2p
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/main_info_api.html"               
->>> frame_, fig_, prompt_ = main_information(
+
+* Object oriented interface
+
+>>> main_information = (
+...     tm2p.records(root_dir=root_dir)
+...     .main_information()
+... )
+>>> main_information
+MainInformation(root_dir='data/regtech/', database='main',
+    year_filter=(None, None), cited_by_filter=(None, None), filters={})
+
+
+* Functional interface
+
+>>> main_information = tm2p.main_information(
 ...     root_dir=root_dir,
 ... )
->>> frame_
+>>> main_information
+MainInformation(root_dir='data/regtech/', database='main',
+    year_filter=(None, None), cited_by_filter=(None, None), filters={})
+
+* Results
+
+>>> main_information.df_
                                                             Value
 Category       Item                                              
 GENERAL        Timespan                                 2016:2023
@@ -61,15 +82,18 @@ DESCRIPTORS    Raw descriptors                                373
                Cleaned descriptors                            338
 
 
->>> file_name = "sphinx/_static/main_info_api.html"               
->>> fig_.write_html(file_name)
+
+
+>>> main_information.fig_.write_html("sphinx/_static/main_info.html")
 
 .. raw:: html
 
-    <iframe src="../_static/main_info_api.html" height="800px" width="100%" frameBorder="0"></iframe>
-               
+    <iframe src="../../../_static/main_info.html" height="800px" width="100%" frameBorder="0"></iframe>
 
->>> print(prompt_)
+
+
+            
+>>> print(main_information.prompt_)
 Your task is to generate a short summary for a research paper of a table \\
 with record and field statistics for a dataset of scientific publications. \\
 The table below, delimited by triple backticks, provides data on the main \\
@@ -130,14 +154,54 @@ Table:
 
 """
 import datetime
+import textwrap
+from dataclasses import dataclass
+from dataclasses import field as datafield
 
 import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
-from ._chatbot_prompts import format_chatbot_prompt_for_df
+from ._chatbot import format_chatbot_prompt_for_df
 from ._read_records import read_records
+
+
+# pylint: disable=too-many-instance-attributes
+@dataclass
+class MainInformation:
+    """Main inforamation results."""
+
+    #
+    # RESULTS:
+    df_: pd.DataFrame
+    fig_: go.Figure
+    prompt_: str
+
+    #
+    # PARAMS:
+    root_dir: str = "./"
+    database: str = "main"
+    year_filter: tuple = (None, None)
+    cited_by_filter: tuple = (None, None)
+    filters: dict = datafield(default_factory=dict)
+
+    def __post_init__(self):
+        if self.filters is None:
+            self.filters = {}
+
+    def __repr__(self):
+        text = (
+            "MainInformation("
+            f"root_dir='{self.root_dir}'"
+            f", database='{self.database}'"
+            f", year_filter={self.year_filter}"
+            f", cited_by_filter={self.cited_by_filter}"
+            f", filters={self.filters}"
+            ")"
+        )
+        text = textwrap.fill(text, width=75, subsequent_indent="    ")
+        return text
 
 
 # pylint: disable=too-many-public-methods
@@ -780,4 +844,17 @@ def main_information(
 
     main_info = MainInformationComputattion(records)
 
-    return main_info.frame_, main_info.fig_, main_info.prompt_
+    return MainInformation(
+        #
+        # RESULTS:
+        df_=main_info.frame_,
+        fig_=main_info.fig_,
+        prompt_=main_info.prompt_,
+        #
+        # PARAMS:
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
+    )
