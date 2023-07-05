@@ -34,7 +34,7 @@ from .pie_chart import pie_chart
 from .radial_diagram import radial_diagram
 from .ranking_chart import ranking_chart
 from .records import records
-from .sankey_plot import sankey_plot
+from .sankey_chart import sankey_chart
 from .statistics import statistics
 from .summary_sheet import summary_sheet
 from .terms_by_year import terms_by_year

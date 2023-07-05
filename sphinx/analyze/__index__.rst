@@ -2,58 +2,40 @@ Analyze
 =========================================================================================
 
 .. toctree::
-   list_items
+   :maxdepth: 1
+
+   items_analysis/__index__
 
 .. toctree::
+   :maxdepth: 1
 
-   matrix/__index__
-
-.. toctree::
-   map/__index__
+   co_occurrence_analysis/__index__
 
 .. toctree::
+   :maxdepth: 1
 
-   network/__index__
-
-.. toctree::
-   associations/__index__
-
+   correlation_analysis/__index__
 
 .. toctree::
-   record_classifications
+   :maxdepth: 1
+
+   factor_analysis/__index__
+
 
 .. toctree::
-   terms_by_year
+   :maxdepth: 1
+
+   emergence_analysis/__index__
 
 .. toctree::
-
-
-   factor_matrix/__index__
-
-.. toctree::
-   pcd
+   cluster_records
 
 .. toctree::
    tfidf
 
 .. toctree::
-   emergence
-
-.. toctree::   
-   concordances
+   statistics
 
 
-.. toctree::
-   coverage
 
-.. toctree::
-   statistics   
 
-.. toctree::
-   bradford_law   
-
-.. toctree::
-   pivot_table
-
-.. toctree::
-   vizlink_chart   

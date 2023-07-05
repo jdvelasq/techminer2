@@ -21,8 +21,6 @@ Report
 .. toctree::
    bubble_chart
 
-.. toctree::
-   matrix_viewer
 
 .. toctree::
    gantt_chart
@@ -30,19 +28,20 @@ Report
 .. toctree::
    butterfly_chart
 
-* scatter plot
+.. toctree::
+   scatter_plot
 
 .. toctree::
    cluster_map
 
-* super profile
+.. toctree::
+   super_profile
 
 .. toctree::
    world_map
 
 * Plot plot_classifications
 
-* Plot emergence
 
 * **Other plots**:
 

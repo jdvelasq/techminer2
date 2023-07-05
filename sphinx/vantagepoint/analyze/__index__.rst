@@ -1,84 +1,24 @@
 Analyze
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* **Analyze v10:**
 
-    .. toctree::
-        list
+.. toctree::
+    :maxdepth: 1
 
-    .. toctree::
-        :maxdepth: 1
+    discover/__index__
 
-        matrix/__index__
+.. toctree::
+    :maxdepth: 1
 
-    .. toctree::
-        :maxdepth: 1    
+    classify/__index__
 
-        map/__index__
+.. toctree::
+    :maxdepth: 1
 
-    .. toctree::  
-        list_comparison
-
-    .. toctree::
-        record_classifications
-
-    .. toctree::
-        terms_by_year
-
-    .. toctree::
-        factor_matrix
-
-    .. toctree::
-        pcd
-
-    .. toctree::
-        tfidf
-
-    .. toctree::
-        emergence_indicators
-
-    .. toctree::
-        browse_classification_tree
-
-    .. toctree::
-        patent_vital_signs
+    explore/__index__
 
 
-* **Analyze v15.2:**
+.. toctree::
+    :maxdepth: 1
 
-    .. toctree::  
-        find_similar_records
-
-    .. toctree::
-        build_classifications
-
-    .. toctree::
-        smart_trainer
-
-    .. toctree::
-        auto_classifier_settings
-
-    .. toctree::
-        vizlink_chart
-
-    .. toctree::
-        pivot_table
-
-    .. toctree::
-        cluster_records
-
-    .. toctree::
-        sankey_plot
-
-    .. toctree::
-        create_concept_grid
-
-    .. toctree::
-        date_difference
-
-    .. toctree::
-        network_metrics
-
-    .. toctree::
-        statistics
-
+    calculate/__index__

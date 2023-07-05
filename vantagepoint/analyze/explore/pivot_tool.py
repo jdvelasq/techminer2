@@ -1,9 +1,9 @@
 # flake8: noqa
 # pylint: disable=line-too-long
 """
-Three Fields Plot
+Pivot Tool
 ==============================================================================
 
-See :ref:`sankey_chart`.
+See :ref:`pivot_tool`.
 
 """

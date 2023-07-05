@@ -1,9 +1,9 @@
 # flake8: noqa
 # pylint: disable=line-too-long
 """
-Three Fields Plot
+Create Concept Grid
 ==============================================================================
 
-See :ref:`sankey_chart`.
+
 
 """

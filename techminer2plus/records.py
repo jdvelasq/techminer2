@@ -37,7 +37,7 @@ from .coverage import coverage
 from .cross_correlation_matrix import cross_correlation_matrix
 from .list_items import list_items
 from .main_information import main_information
-from .sankey_plot import sankey_plot
+from .sankey_chart import sankey_chart
 from .statistics import statistics
 from .summary_sheet import summary_sheet
 from .terms_by_year import terms_by_year
@@ -367,7 +367,7 @@ class Records:
         color=None,
     ):
         """Sankey plot."""
-        return sankey_plot(
+        return sankey_chart(
             #
             # PARAMS:
             fields=fields,

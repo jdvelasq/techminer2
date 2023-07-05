@@ -25,9 +25,6 @@ Report
     gantt_chart
 
 .. toctree::
-    matrix_viewer
-
-.. toctree::
     butterfly_chart
 
 .. toctree::
