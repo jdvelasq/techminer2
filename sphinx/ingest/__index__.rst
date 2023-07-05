@@ -8,6 +8,9 @@ Ingest
 
 
 .. toctree::
+    summary_sheet
+
+.. toctree::
     :maxdepth: 1
 
     raw_document_types

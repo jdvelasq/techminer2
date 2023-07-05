@@ -8,6 +8,7 @@ from .average_citations_per_year import average_citations_per_year
 from .bar_chart import bar_chart
 from .bradford_law import bradford_law
 from .bubble_chart import bubble_chart
+from .butterfly_chart import butterfly_chart
 from .cleveland_dot_chart import cleveland_dot_chart
 from .co_occurrence_matrix import co_occurrence_matrix
 from .column_chart import column_chart

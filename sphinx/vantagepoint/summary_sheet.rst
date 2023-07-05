@@ -1,4 +1,4 @@
-.. automodule:: vantagepoint.summary_view
+.. automodule:: vantagepoint.summary_sheet
     :members:
     :undoc-members:
     :show-inheritance:

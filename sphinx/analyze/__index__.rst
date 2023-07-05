@@ -46,10 +46,6 @@ Analyze
 .. toctree::
    coverage
 
-
-.. toctree::
-   summary_sheet
-
 .. toctree::
    statistics   
 

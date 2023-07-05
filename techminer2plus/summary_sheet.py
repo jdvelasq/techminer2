@@ -1,7 +1,7 @@
 # flake8: noqa
 # pylint: disable=line-too-long
 """
-.. _summary_view:
+.. _summary_sheet:
 
 Summary Sheet
 ===============================================================================

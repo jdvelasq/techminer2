@@ -6,7 +6,7 @@ VantagePoint / Derwent
    home
 
 .. toctree::
-   summary_view
+   summary_sheet
 
 .. toctree::
    :maxdepth: 1

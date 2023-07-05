@@ -160,6 +160,7 @@ from ._filtering_lib import generate_custom_items
 from ._metrics_lib import co_occ_matrix_list, indicators_by_field
 from ._sorting_lib import sort_indicators_by_metric, sort_matrix_axis
 from .bubble_chart import bubble_chart
+from .butterfly_chart import butterfly_chart
 from .factor_matrix_pca import factor_matrix_pca
 from .heat_map import heat_map
 from .item_associations import item_associations
@@ -344,6 +345,7 @@ class CoocMatrix:
         algorithm_or_estimator,
         normalization_index=None,
     ):
+        """Creates a network representation."""
         return network_create(
             cooc_matrix=self,
             algorithm_or_estimator=algorithm_or_estimator,
@@ -355,6 +357,18 @@ class CoocMatrix:
             year_filter=self.year_filter,
             cited_by_filter=self.cited_by_filter,
             **self.filters,
+        )
+
+    def butterfly_chart(
+        self,
+        item_a,
+        item_b,
+    ):
+        """Butterfly chart"""
+        return butterfly_chart(
+            cooc_matrix=self,
+            item_a=item_a,
+            item_b=item_b,
         )
 
 
