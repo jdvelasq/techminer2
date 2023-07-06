@@ -10,6 +10,7 @@ from .bradford_law import bradford_law
 from .bubble_chart import bubble_chart
 from .butterfly_chart import butterfly_chart
 from .cleveland_dot_chart import cleveland_dot_chart
+from .cluster_records import cluster_records
 from .co_occurrence_matrix import co_occurrence_matrix
 from .column_chart import column_chart
 from .concordances import concordances

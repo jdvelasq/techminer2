@@ -246,7 +246,7 @@ class ListItems:
 # pylint: disable=too-many-locals
 def list_items(
     #
-    # LISTITEMS PARAMS:
+    # ITEMS PARAMS:
     field,
     metric="OCC",
     top_n=None,

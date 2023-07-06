@@ -31,6 +31,7 @@ from .annual_scientific_production import annual_scientific_production
 from .auto_correlation_matrix import auto_correlation_matrix
 from .average_citations_per_year import average_citations_per_year
 from .bradford_law import bradford_law
+from .cluster_records import cluster_records
 from .co_occurrence_matrix import co_occurrence_matrix
 from .concordances import concordances
 from .coverage import coverage
@@ -175,6 +176,36 @@ class Records:
     def bradford_law(self):
         """Bradford Law."""
         return bradford_law(
+            #
+            # DATABASE PARAMS:
+            root_dir=self.root_dir,
+            database=self.database,
+            year_filter=self.year_filter,
+            cited_by_filter=self.cited_by_filter,
+            **self.filters,
+        )
+
+    def cluster_records(
+        self,
+        field,
+        #
+        # ITEM FILTERS:
+        top_n=None,
+        occ_range=(None, None),
+        gc_range=(None, None),
+        custom_items=None,
+    ):
+        """Cluster records."""
+        return cluster_records(
+            #
+            # FUNCTION PARAMS:
+            field=field,
+            #
+            # ITEM FILTERS:
+            top_n=top_n,
+            occ_range=occ_range,
+            gc_range=gc_range,
+            custom_items=custom_items,
             #
             # DATABASE PARAMS:
             root_dir=self.root_dir,
