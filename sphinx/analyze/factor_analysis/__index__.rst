@@ -2,5 +2,7 @@ Factor Analysis
 =========================================================================================
 
 .. toctree::
-   factor_matrix_pca
+   :maxdepth: 1
+
+   factor_matrix/__index__
 

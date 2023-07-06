@@ -60,30 +60,30 @@ FactorMatrix(cooc_matrix='CoocMatrix(columns='author_keywords',
 * Results:
 
 >>> factor_matrix.df_.round(3)
-component                      Factor_00 Factor_01  ... Factor_18 Factor_19
-explained_variance               53.8582   4.8660   ...   0.0000    0.0000 
-explained_variance_ratio          0.7569    0.0684  ...    0.0000    0.0000
-author_keywords                                     ...                    
-REGTECH 28:329                    27.114    -2.512  ...       0.0       0.0
-FINTECH 12:249                    11.927     5.381  ...      -0.0       0.0
-REGULATORY_TECHNOLOGY 07:037      -2.275     0.710  ...      -0.0      -0.0
-COMPLIANCE 07:030                  3.563    -4.286  ...      -0.0       0.0
-REGULATION 05:164                  1.280     3.410  ...       0.0      -0.0
-ANTI_MONEY_LAUNDERING 05:034      -4.296    -0.963  ...      -0.0      -0.0
-FINANCIAL_SERVICES 04:168         -1.277     1.490  ...       0.0      -0.0
-FINANCIAL_REGULATION 04:035       -2.712     0.842  ...       0.0      -0.0
-ARTIFICIAL_INTELLIGENCE 04:023    -2.568    -0.938  ...      -0.0       0.0
-RISK_MANAGEMENT 03:014            -1.732     1.653  ...      -0.0      -0.0
-INNOVATION 03:012                 -3.693     1.191  ...      -0.0       0.0
-BLOCKCHAIN 03:005                 -2.548    -0.318  ...       0.0       0.0
-SUPTECH 03:004                    -1.127     0.720  ...      -0.0       0.0
-SEMANTIC_TECHNOLOGIES 02:041      -2.363     1.425  ...      -0.0       0.0
-DATA_PROTECTION 02:027            -3.002     0.165  ...       0.0       0.0
-SMART_CONTRACTS 02:022            -3.457    -0.694  ...      -0.0       0.0
-CHARITYTECH 02:017                -3.436    -1.225  ...      -0.0       0.0
-ENGLISH_LAW 02:017                -3.436    -1.225  ...      -0.0       0.0
-ACCOUNTABILITY 02:014             -2.981    -2.413  ...       0.0      -0.0
-DATA_PROTECTION_OFFICER 02:014    -2.981    -2.413  ...       0.0      -0.0
+component                       DIM_00  DIM_01  DIM_02  ...  DIM_17  DIM_18  DIM_19
+explained_variance             53.8582 4.8660  3.6888   ... 0.0000  0.0000  0.0000 
+explained_variance_ratio        0.7569  0.0684  0.0518  ...  0.0000  0.0000  0.0000
+author_keywords                                         ...                        
+REGTECH 28:329                  27.114  -2.512  -0.067  ...     0.0     0.0     0.0
+FINTECH 12:249                  11.927   5.381  -0.382  ...     0.0    -0.0     0.0
+REGULATORY_TECHNOLOGY 07:037    -2.275   0.710   6.022  ...     0.0    -0.0    -0.0
+COMPLIANCE 07:030                3.563  -4.286   0.788  ...     0.0    -0.0     0.0
+REGULATION 05:164                1.280   3.410   0.569  ...     0.0     0.0    -0.0
+ANTI_MONEY_LAUNDERING 05:034    -4.296  -0.963   2.453  ...    -0.0    -0.0    -0.0
+FINANCIAL_SERVICES 04:168       -1.277   1.490  -2.557  ...    -0.0     0.0    -0.0
+FINANCIAL_REGULATION 04:035     -2.712   0.842  -2.698  ...    -0.0     0.0    -0.0
+ARTIFICIAL_INTELLIGENCE 04:023  -2.568  -0.938   1.186  ...    -0.0    -0.0     0.0
+RISK_MANAGEMENT 03:014          -1.732   1.653   1.876  ...    -0.0    -0.0    -0.0
+INNOVATION 03:012               -3.693   1.191  -0.367  ...     0.0    -0.0     0.0
+BLOCKCHAIN 03:005               -2.548  -0.318  -0.814  ...    -0.0     0.0     0.0
+SUPTECH 03:004                  -1.127   0.720   0.470  ...     0.0    -0.0     0.0
+SEMANTIC_TECHNOLOGIES 02:041    -2.363   1.425  -0.773  ...    -0.0    -0.0     0.0
+DATA_PROTECTION 02:027          -3.002   0.165  -1.579  ...     0.0     0.0     0.0
+SMART_CONTRACTS 02:022          -3.457  -0.694  -1.231  ...     0.0    -0.0     0.0
+CHARITYTECH 02:017              -3.436  -1.225  -0.475  ...    -0.0    -0.0     0.0
+ENGLISH_LAW 02:017              -3.436  -1.225  -0.475  ...    -0.0    -0.0     0.0
+ACCOUNTABILITY 02:014           -2.981  -2.413  -0.973  ...    -0.0     0.0    -0.0
+DATA_PROTECTION_OFFICER 02:014  -2.981  -2.413  -0.973  ...    -0.0     0.0    -0.0
 <BLANKLINE>
 [20 rows x 20 columns]
 
@@ -92,6 +92,7 @@ DATA_PROTECTION_OFFICER 02:014    -2.981    -2.413  ...       0.0      -0.0
 """
 import textwrap
 from dataclasses import dataclass
+from typing import Literal
 
 import numpy as np
 import pandas as pd
@@ -129,8 +130,10 @@ class FactorMatrix:
 def factor_matrix_pca(
     #
     # FUNCTION PARAMS:
-    cooc_matrix,
+    cooc_matrix_or_tfidf,
     association_index=None,
+    #
+    # PCA PARAMS:
     n_components=None,
     whiten=False,
     svd_solver="auto",
@@ -145,8 +148,17 @@ def factor_matrix_pca(
 
     # pylint: disable=line-too-long
     """
-    cooc_matrix = matrix_normalization(cooc_matrix, association_index)
-    matrix = cooc_matrix.df_
+
+    if repr(cooc_matrix_or_tfidf)[:5] == "TFIDF":
+        matrix = cooc_matrix_or_tfidf.df_.T
+    else:
+        cooc_matrix_or_tfidf = matrix_normalization(
+            cooc_matrix_or_tfidf, association_index
+        )
+        matrix = cooc_matrix_or_tfidf.df_
+
+    if n_components is None:
+        n_components = min(min(matrix.shape) - 1, 100)
 
     estimator = PCA(
         n_components=n_components,
@@ -163,7 +175,7 @@ def factor_matrix_pca(
     transformed_matrix = estimator.transform(matrix)
 
     columns = [
-        (f"Factor_{i_component:>02d}", round(ev, 4), round(evratio, 4))
+        (f"DIM_{i_component:>02d}", round(ev, 4), round(evratio, 4))
         for i_component, (ev, evratio) in enumerate(
             zip(
                 estimator.explained_variance_,
@@ -183,15 +195,15 @@ def factor_matrix_pca(
         index=matrix.index,
         columns=columns,
     )
-    matrix.index.name = cooc_matrix.rows
+    matrix.index.name = cooc_matrix_or_tfidf.rows
 
     return FactorMatrix(
-        cooc_matrix_repr=cooc_matrix.__repr__()
+        cooc_matrix_repr=repr(cooc_matrix_or_tfidf)
         .replace("\n", "")
         .replace("    ", "   ")
         .replace("   ", "  ")
         .replace("  ", " "),
-        estimator_repr=estimator.__repr__(),
+        estimator_repr=repr(estimator),
         #
         # RESULTS:
         df_=matrix,

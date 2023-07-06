@@ -161,7 +161,9 @@ from ._metrics_lib import co_occ_matrix_list, indicators_by_field
 from ._sorting_lib import sort_indicators_by_metric, sort_matrix_axis
 from .bubble_chart import bubble_chart
 from .butterfly_chart import butterfly_chart
+from .factor_matrix_kernel_pca import factor_matrix_kernel_pca
 from .factor_matrix_pca import factor_matrix_pca
+from .factor_matrix_svd import factor_matrix_svd
 from .heat_map import heat_map
 from .item_associations import item_associations
 from .list_cells_in_matrix import list_cells_in_matrix
@@ -241,7 +243,7 @@ class CoocMatrix:
     ):
         """Creates a PCA factor matrix."""
         return factor_matrix_pca(
-            cooc_matrix=self,
+            cooc_matrix_or_tfidf=self,
             association_index=association_index,
             n_components=n_components,
             whiten=whiten,
@@ -250,6 +252,78 @@ class CoocMatrix:
             iterated_power=iterated_power,
             n_oversamples=n_oversamples,
             power_iteration_normalizer=power_iteration_normalizer,
+            random_state=random_state,
+        )
+
+    def factor_matrix_svd(
+        self,
+        association_index=None,
+        #
+        # SVD PARAMS:
+        n_components=None,
+        algorithm="randomized",
+        n_iter=5,
+        n_oversamples=10,
+        power_iteration_normalizer="auto",
+        random_state=0,
+        tol=0.0,
+    ):
+        """Creates a SVD factor matrix."""
+        return factor_matrix_svd(
+            cooc_matrix_or_tfidf=self,
+            association_index=association_index,
+            #
+            # SVD PARAMS:
+            n_components=n_components,
+            algorithm=algorithm,
+            n_iter=n_iter,
+            n_oversamples=n_oversamples,
+            power_iteration_normalizer=power_iteration_normalizer,
+            random_state=random_state,
+            tol=tol,
+        )
+
+    def factor_matrix_kernel_pca(
+        self,
+        association_index=None,
+        #
+        # KERNEL PCA PARAMS:
+        n_components=None,
+        kernel="linear",
+        gamma=None,
+        degree=3,
+        coef0=1,
+        kernel_params=None,
+        alpha=1.0,
+        fit_inverse_transform=False,
+        eigen_solver="auto",
+        tol=0,
+        max_iter=None,
+        iterated_power="auto",
+        remove_zero_eig=False,
+        random_state=0,
+    ):
+        """Kernal PCA"""
+        return factor_matrix_kernel_pca(
+            #
+            # FUNCTION PARAMS:
+            cooc_matrix_or_tfidf=self,
+            association_index=association_index,
+            #
+            # DECOMPOSITION PARAMS:
+            n_components=n_components,
+            kernel=kernel,
+            gamma=gamma,
+            degree=degree,
+            coef0=coef0,
+            kernel_params=kernel_params,
+            alpha=alpha,
+            fit_inverse_transform=fit_inverse_transform,
+            eigen_solver=eigen_solver,
+            tol=tol,
+            max_iter=max_iter,
+            iterated_power=iterated_power,
+            remove_zero_eig=remove_zero_eig,
             random_state=random_state,
         )
 

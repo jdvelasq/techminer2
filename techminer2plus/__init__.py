@@ -17,7 +17,9 @@ from .concordances import concordances
 from .coverage import coverage
 from .cross_correlation_map import cross_correlation_map
 from .cross_correlation_matrix import cross_correlation_matrix
+from .factor_matrix_kernel_pca import factor_matrix_kernel_pca
 from .factor_matrix_pca import factor_matrix_pca
+from .factor_matrix_svd import factor_matrix_svd
 from .gantt_chart import gantt_chart
 from .heat_map import heat_map
 from .item_associations import item_associations
