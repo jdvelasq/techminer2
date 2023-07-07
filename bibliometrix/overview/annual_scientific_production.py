@@ -4,7 +4,7 @@
 Annual Scientific Production
 ==============================================================================
 
-See :ref:`annual_scientific_production`.
+See :ref:`records_per_year_chart`.
 
 
 """
