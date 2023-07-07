@@ -1,9 +1,9 @@
 # flake8: noqa
 # pylint: disable=line-too-long
 """
-.. _factor_matrix_kernel_pca:
+.. _factor_decomposition_kernel_pca:
 
-Factor Matrix Kernel PCA
+Factor Decomposition Kernel PCA
 ===============================================================================
 
 Factor matrix obtained by appliying SVD to the co-occurrence matrix. 
@@ -35,7 +35,7 @@ Factor matrix obtained by appliying SVD to the co-occurrence matrix.
 ...         columns='author_keywords',
 ...         col_top_n=20,
 ...     )
-...     .factor_matrix_kernel_pca()
+...     .factor_decomposition_kernel_pca()
 ... )
 FactorMatrix(cooc_matrix='CoocMatrix(columns='author_keywords',
     rows='author_keywords', dims=(20, 20))',
@@ -48,7 +48,7 @@ FactorMatrix(cooc_matrix='CoocMatrix(columns='author_keywords',
 ...     columns='author_keywords',
 ...     col_top_n=20,
 ... )
->>> factor_matrix = tm2p.factor_matrix_kernel_pca(
+>>> factor_matrix = tm2p.factor_decomposition_kernel_pca(
 ...     cooc_matrix,
 ... )
 >>> factor_matrix
@@ -95,6 +95,7 @@ from dataclasses import dataclass
 import pandas as pd
 from sklearn.decomposition import KernelPCA
 
+from .factor_decomposition_2d_map import factor_decomposition_2d_map
 from .matrix_normalization import matrix_normalization
 
 
@@ -119,10 +120,39 @@ class FactorMatrix:
         text = textwrap.fill(text, width=75, subsequent_indent="    ")
         return text
 
+    def factor_decomposition_2d_map(
+        self,
+        #
+        # Plot params:
+        dim_x=0,
+        dim_y=1,
+        node_color="#556f81",
+        node_size_min=12,
+        node_size_max=50,
+        textfont_size_min=8,
+        textfont_size_max=20,
+        xaxes_range=None,
+        yaxes_range=None,
+    ):
+        return factor_decomposition_2d_map(
+            factor_matrix=self,
+            #
+            # Plot params:
+            dim_x=dim_x,
+            dim_y=dim_y,
+            node_color=node_color,
+            node_size_min=node_size_min,
+            node_size_max=node_size_max,
+            textfont_size_min=textfont_size_min,
+            textfont_size_max=textfont_size_max,
+            xaxes_range=xaxes_range,
+            yaxes_range=yaxes_range,
+        )
+
 
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
-def factor_matrix_kernel_pca(
+def factor_decomposition_kernel_pca(
     #
     # FUNCTION PARAMS:
     cooc_matrix_or_tfidf,

@@ -161,9 +161,9 @@ from ._metrics_lib import co_occ_matrix_list, indicators_by_field
 from ._sorting_lib import sort_indicators_by_metric, sort_matrix_axis
 from .bubble_chart import bubble_chart
 from .butterfly_chart import butterfly_chart
-from .factor_matrix_kernel_pca import factor_matrix_kernel_pca
-from .factor_matrix_pca import factor_matrix_pca
-from .factor_matrix_svd import factor_matrix_svd
+from .factor_decomposition_kernel_pca import factor_decomposition_kernel_pca
+from .factor_decomposition_pca import factor_decomposition_pca
+from .factor_decomposition_svd import factor_decomposition_svd
 from .heat_map import heat_map
 from .item_associations import item_associations
 from .list_cells_in_matrix import list_cells_in_matrix
@@ -229,7 +229,7 @@ class CoocMatrix:
         """Creates a bubble chart."""
         return bubble_chart(self, title=title)
 
-    def factor_matrix_pca(
+    def factor_decomposition_pca(
         self,
         association_index=None,
         n_components=None,
@@ -242,7 +242,7 @@ class CoocMatrix:
         random_state=0,
     ):
         """Creates a PCA factor matrix."""
-        return factor_matrix_pca(
+        return factor_decomposition_pca(
             cooc_matrix_or_tfidf=self,
             association_index=association_index,
             n_components=n_components,
@@ -255,7 +255,7 @@ class CoocMatrix:
             random_state=random_state,
         )
 
-    def factor_matrix_svd(
+    def factor_decomposition_svd(
         self,
         association_index=None,
         #
@@ -269,7 +269,7 @@ class CoocMatrix:
         tol=0.0,
     ):
         """Creates a SVD factor matrix."""
-        return factor_matrix_svd(
+        return factor_decomposition_svd(
             cooc_matrix_or_tfidf=self,
             association_index=association_index,
             #
@@ -283,7 +283,7 @@ class CoocMatrix:
             tol=tol,
         )
 
-    def factor_matrix_kernel_pca(
+    def factor_decomposition_kernel_pca(
         self,
         association_index=None,
         #
@@ -304,7 +304,7 @@ class CoocMatrix:
         random_state=0,
     ):
         """Kernal PCA"""
-        return factor_matrix_kernel_pca(
+        return factor_decomposition_kernel_pca(
             #
             # FUNCTION PARAMS:
             cooc_matrix_or_tfidf=self,

@@ -1,9 +1,9 @@
 # flake8: noqa
 # pylint: disable=line-too-long
 """
-.. _factor_matrix_pca:
+.. _factor_decomposition_pca:
 
-Factor Matrix PCA
+Factor Decomposition PCA
 ===============================================================================
 
 Factor matrix obtained by appliying PCA to the co-occurrence matrix. 
@@ -35,12 +35,13 @@ Factor matrix obtained by appliying PCA to the co-occurrence matrix.
 ...         columns='author_keywords',
 ...         col_top_n=20,
 ...     )
-...     .factor_matrix_pca()
+...     .factor_decomposition_pca()
 ... )
 FactorMatrix(cooc_matrix='CoocMatrix(columns='author_keywords',
-    rows='author_keywords', dims=(20, 20))', estimator=PCA(random_state=0),
-    shape=(20, 20))
+    rows='author_keywords', dims=(20, 20))', estimator=PCA(n_components=19,
+    random_state=0), shape=(20, 19))
 
+    
 * Functional interface
 
 >>> cooc_matrix = tm2p.co_occurrence_matrix(
@@ -48,45 +49,44 @@ FactorMatrix(cooc_matrix='CoocMatrix(columns='author_keywords',
 ...     columns='author_keywords',
 ...     col_top_n=20,
 ... )
->>> factor_matrix = tm2p.factor_matrix_pca(
+>>> factor_matrix = tm2p.factor_decomposition_pca(
 ...     cooc_matrix,
 ... )
 >>> factor_matrix
 FactorMatrix(cooc_matrix='CoocMatrix(columns='author_keywords',
-    rows='author_keywords', dims=(20, 20))', estimator=PCA(random_state=0),
-    shape=(20, 20))
+    rows='author_keywords', dims=(20, 20))', estimator=PCA(n_components=19,
+    random_state=0), shape=(20, 19))
 
     
 * Results:
 
 >>> factor_matrix.df_.round(3)
-component                       DIM_00  DIM_01  DIM_02  ...  DIM_17  DIM_18  DIM_19
-explained_variance             53.8582 4.8660  3.6888   ... 0.0000  0.0000  0.0000 
-explained_variance_ratio        0.7569  0.0684  0.0518  ...  0.0000  0.0000  0.0000
+component                       DIM_00  DIM_01  DIM_02  ...  DIM_16  DIM_17  DIM_18
+explained_variance             53.8582 4.8660  3.6888   ... 0.0087  0.0000  0.0000 
+explained_variance_ratio        0.7569  0.0684  0.0518  ...  0.0001  0.0000  0.0000
 author_keywords                                         ...                        
-REGTECH 28:329                  27.114  -2.512  -0.067  ...     0.0     0.0     0.0
-FINTECH 12:249                  11.927   5.381  -0.382  ...     0.0    -0.0     0.0
-REGULATORY_TECHNOLOGY 07:037    -2.275   0.710   6.022  ...     0.0    -0.0    -0.0
-COMPLIANCE 07:030                3.563  -4.286   0.788  ...     0.0    -0.0     0.0
-REGULATION 05:164                1.280   3.410   0.569  ...     0.0     0.0    -0.0
-ANTI_MONEY_LAUNDERING 05:034    -4.296  -0.963   2.453  ...    -0.0    -0.0    -0.0
-FINANCIAL_SERVICES 04:168       -1.277   1.490  -2.557  ...    -0.0     0.0    -0.0
-FINANCIAL_REGULATION 04:035     -2.712   0.842  -2.698  ...    -0.0     0.0    -0.0
-ARTIFICIAL_INTELLIGENCE 04:023  -2.568  -0.938   1.186  ...    -0.0    -0.0     0.0
-RISK_MANAGEMENT 03:014          -1.732   1.653   1.876  ...    -0.0    -0.0    -0.0
-INNOVATION 03:012               -3.693   1.191  -0.367  ...     0.0    -0.0     0.0
-BLOCKCHAIN 03:005               -2.548  -0.318  -0.814  ...    -0.0     0.0     0.0
-SUPTECH 03:004                  -1.127   0.720   0.470  ...     0.0    -0.0     0.0
-SEMANTIC_TECHNOLOGIES 02:041    -2.363   1.425  -0.773  ...    -0.0    -0.0     0.0
-DATA_PROTECTION 02:027          -3.002   0.165  -1.579  ...     0.0     0.0     0.0
-SMART_CONTRACTS 02:022          -3.457  -0.694  -1.231  ...     0.0    -0.0     0.0
-CHARITYTECH 02:017              -3.436  -1.225  -0.475  ...    -0.0    -0.0     0.0
-ENGLISH_LAW 02:017              -3.436  -1.225  -0.475  ...    -0.0    -0.0     0.0
-ACCOUNTABILITY 02:014           -2.981  -2.413  -0.973  ...    -0.0     0.0    -0.0
-DATA_PROTECTION_OFFICER 02:014  -2.981  -2.413  -0.973  ...    -0.0     0.0    -0.0
+REGTECH 28:329                  27.114  -2.512  -0.067  ...   0.024     0.0     0.0
+FINTECH 12:249                  11.927   5.381  -0.382  ...  -0.006     0.0    -0.0
+REGULATORY_TECHNOLOGY 07:037    -2.275   0.710   6.022  ...  -0.062     0.0    -0.0
+COMPLIANCE 07:030                3.563  -4.286   0.788  ...  -0.034     0.0    -0.0
+REGULATION 05:164                1.280   3.410   0.569  ...  -0.146     0.0     0.0
+ANTI_MONEY_LAUNDERING 05:034    -4.296  -0.963   2.453  ...   0.043    -0.0    -0.0
+FINANCIAL_SERVICES 04:168       -1.277   1.490  -2.557  ...   0.073    -0.0     0.0
+FINANCIAL_REGULATION 04:035     -2.712   0.842  -2.698  ...  -0.089    -0.0     0.0
+ARTIFICIAL_INTELLIGENCE 04:023  -2.568  -0.938   1.186  ...  -0.105    -0.0    -0.0
+RISK_MANAGEMENT 03:014          -1.732   1.653   1.876  ...   0.242    -0.0    -0.0
+INNOVATION 03:012               -3.693   1.191  -0.367  ...   0.107     0.0    -0.0
+BLOCKCHAIN 03:005               -2.548  -0.318  -0.814  ...   0.139    -0.0     0.0
+SUPTECH 03:004                  -1.127   0.720   0.470  ...  -0.025     0.0    -0.0
+SEMANTIC_TECHNOLOGIES 02:041    -2.363   1.425  -0.773  ...  -0.085    -0.0    -0.0
+DATA_PROTECTION 02:027          -3.002   0.165  -1.579  ...   0.027     0.0     0.0
+SMART_CONTRACTS 02:022          -3.457  -0.694  -1.231  ...  -0.119     0.0    -0.0
+CHARITYTECH 02:017              -3.436  -1.225  -0.475  ...   0.003    -0.0    -0.0
+ENGLISH_LAW 02:017              -3.436  -1.225  -0.475  ...   0.003    -0.0    -0.0
+ACCOUNTABILITY 02:014           -2.981  -2.413  -0.973  ...   0.005    -0.0     0.0
+DATA_PROTECTION_OFFICER 02:014  -2.981  -2.413  -0.973  ...   0.005    -0.0     0.0
 <BLANKLINE>
-[20 rows x 20 columns]
-
+[20 rows x 19 columns]
 
 
 """
@@ -98,6 +98,7 @@ import numpy as np
 import pandas as pd
 from sklearn.decomposition import PCA
 
+from .factor_decomposition_2d_map import factor_decomposition_2d_map
 from .matrix_normalization import matrix_normalization
 
 
@@ -124,10 +125,39 @@ class FactorMatrix:
         text = textwrap.fill(text, width=75, subsequent_indent="    ")
         return text
 
+    def factor_decomposition_2d_map(
+        self,
+        #
+        # Plot params:
+        dim_x=0,
+        dim_y=1,
+        node_color="#556f81",
+        node_size_min=12,
+        node_size_max=50,
+        textfont_size_min=8,
+        textfont_size_max=20,
+        xaxes_range=None,
+        yaxes_range=None,
+    ):
+        return factor_decomposition_2d_map(
+            factor_matrix=self,
+            #
+            # Plot params:
+            dim_x=dim_x,
+            dim_y=dim_y,
+            node_color=node_color,
+            node_size_min=node_size_min,
+            node_size_max=node_size_max,
+            textfont_size_min=textfont_size_min,
+            textfont_size_max=textfont_size_max,
+            xaxes_range=xaxes_range,
+            yaxes_range=yaxes_range,
+        )
+
 
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
-def factor_matrix_pca(
+def factor_decomposition_pca(
     #
     # FUNCTION PARAMS:
     cooc_matrix_or_tfidf,

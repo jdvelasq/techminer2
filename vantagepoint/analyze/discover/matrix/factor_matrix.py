@@ -4,7 +4,7 @@
 Factor Matrix
 ==============================================================================
 
-See :ref:`factor_matrix_pca`.
+See :ref:`factor_decomposition_pca`.
 
 
 

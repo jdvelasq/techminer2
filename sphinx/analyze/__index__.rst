@@ -21,6 +21,10 @@ Analyze
 
    factor_analysis/__index__
 
+.. toctree::
+   :maxdepth: 1
+
+   thematic_analysis/__index__
 
 .. toctree::
    :maxdepth: 1

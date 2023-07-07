@@ -135,6 +135,8 @@ class TFIDF:
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 def tfidf(
+    #
+    # TF PARAMS:
     field,
     is_binary=False,
     cooc_within=1,

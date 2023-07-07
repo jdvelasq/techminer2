@@ -1,11 +1,11 @@
-Factor Matrix Decomposition
+Thematic Analysis
 =========================================================================================
 
 .. toctree::
-   factor_decomposition_pca
+   document_clustering
 
 .. toctree::
-   factor_decomposition_kernel_pca
+   topic_extraction_with_lda
 
 .. toctree::
-   factor_decomposition_svd
+   topic_extraction_with_nmf

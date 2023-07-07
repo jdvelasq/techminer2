@@ -1,8 +1,8 @@
 # flake8: noqa
 # pylint: disable=line-too-long
 """
-Document Thematic Analysis
-==================================
+Document Clustering
+===============================================================================
 
 **Algortihm:**
 
