@@ -85,7 +85,11 @@ import pandas as pd
 import plotly.graph_objects as go
 
 from ._chatbot import format_chatbot_prompt_for_df
-from ._metrics_lib import global_indicators_by_year, indicators_by_year_plot
+
+# from .global_indicators_by_year import (
+#     global_indicators_by_year,
+#     indicators_by_year_plot,
+# )
 
 
 # pylint: disable=too-many-instance-attributes

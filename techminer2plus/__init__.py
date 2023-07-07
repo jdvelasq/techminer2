@@ -1,5 +1,6 @@
 """TechMiner 2+ Package"""
 
+from .global_indicators_by_document import global_indicators_by_document
 from .global_indicators_by_year import global_indicators_by_year
 
 # from .annual_scientific_production import annual_scientific_production

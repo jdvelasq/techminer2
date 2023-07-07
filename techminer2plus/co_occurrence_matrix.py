@@ -157,13 +157,14 @@ import pandas as pd
 from ._chatbot import format_chatbot_prompt_for_df
 from ._counters_lib import add_counters_to_frame_axis
 from ._filtering_lib import generate_custom_items
-from ._metrics_lib import co_occ_matrix_list, indicators_by_field
+from ._metrics_lib import co_occ_matrix_list
 from ._sorting_lib import sort_indicators_by_metric, sort_matrix_axis
 from .bubble_chart import bubble_chart
 from .butterfly_chart import butterfly_chart
 from .factor_decomposition_kernel_pca import factor_decomposition_kernel_pca
 from .factor_decomposition_pca import factor_decomposition_pca
 from .factor_decomposition_svd import factor_decomposition_svd
+from .global_indicators_by_field import global_indicators_by_field
 from .heat_map import heat_map
 from .item_associations import item_associations
 from .list_cells_in_matrix import list_cells_in_matrix
@@ -486,7 +487,7 @@ def co_occurrence_matrix(
         custom_items,
     ):
         if custom_items is None:
-            indicators = indicators_by_field(
+            indicators = global_indicators_by_field(
                 field=field,
                 root_dir=root_dir,
                 database=database,

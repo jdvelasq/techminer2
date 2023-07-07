@@ -97,20 +97,25 @@ If ``Y_end = 2018`` and ``time_window = 2``, then ``Y_start = 2017``.
 
 import numpy as np
 
-from .._metrics_lib.items_occ_by_year import items_occ_by_year
-from .._read_records import read_records
-from .._sorting_lib import sort_indicators_by_metric
-from .._stopwords_lib import load_stopwords
+from ._metrics_lib.items_occ_by_year import items_occ_by_year
+from ._read_records import read_records
+from ._sorting_lib import sort_indicators_by_metric
+from ._stopwords_lib import load_stopwords
 
 
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
-def indicators_by_field(
+def global_indicators_by_field(
     field,
-    records,
-    stopwords,
     time_window=2,
+    #
+    # DATABASE PARAMS:
+    root_dir="./",
+    database="main",
+    year_filter=None,
+    cited_by_filter=None,
+    **filters,
 ):
     """Bibliometric column indicators."""
 
@@ -327,6 +332,13 @@ def indicators_by_field(
     # MAIN CODE:
     #
     #
+    records = read_records(
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
+    )
 
     records["OCC"] = 1
 

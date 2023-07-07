@@ -19,7 +19,8 @@ import pandas as pd
 
 from ..._chatbot import format_chatbot_prompt_for_df
 from ..._filtering_lib import generate_custom_items
-from ..._metrics_lib import indicators_by_field
+
+# from ..._metrics_lib import indicators_by_field
 from ..._sorting_lib import sort_indicators_by_metric
 from ...bar_chart import bar_chart
 from ...cleveland_dot_chart import cleveland_dot_chart

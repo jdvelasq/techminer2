@@ -142,7 +142,8 @@ import pandas as pd
 from ._chatbot import format_chatbot_prompt_for_df
 from ._counters_lib import add_counters_to_frame_axis
 from ._filtering_lib import generate_custom_items
-from ._metrics_lib import indicators_by_field, items_occ_by_year
+
+# from ._metrics_lib import indicators_by_field, items_occ_by_year
 from ._sorting_lib import sort_indicators_by_metric
 from .gantt_chart import gantt_chart
 

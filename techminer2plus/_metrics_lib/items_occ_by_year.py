@@ -28,8 +28,8 @@ Becker M              0     0     0     0     1     0     0     0
 
 """
 
-from .._stopwords_lib import load_stopwords
-from .indicators_by_field_per_year import indicators_by_field_per_year
+# from ._stopwords_lib import load_stopwords
+# from .indicators_by_field_per_year import indicators_by_field_per_year
 
 
 # pylint: disable=too-many-arguments

@@ -1,13 +1,13 @@
 # flake8: noqa
 """
-Indicators by Document 
+Global Indicators by Document 
 ===============================================================================
 
 
 >>> root_dir = "data/regtech/"
 
->>> import techminer2plus
->>> techminer2plus.metrics.indicators_by_document(
+>>> import techminer2plus as tm2p
+>>> tm2p.global_indicators_by_document(
 ...     root_dir=root_dir,
 ... ).head()
                                                     year  ...                                 doi
@@ -22,7 +22,7 @@ Baxter LG, 2016, DUKE LAW J, V66, P567              2016  ...                   
 
 
 >>> from pprint import pprint
->>> pprint(techminer2plus.metrics.indicators_by_document(
+>>> pprint(tm2p.global_indicators_by_document(
 ...     root_dir=root_dir).columns.to_list())
 ['year',
  'global_citations',
@@ -31,19 +31,19 @@ Baxter LG, 2016, DUKE LAW J, V66, P567              2016  ...                   
  'local_citations_per_year',
  'doi']
 
-# pylint: disable=line-too-long
+
 """
 
-from .._read_records import read_records
+from ._read_records import read_records
 
 
-def indicators_by_document(
+def global_indicators_by_document(
     #
-    # Database filters:
-    root_dir="./",
-    database="main",
-    year_filter=None,
-    cited_by_filter=None,
+    # DATABASE PARAMS:
+    root_dir: str = "./",
+    database: str = "main",
+    year_filter: tuple = (None, None),
+    cited_by_filter: tuple = (None, None),
     **filters,
 ):
     """Document indicators"""
