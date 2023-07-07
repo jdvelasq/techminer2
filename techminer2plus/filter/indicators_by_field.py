@@ -97,10 +97,10 @@ If ``Y_end = 2018`` and ``time_window = 2``, then ``Y_start = 2017``.
 
 import numpy as np
 
+from .._metrics_lib.items_occ_by_year import items_occ_by_year
 from .._read_records import read_records
 from .._sorting_lib import sort_indicators_by_metric
 from .._stopwords_lib import load_stopwords
-from .items_occ_by_year import items_occ_by_year
 
 
 # pylint: disable=too-many-arguments
@@ -108,30 +108,11 @@ from .items_occ_by_year import items_occ_by_year
 # pylint: disable=too-many-statements
 def indicators_by_field(
     field,
+    records,
+    stopwords,
     time_window=2,
-    #
-    # Database params:
-    records=None,
-    root_dir="./",
-    database="main",
-    year_filter=None,
-    cited_by_filter=None,
-    **filters,
 ):
-    """Bibliometric column indicators.
-
-    Args:
-        field (str): column name to be used as criterion.
-        root_dir (str): root directory.
-        database (str): database name.
-        year_filter (tuple, optional): Year database filter. Defaults to None.
-        cited_by_filter (tuple, optional): Cited by database filter. Defaults to None.
-        **filters (dict, optional): Filters to be applied to the database. Defaults to {}.
-
-    Returns:
-        pandas.DataFrame: a dataframe containing the indicators.
-
-    """
+    """Bibliometric column indicators."""
 
     def extract_items_from_field(records):
         """Creates a dataframe with the items in the field column."""
@@ -343,17 +324,9 @@ def indicators_by_field(
 
     #
     #
-    # Main code:
+    # MAIN CODE:
     #
     #
-    if records is None:
-        records = read_records(
-            root_dir=root_dir,
-            database=database,
-            year_filter=year_filter,
-            cited_by_filter=cited_by_filter,
-            **filters,
-        )
 
     records["OCC"] = 1
 

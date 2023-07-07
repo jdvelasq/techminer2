@@ -7,8 +7,6 @@ Ingest
     ingest_raw_data
 
 
-.. toctree::
-    summary_sheet
 
 .. toctree::
     :maxdepth: 1

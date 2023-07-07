@@ -1,14 +1,18 @@
 # flake8: noqa
+# pylint: disable=line-too-long
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
+# pylint: disable=missing-docstring
 """
-Indicators by Year 
+Global Indicators by Year 
 ===============================================================================
 
 
 
 >>> root_dir = "data/regtech/"
 
->>> import techminer2plus
->>> techminer2plus.metrics.indicators_by_year(root_dir) # doctest: +NORMALIZE_WHITESPACE
+>>> import techminer2plus as tm2p
+>>> tm2p.global_indicators_by_year(root_dir) 
       OCC  cum_OCC  ...  cum_local_citations  mean_local_citations_per_year
 year                ...                                                    
 2016    1        1  ...                  0.0                           0.00
@@ -23,9 +27,9 @@ year                ...
 [8 rows x 11 columns]
 
 
->>> techminer2plus.metrics.indicators_by_year(
+>>> tm2p.global_indicators_by_year(
 ...     root_dir=root_dir, database="references"
-... ).tail() # doctest: +NORMALIZE_WHITESPACE
+... ).tail()
       OCC  cum_OCC  ...  cum_local_citations  mean_local_citations_per_year
 year                ...                                                    
 2018   89      594  ...                729.0                           0.30
@@ -37,9 +41,9 @@ year                ...
 [5 rows x 11 columns]
 
 
->>> techminer2plus.metrics.indicators_by_year(
+>>> tm2p.global_indicators_by_year(
 ...     root_dir=root_dir, database="cited_by"
-... ).tail() # doctest: +NORMALIZE_WHITESPACE
+... ).tail() 
       OCC  cum_OCC  ...  cum_global_citations  mean_global_citations_per_year
 year                ...                                                      
 2019   33       44  ...                  1764                            8.15
@@ -55,8 +59,8 @@ year                ...
 >>> from pprint import pprint
 >>> pprint(
 ...     sorted(
-...         techminer2plus.metrics.indicators_by_year(
-...             root_dir=root_dir
+...         tm2p.global_indicators_by_year(
+...             root_dir=root_dir,
 ...         ).columns.to_list()
 ...     )
 ... )
@@ -73,34 +77,23 @@ year                ...
  'mean_local_citations_per_year']
 
 
-# pylint: disable=line-too-long 
+
 """
 import plotly.express as px
 
-from .._read_records import read_records
+from ._read_records import read_records
 
 
-def indicators_by_year(
-    root_dir="./",
-    database="main",
-    year_filter=None,
-    cited_by_filter=None,
+def global_indicators_by_year(
+    #
+    # DATABASE PARAMS
+    root_dir: str = "./",
+    database: str = "main",
+    year_filter: tuple = (None, None),
+    cited_by_filter: tuple = (None, None),
     **filters,
 ):
-    """
-    Computes annual indicators.
-
-    Args:
-        root_dir (str, optional): root directory. Defaults to "./".
-        database (str, optional): database name. Defaults to "documents".
-        year_filter (tuple, optional): Year filter. Defaults to None.
-        cited_by_filter (tuple, optional): Cited by filter. Defaults to None.
-        **filters (dict, optional): Filters to be applied to the database. Defaults to {}.
-
-    Returns:
-        pandas.DataFrame: annual indicators.
-
-    """
+    """Computes global database indicators per year."""
 
     records = read_records(
         root_dir=root_dir,

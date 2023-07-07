@@ -54,23 +54,15 @@ Buchkremer R      2020    1  ...                     0.750
  'local_citations',
  'local_citations_per_year']
 
-# noqa: W291
 """
 import pandas as pd
-
-from .._read_records import read_records
 
 
 # pylint: disable=too-many-arguments
 def indicators_by_field_per_year(
-    field="authors",
-    root_dir="./",
-    database="main",
+    field,
+    indicators,
     as_index=True,
-    # Database filters:
-    year_filter=None,
-    cited_by_filter=None,
-    **filters,
 ):
     """Computes bibliometric indicators by topic per year.
 
@@ -89,15 +81,7 @@ def indicators_by_field_per_year(
     # pylint: disable=line-too-long
     """
 
-    indicators = read_records(
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )
-
-    indicators = indicators.assign(OCC=1)
+    indicators = records.assign(OCC=1)
     indicators[field] = indicators[field].str.split(";")
     indicators = indicators.explode(field)
     indicators[field] = indicators[field].str.strip()

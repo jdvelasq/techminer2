@@ -35,13 +35,8 @@ from .indicators_by_field_per_year import indicators_by_field_per_year
 # pylint: disable=too-many-arguments
 def items_occ_by_year(
     field,
-    root_dir="./",
+    records,
     cumulative=False,
-    database="main",
-    # Database filters:
-    year_filter=None,
-    cited_by_filter=None,
-    **filters,
 ):
     """Computes the annual occurrence matrix of a given field.
 
@@ -64,11 +59,7 @@ def items_occ_by_year(
 
     indicators_by_year = indicators_by_field_per_year(
         field=field,
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
+        records=records,
     )
 
     indicators_by_year = indicators_by_year.assign(

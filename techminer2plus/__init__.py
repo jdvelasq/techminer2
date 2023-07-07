@@ -1,5 +1,7 @@
 """TechMiner 2+ Package"""
 
+from .global_indicators_by_year import global_indicators_by_year
+
 # from .annual_scientific_production import annual_scientific_production
 # from .associations_plot import associations_plot
 # from .auto_correlation_map import auto_correlation_map
@@ -51,4 +53,3 @@
 # from .topic_extraction_with_nmf import topic_extraction_with_nmf
 # from .word_cloud import word_cloud
 # from .world_map import world_map
-from .database import Database

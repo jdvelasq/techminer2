@@ -88,11 +88,14 @@ TM2 module.
 
 
 .. toctree::
-    :caption: TECHMINER 2+
+    :caption: COMPONENTS
     :hidden:
     :maxdepth: 1
 
-    techminer2/filter/__index__     
+    techminer2/ingest/__index__
+    techminer2/filter/__index__
+    techminer2/global_indicators/__index__     
+
 
 .. toctree::
     :caption: TECHMINER 2+ (TO REV)

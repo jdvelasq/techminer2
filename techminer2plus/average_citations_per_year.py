@@ -85,7 +85,7 @@ import pandas as pd
 import plotly.graph_objects as go
 
 from ._chatbot import format_chatbot_prompt_for_df
-from ._metrics_lib import indicators_by_year, indicators_by_year_plot
+from ._metrics_lib import global_indicators_by_year, indicators_by_year_plot
 
 
 # pylint: disable=too-many-instance-attributes
@@ -156,7 +156,7 @@ def average_citations_per_year(
     # Main code
     #
 
-    indicators = indicators_by_year(
+    indicators = global_indicators_by_year(
         root_dir=root_dir,
         database=database,
         year_filter=year_filter,

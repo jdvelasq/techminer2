@@ -1,11 +1,8 @@
-Filter/ 
+List Items/ 
 ==============================================================================
 
 .. toctree::
-    list_items/__index__
+    list_items
 
-
-.. toctree::
-    records_per_year_chart
 
 

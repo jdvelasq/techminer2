@@ -30,7 +30,9 @@ Records(root_dir='data/regtech/', database='main', year_filter=(None, None),
 """
 from dataclasses import dataclass
 
+from ._read_records import read_records
 from .filter.filter import Filter
+from .summary_sheet import summary_sheet
 
 
 @dataclass
@@ -53,4 +55,22 @@ class Database:
             year_filter=year_filter,
             cited_by_filter=cited_by_filter,
             **filters,
+        )
+
+    def summary_sheet(self):
+        """Return a summary of the columns of the database.
+
+        >>> import techminer2plus as tm2p
+        >>> root_dir = "data/regtech/"
+        >>> tm2p.Database(root_dir).summary_sheet().head()
+                         column  number of terms coverage (%)
+        0              abstract               52         1.0%
+        1  abstract_nlp_phrases               47         0.9%
+        2          affiliations               52         1.0%
+        3                art_no                8        0.15%
+        4               article               52         1.0%
+
+        """
+        return summary_sheet(
+            read_records(root_dir=self.root_dir, database=self.database)
         )

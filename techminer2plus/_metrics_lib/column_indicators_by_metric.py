@@ -1,4 +1,4 @@
-from .indicators_by_field import indicators_by_field
+from ..filter.indicators_by_field import indicators_by_field
 
 
 def column_indicators_by_metric(

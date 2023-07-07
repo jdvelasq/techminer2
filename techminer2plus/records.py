@@ -37,7 +37,7 @@ from .coverage import coverage
 from .cross_correlation_matrix import cross_correlation_matrix
 
 # from .filter.records_per_year_chart import annual_scientific_production
-from .list_items import list_items
+from .filter.list_items.list_items import list_items
 from .main_information import main_information
 from .sankey_chart import sankey_chart
 from .statistics import statistics

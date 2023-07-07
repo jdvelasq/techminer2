@@ -4,15 +4,15 @@ the entire dataset.
 
 
 """
+from ..filter.indicators_by_field import indicators_by_field
+from ..global_indicators_by_year import global_indicators_by_year
 from .co_occ_matrix_list import co_occ_matrix_list
 from .collaboration_indicators_by_field import (
     collaboration_indicators_by_field,
 )
 from .column_indicators_by_metric import column_indicators_by_metric
 from .indicators_by_document import indicators_by_document
-from .indicators_by_field import indicators_by_field
 from .indicators_by_field_per_year import indicators_by_field_per_year
-from .indicators_by_year import indicators_by_year
 from .indicators_by_year_plot import indicators_by_year_plot
 from .items_occ_by_year import items_occ_by_year
 
@@ -24,6 +24,6 @@ __all__ = [
     "indicators_by_field_per_year",
     "indicators_by_field",
     "indicators_by_year_plot",
-    "indicators_by_year",
+    "global_indicators_by_year",
     "items_occ_by_year",
 ]
