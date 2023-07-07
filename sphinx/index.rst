@@ -88,15 +88,14 @@ TM2 module.
 
 
 .. toctree::
-    :caption: TEST
+    :caption: TECHMINER 2+
     :hidden:
     :maxdepth: 1
 
-    techminer2/summary_sheet
-
+    techminer2/filter/__index__     
 
 .. toctree::
-    :caption: TECHMINER 2+
+    :caption: TECHMINER 2+ (TO REV)
     :hidden:
     :maxdepth: 1
 
