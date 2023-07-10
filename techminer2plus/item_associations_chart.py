@@ -21,7 +21,7 @@ Item Associations Chart
 
 .. raw:: html
 
-    <iframe src="../../../../_static/item_associations_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../../_static/item_associations_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
  
 """
 import plotly.express as px

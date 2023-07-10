@@ -31,11 +31,6 @@ Analyze
 
    emergence_analysis/__index__
 
-.. toctree::
-   cluster_records
-
-.. toctree::
-   tfidf
 
 
 

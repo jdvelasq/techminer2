@@ -13,7 +13,6 @@ Co-occurrence MDS 2D Map
 Plots the MDS (with 2 components) of the normalized co-occurrence matrix.
 
 
-* Preparation
 
 >>> import techminer2plus as tm2p
 >>> root_dir = "data/regtech/"
@@ -25,7 +24,7 @@ Plots the MDS (with 2 components) of the normalized co-occurrence matrix.
 
 .. raw:: html
 
-    <iframe src="../../../../_static/co_occurrence_mds_2d_map.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../../_static/co_occurrence_mds_2d_map.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 import pandas as pd

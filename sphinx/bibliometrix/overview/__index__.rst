@@ -2,7 +2,9 @@ Overview
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
-   main_information
+   :maxdepth: 1
+
+   main_information/__index__
 
 .. toctree::
    annual_scientific_production

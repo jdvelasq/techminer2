@@ -26,7 +26,7 @@ identifying the most relevant terms associated with a given term.
 
 .. raw:: html
 
-    <iframe src="../../../../_static/radial_diagram.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../../_static/radial_diagram.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
 """

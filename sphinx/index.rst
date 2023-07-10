@@ -95,10 +95,11 @@ TM2 module.
 
 
     vantagepoint/__index__
-
-    bibliometrix/__index__
     tlab/__index__
     scientopy/__index__
+    bibliometrix/__index__
+    
+    
 
 .. toctree::
     :caption: COMPONENTS

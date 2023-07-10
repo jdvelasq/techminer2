@@ -1,4 +1,4 @@
-Item Associations/
+Associations/
 =========================================================================================
 
 .. toctree::
@@ -12,3 +12,10 @@ Item Associations/
 
 .. toctree::
    radial_diagram   
+
+
+.. toctree::
+   co_occurrence_mds_2d_map
+
+
+* :ref:`co_occurrence_matrix`

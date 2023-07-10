@@ -1,6 +1,6 @@
 .. _main_information:
 
-Main Information
+Main Information/
 ==============================================================================
 
 .. toctree::

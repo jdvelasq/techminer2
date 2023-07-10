@@ -4,7 +4,7 @@ Co-occurrence Analysis
 .. toctree::
     :maxdepth: 1
 
-    word_associations/__index__
+    associations/__index__
 
  
 
@@ -23,6 +23,8 @@ Co-occurrence Analysis
 
 
 .. toctree::
-    concordances
+    :maxdepth: 1
+
+    concordances/__index__
 
       
