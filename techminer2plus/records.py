@@ -29,20 +29,18 @@ from dataclasses import field as datafield
 
 from .auto_correlation_matrix import auto_correlation_matrix
 from .average_citations_per_year import average_citations_per_year
-from .bradford_law import bradford_law
 from .cluster_records import cluster_records
 from .co_occurrence_matrix import co_occurrence_matrix
-from .concordances import concordances
+
+# from .concordances_contexts import concordances
 from .coverage import coverage
 from .cross_correlation_matrix import cross_correlation_matrix
 
 # from .filter.records_per_year_chart import annual_scientific_production
-from .filter.list_items.list_items import list_items
-from .main_information import main_information
+# from .list_items import list_items
 from .sankey_chart import sankey_chart
 from .statistics import statistics
 from .summary_sheet import summary_sheet
-from .terms_by_year import terms_by_year
 
 # =============================================================================
 #

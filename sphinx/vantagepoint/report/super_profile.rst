@@ -1,4 +1,3 @@
-.. automodule:: vantagepoint.report.super_profile
+.. automodule:: techminer2plus.super_profile
     :members:
-    :undoc-members:
-    :show-inheritance:
+

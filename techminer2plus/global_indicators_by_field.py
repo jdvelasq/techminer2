@@ -51,8 +51,8 @@ If ``Y_end = 2018`` and ``time_window = 2``, then ``Y_start = 2017``.
 >>> root_dir = "data/regtech/"
 
 
->>> import techminer2plus
->>> indicators = techminer2plus.metrics.indicators_by_field(
+>>> import techminer2plus as tm2p
+>>> indicators = tm2p.global_indicators_by_field(
 ...     field='author_keywords',
 ...     root_dir=root_dir,
 ... )
@@ -91,16 +91,14 @@ If ``Y_end = 2018`` and ``time_window = 2``, then ``Y_start = 2017``.
 | EUROPEAN_UNION            |         30 |        15 |     1 |             1 |                   0 |                 24 |                 5 |                           24    |                           5    |                   0   |                     0   |                   0         |                     2020 |     4 |                        6    |         1 |         1 |      0.25 |
 
 
-
-# pylint: disable=line-too-long
 """
 
 import numpy as np
 
-from ._metrics_lib.items_occ_by_year import items_occ_by_year
 from ._read_records import read_records
 from ._sorting_lib import sort_indicators_by_metric
 from ._stopwords_lib import load_stopwords
+from .items_occurrences_by_year import items_occurrences_by_year
 
 
 # pylint: disable=too-many-arguments
@@ -225,7 +223,7 @@ def global_indicators_by_field(
         """Computes the average growth rate."""
 
         # computes item occurrences by year
-        items_by_year = items_occ_by_year(
+        items_by_year = items_occurrences_by_year(
             field=field,
             cumulative=False,
             # Database params:

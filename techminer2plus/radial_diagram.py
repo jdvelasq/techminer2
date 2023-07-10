@@ -1,5 +1,9 @@
 # flake8: noqa
+# pylint: disable=invalid-name
 # pylint: disable=line-too-long
+# pylint: disable=missing-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
 """
 Radial Diagram
 ===============================================================================
@@ -11,45 +15,18 @@ co-occurrence between the terms. The radial diagram is a useful tool for
 identifying the most relevant terms associated with a given term.
 
 
-* Preparation
-
 >>> import techminer2plus as tm2p
 >>> root_dir = "data/regtech/"
-
-
-* Object oriented interface
-
->>> fig = (
-...     tm2p.records(root_dir=root_dir)
-...     .co_occurrence_matrix(
-...         columns='author_keywords',
-...         col_top_n=20,
-...     )
-...     .item_associations(item="REGTECH") 
-...     .radial_diagram()
-... )
-
-* Functional interface
-
->>> cooc_matrix = tm2p.co_occurrence_matrix(
-...    columns='author_keywords',
-...    col_top_n=20,
-...    root_dir=root_dir,
-... )
->>> associations = tm2p.item_associations(
+>>> tm2p.radial_diagram(
 ...     item="REGTECH", 
-...     cooc_matrix=cooc_matrix,
-... )
->>> fig = tm2p.radial_diagram(associations)
-
-
-* Results:
-
->>> fig.write_html("sphinx/_static/radial_diagram.html")
+...     columns='author_keywords',
+...     col_top_n=20,
+...     root_dir=root_dir,
+... ).write_html("sphinx/_static/radial_diagram.html")
 
 .. raw:: html
 
-    <iframe src="../../_static/radial_diagram.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/radial_diagram.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 
 """
@@ -64,14 +41,19 @@ from ._network_lib import (
     px_create_network_fig,
     px_create_node_trace,
 )
+from .item_associations_table import item_associations_table
 
 
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
 def radial_diagram(
-    item_associations,
     #
-    # Figure params:
+    # FUNCTION PARAMS:
+    item,
+    #
+    # CO-OCC PARAMS:
+    columns,
+    rows=None,
+    #
+    # CHART PARAMS:
     n_labels=None,
     nx_k=None,
     nx_iterations=30,
@@ -83,6 +65,25 @@ def radial_diagram(
     xaxes_range=None,
     yaxes_range=None,
     show_axes=False,
+    #
+    # COLUMN PARAMS:
+    col_top_n=None,
+    col_occ_range=(None, None),
+    col_gc_range=(None, None),
+    col_custom_items=None,
+    #
+    # ROW PARAMS:
+    row_top_n=None,
+    row_occ_range=(None, None),
+    row_gc_range=(None, None),
+    row_custom_items=None,
+    #
+    # DATABASE PARAMS:
+    root_dir="./",
+    database="main",
+    year_filter=(None, None),
+    cited_by_filter=(None, None),
+    **filters,
 ):
     """Plots a radial diagram."""
 
@@ -135,7 +136,36 @@ def radial_diagram(
     #
     # MAIN CODE:
     #
-    series = item_associations.df_.iloc[:, 0].copy()
+    data_frame = item_associations_table(
+        #
+        # FUNCTION PARAMS:
+        item=item,
+        #
+        # CO-OCC PARAMS:
+        columns=columns,
+        rows=rows,
+        #
+        # COLUMN PARAMS:
+        col_top_n=col_top_n,
+        col_occ_range=col_occ_range,
+        col_gc_range=col_gc_range,
+        col_custom_items=col_custom_items,
+        #
+        # ROW PARAMS:
+        row_top_n=row_top_n,
+        row_occ_range=row_occ_range,
+        row_gc_range=row_gc_range,
+        row_custom_items=row_custom_items,
+        #
+        # DATABASE PARAMS:
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
+    )
+
+    series = data_frame.iloc[:, 0].copy()
     name = series.name
 
     graph = create_graph(

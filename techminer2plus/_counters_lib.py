@@ -94,7 +94,7 @@ def items2counters(
 ):
     """Creates a dictionary to transform a 'item' to a 'item counter:counter'."""
 
-    indicators = indicators_by_field(
+    indicators = global_indicators_by_field(
         field=criterion,
         root_dir=root_dir,
         database=database,

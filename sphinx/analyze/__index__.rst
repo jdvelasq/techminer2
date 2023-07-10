@@ -37,8 +37,6 @@ Analyze
 .. toctree::
    tfidf
 
-.. toctree::
-   statistics
 
 
 

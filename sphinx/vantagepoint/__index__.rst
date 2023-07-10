@@ -1,12 +1,15 @@
 VantagePoint / Derwent
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-
-.. toctree::
-   home
-
 .. toctree::
    summary_sheet
+
+
+.. toctree::
+   :maxdepth: 1
+
+   refine/__index__
+
 
 .. toctree::
    :maxdepth: 1

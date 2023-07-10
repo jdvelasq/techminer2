@@ -1,4 +1,3 @@
-.. automodule:: vantagepoint.report.line_chart
+.. automodule:: techminer2plus.line_chart
     :members:
-    :undoc-members:
-    :show-inheritance:
+

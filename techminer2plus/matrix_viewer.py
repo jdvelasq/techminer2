@@ -1,5 +1,9 @@
 # flake8: noqa
+# pylint: disable=invalid-name
 # pylint: disable=line-too-long
+# pylint: disable=missing-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
 """
 .. _matrix_viewer:
 
@@ -8,76 +12,19 @@ Matrix Viewer
 
 
 
-* Preparation
-
 >>> import techminer2plus as tm2p
 >>> root_dir = "data/regtech/"
-
-* Object oriented interface
-
->>> (
-...     tm2p.records(root_dir=root_dir)
-...     .co_occurrence_matrix(
-...         columns='author_keywords',
-...         rows='authors',
-...         col_top_n=10,
-...         row_top_n=10,
-...     )
-...     .matrix_viewer()
-...     .write_html("sphinx/_static/matrix_viewer_0.html")
-... )
+>>> matrix_viewer(
+...     root_dir=root_dir,
+...     columns='author_keywords',
+...     rows='authors',
+...     col_top_n=10,
+...     row_top_n=10,    
+... ).write_html("sphinx/_static/matrix_viewer.html")
 
 .. raw:: html
 
-    <iframe src="../_static/matrix_viewer_0.html" height="600px" width="100%" frameBorder="0"></iframe>
-
-
->>> (
-...     tm2p.records(root_dir=root_dir)
-...     .co_occurrence_matrix(
-...         columns='author_keywords',
-...         col_top_n=10,
-...     )
-...     .matrix_viewer()
-...     .write_html("sphinx/_static/matrix_viewer_1.html")
-... )
-
-.. raw:: html
-
-    <iframe src="../_static/matrix_viewer_1.html" height="600px" width="100%" frameBorder="0"></iframe>
-
-* Functional interface
-
->>> co_occ_matrix = (
-...     tm2p.records(root_dir=root_dir)
-...     .co_occurrence_matrix(
-...         columns='author_keywords',
-...         rows='authors',
-...         col_top_n=10,
-...         row_top_n=10,
-...     )
-... )
->>> matrix_viewer(co_occ_matrix).write_html("sphinx/_static/matrix_viewer_2.html")
-
-.. raw:: html
-
-    <iframe src="../_static/matrix_viewer_2.html" height="600px" width="100%" frameBorder="0"></iframe>
-
-
->>> co_occ_matrix = (
-...     tm2p.records(root_dir=root_dir)
-...     .co_occurrence_matrix(
-...         columns='author_keywords',
-...         col_top_n=10,
-...     )
-... )
->>> matrix_viewer(co_occ_matrix).write_html("sphinx/_static/matrix_viewer_3.html")
-
-.. raw:: html
-
-    <iframe src="../_static/matrix_viewer_3.html" height="600px" width="100%" frameBorder="0"></iframe>
-
-
+    <iframe src="../../../../../_static/matrix_viewer.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 from ._network_lib import (
@@ -88,12 +35,14 @@ from ._network_lib import (
     px_create_network_fig,
     px_create_node_trace,
 )
+from .co_occurrence_matrix import co_occurrence_matrix
 
 
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
 def matrix_viewer(
-    cooc_matrix,
+    #
+    # FUNCTION PARAMS:
+    columns,
+    rows=None,
     #
     # Figure params:
     n_labels=None,
@@ -107,8 +56,53 @@ def matrix_viewer(
     xaxes_range=None,
     yaxes_range=None,
     show_axes=False,
+    #
+    # COLUMN PARAMS:
+    col_top_n=None,
+    col_occ_range=(None, None),
+    col_gc_range=(None, None),
+    col_custom_items=None,
+    #
+    # ROW PARAMS:
+    row_top_n=None,
+    row_occ_range=(None, None),
+    row_gc_range=(None, None),
+    row_custom_items=None,
+    #
+    # DATABASE PARAMS:
+    root_dir="./",
+    database="main",
+    year_filter=(None, None),
+    cited_by_filter=(None, None),
+    **filters,
 ):
     """Makes cluster map from a ocurrence flooding matrix."""
+
+    cooc_matrix = co_occurrence_matrix(
+        #
+        # FUNCTION PARAMS:
+        columns=columns,
+        rows=rows,
+        #
+        # COLUMN PARAMS:
+        col_top_n=col_top_n,
+        col_occ_range=col_occ_range,
+        col_gc_range=col_gc_range,
+        col_custom_items=col_custom_items,
+        #
+        # ROW PARAMS:
+        row_top_n=row_top_n,
+        row_occ_range=row_occ_range,
+        row_gc_range=row_gc_range,
+        row_custom_items=row_custom_items,
+        #
+        # DATABASE PARAMS:
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
+    )
 
     graph = nx_create_graph_from_matrix(
         cooc_matrix,

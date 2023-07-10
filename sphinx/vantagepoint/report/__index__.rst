@@ -1,25 +1,23 @@
-Report
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-**VantagePoint v15.2:**
+Report/ 
+==============================================================================
 
 .. toctree::
-    column_chart 
+    column_chart
 
 .. toctree::
-    bar_chart 
+    bar_chart
 
 .. toctree::
-    pie_chart     
+    pie_chart
 
 .. toctree::
-    line_chart     
+    line_chart    
 
 .. toctree::
-    word_cloud
+    word_cloud    
 
 .. toctree::
-    bubble_chart
+    bubble_chart    
 
 .. toctree::
     gantt_chart
@@ -28,27 +26,13 @@ Report
     butterfly_chart
 
 .. toctree::
-    scatter_plot
+    world_map  
 
 .. toctree::
-    cluster_map
+    cleveland_dot_chart
 
 .. toctree::
-    super_profile
-
-.. toctree::
-    world_map
-
-
-.. toctree::
-    plot_classifications
-
-.. toctree::
-    plot_emergence
-
-
-
-
+    ranking_chart
 
 
 

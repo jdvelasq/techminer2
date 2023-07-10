@@ -1,6 +1,3 @@
-.. automodule:: vantagepoint.report.bubble_chart
+.. automodule:: techminer2plus.bubble_chart
     :members:
-    :undoc-members:
-    :show-inheritance:
-
 

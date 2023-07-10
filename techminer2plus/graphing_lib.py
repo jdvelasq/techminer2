@@ -1,9 +1,7 @@
 """Graphing library."""
 
-from dataclasses import dataclass
 
 import plotly.express as px
-import plotly.graph_objs as go
 
 # from .list_items import ItemsList
 

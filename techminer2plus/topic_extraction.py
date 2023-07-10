@@ -1,3 +1,10 @@
+# flake8: noqa
+# pylint: disable=invalid-name
+# pylint: disable=line-too-long
+# pylint: disable=missing-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
+
 """Topic extraction with LDA/NMF"""
 
 
@@ -10,51 +17,29 @@ import pandas as pd
 from .tfidf import tfidf
 
 
-# pylint: disable=too-many-instance-attributes
-@dataclass
-class Themes:
-    """Emergent themes extraction"""
-
-    #
-    # RESULTS
-    n_themes_: int
-    terms_by_theme_: dict
-    documents_by_theme_: dict
-
-    def __repr__(self):
-        text = "Themes("
-        text += f"n-themes={self.n_themes_}"
-        text += ")"
-        text = textwrap.fill(text, width=75, subsequent_indent="    ")
-
-        return text
-
-
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
 def topic_extraction(
     #
     # TFIDF PARAMS:
-    field,
-    is_binary=False,
-    cooc_within=1,
+    field: str,
+    is_binary: bool,
+    cooc_within: int,
     #
     # ITEM FILTERS:
-    top_n=None,
-    occ_range=(None, None),
-    gc_range=(None, None),
-    custom_items=None,
+    top_n: int,
+    occ_range: tuple,
+    gc_range: tuple,
+    custom_items: list,
     #
     # ESTIMATOR PARAMS:
-    n_components=1,
-    estimator_class=None,
-    estimator_parms=None,
+    n_components: int,
+    estimator_class,
+    estimator_params: dict,
     #
     # DATABASE PARAMS:
-    root_dir="./",
-    database="main",
-    year_filter=(None, None),
-    cited_by_filter=(None, None),
+    root_dir: str,
+    database: str,
+    year_filter: tuple,
+    cited_by_filter: tuple,
     **filters,
 ):
     """Emergent themes extraction with LDA"""
@@ -85,10 +70,10 @@ def topic_extraction(
             year_filter=year_filter,
             cited_by_filter=cited_by_filter,
             **filters,
-        ).df_
+        )
 
     def build_estimator():
-        return estimator_class(n_components, **estimator_parms)
+        return estimator_class(n_components, **estimator_params)
 
     def get_components():
         """Get the components as a dataframe"""
@@ -170,7 +155,6 @@ def topic_extraction(
     #
     # MAIN CODE:
     #
-
     tfidf_matrix = build_tfidf_matrix()
 
     # Check if the themes with terms is equal to the number f specified
@@ -196,8 +180,4 @@ def topic_extraction(
         terms_by_theme, documents_by_theme
     )
 
-    return Themes(
-        n_themes_=n_components,
-        terms_by_theme_=terms_by_theme,
-        documents_by_theme_=documents_by_theme,
-    )
+    return n_components, terms_by_theme, documents_by_theme

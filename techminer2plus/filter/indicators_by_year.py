@@ -10,7 +10,7 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 
-from .._chatbot import format_chatbot_prompt_for_df
+# from .._chatbot import format_chatbot_prompt_for_df
 
 
 def indicators_by_year(filtered_records):

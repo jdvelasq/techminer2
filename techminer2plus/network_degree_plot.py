@@ -99,7 +99,7 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 
-from ._chatbot import format_chatbot_prompt_for_df
+# from ._chatbot import format_chatbot_prompt_for_df
 from ._network_lib import nx_compute_node_degree
 
 

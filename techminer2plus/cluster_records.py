@@ -1,5 +1,9 @@
 # flake8: noqa
+# pylint: disable=invalid-name
 # pylint: disable=line-too-long
+# pylint: disable=missing-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
 """
 .. _cluster_records:
 
@@ -8,34 +12,15 @@ Cluster Records
 
 >>> import techminer2plus as tm2p
 >>> root_dir = "data/regtech/"
-
-* Object oriented interface
-
->>> fig = (
-...     tm2p.records(root_dir=root_dir)
-...     .cluster_records(
-...         field='author_keywords',
-...         top_n=50,
-...     )
-... )
-
-
-* Functional interface
-
->>> fig = tm2p.cluster_records(
+>>> tm2p.cluster_records(
 ...     field='author_keywords',
 ...     top_n=50,
 ...     root_dir=root_dir,
-... )
-
-* Results:
-
->>> fig.write_html("sphinx/_static/cluster_records.html")
+... ).write_html("sphinx/_static/cluster_records.html")
 
 .. raw:: html
 
-    <iframe src="../_static/cluster_records.html" height="600px" width="100%" frameBorder="0"></iframe>
-
+    <iframe src="../../../../../_static/cluster_records.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 
@@ -49,8 +34,6 @@ from sklearn.neighbors import KernelDensity
 from .tfidf import tfidf
 
 
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
 def cluster_records(
     field,
     #
@@ -91,7 +74,7 @@ def cluster_records(
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
         **filters,
-    ).df_
+    )
 
     mds = MDS(n_components=2, random_state=1)
     mds_matrix = pd.DataFrame(

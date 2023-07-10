@@ -21,7 +21,7 @@ def compute_corr_matrix(
             The correlation matrix.
     """
 
-    df_ = data_matrix.df_.copy()
+    df_ = data_matrix.copy()
 
     corr_matrix = pd.DataFrame(
         0.0,

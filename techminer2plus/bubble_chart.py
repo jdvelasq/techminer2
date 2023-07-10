@@ -1,65 +1,95 @@
 # flake8: noqa
+# pylint: disable=invalid-name
 # pylint: disable=line-too-long
+# pylint: disable=missing-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
 """
 .. _bubble_chart:
 
 Bubble Chart
 ===============================================================================
 
-* Preparation
 
 >>> import techminer2plus as tm2p
 >>> root_dir = "data/regtech/"
-
-
-* Object oriented interface
-
->>> (
-...     tm2p.records(root_dir=root_dir)
-...     .co_occurrence_matrix(
-...         columns='author_keywords',
-...         col_top_n=10,
-...     )
-...     .bubble_chart()
-...     .write_html("sphinx/_static/bubble_chart_0.html")
-... )
-
-.. raw:: html
-
-    <iframe src="../_static/bubble_chart_0.html" height="800px" width="100%" frameBorder="0"></iframe>
-
-
-* Functional interface
-
->>> cooc_matrix = tm2p.co_occurrence_matrix(
+>>> tm2p.bubble_chart(
 ...    columns='author_keywords',
 ...    col_top_n=10,
 ...    root_dir=root_dir,
-... )
->>> tm2p.bubble_chart(
-...     cooc_matrix,
-... ).write_html("sphinx/_static/bubble_chart_1.html")
+... ).write_html("sphinx/_static/bubble_chart.html")
 
 .. raw:: html
 
-    <iframe src="../_static/bubble_chart_1.html" height="800px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/bubble_chart.html" height="800px" width="100%" frameBorder="0"></iframe>
 
 """
 import plotly.express as px
 
+from .co_occurrence_matrix import co_occurrence_matrix
+
 
 def bubble_chart(
-    cooc_matrix,
+    #
+    # FUNCTION PARAMS:
+    columns,
+    rows=None,
+    #
+    # CHART PARAMS:
     title=None,
+    #
+    # COLUMN PARAMS:
+    col_top_n=None,
+    col_occ_range=(None, None),
+    col_gc_range=(None, None),
+    col_custom_items=None,
+    #
+    # ROW PARAMS:
+    row_top_n=None,
+    row_occ_range=(None, None),
+    row_gc_range=(None, None),
+    row_custom_items=None,
+    #
+    # DATABASE PARAMS:
+    root_dir="./",
+    database="main",
+    year_filter=(None, None),
+    cited_by_filter=(None, None),
+    **filters,
 ):
     """Makes a bubble chart."""
 
-    matrix = cooc_matrix.df_.copy()
+    matrix = co_occurrence_matrix(
+        #
+        # FUNCTION PARAMS:
+        columns=columns,
+        rows=rows,
+        #
+        # COLUMN PARAMS:
+        col_top_n=col_top_n,
+        col_occ_range=col_occ_range,
+        col_gc_range=col_gc_range,
+        col_custom_items=col_custom_items,
+        #
+        # ROW PARAMS:
+        row_top_n=row_top_n,
+        row_occ_range=row_occ_range,
+        row_gc_range=row_gc_range,
+        row_custom_items=row_custom_items,
+        #
+        # DATABASE PARAMS:
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
+    )
+
     matrix = matrix.melt(
         value_name="VALUE", var_name="column", ignore_index=False
     )
     matrix = matrix.reset_index()
-    matrix = matrix.rename(columns={"index": "row"})
+    matrix = matrix.rename(columns={matrix.columns[0]: "row"})
     matrix = matrix.sort_values(
         by=["VALUE", "row", "column"], ascending=[False, True, True]
     )

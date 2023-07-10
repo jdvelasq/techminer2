@@ -93,7 +93,7 @@ def topic_extraction_with_lda(
         # ESTIMATOR PARAMS:
         n_components=n_components,
         estimator_class=estimator_class,
-        estimator_parms=estimator_params,
+        estimator_params=estimator_params,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

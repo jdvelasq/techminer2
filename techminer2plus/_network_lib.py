@@ -91,7 +91,7 @@ def nx_add_edges_to_graph_from_matrix(graph, matrix):
 def nx_add_edges_to_graph_from_matrix_list(graph, matrix_list):
     """Creates edges from 'row' and 'column' columns in a matrix list."""
 
-    # table = matrix_list.df_.copy()
+    # table = matrix_list.df_.copy()
 
     # if isinstance(matrix_list, AutoCorrCellsList):
     #     table = table[table["row"] < table["column"]]
@@ -154,7 +154,7 @@ def nx_add_nodes_to_graph_from_matrix(graph, matrix):
     """Creates nodes from 'row' and 'column' columns in a matrix list."""
 
     # adds items in 'row' column as nodes
-    nodes = matrix.df_.index.to_list()
+    nodes = matrix.index.to_list()
     nodes = [
         (node, {"group": 0, "color": "#8da4b4", "textfont_color": "black"})
         for node in nodes
@@ -162,7 +162,7 @@ def nx_add_nodes_to_graph_from_matrix(graph, matrix):
     graph.add_nodes_from(nodes)
 
     # adds items in 'column' column as nodes
-    candidates = matrix.df_.columns.to_list()
+    candidates = matrix.columns.to_list()
     nodes = []
     for candidate in candidates:
         if candidate not in graph.nodes:

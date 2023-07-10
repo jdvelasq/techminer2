@@ -1,5 +1,9 @@
 # flake8: noqa
+# pylint: disable=invalid-name
 # pylint: disable=line-too-long
+# pylint: disable=missing-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
 """
 Topic Extraction with NMF
 ===============================================================================
@@ -10,14 +14,14 @@ Topic extraction using non-negative matrix factorization.
 >>> import techminer2plus as tm2p
 >>> root_dir = "data/regtech/"
 
->>> themes = tm2p.topic_extraction_with_nmf(
+>>> n_components, terms_by_theme, documents_by_theme = tm2p.topic_extraction_with_nmf(
 ...     field="author_keywords",
-...     top_n=30,
+...     top_n=50,
 ...     n_components=10,
 ...     root_dir=root_dir,
-...  )
->>> themes
-Themes(n-themes=10)
+... )
+
+>>> n_components
 
 
 """
@@ -26,15 +30,12 @@ from sklearn.decomposition import NMF
 from .topic_extraction import topic_extraction
 
 
-# pylint: disable=invalid-names
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
 def topic_extraction_with_nmf(
     #
     # TFIDF PARAMS:
-    field,
-    is_binary=False,
-    cooc_within=1,
+    field: str,
+    is_binary: bool = False,
+    cooc_within: int = 1,
     #
     # ITEM FILTERS:
     top_n=None,
@@ -94,7 +95,7 @@ def topic_extraction_with_nmf(
         # ESTIMATOR PARAMS:
         n_components=n_components,
         estimator_class=estimator_class,
-        estimator_parms=estimator_params,
+        estimator_params=estimator_params,
         #
         # DATABASE PARAMS:
         root_dir=root_dir,

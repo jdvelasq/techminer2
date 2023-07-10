@@ -1,5 +1,9 @@
 # flake8: noqa
+# pylint: disable=invalid-name
 # pylint: disable=line-too-long
+# pylint: disable=missing-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
 """
 .. _auto_correlation_map:
 
@@ -8,45 +12,19 @@ Auto-correlation Map
 
 Creates an Auto-correlation Map.
 
-* Preparation
-
->>> root_dir = "data/regtech/"
 >>> import techminer2plus as tm2p
-
-
-* Object oriented interface
-
->>> fig = (
-...     tm2p.records(root_dir=root_dir)
-...     .auto_correlation_matrix(
-...         rows_and_columns='authors',
-...         occ_range=(2, None),
-...     )
-...     .auto_correlation_map()
-... )
-
-
-* Functional interface
-
->>> auto_corr_matrix = tm2p.auto_correlation_matrix(
+>>> root_dir = "data/regtech/"
+>>> file_name = "sphinx/_static/auto_correlation_map.html"
+>>> tm2p.auto_correlation_map(
 ...     rows_and_columns='authors',
 ...     occ_range=(2, None),
 ...     root_dir=root_dir,
-... )
->>> fig =  tm2p.auto_correlation_map(
-...     auto_corr_matrix,
 ...     color="#1f77b4", # tab:blue
-... )
-
-* Results    
-
->>> file_name = "sphinx/_static/auto_correlation_map.html"
->>> fig.write_html(file_name)
+... ).write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../_static/auto_correlation_map.html" height="600px" width="100%" frameBorder="0"></iframe>
-
+    <iframe src="../../../../_static/auto_correlation_map.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 from ._network_lib import (
@@ -58,6 +36,7 @@ from ._network_lib import (
     px_create_network_fig,
     px_create_node_trace,
 )
+from .auto_correlation_matrix import auto_correlation_matrix
 
 
 # pylint: disable=too-many-arguments
@@ -65,7 +44,16 @@ from ._network_lib import (
 def auto_correlation_map(
     #
     # FUNCTION PARAMS:
-    auto_corr_matrix,
+    rows_and_columns,
+    method="pearson",
+    #
+    # ITEM PARAMS:
+    top_n=None,
+    occ_range=(None, None),
+    gc_range=(None, None),
+    custom_items=None,
+    #
+    # FUNCTION PARAMS:
     n_labels=None,
     color="#8da4b4",
     nx_k=None,
@@ -78,8 +66,35 @@ def auto_correlation_map(
     xaxes_range=None,
     yaxes_range=None,
     show_axes=False,
+    #
+    # DATABASE PARAMS:
+    root_dir="./",
+    database="main",
+    year_filter=(None, None),
+    cited_by_filter=(None, None),
+    **filters,
 ):
     """Auto-correlation Map."""
+
+    auto_corr_matrix = auto_correlation_matrix(
+        #
+        # FUNCTION PARAMS:
+        rows_and_columns=rows_and_columns,
+        method=method,
+        #
+        # ITEM PARAMS:
+        top_n=top_n,
+        occ_range=occ_range,
+        gc_range=gc_range,
+        custom_items=custom_items,
+        #
+        # DATABASE PARAMS:
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
+    )
 
     graph = nx_create_graph_from_matrix(
         auto_corr_matrix,

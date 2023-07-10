@@ -1,14 +1,20 @@
-Matrix
+Matrix/
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
-    co_occurrence_matrix
+    :maxdepth: 1
+
+    co_occurrence_matrix/__index__
 
 .. toctree::
-    auto_correlation_matrix
+    :maxdepth: 1
+    
+    auto_correlation_matrix/__index__
 
 .. toctree::
-    cross_correlation_matrix
+    :maxdepth: 1
+
+    cross_correlation_matrix/__index__
 
 .. toctree::
     factor_matrix

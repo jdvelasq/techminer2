@@ -1,4 +1,3 @@
-.. automodule:: vantagepoint.report.scatter_plot
+.. automodule:: techminer2plus.scatter_plot
     :members:
-    :undoc-members:
-    :show-inheritance:
+

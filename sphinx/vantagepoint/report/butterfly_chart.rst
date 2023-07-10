@@ -1,6 +1,3 @@
-.. automodule:: vantagepoint.report.butterfly_chart
+.. automodule:: techminer2plus.butterfly_chart
     :members:
-    :undoc-members:
-    :show-inheritance:
-
 

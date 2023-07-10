@@ -1,65 +1,60 @@
 # flake8: noqa
+# pylint: disable=invalid-name
 # pylint: disable=line-too-long
+# pylint: disable=missing-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
 """
 .. _word_cloud:
 
-Word cloud
+Word Cloud
 ===============================================================================
 
 
-* Preparation
-
->>> import techminer2plus as tm2p
 >>> root_dir = "data/regtech/"
-
-
-* Object oriented interface
-
->>> (
-...     tm2p.records(root_dir=root_dir)
-...     .list_items(
-...         field='author_keywords',
-...         top_n=20,
-...     )
-...     .word_cloud(
-...         title="Most Frequent Author Keywords",
-...     )
-...     .savefig("sphinx/_static/word_cloud_0.png")
-... )
-
-.. image:: ../_static/word_cloud_0.png
-    :width: 900px
-    :align: center
-
-
-
-* Functional interface
-
->>> itemslist = tm2p.list_items(
-...     field='author_keywords',
-...     top_n=50,
-...     root_dir=root_dir,
-... )
+>>> import techminer2plus as tm2p
 >>> tm2p.word_cloud(
-...     itemslist, 
-...     title="Most Frequent Author Keywords",
-... ).savefig("sphinx/_static/word_cloud_1.png")
+...    field='author_keywords',
+...    title="Most Frequent Author Keywords",
+...    top_n=50,
+...    root_dir=root_dir,
+... ).savefig("sphinx/_static/word_cloud.png")
+... )
 
-.. image:: ../_static/word_cloud_1.png
+.. image:: ../../_static/word_cloud.png
     :width: 900px
     :align: center
-
     
 """
 import numpy as np
 from matplotlib.figure import Figure
 from wordcloud import WordCloud
 
+from .list_items_table import list_items_table
+
 
 def word_cloud(
-    list_items,
+    #
+    # ITEMS PARAMS:
+    field,
+    metric="OCC",
+    #
+    # CHART PARAMS:
     title=None,
     figsize=(10, 10),
+    #
+    # ITEM FILTERS:
+    top_n=None,
+    occ_range=(None, None),
+    gc_range=(None, None),
+    custom_items=None,
+    #
+    # DATABASE PARAMS:
+    root_dir="./",
+    database="main",
+    year_filter=(None, None),
+    cited_by_filter=(None, None),
+    **filters,
 ):
     """Creates a word cloud.
 
@@ -74,6 +69,26 @@ def word_cloud(
 
     """
 
+    data_frame = list_items_table(
+        #
+        # ITEMS PARAMS:
+        field=field,
+        metric=metric,
+        #
+        # ITEM FILTERS:
+        top_n=top_n,
+        occ_range=occ_range,
+        gc_range=gc_range,
+        custom_items=custom_items,
+        #
+        # DATABASE PARAMS:
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
+    )
+
     x_mask, y_mask = np.ogrid[:300, :300]
     mask = (x_mask - 150) ** 2 + (y_mask - 150) ** 2 > 130**2
     mask = 255 * mask.astype(int)
@@ -82,8 +97,8 @@ def word_cloud(
 
     text = dict(
         zip(
-            list_items.df_.index,
-            list_items.df_[list_items.metric],
+            data_frame.index,
+            data_frame[metric],
         )
     )
     wordcloud.generate_from_frequencies(text)

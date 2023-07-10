@@ -1,89 +1,98 @@
 # flake8: noqa
+# pylint: disable=invalid-name
 # pylint: disable=line-too-long
+# pylint: disable=missing-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
 """
 .. _bar_chart:
 
 Bar Chart
 ===============================================================================
 
-Displays a horizontal bar graph of the selected items in a ItemLlist object. 
-Items in your list are the Y-axis, and the number of records are the X-axis.
-
-* Preparation
-
->>> import techminer2plus as tm2p
 >>> root_dir = "data/regtech/"
-
-
-* Object oriented interface
-
->>> (
-...     tm2p.records(root_dir=root_dir)
-...     .list_items(
-...         field='author_keywords',
-...         top_n=20,
-...     )
-...     .bar_chart(
-...         title="Most Frequent Author Keywords",
-...     )
-...     .write_html("sphinx/_static/bar_chart_0.html")
-... )
-
-.. raw:: html
-
-    <iframe src="../_static/bar_chart_0.html" height="600px" width="100%" frameBorder="0"></iframe>
-
-* Functional interface
-
->>> list_items = tm2p.list_items(
-...    field='author_keywords',
-...    top_n=10,
-...    root_dir=root_dir,
-... )
+>>> import techminer2plus as tm2p
 >>> tm2p.bar_chart(
-...    list_items=list_items,
-...    title="Most Frequent Author Keywords"
-... ).write_html("sphinx/_static/bar_chart_1.html")
-
+...    field='author_keywords',
+...    title="Most Frequent Author Keywords",
+...    top_n=20,
+...    root_dir=root_dir,
+... ).write_html("sphinx/_static/bar_chart.html")
 
 .. raw:: html
 
-    <iframe src="../_static/bar_chart_1.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/bar_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 import plotly.express as px
 
+from .list_items_table import list_items_table
 
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
-# pylint: disable=invalid-name
+MARKER_COLOR = "#8da4b4"
+MARKER_LINE_COLOR = "#556f81"
+
+
 def bar_chart(
     #
+    # ITEMS PARAMS:
+    field,
+    metric="OCC",
+    #
     # CHART PARAMS:
-    list_items,
     title=None,
     metric_label=None,
     field_label=None,
+    #
+    # ITEM FILTERS:
+    top_n=None,
+    occ_range=(None, None),
+    gc_range=(None, None),
+    custom_items=None,
+    #
+    # DATABASE PARAMS:
+    root_dir="./",
+    database="main",
+    year_filter=(None, None),
+    cited_by_filter=(None, None),
+    **filters,
 ):
     """Bar chart."""
 
+    data_frame = list_items_table(
+        #
+        # ITEMS PARAMS:
+        field=field,
+        metric=metric,
+        #
+        # ITEM FILTERS:
+        top_n=top_n,
+        occ_range=occ_range,
+        gc_range=gc_range,
+        custom_items=custom_items,
+        #
+        # DATABASE PARAMS:
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
+    )
+
     metric_label = (
-        list_items.metric.replace("_", " ").upper()
+        metric.replace("_", " ").upper()
         if metric_label is None
         else metric_label
     )
 
     field_label = (
-        list_items.field.replace("_", " ").upper()
-        if field_label is None
-        else field_label
+        field.replace("_", " ").upper() if field_label is None else field_label
     )
 
     fig = px.bar(
-        list_items.df_,
-        x=list_items.metric,
+        data_frame,
+        x=metric,
         y=None,
-        hover_data=list_items.df_.columns.to_list(),
+        hover_data=data_frame.columns.to_list(),
         orientation="h",
     )
 
@@ -93,8 +102,8 @@ def bar_chart(
         title_text=title if title is not None else "",
     )
     fig.update_traces(
-        marker_color="rgb(171,171,171)",
-        marker_line={"color": "darkslategray"},
+        marker_color=MARKER_COLOR,
+        marker_line={"color": MARKER_LINE_COLOR},
     )
     fig.update_xaxes(
         linecolor="gray",

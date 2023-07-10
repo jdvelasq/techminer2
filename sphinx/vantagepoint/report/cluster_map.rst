@@ -1,4 +1,3 @@
-.. automodule:: vantagepoint.report.cluster_map
+.. automodule:: techminer2plus.cluster_map
     :members:
-    :undoc-members:
-    :show-inheritance:
+

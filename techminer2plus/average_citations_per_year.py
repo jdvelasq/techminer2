@@ -84,7 +84,7 @@ from dataclasses import field as datafield
 import pandas as pd
 import plotly.graph_objects as go
 
-from ._chatbot import format_chatbot_prompt_for_df
+# from ._chatbot import format_chatbot_prompt_for_df
 
 # from .global_indicators_by_year import (
 #     global_indicators_by_year,

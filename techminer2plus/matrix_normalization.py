@@ -137,14 +137,12 @@ def matrix_normalization(cooc_matrix, association_index):
         "association": association,
     }[association_index]
 
-    matrix = cooc_matrix.df_.copy()
-    matrix = matrix.applymap(float)
-    normalized_matrix = matrix.copy()
-    normalized_matrix = fnc(matrix, normalized_matrix)
+    cooc_matrix = cooc_matrix.copy()
+    cooc_matrix = cooc_matrix.applymap(float)
+    normalized_matrix = cooc_matrix.copy()
+    normalized_matrix = fnc(cooc_matrix, normalized_matrix)
 
     for index in range(len(normalized_matrix)):
         normalized_matrix.iloc[index, index] = 0.0
 
-    cooc_matrix.df_ = normalized_matrix
-
-    return cooc_matrix
+    return normalized_matrix

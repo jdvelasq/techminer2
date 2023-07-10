@@ -94,7 +94,7 @@ from dataclasses import dataclass
 
 import pandas as pd
 
-from ._chatbot import format_chatbot_prompt_for_df
+# from ._chatbot import format_chatbot_prompt_for_df
 from ._network_lib import nx_compute_node_degree, nx_compute_node_statistics
 
 

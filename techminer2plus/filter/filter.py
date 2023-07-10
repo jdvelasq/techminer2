@@ -36,8 +36,9 @@ import pandas as pd
 
 from .._read_records import read_records
 from .._stopwords_lib import load_stopwords
+
+# from ..list_items import list_items
 from .indicators_by_year import records_per_year_chart
-from .list_items.list_items import list_items
 
 
 @dataclass

@@ -1,102 +1,90 @@
 # flake8: noqa
+# pylint: disable=invalid-name
 # pylint: disable=line-too-long
+# pylint: disable=missing-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
 """
 Heat Map
 ===============================================================================
 
-* Preparation
-
 >>> import techminer2plus as tm2p
 >>> root_dir = "data/regtech/"
-
-
-* Object oriented interface
-
->>> file_name = "sphinx/_static/heat_map_0.html"
->>> (
-...     tm2p.records(root_dir=root_dir)
-...     .co_occurrence_matrix(
-...         columns='author_keywords',
-...         rows='authors',
-...         col_occ_range=(2, None),
-...         row_occ_range=(2, None),
-...     ).heat_map(
-...         colormap="Blues"
-...     )
-...     .write_html("sphinx/_static/heat_map_0.html")
-... )
-
-.. raw:: html
-
-    <iframe src="../../_static/heat_map_0.html" height="800px" width="100%" frameBorder="0"></iframe>
-
->>> file_name = "sphinx/_static/heat_map_1.html"
->>> (
-...     tm2p.records(root_dir=root_dir)
-...     .auto_correlation_matrix(
-...         rows_and_columns='authors',
-...         occ_range=(2, None),
-...     ).heat_map(
-...         colormap="Blues"
-...     )
-...     .write_html("sphinx/_static/heat_map_1.html")
-... )
-
-.. raw:: html
-
-    <iframe src="../../_static/heat_map_1.html" height="800px" width="100%" frameBorder="0"></iframe>
-
-    
->>> file_name = "sphinx/_static/heat_map_2.html"
->>> (
-...     tm2p.records(root_dir=root_dir)
-...     .cross_correlation_matrix(
-...         rows_and_columns='authors', 
-...         cross_with='countries',
-...         top_n=10,
-...     ).heat_map(
-...         colormap="Blues"
-...     )
-...     .write_html("sphinx/_static/heat_map_2.html")
-... )
-
-.. raw:: html
-
-    <iframe src="../../_static/heat_map_1.html" height="800px" width="100%" frameBorder="0"></iframe>    
-
-* Functional interface
-
->>> matrix = tm2p.co_occurrence_matrix(
-...    columns='author_keywords',
-...    col_occ_range=(4, None),
-...    root_dir=root_dir,
-... )
->>> file_name = "sphinx/_static/heat_map_3.html"
->>> fig = tm2p.heat_map(
-...     matrix,
+>>> file_name = "sphinx/_static/heat_map.html"
+>>> tm2p.heat_map(
+...     columns='author_keywords',
+...     col_occ_range=(4, None),
+...     root_dir=root_dir,
 ...     colormap="Blues",
-... )
->>> fig.write_html(file_name)
+... ).write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../_static/heat_map_3.html" height="800px" width="100%" frameBorder="0"></iframe>
-
-
+    <iframe src="../../../../../_static/heat_map.html" height="800px" width="100%" frameBorder="0"></iframe>
 
 
 """
 import numpy as np
 import plotly.express as px
 
+from .co_occurrence_matrix import co_occurrence_matrix
+
 
 def heat_map(
-    obj,
+    #
+    # CO-OCC PARAMS:
+    columns,
+    rows=None,
+    #
+    # FIG PARAMS:
     colormap="Blues",
+    #
+    # COLUMN PARAMS:
+    col_top_n=None,
+    col_occ_range=(None, None),
+    col_gc_range=(None, None),
+    col_custom_items=None,
+    #
+    # ROW PARAMS:
+    row_top_n=None,
+    row_occ_range=(None, None),
+    row_gc_range=(None, None),
+    row_custom_items=None,
+    #
+    # DATABASE PARAMS:
+    root_dir="./",
+    database="main",
+    year_filter=(None, None),
+    cited_by_filter=(None, None),
+    **filters,
 ):
     """Make a heat map."""
 
-    data_frame = obj.df_.copy()
+    data_frame = co_occurrence_matrix(
+        #
+        # FUNCTION PARAMS:
+        columns=columns,
+        rows=rows,
+        #
+        # COLUMN PARAMS:
+        col_top_n=col_top_n,
+        col_occ_range=col_occ_range,
+        col_gc_range=col_gc_range,
+        col_custom_items=col_custom_items,
+        #
+        # ROW PARAMS:
+        row_top_n=row_top_n,
+        row_occ_range=row_occ_range,
+        row_gc_range=row_gc_range,
+        row_custom_items=row_custom_items,
+        #
+        # DATABASE PARAMS:
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
+    )
 
     fig = px.imshow(
         data_frame,

@@ -98,7 +98,7 @@ def sort_matrix_axis(
 
     matrix = matrix.copy()
 
-    indicators_by_topic = indicators_by_field(
+    indicators_by_topic = global_indicators_by_field(
         field=field,
         # Database params:
         root_dir=root_dir,

@@ -1,22 +1,10 @@
 Co-occurrence Analysis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* **Word Associations:**
+.. toctree::
+    :maxdepth: 1
 
-    .. toctree::      
-        co_occurrence_plot
-
-    .. toctree::
-        radial_diagram
-
-    .. toctree::
-        mds_2d_map
-
-    .. toctree::
-        tsne_2d_map
-
-    .. toctree::
-        co_occ_matrix
+    word_associations/__index__
 
  
 

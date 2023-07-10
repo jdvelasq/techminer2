@@ -87,6 +87,19 @@ TM2 module.
     introduction/license
 
 
+
+.. toctree::
+    :caption: EXAMPLES
+    :hidden:
+    :maxdepth: 1
+
+
+    vantagepoint/__index__
+
+    bibliometrix/__index__
+    tlab/__index__
+    scientopy/__index__
+
 .. toctree::
     :caption: COMPONENTS
     :hidden:
@@ -94,8 +107,10 @@ TM2 module.
 
     techminer2/ingest/__index__
     techminer2/filter/__index__
-    techminer2/global_indicators/__index__     
-
+    techminer2/refine/__index__
+    techminer2/describe/__index__     
+    techminer2/analyze/__index__     
+    techminer2/report/__index__     
 
 .. toctree::
     :caption: TECHMINER 2+ (TO REV)
@@ -103,22 +118,13 @@ TM2 module.
     :maxdepth: 1
 
     ingest/__index__
-    refine/__index__
     find/__index__
     describe/__index__
     analyze/__index__
     report/__index__
 
 
-.. toctree::
-    :caption: EXAMPLES
-    :hidden:
-    :maxdepth: 1
 
-    bibliometrix/__index__
-    vantagepoint/__index__
-    tlab/__index__
-    scientopy/__index__
 
 
     

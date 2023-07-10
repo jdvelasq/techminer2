@@ -65,9 +65,10 @@ Network Report
 import os
 import os.path
 
-from ._chatbot import format_prompt_for_records
+# from ._chatbot import format_prompt_for_records
 from ._network_lib import extract_records_per_cluster, nx_extract_communities
-from .concordances import concordances_from_records
+
+# from .concordances_contexts import concordances_from_records
 from .create_records_report import create_records_report
 from .make_report_dir import make_report_dir
 

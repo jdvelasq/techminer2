@@ -1,4 +1,3 @@
-.. automodule:: vantagepoint.report.world_map
+.. automodule:: techminer2plus.world_map
     :members:
-    :undoc-members:
-    :show-inheritance:
+

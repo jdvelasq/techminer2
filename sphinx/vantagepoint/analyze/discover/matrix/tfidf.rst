@@ -1,4 +1,4 @@
-.. automodule:: vantagepoint.analyze.discover.matrix.tfidf
+.. automodule:: techminer2plus.tfidf
     :members:
     :undoc-members:
     :show-inheritance:

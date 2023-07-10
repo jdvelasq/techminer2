@@ -1,37 +1,23 @@
 # flake8: noqa
+# pylint: disable=invalid-name
 # pylint: disable=line-too-long
+# pylint: disable=missing-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
 """
 .. _tfidf:
 
 TFIDF
 ===============================================================================
 
-* Preparation
 
 >>> import techminer2plus as tm2p
 >>> root_dir = "data/regtech/"
-
-* Object oriented interface
-
-
-
-* Functional interface
-
-
-
-
-
->>> tfidf = tm2p.tfidf(
+>>> tm2p.tfidf(
 ...     field='author_keywords',
 ...     top_n=50,
 ...     root_dir=root_dir,
-... )
->>> tfidf
-TFIDF-Matrix(field='author_keywords', is-binary='False', cooc_within=1,
-    norm=None, use-idf=False, smooth-idf=False, sublinear-tf=False,
-    shape=(39, 50))
-
->>> tfidf.df_.head(20)
+... ).head(20)
 author_keywords                                     REGTECH 28:329  ...  MONEY_LAUNDERING 01:010
 article                                                             ...                         
 Anagnostopoulos I, 2018, J ECON BUS, V100, P7                    1  ...                        0
@@ -59,10 +45,8 @@ Lan G, 2023, RES INT BUS FINANC, V64                             1  ...         
 
 
 """
-import textwrap
-from dataclasses import dataclass
-from dataclasses import field as datafield
-from typing import Literal, Optional
+
+from typing import Literal
 
 import numpy as np
 import pandas as pd
@@ -70,77 +54,16 @@ from sklearn.feature_extraction.text import TfidfTransformer
 
 from ._counters_lib import add_counters_to_frame_axis
 from ._filtering_lib import generate_custom_items
-
-# from ._metrics_lib import indicators_by_field
 from ._read_records import read_records
+from .global_indicators_by_field import global_indicators_by_field
 
 
-# pylint: disable=too-many-instance-attributes
-@dataclass
-class TFIDF:
-    """Term-frequency matrix.
-
-    :meta private:
-    """
-
-    #
-    # PARAMS:
-    field: str
-    cooc_within: int
-    is_binary: bool = False
-    #
-    # TFIDF PARAMS:
-    norm: Literal["l1", "l2", None] = None
-    use_idf: bool = False
-    smooth_idf: bool = False
-    sublinear_tf: bool = False
-    #
-    # ITEM FILTERS:
-    top_n: Optional[int] = None
-    occ_range: tuple = (None, None)
-    gc_range: tuple = (None, None)
-    custom_items: list = datafield(default_factory=list)
-    #
-    # DATABASE PARAMS:
-    root_dir: str = "./"
-    database: str = "main"
-    year_filter: tuple = (None, None)
-    cited_by_filter: tuple = (None, None)
-    filters: dict = datafield(default_factory=dict)
-    #
-    # RESULTS:
-    df_: pd.DataFrame = pd.DataFrame()
-
-    def __post_init__(self):
-        #
-        # COMPUTATIONS:
-        #
-        if self.filters is None:
-            self.filters = {}
-
-    def __repr__(self):
-        text = "TFIDF-Matrix("
-        text += f"field='{self.field}'"
-        text += f", is-binary='{self.is_binary}'"
-        text += f", cooc_within={self.cooc_within}"
-        text += f", norm={self.norm}"
-        text += f", use-idf={self.use_idf}"
-        text += f", smooth-idf={self.smooth_idf}"
-        text += f", sublinear-tf={self.sublinear_tf}"
-        text += f", shape={self.df_.shape}"
-        text += ")"
-        text = textwrap.fill(text, width=75, subsequent_indent="    ")
-        return text
-
-
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
 def tfidf(
     #
     # TF PARAMS:
-    field,
-    is_binary=False,
-    cooc_within=1,
+    field: str,
+    is_binary: bool = False,
+    cooc_within: int = 1,
     #
     # ITEM FILTERS:
     top_n=None,
@@ -163,7 +86,7 @@ def tfidf(
 ):
     """Computes TF Matrix."""
 
-    indicators = indicators_by_field(
+    indicators = global_indicators_by_field(
         field=field,
         root_dir=root_dir,
         database=database,
@@ -225,29 +148,7 @@ def tfidf(
     result = _remove_rows_of_zeros(result)
     result = _sort_columns(result)
 
-    return TFIDF(
-        #
-        # RESULTS:
-        df_=result,
-        #
-        # PARAMETERS:
-        field=field,
-        is_binary=is_binary,
-        cooc_within=cooc_within,
-        #
-        # ITEM FILTERS:
-        top_n=top_n,
-        occ_range=occ_range,
-        gc_range=gc_range,
-        custom_items=custom_items,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )
+    return result
 
 
 def _sort_columns(result):

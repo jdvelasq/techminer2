@@ -1,5 +1,9 @@
 # flake8: noqa
+# pylint: disable=invalid-name
 # pylint: disable=line-too-long
+# pylint: disable=missing-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
 """
 .. _cross_correlation_map:
 
@@ -12,48 +16,18 @@ Creates an Cross-correlation Map.
 
 >>> root_dir = "data/regtech/"
 >>> import techminer2plus as tm2p
-
-
-* Object oriented interface
-
->>> fig = (
-...     tm2p.records(root_dir=root_dir)
-...     .cross_correlation_matrix(
-...         rows_and_columns='authors', 
-...         cross_with='countries',
-...         top_n=10,
-...     )
-...     .cross_correlation_map(
-...         color="#1f77b4", # tab:blue
-...     )
-...     .write_html("sphinx/_static/cross_correlation_map_0.html")
-... )
-
-.. raw:: html
-
-    <iframe src="../../_static/cross_correlation_map_0.html" height="600px" width="100%" frameBorder="0"></iframe>
-
-
-
-* Functional interface
-
 >>> file_name = "sphinx/_static/cross_correlation_map.html"
-
-
->>> cross_corr_matrix = tm2p.cross_correlation_matrix(
+>>> tm2p.cross_correlation_map(
 ...     rows_and_columns='authors', 
 ...     cross_with='countries',
 ...     top_n=10,
 ...     root_dir=root_dir,
-... )
->>> tm2p.cross_correlation_map(
-...     cross_corr_matrix,
 ...     color="#1f77b4", # tab:blue
-... ).write_html("sphinx/_static/cross_correlation_map_1.html")
+... ).write_html("sphinx/_static/cross_correlation_map.html")
 
 .. raw:: html
 
-    <iframe src="../../_static/cross_correlation_map_1.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/cross_correlation_map.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 from ._network_lib import (
@@ -65,12 +39,15 @@ from ._network_lib import (
     px_create_network_fig,
     px_create_node_trace,
 )
+from .cross_correlation_matrix import cross_correlation_matrix
 
 
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
 def cross_correlation_map(
-    cross_corr_matrix,
+    #
+    # FUNCTION PARAMS:
+    rows_and_columns,
+    cross_with,
+    method="pearson",
     #
     # Map params:
     n_labels=None,
@@ -85,9 +62,42 @@ def cross_correlation_map(
     xaxes_range=None,
     yaxes_range=None,
     show_axes=False,
+    #
+    # ITEM PARAMS:
+    top_n=None,
+    occ_range=(None, None),
+    gc_range=(None, None),
+    custom_items=None,
+    #
+    # DATABASE PARAMS:
+    root_dir="./",
+    database="main",
+    year_filter=(None, None),
+    cited_by_filter=(None, None),
+    **filters,
 ):
     """Correlation map."""
 
+    cross_corr_matrix = cross_correlation_matrix(
+        #
+        # FUNCTION PARAMS:
+        rows_and_columns=rows_and_columns,
+        cross_with=cross_with,
+        method=method,
+        #
+        # ITEM PARAMS:
+        top_n=top_n,
+        occ_range=occ_range,
+        gc_range=gc_range,
+        custom_items=custom_items,
+        #
+        # DATABASE PARAMS:
+        root_dir=root_dir,
+        database=database,
+        year_filter=year_filter,
+        cited_by_filter=cited_by_filter,
+        **filters,
+    )
     graph = nx_create_graph_from_matrix(
         cross_corr_matrix,
         node_size_min,

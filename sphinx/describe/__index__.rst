@@ -4,10 +4,6 @@ Describe
 
 
 .. toctree::
-   main_information
-   
-
-.. toctree::
    average_citations_per_year
 
 

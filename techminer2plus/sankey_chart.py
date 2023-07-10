@@ -1,38 +1,18 @@
 # flake8: noqa
+# pylint: disable=invalid-name
 # pylint: disable=line-too-long
+# pylint: disable=missing-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
 """
 .. _sankey_chart:
 
 Sankey Chart
 ===============================================================================
 
-
-* Preparation
-
 >>> import techminer2plus as tm2p
 >>> root_dir = "data/regtech/"
-
-* Object oriented interface
-
->>> file_name = "sphinx/_static/sankey_chart_0.html"
->>> (
-...     tm2p.records(root_dir=root_dir)
-...     .sankey_chart(
-...         fields=["authors", "countries", "author_keywords"],
-...         top_n=10,
-...         max_n=20,
-...     )
-... ).write_html(file_name)
-
-.. raw:: html
-
-    <iframe src="../../../_static/sankey_chart_0.html" height="800px" width="100%" frameBorder="0"></iframe>
-
-
-
-* Functional interface
-
->>> file_name = "sphinx/_static/sankey_chart_1.html"
+>>> file_name = "sphinx/_static/sankey_chat.html"
 >>> tm2p.sankey_chart(
 ...     root_dir=root_dir,
 ...     fields=["authors", "countries", "author_keywords"],
@@ -42,7 +22,7 @@ Sankey Chart
 
 .. raw:: html
 
-    <iframe src="../../../_static/sankey_chart_1.html" height="800px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/sankey_chat.html" height="800px" width="100%" frameBorder="0"></iframe>
 
 """
 import plotly.graph_objects as go
@@ -50,8 +30,6 @@ import plotly.graph_objects as go
 from .co_occurrence_matrix import co_occurrence_matrix
 
 
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
 def sankey_chart(
     #
     # PARAMS:
@@ -82,8 +60,6 @@ def sankey_chart(
         matrices = []
 
         for row, col in zip(fields[:-1], fields[1:]):
-            #
-
             if row == fields[0]:
                 # it is the first matrix
 
@@ -108,7 +84,7 @@ def sankey_chart(
                 matrices.append(coc_matrix)
 
             else:
-                curr_custom_items = matrices[-1].df_.columns.to_list()
+                curr_custom_items = matrices[-1].columns.to_list()
                 curr_custom_items = [
                     " ".join(item.split(" ")[:-1])
                     for item in curr_custom_items
@@ -139,9 +115,9 @@ def sankey_chart(
         node_names = []
         for i_matrix, matrix in enumerate(matrices):
             if i_matrix == 0:
-                node_names.extend(matrix.df_.index.to_list())
+                node_names.extend(matrix.index.to_list())
 
-            node_names.extend(matrix.df_.columns.to_list())
+            node_names.extend(matrix.columns.to_list())
 
         return node_names
 
@@ -157,7 +133,7 @@ def sankey_chart(
         value = []
 
         for coc_matrix in matrices:
-            matrix = coc_matrix.df_
+            matrix = coc_matrix.copy()
 
             for row in matrix.index:
                 for col in matrix.columns:

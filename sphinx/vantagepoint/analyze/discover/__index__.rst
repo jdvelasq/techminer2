@@ -3,7 +3,9 @@ Discover
 
 
 .. toctree::
-    list
+    :maxdepth: 1
+    
+    list/__index__
 
 .. toctree::
     :maxdepth: 1
@@ -23,5 +25,7 @@ Discover
 
 
 .. toctree::
-    terms_by_year
+    :maxdepth: 1   
+
+    terms_by_year/__index__
 
