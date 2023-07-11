@@ -5,7 +5,7 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-Lotka's Law
+Lotka's Law Chart
 ===============================================================================
 
 
@@ -18,7 +18,7 @@ Lotka's Law
 
 .. raw:: html
 
-    <iframe src="../../../_static/lotka_law_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../../../_static/lotka_law_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 import plotly.graph_objects as go

@@ -5,7 +5,7 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-Lotka's Law
+Lotka's Law Table
 ===============================================================================
 
 

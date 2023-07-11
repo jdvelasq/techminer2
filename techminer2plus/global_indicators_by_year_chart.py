@@ -30,7 +30,7 @@ Creates a time line chart from an indicator from  :ref:`global_indicators_by_yea
 """
 import plotly.express as px
 
-from .global_indicators_by_year import global_indicators_by_year
+from .global_indicators_by_year_table import global_indicators_by_year_table
 
 
 def global_indicators_by_year_chart(
@@ -46,7 +46,7 @@ def global_indicators_by_year_chart(
 ):
     """Makes a time line plot for indicators."""
 
-    df = global_indicators_by_year(
+    df = global_indicators_by_year_table(
         #
         # DATABASE PARAMS
         root_dir=root_dir,

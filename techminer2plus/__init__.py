@@ -1,12 +1,21 @@
 """TechMiner 2+ Package"""
 
-# from .annual_scientific_production import annual_scientific_production
+
 # from .associations_plot import associations_plot
+from .annual_scientific_production_chart import (
+    annual_scientific_production_chart,
+)
+from .annual_scientific_production_prompt import (
+    annual_scientific_production_prompt,
+)
+from .authors_metrics_table import authors_metrics_table
 from .auto_correlation_map import auto_correlation_map
 from .auto_correlation_matrix import auto_correlation_matrix
 from .auto_correlation_prompt import auto_correlation_prompt
-from .average_citations_by_year_chart import average_citations_by_year_chart
-from .average_citations_by_year_prompt import average_citations_by_year_prompt
+from .average_citations_per_year_chart import average_citations_per_year_chart
+from .average_citations_per_year_prompt import (
+    average_citations_per_year_prompt,
+)
 
 # from .average_citations_per_year import average_citations_per_year
 from .bar_chart import bar_chart
@@ -26,6 +35,15 @@ from .column_chart import column_chart
 from .concordances_contexts import concordances_contexts
 from .concordances_prompt import concordances_prompt
 
+# from .factor_clustering import factor_clustering
+# from .factor_clusters_map import factor_clusters_map
+# from .factor_decomposition_2d_map import factor_decomposition_2d_map
+# from .factor_decomposition_kernel_pca import factor_decomposition_kernel_pca
+# from .factor_decomposition_pca import factor_decomposition_pca
+# from .factor_decomposition_svd import factor_decomposition_svd
+# from .factor_members import factor_members
+from .countries_metrics_table import countries_metrics_table
+
 # from .concordances import concordances
 # from .coverage import coverage
 from .cross_correlation_map import cross_correlation_map
@@ -37,17 +55,8 @@ from .global_indicators_by_field import global_indicators_by_field
 from .global_indicators_by_field_per_year import (
     global_indicators_by_field_per_year,
 )
-from .global_indicators_by_year import global_indicators_by_year
 from .global_indicators_by_year_chart import global_indicators_by_year_chart
-
-# from .factor_clustering import factor_clustering
-# from .factor_clusters_map import factor_clusters_map
-# from .factor_decomposition_2d_map import factor_decomposition_2d_map
-# from .factor_decomposition_kernel_pca import factor_decomposition_kernel_pca
-# from .factor_decomposition_pca import factor_decomposition_pca
-# from .factor_decomposition_svd import factor_decomposition_svd
-# from .factor_members import factor_members
-# from .gantt_chart import gantt_chart
+from .global_indicators_by_year_table import global_indicators_by_year_table
 from .heat_map import heat_map
 from .item_associations_chart import item_associations_chart
 from .item_associations_prompt import item_associations_prompt
@@ -65,11 +74,46 @@ from .main_information_table import main_information_table
 # from .list_items import list_items
 # from .main_information import main_information
 from .matrix_viewer import matrix_viewer
+from .most_frequent_authors_chart import most_frequent_authors_chart
+from .most_frequent_authors_prompt import most_frequent_authors_prompt
+from .most_frequent_authors_table import most_frequent_authors_table
+from .most_frequent_countries_chart import most_frequent_countries_chart
+from .most_frequent_countries_prompt import most_frequent_countries_prompt
+from .most_frequent_countries_table import most_frequent_countries_table
+from .most_frequent_organizations_chart import (
+    most_frequent_organizations_chart,
+)
+from .most_frequent_organizations_prompt import (
+    most_frequent_organizations_prompt,
+)
+from .most_frequent_organizations_table import (
+    most_frequent_organizations_table,
+)
+from .most_frequent_sources_chart import most_frequent_sources_chart
+from .most_frequent_sources_prompt import most_frequent_sources_prompt
+from .most_frequent_sources_table import most_frequent_sources_table
+from .most_relevant_authors_chart import most_relevant_authors_chart
+from .most_relevant_authors_prompt import most_relevant_authors_prompt
+from .most_relevant_authors_table import most_relevant_authors_table
+from .most_relevant_countries_chart import most_relevant_countries_chart
+from .most_relevant_countries_prompt import most_relevant_countries_prompt
+from .most_relevant_countries_table import most_relevant_countries_table
+from .most_relevant_organizations_chart import (
+    most_relevant_organizations_chart,
+)
+from .most_relevant_organizations_prompt import (
+    most_relevant_organizations_prompt,
+)
+from .most_relevant_organizations_table import (
+    most_relevant_organizations_table,
+)
+from .most_relevant_sources_chart import most_relevant_sources_chart
+from .most_relevant_sources_prompt import most_relevant_sources_prompt
+from .most_relevant_sources_table import most_relevant_sources_table
+from .organizations_metrics_table import organizations_metrics_table
 from .pie_chart import pie_chart
 from .radial_diagram import radial_diagram
 from .ranking_chart import ranking_chart
-from .records_by_year_chart import records_by_year_chart
-from .records_by_year_prompt import records_by_year_prompt
 from .rpys_chart import rpys_chart
 
 # from .network_create import network_create
@@ -81,6 +125,7 @@ from .rpys_table import rpys_table
 # from .records import records
 # from .route import Route
 from .sankey_chart import sankey_chart
+from .sources_metrics_table import sources_metrics_table
 from .statistics import statistics
 from .summary_sheet import summary_sheet
 from .terms_by_year_prompt import terms_by_year_prompt
