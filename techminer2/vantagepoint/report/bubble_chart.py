@@ -26,7 +26,7 @@ Bubble Chart
 """
 import plotly.express as px
 
-from ..analyze.discover.matrix.co_occurrence_matrix import co_occurrence_matrix
+# from ..analyze.discover.matrix.co_occurrence_matrix import co_occurrence_matrix
 
 
 def bubble_chart(

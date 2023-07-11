@@ -48,7 +48,7 @@ Table:
 
 """
 from ...format_prompt_for_dataframes import format_prompt_for_dataframes
-from ...vantagepoint.analyze.discover.list_items_table import list_items_table
+from ...vantagepoint.discover.list_items_table import list_items_table
 
 
 def most_relevant_sources_prompt(

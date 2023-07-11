@@ -45,7 +45,7 @@ INNOVATION 03:012                            1
 
 
 """
-# from .vantagepoint.analyze.discover.matrix.co_occurrence_matrix import (
+# from .vantagepoint.discover.matrix.co_occurrence_matrix import (
 #     co_occurrence_matrix,
 # )
 

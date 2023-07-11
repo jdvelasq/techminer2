@@ -26,7 +26,7 @@ Gantt Chart
 """
 import plotly.express as px
 
-from ..analyze.discover.terms_by_year_table import terms_by_year_table
+# from ..analyze.discover.terms_by_year_table import terms_by_year_table
 
 COLOR = "#556f81"
 TEXTLEN = 40

@@ -27,7 +27,7 @@ INT CONF INF TECHNOL SYST INN         5       36  ...      0.0     0.00
 [5 rows x 18 columns]
 
 """
-from ...vantagepoint.analyze.discover.list_items_table import list_items_table
+from ...vantagepoint.discover.list_items_table import list_items_table
 
 FIELD = "source_abbr"
 

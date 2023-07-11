@@ -30,10 +30,10 @@ Plots the MDS (with 2 components) of the normalized co-occurrence matrix.
 import pandas as pd
 from sklearn.manifold import MDS
 
-from ..vantagepoint.analyze.discover.matrix.co_occurrence_matrix import (
+from ..vantagepoint.discover.matrix.co_occurrence_matrix import (
     co_occurrence_matrix,
 )
-from ..vantagepoint.analyze.discover.matrix.matrix_normalization import (
+from ..vantagepoint.discover.matrix.matrix_normalization import (
     matrix_normalization,
 )
 from .manifold_2d_map import manifold_2d_map

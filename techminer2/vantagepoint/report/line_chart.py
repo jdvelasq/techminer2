@@ -26,7 +26,7 @@ Line Chart
 """
 import plotly.express as px
 
-from ..analyze.discover.list_items_table import list_items_table
+# from ..analyze.discover.list_items_table import list_items_table
 
 MARKER_COLOR = "#8da4b4"
 MARKER_LINE_COLOR = "#556f81"

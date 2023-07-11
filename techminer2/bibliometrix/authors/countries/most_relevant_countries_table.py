@@ -43,7 +43,7 @@ Most Relevant Countries Table
 
 
 """
-from ....vantagepoint.analyze.discover.list_items_table import list_items_table
+from ....vantagepoint.discover.list_items_table import list_items_table
 
 MARKER_COLOR = "#8da4b4"
 MARKER_LINE_COLOR = "#556f81"

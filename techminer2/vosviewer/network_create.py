@@ -106,9 +106,10 @@ from .._network_lib import (
     nx_set_edge_properties_for_co_occ_networks,
     nx_set_node_color_by_group,
 )
-from ..vantagepoint.analyze.discover.matrix.matrix_normalization import (
-    matrix_normalization,
-)
+
+# from ..vantagepoint.analyze.discover.matrix.matrix_normalization import (
+#     matrix_normalization,
+# )
 from .network_communities import network_communities
 from .network_degree_plot import network_degree_plot
 from .network_metrics import network_metrics

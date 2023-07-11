@@ -19,9 +19,10 @@ from cdlib import algorithms
 #     list_cells_in_matrix,
 # )
 from ._read_records import read_records
-from .vantagepoint.analyze.discover.matrix.list_cells_in_matrix import (
-    list_cells_in_matrix,
-)
+
+# from .vantagepoint.discover.matrix.list_cells_in_matrix import (
+#     list_cells_in_matrix,
+# )
 
 CLUSTER_COLORS = (
     px.colors.qualitative.Dark24

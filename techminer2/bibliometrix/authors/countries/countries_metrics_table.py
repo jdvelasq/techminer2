@@ -27,7 +27,7 @@ China                  5        9    5  ...      3.0      2.0     0.43
 [5 rows x 18 columns]
 
 """
-from ....vantagepoint.analyze.discover.list_items_table import list_items_table
+from ....vantagepoint.discover.list_items_table import list_items_table
 
 FIELD = "countries"
 

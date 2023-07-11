@@ -27,7 +27,7 @@ Univ of Westminster (GBR)         5       18    2  ...      2.0      1.0     0.5
 [5 rows x 18 columns]
 
 """
-from ....vantagepoint.analyze.discover.list_items_table import list_items_table
+from ....vantagepoint.discover.list_items_table import list_items_table
 
 FIELD = "organizations"
 

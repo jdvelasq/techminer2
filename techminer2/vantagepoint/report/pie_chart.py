@@ -27,7 +27,7 @@ Pie Chart
 """
 import plotly.express as px
 
-from ..analyze.discover.list_items_table import list_items_table
+# from ..analyze.discover.list_items_table import list_items_table
 
 
 def pie_chart(

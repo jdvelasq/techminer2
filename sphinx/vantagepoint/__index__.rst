@@ -1,4 +1,4 @@
-VantagePoint v10
+VantagePoint v15
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
@@ -14,8 +14,24 @@ VantagePoint v10
 .. toctree::
    :maxdepth: 1
 
-   analyze/__index__
+   discover/__index__
 
+
+.. toctree::
+   :maxdepth: 1
+
+   classify/__index__
+
+
+.. toctree::
+   :maxdepth: 1
+
+   explore/__index__
+
+.. toctree::
+   :maxdepth: 1
+
+   calculate/__index__
 
 .. toctree::
    :maxdepth: 1

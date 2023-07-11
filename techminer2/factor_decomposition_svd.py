@@ -98,7 +98,7 @@ import pandas as pd
 from sklearn.decomposition import TruncatedSVD
 
 from .factor_decomposition_2d_map import factor_decomposition_2d_map
-from .vantagepoint.analyze.discover.matrix.matrix_normalization import (
+from .vantagepoint.discover.matrix.matrix_normalization import (
     matrix_normalization,
 )
 
