@@ -1,4 +1,4 @@
-.. automodule:: techminer2plus.item_indicators_table
+.. automodule:: techminer2.item_indicators_table
     
     :members:
 

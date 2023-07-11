@@ -1,3 +1,3 @@
-.. automodule:: techminer2plus.average_citations_per_year
+.. automodule:: techminer2.average_citations_per_year
     :members:
 

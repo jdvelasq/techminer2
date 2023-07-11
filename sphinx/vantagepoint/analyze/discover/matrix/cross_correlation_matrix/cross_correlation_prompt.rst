@@ -1,4 +1,4 @@
-.. automodule:: techminer2plus.cross_correlation_prompt
+.. automodule:: techminer2.cross_correlation_prompt
     :members:
     :undoc-members:
     :show-inheritance:

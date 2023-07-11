@@ -1,3 +1,3 @@
-.. automodule:: techminer2plus.network_viewer
+.. automodule:: techminer2.network_viewer
     :members:
 

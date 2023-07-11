@@ -1,3 +1,3 @@
-.. automodule:: techminer2plus.network_communities
+.. automodule:: techminer2.network_communities
     :members:
 

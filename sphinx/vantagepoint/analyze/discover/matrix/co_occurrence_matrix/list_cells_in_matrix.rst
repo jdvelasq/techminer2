@@ -1,3 +1,3 @@
-.. automodule:: techminer2plus.list_cells_in_matrix
+.. automodule:: techminer2.list_cells_in_matrix
     :members:
 

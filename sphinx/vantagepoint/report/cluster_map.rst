@@ -1,3 +1,3 @@
-.. automodule:: techminer2plus.cluster_map
+.. automodule:: techminer2.cluster_map
     :members:
 

@@ -1,3 +1,3 @@
-.. automodule:: techminer2plus.butterfly_chart
+.. automodule:: techminer2.butterfly_chart
     :members:
 

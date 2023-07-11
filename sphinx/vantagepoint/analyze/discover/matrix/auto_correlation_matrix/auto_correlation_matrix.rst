@@ -1,4 +1,4 @@
-.. automodule:: techminer2plus.auto_correlation_matrix
+.. automodule:: techminer2.auto_correlation_matrix
     :members:
     :undoc-members:
     :show-inheritance:

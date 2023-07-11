@@ -1,3 +1,3 @@
-.. automodule:: techminer2plus.factor_clustering
+.. automodule:: techminer2.factor_clustering
     :members:
 

@@ -1,3 +1,3 @@
-.. automodule:: techminer2plus.document_clustering
+.. automodule:: techminer2.document_clustering
     :members:
 

@@ -1,3 +1,3 @@
-.. automodule:: techminer2plus.matrix_viewer
+.. automodule:: techminer2.matrix_viewer
     :members:
 

@@ -1,3 +1,3 @@
-.. automodule:: techminer2plus.item_associations_chart
+.. automodule:: techminer2.item_associations_chart
     :members:
 

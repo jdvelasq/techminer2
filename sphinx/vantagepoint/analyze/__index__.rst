@@ -4,6 +4,13 @@ Analyze/
 .. toctree::
     tfidf
 
+
+
+.. toctree::
+    pcd
+
+
+
 .. toctree::
     :maxdepth: 1
 

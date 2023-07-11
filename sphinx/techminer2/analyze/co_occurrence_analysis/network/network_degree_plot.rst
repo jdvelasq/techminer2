@@ -1,3 +1,3 @@
-.. automodule:: techminer2plus.network_degree_plot
+.. automodule:: techminer2.network_degree_plot
     :members:
 

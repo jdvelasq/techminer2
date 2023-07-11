@@ -1,4 +1,4 @@
-.. automodule:: techminer2plus.most_frequent_authors_chart
+.. automodule:: techminer2.most_frequent_authors_chart
     :members:
     :undoc-members:
     :show-inheritance:

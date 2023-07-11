@@ -1,3 +1,3 @@
-.. automodule:: techminer2plus.world_map
+.. automodule:: techminer2.world_map
     :members:
 

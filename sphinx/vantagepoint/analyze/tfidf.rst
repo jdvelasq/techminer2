@@ -1,4 +1,4 @@
-.. automodule:: techminer2plus.cluster_records
+.. automodule:: techminer2.vantagepoint.analyze.tfidf
     :members:
     :undoc-members:
     :show-inheritance:

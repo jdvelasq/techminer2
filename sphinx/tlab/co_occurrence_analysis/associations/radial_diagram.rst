@@ -1,3 +1,3 @@
-.. automodule:: techminer2plus.radial_diagram
+.. automodule:: techminer2.radial_diagram
     :members:
 

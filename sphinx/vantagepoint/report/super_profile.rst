@@ -1,3 +1,3 @@
-.. automodule:: techminer2plus.super_profile
+.. automodule:: techminer2.super_profile
     :members:
 

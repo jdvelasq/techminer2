@@ -1,5 +1,5 @@
 
-.. automodule:: techminer2plus.factor_map
+.. automodule:: techminer2.factor_map
     :members:
     :undoc-members:
     :show-inheritance:

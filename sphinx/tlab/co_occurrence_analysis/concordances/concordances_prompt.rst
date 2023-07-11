@@ -1,4 +1,4 @@
-.. automodule:: techminer2plus.concordances_prompt
+.. automodule:: techminer2.concordances_prompt
     :members:
     :undoc-members:
     :show-inheritance:

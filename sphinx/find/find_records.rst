@@ -1,4 +1,4 @@
-.. automodule:: techminer2plus.find_records
+.. automodule:: techminer2.find_records
     :members:
     :undoc-members:
     :show-inheritance:

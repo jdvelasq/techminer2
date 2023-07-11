@@ -1,3 +1,3 @@
-.. automodule:: techminer2plus.network_metrics
+.. automodule:: techminer2.network_metrics
     :members:
 

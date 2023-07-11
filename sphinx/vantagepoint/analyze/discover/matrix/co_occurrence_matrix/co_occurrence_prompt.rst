@@ -1,3 +1,3 @@
-.. automodule:: techminer2plus.co_occurrence_prompt
+.. automodule:: techminer2.co_occurrence_prompt
     :members:
 

@@ -1,3 +1,3 @@
-.. automodule:: techminer2plus.plot_emergence
+.. automodule:: techminer2.plot_emergence
     :members:
 

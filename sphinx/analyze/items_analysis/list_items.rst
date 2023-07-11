@@ -1,3 +1,3 @@
-.. automodule:: techminer2plus.list_items
+.. automodule:: techminer2.list_items
     :members:
 

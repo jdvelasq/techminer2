@@ -1,3 +1,3 @@
-.. automodule:: techminer2plus.bradford_law
+.. automodule:: techminer2.bradford_law
     :members:
 

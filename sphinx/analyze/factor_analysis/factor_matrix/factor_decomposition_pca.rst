@@ -1,3 +1,3 @@
-.. automodule:: techminer2plus.factor_decomposition_pca
+.. automodule:: techminer2.factor_decomposition_pca
     :members:
 

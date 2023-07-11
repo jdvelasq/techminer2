@@ -1,3 +1,3 @@
-.. automodule:: techminer2plus.word_cloud
+.. automodule:: techminer2.word_cloud
     :members:
 

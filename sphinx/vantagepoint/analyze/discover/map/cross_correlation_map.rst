@@ -1,5 +1,5 @@
 
-.. automodule:: techminer2plus.cross_correlation_map
+.. automodule:: techminer2.cross_correlation_map
     :members:
     :undoc-members:
     :show-inheritance:

@@ -1,4 +1,4 @@
-.. automodule:: techminer2plus.tfidf
+.. automodule:: techminer2.tfidf
     :members:
     :undoc-members:
     :show-inheritance:

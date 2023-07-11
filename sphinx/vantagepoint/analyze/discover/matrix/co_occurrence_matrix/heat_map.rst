@@ -1,3 +1,3 @@
-.. automodule:: techminer2plus.heat_map
+.. automodule:: techminer2.heat_map
     :members:
 

@@ -1,4 +1,4 @@
-.. automodule:: techminer2.lotka_law_chart
+.. automodule:: techminer2.vantagepoint.analyze.pcd
     :members:
     :undoc-members:
     :show-inheritance:

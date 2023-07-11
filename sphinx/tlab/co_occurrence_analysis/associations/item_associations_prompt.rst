@@ -1,3 +1,3 @@
-.. automodule:: techminer2plus.item_associations_prompt
+.. automodule:: techminer2.item_associations_prompt
     :members:
 

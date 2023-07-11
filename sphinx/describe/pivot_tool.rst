@@ -1,3 +1,3 @@
-.. automodule:: techminer2plus.pivot_tool
+.. automodule:: techminer2.pivot_tool
     :members:
 

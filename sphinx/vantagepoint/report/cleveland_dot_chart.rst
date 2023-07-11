@@ -1,3 +1,3 @@
-.. automodule:: techminer2plus.cleveland_dot_chart
+.. automodule:: techminer2.cleveland_dot_chart
     :members:
 

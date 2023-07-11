@@ -1,3 +1,3 @@
-.. automodule:: techminer2plus.ranking_chart
+.. automodule:: techminer2.ranking_chart
     :members:
 

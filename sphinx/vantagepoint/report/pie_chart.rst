@@ -1,3 +1,3 @@
-.. automodule:: techminer2plus.pie_chart
+.. automodule:: techminer2.pie_chart
     :members:
 

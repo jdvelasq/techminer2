@@ -1,3 +1,3 @@
-.. automodule:: techminer2plus.network_create
+.. automodule:: techminer2.network_create
     :members:
 

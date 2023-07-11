@@ -1,3 +1,3 @@
-.. automodule:: techminer2plus.factor_clusters_map
+.. automodule:: techminer2.factor_clusters_map
     :members:
 

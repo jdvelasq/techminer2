@@ -1,3 +1,3 @@
-.. automodule:: techminer2plus.bar_chart
+.. automodule:: techminer2.bar_chart
     :members:
 

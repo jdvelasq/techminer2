@@ -1,3 +1,3 @@
-.. automodule:: techminer2plus.emergence_indicators
+.. automodule:: techminer2.emergence_indicators
     :members:
 
