@@ -117,14 +117,15 @@ import pandas as pd
 from textblob import TextBlob
 from tqdm import tqdm
 
-from ..refine.apply_countries_thesaurus import apply_countries_thesaurus
-from ..refine.apply_descriptors_thesaurus import apply_descriptors_thesaurus
-from ..refine.apply_organizations_thesaurus import apply_organizations_thesaurus
-
 # from ..reports import abstracts_report
 from .create_countries_thesaurus import create_countries_thesaurus
 from .create_descriptors_thesaurus import create_descriptors_thesaurus
 from .create_organizations_thesaurus import create_organizations_thesaurus
+
+# from ..refine.apply_countries_thesaurus import apply_countries_thesaurus
+# from ..refine.apply_descriptors_thesaurus import apply_descriptors_thesaurus
+# from ..refine.apply_organizations_thesaurus import apply_organizations_thesaurus
+
 
 KEYWORDS_MAX_LENGTH = 50
 

@@ -9,7 +9,7 @@ Factor Members
 
 * Preparation
 
->>> import techminer2plus as tm2p
+>>> import techminer2 as tm2
 >>> cooc_matrix = tm2p.co_occurrence_matrix(
 ...     root_dir="data/regtech/",
 ...     columns='author_keywords',

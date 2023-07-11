@@ -9,7 +9,7 @@ Bar Chart
 Displays a horizontal bar graph of the selected items in a ItemLlist object. 
 Items in your list are the Y-axis, and the number of records are the X-axis.
 
->>> import techminer2plus as tm2p
+>>> import techminer2 as tm2
 >>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bar_chart_0.html"
 >>> (

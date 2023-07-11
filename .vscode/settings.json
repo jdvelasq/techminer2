@@ -39,4 +39,7 @@
     "scm.inputFontSize": 11,
     "terminal.integrated.fontSize": 11,
     "chat.editor.fontSize": 11,
+    "editor.columnSelection": false,
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.wordWrap": "off",
 }

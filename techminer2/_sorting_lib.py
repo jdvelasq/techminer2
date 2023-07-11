@@ -94,7 +94,9 @@ def sort_matrix_axis(
     # pylint: disable=line-too-long
     """
 
-    from .global_indicators_by_field import global_indicators_by_field
+    from .techminer.metrics.global_indicators_by_field import (
+        global_indicators_by_field,
+    )
 
     matrix = matrix.copy()
 

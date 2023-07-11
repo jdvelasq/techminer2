@@ -7,19 +7,19 @@ Database
 
 Represents the databasef files in disk.
 
->>> import techminer2plus as tm2p
+>>> import techminer2 as tm2
 
 
 
 
 >>> root_dir = "data/regtech/"
 
->>> tm2p.records(root_dir=root_dir)
+>>> tm2.records(root_dir=root_dir)
 Records(root_dir='data/regtech/', database='main', year_filter=(None, None),
     cited_by_filter=(None, None), filters={})
 
     
->>> tm2p.records(root_dir=root_dir, filters={
+>>> tm2.records(root_dir=root_dir, filters={
 ...     "countries": ['Australia', 'United Kingdom', 'United States']
 ... })
 Records(root_dir='data/regtech/', database='main', year_filter=(None, None),
@@ -32,7 +32,7 @@ from dataclasses import dataclass
 
 from ._read_records import read_records
 from .filter.filter import Filter
-from .summary_sheet import summary_sheet
+from .vantagepoint.summary_sheet import summary_sheet
 
 
 @dataclass
@@ -60,9 +60,9 @@ class Database:
     def summary_sheet(self):
         """Return a summary of the columns of the database.
 
-        >>> import techminer2plus as tm2p
+        >>> import techminer2 as tm2
         >>> root_dir = "data/regtech/"
-        >>> tm2p.Database(root_dir).summary_sheet().head()
+        >>> tm2.Database(root_dir).summary_sheet().head()
                          column  number of terms coverage (%)
         0              abstract               52         1.0%
         1  abstract_nlp_phrases               47         0.9%

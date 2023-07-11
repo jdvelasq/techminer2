@@ -89,15 +89,16 @@ TM2 module.
 
 
 .. toctree::
-    :caption: EXAMPLES
+    :caption: SOFTWARE COMPARISON
     :hidden:
     :maxdepth: 1
 
-
+    techminer2/__index__
+    bibliometrix/__index__
     vantagepoint/__index__
     tlab/__index__
     scientopy/__index__
-    bibliometrix/__index__
+    
     
     
 

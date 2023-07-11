@@ -9,7 +9,7 @@ Concordances
 Abstract concordances exploration tool.
 
 
->>> import techminer2plus as tm2p
+>>> import techminer2 as tm2
 >>> root_dir = "data/regtech/"
 
 >>> concordances = (

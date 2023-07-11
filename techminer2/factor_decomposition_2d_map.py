@@ -11,7 +11,7 @@ Plots the MDS (with 2 components) of the normalized co-occurrence matrix.
 
 * Preparation
 
->>> import techminer2plus as tm2p
+>>> import techminer2 as tm2
 >>> root_dir = "data/regtech/"
 
 * Object oriented interface
@@ -49,7 +49,7 @@ Plots the MDS (with 2 components) of the normalized co-occurrence matrix.
 
 
 """
-from .manifold_2d_map import manifold_2d_map
+from .tlab.manifold_2d_map import manifold_2d_map
 
 
 # pylint: disable=too-many-arguments

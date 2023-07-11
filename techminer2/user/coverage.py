@@ -3,10 +3,10 @@
 Coverage
 ===============================================================================
 
->>> import techminer2plus as tm2p
+>>> import techminer2 as tm2
 >>> root_dir = "data/regtech/"
 
->>> tm2p.Records(root_dir=root_dir).coverage(
+>>> tm2.Records(root_dir=root_dir).coverage(
 ...     field="author_keywords",
 ... )
 --INFO-- Number of documents : 52

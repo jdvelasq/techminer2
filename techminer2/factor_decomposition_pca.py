@@ -23,7 +23,7 @@ Factor matrix obtained by appliying PCA to the co-occurrence matrix.
 
 * Preparation
 
->>> import techminer2plus as tm2p
+>>> import techminer2 as tm2
 >>> root_dir = "data/regtech/"
 
 
@@ -99,7 +99,9 @@ import pandas as pd
 from sklearn.decomposition import PCA
 
 from .factor_decomposition_2d_map import factor_decomposition_2d_map
-from .matrix_normalization import matrix_normalization
+from .vantagepoint.analyze.discover.matrix.matrix_normalization import (
+    matrix_normalization,
+)
 
 
 @dataclass

@@ -10,7 +10,9 @@ in the values or axis of a dataframe.
 
 import numpy as np
 
-from .global_indicators_by_field import global_indicators_by_field
+from .techminer.metrics.global_indicators_by_field import (
+    global_indicators_by_field,
+)
 
 
 # pylint: disable=too-many-arguments

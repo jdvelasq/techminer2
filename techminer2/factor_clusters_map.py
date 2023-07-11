@@ -9,7 +9,7 @@ Factor Cluster Map
 
 * Preparation
 
->>> import techminer2plus as tm2p
+>>> import techminer2 as tm2
 >>> root_dir = "data/regtech/"
 
 >>> cooc_matrix = tm2p.co_occurrence_matrix(
@@ -43,7 +43,7 @@ Factor Cluster Map
 import pandas as pd
 import plotly.express as px
 
-from .manifold_2d_map import manifold_2d_map
+from .tlab.manifold_2d_map import manifold_2d_map
 
 
 # pylint: disable=too-many-arguments

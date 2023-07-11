@@ -8,19 +8,19 @@ Filter
 
 Filters the records
 
->>> import techminer2plus as tm2p
+>>> import techminer2 as tm2
 
 
 
 
 >>> root_dir = "data/regtech/"
 
->>> tm2p.records(root_dir=root_dir)
+>>> tm2.records(root_dir=root_dir)
 Records(root_dir='data/regtech/', database='main', year_filter=(None, None),
     cited_by_filter=(None, None), filters={})
 
     
->>> tm2p.records(root_dir=root_dir, filters={
+>>> tm2.records(root_dir=root_dir, filters={
 ...     "countries": ['Australia', 'United Kingdom', 'United States']
 ... })
 Records(root_dir='data/regtech/', database='main', year_filter=(None, None),
@@ -79,7 +79,7 @@ class Filter:
     def records_per_year_chart(self, title="Records per Year"):
         """Returns a plotly chart with the number of records per year.
 
-        >>> import techminer2plus as tm2p
+        >>> import techminer2 as tm2
         >>> root_dir = "data/regtech/"
         >>> chart = (
         ...     tm2p.Database(root_dir)
@@ -146,7 +146,7 @@ class Filter:
     ):
         """Returns bibliometric indicators for a list of items.
 
-        >>> import techminer2plus as tm2p
+        >>> import techminer2 as tm2
         >>> root_dir = "data/regtech/"
         >>> items = (
         ...     tm2p.Database(root_dir)
