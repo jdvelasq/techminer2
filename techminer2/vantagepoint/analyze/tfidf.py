@@ -11,9 +11,9 @@ TFIDF
 ===============================================================================
 
 
->>> import techminer2 as tm2
+>>> from techminer2 import vantagepoint
 >>> root_dir = "data/regtech/"
->>> tm2.tfidf(
+>>> vantagepoint.analyze.tfidf(
 ...     field='author_keywords',
 ...     top_n=50,
 ...     root_dir=root_dir,

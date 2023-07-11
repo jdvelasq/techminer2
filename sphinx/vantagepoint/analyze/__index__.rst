@@ -1,6 +1,8 @@
 Analyze/
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. toctree::
+    tfidf
 
 .. toctree::
     :maxdepth: 1
@@ -22,3 +24,4 @@ Analyze/
     :maxdepth: 1
 
     calculate/__index__
+
