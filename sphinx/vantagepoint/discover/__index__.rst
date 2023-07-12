@@ -1,6 +1,8 @@
-Discover
+Discover/
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. toctree::    
+    list_items
 
 .. toctree::
     tfidf
@@ -10,10 +12,6 @@ Discover
 
 
 
-.. toctree::
-    :maxdepth: 1
-    
-    list/__index__
 
 .. toctree::
     :maxdepth: 1
