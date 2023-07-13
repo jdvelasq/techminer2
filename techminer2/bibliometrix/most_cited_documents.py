@@ -218,13 +218,21 @@ def __report(
     if metric == "local_citations":
         columns = ["local_citations", "global_citations", "year", "article"]
         ascending = [False, False, False, True]
-        report_filename = "most_local_cited_documents__abstracts.txt"
-        prompt_filename = "most_local_cited_documents__prompt.txt"
+        if database == "main":
+            report_filename = "most_local_cited_documents__abstracts.txt"
+            prompt_filename = "most_local_cited_documents__prompt.txt"
+        if database == "references":
+            report_filename = "most_local_cited_references__abstracts.txt"
+            prompt_filename = "most_local_cited_references__prompt.txt"
     else:
         columns = ["global_citations", "local_citations", "year", "article"]
         ascending = [False, False, False, True]
-        report_filename = "most_global_cited_documents__abstracts.txt"
-        prompt_filename = "most_global_cited_documents__prompt.txt"
+        if database == "main":
+            report_filename = "most_global_cited_documents__abstracts.txt"
+            prompt_filename = "most_global_cited_documents__prompt.txt"
+        if database == "references":
+            report_filename = "most_global_cited_references__abstracts.txt"
+            prompt_filename = "most_global_cited_references__prompt.txt"
 
     records = records.sort_values(columns, ascending=ascending)
     records = records.head(top_n)

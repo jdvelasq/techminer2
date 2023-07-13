@@ -13,6 +13,9 @@ TEXTWRAP_WIDTH = 75
 def format_prompt_for_records(main_text, records, weight=None):
     """Generate prompt for records."""
 
+    if "abstract" not in records.columns:
+        return "No abstracts found."
+
     records = records.copy()
     records = records.dropna(subset=["abstract"])
 

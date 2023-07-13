@@ -1,29 +1,32 @@
 # flake8: noqa
+# pylint: disable=invalid-name
+# pylint: disable=line-too-long
+# pylint: disable=missing-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
 """
 Most Global Cited References
 ===============================================================================
 
 
-
+>>> from techminer2 import bibliometrix
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/examples/cited_references/most_global_cited_references.html"
-
->>> import techminer2plus
->>> r = techminer2plus.publish.cited_references.most_global_cited_references(
+>>> file_name = "sphinx/_static/most_global_cited_references.html"
+>>> documents = bibliometrix.cited_references.most_global_cited_references(
 ...     top_n=20,
 ...     root_dir=root_dir,
 ... )
+--INFO-- The file 'data/regtech/reports/most_global_cited_references__abstracts.txt' was created.
+--INFO-- The file 'data/regtech/reports/most_global_cited_references__prompt.txt' was created.
 
 
->>> r.plot_.write_html(file_name)
+>>> documents.fig_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../_static/examples/cited_references/most_global_cited_references.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/most_global_cited_references.html" height="600px" width="100%" frameBorder="0"></iframe>
 
-    
-
->>> print(r.table_.head(5).to_markdown())
+>>> print(documents.df_.head(5).to_markdown())
 | article                                             |   year |   global_citations |   local_citations |   global_citations_per_year |   local_citations_per_year | doi                                |
 |:----------------------------------------------------|-------:|-------------------:|------------------:|----------------------------:|---------------------------:|:-----------------------------------|
 | Jensen MC, 1976, J FINANC ECON, V3, P305            |   1976 |              29405 |                 1 |                     625.638 |                      0.021 | 10.1016/0304-405X(76)90026-X       |
@@ -33,23 +36,26 @@ Most Global Cited References
 | Pan SJ, 2010, IEEE TRANS KNOWL DATA ENG, V22, P1345 |   2010 |              12506 |                 1 |                     962     |                      0.077 | 10.1109/TKDE.2009.191              |
 
 
-# pylint: disable=line-too-long
+
 """
-# from ..most_cited_documents import most_cited_documents
+from ..most_cited_documents import most_cited_documents
 
 
 def most_global_cited_references(
+    #
+    # FUNCTION PARAMS:
     top_n=None,
-    # Figure params:
+    #
+    # CHART PARAMS:
     title="Most Global Cited References",
     field_label=None,
     metric_label=None,
     textfont_size=10,
     marker_size=7,
-    line_color="black",
     line_width=1.5,
     yshift=4,
-    # Database filters:
+    #
+    # DATABASE PARAMS:
     root_dir="./",
     database="references",
     year_filter=None,
@@ -59,18 +65,21 @@ def most_global_cited_references(
     """Plots the most local cited documents in the main collection."""
 
     return most_cited_documents(
+        #
+        # FUNCTION PARAMS:
         metric="global_citations",
         top_n=top_n,
-        # Figure params:
+        #
+        # CHART PARAMS:
         title=title,
         field_label=field_label,
         metric_label=metric_label,
         textfont_size=textfont_size,
         marker_size=marker_size,
-        line_color=line_color,
         line_width=line_width,
         yshift=yshift,
-        # Database filters:
+        #
+        # DATABASE PARAMS:
         root_dir=root_dir,
         database=database,
         year_filter=year_filter,
