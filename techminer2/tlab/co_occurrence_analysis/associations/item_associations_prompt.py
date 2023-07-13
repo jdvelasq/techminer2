@@ -55,8 +55,8 @@ Table:
 
 
 """
-# from .format_prompt_for_dataframes import format_prompt_for_dataframes
-from .item_associations_table import item_associations_table
+
+# from .item_associations import item_associations_table
 
 
 def item_associations_prompt(
@@ -117,16 +117,3 @@ def item_associations_prompt(
         cited_by_filter=cited_by_filter,
         **filters,
     )
-
-    main_text = (
-        "Your task is to generate a short analysis of a table for a "
-        "research paper. Summarize the table below, delimited by triple "
-        "backticks, in one unique paragraph with at most 30 words. The "
-        "table contains the values of co-occurrence (OCC) of the "
-        f"'{item}' with the '{columns}' field in a bibliographic dataset. "
-        "Identify any notable patterns, trends, or outliers in the data, "
-        "and discuss their implications for the research field. Be sure "
-        "to provide a concise summary of your findings."
-    )
-    table_text = data_frame.to_markdown()
-    return format_prompt_for_dataframes(main_text, table_text)

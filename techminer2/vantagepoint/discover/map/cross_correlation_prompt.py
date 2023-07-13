@@ -56,7 +56,8 @@ from ..matrix.co_occurrence_matrix import co_occurrence_matrix
 from ..matrix.compute_corr_matrix import compute_corr_matrix
 from ..matrix.cross_correlation_matrix import cross_correlation_matrix
 from ..matrix.heat_map import heat_map
-from ..matrix.list_cells_in_matrix import list_cells_in_matrix
+
+# from ..matrix.list_cells_in_matrix import list_cells_in_matrix
 from .cross_correlation_map import cross_correlation_map
 
 

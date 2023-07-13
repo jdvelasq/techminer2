@@ -41,7 +41,7 @@ from ...._network_lib import (
     px_create_network_fig,
     px_create_node_trace,
 )
-from .item_associations_table import item_associations_table
+from .item_associations import item_associations
 
 
 def radial_diagram(

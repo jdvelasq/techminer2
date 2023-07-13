@@ -26,7 +26,7 @@ Item Associations Chart
 """
 import plotly.express as px
 
-from .item_associations_table import item_associations_table
+# from .item_associations import item_associations_table
 
 MARKER_COLOR = "#8da4b4"
 MARKER_LINE_COLOR = "#556f81"
@@ -40,15 +40,6 @@ def item_associations_chart(
     # CO-OCC PARAMS:
     columns,
     rows=None,
-    #
-    # CHART PARAMS:
-    title=None,
-    field_label=None,
-    metric_label=None,
-    textfont_size=10,
-    marker_size=7,
-    line_width=1.5,
-    yshift=4,
     #
     # COLUMN PARAMS:
     col_top_n=None,

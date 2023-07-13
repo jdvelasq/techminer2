@@ -1,0 +1,1 @@
+from .item_associations import item_associations

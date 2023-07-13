@@ -45,7 +45,8 @@ Arman AA 2:000               0.000  ...             1.0
 """
 from ..tfidf import tfidf
 from .compute_corr_matrix import compute_corr_matrix
-from .list_cells_in_matrix import list_cells_in_matrix
+
+# from .list_cells_in_matrix import list_cells_in_matrix
 
 
 def auto_correlation_matrix(
