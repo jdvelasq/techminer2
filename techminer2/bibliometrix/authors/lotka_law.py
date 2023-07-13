@@ -18,7 +18,7 @@ Lotka's Law
 
 .. raw:: html
 
-    <iframe src="../../../_static/lotka_law.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../../_static/lotka_law.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> print(lotka.df_.to_markdown())
 |    |   Documents Written |   Num Authors |   Proportion of Authors |   Theoretical Num Authors |   Prop Theoretical Authors |

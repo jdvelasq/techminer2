@@ -15,6 +15,18 @@ Local Impact --- M-Index
 ...    root_dir=root_dir,
 ... )
 >>> print(items.df_.to_markdown())
+| source_abbr              |   h_index |   g_index |   m_index |
+|:-------------------------|----------:|----------:|----------:|
+| J BANK REGUL             |         2 |         2 |      0.5  |
+| J FINANC CRIME           |         2 |         1 |      0.5  |
+| FINANCIAL INNOV          |         1 |         1 |      0.5  |
+| EUR J RISK REGUL         |         1 |         1 |      0.5  |
+| DECIS SUPPORT SYST       |         1 |         1 |      0.5  |
+| J IND BUS ECON           |         1 |         1 |      0.5  |
+| LECT NOTES NETWORKS SYST |         1 |         1 |      0.5  |
+| ADV INTELL SYS COMPUT    |         1 |         1 |      0.33 |
+| J ANTITRUST ENFORC       |         1 |         1 |      0.33 |
+| ACM INT CONF PROC SER    |         1 |         1 |      0.33 |
 
 
 
@@ -22,10 +34,33 @@ Local Impact --- M-Index
 
 .. raw:: html
 
-    <iframe src="../../../../_static/authors_m_index_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../../_static/authors_m_index_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> print(items.prompt_)
+Your task is to generate an analysis about the bibliometric indicators of \\
+the 'source_abbr' field in a scientific bibliography database. Summarize \\
+the table below, sorted by the 'm_index' metric, and delimited by triple \\
+backticks, identify any notable patterns, trends, or outliers in the data, \\
+and discuss their implications for the research field. Be sure to provide a \\
+concise summary of your findings in no more than 150 words.
+<BLANKLINE>
+Table:
+```
+| source_abbr              |   h_index |   g_index |   m_index |
+|:-------------------------|----------:|----------:|----------:|
+| J BANK REGUL             |         2 |         2 |      0.5  |
+| J FINANC CRIME           |         2 |         1 |      0.5  |
+| FINANCIAL INNOV          |         1 |         1 |      0.5  |
+| EUR J RISK REGUL         |         1 |         1 |      0.5  |
+| DECIS SUPPORT SYST       |         1 |         1 |      0.5  |
+| J IND BUS ECON           |         1 |         1 |      0.5  |
+| LECT NOTES NETWORKS SYST |         1 |         1 |      0.5  |
+| ADV INTELL SYS COMPUT    |         1 |         1 |      0.33 |
+| J ANTITRUST ENFORC       |         1 |         1 |      0.33 |
+| ACM INT CONF PROC SER    |         1 |         1 |      0.33 |
+```
+<BLANKLINE>
 
 
 """

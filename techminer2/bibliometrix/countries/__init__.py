@@ -1,29 +1,29 @@
 # flake8: noqa
 """
-This module contains functions for computing country-level bibliometric indicators.
+This module contains functions for computing bibliometric indicators for sources.
 
-# pylint: disable=line-too-long
+
 """
-from .corresponding_authors_country import corresponding_authors_country
-from .countries_production_over_time import countries_production_over_time
-from .country_scientific_production import country_scientific_production
-from .g_index import g_index
-from .h_index import h_index
-from .m_index import m_index
-from .most_frequent_items import most_frequent_items
-from .most_global_cited_countries import most_global_cited_countries
-from .most_local_cited_countries import most_local_cited_countries
-from .most_relevant_items import most_relevant_items
+from .corresponding_authors_countries import corresponding_authors_countries
+from .countries_scientific_production import countries_scientific_production
+from .local_impact_g_index import local_impact_g_index
+from .local_impact_global_citations import local_impact_global_citations
+from .local_impact_h_index import local_impact_h_index
+from .local_impact_m_index import local_impact_m_index
+from .most_frequent import most_frequent
+from .most_local_cited import most_local_cited
+from .most_relevant import most_relevant
+from .production_over_time import production_over_time
 
 __all__ = [
-    "corresponding_authors_country",
-    "countries_production_over_time",
-    "g_index",
-    "h_index",
-    "m_index",
-    "country_scientific_production",
-    "most_frequent_items",
-    "most_global_cited_countries",
-    "most_local_cited_countries",
-    "most_relevant_items",
+    "corresponding_authors_countries",
+    "countries_scientific_production",
+    "local_impact_g_index",
+    "local_impact_global_citations",
+    "local_impact_h_index",
+    "local_impact_m_index",
+    "most_frequent",
+    "most_local_cited",
+    "most_relevant",
+    "production_over_time",
 ]

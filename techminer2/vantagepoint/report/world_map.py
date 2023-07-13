@@ -10,24 +10,69 @@
 World map
 ===============================================================================
 
-
+>>> from techminer2 import vantagepoint
 >>> root_dir = "data/regtech/"
->>> import techminer2 as tm2
->>> tm2.world_map(
+>>> world_map = vantagepoint.report.world_map(
 ...    title="Countries' Scientific Production",
 ...    top_n=20,
 ...    root_dir=root_dir,
-... ).write_html("sphinx/_static/world_map.html")
+... )
+>>> world_map.fig_.write_html("sphinx/_static/world_map.html")
 
 .. raw:: html
 
     <iframe src="../../_static/world_map.html" height="400px" width="100%" frameBorder="0"></iframe>
 
+>>> world_map.df_.head()
+                rank_occ  OCC
+countries                    
+United Kingdom         1    7
+Australia              2    7
+United States          3    6
+Ireland                4    5
+China                  5    5
+
+>>> print(world_map.prompt_)
+Your task is to generate an analysis about the bibliometric indicators of \\
+the 'countries' field in a scientific bibliography database. Summarize the \\
+table below, sorted by the 'OCC' metric, and delimited by triple backticks, \\
+identify any notable patterns, trends, or outliers in the data, and discuss \\
+their implications for the research field. Be sure to provide a concise \\
+summary of your findings in no more than 150 words.
+<BLANKLINE>
+Table:
+```
+| countries            |   rank_occ |   OCC |
+|:---------------------|-----------:|------:|
+| United Kingdom       |          1 |     7 |
+| Australia            |          2 |     7 |
+| United States        |          3 |     6 |
+| Ireland              |          4 |     5 |
+| China                |          5 |     5 |
+| Italy                |          6 |     5 |
+| Germany              |          7 |     4 |
+| Switzerland          |          8 |     4 |
+| Bahrain              |          9 |     4 |
+| Hong Kong            |         10 |     3 |
+| Luxembourg           |         11 |     2 |
+| United Arab Emirates |         12 |     2 |
+| Spain                |         13 |     2 |
+| Indonesia            |         14 |     2 |
+| Greece               |         15 |     1 |
+| Japan                |         16 |     1 |
+| Jordan               |         17 |     1 |
+| South Africa         |         18 |     1 |
+| Ukraine              |         19 |     1 |
+| Malaysia             |         20 |     1 |
+```
+<BLANKLINE>
+
+
 """
 import pandas as pd
 import plotly.express as px
 
-# from .list_items_table import list_items_table
+from ..discover.list_items import list_items
 
 
 def world_map(
@@ -114,7 +159,7 @@ def world_map(
     #
     # Main code
     #
-    data_frame = list_items_table(
+    items = list_items(
         #
         # ITEMS PARAMS:
         field="countries",
@@ -134,4 +179,7 @@ def world_map(
         **filters,
     )
 
-    return create_plot()
+    data_frame = items.df_.copy()
+    items.fig_ = create_plot()
+
+    return items

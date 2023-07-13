@@ -1,31 +1,26 @@
 # flake8: noqa
 """
-This module contains functions for computing organization-level bibliometric indicators.
+This module contains functions for computing bibliometric indicators for sources.
 
-# pylint: disable=line-too-long
+
 """
-from .corresponding_authors_organization import (
-    corresponding_authors_organization,
-)
-from .g_index import g_index
-from .h_index import h_index
-from .m_index import m_index
-from .most_frequent_items import most_frequent_items
-from .most_global_cited_organizations import most_global_cited_organizations
-from .most_local_cited_organizations import most_local_cited_organizations
-from .most_relevant_items import most_relevant_items
-from .organizations_production_over_time import (
-    organizations_production_over_time,
-)
+
+from .local_impact_g_index import local_impact_g_index
+from .local_impact_global_citations import local_impact_global_citations
+from .local_impact_h_index import local_impact_h_index
+from .local_impact_m_index import local_impact_m_index
+from .most_frequent import most_frequent
+from .most_local_cited import most_local_cited
+from .most_relevant import most_relevant
+from .production_over_time import production_over_time
 
 __all__ = [
-    "corresponding_authors_organization",
-    "most_frequent_organizations",
-    "most_global_cited_organizations",
-    "most_local_cited_organizations",
-    "most_relevant_items",
-    "g_index",
-    "h_index",
-    "m_index",
-    "organizations_production_over_time",
+    "local_impact_g_index",
+    "local_impact_global_citations",
+    "local_impact_h_index",
+    "local_impact_m_index",
+    "most_frequent",
+    "most_local_cited",
+    "most_relevant",
+    "production_over_time",
 ]

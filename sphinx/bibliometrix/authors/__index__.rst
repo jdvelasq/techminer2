@@ -2,31 +2,17 @@ Authors/
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
-   most_relevant
+   :maxdepth: 1
+
+   authors/__index__
 
 .. toctree::
-   most_frequent
+   :maxdepth: 1
+
+   organizations/__index__
 
 .. toctree::
-   most_local_cited
+   :maxdepth: 1
 
-.. toctree::
-   lotka_law
-
-.. toctree::
-   local_impact_h_index
-
-.. toctree::
-   local_impact_m_index
-
-.. toctree::
-   local_impact_g_index
-
-.. toctree::
-   local_impact_global_citations
-
-.. toctree::
-   production_over_time 
-
-
+   countries/__index__
 

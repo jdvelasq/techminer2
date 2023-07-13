@@ -15,16 +15,51 @@ Local Impact --- H-Index
 ...    root_dir=root_dir,
 ... )
 >>> print(items.df_.to_markdown())
+| authors     |   h_index |   g_index |   m_index |
+|:------------|----------:|----------:|----------:|
+| Arner DW    |         3 |         3 |      0.43 |
+| Buckley RP  |         3 |         3 |      0.43 |
+| Barberis JN |         2 |         2 |      0.29 |
+| Butler T    |         2 |         2 |      0.33 |
+| Hamdan A    |         2 |         2 |      0.5  |
+| Turki M     |         2 |         2 |      0.5  |
+| Lin W       |         2 |         1 |      0.5  |
+| Singh C     |         2 |         1 |      0.5  |
+| Brennan R   |         2 |         1 |      0.5  |
+| Crane M     |         2 |         1 |      0.5  |
 
 
 >>> items.fig_.write_html("sphinx/_static/authors_h_index_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/authors_h_index_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../../_static/authors_h_index_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> print(items.prompt_)
+Your task is to generate an analysis about the bibliometric indicators of \\
+the 'authors' field in a scientific bibliography database. Summarize the \\
+table below, sorted by the 'h_index' metric, and delimited by triple \\
+backticks, identify any notable patterns, trends, or outliers in the data, \\
+and discuss their implications for the research field. Be sure to provide a \\
+concise summary of your findings in no more than 150 words.
+<BLANKLINE>
+Table:
+```
+| authors     |   h_index |   g_index |   m_index |
+|:------------|----------:|----------:|----------:|
+| Arner DW    |         3 |         3 |      0.43 |
+| Buckley RP  |         3 |         3 |      0.43 |
+| Barberis JN |         2 |         2 |      0.29 |
+| Butler T    |         2 |         2 |      0.33 |
+| Hamdan A    |         2 |         2 |      0.5  |
+| Turki M     |         2 |         2 |      0.5  |
+| Lin W       |         2 |         1 |      0.5  |
+| Singh C     |         2 |         1 |      0.5  |
+| Brennan R   |         2 |         1 |      0.5  |
+| Crane M     |         2 |         1 |      0.5  |
+```
+<BLANKLINE>
 
 
 """
