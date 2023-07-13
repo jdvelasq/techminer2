@@ -1,10 +1,15 @@
+# flake8: noqa
+# pylint: disable=invalid-name
+# pylint: disable=line-too-long
+# pylint: disable=missing-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
 """Reporting module for records."""
 import os.path
 import textwrap
 
 
-def create_records_report(root_dir, target_dir, records, report_filename):
-    # pylint: disable=too-many-statements
+def format_report_for_records(root_dir, target_dir, records, report_filename):
     """Builds a report file with a given records subset."""
 
     def get_reported_columns(records):

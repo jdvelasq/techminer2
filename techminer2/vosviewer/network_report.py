@@ -69,7 +69,7 @@ import os.path
 from .._network_lib import extract_records_per_cluster, nx_extract_communities
 
 # from .concordances_contexts import concordances_from_records
-from ..create_records_report import create_records_report
+from ..format_report_for_records import format_report_for_records
 from ..make_report_dir import make_report_dir
 
 
@@ -184,7 +184,7 @@ def generate_records_report(
             ["global_citations", "local_citations", "year"], ascending=False
         )
         file_name = f"{cluster}_abstracts_report.txt"
-        create_records_report(
+        format_report_for_records(
             root_dir=root_dir,
             target_dir=report_dir,
             records=records,

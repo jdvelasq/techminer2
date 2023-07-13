@@ -41,7 +41,7 @@ searching. The report is saved to the file ``reports/find_records.txt``.
 
 
 from ._read_records import read_records
-from .create_records_report import create_records_report
+from .format_report_for_records import format_report_for_records
 
 
 # pylint: disable=too-many-arguments
@@ -104,7 +104,7 @@ def find_records(
 
     records = filter_records(field, search_for, case, flags, regex, records)
 
-    create_records_report(
+    format_report_for_records(
         root_dir=root_dir,
         target_dir="",
         records=records,
