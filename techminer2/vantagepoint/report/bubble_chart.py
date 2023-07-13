@@ -11,13 +11,14 @@ Bubble Chart
 ===============================================================================
 
 
->>> import techminer2 as tm2
+>>> from techminer2 import vantagepoint
 >>> root_dir = "data/regtech/"
->>> tm2.bubble_chart(
+>>> bubble_chart = vantagepoint.report.bubble_chart(
 ...    columns='author_keywords',
 ...    col_top_n=10,
 ...    root_dir=root_dir,
-... ).write_html("sphinx/_static/bubble_chart.html")
+... )
+>>> bubble_chart.write_html("sphinx/_static/bubble_chart.html")
 
 .. raw:: html
 
@@ -26,7 +27,7 @@ Bubble Chart
 """
 import plotly.express as px
 
-# from ..analyze.discover.matrix.co_occurrence_matrix import co_occurrence_matrix
+from ..discover.matrix.co_occurrence_matrix import co_occurrence_matrix
 
 
 def bubble_chart(
@@ -83,7 +84,7 @@ def bubble_chart(
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
         **filters,
-    )
+    ).df_
 
     matrix = matrix.melt(
         value_name="VALUE", var_name="column", ignore_index=False

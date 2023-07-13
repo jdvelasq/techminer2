@@ -20,10 +20,19 @@ Report/
     bubble_chart    
 
 .. toctree::
+    heat_map
+
+.. toctree::
     gantt_chart
 
 .. toctree::
     butterfly_chart
+
+.. toctree::
+    scatter_plot
+
+.. toctree::
+    cluster_map
 
 .. toctree::
     world_map  

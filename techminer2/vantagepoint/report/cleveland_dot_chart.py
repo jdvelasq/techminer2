@@ -10,14 +10,15 @@
 Cleveland Dot Chart
 ===============================================================================
 
+>>> from techminer2 import vantagepoint
 >>> root_dir = "data/regtech/"
->>> import techminer2 as tm2
->>> tm2.cleveland_dot_chart(
+>>> report = vantagepoint.report.cleveland_dot_chart(
 ...    field='author_keywords',
 ...    title="Most Frequent Author Keywords",
 ...    top_n=20,
 ...    root_dir=root_dir,
-... ).write_html("sphinx/_static/cleveland_dot_chart.html")
+... )
+>>> report.fig_.write_html("sphinx/_static/cleveland_dot_chart.html")
 
 .. raw:: html
 
@@ -26,7 +27,7 @@ Cleveland Dot Chart
 """
 import plotly.express as px
 
-# from ..analyze.discover.list_items_table import list_items_table
+from ..discover.list_items import list_items
 
 MARKER_COLOR = "#8da4b4"
 MARKER_LINE_COLOR = "#556f81"
@@ -69,7 +70,7 @@ def cleveland_dot_chart(
 
     """
 
-    data_frame = list_items_table(
+    items = list_items(
         #
         # ITEMS PARAMS:
         field=field,
@@ -98,6 +99,8 @@ def cleveland_dot_chart(
     field_label = (
         field.replace("_", " ").upper() if field_label is None else field_label
     )
+
+    data_frame = items.df_.copy()
 
     fig = px.scatter(
         data_frame,
@@ -134,4 +137,6 @@ def cleveland_dot_chart(
         title_text=field_label,
     )
 
-    return fig
+    items.fig_ = fig
+
+    return items

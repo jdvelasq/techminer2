@@ -1,5 +1,9 @@
 # flake8: noqa
+# pylint: disable=invalid-name
 # pylint: disable=line-too-long
+# pylint: disable=missing-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
 """
 .. _butterfly_chart:
 
@@ -8,9 +12,9 @@ Butterfly Chart
 
 
 
->>> import techminer2 as tm2
+>>> from techminer2 import vantagepoint
 >>> root_dir = "data/regtech/"
->>> tm2.butterfly_chart(
+>>> heat_map = vantagepoint.report.butterfly_chart(
 ...     columns='author_keywords',
 ...     col_top_n=10,
 ...     root_dir=root_dir,
@@ -25,7 +29,7 @@ Butterfly Chart
 """
 import plotly.graph_objects as go
 
-# from ..analyze.discover.matrix.co_occurrence_matrix import co_occurrence_matrix
+from ..discover.matrix.co_occurrence_matrix import co_occurrence_matrix
 
 
 def butterfly_chart(
@@ -97,7 +101,7 @@ def butterfly_chart(
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
         **filters,
-    )
+    ).df_
 
     pos_a, name_a = extract_item_position_and_name(
         matrix.columns.tolist(), item_a
