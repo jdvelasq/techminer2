@@ -2,9 +2,7 @@ Matrix/
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
-    :maxdepth: 1
-
-    co_occurrence_matrix/__index__
+    co_occurrence_matrix
 
 .. toctree::
     :maxdepth: 1

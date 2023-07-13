@@ -5,6 +5,12 @@ Discover/
     list_items
 
 .. toctree::
+    :maxdepth: 1
+
+    matrix/__index__
+
+
+.. toctree::
     terms_by_year
 
 .. toctree::
@@ -16,10 +22,6 @@ Discover/
 
 
 
-.. toctree::
-    :maxdepth: 1
-
-    matrix/__index__
 
 .. toctree::
     :maxdepth: 1    

@@ -10,9 +10,9 @@
 Cluster Records
 ===============================================================================
 
->>> import techminer2 as tm2
+>>> from techminer2 import vantagepoint 
 >>> root_dir = "data/regtech/"
->>> tm2.cluster_records(
+>>> vantagepoint.explore.cluster_records(
 ...     field='author_keywords',
 ...     top_n=50,
 ...     root_dir=root_dir,
@@ -20,7 +20,7 @@ Cluster Records
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/cluster_records.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/cluster_records.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 
