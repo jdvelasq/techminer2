@@ -10,10 +10,10 @@
 Sankey Chart
 ===============================================================================
 
->>> import techminer2 as tm2
+>>> from techminer2 import vantagepoint
 >>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/sankey_chat.html"
->>> tm2.sankey_chart(
+>>> vantagepoint.explore.sankey_chart(
 ...     root_dir=root_dir,
 ...     fields=["authors", "countries", "author_keywords"],
 ...     top_n=10,
@@ -22,7 +22,7 @@ Sankey Chart
 
 .. raw:: html
 
-    <iframe src="../../../_static/sankey_chat.html" height="800px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/sankey_chat.html" height="800px" width="100%" frameBorder="0"></iframe>
 
 """
 import plotly.graph_objects as go
@@ -84,7 +84,7 @@ def sankey_chart(
                 matrices.append(coc_matrix)
 
             else:
-                curr_custom_items = matrices[-1].columns.to_list()
+                curr_custom_items = matrices[-1].df_.columns.to_list()
                 curr_custom_items = [
                     " ".join(item.split(" ")[:-1])
                     for item in curr_custom_items
@@ -115,9 +115,9 @@ def sankey_chart(
         node_names = []
         for i_matrix, matrix in enumerate(matrices):
             if i_matrix == 0:
-                node_names.extend(matrix.index.to_list())
+                node_names.extend(matrix.df_.index.to_list())
 
-            node_names.extend(matrix.columns.to_list())
+            node_names.extend(matrix.df_.columns.to_list())
 
         return node_names
 
@@ -133,7 +133,7 @@ def sankey_chart(
         value = []
 
         for coc_matrix in matrices:
-            matrix = coc_matrix.copy()
+            matrix = coc_matrix.df_.copy()
 
             for row in matrix.index:
                 for col in matrix.columns:
