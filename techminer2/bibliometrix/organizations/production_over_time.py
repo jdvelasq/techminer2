@@ -94,6 +94,9 @@ def production_over_time(
     # PARAMS:
     cumulative=False,
     #
+    # CHART PARAMS:
+    title=None,
+    #
     # ITEM FILTERS:
     top_n=None,
     occ_range=(None, None),
@@ -109,11 +112,17 @@ def production_over_time(
 ):
     """Sources production over time."""
 
+    if title is None:
+        title = "Organizations Production over Time"
+
     return terms_by_year(
         #
         # PARAMS:
         field=FIELD,
         cumulative=cumulative,
+        #
+        # CHART PARAMS:
+        title=title,
         #
         # ITEM FILTERS:
         top_n=top_n,

@@ -10,32 +10,89 @@
 Gantt Chart
 ===============================================================================
 
->>> import techminer2 as tm2
+>>> from techminer2 import vantagepoint
 >>> root_dir = "data/regtech/"
->>> tm2.gantt_chart(
+>>> gantt = vantagepoint.report.gantt_chart(
 ...     root_dir=root_dir,
-...     field="author_keywords",
 ...     top_n=10,
-... ).write_html("sphinx/_static/gantt_chart.html")
+... )
+>>> gantt.fig_.write_html("sphinx/_static/gantt_chart.html")
 
 .. raw:: html
 
     <iframe src="../../../../_static/gantt_chart.html" height="800px" width="100%" frameBorder="0"></iframe>
 
+    
+>>> print(gantt.df_.to_markdown())
+| organizations                                                            |   2016 |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
+|:-------------------------------------------------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
+| Univ of Hong Kong (HKG) 3:185                                            |      0 |      2 |      0 |      0 |      1 |      0 |      0 |      0 |
+| Univ Coll Cork (IRL) 3:041                                               |      0 |      0 |      1 |      1 |      0 |      0 |      1 |      0 |
+| Ahlia Univ (BHR) 3:019                                                   |      0 |      0 |      0 |      0 |      1 |      1 |      1 |      0 |
+| Coventry Univ (GBR) 2:017                                                |      0 |      0 |      0 |      0 |      1 |      0 |      1 |      0 |
+| Univ of Westminster (GBR) 2:017                                          |      0 |      0 |      0 |      0 |      1 |      0 |      1 |      0 |
+| Dublin City Univ (IRL) 2:014                                             |      0 |      0 |      0 |      0 |      1 |      1 |      0 |      0 |
+| Politec di Milano (ITA) 2:002                                            |      0 |      0 |      0 |      0 |      1 |      0 |      1 |      0 |
+| Kingston Bus Sch (GBR) 1:153                                             |      0 |      0 |      1 |      0 |      0 |      0 |      0 |      0 |
+| FinTech HK, Hong Kong (HKG) 1:150                                        |      0 |      1 |      0 |      0 |      0 |      0 |      0 |      0 |
+| ctr for Law, Markets & Regulation, UNSW Australia, Australia (AUS) 1:150 |      0 |      1 |      0 |      0 |      0 |      0 |      0 |      0 |
+
+
+
+>>> print(gantt.prompt_)
+Your task is to generate an analysis about the  occurrences by year of the \\
+'organizations' in a scientific bibliography database. Summarize the table \\
+below, delimited by triple backticks, identify any notable patterns, \\
+trends, or outliers in the data, and disc  uss their implications for the \\
+research field. Be sure to provide a concise summary of your findings in no \\
+more than 150 words.
+<BLANKLINE>
+Table:
+```
+| organizations                                                            |   2016 |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
+|:-------------------------------------------------------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
+| Univ of Hong Kong (HKG) 3:185                                            |      0 |      2 |      0 |      0 |      1 |      0 |      0 |      0 |
+| Univ Coll Cork (IRL) 3:041                                               |      0 |      0 |      1 |      1 |      0 |      0 |      1 |      0 |
+| Ahlia Univ (BHR) 3:019                                                   |      0 |      0 |      0 |      0 |      1 |      1 |      1 |      0 |
+| Coventry Univ (GBR) 2:017                                                |      0 |      0 |      0 |      0 |      1 |      0 |      1 |      0 |
+| Univ of Westminster (GBR) 2:017                                          |      0 |      0 |      0 |      0 |      1 |      0 |      1 |      0 |
+| Dublin City Univ (IRL) 2:014                                             |      0 |      0 |      0 |      0 |      1 |      1 |      0 |      0 |
+| Politec di Milano (ITA) 2:002                                            |      0 |      0 |      0 |      0 |      1 |      0 |      1 |      0 |
+| Kingston Bus Sch (GBR) 1:153                                             |      0 |      0 |      1 |      0 |      0 |      0 |      0 |      0 |
+| FinTech HK, Hong Kong (HKG) 1:150                                        |      0 |      1 |      0 |      0 |      0 |      0 |      0 |      0 |
+| ctr for Law, Markets & Regulation, UNSW Australia, Australia (AUS) 1:150 |      0 |      1 |      0 |      0 |      0 |      0 |      0 |      0 |
+```
+<BLANKLINE>
+
+>>> print(gantt.metrics_.head().to_markdown())
+|    | organizations           |   year |   OCC |   cum_OCC |   global_citations |   local_citations |   age |   global_citations_per_year |   local_citations_per_year |
+|---:|:------------------------|-------:|------:|----------:|-------------------:|------------------:|------:|----------------------------:|---------------------------:|
+|  0 | Univ of Hong Kong (HKG) |   2017 |     2 |         2 |                161 |                 3 |     7 |                      23     |                      0.429 |
+|  1 | Univ of Hong Kong (HKG) |   2020 |     1 |         3 |                 24 |                 5 |     4 |                       6     |                      1.25  |
+|  2 | Univ Coll Cork (IRL)    |   2018 |     1 |         1 |                  8 |                 5 |     6 |                       1.333 |                      0.833 |
+|  3 | Univ Coll Cork (IRL)    |   2019 |     1 |         2 |                 33 |                14 |     5 |                       6.6   |                      2.8   |
+|  4 | Univ Coll Cork (IRL)    |   2022 |     1 |         3 |                  0 |                 0 |     2 |                       0     |                      0     |
+
+>>> print(gantt.documents_.head().to_markdown())
+|    | organizations                                                      | title                                                                 |   year | source_title                                                   |   global_citations |   local_citations | doi                            |
+|---:|:-------------------------------------------------------------------|:----------------------------------------------------------------------|-------:|:---------------------------------------------------------------|-------------------:|------------------:|:-------------------------------|
+|  0 | Kingston Bus Sch (GBR)                                             | FINTECH and REGTECH: impact on regulators and BANKS                   |   2018 | Journal of Economics and Business                              |                153 |                17 | 10.1016/J.JECONBUS.2018.07.003 |
+|  1 | FinTech HK, Hong Kong (HKG)                                        | FINTECH, REGTECH, and the reconceptualization of FINANCIAL_REGULATION |   2017 | Northwestern Journal of International Law and Business         |                150 |                 0 | nan                            |
+|  2 | Univ of Hong Kong (HKG)                                            | FINTECH, REGTECH, and the reconceptualization of FINANCIAL_REGULATION |   2017 | Northwestern Journal of International Law and Business         |                150 |                 0 | nan                            |
+|  3 | ctr for Law, Markets & Regulation, UNSW Australia, Australia (AUS) | FINTECH, REGTECH, and the reconceptualization of FINANCIAL_REGULATION |   2017 | Northwestern Journal of International Law and Business         |                150 |                 0 | nan                            |
+|  4 | Univ Coll Cork (IRL)                                               | understanding REGTECH for digital REGULATORY_COMPLIANCE               |   2019 | Palgrave Studies in Digital Business and Enabling Technologies |                 33 |                14 | 10.1007/978-3-030-02330-0_6    |
+
+
+
 
 """
-import plotly.express as px
 
-# from ..analyze.discover.terms_by_year_table import terms_by_year_table
-
-COLOR = "#556f81"
-TEXTLEN = 40
+from ...bibliometrix.organizations import production_over_time
 
 
 def gantt_chart(
     #
     # PARAMS:
-    field,
     cumulative=False,
     #
     # CHART PARAMS:
@@ -55,13 +112,15 @@ def gantt_chart(
     **filters,
 ):
     # pylint: disable=line-too-long
-    """Computes a table with the number of occurrences of each term by year."""
+    """Organizations Gantt chart."""
 
-    data_frame = terms_by_year_table(
+    return production_over_time(
         #
         # PARAMS:
-        field=field,
         cumulative=cumulative,
+        #
+        # CHART PARAMS:
+        title=title,
         #
         # ITEM FILTERS:
         top_n=top_n,
@@ -76,60 +135,3 @@ def gantt_chart(
         cited_by_filter=cited_by_filter,
         **filters,
     )
-
-    data_frame["RANKING"] = range(1, len(data_frame) + 1)
-    data_frame = data_frame.melt(
-        value_name="OCC",
-        var_name="column",
-        ignore_index=False,
-        id_vars=["RANKING"],
-    )
-
-    data_frame = data_frame[data_frame.OCC > 0]
-    data_frame = data_frame.sort_values(by=["RANKING"], ascending=True)
-    data_frame = data_frame.drop(columns=["RANKING"])
-
-    data_frame = data_frame.rename(columns={"column": "Year"})
-    data_frame = data_frame.reset_index()
-
-    fig = px.scatter(
-        data_frame,
-        x="Year",
-        y=field,
-        size="OCC",
-        hover_data=data_frame.columns.to_list(),
-        title=title,
-        color=field,
-    )
-    fig.update_layout(
-        paper_bgcolor="white",
-        plot_bgcolor="white",
-        showlegend=False,
-        xaxis_title=None,
-        yaxis_title=field.replace("_", " ").upper(),
-    )
-    fig.update_traces(
-        marker={
-            "line": {"color": "white", "width": 0.5},
-            "opacity": 1.0,
-        },
-        marker_color=COLOR,
-        mode="lines+markers",
-        line={"width": 2, "color": COLOR},
-    )
-    fig.update_xaxes(
-        linecolor="white",
-        linewidth=1,
-        gridcolor="gray",
-        griddash="dot",
-        tickangle=270,
-        dtick=1.0,
-    )
-    fig.update_yaxes(
-        linecolor="white",
-        linewidth=1,
-        gridcolor="gray",
-        griddash="dot",
-    )
-
-    return fig

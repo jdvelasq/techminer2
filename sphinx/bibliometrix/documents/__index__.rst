@@ -1,41 +1,18 @@
-Documents 
+Documents/ 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-* **Documents**
+.. toctree::
+   :maxdepth: 1
 
-   .. toctree::
-      most_global_cited_documents
+   documents/__index__
 
+.. toctree::
+   :maxdepth: 1
 
-   .. toctree::   
-      most_local_cited_documents
+   cited_references/__index__
 
+.. toctree::
+   :maxdepth: 1
 
-* **Cited References**
-
-   .. toctree::
-      most_local_cited_references
-
-   .. toctree::
-      rpys
-
-
-* **Words**
-
-
-   .. toctree::
-      most_frequent_words
-         
-   .. toctree::
-      wordcloud
-
-
-   .. toctree::
-      treemap
-
-   .. toctree::
-      words_frequency_over_time
-
-   .. toctree::
-      trend_topics
+   words/__index__

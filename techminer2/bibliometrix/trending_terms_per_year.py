@@ -1,57 +1,56 @@
 # flake8: noqa
+# pylint: disable=invalid-name
 # pylint: disable=line-too-long
+# pylint: disable=missing-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
 """
 Trending Terms per Year
 ===============================================================================
 
-
+>>> from techminer2 import bibliometrix
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/analyze/trending_terms_per_year.html"
-
->>> import techminer2plus
->>> techminer2plus.analyze.trending_terms_per_year(
+>>> terms = bibliometrix.trending_terms_per_year(
 ...     field="author_keywords",
 ...     root_dir=root_dir, 
-... ).table_.head(20)
-year                                     OCC  year_q1  ...  global_citations  rn
-author_keywords                                        ...                      
-CORPORATE_SOCIAL_RESPONSIBILITIES (CSR)    1     2017  ...                 1   0
-CREDIT                                     1     2017  ...                 1   1
-SEMANTIC_TECHNOLOGIES                      2     2018  ...                41   0
-SMART_CONTRACTS                            2     2017  ...                22   1
-BUSINESS_MODELS                            1     2018  ...               153   2
-FUTURE_RESEARCH_DIRECTION                  1     2018  ...               153   3
-ALGORITHMIC_STANDARDS                      1     2018  ...                21   4
-FINANCIAL_SERVICES                         4     2018  ...               168   0
-BLOCKCHAIN                                 3     2018  ...                 5   1
-SANDBOXES                                  2     2018  ...                12   2
-STANDARDS                                  1     2019  ...                33   3
-DOGMAS                                     1     2019  ...                 5   4
-REGTECH                                   28     2019  ...               329   0
-FINTECH                                   12     2019  ...               249   1
-COMPLIANCE                                 7     2020  ...                30   2
-REGULATION                                 5     2018  ...               164   3
-ARTIFICIAL_INTELLIGENCE                    4     2020  ...                23   4
-REGULATORY_TECHNOLOGY                      7     2020  ...                37   0
-ANTI_MONEY_LAUNDERING                      5     2020  ...                34   1
-FINANCIAL_REGULATION                       4     2019  ...                35   2
+... )
+>>> terms.df_.head(20)
+year                                     OCC  year_q1  ...    height  width
+author_keywords                                        ...                 
+CORPORATE_SOCIAL_RESPONSIBILITIES (CSR)    1     2017  ...  0.150000      1
+CREDIT                                     1     2017  ...  0.150000      1
+SEMANTIC_TECHNOLOGIES                      2     2018  ...  0.180370      2
+SMART_CONTRACTS                            2     2017  ...  0.180370      2
+BUSINESS_MODELS                            1     2018  ...  0.150000      1
+FUTURE_RESEARCH_DIRECTION                  1     2018  ...  0.150000      1
+ALGORITHMIC_STANDARDS                      1     2018  ...  0.150000      1
+FINANCIAL_SERVICES                         4     2018  ...  0.241111      3
+BLOCKCHAIN                                 3     2018  ...  0.210741      3
+SANDBOXES                                  2     2018  ...  0.180370      3
+STANDARDS                                  1     2019  ...  0.150000      1
+DOGMAS                                     1     2019  ...  0.150000      1
+REGTECH                                   28     2019  ...  0.970000      4
+FINTECH                                   12     2019  ...  0.484074      2
+COMPLIANCE                                 7     2020  ...  0.332222      3
+REGULATION                                 5     2018  ...  0.271481      4
+ARTIFICIAL_INTELLIGENCE                    4     2020  ...  0.241111      1
+REGULATORY_TECHNOLOGY                      7     2020  ...  0.332222      3
+ANTI_MONEY_LAUNDERING                      5     2020  ...  0.271481      2
+FINANCIAL_REGULATION                       4     2019  ...  0.241111      4
 <BLANKLINE>
-[20 rows x 6 columns]
+[20 rows x 8 columns]
 
 
 
->>> techminer2plus.analyze.trending_terms_per_year(
-...     field="author_keywords",
-...     root_dir=root_dir,
-... ).plot_.write_html(file_name)
+>>> terms.fig_.write_html("sphinx/_static/trending_terms_per_year.html")
 
 .. raw:: html
 
-    <iframe src="../../../_static/examples/analyze/trending_terms_per_year.html" height="900px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/trending_terms_per_year.html" height="900px" width="100%" frameBorder="0"></iframe>
 
 
 
->>> techminer2plus.analyze.trending_terms_per_year(
+>>> terms = bibliometrix.trending_terms_per_year(
 ...     field="author_keywords",
 ...     custom_items=[
 ...         "FINTECH",
@@ -61,31 +60,41 @@ FINANCIAL_REGULATION                       4     2019  ...                35   2
 ...         "ARTIFICIAL_INTELLIGENCE",
 ...     ], 
 ...     root_dir=root_dir, 
-... ).table_.head(10)
-year                     OCC  year_q1  year_med  year_q3  global_citations  rn
-author_keywords                                                               
-BLOCKCHAIN                 3     2018      2019     2020                 5   0
-FINTECH                   12     2019      2020     2020               249   0
-ARTIFICIAL_INTELLIGENCE    4     2020      2020     2020                23   1
-REGULATORY_TECHNOLOGY      7     2020      2021     2022                37   0
-SUPTECH                    3     2020      2022     2022                 4   0
+... )
+>>> terms.df_
+year                     OCC  year_q1  year_med  ...  rn    height  width
+author_keywords                                  ...                     
+BLOCKCHAIN                 3     2018      2019  ...   0  0.150000      3
+FINTECH                   12     2019      2020  ...   0  0.970000      2
+ARTIFICIAL_INTELLIGENCE    4     2020      2020  ...   1  0.241111      1
+REGULATORY_TECHNOLOGY      7     2020      2021  ...   0  0.514444      3
+SUPTECH                    3     2020      2022  ...   0  0.150000      3
+<BLANKLINE>
+[5 rows x 8 columns]
 
 
 """
+from dataclasses import dataclass
+
 import numpy as np
 import plotly.graph_objects as go
 
-# from ..classes import BasicChart
-# from ..metrics import indicators_by_field, items_occ_by_year
+from ..techminer.metrics.global_indicators_by_field import (
+    global_indicators_by_field,
+)
+from ..techminer.metrics.items_occurrences_by_year import (
+    items_occurrences_by_year,
+)
 
 
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
 def trending_terms_per_year(
+    #
+    # PARAMS:
     field,
     n_words_per_year=5,
     custom_items=None,
-    # Database params:
+    #
+    # DATABASE PARAMS:
     root_dir="./",
     database="main",
     year_filter=None,
@@ -94,7 +103,7 @@ def trending_terms_per_year(
 ):
     """Trend topics"""
 
-    words_by_year = items_occ_by_year(
+    words_by_year = items_occurrences_by_year(
         field=field,
         # min_occ=1,
         root_dir=root_dir,
@@ -131,7 +140,7 @@ def trending_terms_per_year(
 
     words_by_year = words_by_year[["OCC", "year_q1", "year_med", "year_q3"]]
 
-    global_citations = indicators_by_field(
+    global_citations = global_indicators_by_field(
         field, root_dir=root_dir
     ).global_citations
 
@@ -150,9 +159,6 @@ def trending_terms_per_year(
     ).sort_values(["year_med", "rn"], ascending=[True, True])
 
     words_by_year = words_by_year.query(f"rn < {n_words_per_year}")
-
-    results = BasicChart()
-    results.table_ = words_by_year
 
     min_occ = words_by_year.OCC.min()
     max_occ = words_by_year.OCC.max()
@@ -192,6 +198,10 @@ def trending_terms_per_year(
         tickangle=270,
         dtick=1.0,
     )
-    results.plot_ = fig
 
-    return results
+    @dataclass
+    class Results:
+        df_ = words_by_year
+        fig_ = fig
+
+    return Results()

@@ -1,44 +1,52 @@
 # flake8: noqa
+# pylint: disable=invalid-name
+# pylint: disable=line-too-long
+# pylint: disable=missing-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
 """
-WordCloud
+Word Cloud
 ===============================================================================
 
-
+>>> from techminer2 import bibliometrix
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/images/report/abstract_nlp_phrases/word_cloud.png"
+>>> file_name = "sphinx/images/abstract_nlp_phrases_word_cloud.png"
 
->>> import techminer2plus
->>> chart = techminer2plus.publish.abstract_nlp_phrases.word_cloud(
+
+>>> chart = bibliometrix.abstract_nlp_phrases.word_cloud(
 ...     title="Title NLP Phrases",
 ...     top_n=50,
 ...     root_dir=root_dir,
 ... )
->>> chart.plot_.savefig(file_name)
+>>> chart.fig_.savefig(file_name)
 
-.. image:: ../../../../images/report/abstract_nlp_phrases/word_cloud.png
+.. image:: ../../../../images/abstract_nlp_phrases_word_cloud.png
     :width: 900px
     :align: center
 
 
+
+
+
 """
-# from ... import list_items
-# from ...report import word_cloud as visualize_word_cloud
+from ...vantagepoint.report import word_cloud as vp_word_cloud
 
 FIELD = "abstract_nlp_phrases"
 
 
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
 def word_cloud(
-    # Plot options:
+    #
+    # CHART PARAMS:
     title=None,
     figsize=(10, 10),
-    # Item filters:
+    #
+    # ITEM FILTERS:
     top_n=None,
     occ_range=None,
     gc_range=None,
     custom_items=None,
-    # Database params:
+    #
+    # DATABASE PARAMS:
     root_dir="./",
     database="main",
     year_filter=None,
@@ -47,24 +55,26 @@ def word_cloud(
 ):
     """Plots a word cloud from a dataframe."""
 
-    obj = list_items(
+    return vp_word_cloud(
+        #
+        # ITEMS PARAMS:
         field=FIELD,
-        root_dir=root_dir,
-        database=database,
         metric="OCC",
-        # Item filters:
+        #
+        # CHART PARAMS:
+        title=title,
+        figsize=figsize,
+        #
+        # ITEM FILTERS:
         top_n=top_n,
         occ_range=occ_range,
         gc_range=gc_range,
         custom_items=custom_items,
-        # Database filters:
+        #
+        # DATABASE PARAMS:
+        root_dir=root_dir,
+        database=database,
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
         **filters,
-    )
-
-    return visualize_word_cloud(
-        obj,
-        title=title,
-        figsize=figsize,
     )

@@ -1,4 +1,4 @@
-.. automodule:: techminer2.gantt_chart
+.. automodule:: techminer2.vantagepoint.report.gantt_chart
     :members:
 
 

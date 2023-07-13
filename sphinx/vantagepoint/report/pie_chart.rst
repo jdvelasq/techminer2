@@ -1,3 +1,3 @@
-.. automodule:: techminer2.pie_chart
+.. automodule:: techminer2.vantagepoint.report.pie_chart
     :members:
 

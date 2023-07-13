@@ -1,25 +1,28 @@
 # flake8: noqa
+# pylint: disable=invalid-name
+# pylint: disable=line-too-long
+# pylint: disable=missing-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
 """
 Word Frequency over Time
 ===============================================================================
 
-
+>>> from techminer2 import bibliometrix
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/examples/keywords/words_frequency_over_time.html"
-
->>> import techminer2plus
->>> r = techminer2plus.publish.keywords.words_frequency_over_time(
+>>> file_name = "sphinx/_static/keywords_words_frequency_over_time.html"
+>>> words = bibliometrix.keywords.words_frequency_over_time(
 ...     top_n=5,
 ...     root_dir=root_dir,
 ... )
->>> r.plot_.write_html(file_name)
+>>> words.fig_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../../_static/examples/keywords/words_frequency_over_time.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/keywords_words_frequency_over_time.html" height="600px" width="100%" frameBorder="0"></iframe>
 
     
->>> print(r.table_.head().to_markdown())
+>>> print(words.df_.to_markdown())
 | keywords                     |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
 |:-----------------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
 | REGTECH 28:329               |      2 |      3 |      4 |      8 |      3 |      6 |      2 |
@@ -28,9 +31,8 @@ Word Frequency over Time
 | REGULATORY_TECHNOLOGY 08:037 |      0 |      0 |      0 |      2 |      3 |      2 |      1 |
 | COMPLIANCE 07:030            |      0 |      0 |      1 |      3 |      1 |      1 |      1 |
 
-    
 
->>> print(r.prompt_)
+>>> print(words.prompt_)
 Your task is to generate an analysis about the  occurrences by year of the \\
 'keywords' in a scientific bibliography database. Summarize the table \\
 below, delimited by triple backticks, identify any notable patterns, \\
@@ -51,18 +53,13 @@ Table:
 <BLANKLINE>
 
 
-# pylint: disable=line-too-long
+
 """
-# from ...analyze import terms_by_year as analyze_terms_by_year
-# from ...metrics import indicators_by_field_per_year
-# from ...report import gantt_chart
-# from ..documents_per_criterion import documents_per_criterion
+from ...vantagepoint.discover import terms_by_year as analyze_terms_by_year
 
 FIELD = "keywords"
 
 
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
 def words_frequency_over_time(
     top_n=None,
     occ_range=None,
@@ -91,29 +88,4 @@ def words_frequency_over_time(
         **filters,
     )
 
-    chart = gantt_chart(
-        terms_by_year,
-        title=FIELD.replace("_", " ").title() + " Dynamics",
-    )
-
-    chart.documents_per_keyword_ = documents_per_criterion(
-        field=FIELD,
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )
-
-    chart.production_per_year_ = indicators_by_field_per_year(
-        field=FIELD,
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )
-
-    chart.table_ = terms_by_year.table_.copy()
-
-    return chart
+    return terms_by_year

@@ -179,6 +179,9 @@ def terms_by_year(
     field,
     cumulative=False,
     #
+    # CHART PARAMS:
+    title=None,
+    #
     # ITEM FILTERS:
     top_n=None,
     occ_range=(None, None),
@@ -217,7 +220,7 @@ def terms_by_year(
 
     prompt = __prompt(data_frame, field, cumulative)
 
-    fig = __gantt(data_frame, field, title=None)
+    fig = __gantt(data_frame, field, title)
 
     metrics = __metrics(
         items=data_frame.index.tolist(),
@@ -344,7 +347,7 @@ def __prompt(data_frame, field, cumulative):
 def __gantt(
     data_frame,
     field,
-    title=None,
+    title,
 ):
     # pylint: disable=line-too-long
     """Computes a table with the number of occurrences of each term by year."""

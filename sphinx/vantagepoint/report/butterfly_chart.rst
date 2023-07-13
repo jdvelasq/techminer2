@@ -1,3 +1,3 @@
-.. automodule:: techminer2.butterfly_chart
+.. automodule:: techminer2.vantagepoint.report.butterfly_chart
     :members:
 

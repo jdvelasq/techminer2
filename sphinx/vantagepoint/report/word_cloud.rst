@@ -1,3 +1,3 @@
-.. automodule:: techminer2.word_cloud
+.. automodule:: techminer2.vantagepoint.report.word_cloud
     :members:
 
