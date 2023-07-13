@@ -5,6 +5,8 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
+.. _organizations_production_over_time:
+
 Production over Time
 ===============================================================================
 
