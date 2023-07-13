@@ -5,6 +5,9 @@ Discover/
     list_items
 
 .. toctree::
+    terms_by_year
+
+.. toctree::
     tfidf
 
 .. toctree::

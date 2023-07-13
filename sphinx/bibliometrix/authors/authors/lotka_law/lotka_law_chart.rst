@@ -1,6 +1,0 @@
-.. automodule:: techminer2.lotka_law_chart
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-

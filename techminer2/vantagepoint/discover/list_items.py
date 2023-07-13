@@ -128,6 +128,9 @@ def list_items(
 
     data_frame = __select_columns(data_frame=data_frame, metric=metric)
 
+    if metric == "OCCGC":
+        metric = "OCC"
+
     prompt = __prompt(
         field=field,
         metric=metric,
@@ -248,6 +251,7 @@ def __select_columns(data_frame, metric):
     if metric in ["global_citations", "local_citations"]:
         return data_frame[
             [
+                "rank_gc",
                 "global_citations",
                 "local_citations",
                 "global_citations_per_document",

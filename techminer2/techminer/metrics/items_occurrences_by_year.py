@@ -29,9 +29,7 @@ Becker M              0     0     0     0     1     0     0     0
 """
 
 from ..._stopwords_lib import load_stopwords
-from .global_indicators_by_field_per_year import (
-    global_indicators_by_field_per_year,
-)
+from .global_metrics_by_field_per_year import global_metrics_by_field_per_year
 
 
 # pylint: disable=too-many-arguments
@@ -65,7 +63,7 @@ def items_occurrences_by_year(
     # pylint: disable=line-too-long
     """
 
-    indicators_by_year = global_indicators_by_field_per_year(
+    indicators_by_year = global_metrics_by_field_per_year(
         field=field,
         #
         # DATABASE PARAMS:

@@ -2,31 +2,32 @@ Sources/
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
-   sources_metrics_table
+   most_relevant
 
 .. toctree::
-   :maxdepth: 1
-
-   most_relevant_sources/__index__
+   most_frequent
 
 .. toctree::
-   :maxdepth: 1
-
-   most_frequent_sources/__index__
+   most_local_cited
 
 .. toctree::
-   most_cited_sources
+   bradford_law
 
 .. toctree::
-   :maxdepth: 1
-
-   bradford_law/__index__
+   local_impact_h_index
 
 .. toctree::
-   sources_local_impact
+   local_impact_m_index
 
 .. toctree::
-   sources_production_over_time 
+   local_impact_g_index
+
+.. toctree::
+   local_impact_global_citations
+
+
+.. toctree::
+   production_over_time 
 
 
 
