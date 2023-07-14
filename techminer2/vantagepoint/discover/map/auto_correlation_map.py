@@ -4,6 +4,8 @@
 # pylint: disable=missing-docstring
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
+# pylint: disable=too-many-statements
+# pylint: disable=too-many-branches
 """
 .. _auto_correlation_map:
 
@@ -12,10 +14,10 @@ Auto-correlation Map
 
 Creates an Auto-correlation Map.
 
->>> import techminer2 as tm2
+>>> from techminer2 import vantagepoint
 >>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/auto_correlation_map.html"
->>> tm2.auto_correlation_map(
+>>> vantagepoint.discover.map.auto_correlation_map(
 ...     rows_and_columns='authors',
 ...     occ_range=(2, None),
 ...     root_dir=root_dir,
@@ -24,23 +26,16 @@ Creates an Auto-correlation Map.
 
 .. raw:: html
 
-    <iframe src="../../../../_static/auto_correlation_map.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/auto_correlation_map.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-# from ...._network_lib import (
-#     nx_compute_spring_layout,
-#     nx_create_graph_from_matrix,
-#     nx_set_edge_properties_for_corr_maps,
-#     px_add_names_to_fig_nodes,
-#     px_create_edge_traces,
-#     px_create_network_fig,
-#     px_create_node_trace,
-# )
+import pandas as pd
+from sklearn.metrics.pairwise import cosine_similarity
+
 from ..matrix.auto_correlation_matrix import auto_correlation_matrix
+from .correlation_map import correlation_map
 
 
-# pylint: disable=too-many-arguments
-# pylint: disable=too-many-locals
 def auto_correlation_map(
     #
     # FUNCTION PARAMS:
@@ -55,7 +50,7 @@ def auto_correlation_map(
     #
     # FUNCTION PARAMS:
     n_labels=None,
-    color="#8da4b4",
+    color="#7793a5",
     nx_k=None,
     nx_iterations=10,
     nx_random_state=0,
@@ -76,7 +71,7 @@ def auto_correlation_map(
 ):
     """Auto-correlation Map."""
 
-    auto_corr_matrix = auto_correlation_matrix(
+    corr_matrix = auto_correlation_matrix(
         #
         # FUNCTION PARAMS:
         rows_and_columns=rows_and_columns,
@@ -94,36 +89,28 @@ def auto_correlation_map(
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
         **filters,
+    ).df_
+
+    similarity = pd.DataFrame(
+        cosine_similarity(corr_matrix),
+        index=corr_matrix.index,
+        columns=corr_matrix.columns,
     )
 
-    graph = nx_create_graph_from_matrix(
-        auto_corr_matrix,
-        node_size_min,
-        node_size_max,
-        textfont_size_min,
-        textfont_size_max,
+    return correlation_map(
+        similarity=similarity,
+        #
+        # FUNCTION PARAMS:
+        n_labels=n_labels,
+        color=color,
+        nx_k=nx_k,
+        nx_iterations=nx_iterations,
+        nx_random_state=nx_random_state,
+        node_size_min=node_size_min,
+        node_size_max=node_size_max,
+        textfont_size_min=textfont_size_min,
+        textfont_size_max=textfont_size_max,
+        xaxes_range=xaxes_range,
+        yaxes_range=yaxes_range,
+        show_axes=show_axes,
     )
-
-    for node in graph.nodes():
-        graph.nodes[node]["color"] = color
-
-    graph = nx_set_edge_properties_for_corr_maps(graph, color)
-
-    graph = nx_compute_spring_layout(
-        graph, nx_k, nx_iterations, nx_random_state
-    )
-
-    node_trace = px_create_node_trace(graph)
-    edge_traces = px_create_edge_traces(graph)
-
-    fig = px_create_network_fig(
-        edge_traces,
-        node_trace,
-        xaxes_range,
-        yaxes_range,
-        show_axes,
-    )
-
-    fig = px_add_names_to_fig_nodes(fig, graph, n_labels, is_article=False)
-
-    return fig

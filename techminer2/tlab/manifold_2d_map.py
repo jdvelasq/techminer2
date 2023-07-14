@@ -55,7 +55,7 @@ def manifold_2d_map(
     node_text = remove_counters(node_text)
 
     if node_color is None:
-        node_color = "#8da4b4"
+        node_color = "#7793a5"
 
     fig = go.Figure(
         layout=go.Layout(

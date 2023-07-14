@@ -56,7 +56,7 @@ def co_occurrence_mds_2d_map(
     dissimilarity="euclidean",
     #
     # Plot params:
-    node_color="#8da4b4",
+    node_color="#7793a5",
     node_size_min=12,
     node_size_max=50,
     textfont_size_min=8,

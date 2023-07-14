@@ -9,7 +9,11 @@ Discover/
 
     matrix/__index__
 
+.. toctree::
+    :maxdepth: 1    
 
+    map/__index__
+    
 .. toctree::
     terms_by_year
 
@@ -23,10 +27,7 @@ Discover/
 
 
 
-.. toctree::
-    :maxdepth: 1    
 
-    map/__index__
 
 .. toctree::  
     list_comparison

@@ -60,7 +60,7 @@ def factor_decomposition_2d_map(
     # Plot params:
     dim_x=0,
     dim_y=1,
-    node_color="#556f81",
+    node_color="#465c6b",
     node_size_min=12,
     node_size_max=50,
     textfont_size_min=8,

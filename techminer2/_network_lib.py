@@ -67,7 +67,7 @@ def nx_add_nodes__to_graph_from_matrix(graph, matrix):
     # Adds the items in 'row' column as nodes
     nodes = matrix.df_.index.to_list()
     nodes = [
-        (node, {"group": 0, "color": "#8da4b4", "textfont_color": "black"})
+        (node, {"group": 0, "color": "#7793a5", "textfont_color": "black"})
         for node in nodes
     ]
     graph.add_nodes_from(nodes)
@@ -76,7 +76,7 @@ def nx_add_nodes__to_graph_from_matrix(graph, matrix):
         # Adds the items in 'column' column as nodes
         nodes = matrix.df_.columns.to_list()
         nodes = [
-            (node, {"group": 1, "color": "#556f81", "textfont_color": "black"})
+            (node, {"group": 1, "color": "#465c6b", "textfont_color": "black"})
             for node in nodes
         ]
         graph.add_nodes_from(nodes)
@@ -116,7 +116,7 @@ def nx_add_edges_to_graph_from_matrix_list(graph, matrix_list):
                 value=row[2],
                 width=2,
                 dash="solid",
-                color="#8da4b4",
+                color="#7793a5",
             )
 
     return graph
@@ -159,7 +159,7 @@ def nx_add_nodes_to_graph_from_matrix(graph, matrix):
     # adds items in 'row' column as nodes
     nodes = matrix.index.to_list()
     nodes = [
-        (node, {"group": 0, "color": "#8da4b4", "textfont_color": "black"})
+        (node, {"group": 0, "color": "#7793a5", "textfont_color": "black"})
         for node in nodes
     ]
     graph.add_nodes_from(nodes)
@@ -172,7 +172,7 @@ def nx_add_nodes_to_graph_from_matrix(graph, matrix):
             nodes.append(candidate)
     if len(nodes) > 0:
         nodes = [
-            (node, {"group": 1, "color": "#556f81", "textfont_color": "black"})
+            (node, {"group": 1, "color": "#465c6b", "textfont_color": "black"})
             for node in nodes
         ]
         graph.add_nodes_from(nodes)
@@ -211,7 +211,7 @@ def nx_add_nodes__to_graph_from_matrix_list(graph, matrix_list):
     # adds items in 'row' column as nodes
     nodes = matrix_list.df_["row"].drop_duplicates().to_list()
     nodes = [
-        (node, {"group": 0, "color": "#8da4b4", "textfont_color": "black"})
+        (node, {"group": 0, "color": "#7793a5", "textfont_color": "black"})
         for node in nodes
     ]
     graph.add_nodes_from(nodes)
@@ -224,7 +224,7 @@ def nx_add_nodes__to_graph_from_matrix_list(graph, matrix_list):
             nodes.append(candidate)
     if len(nodes) > 0:
         nodes = [
-            (node, {"group": 1, "color": "#556f81", "textfont_color": "black"})
+            (node, {"group": 1, "color": "#465c6b", "textfont_color": "black"})
             for node in nodes
         ]
         graph.add_nodes_from(nodes)

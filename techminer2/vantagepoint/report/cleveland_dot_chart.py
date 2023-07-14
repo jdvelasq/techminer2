@@ -29,8 +29,8 @@ import plotly.express as px
 
 from ..discover.list_items import list_items
 
-MARKER_COLOR = "#8da4b4"
-MARKER_LINE_COLOR = "#556f81"
+MARKER_COLOR = "#7793a5"
+MARKER_LINE_COLOR = "#465c6b"
 
 
 def cleveland_dot_chart(

@@ -410,8 +410,8 @@ Table:
 #         hover_data=["Num Documents"],
 #         orientation="h",
 #         color_discrete_map={
-#             col0: "#8da4b4",
-#             col1: "#556f81",
+#             col0: "#7793a5",
+#             col1: "#465c6b",
 #         },
 #     )
 #     fig.update_layout(

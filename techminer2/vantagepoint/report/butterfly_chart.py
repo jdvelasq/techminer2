@@ -130,7 +130,7 @@ def butterfly_chart(
             x=matrix[name_a],
             name=name_a,
             orientation="h",
-            marker={"color": "#8da4b4"},
+            marker={"color": "#7793a5"},
         )
     )
 
@@ -140,7 +140,7 @@ def butterfly_chart(
             x=matrix[name_b].map(lambda w: -w),
             name=name_b,
             orientation="h",
-            marker={"color": "#556f81"},
+            marker={"color": "#465c6b"},
         )
     )
 
@@ -311,7 +311,7 @@ def butterfly_chart(
 #         color_discrete_map={
 #             topic_a: "#CCD3D9",
 #             topic_b: "#99A8B3",
-#             " & ".join(sorted([topic_a, topic_b])): "#556f81",
+#             " & ".join(sorted([topic_a, topic_b])): "#465c6b",
 #         },
 #     )
 #     fig.update_layout(paper_bgcolor="white", plot_bgcolor="white")

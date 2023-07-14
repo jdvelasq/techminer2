@@ -74,9 +74,9 @@ def global_metrics_by_year_chart(
         hover_data=["OCC", "Global Citations", "Local Citations"],
     )
     fig.update_traces(
-        marker={"size": 10, "line": dict(color="#556f81", width=2)},
-        marker_color="#8da4b4",
-        line={"color": "#556f81"},
+        marker={"size": 10, "line": dict(color="#465c6b", width=2)},
+        marker_color="#7793a5",
+        line={"color": "#465c6b"},
     )
     fig.update_layout(
         paper_bgcolor="white",

@@ -65,7 +65,7 @@ def factor_map(
     pca=None,
     # Map params:
     n_labels=None,
-    color="#8da4b4",
+    color="#7793a5",
     nx_k=None,
     nx_iterations=10,
     nx_random_state=0,

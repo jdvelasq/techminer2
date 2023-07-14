@@ -97,8 +97,8 @@ from ....vantagepoint.discover.matrix.co_occurrence_matrix import (
     co_occurrence_matrix,
 )
 
-MARKER_COLOR = "#8da4b4"
-MARKER_LINE_COLOR = "#556f81"
+MARKER_COLOR = "#7793a5"
+MARKER_LINE_COLOR = "#465c6b"
 
 
 def item_associations(

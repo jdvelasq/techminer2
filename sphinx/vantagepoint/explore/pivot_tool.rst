@@ -1,4 +1,4 @@
-.. automodule:: techminer2.vantagepoint.analyze.pivot_tool
+.. automodule:: techminer2.vantagepoint.explore.pivot_tool
     :members:
     :undoc-members:
     :show-inheritance:

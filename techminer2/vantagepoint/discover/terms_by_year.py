@@ -169,7 +169,7 @@ from ...techminer.metrics.items_occurrences_by_year import (
 )
 from ...techminer.reports.documents_per_item import documents_per_item
 
-COLOR = "#556f81"
+COLOR = "#465c6b"
 TEXTLEN = 40
 
 

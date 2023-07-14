@@ -71,8 +71,8 @@ from ...techminer.metrics.global_indicators_by_field import (
     global_indicators_by_field,
 )
 
-MARKER_COLOR = "#8da4b4"
-MARKER_LINE_COLOR = "#556f81"
+MARKER_COLOR = "#7793a5"
+MARKER_LINE_COLOR = "#465c6b"
 
 
 def list_items(

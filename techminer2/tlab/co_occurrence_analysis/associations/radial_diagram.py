@@ -100,14 +100,14 @@ def radial_diagram(
 
         # Adds the central item
         nodes = [
-            (name, {"group": 0, "color": "#556f81", "textfont_color": "black"})
+            (name, {"group": 0, "color": "#465c6b", "textfont_color": "black"})
         ]
 
         # Adds the items in the column as nodes
         nodes += [
             (
                 index,
-                {"group": 1, "color": "#8da4b4", "textfont_color": "black"},
+                {"group": 1, "color": "#7793a5", "textfont_color": "black"},
             )
             for index in series.index.to_list()
         ]
@@ -128,7 +128,7 @@ def radial_diagram(
                 value=value,
                 width=2,
                 dash="solid",
-                color="#8da4b4",
+                color="#7793a5",
             )
 
         return graph

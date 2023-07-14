@@ -75,8 +75,8 @@ import plotly.express as px
 
 from ..discover.list_items import list_items
 
-MARKER_COLOR = "#8da4b4"
-MARKER_LINE_COLOR = "#556f81"
+MARKER_COLOR = "#7793a5"
+MARKER_LINE_COLOR = "#465c6b"
 
 
 def line_chart(
@@ -162,7 +162,7 @@ def line_chart(
         title_text=title,
     )
     fig.update_traces(
-        marker=dict(size=9, line={"color": "#556f81", "width": 2}),
+        marker=dict(size=9, line={"color": "#465c6b", "width": 2}),
         marker_color=MARKER_COLOR,
         line={"color": MARKER_LINE_COLOR},
     )

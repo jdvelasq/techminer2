@@ -221,8 +221,8 @@ def __plot(indicators):
         hover_data=["Num Documents"],
         orientation="h",
         color_discrete_map={
-            "Single Publication": "#8da4b4",
-            "Multiple Publication": "#556f81",
+            "Single Publication": "#7793a5",
+            "Multiple Publication": "#465c6b",
         },
     )
     fig.update_layout(paper_bgcolor="white", plot_bgcolor="white")

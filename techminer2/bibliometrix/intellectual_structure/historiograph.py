@@ -73,7 +73,7 @@ def historiograph(
     # Graph params:
     node_size=10,
     n_labels=None,
-    color="#8da4b4",
+    color="#7793a5",
     textfont_size=10,
     nx_k=None,
     nx_iterations=50,
@@ -180,7 +180,7 @@ def historiograph(
                 showarrow=True,
                 arrowhead=4,
                 arrowsize=2,
-                arrowcolor="#8da4b4",
+                arrowcolor="#7793a5",
                 arrowwidth=0.7,
             )
 
