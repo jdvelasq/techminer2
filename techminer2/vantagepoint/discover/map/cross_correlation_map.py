@@ -30,15 +30,15 @@ Creates an Cross-correlation Map.
     <iframe src="../../../../_static/cross_correlation_map.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ...._network_lib import (
-    nx_compute_spring_layout,
-    nx_create_graph_from_matrix,
-    nx_set_edge_properties_for_corr_maps,
-    px_add_names_to_fig_nodes,
-    px_create_edge_traces,
-    px_create_network_fig,
-    px_create_node_trace,
-)
+# from ...._network_lib import (
+#     nx_compute_spring_layout,
+#     nx_create_graph_from_matrix,
+#     nx_set_edge_properties_for_corr_maps,
+#     px_add_names_to_fig_nodes,
+#     px_create_edge_traces,
+#     px_create_network_fig,
+#     px_create_node_trace,
+# )
 from ..matrix.cross_correlation_matrix import cross_correlation_matrix
 
 

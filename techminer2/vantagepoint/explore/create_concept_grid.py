@@ -4,13 +4,18 @@
 # pylint: disable=missing-docstring
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
-# pylint: disable=too-many-statements
 """
-Matrix Viewer
+.. _create_concept_grid:
+
+TODO: Create Concept Grid
 ===============================================================================
 
-See :ref:`matrix_viewer`. This function has added to VOSviewer module with the
-aim of unify the modules dedicated to visualize bibliometric networks.
 
-    
+>>> from techminer2 import vantagepoint
+>>> root_dir = "data/regtech/"
+
 """
+
+
+def create_concept_grid():
+    pass

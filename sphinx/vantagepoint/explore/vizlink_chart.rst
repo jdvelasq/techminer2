@@ -1,4 +1,4 @@
-.. automodule:: techminer2.vantagepoint.analyze.vizlink_chart
+.. automodule:: techminer2.vantagepoint.explore.vizlink_chart
     :members:
     :undoc-members:
     :show-inheritance:

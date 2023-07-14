@@ -49,14 +49,14 @@ Network Viewer
 
 """
 
-from .._network_lib import (
-    nx_compute_node_property_from_occ,
-    nx_compute_spring_layout,
-    px_add_names_to_fig_nodes,
-    px_create_edge_traces,
-    px_create_network_fig,
-    px_create_node_trace,
-)
+# from .._network_lib import (
+#     nx_compute_node_property_from_occ,
+#     nx_compute_spring_layout,
+#     px_add_names_to_fig_nodes,
+#     px_create_edge_traces,
+#     px_create_network_fig,
+#     px_create_node_trace,
+# )
 
 
 # pylint: disable=too-many-arguments

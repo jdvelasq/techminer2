@@ -65,12 +65,12 @@ Network Report
 import os
 import os.path
 
-# from ._chatbot import format_prompt_for_records
-from .._network_lib import extract_records_per_cluster, nx_extract_communities
-
 # from .concordances_contexts import concordances_from_records
 from ..format_report_for_records import format_report_for_records
 from ..make_report_dir import make_report_dir
+
+# from ._chatbot import format_prompt_for_records
+# from .._network_lib import extract_records_per_cluster, nx_extract_communities
 
 
 # pylint: disable=too-many-arguments

@@ -98,6 +98,7 @@ TM2 module.
     vantagepoint/__index__
     tlab/__index__
     scientopy/__index__
+    vosviewer/__index__
     
     
     

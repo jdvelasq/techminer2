@@ -32,15 +32,15 @@ identifying the most relevant terms associated with a given term.
 """
 import networkx as nx
 
-from ...._network_lib import (
-    nx_compute_node_property_from_occ,
-    nx_compute_spring_layout,
-    nx_create_node_occ_property_from_node_name,
-    px_add_names_to_fig_nodes,
-    px_create_edge_traces,
-    px_create_network_fig,
-    px_create_node_trace,
-)
+# from ...._network_lib import (
+#     nx_compute_node_property_from_occ,
+#     nx_compute_spring_layout,
+#     nx_create_node_occ_property_from_node_name,
+#     px_add_names_to_fig_nodes,
+#     px_create_edge_traces,
+#     px_create_network_fig,
+#     px_create_node_trace,
+# )
 from .item_associations import item_associations
 
 
