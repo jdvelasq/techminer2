@@ -2,7 +2,7 @@ VOSviewer
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
-   matrix_viewer
+   :maxdepth: 1
 
-.. toctree::
-   auto_correlation_map
+   co_authorship/__index__
+

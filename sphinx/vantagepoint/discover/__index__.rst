@@ -14,6 +14,12 @@ Discover/
 
     map/__index__
     
+.. toctree::  
+    list_comparison
+
+.. toctree::
+    find_similar_records
+
 .. toctree::
     terms_by_year
 
@@ -24,20 +30,4 @@ Discover/
     pcd
 
 
-
-
-
-
-
-.. toctree::  
-    list_comparison
-
-.. toctree::
-    find_similar_records
-
-
-.. toctree::
-    :maxdepth: 1   
-
-    terms_by_year/__index__
 

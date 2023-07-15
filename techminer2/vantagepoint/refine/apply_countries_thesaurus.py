@@ -1,4 +1,10 @@
 # flake8: noqa
+# pylint: disable=invalid-name
+# pylint: disable=line-too-long
+# pylint: disable=missing-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
+# pylint: disable=too-many-statements
 """
 Apply Countries Thesaurus 
 ===============================================================================
@@ -7,14 +13,12 @@ Cleans the country columns using the file countries.txt, located in
 the same directory as the documents.csv file.
 
 
+>>> from techminer2 import vantagepoint
 >>> root_dir = "data/regtech/"
-
->>> import techminer2plus
->>> techminer2plus.refine.apply_countries_thesaurus(root_dir)
+>>> vantagepoint.refine.apply_countries_thesaurus(root_dir)
 --INFO-- The data/regtech/countries.txt thesaurus file was applied to affiliations in all databases
 
 
-# pylint: disable=line-too-long
 """
 import glob
 import os

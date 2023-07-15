@@ -1,4 +1,10 @@
 # flake8: noqa
+# pylint: disable=invalid-name
+# pylint: disable=line-too-long
+# pylint: disable=missing-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
+# pylint: disable=too-many-statements
 """
 Apply Key Concepts Thesaurus 
 ===============================================================================
@@ -6,14 +12,12 @@ Apply Key Concepts Thesaurus
 Cleans the keywords columns using the `keywords.txt` file.
 
 
+>>> from techminer2 import vantagepoint
 >>> root_dir = "data/regtech/"
-
->>> import techminer2plus
->>> techminer2plus.refine.apply_descriptors_thesaurus(root_dir)
+>>> vantagepoint.refine.apply_descriptors_thesaurus(root_dir)
 --INFO-- Applying `descriptors.txt` thesaurus to author/index keywords and abstract/title words
 
 
-# pylint: disable=line-too-long
 """
 # pylint: disable=no-member
 # pylint: disable=invalid-name

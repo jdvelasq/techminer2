@@ -1,20 +1,24 @@
 # flake8: noqa
+# pylint: disable=invalid-name
+# pylint: disable=line-too-long
+# pylint: disable=missing-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
+# pylint: disable=too-many-statements
 """
 Find Abbreviations 
 ===============================================================================
 
 Finds string abbreviations in the keywords of a thesaurus.
 
+>>> from techminer2 import vantagepoint
 >>> root_dir = "data/regtech/"
-
->>> import techminer2plus
->>> techminer2plus.refine.find_abbreviations(
+>>> vantagepoint.refine.find_abbreviations(
 ...     root_dir=root_dir,
 ... )
 --INFO-- The file data/regtech/descriptors.txt has been reordered.
 
 
-# pylint: disable=line-too-long
 """
 import os.path
 

@@ -13,6 +13,9 @@ import plotly.express as px
 from ....vosviewer.nx_utils import (
     nx_compute_spring_layout,
     nx_compute_textposition,
+    nx_scale_node_size_prop_to_occ_property,
+    nx_scale_textfont_opacity_prop_to_occ_property,
+    nx_scale_textfont_size_prop_to_occ_property,
 )
 from ....vosviewer.px_utils import px_create_network_chart
 
@@ -65,61 +68,23 @@ def correlation_map(
 
     #
     # Scales the node size
-    #
-    occ = np.array([nx_graph.nodes[node]["OCC"] for node in nx_graph.nodes()])
-    min_occ = min(occ)
-    occ = occ - min_occ + node_size_min
-    max_value = occ.max()
-    if max_value > node_size_max:
-        node_sizes = node_size_min + (occ - node_size_min) / (
-            max_value - node_size_min
-        ) * (node_size_max - node_size_min)
-    else:
-        node_sizes = occ
-
-    for size, node in zip(node_sizes, nx_graph.nodes()):
-        nx_graph.nodes[node]["node_size"] = size
+    nx_graph = nx_scale_node_size_prop_to_occ_property(
+        nx_graph, node_size_min, node_size_max
+    )
 
     #
     # Scales the font size
-    #
-    occ = np.array([nx_graph.nodes[node]["OCC"] for node in nx_graph.nodes()])
-    min_occ = min(occ)
-    occ = occ - min_occ + textfont_size_min
-    max_value = occ.max()
-    textfont_sizes = occ
-    if max_value > textfont_size_max:
-        textfont_sizes = textfont_size_min + (occ - textfont_size_min) / (
-            max_value - textfont_size_min
-        ) * (textfont_size_max - textfont_size_min)
-
-    for size, node in zip(textfont_sizes, nx_graph.nodes()):
-        nx_graph.nodes[node]["textfont_size"] = size
+    nx_graph = nx_scale_textfont_size_prop_to_occ_property(
+        nx_graph, textfont_size_min, textfont_size_max
+    )
 
     #
     # Scales the font color
-    #
-    textfont_opacity_min = 0.35
-    textfont_opacity_max = 1.00
-    occ = np.array([nx_graph.nodes[node]["OCC"] for node in nx_graph.nodes()])
-    min_occ = min(occ)
-    occ = occ - min_occ + textfont_opacity_min
-    max_value = occ.max()
-    textfont_opacities = occ
-    if max_value > textfont_opacity_max:
-        textfont_opacities = textfont_opacity_min + (
-            occ - textfont_opacity_min
-        ) / (max_value - textfont_opacity_min) * (
-            textfont_opacity_max - textfont_opacity_min
-        )
-
-    colors = px.colors.sequential.Greys
-    textfont_color = np.array(colors)[
-        np.round(textfont_opacities * (len(colors) - 1)).astype(int)
-    ]
-
-    for index, node in enumerate(nx_graph.nodes()):
-        nx_graph.nodes[node]["textfont_color"] = textfont_color[index]
+    nx_graph = nx_scale_textfont_opacity_prop_to_occ_property(
+        nx_graph,
+        textfont_opacity_min=0.35,
+        textfont_opacity_max=1.00,
+    )
 
     #
     #

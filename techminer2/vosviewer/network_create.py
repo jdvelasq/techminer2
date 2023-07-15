@@ -100,18 +100,16 @@ import networkx as nx
 import numpy as np
 import pandas as pd
 
-from .._network_lib import (
-    nx_apply_community_detection_method,
+from .._network_lib import (  # nx_apply_community_detection_method,; nx_set_node_color_by_group,
     nx_create_graph_from_matrix,
     nx_set_edge_properties_for_co_occ_networks,
-    nx_set_node_color_by_group,
 )
+from .create_degree_plot import create_degree_plot
 
 # from ..vantagepoint.analyze.discover.matrix.matrix_normalization import (
 #     matrix_normalization,
 # )
-from .network_communities import network_communities
-from .network_degree_plot import network_degree_plot
+from .get_network_communities import get_network_communities
 from .network_metrics import network_metrics
 from .network_report import network_report
 from .network_viewer import network_viewer
@@ -177,8 +175,8 @@ class CoocNetwork:
         :meta private:
         """
 
-        return network_degree_plot(
-            network=self,
+        return create_degree_plot(
+            nx_graph=self,
             textfont_size=textfont_size,
             marker_size=marker_size,
             line_color=line_color,

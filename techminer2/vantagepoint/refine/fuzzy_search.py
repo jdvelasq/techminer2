@@ -1,4 +1,10 @@
 # flake8: noqa
+# pylint: disable=invalid-name
+# pylint: disable=line-too-long
+# pylint: disable=missing-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
+# pylint: disable=too-many-statements
 """
 Fuzzy Search 
 ===============================================================================
@@ -6,10 +12,9 @@ Fuzzy Search
 Finds a string in the terms of a thesaurus using fuzzy search.
 
 
+>>> from techminer2 import vantagepoint
 >>> root_dir = "data/regtech/"
-
->>> import techminer2plus
->>> techminer2plus.refine.fuzzy_search(
+>>> vantagepoint.refine.fuzzy_search(
 ...     patterns='INTELIGEN',
 ...     threshold=70,
 ...     root_dir=root_dir,

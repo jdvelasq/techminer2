@@ -1,4 +1,10 @@
 # flake8: noqa
+# pylint: disable=invalid-name
+# pylint: disable=line-too-long
+# pylint: disable=missing-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
+# pylint: disable=too-many-statements
 """
 Apply Organizations Thesaurus 
 ===============================================================================
@@ -7,14 +13,13 @@ Cleans the organizations columns using the file organizations.txt, located in
 the same directory as the documents.csv file.
 
 
+>>> from techminer2 import vantagepoint
 >>> root_dir = "data/regtech/"
-
->>> import techminer2plus
->>> techminer2plus.refine.apply_organizations_thesaurus(root_dir)
+>>> vantagepoint.refine.apply_organizations_thesaurus(root_dir)
 --INFO-- The data/regtech/organizations.txt thesaurus file was applied to affiliations in all databases
 
 
-# pylint: disable=line-too-long
+
 """
 import glob
 import os

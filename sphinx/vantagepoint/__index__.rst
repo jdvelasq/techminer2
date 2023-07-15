@@ -4,6 +4,10 @@ VantagePoint v15
 .. toctree::
    summary_sheet
 
+.. toctree::
+   :maxdepth: 1
+
+   search/__index__
 
 .. toctree::
    :maxdepth: 1

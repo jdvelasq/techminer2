@@ -15,3 +15,7 @@ the :ref:`organizations_production_over_time` for organizations in Bibliometrix.
 
 
 """
+
+
+def gantt_chart():
+    pass

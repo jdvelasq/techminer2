@@ -35,32 +35,6 @@ CLUSTER_COLORS = (
 )
 
 
-# =============================================================================
-# def nx_create_graph_from_matrix(
-#     matrix,
-#     node_size_min=30,
-#     node_size_max=70,
-#     textfont_size_min=10,
-#     textfont_size_max=20,
-# ):
-#     """Creates a networkx graph from a matrix list."""
-
-#     graph = nx.Graph()
-
-#     graph = nx_add_nodes__to_graph_from_matrix(graph, matrix)
-#     graph = nx_create_node_occ_property_from_node_name(graph)
-#     graph = nx_compute_node_property_from_occ(
-#         graph, "node_size", node_size_min, node_size_max
-#     )
-#     graph = nx_compute_node_property_from_occ(
-#         graph, "textfont_size", textfont_size_min, textfont_size_max
-#     )
-
-#     graph = nx_add_edges_to_graph_from_matrix(graph, matrix)
-
-#     return graph
-
-
 def nx_add_nodes__to_graph_from_matrix(graph, matrix):
     """Creates nodes from 'row' and 'column' columns in a matrix list."""
 
@@ -244,34 +218,6 @@ def nx_create_node_occ_property_from_node_name(graph):
     return graph
 
 
-def nx_apply_community_detection_method(graph, method):
-    """Network community detection."""
-
-    algorithm = {
-        "label_propagation": algorithms.label_propagation,
-        "leiden": algorithms.leiden,
-        "louvain": algorithms.louvain,
-        "walktrap": algorithms.walktrap,
-    }[method]
-
-    # applies the community detection method
-    if method == "label_propagation":
-        communities = algorithm(graph).communities
-    elif method == "leiden":
-        communities = algorithm(graph).communities
-    elif method == "louvain":
-        communities = algorithm(graph, randomize=False).communities
-    elif method == "walktrap":
-        communities = algorithm(graph).communities
-
-    # assigns the community to each node
-    for i_community, community in enumerate(communities):
-        for node in community:
-            graph.nodes[node]["group"] = i_community
-
-    return graph
-
-
 def nx_compute_circular_layout(graph):
     """Computes a circular layout with the last node as center"""
 
@@ -412,22 +358,6 @@ def nx_compute_node_textposition_from_node_coordinates(node_x, node_y):
     return textposition
 
 
-def nx_extract_communities(graph, conserve_counters):
-    """Gets communities from a networkx graph as a dictionary."""
-
-    communities = {}
-
-    for node, data in graph.nodes(data=True):
-        text = f"CL_{data['group'] :02d}"
-        if text not in communities:
-            communities[text] = []
-        if conserve_counters is False:
-            node = " ".join(node.split(" ")[:-1])
-        communities[text].append(node)
-
-    return communities
-
-
 def nx_extract_node_textfont_colors(graph):
     """Extracts textfont colors from a networkx graph."""
 
@@ -533,24 +463,6 @@ def nx_scale_node_occ(occ, max_size, min_size):
     return occ
 
 
-def nx_set_node_color_by_group(graph):
-    """Modifies the color of the nodes according to the group."""
-
-    groups = []
-    for node in graph.nodes():
-        groups.append(graph.nodes[node]["group"])
-    n_groups = len(set(groups))
-
-    if n_groups in [1, 2]:
-        return graph
-
-    for node in graph.nodes():
-        group = graph.nodes[node]["group"]
-        graph.nodes[node]["color"] = CLUSTER_COLORS[group]
-
-    return graph
-
-
 def nx_graph_to_co_occ_matrix(graph):
     """Reconstructs the co-occurrence matrix from a graph."""
 
@@ -578,31 +490,31 @@ def nx_set_node_colors(graph, node_names, new_color):
     return graph
 
 
-def nx_set_edge_properties_for_corr_maps(graph, color):
-    """Sets edge properties for correlation maps."""
+# def nx_set_edge_properties_for_corr_maps(graph, color):
+#     """Sets edge properties for correlation maps."""
 
-    for edge in graph.edges():
-        if graph.edges[edge]["value"] < 0.25:
-            graph.edges[edge]["width"] = 2
-            graph.edges[edge]["dash"] = "dot"
-            graph.edges[edge]["color"] = color
+#     for edge in graph.edges():
+#         if graph.edges[edge]["value"] < 0.25:
+#             graph.edges[edge]["width"] = 2
+#             graph.edges[edge]["dash"] = "dot"
+#             graph.edges[edge]["color"] = color
 
-        elif graph.edges[edge]["value"] < 0.5:
-            graph.edges[edge]["width"] = 2
-            graph.edges[edge]["dash"] = "solid"
-            graph.edges[edge]["color"] = color
+#         elif graph.edges[edge]["value"] < 0.5:
+#             graph.edges[edge]["width"] = 2
+#             graph.edges[edge]["dash"] = "solid"
+#             graph.edges[edge]["color"] = color
 
-        elif graph.edges[edge]["value"] < 0.75:
-            graph.edges[edge]["width"] = 4
-            graph.edges[edge]["dash"] = "solid"
-            graph.edges[edge]["color"] = color
+#         elif graph.edges[edge]["value"] < 0.75:
+#             graph.edges[edge]["width"] = 4
+#             graph.edges[edge]["dash"] = "solid"
+#             graph.edges[edge]["color"] = color
 
-        else:
-            graph.edges[edge]["width"] = 6
-            graph.edges[edge]["dash"] = "solid"
-            graph.edges[edge]["color"] = color
+#         else:
+#             graph.edges[edge]["width"] = 6
+#             graph.edges[edge]["dash"] = "solid"
+#             graph.edges[edge]["color"] = color
 
-    return graph
+#     return graph
 
 
 def nx_set_edge_properties_for_co_occ_networks(graph):

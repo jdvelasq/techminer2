@@ -1,5 +1,10 @@
 # flake8: noqa
+# pylint: disable=invalid-name
 # pylint: disable=line-too-long
+# pylint: disable=missing-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
+# pylint: disable=too-many-statements
 """
 Network Metrics
 ===============================================================================
@@ -92,21 +97,8 @@ Table:
 """
 from dataclasses import dataclass
 
-import pandas as pd
-
-# from ._chatbot import format_chatbot_prompt_for_df
 from .._network_lib import nx_compute_node_degree, nx_compute_node_statistics
-
-
-@dataclass
-class NetworkMetrics:
-    """Network statistics."""
-
-    df_: pd.DataFrame
-    prompt_: str
-
-    def __repr__(self):
-        return "NetworkMetrics()"
+from ..format_prompt_for_dataframes import format_prompt_for_dataframes
 
 
 def network_metrics(
@@ -123,7 +115,7 @@ def network_metrics(
             "most 30 words, identifiying any notable patterns, trends, or outliers in the data."
         )
 
-        return format_chatbot_prompt_for_df(main_text, table.to_markdown())
+        return format_prompt_for_dataframes(main_text, table.to_markdown())
 
     #
     #
@@ -135,7 +127,9 @@ def network_metrics(
     table = nx_compute_node_statistics(nx_graph)
     prompt = generate_chatgpt_prompt(table)
 
-    return NetworkMetrics(
-        df_=table,
-        prompt_=prompt,
-    )
+    @dataclass
+    class Results:
+        df_ = table
+        prompt_ = prompt
+
+    return Results()

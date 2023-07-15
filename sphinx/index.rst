@@ -93,7 +93,7 @@ TM2 module.
     :hidden:
     :maxdepth: 1
 
-    techminer2/__index__
+    techminer/__index__
     bibliometrix/__index__
     vantagepoint/__index__
     tlab/__index__
@@ -101,32 +101,7 @@ TM2 module.
     vosviewer/__index__
     
     
-    
-
-.. toctree::
-    :caption: COMPONENTS
-    :hidden:
-    :maxdepth: 1
-
-    techminer2/ingest/__index__
-    techminer2/filter/__index__
-    techminer2/refine/__index__
-    techminer2/describe/__index__     
-    techminer2/analyze/__index__     
-    techminer2/report/__index__     
-
-.. toctree::
-    :caption: TECHMINER 2+ (TO REV)
-    :hidden:
-    :maxdepth: 1
-
-    ingest/__index__
-    find/__index__
-    describe/__index__
-    analyze/__index__
-    report/__index__
-
-
+ 
 
 
 

@@ -13,8 +13,6 @@ Refine/
     apply_organizations_thesaurus
 
 
-
-
 .. toctree::    
     find_abbreviations
 

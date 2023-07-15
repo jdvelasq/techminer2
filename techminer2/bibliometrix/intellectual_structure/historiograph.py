@@ -1,7 +1,10 @@
 # flake8: noqa
+# pylint: disable=invalid-name
 # pylint: disable=line-too-long
+# pylint: disable=missing-docstring
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
+# pylint: disable=too-many-statements
 """
 Historiograph
 ===============================================================================
@@ -10,8 +13,8 @@ Historiograph
 
 >>> root_dir = "data/regtech/"
 
->>> import techminer2plus
->>> nnet = techminer2plus.publish.intellectual_structure.historiograph(
+>>> from techminer2 import bibliometrix
+>>> nnet = bibliometrix.intellectual_structure.historiograph(
 ...     top_n=20,
 ...     root_dir=root_dir,
 ...     nx_k=None,

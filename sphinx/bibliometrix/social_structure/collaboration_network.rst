@@ -1,4 +1,4 @@
-.. automodule:: bibliometrix.social_structure.collaboration_network
-    :members:
-    :undoc-members:
-    :show-inheritance:
+Collaboration Network
+===============================================================================
+
+See :ref:`vosviewer_co_authorship` in VOSviewer Module.

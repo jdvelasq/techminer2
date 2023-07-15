@@ -17,9 +17,6 @@ Countries/
    most_local_cited
 
 .. toctree::
-   lotka_law
-
-.. toctree::
    local_impact_h_index
 
 .. toctree::

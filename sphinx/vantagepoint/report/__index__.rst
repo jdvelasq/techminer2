@@ -17,6 +17,9 @@ Report/
     word_cloud    
 
 .. toctree::
+    multi_donut
+
+.. toctree::
     bubble_chart    
 
 .. toctree::
@@ -35,7 +38,16 @@ Report/
     cluster_map
 
 .. toctree::
+    super_profile
+
+.. toctree::
     world_map  
+
+.. toctree::
+    plot_classifications
+
+.. toctree::
+    plot_emergence
 
 .. toctree::
     cleveland_dot_chart
