@@ -22,7 +22,6 @@ Creates an Cross-correlation Map.
 ...     cross_with='countries',
 ...     top_n=10,
 ...     root_dir=root_dir,
-...     color="#1f77b4", # tab:blue
 ... ).write_html("sphinx/_static/cross_correlation_map.html")
 
 .. raw:: html
@@ -44,16 +43,23 @@ def cross_correlation_map(
     cross_with,
     method="pearson",
     #
-    # Map params:
-    n_labels=None,
-    color="#7793a5",
+    # LAYOUT:
     nx_k=None,
-    nx_iterations=10,
+    nx_iterations=30,
     nx_random_state=0,
+    #
+    # NODES:
     node_size_min=30,
     node_size_max=70,
     textfont_size_min=10,
     textfont_size_max=20,
+    textfont_opacity_min=0.35,
+    textfont_opacity_max=1.00,
+    #
+    # EDGES:
+    edge_color="#7793a5",
+    #
+    # AXES:
     xaxes_range=None,
     yaxes_range=None,
     show_axes=False,
@@ -103,16 +109,23 @@ def cross_correlation_map(
     return correlation_map(
         similarity=similarity,
         #
-        # FUNCTION PARAMS:
-        n_labels=n_labels,
-        color=color,
+        # LAYOUT:
         nx_k=nx_k,
         nx_iterations=nx_iterations,
         nx_random_state=nx_random_state,
+        #
+        # NODES:
         node_size_min=node_size_min,
         node_size_max=node_size_max,
         textfont_size_min=textfont_size_min,
         textfont_size_max=textfont_size_max,
+        textfont_opacity_min=textfont_opacity_min,
+        textfont_opacity_max=textfont_opacity_max,
+        #
+        # EDGES:
+        edge_color=edge_color,
+        #
+        # AXES:
         xaxes_range=xaxes_range,
         yaxes_range=yaxes_range,
         show_axes=show_axes,

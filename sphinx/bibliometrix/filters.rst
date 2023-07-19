@@ -1,6 +1,4 @@
-.. automodule:: bibliometrix.filters
-    :members:
-    :undoc-members:
-    :show-inheritance:
+Filters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-
+See :ref:`sciento_py` package.

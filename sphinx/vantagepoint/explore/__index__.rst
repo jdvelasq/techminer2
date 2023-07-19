@@ -17,4 +17,6 @@ Explore/
    sankey_chart
 
 .. toctree::
-   create_concept_grid
+   :maxdepth: 1
+
+   concept_grid/__index__

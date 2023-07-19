@@ -7,7 +7,3 @@ Intellectual Structure
 
 .. toctree::   
    historiograph
-
-
-.. toctree::   
-   main_path_analysis

@@ -6,8 +6,6 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-.. _organizations_item_density_visualization:
-
 Item Density Visualization
 ===============================================================================
 
@@ -19,17 +17,16 @@ Item Density Visualization
 ...     root_dir=root_dir,
 ...     top_n=10, 
 ...     bandwidth=0.1,
-... ).write_html("sphinx/_static/organizations_item_density_visualization.html")
+... ).write_html("sphinx/_static/vosviewer/co_authorship/organizations/item_density_visualization.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/organizations_item_density_visualization.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../../_static/vosviewer/co_authorship/organizations/item_density_visualization.html" 
+    height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-
-
-from ...create_co_occurrence_nx_graph import create_co_occurrence_nx_graph
-from ...visualize_item_density import visualize_item_density
+from ...nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
+from ...nx_visualize_item_density import nx_visualize_item_density
 
 FIELD = "organizations"
 
@@ -43,7 +40,9 @@ def item_density_visualization(
     custom_items=None,
     #
     # NETWORK PARAMS:
-    algorithm_or_estimator="louvain",
+    algorithm_or_dict="louvain",
+    #
+    # KDE PARAMS:
     bandwidth="silverman",
     colorscale="Aggrnyl",
     opacity=0.6,
@@ -78,7 +77,7 @@ def item_density_visualization(
     edge_width_min = 0.8
     edge_width_max = 3.0
 
-    nx_graph = create_co_occurrence_nx_graph(
+    nx_graph = nx_create_co_occurrence_graph(
         #
         # FUNCTION PARAMS:
         rows_and_columns=FIELD,
@@ -90,8 +89,8 @@ def item_density_visualization(
         custom_items=custom_items,
         #
         # NETWORK PARAMS:
-        algorithm_or_estimator=algorithm_or_estimator,
-        normalization_index=None,
+        algorithm_or_dict=algorithm_or_dict,
+        association_index=None,
         color=color,
         nx_k=nx_k,
         nx_iterations=nx_iterations,

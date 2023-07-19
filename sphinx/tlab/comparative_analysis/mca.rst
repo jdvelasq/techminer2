@@ -1,4 +1,4 @@
-.. automodule:: tlab.comparative_analysis.mca
+.. automodule:: techminer2.tlab.comparative_analysis.mca
     :members:
     :undoc-members:
     :show-inheritance:

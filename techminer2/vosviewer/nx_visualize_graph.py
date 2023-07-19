@@ -1,0 +1,224 @@
+# flake8: noqa
+# pylint: disable=invalid-name
+# pylint: disable=line-too-long
+# pylint: disable=missing-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
+# pylint: disable=too-many-statements
+
+
+import plotly.graph_objects as go
+
+
+def nx_visualize_graph(
+    nx_graph,
+    #
+    # AXES:
+    xaxes_range=None,
+    yaxes_range=None,
+    show_axes=False,
+):
+    node_trace = __create_node_trace(nx_graph)
+    edge_traces = __create_edge_traces(nx_graph)
+
+    fig = __create_network_fig(
+        edge_traces,
+        node_trace,
+        xaxes_range,
+        yaxes_range,
+        show_axes,
+    )
+
+    fig = __add_node_labels_to_fig(fig, nx_graph)
+
+    return fig
+
+
+def __create_node_trace(nx_graph):
+    """Creates a node trace for a networkx graph."""
+
+    node_x = [data["x"] for _, data in nx_graph.nodes(data=True)]
+    node_y = [data["y"] for _, data in nx_graph.nodes(data=True)]
+    node_color = [data["node_color"] for _, data in nx_graph.nodes(data=True)]
+    node_size = [data["node_size"] for _, data in nx_graph.nodes(data=True)]
+    node_text = [data["text"] for _, data in nx_graph.nodes(data=True)]
+
+    node_trace = go.Scatter(
+        x=node_x,
+        y=node_y,
+        mode="markers",
+        text=node_text,
+        hoverinfo="text",
+        marker={
+            "color": node_color,
+            "size": node_size,
+            "line": {"width": 1.5, "color": "white"},
+            "opacity": 1.0,
+        },
+    )
+
+    return node_trace
+
+
+def __create_edge_traces(graph):
+    """Creates edge traces for a networkx graph."""
+
+    edge_traces = []
+
+    for edge in graph.edges():
+        #
+        pos_x0 = graph.nodes[edge[0]]["x"]
+        pos_y0 = graph.nodes[edge[0]]["y"]
+        #
+        pos_x1 = graph.nodes[edge[1]]["x"]
+        pos_y1 = graph.nodes[edge[1]]["y"]
+        #
+        color = graph.edges[edge]["color"]
+        dash = graph.edges[edge]["dash"]
+        width = graph.edges[edge]["width"]
+
+        edge_trace = go.Scatter(
+            x=(pos_x0, pos_x1),
+            y=(pos_y0, pos_y1),
+            line={
+                "color": color,
+                "dash": dash,
+                "width": width,
+            },
+            hoverinfo="none",
+            mode="lines",
+        )
+
+        edge_traces.append(edge_trace)
+
+    return edge_traces
+
+
+def __create_network_fig(
+    edge_traces,
+    node_trace,
+    xaxes_range,
+    yaxes_range,
+    show_axes,
+):
+    """Creates a network graph from traces using plotly express."""
+
+    layout = go.Layout(
+        title="",
+        titlefont={"size": 16},
+        showlegend=False,
+        hovermode="closest",
+        margin={"b": 0, "l": 0, "r": 0, "t": 0},
+        annotations=[
+            {
+                "text": "",
+                "showarrow": False,
+                "xref": "paper",
+                "yref": "paper",
+                "x": 0.005,
+                "y": -0.002,
+                "align": "left",
+                "font": {"size": 10},
+            }
+        ],
+    )
+
+    fig = go.Figure(
+        data=edge_traces + [node_trace],
+        layout=layout,
+    )
+
+    if show_axes is False:
+        fig.update_layout(
+            xaxis={
+                "showgrid": False,
+                "zeroline": False,
+                "showticklabels": False,
+            },
+            yaxis={
+                "showgrid": False,
+                "zeroline": False,
+                "showticklabels": False,
+            },
+        )
+
+    if xaxes_range is not None:
+        fig.update_xaxes(range=xaxes_range)
+
+    if yaxes_range is not None:
+        fig.update_yaxes(range=yaxes_range)
+
+    fig.update_layout(
+        hoverlabel={
+            "bgcolor": "white",
+            "font_family": "monospace",
+        },
+        paper_bgcolor="white",
+        plot_bgcolor="white",
+    )
+
+    return fig
+
+
+def __add_node_labels_to_fig(fig, nx_graph):
+    """Adds node names to a network figure."""
+
+    node_x = [data["x"] for _, data in nx_graph.nodes(data=True)]
+    node_y = [data["y"] for _, data in nx_graph.nodes(data=True)]
+    node_labels = [data["text"] for _, data in nx_graph.nodes(data=True)]
+
+    textfont_sizes = [data["textfont_size"] for _, data in nx_graph.nodes(data=True)]
+
+    textpositions = [data["textposition"] for _, data in nx_graph.nodes(data=True)]
+
+    #
+    node_x.reverse()
+    node_y.reverse()
+    node_labels.reverse()
+    textfont_sizes.reverse()
+    textpositions.reverse()
+
+    #
+
+    for pos_x, pos_y, name, textfont_size, textpos in zip(
+        node_x, node_y, node_labels, textfont_sizes, textpositions
+    ):
+        if textpos == "top right":
+            xanchor = "left"
+            yanchor = "bottom"
+            xshift = 4
+            yshift = 4
+        elif textpos == "top left":
+            xanchor = "right"
+            yanchor = "bottom"
+            xshift = -4
+            yshift = 4
+        elif textpos == "bottom right":
+            xanchor = "left"
+            yanchor = "top"
+            xshift = 4
+            yshift = -4
+        elif textpos == "bottom left":
+            xanchor = "right"
+            yanchor = "top"
+            xshift = -4
+            yshift = -4
+        else:
+            xanchor = "center"
+            yanchor = "center"
+
+        fig.add_annotation(
+            x=pos_x,
+            y=pos_y,
+            text=name,
+            showarrow=False,
+            font={"size": textfont_size},
+            bordercolor="grey",
+            bgcolor="white",
+            xanchor=xanchor,
+            yanchor=yanchor,
+            xshift=xshift,
+            yshift=yshift,
+        )
+
+    return fig

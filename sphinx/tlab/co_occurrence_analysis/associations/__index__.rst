@@ -10,7 +10,7 @@ Associations/
 
 
 .. toctree::
-   co_occurrence_mds_2d_map
+   mds_2d_map
 
 
 * :ref:`co_occurrence_matrix`

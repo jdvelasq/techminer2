@@ -14,6 +14,12 @@ Discover/
 
     map/__index__
     
+.. toctree::
+    :maxdepth: 1    
+
+    factor_matrix/__index__
+
+
 .. toctree::  
     list_comparison
 

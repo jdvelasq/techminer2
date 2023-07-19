@@ -3,11 +3,10 @@ Conceptual Structure/
 
 * **Network Aproach**
 
-   .. toctree::
-      co_occurrence_network
+   * Co-occurrence Network: See VOSviewer :ref:`vosviewer_co_occurrence_network`.
 
-   .. toctree::
-      thematic_map
+   * Themtic Map: See VOSviewer :ref:`vosviewer_thematic_map`.
+   
 
    .. toctree::
       thematic_evolution

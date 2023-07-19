@@ -1,6 +1,4 @@
-.. automodule:: bibliometrix.data
-    :members:
-    :undoc-members:
-    :show-inheritance:
+Data
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-
+See :ref:`techminer_ingest_raw_data` in TechMiner package.

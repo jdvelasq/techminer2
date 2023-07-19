@@ -6,29 +6,24 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-.. _countries_co_authorship_network:
-
 Network Visualization
 ===============================================================================
-
-
 
 >>> from techminer2 import vosviewer
 >>> root_dir = "data/regtech/"
 >>> vosviewer.co_authorship.countries.network_visualization(
 ...     root_dir=root_dir,
 ...     top_n=10, 
-... ).write_html("sphinx/_static/countries_co_authorship_network_visualization.html")
+... ).write_html("sphinx/_static/vosviewer/co_authorship/countries/network_visualization.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/countries_co_authorship_network_visualization.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../../_static/vosviewer/co_authorship/countries/network_visualization.html" 
+    height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-
-
-from ...create_co_occurrence_nx_graph import create_co_occurrence_nx_graph
-from ...visualize_nx_graph import visualize_nx_graph
+from ...nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
+from ...nx_visualize_graph import nx_visualize_graph
 
 FIELD = "countries"
 
@@ -41,19 +36,29 @@ def network_visualization(
     gc_range=(None, None),
     custom_items=None,
     #
-    # NETWORK PARAMS:
-    algorithm_or_estimator="louvain",
-    n_labels=None,
-    color="#7793a5",
+    # NETWORK CLUSTERING:
+    association_index="association",
+    algorithm_or_dict="louvain",
+    #
+    # LAYOUT:
     nx_k=None,
-    nx_iterations=10,
+    nx_iterations=30,
     nx_random_state=0,
+    #
+    # NODES:
     node_size_min=30,
     node_size_max=70,
     textfont_size_min=10,
     textfont_size_max=20,
+    textfont_opacity_min=0.35,
+    textfont_opacity_max=1.00,
+    #
+    # EDGES:
+    edge_color="#7793a5",
     edge_width_min=0.8,
     edge_width_max=3.0,
+    #
+    # AXES:
     xaxes_range=None,
     yaxes_range=None,
     show_axes=False,
@@ -65,7 +70,7 @@ def network_visualization(
     cited_by_filter=(None, None),
     **filters,
 ):
-    nx_graph = create_co_occurrence_nx_graph(
+    nx_graph = nx_create_co_occurrence_graph(
         #
         # FUNCTION PARAMS:
         rows_and_columns=FIELD,
@@ -76,17 +81,25 @@ def network_visualization(
         gc_range=gc_range,
         custom_items=custom_items,
         #
-        # NETWORK PARAMS:
-        algorithm_or_estimator=algorithm_or_estimator,
-        normalization_index=None,
-        color=color,
+        # NETWORK CLUSTERING:
+        association_index=association_index,
+        algorithm_or_dict=algorithm_or_dict,
+        #
+        # LAYOUT:
         nx_k=nx_k,
         nx_iterations=nx_iterations,
         nx_random_state=nx_random_state,
+        #
+        # NODES:
         node_size_min=node_size_min,
         node_size_max=node_size_max,
         textfont_size_min=textfont_size_min,
         textfont_size_max=textfont_size_max,
+        textfont_opacity_min=textfont_opacity_min,
+        textfont_opacity_max=textfont_opacity_max,
+        #
+        # EDGES:
+        edge_color=edge_color,
         edge_width_min=edge_width_min,
         edge_width_max=edge_width_max,
         #
@@ -98,13 +111,12 @@ def network_visualization(
         **filters,
     )
 
-    return visualize_nx_graph(
+    return nx_visualize_graph(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,
         #
         # NETWORK PARAMS:
-        n_labels=n_labels,
         xaxes_range=xaxes_range,
         yaxes_range=yaxes_range,
         show_axes=show_axes,

@@ -6,8 +6,6 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-.. _countries_degree_plot:
-
 Degree Plot
 ===============================================================================
 
@@ -19,11 +17,12 @@ Degree Plot
 ...     root_dir=root_dir,
 ...     top_n=20, 
 ... )
->>> plot.fig_.write_html("sphinx/_static/countries_degree_plot.html")
+>>> plot.fig_.write_html("sphinx/_static/vosviewer/co_authorship/countries/degree_plot.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/countries_degree_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../../_static/vosviewer/co_authorship/countries/degree_plot.html" 
+    height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> plot.df_.head()
    Node                  Name  Degree
@@ -67,8 +66,8 @@ Table:
 <BLANKLINE>
 
 """
-from ...create_co_occurrence_nx_graph import create_co_occurrence_nx_graph
-from ...create_degree_plot import create_degree_plot
+from ...nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
+from ...nx_create_degree_plot import nx_create_degree_plot
 
 FIELD = "countries"
 
@@ -82,13 +81,10 @@ def degree_plot(
     custom_items=None,
     #
     # NETWORK PARAMS:
-    algorithm_or_estimator="louvain",
-    bandwidth="silverman",
-    colorscale="Aggrnyl",
-    opacity=0.6,
+    algorithm_or_dict="louvain",
+    association_index="association",
     #
-    n_labels=None,
-    # color="#7793a5",
+    # LAYOUT:
     nx_k=None,
     nx_iterations=10,
     nx_random_state=0,
@@ -109,15 +105,16 @@ def degree_plot(
 ):
     #
     # TODO: REMOVE DEPENDENCES:
-    color = "#7793a5"
+    #
     node_size_min = 30
     node_size_max = 70
-    edge_width_min = 0.8
-    edge_width_max = 3.0
     textfont_size_min = 10
     textfont_size_max = 20
+    #
+    edge_width_min = 0.8
+    edge_width_max = 3.0
 
-    nx_graph = create_co_occurrence_nx_graph(
+    nx_graph = nx_create_co_occurrence_graph(
         #
         # FUNCTION PARAMS:
         rows_and_columns=FIELD,
@@ -128,17 +125,22 @@ def degree_plot(
         gc_range=gc_range,
         custom_items=custom_items,
         #
-        # NETWORK PARAMS:
-        algorithm_or_estimator=algorithm_or_estimator,
-        normalization_index=None,
-        color=color,
+        # NETWORK CLUSTERING:
+        algorithm_or_dict=algorithm_or_dict,
+        association_index=association_index,
+        #
+        # LAYOUT:
         nx_k=nx_k,
         nx_iterations=nx_iterations,
         nx_random_state=nx_random_state,
+        #
+        # NODES:
         node_size_min=node_size_min,
         node_size_max=node_size_max,
         textfont_size_min=textfont_size_min,
         textfont_size_max=textfont_size_max,
+        #
+        # EDGES:
         edge_width_min=edge_width_min,
         edge_width_max=edge_width_max,
         #
@@ -150,7 +152,7 @@ def degree_plot(
         **filters,
     )
 
-    return create_degree_plot(
+    return nx_create_degree_plot(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,

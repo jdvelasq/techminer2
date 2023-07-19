@@ -1,3 +1,3 @@
-.. automodule:: techminer2.tlab.co_occurrence_analysis.associations.item_associations
+.. automodule:: techminer2.tlab.associations.item_associations
     :members:
 

@@ -18,7 +18,7 @@ Word Cloud Graph
 ...     root_dir=root_dir,
 ... ).savefig(file_name)
 
-.. image:: ../images/scientopy__word_cloud-1.png
+.. image:: ../images/scientopy__word_cloud_1.png
     :width: 900px
     :align: center
 
@@ -27,7 +27,7 @@ Word Cloud Graph
 **Time Filter.**
 
 >>> from techminer2 import scientopy
->>> file_name = "sphinx/images/scientopy__word_cloud-3.png"
+>>> file_name = "sphinx/images/scientopy__word_cloud_3.png"
 >>> scientopy.word_cloud_graph(
 ...     field='author_keywords',
 ...     title="Author Keywords",
@@ -35,7 +35,7 @@ Word Cloud Graph
 ...     root_dir=root_dir,
 ... ).savefig(file_name)
 
-.. image:: ../images/scientopy__word_cloud-3.png
+.. image:: ../images/scientopy__word_cloud_3.png
     :width: 900px
     :align: center
 
@@ -43,7 +43,7 @@ Word Cloud Graph
 **Custom Topics Extraction.**
 
 >>> from techminer2 import scientopy
->>> file_name = "sphinx/images/scientopy__word_cloud-4.png"
+>>> file_name = "sphinx/images/scientopy__word_cloud_4.png"
 >>> scientopy.word_cloud_graph(
 ...     field='author_keywords',
 ...     custom_items=[
@@ -57,7 +57,7 @@ Word Cloud Graph
 ...     root_dir=root_dir,
 ... ).savefig(file_name)
 
-.. image:: ../images/scientopy__word_cloud-4.png
+.. image:: ../images/scientopy__word_cloud_4.png
     :width: 900px
     :align: center
 
@@ -65,7 +65,7 @@ Word Cloud Graph
 **Filters (previous search results).**
 
 >>> from techminer2 import scientopy
->>> file_name = "sphinx/images/scientopy__word_cloud-5.png"
+>>> file_name = "sphinx/images/scientopy__word_cloud_5.png"
 >>> scientopy.word_cloud_graph(
 ...     field='author_keywords',
 ...     custom_items=[
@@ -80,7 +80,7 @@ Word Cloud Graph
 ...     countries=["Australia", "United Kingdom", "United States"],
 ... ).savefig(file_name)
 
-.. image:: ../images/scientopy__word_cloud-5.png
+.. image:: ../images/scientopy__word_cloud_5.png
     :width: 900px
     :align: center
 
@@ -88,7 +88,7 @@ Word Cloud Graph
 **Trend Analysis.**
 
 >>> from techminer2 import scientopy
->>> file_name = "sphinx/images/scientopy__word_cloud-6.png"
+>>> file_name = "sphinx/images/scientopy__word_cloud_6.png"
 >>> scientopy.word_cloud_graph(
 ...     field='author_keywords',
 ...     top_n=20,
@@ -96,7 +96,7 @@ Word Cloud Graph
 ...     root_dir=root_dir,
 ... ).savefig(file_name)
 
-.. image:: ../images/scientopy__word_cloud-6.png
+.. image:: ../images/scientopy__word_cloud_6.png
     :width: 900px
     :align: center
 

@@ -11,9 +11,6 @@
         "--profile",
         "black"
     ],
-    "black-formatter.args": [
-        "--line-length=79"
-    ],
     "python.testing.pytestArgs": [
         "--doctest-glob=\"*.py\"",
         "--doctest-modules",

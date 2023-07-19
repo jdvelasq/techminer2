@@ -5,7 +5,7 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-.. _co_occurrence_matrix:
+.. _vantagepoint_co_occurrence_matrix:
 
 Co-occurrence Matrix 
 ===============================================================================

@@ -10,9 +10,7 @@ in the values or axis of a dataframe.
 
 import numpy as np
 
-from .techminer.metrics.global_indicators_by_field import (
-    global_indicators_by_field,
-)
+from .techminer.metrics.global_indicators_by_field import global_indicators_by_field
 
 
 # pylint: disable=too-many-arguments
@@ -116,10 +114,7 @@ def items2counters(
     fmt_cited_by = "{:0" + str(n_zeros_cited_by) + "d}"
     fmt = "{} " + f"{fmt_occ}:{fmt_cited_by}"
 
-    return {
-        name: fmt.format(name, int(nd), int(tc))
-        for name, nd, tc in zip(names, occ, cited_by)
-    }
+    return {name: fmt.format(name, int(nd), int(tc)) for name, nd, tc in zip(names, occ, cited_by)}
 
 
 def remove_counters_from_axis(

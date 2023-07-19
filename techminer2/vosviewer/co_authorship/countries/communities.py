@@ -6,7 +6,7 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-.. _countries_communities:
+.. _vosviewer_countries_communities:
 
 Communities
 ===============================================================================
@@ -31,8 +31,8 @@ Communities
 
 
 """
-from ...create_co_occurrence_nx_graph import create_co_occurrence_nx_graph
-from ...get_network_communities import get_network_communities
+from ...nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
+from ...nx_extract_communities_as_data_frame import nx_extract_communities_as_data_frame
 
 FIELD = "countries"
 
@@ -46,7 +46,10 @@ def communities(
     custom_items=None,
     #
     # NETWORK PARAMS:
-    algorithm_or_estimator="louvain",
+    algorithm_or_dict="louvain",
+    association_index="association",
+    #
+    # LAYOUT:
     nx_k=None,
     nx_iterations=10,
     nx_random_state=0,
@@ -68,7 +71,7 @@ def communities(
     textfont_size_min = 10
     textfont_size_max = 20
 
-    nx_graph = create_co_occurrence_nx_graph(
+    nx_graph = nx_create_co_occurrence_graph(
         #
         # FUNCTION PARAMS:
         rows_and_columns=FIELD,
@@ -79,17 +82,22 @@ def communities(
         gc_range=gc_range,
         custom_items=custom_items,
         #
-        # NETWORK PARAMS:
-        algorithm_or_estimator=algorithm_or_estimator,
-        normalization_index=None,
-        color=color,
+        # NETWORK CLUSTERING:
+        algorithm_or_dict=algorithm_or_dict,
+        association_index=association_index,
+        #
+        # LAYOUT:
         nx_k=nx_k,
         nx_iterations=nx_iterations,
         nx_random_state=nx_random_state,
+        #
+        # NODES:
         node_size_min=node_size_min,
         node_size_max=node_size_max,
         textfont_size_min=textfont_size_min,
         textfont_size_max=textfont_size_max,
+        #
+        # EDGES:
         edge_width_min=edge_width_min,
         edge_width_max=edge_width_max,
         #
@@ -101,8 +109,9 @@ def communities(
         **filters,
     )
 
-    return get_network_communities(
+    return nx_extract_communities_as_data_frame(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,
+        conserve_counters=True,
     )

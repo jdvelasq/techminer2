@@ -42,12 +42,16 @@ Matrix Viewer
 """
 import networkx as nx
 
-from ...vosviewer.nx_utils import (
-    nx_compute_spring_layout,
-    nx_compute_textposition,
-    nx_scale_links,
+from ...vosviewer.nx_compute_edge_width_from_edge_weight import (
+    nx_compute_edge_width_from_edge_weight,
 )
-from ...vosviewer.px_utils import px_create_network_chart
+from ...vosviewer.nx_compute_spring_layout import nx_compute_spring_layout
+from ...vosviewer.nx_compute_textposition_from_graph import nx_compute_textposition_from_graph
+from ...vosviewer.nx_set_edge_color_to_constant import nx_set_edge_color_to_constant
+from ...vosviewer.nx_set_node_size_to_constant import nx_set_node_size_to_constant
+from ...vosviewer.nx_set_textfont_opacity_to_constant import nx_set_textfont_opacity_to_constant
+from ...vosviewer.nx_set_textfont_size_to_constant import nx_set_textfont_size_to_constant
+from ...vosviewer.nx_visualize_graph import nx_visualize_graph
 from ..discover.matrix.co_occurrence_matrix import co_occurrence_matrix
 
 
@@ -56,19 +60,6 @@ def matrix_viewer(
     # FUNCTION PARAMS:
     columns,
     rows=None,
-    #
-    # FIG PARAMS:
-    n_labels=None,
-    nx_k=None,
-    nx_iterations=30,
-    nx_random_state=0,
-    node_size=30,
-    textfont_size=10,
-    link_width_min=0.8,
-    link_width_max=4.0,
-    xaxes_range=None,
-    yaxes_range=None,
-    show_axes=False,
     #
     # COLUMN PARAMS:
     col_top_n=None,
@@ -81,6 +72,25 @@ def matrix_viewer(
     row_occ_range=(None, None),
     row_gc_range=(None, None),
     row_custom_items=None,
+    #
+    # LAYOUT:
+    nx_k=None,
+    nx_iterations=30,
+    nx_random_state=0,
+    #
+    # NODES:
+    node_size=30,
+    textfont_size=10,
+    #
+    # EDGES
+    edge_color="#b8c6d0",
+    edge_width_min=0.8,
+    edge_width_max=4.0,
+    #
+    # AXES:
+    xaxes_range=None,
+    yaxes_range=None,
+    show_axes=False,
     #
     # DATABASE PARAMS:
     root_dir="./",
@@ -117,138 +127,185 @@ def matrix_viewer(
         **filters,
     )
 
+    #
+    # Create the networkx graph
     nx_graph = nx.Graph()
+    nx_graph = __add_nodes_from(nx_graph, cooc_matrix)
+    nx_graph = __add_weighted_edges_from(nx_graph, cooc_matrix)
 
-    nx_graph = __add_nodes_from_axis(
+    #
+    # Sets the layout
+    nx_graph = nx_compute_spring_layout(nx_graph, nx_k, nx_iterations, nx_random_state)
+
+    #
+    # Sets the node attributes
+    nx_graph = nx_set_node_size_to_constant(nx_graph, node_size)
+    nx_graph = nx_set_textfont_size_to_constant(nx_graph, textfont_size)
+    nx_graph = nx_set_textfont_opacity_to_constant(nx_graph, 1.0)
+
+    #
+    # Sets the edge attributes
+    nx_graph = nx_compute_edge_width_from_edge_weight(nx_graph, edge_width_min, edge_width_max)
+    nx_graph = nx_compute_textposition_from_graph(nx_graph)
+
+    nx_graph = nx_set_edge_color_to_constant(nx_graph, edge_color)
+
+    return nx_visualize_graph(
+        #
+        # FUNCTION PARAMS:
         nx_graph=nx_graph,
-        axis=1,
-        cooc_matrix=cooc_matrix,
-        group=0,
-        color="#7793a5",
-        node_size=node_size,
-        textfont_color="black",
-        textfont_size=textfont_size,
-    )
-
-    if rows is not None:
-        # The matrix is not symmetric
-        nx_graph = __add_nodes_from_axis(
-            nx_graph=nx_graph,
-            axis=0,
-            cooc_matrix=cooc_matrix,
-            group=1,
-            color="#465c6b",
-            node_size=node_size,
-            textfont_color="black",
-            textfont_size=textfont_size,
-        )
-
-    if rows is None:
-        nx_graph = ___add_links_for_symmetric_matrices(
-            nx_graph,
-            cooc_matrix,
-        )
-    else:
-        nx_graph = ___add_links_for_non_symmetric_matrices(
-            nx_graph,
-            cooc_matrix,
-        )
-
-    nx_graph = nx_compute_spring_layout(
-        graph=nx_graph, k=nx_k, iterations=nx_iterations, seed=nx_random_state
-    )
-
-    nx_graph = nx_compute_textposition(nx_graph)
-
-    nx_graph = nx_scale_links(nx_graph, link_width_min, link_width_max)
-
-    fig = px_create_network_chart(
-        nx_graph=nx_graph,
+        #
+        # NETWORK PARAMS:
         xaxes_range=xaxes_range,
         yaxes_range=yaxes_range,
         show_axes=show_axes,
-        n_labels=n_labels,
     )
 
-    return fig
 
-
-def __add_nodes_from_axis(
+#######
+def __add_nodes_from(
     nx_graph,
-    axis,
     cooc_matrix,
-    group,
-    color,
-    node_size,
-    textfont_color,
-    textfont_size,
 ):
     #
-    # Adds nodes from axis to nx_graph
-    #
-    if axis in (0, "index"):
-        nodes = cooc_matrix.df_.index.tolist()
-    elif axis in (1, "columns"):
-        nodes = cooc_matrix.df_.columns.tolist()
-    else:
-        raise ValueError("axis must be 0, 1")
+    # Adds rows nodes
+    matrix = cooc_matrix.df_.copy()
+    nodes = matrix.index.tolist()
+    nx_graph.add_nodes_from(nodes, group=0, node_color="#7793a5")
 
-    for node in nodes:
-        nx_graph.add_nodes_from(
-            [node],
-            #
-            # NODE ATTR:
-            text=" ".join(node.split(" ")[:-1]),
-            OCC=int(node.split(" ")[-1].split(":")[0]),
-            global_citations=int(node.split(" ")[-1].split(":")[0]),
-            #
-            # OTHER ATTR:
-            group=group,
-            color=color,
-            node_size=node_size,
-            textfont_color=textfont_color,
-            textfont_size=textfont_size,
-        )
+    #
+    # Adds columns nodes
+    if matrix.index.tolist() != matrix.columns.tolist():
+        nodes = matrix.columns.tolist()
+        nx_graph.add_nodes_from(nodes, group=1, node_color="#465c6b")
+
+    for node in nx_graph.nodes():
+        nx_graph.nodes[node]["text"] = node
 
     return nx_graph
 
 
-def ___add_links_for_symmetric_matrices(nx_graph, cooc_matrix):
-    #
-    for i_row in range(cooc_matrix.df_.shape[0]):
-        for i_col in range(i_row + 1, cooc_matrix.df_.shape[1]):
-            if cooc_matrix.df_.iloc[i_row, i_col] > 0:
-                #
-                source_node = cooc_matrix.df_.index[i_row]
-                target_node = cooc_matrix.df_.columns[i_col]
-                weight = cooc_matrix.df_.iloc[i_row, i_col]
-
-                nx_graph.add_weighted_edges_from(
-                    ebunch_to_add=[(source_node, target_node, weight)],
-                    # weight=weight,
-                    dash="solid",
-                    color="#7793a5",
-                )
-
-    return nx_graph
-
-
-def ___add_links_for_non_symmetric_matrices(nx_graph, cooc_matrix):
+def __add_weighted_edges_from(nx_graph, cooc_matrix):
     #
     # Adds links from ...
-    for i_row in range(cooc_matrix.df_.shape[0]):
-        for i_col in range(cooc_matrix.df_.shape[1]):
-            if cooc_matrix.df_.iloc[i_row, i_col] > 0:
-                #
-                source_node = cooc_matrix.df_.index[i_row]
-                target_node = cooc_matrix.df_.columns[i_col]
-                weight = cooc_matrix.df_.iloc[i_row, i_col]
+    #
+    matrix = cooc_matrix.df_.copy()
 
+    if matrix.index.tolist() == matrix.columns.tolist():
+        #
+        # This is a symmetric matrix:
+        #
+        for i_row, row in enumerate(matrix.index.tolist()):
+            for i_col, col in enumerate(matrix.columns.tolist()):
+                #
+                if matrix.iloc[i_row, i_col] > 0:
+                    #
+                    # Unicamente toma valores por encima de la diagonal principal
+                    if i_col <= i_row:
+                        continue
+
+                    weight = matrix.loc[row, col]
+                    nx_graph.add_weighted_edges_from(
+                        ebunch_to_add=[(row, col, weight)],
+                        dash="solid",
+                    )
+
+        return nx_graph
+
+    #
+    # This is a non-symmetric matrix:
+    #
+    for i_row, row in enumerate(matrix.index.tolist()):
+        for i_col, col in enumerate(matrix.columns.tolist()):
+            #
+            if matrix.loc[row, col] > 0:
+                #
+                weight = matrix.loc[row, col]
                 nx_graph.add_weighted_edges_from(
-                    ebunch_to_add=[(source_node, target_node, weight)],
-                    # weight=weight,
+                    ebunch_to_add=[(row, col, weight)],
                     dash="solid",
-                    color="#b8c6d0",
                 )
 
     return nx_graph
+
+
+#######
+# def __add_nodes_from_axis(
+#     nx_graph,
+#     axis,
+#     cooc_matrix,
+#     group,
+#     color,
+#     node_size,
+#     textfont_color,
+#     textfont_size,
+# ):
+#     #
+#     # Adds nodes from axis to nx_graph
+#     #
+#     if axis in (0, "index"):
+#         nodes = cooc_matrix.df_.index.tolist()
+#     elif axis in (1, "columns"):
+#         nodes = cooc_matrix.df_.columns.tolist()
+#     else:
+#         raise ValueError("axis must be 0, 1")
+
+#     for node in nodes:
+#         nx_graph.add_nodes_from(
+#             [node],
+#             #
+#             # NODE ATTR:
+#             text=" ".join(node.split(" ")[:-1]),
+#             OCC=int(node.split(" ")[-1].split(":")[0]),
+#             global_citations=int(node.split(" ")[-1].split(":")[0]),
+#             #
+#             # OTHER ATTR:
+#             group=group,
+#             color=color,
+#             node_size=node_size,
+#             textfont_color=textfont_color,
+#             textfont_size=textfont_size,
+#         )
+
+#     return nx_graph
+
+
+# def ___add_links_for_symmetric_matrices(nx_graph, cooc_matrix, edge_color):
+#     #
+#     for i_row in range(cooc_matrix.df_.shape[0]):
+#         for i_col in range(i_row + 1, cooc_matrix.df_.shape[1]):
+#             if cooc_matrix.df_.iloc[i_row, i_col] > 0:
+#                 #
+#                 source_node = cooc_matrix.df_.index[i_row]
+#                 target_node = cooc_matrix.df_.columns[i_col]
+#                 weight = cooc_matrix.df_.iloc[i_row, i_col]
+
+#                 nx_graph.add_weighted_edges_from(
+#                     ebunch_to_add=[(source_node, target_node, weight)],
+#                     # weight=weight,
+#                     dash="solid",
+#                     color=edge_color,
+#                 )
+
+#     return nx_graph
+
+
+# def ___add_links_for_non_symmetric_matrices(nx_graph, cooc_matrix, edge_color):
+#     #
+#     # Adds links from ...
+#     for i_row in range(cooc_matrix.df_.shape[0]):
+#         for i_col in range(cooc_matrix.df_.shape[1]):
+#             if cooc_matrix.df_.iloc[i_row, i_col] > 0:
+#                 #
+#                 source_node = cooc_matrix.df_.index[i_row]
+#                 target_node = cooc_matrix.df_.columns[i_col]
+#                 weight = cooc_matrix.df_.iloc[i_row, i_col]
+
+#                 nx_graph.add_weighted_edges_from(
+#                     ebunch_to_add=[(source_node, target_node, weight)],
+#                     # weight=weight,
+#                     dash="solid",
+#                     color=edge_color,
+#                 )
+
+#     return nx_graph

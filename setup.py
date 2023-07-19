@@ -26,7 +26,7 @@ def _post_install():
 setup(
     # cmdclass={"build_py": BuildPyCommand},
     name="techminer2",
-    version="Jul 17, 2023",
+    version="Jul 21, 2023",
     author="Juan D. Velasquez",
     author_email="jdvelasq@unal.edu.co",
     license="MIT",

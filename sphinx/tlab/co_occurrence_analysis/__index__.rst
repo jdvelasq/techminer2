@@ -8,10 +8,6 @@ Co-occurrence Analysis
 
  
 
-
-.. toctree::
-    pairs_comparison
-
     
 * **Sequence and Network Analysis:**
 
