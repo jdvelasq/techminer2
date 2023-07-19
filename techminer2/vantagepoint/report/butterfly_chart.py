@@ -5,7 +5,7 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-.. _butterfly_chart:
+.. _vantage_point_report_butterfly_chart:
 
 Butterfly Chart
 ===============================================================================
@@ -103,12 +103,8 @@ def butterfly_chart(
         **filters,
     ).df_
 
-    pos_a, name_a = extract_item_position_and_name(
-        matrix.columns.tolist(), item_a
-    )
-    pos_b, name_b = extract_item_position_and_name(
-        matrix.columns.tolist(), item_b
-    )
+    pos_a, name_a = extract_item_position_and_name(matrix.columns.tolist(), item_a)
+    pos_b, name_b = extract_item_position_and_name(matrix.columns.tolist(), item_b)
 
     matrix = matrix.iloc[:, [pos_a, pos_b]]
 

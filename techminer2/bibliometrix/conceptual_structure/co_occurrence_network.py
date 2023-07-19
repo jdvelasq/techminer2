@@ -9,6 +9,6 @@
 Co-occurrence Network
 ===============================================================================
 
-See ::`vosviewer_co_occurrence_network` in VOSviewer package. 
+See :ref:`vosviewer_co_occurrence_network` in VOSviewer module. 
 
 """

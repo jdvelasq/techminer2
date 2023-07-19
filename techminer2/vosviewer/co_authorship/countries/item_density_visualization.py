@@ -25,11 +25,8 @@ Item Density Visualization
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-
-
 from ...nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
-
-# from ...visualize_item_density import visualize_item_density
+from ...nx_visualize_item_density import nx_visualize_item_density
 
 FIELD = "countries"
 
@@ -44,21 +41,19 @@ def item_density_visualization(
     #
     # NETWORK PARAMS:
     algorithm_or_dict="louvain",
+    association_index="association",
+    #
+    # LAYOUT:
+    nx_k=None,
+    nx_iterations=30,
+    nx_random_state=0,
+    #
+    # DENSITY VISUALIZATION:
     bandwidth="silverman",
     colorscale="Aggrnyl",
     opacity=0.6,
     #
-    n_labels=None,
-    # color="#7793a5",
-    nx_k=None,
-    nx_iterations=10,
-    nx_random_state=0,
-    # node_size_min=30,
-    # node_size_max=70,
-    textfont_size_min=10,
-    textfont_size_max=20,
-    # edge_width_min=0.8,
-    # edge_width_max=3.0,
+    # AXES:
     xaxes_range=None,
     yaxes_range=None,
     show_axes=False,
@@ -70,13 +65,23 @@ def item_density_visualization(
     cited_by_filter=(None, None),
     **filters,
 ):
-    #
+    # --------------------------------------------------------------------------
     # TODO: REMOVE DEPENDENCES:
-    color = "#7793a5"
+    #
+    # NODES:
     node_size_min = 30
     node_size_max = 70
+    textfont_size_min = 10
+    textfont_size_max = 20
+    textfont_opacity_min = 0.35
+    textfont_opacity_max = 1.00
+    #
+    # EDGES:
+    edge_color = "#7793a5"
     edge_width_min = 0.8
     edge_width_max = 3.0
+    #
+    # --------------------------------------------------------------------------
 
     nx_graph = nx_create_co_occurrence_graph(
         #
@@ -89,17 +94,25 @@ def item_density_visualization(
         gc_range=gc_range,
         custom_items=custom_items,
         #
-        # NETWORK PARAMS:
+        # NETWORK CLUSTERING:
         algorithm_or_dict=algorithm_or_dict,
-        association_index=None,
-        color=color,
+        association_index=association_index,
+        #
+        # LAYOUT:
         nx_k=nx_k,
         nx_iterations=nx_iterations,
         nx_random_state=nx_random_state,
+        #
+        # NODES:
         node_size_min=node_size_min,
         node_size_max=node_size_max,
         textfont_size_min=textfont_size_min,
         textfont_size_max=textfont_size_max,
+        textfont_opacity_min=textfont_opacity_min,
+        textfont_opacity_max=textfont_opacity_max,
+        #
+        # EDGES:
+        edge_color=edge_color,
         edge_width_min=edge_width_min,
         edge_width_max=edge_width_max,
         #
@@ -111,7 +124,7 @@ def item_density_visualization(
         **filters,
     )
 
-    return visualize_item_density(
+    return nx_visualize_item_density(
         #
         # FUNCTION PARAMS:
         nx_graph=nx_graph,
@@ -120,7 +133,6 @@ def item_density_visualization(
         bandwidth=bandwidth,
         colorscale=colorscale,
         opacity=opacity,
-        # n_labels=n_labels,
         xaxes_range=xaxes_range,
         yaxes_range=yaxes_range,
         show_axes=show_axes,

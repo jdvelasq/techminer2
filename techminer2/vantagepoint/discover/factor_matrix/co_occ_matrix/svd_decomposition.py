@@ -6,6 +6,8 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
+.. _vantagepoint_factor_matrix_co_occurrence_svd:
+
 SVD Factor Decomposition
 ===============================================================================
 

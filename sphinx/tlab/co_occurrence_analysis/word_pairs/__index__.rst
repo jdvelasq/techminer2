@@ -1,0 +1,8 @@
+Comparison between Word Pairs/
+=========================================================================================
+
+.. toctree::
+   bar_chart
+
+.. toctree::
+   radial_diagram

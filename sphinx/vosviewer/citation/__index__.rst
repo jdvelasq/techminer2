@@ -1,4 +1,4 @@
-.. _vosviewer_co_authorship:
+.. _vosviewer_citation_network:
 
 Citation/
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -107,19 +107,14 @@ def nx_create_citation_graph(
     #
     # Sets the node attributes
     nx_graph = nx_set_node_color_from_group_attr(nx_graph)
-
     nx_graph = nx_set_node_size_to_constant(nx_graph, node_size)
-
     nx_graph = nx_set_textfont_size_to_constant(nx_graph, textfont_size)
-
     nx_graph = nx_set_textfont_opacity_to_constant(nx_graph, textfont_opacity)
 
     #
     # Sets the edge attributes
     nx_graph = nx_compute_edge_width_from_edge_weight(nx_graph, edge_width_min, edge_width_max)
-
     nx_graph = nx_compute_textposition_from_graph(nx_graph)
-
     nx_graph = nx_set_edge_color_to_constant(nx_graph, edge_color)
 
     return nx_graph

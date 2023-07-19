@@ -17,6 +17,9 @@ def nx_visualize_graph(
     xaxes_range=None,
     yaxes_range=None,
     show_axes=False,
+    #
+    # ARROWS:
+    draw_arrows=False,
 ):
     node_trace = __create_node_trace(nx_graph)
     edge_traces = __create_edge_traces(nx_graph)
@@ -30,6 +33,44 @@ def nx_visualize_graph(
     )
 
     fig = __add_node_labels_to_fig(fig, nx_graph)
+
+    fig = __draw_arrows(fig, nx_graph, draw_arrows)
+
+    return fig
+
+
+def __draw_arrows(fig, nx_graph, draw_arrows):
+    if draw_arrows is False:
+        return fig
+
+    for edge in nx_graph.edges():
+        node_citing_article = edge[0]
+        node_cited_article = edge[1]
+
+        citing_x = nx_graph.nodes[node_citing_article]["x"]
+        citing_y = nx_graph.nodes[node_citing_article]["y"]
+        cited_x = nx_graph.nodes[node_cited_article]["x"]
+        cited_y = nx_graph.nodes[node_cited_article]["y"]
+
+        head_x = (citing_x + cited_x) / 2
+        head_y = (citing_y + cited_y) / 2
+
+        ax = head_x - (cited_x - citing_x) / 2 * 0.5
+        ay = head_y - (cited_y - citing_y) / 2 * 0.5
+
+        fig.add_annotation(
+            axref="x",
+            ayref="y",
+            x=head_x,
+            y=head_y,
+            ax=ax,
+            ay=ay,
+            showarrow=True,
+            arrowhead=4,
+            arrowsize=2,
+            arrowcolor="#7793a5",
+            arrowwidth=0.7,
+        )
 
     return fig
 

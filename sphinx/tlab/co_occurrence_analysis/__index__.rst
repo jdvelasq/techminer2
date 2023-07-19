@@ -2,25 +2,30 @@ Co-occurrence Analysis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
-    :maxdepth: 1
+   :maxdepth: 1
 
-    associations/__index__
+   word_associations/__index__
 
- 
+.. toctree::
+   :maxdepth: 1
 
-    
-* **Sequence and Network Analysis:**
+   co_word_analysis/__index__
 
-    .. toctree::
-        ego_graph
+.. toctree::
+   :maxdepth: 1
 
-    .. toctree::
-        ego_network
+   word_pairs/__index__
+
+.. toctree::
+   :maxdepth: 1
+
+   sequences_and_network_analysis/__index__
 
 
 .. toctree::
-    :maxdepth: 1
+   :maxdepth: 1
 
-    concordances/__index__
+   concordances/__index__
+
 
       

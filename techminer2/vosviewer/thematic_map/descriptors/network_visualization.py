@@ -14,11 +14,12 @@ Network Visualization
 >>> vosviewer.thematic_map.descriptors.network_visualization(
 ...     root_dir=root_dir,
 ...     top_n=10, 
-... ).write_html("sphinx/_static/descriptors_co_occurrence_network_visualization.html")
+... ).write_html("sphinx/_static/vosviewer/thematic_map/descriptors/network_visualization.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/descriptors_co_occurrence_network_visualization.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../../_static/vosviewer/thematic_map/descriptors/network_visualization.html" 
+    height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 from ...nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
@@ -36,7 +37,6 @@ def network_visualization(
     custom_items=None,
     #
     # NETWORK CLUSTERING:
-    association_index="association",
     algorithm_or_dict="louvain",
     #
     # LAYOUT:
@@ -81,7 +81,7 @@ def network_visualization(
         custom_items=custom_items,
         #
         # NETWORK CLUSTERING:
-        association_index=association_index,
+        association_index="association",
         algorithm_or_dict=algorithm_or_dict,
         #
         # LAYOUT:

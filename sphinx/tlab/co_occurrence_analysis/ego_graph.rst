@@ -1,5 +1,0 @@
-.. automodule:: techminer2.tlab.sequence_and_network_analysis.ego_graph
-    :members:
-    :undoc-members:
-    :show-inheritance:
-

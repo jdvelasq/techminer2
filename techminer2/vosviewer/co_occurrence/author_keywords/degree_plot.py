@@ -17,11 +17,12 @@ Degree Plot
 ...     root_dir=root_dir,
 ...     top_n=20, 
 ... )
->>> plot.fig_.write_html("sphinx/_static/co_occ_author_keywords_degree_plot.html")
+>>> plot.fig_.write_html("sphinx/_static/vosviewer/co_occurrence/author_keywords_degree_plot.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/co_occ_author_keywords_degree_plot.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../../_static/vosviewer/co_occurrence/author_keywords_degree_plot.html" 
+    height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> plot.df_.head()
    Node                          Name  Degree
@@ -85,11 +86,6 @@ def degree_plot(
     algorithm_or_dict="louvain",
     association_index="association",
     #
-    # LAYOUT:
-    nx_k=None,
-    nx_iterations=10,
-    nx_random_state=0,
-    #
     # DEGREE PLOT:
     textfont_size=10,
     marker_size=7,
@@ -104,16 +100,26 @@ def degree_plot(
     cited_by_filter=(None, None),
     **filters,
 ):
-    #
+    # --------------------------------------------------------------------------
     # TODO: REMOVE DEPENDENCES:
     #
+    #
+    # LAYOUT:
+    nx_k = None
+    nx_iterations = 10
+    nx_random_state = 0
+    #
+    # NODES:
     node_size_min = 30
     node_size_max = 70
     textfont_size_min = 10
     textfont_size_max = 20
     #
+    # EDGES:
     edge_width_min = 0.8
     edge_width_max = 3.0
+    #
+    # --------------------------------------------------------------------------
 
     nx_graph = nx_create_co_occurrence_graph(
         #

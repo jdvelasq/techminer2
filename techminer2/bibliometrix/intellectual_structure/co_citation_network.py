@@ -1,9 +1,15 @@
 # flake8: noqa
+# pylint: disable=invalid-name
 # pylint: disable=line-too-long
+# pylint: disable=missing-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
+# pylint: disable=too-many-statements
 """
 Co-citation Network
 ===============================================================================
 
+See VOSviewer / :ref:`vosviewer_co_citation_network`
 
 
 >>> root_dir = "data/regtech/"
@@ -263,18 +269,14 @@ def co_citation_network(
         **filters,
     )
 
-    graph = cluster_network(
-        coc_matrix, algorithm_or_estimator=algorithm_or_estimator
-    )
+    graph = cluster_network(coc_matrix, algorithm_or_estimator=algorithm_or_estimator)
 
     degree_plot = network_degree_plot(graph=graph, **network_degree_plot_dict)
 
     metrics = network_metrics(graph=graph)
 
     network = CocitationNetwork()
-    network.plot_ = network_viewer(
-        graph=graph, is_article=True, **network_viewer_dict
-    )
+    network.plot_ = network_viewer(graph=graph, is_article=True, **network_viewer_dict)
     network.graph_ = graph
     network.communities_ = network_communities(graph=graph)
 

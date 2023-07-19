@@ -120,4 +120,7 @@ def network_visualization(
         xaxes_range=xaxes_range,
         yaxes_range=yaxes_range,
         show_axes=show_axes,
+        #
+        # ARROWS:
+        draw_arrows=True,
     )

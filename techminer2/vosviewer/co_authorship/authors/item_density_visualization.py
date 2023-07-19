@@ -11,22 +11,22 @@ Item Density Visualization
 
 >>> from techminer2 import vosviewer
 >>> root_dir = "data/regtech/"
->>> vosviewer.citation.authors.item_density_visualization(
+>>> vosviewer.co_authorship.authors.item_density_visualization(
 ...     root_dir=root_dir,
 ...     top_n=10, 
 ...     bandwidth=0.1,
-... ).write_html("sphinx/_static/vosviewer/co_author_ship/authors/item_density_visualization.html")
+... ).write_html("sphinx/_static/vosviewer/co_authorship/authors/item_density_visualization.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/vosviewer/citation/authors/item_density_visualization.html" 
+    <iframe src="../../../../../_static/vosviewer/co_authorship/authors/item_density_visualization.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ...nx_create_citation_graph import nx_create_citation_graph
+from ...nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
 from ...nx_visualize_item_density import nx_visualize_item_density
 
-UNIT_OF_ANALYSIS = "authors"
+FIELD = "authors"
 
 
 def item_density_visualization(
@@ -51,11 +51,6 @@ def item_density_visualization(
     colorscale="Aggrnyl",
     opacity=0.6,
     #
-    # NODES:
-    node_size=30,
-    textfont_size=10,
-    textfont_opacity=0.35,
-    #
     # AXES:
     xaxes_range=None,
     yaxes_range=None,
@@ -72,9 +67,12 @@ def item_density_visualization(
     # TODO: REMOVE DEPENDENCES:
     #
     # NODES:
-    node_size = 30
-    textfont_size = 10
-    textfont_opacity = 0.35
+    node_size_min = 30
+    node_size_max = 70
+    textfont_size_min = 10
+    textfont_size_max = 20
+    textfont_opacity_min = 0.35
+    textfont_opacity_max = 1.00
     #
     # EDGES:
     edge_color = "#7793a5"
@@ -83,10 +81,10 @@ def item_density_visualization(
     #
     # --------------------------------------------------------------------------
 
-    nx_graph = nx_create_citation_graph(
+    nx_graph = nx_create_co_occurrence_graph(
         #
         # FUNCTION PARAMS:
-        unit_of_analysis=UNIT_OF_ANALYSIS,
+        rows_and_columns=FIELD,
         #
         # COLUMN PARAMS:
         top_n=top_n,
@@ -95,8 +93,8 @@ def item_density_visualization(
         custom_items=custom_items,
         #
         # NETWORK CLUSTERING:
-        association_index=association_index,
         algorithm_or_dict=algorithm_or_dict,
+        association_index=association_index,
         #
         # LAYOUT:
         nx_k=nx_k,
@@ -104,9 +102,12 @@ def item_density_visualization(
         nx_random_state=nx_random_state,
         #
         # NODES:
-        node_size=node_size,
-        textfont_size=textfont_size,
-        textfont_opacity=textfont_opacity,
+        node_size_min=node_size_min,
+        node_size_max=node_size_max,
+        textfont_size_min=textfont_size_min,
+        textfont_size_max=textfont_size_max,
+        textfont_opacity_min=textfont_opacity_min,
+        textfont_opacity_max=textfont_opacity_max,
         #
         # EDGES:
         edge_color=edge_color,

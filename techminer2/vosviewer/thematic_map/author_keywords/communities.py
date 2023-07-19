@@ -6,8 +6,6 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-.. _author_keywords_communities:
-
 Communities
 ===============================================================================
 
@@ -51,11 +49,6 @@ def communities(
     # NETWORK PARAMS:
     algorithm_or_dict="louvain",
     #
-    # LAYOUT:
-    nx_k=None,
-    nx_iterations=10,
-    nx_random_state=0,
-    #
     # DATABASE PARAMS:
     root_dir="./",
     database="main",
@@ -63,15 +56,26 @@ def communities(
     cited_by_filter=(None, None),
     **filters,
 ):
-    #
+    # --------------------------------------------------------------------------
     # TODO: REMOVE DEPENDENCES:
-    color = "#7793a5"
+    #
+    #
+    # NODES:
     node_size_min = 30
     node_size_max = 70
-    edge_width_min = 0.8
-    edge_width_max = 3.0
     textfont_size_min = 10
     textfont_size_max = 20
+    #
+    # EDGES:
+    edge_width_min = 0.8
+    edge_width_max = 3.0
+    #
+    # LAYOUT:
+    nx_k = None
+    nx_iterations = 10
+    nx_random_state = 0
+    #
+    # --------------------------------------------------------------------------
 
     nx_graph = nx_create_co_occurrence_graph(
         #

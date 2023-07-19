@@ -7,12 +7,10 @@
 # pylint: disable=too-many-statements
 # pylint: disable=too-many-branches
 """
-.. _vantagepoin_factor_map:
-
-Factor Map
+TODO: Factor Map
 ===============================================================================
 
-See :ref:``.
+
 
 
 """

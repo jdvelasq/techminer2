@@ -27,3 +27,9 @@ VOSviewer 1.6.19
    :maxdepth: 1
 
    bibliometric_coupling_by_refs/__index__
+
+
+.. toctree::
+   :maxdepth: 1
+
+   co_citation/__index__   

@@ -7,3 +7,6 @@ Intellectual Structure
 
 .. toctree::   
    historiograph
+
+.. toctree::   
+   citation_network   

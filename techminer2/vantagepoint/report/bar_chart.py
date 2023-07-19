@@ -5,7 +5,7 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-.. _bar_chart:
+.. _vantagepoint_reports_bar_chart:
 
 Bar Chart
 ===============================================================================
@@ -126,15 +126,9 @@ def bar_chart(
         **filters,
     )
 
-    metric_label = (
-        metric.replace("_", " ").upper()
-        if metric_label is None
-        else metric_label
-    )
+    metric_label = metric.replace("_", " ").upper() if metric_label is None else metric_label
 
-    field_label = (
-        field.replace("_", " ").upper() if field_label is None else field_label
-    )
+    field_label = field.replace("_", " ").upper() if field_label is None else field_label
 
     data_frame = items.df_.copy()
 

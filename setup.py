@@ -88,7 +88,6 @@ setup(
         "techminer2.tlab.cluster_analysis",
         "techminer2.tlab.co_word_analysis",
         "techminer2.tlab.comparison_between_pairs_of_keywords",
-        "techminer2.tlab.concordances",
         "techminer2.tlab.correspondence_analysis",
         "techminer2.tlab.dictionary_based_classification",
         "techminer2.tlab.document_clustering",

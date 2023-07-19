@@ -14,11 +14,12 @@ Network Visualization
 >>> vosviewer.co_occurrence.abstract_nlp_phrases.network_visualization(
 ...     root_dir=root_dir,
 ...     top_n=10, 
-... ).write_html("sphinx/_static/abstract_nlp_phrases_co_occurrence_network_visualization.html")
+... ).write_html("sphinx/_static/vosviewer/co_occurrence/abstract_nlp_phrases/network_visualization.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/abstract_nlp_phrases_co_occurrence_network_visualization.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../../_static/vosviewer/co_occurrence/abstract_nlp_phrases/network_visualization.html" 
+    height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 from ...nx_create_co_occurrence_graph import nx_create_co_occurrence_graph

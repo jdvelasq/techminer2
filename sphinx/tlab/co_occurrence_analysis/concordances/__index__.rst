@@ -1,8 +1,6 @@
-Concordances/
+Concordances and Word Trees/
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
-    concordances_contexts
-
-.. toctree::
-    concordances_prompt
+    concordances
+    
