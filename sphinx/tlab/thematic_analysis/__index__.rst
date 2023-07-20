@@ -2,13 +2,16 @@ Thematic Analysis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::      
-    document_clustering
+    thematic_analysis_of_elementary_contexts
 
 .. toctree::      
     emergent_themes
 
 .. toctree::      
-    dictionary_based_clustering
+    thematic_document_classification
+
+.. toctree::      
+    dictionary_based_classification
 
 .. toctree::      
     text_and_discourses    
