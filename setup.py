@@ -170,4 +170,4 @@ setup(
     ],
 )
 
-_post_install()
+# _post_install()
