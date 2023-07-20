@@ -11,7 +11,7 @@ Trending Words per Year
 
 >>> from techminer2 import bibliometrix
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/index_keywords_trending_words_per_year.html"
+>>> file_name = "sphinx/_static/bibliometrix/index_keywords/trending_words_per_year.html"
 >>> words = bibliometrix.index_keywords.trending_words_per_year(
 ...     root_dir=root_dir, 
 ... )
@@ -49,13 +49,11 @@ COMPLIANCE_COSTS                              1     2021  ...  0.1500      1
 
 .. raw:: html
 
-    <iframe src="../../../../../../_static/index_keywords_trending_words_per_year.html" height="900px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../../../_static/bibliometrix/index_keywords/trending_words_per_year.html" height="900px" width="100%" frameBorder="0"></iframe>
 
 
 """
-from ..trending_terms_per_year import (
-    trending_terms_per_year as analyze_trending_terms_per_year,
-)
+from ..trending_terms_per_year import trending_terms_per_year as analyze_trending_terms_per_year
 
 FIELD = "index_keywords"
 

@@ -36,11 +36,12 @@ Most Relevant
 
 
 
->>> items.fig_.write_html("sphinx/_static/authors_most_relevant_chart.html")
+>>> items.fig_.write_html("sphinx/_static/bibliometrix/authors/most_relevant_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/authors_most_relevant_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../../_static/bibliometrix/authors/most_relevant_chart.html" 
+    height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> print(items.prompt_)

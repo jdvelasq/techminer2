@@ -28,11 +28,12 @@ Most Frequent Words
 | ARTIFICIAL_INTELLIGENCE |          9 |     4 |
 | RISK_MANAGEMENT         |         10 |     3 |
 
->>> items.fig_.write_html("sphinx/_static/author_keywords_most_frequent_chart.html")
+>>> items.fig_.write_html("sphinx/_static/bibliometrix/author_keywords/most_frequent_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../../_static/author_keywords_most_frequent_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../../../_static/bibliometrix/author_keywords/most_frequent_chart.html" 
+    height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> print(items.prompt_)

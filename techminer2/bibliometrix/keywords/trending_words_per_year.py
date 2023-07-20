@@ -11,7 +11,7 @@ Trending Words per Year
 
 >>> from techminer2 import bibliometrix
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/keywords_trending_words_per_year.html"
+>>> file_name = "sphinx/_static/bibliometrix/keywords/trending_words_per_year.html"
 >>> words = bibliometrix.keywords.trending_words_per_year(
 ...     root_dir=root_dir, 
 ... )
@@ -49,13 +49,12 @@ ANTI_MONEY_LAUNDERING                         6     2020  ...  0.301852      2
 
 .. raw:: html
 
-    <iframe src="../../../../../../_static/keywords_trending_words_per_year.html" height="900px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../../../_static/bibliometrix/keywords/trending_words_per_year.html" 
+    height="900px" width="100%" frameBorder="0"></iframe>
 
 
 """
-from ..trending_terms_per_year import (
-    trending_terms_per_year as analyze_trending_terms_per_year,
-)
+from ..trending_terms_per_year import trending_terms_per_year as analyze_trending_terms_per_year
 
 FIELD = "keywords"
 

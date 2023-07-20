@@ -10,7 +10,7 @@ Thematic Map
 ===============================================================================
 
 
-See :ref:`vosviewer_thematic_map` in VOSviewer module.
+See **VOSviewer/** :ref:`vosviewer_thematic_map`.
 
 
 """

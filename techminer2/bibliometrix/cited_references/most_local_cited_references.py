@@ -11,7 +11,7 @@ Most Local Cited References
 
 >>> from techminer2 import bibliometrix
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/most_local_cited_references.html"
+>>> file_name = "sphinx/_static/bibliometrix/cited_references/most_local_cited_references.html"
 >>> documents = bibliometrix.cited_references.most_local_cited_references(
 ...     top_n=20,
 ...     root_dir=root_dir,
@@ -24,7 +24,8 @@ Most Local Cited References
 
 .. raw:: html
 
-    <iframe src="../../../_static/most_local_cited_references.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/bibliometrix/cited_references/most_local_cited_references.html" 
+    height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> print(documents.df_.head(5).to_markdown())
 | article                                            |   year |   global_citations |   local_citations |   global_citations_per_year |   local_citations_per_year | doi                            |

@@ -15,11 +15,11 @@ Production over Time
 ...    top_n=10,
 ...    root_dir=root_dir,
 ... )
->>> production_over_time.fig_.write_html("sphinx/_static/sources_production_over_time.html")
+>>> production_over_time.fig_.write_html("sphinx/_static/bibliometrix/sources/production_over_time.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/sources_production_over_time.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/bibliometrix/sources/production_over_time.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> print(production_over_time.df_.to_markdown())
 | source_abbr                         |   2016 |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |

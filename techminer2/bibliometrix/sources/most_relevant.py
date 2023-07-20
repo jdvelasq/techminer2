@@ -32,11 +32,11 @@ Most Relevant
 | FINANCIAL INNOV               |         13 |         9 |     1 |                 13 |
 | ICEIS - PROC INT CONF ENTERP  |         14 |        10 |     1 |                 12 |
 
->>> items.fig_.write_html("sphinx/_static/sources_most_relevant_chart.html")
+>>> items.fig_.write_html("sphinx/_static/bibliometrix/sources/most_relevant_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/sources_most_relevant_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/bibliometrix/sources/most_relevant_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> print(items.prompt_)

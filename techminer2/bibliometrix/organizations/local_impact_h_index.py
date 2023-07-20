@@ -28,11 +28,12 @@ Local Impact --- H-Index
 | ctr for Law, Markets & Regulation, UNSW Australia, Australia (AUS) |         1 |         1 |      0.14 |
 | Duke Univ Sch of Law (USA)                                         |         1 |         1 |      0.12 |
 
->>> items.fig_.write_html("sphinx/_static/organizations_h_index_chart.html")
+>>> items.fig_.write_html("sphinx/_static/bibliometrix/organizations/h_index_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/organizations_h_index_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../../_static/bibliometrix/organizations/h_index_chart.html" 
+    height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> print(items.prompt_)

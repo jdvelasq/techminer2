@@ -9,6 +9,6 @@
 Citation Network
 ===============================================================================
 
-See VOSviewer / :ref:`vosviewer_citation_network`.
+See **VOSviewer/** :ref:`vosviewer_citation_network`.
 
 """

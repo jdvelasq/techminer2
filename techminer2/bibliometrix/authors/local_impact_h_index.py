@@ -29,11 +29,12 @@ Local Impact --- H-Index
 | Crane M     |         2 |         1 |      0.5  |
 
 
->>> items.fig_.write_html("sphinx/_static/authors_h_index_chart.html")
+>>> items.fig_.write_html("sphinx/_static/bibliometrix/authors/h_index_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/authors_h_index_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../../_static/bibliometrix/authors/h_index_chart.html" 
+    height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> print(items.prompt_)

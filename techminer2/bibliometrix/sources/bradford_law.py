@@ -73,11 +73,12 @@ Bradford's Law
 | RES INT BUS FINANC            |   45 |     1 |        51 |                  0 |      3 |
 | TECHNOL SOC                   |   46 |     1 |        52 |                  0 |      3 |
 
->>> bradford.fig_.write_html("sphinx/_static/bradford_law_chart.html")
+>>> bradford.fig_.write_html("sphinx/_static/bibliometrix/sources/bradford_law_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/bradford_law_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/bibliometrix/sources/bradford_law_chart.html")
+    height="600px" width="100%" frameBorder="0"></iframe>
 
 
 
@@ -155,9 +156,7 @@ def __zones(
     indicators = records[["source_abbr", "global_citations"]]
     indicators = indicators.assign(OCC=1)
     indicators = indicators.groupby(["source_abbr"], as_index=False).sum()
-    indicators = indicators.sort_values(
-        by=["OCC", "global_citations"], ascending=False
-    )
+    indicators = indicators.sort_values(by=["OCC", "global_citations"], ascending=False)
     indicators = indicators.assign(cum_OCC=indicators["OCC"].cumsum())
     indicators = indicators.assign(no=1)
     indicators = indicators.assign(no=indicators.no.cumsum())
@@ -165,16 +164,10 @@ def __zones(
     cum_occ = indicators["OCC"].sum()
     indicators = indicators.reset_index(drop=True)
     indicators = indicators.assign(zone=3)
-    indicators.zone = indicators.zone.where(
-        indicators.cum_OCC >= int(cum_occ * 2 / 3), 2
-    )
-    indicators.zone = indicators.zone.where(
-        indicators.cum_OCC >= int(cum_occ / 3), 1
-    )
+    indicators.zone = indicators.zone.where(indicators.cum_OCC >= int(cum_occ * 2 / 3), 2)
+    indicators.zone = indicators.zone.where(indicators.cum_OCC >= int(cum_occ / 3), 1)
     indicators = indicators.set_index("source_abbr")
-    indicators = indicators[
-        ["no", "OCC", "cum_OCC", "global_citations", "zone"]
-    ]
+    indicators = indicators[["no", "OCC", "cum_OCC", "global_citations", "zone"]]
 
     return indicators
 
@@ -221,13 +214,10 @@ def __table(
         for a in sources["Acum Num Sources"]
     ]
 
-    sources["Tot Documents published"] = (
-        sources["Num Sources"] * sources["Documents published"]
-    )
+    sources["Tot Documents published"] = sources["Num Sources"] * sources["Documents published"]
     sources["Num Documents"] = sources["Tot Documents published"].cumsum()
     sources["Tot Documents"] = sources["Num Documents"].map(
-        lambda w: str(round(w / sources["Num Documents"].max() * 100, 2))
-        + " %"
+        lambda w: str(round(w / sources["Num Documents"].max() * 100, 2)) + " %"
     )
 
     bradford1 = int(len(records) / 3)

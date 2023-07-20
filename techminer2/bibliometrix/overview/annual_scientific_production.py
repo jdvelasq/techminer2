@@ -57,12 +57,13 @@ Table:
 ```
 <BLANKLINE>
 
->>> file_name = "sphinx/_static/annual_scientific_production_chart.html"
+>>> file_name = "sphinx/_static/bibliometrix/overview/annual_scientific_production_chart.html"
 >>> annual_scientific_production.fig_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../../_static/annual_scientific_production_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/bibliometrix/overview/annual_scientific_production_chart.html" 
+    height="600px" width="100%" frameBorder="0"></iframe>
          
 
 """
@@ -72,12 +73,8 @@ import pandas as pd
 import plotly.graph_objects as go
 
 from ...format_prompt_for_dataframes import format_prompt_for_dataframes
-from ...techminer.metrics.global_metrics_by_year_chart import (
-    global_metrics_by_year_chart,
-)
-from ...techminer.metrics.global_metrics_by_year_table import (
-    global_metrics_by_year_table,
-)
+from ...techminer.metrics.global_metrics_by_year_chart import global_metrics_by_year_chart
+from ...techminer.metrics.global_metrics_by_year_table import global_metrics_by_year_table
 
 
 def annual_scientific_production(

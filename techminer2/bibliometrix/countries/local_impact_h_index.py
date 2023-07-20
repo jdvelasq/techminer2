@@ -30,11 +30,11 @@ Local Impact --- H-Index
 
 
 
->>> items.fig_.write_html("sphinx/_static/countries_h_index_chart.html")
+>>> items.fig_.write_html("sphinx/_static/bibliometrix/countries/h_index_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/countries_h_index_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../../_static/bibliometrix/countries/h_index_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> print(items.prompt_)

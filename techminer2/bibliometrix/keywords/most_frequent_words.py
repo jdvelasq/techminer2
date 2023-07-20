@@ -29,11 +29,12 @@ Most Frequent Words
 | REGULATION              |         10 |     5 |
 
 
->>> items.fig_.write_html("sphinx/_static/keywords_most_frequent_chart.html")
+>>> items.fig_.write_html("sphinx/_static/bibliometrix/keywords/most_frequent_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../../_static/keywords_most_frequent_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../../../_static/bibliometrix/keywords/most_frequent_chart.html" 
+    height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> print(items.prompt_)

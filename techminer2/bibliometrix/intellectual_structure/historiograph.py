@@ -9,6 +9,6 @@
 Historiograph
 ===============================================================================
 
-See VOSviewer / Citation / :ref:`vosviewer_citation_documents`.
+See **VOSviewer/ Citation/** :ref:`vosviewer_citation_documents`.
 
 """

@@ -30,11 +30,12 @@ Local Impact --- Global Citations
 
 
 
->>> items.fig_.write_html("sphinx/_static/organizations_global_citations_chart.html")
+>>> items.fig_.write_html("sphinx/_static/bibliometrix/organizations/global_citations_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/organizations_global_citations_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../../_static/bibliometrix/organizations/global_citations_chart.html" 
+    height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> print(items.prompt_)

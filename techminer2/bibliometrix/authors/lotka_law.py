@@ -14,11 +14,12 @@ Lotka's Law
 >>> lotka = bibliometrix.authors.lotka_law(
 ...    root_dir=root_dir,
 ... )
->>> lotka.fig_.write_html("sphinx/_static/lotka_law.html")
+>>> lotka.fig_.write_html("sphinx/_static/bibliometrix/authors/lotka_law.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/lotka_law.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../../_static/bibliometrix/authors/lotka_law.html" 
+    height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> print(lotka.df_.to_markdown())
 |    |   Documents Written |   Num Authors |   Proportion of Authors |   Theoretical Num Authors |   Prop Theoretical Authors |
@@ -33,9 +34,7 @@ from dataclasses import dataclass
 
 import plotly.graph_objects as go
 
-from ...techminer.metrics.global_indicators_by_field import (
-    global_indicators_by_field,
-)
+from ...techminer.metrics.global_indicators_by_field import global_indicators_by_field
 
 
 def lotka_law(
@@ -155,9 +154,7 @@ def __core_authors_table(
     indicators = indicators.reset_index(drop=True)
     indicators = indicators[["Documents Written", "Num Authors"]]
     indicators["Proportion of Authors"] = (
-        indicators["Num Authors"]
-        .map(lambda x: x / indicators["Num Authors"].sum())
-        .round(3)
+        indicators["Num Authors"].map(lambda x: x / indicators["Num Authors"].sum()).round(3)
     )
 
     #
@@ -165,9 +162,7 @@ def __core_authors_table(
     #
     total_authors = indicators["Num Authors"].max()
     indicators["Theoretical Num Authors"] = (
-        indicators["Documents Written"]
-        .map(lambda x: total_authors / float(x * x))
-        .round(3)
+        indicators["Documents Written"].map(lambda x: total_authors / float(x * x)).round(3)
     )
     total_theoretical_num_authors = indicators["Theoretical Num Authors"].sum()
     indicators["Prop Theoretical Authors"] = (

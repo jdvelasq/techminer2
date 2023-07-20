@@ -10,7 +10,7 @@ Word Frequency over Time
 
 >>> from techminer2 import bibliometrix
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/author_keywords_words_frequency_over_time.html"
+>>> file_name = "sphinx/_static/bibliometrix/author_keywords/words_frequency_over_time.html"
 >>> words = bibliometrix.author_keywords.words_frequency_over_time(
 ...     top_n=5,
 ...     root_dir=root_dir,
@@ -19,7 +19,8 @@ Word Frequency over Time
 
 .. raw:: html
 
-    <iframe src="../../../../_static/author_keywords_words_frequency_over_time.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/bibliometrix/author_keywords/words_frequency_over_time.html" 
+    height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> print(words.df_.to_markdown())

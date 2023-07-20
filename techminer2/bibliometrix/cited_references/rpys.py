@@ -11,13 +11,14 @@ RPYS (Reference Publication Year Spectroscopy)
 
 >>> from techminer2 import bibliometrix
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/rpys_chart.html"
+>>> file_name = "sphinx/_static/bibliometrix/cited_references/rpys_chart.html"
 >>> rpys = bibliometrix.cited_references.rpys(root_dir=root_dir)
 >>> rpys.fig_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../_static/rpys_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/bibliometrix/cited_references/rpys_chart.html" 
+    height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> rpys.df_.head()
@@ -86,13 +87,9 @@ def __table(
         index=years,
     )
 
-    indicator.loc[
-        references_by_year.index, "Num References"
-    ] = references_by_year
+    indicator.loc[references_by_year.index, "Num References"] = references_by_year
     indicator = indicator.sort_index(axis=0, ascending=True)
-    indicator["Median"] = (
-        indicator["Num References"].rolling(window=5).median().fillna(0)
-    )
+    indicator["Median"] = indicator["Num References"].rolling(window=5).median().fillna(0)
 
     indicator["Median"] = indicator["Median"] - indicator["Num References"]
     return indicator

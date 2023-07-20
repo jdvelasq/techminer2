@@ -28,11 +28,11 @@ Most Frequent Words
 | FINANCIAL_SERVICES_INDUSTRY |          9 |     5 |
 | INFORMATION_TECHNOLOGY      |         10 |     5 |
 
->>> items.fig_.write_html("sphinx/_static/abstract_nlp_phrases_most_frequent_chart.html")
+>>> items.fig_.write_html("sphinx/_static/bibliometrix/abstract_nlp_phrases/most_frequent_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../../_static/abstract_nlp_phrases_most_frequent_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../../../_static/bibliometrix/abstract_nlp_phrases/most_frequent_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> print(items.prompt_)

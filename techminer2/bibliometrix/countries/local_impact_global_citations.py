@@ -29,11 +29,12 @@ Local Impact --- Global Citations
 | Greece         |        10 |                 21 |                 8 |                           21    |                           8    |                        3.5  |
 
 
->>> items.fig_.write_html("sphinx/_static/countries_global_citations_chart.html")
+>>> items.fig_.write_html("sphinx/_static/bibliometrix/countries/global_citations_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/countries_global_citations_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../../_static/bibliometrix/countries/global_citations_chart.html" 
+    height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> print(items.prompt_)

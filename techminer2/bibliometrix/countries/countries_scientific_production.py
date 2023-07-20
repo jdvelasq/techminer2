@@ -14,11 +14,11 @@ Country Scientific Production
 >>> production = bibliometrix.countries.countries_scientific_production(
 ...     root_dir=root_dir
 ... )
->>> production.fig_.write_html("sphinx/_static/countries_scientific_production.html")
+>>> production.fig_.write_html("sphinx/_static/bibliometrix/countries/countries_scientific_production.html")
  
 .. raw:: html
 
-    <iframe src="../../../../../_static/countries_scientific_production.html" height="410px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../../_static/bibliometrix/countries/countries_scientific_production.html" height="410px" width="100%" frameBorder="0"></iframe>
 
     
 >>> production.df_.head()

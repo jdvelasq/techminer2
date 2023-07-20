@@ -11,9 +11,9 @@ Factorial Analysis
 
 See:
 
-    * :ref:`vantagepoint_factor_matrix` in VantagePoint module.
+    * **VantagePoint/ Discover/** :ref:`vantagepoint_factor_matrix`.
 
-    * :ref:`vantagepoint_concept_grid` in VantagePoint module.
+    * **VantagePoint/ Explore/** :ref:`vantagepoint_concept_grid`.
 
 
 """

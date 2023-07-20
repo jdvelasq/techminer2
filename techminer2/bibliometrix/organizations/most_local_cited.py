@@ -29,11 +29,11 @@ Most Local Cited
 | UNSW Sydney, Kensington, Australia (AUS)                     |         8 |                 24 |                 5 |                           24    |                           5    |                        6    |
 
 
->>> items.fig_.write_html("sphinx/_static/organizations_most_local_cited_chart.html")
+>>> items.fig_.write_html("sphinx/_static/bibliometrix/organizations/most_local_cited_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/organizations_most_local_cited_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../../_static/bibliometrix/organizations/most_local_cited_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> print(items.prompt_)

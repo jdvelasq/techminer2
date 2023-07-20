@@ -9,7 +9,7 @@ Most Global Cited Documents
 ===============================================================================
 
 >>> from techminer2 import bibliometrix
->>> file_name = "sphinx/_static/most_global_cited_documents.html"
+>>> file_name = "sphinx/_static/bibliometrix/documents/most_global_cited_documents.html"
 >>> root_dir = "data/regtech/"
 >>> documents = bibliometrix.documents.most_global_cited_documents(
 ...     top_n=20,
@@ -22,7 +22,7 @@ Most Global Cited Documents
 
 .. raw:: html
 
-    <iframe src="../../../_static/most_global_cited_documents.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/bibliometrix/documents/most_global_cited_documents.html" height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> print(documents.df_.to_markdown())

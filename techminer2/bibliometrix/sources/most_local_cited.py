@@ -29,11 +29,11 @@ Most Local Cited
 | HANDBBLOCKCHAIN, DIGIT FINANC |        12 |                 11 |                 3 |                            11   |                            3   |                        1.57 |
 
 
->>> items.fig_.write_html("sphinx/_static/sources_most_local_cited_chart.html")
+>>> items.fig_.write_html("sphinx/_static/bibliometrix/sources/most_local_cited_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/sources_most_local_cited_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/bibliometrix/sources/most_local_cited_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> print(items.prompt_)

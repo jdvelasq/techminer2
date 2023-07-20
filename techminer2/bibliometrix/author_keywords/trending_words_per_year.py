@@ -11,7 +11,7 @@ Trending Words per Year
 
 >>> from techminer2 import bibliometrix
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/author_keywords_trending_words_per_year.html"
+>>> file_name = "sphinx/_static/bibliometrix/author_keywords/trending_words_per_year.html"
 >>> words = bibliometrix.author_keywords.trending_words_per_year(
 ...     root_dir=root_dir, 
 ... )
@@ -48,13 +48,12 @@ FINANCIAL_REGULATION                       4     2019  ...  0.241111      4
 
 .. raw:: html
 
-    <iframe src="../../../../../../_static/author_keywords_trending_words_per_year.html" height="900px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../../../_static/bibliometrix/author_keywords/trending_words_per_year.html" 
+    height="900px" width="100%" frameBorder="0"></iframe>
 
 
 """
-from ..trending_terms_per_year import (
-    trending_terms_per_year as analyze_trending_terms_per_year,
-)
+from ..trending_terms_per_year import trending_terms_per_year as analyze_trending_terms_per_year
 
 FIELD = "author_keywords"
 

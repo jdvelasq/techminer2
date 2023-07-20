@@ -29,11 +29,11 @@ Most Local Cited
 | United Arab Emirates |        12 |                 13 |                 7 |                            6.5  |                           3.5  |                        3.25 |
 
 
->>> items.fig_.write_html("sphinx/_static/countries_most_local_cited_chart.html")
+>>> items.fig_.write_html("sphinx/_static/bibliometrix/countries/most_local_cited_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/countries_most_local_cited_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../../_static/bibliometrix/countries/most_local_cited_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> print(items.prompt_)

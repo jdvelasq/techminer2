@@ -15,11 +15,12 @@ Corresponding Author's Country
 ...     top_n=20,
 ...     root_dir=root_dir,
 ... )
->>> result.fig_.write_html("sphinx/_static/corresponding_authors_countries.html")
+>>> result.fig_.write_html("sphinx/_static/bibliometrix/countries/corresponding_authors_countries.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/corresponding_authors_countries.html"height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../../_static/bibliometrix/countries/corresponding_authors_countries.html" 
+    height="600px" width="100%" frameBorder="0"></iframe>
 
 
 >>> print(result.df_.head().to_markdown())
@@ -88,9 +89,7 @@ import plotly.express as px
 from ..._filtering_lib import generate_custom_items
 from ..._sorting_lib import sort_indicators_by_metric
 from ...format_prompt_for_dataframes import format_prompt_for_dataframes
-from ...techminer.metrics.collaboration_indicators_by_field import (
-    collaboration_indicators_by_field,
-)
+from ...techminer.metrics.collaboration_indicators_by_field import collaboration_indicators_by_field
 
 
 def corresponding_authors_countries(
@@ -204,12 +203,8 @@ def __plot(indicators):
         id_vars="countries",
         value_vars=["single_publication", "multiple_publication"],
     )
-    indicators = indicators.rename(
-        columns={"variable": "publication", "value": "Num Documents"}
-    )
-    indicators.publication = indicators.publication.map(
-        lambda x: x.replace("_", " ").title()
-    )
+    indicators = indicators.rename(columns={"variable": "publication", "value": "Num Documents"})
+    indicators.publication = indicators.publication.map(lambda x: x.replace("_", " ").title())
     indicators.countries = indicators.countries.map(lambda x: x.title())
 
     fig = px.bar(

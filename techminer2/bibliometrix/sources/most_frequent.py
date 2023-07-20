@@ -28,11 +28,12 @@ Most Frequent
 | PALGRAVE STUD DIGIT BUS ENABL |          9 |     1 |
 | DUKE LAW J                    |         10 |     1 |
 
->>> items.fig_.write_html("sphinx/_static/sources_most_frequent_chart.html")
+>>> items.fig_.write_html("sphinx/_static/bibliometrix/sources/most_frequent_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/sources_most_frequent_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/bibliometrix/sources/most_frequent_chart.html" 
+    height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> print(items.prompt_)

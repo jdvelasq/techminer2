@@ -22,10 +22,10 @@ GENERAL        Timespan                                 2016:2023
                Documents                                       52
                Annual growth rate %                         63.87
                Document average age                          2.77
-               References                                    2968
+               References                                    1101
                Average citations per document               10.83
                Average citations per document per year       1.35
-               Average references per document              59.36
+               Average references per document              23.93
                Sources                                         46
                Average documents per source                  1.13
 DOCUMENT TYPES article                                         31
@@ -61,13 +61,13 @@ NLP PHRASES    Raw title NLP phrases                           40
 DESCRIPTORS    Raw descriptors                                373
                Cleaned descriptors                            338
 
-
                
->>> main_information.fig_.write_html("sphinx/_static/main_information_dashboard.html")
+>>> main_information.fig_.write_html("sphinx/_static/bibliometrix/overview/main_information_dashboard.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/main_information_dashboard.html" height="800px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/bibliometrix/overview/main_information_dashboard.html"
+    height="800px" width="100%" frameBorder="0"></iframe>
 
 >>> print(main_information.prompt_)
 Your task is to generate a short summary for a research paper of a table \\
@@ -85,10 +85,10 @@ Table:
 | ('GENERAL', 'Documents')                               | 52        |
 | ('GENERAL', 'Annual growth rate %')                    | 63.87     |
 | ('GENERAL', 'Document average age')                    | 2.77      |
-| ('GENERAL', 'References')                              | 2968      |
+| ('GENERAL', 'References')                              | 1101      |
 | ('GENERAL', 'Average citations per document')          | 10.83     |
 | ('GENERAL', 'Average citations per document per year') | 1.35      |
-| ('GENERAL', 'Average references per document')         | 59.36     |
+| ('GENERAL', 'Average references per document')         | 23.93     |
 | ('GENERAL', 'Sources')                                 | 46        |
 | ('GENERAL', 'Average documents per source')            | 1.13      |
 | ('DOCUMENT TYPES', 'article')                          | 31        |

@@ -29,11 +29,11 @@ Local Impact --- M-Index
 | ACM INT CONF PROC SER    |         1 |         1 |      0.33 |
 
 
->>> items.fig_.write_html("sphinx/_static/organizations_m_index_chart.html")
+>>> items.fig_.write_html("sphinx/_static/bibliometrix/organizations/m_index_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/organizations_m_index_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../../_static/bibliometrix/organizations/m_index_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> print(items.prompt_)

@@ -10,7 +10,7 @@ Word Cloud
 
 >>> from techminer2 import bibliometrix
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/images/abstract_nlp_phrases_word_cloud.png"
+>>> file_name = "sphinx/images/bibliometrix/abstract_nlp_phrases/word_cloud.png"
 
 
 >>> chart = bibliometrix.abstract_nlp_phrases.word_cloud(
@@ -20,7 +20,7 @@ Word Cloud
 ... )
 >>> chart.fig_.savefig(file_name)
 
-.. image:: ../../../../images/abstract_nlp_phrases_word_cloud.png
+.. image:: ../../../../images/bibliometrix/abstract_nlp_phrases/word_cloud.png
     :width: 900px
     :align: center
 

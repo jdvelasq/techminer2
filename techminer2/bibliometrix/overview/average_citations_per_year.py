@@ -16,11 +16,12 @@ Average Citations per Year
 >>> average_citations_per_year = bibliometrix.overview.average_citations_per_year(
 ...     root_dir=root_dir,
 ... )
->>> average_citations_per_year.fig_.write_html("sphinx/_static/average_citations_per_year.html")
+>>> average_citations_per_year.fig_.write_html("sphinx/_static/bibliometrix/overview/average_citations_per_year.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/average_citations_per_year.html"  height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/bibliometrix/overview/average_citations_per_year.html"  
+    height="600px" width="100%" frameBorder="0"></iframe>
 
 
 >>> print(average_citations_per_year.df_.head().to_markdown())
@@ -63,12 +64,8 @@ import pandas as pd
 import plotly.graph_objects as go
 
 from ...format_prompt_for_dataframes import format_prompt_for_dataframes
-from ...techminer.metrics.global_metrics_by_year_chart import (
-    global_metrics_by_year_chart,
-)
-from ...techminer.metrics.global_metrics_by_year_table import (
-    global_metrics_by_year_table,
-)
+from ...techminer.metrics.global_metrics_by_year_chart import global_metrics_by_year_chart
+from ...techminer.metrics.global_metrics_by_year_table import global_metrics_by_year_table
 
 
 def average_citations_per_year(
@@ -131,8 +128,6 @@ def __generate_prompt(data_frame: pd.DataFrame) -> str:
         "more than 250 words."
     )
 
-    table_text = data_frame[
-        ["mean_global_citations", "global_citations"]
-    ].to_markdown()
+    table_text = data_frame[["mean_global_citations", "global_citations"]].to_markdown()
 
     return format_prompt_for_dataframes(main_text, table_text)
