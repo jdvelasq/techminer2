@@ -52,11 +52,12 @@ Table:
 ```
 <BLANKLINE>
 
->>> list_items.fig_.write_html("sphinx/_static/list_items_chart.html")
+>>> list_items.fig_.write_html("sphinx/_static/vantagepoint/discover/list_items_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/list_items_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/vantagepoint/discover/list_items_chart.html"
+    height="600px" width="100%" frameBorder="0"></iframe>
 
 
 """
@@ -67,9 +68,7 @@ import plotly.express as px
 from ..._filtering_lib import generate_custom_items
 from ..._sorting_lib import sort_indicators_by_metric
 from ...format_prompt_for_dataframes import format_prompt_for_dataframes
-from ...techminer.metrics.global_indicators_by_field import (
-    global_indicators_by_field,
-)
+from ...techminer.metrics.global_indicators_by_field import global_indicators_by_field
 
 MARKER_COLOR = "#7793a5"
 MARKER_LINE_COLOR = "#465c6b"
@@ -211,20 +210,14 @@ def __table(
             )
 
             custom_items_gc = generate_custom_items(
-                indicators=sort_indicators_by_metric(
-                    data_frame, "global_citations"
-                ),
+                indicators=sort_indicators_by_metric(data_frame, "global_citations"),
                 top_n=top_n,
                 occ_range=occ_range,
                 gc_range=gc_range,
             )
 
             custom_items = custom_items_occ[:]
-            custom_items += [
-                item
-                for item in custom_items_gc
-                if item not in custom_items_occ
-            ]
+            custom_items += [item for item in custom_items_gc if item not in custom_items_occ]
 
         else:
             custom_items = generate_custom_items(
@@ -311,16 +304,10 @@ def __fig(
 ):
     """Creates a rank chart."""
 
-    metric_label = (
-        metric.replace("_", " ").upper()
-        if metric_label is None
-        else metric_label
-    )
+    metric_label = metric.replace("_", " ").upper() if metric_label is None else metric_label
 
     field_label = (
-        field.replace("_", " ").upper() + " RANKING"
-        if field_label is None
-        else field_label
+        field.replace("_", " ").upper() + " RANKING" if field_label is None else field_label
     )
 
     table = data_frame.copy()

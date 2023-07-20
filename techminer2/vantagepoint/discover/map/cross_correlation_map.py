@@ -16,17 +16,18 @@ Creates an Cross-correlation Map.
 
 >>> from techminer2 import vantagepoint
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/cross_correlation_map.html"
+>>> file_name = "sphinx/_static/vantagepoint/discover/map/cross_correlation_map.html"
 >>> vantagepoint.discover.map.cross_correlation_map(
 ...     rows_and_columns='authors', 
 ...     cross_with='countries',
 ...     top_n=10,
 ...     root_dir=root_dir,
-... ).write_html("sphinx/_static/cross_correlation_map.html")
+... ).write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../_static/cross_correlation_map.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/vantagepoint/discover/map/cross_correlation_map.html"
+    height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 import pandas as pd

@@ -21,22 +21,24 @@ Matrix Viewer
 ...     rows='authors',
 ...     col_top_n=10,
 ...     row_top_n=10,    
-... ).write_html("sphinx/_static/matrix_viewer_0.html")
+... ).write_html("sphinx/_static/vantagepoint/explore/matrix_viewer_0.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/matrix_viewer_0.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/vantagepoint/explore/matrix_viewer_0.html" 
+    height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> vantagepoint.explore.matrix_viewer(
 ...     root_dir=root_dir,
 ...     columns='author_keywords',
 ...     col_top_n=10,
-... ).write_html("sphinx/_static/matrix_viewer_1.html")
+... ).write_html("sphinx/_static/vantagepoint/explore/matrix_viewer_1.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/matrix_viewer_1.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/vantagepoint/explore/matrix_viewer_1.html" 
+    height="600px" width="100%" frameBorder="0"></iframe>
 
     
 """

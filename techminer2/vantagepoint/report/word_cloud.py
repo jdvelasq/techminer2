@@ -19,9 +19,9 @@ Word Cloud
 ...    top_n=50,
 ...    root_dir=root_dir,
 ... )
->>> word_cloud.fig_.savefig("sphinx/_static/word_cloud.png")
+>>> word_cloud.fig_.savefig("sphinx/_static/vantagepoint/report/word_cloud.png")
 
-.. image:: ../../_static/word_cloud.png
+.. image:: ../../_static/vantagepoint/report/word_cloud.png
     :width: 900px
     :align: center
     

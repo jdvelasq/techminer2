@@ -67,26 +67,29 @@ ENGLISH_LAW 02:017              CHARITYTECH 02:017 (1.000); ARTIFICIAL_INTELLI..
 ACCOUNTABILITY 02:014           DATA_PROTECTION_OFFICER 02:014 (1.000); COMPLI...
 DATA_PROTECTION_OFFICER 02:014  ACCOUNTABILITY 02:014 (1.000); COMPLIANCE 07:0...
 
->>> file_name = "sphinx/_static/factor_cooc_svd_fig.html"
+>>> file_name = "sphinx/_static/vantagepoint/discover/factor_matrix/co_occ_matrix/svd_decomposition_fig.html"
 >>> decomp.fig_('DIM_0', 'DIM_1').write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../../_static/factor_cooc_svd_fig.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/vantagepoint/discover/factor_matrix/co_occ_matrix/svd_decomposition_fig.html" 
+    height="600px" width="100%" frameBorder="0"></iframe>
 
->>> file_name = "sphinx/_static/factor_cooc_kernel_pca_mds_map.html"
+>>> file_name = "sphinx/_static/vantagepoint/discover/factor_matrix/co_occ_matrix/svd_decomposition_mds_map.html"
 >>> decomp.MDS_().write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../../_static/factor_cooc_svd_mds_map.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/vantagepoint/discover/factor_matrix/co_occ_matrix/svd_decomposition_mds_map.html" 
+    height="600px" width="100%" frameBorder="0"></iframe>
 
->>> file_name = "sphinx/_static/factor_cooc_svd_tnse_map.html"
+>>> file_name = "sphinx/_static/vantagepoint/discover/factor_matrix/co_occ_matrix/svd_decomposition_tnse_map.html"
 >>> decomp.TSNE_().write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../../_static/factor_svd_tnse_map.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/vantagepoint/discover/factor_matrix/co_occ_matrix/svd_decomposition_tnse_map.html" 
+    height="600px" width="100%" frameBorder="0"></iframe>
     
 
 """

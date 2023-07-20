@@ -10,7 +10,7 @@ Heat Map
 
 >>> from techminer2 import vantagepoint
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/heat_map.html"
+>>> file_name = "sphinx/_static/vantagepoint/report/heat_map.html"
 >>> heat_map = vantagepoint.report.heat_map(
 ...     columns='author_keywords',
 ...     col_occ_range=(4, None),
@@ -21,7 +21,7 @@ Heat Map
 
 .. raw:: html
 
-    <iframe src="../../../../_static/heat_map.html" height="800px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/vantagepoint/report/heat_map.html" height="800px" width="100%" frameBorder="0"></iframe>
 
 
 """

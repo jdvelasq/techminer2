@@ -4,8 +4,10 @@ Thematic Analysis
 .. toctree::      
     thematic_analysis_of_elementary_contexts
 
-.. toctree::      
-    emergent_themes
+.. toctree::    
+    :maxdepth: 1
+
+    topic_modeling_with_nmf/__index__
 
 .. toctree::      
     thematic_document_classification

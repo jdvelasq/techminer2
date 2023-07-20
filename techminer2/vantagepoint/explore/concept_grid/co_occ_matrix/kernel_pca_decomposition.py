@@ -39,12 +39,13 @@ CL_4  -7.692  0.422 -4.046 -1.167  1.000
 |  8 | SUPTECH 03:004               |                                |                    |                        |                        |
 
 
->>> file_name = "sphinx/_static/concept_cooc_kernel_pca_map.html"
+>>> file_name = "sphinx/_static/vantagepoint/explore/concept_grid/co_occ_matrix/kernel_pca_map.html"
 >>> factors.fig_("DIM_0", "DIM_1").write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../../_static/concept_cooc_kernel_pca_map.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/vantagepoint/explore/concept_grid/co_occ_matrix/kernel_pca_map.html"
+    height="600px" width="100%" frameBorder="0"></iframe>
 
 
 """

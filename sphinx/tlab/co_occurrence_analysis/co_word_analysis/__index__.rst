@@ -24,6 +24,7 @@ Co-Word Analysis
 .. toctree::
     co_occurrences
 
-
+.. toctree::
+    summary
 
 

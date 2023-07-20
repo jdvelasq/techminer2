@@ -20,13 +20,6 @@ VantagePoint v15
 
    discover/__index__
 
-
-.. toctree::
-   :maxdepth: 1
-
-   classify/__index__
-
-
 .. toctree::
    :maxdepth: 1
 

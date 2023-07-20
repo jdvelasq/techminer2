@@ -16,11 +16,12 @@ Cluster Records
 ...     field='author_keywords',
 ...     top_n=50,
 ...     root_dir=root_dir,
-... ).write_html("sphinx/_static/cluster_records.html")
+... ).write_html("sphinx/_static/vantagepoint/explore/cluster_records.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/cluster_records.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/vantagepoint/explore/cluster_records.html" 
+    height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 
@@ -88,16 +89,14 @@ def cluster_records(
     # for each row in the dataframe, determines the first column with
     # a value greater than zero
     for idx in tfidf_matrix.index:
-        tfidf_matrix.loc[idx, "ITEM_"] = tfidf_matrix.loc[
-            idx, tfidf_matrix.loc[idx, :] > 0
-        ].index[0]
+        tfidf_matrix.loc[idx, "ITEM_"] = tfidf_matrix.loc[idx, tfidf_matrix.loc[idx, :] > 0].index[
+            0
+        ]
 
     mds_matrix = mds_matrix.assign(group=tfidf_matrix.ITEM_)
 
     # compute density
-    kde = KernelDensity(bandwidth="silverman", kernel="gaussian").fit(
-        mds_matrix[["x", "y"]]
-    )
+    kde = KernelDensity(bandwidth="silverman", kernel="gaussian").fit(mds_matrix[["x", "y"]])
 
     # matrix
     x_range = mds_matrix["x"].max() - mds_matrix["x"].min()

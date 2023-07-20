@@ -12,7 +12,7 @@ Sankey Chart
 
 >>> from techminer2 import vantagepoint
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/sankey_chat.html"
+>>> file_name = "sphinx/_static/vantagepoint/explore/sankey_chat.html"
 >>> vantagepoint.explore.sankey_chart(
 ...     root_dir=root_dir,
 ...     fields=["authors", "countries", "author_keywords"],
@@ -22,7 +22,8 @@ Sankey Chart
 
 .. raw:: html
 
-    <iframe src="../../../../_static/sankey_chat.html" height="800px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/vantagepoint/explore/sankey_chat.html" 
+    height="800px" width="100%" frameBorder="0"></iframe>
 
 """
 import plotly.graph_objects as go
@@ -85,10 +86,7 @@ def sankey_chart(
 
             else:
                 curr_custom_items = matrices[-1].df_.columns.to_list()
-                curr_custom_items = [
-                    " ".join(item.split(" ")[:-1])
-                    for item in curr_custom_items
-                ]
+                curr_custom_items = [" ".join(item.split(" ")[:-1]) for item in curr_custom_items]
 
                 coc_matrix = co_occurrence_matrix(
                     columns=col,

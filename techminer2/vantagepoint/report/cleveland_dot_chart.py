@@ -18,11 +18,12 @@ Cleveland Dot Chart
 ...    top_n=20,
 ...    root_dir=root_dir,
 ... )
->>> report.fig_.write_html("sphinx/_static/cleveland_dot_chart.html")
+>>> report.fig_.write_html("sphinx/_static/vantagepoint/report/cleveland_dot_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/cleveland_dot_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/vantagepoint/report/cleveland_dot_chart.html" 
+    height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 import plotly.express as px
@@ -90,15 +91,9 @@ def cleveland_dot_chart(
         **filters,
     )
 
-    metric_label = (
-        metric.replace("_", " ").upper()
-        if metric_label is None
-        else metric_label
-    )
+    metric_label = metric.replace("_", " ").upper() if metric_label is None else metric_label
 
-    field_label = (
-        field.replace("_", " ").upper() if field_label is None else field_label
-    )
+    field_label = field.replace("_", " ").upper() if field_label is None else field_label
 
     data_frame = items.df_.copy()
 

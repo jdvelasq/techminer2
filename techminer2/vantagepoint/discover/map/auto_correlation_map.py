@@ -16,7 +16,7 @@ Creates an Auto-correlation Map.
 
 >>> from techminer2 import vantagepoint
 >>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/auto_correlation_map.html"
+>>> file_name = "sphinx/_static/vantagepoint/discover/map/auto_correlation_map.html"
 >>> vantagepoint.discover.map.auto_correlation_map(
 ...     rows_and_columns='authors',
 ...     occ_range=(2, None),
@@ -25,7 +25,8 @@ Creates an Auto-correlation Map.
 
 .. raw:: html
 
-    <iframe src="../../../_static/auto_correlation_map.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../_static/vantagepoint/discover/map/auto_correlation_map.html"
+    height="600px" width="100%" frameBorder="0"></iframe>
 
 """
 import pandas as pd

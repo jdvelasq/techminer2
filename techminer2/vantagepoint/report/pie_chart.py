@@ -18,11 +18,12 @@ Pie Chart
 ...    top_n=20,
 ...    root_dir=root_dir,
 ... )
->>> report.fig_.write_html("sphinx/_static/pie_chart.html")
+>>> report.fig_.write_html("sphinx/_static/vantagepoint/report/pie_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/pie_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/vantagepoint/report/pie_chart.html" 
+    height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> report.df_.head()

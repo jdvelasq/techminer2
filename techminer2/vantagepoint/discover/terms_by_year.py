@@ -31,11 +31,12 @@ FINANCIAL_REGULATION 04:035        1     0     0     1     0     2     0
 ARTIFICIAL_INTELLIGENCE 04:023     0     0     1     2     0     1     0
 RISK_MANAGEMENT 03:014             0     1     0     1     0     1     0
 
->>> terms_by_year.fig_.write_html("sphinx/_static/terms_by_year_0.html")
+>>> terms_by_year.fig_.write_html("sphinx/_static/vantagepoint/discover/terms_by_year_0.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/terms_by_year_0.html" height="800px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/vantagepoint/discover/terms_by_year_0.html" 
+    height="800px" width="100%" frameBorder="0"></iframe>
 
     
 >>> print(terms_by_year.prompt_)
@@ -84,11 +85,12 @@ FINANCIAL_REGULATION 04:035        1     1     1     2     2     4     4
 ARTIFICIAL_INTELLIGENCE 04:023     0     0     1     3     3     4     4
 RISK_MANAGEMENT 03:014             0     1     1     2     2     3     3
 
->>> terms_by_year.fig_.write_html("sphinx/_static/terms_by_year_1.html")
+>>> terms_by_year.fig_.write_html("sphinx/_static/vantagepoint/discover/terms_by_year_1.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/terms_by_year_1.html" height="800px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/vantagepoint/discover/terms_by_year_1.html" 
+    height="800px" width="100%" frameBorder="0"></iframe>
 
 >>> print(terms_by_year.prompt_)    
 Your task is to generate an analysis about the cumulative occurrences by \\
@@ -158,15 +160,9 @@ from ..._counters_lib import add_counters_to_frame_axis
 from ..._filtering_lib import generate_custom_items
 from ..._sorting_lib import sort_indicators_by_metric
 from ...format_prompt_for_dataframes import format_prompt_for_dataframes
-from ...techminer.metrics.global_indicators_by_field import (
-    global_indicators_by_field,
-)
-from ...techminer.metrics.global_metrics_by_field_per_year import (
-    global_metrics_by_field_per_year,
-)
-from ...techminer.metrics.items_occurrences_by_year import (
-    items_occurrences_by_year,
-)
+from ...techminer.metrics.global_indicators_by_field import global_indicators_by_field
+from ...techminer.metrics.global_metrics_by_field_per_year import global_metrics_by_field_per_year
+from ...techminer.metrics.items_occurrences_by_year import items_occurrences_by_year
 from ...techminer.reports.documents_per_item import documents_per_item
 
 COLOR = "#465c6b"
@@ -309,9 +305,7 @@ def __table(
             gc_range=gc_range,
         )
 
-    descriptors_by_year = descriptors_by_year[
-        descriptors_by_year.index.isin(custom_items)
-    ]
+    descriptors_by_year = descriptors_by_year[descriptors_by_year.index.isin(custom_items)]
 
     descriptors_by_year = descriptors_by_year.loc[custom_items, :]
 
@@ -442,12 +436,8 @@ def __metrics(
     data_frame = data_frame[data_frame[field].isin(items)]
 
     data_frame["TOTAL_OCC"] = data_frame.groupby(field)["OCC"].transform("sum")
-    data_frame["TOTAL_GC"] = data_frame.groupby(field)[
-        "global_citations"
-    ].transform("sum")
-    data_frame["TOTAL_LC"] = data_frame.groupby(field)[
-        "local_citations"
-    ].transform("sum")
+    data_frame["TOTAL_GC"] = data_frame.groupby(field)["global_citations"].transform("sum")
+    data_frame["TOTAL_LC"] = data_frame.groupby(field)["local_citations"].transform("sum")
     data_frame = data_frame.sort_values(
         ["TOTAL_OCC", "TOTAL_GC", "TOTAL_LC", field, "year"],
         ascending=[False, False, False, True, True],

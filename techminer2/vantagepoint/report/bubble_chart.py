@@ -18,11 +18,12 @@ Bubble Chart
 ...    col_top_n=10,
 ...    root_dir=root_dir,
 ... )
->>> bubble_chart.write_html("sphinx/_static/bubble_chart.html")
+>>> bubble_chart.write_html("sphinx/_static/vantagepoint/report/bubble_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/bubble_chart.html" height="800px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/vantagepoint/report/bubble_chart.html" 
+    height="800px" width="100%" frameBorder="0"></iframe>
 
 """
 import plotly.express as px
@@ -86,14 +87,10 @@ def bubble_chart(
         **filters,
     ).df_
 
-    matrix = matrix.melt(
-        value_name="VALUE", var_name="column", ignore_index=False
-    )
+    matrix = matrix.melt(value_name="VALUE", var_name="column", ignore_index=False)
     matrix = matrix.reset_index()
     matrix = matrix.rename(columns={matrix.columns[0]: "row"})
-    matrix = matrix.sort_values(
-        by=["VALUE", "row", "column"], ascending=[False, True, True]
-    )
+    matrix = matrix.sort_values(by=["VALUE", "row", "column"], ascending=[False, True, True])
     matrix = matrix.reset_index(drop=True)
 
     fig = px.scatter(

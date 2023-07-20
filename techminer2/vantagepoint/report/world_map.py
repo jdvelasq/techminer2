@@ -17,11 +17,12 @@ World map
 ...    top_n=20,
 ...    root_dir=root_dir,
 ... )
->>> world_map.fig_.write_html("sphinx/_static/world_map.html")
+>>> world_map.fig_.write_html("sphinx/_static/vantagepoint/report/world_map.html")
 
 .. raw:: html
 
-    <iframe src="../../_static/world_map.html" height="400px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/vantagepoint/report/world_map.html" 
+    height="400px" width="100%" frameBorder="0"></iframe>
 
 >>> world_map.df_.head()
                 rank_occ  OCC
@@ -116,11 +117,7 @@ def world_map(
             locations="iso_alpha",
             color=metric,
             hover_name="country",
-            hover_data=[
-                col
-                for col in dataframe.columns
-                if col not in ["country", "iso_alpha"]
-            ],
+            hover_data=[col for col in dataframe.columns if col not in ["country", "iso_alpha"]],
             range_color=(1, data_frame[metric].max()),
             color_continuous_scale=colormap,
             color_discrete_map={0: "gray"},
@@ -132,9 +129,7 @@ def world_map(
         return fig
 
     def load_worldmap_data():
-        worldmap_data = px.data.gapminder()[
-            ["country", "continent", "iso_alpha"]
-        ]
+        worldmap_data = px.data.gapminder()[["country", "continent", "iso_alpha"]]
         worldmap_data = worldmap_data.drop_duplicates()
 
         # adds to worldmap_data the Russia, Greenland, and Antarctica

@@ -66,26 +66,29 @@ ACCOUNTABILITY 02:014           DATA_PROTECTION_OFFICER 02:014 (1.000); SMART_..
 DATA_PROTECTION_OFFICER 02:014  ACCOUNTABILITY 02:014 (1.000); SMART_CONTRACTS...
 
 
->>> file_name = "sphinx/_static/factor_cooc_pca_fig.html"
+>>> file_name = "sphinx/_static/vantagepoint/discover/factor_matrix/co_occ_matrix/pca_decomposition_fig.html"
 >>> decomp.fig_('DIM_0', 'DIM_1').write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../../_static/factor_cooc_pca_fig.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/vantagepoint/discover/factor_matrix/co_occ_matrix/pca_decomposition_fig.html" 
+    height="600px" width="100%" frameBorder="0"></iframe>
     
->>> file_name = "sphinx/_static/factor_cooc_pca_mds_map.html"
+>>> file_name = "sphinx/_static/vantagepoint/discover/factor_matrix/co_occ_matrix/pca_decomposition_mds_map.html"
 >>> decomp.MDS_().write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../../_static/factor_cooc_pca_mds_map.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/vantagepoint/discover/factor_matrix/co_occ_matrix/pca_decomposition_mds_map.html" 
+    height="600px" width="100%" frameBorder="0"></iframe>
 
->>> file_name = "sphinx/_static/factor_cooc_pca_tnse_map.html"
+>>> file_name = "sphinx/_static/vantagepoint/discover/factor_matrix/co_occ_matrix/pca_decomposition_tnse_map.html"
 >>> decomp.TSNE_().write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../../_static/factor_cooc_pca_tnse_map.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/vantagepoint/discover/factor_matrix/co_occ_matrix/pca_decomposition_tnse_map.html" 
+    height="600px" width="100%" frameBorder="0"></iframe>
 
 
 """
