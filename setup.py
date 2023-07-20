@@ -19,6 +19,8 @@ from setuptools import setup
 
 
 def _post_install():
+    import nltk
+
     nltk.download("punkt")
     nltk.download("brown")
     nltk.download("stopwords")
