@@ -8,6 +8,6 @@
 Bar Chart
 ===============================================================================
 
-See **VantagePoint / Report /** :ref:`vantage_point_report_butterfly_chart`.
+See **VantagePoint / Report /** :ref:`butterfly_chart`.
 
 """

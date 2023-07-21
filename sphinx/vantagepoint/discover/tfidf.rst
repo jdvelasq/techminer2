@@ -1,4 +1,4 @@
-.. automodule:: techminer2.vantagepoint.discover.tfidf
+.. automodule:: techminer2.analyze.terms.tfidf
     :members:
     :undoc-members:
     :show-inheritance:

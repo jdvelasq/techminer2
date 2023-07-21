@@ -10,6 +10,6 @@
 Co-occurrence Matrix
 ===============================================================================
 
-See **VantagePoint / Discover / Matrix /** :ref:`vantagepoint_co_occurrence_matrix`.
+See **VantagePoint / Discover / Matrix /** :ref:`co_occurrence_matrix`.
 
 """

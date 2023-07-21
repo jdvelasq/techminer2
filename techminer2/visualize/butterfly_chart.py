@@ -6,13 +6,14 @@
 # pylint: disable=too-many-locals
 # pylint: disable=import-outside-toplevel
 """
+.. _butterfly_chart:
+
 Butterfly Chart
 ===============================================================================
 
 
 
 >>> from techminer2.visualize import butterfly_chart
->>>
 >>> chart = butterfly_chart(
 ...     #
 ...     # FUNCTION PARAMS:
@@ -51,7 +52,7 @@ Butterfly Chart
 """
 import plotly.graph_objects as go
 
-from ..vantagepoint.discover.matrix.co_occurrence_matrix import co_occurrence_matrix
+from ..analyze.co_occurrences.co_occurrence_matrix import co_occurrence_matrix
 
 
 def butterfly_chart(

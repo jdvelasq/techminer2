@@ -60,6 +60,15 @@ setup(
         "techminer2",
         "techminer2._files",
         #
+        #
+        #
+        "techminer2.visualize",
+        "techminer2.analyze",
+        "techminer2.analyze.terms",
+        "techminer2.analyze.co_occurrences",
+        #
+        #
+        #
         "techminer2.bibliometrix",
         "techminer2.bibliometrix.abstract_nlp_phrases",
         "techminer2.bibliometrix.author_keywords",
@@ -142,11 +151,6 @@ setup(
         "techminer2.techminer.metrics",
         "techminer2.techminer.reports",
         "techminer2.techminer.tools",
-        #
-        #
-        "techminer2.visualize",
-        "techminer2.analyze",
-        "techminer2.analyze.terms",
         #
         #
         "techminer2.tlab",

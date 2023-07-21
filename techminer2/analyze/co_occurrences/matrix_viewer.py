@@ -6,38 +6,108 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-.. _matrix_viewer:
-
 Matrix Viewer
 ===============================================================================
 
 
-
->>> from techminer2 import vantagepoint
->>> root_dir = "data/regtech/"
->>> vantagepoint.explore.matrix_viewer(
-...     root_dir=root_dir,
+>>> from techminer2.analyze.co_occurrences import matrix_viewer
+>>> matrix_viewer(
+...     #
+...     # FUNCTION PARAMS:
 ...     columns='author_keywords',
 ...     rows='authors',
+...     #
+...     # COLUMN PARAMS:
 ...     col_top_n=10,
+...     col_occ_range=(None, None),
+...     col_gc_range=(None, None),
+...     col_custom_items=None,
+...     #
+...     # ROW PARAMS:
 ...     row_top_n=10,    
-... ).write_html("sphinx/_static/vantagepoint/explore/matrix_viewer_0.html")
+...     row_occ_range=(None, None),
+...     row_gc_range=(None, None),
+...     row_custom_items=None,
+...     #
+...     # LAYOUT:
+...     nx_k=None,
+...     nx_iterations=30,
+...     nx_random_state=0,
+...     #
+...     # NODES:
+...     node_size=30,
+...     textfont_size=10,
+...     #
+...     # EDGES
+...     edge_color="#b8c6d0",
+...     edge_width_min=0.8,
+...     edge_width_max=4.0,
+...     #
+...     # AXES:
+...     xaxes_range=None,
+...     yaxes_range=None,
+...     show_axes=False,
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="data/regtech/",
+...     database="main",
+...     year_filter=(None, None),
+...     cited_by_filter=(None, None),
+... ).write_html("sphinx/_static/analyze/co_occurrences/matrix_viewer_0.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/vantagepoint/explore/matrix_viewer_0.html" 
+    <iframe src="../../../../_static/analyze/co_occurrences/matrix_viewer_0.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
     
->>> vantagepoint.explore.matrix_viewer(
-...     root_dir=root_dir,
+>>> matrix_viewer(
+...     #
+...     # FUNCTION PARAMS:
 ...     columns='author_keywords',
+...     rows=None,
+...     #
+...     # COLUMN PARAMS:
 ...     col_top_n=10,
-... ).write_html("sphinx/_static/vantagepoint/explore/matrix_viewer_1.html")
+...     col_occ_range=(None, None),
+...     col_gc_range=(None, None),
+...     col_custom_items=None,
+...     #
+...     # ROW PARAMS:
+...     row_top_n=None,    
+...     row_occ_range=(None, None),
+...     row_gc_range=(None, None),
+...     row_custom_items=None,
+...     #
+...     # LAYOUT:
+...     nx_k=None,
+...     nx_iterations=30,
+...     nx_random_state=0,
+...     #
+...     # NODES:
+...     node_size=30,
+...     textfont_size=10,
+...     #
+...     # EDGES
+...     edge_color="#b8c6d0",
+...     edge_width_min=0.8,
+...     edge_width_max=4.0,
+...     #
+...     # AXES:
+...     xaxes_range=None,
+...     yaxes_range=None,
+...     show_axes=False,
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="data/regtech/",
+...     database="main",
+...     year_filter=(None, None),
+...     cited_by_filter=(None, None),
+... ).write_html("sphinx/_static/analyze/co_occurrences/matrix_viewer_1.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/vantagepoint/explore/matrix_viewer_1.html" 
+    <iframe src="../../../../_static/analyze/co_occurrences/matrix_viewer_1.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
     
@@ -52,7 +122,7 @@ from ...nx_set_node_size_to_constant import nx_set_node_size_to_constant
 from ...nx_set_textfont_opacity_to_constant import nx_set_textfont_opacity_to_constant
 from ...nx_set_textfont_size_to_constant import nx_set_textfont_size_to_constant
 from ...nx_visualize_graph import nx_visualize_graph
-from ..discover.matrix.co_occurrence_matrix import co_occurrence_matrix
+from .co_occurrence_matrix import co_occurrence_matrix
 
 
 def matrix_viewer(
@@ -99,7 +169,10 @@ def matrix_viewer(
     cited_by_filter=(None, None),
     **filters,
 ):
-    """Makes network map from a co-ocurrence matrix."""
+    """Makes network map from a co-ocurrence matrix.
+
+    :meta private:
+    """
 
     cooc_matrix = co_occurrence_matrix(
         #

@@ -96,8 +96,8 @@ import numpy as np
 import pandas as pd
 from sklearn.decomposition import KernelPCA
 
+from .....analyze.co_occurrences.co_occurrence_matrix import co_occurrence_matrix
 from .....normalize_co_occurrence_matrix import normalize_co_occurrence_matrix
-from ...matrix.co_occurrence_matrix import co_occurrence_matrix
 from ..compute_cosine_similarity import compute_cosine_similarity
 from ..results import Results
 

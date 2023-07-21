@@ -72,7 +72,9 @@ def trending_words_per_year(
 ):
     """Trend topics"""
 
-    from ..trending_terms_per_year import trending_terms_per_year as analyze_trending_terms_per_year
+    from ...analyze.terms.trending_terms_per_year import (
+        trending_terms_per_year as analyze_trending_terms_per_year,
+    )
 
     return analyze_trending_terms_per_year(
         #

@@ -10,7 +10,6 @@ Line Chart
 ===============================================================================
 
 >>> from techminer2.visualize import line_chart
->>>
 >>> chart = line_chart(
 ...     #
 ...     # ITEMS PARAMS:

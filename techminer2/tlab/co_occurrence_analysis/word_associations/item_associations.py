@@ -92,8 +92,8 @@ from dataclasses import dataclass
 
 import plotly.express as px
 
+from ....analyze.co_occurrences.co_occurrence_matrix import co_occurrence_matrix
 from ....format_prompt_for_dataframes import format_prompt_for_dataframes
-from ....vantagepoint.discover.matrix.co_occurrence_matrix import co_occurrence_matrix
 
 MARKER_COLOR = "#7793a5"
 MARKER_LINE_COLOR = "#465c6b"

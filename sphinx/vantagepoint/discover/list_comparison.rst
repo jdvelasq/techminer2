@@ -1,4 +1,4 @@
-.. automodule:: techminer2.vantagepoint.discover.list_comparison
+.. automodule:: techminer2.analyze.terms.list_comparison
     :members:
     :undoc-members:
     :show-inheritance:

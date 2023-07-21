@@ -8,12 +8,29 @@
 Trending Terms per Year
 ===============================================================================
 
->>> from techminer2 import bibliometrix
->>> root_dir = "data/regtech/"
->>> terms = bibliometrix.trending_terms_per_year(
+>>> from techminer2.analyze.terms import trending_terms_per_year
+>>> terms = trending_terms_per_year(
+...     #
+...     # PARAMS:
 ...     field="author_keywords",
-...     root_dir=root_dir, 
+...     n_words_per_year=5,
+...     custom_items=None,
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="data/regtech/",
+...     database="main",
+...     year_filter=None,
+...     cited_by_filter=None,
 ... )
+>>> terms.fig_.write_html("sphinx/_static/visualize/trending_terms_per_year.html")
+
+.. raw:: html
+
+    <iframe src="../../../../_static/visualize/trending_terms_per_year.html" height="900px" width="100%" frameBorder="0"></iframe>
+
+
+
+
 >>> terms.df_.head(20)
 year                                     OCC  year_q1  ...    height  width
 author_keywords                                        ...                 
@@ -41,17 +58,12 @@ FINANCIAL_REGULATION                       4     2019  ...  0.241111      4
 [20 rows x 8 columns]
 
 
-
->>> terms.fig_.write_html("sphinx/_static/trending_terms_per_year.html")
-
-.. raw:: html
-
-    <iframe src="../../../../_static/trending_terms_per_year.html" height="900px" width="100%" frameBorder="0"></iframe>
-
-
-
->>> terms = bibliometrix.trending_terms_per_year(
+>>> from techminer2.analyze.terms import trending_terms_per_year
+>>> terms = trending_terms_per_year(
+...     #
+...     # PARAMS:
 ...     field="author_keywords",
+...     n_words_per_year=5,
 ...     custom_items=[
 ...         "FINTECH",
 ...         "REGULATORY_TECHNOLOGY",
@@ -59,8 +71,13 @@ FINANCIAL_REGULATION                       4     2019  ...  0.241111      4
 ...         "SUPTECH",
 ...         "ARTIFICIAL_INTELLIGENCE",
 ...     ], 
-...     root_dir=root_dir, 
-... )
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="data/regtech/",
+...     database="main",
+...     year_filter=None,
+...     cited_by_filter=None,
+... )    
 >>> terms.df_
 year                     OCC  year_q1  year_med  ...  rn    height  width
 author_keywords                                  ...                     
@@ -79,12 +96,8 @@ from dataclasses import dataclass
 import numpy as np
 import plotly.graph_objects as go
 
-from ..techminer.metrics.global_indicators_by_field import (
-    global_indicators_by_field,
-)
-from ..techminer.metrics.items_occurrences_by_year import (
-    items_occurrences_by_year,
-)
+from ...techminer.metrics.global_indicators_by_field import global_indicators_by_field
+from ...techminer.metrics.items_occurrences_by_year import items_occurrences_by_year
 
 
 def trending_terms_per_year(
@@ -101,7 +114,10 @@ def trending_terms_per_year(
     cited_by_filter=None,
     **filters,
 ):
-    """Trend topics"""
+    """Trend topics
+
+    :meta private:
+    """
 
     words_by_year = items_occurrences_by_year(
         field=field,
@@ -134,20 +150,14 @@ def trending_terms_per_year(
     words_by_year["year_med"] = year_med
     words_by_year["year_q3"] = year_q3
 
-    words_by_year = words_by_year.assign(
-        OCC=words_by_year[words_by_year.columns[:-3]].sum(axis=1)
-    )
+    words_by_year = words_by_year.assign(OCC=words_by_year[words_by_year.columns[:-3]].sum(axis=1))
 
     words_by_year = words_by_year[["OCC", "year_q1", "year_med", "year_q3"]]
 
-    global_citations = global_indicators_by_field(
-        field, root_dir=root_dir
-    ).global_citations
+    global_citations = global_indicators_by_field(field, root_dir=root_dir).global_citations
 
     word2citation = dict(zip(global_citations.index, global_citations.values))
-    words_by_year = words_by_year.assign(
-        global_citations=words_by_year.index.map(word2citation)
-    )
+    words_by_year = words_by_year.assign(global_citations=words_by_year.index.map(word2citation))
 
     words_by_year = words_by_year.sort_values(
         by=["year_med", "OCC", "global_citations"],
@@ -163,12 +173,9 @@ def trending_terms_per_year(
     min_occ = words_by_year.OCC.min()
     max_occ = words_by_year.OCC.max()
     words_by_year = words_by_year.assign(
-        height=0.15
-        + 0.82 * (words_by_year.OCC - min_occ) / (max_occ - min_occ)
+        height=0.15 + 0.82 * (words_by_year.OCC - min_occ) / (max_occ - min_occ)
     )
-    words_by_year = words_by_year.assign(
-        width=words_by_year.year_q3 - words_by_year.year_q1 + 1
-    )
+    words_by_year = words_by_year.assign(width=words_by_year.year_q3 - words_by_year.year_q1 + 1)
 
     fig = go.Figure(
         go.Bar(

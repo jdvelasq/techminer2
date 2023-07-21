@@ -9,7 +9,7 @@
 
 import networkx as nx
 
-from ..vantagepoint.discover.matrix import co_occurrence_matrix
+from ..analyze.co_occurrences import co_occurrence_matrix
 
 # from .matrix_normalization import matrix_normalization
 # from .nx_utils import (
@@ -121,9 +121,7 @@ def create_co_occurrence_nx_graph(
 
     #
     # Scales the node size
-    nx_graph = nx_scale_node_size_prop_to_occ_property(
-        nx_graph, node_size_min, node_size_max
-    )
+    nx_graph = nx_scale_node_size_prop_to_occ_property(nx_graph, node_size_min, node_size_max)
 
     #
     # Scales the font size
@@ -151,9 +149,7 @@ def create_co_occurrence_nx_graph(
     #
     # Network clustering
     if isinstance(algorithm_or_estimator, str):
-        nx_graph = nx_apply_community_detection_method(
-            nx_graph, algorithm_or_estimator
-        )
+        nx_graph = nx_apply_community_detection_method(nx_graph, algorithm_or_estimator)
         nx_graph = nx_set_node_color_by_group(nx_graph)
 
     return nx_graph

@@ -54,7 +54,9 @@ ANTI_MONEY_LAUNDERING                         6     2020  ...  0.301852      2
 
 
 """
-from ..trending_terms_per_year import trending_terms_per_year as analyze_trending_terms_per_year
+from ...analyze.terms.trending_terms_per_year import (
+    trending_terms_per_year as analyze_trending_terms_per_year,
+)
 
 FIELD = "keywords"
 

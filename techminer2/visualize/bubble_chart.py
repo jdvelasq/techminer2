@@ -9,7 +9,6 @@ Bubble Chart
 ===============================================================================
 
 >>> from techminer2.visualize import bubble_chart
->>>
 >>> chart = bubble_chart(
 ...     #
 ...     # FUNCTION PARAMS:
@@ -47,7 +46,7 @@ Bubble Chart
 """
 import plotly.express as px
 
-from ..vantagepoint.discover.matrix.co_occurrence_matrix import co_occurrence_matrix
+from ..analyze.co_occurrences.co_occurrence_matrix import co_occurrence_matrix
 
 
 def bubble_chart(

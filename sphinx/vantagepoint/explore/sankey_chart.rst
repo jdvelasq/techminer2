@@ -1,4 +1,4 @@
-.. automodule:: techminer2.vantagepoint.explore.sankey_chart
+.. automodule:: techminer2.analyze.co_occurrences.sankey_chart
     :members:
     :undoc-members:
     :show-inheritance:

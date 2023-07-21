@@ -12,7 +12,6 @@ Treemap
 
 
 >>> from techminer2.visualize import treemap
->>>
 >>> import techminer2plus
 >>> itemslist = techminer2plus.list_items(
 ...    field='author_keywords',

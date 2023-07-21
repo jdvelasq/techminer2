@@ -9,7 +9,6 @@ List Items
 ===============================================================================
 
 >>> from techminer2.analyze.terms import list_items
->>> 
 >>> items = list_items(
 ...     #
 ...     # ITEMS PARAMS:

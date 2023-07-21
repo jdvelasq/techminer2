@@ -26,8 +26,8 @@ Ego Network
 
 
 """
-from ....vantagepoint.discover.matrix.co_occurrence_matrix import co_occurrence_matrix
-from ....vantagepoint.explore.matrix_viewer import matrix_viewer
+from ....analyze.co_occurrences.co_occurrence_matrix import co_occurrence_matrix
+from ....analyze.co_occurrences.matrix_viewer import matrix_viewer
 
 
 def ego_network(

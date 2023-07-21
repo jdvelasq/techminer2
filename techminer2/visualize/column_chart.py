@@ -10,7 +10,6 @@ Column Chart
 ===============================================================================
 
 >>> from techminer2.visualize import column_chart
->>>
 >>> chart = column_chart(
 ...     #
 ...     # ITEMS PARAMS:

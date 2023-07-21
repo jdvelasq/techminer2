@@ -11,12 +11,31 @@ TFIDF
 ===============================================================================
 
 
->>> from techminer2 import vantagepoint
->>> root_dir = "data/regtech/"
->>> vantagepoint.discover.tfidf(
+>>> from techminer2.analyze.terms import tfidf
+>>> tfidf(
+...     #
+...     # TF PARAMS:
 ...     field='author_keywords',
+...     is_binary=False,
+...     cooc_within= 1,
+...     #
+...     # ITEM FILTERS:
 ...     top_n=50,
-...     root_dir=root_dir,
+...     occ_range=(None, None),
+...     gc_range=(None, None),
+...     custom_items=None,
+...     #
+...     # TF-IDF parameters:
+...     norm= None,
+...     use_idf=False,
+...     smooth_idf=False,
+...     sublinear_tf=False,
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="data/regtech/",
+...     database="main",
+...     year_filter=(None, None),
+...     cited_by_filter=(None, None),
 ... ).head(20)
 author_keywords                                     REGTECH 28:329  ...  MONEY_LAUNDERING 01:010
 article                                                             ...                         
@@ -83,7 +102,10 @@ def tfidf(
     cited_by_filter=(None, None),
     **filters,
 ):
-    """Computes TF Matrix."""
+    """Computes TF Matrix.
+
+    :meta private:
+    """
 
     indicators = global_indicators_by_field(
         field=field,

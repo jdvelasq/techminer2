@@ -10,7 +10,6 @@ Pie Chart
 ===============================================================================
 
 >>> from techminer2.visualize import pie_chart
->>>
 >>> chart = pie_chart(
 ...     #
 ...     # ITEMS PARAMS:

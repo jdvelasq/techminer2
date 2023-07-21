@@ -27,7 +27,7 @@ Heat Map
 import numpy as np
 import plotly.express as px
 
-from .co_occurrence_matrix import co_occurrence_matrix
+from ....analyze.co_occurrences.co_occurrence_matrix import co_occurrence_matrix
 
 
 def heat_map(

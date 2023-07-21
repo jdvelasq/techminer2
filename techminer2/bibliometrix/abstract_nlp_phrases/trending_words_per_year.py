@@ -49,12 +49,14 @@ FINANCIAL_REGULATION           6     2018      2020  ...   3  0.40625      4
 
 .. raw:: html
 
-    <iframe src="../../../../../../_static/bibliometrix/abstract_nlp_phrases/trending_words_per_year.html" 
+    <iframe src="../../../_static/bibliometrix/abstract_nlp_phrases/trending_words_per_year.html" 
     height="900px" width="100%" frameBorder="0"></iframe>
 
 
 """
-from ..trending_terms_per_year import trending_terms_per_year as analyze_trending_terms_per_year
+from ...analyze.terms.trending_terms_per_year import (
+    trending_terms_per_year as analyze_trending_terms_per_year,
+)
 
 FIELD = "abstract_nlp_phrases"
 

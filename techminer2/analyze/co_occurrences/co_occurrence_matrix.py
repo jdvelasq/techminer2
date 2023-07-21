@@ -5,20 +5,36 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-.. _vantagepoint_co_occurrence_matrix:
+.. _co_occurrence_matrix:
 
 Co-occurrence Matrix 
 ===============================================================================
 
 
->>> from techminer2 import vantagepoint
->>> root_dir = "data/regtech/"
->>> matrix = vantagepoint.discover.matrix.co_occurrence_matrix(
+>>> from techminer2.analyze.co_occurrences import co_occurrence_matrix
+>>> matrix = co_occurrence_matrix(
+...     #
+...     # FUNCTION PARAMS:
 ...     columns='author_keywords',
 ...     rows='authors',
+...     #
+...     # COLUMN PARAMS:
+...     col_top_n=None,
 ...     col_occ_range=(2, None),
+...     col_gc_range=(None, None),
+...     col_custom_items=None,
+...     #
+...     # ROW PARAMS:
+...     row_top_n=None,
 ...     row_occ_range=(2, None),
-...     root_dir=root_dir,
+...     row_gc_range=(None, None),
+...     row_custom_items=None,
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="data/regtech/",
+...     database="main",
+...     year_filter=(None, None),
+...     cited_by_filter=(None, None),
 ... )
 >>> matrix.df_
 author_keywords     REGTECH 28:329  ...  REPORTING 02:001
@@ -86,10 +102,29 @@ Table:
 
 
 
->>> matrix = vantagepoint.discover.matrix.co_occurrence_matrix(
+>>> matrix = co_occurrence_matrix(
+...     #
+...     # FUNCTION PARAMS:
 ...     columns='author_keywords',
+...     rows=None,
+...     #
+...     # COLUMN PARAMS:
 ...     col_top_n=10,
-...     root_dir=root_dir,
+...     col_occ_range=(None, None),
+...     col_gc_range=(None, None),
+...     col_custom_items=None,
+...     #
+...     # ROW PARAMS:
+...     row_top_n=None,
+...     row_occ_range=(2, None),
+...     row_gc_range=(None, None),
+...     row_custom_items=None,
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="data/regtech/",
+...     database="main",
+...     year_filter=(None, None),
+...     cited_by_filter=(None, None),
 ... )
 >>> matrix.df_
 author_keywords                 REGTECH 28:329  ...  RISK_MANAGEMENT 03:014
@@ -147,16 +182,12 @@ Table:
 """
 from dataclasses import dataclass
 
-from ...._counters_lib import add_counters_to_frame_axis
-from ...._filtering_lib import generate_custom_items
-from ...._sorting_lib import sort_indicators_by_metric, sort_matrix_axis
-from ....format_prompt_for_dataframes import format_prompt_for_dataframes
-from ....techminer.metrics.global_co_occurrence_matrix_list import (
-    global_co_occurrence_matrix_list,
-)
-from ....techminer.metrics.global_indicators_by_field import (
-    global_indicators_by_field,
-)
+from ..._counters_lib import add_counters_to_frame_axis
+from ..._filtering_lib import generate_custom_items
+from ..._sorting_lib import sort_indicators_by_metric, sort_matrix_axis
+from ...format_prompt_for_dataframes import format_prompt_for_dataframes
+from ...techminer.metrics.global_co_occurrence_matrix_list import global_co_occurrence_matrix_list
+from ...techminer.metrics.global_indicators_by_field import global_indicators_by_field
 
 
 def co_occurrence_matrix(
@@ -184,7 +215,10 @@ def co_occurrence_matrix(
     cited_by_filter=(None, None),
     **filters,
 ):
-    """Creates a co-occurrence matrix."""
+    """Creates a co-occurrence matrix.
+
+    :meta private:
+    """
 
     matrix = ___matrix(
         #
@@ -241,9 +275,7 @@ def co_occurrence_matrix(
         def heat_map_(self):
             #
             def make_heat_map(styler):
-                styler.background_gradient(
-                    axis=None, vmin=1, vmax=5, cmap="Oranges"
-                )
+                styler.background_gradient(axis=None, vmin=1, vmax=5, cmap="Oranges")
                 return styler
 
             return self.df_.style.pipe(make_heat_map)
@@ -307,9 +339,7 @@ def ___matrix(
                 gc_range=gc_range,
             )
 
-        raw_matrix_list = raw_matrix_list[
-            raw_matrix_list[name].isin(custom_items)
-        ]
+        raw_matrix_list = raw_matrix_list[raw_matrix_list[name].isin(custom_items)]
 
         return raw_matrix_list
 

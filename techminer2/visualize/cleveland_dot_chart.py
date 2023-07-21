@@ -10,7 +10,6 @@ Cleveland Dot Chart
 ===============================================================================
 
 >>> from techminer2.visualize import cleveland_dot_chart
->>>
 >>> chart = cleveland_dot_chart(
 ...     #
 ...     # ITEMS PARAMS:

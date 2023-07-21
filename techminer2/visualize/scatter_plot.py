@@ -7,8 +7,6 @@
 # pylint: disable=too-many-statements
 # pylint: disable=import-outside-toplevel
 """
-.. _scatter_plot:
-
 TODO: Scatter Plot
 ===============================================================================
 

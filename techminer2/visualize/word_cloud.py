@@ -11,7 +11,6 @@ Word Cloud
 
 
 >>> from techminer2.visualize import word_cloud
->>>
 >>> chart = word_cloud(
 ...     #
 ...     # ITEMS PARAMS:

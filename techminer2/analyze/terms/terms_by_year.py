@@ -10,14 +10,29 @@
 Terms by Year
 ===============================================================================
 
->>> from techminer2 import vantagepoint
->>> root_dir = "data/regtech/"
->>> terms_by_year = vantagepoint.discover.terms_by_year(
-...     root_dir=root_dir,
+>>> from techminer2.analyze.terms import terms_by_year
+>>> terms = terms_by_year(
+...     #
+...     # PARAMS:
 ...     field="author_keywords",
+...     cumulative=False,
+...     #
+...     # CHART PARAMS:
+...     title=None,
+...     #
+...     # ITEM FILTERS:
 ...     top_n=10,
+...     occ_range=(None, None),
+...     gc_range=(None, None),
+...     custom_items=None,
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="data/regtech/",
+...     database="main",
+...     year_filter=(None, None),
+...     cited_by_filter=(None, None),
 ... )
->>> terms_by_year.df_
+>>> terms.df_
 year                            2017  2018  2019  2020  2021  2022  2023
 author_keywords                                                         
 REGTECH 28:329                     2     3     4     8     3     6     2
@@ -31,15 +46,15 @@ FINANCIAL_REGULATION 04:035        1     0     0     1     0     2     0
 ARTIFICIAL_INTELLIGENCE 04:023     0     0     1     2     0     1     0
 RISK_MANAGEMENT 03:014             0     1     0     1     0     1     0
 
->>> terms_by_year.fig_.write_html("sphinx/_static/vantagepoint/discover/terms_by_year_0.html")
+>>> terms.fig_.write_html("sphinx/_static/analyze/terms/terms_by_year_0.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/vantagepoint/discover/terms_by_year_0.html" 
+    <iframe src="../../../../_static/analyze/terms/terms_by_year_0.html" 
     height="800px" width="100%" frameBorder="0"></iframe>
 
     
->>> print(terms_by_year.prompt_)
+>>> print(terms.prompt_)
 Your task is to generate an analysis about the  occurrences by year of the \\
 'author_keywords' in a scientific bibliography database. Summarize the \\
 table below, delimited by triple backticks, identify any notable patterns, \\
@@ -65,13 +80,29 @@ Table:
 <BLANKLINE>
 
 
->>> terms_by_year = vantagepoint.discover.terms_by_year(
-...     root_dir=root_dir,
+
+>>> terms = terms_by_year(
+...     #
+...     # PARAMS:
 ...     field="author_keywords",
-...     top_n=10,
 ...     cumulative=True,
+...     #
+...     # CHART PARAMS:
+...     title=None,
+...     #
+...     # ITEM FILTERS:
+...     top_n=10,
+...     occ_range=(None, None),
+...     gc_range=(None, None),
+...     custom_items=None,
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="data/regtech/",
+...     database="main",
+...     year_filter=(None, None),
+...     cited_by_filter=(None, None),
 ... )
->>> terms_by_year.df_
+>>> terms.df_
 year                            2017  2018  2019  2020  2021  2022  2023
 author_keywords                                                         
 REGTECH 28:329                     2     5     9    17    20    26    28
@@ -85,14 +116,14 @@ FINANCIAL_REGULATION 04:035        1     1     1     2     2     4     4
 ARTIFICIAL_INTELLIGENCE 04:023     0     0     1     3     3     4     4
 RISK_MANAGEMENT 03:014             0     1     1     2     2     3     3
 
->>> terms_by_year.fig_.write_html("sphinx/_static/vantagepoint/discover/terms_by_year_1.html")
+>>> terms.fig_.write_html("sphinx/_static/analyze/terms/terms_by_year_1.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/vantagepoint/discover/terms_by_year_1.html" 
+    <iframe src="../../../../_static/analyze/terms/terms_by_year_1.html" 
     height="800px" width="100%" frameBorder="0"></iframe>
 
->>> print(terms_by_year.prompt_)    
+>>> print(terms.prompt_)    
 Your task is to generate an analysis about the cumulative occurrences by \\
 year of the 'author_keywords' in a scientific bibliography database. \\
 Summarize the table below, delimited by triple backticks, identify any \\
@@ -117,7 +148,7 @@ Table:
 ```
 <BLANKLINE>
 
->>> print(terms_by_year.metrics_.head(20).to_markdown())
+>>> print(terms.metrics_.head(20).to_markdown())
 |    | author_keywords       |   year |   OCC |   cum_OCC |   global_citations |   local_citations |   age |   global_citations_per_year |   local_citations_per_year |
 |---:|:----------------------|-------:|------:|----------:|-------------------:|------------------:|------:|----------------------------:|---------------------------:|
 |  0 | REGTECH               |   2017 |     2 |         2 |                 12 |                 3 |     7 |                       1.714 |                      0.429 |
@@ -141,7 +172,7 @@ Table:
 | 18 | COMPLIANCE            |   2022 |     1 |         6 |                  1 |                 0 |     2 |                       0.5   |                      0     |
 | 19 | COMPLIANCE            |   2023 |     1 |         7 |                  0 |                 0 |     1 |                       0     |                      0     |
 
->>> print(terms_by_year.documents_.head().to_markdown())
+>>> print(terms.documents_.head().to_markdown())
 |    | author_keywords    | title                                                   |   year | source_title                                                   |   global_citations |   local_citations | doi                            |
 |---:|:-------------------|:--------------------------------------------------------|-------:|:---------------------------------------------------------------|-------------------:|------------------:|:-------------------------------|
 |  0 | FINANCIAL_SERVICES | FINTECH and REGTECH: impact on regulators and BANKS     |   2018 | Journal of Economics and Business                              |                153 |                17 | 10.1016/J.JECONBUS.2018.07.003 |
@@ -191,8 +222,10 @@ def terms_by_year(
     cited_by_filter=(None, None),
     **filters,
 ):
-    # pylint: disable=line-too-long
-    """Computes a table with the number of occurrences of each term by year."""
+    """Computes a table with the number of occurrences of each term by year.
+
+    :meta private:
+    """
 
     data_frame = __table(
         #

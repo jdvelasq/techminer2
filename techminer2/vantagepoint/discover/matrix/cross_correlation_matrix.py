@@ -72,8 +72,8 @@ Table:
 """
 from dataclasses import dataclass
 
+from ....analyze.co_occurrences.co_occurrence_matrix import co_occurrence_matrix
 from ....format_prompt_for_dataframes import format_prompt_for_dataframes
-from .co_occurrence_matrix import co_occurrence_matrix
 from .compute_corr_matrix import compute_corr_matrix
 
 
@@ -148,9 +148,7 @@ def cross_correlation_matrix(
         def heat_map_(self):
             #
             def make_heat_map(styler):
-                styler.background_gradient(
-                    axis=None, vmin=1, vmax=5, cmap="Oranges"
-                )
+                styler.background_gradient(axis=None, vmin=1, vmax=5, cmap="Oranges")
                 return styler
 
             return self.df_.style.pipe(make_heat_map)
@@ -176,6 +174,4 @@ def __prompt(corr_matrix, rows_and_columns, cross_with):
         "150 words."
     )
 
-    return format_prompt_for_dataframes(
-        main_text, corr_matrix.round(3).to_markdown()
-    )
+    return format_prompt_for_dataframes(main_text, corr_matrix.round(3).to_markdown())

@@ -53,7 +53,9 @@ FIRM_PERFORMANCE                 1     2023      2023  ...   0    0.15      1
 
 
 """
-from ..trending_terms_per_year import trending_terms_per_year as analyze_trending_terms_per_year
+from ...analyze.terms.trending_terms_per_year import (
+    trending_terms_per_year as analyze_trending_terms_per_year,
+)
 
 FIELD = "title_nlp_phrases"
 

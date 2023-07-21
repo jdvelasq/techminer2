@@ -5,12 +5,13 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
+.. _bar_chart:
+
 Bar Chart
 ===============================================================================
 
 
 >>> from techminer2.visualize import bar_chart
->>>
 >>> chart = bar_chart(
 ...     #
 ...     # ITEMS PARAMS:

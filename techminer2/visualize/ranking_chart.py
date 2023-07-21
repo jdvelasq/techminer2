@@ -10,7 +10,6 @@ Ranking Chart
 ===============================================================================
 
 >>> from techminer2.visualize import ranking_chart
->>>
 >>> chart = ranking_chart(
 ...     #
 ...     # ITEMS PARAMS:

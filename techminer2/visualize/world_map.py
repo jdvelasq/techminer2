@@ -10,7 +10,6 @@ World Map
 ===============================================================================
 
 >>> from techminer2.visualize import world_map
->>>
 >>> chart = world_map(
 ...     #
 ...     # ITEMS PARAMS:

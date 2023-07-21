@@ -10,7 +10,6 @@ Heat Map
 ===============================================================================
 
 >>> from techminer2.visualize import heat_map
->>>
 >>> chart = heat_map(
 ...     #
 ...     # CO-OCC PARAMS:
@@ -83,7 +82,7 @@ def heat_map(
     :meta private:
     """
 
-    from ..vantagepoint.discover.matrix.co_occurrence_matrix import co_occurrence_matrix
+    from ..analyze.co_occurrences.co_occurrence_matrix import co_occurrence_matrix
 
     data_frame = co_occurrence_matrix(
         #

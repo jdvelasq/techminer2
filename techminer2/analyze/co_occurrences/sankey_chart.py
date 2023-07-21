@@ -10,25 +10,40 @@
 Sankey Chart
 ===============================================================================
 
->>> from techminer2 import vantagepoint
->>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/vantagepoint/explore/sankey_chat.html"
->>> vantagepoint.explore.sankey_chart(
-...     root_dir=root_dir,
+>>> from techminer2.analyze.co_occurrences import sankey_chart
+>>> sankey_chart(
+...     #
+...     # PARAMS:
 ...     fields=["authors", "countries", "author_keywords"],
-...     top_n=10,
 ...     max_n=20,
-... ).write_html(file_name)
+...     #
+...     # ITEM FILTERS:
+...     top_n=10,
+...     occ_range=None,
+...     gc_range=None,
+...     custom_items=None,
+...     #
+...     # PARAMS:
+...     font_size=8,
+...     title=None,
+...     color=None,
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="data/regtech/",
+...     database="main",
+...     year_filter=None,
+...     cited_by_filter=None,
+... ).write_html("sphinx/_static/analyze/co_occurrences/sankey_chat.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/vantagepoint/explore/sankey_chat.html" 
+    <iframe src="../../../../_static/analyze/co_occurrences/sankey_chat.html" 
     height="800px" width="100%" frameBorder="0"></iframe>
 
 """
 import plotly.graph_objects as go
 
-from ..discover.matrix.co_occurrence_matrix import co_occurrence_matrix
+from .co_occurrence_matrix import co_occurrence_matrix
 
 
 def sankey_chart(
@@ -55,7 +70,11 @@ def sankey_chart(
     cited_by_filter=None,
     **filters,
 ):
-    """Sankey plot"""
+    """
+    Sankey plot
+
+    :meta private:
+    """
 
     def build_matrices():
         matrices = []
