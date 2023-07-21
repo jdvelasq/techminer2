@@ -1,4 +1,4 @@
-.. automodule:: techminer2.vantagepoint.report.multi_donut
+.. automodule:: techminer2.visualize.multi_donut
     :members:
     :undoc-members:
     :show-inheritance:

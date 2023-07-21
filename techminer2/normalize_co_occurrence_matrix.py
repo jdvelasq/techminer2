@@ -10,7 +10,6 @@ co-occurrence matrix.
 
 """
 import numpy as np
-import pandas as pd
 
 # from . import CoocMatrix
 
@@ -39,9 +38,7 @@ def normalize_co_occurrence_matrix(cooc_matrix, association_index):
         for col in matrix.columns:
             for row in matrix.index:
                 normalized_matrix.at[row, col] = matrix.at[row, col] / (
-                    matrix.loc[row, row]
-                    + matrix.at[col, col]
-                    - matrix.at[row, col]
+                    matrix.loc[row, row] + matrix.at[col, col] - matrix.at[row, col]
                 )
 
         return matrix
@@ -97,8 +94,7 @@ def normalize_co_occurrence_matrix(cooc_matrix, association_index):
         for col in matrix.columns:
             for row in matrix.index:
                 normalized_matrix.at[row, col] = np.log(
-                    matrix.at[row, col]
-                    / (n_columns * matrix.loc[row, row] * matrix.at[col, col])
+                    matrix.at[row, col] / (n_columns * matrix.loc[row, row] * matrix.at[col, col])
                 )
 
         return matrix

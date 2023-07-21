@@ -1,3 +1,3 @@
-.. automodule:: techminer2.vantagepoint.report.column_chart
+.. automodule:: techminer2.visualize.column_chart
     :members:
 

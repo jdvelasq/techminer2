@@ -9,6 +9,7 @@
 import networkx as nx
 
 from ._read_records import read_records
+from .analyze.terms.list_items import list_items
 from .normalize_co_occurrence_matrix import normalize_co_occurrence_matrix
 from .nx_apply_cdlib_algorithm import nx_apply_cdlib_algorithm
 from .nx_compute_edge_width_from_edge_weight import nx_compute_edge_width_from_edge_weight
@@ -22,7 +23,6 @@ from .nx_set_node_color_from_group_attr import nx_set_node_color_from_group_attr
 from .nx_set_node_size_to_constant import nx_set_node_size_to_constant
 from .nx_set_textfont_opacity_to_constant import nx_set_textfont_opacity_to_constant
 from .nx_set_textfont_size_to_constant import nx_set_textfont_size_to_constant
-from .vantagepoint.discover.list_items import list_items
 from .vantagepoint.discover.matrix import co_occurrence_matrix
 
 

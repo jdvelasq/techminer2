@@ -99,7 +99,7 @@ import numpy as np
 import pandas as pd
 from sklearn.decomposition import TruncatedSVD
 
-from ...tfidf import tfidf
+from .....analyze.terms.tfidf import tfidf
 from ..compute_cosine_similarity import compute_cosine_similarity
 from ..results import Results
 

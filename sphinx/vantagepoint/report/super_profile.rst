@@ -1,3 +1,3 @@
-.. automodule:: techminer2.vantagepoint.report.super_profile
+.. automodule:: techminer2.visualize.super_profile
     :members:
 

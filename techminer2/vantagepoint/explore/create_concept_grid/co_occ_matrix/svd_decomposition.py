@@ -94,10 +94,10 @@ import numpy as np
 import pandas as pd
 from sklearn.decomposition import TruncatedSVD
 
-from .....normalize_co_occurrence_matrix import normalize_co_occurrence_matrix
-from ...matrix.co_occurrence_matrix import co_occurrence_matrix
-from ..compute_cosine_similarity import compute_cosine_similarity
-from ..results import Results
+# from .....normalize_co_occurrence_matrix import normalize_co_occurrence_matrix
+# from ....discover.factor_matrix.compute_cosine_similarity import compute_cosine_similarity
+# from ....discover.factor_matrix.results import Results
+# from ....discover.matrix.co_occurrence_matrix import co_occurrence_matrix
 
 
 def svd_decomposition(

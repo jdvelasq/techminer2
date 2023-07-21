@@ -32,7 +32,7 @@ import plotly.graph_objects as go
 from sklearn.manifold import MDS
 from sklearn.neighbors import KernelDensity
 
-from ..discover.tfidf import tfidf
+from ...analyze.terms.tfidf import tfidf
 
 
 def cluster_records(

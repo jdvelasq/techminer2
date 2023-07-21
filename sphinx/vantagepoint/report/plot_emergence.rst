@@ -1,4 +1,4 @@
-.. automodule:: techminer2.vantagepoint.report.plot_emergence
+.. automodule:: techminer2.visualize.plot_emergence
     :members:
     :undoc-members:
     :show-inheritance:

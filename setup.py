@@ -119,22 +119,22 @@ setup(
         "techminer2.vosviewer.thematic_map.keywords",
         "techminer2.vosviewer.thematic_map.descriptors",
         #
-        "techminer2.vantagepoint",
-        "techminer2.vantagepoint.ingest",
         "techminer2.vantagepoint.calculate",
         "techminer2.vantagepoint.classify",
-        "techminer2.vantagepoint.discover",
-        "techminer2.vantagepoint.discover.factor_matrix",
         "techminer2.vantagepoint.discover.factor_matrix.co_occ_matrix",
         "techminer2.vantagepoint.discover.factor_matrix.tfidf",
+        "techminer2.vantagepoint.discover.factor_matrix",
         "techminer2.vantagepoint.discover.map",
         "techminer2.vantagepoint.discover.matrix",
-        "techminer2.vantagepoint.explore",
-        "techminer2.vantagepoint.explore.concept_grid",
+        "techminer2.vantagepoint.discover",
         "techminer2.vantagepoint.explore.concept_grid.co_occ_matrix",
         "techminer2.vantagepoint.explore.concept_grid.tfidf",
+        "techminer2.vantagepoint.explore.concept_grid",
+        "techminer2.vantagepoint.explore",
+        "techminer2.vantagepoint.ingest",
         "techminer2.vantagepoint.refine",
         "techminer2.vantagepoint.search",
+        "techminer2.vantagepoint",
         #
         "techminer2.scientopy",
         #
@@ -142,6 +142,12 @@ setup(
         "techminer2.techminer.metrics",
         "techminer2.techminer.reports",
         "techminer2.techminer.tools",
+        #
+        #
+        "techminer2.visualize",
+        "techminer2.analyze",
+        "techminer2.analyze.terms",
+        #
         #
         "techminer2.tlab",
         "techminer2.tlab.co_occurrence_analysis",

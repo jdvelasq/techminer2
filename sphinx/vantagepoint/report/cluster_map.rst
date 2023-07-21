@@ -1,3 +1,3 @@
-.. automodule:: techminer2.vantagepoint.report.cluster_map
+.. automodule:: techminer2.visualize.cluster_map
     :members:
 

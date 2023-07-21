@@ -1,3 +1,3 @@
-.. automodule:: techminer2.vantagepoint.report.heat_map
+.. automodule:: techminer2.visualize.heat_map
     :members:
 

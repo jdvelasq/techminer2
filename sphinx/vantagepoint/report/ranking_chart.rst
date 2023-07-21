@@ -1,3 +1,3 @@
-.. automodule:: techminer2.vantagepoint.report.ranking_chart
+.. automodule:: techminer2.visualize.ranking_chart
     :members:
 

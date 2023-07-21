@@ -73,8 +73,8 @@ Table:
 """
 from dataclasses import dataclass
 
+from ....analyze.terms.tfidf import tfidf
 from ....format_prompt_for_dataframes import format_prompt_for_dataframes
-from ..tfidf import tfidf
 from .compute_corr_matrix import compute_corr_matrix
 
 
@@ -118,9 +118,7 @@ def auto_correlation_matrix(
         **filters,
     )
 
-    custom_items = [
-        " ".join(col.split(" ")[:-1]) for col in data_matrix.columns.tolist()
-    ]
+    custom_items = [" ".join(col.split(" ")[:-1]) for col in data_matrix.columns.tolist()]
 
     corr_matrix = compute_corr_matrix(method=method, data_matrix=data_matrix)
 
@@ -149,9 +147,7 @@ def auto_correlation_matrix(
         def heat_map_(self):
             #
             def make_heat_map(styler):
-                styler.background_gradient(
-                    axis=None, vmin=1, vmax=5, cmap="Oranges"
-                )
+                styler.background_gradient(axis=None, vmin=1, vmax=5, cmap="Oranges")
                 return styler
 
             return self.df_.style.pipe(make_heat_map)
@@ -178,6 +174,4 @@ def __prompt(corr_matrix, rows_and_columns):
         "your findings, in at most 50 words."
     )
 
-    return format_prompt_for_dataframes(
-        main_text, corr_matrix.round(3).to_markdown()
-    )
+    return format_prompt_for_dataframes(main_text, corr_matrix.round(3).to_markdown())

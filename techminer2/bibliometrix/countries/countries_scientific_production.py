@@ -79,7 +79,7 @@ Table:
 
 """
 
-from ...vantagepoint.report.world_map import world_map
+from ...visualize.world_map import world_map
 
 
 def countries_scientific_production(

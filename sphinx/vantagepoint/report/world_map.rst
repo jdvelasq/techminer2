@@ -1,3 +1,3 @@
-.. automodule:: techminer2.vantagepoint.report.world_map
+.. automodule:: techminer2.visualize.world_map
     :members:
 

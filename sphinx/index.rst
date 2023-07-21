@@ -89,7 +89,7 @@ TM2 module.
 
 
 .. toctree::
-    :caption: SOFTWARE COMPARISON
+    :caption: EXAMPLES / HOW'S TO
     :hidden:
     :maxdepth: 1
 

@@ -52,7 +52,7 @@ def word_cloud(
 ):
     """Plots a word cloud from a dataframe."""
 
-    from ...vantagepoint.report import word_cloud as vp_word_cloud
+    from ...visualize import word_cloud as vp_word_cloud
 
     return vp_word_cloud(
         #

@@ -30,7 +30,7 @@ Word Cloud
 """
 FIELD = "abstract_nlp_phrases"
 
-from ...vantagepoint.report import word_cloud as vp_word_cloud
+from ...visualize import word_cloud as vp_word_cloud
 
 
 def word_cloud(

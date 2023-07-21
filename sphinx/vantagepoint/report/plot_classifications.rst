@@ -1,4 +1,4 @@
-.. automodule:: techminer2.vantagepoint.report.plot_classifications
+.. automodule:: techminer2.visualize.plot_classifications
     :members:
     :undoc-members:
     :show-inheritance:

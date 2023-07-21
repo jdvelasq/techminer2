@@ -1,3 +1,3 @@
-.. automodule:: techminer2.vantagepoint.report.cleveland_dot_chart
+.. automodule:: techminer2.visualize.cleveland_dot_chart
     :members:
 
