@@ -4,13 +4,14 @@
 # pylint: disable=missing-docstring
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
+# pylint: disable=import-outside-toplevel
 """
 Local Impact --- H-Index
 ===============================================================================
 
->>> from techminer2 import bibliometrix
+>>> from techminer2.bibliometrix.authors import local_impact_h_index
 >>> root_dir = "data/regtech/"
->>> items = bibliometrix.authors.local_impact_h_index(
+>>> items = local_impact_h_index(
 ...    top_n=10,
 ...    root_dir=root_dir,
 ... )
@@ -64,8 +65,6 @@ Table:
 
 
 """
-from ...vantagepoint.discover import list_items
-
 FIELD = "authors"
 METRIC = "h_index"
 
@@ -99,6 +98,8 @@ def local_impact_h_index(
     **filters,
 ):
     """Creates a rank chart."""
+
+    from ...vantagepoint.discover import list_items
 
     return list_items(
         #

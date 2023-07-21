@@ -30,8 +30,8 @@ Communities
 
 
 """
-from ...nx_create_citation_graph import nx_create_citation_graph
-from ...nx_extract_communities_as_data_frame import nx_extract_communities_as_data_frame
+from ....nx_create_citation_graph import nx_create_citation_graph
+from ....nx_extract_communities_as_data_frame import nx_extract_communities_as_data_frame
 
 UNIT_OF_ANALYSIS = "organizations"
 

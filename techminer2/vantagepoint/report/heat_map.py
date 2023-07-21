@@ -4,6 +4,7 @@
 # pylint: disable=missing-docstring
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
+# pylint: disable=import-outside-toplevel
 """
 Heat Map
 ===============================================================================
@@ -27,8 +28,6 @@ Heat Map
 """
 import numpy as np
 import plotly.express as px
-
-from ..discover.matrix.co_occurrence_matrix import co_occurrence_matrix
 
 
 def heat_map(
@@ -60,6 +59,8 @@ def heat_map(
     **filters,
 ):
     """Make a heat map."""
+
+    from ..discover.matrix.co_occurrence_matrix import co_occurrence_matrix
 
     data_frame = co_occurrence_matrix(
         #

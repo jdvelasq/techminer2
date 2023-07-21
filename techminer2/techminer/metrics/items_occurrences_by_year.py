@@ -92,7 +92,7 @@ def items_occurrences_by_year(
     indicators_by_year = indicators_by_year.astype(int)
 
     stopwords = load_stopwords(root_dir=root_dir)
-    indicators_by_year = indicators_by_year.drop(stopwords, axis=0)
+    indicators_by_year = indicators_by_year.drop(stopwords, axis=0, errors="ignore")
 
     if cumulative:
         indicators_by_year = indicators_by_year.cumsum(axis=1)

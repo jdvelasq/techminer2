@@ -10,7 +10,7 @@ import networkx as nx
 import numpy as np
 import plotly.express as px
 
-from ....vosviewer.nx_compute_node_size_from_item_occ import nx_compute_node_size_from_item_occ
+from ....nx_compute_node_size_from_item_occ import nx_compute_node_size_from_item_occ
 
 # from ....vosviewer.nx_utils import (
 #     nx_compute_spring_layout,
@@ -20,15 +20,11 @@ from ....vosviewer.nx_compute_node_size_from_item_occ import nx_compute_node_siz
 #     nx_scale_textfont_size_prop_to_occ_property,
 # )
 # from ....vosviewer.px_utils import px_create_network_chart
-from ....vosviewer.nx_compute_spring_layout import nx_compute_spring_layout
-from ....vosviewer.nx_compute_textfont_opacity_from_item_occ import (
-    nx_compute_textfont_opacity_from_item_occ,
-)
-from ....vosviewer.nx_compute_textfont_size_from_item_occ import (
-    nx_compute_textfont_size_from_item_occ,
-)
-from ....vosviewer.nx_compute_textposition_from_graph import nx_compute_textposition_from_graph
-from ....vosviewer.nx_visualize_graph import nx_visualize_graph
+from ....nx_compute_spring_layout import nx_compute_spring_layout
+from ....nx_compute_textfont_opacity_from_item_occ import nx_compute_textfont_opacity_from_item_occ
+from ....nx_compute_textfont_size_from_item_occ import nx_compute_textfont_size_from_item_occ
+from ....nx_compute_textposition_from_graph import nx_compute_textposition_from_graph
+from ....nx_visualize_graph import nx_visualize_graph
 
 
 def correlation_map(

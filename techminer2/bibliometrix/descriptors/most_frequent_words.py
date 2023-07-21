@@ -4,6 +4,7 @@
 # pylint: disable=missing-docstring
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
+# pylint: disable=import-outside-toplevel
 """
 Most Frequent Words
 ===============================================================================
@@ -66,8 +67,6 @@ Table:
 
 
 """
-from ...vantagepoint.discover import list_items
-
 FIELD = "descriptors"
 METRIC = "OCC"
 
@@ -101,6 +100,8 @@ def most_frequent_words(
     **filters,
 ):
     """Creates a rank chart."""
+
+    from ...vantagepoint.discover import list_items
 
     return list_items(
         #

@@ -11,7 +11,6 @@
 #
 import networkx as nx
 
-from ..vantagepoint.discover.matrix import co_occurrence_matrix
 from .normalize_co_occurrence_matrix import normalize_co_occurrence_matrix
 from .nx_apply_cdlib_algorithm import nx_apply_cdlib_algorithm
 from .nx_compute_edge_width_from_edge_weight import nx_compute_edge_width_from_edge_weight
@@ -22,6 +21,7 @@ from .nx_compute_textfont_size_from_item_occ import nx_compute_textfont_size_fro
 from .nx_compute_textposition_from_graph import nx_compute_textposition_from_graph
 from .nx_set_edge_color_to_constant import nx_set_edge_color_to_constant
 from .nx_set_node_color_from_group_attr import nx_set_node_color_from_group_attr
+from .vantagepoint.discover.matrix import co_occurrence_matrix
 
 
 def nx_create_co_occurrence_graph(

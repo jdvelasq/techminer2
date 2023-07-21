@@ -23,8 +23,8 @@ Item Density Visualization
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
-from ...nx_create_citation_graph import nx_create_citation_graph
-from ...nx_visualize_item_density import nx_visualize_item_density
+from ....nx_create_citation_graph import nx_create_citation_graph
+from ....nx_visualize_item_density import nx_visualize_item_density
 
 UNIT_OF_ANALYSIS = "authors"
 

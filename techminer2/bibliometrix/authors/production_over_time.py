@@ -4,6 +4,7 @@
 # pylint: disable=missing-docstring
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
+# pylint: disable=import-outside-toplevel
 """
 Production over Time
 ===============================================================================
@@ -86,8 +87,6 @@ Table:
 
 
 """
-from ...vantagepoint.discover import terms_by_year
-
 FIELD = "authors"
 
 
@@ -110,6 +109,8 @@ def production_over_time(
     **filters,
 ):
     """Sources production over time."""
+
+    from ...vantagepoint.discover import terms_by_year
 
     return terms_by_year(
         #

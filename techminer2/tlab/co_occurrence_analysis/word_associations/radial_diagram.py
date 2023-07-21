@@ -35,20 +35,14 @@ identifying the most relevant terms associated with a given term.
 """
 import networkx as nx
 
-from ....vosviewer.nx_compute_edge_width_from_edge_weight import (
-    nx_compute_edge_width_from_edge_weight,
-)
-from ....vosviewer.nx_compute_node_size_from_item_occ import nx_compute_node_size_from_item_occ
-from ....vosviewer.nx_compute_spring_layout import nx_compute_spring_layout
-from ....vosviewer.nx_compute_textfont_opacity_from_item_occ import (
-    nx_compute_textfont_opacity_from_item_occ,
-)
-from ....vosviewer.nx_compute_textfont_size_from_item_occ import (
-    nx_compute_textfont_size_from_item_occ,
-)
-from ....vosviewer.nx_compute_textposition_from_graph import nx_compute_textposition_from_graph
-from ....vosviewer.nx_set_edge_color_to_constant import nx_set_edge_color_to_constant
-from ....vosviewer.nx_visualize_graph import nx_visualize_graph
+from ....nx_compute_edge_width_from_edge_weight import nx_compute_edge_width_from_edge_weight
+from ....nx_compute_node_size_from_item_occ import nx_compute_node_size_from_item_occ
+from ....nx_compute_spring_layout import nx_compute_spring_layout
+from ....nx_compute_textfont_opacity_from_item_occ import nx_compute_textfont_opacity_from_item_occ
+from ....nx_compute_textfont_size_from_item_occ import nx_compute_textfont_size_from_item_occ
+from ....nx_compute_textposition_from_graph import nx_compute_textposition_from_graph
+from ....nx_set_edge_color_to_constant import nx_set_edge_color_to_constant
+from ....nx_visualize_graph import nx_visualize_graph
 from .item_associations import item_associations
 
 

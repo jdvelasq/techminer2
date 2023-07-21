@@ -103,7 +103,7 @@ from dataclasses import dataclass
 import pandas as pd
 import plotly.express as px
 
-from ..format_prompt_for_dataframes import format_prompt_for_dataframes
+from .format_prompt_for_dataframes import format_prompt_for_dataframes
 
 
 def nx_create_degree_plot(

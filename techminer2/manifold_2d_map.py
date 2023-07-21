@@ -8,7 +8,7 @@
 
 import plotly.graph_objects as go
 
-from .vosviewer.nx_compute_textposition_from_x_and_y import nx_compute_textposition_from_x_and_y
+from .nx_compute_textposition_from_x_and_y import nx_compute_textposition_from_x_and_y
 
 # from .._network_lib import (
 #     nx_compute_node_textposition_from_node_coordinates,

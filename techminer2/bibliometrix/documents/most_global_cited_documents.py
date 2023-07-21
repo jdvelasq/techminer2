@@ -4,6 +4,7 @@
 # pylint: disable=missing-docstring
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
+# pylint: disable=import-outside-toplevel
 """
 Most Global Cited Documents
 ===============================================================================
@@ -52,7 +53,6 @@ Most Global Cited Documents
 
 
 """
-from ..most_cited_documents import most_cited_documents
 
 
 def most_global_cited_documents(
@@ -77,6 +77,8 @@ def most_global_cited_documents(
     **filters,
 ):
     """Plots the most global cited documents in the main collection."""
+
+    from ..most_cited_documents import most_cited_documents
 
     return most_cited_documents(
         #

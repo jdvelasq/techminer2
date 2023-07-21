@@ -4,6 +4,7 @@
 # pylint: disable=missing-docstring
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
+# pylint: disable=import-outside-toplevel
 """
 Word Frequency over Time
 ===============================================================================
@@ -56,8 +57,6 @@ Table:
 
 
 """
-from ...vantagepoint.discover import terms_by_year as analyze_terms_by_year
-
 FIELD = "descriptors"
 
 
@@ -74,6 +73,8 @@ def words_frequency_over_time(
     **filters,
 ):
     """Makes a dynamics chat for top words."""
+
+    from ...vantagepoint.discover import terms_by_year as analyze_terms_by_year
 
     terms_by_year = analyze_terms_by_year(
         field=FIELD,

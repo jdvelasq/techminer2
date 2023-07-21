@@ -4,6 +4,7 @@
 # pylint: disable=missing-docstring
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
+# pylint: disable=import-outside-toplevel
 """
 Lotka's Law
 ===============================================================================
@@ -33,8 +34,6 @@ Lotka's Law
 from dataclasses import dataclass
 
 import plotly.graph_objects as go
-
-from ...techminer.metrics.global_indicators_by_field import global_indicators_by_field
 
 
 def lotka_law(
@@ -126,6 +125,8 @@ def __core_authors_table(
     cited_by_filter,
     **filters,
 ):
+    from ...techminer.metrics.global_indicators_by_field import global_indicators_by_field
+
     #
     # Part 1: Computes the number of written documents per number of authors.
     #         Read as: "178 authors write only 1 document and 1 author writes 7 documents"

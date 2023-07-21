@@ -14,13 +14,14 @@ Cleans the keywords columns using the `keywords.txt` file.
 
 >>> from techminer2 import vantagepoint
 >>> root_dir = "data/regtech/"
+
+>>> root_dir = "data/karla/"
+
 >>> vantagepoint.refine.apply_descriptors_thesaurus(root_dir)
 --INFO-- Applying `descriptors.txt` thesaurus to author/index keywords and abstract/title words
 
 
 """
-# pylint: disable=no-member
-# pylint: disable=invalid-name
 
 import glob
 import os

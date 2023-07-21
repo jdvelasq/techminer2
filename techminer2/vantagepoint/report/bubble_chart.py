@@ -4,6 +4,7 @@
 # pylint: disable=missing-docstring
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
+# pylint: disable=import-outside-toplevel
 """
 .. _bubble_chart:
 
@@ -27,8 +28,6 @@ Bubble Chart
 
 """
 import plotly.express as px
-
-from ..discover.matrix.co_occurrence_matrix import co_occurrence_matrix
 
 
 def bubble_chart(
@@ -60,6 +59,8 @@ def bubble_chart(
     **filters,
 ):
     """Makes a bubble chart."""
+
+    from ..discover.matrix.co_occurrence_matrix import co_occurrence_matrix
 
     matrix = co_occurrence_matrix(
         #

@@ -15,6 +15,9 @@ Import a scopus data file in the working directory.
 
 >>> from techminer2 import techminer
 >>> root_dir = "data/regtech/"
+
+>>> root_dir = "data/karla/"
+
 >>> techminer.ingest.ingest_raw_data(root_dir, disable_progress_bar=True)
 --INFO-- Concatenating raw files in data/regtech/raw-data/cited_by/
 --INFO-- Concatenating raw files in data/regtech/raw-data/references/
@@ -115,20 +118,15 @@ title, title_nlp_phrases, volume, year
 import glob
 import os
 import pathlib
+import re
 
 import pandas as pd
 from textblob import TextBlob
 from tqdm import tqdm
 
-from ...vantagepoint.refine.apply_countries_thesaurus import (
-    apply_countries_thesaurus,
-)
-from ...vantagepoint.refine.apply_descriptors_thesaurus import (
-    apply_descriptors_thesaurus,
-)
-from ...vantagepoint.refine.apply_organizations_thesaurus import (
-    apply_organizations_thesaurus,
-)
+from ..refine.apply_countries_thesaurus import apply_countries_thesaurus
+from ..refine.apply_descriptors_thesaurus import apply_descriptors_thesaurus
+from ..refine.apply_organizations_thesaurus import apply_organizations_thesaurus
 
 # from ..reports import abstracts_report
 from .create_countries_thesaurus import create_countries_thesaurus
@@ -138,9 +136,7 @@ from .create_organizations_thesaurus import create_organizations_thesaurus
 KEYWORDS_MAX_LENGTH = 50
 
 
-def ingest_raw_data(
-    root_dir="./", disable_progress_bar=False, **document_types
-):
+def ingest_raw_data(root_dir="./", disable_progress_bar=False, **document_types):
     """
     Import a Scopus data file in the working directory.
 
@@ -183,9 +179,7 @@ def ingest_raw_data(
 
     process_text_columns(
         root_dir,
-        lambda x: x.str.normalize("NFKD")
-        .str.encode("ascii", errors="ignore")
-        .str.decode("utf-8"),
+        lambda x: x.str.normalize("NFKD").str.encode("ascii", errors="ignore").str.decode("utf-8"),
         "remove accents",
     )
 
@@ -208,9 +202,7 @@ def ingest_raw_data(
     process_column(
         root_dir,
         "authors_id",
-        lambda x: x.str.replace(";$", "", regex=True).mask(
-            x == "[No author id available]", pd.NA
-        ),
+        lambda x: x.str.replace(";$", "", regex=True).mask(x == "[No author id available]", pd.NA),
     )
 
     process_column(
@@ -643,9 +635,7 @@ def get_subdirectories(directory):
     :meta private:
     """
     subdirectories = os.listdir(directory)
-    subdirectories = [
-        f for f in subdirectories if os.path.isdir(os.path.join(directory, f))
-    ]
+    subdirectories = [f for f in subdirectories if os.path.isdir(os.path.join(directory, f))]
     return subdirectories
 
 
@@ -672,9 +662,7 @@ def concat_raw_csv_files(path, quiet=False):
     data = []
     for file_name in files:
         file_path = os.path.join(path, file_name)
-        data.append(
-            pd.read_csv(file_path, encoding="utf-8", on_bad_lines="skip")
-        )
+        data.append(pd.read_csv(file_path, encoding="utf-8", on_bad_lines="skip"))
 
     data = pd.concat(data, ignore_index=True)
     data = data.drop_duplicates()
@@ -838,10 +826,7 @@ def format_column_names(data: pd.DataFrame) -> pd.DataFrame:
     :meta private:
     """
     return data.rename(
-        columns={
-            col: col.replace(".", "").replace(" ", "_").lower()
-            for col in data.columns
-        }
+        columns={col: col.replace(".", "").replace(" ", "_").lower() for col in data.columns}
     )
 
 
@@ -864,9 +849,7 @@ def repair_authors_id_in_database_files(root_dir: str) -> None:
     max_length = get_max_authors_id_length(files)
     for file in files:
         data = pd.read_csv(file, encoding="utf-8")
-        data["authors_id"] = repair_authors_id(
-            data["raw_authors_id"], max_length
-        )
+        data["authors_id"] = repair_authors_id(data["raw_authors_id"], max_length)
         data.to_csv(file, index=False, encoding="utf-8")
 
 
@@ -958,9 +941,7 @@ def repair_keywords_in_column(raw_keywords: pd.Series) -> pd.Series:
     if len(keywords) > 0:
         for keyword in keywords:
             print(f"--WARNING-- Keyword with bad separator: {keyword}")
-            raw_keywords = raw_keywords.str.replace(
-                keyword, keyword.replace(",", ";")
-            )
+            raw_keywords = raw_keywords.str.replace(keyword, keyword.replace(",", ";"))
     return raw_keywords
 
 
@@ -1076,8 +1057,7 @@ def disambiguate_author_names(root_dir):
     def load_authors_names():
         files = list(glob.glob(os.path.join(root_dir, "databases/_*.csv")))
         data = [
-            pd.read_csv(file, encoding="utf-8")[["raw_authors", "authors_id"]]
-            for file in files
+            pd.read_csv(file, encoding="utf-8")[["raw_authors", "authors_id"]] for file in files
         ]
         data = pd.concat(data)
         data = data.dropna()
@@ -1087,20 +1067,14 @@ def disambiguate_author_names(root_dir):
     def build_dict_names(data):
         data = data.copy()
 
-        data = data.assign(
-            authors_and_ids=data.raw_authors + "#" + data.authors_id
-        )
+        data = data.assign(authors_and_ids=data.raw_authors + "#" + data.authors_id)
         data.authors_and_ids = data.authors_and_ids.str.split("#")
         data.authors_and_ids = data.authors_and_ids.apply(
             lambda x: (x[0].split(";"), x[1].split(";"))
         )
-        data.authors_and_ids = data.authors_and_ids.apply(
-            lambda x: list(zip(x[0], x[1]))
-        )
+        data.authors_and_ids = data.authors_and_ids.apply(lambda x: list(zip(x[0], x[1])))
         data = data.explode("authors_and_ids")
-        data.authors_and_ids = data.authors_and_ids.apply(
-            lambda x: (x[0].strip(), x[1].strip())
-        )
+        data.authors_and_ids = data.authors_and_ids.apply(lambda x: (x[0].strip(), x[1].strip()))
         data = data.reset_index(drop=True)
         data = data[["authors_and_ids"]]
         data["author"] = data.authors_and_ids.apply(lambda x: x[0])
@@ -1121,9 +1095,7 @@ def disambiguate_author_names(root_dir):
             data = pd.read_csv(file, encoding="utf-8")
             data = data.assign(authors=data.authors_id.copy())
             data["authors"] = data["authors"].str.split(";")
-            data["authors"] = data["authors"].map(
-                lambda x: [author_id2name[id] for id in x]
-            )
+            data["authors"] = data["authors"].map(lambda x: [author_id2name[id] for id in x])
             data["authors"] = data["authors"].str.join("; ")
             data.to_csv(file, sep=",", encoding="utf-8", index=False)
 
@@ -1154,9 +1126,7 @@ def concatenate_columns(root_dir, dest, column_name1, column_name2):
 
     :meta private:
     """
-    print(
-        f"--INFO-- Concatenating `{column_name1}` and `{column_name2}` columns to `{dest}`"
-    )
+    print(f"--INFO-- Concatenating `{column_name1}` and `{column_name2}` columns to `{dest}`")
 
     files = list(glob.glob(os.path.join(root_dir, "databases/_*.csv")))
     for file in files:
@@ -1189,21 +1159,15 @@ def create__article__column(root_dir):
         data = pd.read_csv(file, encoding="utf-8")
         #
         wos_ref = data.authors.map(
-            lambda x: x.split("; ")[0].strip()
-            if not pd.isna(x)
-            else "[Anonymous]"
+            lambda x: x.split("; ")[0].strip() if not pd.isna(x) else "[Anonymous]"
         )
         wos_ref += ", " + data.year.map(str)
         wos_ref += ", " + data.source_abbr
         wos_ref += data.volume.map(
-            lambda x: ", V" + str(x).replace(".0", "")
-            if not pd.isna(x)
-            else ""
+            lambda x: ", V" + str(x).replace(".0", "") if not pd.isna(x) else ""
         )
         wos_ref += data.page_start.map(
-            lambda x: ", P" + str(x).replace(".0", "")
-            if not pd.isna(x)
-            else ""
+            lambda x: ", P" + str(x).replace(".0", "") if not pd.isna(x) else ""
         )
         # wos_ref += data.doi.map(lambda x: ", DOI " + str(x) if not pd.isna(x) else "")
         data["article"] = wos_ref.copy()
@@ -1219,18 +1183,12 @@ def create_references(directory, disable_progress_bar=False):
 
     references_path = os.path.join(directory, "databases/_references.csv")
     if os.path.exists(references_path):
-        create_references_from_references_csv_file(
-            directory, disable_progress_bar
-        )
+        create_references_from_references_csv_file(directory, disable_progress_bar)
     else:
-        create_references_from_documents_csv_file(
-            directory, disable_progress_bar
-        )
+        create_references_from_documents_csv_file(directory, disable_progress_bar)
 
 
-def create_references_from_documents_csv_file(
-    directory, disable_progress_bar=False
-):
+def create_references_from_documents_csv_file(directory, disable_progress_bar=False):
     """Create references from `documents.csv` file.
 
     :meta private:
@@ -1308,18 +1266,10 @@ def create_references_from_documents_csv_file(
                         .replace("'", "")
                     )
 
-                    if (
-                        author in text
-                        and str(year) in text
-                        and title[:29] in text
-                    ):
+                    if author in text and str(year) in text and title[:29] in text:
                         thesaurus[key] = article
                         references.found[references.article == article] = True
-                    elif (
-                        author in text
-                        and str(year) in text
-                        and title[-29:] in text
-                    ):
+                    elif author in text and str(year) in text and title[-29:] in text:
                         thesaurus[key] = article
                         references.found[references.article == article] = True
 
@@ -1367,23 +1317,17 @@ def create_references_from_documents_csv_file(
     #
     documents["local_references"] = documents.global_references.copy()
     documents["local_references"] = documents["local_references"].str.lower()
-    documents["local_references"] = documents["local_references"].str.split(
-        ";"
-    )
+    documents["local_references"] = documents["local_references"].str.split(";")
     documents["local_references"] = documents["local_references"].map(
         lambda x: [t.strip() for t in x] if isinstance(x, list) else x
     )
     documents["local_references"] = documents["local_references"].map(
-        lambda x: [thesaurus.get(t, "") for t in x]
-        if isinstance(x, list)
-        else x
+        lambda x: [thesaurus.get(t, "") for t in x] if isinstance(x, list) else x
     )
     documents["local_references"] = documents["local_references"].map(
         lambda x: [t for t in x if t is not None] if isinstance(x, list) else x
     )
-    documents["local_references"] = documents["local_references"].str.join(
-        "; "
-    )
+    documents["local_references"] = documents["local_references"].str.join("; ")
     documents["local_references"] = documents["local_references"].map(
         lambda x: pd.NA if x == "" else x
     )
@@ -1391,9 +1335,7 @@ def create_references_from_documents_csv_file(
     documents.to_csv(documents_path, index=False)
 
 
-def create_references_from_references_csv_file(
-    directory, disable_progress_bar=False
-):
+def create_references_from_references_csv_file(directory, disable_progress_bar=False):
     """Create the references from the references.csv file.
 
     :meta private:
@@ -1450,12 +1392,7 @@ def create_references_from_references_csv_file(
             references.authors,
             references.title,
         ):
-            if (
-                pd.isna(authors)
-                or pd.isna(year)
-                or pd.isna(title)
-                or pd.isna(article)
-            ):
+            if pd.isna(authors) or pd.isna(year) or pd.isna(title) or pd.isna(article):
                 continue
 
             year = str(year)
@@ -1483,24 +1420,12 @@ def create_references_from_references_csv_file(
                         .replace("'", "")
                     )
 
-                    if (
-                        author in text
-                        and str(year) in text
-                        and title[:29] in text
-                    ):
+                    if author in text and str(year) in text and title[:29] in text:
                         thesaurus[key] = article
-                        references.loc[
-                            references.article == article, "found"
-                        ] = True
-                    elif (
-                        author in text
-                        and str(year) in text
-                        and title[-29:] in text
-                    ):
+                        references.loc[references.article == article, "found"] = True
+                    elif author in text and str(year) in text and title[-29:] in text:
                         thesaurus[key] = article
-                        references.loc[
-                            references.article == article, "found"
-                        ] = True
+                        references.loc[references.article == article, "found"] = True
 
             pbar.update(1)
 
@@ -1538,9 +1463,7 @@ def create_references_from_references_csv_file(
                     )
                     if title in text:
                         thesaurus[key] = article
-                        references.loc[
-                            references.article == article, "found"
-                        ] = True
+                        references.loc[references.article == article, "found"] = True
 
             pbar.update(1)
     #
@@ -1548,23 +1471,17 @@ def create_references_from_references_csv_file(
     #
     documents["local_references"] = documents.global_references.copy()
     documents["local_references"] = documents["local_references"].str.lower()
-    documents["local_references"] = documents["local_references"].str.split(
-        ";"
-    )
+    documents["local_references"] = documents["local_references"].str.split(";")
     documents["local_references"] = documents["local_references"].map(
         lambda x: [t.strip() for t in x] if isinstance(x, list) else x
     )
     documents["local_references"] = documents["local_references"].map(
-        lambda x: [thesaurus.get(t, "") for t in x]
-        if isinstance(x, list)
-        else x
+        lambda x: [thesaurus.get(t, "") for t in x] if isinstance(x, list) else x
     )
     documents["local_references"] = documents["local_references"].map(
         lambda x: [t for t in x if t is not None] if isinstance(x, list) else x
     )
-    documents["local_references"] = documents["local_references"].str.join(
-        "; "
-    )
+    documents["local_references"] = documents["local_references"].str.join("; ")
     documents["local_references"] = documents["local_references"].map(
         lambda x: pd.NA if x == "" else x
     )
@@ -1577,16 +1494,12 @@ def create_references_from_references_csv_file(
     # Se filtran local references para que contengan unicamente records
     # que estan en la base de datos principal
     local_documents = documents.article.copy()
-    documents["local_references"] = documents["local_references"].str.split(
-        ";"
-    )
+    documents["local_references"] = documents["local_references"].str.split(";")
     documents["local_references"] = documents["local_references"].map(
         lambda x: [t.strip() for t in x] if isinstance(x, list) else x
     )
     documents["local_references"] = documents["local_references"].map(
-        lambda x: [t for t in x if t in local_documents.tolist()]
-        if isinstance(x, list)
-        else x
+        lambda x: [t for t in x if t in local_documents.tolist()] if isinstance(x, list) else x
     )
     documents["local_references"] = documents["local_references"].map(
         lambda x: "; ".join(x) if isinstance(x, list) else x
@@ -1623,9 +1536,7 @@ def create__local_citations__column_in_references_database(directory):
 
     references = pd.read_csv(references_path)
     references["local_citations"] = references.article
-    references["local_citations"] = references["local_citations"].map(
-        values_dict
-    )
+    references["local_citations"] = references["local_citations"].map(values_dict)
     references["local_citations"] = references["local_citations"].fillna(0)
 
     # saves the new column in the references database
@@ -1653,9 +1564,7 @@ def create__local_citations__column_in_documents_database(root_dir):
 
     # assigns the number of citations to each document in documents database
     documents["local_citations"] = documents.article
-    documents["local_citations"] = documents["local_citations"].map(
-        values_dict
-    )
+    documents["local_citations"] = documents["local_citations"].map(values_dict)
     documents["local_citations"] = documents["local_citations"].fillna(0)
 
     # saves the new column in the references database
@@ -1693,16 +1602,10 @@ def transform_abstract_keywords_to_underscore(root_dir):
             if "raw_nlp_phrases" not in data.columns:
                 continue
             candidate_descriptors = data["raw_descriptors"].copy()
-            candidate_descriptors = (
-                candidate_descriptors.dropna()
-                .str.replace("_", " ")
-                .str.lower()
-            )
+            candidate_descriptors = candidate_descriptors.dropna().str.replace("_", " ").str.lower()
             descriptors.append(candidate_descriptors)
         descriptors = pd.concat(descriptors)
-        descriptors = (
-            descriptors.str.split("; ").explode().str.strip().drop_duplicates()
-        )
+        descriptors = descriptors.str.split("; ").explode().str.strip().drop_duplicates()
         # nlp_phrases = nlp_phrases[nlp_phrases.str.contains(" ")]
         return descriptors
 
@@ -1712,9 +1615,9 @@ def transform_abstract_keywords_to_underscore(root_dir):
         descriptors = descriptors.copy()
 
         # remove abbreviations
-        descriptors = descriptors.str.replace(
-            r"\(.*\)", "", regex=True
-        ).replace(r"\[].*\]", "", regex=True)
+        descriptors = descriptors.str.replace(r"\(.*\)", "", regex=True).replace(
+            r"\[].*\]", "", regex=True
+        )
 
         # strage characters
         descriptors = (
@@ -1734,9 +1637,7 @@ def transform_abstract_keywords_to_underscore(root_dir):
         descriptors = descriptors.copy()
         frame = descriptors.to_frame()
         frame["length"] = frame[descriptors.name].str.split(" ").map(len)
-        frame = frame.sort_values(
-            ["length", descriptors.name], ascending=[False, True]
-        )
+        frame = frame.sort_values(["length", descriptors.name], ascending=[False, True])
         descriptors = frame[descriptors.name].copy()
         return descriptors
 
@@ -1744,24 +1645,29 @@ def transform_abstract_keywords_to_underscore(root_dir):
         """Replace keywords in abstracts"""
 
         descriptors = descriptors.copy()
-        descriptors = "|".join(descriptors.values)
+        descriptors = descriptors.to_list()
+        descriptors = [re.escape(text) for text in descriptors]
+        descriptors = "|".join(descriptors)
         regex = r"\b(" + descriptors + r")\b"
 
         documents_path = pathlib.Path(root_dir) / "databases/_main.csv"
         documents = pd.read_csv(documents_path, encoding="utf-8")
         for col in ["abstract", "title"]:
             hyphenated_words = documents[col].str.findall(r"\b\w+-\w+\b").sum()
+            hyphenated_words = list(set(hyphenated_words))
             hyphenated_words = r"\b(" + "|".join(hyphenated_words) + r")\b"
+            #
+            aux = hyphenated_words[9370:]
+            #
             documents[col] = (
                 documents[col]
-                .str.replace("-", " ")
-                .str.replace(
-                    regex, lambda x: x.group().upper().replace(" ", "_")
-                )
+                .str.replace("-", " ", regex=False)
+                .str.replace(regex, lambda x: x.group().upper().replace(" ", "_"), regex=True)
             )
             documents[col] = documents[col].str.replace(
                 hyphenated_words.replace("-", " "),
                 lambda x: x.group().replace(" ", "-"),
+                regex=True,
             )
 
         documents.to_csv(documents_path, index=False)

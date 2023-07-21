@@ -4,15 +4,16 @@
 # pylint: disable=missing-docstring
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
+# pylint: disable=import-outside-toplevel
 """
 Trending Words per Year
 ===============================================================================
 
 
->>> from techminer2 import bibliometrix
+>>> from techminer2.bibliometrix.abstract_nlp_phrases import trending_words_per_year
 >>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix/abstract_nlp_phrases/trending_words_per_year.html"
->>> words = bibliometrix.abstract_nlp_phrases.trending_words_per_year(
+>>> words = trending_words_per_year(
 ...     root_dir=root_dir, 
 ... )
 >>> words.df_.head(20)

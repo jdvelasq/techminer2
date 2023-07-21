@@ -4,6 +4,7 @@
 # pylint: disable=missing-docstring
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
+# pylint: disable=import-outside-toplevel
 """
 .. _pie_chart:
 
@@ -75,8 +76,6 @@ Table:
 """
 import plotly.express as px
 
-from ..discover.list_items import list_items
-
 
 def pie_chart(
     #
@@ -113,6 +112,8 @@ def pie_chart(
 
 
     """
+
+    from ..discover.list_items import list_items
 
     items = list_items(
         #

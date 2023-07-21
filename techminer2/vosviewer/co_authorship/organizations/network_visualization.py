@@ -23,8 +23,8 @@ Network Visualization
 
 
 """
-from ...nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
-from ...nx_visualize_graph import nx_visualize_graph
+from ....nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
+from ....nx_visualize_graph import nx_visualize_graph
 
 FIELD = "organizations"
 

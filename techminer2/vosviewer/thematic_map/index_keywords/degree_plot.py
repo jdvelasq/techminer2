@@ -68,8 +68,8 @@ Table:
 
 
 """
-from ...nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
-from ...nx_create_degree_plot import nx_create_degree_plot
+from ....nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
+from ....nx_create_degree_plot import nx_create_degree_plot
 
 FIELD = "index_keywords"
 

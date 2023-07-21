@@ -4,6 +4,7 @@
 # pylint: disable=missing-docstring
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
+# pylint: disable=import-outside-toplevel
 """
 .. _word_cloud:
 
@@ -107,8 +108,6 @@ import numpy as np
 from matplotlib.figure import Figure
 from wordcloud import WordCloud
 
-from ..discover.list_items import list_items
-
 
 def word_cloud(
     #
@@ -134,6 +133,8 @@ def word_cloud(
     **filters,
 ):
     """Creates a word cloud."""
+
+    from ..discover.list_items import list_items
 
     items = list_items(
         #

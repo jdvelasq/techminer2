@@ -4,6 +4,7 @@
 # pylint: disable=missing-docstring
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
+# pylint: disable=import-outside-toplevel
 """
 Local Impact --- M-Index
 ===============================================================================
@@ -64,8 +65,6 @@ Table:
 
 
 """
-from ...vantagepoint.discover import list_items
-
 FIELD = "source_abbr"
 METRIC = "m_index"
 
@@ -99,6 +98,8 @@ def local_impact_m_index(
     **filters,
 ):
     """Creates a rank chart."""
+
+    from ...vantagepoint.discover import list_items
 
     return list_items(
         #

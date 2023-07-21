@@ -8,9 +8,9 @@
 Local Impact --- G-Index
 ===============================================================================
 
->>> from techminer2 import bibliometrix
+>>> from techminer2.bibliometrix.authors import local_impact_g_index
 >>> root_dir = "data/regtech/"
->>> items = bibliometrix.authors.local_impact_g_index(
+>>> items = local_impact_g_index(
 ...    top_n=10,
 ...    root_dir=root_dir,
 ... )

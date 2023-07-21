@@ -22,7 +22,7 @@ def nx_compute_node_size_from_item_occ(
     occ = list(nx_graph.nodes())
     occ = [node.split(" ")[-1] for node in occ]
     occ = [node.split(":")[0] for node in occ]
-    occ = np.array([int(node) for node in occ])
+    occ = np.array([float(node) for node in occ])
 
     #
     # Set the lower value of the node size to node_size_min

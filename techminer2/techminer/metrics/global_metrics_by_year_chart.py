@@ -5,12 +5,10 @@
 # pylint: disable=missing-docstring
 # pylint: disable=invalid-name
 """
-.. _global_indicators_by_year_chart:
-
 Global Indicators by Year chart
 ===============================================================================
 
-Creates a time line chart from an indicator from  :ref:`global_indicators_by_year`.
+Creates a time line chart from an global indicator.
 
 
 

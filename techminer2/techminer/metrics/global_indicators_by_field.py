@@ -150,11 +150,7 @@ def global_indicators_by_field(
         records = records.copy()
 
         column_sum = records[[field, column]].dropna()
-        column_sum[field] = (
-            column_sum[field]
-            .str.split(";")
-            .map(lambda x: [_.strip() for _ in x])
-        )
+        column_sum[field] = column_sum[field].str.split(";").map(lambda x: [_.strip() for _ in x])
         column_sum = column_sum.explode(field)
         column_sum = column_sum.groupby(field, as_index=True).sum().astype(int)
         indicators.loc[column_sum.index, column] = column_sum
@@ -164,27 +160,21 @@ def global_indicators_by_field(
     def compute_global_citations_per_document(indicators):
         indicators = indicators.copy()
         indicators = indicators.assign(
-            global_citations_per_document=(
-                indicators.global_citations / indicators.OCC
-            ).round(2)
+            global_citations_per_document=(indicators.global_citations / indicators.OCC).round(2)
         )
         return indicators
 
     def compute_local_citations_per_document(indicators):
         indicators = indicators.copy()
         indicators = indicators.assign(
-            local_citations_per_document=(
-                indicators.local_citations / indicators.OCC
-            ).round(2)
+            local_citations_per_document=(indicators.local_citations / indicators.OCC).round(2)
         )
         return indicators
 
     def compute_age(records, indicators):
         indicators = indicators.copy()
         indicators = indicators.assign(
-            age=(
-                records.year.max() - indicators.first_publication_year + 1
-            ).astype(int)
+            age=(records.year.max() - indicators.first_publication_year + 1).astype(int)
         )
         return indicators
 
@@ -193,9 +183,7 @@ def global_indicators_by_field(
 
         indicators = indicators.copy()
         indicators = indicators.assign(
-            global_citations_per_year=(
-                indicators.global_citations / indicators.age
-            ).round(2)
+            global_citations_per_year=(indicators.global_citations / indicators.age).round(2)
         )
 
         return indicators
@@ -206,14 +194,10 @@ def global_indicators_by_field(
         records = records.copy()
 
         records = records[[field, "year"]].dropna()
-        records[field] = (
-            records[field].str.split(";").map(lambda x: [_.strip() for _ in x])
-        )
+        records[field] = records[field].str.split(";").map(lambda x: [_.strip() for _ in x])
         records = records.explode(field)
 
-        records["first_publication_year"] = records.groupby(field)[
-            "year"
-        ].transform("min")
+        records["first_publication_year"] = records.groupby(field)["year"].transform("min")
 
         records = records.drop("year", axis=1)
         records = records.drop_duplicates()
@@ -255,9 +239,7 @@ def global_indicators_by_field(
 
         # sort the columns
         columns = ["OCC", before, between] + [
-            col
-            for col in indicators.columns
-            if col not in ["OCC", before, between]
+            col for col in indicators.columns if col not in ["OCC", before, between]
         ]
         indicators = indicators[columns]
 
@@ -292,9 +274,7 @@ def global_indicators_by_field(
         records[field] = records[field].str.split(";")
         records = records.explode(field)
         records[field] = records[field].str.strip()
-        records = records.sort_values(
-            [field, "global_citations"], ascending=[True, False]
-        )
+        records = records.sort_values([field, "global_citations"], ascending=[True, False])
         records = records.reset_index(drop=True)
 
         records = records.assign(
@@ -304,29 +284,21 @@ def global_indicators_by_field(
             + 1
         )
 
-        records = records.assign(
-            cumcount_2=records.cumcount_.map(lambda w: w * w)
-        )
+        records = records.assign(cumcount_2=records.cumcount_.map(lambda w: w * w))
 
         h_indexes = records.query("global_citations >= cumcount_")
-        h_indexes = h_indexes.groupby(field, as_index=True).agg(
-            {"cumcount_": np.max}
-        )
+        h_indexes = h_indexes.groupby(field, as_index=True).agg({"cumcount_": np.max})
         h_indexes = h_indexes.rename(columns={"cumcount_": "h_index"})
         indicators.loc[h_indexes.index, "h_index"] = h_indexes.astype(int)
         indicators["h_index"] = indicators["h_index"].fillna(0)
 
         g_indexes = records.query("global_citations >= cumcount_2")
-        g_indexes = g_indexes.groupby(field, as_index=True).agg(
-            {"cumcount_": np.max}
-        )
+        g_indexes = g_indexes.groupby(field, as_index=True).agg({"cumcount_": np.max})
         g_indexes = g_indexes.rename(columns={"cumcount_": "g_index"})
         indicators.loc[g_indexes.index, "g_index"] = g_indexes.astype(int)
         indicators["g_index"] = indicators["g_index"].fillna(0)
 
-        indicators = indicators.assign(
-            m_index=indicators.h_index / indicators.age
-        )
+        indicators = indicators.assign(m_index=indicators.h_index / indicators.age)
         indicators["m_index"] = indicators.m_index.round(decimals=2)
 
         return indicators
@@ -348,12 +320,8 @@ def global_indicators_by_field(
 
     indicators = extract_items_from_field(records)
     indicators = compute_column_sum_by_item(records, indicators, "OCC")
-    indicators = compute_column_sum_by_item(
-        records, indicators, "global_citations"
-    )
-    indicators = compute_column_sum_by_item(
-        records, indicators, "local_citations"
-    )
+    indicators = compute_column_sum_by_item(records, indicators, "global_citations")
+    indicators = compute_column_sum_by_item(records, indicators, "local_citations")
     indicators = compute_global_citations_per_document(indicators)
     indicators = compute_local_citations_per_document(indicators)
     indicators = compute_growth_indicators(indicators)
@@ -363,7 +331,7 @@ def global_indicators_by_field(
     indicators = compute_impact_indicators(records, indicators)
 
     stopwords = load_stopwords(root_dir=root_dir)
-    indicators = indicators.drop(stopwords, axis=0)
+    indicators = indicators.drop(stopwords, axis=0, errors="ignore")
 
     indicators = indicators.drop(field, axis=1)
     # indicators = indicators.sort_index(axis=0, ascending=True)

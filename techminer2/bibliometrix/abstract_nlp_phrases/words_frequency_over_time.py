@@ -4,14 +4,15 @@
 # pylint: disable=missing-docstring
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
+# pylint: disable=import-outside-toplevel
 """
 Word Frequency over Time
 ===============================================================================
 
->>> from techminer2 import bibliometrix
+>>> from techminer2.bibliometrix.abstract_nlp_phrases import words_frequency_over_time
 >>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix/abstract_nlp_phrases/words_frequency_over_time.html"
->>> words = bibliometrix.abstract_nlp_phrases.words_frequency_over_time(
+>>> words = words_frequency_over_time(
 ...     top_n=5,
 ...     root_dir=root_dir,
 ... )
@@ -56,9 +57,9 @@ Table:
 
 
 """
-from ...vantagepoint.discover import terms_by_year as analyze_terms_by_year
-
 FIELD = "abstract_nlp_phrases"
+
+from ...vantagepoint.discover import terms_by_year as analyze_terms_by_year
 
 
 def words_frequency_over_time(

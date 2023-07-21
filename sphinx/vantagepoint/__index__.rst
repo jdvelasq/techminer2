@@ -7,6 +7,11 @@ VantagePoint v15
 .. toctree::
    :maxdepth: 1
 
+   ingest/__index__
+
+.. toctree::
+   :maxdepth: 1
+
    search/__index__
 
 .. toctree::

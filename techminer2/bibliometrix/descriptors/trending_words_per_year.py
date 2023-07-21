@@ -4,6 +4,7 @@
 # pylint: disable=missing-docstring
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
+# pylint: disable=import-outside-toplevel
 """
 Trending Words per Year
 ===============================================================================
@@ -53,8 +54,6 @@ REGULATORY_COMPLIANCE         15     2019      2020  ...   3  0.560000      3
 
 
 """
-from ..trending_terms_per_year import trending_terms_per_year as analyze_trending_terms_per_year
-
 FIELD = "descriptors"
 
 
@@ -72,6 +71,8 @@ def trending_words_per_year(
     **filters,
 ):
     """Trend topics"""
+
+    from ..trending_terms_per_year import trending_terms_per_year as analyze_trending_terms_per_year
 
     return analyze_trending_terms_per_year(
         #

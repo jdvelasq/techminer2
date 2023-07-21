@@ -4,6 +4,7 @@
 # pylint: disable=missing-docstring
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
+# pylint: disable=import-outside-toplevel
 """
 Word Cloud
 ===============================================================================
@@ -26,8 +27,6 @@ Word Cloud
 
 
 """
-from ...vantagepoint.report import word_cloud as vp_word_cloud
-
 FIELD = "descriptors"
 
 
@@ -51,6 +50,8 @@ def word_cloud(
     **filters,
 ):
     """Plots a word cloud from a dataframe."""
+
+    from ...vantagepoint.report import word_cloud as vp_word_cloud
 
     return vp_word_cloud(
         #

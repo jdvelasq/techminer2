@@ -1,3 +1,11 @@
+# flake8: noqa
+# pylint: disable=invalid-name
+# pylint: disable=line-too-long
+# pylint: disable=missing-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
+# pylint: disable=too-many-statements
+# pylint: disable=import-outside-toplevel
 """
 Thematic evolution plot
 ===============================================================================
@@ -91,9 +99,7 @@ def thematic_evolution_plot(
 
         labels += cluster_table[cluster_table.rnk == 1].index.tolist()
 
-        cluster_table["group_index"] = (
-            cluster_table["group"] + n_clusters_previous
-        )
+        cluster_table["group_index"] = cluster_table["group"] + n_clusters_previous
         counter += len(cluster_table)
         data.append(cluster_table)
 
@@ -171,8 +177,6 @@ def _get_cluster_table(results):
     cluster_table["rnk"] = cluster_table.groupby("group")["value"].rank(
         method="first", ascending=False
     )
-    cluster_table = cluster_table.sort_values(
-        ["group", "rnk"], ascending=[True, False]
-    )
+    cluster_table = cluster_table.sort_values(["group", "rnk"], ascending=[True, False])
 
     return cluster_table

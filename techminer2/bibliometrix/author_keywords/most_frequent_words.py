@@ -8,12 +8,15 @@
 Most Frequent Words
 ===============================================================================
 
->>> from techminer2 import bibliometrix
+>>> from techminer2.bibliometrix.author_keywords import most_frequent_words
 >>> root_dir = "data/regtech/"
->>> items = bibliometrix.author_keywords.most_frequent_words(
+>>> items = most_frequent_words(
 ...    top_n=10,
 ...    root_dir=root_dir,
-... )
+... ) # doctest: +ELLIPSIS
+Note: ...
+Note: ...
+Note: ...
 >>> print(items.df_.to_markdown())
 | author_keywords         |   rank_occ |   OCC |
 |:------------------------|-----------:|------:|
@@ -64,8 +67,6 @@ Table:
 
 
 """
-from ...vantagepoint.discover import list_items
-
 FIELD = "author_keywords"
 METRIC = "OCC"
 
@@ -99,6 +100,8 @@ def most_frequent_words(
     **filters,
 ):
     """Creates a rank chart."""
+
+    from ...vantagepoint.discover import list_items
 
     return list_items(
         #

@@ -1,6 +1,6 @@
 """Setup module for TechMiner2+"""
 
-import nltk
+# import nltk
 from setuptools import setup
 
 # from setuptools.command.build_py import build_py
@@ -18,19 +18,17 @@ from setuptools import setup
 #         build_py.run(self)
 
 
-def _post_install():
-    import nltk
-
-    nltk.download("punkt")
-    nltk.download("brown")
-    nltk.download("stopwords")
-    nltk.download("averaged_perceptron_tagger")
+# def _post_install():
+#     nltk.download("punkt")
+#     nltk.download("brown")
+#     nltk.download("stopwords")
+#     nltk.download("averaged_perceptron_tagger")
 
 
 setup(
     # cmdclass={"build_py": BuildPyCommand},
     name="techminer2",
-    version="Jul 21, 2023",
+    version="2023.07.21",
     author="Juan D. Velasquez",
     author_email="jdvelasq@unal.edu.co",
     license="MIT",
@@ -41,29 +39,29 @@ setup(
     platforms="any",
     provides=["techminer2"],
     install_requires=[
-        "cdlib",
-        "fuzzywuzzy",
-        "networkx",
-        "nltk",
-        "pandas",
-        "plotly",
-        "python-Levenshtein",
-        "PyYAML",
-        "scikit-learn",
-        "pyspellchecker",
-        "sumy",
-        "textblob",
-        "wordcloud",
-        "kelaido",
-        "igraph",
-        "leidenalg",
+        # "nltk",
+        # "cdlib",
+        # "fuzzywuzzy",
+        # "networkx",
+        # "pandas",
+        # "plotly",
+        # "python-Levenshtein",
+        # "PyYAML",
+        # "scikit-learn",
+        # "pyspellchecker",
+        # "sumy",
+        # "textblob",
+        # "wordcloud",
+        # # "kelaido",
+        # "igraph",
+        # "leidenalg",
     ],
     packages=[
         "techminer2",
         "techminer2._files",
         #
         "techminer2.bibliometrix",
-        "techminer2.bibliometrix.abstracts_nlp_phrases",
+        "techminer2.bibliometrix.abstract_nlp_phrases",
         "techminer2.bibliometrix.author_keywords",
         "techminer2.bibliometrix.authors",
         "techminer2.bibliometrix.cited_references",
@@ -83,6 +81,7 @@ setup(
         "techminer2.bibliometrix.sources",
         "techminer2.bibliometrix.nlp_phrases",
         #
+        "techminer2.vosviewer",
         "techminer2.vosviewer.bibliographing_coupling_by_refs",
         "techminer2.vosviewer.bibliographing_coupling_by_refs.authors",
         "techminer2.vosviewer.bibliographing_coupling_by_refs.countries",
@@ -121,6 +120,7 @@ setup(
         "techminer2.vosviewer.thematic_map.descriptors",
         #
         "techminer2.vantagepoint",
+        "techminer2.vantagepoint.ingest",
         "techminer2.vantagepoint.calculate",
         "techminer2.vantagepoint.classify",
         "techminer2.vantagepoint.discover",
@@ -139,7 +139,6 @@ setup(
         "techminer2.scientopy",
         #
         "techminer2.techminer",
-        "techminer2.techminer.ingest",
         "techminer2.techminer.metrics",
         "techminer2.techminer.reports",
         "techminer2.techminer.tools",

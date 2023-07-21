@@ -44,16 +44,14 @@ Matrix Viewer
 """
 import networkx as nx
 
-from ...vosviewer.nx_compute_edge_width_from_edge_weight import (
-    nx_compute_edge_width_from_edge_weight,
-)
-from ...vosviewer.nx_compute_spring_layout import nx_compute_spring_layout
-from ...vosviewer.nx_compute_textposition_from_graph import nx_compute_textposition_from_graph
-from ...vosviewer.nx_set_edge_color_to_constant import nx_set_edge_color_to_constant
-from ...vosviewer.nx_set_node_size_to_constant import nx_set_node_size_to_constant
-from ...vosviewer.nx_set_textfont_opacity_to_constant import nx_set_textfont_opacity_to_constant
-from ...vosviewer.nx_set_textfont_size_to_constant import nx_set_textfont_size_to_constant
-from ...vosviewer.nx_visualize_graph import nx_visualize_graph
+from ...nx_compute_edge_width_from_edge_weight import nx_compute_edge_width_from_edge_weight
+from ...nx_compute_spring_layout import nx_compute_spring_layout
+from ...nx_compute_textposition_from_graph import nx_compute_textposition_from_graph
+from ...nx_set_edge_color_to_constant import nx_set_edge_color_to_constant
+from ...nx_set_node_size_to_constant import nx_set_node_size_to_constant
+from ...nx_set_textfont_opacity_to_constant import nx_set_textfont_opacity_to_constant
+from ...nx_set_textfont_size_to_constant import nx_set_textfont_size_to_constant
+from ...nx_visualize_graph import nx_visualize_graph
 from ..discover.matrix.co_occurrence_matrix import co_occurrence_matrix
 
 

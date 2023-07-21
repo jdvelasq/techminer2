@@ -1,4 +1,4 @@
 Filters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-See :ref:`sciento_py` package.
+See :ref:`scientopy` package.

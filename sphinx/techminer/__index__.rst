@@ -4,11 +4,6 @@ TechMiner
 .. toctree::
    :maxdepth: 1
 
-   ingest/__index__
-
-.. toctree::
-   :maxdepth: 1
-
    metrics/__index__
 
 .. toctree::

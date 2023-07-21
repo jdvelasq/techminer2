@@ -4,15 +4,16 @@
 # pylint: disable=missing-docstring
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
+# pylint: disable=import-outside-toplevel
 """
 Trending Words per Year
 ===============================================================================
 
 
->>> from techminer2 import bibliometrix
+>>> from techminer2.bibliometrix.author_keywords import trending_words_per_year
 >>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/_static/bibliometrix/author_keywords/trending_words_per_year.html"
->>> words = bibliometrix.author_keywords.trending_words_per_year(
+>>> words = trending_words_per_year(
 ...     root_dir=root_dir, 
 ... )
 >>> words.df_.head(20)
@@ -53,8 +54,6 @@ FINANCIAL_REGULATION                       4     2019  ...  0.241111      4
 
 
 """
-from ..trending_terms_per_year import trending_terms_per_year as analyze_trending_terms_per_year
-
 FIELD = "author_keywords"
 
 
@@ -72,6 +71,8 @@ def trending_words_per_year(
     **filters,
 ):
     """Trend topics"""
+
+    from ..trending_terms_per_year import trending_terms_per_year as analyze_trending_terms_per_year
 
     return analyze_trending_terms_per_year(
         #

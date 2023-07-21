@@ -8,9 +8,9 @@
 Most Frequent Words
 ===============================================================================
 
->>> from techminer2 import bibliometrix
+>>> from techminer2.bibliometrix.abstract_nlp_phrases import most_frequent_words
 >>> root_dir = "data/regtech/"
->>> items = bibliometrix.abstract_nlp_phrases.most_frequent_words(
+>>> items = most_frequent_words(
 ...    top_n=10,
 ...    root_dir=root_dir,
 ... )

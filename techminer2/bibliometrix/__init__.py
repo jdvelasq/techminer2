@@ -1,1 +1,45 @@
-from .trending_terms_per_year import trending_terms_per_year
+"""Bibliometrix module."""
+
+# from . import (
+#     abstract_nlp_phrases,
+#     author_keywords,
+#     authors,
+#     cited_references,
+#     conceptual_structure,
+#     countries,
+#     coupling,
+#     data,
+#     descriptors,
+#     documents,
+#     index_keywords,
+#     intellectual_structure,
+#     keywords,
+#     nlp_phrases,
+#     organizations,
+#     overview,
+#     social_structure,
+#     sources,
+#     title_nlp_phrases,
+# )
+
+# __all__ = [
+#     "abstract_nlp_phrases",
+#     "author_keywords",
+#     "authors",
+#     "cited_references",
+#     "conceptual_structure",
+#     "countries",
+#     "coupling",
+#     "data",
+#     "descriptors",
+#     "documents",
+#     "index_keywords",
+#     "intellectual_structure",
+#     "keywords",
+#     "nlp_phrases",
+#     "organizations",
+#     "overview",
+#     "social_structure",
+#     "sources",
+#     "title_nlp_phrases",
+# ]

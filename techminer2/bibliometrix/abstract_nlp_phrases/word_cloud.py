@@ -4,16 +4,15 @@
 # pylint: disable=missing-docstring
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
+# pylint: disable=import-outside-toplevel
 """
 Word Cloud
 ===============================================================================
 
->>> from techminer2 import bibliometrix
+>>> from techminer2.bibliometrix.abstract_nlp_phrases import word_cloud
 >>> root_dir = "data/regtech/"
 >>> file_name = "sphinx/images/bibliometrix/abstract_nlp_phrases/word_cloud.png"
-
-
->>> chart = bibliometrix.abstract_nlp_phrases.word_cloud(
+>>> chart = word_cloud(
 ...     title="Title NLP Phrases",
 ...     top_n=50,
 ...     root_dir=root_dir,
@@ -29,9 +28,9 @@ Word Cloud
 
 
 """
-from ...vantagepoint.report import word_cloud as vp_word_cloud
-
 FIELD = "abstract_nlp_phrases"
+
+from ...vantagepoint.report import word_cloud as vp_word_cloud
 
 
 def word_cloud(

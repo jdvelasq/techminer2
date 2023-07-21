@@ -4,6 +4,7 @@
 # pylint: disable=missing-docstring
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
+# pylint: disable=import-outside-toplevel
 """
 .. _vantage_point_report_butterfly_chart:
 
@@ -29,8 +30,6 @@ Butterfly Chart
 
 """
 import plotly.graph_objects as go
-
-from ..discover.matrix.co_occurrence_matrix import co_occurrence_matrix
 
 
 def butterfly_chart(
@@ -64,6 +63,8 @@ def butterfly_chart(
     **filters,
 ):
     """Makes a butterfly chart."""
+
+    from ..discover.matrix.co_occurrence_matrix import co_occurrence_matrix
 
     def extract_item_position_and_name(candidate_items, item):
         """Obtains the positions of topics in a list."""

@@ -4,6 +4,7 @@
 # pylint: disable=missing-docstring
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
+# pylint: disable=import-outside-toplevel
 """
 .. _vantagepoint_reports_bar_chart:
 
@@ -75,8 +76,6 @@ Table:
 """
 import plotly.express as px
 
-from ..discover.list_items import list_items
-
 MARKER_COLOR = "#7793a5"
 MARKER_LINE_COLOR = "#465c6b"
 
@@ -106,6 +105,8 @@ def bar_chart(
     **filters,
 ):
     """Bar chart."""
+
+    from ..discover.list_items import list_items
 
     items = list_items(
         #

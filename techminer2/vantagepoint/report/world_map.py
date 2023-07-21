@@ -4,6 +4,7 @@
 # pylint: disable=missing-docstring
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
+# pylint: disable=import-outside-toplevel
 """
 .. _world_map:
 
@@ -73,8 +74,6 @@ Table:
 import pandas as pd
 import plotly.express as px
 
-from ..discover.list_items import list_items
-
 
 def world_map(
     #
@@ -99,6 +98,8 @@ def world_map(
     **filters,
 ):
     """Creates a world map."""
+
+    from ..discover.list_items import list_items
 
     def create_plot():
         """Creates a plotly figure."""
