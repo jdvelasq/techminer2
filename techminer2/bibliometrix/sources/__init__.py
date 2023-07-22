@@ -6,9 +6,10 @@ This module contains functions for computing bibliometric indicators for sources
 """
 
 from .local_impact_g_index import local_impact_g_index
-from .local_impact_global_citations import local_impact_global_citations
-from .local_impact_h_index import local_impact_h_index
-from .local_impact_m_index import local_impact_m_index
+
+# from .local_impact_global_citations import local_impact_global_citations
+# from .local_impact_h_index import local_impact_h_index
+# from .local_impact_m_index import local_impact_m_index
 from .most_frequent import most_frequent
 from .most_local_cited import most_local_cited
 from .most_relevant import most_relevant

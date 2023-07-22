@@ -52,11 +52,11 @@ Local Impact --- H-Index (Recipe)
 | ICEIS - PROC INT CONF ENTERP  |         1 |         1 |      0.25 |
 
 
->>> items.fig_.write_html("sphinx/_static/bibliometrix/sources/h_index_chart.html")
+>>> items.fig_.write_html("sphinx/_static/analyze/terms/sources/h_index_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/bibliometrix/sources/h_index_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/analyze/terms/sources/h_index_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> print(items.prompt_)

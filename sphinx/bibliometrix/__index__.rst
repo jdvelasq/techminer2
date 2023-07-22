@@ -13,10 +13,7 @@ Bibliometrix 4.1.3
 
    overview/__index__
 
-.. toctree::
-   :maxdepth: 1
-
-   sources/__index__
+* :ref:`sources`
 
 .. toctree::
    :maxdepth: 1

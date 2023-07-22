@@ -8,7 +8,7 @@
 Bradford's Law
 ===============================================================================
 
->>> from techminer2.analyze import bradford_law
+>>> from techminer2.analyze.terms.sources import bradford_law
 >>> bradford = bradford_law(
 ...     #
 ...     # DATABASE PARAMS:
@@ -75,11 +75,11 @@ Bradford's Law
 | RES INT BUS FINANC            |   45 |     1 |        51 |                  0 |      3 |
 | TECHNOL SOC                   |   46 |     1 |        52 |                  0 |      3 |
 
->>> bradford.fig_.write_html("sphinx/_static/analyze/bradford_law_chart.html")
+>>> bradford.fig_.write_html("sphinx/_static/analyze/terms/sources/bradford_law_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/analyze/bradford_law_chart.html")
+    <iframe src="../../../../_static/analyze/terms/sources/bradford_law_chart.html")
     height="600px" width="100%" frameBorder="0"></iframe>
 
 
@@ -90,7 +90,7 @@ import numpy as np
 import pandas as pd
 import plotly.express as px
 
-from .._read_records import read_records
+from ...._read_records import read_records
 
 
 def bradford_law(

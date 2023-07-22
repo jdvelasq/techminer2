@@ -92,6 +92,7 @@ TM2 module.
     :hidden:
     :maxdepth: 1
 
+    techminer/analyze/__index__
     techminer/visualize/__index__
 
 

@@ -58,7 +58,8 @@ Local Impact --- Global Citations (Recipe)
 
 .. raw:: html
 
-    <iframe src="../../../../_static/bibliometrix/analyze/terms/global_citations_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/analyze/terms/sources/global_citations_chart.html" 
+    height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> print(items.prompt_)

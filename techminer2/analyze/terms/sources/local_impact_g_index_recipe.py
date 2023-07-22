@@ -5,7 +5,7 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-Local Impact --- H-Index (Recipe)
+Local Impact --- G-Index (Recipe)
 ===============================================================================
 
 >>> from techminer2.analyze.terms import list_items
@@ -14,7 +14,7 @@ Local Impact --- H-Index (Recipe)
 ...     #
 ...     # ITEMS PARAMS:
 ...     field='source_abbr',
-...     metric="h_index",
+...     metric="g_index",
 ...     #
 ...     # CHART PARAMS:
 ...     title=None,
@@ -41,28 +41,28 @@ Local Impact --- H-Index (Recipe)
 | source_abbr                   |   h_index |   g_index |   m_index |
 |:------------------------------|----------:|----------:|----------:|
 | J BANK REGUL                  |         2 |         2 |      0.5  |
-| J FINANC CRIME                |         2 |         1 |      0.5  |
 | J ECON BUS                    |         1 |         1 |      0.17 |
 | NORTHWEST J INTL LAW BUS      |         1 |         1 |      0.14 |
 | PALGRAVE STUD DIGIT BUS ENABL |         1 |         1 |      0.2  |
 | DUKE LAW J                    |         1 |         1 |      0.12 |
 | J RISK FINANC                 |         1 |         1 |      0.17 |
 | J MONEY LAUND CONTROL         |         1 |         1 |      0.25 |
+| J FINANC CRIME                |         2 |         1 |      0.5  |
 | FINANCIAL INNOV               |         1 |         1 |      0.5  |
 | ICEIS - PROC INT CONF ENTERP  |         1 |         1 |      0.25 |
 
 
->>> items.fig_.write_html("sphinx/_static/bibliometrix/sources/h_index_chart.html")
+>>> items.fig_.write_html("sphinx/_static/analyze/terms/sources/g_index_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/bibliometrix/sources/h_index_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/analyze/terms/sources/g_index_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> print(items.prompt_)
 Your task is to generate an analysis about the bibliometric indicators of \\
 the 'source_abbr' field in a scientific bibliography database. Summarize \\
-the table below, sorted by the 'h_index' metric, and delimited by triple \\
+the table below, sorted by the 'g_index' metric, and delimited by triple \\
 backticks, identify any notable patterns, trends, or outliers in the data, \\
 and discuss their implications for the research field. Be sure to provide a \\
 concise summary of your findings in no more than 150 words.
@@ -72,17 +72,16 @@ Table:
 | source_abbr                   |   h_index |   g_index |   m_index |
 |:------------------------------|----------:|----------:|----------:|
 | J BANK REGUL                  |         2 |         2 |      0.5  |
-| J FINANC CRIME                |         2 |         1 |      0.5  |
 | J ECON BUS                    |         1 |         1 |      0.17 |
 | NORTHWEST J INTL LAW BUS      |         1 |         1 |      0.14 |
 | PALGRAVE STUD DIGIT BUS ENABL |         1 |         1 |      0.2  |
 | DUKE LAW J                    |         1 |         1 |      0.12 |
 | J RISK FINANC                 |         1 |         1 |      0.17 |
 | J MONEY LAUND CONTROL         |         1 |         1 |      0.25 |
+| J FINANC CRIME                |         2 |         1 |      0.5  |
 | FINANCIAL INNOV               |         1 |         1 |      0.5  |
 | ICEIS - PROC INT CONF ENTERP  |         1 |         1 |      0.25 |
 ```
 <BLANKLINE>
-
 
 """
