@@ -1,1 +1,1 @@
-from .concordances import concordances
+# from ....analyze.co_occurrences.concordances.concordances import concordances

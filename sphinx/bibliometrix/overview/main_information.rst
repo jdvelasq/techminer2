@@ -1,4 +1,4 @@
-.. automodule:: techminer2.bibliometrix.overview.main_information
+.. automodule:: techminer2.analyze.main_information
     :members:
     :show-inheritance:
 

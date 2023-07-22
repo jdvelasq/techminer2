@@ -1,60 +1,90 @@
 Report/ 
 ==============================================================================
 
-.. toctree::
-    column_chart
 
-.. toctree::
-    bar_chart
+* :ref:`column_chart`
 
-.. toctree::
-    pie_chart
+.. raw:: html
 
-.. toctree::
-    line_chart    
+    <br>
 
-.. toctree::
-    word_cloud    
+* :ref:`bar_chart` 
 
-.. toctree::
-    multi_donut
+.. raw:: html
 
-.. toctree::
-    bubble_chart    
+    <br>
 
-.. toctree::
-    heat_map
+* :ref:`pie_chart`
 
-.. toctree::
-    gantt_chart
+.. raw:: html
 
-.. toctree::
-    butterfly_chart
+    <br>
 
-.. toctree::
-    scatter_plot
+* :ref:`line_chart`
 
-.. toctree::
-    cluster_map
+.. raw:: html
 
-.. toctree::
-    super_profile
+    <br>
 
-.. toctree::
-    world_map  
+* :ref:`word_cloud`
 
-.. toctree::
-    plot_classifications
+.. raw:: html
 
-.. toctree::
-    plot_emergence
+    <br>
 
-.. toctree::
-    cleveland_dot_chart
+* :ref:`multi_donut`
 
-.. toctree::
-    ranking_chart
+.. raw:: html
 
+    <br>
 
+* :ref:`bubble_chart`
 
+.. raw:: html
+
+    <br>
+
+* :ref:`gant_chart`
+
+.. raw:: html
+
+    <br>
+
+* :ref:`butterfly_chart`
+
+.. raw:: html
+
+    <br>
+
+* :ref:`scatter_plot`
+
+.. raw:: html
+
+    <br>
+
+* :ref:`cluster_map`
+
+.. raw:: html
+
+    <br>
+
+* :ref:`super_profile`
+
+.. raw:: html
+
+    <br>
+
+* :ref:`world_map`
+
+.. raw:: html
+
+    <br>
+
+* :ref:`plot_classifications`
+
+.. raw:: html
+
+    <br>
+
+* :ref:`plot_emergence`
 

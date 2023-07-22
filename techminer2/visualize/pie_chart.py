@@ -6,6 +6,8 @@
 # pylint: disable=too-many-locals
 # pylint: disable=import-outside-toplevel
 """
+.. _pie_chart:
+
 Pie Chart
 ===============================================================================
 

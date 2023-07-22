@@ -5,7 +5,6 @@ This module contains functions for computing bibliometric indicators for sources
 
 """
 
-from .bradford_law import bradford_law
 from .local_impact_g_index import local_impact_g_index
 from .local_impact_global_citations import local_impact_global_citations
 from .local_impact_h_index import local_impact_h_index

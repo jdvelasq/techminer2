@@ -5,6 +5,8 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
+.. _bubble_chart:
+
 Bubble Chart
 ===============================================================================
 

@@ -1,4 +1,4 @@
-.. automodule:: techminer2.tlab.co_occurrence_analysis.word_associations.item_associations
+.. automodule:: techminer2.analyze.co_occurrences.associations.item_associations
     :members:
 
 

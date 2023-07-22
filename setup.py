@@ -66,6 +66,11 @@ setup(
         "techminer2.analyze",
         "techminer2.analyze.terms",
         "techminer2.analyze.co_occurrences",
+        "techminer2.analyze.co_occurrences.associations",
+        "techminer2.analyze.co_occurrences.concordances",
+        "techminer2.analyze.co_occurrences.item_pairs",
+        "techminer2.analyze.correlations",
+        "techminer2.analyze.time",
         #
         #
         #

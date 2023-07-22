@@ -6,6 +6,8 @@
 # pylint: disable=too-many-locals
 # pylint: disable=import-outside-toplevel
 """
+.. _word_cloud:
+
 Word Cloud
 ===============================================================================
 

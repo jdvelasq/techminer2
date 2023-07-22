@@ -1,4 +1,4 @@
-.. automodule:: techminer2.vantagepoint.discover.matrix.auto_correlation_matrix
+.. automodule:: techminer2.analyze.correlations.auto_correlation_matrix
     :members:
     :undoc-members:
     :show-inheritance:

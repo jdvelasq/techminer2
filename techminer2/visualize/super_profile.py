@@ -7,6 +7,8 @@
 # pylint: disable=too-many-statements
 # pylint: disable=import-outside-toplevel
 """
+.. _super_profile:
+
 TODO: Super Profile
 ===============================================================================
 

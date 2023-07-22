@@ -87,13 +87,21 @@ TM2 module.
     introduction/license
 
 
+.. toctree::
+    :caption: TECHMINER 2+
+    :hidden:
+    :maxdepth: 1
+
+    techminer/visualize/__index__
+
+
 
 .. toctree::
     :caption: EXAMPLES / HOW'S TO
     :hidden:
     :maxdepth: 1
 
-    techminer/__index__
+    
     bibliometrix/__index__
     vantagepoint/__index__
     tlab/__index__
