@@ -6,24 +6,40 @@
 # pylint: disable=too-many-locals
 # pylint: disable=import-outside-toplevel
 """
-Production over Time
+Production over Time (Recipe)
 ===============================================================================
 
 
->>> from techminer2 import bibliometrix
->>> root_dir = "data/regtech/"
->>> production_over_time = bibliometrix.authors.production_over_time(
-...    top_n=10,
-...    root_dir=root_dir,
+>>> from techminer2.analyze.terms import terms_by_year
+>>> terms = terms_by_year(
+...     #
+...     # PARAMS:
+...     field="authors",
+...     cumulative=False,
+...     #
+...     # CHART PARAMS:
+...     title=None,
+...     #
+...     # ITEM FILTERS:
+...     top_n=10,
+...     occ_range=(None, None),
+...     gc_range=(None, None),
+...     custom_items=None,
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="data/regtech/",
+...     database="main",
+...     year_filter=(None, None),
+...     cited_by_filter=(None, None),
 ... )
->>> production_over_time.fig_.write_html("sphinx/_static/bibliometrix/authors/production_over_time.html")
+>>> terms.fig_.write_html("sphinx/_static/analyze/terms/authors/production_over_time.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/bibliometrix/authors/production_over_time.html" 
+    <iframe src="../../../../_static/analyze/terms/authors/production_over_time.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
->>> print(production_over_time.df_.to_markdown())
+>>> print(terms.df_.to_markdown())
 | authors           |   2016 |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |
 |:------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
 | Arner DW 3:185    |      0 |      2 |      0 |      0 |      1 |      0 |      0 |      0 |
@@ -39,7 +55,7 @@ Production over Time
 
 
 
->>> print(production_over_time.prompt_)
+>>> print(terms.prompt_)
 Your task is to generate an analysis about the  occurrences by year of the \\
 'authors' in a scientific bibliography database. Summarize the table below, \\
 delimited by triple backticks, identify any notable patterns, trends, or \\
@@ -65,7 +81,7 @@ Table:
 <BLANKLINE>
 
 
->>> print(production_over_time.metrics_.head().to_markdown())
+>>> print(terms.metrics_.head().to_markdown())
 |    | authors     |   year |   OCC |   cum_OCC |   global_citations |   local_citations |   age |   global_citations_per_year |   local_citations_per_year |
 |---:|:------------|-------:|------:|----------:|-------------------:|------------------:|------:|----------------------------:|---------------------------:|
 |  0 | Arner DW    |   2017 |     2 |         2 |                161 |                 3 |     7 |                          23 |                      0.429 |
@@ -74,7 +90,7 @@ Table:
 |  3 | Buckley RP  |   2020 |     1 |         3 |                 24 |                 5 |     4 |                           6 |                      1.25  |
 |  4 | Barberis JN |   2017 |     2 |         2 |                161 |                 3 |     7 |                          23 |                      0.429 |
 
->>> print(production_over_time.documents_.head().to_markdown())
+>>> print(terms.documents_.head().to_markdown())
 |    | authors     | title                                                                 |   year | source_title                                                   |   global_citations |   local_citations | doi                         |
 |---:|:------------|:----------------------------------------------------------------------|-------:|:---------------------------------------------------------------|-------------------:|------------------:|:----------------------------|
 |  0 | Arner DW    | FINTECH, REGTECH, and the reconceptualization of FINANCIAL_REGULATION |   2017 | Northwestern Journal of International Law and Business         |                150 |                 0 | nan                         |
@@ -87,47 +103,3 @@ Table:
 
 
 """
-FIELD = "authors"
-
-
-def production_over_time(
-    #
-    # PARAMS:
-    cumulative=False,
-    #
-    # ITEM FILTERS:
-    top_n=None,
-    occ_range=(None, None),
-    gc_range=(None, None),
-    custom_items=None,
-    #
-    # DATABASE PARAMS:
-    root_dir="./",
-    database="main",
-    year_filter=(None, None),
-    cited_by_filter=(None, None),
-    **filters,
-):
-    """Sources production over time."""
-
-    from ...vantagepoint.discover import terms_by_year
-
-    return terms_by_year(
-        #
-        # PARAMS:
-        field=FIELD,
-        cumulative=cumulative,
-        #
-        # ITEM FILTERS:
-        top_n=top_n,
-        occ_range=occ_range,
-        gc_range=gc_range,
-        custom_items=custom_items,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )

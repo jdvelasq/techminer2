@@ -15,6 +15,11 @@ Bibliometrix 4.1.3
 
 * :ref:`sources`
 
+
+* **Authors**
+
+   * :ref:`authors`
+
 .. toctree::
    :maxdepth: 1
 

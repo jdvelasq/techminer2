@@ -5,14 +5,36 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-Local Impact --- G-Index
+Local Impact --- G-Index (Recipe)
 ===============================================================================
 
->>> from techminer2.bibliometrix.authors import local_impact_g_index
->>> root_dir = "data/regtech/"
->>> items = local_impact_g_index(
-...    top_n=10,
-...    root_dir=root_dir,
+>>> from techminer2.analyze.terms import list_items
+>>> items = list_items(
+...     #
+...     # ITEMS PARAMS:
+...     field='authors',
+...     metric="g_index",
+...     #
+...     # CHART PARAMS:
+...     title=None,
+...     field_label=None,
+...     metric_label=None,
+...     textfont_size=10,
+...     marker_size=7,
+...     line_width=1.5,
+...     yshift=4,
+...     #
+...     # ITEM FILTERS:
+...     top_n=20,
+...     occ_range=(None, None),
+...     gc_range=(None, None),
+...     custom_items=None,
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="data/regtech/",
+...     database="main",
+...     year_filter=(None, None),
+...     cited_by_filter=(None, None),
 ... )
 >>> print(items.df_.to_markdown())
 | authors           |   h_index |   g_index |   m_index |
@@ -27,13 +49,23 @@ Local Impact --- G-Index
 | OBrien L          |         1 |         1 |      0.2  |
 | Baxter LG         |         1 |         1 |      0.12 |
 | Weber RH          |         1 |         1 |      0.25 |
+| Zetzsche DA       |         1 |         1 |      0.25 |
+| Breymann W        |         1 |         1 |      0.17 |
+| Gross FJ          |         1 |         1 |      0.17 |
+| Kavassalis P      |         1 |         1 |      0.17 |
+| Saxton K          |         1 |         1 |      0.17 |
+| Stieber H         |         1 |         1 |      0.17 |
+| Lin W             |         2 |         1 |      0.5  |
+| Singh C           |         2 |         1 |      0.5  |
+| Brennan R         |         2 |         1 |      0.5  |
+| Crane M           |         2 |         1 |      0.5  |
 
 
->>> items.fig_.write_html("sphinx/_static/bibliometrix/authors/g_index_chart.html")
+>>> items.fig_.write_html("sphinx/_static/analyze/terms/authors/g_index_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/bibliometrix/authors/g_index_chart.html" 
+    <iframe src="../../../../_static/analyze/terms/authors/g_index_chart.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
     
@@ -59,73 +91,19 @@ Table:
 | OBrien L          |         1 |         1 |      0.2  |
 | Baxter LG         |         1 |         1 |      0.12 |
 | Weber RH          |         1 |         1 |      0.25 |
+| Zetzsche DA       |         1 |         1 |      0.25 |
+| Breymann W        |         1 |         1 |      0.17 |
+| Gross FJ          |         1 |         1 |      0.17 |
+| Kavassalis P      |         1 |         1 |      0.17 |
+| Saxton K          |         1 |         1 |      0.17 |
+| Stieber H         |         1 |         1 |      0.17 |
+| Lin W             |         2 |         1 |      0.5  |
+| Singh C           |         2 |         1 |      0.5  |
+| Brennan R         |         2 |         1 |      0.5  |
+| Crane M           |         2 |         1 |      0.5  |
 ```
 <BLANKLINE>
 
 
 
 """
-from ...vantagepoint.discover import list_items
-
-FIELD = "authors"
-METRIC = "g_index"
-
-
-def local_impact_g_index(
-    #
-    # ITEMS PARAMS:
-    field=FIELD,
-    metric=METRIC,
-    #
-    # CHART PARAMS:
-    title=None,
-    field_label=None,
-    metric_label=None,
-    textfont_size=10,
-    marker_size=7,
-    line_width=1.5,
-    yshift=4,
-    #
-    # ITEM FILTERS:
-    top_n=None,
-    occ_range=(None, None),
-    gc_range=(None, None),
-    custom_items=None,
-    #
-    # DATABASE PARAMS:
-    root_dir="./",
-    database="main",
-    year_filter=(None, None),
-    cited_by_filter=(None, None),
-    **filters,
-):
-    """Creates a rank chart."""
-
-    return list_items(
-        #
-        # ITEMS PARAMS:
-        field=field,
-        metric=metric,
-        #
-        # CHART PARAMS:
-        title=title,
-        field_label=field_label,
-        metric_label=metric_label,
-        textfont_size=textfont_size,
-        marker_size=marker_size,
-        line_width=line_width,
-        yshift=yshift,
-        #
-        # ITEM FILTERS:
-        top_n=top_n,
-        occ_range=occ_range,
-        gc_range=gc_range,
-        custom_items=custom_items,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )

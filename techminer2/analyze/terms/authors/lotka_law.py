@@ -19,11 +19,11 @@ Lotka's Law
 ...     year_filter=None,
 ...     cited_by_filter=None,
 ... )
->>> lotka.fig_.write_html("sphinx/_static/analyze/lotka_law.html")
+>>> lotka.fig_.write_html("sphinx/_static/analyze/terms/authors/lotka_law.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/analyze/lotka_law.html" 
+    <iframe src="../../../../_static/analyze/terms/authors/lotka_law.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> print(lotka.df_.to_markdown())
@@ -132,7 +132,7 @@ def __core_authors_table(
     cited_by_filter,
     **filters,
 ):
-    from ..techminer.metrics.global_indicators_by_field import global_indicators_by_field
+    from ....techminer.metrics.global_indicators_by_field import global_indicators_by_field
 
     #
     # Part 1: Computes the number of written documents per number of authors.

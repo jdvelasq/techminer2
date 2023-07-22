@@ -6,14 +6,36 @@
 # pylint: disable=too-many-locals
 # pylint: disable=import-outside-toplevel
 """
-Most Frequent
+Most Frequent (Recipe)
 ===============================================================================
 
->>> from techminer2 import bibliometrix
->>> root_dir = "data/regtech/"
->>> items = bibliometrix.authors.most_frequent(
-...    top_n=10,
-...    root_dir=root_dir,
+>>> from techminer2.analyze.terms import list_items
+>>> items = list_items(
+...     #
+...     # ITEMS PARAMS:
+...     field='authors',
+...     metric="OCC",
+...     #
+...     # CHART PARAMS:
+...     title=None,
+...     field_label=None,
+...     metric_label=None,
+...     textfont_size=10,
+...     marker_size=7,
+...     line_width=1.5,
+...     yshift=4,
+...     #
+...     # ITEM FILTERS:
+...     top_n=10,
+...     occ_range=(None, None),
+...     gc_range=(None, None),
+...     custom_items=None,
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="data/regtech/",
+...     database="main",
+...     year_filter=(None, None),
+...     cited_by_filter=(None, None),
 ... )
 >>> print(items.df_.to_markdown())
 | authors     |   rank_occ |   OCC |
@@ -30,11 +52,12 @@ Most Frequent
 | Crane M     |         10 |     2 |
 
 
->>> items.fig_.write_html("sphinx/_static/bibliometrix/authors/most_frequent_chart.html")
+>>> items.fig_.write_html("sphinx/_static/analyze/terms/authors/most_frequent_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/bibliometrix/authors/most_frequent_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/analyze/terms/authors/most_frequent_chart.html" 
+    height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> print(items.prompt_)
@@ -63,67 +86,3 @@ Table:
 <BLANKLINE>
 
 """
-FIELD = "authors"
-METRIC = "OCC"
-
-
-def most_frequent(
-    #
-    # ITEMS PARAMS:
-    field=FIELD,
-    metric=METRIC,
-    #
-    # CHART PARAMS:
-    title=None,
-    field_label=None,
-    metric_label=None,
-    textfont_size=10,
-    marker_size=7,
-    line_width=1.5,
-    yshift=4,
-    #
-    # ITEM FILTERS:
-    top_n=None,
-    occ_range=(None, None),
-    gc_range=(None, None),
-    custom_items=None,
-    #
-    # DATABASE PARAMS:
-    root_dir="./",
-    database="main",
-    year_filter=(None, None),
-    cited_by_filter=(None, None),
-    **filters,
-):
-    """Creates a rank chart."""
-
-    from ...vantagepoint.discover import list_items
-
-    return list_items(
-        #
-        # ITEMS PARAMS:
-        field=field,
-        metric=metric,
-        #
-        # CHART PARAMS:
-        title=title,
-        field_label=field_label,
-        metric_label=metric_label,
-        textfont_size=textfont_size,
-        marker_size=marker_size,
-        line_width=line_width,
-        yshift=yshift,
-        #
-        # ITEM FILTERS:
-        top_n=top_n,
-        occ_range=occ_range,
-        gc_range=gc_range,
-        custom_items=custom_items,
-        #
-        # DATABASE PARAMS:
-        root_dir=root_dir,
-        database=database,
-        year_filter=year_filter,
-        cited_by_filter=cited_by_filter,
-        **filters,
-    )
