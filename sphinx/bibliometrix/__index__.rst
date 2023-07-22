@@ -15,15 +15,12 @@ Bibliometrix 4.1.3
 
 * :ref:`sources`
 
+* :ref:`authors`
 
-* **Authors**
+* :ref:`organizations`
 
-   * :ref:`authors`
+* :ref:`countries`
 
-.. toctree::
-   :maxdepth: 1
-
-   authors/__index__
 
 
 .. toctree::
