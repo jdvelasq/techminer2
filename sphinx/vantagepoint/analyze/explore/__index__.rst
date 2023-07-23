@@ -7,14 +7,14 @@ Explore/
 .. toctree::
    pivot_tool
 
-.. toctree::
-   matrix_viewer   
+
+* :ref:`co_occurrence_analysis.matrix_viewer`
+
 
 .. toctree::
    cluster_records
 
-.. toctree::
-   sankey_chart
+* :ref:`co_occurrence_analysis.sankey_chart`
 
 .. toctree::
    :maxdepth: 1

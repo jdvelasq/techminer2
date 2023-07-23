@@ -4,30 +4,49 @@
 # pylint: disable=missing-docstring
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
+# pylint: disable=import-outside-toplevel
 """
 Heat Map
 ===============================================================================
 
->>> import techminer2 as tm2
->>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/heat_map.html"
->>> tm2.heat_map(
+>>> from techminer2.visualize import heat_map
+>>> chart = heat_map(
+...     #
+...     # CO-OCC PARAMS:
 ...     columns='author_keywords',
-...     col_occ_range=(4, None),
-...     root_dir=root_dir,
+...     rows=None,
+...     #
+...     # FIG PARAMS:
 ...     colormap="Blues",
-... ).write_html(file_name)
+...     #
+...     # COLUMN PARAMS:
+...     col_top_n=None,
+...     col_occ_range=(4, None),
+...     col_gc_range=(None, None),
+...     col_custom_items=None,
+...     #
+...     # ROW PARAMS:
+...     row_top_n=None,
+...     row_occ_range=(None, None),
+...     row_gc_range=(None, None),
+...     row_custom_items=None,
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="data/regtech/",
+...     database="main",
+...     year_filter=(None, None),
+...     cited_by_filter=(None, None),
+... )
+>>> chart.write_html("sphinx/_static/visualize/heat_map.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/heat_map.html" height="800px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../_static/visualize/heat_map.html" height="800px" width="100%" frameBorder="0"></iframe>
 
 
 """
 import numpy as np
 import plotly.express as px
-
-from ..co_occurrence_analysis.co_occurrence_matrix import co_occurrence_matrix
 
 
 def heat_map(
@@ -58,7 +77,12 @@ def heat_map(
     cited_by_filter=(None, None),
     **filters,
 ):
-    """Make a heat map."""
+    """Make a heat map.
+
+    :meta private:
+    """
+
+    from ..co_occurrence_matrix import co_occurrence_matrix
 
     data_frame = co_occurrence_matrix(
         #
@@ -84,7 +108,7 @@ def heat_map(
         year_filter=year_filter,
         cited_by_filter=cited_by_filter,
         **filters,
-    )
+    ).df_
 
     fig = px.imshow(
         data_frame,

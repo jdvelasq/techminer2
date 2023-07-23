@@ -12,6 +12,9 @@ Performance Analysis/
     visualization/__index__    
 
 .. toctree::
+    main_metrics
+
+.. toctree::
     item_metrics
 
 .. toctree::

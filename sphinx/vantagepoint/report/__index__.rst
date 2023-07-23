@@ -44,7 +44,7 @@ Report/
 
     <br>
 
-* :ref:`gant_chart`
+* Gantt Chart:  See Organizations' :ref:`performance_analysis.organizations.production_over_time`
 
 .. raw:: html
 
