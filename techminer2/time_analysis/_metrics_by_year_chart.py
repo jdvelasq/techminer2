@@ -4,34 +4,14 @@
 # pylint: disable=too-many-locals
 # pylint: disable=missing-docstring
 # pylint: disable=invalid-name
-"""
-Global Indicators by Year chart
-===============================================================================
+"""Metrics by Year Chart"""
 
-Creates a time line chart from an global indicator.
-
-
-
->>> import techminer2 as tm2
->>> root_dir = "data/regtech/"
->>> file_name = "sphinx/_static/global_indicators_by_year_chart.html"
->>> tm2.global_indicators_by_year_chart(
-...     root_dir=root_dir,
-...     indicator_to_plot="mean_global_citations",
-...     title="Average Citations per Year",
-... ).write_html(file_name)
-
-.. raw:: html
-
-    <iframe src="../../../_static/global_indicators_by_year_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
-
-"""
 import plotly.express as px
 
-from .global_metrics_by_year_table import global_metrics_by_year_table
+from .metrics_per_year import metrics_per_year
 
 
-def global_metrics_by_year_chart(
+def metrics_by_year_chart(
     indicator_to_plot: str,
     title: str,
     #
@@ -44,7 +24,7 @@ def global_metrics_by_year_chart(
 ):
     """Makes a time line plot for indicators."""
 
-    df = global_metrics_by_year_table(
+    df = metrics_per_year(
         #
         # DATABASE PARAMS
         root_dir=root_dir,
@@ -72,7 +52,7 @@ def global_metrics_by_year_chart(
         hover_data=["OCC", "Global Citations", "Local Citations"],
     )
     fig.update_traces(
-        marker={"size": 10, "line": dict(color="#465c6b", width=2)},
+        marker={"size": 10, "line": {"color": "#465c6b", "width": 2}},
         marker_color="#7793a5",
         line={"color": "#465c6b"},
     )
@@ -92,5 +72,6 @@ def global_metrics_by_year_chart(
         gridcolor="lightgray",
         griddash="dot",
         tickangle=270,
+        title="Year",
     )
     return fig

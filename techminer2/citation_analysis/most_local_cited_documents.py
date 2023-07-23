@@ -78,7 +78,7 @@ def most_local_cited_documents(
 ):
     """Plots the most global cited documents in the main collection."""
 
-    from ..most_cited_documents import most_cited_documents
+    from .most_cited_documents import most_cited_documents
 
     return most_cited_documents(
         #

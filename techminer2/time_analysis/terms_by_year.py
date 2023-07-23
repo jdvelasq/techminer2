@@ -5,12 +5,12 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-.. _performance.terms_by_year:
+.. _time_analysis.terms_by_year:
 
 Terms by Year
 ===============================================================================
 
->>> from techminer2.performance_analysis import terms_by_year
+>>> from techminer2.time_analysis import terms_by_year
 >>> terms = terms_by_year(
 ...     #
 ...     # PARAMS:
@@ -46,11 +46,11 @@ FINANCIAL_REGULATION 04:035        1     0     0     1     0     2     0
 ARTIFICIAL_INTELLIGENCE 04:023     0     0     1     2     0     1     0
 RISK_MANAGEMENT 03:014             0     1     0     1     0     1     0
 
->>> terms.fig_.write_html("sphinx/_static/performance_analysis/terms_by_year_0.html")
+>>> terms.fig_.write_html("sphinx/_static/time_analysis/terms_by_year_0.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/performance_analysis/terms_by_year_0.html" 
+    <iframe src="../../../../_static/time_analysis/terms_by_year_0.html" 
     height="800px" width="100%" frameBorder="0"></iframe>
 
     

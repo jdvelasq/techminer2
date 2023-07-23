@@ -1,1 +1,0 @@
-"""Bibliometrix overview module."""

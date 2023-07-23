@@ -5,12 +5,14 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
+.. _time_analysis.average_citations_per_year:
+
 Average Citations per Year
 ===============================================================================
 
 
->>> from techminer2.analyze.time import average_citations_per_year
->>> citations = average_citations_per_year(
+>>> from techminer2.time_analysis import average_citations_per_year
+>>> chart = average_citations_per_year(
 ...     #
 ...     # CHART PARAMS:
 ...     title="Average Citations per Year",
@@ -21,15 +23,15 @@ Average Citations per Year
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> citations.fig_.write_html("sphinx/_static/analyze/time/average_citations_per_year.html")
+>>> chart.fig_.write_html("sphinx/_static/time_analysis/average_citations_per_year.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/analyze/time/average_citations_per_year.html"  
+    <iframe src="../../../../_static/time_analysis/average_citations_per_year.html"  
     height="600px" width="100%" frameBorder="0"></iframe>
 
 
->>> print(citations.df_.head().to_markdown())
+>>> print(chart.df_.head().to_markdown())
 |   year |   OCC |   cum_OCC |   local_citations |   global_citations |   citable_years |   mean_global_citations |   cum_global_citations |   mean_global_citations_per_year |   mean_local_citations |   cum_local_citations |   mean_local_citations_per_year |
 |-------:|------:|----------:|------------------:|-------------------:|----------------:|------------------------:|-----------------------:|---------------------------------:|-----------------------:|----------------------:|--------------------------------:|
 |   2016 |     1 |         1 |                 0 |                 30 |               8 |                30       |                     30 |                             3.75 |                0       |                     0 |                            0    |
@@ -39,7 +41,7 @@ Average Citations per Year
 |   2020 |    14 |        28 |                29 |                 93 |               4 |                 6.64286 |                    514 |                             1.66 |                2.07143 |                    81 |                            0.52 |
 
 
->>> print(citations.prompt_)
+>>> print(chart.prompt_)
 The table below provides data on the average citations per year of the \\
 dataset. Use the the information in the table to draw conclusions about the \\
 impact per year. In your analysis, be sure to describe in a clear and \\
@@ -68,9 +70,9 @@ from dataclasses import dataclass
 import pandas as pd
 import plotly.graph_objects as go
 
-from ...format_prompt_for_dataframes import format_prompt_for_dataframes
-from ...techminer.metrics.global_metrics_by_year_chart import global_metrics_by_year_chart
-from ...techminer.metrics.global_metrics_by_year_table import global_metrics_by_year_table
+from ..format_prompt_for_dataframes import format_prompt_for_dataframes
+from ._metrics_by_year_chart import metrics_by_year_chart
+from .metrics_per_year import metrics_per_year
 
 
 def average_citations_per_year(
@@ -90,7 +92,7 @@ def average_citations_per_year(
     :meta private:
     """
 
-    data_frame = global_metrics_by_year_table(
+    data_frame = metrics_per_year(
         #
         # DATABASE PARAMS
         root_dir=root_dir,
@@ -102,7 +104,7 @@ def average_citations_per_year(
 
     prompt = __generate_prompt(data_frame)
 
-    fig = global_metrics_by_year_chart(
+    fig = metrics_by_year_chart(
         indicator_to_plot="mean_global_citations",
         title=title,
         #

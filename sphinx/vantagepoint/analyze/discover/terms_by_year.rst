@@ -1,4 +1,4 @@
 Terms by Year
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-See :ref:`performance.terms_by_year`.
+See :ref:`time_analysis.terms_by_year`.

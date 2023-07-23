@@ -5,14 +5,14 @@
 # pylint: disable=missing-docstring
 # pylint: disable=invalid-name
 """
-Annual Scientific Production
+Cumulative Records per Year
 ===============================================================================
 
->>> from techminer2.analyze.time import annual_scientific_production
->>> production = annual_scientific_production(
+>>> from techminer2.time_analysis import cumulative_records_per_year
+>>> chart = cumulative_records_per_year(
 ...     #
 ...     # CHART PARAMS:
-...     title="Annual Scientific Production",
+...     title="Cumulative Documents per Year",
 ...     #
 ...     # DATABASE PARAMS:
 ...     root_dir="data/regtech/",
@@ -21,21 +21,19 @@ Annual Scientific Production
 ...     cited_by_filter=(None, None),
 ... )
 
->>> production.df_
-      OCC  cum_OCC  ...  cum_local_citations  mean_local_citations_per_year
-year                ...                                                    
-2016    1        1  ...                  0.0                           0.00
-2017    4        5  ...                  3.0                           0.11
-2018    3        8  ...                 33.0                           1.67
-2019    6       14  ...                 52.0                           0.63
-2020   14       28  ...                 81.0                           0.52
-2021   10       38  ...                 90.0                           0.30
-2022   12       50  ...                 93.0                           0.12
-2023    2       52  ...                 93.0                           0.00
-<BLANKLINE>
-[8 rows x 11 columns]
+>>> chart.df_
+      OCC  cum_OCC
+year              
+2016    1        1
+2017    4        5
+2018    3        8
+2019    6       14
+2020   14       28
+2021   10       38
+2022   12       50
+2023    2       52
 
->>> print(production.prompt_)
+>>> print(chart.prompt_)
 The table below, delimited by triple backticks, provides data on the annual \\
 scientific production in a bibliographic database. Use the table to draw \\
 conclusions about annual research productivity and the cumulative \\
@@ -62,12 +60,12 @@ Table:
 ```
 <BLANKLINE>
 
->>> file_name = "sphinx/_static/analyze/time/annual_scientific_production.html"
->>> production.fig_.write_html(file_name)
+>>> file_name = "sphinx/_static/time_analysis/cumulataive_records_per_year.html"
+>>> chart.fig_.write_html(file_name)
 
 .. raw:: html
 
-    <iframe src="../../../../_static/analyze/time/annual_scientific_production.html" 
+    <iframe src="../../../../_static/time_analysis/cumulataive_records_per_year.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
          
 
@@ -77,13 +75,13 @@ from dataclasses import dataclass
 import pandas as pd
 import plotly.graph_objects as go
 
-from ...format_prompt_for_dataframes import format_prompt_for_dataframes
-from ...techminer.metrics.global_metrics_by_year_chart import global_metrics_by_year_chart
-from ...techminer.metrics.global_metrics_by_year_table import global_metrics_by_year_table
+from ..format_prompt_for_dataframes import format_prompt_for_dataframes
+from ._metrics_by_year_chart import metrics_by_year_chart
+from .metrics_per_year import metrics_per_year
 
 
-def annual_scientific_production(
-    title: str = "Annual Scientific Production",
+def cumulative_records_per_year(
+    title: str = "Cumulative Documents per Year",
     #
     # DATABASE PARAMS:
     root_dir: str = "./",
@@ -97,7 +95,7 @@ def annual_scientific_production(
 
     :meta private:
     """
-    data_frame = global_metrics_by_year_table(
+    data_frame = metrics_per_year(
         #
         # DATABASE PARAMS
         root_dir=root_dir,
@@ -106,11 +104,12 @@ def annual_scientific_production(
         cited_by_filter=cited_by_filter,
         **filters,
     )
+    data_frame = data_frame[["OCC", "cum_OCC"]]
 
     prompt = __generate_prompt(data_frame)
 
-    fig = global_metrics_by_year_chart(
-        indicator_to_plot="OCC",
+    fig = metrics_by_year_chart(
+        indicator_to_plot="cum_OCC",
         title=title,
         #
         # DATABASE PARAMS
@@ -151,6 +150,6 @@ def __generate_prompt(data_frame):
         "your description to one paragraph with no more than 250 words."
     )
 
-    table_text = data_frame[["OCC", "cum_OCC"]].to_markdown()
+    table_text = data_frame.to_markdown()
 
     return format_prompt_for_dataframes(main_text, table_text)

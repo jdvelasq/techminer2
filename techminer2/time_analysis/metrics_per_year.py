@@ -6,17 +6,21 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-.. _global_indicators_by_year_table:
+.. _time_analysis.metrics_by_year:
 
-Global Indicators by Year Table
+Metrics per Year
 ===============================================================================
 
 
-
->>> root_dir = "data/regtech/"
-
->>> import techminer2 as tm2
->>> tm2.global_indicators_by_year_table(root_dir) 
+>>> from techminer2.time_analysis import metrics_per_year
+>>> metrics_per_year(
+...     #
+...     # DATABASE PARAMS
+...     root_dir="data/regtech/",
+...     database="main",
+...     year_filter=(None, None),
+...     cited_by_filter=(None, None),    
+... )    
       OCC  cum_OCC  ...  cum_local_citations  mean_local_citations_per_year
 year                ...                                                    
 2016    1        1  ...                  0.0                           0.00
@@ -31,22 +35,31 @@ year                ...
 [8 rows x 11 columns]
 
 
->>> tm2.global_indicators_by_year_table(
-...     root_dir=root_dir, database="references"
+>>> metrics_per_year(
+...     #
+...     # DATABASE PARAMS
+...     root_dir="data/regtech/",
+...     database="references",
+...     year_filter=(None, None),
+...     cited_by_filter=(None, None),    
 ... ).tail()
       OCC  cum_OCC  ...  cum_local_citations  mean_local_citations_per_year
 year                ...                                                    
-2018   89      594  ...                729.0                           0.30
-2019   91      685  ...                837.0                           0.30
-2020  114      799  ...                982.0                           0.42
-2021   80      879  ...               1067.0                           0.53
-2022   30      909  ...               1099.0                           1.07
+2018   89      594  ...                 33.0                           0.07
+2019   91      685  ...                 52.0                           0.05
+2020  114      799  ...                 81.0                           0.08
+2021   80      879  ...                 90.0                           0.06
+2022   30      909  ...                 93.0                           0.10
 <BLANKLINE>
 [5 rows x 11 columns]
 
-
->>> tm2.global_indicators_by_year_table(
-...     root_dir=root_dir, database="cited_by"
+>>> metrics_per_year(
+...     #
+...     # DATABASE PARAMS
+...     root_dir="data/regtech/",
+...     database="cited_by",
+...     year_filter=(None, None),
+...     cited_by_filter=(None, None),    
 ... ).tail() 
       OCC  cum_OCC  ...  cum_global_citations  mean_global_citations_per_year
 year                ...                                                      
@@ -63,8 +76,13 @@ year                ...
 >>> from pprint import pprint
 >>> pprint(
 ...     sorted(
-...         tm2p.global_indicators_by_year_table(
-...             root_dir=root_dir,
+...         metrics_per_year(
+...             #
+...             # DATABASE PARAMS
+...             root_dir="data/regtech/",
+...             database="cited_by",
+...             year_filter=(None, None),
+...             cited_by_filter=(None, None),    
 ...         ).columns.to_list()
 ...     )
 ... )
@@ -72,21 +90,17 @@ year                ...
  'citable_years',
  'cum_OCC',
  'cum_global_citations',
- 'cum_local_citations',
  'global_citations',
- 'local_citations',
  'mean_global_citations',
- 'mean_global_citations_per_year',
- 'mean_local_citations',
- 'mean_local_citations_per_year']
+ 'mean_global_citations_per_year']
 
 
 
 """
-from ..._read_records import read_records
+from .._read_records import read_records
 
 
-def global_metrics_by_year_table(
+def metrics_per_year(
     #
     # DATABASE PARAMS
     root_dir: str = "./",
@@ -125,33 +139,19 @@ def global_metrics_by_year_table(
     records = records.assign(citable_years=current_year - records.index + 1)
 
     if "global_citations" in records.columns:
+        records = records.assign(mean_global_citations=records.global_citations / records.OCC)
+        records = records.assign(cum_global_citations=records.global_citations.cumsum())
         records = records.assign(
-            mean_global_citations=records.global_citations / records.OCC
+            mean_global_citations_per_year=records.mean_global_citations / records.citable_years
         )
-        records = records.assign(
-            cum_global_citations=records.global_citations.cumsum()
-        )
-        records = records.assign(
-            mean_global_citations_per_year=records.mean_global_citations
-            / records.citable_years
-        )
-        records.mean_global_citations_per_year = (
-            records.mean_global_citations_per_year.round(2)
-        )
+        records.mean_global_citations_per_year = records.mean_global_citations_per_year.round(2)
 
     if "local_citations" in records.columns:
+        records = records.assign(mean_local_citations=records.local_citations / records.OCC)
+        records = records.assign(cum_local_citations=records.local_citations.cumsum())
         records = records.assign(
-            mean_local_citations=records.local_citations / records.OCC
+            mean_local_citations_per_year=records.mean_local_citations / records.citable_years
         )
-        records = records.assign(
-            cum_local_citations=records.local_citations.cumsum()
-        )
-        records = records.assign(
-            mean_local_citations_per_year=records.mean_local_citations
-            / records.citable_years
-        )
-        records.mean_local_citations_per_year = (
-            records.mean_local_citations_per_year.round(2)
-        )
+        records.mean_local_citations_per_year = records.mean_local_citations_per_year.round(2)
 
     return records
