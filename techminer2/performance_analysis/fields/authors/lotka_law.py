@@ -10,7 +10,7 @@ Lotka's Law
 ===============================================================================
 
 
->>> from techminer2.analyze import lotka_law
+>>> from techminer2.performance_analysis.fields.authors import lotka_law
 >>> lotka = lotka_law(
 ...     #
 ...     # DATABASE PARAMS:
@@ -19,11 +19,11 @@ Lotka's Law
 ...     year_filter=None,
 ...     cited_by_filter=None,
 ... )
->>> lotka.fig_.write_html("sphinx/_static/analyze/terms/authors/lotka_law.html")
+>>> lotka.fig_.write_html("sphinx/_static/performance_analysis/fields/authors/lotka_law.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/analyze/terms/authors/lotka_law.html" 
+    <iframe src="../../../../_static/performance_analysis/fields/authors/lotka_law.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> print(lotka.df_.to_markdown())

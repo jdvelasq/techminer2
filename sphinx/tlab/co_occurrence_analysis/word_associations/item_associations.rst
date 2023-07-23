@@ -1,4 +1,4 @@
-.. automodule:: techminer2.analyze.co_occurrences.associations.item_associations
+.. automodule:: techminer2.performance_analysis.co_occurrences.associations.item_associations
     :members:
 
 

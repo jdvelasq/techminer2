@@ -9,8 +9,8 @@
 Local Impact --- Global Citations (Recipe)
 ===============================================================================
 
->>> from techminer2.analyze.terms import list_items
->>> items = list_items(
+>>> from techminer2.performance_analysis import item_metrics
+>>> items = item_metrics(
 ...     #
 ...     # ITEMS PARAMS:
 ...     field='countries',
@@ -52,11 +52,11 @@ Local Impact --- Global Citations (Recipe)
 | Greece         |        10 |                 21 |                 8 |                           21    |                           8    |                        3.5  |
 
 
->>> items.fig_.write_html("sphinx/_static/analyze/terms/countries/global_citations_chart.html")
+>>> items.fig_.write_html("sphinx/_static/performance_analysis/fields/countries/global_citations_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/analyze/terms/countries/global_citations_chart.html" 
+    <iframe src="../../../../_static/performance_analysis/fields/countries/global_citations_chart.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
     

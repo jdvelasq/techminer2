@@ -8,7 +8,7 @@
 Trending Terms per Year
 ===============================================================================
 
->>> from techminer2.analyze.terms import trending_terms_per_year
+>>> from techminer2.performance_analysis import trending_terms_per_year
 >>> terms = trending_terms_per_year(
 ...     #
 ...     # PARAMS:
@@ -22,11 +22,11 @@ Trending Terms per Year
 ...     year_filter=None,
 ...     cited_by_filter=None,
 ... )
->>> terms.fig_.write_html("sphinx/_static/visualize/trending_terms_per_year.html")
+>>> terms.fig_.write_html("sphinx/_static/performance_analysis/trending_terms_per_year.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/visualize/trending_terms_per_year.html" height="900px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/performance_analysis/trending_terms_per_year.html" height="900px" width="100%" frameBorder="0"></iframe>
 
 
 
@@ -58,7 +58,7 @@ FINANCIAL_REGULATION                       4     2019  ...  0.241111      4
 [20 rows x 8 columns]
 
 
->>> from techminer2.analyze.terms import trending_terms_per_year
+>>> from techminer2.performance_analysis import trending_terms_per_year
 >>> terms = trending_terms_per_year(
 ...     #
 ...     # PARAMS:

@@ -11,11 +11,11 @@ TODO: List Comparison
 ===============================================================================
 
 
->>> from techminer2 import vantagepoint
->>> root_dir = "data/regtech/"
-
 """
 
 
 def list_comparison():
+    """
+    :meta private:
+    """
     pass

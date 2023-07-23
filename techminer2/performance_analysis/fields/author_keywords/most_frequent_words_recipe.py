@@ -9,8 +9,8 @@ Most Frequent Words (Recipe)
 ===============================================================================
 
 
->>> from techminer2.analyze.terms import list_items
->>> items = list_items(
+>>> from techminer2.performance_analysis import item_metrics
+>>> items = item_metrics(
 ...     #
 ...     # ITEMS PARAMS:
 ...     field='author_keywords',
@@ -51,11 +51,11 @@ Most Frequent Words (Recipe)
 | ARTIFICIAL_INTELLIGENCE |          9 |     4 |
 | RISK_MANAGEMENT         |         10 |     3 |
 
->>> items.fig_.write_html("sphinx/_static/analyze/terms/author_keywords/most_frequent_chart.html")
+>>> items.fig_.write_html("sphinx/_static/performance_analysis/fields/author_keywords/most_frequent_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/analyze/terms/author_keywords/most_frequent_chart.html" 
+    <iframe src="../../../../_static/performance_analysis/fields/author_keywords/most_frequent_chart.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
     

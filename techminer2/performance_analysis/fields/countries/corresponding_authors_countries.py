@@ -10,7 +10,7 @@ Corresponding Author's Countries
 ===============================================================================
 
 
->>> from techminer2.analyze.terms.countries import corresponding_authors_countries
+>>> from techminer2.performance_analysis.fields.countries import corresponding_authors_countries
 >>> result = corresponding_authors_countries(
 ...     #
 ...     # ITEM FILTERS:
@@ -25,11 +25,11 @@ Corresponding Author's Countries
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> result.fig_.write_html("sphinx/_static/analyze/terms/countries/corresponding_authors_countries.html")
+>>> result.fig_.write_html("sphinx/_static/performance_analysis/fields/countries/corresponding_authors_countries.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/analyze/terms/countries/corresponding_authors_countries.html" 
+    <iframe src="../../../../_static/performance_analysis/fields/countries/corresponding_authors_countries.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 

@@ -1,4 +1,4 @@
-.. automodule:: techminer2.analyze.main_information
+.. automodule:: techminer2.performance_analysis.main_information
     :members:
     :show-inheritance:
 

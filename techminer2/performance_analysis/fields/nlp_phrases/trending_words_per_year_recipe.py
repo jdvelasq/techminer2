@@ -8,7 +8,7 @@
 Trending Words per Year (Recipe)
 ===============================================================================
 
->>> from techminer2.analyze.terms import trending_terms_per_year
+>>> from techminer2.performance_analysis import trending_terms_per_year
 >>> words = trending_terms_per_year(
 ...     #
 ...     # PARAMS:
@@ -49,11 +49,11 @@ FINANCIAL_CRISIS               6     2018      2020  ...   3  0.391176      4
 [20 rows x 8 columns]
 
 
->>> words.fig_.write_html("sphinx/_static/analyze/terms/nlp_phrases/trending_words_per_year.html")
+>>> words.fig_.write_html("sphinx/_static/performance_analysis/fields/nlp_phrases/trending_words_per_year.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../../_static/analyze/terms/nlp_phrases/trending_words_per_year.html" 
+    <iframe src="../../../../../../_static/performance_analysis/fields/nlp_phrases/trending_words_per_year.html" 
     height="900px" width="100%" frameBorder="0"></iframe>
 
 

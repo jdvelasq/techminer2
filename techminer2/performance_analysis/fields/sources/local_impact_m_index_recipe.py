@@ -8,9 +8,9 @@
 Local Impact --- M-Index (Recipe)
 ===============================================================================
 
->>> from techminer2.analyze.terms import list_items
+>>> from techminer2.performance_analysis import item_metrics
 >>> root_dir = "data/regtech/"
->>> items = list_items(
+>>> items = item_metrics(
 ...     #
 ...     # ITEMS PARAMS:
 ...     field='source_abbr',
@@ -53,11 +53,11 @@ Local Impact --- M-Index (Recipe)
 
 
 
->>> items.fig_.write_html("sphinx/_static/analyze/terms/sources/m_index_chart.html")
+>>> items.fig_.write_html("sphinx/_static/performance_analysis/fields/sources/m_index_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/analyze/terms/sources/m_index_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/performance_analysis/fields/sources/m_index_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> print(items.prompt_)

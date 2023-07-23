@@ -9,8 +9,8 @@
 Local Impact --- Global Citations (Recipe)
 ===============================================================================
 
->>> from techminer2.analyze.terms import list_items
->>> items = list_items(
+>>> from techminer2.performance_analysis import item_metrics
+>>> items = item_metrics(
 ...     #
 ...     # ITEMS PARAMS:
 ...     field='authors',
@@ -54,11 +54,11 @@ Local Impact --- Global Citations (Recipe)
 
 
 
->>> items.fig_.write_html("sphinx/_static/analyze/terms/authors/global_citations_chart.html")
+>>> items.fig_.write_html("sphinx/_static/performance_analysis/fields/authors/global_citations_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/analyze/terms/authors/global_citations_chart.html" 
+    <iframe src="../../../../_static/performance_analysis/fields/authors/global_citations_chart.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
     

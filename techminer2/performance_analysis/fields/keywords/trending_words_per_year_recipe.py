@@ -8,7 +8,7 @@
 Trending Words per Year (Recipe)
 ===============================================================================
 
->>> from techminer2.analyze.terms import trending_terms_per_year
+>>> from techminer2.performance_analysis import trending_terms_per_year
 >>> words = trending_terms_per_year(
 ...     #
 ...     # PARAMS:
@@ -49,11 +49,11 @@ ANTI_MONEY_LAUNDERING                         6     2020  ...  0.301852      2
 [20 rows x 8 columns]
 
 
->>> words.fig_.write_html("sphinx/_static/analyze/terms/keywords/trending_words_per_year.html")
+>>> words.fig_.write_html("sphinx/_static/performance_analysis/fields/keywords/trending_words_per_year.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../../_static/analyze/terms/keywords/trending_words_per_year.html" 
+    <iframe src="../../../../../../_static/performance_analysis/fields/keywords/trending_words_per_year.html" 
     height="900px" width="100%" frameBorder="0"></iframe>
 
 """

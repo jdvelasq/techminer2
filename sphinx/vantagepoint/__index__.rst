@@ -1,13 +1,6 @@
 VantagePoint v15
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* :ref:`ingest_and_clean.summary_sheet`
-
-
-.. toctree::
-   :maxdepth: 1
-
-   ingest/__index__
 
 .. toctree::
    :maxdepth: 1
@@ -20,7 +13,12 @@ VantagePoint v15
    refine/__index__
 
 
-* Analyze/
+.. toctree::
+   :maxdepth: 1
+
+   analyze/__index__
+
+* Analyze XXXX/
 
    * Discover/
 

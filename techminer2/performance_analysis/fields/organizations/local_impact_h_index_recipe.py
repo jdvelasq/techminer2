@@ -8,8 +8,8 @@
 Local Impact --- H-Index (Recipe)
 ===============================================================================
 
->>> from techminer2.analyze.terms import list_items
->>> items = list_items(
+>>> from techminer2.performance_analysis import item_metrics
+>>> items = item_metrics(
 ...     #
 ...     # ITEMS PARAMS:
 ...     field='organizations',
@@ -50,11 +50,11 @@ Local Impact --- H-Index (Recipe)
 | ctr for Law, Markets & Regulation, UNSW Australia, Australia (AUS) |         1 |         1 |      0.14 |
 | Duke Univ Sch of Law (USA)                                         |         1 |         1 |      0.12 |
 
->>> items.fig_.write_html("sphinx/_static/analyze/terms/organizations/h_index_chart.html")
+>>> items.fig_.write_html("sphinx/_static/performance_analysis/fields/organizations/h_index_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/analyze/terms/organizations/h_index_chart.html" 
+    <iframe src="../../../../_static/performance_analysis/fields/organizations/h_index_chart.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
     

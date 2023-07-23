@@ -11,7 +11,7 @@ Production over Time (Recipe)
 ===============================================================================
 
 
->>> from techminer2.analyze.terms import terms_by_year
+>>> from techminer2.performance_analysis import terms_by_year
 >>> terms = terms_by_year(
 ...     #
 ...     # PARAMS:
@@ -33,11 +33,11 @@ Production over Time (Recipe)
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> terms.fig_.write_html("sphinx/_static/analyze/terms/organizations/production_over_time.html")
+>>> terms.fig_.write_html("sphinx/_static/performance_analysis/fields/organizations/production_over_time.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/analyze/terms/organizations/production_over_time.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/performance_analysis/fields/organizations/production_over_time.html" height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> print(terms.df_.to_markdown())
 | organizations                                                            |   2016 |   2017 |   2018 |   2019 |   2020 |   2021 |   2022 |   2023 |

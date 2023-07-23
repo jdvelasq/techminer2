@@ -1,4 +1,5 @@
 Affiliations/
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. toctree::
+See :ref:`performance.organizations`.
+

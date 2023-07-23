@@ -9,8 +9,8 @@
 Local Impact --- H-Index (Recipe)
 ===============================================================================
 
->>> from techminer2.analyze.terms import list_items
->>> items = list_items(
+>>> from techminer2.performance_analysis import item_metrics
+>>> items = item_metrics(
 ...     #
 ...     # ITEMS PARAMS:
 ...     field='countries',
@@ -53,11 +53,11 @@ Local Impact --- H-Index (Recipe)
 
 
 
->>> items.fig_.write_html("sphinx/_static/analyze/terms/countries/h_index_chart.html")
+>>> items.fig_.write_html("sphinx/_static/performance_analysis/fields/countries/h_index_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/analyze/terms/countries/h_index_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/performance_analysis/fields/countries/h_index_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> print(items.prompt_)

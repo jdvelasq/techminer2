@@ -9,7 +9,7 @@
 Word Frequency over Time (Recipe)
 ===============================================================================
 
->>> from techminer2.analyze.terms import terms_by_year
+>>> from techminer2.performance_analysis import terms_by_year
 >>> words = terms_by_year(
 ...     #
 ...     # PARAMS:
@@ -31,11 +31,11 @@ Word Frequency over Time (Recipe)
 ...     year_filter=(None, None),
 ...     cited_by_filter=(None, None),
 ... )
->>> words.fig_.write_html("sphinx/_static/analyze/terms/descriptors/words_frequency_over_time.html")
+>>> words.fig_.write_html("sphinx/_static/performance_analysis/fields/descriptors/words_frequency_over_time.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/analyze/terms/descriptors/words_frequency_over_time.html" 
+    <iframe src="../../../../_static/performance_analysis/fields/descriptors/words_frequency_over_time.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
     

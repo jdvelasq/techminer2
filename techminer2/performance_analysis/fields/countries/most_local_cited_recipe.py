@@ -9,8 +9,8 @@
 Most Local Cited (Recipe)
 ===============================================================================
 
->>> from techminer2.analyze.terms import list_items
->>> items = list_items(
+>>> from techminer2.performance_analysis import item_metrics
+>>> items = item_metrics(
 ...     #
 ...     # ITEMS PARAMS:
 ...     field='countries',
@@ -52,11 +52,11 @@ Most Local Cited (Recipe)
 | United Arab Emirates |        12 |                 13 |                 7 |                            6.5  |                           3.5  |                        3.25 |
 
 
->>> items.fig_.write_html("sphinx/_static/analyze/terms/countries/most_local_cited_chart.html")
+>>> items.fig_.write_html("sphinx/_static/performance_analysis/fields/countries/most_local_cited_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/analyze/terms/countries/most_local_cited_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
+    <iframe src="../../../../_static/performance_analysis/fields/countries/most_local_cited_chart.html" height="600px" width="100%" frameBorder="0"></iframe>
 
     
 >>> print(items.prompt_)

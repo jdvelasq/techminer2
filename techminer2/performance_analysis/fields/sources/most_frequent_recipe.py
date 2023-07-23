@@ -18,8 +18,8 @@
 Most Frequent (Recipe)
 ===============================================================================
 
->>> from techminer2.analyze.terms import list_items
->>> items = list_items(
+>>> from techminer2.performance_analysis import item_metrics
+>>> items = item_metrics(
 ...     #
 ...     # ITEMS PARAMS:
 ...     field='source_abbr',
@@ -60,11 +60,11 @@ Most Frequent (Recipe)
 | PALGRAVE STUD DIGIT BUS ENABL |          9 |     1 |
 | DUKE LAW J                    |         10 |     1 |
 
->>> items.fig_.write_html("sphinx/_static/analyze/terms/sources/most_frequent_chart.html")
+>>> items.fig_.write_html("sphinx/_static/performance_analysis/fields/sources/most_frequent_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/analyze/terms/sources/most_frequent_chart.html" 
+    <iframe src="../../../../_static/performance_analysis/fields/sources/most_frequent_chart.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
     

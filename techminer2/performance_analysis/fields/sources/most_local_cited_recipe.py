@@ -8,9 +8,9 @@
 Most Local Cited (Recipe)
 ===============================================================================
 
->>> from techminer2.analyze.terms import list_items
+>>> from techminer2.performance_analysis import item_metrics
 >>> root_dir = "data/regtech/"
->>> items = list_items(
+>>> items = item_metrics(
 ...     #
 ...     # ITEMS PARAMS:
 ...     field='source_abbr',
@@ -52,11 +52,11 @@ Most Local Cited (Recipe)
 | HANDBBLOCKCHAIN, DIGIT FINANC |        12 |                 11 |                 3 |                            11   |                            3   |                        1.57 |
 
 
->>> items.fig_.write_html("sphinx/_static/analyze/terms/sources/most_local_cited_chart.html")
+>>> items.fig_.write_html("sphinx/_static/performance_analysis/fields/sources/most_local_cited_chart.html")
 
 .. raw:: html
 
-    <iframe src="../../../../_static/analyze/terms/sources/most_local_cited_chart.html" 
+    <iframe src="../../../../_static/performance_analysis/fields/sources/most_local_cited_chart.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
     

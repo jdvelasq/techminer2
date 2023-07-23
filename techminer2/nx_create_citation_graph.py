@@ -23,7 +23,7 @@ from .nx_set_node_color_from_group_attr import nx_set_node_color_from_group_attr
 from .nx_set_node_size_to_constant import nx_set_node_size_to_constant
 from .nx_set_textfont_opacity_to_constant import nx_set_textfont_opacity_to_constant
 from .nx_set_textfont_size_to_constant import nx_set_textfont_size_to_constant
-from .performance_analysis.list_items import list_items
+from .performance_analysis.item_metrics import item_metrics
 
 
 def nx_create_citation_graph(
@@ -202,7 +202,7 @@ def __add_weighted_edges_from(
     if unit_of_analysis != "article":
         #
         # Filters the records.
-        metrics = list_items(
+        metrics = item_metrics(
             #
             # ITEMS PARAMS:
             field=unit_of_analysis,

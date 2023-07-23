@@ -11,7 +11,7 @@ TFIDF
 ===============================================================================
 
 
->>> from techminer2.analyze.terms import tfidf
+>>> from techminer2.performance_analysis import tfidf
 >>> tfidf(
 ...     #
 ...     # TF PARAMS:
