@@ -89,7 +89,7 @@ Table:
 import pandas as pd
 import plotly.express as px
 
-from ..analyze.terms.list_items import list_items
+from ..performance_analysis.list_items import list_items
 
 
 def world_map(

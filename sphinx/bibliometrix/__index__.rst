@@ -1,102 +1,35 @@
 Bibliometrix 4.1.3
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. toctree::
+   :maxdepth: 1
+
+   data/__index__
 
 .. toctree::
-   data
+   :maxdepth: 1
 
-.. toctree::
-   filters
+   filters/__index__
 
 .. toctree::
    :maxdepth: 1
 
    overview/__index__
 
-* :ref:`sources`
+.. toctree::
+   :maxdepth: 1
 
-.. raw:: html 
+   sources/__index__
+
+.. toctree::
+   :maxdepth: 1
+
+   authors/__index__
    
-   <br>
+.. toctree::
+   :maxdepth: 1
 
-* Authors/
-
-   * :ref:`authors`
-
-   .. raw:: html 
-      
-      <br>
-
-   * :ref:`organizations`
-
-   .. raw:: html 
-      
-      <br>
-
-   * :ref:`countries`
-
-
-* Documents/
-
-   .. toctree::
-      :maxdepth: 1
-
-      documents/__index__
-
-
-   * Words/
-
-         * :ref:`analyze_terms_abstract_nlp_phrases`
-
-         .. raw:: html 
-      
-            <br>
-
-         
-         * :ref:`analyze_terms_author_keywords`
-
-         .. raw:: html 
-      
-            <br>
-
-         * :ref:`analyze_terms_descriptors`
-
-         .. raw:: html 
-      
-            <br>
-
-         * :ref:`analyze_terms_index_keywords`
-
-         .. raw:: html 
-      
-            <br>
-
-         * :ref:`analyze_terms_keywords`
-
-         .. raw:: html 
-      
-            <br>
-
-         * :ref:`analyze_terms_nlp_phrases`
-
-         .. raw:: html 
-      
-            <br>
-
-         * :ref:`analyze_terms_title_nlp_phrases`
-
-
-         
-
-         
-
-
-
-         
-
-
-
-
+   documents/__index__
 
 .. toctree::
    :maxdepth: 1

@@ -133,7 +133,7 @@ def line_chart(
     :meta private:
     """
 
-    from ..analyze.terms.list_items import list_items
+    from ..performance_analysis.list_items import list_items
 
     items = list_items(
         #

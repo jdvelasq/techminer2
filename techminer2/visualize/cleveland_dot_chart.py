@@ -43,7 +43,7 @@ Cleveland Dot Chart
 """
 import plotly.express as px
 
-from ..analyze.terms.list_items import list_items
+from ..performance_analysis.list_items import list_items
 
 MARKER_COLOR = "#7793a5"
 MARKER_LINE_COLOR = "#465c6b"

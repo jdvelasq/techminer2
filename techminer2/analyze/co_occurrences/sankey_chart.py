@@ -5,7 +5,7 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-.. _sankey_chart:
+.. _analyze.sankey_chart:
 
 Sankey Chart
 ===============================================================================

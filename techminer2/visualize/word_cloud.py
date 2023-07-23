@@ -122,7 +122,7 @@ import numpy as np
 from matplotlib.figure import Figure
 from wordcloud import WordCloud
 
-from ..analyze.terms.list_items import list_items
+from ..performance_analysis.list_items import list_items
 
 
 def word_cloud(

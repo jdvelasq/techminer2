@@ -4,61 +4,19 @@ Terms/
 .. toctree::
     :maxdepth: 1
 
-    abstract_nlp_phrases/__index__        
+    fields/__index__
 
 .. toctree::
-    :maxdepth: 1
-
-    author_keywords/__index__
+    list_items
 
 .. toctree::
-    :maxdepth: 1
-
-    authors/__index__
+    list_comparison
 
 .. toctree::
-    :maxdepth: 1
-
-    countries/__index__
+    terms_by_year
 
 .. toctree::
-    :maxdepth: 1
-
-    descriptors/__index__         
+    tfidf
 
 .. toctree::
-    :maxdepth: 1
-
-    index_keywords/__index__    
-
-.. toctree::
-    :maxdepth: 1
-
-    keywords/__index__        
-
-.. toctree::
-    :maxdepth: 1
-
-    nlp_phrases/__index__         
-
-
-.. toctree::
-    :maxdepth: 1
-
-    organizations/__index__
-
-.. toctree::
-    :maxdepth: 1
-
-    sources/__index__
- 
-
-.. toctree::
-    :maxdepth: 1
-
-    title_nlp_phrases/__index__        
-
-
-
-
-    
+    trending_terms_per_year

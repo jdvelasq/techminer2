@@ -62,15 +62,26 @@ setup(
         #
         #
         #
-        "techminer2.visualize",
-        "techminer2.analyze",
-        "techminer2.analyze.terms",
-        "techminer2.analyze.co_occurrences",
         "techminer2.analyze.co_occurrences.associations",
         "techminer2.analyze.co_occurrences.concordances",
         "techminer2.analyze.co_occurrences.item_pairs",
+        "techminer2.analyze.co_occurrences",
         "techminer2.analyze.correlations",
+        "techminer2.analyze.terms",
+        "techminer2.analyze.terms.abstract_nlp_phrases",
+        "techminer2.analyze.terms.author_keywords",
+        "techminer2.analyze.terms.authors",
+        "techminer2.analyze.terms.countries",
+        "techminer2.analyze.terms.descriptors",
+        "techminer2.analyze.terms.index_keywords",
+        "techminer2.analyze.terms.keywords",
+        "techminer2.analyze.terms.nlp_phrases",
+        "techminer2.analyze.terms.organizations",
+        "techminer2.analyze.terms.sources",
+        "techminer2.analyze.terms.nlp_phrases",
         "techminer2.analyze.time",
+        "techminer2.analyze",
+        "techminer2.visualize",
         #
         #
         #

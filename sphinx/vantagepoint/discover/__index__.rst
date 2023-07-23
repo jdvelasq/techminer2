@@ -1,9 +1,6 @@
 Discover/
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. toctree::    
-    list_items
-
 .. toctree::
     :maxdepth: 1
 
@@ -32,8 +29,6 @@ Discover/
 .. toctree::
     trending_terms_per_year
 
-.. toctree::
-    tfidf
 
 .. toctree::
     pcd

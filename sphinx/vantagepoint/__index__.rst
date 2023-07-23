@@ -1,8 +1,8 @@
 VantagePoint v15
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. toctree::
-   summary_sheet
+* :ref:`ingest_and_clean.summary_sheet`
+
 
 .. toctree::
    :maxdepth: 1
@@ -20,20 +20,35 @@ VantagePoint v15
    refine/__index__
 
 
-.. toctree::
-   :maxdepth: 1
+* Analyze/
 
-   discover/__index__
+   * Discover/
 
-.. toctree::
-   :maxdepth: 1
+      * :ref:`analyze.terms.list_items`
 
-   explore/__index__
+      * :ref:`analyze.terms.terms_by_year`
 
-.. toctree::
-   :maxdepth: 1
+      * :ref:`analyze.terms.tfidf`
 
-   calculate/__index__
+      .. toctree::
+         :maxdepth: 1
+
+         discover/__index__
+
+   * Explore/
+
+      .. toctree::
+         :maxdepth: 1
+
+         explore/__index__
+
+
+   * Calculate/
+
+      .. toctree::
+         :maxdepth: 1
+
+         calculate/__index__
 
 .. toctree::
    :maxdepth: 1

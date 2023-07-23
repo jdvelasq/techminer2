@@ -88,10 +88,30 @@ TM2 module.
 
 
 .. toctree::
-    :caption: TECHMINER 2+
+    :caption: TECHMINER 2++
     :hidden:
     :maxdepth: 1
 
+    techminer/bibliometric_coupling/__index__
+    techminer/citation_analysis/__index__
+    techminer/co_occurrence_analysis/__index__
+    techminer/co_word_analysis/__index__
+    techminer/correlation_analysis/__index__
+    techminer/emergence_analysis/__index__
+    techminer/factor_analysis/__index__
+    techminer/performance_analysis/__index__
+    techminer/thematic_analysis/__index__
+    
+    
+
+
+.. toctree::
+    :caption: OLD
+    :hidden:
+    :maxdepth: 1
+
+    techminer/ingest_and_clean/__index__
+    techminer/search/__index__
     techminer/analyze/__index__
     techminer/visualize/__index__
 
@@ -103,11 +123,11 @@ TM2 module.
     :maxdepth: 1
 
     
-    bibliometrix/__index__
-    vantagepoint/__index__
-    tlab/__index__
-    scientopy/__index__
-    vosviewer/__index__
+  bibliometrix/__index__
+  vantagepoint/__index__
+  tlab/__index__
+  scientopy/__index__
+  vosviewer/__index__
     
     
  
