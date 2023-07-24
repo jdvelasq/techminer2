@@ -2,19 +2,27 @@ Thematic Analysis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::      
-    thematic_analysis_of_elementary_contexts
+    :maxdepth: 1
+
+    thematic_analysis_of_elementary_contexts/__index__
 
 .. toctree::    
     :maxdepth: 1
 
-    topic_modeling_with_nmf/__index__
+    modeling_of_emerging_themes/__index__
+
+.. toctree::    
+    :maxdepth: 1  
+
+    thematic_document_classification/__index__
 
 .. toctree::      
-    thematic_document_classification
+    :maxdepth: 1
 
-.. toctree::      
-    dictionary_based_classification
+    dictionary_based_classification/__index__
 
-.. toctree::      
-    text_and_discourses    
+.. toctree::
+    :maxdepth: 1
+
+    text_and_discourses/__index__
 

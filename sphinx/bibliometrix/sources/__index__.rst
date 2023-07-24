@@ -1,4 +1,4 @@
 Sources/
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-See :ref:`performance.sources`.
+See: `TechMiner 2+ > Performance Analysis > Fields >` :ref:`performance.sources`.

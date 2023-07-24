@@ -1,20 +1,30 @@
 Comparative Analysis
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. toctree::      
-    specificity_analysis
+.. toctree::   
+    :maxdepth: 1
 
-.. toctree::      
-    ca
+    specificity_analysis/__index__
 
-.. toctree::      
-    mca
+.. toctree::
+    :maxdepth: 1  
+    
+    correspondence_analysis/__index__
 
-.. toctree::      
-    cluster_analysis
+.. toctree::     
+    :maxdepth: 1
+    
+    multiple_correspondence_analysis/__index__
+
+.. toctree:: 
+    :maxdepth: 1
+
+    cluster_analysis/__index__
 
 
-.. toctree::      
-    svd
+.. toctree::   
+    :maxdepth: 1
+
+    singular_value_decomposition/__index__
 
 

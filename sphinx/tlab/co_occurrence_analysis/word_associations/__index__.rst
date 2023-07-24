@@ -2,16 +2,16 @@ Word Associations/
 =========================================================================================
 
 .. toctree::
-   item_associations   
+   :maxdepth: 1
+
+   graphs/__index__
 
 .. toctree::
-   radial_diagram   
+   :maxdepth: 1
+
+   tables/__index__
 
 .. toctree::
-   co_occurrences_chart
+   :maxdepth: 1
 
-.. toctree::
-   mds_2d_map
-
-.. toctree::
-   co_occ_matrix
+   graph_maker/__index__

@@ -1,30 +1,19 @@
-Co-Word Analysis
+Co-Word Analysis/
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. toctree::
-    mds_map
+    :maxdepth: 1
 
-.. toctree::
-    tsne_map
-
-.. toctree::
-    pca_3d
-
-.. toctree::
-    ca
+    graphs/__index__
 
 
 .. toctree::
-    associations
+    :maxdepth: 1
+
+    tables/__index__
 
 .. toctree::
-    bar_chart
+    :maxdepth: 1
 
-
-.. toctree::
-    co_occurrences
-
-.. toctree::
-    summary
-
+    graph_maker/__index__
 

@@ -1,5 +1,5 @@
 Affiliations/
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-See :ref:`performance.organizations`.
+See: `TechMiner 2+ > Performance Analysis > Fields >` :ref:`performance.organizations`.
 

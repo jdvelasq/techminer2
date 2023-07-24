@@ -14,7 +14,7 @@ Explore/
 .. toctree::
    cluster_records
 
-* :ref:`co_occurrence_analysis.sankey_chart`
+* `TechMiner 2+ > Co-occurrence Analysis > Fields >`  :ref:`co_occurrence_analysis.sankey_chart`
 
 .. toctree::
    :maxdepth: 1
