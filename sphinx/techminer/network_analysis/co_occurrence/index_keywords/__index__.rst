@@ -8,6 +8,9 @@ Index Keywords/
    item_density_visualization
 
 .. toctree::
+   treemap
+   
+.. toctree::
    degree_plot
 
 .. toctree::
