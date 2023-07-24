@@ -10,11 +10,24 @@ Communities
 ===============================================================================
 
 
->>> from techminer2 import vosviewer
->>> root_dir = "data/regtech/"
->>> vosviewer.citation.authors.communities(
-...     root_dir=root_dir,
+>>> from techminer2.network_analysis.co_authorship.authors import communities
+>>> communities(
+...     #
+...     # COLUMN PARAMS:
 ...     top_n=20, 
+...     occ_range=(None, None),
+...     gc_range=(None, None),
+...     custom_items=None,
+...     #
+...     # NETWORK PARAMS:
+...     algorithm_or_dict="louvain",
+...     association_index="association",
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="data/regtech/",
+...     database="main",
+...     year_filter=(None, None),
+...     cited_by_filter=(None, None),
 ... )
                 CL_0          CL_1
 0           Arman AA      Arner DW

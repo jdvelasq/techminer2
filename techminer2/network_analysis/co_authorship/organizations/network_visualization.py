@@ -9,18 +9,53 @@
 Network Visualization
 ===============================================================================
 
->>> from techminer2 import vosviewer
->>> root_dir = "data/regtech/"
->>> vosviewer.co_authorship.organizations.network_visualization(
-...     root_dir=root_dir,
-...     top_n=10, 
-... ).write_html("sphinx/_static/vosviewer/co_authorship/organizations/network_visualization.html")
+>>> from techminer2.network_analysis.co_authorship.organizations import network_visualization
+>>> network_visualization(
+...     #
+...     # COLUMN PARAMS:
+...     top_n=20,
+...     occ_range=(None, None),
+...     gc_range=(None, None),
+...     custom_items=None,
+...     #
+...     # NETWORK CLUSTERING:
+...     association_index="association",
+...     algorithm_or_dict="louvain",
+...     #
+...     # LAYOUT:
+...     nx_k=None,
+...     nx_iterations=30,
+...     nx_random_state=0,
+...     #
+...     # NODES:
+...     node_size_min=30,
+...     node_size_max=70,
+...     textfont_size_min=10,
+...     textfont_size_max=20,
+...     textfont_opacity_min=0.35,
+...     textfont_opacity_max=1.00,
+...     #
+...     # EDGES:
+...     edge_color="#7793a5",
+...     edge_width_min=0.8,
+...     edge_width_max=3.0,
+...     #
+...     # AXES:
+...     xaxes_range=None,
+...     yaxes_range=None,
+...     show_axes=False,
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="data/regtech/",
+...     database="main",
+...     year_filter=(None, None),
+...     cited_by_filter=(None, None),
+... ).write_html("sphinx/_static/network_analysis/co_authorship/organizations/network_visualization.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/vosviewer/co_authorship/organizations/network_visualization.html" 
+    <iframe src="../../../../../../_static/network_analysis/co_authorship/organizations/network_visualization.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
-
 
 """
 from ....nx_create_co_occurrence_graph import nx_create_co_occurrence_graph
@@ -71,6 +106,9 @@ def network_visualization(
     cited_by_filter=(None, None),
     **filters,
 ):
+    """
+    :meta private:
+    """
     nx_graph = nx_create_co_occurrence_graph(
         #
         # FUNCTION PARAMS:

@@ -1,4 +1,4 @@
 Three Fields Plot
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-See :ref:`co_occurrence_analysis.sankey_chart`.
+See: `TechMiner 2+ > Co-occurrence Analysis > Graphs >` :ref:`co_occurrence_analysis.sankey_chart`.

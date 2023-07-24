@@ -10,18 +10,43 @@ Item Density Visualization
 ===============================================================================
 
 
-
->>> from techminer2 import vosviewer
->>> root_dir = "data/regtech/"
->>> vosviewer.thematic_map.nlp_phrases.item_density_visualization(
-...     root_dir=root_dir,
-...     top_n=10, 
+>>> from techminer2.network_analysis.thematic_map.nlp_phrases import item_density_visualization
+>>> item_density_visualization(
+...     #
+...     # COLUMN PARAMS:
+...     top_n=20,
+...     occ_range=(None, None),
+...     gc_range=(None, None),
+...     custom_items=None,
+...     #
+...     # NETWORK PARAMS:
+...     algorithm_or_dict="louvain",
+...     #
+...     # LAYOUT:
+...     nx_k=None,
+...     nx_iterations=30,
+...     nx_random_state=0,
+...     #
+...     # DENSITY VISUALIZATION:
 ...     bandwidth=0.1,
-... ).write_html("sphinx/_static/vosviewer/thematic_map/nlp_phrases/item_density_visualization.html")
+...     colorscale="Aggrnyl",
+...     opacity=0.6,
+...     #
+...     # AXES:
+...     xaxes_range=None,
+...     yaxes_range=None,
+...     show_axes=False,
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="data/regtech/",
+...     database="main",
+...     year_filter=(None, None),
+...     cited_by_filter=(None, None),
+... ).write_html("sphinx/_static/network_analysis/thematic_map/nlp_phrases/item_density_visualization.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/vosviewer/thematic_map/nlp_phrases/item_density_visualization.html" 
+    <iframe src="../../../../../../_static/network_analysis/thematic_map/nlp_phrases/item_density_visualization.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 """
@@ -64,6 +89,9 @@ def item_density_visualization(
     cited_by_filter=(None, None),
     **filters,
 ):
+    """
+    :meta private:
+    """
     # --------------------------------------------------------------------------
     # TODO: REMOVE DEPENDENCES:
     #

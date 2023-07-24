@@ -1,4 +1,5 @@
-.. automodule:: techminer2.bibliometrix.social_structure.collaboration_worldmap
-    :members:
-    :undoc-members:
-    :show-inheritance:
+Countries' Collaboration World Map
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+See: `TechMiner 2+ > Co-occurrence Analysis > Graphs >` :ref:`co_occurrence_analysis.graphs.collaboration_worldmap`
+

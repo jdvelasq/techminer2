@@ -11,17 +11,36 @@ Degree Plot
 
 
 
->>> from techminer2 import vosviewer
->>> root_dir = "data/regtech/"
->>> plot = vosviewer.thematic_map.index_keywords.degree_plot(
-...     root_dir=root_dir,
-...     top_n=20, 
+>>> from techminer2.network_analysis.thematic_map.index_keywords import degree_plot
+>>> plot = degree_plot(
+...     #
+...     # COLUMN PARAMS:
+...     top_n=20,
+...     occ_range=(None, None),
+...     gc_range=(None, None),
+...     custom_items=None,
+...     #
+...     # NETWORK PARAMS:
+...     algorithm_or_dict="louvain",
+...     #
+...     # DEGREE PLOT:
+...     textfont_size=10,
+...     marker_size=7,
+...     line_color="black",
+...     line_width=1.5,
+...     yshift=4,
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="data/regtech/",
+...     database="main",
+...     year_filter=(None, None),
+...     cited_by_filter=(None, None),
 ... )
->>> plot.fig_.write_html("sphinx/_static/vosviewer/thematic_map/index_keywords_degree_plot.html")
+>>> plot.fig_.write_html("sphinx/_static/network_analysis/thematic_map/index_keywords/degree_plot.html")
 
 .. raw:: html
 
-    <iframe src="../../../../../_static/vosviewer/thematic_map/index_keywords_degree_plot.html" 
+    <iframe src="../../../../../../_static/network_analysis/thematic_map/index_keywords/degree_plot.html" 
     height="600px" width="100%" frameBorder="0"></iframe>
 
 >>> plot.df_.head()
@@ -99,6 +118,9 @@ def degree_plot(
     cited_by_filter=(None, None),
     **filters,
 ):
+    """
+    :meta private:
+    """
     # --------------------------------------------------------------------------
     # TODO: REMOVE DEPENDENCES:
     #

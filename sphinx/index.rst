@@ -99,6 +99,7 @@ TM2 module.
     techminer/correlation_analysis/__index__
     techminer/emergence_analysis/__index__
     techminer/factor_analysis/__index__
+    techminer/network_analysis/__index__
     techminer/performance_analysis/__index__
     techminer/time_analysis/__index__
     techminer/thematic_analysis/__index__

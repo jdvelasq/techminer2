@@ -1,4 +1,4 @@
 Collaboration Network
 ===============================================================================
 
-See :ref:`vosviewer_co_authorship` in **VOSviewer** module.
+See `TechMiner 2+ > Network Analysis >` :ref:`network_analysis.co_authorship`.

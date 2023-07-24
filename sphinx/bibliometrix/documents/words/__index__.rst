@@ -1,41 +1,32 @@
 Words/
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-   * `TechMiner 2+ > Performance Analysis > Fields >` :ref:`performance.author_keywords`
+   
 
-   .. raw:: html
+.. toctree::
+   author_keywords
 
-      <br>
+.. toctree::
+   index_keywords
 
-   * `TechMiner 2+ > Performance Analysis > Fields >` :ref:`performance.index_keywords`
+.. toctree::
+   keywords
 
-   .. raw:: html
+.. toctree::
+   title_nlp_phrases
 
-      <br>
+.. toctree::
+   abstract_nlp_phrases
 
-   * `TechMiner 2+ > Performance Analysis > Fields >` :ref:`performance.keywords`
+.. toctree::
+   nlp_phrases
 
-   .. raw:: html
+.. toctree::
+   descriptors
 
-      <br>
 
-   * `TechMiner 2+ > Performance Analysis > Fields >` :ref:`performance.abstract_nlp_phrases`
 
-   .. raw:: html
 
-      <br>
 
-   * `TechMiner 2+ > Performance Analysis > Fields >` :ref:`performance.title_nlp_phrases`
 
-   .. raw:: html
-
-      <br>
-
-   * `TechMiner 2+ > Performance Analysis > Fields >` :ref:`performance.nlp_phrases`
-
-   .. raw:: html
-
-      <br>
-
-   * `TechMiner 2+ > Performance Analysis > Fields >` :ref:`performance.descriptors`
 

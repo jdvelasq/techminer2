@@ -6,17 +6,28 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-.. _vosviewer_countries_communities:
-
 Communities
 ===============================================================================
 
 
->>> from techminer2 import vosviewer
->>> root_dir = "data/regtech/"
->>> vosviewer.co_authorship.countries.communities(
-...     root_dir=root_dir,
+>>> from techminer2.network_analysis.co_authorship.countries import communities
+>>> communities(
+...     #
+...     # COLUMN PARAMS:
 ...     top_n=20, 
+...     occ_range=(None, None),
+...     gc_range=(None, None),
+...     custom_items=None,
+...     #
+...     # NETWORK PARAMS:
+...     algorithm_or_dict="louvain",
+...     association_index="association",
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="data/regtech/",
+...     database="main",
+...     year_filter=(None, None),
+...     cited_by_filter=(None, None),
 ... )
                    CL_0              CL_1  ...           CL_6            CL_7
 0  United Kingdom 7:199   Australia 7:199  ...  Ukraine 1:004  Malaysia 1:003
@@ -56,6 +67,9 @@ def communities(
     cited_by_filter=(None, None),
     **filters,
 ):
+    """
+    :meta private:
+    """
     # --------------------------------------------------------------------------
     # TODO: REMOVE DEPENDENCES:
     #

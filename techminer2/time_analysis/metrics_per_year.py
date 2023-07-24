@@ -109,7 +109,10 @@ def metrics_per_year(
     cited_by_filter: tuple = (None, None),
     **filters,
 ):
-    """Computes global database indicators per year."""
+    """Computes global database indicators per year.
+
+    :meta private:
+    """
 
     records = read_records(
         root_dir=root_dir,

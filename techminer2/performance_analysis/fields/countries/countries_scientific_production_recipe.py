@@ -9,8 +9,7 @@
 Country Scientific Production (Recipe)
 ===============================================================================
 
-See :ref:`world_map`. 
-
+See: `TechMiner 2+ > Performance Analysis > Graphs >`  :ref:`performance_analysis.graphs.world_map`. 
 
 
 """

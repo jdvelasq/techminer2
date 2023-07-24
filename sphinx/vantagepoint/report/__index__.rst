@@ -1,90 +1,48 @@
 Report/ 
 ==============================================================================
 
+.. toctree::
+    column_chart    
 
-* :ref:`column_chart`
+.. toctree::
+    bar_chart
 
-.. raw:: html
+.. toctree::
+    pie_chart
 
-    <br>
+.. toctree::
+    line_chart
 
-* :ref:`bar_chart` 
+.. toctree::
+    word_cloud
 
-.. raw:: html
+.. toctree::
+    multi_donut
 
-    <br>
+.. toctree::
+    bubble_chart
 
-* :ref:`pie_chart`
+.. toctree::
+    gantt_chart
 
-.. raw:: html
+.. toctree::
+    butterfly_chart
 
-    <br>
+.. toctree::
+    scatter_plot
 
-* :ref:`line_chart`
+.. toctree::
+    cluster_map
 
-.. raw:: html
+.. toctree::
+    super_profile
 
-    <br>
+..  toctree::
+    world_map
 
-* :ref:`word_cloud`
+..  toctree::
+    plot_classifications
 
-.. raw:: html
-
-    <br>
-
-* :ref:`multi_donut`
-
-.. raw:: html
-
-    <br>
-
-* :ref:`bubble_chart`
-
-.. raw:: html
-
-    <br>
-
-* Gantt Chart:  See Organizations' :ref:`performance_analysis.organizations.production_over_time`
-
-.. raw:: html
-
-    <br>
-
-* :ref:`butterfly_chart`
-
-.. raw:: html
-
-    <br>
-
-* :ref:`scatter_plot`
-
-.. raw:: html
-
-    <br>
-
-* :ref:`cluster_map`
-
-.. raw:: html
-
-    <br>
-
-* :ref:`super_profile`
-
-.. raw:: html
-
-    <br>
-
-* :ref:`world_map`
-
-.. raw:: html
-
-    <br>
-
-* :ref:`plot_classifications`
-
-.. raw:: html
-
-    <br>
-
-* :ref:`plot_emergence`
+..  toctree::
+    plot_emergence
 

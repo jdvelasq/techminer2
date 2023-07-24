@@ -9,7 +9,13 @@ Performance Analysis/
 .. toctree::
     :maxdepth: 1
 
-    visualization/__index__    
+    words/__index__
+
+
+.. toctree::
+    :maxdepth: 1
+
+    graphs/__index__    
 
 .. toctree::
     main_metrics

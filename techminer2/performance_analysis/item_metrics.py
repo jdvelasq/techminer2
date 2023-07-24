@@ -5,7 +5,7 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-.. _performance.item_metrics:
+.. _performance_analysis.item_metrics:
 
 Item Metrics
 ===============================================================================

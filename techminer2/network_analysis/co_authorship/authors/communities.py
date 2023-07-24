@@ -10,11 +10,24 @@ Communities
 ===============================================================================
 
 
->>> from techminer2 import vosviewer
->>> root_dir = "data/regtech/"
->>> vosviewer.co_authorship.authors.communities(
-...     root_dir=root_dir,
+>>> from techminer2.network_analysis.co_authorship.authors import communities
+>>> communities(
+...     #
+...     # COLUMN PARAMS:
 ...     top_n=20, 
+...     occ_range=(None, None),
+...     gc_range=(None, None),
+...     custom_items=None,
+...     #
+...     # NETWORK PARAMS:
+...     algorithm_or_dict="louvain",
+...     association_index="association",
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="data/regtech/",
+...     database="main",
+...     year_filter=(None, None),
+...     cited_by_filter=(None, None),
 ... )
                 CL_0            CL_1  ...                     CL_7             CL_8
 0     Arner DW 3:185  Hamdan A 2:018  ...  Anagnostopoulos I 1:153  Baxter LG 1:030
@@ -52,6 +65,9 @@ def communities(
     cited_by_filter=(None, None),
     **filters,
 ):
+    """
+    :meta private:
+    """
     # --------------------------------------------------------------------------
     # TODO: REMOVE DEPENDENCES:
     #

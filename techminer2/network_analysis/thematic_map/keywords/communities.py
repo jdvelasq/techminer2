@@ -10,11 +10,23 @@ Communities
 ===============================================================================
 
 
->>> from techminer2 import vosviewer
->>> root_dir = "data/regtech/"
->>> vosviewer.thematic_map.keywords.communities(
-...     root_dir=root_dir,
-...     top_n=20, 
+>>> from techminer2.network_analysis.thematic_map.keywords import communities
+>>> communities(
+...     #
+...     # COLUMN PARAMS:
+...     top_n=20,
+...     occ_range=(None, None),
+...     gc_range=(None, None),
+...     custom_items=None,
+...     #
+...     # NETWORK PARAMS:
+...     algorithm_or_dict="louvain",
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="data/regtech/",
+...     database="main",
+...     year_filter=(None, None),
+...     cited_by_filter=(None, None),
 ... )
                            CL_0  ...                            CL_2
 0                REGTECH 28:329  ...    REGULATORY_TECHNOLOGY 08:037
@@ -56,6 +68,9 @@ def communities(
     cited_by_filter=(None, None),
     **filters,
 ):
+    """
+    :meta private:
+    """
     # --------------------------------------------------------------------------
     # TODO: REMOVE DEPENDENCES:
     #

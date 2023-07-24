@@ -115,7 +115,10 @@ def corresponding_authors_countries(
     cited_by_filter=(None, None),
     **filters,
 ):
-    """Corresponding Author's Country"""
+    """Corresponding Author's Country
+
+    :meta private:
+    """
 
     indicators = __indicators(
         #

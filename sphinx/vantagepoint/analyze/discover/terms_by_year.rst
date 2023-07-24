@@ -1,4 +1,4 @@
 Terms by Year
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-See :ref:`time_analysis.terms_by_year`.
+See  `TechMiner 2+ > Time Analysis >`  :ref:`time_analysis.terms_by_year`.

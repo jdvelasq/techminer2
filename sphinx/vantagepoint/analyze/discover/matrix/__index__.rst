@@ -1,17 +1,16 @@
 Matrix/
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* :ref:`correlation_analysis.auto_correlation_matrix`
 
-.. raw:: html
+.. toctree::
+    co_occurrence_matrix
 
-    <br>
+.. toctree::
+    auto_correlation_matrix
 
-* :ref:`co_occurrence_analysis.co_occurrence_matrix`
+.. toctree::
+    cross_correlation_matrix    
 
-.. raw:: html
 
-    <br>
 
-* :ref:`correlation_analysis.cross_correlation_matrix`
  

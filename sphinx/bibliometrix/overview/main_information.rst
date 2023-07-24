@@ -1,4 +1,4 @@
 Main Information
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-See :ref:`performance_analysis.main_metrics`.
+See: `TechMiner 2+ > Performance Analysis >` :ref:`performance_analysis.main_metrics`.

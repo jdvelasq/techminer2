@@ -1,6 +1,4 @@
-.. automodule:: techminer2.performance_analysis.co_occurrences.matrix_viewer
-    :members:
-    :undoc-members:
-    :show-inheritance:
+Matrix Viewer
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-
+See: `TechMiner 2+ > Co-occurrence Analysis >` :ref:`co_occurrence_analysis.matrix_viewer`.
