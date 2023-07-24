@@ -15,3 +15,6 @@ Keywords/
 
 .. toctree::
    communities     
+
+.. toctree::
+   metrics

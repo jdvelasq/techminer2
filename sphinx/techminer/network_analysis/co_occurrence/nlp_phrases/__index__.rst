@@ -15,3 +15,6 @@ NLP Phrases/
 
 .. toctree::
    communities     
+
+.. toctree::
+   metrics

@@ -15,3 +15,6 @@ Descriptors/
 
 .. toctree::
    communities     
+
+.. toctree::
+   metrics

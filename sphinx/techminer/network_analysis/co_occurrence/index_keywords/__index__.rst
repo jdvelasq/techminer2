@@ -15,3 +15,6 @@ Index Keywords/
 
 .. toctree::
    communities     
+
+.. toctree::
+   metrics

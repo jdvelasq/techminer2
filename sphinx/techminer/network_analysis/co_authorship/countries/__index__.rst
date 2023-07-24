@@ -15,3 +15,6 @@ Countries/
 
 .. toctree::
    communities     
+
+.. toctree::
+   metrics

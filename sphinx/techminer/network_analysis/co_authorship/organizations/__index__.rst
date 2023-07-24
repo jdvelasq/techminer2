@@ -15,3 +15,6 @@ Organizations/
 
 .. toctree::
    communities     
+
+.. toctree::
+   metrics

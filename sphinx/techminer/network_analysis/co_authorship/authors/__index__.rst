@@ -15,3 +15,6 @@ Authors/
 
 .. toctree::
    communities   
+
+.. toctree::
+   metrics
