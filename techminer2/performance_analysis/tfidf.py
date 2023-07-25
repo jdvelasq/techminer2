@@ -5,7 +5,7 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-.. _analyze.terms.tfidf:
+.. _performance_analysis.tfidf:
 
 TFIDF
 ===============================================================================

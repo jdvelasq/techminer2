@@ -1,4 +1,4 @@
-_network_analysis:
+.. _network_analysis:
 
 Network Analysis/
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

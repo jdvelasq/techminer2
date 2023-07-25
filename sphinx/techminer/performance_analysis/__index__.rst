@@ -19,6 +19,9 @@ Performance Analysis/
 
 
 .. toctree::
+    cluster_records
+
+.. toctree::
     coverage
 
 .. toctree::

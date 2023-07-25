@@ -7,7 +7,7 @@
 # pylint: disable=too-many-statements
 # pylint: disable=import-outside-toplevel
 """
-.. _co_occurrence_analysis.graphs.multi_donut.:
+.. _co_occurrence_analysis.graphs.multi_donut:
 
 TODO: Multi Donut
 ===============================================================================
