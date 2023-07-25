@@ -6,13 +6,15 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
+.. _search.concordances:
+
 Concordances
 =========================================================================================
 
 Abstract concordances exploration tool.
 
 
->>> from techminer2.analyze.co_occurrences.concordances import concordances
+>>> from techminer2.search import concordances
 >>> results = concordances(
 ...     #
 ...     # FUNCTION PARAMS:
@@ -201,8 +203,8 @@ from dataclasses import dataclass
 
 import pandas as pd
 
-from ..._read_records import read_records
-from ...format_prompt_for_paragraphs import format_prompt_for_paragraphs
+from .._read_records import read_records
+from ..format_prompt_for_paragraphs import format_prompt_for_paragraphs
 
 
 def concordances(

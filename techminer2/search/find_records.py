@@ -1,5 +1,11 @@
 # flake8: noqa
+# pylint: disable=invalid-name
 # pylint: disable=line-too-long
+# pylint: disable=missing-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
+# pylint: disable=too-many-statements
+# pylint: disable=import-outside-toplevel
 """
 Find records
 ===============================================================================
@@ -10,47 +16,78 @@ the parameter ``search_for`` in the column specified by the parameter
 searching. The report is saved to the file ``reports/find_records.txt``.
 
 
-
->>> from techminer2 import vantagepoint
+>>> from techminer2.search import find_records
 >>> root_dir = "data/regtech/"
->>> vantagepoint.search.find_records(
+>>> find_records(
+...     #
+...     # SEARCH PARAMS:
 ...     field='author_keywords',
-...     search_for='regtech',
-...     root_dir=root_dir,
+...     search_for='REGTECH',
+...     case=False,
+...     flags=0,
+...     regex=True,
+...     report_filename="find_records.txt",
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="data/regtech/",
+...     database="main",
+...     year_filter=None,
+...     cited_by_filter=None,
 ... )
 --INFO-- The file 'data/regtech/reports/find_records.txt' was created.
 
->>> vantagepoint.search.find_records(
+>>> find_records(
+...     #
+...     # SEARCH PARAMS:
 ...     field='abstract',
 ...     search_for='five-year',
-...     root_dir=root_dir,
+...     case=False,
+...     flags=0,
+...     regex=True,
+...     report_filename="find_records.txt",
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="data/regtech/",
+...     database="main",
+...     year_filter=None,
+...     cited_by_filter=None,
 ... )
 --INFO-- The file 'data/regtech/reports/find_records.txt' was created.
 
->>> vantagepoint.search.find_records(
+>>> find_records(
+...     #
+...     # SEARCH PARAMS:
 ...     field='abstract',
 ...     search_for='anti',
-...     root_dir=root_dir,
+...     case=False,
+...     flags=0,
+...     regex=True,
+...     report_filename="find_records.txt",
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="data/regtech/",
+...     database="main",
+...     year_filter=None,
+...     cited_by_filter=None,
 ... )
 --INFO-- The file 'data/regtech/reports/find_records.txt' was created.
 
-
 """
-
-
 from .._read_records import read_records
 from ..format_report_for_records import format_report_for_records
 
 
-# pylint: disable=too-many-arguments
 def find_records(
+    #
+    # SEARCH PARAMS:
     field,
     search_for,
     case=False,
     flags=0,
     regex=True,
     report_filename="find_records.txt",
-    # Database params:
+    #
+    # DATABASE PARAMS:
     root_dir="./",
     database="main",
     year_filter=None,
@@ -76,7 +113,7 @@ def find_records(
     Returns:
         None
 
-    # pylint: disable=line-too-long
+    :meta private:
     """
 
     def filter_records(criterion, search_for, case, flags, regex, records):

@@ -6,6 +6,8 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
+.. _co_authorshop_authors_metrics:
+
 Metrics
 ===============================================================================
 

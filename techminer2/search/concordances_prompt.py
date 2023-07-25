@@ -158,7 +158,7 @@ merit of incorporating IT into a SMART_TREASURY department
 <BLANKLINE>
 
 """
-from ..._read_records import read_records
+from .._read_records import read_records
 from .concordances_prompt_from_records import concordances_prompt_from_records
 
 

@@ -92,6 +92,8 @@ TM2 module.
     :hidden:
     :maxdepth: 1
 
+    techminer/search/__index__  
+
     techminer/bibliometric_coupling/__index__
     techminer/citation_analysis/__index__
     techminer/co_occurrence_analysis/__index__
