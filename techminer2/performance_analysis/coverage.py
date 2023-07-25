@@ -1,33 +1,30 @@
 # flake8: noqa
+# pylint: disable=invalid-name
+# pylint: disable=line-too-long
+# pylint: disable=missing-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
+# pylint: disable=too-many-statements
+# pylint: disable=import-outside-toplevel
 """
-.. _coverage:
+.. _performance_analysis.coverage:
 
 Coverage
 ===============================================================================
 
 Computes coverage of terms in a column discarding stopwords.
 
-
->>> import techminer2 as tm2
->>> root_dir = "data/regtech/"
->>> tm2.records(root_dir=root_dir).coverage("author_keywords")
---INFO-- Number of documents : 52
---INFO--   Documents with NA : 11
---INFO--  Efective documents : 52
-   min_occ  cum_sum_documents coverage  cum num items
-0       28                 28  53.85 %              1
-1       12                 28  53.85 %              2
-2        7                 33  63.46 %              4
-3        5                 36  69.23 %              6
-4        4                 39  75.00 %              9
-5        3                 39  75.00 %             13
-6        2                 39  75.00 %             25
-7        1                 41  78.85 %            143
-
-
->>> tm2.coverage(
+>>> from techminer2.performance_analysis import coverage
+>>> coverage(
+...     #
+...     # PARAMS:
 ...     field="author_keywords",
-...     root_dir=root_dir,
+...     #
+...     # DATABASE_PARAMS
+...     root_dir="data/regtech/",
+...     database="main",
+...     year_filter=(None, None),
+...     cited_by_filter=(None, None),
 ... )
 --INFO-- Number of documents : 52
 --INFO--   Documents with NA : 11
@@ -43,9 +40,10 @@ Computes coverage of terms in a column discarding stopwords.
 7        1                 41  78.85 %            143
 
 
+
 """
-from ..._read_records import read_records
-from ..._stopwords_lib import load_stopwords
+from .._read_records import read_records
+from .._stopwords_lib import load_stopwords
 
 
 def coverage(
@@ -72,6 +70,7 @@ def coverage(
     Returns:
         None.
 
+    :meta private:
     """
 
     stopwords = load_stopwords(root_dir)
@@ -88,10 +87,7 @@ def coverage(
 
     n_documents = len(documents)
     print(f"--INFO-- Number of documents : {n_documents}")
-    print(
-        "--INFO--   Documents with NA : "
-        f"{n_documents - len(documents.dropna())}"
-    )
+    print("--INFO--   Documents with NA : " f"{n_documents - len(documents.dropna())}")
 
     documents = documents.dropna()
     print(f"--INFO--  Efective documents : {n_documents}")
@@ -102,9 +98,7 @@ def coverage(
 
     documents = documents[~documents[field].isin(stopwords)]
 
-    documents = documents.groupby(by=[field]).agg(
-        {"num_documents": "count", "article": list}
-    )
+    documents = documents.groupby(by=[field]).agg({"num_documents": "count", "article": list})
     documents = documents.sort_values(by=["num_documents"], ascending=False)
 
     documents = documents.reset_index()
@@ -119,26 +113,16 @@ def coverage(
     )
 
     documents = documents.assign(cum_sum_documents=documents.article.cumsum())
-    documents = documents.assign(
-        cum_sum_documents=documents.cum_sum_documents.map(set)
-    )
-    documents = documents.assign(
-        cum_sum_documents=documents.cum_sum_documents.map(len)
-    )
+    documents = documents.assign(cum_sum_documents=documents.cum_sum_documents.map(set))
+    documents = documents.assign(cum_sum_documents=documents.cum_sum_documents.map(len))
 
     documents = documents.assign(
-        coverage=documents.cum_sum_documents.map(
-            lambda x: f"{100 * x / n_documents:5.2f} %"
-        )
+        coverage=documents.cum_sum_documents.map(lambda x: f"{100 * x / n_documents:5.2f} %")
     )
 
     documents = documents.assign(cum_sum_items=documents[field].cumsum())
-    documents = documents.assign(
-        cum_sum_items=documents.cum_sum_items.map(set)
-    )
-    documents = documents.assign(
-        cum_sum_items=documents.cum_sum_items.map(len)
-    )
+    documents = documents.assign(cum_sum_items=documents.cum_sum_items.map(set))
+    documents = documents.assign(cum_sum_items=documents.cum_sum_items.map(len))
 
     documents.drop("article", axis=1, inplace=True)
     documents.drop(field, axis=1, inplace=True)

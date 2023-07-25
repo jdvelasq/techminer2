@@ -1,4 +1,4 @@
-.. automodule:: techminer2.vantagepoint.calculate.statistics
-    :members:
-    :undoc-members:
-    :show-inheritance:
+Statistics
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+See: `TechMiner 2+ > Performance Analysis >` :ref:`performance_analysis.statistics`

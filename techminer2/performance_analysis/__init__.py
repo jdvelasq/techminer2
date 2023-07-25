@@ -1,15 +1,16 @@
 """TechMiner2+ / Terms module."""
 
-from ..time_analysis.terms_by_year import terms_by_year
-from ..time_analysis.trending_terms_per_year import trending_terms_per_year
+
+from .coverage import coverage
 from .item_metrics import item_metrics
 from .main_metrics import main_metrics
+from .statistics import statistics
 from .tfidf import tfidf
 
 __all__ = [
+    "coverage",
     "item_metrics",
     "main_metrics",
-    "terms_by_year",
+    "statistics",
     "tfidf",
-    "trending_terms_per_year",
 ]

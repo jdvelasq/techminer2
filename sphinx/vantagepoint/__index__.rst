@@ -12,7 +12,6 @@ VantagePoint v15
 
    refine/__index__
 
-
 .. toctree::
    :maxdepth: 1
 

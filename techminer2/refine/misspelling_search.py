@@ -11,13 +11,16 @@ Misspelling Search
 
 Look for misspeling mistakes in the keywords of a thesaurus.
 
->>> from techminer2 import vantagepoint
->>> root_dir = "data/regtech/"
->>> vantagepoint.refine.misspelling_search(
-...     root_dir=root_dir,
+>>> from techminer2.refine import misspelling_search
+>>> misspelling_search(
+...     #
+...     # SEARCH PARAMS:
+...     thesaurus_file="descriptors.txt",
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="data/regtech/",
 ... )
 --INFO-- The file data/regtech/misspelled.txt has been generated.
-
 
 """
 import sys
@@ -30,7 +33,11 @@ from ..thesaurus_lib import load_system_thesaurus_as_dict
 
 
 def misspelling_search(
+    #
+    # SEARCH PARAMS:
     thesaurus_file="descriptors.txt",
+    #
+    # DATABASE PARAMS:
     root_dir="./",
 ):
     """Look for misspeling mistakes in the keywords of a thesaurus."""

@@ -5,6 +5,7 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
+# pylint: disable=too-many-branches
 """
 Find String 
 ===============================================================================
@@ -12,11 +13,17 @@ Find String
 Finds a string in the terms of a thesaurus.
 
 
->>> from techminer2 import vantagepoint
->>> root_dir = "data/regtech/"
->>> vantagepoint.refine.find_string(
+>>> from techminer2.refine import find_string
+>>> find_string(
+...     #
+...     # SEARCH PARAMS:
+...     thesaurus_file="descriptors.txt",
 ...     contains='ARTIFICIAL_INTELLIGENCE',
-...     root_dir=root_dir,
+...     startswith=None,
+...     endswith=None,
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="data/regtech/",
 ... )
 --INFO-- The file data/regtech/descriptors.txt has been reordered.
 
@@ -28,16 +35,21 @@ import pandas as pd
 from ..thesaurus_lib import load_system_thesaurus_as_dict
 
 
-# pylint: disable=too-many-locals
-# pylint: disable=too-many-branches
 def find_string(
+    #
+    # SEARCH PARAMS:
     thesaurus_file="descriptors.txt",
     contains=None,
     startswith=None,
     endswith=None,
+    #
+    # DATABASE PARAMS:
     root_dir="./",
 ):
-    """Find the specified keyword and reorder the thesaurus file."""
+    """Find the specified keyword and reorder the thesaurus file.
+
+    :meta private:
+    """
 
     th_file = os.path.join(root_dir, thesaurus_file)
     if not os.path.isfile(th_file):

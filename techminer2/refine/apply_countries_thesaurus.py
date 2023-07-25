@@ -13,9 +13,12 @@ Cleans the country columns using the file countries.txt, located in
 the same directory as the documents.csv file.
 
 
->>> from techminer2 import vantagepoint
->>> root_dir = "data/regtech/"
->>> vantagepoint.refine.apply_countries_thesaurus(root_dir)
+>>> from techminer2.refine import apply_countries_thesaurus
+>>> apply_countries_thesaurus(
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="data/regtech/",
+...     )
 --INFO-- The data/regtech/countries.txt thesaurus file was applied to affiliations in all databases
 
 
@@ -30,8 +33,15 @@ import pandas as pd
 from ..thesaurus_lib import load_system_thesaurus_as_dict_reversed
 
 
-def apply_countries_thesaurus(root_dir="./"):
-    """Apply country thesaurus."""
+def apply_countries_thesaurus(
+    #
+    # DATABASE PARAMS:
+    root_dir="./",
+):
+    """Apply country thesaurus.
+
+    :meta private:
+    """
 
     # thesaurus preparation
     thesaurus_file = os.path.join(root_dir, "countries.txt")

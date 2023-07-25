@@ -5,17 +5,21 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-.. _statistics:
+.. _performance_analysis.statistics:
 
 Statistics
 ===============================================================================
 
 
->>> from techminer2 import vantagepoint
->>> root_dir = "data/regtech/"
->>> vantagepoint.calculate.statistics(
+>>> from techminer2.performance_analysis import statistics
+>>> statistics(
 ...     field='authors',
-...     root_dir=root_dir,
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="data/regtech/",
+...     database="main",
+...     year_filter=(None, None),
+...     cited_by_filter=(None, None),
 ... ).head()
                    year                       ... local_citations                  
                   count    mean  std     min  ...             25%   50%   75%   max
@@ -44,7 +48,10 @@ def statistics(
     cited_by_filter: tuple = (None, None),
     **filters,
 ):
-    """Returns the statistics of the records."""
+    """Returns the statistics of the records.
+
+    :meta private:
+    """
 
     records = read_records(
         root_dir=root_dir,

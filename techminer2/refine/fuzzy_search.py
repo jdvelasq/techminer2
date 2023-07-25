@@ -5,6 +5,7 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
+# pylint: disable=too-many-bramcbes
 """
 Fuzzy Search 
 ===============================================================================
@@ -12,12 +13,16 @@ Fuzzy Search
 Finds a string in the terms of a thesaurus using fuzzy search.
 
 
->>> from techminer2 import vantagepoint
->>> root_dir = "data/regtech/"
->>> vantagepoint.refine.fuzzy_search(
+>>> from techminer2.refine import fuzzy_search
+>>> fuzzy_search(
+...     #
+...     # SEARCH PARAMS:
 ...     patterns='INTELIGEN',
+...     thesaurus_file="descriptors.txt",
 ...     threshold=70,
-...     root_dir=root_dir,
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="data/regtech/",
 ... )
 ARTIFICIAL_INTELLIGENCE
 ARTIFICIAL_INTELLIGENCE_AND_LAW
@@ -33,12 +38,14 @@ from fuzzywuzzy import process
 from ..thesaurus_lib import load_system_thesaurus_as_dict
 
 
-# pylint: disable=too-many-locals
-# pylint: disable=too-many-bramcbes
 def fuzzy_search(
+    #
+    # SEARCH PARAMS:
     patterns,
     thesaurus_file="descriptors.txt",
     threshold=80,
+    #
+    # DATABASE PARAMS:
     root_dir="./",
 ):
     """Find the specified keyword and reorder the thesaurus file."""

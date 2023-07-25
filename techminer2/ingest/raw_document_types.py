@@ -1,5 +1,11 @@
 # flake8: noqa
+# pylint: disable=invalid-name
 # pylint: disable=line-too-long
+# pylint: disable=missing-docstring
+# pylint: disable=too-many-arguments
+# pylint: disable=too-many-locals
+# pylint: disable=too-many-statements
+# pylint: disable=import-outside-toplevel
 """
 Document Types in Raw Documents 
 ===============================================================================
@@ -7,11 +13,12 @@ Document Types in Raw Documents
 Return the number of records by document type in the databases.
 
 
-
->>> root_dir = "data/regtech/"
-
->>> import techminer2plus
->>> techminer2plus.ingest.raw_document_types(root_dir)
+>>> from techminer2.ingest import raw_document_types
+>>> raw_document_types(
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="data/regtech/",
+... )
 --INFO-- Concatenating raw files in data/regtech/raw-data/cited_by/
 --INFO-- Document types in: cited_by
 No document types found
@@ -33,14 +40,8 @@ from .ingest_raw_data import concat_raw_csv_files, get_subdirectories
 
 
 def raw_document_types(root_dir):
-    """Document types in raw documents.
-
-    Args:
-        root_dir (str): root directory.
-
-    Returns:
-        None.
-
+    """
+    :meta private:
     """
     raw_dir = os.path.join(root_dir, "raw-data")
 

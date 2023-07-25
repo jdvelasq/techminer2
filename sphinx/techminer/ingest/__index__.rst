@@ -1,3 +1,5 @@
+.. _ingest:
+
 Ingest/
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -6,3 +8,6 @@ Ingest/
 
 .. toctree::
     raw_document_types
+
+.. toctree::
+    summary_sheet

@@ -30,15 +30,10 @@ def create_countries_thesaurus(root_dir):
     country_codes = get_country_codes()
     country_names = get_country_names(country_codes)
     regex = country_names_to_regex(country_names)
-    affiliations = extract_country_name_from_regex(
-        affiliations, regex, country_names
-    )
+    affiliations = extract_country_name_from_regex(affiliations, regex, country_names)
     affiliations = format_country_names(affiliations)
     save_countries_thesaurus(affiliations, root_dir)
-    print(
-        f"--INFO-- The {pathlib.Path(root_dir) / 'countries.txt'} "
-        "thesaurus file was created"
-    )
+    print(f"--INFO-- The {pathlib.Path(root_dir) / 'countries.txt'} " "thesaurus file was created")
 
 
 def load_affiliations_frame(directory):
@@ -61,10 +56,7 @@ def load_affiliations_frame(directory):
     affiliations = pd.concat(affiliations).drop_duplicates()
 
     if len(affiliations) == 0:
-        raise ValueError(
-            "Column 'affiliations' do not exists in any databases "
-            "or it is empty."
-        )
+        raise ValueError("Column 'affiliations' do not exists in any databases " "or it is empty.")
 
     frame = pd.DataFrame({"affiliations": affiliations})
 
@@ -83,9 +75,7 @@ def extract_country_component(affiliations):
     """Extracts the country component from the 'country' column."""
 
     affiliations = affiliations.copy()
-    affiliations["country"] = (
-        affiliations["country"].str.lower().str.split(",").str[-1].str.strip()
-    )
+    affiliations["country"] = affiliations["country"].str.lower().str.split(",").str[-1].str.strip()
     return affiliations
 
 
@@ -143,9 +133,7 @@ def extract_country_name_from_regex(affiliations, regex, country_names):
     """Extract the country based on a regex."""
 
     affiliations = affiliations.copy()
-    affiliations["country"] = affiliations["country"].map(
-        lambda x: re.search(regex, x)
-    )
+    affiliations["country"] = affiliations["country"].map(lambda x: re.search(regex, x))
     affiliations["country"] = affiliations["country"].map(
         lambda x: x.group(0) if x is not None else "unknown"
     )
@@ -176,16 +164,12 @@ def save_countries_thesaurus(affiliations, root_dir):
     existent_affiliations = read_existent_coutries_txt_thesaurus(root_dir)
 
     if existent_affiliations is not None:
-        affiliations = pd.concat(
-            [existent_affiliations, affiliations], ignore_index=True
-        )
+        affiliations = pd.concat([existent_affiliations, affiliations], ignore_index=True)
         affiliations = affiliations.drop_duplicates(subset=["affiliations"])
         affiliations = affiliations.reset_index(drop=True)
 
     affiliations = affiliations.sort_values(["country", "affiliations"])
-    affiliations = affiliations.groupby("country", as_index=False).agg(
-        {"affiliations": list}
-    )
+    affiliations = affiliations.groupby("country", as_index=False).agg({"affiliations": list})
 
     file_path = pathlib.Path(root_dir) / "countries.txt"
 

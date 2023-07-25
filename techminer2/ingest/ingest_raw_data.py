@@ -6,19 +6,20 @@
 # pylint: disable=too-many-locals
 # pylint: disable=too-many-statements
 """
-.. _techminer_ingest_raw_data:
+.. _ingest.ingest_raw_data:
 
 Ingest Raw Data
 ===============================================================================
 
 Import a scopus data file in the working directory.
 
->>> from techminer2 import techminer
->>> root_dir = "data/regtech/"
-
->>> root_dir = "data/karla/"
-
->>> techminer.ingest.ingest_raw_data(root_dir, disable_progress_bar=True)
+>>> from techminer2.ingest import ingest_raw_data
+>>> ingest_raw_data(
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="data/regtech/", 
+...     disable_progress_bar=True
+... )
 --INFO-- Concatenating raw files in data/regtech/raw-data/cited_by/
 --INFO-- Concatenating raw files in data/regtech/raw-data/references/
 --INFO-- Concatenating raw files in data/regtech/raw-data/main/
@@ -81,6 +82,7 @@ Import a scopus data file in the working directory.
 >>> import pandas as pd
 >>> from pprint import pprint
 >>> import textwrap
+>>> root_dir = "data/regtech/"
 >>> my_list = pd.read_csv(root_dir + "databases/_main.csv", encoding="utf-8").columns.tolist()
 >>> wrapped_list = textwrap.fill(", ".join(sorted(my_list)), width=79)
 >>> print(wrapped_list)
@@ -124,9 +126,9 @@ import pandas as pd
 from textblob import TextBlob
 from tqdm import tqdm
 
-from .apply_countries_thesaurus import apply_countries_thesaurus
-from .apply_descriptors_thesaurus import apply_descriptors_thesaurus
-from .apply_organizations_thesaurus import apply_organizations_thesaurus
+from ..refine.apply_countries_thesaurus import apply_countries_thesaurus
+from ..refine.apply_descriptors_thesaurus import apply_descriptors_thesaurus
+from ..refine.apply_organizations_thesaurus import apply_organizations_thesaurus
 
 # from ..reports import abstracts_report
 from .create_countries_thesaurus import create_countries_thesaurus
@@ -147,6 +149,7 @@ def ingest_raw_data(root_dir="./", disable_progress_bar=False, **document_types)
 
     Returns:
         None
+    :meta private:
     """
 
     #

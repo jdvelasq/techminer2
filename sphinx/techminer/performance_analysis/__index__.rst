@@ -17,14 +17,21 @@ Performance Analysis/
 
     graphs/__index__    
 
+
 .. toctree::
-    main_metrics
+    coverage
 
 .. toctree::
     item_metrics
 
 .. toctree::
     list_comparison
+
+.. toctree::
+    main_metrics
+
+.. toctree::
+    statistics
 
 .. toctree::
     terms_by_year
@@ -34,3 +41,4 @@ Performance Analysis/
 
 .. toctree::
     trending_terms_per_year
+

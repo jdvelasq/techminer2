@@ -11,13 +11,16 @@ Find Abbreviations
 
 Finds string abbreviations in the keywords of a thesaurus.
 
->>> from techminer2 import vantagepoint
->>> root_dir = "data/regtech/"
->>> vantagepoint.refine.find_abbreviations(
-...     root_dir=root_dir,
+>>> from techminer2.refine import find_abbreviations
+>>> find_abbreviations(
+...     #
+...     # THESAURUS PARAMS:
+...     thesaurus_file="descriptors.txt",
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="data/regtech/",
 ... )
 --INFO-- The file data/regtech/descriptors.txt has been reordered.
-
 
 """
 import os.path
@@ -28,10 +31,17 @@ from ..thesaurus_lib import load_system_thesaurus_as_dict, load_system_thesaurus
 
 
 def find_abbreviations(
+    #
+    # THESAURUS PARAMS:
     thesaurus_file="descriptors.txt",
+    #
+    # DATABASE PARAMS:
     root_dir="./",
 ):
-    """Find abbreviations and reorder the thesaurus to reflect the search."""
+    """Find abbreviations and reorder the thesaurus to reflect the search.
+
+    :meta private:
+    """
 
     ###
 

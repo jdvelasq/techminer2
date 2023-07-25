@@ -12,13 +12,13 @@ Apply Organizations Thesaurus
 Cleans the organizations columns using the file organizations.txt, located in
 the same directory as the documents.csv file.
 
-
->>> from techminer2 import vantagepoint
->>> root_dir = "data/regtech/"
->>> vantagepoint.refine.apply_organizations_thesaurus(root_dir)
+>>> from techminer2.refine import apply_organizations_thesaurus
+>>> apply_organizations_thesaurus(
+...     #
+...     # DATABASE PARAMS:
+...     root_dir="data/regtech/",
+... )
 --INFO-- The data/regtech/organizations.txt thesaurus file was applied to affiliations in all databases
-
-
 
 """
 import glob
@@ -30,8 +30,15 @@ import pandas as pd
 from ..thesaurus_lib import load_system_thesaurus_as_dict_reversed
 
 
-def apply_organizations_thesaurus(root_dir="./"):
-    """Apply 'organizations.txt' thesaurus."""
+def apply_organizations_thesaurus(
+    #
+    # DATABASE PARAMS:
+    root_dir="./",
+):
+    """Apply 'organizations.txt' thesaurus.
+
+    :meta private:
+    """
 
     # Read the thesaurus
     thesaurus_file = os.path.join(root_dir, "organizations.txt")

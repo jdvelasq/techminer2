@@ -5,14 +5,16 @@
 # pylint: disable=too-many-arguments
 # pylint: disable=too-many-locals
 """
-.. _ingest_and_clean.summary_sheet:
+.. _ingest.summary_sheet:
 
 Summary Sheet
 ===============================================================================
 
 
->>> from techminer2.ingest_and_clean import summary_sheet
+>>> from techminer2.ingest import summary_sheet
 >>> summary_sheet(
+...     #
+...     # DATABASE PARAMS:
 ...     root_dir="data/regtech/",
 ...     database="main",
 ...     year_filter=(None, None),
@@ -32,6 +34,8 @@ from .._read_records import read_records
 
 
 def summary_sheet(
+    #
+    # DATABASE PARAMS:
     root_dir: str = "./",
     database: str = "main",
     year_filter: tuple = (None, None),
